@@ -297,13 +297,14 @@ html, body {
 .mode-engine { background: rgba(139, 92, 246, 0.2); color: #c084fc; }
 .mode-guardian { background: rgba(239, 68, 68, 0.2); color: #f87171; }
 
-/* Voice Toggle */
-.voice-toggle-row {
+/* Voice Control Bar */
+.voice-control-bar {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .voice-toggle {
   display: flex;
@@ -335,42 +336,95 @@ html, body {
   cursor: pointer;
 }
 
-/* Mic Button */
-.mic-btn {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0 14px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.2s;
+/* Always Listening Button */
+.always-listen-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: var(--text-dim);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
-.mic-btn:active { opacity: 0.7; }
-.mic-btn.mic-active {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: var(--red);
-  animation: micPulse 1.5s ease-in-out infinite;
+.always-listen-btn.listen-active {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(34, 197, 94, 0.1);
+  animation: listenGlow 2s ease-in-out infinite;
+}
+.listen-icon { font-size: 16px; }
+
+@keyframes listenGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  50% { box-shadow: 0 0 12px 2px rgba(34, 197, 94, 0.2); }
 }
 
-/* Listening indicator */
-.listening-indicator {
+/* Listening Status Bar */
+.listen-status {
   display: flex;
   align-items: center;
   gap: 8px;
   justify-content: center;
-  padding: 6px 0 2px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-radius: 999px;
   font-size: 12px;
-  color: var(--red);
+  font-weight: 500;
+  transition: all 0.3s;
 }
-.listening-dot {
+.listen-status.status-listening {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--green);
+}
+.listen-status.status-speaking {
+  background: var(--accent-glow);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: var(--accent);
+}
+.listen-status.status-ready {
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  color: var(--yellow);
+}
+.status-indicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--red);
-  animation: micPulse 1s ease-in-out infinite;
+  display: inline-block;
+}
+.status-listening .status-indicator {
+  background: var(--green);
+  animation: statusPulse 1.5s ease-in-out infinite;
+}
+.status-speaking .status-indicator {
+  background: var(--accent);
+  animation: statusPulse 0.8s ease-in-out infinite;
+}
+.status-ready .status-indicator {
+  background: var(--yellow);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Mic Denied Notice */
+.mic-denied-notice {
+  text-align: center;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius);
+  color: var(--red);
+  font-size: 12px;
 }
 
 /* Replay button on messages */
