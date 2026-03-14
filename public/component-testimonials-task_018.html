@@ -1,0 +1,152 @@
+<section id="testimonials" style="background-color: #0a0a0f; padding: 100px 20px; font-family: 'Inter', sans-serif;">
+  <style>
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .testimonials-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .testimonials-heading h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 16px 0;
+    }
+    .testimonials-heading p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .testimonial-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 40px 32px 32px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      border-color: transparent;
+      box-shadow:
+        0 0 0 1px rgba(232, 67, 147, 0.4),
+        0 0 0 2px rgba(0, 206, 201, 0.2),
+        0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .testimonial-quote-icon {
+      font-size: 3rem;
+      line-height: 1;
+      background: linear-gradient(135deg, #e84393, #6c5ce7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      display: block;
+      font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.75);
+      margin: 0 0 32px 0;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+    .testimonial-author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .testimonial-name {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+    }
+    .testimonial-role {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin: 0;
+    }
+    @media (max-width: 900px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+        margin: 0 auto;
+      }
+      .testimonials-heading h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+
+  <div class="testimonials-container">
+    <div class="testimonials-heading">
+      <h2>Loved by teams everywhere</h2>
+      <p>See what our customers have to say</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <span class="testimonial-quote-icon">&ldquo;</span>
+        <p class="testimonial-text">Like One completely transformed how we handle customer onboarding. What used to take our team days now happens in minutes — and our customers actually enjoy the process.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #e84393, #6c5ce7);">MR</div>
+          <div class="testimonial-author-info">
+            <p class="testimonial-name">Maya Rodriguez</p>
+            <p class="testimonial-role">Head of Product · Clearpath</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <span class="testimonial-quote-icon">&ldquo;</span>
+        <p class="testimonial-text">We tested five different platforms before finding Like One. The AI accuracy is unmatched, and the team ships improvements faster than any tool we've ever used. An absolute game-changer.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #00cec9, #6c5ce7);">JK</div>
+          <div class="testimonial-author-info">
+            <p class="testimonial-name">James Kim</p>
+            <p class="testimonial-role">CTO · Novexa Labs</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <span class="testimonial-quote-icon">&ldquo;</span>
+        <p class="testimonial-text">The ROI was obvious within the first week. Our support volume dropped 40% while customer satisfaction scores hit an all-time high. Like One pays for itself many times over.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #6c5ce7, #00cec9);">AT</div>
+          <div class="testimonial-author-info">
+            <p class="testimonial-name">Aisha Thompson</p>
+            <p class="testimonial-role">VP of Operations · Scaleform</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
