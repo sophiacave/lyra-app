@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getAllCourses } from '@/lib/academy';
+import AcademyHero from './components/AcademyHero';
 
 export const metadata = {
   title: 'Academy — Like One',
@@ -19,19 +20,18 @@ function formatPrice(cents) {
 
 export default async function AcademyPage() {
   const courses = await getAllCourses();
+  const lessonCount = courses.reduce((sum, c) => sum + (c.lesson_count || 0), 0);
+  const totalXP = courses.reduce((sum, c) => sum + (c.total_xp || 0), 0);
 
   return (
     <>
       <style>{`
-        .academy-shell {
-          min-height: 100vh;
+        .academy-shell {          min-height: 100vh;
           background: #0a0a0f;
           color: #e5e5e5;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
           -webkit-font-smoothing: antialiased;
         }
-
-        /* Nav */
         .acad-nav {
           max-width: 960px;
           margin: 0 auto;
@@ -54,13 +54,11 @@ export default async function AcademyPage() {
           text-transform: uppercase;
           font-weight: 600;
         }
-
-        /* Hero */
-        .acad-hero {
-          max-width: 960px;
+        .acad-hero {          max-width: 960px;
           margin: 0 auto;
           padding: 72px 24px 56px;
           text-align: center;
+          overflow: hidden;
         }
         .acad-badge {
           display: inline-block;
@@ -85,15 +83,12 @@ export default async function AcademyPage() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
-        .acad-hero-sub {
-          font-size: 18px;
+        .acad-hero-sub {          font-size: 18px;
           color: #737373;
           line-height: 1.6;
           max-width: 560px;
           margin: 0 auto;
         }
-
-        /* Stats row */
         .acad-stats {
           display: flex;
           justify-content: center;
@@ -101,9 +96,7 @@ export default async function AcademyPage() {
           margin-top: 40px;
           flex-wrap: wrap;
         }
-        .acad-stat {
-          text-align: center;
-        }
+        .acad-stat { text-align: center; }
         .acad-stat-value {
           font-size: 28px;
           font-weight: 700;
@@ -116,18 +109,13 @@ export default async function AcademyPage() {
           letter-spacing: 0.5px;
           margin-top: 2px;
         }
-
-        /* Course grid */
         .acad-grid {
           max-width: 960px;
           margin: 0 auto;
-          padding: 0 24px 80px;
-          display: grid;
+          padding: 0 24px 80px;          display: grid;
           grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
           gap: 20px;
         }
-
-        /* Glass card */
         .course-card {
           display: flex;
           flex-direction: column;
@@ -145,9 +133,7 @@ export default async function AcademyPage() {
         .course-card::before {
           content: '';
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
+          top: 0; left: 0; right: 0;
           height: 3px;
           background: var(--card-accent);
           opacity: 0;
@@ -155,17 +141,10 @@ export default async function AcademyPage() {
         }
         .course-card:hover {
           border-color: rgba(255, 255, 255, 0.12);
-          transform: translateY(-4px);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+          transform: translateY(-4px);          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
-        .course-card:hover::before {
-          opacity: 1;
-        }
-
-        .course-icon {
-          font-size: 40px;
-          margin-bottom: 16px;
-        }
+        .course-card:hover::before { opacity: 1; }
+        .course-icon { font-size: 40px; margin-bottom: 16px; }
         .course-meta {
           display: flex;
           align-items: center;
@@ -191,11 +170,9 @@ export default async function AcademyPage() {
           background: rgba(232, 67, 147, 0.12);
           color: #e84393;
         }
-        .course-price-free {
-          background: rgba(52, 199, 89, 0.12);
+        .course-price-free {          background: rgba(52, 199, 89, 0.12);
           color: #34C759;
         }
-
         .course-title {
           font-size: 22px;
           font-weight: 700;
@@ -217,14 +194,12 @@ export default async function AcademyPage() {
           flex: 1;
           margin-bottom: 20px;
         }
-
         .course-footer {
           display: flex;
           align-items: center;
           justify-content: space-between;
           padding-top: 16px;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
+          border-top: 1px solid rgba(255, 255, 255, 0.05);        }
         .course-info {
           display: flex;
           gap: 16px;
@@ -242,22 +217,6 @@ export default async function AcademyPage() {
           font-weight: 700;
           color: #00cec9;
         }
-
-        .course-cta {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 13px;
-          font-weight: 600;
-          color: var(--card-accent, #00cec9);
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-        .course-card:hover .course-cta {
-          opacity: 1;
-        }
-
-        /* Responsive */
         @media (max-width: 640px) {
           .acad-hero h1 { font-size: 36px; }
           .acad-stats { gap: 24px; }
@@ -270,33 +229,11 @@ export default async function AcademyPage() {
           <Link href="/" className="acad-nav-home">&larr; Home</Link>
           <span className="acad-nav-mark">Like One</span>
         </nav>
-
-        <header className="acad-hero">
-          <div className="acad-badge">Now Open</div>
-          <h1>Learn AI by doing.</h1>
-          <p className="acad-hero-sub">
-            Interactive courses that teach AI and automation through animations,
-            live code, and hands-on experiments. Not lectures — experiences.
-          </p>
-          <div className="acad-stats">
-            <div className="acad-stat">
-              <div className="acad-stat-value">{courses.length}</div>
-              <div className="acad-stat-label">Courses</div>
-            </div>
-            <div className="acad-stat">
-              <div className="acad-stat-value">
-                {courses.reduce((sum, c) => sum + (c.lesson_count || 0), 0)}
-              </div>
-              <div className="acad-stat-label">Lessons</div>
-            </div>
-            <div className="acad-stat">
-              <div className="acad-stat-value">
-                {courses.reduce((sum, c) => sum + (c.total_xp || 0), 0).toLocaleString()}
-              </div>
-              <div className="acad-stat-label">Total XP</div>
-            </div>
-          </div>
-        </header>
+        <AcademyHero
+          courseCount={courses.length}
+          lessonCount={lessonCount}
+          totalXP={totalXP}
+        />
 
         <main className="acad-grid">
           {courses.map(course => (
@@ -320,8 +257,7 @@ export default async function AcademyPage() {
                 <span className={`course-price-tag ${course.is_free ? 'course-price-free' : ''}`}>
                   {formatPrice(course.price_cents)}
                 </span>
-              </div>
-              <h2 className="course-title">{course.title}</h2>
+              </div>              <h2 className="course-title">{course.title}</h2>
               <p className="course-subtitle">{course.subtitle}</p>
               <p className="course-desc">{course.description}</p>
               <div className="course-footer">
