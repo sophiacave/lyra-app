@@ -503,8 +503,7 @@ const QuizLesson = ({ lesson, onComplete }) => {
             fontWeight: 700;
             marginTop: 20px;
           }
-        `}        `}
-        />
+        `}</style>
 
         <h2 style={{ fontSize: '32px', color: '#00cec9', margin: '0 0 10px 0' }}>
           Quiz Complete!
