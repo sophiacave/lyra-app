@@ -6,7 +6,7 @@
 set -e
 BRAIN_DIR="$HOME/.fractal_brain"
 TOOLS_DIR="$BRAIN_DIR/tools"
-C1_BRAIN_DIR="$HOME/like-one-server"
+BASE_URL="https://likeone.ai/brain-tools"
 
 echo ""
 echo "◈ FRACTAL BRAIN INSTALLER"
@@ -17,21 +17,25 @@ echo ""
 echo "📁 Creating ~/.fractal_brain/ ..."
 mkdir -p "$TOOLS_DIR" "$BRAIN_DIR/logs" "$BRAIN_DIR/backups"
 
-# 2. Copy tools from computer 01 if available, else use defaults
-echo "🧠 Setting up brain tools ..."
-if [ -d "$C1_BRAIN_DIR/agents" ]; then
-  echo "  ✓ Found like-one-server — linking tools"
-  cp "$C1_BRAIN_DIR"/*.py "$TOOLS_DIR/" 2>/dev/null || true
-else
-  echo "  ℹ Tools will need to be synced from Computer 01"
-fi
+# 2. Download brain tools from likeone.ai
+echo "🧠 Downloading brain tools ..."
+TOOLS=(
+  "brain.py"
+  "orchestrator.py"
+  "health_monitor.py"
+  "sync_to_brain.py"
+  "local_logger.py"
+  "session_bootstrap.py"
+  "auto_fix.py"
+  "brain_patch.py"
+  "dashboard.py"
+)
 
-# Copy local fractal brain tools if they exist
-for tool in brain.py orchestrator.py session_bootstrap.py health_monitor.py sync_to_brain.py local_logger.py; do
-  if [ -f "$BRAIN_DIR/../.fractal_brain_c1/tools/$tool" ]; then
-    cp "$BRAIN_DIR/../.fractal_brain_c1/tools/$tool" "$TOOLS_DIR/$tool"
-  fi
+for tool in "${TOOLS[@]}"; do
+  echo "  ↓ $tool"
+  curl -fsSL "$BASE_URL/$tool" -o "$TOOLS_DIR/$tool" || echo "  ⚠ Failed to download $tool"
 done
+echo "  ✓ Tools downloaded"
 
 # 3. Write .env template — user fills in credentials from /_temp page
 echo "🔑 Creating .env template ..."
@@ -43,18 +47,14 @@ SUPABASE_SERVICE_KEY=PASTE_FROM_TEMP_PAGE
 NOTION_TOKEN=PASTE_FROM_TEMP_PAGE
 COMPUTER_ID=computer-02
 ENVEOF
-  echo "  → Edit ~/.fractal_brain/.env with keys shown on likeone.ai/_temp"
+  echo "  → Edit ~/.fractal_brain/.env with keys from likeone.ai/_temp"
 else
   echo "  ✓ .env already exists — skipping"
 fi
 
 # 4. Create brain CLI command
 echo "⚡ Installing brain CLI ..."
-cat > "$TOOLS_DIR/brain" << 'BRAINEOF'
-#!/bin/bash
-source "$HOME/.fractal_brain/.env" 2>/dev/null
-python3 "$HOME/.fractal_brain/tools/brain.py" "$@"
-BRAINEOF
+curl -fsSL "$BASE_URL/brain-cli" -o "$TOOLS_DIR/brain"
 chmod +x "$TOOLS_DIR/brain"
 
 # Symlink to accessible path
@@ -76,13 +76,14 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "✅ FRACTAL BRAIN INSTALLED"
 echo ""
 echo "  Brain dir:  ~/.fractal_brain/"
+echo "  Tools:      $(ls $TOOLS_DIR/*.py 2>/dev/null | wc -l | tr -d ' ') Python modules downloaded"
 echo "  CLI:        brain --help"
 echo "  Cron sync:  every 15 minutes"
 echo ""
 echo "  NEXT STEP: Add credentials"
 echo "  → Visit likeone.ai/_temp on this computer"
-echo "  → Copy the .env block and paste into:"
-echo "     ~/.fractal_brain/.env"
+echo "  → Enter PIN → copy the .env block"
+echo "  → Paste into: ~/.fractal_brain/.env"
 echo ""
 echo "  Then run:  brain status"
 echo "  Computer 02 will be live on the shared brain."
