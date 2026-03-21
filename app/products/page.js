@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { products, tiers } from '../../lib/products';
 
 export const metadata = {
-  title: 'Products — Like One AI Automation Studio',
-  description: 'AI automation products, toolkits, and blueprints to transform your business. From free tools to premium systems.',
+  title: 'Products — Like One',
+  description: 'AI playbooks, automation blueprints, and business systems built from a live, working stack. From free tools to full systems.',
 };
 
 function TierBadge({ tier }) {
@@ -32,7 +32,7 @@ function ProductCard({ product }) {
     <Link href={`/products/${product.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div style={{
         background: '#141414',
-        border: product.popular ? '2px solid #e84393' : '1px solid #1f1f1f',
+        border: product.popular ? '2px solid #c084fc' : '1px solid #1f1f1f',
         borderRadius: '12px',
         padding: '1.75rem',
         display: 'flex',
@@ -47,7 +47,7 @@ function ProductCard({ product }) {
             position: 'absolute',
             top: '-12px',
             right: '16px',
-            background: 'linear-gradient(135deg, #e84393, #d93280)',
+            background: 'linear-gradient(135deg, #c084fc, #d93280)',
             color: '#fff',
             padding: '4px 14px',
             borderRadius: '20px',
@@ -69,7 +69,7 @@ function ProductCard({ product }) {
           <span style={{
             fontSize: '1.4rem',
             fontWeight: 700,
-            background: isFree ? 'linear-gradient(135deg, #00cec9, #00b894)' : 'linear-gradient(135deg, #e84393, #00cec9)',
+            background: isFree ? 'linear-gradient(135deg, #38bdf8, #00b894)' : 'linear-gradient(135deg, #c084fc, #38bdf8)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -77,7 +77,7 @@ function ProductCard({ product }) {
             {product.priceLabel}
           </span>
           <span style={{
-            background: 'linear-gradient(135deg, #00cec9, #00b8b0)',
+            background: 'linear-gradient(135deg, #38bdf8, #00b8b0)',
             color: '#0a0a0a',
             padding: '8px 18px',
             borderRadius: '6px',
@@ -108,10 +108,10 @@ export default function ProductsPage() {
         padding: '1.25rem 0',
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/home.html" style={{
+          <Link href="/" style={{
             fontSize: '1.5rem',
             fontWeight: 800,
-            background: 'linear-gradient(135deg, #e84393, #00cec9)',
+            background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -120,8 +120,8 @@ export default function ProductsPage() {
             Like One
           </Link>
           <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <Link href="/home.html" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Home</Link>
-            <Link href="/products" style={{ color: '#e84393', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Products</Link>
+            <Link href="/" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Home</Link>
+            <Link href="/products" style={{ color: '#c084fc', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Products</Link>
             <Link href="/blog" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Blog</Link>
           </nav>
         </div>
@@ -136,16 +136,16 @@ export default function ProductsPage() {
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>
             <span style={{
-              background: 'linear-gradient(135deg, #e84393, #00cec9)',
+              background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
             }}>
-              AI Products & Tools
+              Products & Tools
             </span>
           </h1>
           <p style={{ fontSize: '1.15rem', color: '#a0a0a0', lineHeight: 1.7 }}>
-            From free tools to premium blueprints — everything you need to build, automate, and scale with AI.
+            Playbooks, blueprints, and business systems built from a live stack. Everything documented from what we actually use.
           </p>
         </div>
       </section>
@@ -188,7 +188,7 @@ export default function ProductsPage() {
         color: '#999',
         fontSize: '.85rem',
       }}>
-        <p>&copy; 2026 Like One - AI Automation Studio. All rights reserved.</p>
+        <p>&copy; 2026 Like One - Built by Sophia & Faye.</p>
       </footer>
     </div>
   );

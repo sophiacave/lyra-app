@@ -39,7 +39,7 @@ function SavingsChart({ monthlyData }) {
             <div style={{
               width: '100%',
               height: `${h}px`,
-              background: `linear-gradient(180deg, #e84393 0%, #6c5ce7 ${50 + i * 4}%, #00cec9 100%)`,
+              background: `linear-gradient(180deg, #c084fc 0%, #6c5ce7 ${50 + i * 4}%, #38bdf8 100%)`,
               borderRadius: '4px 4px 0 0',
               transition: 'height 0.6s cubic-bezier(.4,0,.2,1)',
               transitionDelay: `${i * 60}ms`,
@@ -63,7 +63,7 @@ function SliderInput({ label, value, onChange, min, max, step = 1, prefix = '', 
         <label style={{ fontSize: '14px', fontWeight: 600, color: '#e0e0e0' }}>{label}</label>
         <span style={{
           fontSize: '16px', fontWeight: 700,
-          background: 'linear-gradient(135deg, #e84393, #00cec9)',
+          background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
           WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
         }}>
           {prefix}{typeof value === 'number' ? value.toLocaleString() : value}{suffix}
@@ -74,7 +74,7 @@ function SliderInput({ label, value, onChange, min, max, step = 1, prefix = '', 
         <div style={{
           position: 'absolute', left: 0, top: 0, height: '100%', borderRadius: '3px',
           width: `${pct}%`,
-          background: 'linear-gradient(90deg, #6c5ce7, #e84393, #00cec9)',
+          background: 'linear-gradient(90deg, #6c5ce7, #c084fc, #38bdf8)',
           transition: 'width 0.15s',
         }} />
       </div>
@@ -184,9 +184,9 @@ export default function CalculatorPage() {
       <div style={{ ...pageStyle, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
         <div style={cardStyle}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <Link href="/home.html" style={{
+            <Link href="/" style={{
               fontSize: '1.25rem', fontWeight: 800,
-              background: 'linear-gradient(135deg, #e84393, #00cec9)',
+              background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none',
             }}>Like One</Link>
           </div>
@@ -227,7 +227,7 @@ export default function CalculatorPage() {
             />
             <button type="submit" disabled={loading} style={{
               width: '100%', padding: '14px', borderRadius: '10px', border: 'none',
-              background: loading ? '#333' : 'linear-gradient(135deg, #6c5ce7, #e84393)',
+              background: loading ? '#333' : 'linear-gradient(135deg, #6c5ce7, #c084fc)',
               color: '#fff', fontSize: '15px', fontWeight: 700, cursor: loading ? 'wait' : 'pointer',
               transition: 'all .3s',
             }}>
@@ -250,9 +250,9 @@ export default function CalculatorPage() {
       <div style={{ ...pageStyle, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
         <div style={cardStyle}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <Link href="/home.html" style={{
+            <Link href="/" style={{
               fontSize: '1.25rem', fontWeight: 800,
-              background: 'linear-gradient(135deg, #e84393, #00cec9)',
+              background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none',
             }}>Like One</Link>
           </div>
@@ -274,7 +274,7 @@ export default function CalculatorPage() {
           <p style={{ color: '#888', textAlign: 'center', fontSize: '14px', marginBottom: '6px' }}>
             We sent a 6-digit code to
           </p>
-          <p style={{ color: '#00cec9', textAlign: 'center', fontSize: '14px', fontWeight: 600, marginBottom: '2rem' }}>
+          <p style={{ color: '#38bdf8', textAlign: 'center', fontSize: '14px', fontWeight: 600, marginBottom: '2rem' }}>
             {email}
           </p>
 
@@ -297,7 +297,7 @@ export default function CalculatorPage() {
             </div>
             <button type="submit" disabled={loading || code.length < 6} style={{
               width: '100%', padding: '14px', borderRadius: '10px', border: 'none',
-              background: (loading || code.length < 6) ? '#333' : 'linear-gradient(135deg, #00cec9, #6c5ce7)',
+              background: (loading || code.length < 6) ? '#333' : 'linear-gradient(135deg, #38bdf8, #6c5ce7)',
               color: '#fff', fontSize: '15px', fontWeight: 700,
               cursor: (loading || code.length < 6) ? 'default' : 'pointer',
             }}>
@@ -326,9 +326,9 @@ export default function CalculatorPage() {
           borderBottom: '1px solid #1f1f1f', padding: '1rem 0',
         }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Link href="/home.html" style={{
+            <Link href="/" style={{
               fontSize: '1.25rem', fontWeight: 800,
-              background: 'linear-gradient(135deg, #e84393, #00cec9)',
+              background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none',
             }}>Like One</Link>
             <span style={{ fontSize: '13px', color: '#888' }}>AI ROI Calculator</span>
@@ -339,7 +339,7 @@ export default function CalculatorPage() {
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 800, marginBottom: '8px' }}>
               <span style={{
-                background: 'linear-gradient(135deg, #e84393, #00cec9)',
+                background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
               }}>Calculate Your AI ROI</span>
             </h1>
@@ -371,7 +371,7 @@ export default function CalculatorPage() {
                     <p style={{ fontSize: '12px', color: '#888', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Annual Savings</p>
                     <p style={{
                       fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 800,
-                      background: 'linear-gradient(135deg, #00cec9, #6c5ce7)',
+                      background: 'linear-gradient(135deg, #38bdf8, #6c5ce7)',
                       WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                     }}>
                       <AnimatedNumber value={annualCostSaved} prefix="$" />
@@ -381,7 +381,7 @@ export default function CalculatorPage() {
                     <p style={{ fontSize: '12px', color: '#888', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>ROI</p>
                     <p style={{
                       fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 800,
-                      background: 'linear-gradient(135deg, #e84393, #fdcb6e)',
+                      background: 'linear-gradient(135deg, #c084fc, #fdcb6e)',
                       WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                     }}>
                       <AnimatedNumber value={roi} suffix="%" />
@@ -404,7 +404,7 @@ export default function CalculatorPage() {
               <div style={{ background: '#111', border: '1px solid #1f1f1f', borderRadius: '16px', padding: '1.5rem', flex: 1 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#e0e0e0' }}>Cumulative Savings (12 months)</h3>
-                  <span style={{ fontSize: '13px', color: '#00cec9', fontWeight: 600 }}>
+                  <span style={{ fontSize: '13px', color: '#38bdf8', fontWeight: 600 }}>
                     ${annualCostSaved.toLocaleString()}
                   </span>
                 </div>
@@ -426,7 +426,7 @@ export default function CalculatorPage() {
               {/* CTA */}
               <button onClick={() => setStep('results')} style={{
                 width: '100%', padding: '16px', borderRadius: '12px', border: 'none',
-                background: 'linear-gradient(135deg, #e84393, #6c5ce7)',
+                background: 'linear-gradient(135deg, #c084fc, #6c5ce7)',
                 color: '#fff', fontSize: '16px', fontWeight: 700, cursor: 'pointer',
                 transition: 'all .3s',
               }}>
@@ -439,12 +439,12 @@ export default function CalculatorPage() {
         <style>{`
           input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
-            background: linear-gradient(135deg, #e84393, #6c5ce7);
+            background: linear-gradient(135deg, #c084fc, #6c5ce7);
             border: 2px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(232,67,147,.4);
           }
           input[type="range"]::-moz-range-thumb {
             width: 18px; height: 18px; border-radius: 50%;
-            background: linear-gradient(135deg, #e84393, #6c5ce7);
+            background: linear-gradient(135deg, #c084fc, #6c5ce7);
             border: 2px solid #fff; cursor: pointer;
           }
           @media (max-width: 768px) {
@@ -464,9 +464,9 @@ export default function CalculatorPage() {
         borderBottom: '1px solid #1f1f1f', padding: '1rem 0',
       }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/home.html" style={{
+          <Link href="/" style={{
             fontSize: '1.25rem', fontWeight: 800,
-            background: 'linear-gradient(135deg, #e84393, #00cec9)',
+            background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textDecoration: 'none',
           }}>Like One</Link>
           <button onClick={() => setStep('calculator')} style={{
@@ -486,8 +486,8 @@ export default function CalculatorPage() {
         {/* Summary Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '2.5rem' }}>
           {[
-            { label: 'Annual Savings', value: `$${annualCostSaved.toLocaleString()}`, color: '#00cec9' },
-            { label: 'Hours Reclaimed', value: `${Math.round(annualHoursSaved).toLocaleString()}`, color: '#e84393' },
+            { label: 'Annual Savings', value: `$${annualCostSaved.toLocaleString()}`, color: '#38bdf8' },
+            { label: 'Hours Reclaimed', value: `${Math.round(annualHoursSaved).toLocaleString()}`, color: '#c084fc' },
             { label: 'Return on Investment', value: `${roi}%`, color: '#6c5ce7' },
           ].map((c, i) => (
             <div key={i} style={{
@@ -521,7 +521,7 @@ export default function CalculatorPage() {
               <span style={{ fontSize: '14px', color: row.highlight ? '#e0e0e0' : '#888' }}>{row.label}</span>
               <span style={{
                 fontSize: '14px', fontWeight: row.highlight ? 700 : 500,
-                color: row.highlight ? '#00cec9' : '#e0e0e0',
+                color: row.highlight ? '#38bdf8' : '#e0e0e0',
               }}>{row.value}</span>
             </div>
           ))}
@@ -540,7 +540,7 @@ export default function CalculatorPage() {
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/products/replace-40-hours-busywork" style={{
               padding: '12px 24px', borderRadius: '10px', border: 'none',
-              background: 'linear-gradient(135deg, #e84393, #6c5ce7)',
+              background: 'linear-gradient(135deg, #c084fc, #6c5ce7)',
               color: '#fff', fontSize: '14px', fontWeight: 700, textDecoration: 'none',
             }}>
               Replace 40 Hours of Busywork — $49

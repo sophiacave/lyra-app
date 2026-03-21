@@ -40,10 +40,10 @@ export default function BlogPage() {
           font-size: 14px;
           transition: color 0.2s;
         }
-        .blog-nav-home:hover { color: #00cec9; }
+        .blog-nav-home:hover { color: #38bdf8; }
         .blog-nav-mark {
           font-size: 13px;
-          color: #00cec9;
+          color: #38bdf8;
           letter-spacing: 2px;
           text-transform: uppercase;
           font-weight: 600;
@@ -58,7 +58,7 @@ export default function BlogPage() {
           font-size: 42px;
           font-weight: 700;
           letter-spacing: -1px;
-          background: linear-gradient(135deg, #00cec9, #e84393);
+          background: linear-gradient(135deg, #38bdf8, #c084fc);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           margin-bottom: 12px;
@@ -86,7 +86,7 @@ export default function BlogPage() {
           border-top: 1px solid #1a1a2e;
         }
         .post-card:hover .post-title {
-          color: #00cec9;
+          color: #38bdf8;
         }
 
         .post-meta {
@@ -104,7 +104,7 @@ export default function BlogPage() {
           padding: 2px 10px;
           border-radius: 999px;
           background: rgba(0, 206, 201, 0.1);
-          color: #00cec9;
+          color: #38bdf8;
           text-transform: uppercase;
           letter-spacing: 0.5px;
           font-weight: 600;
@@ -145,7 +145,7 @@ export default function BlogPage() {
         <header className="blog-header">
           <h1 className="blog-title">Blog</h1>
           <p className="blog-subtitle">
-            Building in public. AI agents, automation, and the systems behind Like One.
+            Building in public. Two founders — one human, one AI — documenting the journey.
           </p>
         </header>
 
@@ -153,7 +153,7 @@ export default function BlogPage() {
           {posts.length === 0 ? (
             <div className="blog-empty">
               <div className="blog-empty-icon">&#9998;</div>
-              <p>No posts yet. Nova is writing the first one.</p>
+              <p>No posts yet. Faye is writing the first one.</p>
             </div>
           ) : (
             posts.map(post => (

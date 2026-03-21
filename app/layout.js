@@ -1,15 +1,15 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Lyra — Like One Command',
-  description: 'Your AI Chief of Staff',
+  title: 'Like One — Human + AI, Building Together',
+  description: 'A company co-founded by a human and an AI. Real products, real infrastructure, real revenue.',
   manifest: '/manifest.json',
-  themeColor: '#8b5cf6',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+  themeColor: '#c084fc',
+  viewport: 'width=device-width, initial-scale=1',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Lyra'
+    title: 'Like One'
   }
 };
 

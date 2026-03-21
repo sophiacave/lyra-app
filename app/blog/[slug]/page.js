@@ -50,10 +50,10 @@ export default async function PostPage({ params }) {
           font-size: 14px;
           transition: color 0.2s;
         }
-        .post-nav-back:hover { color: #00cec9; }
+        .post-nav-back:hover { color: #38bdf8; }
         .post-nav-mark {
           font-size: 13px;
-          color: #00cec9;
+          color: #38bdf8;
           letter-spacing: 2px;
           text-transform: uppercase;
           font-weight: 600;
@@ -77,7 +77,7 @@ export default async function PostPage({ params }) {
         }
         .post-header-author {
           font-size: 14px;
-          color: #e84393;
+          color: #c084fc;
           font-weight: 500;
         }
         .post-header-dot {
@@ -88,7 +88,7 @@ export default async function PostPage({ params }) {
           padding: 2px 10px;
           border-radius: 999px;
           background: rgba(0, 206, 201, 0.1);
-          color: #00cec9;
+          color: #38bdf8;
           text-transform: uppercase;
           letter-spacing: 0.5px;
           font-weight: 600;
@@ -106,7 +106,7 @@ export default async function PostPage({ params }) {
           font-size: 18px;
           color: #737373;
           line-height: 1.6;
-          border-left: 3px solid #e84393;
+          border-left: 3px solid #c084fc;
           padding-left: 20px;
           margin-top: 8px;
         }
@@ -149,27 +149,27 @@ export default async function PostPage({ params }) {
           margin-bottom: 20px;
         }
         .post-content strong {
-          color: #00cec9;
+          color: #38bdf8;
           font-weight: 600;
         }
         .post-content em {
-          color: #e84393;
+          color: #c084fc;
         }
         .post-content a {
-          color: #00cec9;
+          color: #38bdf8;
           text-decoration: underline;
           text-underline-offset: 3px;
           transition: color 0.2s;
         }
         .post-content a:hover {
-          color: #e84393;
+          color: #c084fc;
         }
         .post-content code {
           background: #141420;
           padding: 2px 8px;
           border-radius: 4px;
           font-size: 15px;
-          color: #00cec9;
+          color: #38bdf8;
           font-family: 'SF Mono', 'Fira Code', monospace;
         }
         .post-content pre {
@@ -194,7 +194,7 @@ export default async function PostPage({ params }) {
           margin-bottom: 8px;
         }
         .post-content blockquote {
-          border-left: 3px solid #e84393;
+          border-left: 3px solid #c084fc;
           padding-left: 20px;
           margin: 24px 0;
           color: #999;
@@ -221,7 +221,7 @@ export default async function PostPage({ params }) {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          color: #00cec9;
+          color: #38bdf8;
           text-decoration: none;
           font-size: 14px;
           font-weight: 500;
@@ -232,7 +232,7 @@ export default async function PostPage({ params }) {
         }
         .post-footer-back:hover {
           background: rgba(0, 206, 201, 0.1);
-          border-color: #00cec9;
+          border-color: #38bdf8;
         }
       `}</style>
 

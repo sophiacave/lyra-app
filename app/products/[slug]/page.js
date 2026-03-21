@@ -24,7 +24,7 @@ export default async function ProductPage({ params }) {
       <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Inter', sans-serif" }}>
         <div style={{ textAlign: 'center' }}>
           <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Product not found</h1>
-          <Link href="/products" style={{ color: '#e84393' }}>Browse all products</Link>
+          <Link href="/products" style={{ color: '#c084fc' }}>Browse all products</Link>
         </div>
       </div>
     );
@@ -50,10 +50,10 @@ export default async function ProductPage({ params }) {
         padding: '1.25rem 0',
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/home.html" style={{
+          <Link href="/" style={{
             fontSize: '1.5rem',
             fontWeight: 800,
-            background: 'linear-gradient(135deg, #e84393, #00cec9)',
+            background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -62,8 +62,8 @@ export default async function ProductPage({ params }) {
             Like One
           </Link>
           <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <Link href="/home.html" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Home</Link>
-            <Link href="/products" style={{ color: '#e84393', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Products</Link>
+            <Link href="/" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Home</Link>
+            <Link href="/products" style={{ color: '#c084fc', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Products</Link>
             <Link href="/blog" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Blog</Link>
           </nav>
         </div>
@@ -105,7 +105,7 @@ export default async function ProductPage({ params }) {
                   borderRadius: '20px',
                   fontSize: '11px',
                   fontWeight: 700,
-                  background: 'linear-gradient(135deg, #e84393, #d93280)',
+                  background: 'linear-gradient(135deg, #c084fc, #d93280)',
                   color: '#fff',
                 }}>
                   Popular
@@ -116,7 +116,7 @@ export default async function ProductPage({ params }) {
             <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 800, marginBottom: '.75rem', lineHeight: 1.2 }}>
               {product.name}
             </h1>
-            <p style={{ fontSize: '1.1rem', color: '#00cec9', fontWeight: 500, marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '1.1rem', color: '#38bdf8', fontWeight: 500, marginBottom: '1.5rem' }}>
               {product.tagline}
             </p>
             <p style={{ color: '#c0c0c0', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
@@ -129,7 +129,7 @@ export default async function ProductPage({ params }) {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {product.features.map((feature, i) => (
                   <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <span style={{ color: '#00cec9', fontSize: '1rem', lineHeight: '1.6', flexShrink: 0 }}>&#10003;</span>
+                    <span style={{ color: '#38bdf8', fontSize: '1rem', lineHeight: '1.6', flexShrink: 0 }}>&#10003;</span>
                     <span style={{ color: '#c0c0c0', fontSize: '.95rem', lineHeight: 1.6 }}>{feature}</span>
                   </div>
                 ))}
@@ -142,7 +142,7 @@ export default async function ProductPage({ params }) {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {product.includes.map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                    <span style={{ color: '#e84393', fontSize: '.85rem' }}>&#9679;</span>
+                    <span style={{ color: '#c084fc', fontSize: '.85rem' }}>&#9679;</span>
                     <span style={{ color: '#c0c0c0', fontSize: '.95rem' }}>{item}</span>
                   </div>
                 ))}
@@ -176,7 +176,7 @@ export default async function ProductPage({ params }) {
               <span style={{
                 fontSize: '2.5rem',
                 fontWeight: 800,
-                background: isFree ? 'linear-gradient(135deg, #00cec9, #00b894)' : 'linear-gradient(135deg, #e84393, #00cec9)',
+                background: isFree ? 'linear-gradient(135deg, #38bdf8, #00b894)' : 'linear-gradient(135deg, #c084fc, #38bdf8)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -184,12 +184,12 @@ export default async function ProductPage({ params }) {
                 {product.priceLabel}
               </span>
               {product.isBundle && product.savings && (
-                <p style={{ color: '#00cec9', fontSize: '.85rem', marginTop: '4px' }}>
+                <p style={{ color: '#38bdf8', fontSize: '.85rem', marginTop: '4px' }}>
                   Save ${product.savings}
                 </p>
               )}
               {product.isSubscription && product.savings && (
-                <p style={{ color: '#00cec9', fontSize: '.85rem', marginTop: '4px' }}>
+                <p style={{ color: '#38bdf8', fontSize: '.85rem', marginTop: '4px' }}>
                   Save ${product.savings}/year vs monthly
                 </p>
               )}
@@ -205,7 +205,7 @@ export default async function ProductPage({ params }) {
                 padding: '14px 24px',
                 borderRadius: '10px',
                 border: 'none',
-                background: 'linear-gradient(135deg, #e84393, #d93280)',
+                background: 'linear-gradient(135deg, #c084fc, #d93280)',
                 color: '#fff',
                 fontSize: '1rem',
                 fontWeight: 700,
@@ -264,7 +264,7 @@ export default async function ProductPage({ params }) {
                     <span style={{
                       fontSize: '1.2rem',
                       fontWeight: 700,
-                      background: 'linear-gradient(135deg, #e84393, #00cec9)',
+                      background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -288,14 +288,14 @@ export default async function ProductPage({ params }) {
         color: '#999',
         fontSize: '.85rem',
       }}>
-        <p>&copy; 2026 Like One - AI Automation Studio. All rights reserved.</p>
+        <p>&copy; 2026 Like One - Built by Sophia & Faye.</p>
       </footer>
 
       <style>{`
         @media (max-width: 768px) {
           section > div { grid-template-columns: 1fr !important; }
         }
-        a:hover div[style*="border: 1px solid #1f1f1f"] { border-color: #e84393 !important; transform: translateY(-4px); box-shadow: 0 12px 30px rgba(232,67,147,.1); }
+        a:hover div[style*="border: 1px solid #1f1f1f"] { border-color: #c084fc !important; transform: translateY(-4px); box-shadow: 0 12px 30px rgba(232,67,147,.1); }
       `}</style>
     </div>
   );
