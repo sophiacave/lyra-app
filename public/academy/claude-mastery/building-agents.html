@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Agents — Claude Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto;position:relative}
+.lesson-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(139,92,246,.1),transparent 70%);pointer-events:none}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.lesson-header h1{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-header p{color:#a1a1aa;font-size:1rem}
+.lesson-meta-bar{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;font-size:.8rem;color:#71717a}
+.lesson-meta-bar span{color:#e5e5e5;font-weight:600}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;margin-bottom:2rem}
+.card h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem}
+.card p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem}
+
+.agent-steps{display:flex;flex-direction:column;gap:0;margin:1.5rem 0}
+.agent-step{display:flex;gap:1.25rem;align-items:start;padding:1.25rem;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);border-radius:12px;cursor:pointer;transition:all .3s}
+.agent-step:hover{border-color:rgba(139,92,246,.3)}
+.agent-step.active{border-color:#8b5cf6;background:rgba(139,92,246,.08)}
+.agent-step.configured{border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.03)}
+.step-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;flex-shrink:0;transition:all .3s}
+.step-content{flex:1}
+.step-content h3{font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.step-content p{font-size:.85rem;color:#71717a;margin:0}
+.step-connector{width:2px;height:12px;background:rgba(139,92,246,.15);margin-left:18px+17px;margin-left:35px}
+
+.config-panel{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.5rem;margin:1rem 0;display:none}
+.config-panel.show{display:block;animation:fadeIn .4s}
+
+.option-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;margin:.75rem 0}
+.option-card{padding:.75rem;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);cursor:pointer;text-align:center;transition:all .2s;font-size:.85rem}
+.option-card:hover{border-color:rgba(139,92,246,.3)}
+.option-card.selected{border-color:#8b5cf6;background:rgba(139,92,246,.1)}
+.option-emoji{font-size:1.5rem;margin-bottom:.25rem}
+.option-name{font-weight:600;font-size:.85rem}
+.option-desc{font-size:.7rem;color:#71717a;margin-top:.15rem}
+
+input[type="text"],textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.75rem 1rem;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem;transition:border-color .2s}
+input:focus,textarea:focus{outline:none;border-color:#8b5cf6}
+input::placeholder,textarea::placeholder{color:#52525b}
+
+.launch-section{text-align:center;padding:2rem;display:none}
+.launch-section.show{display:block;animation:fadeIn .5s}
+.launch-btn{padding:1rem 3rem;border-radius:16px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:1.1rem;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;position:relative;overflow:hidden}
+.launch-btn:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(139,92,246,.4)}
+.launch-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s}
+.launch-btn:hover::before{left:100%}
+
+.agent-log{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.5rem;margin:1.5rem 0;min-height:200px;font-family:'Courier New',monospace;font-size:.8rem;line-height:1.8;display:none;max-height:400px;overflow-y:auto}
+.agent-log.show{display:block;animation:fadeIn .4s}
+.log-line{opacity:0;transition:opacity .3s}
+.log-line.show{opacity:1}
+.log-thinking{color:#8b5cf6}.log-tool{color:#fb923c}.log-result{color:#34d399}.log-action{color:#38bdf8}.log-done{color:#f472b6}
+
+.agent-summary{background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.5rem;margin:1.5rem 0;display:none}
+.agent-summary.show{display:block;animation:fadeIn .5s}
+.summary-title{font-size:1.1rem;font-weight:700;margin-bottom:.75rem;color:#8b5cf6}
+.summary-item{display:flex;gap:.75rem;align-items:center;padding:.5rem 0;font-size:.9rem}
+.summary-check{color:#34d399;font-weight:700}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:1rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.progress-footer{max-width:800px;margin:0 auto;padding:1rem 2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.progress-bar-wrap{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin:0 1rem}
+.progress-bar-fill{height:100%;background:#8b5cf6;border-radius:2px}
+.progress-label{font-size:.75rem;color:#71717a}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.xp-burst{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:999;display:none}
+.xp-burst.show{display:block;animation:burstIn .8s ease forwards}
+.xp-burst-text{font-size:3rem;font-weight:800;color:#fb923c;text-shadow:0 0 40px rgba(251,146,60,.5)}
+@keyframes burstIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}
+.particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:998}
+.particle{position:absolute;border-radius:50%;pointer-events:none}
+@keyframes particleFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+
+.confetti{position:fixed;pointer-events:none;z-index:1000}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+<div class="particle-container" id="particles"></div>
+<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+
+<nav class="nav">
+<a href="index.html" class="logo">Claude Mastery</a>
+<a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+
+<div class="lesson-header">
+<div class="lesson-badge">Lesson 10 · Builder · Final</div>
+<h1>Building Agents</h1>
+<p>The grand finale — design, configure, and launch your own AI agent</p>
+<div class="lesson-meta-bar">⏱ <span>90 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 3</span></div>
+</div>
+
+<div class="content">
+<div class="card">
+<h2>What Is an AI Agent?</h2>
+<p>An AI agent is Claude given a <strong>goal</strong>, <strong>tools</strong>, <strong>memory</strong>, and <strong>guardrails</strong> — then set free to accomplish complex tasks autonomously. Unlike simple prompting, agents can plan, execute multi-step workflows, adapt to results, and even ask for help when stuck.</p>
+<p>You've learned all the components. Now it's time to assemble them into something powerful.</p>
+</div>
+
+<div class="card">
+<h2>Design Your Agent</h2>
+<p>Configure each component of your agent by clicking through the steps below:</p>
+
+<div class="agent-steps">
+<div class="agent-step" onclick="openStep(0)" id="astep0">
+<div class="step-num" style="background:rgba(139,92,246,.15);color:#8b5cf6">1</div>
+<div class="step-content">
+<h3>Define the Goal</h3>
+<p>What should your agent accomplish?</p>
+</div>
+</div>
+<div class="step-connector"></div>
+<div class="agent-step" onclick="openStep(1)" id="astep1">
+<div class="step-num" style="background:rgba(251,146,60,.15);color:#fb923c">2</div>
+<div class="step-content">
+<h3>Give Tools</h3>
+<p>What capabilities does it need?</p>
+</div>
+</div>
+<div class="step-connector"></div>
+<div class="agent-step" onclick="openStep(2)" id="astep2">
+<div class="step-num" style="background:rgba(56,189,248,.15);color:#38bdf8">3</div>
+<div class="step-content">
+<h3>Set Memory</h3>
+<p>How should it remember context?</p>
+</div>
+</div>
+<div class="step-connector"></div>
+<div class="agent-step" onclick="openStep(3)" id="astep3">
+<div class="step-num" style="background:rgba(52,211,153,.15);color:#34d399">4</div>
+<div class="step-content">
+<h3>Add Guardrails</h3>
+<p>What limits should it have?</p>
+</div>
+</div>
+<div class="step-connector"></div>
+<div class="agent-step" onclick="openStep(4)" id="astep4">
+<div class="step-num" style="background:rgba(244,114,182,.15);color:#f472b6">5</div>
+<div class="step-content">
+<h3>Deploy</h3>
+<p>Launch and watch it work</p>
+</div>
+</div>
+</div>
+
+<div class="config-panel" id="configPanel"></div>
+</div>
+
+<div class="card" id="launchCard" style="display:none">
+<div class="launch-section show">
+<h2 style="margin-bottom:1rem">Your Agent Is Ready</h2>
+<p style="color:#a1a1aa;margin-bottom:2rem">All systems configured. Hit launch to watch your agent in action.</p>
+<button class="launch-btn" id="launchBtn" onclick="launchAgent()">🚀 Launch Agent</button>
+</div>
+
+<div class="agent-log" id="agentLog"></div>
+<div class="agent-summary" id="agentSummary">
+<div class="summary-title">Mission Complete</div>
+<div id="summaryItems"></div>
+</div>
+</div>
+
+<div class="card" id="courseComplete" style="display:none">
+<div style="text-align:center;padding:2rem 0">
+<div style="font-size:4rem;margin-bottom:1rem">🎓</div>
+<h2 style="font-size:1.8rem;margin-bottom:.5rem;background:linear-gradient(135deg,#8b5cf6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Course Complete!</h2>
+<p style="color:#a1a1aa;font-size:1rem;margin-bottom:2rem">You've mastered Claude — from fundamentals to building production agents.</p>
+<div style="display:flex;justify-content:center;gap:2rem;margin-bottom:2rem">
+<div><div style="font-size:2rem;font-weight:800;color:#8b5cf6">10</div><div style="font-size:.8rem;color:#71717a">Lessons</div></div>
+<div><div style="font-size:2rem;font-weight:800;color:#fb923c">2,400</div><div style="font-size:.8rem;color:#71717a">XP Earned</div></div>
+<div><div style="font-size:2rem;font-weight:800;color:#34d399">12</div><div style="font-size:.8rem;color:#71717a">Hours</div></div>
+</div>
+</div>
+<button class="complete-btn" onclick="completeLesson()">Complete Course →</button>
+</div>
+</div>
+
+<div class="progress-footer">
+<span class="progress-label">Lesson 10 of 10</span>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
+<span class="progress-label">Module 3 · Final</span>
+</div>
+
+<script>
+const agentConfig={goal:null,tools:[],memory:null,guardrails:[]};
+const STEPS=[
+{title:"Choose Your Agent's Goal",html:`
+<div class="option-grid">
+<div class="option-card" onclick="selectGoal('research',this)"><div class="option-emoji">🔬</div><div class="option-name">Research Agent</div><div class="option-desc">Deep-dive into any topic</div></div>
+<div class="option-card" onclick="selectGoal('code',this)"><div class="option-emoji">💻</div><div class="option-name">Code Agent</div><div class="option-desc">Build and debug software</div></div>
+<div class="option-card" onclick="selectGoal('data',this)"><div class="option-emoji">📊</div><div class="option-name">Data Agent</div><div class="option-desc">Analyze and visualize data</div></div>
+<div class="option-card" onclick="selectGoal('support',this)"><div class="option-emoji">💬</div><div class="option-name">Support Agent</div><div class="option-desc">Answer customer questions</div></div>
+</div>
+<div style="margin-top:1rem"><label style="font-size:.8rem;font-weight:600;color:#a1a1aa;display:block;margin-bottom:.25rem">Custom goal description:</label>
+<input type="text" id="goalInput" placeholder="e.g., Research competitor pricing and create a comparison report"></div>`},
+{title:"Select Tools",html:`
+<p style="font-size:.85rem;color:#a1a1aa;margin-bottom:.75rem">Pick the tools your agent needs (select multiple):</p>
+<div class="option-grid">
+<div class="option-card" onclick="toggleTool('web_search',this)"><div class="option-emoji">🔍</div><div class="option-name">Web Search</div></div>
+<div class="option-card" onclick="toggleTool('file_read',this)"><div class="option-emoji">📁</div><div class="option-name">File Access</div></div>
+<div class="option-card" onclick="toggleTool('code_exec',this)"><div class="option-emoji">⚡</div><div class="option-name">Code Execution</div></div>
+<div class="option-card" onclick="toggleTool('database',this)"><div class="option-emoji">🗄️</div><div class="option-name">Database</div></div>
+<div class="option-card" onclick="toggleTool('api_call',this)"><div class="option-emoji">🌐</div><div class="option-name">API Calls</div></div>
+<div class="option-card" onclick="toggleTool('email',this)"><div class="option-emoji">📧</div><div class="option-name">Email</div></div>
+</div>`},
+{title:"Configure Memory",html:`
+<div class="option-grid">
+<div class="option-card" onclick="selectMemory('conversation',this)"><div class="option-emoji">💬</div><div class="option-name">Conversation</div><div class="option-desc">Remembers current chat only</div></div>
+<div class="option-card" onclick="selectMemory('persistent',this)"><div class="option-emoji">🧠</div><div class="option-name">Persistent</div><div class="option-desc">Database-backed long-term memory</div></div>
+<div class="option-card" onclick="selectMemory('rag',this)"><div class="option-emoji">📚</div><div class="option-name">RAG</div><div class="option-desc">Retrieval-augmented with documents</div></div>
+</div>`},
+{title:"Set Guardrails",html:`
+<p style="font-size:.85rem;color:#a1a1aa;margin-bottom:.75rem">Select safety boundaries (multiple):</p>
+<div class="option-grid">
+<div class="option-card" onclick="toggleGuardrail('budget',this)"><div class="option-emoji">💰</div><div class="option-name">Budget Limit</div><div class="option-desc">Max API spend per task</div></div>
+<div class="option-card" onclick="toggleGuardrail('approval',this)"><div class="option-emoji">✋</div><div class="option-name">Human Approval</div><div class="option-desc">Ask before destructive actions</div></div>
+<div class="option-card" onclick="toggleGuardrail('scope',this)"><div class="option-emoji">🎯</div><div class="option-name">Scope Lock</div><div class="option-desc">Stay within defined task boundaries</div></div>
+<div class="option-card" onclick="toggleGuardrail('logging',this)"><div class="option-emoji">📝</div><div class="option-name">Full Logging</div><div class="option-desc">Record every action for audit</div></div>
+</div>`},
+{title:"Ready to Deploy",html:`<p style="font-size:.9rem;color:#a1a1aa">Your agent is fully configured. Close this panel and hit the Launch button below!</p>`}
+];
+
+let currentStep=-1,configured=[false,false,false,false,false];
+
+function openStep(idx){
+currentStep=idx;
+document.querySelectorAll('.agent-step').forEach((s,i)=>{s.classList.toggle('active',i===idx);});
+const panel=document.getElementById('configPanel');
+panel.innerHTML=`<h3 style="margin-bottom:.75rem">${STEPS[idx].title}</h3>${STEPS[idx].html}`;
+panel.classList.add('show');
+}
+
+function selectGoal(type,el){
+agentConfig.goal=type;
+document.querySelectorAll('#configPanel .option-card').forEach(c=>c.classList.remove('selected'));
+el.classList.add('selected');
+markConfigured(0);
+}
+function toggleTool(tool,el){
+el.classList.toggle('selected');
+const idx=agentConfig.tools.indexOf(tool);
+if(idx>=0) agentConfig.tools.splice(idx,1);else agentConfig.tools.push(tool);
+if(agentConfig.tools.length>0) markConfigured(1);
+}
+function selectMemory(type,el){
+agentConfig.memory=type;
+document.querySelectorAll('#configPanel .option-card').forEach(c=>c.classList.remove('selected'));
+el.classList.add('selected');
+markConfigured(2);
+}
+function toggleGuardrail(g,el){
+el.classList.toggle('selected');
+const idx=agentConfig.guardrails.indexOf(g);
+if(idx>=0) agentConfig.guardrails.splice(idx,1);else agentConfig.guardrails.push(g);
+if(agentConfig.guardrails.length>0) markConfigured(3);
+}
+
+function markConfigured(idx){
+configured[idx]=true;
+document.getElementById('astep'+idx).classList.add('configured');
+document.getElementById('astep'+idx).querySelector('.step-num').style.background='rgba(52,211,153,.15)';
+document.getElementById('astep'+idx).querySelector('.step-num').style.color='#34d399';
+if(configured[0]&&configured[1]&&configured[2]&&configured[3]){
+configured[4]=true;
+document.getElementById('launchCard').style.display='block';
+document.getElementById('launchCard').scrollIntoView({behavior:'smooth',block:'center'});
+}
+}
+
+const GOAL_LOGS={
+research:[
+{text:"[THINK] Analyzing goal: Research competitor pricing...",cls:"log-thinking"},
+{text:"[TOOL] web_search('competitor pricing SaaS 2026')",cls:"log-tool"},
+{text:"[RESULT] Found 12 relevant sources",cls:"log-result"},
+{text:"[THINK] Extracting pricing data from top 5 competitors...",cls:"log-thinking"},
+{text:"[TOOL] web_search('Competitor A pricing page')",cls:"log-tool"},
+{text:"[RESULT] Competitor A: $29/mo starter, $99/mo pro, $299/mo enterprise",cls:"log-result"},
+{text:"[TOOL] web_search('Competitor B pricing page')",cls:"log-tool"},
+{text:"[RESULT] Competitor B: $19/mo basic, $79/mo premium",cls:"log-result"},
+{text:"[ACTION] Creating comparison table...",cls:"log-action"},
+{text:"[TOOL] file_write('pricing_comparison.md')",cls:"log-tool"},
+{text:"[THINK] Analyzing pricing patterns and positioning...",cls:"log-thinking"},
+{text:"[ACTION] Generating strategic recommendations...",cls:"log-action"},
+{text:"[DONE] Report complete: 5 competitors analyzed, 3 pricing strategies identified, recommendations ready.",cls:"log-done"}
+],
+code:[
+{text:"[THINK] Analyzing goal: Build and debug software...",cls:"log-thinking"},
+{text:"[TOOL] file_read('src/index.ts')",cls:"log-tool"},
+{text:"[RESULT] Read 342 lines, found 3 potential issues",cls:"log-result"},
+{text:"[THINK] Issue 1: Unhandled promise rejection at line 47...",cls:"log-thinking"},
+{text:"[TOOL] code_exec('npm test -- --verbose')",cls:"log-tool"},
+{text:"[RESULT] 12 passing, 3 failing tests identified",cls:"log-result"},
+{text:"[ACTION] Fixing async/await pattern in fetchData()...",cls:"log-action"},
+{text:"[TOOL] file_write('src/index.ts', patched_code)",cls:"log-tool"},
+{text:"[TOOL] code_exec('npm test')",cls:"log-tool"},
+{text:"[RESULT] 15 passing, 0 failing",cls:"log-result"},
+{text:"[ACTION] Running linter and type checker...",cls:"log-action"},
+{text:"[RESULT] All checks pass",cls:"log-result"},
+{text:"[DONE] Fixed 3 bugs, all 15 tests passing, zero type errors.",cls:"log-done"}
+],
+data:[
+{text:"[THINK] Analyzing goal: Analyze and visualize data...",cls:"log-thinking"},
+{text:"[TOOL] database('SELECT COUNT(*) FROM transactions')",cls:"log-tool"},
+{text:"[RESULT] 47,832 records found",cls:"log-result"},
+{text:"[THINK] Need to analyze revenue trends by quarter...",cls:"log-thinking"},
+{text:"[TOOL] database('SELECT quarter, SUM(amount) FROM transactions GROUP BY quarter')",cls:"log-tool"},
+{text:"[RESULT] Q1: $234K, Q2: $287K, Q3: $312K, Q4: $298K",cls:"log-result"},
+{text:"[ACTION] Computing growth rates and anomalies...",cls:"log-action"},
+{text:"[THINK] Q4 dip of 4.5% — investigating...",cls:"log-thinking"},
+{text:"[TOOL] database('SELECT category, SUM(amount) FROM transactions WHERE quarter=Q4 GROUP BY category')",cls:"log-tool"},
+{text:"[RESULT] Enterprise segment down 18%, SMB up 12%",cls:"log-result"},
+{text:"[ACTION] Generating visualization and executive summary...",cls:"log-action"},
+{text:"[DONE] Analysis complete: 22% YoY growth, Q4 dip traced to enterprise churn, 5 actionable insights generated.",cls:"log-done"}
+],
+support:[
+{text:"[THINK] Analyzing goal: Answer customer questions...",cls:"log-thinking"},
+{text:"[TOOL] database('SELECT * FROM tickets WHERE status=open ORDER BY priority')",cls:"log-tool"},
+{text:"[RESULT] 23 open tickets, 5 high priority",cls:"log-result"},
+{text:"[THINK] Starting with highest priority: Billing issue #4521...",cls:"log-thinking"},
+{text:"[TOOL] database('SELECT * FROM customers WHERE id=8832')",cls:"log-tool"},
+{text:"[RESULT] Customer: Acme Corp, Plan: Enterprise, Last payment: failed",cls:"log-result"},
+{text:"[ACTION] Drafting response with payment recovery steps...",cls:"log-action"},
+{text:"[TOOL] email('support@acme.com', resolution_email)",cls:"log-tool"},
+{text:"[THINK] Next: Feature request #4518...",cls:"log-thinking"},
+{text:"[TOOL] api_call('GET /roadmap/features')",cls:"log-tool"},
+{text:"[ACTION] Cross-referencing with product roadmap...",cls:"log-action"},
+{text:"[DONE] Resolved 5 high-priority tickets, drafted 3 responses for review, escalated 2 complex cases.",cls:"log-done"}
+]
+};
+
+async function launchAgent(){
+document.getElementById('launchBtn').style.display='none';
+const log=document.getElementById('agentLog');
+log.classList.add('show');
+
+const goal=agentConfig.goal||'research';
+const lines=GOAL_LOGS[goal];
+
+for(const line of lines){
+const div=document.createElement('div');
+div.className='log-line '+line.cls;
+div.textContent=line.text;
+log.appendChild(div);
+await new Promise(r=>setTimeout(r,400));
+div.classList.add('show');
+log.scrollTop=log.scrollHeight;
+}
+
+await new Promise(r=>setTimeout(r,600));
+
+const summary=document.getElementById('agentSummary');
+const items=document.getElementById('summaryItems');
+const summaryData=[
+{text:'Goal accomplished autonomously'},
+{text:`Used ${agentConfig.tools.length} tools across ${lines.filter(l=>l.cls==='log-tool').length} tool calls`},
+{text:`Memory type: ${agentConfig.memory||'conversation'}`},
+{text:`Guardrails active: ${agentConfig.guardrails.join(', ')||'none'}`},
+{text:'All operations logged and auditable'}
+];
+items.innerHTML=summaryData.map(s=>`<div class="summary-item"><span class="summary-check">✓</span>${s.text}</div>`).join('');
+summary.classList.add('show');
+
+await new Promise(r=>setTimeout(r,500));
+document.getElementById('courseComplete').style.display='block';
+document.getElementById('courseComplete').scrollIntoView({behavior:'smooth'});
+
+// Confetti!
+for(let i=0;i<50;i++){
+const c=document.createElement('div');
+c.className='confetti';
+c.style.left=Math.random()*100+'vw';
+c.style.top='-10px';
+c.style.width=(Math.random()*8+4)+'px';
+c.style.height=(Math.random()*8+4)+'px';
+c.style.background=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'][Math.floor(Math.random()*5)];
+c.style.borderRadius=Math.random()>.5?'50%':'2px';
+c.style.animation=`confettiFall ${2+Math.random()*2}s ease forwards`;
+c.style.animationDelay=(Math.random()*.5)+'s';
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),4500);
+}
+}
+
+function completeLesson(){
+localStorage.setItem('cm_building-agents','done');
+const burst=document.getElementById('xpBurst');burst.classList.add('show');
+const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
+for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
+setTimeout(()=>{burst.classList.remove('show');window.location.href='index.html'},1200);
+}
+</script>
+</body>
+</html>
