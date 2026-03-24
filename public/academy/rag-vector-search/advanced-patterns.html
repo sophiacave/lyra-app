@@ -78,6 +78,22 @@ canvas{display:block;width:100%;border-radius:12px;border:1px solid rgba(255,255
     <strong>Beyond basic RAG:</strong> Simple query-retrieve-generate works for straightforward questions. But real-world queries often need multiple retrieval steps, conditional logic, external tools, or autonomous agents. These four patterns handle those cases.
   </div>
 
+  <div style="background:rgba(251,146,40,.06);border:1px solid rgba(251,146,40,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem">
+    <h3 style="color:#fb923c;font-size:1.1rem;margin-bottom:1rem">Which pattern should you use?</h3>
+    <div style="font-size:.88rem;line-height:1.8;color:#ccc">
+      <p style="margin-bottom:.75rem"><strong style="color:#e5e5e5">Start here and follow the logic:</strong></p>
+      <p style="margin-bottom:.5rem;padding-left:1rem">1. Is the user's question vague or uses informal language?<br>
+      <span style="color:#10b981;padding-left:1.5rem">&rarr; Yes: Use <strong>Multi-Step RAG</strong> (refine the query, then search again)</span></p>
+      <p style="margin-bottom:.5rem;padding-left:1rem">2. Do some queries NOT need a database search at all?<br>
+      <span style="color:#10b981;padding-left:1.5rem">&rarr; Yes: Use <strong>Self-RAG</strong> (let the AI decide if retrieval is even needed)</span></p>
+      <p style="margin-bottom:.5rem;padding-left:1rem">3. Does the answer require math, API calls, or live data?<br>
+      <span style="color:#10b981;padding-left:1.5rem">&rarr; Yes: Use <strong>RAG + Tools</strong> (combine retrieval with executable actions)</span></p>
+      <p style="margin-bottom:.5rem;padding-left:1rem">4. Does the question span multiple databases or need a multi-step plan?<br>
+      <span style="color:#10b981;padding-left:1.5rem">&rarr; Yes: Use <strong>Agentic RAG</strong> (let an agent plan and execute autonomously)</span></p>
+      <p style="margin-bottom:0;padding-left:1rem;color:#a1a1aa">If none of the above apply, basic RAG (from the previous lessons) is probably all you need.</p>
+    </div>
+  </div>
+
   <div class="pattern-tabs">
     <div class="pattern-tab active" onclick="showPattern(0)">Multi-Step RAG</div>
     <div class="pattern-tab" onclick="showPattern(1)">Self-RAG</div>
@@ -98,7 +114,7 @@ canvas{display:block;width:100%;border-radius:12px;border:1px solid rgba(255,255
 const PATTERNS = [
   {
     title:'Multi-Step RAG',
-    subtitle:'Query, retrieve, refine the query based on what you found, then retrieve again. Like a researcher who reads a paper, learns the right terminology, then searches again with better keywords.',
+    subtitle:'<strong>Real-world analogy:</strong> Like asking follow-up questions. You Google something, learn the right words, then Google again with better keywords. The AI does this automatically.<br><br>Query, retrieve, refine the query based on what you found, then retrieve again.',
     steps:[
       {title:'Initial Query',desc:'User asks: "What causes that disease where you forget things?"'},
       {title:'First Retrieval',desc:'Finds documents mentioning memory loss, cognitive decline, neurodegeneration.'},
@@ -106,11 +122,13 @@ const PATTERNS = [
       {title:'Second Retrieval',desc:'Now finds precise medical literature about amyloid plaques, tau tangles, genetic factors.'},
       {title:'Generate Answer',desc:'Produces expert-level answer combining both retrieval rounds.'}
     ],
-    useCases:['Vague or colloquial queries that need technical vocabulary','Multi-hop questions requiring info from different document sections','Research-style queries where initial results inform follow-up searches']
+    useCases:['Vague or colloquial queries that need technical vocabulary','Multi-hop questions requiring info from different document sections','Research-style queries where initial results inform follow-up searches'],
+    pseudocode:'// Multi-Step RAG pseudocode\\nresults1 = vectorSearch(userQuery)\\nrefinedQuery = LLM("Rewrite this query using terminology from: " + results1)\\nresults2 = vectorSearch(refinedQuery)\\nanswer = LLM("Answer using: " + results1 + results2)',
+    whenNot:'When queries are already precise and technical (no refinement needed), or when speed matters more than depth — each extra step adds latency.'
   },
   {
     title:'Self-RAG',
-    subtitle:'The LLM decides whether it even needs to retrieve. Some questions can be answered directly. For others, it retrieves, then self-evaluates whether the retrieved context is sufficient.',
+    subtitle:'<strong>Real-world analogy:</strong> Like checking your own work. Before answering, you ask yourself "Do I actually need to look this up?" and after answering, "Am I sure about this?" The AI does both checks automatically.<br><br>The LLM decides whether it even needs to retrieve. Some questions can be answered directly. For others, it retrieves, then self-evaluates whether the retrieved context is sufficient.',
     steps:[
       {title:'Receive Query',desc:'User asks a question. Self-RAG first evaluates: "Do I need external knowledge for this?"'},
       {title:'Retrieval Decision',desc:'If "What is 2+2?" — no retrieval needed. If "What is our Q3 revenue?" — retrieval required.'},
@@ -118,11 +136,13 @@ const PATTERNS = [
       {title:'Self-Evaluate',desc:'After generating, the model asks: "Is this answer supported by the context? Am I confident?"'},
       {title:'Regenerate if Needed',desc:'If self-evaluation score is low, retrieve more context and try again.'}
     ],
-    useCases:['High-volume systems where not every query needs retrieval (saves cost)','Applications requiring high reliability with built-in quality checks','Mixed workloads: some questions are simple, some need deep retrieval']
+    useCases:['High-volume systems where not every query needs retrieval (saves cost)','Applications requiring high reliability with built-in quality checks','Mixed workloads: some questions are simple, some need deep retrieval'],
+    pseudocode:'// Self-RAG pseudocode\\nneedsRetrieval = LLM("Does this query need external data? " + userQuery)\\nif (needsRetrieval) {\\n  context = vectorSearch(userQuery)\\n  answer = LLM("Answer using: " + context)\\n} else {\\n  answer = LLM("Answer directly: " + userQuery)\\n}\\nconfidence = LLM("Rate confidence 1-10: " + answer)\\nif (confidence < 7) { // try again with more context }',
+    whenNot:'When every query definitely needs retrieval (like a customer support bot for internal docs), or when the self-evaluation step adds too much latency for real-time chat.'
   },
   {
     title:'RAG + Tools',
-    subtitle:'Retrieval alone is not always enough. Sometimes the answer requires calculation, API calls, or data transformation. RAG + Tools combines document retrieval with executable actions.',
+    subtitle:'<strong>Real-world analogy:</strong> Like a researcher with a calculator and a phone. They look up data in documents, but when they need to crunch numbers or check live info, they use tools. The AI retrieves knowledge AND takes actions.<br><br>Retrieval alone is not always enough. Sometimes the answer requires calculation, API calls, or data transformation. RAG + Tools combines document retrieval with executable actions.',
     steps:[
       {title:'Parse Intent',desc:'User asks: "What was the total revenue from our top 5 customers last quarter?"'},
       {title:'Retrieve Context',desc:'Vector search finds relevant financial documents and customer records.'},
@@ -130,11 +150,13 @@ const PATTERNS = [
       {title:'Execute Tools',desc:'Calls calculator tool: sum([$2.3M, $1.8M, $1.5M, $1.2M, $980K]) = $7.78M'},
       {title:'Synthesize Answer',desc:'"The total revenue from your top 5 customers last quarter was $7.78M."'}
     ],
-    useCases:['Financial questions requiring calculations on retrieved data','Queries needing real-time data (APIs) combined with knowledge base context','Complex reports that combine retrieved facts with computed metrics']
+    useCases:['Financial questions requiring calculations on retrieved data','Queries needing real-time data (APIs) combined with knowledge base context','Complex reports that combine retrieved facts with computed metrics'],
+    pseudocode:'// RAG + Tools pseudocode\\ncontext = vectorSearch(userQuery)\\ntoolNeeded = LLM("What tool is needed? Options: calculator, api, none", context)\\nif (toolNeeded === "calculator") {\\n  result = calculator(extractNumbers(context))\\n} else if (toolNeeded === "api") {\\n  result = callAPI(extractEndpoint(context))\\n}\\nanswer = LLM("Answer using: " + context + result)',
+    whenNot:'When questions only need text-based answers from documents (no math, no live data). Adding tool support increases complexity — don\'t over-engineer if basic RAG works fine.'
   },
   {
     title:'Agentic RAG',
-    subtitle:'An autonomous agent that plans its own retrieval strategy, executes multiple searches, reasons about results, and iterates until it has a comprehensive answer.',
+    subtitle:'<strong>Real-world analogy:</strong> Like a research assistant who plans their own investigation. You give them a complex question, and they decide which libraries to visit, what to look up, and when they have enough info to write a complete answer. No hand-holding needed.<br><br>An autonomous agent that plans its own retrieval strategy, executes multiple searches, reasons about results, and iterates until it has a comprehensive answer.',
     steps:[
       {title:'Plan',desc:'Agent receives complex query. Creates a retrieval plan: "I need info from 3 different knowledge bases."'},
       {title:'Execute Search 1',desc:'Queries product documentation database. Evaluates: "Got pricing info, still need technical specs."'},
@@ -142,7 +164,9 @@ const PATTERNS = [
       {title:'Execute Search 3',desc:'Queries compatibility matrix. Evaluates: "Now I have everything I need."'},
       {title:'Reason & Generate',desc:'Synthesizes information from all three sources into a comprehensive, sourced answer.'}
     ],
-    useCases:['Enterprise knowledge bases spanning multiple document collections','Complex research queries requiring information synthesis across sources','Customer support where answers require product, billing, AND technical knowledge']
+    useCases:['Enterprise knowledge bases spanning multiple document collections','Complex research queries requiring information synthesis across sources','Customer support where answers require product, billing, AND technical knowledge'],
+    pseudocode:'// Agentic RAG pseudocode\\nplan = LLM("What sources do I need for: " + userQuery)\\nallContext = []\\nfor (source of plan.sources) {\\n  results = vectorSearch(source.query, source.database)\\n  allContext.push(results)\\n  enough = LLM("Do I have enough info?", allContext)\\n  if (enough) break\\n}\\nanswer = LLM("Synthesize a complete answer from:", allContext)',
+    whenNot:'For simple, single-source questions where basic RAG would work. Agentic RAG is the most powerful but also the slowest and most expensive — use it only when queries genuinely span multiple knowledge sources.'
   }
 ];
 
@@ -170,10 +194,18 @@ function showPattern(i){
         <div class="step-text"><div class="title">${s.title}</div><div class="desc">${s.desc}</div></div>
       </div>`).join('')}
     </div>
+    ${p.pseudocode?`<div style="margin:1.5rem 0;padding:1.25rem;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px">
+      <h4 style="font-size:.8rem;font-weight:700;color:#38bdf8;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.04em">Key Logic (Pseudocode)</h4>
+      <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.7;color:#a1a1aa;white-space:pre-wrap;margin:0">${p.pseudocode.replace(/\\n/g,'\n')}</pre>
+    </div>`:''}
     <div class="use-cases">
       <h4>When to use this pattern:</h4>
       <ul>${p.useCases.map(u=>`<li>${u}</li>`).join('')}</ul>
     </div>
+    ${p.whenNot?`<div style="margin-top:1rem;padding:1rem;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:8px">
+      <h4 style="font-size:.8rem;font-weight:700;color:#ef4444;margin-bottom:.4rem">When NOT to use this:</h4>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:0;line-height:1.5">${p.whenNot}</p>
+    </div>`:''}
   `;
 
   drawFlow();
