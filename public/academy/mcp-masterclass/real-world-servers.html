@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-World Servers — MCP Masterclass — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.nav-link:hover{color:#e5e5e5}
+.lesson-container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+h1{font-size:2.2rem;font-weight:800;margin-bottom:.75rem;background:linear-gradient(135deg,#fff 30%,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;line-height:1.6;margin-bottom:2.5rem}
+.section{margin-bottom:3rem}
+.section h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#e5e5e5}
+.section p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem;font-size:.95rem}
+
+/* Gallery Grid */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.gallery-card{padding:1.5rem;border-radius:14px;background:rgba(255,255,255,.02);border:2px solid rgba(255,255,255,.06);cursor:pointer;transition:all .3s;text-align:center;position:relative}
+.gallery-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.04)}
+.gallery-card.active{border-color:var(--c);background:color-mix(in srgb, var(--c) 8%, transparent)}
+.gallery-card .icon{font-size:2.5rem;margin-bottom:.75rem}
+.gallery-card h3{font-size:.95rem;font-weight:700;margin-bottom:.25rem;color:var(--c)}
+.gallery-card p{font-size:.72rem;color:#71717a;line-height:1.4}
+
+/* Detail View */
+.detail-view{border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);overflow:hidden;margin:1.5rem 0;display:none}
+.detail-view.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.detail-header{padding:1.5rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:1.25rem}
+.detail-icon{font-size:2.5rem;flex-shrink:0}
+.detail-info h3{font-size:1.2rem;font-weight:700;margin-bottom:.35rem}
+.detail-info p{font-size:.9rem;color:#a1a1aa;line-height:1.6}
+.detail-body{padding:1.5rem}
+
+/* Architecture Mini Diagram */
+.arch-mini{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1.25rem;border-radius:12px;background:rgba(255,255,255,.02);margin-bottom:1.5rem;flex-wrap:wrap}
+.arch-box{padding:.5rem 1rem;border-radius:8px;font-size:.75rem;font-weight:600;white-space:nowrap}
+.arch-arrow{color:#71717a;font-size:1rem}
+
+/* Tools List */
+.tools-exposed{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1rem 0}
+.tool-item{display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;border-radius:8px;background:rgba(255,255,255,.03)}
+.tool-item .t-icon{font-size:1rem}
+.tool-item .t-name{font-size:.8rem;font-weight:600;color:#e5e5e5}
+.tool-item .t-desc{font-size:.7rem;color:#71717a;margin-left:auto}
+
+/* Use Cases */
+.use-cases{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0}
+.use-case{padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border-left:3px solid var(--c,#8b5cf6);font-size:.85rem;color:#d4d4d8;line-height:1.5}
+.use-case strong{color:#e5e5e5}
+
+.sub-title{font-size:.8rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.75rem}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-family:Inter,sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-top:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.complete-btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+.next-link{display:block;text-align:center;margin-top:1rem;color:#8b5cf6;font-size:.9rem;font-weight:600}
+@media(max-width:600px){.gallery{grid-template-columns:1fr 1fr}.tools-exposed{grid-template-columns:1fr}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+</nav>
+
+<div class="lesson-container">
+  <div class="lesson-badge">Module 3 &middot; Lesson 8</div>
+  <h1>Real-World Servers</h1>
+  <p class="subtitle">Explore six production MCP server patterns that developers use every day — from database queries to browser automation.</p>
+
+  <div class="section">
+    <h2>Server Gallery</h2>
+    <p>Click each server to see its architecture, exposed tools, and real-world use cases:</p>
+
+    <div class="gallery">
+      <div class="gallery-card" style="--c:#38bdf8" onclick="showServer(0)" id="gc0">
+        <div class="icon">&#x1F4BE;</div>
+        <h3>Database</h3>
+        <p>Query any DB from Claude</p>
+      </div>
+      <div class="gallery-card" style="--c:#8b5cf6" onclick="showServer(1)" id="gc1">
+        <div class="icon">&#x1F4BB;</div>
+        <h3>GitHub</h3>
+        <p>Manage repos, PRs, issues</p>
+      </div>
+      <div class="gallery-card" style="--c:#fb923c" onclick="showServer(2)" id="gc2">
+        <div class="icon">&#x1F4AC;</div>
+        <h3>Slack</h3>
+        <p>Read and send messages</p>
+      </div>
+      <div class="gallery-card" style="--c:#f472b6" onclick="showServer(3)" id="gc3">
+        <div class="icon">&#x1F310;</div>
+        <h3>Browser</h3>
+        <p>Navigate and interact with web</p>
+      </div>
+      <div class="gallery-card" style="--c:#a78bfa" onclick="showServer(4)" id="gc4">
+        <div class="icon">&#x1F9E0;</div>
+        <h3>Memory</h3>
+        <p>Persistent knowledge recall</p>
+      </div>
+      <div class="gallery-card" style="--c:#34d399" onclick="showServer(5)" id="gc5">
+        <div class="icon">&#x2699;&#xFE0F;</div>
+        <h3>Custom API</h3>
+        <p>Wrap any API as MCP</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-view" id="detailView"></div>
+
+  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 200 XP</button>
+  <a href="security-and-best-practices.html" class="next-link">Next: Security & Best Practices &rarr;</a>
+</div>
+
+<script>
+const servers = [
+  {
+    name:'Database Server',
+    icon:'&#x1F4BE;',
+    color:'#38bdf8',
+    desc:'Connects Claude to PostgreSQL, MySQL, SQLite, or any SQL database. Maintains a connection pool, handles query execution, and returns structured results. Claude can analyze data, generate reports, and modify records — all through natural language.',
+    arch:[
+      {label:'Claude', bg:'rgba(139,92,246,.15)', color:'#8b5cf6'},
+      {label:'MCP Client', bg:'rgba(255,255,255,.05)', color:'#a1a1aa'},
+      {label:'DB Server', bg:'rgba(56,189,248,.15)', color:'#38bdf8'},
+      {label:'PostgreSQL', bg:'rgba(56,189,248,.08)', color:'#38bdf8'}
+    ],
+    tools:[
+      {icon:'&#x1F4CA;', name:'query', desc:'Run SQL SELECT'},
+      {icon:'&#x2795;', name:'insert_row', desc:'Add records'},
+      {icon:'&#x1F504;', name:'update_rows', desc:'Modify records'},
+      {icon:'&#x1F4CB;', name:'list_tables', desc:'Show schema'},
+      {icon:'&#x1F50D;', name:'describe_table', desc:'Column details'},
+      {icon:'&#x1F4C8;', name:'explain_query', desc:'Query plan analysis'}
+    ],
+    useCases:[
+      '<strong>Data analysis:</strong> "Show me our top 10 customers by revenue this quarter"',
+      '<strong>Report generation:</strong> "Create a summary of user signups by month"',
+      '<strong>Schema exploration:</strong> "What tables relate to the orders system?"',
+      '<strong>Migration help:</strong> "Add a status column to the projects table"'
+    ]
+  },
+  {
+    name:'GitHub Server',
+    icon:'&#x1F4BB;',
+    color:'#8b5cf6',
+    desc:'Gives Claude full access to GitHub repositories. Create branches, manage pull requests, review code, open issues, and search across codebases. Uses the GitHub API with fine-grained personal access tokens for security.',
+    arch:[
+      {label:'Claude', bg:'rgba(139,92,246,.15)', color:'#8b5cf6'},
+      {label:'MCP Client', bg:'rgba(255,255,255,.05)', color:'#a1a1aa'},
+      {label:'GitHub Server', bg:'rgba(139,92,246,.15)', color:'#8b5cf6'},
+      {label:'GitHub API', bg:'rgba(139,92,246,.08)', color:'#8b5cf6'}
+    ],
+    tools:[
+      {icon:'&#x1F4C2;', name:'list_repos', desc:'Your repositories'},
+      {icon:'&#x1F500;', name:'create_pr', desc:'Open pull request'},
+      {icon:'&#x1F41B;', name:'create_issue', desc:'File an issue'},
+      {icon:'&#x1F50D;', name:'search_code', desc:'Search codebase'},
+      {icon:'&#x1F4DD;', name:'review_pr', desc:'Review PR changes'},
+      {icon:'&#x1F33F;', name:'create_branch', desc:'Branch management'}
+    ],
+    useCases:[
+      '<strong>Code review:</strong> "Review the latest PR on my project and suggest improvements"',
+      '<strong>Issue management:</strong> "Create an issue for the login bug with reproduction steps"',
+      '<strong>Code search:</strong> "Find all files that import the auth module"',
+      '<strong>PR creation:</strong> "Create a PR with these changes and add a description"'
+    ]
+  },
+  {
+    name:'Slack Server',
+    icon:'&#x1F4AC;',
+    color:'#fb923c',
+    desc:'Connects Claude to your Slack workspace. Read channel history, search messages, post updates, and manage threads. Uses Slack Bot tokens with scoped permissions for secure access.',
+    arch:[
+      {label:'Claude', bg:'rgba(139,92,246,.15)', color:'#8b5cf6'},
+      {label:'MCP Client', bg:'rgba(255,255,255,.05)', color:'#a1a1aa'},
+      {label:'Slack Server', bg:'rgba(251,146,60,.15)', color:'#fb923c'},
+      {label:'Slack API', bg:'rgba(251,146,60,.08)', color:'#fb923c'}
+    ],
+    tools:[
+      {icon:'&#x1F4E8;', name:'send_message', desc:'Post to channel'},
+      {icon:'&#x1F4D6;', name:'read_channel', desc:'Get recent messages'},
+      {icon:'&#x1F50D;', name:'search_messages', desc:'Find messages'},
+      {icon:'&#x1F9F5;', name:'reply_thread', desc:'Thread replies'},
+      {icon:'&#x1F4CB;', name:'list_channels', desc:'Available channels'},
+      {icon:'&#x1F464;', name:'get_user_info', desc:'User profiles'}
+    ],
+    useCases:[
+      '<strong>Team updates:</strong> "Post a deployment summary to #engineering"',
+      '<strong>Context gathering:</strong> "What did the team discuss about the API redesign?"',
+      '<strong>Meeting follow-up:</strong> "Summarize the key decisions from today\'s standup thread"',
+      '<strong>Search:</strong> "Find when someone last mentioned the billing migration"'
+    ]
+  },
+  {
+    name:'Browser Server',
+    icon:'&#x1F310;',
+    color:'#f472b6',
+    desc:'Gives Claude browser automation capabilities via Puppeteer or Playwright. Navigate web pages, fill forms, take screenshots, extract content, and interact with web applications programmatically.',
+    arch:[
+      {label:'Claude', bg:'rgba(139,92,246,.15)', color:'#8b5cf6'},
+      {label:'MCP Client', bg:'rgba(255,255,255,.05)', color:'#a1a1aa'},
+      {label:'Browser Server', bg:'rgba(244,114,182,.15)', color:'#f472b6'},
+      {label:'Chromium', bg:'rgba(244,114,182,.08)', color:'#f472b6'}
+    ],
+    tools:[
+      {icon:'&#x1F30D;', name:'navigate', desc:'Go to URL'},
+      {icon:'&#x1F4F7;', name:'screenshot', desc:'Capture page'},
+      {icon:'&#x1F5B1;&#xFE0F;', name:'click', desc:'Click element'},
+      {icon:'&#x2328;&#xFE0F;', name:'type_text', desc:'Type into fields'},
+      {icon:'&#x1F4C4;', name:'get_content', desc:'Extract text/HTML'},
+      {icon:'&#x23F3;', name:'wait_for', desc:'Wait for selector'}
+    ],
+    useCases:[
+      '<strong>Web scraping:</strong> "Get the pricing from this competitor\'s website"',
+      '<strong>Testing:</strong> "Check if the login flow works on staging"',
+      '<strong>Form filling:</strong> "Fill out this application form with my details"',
+      '<strong>Monitoring:</strong> "Take a screenshot of our dashboard every hour"'
+    ]
+  },
+  {
+    name:'Memory Server',
+    icon:'&#x1F9E0;',
+    color:'#a78bfa',
+    desc:'Provides persistent memory across AI sessions using a knowledge graph. Stores entities, relationships, and observations that Claude can recall later. Essential for long-running projects where context exceeds the conversation window.',
+    arch:[
+      {label:'Claude', bg:'rgba(139,92,246,.15)', color:'#8b5cf6'},
+      {label:'MCP Client', bg:'rgba(255,255,255,.05)', color:'#a1a1aa'},
+      {label:'Memory Server', bg:'rgba(167,139,250,.15)', color:'#a78bfa'},
+      {label:'Knowledge Graph', bg:'rgba(167,139,250,.08)', color:'#a78bfa'}
+    ],
+    tools:[
+      {icon:'&#x1F4DD;', name:'create_entity', desc:'Store a concept'},
+      {icon:'&#x1F517;', name:'create_relation', desc:'Link concepts'},
+      {icon:'&#x1F4A1;', name:'add_observation', desc:'Add fact to entity'},
+      {icon:'&#x1F50D;', name:'search_nodes', desc:'Find memories'},
+      {icon:'&#x1F4D6;', name:'read_graph', desc:'Full knowledge dump'},
+      {icon:'&#x1F5D1;&#xFE0F;', name:'delete_entity', desc:'Remove outdated'}
+    ],
+    useCases:[
+      '<strong>Project context:</strong> "Remember that we decided to use Postgres for the auth service"',
+      '<strong>Preference tracking:</strong> "I prefer TypeScript over JavaScript for backend code"',
+      '<strong>Knowledge base:</strong> "Store the API rate limits we discovered for each provider"',
+      '<strong>Session continuity:</strong> "What were we working on last time?"'
+    ]
+  },
+  {
+    name:'Custom API Server',
+    icon:'&#x2699;&#xFE0F;',
+    color:'#34d399',
+    desc:'The most flexible pattern — wrap any REST or GraphQL API as an MCP server. Your internal tools, third-party services, or proprietary systems become AI-accessible through a standard interface. You control auth, rate limits, and data filtering.',
+    arch:[
+      {label:'Claude', bg:'rgba(139,92,246,.15)', color:'#8b5cf6'},
+      {label:'MCP Client', bg:'rgba(255,255,255,.05)', color:'#a1a1aa'},
+      {label:'Custom Server', bg:'rgba(52,211,153,.15)', color:'#34d399'},
+      {label:'Your API', bg:'rgba(52,211,153,.08)', color:'#34d399'}
+    ],
+    tools:[
+      {icon:'&#x1F4E8;', name:'get_data', desc:'Fetch from API'},
+      {icon:'&#x1F4E4;', name:'create_record', desc:'POST to API'},
+      {icon:'&#x1F504;', name:'update_record', desc:'PUT/PATCH'},
+      {icon:'&#x1F5D1;&#xFE0F;', name:'delete_record', desc:'DELETE'},
+      {icon:'&#x1F4CB;', name:'list_endpoints', desc:'Available routes'},
+      {icon:'&#x1F511;', name:'refresh_auth', desc:'Token management'}
+    ],
+    useCases:[
+      '<strong>Internal tools:</strong> "Check the status of deployment #4521 in our CI system"',
+      '<strong>CRM access:</strong> "Look up the account details for Acme Corp"',
+      '<strong>Monitoring:</strong> "What alerts fired in PagerDuty this week?"',
+      '<strong>Workflow automation:</strong> "Create a Jira ticket and assign it to the frontend team"'
+    ]
+  }
+];
+
+function showServer(idx){
+  document.querySelectorAll('.gallery-card').forEach((el,i) => el.classList.toggle('active', i===idx));
+  const s = servers[idx];
+  const detail = document.getElementById('detailView');
+  detail.className = 'detail-view visible';
+  detail.innerHTML = `
+    <div class="detail-header">
+      <div class="detail-icon">${s.icon}</div>
+      <div class="detail-info">
+        <h3 style="color:${s.color}">${s.name}</h3>
+        <p>${s.desc}</p>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="sub-title">Architecture</div>
+      <div class="arch-mini">
+        ${s.arch.map((a,i) => `
+          ${i>0?'<div class="arch-arrow">&rarr;</div>':''}
+          <div class="arch-box" style="background:${a.bg};color:${a.color}">${a.label}</div>
+        `).join('')}
+      </div>
+
+      <div class="sub-title">Exposed Tools</div>
+      <div class="tools-exposed">
+        ${s.tools.map(t => `
+          <div class="tool-item">
+            <div class="t-icon">${t.icon}</div>
+            <div class="t-name">${t.name}</div>
+            <div class="t-desc">${t.desc}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="sub-title" style="margin-top:1.5rem">Real-World Use Cases</div>
+      <div class="use-cases" style="--c:${s.color}">
+        ${s.useCases.map(u => `<div class="use-case">${u}</div>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function complete(){
+  const btn = document.getElementById('completeBtn');
+  if(btn.disabled) return;
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  progress['real-world-servers'] = true;
+  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
+  LO.completeLesson('mcp-masterclass', 8, 200);
+  btn.textContent = 'Lesson Complete!';
+  btn.disabled = true;
+}
+(function(){
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  if(progress['real-world-servers']){
+    const btn = document.getElementById('completeBtn');
+    btn.textContent = 'Lesson Complete!';
+    btn.disabled = true;
+  }
+})();
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>

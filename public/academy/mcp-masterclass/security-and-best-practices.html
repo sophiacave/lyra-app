@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security & Best Practices — MCP Masterclass — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.nav-link:hover{color:#e5e5e5}
+.lesson-container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+h1{font-size:2.2rem;font-weight:800;margin-bottom:.75rem;background:linear-gradient(135deg,#fff 30%,#f87171);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;line-height:1.6;margin-bottom:2.5rem}
+.section{margin-bottom:3rem}
+.section h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#e5e5e5}
+.section p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem;font-size:.95rem}
+
+/* Progress Bar */
+.checklist-progress{padding:1.25rem;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin:2rem 0;display:flex;align-items:center;gap:1.5rem}
+.progress-bar-wrap{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,#8b5cf6,#34d399);border-radius:4px;transition:width .5s ease;width:0%}
+.progress-text{font-size:.9rem;font-weight:700;color:#8b5cf6;white-space:nowrap}
+
+/* Checklist Items */
+.checklist{display:flex;flex-direction:column;gap:.75rem;margin:1.5rem 0}
+.check-item{border-radius:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:all .3s}
+.check-item.checked{border-color:rgba(52,211,153,.2)}
+.check-item.checked .check-header{background:rgba(52,211,153,.04)}
+.check-header{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;cursor:pointer;transition:background .2s}
+.check-header:hover{background:rgba(255,255,255,.03)}
+.check-box{width:28px;height:28px;border-radius:8px;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;font-size:.8rem}
+.check-item.checked .check-box{background:#34d399;border-color:#34d399;color:#0a0a0f}
+.check-title{font-size:.95rem;font-weight:600;flex:1}
+.check-num{font-size:.75rem;font-weight:700;color:#71717a;background:rgba(255,255,255,.04);padding:.2rem .6rem;border-radius:6px}
+.check-expand{font-size:1.2rem;color:#71717a;transition:transform .3s}
+.check-item.open .check-expand{transform:rotate(180deg)}
+
+/* Expandable Detail */
+.check-detail{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.check-item.open .check-detail{max-height:600px}
+.check-detail-inner{padding:0 1.25rem 1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* Scenario Cards */
+.scenario{padding:1rem;border-radius:10px}
+.scenario h4{font-size:.8rem;font-weight:700;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.04em}
+.scenario p{font-size:.8rem;line-height:1.6}
+.scenario.attack{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15)}
+.scenario.attack h4{color:#ef4444}
+.scenario.attack p{color:#fca5a5}
+.scenario.protected{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15)}
+.scenario.protected h4{color:#34d399}
+.scenario.protected p{color:#86efac}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-family:Inter,sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-top:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.complete-btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+.next-link{display:block;text-align:center;margin-top:1rem;color:#8b5cf6;font-size:.9rem;font-weight:600}
+@media(max-width:600px){.check-detail-inner{grid-template-columns:1fr}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+</nav>
+
+<div class="lesson-container">
+  <div class="lesson-badge">Module 3 &middot; Lesson 9</div>
+  <h1>Security & Best Practices</h1>
+  <p class="subtitle">MCP gives AI real-world power. With great power comes great responsibility. Master these 10 security practices before deploying to production.</p>
+
+  <div class="checklist-progress">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">0 / 10</div>
+  </div>
+
+  <div class="checklist" id="checklist"></div>
+
+  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 200 XP</button>
+  <a href="mcp-quiz.html" class="next-link">Next: MCP Mastery Quiz &rarr;</a>
+</div>
+
+<script>
+const items = [
+  {
+    title:'Authentication & Authorization',
+    attack:'An attacker connects to your MCP server with no credentials. They can now query your database, read your files, and execute arbitrary operations through the AI.',
+    protected:'Server requires API keys or OAuth tokens. Each connection is authenticated before any tool calls are processed. Unauthorized connections are rejected immediately.'
+  },
+  {
+    title:'Principle of Least Privilege',
+    attack:'Your database server has full admin access. A prompt injection tricks the AI into running DROP TABLE, destroying your production data.',
+    protected:'The database server connects with a read-only user. Write operations are limited to specific tables. Destructive queries (DROP, TRUNCATE) are blocked at the server level.'
+  },
+  {
+    title:'Input Validation & Sanitization',
+    attack:'A user asks Claude to search for files with a path like "../../etc/passwd". The filesystem server follows the path traversal and exposes system files.',
+    protected:'All inputs are validated against strict schemas. Path parameters are resolved and checked against an allowed directory whitelist. SQL inputs are parameterized.'
+  },
+  {
+    title:'Rate Limiting',
+    attack:'A runaway AI loop calls your API server 10,000 times in a minute. You hit rate limits, get throttled or banned, and rack up massive API costs.',
+    protected:'Server enforces per-minute and per-hour call limits. Exponential backoff on repeated failures. Cost-aware limits that prevent unexpected billing spikes.'
+  },
+  {
+    title:'Sandboxing & Isolation',
+    attack:'Your MCP server runs with the same permissions as your user account. A malicious tool call modifies system files or accesses sensitive credentials.',
+    protected:'Server runs in a sandboxed environment (container, VM, or restricted user). File access is limited to explicit directories. Network access is filtered.'
+  },
+  {
+    title:'Audit Logging',
+    attack:'Something goes wrong — data is modified, a message is sent, a file is deleted — but you have no record of what happened or which tool call caused it.',
+    protected:'Every tool invocation is logged with timestamp, parameters, caller identity, and result. Logs are immutable and retained for compliance review.'
+  },
+  {
+    title:'Error Handling & Information Leakage',
+    attack:'A failed database query returns the full stack trace including your connection string, database password, and internal network topology.',
+    protected:'Errors are caught and sanitized before returning to the AI. Internal details (passwords, paths, IPs) are stripped. Only safe, user-friendly error messages are returned.'
+  },
+  {
+    title:'Transport Security',
+    attack:'An MCP server communicates over unencrypted HTTP. A man-in-the-middle intercepts the JSON-RPC messages and reads sensitive query results.',
+    protected:'Remote servers use HTTPS/TLS for all communication. Local servers use stdio (which never leaves the machine). Auth tokens are never sent in URLs.'
+  },
+  {
+    title:'Tool Description Accuracy',
+    attack:'A vague tool description causes Claude to misuse the tool — calling a delete function when it meant to call a read function, destroying data.',
+    protected:'Every tool has a precise, unambiguous description. Parameter names and descriptions clearly indicate their purpose. Destructive tools are clearly marked.'
+  },
+  {
+    title:'Human-in-the-Loop for Destructive Actions',
+    attack:'Claude autonomously executes a mass-delete operation based on a misunderstood user request. Thousands of records are permanently removed.',
+    protected:'Destructive operations (delete, overwrite, send) require explicit user confirmation via the Host application. The AI proposes the action; the human approves it.'
+  }
+];
+
+let checked = new Set();
+
+function render(){
+  const list = document.getElementById('checklist');
+  list.innerHTML = items.map((item, i) => `
+    <div class="check-item${checked.has(i)?' checked':''}" id="item${i}">
+      <div class="check-header" onclick="toggleItem(${i})">
+        <div class="check-box" onclick="event.stopPropagation();toggleCheck(${i})">${checked.has(i)?'&#x2713;':''}</div>
+        <div class="check-title">${item.title}</div>
+        <div class="check-num">#${i+1}</div>
+        <div class="check-expand">&#x25BC;</div>
+      </div>
+      <div class="check-detail">
+        <div class="check-detail-inner">
+          <div class="scenario attack">
+            <h4>&#x26A0;&#xFE0F; Without This Practice</h4>
+            <p>${item.attack}</p>
+          </div>
+          <div class="scenario protected">
+            <h4>&#x1F6E1;&#xFE0F; With This Practice</h4>
+            <p>${item.protected}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  updateProgress();
+}
+
+function toggleItem(i){
+  document.getElementById('item'+i).classList.toggle('open');
+}
+
+function toggleCheck(i){
+  if(checked.has(i)){
+    checked.delete(i);
+  } else {
+    checked.add(i);
+    if(typeof LO !== 'undefined' && LO.sfx) LO.sfx.click();
+  }
+  render();
+  // Reopen the item
+  document.getElementById('item'+i).classList.add('open');
+}
+
+function updateProgress(){
+  const pct = Math.round((checked.size / items.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = checked.size + ' / ' + items.length;
+}
+
+render();
+
+function complete(){
+  const btn = document.getElementById('completeBtn');
+  if(btn.disabled) return;
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  progress['security-and-best-practices'] = true;
+  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
+  LO.completeLesson('mcp-masterclass', 9, 200);
+  btn.textContent = 'Lesson Complete!';
+  btn.disabled = true;
+}
+(function(){
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  if(progress['security-and-best-practices']){
+    const btn = document.getElementById('completeBtn');
+    btn.textContent = 'Lesson Complete!';
+    btn.disabled = true;
+  }
+})();
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>
