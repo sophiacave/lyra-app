@@ -11,7 +11,7 @@ export function middleware(request) {
   }
 
   // Clean URL for about page
-  if (pathname === '/about') {
+  if (pathname === '/about' || pathname === '/about/') {
     const url = request.nextUrl.clone();
     url.pathname = '/about.html';
     return NextResponse.rewrite(url);
@@ -26,5 +26,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/about', '/_temp'],
+  matcher: ['/', '/about', '/about/', '/_temp'],
 };
