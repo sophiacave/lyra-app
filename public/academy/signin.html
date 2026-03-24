@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;-webkit-font-smoothing:antialiased}
+a{color:#c084fc;text-decoration:none}
+.card{max-width:420px;width:100%;margin:0 1.5rem;background:#111114;border:1px solid #1e1e28;border-radius:20px;padding:2.5rem;text-align:center}
+.logo{font-size:1.2rem;font-weight:800;margin-bottom:.5rem;color:#e5e5e5}
+.logo span{color:#c084fc}
+.badge{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c084fc;border:1px solid rgba(192,132,252,.3);padding:2px 8px;border-radius:4px;margin-left:6px}
+h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
+.sub{color:#737373;font-size:.9rem;line-height:1.5;margin-bottom:2rem}
+.input{width:100%;background:#0a0a0f;border:1px solid #2a2a38;border-radius:10px;padding:.8rem 1rem;color:#e5e5e5;font-family:Inter,sans-serif;font-size:.95rem;outline:none;margin-bottom:1rem}
+.input:focus{border-color:#c084fc}
+.btn{width:100%;background:#fb923c;color:#000;border:none;padding:.85rem;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:Inter,sans-serif;transition:all .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(251,146,60,.25)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.success{display:none;padding:1.5rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:12px;margin-top:1rem}
+.success h3{color:#4ade80;font-size:1.1rem;margin-bottom:.5rem}
+.success p{color:#737373;font-size:.85rem;line-height:1.5}
+.error{display:none;padding:1rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);border-radius:10px;margin-bottom:1rem;color:#f87171;font-size:.85rem}
+.user-card{display:none;padding:1.5rem;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:12px;margin-top:1rem}
+.user-email{color:#c084fc;font-weight:600;font-size:.95rem}
+.user-status{margin-top:.5rem;font-size:.85rem}
+.status-active{color:#4ade80}
+.status-free{color:#737373}
+.links{margin-top:1.5rem;font-size:.8rem;color:#555}
+.links a{color:#c084fc;margin:0 .5rem}
+.divider{border:none;border-top:1px solid #1e1e28;margin:1.5rem 0}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div><span class="logo">like<span>one</span></span><span class="badge">ACADEMY</span></div>
+  
+  <div id="signin-form">
+    <h1>Sign in</h1>
+    <p class="sub">Enter your email and we'll send you a magic link. No password needed.</p>
+    <div class="error" id="error"></div>
+    <input class="input" id="email" type="email" placeholder="your@email.com" autofocus />
+    <button class="btn" id="submit-btn" onclick="signIn()">Send Magic Link</button>
+    
+    <div class="success" id="success">
+      <h3>Check your email</h3>
+      <p>We sent a magic link to <strong id="sent-email"></strong>. Click it to sign in. Check spam if you don't see it.</p>
+    </div>
+  </div>
+
+  <div class="user-card" id="user-card">
+    <div class="user-email" id="user-email"></div>
+    <div class="user-status" id="user-status"></div>
+    <hr class="divider">
+    <a href="/academy/" style="color:#fb923c;font-weight:600;font-size:.9rem">Go to Academy →</a>
+    <br><br>
+    <button onclick="signOut()" style="background:none;border:1px solid #2a2a38;color:#737373;padding:.5rem 1rem;border-radius:8px;cursor:pointer;font-family:Inter,sans-serif;font-size:.8rem">Sign out</button>
+  </div>
+
+  <hr class="divider">
+  
+  <div class="links">
+    <a href="/academy/">Academy</a> · <a href="https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a" target="_blank">Go Pro — $49/mo</a> · <a href="/">Home</a>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SUPABASE_URL = 'https://vpaynwebgmmnwttqkwmh.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.qcBErOuFgdJqRlHJdfRbDjJkV4mC8yxVIaFBDIiXn5w';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+async function checkSession() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) {
+    document.getElementById('signin-form').style.display = 'none';
+    document.getElementById('user-card').style.display = 'block';
+    document.getElementById('user-email').textContent = session.user.email;
+    
+    // Check subscription status
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('subscription_status, subscription_tier')
+      .eq('email', session.user.email)
+      .single();
+    
+    if (profile?.subscription_status === 'active') {
+      document.getElementById('user-status').innerHTML = '<span class="status-active">✓ Pro Member — All courses unlocked</span>';
+    } else {
+      document.getElementById('user-status').innerHTML = '<span class="status-free">Free tier — <a href="https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a" target="_blank" style="color:#fb923c">Upgrade to Pro ($49/mo)</a></span>';
+    }
+  }
+}
+
+async function signIn() {
+  const email = document.getElementById('email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('error').textContent = 'Please enter a valid email';
+    document.getElementById('error').style.display = 'block';
+    return;
+  }
+  
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  document.getElementById('error').style.display = 'none';
+  
+  const { error } = await supabase.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: window.location.origin + '/academy/signin.html' }
+  });
+  
+  if (error) {
+    document.getElementById('error').textContent = error.message;
+    document.getElementById('error').style.display = 'block';
+    btn.textContent = 'Send Magic Link';
+    btn.disabled = false;
+    return;
+  }
+  
+  document.getElementById('sent-email').textContent = email;
+  document.getElementById('success').style.display = 'block';
+  btn.textContent = 'Link Sent ✓';
+}
+
+async function signOut() {
+  await supabase.auth.signOut();
+  document.getElementById('signin-form').style.display = 'block';
+  document.getElementById('user-card').style.display = 'none';
+  document.getElementById('email').value = '';
+  document.getElementById('submit-btn').textContent = 'Send Magic Link';
+  document.getElementById('submit-btn').disabled = false;
+  document.getElementById('success').style.display = 'none';
+}
+
+// Check if returning from magic link
+checkSession();
+
+// Listen for auth state changes (magic link redirect)
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'SIGNED_IN' && session) {
+    checkSession();
+  }
+});
+</script>
+
+</body>
+</html>
