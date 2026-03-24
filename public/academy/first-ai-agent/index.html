@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your First AI Agent — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#06b6d4,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.nav-link:hover{color:#e5e5e5}
+
+.hero{text-align:center;padding:4rem 2rem 3rem;max-width:800px;margin:0 auto;position:relative}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(6,182,212,.12),rgba(56,189,248,.05) 50%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1.2rem;border-radius:100px;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.3);font-size:.7rem;font-weight:700;color:#06b6d4;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.1em;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(6,182,212,.3)}50%{box-shadow:0 0 20px 4px rgba(6,182,212,.15)}}
+.hero-emoji{font-size:3rem;display:block;margin-bottom:.75rem}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.05;margin-bottom:1rem;background:linear-gradient(135deg,#fff 20%,#06b6d4 60%,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:#a1a1aa;max-width:520px;margin:0 auto 2rem;line-height:1.6}
+.meta{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.meta-item{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:#71717a}
+.meta-item span{color:#e5e5e5;font-weight:600}
+.price-tag{display:inline-block;margin-top:1.5rem;padding:.65rem 2rem;border-radius:100px;background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;font-weight:800;font-size:1.2rem;box-shadow:0 4px 24px rgba(6,182,212,.3);letter-spacing:.02em}
+
+.progress-banner{max-width:800px;margin:2rem auto;padding:0 2rem}
+.progress-card{background:rgba(6,182,212,.03);border:1px solid rgba(6,182,212,.1);border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.progress-ring{width:64px;height:64px;position:relative;flex-shrink:0}
+.progress-ring svg{transform:rotate(-90deg)}
+.progress-ring circle{fill:none;stroke-width:4}
+.progress-ring .bg{stroke:rgba(255,255,255,.06)}
+.progress-ring .fg{stroke:#06b6d4;stroke-linecap:round;transition:stroke-dashoffset .6s ease}
+.progress-pct{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:.85rem;font-weight:700;color:#06b6d4}
+.progress-info{flex:1}
+.progress-info h3{font-size:.95rem;font-weight:600;margin-bottom:.25rem}
+.progress-info p{font-size:.8rem;color:#71717a}
+.xp-total{font-size:1.5rem;font-weight:800;color:#38bdf8}
+
+.modules{max-width:800px;margin:2rem auto 4rem;padding:0 2rem}
+.module{margin-bottom:2.5rem}
+.module-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.module-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.m1 .module-num{background:rgba(6,182,212,.15);color:#06b6d4}
+.m2 .module-num{background:rgba(56,189,248,.15);color:#38bdf8}
+.m3 .module-num{background:rgba(168,85,247,.15);color:#a855f7}
+.module-title{font-size:1.1rem;font-weight:700;flex:1}
+.module-sub{font-size:.75rem;color:#71717a;font-style:italic}
+.module-xp{font-size:.8rem;color:#71717a;font-weight:600}
+
+.lesson-list{display:flex;flex-direction:column;gap:.5rem}
+.lesson-card{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);transition:all .25s ease;cursor:pointer;position:relative;overflow:hidden}
+.lesson-card:hover{background:rgba(255,255,255,.05);border-color:rgba(6,182,212,.2);transform:translateY(-1px);box-shadow:0 4px 20px rgba(6,182,212,.08)}
+.lesson-card.completed{border-color:rgba(6,182,212,.25)}
+.lesson-card.completed::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#06b6d4}
+.lesson-num{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;background:rgba(255,255,255,.05);color:#71717a;flex-shrink:0}
+.lesson-card.completed .lesson-num{background:rgba(6,182,212,.15);color:#06b6d4}
+.lesson-info{flex:1}
+.lesson-title{font-size:.95rem;font-weight:600;margin-bottom:.15rem}
+.lesson-desc{font-size:.75rem;color:#71717a}
+.lesson-xp{font-size:.75rem;color:#06b6d4;font-weight:600}
+.check{color:#06b6d4;font-size:1.1rem}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06);color:#52525b;font-size:.8rem}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy/" class="logo">Like One Academy</a>
+  <a href="/academy/" class="nav-link">All Courses</a>
+</nav>
+
+<section class="hero">
+  <div class="badge">Bridge Course</div>
+  <span class="hero-emoji">🤖</span>
+  <h1>Build Your First AI Agent</h1>
+  <p>From chatbot to autonomous system in 10 lessons. The bridge between knowing AI basics and building things that act on their own.</p>
+  <div class="meta">
+    <div class="meta-item">⏱ <span>8 hours</span></div>
+    <div class="meta-item">⚡ <span>1,600 XP</span></div>
+    <div class="meta-item">📊 <span>10 lessons</span></div>
+    <div class="meta-item">🎯 <span>Beginner+</span></div>
+  </div>
+  <div class="price-tag">$69</div>
+</section>
+
+<section class="progress-banner">
+  <div class="progress-card">
+    <div class="progress-ring">
+      <svg width="64" height="64"><circle class="bg" cx="32" cy="32" r="28"/><circle class="fg" id="prog-circle" cx="32" cy="32" r="28" stroke-dasharray="175.93" stroke-dashoffset="175.93"/></svg>
+      <div class="progress-pct" id="prog-pct">0%</div>
+    </div>
+    <div class="progress-info">
+      <h3 id="prog-title">Ready to start</h3>
+      <p id="prog-sub">Complete lessons to track your progress</p>
+    </div>
+    <div class="xp-total" id="prog-xp">0 XP</div>
+  </div>
+</section>
+
+<section class="modules">
+  <!-- MODULE 1 -->
+  <div class="module m1">
+    <div class="module-header">
+      <div class="module-num">1</div>
+      <div class="module-title">Agent Thinking</div>
+      <div class="module-sub">Understand before building</div>
+      <div class="module-xp">480 XP</div>
+    </div>
+    <div class="lesson-list">
+      <a href="chatbot-vs-agent.html" class="lesson-card" data-lesson="1">
+        <div class="lesson-num">1</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Chatbot vs Agent</div>
+          <div class="lesson-desc">Interactive comparison — why agents are fundamentally different</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+      <a href="the-agent-loop.html" class="lesson-card" data-lesson="2">
+        <div class="lesson-num">2</div>
+        <div class="lesson-info">
+          <div class="lesson-title">The Agent Loop</div>
+          <div class="lesson-desc">Animated cycle: Perceive → Think → Act → Observe → Learn</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+      <a href="tools-and-capabilities.html" class="lesson-card" data-lesson="3">
+        <div class="lesson-num">3</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Tools &amp; Capabilities</div>
+          <div class="lesson-desc">Drag tools onto an agent and watch its abilities expand</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module m2">
+    <div class="module-header">
+      <div class="module-num">2</div>
+      <div class="module-title">Build It</div>
+      <div class="module-sub">Hands-on construction</div>
+      <div class="module-xp">640 XP</div>
+    </div>
+    <div class="lesson-list">
+      <a href="design-your-agent.html" class="lesson-card" data-lesson="4">
+        <div class="lesson-num">4</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Design Your Agent</div>
+          <div class="lesson-desc">Name it, define its goal, pick tools, set guardrails</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+      <a href="the-system-prompt.html" class="lesson-card" data-lesson="5">
+        <div class="lesson-num">5</div>
+        <div class="lesson-info">
+          <div class="lesson-title">The System Prompt</div>
+          <div class="lesson-desc">Assemble an agent's instructions block by block</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+      <a href="memory-matters.html" class="lesson-card" data-lesson="6">
+        <div class="lesson-num">6</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Memory Matters</div>
+          <div class="lesson-desc">See why memory turns a chatbot into an agent</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+      <a href="tool-calling-basics.html" class="lesson-card" data-lesson="7">
+        <div class="lesson-num">7</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Tool Calling Basics</div>
+          <div class="lesson-desc">Watch an agent decide which tool to call and why</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module m3">
+    <div class="module-header">
+      <div class="module-num">3</div>
+      <div class="module-title">Deploy &amp; Improve</div>
+      <div class="module-sub">Production readiness</div>
+      <div class="module-xp">480 XP</div>
+    </div>
+    <div class="lesson-list">
+      <a href="error-handling.html" class="lesson-card" data-lesson="8">
+        <div class="lesson-num">8</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Error Handling</div>
+          <div class="lesson-desc">5 failure types, 5 recovery strategies — build resilience</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+      <a href="evaluating-your-agent.html" class="lesson-card" data-lesson="9">
+        <div class="lesson-num">9</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Evaluating Your Agent</div>
+          <div class="lesson-desc">Radar chart scorecard — is your agent ready to deploy?</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+      <a href="agent-quiz.html" class="lesson-card" data-lesson="10">
+        <div class="lesson-num">10</div>
+        <div class="lesson-info">
+          <div class="lesson-title">Agent Mastery Quiz</div>
+          <div class="lesson-desc">8 questions — prove you understand agent fundamentals</div>
+        </div>
+        <div class="lesson-xp">160 XP</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>Like One Academy &copy; 2026 — Learn AI by doing, not just reading.</footer>
+
+<script>
+// Check lesson completion
+const COURSE = 'first_ai_agent';
+let completed = 0;
+document.querySelectorAll('.lesson-card').forEach(card => {
+  const n = card.dataset.lesson;
+  if (localStorage.getItem(`${COURSE}_lesson_${n}`) === 'complete') {
+    card.classList.add('completed');
+    card.querySelector('.lesson-num').textContent = '✓';
+    completed++;
+  }
+});
+// Update progress
+const pct = Math.round((completed / 10) * 100);
+const circ = document.getElementById('prog-circle');
+const circumference = 175.93;
+circ.style.strokeDashoffset = circumference - (circumference * pct / 100);
+document.getElementById('prog-pct').textContent = pct + '%';
+document.getElementById('prog-title').textContent = completed === 0 ? 'Ready to start' : completed === 10 ? 'Course complete!' : `${completed}/10 lessons done`;
+document.getElementById('prog-sub').textContent = completed === 10 ? 'You built your first AI agent!' : `${10 - completed} lessons remaining`;
+// XP earned in this course
+let courseXP = 0;
+for (let i = 1; i <= 10; i++) { if (localStorage.getItem(`${COURSE}_lesson_${i}`) === 'complete') courseXP += 160; }
+document.getElementById('prog-xp').textContent = courseXP.toLocaleString() + ' XP';
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>

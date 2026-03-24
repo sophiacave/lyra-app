@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Without the Jargon — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:800px;margin:0 auto;padding:24px 20px 80px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#737373;margin-bottom:24px}.back:hover{color:#f59e0b}
+.lesson-num{font-size:12px;font-weight:800;color:#f59e0b;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+h1{font-size:clamp(24px,5vw,36px);font-weight:900;margin-bottom:8px}
+.intro{color:#a3a3a3;margin-bottom:32px;font-size:16px}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:48px}
+.flip-card{perspective:800px;height:200px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.flip-front{background:#111118;border:1px solid #1a1a24}
+.flip-front .jargon{font-size:20px;font-weight:800;color:#f59e0b;margin-bottom:8px}
+.flip-front .hint{font-size:12px;color:#737373}
+.flip-back{background:#1a1a10;border:1px solid #f59e0b33;transform:rotateY(180deg)}
+.flip-back .plain{font-size:14px;font-weight:600;color:#e5e5e5;line-height:1.5}
+.flip-back .label{font-size:11px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.section-title{font-size:20px;font-weight:800;margin-bottom:16px;padding-top:16px}
+.quiz-area{background:#111118;border:1px solid #1a1a24;border-radius:16px;padding:32px;margin-bottom:32px}
+.q-progress{font-size:13px;color:#737373;margin-bottom:12px}
+.q-text{font-size:18px;font-weight:700;margin-bottom:20px}
+.q-options{display:flex;flex-direction:column;gap:10px}
+.q-opt{background:#0a0a0f;border:1px solid #1a1a24;border-radius:10px;padding:14px 18px;cursor:pointer;font-size:14px;font-weight:500;transition:all .2s}
+.q-opt:hover{border-color:#f59e0b44}
+.q-opt.correct{border-color:#22c55e;background:#22c55e11;color:#22c55e}
+.q-opt.wrong{border-color:#ef4444;background:#ef444411;color:#ef4444}
+.q-opt.disabled{pointer-events:none;opacity:.6}
+.result-box{text-align:center;padding:40px;background:#111118;border-radius:16px;border:1px solid #1a1a24}
+.result-box .score{font-size:48px;font-weight:900;color:#f59e0b}
+.result-box .label{font-size:14px;color:#737373;margin-top:4px}
+.result-box .msg{font-size:16px;margin-top:16px}
+.btn{display:inline-block;background:#f59e0b;color:#0a0a0f;font-weight:800;font-size:14px;padding:12px 28px;border-radius:10px;border:none;cursor:pointer;margin-top:16px;transition:all .2s}
+.btn:hover{background:#fbbf24}
+.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:24px;border-top:1px solid #1a1a24}
+.nav-link{font-size:14px;font-weight:600;color:#737373}.nav-link:hover{color:#f59e0b}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Course Overview</a>
+<div class="lesson-num">Lesson 1 of 10</div>
+<h1>AI Without the Jargon</h1>
+<p class="intro">The AI world loves fancy words. Here are the only 10 you need — translated into plain English. Click each card to flip it.</p>
+
+<div class="cards-grid" id="cards"></div>
+
+<h2 class="section-title">Quick Check — Match the Terms</h2>
+<div class="quiz-area" id="quiz"></div>
+
+<div class="nav-row">
+<a href="index.html" class="nav-link">← Course Overview</a>
+<a href="what-ai-can-and-cannot-do.html" class="nav-link">Next: What AI Can & Cannot Do →</a>
+</div>
+</div>
+
+<script src="/academy/shared/engine.js"></script>
+<script>
+const terms = [
+  {jargon:"LLM (Large Language Model)", plain:"A program that's read millions of documents and learned to write like a human. Think of it as an extremely well-read intern."},
+  {jargon:"Fine-tuning", plain:"Teaching an AI your specific business style. Like training a new employee on how YOUR company writes emails."},
+  {jargon:"Tokens", plain:"The way AI counts words. Roughly 1 token = 3/4 of a word. This is how AI companies charge you — by the token."},
+  {jargon:"Prompt", plain:"The instruction you give to AI. The better your instruction, the better the result. It's like briefing a freelancer."},
+  {jargon:"Hallucination", plain:"When AI confidently makes something up. It sounds right but it's wrong. Always verify facts and numbers."},
+  {jargon:"Embeddings", plain:"How AI understands that 'happy' and 'joyful' mean similar things. It converts words into patterns it can compare."},
+  {jargon:"API", plain:"A way for two programs to talk to each other. It's how you connect AI to your existing tools — like plugging in an adapter."},
+  {jargon:"Training Data", plain:"Everything the AI studied to learn. Just like a new hire's background and experience shapes how they work."},
+  {jargon:"Inference", plain:"When AI actually does work for you — answering questions, writing content, analyzing data. Training is school; inference is the job."},
+  {jargon:"Generative AI", plain:"AI that creates new content — text, images, video. Instead of just finding information, it produces something original."}
+];
+
+// Render flip cards
+const grid = document.getElementById('cards');
+terms.forEach((t,i) => {
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+  card.innerHTML = `<div class="flip-inner"><div class="flip-front"><div class="jargon">${t.jargon}</div><div class="hint">tap to translate</div></div><div class="flip-back"><div class="label">In Plain English</div><div class="plain">${t.plain}</div></div></div>`;
+  card.addEventListener('click', () => { card.classList.toggle('flipped'); LO.sfx.click(); });
+  grid.appendChild(card);
+});
+
+// Quiz
+const quizData = [
+  {q:"Which term means AI confidently makes something up?", opts:["Fine-tuning","Hallucination","Inference","Embeddings"], ans:1},
+  {q:"What's the business equivalent of a 'prompt'?", opts:["A company policy","A freelancer's portfolio","A brief or instruction","An invoice"], ans:2},
+  {q:"Tokens are roughly...", opts:["AI credits you buy","3/4 of a word each","The same as passwords","One full sentence each"], ans:1},
+  {q:"An API is best described as...", opts:["An AI brain","A plug/adapter between tools","A pricing model","A type of AI"], ans:1},
+  {q:"'Generative AI' means AI that...", opts:["Only searches databases","Creates new content","Runs your accounting","Replaces your team"], ans:1},
+];
+
+let qIdx = 0, qScore = 0, answered = false;
+const quizEl = document.getElementById('quiz');
+
+function renderQ() {
+  if (qIdx >= quizData.length) { showResult(); return; }
+  answered = false;
+  const q = quizData[qIdx];
+  quizEl.innerHTML = `<div class="q-progress">Question ${qIdx+1} of ${quizData.length}</div><div class="q-text">${q.q}</div><div class="q-options">${q.opts.map((o,i) => `<div class="q-opt" data-i="${i}">${o}</div>`).join('')}</div>`;
+  quizEl.querySelectorAll('.q-opt').forEach(el => {
+    el.addEventListener('click', () => {
+      if (answered) return;
+      answered = true;
+      const idx = parseInt(el.dataset.i);
+      if (idx === q.ans) { el.classList.add('correct'); qScore++; LO.sfx.success(); }
+      else { el.classList.add('wrong'); quizEl.querySelector(`[data-i="${q.ans}"]`).classList.add('correct'); LO.sfx.error(); }
+      quizEl.querySelectorAll('.q-opt').forEach(o => o.classList.add('disabled'));
+      setTimeout(() => { qIdx++; renderQ(); }, 1200);
+    });
+  });
+}
+
+function showResult() {
+  const pct = Math.round(qScore / quizData.length * 100);
+  const msg = pct === 100 ? "Perfect score! You speak AI fluently now." : pct >= 60 ? "Solid understanding. You've got the essentials." : "Review the cards above and try the quiz again.";
+  quizEl.innerHTML = `<div class="result-box"><div class="score">${pct}%</div><div class="label">${qScore} of ${quizData.length} correct</div><div class="msg">${msg}</div>${pct < 100 ? '<button class="btn" onclick="qIdx=0;qScore=0;renderQ()">Try Again</button>' : ''}</div>`;
+  if (pct >= 60) {
+    LO.completeLesson('ai-biz', 1, 100);
+  }
+  if (pct === 100) LO.unlockAchievement('quiz_master');
+}
+
+renderQ();
+</script>
+</body>
+</html>

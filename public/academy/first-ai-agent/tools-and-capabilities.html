@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools & Capabilities — Build Your First AI Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#06b6d4,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+h1{font-size:2.2rem;font-weight:900;margin-bottom:.5rem;background:linear-gradient(135deg,#fff,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;margin-bottom:2rem;font-size:1rem}
+.lesson-num{font-size:.75rem;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+
+.workspace{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+@media(max-width:640px){.workspace{grid-template-columns:1fr}}
+
+.toolbox{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem}
+.toolbox h3{font-size:.9rem;font-weight:700;color:#a1a1aa;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.tool{padding:.75rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);cursor:grab;transition:all .2s;text-align:center;user-select:none}
+.tool:hover{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.2)}
+.tool.dragging{opacity:.4}
+.tool.equipped{opacity:.3;cursor:default;border-color:rgba(6,182,212,.3);background:rgba(6,182,212,.05)}
+.tool-icon{font-size:1.5rem;display:block;margin-bottom:.25rem}
+.tool-name{font-size:.75rem;font-weight:600;color:#e5e5e5}
+.tool-desc{font-size:.65rem;color:#71717a;margin-top:.15rem}
+
+.agent-zone{background:rgba(6,182,212,.03);border:2px dashed rgba(6,182,212,.15);border-radius:16px;padding:1.5rem;text-align:center;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .3s}
+.agent-zone.drag-over{border-color:#06b6d4;background:rgba(6,182,212,.06)}
+.agent-avatar{font-size:3rem;margin-bottom:.5rem}
+.agent-label{font-size:1rem;font-weight:700;color:#06b6d4;margin-bottom:.25rem}
+.agent-status{font-size:.8rem;color:#71717a;margin-bottom:1rem}
+.equipped-list{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:.75rem}
+.equipped-tool{padding:.4rem .75rem;border-radius:8px;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);font-size:.75rem;color:#06b6d4;font-weight:600;display:flex;align-items:center;gap:.35rem;animation:pop .3s ease}
+@keyframes pop{0%{transform:scale(0.5);opacity:0}100%{transform:scale(1);opacity:1}}
+
+.capability-meter{width:100%;margin:2rem 0}
+.capability-meter h3{font-size:.9rem;font-weight:700;margin-bottom:1rem;color:#a1a1aa}
+.meter-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
+.meter-label{font-size:.8rem;color:#a1a1aa;width:100px;flex-shrink:0}
+.meter-bar{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
+.meter-fill{height:100%;border-radius:4px;transition:width .5s ease}
+.meter-val{font-size:.75rem;font-weight:700;color:#06b6d4;width:36px;text-align:right}
+
+.insight{background:rgba(6,182,212,.04);border:1px solid rgba(6,182,212,.12);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
+.insight h3{color:#06b6d4;font-size:.95rem;margin-bottom:.5rem}
+.insight p{color:#a1a1aa;font-size:.85rem;line-height:1.6}
+
+.complete-section{text-align:center;padding:2rem;display:none}
+.complete-section h2{color:#06b6d4;font-size:1.5rem;margin-bottom:.5rem}
+.complete-section p{color:#a1a1aa}
+.next-btn{display:inline-block;margin-top:1rem;padding:.75rem 2rem;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;font-weight:700;font-size:.95rem;border:none;cursor:pointer;transition:transform .2s}
+.next-btn:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
+  <a href="/academy/first-ai-agent/" class="nav-link">← Course</a>
+</nav>
+
+<div class="content">
+  <div class="lesson-num">Lesson 3 of 10</div>
+  <h1>Tools & Capabilities</h1>
+  <p class="subtitle">An agent without tools is just a chatbot. Drag tools onto the agent and watch its capabilities expand.</p>
+
+  <div class="workspace">
+    <div class="toolbox">
+      <h3>🧰 Toolbox</h3>
+      <div class="tool-grid" id="tool-grid"></div>
+    </div>
+    <div class="agent-zone" id="agent-zone">
+      <div class="agent-avatar">🤖</div>
+      <div class="agent-label">Your Agent</div>
+      <div class="agent-status" id="agent-status">No tools equipped — just a chatbot</div>
+      <div class="equipped-list" id="equipped-list"></div>
+    </div>
+  </div>
+
+  <div class="capability-meter" id="meters"></div>
+
+  <div class="insight" id="insight">
+    <h3>💡 Key Insight</h3>
+    <p id="insight-text">Right now your agent has zero tools. It can only generate text — exactly like a chatbot. Try dragging some tools over to see what changes.</p>
+  </div>
+
+  <div class="complete-section" id="complete">
+    <h2>Lesson Complete!</h2>
+    <p>Tools are what give agents real power. The right tools turn text generation into autonomous action.</p>
+    <a href="design-your-agent.html" class="next-btn">Next: Design Your Agent →</a>
+  </div>
+</div>
+
+<script>
+const tools = [
+  { id: 'search', icon: '🔍', name: 'Web Search', desc: 'Find information online',
+    capabilities: { knowledge: 40, action: 10, autonomy: 15, reach: 30 },
+    insight: 'With web search, your agent can find current information instead of relying only on training data. It can answer questions about today, not just yesterday.' },
+  { id: 'database', icon: '🗄️', name: 'Database', desc: 'Store and query data',
+    capabilities: { knowledge: 20, action: 25, autonomy: 20, reach: 10 },
+    insight: 'A database gives your agent persistent memory. It can store user preferences, track history, and build up knowledge over time.' },
+  { id: 'email', icon: '📧', name: 'Email', desc: 'Send and read emails',
+    capabilities: { knowledge: 5, action: 30, autonomy: 20, reach: 35 },
+    insight: 'Now your agent can communicate with the outside world. It can notify users, send reports, and respond to incoming messages automatically.' },
+  { id: 'calculator', icon: '🧮', name: 'Calculator', desc: 'Precise math operations',
+    capabilities: { knowledge: 15, action: 10, autonomy: 5, reach: 0 },
+    insight: 'LLMs are notoriously bad at math. A calculator tool means your agent gives precise answers instead of probabilistic guesses.' },
+  { id: 'files', icon: '📁', name: 'File Reader', desc: 'Read and write files',
+    capabilities: { knowledge: 25, action: 20, autonomy: 15, reach: 5 },
+    insight: 'File access means your agent can process documents, generate reports, and work with data on disk. It can do real office work.' },
+  { id: 'api', icon: '🔗', name: 'API Caller', desc: 'Call any external API',
+    capabilities: { knowledge: 15, action: 35, autonomy: 25, reach: 40 },
+    insight: 'API access is the ultimate force multiplier. Your agent can now connect to any service — payments, shipping, CRMs, social media, anything with an API.' }
+];
+
+const capabilities = { knowledge: 0, action: 0, autonomy: 0, reach: 0 };
+const capLabels = { knowledge: 'Knowledge', action: 'Action Power', autonomy: 'Autonomy', reach: 'Reach' };
+const capColors = { knowledge: '#06b6d4', action: '#a855f7', autonomy: '#38bdf8', reach: '#fb923c' };
+const equipped = new Set();
+
+// Render tools
+const grid = document.getElementById('tool-grid');
+tools.forEach(t => {
+  const div = document.createElement('div');
+  div.className = 'tool';
+  div.draggable = true;
+  div.dataset.id = t.id;
+  div.innerHTML = `<span class="tool-icon">${t.icon}</span><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div>`;
+  div.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', t.id); div.classList.add('dragging'); });
+  div.addEventListener('dragend', () => div.classList.remove('dragging'));
+  div.addEventListener('click', () => equipTool(t.id)); // Also support click
+  grid.appendChild(div);
+});
+
+// Render meters
+const metersDiv = document.getElementById('meters');
+metersDiv.innerHTML = '<h3>📊 Agent Capabilities</h3>';
+for (const [key, label] of Object.entries(capLabels)) {
+  metersDiv.innerHTML += `<div class="meter-row"><div class="meter-label">${label}</div><div class="meter-bar"><div class="meter-fill" id="meter-${key}" style="width:0;background:${capColors[key]}"></div></div><div class="meter-val" id="val-${key}">0%</div></div>`;
+}
+
+// Drop zone
+const zone = document.getElementById('agent-zone');
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); const id = e.dataTransfer.getData('text/plain'); equipTool(id); });
+
+function equipTool(id) {
+  if (equipped.has(id)) return;
+  const tool = tools.find(t => t.id === id);
+  if (!tool) return;
+  equipped.add(id);
+
+  // Mark as equipped in toolbox
+  const toolEl = grid.querySelector(`[data-id="${id}"]`);
+  if (toolEl) { toolEl.classList.add('equipped'); toolEl.draggable = false; }
+
+  // Add to equipped list
+  const tag = document.createElement('div');
+  tag.className = 'equipped-tool';
+  tag.innerHTML = `${tool.icon} ${tool.name}`;
+  document.getElementById('equipped-list').appendChild(tag);
+
+  // Update capabilities
+  for (const [key, val] of Object.entries(tool.capabilities)) {
+    capabilities[key] = Math.min(100, capabilities[key] + val);
+    document.getElementById(`meter-${key}`).style.width = capabilities[key] + '%';
+    document.getElementById(`val-${key}`).textContent = capabilities[key] + '%';
+  }
+
+  // Update status
+  const count = equipped.size;
+  const statusTexts = [
+    'No tools equipped — just a chatbot',
+    '1 tool — it can do one thing well',
+    '2 tools — starting to feel useful',
+    '3 tools — now it\'s a real agent',
+    '4 tools — it can handle complex tasks',
+    '5 tools — it\'s becoming autonomous',
+    '6 tools — full-stack agent unlocked!'
+  ];
+  document.getElementById('agent-status').textContent = statusTexts[count] || statusTexts[6];
+
+  // Update insight
+  document.getElementById('insight-text').textContent = tool.insight;
+
+  // Check completion
+  if (equipped.size >= 4) {
+    setTimeout(() => {
+      document.getElementById('complete').style.display = 'block';
+      if (typeof LO !== 'undefined') LO.completeLesson('first_ai_agent', 3, 160);
+    }, 500);
+  }
+}
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>

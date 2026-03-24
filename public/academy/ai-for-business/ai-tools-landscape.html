@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Tools Landscape — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:800px;margin:0 auto;padding:24px 20px 80px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#737373;margin-bottom:24px}.back:hover{color:#f59e0b}
+.lesson-num{font-size:12px;font-weight:800;color:#f59e0b;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+h1{font-size:clamp(24px,5vw,36px);font-weight:900;margin-bottom:8px}
+.intro{color:#a3a3a3;margin-bottom:24px;font-size:16px}
+.filter-row{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.filter-btn{background:#111118;border:1px solid #1a1a24;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;color:#a3a3a3;cursor:pointer;transition:all .2s;font-family:Inter,sans-serif}
+.filter-btn:hover{border-color:#f59e0b44}
+.filter-btn.active{background:#f59e0b;color:#0a0a0f;border-color:#f59e0b}
+.categories{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:32px}
+.cat-card{background:#111118;border:1px solid #1a1a24;border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .2s}
+.cat-card:hover{border-color:#f59e0b44;transform:translateY(-2px)}
+.cat-card.active{border-color:#f59e0b;background:#f59e0b08}
+.cat-emoji{font-size:32px;margin-bottom:8px}
+.cat-name{font-size:14px;font-weight:700}
+.cat-count{font-size:12px;color:#737373}
+.tools-panel{display:none;margin-bottom:32px}
+.tools-panel.active{display:block}
+.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.panel-title{font-size:20px;font-weight:800}
+.panel-close{background:none;border:none;color:#737373;font-size:20px;cursor:pointer;padding:4px 8px}
+.panel-close:hover{color:#e5e5e5}
+.tool-card{background:#111118;border:1px solid #1a1a24;border-radius:12px;padding:20px;margin-bottom:12px;transition:all .2s}
+.tool-card.hidden{display:none}
+.tool-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.tool-name{font-size:16px;font-weight:800}
+.tool-price{font-size:14px;font-weight:700;color:#f59e0b;text-align:right}
+.tool-price .free{color:#22c55e}
+.tool-desc{font-size:14px;color:#a3a3a3;margin-bottom:12px}
+.tool-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#1a1a24;color:#a3a3a3}
+.tag.best{background:#22c55e22;color:#22c55e}
+.tag.popular{background:#f59e0b22;color:#f59e0b}
+.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:24px;border-top:1px solid #1a1a24}
+.nav-link{font-size:14px;font-weight:600;color:#737373}.nav-link:hover{color:#f59e0b}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Course Overview</a>
+<div class="lesson-num">Lesson 6 of 10</div>
+<h1>The AI Tools Landscape</h1>
+<p class="intro">Real tools. Real prices. Click a category to explore, then filter by your budget. No hype — just what works.</p>
+
+<div class="filter-row">
+<span style="font-size:13px;font-weight:700;color:#737373;padding:8px 0">Budget:</span>
+<button class="filter-btn active" data-budget="all">All</button>
+<button class="filter-btn" data-budget="0">Free</button>
+<button class="filter-btn" data-budget="50">&lt; $50/mo</button>
+<button class="filter-btn" data-budget="200">&lt; $200/mo</button>
+</div>
+
+<div class="categories" id="categories"></div>
+<div class="tools-panel" id="tools-panel">
+<div class="panel-header">
+<div class="panel-title" id="panel-title"></div>
+<button class="panel-close" onclick="closePanel()">&times;</button>
+</div>
+<div id="tools-list"></div>
+</div>
+
+<div class="nav-row">
+<a href="build-vs-buy.html" class="nav-link">← Prev: Build vs. Buy</a>
+<a href="your-first-week-with-ai.html" class="nav-link">Next: Your First Week →</a>
+</div>
+</div>
+
+<script src="/academy/shared/engine.js"></script>
+<script>
+const data = {
+  writing: {emoji:"✍️", name:"Writing & Content", tools:[
+    {name:"Claude (Anthropic)", price:0, priceTxt:"Free / $20/mo Pro", desc:"Best for long-form writing, analysis, and nuanced business communication. Understands context exceptionally well.", tags:["Best for Business","popular"]},
+    {name:"ChatGPT (OpenAI)", price:0, priceTxt:"Free / $20/mo Plus", desc:"The most well-known AI assistant. Strong at drafting, brainstorming, and general writing tasks.", tags:["Most Popular","popular"]},
+    {name:"Jasper", price:49, priceTxt:"From $49/mo", desc:"Built specifically for marketing teams. Templates for ads, blogs, social media, and product descriptions.", tags:["Marketing Focus"]},
+  ]},
+  image: {emoji:"🎨", name:"Image Generation", tools:[
+    {name:"Midjourney", price:10, priceTxt:"From $10/mo", desc:"Highest quality AI images. Perfect for marketing materials, social posts, and brand visuals.", tags:["Best Quality","popular"]},
+    {name:"DALL-E 3 (via ChatGPT)", price:20, priceTxt:"Included in ChatGPT Plus ($20/mo)", desc:"Easy to use, good quality. Great for quick visuals and brainstorming design ideas.", tags:["Easiest to Use"]},
+    {name:"Canva AI", price:0, priceTxt:"Free / $13/mo Pro", desc:"AI features built into the design tool you probably already use. Magic Write, Magic Design, background removal.", tags:["Best Value","best"]},
+  ]},
+  video: {emoji:"🎬", name:"Video & Audio", tools:[
+    {name:"Descript", price:24, priceTxt:"Free / $24/mo Pro", desc:"Edit video by editing text. Remove filler words automatically. Create clips for social media.", tags:["Best for Business","best"]},
+    {name:"HeyGen", price:29, priceTxt:"From $29/mo", desc:"Create AI avatar videos. Great for training content, product demos, and personalized outreach.", tags:["AI Avatars"]},
+    {name:"ElevenLabs", price:0, priceTxt:"Free / $5/mo Starter", desc:"Ultra-realistic AI voice generation. Clone your voice for consistent content creation.", tags:["Voice Cloning","popular"]},
+  ]},
+  voice: {emoji:"🎙️", name:"Transcription & Voice", tools:[
+    {name:"Otter.ai", price:0, priceTxt:"Free / $17/mo Pro", desc:"Live meeting transcription with speaker identification. Integrates with Zoom, Teams, Google Meet.", tags:["Best for Meetings","best"]},
+    {name:"Fireflies.ai", price:0, priceTxt:"Free / $19/mo Pro", desc:"AI meeting assistant that records, transcribes, and summarizes. Creates action items automatically.", tags:["Auto Summaries","popular"]},
+    {name:"Rev", price:0, priceTxt:"$0.25/minute", desc:"Human + AI transcription for maximum accuracy. Best when you need perfect transcripts.", tags:["Most Accurate"]},
+  ]},
+  automation: {emoji:"⚡", name:"Automation", tools:[
+    {name:"Zapier", price:0, priceTxt:"Free / $20/mo Starter", desc:"Connect 6,000+ apps with AI-powered workflows. The glue between your existing tools.", tags:["Most Integrations","popular"]},
+    {name:"Make (formerly Integromat)", price:0, priceTxt:"Free / $9/mo Core", desc:"Visual automation builder. More powerful than Zapier for complex workflows, lower price.", tags:["Best Value","best"]},
+    {name:"Microsoft Power Automate", price:15, priceTxt:"From $15/user/mo", desc:"Best if your company already uses Microsoft 365. Deep integration with Office apps.", tags:["Best for Microsoft"]},
+  ]},
+  analytics: {emoji:"📊", name:"Analytics & Data", tools:[
+    {name:"Julius AI", price:0, priceTxt:"Free / $20/mo Pro", desc:"Upload a spreadsheet, ask questions in plain English, get charts and insights. No formulas needed.", tags:["Easiest to Use","best"]},
+    {name:"Tableau (with AI)", price:75, priceTxt:"From $75/user/mo", desc:"Enterprise-grade dashboards with AI-powered insights. Ask questions about your data naturally.", tags:["Enterprise"]},
+    {name:"Google Looker Studio + Gemini", price:0, priceTxt:"Free", desc:"Free dashboards with Google's AI built in. Best if you already use Google Workspace.", tags:["Free","popular"]},
+  ]},
+  code: {emoji:"🔌", name:"No-Code AI Builders", tools:[
+    {name:"Bubble", price:0, priceTxt:"Free / $29/mo Starter", desc:"Build full web apps without writing a single line. AI features help you build faster.", tags:["Most Popular","popular"]},
+    {name:"Softr", price:0, priceTxt:"Free / $49/mo Basic", desc:"Turn your Airtable or Google Sheets data into apps, portals, and internal tools.", tags:["Spreadsheet to App"]},
+    {name:"Relevance AI", price:0, priceTxt:"Free / $19/mo", desc:"Build AI agents and workflows without technical knowledge. Automate complex multi-step tasks.", tags:["AI Agents","best"]},
+  ]},
+  support: {emoji:"🎧", name:"Customer Service", tools:[
+    {name:"Intercom Fin", price:99, priceTxt:"From $0.99/resolution", desc:"AI chatbot that actually resolves customer issues. Learns from your help docs and past conversations.", tags:["Best AI Chatbot","popular"]},
+    {name:"Zendesk AI", price:55, priceTxt:"From $55/agent/mo", desc:"AI-powered ticket routing, suggested replies, and automated responses. Integrates with your existing support.", tags:["Enterprise"]},
+    {name:"Tidio", price:0, priceTxt:"Free / $29/mo Starter", desc:"AI chatbot + live chat + helpdesk in one. Great for small businesses getting started with AI support.", tags:["Best for SMBs","best"]},
+  ]},
+};
+
+let activeBudget = 'all';
+let activeCategory = null;
+let explored = new Set();
+
+// Render categories
+const catGrid = document.getElementById('categories');
+Object.entries(data).forEach(([key, cat]) => {
+  const card = document.createElement('div');
+  card.className = 'cat-card';
+  card.dataset.key = key;
+  card.innerHTML = `<div class="cat-emoji">${cat.emoji}</div><div class="cat-name">${cat.name}</div><div class="cat-count">${cat.tools.length} tools</div>`;
+  card.addEventListener('click', () => openCategory(key));
+  catGrid.appendChild(card);
+});
+
+// Budget filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeBudget = btn.dataset.budget;
+    if(activeCategory) filterTools();
+    LO.sfx.click();
+  });
+});
+
+function openCategory(key){
+  activeCategory = key;
+  explored.add(key);
+  const cat = data[key];
+  document.querySelectorAll('.cat-card').forEach(c=>c.classList.toggle('active', c.dataset.key===key));
+  document.getElementById('panel-title').textContent = cat.emoji + ' ' + cat.name;
+  renderTools(cat.tools);
+  document.getElementById('tools-panel').classList.add('active');
+  document.getElementById('tools-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+  LO.sfx.click();
+
+  if(explored.size >= 4){
+    LO.completeLesson('ai-biz', 6, 120);
+  }
+}
+
+function renderTools(tools){
+  const list = document.getElementById('tools-list');
+  list.innerHTML = '';
+  tools.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'tool-card';
+    card.dataset.price = t.price;
+    const tagsHTML = t.tags.map(tag => {
+      const cls = tag.toLowerCase().includes('best') ? 'best' : tag.toLowerCase().includes('popular') ? 'popular' : '';
+      return `<span class="tag ${cls}">${tag}</span>`;
+    }).join('');
+    card.innerHTML = `<div class="tool-header"><div class="tool-name">${t.name}</div><div class="tool-price">${t.price===0?'<span class="free">'+t.priceTxt+'</span>':t.priceTxt}</div></div><div class="tool-desc">${t.desc}</div><div class="tool-tags">${tagsHTML}</div>`;
+    list.appendChild(card);
+  });
+  filterTools();
+}
+
+function filterTools(){
+  document.querySelectorAll('.tool-card').forEach(card => {
+    const price = +card.dataset.price;
+    let show = true;
+    if(activeBudget === '0') show = price === 0;
+    else if(activeBudget === '50') show = price < 50;
+    else if(activeBudget === '200') show = price < 200;
+    card.classList.toggle('hidden', !show);
+  });
+}
+
+function closePanel(){
+  document.getElementById('tools-panel').classList.remove('active');
+  document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('active'));
+  activeCategory = null;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your AI Opportunities — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:800px;margin:0 auto;padding:24px 20px 80px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#737373;margin-bottom:24px}.back:hover{color:#f59e0b}
+.lesson-num{font-size:12px;font-weight:800;color:#f59e0b;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+h1{font-size:clamp(24px,5vw,36px);font-weight:900;margin-bottom:8px}
+.intro{color:#a3a3a3;margin-bottom:32px;font-size:16px}
+h2{font-size:20px;font-weight:800;margin-bottom:16px}
+.audit-table{width:100%;border-collapse:collapse;margin-bottom:32px}
+.audit-table th{text-align:left;font-size:12px;font-weight:700;color:#737373;text-transform:uppercase;letter-spacing:1px;padding:10px 8px;border-bottom:1px solid #1a1a24}
+.audit-table td{padding:10px 8px;border-bottom:1px solid #1a1a24;font-size:14px}
+.audit-table .area{font-weight:700;color:#e5e5e5;min-width:100px}
+.audit-table .emoji{font-size:18px;width:30px;text-align:center}
+.rating-group{display:flex;gap:4px}
+.rating-btn{width:32px;height:32px;border:1px solid #333;border-radius:6px;background:#0a0a0f;color:#737373;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.rating-btn:hover{border-color:#f59e0b}
+.rating-btn.active{background:#f59e0b;color:#0a0a0f;border-color:#f59e0b}
+.results-section{display:none}
+.gen-btn{display:block;width:100%;background:#f59e0b;color:#0a0a0f;font-weight:800;font-size:16px;padding:14px;border-radius:10px;border:none;cursor:pointer;transition:all .2s;margin-bottom:32px}
+.gen-btn:hover{background:#fbbf24}
+.gen-btn:disabled{background:#333;color:#666;cursor:not-allowed}
+.opp-card{display:flex;align-items:center;gap:16px;background:#111118;border:1px solid #1a1a24;border-radius:12px;padding:16px 20px;margin-bottom:10px;transition:all .2s}
+.opp-rank{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:16px;font-weight:900;flex-shrink:0}
+.opp-rank.gold{background:#f59e0b22;color:#f59e0b}
+.opp-rank.silver{background:#a3a3a311;color:#a3a3a3}
+.opp-info{flex:1}
+.opp-name{font-size:15px;font-weight:700}
+.opp-detail{font-size:12px;color:#737373;margin-top:2px}
+.opp-score{font-size:20px;font-weight:900;color:#f59e0b}
+.opp-bar{height:4px;background:#1a1a24;border-radius:2px;margin-top:8px;overflow:hidden}
+.opp-bar-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:2px;transition:width .5s}
+.insight-box{background:#f59e0b11;border:1px solid #f59e0b33;border-radius:12px;padding:20px;margin-top:24px}
+.insight-box h3{font-size:14px;font-weight:800;color:#f59e0b;margin-bottom:8px}
+.insight-box p{font-size:14px;color:#a3a3a3}
+.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:24px;border-top:1px solid #1a1a24}
+.nav-link{font-size:14px;font-weight:600;color:#737373}.nav-link:hover{color:#f59e0b}
+@media(max-width:640px){
+.audit-table{display:block;overflow-x:auto}
+.rating-btn{width:28px;height:28px;font-size:11px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back">← Course Overview</a>
+<div class="lesson-num">Lesson 4 of 10</div>
+<h1>Find Your AI Opportunities</h1>
+<p class="intro">Rate each area of your business on three factors. We'll calculate where AI will have the biggest impact and show you exactly where to start.</p>
+
+<h2>Rate Your Business Areas</h2>
+<p style="font-size:13px;color:#737373;margin-bottom:16px">1 = Low, 5 = High. Be honest — this is for your eyes only.</p>
+
+<div style="overflow-x:auto">
+<table class="audit-table">
+<thead>
+<tr>
+<th></th>
+<th>Business Area</th>
+<th>Time Spent</th>
+<th>Repetitiveness</th>
+<th>Pain Level</th>
+</tr>
+</thead>
+<tbody id="audit-body"></tbody>
+</table>
+</div>
+
+<button class="gen-btn" id="gen-btn" onclick="generateResults()">Generate My AI Opportunity Scores</button>
+
+<div class="results-section" id="results-section">
+<h2>Your AI Opportunity Rankings</h2>
+<div id="opp-list"></div>
+<div class="insight-box" id="insight-box"></div>
+</div>
+
+<div class="nav-row">
+<a href="the-roi-calculator.html" class="nav-link">← Prev: ROI Calculator</a>
+<a href="build-vs-buy.html" class="nav-link">Next: Build vs. Buy →</a>
+</div>
+</div>
+
+<script src="/academy/shared/engine.js"></script>
+<script>
+const areas = [
+  {name:"Email & Communication", emoji:"📧", tip:"drafting, sorting, responding"},
+  {name:"Sales & Outreach", emoji:"💰", tip:"prospecting, follow-ups, proposals"},
+  {name:"Marketing & Content", emoji:"📣", tip:"social media, blog posts, ads"},
+  {name:"Customer Support", emoji:"🎧", tip:"tickets, FAQs, onboarding"},
+  {name:"Operations & Logistics", emoji:"⚙️", tip:"scheduling, inventory, workflows"},
+  {name:"Finance & Accounting", emoji:"📊", tip:"invoicing, reports, expense tracking"},
+  {name:"HR & Recruiting", emoji:"👥", tip:"job posts, screening, onboarding"},
+  {name:"Content Creation", emoji:"✍️", tip:"writing, design briefs, documentation"},
+  {name:"Data & Analytics", emoji:"📈", tip:"reports, dashboards, insights"},
+  {name:"Admin & Misc", emoji:"🗂️", tip:"filing, data entry, meeting notes"},
+];
+
+const ratings = {};
+const tbody = document.getElementById('audit-body');
+
+areas.forEach((a,i) => {
+  ratings[i] = {time:0, rep:0, pain:0};
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="emoji">${a.emoji}</td>
+    <td class="area">${a.name}<div style="font-size:11px;color:#737373;font-weight:400">${a.tip}</div></td>
+    <td><div class="rating-group" data-area="${i}" data-dim="time">${[1,2,3,4,5].map(n=>`<button class="rating-btn" data-v="${n}">${n}</button>`).join('')}</div></td>
+    <td><div class="rating-group" data-area="${i}" data-dim="rep">${[1,2,3,4,5].map(n=>`<button class="rating-btn" data-v="${n}">${n}</button>`).join('')}</div></td>
+    <td><div class="rating-group" data-area="${i}" data-dim="pain">${[1,2,3,4,5].map(n=>`<button class="rating-btn" data-v="${n}">${n}</button>`).join('')}</div></td>
+  `;
+  tbody.appendChild(tr);
+});
+
+document.querySelectorAll('.rating-group').forEach(group => {
+  group.querySelectorAll('.rating-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const area = +group.dataset.area;
+      const dim = group.dataset.dim;
+      const val = +btn.dataset.v;
+      ratings[area][dim] = val;
+      group.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      LO.sfx.click();
+      checkReady();
+    });
+  });
+});
+
+function checkReady(){
+  let filled = 0;
+  for(let i=0;i<10;i++){
+    if(ratings[i].time && ratings[i].rep && ratings[i].pain) filled++;
+  }
+  document.getElementById('gen-btn').disabled = filled < 5;
+}
+
+function generateResults(){
+  const scored = areas.map((a,i) => {
+    const r = ratings[i];
+    const score = (r.time * 0.3 + r.rep * 0.4 + r.pain * 0.3) * 20;
+    return {...a, idx:i, score: Math.round(score), ...r};
+  }).filter(a => a.time > 0 || a.rep > 0 || a.pain > 0).sort((a,b) => b.score - a.score);
+
+  const list = document.getElementById('opp-list');
+  list.innerHTML = '';
+  scored.forEach((s,i) => {
+    const card = document.createElement('div');
+    card.className = 'opp-card';
+    card.style.animationDelay = i*0.1+'s';
+    card.innerHTML = `
+      <div class="opp-rank ${i<3?'gold':'silver'}">#${i+1}</div>
+      <div class="opp-info">
+        <div class="opp-name">${s.emoji} ${s.name}</div>
+        <div class="opp-detail">Time: ${s.time}/5 · Repetitive: ${s.rep}/5 · Pain: ${s.pain}/5</div>
+        <div class="opp-bar"><div class="opp-bar-fill" style="width:${s.score}%"></div></div>
+      </div>
+      <div class="opp-score">${s.score}</div>
+    `;
+    list.appendChild(card);
+  });
+
+  const top = scored[0];
+  const insight = document.getElementById('insight-box');
+  insight.innerHTML = `<h3>Start Here: ${top.emoji} ${top.name}</h3><p>This area scored ${top.score}/100 — it's your highest-impact AI opportunity. It's where you spend significant time on repetitive work that causes the most friction. Automating even 30% of this area could save you hours every week.</p>`;
+
+  document.getElementById('results-section').style.display = 'block';
+  document.getElementById('results-section').scrollIntoView({behavior:'smooth'});
+  LO.sfx.success();
+  LO.completeLesson('ai-biz', 4, 120);
+}
+</script>
+</body>
+</html>

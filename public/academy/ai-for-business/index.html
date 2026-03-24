@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Business Owners — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:800px;margin:0 auto;padding:24px 20px 80px}
+.hero{text-align:center;padding:60px 0 48px}
+.hero-emoji{font-size:64px;margin-bottom:16px}
+.hero h1{font-size:clamp(28px,5vw,42px);font-weight:900;line-height:1.15;margin-bottom:12px}
+.hero h1 span{color:#f59e0b}
+.hero .sub{font-size:18px;color:#a3a3a3;margin-bottom:24px}
+.meta{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.meta-item{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#a3a3a3}
+.meta-item .icon{font-size:18px}
+.price-tag{display:inline-block;background:#f59e0b;color:#0a0a0f;font-size:28px;font-weight:900;padding:10px 32px;border-radius:12px;margin-bottom:8px}
+.price-note{font-size:13px;color:#737373}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#f59e0b33,transparent);margin:40px 0}
+.module{margin-bottom:40px}
+.module-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.module-num{background:#f59e0b22;color:#f59e0b;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:6px}
+.module-title{font-size:20px;font-weight:800}
+.lesson-list{display:flex;flex-direction:column;gap:8px}
+.lesson-card{display:flex;align-items:center;gap:16px;background:#111118;border:1px solid #1a1a24;border-radius:12px;padding:16px 20px;transition:all .2s}
+.lesson-card:hover{border-color:#f59e0b44;transform:translateX(4px);text-decoration:none}
+.lesson-num{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#f59e0b11;border-radius:8px;font-size:14px;font-weight:800;color:#f59e0b;flex-shrink:0}
+.lesson-info{flex:1}
+.lesson-title{font-size:15px;font-weight:700;color:#e5e5e5}
+.lesson-desc{font-size:13px;color:#737373;margin-top:2px}
+.lesson-xp{font-size:12px;font-weight:700;color:#c084fc;flex-shrink:0}
+.lesson-check{width:24px;height:24px;border-radius:50%;border:2px solid #333;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px}
+.lesson-check.done{border-color:#22c55e;background:#22c55e22;color:#22c55e}
+.cta-box{text-align:center;padding:40px;background:linear-gradient(135deg,#f59e0b11,#f59e0b05);border:1px solid #f59e0b33;border-radius:16px;margin-top:40px}
+.cta-box h2{font-size:24px;font-weight:800;margin-bottom:8px}
+.cta-box p{color:#a3a3a3;margin-bottom:20px}
+.btn{display:inline-block;background:#f59e0b;color:#0a0a0f;font-weight:800;font-size:16px;padding:14px 36px;border-radius:10px;transition:all .2s;border:none;cursor:pointer}
+.btn:hover{background:#fbbf24;transform:translateY(-1px);text-decoration:none}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#737373;margin-bottom:24px}
+.back-link:hover{color:#f59e0b}
+.progress-bar{width:100%;height:6px;background:#1a1a24;border-radius:3px;margin-top:24px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:3px;transition:width .5s}
+.progress-label{font-size:13px;color:#737373;margin-top:8px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="/academy/" class="back-link">← Back to Academy</a>
+
+<div class="hero">
+<div class="hero-emoji">💼🧠</div>
+<h1>AI for <span>Business Owners</span></h1>
+<p class="sub">Stop paying consultants. Understand AI yourself.</p>
+<div class="meta">
+<div class="meta-item"><span class="icon">⏱️</span> 6 hours</div>
+<div class="meta-item"><span class="icon">⚡</span> 1,200 XP</div>
+<div class="meta-item"><span class="icon">📖</span> 10 lessons</div>
+<div class="meta-item"><span class="icon">🎯</span> 3 modules</div>
+</div>
+<div class="price-tag">$79</div>
+<p class="price-note">One-time purchase. Lifetime access. No subscription.</p>
+</div>
+
+<div id="progress-section">
+<div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+<p class="progress-label" id="progress-label">0 of 10 lessons complete</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="module">
+<div class="module-header">
+<span class="module-num">Module 1</span>
+<span class="module-title">AI Literacy — What You Need to Know</span>
+</div>
+<div class="lesson-list">
+<a href="ai-without-jargon.html" class="lesson-card" data-lesson="1">
+<div class="lesson-check" id="check-1"></div>
+<div class="lesson-num">01</div>
+<div class="lesson-info">
+<div class="lesson-title">AI Without the Jargon</div>
+<div class="lesson-desc">Interactive translator — 10 buzzwords decoded into plain English</div>
+</div>
+<div class="lesson-xp">+100 XP</div>
+</a>
+<a href="what-ai-can-and-cannot-do.html" class="lesson-card" data-lesson="2">
+<div class="lesson-check" id="check-2"></div>
+<div class="lesson-num">02</div>
+<div class="lesson-info">
+<div class="lesson-title">What AI Can (and Cannot) Do</div>
+<div class="lesson-desc">Sort 20 real tasks into what AI handles well, helps with, or can't do</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+<a href="the-roi-calculator.html" class="lesson-card" data-lesson="3">
+<div class="lesson-check" id="check-3"></div>
+<div class="lesson-num">03</div>
+<div class="lesson-info">
+<div class="lesson-title">The ROI Calculator</div>
+<div class="lesson-desc">Plug in your numbers and see exactly how much AI could save you</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+</div>
+</div>
+
+<div class="module">
+<div class="module-header">
+<span class="module-num">Module 2</span>
+<span class="module-title">AI Strategy — What to Do With It</span>
+</div>
+<div class="lesson-list">
+<a href="find-your-ai-opportunities.html" class="lesson-card" data-lesson="4">
+<div class="lesson-check" id="check-4"></div>
+<div class="lesson-num">04</div>
+<div class="lesson-info">
+<div class="lesson-title">Find Your AI Opportunities</div>
+<div class="lesson-desc">Audit your business and discover where AI has the biggest impact</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+<a href="build-vs-buy.html" class="lesson-card" data-lesson="5">
+<div class="lesson-check" id="check-5"></div>
+<div class="lesson-num">05</div>
+<div class="lesson-info">
+<div class="lesson-title">Build vs. Buy</div>
+<div class="lesson-desc">Interactive decision tree — should you build custom, buy SaaS, or hire help?</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+<a href="ai-tools-landscape.html" class="lesson-card" data-lesson="6">
+<div class="lesson-check" id="check-6"></div>
+<div class="lesson-num">06</div>
+<div class="lesson-info">
+<div class="lesson-title">The AI Tools Landscape</div>
+<div class="lesson-desc">Explore real tools, real prices, filtered by what you actually need</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+</div>
+</div>
+
+<div class="module">
+<div class="module-header">
+<span class="module-num">Module 3</span>
+<span class="module-title">Implementation — Make It Happen</span>
+</div>
+<div class="lesson-list">
+<a href="your-first-week-with-ai.html" class="lesson-card" data-lesson="7">
+<div class="lesson-check" id="check-7"></div>
+<div class="lesson-num">07</div>
+<div class="lesson-info">
+<div class="lesson-title">Your First Week with AI</div>
+<div class="lesson-desc">A 5-day action plan with checkboxes — start using AI on Monday</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+<a href="ai-policy-template.html" class="lesson-card" data-lesson="8">
+<div class="lesson-check" id="check-8"></div>
+<div class="lesson-num">08</div>
+<div class="lesson-info">
+<div class="lesson-title">AI Policy Template</div>
+<div class="lesson-desc">Build a real AI usage policy for your company — toggle and download</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+<a href="measuring-ai-success.html" class="lesson-card" data-lesson="9">
+<div class="lesson-check" id="check-9"></div>
+<div class="lesson-num">09</div>
+<div class="lesson-info">
+<div class="lesson-title">Measuring AI Success</div>
+<div class="lesson-desc">Track time saved, costs cut, and output increased with visual dashboards</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+<a href="business-ai-quiz.html" class="lesson-card" data-lesson="10">
+<div class="lesson-check" id="check-10"></div>
+<div class="lesson-num">10</div>
+<div class="lesson-info">
+<div class="lesson-title">Final Assessment</div>
+<div class="lesson-desc">10 business-focused questions — prove you're ready to lead with AI</div>
+</div>
+<div class="lesson-xp">+120 XP</div>
+</a>
+</div>
+</div>
+
+<div class="cta-box">
+<h2>Ready to stop guessing about AI?</h2>
+<p>Join business owners who cut costs by 30% in their first month.</p>
+<a href="#" class="btn">Start Learning — $79</a>
+</div>
+</div>
+
+<script src="/academy/shared/engine.js"></script>
+<script>
+(function(){
+  let done = 0;
+  for(let i = 1; i <= 10; i++){
+    const key = `ai-biz_lesson_${i}`;
+    if(localStorage.getItem(key) === 'complete'){
+      done++;
+      const el = document.getElementById('check-'+i);
+      if(el){ el.classList.add('done'); el.textContent = '✓'; }
+    }
+  }
+  document.getElementById('progress-fill').style.width = (done/10*100)+'%';
+  document.getElementById('progress-label').textContent = done+' of 10 lessons complete';
+})();
+</script>
+</body>
+</html>
