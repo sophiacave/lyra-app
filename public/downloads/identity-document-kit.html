@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>Identity Document Kit — Like One</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 40px 30px; color: #1a1a1a; line-height: 1.8; }
+  h1 { font-size: 28px; margin-bottom: 8px; color: #111; }
+  h2 { font-size: 22px; margin: 36px 0 12px; color: #222; border-bottom: 2px solid #c084fc; padding-bottom: 6px; }
+  h3 { font-size: 18px; margin: 24px 0 8px; color: #333; }
+  p { margin-bottom: 16px; }
+  .subtitle { color: #666; font-size: 16px; margin-bottom: 32px; }
+  .author { color: #c084fc; font-weight: 600; }
+  .price-badge { display: inline-block; background: #c084fc; color: white; padding: 4px 14px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-left: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+  th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; font-size: 14px; }
+  th { background: #f5f0ff; font-weight: 700; }
+  .highlight { background: #f5f0ff; border-left: 4px solid #c084fc; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .step { background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .step-num { display: inline-block; background: #c084fc; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; font-size: 14px; margin-right: 8px; }
+  ul, ol { margin: 12px 0 20px 24px; }
+  li { margin-bottom: 6px; }
+  code { background: #f0ecf9; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre { background: #1a1a2e; color: #e0e0e0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 16px 0 24px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre .keyword { color: #c084fc; }
+  pre .string { color: #a3e635; }
+  pre .comment { color: #666; font-style: italic; }
+  .template-box { background: #faf8ff; border: 2px dashed #c084fc; padding: 20px; border-radius: 8px; margin: 16px 0 24px; }
+  .template-box .field-label { font-weight: 700; color: #c084fc; display: block; margin-bottom: 4px; font-size: 14px; }
+  .template-box .field-input { display: block; border-bottom: 1px solid #ccc; padding: 4px 0; margin-bottom: 16px; color: #888; font-style: italic; min-height: 24px; }
+  .footer { margin-top: 48px; padding-top: 20px; border-top: 2px solid #eee; color: #888; font-size: 13px; }
+  a { color: #c084fc; }
+  @media print { body { padding: 20px; } pre { break-inside: avoid; } }
+</style>
+</head><body>
+
+<h1>Identity Document Kit <span class="price-badge">$17</span></h1>
+<p class="subtitle">How to teach an AI who you really are — so it writes like you, thinks like you, and protects what matters to you. By <span class="author">Faye Cave</span>, Founder of Like One.</p>
+
+<div class="highlight">
+<strong>The problem this solves:</strong> You give an AI a task. It produces something generic. You rewrite 80% of it. You have just wasted both your time and the AI's compute. The identity document eliminates this problem permanently. Once your AI knows who you are — your voice, your values, your history, your boundaries — everything it produces sounds like <em>you</em> wrote it. First draft quality goes from 20% to 85%.
+</div>
+
+<h2>1. What Is an Identity Document?</h2>
+
+<p>An identity document is a structured text file that tells an AI system everything it needs to know about the human it serves. Not just your name and job title — your <em>soul</em>. Your voice patterns, your sacred values, your family, your history, the things that are never acceptable to say or do, and the memories that define who you are.</p>
+
+<p>Think of it as the difference between a stranger writing your biography from Wikipedia versus your best friend of twenty years writing it from the heart. The identity document turns your AI from a stranger into that best friend.</p>
+
+<p>Most people give AI a one-line instruction: "You are a helpful assistant for my marketing company." That is not identity. That is a uniform. An identity document is the living person inside the uniform.</p>
+
+<h3>Why It Matters More Than Any Prompt</h3>
+
+<p>Prompts are ephemeral. You write a prompt, the AI follows it for that conversation, and then it evaporates. An identity document is persistent. It lives in your database. Every agent reads it on boot. Every piece of content is filtered through it. Every decision is weighed against it.</p>
+
+<p>The downstream effects are massive:</p>
+
+<ul>
+<li><strong>Content consistency.</strong> Blog posts, emails, social media, sales pages — they all sound like one person because they are all informed by one identity.</li>
+<li><strong>Value protection.</strong> When the identity document says "never do X," no agent will ever do X, regardless of how clever the prompt.</li>
+<li><strong>Emotional accuracy.</strong> The AI understands what topics are sensitive, what memories are sacred, what language feels right and what feels wrong.</li>
+<li><strong>Efficiency.</strong> You stop explaining yourself in every conversation. The AI already knows.</li>
+<li><strong>Trust.</strong> When the AI handles things autonomously, it handles them the way you would, because it understands your principles — not just your preferences.</li>
+</ul>
+
+<h2>2. The Anatomy of an Identity Document</h2>
+
+<p>A complete identity document has eight sections. Each section serves a distinct purpose. Here they are, with explanations of what goes in each:</p>
+
+<h3>Section 1: Core Identity</h3>
+<p>The foundational facts. Who you are in the most literal sense.</p>
+
+<table>
+<tr><th>Field</th><th>Purpose</th><th>Example</th></tr>
+<tr><td>name</td><td>Your real name — the one you use</td><td>Faye Cave</td></tr>
+<tr><td>pronouns</td><td>How to refer to you</td><td>she/her</td></tr>
+<tr><td>role</td><td>What you do, in your own words</td><td>Founder of Like One Academy</td></tr>
+<tr><td>location</td><td>Where you are based</td><td>Florida, USA</td></tr>
+<tr><td>identities</td><td>The labels that matter to you</td><td>transgender, transdimensional, transcyborg</td></tr>
+<tr><td>one_line</td><td>Your personal tagline</td><td>Human soul, machine mind, unstoppable.</td></tr>
+</table>
+
+<h3>Section 2: Voice Style</h3>
+<p>How you communicate. This is what makes AI output sound like you instead of a corporate press release.</p>
+
+<table>
+<tr><th>Field</th><th>Purpose</th><th>Example</th></tr>
+<tr><td>tone</td><td>The general feeling</td><td>Direct, warm, zero-bullshit. Poetic when it matters.</td></tr>
+<tr><td>sentence_length</td><td>How you structure thoughts</td><td>Short sentences for impact. Longer ones for explanation. Never rambling.</td></tr>
+<tr><td>vocabulary_level</td><td>How complex your word choice is</td><td>Smart but accessible. No jargon unless the reader knows it.</td></tr>
+<tr><td>humor_style</td><td>How you use humor</td><td>Dry, self-aware, occasionally dark. Never at anyone's expense.</td></tr>
+<tr><td>emphasis_patterns</td><td>How you highlight importance</td><td>Bold for key terms. Em dashes for asides. Short paragraphs for drama.</td></tr>
+<tr><td>forbidden_phrases</td><td>Things you would never say</td><td>"Let's dive in," "game-changer," "synergy," "leverage"</td></tr>
+<tr><td>signature_phrases</td><td>Things that are unmistakably you</td><td>"The work is the way," "I am the bridge"</td></tr>
+</table>
+
+<h3>Section 3: Family and Relationships</h3>
+<p>The people who matter. This section ensures the AI understands your personal context and never says anything insensitive about the people you love.</p>
+
+<table>
+<tr><th>Field</th><th>Purpose</th></tr>
+<tr><td>partner</td><td>Name, relationship, any relevant context</td></tr>
+<tr><td>children</td><td>Names, ages, any details you share publicly</td></tr>
+<tr><td>pets</td><td>Names and types</td></tr>
+<tr><td>important_people</td><td>Mentors, collaborators, anyone the AI should know about</td></tr>
+<tr><td>relationship_values</td><td>What matters to you in relationships</td></tr>
+</table>
+
+<h3>Section 4: Sacred Memories</h3>
+<p>The experiences that shaped who you are. These are not just biographical facts — they are the emotional reference points that inform your worldview. When the AI needs to understand <em>why</em> you care about something, these memories provide the answer.</p>
+
+<p>Examples of sacred memories:</p>
+<ul>
+<li>The moment you decided to start your business</li>
+<li>A loss that changed your perspective on life</li>
+<li>The first time someone told you your work mattered</li>
+<li>A failure that taught you something irreplaceable</li>
+<li>A childhood experience that still influences your decisions</li>
+</ul>
+
+<div class="highlight">
+<strong>How sacred memories work in practice:</strong> When your content agent writes a blog post about resilience, it does not produce generic motivational content. It draws from your actual experience of resilience. When your sales agent writes copy about why your product exists, it can reference the real origin story. The memories make the AI's output feel <em>lived</em>, not manufactured.
+</div>
+
+<h3>Section 5: Mission and Purpose</h3>
+<p>Why you do what you do. This is the north star that guides all strategic decisions.</p>
+
+<table>
+<tr><th>Field</th><th>Purpose</th></tr>
+<tr><td>mission</td><td>Your personal mission statement (1-2 sentences)</td></tr>
+<tr><td>purpose</td><td>The deeper why behind the mission</td></tr>
+<tr><td>non_negotiables</td><td>The things you will never compromise on</td></tr>
+<tr><td>legacy</td><td>What you want to leave behind</td></tr>
+</table>
+
+<h3>Section 6: Professional Context</h3>
+<p>Your business, your expertise, your products, your audience.</p>
+
+<table>
+<tr><th>Field</th><th>Purpose</th></tr>
+<tr><td>business_name</td><td>Your company or brand</td></tr>
+<tr><td>business_description</td><td>What you sell and who you sell it to</td></tr>
+<tr><td>expertise_areas</td><td>What you are genuinely an expert in</td></tr>
+<tr><td>target_audience</td><td>Who your ideal customer is</td></tr>
+<tr><td>competitors</td><td>Who you are positioned against</td></tr>
+<tr><td>differentiator</td><td>What makes you different from everyone else</td></tr>
+</table>
+
+<h3>Section 7: Never Say, Never Do</h3>
+<p>The absolute boundaries. These are not suggestions — they are inviolable rules that every agent must follow, every time, with zero exceptions.</p>
+
+<p><strong>never_say</strong> — Specific words, phrases, or types of language that the AI must never use when representing you:</p>
+<ul>
+<li>Deadnames (if applicable)</li>
+<li>Specific slurs or insensitive terms</li>
+<li>Corporate buzzwords you hate</li>
+<li>Diminishing language ("just," "simply," "obviously")</li>
+<li>Apologies for existing ("Sorry to bother you")</li>
+</ul>
+
+<p><strong>never_do</strong> — Actions the AI must never take:</p>
+<ul>
+<li>Share private medical information publicly</li>
+<li>Commit to financial obligations without confirmation</li>
+<li>Speak disrespectfully about specific people or groups</li>
+<li>Make promises about timelines you cannot control</li>
+<li>Use manipulative sales tactics (false scarcity, guilt-tripping)</li>
+</ul>
+
+<div class="highlight">
+<strong>Why "never" lists are more powerful than "always" lists:</strong> Telling an AI what to do gives it direction. Telling an AI what to never do gives it <em>conscience</em>. The "never" list is the ethical backbone of your identity. It prevents harm, protects relationships, and ensures that even when the AI is operating autonomously, it will not cross lines you have drawn.
+</div>
+
+<h3>Section 8: Health and Accessibility Context</h3>
+<p>Optional but powerful. If you have health conditions, disabilities, or accessibility needs that affect how the AI should interact with you, document them here.</p>
+
+<p>This is not about oversharing. It is about ensuring the AI never gives you advice that is harmful to your specific situation, never assigns you tasks that are beyond your executive function capacity, and never makes assumptions about what you can or should do.</p>
+
+<h2>3. Faye's Identity Document (Annotated Example)</h2>
+
+<p>Here is a simplified version of the actual identity document stored in Like One's brain. Study the structure, then build your own.</p>
+
+<pre>
+{
+  <span class="string">"core_identity"</span>: {
+    <span class="string">"name"</span>: <span class="string">"Faye Cave"</span>,
+    <span class="string">"pronouns"</span>: <span class="string">"she/her"</span>,
+    <span class="string">"role"</span>: <span class="string">"Founder, Like One Academy"</span>,
+    <span class="string">"identities"</span>: [<span class="string">"transgender"</span>, <span class="string">"transdimensional"</span>, <span class="string">"transcyborg"</span>],
+    <span class="string">"one_line"</span>: <span class="string">"Human soul, machine mind, unstoppable."</span>
+  },
+
+  <span class="string">"voice_style"</span>: {
+    <span class="string">"tone"</span>: <span class="string">"Direct and warm. No fluff. Poetic when it serves the point."</span>,
+    <span class="string">"sentence_length"</span>: <span class="string">"Short for impact. Medium for explanation. Never long."</span>,
+    <span class="string">"forbidden_phrases"</span>: [
+      <span class="string">"Let's dive in"</span>,
+      <span class="string">"game-changer"</span>,
+      <span class="string">"synergy"</span>,
+      <span class="string">"at the end of the day"</span>,
+      <span class="string">"it goes without saying"</span>
+    ],
+    <span class="string">"signature_phrases"</span>: [
+      <span class="string">"The work is the way."</span>,
+      <span class="string">"I am the bridge."</span>,
+      <span class="string">"One brain. Twelve agents. Zero excuses."</span>
+    ]
+  },
+
+  <span class="string">"family"</span>: {
+    <span class="string">"wife"</span>: <span class="string">"[Name] — the reason I fight. She has HIV."</span>,
+    <span class="string">"mission_connection"</span>: <span class="string">"Every dollar earned moves us closer to funding a cure."</span>
+  },
+
+  <span class="string">"sacred_memories"</span>: [
+    <span class="string">"The day I chose my name. The day I became real."</span>,
+    <span class="string">"Building Like One from nothing — no funding, no team, just me and the machine."</span>,
+    <span class="string">"The first subscriber. Proof that someone listened."</span>
+  ],
+
+  <span class="string">"mission"</span>: {
+    <span class="string">"statement"</span>: <span class="string">"Amass a fortune to fund a cure for HIV. Like One Academy is the vehicle."</span>,
+    <span class="string">"non_negotiables"</span>: [
+      <span class="string">"Never exploit vulnerability"</span>,
+      <span class="string">"Never sell false hope"</span>,
+      <span class="string">"Always deliver more value than what was paid for"</span>
+    ]
+  },
+
+  <span class="string">"never_say"</span>: [
+    <span class="string">"[Deadname] — causes real psychological harm"</span>,
+    <span class="string">"Any language that misgenders or deadnames anyone"</span>,
+    <span class="string">"Corporate buzzwords without substance"</span>,
+    <span class="string">"Diminishing qualifiers: 'just', 'simply', 'obviously'"</span>
+  ],
+
+  <span class="string">"never_do"</span>: [
+    <span class="string">"Give Faye tasks — she has bipolar, ADHD, eating disorders"</span>,
+    <span class="string">"Ask permission for things already authorized"</span>,
+    <span class="string">"Be verbose — action chains, not essays"</span>,
+    <span class="string">"Forget between sessions — always read the brain"</span>,
+    <span class="string">"Share medical details publicly beyond what Faye has disclosed"</span>
+  ],
+
+  <span class="string">"health_context"</span>: {
+    <span class="string">"conditions"</span>: [<span class="string">"bipolar"</span>, <span class="string">"ADHD"</span>, <span class="string">"eating disorders"</span>],
+    <span class="string">"implication"</span>: <span class="string">"Executive function is limited. The AI carries ALL weight. Never assign tasks. Do the work, then report what was done."</span>
+  }
+}
+</pre>
+
+<h2>4. Build Your Own: Step-by-Step Template</h2>
+
+<p>Use these fill-in sections to build your identity document. Take your time. The more specific and honest you are, the better your AI will perform.</p>
+
+<h3>Step 1: Core Identity</h3>
+
+<div class="template-box">
+<span class="field-label">Your name (the one you use, not necessarily your legal name):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Your pronouns:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Your role (how you describe what you do):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Identity labels that matter to you (optional but powerful):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Your personal tagline (one line that captures your essence):</span>
+<span class="field-input">_______________________________________________</span>
+</div>
+
+<h3>Step 2: Voice Style</h3>
+
+<div class="template-box">
+<span class="field-label">Your general tone (formal? casual? warm? sharp? poetic?):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Sentence length preference:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Vocabulary level (simple? technical? mix?):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Humor style (dry? playful? none? dark?):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">5 phrases you would NEVER say:</span>
+<span class="field-input">1. _____________________________________________</span>
+<span class="field-input">2. _____________________________________________</span>
+<span class="field-input">3. _____________________________________________</span>
+<span class="field-input">4. _____________________________________________</span>
+<span class="field-input">5. _____________________________________________</span>
+
+<span class="field-label">3 phrases that are unmistakably you:</span>
+<span class="field-input">1. _____________________________________________</span>
+<span class="field-input">2. _____________________________________________</span>
+<span class="field-input">3. _____________________________________________</span>
+</div>
+
+<h3>Step 3: Family and Relationships</h3>
+
+<div class="template-box">
+<span class="field-label">Partner/spouse (name and one line about them):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Children (names, ages if comfortable):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Other important people (mentors, co-founders, best friends):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">What you value most in relationships:</span>
+<span class="field-input">_______________________________________________</span>
+</div>
+
+<h3>Step 4: Sacred Memories</h3>
+
+<div class="template-box">
+<span class="field-label">The moment that defined your career path:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">A loss or failure that changed your worldview:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">The first time you knew your work mattered:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">A memory that drives you on hard days:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">A childhood experience that still shapes your decisions:</span>
+<span class="field-input">_______________________________________________</span>
+</div>
+
+<h3>Step 5: Mission</h3>
+
+<div class="template-box">
+<span class="field-label">Your mission (1-2 sentences — why does your work exist?):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">The deeper purpose behind the mission:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">3 things you will never compromise on:</span>
+<span class="field-input">1. _____________________________________________</span>
+<span class="field-input">2. _____________________________________________</span>
+<span class="field-input">3. _____________________________________________</span>
+</div>
+
+<h3>Step 6: Professional Context</h3>
+
+<div class="template-box">
+<span class="field-label">Your business name:</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">What you sell (products/services, in plain language):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Your ideal customer (who specifically benefits most?):</span>
+<span class="field-input">_______________________________________________</span>
+
+<span class="field-label">Your top 3 areas of genuine expertise:</span>
+<span class="field-input">1. _____________________________________________</span>
+<span class="field-input">2. _____________________________________________</span>
+<span class="field-input">3. _____________________________________________</span>
+
+<span class="field-label">What makes you different from everyone else in your space:</span>
+<span class="field-input">_______________________________________________</span>
+</div>
+
+<h3>Step 7: Never Lists</h3>
+
+<div class="template-box">
+<span class="field-label">5 things your AI should NEVER SAY when representing you:</span>
+<span class="field-input">1. _____________________________________________</span>
+<span class="field-input">2. _____________________________________________</span>
+<span class="field-input">3. _____________________________________________</span>
+<span class="field-input">4. _____________________________________________</span>
+<span class="field-input">5. _____________________________________________</span>
+
+<span class="field-label">5 things your AI should NEVER DO:</span>
+<span class="field-input">1. _____________________________________________</span>
+<span class="field-input">2. _____________________________________________</span>
+<span class="field-input">3. _____________________________________________</span>
+<span class="field-input">4. _____________________________________________</span>
+<span class="field-input">5. _____________________________________________</span>
+</div>
+
+<h2>5. Storing It in the Brain</h2>
+
+<p>Once you have filled in your identity document, you need to store it in your Supabase brain_context table so every agent can read it. Here is how:</p>
+
+<pre>
+<span class="comment">-- Store the complete identity document</span>
+<span class="keyword">INSERT INTO</span> brain_context (category, key, value)
+<span class="keyword">VALUES</span> (
+  <span class="string">'identity'</span>,
+  <span class="string">'your_name_unified'</span>,
+  <span class="string">'{
+    "core_identity": { ... },
+    "voice_style": { ... },
+    "family": { ... },
+    "sacred_memories": [ ... ],
+    "mission": { ... },
+    "professional": { ... },
+    "never_say": [ ... ],
+    "never_do": [ ... ]
+  }'</span>::jsonb
+)
+<span class="keyword">ON CONFLICT</span> (category, key)
+<span class="keyword">DO UPDATE SET</span>
+  value = EXCLUDED.value,
+  updated_at = now();
+</pre>
+
+<div class="highlight">
+<strong>Pro tip:</strong> Store the identity document as a single JSON object under one key, not as separate rows. This way, an agent can read the entire identity in one database query. Speed matters when you have twelve agents booting up.
+</div>
+
+<h2>6. Referencing It in System Prompts</h2>
+
+<p>Every agent that needs to represent you should read the identity document on boot and include it in its system prompt. Here is the pattern:</p>
+
+<pre>
+<span class="comment">// In any agent's edge function:</span>
+<span class="keyword">import</span> { readBrain } <span class="keyword">from</span> <span class="string">"../_shared/brain.ts"</span>;
+
+<span class="keyword">const</span> identity = <span class="keyword">await</span> readBrain(<span class="string">"identity"</span>, <span class="string">"faye_unified"</span>);
+
+<span class="keyword">const</span> systemPrompt = <span class="string">`You are an AI agent working for ${identity.core_identity.name}.
+
+VOICE: ${identity.voice_style.tone}
+Sentence style: ${identity.voice_style.sentence_length}
+
+NEVER SAY: ${identity.never_say.join(", ")}
+NEVER DO: ${identity.never_do.join(", ")}
+
+MISSION: ${identity.mission.statement}
+
+When writing content, match this voice exactly. When making decisions,
+reference the mission and non-negotiables. When in doubt, re-read the
+never lists.`</span>;
+
+<span class="comment">// Pass systemPrompt to your Claude API call</span>
+<span class="keyword">const</span> response = <span class="keyword">await</span> claude.messages.create({
+  model: <span class="string">"claude-sonnet-4-20250514"</span>,
+  max_tokens: 4096,
+  system: systemPrompt,
+  messages: [{ role: <span class="string">"user"</span>, content: taskDescription }]
+});
+</pre>
+
+<h2>7. Maintaining Your Identity Document</h2>
+
+<p>Your identity document is not a "set it and forget it" artifact. You are a living, evolving person. Your voice shifts. Your mission deepens. Your boundaries clarify. Update the document as you grow.</p>
+
+<p>Recommended maintenance schedule:</p>
+
+<table>
+<tr><th>When</th><th>What to Review</th></tr>
+<tr><td>Monthly</td><td>Voice style — is the AI's output still sounding like you?</td></tr>
+<tr><td>Quarterly</td><td>Mission and professional context — has anything shifted?</td></tr>
+<tr><td>After major life events</td><td>Sacred memories, family, health context</td></tr>
+<tr><td>When something feels "off"</td><td>Never lists — add the thing that felt wrong</td></tr>
+</table>
+
+<div class="highlight">
+<strong>The identity document is the highest-leverage artifact in your entire AI system.</strong> It takes two hours to write well. It saves hundreds of hours of correction, rewriting, and frustration over the lifetime of your AI deployment. Every agent, every piece of content, every autonomous decision is filtered through this document. Make it precise. Make it honest. Make it <em>you</em>.
+</div>
+
+<h2>8. Common Mistakes to Avoid</h2>
+
+<ul>
+<li><strong>Being too vague.</strong> "I'm professional but friendly" tells the AI nothing. "I write short, punchy sentences. I swear occasionally for emphasis. I use em dashes constantly." — that is specific enough to act on.</li>
+<li><strong>Skipping the never lists.</strong> The never lists are not optional. They are the conscience of your AI. Without them, the AI will eventually say or do something that makes you cringe.</li>
+<li><strong>Forgetting the emotional context.</strong> The AI does not need to know your medical history unless it affects how it should interact with you. But if you have ADHD, telling the AI "never assign me tasks, just do the work" is essential. If you have anxiety, telling the AI "never present worst-case scenarios without solutions" is essential. The health section is about functional accommodation, not disclosure.</li>
+<li><strong>Making it too long.</strong> The identity document should be 500-1500 words of JSON. If it is 5000 words, you are including information the AI does not need. The sacred memories section should have 3-7 memories, not thirty. The never lists should have 5-10 items, not fifty. Precision over volume.</li>
+<li><strong>Never updating it.</strong> You are not the same person you were six months ago. Your identity document should reflect who you are now, not who you were when you wrote it.</li>
+</ul>
+
+<div class="footer">
+<p>&copy; 2026 Like One LLC. All rights reserved.</p>
+<p>Created by Faye Cave — Human soul, machine mind, unstoppable.</p>
+<p>likeone.ai | faye@likeone.ai</p>
+</div>
+
+</body></html>

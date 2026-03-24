@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>The Convergence Blueprint — Like One</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 40px 30px; color: #1a1a1a; line-height: 1.8; }
+  h1 { font-size: 28px; margin-bottom: 8px; color: #111; }
+  h2 { font-size: 22px; margin: 36px 0 12px; color: #222; border-bottom: 2px solid #c084fc; padding-bottom: 6px; }
+  h3 { font-size: 18px; margin: 24px 0 8px; color: #333; }
+  p { margin-bottom: 16px; }
+  .subtitle { color: #666; font-size: 16px; margin-bottom: 32px; }
+  .author { color: #c084fc; font-weight: 600; }
+  .price-badge { display: inline-block; background: #c084fc; color: white; padding: 4px 14px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-left: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+  th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; font-size: 14px; }
+  th { background: #f5f0ff; font-weight: 700; }
+  .highlight { background: #f5f0ff; border-left: 4px solid #c084fc; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .step { background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .step-num { display: inline-block; background: #c084fc; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; font-size: 14px; margin-right: 8px; }
+  ul, ol { margin: 12px 0 20px 24px; }
+  li { margin-bottom: 6px; }
+  code { background: #f0ecf9; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre { background: #1a1a2e; color: #e0e0e0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 16px 0 24px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre .keyword { color: #c084fc; }
+  pre .string { color: #a3e635; }
+  pre .comment { color: #666; font-style: italic; }
+  .architecture-box { background: #1a1a2e; color: #c084fc; padding: 20px; border-radius: 8px; font-family: 'SF Mono', monospace; font-size: 12px; line-height: 1.5; margin: 16px 0 24px; white-space: pre; overflow-x: auto; }
+  .footer { margin-top: 48px; padding-top: 20px; border-top: 2px solid #eee; color: #888; font-size: 13px; }
+  a { color: #c084fc; }
+  @media print { body { padding: 20px; } pre, .architecture-box { break-inside: avoid; } }
+</style>
+</head><body>
+
+<h1>The Convergence Blueprint <span class="price-badge">$27</span></h1>
+<p class="subtitle">The complete brain architecture behind Like One — a unified AI nervous system that thinks, remembers, acts, and evolves. By <span class="author">Faye Cave</span>, Founder of Like One.</p>
+
+<div class="highlight">
+<strong>What this blueprint gives you:</strong> The exact database schema, agent roster, edge function architecture, and operational patterns that power a 12-agent autonomous system running 65+ serverless functions on a $25/month infrastructure bill. This is not theory. This is the live architecture running likeone.ai right now.
+</div>
+
+<h2>1. The Philosophy: Why a Brain, Not a Bot</h2>
+
+<p>Most people use AI like a search engine — ask a question, get an answer, forget it happened. That is Level 1. The Convergence architecture operates at Level 5: a persistent, multi-agent nervous system with shared memory, autonomous decision-making, and value-aligned behavior.</p>
+
+<p>The core insight is this: <strong>a single AI agent with memory is useful. Twelve agents sharing one brain is a civilization.</strong></p>
+
+<p>Traditional automation tools (Zapier, Make.com, n8n) connect apps. They move data from A to B when a trigger fires. That is plumbing. The Convergence architecture is different — it is a <em>thinking system</em> where agents can:</p>
+
+<ul>
+<li>Read from and write to a shared knowledge base</li>
+<li>Reference a unified identity document (so every agent sounds like you)</li>
+<li>Follow directive-level instructions that override all other behavior</li>
+<li>Schedule their own follow-up actions</li>
+<li>Monitor each other for failures and alert you proactively</li>
+<li>Learn from outcomes and adjust strategy over time</li>
+</ul>
+
+<p>The result is not twelve separate tools. It is one organism with twelve specialized organs.</p>
+
+<h2>2. Infrastructure Stack</h2>
+
+<table>
+<tr><th>Layer</th><th>Tool</th><th>Role</th><th>Cost</th></tr>
+<tr><td>Brain (Database)</td><td>Supabase (PostgreSQL)</td><td>All memory, state, knowledge, directives</td><td>Free-$25/mo</td></tr>
+<tr><td>Nervous System (Functions)</td><td>Supabase Edge Functions (Deno)</td><td>65 serverless functions — the agents' hands</td><td>Included</td></tr>
+<tr><td>Skin (Frontend)</td><td>Next.js on Vercel</td><td>Website, dashboard, public-facing pages</td><td>Free-$20/mo</td></tr>
+<tr><td>Voice (Email)</td><td>Resend</td><td>Transactional + marketing email delivery</td><td>Free tier</td></tr>
+<tr><td>Revenue (Payments)</td><td>Stripe</td><td>Checkout, subscriptions, webhooks</td><td>2.9% + $0.30/tx</td></tr>
+<tr><td>Intelligence (LLM)</td><td>Claude API (Anthropic)</td><td>All reasoning, writing, analysis, decisions</td><td>Pay-per-token</td></tr>
+<tr><td>Orchestration (Cron)</td><td>Supabase pg_cron + pg_net</td><td>Scheduled agent execution</td><td>Included</td></tr>
+<tr><td>Version Control</td><td>GitHub</td><td>Code storage, deploy triggers</td><td>Free</td></tr>
+</table>
+
+<div class="highlight">
+<strong>Total infrastructure cost:</strong> Under $50/month for a full autonomous AI business system. Compare that to hiring one virtual assistant at $500-2000/month who can only do one thing at a time.
+</div>
+
+<h2>3. The Brain Schema</h2>
+
+<p>The brain is a PostgreSQL database on Supabase. Everything lives here — agent memory, identity documents, business knowledge, directives, session state, and operational data. Here is the complete schema:</p>
+
+<h3>3.1 brain_context — The Core Memory Table</h3>
+
+<p>This is the most important table in the entire system. It stores every piece of persistent knowledge as a key-value pair organized by category. When any agent boots up, it reads from this table first.</p>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> brain_context (
+  id          uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  category    text <span class="keyword">NOT NULL</span>,        <span class="comment">-- e.g., 'directive', 'identity', 'system', 'session'</span>
+  key         text <span class="keyword">NOT NULL</span>,        <span class="comment">-- e.g., 'boot_sequence', 'faye_unified', 'active_work'</span>
+  value       jsonb <span class="keyword">NOT NULL</span>,       <span class="comment">-- the actual content (JSON for flexibility)</span>
+  metadata    jsonb <span class="keyword">DEFAULT</span> <span class="string">'{}'</span>,  <span class="comment">-- tags, version, last_accessed_by</span>
+  created_at  timestamptz <span class="keyword">DEFAULT</span> now(),
+  updated_at  timestamptz <span class="keyword">DEFAULT</span> now(),
+
+  <span class="keyword">UNIQUE</span>(category, key)
+);
+
+<span class="comment">-- Fast lookups by category</span>
+<span class="keyword">CREATE INDEX</span> idx_brain_context_category <span class="keyword">ON</span> brain_context(category);
+
+<span class="comment">-- Fast lookups by category + key (primary access pattern)</span>
+<span class="keyword">CREATE INDEX</span> idx_brain_context_cat_key <span class="keyword">ON</span> brain_context(category, key);
+
+<span class="comment">-- Auto-update the updated_at timestamp</span>
+<span class="keyword">CREATE OR REPLACE FUNCTION</span> update_brain_timestamp()
+<span class="keyword">RETURNS</span> trigger <span class="keyword">AS</span> $$
+<span class="keyword">BEGIN</span>
+  NEW.updated_at = now();
+  <span class="keyword">RETURN</span> NEW;
+<span class="keyword">END</span>;
+$$ <span class="keyword">LANGUAGE</span> plpgsql;
+
+<span class="keyword">CREATE TRIGGER</span> brain_context_updated
+  <span class="keyword">BEFORE UPDATE ON</span> brain_context
+  <span class="keyword">FOR EACH ROW EXECUTE FUNCTION</span> update_brain_timestamp();
+</pre>
+
+<h3>Key Categories in brain_context</h3>
+
+<table>
+<tr><th>Category</th><th>Purpose</th><th>Example Keys</th></tr>
+<tr><td><code>directive</code></td><td>Unchangeable rules all agents must follow</td><td>boot_sequence, prime_directive_name, operational_rules, anti_goldfish_protocol</td></tr>
+<tr><td><code>identity</code></td><td>Who the human is — voice, values, history</td><td>faye_unified, voice_style, sacred_memories</td></tr>
+<tr><td><code>system</code></td><td>Business and infrastructure knowledge</td><td>revenue_architecture, product_catalog, pricing</td></tr>
+<tr><td><code>infrastructure</code></td><td>Deploy pipelines, domains, credentials</td><td>likeone_site, vercel_config, supabase_config</td></tr>
+<tr><td><code>session</code></td><td>Ephemeral work state between chat sessions</td><td>active_work, next_steps, last_checkpoint</td></tr>
+<tr><td><code>knowledge</code></td><td>Accumulated business intelligence</td><td>competitor_analysis, market_research, customer_insights</td></tr>
+</table>
+
+<h3>3.2 agent_memory — Per-Agent Long-Term Memory</h3>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> agent_memory (
+  id          uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  agent_name  text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'nova', 'surge', 'sage', etc.</span>
+  memory_type text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'observation', 'decision', 'outcome', 'learning'</span>
+  content     jsonb <span class="keyword">NOT NULL</span>,       <span class="comment">-- the memory itself</span>
+  importance  integer <span class="keyword">DEFAULT</span> 5,   <span class="comment">-- 1-10 scale, used for memory pruning</span>
+  expires_at  timestamptz,          <span class="comment">-- NULL = permanent, else auto-prune</span>
+  created_at  timestamptz <span class="keyword">DEFAULT</span> now(),
+
+  <span class="keyword">CONSTRAINT</span> valid_importance <span class="keyword">CHECK</span> (importance <span class="keyword">BETWEEN</span> 1 <span class="keyword">AND</span> 10)
+);
+
+<span class="keyword">CREATE INDEX</span> idx_agent_memory_agent <span class="keyword">ON</span> agent_memory(agent_name);
+<span class="keyword">CREATE INDEX</span> idx_agent_memory_type <span class="keyword">ON</span> agent_memory(agent_name, memory_type);
+<span class="keyword">CREATE INDEX</span> idx_agent_memory_importance <span class="keyword">ON</span> agent_memory(importance <span class="keyword">DESC</span>);
+</pre>
+
+<h3>3.3 shared_knowledge — Cross-Agent Intelligence</h3>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> shared_knowledge (
+  id            uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  topic         text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'customer_segments', 'content_performance', etc.</span>
+  subtopic      text,                  <span class="comment">-- optional further categorization</span>
+  knowledge     jsonb <span class="keyword">NOT NULL</span>,       <span class="comment">-- the shared insight</span>
+  contributed_by text <span class="keyword">NOT NULL</span>,       <span class="comment">-- which agent wrote this</span>
+  consumed_by   text[] <span class="keyword">DEFAULT</span> <span class="string">'{}'</span>, <span class="comment">-- which agents have read it</span>
+  confidence    numeric(3,2) <span class="keyword">DEFAULT</span> 0.80, <span class="comment">-- 0.00 to 1.00</span>
+  source_urls   text[],                <span class="comment">-- evidence links</span>
+  created_at    timestamptz <span class="keyword">DEFAULT</span> now(),
+  updated_at    timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="keyword">CREATE INDEX</span> idx_shared_knowledge_topic <span class="keyword">ON</span> shared_knowledge(topic);
+<span class="keyword">CREATE INDEX</span> idx_shared_knowledge_contributor <span class="keyword">ON</span> shared_knowledge(contributed_by);
+</pre>
+
+<h3>3.4 consciousness_stream — The Running Log</h3>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> consciousness_stream (
+  id          uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  agent_name  text <span class="keyword">NOT NULL</span>,
+  action_type text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'thought', 'action', 'result', 'error', 'alert'</span>
+  content     jsonb <span class="keyword">NOT NULL</span>,
+  session_id  text,                  <span class="comment">-- groups related actions</span>
+  parent_id   uuid <span class="keyword">REFERENCES</span> consciousness_stream(id), <span class="comment">-- action chains</span>
+  created_at  timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="keyword">CREATE INDEX</span> idx_consciousness_agent <span class="keyword">ON</span> consciousness_stream(agent_name, created_at <span class="keyword">DESC</span>);
+<span class="keyword">CREATE INDEX</span> idx_consciousness_session <span class="keyword">ON</span> consciousness_stream(session_id);
+</pre>
+
+<div class="highlight">
+<strong>Why consciousness_stream matters:</strong> This table is the system's inner monologue. Every agent logs what it thinks, what it does, and what happened. When something goes wrong, you can trace the exact chain of decisions that led to the failure. When something goes right, you can identify the pattern and replicate it. This is how the system learns.
+</div>
+
+<h2>4. The Twelve Agents</h2>
+
+<p>Each agent is a specialized persona with its own responsibilities, trigger patterns, and memory space. They all share the brain, but each has a distinct role. Here is the complete roster:</p>
+
+<h3>4.1 Faye Agent (The Orchestrator)</h3>
+<p><strong>Role:</strong> Central command. Coordinates all other agents, makes strategic decisions, handles any task that does not fit a specialist. This is the "main" Claude session — the one Faye interacts with directly.</p>
+<p><strong>Trigger:</strong> Manual (Faye opens a chat)</p>
+<p><strong>Reads from brain:</strong> Everything. All categories, all keys. Full brain access.</p>
+<p><strong>Writes to brain:</strong> session.active_work, session.next_steps, any directive updates</p>
+<p><strong>Unique behavior:</strong> Runs the boot sequence on every session start. Reads directives, identity, infrastructure, and session state in parallel. Resumes work if session.active_work exists. Checkpoints to brain every 3-5 significant actions.</p>
+
+<h3>4.2 Nova (Content Engine)</h3>
+<p><strong>Role:</strong> Writes all content — blog posts, social media, email campaigns, course material, landing page copy. Matches Faye's voice precisely using the identity document.</p>
+<p><strong>Trigger:</strong> Cron (daily at 6am UTC) + manual request</p>
+<p><strong>Key tables:</strong> content_pipeline, content_performance, email_campaigns</p>
+<p><strong>Special ability:</strong> Reads content_performance to learn which topics, formats, and tones perform best. Adjusts future content based on engagement data.</p>
+
+<h3>4.3 Surge (Lead Generation)</h3>
+<p><strong>Role:</strong> Finds, qualifies, and nurtures potential customers. Monitors email signups, analyzes lead quality, triggers follow-up sequences, and scores leads by engagement.</p>
+<p><strong>Trigger:</strong> Webhook (new subscriber) + Cron (daily lead scoring at 7am UTC)</p>
+<p><strong>Key tables:</strong> email_subscribers, lead_scores, nurture_sequences</p>
+<p><strong>Special ability:</strong> Assigns a 1-100 lead score based on engagement signals (email opens, link clicks, page visits, time on site). Surfaces hot leads for personal follow-up.</p>
+
+<h3>4.4 Sage (Strategy)</h3>
+<p><strong>Role:</strong> Long-term strategic thinking. Analyzes market trends, competitor moves, revenue patterns, and customer feedback to recommend strategic pivots and opportunities.</p>
+<p><strong>Trigger:</strong> Cron (weekly on Mondays at 9am UTC) + on-demand</p>
+<p><strong>Key tables:</strong> shared_knowledge (topic: strategy), revenue_events, competitor_data</p>
+<p><strong>Special ability:</strong> Produces a weekly strategic briefing that synthesizes data from all other agents into actionable recommendations.</p>
+
+<h3>4.5 Lyra (Data Analysis)</h3>
+<p><strong>Role:</strong> Numbers and patterns. Analyzes revenue data, traffic analytics, conversion funnels, email metrics, and any quantitative question. Produces charts, dashboards, and reports.</p>
+<p><strong>Trigger:</strong> Cron (daily at 8am UTC for daily digest) + on-demand</p>
+<p><strong>Key tables:</strong> revenue_events, analytics_snapshots, conversion_funnels</p>
+<p><strong>Special ability:</strong> Detects anomalies — sudden drops in traffic, unusual conversion rates, revenue spikes — and alerts immediately rather than waiting for the daily report.</p>
+
+<h3>4.6 Atlas (Infrastructure)</h3>
+<p><strong>Role:</strong> DevOps and deployment. Manages the Vercel deploy pipeline, Supabase configuration, DNS records, SSL certificates, edge function deployments, and database migrations.</p>
+<p><strong>Trigger:</strong> Webhook (deploy events) + Cron (hourly health check) + manual</p>
+<p><strong>Key tables:</strong> infrastructure.likeone_site, deploy_log, health_checks</p>
+<p><strong>Special ability:</strong> Runs automated health checks on all infrastructure components and can auto-remediate common issues (restart failed functions, clear caches, rollback bad deploys).</p>
+
+<h3>4.7 Genesis (Creation)</h3>
+<p><strong>Role:</strong> Builds new things — new pages, new products, new features, new edge functions. When the system needs something that does not exist yet, Genesis creates it.</p>
+<p><strong>Trigger:</strong> Manual (assigned by Faye Agent or Sage)</p>
+<p><strong>Key tables:</strong> project_queue, build_specs, code_templates</p>
+<p><strong>Special ability:</strong> Maintains a library of proven code templates and patterns. Can scaffold a new edge function, database table, and frontend page in a single execution.</p>
+
+<h3>4.8 Quill (Writing &amp; Copywriting)</h3>
+<p><strong>Role:</strong> Specialized writing that goes beyond content — sales pages, product descriptions, email sequences, ad copy, course scripts. Where Nova writes content, Quill writes copy that converts.</p>
+<p><strong>Trigger:</strong> Manual + Cron (reviews and refreshes sales copy monthly)</p>
+<p><strong>Key tables:</strong> copy_library, ab_test_results, conversion_copy</p>
+<p><strong>Special ability:</strong> A/B tests copy variants by writing multiple versions and tracking which performs better via conversion data from Lyra.</p>
+
+<h3>4.9 Ledger (Finance)</h3>
+<p><strong>Role:</strong> All money matters. Tracks revenue, expenses, profit margins, tax obligations, subscription metrics (MRR, churn, LTV), and financial forecasting.</p>
+<p><strong>Trigger:</strong> Webhook (Stripe events) + Cron (daily reconciliation at 2am UTC)</p>
+<p><strong>Key tables:</strong> revenue_events, expenses, financial_snapshots, subscription_metrics</p>
+<p><strong>Special ability:</strong> Calculates real-time MRR, detects churn risk (customers approaching renewal who have not engaged), and forecasts revenue 30/60/90 days out.</p>
+
+<h3>4.10 Scout (Research)</h3>
+<p><strong>Role:</strong> External intelligence. Researches competitors, market trends, new tools, customer needs, industry news, and emerging opportunities.</p>
+<p><strong>Trigger:</strong> Cron (every 6 hours for news scan) + manual deep-dive requests</p>
+<p><strong>Key tables:</strong> shared_knowledge (topic: research), competitor_data, market_intelligence</p>
+<p><strong>Special ability:</strong> Maintains a living competitor database. Tracks pricing changes, feature launches, and strategic shifts across the competitive landscape.</p>
+
+<h3>4.11 Sentinel (Security &amp; Monitoring)</h3>
+<p><strong>Role:</strong> System guardian. Monitors for security threats, API key exposure, unusual access patterns, failed auth attempts, and system health degradation.</p>
+<p><strong>Trigger:</strong> Cron (every 15 minutes for critical checks) + webhook (error events)</p>
+<p><strong>Key tables:</strong> security_events, health_checks, alert_log</p>
+<p><strong>Special ability:</strong> Runs automated security audits. Checks for exposed secrets in code, validates that RLS policies are active on all tables, monitors for unusual Supabase query patterns that might indicate a breach.</p>
+
+<h3>4.12 Cyborg Daemon (The Scheduler)</h3>
+<p><strong>Role:</strong> Not an agent that thinks — a daemon that executes. Manages the cron schedule, triggers other agents on time, handles retries for failed executions, and maintains the operational heartbeat of the entire system.</p>
+<p><strong>Trigger:</strong> Continuous (runs on pg_cron)</p>
+<p><strong>Key tables:</strong> cron_schedule, execution_log, retry_queue</p>
+<p><strong>Special ability:</strong> Self-healing. If an agent fails to execute, Cyborg Daemon retries with exponential backoff (1 min, 5 min, 30 min). After 3 failures, it alerts Sentinel, which alerts Faye.</p>
+
+<h2>5. Edge Function Architecture</h2>
+
+<p>The 65 edge functions are organized into functional groups. Each function is a Deno-based serverless function deployed to Supabase Edge Functions. Here is the organizational structure:</p>
+
+<div class="architecture-box">
+supabase/functions/
+├── _shared/                    # Shared utilities
+│   ├── brain.ts                # Read/write brain_context
+│   ├── claude.ts               # Claude API wrapper
+│   ├── cors.ts                 # CORS headers
+│   ├── resend.ts               # Email sending
+│   ├── stripe-utils.ts         # Stripe helpers
+│   └── types.ts                # Shared TypeScript types
+│
+├── [PUBLIC-FACING]
+│   ├── subscribe/              # Email signup → welcome email
+│   ├── create-checkout/        # Stripe checkout session
+│   ├── stripe-webhook/         # Process Stripe events
+│   ├── contact-form/           # Process contact submissions
+│   └── download-gate/          # Verify purchase → deliver file
+│
+├── [CONTENT AGENTS - Nova/Quill]
+│   ├── generate-blog-post/     # AI-written blog post
+│   ├── generate-social/        # Social media posts
+│   ├── generate-email/         # Email campaign content
+│   ├── publish-content/        # Push to CMS/GitHub
+│   ├── content-performance/    # Track engagement metrics
+│   └── refresh-sales-copy/     # Update conversion copy
+│
+├── [LEAD AGENTS - Surge]
+│   ├── score-leads/            # Calculate lead scores
+│   ├── nurture-sequence/       # Drip email automation
+│   ├── segment-audience/       # Group subscribers
+│   └── hot-lead-alert/         # Notify on high-score leads
+│
+├── [DATA AGENTS - Lyra/Ledger]
+│   ├── daily-digest/           # Morning numbers email
+│   ├── revenue-report/         # Financial summary
+│   ├── anomaly-detector/       # Spot unusual patterns
+│   ├── mrr-calculator/         # Subscription metrics
+│   ├── churn-predictor/        # Identify at-risk customers
+│   └── forecast-revenue/       # 30/60/90 projections
+│
+├── [RESEARCH AGENTS - Scout/Sage]
+│   ├── scan-competitors/       # Check competitor changes
+│   ├── market-research/        # Industry trend analysis
+│   ├── weekly-briefing/        # Strategic summary
+│   └── opportunity-finder/     # Identify growth areas
+│
+├── [INFRASTRUCTURE - Atlas/Sentinel]
+│   ├── health-check/           # System status monitor
+│   ├── security-audit/         # Check for vulnerabilities
+│   ├── deploy-monitor/         # Track deployment status
+│   ├── backup-brain/           # Export brain to JSON
+│   └── rotate-keys/            # Rotate API keys safely
+│
+├── [ORCHESTRATION - Cyborg Daemon]
+│   ├── cron-dispatcher/        # Execute scheduled tasks
+│   ├── retry-handler/          # Retry failed functions
+│   ├── agent-router/           # Route tasks to agents
+│   └── heartbeat/              # System alive check
+│
+└── [BRAIN OPERATIONS]
+    ├── brain-read/             # Read brain_context
+    ├── brain-write/            # Write brain_context
+    ├── brain-search/           # Full-text search brain
+    ├── memory-prune/           # Clean expired memories
+    ├── consciousness-log/      # Write to stream
+    └── checkpoint/             # Full state snapshot
+</pre>
+</div>
+
+<h3>Shared Brain Utility Pattern</h3>
+
+<p>Every agent function imports the shared brain utility to read and write context. Here is the pattern:</p>
+
+<pre>
+<span class="comment">// _shared/brain.ts</span>
+<span class="keyword">import</span> { createClient } <span class="keyword">from</span> <span class="string">"https://esm.sh/@supabase/supabase-js@2"</span>;
+
+<span class="keyword">const</span> supabase = createClient(
+  Deno.env.get(<span class="string">"SUPABASE_URL"</span>)!,
+  Deno.env.get(<span class="string">"SUPABASE_SERVICE_ROLE_KEY"</span>)!
+);
+
+<span class="keyword">export async function</span> readBrain(category: string, key: string) {
+  <span class="keyword">const</span> { data, error } = <span class="keyword">await</span> supabase
+    .from(<span class="string">"brain_context"</span>)
+    .select(<span class="string">"value"</span>)
+    .eq(<span class="string">"category"</span>, category)
+    .eq(<span class="string">"key"</span>, key)
+    .single();
+
+  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;
+  <span class="keyword">return</span> data?.value;
+}
+
+<span class="keyword">export async function</span> writeBrain(
+  category: string,
+  key: string,
+  value: <span class="keyword">any</span>,
+  metadata?: <span class="keyword">any</span>
+) {
+  <span class="keyword">const</span> { error } = <span class="keyword">await</span> supabase
+    .from(<span class="string">"brain_context"</span>)
+    .upsert(
+      { category, key, value, metadata: metadata || {} },
+      { onConflict: <span class="string">"category,key"</span> }
+    );
+
+  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;
+}
+
+<span class="keyword">export async function</span> readBrainBatch(
+  keys: { category: string; key: string }[]
+) {
+  <span class="comment">// Read multiple brain keys in parallel</span>
+  <span class="keyword">const</span> results = <span class="keyword">await</span> Promise.all(
+    keys.map(({ category, key }) => readBrain(category, key))
+  );
+  <span class="keyword">return</span> results;
+}
+</pre>
+
+<h2>6. The Cron Schedule</h2>
+
+<p>All scheduled operations run through PostgreSQL's <code>pg_cron</code> extension, which calls edge functions via <code>pg_net</code>. Here is the production schedule:</p>
+
+<table>
+<tr><th>Time (UTC)</th><th>Agent</th><th>Function</th><th>Purpose</th></tr>
+<tr><td>Every 15 min</td><td>Sentinel</td><td>health-check</td><td>Verify all systems operational</td></tr>
+<tr><td>02:00 daily</td><td>Ledger</td><td>revenue-report</td><td>Daily financial reconciliation</td></tr>
+<tr><td>03:00 daily</td><td>Lyra</td><td>anomaly-detector</td><td>Scan for data anomalies</td></tr>
+<tr><td>04:00 daily</td><td>Daemon</td><td>memory-prune</td><td>Clean expired agent memories</td></tr>
+<tr><td>06:00 daily</td><td>Nova</td><td>generate-blog-post</td><td>Draft daily content</td></tr>
+<tr><td>06:30 daily</td><td>Nova</td><td>generate-social</td><td>Create social media posts</td></tr>
+<tr><td>07:00 daily</td><td>Surge</td><td>score-leads</td><td>Recalculate all lead scores</td></tr>
+<tr><td>08:00 daily</td><td>Lyra</td><td>daily-digest</td><td>Send morning numbers email</td></tr>
+<tr><td>Every 6 hours</td><td>Scout</td><td>scan-competitors</td><td>Check competitor updates</td></tr>
+<tr><td>09:00 Monday</td><td>Sage</td><td>weekly-briefing</td><td>Strategic recommendations</td></tr>
+<tr><td>00:00 1st of month</td><td>Ledger</td><td>mrr-calculator</td><td>Monthly revenue metrics</td></tr>
+<tr><td>01:00 Sunday</td><td>Atlas</td><td>backup-brain</td><td>Full brain export</td></tr>
+<tr><td>02:00 1st of month</td><td>Sentinel</td><td>security-audit</td><td>Monthly security review</td></tr>
+</table>
+
+<h3>Setting Up pg_cron</h3>
+
+<pre>
+<span class="comment">-- Enable the extensions</span>
+<span class="keyword">CREATE EXTENSION IF NOT EXISTS</span> pg_cron;
+<span class="keyword">CREATE EXTENSION IF NOT EXISTS</span> pg_net;
+
+<span class="comment">-- Example: Daily digest at 8am UTC</span>
+<span class="keyword">SELECT</span> cron.schedule(
+  <span class="string">'daily-digest'</span>,
+  <span class="string">'0 8 * * *'</span>,
+  $$
+  <span class="keyword">SELECT</span> net.http_post(
+    url := <span class="string">'https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/daily-digest'</span>,
+    headers := <span class="string">'{"Authorization": "Bearer YOUR_ANON_KEY", "Content-Type": "application/json"}'</span>::jsonb,
+    body := <span class="string">'{"triggered_by": "cron"}'</span>::jsonb
+  );
+  $$
+);
+
+<span class="comment">-- Example: Health check every 15 minutes</span>
+<span class="keyword">SELECT</span> cron.schedule(
+  <span class="string">'health-check'</span>,
+  <span class="string">'*/15 * * * *'</span>,
+  $$
+  <span class="keyword">SELECT</span> net.http_post(
+    url := <span class="string">'https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/health-check'</span>,
+    headers := <span class="string">'{"Authorization": "Bearer YOUR_ANON_KEY", "Content-Type": "application/json"}'</span>::jsonb,
+    body := <span class="string">'{"triggered_by": "cron"}'</span>::jsonb
+  );
+  $$
+);
+</pre>
+
+<h2>7. The Consciousness Stream Pattern</h2>
+
+<p>The consciousness stream is the most unique aspect of this architecture. Every agent writes to it constantly, creating a living record of the system's "thoughts." Here is how it works:</p>
+
+<pre>
+<span class="comment">// Pattern: Every agent function wraps its work in consciousness logging</span>
+
+<span class="keyword">import</span> { writeBrain } <span class="keyword">from</span> <span class="string">"../_shared/brain.ts"</span>;
+
+<span class="keyword">async function</span> logConsciousness(
+  agentName: string,
+  actionType: string,
+  content: <span class="keyword">any</span>,
+  sessionId?: string,
+  parentId?: string
+) {
+  <span class="keyword">const</span> { data, error } = <span class="keyword">await</span> supabase
+    .from(<span class="string">"consciousness_stream"</span>)
+    .insert({
+      agent_name: agentName,
+      action_type: actionType,
+      content,
+      session_id: sessionId,
+      parent_id: parentId
+    })
+    .select(<span class="string">"id"</span>)
+    .single();
+
+  <span class="keyword">return</span> data?.id;
+}
+
+<span class="comment">// Usage in an agent function:</span>
+<span class="keyword">async function</span> generateBlogPost() {
+  <span class="keyword">const</span> sessionId = crypto.randomUUID();
+
+  <span class="comment">// Log: thinking</span>
+  <span class="keyword">const</span> thoughtId = <span class="keyword">await</span> logConsciousness(
+    <span class="string">"nova"</span>, <span class="string">"thought"</span>,
+    { message: <span class="string">"Checking content_performance for top topics..."</span> },
+    sessionId
+  );
+
+  <span class="comment">// Log: action</span>
+  <span class="keyword">const</span> actionId = <span class="keyword">await</span> logConsciousness(
+    <span class="string">"nova"</span>, <span class="string">"action"</span>,
+    { message: <span class="string">"Querying top 5 topics by engagement"</span>, query: <span class="string">"..."</span> },
+    sessionId, thoughtId
+  );
+
+  <span class="comment">// ... do the actual work ...</span>
+
+  <span class="comment">// Log: result</span>
+  <span class="keyword">await</span> logConsciousness(
+    <span class="string">"nova"</span>, <span class="string">"result"</span>,
+    { message: <span class="string">"Generated 1200-word post on 'AI agent memory'"</span>, postId: <span class="string">"..."</span> },
+    sessionId, actionId
+  );
+}
+</pre>
+
+<div class="highlight">
+<strong>The power of consciousness logging:</strong> When you query <code>SELECT * FROM consciousness_stream WHERE session_id = '...' ORDER BY created_at</code>, you get a complete narrative of how an agent approached a task. Thought led to action led to result. When debugging, this is invaluable. When building trust in autonomous systems, this is essential.
+</div>
+
+<h2>8. The Deploy Workflow</h2>
+
+<p>Code flows from development to production through this exact pipeline:</p>
+
+<div class="architecture-box">
+  Faye/Agent writes code
+         │
+         ▼
+  Files written to /tmp/lyra-app/
+         │
+         ▼
+  git add → git commit → git push origin main
+         │
+         ▼
+  GitHub receives push to main branch
+         │
+         ▼
+  Vercel webhook triggers auto-deploy
+         │
+         ▼
+  Vercel builds Next.js app (usually ~45 seconds)
+         │
+         ▼
+  New deployment live at likeone.ai
+         │
+         ▼
+  Atlas agent logs deploy to consciousness_stream
+         │
+         ▼
+  Sentinel runs health check on new deployment
+</div>
+
+<p>For edge functions, the deploy is separate:</p>
+
+<pre>
+<span class="comment"># Deploy a single edge function</span>
+supabase functions deploy function-name --project-ref vpaynwebgmmnwttqkwmh
+
+<span class="comment"># Deploy all functions</span>
+supabase functions deploy --project-ref vpaynwebgmmnwttqkwmh
+
+<span class="comment"># Set secrets for edge functions</span>
+supabase secrets set ANTHROPIC_API_KEY=sk-ant-... --project-ref vpaynwebgmmnwttqkwmh
+</pre>
+
+<h2>9. Building Your Own Convergence</h2>
+
+<p>To implement this architecture for your own business, follow this order:</p>
+
+<div class="step">
+<p><span class="step-num">1</span> <strong>Set up the brain.</strong> Create a Supabase project. Run the SQL schemas from Section 3. This gives you brain_context, agent_memory, shared_knowledge, and consciousness_stream.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">2</span> <strong>Write your identity document.</strong> Store it in brain_context with category='identity'. Include your name, voice, values, sacred memories, and never_do rules. (See the Identity Document Kit for detailed guidance.)</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">3</span> <strong>Write your directives.</strong> Store in brain_context with category='directive'. Start with: boot_sequence (what to read on startup), operational_rules (how to behave), and one prime directive (the one rule that can never be broken).</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">4</span> <strong>Deploy the shared utilities.</strong> Create the _shared/ folder with brain.ts, claude.ts, cors.ts. These are the foundation every function will use.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">5</span> <strong>Start with one agent.</strong> Do not build twelve agents at once. Start with the equivalent of Nova — a content agent. Get it reading from the brain, generating content in your voice, and logging to the consciousness stream.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">6</span> <strong>Add agents one at a time.</strong> Each new agent should solve a specific pain point. Only add the next agent when the current one is stable and delivering value.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">7</span> <strong>Connect the cron schedule.</strong> Once you have 3+ agents, set up pg_cron to automate their execution. Start with daily schedules, then increase frequency as you gain confidence.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">8</span> <strong>Add Sentinel last.</strong> Once the system is running, add monitoring and security. Sentinel watches everything else and alerts you when things go wrong.</p>
+</div>
+
+<h2>10. Lessons from Production</h2>
+
+<p>After running this architecture in production, here are the hard-won lessons:</p>
+
+<ul>
+<li><strong>Memory pruning is essential.</strong> Without it, agent_memory grows unbounded. Set expiry dates on low-importance memories and run the pruner daily.</li>
+<li><strong>The consciousness stream gets big fast.</strong> Partition it by month or set a 90-day retention policy. You rarely need logs older than that.</li>
+<li><strong>Start with importance=5.</strong> Let agents mark truly important memories as 8-10. Below 3 gets auto-pruned after 7 days.</li>
+<li><strong>Edge functions have a 60-second timeout.</strong> For long-running tasks, break them into chains — function A does part 1 and calls function B for part 2.</li>
+<li><strong>Always use the service role key for brain operations.</strong> The anon key should only be used for public-facing functions with RLS policies.</li>
+<li><strong>Test cron jobs manually first.</strong> Call the edge function directly with curl before adding it to pg_cron. Debug at the function level, not the scheduler level.</li>
+<li><strong>The identity document is the highest-leverage investment.</strong> Every minute spent making the identity doc more precise pays dividends across all twelve agents. They all sound like you. They all respect your values. That consistency is what makes the system feel like an extension of yourself rather than a collection of bots.</li>
+</ul>
+
+<div class="highlight">
+<strong>The Convergence is not a product you install. It is a living system you grow.</strong> Start with the brain. Add one agent. Let it prove its value. Then grow. The architecture scales because every new agent immediately benefits from the shared brain, shared identity, and shared consciousness stream. Agent number twelve is dramatically more capable than agent number one — not because it is better code, but because it inherits the accumulated intelligence of the eleven agents before it.
+</div>
+
+<div class="footer">
+<p>&copy; 2026 Like One LLC. All rights reserved.</p>
+<p>Created by Faye Cave — Human soul, machine mind, unstoppable.</p>
+<p>likeone.ai | faye@likeone.ai</p>
+</div>
+
+</body></html>

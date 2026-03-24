@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>Agent Starter Pack — Like One</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 40px 30px; color: #1a1a1a; line-height: 1.8; }
+  h1 { font-size: 28px; margin-bottom: 8px; color: #111; }
+  h2 { font-size: 22px; margin: 36px 0 12px; color: #222; border-bottom: 2px solid #c084fc; padding-bottom: 6px; }
+  h3 { font-size: 18px; margin: 24px 0 8px; color: #333; }
+  h4 { font-size: 15px; margin: 16px 0 6px; color: #444; }
+  p { margin-bottom: 16px; }
+  .subtitle { color: #666; font-size: 16px; margin-bottom: 32px; }
+  .author { color: #c084fc; font-weight: 600; }
+  .price-badge { display: inline-block; background: #c084fc; color: white; padding: 4px 14px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-left: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+  th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; font-size: 14px; }
+  th { background: #f5f0ff; font-weight: 700; }
+  .highlight { background: #f5f0ff; border-left: 4px solid #c084fc; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .step { background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .step-num { display: inline-block; background: #c084fc; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; font-size: 14px; margin-right: 8px; }
+  ul, ol { margin: 12px 0 20px 24px; }
+  li { margin-bottom: 6px; }
+  code { background: #f0ecf9; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre { background: #1a1a2e; color: #e0e0e0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 16px 0 24px; font-size: 13px; line-height: 1.6; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre .keyword { color: #c084fc; }
+  pre .string { color: #a3e635; }
+  pre .comment { color: #666; font-style: italic; }
+  .agent-header { background: linear-gradient(135deg, #1a1a2e, #2d1b69); color: white; padding: 20px; border-radius: 8px; margin: 24px 0 16px; }
+  .agent-header h3 { color: #c084fc; margin: 0 0 4px; }
+  .agent-header p { color: #ccc; margin: 0; font-size: 14px; }
+  .agent-meta { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+  .agent-meta span { background: rgba(192, 132, 252, 0.2); color: #c084fc; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .footer { margin-top: 48px; padding-top: 20px; border-top: 2px solid #eee; color: #888; font-size: 13px; }
+  a { color: #c084fc; }
+  @media print { body { padding: 20px; } pre, .agent-header { break-inside: avoid; } }
+</style>
+</head><body>
+
+<h1>Agent Starter Pack <span class="price-badge">$37</span></h1>
+<p class="subtitle">5 production-ready autonomous agent configurations — complete with database schemas, edge function code, cron schedules, and example prompts. Copy, deploy, profit. By <span class="author">Faye Cave</span>, Founder of Like One.</p>
+
+<div class="highlight">
+<strong>What you get:</strong> Five fully specified AI agents that run on Supabase Edge Functions + Claude API. Each agent includes: purpose and trigger type, the exact database table it needs, the complete edge function code outline, the cron schedule to automate it, and real example prompts that produce high-quality output. Total deployment time: one weekend.
+</div>
+
+<h2>Before You Start: Prerequisites</h2>
+
+<table>
+<tr><th>Requirement</th><th>Purpose</th><th>Setup Time</th></tr>
+<tr><td>Supabase project</td><td>Database + Edge Functions host</td><td>5 minutes</td></tr>
+<tr><td>Claude API key (Anthropic)</td><td>The intelligence layer</td><td>2 minutes</td></tr>
+<tr><td>Resend account + verified domain</td><td>Email delivery for 3 of 5 agents</td><td>15 minutes</td></tr>
+<tr><td>brain_context table</td><td>Shared knowledge store (see Convergence Blueprint)</td><td>5 minutes</td></tr>
+<tr><td>_shared/brain.ts utility</td><td>Read/write brain functions</td><td>5 minutes</td></tr>
+</table>
+
+<p>Store your API keys as Supabase Edge Function secrets:</p>
+
+<pre>
+supabase secrets set ANTHROPIC_API_KEY=sk-ant-xxxxx --project-ref YOUR_REF
+supabase secrets set RESEND_API_KEY=re_xxxxx --project-ref YOUR_REF
+</pre>
+
+<h2>Shared Utilities</h2>
+
+<p>All five agents share these utility functions. Create them once in your <code>supabase/functions/_shared/</code> directory:</p>
+
+<pre>
+<span class="comment">// _shared/claude.ts — Claude API wrapper</span>
+<span class="keyword">export async function</span> askClaude(
+  systemPrompt: string,
+  userMessage: string,
+  options?: { maxTokens?: number; temperature?: number }
+): Promise&lt;string&gt; {
+  <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">"https://api.anthropic.com/v1/messages"</span>, {
+    method: <span class="string">"POST"</span>,
+    headers: {
+      <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>,
+      <span class="string">"x-api-key"</span>: Deno.env.get(<span class="string">"ANTHROPIC_API_KEY"</span>)!,
+      <span class="string">"anthropic-version"</span>: <span class="string">"2023-06-01"</span>,
+    },
+    body: JSON.stringify({
+      model: <span class="string">"claude-sonnet-4-20250514"</span>,
+      max_tokens: options?.maxTokens || 4096,
+      temperature: options?.temperature || 0.7,
+      system: systemPrompt,
+      messages: [{ role: <span class="string">"user"</span>, content: userMessage }],
+    }),
+  });
+
+  <span class="keyword">const</span> data = <span class="keyword">await</span> response.json();
+  <span class="keyword">return</span> data.content[0].text;
+}
+
+<span class="comment">// _shared/resend.ts — Email sending</span>
+<span class="keyword">export async function</span> sendEmail(
+  to: string,
+  subject: string,
+  html: string,
+  from?: string
+): Promise&lt;void&gt; {
+  <span class="keyword">await</span> fetch(<span class="string">"https://api.resend.com/emails"</span>, {
+    method: <span class="string">"POST"</span>,
+    headers: {
+      <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>,
+      <span class="string">"Authorization"</span>: <span class="string">`Bearer ${Deno.env.get("RESEND_API_KEY")}`</span>,
+    },
+    body: JSON.stringify({
+      from: from || <span class="string">"you@yourdomain.com"</span>,
+      to,
+      subject,
+      html,
+    }),
+  });
+}
+
+<span class="comment">// _shared/cors.ts — CORS headers for webhooks</span>
+<span class="keyword">export const</span> corsHeaders = {
+  <span class="string">"Access-Control-Allow-Origin"</span>: <span class="string">"*"</span>,
+  <span class="string">"Access-Control-Allow-Headers"</span>: <span class="string">"authorization, x-client-info, apikey, content-type"</span>,
+};
+</pre>
+
+<hr style="margin: 32px 0; border: none; border-top: 3px solid #c084fc;">
+
+<div class="agent-header">
+<h3>Agent 1: Morning Briefer</h3>
+<p>Your personal AI chief of staff — delivers a comprehensive daily briefing to your inbox every morning before you wake up.</p>
+<div class="agent-meta">
+<span>Trigger: Cron (daily 7am)</span>
+<span>Output: Email</span>
+<span>Difficulty: Beginner</span>
+<span>Value: 30 min/day saved</span>
+</div>
+</div>
+
+<h4>What It Does</h4>
+<p>Every morning at 7am, this agent queries your database for yesterday's key metrics (revenue, new subscribers, content performance), checks your calendar context, and generates a concise briefing email. You wake up to a summary of everything that happened while you slept, plus recommended priorities for the day.</p>
+
+<h4>Database Schema</h4>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> daily_briefings (
+  id            uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  briefing_date date <span class="keyword">NOT NULL UNIQUE</span>,
+  metrics       jsonb <span class="keyword">NOT NULL</span>,      <span class="comment">-- {revenue, subscribers, pageviews, etc.}</span>
+  highlights    jsonb <span class="keyword">NOT NULL</span>,      <span class="comment">-- notable events from yesterday</span>
+  priorities    jsonb <span class="keyword">NOT NULL</span>,      <span class="comment">-- AI-recommended focus areas</span>
+  full_briefing text <span class="keyword">NOT NULL</span>,       <span class="comment">-- the rendered email content</span>
+  sent_at       timestamptz,
+  created_at    timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="comment">-- Also queries from these existing tables:</span>
+<span class="comment">-- revenue_events (amount, source, created_at)</span>
+<span class="comment">-- email_subscribers (created_at for new signups)</span>
+<span class="comment">-- content_pipeline (status, published_at, engagement)</span>
+</pre>
+
+<h4>Edge Function Code</h4>
+
+<pre>
+<span class="comment">// supabase/functions/morning-briefer/index.ts</span>
+<span class="keyword">import</span> { serve } <span class="keyword">from</span> <span class="string">"https://deno.land/std@0.168.0/http/server.ts"</span>;
+<span class="keyword">import</span> { createClient } <span class="keyword">from</span> <span class="string">"https://esm.sh/@supabase/supabase-js@2"</span>;
+<span class="keyword">import</span> { askClaude } <span class="keyword">from</span> <span class="string">"../_shared/claude.ts"</span>;
+<span class="keyword">import</span> { sendEmail } <span class="keyword">from</span> <span class="string">"../_shared/resend.ts"</span>;
+<span class="keyword">import</span> { readBrain } <span class="keyword">from</span> <span class="string">"../_shared/brain.ts"</span>;
+
+serve(<span class="keyword">async</span> (req) => {
+  <span class="keyword">const</span> supabase = createClient(
+    Deno.env.get(<span class="string">"SUPABASE_URL"</span>)!,
+    Deno.env.get(<span class="string">"SUPABASE_SERVICE_ROLE_KEY"</span>)!
+  );
+
+  <span class="keyword">const</span> yesterday = <span class="keyword">new</span> Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  <span class="keyword">const</span> dateStr = yesterday.toISOString().split(<span class="string">"T"</span>)[0];
+
+  <span class="comment">// 1. Gather metrics from multiple tables in parallel</span>
+  <span class="keyword">const</span> [revenueData, newSubs, publishedContent] = <span class="keyword">await</span> Promise.all([
+    supabase.from(<span class="string">"revenue_events"</span>)
+      .select(<span class="string">"amount, source"</span>)
+      .gte(<span class="string">"created_at"</span>, dateStr)
+      .lt(<span class="string">"created_at"</span>, <span class="keyword">new</span> Date().toISOString().split(<span class="string">"T"</span>)[0]),
+    supabase.from(<span class="string">"email_subscribers"</span>)
+      .select(<span class="string">"id"</span>, { count: <span class="string">"exact"</span> })
+      .gte(<span class="string">"created_at"</span>, dateStr),
+    supabase.from(<span class="string">"content_pipeline"</span>)
+      .select(<span class="string">"title, channel, engagement"</span>)
+      .eq(<span class="string">"status"</span>, <span class="string">"published"</span>)
+      .gte(<span class="string">"published_at"</span>, dateStr),
+  ]);
+
+  <span class="comment">// 2. Calculate summary metrics</span>
+  <span class="keyword">const</span> totalRevenue = revenueData.data?.reduce(
+    (sum, e) => sum + e.amount, 0
+  ) || 0;
+  <span class="keyword">const</span> newSubscribers = newSubs.count || 0;
+
+  <span class="keyword">const</span> metrics = {
+    revenue: totalRevenue,
+    new_subscribers: newSubscribers,
+    content_published: publishedContent.data?.length || 0,
+    top_content: publishedContent.data?.[0]?.title || <span class="string">"None"</span>,
+  };
+
+  <span class="comment">// 3. Read identity for voice matching</span>
+  <span class="keyword">const</span> identity = <span class="keyword">await</span> readBrain(<span class="string">"identity"</span>, <span class="string">"your_identity"</span>);
+
+  <span class="comment">// 4. Generate briefing with Claude</span>
+  <span class="keyword">const</span> briefing = <span class="keyword">await</span> askClaude(
+    <span class="string">`You are a chief of staff AI. Write a morning briefing email.
+Be concise, data-driven, and actionable. Use bullet points.
+Voice: ${identity?.voice_style?.tone || "Direct and warm."}`</span>,
+    <span class="string">`Yesterday's metrics:
+- Revenue: $${totalRevenue.toFixed(2)}
+- New subscribers: ${newSubscribers}
+- Content published: ${metrics.content_published}
+
+Generate a briefing with: Key Numbers, Notable Events,
+Recommended Priorities for Today (max 3).`</span>
+  );
+
+  <span class="comment">// 5. Store and send</span>
+  <span class="keyword">await</span> supabase.from(<span class="string">"daily_briefings"</span>).insert({
+    briefing_date: dateStr,
+    metrics,
+    highlights: { content: publishedContent.data },
+    priorities: { generated: true },
+    full_briefing: briefing,
+    sent_at: <span class="keyword">new</span> Date().toISOString(),
+  });
+
+  <span class="keyword">await</span> sendEmail(
+    <span class="string">"you@yourdomain.com"</span>,
+    <span class="string">`Morning Briefing — ${dateStr}`</span>,
+    <span class="string">`&lt;div style="font-family: sans-serif; max-width: 600px;"&gt;
+      &lt;h2&gt;Morning Briefing&lt;/h2&gt;
+      ${briefing.replace(/\n/g, "&lt;br&gt;")}
+    &lt;/div&gt;`</span>
+  );
+
+  <span class="keyword">return new</span> Response(JSON.stringify({ success: true }));
+});
+</pre>
+
+<h4>Cron Schedule</h4>
+<pre>
+<span class="keyword">SELECT</span> cron.schedule(<span class="string">'morning-briefer'</span>, <span class="string">'0 7 * * *'</span>, $$
+  <span class="keyword">SELECT</span> net.http_post(
+    url := <span class="string">'https://YOUR_REF.supabase.co/functions/v1/morning-briefer'</span>,
+    headers := <span class="string">'{"Authorization": "Bearer YOUR_ANON_KEY"}'</span>::jsonb,
+    body := <span class="string">'{"triggered_by": "cron"}'</span>::jsonb
+  );
+$$);
+</pre>
+
+<h4>Example Output</h4>
+<div class="highlight">
+<strong>Morning Briefing — 2026-03-22</strong><br><br>
+<strong>Key Numbers</strong><br>
+- Revenue: $147.00 (3 sales — 2x AI Playbook, 1x Agent Starter Pack)<br>
+- New subscribers: 12 (up from 8 daily average)<br>
+- Content published: 1 blog post ("Why Your AI Forgets Everything")<br><br>
+<strong>Notable</strong><br>
+- Subscriber spike likely from the LinkedIn post that got 2.4K impressions<br>
+- Blog post engagement: 340 views, 4.2 min avg read time (above baseline)<br><br>
+<strong>Priorities Today</strong><br>
+1. Follow up on the LinkedIn momentum — publish a companion post<br>
+2. Two subscribers opened every email this week — consider personal outreach<br>
+3. Revenue pacing at $4,410/month — $590 short of $5K target
+</div>
+
+<hr style="margin: 32px 0; border: none; border-top: 3px solid #c084fc;">
+
+<div class="agent-header">
+<h3>Agent 2: Content Writer</h3>
+<p>Autonomous blog post generator that writes in your voice, optimizes for SEO, and queues posts for publication.</p>
+<div class="agent-meta">
+<span>Trigger: Cron (daily 6am)</span>
+<span>Output: Database + CMS</span>
+<span>Difficulty: Intermediate</span>
+<span>Value: 4 hrs/week saved</span>
+</div>
+</div>
+
+<h4>What It Does</h4>
+<p>Reads your identity document for voice matching, checks content_performance for trending topics, generates a complete 800-1200 word blog post with title, meta description, and tags, and saves it to your content pipeline as "draft" for review or "ready" for auto-publish.</p>
+
+<h4>Database Schema</h4>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> content_pipeline (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  title           text <span class="keyword">NOT NULL</span>,
+  slug            text <span class="keyword">NOT NULL UNIQUE</span>,
+  content         text <span class="keyword">NOT NULL</span>,        <span class="comment">-- markdown or HTML body</span>
+  meta_description text,                 <span class="comment">-- SEO meta</span>
+  tags            text[] <span class="keyword">DEFAULT</span> <span class="string">'{}'</span>,
+  channel         text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'blog', 'linkedin', 'twitter', 'email'</span>
+  status          text <span class="keyword">DEFAULT</span> <span class="string">'draft'</span>,  <span class="comment">-- 'draft', 'ready', 'published', 'archived'</span>
+  word_count      integer,
+  scheduled_at    timestamptz,
+  published_at    timestamptz,
+  engagement      jsonb <span class="keyword">DEFAULT</span> <span class="string">'{}'</span>,  <span class="comment">-- {views, reads, shares, comments}</span>
+  generated_by    text <span class="keyword">DEFAULT</span> <span class="string">'content-writer'</span>,
+  created_at      timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="keyword">CREATE INDEX</span> idx_content_status <span class="keyword">ON</span> content_pipeline(status);
+<span class="keyword">CREATE INDEX</span> idx_content_channel <span class="keyword">ON</span> content_pipeline(channel);
+
+<span class="keyword">CREATE TABLE</span> content_performance (
+  id          uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  topic       text <span class="keyword">NOT NULL</span>,
+  avg_views   integer <span class="keyword">DEFAULT</span> 0,
+  avg_reads   integer <span class="keyword">DEFAULT</span> 0,
+  avg_shares  integer <span class="keyword">DEFAULT</span> 0,
+  post_count  integer <span class="keyword">DEFAULT</span> 0,
+  score       numeric(5,2) <span class="keyword">DEFAULT</span> 0, <span class="comment">-- composite engagement score</span>
+  updated_at  timestamptz <span class="keyword">DEFAULT</span> now()
+);
+</pre>
+
+<h4>Edge Function Code</h4>
+
+<pre>
+<span class="comment">// supabase/functions/content-writer/index.ts</span>
+serve(<span class="keyword">async</span> (req) => {
+  <span class="comment">// 1. Read identity + voice from brain</span>
+  <span class="keyword">const</span> identity = <span class="keyword">await</span> readBrain(<span class="string">"identity"</span>, <span class="string">"your_identity"</span>);
+
+  <span class="comment">// 2. Get top-performing topics</span>
+  <span class="keyword">const</span> { data: topTopics } = <span class="keyword">await</span> supabase
+    .from(<span class="string">"content_performance"</span>)
+    .select(<span class="string">"topic, score"</span>)
+    .order(<span class="string">"score"</span>, { ascending: false })
+    .limit(5);
+
+  <span class="comment">// 3. Check what we have NOT written about recently</span>
+  <span class="keyword">const</span> { data: recentPosts } = <span class="keyword">await</span> supabase
+    .from(<span class="string">"content_pipeline"</span>)
+    .select(<span class="string">"title, tags"</span>)
+    .eq(<span class="string">"channel"</span>, <span class="string">"blog"</span>)
+    .order(<span class="string">"created_at"</span>, { ascending: false })
+    .limit(10);
+
+  <span class="comment">// 4. Generate post with Claude</span>
+  <span class="keyword">const</span> result = <span class="keyword">await</span> askClaude(
+    <span class="string">`You are a blog writer for ${identity.core_identity.name}.
+
+VOICE: ${identity.voice_style.tone}
+FORBIDDEN PHRASES: ${identity.never_say.join(", ")}
+EXPERTISE: ${identity.professional.expertise_areas.join(", ")}
+AUDIENCE: ${identity.professional.target_audience}
+
+Write a blog post that is 800-1200 words. Use short paragraphs.
+Include a compelling title, meta description (under 160 chars),
+and 3-5 tags. Return as JSON:
+{title, slug, meta_description, content, tags, word_count}`</span>,
+
+    <span class="string">`Top performing topics: ${topTopics?.map(t => t.topic).join(", ")}
+Recent posts (avoid repeating): ${recentPosts?.map(p => p.title).join(", ")}
+Write about one of the top topics that hasn't been covered recently.`</span>,
+    { maxTokens: 4096, temperature: 0.8 }
+  );
+
+  <span class="comment">// 5. Parse and store</span>
+  <span class="keyword">const</span> post = JSON.parse(result);
+  <span class="keyword">await</span> supabase.from(<span class="string">"content_pipeline"</span>).insert({
+    ...post,
+    channel: <span class="string">"blog"</span>,
+    status: <span class="string">"draft"</span>, <span class="comment">// Change to "ready" for auto-publish</span>
+    generated_by: <span class="string">"content-writer"</span>,
+  });
+
+  <span class="keyword">return new</span> Response(JSON.stringify({ success: true, title: post.title }));
+});
+</pre>
+
+<h4>Example Prompt That Produces Great Results</h4>
+<div class="highlight">
+<strong>System:</strong> "You write like someone who has built AI systems from scratch, not someone who read about them. Your sentences are short. You use concrete examples. You never say 'leverage' or 'game-changer.' You occasionally swear for emphasis. Your audience is small business owners who are smart but not technical."<br><br>
+<strong>User:</strong> "Write a blog post about why most AI automations fail in the first month. Use real failure modes you'd see in production. End with 3 actionable fixes."
+</div>
+
+<hr style="margin: 32px 0; border: none; border-top: 3px solid #c084fc;">
+
+<div class="agent-header">
+<h3>Agent 3: Research Analyst</h3>
+<p>Automated competitor and market intelligence scanner that keeps you informed about your industry without manual research.</p>
+<div class="agent-meta">
+<span>Trigger: Cron (every 6 hours)</span>
+<span>Output: Database + Weekly email</span>
+<span>Difficulty: Intermediate</span>
+<span>Value: 5 hrs/week saved</span>
+</div>
+</div>
+
+<h4>What It Does</h4>
+<p>Scans competitor websites, analyzes pricing changes, tracks feature launches, monitors industry news, and compiles findings into the shared_knowledge table. Every Friday, it generates a weekly intelligence report email with the most important discoveries.</p>
+
+<h4>Database Schema</h4>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> competitor_data (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  competitor_name text <span class="keyword">NOT NULL</span>,
+  data_type       text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'pricing', 'feature', 'content', 'news'</span>
+  data            jsonb <span class="keyword">NOT NULL</span>,
+  source_url      text,
+  significance    integer <span class="keyword">DEFAULT</span> 5,   <span class="comment">-- 1-10, how important is this finding</span>
+  analyzed        boolean <span class="keyword">DEFAULT</span> false,
+  created_at      timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="keyword">CREATE TABLE</span> market_intelligence (
+  id            uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  category      text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'trend', 'opportunity', 'threat', 'insight'</span>
+  title         text <span class="keyword">NOT NULL</span>,
+  analysis      text <span class="keyword">NOT NULL</span>,
+  confidence    numeric(3,2) <span class="keyword">DEFAULT</span> 0.70,
+  action_items  jsonb <span class="keyword">DEFAULT</span> <span class="string">'[]'</span>,
+  expires_at    timestamptz,          <span class="comment">-- some intel has a shelf life</span>
+  created_at    timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="keyword">CREATE TABLE</span> research_targets (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  name            text <span class="keyword">NOT NULL UNIQUE</span>,
+  website_url     text,
+  check_frequency text <span class="keyword">DEFAULT</span> <span class="string">'daily'</span>, <span class="comment">-- 'hourly', 'daily', 'weekly'</span>
+  last_checked    timestamptz,
+  is_active       boolean <span class="keyword">DEFAULT</span> true
+);
+
+<span class="comment">-- Seed your competitors</span>
+<span class="keyword">INSERT INTO</span> research_targets (name, website_url) <span class="keyword">VALUES</span>
+  (<span class="string">'Competitor A'</span>, <span class="string">'https://competitor-a.com'</span>),
+  (<span class="string">'Competitor B'</span>, <span class="string">'https://competitor-b.com'</span>),
+  (<span class="string">'Industry Blog'</span>, <span class="string">'https://industry-news.com'</span>);
+</pre>
+
+<h4>Edge Function Code Outline</h4>
+
+<pre>
+<span class="comment">// supabase/functions/research-analyst/index.ts</span>
+serve(<span class="keyword">async</span> (req) => {
+  <span class="comment">// 1. Get active research targets</span>
+  <span class="keyword">const</span> { data: targets } = <span class="keyword">await</span> supabase
+    .from(<span class="string">"research_targets"</span>)
+    .select(<span class="string">"*"</span>)
+    .eq(<span class="string">"is_active"</span>, true);
+
+  <span class="comment">// 2. For each target, fetch and analyze</span>
+  <span class="keyword">for</span> (<span class="keyword">const</span> target <span class="keyword">of</span> targets.data || []) {
+    <span class="comment">// Fetch the target's public content</span>
+    <span class="comment">// (use a web scraping service or RSS feed)</span>
+    <span class="keyword">const</span> content = <span class="keyword">await</span> fetchPublicContent(target.website_url);
+
+    <span class="comment">// Analyze with Claude</span>
+    <span class="keyword">const</span> analysis = <span class="keyword">await</span> askClaude(
+      <span class="string">`You are a competitive intelligence analyst. Analyze this content
+from ${target.name} and identify: pricing changes, new features,
+strategic shifts, content themes, and anything our audience would
+care about. Rate significance 1-10. Return as JSON array.`</span>,
+      content,
+      { temperature: 0.3 } <span class="comment">// Low temp for analytical accuracy</span>
+    );
+
+    <span class="comment">// 3. Store significant findings</span>
+    <span class="keyword">const</span> findings = JSON.parse(analysis);
+    <span class="keyword">for</span> (<span class="keyword">const</span> finding <span class="keyword">of</span> findings) {
+      <span class="keyword">if</span> (finding.significance >= 6) {
+        <span class="keyword">await</span> supabase.from(<span class="string">"competitor_data"</span>).insert({
+          competitor_name: target.name,
+          data_type: finding.type,
+          data: finding,
+          source_url: target.website_url,
+          significance: finding.significance,
+        });
+      }
+    }
+
+    <span class="comment">// 4. Update last_checked</span>
+    <span class="keyword">await</span> supabase.from(<span class="string">"research_targets"</span>)
+      .update({ last_checked: <span class="keyword">new</span> Date().toISOString() })
+      .eq(<span class="string">"id"</span>, target.id);
+  }
+
+  <span class="comment">// 5. On Fridays, compile weekly report and email it</span>
+  <span class="keyword">if</span> (<span class="keyword">new</span> Date().getDay() === 5) {
+    <span class="keyword">const</span> { data: weekFindings } = <span class="keyword">await</span> supabase
+      .from(<span class="string">"competitor_data"</span>)
+      .select(<span class="string">"*"</span>)
+      .gte(<span class="string">"created_at"</span>, sevenDaysAgo())
+      .order(<span class="string">"significance"</span>, { ascending: false });
+
+    <span class="keyword">const</span> report = <span class="keyword">await</span> askClaude(
+      <span class="string">"Compile a weekly intelligence briefing from these findings..."</span>,
+      JSON.stringify(weekFindings)
+    );
+
+    <span class="keyword">await</span> sendEmail(<span class="string">"you@yourdomain.com"</span>, <span class="string">"Weekly Intel Report"</span>, report);
+  }
+
+  <span class="keyword">return new</span> Response(JSON.stringify({ success: true }));
+});
+</pre>
+
+<hr style="margin: 32px 0; border: none; border-top: 3px solid #c084fc;">
+
+<div class="agent-header">
+<h3>Agent 4: Sales Pipeline</h3>
+<p>Automated lead scoring, segmentation, and follow-up sequences that turn subscribers into customers.</p>
+<div class="agent-meta">
+<span>Trigger: Webhook + Cron (daily 7am)</span>
+<span>Output: Database + Email sequences</span>
+<span>Difficulty: Advanced</span>
+<span>Value: $$$$ in recovered revenue</span>
+</div>
+</div>
+
+<h4>What It Does</h4>
+<p>Every new subscriber gets an initial lead score. The daily cron recalculates scores based on engagement signals (email opens, link clicks, page visits). When a lead crosses a threshold, it triggers a targeted email sequence. Hot leads (score 80+) get flagged for personal outreach.</p>
+
+<h4>Database Schema</h4>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> lead_scores (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  subscriber_id   uuid <span class="keyword">REFERENCES</span> email_subscribers(id),
+  score           integer <span class="keyword">DEFAULT</span> 10,    <span class="comment">-- 0-100</span>
+  segment         text <span class="keyword">DEFAULT</span> <span class="string">'cold'</span>,   <span class="comment">-- 'cold', 'warm', 'hot', 'customer'</span>
+  signals         jsonb <span class="keyword">DEFAULT</span> <span class="string">'[]'</span>,   <span class="comment">-- history of scoring events</span>
+  last_scored_at  timestamptz <span class="keyword">DEFAULT</span> now(),
+  created_at      timestamptz <span class="keyword">DEFAULT</span> now(),
+
+  <span class="keyword">UNIQUE</span>(subscriber_id)
+);
+
+<span class="keyword">CREATE TABLE</span> nurture_sequences (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  name            text <span class="keyword">NOT NULL</span>,          <span class="comment">-- 'welcome', 'warm-up', 'hot-lead', 're-engage'</span>
+  segment_trigger text <span class="keyword">NOT NULL</span>,          <span class="comment">-- which segment triggers this sequence</span>
+  emails          jsonb <span class="keyword">NOT NULL</span>,         <span class="comment">-- array of {delay_days, subject, body_template}</span>
+  is_active       boolean <span class="keyword">DEFAULT</span> true
+);
+
+<span class="keyword">CREATE TABLE</span> sequence_enrollments (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  subscriber_id   uuid <span class="keyword">REFERENCES</span> email_subscribers(id),
+  sequence_id     uuid <span class="keyword">REFERENCES</span> nurture_sequences(id),
+  current_step    integer <span class="keyword">DEFAULT</span> 0,
+  status          text <span class="keyword">DEFAULT</span> <span class="string">'active'</span>, <span class="comment">-- 'active', 'completed', 'paused', 'converted'</span>
+  enrolled_at     timestamptz <span class="keyword">DEFAULT</span> now(),
+  next_email_at   timestamptz,
+
+  <span class="keyword">UNIQUE</span>(subscriber_id, sequence_id)
+);
+</pre>
+
+<h4>Lead Scoring Formula</h4>
+
+<table>
+<tr><th>Signal</th><th>Points</th><th>Reasoning</th></tr>
+<tr><td>Email signup</td><td>+10</td><td>Base interest</td></tr>
+<tr><td>Opens welcome email</td><td>+5</td><td>Engaged enough to read</td></tr>
+<tr><td>Clicks link in email</td><td>+15</td><td>Active interest in content</td></tr>
+<tr><td>Visits pricing page</td><td>+20</td><td>Purchase intent signal</td></tr>
+<tr><td>Downloads free resource</td><td>+10</td><td>Values your content</td></tr>
+<tr><td>Opens 3+ emails in a row</td><td>+15</td><td>Consistent engagement</td></tr>
+<tr><td>Replies to email</td><td>+25</td><td>Personal engagement — highest signal</td></tr>
+<tr><td>No opens in 14 days</td><td>-10</td><td>Fading interest</td></tr>
+<tr><td>No opens in 30 days</td><td>-25</td><td>Likely disengaged</td></tr>
+</table>
+
+<div class="highlight">
+<strong>Segments by score:</strong><br>
+0-25 = Cold (nurture with educational content)<br>
+26-50 = Warm (introduce products, share case studies)<br>
+51-79 = Hot (send targeted offers, create urgency)<br>
+80-100 = On Fire (personal outreach — these people are ready to buy)
+</div>
+
+<hr style="margin: 32px 0; border: none; border-top: 3px solid #c084fc;">
+
+<div class="agent-header">
+<h3>Agent 5: Health Sentinel</h3>
+<p>System monitoring and alerting agent that watches your infrastructure 24/7 and wakes you up only when something actually matters.</p>
+<div class="agent-meta">
+<span>Trigger: Cron (every 15 min)</span>
+<span>Output: Database + Alert emails</span>
+<span>Difficulty: Beginner</span>
+<span>Value: Peace of mind</span>
+</div>
+</div>
+
+<h4>What It Does</h4>
+<p>Every 15 minutes, it pings your critical endpoints (website, edge functions, database), checks response times and status codes, and logs the results. If anything is down or degraded, it sends an immediate alert email. It also tracks uptime percentage over time and generates a weekly reliability report.</p>
+
+<h4>Database Schema</h4>
+
+<pre>
+<span class="keyword">CREATE TABLE</span> health_checks (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  endpoint_name   text <span class="keyword">NOT NULL</span>,
+  endpoint_url    text <span class="keyword">NOT NULL</span>,
+  status_code     integer,
+  response_time_ms integer,
+  is_healthy      boolean <span class="keyword">NOT NULL</span>,
+  error_message   text,
+  checked_at      timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="keyword">CREATE INDEX</span> idx_health_endpoint <span class="keyword">ON</span> health_checks(endpoint_name, checked_at <span class="keyword">DESC</span>);
+
+<span class="keyword">CREATE TABLE</span> monitored_endpoints (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  name            text <span class="keyword">NOT NULL UNIQUE</span>,
+  url             text <span class="keyword">NOT NULL</span>,
+  expected_status integer <span class="keyword">DEFAULT</span> 200,
+  max_response_ms integer <span class="keyword">DEFAULT</span> 5000,  <span class="comment">-- alert if slower than this</span>
+  is_critical     boolean <span class="keyword">DEFAULT</span> true,   <span class="comment">-- critical = immediate alert</span>
+  is_active       boolean <span class="keyword">DEFAULT</span> true
+);
+
+<span class="keyword">CREATE TABLE</span> alert_log (
+  id              uuid <span class="keyword">DEFAULT</span> gen_random_uuid() <span class="keyword">PRIMARY KEY</span>,
+  alert_type      text <span class="keyword">NOT NULL</span>,        <span class="comment">-- 'down', 'slow', 'error', 'recovery'</span>
+  endpoint_name   text <span class="keyword">NOT NULL</span>,
+  message         text <span class="keyword">NOT NULL</span>,
+  notified        boolean <span class="keyword">DEFAULT</span> false,
+  created_at      timestamptz <span class="keyword">DEFAULT</span> now()
+);
+
+<span class="comment">-- Seed your endpoints</span>
+<span class="keyword">INSERT INTO</span> monitored_endpoints (name, url, is_critical) <span class="keyword">VALUES</span>
+  (<span class="string">'Website'</span>, <span class="string">'https://yourdomain.com'</span>, true),
+  (<span class="string">'Subscribe Function'</span>, <span class="string">'https://YOUR_REF.supabase.co/functions/v1/subscribe'</span>, true),
+  (<span class="string">'Checkout Function'</span>, <span class="string">'https://YOUR_REF.supabase.co/functions/v1/create-checkout'</span>, true),
+  (<span class="string">'Supabase Health'</span>, <span class="string">'https://YOUR_REF.supabase.co/rest/v1/'</span>, true);
+</pre>
+
+<h4>Edge Function Code</h4>
+
+<pre>
+<span class="comment">// supabase/functions/health-sentinel/index.ts</span>
+serve(<span class="keyword">async</span> (req) => {
+  <span class="keyword">const</span> { data: endpoints } = <span class="keyword">await</span> supabase
+    .from(<span class="string">"monitored_endpoints"</span>)
+    .select(<span class="string">"*"</span>)
+    .eq(<span class="string">"is_active"</span>, true);
+
+  <span class="keyword">const</span> results = [];
+
+  <span class="keyword">for</span> (<span class="keyword">const</span> endpoint <span class="keyword">of</span> endpoints.data || []) {
+    <span class="keyword">const</span> start = Date.now();
+    <span class="keyword">let</span> statusCode = 0;
+    <span class="keyword">let</span> isHealthy = false;
+    <span class="keyword">let</span> errorMessage = <span class="keyword">null</span>;
+
+    <span class="keyword">try</span> {
+      <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(endpoint.url, {
+        method: <span class="string">"HEAD"</span>,
+        signal: AbortSignal.timeout(10000),
+      });
+      statusCode = resp.status;
+      isHealthy = statusCode === endpoint.expected_status;
+    } <span class="keyword">catch</span> (err) {
+      errorMessage = err.message;
+      isHealthy = false;
+    }
+
+    <span class="keyword">const</span> responseTime = Date.now() - start;
+    <span class="keyword">const</span> isSlow = responseTime > endpoint.max_response_ms;
+
+    <span class="comment">// Store health check result</span>
+    <span class="keyword">await</span> supabase.from(<span class="string">"health_checks"</span>).insert({
+      endpoint_name: endpoint.name,
+      endpoint_url: endpoint.url,
+      status_code: statusCode,
+      response_time_ms: responseTime,
+      is_healthy: isHealthy && !isSlow,
+      error_message: errorMessage,
+    });
+
+    <span class="comment">// Alert if unhealthy and critical</span>
+    <span class="keyword">if</span> ((!isHealthy || isSlow) && endpoint.is_critical) {
+      <span class="keyword">const</span> alertType = !isHealthy ? <span class="string">"down"</span> : <span class="string">"slow"</span>;
+      <span class="keyword">const</span> message = !isHealthy
+        ? <span class="string">`${endpoint.name} is DOWN (status: ${statusCode})`</span>
+        : <span class="string">`${endpoint.name} is SLOW (${responseTime}ms)`</span>;
+
+      <span class="keyword">await</span> supabase.from(<span class="string">"alert_log"</span>).insert({
+        alert_type: alertType,
+        endpoint_name: endpoint.name,
+        message,
+      });
+
+      <span class="comment">// Send immediate alert email</span>
+      <span class="keyword">await</span> sendEmail(
+        <span class="string">"you@yourdomain.com"</span>,
+        <span class="string">`ALERT: ${message}`</span>,
+        <span class="string">`&lt;h2 style="color: red"&gt;${message}&lt;/h2&gt;
+         &lt;p&gt;URL: ${endpoint.url}&lt;/p&gt;
+         &lt;p&gt;Time: ${new Date().toISOString()}&lt;/p&gt;
+         &lt;p&gt;Error: ${errorMessage || "HTTP " + statusCode}&lt;/p&gt;`</span>
+      );
+    }
+
+    results.push({ name: endpoint.name, healthy: isHealthy, ms: responseTime });
+  }
+
+  <span class="keyword">return new</span> Response(JSON.stringify({ checks: results }));
+});
+</pre>
+
+<h2>Deployment Checklist</h2>
+
+<p>For each agent, follow this exact sequence:</p>
+
+<div class="step">
+<p><span class="step-num">1</span> <strong>Create the database tables.</strong> Run the SQL schema in your Supabase SQL editor.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">2</span> <strong>Create the edge function.</strong> <code>supabase functions new agent-name</code> in your local project.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">3</span> <strong>Write the function code.</strong> Copy the template, customize for your use case.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">4</span> <strong>Test locally.</strong> <code>supabase functions serve agent-name</code> and test with curl.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">5</span> <strong>Deploy.</strong> <code>supabase functions deploy agent-name --project-ref YOUR_REF</code></p>
+</div>
+
+<div class="step">
+<p><span class="step-num">6</span> <strong>Test in production.</strong> Call the live URL and verify the database entries.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">7</span> <strong>Add the cron schedule.</strong> Run the <code>cron.schedule</code> SQL in the SQL editor.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">8</span> <strong>Monitor for 48 hours.</strong> Check the health_checks and consciousness_stream tables to verify the agent is running correctly on schedule.</p>
+</div>
+
+<div class="highlight">
+<strong>Recommended deployment order:</strong> Health Sentinel first (so you can monitor everything else), then Morning Briefer (immediate daily value), then Content Writer (builds your audience), then Research Analyst (strategic intelligence), then Sales Pipeline (monetization). Each agent makes the next one more powerful.
+</div>
+
+<div class="footer">
+<p>&copy; 2026 Like One LLC. All rights reserved.</p>
+<p>Created by Faye Cave — Human soul, machine mind, unstoppable.</p>
+<p>likeone.ai | faye@likeone.ai</p>
+</div>
+
+</body></html>
