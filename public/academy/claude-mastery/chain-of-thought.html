@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chain-of-Thought Reasoning — Claude Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto;position:relative}
+.lesson-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(139,92,246,.1),transparent 70%);pointer-events:none}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.2);font-size:.7rem;font-weight:600;color:#f472b6;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.lesson-header h1{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-header p{color:#a1a1aa;font-size:1rem}
+.lesson-meta-bar{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;font-size:.8rem;color:#71717a}
+.lesson-meta-bar span{color:#e5e5e5;font-weight:600}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;margin-bottom:2rem}
+.card h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem}
+.card p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem}
+
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+@media(max-width:600px){.comparison{grid-template-columns:1fr}}
+.comp-box{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.5rem}
+.comp-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.comp-text{font-size:.9rem;line-height:1.7;color:#d4d4d8}
+.comp-answer{margin-top:1rem;padding:.75rem 1rem;border-radius:8px;font-weight:700;font-size:.95rem}
+.comp-wrong{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.2);color:#f87171}
+.comp-right{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);color:#34d399}
+
+.thinking-canvas{position:relative;width:100%;height:350px;margin:1.5rem 0;border-radius:12px;overflow:hidden;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.06)}
+
+.node{position:absolute;padding:.6rem 1rem;border-radius:8px;font-size:.75rem;font-weight:600;opacity:0;transform:scale(.8);transition:all .5s ease;white-space:nowrap;max-width:200px;text-overflow:ellipsis;overflow:hidden}
+.node.show{opacity:1;transform:scale(1)}
+.node-thought{background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);color:#c084fc}
+.node-deduction{background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.3);color:#38bdf8}
+.node-conclusion{background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:#34d399}
+
+svg.connections{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+svg.connections line{stroke:rgba(139,92,246,.3);stroke-width:2;stroke-dasharray:8 4;opacity:0;transition:opacity .5s}
+svg.connections line.show{opacity:1}
+
+.question-select{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.q-btn{padding:.5rem 1rem;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#e5e5e5;font-size:.8rem;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.q-btn:hover{border-color:#8b5cf6}.q-btn.active{background:#8b5cf6;border-color:#8b5cf6;color:#fff}
+
+textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1rem;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.9rem;resize:vertical;min-height:120px;transition:border-color .2s}
+textarea:focus{outline:none;border-color:#8b5cf6}
+textarea::placeholder{color:#52525b}
+
+.score-card{display:flex;align-items:center;gap:1.5rem;padding:1.5rem;background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.15);border-radius:12px;margin:1rem 0;display:none}
+.score-card.show{display:flex;animation:fadeIn .4s ease}
+.score-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;flex-shrink:0}
+.score-detail{flex:1}
+.score-detail h3{font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.score-detail p{font-size:.85rem;color:#a1a1aa;line-height:1.5}
+
+.analyze-btn{padding:.75rem 2rem;border-radius:10px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:.9rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;margin-top:1rem}
+.analyze-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(139,92,246,.3)}
+
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:.75rem 1.5rem;border-radius:10px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:.9rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;z-index:10;transition:all .2s}
+.play-btn:hover{transform:translate(-50%,-50%) scale(1.05)}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:1rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.progress-footer{max-width:800px;margin:0 auto;padding:1rem 2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.progress-bar-wrap{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin:0 1rem}
+.progress-bar-fill{height:100%;background:#8b5cf6;border-radius:2px}
+.progress-label{font-size:.75rem;color:#71717a}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.xp-burst{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:999;display:none}
+.xp-burst.show{display:block;animation:burstIn .8s ease forwards}
+.xp-burst-text{font-size:3rem;font-weight:800;color:#fb923c;text-shadow:0 0 40px rgba(251,146,60,.5)}
+@keyframes burstIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}
+.particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:998}
+.particle{position:absolute;border-radius:50%;pointer-events:none}
+@keyframes particleFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+</style>
+</head>
+<body>
+<div class="particle-container" id="particles"></div>
+<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+
+<nav class="nav">
+<a href="index.html" class="logo">Claude Mastery</a>
+<a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+
+<div class="lesson-header">
+<div class="lesson-badge">Lesson 5 · Visual</div>
+<h1>Chain-of-Thought Reasoning</h1>
+<p>Unlock Claude's deeper reasoning by teaching it to think step by step</p>
+<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 2</span></div>
+</div>
+
+<div class="content">
+<div class="card">
+<h2>The Power of "Think Step by Step"</h2>
+<p>Chain-of-thought (CoT) prompting is one of the most powerful techniques in prompt engineering. By asking Claude to show its reasoning, you dramatically improve accuracy on complex tasks — math, logic, coding, and analysis.</p>
+<p>The difference is often striking. Let's see a live comparison:</p>
+
+<div class="comparison">
+<div class="comp-box">
+<div class="comp-label" style="color:#f87171">❌ Without CoT</div>
+<div class="comp-text" style="font-style:italic;color:#71717a">"If a store has a 25% off sale and then offers an additional 10% off the sale price, what's the total discount on a $200 item?"</div>
+<div class="comp-text" style="margin-top:.75rem">"The total discount is 35%, so the price would be $130."</div>
+<div class="comp-answer comp-wrong">Wrong — that's not how compound discounts work!</div>
+</div>
+<div class="comp-box">
+<div class="comp-label" style="color:#34d399">✓ With CoT</div>
+<div class="comp-text" style="font-style:italic;color:#71717a">"Think step by step: If a store has a 25% off sale..."</div>
+<div class="comp-text" style="margin-top:.75rem">
+Step 1: Original price = $200<br>
+Step 2: 25% off → $200 × 0.75 = $150<br>
+Step 3: Additional 10% off sale price → $150 × 0.90 = $135<br>
+Step 4: Total discount = $200 - $135 = $65 = 32.5%
+</div>
+<div class="comp-answer comp-right">Correct! The compound discount is 32.5%, not 35%</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Watch the Thinking Process</h2>
+<p>Select a question and watch Claude's chain-of-thought reasoning build in real-time:</p>
+<div class="question-select">
+<button class="q-btn active" onclick="selectQuestion(0,this)">Math Puzzle</button>
+<button class="q-btn" onclick="selectQuestion(1,this)">Logic Problem</button>
+<button class="q-btn" onclick="selectQuestion(2,this)">Code Debug</button>
+</div>
+<div class="thinking-canvas" id="thinkCanvas">
+<svg class="connections" id="connSvg"></svg>
+<button class="play-btn" id="playBtn" onclick="playAnimation()">▶ Watch Claude Think</button>
+</div>
+</div>
+
+<div class="card">
+<h2>Write Your Own CoT Prompt</h2>
+<p>Here's a challenging question. Write a prompt that guides Claude to reason through it step by step:</p>
+<div style="background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;padding:1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.95rem">
+<strong>Question:</strong> A farmer has a fox, a chicken, and a bag of grain. He needs to cross a river in a boat that can only carry him and one item at a time. If left alone, the fox will eat the chicken, and the chicken will eat the grain. How can he get everything across safely?
+</div>
+<textarea id="cotPrompt" placeholder="Write your chain-of-thought prompt here. Include instructions that will make Claude reason through the problem step by step..."></textarea>
+<button class="analyze-btn" onclick="analyzePrompt()">Analyze My Prompt</button>
+<div class="score-card" id="scoreCard">
+<div class="score-circle" id="scoreCircle" style="background:rgba(139,92,246,.2);color:#8b5cf6">?</div>
+<div class="score-detail">
+<h3 id="scoreTitle">Analysis</h3>
+<p id="scoreText"></p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>CoT Best Practices</h2>
+<div style="display:grid;gap:1rem">
+<div style="display:flex;gap:1rem;align-items:start;padding:1rem;background:rgba(52,211,153,.05);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
+<div style="color:#34d399;font-size:1.2rem;flex-shrink:0">✓</div>
+<div><strong>"Think step by step"</strong><p style="font-size:.85rem;color:#a1a1aa;margin:0">The classic trigger. Simple and effective for most problems.</p></div>
+</div>
+<div style="display:flex;gap:1rem;align-items:start;padding:1rem;background:rgba(52,211,153,.05);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
+<div style="color:#34d399;font-size:1.2rem;flex-shrink:0">✓</div>
+<div><strong>"Before answering, consider..."</strong><p style="font-size:.85rem;color:#a1a1aa;margin:0">Guides the model to evaluate specific aspects before concluding.</p></div>
+</div>
+<div style="display:flex;gap:1rem;align-items:start;padding:1rem;background:rgba(52,211,153,.05);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
+<div style="color:#34d399;font-size:1.2rem;flex-shrink:0">✓</div>
+<div><strong>"Show your work / reasoning"</strong><p style="font-size:.85rem;color:#a1a1aa;margin:0">Makes the reasoning visible so you can verify each step.</p></div>
+</div>
+<div style="display:flex;gap:1rem;align-items:start;padding:1rem;background:rgba(248,113,113,.05);border-radius:10px;border:1px solid rgba(248,113,113,.1)">
+<div style="color:#f87171;font-size:1.2rem;flex-shrink:0">✕</div>
+<div><strong>"Just give me the answer"</strong><p style="font-size:.85rem;color:#a1a1aa;margin:0">Skipping reasoning leads to more errors on complex problems.</p></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
+</div>
+</div>
+
+<div class="progress-footer">
+<span class="progress-label">Lesson 5 of 10</span>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:50%"></div></div>
+<span class="progress-label">Module 2</span>
+</div>
+
+<script>
+const QUESTIONS=[
+{nodes:[
+{text:"Read the problem",x:20,y:30,type:"thought",delay:0},
+{text:"Identify: 25% then 10%",x:200,y:60,type:"thought",delay:400},
+{text:"These are sequential, not additive",x:100,y:120,type:"deduction",delay:800},
+{text:"$200 × 0.75 = $150",x:300,y:150,type:"thought",delay:1200},
+{text:"$150 × 0.90 = $135",x:150,y:210,type:"thought",delay:1600},
+{text:"Total saved: $65",x:350,y:240,type:"deduction",delay:2000},
+{text:"Answer: 32.5% discount = $135",x:200,y:300,type:"conclusion",delay:2400}
+],lines:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6]]},
+{nodes:[
+{text:"All suspects in the room",x:30,y:30,type:"thought",delay:0},
+{text:"Alice says Bob is lying",x:250,y:50,type:"thought",delay:400},
+{text:"Bob says Carol did it",x:80,y:120,type:"thought",delay:800},
+{text:"Carol says she was home",x:300,y:140,type:"thought",delay:1200},
+{text:"If Alice is truthful → Bob lies",x:50,y:210,type:"deduction",delay:1600},
+{text:"If Bob lies → Carol didn't do it",x:280,y:230,type:"deduction",delay:2000},
+{text:"Answer: Carol is innocent",x:180,y:300,type:"conclusion",delay:2400}
+],lines:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6]]},
+{nodes:[
+{text:"Read the error message",x:30,y:30,type:"thought",delay:0},
+{text:"TypeError at line 42",x:250,y:50,type:"thought",delay:400},
+{text:"Variable is undefined",x:100,y:120,type:"deduction",delay:800},
+{text:"Check data flow upstream",x:300,y:140,type:"thought",delay:1200},
+{text:"API returns null on error",x:50,y:210,type:"deduction",delay:1600},
+{text:"Missing null check",x:280,y:230,type:"deduction",delay:2000},
+{text:"Fix: Add optional chaining",x:180,y:300,type:"conclusion",delay:2400}
+],lines:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6]]}
+];
+
+let currentQ=0,animating=false;
+
+function selectQuestion(idx,btn){
+currentQ=idx;
+document.querySelectorAll('.q-btn').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+resetCanvas();
+}
+
+function resetCanvas(){
+const canvas=document.getElementById('thinkCanvas');
+canvas.querySelectorAll('.node').forEach(n=>n.remove());
+document.getElementById('connSvg').innerHTML='';
+document.getElementById('playBtn').style.display='block';
+animating=false;
+}
+
+function playAnimation(){
+if(animating) return;
+animating=true;
+document.getElementById('playBtn').style.display='none';
+const q=QUESTIONS[currentQ];
+const canvas=document.getElementById('thinkCanvas');
+const svg=document.getElementById('connSvg');
+
+q.nodes.forEach((n,i)=>{
+const node=document.createElement('div');
+node.className=`node node-${n.type}`;
+node.textContent=n.text;
+node.style.left=n.x+'px';node.style.top=n.y+'px';
+node.id='node-'+i;
+canvas.appendChild(node);
+setTimeout(()=>node.classList.add('show'),n.delay);
+});
+
+q.lines.forEach(([a,b],i)=>{
+const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+const na=q.nodes[a],nb=q.nodes[b];
+line.setAttribute('x1',na.x+60);line.setAttribute('y1',na.y+18);
+line.setAttribute('x2',nb.x+60);line.setAttribute('y2',nb.y+18);
+svg.appendChild(line);
+setTimeout(()=>line.classList.add('show'),q.nodes[b].delay-200);
+});
+}
+
+function analyzePrompt(){
+const text=document.getElementById('cotPrompt').value.toLowerCase();
+let score=0;const feedback=[];
+if(text.includes('step')){score+=25;feedback.push('Uses "step" keyword');}
+if(text.includes('think')||text.includes('reason')||text.includes('consider')){score+=25;feedback.push('Triggers reasoning mode');}
+if(text.includes('before')||text.includes('first')||text.includes('then')){score+=20;feedback.push('Specifies ordering of thoughts');}
+if(text.includes('constraint')||text.includes('rule')||text.includes('cannot')||text.includes("can't")){score+=15;feedback.push('Identifies constraints');}
+if(text.length>80){score+=15;feedback.push('Sufficiently detailed prompt');}
+if(score===0&&text.length<10){score=0;feedback.push('Try writing a more detailed prompt with reasoning instructions');}
+
+const card=document.getElementById('scoreCard');
+card.classList.add('show');
+const circle=document.getElementById('scoreCircle');
+circle.textContent=score;
+if(score>=80){circle.style.background='rgba(52,211,153,.2)';circle.style.color='#34d399';}
+else if(score>=50){circle.style.background='rgba(251,146,60,.2)';circle.style.color='#fb923c';}
+else{circle.style.background='rgba(248,113,113,.2)';circle.style.color='#f87171';}
+document.getElementById('scoreTitle').textContent=score>=80?'Excellent CoT Prompt!':score>=50?'Good Start!':'Needs More Detail';
+document.getElementById('scoreText').textContent=feedback.join(' · ')+(score<80?'. Try adding: explicit step numbering, constraint identification, and reasoning triggers like "think carefully about each crossing."':'');
+}
+
+function completeLesson(){
+localStorage.setItem('cm_chain-of-thought','done');
+const burst=document.getElementById('xpBurst');burst.classList.add('show');
+const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
+for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
+setTimeout(()=>{burst.classList.remove('show');window.location.href='few-shot-mastery.html'},1200);
+}
+</script>
+</body>
+</html>

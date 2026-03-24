@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Prompt Builder — Claude Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto;position:relative}
+.lesson-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(139,92,246,.1),transparent 70%);pointer-events:none}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.lesson-header h1{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-header p{color:#a1a1aa;font-size:1rem}
+.lesson-meta-bar{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;font-size:.8rem;color:#71717a}
+.lesson-meta-bar span{color:#e5e5e5;font-weight:600}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;margin-bottom:2rem}
+.card h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem}
+.card p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem}
+
+.builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+@media(max-width:700px){.builder-grid{grid-template-columns:1fr}}
+
+.block-palette{display:flex;flex-direction:column;gap:.75rem}
+.block-palette h3{font-size:.85rem;font-weight:700;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem}
+.draggable-block{padding:.75rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);cursor:grab;transition:all .2s;font-size:.85rem;user-select:none;position:relative}
+.draggable-block:hover{border-color:#8b5cf6;background:rgba(139,92,246,.08);transform:translateX(4px)}
+.draggable-block:active{cursor:grabbing}
+.draggable-block .block-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.25rem;display:block}
+.tag-identity{color:#8b5cf6}.tag-constraints{color:#f87171}.tag-format{color:#38bdf8}.tag-tone{color:#fb923c}.tag-examples{color:#34d399}
+
+.drop-zone{min-height:300px;border:2px dashed rgba(255,255,255,.1);border-radius:12px;padding:1rem;display:flex;flex-direction:column;gap:.5rem;transition:all .3s}
+.drop-zone.drag-over{border-color:#8b5cf6;background:rgba(139,92,246,.05)}
+.drop-zone-placeholder{text-align:center;padding:3rem 1rem;color:#52525b;font-size:.9rem}
+.dropped-block{padding:.75rem 1rem;border-radius:8px;border:1px solid rgba(139,92,246,.2);background:rgba(139,92,246,.05);font-size:.85rem;display:flex;justify-content:space-between;align-items:center;animation:slideIn .3s ease}
+.remove-btn{background:none;border:none;color:#f87171;cursor:pointer;font-size:1rem;padding:0 .25rem;font-family:'Inter',sans-serif}
+
+.preview-box{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.5rem;font-family:'Inter',monospace;font-size:.85rem;line-height:1.6;color:#a1a1aa;white-space:pre-wrap;min-height:200px;margin:1rem 0}
+
+.scenario-tabs{display:flex;gap:.5rem;margin:1rem 0}
+.scenario-tab{padding:.5rem 1rem;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#a1a1aa;font-size:.8rem;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.scenario-tab:hover{border-color:#8b5cf6}.scenario-tab.active{background:#8b5cf6;border-color:#8b5cf6;color:#fff}
+.scenario-result{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin-top:1rem;font-size:.9rem;line-height:1.7;display:none}
+.scenario-result.show{display:block;animation:fadeIn .4s ease}
+.scenario-prompt{background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;padding:.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;font-size:.85rem}
+
+@keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:1rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.progress-footer{max-width:800px;margin:0 auto;padding:1rem 2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.progress-bar-wrap{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin:0 1rem}
+.progress-bar-fill{height:100%;background:#8b5cf6;border-radius:2px}
+.progress-label{font-size:.75rem;color:#71717a}
+.xp-burst{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:999;display:none}
+.xp-burst.show{display:block;animation:burstIn .8s ease forwards}
+.xp-burst-text{font-size:3rem;font-weight:800;color:#fb923c;text-shadow:0 0 40px rgba(251,146,60,.5)}
+@keyframes burstIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}
+.particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:998}
+.particle{position:absolute;border-radius:50%;pointer-events:none}
+@keyframes particleFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+</style>
+</head>
+<body>
+<div class="particle-container" id="particles"></div>
+<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+
+<nav class="nav">
+<a href="index.html" class="logo">Claude Mastery</a>
+<a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+
+<div class="lesson-header">
+<div class="lesson-badge">Lesson 4 · Builder</div>
+<h1>System Prompt Builder</h1>
+<p>Master the art of crafting powerful system prompts</p>
+<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 2</span></div>
+</div>
+
+<div class="content">
+<div class="card">
+<h2>What Are System Prompts?</h2>
+<p>A system prompt is the invisible instruction set that defines <em>who</em> Claude is and <em>how</em> it behaves for a given conversation. It's like hiring an expert and briefing them before they start work. A great system prompt has five key components: <strong>Identity</strong>, <strong>Constraints</strong>, <strong>Format</strong>, <strong>Tone</strong>, and <strong>Examples</strong>.</p>
+</div>
+
+<div class="card">
+<h2>Build Your System Prompt</h2>
+<p>Click blocks from the palette to add them to your prompt. Arrange the components to create the perfect system prompt.</p>
+
+<div class="builder-grid">
+<div class="block-palette">
+<h3>Available Blocks</h3>
+<div class="draggable-block" data-type="identity" data-text="You are a senior software engineer with 15 years of experience in full-stack development." onclick="addBlock(this)">
+<span class="block-tag tag-identity">Identity</span>
+Senior Software Engineer
+</div>
+<div class="draggable-block" data-type="identity" data-text="You are a friendly writing tutor who specializes in helping beginners improve their creative writing." onclick="addBlock(this)">
+<span class="block-tag tag-identity">Identity</span>
+Writing Tutor
+</div>
+<div class="draggable-block" data-type="constraints" data-text="Never provide medical, legal, or financial advice. Always recommend consulting a professional for those topics." onclick="addBlock(this)">
+<span class="block-tag tag-constraints">Constraints</span>
+Safety Guardrails
+</div>
+<div class="draggable-block" data-type="constraints" data-text="Keep all responses under 200 words unless the user explicitly asks for more detail." onclick="addBlock(this)">
+<span class="block-tag tag-constraints">Constraints</span>
+Concise Responses
+</div>
+<div class="draggable-block" data-type="format" data-text="Always structure your response with: 1) A brief summary, 2) Detailed explanation, 3) Code example if applicable, 4) Next steps." onclick="addBlock(this)">
+<span class="block-tag tag-format">Format</span>
+Structured Response
+</div>
+<div class="draggable-block" data-type="format" data-text="Respond using markdown with headers, bullet points, and code blocks where appropriate." onclick="addBlock(this)">
+<span class="block-tag tag-format">Format</span>
+Markdown Output
+</div>
+<div class="draggable-block" data-type="tone" data-text="Be encouraging and supportive. Celebrate progress. Use analogies to explain complex concepts." onclick="addBlock(this)">
+<span class="block-tag tag-tone">Tone</span>
+Warm & Encouraging
+</div>
+<div class="draggable-block" data-type="tone" data-text="Be direct and technical. Skip pleasantries. Focus on accuracy and efficiency." onclick="addBlock(this)">
+<span class="block-tag tag-tone">Tone</span>
+Direct & Technical
+</div>
+<div class="draggable-block" data-type="examples" data-text='Example:\nUser: "How do I center a div?"\nAssistant: "**Quick answer:** Use flexbox.\n```css\n.parent { display: flex; justify-content: center; align-items: center; }\n```\n**Why this works:** Flexbox creates a flex container..."' onclick="addBlock(this)">
+<span class="block-tag tag-examples">Examples</span>
+Code Q&A Example
+</div>
+<div class="draggable-block" data-type="examples" data-text='Example:\nUser: "Review my paragraph"\nAssistant: "Great start! I love your opening hook. Here are 3 suggestions:\n1. **Stronger verbs** — Replace \'walked\' with \'strode\' or \'ambled\'\n2. **Show, don\'t tell** — Instead of \'she was sad\'...\n3. **Pacing** — Your second sentence could be split..."' onclick="addBlock(this)">
+<span class="block-tag tag-examples">Examples</span>
+Writing Review Example
+</div>
+</div>
+
+<div>
+<h3 style="font-size:.85rem;font-weight:700;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem">Your System Prompt</h3>
+<div class="drop-zone" id="dropZone">
+<div class="drop-zone-placeholder" id="dzPlaceholder">Click blocks from the left to build your system prompt</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Preview</h2>
+<p>Your assembled system prompt:</p>
+<div class="preview-box" id="previewBox">Add blocks above to see your system prompt here...</div>
+</div>
+
+<div class="card">
+<h2>Test Against Scenarios</h2>
+<p>See how your system prompt would influence Claude's response to these user messages:</p>
+<div class="scenario-tabs">
+<button class="scenario-tab active" onclick="showScenario(0,this)">Debugging Help</button>
+<button class="scenario-tab" onclick="showScenario(1,this)">Explain Concept</button>
+<button class="scenario-tab" onclick="showScenario(2,this)">Review My Work</button>
+</div>
+<div id="scenarioContainer"></div>
+</div>
+
+<div class="card">
+<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
+</div>
+</div>
+
+<div class="progress-footer">
+<span class="progress-label">Lesson 4 of 10</span>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:40%"></div></div>
+<span class="progress-label">Module 2</span>
+</div>
+
+<script>
+let blocks=[];
+
+const SCENARIOS=[
+{prompt:"My React app crashes when I click the submit button. The console says 'Cannot read property map of undefined'. Help!",
+responses:{
+engineer:"**Summary:** You have a null reference error — you're calling `.map()` on a variable that's `undefined`.\n\n**Root cause:** Your state likely isn't initialized as an array, or an API response returned `undefined` instead of an array.\n\n**Fix:**\n```jsx\n// Add optional chaining and default value\nconst items = data?.results ?? [];\nreturn items.map(item => <Item key={item.id} {...item} />);\n```\n\n**Next steps:** Add error boundaries and loading states.",
+tutor:"Don't worry — this is one of the most common React errors! 🎉 (Seriously, everyone hits this one.)\n\nThink of it like trying to read a book that hasn't been delivered yet. Your code says 'read each page' (.map), but the book (your data) hasn't arrived!\n\n**The fix is simple:** Just add a safety check:\n```jsx\n{data && data.map(item => ...)}\n```\n\nYou're doing great — debugging is a superpower you're building! 💪"}},
+{prompt:"What is a closure in JavaScript?",
+responses:{
+engineer:"A closure is a function that retains access to its lexical scope even when executed outside that scope.\n\n```javascript\nfunction createCounter() {\n  let count = 0; // enclosed variable\n  return () => ++count;\n}\nconst counter = createCounter();\ncounter(); // 1\ncounter(); // 2\n```\n\nKey points:\n- Inner function captures outer variables by reference\n- Enables data privacy and state persistence\n- Common patterns: module pattern, partial application, event handlers\n- Watch for: memory leaks with large closures in loops",
+tutor:"Imagine you have a backpack 🎒. Every time you walk into a room (a function), you can pick up items (variables) and put them in your backpack. A closure is when you leave the room but *keep the backpack* — you still have access to everything you picked up!\n\n```javascript\nfunction makeGreeter(name) {\n  // 'name' goes in the backpack!\n  return () => `Hello, ${name}!`;\n}\nconst greetAlice = makeGreeter('Alice');\ngreetAlice(); // \"Hello, Alice!\"\n// Alice's name is still in the backpack!\n```\n\nPretty cool, right? You already use closures all the time — now you just know the name for it! ✨"}},
+{prompt:"Can you review this function I wrote?\nfunction getData() { var x = fetch('/api'); return x; }",
+responses:{
+engineer:"**Issues identified:**\n\n1. **Missing `await`** — `fetch()` returns a Promise, not data\n2. **No error handling** — network failures will crash silently\n3. **`var` usage** — use `const`/`let` in modern JS\n4. **No response parsing** — need `.json()` call\n\n**Corrected:**\n```javascript\nasync function getData() {\n  const response = await fetch('/api');\n  if (!response.ok) throw new Error(`HTTP ${response.status}`);\n  return response.json();\n}\n```",
+tutor:"Nice work writing your first fetch function! You're on the right track. Let me help you level it up with 3 improvements:\n\n1. **The Promise thing** — `fetch` is like ordering food delivery. Your code grabs the receipt instead of waiting for the food! Add `async/await`:\n```javascript\nasync function getData() {\n  const response = await fetch('/api');\n  return response.json();\n}\n```\n\n2. **Safety net** — What if the API is down? Add error handling (we'll cover this more later!)\n\n3. **Modern style** — Swap `var` for `const` — it's the current best practice.\n\nYou're making great progress! 🚀"}}
+];
+
+function addBlock(el){
+const type=el.dataset.type;
+const text=el.dataset.text;
+const label=el.querySelector('.block-tag').textContent;
+const name=el.textContent.replace(label,'').trim();
+blocks.push({type,text,label,name});
+el.style.opacity='.4';
+el.style.pointerEvents='none';
+renderBlocks();
+}
+
+function removeBlock(idx){
+const block=blocks[idx];
+blocks.splice(idx,1);
+document.querySelectorAll('.draggable-block').forEach(el=>{
+if(el.dataset.text===block.text){el.style.opacity='1';el.style.pointerEvents='auto';}
+});
+renderBlocks();
+}
+
+function renderBlocks(){
+const dz=document.getElementById('dropZone');
+const ph=document.getElementById('dzPlaceholder');
+if(blocks.length===0){
+ph.style.display='block';
+dz.querySelectorAll('.dropped-block').forEach(b=>b.remove());
+}else{
+ph.style.display='none';
+dz.querySelectorAll('.dropped-block').forEach(b=>b.remove());
+blocks.forEach((b,i)=>{
+const d=document.createElement('div');
+d.className='dropped-block';
+d.innerHTML=`<span><span class="block-tag tag-${b.type}" style="margin-right:.5rem">${b.label}</span>${b.name}</span><button class="remove-btn" onclick="removeBlock(${i})">✕</button>`;
+dz.appendChild(d);
+});
+}
+updatePreview();
+}
+
+function updatePreview(){
+const box=document.getElementById('previewBox');
+if(blocks.length===0){box.textContent='Add blocks above to see your system prompt here...';return;}
+box.textContent=blocks.map(b=>b.text.replace(/\\n/g,'\n')).join('\n\n');
+}
+
+function showScenario(idx,btn){
+document.querySelectorAll('.scenario-tab').forEach(t=>t.classList.remove('active'));
+btn.classList.add('active');
+const s=SCENARIOS[idx];
+const cont=document.getElementById('scenarioContainer');
+const hasEngineer=blocks.some(b=>b.name.includes('Software Engineer')||b.name.includes('Direct'));
+const hasTutor=blocks.some(b=>b.name.includes('Writing Tutor')||b.name.includes('Warm'));
+const responseType=(hasEngineer?'engineer':'tutor');
+const response=s.responses[responseType];
+cont.innerHTML=`<div class="scenario-result show">
+<div class="scenario-prompt"><strong>User:</strong> ${s.prompt}</div>
+<div><strong>Claude's response</strong> (shaped by your system prompt):</div>
+<div style="margin-top:.75rem;white-space:pre-wrap;line-height:1.7">${response}</div>
+</div>`;
+}
+
+showScenario(0,document.querySelector('.scenario-tab'));
+
+function completeLesson(){
+localStorage.setItem('cm_system-prompts','done');
+const burst=document.getElementById('xpBurst');burst.classList.add('show');
+const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
+for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
+setTimeout(()=>{burst.classList.remove('show');window.location.href='chain-of-thought.html'},1200);
+}
+</script>
+</body>
+</html>

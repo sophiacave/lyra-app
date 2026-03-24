@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture Lab — AI Pet Lab</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--purple:#c084fc;--border:#1e1e28;--border2:#2a2a38}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
+.top-bar a:hover{color:var(--text);text-decoration:none}
+.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+.header{padding:2.5rem 0 1.5rem;text-align:center}
+.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
+
+/* NEURON SELECTOR */
+.neuron-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0;text-align:center}
+.neuron-label{font-size:1rem;font-weight:600;margin-bottom:1rem}
+.neuron-btns{display:flex;justify-content:center;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.n-btn{width:60px;height:60px;border-radius:14px;border:2px solid var(--border);background:var(--surface2);color:var(--dim);font-size:1.5rem;font-weight:800;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif}
+.n-btn:hover{border-color:var(--border2);color:var(--text)}
+.n-btn.active{border-color:var(--orange);color:var(--orange);background:rgba(255,107,53,.05);box-shadow:0 0 15px rgba(255,107,53,.1)}
+.neuron-desc{font-size:.85rem;color:var(--dim);margin-top:.5rem;min-height:2.5rem}
+
+/* NETWORK VIS */
+.network-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:1.5rem 0}
+canvas{display:block;width:100%;height:auto}
+
+/* TRAINING SIM */
+.sim-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:1.5rem 0;text-align:center}
+.sim-title{font-size:1rem;font-weight:700;margin-bottom:1rem}
+
+.tricks-grid{display:flex;justify-content:center;gap:1rem;margin:1rem 0;flex-wrap:wrap}
+.trick-card{background:var(--surface2);border:2px solid var(--border);border-radius:12px;padding:1rem;width:140px;text-align:center;transition:all .3s}
+.trick-card.success{border-color:var(--green);background:rgba(74,222,128,.05)}
+.trick-card.fail{border-color:var(--red);background:rgba(248,113,113,.05)}
+.trick-card .emoji{font-size:1.75rem;margin-bottom:.35rem}
+.trick-card .name{font-size:.8rem;font-weight:600;color:var(--dim)}
+.trick-card .result{font-size:.7rem;font-weight:700;margin-top:.35rem;min-height:1rem}
+
+.train-stats{display:flex;justify-content:center;gap:2rem;margin:1rem 0}
+.t-stat{text-align:center}
+.t-stat .num{font-size:1.5rem;font-weight:800}
+.t-stat .lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+
+.btn-train{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.75rem 2rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s;margin:.5rem}
+.btn-train:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,53,.25)}
+.btn-train:disabled{opacity:.4;pointer-events:none}
+
+.progress-bar{max-width:400px;margin:1rem auto}
+.prog-outer{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.prog-inner{height:100%;border-radius:4px;transition:width .5s;background:linear-gradient(90deg,var(--orange),var(--green))}
+.prog-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:.3rem}
+
+.explainer{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:2rem 0}
+.explainer h2{font-size:1.15rem;font-weight:700;margin-bottom:.75rem;color:var(--orange)}
+.explainer p{color:var(--dim);font-size:.9rem;margin-bottom:.75rem}
+.explainer p:last-child{margin-bottom:0}
+.hl{color:var(--text);font-weight:600}
+
+.btn-complete{display:none;margin:2rem auto;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
+
+.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
+.foot a{color:var(--orange);font-weight:600;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+
+@media(max-width:600px){.header h1{font-size:1.5rem}.trick-card{width:110px;padding:.75rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-bar">
+  <a href="index.html">&larr; AI Pet Lab</a>
+  <span class="lesson-badge">Lesson 8 of 9</span>
+</div>
+
+<div class="header">
+  <h1>Architecture Lab &#129504;</h1>
+  <p>Adjust your pet's "brain size" and see how network architecture affects what it can learn.</p>
+</div>
+
+<div class="neuron-panel">
+  <div class="neuron-label">Hidden Neurons (Brain Size)</div>
+  <div class="neuron-btns">
+    <button class="n-btn" onclick="setNeurons(1)" data-n="1">1</button>
+    <button class="n-btn" onclick="setNeurons(2)" data-n="2">2</button>
+    <button class="n-btn active" onclick="setNeurons(3)" data-n="3">3</button>
+    <button class="n-btn" onclick="setNeurons(4)" data-n="4">4</button>
+    <button class="n-btn" onclick="setNeurons(5)" data-n="5">5</button>
+  </div>
+  <div class="neuron-desc" id="neuronDesc">3 neurons: Balanced. Can learn moderate tricks with reasonable training time.</div>
+</div>
+
+<div class="network-wrap">
+  <canvas id="netCanvas" width="760" height="280"></canvas>
+</div>
+
+<div class="sim-panel">
+  <div class="sim-title">Training Simulation</div>
+
+  <div class="tricks-grid">
+    <div class="trick-card" id="tc0"><div class="emoji">&#128062;</div><div class="name">Sit</div><div class="result" id="tr0"></div></div>
+    <div class="trick-card" id="tc1"><div class="emoji">&#129305;</div><div class="name">Shake</div><div class="result" id="tr1"></div></div>
+    <div class="trick-card" id="tc2"><div class="emoji">&#129696;</div><div class="name">Roll Over</div><div class="result" id="tr2"></div></div>
+    <div class="trick-card" id="tc3"><div class="emoji">&#128054;</div><div class="name">Fetch</div><div class="result" id="tr3"></div></div>
+    <div class="trick-card" id="tc4"><div class="emoji">&#127926;</div><div class="name">Dance</div><div class="result" id="tr4"></div></div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="prog-outer"><div class="prog-inner" id="trainBar" style="width:0%"></div></div>
+    <div class="prog-label"><span>Training progress</span><span id="trainPct">0%</span></div>
+  </div>
+
+  <div class="train-stats">
+    <div class="t-stat"><div class="num" id="epochN">0</div><div class="lbl">Epochs</div></div>
+    <div class="t-stat"><div class="num" id="trickN">0</div><div class="lbl">Tricks Learned</div></div>
+    <div class="t-stat"><div class="num" id="timeN">-</div><div class="lbl">Speed</div></div>
+  </div>
+
+  <button class="btn-train" id="trainBtn" onclick="runTraining()">Train Pet Brain</button>
+</div>
+
+<div class="explainer">
+  <h2>Architecture Matters</h2>
+  <p><span class="hl">1 neuron:</span> Can only learn the simplest trick (sit). Not enough capacity for complex behaviors. Like trying to memorize a book with a post-it note.</p>
+  <p><span class="hl">2-3 neurons:</span> Can handle basic tricks. Good balance of capacity and training speed. Like a small notebook &mdash; enough for daily tasks.</p>
+  <p><span class="hl">4-5 neurons:</span> Can learn all tricks including complex ones. But takes longer to train and might overfit (memorize rather than generalize). Like having a library &mdash; powerful but needs more organization.</p>
+  <p>This mirrors real neural networks: <span class="hl">more parameters = more capacity but slower training and risk of overfitting</span>. The art is finding the right size for your problem.</p>
+</div>
+
+<button class="btn-complete" id="completeBtn" onclick="completeLesson()">Complete Lesson &rarr;</button>
+
+<div class="foot">
+  <a href="learning-rate-dial.html">&larr; Learning Rate Dial</a>
+  <a href="evolution-quiz.html">Next: Evolution Quiz &rarr;</a>
+</div>
+
+</div>
+
+<script>
+const petType=localStorage.getItem('petlab_pet')||'dog';
+const petColors={cat:'#c084fc',dog:'#FF6B35',robot:'#38bdf8'};
+const pc=petColors[petType];
+
+let neurons=3,training=false,runsComplete=0;
+const canvas=document.getElementById('netCanvas');
+const ctx=canvas.getContext('2d');
+
+const descs={
+  1:'1 neuron: Minimal brain. Can only learn the simplest trick. Very fast to train but extremely limited.',
+  2:'2 neurons: Small brain. Can learn 2-3 simple tricks. Fast training, limited complexity.',
+  3:'3 neurons: Balanced. Can learn moderate tricks with reasonable training time.',
+  4:'4 neurons: Larger brain. Can learn complex tricks but needs more training time.',
+  5:'5 neurons: Maximum brain. Can learn everything but takes the longest and may overfit.'
+};
+
+// Trick difficulty (0-1), capacity needed
+const trickDifficulty=[0.15, 0.35, 0.55, 0.75, 0.95];
+const trickNames=['Sit','Shake','Roll Over','Fetch','Dance'];
+
+function setNeurons(n){
+  neurons=n;
+  document.querySelectorAll('.n-btn').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.n)===n));
+  document.getElementById('neuronDesc').textContent=descs[n];
+  drawNetwork();
+  resetTricks();
+}
+
+function drawNetwork(){
+  ctx.fillStyle='#12121a';
+  ctx.fillRect(0,0,760,280);
+
+  const inputN=3, outputN=2;
+  const layers=[inputN,neurons,outputN];
+  const layerX=[150,380,610];
+  const labels=['Inputs\n(senses)','Hidden\n(brain)','Outputs\n(actions)'];
+
+  // Draw connections
+  for(let l=0;l<layers.length-1;l++){
+    for(let i=0;i<layers[l];i++){
+      for(let j=0;j<layers[l+1];j++){
+        const x1=layerX[l], y1=getNodeY(layers[l],i);
+        const x2=layerX[l+1], y2=getNodeY(layers[l+1],j);
+        ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);
+        ctx.strokeStyle='rgba(255,107,53,0.12)';ctx.lineWidth=1;ctx.stroke();
+      }
+    }
+  }
+
+  // Draw nodes
+  for(let l=0;l<layers.length;l++){
+    for(let i=0;i<layers[l];i++){
+      const x=layerX[l], y=getNodeY(layers[l],i);
+      // Glow
+      ctx.beginPath();ctx.arc(x,y,18,0,Math.PI*2);
+      ctx.fillStyle=l===1?'rgba(255,107,53,0.08)':'rgba(56,189,248,0.08)';ctx.fill();
+      // Node
+      ctx.beginPath();ctx.arc(x,y,12,0,Math.PI*2);
+      ctx.fillStyle=l===1?pc:'var(--blue)';ctx.fillStyle=l===1?pc:'#38bdf8';ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,0.15)';ctx.lineWidth=1.5;ctx.stroke();
+    }
+    // Label
+    ctx.fillStyle='#55556a';ctx.font='11px Inter';ctx.textAlign='center';
+    const labelLines=labels[l].split('\n');
+    labelLines.forEach((line,li)=>{
+      ctx.fillText(line,layerX[l],260+li*14);
+    });
+  }
+}
+
+function getNodeY(count,idx){
+  const totalH=Math.min(count*50, 220);
+  const startY=140-totalH/2;
+  const gap=count>1?totalH/(count-1):0;
+  return startY+idx*gap;
+}
+
+function resetTricks(){
+  for(let i=0;i<5;i++){
+    document.getElementById('tc'+i).className='trick-card';
+    document.getElementById('tr'+i).textContent='';
+  }
+  document.getElementById('trainBar').style.width='0%';
+  document.getElementById('trainPct').textContent='0%';
+  document.getElementById('epochN').textContent='0';
+  document.getElementById('trickN').textContent='0';
+  document.getElementById('timeN').textContent='-';
+}
+
+function runTraining(){
+  if(training)return;
+  training=true;
+  resetTricks();
+  document.getElementById('trainBtn').disabled=true;
+
+  // Capacity of network based on neurons
+  const capacity=neurons*0.22; // max difficulty learnable
+  const speed=6-neurons; // fewer neurons = faster per epoch
+  const maxEpochs=neurons*15+20;
+
+  let epoch=0, tricksLearned=0;
+  const trickStatus=[false,false,false,false,false];
+
+  function step(){
+    epoch++;
+    const progress=epoch/maxEpochs;
+    document.getElementById('trainBar').style.width=Math.round(progress*100)+'%';
+    document.getElementById('trainPct').textContent=Math.round(progress*100)+'%';
+    document.getElementById('epochN').textContent=epoch;
+    document.getElementById('timeN').textContent=speed<=2?'Fast':speed<=3?'Medium':'Slow';
+
+    // Check each trick
+    for(let i=0;i<5;i++){
+      if(trickStatus[i])continue;
+      const needed=trickDifficulty[i];
+      // Can this network learn it?
+      if(capacity>=needed && progress>needed*0.8+Math.random()*0.2){
+        trickStatus[i]=true;
+        tricksLearned++;
+        document.getElementById('tc'+i).className='trick-card success';
+        document.getElementById('tr'+i).textContent='Learned!';
+        document.getElementById('tr'+i).style.color='var(--green)';
+        document.getElementById('trickN').textContent=tricksLearned;
+      }
+    }
+
+    if(epoch>=maxEpochs){
+      // Mark unlearnable tricks
+      for(let i=0;i<5;i++){
+        if(!trickStatus[i]){
+          document.getElementById('tc'+i).className='trick-card fail';
+          document.getElementById('tr'+i).textContent='Too complex';
+          document.getElementById('tr'+i).style.color='var(--red)';
+        }
+      }
+      training=false;
+      document.getElementById('trainBtn').disabled=false;
+      document.getElementById('trainBtn').textContent='Train Again';
+      runsComplete++;
+      if(runsComplete>=2){
+        document.getElementById('completeBtn').style.display='block';
+      }
+      return;
+    }
+
+    setTimeout(step,80);
+  }
+
+  step();
+}
+
+drawNetwork();
+
+function completeLesson(){
+  localStorage.setItem('petlab_lesson_8','complete');
+  window.location.href='evolution-quiz.html';
+}
+</script>
+</body>
+</html>

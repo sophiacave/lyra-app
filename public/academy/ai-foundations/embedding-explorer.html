@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedding Explorer — AI Foundations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-header{margin-bottom:2rem}
+.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(251,146,60,.12);color:#fb923c}
+.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
+.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;line-height:1.6}
+
+.toolbar{display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+.add-word{display:flex;gap:.5rem;flex:1;min-width:200px}
+.add-word input{flex:1;padding:.6rem 1rem;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.03);color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem;outline:none}
+.add-word input:focus{border-color:rgba(192,132,252,.4)}
+.add-word input::placeholder{color:#52525b}
+.add-word button{padding:.6rem 1.25rem;border:none;border-radius:10px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer}
+.tool-btn{padding:.5rem 1rem;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.03);color:#a1a1aa;font-family:'Inter',sans-serif;font-size:.8rem;cursor:pointer;transition:all .2s}
+.tool-btn:hover{background:rgba(255,255,255,.06)}
+
+.explorer-wrap{position:relative;width:100%;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);margin-bottom:1.5rem;cursor:grab}
+.explorer-wrap:active{cursor:grabbing}
+canvas{display:block;width:100%;height:auto}
+
+.info-panel{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+@media(max-width:600px){.info-panel{grid-template-columns:1fr}}
+.panel{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem}
+.panel h3{font-size:.8rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem}
+
+.selected-word{font-size:1.25rem;font-weight:800;color:#c084fc;margin-bottom:.5rem}
+.neighbors{display:flex;flex-direction:column;gap:.3rem}
+.neighbor{display:flex;justify-content:space-between;align-items:center;padding:.4rem .75rem;border-radius:6px;background:rgba(255,255,255,.03);font-size:.8rem}
+.neighbor .dist{color:#fb923c;font-weight:600;font-size:.75rem}
+
+.analogy-calc{margin-bottom:2rem}
+.analogy-calc h3{font-size:1rem;font-weight:700;margin-bottom:1rem;color:#38bdf8}
+.analogy-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+.analogy-row select{padding:.5rem .75rem;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:#13131a;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem;outline:none}
+.analogy-row .op{font-size:1.2rem;color:#71717a;font-weight:300}
+.analogy-result{padding:1rem;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:10px;font-size:.95rem;font-weight:600;color:#c084fc;min-height:44px}
+
+.complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer-progress{text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
+.footer-progress span{color:#c084fc;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+<div class="container">
+  <div class="lesson-header">
+    <div class="meta">
+      <span class="type-badge">Simulation</span>
+      <span class="xp-badge">+75 XP</span>
+      <span class="time-badge">~30 min</span>
+    </div>
+    <h1>Embedding Explorer</h1>
+    <p>Explore a 2D map of word meanings. Click words, discover neighbors, and test vector analogies.</p>
+  </div>
+
+  <div class="toolbar">
+    <div class="add-word">
+      <input type="text" id="wordInput" placeholder="Type a word and press Enter" maxlength="20">
+      <button onclick="addCustomWord()">Add Word</button>
+    </div>
+    <button class="tool-btn" onclick="resetZoom()">Reset Zoom</button>
+  </div>
+
+  <div class="explorer-wrap" id="explorerWrap">
+    <canvas id="explorerCanvas" width="800" height="500"></canvas>
+  </div>
+
+  <div class="info-panel">
+    <div class="panel">
+      <h3>Selected Word</h3>
+      <div class="selected-word" id="selectedWord">Click a word to inspect</div>
+      <div id="wordVector" style="font-size:.75rem;color:#71717a;margin-bottom:.5rem"></div>
+      <h3 style="margin-top:.75rem">Nearest Neighbors</h3>
+      <div class="neighbors" id="neighbors"><div style="font-size:.8rem;color:#52525b">Select a word on the canvas</div></div>
+    </div>
+    <div class="panel">
+      <h3>Cluster Info</h3>
+      <div id="clusterInfo" style="font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        Words are positioned by meaning. Similar words cluster together in embedding space. This 2D view is a projection of high-dimensional vectors.
+      </div>
+    </div>
+  </div>
+
+  <div class="analogy-calc">
+    <h3>Analogy Calculator</h3>
+    <div class="analogy-row">
+      <select id="wordA"></select>
+      <span class="op">-</span>
+      <select id="wordB"></select>
+      <span class="op">+</span>
+      <select id="wordC"></select>
+      <span class="op">=</span>
+      <button class="tool-btn" onclick="calcAnalogy()" style="background:rgba(56,189,248,.12);color:#38bdf8;border-color:rgba(56,189,248,.2)">Calculate</button>
+    </div>
+    <div class="analogy-result" id="analogyResult">Select words and click Calculate</div>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
+</div>
+<div class="footer-progress"><span id="footerProgress">0 of 9</span> lessons complete</div>
+
+<script>
+const canvas=document.getElementById('explorerCanvas');
+const ctx=canvas.getContext('2d');
+const dpr=window.devicePixelRatio||1;
+canvas.width=800*dpr;canvas.height=500*dpr;
+ctx.scale(dpr,dpr);
+
+// Simulated 2D embeddings (pre-computed positions for semantic clustering)
+let wordData=[
+  {word:'king',x:420,y:90,color:'#c084fc',cluster:'royalty'},
+  {word:'queen',x:340,y:100,color:'#c084fc',cluster:'royalty'},
+  {word:'prince',x:450,y:130,color:'#c084fc',cluster:'royalty'},
+  {word:'princess',x:310,y:130,color:'#c084fc',cluster:'royalty'},
+  {word:'throne',x:380,y:60,color:'#c084fc',cluster:'royalty'},
+  {word:'dog',x:100,y:300,color:'#fbbf24',cluster:'animals'},
+  {word:'cat',x:130,y:340,color:'#fbbf24',cluster:'animals'},
+  {word:'fish',x:80,y:370,color:'#fbbf24',cluster:'animals'},
+  {word:'bird',x:150,y:280,color:'#fbbf24',cluster:'animals'},
+  {word:'happy',x:600,y:380,color:'#34d399',cluster:'emotions'},
+  {word:'sad',x:650,y:200,color:'#f87171',cluster:'emotions'},
+  {word:'angry',x:680,y:240,color:'#f87171',cluster:'emotions'},
+  {word:'joyful',x:580,y:410,color:'#34d399',cluster:'emotions'},
+  {word:'love',x:560,y:350,color:'#34d399',cluster:'emotions'},
+  {word:'car',x:200,y:140,color:'#38bdf8',cluster:'vehicles'},
+  {word:'truck',x:240,y:120,color:'#38bdf8',cluster:'vehicles'},
+  {word:'bicycle',x:170,y:170,color:'#38bdf8',cluster:'vehicles'},
+  {word:'plane',x:260,y:80,color:'#38bdf8',cluster:'vehicles'},
+  {word:'computer',x:500,y:280,color:'#fb923c',cluster:'technology'},
+  {word:'phone',x:520,y:310,color:'#fb923c',cluster:'technology'},
+  {word:'internet',x:480,y:250,color:'#fb923c',cluster:'technology'},
+];
+
+let selected=null;
+let panX=0,panY=0,zoom=1;
+let dragging=false,lastMX=0,lastMY=0;
+let time=0;
+
+function dist(a,b){return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2)}
+
+function getNeighbors(word,n=5){
+  const w=wordData.find(d=>d.word===word);
+  if(!w)return[];
+  return wordData.filter(d=>d.word!==word).map(d=>({word:d.word,dist:dist(w,d)})).sort((a,b)=>a.dist-b.dist).slice(0,n);
+}
+
+function screenToWorld(sx,sy){
+  return{x:(sx-panX)/zoom,y:(sy-panY)/zoom};
+}
+
+function worldToScreen(wx,wy){
+  return{x:wx*zoom+panX,y:wy*zoom+panY};
+}
+
+// Interaction
+const wrap=document.getElementById('explorerWrap');
+wrap.addEventListener('mousedown',e=>{
+  const rect=canvas.getBoundingClientRect();
+  const mx=(e.clientX-rect.left)*(800/rect.width);
+  const my=(e.clientY-rect.top)*(500/rect.height);
+  const wp=screenToWorld(mx,my);
+
+  // Check click on word
+  let clicked=null;
+  wordData.forEach(w=>{
+    if(Math.abs(wp.x-w.x)<20&&Math.abs(wp.y-w.y)<20)clicked=w;
+  });
+
+  if(clicked){
+    selected=clicked.word;
+    updateInfoPanel();
+  }else{
+    dragging=true;lastMX=mx;lastMY=my;
+  }
+});
+wrap.addEventListener('mousemove',e=>{
+  if(!dragging)return;
+  const rect=canvas.getBoundingClientRect();
+  const mx=(e.clientX-rect.left)*(800/rect.width);
+  const my=(e.clientY-rect.top)*(500/rect.height);
+  panX+=mx-lastMX;panY+=my-lastMY;
+  lastMX=mx;lastMY=my;
+});
+wrap.addEventListener('mouseup',()=>dragging=false);
+wrap.addEventListener('mouseleave',()=>dragging=false);
+wrap.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const delta=e.deltaY>0?0.9:1.1;
+  zoom=Math.max(0.5,Math.min(3,zoom*delta));
+},{passive:false});
+
+function resetZoom(){panX=0;panY=0;zoom=1}
+
+function updateInfoPanel(){
+  if(!selected){
+    document.getElementById('selectedWord').textContent='Click a word to inspect';
+    document.getElementById('neighbors').innerHTML='<div style="font-size:.8rem;color:#52525b">Select a word on the canvas</div>';
+    return;
+  }
+  const w=wordData.find(d=>d.word===selected);
+  document.getElementById('selectedWord').textContent=selected;
+  document.getElementById('wordVector').textContent=`Position: [${w.x.toFixed(0)}, ${w.y.toFixed(0)}] · Cluster: ${w.cluster}`;
+
+  const nb=getNeighbors(selected);
+  document.getElementById('neighbors').innerHTML=nb.map(n=>`<div class="neighbor"><span>${n.word}</span><span class="dist">${(1/(1+n.dist/100)).toFixed(3)} similarity</span></div>`).join('');
+
+  const clusterWords=wordData.filter(d=>d.cluster===w.cluster).map(d=>d.word);
+  document.getElementById('clusterInfo').textContent=`"${selected}" belongs to the ${w.cluster} cluster with: ${clusterWords.join(', ')}. In real embeddings, these would be close in 768+ dimensional space.`;
+}
+
+// Add custom word
+function addCustomWord(){
+  const input=document.getElementById('wordInput');
+  const word=input.value.trim().toLowerCase();
+  if(!word||wordData.find(d=>d.word===word))return;
+  // Place near center with slight randomness
+  const x=300+Math.random()*200;
+  const y=200+Math.random()*100;
+  wordData.push({word,x,y,color:'#e5e5e5',cluster:'custom'});
+  input.value='';
+  populateSelects();
+}
+document.getElementById('wordInput').addEventListener('keypress',e=>{if(e.key==='Enter')addCustomWord()});
+
+// Analogy calculator
+function populateSelects(){
+  const names=wordData.map(w=>w.word);
+  ['wordA','wordB','wordC'].forEach(id=>{
+    const sel=document.getElementById(id);
+    const cur=sel.value;
+    sel.innerHTML=names.map(n=>`<option value="${n}"${n===cur?' selected':''}>${n}</option>`).join('');
+  });
+}
+populateSelects();
+
+function calcAnalogy(){
+  const a=wordData.find(w=>w.word===document.getElementById('wordA').value);
+  const b=wordData.find(w=>w.word===document.getElementById('wordB').value);
+  const c=wordData.find(w=>w.word===document.getElementById('wordC').value);
+  if(!a||!b||!c){document.getElementById('analogyResult').textContent='Select valid words';return}
+  const rx=a.x-b.x+c.x;
+  const ry=a.y-b.y+c.y;
+  let closest=null,minD=Infinity;
+  wordData.forEach(w=>{
+    if(w.word===a.word||w.word===b.word||w.word===c.word)return;
+    const d=Math.sqrt((w.x-rx)**2+(w.y-ry)**2);
+    if(d<minD){minD=d;closest=w}
+  });
+  if(closest){
+    document.getElementById('analogyResult').textContent=`${a.word} - ${b.word} + ${c.word} = ${closest.word} (similarity: ${(1/(1+minD/100)).toFixed(3)})`;
+    selected=closest.word;updateInfoPanel();
+  }else{
+    document.getElementById('analogyResult').textContent='No result found';
+  }
+}
+
+// Render
+function draw(){
+  time++;
+  ctx.clearRect(0,0,800,500);
+
+  // Grid
+  const gridSize=50*zoom;
+  const offX=panX%gridSize;const offY=panY%gridSize;
+  ctx.strokeStyle='rgba(255,255,255,.02)';ctx.lineWidth=1;
+  for(let x=offX;x<800;x+=gridSize){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,500);ctx.stroke()}
+  for(let y=offY;y<500;y+=gridSize){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(800,y);ctx.stroke()}
+
+  // Cluster hulls (light)
+  const clusters=[...new Set(wordData.map(w=>w.cluster))];
+  clusters.forEach(cl=>{
+    const cw=wordData.filter(w=>w.cluster===cl);
+    if(cw.length<2)return;
+    const cx=cw.reduce((s,w)=>s+w.x,0)/cw.length;
+    const cy=cw.reduce((s,w)=>s+w.y,0)/cw.length;
+    const maxR=Math.max(...cw.map(w=>dist(w,{x:cx,y:cy})))+30;
+    const sp=worldToScreen(cx,cy);
+    ctx.beginPath();ctx.arc(sp.x,sp.y,maxR*zoom,0,Math.PI*2);
+    ctx.fillStyle=cw[0].color+'08';ctx.fill();
+    ctx.strokeStyle=cw[0].color+'15';ctx.lineWidth=1;ctx.stroke();
+    // Cluster label
+    ctx.font='600 10px Inter';ctx.textAlign='center';ctx.fillStyle=cw[0].color+'40';
+    ctx.fillText(cl.toUpperCase(),sp.x,sp.y-maxR*zoom-8);
+  });
+
+  // Connection lines to selected
+  if(selected){
+    const sw=wordData.find(w=>w.word===selected);
+    const nb=getNeighbors(selected,3);
+    nb.forEach(n=>{
+      const nw=wordData.find(w=>w.word===n.word);
+      const sp1=worldToScreen(sw.x,sw.y);
+      const sp2=worldToScreen(nw.x,nw.y);
+      ctx.beginPath();ctx.moveTo(sp1.x,sp1.y);ctx.lineTo(sp2.x,sp2.y);
+      ctx.strokeStyle='rgba(192,132,252,.15)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();
+      ctx.setLineDash([]);
+    });
+  }
+
+  // Words
+  wordData.forEach(w=>{
+    const sp=worldToScreen(w.x,w.y);
+    const isSel=w.word===selected;
+    const r=isSel?10:7;
+    const oy=Math.sin(time*0.02+w.x*0.1)*2;
+
+    if(isSel){
+      ctx.beginPath();ctx.arc(sp.x,sp.y+oy,r+12,0,Math.PI*2);
+      const g=ctx.createRadialGradient(sp.x,sp.y+oy,r,sp.x,sp.y+oy,r+15);
+      g.addColorStop(0,w.color+'40');g.addColorStop(1,'transparent');
+      ctx.fillStyle=g;ctx.fill();
+    }
+
+    ctx.beginPath();ctx.arc(sp.x,sp.y+oy,r*zoom,0,Math.PI*2);
+    ctx.fillStyle=w.color;ctx.globalAlpha=isSel?1:.8;ctx.fill();ctx.globalAlpha=1;
+
+    ctx.font=(isSel?'700':'600')+' '+(isSel?13:11)+'px Inter';
+    ctx.textAlign='center';ctx.fillStyle=isSel?'#fff':'#e5e5e5';
+    ctx.fillText(w.word,sp.x,sp.y+oy-r*zoom-6);
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
+
+function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
+function updateFooter(){
+  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
+  document.getElementById('footerProgress').textContent=c+' of 9';
+  if(p['embedding-explorer']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
+}
+function completeLesson(){
+  const p=getProgress();p['embedding-explorer']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
+  window.location.href='similarity-challenge.html';
+}
+updateFooter();
+</script>
+</body>
+</html>

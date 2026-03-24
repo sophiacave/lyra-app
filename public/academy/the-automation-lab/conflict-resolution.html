@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conflict Resolution — The Automation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ef4444,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem}.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;margin-bottom:2.5rem;line-height:1.6}
+.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#fff}
+
+.race-demo{margin:2rem 0;padding:2rem;border-radius:18px;background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.12);position:relative}
+.race-title{font-size:.9rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.5rem;text-align:center}
+.race-scene{display:flex;justify-content:center;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.race-agent{text-align:center;width:120px}
+.race-av{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto .5rem;border:2px solid rgba(255,255,255,.1);transition:all .4s}
+.race-av.conflict{border-color:#ef4444;animation:shake .3s ease infinite;box-shadow:0 0 20px rgba(239,68,68,.4)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.race-name{font-size:.8rem;font-weight:600}
+.race-data{width:140px;text-align:center;padding:1.5rem;border-radius:14px;background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.1);transition:all .4s}
+.race-data.danger{border-color:#ef4444;background:rgba(239,68,68,.08)}
+.race-data-icon{font-size:1.5rem;margin-bottom:.5rem}
+.race-data-label{font-size:.7rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.06em}
+.race-data-val{font-size:1.2rem;font-weight:800;margin-top:.25rem;color:#e5e5e5;transition:color .3s}
+.race-log{padding:1rem;border-radius:10px;background:rgba(0,0,0,.3);font-family:monospace;font-size:.75rem;color:#71717a;max-height:100px;overflow-y:auto;border:1px solid rgba(255,255,255,.04)}
+.race-btn{display:block;margin:1rem auto 0;padding:.6rem 1.5rem;border:1px solid rgba(239,68,68,.3);border-radius:10px;background:rgba(239,68,68,.08);color:#ef4444;font-family:Inter;font-weight:600;font-size:.85rem;cursor:pointer}
+
+.solutions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0}
+.sol-card{padding:1.25rem;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);text-align:center}
+.sol-icon{font-size:1.5rem;margin-bottom:.5rem}
+.sol-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem}
+.sol-desc{font-size:.75rem;color:#a1a1aa;line-height:1.5}
+
+.scenarios{margin:2rem 0}
+.scenario{padding:1.5rem;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);margin-bottom:1rem}
+.scen-num{font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.scen-text{font-size:.95rem;margin-bottom:1rem;line-height:1.5}
+.scen-opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.scen-opt{padding:.6rem 1rem;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:transparent;color:#e5e5e5;font-family:Inter;font-weight:600;font-size:.8rem;cursor:pointer;transition:all .2s}
+.scen-opt:hover{border-color:rgba(239,68,68,.3)}
+.scen-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.1);color:#22c55e}
+.scen-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.1);color:#ef4444;opacity:.6}
+.scen-fb{margin-top:.75rem;font-size:.8rem;color:#a1a1aa;display:none;line-height:1.5}
+
+.complete-section{text-align:center;margin:3rem 0 2rem;padding:2rem;border-radius:16px;background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.1)}
+.complete-btn{padding:.85rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(239,68,68,.3)}.complete-btn:hover{transform:translateY(-2px)}.complete-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.complete-msg{margin-top:1rem;font-size:.85rem;color:#22c55e;display:none}
+.xp-toast{position:fixed;top:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;background:#ef4444;color:#fff;font-weight:700;font-size:.9rem;transform:translateY(-100px);opacity:0;transition:all .4s ease;z-index:999;box-shadow:0 8px 32px rgba(239,68,68,.4)}.xp-toast.show{transform:translateY(0);opacity:1}
+.lesson-nav{display:flex;justify-content:space-between;align-items:center;margin:2rem 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}.lesson-nav a{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#a1a1aa;transition:color .2s}.lesson-nav a:hover{color:#ef4444}
+@media(max-width:640px){h1{font-size:1.8rem}.solutions{grid-template-columns:1fr}.race-scene{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+
+<div class="container">
+  <div class="lesson-badge">Module 2 &bull; Lesson 6</div>
+  <h1>Conflict Resolution</h1>
+  <p class="subtitle">What happens when two agents try to modify the same data at the same time? Chaos — unless you have a strategy.</p>
+
+  <h2 class="section-title">&#9888;&#65039; The Race Condition</h2>
+  <div class="race-demo">
+    <div class="race-title">Watch two agents collide</div>
+    <div class="race-scene">
+      <div class="race-agent"><div class="race-av" id="ra-a">&#129302;</div><div class="race-name">Agent A</div></div>
+      <div class="race-data" id="race-data"><div class="race-data-icon">&#128451;&#65039;</div><div class="race-data-label">user.balance</div><div class="race-data-val" id="race-val">$100</div></div>
+      <div class="race-agent"><div class="race-av" id="ra-b">&#129302;</div><div class="race-name">Agent B</div></div>
+    </div>
+    <div class="race-log" id="race-log">Click "Run Race Condition" to see what happens...</div>
+    <button class="race-btn" onclick="runRace()">&#9889; Run Race Condition</button>
+  </div>
+
+  <h2 class="section-title">&#128274; Three Solutions</h2>
+  <div class="solutions">
+    <div class="sol-card"><div class="sol-icon">&#128274;</div><div class="sol-name">Locking</div><div class="sol-desc">Agent acquires a lock before writing. Others must wait. Simple but can cause bottlenecks.</div></div>
+    <div class="sol-card"><div class="sol-icon">&#128220;</div><div class="sol-name">Priority Queue</div><div class="sol-desc">Each agent has a priority level. Higher priority writes first. Lower priority waits or merges.</div></div>
+    <div class="sol-card"><div class="sol-icon">&#129504;</div><div class="sol-name">Conscience Layer</div><div class="sol-desc">An arbiter agent reviews conflicting writes and decides which one aligns with system values.</div></div>
+  </div>
+
+  <h2 class="section-title">&#127919; Choose the Right Strategy</h2>
+  <div class="scenarios" id="scenarios"></div>
+
+  <div class="complete-section">
+    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
+    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
+  </div>
+  <div class="lesson-nav">
+    <a href="orchestration-patterns.html">&larr; Orchestration Patterns</a>
+    <a href="build-a-team.html">Next: Build a Team &rarr;</a>
+  </div>
+</div>
+<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
+
+<script>
+let raceRunning=false;
+function runRace(){
+  if(raceRunning)return;raceRunning=true;
+  const avA=document.getElementById('ra-a'),avB=document.getElementById('ra-b'),data=document.getElementById('race-data'),val=document.getElementById('race-val'),log=document.getElementById('race-log');
+  log.textContent='';val.textContent='$100';
+  const steps=[
+    {t:0,fn:()=>{log.textContent+='[00:00] A reads balance: $100\n';}},
+    {t:400,fn:()=>{log.textContent+='[00:00] B reads balance: $100\n';}},
+    {t:900,fn:()=>{avA.classList.add('conflict');log.textContent+='[00:01] A calculates: $100 - $30 = $70\n';}},
+    {t:1300,fn:()=>{avB.classList.add('conflict');log.textContent+='[00:01] B calculates: $100 - $50 = $50\n';}},
+    {t:1800,fn:()=>{val.textContent='$70';val.style.color='#ef4444';log.textContent+='[00:02] A writes: balance = $70\n';}},
+    {t:2200,fn:()=>{val.textContent='$50';data.classList.add('danger');log.textContent+='[00:02] B writes: balance = $50 (OVERWRITES A!)\n';}},
+    {t:3000,fn:()=>{log.textContent+='[00:03] BUG: $30 deduction lost! Should be $20, shows $50\n';log.textContent+='[00:03] This is a RACE CONDITION.\n';avA.classList.remove('conflict');avB.classList.remove('conflict');raceRunning=false;}}
+  ];
+  steps.forEach(s=>setTimeout(s.fn,s.t));
+}
+
+const SCEN=[
+  {text:'Two agents need to update a user\'s subscription status. One is upgrading, one is canceling. The operations are quick (<1s).',correct:0,opts:['Locking','Priority Queue','Conscience Layer'],fb:'Quick operations + two writers = locking is simplest. Acquire lock, write, release. No complex arbitration needed.'},
+  {text:'Five agents submit reports to the same dashboard. Some are critical (security alerts), some are routine (analytics). You need critical reports to appear first.',correct:1,opts:['Locking','Priority Queue','Conscience Layer'],fb:'Different importance levels = priority queue. Security agents get higher priority, their writes are processed first.'},
+  {text:'An agent wants to delete a user\'s data for GDPR compliance, but another agent wants to retain it for fraud investigation. Both have valid reasons.',correct:2,opts:['Locking','Priority Queue','Conscience Layer'],fb:'Ethical conflict with competing valid interests = conscience layer. An arbiter must weigh values (privacy vs safety) and make a judgment call.'}
+];
+const scenEl=document.getElementById('scenarios');
+SCEN.forEach((s,i)=>{
+  scenEl.innerHTML+=`<div class="scenario"><div class="scen-num">Scenario ${i+1}</div><div class="scen-text">${s.text}</div><div class="scen-opts" id="sopts-${i}">${s.opts.map((o,j)=>`<button class="scen-opt" onclick="checkScen(${i},${j})">${o}</button>`).join('')}</div><div class="scen-fb" id="sfb-${i}">${s.fb}</div></div>`;
+});
+
+function checkScen(si,oi){
+  const s=SCEN[si];
+  const btns=document.querySelectorAll(`#sopts-${si} .scen-opt`);
+  btns.forEach((b,j)=>{b.disabled=true;b.classList.add(j===s.correct?'correct':'wrong');});
+  document.getElementById(`sfb-${si}`).style.display='block';
+}
+
+function completeLsn(){
+  if(localStorage.getItem('autolab-6')==='complete')return;
+  localStorage.setItem('autolab-6','complete');
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+}
+if(localStorage.getItem('autolab-6')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
+</script>
+</body>
+</html>

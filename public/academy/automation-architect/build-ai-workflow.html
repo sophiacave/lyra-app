@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build AI Workflow — Automation Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#34C759,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.back-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.back-link:hover{color:#e5e5e5}
+.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .75rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.lesson-header h1{font-size:2.25rem;font-weight:800;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;font-size:1rem;max-width:520px;margin:0 auto}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+
+/* Component palette */
+.palette{margin-bottom:2rem}
+.palette h2{font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
+.palette p{color:#a1a1aa;font-size:.85rem;margin-bottom:1rem}
+.palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.palette-item{padding:1rem;border-radius:12px;background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.06);cursor:pointer;text-align:center;transition:all .25s;user-select:none}
+.palette-item:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.15)}
+.palette-item.used{opacity:.4;pointer-events:none}
+.pi-icon{font-size:1.5rem;margin-bottom:.25rem}
+.pi-name{font-weight:700;font-size:.75rem}
+.pi-type{font-size:.6rem;color:#71717a;text-transform:uppercase;margin-top:.15rem}
+
+.pi-trigger{border-color:rgba(52,199,89,.2)}.pi-trigger:hover{border-color:#34C759}
+.pi-ai{border-color:rgba(192,132,252,.2)}.pi-ai:hover{border-color:#c084fc}
+.pi-transform{border-color:rgba(251,146,60,.2)}.pi-transform:hover{border-color:#fb923c}
+.pi-action{border-color:rgba(56,189,248,.2)}.pi-action:hover{border-color:#38bdf8}
+.pi-filter{border-color:rgba(239,68,68,.2)}.pi-filter:hover{border-color:#ef4444}
+
+/* Canvas */
+.canvas{margin:1.5rem 0;padding:2rem;background:rgba(255,255,255,.02);border:2px dashed rgba(255,255,255,.08);border-radius:16px;min-height:280px;transition:border-color .3s;position:relative}
+.canvas.has-items{border-style:solid;border-color:rgba(255,255,255,.06)}
+.canvas-label{text-align:center;color:#52525b;font-size:.85rem;padding:3rem 0}
+.canvas-flow{display:flex;flex-direction:column;align-items:center;gap:0}
+
+.canvas-node{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;border-radius:14px;min-width:280px;position:relative;transition:all .3s;animation:nodeEnter .4s ease}
+@keyframes nodeEnter{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.cn-icon{font-size:1.5rem}
+.cn-info{flex:1}
+.cn-name{font-weight:700;font-size:.85rem}
+.cn-desc{font-size:.7rem;color:#a1a1aa;margin-top:.1rem}
+.cn-remove{width:24px;height:24px;border-radius:50%;border:none;background:rgba(239,68,68,.15);color:#ef4444;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.cn-remove:hover{background:rgba(239,68,68,.3)}
+
+.cn-trigger{background:rgba(52,199,89,.08);border:2px solid rgba(52,199,89,.25)}
+.cn-ai{background:rgba(192,132,252,.08);border:2px solid rgba(192,132,252,.25)}
+.cn-transform{background:rgba(251,146,60,.08);border:2px solid rgba(251,146,60,.25)}
+.cn-action{background:rgba(56,189,248,.08);border:2px solid rgba(56,189,248,.25)}
+.cn-filter{background:rgba(239,68,68,.08);border:2px solid rgba(239,68,68,.25)}
+
+.canvas-connector{display:flex;flex-direction:column;align-items:center;padding:.5rem 0}
+.cc-line{width:2px;height:20px;background:rgba(255,255,255,.15);border-radius:2px}
+.cc-arrow{color:rgba(255,255,255,.2);font-size:.7rem}
+
+/* Run simulation */
+.run-area{text-align:center;margin:1.5rem 0}
+.run-btn{display:inline-block;padding:.9rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#34C759,#38bdf8);color:#0a0a0f;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.run-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(52,199,89,.3)}
+.run-btn:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* Simulation log */
+.sim-log{margin:1.5rem 0;padding:1.5rem;background:rgba(0,0,0,.3);border-radius:14px;border:1px solid rgba(255,255,255,.06);font-family:'SF Mono',monospace;font-size:.8rem;line-height:1.8;min-height:60px;max-height:300px;overflow-y:auto;display:none}
+.sim-log.visible{display:block}
+.log-line{opacity:0;animation:logFade .3s ease forwards}
+@keyframes logFade{to{opacity:1}}
+.log-green{color:#34C759}.log-purple{color:#c084fc}.log-orange{color:#fb923c}.log-blue{color:#38bdf8}.log-red{color:#ef4444}.log-dim{color:#52525b}
+
+.complete-btn{display:block;width:100%;max-width:400px;margin:2rem auto 1rem;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#34C759,#2da44e);color:#0a0a0f;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(52,199,89,.3)}
+.complete-btn.done{background:rgba(52,199,89,.15);color:#34C759;cursor:default}
+.hidden{display:none!important}
+.progress-footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);max-width:800px;margin:0 auto}
+.progress-footer p{font-size:.8rem;color:#52525b}
+@media(max-width:600px){.palette-grid{grid-template-columns:repeat(2,1fr)}.lesson-header h1{font-size:1.75rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+</nav>
+<header class="lesson-header">
+  <div class="lesson-badge">Module 3 &middot; Interactive</div>
+  <h1>Build AI Workflow</h1>
+  <p>Assemble a workflow from components: trigger, AI classify, filter, transform, and action. Then simulate data flowing through it.</p>
+</header>
+
+<div class="content">
+  <div class="palette">
+    <h2>Component Palette</h2>
+    <p>Click components to add them to your workflow canvas. Build a pipeline that processes incoming data with AI.</p>
+    <div class="palette-grid" id="paletteGrid">
+      <div class="palette-item pi-trigger" onclick="addComponent('trigger')" id="pal-trigger">
+        <div class="pi-icon">&#9889;</div>
+        <div class="pi-name">Webhook Trigger</div>
+        <div class="pi-type">trigger</div>
+      </div>
+      <div class="palette-item pi-ai" onclick="addComponent('ai')" id="pal-ai">
+        <div class="pi-icon">&#129504;</div>
+        <div class="pi-name">AI Classify</div>
+        <div class="pi-type">ai (claude)</div>
+      </div>
+      <div class="palette-item pi-filter" onclick="addComponent('filter')" id="pal-filter">
+        <div class="pi-icon">&#128269;</div>
+        <div class="pi-name">Filter</div>
+        <div class="pi-type">condition</div>
+      </div>
+      <div class="palette-item pi-transform" onclick="addComponent('transform')" id="pal-transform">
+        <div class="pi-icon">&#128260;</div>
+        <div class="pi-name">Transform</div>
+        <div class="pi-type">reshape data</div>
+      </div>
+      <div class="palette-item pi-action" onclick="addComponent('action')" id="pal-action">
+        <div class="pi-icon">&#128640;</div>
+        <div class="pi-name">Send to Team</div>
+        <div class="pi-type">action</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="canvas" id="canvas">
+    <div class="canvas-label" id="canvasEmpty">Click components above to build your workflow</div>
+    <div class="canvas-flow" id="canvasFlow"></div>
+  </div>
+
+  <div class="run-area">
+    <button class="run-btn" id="runBtn" disabled onclick="runSimulation()">Run Simulation</button>
+  </div>
+
+  <div class="sim-log" id="simLog"></div>
+
+  <button class="complete-btn hidden" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 75 XP</button>
+</div>
+
+<footer class="progress-footer"><p>Lesson 8 of 9 &middot; Automation Architect</p></footer>
+
+<script>
+const SLUG='build-ai-workflow';
+const STORAGE_KEY='automation-architect-progress';
+
+const components={
+  trigger:{icon:'&#9889;',name:'Webhook Trigger',desc:'Receives incoming HTTP data',cssClass:'cn-trigger',logColor:'log-green',logMsg:'Webhook received: customer email from jane@acme.co'},
+  ai:{icon:'&#129504;',name:'AI Classify (Claude)',desc:'Analyzes content, determines intent',cssClass:'cn-ai',logColor:'log-purple',logMsg:'Claude classified: intent="billing_issue" confidence=94%'},
+  filter:{icon:'&#128269;',name:'Filter',desc:'Passes only high-confidence results',cssClass:'cn-filter',logColor:'log-red',logMsg:'Filter passed: confidence 94% > threshold 80%'},
+  transform:{icon:'&#128260;',name:'Transform',desc:'Reshapes data for the action',cssClass:'cn-transform',logColor:'log-orange',logMsg:'Transformed: {team:"billing", priority:"high", ticket_id:"TK-4821"}'},
+  action:{icon:'&#128640;',name:'Send to Team',desc:'Routes to the appropriate team',cssClass:'cn-action',logColor:'log-blue',logMsg:'Routed to Billing Team. Ticket TK-4821 created. Notification sent.'}
+};
+
+let pipeline=[];
+
+function addComponent(type){
+  if(pipeline.includes(type))return;
+  pipeline.push(type);
+  document.getElementById('pal-'+type).classList.add('used');
+  renderCanvas();
+}
+
+function removeComponent(type){
+  pipeline=pipeline.filter(t=>t!==type);
+  document.getElementById('pal-'+type).classList.remove('used');
+  renderCanvas();
+}
+
+function renderCanvas(){
+  const flow=document.getElementById('canvasFlow');
+  const empty=document.getElementById('canvasEmpty');
+  const canvas=document.getElementById('canvas');
+
+  if(pipeline.length===0){
+    empty.style.display='block';
+    flow.innerHTML='';
+    canvas.classList.remove('has-items');
+    document.getElementById('runBtn').disabled=true;
+    return;
+  }
+
+  empty.style.display='none';
+  canvas.classList.add('has-items');
+
+  let html='';
+  pipeline.forEach((type,i)=>{
+    const c=components[type];
+    html+=`<div class="canvas-node ${c.cssClass}" id="cn-${type}">
+      <div class="cn-icon">${c.icon}</div>
+      <div class="cn-info"><div class="cn-name">${c.name}</div><div class="cn-desc">${c.desc}</div></div>
+      <button class="cn-remove" onclick="removeComponent('${type}')">&times;</button>
+    </div>`;
+    if(i<pipeline.length-1){
+      html+=`<div class="canvas-connector"><div class="cc-line"></div><div class="cc-arrow">&#9660;</div></div>`;
+    }
+  });
+  flow.innerHTML=html;
+
+  // Enable run if pipeline has at least trigger + 1 more
+  document.getElementById('runBtn').disabled=pipeline.length<2;
+}
+
+function runSimulation(){
+  const log=document.getElementById('simLog');
+  log.classList.add('visible');
+  log.innerHTML='';
+
+  let delay=0;
+  const addLog=(msg,color,d)=>{
+    setTimeout(()=>{
+      const line=document.createElement('div');
+      line.className='log-line';
+      line.style.animationDelay='0s';
+      line.innerHTML=`<span class="log-dim">[${new Date().toLocaleTimeString()}]</span> <span class="${color}">${msg}</span>`;
+      log.appendChild(line);
+      log.scrollTop=log.scrollHeight;
+
+      // Highlight node
+      const nodeId='cn-'+pipeline[Math.min(Math.floor(d/800),pipeline.length-1)];
+      const node=document.getElementById(nodeId);
+      if(node){
+        node.style.boxShadow='0 0 30px rgba(255,255,255,.15)';
+        node.style.transform='scale(1.03)';
+        setTimeout(()=>{node.style.boxShadow='';node.style.transform=''},600);
+      }
+    },d);
+  };
+
+  addLog('Simulation starting...','log-dim',0);
+  delay=400;
+  pipeline.forEach((type,i)=>{
+    const c=components[type];
+    addLog(c.logMsg,c.logColor,delay);
+    delay+=800;
+  });
+  addLog('Workflow complete. All steps executed successfully.','log-green',delay);
+
+  setTimeout(()=>{
+    document.getElementById('completeBtn').classList.remove('hidden');
+  },delay+500);
+}
+
+function completeLesson(){
+  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+  progress[SLUG]=true;localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
+  const btn=document.getElementById('completeBtn');btn.textContent='Completed! +75 XP';btn.classList.add('done');
+}
+
+(function(){
+  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+  if(progress[SLUG]){
+    document.getElementById('completeBtn').classList.remove('hidden');
+    document.getElementById('completeBtn').textContent='Completed! +75 XP';
+    document.getElementById('completeBtn').classList.add('done');
+  }
+})();
+</script>
+</body>
+</html>
