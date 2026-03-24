@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP Servers — Claude Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto;position:relative}
+.lesson-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(139,92,246,.1),transparent 70%);pointer-events:none}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.2);font-size:.7rem;font-weight:600;color:#f472b6;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.lesson-header h1{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-header p{color:#a1a1aa;font-size:1rem}
+.lesson-meta-bar{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;font-size:.8rem;color:#71717a}
+.lesson-meta-bar span{color:#e5e5e5;font-weight:600}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;margin-bottom:2rem}
+.card h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem}
+.card p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem}
+
+.arch-diagram{position:relative;margin:2rem 0;padding:2rem;min-height:300px}
+.arch-node{position:absolute;padding:1rem 1.25rem;border-radius:12px;text-align:center;cursor:pointer;transition:all .3s;z-index:2}
+.arch-node:hover{transform:scale(1.05)}
+.arch-node.active{box-shadow:0 0 30px rgba(139,92,246,.3)}
+.arch-label{font-size:.75rem;font-weight:700;margin-bottom:.25rem}
+.arch-name{font-size:1rem;font-weight:800}
+.arch-sub{font-size:.7rem;color:#a1a1aa;margin-top:.25rem}
+
+.arch-line{position:absolute;z-index:1}
+.arch-line svg{overflow:visible}
+.arch-line line{stroke-dasharray:6 3;animation:dashFlow 1s linear infinite}
+@keyframes dashFlow{to{stroke-dashoffset:-18}}
+
+.server-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0}
+.server-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem;cursor:pointer;transition:all .3s}
+.server-card:hover{border-color:rgba(139,92,246,.3);transform:translateY(-2px)}
+.server-card.active{border-color:#8b5cf6;background:rgba(139,92,246,.08)}
+.server-emoji{font-size:2rem;margin-bottom:.5rem}
+.server-name{font-weight:700;font-size:.95rem;margin-bottom:.25rem}
+.server-desc{font-size:.8rem;color:#71717a;line-height:1.4}
+
+.detail-panel{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.5rem;margin:1rem 0;display:none}
+.detail-panel.show{display:block;animation:fadeIn .4s ease}
+.detail-panel h3{font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
+.code-block{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:1rem;font-family:'Courier New',monospace;font-size:.8rem;line-height:1.6;overflow-x:auto;white-space:pre;margin:.75rem 0;color:#a1a1aa}
+.code-comment{color:#52525b}.code-key{color:#8b5cf6}.code-str{color:#34d399}.code-fn{color:#38bdf8}
+
+.use-case{display:flex;gap:.75rem;align-items:start;padding:.75rem;background:rgba(255,255,255,.02);border-radius:8px;margin-bottom:.5rem}
+.use-case-icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
+.use-case-text{font-size:.85rem;line-height:1.5}
+.use-case-text strong{color:#e5e5e5}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:1rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.progress-footer{max-width:800px;margin:0 auto;padding:1rem 2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.progress-bar-wrap{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin:0 1rem}
+.progress-bar-fill{height:100%;background:#8b5cf6;border-radius:2px}
+.progress-label{font-size:.75rem;color:#71717a}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.xp-burst{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:999;display:none}
+.xp-burst.show{display:block;animation:burstIn .8s ease forwards}
+.xp-burst-text{font-size:3rem;font-weight:800;color:#fb923c;text-shadow:0 0 40px rgba(251,146,60,.5)}
+@keyframes burstIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}
+.particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:998}
+.particle{position:absolute;border-radius:50%;pointer-events:none}
+@keyframes particleFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+</style>
+</head>
+<body>
+<div class="particle-container" id="particles"></div>
+<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+
+<nav class="nav">
+<a href="index.html" class="logo">Claude Mastery</a>
+<a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+
+<div class="lesson-header">
+<div class="lesson-badge">Lesson 9 · Visual</div>
+<h1>MCP Servers</h1>
+<p>The Model Context Protocol — Claude's universal connector</p>
+<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 3</span></div>
+</div>
+
+<div class="content">
+<div class="card">
+<h2>What Is MCP?</h2>
+<p>The <strong>Model Context Protocol</strong> (MCP) is an open standard created by Anthropic that lets Claude connect to external data sources and tools through a universal interface. Instead of building custom integrations for every tool, MCP provides a single protocol that any server can implement.</p>
+<p>Think of it like USB for AI — one standard connector that works with everything.</p>
+</div>
+
+<div class="card">
+<h2>Architecture Diagram</h2>
+<p>Click on each component to learn more about its role:</p>
+
+<div class="arch-diagram" id="archDiagram">
+<!-- Claude Node -->
+<div class="arch-node active" id="nodeClient" style="left:50%;top:20px;transform:translateX(-50%);background:rgba(139,92,246,.15);border:2px solid rgba(139,92,246,.4)" onclick="showArchDetail('client')">
+<div class="arch-label" style="color:#8b5cf6">AI MODEL</div>
+<div class="arch-name">🧠 Claude</div>
+<div class="arch-sub">Sends requests via MCP</div>
+</div>
+
+<!-- MCP Server Node -->
+<div class="arch-node" id="nodeServer" style="left:50%;top:140px;transform:translateX(-50%);background:rgba(56,189,248,.15);border:2px solid rgba(56,189,248,.4)" onclick="showArchDetail('server')">
+<div class="arch-label" style="color:#38bdf8">MCP SERVER</div>
+<div class="arch-name">🔌 Protocol Layer</div>
+<div class="arch-sub">Translates requests</div>
+</div>
+
+<!-- Data Sources -->
+<div class="arch-node" id="nodeData1" style="left:10%;top:270px;background:rgba(251,146,60,.15);border:2px solid rgba(251,146,60,.4)" onclick="showArchDetail('data')">
+<div class="arch-label" style="color:#fb923c">DATA</div>
+<div class="arch-name">📁 Files</div>
+</div>
+<div class="arch-node" id="nodeData2" style="left:38%;top:270px;background:rgba(52,211,153,.15);border:2px solid rgba(52,211,153,.4)" onclick="showArchDetail('data')">
+<div class="arch-label" style="color:#34d399">DATA</div>
+<div class="arch-name">🗄️ Database</div>
+</div>
+<div class="arch-node" id="nodeData3" style="right:10%;top:270px;background:rgba(244,114,182,.15);border:2px solid rgba(244,114,182,.4)" onclick="showArchDetail('data')">
+<div class="arch-label" style="color:#f472b6">DATA</div>
+<div class="arch-name">🌐 APIs</div>
+</div>
+
+<!-- Connection Lines (SVG) -->
+<svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1">
+<line x1="50%" y1="80" x2="50%" y2="140" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
+<line x1="50%" y1="200" x2="20%" y2="270" stroke="#fb923c" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
+<line x1="50%" y1="200" x2="50%" y2="270" stroke="#34d399" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
+<line x1="50%" y1="200" x2="80%" y2="270" stroke="#f472b6" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
+</svg>
+</div>
+
+<div class="detail-panel" id="archDetail"></div>
+</div>
+
+<div class="card">
+<h2>MCP Server Types</h2>
+<p>Click each server type to see its implementation details and use cases:</p>
+
+<div class="server-types">
+<div class="server-card" onclick="showServer(0,this)">
+<div class="server-emoji">📁</div>
+<div class="server-name">Filesystem Server</div>
+<div class="server-desc">Read, write, and search files on the local machine</div>
+</div>
+<div class="server-card" onclick="showServer(1,this)">
+<div class="server-emoji">🗄️</div>
+<div class="server-name">Database Server</div>
+<div class="server-desc">Query PostgreSQL, SQLite, or any database</div>
+</div>
+<div class="server-card" onclick="showServer(2,this)">
+<div class="server-emoji">🌐</div>
+<div class="server-name">API Server</div>
+<div class="server-desc">Connect to REST APIs, webhooks, and web services</div>
+</div>
+<div class="server-card" onclick="showServer(3,this)">
+<div class="server-emoji">🔍</div>
+<div class="server-name">Search Server</div>
+<div class="server-desc">Web search, semantic search, vector databases</div>
+</div>
+<div class="server-card" onclick="showServer(4,this)">
+<div class="server-emoji">🛠️</div>
+<div class="server-name">Custom Server</div>
+<div class="server-desc">Build your own for any data source</div>
+</div>
+</div>
+
+<div class="detail-panel" id="serverDetail"></div>
+</div>
+
+<div class="card">
+<h2>Why MCP Matters</h2>
+<div style="display:grid;gap:1rem;margin-top:1rem">
+<div class="use-case">
+<div class="use-case-icon">🔗</div>
+<div class="use-case-text"><strong>Universal standard</strong> — One protocol works with any AI model that supports MCP, not just Claude. Build once, use everywhere.</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">🔒</div>
+<div class="use-case-text"><strong>Security by design</strong> — MCP servers run locally. Your data never leaves your machine unless the server explicitly sends it. You control the permissions.</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">⚡</div>
+<div class="use-case-text"><strong>Composable</strong> — Connect multiple MCP servers at once. Claude can query your database, read your files, and call your API all in the same conversation.</div>
+</div>
+<div class="use-case">
+<div class="use-case-icon">🌱</div>
+<div class="use-case-text"><strong>Growing ecosystem</strong> — Hundreds of MCP servers already exist — from GitHub and Slack to Notion and custom business tools.</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
+</div>
+</div>
+
+<div class="progress-footer">
+<span class="progress-label">Lesson 9 of 10</span>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:90%"></div></div>
+<span class="progress-label">Module 3</span>
+</div>
+
+<script>
+const ARCH_DETAILS={
+client:`<h3>Claude (MCP Client)</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">Claude acts as the <strong>MCP Client</strong>. When it needs external data or wants to perform an action, it sends a structured request through the MCP protocol. Claude can discover what tools are available, understand their parameters, and call them intelligently.</p>
+<div class="code-block"><span class="code-comment">// Claude discovers available tools on connection</span>
+<span class="code-fn">listTools</span>() → [
+  { <span class="code-key">name</span>: <span class="code-str">"read_file"</span>, <span class="code-key">description</span>: <span class="code-str">"Read a file from disk"</span> },
+  { <span class="code-key">name</span>: <span class="code-str">"query_db"</span>, <span class="code-key">description</span>: <span class="code-str">"Run a SQL query"</span> }
+]</div>`,
+server:`<h3>MCP Server (Protocol Layer)</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">The MCP Server is the bridge. It implements the MCP protocol, exposing tools, resources, and prompts in a standardized format. It translates Claude's requests into actions on your data sources.</p>
+<div class="code-block"><span class="code-comment">// Basic MCP server structure (TypeScript)</span>
+<span class="code-key">import</span> { <span class="code-fn">McpServer</span> } <span class="code-key">from</span> <span class="code-str">"@modelcontextprotocol/sdk"</span>;
+
+<span class="code-key">const</span> server = <span class="code-key">new</span> <span class="code-fn">McpServer</span>({
+  <span class="code-key">name</span>: <span class="code-str">"my-server"</span>,
+  <span class="code-key">version</span>: <span class="code-str">"1.0.0"</span>
+});
+
+server.<span class="code-fn">tool</span>(<span class="code-str">"get_data"</span>, { <span class="code-key">id</span>: z.string() },
+  <span class="code-key">async</span> ({ id }) => {
+    <span class="code-key">const</span> data = <span class="code-key">await</span> <span class="code-fn">fetchFromDB</span>(id);
+    <span class="code-key">return</span> { content: [{ type: <span class="code-str">"text"</span>, text: data }] };
+  }
+);</div>`,
+data:`<h3>Data Sources</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">Data sources are whatever you want Claude to access — files on disk, databases, APIs, or any other system. The MCP server handles the connection details, so Claude never touches raw credentials or connection strings.</p>
+<div style="display:grid;gap:.5rem;margin-top:1rem">
+<div class="use-case"><div class="use-case-icon">📁</div><div class="use-case-text"><strong>Local files</strong> — Read/write code, documents, configs</div></div>
+<div class="use-case"><div class="use-case-icon">🗄️</div><div class="use-case-text"><strong>Databases</strong> — PostgreSQL, MySQL, SQLite, MongoDB</div></div>
+<div class="use-case"><div class="use-case-icon">🌐</div><div class="use-case-text"><strong>APIs</strong> — GitHub, Slack, Jira, Stripe, any REST/GraphQL API</div></div>
+</div>`
+};
+
+const SERVER_DETAILS=[
+{title:"Filesystem MCP Server",
+code:`<span class="code-comment">// claude_desktop_config.json</span>
+{
+  <span class="code-key">"mcpServers"</span>: {
+    <span class="code-str">"filesystem"</span>: {
+      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
+      <span class="code-key">"args"</span>: [
+        <span class="code-str">"@modelcontextprotocol/server-filesystem"</span>,
+        <span class="code-str">"/path/to/allowed/directory"</span>
+      ]
+    }
+  }
+}`,
+cases:["Read and analyze entire codebases","Search files by content or pattern","Create and modify configuration files","Process documents and reports"]},
+{title:"Database MCP Server",
+code:`<span class="code-comment">// PostgreSQL MCP server config</span>
+{
+  <span class="code-key">"mcpServers"</span>: {
+    <span class="code-str">"postgres"</span>: {
+      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
+      <span class="code-key">"args"</span>: [
+        <span class="code-str">"@modelcontextprotocol/server-postgres"</span>,
+        <span class="code-str">"postgresql://user:pass@localhost/mydb"</span>
+      ]
+    }
+  }
+}`,
+cases:["Natural language database queries","Generate reports from live data","Debug data integrity issues","Schema analysis and optimization suggestions"]},
+{title:"API MCP Server",
+code:`<span class="code-comment">// GitHub MCP server config</span>
+{
+  <span class="code-key">"mcpServers"</span>: {
+    <span class="code-str">"github"</span>: {
+      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
+      <span class="code-key">"args"</span>: [<span class="code-str">"@modelcontextprotocol/server-github"</span>],
+      <span class="code-key">"env"</span>: {
+        <span class="code-str">"GITHUB_TOKEN"</span>: <span class="code-str">"your-token"</span>
+      }
+    }
+  }
+}`,
+cases:["Manage GitHub repos, PRs, and issues","Post messages to Slack channels","Create and update Notion pages","Process payments with Stripe"]},
+{title:"Search MCP Server",
+code:`<span class="code-comment">// Brave Search MCP server config</span>
+{
+  <span class="code-key">"mcpServers"</span>: {
+    <span class="code-str">"brave-search"</span>: {
+      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
+      <span class="code-key">"args"</span>: [<span class="code-str">"@modelcontextprotocol/server-brave-search"</span>],
+      <span class="code-key">"env"</span>: {
+        <span class="code-str">"BRAVE_API_KEY"</span>: <span class="code-str">"your-key"</span>
+      }
+    }
+  }
+}`,
+cases:["Real-time web search during conversations","Research topics with current information","Fact-check claims against live sources","Find documentation and tutorials"]},
+{title:"Custom MCP Server",
+code:`<span class="code-comment">// Build your own in ~50 lines of TypeScript</span>
+<span class="code-key">import</span> { <span class="code-fn">McpServer</span> } <span class="code-key">from</span> <span class="code-str">"@modelcontextprotocol/sdk"</span>;
+<span class="code-key">import</span> { z } <span class="code-key">from</span> <span class="code-str">"zod"</span>;
+
+<span class="code-key">const</span> server = <span class="code-key">new</span> <span class="code-fn">McpServer</span>({
+  <span class="code-key">name</span>: <span class="code-str">"my-custom-server"</span>,
+  <span class="code-key">version</span>: <span class="code-str">"1.0.0"</span>
+});
+
+<span class="code-comment">// Define your custom tools</span>
+server.<span class="code-fn">tool</span>(
+  <span class="code-str">"analyze_sales"</span>,
+  { region: z.string(), period: z.string() },
+  <span class="code-key">async</span> ({ region, period }) => {
+    <span class="code-key">const</span> data = <span class="code-key">await</span> <span class="code-fn">getSalesData</span>(region, period);
+    <span class="code-key">return</span> { content: [{ type: <span class="code-str">"text"</span>, text: JSON.stringify(data) }] };
+  }
+);`,
+cases:["Connect Claude to your proprietary business systems","Build domain-specific tools for your workflow","Create data pipelines triggered by natural language","Automate complex multi-step business processes"]}
+];
+
+function showArchDetail(type){
+const el=document.getElementById('archDetail');
+el.innerHTML=ARCH_DETAILS[type];
+el.classList.add('show');
+document.querySelectorAll('.arch-node').forEach(n=>n.classList.remove('active'));
+if(type==='client') document.getElementById('nodeClient').classList.add('active');
+else if(type==='server') document.getElementById('nodeServer').classList.add('active');
+else{document.getElementById('nodeData1').classList.add('active');document.getElementById('nodeData2').classList.add('active');document.getElementById('nodeData3').classList.add('active');}
+}
+
+function showServer(idx,el){
+document.querySelectorAll('.server-card').forEach(c=>c.classList.remove('active'));
+el.classList.add('active');
+const s=SERVER_DETAILS[idx];
+const panel=document.getElementById('serverDetail');
+panel.innerHTML=`<h3>${s.title}</h3><div class="code-block">${s.code}</div><h4 style="font-size:.85rem;font-weight:700;margin:.75rem 0 .5rem;color:#a1a1aa">Use Cases</h4>${s.cases.map(c=>`<div class="use-case"><div class="use-case-icon">→</div><div class="use-case-text">${c}</div></div>`).join('')}`;
+panel.classList.add('show');
+}
+
+function completeLesson(){
+localStorage.setItem('cm_mcp-servers','done');
+const burst=document.getElementById('xpBurst');burst.classList.add('show');
+const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
+for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
+setTimeout(()=>{burst.classList.remove('show');window.location.href='building-agents.html'},1200);
+}
+</script>
+</body>
+</html>

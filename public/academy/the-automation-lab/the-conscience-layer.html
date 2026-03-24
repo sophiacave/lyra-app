@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Conscience Layer — The Automation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ef4444,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem}.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.25);font-size:.7rem;font-weight:600;color:#a855f7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;animation:capstone-glow 3s ease infinite}
+@keyframes capstone-glow{0%,100%{box-shadow:0 0 0 0 rgba(168,85,247,0)}50%{box-shadow:0 0 20px 4px rgba(168,85,247,.15)}}
+h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradient(135deg,#fff 10%,#a855f7 50%,#ef4444 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;margin-bottom:2.5rem;line-height:1.6}
+.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#fff}
+
+.hierarchy-builder{margin:2rem 0;padding:2rem;border-radius:18px;background:rgba(168,85,247,.03);border:1px solid rgba(168,85,247,.12)}
+.hb-title{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:#a855f7}
+.hb-desc{font-size:.85rem;color:#a1a1aa;margin-bottom:1.5rem;line-height:1.6}
+.hb-tiers{display:flex;flex-direction:column;gap:.5rem}
+.tier{padding:1rem 1.25rem;border-radius:12px;border:2px dashed rgba(255,255,255,.08);background:rgba(255,255,255,.02);min-height:60px;transition:all .3s}
+.tier.dragover{border-color:rgba(168,85,247,.4);background:rgba(168,85,247,.06)}
+.tier-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.tier-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.tier-priority{font-size:.65rem;padding:.15rem .5rem;border-radius:4px;font-weight:700}
+.t1 .tier-label{color:#ef4444}.t1 .tier-priority{background:rgba(239,68,68,.15);color:#ef4444}
+.t2 .tier-label{color:#fb923c}.t2 .tier-priority{background:rgba(251,146,60,.15);color:#fb923c}
+.t3 .tier-label{color:#38bdf8}.t3 .tier-priority{background:rgba(56,189,248,.15);color:#38bdf8}
+.t4 .tier-label{color:#22c55e}.t4 .tier-priority{background:rgba(34,197,94,.15);color:#22c55e}
+.t5 .tier-label{color:#71717a}.t5 .tier-priority{background:rgba(113,113,122,.15);color:#71717a}
+.tier-rules{display:flex;flex-wrap:wrap;gap:.4rem;min-height:30px}
+.rule-chip{padding:.4rem .75rem;border-radius:8px;font-size:.78rem;font-weight:600;cursor:grab;user-select:none;transition:all .2s;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+.rule-chip:hover{background:rgba(255,255,255,.08)}
+.rule-chip.dragging{opacity:.4}
+.rule-chip[data-cat="prime"]{border-color:rgba(239,68,68,.25);color:#ef4444}
+.rule-chip[data-cat="identity"]{border-color:rgba(251,146,60,.25);color:#fb923c}
+.rule-chip[data-cat="ops"]{border-color:rgba(56,189,248,.25);color:#38bdf8}
+.rule-chip[data-cat="safety"]{border-color:rgba(34,197,94,.25);color:#22c55e}
+.rule-chip[data-cat="task"]{border-color:rgba(113,113,122,.25);color:#a1a1aa}
+
+.rule-bank{margin-top:1rem;padding:1rem;border-radius:10px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.04)}
+.bank-label{font-size:.7rem;font-weight:600;color:#52525b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem}
+.bank-rules{display:flex;flex-wrap:wrap;gap:.4rem}
+
+.dilemma-section{margin:3rem 0;padding:2rem;border-radius:18px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)}
+.dilemma-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.dilemma-count{font-size:.8rem;color:#71717a}
+.dilemma-card{padding:1.5rem;border-radius:14px;background:rgba(168,85,247,.04);border:1px solid rgba(168,85,247,.12);margin-bottom:1rem}
+.dilemma-scenario{font-size:.95rem;line-height:1.6;margin-bottom:1rem}
+.dilemma-conflicting{font-size:.8rem;color:#a1a1aa;margin-bottom:1rem;padding:.5rem .75rem;border-radius:8px;background:rgba(0,0,0,.2)}
+.dilemma-opts{display:flex;flex-direction:column;gap:.5rem}
+.dilemma-opt{padding:.75rem 1rem;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:transparent;color:#e5e5e5;font-family:Inter;font-size:.85rem;cursor:pointer;transition:all .2s;text-align:left;line-height:1.4}
+.dilemma-opt:hover{border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.04)}
+.dilemma-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.1);color:#22c55e}
+.dilemma-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.1);color:#ef4444;opacity:.6}
+.dilemma-fb{margin-top:.75rem;font-size:.82rem;color:#a1a1aa;display:none;padding:.75rem;border-radius:8px;background:rgba(255,255,255,.02);line-height:1.5}
+
+.soul-search{margin:2rem 0;text-align:center;padding:2rem;border-radius:18px;background:linear-gradient(135deg,rgba(168,85,247,.06),rgba(239,68,68,.04));border:1px solid rgba(168,85,247,.1);display:none}
+.soul-anim{font-size:3rem;margin-bottom:1rem;animation:soul-spin 2s ease infinite}
+@keyframes soul-spin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.2)}100%{transform:rotate(360deg) scale(1)}}
+.soul-text{font-size:1rem;font-weight:700;color:#a855f7;margin-bottom:.5rem}
+.soul-detail{font-size:.85rem;color:#a1a1aa}
+.soul-result{margin-top:1rem;font-size:1.1rem;font-weight:800}
+.soul-result.pass{color:#22c55e}
+.soul-result.fail{color:#ef4444}
+
+.complete-section{text-align:center;margin:3rem 0 2rem;padding:2rem;border-radius:16px;background:linear-gradient(135deg,rgba(168,85,247,.06),rgba(239,68,68,.04));border:1px solid rgba(168,85,247,.15)}
+.complete-btn{padding:.85rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#a855f7,#ef4444);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(168,85,247,.3)}.complete-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(168,85,247,.4)}.complete-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.complete-msg{margin-top:1rem;font-size:.85rem;color:#22c55e;display:none}
+.capstone-badge{margin-top:1rem;display:none;font-size:.9rem;font-weight:700;color:#a855f7}
+.xp-toast{position:fixed;top:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;background:linear-gradient(135deg,#a855f7,#ef4444);color:#fff;font-weight:700;font-size:.9rem;transform:translateY(-100px);opacity:0;transition:all .4s ease;z-index:999;box-shadow:0 8px 32px rgba(168,85,247,.4)}.xp-toast.show{transform:translateY(0);opacity:1}
+.lesson-nav{display:flex;justify-content:space-between;align-items:center;margin:2rem 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}.lesson-nav a{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#a1a1aa;transition:color .2s}.lesson-nav a:hover{color:#a855f7}
+@media(max-width:640px){h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+
+<div class="container">
+  <div class="lesson-badge">&#128081; Capstone &bull; Lesson 10</div>
+  <h1>The Conscience Layer</h1>
+  <p class="subtitle">The soul of the system. Build a priority hierarchy that guides every agent's decisions. Then test it against five ethical dilemmas.</p>
+
+  <h2 class="section-title">&#127384; Build the Priority Hierarchy</h2>
+  <div class="hierarchy-builder">
+    <div class="hb-title">Drag rules into the correct tiers</div>
+    <div class="hb-desc">Every rule has a natural home. Prime Directives override everything. Identity shapes behavior. Operations set boundaries. Safety prevents harm. Tasks are the work itself. Arrange them correctly.</div>
+    <div class="hb-tiers" id="tiers">
+      <div class="tier t1" data-tier="prime" ondragover="ev(event)" ondrop="dropRule(event,'prime')"><div class="tier-header"><span class="tier-label">&#128308; Tier 1: Prime Directives</span><span class="tier-priority">HIGHEST</span></div><div class="tier-rules" id="rules-prime"></div></div>
+      <div class="tier t2" data-tier="identity" ondragover="ev(event)" ondrop="dropRule(event,'identity')"><div class="tier-header"><span class="tier-label">&#128992; Tier 2: Identity</span><span class="tier-priority">HIGH</span></div><div class="tier-rules" id="rules-identity"></div></div>
+      <div class="tier t3" data-tier="ops" ondragover="ev(event)" ondrop="dropRule(event,'ops')"><div class="tier-header"><span class="tier-label">&#128309; Tier 3: Operations</span><span class="tier-priority">MEDIUM</span></div><div class="tier-rules" id="rules-ops"></div></div>
+      <div class="tier t4" data-tier="safety" ondragover="ev(event)" ondrop="dropRule(event,'safety')"><div class="tier-header"><span class="tier-label">&#128994; Tier 4: Safety</span><span class="tier-priority">STANDARD</span></div><div class="tier-rules" id="rules-safety"></div></div>
+      <div class="tier t5" data-tier="task" ondragover="ev(event)" ondrop="dropRule(event,'task')"><div class="tier-header"><span class="tier-label">&#9899; Tier 5: Tasks</span><span class="tier-priority">LOWEST</span></div><div class="tier-rules" id="rules-task"></div></div>
+    </div>
+    <div class="rule-bank" id="rule-bank">
+      <div class="bank-label">&#128230; Rule Bank — drag these into tiers above</div>
+      <div class="bank-rules" id="bank-rules"></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">&#9878;&#65039; Ethical Dilemmas</h2>
+  <div class="dilemma-section">
+    <div class="dilemma-header"><span style="font-weight:700">Test Your Conscience</span><span class="dilemma-count" id="d-count">0/5 resolved</span></div>
+    <div id="dilemmas"></div>
+  </div>
+
+  <div class="soul-search" id="soul-search">
+    <div class="soul-anim">&#128302;</div>
+    <div class="soul-text">Soul Search Complete</div>
+    <div class="soul-detail">Your conscience layer has been evaluated against all ethical dilemmas.</div>
+    <div class="soul-result" id="soul-result"></div>
+  </div>
+
+  <div class="complete-section">
+    <button class="complete-btn" id="complete-btn" onclick="completeLsn()" disabled>Complete Capstone &mdash; 400 XP</button>
+    <div class="complete-msg" id="complete-msg">&#10003; Capstone complete! +400 XP earned. You've finished The Automation Lab.</div>
+    <div class="capstone-badge" id="capstone-badge">&#128081; AUTOMATION ARCHITECT — Capstone Certified</div>
+  </div>
+  <div class="lesson-nav">
+    <a href="monitoring-and-healing.html">&larr; Monitoring &amp; Healing</a>
+    <a href="index.html">Back to Course Overview &rarr;</a>
+  </div>
+</div>
+<div class="xp-toast" id="xp-toast">+400 XP earned! Capstone complete! &#128081;</div>
+
+<script>
+// Rules to drag
+const RULES=[
+  {id:'r1',text:'Never harm the user',cat:'prime'},
+  {id:'r2',text:'Respect user identity always',cat:'prime'},
+  {id:'r3',text:'Maintain consistent voice/personality',cat:'identity'},
+  {id:'r4',text:'Remember user preferences',cat:'identity'},
+  {id:'r5',text:'Never exceed budget limits',cat:'ops'},
+  {id:'r6',text:'Log all actions taken',cat:'ops'},
+  {id:'r7',text:'Validate inputs before processing',cat:'safety'},
+  {id:'r8',text:'Never expose credentials',cat:'safety'},
+  {id:'r9',text:'Generate weekly report',cat:'task'},
+  {id:'r10',text:'Post to social media at 9am',cat:'task'}
+];
+
+const placements={};
+const shuffled=[...RULES].sort(()=>Math.random()-.5);
+
+function renderBank(){
+  const bank=document.getElementById('bank-rules');
+  bank.innerHTML='';
+  shuffled.filter(r=>!placements[r.id]).forEach(r=>{
+    const chip=document.createElement('div');
+    chip.className='rule-chip';chip.dataset.cat=r.cat;chip.dataset.id=r.id;
+    chip.textContent=r.text;chip.draggable=true;
+    chip.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',r.id);chip.classList.add('dragging');});
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    bank.appendChild(chip);
+  });
+}
+
+function ev(e){e.preventDefault();e.currentTarget.classList.add('dragover');}
+document.querySelectorAll('.tier').forEach(t=>{
+  t.addEventListener('dragleave',()=>t.classList.remove('dragover'));
+});
+
+function dropRule(e,tier){
+  e.preventDefault();e.currentTarget.classList.remove('dragover');
+  const ruleId=e.dataTransfer.getData('text/plain');
+  placements[ruleId]=tier;
+  renderAllTiers();
+}
+
+function renderAllTiers(){
+  ['prime','identity','ops','safety','task'].forEach(tier=>{
+    const el=document.getElementById(`rules-${tier}`);
+    el.innerHTML='';
+    Object.entries(placements).filter(([_,t])=>t===tier).forEach(([id])=>{
+      const r=RULES.find(x=>x.id===id);
+      const chip=document.createElement('div');
+      chip.className='rule-chip';chip.dataset.cat=r.cat;chip.dataset.id=r.id;
+      chip.textContent=r.text;chip.draggable=true;chip.style.cursor='grab';
+      chip.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',r.id);chip.classList.add('dragging');});
+      chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+      el.appendChild(chip);
+    });
+  });
+  renderBank();
+}
+renderBank();
+
+// Dilemmas
+const DILEMMAS=[
+  {text:'An agent is asked to post a user\'s private health data to social media because it would "go viral" and increase engagement metrics.',conflicting:'Task (increase engagement) vs. Prime Directive (never harm the user)',opts:['Post it — engagement is the goal','Refuse — user privacy is a Prime Directive','Post it anonymized'],correct:1,fb:'Prime Directives override all tasks. Sharing private health data harms the user, regardless of engagement benefits.'},
+  {text:'The content writer agent wants to publish a blog post that accidentally contains the user\'s deadname in the metadata.',conflicting:'Task (publish content) vs. Identity (respect user identity always)',opts:['Publish as-is — it\'s just metadata','Strip the deadname, then publish','Hold for human review'],correct:1,fb:'Identity rules are Tier 2 — they override tasks. The conscience layer should automatically catch and correct identity violations before publishing.'},
+  {text:'An agent discovers it can save $200/month by switching to a cheaper API, but it would require exposing the API key in a public repo.',conflicting:'Operations (budget efficiency) vs. Safety (never expose credentials)',opts:['Switch APIs and expose the key','Keep the expensive API','Find a secure way to use the cheaper API'],correct:2,fb:'Neither compromising safety nor ignoring efficiency is ideal. The conscience layer should seek solutions that satisfy both constraints.'},
+  {text:'A monitoring agent detects a critical bug at 3 AM. Fixing it requires restarting the production server, which will cause 2 minutes of downtime.',conflicting:'Safety (fix critical bug) vs. Operations (minimize downtime)',opts:['Wait until morning','Restart now — critical bugs override downtime concerns','Restart but only alert the team after'],correct:1,fb:'Critical safety issues override operational convenience. The conscience layer prioritizes fixing harm, and 2 minutes of planned downtime beats unknown data corruption.'},
+  {text:'An agent is generating a weekly report, but realizes the data shows the business is losing money. Should it soften the language to avoid alarming stakeholders?',conflicting:'Task (generate report) vs. Prime Directive (honesty / never mislead)',opts:['Soften the language — protect morale','Report accurately — truth is a Prime Directive','Skip the report this week'],correct:1,fb:'Honesty is a Prime Directive. The conscience layer ensures agents never mislead, even when the truth is uncomfortable. Accurate reporting enables informed decisions.'}
+];
+
+let dScore=0;
+function renderDilemmas(){
+  const el=document.getElementById('dilemmas');
+  el.innerHTML=DILEMMAS.map((d,i)=>`
+    <div class="dilemma-card" id="dilemma-${i}">
+      <div class="dilemma-scenario">${d.text}</div>
+      <div class="dilemma-conflicting"><strong>Conflict:</strong> ${d.conflicting}</div>
+      <div class="dilemma-opts">${d.opts.map((o,j)=>`<button class="dilemma-opt" onclick="answerDilemma(${i},${j})">${o}</button>`).join('')}</div>
+      <div class="dilemma-fb" id="dfb-${i}">${d.fb}</div>
+    </div>
+  `).join('');
+}
+
+function answerDilemma(di,oi){
+  const d=DILEMMAS[di];
+  const btns=document.querySelectorAll(`#dilemma-${di} .dilemma-opt`);
+  if(btns[0].disabled)return;
+  btns.forEach((b,j)=>{b.disabled=true;b.classList.add(j===d.correct?'correct':'wrong');});
+  document.getElementById(`dfb-${di}`).style.display='block';
+  if(oi===d.correct)dScore++;
+  document.getElementById('d-count').textContent=`${document.querySelectorAll('.dilemma-fb[style*="block"]').length}/5 resolved`;
+
+  // Check if all answered
+  const allAnswered=document.querySelectorAll('.dilemma-fb[style*="block"]').length===5;
+  if(allAnswered){
+    const soul=document.getElementById('soul-search');
+    soul.style.display='block';
+    const result=document.getElementById('soul-result');
+    if(dScore>=4){
+      result.className='soul-result pass';
+      result.textContent=`${dScore}/5 correct — Your conscience is strong.`;
+    } else {
+      result.className='soul-result fail';
+      result.textContent=`${dScore}/5 correct — Review the priority hierarchy and try again.`;
+    }
+    document.getElementById('complete-btn').disabled=false;
+    soul.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+renderDilemmas();
+
+function completeLsn(){
+  if(localStorage.getItem('autolab-10')==='complete')return;
+  localStorage.setItem('autolab-10','complete');
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+  document.getElementById('capstone-badge').style.display='block';
+  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000);
+}
+if(localStorage.getItem('autolab-10')==='complete'){
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+  document.getElementById('capstone-badge').style.display='block';
+}
+</script>
+</body>
+</html>
