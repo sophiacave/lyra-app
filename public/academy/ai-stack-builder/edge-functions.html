@@ -276,6 +276,7 @@ function updateProg(){const done=challenges.filter(Boolean).length;const pct=Mat
 function completeLesson(){localStorage.setItem('aisb_lesson_4','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
 if(localStorage.getItem('aisb_lesson_4')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
 </script>
+<script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/auth.js"></script>
 <script src="/academy/shared/engine.js"></script>
 </body>
