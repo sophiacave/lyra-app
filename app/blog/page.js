@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
+import SubscribeForm from '@/app/components/SubscribeForm';
 
 export const metadata = {
   title: 'Blog — Like One',
@@ -240,7 +241,7 @@ export default function BlogPage() {
             <div className="blog-topnav-links">
               <Link href="/academy/">Academy</Link>
               <Link href="/blog" className="active">Blog</Link>
-              <Link href="/community/">Community</Link>
+              <Link href="/academy/">Courses</Link>
               <Link href="/academy/signin.html">Sign In</Link>
             </div>
           </div>
@@ -286,10 +287,7 @@ export default function BlogPage() {
           <div style={{background:'rgba(192,132,252,0.05)',border:'1px solid rgba(192,132,252,0.15)',borderRadius:'16px',padding:'2rem',textAlign:'center'}}>
             <p style={{fontSize:'1.1rem',fontWeight:700,color:'#f0f0f0',marginBottom:'0.5rem'}}>Get weekly AI automation tips from Faye.</p>
             <p style={{fontSize:'0.85rem',color:'#737373',lineHeight:1.6,marginBottom:'1rem'}}>No spam. No fake urgency. Just real systems and real results.</p>
-            <form onSubmit="event.preventDefault();const e=this.querySelector('input').value;fetch('https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,source:'blog_listing'})}).then(()=>{this.innerHTML='<p style=&quot;color:#4ade80;font-weight:600&quot;>Welcome. Check your inbox.</p>'}).catch(()=>alert('Try again.'))" style={{display:'flex',gap:'8px',maxWidth:'400px',margin:'0 auto'}}>
-              <input type="email" required placeholder="your@email.com" style={{flex:1,padding:'0.65rem 1rem',background:'#0a0a0f',border:'1px solid #1a1a2e',borderRadius:'8px',color:'#e5e5e5',fontSize:'0.9rem',fontFamily:'inherit'}} />
-              <button type="submit" style={{background:'#fb923c',color:'#000',padding:'0.65rem 1.25rem',border:'none',borderRadius:'8px',fontWeight:700,fontSize:'0.85rem',cursor:'pointer',fontFamily:'inherit',whiteSpace:'nowrap'}}>Subscribe</button>
-            </form>
+            <SubscribeForm source="blog_listing" buttonText="Subscribe" />
           </div>
         </div>
         <footer className="blog-site-footer">

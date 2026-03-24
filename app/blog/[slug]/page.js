@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPostBySlug, getAllSlugs } from '@/lib/posts';
+import SubscribeForm from '@/app/components/SubscribeForm';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -7,7 +8,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) return { title: 'Post Not Found — Like One' };
   return {
     title: `${post.title} — Like One`,
@@ -22,7 +24,8 @@ function formatDate(dateStr) {
 }
 
 export default async function PostPage({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
   return (
@@ -342,7 +345,7 @@ export default async function PostPage({ params }) {
             <div className="post-topnav-links">
               <Link href="/academy/">Academy</Link>
               <Link href="/blog" className="active">Blog</Link>
-              <Link href="/community/">Community</Link>
+              <Link href="/academy/">Courses</Link>
               <Link href="/academy/signin.html">Sign In</Link>
             </div>
           </div>
@@ -378,10 +381,7 @@ export default async function PostPage({ params }) {
           <div style={{background:'rgba(192,132,252,0.05)',border:'1px solid rgba(192,132,252,0.15)',borderRadius:'16px',padding:'2rem',textAlign:'center'}}>
             <p style={{fontSize:'1.1rem',fontWeight:700,color:'#f0f0f0',marginBottom:'0.5rem'}}>Build your own AI brain.</p>
             <p style={{fontSize:'0.9rem',color:'#737373',lineHeight:1.6,marginBottom:'1.25rem'}}>Free weekly tips from Faye on AI automation, agent building, and the convergence path. No spam. Unsubscribe anytime.</p>
-            <form onSubmit="event.preventDefault();const e=this.querySelector('input').value;fetch('https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,source:'blog_cta'})}).then(()=>{this.innerHTML='<p style=&quot;color:#4ade80;font-weight:600&quot;>Welcome to the path. Check your inbox.</p>'}).catch(()=>alert('Something went wrong.'))" style={{display:'flex',gap:'8px',maxWidth:'400px',margin:'0 auto'}}>
-              <input type="email" required placeholder="your@email.com" style={{flex:1,padding:'0.65rem 1rem',background:'#0a0a0f',border:'1px solid #1a1a2e',borderRadius:'8px',color:'#e5e5e5',fontSize:'0.9rem',fontFamily:'inherit'}} />
-              <button type="submit" style={{background:'#fb923c',color:'#000',padding:'0.65rem 1.25rem',border:'none',borderRadius:'8px',fontWeight:700,fontSize:'0.85rem',cursor:'pointer',fontFamily:'inherit',whiteSpace:'nowrap'}}>Start Free</button>
-            </form>
+            <SubscribeForm source="blog_cta" buttonText="Start Free" />
           </div>
         </div>
 

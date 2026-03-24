@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 
-const CONSOLE_PIN = process.env.CONSOLE_PIN || '9135';
+const CONSOLE_PIN = process.env.CONSOLE_PIN;
+if (!CONSOLE_PIN) console.warn('CONSOLE_PIN not set — /api/env-config disabled');
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const pin = searchParams.get('pin');
 
-  if (!pin || pin !== CONSOLE_PIN) {
-    return NextResponse.json({ error: 'Invalid PIN' }, { status: 401 });
+  if (!CONSOLE_PIN || !pin || pin !== CONSOLE_PIN) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://vpaynwebgmmnwttqkwmh.supabase.co';
