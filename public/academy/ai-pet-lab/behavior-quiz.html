@@ -276,12 +276,14 @@ function showResults(){
 
 function completeLesson(){
   localStorage.setItem('petlab_lesson_3','complete');
-  window.location.href='teach-sit.html';
+  LO_NAV.goNext();
 }
 
 renderQuestion();
 </script>
 <script src="/academy/shared/engine.js"></script>
+<script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/lesson-nav.js"></script>
 <script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/auth.js"></script>
 </body>

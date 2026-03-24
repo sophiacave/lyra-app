@@ -175,7 +175,7 @@ function confirmChoice(){
   localStorage.setItem('petlab_alpha',a.alpha);
   localStorage.setItem('petlab_gamma',a.gamma);
   localStorage.setItem('petlab_lesson_1','complete');
-  window.location.href='first-reward.html';
+  LO_NAV.goNext();
 }
 
 if(selected && agents[selected]){
@@ -298,6 +298,8 @@ initViz('vizBeta','beta');
 initViz('vizGamma','gamma');
 </script>
 <script src="/academy/shared/engine.js"></script>
+<script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/lesson-nav.js"></script>
 <script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/auth.js"></script>
 </body>

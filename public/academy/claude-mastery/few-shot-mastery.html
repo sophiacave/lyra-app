@@ -277,11 +277,13 @@ localStorage.setItem('cm_few-shot','done');
 const burst=document.getElementById('xpBurst');burst.classList.add('show');
 const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
 for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
-setTimeout(()=>{burst.classList.remove('show');window.location.href='prompt-engineering-game.html'},1200);
+setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
 }
 </script>
 <script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/auth.js"></script>
 <script src="/academy/shared/engine.js"></script>
+<script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/lesson-nav.js"></script>
 </body>
 </html>

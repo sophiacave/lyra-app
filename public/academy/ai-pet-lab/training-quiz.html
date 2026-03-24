@@ -143,12 +143,14 @@ function showResults(){
   document.getElementById('resultsMsg').textContent=pct>=80?'You\'re a natural pet trainer! Ready for the Evolution Chamber.':pct>=60?'Solid understanding! The next module will deepen your knowledge.':'Review the trick lessons and try again. Your pet believes in you!';
 }
 
-function completeLesson(){localStorage.setItem('petlab_lesson_6','complete');window.location.href='learning-rate-dial.html';}
+function completeLesson(){localStorage.setItem('petlab_lesson_6','complete');LO_NAV.goNext();}
 
 renderQuestion();
 </script>
 <script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/auth.js"></script>
 <script src="/academy/shared/engine.js"></script>
+<script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/lesson-nav.js"></script>
 </body>
 </html>
