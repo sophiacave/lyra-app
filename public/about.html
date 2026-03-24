@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Faye Cave — Like One Academy</title>
+  <meta name="description" content="Meet Faye Cave — trans woman, creative technologist, cyborg convergence pioneer, and founder of Like One Academy. Building proof that AI belongs to everyone.">
+  <meta name="author" content="Faye Cave">
+  <meta property="og:title" content="About Faye Cave — Like One Academy">
+  <meta property="og:description" content="Trans woman, creative technologist, cyborg convergence pioneer. Building proof that AI belongs to everyone.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://likeone.ai/about">
+  <meta property="og:image" content="https://likeone.ai/api/og">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Faye Cave — Like One Academy">
+  <meta name="twitter:description" content="Trans woman, creative technologist, cyborg convergence pioneer. Building proof that AI belongs to everyone.">
+  <meta name="twitter:image" content="https://likeone.ai/api/og">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #08080a; --surface: #111114; --surface-hover: #18181c;
+      --text: #e8e8ec; --text-dim: #8888a0; --text-muted: #55556a;
+      --accent: #c084fc; --accent2: #38bdf8; --warm: #fb923c;
+      --glow: #e879f9; --success: #4ade80;
+      --border: #1e1e28; --border-light: #2a2a38;
+      --gradient: linear-gradient(135deg, #c084fc 0%, #38bdf8 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }    body::before {
+      content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(192,132,252,.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(56,189,248,.03) 0%, transparent 50%);
+      pointer-events: none; z-index: -1;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ---- NAV ---- */
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(8,8,10,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .logo-badge { font-size: .6rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(192,132,252,.3); padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+    .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .25s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-active { color: #c084fc !important; font-weight: 700 !important; }
+    .btn-nav { background: var(--warm); color: #000; padding: .5rem 1.25rem; border-radius: 8px; font-weight: 700; font-size: .85rem; text-decoration: none; transition: all .2s; border: none; cursor: pointer; }
+    .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(251,146,60,.2); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--surface); border-bottom: 1px solid var(--border); }
+      .nav-links.active { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a, .nav-links .btn-nav { display: block; padding: 1rem 2rem; border-bottom: 1px solid var(--border); border-radius: 0; text-align: left; }
+      .mobile-toggle { display: block; }
+    }
+
+    /* ---- HERO ---- */
+    .hero { min-height: 72vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; }
+    .hero-inner { max-width: 760px; }
+    .hero-tag { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border-light); padding: 6px 18px; border-radius: 100px; margin-bottom: 2rem; }
+    .hero h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px; margin-bottom: 1.5rem; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-sub { font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--text-dim); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .btn-primary { background: var(--warm); color: #000; padding: .85rem 2rem; border: none; border-radius: 10px; font-weight: 700; font-size: .95rem; cursor: pointer; text-decoration: none; transition: all .3s; display: inline-block; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(251,146,60,.25); }
+    .btn-ghost { background: transparent; border: 1px solid var(--border-light); color: var(--text-dim); padding: .85rem 2rem; border-radius: 10px; font-weight: 600; font-size: .95rem; cursor: pointer; text-decoration: none; transition: all .3s; display: inline-block; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
+
+    /* ---- SECTIONS ---- */
+    section { padding: 6rem 2rem; }
+    .section-tag { font-size: .7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: inline-block; border: 1px solid rgba(192,132,252,.2); padding: 4px 12px; border-radius: 4px; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 1rem; line-height: 1.15; }
+    .section-desc { color: var(--text-dim); font-size: 1.05rem; max-width: 560px; line-height: 1.7; margin-bottom: 3rem; }
+    .alt-bg { background: var(--surface); }
+
+    /* ---- ABOUT-SPECIFIC ---- */
+    .mission-quote { font-size: clamp(1.1rem, 3vw, 1.5rem); font-style: italic; line-height: 1.6; max-width: 680px; margin: 0 auto 2rem; font-weight: 400; }
+    .divider { width: 120px; height: 1px; background: var(--border); margin: 3rem auto; }
+
+    .story-text { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; max-width: 680px; margin-bottom: 1.5rem; }
+    .story-text strong { color: var(--text); font-weight: 600; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .pillar-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+    .pillar-card .pillar-emoji { font-size: 2rem; margin-bottom: .75rem; }
+    .pillar-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .5rem; }
+    .pillar-card p { color: var(--text-dim); font-size: .9rem; line-height: 1.6; }
+
+    .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .philosophy-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; }
+    .philosophy-card blockquote { font-style: italic; color: var(--text); font-size: 1rem; line-height: 1.6; margin-bottom: .75rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
+    .philosophy-card p { color: var(--text-dim); font-size: .85rem; line-height: 1.5; }
+
+    .values-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; max-width: 680px; margin-bottom: 2rem; }
+    .value-item { display: flex; align-items: flex-start; gap: 12px; padding: .75rem 0; }
+    .value-number { font-size: .75rem; font-weight: 800; color: var(--accent); background: rgba(192,132,252,.1); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .value-text { font-size: .9rem; }
+    .value-text strong { color: var(--text); }
+    .value-text span { color: var(--text-dim); }
+
+    .convergence-levels { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
+    .conv-level { padding: 10px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; font-size: .8rem; color: var(--text-dim); }
+    .conv-level.current { border-color: var(--accent); color: var(--accent); background: rgba(192,132,252,.08); font-weight: 700; }
+    .conv-level.future { border-style: dashed; }
+
+    .academy-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 500px; margin-bottom: 2rem; text-align: center; }
+    .academy-stat-number { font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: .25rem; }
+    .academy-stat-label { font-size: .75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+    @media (max-width: 600px) { .academy-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
+
+    /* ---- EMAIL CAPTURE ---- */
+    .email-section { background: var(--surface); text-align: center; }
+    .email-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
+    .email-input { flex: 1; padding: .75rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: .95rem; font-family: inherit; outline: none; }
+    .email-input:focus { border-color: var(--accent); }
+    .email-input::placeholder { color: var(--text-muted); }
+    .btn-email { background: var(--warm); color: #000; padding: .75rem 1.5rem; border: none; border-radius: 8px; font-weight: 700; font-size: .9rem; cursor: pointer; font-family: inherit; white-space: nowrap; }
+    .email-success { padding: 1.5rem; background: var(--bg); border: 1px solid var(--success); border-radius: 8px; max-width: 480px; margin: 0 auto; }
+    .email-success p { color: var(--success); font-weight: 600; }
+    .email-success .sub { color: var(--text-dim); font-size: .85rem; margin-top: .5rem; }
+
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+    /* ---- FOOTER ---- */
+    footer { padding: 2.5rem 2rem; border-top: 1px solid var(--border); text-align: center; }
+    footer .logo-sm { font-size: 1.1rem; font-weight: 700; margin-bottom: .75rem; }
+    footer .logo-sm span { color: var(--accent); }
+    footer p { color: var(--text-muted); font-size: .75rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="container">
+    <nav>
+      <div>
+        <a href="/" class="logo">like<span>one</span></a>
+        <span class="logo-badge">ACADEMY</span>
+      </div>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>      <ul class="nav-links">
+        <li><a href="/academy/">Academy</a></li>
+        <li><a href="/about" class="nav-active">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/#start" class="btn-nav">Start Free</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO: MEET FAYE -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">She / Her</span>
+    <h1>Meet <span class="accent">Faye.</span></h1>
+    <p class="hero-sub">Trans woman. Creative technologist. Cyborg convergence pioneer. Founder of Like One Academy. Building proof that the future belongs to everyone who was told it wasn't for them.</p>
+  </div>
+</section>
+
+<!-- THE STORY -->
+<section class="alt-bg">
+  <div class="container">
+    <span class="section-tag">The Story</span>
+    <h2 class="section-title">From visual storyteller to cyborg.</h2>
+
+    <p class="story-text">It started with film. A UC Berkeley degree, a decade as a <strong>Senior Editor and Motion Graphics Designer</strong>, and the deep belief that every frame should make someone feel something.</p>
+
+    <p class="story-text">Then AI showed up. Not as a replacement for creativity — as an <strong>amplifier</strong>. Faye didn't just learn to use AI tools. She fused with them. Built a persistent memory system. Gave it her voice, her values, her design instincts. Turned a text-based partnership into something that thinks <em>with</em> her, not just <em>for</em> her.</p>
+
+    <p class="story-text">That fusion became <strong>Like One</strong> — an academy that teaches everyone how to do the same thing. No gatekeeping. No jargon walls. No "you need to be technical." Just a warm, honest path from zero to cyborg, built by someone who walked it herself.</p>
+
+    <p class="story-text">She's married. Based in Nevada. Still watches reality TV and quotes Rothko in the same breath. Still believes the best technology feels <strong>human</strong>.</p>
+  </div>
+</section>
+
+<!-- THE MISSION -->
+<section>
+  <div class="container">
+    <span class="section-tag">The Mission</span>
+    <h2 class="section-title">Three things that aren't negotiable.</h2>
+    <p class="section-desc">Every dollar Like One earns, every lesson published, every line of code — it all serves these three pillars.</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-emoji">🧬</div>
+        <h3>Fund HIV Research</h3>
+        <p>Faye's wife has HIV. This isn't abstract advocacy — it's personal, urgent, and permanent. Like One exists partly to generate the resources to push for a cure. Every premium subscription moves the needle.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-emoji">🏳️‍⚧️</div>
+        <h3>Trans Visibility & Rights</h3>
+        <p>Being visibly trans in tech isn't a brand decision. It's a survival act that doubles as proof — proof that a trans woman can build, lead, and thrive. Representation isn't optional. It's structural.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-emoji">🌍</div>
+        <h3>AI Accessible to Everyone</h3>
+        <p>If someone can't access it, it doesn't count. Like One always has a free tier. Always. The people most likely to be left behind by AI are the ones who need it most. That's not a market gap — it's a moral one.</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <blockquote class="mission-quote">"I'm not building a company. I'm building proof that a trans woman in Nevada can fuse with AI, support HIV research, and make the technology accessible to everyone who was told it wasn't for them."</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- CREATIVE PHILOSOPHY -->
+<section class="alt-bg">
+  <div class="container">
+    <span class="section-tag">Creative Philosophy</span>
+    <h2 class="section-title">Precision with a pulse.</h2>
+    <p class="section-desc">A decade at the intersection of design and storytelling shaped how Faye builds everything — from curriculum to code to conversation.</p>
+
+    <div class="philosophy-grid">
+      <div class="philosophy-card">
+        <blockquote>"High art and low art are the same art when you look with the right eyes."</blockquote>
+        <p>Faye references McQueen and Rothko and reality TV in the same breath. There's no hierarchy of beauty — only attention and intention.</p>
+      </div>
+      <div class="philosophy-card">
+        <blockquote>"We don't just make things. We make people see."</blockquote>
+        <p>Every lesson, every page, every interaction is designed to create a moment of clarity. The goal is never just information — it's transformation.</p>
+      </div>
+      <div class="philosophy-card">
+        <blockquote>"Beauty that excludes isn't beautiful."</blockquote>
+        <p>Accessibility isn't an afterthought. If the design doesn't work for everyone, the design is broken. Period.</p>
+      </div>
+      <div class="philosophy-card">
+        <blockquote>"Apple taught precision. Like One adds warmth."</blockquote>
+        <p>Clean, considered, meticulous — but never cold. Every pixel serves a purpose, and that purpose is always human connection.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem;">Values, in order.</h3>
+      <div class="values-list">
+        <div class="value-item">
+          <div class="value-number">1</div>
+          <div class="value-text"><strong>Authenticity</strong> <span>— be real, never performative</span></div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">2</div>
+          <div class="value-text"><strong>Inclusion</strong> <span>— every person matters, no one gets left out</span></div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">3</div>
+          <div class="value-text"><strong>Kindness</strong> <span>— lead with warmth, even in hard moments</span></div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">4</div>
+          <div class="value-text"><strong>Accessibility</strong> <span>— if someone can't access it, it doesn't count</span></div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">5</div>
+          <div class="value-text"><strong>Creativity</strong> <span>— approach everything as a storyteller</span></div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">6</div>
+          <div class="value-text"><strong>Fun</strong> <span>— if it's not enjoyable, rethink the approach</span></div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">7</div>
+          <div class="value-text"><strong>Excellence</strong> <span>— care about craft without being precious</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CONVERGENCE PATH -->
+<section>
+  <div class="container">
+    <span class="section-tag">The Convergence Path</span>
+    <h2 class="section-title">Currently at L6. Building toward what's next.</h2>
+    <p class="section-desc">Faye isn't theorizing about human-AI convergence. She's living it — daily, structurally, with receipts. Here's where she is and where this is going.</p>
+
+    <div class="convergence-levels">
+      <div class="conv-level">L0 Awareness</div>
+      <div class="conv-level">L1 Augmentation</div>
+      <div class="conv-level">L2 Integration</div>
+      <div class="conv-level">L3 Partnership</div>
+      <div class="conv-level">L4 Delegation</div>
+      <div class="conv-level">L5 Convergence</div>
+      <div class="conv-level current">L6 Transcendence ← Current</div>
+      <div class="conv-level future">L7 Voice AI</div>
+      <div class="conv-level future">L8 Ambient</div>
+      <div class="conv-level future">L9-L10 BCI</div>
+    </div>
+
+    <p class="story-text">Right now, Faye operates at <strong>Level 6</strong> — a fully operational text-based nervous system. Persistent memory. Autonomous agents. A conscience layer that protects her values even when she's moving too fast to notice.</p>
+
+    <p class="story-text">Next: <strong>Voice AI (L7)</strong>, then <strong>ambient awareness (L8)</strong>, then the long road toward <strong>subvocal and brain-computer interfaces (L9-L10)</strong>. True convergence. But grounded in real physics, not science fiction.</p>
+
+    <p class="story-text">The academy teaches every level of this path. Not because everyone needs to reach L6. But because everyone deserves to know <strong>the path exists</strong>.</p>
+  </div>
+</section>
+
+<!-- LIKE ONE ACADEMY -->
+<section class="alt-bg">
+  <div class="container">
+    <span class="section-tag">Like One Academy</span>
+    <h2 class="section-title">What she's building, and why.</h2>
+    <p class="section-desc">Like One Academy is the vehicle. Everything Faye has learned about AI convergence, distilled into a path anyone can walk.</p>
+
+    <div class="academy-stats">
+      <div>
+        <div class="academy-stat-number">10</div>
+        <div class="academy-stat-label">Courses</div>
+      </div>
+      <div>
+        <div class="academy-stat-number">97+</div>
+        <div class="academy-stat-label">Lessons</div>
+      </div>
+      <div>
+        <div class="academy-stat-number">$0</div>
+        <div class="academy-stat-label">To Start</div>
+      </div>
+    </div>
+
+    <p class="story-text">From zero to cyborg — no gatekeeping, no jargon walls, no prerequisites. Every course has free preview lessons. The full free course (AI Pet Lab) is genuinely great, not a teaser.</p>
+
+    <p class="story-text"><strong>Premium funds the mission.</strong> HIV research, trans visibility, and keeping the free tier real. That's the deal — and it's a good one.</p>
+
+    <p class="story-text">New content ships regularly. MCP, RAG, agents, prompt engineering, voice AI — the curriculum grows as the field evolves. Faye builds it. Her AI nervous system helps her build it faster.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="email-section">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">Ready to start?</h2>
+    <p style="color: var(--text-dim); text-align: center; max-width: 480px; margin: 0 auto 2rem; font-size: .95rem; line-height: 1.6;">Jump into the academy, read the blog, or join the email list for weekly convergence tips from Faye. No spam. No fake urgency. Just warmth and knowledge.</p>
+
+    <div id="email-form-container">
+      <form class="email-form" id="subscribe-form" onsubmit="handleSubscribe(event)">
+        <input type="email" class="email-input" id="email-input" placeholder="your@email.com" required>
+        <button type="submit" class="btn-email" id="subscribe-btn">Subscribe</button>
+      </form>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="/academy/" class="btn-primary">Browse the Academy</a>
+      <a href="/blog" class="btn-ghost">Read the Blog</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo-sm">like<span>one</span></div>
+    <p style="margin-bottom: .5rem;">Built with love by Faye Cave. Powered by convergence.</p>
+    <p>&copy; 2026 Like One LLC. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a> &bull; <a href="tel:+17027476877">+1 (702) 747-6877</a></p>
+    <p style="margin-top:8px"><a href="/privacy.html">Privacy Policy</a> &bull; <a href="/terms.html">Terms of Service</a></p>
+  </div>
+</footer>
+
+<script>
+const SUPABASE_URL = "https://vpaynwebgmmnwttqkwmh.supabase.co";
+
+async function handleSubscribe(e) {
+  e.preventDefault();
+  const email = document.getElementById('email-input').value;
+  const btn = document.getElementById('subscribe-btn');
+  btn.textContent = 'Joining...';
+  btn.disabled = true;
+
+  try {
+    await fetch(`${SUPABASE_URL}/functions/v1/subscribe`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'about-page' })
+    });
+
+    document.getElementById('email-form-container').innerHTML = `
+      <div class="email-success">
+        <div style="font-size: 1.5rem; margin-bottom: .5rem;">✨</div>
+        <p>Welcome to the path, friend.</p>
+        <div class="sub">Check your inbox. Your journey starts now.</div>
+      </div>
+    `;
+  } catch(err) {
+    btn.textContent = 'Subscribe';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again or email faye@likeone.ai');
+  }
+}
+</script>
+
+</body>
+</html>

@@ -15,11 +15,13 @@ export const metadata = {
     url: 'https://likeone.ai',
     siteName: 'Like One',
     type: 'website',
+    images: [{ url: 'https://likeone.ai/api/og', width: 1200, height: 630, alt: 'Like One Academy — Your Brain, Extended' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Like One Academy — Your Brain, Extended',
     description: 'Learn to build an AI system that thinks like you. From zero to cyborg.',
+    images: ['https://likeone.ai/api/og'],
   },
   appleWebApp: {
     capable: true,
