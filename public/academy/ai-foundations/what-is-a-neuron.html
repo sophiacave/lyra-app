@@ -87,7 +87,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   </div>
 
   <div class="narration">
-    <strong>A neuron is just math.</strong> Three numbers come in, get multiplied by weights, added together, and if the sum crosses a threshold — it fires. That's it. No magic. Every AI system on Earth is built from billions of these simple units working together.
+    <strong>A neuron is just math.</strong> Three numbers come in, get multiplied by weights, added together, and if the sum crosses a threshold — it fires. That's it. No magic. Every AI system on Earth is built from billions of these simple units working together. <em style="color:#a1a1aa;display:block;margin-top:.75rem">This is a simplified model of how early artificial neurons worked (the perceptron, invented in 1958). Real neural networks have evolved significantly, but the core idea remains: inputs, weights, and a decision function.</em>
   </div>
 
   <div class="insight-cards">
@@ -102,6 +102,14 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="insight">
       <h3>Activation</h3>
       <p>If the sum exceeds a threshold, the neuron "fires" and passes a signal forward. Below threshold? Silence.</p>
+    </div>
+    <div class="insight">
+      <h3>Beyond Fire/Silence</h3>
+      <p>This is a simplified model called a perceptron. Modern neural networks use smooth activation functions like ReLU (passes all positive values), sigmoid (outputs 0-1 probability), or tanh. The fire/silence idea is how it started — real networks are more nuanced.</p>
+    </div>
+    <div class="insight">
+      <h3>Bias</h3>
+      <p>Each neuron also has a bias term — a number added before activation that shifts the threshold. The real formula is: output = activation(inputs × weights + bias). Think of bias as the neuron's default tendency.</p>
     </div>
   </div>
 

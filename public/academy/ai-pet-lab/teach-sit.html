@@ -139,6 +139,7 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
   <h2>How This Works</h2>
   <p>Your pet starts with a <span class="hl">low probability</span> of obeying "sit." Each time you correctly reward a sit, that probability increases. Each correct punishment for not sitting also helps slightly.</p>
   <p>This mimics a <span class="hl">policy update</span> in RL: the agent's policy (probability of choosing actions) changes based on received rewards. Over time, the pet "learns" that sitting = good.</p>
+  <p style="margin-top:.75rem"><em style="color:var(--dim);font-size:.85rem">Note: In real RL, negative rewards decrease the value of the bad action rather than directly boosting the good one. This simulation simplifies both effects into a single probability for clarity.</em></p>
   <p>Notice how learning isn't instant &mdash; it's <span class="hl">gradual</span>. This is just like training a neural network: many iterations of small updates lead to big changes.</p>
 </div>
 

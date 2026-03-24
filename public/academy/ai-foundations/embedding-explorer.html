@@ -91,6 +91,7 @@ canvas{display:block;width:100%;height:auto}
       <div class="selected-word" id="selectedWord">Click a word to inspect</div>
       <div id="wordVector" style="font-size:.75rem;color:#71717a;margin-bottom:.5rem"></div>
       <h3 style="margin-top:.75rem">Nearest Neighbors</h3>
+      <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;line-height:1.4">Proximity scores are based on distance in our simplified 2D view. Real embedding similarity uses cosine similarity, which measures the angle between vectors rather than distance.</div>
       <div class="neighbors" id="neighbors"><div style="font-size:.8rem;color:#52525b">Select a word on the canvas</div></div>
     </div>
     <div class="panel">
@@ -222,7 +223,7 @@ function updateInfoPanel(){
   document.getElementById('wordVector').textContent=`Position: [${w.x.toFixed(0)}, ${w.y.toFixed(0)}] · Cluster: ${w.cluster}`;
 
   const nb=getNeighbors(selected);
-  document.getElementById('neighbors').innerHTML=nb.map(n=>`<div class="neighbor"><span>${n.word}</span><span class="dist">${(1/(1+n.dist/100)).toFixed(3)} similarity</span></div>`).join('');
+  document.getElementById('neighbors').innerHTML=nb.map(n=>`<div class="neighbor"><span>${n.word}</span><span class="dist">${(1/(1+n.dist/100)).toFixed(3)} proximity</span></div>`).join('');
 
   const clusterWords=wordData.filter(d=>d.cluster===w.cluster).map(d=>d.word);
   document.getElementById('clusterInfo').textContent=`"${selected}" belongs to the ${w.cluster} cluster with: ${clusterWords.join(', ')}. In real embeddings, these would be close in 768+ dimensional space.`;
@@ -267,7 +268,7 @@ function calcAnalogy(){
     if(d<minD){minD=d;closest=w}
   });
   if(closest){
-    document.getElementById('analogyResult').textContent=`${a.word} - ${b.word} + ${c.word} = ${closest.word} (similarity: ${(1/(1+minD/100)).toFixed(3)})`;
+    document.getElementById('analogyResult').textContent=`${a.word} - ${b.word} + ${c.word} = ${closest.word} (proximity: ${(1/(1+minD/100)).toFixed(3)})`;
     selected=closest.word;updateInfoPanel();
   }else{
     document.getElementById('analogyResult').textContent='No result found';

@@ -160,25 +160,16 @@ const LO = {
     setTimeout(() => toast.remove(), 2500);
   },
 
-  // ─── BADGE OVERLAY ───
+  // ─── BADGE TOAST (non-blocking, auto-dismiss) ───
   showBadge(badge) {
-    const overlay = document.createElement('div');
-    overlay.innerHTML = `
-      <div style="position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:99999;opacity:0;transition:opacity .3s" id="lo-badge-overlay">
-        <div style="background:#111114;border:2px solid #fb923c;border-radius:24px;padding:40px;text-align:center;max-width:320px;transform:scale(.8);transition:transform .4s cubic-bezier(.34,1.56,.64,1)">
-          <div style="font-size:64px;margin-bottom:12px">${badge.icon}</div>
-          <div style="font-size:11px;color:#fb923c;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Achievement Unlocked</div>
-          <div style="font-size:24px;font-weight:800;color:#e5e5e5;margin-bottom:8px">${badge.name}</div>
-          <div style="font-size:14px;color:#737373">${badge.desc}</div>
-          <button onclick="document.getElementById('lo-badge-overlay').remove()" style="margin-top:20px;background:#fb923c;color:#000;border:none;padding:8px 24px;border-radius:8px;font-weight:700;cursor:pointer;font-family:Inter,sans-serif">Nice!</button>
-        </div>
-      </div>`;
-    document.body.appendChild(overlay);
-    const el = document.getElementById('lo-badge-overlay');
-    requestAnimationFrame(() => {
-      el.style.opacity = '1';
-      el.querySelector('div > div').style.transform = 'scale(1)';
-    });
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;bottom:24px;left:24px;background:#111114;border:1px solid rgba(251,146,60,.3);border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:14px;z-index:99999;opacity:0;transform:translateY(16px);transition:all .4s cubic-bezier(.34,1.56,.64,1);font-family:Inter,sans-serif;max-width:320px;cursor:pointer;';
+    toast.innerHTML = `<div style="font-size:36px">${badge.icon}</div><div><div style="font-size:10px;color:#fb923c;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Achievement</div><div style="font-size:15px;font-weight:700;color:#e5e5e5">${badge.name}</div><div style="font-size:12px;color:#737373">${badge.desc}</div></div>`;
+    toast.onclick = () => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); };
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => { toast.style.opacity = '1'; toast.style.transform = 'translateY(0)'; });
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(16px)'; }, 3500);
+    setTimeout(() => toast.remove(), 4000);
   },
 
   // ─── INIT ───
