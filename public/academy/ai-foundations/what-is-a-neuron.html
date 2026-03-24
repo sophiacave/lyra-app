@@ -75,7 +75,15 @@ canvas{display:block;width:100%;border-radius:12px;border:1px solid rgba(255,255
       <span class="time-badge">~15 min</span>
     </div>
     <h1>What Is a Neuron</h1>
-    <p>The real artificial neuron: weighted inputs, bias, and activation functions. This is the actual model used in every modern neural network.</p>
+    <p>Your brain has 86 billion neurons. Each one does something embarrassingly simple: it adds up signals and decides whether to fire or stay quiet. AI neurons do the exact same thing — and that simplicity is why they're so powerful.</p>
+  </div>
+
+  <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.9rem;color:#a1a1aa;line-height:1.7">
+    <strong style="color:#e5e5e5">Think of it like a voting booth.</strong> Three friends each send you a signal — maybe weak, maybe strong. You multiply each signal by how much you trust that friend (that's the <strong style="color:#c084fc">weight</strong>). You add up all the votes, plus a little nudge called the <strong style="color:#c084fc">bias</strong> (your default mood). Then you decide: do I fire, or stay quiet? That decision is the <strong style="color:#c084fc">activation function</strong>. Move the sliders below and watch the vote count change in real time.
+  </div>
+
+  <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:10px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.85rem;color:#fb923c;font-weight:600">
+    Try this: Set w1 to a large positive number and w2 to a large negative number. Watch how they compete. What happens to the output?
   </div>
 
   <canvas id="neuronCanvas" height="420"></canvas>
