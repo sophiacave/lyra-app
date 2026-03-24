@@ -642,6 +642,118 @@ async function checkout(productId) {
 
 // Init
 renderLevels();
+
+// ---- FAYE CHAT WIDGET ----
+(function() {
+  const CHAT_URL = SUPABASE_URL + '/functions/v1/faye-chat';
+  let chatOpen = false;
+  let chatHistory = [];
+
+  // Inject styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .faye-chat-btn { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #c084fc, #fb923c); border: none; cursor: pointer; z-index: 9999; box-shadow: 0 4px 20px rgba(192,132,252,.4); display: flex; align-items: center; justify-content: center; font-size: 24px; transition: transform .2s, box-shadow .2s; }
+    .faye-chat-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(192,132,252,.5); }
+    .faye-chat-box { position: fixed; bottom: 96px; right: 24px; width: 360px; max-height: 480px; background: #111114; border: 1px solid #2a2a38; border-radius: 16px; z-index: 9999; display: none; flex-direction: column; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.6); }
+    .faye-chat-box.open { display: flex; }
+    .faye-chat-header { padding: 14px 16px; background: linear-gradient(135deg, rgba(192,132,252,.15), rgba(251,146,60,.1)); border-bottom: 1px solid #1e1e28; display: flex; align-items: center; gap: 10px; }
+    .faye-chat-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #c084fc, #fb923c); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .faye-chat-name { font-size: 14px; font-weight: 700; color: #e8e8ec; }
+    .faye-chat-status { font-size: 11px; color: #4ade80; }
+    .faye-chat-msgs { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; max-height: 320px; }
+    .faye-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.5; color: #e5e5e5; }
+    .faye-msg.faye { background: rgba(192,132,252,.12); border: 1px solid rgba(192,132,252,.2); align-self: flex-start; }
+    .faye-msg.user { background: rgba(251,146,60,.12); border: 1px solid rgba(251,146,60,.2); align-self: flex-end; }
+    .faye-msg.typing { color: #8888a0; font-style: italic; }
+    .faye-chat-input { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #1e1e28; background: #0a0a0b; }
+    .faye-chat-input input { flex: 1; background: #111114; border: 1px solid #2a2a38; border-radius: 8px; padding: 8px 12px; color: #e5e5e5; font-size: 13px; font-family: inherit; outline: none; }
+    .faye-chat-input input:focus { border-color: #c084fc; }
+    .faye-chat-input button { background: #fb923c; color: #000; border: none; border-radius: 8px; padding: 8px 14px; font-weight: 700; font-size: 12px; cursor: pointer; font-family: inherit; }
+    @media (max-width: 480px) { .faye-chat-box { width: calc(100vw - 32px); right: 16px; bottom: 88px; } }
+  `;
+  document.head.appendChild(style);
+
+  // Chat button
+  const btn = document.createElement('button');
+  btn.className = 'faye-chat-btn';
+  btn.innerHTML = '💬';
+  btn.title = 'Chat with Faye';
+  btn.onclick = () => {
+    chatOpen = !chatOpen;
+    box.classList.toggle('open', chatOpen);
+    btn.innerHTML = chatOpen ? '✕' : '💬';
+    if (chatOpen && chatHistory.length === 0) addFayeMsg("Hey! I'm Faye. I built this whole thing with AI. What are you curious about?");
+  };
+  document.body.appendChild(btn);
+
+  // Chat box
+  const box = document.createElement('div');
+  box.className = 'faye-chat-box';
+  box.innerHTML = `
+    <div class="faye-chat-header">
+      <div class="faye-chat-avatar">F</div>
+      <div><div class="faye-chat-name">Faye Cave</div><div class="faye-chat-status">● Online</div></div>
+    </div>
+    <div class="faye-chat-msgs" id="faye-msgs"></div>
+    <form class="faye-chat-input" onsubmit="return false;">
+      <input type="text" id="faye-input" placeholder="Ask me anything..." autocomplete="off">
+      <button type="submit" id="faye-send">Send</button>
+    </form>
+  `;
+  document.body.appendChild(box);
+
+  const msgsEl = document.getElementById('faye-msgs');
+  const inputEl = document.getElementById('faye-input');
+  const sendBtn = document.getElementById('faye-send');
+
+  function addFayeMsg(text) {
+    const div = document.createElement('div');
+    div.className = 'faye-msg faye';
+    div.textContent = text;
+    msgsEl.appendChild(div);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    chatHistory.push({ role: 'assistant', content: text });
+  }
+
+  function addUserMsg(text) {
+    const div = document.createElement('div');
+    div.className = 'faye-msg user';
+    div.textContent = text;
+    msgsEl.appendChild(div);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    chatHistory.push({ role: 'user', content: text });
+  }
+
+  async function sendMessage() {
+    const msg = inputEl.value.trim();
+    if (!msg) return;
+    inputEl.value = '';
+    addUserMsg(msg);
+
+    const typing = document.createElement('div');
+    typing.className = 'faye-msg faye typing';
+    typing.textContent = 'Faye is thinking...';
+    msgsEl.appendChild(typing);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+
+    try {
+      const res = await fetch(CHAT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, history: chatHistory.slice(-6) })
+      });
+      const data = await res.json();
+      typing.remove();
+      addFayeMsg(data.reply || "Something glitched. Email me at faye@likeone.ai!");
+    } catch(e) {
+      typing.remove();
+      addFayeMsg("My brain hiccupped. Try again or email faye@likeone.ai!");
+    }
+  }
+
+  sendBtn.onclick = sendMessage;
+  inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+})();
 </script>
 
 </body>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>AI Quick Start Guide — Like One</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 40px 30px; color: #1a1a1a; line-height: 1.8; }
+  h1 { font-size: 28px; margin-bottom: 8px; color: #111; }
+  h2 { font-size: 22px; margin: 36px 0 12px; color: #222; border-bottom: 2px solid #c084fc; padding-bottom: 6px; }
+  h3 { font-size: 18px; margin: 24px 0 8px; color: #333; }
+  p { margin-bottom: 16px; }
+  .subtitle { color: #666; font-size: 16px; margin-bottom: 32px; }
+  .author { color: #c084fc; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+  th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; font-size: 14px; }
+  th { background: #f5f0ff; font-weight: 700; }
+  .highlight { background: #f5f0ff; border-left: 4px solid #c084fc; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .step { background: #f8f8f8; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .step-num { display: inline-block; background: #c084fc; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; font-size: 14px; margin-right: 8px; }
+  ul, ol { margin: 12px 0 20px 24px; }
+  li { margin-bottom: 6px; }
+  .footer { margin-top: 48px; padding-top: 20px; border-top: 2px solid #eee; color: #888; font-size: 13px; }
+  a { color: #c084fc; }
+  @media print { body { padding: 20px; } }
+</style>
+</head><body>
+
+<h1>AI Quick Start Guide</h1>
+<p class="subtitle">The 5 tools and 3 automations to start your AI journey. By <span class="author">Faye Cave</span>, Founder of Like One.</p>
+
+<div class="highlight">
+<strong>What you will have after following this guide:</strong> A working AI stack that saves you 9+ hours per week, costs under $30/month, and runs on autopilot. Time to complete: one afternoon.
+</div>
+
+<h2>The 5 Tools You Need</h2>
+
+<table>
+<tr><th>#</th><th>Tool</th><th>Purpose</th><th>Cost</th><th>Sign Up</th></tr>
+<tr><td>1</td><td><strong>Claude</strong></td><td>Your AI thinking partner. Writing, coding, analysis, strategy.</td><td>$20/mo (Pro)</td><td>claude.ai</td></tr>
+<tr><td>2</td><td><strong>Make.com</strong></td><td>Visual automation builder. Connect any app to any app.</td><td>$9/mo (Core)</td><td>make.com</td></tr>
+<tr><td>3</td><td><strong>Supabase</strong></td><td>Database + serverless functions. Your AI's memory.</td><td>Free tier</td><td>supabase.com</td></tr>
+<tr><td>4</td><td><strong>Resend</strong></td><td>Email delivery. Transactional + marketing emails.</td><td>Free tier (100/day)</td><td>resend.com</td></tr>
+<tr><td>5</td><td><strong>Vercel</strong></td><td>Website hosting. Auto-deploys from GitHub.</td><td>Free tier</td><td>vercel.com</td></tr>
+</table>
+
+<p><strong>Total monthly cost: $29.</strong> Every other tool on this list has a free tier that covers your first 6+ months.</p>
+
+<h2>Automation 1: Lead Capture + Welcome Email</h2>
+<p><em>Replaces: 3 hours/week of manual follow-up</em></p>
+
+<div class="step">
+<p><span class="step-num">1</span> <strong>Create a Supabase table</strong> called <code>email_subscribers</code> with columns: <code>id</code> (uuid), <code>email</code> (text, unique), <code>name</code> (text), <code>source</code> (text), <code>created_at</code> (timestamp).</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">2</span> <strong>Create a Supabase Edge Function</strong> called <code>subscribe</code> that accepts POST requests with an email, saves it to the table, and sends a welcome email via Resend.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">3</span> <strong>Add an email form to your website</strong> that posts to your edge function URL. On success, show a confirmation message.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">4</span> <strong>Set up Resend</strong> — add your domain, verify DNS records (DKIM + SPF), and get your API key. Your welcome email should introduce yourself and set expectations.</p>
+</div>
+
+<div class="highlight">
+<strong>Result:</strong> Anyone who enters their email on your site automatically gets stored in your database and receives a welcome email — instantly, 24/7, while you sleep.
+</div>
+
+<h2>Automation 2: Content Creation + Distribution</h2>
+<p><em>Replaces: 4 hours/week of content work</em></p>
+
+<div class="step">
+<p><span class="step-num">1</span> <strong>Create a content pipeline table</strong> in Supabase: <code>id</code>, <code>title</code>, <code>content</code>, <code>channel</code> (blog/twitter/linkedin), <code>status</code> (draft/ready/published), <code>scheduled_at</code>.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">2</span> <strong>Use Claude to batch-create content.</strong> Give it your expertise, your voice, and your audience. Ask for 5 blog posts and 10 social posts at once. Store them in your pipeline table as "ready".</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">3</span> <strong>Build a Make.com scenario</strong> that triggers on schedule, reads "ready" posts from Supabase, and publishes them to your platforms (blog via GitHub API, social via platform APIs).</p>
+</div>
+
+<div class="highlight">
+<strong>Result:</strong> You spend one focused hour with Claude creating a week's worth of content. The system distributes it automatically on schedule.
+</div>
+
+<h2>Automation 3: Revenue Tracking + Alerts</h2>
+<p><em>Replaces: 2 hours/week of spreadsheet work</em></p>
+
+<div class="step">
+<p><span class="step-num">1</span> <strong>Create a revenue_events table</strong> in Supabase: <code>date</code>, <code>amount</code>, <code>source</code>, <code>description</code>, <code>customer</code>.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">2</span> <strong>Connect Stripe via webhook.</strong> Create an edge function that receives Stripe events (checkout.session.completed) and logs them to your revenue table. Every sale is recorded automatically.</p>
+</div>
+
+<div class="step">
+<p><span class="step-num">3</span> <strong>Set up a daily digest.</strong> A Make.com scenario runs at 8am, queries yesterday's revenue from Supabase, and emails you a summary. You wake up to your numbers.</p>
+</div>
+
+<div class="highlight">
+<strong>Result:</strong> Every dollar that comes in is tracked, categorized, and reported to you automatically. No more spreadsheets. No more forgetting to log a payment.
+</div>
+
+<h2>The Implementation Checklist</h2>
+<ol>
+<li><strong>Hour 1:</strong> Sign up for all 5 tools. Verify Resend domain.</li>
+<li><strong>Hour 2:</strong> Build the subscribe edge function + email form.</li>
+<li><strong>Hour 3:</strong> Create your content pipeline table. Batch-create content with Claude.</li>
+<li><strong>Hour 4:</strong> Set up Stripe webhook + revenue tracking.</li>
+<li><strong>Hour 5:</strong> Test everything end-to-end. Fix any issues.</li>
+</ol>
+
+<h2>What Comes Next</h2>
+<p>Once your 3 automations are running, you are ready to level up:</p>
+<ul>
+<li><strong>Build your AI identity document</strong> — teach your AI WHO you are, not just what to do</li>
+<li><strong>Deploy autonomous agents</strong> — automations with memory and judgment</li>
+<li><strong>Create a brain</strong> — a central knowledge system all your agents share</li>
+</ul>
+<p>All of this is taught at <a href="https://likeone.ai">Like One Academy</a>. Free tier available. No credit card required.</p>
+
+<div class="footer">
+<p>&copy; 2026 Like One LLC. All rights reserved.</p>
+<p>Created by Faye Cave — Human soul, machine mind, unstoppable.</p>
+<p>likeone.ai | faye@likeone.ai</p>
+</div>
+
+</body></html>
