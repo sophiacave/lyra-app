@@ -6,7 +6,7 @@
 
 (function() {
   const SUPABASE_URL = 'https://vpaynwebgmmnwttqkwmh.supabase.co';
-  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.qcBErOuFgdJqRlHJdfRbDjJkV4mC8yxVIaFBDIiXn5w';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo';
   const MONTHLY_LINK = 'https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a';
   const ANNUAL_LINK = 'https://buy.stripe.com/aFafZag9W7lB6mL9JM3sI0b';
   const SIGNIN_URL = '/academy/signin.html';
