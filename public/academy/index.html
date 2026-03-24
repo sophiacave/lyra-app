@@ -95,9 +95,16 @@
 
 <div class="stats">
   <div class="stat"><div class="stat-num">6</div><div class="stat-label">Courses</div></div>
-  <div class="stat"><div class="stat-num">57</div><div class="stat-label">Lessons</div></div>
+  <div class="stat"><div class="stat-num">64</div><div class="stat-label">Lessons</div></div>
   <div class="stat"><div class="stat-num">56</div><div class="stat-label">Hours</div></div>
-  <div class="stat"><div class="stat-num">9,700</div><div class="stat-label">Total XP</div></div>
+  <div class="stat"><div class="stat-num" id="global-xp">0</div><div class="stat-label">Your XP</div></div>
+  <div class="stat"><div class="stat-num" id="badge-count">0</div><div class="stat-label">Badges</div></div>
+  <div class="stat"><div class="stat-num" id="streak-count">0</div><div class="stat-label">Day Streak</div></div>
+</div>
+
+<div id="achievements-row" style="max-width:900px;margin:0 auto;padding:0 24px 32px;display:none">
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fb923c;margin-bottom:12px">Your Achievements</div>
+  <div id="badge-grid" style="display:flex;gap:12px;flex-wrap:wrap"></div>
 </div>
 
 <div class="path">
@@ -234,7 +241,44 @@ COURSES.forEach(c => {
   `;
   grid.appendChild(card);
 });
+
+// Global stats from engine
+const totalXP = parseInt(localStorage.getItem('lo_total_xp') || '0');
+const streak = parseInt(localStorage.getItem('lo_streak') || '0');
+const achievements = JSON.parse(localStorage.getItem('lo_achievements') || '[]');
+
+document.getElementById('global-xp').textContent = totalXP.toLocaleString();
+document.getElementById('badge-count').textContent = achievements.length;
+document.getElementById('streak-count').textContent = streak;
+
+// Show achievement badges
+const BADGES = {
+  first_lesson: { name: 'First Step', icon: '👣' },
+  quiz_master: { name: 'Quiz Master', icon: '🧠' },
+  speed_demon: { name: 'Speed Demon', icon: '⚡' },
+  streak_3: { name: 'On Fire', icon: '🔥' },
+  streak_7: { name: 'Unstoppable', icon: '💫' },
+  xp_100: { name: 'Century', icon: '💯' },
+  xp_500: { name: 'Scholar', icon: '📚' },
+  xp_1000: { name: 'Expert', icon: '🎓' },
+  xp_5000: { name: 'Cyborg', icon: '🤖' },
+  course_complete: { name: 'Graduate', icon: '🎉' },
+};
+
+if (achievements.length > 0) {
+  document.getElementById('achievements-row').style.display = 'block';
+  const grid = document.getElementById('badge-grid');
+  achievements.forEach(id => {
+    const b = BADGES[id];
+    if (!b) return;
+    const el = document.createElement('div');
+    el.style.cssText = 'background:#111114;border:1px solid rgba(251,146,60,.2);border-radius:12px;padding:10px 16px;text-align:center;min-width:80px;';
+    el.innerHTML = `<div style="font-size:24px;margin-bottom:4px">${b.icon}</div><div style="font-size:10px;font-weight:600;color:#fb923c">${b.name}</div>`;
+    grid.appendChild(el);
+  });
+}
 </script>
+<script src="/academy/shared/engine.js"></script>
 
 <script src="/academy/shared/engine.js"></script>
 </body>
