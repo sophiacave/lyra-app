@@ -22,7 +22,7 @@ export default function BlogPage() {
           min-height: 100vh;
           background: #0a0a0f;
           color: #e5e5e5;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
           -webkit-font-smoothing: antialiased;
         }
 

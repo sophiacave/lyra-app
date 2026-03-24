@@ -2,6 +2,14 @@ import { NextResponse } from 'next/server';
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
+
+  // Serve home.html at root without ugly /home.html in URL
+  if (pathname === '/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/home.html';
+    return NextResponse.rewrite(url);
+  }
+
   // Rewrite /_temp to /temp (Next.js treats _prefixed folders as private)
   if (pathname === '/_temp') {
     const url = request.nextUrl.clone();
@@ -11,5 +19,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/_temp'],
+  matcher: ['/', '/_temp'],
 };
