@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>First Reward — AI Pet Lab</title>
+<title>The Reward Signal — AI Pet Lab</title>
 <link rel="icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -13,45 +13,65 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
 .wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
 a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+
 .top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
 .top-bar a:hover{color:var(--text);text-decoration:none}
 .lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+
 .header{padding:2.5rem 0 1.5rem;text-align:center}
 .header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
 .header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
 
-/* CANVAS STAGE */
-.stage{margin:2rem auto;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;position:relative}
-canvas{display:block;width:100%;height:auto}
+/* SIM CONTAINER */
+.sim-container{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0}
+@media(max-width:650px){.sim-container{grid-template-columns:1fr}}
+
+.grid-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.25rem;position:relative}
+.grid-panel h3{font-size:.8rem;color:var(--orange);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.75rem}
+.grid-canvas-wrap{width:100%;aspect-ratio:1;position:relative}
+.grid-canvas-wrap canvas{width:100%;height:100%;display:block}
+
+.qtable-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.25rem}
+.qtable-panel h3{font-size:.8rem;color:var(--blue);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.75rem}
+.qtable-canvas-wrap{width:100%;aspect-ratio:1;position:relative}
+.qtable-canvas-wrap canvas{width:100%;height:100%;display:block}
+
+/* STATS */
+.stats-row{display:flex;justify-content:center;gap:2rem;padding:1rem 0;flex-wrap:wrap}
+.stat-box{text-align:center}
+.stat-box .label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.stat-box .val{font-size:1.4rem;font-weight:800}
+.stat-box .val.g{color:var(--green)}
+.stat-box .val.r{color:var(--red)}
+.stat-box .val.b{color:var(--blue)}
+.stat-box .val.o{color:var(--orange)}
 
 /* CONTROLS */
-.controls{display:flex;justify-content:center;gap:1.5rem;padding:1.5rem 0}
-.btn-reward,.btn-punish{padding:.8rem 2rem;border-radius:12px;border:none;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s}
-.btn-reward{background:var(--green);color:#000}
-.btn-reward:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(74,222,128,.3)}
-.btn-punish{background:var(--red);color:#000}
-.btn-punish:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(248,113,113,.3)}
+.controls{display:flex;justify-content:center;gap:1rem;padding:1rem 0}
+.btn-pos,.btn-neg{padding:.7rem 1.8rem;border-radius:12px;border:2px solid transparent;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s;background:var(--surface);color:var(--text)}
+.btn-pos{border-color:rgba(74,222,128,.4);color:var(--green)}
+.btn-pos:hover{background:rgba(74,222,128,.1);border-color:var(--green);transform:translateY(-2px)}
+.btn-neg{border-color:rgba(248,113,113,.4);color:var(--red)}
+.btn-neg:hover{background:rgba(248,113,113,.1);border-color:var(--red);transform:translateY(-2px)}
+.btn-pos:disabled,.btn-neg:disabled{opacity:.3;pointer-events:none}
 
-/* SCORE */
-.score-panel{display:flex;justify-content:center;gap:2rem;padding:1rem 0;margin-bottom:1rem}
-.score-item{text-align:center}
-.score-item .label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
-.score-item .val{font-size:1.5rem;font-weight:800}
-.score-item .val.good{color:var(--green)}
-.score-item .val.bad{color:var(--red)}
-.score-item .val.neutral{color:var(--blue)}
+.action-label{text-align:center;font-size:.85rem;color:var(--dim);padding:.5rem 0;min-height:2.5rem}
+.action-label strong{color:var(--text)}
+.action-label .pos{color:var(--green)}
+.action-label .neg{color:var(--red)}
 
 /* EXPLAINER */
-.explainer{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:2rem 0}
-.explainer h2{font-size:1.15rem;font-weight:700;margin-bottom:.75rem;color:var(--orange)}
-.explainer p{color:var(--dim);font-size:.9rem;margin-bottom:.75rem}
+.explainer{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0}
+.explainer h2{font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--orange)}
+.explainer p{color:var(--dim);font-size:.92rem;margin-bottom:.85rem}
 .explainer p:last-child{margin-bottom:0}
-.hl{color:var(--text);font-weight:600}
+.explainer .hl{color:var(--text);font-weight:600}
+.explainer code{background:var(--surface2);padding:.15rem .4rem;border-radius:4px;font-size:.85rem;color:var(--blue)}
 
 /* LOG */
-.log{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;margin:1.5rem 0;max-height:180px;overflow-y:auto;font-size:.8rem;font-family:monospace}
-.log-entry{padding:.3rem 0;border-bottom:1px solid var(--border);color:var(--dim)}
+.log{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;margin:1.5rem 0;max-height:160px;overflow-y:auto;font-size:.78rem;font-family:'Inter',monospace}
+.log-entry{padding:.25rem 0;border-bottom:1px solid var(--border);color:var(--dim)}
 .log-entry:last-child{border-bottom:none}
 .log-entry .pos{color:var(--green)}
 .log-entry .neg{color:var(--red)}
@@ -75,243 +95,385 @@ canvas{display:block;width:100%;height:auto}
 </div>
 
 <div class="header">
-  <h1>First Reward &#127775;</h1>
-  <p>Watch your pet take actions and learn to give the right signal. This is the heart of reinforcement learning!</p>
+  <h1>The Reward Signal</h1>
+  <p>Watch an agent navigate a grid world. You control the reward signal &mdash; observe how it shapes the Q-table in real time.</p>
 </div>
 
-<div class="stage">
-  <canvas id="petCanvas" width="760" height="340"></canvas>
+<div class="stats-row">
+  <div class="stat-box"><div class="label">Episode</div><div class="val b" id="episode">1</div></div>
+  <div class="stat-box"><div class="label">Step</div><div class="val o" id="step">0</div></div>
+  <div class="stat-box"><div class="label">Positive</div><div class="val g" id="posCount">0</div></div>
+  <div class="stat-box"><div class="label">Negative</div><div class="val r" id="negCount">0</div></div>
+  <div class="stat-box"><div class="label">Cumulative Return</div><div class="val" id="totalReturn" style="color:var(--text)">0</div></div>
 </div>
 
-<div class="score-panel">
-  <div class="score-item"><div class="label">Good Rewards</div><div class="val good" id="goodCount">0</div></div>
-  <div class="score-item"><div class="label">Bad Punishes</div><div class="val bad" id="badCount">0</div></div>
-  <div class="score-item"><div class="label">Actions Seen</div><div class="val neutral" id="actionCount">0</div></div>
+<div class="sim-container">
+  <div class="grid-panel">
+    <h3>Grid World (4 x 4)</h3>
+    <div class="grid-canvas-wrap"><canvas id="gridCanvas"></canvas></div>
+  </div>
+  <div class="qtable-panel">
+    <h3>Q-Table Heatmap</h3>
+    <div class="qtable-canvas-wrap"><canvas id="qCanvas"></canvas></div>
+  </div>
 </div>
+
+<div id="actionLabel" class="action-label">Agent is about to move. Observe its action, then provide a reward signal.</div>
 
 <div class="controls">
-  <button class="btn-reward" id="rewardBtn" onclick="giveReward()">&#128154; Reward (+1)</button>
-  <button class="btn-punish" id="punishBtn" onclick="givePunish()">&#128308; Punish (-1)</button>
+  <button class="btn-pos" id="posBtn" disabled onclick="giveReward(+1)">Positive Reward (+1)</button>
+  <button class="btn-neg" id="negBtn" disabled onclick="giveReward(-1)">Negative Reward (-1)</button>
 </div>
 
 <div id="logBox" class="log">
-  <div class="log-entry">Waiting for pet to act...</div>
+  <div class="log-entry">Simulation initialized. Agent placed at (0,0). Goal at (3,3).</div>
 </div>
 
 <div class="explainer">
-  <h2>What's Happening?</h2>
-  <p>Your pet randomly picks an action: <span class="hl">Good Action</span> (sits nicely) or <span class="hl">Bad Action</span> (knocks things over). Your job is to reward good actions and punish bad ones.</p>
-  <p><span class="hl">Reinforcement Learning</span> works the same way: an agent takes actions in an environment, receives positive or negative rewards, and learns which actions lead to the best outcomes.</p>
-  <p>The <span class="hl">reward signal</span> is how the agent learns. Without clear, consistent rewards, the agent can't figure out what's good or bad &mdash; just like your pet!</p>
+  <h2>Understanding Reward Signals</h2>
+  <p>The <span class="hl">reward signal</span> is the sole mechanism through which an agent learns about the quality of its actions. At each timestep, the agent occupies a state, takes an action, transitions to a new state, and receives a scalar reward. This simple loop &mdash; <code>s, a, r, s'</code> &mdash; is the foundation of all reinforcement learning. The agent has no teacher providing correct answers; it must discover good behavior purely through trial and reward.</p>
+  <p>In this simulation, you play the role of the environment's reward function. When the agent moves toward the goal (bottom-right corner), a positive reward reinforces that action. When it moves away or into walls, a negative reward discourages it. Over time, you'll see the <span class="hl">Q-table heatmap</span> evolve: brighter cells represent state-action pairs the agent has learned to value highly.</p>
+  <p>This illustrates the <span class="hl">credit assignment problem</span> &mdash; one of the deepest challenges in RL. When an agent receives a reward, which of its past actions deserves credit? If the agent took 10 steps to reach the goal, all 10 actions contributed, but some more than others. The temporal structure of rewards makes learning far harder than in supervised settings where feedback is immediate and direct.</p>
+  <p><span class="hl">Temporal difference (TD) learning</span> addresses this by updating value estimates incrementally: <code>Q(s,a) &larr; Q(s,a) + &alpha;[r + &gamma; max Q(s',a') - Q(s,a)]</code>. Each update blends the old estimate with new information &mdash; the received reward plus the discounted value of the best next action. Watch the heatmap as you provide rewards: you're witnessing TD learning propagate value information backward through the state space, step by step.</p>
 </div>
 
-<button class="btn-complete" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson &rarr;</button>
+<button class="btn-complete" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson</button>
 
 <div class="foot">
-  <a href="choose-your-pet.html">&larr; Choose Your Pet</a>
-  <a href="behavior-quiz.html">Next: Behavior Quiz &rarr;</a>
+  <a href="choose-your-pet.html">&larr; Design Your Agent</a>
+  <a href="behavior-quiz.html">Next: Foundations Assessment &rarr;</a>
 </div>
 
 </div>
 
 <script>
-const canvas=document.getElementById('petCanvas');
-const ctx=canvas.getContext('2d');
-const petType=localStorage.getItem('petlab_pet')||'dog';
-const petName=localStorage.getItem('petlab_pet_name')||'Sparky';
+// Grid World Simulation
+const GRID=4;
+const ACTIONS=['up','down','left','right'];
+const DIRS={up:[-1,0],down:[1,0],left:[0,-1],right:[0,1]};
 
-let goodCount=0,badCount=0,actionCount=0,totalCorrect=0;
-let petX=380,petY=200,petState='idle',petMood='neutral';
-let currentAction=null,actionTimer=null;
-let glowColor=null,glowAlpha=0;
-let bounceY=0,bounceSpeed=0;
-let frame=0;
+// Agent params from localStorage
+const epsilon=parseFloat(localStorage.getItem('petlab_epsilon'))||0.5;
+const lr=parseFloat(localStorage.getItem('petlab_alpha'))||0.5;
+const discount=parseFloat(localStorage.getItem('petlab_gamma'))||0.9;
 
-const petColors={cat:'#c084fc',dog:'#FF6B35',robot:'#38bdf8'};
-const pc=petColors[petType];
+// Q-table: Q[row][col][action]
+const Q=[];
+for(let r=0;r<GRID;r++){
+  Q[r]=[];
+  for(let c=0;c<GRID;c++){
+    Q[r][c]={up:0,down:0,left:0,right:0};
+  }
+}
 
-function drawPet(){
-  ctx.save();
-  ctx.translate(petX,petY+bounceY);
+let agentR=0,agentC=0;
+let goalR=3,goalC=3;
+let stepCount=0,episodeCount=1;
+let posCount=0,negCount=0,totalReturn=0;
+let lastAction=null,lastR=0,lastC=0;
+let waitingForReward=false;
+let totalCorrect=0,totalActions=0;
+let flash=null; // {r,c,color,alpha}
 
-  // Glow effect
-  if(glowAlpha>0){
-    ctx.beginPath();
-    ctx.arc(0,0,60,0,Math.PI*2);
-    ctx.fillStyle=glowColor.replace('X',glowAlpha);
-    ctx.fill();
+// Canvas setup
+function setupCanvas(id){
+  const canvas=document.getElementById(id);
+  const wrap=canvas.parentElement;
+  const dpr=window.devicePixelRatio||1;
+  const size=wrap.clientWidth;
+  canvas.width=size*dpr;
+  canvas.height=size*dpr;
+  canvas.style.width=size+'px';
+  canvas.style.height=size+'px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  return {canvas,ctx,size};
+}
+
+const grid=setupCanvas('gridCanvas');
+const qtable=setupCanvas('qCanvas');
+
+function drawGrid(){
+  const {ctx,size}=grid;
+  const cell=size/GRID;
+  ctx.clearRect(0,0,size,size);
+
+  for(let r=0;r<GRID;r++){
+    for(let c=0;c<GRID;c++){
+      const x=c*cell,y=r*cell;
+
+      // Cell background
+      ctx.fillStyle=(r+c)%2===0?'#12121a':'#151520';
+      ctx.fillRect(x,y,cell,cell);
+
+      // Flash effect
+      if(flash && flash.r===r && flash.c===c && flash.alpha>0){
+        ctx.fillStyle=flash.color.replace('A',flash.alpha);
+        ctx.fillRect(x,y,cell,cell);
+      }
+
+      // Grid lines
+      ctx.strokeStyle='#1e1e28';
+      ctx.lineWidth=1;
+      ctx.strokeRect(x+.5,y+.5,cell-1,cell-1);
+    }
   }
 
-  // Body
+  // Goal
+  const gx=goalC*cell+cell/2,gy=goalR*cell+cell/2;
+  const goalGrad=ctx.createRadialGradient(gx,gy,0,gx,gy,cell*0.35);
+  goalGrad.addColorStop(0,'rgba(74,222,128,0.4)');
+  goalGrad.addColorStop(1,'rgba(74,222,128,0)');
+  ctx.fillStyle=goalGrad;
   ctx.beginPath();
-  ctx.ellipse(0,0,30,25,0,0,Math.PI*2);
-  ctx.fillStyle=pc;
+  ctx.arc(gx,gy,cell*0.35,0,Math.PI*2);
+  ctx.fill();
+  ctx.fillStyle='#4ade80';
+  ctx.font='600 '+(cell*0.18)+'px Inter';
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+  ctx.fillText('GOAL',gx,gy);
+
+  // Agent
+  const ax=agentC*cell+cell/2,ay=agentR*cell+cell/2;
+  const agentGrad=ctx.createRadialGradient(ax,ay,0,ax,ay,cell*0.32);
+  agentGrad.addColorStop(0,'#FF6B35');
+  agentGrad.addColorStop(1,'rgba(255,107,53,0.1)');
+  ctx.fillStyle=agentGrad;
+  ctx.beginPath();
+  ctx.arc(ax,ay,cell*0.28,0,Math.PI*2);
   ctx.fill();
 
-  // Eyes
-  const eyeH=petMood==='happy'?5:petMood==='sad'?3:7;
-  const eyeY=petMood==='sad'?-2:-5;
-  ctx.fillStyle='#fff';
-  ctx.beginPath();ctx.ellipse(-10,eyeY,5,eyeH,0,0,Math.PI*2);ctx.fill();
-  ctx.beginPath();ctx.ellipse(10,eyeY,5,eyeH,0,0,Math.PI*2);ctx.fill();
-
-  // Pupils
-  ctx.fillStyle='#111';
-  ctx.beginPath();ctx.arc(-10,eyeY+1,2.5,0,Math.PI*2);ctx.fill();
-  ctx.beginPath();ctx.arc(10,eyeY+1,2.5,0,Math.PI*2);ctx.fill();
-
-  // Mouth
-  ctx.strokeStyle='#fff';ctx.lineWidth=2;
   ctx.beginPath();
-  if(petMood==='happy'){
-    ctx.arc(0,5,8,0,Math.PI);
-  }else if(petMood==='sad'){
-    ctx.arc(0,14,8,Math.PI,0);
-  }else{
-    ctx.moveTo(-5,8);ctx.lineTo(5,8);
-  }
+  ctx.arc(ax,ay,cell*0.2,0,Math.PI*2);
+  ctx.fillStyle='#12121a';
+  ctx.fill();
+  ctx.strokeStyle='#FF6B35';
+  ctx.lineWidth=2;
   ctx.stroke();
 
-  // Ears
-  if(petType==='cat'||petType==='dog'){
-    ctx.fillStyle=pc;
-    ctx.beginPath();ctx.moveTo(-20,-20);ctx.lineTo(-28,-38);ctx.lineTo(-12,-22);ctx.fill();
-    ctx.beginPath();ctx.moveTo(20,-20);ctx.lineTo(28,-38);ctx.lineTo(12,-22);ctx.fill();
-  }
-  if(petType==='robot'){
-    ctx.fillStyle='#2da1d4';
-    ctx.fillRect(-3,-35,6,12);
-    ctx.fillStyle='#4ade80';
-    ctx.beginPath();ctx.arc(0,-38,4,0,Math.PI*2);ctx.fill();
-  }
+  // Inner dot
+  ctx.beginPath();
+  ctx.arc(ax,ay,cell*0.08,0,Math.PI*2);
+  ctx.fillStyle='#FF6B35';
+  ctx.fill();
 
-  // Action indicator
-  if(currentAction){
-    ctx.font='600 12px Inter';
-    ctx.textAlign='center';
-    ctx.fillStyle=currentAction==='good'?'#4ade80':'#f87171';
-    ctx.fillText(currentAction==='good'?'Good action!':'Bad action!',(0),(-45));
+  // Coordinates
+  ctx.fillStyle='#55556a';
+  ctx.font='500 '+(cell*0.14)+'px Inter';
+  ctx.textAlign='left';
+  ctx.textBaseline='top';
+  for(let r=0;r<GRID;r++){
+    for(let c=0;c<GRID;c++){
+      ctx.fillText(r+','+c,c*cell+4,r*cell+3);
+    }
   }
-
-  ctx.restore();
 }
 
-function drawBg(){
-  ctx.fillStyle='#12121a';
-  ctx.fillRect(0,0,760,340);
+function drawQTable(){
+  const {ctx,size}=qtable;
+  const cell=size/GRID;
+  ctx.clearRect(0,0,size,size);
 
-  // Floor
-  ctx.fillStyle='#1a1a25';
-  ctx.fillRect(0,260,760,80);
-  ctx.strokeStyle='#2a2a38';
-  ctx.lineWidth=1;
-  ctx.beginPath();ctx.moveTo(0,260);ctx.lineTo(760,260);ctx.stroke();
-}
-
-function animate(){
-  frame++;
-  drawBg();
-
-  // Bounce
-  if(petState==='bounce'){
-    bounceY=Math.sin(frame*0.3)*15;
-    if(frame%60===0)petState='idle';
-  }else if(petState==='droop'){
-    bounceY=Math.min(bounceY+0.5,10);
-    if(frame%40===0){petState='idle';bounceY=0;}
-  }else{
-    bounceY=Math.sin(frame*0.05)*3;
+  // Find max Q for normalization
+  let maxQ=0.01;
+  for(let r=0;r<GRID;r++){
+    for(let c=0;c<GRID;c++){
+      for(const a of ACTIONS){
+        maxQ=Math.max(maxQ,Math.abs(Q[r][c][a]));
+      }
+    }
   }
 
-  // Glow fade
-  if(glowAlpha>0)glowAlpha=Math.max(0,glowAlpha-0.01);
+  for(let r=0;r<GRID;r++){
+    for(let c=0;c<GRID;c++){
+      const x=c*cell,y=r*cell;
+      const qVals=Q[r][c];
+      const bestVal=Math.max(qVals.up,qVals.down,qVals.left,qVals.right);
+      const norm=bestVal/maxQ;
 
-  drawPet();
+      // Cell color based on best Q
+      let bg;
+      if(bestVal>0){
+        const intensity=Math.min(1,Math.abs(norm));
+        bg='rgba(56,189,248,'+(intensity*0.4)+')';
+      } else if(bestVal<0){
+        const intensity=Math.min(1,Math.abs(norm));
+        bg='rgba(248,113,113,'+(intensity*0.3)+')';
+      } else {
+        bg='#12121a';
+      }
+      ctx.fillStyle=bg;
+      ctx.fillRect(x,y,cell,cell);
 
-  // Action text
-  ctx.font='500 14px Inter';ctx.textAlign='center';
-  ctx.fillStyle='#8888a0';
-  if(!currentAction){
-    ctx.fillText('Watch your pet...',380,310);
-  }else{
-    ctx.fillStyle=currentAction==='good'?'#4ade80':'#f87171';
-    ctx.fillText(currentAction==='good'?'Your pet did something GOOD! React!':'Your pet did something BAD! React!',380,310);
+      ctx.strokeStyle='#1e1e28';
+      ctx.lineWidth=1;
+      ctx.strokeRect(x+.5,y+.5,cell-1,cell-1);
+
+      // Draw directional Q-values as small triangles
+      const cx2=x+cell/2,cy2=y+cell/2;
+      const triSize=cell*0.18;
+      const dirs=[
+        {a:'up',dx:0,dy:-1,px:cx2,py:y+triSize*0.8},
+        {a:'down',dx:0,dy:1,px:cx2,py:y+cell-triSize*0.8},
+        {a:'left',dx:-1,dy:0,px:x+triSize*0.8,py:cy2},
+        {a:'right',dx:1,dy:0,px:x+cell-triSize*0.8,py:cy2}
+      ];
+
+      for(const d of dirs){
+        const v=qVals[d.a];
+        const vNorm=v/maxQ;
+        let col;
+        if(v>0) col='rgba(74,222,128,'+(Math.min(1,Math.abs(vNorm))*0.8+0.2)+')';
+        else if(v<0) col='rgba(248,113,113,'+(Math.min(1,Math.abs(vNorm))*0.6+0.2)+')';
+        else col='rgba(85,85,106,0.3)';
+
+        ctx.fillStyle=col;
+        ctx.beginPath();
+        if(d.a==='up'){
+          ctx.moveTo(d.px,d.py-triSize*0.5);ctx.lineTo(d.px-triSize*0.4,d.py+triSize*0.3);ctx.lineTo(d.px+triSize*0.4,d.py+triSize*0.3);
+        }else if(d.a==='down'){
+          ctx.moveTo(d.px,d.py+triSize*0.5);ctx.lineTo(d.px-triSize*0.4,d.py-triSize*0.3);ctx.lineTo(d.px+triSize*0.4,d.py-triSize*0.3);
+        }else if(d.a==='left'){
+          ctx.moveTo(d.px-triSize*0.5,d.py);ctx.lineTo(d.px+triSize*0.3,d.py-triSize*0.4);ctx.lineTo(d.px+triSize*0.3,d.py+triSize*0.4);
+        }else{
+          ctx.moveTo(d.px+triSize*0.5,d.py);ctx.lineTo(d.px-triSize*0.3,d.py-triSize*0.4);ctx.lineTo(d.px-triSize*0.3,d.py+triSize*0.4);
+        }
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // Best Q value text
+      ctx.fillStyle='#e5e5e5';
+      ctx.font='600 '+(cell*0.16)+'px Inter';
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      ctx.fillText(bestVal.toFixed(1),cx2,cy2);
+    }
   }
-
-  requestAnimationFrame(animate);
 }
 
-function triggerAction(){
-  currentAction=Math.random()>0.45?'good':'bad';
-  actionCount++;
-  document.getElementById('actionCount').textContent=actionCount;
-
-  addLog('Pet performed a '+(currentAction==='good'?'<span class="pos">good</span>':'<span class="neg">bad</span>')+' action. React now!');
-
-  clearTimeout(actionTimer);
-  actionTimer=setTimeout(()=>{
-    addLog('You didn\'t react in time! (That\'s ok, but the pet didn\'t learn)');
-    currentAction=null;
-    scheduleAction();
-  },5000);
-}
-
-function giveReward(){
-  if(!currentAction)return;
-  clearTimeout(actionTimer);
-  if(currentAction==='good'){
-    goodCount++;totalCorrect++;
-    document.getElementById('goodCount').textContent=goodCount;
-    petMood='happy';petState='bounce';
-    glowColor='rgba(74,222,128,X)';glowAlpha=0.4;
-    addLog('<span class="pos">+1 Reward</span> for good action! Pet is happy! Correct!');
-  }else{
-    badCount++;
-    document.getElementById('badCount').textContent=badCount;
-    addLog('<span class="neg">Oops!</span> You rewarded a bad action. Pet is confused.');
-    petMood='neutral';
+function chooseAction(){
+  if(Math.random()<epsilon){
+    return ACTIONS[Math.floor(Math.random()*ACTIONS.length)];
   }
-  currentAction=null;
-  setTimeout(()=>{petMood='neutral'},2000);
-  scheduleAction();
-  checkComplete();
-}
-
-function givePunish(){
-  if(!currentAction)return;
-  clearTimeout(actionTimer);
-  if(currentAction==='bad'){
-    totalCorrect++;
-    petMood='sad';petState='droop';
-    glowColor='rgba(248,113,113,X)';glowAlpha=0.3;
-    addLog('<span class="neg">-1 Punish</span> for bad action. Pet learns to avoid this. Correct!');
-  }else{
-    badCount++;
-    document.getElementById('badCount').textContent=badCount;
-    addLog('<span class="neg">Oops!</span> You punished a good action. Pet is sad and confused.');
-    petMood='sad';petState='droop';
+  const qVals=Q[agentR][agentC];
+  let best=ACTIONS[0],bestVal=qVals[ACTIONS[0]];
+  for(const a of ACTIONS){
+    if(qVals[a]>bestVal){bestVal=qVals[a];best=a;}
   }
-  currentAction=null;
-  setTimeout(()=>{petMood='neutral'},2000);
-  scheduleAction();
-  checkComplete();
+  return best;
 }
 
 function addLog(msg){
   const box=document.getElementById('logBox');
   const el=document.createElement('div');
   el.className='log-entry';
-  el.innerHTML='['+(new Date()).toLocaleTimeString()+'] '+msg;
+  el.innerHTML=msg;
   box.prepend(el);
-  if(box.children.length>20)box.removeChild(box.lastChild);
+  if(box.children.length>30)box.removeChild(box.lastChild);
 }
 
-function scheduleAction(){
-  setTimeout(triggerAction,1500+Math.random()*2000);
+function agentStep(){
+  if(waitingForReward)return;
+
+  lastR=agentR;
+  lastC=agentC;
+  lastAction=chooseAction();
+
+  const d=DIRS[lastAction];
+  const newR=agentR+d[0],newC=agentC+d[1];
+
+  if(newR>=0 && newR<GRID && newC>=0 && newC<GRID){
+    agentR=newR;
+    agentC=newC;
+  }
+
+  stepCount++;
+  totalActions++;
+  document.getElementById('step').textContent=stepCount;
+
+  // Determine if good or bad move (closer to goal = good)
+  const oldDist=Math.abs(lastR-goalR)+Math.abs(lastC-goalC);
+  const newDist=Math.abs(agentR-goalR)+Math.abs(agentC-goalC);
+
+  waitingForReward=true;
+  document.getElementById('posBtn').disabled=false;
+  document.getElementById('negBtn').disabled=false;
+
+  let hint='';
+  if(agentR===goalR && agentC===goalC){
+    hint=' <strong>Agent reached the goal!</strong>';
+  } else if(newDist<oldDist){
+    hint=' Agent moved <span class="pos">closer</span> to goal.';
+  } else if(newDist>oldDist){
+    hint=' Agent moved <span class="neg">farther</span> from goal.';
+  } else {
+    hint=' Distance unchanged.';
+  }
+
+  document.getElementById('actionLabel').innerHTML=
+    'Action: <strong>'+lastAction+'</strong> from ('+lastR+','+lastC+') to ('+agentR+','+agentC+').'+hint+' Provide reward signal.';
+
+  addLog('Step '+stepCount+': '+lastAction+' &rarr; ('+agentR+','+agentC+')'+hint);
+  drawGrid();
+  drawQTable();
+}
+
+function giveReward(r){
+  if(!waitingForReward)return;
+  waitingForReward=false;
+  document.getElementById('posBtn').disabled=true;
+  document.getElementById('negBtn').disabled=true;
+
+  // Determine correctness
+  const oldDist=Math.abs(lastR-goalR)+Math.abs(lastC-goalC);
+  const newDist=Math.abs(agentR-goalR)+Math.abs(agentC-goalC);
+  const atGoal=agentR===goalR && agentC===goalC;
+
+  if(atGoal && r>0) totalCorrect++;
+  else if(newDist<oldDist && r>0) totalCorrect++;
+  else if(newDist>oldDist && r<0) totalCorrect++;
+  else if(newDist===oldDist && r<0) totalCorrect++;
+
+  // Update Q-table
+  const bestNext=Math.max(Q[agentR][agentC].up,Q[agentR][agentC].down,Q[agentR][agentC].left,Q[agentR][agentC].right);
+  Q[lastR][lastC][lastAction]+=lr*(r+discount*bestNext-Q[lastR][lastC][lastAction]);
+
+  totalReturn+=r;
+
+  if(r>0){
+    posCount++;
+    document.getElementById('posCount').textContent=posCount;
+    flash={r:agentR,c:agentC,color:'rgba(74,222,128,A)',alpha:0.5};
+    addLog('<span class="pos">+1 reward</span> applied. Q('+lastR+','+lastC+','+lastAction+') = '+Q[lastR][lastC][lastAction].toFixed(2));
+  } else {
+    negCount++;
+    document.getElementById('negCount').textContent=negCount;
+    flash={r:agentR,c:agentC,color:'rgba(248,113,113,A)',alpha:0.5};
+    addLog('<span class="neg">-1 reward</span> applied. Q('+lastR+','+lastC+','+lastAction+') = '+Q[lastR][lastC][lastAction].toFixed(2));
+  }
+
+  document.getElementById('totalReturn').textContent=totalReturn;
+  document.getElementById('actionLabel').innerHTML='Q-table updated. Next action incoming...';
+
+  // Check goal reached
+  if(atGoal){
+    episodeCount++;
+    document.getElementById('episode').textContent=episodeCount;
+    agentR=0;agentC=0;
+    addLog('--- Episode '+episodeCount+' begins. Agent reset to (0,0). ---');
+  }
+
+  drawGrid();
+  drawQTable();
+  checkComplete();
+
+  setTimeout(agentStep,1200);
 }
 
 function checkComplete(){
-  if(actionCount>=8 && totalCorrect>=5){
+  if(totalActions>=12 && totalCorrect>=8){
     document.getElementById('completeBtn').style.display='block';
   }
 }
@@ -321,10 +483,22 @@ function completeLesson(){
   window.location.href='behavior-quiz.html';
 }
 
-animate();
-setTimeout(triggerAction,2000);
+// Animation loop for flash fading
+function animLoop(){
+  if(flash && flash.alpha>0){
+    flash.alpha-=0.015;
+    if(flash.alpha<=0) flash=null;
+    drawGrid();
+  }
+  requestAnimationFrame(animLoop);
+}
+
+drawGrid();
+drawQTable();
+animLoop();
+setTimeout(agentStep,1500);
 </script>
-<script src="/academy/shared/auth.js"></script>
 <script src="/academy/shared/engine.js"></script>
+<script src="/academy/shared/auth.js"></script>
 </body>
 </html>

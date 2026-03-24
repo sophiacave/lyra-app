@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:#c084fc;text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+.nav{padding:1rem 0;border-bottom:1px solid #1e1e28;display:flex;justify-content:space-between;align-items:center}
+.nav a{color:#737373;font-size:.875rem}.nav a:hover{color:#e5e5e5;text-decoration:none}
+.brand{color:#c084fc;font-weight:700;font-size:.8rem;letter-spacing:1px}
+.hero{text-align:center;padding:3rem 0 2rem}
+.hero h1{font-size:2rem;font-weight:800;margin-bottom:.5rem}
+.hero p{color:#737373;max-width:500px;margin:0 auto}
+.new-post{background:#111114;border:1px solid #1e1e28;border-radius:16px;padding:1.5rem;margin:2rem 0}
+.new-post h3{font-size:.9rem;font-weight:700;margin-bottom:1rem;color:#c084fc}
+.input{width:100%;background:#0a0a0f;border:1px solid #2a2a38;border-radius:8px;padding:.65rem 1rem;color:#e5e5e5;font-family:Inter,sans-serif;font-size:.9rem;margin-bottom:.75rem;outline:none}
+.input:focus{border-color:#c084fc}
+textarea.input{min-height:100px;resize:vertical}
+select.input{cursor:pointer}
+.btn{background:#fb923c;color:#000;border:none;padding:.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;font-family:Inter,sans-serif}
+.btn:hover{box-shadow:0 4px 16px rgba(251,146,60,.3)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.posts{margin:2rem 0}
+.post-card{background:#111114;border:1px solid #1e1e28;border-radius:12px;padding:1.25rem;margin-bottom:1rem;cursor:pointer;transition:border-color .2s}
+.post-card:hover{border-color:#2a2a38}
+.post-card.pinned{border-left:3px solid #fb923c}
+.post-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;font-size:.8rem;color:#555}
+.post-author{color:#c084fc;font-weight:600}
+.post-author.faye{color:#fb923c}
+.post-title{font-size:1.05rem;font-weight:700;margin-bottom:.35rem}
+.post-preview{color:#737373;font-size:.85rem;line-height:1.5}
+.post-footer{display:flex;gap:1rem;margin-top:.75rem;font-size:.75rem;color:#555}
+.badge{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px}
+.badge-course{background:rgba(56,189,248,.12);color:#38bdf8}
+.badge-faye{background:rgba(251,146,60,.12);color:#fb923c}
+.badge-pinned{background:rgba(251,146,60,.2);color:#fb923c}
+.thread{margin:2rem 0}
+.thread-back{color:#737373;font-size:.85rem;cursor:pointer;margin-bottom:1rem;display:inline-block}
+.reply{background:#0d0d14;border:1px solid #1e1e28;border-radius:10px;padding:1rem;margin:.75rem 0}
+.reply.faye-reply{border-left:3px solid #fb923c}
+.reply-author{font-size:.8rem;font-weight:600;margin-bottom:.35rem}
+.reply-body{font-size:.9rem;color:#a1a1aa;line-height:1.6}
+.reply-time{font-size:.7rem;color:#555;margin-top:.35rem}
+.empty{text-align:center;padding:3rem;color:#555;font-size:.95rem}
+.foot{text-align:center;padding:2rem 0;border-top:1px solid #1e1e28;margin-top:2rem;color:#555;font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="nav">
+  <a href="/academy/">&larr; Academy</a>
+  <span class="brand">COMMUNITY</span>
+</nav>
+
+<div class="hero">
+  <h1>Community</h1>
+  <p>Ask questions, share progress, help others. Faye responds to every post personally.</p>
+</div>
+
+<div class="new-post" id="new-post-form">
+  <h3>Start a Discussion</h3>
+  <input class="input" id="post-name" placeholder="Your name" />
+  <input class="input" id="post-email" placeholder="Your email (required)" type="email" />
+  <select class="input" id="post-course">
+    <option value="">General Discussion</option>
+    <option value="ai-pet-lab">AI Pet Lab</option>
+    <option value="ai-foundations">AI Foundations</option>
+    <option value="automation-architect">Automation Architect</option>
+    <option value="claude-mastery">Claude Mastery</option>
+    <option value="ai-stack-builder">AI Stack Builder</option>
+    <option value="the-automation-lab">The Automation Lab</option>
+    <option value="rag-vector-search">RAG & Vector Search</option>
+    <option value="ai-for-business">AI for Business</option>
+    <option value="first-ai-agent">First AI Agent</option>
+    <option value="mcp-masterclass">MCP Masterclass</option>
+  </select>
+  <input class="input" id="post-title" placeholder="Discussion title" />
+  <textarea class="input" id="post-body" placeholder="What's on your mind?"></textarea>
+  <button class="btn" onclick="submitPost()">Post Discussion</button>
+</div>
+
+<div id="posts-list" class="posts"></div>
+<div id="thread-view" class="thread" style="display:none"></div>
+
+<div class="foot">&copy; Like One Academy Community &bull; Moderated by Faye</div>
+</div>
+
+<script>
+const API = 'https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/forum';
+
+function timeAgo(date) {
+  const s = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s/60) + 'm ago';
+  if (s < 86400) return Math.floor(s/3600) + 'h ago';
+  return Math.floor(s/86400) + 'd ago';
+}
+
+async function loadPosts() {
+  document.getElementById('thread-view').style.display = 'none';
+  document.getElementById('posts-list').style.display = 'block';
+  document.getElementById('new-post-form').style.display = 'block';
+  
+  const res = await fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({action:'list', limit:30})});
+  const {posts} = await res.json();
+  
+  if (!posts?.length) {
+    document.getElementById('posts-list').innerHTML = '<div class="empty">No discussions yet. Be the first to post!</div>';
+    return;
+  }
+  
+  document.getElementById('posts-list').innerHTML = posts.map(p => `
+    <div class="post-card ${p.is_pinned?'pinned':''}" onclick="loadThread('${p.id}')">
+      <div class="post-meta">
+        <span class="post-author ${p.is_faye_reply?'faye':''}">${p.author_name || 'Anonymous'}${p.is_faye_reply?' (Faye)':''}</span>
+        <span>${timeAgo(p.created_at)}</span>
+      </div>
+      <div class="post-title">${p.title}</div>
+      <div class="post-preview">${p.body.substring(0, 150)}${p.body.length > 150 ? '...' : ''}</div>
+      <div class="post-footer">
+        ${p.course_slug ? '<span class="badge badge-course">'+p.course_slug+'</span>' : ''}
+        ${p.is_pinned ? '<span class="badge badge-pinned">PINNED</span>' : ''}
+        <span>${p.reply_count || 0} ${p.reply_count === 1 ? 'reply' : 'replies'}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function loadThread(id) {
+  document.getElementById('posts-list').style.display = 'none';
+  document.getElementById('new-post-form').style.display = 'none';
+  const view = document.getElementById('thread-view');
+  view.style.display = 'block';
+  
+  const res = await fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({action:'thread', post_id:id})});
+  const {post, replies} = await res.json();
+  
+  view.innerHTML = `
+    <span class="thread-back" onclick="loadPosts()">&larr; Back to discussions</span>
+    <div class="post-card" style="cursor:default">
+      <div class="post-meta">
+        <span class="post-author">${post.author_name}</span>
+        <span>${timeAgo(post.created_at)}</span>
+      </div>
+      <div class="post-title">${post.title}</div>
+      <div style="color:#a1a1aa;font-size:.95rem;line-height:1.7;margin-top:.75rem">${post.body.replace(/\n/g,'<br>')}</div>
+    </div>
+    
+    ${replies.map(r => `
+      <div class="reply ${r.is_faye_reply ? 'faye-reply' : ''}">
+        <div class="reply-author" style="color:${r.is_faye_reply?'#fb923c':'#c084fc'}">${r.author_name}${r.is_faye_reply?' (Founder)':''}</div>
+        <div class="reply-body">${r.body.replace(/\n/g,'<br>')}</div>
+        <div class="reply-time">${timeAgo(r.created_at)}</div>
+      </div>
+    `).join('')}
+    
+    <div style="margin-top:1.5rem">
+      <h3 style="font-size:.9rem;font-weight:700;color:#c084fc;margin-bottom:.75rem">Reply</h3>
+      <input class="input" id="reply-name" placeholder="Your name" />
+      <input class="input" id="reply-email" placeholder="Your email" type="email" />
+      <textarea class="input" id="reply-body" placeholder="Write a reply..."></textarea>
+      <button class="btn" onclick="submitReply('${id}')">Reply</button>
+    </div>
+  `;
+}
+
+async function submitPost() {
+  const email = document.getElementById('post-email').value;
+  const name = document.getElementById('post-name').value;
+  const title = document.getElementById('post-title').value;
+  const body = document.getElementById('post-body').value;
+  const course = document.getElementById('post-course').value;
+  
+  if (!email || !title || !body) { alert('Email, title, and body are required'); return; }
+  
+  const res = await fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({action:'post', email, name, title, body, course_slug: course || null})});
+  const data = await res.json();
+  
+  if (data.error) { alert(data.error); return; }
+  
+  document.getElementById('post-title').value = '';
+  document.getElementById('post-body').value = '';
+  loadPosts();
+}
+
+async function submitReply(parentId) {
+  const email = document.getElementById('reply-email').value;
+  const name = document.getElementById('reply-name').value;
+  const body = document.getElementById('reply-body').value;
+  
+  if (!email || !body) { alert('Email and reply are required'); return; }
+  
+  const res = await fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({action:'reply', email, name, body, parent_id: parentId})});
+  const data = await res.json();
+  
+  if (data.error) { alert(data.error); return; }
+  
+  loadThread(parentId);
+}
+
+loadPosts();
+</script>
+<script src="/academy/shared/auth.js"></script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>
