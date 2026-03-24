@@ -50,6 +50,29 @@
     var arr = getCompleted(courseSlug);
     if (arr.indexOf(lessonSlug) === -1) arr.push(lessonSlug);
     try { localStorage.setItem(storageKey(courseSlug), JSON.stringify(arr)); } catch (e) {}
+    // Sync to server if signed in
+    syncProgressToServer(courseSlug, lessonSlug);
+  }
+
+  function syncProgressToServer(courseSlug, lessonSlug) {
+    try {
+      if (!window.supabase) return;
+      var sb = window.supabase.createClient(
+        'https://vpaynwebgmmnwttqkwmh.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo'
+      );
+      sb.auth.getSession().then(function(res) {
+        var session = res.data.session;
+        if (!session) return;
+        sb.from('lesson_progress').upsert({
+          user_id: session.user.id,
+          course_slug: courseSlug,
+          lesson_slug: lessonSlug,
+          completed: true,
+          completed_at: new Date().toISOString()
+        }, { onConflict: 'user_id,course_slug,lesson_slug' }).then(function() {});
+      });
+    } catch(e) {}
   }
 
   /* ── Global API ─────────────────────────────────────────── */
