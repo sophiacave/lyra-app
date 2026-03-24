@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vercel Deploy — AI Stack Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}a:hover{color:#fbbf24}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #1e1e2e}
+.nav a{font-size:.85rem;color:#888}.nav a:hover{color:#f59e0b}.nav .current{color:#e5e5e5;font-weight:600}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:#f59e0b;background:#f59e0b15;padding:.3rem .75rem;border-radius:99px;margin-bottom:1rem}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+.intro{color:#999;margin-bottom:2rem;font-size:1.05rem}
+h2{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#f59e0b}
+h3{font-size:1.1rem;font-weight:600;margin:1.5rem 0 .75rem}
+p{margin-bottom:1rem;color:#ccc}
+.panel{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.panel .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#f59e0b;margin-bottom:.75rem;font-weight:600}
+.code-block{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto;margin:.75rem 0}
+.kw{color:#c084fc}.str{color:#34d399}.cm{color:#555}.fn{color:#60a5fa}.op{color:#f59e0b}.num{color:#fb923c}
+
+/* Pipeline */
+.pipeline{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:12px;padding:2rem;margin:1.5rem 0}
+.pipeline-steps{display:flex;gap:0;align-items:center;justify-content:center;flex-wrap:wrap}
+.pipe-step{text-align:center;padding:.75rem 1rem;min-width:100px;transition:all .4s;opacity:.3}
+.pipe-step.active{opacity:1}
+.pipe-step .pipe-icon{font-size:1.8rem;display:block;margin-bottom:.4rem}
+.pipe-step .pipe-name{font-size:.75rem;font-weight:600;color:#999}
+.pipe-step.active .pipe-name{color:#e5e5e5}
+.pipe-step.done .pipe-icon{filter:none}
+.pipe-step.done .pipe-name{color:#22c55e}
+.pipe-arrow{font-size:1.2rem;color:#222;transition:color .4s}
+.pipe-arrow.active{color:#f59e0b}
+.pipe-status{text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid #1e1e2e}
+.pipe-status .status-text{font-size:.9rem;color:#888}
+.pipe-status .status-url{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:#f59e0b;display:none;margin-top:.5rem}
+
+.deploy-btn{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:.85rem;border-radius:99px;border:none;cursor:pointer;font-size:1rem;font-family:'Inter',sans-serif;transition:all .3s;margin:1rem 0}
+.deploy-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.deploy-btn:disabled{opacity:.5;transform:none;box-shadow:none;cursor:not-allowed}
+
+/* Build Log */
+.build-log{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.8;max-height:300px;overflow-y:auto;margin:1rem 0;display:none}
+.log-line{margin-bottom:.15rem}.log-dim{color:#555}.log-ok{color:#22c55e}.log-warn{color:#fbbf24}.log-info{color:#60a5fa}.log-err{color:#ef4444}
+
+/* Config Editor */
+.config-editor{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.env-row{display:flex;gap:.5rem;margin:.4rem 0;align-items:center}
+.env-key{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:6px;padding:.4rem .6rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#60a5fa;width:220px}
+.env-val{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:6px;padding:.4rem .6rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#34d399;flex:1}
+.env-row .env-type{font-size:.7rem;color:#666;width:60px;text-align:center}
+.env-row .del-env{background:none;border:none;color:#444;cursor:pointer;font-size:.9rem}
+.env-row .del-env:hover{color:#ef4444}
+.add-env{display:block;width:100%;padding:.5rem;border:1px dashed #1e1e2e;border-radius:8px;background:none;color:#555;cursor:pointer;font-size:.8rem;font-family:'Inter',sans-serif;margin-top:.5rem}
+.add-env:hover{color:#f59e0b;border-color:#f59e0b44}
+
+/* Concepts */
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.concept-card{background:#111118;border:1px solid #1e1e2e;border-radius:10px;padding:1rem;transition:border-color .2s}
+.concept-card:hover{border-color:#f59e0b33}
+.concept-card h4{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+.concept-card p{font-size:.82rem;color:#888;margin:0}
+
+.progress-section{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.progress-bar{height:6px;background:#1e1e2e;border-radius:99px;overflow:hidden;margin-top:.5rem}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:99px;transition:width .5s}
+.complete-btn{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:1rem;border-radius:12px;border:none;cursor:pointer;font-size:1rem;margin:2rem 0;font-family:'Inter',sans-serif;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer{text-align:center;padding:2rem 0;color:#444;font-size:.8rem;border-top:1px solid #1e1e2e;margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="database-patterns.html">&larr; Prev</a>
+<span class="current">Lesson 8 of 10</span>
+<a href="wire-it-all.html">Next &rarr;</a>
+</div>
+
+<div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
+<h1>Vercel Deploy</h1>
+<p class="intro">Vercel turns <code style="color:#f59e0b">git push</code> into a live URL. No servers, no Docker, no YAML. Push code, get a website. Let's simulate the full pipeline.</p>
+
+<h2>The Deploy Pipeline</h2>
+<p>Click "Deploy" to watch code go from your machine to a live global CDN.</p>
+
+<div class="pipeline">
+<div class="pipeline-steps">
+<div class="pipe-step" id="ps0"><span class="pipe-icon">&#x1f4bb;</span><span class="pipe-name">git push</span></div>
+<span class="pipe-arrow" id="pa0">&#x2192;</span>
+<div class="pipe-step" id="ps1"><span class="pipe-icon">&#x1f50d;</span><span class="pipe-name">Detect</span></div>
+<span class="pipe-arrow" id="pa1">&#x2192;</span>
+<div class="pipe-step" id="ps2"><span class="pipe-icon">&#x1f3d7;</span><span class="pipe-name">Build</span></div>
+<span class="pipe-arrow" id="pa2">&#x2192;</span>
+<div class="pipe-step" id="ps3"><span class="pipe-icon">&#x1f310;</span><span class="pipe-name">Deploy</span></div>
+<span class="pipe-arrow" id="pa3">&#x2192;</span>
+<div class="pipe-step" id="ps4"><span class="pipe-icon">&#x2705;</span><span class="pipe-name">Live!</span></div>
+</div>
+<div class="pipe-status">
+<div class="status-text" id="statusText">Ready to deploy</div>
+<div class="status-url" id="statusUrl">https://your-app-abc123.vercel.app</div>
+</div>
+</div>
+
+<button class="deploy-btn" id="deployBtn" onclick="runDeploy()">&#x1f680; Deploy to Vercel</button>
+
+<div class="build-log" id="buildLog"></div>
+
+<h2>Environment Variables</h2>
+<p>Secrets go in Vercel's environment variables — never in your code. Configure them here.</p>
+
+<div class="config-editor">
+<div class="panel label" style="padding:0;background:none;border:none;margin-bottom:.75rem">Environment Variables</div>
+<div id="envRows">
+<div class="env-row">
+<input class="env-key" value="NEXT_PUBLIC_SUPABASE_URL" readonly>
+<input class="env-val" value="https://vpaynwebgmmnwttqkwmh.supabase.co">
+<span class="env-type">Public</span>
+</div>
+<div class="env-row">
+<input class="env-key" value="NEXT_PUBLIC_SUPABASE_ANON_KEY" readonly>
+<input class="env-val" value="eyJhbGciOi..." type="password">
+<span class="env-type">Public</span>
+</div>
+<div class="env-row">
+<input class="env-key" value="SUPABASE_SERVICE_ROLE_KEY" readonly>
+<input class="env-val" value="eyJhbGciOi..." type="password">
+<span class="env-type">Secret</span>
+</div>
+<div class="env-row">
+<input class="env-key" value="STRIPE_SECRET_KEY" readonly>
+<input class="env-val" value="sk_live_..." type="password">
+<span class="env-type">Secret</span>
+</div>
+</div>
+<button class="add-env" onclick="addEnv()">+ Add Variable</button>
+</div>
+
+<h2>Key Concepts</h2>
+<div class="concept-grid">
+<div class="concept-card">
+<h4>&#x1f50d; Preview Deploys</h4>
+<p>Every PR gets its own URL. Test changes before merging to main.</p>
+</div>
+<div class="concept-card">
+<h4>&#x1f310; Edge Network</h4>
+<p>Your site is served from 50+ global PoPs. Users hit the closest one.</p>
+</div>
+<div class="concept-card">
+<h4>&#x1f512; Environment Vars</h4>
+<p>Separate configs for Production, Preview, and Development.</p>
+</div>
+<div class="concept-card">
+<h4>&#x1f517; Custom Domains</h4>
+<p>Point your domain to Vercel. SSL is automatic. Zero config.</p>
+</div>
+</div>
+
+<div class="panel">
+<div class="label">Deploy from CLI</div>
+<div class="code-block">
+<span class="cm"># Install Vercel CLI</span><br>
+<span class="kw">npm</span> i -g vercel<br><br>
+<span class="cm"># Link your project</span><br>
+<span class="kw">vercel</span> link<br><br>
+<span class="cm"># Deploy to preview</span><br>
+<span class="kw">vercel</span><br><br>
+<span class="cm"># Deploy to production</span><br>
+<span class="kw">vercel</span> --prod<br><br>
+<span class="cm"># Or just push to main — Vercel watches your repo</span><br>
+<span class="kw">git</span> push origin main <span class="cm"># auto-deploys!</span>
+</div>
+</div>
+
+<div class="progress-section">
+<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
+<span>Lesson Progress</span><span id="lessonPct">0%</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+</div>
+<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
+<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
+<a href="database-patterns.html">&larr; Database Patterns</a>
+<a href="wire-it-all.html">Next: Wire It All Together &rarr;</a>
+</div>
+<div class="footer">Like One Academy &copy; 2026</div>
+</div>
+
+<script>
+let deployed=false;
+const logLines=[
+{t:'dim',m:'Cloning repository...'},
+{t:'dim',m:'Detected Next.js project'},
+{t:'dim',m:'Installing dependencies...'},
+{t:'dim',m:'npm packages: 847 installed in 12.3s'},
+{t:'ok',m:'Dependencies installed'},
+{t:'dim',m:'Running next build...'},
+{t:'dim',m:'Creating optimized production build...'},
+{t:'dim',m:'Compiled successfully'},
+{t:'dim',m:'Collecting page data...'},
+{t:'info',m:'Route (app) | Size | First Load JS'},
+{t:'dim',m:'\u250c /                    | 5.2 kB | 87.4 kB'},
+{t:'dim',m:'\u251c /academy             | 3.1 kB | 85.3 kB'},
+{t:'dim',m:'\u2514 /api/webhook         | 0 B    | 0 B (Edge)'},
+{t:'ok',m:'Build completed in 34.2s'},
+{t:'dim',m:'Deploying to Vercel Edge Network...'},
+{t:'dim',m:'Uploading build artifacts (2.4 MB)...'},
+{t:'dim',m:'Assigning domain...'},
+{t:'ok',m:'Deployment complete!'},
+{t:'info',m:'URL: https://your-app-abc123.vercel.app'},
+{t:'info',m:'Production: https://likeone.ai'},
+{t:'ok',m:'All checks passed. Site is LIVE.'}
+];
+
+function runDeploy(){
+const btn=document.getElementById('deployBtn');btn.disabled=true;btn.textContent='Deploying...';
+const log=document.getElementById('buildLog');log.style.display='block';log.innerHTML='';
+const steps=['ps0','ps1','ps2','ps3','ps4'];
+const arrows=['pa0','pa1','pa2','pa3'];
+let i=0;
+function nextLog(){
+if(i>=logLines.length){
+document.getElementById('statusText').textContent='Deployed successfully!';document.getElementById('statusText').style.color='#22c55e';
+document.getElementById('statusUrl').style.display='block';
+btn.textContent='\u2713 Deployed!';btn.style.background='linear-gradient(135deg,#22c55e,#16a34a)';
+deployed=true;updateProg();return}
+const l=logLines[i];
+const div=document.createElement('div');div.className='log-line log-'+l.t;div.textContent=(l.t==='dim'?'  ':l.t==='ok'?'\u2713 ':l.t==='info'?'\u2139 ':'')+l.m;
+log.appendChild(div);log.scrollTop=log.scrollHeight;
+// Activate pipeline steps
+const stepIdx=i<2?0:i<5?1:i<14?2:i<18?3:4;
+steps.forEach((s,si)=>{const el=document.getElementById(s);el.classList.toggle('active',si<=stepIdx);if(si<stepIdx)el.classList.add('done')});
+arrows.forEach((a,ai)=>document.getElementById(a).classList.toggle('active',ai<stepIdx));
+document.getElementById('statusText').textContent=['Pushing...','Detecting framework...','Building...','Deploying to edge...','Live!'][stepIdx];
+i++;setTimeout(nextLog,i<5?300:i<14?200:300)}
+nextLog();updateProg()}
+
+function addEnv(){const rows=document.getElementById('envRows');const div=document.createElement('div');div.className='env-row';div.innerHTML='<input class="env-key" placeholder="VARIABLE_NAME"><input class="env-val" placeholder="value"><span class="env-type">Secret</span><button class="del-env" onclick="this.parentElement.remove()">&times;</button>';rows.appendChild(div);updateProg()}
+
+let actions=0;function updateProg(){actions++;const p=Math.min(100,deployed?100:actions*20);document.getElementById('lessonProgress').style.width=p+'%';document.getElementById('lessonPct').textContent=p+'%'}
+function completeLesson(){localStorage.setItem('aisb_lesson_8','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
+if(localStorage.getItem('aisb_lesson_8')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
+</script>
+</body>
+</html>

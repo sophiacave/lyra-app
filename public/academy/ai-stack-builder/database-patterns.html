@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Patterns — AI Stack Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}a:hover{color:#fbbf24}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #1e1e2e}
+.nav a{font-size:.85rem;color:#888}.nav a:hover{color:#f59e0b}.nav .current{color:#e5e5e5;font-weight:600}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:#f59e0b;background:#f59e0b15;padding:.3rem .75rem;border-radius:99px;margin-bottom:1rem}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+.intro{color:#999;margin-bottom:2rem;font-size:1.05rem}
+h2{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#f59e0b}
+h3{font-size:1.1rem;font-weight:600;margin:1.5rem 0 .75rem}
+p{margin-bottom:1rem;color:#ccc}
+.panel{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.panel .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#f59e0b;margin-bottom:.75rem;font-weight:600}
+.code-block{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto;margin:.75rem 0;position:relative}
+.kw{color:#c084fc}.str{color:#34d399}.cm{color:#555}.fn{color:#60a5fa}.op{color:#f59e0b}.num{color:#fb923c}
+.copy-btn{position:absolute;top:.5rem;right:.5rem;background:#1e1e2e;border:none;color:#999;padding:.25rem .5rem;border-radius:4px;cursor:pointer;font-size:.7rem;font-family:'Inter',sans-serif}
+.copy-btn:hover{color:#f59e0b}
+
+/* Schema Designer */
+.schema-designer{margin:1.5rem 0}
+.table-tabs{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.table-tab{padding:.5rem 1rem;border-radius:8px;font-size:.85rem;font-weight:500;cursor:pointer;background:#111118;border:1px solid #1e1e2e;transition:all .2s;color:#999}
+.table-tab:hover{border-color:#f59e0b44}
+.table-tab.active{border-color:#f59e0b;color:#f59e0b;background:#f59e0b11}
+.table-tab .add-tab{color:#f59e0b}
+
+.schema-table{background:#111118;border:1px solid #1e1e2e;border-radius:12px;overflow:hidden;margin:1rem 0}
+.schema-table-header{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:#0a0a0f;border-bottom:1px solid #1e1e2e}
+.schema-table-name{font-weight:700;font-size:.95rem}
+.col-header{display:flex;gap:.5rem;padding:.4rem 1rem;background:#1e1e2e44;font-size:.72rem;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:.05em}
+.col-header span:nth-child(1){flex:1}.col-header span:nth-child(2){width:110px}.col-header span:nth-child(3){width:70px}.col-header span:nth-child(4){width:70px}.col-header span:nth-child(5){width:30px}
+.col-row{display:flex;gap:.5rem;padding:.5rem 1rem;border-bottom:1px solid #1e1e2e11;align-items:center;font-size:.85rem;transition:background .2s}
+.col-row:hover{background:#ffffff05}
+.col-row input{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:5px;padding:.3rem .5rem;color:#e5e5e5;font-size:.82rem;font-family:'Inter',sans-serif;flex:1}
+.col-row input:focus{outline:none;border-color:#f59e0b44}
+.col-row select{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:5px;padding:.3rem;color:#e5e5e5;font-size:.82rem;width:110px}
+.col-row .flags{width:70px;display:flex;gap:.25rem}
+.col-row .flag{font-size:.65rem;padding:.15rem .3rem;border-radius:3px;cursor:pointer;border:1px solid #1e1e2e;color:#666;transition:all .2s}
+.col-row .flag.on{color:#f59e0b;border-color:#f59e0b44;background:#f59e0b11}
+.col-row .fk{width:70px;font-size:.75rem;color:#60a5fa;cursor:pointer}
+.col-row .del{width:30px;text-align:center}
+.col-row .del button{background:none;border:none;color:#444;cursor:pointer;font-size:.9rem;padding:0}
+.col-row .del button:hover{color:#ef4444}
+.add-col{display:block;width:100%;padding:.5rem;border:none;background:#0a0a0f;color:#555;cursor:pointer;font-size:.8rem;font-family:'Inter',sans-serif;transition:color .2s}
+.add-col:hover{color:#f59e0b}
+
+/* ER Diagram */
+.er-diagram{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0;overflow-x:auto}
+.er-canvas{display:flex;gap:2rem;align-items:flex-start;justify-content:center;flex-wrap:wrap;min-height:200px}
+.er-table{background:#111118;border:1px solid #1e1e2e;border-radius:8px;min-width:180px;overflow:hidden}
+.er-table-name{background:#1e1e2e;padding:.5rem .75rem;font-weight:700;font-size:.8rem;text-align:center;color:#f59e0b}
+.er-col{padding:.3rem .75rem;font-size:.75rem;border-bottom:1px solid #1e1e2e11;display:flex;justify-content:space-between}
+.er-col .col-n{color:#e5e5e5}.er-col .col-t{color:#666}
+.er-col.pk .col-n{color:#f59e0b}.er-col.pk .col-n::before{content:'PK ';color:#f59e0b88}
+.er-col.fk .col-n{color:#60a5fa}.er-col.fk .col-n::before{content:'FK ';color:#60a5fa88}
+.er-rel{display:flex;align-items:center;color:#f59e0b44;font-size:.8rem;padding-top:2rem}
+
+.gen-btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;padding:.6rem 1.5rem;border-radius:99px;font-weight:600;cursor:pointer;font-size:.9rem;font-family:'Inter',sans-serif;border:none;transition:all .2s;margin:.75rem 0}
+.gen-btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(245,158,11,.3)}
+
+.progress-section{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.progress-bar{height:6px;background:#1e1e2e;border-radius:99px;overflow:hidden;margin-top:.5rem}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:99px;transition:width .5s}
+.complete-btn{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:1rem;border-radius:12px;border:none;cursor:pointer;font-size:1rem;margin:2rem 0;font-family:'Inter',sans-serif;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer{text-align:center;padding:2rem 0;color:#444;font-size:.8rem;border-top:1px solid #1e1e2e;margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="auth-and-tokens.html">&larr; Prev</a>
+<span class="current">Lesson 7 of 10</span>
+<a href="vercel-deploy.html">Next &rarr;</a>
+</div>
+
+<div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
+<h1>Database Patterns</h1>
+<p class="intro">Your AI needs a brain — a structured place to store memory, context, and agent state. Let's design that schema interactively and see the relationships in real-time.</p>
+
+<h2>Design Your Brain Schema</h2>
+<p>Click each table tab to edit its columns. Add new columns, set types, mark primary and foreign keys. The ER diagram below updates as you build.</p>
+
+<div class="table-tabs" id="tableTabs">
+<div class="table-tab active" onclick="switchTable(0)">brain_context</div>
+<div class="table-tab" onclick="switchTable(1)">agent_memory</div>
+<div class="table-tab" onclick="switchTable(2)">consciousness_stream</div>
+</div>
+
+<div id="tableEditor"></div>
+
+<h2>Entity Relationship Diagram</h2>
+<p>This updates live as you modify the tables above.</p>
+<div class="er-diagram">
+<div class="er-canvas" id="erCanvas"></div>
+</div>
+
+<button class="gen-btn" onclick="generateSQL()">Generate SQL &rarr;</button>
+
+<div class="panel" id="sqlPanel" style="display:none">
+<div class="label">Generated SQL</div>
+<div class="code-block" id="sqlOutput" style="white-space:pre"></div>
+</div>
+
+<div class="panel">
+<div class="label">Key Patterns</div>
+<h3 style="margin-top:0">Pattern 1: Key-Value Brain</h3>
+<p style="font-size:.9rem">The <code style="color:#f59e0b">brain_context</code> table is a flexible key-value store. Keys use dot notation (like <code style="color:#f59e0b">identity.name</code>, <code style="color:#f59e0b">session.active_work</code>) for namespacing. Values are JSONB for maximum flexibility.</p>
+<h3>Pattern 2: Append-Only Memory</h3>
+<p style="font-size:.9rem">The <code style="color:#f59e0b">agent_memory</code> table stores every interaction. Never delete — always append. Use <code style="color:#f59e0b">importance</code> scores to prioritize retrieval. This is how AI agents build long-term memory.</p>
+<h3>Pattern 3: Event Streaming</h3>
+<p style="font-size:.9rem">The <code style="color:#f59e0b">consciousness_stream</code> is an event log. Every action the agent takes gets logged. Useful for debugging, auditing, and replaying agent behavior.</p>
+</div>
+
+<div class="progress-section">
+<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
+<span>Lesson Progress</span><span id="lessonPct">0%</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+</div>
+<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
+<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
+<a href="auth-and-tokens.html">&larr; Auth & Tokens</a>
+<a href="vercel-deploy.html">Next: Vercel Deploy &rarr;</a>
+</div>
+<div class="footer">Like One Academy &copy; 2026</div>
+</div>
+
+<script>
+const tables=[
+{name:'brain_context',cols:[
+{name:'id',type:'uuid',pk:true,fk:''},
+{name:'key',type:'text',pk:false,fk:''},
+{name:'value',type:'jsonb',pk:false,fk:''},
+{name:'metadata',type:'jsonb',pk:false,fk:''},
+{name:'updated_at',type:'timestamptz',pk:false,fk:''}
+]},
+{name:'agent_memory',cols:[
+{name:'id',type:'uuid',pk:true,fk:''},
+{name:'context_key',type:'text',pk:false,fk:'brain_context.key'},
+{name:'content',type:'text',pk:false,fk:''},
+{name:'importance',type:'int4',pk:false,fk:''},
+{name:'embedding',type:'vector(1536)',pk:false,fk:''},
+{name:'created_at',type:'timestamptz',pk:false,fk:''}
+]},
+{name:'consciousness_stream',cols:[
+{name:'id',type:'uuid',pk:true,fk:''},
+{name:'agent_id',type:'text',pk:false,fk:''},
+{name:'action',type:'text',pk:false,fk:''},
+{name:'input',type:'jsonb',pk:false,fk:''},
+{name:'output',type:'jsonb',pk:false,fk:''},
+{name:'memory_id',type:'uuid',pk:false,fk:'agent_memory.id'},
+{name:'created_at',type:'timestamptz',pk:false,fk:''}
+]}
+];
+
+let activeTable=0;
+function switchTable(idx){activeTable=idx;document.querySelectorAll('.table-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));renderTable();updateProg()}
+
+function renderTable(){
+const t=tables[activeTable];
+let html='<div class="schema-table"><div class="schema-table-header"><span class="schema-table-name">'+t.name+'</span></div>';
+html+='<div class="col-header"><span>Name</span><span>Type</span><span>Flags</span><span>FK</span><span></span></div>';
+t.cols.forEach((c,i)=>{
+html+='<div class="col-row"><input value="'+c.name+'" onchange="updateCol('+i+',\'name\',this.value)">';
+html+='<select onchange="updateCol('+i+',\'type\',this.value)">';
+['uuid','text','int4','int8','bool','jsonb','timestamptz','vector(1536)','float8'].forEach(typ=>{
+html+='<option'+(c.type===typ?' selected':'')+'>'+typ+'</option>'});
+html+='</select><div class="flags"><span class="flag'+(c.pk?' on':'')+'" onclick="togglePK('+i+')">PK</span></div>';
+html+='<span class="fk" onclick="editFK('+i+')">'+(c.fk||'—')+'</span>';
+html+='<div class="del">'+(c.pk?'':'<button onclick="delCol('+i+')">&times;</button>')+'</div></div>'});
+html+='<button class="add-col" onclick="addCol()">+ Add Column</button></div>';
+document.getElementById('tableEditor').innerHTML=html;
+renderER()}
+
+function updateCol(i,field,val){tables[activeTable].cols[i][field]=val;renderTable();updateProg()}
+function togglePK(i){tables[activeTable].cols[i].pk=!tables[activeTable].cols[i].pk;renderTable();updateProg()}
+function delCol(i){tables[activeTable].cols.splice(i,1);renderTable();updateProg()}
+function addCol(){tables[activeTable].cols.push({name:'new_col',type:'text',pk:false,fk:''});renderTable();updateProg()}
+function editFK(i){const c=tables[activeTable].cols[i];const val=prompt('Foreign key reference (e.g. brain_context.id):',c.fk||'');if(val!==null){c.fk=val;renderTable();updateProg()}}
+
+function renderER(){
+let html='';
+tables.forEach(t=>{
+html+='<div class="er-table"><div class="er-table-name">'+t.name+'</div>';
+t.cols.forEach(c=>{
+let cls='er-col';if(c.pk)cls+=' pk';if(c.fk)cls+=' fk';
+html+='<div class="'+cls+'"><span class="col-n">'+c.name+'</span><span class="col-t">'+c.type+'</span></div>'});
+html+='</div>'});
+document.getElementById('erCanvas').innerHTML=html}
+
+function generateSQL(){
+let sql='';
+tables.forEach(t=>{
+sql+='CREATE TABLE '+t.name+' (\n';
+const lines=[];
+t.cols.forEach(c=>{
+let line='  '+c.name+' '+c.type;
+if(c.pk)line+=' DEFAULT gen_random_uuid() PRIMARY KEY';
+if(c.name.endsWith('_at'))line+=' DEFAULT now()';
+if(c.fk){const parts=c.fk.split('.');if(parts.length===2)line+=' REFERENCES '+parts[0]+'('+parts[1]+')'}
+lines.push(line)});
+sql+=lines.join(',\n')+'\n);\n\n';
+sql+='ALTER TABLE '+t.name+' ENABLE ROW LEVEL SECURITY;\n\n'});
+document.getElementById('sqlOutput').textContent=sql;
+document.getElementById('sqlPanel').style.display='block';updateProg()}
+
+let actions=0;function updateProg(){actions++;const p=Math.min(100,actions*8);document.getElementById('lessonProgress').style.width=p+'%';document.getElementById('lessonPct').textContent=p+'%'}
+function completeLesson(){localStorage.setItem('aisb_lesson_7','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
+if(localStorage.getItem('aisb_lesson_7')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
+renderTable();
+</script>
+</body>
+</html>
