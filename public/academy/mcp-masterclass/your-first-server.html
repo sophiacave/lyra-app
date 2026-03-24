@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your First Server — MCP Masterclass — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.nav-link:hover{color:#e5e5e5}
+.lesson-container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2);font-size:.7rem;font-weight:600;color:#fb923c;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+h1{font-size:2.2rem;font-weight:800;margin-bottom:.75rem;background:linear-gradient(135deg,#fff 30%,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;line-height:1.6;margin-bottom:2.5rem}
+.section{margin-bottom:3rem}
+.section h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#e5e5e5}
+.section p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem;font-size:.95rem}
+
+/* Step Indicator */
+.steps-indicator{display:flex;gap:0;margin:2rem 0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.step-tab{flex:1;padding:.75rem;text-align:center;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.02);font-size:.8rem;font-weight:600;color:#71717a;border-right:1px solid rgba(255,255,255,.04)}
+.step-tab:last-child{border-right:none}
+.step-tab.active{background:rgba(139,92,246,.1);color:#8b5cf6}
+.step-tab.done{background:rgba(52,211,153,.05);color:#34d399}
+
+/* Choice Grid */
+.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.choice-card{padding:1.5rem;border-radius:14px;background:rgba(255,255,255,.02);border:2px solid rgba(255,255,255,.06);cursor:pointer;transition:all .3s;text-align:center}
+.choice-card:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.choice-card.selected{border-color:#8b5cf6;background:rgba(139,92,246,.1)}
+.choice-card .icon{font-size:2rem;margin-bottom:.75rem}
+.choice-card h3{font-size:.9rem;font-weight:700;margin-bottom:.25rem}
+.choice-card p{font-size:.7rem;color:#71717a;line-height:1.4}
+
+/* Tool Selector */
+.tool-selector{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0}
+.tool-chip{padding:.5rem 1rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);cursor:pointer;font-size:.8rem;font-weight:600;transition:all .3s;color:#a1a1aa}
+.tool-chip:hover{border-color:rgba(139,92,246,.3);color:#e5e5e5}
+.tool-chip.selected{background:rgba(139,92,246,.15);border-color:#8b5cf6;color:#8b5cf6}
+
+/* Code Preview */
+.code-preview{border-radius:14px;background:#111118;border:1px solid rgba(255,255,255,.08);overflow:hidden;margin:1.5rem 0}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
+.code-header .filename{font-size:.8rem;font-weight:600;color:#8b5cf6}
+.code-header .lang{font-size:.7rem;color:#71717a;font-weight:500}
+.code-body{padding:1.25rem;overflow-x:auto;font-family:'SF Mono','Fira Code',monospace;font-size:.8rem;line-height:1.8;color:#d4d4d8;white-space:pre}
+.code-body .kw{color:#c084fc}
+.code-body .str{color:#34d399}
+.code-body .fn{color:#38bdf8}
+.code-body .cm{color:#52525b}
+.code-body .num{color:#fb923c}
+.code-body .ann{display:inline-block;background:rgba(139,92,246,.1);color:#8b5cf6;padding:0 .5rem;border-radius:4px;font-family:Inter,sans-serif;font-size:.7rem;font-weight:600;margin-left:.5rem}
+
+.step-content{display:none}
+.step-content.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.next-step-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:10px;border:none;background:#8b5cf6;color:#fff;font-family:Inter,sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .3s;margin-top:1rem}
+.next-step-btn:hover{background:#7c3aed;transform:translateY(-1px)}
+.next-step-btn:disabled{opacity:.4;cursor:default;transform:none}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-family:Inter,sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-top:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.complete-btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+.next-link{display:block;text-align:center;margin-top:1rem;color:#8b5cf6;font-size:.9rem;font-weight:600}
+@media(max-width:600px){.choice-grid{grid-template-columns:1fr}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+</nav>
+
+<div class="lesson-container">
+  <div class="lesson-badge">Module 2 &middot; Lesson 4</div>
+  <h1>Your First Server</h1>
+  <p class="subtitle">Build an MCP server step-by-step. Choose what it connects to, define its tools, and see the TypeScript code structure generated.</p>
+
+  <div class="steps-indicator">
+    <div class="step-tab active" onclick="goStep(0)" id="stab0">1. Choose Connection</div>
+    <div class="step-tab" onclick="goStep(1)" id="stab1">2. Define Tools</div>
+    <div class="step-tab" onclick="goStep(2)" id="stab2">3. View Code</div>
+  </div>
+
+  <!-- Step 1: Choose Connection -->
+  <div class="step-content active" id="step0">
+    <div class="section">
+      <h2>What does your server connect to?</h2>
+      <p>Every MCP server wraps a specific capability. Choose what yours will connect to:</p>
+
+      <div class="choice-grid">
+        <div class="choice-card" onclick="selectType('filesystem')" id="type-filesystem">
+          <div class="icon">&#x1F4C1;</div>
+          <h3>Filesystem</h3>
+          <p>Read, write, and search local files and directories</p>
+        </div>
+        <div class="choice-card" onclick="selectType('database')" id="type-database">
+          <div class="icon">&#x1F4BE;</div>
+          <h3>Database</h3>
+          <p>Query and modify data in SQL or NoSQL databases</p>
+        </div>
+        <div class="choice-card" onclick="selectType('api')" id="type-api">
+          <div class="icon">&#x1F310;</div>
+          <h3>External API</h3>
+          <p>Wrap any REST or GraphQL endpoint as MCP tools</p>
+        </div>
+      </div>
+
+      <button class="next-step-btn" id="btn-step0" onclick="goStep(1)" disabled>Continue &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Define Tools -->
+  <div class="step-content" id="step1">
+    <div class="section">
+      <h2>Choose the tools your server exposes</h2>
+      <p>Select which capabilities your <strong id="chosenType">server</strong> will offer to AI models:</p>
+
+      <div class="tool-selector" id="toolSelector"></div>
+
+      <button class="next-step-btn" id="btn-step1" onclick="goStep(2)" disabled>Generate Code &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Step 3: View Code -->
+  <div class="step-content" id="step2">
+    <div class="section">
+      <h2>Your MCP Server Code</h2>
+      <p>Here's the TypeScript structure for your custom MCP server. Annotations explain each part:</p>
+
+      <div class="code-preview">
+        <div class="code-header">
+          <span class="filename" id="codeFilename">server.ts</span>
+          <span class="lang">TypeScript</span>
+        </div>
+        <div class="code-body" id="codeBody"></div>
+      </div>
+
+      <div class="section" style="margin-top:2rem">
+        <h2>Key Pattern: server.tool()</h2>
+        <p>Every MCP server follows the same pattern. The <code style="background:rgba(139,92,246,.15);padding:.15rem .4rem;border-radius:4px;color:#8b5cf6;font-size:.85rem">server.tool()</code> method registers a tool with three arguments:</p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.1)">
+            <span style="font-weight:700;color:#8b5cf6;font-size:.85rem;min-width:60px">name</span>
+            <span style="font-size:.85rem;color:#a1a1aa">A unique string identifier the AI uses to call this tool</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.05);border:1px solid rgba(251,146,60,.1)">
+            <span style="font-weight:700;color:#fb923c;font-size:.85rem;min-width:60px">schema</span>
+            <span style="font-size:.85rem;color:#a1a1aa">A Zod schema defining the input parameters and their types</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.1)">
+            <span style="font-weight:700;color:#34d399;font-size:.85rem;min-width:60px">handler</span>
+            <span style="font-size:.85rem;color:#a1a1aa">An async function that executes the tool logic and returns results</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 250 XP</button>
+  <a href="tool-definitions.html" class="next-link">Next: Tool Definitions &rarr;</a>
+</div>
+
+<script>
+let selectedType = null;
+let selectedTools = [];
+
+const toolSets = {
+  filesystem: [
+    {id:'read_file', label:'read_file', desc:'Read file contents'},
+    {id:'write_file', label:'write_file', desc:'Write to a file'},
+    {id:'list_directory', label:'list_directory', desc:'List directory contents'},
+    {id:'search_files', label:'search_files', desc:'Search for files by pattern'},
+    {id:'get_file_info', label:'get_file_info', desc:'Get file metadata'},
+    {id:'move_file', label:'move_file', desc:'Move or rename a file'},
+  ],
+  database: [
+    {id:'query', label:'query', desc:'Execute SQL query'},
+    {id:'insert', label:'insert', desc:'Insert a record'},
+    {id:'update', label:'update', desc:'Update records'},
+    {id:'delete_record', label:'delete', desc:'Delete records'},
+    {id:'list_tables', label:'list_tables', desc:'List all tables'},
+    {id:'describe_table', label:'describe_table', desc:'Get table schema'},
+  ],
+  api: [
+    {id:'api_get', label:'GET request', desc:'Fetch data from endpoint'},
+    {id:'api_post', label:'POST request', desc:'Send data to endpoint'},
+    {id:'api_put', label:'PUT request', desc:'Update a resource'},
+    {id:'api_delete', label:'DELETE request', desc:'Remove a resource'},
+    {id:'list_endpoints', label:'list_endpoints', desc:'Show available endpoints'},
+    {id:'check_status', label:'check_status', desc:'API health check'},
+  ]
+};
+
+function selectType(type){
+  selectedType = type;
+  selectedTools = [];
+  document.querySelectorAll('.choice-card').forEach(el => el.classList.remove('selected'));
+  document.getElementById('type-'+type).classList.add('selected');
+  document.getElementById('btn-step0').disabled = false;
+  document.getElementById('chosenType').textContent = type + ' server';
+
+  const selector = document.getElementById('toolSelector');
+  selector.innerHTML = toolSets[type].map(t =>
+    `<div class="tool-chip" onclick="toggleTool('${t.id}',this)" id="chip-${t.id}">${t.label}</div>`
+  ).join('');
+}
+
+function toggleTool(id, el){
+  if(selectedTools.includes(id)){
+    selectedTools = selectedTools.filter(t => t !== id);
+    el.classList.remove('selected');
+  } else {
+    selectedTools.push(id);
+    el.classList.add('selected');
+  }
+  document.getElementById('btn-step1').disabled = selectedTools.length === 0;
+}
+
+function goStep(n){
+  if(n === 1 && !selectedType) return;
+  if(n === 2 && selectedTools.length === 0) return;
+  if(n === 2) generateCode();
+
+  document.querySelectorAll('.step-content').forEach((el,i) => el.classList.toggle('active', i===n));
+  document.querySelectorAll('.step-tab').forEach((el,i) => {
+    el.classList.toggle('active', i===n);
+    if(i < n) el.classList.add('done');
+  });
+}
+
+function generateCode(){
+  const type = selectedType;
+  const tools = selectedTools;
+  const names = {filesystem:'my-fs-server', database:'my-db-server', api:'my-api-server'};
+  document.getElementById('codeFilename').textContent = names[type] + '.ts';
+
+  const imports = {
+    filesystem: 'fs/promises',
+    database: 'better-sqlite3',
+    api: 'node-fetch'
+  };
+
+  let toolCode = '';
+  const allTools = toolSets[type];
+  tools.forEach(tid => {
+    const t = allTools.find(x => x.id === tid);
+    if(!t) return;
+    toolCode += `
+<span class="cm">// Tool: ${t.desc}</span>
+<span class="fn">server</span>.<span class="fn">tool</span>(<span class="ann">name</span>
+  <span class="str">"${t.label}"</span>,<span class="ann">schema</span>
+  { path: <span class="fn">z</span>.<span class="fn">string</span>().<span class="fn">describe</span>(<span class="str">"Target path or identifier"</span>) },<span class="ann">handler</span>
+  <span class="kw">async</span> ({ path }) => {
+    <span class="cm">// Your ${t.desc.toLowerCase()} logic here</span>
+    <span class="kw">const</span> result = <span class="kw">await</span> <span class="fn">${t.id}</span>(path);
+    <span class="kw">return</span> { content: [{ type: <span class="str">"text"</span>, text: result }] };
+  }
+);
+`;
+  });
+
+  document.getElementById('codeBody').innerHTML = `<span class="cm">// ${names[type]}.ts — MCP Server for ${type}</span>
+<span class="kw">import</span> { <span class="fn">McpServer</span> } <span class="kw">from</span> <span class="str">"@modelcontextprotocol/sdk/server/mcp.js"</span>;
+<span class="kw">import</span> { <span class="fn">StdioServerTransport</span> } <span class="kw">from</span> <span class="str">"@modelcontextprotocol/sdk/server/stdio.js"</span>;
+<span class="kw">import</span> { <span class="fn">z</span> } <span class="kw">from</span> <span class="str">"zod"</span>;
+
+<span class="cm">// Create the MCP server instance</span>
+<span class="kw">const</span> server = <span class="kw">new</span> <span class="fn">McpServer</span>({
+  name: <span class="str">"${names[type]}"</span>,
+  version: <span class="str">"1.0.0"</span>,
+});
+${toolCode}
+<span class="cm">// Connect via stdio transport</span>
+<span class="kw">const</span> transport = <span class="kw">new</span> <span class="fn">StdioServerTransport</span>();
+<span class="kw">await</span> <span class="fn">server</span>.<span class="fn">connect</span>(transport);`;
+}
+
+function complete(){
+  const btn = document.getElementById('completeBtn');
+  if(btn.disabled) return;
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  progress['your-first-server'] = true;
+  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
+  LO.completeLesson('mcp-masterclass', 4, 250);
+  btn.textContent = 'Lesson Complete!';
+  btn.disabled = true;
+}
+(function(){
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  if(progress['your-first-server']){
+    const btn = document.getElementById('completeBtn');
+    btn.textContent = 'Lesson Complete!';
+    btn.disabled = true;
+  }
+})();
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>

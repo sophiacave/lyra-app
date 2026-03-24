@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool Calling Basics — Build Your First AI Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#06b6d4,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+h1{font-size:2.2rem;font-weight:900;margin-bottom:.5rem;background:linear-gradient(135deg,#fff,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;margin-bottom:2rem;font-size:1rem}
+.lesson-num{font-size:.75rem;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+
+.question-picker{margin:2rem 0}
+.question-picker h3{font-size:.95rem;font-weight:700;margin-bottom:1rem;color:#a1a1aa}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+@media(max-width:600px){.q-grid{grid-template-columns:1fr}}
+.q-card{padding:1rem;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .2s}
+.q-card:hover{background:rgba(6,182,212,.05);border-color:rgba(6,182,212,.2)}
+.q-card.active{background:rgba(6,182,212,.08);border-color:#06b6d4}
+.q-card.done{opacity:.5}
+.q-emoji{font-size:1.3rem;margin-bottom:.35rem}
+.q-text{font-size:.85rem;font-weight:600}
+
+.flow-viz{margin:2rem 0;min-height:400px}
+.flow-step{display:flex;gap:1rem;align-items:flex-start;margin-bottom:.5rem;opacity:0;transform:translateY(10px);transition:all .5s ease}
+.flow-step.show{opacity:1;transform:translateY(0)}
+.step-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.step-user .step-icon{background:rgba(168,85,247,.12)}
+.step-think .step-icon{background:rgba(56,189,248,.12)}
+.step-tool .step-icon{background:rgba(251,146,60,.12)}
+.step-response .step-icon{background:rgba(6,182,212,.12)}
+.step-result .step-icon{background:rgba(34,197,94,.12)}
+.step-content{flex:1;padding:.75rem 1rem;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)}
+.step-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.step-user .step-label{color:#a855f7}
+.step-think .step-label{color:#38bdf8}
+.step-tool .step-label{color:#fb923c}
+.step-response .step-label{color:#06b6d4}
+.step-result .step-label{color:#22c55e}
+.step-text{font-size:.85rem;color:#a1a1aa;line-height:1.5}
+.step-code{margin-top:.5rem;background:rgba(0,0,0,.3);border-radius:6px;padding:.6rem .8rem;font-family:monospace;font-size:.75rem;color:#06b6d4;overflow-x:auto}
+
+.connector{width:2px;height:20px;background:rgba(255,255,255,.06);margin-left:21px;opacity:0;transition:opacity .3s}
+.connector.show{opacity:1}
+
+.progress-dots{display:flex;justify-content:center;gap:.5rem;margin:2rem 0}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.08);transition:all .3s}
+.dot.done{background:#06b6d4}
+
+.complete-section{text-align:center;padding:2rem;display:none}
+.complete-section h2{color:#06b6d4;font-size:1.5rem;margin-bottom:.5rem}
+.complete-section p{color:#a1a1aa}
+.next-btn{display:inline-block;margin-top:1rem;padding:.75rem 2rem;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;font-weight:700;font-size:.95rem;border:none;cursor:pointer;transition:transform .2s}
+.next-btn:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
+  <a href="/academy/first-ai-agent/" class="nav-link">← Course</a>
+</nav>
+
+<div class="content">
+  <div class="lesson-num">Lesson 7 of 10</div>
+  <h1>Tool Calling Basics</h1>
+  <p class="subtitle">Watch an agent decide which tool to use, make the call, and use the result. Pick a question to see the full flow.</p>
+
+  <div class="question-picker">
+    <h3>Pick a question for the agent to answer:</h3>
+    <div class="q-grid" id="q-grid"></div>
+  </div>
+
+  <div class="progress-dots" id="dots"></div>
+
+  <div class="flow-viz" id="flow-viz"></div>
+
+  <div class="complete-section" id="complete">
+    <h2>Lesson Complete!</h2>
+    <p>You've seen how tool calling works — the agent reasons about what it needs, calls the right tool, and uses the result. This is the mechanism that makes agents powerful.</p>
+    <a href="error-handling.html" class="next-btn">Next: Error Handling →</a>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    emoji: '🌤️', text: 'What\'s the weather in Tokyo right now?',
+    steps: [
+      { type: 'user', icon: '👤', label: 'User asks', text: '"What\'s the weather in Tokyo right now?"' },
+      { type: 'think', icon: '🧠', label: 'Agent thinks', text: 'I need real-time weather data. My training data is static — I can\'t know today\'s weather. I need to call a tool.',
+        code: '// Agent reasoning:\n// "weather" + "right now" → need real-time data\n// Available tools: [weather_api, web_search, calculator]\n// Best tool: weather_api' },
+      { type: 'tool', icon: '🔧', label: 'Tool call', text: 'Calling the weather API with location parameter...',
+        code: 'weather_api.get({\n  location: "Tokyo, Japan",\n  units: "metric"\n})' },
+      { type: 'response', icon: '📦', label: 'Tool response', text: 'The API returns structured data that the agent can parse.',
+        code: '{\n  "temp": 22,\n  "condition": "Partly cloudy",\n  "humidity": 65,\n  "wind": "12 km/h NW"\n}' },
+      { type: 'result', icon: '✅', label: 'Agent responds', text: '"It\'s currently 22°C in Tokyo with partly cloudy skies, 65% humidity, and a light 12 km/h northwest wind." — Precise answer using real data, not a guess.' }
+    ]
+  },
+  {
+    emoji: '📊', text: 'How much did we spend on marketing last quarter?',
+    steps: [
+      { type: 'user', icon: '👤', label: 'User asks', text: '"How much did we spend on marketing last quarter?"' },
+      { type: 'think', icon: '🧠', label: 'Agent thinks', text: 'This requires company-specific financial data. I need to query the database to find marketing expenses for Q4.',
+        code: '// Agent reasoning:\n// "spend" + "marketing" + "last quarter" → financial query\n// Available tools: [database, web_search, calculator]\n// Best tool: database (company-specific data)' },
+      { type: 'tool', icon: '🔧', label: 'Tool call', text: 'Querying the company database for marketing expenses...',
+        code: 'database.query({\n  sql: "SELECT SUM(amount) FROM expenses\\n  WHERE department = \'marketing\'\\n  AND quarter = \'Q4-2025\'"\n})' },
+      { type: 'response', icon: '📦', label: 'Tool response', text: 'Database returns the aggregated financial data.',
+        code: '{\n  "total": 47250.00,\n  "currency": "USD",\n  "rows": 34\n}' },
+      { type: 'result', icon: '✅', label: 'Agent responds', text: '"Marketing spent $47,250 last quarter across 34 transactions. That\'s within your $50K budget." — The agent provides context, not just a number.' }
+    ]
+  },
+  {
+    emoji: '📧', text: 'Email the team about the meeting change',
+    steps: [
+      { type: 'user', icon: '👤', label: 'User asks', text: '"Email the team about the meeting change — moved to Thursday 2pm."' },
+      { type: 'think', icon: '🧠', label: 'Agent thinks', text: 'I need to (1) look up the team email list, then (2) compose and send the email. This requires two tool calls in sequence.',
+        code: '// Agent reasoning:\n// "email" + "team" → need contacts + email tool\n// Step 1: Get team list from contacts\n// Step 2: Send email with meeting update' },
+      { type: 'tool', icon: '🔧', label: 'Tool call #1', text: 'First, looking up the team members...',
+        code: 'contacts.search({\n  group: "engineering-team"\n})' },
+      { type: 'response', icon: '📦', label: 'Tool response #1', text: 'Got the team\'s email addresses.',
+        code: '{\n  "members": [\n    "alex@co.com", "jordan@co.com",\n    "sam@co.com", "riley@co.com"\n  ]\n}' },
+      { type: 'tool', icon: '🔧', label: 'Tool call #2', text: 'Now composing and sending the email...',
+        code: 'email.send({\n  to: ["alex@co.com", "jordan@co.com",\n       "sam@co.com", "riley@co.com"],\n  subject: "Meeting moved to Thu 2pm",\n  body: "Hi team, the weekly sync has\\n  been moved to Thursday at 2pm."\n})' },
+      { type: 'result', icon: '✅', label: 'Agent responds', text: '"Done — emailed all 4 team members about the Thursday 2pm change." — The agent chained two tools together autonomously.' }
+    ]
+  },
+  {
+    emoji: '🧮', text: 'If I invest $10K at 7% for 20 years, what do I get?',
+    steps: [
+      { type: 'user', icon: '👤', label: 'User asks', text: '"If I invest $10,000 at 7% annual return for 20 years, what\'s the total?"' },
+      { type: 'think', icon: '🧠', label: 'Agent thinks', text: 'This is a compound interest calculation. LLMs are bad at precise math — I should use the calculator tool instead of guessing.',
+        code: '// Agent reasoning:\n// Math problem → use calculator for precision\n// Formula: A = P(1 + r)^t\n// LLMs hallucinate math. Tools don\'t.' },
+      { type: 'tool', icon: '🔧', label: 'Tool call', text: 'Sending the compound interest formula to the calculator...',
+        code: 'calculator.compute({\n  expression: "10000 * (1 + 0.07) ** 20"\n})' },
+      { type: 'response', icon: '📦', label: 'Tool response', text: 'Calculator returns the precise result.',
+        code: '{\n  "result": 38696.84\n}' },
+      { type: 'result', icon: '✅', label: 'Agent responds', text: '"$10,000 at 7% annual return for 20 years compounds to $38,696.84. That\'s nearly 4x your initial investment." — Precise math, no hallucination.' }
+    ]
+  }
+];
+
+const completed = new Set();
+const qGrid = document.getElementById('q-grid');
+const dots = document.getElementById('dots');
+
+questions.forEach((q, i) => {
+  const card = document.createElement('div');
+  card.className = 'q-card';
+  card.dataset.idx = i;
+  card.innerHTML = `<div class="q-emoji">${q.emoji}</div><div class="q-text">${q.text}</div>`;
+  card.addEventListener('click', () => showFlow(i));
+  qGrid.appendChild(card);
+
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  dot.id = `dot-${i}`;
+  dots.appendChild(dot);
+});
+
+async function showFlow(idx) {
+  // Update active state
+  qGrid.querySelectorAll('.q-card').forEach(c => c.classList.remove('active'));
+  qGrid.querySelector(`[data-idx="${idx}"]`).classList.add('active');
+
+  const viz = document.getElementById('flow-viz');
+  viz.innerHTML = '';
+
+  const q = questions[idx];
+  for (let i = 0; i < q.steps.length; i++) {
+    const s = q.steps[i];
+    if (i > 0) {
+      const conn = document.createElement('div');
+      conn.className = 'connector';
+      viz.appendChild(conn);
+      await new Promise(r => setTimeout(r, 200));
+      conn.classList.add('show');
+    }
+    const step = document.createElement('div');
+    step.className = `flow-step step-${s.type}`;
+    let codeHtml = s.code ? `<div class="step-code">${s.code}</div>` : '';
+    step.innerHTML = `
+      <div class="step-icon">${s.icon}</div>
+      <div class="step-content">
+        <div class="step-label">${s.label}</div>
+        <div class="step-text">${s.text}</div>
+        ${codeHtml}
+      </div>
+    `;
+    viz.appendChild(step);
+    await new Promise(r => setTimeout(r, 100));
+    step.classList.add('show');
+    await new Promise(r => setTimeout(r, 500));
+  }
+
+  completed.add(idx);
+  document.getElementById(`dot-${idx}`).classList.add('done');
+  qGrid.querySelector(`[data-idx="${idx}"]`).classList.add('done');
+
+  if (completed.size >= 3) {
+    setTimeout(() => {
+      document.getElementById('complete').style.display = 'block';
+      if (typeof LO !== 'undefined') LO.completeLesson('first_ai_agent', 7, 160);
+    }, 500);
+  }
+}
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Augmentation — RAG & Vector Search</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#10b981,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-header{margin-bottom:2rem}
+.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(16,185,129,.12);color:#10b981}
+.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
+.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;line-height:1.6}
+.narration{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem;line-height:1.7;font-size:.95rem}
+.narration strong{color:#10b981}
+
+.compare-header{display:flex;gap:1rem;margin-bottom:1rem}
+.compare-tab{flex:1;padding:.75rem;text-align:center;border-radius:10px 10px 0 0;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,.06);border-bottom:none}
+.compare-tab.active-without{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2);color:#ef4444}
+.compare-tab.active-with{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#10b981}
+
+.side-by-side{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+@media(max-width:650px){.side-by-side{grid-template-columns:1fr}}
+.response-panel{border-radius:12px;padding:1.25rem;font-size:.85rem;line-height:1.7}
+.response-panel.without{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15)}
+.response-panel.with{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15)}
+.response-panel h4{font-size:.9rem;font-weight:700;margin-bottom:.75rem}
+.response-panel .q{color:#71717a;font-style:italic;margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.hallucination{background:rgba(239,68,68,.1);padding:0 4px;border-radius:3px;color:#ef4444;font-weight:600}
+.grounded{background:rgba(16,185,129,.1);padding:0 4px;border-radius:3px;color:#10b981;font-weight:600}
+
+h3.section{font-size:1.1rem;font-weight:700;margin:2rem 0 1rem;color:#e5e5e5}
+
+.template-editor{margin-bottom:2rem}
+.template-editor label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.5rem;color:#a1a1aa}
+textarea{width:100%;min-height:140px;padding:1rem;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.04);color:#e5e5e5;font-family:'Courier New',monospace;font-size:.8rem;line-height:1.6;resize:vertical;outline:none;margin-bottom:.75rem}
+textarea:focus{border-color:#10b981}
+
+.preview-box{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem;font-family:'Courier New',monospace;font-size:.8rem;line-height:1.6;overflow-x:auto;margin-bottom:1.5rem;white-space:pre-wrap}
+.preview-box .placeholder{color:#10b981;font-weight:700}
+.preview-box .filled{color:#fb923c}
+
+.presets{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.presets button{padding:.4rem .75rem;border:1px solid rgba(255,255,255,.1);border-radius:6px;background:rgba(255,255,255,.03);color:#a1a1aa;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s}
+.presets button:hover{border-color:#10b981;color:#10b981}
+.presets button.active{background:rgba(16,185,129,.1);border-color:#10b981;color:#10b981}
+
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+@media(max-width:600px){.tips{grid-template-columns:1fr}}
+.tip{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem}
+.tip h4{font-size:.85rem;font-weight:700;margin-bottom:.4rem;color:#10b981}
+.tip p{font-size:.8rem;color:#a1a1aa;line-height:1.5}
+
+.complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(16,185,129,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer-nav{display:flex;justify-content:space-between;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
+.footer-nav a{color:#10b981;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+</nav>
+<div class="container">
+  <div class="lesson-header">
+    <div class="meta">
+      <span class="type-badge">Interactive</span>
+      <span class="xp-badge">+200 XP</span>
+      <span class="time-badge">~50 min</span>
+    </div>
+    <h1>Prompt Augmentation</h1>
+    <p>The "A" in RAG. How you insert retrieved context into the prompt determines whether the LLM gives accurate answers or confident hallucinations.</p>
+  </div>
+
+  <div class="narration">
+    <strong>The critical moment in RAG:</strong> You have your retrieved chunks. Now you need to construct a prompt that tells the LLM: "Here is the context. Answer based ONLY on this context." The template you use for this matters enormously. See the difference below.
+  </div>
+
+  <h3 class="section">Same Question, Dramatically Different Answers</h3>
+
+  <div class="side-by-side">
+    <div class="response-panel without">
+      <h4 style="color:#ef4444">Without RAG Context</h4>
+      <div class="q">"What is the refund policy for the Pro plan?"</div>
+      <p>Based on industry standards, most SaaS companies offer a <span class="hallucination">30-day money-back guarantee</span> for their Pro plans. You can typically <span class="hallucination">request a refund through the settings page</span> or by <span class="hallucination">emailing support@company.com</span>. Pro plans usually cost <span class="hallucination">$49/month</span> and include premium features.</p>
+      <p style="margin-top:.75rem;font-size:.75rem;color:#ef4444;font-weight:600">4 hallucinations. Sounds confident but completely made up.</p>
+    </div>
+    <div class="response-panel with">
+      <h4 style="color:#10b981">With RAG Context</h4>
+      <div class="q">"What is the refund policy for the Pro plan?"</div>
+      <p>According to our documentation, the Pro plan has a <span class="grounded">14-day refund window</span> from the date of purchase. To request a refund, <span class="grounded">contact billing@acme.io</span> with your order number. After 14 days, refunds are handled <span class="grounded">on a case-by-case basis</span> by the support team.</p>
+      <p style="margin-top:.75rem;font-size:.75rem;color:#10b981;font-weight:600">0 hallucinations. Every claim traced to retrieved context.</p>
+    </div>
+  </div>
+
+  <h3 class="section">Build Your Prompt Template</h3>
+
+  <div class="template-editor">
+    <label>System prompt template (use {context} and {question} placeholders):</label>
+    <div class="presets">
+      <button class="active" onclick="setPreset(0,this)">Simple</button>
+      <button onclick="setPreset(1,this)">Strict</button>
+      <button onclick="setPreset(2,this)">Cited</button>
+      <button onclick="setPreset(3,this)">Conversational</button>
+    </div>
+    <textarea id="templateInput" oninput="updatePreview()">Answer the user's question based on the following context.
+
+Context:
+{context}
+
+Question: {question}
+
+Answer:</textarea>
+    <label>Live Preview (with sample data filled in):</label>
+    <div class="preview-box" id="preview"></div>
+  </div>
+
+  <h3 class="section">Prompt Engineering Tips for RAG</h3>
+  <div class="tips">
+    <div class="tip"><h4>Be Explicit About Grounding</h4><p>"Answer ONLY based on the provided context" prevents the LLM from filling gaps with training knowledge that may be wrong.</p></div>
+    <div class="tip"><h4>Handle Missing Info</h4><p>Add: "If the context doesn't contain the answer, say 'I don't have that information.'" This prevents hallucination on unanswerable questions.</p></div>
+    <div class="tip"><h4>Request Citations</h4><p>"Cite the specific passage that supports your answer" makes responses verifiable and catches cases where the model fabricates sources.</p></div>
+    <div class="tip"><h4>Control Format</h4><p>"Answer in 2-3 sentences" or "Use bullet points" keeps responses focused. Long, rambling answers are harder to verify.</p></div>
+    <div class="tip"><h4>Separate Context Clearly</h4><p>Use clear delimiters like --- or triple backticks around context. This helps the LLM distinguish context from instructions.</p></div>
+    <div class="tip"><h4>System vs User Role</h4><p>Put grounding instructions in the system message, context+question in the user message. This leverages the model's role-following behavior.</p></div>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
+  <div class="footer-nav">
+    <a href="build-your-first-rag.html">&larr; Previous: Build Your First RAG</a>
+    <a href="hybrid-search.html">Next: Hybrid Search &rarr;</a>
+  </div>
+</div>
+
+<script>
+const PRESETS = [
+  `Answer the user's question based on the following context.
+
+Context:
+{context}
+
+Question: {question}
+
+Answer:`,
+  `You are a precise assistant. Answer the question using ONLY the information in the provided context. If the context does not contain enough information to answer, respond with "I don't have enough information to answer that."
+
+Do NOT use any prior knowledge. Only use the context below.
+
+---
+Context:
+{context}
+---
+
+Question: {question}
+
+Answer:`,
+  `Answer the question based on the provided context. For each claim in your answer, cite the relevant passage in [brackets].
+
+Context:
+{context}
+
+Question: {question}
+
+Answer (with citations):`,
+  `You are a friendly, helpful assistant for our company. A customer is asking a question. Use the information below to give them a warm, accurate response. If you're not sure, let them know you'll escalate to a human.
+
+Relevant information:
+{context}
+
+Customer question: {question}
+
+Your response:`
+];
+
+const SAMPLE_CONTEXT = `Our Pro plan costs $29/month and includes unlimited projects, priority support, and API access. Refunds are available within 14 days of purchase by contacting billing@acme.io with your order number. After 14 days, refund requests are handled on a case-by-case basis.`;
+const SAMPLE_QUESTION = `What is the refund policy for the Pro plan?`;
+
+function setPreset(i,btn){
+  document.getElementById('templateInput').value=PRESETS[i];
+  document.querySelectorAll('.presets button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  updatePreview();
+}
+
+function updatePreview(){
+  const template=document.getElementById('templateInput').value;
+  const filled=template
+    .replace('{context}',`<span class="filled">${SAMPLE_CONTEXT}</span>`)
+    .replace('{question}',`<span class="filled">${SAMPLE_QUESTION}</span>`);
+  document.getElementById('preview').innerHTML=filled;
+}
+
+updatePreview();
+
+function completeLesson(){
+  const btn=document.getElementById('completeBtn');
+  if(btn.classList.contains('done')) return;
+  const progress=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');
+  progress['prompt-augmentation']=true;
+  localStorage.setItem('rag-vector-search-progress',JSON.stringify(progress));
+  LO.completeLesson('rag-vector-search',6,200);
+  btn.textContent='Lesson Complete!';btn.classList.add('done');
+}
+(function(){const p=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');if(p['prompt-augmentation']){const b=document.getElementById('completeBtn');b.textContent='Lesson Complete!';b.classList.add('done');}})();
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>
