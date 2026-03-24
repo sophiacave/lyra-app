@@ -80,7 +80,7 @@ h1{font-size:2.2rem;font-weight:800;margin-bottom:.75rem;background:linear-gradi
 <div class="lesson-container">
   <div class="lesson-badge">Module 2 &middot; Lesson 4</div>
   <h1>Your First Server</h1>
-  <p class="subtitle">Build an MCP server step-by-step. Choose what it connects to, define its tools, and see the TypeScript code structure generated.</p>
+  <p class="subtitle">Build an MCP server step-by-step. Choose what it connects to, define its tools, and see the TypeScript code structure generated. This lesson generates starter code you can copy into a real project.</p>
 
   <div class="steps-indicator">
     <div class="step-tab active" onclick="goStep(0)" id="stab0">1. Choose Connection</div>
@@ -142,9 +142,13 @@ h1{font-size:2.2rem;font-weight:800;margin-bottom:.75rem;background:linear-gradi
         <div class="code-body" id="codeBody"></div>
       </div>
 
+      <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15);border-radius:12px;padding:1.25rem;margin-top:1.5rem;font-size:.9rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#fb923c">What to do with this code:</strong> Copy the generated code above into a file (e.g., <code style="background:rgba(255,255,255,.05);padding:.15rem .4rem;border-radius:4px;font-size:.8rem">my-server.ts</code>). Install the dependencies with <code style="background:rgba(255,255,255,.05);padding:.15rem .4rem;border-radius:4px;font-size:.8rem">npm install @modelcontextprotocol/sdk zod</code>. Fill in the placeholder logic in each tool handler. Then run it with <code style="background:rgba(255,255,255,.05);padding:.15rem .4rem;border-radius:4px;font-size:.8rem">npx tsx my-server.ts</code>.
+      </div>
+
       <div class="section" style="margin-top:2rem">
         <h2>Key Pattern: server.tool()</h2>
-        <p>Every MCP server follows the same pattern. The <code style="background:rgba(139,92,246,.15);padding:.15rem .4rem;border-radius:4px;color:#8b5cf6;font-size:.85rem">server.tool()</code> method registers a tool with three arguments:</p>
+        <p>The <code style="background:rgba(139,92,246,.15);padding:.15rem .4rem;border-radius:4px;color:#8b5cf6;font-size:.85rem">server.tool()</code> method is how you teach the server what it can do. Think of it as registering a capability -- you give it a name, describe what inputs it needs, and write the code that runs when Claude calls it. Every MCP server follows this same pattern with three arguments:</p>
         <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
           <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.1)">
             <span style="font-weight:700;color:#8b5cf6;font-size:.85rem;min-width:60px">name</span>

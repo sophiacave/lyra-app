@@ -139,7 +139,7 @@ function renderStep(){
 
 function renderChooseDocs(area){
   area.innerHTML = `<h3>Step 1: Choose Your Documents</h3>
-    <div class="desc">Select the knowledge base documents your RAG system will search. In production, this could be thousands of PDFs, web pages, or database records.</div>
+    <div class="desc"><strong>Why this step matters:</strong> Your RAG system can only answer questions about information it has seen. The documents you select here become the system's entire knowledge base. In production, this could be thousands of PDFs, web pages, or database records. Select at least one topic to continue.</div>
     <div class="doc-grid">${DOCS.map(d=>`<div class="doc-card${selectedDocs.includes(d.id)?' selected':''}" onclick="toggleDoc('${d.id}')">
       <h4>${d.title}</h4><p>${d.desc}</p>
     </div>`).join('')}</div>
@@ -163,7 +163,7 @@ function renderChunk(area){
     }
   });
   area.innerHTML=`<h3>Step 2: Chunk the Documents</h3>
-    <div class="desc">Splitting ${docs.length} document(s) into ${chunkData.length} chunks of ~40 words each with 10-word overlap. Each chunk becomes a searchable unit.</div>
+    <div class="desc"><strong>Why this step matters:</strong> Documents are too long to embed as a single vector. We split them into smaller pieces so each chunk captures one focused idea, making search results more precise. Splitting ${docs.length} document(s) into ${chunkData.length} chunks of ~40 words each with 10-word overlap.</div>
     <div class="chunk-preview">${chunkData.map((c,i)=>`<div class="chunk-item" style="border-color:${c.color}"><strong style="color:${c.color}">Chunk ${i+1}</strong> (${c.source}): ${c.text.substring(0,120)}...</div>`).join('')}</div>
     <div class="code-block">chunks = text_splitter.split_documents(
     documents,
@@ -176,7 +176,7 @@ print(f"Created {len(chunks)} chunks")  # ${chunkData.length} chunks</div>
 
 function renderEmbed(area){
   area.innerHTML=`<h3>Step 3: Choose Embedding Model</h3>
-    <div class="desc">Select the model that will convert each text chunk into a vector. The model determines the quality and dimensions of your embeddings.</div>
+    <div class="desc"><strong>Why this step matters:</strong> The embedding model determines how well your system understands meaning. Better models produce more nuanced vectors but cost more. <strong>Recommendation:</strong> Start with text-embedding-3-small -- it is the best balance of quality, speed, and cost for most use cases.</div>
     <div class="model-options">
       <div class="model-opt${selectedModel==='small'?' selected':''}" onclick="selectedModel='small';renderStep()">
         <div class="name">text-embedding-3-small</div>
@@ -205,7 +205,7 @@ function renderEmbed(area){
 function renderStore(area){
   const dims=selectedModel==='large'?3072:selectedModel==='cohere'?1024:1536;
   area.innerHTML=`<h3>Step 4: Store in Vector Database</h3>
-    <div class="desc">Uploading ${chunkData.length} vectors (${dims} dimensions each) to the vector database. An HNSW index is built for fast similarity search.</div>
+    <div class="desc"><strong>Why this step matters:</strong> Storing vectors in a specialized database (not a regular one) enables lightning-fast similarity search. Uploading ${chunkData.length} vectors (${dims} dimensions each). An index is built so searches take milliseconds, not minutes.</div>
     <div class="code-block">import chromadb
 
 client = chromadb.Client()
@@ -232,7 +232,7 @@ print(f"Stored {collection.count()} vectors")  # ${chunkData.length}</div>
 
 function renderQuery(area){
   area.innerHTML=`<h3>Step 5: Query Your Knowledge Base</h3>
-    <div class="desc">Now the fun part. Ask a question and watch the vector database find the most relevant chunks from your selected documents.</div>
+    <div class="desc"><strong>Why this step matters:</strong> This is where it all comes together -- your question is converted to a vector, compared against all stored chunks, and the best matches are returned. Try changing the question to see how results change.</div>
     <div class="query-test">
       <input type="text" id="queryInput" placeholder="Ask a question about your documents..." value="How do you make a good tomato sauce?">
       <button class="next-step-btn" onclick="runQuery()" style="margin-bottom:1rem">Search</button>
@@ -281,7 +281,7 @@ Answer:"""}
     <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:1.25rem;margin:1.5rem 0;line-height:1.7">
       <strong style="color:#10b981">Generated Answer:</strong><br><br>
       Based on the provided documents, a good tomato sauce starts with San Marzano tomatoes, combined with olive oil, garlic, and fresh basil. The key is to never overcook the garlic, as it becomes bitter. Keep the technique simple and let the quality of the fresh ingredients shine through.<br><br>
-      <span style="color:#71717a;font-size:.8rem">Source: Cooking Guide | Grounded in retrieved context</span>
+      <span style="color:#71717a;font-size:.8rem">Source: Cooking Guide | Grounded in retrieved context (Simulation -- in production this would call a real LLM)</span>
     </div>
     <div style="background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:1rem;font-size:.85rem;line-height:1.6">
       <strong style="color:#fb923c">You built a complete RAG system!</strong> In production, you would add evaluation metrics (Lesson 8), hybrid search (Lesson 7), and advanced patterns (Lesson 9) to make it robust.

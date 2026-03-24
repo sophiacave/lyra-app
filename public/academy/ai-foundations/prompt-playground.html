@@ -88,6 +88,10 @@ a{color:inherit;text-decoration:none}
     <p>Master four essential prompt engineering techniques. Edit, experiment, and see the difference firsthand.</p>
   </div>
 
+  <div class="narration" style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;line-height:1.7;font-size:.95rem">
+    <strong style="color:#c084fc">Try this:</strong> Select a technique tab below, read the pre-loaded example prompt, then click "Run Prompt" to see the simulated output. After that, edit the prompt text and run it again to see how changes affect the response. Each technique solves a different problem -- start with Zero-Shot for simple tasks, then explore Few-Shot and Chain-of-Thought for harder ones.
+  </div>
+
   <div class="template-tabs">
     <button class="tab active" onclick="selectTemplate(0)">Zero-Shot</button>
     <button class="tab" onclick="selectTemplate(1)">Few-Shot</button>
@@ -103,7 +107,7 @@ a{color:inherit;text-decoration:none}
       <textarea id="promptEditor"></textarea>
     </div>
     <div class="pane">
-      <div class="pane-header"><span class="label">Simulated Output</span><span class="tag">AI RESPONSE</span></div>
+      <div class="pane-header"><span class="label">Simulated Output</span><span class="tag" style="font-size:.6rem">(Simulation) AI RESPONSE</span></div>
       <div class="pane-output" id="outputPane"></div>
     </div>
   </div>

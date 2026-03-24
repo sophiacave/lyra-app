@@ -91,8 +91,9 @@ a{color:inherit;text-decoration:none}
 <div class="content">
 <div class="card">
 <h2>What Is MCP?</h2>
-<p>The <strong>Model Context Protocol</strong> (MCP) is an open standard created by Anthropic that lets Claude connect to external data sources and tools through a universal interface. Instead of building custom integrations for every tool, MCP provides a single protocol that any server can implement.</p>
-<p>Think of it like USB for AI — one standard connector that works with everything.</p>
+<p>The <strong>Model Context Protocol</strong> (MCP) is an open standard created by Anthropic that lets Claude connect to external data sources and tools through a universal interface. A <strong>protocol</strong> is simply an agreed-upon set of rules for how two systems communicate -- like how HTTP defines how your browser talks to websites. MCP defines how AI models talk to tools.</p>
+<p>Instead of building custom integrations for every tool, MCP provides a single protocol that any server can implement. Think of it like USB for AI -- one standard connector that works with everything.</p>
+<p><strong>Why this matters:</strong> Without MCP, connecting Claude to your files, databases, or APIs would require custom code for each one. With MCP, you write a server once using the standard rules, and any MCP-compatible AI can use it automatically.</p>
 </div>
 
 <div class="card">
@@ -216,7 +217,7 @@ client:`<h3>Claude (MCP Client)</h3><p style="color:#a1a1aa;font-size:.9rem;line
   { <span class="code-key">name</span>: <span class="code-str">"read_file"</span>, <span class="code-key">description</span>: <span class="code-str">"Read a file from disk"</span> },
   { <span class="code-key">name</span>: <span class="code-str">"query_db"</span>, <span class="code-key">description</span>: <span class="code-str">"Run a SQL query"</span> }
 ]</div>`,
-server:`<h3>MCP Server (Protocol Layer)</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">The MCP Server is the bridge. It implements the MCP protocol, exposing tools, resources, and prompts in a standardized format. It translates Claude's requests into actions on your data sources.</p>
+server:`<h3>MCP Server (Protocol Layer)</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">The MCP Server is the bridge. It implements the MCP protocol, exposing tools, resources, and prompts in a standardized format. A <strong>schema</strong> (a structured description of what inputs a tool expects and what types they should be) tells Claude exactly how to call each tool correctly. The server translates Claude's requests into actions on your data sources.</p>
 <div class="code-block"><span class="code-comment">// Basic MCP server structure (TypeScript)</span>
 <span class="code-key">import</span> { <span class="code-fn">McpServer</span> } <span class="code-key">from</span> <span class="code-str">"@modelcontextprotocol/sdk"</span>;
 

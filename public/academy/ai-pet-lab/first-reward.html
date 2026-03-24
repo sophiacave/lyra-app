@@ -114,6 +114,7 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
   </div>
   <div class="qtable-panel">
     <h3>Q-Table Heatmap</h3>
+    <p style="font-size:.75rem;color:var(--dim);margin-bottom:.5rem">Blue cells = positive values (good actions). Red cells = negative values (bad actions). Brighter = stronger. Triangles point in the direction the agent values most from that cell.</p>
     <div class="qtable-canvas-wrap"><canvas id="qCanvas"></canvas></div>
   </div>
 </div>
@@ -134,7 +135,9 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
   <p>The <span class="hl">reward signal</span> is the sole mechanism through which an agent learns about the quality of its actions. At each timestep, the agent occupies a state, takes an action, transitions to a new state, and receives a scalar reward. This simple loop &mdash; <code>s, a, r, s'</code> &mdash; is the foundation of all reinforcement learning. The agent has no teacher providing correct answers; it must discover good behavior purely through trial and reward.</p>
   <p>In this simulation, you play the role of the environment's reward function. When the agent moves toward the goal (bottom-right corner), a positive reward reinforces that action. When it moves away or into walls, a negative reward discourages it. Over time, you'll see the <span class="hl">Q-table heatmap</span> evolve: brighter cells represent state-action pairs the agent has learned to value highly.</p>
   <p>This illustrates the <span class="hl">credit assignment problem</span> &mdash; one of the deepest challenges in RL. When an agent receives a reward, which of its past actions deserves credit? If the agent took 10 steps to reach the goal, all 10 actions contributed, but some more than others. The temporal structure of rewards makes learning far harder than in supervised settings where feedback is immediate and direct.</p>
-  <p><span class="hl">Temporal difference (TD) learning</span> addresses this by updating value estimates incrementally: <code>Q(s,a) &larr; Q(s,a) + &alpha;[r + &gamma; max Q(s',a') - Q(s,a)]</code>. Each update blends the old estimate with new information &mdash; the received reward plus the discounted value of the best next action. Watch the heatmap as you provide rewards: you're witnessing TD learning propagate value information backward through the state space, step by step.</p>
+  <p><span class="hl">Temporal difference (TD) learning</span> addresses this by updating value estimates incrementally. In plain English: after each action, the agent asks "Was this better or worse than I expected?" and nudges its estimate accordingly. The formula below captures this idea:</p>
+  <p><code>Q(s,a) &larr; Q(s,a) + &alpha;[r + &gamma; max Q(s',a') - Q(s,a)]</code></p>
+  <p>Reading this left to right: take the old estimate <code>Q(s,a)</code>, then adjust it by a small step (<code>&alpha;</code> = learning rate) toward a better estimate &mdash; the actual reward <code>r</code> we just received, plus the discounted (<code>&gamma;</code>) value of the best next action, minus what we previously expected. Watch the heatmap as you provide rewards: you're witnessing TD learning propagate value information backward through the state space, step by step.</p>
 </div>
 
 <button class="btn-complete" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson</button>

@@ -100,8 +100,10 @@ Length: 46 characters`
   {
     name:'Embed Query',
     color:'#8b5cf6',
-    desc:'The query is converted to a vector embedding using the same model that embedded the documents. This ensures the query lives in the same semantic space.',
-    code:`from openai import OpenAI
+    desc:'The query is converted to a vector embedding using the same model that embedded the documents. This ensures the query lives in the same semantic space so the comparison is meaningful.',
+    code:`# Convert the user's question into a vector (list of numbers)
+# so we can compare it against our stored document vectors.
+from openai import OpenAI
 client = OpenAI()
 
 response = client.embeddings.create(
@@ -118,24 +120,28 @@ Latency: ~50ms`
   {
     name:'Vector Search',
     color:'#10b981',
-    desc:'The query vector is compared against all stored document vectors using cosine similarity. The vector database returns the top-K most similar chunks.',
-    code:`results = vector_db.query(
+    desc:'The query vector is compared against all stored document vectors using cosine similarity (a measure of how similar two vectors are by their direction). The vector database returns the top-K most similar chunks. This is fast because of a special index structure that avoids comparing every single vector.',
+    code:`# This code asks the vector database: "find the 3 chunks
+# most similar to my question."
+results = vector_db.query(
     vector=query_vector,
     top_k=3,
     include_metadata=True
 )
-# Uses HNSW index for O(log n) search
+# Uses an HNSW index for fast search
 # Searches millions of vectors in <10ms`,
     data:`Search: cosine_similarity(query_vec, doc_vecs)
-Index type: HNSW (Hierarchical Navigable Small World)
+Index type: HNSW (a graph-based structure that finds
+  approximate nearest neighbors very quickly)
 Vectors searched: 50,000
 Top 3 results returned in 8ms`
   },
   {
     name:'Retrieve Chunks',
     color:'#f59e0b',
-    desc:'The matching document chunks are retrieved with their text content and similarity scores. These are the pieces of knowledge the LLM will use.',
-    code:`chunks = []
+    desc:'The matching document chunks are retrieved with their text content and similarity scores (0 to 1, where higher means more relevant). These are the pieces of knowledge the LLM will use.',
+    code:`# Pull out the actual text and scores from the search results.
+chunks = []
 for match in results.matches:
     chunks.append({
         "text": match.metadata["text"],
@@ -162,8 +168,9 @@ Source: clinical_studies.pdf, page 156`
   {
     name:'Augment Prompt',
     color:'#ec4899',
-    desc:'The retrieved chunks are inserted into a prompt template along with the original question. This "augmented prompt" gives the LLM the specific context it needs.',
-    code:`prompt = f"""Answer the question based ONLY on the
+    desc:'The retrieved chunks are inserted into a prompt template along with the original question. This "augmented" (enriched with extra information) prompt gives the LLM the specific context it needs to answer accurately.',
+    code:`# Build the final prompt: the retrieved chunks + the question.
+prompt = f"""Answer the question based ONLY on the
 provided context. If the context doesn't contain
 the answer, say "I don't know."
 
@@ -190,8 +197,9 @@ Total tokens: ~950 (context) + ~20 (question)`
   {
     name:'LLM Response',
     color:'#ef4444',
-    desc:'The LLM generates an answer grounded in the retrieved context. Because it has the actual documents, it can give specific, accurate, sourced answers instead of hallucinating.',
-    code:`response = client.chat.completions.create(
+    desc:'The LLM generates an answer grounded in the retrieved context. Because it has the actual documents, it can give specific, accurate, sourced answers instead of hallucinating (making up plausible-sounding but incorrect information).',
+    code:`# Send the augmented prompt to the LLM to generate the answer.
+response = client.chat.completions.create(
     model="gpt-4",
     messages=[
         {"role": "system", "content": system_prompt},

@@ -65,7 +65,11 @@ h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradi
 <div class="container">
   <div class="lesson-badge">Module 2 &bull; Lesson 6</div>
   <h1>Conflict Resolution</h1>
-  <p class="subtitle">What happens when two agents try to modify the same data at the same time? Chaos — unless you have a strategy.</p>
+  <p class="subtitle">What happens when two agents try to modify the same data at the same time? Chaos -- unless you have a strategy.</p>
+
+  <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.6">
+    <strong style="color:#ef4444">Key concept -- Rollback:</strong> When a conflict is detected, a <strong>rollback</strong> undoes the last change, restoring data to its previous safe state. Think of it as "Ctrl-Z" for database operations. Below, you will also see the <strong>conscience layer</strong> -- a special arbiter agent that reviews conflicting actions and decides which one better aligns with the system's values and rules (like a judge settling a dispute between two agents).
+  </div>
 
   <h2 class="section-title">&#9888;&#65039; The Race Condition</h2>
   <div class="race-demo">

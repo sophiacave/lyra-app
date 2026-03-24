@@ -95,6 +95,8 @@ canvas{display:block;width:100%;border-radius:12px;border:1px solid rgba(255,255
 
   <div class="word-list" id="wordList"></div>
 
+  <div style="font-size:.85rem;color:#71717a;margin-bottom:1rem">Click any two word tags below to compare their similarity. The closer their meaning, the higher the score.</div>
+
   <div class="similarity-panel" id="simPanel">
     <h3>Cosine Similarity</h3>
     <div id="simResults"></div>
@@ -114,7 +116,7 @@ canvas{display:block;width:100%;border-radius:12px;border:1px solid rgba(255,255
     </div>
     <div class="concept" onclick="this.classList.toggle('active')">
       <h3>Cosine Similarity</h3>
-      <p>Measures the angle between two vectors. 1.0 = identical direction, 0 = unrelated.</p>
+      <p>Measures how similar two vectors are by checking if they point in the same direction. 1.0 = identical meaning, 0 = completely unrelated. It ignores length and focuses purely on direction.</p>
       <div class="detail">cos(A,B) = (A · B) / (||A|| × ||B||). We use the angle, not distance, because it's magnitude-independent. A long and short vector pointing the same direction are still "similar."</div>
     </div>
     <div class="concept" onclick="this.classList.toggle('active')">

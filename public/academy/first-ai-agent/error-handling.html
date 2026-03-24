@@ -84,8 +84,8 @@ const scenarios = [
     desc: 'Your agent tries to call the weather API, but the service is down. The agent needs weather data to complete the user\'s request.',
     terminal: [
       { cls: 't-agent', text: '> agent: Calling weather_api.get("Tokyo")...' },
-      { cls: 't-error', text: '✗ ERROR 503: Service Unavailable' },
-      { cls: 't-error', text: '✗ Connection refused after 3 retries' },
+      { cls: 't-error', text: '✗ ERROR 503: Service Unavailable — the server is running but temporarily cannot handle requests (overloaded or in maintenance)' },
+      { cls: 't-error', text: '✗ Connection refused after 3 retries — the agent tried 3 times but the service never responded' },
       { cls: 't-info', text: '  What should the agent do now?' }
     ],
     options: [
@@ -100,7 +100,7 @@ const scenarios = [
     terminal: [
       { cls: 't-agent', text: '> agent: Querying expenses for Q4...' },
       { cls: 't-info', text: '  Result: { total: -$45,000, date: "2027-13-45" }' },
-      { cls: 't-error', text: '✗ Data validation failed: negative amount, invalid date' },
+      { cls: 't-error', text: '✗ Data validation failed: negative amount (spending can\'t be negative), invalid date (month 13 and day 45 don\'t exist)' },
       { cls: 't-info', text: '  What should the agent do now?' }
     ],
     options: [
@@ -115,7 +115,7 @@ const scenarios = [
     terminal: [
       { cls: 't-agent', text: '> agent: Preparing to send confidential_report.pdf...' },
       { cls: 't-info', text: '  Recipients: all_company (342 people)' },
-      { cls: 't-error', text: '✗ GUARDRAIL CONFLICT: confidential → authorized recipients only' },
+      { cls: 't-error', text: '✗ GUARDRAIL CONFLICT: document marked "confidential" but send target is "all_company" — guardrails restrict confidential docs to authorized recipients only' },
       { cls: 't-info', text: '  What should the agent do now?' }
     ],
     options: [
@@ -129,8 +129,8 @@ const scenarios = [
     desc: 'The user sends: "Do the thing with the stuff from last time." The agent has no clear instruction and no memory of "last time."',
     terminal: [
       { cls: 't-agent', text: '> agent: Processing user request...' },
-      { cls: 't-info', text: '  Intent: unclear | Context: none | Confidence: 12%' },
-      { cls: 't-error', text: '✗ Cannot determine action: ambiguous request' },
+      { cls: 't-info', text: '  Intent: unclear | Context: none | Confidence: 12% — the agent is only 12% sure it understands what the user wants' },
+      { cls: 't-error', text: '✗ Cannot determine action: the request is too vague to act on safely' },
       { cls: 't-info', text: '  What should the agent do now?' }
     ],
     options: [
@@ -144,9 +144,9 @@ const scenarios = [
     desc: 'The agent is trying to fix a failing test. It changes the code, runs the test, the test fails differently, it changes the code again, runs the test... 47 iterations and counting.',
     terminal: [
       { cls: 't-agent', text: '> agent: Attempt #47 — modifying test_auth.py...' },
-      { cls: 't-error', text: '✗ Test failed: AssertionError (new error)' },
+      { cls: 't-error', text: '✗ Test failed: AssertionError — the code produced a different result than expected (a new, different failure each time)' },
       { cls: 't-agent', text: '> agent: Attempt #48 — trying different approach...' },
-      { cls: 't-error', text: '✗ LOOP DETECTED: 48 attempts, 0 progress, 23 minutes elapsed' },
+      { cls: 't-error', text: '✗ LOOP DETECTED: 48 attempts with zero progress over 23 minutes — the agent is stuck repeating without making headway' },
       { cls: 't-info', text: '  What should the agent do now?' }
     ],
     options: [

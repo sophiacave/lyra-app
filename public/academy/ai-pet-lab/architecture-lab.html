@@ -86,7 +86,7 @@ canvas{display:block;width:100%;height:auto}
 
 <div class="header">
   <h1>Architecture Lab &#129504;</h1>
-  <p>Adjust your pet's "brain size" and see how network architecture affects what it can learn.</p>
+  <p>Adjust your pet's "brain size" and see how network architecture affects what it can learn. Try selecting different neuron counts, then click "Train Pet Brain" to watch the results. Run training at least twice with different sizes to unlock the completion button.</p>
 </div>
 
 <div class="neuron-panel">
@@ -134,8 +134,8 @@ canvas{display:block;width:100%;height:auto}
   <h2>Architecture Matters</h2>
   <p><span class="hl">1 neuron:</span> Can only learn the simplest trick (sit). Not enough capacity for complex behaviors. Like trying to memorize a book with a post-it note.</p>
   <p><span class="hl">2-3 neurons:</span> Can handle basic tricks. Good balance of capacity and training speed. Like a small notebook &mdash; enough for daily tasks.</p>
-  <p><span class="hl">4-5 neurons:</span> Can learn all tricks including complex ones. But takes longer to train and might overfit (memorize rather than generalize). Like having a library &mdash; powerful but needs more organization.</p>
-  <p>This mirrors real neural networks: <span class="hl">more parameters = more capacity but slower training and risk of overfitting</span>. The art is finding the right size for your problem.</p>
+  <p><span class="hl">4-5 neurons:</span> Can learn all tricks including complex ones. But takes longer to train and might <strong>overfit</strong> (memorize the training examples so precisely that it fails on new situations, like a student who memorizes test answers but can't solve new problems). Like having a library &mdash; powerful but needs more organization.</p>
+  <p>This mirrors real neural networks: <span class="hl">more parameters</span> (the individual numbers the network adjusts during training -- each connection between neurons is one parameter) <span class="hl"> = more capacity</span> (the range of patterns the network can represent) <span class="hl">but slower training and risk of overfitting</span>. The art is finding the right size for your problem.</p>
 </div>
 
 <button class="btn-complete" id="completeBtn" onclick="completeLesson()">Complete Lesson &rarr;</button>

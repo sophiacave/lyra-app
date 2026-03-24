@@ -106,6 +106,9 @@ h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradi
   <div class="query-builder">
     <div class="qb-title">Query Builder</div>
     <div class="qb-desc">Construct a query to read from agent memory. See the SQL and results.</div>
+    <div style="background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.15);border-radius:10px;padding:1rem;margin-bottom:1rem;font-size:.82rem;color:#a1a1aa;line-height:1.6">
+      <strong style="color:#38bdf8">SQL 101:</strong> SQL (Structured Query Language) is how you ask questions to a database. <strong>SELECT *</strong> means "get all columns." <strong>FROM</strong> names the table. <strong>WHERE</strong> filters rows by a condition. <strong>ORDER BY</strong> sorts results. <strong>LIMIT</strong> caps how many rows to return. Use the dropdowns below to build a query without writing any code.
+    </div>
     <div class="qb-row">
       <div class="qb-label">Table:</div>
       <select class="qb-select" id="q-table" onchange="buildQuery()">

@@ -54,6 +54,10 @@ canvas{width:100%;border-radius:8px}
 <h1>Measuring AI Success</h1>
 <p class="intro">What gets measured gets improved. Enter your numbers for the past 4 weeks and see your AI ROI dashboard come to life. This is what "success" looks like, quantified.</p>
 
+<div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:12px;padding:1.25rem;margin-bottom:24px;font-size:14px;color:#a3a3a3;line-height:1.6">
+  <strong style="color:#f59e0b">What is a metric?</strong> A metric is simply a number you track over time to measure progress. Below are four key metrics (measurements) for evaluating AI impact. <strong style="color:#e5e5e5">Not sure what to measure?</strong> Start with "Hours Saved" -- it is the easiest to estimate and the most universally valuable. Track how much time AI saves you each week on tasks like writing, research, or data entry.
+</div>
+
 <h2>Enter Your Weekly Numbers</h2>
 <p style="font-size:13px;color:#737373;margin-bottom:20px">Fill in each metric for 4 weeks. Use your best estimates — perfect data isn't required.</p>
 
@@ -219,8 +223,9 @@ function buildDashboard(){
   const timeTrend = d.time[3] > d.time[0] ? 'up' : 'down';
   const costTrend = d.cost[3] > d.cost[0] ? 'up' : 'down';
 
+  // Trend arrows explanation is shown via title attributes
   document.getElementById('kpis').innerHTML = `
-    <div class="kpi"><div class="kpi-value">${totalTime}h</div><div class="kpi-label">Total Hours Saved</div><div class="kpi-trend ${timeTrend}">${timeTrend==='up'?'↑':'↓'} ${timeTrend==='up'?'Growing':'Declining'}</div></div>
+    <div class="kpi"><div class="kpi-value">${totalTime}h</div><div class="kpi-label">Total Hours Saved</div><div class="kpi-trend ${timeTrend}" title="Arrow up means your savings are increasing week over week">${timeTrend==='up'?'↑':'↓'} ${timeTrend==='up'?'Growing':'Declining'}</div></div>
     <div class="kpi"><div class="kpi-value">$${totalCost.toLocaleString()}</div><div class="kpi-label">Total Cost Saved</div><div class="kpi-trend ${costTrend}">${costTrend==='up'?'↑':'↓'} ${costTrend==='up'?'Growing':'Declining'}</div></div>
     <div class="kpi"><div class="kpi-value">${avgOutput}%</div><div class="kpi-label">Avg Output Increase</div><div class="kpi-trend up">↑ Productive</div></div>
     <div class="kpi"><div class="kpi-value">${avgQuality}</div><div class="kpi-label">Avg Quality Score</div><div class="kpi-trend ${avgQuality>=7?'up':'down'}">${avgQuality>=7?'↑ Strong':'→ Room to grow'}</div></div>

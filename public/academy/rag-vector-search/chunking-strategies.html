@@ -84,7 +84,7 @@ textarea:focus{border-color:#10b981}
   </div>
 
   <div class="narration">
-    <strong>Why chunk at all?</strong> Embedding models have token limits (typically 512-8192 tokens). A 50-page document won't fit. We split it into smaller pieces, embed each piece separately, then search across all chunks. The art is choosing the right chunk size and overlap.
+    <strong>Why chunk at all?</strong> Embedding models have token limits (typically 512-8192 tokens). A <strong>token</strong> is roughly 3/4 of a word -- so 100 tokens is about 75 words. A 50-page document won't fit into one embedding. We split it into smaller pieces, embed each piece separately, then search across all chunks. The art is choosing the right chunk size and overlap.
   </div>
 
   <textarea id="docInput" placeholder="Paste your text here, or use the sample text...">Retrieval-Augmented Generation (RAG) is a technique that enhances large language models by providing them with relevant external knowledge. Instead of relying solely on what the model learned during training, RAG systems retrieve relevant documents at query time and include them in the prompt.
@@ -133,7 +133,7 @@ Advanced chunking strategies include semantic chunking (splitting at natural top
   <div class="chunks-viz" id="chunksViz"></div>
 
   <div class="narration">
-    <strong>Rules of thumb:</strong> Start with 200-500 token chunks and 10-20% overlap. For technical docs, use larger chunks. For Q&A, use smaller chunks. Always test with real queries — the "best" chunk size depends on your data and questions.
+    <strong>Rules of thumb:</strong> Start with 200-500 token chunks and 10-20% overlap. <strong>Good overlap</strong> means repeating the last 10-20% of each chunk at the beginning of the next one -- for example, a 100-word chunk with 15-word overlap. This ensures sentences that fall on the boundary between two chunks are not lost. For technical docs, use larger chunks. For Q&A, use smaller chunks. Always test with real queries -- the "best" chunk size depends on your data and questions.
   </div>
 
   <h3 style="font-size:1rem;margin-bottom:1rem">Chunk Size Tradeoffs</h3>
