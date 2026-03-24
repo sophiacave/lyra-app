@@ -146,22 +146,16 @@
 
     <div class="donate-section">
       <h2>Support the mission</h2>
-      <p class="donate-sub">Name your price. Every dollar accelerates this work.</p>
+      <p class="donate-sub">Choose an amount. Every dollar accelerates this work.</p>
 
       <div class="amount-grid">
-        <button class="amount-btn" onclick="setAmount(10)">$10</button>
-        <button class="amount-btn" onclick="setAmount(25)">$25</button>
-        <button class="amount-btn active" onclick="setAmount(50)">$50</button>
-        <button class="amount-btn" onclick="setAmount(100)">$100</button>
+        <a href="https://buy.stripe.com/fZu9AM1f28pF5iH4ps3sI0e" target="_blank" class="amount-btn">$10</a>
+        <a href="https://buy.stripe.com/eVq5kw4reeO3dPd2hk3sI0f" target="_blank" class="amount-btn">$25</a>
+        <a href="https://buy.stripe.com/8x26oAf5S35l3az9JM3sI0g" target="_blank" class="amount-btn" style="border-color: var(--warm); color: var(--warm);">$50</a>
+        <a href="https://buy.stripe.com/dRmbIU5vibBR7qPbRU3sI0h" target="_blank" class="amount-btn">$100</a>
       </div>
 
-      <div class="custom-amount">
-        <span>$</span>
-        <input type="number" id="amount-input" value="50" min="1" max="10000" placeholder="Any amount" onfocus="clearActive()" oninput="clearActive()">
-      </div>
-
-      <button class="donate-btn" id="donate-btn" onclick="handleDonate()">Support Like One — $50</button>
-      <p style="color: var(--text-muted); font-size: .8rem; margin-top: .75rem;">Secure payment via Stripe. One-time contribution.</p>
+      <p style="color: var(--text-muted); font-size: .8rem; margin-top: 1rem;">Secure payment via Stripe. One-time contribution. For other amounts, email <a href="mailto:faye@likeone.ai" style="color: var(--accent);">faye@likeone.ai</a>.</p>
     </div>
 
     <p class="story" style="margin-top: 2.5rem;"><strong>Full transparency:</strong> Like One is early. I haven't donated to HIV research yet — because the company is still finding its footing. But that is the mission, and it's non-negotiable. As revenue grows, so does the impact. Your support helps me get there faster.</p>
@@ -185,61 +179,7 @@
 </footer>
 
 <script>
-const SUPABASE_URL = "https://vpaynwebgmmnwttqkwmh.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo";
-
-function setAmount(val) {
-  document.getElementById('amount-input').value = val;
-  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  updateBtn();
-}
-
-function clearActive() {
-  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-  updateBtn();
-}
-
-function updateBtn() {
-  const val = document.getElementById('amount-input').value;
-  const btn = document.getElementById('donate-btn');
-  btn.textContent = val ? `Support Like One — $${val}` : 'Support Like One';
-}
-
-async function handleDonate() {
-  const amount = parseInt(document.getElementById('amount-input').value);
-  if (!amount || amount < 1) { alert('Please enter an amount.'); return; }
-  if (amount > 10000) { alert('Maximum $10,000 per contribution.'); return; }
-
-  const btn = document.getElementById('donate-btn');
-  btn.textContent = 'Connecting to Stripe...';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPABASE_ANON}` },
-      body: JSON.stringify({
-        product_id: 'donation',
-        amount_cents: amount * 100,
-        success_url: window.location.origin + '/support?thanks=1',
-        cancel_url: window.location.origin + '/support'
-      })
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      throw new Error(data.error || 'Checkout failed');
-    }
-  } catch(err) {
-    btn.textContent = `Support Like One — $${amount}`;
-    btn.disabled = false;
-    alert('Something went wrong. Please try again or email faye@likeone.ai');
-  }
-}
-
-// Check for thank you state
+// Check for thank you state (Stripe redirects back with ?thanks=1)
 if (new URLSearchParams(window.location.search).get('thanks')) {
   document.querySelector('.donate-section').innerHTML = `
     <div style="font-size: 2.5rem; margin-bottom: 1rem;">💜</div>
