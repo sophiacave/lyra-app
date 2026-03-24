@@ -188,7 +188,7 @@ export default function ProductsPage() {
         color: '#999',
         fontSize: '.85rem',
       }}>
-        <p>&copy; 2026 Like One - Built by Sophia & Faye.</p>
+        <p>&copy; 2026 Like One — Built by Faye Cave.</p>
       </footer>
     </div>
   );
