@@ -112,15 +112,8 @@
   <div class="stat"><div class="stat-num">10</div><div class="stat-label">Courses</div></div>
   <div class="stat"><div class="stat-num">108</div><div class="stat-label">Lessons</div></div>
   <div class="stat"><div class="stat-num">90+</div><div class="stat-label">Hours</div></div>
-  <div class="stat"><div class="stat-num" id="global-xp">0</div><div class="stat-label">Your XP</div></div>
-  <div class="stat"><div class="stat-num" id="badge-count">0</div><div class="stat-label">Badges</div></div>
-  <div class="stat"><div class="stat-num" id="streak-count">0</div><div class="stat-label">Day Streak</div></div>
 </div>
 
-<div id="achievements-row" style="max-width:900px;margin:0 auto;padding:0 24px 32px;display:none">
-  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fb923c;margin-bottom:12px">Your Achievements</div>
-  <div id="badge-grid" style="display:flex;gap:12px;flex-wrap:wrap"></div>
-</div>
 
 <div class="path">
   <div class="path-label">The Convergence Path</div>
@@ -182,7 +175,7 @@ const COURSES = [
       { name: "Teaching Tricks", lessons: 3 },
       { name: "Evolution Chamber", lessons: 3 }
     ],
-    badges: [{ text: "FREE", class: "badge-free" }],
+    badges: [{ text: "Free", class: "badge-free" }],
     btnText: "Start Free", btnClass: "btn-start"
   },
   {
@@ -194,7 +187,7 @@ const COURSES = [
       { name: "Prompt Engineering Lab", lessons: 3 },
       { name: "The Embedding Universe", lessons: 3 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -206,7 +199,7 @@ const COURSES = [
       { name: "API Mastery", lessons: 3 },
       { name: "AI-Powered Workflows", lessons: 3 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -218,7 +211,7 @@ const COURSES = [
       { name: "Advanced Prompting", lessons: 4 },
       { name: "Production Claude", lessons: 3 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }, { text: "NEW", class: "badge-new" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -230,7 +223,7 @@ const COURSES = [
       { name: "Building Blocks", lessons: 4 },
       { name: "Ship It", lessons: 3 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }, { text: "HOT", class: "badge-new" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -242,7 +235,7 @@ const COURSES = [
       { name: "Multi-Agent Systems", lessons: 4 },
       { name: "Autonomous Operations", lessons: 3 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }, { text: "ADVANCED", class: "badge-advanced" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -254,7 +247,7 @@ const COURSES = [
       { name: "Building RAG", lessons: 3 },
       { name: "Production RAG", lessons: 4 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }, { text: "HOT", class: "badge-new" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -266,7 +259,7 @@ const COURSES = [
       { name: "AI Strategy", lessons: 3 },
       { name: "Implementation", lessons: 4 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }, { text: "NO CODE", class: "badge-new" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -278,7 +271,7 @@ const COURSES = [
       { name: "Build It", lessons: 4 },
       { name: "Deploy & Improve", lessons: 3 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
@@ -290,7 +283,7 @@ const COURSES = [
       { name: "Building Servers", lessons: 3 },
       { name: "Production MCP", lessons: 4 }
     ],
-    badges: [{ text: "PRO", class: "badge-price" }, { text: "FIRST EVER", class: "badge-advanced" }],
+    badges: [{ text: "Pro", class: "badge-price" }],
     btnText: "Start Free Preview", btnClass: "btn-start"
   }
 ];
@@ -318,11 +311,7 @@ COURSES.forEach(c => {
     <div class="card-desc">${c.desc}</div>
     <div class="card-meta">
       <span>⏱ ${c.hours} hrs</span>
-      <span>⭐ ${c.xp.toLocaleString()} XP</span>
       <span>📚 ${c.lessons} lessons</span>
-    </div>
-    <div class="card-modules">
-      ${c.modules.map(m => `<div class="module-item"><span>${m.name}</span><span class="module-lessons">${m.lessons} lessons</span></div>`).join('')}
     </div>
     <div class="card-btn ${c.btnClass}" style="background:${c.accent}">${c.btnText}</div>
     ${pct > 0 ? `<div class="card-progress"><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${c.accent}"></div></div><div class="progress-label">${completed}/${c.lessons} complete (${pct}%)</div></div>` : ''}
@@ -330,41 +319,6 @@ COURSES.forEach(c => {
   grid.appendChild(card);
 });
 
-// Global stats from engine
-const totalXP = parseInt(localStorage.getItem('lo_total_xp') || '0');
-const streak = parseInt(localStorage.getItem('lo_streak') || '0');
-const achievements = JSON.parse(localStorage.getItem('lo_achievements') || '[]');
-
-document.getElementById('global-xp').textContent = totalXP.toLocaleString();
-document.getElementById('badge-count').textContent = achievements.length;
-document.getElementById('streak-count').textContent = streak;
-
-// Show achievement badges
-const BADGES = {
-  first_lesson: { name: 'First Step', icon: '👣' },
-  quiz_master: { name: 'Quiz Master', icon: '🧠' },
-  speed_demon: { name: 'Speed Demon', icon: '⚡' },
-  streak_3: { name: 'On Fire', icon: '🔥' },
-  streak_7: { name: 'Unstoppable', icon: '💫' },
-  xp_100: { name: 'Century', icon: '💯' },
-  xp_500: { name: 'Scholar', icon: '📚' },
-  xp_1000: { name: 'Expert', icon: '🎓' },
-  xp_5000: { name: 'Cyborg', icon: '🤖' },
-  course_complete: { name: 'Graduate', icon: '🎉' },
-};
-
-if (achievements.length > 0) {
-  document.getElementById('achievements-row').style.display = 'block';
-  const grid = document.getElementById('badge-grid');
-  achievements.forEach(id => {
-    const b = BADGES[id];
-    if (!b) return;
-    const el = document.createElement('div');
-    el.style.cssText = 'background:#111114;border:1px solid rgba(251,146,60,.2);border-radius:12px;padding:10px 16px;text-align:center;min-width:80px;';
-    el.innerHTML = `<div style="font-size:24px;margin-bottom:4px">${b.icon}</div><div style="font-size:10px;font-weight:600;color:#fb923c">${b.name}</div>`;
-    grid.appendChild(el);
-  });
-}
 </script>
 <script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/auth.js"></script>
