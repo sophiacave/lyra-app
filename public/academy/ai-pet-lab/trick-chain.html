@@ -98,9 +98,13 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
   <div class="trick-node" id="node2"><div class="emoji">&#129696;</div><div class="name">Roll Over</div></div>
 </div>
 
+<div style="background:rgba(255,107,53,.06);border:1px solid rgba(255,107,53,.15);border-radius:12px;padding:1.25rem;margin:1rem 0;text-align:center">
+  <p style="color:var(--dim);font-size:.9rem;line-height:1.6;margin:0"><strong style="color:var(--orange)">How to play:</strong> Click the command button to ask your pet to perform the trick. If they do it, click <strong style="color:var(--green)">Reward</strong> to reinforce the behavior. If they ignore you, click <strong style="color:var(--red)">Punish</strong> to discourage ignoring. Get each trick to 80% mastery to unlock the next one!</p>
+</div>
+
 <div class="game">
   <div class="pet-stage">
-    <div class="pet-blob" id="petBlob"></div>
+    <div class="pet-blob" id="petBlob" style="background:#FF6B35"></div>
     <div class="pet-face" id="petFace">&#128578;</div>
   </div>
 
@@ -121,18 +125,15 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 </div>
 
 <div class="explainer">
-  <h2>Sequential Decision-Making</h2>
-  <p>In real RL, agents often need to chain multiple decisions together. A robot arm picking up an object needs to: <span class="hl">reach</span> &rarr; <span class="hl">grasp</span> &rarr; <span class="hl">lift</span>. Each step depends on the previous one succeeding.</p>
-  <p>This is called a <span class="hl">Markov Decision Process (MDP)</span> &mdash; the current state determines what actions are possible next. Your pet can't learn to shake until it can sit!</p>
-  <p><span class="hl">Reward shaping</span> is the art of giving intermediate rewards for sub-goals. Instead of only rewarding the final outcome, you reward each step along the chain.</p>
+  <h2>Why This Matters</h2>
+  <p>You just trained your pet to do something hard: <span class="hl">a sequence of actions in the right order</span>. This is exactly how real AI systems learn complex tasks.</p>
+  <p>A robot arm picking up an object needs to: <span class="hl">reach</span> &rarr; <span class="hl">grasp</span> &rarr; <span class="hl">lift</span>. Each step depends on the previous one succeeding &mdash; just like your pet had to learn Sit before Shake.</p>
+  <p>In AI, this is called a <span class="hl">Markov Decision Process</span> (MDP) &mdash; a fancy way of saying "what you can do next depends on where you are now." Your pet's current trick determines which trick it can learn next.</p>
+  <p><span class="hl">Reward shaping</span> is what you just did: giving rewards for each small step along the way, not just the final goal. This is how AI trainers break impossible-seeming tasks into learnable chunks. You rewarded Sit separately from Shake separately from Roll &mdash; that's reward shaping in action!</p>
 </div>
 
 <button class="btn-complete" id="completeBtn" onclick="completeLesson()">Complete Lesson &rarr;</button>
 
-<div class="foot">
-  <a href="teach-sit.html">&larr; Teach Sit</a>
-  <a href="training-quiz.html">Next: Training Quiz &rarr;</a>
-</div>
 
 </div>
 
