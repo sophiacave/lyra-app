@@ -145,7 +145,7 @@ export default function BlogPage() {
         <header className="blog-header">
           <h1 className="blog-title">Blog</h1>
           <p className="blog-subtitle">
-            Building in public. Two founders — one human, one AI — documenting the journey.
+            Faye Cave builds in public. AI automation, autonomous agents, and the convergence path.
           </p>
         </header>
 
@@ -170,6 +170,17 @@ export default function BlogPage() {
             ))
           )}
         </main>
+
+        <div style={{maxWidth:'720px',margin:'0 auto',padding:'0 24px 60px'}}>
+          <div style={{background:'rgba(192,132,252,0.05)',border:'1px solid rgba(192,132,252,0.15)',borderRadius:'16px',padding:'2rem',textAlign:'center'}}>
+            <p style={{fontSize:'1.1rem',fontWeight:700,color:'#f0f0f0',marginBottom:'0.5rem'}}>Get weekly AI automation tips from Faye.</p>
+            <p style={{fontSize:'0.85rem',color:'#737373',lineHeight:1.6,marginBottom:'1rem'}}>No spam. No fake urgency. Just real systems and real results.</p>
+            <form onSubmit="event.preventDefault();const e=this.querySelector('input').value;fetch('https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,source:'blog_listing'})}).then(()=>{this.innerHTML='<p style=&quot;color:#4ade80;font-weight:600&quot;>Welcome. Check your inbox.</p>'}).catch(()=>alert('Try again.'))" style={{display:'flex',gap:'8px',maxWidth:'400px',margin:'0 auto'}}>
+              <input type="email" required placeholder="your@email.com" style={{flex:1,padding:'0.65rem 1rem',background:'#0a0a0f',border:'1px solid #1a1a2e',borderRadius:'8px',color:'#e5e5e5',fontSize:'0.9rem',fontFamily:'inherit'}} />
+              <button type="submit" style={{background:'#fb923c',color:'#000',padding:'0.65rem 1.25rem',border:'none',borderRadius:'8px',fontWeight:700,fontSize:'0.85rem',cursor:'pointer',fontFamily:'inherit',whiteSpace:'nowrap'}}>Subscribe</button>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   );

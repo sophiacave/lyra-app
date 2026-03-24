@@ -73,6 +73,16 @@ export default function ThankYouPage() {
             <a href="/" className="ty-btn ty-btn-primary">Back to Like One</a>
             <a href="/blog" className="ty-btn ty-btn-ghost">Read the Blog</a>
           </div>
+
+          <div style={{marginTop:'2rem',paddingTop:'1.5rem',borderTop:'1px solid rgba(255,255,255,0.06)'}}>
+            <p style={{color:'#737373',fontSize:'13px',marginBottom:'0.75rem'}}>Level up your stack:</p>
+            <div style={{display:'flex',gap:'8px',justifyContent:'center',flexWrap:'wrap'}}>
+              <a href="https://buy.stripe.com/7sY8wO67c3dm1WX2nO08g0B" style={{fontSize:'12px',padding:'6px 14px',borderRadius:'6px',border:'1px solid rgba(255,255,255,0.1)',color:'#e5e5e5',textDecoration:'none'}}>Claude Mastery $99</a>
+              <a href="https://buy.stripe.com/fZu28q5389BKeJJgeE08g0z" style={{fontSize:'12px',padding:'6px 14px',borderRadius:'6px',border:'1px solid rgba(255,255,255,0.1)',color:'#e5e5e5',textDecoration:'none'}}>Automation Lab $149</a>
+              <a href="https://buy.stripe.com/eVqaEW5388xG5993rS08g0y" style={{fontSize:'12px',padding:'6px 14px',borderRadius:'6px',border:'1px solid rgba(192,132,252,0.3)',color:'#c084fc',textDecoration:'none'}}>Academy $29/mo</a>
+            </div>
+          </div>
+
           <div className="ty-footer">
             Questions? Reach out at <a href="mailto:faye@likeone.ai">faye@likeone.ai</a>
           </div>
