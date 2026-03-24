@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Access — Like One Academy</title>
+  <meta name="description" content="AI skills shouldn't cost you what you don't have. Free access to Like One Academy for anyone facing barriers. 15 spots per week, honor system.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #08080a; --surface: #111114; --text: #e8e8ec; --text-dim: #8888a0; --text-muted: #55556a;
+      --accent: #c084fc; --warm: #fb923c; --glow: #e879f9; --success: #4ade80;
+      --border: #1e1e28; --border-light: #2a2a38;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(192,132,252,.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(74,222,128,.03) 0%, transparent 50%); pointer-events: none; z-index: -1; animation: bgDrift 20s ease-in-out infinite; }
+    @keyframes bgDrift { 0% { transform: translate(0,0); } 33% { transform: translate(2%,1.5%); } 66% { transform: translate(-1%,2%); } 100% { transform: translate(0,0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .container { max-width: 640px; margin: 0 auto; padding: 0 2rem; }
+
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(8,8,10,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-size: .875rem; font-weight: 500; }
+
+    .hero { min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5rem 2rem 3rem; }
+    .hero-inner { max-width: 600px; }
+    .hero-inner > * { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-inner > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-inner > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1rem; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-sub { font-size: 1.1rem; color: var(--text-dim); max-width: 500px; margin: 0 auto; line-height: 1.8; }
+
+    section { padding: 3rem 2rem; }
+    .story { color: var(--text-dim); font-size: 1rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    .story strong { color: var(--text); }
+
+    .counter-box { background: var(--surface); border: 1px solid var(--success); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 2rem 0; }
+    .counter-number { font-size: 2.5rem; font-weight: 800; color: var(--success); }
+    .counter-label { color: var(--text-dim); font-size: .9rem; margin-top: .25rem; }
+    .counter-box.sold-out { border-color: var(--warm); }
+    .counter-box.sold-out .counter-number { color: var(--warm); }
+
+    .signup-form { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+    .signup-form h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: .5rem; }
+    .signup-form .sub { color: var(--text-dim); font-size: .9rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--text-dim); margin-bottom: .35rem; text-transform: uppercase; letter-spacing: .5px; }
+    .form-group input, .form-group textarea { width: 100%; padding: .7rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: .95rem; font-family: inherit; outline: none; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 60px; }
+    .honor-check { display: flex; align-items: flex-start; gap: 10px; margin: 1.25rem 0; }
+    .honor-check input { margin-top: 4px; accent-color: var(--accent); }
+    .honor-check label { font-size: .85rem; color: var(--text-dim); line-height: 1.5; }
+    .claim-btn { width: 100%; padding: 1rem; background: var(--success); color: #000; border: none; border-radius: 10px; font-size: 1.05rem; font-weight: 800; cursor: pointer; font-family: inherit; transition: all .3s; }
+    .claim-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(74,222,128,.2); }
+    .claim-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    .who-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 1.5rem 0; }
+    .who-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; text-align: center; font-size: .85rem; color: var(--text-dim); }
+    .who-card .emoji { font-size: 1.5rem; margin-bottom: .35rem; }
+
+    .legal-note { color: var(--text-muted); font-size: .75rem; line-height: 1.7; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+    .success-state { text-align: center; padding: 2rem; }
+    .success-state .emoji { font-size: 3rem; margin-bottom: 1rem; }
+    .success-state h2 { font-size: 1.5rem; margin-bottom: .75rem; }
+    .success-state p { color: var(--text-dim); font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
+    .success-state a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    footer { padding: 2.5rem 2rem; border-top: 1px solid var(--border); text-align: center; }
+    footer p { color: var(--text-muted); font-size: .75rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .who-section { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="logo">like<span>one</span></a>
+    <ul class="nav-links">
+      <li><a href="/academy/">Academy</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/support" style="color: var(--warm);">Support</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Access for <span class="accent">everyone.</span></h1>
+    <p class="hero-sub">AI skills shouldn't cost you what you don't have. If you're facing barriers — financial, social, or otherwise — we've got you.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="story">Like One Academy believes that the people most likely to be left behind by AI are the ones who need it most. That's not a market gap — it's a moral one.</p>
+
+    <p class="story">Our <strong>Community Access</strong> program provides full, instant access to every course and lesson — the same experience as a paid member. No waitlist. No application essay. No proving you "deserve" it.</p>
+
+    <div class="who-section">
+      <div class="who-card"><div class="emoji">🏳️‍⚧️</div>LGBTQ+ community</div>
+      <div class="who-card"><div class="emoji">🌍</div>Global South</div>
+      <div class="who-card"><div class="emoji">♿</div>Disability community</div>
+      <div class="who-card"><div class="emoji">💜</div>Financial hardship</div>
+    </div>
+
+    <p class="story">We release <strong>15 community spots every week</strong>, resetting Monday at midnight Pacific. When they're gone, they're gone — but they always come back.</p>
+
+    <div class="counter-box" id="counter-box">
+      <div class="counter-number" id="spots-left">...</div>
+      <div class="counter-label" id="counter-label">community spots available this week</div>
+    </div>
+
+    <div class="signup-form" id="signup-form">
+      <h2>Claim your spot</h2>
+      <p class="sub">Full access. Instant. No strings.</p>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="ca-email" placeholder="your@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>What are you hoping to learn? (optional)</label>
+        <textarea id="ca-goal" placeholder="I want to learn how to build AI agents..." maxlength="280"></textarea>
+      </div>
+
+      <div class="honor-check">
+        <input type="checkbox" id="ca-honor" required>
+        <label for="ca-honor">I'm accessing this program in good faith. I face financial or social barriers to AI education.</label>
+      </div>
+
+      <button class="claim-btn" id="claim-btn" onclick="handleClaim()">Claim Your Spot</button>
+
+      <p style="color: var(--text-muted); font-size: .8rem; margin-top: .75rem; text-align: center;">When you're ready, upgrading to a paid membership keeps this program running for the next person.</p>
+    </div>
+
+    <p class="legal-note">Like One Academy's Community Access program operates on an honor system. We do not verify identity or financial status. By claiming a spot, you confirm that you are accessing this program in good faith. Like One Academy reserves the right to modify or revoke access if the program is abused. This program is funded by the generosity of paying members and is subject to availability. Like One is a sole proprietorship operated by Sophia Cave, not a registered nonprofit. Community Access is a discretionary program, not a legal entitlement.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom: .5rem;">Built with love by Sophie &middot; Faye &middot; Like One</p>
+    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a></p>
+  </div>
+</footer>
+
+<script>
+const SUPABASE_URL = "https://vpaynwebgmmnwttqkwmh.supabase.co";
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo";
+
+// Load spots remaining
+async function loadSpots() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/community_spots_remaining`, {
+      method: 'POST',
+      headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}`, 'Content-Type': 'application/json' },
+      body: '{}'
+    });
+    const remaining = await res.json();
+    document.getElementById('spots-left').textContent = remaining;
+    if (remaining <= 0) {
+      document.getElementById('counter-box').classList.add('sold-out');
+      document.getElementById('spots-left').textContent = '0';
+      document.getElementById('counter-label').textContent = 'spots claimed this week — check back Monday';
+      document.getElementById('claim-btn').disabled = true;
+      document.getElementById('claim-btn').textContent = 'All spots claimed — back Monday';
+    }
+  } catch(e) {
+    document.getElementById('spots-left').textContent = '15';
+  }
+}
+
+async function handleClaim() {
+  const email = document.getElementById('ca-email').value;
+  const goal = document.getElementById('ca-goal').value;
+  const honor = document.getElementById('ca-honor').checked;
+
+  if (!email || !honor) { alert('Please enter your email and check the honor box.'); return; }
+
+  const btn = document.getElementById('claim-btn');
+  btn.textContent = 'Claiming...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/subscribe`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${SUPABASE_ANON}` },
+      body: JSON.stringify({ email, source: 'community_access', goal })
+    });
+
+    document.getElementById('signup-form').innerHTML = `
+      <div class="success-state">
+        <div class="emoji">💜</div>
+        <h2>You're in.</h2>
+        <p>Full access to Like One Academy is yours. No conditions. No time limit. Learn everything.</p>
+        <p><a href="/academy/">Start learning now &rarr;</a></p>
+        <p style="font-size: .85rem; color: var(--text-muted); margin-top: 1.5rem;">When you're ready, upgrading to a paid membership keeps this program running for the next person.</p>
+      </div>
+    `;
+  } catch(err) {
+    btn.textContent = 'Claim Your Spot';
+    btn.disabled = false;
+    alert('Something went wrong. Email faye@likeone.ai and we\'ll get you in.');
+  }
+}
+
+loadSpots();
+</script>
+
+</body>
+</html>
