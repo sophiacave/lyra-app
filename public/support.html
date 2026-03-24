@@ -186,6 +186,7 @@
 
 <script>
 const SUPABASE_URL = "https://vpaynwebgmmnwttqkwmh.supabase.co";
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo";
 
 function setAmount(val) {
   document.getElementById('amount-input').value = val;
@@ -217,7 +218,7 @@ async function handleDonate() {
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPABASE_ANON}` },
       body: JSON.stringify({
         product_id: 'donation',
         amount_cents: amount * 100,
