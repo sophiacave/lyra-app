@@ -36,6 +36,46 @@ export default async function PostPage({ params }) {
           -webkit-font-smoothing: antialiased;
         }
 
+        .post-topnav {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: rgba(10, 10, 15, 0.75);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .post-topnav-inner {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 14px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .post-topnav-brand {
+          font-size: 15px;
+          font-weight: 700;
+          color: #38bdf8;
+          text-decoration: none;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+        .post-topnav-links {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+        }
+        .post-topnav-links a {
+          color: #737373;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          transition: color 0.2s;
+        }
+        .post-topnav-links a:hover { color: #e5e5e5; }
+        .post-topnav-links a.active { color: #38bdf8; }
+
         .post-nav {
           max-width: 720px;
           margin: 0 auto;
@@ -58,6 +98,62 @@ export default async function PostPage({ params }) {
           text-transform: uppercase;
           font-weight: 600;
         }
+
+        .post-related-course {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 0 24px 40px;
+        }
+        .post-related-course-inner {
+          background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(192,132,252,0.06));
+          border: 1px solid rgba(56,189,248,0.15);
+          border-radius: 16px;
+          padding: 2rem;
+          text-align: center;
+        }
+        .post-related-course-inner h3 {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: #f0f0f0;
+          margin-bottom: 0.5rem;
+        }
+        .post-related-course-inner p {
+          font-size: 0.9rem;
+          color: #737373;
+          line-height: 1.6;
+          margin-bottom: 1.25rem;
+        }
+        .post-related-course-link {
+          display: inline-block;
+          background: #38bdf8;
+          color: #0a0a0f;
+          padding: 10px 24px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 700;
+          transition: background 0.2s;
+        }
+        .post-related-course-link:hover { background: #7dd3fc; }
+
+        .post-site-footer {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 40px 24px;
+          border-top: 1px solid #1a1a2e;
+          text-align: center;
+        }
+        .post-site-footer p {
+          font-size: 13px;
+          color: #525252;
+          line-height: 1.8;
+        }
+        .post-site-footer a {
+          color: #525252;
+          text-decoration: none;
+          transition: color 0.2s;
+        }
+        .post-site-footer a:hover { color: #38bdf8; }
 
         .post-header {
           max-width: 720px;
@@ -240,9 +336,16 @@ export default async function PostPage({ params }) {
       `}</style>
 
       <div className="post-shell">
-        <nav className="post-nav">
-          <Link href="/blog" className="post-nav-back">&larr; All posts</Link>
-          <span className="post-nav-mark">Like One</span>
+        <nav className="post-topnav">
+          <div className="post-topnav-inner">
+            <Link href="/" className="post-topnav-brand">Like One</Link>
+            <div className="post-topnav-links">
+              <Link href="/academy/">Academy</Link>
+              <Link href="/blog" className="active">Blog</Link>
+              <Link href="/community/">Community</Link>
+              <Link href="/sign-in/">Sign In</Link>
+            </div>
+          </div>
         </nav>
 
         <header className="post-header">
@@ -282,10 +385,28 @@ export default async function PostPage({ params }) {
           </div>
         </div>
 
+        <div className="post-related-course">
+          <div className="post-related-course-inner">
+            <h3>Want to go deeper?</h3>
+            <p>Check out Like One Academy — 10 courses, 108 interactive lessons.</p>
+            <Link href="/academy/" className="post-related-course-link">Start free &rarr;</Link>
+          </div>
+        </div>
+
         <footer className="post-footer">
           <Link href="/blog" className="post-footer-back">
             &larr; Back to all posts
           </Link>
+        </footer>
+
+        <footer className="post-site-footer">
+          <p>
+            <a href="https://likeone.ai">likeone.ai</a>
+            {' '}&middot;{' '}
+            <a href="mailto:faye@likeone.ai">faye@likeone.ai</a>
+            {' '}&middot;{' '}
+            <a href="tel:+17027476877">+1 (702) 747-6877</a>
+          </p>
         </footer>
       </div>
     </>

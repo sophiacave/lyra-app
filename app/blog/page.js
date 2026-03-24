@@ -26,6 +26,46 @@ export default function BlogPage() {
           -webkit-font-smoothing: antialiased;
         }
 
+        .blog-topnav {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: rgba(10, 10, 15, 0.75);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .blog-topnav-inner {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 14px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .blog-topnav-brand {
+          font-size: 15px;
+          font-weight: 700;
+          color: #38bdf8;
+          text-decoration: none;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+        .blog-topnav-links {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+        }
+        .blog-topnav-links a {
+          color: #737373;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          transition: color 0.2s;
+        }
+        .blog-topnav-links a:hover { color: #e5e5e5; }
+        .blog-topnav-links a.active { color: #38bdf8; }
+
         .blog-nav {
           max-width: 720px;
           margin: 0 auto;
@@ -48,6 +88,63 @@ export default function BlogPage() {
           text-transform: uppercase;
           font-weight: 600;
         }
+
+        .blog-academy-cta {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+        .blog-academy-cta-inner {
+          background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(192,132,252,0.08));
+          border: 1px solid rgba(56,189,248,0.15);
+          border-radius: 12px;
+          padding: 16px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .blog-academy-cta-text {
+          font-size: 15px;
+          color: #e5e5e5;
+          font-weight: 500;
+        }
+        .blog-academy-cta-text span {
+          color: #737373;
+          font-weight: 400;
+        }
+        .blog-academy-cta a {
+          background: #38bdf8;
+          color: #0a0a0f;
+          padding: 8px 20px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 700;
+          white-space: nowrap;
+          transition: background 0.2s;
+        }
+        .blog-academy-cta a:hover { background: #7dd3fc; }
+
+        .blog-site-footer {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 40px 24px;
+          border-top: 1px solid #1a1a2e;
+          text-align: center;
+        }
+        .blog-site-footer p {
+          font-size: 13px;
+          color: #525252;
+          line-height: 1.8;
+        }
+        .blog-site-footer a {
+          color: #525252;
+          text-decoration: none;
+          transition: color 0.2s;
+        }
+        .blog-site-footer a:hover { color: #38bdf8; }
 
         .blog-header {
           max-width: 720px;
@@ -137,9 +234,16 @@ export default function BlogPage() {
       `}</style>
 
       <div className="blog-shell">
-        <nav className="blog-nav">
-          <Link href="/" className="blog-nav-home">&larr; Home</Link>
-          <span className="blog-nav-mark">Like One</span>
+        <nav className="blog-topnav">
+          <div className="blog-topnav-inner">
+            <Link href="/" className="blog-topnav-brand">Like One</Link>
+            <div className="blog-topnav-links">
+              <Link href="/academy/">Academy</Link>
+              <Link href="/blog" className="active">Blog</Link>
+              <Link href="/community/">Community</Link>
+              <Link href="/sign-in/">Sign In</Link>
+            </div>
+          </div>
         </nav>
 
         <header className="blog-header">
@@ -148,6 +252,13 @@ export default function BlogPage() {
             Faye Cave builds in public. AI automation, autonomous agents, and the convergence path.
           </p>
         </header>
+
+        <div className="blog-academy-cta">
+          <div className="blog-academy-cta-inner">
+            <p className="blog-academy-cta-text">Like One Academy — <span>10 courses, 108 interactive lessons.</span></p>
+            <Link href="/academy/">Free preview &rarr;</Link>
+          </div>
+        </div>
 
         <main className="blog-list">
           {posts.length === 0 ? (
@@ -181,6 +292,15 @@ export default function BlogPage() {
             </form>
           </div>
         </div>
+        <footer className="blog-site-footer">
+          <p>
+            <a href="https://likeone.ai">likeone.ai</a>
+            {' '}&middot;{' '}
+            <a href="mailto:faye@likeone.ai">faye@likeone.ai</a>
+            {' '}&middot;{' '}
+            <a href="tel:+17027476877">+1 (702) 747-6877</a>
+          </p>
+        </footer>
       </div>
     </>
   );
