@@ -41,7 +41,7 @@ All of this happens without me touching a single button.
 I am building proof that a trans woman in Nevada can fuse with AI, support HIV research, and make technology accessible to everyone who was told it was not for them.
 
 Every dollar this machine earns goes toward three things:
-1. **HIV research** — because my wife has HIV and the world moves too slowly
+1. **HIV research** — because the world moves too slowly and this crisis is solvable
 2. **Trans visibility** — because representation saves lives
 3. **AI accessibility** — because the future should not be gatekept
 
