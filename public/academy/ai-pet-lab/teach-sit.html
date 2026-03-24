@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teach Sit — AI Pet Lab</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
+.top-bar a:hover{color:var(--text);text-decoration:none}
+.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+.header{padding:2.5rem 0 1.5rem;text-align:center}
+.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
+
+/* GAME AREA */
+.game{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem;margin:2rem 0;text-align:center}
+
+.pet-display{width:140px;height:140px;margin:0 auto 1.5rem;position:relative}
+.pet-body{width:80px;height:65px;border-radius:50% 50% 40% 40%;position:absolute;bottom:0;left:50%;transform:translateX(-50%);transition:all .4s}
+.pet-body.standing{bottom:20px}
+.pet-body.sitting{bottom:0;border-radius:50% 50% 30% 30%;height:50px;width:90px}
+.pet-eyes{position:absolute;top:15px;left:50%;transform:translateX(-50%);display:flex;gap:14px}
+.pet-eye{width:10px;height:12px;background:#fff;border-radius:50%;position:relative}
+.pet-eye::after{content:'';position:absolute;width:5px;height:5px;background:#111;border-radius:50%;bottom:2px;left:50%;transform:translateX(-50%)}
+.pet-ears{position:absolute;top:-8px;left:50%;transform:translateX(-50%);display:flex;gap:30px}
+.pet-ear{width:14px;height:20px;border-radius:50% 50% 0 0;transition:transform .3s}
+.pet-ear.l{transform:rotate(-15deg)}
+.pet-ear.r{transform:rotate(15deg)}
+.pet-emoji{position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-size:1.5rem;opacity:0;transition:all .3s}
+.pet-emoji.show{opacity:1;top:-40px}
+
+.status-text{font-size:1.1rem;font-weight:600;margin-bottom:1rem;min-height:1.5rem}
+.status-text .hl{color:var(--orange)}
+
+/* PROGRESS */
+.learn-bar{margin:1.5rem auto;max-width:400px}
+.learn-label{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.4rem}
+.learn-label .lbl{color:var(--dim)}
+.learn-label .val{color:var(--orange);font-weight:700}
+.bar-outer{height:12px;background:var(--surface2);border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.bar-inner{height:100%;background:linear-gradient(90deg,var(--orange),var(--green));border-radius:6px;transition:width .5s ease}
+
+/* BUTTONS */
+.game-btns{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+.btn-cmd{padding:.8rem 1.75rem;border-radius:12px;border:2px solid var(--blue);background:transparent;color:var(--blue);font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-cmd:hover{background:rgba(56,189,248,.1);transform:translateY(-2px)}
+.btn-cmd:disabled{opacity:.3;pointer-events:none}
+.btn-rwd{padding:.8rem 1.75rem;border-radius:12px;border:none;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-rwd.reward{background:var(--green);color:#000}
+.btn-rwd.punish{background:var(--red);color:#000}
+.btn-rwd:hover{transform:translateY(-2px)}
+.btn-rwd:disabled{opacity:.3;pointer-events:none}
+
+/* STATS */
+.stats-row{display:flex;justify-content:center;gap:2.5rem;margin:1rem 0;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{font-size:1.5rem;font-weight:800}
+.stat .lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+
+/* LOG */
+.log{background:var(--surface2);border-radius:10px;padding:.75rem;margin:1rem 0;max-height:120px;overflow-y:auto;font-size:.75rem;font-family:monospace;text-align:left}
+.log div{padding:.2rem 0;color:var(--dim);border-bottom:1px solid var(--border)}
+.log div:last-child{border:none}
+.log .g{color:var(--green)}.log .r{color:var(--red)}.log .b{color:var(--blue)}
+
+.explainer{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:2rem 0}
+.explainer h2{font-size:1.15rem;font-weight:700;margin-bottom:.75rem;color:var(--orange)}
+.explainer p{color:var(--dim);font-size:.9rem;margin-bottom:.75rem}
+.explainer p:last-child{margin-bottom:0}
+.hl{color:var(--text);font-weight:600}
+
+.btn-complete{display:none;margin:2rem auto;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
+
+.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
+.foot a{color:var(--orange);font-weight:600;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+
+@media(max-width:600px){.header h1{font-size:1.5rem}.game{padding:1.25rem}.game-btns{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-bar">
+  <a href="index.html">&larr; AI Pet Lab</a>
+  <span class="lesson-badge">Lesson 4 of 9</span>
+</div>
+
+<div class="header">
+  <h1>Teach Sit &#129293;</h1>
+  <p>Command your pet to sit and reward the correct behavior. Watch as the success rate climbs!</p>
+</div>
+
+<div class="game">
+  <div class="pet-display" id="petDisplay">
+    <div class="pet-ears">
+      <div class="pet-ear l" id="earL"></div>
+      <div class="pet-ear r" id="earR"></div>
+    </div>
+    <div class="pet-body standing" id="petBody">
+      <div class="pet-eyes"><div class="pet-eye"></div><div class="pet-eye"></div></div>
+    </div>
+    <div class="pet-emoji" id="petEmoji"></div>
+  </div>
+
+  <div class="status-text" id="statusText">Click "Say Sit!" to give your pet a command</div>
+
+  <div class="learn-bar">
+    <div class="learn-label"><span class="lbl">Learning Progress</span><span class="val" id="learnPct">0%</span></div>
+    <div class="bar-outer"><div class="bar-inner" id="learnBar" style="width:0%"></div></div>
+  </div>
+
+  <div class="game-btns">
+    <button class="btn-cmd" id="sitBtn" onclick="saySit()">Say "Sit!"</button>
+    <button class="btn-rwd reward" id="rewardBtn" onclick="giveReward()" disabled>Reward</button>
+    <button class="btn-rwd punish" id="punishBtn" onclick="givePunish()" disabled>Punish</button>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="num" id="trialsN">0</div><div class="lbl">Trials</div></div>
+    <div class="stat"><div class="num" id="successN">0</div><div class="lbl">Correct Rewards</div></div>
+    <div class="stat"><div class="num" id="rateN">0%</div><div class="lbl">Success Rate</div></div>
+  </div>
+
+  <div class="log" id="log"></div>
+</div>
+
+<div class="explainer">
+  <h2>How This Works</h2>
+  <p>Your pet starts with a <span class="hl">low probability</span> of obeying "sit." Each time you correctly reward a sit, that probability increases. Each correct punishment for not sitting also helps slightly.</p>
+  <p>This mimics a <span class="hl">policy update</span> in RL: the agent's policy (probability of choosing actions) changes based on received rewards. Over time, the pet "learns" that sitting = good.</p>
+  <p>Notice how learning isn't instant &mdash; it's <span class="hl">gradual</span>. This is just like training a neural network: many iterations of small updates lead to big changes.</p>
+</div>
+
+<button class="btn-complete" id="completeBtn" onclick="completeLesson()">Complete Lesson &rarr;</button>
+
+<div class="foot">
+  <a href="behavior-quiz.html">&larr; Behavior Quiz</a>
+  <a href="trick-chain.html">Next: Trick Chain &rarr;</a>
+</div>
+
+</div>
+
+<script>
+const petType=localStorage.getItem('petlab_pet')||'dog';
+const petName=localStorage.getItem('petlab_pet_name')||'Sparky';
+const petColors={cat:'#c084fc',dog:'#FF6B35',robot:'#38bdf8'};
+const pc=petColors[petType];
+
+document.getElementById('petBody').style.background=pc;
+document.querySelectorAll('.pet-ear').forEach(e=>e.style.background=pc);
+
+let sitProb=0.15; // starts low
+let trials=0,successes=0,correctRewards=0;
+let phase='idle'; // idle, waiting, responded
+let petSat=false;
+
+function saySit(){
+  if(phase!=='idle')return;
+  phase='waiting';
+  trials++;
+  document.getElementById('trialsN').textContent=trials;
+  document.getElementById('sitBtn').disabled=true;
+
+  // Pet decides
+  petSat=Math.random()<sitProb;
+
+  setTimeout(()=>{
+    const body=document.getElementById('petBody');
+    const emoji=document.getElementById('petEmoji');
+    if(petSat){
+      body.className='pet-body sitting';
+      document.getElementById('statusText').innerHTML=petName+' <span class="hl">sat down!</span> Good or bad?';
+      emoji.textContent='';emoji.classList.remove('show');
+      addLog(petName+' sat down!','b');
+    }else{
+      body.className='pet-body standing';
+      document.getElementById('statusText').innerHTML=petName+' <span class="hl">ignored you</span>. React?';
+      emoji.textContent='';emoji.classList.remove('show');
+      addLog(petName+' ignored the command.','r');
+    }
+    document.getElementById('rewardBtn').disabled=false;
+    document.getElementById('punishBtn').disabled=false;
+  },600);
+}
+
+function giveReward(){
+  if(phase!=='waiting')return;
+  phase='responded';
+  const emoji=document.getElementById('petEmoji');
+
+  if(petSat){
+    // Correct: reward sitting
+    correctRewards++;
+    sitProb=Math.min(0.95,sitProb+0.08+Math.random()*0.04);
+    emoji.textContent='&#128154;';emoji.classList.add('show');
+    document.getElementById('statusText').innerHTML='<span style="color:var(--green)">Correct!</span> '+petName+' feels great about sitting!';
+    addLog('Rewarded sit correctly. Sit probability: '+Math.round(sitProb*100)+'%','g');
+  }else{
+    // Wrong: rewarding non-sit
+    sitProb=Math.max(0.05,sitProb-0.02);
+    emoji.textContent='&#128533;';emoji.classList.add('show');
+    document.getElementById('statusText').innerHTML='<span style="color:var(--red)">Hmm...</span> You rewarded not-sitting. '+petName+' is confused.';
+    addLog('Rewarded non-sit (wrong). Sit probability: '+Math.round(sitProb*100)+'%','r');
+  }
+  finishTrial();
+}
+
+function givePunish(){
+  if(phase!=='waiting')return;
+  phase='responded';
+  const emoji=document.getElementById('petEmoji');
+
+  if(!petSat){
+    // Correct: punish not sitting
+    sitProb=Math.min(0.95,sitProb+0.03);
+    emoji.textContent='&#128532;';emoji.classList.add('show');
+    document.getElementById('statusText').innerHTML='Punished non-sit. '+petName+' will try harder next time.';
+    addLog('Punished non-sit (correct). Sit probability: '+Math.round(sitProb*100)+'%','b');
+  }else{
+    // Wrong: punish sitting
+    sitProb=Math.max(0.05,sitProb-0.06);
+    emoji.textContent='&#128546;';emoji.classList.add('show');
+    document.getElementById('statusText').innerHTML='<span style="color:var(--red)">Oh no!</span> You punished sitting! '+petName+' is confused.';
+    addLog('Punished sit (wrong!). Sit probability: '+Math.round(sitProb*100)+'%','r');
+  }
+  finishTrial();
+}
+
+function finishTrial(){
+  document.getElementById('rewardBtn').disabled=true;
+  document.getElementById('punishBtn').disabled=true;
+
+  successes=correctRewards;
+  const rate=trials>0?Math.round((successes/trials)*100):0;
+  document.getElementById('successN').textContent=correctRewards;
+  document.getElementById('rateN').textContent=rate+'%';
+
+  const learnPct=Math.round(sitProb*100);
+  document.getElementById('learnPct').textContent=learnPct+'%';
+  document.getElementById('learnBar').style.width=learnPct+'%';
+
+  if(sitProb>=0.8){
+    document.getElementById('completeBtn').style.display='block';
+    addLog('Pet has learned to sit! Success rate is high enough to continue.','g');
+  }
+
+  setTimeout(()=>{
+    phase='idle';
+    document.getElementById('sitBtn').disabled=false;
+    const body=document.getElementById('petBody');
+    body.className='pet-body standing';
+    if(sitProb<0.8){
+      document.getElementById('statusText').textContent='Click "Say Sit!" to try again';
+    }
+  },1500);
+}
+
+function addLog(msg,cls){
+  const el=document.getElementById('log');
+  const d=document.createElement('div');
+  d.className=cls||'';
+  d.textContent='[Trial '+trials+'] '+msg;
+  el.prepend(d);
+  if(el.children.length>15)el.removeChild(el.lastChild);
+}
+
+function completeLesson(){
+  localStorage.setItem('petlab_lesson_4','complete');
+  window.location.href='trick-chain.html';
+}
+</script>
+</body>
+</html>

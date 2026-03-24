@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Pet Lab — Like One Academy</title>
+<meta name="description" content="Train your own AI creature and learn reinforcement learning through play. Free course from Like One Academy.">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* NAV */
+.top-bar{padding:1rem 0;border-bottom:1px solid var(--border)}
+.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
+.top-bar a:hover{color:var(--text);text-decoration:none}
+
+/* HERO */
+.hero{text-align:center;padding:4rem 0 3rem}
+.hero-badge{display:inline-block;background:rgba(255,107,53,.12);color:var(--orange);font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.35rem 1rem;border-radius:20px;border:1px solid rgba(255,107,53,.25);margin-bottom:1.5rem}
+.hero h1{font-size:3rem;font-weight:800;letter-spacing:-1px;margin-bottom:.5rem}
+.hero h1 .paw{font-size:2.5rem}
+.hero .sub{font-size:1.25rem;color:var(--dim);margin-bottom:2rem;font-weight:400}
+.meta-row{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.meta-item{display:flex;align-items:center;gap:.5rem;color:var(--dim);font-size:.9rem}
+.meta-item .icon{font-size:1.1rem}
+.meta-item strong{color:var(--text)}
+
+/* PET PREVIEW */
+.pet-stage{margin:0 auto 3rem;width:200px;height:200px;background:var(--surface);border-radius:24px;border:1px solid var(--border2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.creature{position:relative;animation:petBounce 1.5s ease-in-out infinite}
+.creature .body{width:60px;height:50px;background:var(--orange);border-radius:50% 50% 45% 45%;position:relative}
+.creature .eye{position:absolute;width:10px;height:12px;background:#fff;border-radius:50%;top:12px}
+.creature .eye::after{content:'';position:absolute;width:5px;height:5px;background:#111;border-radius:50%;bottom:2px;left:50%;transform:translateX(-50%);animation:blink 3s infinite}
+.creature .eye.l{left:12px}
+.creature .eye.r{right:12px}
+.creature .mouth{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:14px;height:7px;border-bottom:2.5px solid #fff;border-radius:0 0 50% 50%}
+.creature .ear{position:absolute;top:-10px;width:14px;height:18px;background:var(--orange);border-radius:50% 50% 0 0}
+.creature .ear.l{left:6px;transform:rotate(-15deg)}
+.creature .ear.r{right:6px;transform:rotate(15deg)}
+.creature .tail{position:absolute;right:-20px;top:10px;width:24px;height:6px;background:var(--orange);border-radius:0 10px 10px 0;animation:wagTail .4s ease-in-out infinite alternate;transform-origin:left center}
+@keyframes petBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes wagTail{from{transform:rotate(-15deg)}to{transform:rotate(15deg)}}
+@keyframes blink{0%,96%,100%{transform:translateX(-50%) scaleY(1)}98%{transform:translateX(-50%) scaleY(0.1)}}
+.pet-label{position:absolute;bottom:12px;font-size:.7rem;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+
+/* MODULES */
+.modules{padding-bottom:4rem}
+.module{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem}
+.module-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.module-num{background:rgba(255,107,53,.15);color:var(--orange);font-size:.7rem;font-weight:700;padding:.25rem .65rem;border-radius:8px;letter-spacing:.5px}
+.module-title{font-size:1.15rem;font-weight:700}
+.lessons{list-style:none}
+.lessons li{border-top:1px solid var(--border)}
+.lessons li a{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;color:var(--text);text-decoration:none;transition:color .2s}
+.lessons li a:hover{color:var(--orange)}
+.lesson-left{display:flex;align-items:center;gap:.75rem}
+.lesson-num{color:var(--muted);font-size:.8rem;font-weight:600;min-width:1.5rem}
+.lesson-name{font-size:.95rem;font-weight:500}
+.lesson-tag{font-size:.65rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:.2rem .55rem;border-radius:6px;background:rgba(56,189,248,.12);color:var(--blue)}
+.lesson-tag.quiz{background:rgba(74,222,128,.12);color:var(--green)}
+.lesson-check{font-size:1.1rem;opacity:.3;transition:opacity .2s}
+.lesson-check.done{opacity:1;color:var(--green)}
+.arrow{color:var(--muted);transition:transform .2s}
+.lessons li a:hover .arrow{transform:translateX(3px);color:var(--orange)}
+
+/* CTA */
+.cta-box{text-align:center;padding:3rem 0 4rem}
+.btn-start{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1.05rem;padding:.9rem 2.5rem;border-radius:12px;text-decoration:none;transition:all .2s}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3);text-decoration:none}
+
+/* PROGRESS BAR */
+.progress-section{padding-bottom:3rem}
+.progress-outer{background:var(--surface);border-radius:12px;height:10px;overflow:hidden;border:1px solid var(--border)}
+.progress-inner{height:100%;background:linear-gradient(90deg,var(--orange),var(--blue));border-radius:12px;transition:width .5s ease}
+.progress-label{display:flex;justify-content:space-between;margin-top:.5rem;font-size:.8rem;color:var(--muted)}
+
+/* FOOTER */
+.foot{text-align:center;padding:2rem 0;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem;margin-top:2rem}
+
+@media(max-width:600px){
+.hero h1{font-size:2rem}
+.meta-row{gap:1rem}
+.module{padding:1.25rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-bar">
+  <a href="/academy">&larr; Back to Academy</a>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">Free Course</div>
+  <h1>AI Pet Lab <span class="paw">&#129�;</span></h1>
+  <p class="sub">Train your own AI creature &mdash; learn reinforcement learning through play</p>
+  <div class="meta-row">
+    <div class="meta-item"><span class="icon">&#9201;</span> <strong>3 hours</strong></div>
+    <div class="meta-item"><span class="icon">&#11088;</span> <strong>400 XP</strong></div>
+    <div class="meta-item"><span class="icon">&#127891;</span> <strong>9 lessons</strong></div>
+    <div class="meta-item"><span class="icon">&#128176;</span> <strong>FREE</strong></div>
+  </div>
+
+  <div class="pet-stage">
+    <div class="creature">
+      <div class="ear l"></div>
+      <div class="ear r"></div>
+      <div class="body">
+        <div class="eye l"></div>
+        <div class="eye r"></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="tail"></div>
+    </div>
+    <div class="pet-label">Your future AI pet</div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <div class="progress-outer"><div class="progress-inner" id="progressBar" style="width:0%"></div></div>
+  <div class="progress-label"><span id="progressText">0 / 9 lessons complete</span><span id="xpText">0 / 400 XP</span></div>
+</div>
+
+<div class="modules">
+
+  <div class="module">
+    <div class="module-header">
+      <span class="module-num">MODULE 1</span>
+      <span class="module-title">Hatch Your Pet</span>
+    </div>
+    <ul class="lessons">
+      <li><a href="choose-your-pet.html">
+        <div class="lesson-left"><span class="lesson-num">01</span><span class="lesson-name">Choose Your Pet</span><span class="lesson-tag">interactive</span></div>
+        <span class="lesson-check" data-lesson="1">&#10003;</span>
+      </a></li>
+      <li><a href="first-reward.html">
+        <div class="lesson-left"><span class="lesson-num">02</span><span class="lesson-name">First Reward</span><span class="lesson-tag">animated</span></div>
+        <span class="lesson-check" data-lesson="2">&#10003;</span>
+      </a></li>
+      <li><a href="behavior-quiz.html">
+        <div class="lesson-left"><span class="lesson-num">03</span><span class="lesson-name">Behavior Quiz</span><span class="lesson-tag quiz">quiz</span></div>
+        <span class="lesson-check" data-lesson="3">&#10003;</span>
+      </a></li>
+    </ul>
+  </div>
+
+  <div class="module">
+    <div class="module-header">
+      <span class="module-num">MODULE 2</span>
+      <span class="module-title">Teaching Tricks</span>
+    </div>
+    <ul class="lessons">
+      <li><a href="teach-sit.html">
+        <div class="lesson-left"><span class="lesson-num">04</span><span class="lesson-name">Teach Sit</span><span class="lesson-tag">interactive</span></div>
+        <span class="lesson-check" data-lesson="4">&#10003;</span>
+      </a></li>
+      <li><a href="trick-chain.html">
+        <div class="lesson-left"><span class="lesson-num">05</span><span class="lesson-name">Trick Chain</span><span class="lesson-tag">interactive</span></div>
+        <span class="lesson-check" data-lesson="5">&#10003;</span>
+      </a></li>
+      <li><a href="training-quiz.html">
+        <div class="lesson-left"><span class="lesson-num">06</span><span class="lesson-name">Training Quiz</span><span class="lesson-tag quiz">quiz</span></div>
+        <span class="lesson-check" data-lesson="6">&#10003;</span>
+      </a></li>
+    </ul>
+  </div>
+
+  <div class="module">
+    <div class="module-header">
+      <span class="module-num">MODULE 3</span>
+      <span class="module-title">Evolution Chamber</span>
+    </div>
+    <ul class="lessons">
+      <li><a href="learning-rate-dial.html">
+        <div class="lesson-left"><span class="lesson-num">07</span><span class="lesson-name">Learning Rate Dial</span><span class="lesson-tag">simulation</span></div>
+        <span class="lesson-check" data-lesson="7">&#10003;</span>
+      </a></li>
+      <li><a href="architecture-lab.html">
+        <div class="lesson-left"><span class="lesson-num">08</span><span class="lesson-name">Architecture Lab</span><span class="lesson-tag">interactive</span></div>
+        <span class="lesson-check" data-lesson="8">&#10003;</span>
+      </a></li>
+      <li><a href="evolution-quiz.html">
+        <div class="lesson-left"><span class="lesson-num">09</span><span class="lesson-name">Evolution Quiz</span><span class="lesson-tag quiz">quiz</span></div>
+        <span class="lesson-check" data-lesson="9">&#10003;</span>
+      </a></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="cta-box">
+  <a href="choose-your-pet.html" class="btn-start">Start Your Journey &#129�;</a>
+</div>
+
+<div class="foot">&copy; Like One Academy &mdash; AI Pet Lab</div>
+
+</div>
+
+<script>
+function updateProgress(){
+  let done=0;
+  for(let i=1;i<=9;i++){
+    if(localStorage.getItem('petlab_lesson_'+i)==='complete'){
+      done++;
+      const el=document.querySelector('[data-lesson="'+i+'"]');
+      if(el) el.classList.add('done');
+    }
+  }
+  const pct=Math.round((done/9)*100);
+  const xp=Math.round((done/9)*400);
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('progressText').textContent=done+' / 9 lessons complete';
+  document.getElementById('xpText').textContent=xp+' / 400 XP';
+}
+updateProgress();
+</script>
+</body>
+</html>

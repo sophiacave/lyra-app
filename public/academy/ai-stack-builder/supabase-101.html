@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supabase 101 — AI Stack Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}a:hover{color:#fbbf24}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #1e1e2e}
+.nav a{font-size:.85rem;color:#888}.nav a:hover{color:#f59e0b}.nav .current{color:#e5e5e5;font-weight:600}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:#f59e0b;background:#f59e0b15;padding:.3rem .75rem;border-radius:99px;margin-bottom:1rem}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+.intro{color:#999;margin-bottom:2rem;font-size:1.05rem}
+h2{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#f59e0b}
+h3{font-size:1.1rem;font-weight:600;margin:1.5rem 0 .75rem}
+p{margin-bottom:1rem;color:#ccc}
+.panel{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.panel .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#f59e0b;margin-bottom:.75rem;font-weight:600}
+.code-block{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto;margin:.75rem 0}
+.kw{color:#c084fc}.str{color:#34d399}.cm{color:#555}.fn{color:#60a5fa}.op{color:#f59e0b}.num{color:#fb923c}
+.table-builder{margin:1rem 0}
+.table-header{display:flex;gap:.5rem;padding:.5rem .75rem;background:#1e1e2e;border-radius:8px 8px 0 0;font-size:.75rem;font-weight:600;color:#888;text-transform:uppercase}
+.table-header span:nth-child(1){flex:1}.table-header span:nth-child(2){width:120px}.table-header span:nth-child(3){width:80px}.table-header span:nth-child(4){width:40px}
+.table-row{display:flex;gap:.5rem;padding:.5rem .75rem;border-bottom:1px solid #1e1e2e;align-items:center;font-size:.9rem;transition:background .2s}
+.table-row:hover{background:#ffffff08}
+.table-row input,.table-row select{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:6px;padding:.35rem .5rem;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem}
+.table-row input{flex:1}.table-row select{width:120px}
+.table-row .pk{width:80px;text-align:center;font-size:.75rem;color:#f59e0b}
+.table-row .del-col{width:40px;text-align:center}
+.del-btn{background:none;border:none;color:#666;cursor:pointer;font-size:1rem;padding:0}
+.del-btn:hover{color:#ef4444}
+.add-col-btn{display:block;width:100%;padding:.6rem;border:1px dashed #1e1e2e;border-radius:0 0 8px 8px;background:none;color:#666;cursor:pointer;font-size:.85rem;font-family:'Inter',sans-serif;transition:all .2s}
+.add-col-btn:hover{border-color:#f59e0b44;color:#f59e0b}
+.sql-output{position:relative}
+.sql-output .copy-btn{position:absolute;top:.5rem;right:.5rem;background:#1e1e2e;border:none;color:#999;padding:.3rem .6rem;border-radius:6px;cursor:pointer;font-size:.75rem;font-family:'Inter',sans-serif}
+.sql-output .copy-btn:hover{color:#f59e0b}
+.sandbox{margin:1.5rem 0}
+.sandbox textarea{width:100%;background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px 8px 0 0;padding:1rem;color:#e5e5e5;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.6;resize:vertical;min-height:100px}
+.sandbox textarea:focus{outline:none;border-color:#f59e0b44}
+.run-btn{display:block;width:100%;padding:.6rem;background:#1e1e2e;border:1px solid #1e1e2e;border-top:none;border-radius:0 0 8px 8px;color:#f59e0b;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;font-size:.9rem;transition:background .2s}
+.run-btn:hover{background:#f59e0b22}
+.results-table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.85rem}
+.results-table th{background:#1e1e2e;padding:.4rem .75rem;text-align:left;font-weight:600;color:#888;font-size:.75rem;text-transform:uppercase}
+.results-table td{padding:.4rem .75rem;border-bottom:1px solid #1e1e2e}
+.results-table tr:hover td{background:#ffffff08}
+.step{display:flex;gap:1rem;margin:1.5rem 0;align-items:flex-start}
+.step-num{width:32px;height:32px;border-radius:50%;background:#f59e0b22;color:#f59e0b;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.step-content{flex:1}
+.step-content p{margin-bottom:.5rem}
+.progress-section{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.progress-bar{height:6px;background:#1e1e2e;border-radius:99px;overflow:hidden;margin-top:.5rem}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:99px;transition:width .5s}
+.complete-btn{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:1rem;border-radius:12px;border:none;cursor:pointer;font-size:1rem;margin:2rem 0;font-family:'Inter',sans-serif;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer{text-align:center;padding:2rem 0;color:#444;font-size:.8rem;border-top:1px solid #1e1e2e;margin-top:2rem}
+.success-msg{color:#22c55e;font-size:.85rem;margin-top:.5rem;display:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="stack-anatomy.html">&larr; Prev</a>
+<span class="current">Lesson 2 of 10</span>
+<a href="make-com-101.html">Next &rarr;</a>
+</div>
+
+<div class="lesson-badge">MODULE 1 &middot; 260 XP</div>
+<h1>Supabase 101</h1>
+<p class="intro">Supabase gives you a Postgres database, auth, edge functions, and real-time subscriptions — all in one platform. It's the foundation of your stack.</p>
+
+<h2>Step 1: Understanding Tables</h2>
+<p>Every Supabase project is a Postgres database. Data lives in tables. Let's build one interactively.</p>
+
+<div class="panel">
+<div class="label">Interactive Table Builder</div>
+<h3 style="margin-top:0">brain_context</h3>
+<p style="font-size:.9rem">This table stores your AI agent's memory — key-value pairs with metadata.</p>
+<div class="table-builder">
+<div class="table-header"><span>Column Name</span><span>Type</span><span>Key</span><span></span></div>
+<div id="tableRows">
+<div class="table-row">
+<input value="id" readonly style="color:#f59e0b">
+<select disabled><option>uuid</option></select>
+<span class="pk">PK</span>
+<span class="del-col"></span>
+</div>
+<div class="table-row">
+<input value="key" placeholder="column name">
+<select><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>jsonb</option><option>timestamptz</option></select>
+<span class="pk"></span>
+<span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>
+</div>
+<div class="table-row">
+<input value="value" placeholder="column name">
+<select><option>jsonb</option><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>timestamptz</option></select>
+<span class="pk"></span>
+<span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>
+</div>
+<div class="table-row">
+<input value="updated_at" placeholder="column name">
+<select><option>timestamptz</option><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>jsonb</option></select>
+<span class="pk"></span>
+<span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>
+</div>
+</div>
+<button class="add-col-btn" onclick="addColumn()">+ Add Column</button>
+</div>
+<button class="run-btn" onclick="generateSQL()" style="border-radius:8px;margin-top:.75rem;border:1px solid #1e1e2e">Generate SQL &rarr;</button>
+</div>
+
+<div class="sql-output panel" id="sqlPanel" style="display:none">
+<div class="label">Generated SQL</div>
+<button class="copy-btn" onclick="copySQL()">Copy</button>
+<div class="code-block" id="sqlOutput"></div>
+<div class="success-msg" id="copyMsg">Copied!</div>
+</div>
+
+<h2>Step 2: SQL Sandbox</h2>
+<p>Supabase lets you run raw SQL. Practice querying your brain_context table.</p>
+
+<div class="panel">
+<div class="label">SQL Sandbox</div>
+<div class="sandbox">
+<textarea id="sqlInput" placeholder="-- Try a query. Examples:
+-- SELECT * FROM brain_context;
+-- INSERT INTO brain_context (key, value) VALUES ('mood', '\"curious\"');
+-- SELECT key, value FROM brain_context WHERE key LIKE 'session%';
+">SELECT * FROM brain_context;</textarea>
+<button class="run-btn" onclick="runQuery()">&#x25b6; Run Query</button>
+</div>
+<div id="queryResults"></div>
+</div>
+
+<h2>Step 3: Build It Step by Step</h2>
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-content">
+<p><strong>Create the project</strong></p>
+<p style="font-size:.9rem;color:#999">Go to supabase.com, create a new project. Pick a region close to your users. Save your project URL and anon key.</p>
+<div class="code-block"><span class="kw">Project URL</span>: https://&lt;your-ref&gt;.supabase.co<br><span class="kw">Anon Key</span>: eyJhbGciOiJIUzI1NiIs... <span class="cm">// public, safe for frontend</span><br><span class="kw">Service Key</span>: eyJhbGciOiJIUzI1NiIs... <span class="cm">// SECRET, only for backend</span></div>
+</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-content">
+<p><strong>Create the brain_context table</strong></p>
+<p style="font-size:.9rem;color:#999">Use the SQL editor in your Supabase dashboard. Paste the generated SQL from Step 1 above.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-content">
+<p><strong>Enable Row Level Security (RLS)</strong></p>
+<div class="code-block"><span class="kw">ALTER TABLE</span> brain_context <span class="kw">ENABLE ROW LEVEL SECURITY</span>;<br><br><span class="cm">-- Allow service role full access</span><br><span class="kw">CREATE POLICY</span> <span class="str">"service_role_all"</span> <span class="kw">ON</span> brain_context<br>  <span class="kw">FOR ALL</span><br>  <span class="kw">TO</span> service_role<br>  <span class="kw">USING</span> (<span class="kw">true</span>);</div>
+</div>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-content">
+<p><strong>Insert your first record</strong></p>
+<div class="code-block"><span class="kw">INSERT INTO</span> brain_context (key, value)<br><span class="kw">VALUES</span> (<span class="str">'identity.name'</span>, <span class="str">'"AI Stack Builder Student"'</span>);</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="label">Key Concept</div>
+<h3 style="margin-top:0">Why Supabase for AI Apps?</h3>
+<p style="font-size:.9rem">Supabase is Postgres with superpowers: <strong>Auth</strong> (user management), <strong>Edge Functions</strong> (serverless Deno), <strong>Realtime</strong> (live subscriptions), <strong>Storage</strong> (files/images), and <strong>pgvector</strong> (AI embeddings). One tool covers database + backend + auth. That's why it's the foundation of most modern AI stacks.</p>
+</div>
+
+<div class="progress-section">
+<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
+<span>Lesson Progress</span><span id="lessonPct">0%</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+</div>
+<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
+<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
+<a href="stack-anatomy.html">&larr; Stack Anatomy</a>
+<a href="make-com-101.html">Next: Make.com 101 &rarr;</a>
+</div>
+<div class="footer">Like One Academy &copy; 2026</div>
+</div>
+
+<script>
+const sampleData=[
+{id:'a1b2c3d4',key:'identity.name',value:'"Stack Builder Student"',updated_at:'2026-03-23T10:00:00Z'},
+{id:'e5f6g7h8',key:'session.active_work',value:'"building brain_context"',updated_at:'2026-03-23T10:05:00Z'},
+{id:'i9j0k1l2',key:'session.mood',value:'"focused"',updated_at:'2026-03-23T10:10:00Z'},
+{id:'m3n4o5p6',key:'system.version',value:'"1.0.0"',updated_at:'2026-03-23T09:00:00Z'},
+{id:'q7r8s9t0',key:'directive.boot_sequence',value:'{"version":"4.0","steps":["read brain","resume work"]}',updated_at:'2026-03-23T08:00:00Z'}
+];
+function addColumn(){const rows=document.getElementById('tableRows');const row=document.createElement('div');row.className='table-row';row.innerHTML='<input placeholder="column name"><select><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>jsonb</option><option>timestamptz</option></select><span class="pk"></span><span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>';rows.appendChild(row);updateProg()}
+function delRow(btn){btn.closest('.table-row').remove();updateProg()}
+function generateSQL(){const rows=document.querySelectorAll('#tableRows .table-row');let sql='<span class="kw">CREATE TABLE</span> brain_context (\n';const cols=[];rows.forEach(r=>{const name=r.querySelector('input').value||'unnamed';const type=r.querySelector('select').value;const pk=r.querySelector('.pk')?.textContent==='PK';let line='  '+name+' <span class="fn">'+type+'</span>';if(pk)line+=' <span class="kw">DEFAULT</span> <span class="fn">gen_random_uuid</span>() <span class="kw">PRIMARY KEY</span>';if(name==='updated_at')line+=' <span class="kw">DEFAULT</span> <span class="fn">now</span>()';cols.push(line)});sql+=cols.join(',\n')+'\n);';document.getElementById('sqlOutput').innerHTML=sql;document.getElementById('sqlPanel').style.display='block';updateProg()}
+function copySQL(){const text=document.getElementById('sqlOutput').textContent;navigator.clipboard.writeText(text);document.getElementById('copyMsg').style.display='block';setTimeout(()=>document.getElementById('copyMsg').style.display='none',1500)}
+function runQuery(){const q=document.getElementById('sqlInput').value.trim().toLowerCase();const out=document.getElementById('queryResults');let data=sampleData;if(q.includes('insert')){out.innerHTML='<p style="color:#22c55e;margin-top:.75rem;font-size:.9rem">&#x2713; 1 row inserted successfully.</p>';updateProg();return}
+if(q.includes('where')){const match=q.match(/like\s+'([^']+)'/i)||q.match(/=\s*'([^']+)'/i);if(match){const filter=match[1].replace(/%/g,'');data=sampleData.filter(r=>r.key.includes(filter))}}
+if(q.includes('select')){let cols=Object.keys(sampleData[0]);const colMatch=q.match(/select\s+(.+?)\s+from/i);if(colMatch&&!colMatch[1].includes('*')){cols=colMatch[1].split(',').map(c=>c.trim())}
+let html='<table class="results-table"><tr>';cols.forEach(c=>html+='<th>'+c+'</th>');html+='</tr>';data.forEach(r=>{html+='<tr>';cols.forEach(c=>html+='<td>'+(r[c]||'null')+'</td>');html+='</tr>'});html+='</table><p style="color:#888;font-size:.8rem;margin-top:.5rem">'+data.length+' rows returned</p>';out.innerHTML=html}else{out.innerHTML='<p style="color:#22c55e;margin-top:.75rem;font-size:.9rem">&#x2713; Query executed successfully.</p>'}
+updateProg()}
+let actions=0;function updateProg(){actions++;const pct=Math.min(100,actions*15);document.getElementById('lessonProgress').style.width=pct+'%';document.getElementById('lessonPct').textContent=pct+'%'}
+function completeLesson(){localStorage.setItem('aisb_lesson_2','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
+if(localStorage.getItem('aisb_lesson_2')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
+</script>
+</body>
+</html>

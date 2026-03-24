@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomy of a Prompt — AI Foundations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-header{margin-bottom:2rem}
+.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(192,132,252,.12);color:#c084fc}
+.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
+.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;line-height:1.6}
+
+.tokenizer-section{margin-bottom:2.5rem}
+.tokenizer-section h2{font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#c084fc}
+
+.input-area{position:relative;margin-bottom:1rem}
+.input-area textarea{width:100%;min-height:100px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.95rem;resize:vertical;outline:none;transition:border-color .3s;line-height:1.6}
+.input-area textarea:focus{border-color:rgba(192,132,252,.4)}
+.input-area textarea::placeholder{color:#52525b}
+
+.token-stats{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:.75rem 1.25rem;flex:1;min-width:140px}
+.stat-label{font-size:.7rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem}
+.stat-value{font-size:1.5rem;font-weight:800;color:#c084fc}
+.stat-value.warm{color:#fb923c}
+.stat-value.blue{color:#38bdf8}
+
+.context-bar{margin-bottom:1.5rem}
+.context-bar-label{display:flex;justify-content:space-between;font-size:.75rem;color:#71717a;margin-bottom:.5rem}
+.context-track{height:10px;background:rgba(255,255,255,.06);border-radius:5px;overflow:hidden}
+.context-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,#c084fc,#fb923c);transition:width .3s ease;min-width:2px}
+
+.token-display{display:flex;flex-wrap:wrap;gap:4px;min-height:50px;padding:1.25rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;margin-bottom:2rem}
+.token{padding:.3rem .6rem;border-radius:6px;font-size:.8rem;font-weight:600;animation:tokenPop .3s ease both;white-space:pre}
+@keyframes tokenPop{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+
+.concepts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+@media(max-width:600px){.concepts{grid-template-columns:1fr}}
+.concept{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem;transition:all .3s;cursor:pointer}
+.concept:hover{border-color:rgba(192,132,252,.2);transform:translateY(-2px)}
+.concept.active{border-color:rgba(192,132,252,.4);background:rgba(192,132,252,.05)}
+.concept h3{font-size:.9rem;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.concept h3 .icon{font-size:1.1rem}
+.concept p{font-size:.8rem;color:#a1a1aa;line-height:1.5}
+.concept .detail{display:none;margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06);font-size:.8rem;color:#c084fc;line-height:1.5}
+.concept.active .detail{display:block}
+
+.temp-section{margin-bottom:2rem}
+.temp-section h2{font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#fb923c}
+.temp-demo{display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap}
+.temp-control{min-width:200px}
+.temp-control label{display:block;font-size:.75rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.temp-val{font-size:2rem;font-weight:800;color:#fb923c;margin-bottom:.5rem}
+input[type=range]{width:100%;-webkit-appearance:none;background:rgba(255,255,255,.06);height:6px;border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fb923c;cursor:pointer;border:3px solid #0a0a0f}
+.temp-output{flex:1;min-width:250px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem}
+.temp-output h4{font-size:.8rem;font-weight:600;color:#71717a;margin-bottom:.75rem}
+.temp-output p{font-size:.85rem;line-height:1.6;min-height:60px}
+
+.narration{background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem;line-height:1.7;font-size:.95rem}
+.narration strong{color:#c084fc}
+
+.complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer-progress{text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
+.footer-progress span{color:#c084fc;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+<div class="container">
+  <div class="lesson-header">
+    <div class="meta">
+      <span class="type-badge">Animated</span>
+      <span class="xp-badge">+50 XP</span>
+      <span class="time-badge">~20 min</span>
+    </div>
+    <h1>Anatomy of a Prompt</h1>
+    <p>Watch your words get sliced into tokens in real-time. Understand the hidden structure behind every AI interaction.</p>
+  </div>
+
+  <div class="tokenizer-section">
+    <h2>Live Tokenizer</h2>
+    <div class="input-area">
+      <textarea id="promptInput" placeholder="Type anything here and watch it get tokenized...">Write a haiku about artificial intelligence learning to dream</textarea>
+    </div>
+    <div class="token-stats">
+      <div class="stat"><div class="stat-label">Tokens</div><div class="stat-value" id="tokenCount">0</div></div>
+      <div class="stat"><div class="stat-label">Characters</div><div class="stat-value warm" id="charCount">0</div></div>
+      <div class="stat"><div class="stat-label">Words</div><div class="stat-value blue" id="wordCount">0</div></div>
+    </div>
+    <div class="context-bar">
+      <div class="context-bar-label"><span>Context Window Usage</span><span id="contextPct">0%</span></div>
+      <div class="context-track"><div class="context-fill" id="contextFill" style="width:0%"></div></div>
+    </div>
+    <div class="token-display" id="tokenDisplay"></div>
+  </div>
+
+  <div class="concepts">
+    <div class="concept" onclick="toggleConcept(this)">
+      <h3><span class="icon">🧩</span> Tokens</h3>
+      <p>The atomic units AI reads — not words, not characters, but chunks.</p>
+      <div class="detail">Most words become 1-2 tokens. "Unbelievable" might be ["un","believ","able"]. The model never sees raw text — only token IDs (numbers).</div>
+    </div>
+    <div class="concept" onclick="toggleConcept(this)">
+      <h3><span class="icon">📏</span> Context Window</h3>
+      <p>The model's working memory — everything it can "see" at once.</p>
+      <div class="detail">GPT-4 has ~128K tokens. Claude has ~200K. Your prompt + the response must fit inside. Longer context = slower + more expensive.</div>
+    </div>
+    <div class="concept" onclick="toggleConcept(this)">
+      <h3><span class="icon">🎭</span> System Prompt</h3>
+      <p>Hidden instructions that shape the AI's personality and behavior.</p>
+      <div class="detail">Set before the user sees anything. "You are a helpful coding assistant" vs "You are a pirate." Same model, wildly different behavior — all from the system prompt.</div>
+    </div>
+    <div class="concept" onclick="toggleConcept(this)">
+      <h3><span class="icon">🌡️</span> Temperature</h3>
+      <p>Controls randomness — low = focused, high = creative.</p>
+      <div class="detail">Temperature 0 = always pick the most likely next token. Temperature 1+ = sometimes pick unlikely tokens. Coding tasks want low temp. Creative writing wants higher.</div>
+    </div>
+  </div>
+
+  <div class="temp-section">
+    <h2>Temperature Demo</h2>
+    <div class="temp-demo">
+      <div class="temp-control">
+        <label>Temperature</label>
+        <div class="temp-val" id="tempVal">0.7</div>
+        <input type="range" id="tempSlider" min="0" max="100" value="70">
+      </div>
+      <div class="temp-output">
+        <h4>AI completing: "The meaning of life is..."</h4>
+        <p id="tempOutput"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="narration">
+    <strong>Every prompt is a performance.</strong> Your words get chopped into tokens, fed through the context window alongside a system prompt, shaped by temperature, and out comes a response. Understanding this anatomy turns you from a user into an engineer.
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
+</div>
+<div class="footer-progress"><span id="footerProgress">0 of 9</span> lessons complete</div>
+
+<script>
+// Simple BPE-like tokenizer simulation
+const tokenColors=['#c084fc','#fb923c','#38bdf8','#34d399','#f472b6','#facc15','#a78bfa','#fb7185','#2dd4bf','#fbbf24'];
+
+function simpleTokenize(text){
+  if(!text.trim())return[];
+  const tokens=[];
+  // Split on spaces, punctuation, and common subword patterns
+  const regex=/(\s+|[.,!?;:'"()\[\]{}]|n't|'s|'re|'ve|'ll|'d|[A-Z][a-z]*|[a-z]+|[0-9]+|.)/g;
+  let match;
+  while((match=regex.exec(text))!==null){
+    const t=match[0];
+    if(t.length>6){
+      // Split long words into ~3-4 char chunks
+      for(let i=0;i<t.length;i+=Math.ceil(t.length/Math.ceil(t.length/4))){
+        tokens.push(t.slice(i,i+Math.ceil(t.length/Math.ceil(t.length/4))));
+      }
+    }else{
+      tokens.push(t);
+    }
+  }
+  return tokens.filter(t=>t);
+}
+
+const textarea=document.getElementById('promptInput');
+const tokenDisplay=document.getElementById('tokenDisplay');
+let debounceTimer;
+
+function updateTokenizer(){
+  const text=textarea.value;
+  const tokens=simpleTokenize(text);
+  const words=text.trim()?text.trim().split(/\s+/).length:0;
+
+  document.getElementById('tokenCount').textContent=tokens.length;
+  document.getElementById('charCount').textContent=text.length;
+  document.getElementById('wordCount').textContent=words;
+
+  const contextPct=Math.min((tokens.length/128000)*100,100);
+  document.getElementById('contextPct').textContent=contextPct.toFixed(contextPct<1?3:1)+'%';
+  document.getElementById('contextFill').style.width=Math.max(contextPct,0.5)+'%';
+
+  tokenDisplay.innerHTML='';
+  tokens.forEach((t,i)=>{
+    const span=document.createElement('span');
+    span.className='token';
+    span.textContent=t;
+    const color=tokenColors[i%tokenColors.length];
+    span.style.background=color+'20';
+    span.style.color=color;
+    span.style.border='1px solid '+color+'30';
+    span.style.animationDelay=(i*30)+'ms';
+    tokenDisplay.appendChild(span);
+  });
+}
+
+textarea.addEventListener('input',()=>{
+  clearTimeout(debounceTimer);
+  debounceTimer=setTimeout(updateTokenizer,150);
+});
+updateTokenizer();
+
+function toggleConcept(el){
+  el.classList.toggle('active');
+}
+
+// Temperature demo
+const tempResponses={
+  low:["a question philosophers have debated for millennia. According to research in positive psychology, it involves finding purpose, building meaningful relationships, and contributing to something larger than oneself.","fundamentally about connection and growth. Studies show that people who report the highest life satisfaction prioritize relationships, personal development, and service to others."],
+  mid:["a beautiful paradox — we search for it endlessly, yet often find it in the quiet moments we weren't looking. Purpose, love, and a really good cup of coffee.","something each person must discover through experience. Some find it in creation, others in connection. The search itself might be the point.","not a destination but a dance. Between chaos and order, between self and others, we find meaning in the steps we take together."],
+  high:["a jazz improvisation played on a quantum harmonica while riding a bicycle made of frozen laughter through a tunnel of recursive dreams!","actually 42, but only if you measure it in units of sunset-colored existential wonder divided by the square root of a grandmother's cookie recipe.","seventeen purple elephants debating Kant in a submarine. Wait, that's not right. Or is it? The universe winks and refuses to answer."]
+};
+
+const tempSlider=document.getElementById('tempSlider');
+const tempOutput=document.getElementById('tempOutput');
+
+function updateTemp(){
+  const v=tempSlider.value/100;
+  document.getElementById('tempVal').textContent=v.toFixed(2);
+  let responses;
+  if(v<0.3)responses=tempResponses.low;
+  else if(v<0.7)responses=tempResponses.mid;
+  else responses=tempResponses.high;
+  tempOutput.textContent='"'+responses[Math.floor(Math.random()*responses.length)]+'"';
+  tempOutput.style.opacity=0;
+  requestAnimationFrame(()=>{tempOutput.style.transition='opacity .4s';tempOutput.style.opacity=1});
+}
+tempSlider.addEventListener('input',updateTemp);
+updateTemp();
+
+function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
+function updateFooter(){
+  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
+  document.getElementById('footerProgress').textContent=c+' of 9';
+  if(p['anatomy-of-a-prompt']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
+}
+function completeLesson(){
+  const p=getProgress();p['anatomy-of-a-prompt']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
+  window.location.href='prompt-playground.html';
+}
+updateFooter();
+</script>
+</body>
+</html>

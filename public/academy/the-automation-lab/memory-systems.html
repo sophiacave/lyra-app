@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Systems — The Automation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ef4444,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem}.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);font-size:.7rem;font-weight:600;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;margin-bottom:2.5rem;line-height:1.6}
+.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#fff}
+
+.memory-viz{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0}
+.mem-card{padding:1.5rem;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);text-align:center;cursor:pointer;transition:all .35s}
+.mem-card:hover,.mem-card.active{transform:translateY(-4px)}
+.mem-card.stm{border-color:rgba(239,68,68,.2)}.mem-card.stm:hover,.mem-card.stm.active{background:rgba(239,68,68,.06);box-shadow:0 8px 30px rgba(239,68,68,.15)}
+.mem-card.ltm{border-color:rgba(56,189,248,.2)}.mem-card.ltm:hover,.mem-card.ltm.active{background:rgba(56,189,248,.06);box-shadow:0 8px 30px rgba(56,189,248,.15)}
+.mem-card.shared{border-color:rgba(168,85,247,.2)}.mem-card.shared:hover,.mem-card.shared.active{background:rgba(168,85,247,.06);box-shadow:0 8px 30px rgba(168,85,247,.15)}
+.mem-icon{font-size:2rem;margin-bottom:.75rem}
+.mem-name{font-weight:700;font-size:.95rem;margin-bottom:.25rem}
+.mem-sub{font-size:.75rem;color:#71717a}
+
+.mem-detail{padding:1.5rem;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);margin:1rem 0 2rem;min-height:180px;transition:all .3s}
+.mem-detail h3{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.mem-detail p{font-size:.85rem;color:#a1a1aa;line-height:1.6;margin-bottom:.75rem}
+.mem-table{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:.75rem}
+.mem-table th{text-align:left;padding:.5rem;color:#71717a;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
+.mem-table td{padding:.5rem;border-bottom:1px solid rgba(255,255,255,.03);color:#d4d4d8}
+
+.flow-section{margin:2rem 0;padding:2rem;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)}
+.flow-title{font-size:1rem;font-weight:700;margin-bottom:1.5rem;text-align:center}
+.flow-agents{display:flex;justify-content:center;align-items:flex-start;gap:2rem;flex-wrap:wrap;position:relative}
+.flow-agent{text-align:center;width:120px}
+.agent-avatar{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto .5rem;border:2px solid rgba(255,255,255,.1);transition:all .5s}
+.agent-avatar.writing{border-color:#ef4444;box-shadow:0 0 20px rgba(239,68,68,.3);animation:pulse .8s ease infinite}
+.agent-avatar.reading{border-color:#38bdf8;box-shadow:0 0 20px rgba(56,189,248,.3);animation:pulse .8s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.agent-name{font-size:.8rem;font-weight:600}
+.agent-action{font-size:.7rem;color:#71717a;margin-top:.25rem;min-height:2em}
+.flow-db{text-align:center;padding:1rem 1.5rem;border-radius:12px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);min-width:160px}
+.flow-db-icon{font-size:1.8rem;margin-bottom:.25rem}
+.flow-db-name{font-size:.8rem;font-weight:700;color:#a855f7}
+.flow-db-entries{margin-top:.5rem;text-align:left}
+.flow-entry{font-size:.7rem;padding:.3rem .5rem;border-radius:6px;background:rgba(255,255,255,.03);margin-top:.3rem;color:#d4d4d8;opacity:0;transform:translateY(-5px);transition:all .4s}
+.flow-entry.visible{opacity:1;transform:translateY(0)}
+
+.query-builder{margin:2rem 0;padding:2rem;border-radius:16px;background:rgba(56,189,248,.03);border:1px solid rgba(56,189,248,.1)}
+.qb-title{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:#38bdf8}
+.qb-desc{font-size:.85rem;color:#a1a1aa;margin-bottom:1.5rem}
+.qb-row{display:flex;gap:.75rem;margin-bottom:.75rem;align-items:center;flex-wrap:wrap}
+.qb-label{font-size:.75rem;font-weight:600;color:#71717a;min-width:80px}
+.qb-select{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.5rem .75rem;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem;flex:1;min-width:150px}
+.qb-select:focus{outline:none;border-color:rgba(56,189,248,.4)}
+.qb-result{margin-top:1rem;padding:1rem;border-radius:10px;background:rgba(0,0,0,.3);font-family:monospace;font-size:.8rem;color:#38bdf8;white-space:pre-wrap;border:1px solid rgba(56,189,248,.1)}
+.qb-run{padding:.5rem 1.2rem;border:none;border-radius:8px;background:#38bdf8;color:#0a0a0f;font-family:'Inter',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;margin-top:.5rem}
+.qb-run:hover{background:#7dd3fc}
+.qb-output{margin-top:.75rem;padding:1rem;border-radius:10px;background:rgba(0,0,0,.3);font-family:monospace;font-size:.78rem;color:#a1a1aa;white-space:pre-wrap;display:none;border:1px solid rgba(255,255,255,.05)}
+
+.complete-section{text-align:center;margin:3rem 0 2rem;padding:2rem;border-radius:16px;background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.1)}
+.complete-btn{padding:.85rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(239,68,68,.3)}.complete-btn:hover{transform:translateY(-2px)}.complete-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.complete-msg{margin-top:1rem;font-size:.85rem;color:#22c55e;display:none}
+.xp-toast{position:fixed;top:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;background:#ef4444;color:#fff;font-weight:700;font-size:.9rem;transform:translateY(-100px);opacity:0;transition:all .4s ease;z-index:999;box-shadow:0 8px 32px rgba(239,68,68,.4)}.xp-toast.show{transform:translateY(0);opacity:1}
+.lesson-nav{display:flex;justify-content:space-between;align-items:center;margin:2rem 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}.lesson-nav a{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#a1a1aa;transition:color .2s}.lesson-nav a:hover{color:#ef4444}
+
+@media(max-width:640px){h1{font-size:1.8rem}.memory-viz{grid-template-columns:1fr}.flow-agents{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+
+<div class="container">
+  <div class="lesson-badge">Module 1 &bull; Lesson 3</div>
+  <h1>Memory Systems</h1>
+  <p class="subtitle">Memory is what separates a stateless tool from an intelligent agent. Three types. Three purposes. One unified brain.</p>
+
+  <h2 class="section-title">Three Types of Agent Memory</h2>
+  <div class="memory-viz">
+    <div class="mem-card stm active" onclick="showMem('stm')"><div class="mem-icon">&#9889;</div><div class="mem-name">Short-Term</div><div class="mem-sub">Conversation context</div></div>
+    <div class="mem-card ltm" onclick="showMem('ltm')"><div class="mem-icon">&#128451;&#65039;</div><div class="mem-name">Long-Term</div><div class="mem-sub">agent_memory table</div></div>
+    <div class="mem-card shared" onclick="showMem('shared')"><div class="mem-icon">&#127760;</div><div class="mem-name">Shared</div><div class="mem-sub">brain_context</div></div>
+  </div>
+  <div class="mem-detail" id="mem-detail"></div>
+
+  <h2 class="section-title">&#128260; Memory in Action</h2>
+  <div class="flow-section">
+    <div class="flow-title">Watch agents read and write to shared memory</div>
+    <div class="flow-agents">
+      <div class="flow-agent"><div class="agent-avatar" id="agentA-av">&#129302;</div><div class="agent-name">Agent A</div><div class="agent-action" id="agentA-act">Idle</div></div>
+      <div class="flow-db"><div class="flow-db-icon">&#128451;&#65039;</div><div class="flow-db-name">brain_context</div><div class="flow-db-entries" id="db-entries"></div></div>
+      <div class="flow-agent"><div class="agent-avatar" id="agentB-av">&#129302;</div><div class="agent-name">Agent B</div><div class="agent-action" id="agentB-act">Idle</div></div>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <button onclick="runMemFlow()" style="padding:.6rem 1.5rem;border:1px solid rgba(239,68,68,.3);border-radius:10px;background:rgba(239,68,68,.08);color:#ef4444;font-family:Inter;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s" id="flow-btn">&#9654; Run Simulation</button>
+    </div>
+  </div>
+
+  <h2 class="section-title">&#128269; Build a Memory Query</h2>
+  <div class="query-builder">
+    <div class="qb-title">Query Builder</div>
+    <div class="qb-desc">Construct a query to read from agent memory. See the SQL and results.</div>
+    <div class="qb-row">
+      <div class="qb-label">Table:</div>
+      <select class="qb-select" id="q-table" onchange="buildQuery()">
+        <option value="brain_context">brain_context (shared)</option>
+        <option value="agent_memory">agent_memory (long-term)</option>
+      </select>
+    </div>
+    <div class="qb-row">
+      <div class="qb-label">Filter by:</div>
+      <select class="qb-select" id="q-filter" onchange="buildQuery()">
+        <option value="category">Category</option>
+        <option value="agent_name">Agent Name</option>
+        <option value="key">Key (exact)</option>
+      </select>
+    </div>
+    <div class="qb-row">
+      <div class="qb-label">Value:</div>
+      <input class="qb-select" id="q-value" placeholder="e.g., identity" oninput="buildQuery()">
+    </div>
+    <div class="qb-result" id="q-result">SELECT * FROM brain_context WHERE category = 'identity';</div>
+    <button class="qb-run" onclick="runQuery()">Run Query</button>
+    <div class="qb-output" id="q-output"></div>
+  </div>
+
+  <div class="complete-section">
+    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
+    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
+  </div>
+  <div class="lesson-nav">
+    <a href="agent-anatomy.html">&larr; Agent Anatomy</a>
+    <a href="agent-communication.html">Next: Agent Communication &rarr;</a>
+  </div>
+</div>
+<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
+
+<script>
+const MEM_DATA={
+  stm:{title:'Short-Term Memory (Conversation)',desc:'Exists only during the current interaction. When the conversation ends, it vanishes. This is the agent\'s "working memory" — like your mental scratchpad.',rows:[['Current user message','What the user just said','Session only'],['Previous turns','Last 10-20 exchanges','Session only'],['Extracted intent','What the agent thinks user wants','Session only'],['Tool results','Output from recent tool calls','Session only']]},
+  ltm:{title:'Long-Term Memory (agent_memory)',desc:'Persisted in a database table. Survives across sessions. The agent writes facts, preferences, and learnings here. This is what makes agents smarter over time.',rows:[['user_name','Faye','Permanent'],['deploy_count','47','Updated each deploy'],['last_error','DNS timeout 2026-03-22','Last incident'],['preferred_stack','Next.js + Supabase','User stated']]},
+  shared:{title:'Shared Memory (brain_context)',desc:'A shared key-value store accessible to ALL agents. This is the "bridge" — agents read each other\'s writes. It enables coordination without direct communication.',rows:[['identity.faye_unified','Full identity profile','All agents'],['session.active_work','Current task state','All agents'],['system.revenue_architecture','Products + pricing','All agents'],['infrastructure.likeone_site','Deploy pipeline','All agents']]}
+};
+
+function showMem(type){
+  document.querySelectorAll('.mem-card').forEach(c=>c.classList.remove('active'));
+  document.querySelector(`.mem-card.${type}`).classList.add('active');
+  const d=MEM_DATA[type];
+  const det=document.getElementById('mem-detail');
+  det.innerHTML=`<h3>${d.title}</h3><p>${d.desc}</p><table class="mem-table"><tr><th>Key</th><th>Value</th><th>Scope</th></tr>${d.rows.map(r=>`<tr><td style="color:#ef4444;font-weight:600">${r[0]}</td><td>${r[1]}</td><td style="color:#71717a">${r[2]}</td></tr>`).join('')}</table>`;
+}
+showMem('stm');
+
+// Memory flow simulation
+let flowRunning=false;
+function runMemFlow(){
+  if(flowRunning)return;flowRunning=true;
+  const btn=document.getElementById('flow-btn');btn.textContent='Running...';
+  const aA=document.getElementById('agentA-av'),aB=document.getElementById('agentB-av');
+  const actA=document.getElementById('agentA-act'),actB=document.getElementById('agentB-act');
+  const db=document.getElementById('db-entries');
+  db.innerHTML='';
+  const steps=[
+    {t:0,fn:()=>{aA.classList.add('writing');actA.textContent='Writing...';}},
+    {t:800,fn:()=>{db.innerHTML+='<div class="flow-entry" id="fe1">status: "deploying"</div>';setTimeout(()=>document.getElementById('fe1').classList.add('visible'),50);}},
+    {t:1600,fn:()=>{aA.classList.remove('writing');actA.textContent='Write complete';db.innerHTML+='<div class="flow-entry" id="fe2">version: "2.4.1"</div>';setTimeout(()=>document.getElementById('fe2').classList.add('visible'),50);}},
+    {t:2400,fn:()=>{aB.classList.add('reading');actB.textContent='Reading...';}},
+    {t:3200,fn:()=>{actB.textContent='Got: deploying v2.4.1';}},
+    {t:4000,fn:()=>{aB.classList.remove('reading');aB.classList.add('writing');actB.textContent='Writing response...';}},
+    {t:4800,fn:()=>{db.innerHTML+='<div class="flow-entry" id="fe3">health: "monitoring"</div>';setTimeout(()=>document.getElementById('fe3').classList.add('visible'),50);}},
+    {t:5600,fn:()=>{aB.classList.remove('writing');actB.textContent='Done';actA.textContent='Idle';btn.textContent='\u25B6 Run Again';flowRunning=false;}}
+  ];
+  steps.forEach(s=>setTimeout(s.fn,s.t));
+}
+
+function buildQuery(){
+  const t=document.getElementById('q-table').value;
+  const f=document.getElementById('q-filter').value;
+  const v=document.getElementById('q-value').value||'identity';
+  document.getElementById('q-result').textContent=`SELECT * FROM ${t}\nWHERE ${f} = '${v}'\nORDER BY updated_at DESC\nLIMIT 10;`;
+}
+
+function runQuery(){
+  const o=document.getElementById('q-output');
+  const t=document.getElementById('q-table').value;
+  const f=document.getElementById('q-filter').value;
+  const v=document.getElementById('q-value').value||'identity';
+  const mockData={
+    'brain_context':{
+      'identity':[{key:'faye_unified',value:'{name:"Faye",role:"Founder"}',updated:'2026-03-23'}],
+      'system':[{key:'revenue_architecture',value:'{products:4,mrr:0}',updated:'2026-03-22'}],
+      'default':[{key:'boot_sequence',value:'{version:"4.0"}',updated:'2026-03-23'}]
+    },
+    'agent_memory':{
+      'default':[{key:'deploy_count',value:'47',updated:'2026-03-23'},{key:'last_error',value:'none',updated:'2026-03-22'}]
+    }
+  };
+  const results=mockData[t]?.[v]||mockData[t]?.['default']||[{key:'no_results',value:'null',updated:'-'}];
+  o.style.display='block';
+  o.textContent=`-- Results (${results.length} rows) --\n\n`+results.map(r=>`| ${r.key.padEnd(25)} | ${r.value.padEnd(30)} | ${r.updated} |`).join('\n');
+}
+
+function completeLsn(){
+  if(localStorage.getItem('autolab-3')==='complete')return;
+  localStorage.setItem('autolab-3','complete');
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+}
+if(localStorage.getItem('autolab-3')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
+</script>
+</body>
+</html>

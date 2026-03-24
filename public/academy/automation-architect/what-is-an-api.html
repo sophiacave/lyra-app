@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is an API? — Automation Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#34C759,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.back-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.back-link:hover{color:#e5e5e5}
+
+.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .75rem;border-radius:100px;background:rgba(52,199,89,.1);border:1px solid rgba(52,199,89,.2);font-size:.7rem;font-weight:600;color:#34C759;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.lesson-header h1{font-size:2.25rem;font-weight:800;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;font-size:1rem;max-width:500px;margin:0 auto}
+
+.content{max-width:800px;margin:0 auto;padding:2rem}
+h2{font-size:1.3rem;font-weight:800;margin-bottom:.75rem}
+.section-text{color:#a1a1aa;font-size:.9rem;line-height:1.6;margin-bottom:1.5rem}
+
+/* Request/Response animation */
+.api-animation{position:relative;display:flex;align-items:center;justify-content:center;gap:0;margin:2.5rem 0;padding:2rem 0;min-height:180px}
+.api-entity{width:140px;text-align:center;padding:1.5rem 1rem;border-radius:16px;transition:all .4s;position:relative;z-index:2}
+.entity-client{background:rgba(52,199,89,.08);border:2px solid rgba(52,199,89,.25)}
+.entity-server{background:rgba(56,189,248,.08);border:2px solid rgba(56,189,248,.25)}
+.entity-icon{font-size:2rem;margin-bottom:.5rem}
+.entity-label{font-weight:700;font-size:.85rem}
+.entity-sub{font-size:.7rem;color:#71717a;margin-top:.2rem}
+
+.api-pipe{flex:1;max-width:200px;position:relative;height:80px;margin:0 .5rem}
+.pipe-line{position:absolute;top:50%;left:0;right:0;height:2px;background:rgba(255,255,255,.08)}
+
+/* Animated packet */
+.packet{position:absolute;top:50%;transform:translate(0,-50%);width:12px;height:12px;border-radius:50%;opacity:0;z-index:3}
+.packet-request{background:#34C759;box-shadow:0 0 15px #34C759;left:0}
+.packet-response{background:#38bdf8;box-shadow:0 0 15px #38bdf8;right:0}
+.packet.sending{animation:sendPacket 1.2s ease forwards}
+.packet.returning{animation:returnPacket 1.2s ease forwards}
+@keyframes sendPacket{0%{left:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:calc(100% - 12px);opacity:0}}
+@keyframes returnPacket{0%{right:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{right:calc(100% - 12px);opacity:0}}
+
+.packet-label{position:absolute;font-size:.65rem;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .3s}
+.label-req{top:calc(50% - 22px);left:50%;transform:translateX(-50%);color:#34C759}
+.label-res{top:calc(50% + 14px);left:50%;transform:translateX(-50%);color:#38bdf8}
+.packet-label.visible{opacity:1}
+
+/* Method cards */
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2rem 0}
+.method-card{padding:1.25rem;border-radius:14px;background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.06);cursor:pointer;text-align:center;transition:all .3s}
+.method-card:hover{transform:translateY(-2px)}
+.method-card.selected{box-shadow:0 0 25px rgba(52,199,89,.15)}
+.method-card .method-name{font-weight:800;font-size:1.1rem;margin-bottom:.25rem;font-family:'SF Mono',monospace}
+.method-card .method-desc{font-size:.7rem;color:#a1a1aa}
+
+.method-card[data-method="GET"]{border-color:rgba(52,199,89,.25)}.method-card[data-method="GET"].selected{border-color:#34C759;background:rgba(52,199,89,.08)}.method-card[data-method="GET"] .method-name{color:#34C759}
+.method-card[data-method="POST"]{border-color:rgba(56,189,248,.25)}.method-card[data-method="POST"].selected{border-color:#38bdf8;background:rgba(56,189,248,.08)}.method-card[data-method="POST"] .method-name{color:#38bdf8}
+.method-card[data-method="PUT"]{border-color:rgba(251,146,60,.25)}.method-card[data-method="PUT"].selected{border-color:#fb923c;background:rgba(251,146,60,.08)}.method-card[data-method="PUT"] .method-name{color:#fb923c}
+.method-card[data-method="DELETE"]{border-color:rgba(239,68,68,.25)}.method-card[data-method="DELETE"].selected{border-color:#ef4444;background:rgba(239,68,68,.08)}.method-card[data-method="DELETE"] .method-name{color:#ef4444}
+
+/* Detail panel */
+.detail-panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;margin:1.5rem 0;min-height:200px;transition:all .3s}
+.detail-panel h3{font-size:.9rem;font-weight:700;margin-bottom:1rem}
+.code-block{font-family:'SF Mono',monospace;font-size:.8rem;background:rgba(0,0,0,.3);padding:1rem;border-radius:10px;color:#a1a1aa;line-height:1.6;margin:.75rem 0;overflow-x:auto;white-space:pre}
+.code-block .method-get{color:#34C759;font-weight:700}
+.code-block .method-post{color:#38bdf8;font-weight:700}
+.code-block .method-put{color:#fb923c;font-weight:700}
+.code-block .method-delete{color:#ef4444;font-weight:700}
+.code-block .status{color:#34C759}
+.code-block .header{color:#fb923c}
+.code-block .key{color:#38bdf8}
+.code-block .val{color:#34C759}
+.code-block .comment{color:#52525b}
+
+/* Status codes */
+.status-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.status-card{padding:1rem;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+.status-code{font-family:'SF Mono',monospace;font-weight:800;font-size:1.1rem;margin-bottom:.25rem}
+.status-2xx .status-code{color:#34C759}
+.status-4xx .status-code{color:#fb923c}
+.status-5xx .status-code{color:#ef4444}
+.status-label{font-size:.75rem;color:#a1a1aa}
+
+.complete-btn{display:block;width:100%;max-width:400px;margin:3rem auto 1rem;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#34C759,#2da44e);color:#0a0a0f;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(52,199,89,.3)}
+.complete-btn.done{background:rgba(52,199,89,.15);color:#34C759;cursor:default}
+
+.progress-footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);max-width:800px;margin:0 auto}
+.progress-footer p{font-size:.8rem;color:#52525b}
+@media(max-width:600px){.method-grid{grid-template-columns:repeat(2,1fr)}.status-row{grid-template-columns:1fr}.lesson-header h1{font-size:1.75rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+</nav>
+
+<header class="lesson-header">
+  <div class="lesson-badge">Module 2 &middot; Animated</div>
+  <h1>What Is an API?</h1>
+  <p>APIs are how machines talk to each other. Master this and you can connect anything to anything.</p>
+</header>
+
+<div class="content">
+  <h2>The Request / Response Cycle</h2>
+  <p class="section-text">Every API interaction follows one pattern: your code sends a <strong>request</strong>, the server processes it, and sends back a <strong>response</strong>. Click a method below to see it in action.</p>
+
+  <div class="api-animation" id="apiAnimation">
+    <div class="api-entity entity-client">
+      <div class="entity-icon">&#128187;</div>
+      <div class="entity-label">Client</div>
+      <div class="entity-sub">Your Code</div>
+    </div>
+    <div class="api-pipe" id="apiPipe">
+      <div class="pipe-line"></div>
+      <div class="packet packet-request" id="packetReq"></div>
+      <div class="packet packet-response" id="packetRes"></div>
+      <div class="packet-label label-req" id="labelReq">REQUEST</div>
+      <div class="packet-label label-res" id="labelRes">RESPONSE</div>
+    </div>
+    <div class="api-entity entity-server">
+      <div class="entity-icon">&#9729;&#65039;</div>
+      <div class="entity-label">Server</div>
+      <div class="entity-sub">API Endpoint</div>
+    </div>
+  </div>
+
+  <h2>HTTP Methods</h2>
+  <p class="section-text">Click each method to see a real-world example with request and response details.</p>
+
+  <div class="method-grid">
+    <div class="method-card" data-method="GET" onclick="selectMethod('GET')"><div class="method-name">GET</div><div class="method-desc">Read data</div></div>
+    <div class="method-card" data-method="POST" onclick="selectMethod('POST')"><div class="method-name">POST</div><div class="method-desc">Create data</div></div>
+    <div class="method-card" data-method="PUT" onclick="selectMethod('PUT')"><div class="method-name">PUT</div><div class="method-desc">Update data</div></div>
+    <div class="method-card" data-method="DELETE" onclick="selectMethod('DELETE')"><div class="method-name">DELETE</div><div class="method-desc">Remove data</div></div>
+  </div>
+
+  <div class="detail-panel" id="detailPanel">
+    <h3 id="detailTitle">Click a method above to see its anatomy</h3>
+    <div id="detailContent"></div>
+  </div>
+
+  <h2>Status Codes</h2>
+  <p class="section-text">The server tells you what happened with a status code.</p>
+  <div class="status-row">
+    <div class="status-card status-2xx"><div class="status-code">200 OK</div><div class="status-label">Success &mdash; here's your data</div></div>
+    <div class="status-card status-2xx"><div class="status-code">201 Created</div><div class="status-label">Success &mdash; resource was created</div></div>
+    <div class="status-card status-4xx"><div class="status-code">400 Bad Request</div><div class="status-label">Your request was malformed</div></div>
+  </div>
+  <div class="status-row">
+    <div class="status-card status-4xx"><div class="status-code">401 Unauthorized</div><div class="status-label">Missing or invalid auth</div></div>
+    <div class="status-card status-4xx"><div class="status-code">404 Not Found</div><div class="status-label">Resource doesn't exist</div></div>
+    <div class="status-card status-5xx"><div class="status-code">500 Server Error</div><div class="status-label">Something broke on the server</div></div>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 50 XP</button>
+</div>
+
+<footer class="progress-footer">
+  <p>Lesson 4 of 9 &middot; Automation Architect</p>
+</footer>
+
+<script>
+const SLUG='what-is-an-api';
+const STORAGE_KEY='automation-architect-progress';
+
+const methods={
+  GET:{
+    title:'GET — Read Data (Weather API)',
+    content:`<div class="code-block"><span class="comment">// Request</span>
+<span class="method-get">GET</span> https://api.weather.com/v1/current?city=tokyo
+<span class="header">Authorization:</span> Bearer sk_abc123
+<span class="header">Accept:</span> application/json</div>
+<div class="code-block"><span class="comment">// Response — <span class="status">200 OK</span></span>
+{
+  <span class="key">"city"</span>: <span class="val">"Tokyo"</span>,
+  <span class="key">"temp"</span>: <span class="val">22</span>,
+  <span class="key">"condition"</span>: <span class="val">"Partly Cloudy"</span>,
+  <span class="key">"humidity"</span>: <span class="val">65</span>
+}</div>`
+  },
+  POST:{
+    title:'POST — Create Data (Stripe API)',
+    content:`<div class="code-block"><span class="comment">// Request</span>
+<span class="method-post">POST</span> https://api.stripe.com/v1/charges
+<span class="header">Authorization:</span> Bearer sk_live_xxx
+<span class="header">Content-Type:</span> application/json
+
+{
+  <span class="key">"amount"</span>: <span class="val">7900</span>,
+  <span class="key">"currency"</span>: <span class="val">"usd"</span>,
+  <span class="key">"customer"</span>: <span class="val">"cus_abc123"</span>
+}</div>
+<div class="code-block"><span class="comment">// Response — <span class="status">201 Created</span></span>
+{
+  <span class="key">"id"</span>: <span class="val">"ch_1abc"</span>,
+  <span class="key">"status"</span>: <span class="val">"succeeded"</span>,
+  <span class="key">"amount"</span>: <span class="val">7900</span>
+}</div>`
+  },
+  PUT:{
+    title:'PUT — Update Data (User Settings)',
+    content:`<div class="code-block"><span class="comment">// Request</span>
+<span class="method-put">PUT</span> https://api.myapp.com/v1/settings/user_42
+<span class="header">Authorization:</span> Bearer token_xxx
+<span class="header">Content-Type:</span> application/json
+
+{
+  <span class="key">"theme"</span>: <span class="val">"dark"</span>,
+  <span class="key">"notifications"</span>: <span class="val">true</span>,
+  <span class="key">"timezone"</span>: <span class="val">"America/New_York"</span>
+}</div>
+<div class="code-block"><span class="comment">// Response — <span class="status">200 OK</span></span>
+{
+  <span class="key">"id"</span>: <span class="val">"user_42"</span>,
+  <span class="key">"updated"</span>: <span class="val">true</span>,
+  <span class="key">"settings"</span>: { <span class="key">"theme"</span>: <span class="val">"dark"</span> ... }
+}</div>`
+  },
+  DELETE:{
+    title:'DELETE — Remove Data',
+    content:`<div class="code-block"><span class="comment">// Request</span>
+<span class="method-delete">DELETE</span> https://api.myapp.com/v1/users/user_42
+<span class="header">Authorization:</span> Bearer admin_token</div>
+<div class="code-block"><span class="comment">// Response — <span class="status">200 OK</span></span>
+{
+  <span class="key">"deleted"</span>: <span class="val">true</span>,
+  <span class="key">"id"</span>: <span class="val">"user_42"</span>
+}</div>`
+  }
+};
+
+function animateRequest(){
+  const req=document.getElementById('packetReq');
+  const res=document.getElementById('packetRes');
+  const lReq=document.getElementById('labelReq');
+  const lRes=document.getElementById('labelRes');
+
+  req.classList.remove('sending');res.classList.remove('returning');
+  lReq.classList.remove('visible');lRes.classList.remove('visible');
+
+  void req.offsetWidth;
+  req.classList.add('sending');
+  lReq.classList.add('visible');
+
+  setTimeout(()=>{
+    lReq.classList.remove('visible');
+    res.classList.add('returning');
+    lRes.classList.add('visible');
+    setTimeout(()=>lRes.classList.remove('visible'),1500);
+  },1400);
+}
+
+function selectMethod(m){
+  document.querySelectorAll('.method-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelector(`[data-method="${m}"]`).classList.add('selected');
+  const d=methods[m];
+  document.getElementById('detailTitle').textContent=d.title;
+  document.getElementById('detailContent').innerHTML=d.content;
+  animateRequest();
+}
+
+function completeLesson(){
+  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+  progress[SLUG]=true;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
+  const btn=document.getElementById('completeBtn');
+  btn.textContent='Completed! +50 XP';
+  btn.classList.add('done');
+}
+
+(function(){
+  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+  if(progress[SLUG]){
+    document.getElementById('completeBtn').textContent='Completed! +50 XP';
+    document.getElementById('completeBtn').classList.add('done');
+  }
+  setTimeout(()=>selectMethod('GET'),600);
+})();
+</script>
+</body>
+</html>

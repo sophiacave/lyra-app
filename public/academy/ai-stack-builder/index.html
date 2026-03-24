@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Stack Builder — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh}
+a{color:#f59e0b;text-decoration:none;transition:all .2s}
+a:hover{color:#fbbf24;text-shadow:0 0 8px rgba(245,158,11,.3)}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.breadcrumb{font-size:.85rem;color:#666;margin-bottom:2rem}
+.breadcrumb a{color:#888}
+.hero{text-align:center;padding:4rem 0 3rem;position:relative}
+.hero-icon{font-size:4rem;margin-bottom:1rem;display:block}
+.hero h1{font-size:2.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.75rem;background:linear-gradient(135deg,#f59e0b,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .subtitle{font-size:1.25rem;color:#999;max-width:500px;margin:0 auto 2rem}
+.meta-bar{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+.meta-item{display:flex;align-items:center;gap:.5rem;font-size:.95rem;color:#ccc}
+.meta-item .icon{font-size:1.1rem}
+.price-tag{display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;font-size:1.5rem;padding:.6rem 2rem;border-radius:99px;margin-top:1rem}
+.progress-section{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.progress-header span{font-size:.9rem;color:#999}
+.progress-bar{height:8px;background:#1e1e2e;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:99px;transition:width .5s ease}
+.xp-badge{color:#f59e0b;font-weight:600}
+.module{margin:3rem 0}
+.module-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid #1e1e2e}
+.module-num{background:#f59e0b;color:#0a0a0f;font-weight:700;font-size:.8rem;padding:.25rem .75rem;border-radius:99px}
+.module-title{font-size:1.3rem;font-weight:700}
+.lesson-card{display:flex;align-items:center;gap:1rem;background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:.75rem;transition:all .25s;cursor:pointer;position:relative;overflow:hidden}
+.lesson-card:hover{border-color:#f59e0b33;transform:translateX(4px);background:#13131f}
+.lesson-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#f59e0b;opacity:0;transition:opacity .25s}
+.lesson-card:hover::before{opacity:1}
+.lesson-num{width:36px;height:36px;border-radius:50%;background:#1e1e2e;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#666;flex-shrink:0;transition:all .25s}
+.lesson-card:hover .lesson-num{background:#f59e0b22;color:#f59e0b}
+.lesson-card.completed .lesson-num{background:#22c55e22;color:#22c55e}
+.lesson-card.completed .lesson-num::after{content:'\2713'}
+.lesson-card.completed .lesson-num span{display:none}
+.lesson-info{flex:1;min-width:0}
+.lesson-title{font-weight:600;font-size:1rem;margin-bottom:.2rem}
+.lesson-desc{font-size:.85rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lesson-meta{display:flex;gap:1rem;font-size:.8rem;color:#666;flex-shrink:0}
+.lesson-xp{color:#f59e0b}
+.cta-section{text-align:center;padding:3rem 0;margin-top:2rem;border-top:1px solid #1e1e2e}
+.cta-section h2{font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
+.cta-section p{color:#888;margin-bottom:1.5rem}
+.btn-primary{display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:.85rem 2.5rem;border-radius:99px;font-size:1.05rem;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.footer{text-align:center;padding:2rem 0;color:#444;font-size:.8rem;border-top:1px solid #1e1e2e;margin-top:3rem}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="breadcrumb"><a href="/academy">Academy</a> / AI Stack Builder</div>
+
+<div class="hero">
+<span class="hero-icon">&#x1f527;</span>
+<h1>AI Stack Builder</h1>
+<p class="subtitle">Build real products with AI tool stacking. No theory fluff — just shipping.</p>
+<div class="meta-bar">
+<div class="meta-item"><span class="icon">&#x1f552;</span> 14 hours</div>
+<div class="meta-item"><span class="icon">&#x26a1;</span> 2,600 XP</div>
+<div class="meta-item"><span class="icon">&#x1f4e6;</span> 10 lessons</div>
+<div class="meta-item"><span class="icon">&#x1f3af;</span> 3 modules</div>
+</div>
+<div class="price-tag">$119</div>
+</div>
+
+<div class="progress-section">
+<div class="progress-header">
+<span>Course Progress</span>
+<span><span class="xp-badge" id="xpCount">0</span> / 2,600 XP</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+<div class="progress-header" style="margin-top:.5rem;margin-bottom:0">
+<span id="lessonCount">0 / 10 lessons</span>
+<span id="pctLabel">0%</span>
+</div>
+</div>
+
+<div class="module">
+<div class="module-header">
+<span class="module-num">MODULE 1</span>
+<span class="module-title">The Modern AI Stack</span>
+</div>
+<a href="stack-anatomy.html" class="lesson-card" data-lesson="1">
+<div class="lesson-num"><span>1</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Stack Anatomy</div>
+<div class="lesson-desc">Interactive stack visualizer — choose your tools, build your stack</div>
+</div>
+<div class="lesson-meta"><span>1.5 hrs</span><span class="lesson-xp">260 XP</span></div>
+</a>
+<a href="supabase-101.html" class="lesson-card" data-lesson="2">
+<div class="lesson-num"><span>2</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Supabase 101</div>
+<div class="lesson-desc">Visual table builder, SQL sandbox, create your first brain_context table</div>
+</div>
+<div class="lesson-meta"><span>1.5 hrs</span><span class="lesson-xp">260 XP</span></div>
+</a>
+<a href="make-com-101.html" class="lesson-card" data-lesson="3">
+<div class="lesson-num"><span>3</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Make.com 101</div>
+<div class="lesson-desc">Visual scenario builder — drag, connect, watch data flow</div>
+</div>
+<div class="lesson-meta"><span>1.5 hrs</span><span class="lesson-xp">260 XP</span></div>
+</a>
+</div>
+
+<div class="module">
+<div class="module-header">
+<span class="module-num">MODULE 2</span>
+<span class="module-title">Building Blocks</span>
+</div>
+<a href="edge-functions.html" class="lesson-card" data-lesson="4">
+<div class="lesson-num"><span>4</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Edge Functions</div>
+<div class="lesson-desc">Interactive code editor — write and deploy Deno edge functions</div>
+</div>
+<div class="lesson-meta"><span>1.5 hrs</span><span class="lesson-xp">260 XP</span></div>
+</a>
+<a href="webhooks-deep-dive.html" class="lesson-card" data-lesson="5">
+<div class="lesson-num"><span>5</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Webhooks Deep Dive</div>
+<div class="lesson-desc">Animated webhook flows, configure Stripe webhooks interactively</div>
+</div>
+<div class="lesson-meta"><span>1.5 hrs</span><span class="lesson-xp">260 XP</span></div>
+</a>
+<a href="auth-and-tokens.html" class="lesson-card" data-lesson="6">
+<div class="lesson-num"><span>6</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Auth & Tokens</div>
+<div class="lesson-desc">JWT anatomy, live decoder, build an auth flow step by step</div>
+</div>
+<div class="lesson-meta"><span>1 hr</span><span class="lesson-xp">260 XP</span></div>
+</a>
+<a href="database-patterns.html" class="lesson-card" data-lesson="7">
+<div class="lesson-num"><span>7</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Database Patterns</div>
+<div class="lesson-desc">Interactive schema designer with live ER diagrams</div>
+</div>
+<div class="lesson-meta"><span>1.5 hrs</span><span class="lesson-xp">260 XP</span></div>
+</a>
+</div>
+
+<div class="module">
+<div class="module-header">
+<span class="module-num">MODULE 3</span>
+<span class="module-title">Ship It</span>
+</div>
+<a href="vercel-deploy.html" class="lesson-card" data-lesson="8">
+<div class="lesson-num"><span>8</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Vercel Deploy</div>
+<div class="lesson-desc">Deploy simulator — git push to live URL, animated pipeline</div>
+</div>
+<div class="lesson-meta"><span>1 hr</span><span class="lesson-xp">260 XP</span></div>
+</a>
+<a href="wire-it-all.html" class="lesson-card" data-lesson="9">
+<div class="lesson-num"><span>9</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Wire It All Together</div>
+<div class="lesson-desc">THE BIG ONE — connect every service, see the full architecture</div>
+</div>
+<div class="lesson-meta"><span>2 hrs</span><span class="lesson-xp">260 XP</span></div>
+</a>
+<a href="launch-checklist.html" class="lesson-card" data-lesson="10">
+<div class="lesson-num"><span>10</span></div>
+<div class="lesson-info">
+<div class="lesson-title">Launch Checklist</div>
+<div class="lesson-desc">20-item interactive checklist — Security, Performance, UX, Revenue</div>
+</div>
+<div class="lesson-meta"><span>1 hr</span><span class="lesson-xp">260 XP</span></div>
+</a>
+</div>
+
+<div class="cta-section">
+<h2>Ready to build?</h2>
+<p>10 lessons. 14 hours. One complete AI-powered product.</p>
+<a href="stack-anatomy.html" class="btn-primary">Start Building &rarr;</a>
+</div>
+
+<div class="footer">Like One Academy &copy; 2026 &middot; likeone.ai</div>
+</div>
+
+<script>
+function updateProgress(){
+const completed=[];
+for(let i=1;i<=10;i++){if(localStorage.getItem('aisb_lesson_'+i)==='complete')completed.push(i)}
+const pct=Math.round(completed.length/10*100);
+const xp=completed.length*260;
+document.getElementById('progressFill').style.width=pct+'%';
+document.getElementById('xpCount').textContent=xp.toLocaleString();
+document.getElementById('lessonCount').textContent=completed.length+' / 10 lessons';
+document.getElementById('pctLabel').textContent=pct+'%';
+document.querySelectorAll('.lesson-card').forEach(c=>{
+const n=parseInt(c.dataset.lesson);
+if(completed.includes(n))c.classList.add('completed');
+});
+}
+updateProgress();
+</script>
+</body>
+</html>

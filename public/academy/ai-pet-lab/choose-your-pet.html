@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Pet — AI Pet Lab</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+
+.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
+.top-bar a:hover{color:var(--text);text-decoration:none}
+.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+
+.header{padding:2.5rem 0 1.5rem;text-align:center}
+.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
+
+.pet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2rem 0}
+@media(max-width:600px){.pet-grid{grid-template-columns:1fr}}
+
+.pet-card{background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:2rem 1.25rem;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.pet-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.pet-card.selected{border-color:var(--orange);box-shadow:0 0 30px rgba(255,107,53,.15)}
+.pet-card.selected::after{content:'SELECTED';position:absolute;top:12px;right:-28px;background:var(--orange);color:#000;font-size:.6rem;font-weight:800;letter-spacing:1px;padding:.2rem 2rem;transform:rotate(45deg)}
+
+.pet-avatar{width:100px;height:100px;margin:0 auto 1.25rem;position:relative}
+
+/* CAT */
+.cat-sprite{position:relative;animation:catIdle 2s ease-in-out infinite}
+.cat-body{width:60px;height:45px;background:#c084fc;border-radius:50% 50% 40% 40%;position:absolute;bottom:10px;left:50%;transform:translateX(-50%)}
+.cat-ear{position:absolute;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #c084fc}
+.cat-ear.l{top:0;left:22px;transform:rotate(-10deg)}
+.cat-ear.r{top:0;right:22px;transform:rotate(10deg)}
+.cat-eye{position:absolute;width:8px;height:10px;background:#fff;border-radius:50%;top:30px}
+.cat-eye::after{content:'';position:absolute;width:4px;height:8px;background:#111;border-radius:50%;top:1px;left:2px}
+.cat-eye.l{left:32px}
+.cat-eye.r{right:32px}
+.cat-nose{position:absolute;top:40px;left:50%;transform:translateX(-50%);width:6px;height:4px;background:#ffb4d9;border-radius:50%}
+.cat-tail{position:absolute;bottom:15px;right:12px;width:30px;height:5px;background:#c084fc;border-radius:0 8px 8px 0;animation:catTail 1.2s ease-in-out infinite alternate;transform-origin:left center}
+@keyframes catIdle{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
+@keyframes catTail{from{transform:rotate(-20deg)}to{transform:rotate(20deg)}}
+
+/* DOG */
+.dog-sprite{position:relative;animation:dogIdle 1s ease-in-out infinite}
+.dog-body{width:65px;height:50px;background:var(--orange);border-radius:50% 50% 45% 45%;position:absolute;bottom:8px;left:50%;transform:translateX(-50%)}
+.dog-ear{position:absolute;width:14px;height:20px;background:#e85d20;border-radius:50% 50% 0 0}
+.dog-ear.l{top:4px;left:18px;transform:rotate(-15deg)}
+.dog-ear.r{top:4px;right:18px;transform:rotate(15deg)}
+.dog-eye{position:absolute;width:10px;height:12px;background:#fff;border-radius:50%;top:28px}
+.dog-eye::after{content:'';position:absolute;width:5px;height:5px;background:#111;border-radius:50%;bottom:2px;left:50%;transform:translateX(-50%)}
+.dog-eye.l{left:28px}
+.dog-eye.r{right:28px}
+.dog-tongue{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:8px;height:10px;background:#ff8fa3;border-radius:0 0 50% 50%;animation:pant .6s ease-in-out infinite alternate}
+.dog-tail{position:absolute;bottom:14px;right:8px;width:25px;height:6px;background:#e85d20;border-radius:0 10px 10px 0;animation:wagFast .25s ease-in-out infinite alternate;transform-origin:left center}
+@keyframes dogIdle{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+@keyframes pant{from{height:8px}to{height:14px}}
+@keyframes wagFast{from{transform:rotate(-25deg)}to{transform:rotate(25deg)}}
+
+/* ROBOT */
+.robot-sprite{position:relative;animation:robotIdle 2.5s ease-in-out infinite}
+.robot-body{width:55px;height:45px;background:var(--blue);border-radius:10px;position:absolute;bottom:8px;left:50%;transform:translateX(-50%)}
+.robot-head{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:45px;height:35px;background:#2da1d4;border-radius:8px}
+.robot-antenna{position:absolute;top:0;left:50%;transform:translateX(-50%);width:3px;height:12px;background:#2da1d4}
+.robot-antenna::after{content:'';position:absolute;top:-5px;left:-3px;width:9px;height:9px;background:var(--green);border-radius:50%;animation:antennaGlow 1.5s ease-in-out infinite}
+.robot-eye{position:absolute;width:10px;height:10px;background:#fff;border-radius:3px;top:20px}
+.robot-eye::after{content:'';position:absolute;width:6px;height:6px;background:var(--green);border-radius:2px;top:2px;left:2px;animation:robotBlink 2s infinite}
+.robot-eye.l{left:28px}
+.robot-eye.r{right:28px}
+.robot-mouth{position:absolute;top:36px;left:50%;transform:translateX(-50%);width:16px;height:3px;background:#fff;border-radius:2px}
+@keyframes robotIdle{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+@keyframes antennaGlow{0%,100%{opacity:1;box-shadow:0 0 6px var(--green)}50%{opacity:.4;box-shadow:0 0 2px var(--green)}}
+@keyframes robotBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(0.2)}}
+
+.pet-name{font-size:1.15rem;font-weight:700;margin-bottom:.75rem}
+.stats{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.25rem}
+.stat{display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+.stat-label{color:var(--dim)}
+.stat-bar{width:80px;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.stat-fill{height:100%;border-radius:3px;transition:width .5s}
+.stat-fill.cur{background:var(--blue)}
+.stat-fill.ene{background:var(--green)}
+.stat-fill.stu{background:var(--red)}
+
+.description{margin-top:1rem;font-size:.8rem;color:var(--dim);min-height:3.5rem}
+
+/* CONFIRM */
+.confirm-area{text-align:center;padding:2rem 0}
+.btn-confirm{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s;opacity:.4;pointer-events:none}
+.btn-confirm.active{opacity:1;pointer-events:all}
+.btn-confirm:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
+.btn-confirm.active:hover{transform:translateY(-2px)}
+
+.chosen-msg{text-align:center;padding:1rem;margin:1rem 0;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2);border-radius:12px;display:none}
+.chosen-msg.show{display:block}
+.chosen-msg strong{color:var(--orange)}
+
+/* FOOTER */
+.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
+.foot a{color:var(--orange);font-weight:600;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+
+@media(max-width:600px){.header h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-bar">
+  <a href="index.html">&larr; AI Pet Lab</a>
+  <span class="lesson-badge">Lesson 1 of 9</span>
+</div>
+
+<div class="header">
+  <h1>Choose Your Pet &#128062;</h1>
+  <p>Every AI agent has a personality. Pick your creature and discover how different parameters affect learning.</p>
+</div>
+
+<div class="pet-grid">
+
+  <div class="pet-card" data-pet="cat" onclick="selectPet('cat')">
+    <div class="pet-avatar">
+      <div class="cat-sprite">
+        <div class="cat-ear l"></div>
+        <div class="cat-ear r"></div>
+        <div class="cat-body">
+          <div class="cat-eye l"></div>
+          <div class="cat-eye r"></div>
+          <div class="cat-nose"></div>
+        </div>
+        <div class="cat-tail"></div>
+      </div>
+    </div>
+    <div class="pet-name">Whiskers</div>
+    <div class="stats">
+      <div class="stat"><span class="stat-label">Curiosity</span><div class="stat-bar"><div class="stat-fill cur" style="width:90%"></div></div></div>
+      <div class="stat"><span class="stat-label">Energy</span><div class="stat-bar"><div class="stat-fill ene" style="width:50%"></div></div></div>
+      <div class="stat"><span class="stat-label">Stubbornness</span><div class="stat-bar"><div class="stat-fill stu" style="width:80%"></div></div></div>
+    </div>
+    <div class="description">High exploration, ignores commands sometimes. Like an RL agent with high epsilon &mdash; great at discovering new strategies, slow to exploit.</div>
+  </div>
+
+  <div class="pet-card" data-pet="dog" onclick="selectPet('dog')">
+    <div class="pet-avatar">
+      <div class="dog-sprite">
+        <div class="dog-ear l"></div>
+        <div class="dog-ear r"></div>
+        <div class="dog-body">
+          <div class="dog-eye l"></div>
+          <div class="dog-eye r"></div>
+          <div class="dog-tongue"></div>
+        </div>
+        <div class="dog-tail"></div>
+      </div>
+    </div>
+    <div class="pet-name">Sparky</div>
+    <div class="stats">
+      <div class="stat"><span class="stat-label">Curiosity</span><div class="stat-bar"><div class="stat-fill cur" style="width:60%"></div></div></div>
+      <div class="stat"><span class="stat-label">Energy</span><div class="stat-bar"><div class="stat-fill ene" style="width:95%"></div></div></div>
+      <div class="stat"><span class="stat-label">Stubbornness</span><div class="stat-bar"><div class="stat-fill stu" style="width:20%"></div></div></div>
+    </div>
+    <div class="description">Eager to please, learns fast, but low exploration. Like an agent with high learning rate &mdash; quick wins, but might miss better strategies.</div>
+  </div>
+
+  <div class="pet-card" data-pet="robot" onclick="selectPet('robot')">
+    <div class="pet-avatar">
+      <div class="robot-sprite">
+        <div class="robot-antenna"></div>
+        <div class="robot-head">
+          <div class="robot-eye l"></div>
+          <div class="robot-eye r"></div>
+        </div>
+        <div class="robot-body">
+          <div class="robot-mouth"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pet-name">Bolt</div>
+    <div class="stats">
+      <div class="stat"><span class="stat-label">Curiosity</span><div class="stat-bar"><div class="stat-fill cur" style="width:70%"></div></div></div>
+      <div class="stat"><span class="stat-label">Energy</span><div class="stat-bar"><div class="stat-fill ene" style="width:70%"></div></div></div>
+      <div class="stat"><span class="stat-label">Stubbornness</span><div class="stat-bar"><div class="stat-fill stu" style="width:50%"></div></div></div>
+    </div>
+    <div class="description">Balanced parameters, methodical learner. Like a well-tuned agent &mdash; steady progress, adapts to any reward structure.</div>
+  </div>
+
+</div>
+
+<div class="chosen-msg" id="chosenMsg">
+  You chose <strong id="chosenName"></strong>! Their personality parameters will shape how they learn throughout the course.
+</div>
+
+<div class="confirm-area">
+  <button class="btn-confirm" id="confirmBtn" onclick="confirmChoice()">Confirm &amp; Continue &rarr;</button>
+</div>
+
+<div class="foot">
+  <span>Lesson 1 of 9</span>
+  <a href="first-reward.html">Next: First Reward &rarr;</a>
+</div>
+
+</div>
+
+<script>
+const petNames={cat:'Whiskers',dog:'Sparky',robot:'Bolt'};
+let selected=localStorage.getItem('petlab_pet')||null;
+
+function selectPet(type){
+  selected=type;
+  document.querySelectorAll('.pet-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelector('[data-pet="'+type+'"]').classList.add('selected');
+  document.getElementById('confirmBtn').classList.add('active');
+  document.getElementById('chosenMsg').classList.add('show');
+  document.getElementById('chosenName').textContent=petNames[type];
+}
+
+function confirmChoice(){
+  if(!selected)return;
+  localStorage.setItem('petlab_pet',selected);
+  localStorage.setItem('petlab_pet_name',petNames[selected]);
+  localStorage.setItem('petlab_lesson_1','complete');
+  window.location.href='first-reward.html';
+}
+
+// Restore previous selection
+if(selected){
+  selectPet(selected);
+}
+</script>
+</body>
+</html>

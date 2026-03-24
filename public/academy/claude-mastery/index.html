@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Mastery — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.nav-link:hover{color:#e5e5e5}
+
+.hero{text-align:center;padding:4rem 2rem 3rem;max-width:800px;margin:0 auto;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(139,92,246,.12),transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);font-size:.75rem;font-weight:600;color:#8b5cf6;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-emoji{font-size:4rem;margin-bottom:1rem;display:block;filter:drop-shadow(0 0 40px rgba(139,92,246,.4))}
+.hero h1{font-size:3.2rem;font-weight:800;line-height:1.1;margin-bottom:1rem;background:linear-gradient(135deg,#fff 30%,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:#a1a1aa;max-width:500px;margin:0 auto 2rem;line-height:1.6}
+.meta{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.meta-item{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:#71717a}
+.meta-item span{color:#e5e5e5;font-weight:600}
+.price-tag{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;padding:.5rem 1.25rem;border-radius:100px;font-weight:700;font-size:1rem}
+
+.progress-banner{max-width:800px;margin:2rem auto;padding:0 2rem}
+.progress-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.progress-ring{width:64px;height:64px;position:relative;flex-shrink:0}
+.progress-ring svg{transform:rotate(-90deg)}
+.progress-ring circle{fill:none;stroke-width:4}
+.progress-ring .bg{stroke:rgba(255,255,255,.06)}
+.progress-ring .fg{stroke:#8b5cf6;stroke-linecap:round;transition:stroke-dashoffset .6s ease}
+.progress-pct{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:.85rem;font-weight:700;color:#8b5cf6}
+.progress-info{flex:1}
+.progress-info h3{font-size:.95rem;font-weight:600;margin-bottom:.25rem}
+.progress-info p{font-size:.8rem;color:#71717a}
+.xp-total{font-size:1.5rem;font-weight:800;color:#fb923c}
+
+.modules{max-width:800px;margin:2rem auto 4rem;padding:0 2rem}
+.module{margin-bottom:2.5rem}
+.module-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.module-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.m1 .module-num{background:rgba(139,92,246,.15);color:#8b5cf6}
+.m2 .module-num{background:rgba(251,146,60,.15);color:#fb923c}
+.m3 .module-num{background:rgba(56,189,248,.15);color:#38bdf8}
+.module-title{font-size:1.1rem;font-weight:700;flex:1}
+.module-xp{font-size:.8rem;color:#71717a;font-weight:600}
+
+.lesson-list{display:flex;flex-direction:column;gap:.5rem}
+.lesson-card{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);transition:all .25s ease;cursor:pointer;position:relative;overflow:hidden}
+.lesson-card:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);transform:translateY(-1px)}
+.lesson-card.completed{border-color:rgba(139,92,246,.2)}
+.lesson-card.completed::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#8b5cf6}
+
+.lesson-check{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.lesson-card.completed .lesson-check{background:#8b5cf6;border-color:#8b5cf6}
+.lesson-check svg{width:14px;height:14px;stroke:#fff;stroke-width:3;fill:none;opacity:0;transition:opacity .3s}
+.lesson-card.completed .lesson-check svg{opacity:1}
+
+.lesson-info{flex:1;min-width:0}
+.lesson-title{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
+.lesson-meta{display:flex;gap:.75rem;font-size:.75rem;color:#71717a}
+.type-badge{padding:.15rem .5rem;border-radius:100px;font-weight:600;font-size:.65rem;text-transform:uppercase;letter-spacing:.04em}
+.type-interactive{background:rgba(139,92,246,.12);color:#8b5cf6}
+.type-lab{background:rgba(251,146,60,.12);color:#fb923c}
+.type-builder{background:rgba(56,189,248,.12);color:#38bdf8}
+.type-game{background:rgba(52,211,153,.12);color:#34d399}
+.type-visual{background:rgba(244,114,182,.12);color:#f472b6}
+
+.lesson-xp{font-size:.8rem;font-weight:700;color:#fb923c;white-space:nowrap}
+
+.footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06);max-width:800px;margin:0 auto}
+.footer p{font-size:.8rem;color:#52525b}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.module{animation:fadeUp .5s ease both}
+.module:nth-child(2){animation-delay:.1s}
+.module:nth-child(3){animation-delay:.2s}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+<a href="/academy" class="logo">Like One Academy</a>
+<a href="/academy" class="nav-link">All Courses</a>
+</nav>
+
+<section class="hero">
+<span class="badge">Premium Course</span>
+<span class="hero-emoji">🧠</span>
+<h1>Claude Mastery</h1>
+<p>From prompts to production. Master Claude AI through hands-on interactive lessons and build real systems.</p>
+<div class="meta">
+<div class="meta-item">📚 <span>10 Lessons</span></div>
+<div class="meta-item">⏱ <span>12 Hours</span></div>
+<div class="meta-item">⚡ <span>2,400 XP</span></div>
+<div class="meta-item"><span class="price-tag">$99</span></div>
+</div>
+</section>
+
+<section class="progress-banner">
+<div class="progress-card">
+<div class="progress-ring">
+<svg width="64" height="64" viewBox="0 0 64 64">
+<circle class="bg" cx="32" cy="32" r="28"/>
+<circle class="fg" id="progressCircle" cx="32" cy="32" r="28" stroke-dasharray="175.93" stroke-dashoffset="175.93"/>
+</svg>
+<div class="progress-pct" id="progressPct">0%</div>
+</div>
+<div class="progress-info">
+<h3>Your Progress</h3>
+<p id="progressText">0 of 10 lessons completed</p>
+</div>
+<div class="xp-total" id="xpTotal">0 XP</div>
+</div>
+</section>
+
+<section class="modules">
+
+<div class="module m1">
+<div class="module-header">
+<div class="module-num">1</div>
+<div class="module-title">Claude Fundamentals</div>
+<div class="module-xp">720 XP</div>
+</div>
+<div class="lesson-list">
+<a href="meet-claude.html" class="lesson-card" data-lesson="meet-claude" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Meet Claude</div>
+<div class="lesson-meta"><span class="type-badge type-interactive">Interactive</span> 60 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+<a href="context-window-explorer.html" class="lesson-card" data-lesson="context-window" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Context Window Explorer</div>
+<div class="lesson-meta"><span class="type-badge type-lab">Lab</span> 75 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+<a href="temperature-lab.html" class="lesson-card" data-lesson="temperature-lab" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Temperature Lab</div>
+<div class="lesson-meta"><span class="type-badge type-lab">Lab</span> 60 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+</div>
+</div>
+
+<div class="module m2">
+<div class="module-header">
+<div class="module-num">2</div>
+<div class="module-title">Advanced Prompting</div>
+<div class="module-xp">960 XP</div>
+</div>
+<div class="lesson-list">
+<a href="system-prompts.html" class="lesson-card" data-lesson="system-prompts" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">System Prompt Builder</div>
+<div class="lesson-meta"><span class="type-badge type-builder">Builder</span> 75 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+<a href="chain-of-thought.html" class="lesson-card" data-lesson="chain-of-thought" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Chain-of-Thought Reasoning</div>
+<div class="lesson-meta"><span class="type-badge type-visual">Visual</span> 75 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+<a href="few-shot-mastery.html" class="lesson-card" data-lesson="few-shot" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Few-Shot Mastery</div>
+<div class="lesson-meta"><span class="type-badge type-builder">Builder</span> 75 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+<a href="prompt-engineering-game.html" class="lesson-card" data-lesson="prompt-game" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Prompt Engineering Game</div>
+<div class="lesson-meta"><span class="type-badge type-game">Game</span> 90 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+</div>
+</div>
+
+<div class="module m3">
+<div class="module-header">
+<div class="module-num">3</div>
+<div class="module-title">Production Claude</div>
+<div class="module-xp">720 XP</div>
+</div>
+<div class="lesson-list">
+<a href="tool-use-basics.html" class="lesson-card" data-lesson="tool-use" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Tool Use Basics</div>
+<div class="lesson-meta"><span class="type-badge type-interactive">Interactive</span> 75 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+<a href="mcp-servers.html" class="lesson-card" data-lesson="mcp-servers" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">MCP Servers</div>
+<div class="lesson-meta"><span class="type-badge type-visual">Visual</span> 75 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+<a href="building-agents.html" class="lesson-card" data-lesson="building-agents" data-xp="240">
+<div class="lesson-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+<div class="lesson-info">
+<div class="lesson-title">Building Agents</div>
+<div class="lesson-meta"><span class="type-badge type-builder">Builder</span> 90 min</div>
+</div>
+<div class="lesson-xp">240 XP</div>
+</a>
+</div>
+</div>
+
+</section>
+
+<footer class="footer">
+<p>Like One Academy — Claude Mastery Course</p>
+</footer>
+
+<script>
+const LESSONS = ['meet-claude','context-window','temperature-lab','system-prompts','chain-of-thought','few-shot','prompt-game','tool-use','mcp-servers','building-agents'];
+const XP_PER = 240;
+
+function updateProgress(){
+  let done=0, xp=0;
+  LESSONS.forEach(id=>{
+    if(localStorage.getItem('cm_'+id)==='done'){done++;xp+=XP_PER}
+  });
+  const pct=Math.round(done/LESSONS.length*100);
+  document.getElementById('progressPct').textContent=pct+'%';
+  document.getElementById('progressText').textContent=done+' of '+LESSONS.length+' lessons completed';
+  document.getElementById('xpTotal').textContent=xp.toLocaleString()+' XP';
+  const circ=document.getElementById('progressCircle');
+  circ.style.strokeDashoffset=175.93-(175.93*pct/100);
+  document.querySelectorAll('.lesson-card').forEach(card=>{
+    const id=card.dataset.lesson;
+    if(localStorage.getItem('cm_'+id)==='done') card.classList.add('completed');
+  });
+}
+updateProgress();
+</script>
+</body>
+</html>

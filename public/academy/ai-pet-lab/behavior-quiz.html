@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behavior Quiz — AI Pet Lab</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
+.top-bar a:hover{color:var(--text);text-decoration:none}
+.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+.header{padding:2.5rem 0 1.5rem;text-align:center}
+.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
+
+/* QUIZ */
+.quiz-progress{display:flex;gap:.5rem;margin:2rem 0 1.5rem;justify-content:center}
+.qp-dot{width:32px;height:4px;border-radius:2px;background:var(--border2);transition:background .3s}
+.qp-dot.active{background:var(--orange)}
+.qp-dot.correct{background:var(--green)}
+.qp-dot.wrong{background:var(--red)}
+
+.question-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:1.5rem 0}
+.q-num{font-size:.75rem;color:var(--orange);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
+.q-text{font-size:1.1rem;font-weight:600;margin-bottom:1.5rem}
+.options{display:flex;flex-direction:column;gap:.75rem}
+.opt{background:var(--surface2);border:2px solid var(--border);border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:all .2s;font-size:.95rem;color:var(--dim)}
+.opt:hover{border-color:var(--border2);color:var(--text)}
+.opt.selected{border-color:var(--blue);color:var(--text);background:rgba(56,189,248,.05)}
+.opt.correct{border-color:var(--green);color:var(--green);background:rgba(74,222,128,.08)}
+.opt.wrong{border-color:var(--red);color:var(--red);background:rgba(248,113,113,.08)}
+.opt.disabled{pointer-events:none}
+
+.feedback{margin-top:1rem;padding:1rem;border-radius:10px;font-size:.9rem;display:none}
+.feedback.show{display:block}
+.feedback.correct{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:var(--green)}
+.feedback.wrong{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:var(--red)}
+
+.btn-next{display:none;margin:1.5rem auto 0;background:var(--orange);color:#000;font-weight:700;font-size:.95rem;padding:.75rem 2rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,53,.25)}
+
+/* RESULTS */
+.results{display:none;text-align:center;padding:3rem 0}
+.results h2{font-size:1.75rem;font-weight:800;margin-bottom:1rem}
+.results .score{font-size:3rem;font-weight:800;margin:1rem 0}
+.results .score.good{color:var(--green)}
+.results .score.ok{color:var(--orange)}
+.results .score.bad{color:var(--red)}
+.results p{color:var(--dim);font-size:1rem;margin-bottom:2rem}
+.btn-complete{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
+
+.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
+.foot a{color:var(--orange);font-weight:600;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+
+@media(max-width:600px){.header h1{font-size:1.5rem}.question-card{padding:1.5rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-bar">
+  <a href="index.html">&larr; AI Pet Lab</a>
+  <span class="lesson-badge">Lesson 3 of 9</span>
+</div>
+
+<div class="header">
+  <h1>Behavior Quiz &#129504;</h1>
+  <p>Test what you've learned about reinforcement, rewards, and policies!</p>
+</div>
+
+<div class="quiz-progress" id="qProgress"></div>
+
+<div id="quizArea"></div>
+
+<div class="results" id="results">
+  <h2 id="resultsTitle"></h2>
+  <div class="score" id="resultsScore"></div>
+  <p id="resultsMsg"></p>
+  <button class="btn-complete" onclick="completeLesson()">Continue to Module 2 &rarr;</button>
+</div>
+
+<div class="foot">
+  <a href="first-reward.html">&larr; First Reward</a>
+  <a href="teach-sit.html">Next: Teach Sit &rarr;</a>
+</div>
+
+</div>
+
+<script>
+const questions=[
+  {q:"In reinforcement learning, what does the 'reward signal' tell the agent?",opts:["How fast to learn","Whether an action was good or bad","What action to take next","How many neurons to use"],answer:1,explain:"The reward signal gives feedback on whether an action was desirable (+) or undesirable (-). The agent uses this to update its policy."},
+  {q:"Your pet sits when you say 'sit' and you give it a treat. This is an example of:",opts:["Negative reinforcement","Unsupervised learning","Positive reinforcement","Transfer learning"],answer:2,explain:"Positive reinforcement means adding a pleasant stimulus (treat) after a desired behavior, making it more likely to happen again."},
+  {q:"A 'policy' in reinforcement learning is:",opts:["The rules the programmer writes","A mapping from states to actions the agent should take","The reward function","The training data"],answer:1,explain:"A policy is the agent's strategy — it maps each state to the action the agent should take. The goal of RL is to learn the optimal policy."},
+  {q:"What happens if you reward both good AND bad actions equally?",opts:["The agent learns faster","The agent can't distinguish good from bad and learns nothing useful","The agent becomes more creative","The rewards cancel out"],answer:1,explain:"Without a clear reward signal, the agent has no way to differentiate desirable from undesirable behavior. Consistent, accurate rewards are essential."},
+  {q:"What is 'negative reinforcement'?",opts:["Punishing the agent","Removing an unpleasant stimulus when the agent does something good","Giving a negative reward","Turning off the agent"],answer:1,explain:"Negative reinforcement removes something unpleasant to encourage behavior (like stopping a buzzer when the pet sits). It's NOT punishment — it still encourages good behavior."}
+];
+
+let current=0,score=0,answered=new Array(questions.length).fill(null);
+
+function renderProgress(){
+  const el=document.getElementById('qProgress');
+  el.innerHTML='';
+  questions.forEach((_,i)=>{
+    const dot=document.createElement('div');
+    dot.className='qp-dot'+(i===current?' active':'')+(answered[i]==='correct'?' correct':'')+(answered[i]==='wrong'?' wrong':'');
+    el.appendChild(dot);
+  });
+}
+
+function renderQuestion(){
+  if(current>=questions.length){showResults();return;}
+  const q=questions[current];
+  const area=document.getElementById('quizArea');
+  let html=`<div class="question-card">
+    <div class="q-num">Question ${current+1} of ${questions.length}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="options">`;
+  q.opts.forEach((o,i)=>{
+    html+=`<div class="opt" data-idx="${i}" onclick="selectAnswer(${i})">${o}</div>`;
+  });
+  html+=`</div>
+    <div class="feedback" id="feedback"></div>
+    <button class="btn-next" id="btnNext" onclick="nextQuestion()">Next &rarr;</button>
+  </div>`;
+  area.innerHTML=html;
+  renderProgress();
+}
+
+function selectAnswer(idx){
+  const q=questions[current];
+  const opts=document.querySelectorAll('.opt');
+  const fb=document.getElementById('feedback');
+
+  opts.forEach(o=>o.classList.add('disabled'));
+
+  if(idx===q.answer){
+    opts[idx].classList.add('correct');
+    score++;
+    answered[current]='correct';
+    fb.className='feedback show correct';
+    fb.textContent='Correct! '+q.explain;
+  }else{
+    opts[idx].classList.add('wrong');
+    opts[q.answer].classList.add('correct');
+    answered[current]='wrong';
+    fb.className='feedback show wrong';
+    fb.textContent='Not quite. '+q.explain;
+  }
+
+  document.getElementById('btnNext').style.display='block';
+  renderProgress();
+}
+
+function nextQuestion(){
+  current++;
+  renderQuestion();
+}
+
+function showResults(){
+  document.getElementById('quizArea').style.display='none';
+  const r=document.getElementById('results');
+  r.style.display='block';
+
+  const pct=Math.round((score/questions.length)*100);
+  const sc=document.getElementById('resultsScore');
+  sc.textContent=score+'/'+questions.length;
+  sc.className='score '+(pct>=80?'good':pct>=60?'ok':'bad');
+
+  document.getElementById('resultsTitle').textContent=pct>=80?'Excellent!':pct>=60?'Good effort!':'Keep learning!';
+  document.getElementById('resultsMsg').textContent=pct>=80?'You understand reinforcement learning fundamentals. Your pet is in good hands!':pct>=60?'You\'re getting there! Review the concepts and your pet will thank you.':'No worries — review the first two lessons and try again.';
+}
+
+function completeLesson(){
+  localStorage.setItem('petlab_lesson_3','complete');
+  window.location.href='teach-sit.html';
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

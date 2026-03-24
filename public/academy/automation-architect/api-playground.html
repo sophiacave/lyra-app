@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Playground — Automation Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#34C759,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.back-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.back-link:hover{color:#e5e5e5}
+
+.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .75rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+.lesson-header h1{font-size:2.25rem;font-weight:800;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;font-size:1rem;max-width:500px;margin:0 auto}
+
+.content{max-width:800px;margin:0 auto;padding:2rem}
+
+.sandbox{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;margin:1.5rem 0}
+.sandbox-header{padding:1rem 1.5rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:.75rem}
+.sandbox-dot{width:10px;height:10px;border-radius:50%}
+.dot-red{background:#ef4444}
+.dot-yellow{background:#fb923c}
+.dot-green{background:#34C759}
+.sandbox-title{font-size:.75rem;color:#71717a;font-weight:600;margin-left:.5rem}
+
+.request-bar{display:flex;gap:.5rem;padding:1.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.method-select{background:rgba(52,199,89,.1);border:1px solid rgba(52,199,89,.25);color:#34C759;padding:.6rem 1rem;border-radius:8px;font-family:'Inter',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;appearance:none;min-width:90px}
+.method-select option{background:#0a0a0f;color:#e5e5e5}
+.url-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#e5e5e5;padding:.6rem 1rem;border-radius:8px;font-family:'SF Mono',monospace;font-size:.85rem;outline:none;transition:border-color .2s}
+.url-input:focus{border-color:rgba(56,189,248,.4)}
+.send-btn{padding:.6rem 1.5rem;border:none;border-radius:8px;background:linear-gradient(135deg,#34C759,#38bdf8);color:#0a0a0f;font-family:'Inter',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s}
+.send-btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(52,199,89,.3)}
+
+.body-section{padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.body-section label{font-size:.75rem;color:#71717a;font-weight:600;display:block;margin-bottom:.5rem}
+.body-input{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.06);color:#e5e5e5;padding:.75rem 1rem;border-radius:8px;font-family:'SF Mono',monospace;font-size:.8rem;resize:vertical;min-height:80px;outline:none;transition:border-color .2s}
+.body-input:focus{border-color:rgba(56,189,248,.4)}
+
+.response-section{padding:1.5rem}
+.response-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.response-label{font-size:.75rem;color:#71717a;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.status-badge{padding:.2rem .6rem;border-radius:6px;font-family:'SF Mono',monospace;font-size:.75rem;font-weight:700}
+.status-2xx{background:rgba(52,199,89,.15);color:#34C759}
+.status-4xx{background:rgba(251,146,60,.15);color:#fb923c}
+.status-5xx{background:rgba(239,68,68,.15);color:#ef4444}
+.response-time{font-size:.75rem;color:#52525b}
+
+.response-body{background:rgba(0,0,0,.3);border-radius:10px;padding:1rem;font-family:'SF Mono',monospace;font-size:.8rem;line-height:1.6;color:#a1a1aa;white-space:pre-wrap;max-height:400px;overflow-y:auto;min-height:60px}
+.response-body .key{color:#38bdf8}
+.response-body .str{color:#34C759}
+.response-body .num{color:#fb923c}
+.response-body .bool{color:#c084fc}
+
+/* Examples */
+.examples{margin:2rem 0}
+.examples h2{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
+.example-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.example-btn{padding:1rem;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:all .25s;text-align:left}
+.example-btn:hover{border-color:rgba(52,199,89,.3);background:rgba(52,199,89,.03)}
+.example-method{font-family:'SF Mono',monospace;font-weight:700;font-size:.75rem;margin-bottom:.25rem}
+.example-method.get{color:#34C759}
+.example-method.post{color:#38bdf8}
+.example-method.put{color:#fb923c}
+.example-path{font-size:.8rem;font-weight:600;margin-bottom:.15rem}
+.example-desc{font-size:.7rem;color:#71717a}
+
+.complete-btn{display:block;width:100%;max-width:400px;margin:3rem auto 1rem;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#34C759,#2da44e);color:#0a0a0f;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(52,199,89,.3)}
+.complete-btn.done{background:rgba(52,199,89,.15);color:#34C759;cursor:default}
+
+.progress-footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);max-width:800px;margin:0 auto}
+.progress-footer p{font-size:.8rem;color:#52525b}
+@media(max-width:600px){.example-grid{grid-template-columns:1fr}.request-bar{flex-wrap:wrap}.lesson-header h1{font-size:1.75rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+</nav>
+
+<header class="lesson-header">
+  <div class="lesson-badge">Module 2 &middot; Interactive</div>
+  <h1>API Playground</h1>
+  <p>A fake API sandbox. Send real-looking requests and see how APIs respond. No backend needed.</p>
+</header>
+
+<div class="content">
+  <div class="sandbox">
+    <div class="sandbox-header">
+      <div class="sandbox-dot dot-red"></div>
+      <div class="sandbox-dot dot-yellow"></div>
+      <div class="sandbox-dot dot-green"></div>
+      <div class="sandbox-title">API Sandbox v1.0</div>
+    </div>
+    <div class="request-bar">
+      <select class="method-select" id="methodSelect">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+      <input class="url-input" id="urlInput" value="/users" placeholder="/endpoint">
+      <button class="send-btn" onclick="sendRequest()">Send</button>
+    </div>
+    <div class="body-section" id="bodySection">
+      <label>Request Body (JSON)</label>
+      <textarea class="body-input" id="bodyInput" placeholder='{ "key": "value" }'></textarea>
+    </div>
+    <div class="response-section">
+      <div class="response-header">
+        <div class="response-label">Response</div>
+        <div class="status-badge" id="statusBadge" style="display:none"></div>
+        <div class="response-time" id="responseTime"></div>
+      </div>
+      <div class="response-body" id="responseBody">// Send a request to see the response</div>
+    </div>
+  </div>
+
+  <div class="examples">
+    <h2>Try These Examples</h2>
+    <div class="example-grid">
+      <div class="example-btn" onclick="loadExample('GET','/users','')">
+        <div class="example-method get">GET</div>
+        <div class="example-path">/users</div>
+        <div class="example-desc">List all users</div>
+      </div>
+      <div class="example-btn" onclick="loadExample('POST','/orders',JSON.stringify({product:'Pro Plan',amount:7900,customer:'cus_42'},null,2))">
+        <div class="example-method post">POST</div>
+        <div class="example-path">/orders</div>
+        <div class="example-desc">Create a new order</div>
+      </div>
+      <div class="example-btn" onclick="loadExample('PUT','/settings',JSON.stringify({theme:'dark',notifications:true},null,2))">
+        <div class="example-method put">PUT</div>
+        <div class="example-path">/settings</div>
+        <div class="example-desc">Update user settings</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 75 XP</button>
+</div>
+
+<footer class="progress-footer">
+  <p>Lesson 5 of 9 &middot; Automation Architect</p>
+</footer>
+
+<script>
+const SLUG='api-playground';
+const STORAGE_KEY='automation-architect-progress';
+
+const fakeDB={
+  'GET /users':{status:200,body:{users:[{id:1,name:"Alice Chen",email:"alice@example.com",plan:"pro"},{id:2,name:"Bob Patel",email:"bob@example.com",plan:"free"},{id:3,name:"Cara Diaz",email:"cara@example.com",plan:"enterprise"}],total:3}},
+  'GET /users/1':{status:200,body:{id:1,name:"Alice Chen",email:"alice@example.com",plan:"pro",created:"2025-01-15"}},
+  'GET /orders':{status:200,body:{orders:[{id:"ord_001",product:"Pro Plan",amount:7900,status:"completed"},{id:"ord_002",product:"Enterprise",amount:29900,status:"pending"}]}},
+  'GET /settings':{status:200,body:{theme:"light",notifications:true,timezone:"UTC",language:"en"}},
+  'POST /users':{status:201,body:{id:4,name:"New User",email:"new@user.com",created:"2026-03-23",message:"User created successfully"}},
+  'POST /orders':{status:201,body:{id:"ord_003",status:"created",message:"Order placed successfully",estimated_delivery:"2026-03-26"}},
+  'PUT /settings':{status:200,body:{updated:true,message:"Settings saved successfully"}},
+  'PUT /users/1':{status:200,body:{id:1,updated:true,message:"User updated successfully"}},
+  'DELETE /users/1':{status:200,body:{deleted:true,id:1,message:"User removed"}},
+  'DELETE /orders/1':{status:200,body:{deleted:true,id:"ord_001",message:"Order cancelled"}},
+};
+
+function loadExample(method,url,body){
+  document.getElementById('methodSelect').value=method;
+  document.getElementById('urlInput').value=url;
+  document.getElementById('bodyInput').value=body;
+  sendRequest();
+}
+
+function syntaxHighlight(json){
+  if(typeof json!=='string')json=JSON.stringify(json,null,2);
+  return json.replace(/("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,match=>{
+    let cls='num';
+    if(/^"/.test(match)){cls=/:$/.test(match)?'key':'str'}
+    else if(/true|false/.test(match)){cls='bool'}
+    return`<span class="${cls}">${match}</span>`;
+  });
+}
+
+function sendRequest(){
+  const method=document.getElementById('methodSelect').value;
+  const url=document.getElementById('urlInput').value.trim();
+  const key=method+' '+url;
+  const startTime=performance.now();
+
+  setTimeout(()=>{
+    const endTime=performance.now();
+    const time=Math.round(endTime-startTime+Math.random()*100+50);
+
+    let result=fakeDB[key];
+    if(!result){
+      // Try partial match
+      const partial=Object.keys(fakeDB).find(k=>k.startsWith(method)&&url.startsWith(k.split(' ')[1]));
+      if(partial)result=fakeDB[partial];
+    }
+
+    if(!result){
+      if(url==='/'||url===''){
+        result={status:200,body:{api:"Like One Sandbox API",version:"1.0",endpoints:["/users","/orders","/settings"]}};
+      }else{
+        result={status:404,body:{error:"Not Found",message:`No endpoint matches ${method} ${url}`,available_endpoints:["/users","/orders","/settings"]}};
+      }
+    }
+
+    // Merge request body into response for POST/PUT
+    if((method==='POST'||method==='PUT')&&document.getElementById('bodyInput').value.trim()){
+      try{
+        const reqBody=JSON.parse(document.getElementById('bodyInput').value);
+        result={...result,body:{...result.body,...reqBody}};
+      }catch(e){}
+    }
+
+    const badge=document.getElementById('statusBadge');
+    badge.style.display='inline-block';
+    badge.textContent=result.status+(result.status===200?' OK':result.status===201?' Created':result.status===404?' Not Found':' Error');
+    badge.className='status-badge '+(result.status<300?'status-2xx':result.status<500?'status-4xx':'status-5xx');
+
+    document.getElementById('responseTime').textContent=time+'ms';
+    document.getElementById('responseBody').innerHTML=syntaxHighlight(result.body);
+  },200+Math.random()*300);
+
+  document.getElementById('responseBody').innerHTML='<span style="color:#52525b">Sending request...</span>';
+}
+
+function completeLesson(){
+  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+  progress[SLUG]=true;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
+  const btn=document.getElementById('completeBtn');
+  btn.textContent='Completed! +75 XP';
+  btn.classList.add('done');
+}
+
+(function(){
+  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+  if(progress[SLUG]){
+    document.getElementById('completeBtn').textContent='Completed! +75 XP';
+    document.getElementById('completeBtn').classList.add('done');
+  }
+})();
+</script>
+</body>
+</html>

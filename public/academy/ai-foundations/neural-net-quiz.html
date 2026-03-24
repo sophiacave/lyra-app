@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Net Quiz — AI Foundations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-header{margin-bottom:2rem}
+.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(56,189,248,.12);color:#38bdf8}
+.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
+.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;line-height:1.6}
+
+.score-bar{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;margin-bottom:2rem}
+.score-label{font-size:.85rem;color:#71717a}
+.score-val{font-size:1.25rem;font-weight:800;color:#fb923c}
+.q-count{font-size:.85rem;color:#a1a1aa}
+
+.quiz-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;margin-bottom:1.5rem;transition:border-color .3s}
+.quiz-card.correct{border-color:rgba(34,197,94,.3)}
+.quiz-card.incorrect{border-color:rgba(239,68,68,.3)}
+.q-number{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c084fc;margin-bottom:.75rem}
+.q-text{font-size:1.1rem;font-weight:600;line-height:1.5;margin-bottom:1.5rem}
+
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option{padding:1rem 1.25rem;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);cursor:pointer;transition:all .2s;font-size:.9rem;display:flex;align-items:center;gap:.75rem}
+.option:hover:not(.disabled){background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+.option .letter{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0;transition:all .3s}
+.option.selected{border-color:#c084fc;background:rgba(192,132,252,.08)}
+.option.selected .letter{background:#c084fc;color:#0a0a0f}
+.option.correct-answer{border-color:#22c55e;background:rgba(34,197,94,.08)}
+.option.correct-answer .letter{background:#22c55e;color:#fff}
+.option.wrong-answer{border-color:#ef4444;background:rgba(239,68,68,.08)}
+.option.wrong-answer .letter{background:#ef4444;color:#fff}
+.option.disabled{cursor:default;opacity:.7}
+
+.feedback{margin-top:1rem;padding:1rem;border-radius:8px;font-size:.85rem;line-height:1.5;display:none}
+.feedback.show{display:block;animation:fadeIn .3s ease}
+.feedback.correct{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:#4ade80}
+.feedback.incorrect{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#f87171}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+.results{text-align:center;padding:3rem 2rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;margin-bottom:2rem;display:none}
+.results.show{display:block}
+.results h2{font-size:1.75rem;font-weight:800;margin-bottom:.5rem}
+.results .big-score{font-size:4rem;font-weight:800;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:.5rem 0}
+.results p{color:#a1a1aa;margin-bottom:1.5rem}
+
+.complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer-progress{text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
+.footer-progress span{color:#c084fc;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+<div class="container">
+  <div class="lesson-header">
+    <div class="meta">
+      <span class="type-badge">Quiz</span>
+      <span class="xp-badge">+40 XP</span>
+      <span class="time-badge">~10 min</span>
+    </div>
+    <h1>Neural Net Quiz</h1>
+    <p>Test your understanding of neurons, weights, and network architecture.</p>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-label">Score</div>
+    <div class="score-val" id="score">0 / 40 XP</div>
+    <div class="q-count" id="qCount">Question 1 of 3</div>
+  </div>
+
+  <div id="quizContainer"></div>
+  <div class="results" id="results">
+    <h2>Quiz Complete!</h2>
+    <div class="big-score" id="finalScore">0/3</div>
+    <p id="finalMsg">Review your answers above and continue to the next module.</p>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
+</div>
+<div class="footer-progress"><span id="footerProgress">0 of 9</span> lessons complete</div>
+
+<script>
+const questions=[
+  {
+    q:"What does a weight in a neural network represent?",
+    opts:["The physical size of a neuron","How much influence an input has on the output","The number of connections in the network","The speed at which data flows"],
+    correct:1,
+    explain:"Weights determine how much each input contributes to the neuron's output. Higher weights mean more influence — they're what the network adjusts during training."
+  },
+  {
+    q:"What is the role of a hidden layer?",
+    opts:["To store the training data","To display results to the user","To find patterns and intermediate representations in data","To reduce the network's size"],
+    correct:2,
+    explain:"Hidden layers transform input data through learned patterns. Each layer can detect increasingly complex features — from edges to shapes to objects."
+  },
+  {
+    q:"What does an activation function do?",
+    opts:["Turns the computer on","Decides whether a neuron should fire based on its input","Counts the number of neurons","Stores data permanently"],
+    correct:1,
+    explain:"Activation functions introduce non-linearity — they decide if a neuron's summed input is strong enough to pass a signal forward. Without them, the network could only learn linear patterns."
+  }
+];
+
+let answered=0,totalScore=0;
+
+function renderQuiz(){
+  const container=document.getElementById('quizContainer');
+  container.innerHTML=questions.map((q,i)=>`
+    <div class="quiz-card" id="card${i}">
+      <div class="q-number">Question ${i+1} of ${questions.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options" id="opts${i}">
+        ${q.opts.map((o,j)=>`<div class="option" data-q="${i}" data-o="${j}" onclick="answer(${i},${j})">
+          <div class="letter">${String.fromCharCode(65+j)}</div>${o}
+        </div>`).join('')}
+      </div>
+      <div class="feedback" id="fb${i}"></div>
+    </div>
+  `).join('');
+}
+
+function answer(qi,oi){
+  const card=document.getElementById('card'+qi);
+  if(card.classList.contains('correct')||card.classList.contains('incorrect'))return;
+
+  const opts=document.querySelectorAll(`#opts${qi} .option`);
+  const q=questions[qi];
+  const fb=document.getElementById('fb'+qi);
+
+  opts.forEach(o=>o.classList.add('disabled'));
+
+  if(oi===q.correct){
+    opts[oi].classList.add('correct-answer');
+    card.classList.add('correct');
+    fb.className='feedback correct show';
+    fb.textContent='✓ Correct! '+q.explain;
+    totalScore+=Math.round(40/questions.length);
+  }else{
+    opts[oi].classList.add('wrong-answer');
+    opts[q.correct].classList.add('correct-answer');
+    card.classList.add('incorrect');
+    fb.className='feedback incorrect show';
+    fb.textContent='✗ Not quite. '+q.explain;
+  }
+
+  answered++;
+  document.getElementById('score').textContent=totalScore+' / 40 XP';
+  document.getElementById('qCount').textContent='Answered '+answered+' of '+questions.length;
+
+  if(answered===questions.length){
+    const res=document.getElementById('results');
+    res.classList.add('show');
+    const correct=document.querySelectorAll('.quiz-card.correct').length;
+    document.getElementById('finalScore').textContent=correct+'/'+questions.length;
+    document.getElementById('finalMsg').textContent=correct===questions.length?'Perfect score! You\'ve mastered neural network basics.':'Review the explanations above, then continue to the next module.';
+  }
+}
+
+renderQuiz();
+
+function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
+function updateFooter(){
+  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
+  document.getElementById('footerProgress').textContent=c+' of 9';
+  if(p['neural-net-quiz']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
+}
+function completeLesson(){
+  const p=getProgress();p['neural-net-quiz']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
+  window.location.href='anatomy-of-a-prompt.html';
+}
+updateFooter();
+</script>
+</body>
+</html>

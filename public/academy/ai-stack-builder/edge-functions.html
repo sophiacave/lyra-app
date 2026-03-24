@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Functions — AI Stack Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}a:hover{color:#fbbf24}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #1e1e2e}
+.nav a{font-size:.85rem;color:#888}.nav a:hover{color:#f59e0b}.nav .current{color:#e5e5e5;font-weight:600}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:#f59e0b;background:#f59e0b15;padding:.3rem .75rem;border-radius:99px;margin-bottom:1rem}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+.intro{color:#999;margin-bottom:2rem;font-size:1.05rem}
+h2{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#f59e0b}
+p{margin-bottom:1rem;color:#ccc}
+.panel{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.panel .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#f59e0b;margin-bottom:.75rem;font-weight:600}
+.code-block{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto;margin:.75rem 0}
+.kw{color:#c084fc}.str{color:#34d399}.cm{color:#555}.fn{color:#60a5fa}.op{color:#f59e0b}.num{color:#fb923c}.type{color:#f472b6}
+
+/* Editor */
+.editor-container{background:#111118;border:1px solid #1e1e2e;border-radius:12px;overflow:hidden;margin:1.5rem 0}
+.editor-tabs{display:flex;background:#0a0a0f;border-bottom:1px solid #1e1e2e;padding:0 .5rem}
+.editor-tab{padding:.6rem 1rem;font-size:.8rem;color:#666;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;font-family:'Inter',sans-serif}
+.editor-tab.active{color:#f59e0b;border-bottom-color:#f59e0b}
+.editor-tab:hover{color:#999}
+.editor-body{position:relative}
+.editor-body textarea{width:100%;min-height:280px;background:#0a0a0f;border:none;padding:1rem;color:#e5e5e5;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.7;resize:vertical}
+.editor-body textarea:focus{outline:none}
+.editor-toolbar{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:#111118;border-top:1px solid #1e1e2e}
+.deploy-btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;padding:.5rem 1.25rem;border-radius:99px;font-weight:600;cursor:pointer;font-size:.85rem;font-family:'Inter',sans-serif;border:none;transition:all .2s}
+.deploy-btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(245,158,11,.3)}
+.file-name{font-size:.8rem;color:#666;font-family:'JetBrains Mono',monospace}
+
+/* Terminal */
+.terminal{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;margin:1rem 0;max-height:250px;overflow-y:auto}
+.term-line{margin-bottom:.25rem}
+.term-prompt{color:#f59e0b}.term-success{color:#22c55e}.term-error{color:#ef4444}.term-info{color:#60a5fa}.term-dim{color:#555}
+
+/* Challenge steps */
+.challenge{background:#111118;border:1px solid #f59e0b33;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.challenge-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.challenge-num{background:#f59e0b;color:#0a0a0f;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem}
+.challenge-title{font-weight:700;font-size:1rem}
+.challenge.completed{border-color:#22c55e33}
+.challenge.completed .challenge-num{background:#22c55e}
+
+.progress-section{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.progress-bar{height:6px;background:#1e1e2e;border-radius:99px;overflow:hidden;margin-top:.5rem}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:99px;transition:width .5s}
+.complete-btn{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:1rem;border-radius:12px;border:none;cursor:pointer;font-size:1rem;margin:2rem 0;font-family:'Inter',sans-serif;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer{text-align:center;padding:2rem 0;color:#444;font-size:.8rem;border-top:1px solid #1e1e2e;margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="make-com-101.html">&larr; Prev</a>
+<span class="current">Lesson 4 of 10</span>
+<a href="webhooks-deep-dive.html">Next &rarr;</a>
+</div>
+
+<div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
+<h1>Edge Functions</h1>
+<p class="intro">Edge functions are serverless code that runs close to your users. Write once, deploy globally, pay per invocation. Supabase edge functions use Deno (TypeScript runtime).</p>
+
+<h2>Challenge 1: Hello World</h2>
+<div class="challenge" id="ch1">
+<div class="challenge-header">
+<div class="challenge-num">1</div>
+<div class="challenge-title">Return a JSON response</div>
+</div>
+<p style="font-size:.9rem;color:#999">Write an edge function that returns <code style="color:#f59e0b">{"message": "Hello from the edge!"}</code></p>
+</div>
+
+<div class="editor-container">
+<div class="editor-tabs">
+<div class="editor-tab active" onclick="switchTab(0)">index.ts</div>
+<div class="editor-tab" onclick="switchTab(1)">response</div>
+</div>
+<div class="editor-body">
+<textarea id="codeEditor" spellcheck="false">import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+serve(async (req) => {
+  // Your code here: return a JSON response
+  // Hint: use new Response() with JSON.stringify()
+
+  return new Response(
+
+  )
+})</textarea>
+</div>
+<div class="editor-toolbar">
+<span class="file-name">supabase/functions/hello/index.ts</span>
+<button class="deploy-btn" onclick="deployCode()">&#x1f680; Deploy</button>
+</div>
+</div>
+
+<div class="terminal" id="terminal" style="display:none"></div>
+
+<h2>Challenge 2: JSON API</h2>
+<div class="challenge" id="ch2">
+<div class="challenge-header">
+<div class="challenge-num">2</div>
+<div class="challenge-title">Parse request body and respond</div>
+</div>
+<p style="font-size:.9rem;color:#999">Upgrade your function: read a JSON body with a <code style="color:#f59e0b">name</code> field and respond with a greeting.</p>
+</div>
+
+<div class="editor-container">
+<div class="editor-tabs">
+<div class="editor-tab active">index.ts</div>
+</div>
+<div class="editor-body">
+<textarea id="codeEditor2" spellcheck="false">import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+serve(async (req) => {
+  // Parse the JSON body
+  const { name } = await req.json()
+
+  // Return a personalized greeting
+  return new Response(
+    JSON.stringify({ greeting: `Hello, ${name}! Welcome to the edge.` }),
+    { headers: { "Content-Type": "application/json" } }
+  )
+})</textarea>
+</div>
+<div class="editor-toolbar">
+<span class="file-name">supabase/functions/greet/index.ts</span>
+<button class="deploy-btn" onclick="deployCode2()">&#x1f680; Deploy</button>
+</div>
+</div>
+<div class="terminal" id="terminal2" style="display:none"></div>
+
+<h2>Challenge 3: Database Query</h2>
+<div class="challenge" id="ch3">
+<div class="challenge-header">
+<div class="challenge-num">3</div>
+<div class="challenge-title">Read from Supabase inside an edge function</div>
+</div>
+<p style="font-size:.9rem;color:#999">Connect to your Supabase database from an edge function using the service role key.</p>
+</div>
+
+<div class="editor-container">
+<div class="editor-tabs">
+<div class="editor-tab active">index.ts</div>
+</div>
+<div class="editor-body">
+<textarea id="codeEditor3" spellcheck="false">import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
+
+serve(async (req) => {
+  const supabase = createClient(
+    Deno.env.get("SUPABASE_URL")!,
+    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+  )
+
+  // Query the brain_context table
+  const { data, error } = await supabase
+    .from("brain_context")
+    .select("key, value")
+    .order("updated_at", { ascending: false })
+    .limit(10)
+
+  if (error) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { status: 400, headers: { "Content-Type": "application/json" } }
+    )
+  }
+
+  return new Response(
+    JSON.stringify({ brain: data }),
+    { headers: { "Content-Type": "application/json" } }
+  )
+})</textarea>
+</div>
+<div class="editor-toolbar">
+<span class="file-name">supabase/functions/read-brain/index.ts</span>
+<button class="deploy-btn" onclick="deployCode3()">&#x1f680; Deploy</button>
+</div>
+</div>
+<div class="terminal" id="terminal3" style="display:none"></div>
+
+<div class="panel">
+<div class="label">Key Concepts</div>
+<p><strong>Cold starts:</strong> Edge functions spin up on demand. First request may take ~100ms, subsequent requests are near-instant. Deno is faster than Node.js for cold starts.</p>
+<p><strong>Environment variables:</strong> Never hardcode secrets. Use <code style="color:#f59e0b">Deno.env.get()</code> — Supabase automatically injects SUPABASE_URL and keys.</p>
+<p><strong>CORS:</strong> Always set CORS headers if your frontend calls the function directly. Common gotcha for beginners.</p>
+<div class="code-block"><span class="kw">const</span> corsHeaders = {<br>  <span class="str">"Access-Control-Allow-Origin"</span>: <span class="str">"*"</span>,<br>  <span class="str">"Access-Control-Allow-Headers"</span>: <span class="str">"authorization, x-client-info, apikey, content-type"</span>,<br>}</div>
+</div>
+
+<div class="progress-section">
+<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
+<span>Lesson Progress</span><span id="lessonPct">0%</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+</div>
+<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
+<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
+<a href="make-com-101.html">&larr; Make.com 101</a>
+<a href="webhooks-deep-dive.html">Next: Webhooks Deep Dive &rarr;</a>
+</div>
+<div class="footer">Like One Academy &copy; 2026</div>
+</div>
+
+<script>
+let challenges=[false,false,false];
+function typeLine(termId,lines,cb){
+const term=document.getElementById(termId);term.style.display='block';let i=0;
+function next(){if(i>=lines.length){if(cb)cb();return}
+const div=document.createElement('div');div.className='term-line';div.innerHTML=lines[i];term.appendChild(div);term.scrollTop=term.scrollHeight;i++;setTimeout(next,400)}
+term.innerHTML='';next()}
+
+function deployCode(){
+const code=document.getElementById('codeEditor').value;
+const hasResponse=code.includes('JSON.stringify')&&code.includes('message');
+const hasHeaders=code.includes('Content-Type');
+if(hasResponse){
+typeLine('terminal',[
+'<span class="term-prompt">$</span> supabase functions deploy hello',
+'<span class="term-dim">Bundling function...</span>',
+'<span class="term-dim">Deploying to edge network...</span>',
+'<span class="term-success">&#x2713; Function deployed successfully!</span>',
+'<span class="term-info">URL: https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/hello</span>',
+'',
+'<span class="term-prompt">$</span> curl -s https://...functions/v1/hello',
+'<span class="term-success">{"message":"Hello from the edge!"}</span>'
+],()=>{challenges[0]=true;document.getElementById('ch1').classList.add('completed');updateProg()});
+}else{
+typeLine('terminal',[
+'<span class="term-prompt">$</span> supabase functions deploy hello',
+'<span class="term-dim">Bundling function...</span>',
+'<span class="term-error">&#x2717; Error: Response body is empty</span>',
+'<span class="term-dim">Hint: Use JSON.stringify({message: "Hello from the edge!"}) as the Response body</span>',
+'<span class="term-dim">Don\'t forget Content-Type header!</span>'
+])}
+}
+
+function deployCode2(){
+typeLine('terminal2',[
+'<span class="term-prompt">$</span> supabase functions deploy greet',
+'<span class="term-dim">Bundling function...</span>',
+'<span class="term-dim">Deploying to edge network...</span>',
+'<span class="term-success">&#x2713; Function deployed!</span>',
+'',
+'<span class="term-prompt">$</span> curl -X POST -d \'{"name":"Builder"}\' https://...functions/v1/greet',
+'<span class="term-success">{"greeting":"Hello, Builder! Welcome to the edge."}</span>'
+],()=>{challenges[1]=true;document.getElementById('ch2').classList.add('completed');updateProg()});
+}
+
+function deployCode3(){
+typeLine('terminal3',[
+'<span class="term-prompt">$</span> supabase functions deploy read-brain',
+'<span class="term-dim">Bundling function...</span>',
+'<span class="term-dim">Deploying to edge network...</span>',
+'<span class="term-success">&#x2713; Function deployed!</span>',
+'',
+'<span class="term-prompt">$</span> curl -H "Authorization: Bearer $ANON_KEY" https://...functions/v1/read-brain',
+'<span class="term-success">{"brain":[</span>',
+'<span class="term-success">  {"key":"identity.name","value":"\\"Stack Builder Student\\""},</span>',
+'<span class="term-success">  {"key":"session.active_work","value":"\\"building edge functions\\""},</span>',
+'<span class="term-success">  {"key":"system.version","value":"\\"1.0.0\\""}</span>',
+'<span class="term-success">]}</span>'
+],()=>{challenges[2]=true;document.getElementById('ch3').classList.add('completed');updateProg()});
+}
+
+function switchTab(idx){/* placeholder for multi-tab */}
+function updateProg(){const done=challenges.filter(Boolean).length;const pct=Math.round(done/3*100);document.getElementById('lessonProgress').style.width=pct+'%';document.getElementById('lessonPct').textContent=pct+'%'}
+function completeLesson(){localStorage.setItem('aisb_lesson_4','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
+if(localStorage.getItem('aisb_lesson_4')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a Network — AI Foundations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-header{margin-bottom:2rem}
+.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(251,146,60,.12);color:#fb923c}
+.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
+.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;line-height:1.6}
+
+.workspace{display:flex;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.palette{width:180px;flex-shrink:0}
+.palette h3{font-size:.8rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem}
+.drag-neuron{padding:.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;margin-bottom:.5rem;cursor:grab;font-size:.85rem;font-weight:600;transition:all .2s;user-select:none;display:flex;align-items:center;gap:.5rem}
+.drag-neuron:hover{background:rgba(255,255,255,.08);transform:translateX(4px)}
+.drag-neuron .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.dot-input{background:#c084fc}
+.dot-hidden{background:#fb923c}
+.dot-output{background:#38bdf8}
+
+.network-area{flex:1;min-height:400px;background:rgba(255,255,255,.02);border:2px dashed rgba(255,255,255,.08);border-radius:16px;position:relative;overflow:hidden;min-width:300px}
+.network-area.drag-over{border-color:rgba(192,132,252,.4);background:rgba(192,132,252,.03)}
+canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.placed-neuron{position:absolute;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;cursor:move;transition:box-shadow .3s;z-index:2;user-select:none}
+.placed-neuron:hover{box-shadow:0 0 20px rgba(255,255,255,.1)}
+.placed-neuron.input-type{background:rgba(192,132,252,.2);border:2px solid #c084fc;color:#c084fc}
+.placed-neuron.hidden-type{background:rgba(251,146,60,.2);border:2px solid #fb923c;color:#fb923c}
+.placed-neuron.output-type{background:rgba(56,189,248,.2);border:2px solid #38bdf8;color:#38bdf8}
+.placed-neuron.pulsing{animation:pulse .5s ease}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+
+.actions{display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap}
+.btn{padding:.75rem 1.5rem;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .25s}
+.btn-train{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff}
+.btn-train:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,.3)}
+.btn-clear{background:rgba(255,255,255,.06);color:#a1a1aa;border:1px solid rgba(255,255,255,.08)}
+.btn-clear:hover{background:rgba(255,255,255,.1)}
+.btn-connect{background:rgba(192,132,252,.15);color:#c084fc;border:1px solid rgba(192,132,252,.25)}
+.btn-connect:hover{background:rgba(192,132,252,.25)}
+.btn-connect.active{background:#c084fc;color:#0a0a0f}
+
+.challenge{background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem}
+.challenge h3{font-size:.95rem;font-weight:700;color:#fb923c;margin-bottom:.5rem}
+.challenge p{font-size:.85rem;color:#a1a1aa;line-height:1.5}
+.challenge .checklist{margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem}
+.checklist-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem}
+.checklist-item .check{width:18px;height:18px;border-radius:4px;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.checklist-item.done .check{background:#22c55e;border-color:#22c55e}
+.checklist-item.done .check::after{content:'✓';font-size:.6rem;color:#fff}
+
+.narration{background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem;line-height:1.7;font-size:.95rem}
+.narration strong{color:#c084fc}
+
+.complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer-progress{text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
+.footer-progress span{color:#c084fc;font-weight:600}
+
+.status-bar{padding:.5rem 1rem;border-radius:8px;background:rgba(255,255,255,.03);font-size:.8rem;color:#71717a;margin-bottom:1rem;text-align:center}
+.status-bar span{color:#e5e5e5;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+<div class="container">
+  <div class="lesson-header">
+    <div class="meta">
+      <span class="type-badge">Drag & Drop</span>
+      <span class="xp-badge">+75 XP</span>
+      <span class="time-badge">~30 min</span>
+    </div>
+    <h1>Build a Network</h1>
+    <p>Drag neurons onto the canvas, connect them into layers, and watch data flow through your creation.</p>
+  </div>
+
+  <div class="status-bar" id="statusBar">Drag neurons from the palette → drop into the canvas</div>
+
+  <div class="workspace">
+    <div class="palette">
+      <h3>Neuron Palette</h3>
+      <div class="drag-neuron" draggable="true" data-type="input"><div class="dot dot-input"></div>Input Neuron</div>
+      <div class="drag-neuron" draggable="true" data-type="hidden"><div class="dot dot-hidden"></div>Hidden Neuron</div>
+      <div class="drag-neuron" draggable="true" data-type="output"><div class="dot dot-output"></div>Output Neuron</div>
+    </div>
+    <div class="network-area" id="networkArea">
+      <canvas id="connCanvas"></canvas>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-connect" id="connectBtn" onclick="toggleConnect()">🔗 Connect Mode</button>
+    <button class="btn btn-train" id="trainBtn" onclick="trainNetwork()">⚡ Train Network</button>
+    <button class="btn btn-clear" onclick="clearNetwork()">Clear All</button>
+  </div>
+
+  <div class="challenge">
+    <h3>🏆 Challenge: Cats vs Dogs Classifier</h3>
+    <p>Build a network that could classify images of cats and dogs. You'll need the right architecture!</p>
+    <div class="checklist">
+      <div class="checklist-item" id="check1"><div class="check"></div>Place at least 2 input neurons</div>
+      <div class="checklist-item" id="check2"><div class="check"></div>Add 2+ hidden neurons</div>
+      <div class="checklist-item" id="check3"><div class="check"></div>Place 2 output neurons (cat/dog)</div>
+      <div class="checklist-item" id="check4"><div class="check"></div>Connect all layers</div>
+      <div class="checklist-item" id="check5"><div class="check"></div>Run training to see data flow</div>
+    </div>
+  </div>
+
+  <div class="narration">
+    <strong>Neural networks are layers of neurons connected together.</strong> Input neurons receive data (like pixel values from an image). Hidden neurons find patterns. Output neurons make decisions. The magic is in the connections — each one has a weight that gets adjusted during training.
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
+</div>
+<div class="footer-progress"><span id="footerProgress">0 of 9</span> lessons complete</div>
+
+<script>
+const area=document.getElementById('networkArea');
+const connCanvas=document.getElementById('connCanvas');
+const connCtx=connCanvas.getContext('2d');
+let neurons=[];
+let connections=[];
+let connectMode=false;
+let connectFrom=null;
+let neuronId=0;
+let trained=false;
+
+function resizeCanvas(){
+  const r=area.getBoundingClientRect();
+  const dpr=window.devicePixelRatio||1;
+  connCanvas.width=r.width*dpr;connCanvas.height=r.height*dpr;
+  connCanvas.style.width=r.width+'px';connCanvas.style.height=r.height+'px';
+  connCtx.scale(dpr,dpr);
+  drawConnections();
+}
+window.addEventListener('resize',resizeCanvas);
+setTimeout(resizeCanvas,100);
+
+// Drag & Drop
+document.querySelectorAll('.drag-neuron').forEach(el=>{
+  el.addEventListener('dragstart',e=>{
+    e.dataTransfer.setData('type',el.dataset.type);
+  });
+});
+area.addEventListener('dragover',e=>{e.preventDefault();area.classList.add('drag-over')});
+area.addEventListener('dragleave',()=>area.classList.remove('drag-over'));
+area.addEventListener('drop',e=>{
+  e.preventDefault();area.classList.remove('drag-over');
+  const type=e.dataTransfer.getData('type');
+  const rect=area.getBoundingClientRect();
+  const x=e.clientX-rect.left-24;
+  const y=e.clientY-rect.top-24;
+  addNeuron(type,x,y);
+});
+
+function addNeuron(type,x,y){
+  const id='n'+neuronId++;
+  const labels={input:'IN',hidden:'H',output:'OUT'};
+  const el=document.createElement('div');
+  el.className='placed-neuron '+type+'-type';
+  el.textContent=labels[type];
+  el.style.left=x+'px';el.style.top=y+'px';
+  el.dataset.id=id;el.dataset.type=type;
+  area.appendChild(el);
+  neurons.push({id,type,el,x:x+24,y:y+24});
+
+  // Make draggable inside canvas
+  let dragging=false,ox,oy;
+  el.addEventListener('mousedown',e=>{
+    if(connectMode){
+      handleConnect(id);return;
+    }
+    dragging=true;ox=e.offsetX;oy=e.offsetY;
+    el.style.zIndex=10;
+  });
+  document.addEventListener('mousemove',e=>{
+    if(!dragging)return;
+    const rect=area.getBoundingClientRect();
+    const nx=e.clientX-rect.left-ox;
+    const ny=e.clientY-rect.top-oy;
+    el.style.left=nx+'px';el.style.top=ny+'px';
+    const n=neurons.find(n=>n.id===id);
+    if(n){n.x=nx+24;n.y=ny+24}
+    drawConnections();
+  });
+  document.addEventListener('mouseup',()=>{if(dragging){dragging=false}});
+
+  updateStatus();checkChallenge();
+}
+
+function toggleConnect(){
+  connectMode=!connectMode;
+  const btn=document.getElementById('connectBtn');
+  btn.classList.toggle('active',connectMode);
+  btn.textContent=connectMode?'🔗 Click two neurons':'🔗 Connect Mode';
+  connectFrom=null;
+  document.getElementById('statusBar').innerHTML=connectMode?'Click a <span>source neuron</span>, then click a <span>target neuron</span>':'Drag neurons from the palette → drop into the canvas';
+}
+
+function handleConnect(id){
+  if(!connectFrom){
+    connectFrom=id;
+    const el=neurons.find(n=>n.id===id).el;
+    el.style.boxShadow='0 0 20px rgba(192,132,252,.5)';
+    document.getElementById('statusBar').innerHTML='Now click the <span>target neuron</span>';
+  }else if(connectFrom!==id){
+    connections.push({from:connectFrom,to:id});
+    const el=neurons.find(n=>n.id===connectFrom).el;
+    el.style.boxShadow='';
+    connectFrom=null;
+    drawConnections();checkChallenge();
+    document.getElementById('statusBar').innerHTML='Connected! Click another <span>source neuron</span> or toggle off';
+  }
+}
+
+function drawConnections(){
+  resizeCanvasRaw();
+  connCtx.clearRect(0,0,connCanvas.width,connCanvas.height);
+  connections.forEach(c=>{
+    const from=neurons.find(n=>n.id===c.from);
+    const to=neurons.find(n=>n.id===c.to);
+    if(!from||!to)return;
+    connCtx.beginPath();connCtx.moveTo(from.x,from.y);connCtx.lineTo(to.x,to.y);
+    connCtx.strokeStyle=c.pulse?'rgba(34,197,94,.8)':'rgba(255,255,255,.12)';
+    connCtx.lineWidth=c.pulse?3:1.5;connCtx.stroke();
+    if(c.pulse&&c.pulsePos!==undefined){
+      const px=from.x+(to.x-from.x)*c.pulsePos;
+      const py=from.y+(to.y-from.y)*c.pulsePos;
+      connCtx.beginPath();connCtx.arc(px,py,5,0,Math.PI*2);
+      connCtx.fillStyle='#22c55e';connCtx.fill();
+    }
+  });
+}
+
+function resizeCanvasRaw(){
+  const r=area.getBoundingClientRect();
+  const dpr=window.devicePixelRatio||1;
+  if(connCanvas.width!==r.width*dpr){
+    connCanvas.width=r.width*dpr;connCanvas.height=r.height*dpr;
+    connCanvas.style.width=r.width+'px';connCanvas.style.height=r.height+'px';
+    connCtx.setTransform(dpr,0,0,dpr,0,0);
+  }
+}
+
+function trainNetwork(){
+  if(connections.length===0){
+    document.getElementById('statusBar').innerHTML='<span style="color:#ef4444">Connect some neurons first!</span>';return;
+  }
+  trained=true;
+  document.getElementById('statusBar').innerHTML='<span style="color:#22c55e">⚡ Training... watch the data flow!</span>';
+
+  // Animate pulses
+  let frame=0;
+  connections.forEach(c=>{c.pulse=true;c.pulsePos=0});
+  function animatePulse(){
+    frame++;
+    let running=false;
+    connections.forEach((c,i)=>{
+      c.pulsePos=(frame-i*10)/80;
+      if(c.pulsePos<0)c.pulsePos=0;
+      if(c.pulsePos>1){c.pulsePos=1;c.pulse=false}else{running=true}
+    });
+    drawConnections();
+    if(running)requestAnimationFrame(animatePulse);
+    else{
+      connections.forEach(c=>{c.pulse=false;c.pulsePos=undefined});
+      drawConnections();
+      // Pulse output neurons
+      neurons.filter(n=>n.type==='output').forEach(n=>{n.el.classList.add('pulsing');setTimeout(()=>n.el.classList.remove('pulsing'),600)});
+      document.getElementById('statusBar').innerHTML='<span style="color:#22c55e">✓ Training complete! Data flowed through your network.</span>';
+      checkChallenge();
+    }
+  }
+  animatePulse();
+}
+
+function clearNetwork(){
+  neurons.forEach(n=>n.el.remove());neurons=[];connections=[];connectFrom=null;trained=false;
+  drawConnections();updateStatus();checkChallenge();
+}
+
+function updateStatus(){
+  if(!connectMode)document.getElementById('statusBar').innerHTML='<span>'+neurons.length+'</span> neurons placed · <span>'+connections.length+'</span> connections';
+}
+
+function checkChallenge(){
+  const inp=neurons.filter(n=>n.type==='input').length;
+  const hid=neurons.filter(n=>n.type==='hidden').length;
+  const out=neurons.filter(n=>n.type==='output').length;
+  const hasConn=connections.length>=(inp+hid);
+  document.getElementById('check1').classList.toggle('done',inp>=2);
+  document.getElementById('check2').classList.toggle('done',hid>=2);
+  document.getElementById('check3').classList.toggle('done',out>=2);
+  document.getElementById('check4').classList.toggle('done',hasConn);
+  document.getElementById('check5').classList.toggle('done',trained);
+}
+
+function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
+function updateFooter(){
+  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
+  document.getElementById('footerProgress').textContent=c+' of 9';
+  if(p['build-a-network']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
+}
+function completeLesson(){
+  const p=getProgress();p['build-a-network']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
+  window.location.href='neural-net-quiz.html';
+}
+updateFooter();
+</script>
+</body>
+</html>

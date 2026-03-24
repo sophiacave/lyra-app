@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trick Chain — AI Pet Lab</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--purple:#c084fc;--border:#1e1e28;--border2:#2a2a38}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
+.top-bar a:hover{color:var(--text);text-decoration:none}
+.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+.header{padding:2.5rem 0 1.5rem;text-align:center}
+.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
+
+/* CHAIN PROGRESS */
+.chain-visual{display:flex;justify-content:center;align-items:center;gap:.5rem;margin:2rem 0;flex-wrap:wrap}
+.trick-node{width:100px;height:100px;background:var(--surface);border:2px solid var(--border);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .4s}
+.trick-node.active{border-color:var(--orange);box-shadow:0 0 20px rgba(255,107,53,.15)}
+.trick-node.learned{border-color:var(--green);background:rgba(74,222,128,.05)}
+.trick-node .emoji{font-size:2rem;margin-bottom:.25rem}
+.trick-node .name{font-size:.75rem;font-weight:700;color:var(--dim)}
+.trick-node.active .name{color:var(--orange)}
+.trick-node.learned .name{color:var(--green)}
+.chain-arrow{color:var(--muted);font-size:1.5rem;font-weight:300}
+
+/* GAME */
+.game{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem;margin:1.5rem 0;text-align:center}
+
+.pet-stage{width:160px;height:120px;margin:0 auto 1rem;position:relative}
+.pet-blob{width:80px;height:60px;border-radius:50% 50% 40% 40%;position:absolute;bottom:0;left:50%;transform:translateX(-50%);transition:all .5s}
+.pet-blob.sit{height:45px;width:90px;bottom:0;border-radius:50% 50% 30% 30%}
+.pet-blob.shake{height:60px;border-radius:50% 50% 40% 40%;transform:translateX(-50%) rotate(-15deg)}
+.pet-blob.roll{height:60px;border-radius:50%;animation:rollAnim .8s ease-in-out}
+.pet-face{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:1.5rem;transition:all .3s}
+@keyframes rollAnim{0%{transform:translateX(-50%) rotate(0)}100%{transform:translateX(-50%) rotate(360deg)}}
+
+.trick-info{font-size:1.1rem;font-weight:600;margin:.75rem 0;min-height:2rem}
+
+.learn-bar{max-width:350px;margin:1rem auto}
+.learn-label{display:flex;justify-content:space-between;font-size:.75rem;margin-bottom:.3rem}
+.learn-label .l{color:var(--dim)}.learn-label .v{color:var(--orange);font-weight:700}
+.bar-o{height:10px;background:var(--surface2);border-radius:5px;overflow:hidden;border:1px solid var(--border)}
+.bar-i{height:100%;border-radius:5px;transition:width .4s}
+
+.game-btns{display:flex;justify-content:center;gap:.75rem;margin:1.25rem 0;flex-wrap:wrap}
+.btn{padding:.7rem 1.5rem;border-radius:10px;border:none;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn:hover:not(:disabled){transform:translateY(-2px)}
+.btn:disabled{opacity:.3;pointer-events:none}
+.btn-cmd{background:var(--blue);color:#000}
+.btn-gd{background:var(--green);color:#000}
+.btn-bd{background:var(--red);color:#000}
+
+.round-counter{font-size:.8rem;color:var(--muted);margin-top:.5rem}
+
+.explainer{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:2rem 0}
+.explainer h2{font-size:1.15rem;font-weight:700;margin-bottom:.75rem;color:var(--orange)}
+.explainer p{color:var(--dim);font-size:.9rem;margin-bottom:.75rem}
+.explainer p:last-child{margin-bottom:0}
+.hl{color:var(--text);font-weight:600}
+
+.btn-complete{display:none;margin:2rem auto;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
+
+.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
+.foot a{color:var(--orange);font-weight:600;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+
+@media(max-width:600px){.header h1{font-size:1.5rem}.trick-node{width:80px;height:80px}.trick-node .emoji{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-bar">
+  <a href="index.html">&larr; AI Pet Lab</a>
+  <span class="lesson-badge">Lesson 5 of 9</span>
+</div>
+
+<div class="header">
+  <h1>Trick Chain &#128279;</h1>
+  <p>Chain 3 tricks together: Sit, Shake, Roll Over. Each builds on the last &mdash; this is sequential decision-making!</p>
+</div>
+
+<div class="chain-visual">
+  <div class="trick-node active" id="node0"><div class="emoji">&#128062;</div><div class="name">Sit</div></div>
+  <div class="chain-arrow">&rarr;</div>
+  <div class="trick-node" id="node1"><div class="emoji">&#129305;</div><div class="name">Shake</div></div>
+  <div class="chain-arrow">&rarr;</div>
+  <div class="trick-node" id="node2"><div class="emoji">&#129696;</div><div class="name">Roll Over</div></div>
+</div>
+
+<div class="game">
+  <div class="pet-stage">
+    <div class="pet-blob" id="petBlob"></div>
+    <div class="pet-face" id="petFace">&#128578;</div>
+  </div>
+
+  <div class="trick-info" id="trickInfo">Teaching: Sit</div>
+
+  <div class="learn-bar">
+    <div class="learn-label"><span class="l" id="trickLabel">Sit mastery</span><span class="v" id="trickPct">0%</span></div>
+    <div class="bar-o"><div class="bar-i" id="trickBar" style="width:0%;background:var(--orange)"></div></div>
+  </div>
+
+  <div class="game-btns">
+    <button class="btn btn-cmd" id="cmdBtn" onclick="giveCommand()">Say "Sit!"</button>
+    <button class="btn btn-gd" id="rwdBtn" onclick="reward()" disabled>Reward</button>
+    <button class="btn btn-bd" id="pnBtn" onclick="punish()" disabled>Punish</button>
+  </div>
+
+  <div class="round-counter" id="roundInfo">Round 1</div>
+</div>
+
+<div class="explainer">
+  <h2>Sequential Decision-Making</h2>
+  <p>In real RL, agents often need to chain multiple decisions together. A robot arm picking up an object needs to: <span class="hl">reach</span> &rarr; <span class="hl">grasp</span> &rarr; <span class="hl">lift</span>. Each step depends on the previous one succeeding.</p>
+  <p>This is called a <span class="hl">Markov Decision Process (MDP)</span> &mdash; the current state determines what actions are possible next. Your pet can't learn to shake until it can sit!</p>
+  <p><span class="hl">Reward shaping</span> is the art of giving intermediate rewards for sub-goals. Instead of only rewarding the final outcome, you reward each step along the chain.</p>
+</div>
+
+<button class="btn-complete" id="completeBtn" onclick="completeLesson()">Complete Lesson &rarr;</button>
+
+<div class="foot">
+  <a href="teach-sit.html">&larr; Teach Sit</a>
+  <a href="training-quiz.html">Next: Training Quiz &rarr;</a>
+</div>
+
+</div>
+
+<script>
+const petType=localStorage.getItem('petlab_pet')||'dog';
+const petColors={cat:'#c084fc',dog:'#FF6B35',robot:'#38bdf8'};
+const pc=petColors[petType];
+document.getElementById('petBlob').style.background=pc;
+
+const tricks=[
+  {name:'Sit',cmd:'Say "Sit!"',mastery:0,prob:0.2,emoji:'&#128062;'},
+  {name:'Shake',cmd:'Say "Shake!"',mastery:0,prob:0.1,emoji:'&#129305;'},
+  {name:'Roll Over',cmd:'Say "Roll!"',mastery:0,prob:0.05,emoji:'&#129696;'}
+];
+const trickLabels=['Sit mastery','Shake mastery','Roll Over mastery'];
+const barColors=['var(--orange)','var(--blue)','var(--purple)'];
+
+let currentTrick=0,round=1,phase='idle',petDid=false;
+
+function updateUI(){
+  const t=tricks[currentTrick];
+  document.getElementById('trickInfo').textContent='Teaching: '+t.name;
+  document.getElementById('trickLabel').textContent=trickLabels[currentTrick];
+  document.getElementById('trickPct').textContent=Math.round(t.prob*100)+'%';
+  document.getElementById('trickBar').style.width=Math.round(t.prob*100)+'%';
+  document.getElementById('trickBar').style.background=barColors[currentTrick];
+  document.getElementById('cmdBtn').textContent=t.cmd;
+  document.getElementById('roundInfo').textContent='Round '+round;
+
+  // Update nodes
+  for(let i=0;i<3;i++){
+    const n=document.getElementById('node'+i);
+    n.className='trick-node';
+    if(i<currentTrick)n.classList.add('learned');
+    if(i===currentTrick)n.classList.add('active');
+  }
+}
+
+function giveCommand(){
+  if(phase!=='idle')return;
+  phase='waiting';
+  round++;
+  document.getElementById('cmdBtn').disabled=true;
+
+  const t=tricks[currentTrick];
+  petDid=Math.random()<t.prob;
+
+  setTimeout(()=>{
+    const blob=document.getElementById('petBlob');
+    const face=document.getElementById('petFace');
+    if(petDid){
+      if(currentTrick===0){blob.className='pet-blob sit';}
+      else if(currentTrick===1){blob.className='pet-blob shake';}
+      else{blob.className='pet-blob roll';}
+      face.innerHTML='&#128515;';
+      document.getElementById('trickInfo').textContent=tricks[currentTrick].name+'! Did it!';
+    }else{
+      blob.className='pet-blob';
+      face.innerHTML='&#128528;';
+      document.getElementById('trickInfo').textContent='Ignored... try again';
+    }
+    document.getElementById('rwdBtn').disabled=false;
+    document.getElementById('pnBtn').disabled=false;
+  },500);
+}
+
+function reward(){
+  if(phase!=='waiting')return;
+  phase='idle';
+  const t=tricks[currentTrick];
+  if(petDid){
+    t.prob=Math.min(0.95,t.prob+0.1+Math.random()*0.05);
+    document.getElementById('petFace').innerHTML='&#129321;';
+  }else{
+    t.prob=Math.max(0.05,t.prob-0.03);
+    document.getElementById('petFace').innerHTML='&#128533;';
+  }
+  finishRound();
+}
+
+function punish(){
+  if(phase!=='waiting')return;
+  phase='idle';
+  const t=tricks[currentTrick];
+  if(!petDid){
+    t.prob=Math.min(0.95,t.prob+0.04);
+  }else{
+    t.prob=Math.max(0.05,t.prob-0.08);
+    document.getElementById('petFace').innerHTML='&#128546;';
+  }
+  finishRound();
+}
+
+function finishRound(){
+  document.getElementById('rwdBtn').disabled=true;
+  document.getElementById('pnBtn').disabled=true;
+
+  const t=tricks[currentTrick];
+  if(t.prob>=0.8){
+    // Trick learned!
+    document.getElementById('trickInfo').textContent=t.name+' mastered!';
+    if(currentTrick<2){
+      currentTrick++;
+      setTimeout(()=>{
+        document.getElementById('petBlob').className='pet-blob';
+        document.getElementById('petFace').innerHTML='&#128578;';
+        updateUI();
+        document.getElementById('cmdBtn').disabled=false;
+      },1500);
+    }else{
+      // All done!
+      document.getElementById('completeBtn').style.display='block';
+      document.getElementById('trickInfo').textContent='All 3 tricks mastered! Chain complete!';
+      document.getElementById('node2').className='trick-node learned';
+      return;
+    }
+  }else{
+    setTimeout(()=>{
+      document.getElementById('petBlob').className='pet-blob';
+      document.getElementById('petFace').innerHTML='&#128578;';
+      updateUI();
+      document.getElementById('cmdBtn').disabled=false;
+    },1000);
+  }
+  updateUI();
+}
+
+function completeLesson(){
+  localStorage.setItem('petlab_lesson_5','complete');
+  window.location.href='training-quiz.html';
+}
+
+updateUI();
+</script>
+</body>
+</html>

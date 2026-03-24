@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Anatomy — The Automation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ef4444,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem}.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);font-size:.7rem;font-weight:600;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;margin-bottom:2.5rem;line-height:1.6}
+.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#fff}
+
+.exploded-view{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;margin:2rem 0}
+.core-label{text-align:center;font-size:.75rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.component{width:100%;max-width:600px;padding:1rem 1.5rem;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);cursor:pointer;transition:all .35s ease;margin:.25rem 0;position:relative}
+.component:hover{border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.04);transform:scale(1.02)}
+.component.expanded{border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.06)}
+.comp-header{display:flex;align-items:center;gap:1rem}
+.comp-icon{font-size:1.4rem;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(239,68,68,.1);flex-shrink:0}
+.comp-name{font-weight:700;font-size:1rem;flex:1}
+.comp-toggle{font-size:.8rem;color:#71717a;transition:transform .3s}
+.component.expanded .comp-toggle{transform:rotate(180deg);color:#ef4444}
+.comp-detail{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 0 0 3.5rem}
+.component.expanded .comp-detail{max-height:300px;padding:.75rem 0 .5rem 3.5rem}
+.comp-detail p{font-size:.85rem;color:#a1a1aa;line-height:1.6;margin-bottom:.5rem}
+.comp-example{font-size:.8rem;padding:.5rem .75rem;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.05);color:#d4d4d8;font-family:'Inter',monospace;margin-top:.5rem}
+
+.connector{width:2px;height:12px;background:rgba(239,68,68,.2);margin:0 auto}
+
+.builder-section{margin:3rem 0;padding:2rem;background:rgba(56,189,248,.03);border:1px solid rgba(56,189,248,.1);border-radius:16px}
+.builder-title{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;color:#38bdf8}
+.builder-desc{font-size:.85rem;color:#a1a1aa;margin-bottom:1.5rem}
+.builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.builder-field{display:flex;flex-direction:column;gap:.4rem}
+.builder-field label{font-size:.75rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em}
+.builder-field input,.builder-field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.6rem .8rem;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem;transition:border-color .2s;resize:vertical}
+.builder-field input:focus,.builder-field textarea:focus{outline:none;border-color:rgba(56,189,248,.4)}
+.builder-field.full{grid-column:1/-1}
+.agent-preview{margin-top:1.5rem;padding:1.5rem;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)}
+.preview-title{font-size:.8rem;font-weight:600;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+.preview-field{margin-bottom:.6rem;font-size:.85rem}
+.preview-label{color:#71717a;font-weight:600;display:inline}
+.preview-val{color:#e5e5e5;display:inline}
+
+.complete-section{text-align:center;margin:3rem 0 2rem;padding:2rem;border-radius:16px;background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.1)}
+.complete-btn{padding:.85rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(239,68,68,.3)}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(239,68,68,.4)}
+.complete-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.complete-msg{margin-top:1rem;font-size:.85rem;color:#22c55e;display:none}
+.xp-toast{position:fixed;top:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;background:#ef4444;color:#fff;font-weight:700;font-size:.9rem;transform:translateY(-100px);opacity:0;transition:all .4s ease;z-index:999;box-shadow:0 8px 32px rgba(239,68,68,.4)}
+.xp-toast.show{transform:translateY(0);opacity:1}
+.lesson-nav{display:flex;justify-content:space-between;align-items:center;margin:2rem 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}
+.lesson-nav a{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#a1a1aa;transition:color .2s}.lesson-nav a:hover{color:#ef4444}
+
+@media(max-width:640px){h1{font-size:1.8rem}.builder-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+
+<div class="container">
+  <div class="lesson-badge">Module 1 &bull; Lesson 2</div>
+  <h1>Agent Anatomy</h1>
+  <p class="subtitle">Every autonomous agent has six core components. Click each one to see what it does and why it matters.</p>
+
+  <div class="core-label">&#128268; Exploded Agent Diagram</div>
+  <div class="exploded-view" id="exploded">
+    <div class="component" data-comp="identity" onclick="toggleComp(this)">
+      <div class="comp-header"><div class="comp-icon">&#128100;</div><div class="comp-name">Identity</div><div class="comp-toggle">&#9660;</div></div>
+      <div class="comp-detail"><p>Who the agent is. Its name, role, personality, and voice. Identity shapes every decision the agent makes — it's the "soul" of the system.</p><div class="comp-example">name: "Lyra" | role: "Content Strategist" | voice: "Direct, warm, data-driven"</div></div>
+    </div>
+    <div class="connector"></div>
+    <div class="component" data-comp="memory" onclick="toggleComp(this)">
+      <div class="comp-header"><div class="comp-icon">&#129504;</div><div class="comp-name">Memory</div><div class="comp-toggle">&#9660;</div></div>
+      <div class="comp-detail"><p>What the agent knows and remembers. Short-term (current conversation), long-term (stored facts, past decisions), and shared (accessible to other agents).</p><div class="comp-example">agent_memory: [{key: "user_preference", value: "prefers bullet points"}]</div></div>
+    </div>
+    <div class="connector"></div>
+    <div class="component" data-comp="tools" onclick="toggleComp(this)">
+      <div class="comp-header"><div class="comp-icon">&#128295;</div><div class="comp-name">Tools</div><div class="comp-toggle">&#9660;</div></div>
+      <div class="comp-detail"><p>What the agent can do. API calls, database queries, file operations, sending messages. Tools are the agent's hands — without them, it can only think.</p><div class="comp-example">tools: [send_email, query_db, create_file, call_api, schedule_task]</div></div>
+    </div>
+    <div class="connector"></div>
+    <div class="component" data-comp="goals" onclick="toggleComp(this)">
+      <div class="comp-header"><div class="comp-icon">&#127919;</div><div class="comp-name">Goals</div><div class="comp-toggle">&#9660;</div></div>
+      <div class="comp-detail"><p>What the agent is trying to achieve. Goals can be persistent (always active) or triggered (activated by events). They drive the decide-act loop.</p><div class="comp-example">goals: ["Respond to support tickets within 5 min", "Escalate critical issues"]</div></div>
+    </div>
+    <div class="connector"></div>
+    <div class="component" data-comp="guardrails" onclick="toggleComp(this)">
+      <div class="comp-header"><div class="comp-icon">&#128721;</div><div class="comp-name">Guardrails</div><div class="comp-toggle">&#9660;</div></div>
+      <div class="comp-detail"><p>What the agent must NOT do. Boundaries, safety rules, ethical constraints. Guardrails prevent the agent from going rogue — they're the conscience before the conscience layer.</p><div class="comp-example">guardrails: ["Never share PII", "Max $50 spend without approval", "No destructive operations"]</div></div>
+    </div>
+    <div class="connector"></div>
+    <div class="component" data-comp="schedule" onclick="toggleComp(this)">
+      <div class="comp-header"><div class="comp-icon">&#9200;</div><div class="comp-name">Schedule</div><div class="comp-toggle">&#9660;</div></div>
+      <div class="comp-detail"><p>When the agent runs. Event-driven (reacts to triggers), cron-based (runs on schedule), or always-on (continuously monitoring). Schedule determines autonomy level.</p><div class="comp-example">schedule: "*/30 * * * *" (every 30 minutes) | trigger: "on_new_ticket"</div></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">&#128736;&#65039; Build Your First Agent</h2>
+  <div class="builder-section">
+    <div class="builder-title">Agent Builder</div>
+    <div class="builder-desc">Fill in each component to design your agent. Watch the preview update in real time.</div>
+    <div class="builder-grid">
+      <div class="builder-field"><label>&#128100; Agent Name</label><input type="text" id="b-name" placeholder="e.g., Atlas" oninput="updatePreview()"></div>
+      <div class="builder-field"><label>&#127919; Primary Goal</label><input type="text" id="b-goal" placeholder="e.g., Monitor uptime" oninput="updatePreview()"></div>
+      <div class="builder-field full"><label>&#128295; Tools (comma-separated)</label><input type="text" id="b-tools" placeholder="e.g., ping_server, send_alert, restart_service" oninput="updatePreview()"></div>
+      <div class="builder-field full"><label>&#128721; Guardrails</label><textarea id="b-guard" rows="2" placeholder="e.g., Never restart production without logging" oninput="updatePreview()"></textarea></div>
+      <div class="builder-field"><label>&#9200; Schedule</label><input type="text" id="b-schedule" placeholder="e.g., every 5 minutes" oninput="updatePreview()"></div>
+      <div class="builder-field"><label>&#129504; Memory Type</label><input type="text" id="b-memory" placeholder="e.g., logs last 24h of checks" oninput="updatePreview()"></div>
+    </div>
+    <div class="agent-preview" id="agent-preview">
+      <div class="preview-title">&#9889; Agent Config Preview</div>
+      <div id="preview-content" style="font-family:monospace;font-size:.8rem;color:#a1a1aa;white-space:pre-wrap">Fill in the fields above to see your agent come to life...</div>
+    </div>
+  </div>
+
+  <div class="complete-section">
+    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
+    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="what-is-an-agent.html">&larr; What Is an Agent?</a>
+    <a href="memory-systems.html">Next: Memory Systems &rarr;</a>
+  </div>
+</div>
+
+<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
+
+<script>
+function toggleComp(el){
+  const wasExpanded=el.classList.contains('expanded');
+  document.querySelectorAll('.component').forEach(c=>c.classList.remove('expanded'));
+  if(!wasExpanded)el.classList.add('expanded');
+}
+
+function updatePreview(){
+  const n=document.getElementById('b-name').value||'Unnamed';
+  const g=document.getElementById('b-goal').value||'No goal set';
+  const t=document.getElementById('b-tools').value||'none';
+  const gu=document.getElementById('b-guard').value||'none';
+  const s=document.getElementById('b-schedule').value||'manual';
+  const m=document.getElementById('b-memory').value||'none';
+  document.getElementById('preview-content').textContent=`{
+  "agent": "${n}",
+  "identity": { "name": "${n}", "role": "Autonomous Agent" },
+  "goal": "${g}",
+  "tools": [${t.split(',').map(x=>`"${x.trim()}"`).join(', ')}],
+  "guardrails": ["${gu}"],
+  "schedule": "${s}",
+  "memory": "${m}"
+}`;
+}
+
+function completeLsn(){
+  if(localStorage.getItem('autolab-2')==='complete')return;
+  localStorage.setItem('autolab-2','complete');
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+  const t=document.getElementById('xp-toast');t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+if(localStorage.getItem('autolab-2')==='complete'){
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+}
+</script>
+</body>
+</html>

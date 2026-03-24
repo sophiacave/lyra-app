@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Communication — The Automation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ef4444,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem}.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);font-size:.7rem;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;margin-bottom:2.5rem;line-height:1.6}
+.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#fff}
+
+.sim-arena{margin:2rem 0;padding:2rem;border-radius:20px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);position:relative;min-height:350px}
+.sim-title{text-align:center;font-size:.8rem;font-weight:700;color:#71717a;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2rem}
+.sim-layout{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;position:relative}
+.sim-agent{width:180px;text-align:center}
+.sim-av{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto .75rem;border:3px solid rgba(255,255,255,.1);transition:all .5s;position:relative}
+.sim-av.active{transform:scale(1.1)}
+.sim-av.write-mode{border-color:#ef4444;box-shadow:0 0 30px rgba(239,68,68,.3)}
+.sim-av.read-mode{border-color:#38bdf8;box-shadow:0 0 30px rgba(56,189,248,.3)}
+.sim-av.act-mode{border-color:#22c55e;box-shadow:0 0 30px rgba(34,197,94,.3)}
+.sim-name{font-weight:700;font-size:.9rem;margin-bottom:.25rem}
+.sim-role{font-size:.7rem;color:#71717a}
+.sim-status{font-size:.75rem;margin-top:.5rem;padding:.3rem .6rem;border-radius:6px;display:inline-block;min-height:1.6em}
+
+.sim-bus{flex:1;min-width:200px;text-align:center;padding:1rem;border-radius:14px;background:rgba(168,85,247,.05);border:1px solid rgba(168,85,247,.15);position:relative}
+.bus-label{font-size:.7rem;font-weight:700;color:#a855f7;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.bus-stream{min-height:120px;text-align:left}
+.bus-msg{font-size:.75rem;padding:.4rem .7rem;border-radius:8px;margin-bottom:.4rem;opacity:0;transform:translateX(-10px);transition:all .4s;font-family:monospace}
+.bus-msg.visible{opacity:1;transform:translateX(0)}
+.bus-msg.from-a{background:rgba(239,68,68,.08);color:#ef4444;border-left:2px solid #ef4444}
+.bus-msg.from-b{background:rgba(56,189,248,.08);color:#38bdf8;border-left:2px solid #38bdf8}
+.bus-msg.system{background:rgba(168,85,247,.08);color:#a855f7;border-left:2px solid #a855f7}
+
+.sim-controls{text-align:center;margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.sim-btn{padding:.6rem 1.5rem;border-radius:10px;font-family:'Inter',sans-serif;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s;border:1px solid}
+.sim-btn.primary{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);color:#ef4444}
+.sim-btn.primary:hover{background:rgba(239,68,68,.2)}
+.sim-btn.secondary{background:transparent;border-color:rgba(255,255,255,.1);color:#a1a1aa}
+.sim-btn.secondary:hover{border-color:rgba(255,255,255,.2);color:#e5e5e5}
+
+.relay-builder{margin:2.5rem 0;padding:2rem;border-radius:16px;background:rgba(56,189,248,.03);border:1px solid rgba(56,189,248,.1)}
+.rb-title{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;color:#38bdf8}
+.rb-desc{font-size:.85rem;color:#a1a1aa;margin-bottom:1.5rem}
+.rb-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1rem}
+.rb-agent{padding:1.25rem;border-radius:12px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
+.rb-agent-title{font-size:.8rem;font-weight:700;color:#ef4444;margin-bottom:.5rem}
+.rb-agent-title.blue{color:#38bdf8}
+.rb-arrow{font-size:2rem;color:#52525b;text-align:center}
+.rb-field{margin-bottom:.5rem}
+.rb-field label{display:block;font-size:.7rem;font-weight:600;color:#71717a;margin-bottom:.25rem;text-transform:uppercase;letter-spacing:.04em}
+.rb-field select,.rb-field input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.5rem;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.82rem}
+.rb-field select:focus,.rb-field input:focus{outline:none;border-color:rgba(56,189,248,.3)}
+.rb-test{text-align:center;margin-top:1rem}
+.rb-test-btn{padding:.6rem 2rem;border:none;border-radius:10px;background:#38bdf8;color:#0a0a0f;font-family:'Inter',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s}
+.rb-test-btn:hover{background:#7dd3fc}
+.rb-output{margin-top:1rem;padding:1rem;border-radius:10px;background:rgba(0,0,0,.3);font-family:monospace;font-size:.78rem;color:#a1a1aa;white-space:pre-wrap;display:none;border:1px solid rgba(255,255,255,.05)}
+
+.key-insight{margin:2rem 0;padding:1.5rem;border-left:3px solid #38bdf8;background:rgba(56,189,248,.04);border-radius:0 12px 12px 0;font-size:.9rem;line-height:1.6;color:#d4d4d8}
+
+.complete-section{text-align:center;margin:3rem 0 2rem;padding:2rem;border-radius:16px;background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.1)}
+.complete-btn{padding:.85rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(239,68,68,.3)}.complete-btn:hover{transform:translateY(-2px)}.complete-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.complete-msg{margin-top:1rem;font-size:.85rem;color:#22c55e;display:none}
+.xp-toast{position:fixed;top:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;background:#ef4444;color:#fff;font-weight:700;font-size:.9rem;transform:translateY(-100px);opacity:0;transition:all .4s ease;z-index:999;box-shadow:0 8px 32px rgba(239,68,68,.4)}.xp-toast.show{transform:translateY(0);opacity:1}
+.lesson-nav{display:flex;justify-content:space-between;align-items:center;margin:2rem 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}.lesson-nav a{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#a1a1aa;transition:color .2s}.lesson-nav a:hover{color:#ef4444}
+
+@media(max-width:640px){h1{font-size:1.8rem}.sim-layout{flex-direction:column;align-items:center}.rb-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+
+<div class="container">
+  <div class="lesson-badge">Module 2 &bull; Lesson 4</div>
+  <h1>Agent Communication</h1>
+  <p class="subtitle">Agents don't talk to each other directly. They write to shared memory, and other agents read it. The consciousness_stream is the shared bus.</p>
+
+  <h2 class="section-title">&#128172; Message Passing Simulation</h2>
+  <div class="sim-arena">
+    <div class="sim-title">Shared Memory Communication</div>
+    <div class="sim-layout">
+      <div class="sim-agent">
+        <div class="sim-av" id="av-a">&#129302;</div>
+        <div class="sim-name">Agent A</div>
+        <div class="sim-role">Content Writer</div>
+        <div class="sim-status" id="stat-a"></div>
+      </div>
+      <div class="sim-bus">
+        <div class="bus-label">&#127760; consciousness_stream</div>
+        <div class="bus-stream" id="bus-stream"></div>
+      </div>
+      <div class="sim-agent">
+        <div class="sim-av" id="av-b">&#129302;</div>
+        <div class="sim-name">Agent B</div>
+        <div class="sim-role">Publisher</div>
+        <div class="sim-status" id="stat-b"></div>
+      </div>
+    </div>
+    <div class="sim-controls">
+      <button class="sim-btn primary" onclick="runSim()">&#9654; Run Communication</button>
+      <button class="sim-btn secondary" onclick="resetSim()">&#8634; Reset</button>
+    </div>
+  </div>
+
+  <div class="key-insight">
+    <strong>The consciousness_stream</strong> is a shared table where agents post messages. Think of it like a team Slack channel — but for AI agents. Every agent can read from it, and any agent can write to it. No direct connections needed.
+  </div>
+
+  <h2 class="section-title">&#128279; Build a Relay</h2>
+  <div class="relay-builder">
+    <div class="rb-title">Set Up Agent-to-Agent Relay</div>
+    <div class="rb-desc">Configure two agents and watch messages flow between them through shared memory.</div>
+    <div class="rb-grid">
+      <div class="rb-agent">
+        <div class="rb-agent-title">&#129302; Sender Agent</div>
+        <div class="rb-field"><label>Action</label><select id="sender-action"><option value="write_content">Write blog post</option><option value="analyze_data">Analyze data</option><option value="generate_report">Generate report</option></select></div>
+        <div class="rb-field"><label>Message Key</label><input id="sender-key" value="task.output" placeholder="e.g., task.output"></div>
+      </div>
+      <div class="rb-arrow">&#8594;</div>
+      <div class="rb-agent">
+        <div class="rb-agent-title blue">&#129302; Receiver Agent</div>
+        <div class="rb-field"><label>Watches For</label><select id="recv-watch"><option value="task.output">task.output</option><option value="task.status">task.status</option><option value="task.error">task.error</option></select></div>
+        <div class="rb-field"><label>Then Does</label><select id="recv-action"><option value="publish">Publish to site</option><option value="email">Send via email</option><option value="store">Store in database</option></select></div>
+      </div>
+    </div>
+    <div class="rb-test"><button class="rb-test-btn" onclick="testRelay()">&#9889; Test Relay</button></div>
+    <div class="rb-output" id="relay-output"></div>
+  </div>
+
+  <div class="complete-section">
+    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
+    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
+  </div>
+  <div class="lesson-nav">
+    <a href="memory-systems.html">&larr; Memory Systems</a>
+    <a href="orchestration-patterns.html">Next: Orchestration Patterns &rarr;</a>
+  </div>
+</div>
+<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
+
+<script>
+let simRunning=false;
+function runSim(){
+  if(simRunning)return;simRunning=true;
+  const avA=document.getElementById('av-a'),avB=document.getElementById('av-b');
+  const sA=document.getElementById('stat-a'),sB=document.getElementById('stat-b');
+  const bus=document.getElementById('bus-stream');
+  bus.innerHTML='';
+  const addMsg=(cls,txt,delay)=>setTimeout(()=>{const d=document.createElement('div');d.className=`bus-msg ${cls}`;d.textContent=txt;bus.appendChild(d);setTimeout(()=>d.classList.add('visible'),50);},delay);
+  const steps=[
+    {t:0,fn:()=>{avA.classList.add('active','write-mode');sA.textContent='Writing...';sA.style.cssText='background:rgba(239,68,68,.1);color:#ef4444';}},
+    {t:500,fn:()=>addMsg('from-a','A: {type:"content", status:"draft_ready"}',0)},
+    {t:1200,fn:()=>addMsg('from-a','A: {body:"10 Tips for AI Agents...", words:1200}',0)},
+    {t:1800,fn:()=>{avA.classList.remove('write-mode');sA.textContent='Write done';addMsg('system','SYS: New entry at task.output',0);}},
+    {t:2500,fn:()=>{avB.classList.add('active','read-mode');sB.textContent='Reading...';sB.style.cssText='background:rgba(56,189,248,.1);color:#38bdf8';}},
+    {t:3200,fn:()=>addMsg('from-b','B: Reading task.output...',0)},
+    {t:3800,fn:()=>{avB.classList.remove('read-mode');avB.classList.add('act-mode');sB.textContent='Publishing...';sB.style.cssText='background:rgba(34,197,94,.1);color:#22c55e';}},
+    {t:4500,fn:()=>addMsg('from-b','B: Published to /blog/10-tips-ai-agents',0)},
+    {t:5200,fn:()=>addMsg('system','SYS: Pipeline complete ✓',0)},
+    {t:5800,fn:()=>{avA.classList.remove('active','write-mode');avB.classList.remove('active','act-mode');sA.textContent='Idle';sB.textContent='Idle';sA.style.cssText='';sB.style.cssText='';simRunning=false;}}
+  ];
+  steps.forEach(s=>setTimeout(s.fn,s.t));
+}
+
+function resetSim(){
+  simRunning=false;
+  document.getElementById('bus-stream').innerHTML='';
+  ['av-a','av-b'].forEach(id=>{const el=document.getElementById(id);el.className='sim-av';});
+  document.getElementById('stat-a').textContent='';document.getElementById('stat-b').textContent='';
+  document.getElementById('stat-a').style.cssText='';document.getElementById('stat-b').style.cssText='';
+}
+
+function testRelay(){
+  const action=document.getElementById('sender-action').value;
+  const key=document.getElementById('sender-key').value;
+  const watch=document.getElementById('recv-watch').value;
+  const recv=document.getElementById('recv-action').value;
+  const o=document.getElementById('relay-output');
+  o.style.display='block';
+  const actionLabels={write_content:'Blog post draft',analyze_data:'Data analysis report',generate_report:'Financial report'};
+  const recvLabels={publish:'Published to website',email:'Sent via email',store:'Stored in database'};
+  o.textContent=`[00:00] Sender: Executing "${action}"...
+[00:02] Sender: Writing to consciousness_stream.${key}
+        → {type: "${action}", data: "${actionLabels[action]}", ts: "${new Date().toISOString()}"}
+
+[00:03] Stream: New entry detected at "${key}"
+[00:03] Receiver: Watching for "${watch}" — MATCH FOUND
+
+[00:04] Receiver: Reading payload...
+[00:05] Receiver: Executing "${recv}"
+        → ${recvLabels[recv]}
+
+[00:06] ✓ Relay complete. Message passed successfully.
+        Sender → consciousness_stream → Receiver`;
+}
+
+function completeLsn(){
+  if(localStorage.getItem('autolab-4')==='complete')return;
+  localStorage.setItem('autolab-4','complete');
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+}
+if(localStorage.getItem('autolab-4')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
+</script>
+</body>
+</html>

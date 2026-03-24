@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is a Neuron? — AI Foundations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-header{margin-bottom:2rem}
+.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(192,132,252,.12);color:#c084fc}
+.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}
+.time-badge{font-size:.8rem;color:#71717a}
+.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;line-height:1.6}
+
+.canvas-wrap{position:relative;width:100%;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);margin-bottom:2rem}
+canvas{display:block;width:100%;height:auto}
+
+.controls{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.control-group{flex:1;min-width:200px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem}
+.control-group label{display:block;font-size:.75rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.control-group .value{font-size:1.5rem;font-weight:800;color:#c084fc;margin-bottom:.5rem}
+input[type=range]{width:100%;-webkit-appearance:none;background:rgba(255,255,255,.06);height:6px;border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#c084fc;cursor:pointer;border:3px solid #0a0a0f}
+
+.narration{background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem;line-height:1.7;font-size:.95rem}
+.narration strong{color:#c084fc}
+
+.insight-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem}
+.insight{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem}
+.insight h3{font-size:.85rem;font-weight:700;margin-bottom:.5rem;color:#fb923c}
+.insight p{font-size:.8rem;color:#a1a1aa;line-height:1.5}
+
+.complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+
+.footer-progress{text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
+.footer-progress span{color:#c084fc;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">← Back to Course</a>
+</nav>
+
+<div class="container">
+  <div class="lesson-header">
+    <div class="meta">
+      <span class="type-badge">Animated</span>
+      <span class="xp-badge">+50 XP</span>
+      <span class="time-badge">~20 min</span>
+    </div>
+    <h1>What Is a Neuron?</h1>
+    <p>Watch how a single artificial neuron processes information — then control it yourself.</p>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="neuronCanvas" width="800" height="450"></canvas>
+  </div>
+
+  <div class="controls">
+    <div class="control-group">
+      <label>Input 1</label>
+      <div class="value" id="v1">0.5</div>
+      <input type="range" id="i1" min="0" max="100" value="50">
+    </div>
+    <div class="control-group">
+      <label>Input 2</label>
+      <div class="value" id="v2">0.3</div>
+      <input type="range" id="i2" min="0" max="100" value="30">
+    </div>
+    <div class="control-group">
+      <label>Input 3</label>
+      <div class="value" id="v3">0.8</div>
+      <input type="range" id="i3" min="0" max="100" value="80">
+    </div>
+  </div>
+
+  <div class="narration">
+    <strong>A neuron is just math.</strong> Three numbers come in, get multiplied by weights, added together, and if the sum crosses a threshold — it fires. That's it. No magic. Every AI system on Earth is built from billions of these simple units working together.
+  </div>
+
+  <div class="insight-cards">
+    <div class="insight">
+      <h3>Weights</h3>
+      <p>Each input is multiplied by a weight — a number the network learns during training. Higher weight = more influence.</p>
+    </div>
+    <div class="insight">
+      <h3>Summation</h3>
+      <p>All the weighted inputs get added together into a single number. This is the neuron's "raw score."</p>
+    </div>
+    <div class="insight">
+      <h3>Activation</h3>
+      <p>If the sum exceeds a threshold, the neuron "fires" and passes a signal forward. Below threshold? Silence.</p>
+    </div>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLessons()">Complete & Continue →</button>
+</div>
+
+<div class="footer-progress">
+  <span id="footerProgress">0 of 9</span> lessons complete
+</div>
+
+<script>
+const canvas=document.getElementById('neuronCanvas');
+const ctx=canvas.getContext('2d');
+const dpr=window.devicePixelRatio||1;
+canvas.width=800*dpr;canvas.height=450*dpr;
+ctx.scale(dpr,dpr);
+
+let inputs=[0.5,0.3,0.8];
+const weights=[0.6,0.9,0.4];
+const threshold=0.7;
+let particles=[];
+let fired=false;
+let fireGlow=0;
+let time=0;
+
+const sliders=document.querySelectorAll('input[type=range]');
+sliders.forEach((s,i)=>{
+  s.addEventListener('input',()=>{
+    inputs[i]=s.value/100;
+    document.getElementById('v'+(i+1)).textContent=inputs[i].toFixed(2);
+  });
+});
+
+function getSum(){return inputs.reduce((s,v,i)=>s+v*weights[i],0)}
+
+class Particle{
+  constructor(sx,sy,ex,ey,color,delay){
+    this.sx=sx;this.sy=sy;this.ex=ex;this.ey=ey;this.color=color;
+    this.t=0;this.delay=delay;this.speed=0.015+Math.random()*0.01;this.alive=true;
+  }
+  update(){
+    if(this.delay>0){this.delay--;return}
+    this.t+=this.speed;if(this.t>=1)this.alive=false;
+  }
+  draw(ctx){
+    if(this.delay>0)return;
+    const t=this.t;
+    const x=this.sx+(this.ex-this.sx)*t;
+    const y=this.sy+(this.ey-this.sy)*t;
+    ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);
+    ctx.fillStyle=this.color;ctx.globalAlpha=1-t*0.5;ctx.fill();ctx.globalAlpha=1;
+  }
+}
+
+function spawnParticles(){
+  const inputPositions=[[100,100],[100,225],[100,350]];
+  const colors=['#c084fc','#fb923c','#38bdf8'];
+  inputPositions.forEach((p,i)=>{
+    for(let j=0;j<3;j++){
+      particles.push(new Particle(p[0]+40,p[1],350,225,colors[i],j*15+i*10));
+    }
+  });
+  const sum=getSum();
+  if(sum>=threshold){
+    setTimeout(()=>{
+      for(let j=0;j<5;j++){
+        particles.push(new Particle(450,225,700,225,'#22c55e',j*8));
+      }
+      fired=true;fireGlow=1;
+    },600);
+  }else{
+    fired=false;
+  }
+}
+
+setInterval(()=>{particles=[];fired=false;fireGlow=0;spawnParticles()},3000);
+spawnParticles();
+
+function drawNode(x,y,r,label,value,color,glowAmt){
+  if(glowAmt>0){
+    ctx.beginPath();ctx.arc(x,y,r+15,0,Math.PI*2);
+    const g=ctx.createRadialGradient(x,y,r,x,y,r+20);
+    g.addColorStop(0,color+'66');g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.globalAlpha=glowAmt;ctx.fill();ctx.globalAlpha=1;
+  }
+  ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+  ctx.fillStyle='#13131a';ctx.fill();
+  ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();
+  ctx.fillStyle=color;ctx.font='bold 13px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(label,x,y-8);
+  if(value!==undefined){
+    ctx.fillStyle='#e5e5e5';ctx.font='bold 16px Inter';
+    ctx.fillText(value,x,y+10);
+  }
+}
+
+function drawConnection(x1,y1,x2,y2,alpha){
+  ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);
+  ctx.strokeStyle=`rgba(255,255,255,${0.08*alpha})`;ctx.lineWidth=1.5;ctx.stroke();
+}
+
+function animate(){
+  time++;
+  ctx.clearRect(0,0,800,450);
+  const inputY=[100,225,350];
+  const colors=['#c084fc','#fb923c','#38bdf8'];
+  const sum=getSum();
+
+  // connections
+  inputY.forEach((y,i)=>{
+    drawConnection(140,y,350,225,1);
+    // weight label
+    const mx=(140+350)/2;const my=(y+225)/2;
+    ctx.fillStyle='#71717a';ctx.font='600 11px Inter';ctx.textAlign='center';
+    ctx.fillText('w='+weights[i].toFixed(1),mx-20,my-8);
+  });
+  drawConnection(450,225,700,225,sum>=threshold?1:0.3);
+
+  // input nodes
+  inputY.forEach((y,i)=>{
+    drawNode(100,y,30,'Input '+(i+1),inputs[i].toFixed(2),colors[i],0);
+  });
+
+  // sum node
+  const neuronColor=sum>=threshold?'#22c55e':'#ef4444';
+  if(fired)fireGlow=Math.max(0,fireGlow-0.005);
+  drawNode(400,225,40,'Σ = '+sum.toFixed(2),sum>=threshold?'FIRE':'silent',neuronColor,fired?fireGlow:0);
+
+  // threshold indicator
+  ctx.fillStyle='#71717a';ctx.font='600 11px Inter';ctx.textAlign='center';
+  ctx.fillText('threshold: '+threshold,400,290);
+  const barW=80,barH=6;
+  ctx.fillStyle='rgba(255,255,255,.06)';
+  ctx.fillRect(400-barW/2,300,barW,barH);
+  const fill=Math.min(sum/threshold,1);
+  ctx.fillStyle=sum>=threshold?'#22c55e':'#ef4444';
+  ctx.fillRect(400-barW/2,300,barW*fill,barH);
+
+  // output node
+  drawNode(700,225,30,'Output',sum>=threshold?'1':'0',sum>=threshold?'#22c55e':'#52525b',fired?fireGlow*0.5:0);
+
+  // particles
+  particles.forEach(p=>{p.update();p.draw(ctx)});
+  particles=particles.filter(p=>p.alive);
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Progress
+function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
+function updateFooter(){
+  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
+  document.getElementById('footerProgress').textContent=c+' of 9';
+  if(p['what-is-a-neuron']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
+}
+function completeLessons(){
+  const p=getProgress();p['what-is-a-neuron']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
+  window.location.href='build-a-network.html';
+}
+updateFooter();
+</script>
+</body>
+</html>
