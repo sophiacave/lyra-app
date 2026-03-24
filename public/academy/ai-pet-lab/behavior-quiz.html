@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Behavior Quiz — AI Pet Lab</title>
+<title>Foundations Assessment — AI Pet Lab</title>
 <link rel="icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -13,48 +13,58 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
 .wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
 a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+
 .top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
 .top-bar a:hover{color:var(--text);text-decoration:none}
 .lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+
 .header{padding:2.5rem 0 1.5rem;text-align:center}
 .header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
 .header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
 
-/* QUIZ */
+/* PROGRESS DOTS */
 .quiz-progress{display:flex;gap:.5rem;margin:2rem 0 1.5rem;justify-content:center}
-.qp-dot{width:32px;height:4px;border-radius:2px;background:var(--border2);transition:background .3s}
+.qp-dot{width:40px;height:4px;border-radius:2px;background:var(--border2);transition:all .4s}
 .qp-dot.active{background:var(--orange)}
 .qp-dot.correct{background:var(--green)}
 .qp-dot.wrong{background:var(--red)}
 
+/* QUESTION CARD */
 .question-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:1.5rem 0}
-.q-num{font-size:.75rem;color:var(--orange);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
-.q-text{font-size:1.1rem;font-weight:600;margin-bottom:1.5rem}
-.options{display:flex;flex-direction:column;gap:.75rem}
-.opt{background:var(--surface2);border:2px solid var(--border);border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:all .2s;font-size:.95rem;color:var(--dim)}
-.opt:hover{border-color:var(--border2);color:var(--text)}
+.q-num{font-size:.75rem;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
+.q-text{font-size:1.05rem;font-weight:600;margin-bottom:1.5rem;line-height:1.6}
+.options{display:flex;flex-direction:column;gap:.65rem}
+.opt{background:var(--surface2);border:2px solid var(--border);border-radius:12px;padding:.9rem 1.25rem;cursor:pointer;transition:all .2s;font-size:.92rem;color:var(--dim);line-height:1.5}
+.opt:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.02)}
 .opt.selected{border-color:var(--blue);color:var(--text);background:rgba(56,189,248,.05)}
-.opt.correct{border-color:var(--green);color:var(--green);background:rgba(74,222,128,.08)}
-.opt.wrong{border-color:var(--red);color:var(--red);background:rgba(248,113,113,.08)}
+.opt.correct{border-color:var(--green);color:var(--green);background:rgba(74,222,128,.06)}
+.opt.wrong{border-color:var(--red);color:var(--red);background:rgba(248,113,113,.06)}
 .opt.disabled{pointer-events:none}
 
-.feedback{margin-top:1rem;padding:1rem;border-radius:10px;font-size:.9rem;display:none}
+.feedback{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:12px;font-size:.88rem;display:none;line-height:1.6}
 .feedback.show{display:block}
-.feedback.correct{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:var(--green)}
-.feedback.wrong{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:var(--red)}
+.feedback.correct-fb{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.15);color:var(--dim)}
+.feedback.correct-fb strong{color:var(--green)}
+.feedback.wrong-fb{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);color:var(--dim)}
+.feedback.wrong-fb strong{color:var(--red)}
 
-.btn-next{display:none;margin:1.5rem auto 0;background:var(--orange);color:#000;font-weight:700;font-size:.95rem;padding:.75rem 2rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
-.btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,53,.25)}
+.btn-next{display:none;margin:1.5rem auto 0;background:var(--surface2);color:var(--text);font-weight:600;font-size:.9rem;padding:.7rem 1.8rem;border-radius:12px;border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.btn-next:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-1px)}
 
 /* RESULTS */
 .results{display:none;text-align:center;padding:3rem 0}
-.results h2{font-size:1.75rem;font-weight:800;margin-bottom:1rem}
-.results .score{font-size:3rem;font-weight:800;margin:1rem 0}
-.results .score.good{color:var(--green)}
-.results .score.ok{color:var(--orange)}
-.results .score.bad{color:var(--red)}
-.results p{color:var(--dim);font-size:1rem;margin-bottom:2rem}
+.results h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.results .score-display{margin:1.5rem 0}
+.score-ring{width:120px;height:120px;margin:0 auto;position:relative}
+.score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring circle{fill:none;stroke-width:6}
+.score-ring .bg{stroke:var(--border2)}
+.score-ring .fill{stroke:var(--green);stroke-linecap:round;transition:stroke-dashoffset 1s ease,stroke 0.5s}
+.score-ring .fill.ok{stroke:var(--orange)}
+.score-ring .fill.bad{stroke:var(--red)}
+.score-number{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.6rem;font-weight:800}
+.results .msg{color:var(--dim);font-size:.95rem;margin:1.5rem 0 2rem;max-width:500px;margin-left:auto;margin-right:auto}
 .btn-complete{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
 .btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
 
@@ -74,8 +84,8 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 </div>
 
 <div class="header">
-  <h1>Behavior Quiz &#129504;</h1>
-  <p>Test what you've learned about reinforcement, rewards, and policies!</p>
+  <h1>Foundations Assessment</h1>
+  <p>Six questions on reinforcement learning fundamentals. Each answer includes an explanation to deepen your understanding.</p>
 </div>
 
 <div class="quiz-progress" id="qProgress"></div>
@@ -84,25 +94,94 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 
 <div class="results" id="results">
   <h2 id="resultsTitle"></h2>
-  <div class="score" id="resultsScore"></div>
-  <p id="resultsMsg"></p>
-  <button class="btn-complete" onclick="completeLesson()">Continue to Module 2 &rarr;</button>
+  <div class="score-display">
+    <div class="score-ring">
+      <svg viewBox="0 0 120 120">
+        <circle class="bg" cx="60" cy="60" r="52"/>
+        <circle class="fill" id="scoreArc" cx="60" cy="60" r="52" stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
+      </svg>
+      <div class="score-number" id="scoreNumber">0/6</div>
+    </div>
+  </div>
+  <p class="msg" id="resultsMsg"></p>
+  <button class="btn-complete" onclick="completeLesson()">Continue to Module 2</button>
 </div>
 
 <div class="foot">
-  <a href="first-reward.html">&larr; First Reward</a>
-  <a href="teach-sit.html">Next: Teach Sit &rarr;</a>
+  <a href="first-reward.html">&larr; The Reward Signal</a>
+  <a href="teach-sit.html">Next: Shaping a Policy &rarr;</a>
 </div>
 
 </div>
 
 <script>
 const questions=[
-  {q:"In reinforcement learning, what does the 'reward signal' tell the agent?",opts:["How fast to learn","Whether an action was good or bad","What action to take next","How many neurons to use"],answer:1,explain:"The reward signal gives feedback on whether an action was desirable (+) or undesirable (-). The agent uses this to update its policy."},
-  {q:"Your pet sits when you say 'sit' and you give it a treat. This is an example of:",opts:["Negative reinforcement","Unsupervised learning","Positive reinforcement","Transfer learning"],answer:2,explain:"Positive reinforcement means adding a pleasant stimulus (treat) after a desired behavior, making it more likely to happen again."},
-  {q:"A 'policy' in reinforcement learning is:",opts:["The rules the programmer writes","A mapping from states to actions the agent should take","The reward function","The training data"],answer:1,explain:"A policy is the agent's strategy — it maps each state to the action the agent should take. The goal of RL is to learn the optimal policy."},
-  {q:"What happens if you reward both good AND bad actions equally?",opts:["The agent learns faster","The agent can't distinguish good from bad and learns nothing useful","The agent becomes more creative","The rewards cancel out"],answer:1,explain:"Without a clear reward signal, the agent has no way to differentiate desirable from undesirable behavior. Consistent, accurate rewards are essential."},
-  {q:"What is 'negative reinforcement'?",opts:["Punishing the agent","Removing an unpleasant stimulus when the agent does something good","Giving a negative reward","Turning off the agent"],answer:1,explain:"Negative reinforcement removes something unpleasant to encourage behavior (like stopping a buzzer when the pet sits). It's NOT punishment — it still encourages good behavior."}
+  {
+    q:"What does the reward signal represent in a reinforcement learning system?",
+    opts:[
+      "The optimal action the agent should take",
+      "A scalar feedback value indicating how desirable the last transition was",
+      "The probability of reaching the goal state",
+      "The gradient used to update neural network weights"
+    ],
+    answer:1,
+    explain:"The reward signal is a scalar number the environment provides after each action, encoding how good or bad the resulting state transition was. It is the agent's only source of evaluative feedback \u2014 unlike supervised learning, there is no explicit \u201ccorrect answer\u201d label."
+  },
+  {
+    q:"What is the exploration-exploitation tradeoff?",
+    opts:[
+      "Choosing between learning faster or more accurately",
+      "Balancing trying new actions (exploration) versus repeating actions known to yield high reward (exploitation)",
+      "Deciding whether to use a model of the environment or learn directly from experience",
+      "Trading off between memory usage and computation speed"
+    ],
+    answer:1,
+    explain:"An agent must balance exploiting its current best-known strategy (to maximize short-term reward) with exploring unfamiliar actions that might reveal better long-term strategies. The epsilon parameter controls this balance: higher epsilon means more random exploration."
+  },
+  {
+    q:"In Q-learning, how is the Q-value for a state-action pair updated?",
+    opts:[
+      "Q(s,a) is set to the average of all rewards ever received in state s",
+      "Q(s,a) is updated toward the received reward plus the discounted maximum Q-value of the next state",
+      "Q(s,a) is incremented by 1 for each visit to state s",
+      "Q(s,a) is replaced by the reward received on the most recent visit"
+    ],
+    answer:1,
+    explain:"The Q-learning update rule is Q(s,a) \u2190 Q(s,a) + \u03b1[r + \u03b3 max Q(s',a') - Q(s,a)]. It blends the current estimate with a target: the immediate reward r plus the discounted value of the best action from the next state. This bootstrapping approach is the core of temporal difference learning."
+  },
+  {
+    q:"What role does the discount factor \u03b3 (gamma) play in reinforcement learning?",
+    opts:[
+      "It determines how many episodes the agent trains for",
+      "It controls the tradeoff between immediate and future rewards",
+      "It sets the maximum reward the agent can receive",
+      "It defines the size of the state space"
+    ],
+    answer:1,
+    explain:"The discount factor \u03b3, between 0 and 1, determines how much the agent values future rewards relative to immediate ones. With \u03b3 = 0, the agent is entirely myopic, caring only about the next reward. With \u03b3 near 1, it plans far ahead, weighting distant future rewards almost as heavily as immediate ones."
+  },
+  {
+    q:"Why is credit assignment difficult in sequential decision problems?",
+    opts:[
+      "Because the agent cannot observe its own actions",
+      "Because the reward for reaching a goal may arrive many steps after the critical decisions that led there",
+      "Because multiple agents compete for the same reward",
+      "Because the environment changes randomly between episodes"
+    ],
+    answer:1,
+    explain:"When an agent receives a reward after a long sequence of actions, it must determine which earlier actions actually contributed to the outcome. A reward at step 50 might depend on a decision made at step 3. This temporal credit assignment problem is fundamental to RL and is addressed through mechanisms like TD learning and eligibility traces."
+  },
+  {
+    q:"What is the key difference between model-free and model-based reinforcement learning?",
+    opts:[
+      "Model-free uses neural networks while model-based uses decision trees",
+      "Model-free learns values or policies directly from experience, while model-based first learns a model of environment dynamics and plans using it",
+      "Model-free is for discrete actions and model-based is for continuous actions",
+      "Model-based requires labeled training data while model-free does not"
+    ],
+    answer:1,
+    explain:"Model-free methods (like Q-learning) learn value functions or policies purely from sampled experience without ever building an explicit model of how the environment works. Model-based methods learn a transition model P(s'|s,a) and reward model R(s,a), then use planning algorithms to derive a policy. Model-based approaches are typically more sample-efficient but computationally heavier."
+  }
 ];
 
 let current=0,score=0,answered=new Array(questions.length).fill(null);
@@ -112,7 +191,11 @@ function renderProgress(){
   el.innerHTML='';
   questions.forEach((_,i)=>{
     const dot=document.createElement('div');
-    dot.className='qp-dot'+(i===current?' active':'')+(answered[i]==='correct'?' correct':'')+(answered[i]==='wrong'?' wrong':'');
+    let cls='qp-dot';
+    if(i===current && answered[i]===null) cls+=' active';
+    if(answered[i]==='correct') cls+=' correct';
+    if(answered[i]==='wrong') cls+=' wrong';
+    dot.className=cls;
     el.appendChild(dot);
   });
 }
@@ -121,17 +204,17 @@ function renderQuestion(){
   if(current>=questions.length){showResults();return;}
   const q=questions[current];
   const area=document.getElementById('quizArea');
-  let html=`<div class="question-card">
-    <div class="q-num">Question ${current+1} of ${questions.length}</div>
-    <div class="q-text">${q.q}</div>
-    <div class="options">`;
+  let html='<div class="question-card">';
+  html+='<div class="q-num">Question '+(current+1)+' of '+questions.length+'</div>';
+  html+='<div class="q-text">'+q.q+'</div>';
+  html+='<div class="options">';
   q.opts.forEach((o,i)=>{
-    html+=`<div class="opt" data-idx="${i}" onclick="selectAnswer(${i})">${o}</div>`;
+    html+='<div class="opt" data-idx="'+i+'" onclick="selectAnswer('+i+')">'+o+'</div>';
   });
-  html+=`</div>
-    <div class="feedback" id="feedback"></div>
-    <button class="btn-next" id="btnNext" onclick="nextQuestion()">Next &rarr;</button>
-  </div>`;
+  html+='</div>';
+  html+='<div class="feedback" id="feedback"></div>';
+  html+='<button class="btn-next" id="btnNext" onclick="nextQuestion()">'+(current<questions.length-1?'Next Question':'See Results')+'</button>';
+  html+='</div>';
   area.innerHTML=html;
   renderProgress();
 }
@@ -147,14 +230,14 @@ function selectAnswer(idx){
     opts[idx].classList.add('correct');
     score++;
     answered[current]='correct';
-    fb.className='feedback show correct';
-    fb.textContent='Correct! '+q.explain;
+    fb.className='feedback show correct-fb';
+    fb.innerHTML='<strong>Correct.</strong> '+q.explain;
   }else{
     opts[idx].classList.add('wrong');
     opts[q.answer].classList.add('correct');
     answered[current]='wrong';
-    fb.className='feedback show wrong';
-    fb.textContent='Not quite. '+q.explain;
+    fb.className='feedback show wrong-fb';
+    fb.innerHTML='<strong>Incorrect.</strong> '+q.explain;
   }
 
   document.getElementById('btnNext').style.display='block';
@@ -168,16 +251,27 @@ function nextQuestion(){
 
 function showResults(){
   document.getElementById('quizArea').style.display='none';
+  document.getElementById('qProgress').style.display='none';
   const r=document.getElementById('results');
   r.style.display='block';
 
   const pct=Math.round((score/questions.length)*100);
-  const sc=document.getElementById('resultsScore');
-  sc.textContent=score+'/'+questions.length;
-  sc.className='score '+(pct>=80?'good':pct>=60?'ok':'bad');
+  document.getElementById('scoreNumber').textContent=score+'/'+questions.length;
 
-  document.getElementById('resultsTitle').textContent=pct>=80?'Excellent!':pct>=60?'Good effort!':'Keep learning!';
-  document.getElementById('resultsMsg').textContent=pct>=80?'You understand reinforcement learning fundamentals. Your pet is in good hands!':pct>=60?'You\'re getting there! Review the concepts and your pet will thank you.':'No worries — review the first two lessons and try again.';
+  // Animate ring
+  const circumference=326.73;
+  const offset=circumference*(1-score/questions.length);
+  const arc=document.getElementById('scoreArc');
+  setTimeout(()=>{arc.style.strokeDashoffset=offset;},100);
+  if(pct<60) arc.classList.add('bad');
+  else if(pct<80) arc.classList.add('ok');
+
+  document.getElementById('resultsTitle').textContent=
+    pct>=83?'Excellent Understanding':pct>=60?'Solid Foundation':'Review Recommended';
+  document.getElementById('resultsMsg').textContent=
+    pct>=83?'You have a strong grasp of reinforcement learning fundamentals. You\'re ready to move on to policy learning and more advanced concepts.':
+    pct>=60?'You understand the core ideas. Consider reviewing the reward signal lesson to strengthen your intuition before continuing.':
+    'Reinforcement learning has nuances that take time to absorb. Revisit the first two lessons and pay special attention to the Q-table visualization before retaking this assessment.';
 }
 
 function completeLesson(){
@@ -187,7 +281,7 @@ function completeLesson(){
 
 renderQuestion();
 </script>
-<script src="/academy/shared/auth.js"></script>
 <script src="/academy/shared/engine.js"></script>
+<script src="/academy/shared/auth.js"></script>
 </body>
 </html>

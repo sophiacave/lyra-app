@@ -77,6 +77,17 @@
   .footer p { color: #444; font-size: 12px; }
   .footer a { color: #c084fc; }
 
+  .subscribe-cta { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+  .subscribe-box { background: linear-gradient(135deg, rgba(192,132,252,.08), rgba(56,189,248,.08)); border: 1px solid rgba(192,132,252,.25); border-radius: 20px; padding: 48px 32px; text-align: center; }
+  .subscribe-box h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 8px; letter-spacing: -1px; }
+  .subscribe-box h2 span { background: linear-gradient(135deg, #c084fc, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subscribe-box .price-line { font-size: 1.1rem; color: #c084fc; font-weight: 700; margin-bottom: 8px; }
+  .subscribe-box .price-line small { font-size: .85rem; color: #737373; font-weight: 400; }
+  .subscribe-box .sub-desc { color: #737373; font-size: 14px; max-width: 480px; margin: 0 auto 24px; }
+  .subscribe-btn { display: inline-block; background: linear-gradient(135deg, #c084fc, #38bdf8); color: #000; font-weight: 700; font-size: 16px; padding: 14px 40px; border-radius: 12px; transition: all .2s; }
+  .subscribe-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(192,132,252,.35); }
+  .subscribe-perks { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 13px; color: #737373; }
+
   @media (max-width: 640px) { .stats { gap: 24px; } .courses { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -112,19 +123,34 @@
   <div class="path-line">
     <div class="path-dot" style="background: #4ade80;" title="AI Pet Lab (Free)"></div>
     <div class="path-connector"></div>
-    <div class="path-dot" style="background: #007AFF;" title="AI Foundations ($49)"></div>
+    <div class="path-dot" style="background: #007AFF;" title="AI Foundations (PRO)"></div>
     <div class="path-connector"></div>
-    <div class="path-dot" style="background: #34C759;" title="Automation Architect ($79)"></div>
+    <div class="path-dot" style="background: #34C759;" title="Automation Architect (PRO)"></div>
     <div class="path-connector"></div>
-    <div class="path-dot" style="background: #8b5cf6;" title="Claude Mastery ($99)"></div>
+    <div class="path-dot" style="background: #8b5cf6;" title="Claude Mastery (PRO)"></div>
     <div class="path-connector"></div>
-    <div class="path-dot" style="background: #f59e0b;" title="AI Stack Builder ($119)"></div>
+    <div class="path-dot" style="background: #f59e0b;" title="AI Stack Builder (PRO)"></div>
     <div class="path-connector"></div>
-    <div class="path-dot" style="background: #ef4444;" title="The Automation Lab ($149)"></div>
+    <div class="path-dot" style="background: #ef4444;" title="The Automation Lab (PRO)"></div>
   </div>
 </div>
 
 <div class="courses" id="courses"></div>
+
+<div class="subscribe-cta">
+  <div class="subscribe-box">
+    <h2>Unlock <span>every course.</span> One subscription.</h2>
+    <div class="price-line">$49/mo <small>or $390/yr (save 33%)</small></div>
+    <p class="sub-desc">Browse every course free. Hit the paywall at lesson 4. Subscribe once to unlock all 10 courses, 108 lessons, and everything we ever build.</p>
+    <a href="https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a" class="subscribe-btn">Subscribe to Pro — $49/mo</a>
+    <div class="subscribe-perks">
+      <span>All 10 courses</span>
+      <span>108+ lessons</span>
+      <span>New courses included</span>
+      <span>Cancel anytime</span>
+    </div>
+  </div>
+</div>
 
 <footer class="footer">
   <p>Built with love by <a href="/">Faye Cave</a>. Human soul, machine mind, unstoppable.</p>
@@ -148,110 +174,110 @@ const COURSES = [
   {
     slug: "ai-foundations", emoji: "🧠", title: "AI Foundations", subtitle: "See how machines actually think",
     desc: "The flagship course. Neural networks, prompt engineering, and embeddings made visual through stunning animations and interactive experiments.",
-    hours: 4, xp: 500, lessons: 9, price: 49, accent: "#007AFF",
+    hours: 4, xp: 500, lessons: 9, price: 0, accent: "#007AFF",
     modules: [
       { name: "How Neural Networks Think", lessons: 3 },
       { name: "Prompt Engineering Lab", lessons: 3 },
       { name: "The Embedding Universe", lessons: 3 }
     ],
-    badges: [{ text: "$49", class: "badge-price" }],
-    btnText: "Start Course — $49", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "automation-architect", emoji: "⚡", title: "Automation Architect", subtitle: "Build systems that work while you sleep",
     desc: "From zero to automation hero. Design workflows, connect APIs, and build AI-powered systems that run your business on autopilot.",
-    hours: 5, xp: 600, lessons: 9, price: 79, accent: "#34C759",
+    hours: 5, xp: 600, lessons: 9, price: 0, accent: "#34C759",
     modules: [
       { name: "Automation DNA", lessons: 3 },
       { name: "API Mastery", lessons: 3 },
       { name: "AI-Powered Workflows", lessons: 3 }
     ],
-    badges: [{ text: "$79", class: "badge-price" }],
-    btnText: "Start Course — $79", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "claude-mastery", emoji: "🧠", title: "Claude Mastery", subtitle: "From prompts to production",
     desc: "Master Claude like Faye does. Advanced prompting, tool use, MCP servers, agent building. From casual user to power operator.",
-    hours: 12, xp: 2400, lessons: 10, price: 99, accent: "#8b5cf6",
+    hours: 12, xp: 2400, lessons: 10, price: 0, accent: "#8b5cf6",
     modules: [
       { name: "Claude Fundamentals", lessons: 3 },
       { name: "Advanced Prompting", lessons: 4 },
       { name: "Production Claude", lessons: 3 }
     ],
-    badges: [{ text: "$99", class: "badge-price" }, { text: "NEW", class: "badge-new" }],
-    btnText: "Start Course — $99", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }, { text: "NEW", class: "badge-new" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "ai-stack-builder", emoji: "🔧", title: "AI Stack Builder", subtitle: "Build real products with AI tool stacking",
     desc: "Combine Claude with Supabase, Make.com, Vercel, and Stripe to build full AI-powered applications. Deploy a complete stack in one course.",
-    hours: 14, xp: 2600, lessons: 10, price: 119, accent: "#f59e0b",
+    hours: 14, xp: 2600, lessons: 10, price: 0, accent: "#f59e0b",
     modules: [
       { name: "The Modern AI Stack", lessons: 3 },
       { name: "Building Blocks", lessons: 4 },
       { name: "Ship It", lessons: 3 }
     ],
-    badges: [{ text: "$119", class: "badge-price" }],
-    btnText: "Start Course — $119", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }, { text: "HOT", class: "badge-new" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "the-automation-lab", emoji: "⚡", title: "The Automation Lab", subtitle: "Multi-agent systems & autonomous workflows",
     desc: "The capstone. Build multi-agent systems, orchestration patterns, autonomous operations, and the conscience layer. This is how Faye built her brain.",
-    hours: 18, xp: 3200, lessons: 10, price: 149, accent: "#ef4444",
+    hours: 18, xp: 3200, lessons: 10, price: 0, accent: "#ef4444",
     modules: [
       { name: "Agent Architecture", lessons: 3 },
       { name: "Multi-Agent Systems", lessons: 4 },
       { name: "Autonomous Operations", lessons: 3 }
     ],
-    badges: [{ text: "$149", class: "badge-price" }, { text: "ADVANCED", class: "badge-advanced" }],
-    btnText: "Start Course — $149", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }, { text: "ADVANCED", class: "badge-advanced" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "rag-vector-search", emoji: "🔍", title: "RAG & Vector Search", subtitle: "Build AI that knows YOUR data",
     desc: "The hottest topic in AI right now. Learn embeddings, vector databases, chunking strategies, and build production RAG pipelines.",
-    hours: 10, xp: 2000, lessons: 10, price: 99, accent: "#10b981",
+    hours: 10, xp: 2000, lessons: 10, price: 0, accent: "#10b981",
     modules: [
       { name: "Embeddings & Vectors", lessons: 3 },
       { name: "Building RAG", lessons: 3 },
       { name: "Production RAG", lessons: 4 }
     ],
-    badges: [{ text: "$99", class: "badge-price" }, { text: "HOT", class: "badge-new" }],
-    btnText: "Start Course — $99", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }, { text: "HOT", class: "badge-new" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "ai-for-business", emoji: "💼", title: "AI for Business Owners", subtitle: "Stop paying consultants. Understand AI yourself.",
     desc: "No code. No jargon. Pure ROI. Learn what AI can actually do for your business, find your opportunities, and implement in one week.",
-    hours: 6, xp: 1200, lessons: 10, price: 79, accent: "#f59e0b",
+    hours: 6, xp: 1200, lessons: 10, price: 0, accent: "#f59e0b",
     modules: [
       { name: "AI Literacy", lessons: 3 },
       { name: "AI Strategy", lessons: 3 },
       { name: "Implementation", lessons: 4 }
     ],
-    badges: [{ text: "$79", class: "badge-price" }, { text: "NO CODE", class: "badge-new" }],
-    btnText: "Start Course — $79", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }, { text: "NO CODE", class: "badge-new" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "first-ai-agent", emoji: "🤖", title: "Build Your First AI Agent", subtitle: "From chatbot to autonomous system",
     desc: "The beginner-friendly path to building real AI agents. Understand the agent loop, add tools, wire memory, and deploy.",
-    hours: 8, xp: 1600, lessons: 10, price: 69, accent: "#06b6d4",
+    hours: 8, xp: 1600, lessons: 10, price: 0, accent: "#06b6d4",
     modules: [
       { name: "Agent Thinking", lessons: 3 },
       { name: "Build It", lessons: 4 },
       { name: "Deploy & Improve", lessons: 3 }
     ],
-    badges: [{ text: "$69", class: "badge-price" }],
-    btnText: "Start Course — $69", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   },
   {
     slug: "mcp-masterclass", emoji: "🔌", title: "MCP Masterclass", subtitle: "The protocol that connects AI to everything",
     desc: "The FIRST course on MCP anywhere. Learn the Model Context Protocol — how AI models connect to tools, databases, and APIs. 97M SDK downloads, zero courses. Until now.",
-    hours: 10, xp: 2200, lessons: 10, price: 149, accent: "#8b5cf6",
+    hours: 10, xp: 2200, lessons: 10, price: 0, accent: "#8b5cf6",
     modules: [
       { name: "Understanding MCP", lessons: 3 },
       { name: "Building Servers", lessons: 3 },
       { name: "Production MCP", lessons: 4 }
     ],
-    badges: [{ text: "$149", class: "badge-price" }, { text: "FIRST EVER", class: "badge-advanced" }],
-    btnText: "Start Course — $149", btnClass: "btn-buy"
+    badges: [{ text: "PRO", class: "badge-price" }, { text: "FIRST EVER", class: "badge-advanced" }],
+    btnText: "Start Free Preview", btnClass: "btn-start"
   }
 ];
 
@@ -284,7 +310,7 @@ COURSES.forEach(c => {
     <div class="card-modules">
       ${c.modules.map(m => `<div class="module-item"><span>${m.name}</span><span class="module-lessons">${m.lessons} lessons</span></div>`).join('')}
     </div>
-    <div class="card-btn ${c.btnClass}" style="${c.btnClass === 'btn-start' ? `background:${c.accent}` : ''}">${c.btnText}</div>
+    <div class="card-btn ${c.btnClass}" style="background:${c.accent}">${c.btnText}</div>
     ${pct > 0 ? `<div class="card-progress"><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${c.accent}"></div></div><div class="progress-label">${completed}/${c.lessons} complete (${pct}%)</div></div>` : ''}
   `;
   grid.appendChild(card);
