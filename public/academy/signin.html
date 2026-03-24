@@ -85,17 +85,17 @@ h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
 const SUPABASE_URL = 'https://vpaynwebgmmnwttqkwmh.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 async function checkSession() {
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { session } } = await sb.auth.getSession();
   if (session) {
     document.getElementById('signin-form').style.display = 'none';
     document.getElementById('user-card').style.display = 'block';
     document.getElementById('user-email').textContent = session.user.email;
     
     // Check subscription status
-    const { data: profile } = await supabase
+    const { data: profile } = await sb
       .from('profiles')
       .select('subscription_status, subscription_tier')
       .eq('email', session.user.email)
@@ -117,7 +117,7 @@ async function signInWithGoogle() {
   btn.textContent = 'Connecting...';
   btn.disabled = true;
 
-  const { error } = await supabase.auth.signInWithOAuth({
+  const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
     options: { redirectTo: window.location.origin + '/academy/signin.html?return=' + encodeURIComponent(returnTo) }
   });
@@ -143,7 +143,7 @@ async function signIn() {
   btn.disabled = true;
   document.getElementById('error').style.display = 'none';
 
-  const { error } = await supabase.auth.signInWithOtp({
+  const { error } = await sb.auth.signInWithOtp({
     email,
     options: { emailRedirectTo: window.location.origin + '/academy/signin.html?return=' + encodeURIComponent(returnTo) }
   });
@@ -162,7 +162,7 @@ async function signIn() {
 }
 
 async function signOut() {
-  await supabase.auth.signOut();
+  await sb.auth.signOut();
   document.getElementById('signin-form').style.display = 'block';
   document.getElementById('user-card').style.display = 'none';
   document.getElementById('email').value = '';
@@ -175,7 +175,7 @@ async function signOut() {
 checkSession();
 
 // Listen for auth state changes (magic link or OAuth redirect)
-supabase.auth.onAuthStateChange((event, session) => {
+sb.auth.onAuthStateChange((event, session) => {
   if (event === 'SIGNED_IN' && session) {
     // Redirect back to the page they were trying to access
     if (returnTo && returnTo !== '/academy/signin.html') {
