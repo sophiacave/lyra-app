@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /brain-tools/
+Disallow: /brain-mcp/
+Disallow: /api/
+Disallow: /downloads/
 Sitemap: https://likeone.ai/sitemap.xml

@@ -23,8 +23,13 @@ export function middleware(request) {
     url.pathname = '/temp';
     return NextResponse.rewrite(url);
   }
+
+  // Block public access to brain tools and MCP server
+  if (pathname.startsWith('/brain-tools') || pathname.startsWith('/brain-mcp')) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  }
 }
 
 export const config = {
-  matcher: ['/', '/about', '/about/', '/_temp'],
+  matcher: ['/', '/about', '/about/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
 };
