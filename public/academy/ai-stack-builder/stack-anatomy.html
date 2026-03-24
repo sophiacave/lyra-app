@@ -3,240 +3,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stack Anatomy — AI Stack Builder</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Stack Anatomy — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh}
-a{color:#f59e0b;text-decoration:none}
-a:hover{color:#fbbf24}
-.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
-.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #1e1e2e}
-.nav a{font-size:.85rem;color:#888;transition:color .2s}
-.nav a:hover{color:#f59e0b}
-.nav .current{color:#e5e5e5;font-weight:600}
-.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:#f59e0b;background:#f59e0b15;padding:.3rem .75rem;border-radius:99px;margin-bottom:1rem}
-h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
-.intro{color:#999;margin-bottom:2rem;font-size:1.05rem}
-h2{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#f59e0b}
-h3{font-size:1.1rem;font-weight:600;margin:1.5rem 0 .75rem}
-p{margin-bottom:1rem;color:#ccc}
-.stack-visualizer{position:relative;margin:2rem 0}
-.stack-layer{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:.5rem;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
-.stack-layer:hover,.stack-layer.active{border-color:#f59e0b44;background:#13131f}
-.stack-layer.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#f59e0b}
-.stack-layer .layer-header{display:flex;justify-content:space-between;align-items:center}
-.stack-layer .layer-name{font-weight:700;font-size:1rem}
-.stack-layer .layer-level{font-size:.75rem;color:#666;text-transform:uppercase;letter-spacing:.05em}
-.stack-layer .layer-detail{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid #1e1e2e}
-.stack-layer.active .layer-detail{display:block}
-.tool-options{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
-.tool-opt{padding:.5rem 1rem;border-radius:8px;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;border:1px solid #1e1e2e;background:#0a0a0f}
-.tool-opt:hover{border-color:#f59e0b66}
-.tool-opt.selected{border-color:#f59e0b;background:#f59e0b15;color:#f59e0b}
-.tool-opt .tool-icon{margin-right:.4rem}
-.your-stack{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
-.your-stack h3{margin-top:0;color:#f59e0b}
-.stack-summary{display:flex;flex-direction:column;gap:.5rem}
-.stack-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem .75rem;border-radius:8px;background:#0a0a0f;font-size:.9rem}
-.stack-row .label{color:#888}
-.stack-row .value{font-weight:600;color:#f59e0b}
-.stack-row .value.empty{color:#444;font-weight:400}
-.btn-save{display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:.7rem 1.5rem;border-radius:99px;border:none;cursor:pointer;font-size:.9rem;margin-top:1rem;transition:all .3s;font-family:'Inter',sans-serif}
-.btn-save:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
-.concept-box{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
-.concept-box .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#f59e0b;margin-bottom:.5rem;font-weight:600}
-.code-block{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto;margin:.75rem 0}
-.code-block .kw{color:#c084fc}.code-block .str{color:#34d399}.code-block .cm{color:#555}.code-block .fn{color:#60a5fa}.code-block .op{color:#f59e0b}
-.diagram{text-align:center;padding:2rem;margin:1.5rem 0;background:#111118;border-radius:12px;border:1px solid #1e1e2e;position:relative;overflow:hidden}
-.diagram-layers{display:flex;flex-direction:column;gap:4px;max-width:400px;margin:0 auto}
-.d-layer{padding:.75rem;border-radius:8px;font-weight:600;font-size:.85rem;transition:all .3s;position:relative}
-.d-layer.l5{background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44}
-.d-layer.l4{background:#f9731622;color:#f97316;border:1px solid #f9731644}
-.d-layer.l3{background:#8b5cf622;color:#a78bfa;border:1px solid #8b5cf644}
-.d-layer.l2{background:#3b82f622;color:#60a5fa;border:1px solid #3b82f644}
-.d-layer.l1{background:#22c55e22;color:#4ade80;border:1px solid #22c55e44}
-.arrow-down{color:#444;font-size:1.2rem;line-height:1}
-.progress-section{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
-.progress-bar{height:6px;background:#1e1e2e;border-radius:99px;overflow:hidden;margin-top:.5rem}
-.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:99px;transition:width .5s}
-.complete-btn{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:1rem;border-radius:12px;border:none;cursor:pointer;font-size:1rem;margin:2rem 0;font-family:'Inter',sans-serif;transition:all .3s}
-.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
-.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
-.footer{text-align:center;padding:2rem 0;color:#444;font-size:.8rem;border-top:1px solid #1e1e2e;margin-top:2rem}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;min-height:100vh;overflow-x:hidden}
+.container{max-width:800px;margin:0 auto;padding:40px 20px 80px}
+.header{text-align:center;margin-bottom:48px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#38bdf8;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.header h1{font-size:36px;font-weight:900;background:linear-gradient(135deg,#38bdf8,#22c55e,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header p{color:#737373;font-size:15px}
+.progress-bar{display:flex;justify-content:center;gap:8px;margin-bottom:32px}
+.prog-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.06);transition:all .3s}
+.prog-dot.filled{background:#38bdf8;box-shadow:0 0 12px rgba(56,189,248,.3)}
+.layer{margin-bottom:20px}
+.layer-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.layer-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:rgba(255,255,255,.05);color:#525252}
+.layer-name{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#525252}
+.layer-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.option{position:relative;background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.06);border-radius:14px;padding:18px 12px;text-align:center;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);overflow:hidden}
+.option:hover{border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.05);transform:translateY(-3px)}
+.option.selected{transform:scale(1.03)}
+.option .icon{font-size:24px;margin-bottom:6px;display:block}
+.option .name{font-size:14px;font-weight:800;margin-bottom:2px}
+.option .sub{font-size:11px;color:#525252;font-weight:600}
+.option .price{font-size:11px;font-weight:700;margin-top:4px}
+.option .price.green{color:#22c55e}
+.option .price.yellow{color:#fbbf24}
+.selected-indicator{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;opacity:0;transition:opacity .2s;color:#22c55e;font-weight:900}
+.option.selected .selected-indicator{opacity:1}
+/* Brand highlight colors */
+.option[data-brand="supabase"].selected{border-color:#3ecf8e;background:rgba(62,207,142,.06)}
+.option[data-brand="firebase"].selected{border-color:#ffca28;background:rgba(255,202,40,.06)}
+.option[data-brand="planetscale"].selected{border-color:#f5f5f5;background:rgba(245,245,245,.04)}
+.option[data-brand="edge"].selected{border-color:#38bdf8;background:rgba(56,189,248,.06)}
+.option[data-brand="express"].selected{border-color:#68a063;background:rgba(104,160,99,.06)}
+.option[data-brand="fastapi"].selected{border-color:#009688;background:rgba(0,150,136,.06)}
+.option[data-brand="claude"].selected{border-color:#c084fc;background:rgba(192,132,252,.06)}
+.option[data-brand="chatgpt"].selected{border-color:#10a37f;background:rgba(16,163,127,.06)}
+.option[data-brand="gemini"].selected{border-color:#4285f4;background:rgba(66,133,244,.06)}
+.option[data-brand="nextjs"].selected{border-color:#fff;background:rgba(255,255,255,.04)}
+.option[data-brand="react"].selected{border-color:#61dafb;background:rgba(97,218,251,.06)}
+.option[data-brand="astro"].selected{border-color:#ff5d01;background:rgba(255,93,1,.06)}
+.option[data-brand="vercel"].selected{border-color:#fff;background:rgba(255,255,255,.04)}
+.option[data-brand="netlify"].selected{border-color:#00c7b7;background:rgba(0,199,183,.06)}
+.option[data-brand="railway"].selected{border-color:#c084fc;background:rgba(192,132,252,.06)}
+.connection-canvas{width:100%;height:20px;margin:-10px 0}
+canvas.conn{display:block;width:100%;height:20px}
+.result-card{display:none;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:36px;text-align:center;position:relative;overflow:hidden;margin-top:32px}
+.result-card.show{display:block;animation:slideUp .6s cubic-bezier(.34,1.56,.64,1)}
+.result-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(56,189,248,.05),transparent 70%);pointer-events:none}
+.result-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#38bdf8;margin-bottom:16px}
+.stack-summary{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.stack-row{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(255,255,255,.03);border-radius:10px}
+.stack-row .layer-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#525252}
+.stack-row .choice-label{font-size:14px;font-weight:800}
+.stats-row{display:flex;justify-content:center;gap:40px;margin-bottom:24px}
+.stat{text-align:center}
+.stat .val{font-size:32px;font-weight:900}
+.stat .lbl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#737373;margin-top:2px}
+.stat .val.cost{color:#22c55e}
+.stat .val.compat{color:#38bdf8}
+.faye-stack{background:rgba(192,132,252,.05);border:1px solid rgba(192,132,252,.2);border-radius:16px;padding:20px;margin-top:20px}
+.faye-stack h4{font-size:13px;font-weight:800;color:#c084fc;margin-bottom:8px}
+.faye-stack p{font-size:13px;color:#a3a3a3;line-height:1.6}
+.faye-stack strong{color:#e5e5e5}
+#confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:99998}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
+<canvas id="confettiCanvas"></canvas>
 <div class="container">
-<div class="nav">
-<a href="index.html">&larr; Course Overview</a>
-<span class="current">Lesson 1 of 10</span>
-<a href="supabase-101.html">Next &rarr;</a>
-</div>
+  <div class="header">
+    <div class="tag">AI Stack Builder — Lesson 1</div>
+    <h1>Stack Anatomy</h1>
+    <p>Build your perfect AI stack layer by layer. Click to choose, watch it come together.</p>
+  </div>
 
-<div class="lesson-badge">MODULE 1 &middot; 260 XP</div>
-<h1>Stack Anatomy</h1>
-<p class="intro">Every real product is a stack of tools working together. In this lesson, you'll explore the 5 layers of a modern AI stack and build your own by choosing tools for each layer.</p>
+  <div class="progress-bar">
+    <div class="prog-dot" id="prog-0"></div>
+    <div class="prog-dot" id="prog-1"></div>
+    <div class="prog-dot" id="prog-2"></div>
+    <div class="prog-dot" id="prog-3"></div>
+    <div class="prog-dot" id="prog-4"></div>
+  </div>
 
-<h2>The 5 Layers</h2>
-<p>Click each layer to explore your options. Every production AI app needs all five.</p>
+  <div id="stackBuilder"></div>
 
-<div class="diagram">
-<div class="diagram-layers">
-<div class="d-layer l5">&#x1f680; DEPLOY — How users reach it</div>
-<div class="d-layer l4">&#x1f5a5; FRONTEND — What users see</div>
-<div class="d-layer l3">&#x1f9e0; AI LAYER — Intelligence</div>
-<div class="d-layer l2">&#x2699; BACKEND — Logic & APIs</div>
-<div class="d-layer l1">&#x1f4be; DATABASE — Where data lives</div>
-</div>
-</div>
-
-<h2>Build Your Stack</h2>
-<p>Click a layer, then select your tool. Your choices are saved locally so you can reference them throughout the course.</p>
-
-<div class="stack-visualizer" id="stackViz">
-<div class="stack-layer" data-layer="deploy" onclick="toggleLayer(this)">
-<div class="layer-header">
-<span class="layer-name">&#x1f680; Deploy</span>
-<span class="layer-level">Layer 5</span>
-</div>
-<div class="layer-detail">
-<p style="font-size:.9rem;color:#999">How your app reaches users. Handles builds, CDN, domains, SSL.</p>
-<div class="tool-options" data-layer="deploy">
-<div class="tool-opt" onclick="selectTool(event,'deploy','Vercel')"><span class="tool-icon">&#x25b2;</span>Vercel</div>
-<div class="tool-opt" onclick="selectTool(event,'deploy','Netlify')"><span class="tool-icon">&#x25c6;</span>Netlify</div>
-<div class="tool-opt" onclick="selectTool(event,'deploy','Cloudflare Pages')"><span class="tool-icon">&#x2601;</span>Cloudflare Pages</div>
-<div class="tool-opt" onclick="selectTool(event,'deploy','Railway')"><span class="tool-icon">&#x1f682;</span>Railway</div>
-</div>
-</div>
-</div>
-<div class="stack-layer" data-layer="frontend" onclick="toggleLayer(this)">
-<div class="layer-header">
-<span class="layer-name">&#x1f5a5; Frontend</span>
-<span class="layer-level">Layer 4</span>
-</div>
-<div class="layer-detail">
-<p style="font-size:.9rem;color:#999">What users see and interact with. Your UI framework.</p>
-<div class="tool-options" data-layer="frontend">
-<div class="tool-opt" onclick="selectTool(event,'frontend','Next.js')">Next.js</div>
-<div class="tool-opt" onclick="selectTool(event,'frontend','Astro')">Astro</div>
-<div class="tool-opt" onclick="selectTool(event,'frontend','SvelteKit')">SvelteKit</div>
-<div class="tool-opt" onclick="selectTool(event,'frontend','Plain HTML/JS')">Plain HTML/JS</div>
-</div>
-</div>
-</div>
-<div class="stack-layer" data-layer="ai" onclick="toggleLayer(this)">
-<div class="layer-header">
-<span class="layer-name">&#x1f9e0; AI Layer</span>
-<span class="layer-level">Layer 3</span>
-</div>
-<div class="layer-detail">
-<p style="font-size:.9rem;color:#999">The intelligence. LLMs, embeddings, agents.</p>
-<div class="tool-options" data-layer="ai">
-<div class="tool-opt" onclick="selectTool(event,'ai','Claude API')">Claude API</div>
-<div class="tool-opt" onclick="selectTool(event,'ai','OpenAI API')">OpenAI API</div>
-<div class="tool-opt" onclick="selectTool(event,'ai','Claude + Make.com')">Claude + Make.com</div>
-<div class="tool-opt" onclick="selectTool(event,'ai','Local LLM (Ollama)')">Local LLM</div>
-</div>
-</div>
-</div>
-<div class="stack-layer" data-layer="backend" onclick="toggleLayer(this)">
-<div class="layer-header">
-<span class="layer-name">&#x2699; Backend</span>
-<span class="layer-level">Layer 2</span>
-</div>
-<div class="layer-detail">
-<p style="font-size:.9rem;color:#999">Your business logic, APIs, and edge functions.</p>
-<div class="tool-options" data-layer="backend">
-<div class="tool-opt" onclick="selectTool(event,'backend','Supabase Edge Functions')">Supabase Edge</div>
-<div class="tool-opt" onclick="selectTool(event,'backend','Vercel Serverless')">Vercel Serverless</div>
-<div class="tool-opt" onclick="selectTool(event,'backend','Cloudflare Workers')">CF Workers</div>
-<div class="tool-opt" onclick="selectTool(event,'backend','Express/Node')">Express/Node</div>
-</div>
-</div>
-</div>
-<div class="stack-layer" data-layer="database" onclick="toggleLayer(this)">
-<div class="layer-header">
-<span class="layer-name">&#x1f4be; Database</span>
-<span class="layer-level">Layer 1</span>
-</div>
-<div class="layer-detail">
-<p style="font-size:.9rem;color:#999">Where all your data lives. Auth, storage, real-time.</p>
-<div class="tool-options" data-layer="database">
-<div class="tool-opt" onclick="selectTool(event,'database','Supabase')">Supabase (Postgres)</div>
-<div class="tool-opt" onclick="selectTool(event,'database','PlanetScale')">PlanetScale (MySQL)</div>
-<div class="tool-opt" onclick="selectTool(event,'database','Firebase')">Firebase</div>
-<div class="tool-opt" onclick="selectTool(event,'database','Turso')">Turso (SQLite)</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="your-stack" id="yourStack">
-<h3>&#x1f527; Your Stack</h3>
-<div class="stack-summary">
-<div class="stack-row"><span class="label">Deploy</span><span class="value" id="sel-deploy">—</span></div>
-<div class="stack-row"><span class="label">Frontend</span><span class="value" id="sel-frontend">—</span></div>
-<div class="stack-row"><span class="label">AI Layer</span><span class="value" id="sel-ai">—</span></div>
-<div class="stack-row"><span class="label">Backend</span><span class="value" id="sel-backend">—</span></div>
-<div class="stack-row"><span class="label">Database</span><span class="value" id="sel-database">—</span></div>
-</div>
-<button class="btn-save" onclick="saveStack()">Save Stack to Memory</button>
-<div id="saveMsg" style="color:#22c55e;font-size:.85rem;margin-top:.5rem;display:none">Stack saved!</div>
-</div>
-
-<div class="concept-box">
-<div class="label">Key Concept</div>
-<h3>Why Stack Thinking Matters</h3>
-<p>Most AI tutorials teach one tool in isolation. But real products need at least 5 tools working together. A chatbot needs a database to remember conversations, an API to call the LLM, a frontend to render messages, auth to know who's talking, and deployment to stay online. <strong>Stack thinking</strong> means choosing tools that play well together.</p>
-</div>
-
-<div class="concept-box">
-<div class="label">The Like One Stack</div>
-<p>Throughout this course, we'll reference a production stack that's actually running in the wild:</p>
-<div class="code-block">
-<span class="cm">// The Like One Production Stack</span><br>
-<span class="kw">Database</span>: Supabase <span class="cm">// Postgres + Auth + Edge</span><br>
-<span class="kw">Backend</span>: Edge Functions (Deno) <span class="cm">// Serverless, fast, cheap</span><br>
-<span class="kw">AI</span>: Claude via API + MCP <span class="cm">// Agentic intelligence</span><br>
-<span class="kw">Frontend</span>: Next.js on Vercel <span class="cm">// React, SSR, fast</span><br>
-<span class="kw">Deploy</span>: Vercel <span class="cm">// git push = live</span><br>
-<span class="kw">Automation</span>: Make.com <span class="cm">// Glue between everything</span><br>
-<span class="kw">Payments</span>: Stripe <span class="cm">// Revenue from day 1</span><br>
-<span class="kw">Email</span>: Resend <span class="cm">// Transactional + marketing</span>
-</div>
-</div>
-
-<h2>Quick Check</h2>
-<p>You've selected tools for your stack. As you go through this course, you'll learn to wire each layer together into a working product. Next up: we deep-dive into the database layer with Supabase.</p>
-
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
-</div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
-</div>
-
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson &amp; Earn 260 XP</button>
-
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="index.html">&larr; Course Overview</a>
-<a href="supabase-101.html">Next: Supabase 101 &rarr;</a>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
+  <div class="result-card" id="resultCard">
+    <div class="result-title">Your Stack</div>
+    <div class="stack-summary" id="stackSummary"></div>
+    <div class="stats-row">
+      <div class="stat"><div class="val cost" id="totalCost">$0</div><div class="lbl">Per Month</div></div>
+      <div class="stat"><div class="val compat" id="compatScore">0%</div><div class="lbl">Compatibility</div></div>
+    </div>
+    <div class="faye-stack">
+      <h4>The Faye Stack (Recommended)</h4>
+      <p><strong>Supabase + Edge Functions + Claude + Next.js + Vercel</strong> — $29/mo, 95% compatibility. Battle-tested for AI-powered apps. This is what Like One Academy runs on.</p>
+    </div>
+  </div>
 </div>
 
 <script>
-const stack={deploy:'',frontend:'',ai:'',backend:'',database:''};
-const saved=localStorage.getItem('aisb_stack');
-if(saved){try{Object.assign(stack,JSON.parse(saved));Object.keys(stack).forEach(k=>{if(stack[k]){document.getElementById('sel-'+k).textContent=stack[k];document.getElementById('sel-'+k).classList.remove('empty');document.querySelectorAll(`.tool-options[data-layer="${k}"] .tool-opt`).forEach(o=>{if(o.textContent.includes(stack[k]))o.classList.add('selected')})}})}catch(e){}}
-function toggleLayer(el){if(el.classList.contains('active')){el.classList.remove('active')}else{document.querySelectorAll('.stack-layer').forEach(l=>l.classList.remove('active'));el.classList.add('active')}updateProgress()}
-function selectTool(e,layer,tool){e.stopPropagation();stack[layer]=tool;document.querySelectorAll(`.tool-options[data-layer="${layer}"] .tool-opt`).forEach(o=>o.classList.remove('selected'));e.currentTarget.classList.add('selected');const el=document.getElementById('sel-'+layer);el.textContent=tool;el.classList.remove('empty');updateProgress()}
-function saveStack(){localStorage.setItem('aisb_stack',JSON.stringify(stack));document.getElementById('saveMsg').style.display='block';setTimeout(()=>document.getElementById('saveMsg').style.display='none',2000)}
-function updateProgress(){const filled=Object.values(stack).filter(v=>v).length;const pct=Math.round(filled/5*100);document.getElementById('lessonProgress').style.width=pct+'%';document.getElementById('lessonPct').textContent=pct+'%'}
-function completeLesson(){localStorage.setItem('aisb_lesson_1','complete');saveStack();const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_1')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Lesson Complete — 260 XP Earned!';document.getElementById('completeBtn').classList.add('done')}
-updateProgress();
+const LAYERS = [
+  {
+    name: 'Database', num: 1,
+    options: [
+      { id: 'supabase', brand: 'supabase', name: 'Supabase', icon: '💚', sub: 'Postgres + Auth + Realtime', price: '$0-25/mo', priceVal: 12, priceClass: 'green' },
+      { id: 'firebase', brand: 'firebase', name: 'Firebase', icon: '🔥', sub: 'NoSQL + Auth + Hosting', price: '$0-25/mo', priceVal: 15, priceClass: 'green' },
+      { id: 'planetscale', brand: 'planetscale', name: 'PlanetScale', icon: '🪐', sub: 'Serverless MySQL', price: '$29+/mo', priceVal: 29, priceClass: 'yellow' },
+    ]
+  },
+  {
+    name: 'Backend', num: 2,
+    options: [
+      { id: 'edge', brand: 'edge', name: 'Edge Functions', icon: '⚡', sub: 'Deno/Supabase Edge', price: '$0-2/mo', priceVal: 1, priceClass: 'green' },
+      { id: 'express', brand: 'express', name: 'Express', icon: '🟢', sub: 'Node.js Classic', price: '$5-20/mo', priceVal: 10, priceClass: 'green' },
+      { id: 'fastapi', brand: 'fastapi', name: 'FastAPI', icon: '🐍', sub: 'Python Async', price: '$5-20/mo', priceVal: 12, priceClass: 'green' },
+    ]
+  },
+  {
+    name: 'AI Model', num: 3,
+    options: [
+      { id: 'claude', brand: 'claude', name: 'Claude', icon: '🟣', sub: 'Anthropic — Best for code', price: '$0-20/mo', priceVal: 10, priceClass: 'green' },
+      { id: 'chatgpt', brand: 'chatgpt', name: 'ChatGPT', icon: '🤖', sub: 'OpenAI — Best for math', price: '$0-20/mo', priceVal: 10, priceClass: 'green' },
+      { id: 'gemini', brand: 'gemini', name: 'Gemini', icon: '💎', sub: 'Google — Best for multimodal', price: '$0-20/mo', priceVal: 10, priceClass: 'green' },
+    ]
+  },
+  {
+    name: 'Frontend', num: 4,
+    options: [
+      { id: 'nextjs', brand: 'nextjs', name: 'Next.js', icon: '▲', sub: 'React SSR Framework', price: '$0', priceVal: 0, priceClass: 'green' },
+      { id: 'react', brand: 'react', name: 'React', icon: '⚛️', sub: 'SPA Library', price: '$0', priceVal: 0, priceClass: 'green' },
+      { id: 'astro', brand: 'astro', name: 'Astro', icon: '🚀', sub: 'Content-First', price: '$0', priceVal: 0, priceClass: 'green' },
+    ]
+  },
+  {
+    name: 'Deploy', num: 5,
+    options: [
+      { id: 'vercel', brand: 'vercel', name: 'Vercel', icon: '▲', sub: 'Best for Next.js', price: '$0-20/mo', priceVal: 6, priceClass: 'green' },
+      { id: 'netlify', brand: 'netlify', name: 'Netlify', icon: '🌐', sub: 'Great for static + forms', price: '$0-19/mo', priceVal: 7, priceClass: 'green' },
+      { id: 'railway', brand: 'railway', name: 'Railway', icon: '🚂', sub: 'Best for backends', price: '$5-20/mo', priceVal: 10, priceClass: 'green' },
+    ]
+  }
+];
+
+const COMPAT = {
+  supabase_edge: 10, supabase_express: 6, supabase_fastapi: 6,
+  firebase_edge: 4, firebase_express: 8, firebase_fastapi: 4,
+  planetscale_edge: 5, planetscale_express: 8, planetscale_fastapi: 8,
+  edge_claude: 10, edge_chatgpt: 7, edge_gemini: 7,
+  express_claude: 8, express_chatgpt: 9, express_gemini: 7,
+  fastapi_claude: 7, fastapi_chatgpt: 8, fastapi_gemini: 9,
+  claude_nextjs: 9, claude_react: 8, claude_astro: 7,
+  chatgpt_nextjs: 8, chatgpt_react: 9, chatgpt_astro: 7,
+  gemini_nextjs: 7, gemini_react: 8, gemini_astro: 7,
+  nextjs_vercel: 10, nextjs_netlify: 7, nextjs_railway: 6,
+  react_vercel: 8, react_netlify: 9, react_railway: 6,
+  astro_vercel: 8, astro_netlify: 10, astro_railway: 5,
+};
+
+let selections = [null, null, null, null, null];
+let filled = 0;
+let resultShown = false;
+
+function buildUI() {
+  const builder = document.getElementById('stackBuilder');
+  builder.innerHTML = LAYERS.map((layer, li) => `
+    <div class="layer" id="layer-${li}">
+      <div class="layer-header">
+        <div class="layer-num">${layer.num}</div>
+        <div class="layer-name">${layer.name}</div>
+      </div>
+      <div class="layer-options">
+        ${layer.options.map((opt, oi) => `
+          <div class="option" data-layer="${li}" data-option="${oi}" data-brand="${opt.brand}" onclick="selectOption(${li},${oi})">
+            <div class="selected-indicator">✓</div>
+            <span class="icon">${opt.icon}</span>
+            <div class="name">${opt.name}</div>
+            <div class="sub">${opt.sub}</div>
+            <div class="price ${opt.priceClass}">${opt.price}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectOption(layerIdx, optIdx) {
+  const wasNull = selections[layerIdx] === null;
+  selections[layerIdx] = optIdx;
+
+  const options = document.querySelectorAll(`.option[data-layer="${layerIdx}"]`);
+  options.forEach((o, i) => {
+    o.classList.toggle('selected', i === optIdx);
+    if (i === optIdx) {
+      o.style.transform = 'scale(1.06)';
+      setTimeout(() => o.style.transform = 'scale(1.03)', 200);
+    }
+  });
+
+  if (wasNull) filled++;
+  document.getElementById(`prog-${layerIdx}`).classList.add('filled');
+  try { LO.sfx.click(); } catch(e){}
+
+  if (filled === 5) {
+    setTimeout(showResult, 500);
+  } else if (resultShown) {
+    updateResult();
+  }
+}
+
+function showResult() {
+  resultShown = true;
+  const card = document.getElementById('resultCard');
+  card.classList.add('show');
+  updateResult();
+  try { LO.completeLesson('ai-stack-builder', 1, 60); } catch(e){}
+}
+
+function updateResult() {
+  const summary = document.getElementById('stackSummary');
+  let totalPrice = 0;
+
+  const displayOrder = [4, 3, 2, 1, 0];
+  summary.innerHTML = displayOrder.map(li => {
+    const layer = LAYERS[li];
+    const opt = layer.options[selections[li]];
+    totalPrice += opt.priceVal;
+    return `<div class="stack-row">
+      <span class="layer-label">${layer.name}</span>
+      <span class="choice-label">${opt.icon} ${opt.name}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('totalCost').textContent = `$${totalPrice}/mo`;
+
+  // Compatibility
+  const ids = selections.map((s, i) => LAYERS[i].options[s].id);
+  let compatTotal = 0, compatCount = 0;
+  for (let i = 0; i < ids.length - 1; i++) {
+    const key = `${ids[i]}_${ids[i+1]}`;
+    if (COMPAT[key] !== undefined) { compatTotal += COMPAT[key]; compatCount++; }
+  }
+  const compatPct = compatCount > 0 ? Math.round((compatTotal / (compatCount * 10)) * 100) : 50;
+  document.getElementById('compatScore').textContent = `${compatPct}%`;
+
+  if (compatPct > 80) {
+    document.getElementById('compatScore').style.color = '#22c55e';
+    launchConfetti();
+  } else if (compatPct > 60) {
+    document.getElementById('compatScore').style.color = '#38bdf8';
+  } else {
+    document.getElementById('compatScore').style.color = '#fb923c';
+  }
+}
+
+function launchConfetti() {
+  const cvs = document.getElementById('confettiCanvas');
+  const ctx = cvs.getContext('2d');
+  cvs.width = window.innerWidth * 2;
+  cvs.height = window.innerHeight * 2;
+  cvs.style.width = window.innerWidth + 'px';
+  cvs.style.height = window.innerHeight + 'px';
+
+  const colors = ['#c084fc','#38bdf8','#22c55e','#fb923c','#f472b6','#fbbf24'];
+  const pieces = [];
+  for (let i = 0; i < 120; i++) {
+    pieces.push({
+      x: Math.random() * cvs.width,
+      y: -20 - Math.random() * 200,
+      w: 8 + Math.random() * 8,
+      h: 4 + Math.random() * 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 6,
+      vy: 3 + Math.random() * 5,
+      rot: Math.random() * Math.PI * 2,
+      rotV: (Math.random() - 0.5) * 0.2,
+      life: 1
+    });
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+    let alive = false;
+    pieces.forEach(p => {
+      if (p.life <= 0) return;
+      alive = true;
+      p.x += p.vx; p.y += p.vy; p.vy += 0.1; p.rot += p.rotV;
+      if (p.y > cvs.height) p.life = 0;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = Math.min(1, p.life);
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    });
+    if (alive) requestAnimationFrame(frame);
+    else ctx.clearRect(0, 0, cvs.width, cvs.height);
+  }
+  requestAnimationFrame(frame);
+  try { LO.sfx.success(); } catch(e){}
+}
+
+buildUI();
 </script>
 <script src="/academy/shared/engine.js"></script>
 </body>

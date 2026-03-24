@@ -3,214 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Is an Agent? — The Automation Lab</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Automation vs Agent — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
-.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ef4444,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:1.5rem}
-.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
-.container{max-width:800px;margin:0 auto;padding:2rem}
-.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);font-size:.7rem;font-weight:600;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
-h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.subtitle{color:#a1a1aa;font-size:1.05rem;margin-bottom:2.5rem;line-height:1.6}
-.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#fff}
-.comparison{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
-.comp-card{padding:2rem;border-radius:16px;border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden}
-.comp-card.automation{background:rgba(113,113,122,.06)}
-.comp-card.agent{background:rgba(239,68,68,.04);border-color:rgba(239,68,68,.15)}
-.comp-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.comp-card.automation .comp-label{color:#71717a}
-.comp-card.agent .comp-label{color:#ef4444}
-.flow-diagram{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin:1rem 0}
-.flow-node{padding:.6rem 1.2rem;border-radius:10px;font-size:.8rem;font-weight:600;text-align:center;position:relative}
-.flow-arrow{font-size:1.2rem;color:#52525b;line-height:1}
-.comp-card.automation .flow-node{background:rgba(255,255,255,.06);color:#a1a1aa}
-.comp-card.agent .flow-node{background:rgba(239,68,68,.1);color:#ef4444;transition:all .3s}
-.comp-card.agent .flow-node.active{background:rgba(239,68,68,.25);box-shadow:0 0 20px rgba(239,68,68,.2);transform:scale(1.05)}
-.loop-indicator{font-size:.65rem;color:#ef4444;font-weight:600;margin-top:.5rem;opacity:0;transition:opacity .5s}
-.loop-indicator.visible{opacity:1}
-.comp-desc{font-size:.8rem;color:#71717a;margin-top:1.5rem;line-height:1.5}
-
-.quiz-section{margin:3rem 0;padding:2rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px}
-.quiz-title{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:#38bdf8}
-.quiz-progress{font-size:.75rem;color:#71717a;margin-bottom:1.5rem}
-.quiz-scenario{padding:1.5rem;background:rgba(255,255,255,.03);border-radius:12px;margin-bottom:1rem;border:1px solid rgba(255,255,255,.05)}
-.scenario-text{font-size:.95rem;margin-bottom:1rem;line-height:1.5}
-.quiz-btns{display:flex;gap:.75rem}
-.quiz-btn{flex:1;padding:.75rem;border:2px solid rgba(255,255,255,.1);border-radius:10px;background:transparent;color:#e5e5e5;font-family:'Inter',sans-serif;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s}
-.quiz-btn:hover{border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.05)}
-.quiz-btn.correct{border-color:#22c55e;background:rgba(34,197,94,.1);color:#22c55e}
-.quiz-btn.wrong{border-color:#ef4444;background:rgba(239,68,68,.1);color:#ef4444}
-.quiz-feedback{margin-top:.75rem;padding:.75rem 1rem;border-radius:8px;font-size:.85rem;display:none;line-height:1.5}
-.quiz-feedback.show{display:block}
-.quiz-feedback.right{background:rgba(34,197,94,.08);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
-
-.key-insight{margin:2rem 0;padding:1.5rem;border-left:3px solid #ef4444;background:rgba(239,68,68,.04);border-radius:0 12px 12px 0;font-size:.9rem;line-height:1.6;color:#d4d4d8}
-
-.complete-section{text-align:center;margin:3rem 0 2rem;padding:2rem;border-radius:16px;background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.1)}
-.complete-btn{padding:.85rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(239,68,68,.3)}
-.complete-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(239,68,68,.4)}
-.complete-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.complete-msg{margin-top:1rem;font-size:.85rem;color:#22c55e;display:none}
-.xp-toast{position:fixed;top:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;background:#ef4444;color:#fff;font-weight:700;font-size:.9rem;transform:translateY(-100px);opacity:0;transition:all .4s ease;z-index:999;box-shadow:0 8px 32px rgba(239,68,68,.4)}
-.xp-toast.show{transform:translateY(0);opacity:1}
-
-.lesson-nav{display:flex;justify-content:space-between;align-items:center;margin:2rem 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}
-.lesson-nav a{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#a1a1aa;transition:color .2s}
-.lesson-nav a:hover{color:#ef4444}
-
-@media(max-width:640px){.comparison{grid-template-columns:1fr}h1{font-size:1.8rem}}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;min-height:100vh;overflow-x:hidden}
+.container{max-width:800px;margin:0 auto;padding:40px 20px 80px}
+.header{text-align:center;margin-bottom:48px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fb923c;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2);padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.header h1{font-size:36px;font-weight:900;background:linear-gradient(135deg,#fb923c,#f472b6,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header p{color:#737373;font-size:15px}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px}
+@media(max-width:600px){.comparison{grid-template-columns:1fr}}
+.panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:28px;position:relative;overflow:hidden}
+.panel-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;text-align:center}
+.panel.auto .panel-label{color:#737373}
+.panel.agent .panel-label{color:#fb923c}
+.pipeline{display:flex;flex-direction:column;align-items:center;gap:0;min-height:220px;justify-content:center}
+.node{width:100%;max-width:160px;padding:14px;border-radius:12px;text-align:center;font-size:13px;font-weight:700;position:relative;z-index:1}
+.node-auto{background:rgba(115,115,115,.1);border:1px solid rgba(115,115,115,.2);color:#a3a3a3}
+.arrow-down{width:2px;height:24px;background:rgba(115,115,115,.3);position:relative}
+.arrow-down::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid rgba(115,115,115,.3)}
+.auto-complete{opacity:0;transition:opacity .5s;color:#525252;font-size:12px;text-align:center;margin-top:8px;font-weight:600}
+.auto-complete.show{opacity:1}
+#agentCanvas{width:100%;height:220px;display:block;margin:0 auto}
+.divider{text-align:center;margin:48px 0 32px;position:relative}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06)}
+.divider span{background:#0a0a0f;padding:0 20px;position:relative;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#737373}
+.quiz-section h2{font-size:24px;font-weight:800;margin-bottom:8px;text-align:center}
+.quiz-section p{color:#737373;font-size:14px;text-align:center;margin-bottom:32px}
+.score-bar{display:flex;justify-content:center;gap:24px;margin-bottom:32px}
+.score-item{font-size:13px;font-weight:700;color:#737373}
+.score-item span{color:#fb923c}
+.scenario{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s}
+.scenario.answered{pointer-events:none}
+.scenario-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#525252;margin-bottom:8px}
+.scenario-text{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.5}
+.scenario-btns{display:flex;gap:12px}
+.scenario-btn{flex:1;padding:12px;border-radius:12px;border:2px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);font-family:Inter,sans-serif;font-size:14px;font-weight:700;color:#e5e5e5;cursor:pointer;transition:all .25s}
+.scenario-btn:hover{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06)}
+.scenario-btn.correct-pick{border-color:#22c55e;background:rgba(34,197,94,.08);color:#22c55e}
+.scenario-btn.wrong-pick{border-color:#ef4444;background:rgba(239,68,68,.05);color:#ef4444}
+.scenario-btn.was-correct{border-color:rgba(34,197,94,.3);color:#22c55e}
+.scenario-explain{display:none;font-size:13px;color:#a3a3a3;margin-top:12px;line-height:1.6;padding:12px;background:rgba(255,255,255,.02);border-radius:10px}
+.scenario-explain.show{display:block;animation:fadeUp .3s ease}
+.complete-card{display:none;text-align:center;background:rgba(251,146,60,.05);border:1px solid rgba(251,146,60,.2);border-radius:20px;padding:32px;margin-top:32px}
+.complete-card.show{display:block;animation:fadeUp .4s ease}
+.complete-card h3{font-size:24px;font-weight:900;color:#fb923c;margin-bottom:8px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.shake{animation:shake .35s ease}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE ACADEMY</a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Course Overview</a>
-    <a href="/academy" class="nav-link">All Courses</a>
-  </div>
-</nav>
-
 <div class="container">
-  <div class="lesson-badge">Module 1 &bull; Lesson 1</div>
-  <h1>What Is an Agent?</h1>
-  <p class="subtitle">There's a chasm between "automation" and "agent." One follows scripts. The other thinks. Let's see the difference — and why it matters for everything you'll build.</p>
+  <div class="header">
+    <div class="tag">The Automation Lab — Lesson 1</div>
+    <h1>What Is an Agent?</h1>
+    <p>See the difference between static automations and living, learning agents.</p>
+  </div>
 
-  <h2 class="section-title">Automation vs. Agent: Side by Side</h2>
   <div class="comparison">
-    <div class="comp-card automation">
-      <div class="comp-label"><span>&#9881;&#65039;</span> AUTOMATION</div>
-      <div class="flow-diagram" id="auto-flow">
-        <div class="flow-node">Trigger</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-node">Action</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-node">Done</div>
+    <div class="panel auto">
+      <div class="panel-label">Automation</div>
+      <div class="pipeline" id="autoPipeline">
+        <div class="node node-auto" id="autoTrigger" style="opacity:0">Trigger</div>
+        <div class="arrow-down" id="autoArrow1" style="opacity:0"></div>
+        <div class="node node-auto" id="autoAction" style="opacity:0">Action</div>
+        <div class="arrow-down" id="autoArrow2" style="opacity:0"></div>
+        <div class="node node-auto" id="autoDone" style="opacity:0">Done</div>
       </div>
-      <div class="comp-desc">Static. Predictable. A trigger fires, an action runs, it stops. No memory of what happened. No ability to adapt. Same input = same output, forever.</div>
+      <div class="auto-complete" id="autoComplete">Pipeline complete. Waiting for next trigger...</div>
     </div>
-    <div class="comp-card agent">
-      <div class="comp-label"><span>&#129504;</span> AGENT</div>
-      <div class="flow-diagram" id="agent-flow">
-        <div class="flow-node" data-step="0">Perceive</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-node" data-step="1">Decide</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-node" data-step="2">Act</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-node" data-step="3">Learn</div>
-        <div class="flow-arrow" style="color:#ef4444">&uarr; &#8634;</div>
-      </div>
-      <div class="loop-indicator" id="loop-label">&#8734; Continuous loop &mdash; never truly "done"</div>
-      <div class="comp-desc">Dynamic. Adaptive. Perceives its environment, decides what to do, acts, then learns from the result. Each cycle makes it smarter.</div>
+
+    <div class="panel agent">
+      <div class="panel-label">Agent</div>
+      <canvas id="agentCanvas"></canvas>
     </div>
   </div>
 
-  <div class="key-insight">
-    <strong>The key difference:</strong> An automation is a tool. An agent is a worker. Automations need humans in the loop. Agents can operate autonomously — perceiving, deciding, acting, and learning on their own.
-  </div>
+  <div class="divider"><span>Test Your Understanding</span></div>
 
-  <h2 class="section-title">&#129504; Is This an Agent? (Quiz)</h2>
   <div class="quiz-section">
-    <div class="quiz-title">Classify each scenario</div>
-    <div class="quiz-progress" id="quiz-progress">Question 1 of 5</div>
-    <div id="quiz-container"></div>
-  </div>
-
-  <div class="complete-section" id="complete-section">
-    <p style="margin-bottom:1rem;color:#a1a1aa">Complete all quiz questions to earn your XP</p>
-    <button class="complete-btn" id="complete-btn" disabled>Complete Lesson &mdash; 300 XP</button>
-    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
-  </div>
-
-  <div class="lesson-nav">
-    <a href="index.html">&larr; Course Overview</a>
-    <a href="agent-anatomy.html">Next: Agent Anatomy &rarr;</a>
+    <h2>Automation or Agent?</h2>
+    <p>Read each scenario and decide: is it an automation or an agent?</p>
+    <div class="score-bar">
+      <div class="score-item">Correct: <span id="quizScore">0</span>/5</div>
+    </div>
+    <div id="scenarios"></div>
+    <div class="complete-card" id="completeCard">
+      <h3>Lesson Complete!</h3>
+      <p style="color:#a3a3a3;font-size:14px">You now understand the core difference: automations follow a fixed path, agents perceive, decide, act, and learn in a continuous loop.</p>
+    </div>
   </div>
 </div>
 
-<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
-
 <script>
-const SCENARIOS=[
-  {text:"A Zapier workflow that sends a Slack message when a form is submitted.",answer:"automation",explain:"Classic trigger-action. No perception, no decision-making, no learning. Same input always produces the same output."},
-  {text:"A customer support bot that reads tickets, categorizes them by urgency, routes them to the right team, and improves its categorization based on feedback.",answer:"agent",explain:"It perceives (reads tickets), decides (categorizes + routes), acts (sends to team), and learns (improves from feedback). Full agent loop."},
-  {text:"A script that runs every hour to back up a database.",answer:"automation",explain:"Cron + action. No perception of whether the backup is needed, no decision-making, no learning. Pure automation."},
-  {text:"A system that monitors server health, detects anomalies, decides whether to scale up or restart services, and logs what worked for future reference.",answer:"agent",explain:"Perceives (monitors), decides (scale vs restart), acts (executes fix), learns (logs outcomes). This is a self-healing agent."},
-  {text:"An email autoresponder that sends the same template reply to every incoming message.",answer:"automation",explain:"No perception of content, no decision, no learning. One trigger, one static action. Automation."}
+// Automation Pipeline Animation
+function animateAutoPipeline() {
+  const ids = ['autoTrigger','autoArrow1','autoAction','autoArrow2','autoDone'];
+  ids.forEach((id, i) => {
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      el.style.transition = 'opacity .4s, transform .4s';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, i * 500);
+  });
+  setTimeout(() => {
+    document.getElementById('autoComplete').classList.add('show');
+  }, ids.length * 500 + 300);
+}
+setTimeout(animateAutoPipeline, 400);
+
+// Agent Canvas Animation
+const canvas = document.getElementById('agentCanvas');
+const ctx = canvas.getContext('2d');
+let cW, cH;
+
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * 2;
+  canvas.height = 220 * 2;
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = '220px';
+  cW = canvas.width;
+  cH = canvas.height;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const agentNodes = [
+  { label: 'Perceive', color: '#38bdf8', angle: -Math.PI / 2 },
+  { label: 'Decide', color: '#c084fc', angle: 0 },
+  { label: 'Act', color: '#fb923c', angle: Math.PI / 2 },
+  { label: 'Learn', color: '#22c55e', angle: Math.PI },
 ];
 
-let currentQ=0,score=0,answered=new Array(5).fill(false);
-const container=document.getElementById('quiz-container');
-const progressEl=document.getElementById('quiz-progress');
+let particleT = 0;
+function drawAgentLoop(time) {
+  ctx.clearRect(0, 0, cW, cH);
+  const cx = cW / 2, cy = cH / 2;
+  const rx = cW * 0.3, ry = cH * 0.32;
 
-function renderQ(){
-  const s=SCENARIOS[currentQ];
-  container.innerHTML=`
-    <div class="quiz-scenario">
-      <div class="scenario-text">${s.text}</div>
-      <div class="quiz-btns">
-        <button class="quiz-btn" data-ans="automation" onclick="checkAnswer(this,'automation')">&#9881;&#65039; Automation</button>
-        <button class="quiz-btn" data-ans="agent" onclick="checkAnswer(this,'agent')">&#129504; Agent</button>
-      </div>
-      <div class="quiz-feedback" id="feedback"></div>
-    </div>
-    ${currentQ<4?`<div style="text-align:right;margin-top:.5rem"><button onclick="nextQ()" id="next-btn" style="padding:.5rem 1.2rem;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:transparent;color:#a1a1aa;font-family:Inter;font-size:.8rem;cursor:pointer;display:none">Next &rarr;</button></div>`:''}
-  `;
-  progressEl.textContent=`Question ${currentQ+1} of 5`;
-}
+  // Dashed circle path
+  ctx.setLineDash([8, 8]);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'rgba(251,146,60,0.15)';
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.setLineDash([]);
 
-function checkAnswer(btn,chosen){
-  if(answered[currentQ])return;
-  answered[currentQ]=true;
-  const s=SCENARIOS[currentQ];
-  const correct=chosen===s.answer;
-  if(correct)score++;
-  btn.classList.add(correct?'correct':'wrong');
-  const other=btn.parentElement.querySelector(`[data-ans="${chosen==='agent'?'automation':'agent'}"]`);
-  if(!correct)other.classList.add('correct');
-  const fb=document.getElementById('feedback');
-  fb.className=`quiz-feedback show ${correct?'right':'wrong-fb'}`;
-  fb.textContent=(correct?'Correct! ':'Not quite. ')+s.explain;
-  const nb=document.getElementById('next-btn');
-  if(nb)nb.style.display='inline-block';
-  if(currentQ===4){
-    document.getElementById('complete-btn').disabled=false;
+  // Nodes
+  agentNodes.forEach((node, i) => {
+    const x = cx + Math.cos(node.angle) * rx;
+    const y = cy + Math.sin(node.angle) * ry;
+    const glowPhase = (time / 1500 + i * 0.25) % 1;
+
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = node.color;
+
+    const w = 110, h = 40;
+    ctx.fillStyle = 'rgba(10,10,15,0.9)';
+    ctx.beginPath();
+    ctx.roundRect(x - w/2, y - h/2, w, h, 10);
+    ctx.fill();
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = node.color + '66';
+    ctx.beginPath();
+    ctx.roundRect(x - w/2, y - h/2, w, h, 10);
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = node.color;
+    ctx.font = '600 20px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(node.label, x, y);
+  });
+
+  // Traveling particle
+  particleT = (time / 3000) % 1;
+  const pAngle = -Math.PI / 2 + particleT * Math.PI * 2;
+  const px = cx + Math.cos(pAngle) * rx;
+  const py = cy + Math.sin(pAngle) * ry;
+
+  for (let t = 0; t < 8; t++) {
+    const trailT = particleT - t * 0.012;
+    const ta = -Math.PI / 2 + trailT * Math.PI * 2;
+    const tx = cx + Math.cos(ta) * rx;
+    const ty = cy + Math.sin(ta) * ry;
+    ctx.fillStyle = `rgba(251,146,60,${0.6 - t * 0.07})`;
+    ctx.beginPath();
+    ctx.arc(tx, ty, 8 - t * 0.8, 0, Math.PI * 2);
+    ctx.fill();
   }
+
+  ctx.shadowBlur = 25;
+  ctx.shadowColor = '#fb923c';
+  ctx.fillStyle = '#fb923c';
+  ctx.beginPath();
+  ctx.arc(px, py, 8, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
+
+  requestAnimationFrame(drawAgentLoop);
 }
+requestAnimationFrame(drawAgentLoop);
 
-function nextQ(){if(currentQ<4){currentQ++;renderQ()}}
-renderQ();
+// Quiz
+const SCENARIOS = [
+  { text: "A cron job sends a weekly analytics report every Monday at 9am.", answer: "automation", explain: "This is a fixed schedule followed by a fixed action. No decision-making, no learning. Classic automation." },
+  { text: "A system monitors your inbox, categorizes emails by urgency, drafts responses, and improves its categorization based on your corrections.", answer: "agent", explain: "It perceives (monitors inbox), decides (categorizes), acts (drafts), and learns (improves from corrections). That's the full agent loop." },
+  { text: "When a new user signs up, automatically send a welcome email and create a Slack notification.", answer: "automation", explain: "Trigger (signup) followed by fixed actions (email + Slack). No decisions, no adaptation. Standard automation workflow." },
+  { text: "An AI customer support bot reads tickets, searches your knowledge base, tries to resolve issues, escalates what it can't handle, and tracks which answers actually helped.", answer: "agent", explain: "This agent perceives (reads tickets), decides (search vs escalate), acts (responds), and learns (tracks effectiveness). It adapts to new situations." },
+  { text: "A script that resizes all uploaded images to 3 standard sizes and saves them to cloud storage.", answer: "automation", explain: "Fixed input followed by a fixed transformation followed by fixed output. No perception or decision-making. Pure automation." }
+];
 
-// Agent loop animation
-let agentStep=0;
-const agentNodes=document.querySelectorAll('#agent-flow .flow-node');
-setInterval(()=>{
-  agentNodes.forEach(n=>n.classList.remove('active'));
-  agentNodes[agentStep].classList.add('active');
-  agentStep=(agentStep+1)%4;
-  if(agentStep===0)document.getElementById('loop-label').classList.add('visible');
-},1200);
+let quizScore = 0, answered = 0;
 
-// Complete
-document.getElementById('complete-btn').addEventListener('click',function(){
-  if(localStorage.getItem('autolab-1')==='complete')return;
-  localStorage.setItem('autolab-1','complete');
-  this.disabled=true;
-  document.getElementById('complete-msg').style.display='block';
-  const toast=document.getElementById('xp-toast');
-  toast.classList.add('show');
-  setTimeout(()=>toast.classList.remove('show'),3000);
-});
-if(localStorage.getItem('autolab-1')==='complete'){
-  document.getElementById('complete-btn').disabled=true;
-  document.getElementById('complete-msg').style.display='block';
+function buildScenarios() {
+  const container = document.getElementById('scenarios');
+  container.innerHTML = SCENARIOS.map((s, i) => `
+    <div class="scenario" id="scenario-${i}">
+      <div class="scenario-num">Scenario ${i + 1}</div>
+      <div class="scenario-text">${s.text}</div>
+      <div class="scenario-btns">
+        <button class="scenario-btn" onclick="answerScenario(${i},'automation',this)">Automation</button>
+        <button class="scenario-btn" onclick="answerScenario(${i},'agent',this)">Agent</button>
+      </div>
+      <div class="scenario-explain" id="explain-${i}">${s.explain}</div>
+    </div>
+  `).join('');
+}
+buildScenarios();
+
+function answerScenario(idx, pick, btn) {
+  const s = SCENARIOS[idx];
+  const card = document.getElementById(`scenario-${idx}`);
+  card.classList.add('answered');
+  const btns = card.querySelectorAll('.scenario-btn');
+
+  if (pick === s.answer) {
+    quizScore++;
+    btn.classList.add('correct-pick');
+    try { LO.sfx.success(); const rect = btn.getBoundingClientRect(); LO.spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2, '#22c55e', 12); } catch(e){}
+  } else {
+    btn.classList.add('wrong-pick');
+    btn.classList.add('shake');
+    btns.forEach(b => { if (b.textContent.toLowerCase() === s.answer) b.classList.add('was-correct'); });
+    try { LO.sfx.error(); } catch(e){}
+  }
+
+  document.getElementById('quizScore').textContent = quizScore;
+  document.getElementById(`explain-${idx}`).classList.add('show');
+  answered++;
+
+  if (answered === 5) {
+    setTimeout(() => {
+      document.getElementById('completeCard').classList.add('show');
+      try { LO.completeLesson('automation-lab', 1, 60); } catch(e){}
+    }, 600);
+  }
 }
 </script>
 <script src="/academy/shared/engine.js"></script>

@@ -3,193 +3,324 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meet Claude — Claude Mastery</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>AI Challenge Arena — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
-.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
-.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto;position:relative}
-.lesson-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(139,92,246,.1),transparent 70%);pointer-events:none}
-.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);font-size:.7rem;font-weight:600;color:#8b5cf6;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
-.lesson-header h1{font-size:2.4rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.lesson-header p{color:#a1a1aa;font-size:1rem}
-.lesson-meta-bar{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;font-size:.8rem;color:#71717a}
-.lesson-meta-bar span{color:#e5e5e5;font-weight:600}
-.content{max-width:800px;margin:0 auto;padding:2rem}
-.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;margin-bottom:2rem}
-.card h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem}
-.card p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem}
-.task-grid{display:grid;gap:1rem;margin:1.5rem 0}
-.task-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.5rem;cursor:pointer;transition:all .3s}
-.task-card:hover{border-color:rgba(139,92,246,.3);transform:translateY(-2px)}
-.task-card.selected{border-color:#8b5cf6;background:rgba(139,92,246,.08)}
-.task-card.correct{border-color:#34d399;background:rgba(52,211,153,.08)}
-.task-card.incorrect{border-color:#f87171;background:rgba(248,113,113,.08)}
-.task-title{font-weight:600;margin-bottom:.5rem;font-size:1rem}
-.task-desc{font-size:.85rem;color:#a1a1aa;line-height:1.5}
-.choices{display:flex;gap:.75rem;margin-top:1rem;flex-wrap:wrap}
-.choice-btn{padding:.5rem 1.25rem;border-radius:100px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.03);color:#e5e5e5;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
-.choice-btn:hover{border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.1)}
-.choice-btn.picked{background:#8b5cf6;border-color:#8b5cf6;color:#fff}
-.choice-btn.right{background:#34d399;border-color:#34d399;color:#fff}
-.choice-btn.wrong{background:#f87171;border-color:#f87171;color:#fff}
-.explanation{margin-top:1rem;padding:1rem;border-radius:10px;background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;font-size:.85rem;line-height:1.6;display:none}
-.explanation.show{display:block;animation:fadeIn .4s ease}
-.score-display{text-align:center;padding:2rem;font-size:1.2rem;font-weight:700}
-.score-num{font-size:3rem;background:linear-gradient(135deg,#8b5cf6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin:.5rem 0}
-.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:2rem}
-.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
-.complete-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
-.progress-footer{max-width:800px;margin:0 auto;padding:1rem 2rem 3rem;display:flex;justify-content:space-between;align-items:center}
-.progress-bar-wrap{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin:0 1rem}
-.progress-bar-fill{height:100%;background:#8b5cf6;border-radius:2px;transition:width .4s}
-.progress-label{font-size:.75rem;color:#71717a}
-.xp-burst{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:999;display:none}
-.xp-burst.show{display:block;animation:burstIn .8s ease forwards}
-.xp-burst-text{font-size:3rem;font-weight:800;color:#fb923c;text-shadow:0 0 40px rgba(251,146,60,.5)}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes burstIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}
-.particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:998}
-.particle{position:absolute;border-radius:50%;pointer-events:none}
-@keyframes particleFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;min-height:100vh;overflow-x:hidden}
+.container{max-width:800px;margin:0 auto;padding:40px 20px 80px}
+.header{text-align:center;margin-bottom:48px}
+.header .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c084fc;background:rgba(192,132,252,.1);border:1px solid rgba(192,132,252,.2);padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.header h1{font-size:36px;font-weight:900;background:linear-gradient(135deg,#c084fc,#818cf8,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header p{color:#737373;font-size:15px}
+.hud{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px 24px;margin-bottom:32px}
+.hud-item{text-align:center}
+.hud-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#737373;margin-bottom:4px}
+.hud-value{font-size:24px;font-weight:900;color:#e5e5e5}
+.hud-value.score{color:#c084fc}
+.hud-value.combo{color:#fb923c}
+.hud-value.timer{color:#38bdf8;font-variant-numeric:tabular-nums}
+.timer-bar{width:100%;height:4px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:32px;overflow:hidden}
+.timer-fill{height:100%;background:linear-gradient(90deg,#38bdf8,#c084fc);border-radius:2px;transition:width .1s linear;width:100%}
+.timer-fill.danger{background:linear-gradient(90deg,#ef4444,#fb923c)}
+.round-label{text-align:center;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#737373;margin-bottom:12px}
+.task-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;text-align:center;margin-bottom:32px;position:relative;overflow:hidden}
+.task-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,132,252,.05),transparent 70%);pointer-events:none}
+.task-category{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#818cf8;margin-bottom:12px}
+.task-text{font-size:20px;font-weight:700;line-height:1.4;max-width:600px;margin:0 auto}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.choice-btn{position:relative;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 16px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);text-align:center;overflow:hidden}
+.choice-btn:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06)}
+.choice-btn.disabled{pointer-events:none;opacity:.5}
+.choice-btn .model-icon{width:48px;height:48px;border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900}
+.choice-btn .model-name{font-size:16px;font-weight:800;margin-bottom:4px}
+.choice-btn .model-co{font-size:11px;color:#737373;font-weight:600}
+.choice-btn.claude .model-icon{background:rgba(192,132,252,.15);color:#c084fc}
+.choice-btn.chatgpt .model-icon{background:rgba(16,163,127,.15);color:#10a37f}
+.choice-btn.gemini .model-icon{background:rgba(66,133,244,.15);color:#4285f4}
+.choice-btn.correct{border-color:#22c55e;background:rgba(34,197,94,.08);transform:scale(1.05)}
+.choice-btn.correct .model-icon{box-shadow:0 0 30px rgba(34,197,94,.4)}
+.choice-btn.wrong{border-color:#ef4444;background:rgba(239,68,68,.05);opacity:.6;transform:scale(.97)}
+.explanation{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px 24px;margin-top:20px;font-size:14px;line-height:1.7;color:#a3a3a3;display:none;text-align:left}
+.explanation strong{color:#e5e5e5}
+.explanation.show{display:block;animation:fadeUp .4s ease}
+.next-btn{display:none;margin:24px auto 0;background:linear-gradient(135deg,#c084fc,#818cf8);color:#fff;border:none;padding:12px 32px;border-radius:12px;font-family:Inter,sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.next-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
+.next-btn.show{display:block;animation:fadeUp .3s ease}
+.final-screen{display:none;text-align:center;animation:fadeUp .5s ease}
+.final-screen.show{display:block}
+.grade{font-size:96px;font-weight:900;margin:20px 0;line-height:1}
+.grade.s{background:linear-gradient(135deg,#fbbf24,#fb923c,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.grade.a{color:#22c55e}
+.grade.b{color:#38bdf8}
+.grade.c{color:#737373}
+.final-stats{display:flex;justify-content:center;gap:32px;margin:24px 0}
+.final-stat{text-align:center}
+.final-stat .val{font-size:32px;font-weight:900;color:#c084fc}
+.final-stat .lbl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#737373;margin-top:4px}
+.share-btn{margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#e5e5e5;padding:12px 28px;border-radius:12px;font-family:Inter,sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+.share-btn:hover{background:rgba(255,255,255,.1)}
+.start-screen{text-align:center;padding:60px 20px}
+.start-screen h2{font-size:28px;font-weight:900;margin-bottom:12px}
+.start-screen p{color:#737373;font-size:15px;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.start-btn{background:linear-gradient(135deg,#c084fc,#818cf8);color:#fff;border:none;padding:16px 48px;border-radius:14px;font-family:Inter,sans-serif;font-size:16px;font-weight:800;cursor:pointer;transition:all .3s}
+.start-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(192,132,252,.3)}
+.game-area{display:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.shake{animation:shake .4s ease}
 </style>
 </head>
 <body>
-<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+<div class="container">
+  <div class="header">
+    <div class="tag">Claude Mastery — Lesson 1</div>
+    <h1>AI Challenge Arena</h1>
+    <p>7 rounds. Pick the best AI for each task. Learn what makes each model unique.</p>
+  </div>
 
-<nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
-</nav>
+  <div class="start-screen" id="startScreen">
+    <h2>Ready to test your AI knowledge?</h2>
+    <p>You'll see real-world tasks and choose which AI model handles them best. Speed matters — you have 10 seconds per round. Consecutive correct answers build your combo multiplier.</p>
+    <button class="start-btn" onclick="startGame()">Start Challenge</button>
+  </div>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 1 · Interactive</div>
-<h1>Meet Claude</h1>
-<p>Discover what makes Claude unique among AI models</p>
-<div class="lesson-meta-bar">⏱ <span>60 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 1</span></div>
-</div>
+  <div class="game-area" id="gameArea">
+    <div class="hud">
+      <div class="hud-item"><div class="hud-label">Score</div><div class="hud-value score" id="scoreDisplay">0</div></div>
+      <div class="hud-item"><div class="hud-label">Round</div><div class="hud-value" id="roundDisplay">1/7</div></div>
+      <div class="hud-item"><div class="hud-label">Combo</div><div class="hud-value combo" id="comboDisplay">x1</div></div>
+      <div class="hud-item"><div class="hud-label">Time</div><div class="hud-value timer" id="timerDisplay">10.0</div></div>
+    </div>
+    <div class="timer-bar"><div class="timer-fill" id="timerFill"></div></div>
+    <div class="round-label" id="roundLabel">Round 1 of 7</div>
+    <div class="task-card">
+      <div class="task-category" id="taskCategory"></div>
+      <div class="task-text" id="taskText"></div>
+    </div>
+    <div class="choices" id="choices"></div>
+    <div class="explanation" id="explanation"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextRound()">Next Round</button>
+  </div>
 
-<div class="content">
-<div class="card">
-<h2>How Well Do You Know Claude?</h2>
-<p>Below are 5 real-world tasks. For each one, guess which AI model excels the most. Click a model to lock in your answer, then see the explanation.</p>
-</div>
-
-<div id="quizContainer"></div>
-
-<div class="card" id="resultsCard" style="display:none">
-<div class="score-display">
-<div>Your Score</div>
-<div class="score-num" id="finalScore">0/5</div>
-<div style="color:#a1a1aa;font-size:.9rem;font-weight:400" id="scoreMsg"></div>
-</div>
-<button class="complete-btn" id="completeBtn" onclick="completelesson()">Complete & Continue →</button>
-</div>
-</div>
-
-<div class="progress-footer">
-<span class="progress-label">Lesson 1 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" id="lessonProgress" style="width:0%"></div></div>
-<span class="progress-label" id="questionCount">0/5</span>
+  <div class="final-screen" id="finalScreen">
+    <div class="tag" style="margin-bottom:24px">Challenge Complete</div>
+    <div class="grade" id="finalGrade"></div>
+    <div id="finalTitle" style="font-size:20px;font-weight:700;margin-bottom:8px"></div>
+    <div id="finalSub" style="color:#737373;font-size:14px"></div>
+    <div class="final-stats">
+      <div class="final-stat"><div class="val" id="finalScore">0</div><div class="lbl">Score</div></div>
+      <div class="final-stat"><div class="val" id="finalCorrect">0</div><div class="lbl">Correct</div></div>
+      <div class="final-stat"><div class="val" id="finalMaxCombo">0</div><div class="lbl">Max Combo</div></div>
+    </div>
+    <button class="share-btn" onclick="shareResult()">Copy Result to Clipboard</button>
+    <button class="start-btn" style="margin-top:16px;font-size:14px;padding:12px 32px" onclick="startGame()">Play Again</button>
+  </div>
 </div>
 
 <script>
-const TASKS=[
-{task:"Analyze a 150-page legal contract and identify every clause related to liability, then summarize the risk exposure.",title:"Long Document Analysis",models:["Claude","ChatGPT","Gemini"],correct:0,
-explanation:"Claude excels here with its 200K token context window — it can process the entire document in one pass without chunking. Claude is also known for careful, precise analysis with fewer hallucinations on factual extraction tasks."},
-{task:"Generate a photorealistic image of a sunset over a cyberpunk city with flying cars and neon signs.",title:"Image Generation",models:["Claude","ChatGPT","Gemini"],correct:1,
-explanation:"ChatGPT (via DALL-E) is the clear winner for image generation. Claude is text-only and cannot generate images. This is one of Claude's key limitations to understand."},
-{task:"Debug a complex React application with 40+ components, refactoring the state management from Redux to Zustand while maintaining all existing tests.",title:"Complex Code Refactoring",models:["Claude","ChatGPT","Gemini"],correct:0,
-explanation:"Claude is widely regarded as the strongest coding assistant. Its ability to understand large codebases, maintain consistency across refactors, and write production-quality code sets it apart. Claude's long context window also helps it keep the full codebase in mind."},
-{task:"Search the internet for the latest news about a breaking event that happened 30 minutes ago and provide a summary.",title:"Real-Time Information",models:["Claude","ChatGPT","Gemini"],correct:2,
-explanation:"Gemini (with Google Search integration) excels at real-time information retrieval. It's deeply integrated with Google's search infrastructure. Claude can browse the web when given tools, but Gemini's native search integration gives it an edge for live information."},
-{task:"Write a nuanced, balanced essay exploring both sides of a controversial ethical dilemma, acknowledging uncertainty where it exists and avoiding taking a political stance.",title:"Balanced Ethical Analysis",models:["Claude","ChatGPT","Gemini"],correct:0,
-explanation:"Claude was specifically trained by Anthropic to be honest, balanced, and thoughtful about nuance. Claude is designed to acknowledge uncertainty, present multiple perspectives fairly, and avoid ideological bias — making it exceptional at nuanced ethical analysis."}
+const ROUNDS = [
+  {
+    category: "Code Generation",
+    task: "Write production TypeScript code for a complex REST API with auth, rate limiting, and error handling",
+    answer: "claude",
+    explain: "<strong>Claude excels at long-form code generation.</strong> Its large context window (200K tokens) and strong instruction-following produce well-structured, production-ready code with fewer hallucinations. ChatGPT is solid but tends to be less precise with complex requirements. Gemini is improving but still behind on nuanced coding tasks."
+  },
+  {
+    category: "Creative Writing",
+    task: "Write a 3,000-word short story with deep character development, unreliable narrator, and a twist ending",
+    answer: "claude",
+    explain: "<strong>Claude leads in creative writing quality.</strong> It produces more nuanced prose with better narrative structure and character voice. It follows complex creative constraints (unreliable narrator + twist) more reliably than competitors. ChatGPT is good but often produces more formulaic output."
+  },
+  {
+    category: "Real-Time Information",
+    task: "Find today's stock prices, current weather in 5 cities, and the latest breaking news headlines",
+    answer: "chatgpt",
+    explain: "<strong>ChatGPT with browsing wins for real-time data.</strong> Its integrated web browsing tool is mature and reliable. Claude and Gemini have web access options, but ChatGPT's search integration is the most seamless for current events and live data."
+  },
+  {
+    category: "Multimodal Analysis",
+    task: "Analyze a collection of 50 photos from a construction site, identify safety violations, and generate a compliance report",
+    answer: "gemini",
+    explain: "<strong>Gemini's multimodal capabilities shine here.</strong> With its 1M+ token context window and native multimodal architecture, it handles large batches of images naturally. Claude has strong vision but Gemini's context capacity for images is unmatched."
+  },
+  {
+    category: "Document Analysis",
+    task: "Read a 150-page legal contract, extract all obligations, deadlines, and liability clauses, then summarize risks",
+    answer: "claude",
+    explain: "<strong>Claude's 200K context window is built for this.</strong> It can ingest the entire contract at once and produce highly accurate analysis. Its instruction-following means it won't miss categories you ask for. Gemini has a larger window but Claude's precision on legal/business text is superior."
+  },
+  {
+    category: "Math & Reasoning",
+    task: "Solve a graduate-level probability problem involving Bayesian inference with multiple conditional dependencies",
+    answer: "chatgpt",
+    explain: "<strong>ChatGPT (GPT-4) is strongest at formal math.</strong> Especially with the Code Interpreter for verification, it handles complex mathematical reasoning with high accuracy. Claude is close behind. Gemini is improving but less reliable on multi-step formal proofs."
+  },
+  {
+    category: "System Design",
+    task: "Design a complete AI agent architecture with tool use, memory, error recovery, and multi-model orchestration",
+    answer: "claude",
+    explain: "<strong>Claude is the best at agentic system design.</strong> Anthropic pioneered tool use and the MCP (Model Context Protocol) standard. Claude's understanding of agent patterns, tool schemas, and orchestration is deeper than competitors. It can produce working agent code, not just theory."
+  }
 ];
 
-let answered=0,score=0;
-const container=document.getElementById('quizContainer');
+let currentRound = 0, score = 0, combo = 0, maxCombo = 0, correct = 0;
+let timer = null, timeLeft = 10;
 
-TASKS.forEach((t,i)=>{
-const div=document.createElement('div');
-div.className='card';
-div.id='task-'+i;
-div.innerHTML=`
-<h2>${i+1}. ${t.title}</h2>
-<p>${t.task}</p>
-<div class="choices">
-${t.models.map((m,mi)=>`<button class="choice-btn" data-task="${i}" data-choice="${mi}" onclick="pick(${i},${mi})">${m}</button>`).join('')}
-</div>
-<div class="explanation" id="exp-${i}">${t.explanation}</div>
-`;
-container.appendChild(div);
-});
-
-function pick(taskIdx,choiceIdx){
-const task=TASKS[taskIdx];
-const card=document.getElementById('task-'+taskIdx);
-if(card.dataset.answered) return;
-card.dataset.answered='true';
-answered++;
-
-const btns=card.querySelectorAll('.choice-btn');
-btns.forEach((b,i)=>{
-if(i===task.correct) b.classList.add('right');
-else if(i===choiceIdx && i!==task.correct) b.classList.add('wrong');
-});
-
-if(choiceIdx===task.correct) score++;
-
-document.getElementById('exp-'+taskIdx).classList.add('show');
-document.getElementById('lessonProgress').style.width=(answered/TASKS.length*100)+'%';
-document.getElementById('questionCount').textContent=answered+'/'+TASKS.length;
-
-if(answered===TASKS.length){
-setTimeout(()=>{
-document.getElementById('resultsCard').style.display='block';
-document.getElementById('finalScore').textContent=score+'/'+TASKS.length;
-const msgs=['Keep learning — you\'ll get there!','Good foundation!','Solid knowledge!','Impressive!','Perfect score! You\'re a natural!'];
-document.getElementById('scoreMsg').textContent=msgs[score]||msgs[0];
-document.getElementById('resultsCard').scrollIntoView({behavior:'smooth'});
-},500);
-}
+function startGame() {
+  currentRound = 0; score = 0; combo = 0; maxCombo = 0; correct = 0;
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('finalScreen').classList.remove('show');
+  document.getElementById('finalScreen').style.display = 'none';
+  document.getElementById('gameArea').style.display = 'block';
+  loadRound();
 }
 
-function completelesson(){
-localStorage.setItem('cm_meet-claude','done');
-showXPBurst();
-setTimeout(()=>window.location.href='context-window-explorer.html',1200);
+function loadRound() {
+  const r = ROUNDS[currentRound];
+  document.getElementById('roundDisplay').textContent = `${currentRound + 1}/7`;
+  document.getElementById('roundLabel').textContent = `Round ${currentRound + 1} of 7`;
+  document.getElementById('scoreDisplay').textContent = score;
+  document.getElementById('comboDisplay').textContent = `x${Math.max(1, combo)}`;
+  document.getElementById('taskCategory').textContent = r.category;
+  document.getElementById('taskText').textContent = r.task;
+  document.getElementById('explanation').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+
+  const models = [
+    { id: 'claude', name: 'Claude', co: 'Anthropic', icon: 'C' },
+    { id: 'chatgpt', name: 'ChatGPT', co: 'OpenAI', icon: 'G' },
+    { id: 'gemini', name: 'Gemini', co: 'Google', icon: 'G' }
+  ];
+
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = models.map(m => `
+    <div class="choice-btn ${m.id}" onclick="selectAnswer('${m.id}', this)" id="btn-${m.id}">
+      <div class="model-icon">${m.icon}</div>
+      <div class="model-name">${m.name}</div>
+      <div class="model-co">${m.co}</div>
+    </div>
+  `).join('');
+
+  startTimer();
 }
 
-function showXPBurst(){
-const burst=document.getElementById('xpBurst');
-burst.classList.add('show');
-spawnParticles();
-setTimeout(()=>burst.classList.remove('show'),1000);
+function startTimer() {
+  timeLeft = 10;
+  const fill = document.getElementById('timerFill');
+  const display = document.getElementById('timerDisplay');
+  fill.classList.remove('danger');
+  fill.style.width = '100%';
+  clearInterval(timer);
+  timer = setInterval(() => {
+    timeLeft -= 0.1;
+    if (timeLeft <= 0) {
+      timeLeft = 0;
+      clearInterval(timer);
+      timeOut();
+    }
+    display.textContent = timeLeft.toFixed(1);
+    fill.style.width = `${(timeLeft / 10) * 100}%`;
+    if (timeLeft < 3) fill.classList.add('danger');
+  }, 100);
 }
 
-function spawnParticles(){
-const cont=document.getElementById('particles');
-const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){
-const p=document.createElement('div');
-p.className='particle';
-const size=Math.random()*8+4;
-p.style.width=size+'px';p.style.height=size+'px';
-p.style.background=colors[Math.floor(Math.random()*colors.length)];
-p.style.left='50%';p.style.top='50%';
-p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');
-p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');
-p.style.animation='particleFly .8s ease forwards';
-p.style.animationDelay=(Math.random()*.2)+'s';
-cont.appendChild(p);
-setTimeout(()=>p.remove(),1200);
+function timeOut() {
+  combo = 0;
+  document.getElementById('comboDisplay').textContent = 'x1';
+  document.querySelectorAll('.choice-btn').forEach(b => b.classList.add('disabled'));
+  const r = ROUNDS[currentRound];
+  document.getElementById(`btn-${r.answer}`).classList.add('correct');
+  showExplanation(r, false);
+  try { LO.sfx.error(); } catch(e) {}
 }
+
+function selectAnswer(id, el) {
+  clearInterval(timer);
+  const r = ROUNDS[currentRound];
+  document.querySelectorAll('.choice-btn').forEach(b => b.classList.add('disabled'));
+
+  if (id === r.answer) {
+    el.classList.add('correct');
+    combo++;
+    if (combo > maxCombo) maxCombo = combo;
+    correct++;
+    const timeBonus = Math.floor(timeLeft * 10);
+    const comboMult = Math.max(1, combo);
+    const roundScore = (100 + timeBonus) * comboMult;
+    score += roundScore;
+    document.getElementById('scoreDisplay').textContent = score;
+    document.getElementById('comboDisplay').textContent = `x${comboMult}`;
+    try {
+      LO.sfx.success();
+      const rect = el.getBoundingClientRect();
+      LO.spawnParticles(rect.left + rect.width / 2, rect.top + rect.height / 2, '#22c55e', 20);
+    } catch(e) {}
+    showExplanation(r, true);
+  } else {
+    el.classList.add('wrong');
+    el.classList.add('shake');
+    combo = 0;
+    document.getElementById('comboDisplay').textContent = 'x1';
+    document.getElementById(`btn-${r.answer}`).classList.add('correct');
+    try { LO.sfx.error(); } catch(e) {}
+    showExplanation(r, false);
+  }
+}
+
+function showExplanation(r, wasCorrect) {
+  const expEl = document.getElementById('explanation');
+  expEl.innerHTML = (wasCorrect ? '<span style="color:#22c55e;font-weight:700">Correct!</span> ' : '<span style="color:#ef4444;font-weight:700">Not quite.</span> ') + r.explain;
+  expEl.classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('nextBtn').textContent = currentRound < 6 ? 'Next Round' : 'See Results';
+}
+
+function nextRound() {
+  currentRound++;
+  if (currentRound >= ROUNDS.length) {
+    showFinal();
+    return;
+  }
+  loadRound();
+}
+
+function showFinal() {
+  document.getElementById('gameArea').style.display = 'none';
+  const fs = document.getElementById('finalScreen');
+  fs.style.display = 'block';
+  setTimeout(() => fs.classList.add('show'), 10);
+
+  const pct = correct / 7;
+  let grade, title, sub, gradeClass;
+  if (pct === 1 && maxCombo >= 5) { grade = 'S'; title = 'AI Architect'; sub = 'Perfect run. You know your models.'; gradeClass = 's'; }
+  else if (pct >= 0.85) { grade = 'A'; title = 'AI Expert'; sub = 'Impressive knowledge across models.'; gradeClass = 'a'; }
+  else if (pct >= 0.57) { grade = 'B'; title = 'AI Practitioner'; sub = 'Solid foundation. Keep learning.'; gradeClass = 'b'; }
+  else { grade = 'C'; title = 'AI Beginner'; sub = 'Every expert started here. Try again!'; gradeClass = 'c'; }
+
+  document.getElementById('finalGrade').textContent = grade;
+  document.getElementById('finalGrade').className = 'grade ' + gradeClass;
+  document.getElementById('finalTitle').textContent = title;
+  document.getElementById('finalSub').textContent = sub;
+  document.getElementById('finalScore').textContent = score;
+  document.getElementById('finalCorrect').textContent = `${correct}/7`;
+  document.getElementById('finalMaxCombo').textContent = `x${maxCombo}`;
+
+  try {
+    LO.addXP(50);
+    LO.completeLesson('claude-mastery', 1, 50);
+    if (correct === 7) LO.unlockAchievement('quiz_master');
+    if (grade === 'S') LO.spawnParticles(window.innerWidth / 2, window.innerHeight / 2, '#fbbf24', 40);
+  } catch(e) {}
+}
+
+function shareResult() {
+  const pct = correct / 7;
+  let grade = pct === 1 && maxCombo >= 5 ? 'S' : pct >= 0.85 ? 'A' : pct >= 0.57 ? 'B' : 'C';
+  const text = `AI Challenge Arena | Grade: ${grade} | Score: ${score} | ${correct}/7 correct | x${maxCombo} max combo\n\nlikeone.ai/academy`;
+  navigator.clipboard.writeText(text).then(() => {
+    try { LO.showToast('Copied!', '#22c55e'); } catch(e) { alert('Copied!'); }
+  });
 }
 </script>
 <script src="/academy/shared/engine.js"></script>

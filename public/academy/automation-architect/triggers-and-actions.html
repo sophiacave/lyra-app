@@ -3,279 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Triggers & Actions — Automation Architect</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Triggers & Actions — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-
-.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
-.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#34C759,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.back-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.back-link:hover{color:#e5e5e5}
-
-.lesson-header{text-align:center;padding:3rem 2rem 2rem;max-width:800px;margin:0 auto}
-.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .75rem;border-radius:100px;background:rgba(52,199,89,.1);border:1px solid rgba(52,199,89,.2);font-size:.7rem;font-weight:600;color:#34C759;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
-.lesson-header h1{font-size:2.25rem;font-weight:800;margin-bottom:.5rem}
-.lesson-header p{color:#a1a1aa;font-size:1rem;max-width:500px;margin:0 auto}
-
-.content{max-width:800px;margin:0 auto;padding:2rem}
-
-/* Flowchart */
-.flowchart{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;margin:2rem 0}
-.flow-stage{display:flex;align-items:center;gap:1.5rem;width:100%;max-width:600px;position:relative}
-.flow-node{flex:1;padding:1.5rem;border-radius:16px;border:2px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);text-align:center;transition:all .4s ease;cursor:pointer;position:relative;overflow:hidden}
-.flow-node::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s}
-.flow-node:hover{transform:scale(1.02)}
-
-.flow-node.trigger{border-color:rgba(52,199,89,.3)}
-.flow-node.trigger::before{background:radial-gradient(circle,rgba(52,199,89,.1),transparent)}
-.flow-node.trigger.active{border-color:#34C759;box-shadow:0 0 30px rgba(52,199,89,.2)}
-.flow-node.trigger.active::before{opacity:1}
-
-.flow-node.action{border-color:rgba(56,189,248,.3)}
-.flow-node.action::before{background:radial-gradient(circle,rgba(56,189,248,.1),transparent)}
-.flow-node.action.active{border-color:#38bdf8;box-shadow:0 0 30px rgba(56,189,248,.2)}
-.flow-node.action.active::before{opacity:1}
-
-.flow-icon{font-size:2rem;margin-bottom:.5rem}
-.flow-label{font-weight:700;font-size:1rem;margin-bottom:.25rem}
-.flow-desc{font-size:.8rem;color:#a1a1aa}
-
-/* Arrow */
-.flow-arrow{display:flex;flex-direction:column;align-items:center;padding:1rem 0;position:relative}
-.arrow-line{width:3px;height:50px;background:linear-gradient(to bottom,rgba(52,199,89,.6),rgba(56,189,248,.6));border-radius:3px;position:relative;overflow:hidden}
-.arrow-pulse{position:absolute;top:-10px;left:0;width:3px;height:10px;background:#34C759;border-radius:3px;animation:pulseDrop 2s ease-in-out infinite;box-shadow:0 0 10px #34C759}
-@keyframes pulseDrop{0%{top:-10px;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:50px;opacity:0}}
-.arrow-tip{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid rgba(56,189,248,.6)}
-.arrow-label{font-size:.7rem;color:#71717a;margin-top:.25rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-
-/* Data packet animation */
-.data-packet{position:absolute;width:8px;height:8px;border-radius:50%;background:#34C759;box-shadow:0 0 12px #34C759;opacity:0;z-index:5}
-
-/* Trigger types */
-.trigger-types{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.5rem 0}
-.trigger-type{padding:1.25rem;border-radius:14px;background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.06);cursor:pointer;transition:all .3s;text-align:center}
-.trigger-type:hover{border-color:rgba(52,199,89,.3);background:rgba(52,199,89,.05)}
-.trigger-type.selected{border-color:#34C759;background:rgba(52,199,89,.08);box-shadow:0 0 20px rgba(52,199,89,.1)}
-.trigger-type .icon{font-size:1.5rem;margin-bottom:.5rem}
-.trigger-type .name{font-weight:700;font-size:.85rem;margin-bottom:.25rem}
-.trigger-type .desc{font-size:.7rem;color:#71717a;line-height:1.4}
-
-/* Example panel */
-.example-panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.5rem 2rem;margin:2rem 0;min-height:120px;transition:all .4s}
-.example-panel h3{font-size:.9rem;font-weight:700;color:#34C759;margin-bottom:.75rem}
-.example-code{font-family:'SF Mono',monospace;font-size:.8rem;background:rgba(0,0,0,.3);padding:1rem;border-radius:10px;color:#a1a1aa;line-height:1.6;overflow-x:auto}
-.example-code .key{color:#38bdf8}
-.example-code .val{color:#34C759}
-.example-code .comment{color:#52525b}
-
-/* Anatomy section */
-.anatomy-section{margin:3rem 0}
-.anatomy-section h2{font-size:1.3rem;font-weight:800;margin-bottom:.5rem}
-.anatomy-section>p{color:#a1a1aa;font-size:.9rem;margin-bottom:1.5rem;line-height:1.6}
-
-.anatomy-row{display:flex;gap:1rem;margin:1.5rem 0}
-.anatomy-box{flex:1;padding:1.25rem;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
-.anatomy-box h4{font-size:.85rem;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
-.anatomy-box p{font-size:.8rem;color:#a1a1aa;line-height:1.5}
-.anatomy-box ul{list-style:none;padding:0;margin:.5rem 0 0}
-.anatomy-box ul li{font-size:.8rem;color:#a1a1aa;padding:.25rem 0;padding-left:1rem;position:relative}
-.anatomy-box ul li::before{content:'';position:absolute;left:0;top:.55rem;width:6px;height:6px;border-radius:50%}
-.green-dot li::before{background:#34C759}
-.blue-dot li::before{background:#38bdf8}
-
-.complete-btn{display:block;width:100%;max-width:400px;margin:3rem auto 1rem;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#34C759,#2da44e);color:#0a0a0f;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s}
-.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(52,199,89,.3)}
-.complete-btn.done{background:rgba(52,199,89,.15);color:#34C759;cursor:default}
-
-.progress-footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);max-width:800px;margin:0 auto}
-.progress-footer p{font-size:.8rem;color:#52525b}
-
-@media(max-width:600px){
-  .trigger-types{grid-template-columns:1fr}
-  .anatomy-row{flex-direction:column}
-  .lesson-header h1{font-size:1.75rem}
-}
+body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;min-height:100vh;overflow-x:hidden}
+.container{max-width:800px;margin:0 auto;padding:40px 20px 80px}
+.header{text-align:center;margin-bottom:32px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#818cf8;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.header h1{font-size:36px;font-weight:900;background:linear-gradient(135deg,#818cf8,#38bdf8,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header p{color:#737373;font-size:15px}
+.hud{display:flex;justify-content:center;gap:32px;margin-bottom:24px}
+.hud-item{text-align:center}
+.hud-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#737373;margin-bottom:2px}
+.hud-val{font-size:18px;font-weight:800;color:#818cf8}
+.challenge-bar{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px 20px;margin-bottom:24px;text-align:center}
+.challenge-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#525252;margin-bottom:6px}
+.challenge-text{font-size:15px;font-weight:700;color:#e5e5e5}
+.builder{display:grid;grid-template-columns:140px 1fr 140px;gap:16px;margin-bottom:24px;min-height:420px}
+@media(max-width:650px){.builder{grid-template-columns:1fr;min-height:auto}.palette{flex-direction:row;flex-wrap:wrap;justify-content:center}}
+.palette{display:flex;flex-direction:column;gap:10px}
+.palette-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#525252;margin-bottom:4px;text-align:center}
+.palette-node{padding:14px 10px;border-radius:12px;text-align:center;font-size:12px;font-weight:700;cursor:grab;user-select:none;transition:all .2s;position:relative}
+.palette-node:active{cursor:grabbing;transform:scale(1.05)}
+.palette-node.trigger{background:rgba(129,140,248,.08);border:2px solid rgba(129,140,248,.2);color:#818cf8}
+.palette-node.trigger:hover{border-color:rgba(129,140,248,.5);box-shadow:0 0 20px rgba(129,140,248,.15)}
+.palette-node.action{background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.2);color:#22c55e}
+.palette-node.action:hover{border-color:rgba(34,197,94,.5);box-shadow:0 0 20px rgba(34,197,94,.15)}
+.palette-node.used{opacity:.3;pointer-events:none}
+.palette-node .icon{font-size:20px;margin-bottom:4px;display:block}
+.canvas-area{background:rgba(255,255,255,.02);border:2px dashed rgba(255,255,255,.08);border-radius:16px;position:relative;min-height:380px;overflow:hidden}
+.canvas-area.drag-over{border-color:rgba(129,140,248,.4);background:rgba(129,140,248,.03)}
+.canvas-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:13px;color:#333;font-weight:600;pointer-events:none;text-align:center;line-height:1.6}
+canvas#flowCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.placed-node{position:absolute;padding:12px 16px;border-radius:12px;font-size:12px;font-weight:700;text-align:center;z-index:2;transition:box-shadow .3s;min-width:110px}
+.placed-node.trigger-placed{background:rgba(129,140,248,.12);border:2px solid rgba(129,140,248,.4);color:#818cf8}
+.placed-node.action-placed{background:rgba(34,197,94,.12);border:2px solid rgba(34,197,94,.4);color:#22c55e}
+.placed-node .icon{font-size:18px;margin-bottom:2px;display:block}
+.run-btn{display:block;margin:0 auto 24px;background:linear-gradient(135deg,#818cf8,#38bdf8);color:#fff;border:none;padding:14px 40px;border-radius:14px;font-family:Inter,sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:all .3s;opacity:.4;pointer-events:none}
+.run-btn.ready{opacity:1;pointer-events:auto}
+.run-btn.ready:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(129,140,248,.3)}
+.run-btn.running{opacity:.6;pointer-events:none}
+.feedback{text-align:center;font-size:14px;font-weight:700;color:#22c55e;margin-bottom:24px;min-height:20px}
+.challenge-dots{display:flex;justify-content:center;gap:8px;margin-bottom:24px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1);transition:all .3s}
+.dot.done{background:#22c55e;box-shadow:0 0 10px rgba(34,197,94,.4)}
+.dot.active{background:#818cf8;box-shadow:0 0 10px rgba(129,140,248,.4)}
+.complete-card{display:none;text-align:center;background:rgba(129,140,248,.05);border:1px solid rgba(129,140,248,.2);border-radius:20px;padding:32px;margin-top:24px}
+.complete-card.show{display:block;animation:fadeUp .4s ease}
+.complete-card h3{font-size:24px;font-weight:900;color:#818cf8;margin-bottom:8px}
+.complete-card p{color:#a3a3a3;font-size:14px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
-</nav>
-
-<header class="lesson-header">
-  <div class="lesson-badge">Module 1 &middot; Animated</div>
-  <h1>Triggers & Actions</h1>
-  <p>The universal anatomy of every automation: something happens, then something else happens.</p>
-</header>
-
-<div class="content">
-  <div class="anatomy-section">
-    <h2>Every Automation Has Two Parts</h2>
-    <p>No matter how complex the system, every automation follows one pattern: a <strong>Trigger</strong> fires, and one or more <strong>Actions</strong> execute. Master this, and you can build anything.</p>
+<div class="container">
+  <div class="header">
+    <div class="tag">Automation Architect — Lesson 1</div>
+    <h1>Triggers & Actions</h1>
+    <p>Drag triggers and actions onto the canvas to build automation flows.</p>
   </div>
 
-  <!-- Animated Flowchart -->
-  <div class="flowchart" id="flowchart">
-    <div class="flow-stage">
-      <div class="flow-node trigger" id="triggerNode">
-        <div class="flow-icon" id="triggerIcon">&#9889;</div>
-        <div class="flow-label" id="triggerLabel">Trigger</div>
-        <div class="flow-desc" id="triggerDesc">Something happens...</div>
-      </div>
-    </div>
-    <div class="flow-arrow">
-      <div class="arrow-line"><div class="arrow-pulse"></div></div>
-      <div class="arrow-tip"></div>
-      <div class="arrow-label">data flows</div>
-    </div>
-    <div class="flow-stage">
-      <div class="flow-node action" id="actionNode">
-        <div class="flow-icon" id="actionIcon">&#9881;</div>
-        <div class="flow-label" id="actionLabel">Action</div>
-        <div class="flow-desc" id="actionDesc">...something else executes</div>
-      </div>
-    </div>
+  <div class="hud">
+    <div class="hud-item"><div class="hud-label">Challenge</div><div class="hud-val" id="challengeNum">1/3</div></div>
+    <div class="hud-item"><div class="hud-label">Score</div><div class="hud-val" id="scoreVal">0</div></div>
   </div>
 
-  <!-- Trigger Types -->
-  <div class="anatomy-section">
-    <h2>Click a Trigger Type</h2>
-    <p>Different triggers, same principle. Click each one to see how it fires and what data it sends.</p>
+  <div class="challenge-dots">
+    <div class="dot active" id="dot-0"></div>
+    <div class="dot" id="dot-1"></div>
+    <div class="dot" id="dot-2"></div>
   </div>
 
-  <div class="trigger-types">
-    <div class="trigger-type" onclick="selectTrigger('webhook')" id="t-webhook">
-      <div class="icon">&#128279;</div>
-      <div class="name">Webhook</div>
-      <div class="desc">An external service sends data to your URL</div>
+  <div class="challenge-bar">
+    <div class="challenge-label">Build this automation</div>
+    <div class="challenge-text" id="challengeText"></div>
+  </div>
+
+  <div class="builder">
+    <div class="palette" id="triggerPalette">
+      <div class="palette-title">Triggers</div>
+      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="webhook"><span class="icon">🔗</span>Webhook</div>
+      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="schedule"><span class="icon">⏰</span>Schedule</div>
+      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="event"><span class="icon">⚡</span>Event</div>
     </div>
-    <div class="trigger-type" onclick="selectTrigger('schedule')" id="t-schedule">
-      <div class="icon">&#9200;</div>
-      <div class="name">Schedule</div>
-      <div class="desc">Runs at set intervals (cron)</div>
+
+    <div class="canvas-area" id="canvasArea">
+      <div class="canvas-label" id="canvasLabel">Drop a trigger here,<br>then add an action</div>
+      <canvas id="flowCanvas"></canvas>
     </div>
-    <div class="trigger-type" onclick="selectTrigger('event')" id="t-event">
-      <div class="icon">&#128276;</div>
-      <div class="name">Event</div>
-      <div class="desc">Reacts to a change in a system</div>
+
+    <div class="palette" id="actionPalette">
+      <div class="palette-title">Actions</div>
+      <div class="palette-node action" draggable="true" data-type="action" data-id="email"><span class="icon">📧</span>Send Email</div>
+      <div class="palette-node action" draggable="true" data-type="action" data-id="database"><span class="icon">💾</span>Save to DB</div>
+      <div class="palette-node action" draggable="true" data-type="action" data-id="api"><span class="icon">🌐</span>Call API</div>
+      <div class="palette-node action" draggable="true" data-type="action" data-id="notify"><span class="icon">🔔</span>Notification</div>
     </div>
   </div>
 
-  <div class="example-panel" id="examplePanel">
-    <h3 id="exampleTitle">Select a trigger type above</h3>
-    <div class="example-code" id="exampleCode">
-      <span class="comment">// Click a trigger to see its anatomy</span>
-    </div>
+  <button class="run-btn" id="runBtn" onclick="runFlow()">Run Automation</button>
+  <div class="feedback" id="feedback"></div>
+  <div class="complete-card" id="completeCard">
+    <h3>Lesson Complete!</h3>
+    <p>You've built 3 real automation flows. You now understand how triggers initiate workflows and actions execute them.</p>
   </div>
-
-  <!-- Anatomy breakdown -->
-  <div class="anatomy-section">
-    <h2>The Anatomy Breakdown</h2>
-  </div>
-  <div class="anatomy-row">
-    <div class="anatomy-box">
-      <h4><span style="color:#34C759">&#9679;</span> Triggers</h4>
-      <p>The "when" of your automation. Triggers listen and wait.</p>
-      <ul class="green-dot">
-        <li>Webhook: receives HTTP POST</li>
-        <li>Schedule: cron expression fires</li>
-        <li>Event: database row changes</li>
-        <li>Manual: user clicks a button</li>
-      </ul>
-    </div>
-    <div class="anatomy-box">
-      <h4><span style="color:#38bdf8">&#9679;</span> Actions</h4>
-      <p>The "then" of your automation. Actions execute work.</p>
-      <ul class="blue-dot">
-        <li>API Call: hit an external service</li>
-        <li>DB Write: store or update data</li>
-        <li>Send Email: notify someone</li>
-        <li>Transform: reshape data format</li>
-      </ul>
-    </div>
-  </div>
-
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 50 XP</button>
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 1 of 9 &middot; Automation Architect</p>
-</footer>
-
 <script>
-const SLUG='triggers-and-actions';
-const STORAGE_KEY='automation-architect-progress';
+const CHALLENGES = [
+  { text: "Send an email when a form is submitted", trigger: "webhook", action: "email", desc: "A webhook receives the form data and triggers an email action." },
+  { text: "Save sensor data to a database every hour", trigger: "schedule", action: "database", desc: "A schedule trigger fires every hour and the data is saved to the database." },
+  { text: "Call an API when a new user signs up", trigger: "event", action: "api", desc: "The user signup event triggers an API call to sync data externally." }
+];
 
-const triggers={
-  webhook:{
-    icon:'&#128279;',label:'Webhook Trigger',desc:'Stripe sends a payment event to your endpoint',
-    actionIcon:'&#128230;',actionLabel:'Save to Database',actionDesc:'Store the payment record in your DB',
-    title:'Webhook: Stripe Payment',
-    code:`<span class="comment">// Stripe sends this to your webhook URL:</span>\n<span class="key">POST</span> /api/webhook\n{\n  <span class="key">"event"</span>: <span class="val">"payment.completed"</span>,\n  <span class="key">"amount"</span>: <span class="val">7900</span>,\n  <span class="key">"customer"</span>: <span class="val">"cus_abc123"</span>\n}\n\n<span class="comment">// Your action: save to database</span>\n<span class="key">INSERT INTO</span> payments (customer, amount)\n<span class="key">VALUES</span> (<span class="val">'cus_abc123'</span>, <span class="val">7900</span>);`
-  },
-  schedule:{
-    icon:'&#9200;',label:'Schedule Trigger',desc:'Runs every morning at 9:00 AM UTC',
-    actionIcon:'&#128232;',actionLabel:'Send Report Email',actionDesc:'Email yesterday\'s metrics to the team',
-    title:'Schedule: Daily Report',
-    code:`<span class="comment">// Cron expression: run at 9 AM every day</span>\n<span class="key">cron</span>: <span class="val">"0 9 * * *"</span>\n\n<span class="comment">// The schedule fires and your action runs:</span>\n<span class="key">GET</span> /api/metrics?date=yesterday\n\n<span class="comment">// Then sends the email:</span>\n<span class="key">POST</span> /api/send-email\n{\n  <span class="key">"to"</span>: <span class="val">"team@company.com"</span>,\n  <span class="key">"subject"</span>: <span class="val">"Daily Metrics Report"</span>,\n  <span class="key">"body"</span>: <span class="val">"Revenue: $4,200..."</span>\n}`
-  },
-  event:{
-    icon:'&#128276;',label:'Event Trigger',desc:'New user signs up in your app',
-    actionIcon:'&#128640;',actionLabel:'Send Welcome + Notify Team',actionDesc:'Welcome email + Slack notification',
-    title:'Event: New User Signup',
-    code:`<span class="comment">// Database event: new row in users table</span>\n<span class="key">ON INSERT</span> users_table\n{\n  <span class="key">"id"</span>: <span class="val">42</span>,\n  <span class="key">"email"</span>: <span class="val">"new@user.com"</span>,\n  <span class="key">"plan"</span>: <span class="val">"pro"</span>\n}\n\n<span class="comment">// Action 1: Send welcome email</span>\n<span class="key">POST</span> /api/email { <span class="key">template</span>: <span class="val">"welcome"</span> }\n\n<span class="comment">// Action 2: Notify team on Slack</span>\n<span class="key">POST</span> slack.webhook { <span class="key">text</span>: <span class="val">"New Pro user!"</span> }`
+let currentChallenge = 0, score = 0;
+let placedTrigger = null, placedAction = null;
+let triggerNode = null, actionNode = null;
+
+const canvasArea = document.getElementById('canvasArea');
+const flowCanvas = document.getElementById('flowCanvas');
+const fctx = flowCanvas.getContext('2d');
+let pulseAnim = null;
+
+function resizeFlowCanvas() {
+  const rect = canvasArea.getBoundingClientRect();
+  flowCanvas.width = rect.width * 2;
+  flowCanvas.height = rect.height * 2;
+  flowCanvas.style.width = rect.width + 'px';
+  flowCanvas.style.height = rect.height + 'px';
+  drawConnection();
+}
+window.addEventListener('resize', resizeFlowCanvas);
+
+function loadChallenge() {
+  const c = CHALLENGES[currentChallenge];
+  document.getElementById('challengeText').textContent = c.text;
+  document.getElementById('challengeNum').textContent = `${currentChallenge + 1}/3`;
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('runBtn').classList.remove('ready', 'running');
+  document.getElementById('canvasLabel').style.display = 'block';
+  document.getElementById('canvasLabel').innerHTML = 'Drop a trigger here,<br>then add an action';
+
+  placedTrigger = null; placedAction = null;
+  if (triggerNode) triggerNode.remove();
+  if (actionNode) actionNode.remove();
+  triggerNode = null; actionNode = null;
+
+  document.querySelectorAll('.palette-node').forEach(n => n.classList.remove('used'));
+  cancelAnimationFrame(pulseAnim);
+  fctx.clearRect(0, 0, flowCanvas.width, flowCanvas.height);
+
+  for (let i = 0; i < 3; i++) {
+    const dot = document.getElementById(`dot-${i}`);
+    dot.classList.remove('active', 'done');
+    if (i < currentChallenge) dot.classList.add('done');
+    if (i === currentChallenge) dot.classList.add('active');
   }
-};
-
-function selectTrigger(type){
-  document.querySelectorAll('.trigger-type').forEach(el=>el.classList.remove('selected'));
-  document.getElementById('t-'+type).classList.add('selected');
-
-  const t=triggers[type];
-  // Update flowchart
-  document.getElementById('triggerIcon').innerHTML=t.icon;
-  document.getElementById('triggerLabel').textContent=t.label;
-  document.getElementById('triggerDesc').textContent=t.desc;
-  document.getElementById('actionIcon').innerHTML=t.actionIcon;
-  document.getElementById('actionLabel').textContent=t.actionLabel;
-  document.getElementById('actionDesc').textContent=t.actionDesc;
-
-  // Animate nodes
-  const tn=document.getElementById('triggerNode');
-  const an=document.getElementById('actionNode');
-  tn.classList.add('active');
-  setTimeout(()=>an.classList.add('active'),600);
-  setTimeout(()=>{tn.classList.remove('active');an.classList.remove('active')},2500);
-
-  // Update example
-  document.getElementById('exampleTitle').textContent=t.title;
-  document.getElementById('exampleCode').innerHTML=t.code;
+  resizeFlowCanvas();
 }
 
-function completeLesson(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  progress[SLUG]=true;
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
-  const btn=document.getElementById('completeBtn');
-  btn.textContent='Completed! +50 XP';
-  btn.classList.add('done');
+// Drag & Drop
+document.querySelectorAll('.palette-node').forEach(node => {
+  node.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('type', node.dataset.type);
+    e.dataTransfer.setData('id', node.dataset.id);
+    e.dataTransfer.setData('label', node.textContent.trim());
+    e.dataTransfer.setData('icon', node.querySelector('.icon').textContent);
+    try { LO.sfx.click(); } catch(ex){}
+  });
+});
+
+canvasArea.addEventListener('dragover', e => { e.preventDefault(); canvasArea.classList.add('drag-over'); });
+canvasArea.addEventListener('dragleave', () => canvasArea.classList.remove('drag-over'));
+
+canvasArea.addEventListener('drop', e => {
+  e.preventDefault();
+  canvasArea.classList.remove('drag-over');
+  const type = e.dataTransfer.getData('type');
+  const id = e.dataTransfer.getData('id');
+  const label = e.dataTransfer.getData('label');
+  const icon = e.dataTransfer.getData('icon');
+
+  if (type === 'trigger' && !placedTrigger) {
+    placedTrigger = id;
+    placeNode(type, id, label, icon, 'trigger');
+  } else if (type === 'action' && !placedAction && placedTrigger) {
+    placedAction = id;
+    placeNode(type, id, label, icon, 'action');
+  }
+
+  const paletteNode = document.querySelector(`.palette-node[data-id="${id}"]`);
+  if (paletteNode) paletteNode.classList.add('used');
+
+  if (placedTrigger && placedAction) {
+    document.getElementById('runBtn').classList.add('ready');
+    document.getElementById('canvasLabel').style.display = 'none';
+  } else if (placedTrigger) {
+    document.getElementById('canvasLabel').innerHTML = 'Now drop an action';
+  }
+});
+
+function placeNode(type, id, label, icon, which) {
+  const rect = canvasArea.getBoundingClientRect();
+  const node = document.createElement('div');
+  node.className = `placed-node ${which === 'trigger' ? 'trigger-placed' : 'action-placed'}`;
+  node.innerHTML = `<span class="icon">${icon}</span>${label}`;
+
+  if (which === 'trigger') {
+    node.style.left = '20px';
+    node.style.top = `${rect.height / 2 - 30}px`;
+    triggerNode = node;
+  } else {
+    node.style.right = '20px';
+    node.style.top = `${rect.height / 2 - 30}px`;
+    actionNode = node;
+  }
+
+  node.style.opacity = '0';
+  node.style.transform = 'scale(0.8)';
+  canvasArea.appendChild(node);
+  requestAnimationFrame(() => {
+    node.style.transition = 'all .3s cubic-bezier(.34,1.56,.64,1)';
+    node.style.opacity = '1';
+    node.style.transform = 'scale(1)';
+  });
+
+  setTimeout(drawConnection, 100);
+  try { LO.sfx.click(); } catch(ex){}
 }
 
-// Check if already completed
-(function(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  if(progress[SLUG]){
-    const btn=document.getElementById('completeBtn');
-    btn.textContent='Completed! +50 XP';
-    btn.classList.add('done');
-  }
-})();
+function drawConnection() {
+  fctx.clearRect(0, 0, flowCanvas.width, flowCanvas.height);
+  if (!triggerNode || !actionNode) return;
 
-// Auto-demo on load
-setTimeout(()=>selectTrigger('webhook'),800);
+  const areaRect = canvasArea.getBoundingClientRect();
+  const tRect = triggerNode.getBoundingClientRect();
+  const aRect = actionNode.getBoundingClientRect();
+  const scale = 2;
+
+  const x1 = (tRect.right - areaRect.left) * scale;
+  const y1 = (tRect.top + tRect.height / 2 - areaRect.top) * scale;
+  const x2 = (aRect.left - areaRect.left) * scale;
+  const y2 = (aRect.top + aRect.height / 2 - areaRect.top) * scale;
+  const cpx = (x1 + x2) / 2;
+
+  fctx.setLineDash([10, 6]);
+  fctx.lineWidth = 3;
+  fctx.strokeStyle = 'rgba(255,255,255,0.15)';
+  fctx.beginPath();
+  fctx.moveTo(x1, y1);
+  fctx.bezierCurveTo(cpx, y1, cpx, y2, x2, y2);
+  fctx.stroke();
+  fctx.setLineDash([]);
+
+  fctx.fillStyle = 'rgba(255,255,255,0.2)';
+  fctx.beginPath();
+  fctx.moveTo(x2, y2);
+  fctx.lineTo(x2 - 16, y2 - 8);
+  fctx.lineTo(x2 - 16, y2 + 8);
+  fctx.closePath();
+  fctx.fill();
+}
+
+function runFlow() {
+  const c = CHALLENGES[currentChallenge];
+  const btn = document.getElementById('runBtn');
+  btn.classList.add('running');
+  btn.classList.remove('ready');
+
+  const isCorrect = placedTrigger === c.trigger && placedAction === c.action;
+
+  animatePulse(() => {
+    if (isCorrect) {
+      score += 100;
+      document.getElementById('scoreVal').textContent = score;
+      document.getElementById('feedback').innerHTML = `<span style="color:#22c55e">Correct!</span> ${c.desc}`;
+      if (triggerNode) triggerNode.style.boxShadow = '0 0 25px rgba(34,197,94,.4)';
+      if (actionNode) actionNode.style.boxShadow = '0 0 25px rgba(34,197,94,.4)';
+      try { LO.sfx.success(); const rect = canvasArea.getBoundingClientRect(); LO.spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2, '#22c55e', 18); } catch(e){}
+
+      document.getElementById(`dot-${currentChallenge}`).classList.remove('active');
+      document.getElementById(`dot-${currentChallenge}`).classList.add('done');
+
+      setTimeout(() => {
+        currentChallenge++;
+        if (currentChallenge < CHALLENGES.length) {
+          loadChallenge();
+        } else {
+          document.getElementById('completeCard').classList.add('show');
+          try { LO.completeLesson('automation-architect', 1, 60); } catch(e){}
+        }
+      }, 1800);
+    } else {
+      document.getElementById('feedback').innerHTML = `<span style="color:#ef4444">Not quite.</span> Try: ${c.trigger} trigger + ${c.action} action.`;
+      try { LO.sfx.error(); } catch(e){}
+      setTimeout(() => {
+        placedTrigger = null; placedAction = null;
+        if (triggerNode) triggerNode.remove();
+        if (actionNode) actionNode.remove();
+        triggerNode = null; actionNode = null;
+        document.querySelectorAll('.palette-node').forEach(n => n.classList.remove('used'));
+        fctx.clearRect(0, 0, flowCanvas.width, flowCanvas.height);
+        document.getElementById('canvasLabel').style.display = 'block';
+        document.getElementById('canvasLabel').innerHTML = 'Drop a trigger here,<br>then add an action';
+        document.getElementById('runBtn').classList.remove('running');
+        document.getElementById('feedback').textContent = '';
+      }, 2000);
+    }
+  });
+}
+
+function animatePulse(callback) {
+  if (!triggerNode || !actionNode) { callback(); return; }
+
+  const areaRect = canvasArea.getBoundingClientRect();
+  const tRect = triggerNode.getBoundingClientRect();
+  const aRect = actionNode.getBoundingClientRect();
+  const scale = 2;
+
+  const x1 = (tRect.right - areaRect.left) * scale;
+  const y1 = (tRect.top + tRect.height/2 - areaRect.top) * scale;
+  const x2 = (aRect.left - areaRect.left) * scale;
+  const y2 = (aRect.top + aRect.height/2 - areaRect.top) * scale;
+  const cpx = (x1 + x2) / 2;
+
+  let t = 0;
+  function frame() {
+    drawConnection();
+    t += 0.02;
+    if (t > 1) { callback(); return; }
+
+    const px = bezPt(x1, cpx, cpx, x2, t);
+    const py = bezPt(y1, y1, y2, y2, t);
+
+    fctx.shadowBlur = 20;
+    fctx.shadowColor = '#818cf8';
+    fctx.fillStyle = '#818cf8';
+    fctx.beginPath();
+    fctx.arc(px, py, 12, 0, Math.PI * 2);
+    fctx.fill();
+    fctx.shadowBlur = 0;
+
+    for (let i = 1; i <= 5; i++) {
+      const tt = Math.max(0, t - i * 0.03);
+      const tx = bezPt(x1, cpx, cpx, x2, tt);
+      const ty = bezPt(y1, y1, y2, y2, tt);
+      fctx.fillStyle = `rgba(129,140,248,${0.4 - i * 0.07})`;
+      fctx.beginPath();
+      fctx.arc(tx, ty, 10 - i, 0, Math.PI * 2);
+      fctx.fill();
+    }
+
+    pulseAnim = requestAnimationFrame(frame);
+  }
+  frame();
+}
+
+function bezPt(p0, p1, p2, p3, t) {
+  const mt = 1 - t;
+  return mt*mt*mt*p0 + 3*mt*mt*t*p1 + 3*mt*t*t*p2 + t*t*t*p3;
+}
+
+loadChallenge();
 </script>
 <script src="/academy/shared/engine.js"></script>
 </body>
