@@ -108,11 +108,25 @@
     .progress-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
     .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width .4s ease; }
 
+    /* ---- FOUNDING BANNER ---- */
+    .founding-banner { background: linear-gradient(135deg, rgba(192,132,252,.08), rgba(251,146,60,.08)); border: 1px solid var(--warm); border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .founding-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--warm), var(--glow), var(--accent)); }
+    .founding-badge { display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #000; background: var(--warm); padding: 4px 14px; border-radius: 4px; margin-bottom: 1rem; }
+    .founding-headline { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: .5rem; letter-spacing: -0.5px; }
+    .founding-headline .warm { color: var(--warm); }
+    .founding-sub { color: var(--text-dim); font-size: .95rem; margin-bottom: 1rem; line-height: 1.5; }
+    .founding-counter { display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .counter-bar { width: 200px; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .counter-fill { height: 100%; background: linear-gradient(90deg, var(--warm), var(--glow)); border-radius: 4px; transition: width 1s ease; }
+    .counter-text { font-size: .8rem; color: var(--text-dim); font-weight: 600; }
+    .counter-text strong { color: var(--warm); }
+    .price-was { text-decoration: line-through; color: var(--text-muted); font-size: 1rem; font-weight: 400; margin-right: 4px; }
+
     /* ---- PRICING ---- */
     .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .price-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-    .price-card.featured { border: 2px solid var(--accent); background: var(--surface); }
-    .price-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--glow)); }
+    .price-card.featured { border: 2px solid var(--warm); background: var(--surface); }
+    .price-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--warm), var(--glow)); }
     .price-name { font-size: 1.15rem; font-weight: 700; margin-bottom: .5rem; }
     .price-amount { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }    .price-card.featured .price-amount { color: var(--accent); }
     .price-desc { color: var(--text-dim); font-size: .85rem; margin-bottom: 1.5rem; line-height: 1.5; }
@@ -238,6 +252,17 @@
 <!-- PRICING -->
 <section id="pricing">
   <div class="container">
+    <!-- Founding Member Banner -->
+    <div class="founding-banner" id="founding-banner">
+      <div class="founding-badge">FOUNDING MEMBER SALE</div>
+      <div class="founding-headline">First 1,000 members get <span class="warm">90% off</span> — forever.</div>
+      <div class="founding-sub">Lock in $4.90/mo or $39/yr for life. This price never goes up. When 1,000 spots fill, it's full price.</div>
+      <div class="founding-counter">
+        <div class="counter-bar"><div class="counter-fill" id="counter-fill" style="width: 0%"></div></div>
+        <div class="counter-text"><strong id="spots-remaining">...</strong> of 1,000 spots left</div>
+      </div>
+    </div>
+
     <h2 class="section-title">Convergence is not a luxury.</h2>
     <p class="section-desc">There is always a free path. Always. Premium funds the mission: supporting HIV research, trans visibility, and making AI accessible to everyone.</p>
 
@@ -256,11 +281,11 @@
         </ul>
         <a href="/academy/" class="btn-price secondary">Start Free</a>
       </div>
-      <!-- Pro Monthly -->
-      <div class="price-card featured">
-        <div class="price-name">Pro</div>
-        <div class="price-amount">$49<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/mo</span></div>
-        <div class="price-desc">Full access to everything. 10 courses, 97 interactive lessons, new content added regularly.</div>
+      <!-- Pro Monthly — Founding -->
+      <div class="price-card featured" id="pro-card">
+        <div class="price-name">Pro — Founding Member</div>
+        <div class="price-amount" id="pro-price"><span class="price-was">$49</span> $4.90<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/mo</span></div>
+        <div class="price-desc">Full access to everything. 10 courses, 97 interactive lessons, new content added regularly. <strong>90% off — locked in forever.</strong></div>
         <ul class="price-features">
           <li>All 97 interactive lessons</li>
           <li>10 courses (RAG, Agents, MCP, and more)</li>
@@ -269,22 +294,23 @@
           <li>Completion certificates</li>
           <li>New content added regularly</li>
           <li>Priority email support</li>
+          <li style="color: var(--warm); font-weight: 600;">Founding member price — forever</li>
         </ul>
-        <a href="https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a" class="btn-price primary" target="_blank">Go Pro — $49/mo</a>
+        <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" class="btn-price primary" id="pro-btn" target="_blank">Go Pro — $4.90/mo</a>
       </div>
-      <!-- Annual -->
-      <div class="price-card">
-        <div class="price-name">Annual</div>
-        <div class="price-amount">$390<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/yr</span></div>
-        <div class="price-desc">Same as Pro. Save 33%. That's $32.50/mo for the full academy.</div>
+      <!-- Annual — Founding -->
+      <div class="price-card" id="annual-card">
+        <div class="price-name">Annual — Founding Member</div>
+        <div class="price-amount" id="annual-price"><span class="price-was">$390</span> $39<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/yr</span></div>
+        <div class="price-desc">Same as Pro. That's $3.25/mo. <strong>90% off — locked in forever.</strong></div>
         <ul class="price-features">
           <li>Everything in Pro</li>
-          <li>Save 33% vs monthly</li>
-          <li>Lock in founding member price</li>
+          <li>Save even more vs monthly</li>
+          <li>Founding member price — forever</li>
           <li>12 months of new content</li>
           <li>All future content included</li>
         </ul>
-        <a href="https://buy.stripe.com/aFafZag9W7lB6mL9JM3sI0b" class="btn-price secondary" target="_blank">Go Annual — Save 33%</a>
+        <a href="https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d" class="btn-price secondary" id="annual-btn" target="_blank">Go Annual — $39/yr</a>
       </div>
       <!-- Consulting -->
       <div class="price-card">
@@ -334,7 +360,7 @@
 
     <div style="text-align:center; margin-top: 2rem; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: center;">
       <a href="/academy/" class="btn-price secondary" style="width:auto; padding: .75rem 2rem;">Browse all 10 courses free &rarr;</a>
-      <a href="https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a" class="btn-price primary" style="width:auto; padding: .75rem 2rem;" target="_blank">Go Pro — $49/mo</a>
+      <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" class="btn-price primary" style="width:auto; padding: .75rem 2rem;" target="_blank">Go Pro — $4.90/mo</a>
     </div>
   </div>
 </section>
@@ -473,8 +499,43 @@ async function checkout(productId) {
   }
 }
 
+// ---- FOUNDING MEMBER COUNTER ----
+const REGULAR_MONTHLY_LINK = 'https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a';
+const REGULAR_ANNUAL_LINK = 'https://buy.stripe.com/aFafZag9W7lB6mL9JM3sI0b';
+const FOUNDING_MONTHLY_LINK = 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c';
+const FOUNDING_ANNUAL_LINK = 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d';
+
+async function loadFoundingCount() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/founding-count`);
+    const data = await res.json();
+    const remaining = data.remaining ?? 995;
+    const pct = ((data.total ?? 5) / 1000) * 100;
+
+    document.getElementById('spots-remaining').textContent = remaining.toLocaleString();
+    document.getElementById('counter-fill').style.width = pct + '%';
+
+    if (data.sold_out) {
+      // Switch to regular pricing
+      document.getElementById('founding-banner').style.display = 'none';
+      document.getElementById('pro-card').querySelector('.price-name').textContent = 'Pro';
+      document.getElementById('pro-price').innerHTML = '$49<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/mo</span>';
+      document.getElementById('pro-btn').href = REGULAR_MONTHLY_LINK;
+      document.getElementById('pro-btn').textContent = 'Go Pro — $49/mo';
+      document.getElementById('annual-card').querySelector('.price-name').textContent = 'Annual';
+      document.getElementById('annual-price').innerHTML = '$390<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/yr</span>';
+      document.getElementById('annual-btn').href = REGULAR_ANNUAL_LINK;
+      document.getElementById('annual-btn').textContent = 'Go Annual — Save 33%';
+    }
+  } catch(e) {
+    // Fallback — show founding pricing anyway
+    document.getElementById('spots-remaining').textContent = '995';
+  }
+}
+
 // Init
 renderLevels();
+loadFoundingCount();
 </script>
 
 </body>
