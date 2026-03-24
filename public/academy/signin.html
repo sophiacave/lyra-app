@@ -41,11 +41,23 @@ h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
   
   <div id="signin-form">
     <h1>Sign in</h1>
-    <p class="sub">Enter your email and we'll send you a magic link. No password needed.</p>
+    <p class="sub">Sign in to access your courses, track progress, and unlock Pro content.</p>
+
+    <button class="btn" id="google-btn" onclick="signInWithGoogle()" style="background:#fff;color:#333;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1rem">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.462.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+      Continue with Google
+    </button>
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem">
+      <div style="flex:1;height:1px;background:#1e1e28"></div>
+      <span style="color:#555;font-size:.75rem">or use email</span>
+      <div style="flex:1;height:1px;background:#1e1e28"></div>
+    </div>
+
     <div class="error" id="error"></div>
-    <input class="input" id="email" type="email" placeholder="your@email.com" autofocus />
-    <button class="btn" id="submit-btn" onclick="signIn()">Send Magic Link</button>
-    
+    <input class="input" id="email" type="email" placeholder="your@email.com" />
+    <button class="btn" id="submit-btn" onclick="signIn()" style="background:#fb923c">Send Magic Link</button>
+
     <div class="success" id="success">
       <h3>Check your email</h3>
       <p>We sent a magic link to <strong id="sent-email"></strong>. Click it to sign in. Check spam if you don't see it.</p>
@@ -64,7 +76,7 @@ h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
   <hr class="divider">
   
   <div class="links">
-    <a href="/academy/">Academy</a> · <a href="https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a" target="_blank">Go Pro — $49/mo</a> · <a href="/">Home</a>
+    <a href="/academy/">Academy</a> · <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank">Go Pro — $4.90/mo (Founding)</a> · <a href="/">Home</a>
   </div>
 </div>
 
@@ -92,8 +104,29 @@ async function checkSession() {
     if (profile?.subscription_status === 'active') {
       document.getElementById('user-status').innerHTML = '<span class="status-active">✓ Pro Member — All courses unlocked</span>';
     } else {
-      document.getElementById('user-status').innerHTML = '<span class="status-free">Free tier — <a href="https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a" target="_blank" style="color:#fb923c">Upgrade to Pro ($49/mo)</a></span>';
+      document.getElementById('user-status').innerHTML = '<span class="status-free">Free tier — <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank" style="color:#fb923c">Upgrade to Pro ($4.90/mo — Founding Member)</a></span>';
     }
+  }
+}
+
+// Store the page user came from so we can redirect back
+const returnTo = new URLSearchParams(location.search).get('return') || '/academy/';
+
+async function signInWithGoogle() {
+  const btn = document.getElementById('google-btn');
+  btn.textContent = 'Connecting...';
+  btn.disabled = true;
+
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.origin + '/academy/signin.html?return=' + encodeURIComponent(returnTo) }
+  });
+
+  if (error) {
+    document.getElementById('error').textContent = error.message;
+    document.getElementById('error').style.display = 'block';
+    btn.innerHTML = 'Continue with Google';
+    btn.disabled = false;
   }
 }
 
@@ -104,17 +137,17 @@ async function signIn() {
     document.getElementById('error').style.display = 'block';
     return;
   }
-  
+
   const btn = document.getElementById('submit-btn');
   btn.textContent = 'Sending...';
   btn.disabled = true;
   document.getElementById('error').style.display = 'none';
-  
+
   const { error } = await supabase.auth.signInWithOtp({
     email,
-    options: { emailRedirectTo: window.location.origin + '/academy/signin.html' }
+    options: { emailRedirectTo: window.location.origin + '/academy/signin.html?return=' + encodeURIComponent(returnTo) }
   });
-  
+
   if (error) {
     document.getElementById('error').textContent = error.message;
     document.getElementById('error').style.display = 'block';
@@ -122,7 +155,7 @@ async function signIn() {
     btn.disabled = false;
     return;
   }
-  
+
   document.getElementById('sent-email').textContent = email;
   document.getElementById('success').style.display = 'block';
   btn.textContent = 'Link Sent ✓';
@@ -141,10 +174,15 @@ async function signOut() {
 // Check if returning from magic link
 checkSession();
 
-// Listen for auth state changes (magic link redirect)
+// Listen for auth state changes (magic link or OAuth redirect)
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === 'SIGNED_IN' && session) {
-    checkSession();
+    // Redirect back to the page they were trying to access
+    if (returnTo && returnTo !== '/academy/signin.html') {
+      window.location.href = returnTo;
+    } else {
+      checkSession();
+    }
   }
 });
 </script>

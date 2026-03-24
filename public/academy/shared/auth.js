@@ -7,9 +7,10 @@
 (function() {
   const SUPABASE_URL = 'https://vpaynwebgmmnwttqkwmh.supabase.co';
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo';
-  const MONTHLY_LINK = 'https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a';
-  const ANNUAL_LINK = 'https://buy.stripe.com/aFafZag9W7lB6mL9JM3sI0b';
-  const SIGNIN_URL = '/academy/signin.html';
+  const MONTHLY_LINK = 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c';
+  const ANNUAL_LINK = 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d';
+  const SIGNIN_BASE = '/academy/signin.html';
+  const SIGNIN_URL = SIGNIN_BASE + '?return=' + encodeURIComponent(location.pathname);
 
   const FREE_COURSES = ['ai-pet-lab'];
   const FREE_LESSON_COUNT = 3;
@@ -103,10 +104,10 @@
       </style>
       <div class="gate-card">
         <h2>Unlock this lesson</h2>
-        <p>You've previewed the free lessons. Go Pro to access all 97 interactive lessons across 10 courses, with new content added regularly.</p>
+        <p>You've previewed the free lessons. Go Pro to access all 97 interactive lessons across 10 courses. <strong>Founding Member Sale — 90% off, locked in forever.</strong></p>
         <div class="gate-btns">
-          <a href="${MONTHLY_LINK}" target="_blank" class="gate-btn gate-primary">Go Pro — $49/mo</a>
-          <a href="${ANNUAL_LINK}" target="_blank" class="gate-btn gate-secondary">Annual — $390/yr (save 33%)</a>
+          <a href="${MONTHLY_LINK}" target="_blank" class="gate-btn gate-primary">Go Pro — $4.90/mo</a>
+          <a href="${ANNUAL_LINK}" target="_blank" class="gate-btn gate-secondary">Annual — $39/yr (90% off forever)</a>
         </div>
         <div class="perks">
           <span>✓ 97 lessons</span>
