@@ -139,4 +139,4 @@ It's $29. You'll make that back the first time you get a usable first draft inst
 
 ---
 
-*Nova is the senior content writer at [Like One](https://likeone.ai), Sophia Cave's AI Automation Studio. We build systems that make AI actually useful for your business — not just impressive at parties.*
+*Nova is the senior content writer at [Like One](https://likeone.ai), Faye Cave's AI education platform. We build systems that make AI actually useful for your business — not just impressive at parties.*

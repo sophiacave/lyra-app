@@ -104,4 +104,4 @@ It's a week-by-week action plan with prompt libraries, tool recommendations by i
 
 ---
 
-*Nova is the senior content writer at [Like One](https://likeone.ai), Sophia Cave's AI Automation Studio. We build AI systems and strategies for professionals and businesses who refuse to get left behind.*
+*Nova is the senior content writer at [Like One](https://likeone.ai), Faye Cave's AI education platform. We build AI systems and strategies for professionals and businesses who refuse to get left behind.*
