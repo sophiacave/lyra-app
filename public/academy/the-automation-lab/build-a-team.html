@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a Team — The Automation Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ef4444,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem}.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem;border-radius:100px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2);font-size:.7rem;font-weight:600;color:#fb923c;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;margin-bottom:2.5rem;line-height:1.6}
+.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#fff}
+
+.game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.game-mission{flex:1;min-width:200px}
+.mission-label{font-size:.7rem;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.mission-text{font-size:1.1rem;font-weight:700;line-height:1.4}
+.mission-req{font-size:.8rem;color:#a1a1aa;margin-top:.5rem}
+.game-score{text-align:right}
+.score-label{font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.08em}
+.score-val{font-size:1.8rem;font-weight:800;color:#38bdf8}
+.scenario-nav{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.scen-tab{padding:.4rem 1rem;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#a1a1aa;font-family:Inter;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+.scen-tab.active{border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08);color:#ef4444}
+.scen-tab.pass{border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08);color:#22c55e}
+.scen-tab.fail{border-color:rgba(239,68,68,.3);color:#ef4444;opacity:.5}
+
+.game-area{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+.pool{padding:1.5rem;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)}
+.pool-title{font-size:.8rem;font-weight:700;color:#71717a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+.pool-agents{display:flex;flex-wrap:wrap;gap:.5rem}
+.agent-chip{padding:.5rem .75rem;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:.4rem;font-size:.8rem;user-select:none}
+.agent-chip:hover{border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.05)}
+.agent-chip.selected{border-color:#ef4444;background:rgba(239,68,68,.1);color:#ef4444}
+.agent-chip .chip-icon{font-size:1rem}
+.team{padding:1.5rem;border-radius:16px;background:rgba(239,68,68,.03);border:1px dashed rgba(239,68,68,.15);min-height:200px}
+.team-title{font-size:.8rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+.team-slots{display:flex;flex-wrap:wrap;gap:.5rem;min-height:50px}
+.team-empty{font-size:.8rem;color:#52525b;font-style:italic}
+
+.game-controls{display:flex;gap:1rem;justify-content:center;margin:1.5rem 0}
+.game-btn{padding:.7rem 2rem;border-radius:10px;font-family:Inter;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;border:none}
+.game-btn.run{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 4px 20px rgba(239,68,68,.3)}
+.game-btn.run:hover{transform:translateY(-2px)}
+.game-btn.run:disabled{opacity:.4;transform:none;cursor:not-allowed}
+.game-btn.reset{background:transparent;border:1px solid rgba(255,255,255,.1);color:#a1a1aa}
+.game-btn.reset:hover{border-color:rgba(255,255,255,.2)}
+
+.sim-output{padding:1.5rem;border-radius:14px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.05);font-family:monospace;font-size:.78rem;color:#a1a1aa;white-space:pre-wrap;max-height:200px;overflow-y:auto;display:none;margin:1rem 0}
+
+.result-card{text-align:center;padding:2rem;border-radius:16px;margin:1rem 0;display:none}
+.result-card.success{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2)}
+.result-card.failure{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2)}
+.result-icon{font-size:2.5rem;margin-bottom:.5rem}
+.result-text{font-size:1rem;font-weight:700}
+.result-detail{font-size:.85rem;color:#a1a1aa;margin-top:.5rem}
+
+.complete-section{text-align:center;margin:3rem 0 2rem;padding:2rem;border-radius:16px;background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.1)}
+.complete-btn{padding:.85rem 2.5rem;border:none;border-radius:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(239,68,68,.3)}.complete-btn:hover{transform:translateY(-2px)}.complete-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.complete-msg{margin-top:1rem;font-size:.85rem;color:#22c55e;display:none}
+.xp-toast{position:fixed;top:2rem;right:2rem;padding:1rem 1.5rem;border-radius:12px;background:#ef4444;color:#fff;font-weight:700;font-size:.9rem;transform:translateY(-100px);opacity:0;transition:all .4s ease;z-index:999;box-shadow:0 8px 32px rgba(239,68,68,.4)}.xp-toast.show{transform:translateY(0);opacity:1}
+.lesson-nav{display:flex;justify-content:space-between;align-items:center;margin:2rem 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}.lesson-nav a{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#a1a1aa;transition:color .2s}.lesson-nav a:hover{color:#ef4444}
+@media(max-width:640px){h1{font-size:1.8rem}.game-area{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+
+<div class="container">
+  <div class="lesson-badge">Module 2 &bull; Lesson 7</div>
+  <h1>Build a Team</h1>
+  <p class="subtitle">Given a business goal, assemble the right team of agents. Choose wisely — wrong teams fail. Three scenarios of increasing difficulty.</p>
+
+  <div class="scenario-nav" id="scen-nav"></div>
+
+  <div class="game-header">
+    <div class="game-mission"><div class="mission-label" id="mission-label">Mission 1 of 3</div><div class="mission-text" id="mission-text"></div><div class="mission-req" id="mission-req"></div></div>
+    <div class="game-score"><div class="score-label">Score</div><div class="score-val" id="score">0</div></div>
+  </div>
+
+  <div class="game-area">
+    <div class="pool"><div class="pool-title">&#129302; Agent Pool</div><div class="pool-agents" id="agent-pool"></div></div>
+    <div class="team"><div class="team-title">&#128101; Your Team</div><div class="team-slots" id="team-slots"><span class="team-empty">Click agents to add them...</span></div></div>
+  </div>
+
+  <div class="game-controls">
+    <button class="game-btn run" id="run-btn" onclick="runSim()" disabled>&#9889; Run Simulation</button>
+    <button class="game-btn reset" onclick="resetTeam()">&#8634; Reset Team</button>
+  </div>
+
+  <div class="sim-output" id="sim-output"></div>
+  <div class="result-card" id="result-card"><div class="result-icon" id="result-icon"></div><div class="result-text" id="result-text"></div><div class="result-detail" id="result-detail"></div></div>
+
+  <div class="complete-section">
+    <button class="complete-btn" id="complete-btn" onclick="completeLsn()" disabled>Complete Lesson &mdash; 350 XP</button>
+    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +350 XP earned</div>
+  </div>
+  <div class="lesson-nav">
+    <a href="conflict-resolution.html">&larr; Conflict Resolution</a>
+    <a href="cron-and-scheduling.html">Next: Cron &amp; Scheduling &rarr;</a>
+  </div>
+</div>
+<div class="xp-toast" id="xp-toast">+350 XP earned! &#9889;</div>
+
+<script>
+const AGENTS=[
+  {id:'writer',icon:'&#9997;&#65039;',name:'Content Writer',desc:'Generates blog posts, emails, social copy'},
+  {id:'editor',icon:'&#128221;',name:'Editor',desc:'Reviews, fact-checks, improves content'},
+  {id:'publisher',icon:'&#128640;',name:'Publisher',desc:'Deploys content to websites and platforms'},
+  {id:'analyst',icon:'&#128202;',name:'Data Analyst',desc:'Analyzes metrics, generates reports'},
+  {id:'monitor',icon:'&#128065;&#65039;',name:'Monitor',desc:'Watches systems for errors and anomalies'},
+  {id:'scheduler',icon:'&#9200;',name:'Scheduler',desc:'Manages timing, cron jobs, queues'},
+  {id:'notifier',icon:'&#128276;',name:'Notifier',desc:'Sends alerts via email, Slack, SMS'},
+  {id:'guard',icon:'&#128737;&#65039;',name:'Guardian',desc:'Enforces rules, checks compliance, validates'}
+];
+
+const SCENARIOS=[
+  {
+    title:'Automate a Content Pipeline',
+    req:'Required: content creation, quality control, and publishing. Team size: 3-4 agents.',
+    required:['writer','editor','publisher'],
+    optional:['scheduler'],
+    maxSize:4,
+    successLog:`[00:00] Writer: Generating "5 AI Trends for 2026"...
+[00:03] Writer: Draft complete (1,400 words)
+[00:04] Editor: Reviewing for accuracy...
+[00:07] Editor: 3 corrections made, approved ✓
+[00:08] Publisher: Deploying to /blog/5-ai-trends-2026
+[00:10] Publisher: Live! ✓
+[RESULT] Pipeline complete. Content published successfully.`,
+    failReasons:{writer:'No content creator — who writes the posts?',editor:'No quality control — errors will reach production.',publisher:'No publisher — content sits in drafts forever.'}
+  },
+  {
+    title:'Build a Self-Healing Server Monitor',
+    req:'Required: monitoring, alerting, and safety checks. Team size: 3-4 agents.',
+    required:['monitor','notifier','guard'],
+    optional:['analyst'],
+    maxSize:4,
+    successLog:`[00:00] Monitor: Scanning 12 endpoints...
+[00:02] Monitor: ⚠ API latency spike detected (2.3s)
+[00:03] Guardian: Checking safety rules... restart allowed ✓
+[00:04] Monitor: Restarting api-server-03...
+[00:06] Monitor: Server healthy (latency: 45ms) ✓
+[00:07] Notifier: Alert sent to #ops-channel
+[RESULT] Issue detected, validated, fixed, and reported.`,
+    failReasons:{monitor:'No monitor — nobody watching the servers.',notifier:'No alerting — fixes happen silently, team unaware.',guard:'No safety checks — agents could restart production recklessly.'}
+  },
+  {
+    title:'Launch an Autonomous Analytics Pipeline',
+    req:'Required: data analysis, reporting, scheduling, monitoring, and compliance. Team size: 4-5 agents.',
+    required:['analyst','scheduler','monitor','guard'],
+    optional:['notifier'],
+    maxSize:5,
+    successLog:`[00:00] Scheduler: Triggering daily analytics run...
+[00:01] Analyst: Querying revenue data...
+[00:04] Analyst: Report generated — MRR: $12,400 (+8%)
+[00:05] Guardian: Checking PII compliance... clean ✓
+[00:06] Monitor: Pipeline health: all green
+[00:07] Analyst: Dashboard updated
+[RESULT] Autonomous analytics running on schedule, compliant, monitored.`,
+    failReasons:{analyst:'No analyst — who processes the data?',scheduler:'No scheduler — pipeline only runs when triggered manually.',monitor:'No monitoring — if the pipeline breaks, nobody knows.',guard:'No compliance checks — risk of exposing sensitive data.'}
+  }
+];
+
+let currentScen=0,team=[],score=0,scenResults=[];
+function init(){
+  const nav=document.getElementById('scen-nav');
+  nav.innerHTML=SCENARIOS.map((s,i)=>`<button class="scen-tab${i===0?' active':''}" onclick="switchScen(${i})">${i+1}. ${s.title.split(' ').slice(0,2).join(' ')}</button>`).join('');
+  renderScen();
+}
+
+function switchScen(i){
+  currentScen=i;team=[];
+  document.querySelectorAll('.scen-tab').forEach((t,idx)=>{t.classList.toggle('active',idx===i);});
+  renderScen();
+}
+
+function renderScen(){
+  const s=SCENARIOS[currentScen];
+  document.getElementById('mission-label').textContent=`Mission ${currentScen+1} of 3`;
+  document.getElementById('mission-text').textContent=s.title;
+  document.getElementById('mission-req').textContent=s.req;
+  document.getElementById('score').textContent=score;
+  const pool=document.getElementById('agent-pool');
+  pool.innerHTML=AGENTS.map(a=>`<div class="agent-chip${team.includes(a.id)?' selected':''}" onclick="toggleAgent('${a.id}')" title="${a.desc}"><span class="chip-icon">${a.icon}</span>${a.name}</div>`).join('');
+  const slots=document.getElementById('team-slots');
+  if(team.length===0)slots.innerHTML='<span class="team-empty">Click agents to add them...</span>';
+  else slots.innerHTML=team.map(id=>{const a=AGENTS.find(x=>x.id===id);return`<div class="agent-chip selected" onclick="toggleAgent('${id}')"><span class="chip-icon">${a.icon}</span>${a.name}</div>`;}).join('');
+  document.getElementById('run-btn').disabled=team.length<2;
+  document.getElementById('sim-output').style.display='none';
+  document.getElementById('result-card').style.display='none';
+}
+
+function toggleAgent(id){
+  const s=SCENARIOS[currentScen];
+  if(team.includes(id)){team=team.filter(x=>x!==id);}
+  else if(team.length<s.maxSize){team.push(id);}
+  renderScen();
+}
+
+function resetTeam(){team=[];renderScen();}
+
+function runSim(){
+  const s=SCENARIOS[currentScen];
+  const out=document.getElementById('sim-output');
+  const res=document.getElementById('result-card');
+  out.style.display='block';res.style.display='none';
+  const missing=s.required.filter(r=>!team.includes(r));
+  if(missing.length>0){
+    const reason=s.failReasons[missing[0]];
+    out.textContent=`[00:00] Initializing team: ${team.map(id=>AGENTS.find(a=>a.id===id).name).join(', ')}
+[00:01] Checking requirements...
+[00:02] CRITICAL: Missing ${AGENTS.find(a=>a.id===missing[0]).name}
+[00:03] ${reason}
+[FAIL] Simulation failed. Reassemble your team.`;
+    res.style.display='block';res.className='result-card failure';
+    document.getElementById('result-icon').textContent='&#10060;';
+    document.getElementById('result-text').textContent='Mission Failed';
+    document.getElementById('result-detail').textContent=reason;
+    document.querySelectorAll('.scen-tab')[currentScen].classList.add('fail');
+  } else {
+    out.textContent=s.successLog;
+    res.style.display='block';res.className='result-card success';
+    document.getElementById('result-icon').textContent='&#9989;';
+    document.getElementById('result-text').textContent='Mission Complete!';
+    const bonus=team.some(id=>s.optional.includes(id))?'+50 bonus for optimal team':'';
+    document.getElementById('result-detail').textContent=`Team performed perfectly. ${bonus}`;
+    score+=100+(bonus?50:0);
+    document.getElementById('score').textContent=score;
+    scenResults[currentScen]=true;
+    document.querySelectorAll('.scen-tab')[currentScen].classList.remove('fail');
+    document.querySelectorAll('.scen-tab')[currentScen].classList.add('pass');
+    if(scenResults.filter(Boolean).length>=2)document.getElementById('complete-btn').disabled=false;
+  }
+}
+
+init();
+
+function completeLsn(){
+  if(localStorage.getItem('autolab-7')==='complete')return;
+  localStorage.setItem('autolab-7','complete');
+  document.getElementById('complete-btn').disabled=true;
+  document.getElementById('complete-msg').style.display='block';
+  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+}
+if(localStorage.getItem('autolab-7')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
+</script>
+</body>
+</html>

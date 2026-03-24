@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auth & Tokens — AI Stack Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;line-height:1.6}
+a{color:#f59e0b;text-decoration:none}a:hover{color:#fbbf24}
+.container{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #1e1e2e}
+.nav a{font-size:.85rem;color:#888}.nav a:hover{color:#f59e0b}.nav .current{color:#e5e5e5;font-weight:600}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:#f59e0b;background:#f59e0b15;padding:.3rem .75rem;border-radius:99px;margin-bottom:1rem}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+.intro{color:#999;margin-bottom:2rem;font-size:1.05rem}
+h2{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;color:#f59e0b}
+h3{font-size:1.1rem;font-weight:600;margin:1.5rem 0 .75rem}
+p{margin-bottom:1rem;color:#ccc}
+.panel{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.panel .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#f59e0b;margin-bottom:.75rem;font-weight:600}
+.code-block{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto;margin:.75rem 0}
+.kw{color:#c084fc}.str{color:#34d399}.cm{color:#555}.fn{color:#60a5fa}.op{color:#f59e0b}.num{color:#fb923c}
+
+/* JWT Anatomy */
+.jwt-display{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:'JetBrains Mono',monospace;font-size:.85rem;word-break:break-all;line-height:1.8}
+.jwt-header{color:#ef4444;cursor:pointer;transition:opacity .2s;border-bottom:2px solid #ef4444}
+.jwt-payload{color:#c084fc;cursor:pointer;transition:opacity .2s;border-bottom:2px solid #c084fc}
+.jwt-signature{color:#22c55e;cursor:pointer;transition:opacity .2s;border-bottom:2px solid #22c55e}
+.jwt-dot{color:#666}
+.jwt-decode-panel{display:none;background:#111118;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;margin:.75rem 0;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.jwt-decode-panel.active{display:block}
+.jwt-decode-panel.header-panel{border-left:3px solid #ef4444}
+.jwt-decode-panel.payload-panel{border-left:3px solid #c084fc}
+.jwt-decode-panel.sig-panel{border-left:3px solid #22c55e}
+.jwt-decode-panel h4{font-size:.85rem;margin-bottom:.5rem}
+.jwt-decode-panel h4.hdr-color{color:#ef4444}
+.jwt-decode-panel h4.pay-color{color:#c084fc}
+.jwt-decode-panel h4.sig-color{color:#22c55e}
+
+/* Decoder */
+.decoder{margin:1.5rem 0}
+.decoder textarea{width:100%;background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;color:#e5e5e5;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.5;resize:vertical;min-height:80px}
+.decoder textarea:focus{outline:none;border-color:#f59e0b44}
+.decode-btn{display:inline-flex;align-items:center;gap:.5rem;background:#f59e0b22;border:1px solid #f59e0b44;color:#f59e0b;padding:.5rem 1.25rem;border-radius:99px;font-weight:600;cursor:pointer;font-size:.85rem;font-family:'Inter',sans-serif;margin:.5rem 0;transition:all .2s}
+.decode-btn:hover{background:#f59e0b33}
+.decode-output{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;margin:.75rem 0;display:none}
+
+/* Auth Flow Steps */
+.auth-flow{display:flex;flex-direction:column;gap:.5rem;margin:1.5rem 0}
+.auth-step{display:flex;align-items:center;gap:1rem;padding:1rem;background:#111118;border:1px solid #1e1e2e;border-radius:10px;transition:all .4s;opacity:.4;cursor:pointer}
+.auth-step.active{opacity:1;border-color:#f59e0b33}
+.auth-step .step-icon{font-size:1.5rem;flex-shrink:0}
+.auth-step .step-info h4{font-size:.9rem;font-weight:600;margin-bottom:.2rem}
+.auth-step .step-info p{font-size:.8rem;color:#888;margin:0}
+.auth-arrow{text-align:center;color:#333;font-size:1rem}
+.auth-arrow.active{color:#f59e0b}
+
+.progress-section{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin:2rem 0}
+.progress-bar{height:6px;background:#1e1e2e;border-radius:99px;overflow:hidden;margin-top:.5rem}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:99px;transition:width .5s}
+.complete-btn{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0a0f;font-weight:700;padding:1rem;border-radius:12px;border:none;cursor:pointer;font-size:1rem;margin:2rem 0;font-family:'Inter',sans-serif;transition:all .3s}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer{text-align:center;padding:2rem 0;color:#444;font-size:.8rem;border-top:1px solid #1e1e2e;margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="webhooks-deep-dive.html">&larr; Prev</a>
+<span class="current">Lesson 6 of 10</span>
+<a href="database-patterns.html">Next &rarr;</a>
+</div>
+
+<div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
+<h1>Auth & Tokens</h1>
+<p class="intro">Authentication is how your app knows who's talking to it. JWTs (JSON Web Tokens) are the standard. Let's crack one open.</p>
+
+<h2>JWT Anatomy</h2>
+<p>A JWT has three parts, separated by dots. Click each part to decode it.</p>
+
+<div class="jwt-display">
+<span class="jwt-header" onclick="showPanel('header')">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="jwt-dot">.</span><span class="jwt-payload" onclick="showPanel('payload')">eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0</span><span class="jwt-dot">.</span><span class="jwt-signature" onclick="showPanel('sig')">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+</div>
+
+<div class="jwt-decode-panel header-panel" id="panel-header">
+<h4 class="hdr-color">Header (Algorithm + Type)</h4>
+<div class="code-block" style="margin:0">{<br>&nbsp;&nbsp;<span class="str">"alg"</span>: <span class="str">"HS256"</span>, <span class="cm">// signing algorithm</span><br>&nbsp;&nbsp;<span class="str">"typ"</span>: <span class="str">"JWT"</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// token type</span><br>}</div>
+</div>
+
+<div class="jwt-decode-panel payload-panel" id="panel-payload">
+<h4 class="pay-color">Payload (Claims — Your Data)</h4>
+<div class="code-block" style="margin:0">{<br>&nbsp;&nbsp;<span class="str">"sub"</span>: <span class="str">"1234567890"</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// subject (user ID)</span><br>&nbsp;&nbsp;<span class="str">"email"</span>: <span class="str">"builder@example.com"</span>, <span class="cm">// custom claim</span><br>&nbsp;&nbsp;<span class="str">"role"</span>: <span class="str">"authenticated"</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Supabase role</span><br>&nbsp;&nbsp;<span class="str">"iat"</span>: <span class="num">1711152000</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// issued at</span><br>&nbsp;&nbsp;<span class="str">"exp"</span>: <span class="num">1711155600</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// expires (1 hour)</span><br>}</div>
+</div>
+
+<div class="jwt-decode-panel sig-panel" id="panel-sig">
+<h4 class="sig-color">Signature (Verification)</h4>
+<div class="code-block" style="margin:0"><span class="fn">HMACSHA256</span>(<br>&nbsp;&nbsp;<span class="fn">base64UrlEncode</span>(header) + <span class="str">"."</span> +<br>&nbsp;&nbsp;<span class="fn">base64UrlEncode</span>(payload),<br>&nbsp;&nbsp;secret <span class="cm">// your JWT secret</span><br>)</div>
+<p style="font-size:.85rem;color:#888;margin:.5rem 0 0">The server uses this to verify the token wasn't tampered with. If anyone changes the payload, the signature won't match.</p>
+</div>
+
+<h2>Live JWT Decoder</h2>
+<p>Paste any JWT below to decode it instantly. Try it with tokens from your Supabase project.</p>
+
+<div class="decoder">
+<textarea id="jwtInput" placeholder="Paste a JWT here... (e.g. eyJhbGciOiJIUzI1NiIs...)">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</textarea>
+<button class="decode-btn" onclick="decodeJWT()">&#x1f50d; Decode</button>
+<div class="decode-output" id="decodeOutput"></div>
+</div>
+
+<h2>Auth Flow: Step by Step</h2>
+<p>Click each step to walk through how Supabase authentication works.</p>
+
+<div class="auth-flow" id="authFlow">
+<div class="auth-step" onclick="activateStep(0)">
+<span class="step-icon">&#x1f464;</span>
+<div class="step-info"><h4>1. User Signs Up</h4><p>Email + password sent to Supabase Auth</p></div>
+</div>
+<div class="auth-arrow" id="arrow0">&#x2193;</div>
+<div class="auth-step" onclick="activateStep(1)">
+<span class="step-icon">&#x1f4e7;</span>
+<div class="step-info"><h4>2. Confirmation Email</h4><p>Supabase sends magic link or OTP to verify</p></div>
+</div>
+<div class="auth-arrow" id="arrow1">&#x2193;</div>
+<div class="auth-step" onclick="activateStep(2)">
+<span class="step-icon">&#x1f511;</span>
+<div class="step-info"><h4>3. JWT Issued</h4><p>Access token (1hr) + refresh token returned</p></div>
+</div>
+<div class="auth-arrow" id="arrow2">&#x2193;</div>
+<div class="auth-step" onclick="activateStep(3)">
+<span class="step-icon">&#x1f4e8;</span>
+<div class="step-info"><h4>4. Authenticated Requests</h4><p>JWT sent in Authorization: Bearer header</p></div>
+</div>
+<div class="auth-arrow" id="arrow3">&#x2193;</div>
+<div class="auth-step" onclick="activateStep(4)">
+<span class="step-icon">&#x1f6e1;</span>
+<div class="step-info"><h4>5. RLS Enforced</h4><p>Postgres checks JWT claims against row policies</p></div>
+</div>
+</div>
+
+<div class="panel" id="stepDetail" style="display:none">
+<div class="label" id="stepLabel"></div>
+<div class="code-block" id="stepCode"></div>
+</div>
+
+<div class="panel">
+<div class="label">Key Concept: Supabase Auth in Code</div>
+<div class="code-block">
+<span class="cm">// Frontend: Sign up</span><br>
+<span class="kw">const</span> { data, error } = <span class="kw">await</span> supabase.auth.<span class="fn">signUp</span>({<br>
+&nbsp;&nbsp;email: <span class="str">'builder@example.com'</span>,<br>
+&nbsp;&nbsp;password: <span class="str">'secure-password-123'</span><br>
+})<br><br>
+<span class="cm">// Frontend: Get current session</span><br>
+<span class="kw">const</span> { data: { session } } = <span class="kw">await</span> supabase.auth.<span class="fn">getSession</span>()<br>
+console.<span class="fn">log</span>(session.access_token) <span class="cm">// This is the JWT!</span><br><br>
+<span class="cm">// Edge function: Verify the JWT</span><br>
+<span class="kw">const</span> authHeader = req.headers.get(<span class="str">'Authorization'</span>)<br>
+<span class="kw">const</span> token = authHeader.replace(<span class="str">'Bearer '</span>, <span class="str">''</span>)<br>
+<span class="kw">const</span> { data: { user } } = <span class="kw">await</span> supabase.auth.<span class="fn">getUser</span>(token)
+</div>
+</div>
+
+<div class="progress-section">
+<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
+<span>Lesson Progress</span><span id="lessonPct">0%</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+</div>
+<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
+<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
+<a href="webhooks-deep-dive.html">&larr; Webhooks Deep Dive</a>
+<a href="database-patterns.html">Next: Database Patterns &rarr;</a>
+</div>
+<div class="footer">Like One Academy &copy; 2026</div>
+</div>
+
+<script>
+let actions=0;
+function updateProg(){actions++;const p=Math.min(100,actions*18);document.getElementById('lessonProgress').style.width=p+'%';document.getElementById('lessonPct').textContent=p+'%'}
+
+function showPanel(which){
+['header','payload','sig'].forEach(p=>{document.getElementById('panel-'+p).classList.remove('active')});
+document.getElementById('panel-'+which).classList.add('active');updateProg()}
+
+function decodeJWT(){
+const token=document.getElementById('jwtInput').value.trim();
+const parts=token.split('.');
+if(parts.length!==3){document.getElementById('decodeOutput').style.display='block';document.getElementById('decodeOutput').innerHTML='<span style="color:#ef4444">Invalid JWT — must have 3 parts separated by dots.</span>';return}
+try{
+const header=JSON.parse(atob(parts[0].replace(/-/g,'+').replace(/_/g,'/')));
+const payload=JSON.parse(atob(parts[1].replace(/-/g,'+').replace(/_/g,'/')));
+const out=document.getElementById('decodeOutput');out.style.display='block';
+let html='<div style="margin-bottom:.75rem"><span style="color:#ef4444;font-weight:600">HEADER:</span></div>';
+html+='<div style="margin-bottom:.75rem">'+syntaxHighlight(JSON.stringify(header,null,2))+'</div>';
+html+='<div style="margin-bottom:.75rem"><span style="color:#c084fc;font-weight:600">PAYLOAD:</span></div>';
+html+='<div style="margin-bottom:.75rem">'+syntaxHighlight(JSON.stringify(payload,null,2))+'</div>';
+if(payload.exp){const exp=new Date(payload.exp*1000);const now=new Date();html+='<div style="margin-top:.5rem;color:'+(exp<now?'#ef4444':'#22c55e')+'">Token '+(exp<now?'EXPIRED':'valid')+' — expires: '+exp.toISOString()+'</div>'}
+out.innerHTML=html;updateProg()}catch(e){document.getElementById('decodeOutput').style.display='block';document.getElementById('decodeOutput').innerHTML='<span style="color:#ef4444">Failed to decode: '+e.message+'</span>'}}
+
+function syntaxHighlight(json){return json.replace(/(".*?")\s*:/g,'<span style="color:#60a5fa">$1</span>:').replace(/:\s*(".*?")/g,': <span style="color:#34d399">$1</span>').replace(/:\s*(\d+)/g,': <span style="color:#fb923c">$1</span>')}
+
+const stepDetails=[
+{label:'Sign Up Code',code:'<span class="kw">const</span> { data, error } = <span class="kw">await</span> supabase.auth.<span class="fn">signUp</span>({<br>&nbsp;&nbsp;email: <span class="str">\'user@email.com\'</span>,<br>&nbsp;&nbsp;password: <span class="str">\'password123\'</span><br>})<br><span class="cm">// data.user is created, but not confirmed yet</span>'},
+{label:'Confirmation',code:'<span class="cm">// User clicks email link, hits:</span><br>https://yourproject.supabase.co/auth/v1/verify?<br>&nbsp;&nbsp;token=<span class="str">abc123</span>&type=<span class="str">signup</span>&redirect_to=<span class="str">https://yoursite.com</span>'},
+{label:'Token Response',code:'<span class="cm">// After verification, Supabase returns:</span><br>{<br>&nbsp;&nbsp;<span class="str">"access_token"</span>: <span class="str">"eyJhbG..."</span>,  <span class="cm">// JWT, 1 hour</span><br>&nbsp;&nbsp;<span class="str">"refresh_token"</span>: <span class="str">"v1.abc..."</span>, <span class="cm">// long-lived</span><br>&nbsp;&nbsp;<span class="str">"expires_in"</span>: <span class="num">3600</span>,<br>&nbsp;&nbsp;<span class="str">"token_type"</span>: <span class="str">"bearer"</span><br>}'},
+{label:'Authenticated Request',code:'<span class="cm">// Every API call includes the token:</span><br><span class="fn">fetch</span>(<span class="str">\'https://proj.supabase.co/rest/v1/brain_context\'</span>, {<br>&nbsp;&nbsp;headers: {<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">\'Authorization\'</span>: <span class="str">`Bearer ${session.access_token}`</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">\'apikey\'</span>: <span class="str">SUPABASE_ANON_KEY</span><br>&nbsp;&nbsp;}<br>})'},
+{label:'Row Level Security',code:'<span class="cm">-- Postgres checks JWT claims in the policy:</span><br><span class="kw">CREATE POLICY</span> <span class="str">"users see own data"</span> <span class="kw">ON</span> brain_context<br>&nbsp;&nbsp;<span class="kw">FOR SELECT USING</span> (<br>&nbsp;&nbsp;&nbsp;&nbsp;auth.uid() = user_id <span class="cm">-- auth.uid() extracts sub from JWT</span><br>&nbsp;&nbsp;);'}
+];
+
+function activateStep(idx){
+document.querySelectorAll('.auth-step').forEach((s,i)=>{s.classList.toggle('active',i<=idx)});
+document.querySelectorAll('.auth-arrow').forEach((a,i)=>{a.classList.toggle('active',i<idx)});
+const detail=document.getElementById('stepDetail');detail.style.display='block';
+document.getElementById('stepLabel').textContent=stepDetails[idx].label;
+document.getElementById('stepCode').innerHTML=stepDetails[idx].code;
+updateProg()}
+
+function completeLesson(){localStorage.setItem('aisb_lesson_6','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
+if(localStorage.getItem('aisb_lesson_6')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
+</script>
+</body>
+</html>
