@@ -88,15 +88,15 @@
 </nav>
 
 <header class="hero">
-  <div class="hero-badge">6 Interactive Courses</div>
+  <div class="hero-badge">10 Interactive Courses &bull; 108 Lessons</div>
   <h1>From zero to <span>cyborg.</span></h1>
   <p>Interactive courses with animations, games, quizzes, and real code. Built by Faye Cave from her production AI brain. Not theory — systems you can deploy.</p>
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Courses</div></div>
-  <div class="stat"><div class="stat-num">64</div><div class="stat-label">Lessons</div></div>
-  <div class="stat"><div class="stat-num">56</div><div class="stat-label">Hours</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">Courses</div></div>
+  <div class="stat"><div class="stat-num">108</div><div class="stat-label">Lessons</div></div>
+  <div class="stat"><div class="stat-num">90+</div><div class="stat-label">Hours</div></div>
   <div class="stat"><div class="stat-num" id="global-xp">0</div><div class="stat-label">Your XP</div></div>
   <div class="stat"><div class="stat-num" id="badge-count">0</div><div class="stat-label">Badges</div></div>
   <div class="stat"><div class="stat-num" id="streak-count">0</div><div class="stat-label">Day Streak</div></div>
@@ -203,6 +203,54 @@ const COURSES = [
       { name: "Autonomous Operations", lessons: 3 }
     ],
     badges: [{ text: "$149", class: "badge-price" }, { text: "ADVANCED", class: "badge-advanced" }],
+    btnText: "Start Course — $149", btnClass: "btn-buy"
+  },
+  {
+    slug: "rag-vector-search", emoji: "🔍", title: "RAG & Vector Search", subtitle: "Build AI that knows YOUR data",
+    desc: "The hottest topic in AI right now. Learn embeddings, vector databases, chunking strategies, and build production RAG pipelines.",
+    hours: 10, xp: 2000, lessons: 10, price: 99, accent: "#10b981",
+    modules: [
+      { name: "Embeddings & Vectors", lessons: 3 },
+      { name: "Building RAG", lessons: 3 },
+      { name: "Production RAG", lessons: 4 }
+    ],
+    badges: [{ text: "$99", class: "badge-price" }, { text: "HOT", class: "badge-new" }],
+    btnText: "Start Course — $99", btnClass: "btn-buy"
+  },
+  {
+    slug: "ai-for-business", emoji: "💼", title: "AI for Business Owners", subtitle: "Stop paying consultants. Understand AI yourself.",
+    desc: "No code. No jargon. Pure ROI. Learn what AI can actually do for your business, find your opportunities, and implement in one week.",
+    hours: 6, xp: 1200, lessons: 10, price: 79, accent: "#f59e0b",
+    modules: [
+      { name: "AI Literacy", lessons: 3 },
+      { name: "AI Strategy", lessons: 3 },
+      { name: "Implementation", lessons: 4 }
+    ],
+    badges: [{ text: "$79", class: "badge-price" }, { text: "NO CODE", class: "badge-new" }],
+    btnText: "Start Course — $79", btnClass: "btn-buy"
+  },
+  {
+    slug: "first-ai-agent", emoji: "🤖", title: "Build Your First AI Agent", subtitle: "From chatbot to autonomous system",
+    desc: "The beginner-friendly path to building real AI agents. Understand the agent loop, add tools, wire memory, and deploy.",
+    hours: 8, xp: 1600, lessons: 10, price: 69, accent: "#06b6d4",
+    modules: [
+      { name: "Agent Thinking", lessons: 3 },
+      { name: "Build It", lessons: 4 },
+      { name: "Deploy & Improve", lessons: 3 }
+    ],
+    badges: [{ text: "$69", class: "badge-price" }],
+    btnText: "Start Course — $69", btnClass: "btn-buy"
+  },
+  {
+    slug: "mcp-masterclass", emoji: "🔌", title: "MCP Masterclass", subtitle: "The protocol that connects AI to everything",
+    desc: "The FIRST course on MCP anywhere. Learn the Model Context Protocol — how AI models connect to tools, databases, and APIs. 97M SDK downloads, zero courses. Until now.",
+    hours: 10, xp: 2200, lessons: 10, price: 149, accent: "#8b5cf6",
+    modules: [
+      { name: "Understanding MCP", lessons: 3 },
+      { name: "Building Servers", lessons: 3 },
+      { name: "Production MCP", lessons: 4 }
+    ],
+    badges: [{ text: "$149", class: "badge-price" }, { text: "FIRST EVER", class: "badge-advanced" }],
     btnText: "Start Course — $149", btnClass: "btn-buy"
   }
 ];
