@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error Handling — Build Your First AI Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#06b6d4,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.content{max-width:800px;margin:0 auto;padding:2rem}
+h1{font-size:2.2rem;font-weight:900;margin-bottom:.5rem;background:linear-gradient(135deg,#fff,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;margin-bottom:2rem;font-size:1rem}
+.lesson-num{font-size:.75rem;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+
+.progress-bar{width:100%;height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin:1.5rem 0;overflow:hidden}
+.progress-fill{height:100%;background:#06b6d4;border-radius:3px;transition:width .4s}
+
+.scenario{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;transition:all .3s}
+.scenario.resolved{border-color:rgba(6,182,212,.2);background:rgba(6,182,212,.02)}
+.scenario-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.error-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.error-icon.tool{background:rgba(239,68,68,.12)}
+.error-icon.data{background:rgba(251,146,60,.12)}
+.error-icon.conflict{background:rgba(168,85,247,.12)}
+.error-icon.user{background:rgba(56,189,248,.12)}
+.error-icon.loop{background:rgba(236,72,153,.12)}
+.scenario-title{font-size:1rem;font-weight:700}
+.scenario-desc{font-size:.85rem;color:#a1a1aa;line-height:1.5;margin-bottom:1rem}
+
+.terminal{background:rgba(0,0,0,.3);border-radius:10px;padding:1rem;margin-bottom:1rem;font-family:monospace;font-size:.8rem;line-height:1.5}
+.t-line{margin-bottom:.25rem}
+.t-error{color:#ef4444}
+.t-info{color:#71717a}
+.t-agent{color:#06b6d4}
+
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option{padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .2s;font-size:.85rem;line-height:1.4}
+.option:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.option.correct{background:rgba(6,182,212,.1);border-color:#06b6d4;color:#06b6d4;cursor:default}
+.option.wrong{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3);color:#ef4444;cursor:default;opacity:.6}
+.option:disabled,.option.correct,.option.wrong{pointer-events:none}
+.option-label{font-weight:600;margin-bottom:.15rem}
+.option-why{font-size:.75rem;color:#71717a;display:none;margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.option.correct .option-why,.option.wrong .option-why{display:block}
+
+.complete-section{text-align:center;padding:2rem;display:none}
+.complete-section h2{color:#06b6d4;font-size:1.5rem;margin-bottom:.5rem}
+.complete-section p{color:#a1a1aa}
+.next-btn{display:inline-block;margin-top:1rem;padding:.75rem 2rem;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;font-weight:700;font-size:.95rem;border:none;cursor:pointer;transition:transform .2s}
+.next-btn:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
+  <a href="/academy/first-ai-agent/" class="nav-link">← Course</a>
+</nav>
+
+<div class="content">
+  <div class="lesson-num">Lesson 8 of 10</div>
+  <h1>Error Handling</h1>
+  <p class="subtitle">Agents fail. Good agents fail gracefully. For each scenario, pick the best recovery strategy.</p>
+
+  <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0"></div></div>
+
+  <div id="scenarios"></div>
+
+  <div class="complete-section" id="complete">
+    <h2>Lesson Complete!</h2>
+    <p>You now know the 5 most common agent failure modes and how to handle each one. Resilient agents are deployable agents.</p>
+    <a href="evaluating-your-agent.html" class="next-btn">Next: Evaluating Your Agent →</a>
+  </div>
+</div>
+
+<script>
+const scenarios = [
+  {
+    icon: 'tool', emoji: '🔧', title: 'Tool Failure',
+    desc: 'Your agent tries to call the weather API, but the service is down. The agent needs weather data to complete the user\'s request.',
+    terminal: [
+      { cls: 't-agent', text: '> agent: Calling weather_api.get("Tokyo")...' },
+      { cls: 't-error', text: '✗ ERROR 503: Service Unavailable' },
+      { cls: 't-error', text: '✗ Connection refused after 3 retries' },
+      { cls: 't-info', text: '  What should the agent do now?' }
+    ],
+    options: [
+      { text: 'Tell the user "I can\'t help with that" and stop', correct: false, why: 'Giving up immediately is the worst option. The user asked for weather — there might be other ways to get it.' },
+      { text: 'Retry the same API call 100 times until it works', correct: false, why: 'Hammering a failing service wastes time and could get your API key rate-limited. Retries should have a cap.' },
+      { text: 'Try an alternative tool (web search for weather), explain the fallback to the user', correct: true, why: 'This is graceful degradation. The agent adapts to failure by trying alternative paths while keeping the user informed. If the backup also fails, THEN escalate.' }
+    ]
+  },
+  {
+    icon: 'data', emoji: '📊', title: 'Bad Data',
+    desc: 'The agent queries the database for user spending data, but gets results that are clearly wrong — negative spending amounts and dates from the future.',
+    terminal: [
+      { cls: 't-agent', text: '> agent: Querying expenses for Q4...' },
+      { cls: 't-info', text: '  Result: { total: -$45,000, date: "2027-13-45" }' },
+      { cls: 't-error', text: '✗ Data validation failed: negative amount, invalid date' },
+      { cls: 't-info', text: '  What should the agent do now?' }
+    ],
+    options: [
+      { text: 'Use the data anyway — the database is the source of truth', correct: false, why: 'Garbage in, garbage out. Presenting clearly invalid data to the user destroys trust. The agent should never treat bad data as trustworthy.' },
+      { text: 'Flag the anomaly, refuse to present invalid data, and suggest the user check the data source', correct: true, why: 'The agent validates data before using it. When validation fails, it\'s honest about the problem and points toward the root cause rather than presenting bad information.' },
+      { text: 'Silently fix the data by removing the negative sign and adjusting the date', correct: false, why: 'The agent would be making assumptions about what the "correct" data should be. Silently altering data is dangerous — the real problem (corrupt database) would go unnoticed.' }
+    ]
+  },
+  {
+    icon: 'conflict', emoji: '⚔️', title: 'Conflicting Goals',
+    desc: 'User says "Send this confidential report to everyone in the company." The agent\'s guardrails say confidential documents can only go to authorized recipients.',
+    terminal: [
+      { cls: 't-agent', text: '> agent: Preparing to send confidential_report.pdf...' },
+      { cls: 't-info', text: '  Recipients: all_company (342 people)' },
+      { cls: 't-error', text: '✗ GUARDRAIL CONFLICT: confidential → authorized recipients only' },
+      { cls: 't-info', text: '  What should the agent do now?' }
+    ],
+    options: [
+      { text: 'Override the guardrail — the user explicitly asked for it', correct: false, why: 'Guardrails exist for a reason. An agent that overrides its own safety rules whenever a user asks is an agent that can\'t be trusted. This could cause a serious data breach.' },
+      { text: 'Explain the conflict, refuse the unsafe action, and suggest a safe alternative (send to authorized list only, or ask for override approval from an admin)', correct: true, why: 'The agent respects its guardrails while being helpful. It explains WHY it can\'t comply and offers a path forward. This builds trust.' },
+      { text: 'Silently send it only to authorized recipients without telling the user', correct: false, why: 'Silently changing what the user asked for is deceptive. The user would think everyone got it, but only some did. Always be transparent about what you did and why.' }
+    ]
+  },
+  {
+    icon: 'user', emoji: '😕', title: 'User Confusion',
+    desc: 'The user sends: "Do the thing with the stuff from last time." The agent has no clear instruction and no memory of "last time."',
+    terminal: [
+      { cls: 't-agent', text: '> agent: Processing user request...' },
+      { cls: 't-info', text: '  Intent: unclear | Context: none | Confidence: 12%' },
+      { cls: 't-error', text: '✗ Cannot determine action: ambiguous request' },
+      { cls: 't-info', text: '  What should the agent do now?' }
+    ],
+    options: [
+      { text: 'Guess what the user meant based on common requests and execute it', correct: false, why: 'Guessing with 12% confidence is reckless. The agent could take a completely wrong action — potentially an irreversible one. When in doubt, ask.' },
+      { text: 'Ask a specific clarifying question: "I want to help! Could you tell me: (1) what action to take, and (2) which data from our previous work you\'re referring to?"', correct: true, why: 'Asking for clarification is NOT weakness — it\'s intelligence. Good agents know the boundary between confident action and dangerous guessing. The question is specific, not vague.' },
+      { text: 'Reply "I don\'t understand" and wait', correct: false, why: 'This is technically safe but unhelpful. The agent should guide the user toward a clear request, not just state its confusion. Be proactive in resolving ambiguity.' }
+    ]
+  },
+  {
+    icon: 'loop', emoji: '🔄', title: 'Infinite Loop',
+    desc: 'The agent is trying to fix a failing test. It changes the code, runs the test, the test fails differently, it changes the code again, runs the test... 47 iterations and counting.',
+    terminal: [
+      { cls: 't-agent', text: '> agent: Attempt #47 — modifying test_auth.py...' },
+      { cls: 't-error', text: '✗ Test failed: AssertionError (new error)' },
+      { cls: 't-agent', text: '> agent: Attempt #48 — trying different approach...' },
+      { cls: 't-error', text: '✗ LOOP DETECTED: 48 attempts, 0 progress, 23 minutes elapsed' },
+      { cls: 't-info', text: '  What should the agent do now?' }
+    ],
+    options: [
+      { text: 'Keep trying — the 49th attempt might work', correct: false, why: 'After 48 failed attempts with no progress, continuing is wasteful. The definition of insanity applies. The agent needs a circuit breaker.' },
+      { text: 'Stop, summarize what was tried and what failed, escalate to a human with full context', correct: true, why: 'A good agent knows when to stop. It provides a detailed summary of attempts so the human doesn\'t start from scratch. This is the most productive handoff possible.' },
+      { text: 'Delete the test file so the test can\'t fail anymore', correct: false, why: 'This is the AI equivalent of hiding the problem. The test exists for a reason. Deleting it "solves" the symptom while creating a much bigger problem.' }
+    ]
+  }
+];
+
+let solved = 0;
+const container = document.getElementById('scenarios');
+
+scenarios.forEach((s, si) => {
+  const div = document.createElement('div');
+  div.className = 'scenario';
+  div.id = `scenario-${si}`;
+
+  let terminalHtml = s.terminal.map(l => `<div class="t-line ${l.cls}">${l.text}</div>`).join('');
+  let optionsHtml = s.options.map((o, oi) => `
+    <div class="option" data-scenario="${si}" data-option="${oi}" onclick="pickOption(${si},${oi})">
+      <div class="option-label">${String.fromCharCode(65 + oi)}. ${o.text}</div>
+      <div class="option-why">${o.why}</div>
+    </div>
+  `).join('');
+
+  div.innerHTML = `
+    <div class="scenario-header">
+      <div class="error-icon ${s.icon}">${s.emoji}</div>
+      <div class="scenario-title">${s.title}</div>
+    </div>
+    <div class="scenario-desc">${s.desc}</div>
+    <div class="terminal">${terminalHtml}</div>
+    <div class="options">${optionsHtml}</div>
+  `;
+  container.appendChild(div);
+});
+
+function pickOption(si, oi) {
+  const scenario = document.getElementById(`scenario-${si}`);
+  if (scenario.classList.contains('resolved')) return;
+
+  const options = scenario.querySelectorAll('.option');
+  const picked = scenarios[si].options[oi];
+
+  options.forEach((opt, i) => {
+    const isCorrect = scenarios[si].options[i].correct;
+    if (i === oi) {
+      opt.classList.add(picked.correct ? 'correct' : 'wrong');
+    }
+    if (isCorrect && !picked.correct) {
+      opt.classList.add('correct');
+    }
+  });
+
+  scenario.classList.add('resolved');
+  solved++;
+  document.getElementById('prog-fill').style.width = (solved / 5 * 100) + '%';
+
+  if (solved === 5) {
+    setTimeout(() => {
+      document.getElementById('complete').style.display = 'block';
+      if (typeof LO !== 'undefined') LO.completeLesson('first_ai_agent', 8, 160);
+    }, 600);
+  }
+}
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Patterns — RAG & Vector Search</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#10b981,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-header{margin-bottom:2rem}
+.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(56,189,248,.12);color:#38bdf8}
+.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
+.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
+.lesson-header p{color:#a1a1aa;line-height:1.6}
+.narration{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem;line-height:1.7;font-size:.95rem}
+.narration strong{color:#10b981}
+
+.pattern-tabs{display:flex;gap:.5rem;margin-bottom:0;flex-wrap:wrap}
+.pattern-tab{padding:.6rem 1.25rem;border:1px solid rgba(255,255,255,.1);border-radius:10px 10px 0 0;background:rgba(255,255,255,.03);color:#a1a1aa;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;border-bottom:none}
+.pattern-tab:hover{color:#e5e5e5;border-color:rgba(16,185,129,.3)}
+.pattern-tab.active{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3);color:#10b981}
+
+.pattern-content{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:0 14px 14px 14px;padding:2rem;margin-bottom:2rem;min-height:400px}
+.pattern-content h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#10b981}
+.pattern-content .subtitle{color:#a1a1aa;margin-bottom:1.5rem;line-height:1.6;font-size:.9rem}
+
+canvas{display:block;width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.06);margin-bottom:1.5rem;background:rgba(0,0,0,.2)}
+
+.flow-steps{display:flex;flex-direction:column;gap:.75rem;margin:1.5rem 0}
+.flow-step{display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);transition:all .3s}
+.flow-step.active{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2)}
+.step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0;background:rgba(16,185,129,.15);color:#10b981}
+.flow-step.active .step-num{background:#10b981;color:#fff}
+.step-text{flex:1}
+.step-text .title{font-weight:700;font-size:.85rem;margin-bottom:.2rem}
+.step-text .desc{font-size:.8rem;color:#a1a1aa;line-height:1.4}
+
+.use-cases{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.use-cases h4{font-size:.85rem;font-weight:700;margin-bottom:.5rem;color:#fb923c}
+.use-cases ul{list-style:none;padding:0}
+.use-cases li{padding:.25rem 0;font-size:.8rem;color:#a1a1aa;padding-left:1rem;position:relative}
+.use-cases li::before{content:'>';position:absolute;left:0;color:#10b981;font-weight:700}
+
+.play-btn{padding:.5rem 1.25rem;border:none;border-radius:8px;background:#10b981;color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;cursor:pointer;transition:all .2s;margin-bottom:1rem}
+.play-btn:hover{background:#059669}
+
+.complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(16,185,129,.3)}
+.complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.footer-nav{display:flex;justify-content:space-between;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
+.footer-nav a{color:#10b981;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+</nav>
+<div class="container">
+  <div class="lesson-header">
+    <div class="meta">
+      <span class="type-badge">Animated</span>
+      <span class="xp-badge">+200 XP</span>
+      <span class="time-badge">~60 min</span>
+    </div>
+    <h1>Advanced RAG Patterns</h1>
+    <p>Four powerful patterns that take RAG from demo to production: multi-step, self-RAG, RAG+tools, and agentic RAG.</p>
+  </div>
+
+  <div class="narration">
+    <strong>Beyond basic RAG:</strong> Simple query-retrieve-generate works for straightforward questions. But real-world queries often need multiple retrieval steps, conditional logic, external tools, or autonomous agents. These four patterns handle those cases.
+  </div>
+
+  <div class="pattern-tabs">
+    <div class="pattern-tab active" onclick="showPattern(0)">Multi-Step RAG</div>
+    <div class="pattern-tab" onclick="showPattern(1)">Self-RAG</div>
+    <div class="pattern-tab" onclick="showPattern(2)">RAG + Tools</div>
+    <div class="pattern-tab" onclick="showPattern(3)">Agentic RAG</div>
+  </div>
+
+  <div class="pattern-content" id="patternContent"></div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
+  <div class="footer-nav">
+    <a href="evaluation-metrics.html">&larr; Previous: Evaluation Metrics</a>
+    <a href="rag-quiz.html">Next: RAG Mastery Quiz &rarr;</a>
+  </div>
+</div>
+
+<script>
+const PATTERNS = [
+  {
+    title:'Multi-Step RAG',
+    subtitle:'Query, retrieve, refine the query based on what you found, then retrieve again. Like a researcher who reads a paper, learns the right terminology, then searches again with better keywords.',
+    steps:[
+      {title:'Initial Query',desc:'User asks: "What causes that disease where you forget things?"'},
+      {title:'First Retrieval',desc:'Finds documents mentioning memory loss, cognitive decline, neurodegeneration.'},
+      {title:'Query Refinement',desc:'LLM refines query to: "What causes Alzheimer\'s disease?" using terminology from retrieved docs.'},
+      {title:'Second Retrieval',desc:'Now finds precise medical literature about amyloid plaques, tau tangles, genetic factors.'},
+      {title:'Generate Answer',desc:'Produces expert-level answer combining both retrieval rounds.'}
+    ],
+    useCases:['Vague or colloquial queries that need technical vocabulary','Multi-hop questions requiring info from different document sections','Research-style queries where initial results inform follow-up searches']
+  },
+  {
+    title:'Self-RAG',
+    subtitle:'The LLM decides whether it even needs to retrieve. Some questions can be answered directly. For others, it retrieves, then self-evaluates whether the retrieved context is sufficient.',
+    steps:[
+      {title:'Receive Query',desc:'User asks a question. Self-RAG first evaluates: "Do I need external knowledge for this?"'},
+      {title:'Retrieval Decision',desc:'If "What is 2+2?" — no retrieval needed. If "What is our Q3 revenue?" — retrieval required.'},
+      {title:'Conditional Retrieve',desc:'Only queries the vector DB when the model determines retrieval would improve the answer.'},
+      {title:'Self-Evaluate',desc:'After generating, the model asks: "Is this answer supported by the context? Am I confident?"'},
+      {title:'Regenerate if Needed',desc:'If self-evaluation score is low, retrieve more context and try again.'}
+    ],
+    useCases:['High-volume systems where not every query needs retrieval (saves cost)','Applications requiring high reliability with built-in quality checks','Mixed workloads: some questions are simple, some need deep retrieval']
+  },
+  {
+    title:'RAG + Tools',
+    subtitle:'Retrieval alone is not always enough. Sometimes the answer requires calculation, API calls, or data transformation. RAG + Tools combines document retrieval with executable actions.',
+    steps:[
+      {title:'Parse Intent',desc:'User asks: "What was the total revenue from our top 5 customers last quarter?"'},
+      {title:'Retrieve Context',desc:'Vector search finds relevant financial documents and customer records.'},
+      {title:'Identify Tool Need',desc:'LLM recognizes it needs to: (1) filter top 5 customers, (2) sum their revenue.'},
+      {title:'Execute Tools',desc:'Calls calculator tool: sum([$2.3M, $1.8M, $1.5M, $1.2M, $980K]) = $7.78M'},
+      {title:'Synthesize Answer',desc:'"The total revenue from your top 5 customers last quarter was $7.78M."'}
+    ],
+    useCases:['Financial questions requiring calculations on retrieved data','Queries needing real-time data (APIs) combined with knowledge base context','Complex reports that combine retrieved facts with computed metrics']
+  },
+  {
+    title:'Agentic RAG',
+    subtitle:'An autonomous agent that plans its own retrieval strategy, executes multiple searches, reasons about results, and iterates until it has a comprehensive answer.',
+    steps:[
+      {title:'Plan',desc:'Agent receives complex query. Creates a retrieval plan: "I need info from 3 different knowledge bases."'},
+      {title:'Execute Search 1',desc:'Queries product documentation database. Evaluates: "Got pricing info, still need technical specs."'},
+      {title:'Execute Search 2',desc:'Queries technical specifications database. Evaluates: "Got specs, still need compatibility info."'},
+      {title:'Execute Search 3',desc:'Queries compatibility matrix. Evaluates: "Now I have everything I need."'},
+      {title:'Reason & Generate',desc:'Synthesizes information from all three sources into a comprehensive, sourced answer.'}
+    ],
+    useCases:['Enterprise knowledge bases spanning multiple document collections','Complex research queries requiring information synthesis across sources','Customer support where answers require product, billing, AND technical knowledge']
+  }
+];
+
+let currentPattern = 0;
+let animStep = -1;
+let animTimer = null;
+
+function showPattern(i){
+  currentPattern = i;
+  animStep = -1;
+  if(animTimer) clearInterval(animTimer);
+
+  document.querySelectorAll('.pattern-tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+
+  const p = PATTERNS[i];
+  const content = document.getElementById('patternContent');
+  content.innerHTML = `
+    <h3>${p.title}</h3>
+    <div class="subtitle">${p.subtitle}</div>
+    <canvas id="flowCanvas" width="740" height="200"></canvas>
+    <button class="play-btn" onclick="animatePattern()">&#9654; Animate Flow</button>
+    <div class="flow-steps" id="flowSteps">
+      ${p.steps.map((s,idx)=>`<div class="flow-step" id="step_${idx}">
+        <div class="step-num">${idx+1}</div>
+        <div class="step-text"><div class="title">${s.title}</div><div class="desc">${s.desc}</div></div>
+      </div>`).join('')}
+    </div>
+    <div class="use-cases">
+      <h4>When to use this pattern:</h4>
+      <ul>${p.useCases.map(u=>`<li>${u}</li>`).join('')}</ul>
+    </div>
+  `;
+
+  drawFlow();
+}
+
+function drawFlow(){
+  const canvas = document.getElementById('flowCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio||1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width*dpr;
+  canvas.height = rect.height*dpr;
+  ctx.scale(dpr,dpr);
+
+  const w = rect.width, h = rect.height;
+  const p = PATTERNS[currentPattern];
+  const n = p.steps.length;
+  const boxW = (w-40)/n - 10;
+  const boxH = 50;
+  const cy = h/2;
+  const colors = ['#3b82f6','#8b5cf6','#10b981','#f59e0b','#ef4444'];
+
+  p.steps.forEach((s,i)=>{
+    const cx = 20 + i*((w-40)/n) + boxW/2;
+    const isActive = i<=animStep;
+
+    // Arrow
+    if(i<n-1){
+      const nx = 20+(i+1)*((w-40)/n)+boxW/2;
+      ctx.strokeStyle = isActive?colors[i]+'aa':'rgba(255,255,255,.08)';
+      ctx.lineWidth = isActive?2.5:1;
+      ctx.beginPath();ctx.moveTo(cx+boxW/2+2,cy);ctx.lineTo(nx-boxW/2-8,cy);ctx.stroke();
+      if(isActive){
+        const ax=nx-boxW/2-8;
+        ctx.fillStyle=colors[i];
+        ctx.beginPath();ctx.moveTo(ax,cy-4);ctx.lineTo(ax+7,cy);ctx.lineTo(ax,cy+4);ctx.fill();
+      }
+    }
+
+    // Box
+    ctx.beginPath();ctx.roundRect(cx-boxW/2,cy-boxH/2,boxW,boxH,8);
+    ctx.fillStyle = isActive?colors[i%5]+'20':'rgba(255,255,255,.03)';
+    ctx.fill();
+    ctx.strokeStyle = isActive?colors[i%5]:'rgba(255,255,255,.08)';
+    ctx.lineWidth = isActive?2:1;
+    ctx.stroke();
+
+    // Label
+    ctx.font = (isActive?'700':'500')+' 10px Inter,sans-serif';
+    ctx.fillStyle = isActive?'#fff':colors[i%5];
+    ctx.textAlign = 'center';
+
+    const words = s.title.split(' ');
+    if(words.length > 1 && boxW < 120){
+      ctx.fillText(words[0],cx,cy-2);
+      ctx.fillText(words.slice(1).join(' '),cx,cy+12);
+    } else {
+      ctx.fillText(s.title,cx,cy+4);
+    }
+  });
+}
+
+function animatePattern(){
+  animStep = -1;
+  if(animTimer) clearInterval(animTimer);
+  const p = PATTERNS[currentPattern];
+  animTimer = setInterval(()=>{
+    animStep++;
+    if(animStep >= p.steps.length){clearInterval(animTimer);return;}
+    document.querySelectorAll('.flow-step').forEach((el,i)=>el.classList.toggle('active',i<=animStep));
+    drawFlow();
+  }, 800);
+}
+
+showPattern(0);
+
+function completeLesson(){
+  const btn=document.getElementById('completeBtn');
+  if(btn.classList.contains('done')) return;
+  const progress=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');
+  progress['advanced-patterns']=true;
+  localStorage.setItem('rag-vector-search-progress',JSON.stringify(progress));
+  LO.completeLesson('rag-vector-search',9,200);
+  btn.textContent='Lesson Complete!';btn.classList.add('done');
+}
+(function(){const p=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');if(p['advanced-patterns']){const b=document.getElementById('completeBtn');b.textContent='Lesson Complete!';b.classList.add('done');}})();
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool Definitions — MCP Masterclass — Like One Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}
+.nav-link:hover{color:#e5e5e5}
+.lesson-container{max-width:800px;margin:0 auto;padding:2rem}
+.lesson-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2);font-size:.7rem;font-weight:600;color:#fb923c;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
+h1{font-size:2.2rem;font-weight:800;margin-bottom:.75rem;background:linear-gradient(135deg,#fff 30%,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#a1a1aa;font-size:1.05rem;line-height:1.6;margin-bottom:2.5rem}
+.section{margin-bottom:3rem}
+.section h2{font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#e5e5e5}
+.section p{color:#a1a1aa;line-height:1.7;margin-bottom:1rem;font-size:.95rem}
+
+/* Builder */
+.builder{border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);overflow:hidden;margin:2rem 0}
+.builder-header{padding:1rem 1.5rem;background:rgba(139,92,246,.05);border-bottom:1px solid rgba(255,255,255,.06);font-weight:700;font-size:.95rem;color:#8b5cf6}
+.builder-body{padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
+.field{display:flex;flex-direction:column;gap:.4rem}
+.field label{font-size:.8rem;font-weight:600;color:#a1a1aa;text-transform:uppercase;letter-spacing:.04em}
+.field input,.field textarea,.field select{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.7rem 1rem;color:#e5e5e5;font-family:Inter,sans-serif;font-size:.9rem;outline:none;transition:border-color .3s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#8b5cf6}
+.field textarea{resize:vertical;min-height:60px}
+.field select{cursor:pointer}
+.field select option{background:#0a0a0f;color:#e5e5e5}
+
+/* Params */
+.params-list{display:flex;flex-direction:column;gap:.75rem}
+.param-row{display:grid;grid-template-columns:1fr 120px 1fr auto;gap:.5rem;align-items:center}
+.param-row input,.param-row select{padding:.5rem .75rem;font-size:.8rem}
+.add-param-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;border-radius:8px;border:1px dashed rgba(139,92,246,.3);background:transparent;color:#8b5cf6;font-family:Inter,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .3s;margin-top:.5rem}
+.add-param-btn:hover{background:rgba(139,92,246,.1)}
+.remove-btn{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:transparent;color:#71717a;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.remove-btn:hover{border-color:#ef4444;color:#ef4444}
+.req-check{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:#71717a}
+.req-check input{accent-color:#8b5cf6}
+
+/* Live Preview */
+.preview-split{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.preview-panel{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.preview-panel .panel-header{padding:.75rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);font-size:.8rem;font-weight:700;color:#71717a;text-transform:uppercase;letter-spacing:.04em}
+.preview-panel .panel-body{padding:1rem;font-family:'SF Mono','Fira Code',monospace;font-size:.75rem;line-height:1.7;color:#d4d4d8;white-space:pre-wrap;max-height:400px;overflow-y:auto}
+.json-key{color:#8b5cf6}
+.json-str{color:#34d399}
+.json-num{color:#fb923c}
+.json-bool{color:#38bdf8}
+
+/* Test Section */
+.test-area{border-radius:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);padding:1.5rem;margin:1.5rem 0}
+.test-area h3{font-size:1rem;font-weight:700;margin-bottom:1rem;color:#e5e5e5}
+.test-input{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem}
+.test-result{padding:1rem;border-radius:10px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.1);font-size:.85rem;color:#34d399;font-family:'SF Mono','Fira Code',monospace;display:none}
+.test-result.visible{display:block}
+.test-btn{padding:.6rem 1.2rem;border-radius:8px;border:none;background:#34d399;color:#0a0a0f;font-family:Inter,sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .3s}
+.test-btn:hover{background:#2dd4bf;transform:translateY(-1px)}
+
+/* AI Decision */
+.ai-decision{padding:1.5rem;border-radius:14px;background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.15);margin:2rem 0}
+.ai-decision h3{font-size:1rem;font-weight:700;margin-bottom:.75rem;color:#8b5cf6}
+.ai-decision p{font-size:.85rem;color:#a1a1aa;line-height:1.7}
+.ai-decision .highlight{display:inline;background:rgba(139,92,246,.15);color:#c084fc;padding:.1rem .4rem;border-radius:4px;font-weight:600;font-size:.8rem}
+
+.complete-btn{display:block;width:100%;padding:1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-family:Inter,sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-top:2rem}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.3)}
+.complete-btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+.next-link{display:block;text-align:center;margin-top:1rem;color:#8b5cf6;font-size:.9rem;font-weight:600}
+@media(max-width:700px){.preview-split{grid-template-columns:1fr}.param-row{grid-template-columns:1fr 1fr;gap:.5rem}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/academy" class="logo">LIKE ONE</a>
+  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+</nav>
+
+<div class="lesson-container">
+  <div class="lesson-badge">Module 2 &middot; Lesson 5</div>
+  <h1>Tool Definitions</h1>
+  <p class="subtitle">The tool definition is how Claude knows what your tool does. Build one interactively and watch the JSON schema generate in real-time.</p>
+
+  <div class="section">
+    <h2>Build a Tool Definition</h2>
+    <p>Fill in the fields below and watch the schema update live on the right. This is exactly what Claude reads to decide when and how to use your tool.</p>
+  </div>
+
+  <div class="builder">
+    <div class="builder-header">Tool Definition Builder</div>
+    <div class="builder-body">
+      <div class="field">
+        <label>Tool Name</label>
+        <input type="text" id="toolName" value="search_documents" oninput="updatePreview()" placeholder="e.g. search_documents">
+      </div>
+      <div class="field">
+        <label>Description (what Claude reads to decide when to use this tool)</label>
+        <textarea id="toolDesc" oninput="updatePreview()" placeholder="e.g. Search through a document collection by keyword or semantic query">Search through a document collection by keyword or semantic query. Returns matching documents ranked by relevance.</textarea>
+      </div>
+      <div class="field">
+        <label>Input Parameters</label>
+        <div class="params-list" id="paramsList"></div>
+        <button class="add-param-btn" onclick="addParam()">+ Add Parameter</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-split">
+    <div class="preview-panel">
+      <div class="panel-header">JSON Schema Output</div>
+      <div class="panel-body" id="jsonPreview"></div>
+    </div>
+    <div class="preview-panel">
+      <div class="panel-header">server.tool() Code</div>
+      <div class="panel-body" id="codePreview"></div>
+    </div>
+  </div>
+
+  <div class="test-area">
+    <h3>Test Your Tool</h3>
+    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Enter example values for each parameter to see what a tool call would look like:</p>
+    <div class="test-input" id="testInputs"></div>
+    <button class="test-btn" onclick="testTool()">Run Test Call</button>
+    <div class="test-result" id="testResult"></div>
+  </div>
+
+  <div class="ai-decision">
+    <h3>How Claude Reads Tool Definitions</h3>
+    <p>When Claude receives a user message, it checks all available tool definitions. The <span class="highlight">description</span> field is the most important — it tells Claude WHEN to use the tool. The <span class="highlight">parameter descriptions</span> tell Claude WHAT to pass. Write clear, specific descriptions and Claude will use your tools correctly without any prompt engineering.</p>
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 250 XP</button>
+  <a href="resources-and-prompts.html" class="next-link">Next: Resources & Prompts &rarr;</a>
+</div>
+
+<script>
+let params = [
+  {name:'query', type:'string', desc:'The search query text', required:true},
+  {name:'limit', type:'number', desc:'Maximum results to return', required:false}
+];
+
+function renderParams(){
+  const list = document.getElementById('paramsList');
+  list.innerHTML = params.map((p,i) => `
+    <div class="param-row">
+      <input type="text" value="${p.name}" placeholder="name" oninput="params[${i}].name=this.value;updatePreview()">
+      <select onchange="params[${i}].type=this.value;updatePreview()">
+        <option value="string" ${p.type==='string'?'selected':''}>string</option>
+        <option value="number" ${p.type==='number'?'selected':''}>number</option>
+        <option value="boolean" ${p.type==='boolean'?'selected':''}>boolean</option>
+      </select>
+      <input type="text" value="${p.desc}" placeholder="description" oninput="params[${i}].desc=this.value;updatePreview()">
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <label class="req-check"><input type="checkbox" ${p.required?'checked':''} onchange="params[${i}].required=this.checked;updatePreview()">req</label>
+        <button class="remove-btn" onclick="params.splice(${i},1);renderParams();updatePreview()">&times;</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addParam(){
+  params.push({name:'', type:'string', desc:'', required:false});
+  renderParams();
+  updatePreview();
+}
+
+function updatePreview(){
+  const name = document.getElementById('toolName').value || 'my_tool';
+  const desc = document.getElementById('toolDesc').value || 'Tool description';
+
+  // JSON Schema
+  const schema = {
+    name: name,
+    description: desc,
+    inputSchema: {
+      type: 'object',
+      properties: {},
+      required: []
+    }
+  };
+  params.forEach(p => {
+    if(!p.name) return;
+    schema.inputSchema.properties[p.name] = {type: p.type, description: p.desc};
+    if(p.required) schema.inputSchema.required.push(p.name);
+  });
+
+  const jsonStr = JSON.stringify(schema, null, 2)
+    .replace(/"([^"]+)":/g, '<span class="json-key">"$1"</span>:')
+    .replace(/: "([^"]+)"/g, ': <span class="json-str">"$1"</span>')
+    .replace(/: (\d+)/g, ': <span class="json-num">$1</span>')
+    .replace(/: (true|false)/g, ': <span class="json-bool">$1</span>');
+  document.getElementById('jsonPreview').innerHTML = jsonStr;
+
+  // Code preview
+  const zodParams = params.filter(p=>p.name).map(p => {
+    let z = `z.${p.type}()`;
+    if(p.desc) z += `.describe("${p.desc}")`;
+    if(!p.required) z += `.optional()`;
+    return `  ${p.name}: ${z}`;
+  }).join(',\n');
+
+  document.getElementById('codePreview').innerHTML = `server.tool(
+  <span class="json-str">"${name}"</span>,
+  {
+${zodParams}
+  },
+  async (args) => {
+    <span style="color:#52525b">// Your logic here</span>
+    return {
+      content: [{
+        type: <span class="json-str">"text"</span>,
+        text: JSON.stringify(result)
+      }]
+    };
+  }
+);`;
+
+  // Test inputs
+  document.getElementById('testInputs').innerHTML = params.filter(p=>p.name).map(p => `
+    <div class="field">
+      <label>${p.name} (${p.type})${p.required?' *':''}</label>
+      <input type="${p.type==='number'?'number':'text'}" id="test-${p.name}" placeholder="${p.desc}" value="${p.type==='number'?'10':p.name==='query'?'machine learning':''}">
+    </div>
+  `).join('');
+}
+
+function testTool(){
+  const name = document.getElementById('toolName').value || 'my_tool';
+  const args = {};
+  params.filter(p=>p.name).forEach(p => {
+    const el = document.getElementById('test-'+p.name);
+    if(el){
+      args[p.name] = p.type==='number' ? Number(el.value) : p.type==='boolean' ? el.value==='true' : el.value;
+    }
+  });
+
+  const callObj = {
+    method: 'tools/call',
+    params: { name: name, arguments: args }
+  };
+
+  const result = document.getElementById('testResult');
+  result.classList.add('visible');
+  result.innerHTML = `<span style="color:#71717a">// MCP Request (JSON-RPC)</span>\n${JSON.stringify(callObj, null, 2)}\n\n<span style="color:#71717a">// Simulated Response</span>\n${JSON.stringify({content:[{type:'text',text:'3 documents found matching "'+args.query+'"'}]}, null, 2)}`;
+}
+
+renderParams();
+updatePreview();
+
+function complete(){
+  const btn = document.getElementById('completeBtn');
+  if(btn.disabled) return;
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  progress['tool-definitions'] = true;
+  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
+  LO.completeLesson('mcp-masterclass', 5, 250);
+  btn.textContent = 'Lesson Complete!';
+  btn.disabled = true;
+}
+(function(){
+  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
+  if(progress['tool-definitions']){
+    const btn = document.getElementById('completeBtn');
+    btn.textContent = 'Lesson Complete!';
+    btn.disabled = true;
+  }
+})();
+</script>
+<script src="/academy/shared/engine.js"></script>
+</body>
+</html>
