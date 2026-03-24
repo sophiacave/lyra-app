@@ -74,7 +74,7 @@ export async function GET() {
               marginLeft: '12px',
             }}
           >
-            ACADEMY
+            AI
           </span>
         </div>
 
@@ -89,8 +89,8 @@ export async function GET() {
               letterSpacing: '-3px',
             }}
           >
-            Your brain,{' '}
-            <span style={{ color: '#c084fc' }}>extended.</span>
+            Human + AI,{' '}
+            <span style={{ color: '#c084fc' }}>together.</span>
           </div>
           <div
             style={{
@@ -100,7 +100,7 @@ export async function GET() {
               maxWidth: '700px',
             }}
           >
-            Learn to build an AI system that thinks like you. From zero to cyborg.
+            Human creativity meets AI intelligence. This is what collaboration looks like.
           </div>
         </div>
 

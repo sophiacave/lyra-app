@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Like One Academy — Your Brain, Extended',
-  description: 'Learn to build an AI system that thinks like you, remembers everything, runs while you sleep, and protects your values. From zero to cyborg.',
+  title: 'Like One — Human-AI Collaboration Platform',
+  description: 'What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn\'t the future — it\'s now. Built by Faye Cave.',
   manifest: '/manifest.json',
   themeColor: '#c084fc',
   viewport: 'width=device-width, initial-scale=1',
@@ -10,18 +10,18 @@ export const metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Like One Academy — Your Brain, Extended',
-    description: 'Learn to build an AI system that thinks like you. From zero to cyborg.',
+    title: 'Like One — Human-AI Collaboration Platform',
+    description: 'What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn\'t the future — it\'s now.',
     url: 'https://likeone.ai',
     siteName: 'Like One',
     type: 'website',
-    images: [{ url: 'https://likeone.ai/api/og', width: 1200, height: 630, alt: 'Like One Academy — Your Brain, Extended' }],
+    images: [{ url: 'https://likeone.ai/og-image.png', width: 1200, height: 630, alt: 'Like One — Human-AI Collaboration Platform' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Like One Academy — Your Brain, Extended',
-    description: 'Learn to build an AI system that thinks like you. From zero to cyborg.',
-    images: ['https://likeone.ai/api/og'],
+    title: 'Like One — Human-AI Collaboration Platform',
+    description: 'What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn\'t the future — it\'s now.',
+    images: ['https://likeone.ai/og-image.png'],
   },
   appleWebApp: {
     capable: true,
