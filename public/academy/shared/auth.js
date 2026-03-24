@@ -17,7 +17,7 @@
 
   // Load Supabase client
   const script = document.createElement('script');
-  script.src = 'https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+  script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
   script.onload = () => initAuth();
   document.head.appendChild(script);
 
