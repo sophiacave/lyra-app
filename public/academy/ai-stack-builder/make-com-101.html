@@ -104,6 +104,7 @@ p{margin-bottom:1rem;color:#ccc}
 </div>
 </div>
 <p style="font-size:.9rem;color:#999">When someone subscribes, send a welcome email, store in database, notify your Slack.</p>
+<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — click to see what each module would process. In production, real data flows through Make.com automatically.</p>
 <button class="btn-run" onclick="runScenario(0)">&#x25b6; Simulate Run</button>
 <div class="data-flow" id="dataFlow0" style="display:none"></div>
 </div>
@@ -123,6 +124,7 @@ p{margin-bottom:1rem;color:#ccc}
 </div>
 </div>
 <p style="font-size:.9rem;color:#999">Every morning, grab a draft from Supabase, have Claude polish it, publish to CMS, and auto-tweet.</p>
+<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — in production, this would run on a schedule and process real content.</p>
 <button class="btn-run" onclick="runScenario(1)">&#x25b6; Simulate Run</button>
 <div class="data-flow" id="dataFlow1" style="display:none"></div>
 </div>
@@ -140,6 +142,7 @@ p{margin-bottom:1rem;color:#ccc}
 </div>
 </div>
 <p style="font-size:.9rem;color:#999">When Stripe processes a payment over $50, log it and send a celebration alert to Slack.</p>
+<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — in production, you'd see real Stripe payment data flowing through.</p>
 <button class="btn-run" onclick="runScenario(2)">&#x25b6; Simulate Run</button>
 <div class="data-flow" id="dataFlow2" style="display:none"></div>
 </div>
@@ -147,22 +150,25 @@ p{margin-bottom:1rem;color:#ccc}
 <h2>How Modules Connect</h2>
 <div class="panel">
 <div class="label">Key Concept</div>
-<p>Every module <strong>receives data</strong> from the previous module and <strong>passes data</strong> to the next. You map fields between them — that's the core of Make.com. Example:</p>
+<p>Every module <strong>receives data</strong> from the previous module and <strong>passes data</strong> to the next. You map fields between them — that's the core of Make.com.</p>
+<p style="font-size:.9rem;color:#999"><strong>Understanding <code style="color:#f59e0b">{{1.email}}</code> syntax:</strong> The number refers to the module's position in the scenario. <code style="color:#f59e0b">{{1.email}}</code> means "grab the <code>email</code> field from module #1 (the Webhook)." <code style="color:#f59e0b">{{now}}</code> is a built-in function that returns the current timestamp. You'll use this pattern constantly — it's how data flows between modules.</p>
+<p style="font-size:.85rem;color:#999">Here's how data flows through the Email Capture scenario above:</p>
 <div class="code-block">
-<span class="cm">// Webhook receives:</span><br>
+<span class="cm">// Module 1 — Webhook receives this JSON from your website:</span><br>
 { <span class="str">"email"</span>: <span class="str">"user@example.com"</span>, <span class="str">"name"</span>: <span class="str">"Alex"</span> }<br><br>
-<span class="cm">// Resend module maps:</span><br>
-To: <span class="op">{{</span>1.email<span class="op">}}</span><br>
-Subject: <span class="str">"Welcome, </span><span class="op">{{</span>1.name<span class="op">}}</span><span class="str">!"</span><br><br>
-<span class="cm">// Supabase module maps:</span><br>
+<span class="cm">// Module 2 — Resend uses {{1.email}} to pull the email from Module 1:</span><br>
+To: <span class="op">{{</span>1.email<span class="op">}}</span> <span class="cm">  → becomes: user@example.com</span><br>
+Subject: <span class="str">"Welcome, </span><span class="op">{{</span>1.name<span class="op">}}</span><span class="str">!"</span> <span class="cm">  → becomes: "Welcome, Alex!"</span><br><br>
+<span class="cm">// Module 3 — Supabase also pulls from Module 1 to save the subscriber:</span><br>
 email: <span class="op">{{</span>1.email<span class="op">}}</span><br>
 name: <span class="op">{{</span>1.name<span class="op">}}</span><br>
-joined_at: <span class="op">{{</span>now<span class="op">}}</span>
+joined_at: <span class="op">{{</span>now<span class="op">}}</span> <span class="cm">  → becomes: current timestamp</span>
 </div>
 </div>
 
 <h2>Build Your Own Scenario</h2>
 <p>Drag modules from the palette into the canvas to create your own automation.</p>
+<p style="font-size:.85rem;color:#888"><strong>Tip:</strong> Start with a trigger (Webhook or Schedule), then add processing steps, and end with an output (Slack, Supabase, or Email). A good first scenario: <strong>Webhook &rarr; Supabase &rarr; Slack</strong> — receive data, store it, notify yourself.</p>
 
 <div class="palette" id="palette">
 <div class="palette-item" draggable="true" data-icon="&#x1f310;" data-name="Webhook" data-type="Trigger" ondragstart="drag(event)"><span class="p-icon">&#x1f310;</span>Webhook</div>

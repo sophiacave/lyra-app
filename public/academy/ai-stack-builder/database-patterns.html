@@ -90,6 +90,8 @@ p{margin-bottom:1rem;color:#ccc}
 
 <h2>Design Your Brain Schema</h2>
 <p>Click each table tab to edit its columns. Add new columns, set types, mark primary and foreign keys. The ER diagram below updates as you build.</p>
+<p style="font-size:.85rem;color:#888"><strong>Why 3 tables instead of 1?</strong> Each table serves a different purpose: <code style="color:#f59e0b">brain_context</code> holds the agent's current state (like a whiteboard), <code style="color:#f59e0b">agent_memory</code> stores past interactions (like a journal), and <code style="color:#f59e0b">consciousness_stream</code> logs every action (like security footage). Separating them lets you query and optimize each independently.</p>
+<p style="font-size:.85rem;color:#888">These tables are pre-populated as a starting point. Try modifying them — rename columns, change types, add new ones. The generated SQL updates live so you can see the impact of your changes.</p>
 
 <div class="table-tabs" id="tableTabs">
 <div class="table-tab active" onclick="switchTable(0)">brain_context</div>
@@ -115,11 +117,11 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="panel">
 <div class="label">Key Patterns</div>
 <h3 style="margin-top:0">Pattern 1: Key-Value Brain</h3>
-<p style="font-size:.9rem">The <code style="color:#f59e0b">brain_context</code> table is a flexible key-value store. Keys use dot notation (like <code style="color:#f59e0b">identity.name</code>, <code style="color:#f59e0b">session.active_work</code>) for namespacing. Values are JSONB for maximum flexibility.</p>
+<p style="font-size:.9rem"><strong>Why this pattern:</strong> Instead of creating a new column for every piece of information, you store everything as key-value pairs. This means your AI agent can learn new things without database migrations. The <code style="color:#f59e0b">brain_context</code> table is a flexible key-value store. Keys use dot notation (like <code style="color:#f59e0b">identity.name</code>, <code style="color:#f59e0b">session.active_work</code>) for namespacing — the dots create a hierarchy, like folders on your computer. Values are JSONB (a Postgres data type that stores structured JSON data — it can hold strings, numbers, arrays, or nested objects, and you can query inside it).</p>
 <h3>Pattern 2: Append-Only Memory</h3>
-<p style="font-size:.9rem">The <code style="color:#f59e0b">agent_memory</code> table stores every interaction. Never delete — always append. Use <code style="color:#f59e0b">importance</code> scores to prioritize retrieval. This is how AI agents build long-term memory.</p>
+<p style="font-size:.9rem"><strong>Why this pattern:</strong> Deleting data destroys context. An AI agent that forgets past interactions can't learn or improve. By always appending, you build a complete history the agent can search through. The <code style="color:#f59e0b">agent_memory</code> table stores every interaction. Use <code style="color:#f59e0b">importance</code> scores (1-10) to prioritize retrieval — when the agent needs context, it grabs high-importance memories first. The <code style="color:#f59e0b">embedding</code> column uses <code style="color:#f59e0b">vector(1536)</code> — that's a list of 1,536 numbers that represent the meaning of text. AI models convert text into these vectors so you can find semantically similar memories (e.g., "find memories about deployment" would match "pushed code to Vercel" even though the words are different). The 1536 number matches OpenAI's embedding model dimensions.</p>
 <h3>Pattern 3: Event Streaming</h3>
-<p style="font-size:.9rem">The <code style="color:#f59e0b">consciousness_stream</code> is an event log. Every action the agent takes gets logged. Useful for debugging, auditing, and replaying agent behavior.</p>
+<p style="font-size:.9rem"><strong>Why this pattern:</strong> When something goes wrong (and it will), you need to know exactly what your agent did and when. The <code style="color:#f59e0b">consciousness_stream</code> is an event log — every action the agent takes gets logged with its input and output. This is invaluable for debugging ("why did the agent send that email?"), auditing ("who changed this data?"), and replaying agent behavior to test improvements.</p>
 </div>
 
 <div class="progress-section">
@@ -187,7 +189,7 @@ function updateCol(i,field,val){tables[activeTable].cols[i][field]=val;renderTab
 function togglePK(i){tables[activeTable].cols[i].pk=!tables[activeTable].cols[i].pk;renderTable();updateProg()}
 function delCol(i){tables[activeTable].cols.splice(i,1);renderTable();updateProg()}
 function addCol(){tables[activeTable].cols.push({name:'new_col',type:'text',pk:false,fk:''});renderTable();updateProg()}
-function editFK(i){const c=tables[activeTable].cols[i];const val=prompt('Foreign key reference (e.g. brain_context.id):',c.fk||'');if(val!==null){c.fk=val;renderTable();updateProg()}}
+function editFK(i){const c=tables[activeTable].cols[i];const opts=[];tables.forEach(t=>{if(t.name!==tables[activeTable].name){t.cols.forEach(col=>{if(col.pk)opts.push(t.name+'.'+col.name)})}});let msg='Set foreign key reference.\nA foreign key links this column to a row in another table — it creates a relationship.\n\nAvailable targets:\n'+opts.map(o=>'  '+o).join('\n')+'\n\nEnter reference (e.g. brain_context.id) or leave blank to remove:';const val=prompt(msg,c.fk||'');if(val!==null){c.fk=val;renderTable();updateProg()}}
 
 function renderER(){
 let html='';

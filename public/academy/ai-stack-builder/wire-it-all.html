@@ -80,7 +80,7 @@ p{margin-bottom:1rem;color:#ccc}
 <p class="intro">This is THE BIG ONE. Every tool you've learned connects into one architecture. Click each node to see how it talks to the others. Then build it step by step.</p>
 
 <h2>The Complete Architecture</h2>
-<p>Click any service to see its connections and data flows.</p>
+<p>Click any service to see its connections, data flows, and example code. Each node shows you what that service does and how it communicates with the others.</p>
 
 <div class="arch-diagram">
 <div class="arch-grid">
@@ -131,6 +131,7 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="build-step-header"><span class="build-step-title">1. Supabase: Create tables + RLS</span><span class="build-step-num">Foundation</span></div>
 <div class="build-step-body">
 <p style="font-size:.9rem;color:#999">Create brain_context, subscribers, and revenue tables. Enable RLS on all of them. This is your data layer.</p>
+<p style="font-size:.85rem;color:#888">This SQL creates two tables: <code style="color:#f59e0b">subscribers</code> stores everyone who signs up (with a unique email constraint so duplicates are rejected), and <code style="color:#f59e0b">revenue</code> tracks every payment with the Stripe session ID so you can cross-reference. Copy this SQL into your Supabase SQL Editor and run it.</p>
 <div class="code-block"><span class="cm">-- Core tables</span><br><span class="kw">CREATE TABLE</span> subscribers (id <span class="fn">uuid</span> <span class="kw">DEFAULT</span> <span class="fn">gen_random_uuid</span>() <span class="kw">PRIMARY KEY</span>, email <span class="fn">text</span> <span class="kw">UNIQUE NOT NULL</span>, created_at <span class="fn">timestamptz</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>());<br><span class="kw">CREATE TABLE</span> revenue (id <span class="fn">uuid</span> <span class="kw">DEFAULT</span> <span class="fn">gen_random_uuid</span>() <span class="kw">PRIMARY KEY</span>, amount <span class="fn">int4</span>, product <span class="fn">text</span>, customer_email <span class="fn">text</span>, stripe_session_id <span class="fn">text</span>, created_at <span class="fn">timestamptz</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>());</div>
 <button class="check-btn" onclick="event.stopPropagation();markDone(0)">&#x2713; Done</button>
 </div>
@@ -149,6 +150,7 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="build-step-header"><span class="build-step-title">3. Edge Function: create-checkout</span><span class="build-step-num">Payments</span></div>
 <div class="build-step-body">
 <p style="font-size:.9rem;color:#999">Creates a Stripe checkout session and returns the URL. Frontend redirects the user there.</p>
+<p style="font-size:.85rem;color:#888">This code tells Stripe "create a payment page for this product at this price." Stripe hosts the checkout page (you never touch credit card data), and redirects the user back to your success or cancel URL when done.</p>
 <div class="code-block"><span class="kw">const</span> session = <span class="kw">await</span> stripe.checkout.sessions.<span class="fn">create</span>({<br>&nbsp;&nbsp;mode: <span class="str">'payment'</span>,<br>&nbsp;&nbsp;line_items: [{ price: <span class="str">'price_xxx'</span>, quantity: <span class="num">1</span> }],<br>&nbsp;&nbsp;success_url: <span class="str">'https://likeone.ai/success'</span>,<br>&nbsp;&nbsp;cancel_url: <span class="str">'https://likeone.ai'</span>,<br>})<br><span class="kw">return new</span> <span class="fn">Response</span>(JSON.<span class="fn">stringify</span>({ url: session.url }))</div>
 <button class="check-btn" onclick="event.stopPropagation();markDone(2)">&#x2713; Done</button>
 </div>
@@ -158,6 +160,7 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="build-step-header"><span class="build-step-title">4. Stripe Webhook Handler</span><span class="build-step-num">Revenue Tracking</span></div>
 <div class="build-step-body">
 <p style="font-size:.9rem;color:#999">Listens for checkout.session.completed, logs revenue to Supabase, triggers Make.com notification.</p>
+<p style="font-size:.85rem;color:#888">This code verifies the Stripe webhook is genuine (not spoofed), checks if it's a completed checkout, and saves the payment amount and customer email to your revenue table.</p>
 <div class="code-block"><span class="kw">const</span> event = stripe.webhooks.<span class="fn">constructEvent</span>(body, sig, secret)<br><span class="kw">if</span> (event.type === <span class="str">'checkout.session.completed'</span>) {<br>&nbsp;&nbsp;<span class="kw">const</span> session = event.data.object<br>&nbsp;&nbsp;<span class="kw">await</span> supabase.<span class="fn">from</span>(<span class="str">'revenue'</span>).<span class="fn">insert</span>({<br>&nbsp;&nbsp;&nbsp;&nbsp;amount: session.amount_total,<br>&nbsp;&nbsp;&nbsp;&nbsp;customer_email: session.customer_email<br>&nbsp;&nbsp;})<br>}</div>
 <button class="check-btn" onclick="event.stopPropagation();markDone(3)">&#x2713; Done</button>
 </div>
@@ -176,6 +179,7 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="build-step-header"><span class="build-step-title">6. Make.com: Wire automations</span><span class="build-step-num">Glue</span></div>
 <div class="build-step-body">
 <p style="font-size:.9rem;color:#999">Create scenarios: new subscriber notification, revenue alert to Slack, daily analytics digest. Make.com connects everything that doesn't have a direct API integration.</p>
+<p style="font-size:.85rem;color:#888">This is pseudocode showing the flow of a Make.com scenario. In Make.com's visual editor, you'd drag these modules onto the canvas and connect them — no coding required. Each arrow represents data flowing from one module to the next.</p>
 <div class="code-block"><span class="cm">// Make.com Scenario: Revenue Alert</span><br>Trigger: Supabase webhook (new row in revenue)<br> &#x2192; Filter: amount > $50<br> &#x2192; Slack: Post to #revenue channel<br> &#x2192; Google Sheets: Log to spreadsheet</div>
 <button class="check-btn" onclick="event.stopPropagation();markDone(5)">&#x2713; Done</button>
 </div>
@@ -184,8 +188,18 @@ p{margin-bottom:1rem;color:#ccc}
 
 <div class="panel">
 <div class="label">The Big Picture</div>
-<p style="font-size:.9rem">User visits <strong>Vercel site</strong> &#x2192; Subscribes via <strong>Edge Function</strong> &#x2192; Stored in <strong>Supabase</strong> &#x2192; Welcome email via <strong>Resend</strong> &#x2192; Buys course via <strong>Stripe</strong> &#x2192; Revenue logged to <strong>Supabase</strong> &#x2192; <strong>Make.com</strong> sends Slack alert &#x2192; <strong>Claude</strong> manages the brain that coordinates all of it.</p>
-<p style="font-size:.9rem;color:#f59e0b"><strong>That's the whole stack. 6 services. One product. Revenue from day 1.</strong></p>
+<p style="font-size:.9rem;margin-bottom:.75rem">Here's the complete user journey — each step shows which service handles it and why:</p>
+<div style="font-size:.85rem;line-height:2">
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">1.</span> User visits your site <span style="color:#888">&rarr;</span> <strong>Vercel</strong> serves it from the nearest global edge server</p>
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">2.</span> User enters their email <span style="color:#888">&rarr;</span> <strong>Edge Function</strong> (subscribe) processes the form</p>
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">3.</span> Email stored <span style="color:#888">&rarr;</span> <strong>Supabase</strong> saves to the subscribers table</p>
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">4.</span> Welcome sent <span style="color:#888">&rarr;</span> <strong>Resend</strong> delivers the welcome email</p>
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">5.</span> User buys course <span style="color:#888">&rarr;</span> <strong>Stripe</strong> handles payment securely</p>
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">6.</span> Payment confirmed <span style="color:#888">&rarr;</span> <strong>Supabase</strong> logs revenue, grants access</p>
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">7.</span> Team notified <span style="color:#888">&rarr;</span> <strong>Make.com</strong> sends Slack celebration alert</p>
+<p style="margin-bottom:.35rem"><span style="color:#f59e0b;font-weight:700">8.</span> AI coordinates <span style="color:#888">&rarr;</span> <strong>Claude</strong> manages the brain that ties it all together</p>
+</div>
+<p style="font-size:.9rem;color:#f59e0b;margin-top:1rem"><strong>That's the whole stack. 6 services. One product. Revenue from day 1.</strong></p>
 </div>
 
 <div class="progress-section">

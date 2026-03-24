@@ -87,7 +87,8 @@ p{margin-bottom:1rem;color:#ccc}
 <p class="intro">Vercel turns <code style="color:#f59e0b">git push</code> into a live URL. No servers, no Docker, no YAML. Push code, get a website. Let's simulate the full pipeline.</p>
 
 <h2>The Deploy Pipeline</h2>
-<p>Click "Deploy" to watch code go from your machine to a live global CDN.</p>
+<p>Click "Deploy" to watch code go from your machine to a live global CDN (Content Delivery Network — servers around the world that serve your site from the closest location to each visitor).</p>
+<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — the pipeline below shows what happens when you deploy to Vercel, but runs entirely in your browser. In production, this process is triggered automatically when you <code>git push</code> to your repo.</p>
 
 <div class="pipeline">
 <div class="pipeline-steps">
@@ -110,9 +111,15 @@ p{margin-bottom:1rem;color:#ccc}
 <button class="deploy-btn" id="deployBtn" onclick="runDeploy()">&#x1f680; Deploy to Vercel</button>
 
 <div class="build-log" id="buildLog"></div>
+<p style="font-size:.75rem;color:#555;text-align:center;margin-top:-.5rem;display:none" id="buildLogNote">Simulated build output — real logs appear in your Vercel dashboard after deployment.</p>
 
 <h2>Environment Variables</h2>
 <p>Secrets go in Vercel's environment variables — never in your code. Configure them here.</p>
+<div class="panel" style="margin-bottom:1rem;padding:1rem 1.25rem">
+<p style="font-size:.85rem;margin-bottom:.5rem"><strong>Public vs. Secret — the critical difference:</strong></p>
+<p style="font-size:.85rem;color:#999;margin-bottom:.5rem">Variables starting with <code style="color:#f59e0b">NEXT_PUBLIC_</code> are <strong>exposed to the browser</strong>. Anyone can see them in your page source. This is fine for your Supabase URL and anon key (they're designed to be public — RLS protects your data).</p>
+<p style="font-size:.85rem;color:#ef4444;margin-bottom:0">Variables <strong>without</strong> that prefix are <strong>secret</strong> — they only exist on the server. API keys, service role keys, and Stripe secret keys must NEVER start with <code style="color:#ef4444">NEXT_PUBLIC_</code>. If you accidentally expose a secret key, revoke it immediately in that service's dashboard.</p>
+</div>
 
 <div class="config-editor">
 <div class="panel label" style="padding:0;background:none;border:none;margin-bottom:.75rem">Environment Variables</div>
@@ -163,6 +170,7 @@ p{margin-bottom:1rem;color:#ccc}
 
 <div class="panel">
 <div class="label">Deploy from CLI</div>
+<p style="font-size:.85rem;color:#999;margin-bottom:.5rem">These terminal commands let you deploy without leaving your editor. Most of the time you'll just <code style="color:#f59e0b">git push</code> and let Vercel's GitHub integration handle it automatically. The CLI is useful for quick previews or when you want to deploy without committing.</p>
 <div class="code-block">
 <span class="cm"># Install Vercel CLI</span><br>
 <span class="kw">npm</span> i -g vercel<br><br>
@@ -219,7 +227,7 @@ const logLines=[
 
 function runDeploy(){
 const btn=document.getElementById('deployBtn');btn.disabled=true;btn.textContent='Deploying...';
-const log=document.getElementById('buildLog');log.style.display='block';log.innerHTML='';
+const log=document.getElementById('buildLog');log.style.display='block';log.innerHTML='';document.getElementById('buildLogNote').style.display='block';
 const steps=['ps0','ps1','ps2','ps3','ps4'];
 const arrows=['pa0','pa1','pa2','pa3'];
 let i=0;

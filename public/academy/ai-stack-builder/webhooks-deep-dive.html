@@ -105,6 +105,7 @@ p{margin-bottom:1rem;color:#ccc}
 
 <h2>Configure a Stripe Webhook</h2>
 <p>Build a real Stripe webhook configuration. Pick which events to listen for and set your endpoint URL.</p>
+<p style="font-size:.85rem;color:#888"><strong>Where to do this in production:</strong> Go to your <a href="https://dashboard.stripe.com/webhooks" target="_blank" style="color:#f59e0b">Stripe Dashboard</a> &rarr; Developers &rarr; Webhooks &rarr; "Add endpoint." Paste your Supabase Edge Function URL and select the events below. Stripe will give you a signing secret (starts with <code style="color:#888">whsec_</code>) — save it as an environment variable in Supabase.</p>
 
 <div class="config-section">
 <div class="config-group">
@@ -113,6 +114,7 @@ p{margin-bottom:1rem;color:#ccc}
 </div>
 <div class="config-group">
 <div class="config-label">Events to Listen For</div>
+<p style="font-size:.8rem;color:#888;margin:.25rem 0 .5rem"><strong>Recommended for a course/product site:</strong> Start with <code style="color:#f59e0b">checkout.session.completed</code> (fires when someone pays) and <code style="color:#f59e0b">customer.subscription.deleted</code> (fires when someone cancels). Add others as your product grows.</p>
 <div class="event-grid" id="eventGrid">
 <div class="event-chip" onclick="toggleEvent(this)">checkout.session.completed</div>
 <div class="event-chip" onclick="toggleEvent(this)">payment_intent.succeeded</div>
@@ -133,6 +135,7 @@ p{margin-bottom:1rem;color:#ccc}
 
 <h2>Test with Simulated Events</h2>
 <p>Click an event to see the exact payload Stripe would send to your endpoint.</p>
+<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — the payloads below match Stripe's real format, but run in your browser. In production, Stripe sends these JSON payloads to your endpoint URL automatically when events occur.</p>
 
 <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0">
 <button class="test-btn" onclick="simulateEvent('checkout')">&#x1f4b3; Checkout Complete</button>
@@ -145,25 +148,31 @@ p{margin-bottom:1rem;color:#ccc}
 
 <div class="panel">
 <div class="label">Key Concept: Signature Verification</div>
-<p style="font-size:.9rem">Anyone can send a POST to your endpoint. Stripe signs every webhook with a secret. <strong>Always verify the signature.</strong></p>
+<p style="font-size:.9rem">Anyone can send a POST to your endpoint. A bad actor could fake a "payment succeeded" event to get free access. Stripe prevents this by cryptographically signing every webhook with a secret only you and Stripe know. <strong>Always verify the signature.</strong></p>
+<p style="font-size:.85rem;color:#999">Here's what this code does step by step: it reads the raw request body and the signature header that Stripe attached, then uses the Stripe library to verify they match your webhook secret. If someone tampered with the payload or sent a fake request, <code style="color:#f59e0b">constructEvent</code> throws an error and your code stops — no fraudulent data gets processed.</p>
 <div class="code-block">
+<span class="cm">// Import Stripe library (Deno-style for Supabase Edge Functions)</span><br>
 <span class="kw">import</span> Stripe <span class="kw">from</span> <span class="str">"https://esm.sh/stripe@14"</span><br><br>
+<span class="cm">// Initialize Stripe with your secret key</span><br>
 <span class="kw">const</span> stripe = <span class="kw">new</span> <span class="fn">Stripe</span>(Deno.env.get(<span class="str">"STRIPE_SECRET_KEY"</span>))<br>
+<span class="cm">// Get the signature Stripe attached to this request</span><br>
 <span class="kw">const</span> sig = req.headers.get(<span class="str">"stripe-signature"</span>)<br>
+<span class="cm">// Read the raw request body (must be raw text, not parsed JSON)</span><br>
 <span class="kw">const</span> body = <span class="kw">await</span> req.<span class="fn">text</span>()<br><br>
+<span class="cm">// This is the security check — it verifies the signature matches</span><br>
 <span class="kw">const</span> event = stripe.webhooks.<span class="fn">constructEvent</span>(<br>
 &nbsp;&nbsp;body, sig, Deno.env.get(<span class="str">"STRIPE_WEBHOOK_SECRET"</span>)<br>
 )<br><br>
-<span class="cm">// If signature is invalid, constructEvent throws</span><br>
-<span class="cm">// Now you can trust event.type and event.data</span>
+<span class="cm">// If signature is invalid, constructEvent throws an error</span><br>
+<span class="cm">// If we get here, the event is genuine — safe to process</span>
 </div>
 </div>
 
 <div class="panel">
 <div class="label">Pro Tips</div>
 <p style="font-size:.9rem"><strong>Respond fast:</strong> Stripe expects a 200 response within 20 seconds. Do heavy processing asynchronously — acknowledge the webhook first, then process.</p>
-<p style="font-size:.9rem"><strong>Idempotency:</strong> Stripe may send the same event multiple times. Always check if you've already processed an event ID before acting on it.</p>
-<p style="font-size:.9rem"><strong>Retry logic:</strong> If your endpoint returns an error, Stripe retries with exponential backoff for up to 3 days. Design for this.</p>
+<p style="font-size:.9rem"><strong>Idempotency</strong> (processing the same event safely twice): Stripe may send the same event multiple times — network hiccups, timeouts, etc. "Idempotent" means your code produces the same result whether it runs once or ten times. In practice: store the event ID in your database, and before processing, check if you've already handled it. If yes, skip. This prevents double-charging or double-granting access.</p>
+<p style="font-size:.9rem"><strong>Retry logic with exponential backoff:</strong> If your endpoint returns an error (500, timeout, etc.), Stripe retries automatically. "Exponential backoff" means it waits longer between each retry — first 1 minute, then 5 minutes, then 30, and so on — for up to 3 days. This gives your server time to recover without being hammered with requests. Design your endpoint to handle retries gracefully (see idempotency above).</p>
 </div>
 
 <div class="progress-section">

@@ -97,7 +97,7 @@ p{margin-bottom:1rem;color:#ccc}
 </div>
 <div class="table-row">
 <input value="value" placeholder="column name">
-<select><option>jsonb</option><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>timestamptz</option></select>
+<select><option value="jsonb">jsonb (flexible JSON data)</option><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>timestamptz</option></select>
 <span class="pk"></span>
 <span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>
 </div>
@@ -122,6 +122,7 @@ p{margin-bottom:1rem;color:#ccc}
 
 <h2>Step 2: SQL Sandbox</h2>
 <p>Supabase lets you run raw SQL. Practice querying your brain_context table.</p>
+<p style="font-size:.85rem;color:#888;font-style:italic">This is a simulation — it runs against sample data in your browser, not a real database. In production, you'd run these same queries in the Supabase SQL Editor against your actual tables.</p>
 
 <div class="panel">
 <div class="label">SQL Sandbox</div>
@@ -156,6 +157,8 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="step-num">3</div>
 <div class="step-content">
 <p><strong>Enable Row Level Security (RLS)</strong></p>
+<p style="font-size:.9rem;color:#999">RLS (Row Level Security) is a Postgres feature that controls who can read or write each row. Without it, anyone with your API key could access all data. Think of it like a bouncer for every row in your table.</p>
+<p style="font-size:.9rem;color:#999">This SQL turns on RLS and then creates a policy that says "only the service role (your backend) gets full access." Frontend users with the public anon key will be blocked unless you add more policies.</p>
 <div class="code-block"><span class="kw">ALTER TABLE</span> brain_context <span class="kw">ENABLE ROW LEVEL SECURITY</span>;<br><br><span class="cm">-- Allow service role full access</span><br><span class="kw">CREATE POLICY</span> <span class="str">"service_role_all"</span> <span class="kw">ON</span> brain_context<br>  <span class="kw">FOR ALL</span><br>  <span class="kw">TO</span> service_role<br>  <span class="kw">USING</span> (<span class="kw">true</span>);</div>
 </div>
 </div>
@@ -163,6 +166,7 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="step-num">4</div>
 <div class="step-content">
 <p><strong>Insert your first record</strong></p>
+<p style="font-size:.9rem;color:#999">This SQL adds a single row to your brain_context table — a key called "identity.name" with the value "AI Stack Builder Student". It's like writing a sticky note your AI agent can read later.</p>
 <div class="code-block"><span class="kw">INSERT INTO</span> brain_context (key, value)<br><span class="kw">VALUES</span> (<span class="str">'identity.name'</span>, <span class="str">'"AI Stack Builder Student"'</span>);</div>
 </div>
 </div>
@@ -170,7 +174,7 @@ p{margin-bottom:1rem;color:#ccc}
 <div class="panel">
 <div class="label">Key Concept</div>
 <h3 style="margin-top:0">Why Supabase for AI Apps?</h3>
-<p style="font-size:.9rem">Supabase is Postgres with superpowers: <strong>Auth</strong> (user management), <strong>Edge Functions</strong> (serverless Deno), <strong>Realtime</strong> (live subscriptions), <strong>Storage</strong> (files/images), and <strong>pgvector</strong> (AI embeddings). One tool covers database + backend + auth. That's why it's the foundation of most modern AI stacks.</p>
+<p style="font-size:.9rem">Supabase is Postgres with superpowers: <strong>Auth</strong> (user management), <strong>Edge Functions</strong> (serverless code that runs close to your users), <strong>Realtime</strong> (live subscriptions — your UI updates instantly when data changes), <strong>Storage</strong> (files/images), and <strong>pgvector</strong> (a Postgres extension that lets you store AI embeddings — numerical representations of text — so you can do similarity search, like "find memories related to this topic"). One tool covers database + backend + auth. That's why it's the foundation of most modern AI stacks.</p>
 </div>
 
 <div class="progress-section">
