@@ -15,40 +15,35 @@ a{color:inherit;text-decoration:none}
 .container{max-width:800px;margin:0 auto;padding:2rem}
 .lesson-header{margin-bottom:2rem}
 .lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
-.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(251,146,60,.12);color:#fb923c}
+.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(192,132,252,.12);color:#c084fc}
 .xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
 .lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
 .lesson-header p{color:#a1a1aa;line-height:1.6}
 
-.toolbar{display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
-.add-word{display:flex;gap:.5rem;flex:1;min-width:200px}
-.add-word input{flex:1;padding:.6rem 1rem;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.03);color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem;outline:none}
-.add-word input:focus{border-color:rgba(192,132,252,.4)}
-.add-word input::placeholder{color:#52525b}
-.add-word button{padding:.6rem 1.25rem;border:none;border-radius:10px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer}
-.tool-btn{padding:.5rem 1rem;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.03);color:#a1a1aa;font-family:'Inter',sans-serif;font-size:.8rem;cursor:pointer;transition:all .2s}
-.tool-btn:hover{background:rgba(255,255,255,.06)}
+canvas{display:block;width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.06);margin-bottom:1.5rem;background:rgba(255,255,255,.02);cursor:crosshair}
 
-.explorer-wrap{position:relative;width:100%;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);margin-bottom:1.5rem;cursor:grab}
-.explorer-wrap:active{cursor:grabbing}
-canvas{display:block;width:100%;height:auto}
-
-.info-panel{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.info-panel{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
 @media(max-width:600px){.info-panel{grid-template-columns:1fr}}
-.panel{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.25rem}
-.panel h3{font-size:.8rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem}
+.info-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1rem}
+.info-box h4{font-size:.7rem;font-weight:600;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.info-box .vec{font-family:'Courier New',monospace;font-size:.85rem;color:#c084fc;margin-bottom:.25rem}
 
-.selected-word{font-size:1.25rem;font-weight:800;color:#c084fc;margin-bottom:.5rem}
-.neighbors{display:flex;flex-direction:column;gap:.3rem}
-.neighbor{display:flex;justify-content:space-between;align-items:center;padding:.4rem .75rem;border-radius:6px;background:rgba(255,255,255,.03);font-size:.8rem}
-.neighbor .dist{color:#fb923c;font-weight:600;font-size:.75rem}
+.formula-display{background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-family:'Courier New',monospace;font-size:.85rem;line-height:1.8;overflow-x:auto;white-space:pre-wrap}
+.formula-display .label{color:#71717a;font-size:.75rem;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;display:block}
+.formula-display .hl{color:#c084fc}.formula-display .res{color:#fb923c;font-weight:700}
 
-.analogy-calc{margin-bottom:2rem}
-.analogy-calc h3{font-size:1rem;font-weight:700;margin-bottom:1rem;color:#38bdf8}
-.analogy-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
-.analogy-row select{padding:.5rem .75rem;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:#13131a;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:.85rem;outline:none}
-.analogy-row .op{font-size:1.2rem;color:#71717a;font-weight:300}
-.analogy-result{padding:1rem;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:10px;font-size:.95rem;font-weight:600;color:#c084fc;min-height:44px}
+.analogy-section{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.analogy-section h3{font-size:1rem;font-weight:700;margin-bottom:1rem;color:#fb923c}
+.analogy-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.analogy-row select{background:#1a1a24;color:#e5e5e5;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.5rem .75rem;font-family:'Inter',sans-serif;font-size:.85rem;cursor:pointer}
+.analogy-row span{color:#71717a;font-weight:600;font-size:1rem}
+.analogy-result{font-family:'Courier New',monospace;font-size:.85rem;line-height:1.8;color:#a1a1aa;white-space:pre-wrap}
+.analogy-result .res{color:#34d399;font-weight:700}
+
+.hint{font-size:.8rem;color:#52525b;margin-bottom:1.5rem;line-height:1.5}
+
+.narration{background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:12px;padding:1.5rem;margin-bottom:2rem;line-height:1.7;font-size:.95rem}
+.narration strong{color:#c084fc}
 
 .complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
 .complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
@@ -60,298 +55,358 @@ canvas{display:block;width:100%;height:auto}
 <body>
 <nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  <a href="index.html" class="nav-link">&larr; Back to Course</a>
 </nav>
 <div class="container">
   <div class="lesson-header">
     <div class="meta">
-      <span class="type-badge">Simulation</span>
-      <span class="xp-badge">+75 XP</span>
-      <span class="time-badge">~30 min</span>
+      <span class="type-badge">Interactive</span>
+      <span class="xp-badge">+50 XP</span>
+      <span class="time-badge">~15 min</span>
     </div>
     <h1>Embedding Explorer</h1>
-    <p>Explore a 2D map of word meanings. Click words, discover neighbors, and test vector analogies.</p>
+    <p>Words as vectors. Click any word to see its coordinates. Click two words to compute real cosine similarity and see the angle between them.</p>
   </div>
 
-  <div class="toolbar">
-    <div class="add-word">
-      <input type="text" id="wordInput" placeholder="Type a word and press Enter" maxlength="20">
-      <button onclick="addCustomWord()">Add Word</button>
-    </div>
-    <button class="tool-btn" onclick="resetZoom()">Reset Zoom</button>
-  </div>
+  <p class="hint">Click one word to see its vector. Click a second word to compare them with cosine similarity. The angle between the vectors IS the similarity.</p>
 
-  <div class="explorer-wrap" id="explorerWrap">
-    <canvas id="explorerCanvas" width="800" height="500"></canvas>
-  </div>
+  <canvas id="embedCanvas" height="480"></canvas>
 
   <div class="info-panel">
-    <div class="panel">
-      <h3>Selected Word</h3>
-      <div class="selected-word" id="selectedWord">Click a word to inspect</div>
-      <div id="wordVector" style="font-size:.75rem;color:#71717a;margin-bottom:.5rem"></div>
-      <h3 style="margin-top:.75rem">Nearest Neighbors</h3>
-      <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;line-height:1.4">Proximity scores are based on distance in our simplified 2D view. Real embedding similarity uses cosine similarity, which measures the angle between vectors rather than distance.</div>
-      <div class="neighbors" id="neighbors"><div style="font-size:.8rem;color:#52525b">Select a word on the canvas</div></div>
+    <div class="info-box" id="vecA">
+      <h4>Word A</h4>
+      <div class="vec" id="vecAtext">Click a word...</div>
     </div>
-    <div class="panel">
-      <h3>Cluster Info</h3>
-      <div id="clusterInfo" style="font-size:.85rem;color:#a1a1aa;line-height:1.6">
-        Words are positioned by meaning. Similar words cluster together in embedding space. This 2D view is a projection of high-dimensional vectors.
-      </div>
+    <div class="info-box" id="vecB">
+      <h4>Word B</h4>
+      <div class="vec" id="vecBtext">Click a second word...</div>
     </div>
   </div>
 
-  <div class="analogy-calc">
-    <h3>Analogy Calculator</h3>
+  <div class="formula-display" id="formulaBox" style="display:none">
+    <span class="label">Cosine Similarity</span>
+    <div id="formulaContent"></div>
+  </div>
+
+  <div class="analogy-section">
+    <h3>Vector Analogy Calculator</h3>
+    <p style="font-size:.8rem;color:#a1a1aa;margin-bottom:1rem;line-height:1.5">Real word embeddings encode relationships as vector offsets. The classic example: king - man + woman = queen. Try it below with our 2D embeddings.</p>
     <div class="analogy-row">
-      <select id="wordA"></select>
-      <span class="op">-</span>
-      <select id="wordB"></select>
-      <span class="op">+</span>
-      <select id="wordC"></select>
-      <span class="op">=</span>
-      <button class="tool-btn" onclick="calcAnalogy()" style="background:rgba(56,189,248,.12);color:#38bdf8;border-color:rgba(56,189,248,.2)">Calculate</button>
+      <select id="anaA"></select>
+      <span>&minus;</span>
+      <select id="anaB"></select>
+      <span>+</span>
+      <select id="anaC"></select>
+      <span>=</span>
+      <span id="anaResult" style="color:#34d399;font-weight:700">?</span>
     </div>
-    <div class="analogy-result" id="analogyResult">Select words and click Calculate</div>
+    <div class="analogy-result" id="analogyMath"></div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
+  <div class="narration">
+    <strong>Embeddings turn language into geometry.</strong> Words that mean similar things point in similar directions. Cosine similarity measures this by computing the cosine of the angle between two vectors -- 1.0 means identical direction, 0 means unrelated, -1.0 means opposite. Real embeddings use 768+ dimensions, but the math is identical to what you see here in 2D.
+  </div>
+
+  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete &amp; Continue &rarr;</button>
 </div>
 <div class="footer-progress"><span id="footerProgress">0 of 9</span> lessons complete</div>
 
 <script>
-const canvas=document.getElementById('explorerCanvas');
-const ctx=canvas.getContext('2d');
-const dpr=window.devicePixelRatio||1;
-canvas.width=800*dpr;canvas.height=500*dpr;
-ctx.scale(dpr,dpr);
+// === WORD EMBEDDINGS (2D, semantically clustered) ===
+var words = {
+  // Royalty cluster
+  king:     { x: 3.8, y: 3.5, color: '#c084fc' },
+  queen:    { x: 3.2, y: 4.2, color: '#c084fc' },
+  prince:   { x: 4.2, y: 3.0, color: '#c084fc' },
+  princess: { x: 3.6, y: 3.8, color: '#c084fc' },
+  // Gender cluster
+  man:      { x: 1.5, y: 1.2, color: '#fb923c' },
+  woman:    { x: 0.9, y: 1.9, color: '#fb923c' },
+  boy:      { x: 1.9, y: 0.7, color: '#fb923c' },
+  girl:     { x: 1.3, y: 1.4, color: '#fb923c' },
+  // Animals
+  cat:      { x:-2.0, y: 1.5, color: '#34d399' },
+  dog:      { x:-1.5, y: 1.0, color: '#34d399' },
+  puppy:    { x:-1.2, y: 0.6, color: '#34d399' },
+  kitten:   { x:-1.7, y: 1.8, color: '#34d399' },
+  // Food
+  apple:    { x:-1.0, y:-2.5, color: '#f472b6' },
+  banana:   { x:-0.5, y:-2.8, color: '#f472b6' },
+  pizza:    { x: 0.8, y:-2.2, color: '#f472b6' },
+  sushi:    { x: 1.2, y:-2.6, color: '#f472b6' },
+  // Tech
+  computer: { x: 3.0, y:-1.5, color: '#38bdf8' },
+  robot:    { x: 3.5, y:-0.8, color: '#38bdf8' },
+  code:     { x: 2.5, y:-1.8, color: '#38bdf8' },
+  AI:       { x: 3.2, y:-1.0, color: '#38bdf8' }
+};
 
-// Simulated 2D embeddings (pre-computed positions for semantic clustering)
-let wordData=[
-  {word:'king',x:420,y:90,color:'#c084fc',cluster:'royalty'},
-  {word:'queen',x:340,y:100,color:'#c084fc',cluster:'royalty'},
-  {word:'prince',x:450,y:130,color:'#c084fc',cluster:'royalty'},
-  {word:'princess',x:310,y:130,color:'#c084fc',cluster:'royalty'},
-  {word:'throne',x:380,y:60,color:'#c084fc',cluster:'royalty'},
-  {word:'dog',x:100,y:300,color:'#fbbf24',cluster:'animals'},
-  {word:'cat',x:130,y:340,color:'#fbbf24',cluster:'animals'},
-  {word:'fish',x:80,y:370,color:'#fbbf24',cluster:'animals'},
-  {word:'bird',x:150,y:280,color:'#fbbf24',cluster:'animals'},
-  {word:'happy',x:600,y:380,color:'#34d399',cluster:'emotions'},
-  {word:'sad',x:650,y:200,color:'#f87171',cluster:'emotions'},
-  {word:'angry',x:680,y:240,color:'#f87171',cluster:'emotions'},
-  {word:'joyful',x:580,y:410,color:'#34d399',cluster:'emotions'},
-  {word:'love',x:560,y:350,color:'#34d399',cluster:'emotions'},
-  {word:'car',x:200,y:140,color:'#38bdf8',cluster:'vehicles'},
-  {word:'truck',x:240,y:120,color:'#38bdf8',cluster:'vehicles'},
-  {word:'bicycle',x:170,y:170,color:'#38bdf8',cluster:'vehicles'},
-  {word:'plane',x:260,y:80,color:'#38bdf8',cluster:'vehicles'},
-  {word:'computer',x:500,y:280,color:'#fb923c',cluster:'technology'},
-  {word:'phone',x:520,y:310,color:'#fb923c',cluster:'technology'},
-  {word:'internet',x:480,y:250,color:'#fb923c',cluster:'technology'},
-];
+var wordList = Object.keys(words);
+var canvas = document.getElementById('embedCanvas');
+var ctx = canvas.getContext('2d');
+var W, H, dpr;
+var selectedA = null, selectedB = null;
 
-let selected=null;
-let panX=0,panY=0,zoom=1;
-let dragging=false,lastMX=0,lastMY=0;
-let time=0;
-
-function dist(a,b){return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2)}
-
-function getNeighbors(word,n=5){
-  const w=wordData.find(d=>d.word===word);
-  if(!w)return[];
-  return wordData.filter(d=>d.word!==word).map(d=>({word:d.word,dist:dist(w,d)})).sort((a,b)=>a.dist-b.dist).slice(0,n);
+var RANGE = 5.5;
+function toScreen(vx, vy) {
+  var pad = 50;
+  return {
+    sx: pad + ((vx + RANGE) / (2*RANGE)) * (W - 2*pad),
+    sy: (H - pad) - ((vy + RANGE) / (2*RANGE)) * (H - 2*pad)
+  };
 }
 
-function screenToWorld(sx,sy){
-  return{x:(sx-panX)/zoom,y:(sy-panY)/zoom};
+function resizeCanvas() {
+  dpr = window.devicePixelRatio || 1;
+  var rect = canvas.getBoundingClientRect();
+  W = rect.width; H = 480;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr,0,0,dpr,0,0);
 }
 
-function worldToScreen(wx,wy){
-  return{x:wx*zoom+panX,y:wy*zoom+panY};
-}
-
-// Interaction
-const wrap=document.getElementById('explorerWrap');
-wrap.addEventListener('mousedown',e=>{
-  const rect=canvas.getBoundingClientRect();
-  const mx=(e.clientX-rect.left)*(800/rect.width);
-  const my=(e.clientY-rect.top)*(500/rect.height);
-  const wp=screenToWorld(mx,my);
-
-  // Check click on word
-  let clicked=null;
-  wordData.forEach(w=>{
-    if(Math.abs(wp.x-w.x)<20&&Math.abs(wp.y-w.y)<20)clicked=w;
-  });
-
-  if(clicked){
-    selected=clicked.word;
-    updateInfoPanel();
-  }else{
-    dragging=true;lastMX=mx;lastMY=my;
-  }
-});
-wrap.addEventListener('mousemove',e=>{
-  if(!dragging)return;
-  const rect=canvas.getBoundingClientRect();
-  const mx=(e.clientX-rect.left)*(800/rect.width);
-  const my=(e.clientY-rect.top)*(500/rect.height);
-  panX+=mx-lastMX;panY+=my-lastMY;
-  lastMX=mx;lastMY=my;
-});
-wrap.addEventListener('mouseup',()=>dragging=false);
-wrap.addEventListener('mouseleave',()=>dragging=false);
-wrap.addEventListener('wheel',e=>{
-  e.preventDefault();
-  const delta=e.deltaY>0?0.9:1.1;
-  zoom=Math.max(0.5,Math.min(3,zoom*delta));
-},{passive:false});
-
-function resetZoom(){panX=0;panY=0;zoom=1}
-
-function updateInfoPanel(){
-  if(!selected){
-    document.getElementById('selectedWord').textContent='Click a word to inspect';
-    document.getElementById('neighbors').innerHTML='<div style="font-size:.8rem;color:#52525b">Select a word on the canvas</div>';
-    return;
-  }
-  const w=wordData.find(d=>d.word===selected);
-  document.getElementById('selectedWord').textContent=selected;
-  document.getElementById('wordVector').textContent=`Position: [${w.x.toFixed(0)}, ${w.y.toFixed(0)}] · Cluster: ${w.cluster}`;
-
-  const nb=getNeighbors(selected);
-  document.getElementById('neighbors').innerHTML=nb.map(n=>`<div class="neighbor"><span>${n.word}</span><span class="dist">${(1/(1+n.dist/100)).toFixed(3)} proximity</span></div>`).join('');
-
-  const clusterWords=wordData.filter(d=>d.cluster===w.cluster).map(d=>d.word);
-  document.getElementById('clusterInfo').textContent=`"${selected}" belongs to the ${w.cluster} cluster with: ${clusterWords.join(', ')}. In real embeddings, these would be close in 768+ dimensional space.`;
-}
-
-// Add custom word
-function addCustomWord(){
-  const input=document.getElementById('wordInput');
-  const word=input.value.trim().toLowerCase();
-  if(!word||wordData.find(d=>d.word===word))return;
-  // Place near center with slight randomness
-  const x=300+Math.random()*200;
-  const y=200+Math.random()*100;
-  wordData.push({word,x,y,color:'#e5e5e5',cluster:'custom'});
-  input.value='';
-  populateSelects();
-}
-document.getElementById('wordInput').addEventListener('keypress',e=>{if(e.key==='Enter')addCustomWord()});
-
-// Analogy calculator
-function populateSelects(){
-  const names=wordData.map(w=>w.word);
-  ['wordA','wordB','wordC'].forEach(id=>{
-    const sel=document.getElementById(id);
-    const cur=sel.value;
-    sel.innerHTML=names.map(n=>`<option value="${n}"${n===cur?' selected':''}>${n}</option>`).join('');
-  });
-}
-populateSelects();
-
-function calcAnalogy(){
-  const a=wordData.find(w=>w.word===document.getElementById('wordA').value);
-  const b=wordData.find(w=>w.word===document.getElementById('wordB').value);
-  const c=wordData.find(w=>w.word===document.getElementById('wordC').value);
-  if(!a||!b||!c){document.getElementById('analogyResult').textContent='Select valid words';return}
-  const rx=a.x-b.x+c.x;
-  const ry=a.y-b.y+c.y;
-  let closest=null,minD=Infinity;
-  wordData.forEach(w=>{
-    if(w.word===a.word||w.word===b.word||w.word===c.word)return;
-    const d=Math.sqrt((w.x-rx)**2+(w.y-ry)**2);
-    if(d<minD){minD=d;closest=w}
-  });
-  if(closest){
-    document.getElementById('analogyResult').textContent=`${a.word} - ${b.word} + ${c.word} = ${closest.word} (proximity: ${(1/(1+minD/100)).toFixed(3)})`;
-    selected=closest.word;updateInfoPanel();
-  }else{
-    document.getElementById('analogyResult').textContent='No result found';
-  }
-}
-
-// Render
-function draw(){
-  time++;
-  ctx.clearRect(0,0,800,500);
+function draw() {
+  ctx.clearRect(0,0,W,H);
+  var pad = 50;
 
   // Grid
-  const gridSize=50*zoom;
-  const offX=panX%gridSize;const offY=panY%gridSize;
-  ctx.strokeStyle='rgba(255,255,255,.02)';ctx.lineWidth=1;
-  for(let x=offX;x<800;x+=gridSize){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,500);ctx.stroke()}
-  for(let y=offY;y<500;y+=gridSize){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(800,y);ctx.stroke()}
-
-  // Cluster hulls (light)
-  const clusters=[...new Set(wordData.map(w=>w.cluster))];
-  clusters.forEach(cl=>{
-    const cw=wordData.filter(w=>w.cluster===cl);
-    if(cw.length<2)return;
-    const cx=cw.reduce((s,w)=>s+w.x,0)/cw.length;
-    const cy=cw.reduce((s,w)=>s+w.y,0)/cw.length;
-    const maxR=Math.max(...cw.map(w=>dist(w,{x:cx,y:cy})))+30;
-    const sp=worldToScreen(cx,cy);
-    ctx.beginPath();ctx.arc(sp.x,sp.y,maxR*zoom,0,Math.PI*2);
-    ctx.fillStyle=cw[0].color+'08';ctx.fill();
-    ctx.strokeStyle=cw[0].color+'15';ctx.lineWidth=1;ctx.stroke();
-    // Cluster label
-    ctx.font='600 10px Inter';ctx.textAlign='center';ctx.fillStyle=cw[0].color+'40';
-    ctx.fillText(cl.toUpperCase(),sp.x,sp.y-maxR*zoom-8);
-  });
-
-  // Connection lines to selected
-  if(selected){
-    const sw=wordData.find(w=>w.word===selected);
-    const nb=getNeighbors(selected,3);
-    nb.forEach(n=>{
-      const nw=wordData.find(w=>w.word===n.word);
-      const sp1=worldToScreen(sw.x,sw.y);
-      const sp2=worldToScreen(nw.x,nw.y);
-      ctx.beginPath();ctx.moveTo(sp1.x,sp1.y);ctx.lineTo(sp2.x,sp2.y);
-      ctx.strokeStyle='rgba(192,132,252,.15)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();
-      ctx.setLineDash([]);
-    });
+  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.lineWidth = 1;
+  for (var v = -5; v <= 5; v++) {
+    var g1 = toScreen(v,0);
+    ctx.beginPath(); ctx.moveTo(g1.sx,pad); ctx.lineTo(g1.sx,H-pad); ctx.stroke();
+    var g2 = toScreen(0,v);
+    ctx.beginPath(); ctx.moveTo(pad,g2.sy); ctx.lineTo(W-pad,g2.sy); ctx.stroke();
   }
 
-  // Words
-  wordData.forEach(w=>{
-    const sp=worldToScreen(w.x,w.y);
-    const isSel=w.word===selected;
-    const r=isSel?10:7;
-    const oy=Math.sin(time*0.02+w.x*0.1)*2;
+  // Axes
+  var origin = toScreen(0,0);
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(pad, origin.sy); ctx.lineTo(W-pad, origin.sy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(origin.sx, pad); ctx.lineTo(origin.sx, H-pad); ctx.stroke();
 
-    if(isSel){
-      ctx.beginPath();ctx.arc(sp.x,sp.y+oy,r+12,0,Math.PI*2);
-      const g=ctx.createRadialGradient(sp.x,sp.y+oy,r,sp.x,sp.y+oy,r+15);
-      g.addColorStop(0,w.color+'40');g.addColorStop(1,'transparent');
-      ctx.fillStyle=g;ctx.fill();
+  // If two words selected, draw vectors and angle
+  if (selectedA && selectedB) {
+    var a = words[selectedA], b = words[selectedB];
+    var oS = toScreen(0,0);
+    var aS = toScreen(a.x, a.y);
+    var bS = toScreen(b.x, b.y);
+
+    drawArrow(oS.sx, oS.sy, aS.sx, aS.sy, 'rgba(192,132,252,0.7)');
+    drawArrow(oS.sx, oS.sy, bS.sx, bS.sy, 'rgba(251,146,60,0.7)');
+
+    // Angle arc
+    var angleA = Math.atan2(-(aS.sy - oS.sy), aS.sx - oS.sx);
+    var angleB = Math.atan2(-(bS.sy - oS.sy), bS.sx - oS.sx);
+    var arcR = 40;
+    ctx.strokeStyle = 'rgba(52,211,153,0.5)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    var diff = angleB - angleA;
+    while (diff > Math.PI) diff -= 2*Math.PI;
+    while (diff < -Math.PI) diff += 2*Math.PI;
+    ctx.arc(oS.sx, oS.sy, arcR, -angleA, -angleB, diff < 0);
+    ctx.stroke();
+
+    // Theta label
+    var theta = angleBetween(a, b);
+    var midAngle = (angleA + angleB) / 2;
+    var lx = oS.sx + Math.cos(-midAngle) * (arcR + 14);
+    var ly = oS.sy + Math.sin(-midAngle) * (arcR + 14);
+    ctx.fillStyle = '#34d399';
+    ctx.font = '700 12px Inter';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('\u03B8=' + (theta * 180 / Math.PI).toFixed(1) + '\u00B0', lx, ly);
+  } else if (selectedA) {
+    var sa = words[selectedA];
+    var oSa = toScreen(0,0);
+    var aSa = toScreen(sa.x, sa.y);
+    drawArrow(oSa.sx, oSa.sy, aSa.sx, aSa.sy, 'rgba(192,132,252,0.7)');
+  }
+
+  // Word dots
+  var names = Object.keys(words);
+  for (var i = 0; i < names.length; i++) {
+    var name = names[i];
+    var w = words[name];
+    var pos = toScreen(w.x, w.y);
+    var isSelected = (name === selectedA || name === selectedB);
+    var r = isSelected ? 7 : 5;
+
+    ctx.beginPath();
+    ctx.arc(pos.sx, pos.sy, r, 0, Math.PI*2);
+    ctx.fillStyle = isSelected ? '#fff' : w.color;
+    ctx.fill();
+    if (isSelected) {
+      ctx.strokeStyle = w.color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
     }
 
-    ctx.beginPath();ctx.arc(sp.x,sp.y+oy,r*zoom,0,Math.PI*2);
-    ctx.fillStyle=w.color;ctx.globalAlpha=isSel?1:.8;ctx.fill();ctx.globalAlpha=1;
-
-    ctx.font=(isSel?'700':'600')+' '+(isSel?13:11)+'px Inter';
-    ctx.textAlign='center';ctx.fillStyle=isSel?'#fff':'#e5e5e5';
-    ctx.fillText(w.word,sp.x,sp.y+oy-r*zoom-6);
-  });
-
-  requestAnimationFrame(draw);
+    ctx.fillStyle = isSelected ? '#fff' : w.color;
+    ctx.font = (isSelected ? '700' : '600') + ' ' + (isSelected ? '12' : '11') + 'px Inter';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(name, pos.sx, pos.sy - r - 3);
+  }
 }
+
+function drawArrow(x1,y1,x2,y2,color) {
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x1,y1);
+  ctx.lineTo(x2,y2);
+  ctx.stroke();
+  var angle = Math.atan2(y2-y1, x2-x1);
+  var hl = 10;
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - hl*Math.cos(angle-0.4), y2 - hl*Math.sin(angle-0.4));
+  ctx.lineTo(x2 - hl*Math.cos(angle+0.4), y2 - hl*Math.sin(angle+0.4));
+  ctx.closePath();
+  ctx.fill();
+}
+
+function angleBetween(a, b) {
+  var dot = a.x*b.x + a.y*b.y;
+  var magA = Math.sqrt(a.x*a.x + a.y*a.y);
+  var magB = Math.sqrt(b.x*b.x + b.y*b.y);
+  if (magA === 0 || magB === 0) return 0;
+  return Math.acos(Math.max(-1, Math.min(1, dot / (magA * magB))));
+}
+
+function cosineSimilarity(a, b) {
+  var dot = a.x*b.x + a.y*b.y;
+  var magA = Math.sqrt(a.x*a.x + a.y*a.y);
+  var magB = Math.sqrt(b.x*b.x + b.y*b.y);
+  if (magA === 0 || magB === 0) return 0;
+  return dot / (magA * magB);
+}
+
+// === CLICK HANDLING ===
+canvas.addEventListener('click', function(e) {
+  var rect = canvas.getBoundingClientRect();
+  var mx = e.clientX - rect.left;
+  var my = e.clientY - rect.top;
+
+  var closest = null, closestDist = 25;
+  var names = Object.keys(words);
+  for (var i = 0; i < names.length; i++) {
+    var w = words[names[i]];
+    var pos = toScreen(w.x, w.y);
+    var d = Math.sqrt((mx-pos.sx)*(mx-pos.sx) + (my-pos.sy)*(my-pos.sy));
+    if (d < closestDist) { closest = names[i]; closestDist = d; }
+  }
+
+  if (!closest) return;
+
+  if (!selectedA || selectedB) {
+    selectedA = closest;
+    selectedB = null;
+    updateInfo();
+  } else if (closest !== selectedA) {
+    selectedB = closest;
+    updateInfo();
+  }
+  draw();
+});
+
+function updateInfo() {
+  if (selectedA) {
+    var a = words[selectedA];
+    document.getElementById('vecAtext').innerHTML =
+      '<strong style="color:#e5e5e5">' + selectedA + '</strong> = [' + a.x.toFixed(2) + ', ' + a.y.toFixed(2) + ']';
+  } else {
+    document.getElementById('vecAtext').textContent = 'Click a word...';
+  }
+
+  if (selectedB) {
+    var b = words[selectedB];
+    document.getElementById('vecBtext').innerHTML =
+      '<strong style="color:#e5e5e5">' + selectedB + '</strong> = [' + b.x.toFixed(2) + ', ' + b.y.toFixed(2) + ']';
+
+    var a2 = words[selectedA];
+    var dot = a2.x*b.x + a2.y*b.y;
+    var magA = Math.sqrt(a2.x*a2.x + a2.y*a2.y);
+    var magB = Math.sqrt(b.x*b.x + b.y*b.y);
+    var cos = cosineSimilarity(a2, b);
+    var theta = angleBetween(a2, b);
+
+    var box = document.getElementById('formulaBox');
+    box.style.display = 'block';
+    document.getElementById('formulaContent').innerHTML =
+      '<span class="hl">cos(\u03B8) = (A \u00B7 B) / (|A| \u00D7 |B|)</span>\n\n' +
+      'A \u00B7 B = (' + a2.x.toFixed(2) + ' \u00D7 ' + b.x.toFixed(2) + ') + (' + a2.y.toFixed(2) + ' \u00D7 ' + b.y.toFixed(2) + ') = <span class="hl">' + dot.toFixed(3) + '</span>\n' +
+      '|A| = \u221A(' + a2.x.toFixed(2) + '\u00B2 + ' + a2.y.toFixed(2) + '\u00B2) = <span class="hl">' + magA.toFixed(3) + '</span>\n' +
+      '|B| = \u221A(' + b.x.toFixed(2) + '\u00B2 + ' + b.y.toFixed(2) + '\u00B2) = <span class="hl">' + magB.toFixed(3) + '</span>\n\n' +
+      '<span class="res">Cosine Similarity = ' + dot.toFixed(3) + ' / (' + magA.toFixed(3) + ' \u00D7 ' + magB.toFixed(3) + ') = ' + cos.toFixed(4) + '</span>\n' +
+      '<span class="hl">\u03B8 = ' + (theta * 180 / Math.PI).toFixed(1) + '\u00B0</span>  (smaller angle = more similar)';
+  } else {
+    document.getElementById('vecBtext').textContent = 'Click a second word...';
+    document.getElementById('formulaBox').style.display = 'none';
+  }
+}
+
+// === ANALOGY CALCULATOR ===
+var anaA = document.getElementById('anaA');
+var anaB = document.getElementById('anaB');
+var anaC = document.getElementById('anaC');
+
+wordList.forEach(function(w) {
+  [anaA, anaB, anaC].forEach(function(sel) {
+    var opt = document.createElement('option');
+    opt.value = w; opt.textContent = w;
+    sel.appendChild(opt);
+  });
+});
+anaA.value = 'king'; anaB.value = 'man'; anaC.value = 'woman';
+
+function computeAnalogy() {
+  var a = words[anaA.value], b = words[anaB.value], c = words[anaC.value];
+  var rx = a.x - b.x + c.x;
+  var ry = a.y - b.y + c.y;
+
+  var best = null, bestDist = Infinity;
+  var names = Object.keys(words);
+  for (var i = 0; i < names.length; i++) {
+    var name = names[i];
+    if (name === anaA.value || name === anaB.value || name === anaC.value) continue;
+    var w = words[name];
+    var d = Math.sqrt((w.x - rx)*(w.x - rx) + (w.y - ry)*(w.y - ry));
+    if (d < bestDist) { best = name; bestDist = d; }
+  }
+
+  document.getElementById('anaResult').textContent = best || '?';
+  if (best) {
+    document.getElementById('analogyMath').innerHTML =
+      '[' + a.x.toFixed(2) + ', ' + a.y.toFixed(2) + '] \u2212 [' + b.x.toFixed(2) + ', ' + b.y.toFixed(2) + '] + [' + c.x.toFixed(2) + ', ' + c.y.toFixed(2) + ']\n' +
+      '= [' + rx.toFixed(2) + ', ' + ry.toFixed(2) + ']\n' +
+      'Nearest word: <span class="res">' + best + '</span> at [' + words[best].x.toFixed(2) + ', ' + words[best].y.toFixed(2) + '] (distance: ' + bestDist.toFixed(3) + ')';
+  }
+}
+
+[anaA, anaB, anaC].forEach(function(sel) { sel.addEventListener('change', computeAnalogy); });
+computeAnalogy();
+
+// === INIT ===
+window.addEventListener('resize', function() { resizeCanvas(); draw(); });
+resizeCanvas();
 draw();
 
+// === PROGRESS ===
 function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
 function updateFooter(){
-  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
+  var p=getProgress();var c=Object.keys(p).filter(function(k){return p[k]}).length;
   document.getElementById('footerProgress').textContent=c+' of 9';
-  if(p['embedding-explorer']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
+  if(p['embedding-explorer']){document.getElementById('completeBtn').textContent='Completed';document.getElementById('completeBtn').classList.add('done')}
 }
 function completeLesson(){
-  const p=getProgress();p['embedding-explorer']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
+  var p=getProgress();p['embedding-explorer']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
   window.location.href='similarity-challenge.html';
 }
 updateFooter();
