@@ -35,7 +35,7 @@ async function getHFToken(): Promise<string> {
 // Generate embedding via HuggingFace BGE-small
 async function embed(text: string, hfToken: string): Promise<number[]> {
   const res = await fetch(
-    "https://api-inference.huggingface.co/models/BAAI/bge-small-en-v1.5",
+    "https://router.huggingface.co/hf-inference/models/BAAI/bge-small-en-v1.5/pipeline/feature-extraction",
     {
       method: "POST",
       headers: { Authorization: `Bearer ${hfToken}`, "Content-Type": "application/json" },
