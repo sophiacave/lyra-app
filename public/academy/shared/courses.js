@@ -55,13 +55,13 @@ window.ACADEMY_COURSES = {
     title: "Claude Mastery",
     lessons: [
       { slug: "meet-claude", title: "Meet Claude" },
-      { slug: "context-window", title: "Context Window" },
+      { slug: "context-window-explorer", title: "Context Window" },
       { slug: "temperature-lab", title: "Temperature Lab" },
       { slug: "system-prompts", title: "System Prompts" },
       { slug: "chain-of-thought", title: "Chain of Thought" },
-      { slug: "few-shot", title: "Few-Shot Prompting" },
-      { slug: "prompt-game", title: "Prompt Game" },
-      { slug: "tool-use", title: "Tool Use" },
+      { slug: "few-shot-mastery", title: "Few-Shot Prompting" },
+      { slug: "prompt-engineering-game", title: "Prompt Game" },
+      { slug: "tool-use-basics", title: "Tool Use" },
       { slug: "mcp-servers", title: "MCP Servers" },
       { slug: "building-agents", title: "Building Agents" }
     ]

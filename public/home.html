@@ -199,6 +199,62 @@
     footer .logo-sm span { color: var(--accent); }
     footer p { color: var(--text-muted); font-size: .75rem; }
     footer a { color: var(--accent); text-decoration: none; }
+
+    /* ---- APPLE-LEVEL ANIMATIONS ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes borderFlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes bgDrift {
+      0%   { transform: translate(0, 0); }
+      33%  { transform: translate(2%, 1.5%); }
+      66%  { transform: translate(-1%, 2%); }
+      100% { transform: translate(0, 0); }
+    }
+    .hero-inner > * {
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-inner > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-inner > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero h1 .accent {
+      background: linear-gradient(135deg, #c084fc, #e879f9, #38bdf8, #c084fc);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite;
+    }
+    .price-card, .product-card {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .price-card:hover, .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-light);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    }
+    .price-card.featured:hover {
+      box-shadow: 0 16px 48px rgba(251, 146, 60, 0.15);
+    }
+    .founding-banner::before {
+      background: linear-gradient(90deg, var(--warm), var(--glow), var(--accent), var(--warm)) !important;
+      background-size: 300% 100% !important;
+      animation: borderFlow 3s linear infinite;
+    }
+    .founding-banner { transition: box-shadow 0.3s ease; }
+    .founding-banner:hover { box-shadow: 0 0 40px rgba(251, 146, 60, 0.1); }
+    body::before { animation: bgDrift 20s ease-in-out infinite; }
   </style>
 </head>
 <body>
@@ -401,7 +457,7 @@
   <div class="container">
     <div class="logo-sm">like<span>one</span></div>
     <p style="margin-bottom: .5rem;">Built with love by Faye Cave. Powered by convergence.</p>
-    <p>&copy; 2026 Like One LLC. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a> &bull; <a href="tel:+17027476877">+1 (702) 747-6877</a></p>
+    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a> &bull; <a href="tel:+17027476877">+1 (702) 747-6877</a></p>
     <p style="margin-top:8px"><a href="/privacy.html">Privacy Policy</a> &bull; <a href="/terms.html">Terms of Service</a></p>
   </div>
 </footer>

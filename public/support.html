@@ -84,6 +84,57 @@
     @media (max-width: 600px) {
       .amount-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-links { gap: 1rem; }
+      .nav-links a { font-size: .8rem; }
+      .hero h1 { letter-spacing: -1px; font-size: clamp(1.9rem, 8vw, 3.5rem); }
+      .pillars { grid-template-columns: 1fr; }
+      blockquote { font-size: 1rem; padding-left: 1rem; }
+    }
+
+    /* ---- APPLE-LEVEL ANIMATIONS ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero-inner > * {
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-inner > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero h1 .warm {
+      background: linear-gradient(135deg, #fb923c, #e879f9, #fb923c);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+    }
+    .pillar {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .pillar:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-light);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+    .amount-btn {
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .amount-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(192, 132, 252, 0.15);
+    }
+    body::before { animation: bgDrift 20s ease-in-out infinite; }
+    @keyframes bgDrift {
+      0%   { transform: translate(0, 0); }
+      33%  { transform: translate(2%, 1.5%); }
+      66%  { transform: translate(-1%, 2%); }
+      100% { transform: translate(0, 0); }
     }
   </style>
 </head>
@@ -154,8 +205,14 @@
         <a href="https://buy.stripe.com/8x26oAf5S35l3az9JM3sI0g" target="_blank" class="amount-btn" style="border-color: var(--warm); color: var(--warm);">$50</a>
         <a href="https://buy.stripe.com/dRmbIU5vibBR7qPbRU3sI0h" target="_blank" class="amount-btn">$100</a>
       </div>
+      <div class="amount-grid" style="margin-top: 10px;">
+        <a href="https://buy.stripe.com/eVq4gscXKcFV4eD4ps3sI0i" target="_blank" class="amount-btn">$250</a>
+        <a href="https://buy.stripe.com/dRm14gg9W9tJ26vcVY3sI0j" target="_blank" class="amount-btn">$500</a>
+        <a href="https://buy.stripe.com/14A14ge1O49p9yX09c3sI0k" target="_blank" class="amount-btn">$1,000</a>
+        <a href="mailto:faye@likeone.ai?subject=Large%20Donation%20—%20Like%20One" class="amount-btn" style="font-size: .85rem;">$1K+</a>
+      </div>
 
-      <p style="color: var(--text-muted); font-size: .8rem; margin-top: 1rem;">Secure payment via Stripe. One-time contribution. For other amounts, email <a href="mailto:faye@likeone.ai" style="color: var(--accent);">faye@likeone.ai</a>.</p>
+      <p style="color: var(--text-muted); font-size: .8rem; margin-top: 1rem;">Secure payment via Stripe. One-time contribution. For custom amounts or donations over $1,000, email <a href="mailto:faye@likeone.ai" style="color: var(--accent);">faye@likeone.ai</a>.</p>
     </div>
 
     <p class="story" style="margin-top: 2.5rem;"><strong>Full transparency:</strong> Like One is early. I haven't donated to HIV research yet — because the company is still finding its footing. But that is the mission, and it's non-negotiable. As revenue grows, so does the impact. Your support helps me get there faster.</p>
@@ -166,7 +223,7 @@
 
     <div class="legal">
       <h3>Important Disclosure</h3>
-      <p>Like One LLC is a for-profit company, not a registered nonprofit. Contributions made through this page are personal gifts to support Faye Cave's work and mission — they are <strong style="color: var(--text-dim);">not tax-deductible</strong>. This is not an investment, and no equity, returns, or ownership are offered or implied. Funds will be used at Faye's discretion to build Like One, create educational content, and pursue the mission described above. By contributing, you acknowledge that outcomes are not guaranteed. Thank you for believing in the work.</p>
+      <p>Like One is a sole proprietorship operated by Sophia Cave (Faye Cave), not a registered nonprofit or corporation. Contributions made through this page are personal gifts to support Faye's work and mission — they are <strong style="color: var(--text-dim);">not tax-deductible</strong>. This is not an investment, and no equity, returns, or ownership are offered or implied. Funds will be used at Faye's discretion to build Like One, create educational content, and pursue the mission described above. By contributing, you acknowledge that outcomes are not guaranteed. Thank you for believing in the work.</p>
     </div>
   </div>
 </section>
@@ -174,7 +231,7 @@
 <footer>
   <div class="container">
     <p style="margin-bottom: .5rem;">Built with love by Faye Cave. Powered by convergence.</p>
-    <p>&copy; 2026 Like One LLC. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a></p>
+    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a></p>
   </div>
 </footer>
 
