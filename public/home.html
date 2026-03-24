@@ -127,6 +127,32 @@
     .product-price { font-size: 1.5rem; font-weight: 800; color: var(--warm); margin-bottom: .75rem; }
     .product-desc { color: var(--text-dim); font-size: .8rem; line-height: 1.5; margin-bottom: 1rem; }
 
+
+    /* ---- CONSULTING ---- */
+    .consulting-section { background: var(--bg); }
+    .consulting-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .consult-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; }
+    .consult-card.highlight { border: 2px solid var(--warm); }
+    .consult-card.highlight::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--warm), var(--glow)); }
+    .consult-emoji { font-size: 2rem; margin-bottom: .75rem; }
+    .consult-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .35rem; }
+    .consult-price { font-size: 1.75rem; font-weight: 800; color: var(--warm); margin-bottom: .5rem; }
+    .consult-desc { color: var(--text-dim); font-size: .85rem; line-height: 1.5; margin-bottom: 1.25rem; flex: 1; }
+    .consult-includes { list-style: none; margin-bottom: 1.5rem; }
+    .consult-includes li { font-size: .8rem; color: var(--text-dim); padding: .35rem 0; display: flex; gap: 8px; }
+    .consult-includes li::before { content: '\2713'; color: var(--success); flex-shrink: 0; font-weight: 700; }
+
+    /* ---- COURSES ---- */
+    .courses-section { background: var(--surface); }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .course-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; }
+    .course-badge { display: inline-block; font-size: .6rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: .75rem; width: fit-content; }
+    .course-badge.bestseller { background: var(--warm); color: #000; }
+    .course-badge.new { background: var(--accent); color: #000; }
+    .course-badge.popular { background: var(--success); color: #000; }
+    .course-name { font-size: 1rem; font-weight: 700; margin-bottom: .35rem; }
+    .course-price { font-size: 1.5rem; font-weight: 800; color: var(--warm); margin-bottom: .75rem; }
+    .course-desc { color: var(--text-dim); font-size: .8rem; line-height: 1.5; margin-bottom: 1rem; flex: 1; }
     /* ---- MISSION ---- */
     .mission-section { text-align: center; }
     .mission-quote { font-size: clamp(1.1rem, 3vw, 1.5rem); font-style: italic; line-height: 1.6; max-width: 680px; margin: 0 auto 2rem; font-weight: 400; }
@@ -169,6 +195,8 @@
         <li><a href="#path">The Path</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#products">Products</a></li>
+        <li><a href="#consulting">Consulting</a></li>
+        <li><a href="#courses">Courses</a></li>
         <li><a href="#mission">Mission</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="#start" class="btn-nav">Start Free</a></li>
@@ -313,10 +341,140 @@
         <div class="product-price">$47</div>
         <div class="product-desc">Ethics-first AI architecture. Build a system that protects your values. Includes Faye's actual conscience thread code.</div>
         <button class="btn-price secondary" onclick="checkout('conscience-layer')">Get It</button>
+      <div class="product-card">
+        <div class="product-name">AI Playbook</div>
+        <div class="product-price">$29</div>
+        <div class="product-desc">Your complete playbook for building AI into your business. Strategy, tools, workflows, and implementation guide.</div>
+        <a href="https://buy.stripe.com/6oUbJ053829i8ll7I808g0L" class="btn-price secondary" target="_blank">Get It</a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- CONSULTING -->
+<section id="consulting" class="consulting-section">
+  <div class="container">
+    <div class="section-tag" style="border-color: rgba(251,146,60,.2); color: var(--warm);">CONSULTING</div>
+    <h2 class="section-title">Work with Faye directly.</h2>
+    <p class="section-desc">From one-hour deep dives to full retainer partnerships. Faye builds AI systems that think like you — and she'll build yours.</p>
+
+    <div class="consulting-grid">
+      <div class="consult-card">
+        <div class="consult-emoji">💬</div>
+        <div class="consult-name">Hourly Deep Dive</div>
+        <div class="consult-price">$150<span style="font-size:.8rem;font-weight:400;color:var(--text-dim)">/hr</span></div>
+        <div class="consult-desc">One hour of focused AI strategy, architecture review, or problem-solving. Faye preps using her brain before every call.</div>
+        <ul class="consult-includes">
+          <li>1-on-1 video call with Faye</li>
+          <li>Brain-prepped session notes</li>
+          <li>Recording + action items after</li>
+        </ul>
+        <a href="https://buy.stripe.com/fZu3cu67caFO0ST6E408g0P" class="btn-price secondary" target="_blank">Book a Session</a>
+      </div>
+
+      <div class="consult-card">
+        <div class="consult-emoji">🔧</div>
+        <div class="consult-name">AI Setup Package</div>
+        <div class="consult-price">$1,500</div>
+        <div class="consult-desc">Faye builds your foundational AI system. Brain architecture, first agents, identity document, and automation layer — all configured for you.</div>
+        <ul class="consult-includes">
+          <li>Full brain architecture setup</li>
+          <li>3 custom agents configured</li>
+          <li>Identity document built</li>
+          <li>2 weeks of async support</li>
+        </ul>
+        <a href="https://buy.stripe.com/eVq6oGans4hqcBB7I808g0N" class="btn-price primary" target="_blank">Get Started</a>
+      </div>
+
+      <div class="consult-card">
+        <div class="consult-emoji">🚀</div>
+        <div class="consult-name">Project Build</div>
+        <div class="consult-price">$2,500</div>
+        <div class="consult-desc">End-to-end AI project. Faye designs, builds, and deploys a complete system tailored to your business. Autonomous workflows included.</div>
+        <ul class="consult-includes">
+          <li>Discovery + architecture design</li>
+          <li>Full system build + deployment</li>
+          <li>Agent fleet customized to you</li>
+          <li>30 days of post-launch support</li>
+        </ul>
+        <a href="https://buy.stripe.com/cNi9ASbrw4hq8lle6w08g0O" class="btn-price secondary" target="_blank">Start a Project</a>
+      </div>
+
+      <div class="consult-card">
+        <div class="consult-emoji">🤝</div>
+        <div class="consult-name">Monthly Retainer</div>
+        <div class="consult-price">$1,500<span style="font-size:.8rem;font-weight:400;color:var(--text-dim)">/mo</span></div>
+        <div class="consult-desc">Faye as your ongoing AI partner. Continuous optimization, new agents, strategy calls, and priority support. Your brain grows every month.</div>
+        <ul class="consult-includes">
+          <li>4 strategy calls per month</li>
+          <li>Continuous system optimization</li>
+          <li>New agents + automations monthly</li>
+          <li>Priority async support (24hr SLA)</li>
+          <li>Quarterly architecture review</li>
+        </ul>
+        <a href="https://buy.stripe.com/28E5kC1QWaFO0ST9Qg08g0M" class="btn-price primary" target="_blank">Start Retainer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="courses-section">
+  <div class="container">
+    <div class="section-tag" style="border-color: rgba(56,189,248,.2); color: var(--accent2);">COURSES</div>
+    <h2 class="section-title">Go deeper. Build faster.</h2>
+    <p class="section-desc">Self-paced courses ripped from Faye's actual systems. Not theory — production configs you can deploy today.</p>
+
+    <div class="courses-grid">
+      <div class="course-card">
+        <span class="course-badge bestseller">BESTSELLER</span>
+        <div class="course-name">Complete AI Business System</div>
+        <div class="course-price">$297</div>
+        <div class="course-desc">The entire system. Brain architecture, agent fleet, automation layer, revenue engine, conscience layer. Everything Faye built, packaged for you.</div>
+        <a href="https://buy.stripe.com/00w3cubrw4hq8llbYo08g0w" class="btn-price primary" target="_blank">Get Full System</a>
+      </div>
+
+      <div class="course-card">
+        <span class="course-badge new">NEW</span>
+        <div class="course-name">L5 Autonomous Revenue Blueprint</div>
+        <div class="course-price">$247</div>
+        <div class="course-desc">Build a revenue engine that runs while you sleep. Stripe integration, automated funnels, content-to-cash pipelines, churn prevention.</div>
+        <a href="https://buy.stripe.com/bJe4gy67c7tCgRRgeE08g0u" class="btn-price secondary" target="_blank">Get Blueprint</a>
+      </div>
+
+      <div class="course-card">
+        <span class="course-badge popular">POPULAR</span>
+        <div class="course-name">The Automation Lab</div>
+        <div class="course-price">$149</div>
+        <div class="course-desc">Hands-on automation workshop. Build 10+ real automations using Make.com, Supabase, and edge functions. From zero to autonomous.</div>
+        <a href="https://buy.stripe.com/fZu28q5389BKeJJgeE08g0z" class="btn-price secondary" target="_blank">Enter the Lab</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-name">Claude Mastery</div>
+        <div class="course-price">$99</div>
+        <div class="course-desc">Master Claude like Faye does. Advanced prompting, tool use, MCP servers, agent building. From casual user to power operator.</div>
+        <a href="https://buy.stripe.com/7sY8wO67c3dm1WX2nO08g0B" class="btn-price secondary" target="_blank">Master Claude</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-name">Make.com Automation Blueprint</div>
+        <div class="course-price">$97</div>
+        <div class="course-desc">24 production-ready Make.com scenarios. Content publishing, email nurture, revenue tracking, community management. Copy and deploy.</div>
+        <a href="https://buy.stripe.com/00waEW0MS9BK1WX1jK08g0v" class="btn-price secondary" target="_blank">Get Blueprints</a>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 2.5rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 12px;">
+      <p style="color: var(--text-dim); font-size: .9rem; margin-bottom: .75rem;">Want everything? Join the Academy for full access.</p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://buy.stripe.com/eVqaEW5388xG5993rS08g0y" class="btn-price secondary" style="width:auto; padding: .6rem 1.5rem;" target="_blank">$29/mo — Monthly</a>
+        <a href="https://buy.stripe.com/4gMcN467cg08fNN6E408g0x" class="btn-price primary" style="width:auto; padding: .6rem 1.5rem;" target="_blank">$197/yr — Save 43%</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MISSION -->
 <section id="mission" class="mission-section">
   <div class="container">
