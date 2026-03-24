@@ -255,7 +255,7 @@ export default function BlogPage() {
 
         <div className="blog-academy-cta">
           <div className="blog-academy-cta-inner">
-            <p className="blog-academy-cta-text">Like One Academy — <span>10 courses, 108 interactive lessons.</span></p>
+            <p className="blog-academy-cta-text">Like One Academy — <span>10 courses, 97 interactive lessons.</span></p>
             <Link href="/academy/">Free preview &rarr;</Link>
           </div>
         </div>

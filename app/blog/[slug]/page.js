@@ -388,7 +388,7 @@ export default async function PostPage({ params }) {
         <div className="post-related-course">
           <div className="post-related-course-inner">
             <h3>Want to go deeper?</h3>
-            <p>Check out Like One Academy — 10 courses, 108 interactive lessons.</p>
+            <p>Check out Like One Academy — 10 courses, 97 interactive lessons.</p>
             <Link href="/academy/" className="post-related-course-link">Start free &rarr;</Link>
           </div>
         </div>
