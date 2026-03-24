@@ -17,6 +17,13 @@ export function middleware(request) {
     return NextResponse.rewrite(url);
   }
 
+  // Clean URL for support/donate page
+  if (pathname === '/support' || pathname === '/support/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/support.html';
+    return NextResponse.rewrite(url);
+  }
+
   // Rewrite /_temp to /temp (Next.js treats _prefixed folders as private)
   if (pathname === '/_temp') {
     const url = request.nextUrl.clone();
@@ -31,5 +38,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/about', '/about/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
+  matcher: ['/', '/about', '/about/', '/support', '/support/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
 };
