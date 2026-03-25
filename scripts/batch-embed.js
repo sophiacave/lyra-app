@@ -5,8 +5,8 @@
  * Run: node scripts/batch-embed.js
  */
 
-const SUPABASE_URL = "https://vpaynwebgmmnwttqkwmh.supabase.co";
-const SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzI2NzQ5OSwiZXhwIjoyMDg4ODQzNDk5fQ._IRdLX3vwlyzs0zU9M-JqnYK4merTd3NHC9c9GQNhPY";
+const SUPABASE_URL = process.env.SUPABASE_URL || "https://tnsujchfrixxsdpodygu.supabase.co";
+const SERVICE_KEY = process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 const BATCH_SIZE = 5; // concurrent requests
 const DELAY_MS = 500; // delay between batches to avoid rate limits

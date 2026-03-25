@@ -125,7 +125,7 @@ def fix_env_config():
     if env.exists():
         _log("  .env already exists, skipping")
         return True
-    env.write_text("SUPABASE_URL=https://vpaynwebgmmnwttqkwmh.supabase.co\nSUPABASE_KEY=YOUR_SERVICE_ROLE_KEY_HERE\n")
+    env.write_text("SUPABASE_URL=https://tnsujchfrixxsdpodygu.supabase.co\nSUPABASE_KEY=YOUR_SERVICE_ROLE_KEY_HERE\n")
     _log("  ✓ Template created — needs manual key entry")
     return False  # Needs human action
 

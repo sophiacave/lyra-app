@@ -13,7 +13,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 // ─── Configuration ───────────────────────────────────────────────────────────
-const SUPABASE_URL = process.env.SUPABASE_URL || "https://vpaynwebgmmnwttqkwmh.supabase.co";
+const SUPABASE_URL = process.env.SUPABASE_URL || "https://tnsujchfrixxsdpodygu.supabase.co";
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY || "";
 const BRAIN_API_URL = process.env.BRAIN_API_URL || `${SUPABASE_URL}/functions/v1/brain-api`;
 const BRAIN_API_KEY = process.env.BRAIN_API_KEY || "lk-brain-2026-fractal-console-key";

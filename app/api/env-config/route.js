@@ -11,7 +11,7 @@ export async function GET(request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://vpaynwebgmmnwttqkwmh.supabase.co';
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://tnsujchfrixxsdpodygu.supabase.co';
   const supabaseKey = process.env.SUPABASE_SERVICE_KEY || '';
   const notionToken = process.env.NOTION_TOKEN || '';
 
