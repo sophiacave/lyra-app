@@ -299,78 +299,91 @@ const COURSES = [
 ];
 
 const grid = document.getElementById('courses');
+const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
 
-COURSES.forEach(c => {
-  // Check localStorage for progress
-  const progress = JSON.parse(localStorage.getItem(`course_${c.slug}_progress`) || '{}');
-  const completed = Object.values(progress).filter(v => v === true).length;
-  const pct = c.lessons > 0 ? Math.round((completed / c.lessons) * 100) : 0;
+// Get progress from localStorage (lesson-nav.js stores as lo_progress_{slug})
+function getCourseProgress(slug) {
+  try {
+    const data = JSON.parse(localStorage.getItem('lo_progress_' + slug) || '[]');
+    return Array.isArray(data) ? data.length : 0;
+  } catch(e) { return 0; }
+}
 
-  const card = document.createElement('a');
-  card.href = `/academy/${c.slug}/`;
-  card.className = 'course-card';
-  card.style.setProperty('--accent', c.accent);
+function renderCourses(isPro) {
+  grid.innerHTML = '';
+  COURSES.forEach(c => {
+    const completed = getCourseProgress(c.slug);
+    const pct = c.lessons > 0 ? Math.round((completed / c.lessons) * 100) : 0;
+    const hasStarted = completed > 0;
+    const isComplete = pct >= 100;
 
-  card.innerHTML = `
-    <div class="card-header">
-      <div class="card-emoji">${c.emoji}</div>
-      <div class="card-badges">${c.badges.map(b => `<span class="card-badge ${b.class}">${b.text}</span>`).join('')}</div>
-    </div>
-    <div class="card-title">${c.title}</div>
-    <div class="card-subtitle">${c.subtitle}</div>
-    <div class="card-desc">${c.desc}</div>
-    <div class="card-meta">
-      <span>⏱ ${c.hours} hrs</span>
-      <span>📚 ${c.lessons} lessons</span>
-    </div>
-    <div class="card-btn ${c.btnClass}" style="background:${c.accent}">${c.btnText}</div>
-    ${pct > 0 ? `<div class="card-progress"><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${c.accent}"></div></div><div class="progress-label">${completed}/${c.lessons} complete (${pct}%)</div></div>` : ''}
-  `;
-  grid.appendChild(card);
-});
+    // Determine button text based on auth + progress
+    let btnText = c.btnText;
+    if (isPro || c.price === 0) {
+      if (isComplete) btnText = 'Completed ✓';
+      else if (hasStarted) btnText = 'Continue Learning →';
+      else btnText = 'Start Course →';
+    }
+
+    const card = document.createElement('a');
+    card.href = `/academy/${c.slug}/`;
+    card.className = 'course-card';
+    card.style.setProperty('--accent', c.accent);
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-emoji">${c.emoji}</div>
+        <div class="card-badges">
+          ${c.badges.map(b => `<span class="card-badge ${b.class}">${b.text}</span>`).join('')}
+          ${isPro && c.price > 0 ? '<span class="card-badge" style="background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.25)">Unlocked</span>' : ''}
+        </div>
+      </div>
+      <div class="card-title">${c.title}</div>
+      <div class="card-subtitle">${c.subtitle}</div>
+      <div class="card-desc">${c.desc}</div>
+      <div class="card-meta">
+        <span>⏱ ${c.hours} hrs</span>
+        <span>📚 ${c.lessons} lessons</span>
+        ${hasStarted ? `<span style="color:${c.accent};font-weight:600">${pct}%</span>` : ''}
+      </div>
+      <div class="card-btn ${c.btnClass}" style="background:${c.accent}">${btnText}</div>
+      ${hasStarted ? `<div class="card-progress"><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${c.accent}"></div></div><div class="progress-label">${completed}/${c.lessons} complete</div></div>` : ''}
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Initial render (assumes free)
+renderCourses(false);
+
+// Then check auth and re-render if pro
+const SESSION_KEY = 'sb-blknphuwwgagtueqtoji-auth-token';
+const raw = localStorage.getItem(SESSION_KEY);
+if (raw) {
+  try {
+    const session = JSON.parse(raw);
+    const email = session?.user?.email;
+    if (email && session?.access_token) {
+      fetch('https://app.likeone.ai/rest/v1/profiles?email=eq.' + encodeURIComponent(email) + '&select=subscription_status', {
+        headers: { apikey: ANON, Authorization: 'Bearer ' + ANON }
+      }).then(r => r.json()).then(profiles => {
+        const isPro = profiles[0]?.subscription_status === 'active';
+        if (isPro) {
+          renderCourses(true);
+          // Update subscribe CTA
+          const sub = document.querySelector('.subscribe-cta');
+          if (sub) sub.innerHTML = '<div style="text-align:center;padding:2rem"><div style="font-size:1.5rem;margin-bottom:.5rem">💜</div><p style="color:#4ade80;font-weight:700;font-size:1.1rem">You have full access to all courses</p><p style="color:#8a8aaa;font-size:.9rem;margin-top:.5rem">Thank you for being a founding member.</p></div>';
+          // Pro badge
+          const hero = document.querySelector('.hero-badge');
+          if (hero) hero.insertAdjacentHTML('afterend', '<div style="display:inline-block;background:rgba(74,222,128,.12);color:#4ade80;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(74,222,128,.25);margin-left:8px">PRO MEMBER</div>');
+        }
+      }).catch(() => {});
+    }
+  } catch(e) {}
+}
 
 </script>
 <script src="/auth-state.js"></script>
-<script>
-// Update UI for signed-in pro members
-setTimeout(() => {
-  const user = window.__likeone_user;
-  if (user && user.signed_in) {
-    // Check subscription from localStorage (fast) or fetch from API
-    const SESSION_KEY = 'sb-blknphuwwgagtueqtoji-auth-token';
-    const raw = localStorage.getItem(SESSION_KEY);
-    if (raw) {
-      const session = JSON.parse(raw);
-      const email = session?.user?.email;
-      if (email) {
-        fetch('https://app.likeone.ai/rest/v1/profiles?email=eq.' + encodeURIComponent(email) + '&select=subscription_status,subscription_tier', {
-          headers: {
-            apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s'
-          }
-        }).then(r => r.json()).then(profiles => {
-          if (profiles[0]?.subscription_status === 'active') {
-            // Pro member — update all buttons
-            document.querySelectorAll('.card-btn').forEach(btn => {
-              if (btn.textContent.includes('Free Preview') || btn.textContent.includes('Start Free')) {
-                btn.textContent = 'Continue Learning →';
-              }
-            });
-            // Hide subscribe CTA
-            const sub = document.querySelector('.subscribe-cta');
-            if (sub) {
-              sub.innerHTML = '<div style="text-align:center;padding:2rem;"><div style="font-size:1.5rem;margin-bottom:.5rem">💜</div><p style="color:#4ade80;font-weight:700;font-size:1.1rem">You have full access to all courses</p><p style="color:#737373;font-size:.9rem;margin-top:.5rem">Thank you for being a founding member.</p></div>';
-            }
-            // Add pro badge to header
-            const hero = document.querySelector('.hero-badge');
-            if (hero) hero.insertAdjacentHTML('afterend', '<div style="display:inline-block;background:rgba(74,222,128,.12);color:#4ade80;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(74,222,128,.25);margin-left:8px">PRO MEMBER</div>');
-          }
-        }).catch(() => {});
-      }
-    }
-  }
-}, 150);
-</script>
 <script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/engine.js"></script>
 
