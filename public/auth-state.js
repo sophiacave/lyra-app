@@ -23,7 +23,7 @@
     // Store user info for other pages (forum, etc.)
     window.__likeone_user = {
       email: session.user.email,
-      name: session.user.user_metadata?.full_name || session.user.user_metadata?.name || localStorage.getItem('lo_display_name') || '',
+      name: localStorage.getItem('lo_display_name') || session.user.user_metadata?.full_name || session.user.user_metadata?.name || '',
       avatar: session.user.user_metadata?.avatar_url || '',
       signed_in: true
     };
