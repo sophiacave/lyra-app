@@ -131,6 +131,26 @@
       <div class="success-msg" id="success-msg"></div>
       <div class="error-msg" id="error-msg"></div>
 
+      <!-- Profile Card -->
+      <div class="card">
+        <div class="card-label">Profile</div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+          <div id="avatar-circle" style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; color: #000; overflow: hidden;"></div>
+          <div>
+            <div id="profile-name-display" style="font-weight: 700;"></div>
+            <div id="profile-email-display" style="font-size: .8rem; color: var(--text-muted);"></div>
+          </div>
+        </div>
+        <div style="margin-bottom: .75rem;">
+          <label style="display: block; font-size: .75rem; font-weight: 600; color: var(--text-muted); margin-bottom: .35rem; text-transform: uppercase; letter-spacing: .5px;">Display Name</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="display-name-input" placeholder="How should we call you?" maxlength="50" style="flex: 1; padding: .6rem .85rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: .9rem; font-family: inherit; outline: none;">
+            <button class="btn btn-ghost" id="save-name-btn" onclick="saveDisplayName()" style="padding: .6rem 1rem; font-size: .8rem;">Save</button>
+          </div>
+          <p style="color: var(--text-muted); font-size: .75rem; margin-top: .35rem;">This name appears on your forum posts and profile.</p>
+        </div>
+      </div>
+
       <!-- Subscription Card -->
       <div class="card">
         <div class="card-label">Subscription</div>
@@ -246,7 +266,10 @@ async function showAccount(session) {
     } catch(e) { /* brain may be recovering */ }
 
     if (profile) {
+      populateProfile(email, profile);
       renderProfile(profile);
+    } else {
+      populateProfile(email, null);
     }
   } catch (e) {
     console.error('Failed to load profile:', e);
@@ -374,6 +397,63 @@ async function handleSignin(e) {
   } else {
     document.querySelector('.signin-form').style.display = 'none';
     document.getElementById('signin-sent').style.display = 'block';
+  }
+}
+
+function populateProfile(email, profile) {
+  const name = profile?.full_name || localStorage.getItem('lo_display_name') || email.split('@')[0];
+  const avatar = window.__likeone_user?.avatar;
+
+  document.getElementById('profile-name-display').textContent = name;
+  document.getElementById('profile-email-display').textContent = email;
+  document.getElementById('display-name-input').value = name;
+
+  const circle = document.getElementById('avatar-circle');
+  if (avatar) {
+    circle.innerHTML = `<img src="${avatar}" style="width:100%;height:100%;object-fit:cover" referrerpolicy="no-referrer">`;
+  } else {
+    circle.textContent = name.charAt(0).toUpperCase();
+  }
+}
+
+async function saveDisplayName() {
+  const name = document.getElementById('display-name-input').value.trim();
+  if (!name) return;
+
+  const btn = document.getElementById('save-name-btn');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+
+  try {
+    // Save to localStorage for instant access across pages
+    localStorage.setItem('lo_display_name', name);
+
+    // Save to profiles table
+    const email = document.getElementById('user-email').textContent;
+    await fetch(`${APP_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}`, {
+      method: 'PATCH',
+      headers: {
+        apikey: APP_ANON,
+        Authorization: `Bearer ${APP_ANON}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal'
+      },
+      body: JSON.stringify({ full_name: name, updated_at: new Date().toISOString() })
+    });
+
+    // Also save to forum localStorage
+    localStorage.setItem('forum_name', name);
+    localStorage.setItem('forum_email', email);
+
+    document.getElementById('profile-name-display').textContent = name;
+    const circle = document.getElementById('avatar-circle');
+    if (!circle.querySelector('img')) circle.textContent = name.charAt(0).toUpperCase();
+
+    btn.textContent = 'Saved!';
+    setTimeout(() => { btn.textContent = 'Save'; btn.disabled = false; }, 2000);
+  } catch(e) {
+    btn.textContent = 'Save';
+    btn.disabled = false;
   }
 }
 

@@ -20,6 +20,14 @@
     // Check if token is expired
     if (session.expires_at && session.expires_at * 1000 < Date.now()) return;
 
+    // Store user info for other pages (forum, etc.)
+    window.__likeone_user = {
+      email: session.user.email,
+      name: session.user.user_metadata?.full_name || session.user.user_metadata?.name || localStorage.getItem('lo_display_name') || '',
+      avatar: session.user.user_metadata?.avatar_url || '',
+      signed_in: true
+    };
+
     // User is signed in — update all "Sign In" links to "My Account"
     document.querySelectorAll('a[href="/account"]').forEach(link => {
       if (link.textContent.trim() === 'Sign In') {

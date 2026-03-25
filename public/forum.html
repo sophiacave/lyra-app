@@ -279,12 +279,44 @@ let expandedPosts = new Set();
 function getSaved(key) { try { return localStorage.getItem('forum_' + key) || ''; } catch(e) { return ''; } }
 function setSaved(key, val) { try { localStorage.setItem('forum_' + key, val); } catch(e) {} }
 
-// Load saved name/email
+// Load saved name/email + check auth
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('post-name').value = getSaved('name');
-  document.getElementById('post-email').value = getSaved('email');
-  document.getElementById('report-name').value = getSaved('name');
-  document.getElementById('report-email').value = getSaved('email');
+  // Check if user is signed in (set by auth-state.js)
+  setTimeout(() => {
+    const user = window.__likeone_user;
+    if (user && user.signed_in) {
+      const name = user.name || localStorage.getItem('lo_display_name') || user.email.split('@')[0];
+      const email = user.email;
+
+      // Auto-fill all name/email fields
+      document.getElementById('post-name').value = name;
+      document.getElementById('post-email').value = email;
+      document.getElementById('report-name').value = name;
+      document.getElementById('report-email').value = email;
+
+      // Make email fields read-only for signed-in users
+      document.getElementById('post-email').readOnly = true;
+      document.getElementById('post-email').style.opacity = '0.6';
+      document.getElementById('report-email').readOnly = true;
+      document.getElementById('report-email').style.opacity = '0.6';
+
+      // Show "posting as" badge
+      const badge = document.createElement('div');
+      badge.style.cssText = 'text-align:center;padding:.5rem 1rem;margin-bottom:1rem;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:8px;font-size:.8rem;color:#8888a0;';
+      badge.innerHTML = 'Posting as <strong style="color:#c084fc">' + name + '</strong> &bull; <a href="/account" style="color:#c084fc;text-decoration:none;font-size:.75rem">Edit profile</a>';
+      const toggle = document.getElementById('new-post-toggle');
+      if (toggle) toggle.parentNode.insertBefore(badge, toggle);
+
+      // Update toggle text
+      document.getElementById('new-post-toggle').textContent = '+ Start a new conversation as ' + name + '...';
+    } else {
+      document.getElementById('post-name').value = getSaved('name');
+      document.getElementById('post-email').value = getSaved('email');
+      document.getElementById('report-name').value = getSaved('name');
+      document.getElementById('report-email').value = getSaved('email');
+    }
+  }, 100); // Small delay for auth-state.js to run first
+
   loadPosts();
 });
 
