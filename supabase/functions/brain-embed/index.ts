@@ -2,6 +2,9 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+// Brain-v2 for brain_context access (separate project for isolation)
+const BRAIN_URL = Deno.env.get("BRAIN_URL") || SUPABASE_URL;
+const BRAIN_KEY = Deno.env.get("BRAIN_SERVICE_KEY") || SERVICE_KEY;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -17,8 +20,8 @@ async function getHFToken(): Promise<string> {
   if (_hfToken) return _hfToken;
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/brain_context?key=eq.credentials.huggingface&select=value`,
-      { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
+      `${BRAIN_URL}/rest/v1/brain_context?key=eq.credentials.huggingface&select=value`,
+      { headers: { apikey: BRAIN_KEY, Authorization: `Bearer ${BRAIN_KEY}` } }
     );
     const rows = await res.json();
     if (rows[0]?.value) {
@@ -70,12 +73,12 @@ Deno.serve(async (req: Request) => {
       const embedding = await embed(text, hfToken);
       // Update the brain_context row with the embedding
       const updateRes = await fetch(
-        `${SUPABASE_URL}/rest/v1/brain_context?key=eq.${encodeURIComponent(key)}`,
+        `${BRAIN_URL}/rest/v1/brain_context?key=eq.${encodeURIComponent(key)}`,
         {
           method: "PATCH",
           headers: {
-            apikey: SERVICE_KEY,
-            Authorization: `Bearer ${SERVICE_KEY}`,
+            apikey: BRAIN_KEY,
+            Authorization: `Bearer ${BRAIN_KEY}`,
             "Content-Type": "application/json",
             Prefer: "return=minimal",
           },

@@ -18,6 +18,9 @@ const corsHeaders = {
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+// Brain-v2 for brain_context access (separate project for isolation)
+const BRAIN_URL = Deno.env.get("BRAIN_URL") || SUPABASE_URL;
+const BRAIN_KEY = Deno.env.get("BRAIN_SERVICE_KEY") || SERVICE_KEY;
 
 interface RouterRequest {
   query: string;
@@ -47,7 +50,7 @@ async function ragSearch(query: string, limit = 5): Promise<RAGResult[]> {
 
 // Get credential from brain_context
 async function getCredential(key: string): Promise<string> {
-  const supabase = createClient(SUPABASE_URL, SERVICE_KEY);
+  const supabase = createClient(BRAIN_URL, BRAIN_KEY);
   const { data } = await supabase
     .from("brain_context")
     .select("value")

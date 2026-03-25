@@ -1,14 +1,10 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;  // revenue project (auto-injected)
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;  // app project (all tables here now)
 const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const STRIPE_WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET")!;
 const DOWNLOAD_TOKEN_SECRET = Deno.env.get("DOWNLOAD_TOKEN_SECRET") || "likeone-dl-2026-secret";
 const DONATION_PCT = 0.01;
-
-// Cross-project: app brain for profiles + enrollments
-const APP_URL = Deno.env.get("APP_SUPABASE_URL") || SUPABASE_URL;
-const APP_KEY = Deno.env.get("APP_SERVICE_KEY") || SERVICE_ROLE_KEY;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -45,9 +41,9 @@ async function supabaseQuery(path: string, method: string, body?: unknown) {
 }
 
 async function updateSubscriptionProfile(email: string, status: string, stripeCustomerId?: string, subscriptionId?: string) {
-  await fetch(`${APP_URL}/rest/v1/rpc/update_subscription_status`, {
+  await fetch(`${SUPABASE_URL}/rest/v1/rpc/update_subscription_status`, {
     method: 'POST',
-    headers: { "apikey": APP_KEY, "Authorization": `Bearer ${APP_KEY}`, "Content-Type": "application/json" },
+    headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({ p_email: email, p_status: status, p_tier: status === 'active' ? 'pro' : 'free', p_stripe_customer_id: stripeCustomerId || null, p_subscription_id: subscriptionId || null })
   });
   console.log(`Profile updated: ${email} -> ${status}`);
@@ -105,8 +101,8 @@ async function handleCheckout(session: any) {
 
   // 5. Academy enrollment
   if (mode === "subscription" && subscriptionId) {
-    await fetch(`${APP_URL}/rest/v1/academy_enrollments`, {
-      method: "POST", headers: { "apikey": APP_KEY, "Authorization": `Bearer ${APP_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+    await fetch(`${SUPABASE_URL}/rest/v1/academy_enrollments`, {
+      method: "POST", headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
       body: JSON.stringify({ user_email: email, user_name: customerName, status: "active",
         stripe_subscription_id: subscriptionId, stripe_payment_intent_id: paymentIntentId,
         metadata: { product_id: productId, enrolled_via: "stripe_webhook" } })
@@ -131,15 +127,15 @@ async function handleSubscriptionDeleted(sub: any) {
     await updateSubscriptionProfile(customerEmail, 'cancelled');
   } else {
     // Try to find email from profiles table by subscription_id (app project)
-    const resp = await fetch(`${APP_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
-      headers: { apikey: APP_KEY, Authorization: `Bearer ${APP_KEY}` }
+    const resp = await fetch(`${SUPABASE_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
+      headers: { apikey: SERVICE_ROLE_KEY, Authorization: `Bearer ${SERVICE_ROLE_KEY}` }
     });
     const rows = await resp.json();
     if (rows[0]?.email) await updateSubscriptionProfile(rows[0].email, 'cancelled');
   }
 
-  await fetch(`${APP_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
-    method: "PATCH", headers: { "apikey": APP_KEY, "Authorization": `Bearer ${APP_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+  await fetch(`${SUPABASE_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
+    method: "PATCH", headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
     body: JSON.stringify({ status: "cancelled", completed_at: new Date().toISOString() })
   });
   await supabaseQuery("revenue_events", "POST", {
@@ -156,8 +152,8 @@ async function handleSubscriptionUpdated(sub: any) {
   const status = sub.status;
   
   // Update profile subscription status
-  const resp = await fetch(`${APP_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
-    headers: { apikey: APP_KEY, Authorization: `Bearer ${APP_KEY}` }
+  const resp = await fetch(`${SUPABASE_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
+    headers: { apikey: SERVICE_ROLE_KEY, Authorization: `Bearer ${SERVICE_ROLE_KEY}` }
   });
   const rows = await resp.json();
   if (rows[0]?.email) {
@@ -166,8 +162,8 @@ async function handleSubscriptionUpdated(sub: any) {
   }
 
   const enrollmentStatus = status === "active" ? "active" : status === "past_due" ? "past_due" : status === "canceled" ? "cancelled" : status;
-  await fetch(`${APP_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
-    method: "PATCH", headers: { "apikey": APP_KEY, "Authorization": `Bearer ${APP_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+  await fetch(`${SUPABASE_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
+    method: "PATCH", headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
     body: JSON.stringify({ status: enrollmentStatus, metadata: { last_stripe_status: status, updated_at: new Date().toISOString() } })
   });
 }

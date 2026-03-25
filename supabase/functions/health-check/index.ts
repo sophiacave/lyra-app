@@ -1,7 +1,7 @@
 /**
- * LIKE ONE OPS — Health Check
- * Monitors all 4 brains and reports status.
- * Deploy to: like-one-ops (iairxsntsvqzzrgrvkqy)
+ * LIKE ONE — Health Check
+ * Monitors 2 projects (app + brain) and reports status.
+ * Deploy to: like-one-app (blknphuwwgagtueqtoji)
  */
 
 const corsHeaders = {
@@ -24,20 +24,6 @@ const BRAINS = [
     url: "https://blknphuwwgagtueqtoji.supabase.co",
     anon: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s",
     test_table: "profiles",
-  },
-  {
-    name: "revenue",
-    ref: "munmhzylfoiyigismbds",
-    url: "https://munmhzylfoiyigismbds.supabase.co",
-    anon: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11bm1oenlsZm9peWlnaXNtYmRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxODYsImV4cCI6MjA4OTk4MzE4Nn0.f6J4AnYwjA-WFYrEs_RSpYux3yewHiAwJb8u4_kJUvA",
-    test_table: "revenue_events",
-  },
-  {
-    name: "ops",
-    ref: "iairxsntsvqzzrgrvkqy",
-    url: "https://iairxsntsvqzzrgrvkqy.supabase.co",
-    anon: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhaXJ4c250c3ZxenpyZ3J2a3F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcyMDIsImV4cCI6MjA4OTk4MzIwMn0.bOrfvZ1kp9Kg2gp6KVmgrG2Imqf5Y9VYte1xv-TbGME",
-    test_table: "health_checks",
   },
 ];
 
