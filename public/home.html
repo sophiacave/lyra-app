@@ -316,12 +316,13 @@
   <div class="container">
     <!-- Founding Member Banner -->
     <div class="founding-banner" id="founding-banner">
-      <div class="founding-badge">FOUNDING MEMBER SALE</div>
-      <div class="founding-headline">First 1,000 members get <span class="warm">90% off</span> — forever.</div>
-      <div class="founding-sub">Lock in $4.99/mo or $39.99/yr for life. This price never goes up. When 1,000 spots fill, it's full price.</div>
-      <div class="founding-counter">
+      <div class="founding-badge">FOUNDING MEMBER PRICING</div>
+      <div class="founding-headline">Lock in <span class="warm">90% off</span> — forever.</div>
+      <div class="founding-sub">Founding members pay $4.99/mo or $39.99/yr for life. This price never increases. When founding spots close, it's full price ($49/mo).</div>
+      <!-- Counter hidden until <500 spots remain — then shows as scarcity signal -->
+      <div class="founding-counter" id="founding-counter" style="display: none;">
         <div class="counter-bar"><div class="counter-fill" id="counter-fill" style="width: 0%"></div></div>
-        <div class="counter-text"><strong id="spots-remaining">...</strong> of 1,000 spots left</div>
+        <div class="counter-text"><strong id="spots-remaining"></strong> founding spots left</div>
       </div>
     </div>
 
@@ -572,11 +573,16 @@ async function loadFoundingCount() {
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/founding-count`);
     const data = await res.json();
-    const remaining = data.remaining ?? 995;
-    const pct = ((data.total ?? 5) / 1000) * 100;
+    const remaining = data.remaining ?? 1000;
+    const total = data.total ?? 0;
+    const pct = (total / 1000) * 100;
 
-    document.getElementById('spots-remaining').textContent = remaining.toLocaleString();
-    document.getElementById('counter-fill').style.width = pct + '%';
+    // Only show counter when <500 spots remain (scarcity, not emptiness)
+    if (remaining < 500) {
+      document.getElementById('founding-counter').style.display = 'flex';
+      document.getElementById('spots-remaining').textContent = remaining.toLocaleString();
+      document.getElementById('counter-fill').style.width = pct + '%';
+    }
 
     if (data.sold_out) {
       // Switch to regular pricing
@@ -591,8 +597,7 @@ async function loadFoundingCount() {
       document.getElementById('annual-btn').textContent = 'Go Annual — Save 33%';
     }
   } catch(e) {
-    // Fallback — show founding pricing anyway
-    document.getElementById('spots-remaining').textContent = '995';
+    // Silently fail — founding banner still shows, just no counter
   }
 }
 

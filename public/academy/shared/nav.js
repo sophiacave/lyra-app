@@ -56,7 +56,7 @@
       <div class="lo-nav-right">
         <a href="/forum">Forum</a>
         <a href="/academy/community.html">Community</a>
-        <a href="/academy/signin.html" class="lo-nav-signin">Sign In</a>
+        <a href="/account" style="color:#c084fc;font-weight:600;font-size:.75rem">My Account</a>
       </div>
     </div>
   `;
