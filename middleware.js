@@ -31,6 +31,13 @@ export function middleware(request) {
     return NextResponse.rewrite(url);
   }
 
+  // Clean URL for forum
+  if (pathname === '/forum' || pathname === '/forum/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/forum.html';
+    return NextResponse.rewrite(url);
+  }
+
   // Rewrite /_temp to /temp (Next.js treats _prefixed folders as private)
   if (pathname === '/_temp') {
     const url = request.nextUrl.clone();
@@ -45,5 +52,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/about', '/about/', '/community-access', '/community-access/', '/support', '/support/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
+  matcher: ['/', '/about', '/about/', '/community-access', '/community-access/', '/support', '/support/', '/forum', '/forum/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
 };

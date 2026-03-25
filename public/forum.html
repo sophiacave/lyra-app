@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Forum — Like One Academy</title>
+  <meta name="description" content="Join the Like One community. Ask questions, share wins, and connect with fellow learners on the convergence path.">
+  <meta name="author" content="Faye Cave">
+  <meta property="og:title" content="Community Forum — Like One Academy">
+  <meta property="og:description" content="Ask questions, share wins, and connect with fellow learners building AI systems with soul.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #08080a; --surface: #111114; --surface-hover: #18181c;
+      --text: #e8e8ec; --text-dim: #8888a0; --text-muted: #55556a;
+      --accent: #c084fc; --accent2: #38bdf8; --warm: #fb923c;
+      --glow: #e879f9; --success: #4ade80;
+      --border: #1e1e28; --border-light: #2a2a38;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(192,132,252,.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(56,189,248,.03) 0%, transparent 50%);
+      pointer-events: none; z-index: -1;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+
+    /* NAV */
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(8,8,10,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; max-width: 1100px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
+    .logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .logo-badge { font-size: .6rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(192,132,252,.3); padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+    .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .25s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-active { color: #c084fc !important; font-weight: 700 !important; }
+    .btn-nav { background: var(--warm); color: #000; padding: .5rem 1.25rem; border-radius: 8px; font-weight: 700; font-size: .85rem; text-decoration: none; transition: all .2s; }
+    .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(251,146,60,.2); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--surface); border-bottom: 1px solid var(--border); }
+      .nav-links.active { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a, .nav-links .btn-nav { display: block; padding: 1rem 2rem; border-bottom: 1px solid var(--border); border-radius: 0; text-align: left; }
+      .mobile-toggle { display: block; }
+    }
+
+    /* HERO */
+    .hero { padding: 4rem 2rem 2rem; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1.5px; margin-bottom: .75rem; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-sub { color: var(--text-dim); font-size: 1rem; max-width: 520px; margin: 0 auto; }
+
+    /* TABS */
+    .tab-bar { display: flex; gap: 4px; margin: 2rem 0 1.5rem; flex-wrap: wrap; }
+    .tab-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--text-dim); font-size: .8rem; font-weight: 500; cursor: pointer; font-family: inherit; transition: all .2s; }
+    .tab-btn:hover { border-color: var(--accent); color: var(--text); }
+    .tab-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+
+    /* NEW POST FORM */
+    .new-post-toggle { display: flex; align-items: center; gap: 8px; padding: .75rem 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text-dim); font-size: .9rem; cursor: pointer; font-family: inherit; width: 100%; text-align: left; transition: all .2s; margin-bottom: 1.5rem; }
+    .new-post-toggle:hover { border-color: var(--accent); color: var(--text); }
+    .new-post-form { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; display: none; }
+    .new-post-form.visible { display: block; }
+    .form-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    .form-row.full { flex-direction: column; }
+    .form-input { flex: 1; padding: .6rem .85rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: .9rem; font-family: inherit; outline: none; }
+    .form-input:focus { border-color: var(--accent); }
+    .form-input::placeholder { color: var(--text-muted); }
+    textarea.form-input { min-height: 100px; resize: vertical; line-height: 1.6; }
+    .form-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .btn-submit { background: var(--warm); color: #000; padding: .6rem 1.5rem; border: none; border-radius: 8px; font-weight: 700; font-size: .85rem; cursor: pointer; font-family: inherit; transition: all .2s; }
+    .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(251,146,60,.2); }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+    .btn-cancel { background: none; border: none; color: var(--text-muted); font-size: .85rem; cursor: pointer; font-family: inherit; }
+    .btn-cancel:hover { color: var(--text); }
+    .form-note { color: var(--text-muted); font-size: .75rem; }
+
+    /* POSTS */
+    .posts-list { display: flex; flex-direction: column; gap: 12px; }
+    .post-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; transition: border-color .2s; }
+    .post-card:hover { border-color: var(--border-light); }
+    .post-card.pinned { border-color: var(--warm); background: rgba(251,146,60,.03); }
+    .post-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: .5rem; }
+    .post-title { font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: color .2s; }
+    .post-title:hover { color: var(--accent); }
+    .post-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .post-author { font-size: .8rem; font-weight: 600; color: var(--accent); }
+    .post-author.faye { color: var(--warm); }
+    .post-date { font-size: .75rem; color: var(--text-muted); }
+    .post-badge { font-size: .6rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: .5px; }
+    .post-badge.pinned { background: var(--warm); color: #000; }
+    .post-badge.faye { background: rgba(251,146,60,.15); color: var(--warm); border: 1px solid rgba(251,146,60,.3); }
+    .post-body { color: var(--text-dim); font-size: .9rem; line-height: 1.7; margin: .5rem 0; }
+    .post-body.truncated { max-height: 4.8em; overflow: hidden; position: relative; }
+    .post-actions { display: flex; gap: 16px; align-items: center; margin-top: .75rem; }
+    .post-action-btn { background: none; border: none; color: var(--text-muted); font-size: .8rem; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 4px; transition: color .2s; }
+    .post-action-btn:hover { color: var(--text); }
+    .post-action-btn .count { font-weight: 600; }
+    .post-replies { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+    .reply-card { padding: .75rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+    .reply-card .post-body { margin: .25rem 0 0; }
+
+    /* EMPTY STATE */
+    .empty-state { text-align: center; padding: 4rem 2rem; }
+    .empty-emoji { font-size: 3rem; margin-bottom: 1rem; }
+    .empty-title { font-size: 1.25rem; font-weight: 700; margin-bottom: .5rem; }
+    .empty-desc { color: var(--text-dim); font-size: .9rem; }
+
+    /* SUCCESS */
+    .success-msg { background: rgba(74,222,128,.08); border: 1px solid rgba(74,222,128,.3); border-radius: 8px; padding: .75rem 1rem; color: var(--success); font-size: .85rem; font-weight: 600; margin-bottom: 1rem; display: none; }
+    .success-msg.visible { display: block; }
+    .error-msg { background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.3); border-radius: 8px; padding: .75rem 1rem; color: #f87171; font-size: .85rem; font-weight: 600; margin-bottom: 1rem; display: none; }
+    .error-msg.visible { display: block; }
+
+    /* LOADING */
+    .loading { text-align: center; padding: 3rem; color: var(--text-muted); font-size: .9rem; }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 2rem; border-top: 1px solid var(--border); text-align: center; margin-top: 4rem; }
+    footer .logo-sm { font-size: 1.1rem; font-weight: 700; margin-bottom: .75rem; }
+    footer .logo-sm span { color: var(--accent); }
+    footer p { color: var(--text-muted); font-size: .75rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .form-row { flex-direction: column; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <nav>
+    <div>
+      <a href="/" class="logo">like<span>one</span></a>
+      <span class="logo-badge">COMMUNITY</span>
+    </div>
+    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="/academy/">Academy</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/forum" class="nav-active">Forum</a></li>
+      <li><a href="/support" style="color: var(--warm); font-weight: 700;">Support</a></li>
+      <li><a href="/#start" class="btn-nav">Start Free</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Community <span class="accent">Forum</span></h1>
+  <p class="hero-sub">Ask questions, share wins, help each other. This is where the convergence path becomes a shared journey.</p>
+</section>
+
+<!-- MAIN -->
+<main>
+  <div class="container">
+
+    <!-- CATEGORY TABS -->
+    <div class="tab-bar" id="tab-bar">
+      <button class="tab-btn active" data-slug="general" onclick="switchTab('general')">All Posts</button>
+      <button class="tab-btn" data-slug="introductions" onclick="switchTab('introductions')">Introductions</button>
+      <button class="tab-btn" data-slug="questions" onclick="switchTab('questions')">Questions</button>
+      <button class="tab-btn" data-slug="wins" onclick="switchTab('wins')">Wins</button>
+      <button class="tab-btn" data-slug="ai-foundations" onclick="switchTab('ai-foundations')">AI Foundations</button>
+      <button class="tab-btn" data-slug="mcp-masterclass" onclick="switchTab('mcp-masterclass')">MCP</button>
+    </div>
+
+    <!-- NEW POST -->
+    <button class="new-post-toggle" id="new-post-toggle" onclick="toggleNewPost()">
+      + Start a new conversation...
+    </button>
+
+    <div class="success-msg" id="success-msg">Your post is live! Thanks for contributing.</div>
+    <div class="error-msg" id="error-msg"></div>
+
+    <div class="new-post-form" id="new-post-form">
+      <div class="form-row">
+        <input type="text" class="form-input" id="post-name" placeholder="Your name" maxlength="100">
+        <input type="email" class="form-input" id="post-email" placeholder="Your email (not shown publicly)" maxlength="255">
+      </div>
+      <div class="form-row full">
+        <input type="text" class="form-input" id="post-title" placeholder="Post title" maxlength="200">
+      </div>
+      <div class="form-row full">
+        <textarea class="form-input" id="post-body" placeholder="What's on your mind? Ask a question, share something you learned, celebrate a win..." maxlength="5000"></textarea>
+      </div>
+      <div class="form-actions">
+        <div class="form-note">Email is used for rate limiting only — never shown or shared.</div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn-cancel" onclick="toggleNewPost()">Cancel</button>
+          <button class="btn-submit" id="post-submit" onclick="submitPost()">Post</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSTS -->
+    <div class="loading" id="loading">Loading posts...</div>
+    <div class="posts-list" id="posts-list"></div>
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="empty-emoji">💬</div>
+      <div class="empty-title">No posts yet</div>
+      <div class="empty-desc">Be the first to start a conversation. We'd love to hear from you.</div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="max-width: 1100px;">
+    <div class="logo-sm">like<span>one</span></div>
+    <p style="margin-bottom: .5rem;">Built with love by Faye Cave. Powered by convergence.</p>
+    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a> &bull; <a href="tel:+17027476877">+1 (702) 747-6877</a></p>
+    <p style="margin-top:8px"><a href="/privacy.html">Privacy Policy</a> &bull; <a href="/terms.html">Terms of Service</a></p>
+  </div>
+</footer>
+
+<script>
+const SUPABASE_URL = "https://vpaynwebgmmnwttqkwmh.supabase.co";
+const ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo";
+
+let currentSlug = "general";
+let allPosts = [];
+let expandedPosts = new Set();
+
+// Persist name/email in localStorage for convenience
+function getSaved(key) { try { return localStorage.getItem('forum_' + key) || ''; } catch(e) { return ''; } }
+function setSaved(key, val) { try { localStorage.setItem('forum_' + key, val); } catch(e) {} }
+
+// Load saved name/email
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('post-name').value = getSaved('name');
+  document.getElementById('post-email').value = getSaved('email');
+  loadPosts();
+});
+
+function toggleNewPost() {
+  const form = document.getElementById('new-post-form');
+  const toggle = document.getElementById('new-post-toggle');
+  form.classList.toggle('visible');
+  toggle.style.display = form.classList.contains('visible') ? 'none' : 'flex';
+}
+
+function switchTab(slug) {
+  currentSlug = slug;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.slug === slug));
+  renderPosts();
+}
+
+async function loadPosts() {
+  const loading = document.getElementById('loading');
+  try {
+    // Fetch all posts via REST API (RLS allows public reads)
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/forum_posts?select=*&order=is_pinned.desc,created_at.desc`,
+      { headers: { apikey: ANON_KEY, Authorization: `Bearer ${ANON_KEY}` } }
+    );
+
+    if (!res.ok) throw new Error('Failed to load');
+    allPosts = await res.json();
+    loading.style.display = 'none';
+    renderPosts();
+  } catch (err) {
+    loading.textContent = 'Failed to load posts. Please refresh.';
+    console.error(err);
+  }
+}
+
+function renderPosts() {
+  const list = document.getElementById('posts-list');
+  const empty = document.getElementById('empty-state');
+
+  // Filter: top-level posts only, by category
+  let topPosts = allPosts.filter(p => !p.parent_id);
+  if (currentSlug !== 'general') {
+    topPosts = topPosts.filter(p => p.course_slug === currentSlug);
+  }
+
+  if (topPosts.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+
+  empty.style.display = 'none';
+  list.innerHTML = topPosts.map(post => {
+    const replies = allPosts.filter(r => r.parent_id === post.id);
+    const isExpanded = expandedPosts.has(post.id);
+    const bodyClass = isExpanded ? 'post-body' : 'post-body truncated';
+
+    return `
+      <div class="post-card ${post.is_pinned ? 'pinned' : ''}">
+        <div class="post-header">
+          <div>
+            <div class="post-title" onclick="toggleExpand('${post.id}')">${esc(post.title || 'Untitled')}</div>
+            <div class="post-meta">
+              <span class="post-author ${post.is_faye_reply ? 'faye' : ''}">${esc(post.author_name)}${post.is_faye_reply ? ' (Faye)' : ''}</span>
+              <span class="post-date">${timeAgo(post.created_at)}</span>
+              ${post.is_pinned ? '<span class="post-badge pinned">Pinned</span>' : ''}
+              ${post.is_faye_reply ? '<span class="post-badge faye">Faye</span>' : ''}
+            </div>
+          </div>
+        </div>
+        <div class="${bodyClass}" onclick="toggleExpand('${post.id}')">${esc(post.body)}</div>
+        <div class="post-actions">
+          <button class="post-action-btn" onclick="toggleExpand('${post.id}')">
+            ${isExpanded ? 'Collapse' : 'Read more'}
+          </button>
+          <button class="post-action-btn" onclick="showReplyForm('${post.id}')">
+            Reply <span class="count">${replies.length > 0 ? `(${replies.length})` : ''}</span>
+          </button>
+        </div>
+        ${isExpanded ? renderReplies(replies, post.id) : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+function renderReplies(replies, postId) {
+  let html = '<div class="post-replies">';
+
+  if (replies.length > 0) {
+    html += replies.map(r => `
+      <div class="reply-card">
+        <div class="post-meta">
+          <span class="post-author ${r.is_faye_reply ? 'faye' : ''}">${esc(r.author_name)}${r.is_faye_reply ? ' (Faye)' : ''}</span>
+          <span class="post-date">${timeAgo(r.created_at)}</span>
+          ${r.is_faye_reply ? '<span class="post-badge faye">Faye</span>' : ''}
+        </div>
+        <div class="post-body">${esc(r.body)}</div>
+      </div>
+    `).join('');
+  }
+
+  // Reply form
+  html += `
+    <div id="reply-form-${postId}" style="margin-top: 8px;">
+      <div class="form-row">
+        <input type="text" class="form-input" id="reply-name-${postId}" placeholder="Your name" value="${esc(getSaved('name'))}" maxlength="100">
+        <input type="email" class="form-input" id="reply-email-${postId}" placeholder="Email (not shown)" value="${esc(getSaved('email'))}" maxlength="255">
+      </div>
+      <div class="form-row full">
+        <textarea class="form-input" id="reply-body-${postId}" placeholder="Write a reply..." maxlength="5000" style="min-height: 60px;"></textarea>
+      </div>
+      <div style="text-align: right; margin-top: 6px;">
+        <button class="btn-submit" style="font-size: .8rem; padding: .5rem 1rem;" onclick="submitReply('${postId}')">Reply</button>
+      </div>
+    </div>
+  `;
+
+  html += '</div>';
+  return html;
+}
+
+function toggleExpand(postId) {
+  if (expandedPosts.has(postId)) expandedPosts.delete(postId);
+  else expandedPosts.add(postId);
+  renderPosts();
+}
+
+function showReplyForm(postId) {
+  if (!expandedPosts.has(postId)) {
+    expandedPosts.add(postId);
+    renderPosts();
+  }
+  setTimeout(() => {
+    const el = document.getElementById(`reply-body-${postId}`);
+    if (el) el.focus();
+  }, 50);
+}
+
+async function submitPost() {
+  const name = document.getElementById('post-name').value.trim();
+  const email = document.getElementById('post-email').value.trim();
+  const title = document.getElementById('post-title').value.trim();
+  const body = document.getElementById('post-body').value.trim();
+  const btn = document.getElementById('post-submit');
+  const errEl = document.getElementById('error-msg');
+  const successEl = document.getElementById('success-msg');
+
+  errEl.classList.remove('visible');
+  successEl.classList.remove('visible');
+
+  if (!name || !email || !title || !body) {
+    errEl.textContent = 'Please fill in all fields.';
+    errEl.classList.add('visible');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Posting...';
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/forum-post`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        author_name: name,
+        author_email: email,
+        title,
+        body,
+        course_slug: currentSlug === 'general' ? 'general' : currentSlug,
+      }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed to post');
+
+    // Save name/email for next time
+    setSaved('name', name);
+    setSaved('email', email);
+
+    // Clear form
+    document.getElementById('post-title').value = '';
+    document.getElementById('post-body').value = '';
+    toggleNewPost();
+
+    successEl.classList.add('visible');
+    setTimeout(() => successEl.classList.remove('visible'), 5000);
+
+    // Reload posts
+    await loadPosts();
+  } catch (err) {
+    errEl.textContent = err.message || 'Something went wrong. Please try again.';
+    errEl.classList.add('visible');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Post';
+  }
+}
+
+async function submitReply(postId) {
+  const name = document.getElementById(`reply-name-${postId}`).value.trim();
+  const email = document.getElementById(`reply-email-${postId}`).value.trim();
+  const body = document.getElementById(`reply-body-${postId}`).value.trim();
+  const errEl = document.getElementById('error-msg');
+
+  errEl.classList.remove('visible');
+
+  if (!name || !email || !body) {
+    errEl.textContent = 'Please fill in all fields to reply.';
+    errEl.classList.add('visible');
+    return;
+  }
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/forum-post`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        author_name: name,
+        author_email: email,
+        body,
+        parent_id: postId,
+        course_slug: 'general',
+      }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed to reply');
+
+    setSaved('name', name);
+    setSaved('email', email);
+
+    await loadPosts();
+    expandedPosts.add(postId);
+    renderPosts();
+  } catch (err) {
+    errEl.textContent = err.message || 'Something went wrong. Please try again.';
+    errEl.classList.add('visible');
+  }
+}
+
+// Helpers
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function timeAgo(dateStr) {
+  const d = new Date(dateStr);
+  const now = new Date();
+  const s = Math.floor((now - d) / 1000);
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s / 60) + 'm ago';
+  if (s < 86400) return Math.floor(s / 3600) + 'h ago';
+  if (s < 604800) return Math.floor(s / 86400) + 'd ago';
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+</script>
+
+</body>
+</html>
