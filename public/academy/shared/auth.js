@@ -39,9 +39,9 @@
     const isFree = await checkFreePreview(courseSlug, lessonFile);
     if (isFree) return;
 
-    // Check auth session
+    // Check auth session (app project)
     const { data: { session } } = await sb.auth.getSession();
-    
+
     if (session) {
       // Signed in — check subscription
       const { data: profile } = await sb
@@ -49,8 +49,29 @@
         .select('subscription_status')
         .eq('email', session.user.email)
         .single();
-      
+
       if (profile?.subscription_status === 'active') return; // Pro — full access
+    }
+
+    // Also check if user signed in via old brain project or has pro status in localStorage
+    // (handles migration period where session might be on different project)
+    if (!session) {
+      const oldSession = localStorage.getItem('sb-vpaynwebgmmnwttqkwmh-auth-token');
+      const appSession = localStorage.getItem('sb-blknphuwwgagtueqtoji-auth-token');
+      const raw = appSession || oldSession;
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed?.user?.email) {
+            const { data: profile } = await sb
+              .from('profiles')
+              .select('subscription_status')
+              .eq('email', parsed.user.email)
+              .single();
+            if (profile?.subscription_status === 'active') return;
+          }
+        } catch(e) {}
+      }
     }
 
     // Not signed in or not subscribed — show gate
