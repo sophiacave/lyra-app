@@ -1,0 +1,207 @@
+/* AI PET LAB — Shared Design System */
+/* Used by all 9 lessons + index page */
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08080a;
+  --surface:#111114;
+  --surface2:#18181c;
+  --text:#e8e8ec;
+  --dim:#8888a0;
+  --muted:#55556a;
+  --orange:#FF6B35;
+  --blue:#38bdf8;
+  --green:#4ade80;
+  --red:#f87171;
+  --purple:#c084fc;
+  --border:#1e1e28;
+  --border2:#2a2a38;
+  --glow-orange: rgba(255,107,53,.08);
+  --glow-blue: rgba(56,189,248,.06);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.04) 0%,transparent 50%),
+              radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.03) 0%,transparent 50%);
+  pointer-events:none;z-index:-1;
+}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---- CONTAINER ---- */
+.wrap{max-width:800px;margin:0 auto;padding:0 2rem}
+
+/* ---- LOCAL NAV ---- */
+.local-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 0;border-bottom:1px solid var(--border);
+}
+.local-nav a{color:var(--dim);font-size:.875rem;font-weight:500;text-decoration:none}
+.local-nav a:hover{color:var(--text)}
+.local-nav .lesson-badge{
+  font-size:.75rem;font-weight:600;color:var(--orange);
+  background:var(--glow-orange);padding:.25rem .75rem;border-radius:20px;
+  border:1px solid rgba(255,107,53,.2);
+}
+
+/* ---- LESSON HERO ---- */
+.lesson-hero{padding:3rem 0 2rem;text-align:center}
+.lesson-hero h1{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:800;letter-spacing:-1px;margin-bottom:.5rem}
+.lesson-hero h1 .accent{color:var(--orange)}
+.lesson-hero .sub{color:var(--dim);font-size:1.05rem;max-width:520px;margin:0 auto}
+
+/* ---- LEARNING GOALS ---- */
+.learn-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:1.5rem 1.75rem;margin:2rem 0;
+}
+.learn-card h3{
+  font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--orange);margin-bottom:.75rem;
+}
+.learn-card ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.learn-card li{
+  font-size:.9rem;color:var(--dim);display:flex;align-items:flex-start;gap:.5rem;
+}
+.learn-card li::before{content:'';flex-shrink:0;color:var(--green);font-weight:700}
+
+/* ---- SECTION ---- */
+.lesson-section{padding:2rem 0}
+.section-label{
+  font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.75rem;display:inline-block;
+  border:1px solid rgba(56,189,248,.2);padding:3px 10px;border-radius:4px;
+}
+.section-title{font-size:1.35rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:.75rem}
+.section-text{color:var(--dim);font-size:.95rem;line-height:1.8;margin-bottom:1rem}
+.section-text strong{color:var(--text);font-weight:600}
+
+/* ---- INTERACTIVE AREA ---- */
+.sim-container{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:1.5rem;margin:1.5rem 0;overflow:hidden;
+}
+.sim-container canvas{width:100%;border-radius:8px}
+.sim-controls{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin-top:1rem;
+}
+
+/* ---- BUTTONS ---- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.65rem 1.5rem;border-radius:10px;font-weight:700;font-size:.85rem;
+  cursor:pointer;font-family:inherit;transition:all .2s;border:none;
+}
+.btn-primary{background:var(--orange);color:#000}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,53,.25)}
+.btn-secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--orange);color:var(--orange)}
+.btn-green{background:var(--green);color:#000}
+.btn-red{background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.3)}
+.btn-blue{background:rgba(56,189,248,.12);color:var(--blue);border:1px solid rgba(56,189,248,.3)}
+.btn:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ---- STATS BAR ---- */
+.stats-bar{
+  display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
+  padding:.75rem 1rem;background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;margin:1rem 0;font-size:.8rem;
+}
+.stat{display:flex;align-items:center;gap:.35rem;color:var(--dim)}
+.stat strong{color:var(--text);font-weight:700}
+
+/* ---- LOG ---- */
+.log-area{
+  background:var(--surface2);border:1px solid var(--border);border-radius:10px;
+  padding:1rem;max-height:160px;overflow-y:auto;font-family:'SF Mono',Monaco,monospace;
+  font-size:.78rem;color:var(--dim);line-height:1.6;margin:1rem 0;
+}
+
+/* ---- QUIZ ---- */
+.quiz-progress{
+  display:flex;gap:6px;justify-content:center;margin:1.5rem 0;
+}
+.quiz-dot{
+  width:40px;height:5px;border-radius:3px;background:var(--border2);
+  transition:background .3s;
+}
+.quiz-dot.active{background:var(--orange)}
+.quiz-dot.correct{background:var(--green)}
+.quiz-dot.wrong{background:var(--red)}
+
+.quiz-question{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;text-align:center;
+}
+.quiz-question h2{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem}
+
+.quiz-options{display:flex;flex-direction:column;gap:10px;max-width:500px;margin:0 auto}
+.quiz-option{
+  padding:.85rem 1.25rem;background:var(--surface2);border:2px solid var(--border);
+  border-radius:12px;cursor:pointer;font-size:.9rem;text-align:left;
+  transition:all .2s;font-family:inherit;color:var(--text);
+}
+.quiz-option:hover{border-color:var(--orange);transform:translateY(-1px)}
+.quiz-option.correct{border-color:var(--green);background:rgba(74,222,128,.08)}
+.quiz-option.wrong{border-color:var(--red);background:rgba(248,113,113,.06)}
+.quiz-option.selected{border-color:var(--orange)}
+
+.quiz-feedback{
+  margin-top:1.25rem;padding:1rem;border-radius:10px;font-size:.9rem;line-height:1.6;
+  display:none;
+}
+.quiz-feedback.visible{display:block}
+.quiz-feedback.correct{background:rgba(74,222,128,.08);color:var(--green);border:1px solid rgba(74,222,128,.2)}
+.quiz-feedback.wrong{background:rgba(248,113,113,.06);color:var(--red);border:1px solid rgba(248,113,113,.2)}
+
+/* ---- RESULTS ---- */
+.results-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:3rem 2rem;text-align:center;max-width:400px;margin:2rem auto;
+}
+.results-card .score-ring{width:120px;height:120px;margin:0 auto 1.5rem}
+.results-card h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.results-card p{color:var(--dim);font-size:.9rem}
+
+/* ---- COMPLETION ---- */
+.complete-btn{
+  display:none;margin:2rem auto;padding:.85rem 2.5rem;
+  background:var(--green);color:#000;font-weight:700;font-size:1rem;
+  border:none;border-radius:12px;cursor:pointer;font-family:inherit;
+  transition:all .2s;
+}
+.complete-btn.visible{display:block}
+.complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(74,222,128,.25)}
+
+/* ---- CALLOUT ---- */
+.callout{
+  background:var(--surface);border-left:3px solid var(--orange);
+  border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;
+}
+.callout p{color:var(--dim);font-size:.9rem;line-height:1.7}
+.callout strong{color:var(--text)}
+
+/* ---- FOOTER ---- */
+.lesson-footer{
+  text-align:center;padding:2rem 0;border-top:1px solid var(--border);
+  margin-top:3rem;color:var(--muted);font-size:.8rem;
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:600px){
+  .wrap{padding:0 1.25rem}
+  .lesson-hero h1{font-size:1.75rem}
+  .sim-container{padding:1rem}
+  .sim-controls{flex-direction:column}
+  .sim-controls .btn{width:100%}
+  .stats-bar{flex-direction:column;align-items:center;gap:.5rem}
+  .quiz-question{padding:1.5rem 1.25rem}
+  .results-card{padding:2rem 1.5rem}
+}
