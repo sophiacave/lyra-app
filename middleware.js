@@ -31,6 +31,13 @@ export function middleware(request) {
     return NextResponse.rewrite(url);
   }
 
+  // Clean URL for meet-claude
+  if (pathname === '/meet-claude' || pathname === '/meet-claude/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/meet-claude.html';
+    return NextResponse.rewrite(url);
+  }
+
   // Clean URL for forum
   if (pathname === '/forum' || pathname === '/forum/') {
     const url = request.nextUrl.clone();
@@ -52,5 +59,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/about', '/about/', '/community-access', '/community-access/', '/support', '/support/', '/forum', '/forum/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
+  matcher: ['/', '/about', '/about/', '/community-access', '/community-access/', '/support', '/support/', '/forum', '/forum/', '/meet-claude', '/meet-claude/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
 };

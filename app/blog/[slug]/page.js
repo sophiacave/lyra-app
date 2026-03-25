@@ -359,7 +359,7 @@ export default async function PostPage({ params }) {
             <div className="post-topnav-links">
               <Link href="/academy/">Academy</Link>
               <Link href="/blog" className="active">Blog</Link>
-              <Link href="/academy/">Courses</Link>
+              <Link href="/forum">Forum</Link>
               <Link href="/academy/signin.html">Sign In</Link>
             </div>
           </div>

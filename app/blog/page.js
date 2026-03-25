@@ -241,7 +241,7 @@ export default function BlogPage() {
             <div className="blog-topnav-links">
               <Link href="/academy/">Academy</Link>
               <Link href="/blog" className="active">Blog</Link>
-              <Link href="/academy/">Courses</Link>
+              <Link href="/forum">Forum</Link>
               <Link href="/academy/signin.html">Sign In</Link>
             </div>
           </div>
