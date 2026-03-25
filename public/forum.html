@@ -479,7 +479,7 @@ async function submitPost() {
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/forum-post`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${ANON_KEY}` },
       body: JSON.stringify({
         author_name: name,
         author_email: email,
@@ -532,7 +532,7 @@ async function submitReply(postId) {
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/forum-post`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${ANON_KEY}` },
       body: JSON.stringify({
         author_name: name,
         author_email: email,
@@ -583,7 +583,7 @@ async function submitReport() {
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/report-issue`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${ANON_KEY}` },
       body: JSON.stringify({
         reporter_name: name,
         reporter_email: email,
