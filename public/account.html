@@ -199,14 +199,35 @@ async function showAccount(session) {
   const email = session.user.email;
   document.getElementById('user-email').textContent = email;
 
-  // Fetch profile from app brain
+  // Fetch profile from both brains (Stripe webhook → brain, subscribe → app)
   try {
-    const res = await fetch(
-      `${APP_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&select=*`,
-      { headers: { apikey: APP_ANON, Authorization: `Bearer ${APP_ANON}` } }
-    );
-    const profiles = await res.json();
-    const profile = profiles[0];
+    let profile = null;
+
+    // Check app brain
+    try {
+      const appRes = await fetch(
+        `${APP_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&select=*`,
+        { headers: { apikey: APP_ANON, Authorization: `Bearer ${APP_ANON}` } }
+      );
+      const appProfiles = await appRes.json();
+      if (appProfiles[0]) profile = appProfiles[0];
+    } catch(e) {}
+
+    // Check brain (auth) project — Stripe webhook writes here
+    // Use whichever has an active subscription
+    try {
+      const brainRes = await fetch(
+        `${AUTH_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&select=*`,
+        { headers: { apikey: AUTH_ANON, Authorization: `Bearer ${AUTH_ANON}` } }
+      );
+      const brainProfiles = await brainRes.json();
+      if (brainProfiles[0]) {
+        const bp = brainProfiles[0];
+        if (!profile || (bp.subscription_status === 'active' && profile.subscription_status !== 'active')) {
+          profile = bp;
+        }
+      }
+    } catch(e) { /* brain may be recovering */ }
 
     if (profile) {
       renderProfile(profile);
