@@ -21,7 +21,7 @@ export default function BlogPage() {
       <style>{`
         .blog-shell {
           min-height: 100vh;
-          background: #0a0a0f;
+          background: #08080a;
           color: #e5e5e5;
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
           -webkit-font-smoothing: antialiased;
@@ -117,7 +117,7 @@ export default function BlogPage() {
         }
         .blog-academy-cta a {
           background: #38bdf8;
-          color: #0a0a0f;
+          color: #08080a;
           padding: 8px 20px;
           border-radius: 8px;
           text-decoration: none;
@@ -132,7 +132,7 @@ export default function BlogPage() {
           max-width: 720px;
           margin: 0 auto;
           padding: 40px 24px;
-          border-top: 1px solid #1a1a2e;
+          border-top: 1px solid #1e1e28;
           text-align: center;
         }
         .blog-site-footer p {
@@ -176,12 +176,12 @@ export default function BlogPage() {
         .post-card {
           display: block;
           padding: 32px 0;
-          border-bottom: 1px solid #1a1a2e;
+          border-bottom: 1px solid #1e1e28;
           text-decoration: none;
           transition: all 0.2s;
         }
         .post-card:first-child {
-          border-top: 1px solid #1a1a2e;
+          border-top: 1px solid #1e1e28;
         }
         .post-card:hover .post-title {
           color: #38bdf8;

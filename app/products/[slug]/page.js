@@ -21,7 +21,7 @@ export default async function ProductPage({ params }) {
 
   if (!product) {
     return (
-      <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Inter', sans-serif" }}>
+      <div style={{ minHeight: '100vh', background: '#08080a', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Inter', sans-serif" }}>
         <div style={{ textAlign: 'center' }}>
           <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Product not found</h1>
           <Link href="/products" style={{ color: '#c084fc' }}>Browse all products</Link>
@@ -38,7 +38,7 @@ export default async function ProductPage({ params }) {
   const related = products.filter(p => p.tier === product.tier && p.slug !== product.slug).slice(0, 3);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#08080a', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
       {/* Header */}
       <header style={{
         position: 'sticky',
@@ -46,7 +46,7 @@ export default async function ProductPage({ params }) {
         zIndex: 1000,
         background: 'rgba(10,10,10,.95)',
         backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid #1f1f1f',
+        borderBottom: '1px solid #1e1e28',
         padding: '1.25rem 0',
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -167,8 +167,8 @@ export default async function ProductPage({ params }) {
           <div style={{
             position: 'sticky',
             top: '100px',
-            background: '#141414',
-            border: '1px solid #1f1f1f',
+            background: '#111114',
+            border: '1px solid #1e1e28',
             borderRadius: '16px',
             padding: '2rem',
           }}>
@@ -246,14 +246,14 @@ export default async function ProductPage({ params }) {
 
         {/* Related Products */}
         {related.length > 0 && (
-          <div style={{ marginTop: '4rem', borderTop: '1px solid #1f1f1f', paddingTop: '3rem' }}>
+          <div style={{ marginTop: '4rem', borderTop: '1px solid #1e1e28', paddingTop: '3rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.5rem' }}>Related Products</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.5rem' }}>
               {related.map(p => (
                 <Link key={p.slug} href={`/products/${p.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div style={{
-                    background: '#141414',
-                    border: '1px solid #1f1f1f',
+                    background: '#111114',
+                    border: '1px solid #1e1e28',
                     borderRadius: '12px',
                     padding: '1.5rem',
                     transition: 'all .3s',
@@ -281,8 +281,8 @@ export default async function ProductPage({ params }) {
 
       {/* Footer */}
       <footer style={{
-        background: '#141414',
-        borderTop: '1px solid #1f1f1f',
+        background: '#111114',
+        borderTop: '1px solid #1e1e28',
         padding: '2rem 1.5rem',
         textAlign: 'center',
         color: '#999',
@@ -295,7 +295,7 @@ export default async function ProductPage({ params }) {
         @media (max-width: 768px) {
           section > div { grid-template-columns: 1fr !important; }
         }
-        a:hover div[style*="border: 1px solid #1f1f1f"] { border-color: #c084fc !important; transform: translateY(-4px); box-shadow: 0 12px 30px rgba(232,67,147,.1); }
+        a:hover div[style*="border: 1px solid #1e1e28"] { border-color: #c084fc !important; transform: translateY(-4px); box-shadow: 0 12px 30px rgba(232,67,147,.1); }
       `}</style>
     </div>
   );

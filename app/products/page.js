@@ -31,8 +31,8 @@ function ProductCard({ product }) {
   return (
     <Link href={`/products/${product.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div style={{
-        background: '#141414',
-        border: product.popular ? '2px solid #c084fc' : '1px solid #1f1f1f',
+        background: '#111114',
+        border: product.popular ? '2px solid #c084fc' : '1px solid #1e1e28',
         borderRadius: '12px',
         padding: '1.75rem',
         display: 'flex',
@@ -78,7 +78,7 @@ function ProductCard({ product }) {
           </span>
           <span style={{
             background: 'linear-gradient(135deg, #38bdf8, #00b8b0)',
-            color: '#0a0a0a',
+            color: '#08080a',
             padding: '8px 18px',
             borderRadius: '6px',
             fontSize: '.85rem',
@@ -96,7 +96,7 @@ export default function ProductsPage() {
   const tierOrder = ['free', 'entry', 'core', 'premium', 'subscription'];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#08080a', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
       {/* Header */}
       <header style={{
         position: 'sticky',
@@ -104,7 +104,7 @@ export default function ProductsPage() {
         zIndex: 1000,
         background: 'rgba(10,10,10,.95)',
         backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid #1f1f1f',
+        borderBottom: '1px solid #1e1e28',
         padding: '1.25rem 0',
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -181,8 +181,8 @@ export default function ProductsPage() {
 
       {/* Footer */}
       <footer style={{
-        background: '#141414',
-        borderTop: '1px solid #1f1f1f',
+        background: '#111114',
+        borderTop: '1px solid #1e1e28',
         padding: '2rem 1.5rem',
         textAlign: 'center',
         color: '#999',

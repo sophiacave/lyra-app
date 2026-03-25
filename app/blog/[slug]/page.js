@@ -47,7 +47,7 @@ export default async function PostPage({ params }) {
       <style>{`
         .post-shell {
           min-height: 100vh;
-          background: #0a0a0f;
+          background: #08080a;
           color: #e5e5e5;
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
           -webkit-font-smoothing: antialiased;
@@ -143,7 +143,7 @@ export default async function PostPage({ params }) {
         .post-related-course-link {
           display: inline-block;
           background: #38bdf8;
-          color: #0a0a0f;
+          color: #08080a;
           padding: 10px 24px;
           border-radius: 8px;
           text-decoration: none;
@@ -157,7 +157,7 @@ export default async function PostPage({ params }) {
           max-width: 720px;
           margin: 0 auto;
           padding: 40px 24px;
-          border-top: 1px solid #1a1a2e;
+          border-top: 1px solid #1e1e28;
           text-align: center;
         }
         .post-site-footer p {
@@ -232,7 +232,7 @@ export default async function PostPage({ params }) {
         .post-divider hr {
           border: none;
           height: 1px;
-          background: linear-gradient(90deg, transparent, #1a1a2e 20%, #1a1a2e 80%, transparent);
+          background: linear-gradient(90deg, transparent, #1e1e28 20%, #1e1e28 80%, transparent);
         }
 
         .post-body {
@@ -290,7 +290,7 @@ export default async function PostPage({ params }) {
         }
         .post-content pre {
           background: #0d0d15;
-          border: 1px solid #1a1a2e;
+          border: 1px solid #1e1e28;
           border-radius: 8px;
           padding: 20px 24px;
           overflow-x: auto;
@@ -324,7 +324,7 @@ export default async function PostPage({ params }) {
         .post-content hr {
           border: none;
           height: 1px;
-          background: #1a1a2e;
+          background: #1e1e28;
           margin: 40px 0;
         }
 
