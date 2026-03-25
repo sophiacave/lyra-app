@@ -6,151 +6,303 @@
 <title>Training Quiz — AI Pet Lab</title>
 <link rel="icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pet-lab.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
-.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
-a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
-.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
-.top-bar a:hover{color:var(--text);text-decoration:none}
-.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
-.header{padding:2.5rem 0 1.5rem;text-align:center}
-.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
-.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
-
-.quiz-progress{display:flex;gap:.5rem;margin:2rem 0 1.5rem;justify-content:center}
-.qp-dot{width:32px;height:4px;border-radius:2px;background:var(--border2);transition:background .3s}
-.qp-dot.active{background:var(--orange)}
-.qp-dot.correct{background:var(--green)}
-.qp-dot.wrong{background:var(--red)}
-
-.question-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:1.5rem 0}
-.q-num{font-size:.75rem;color:var(--orange);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
-.q-text{font-size:1.1rem;font-weight:600;margin-bottom:1.5rem}
-.options{display:flex;flex-direction:column;gap:.75rem}
-.opt{background:var(--surface2);border:2px solid var(--border);border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:all .2s;font-size:.95rem;color:var(--dim)}
-.opt:hover{border-color:var(--border2);color:var(--text)}
-.opt.selected{border-color:var(--blue);color:var(--text);background:rgba(56,189,248,.05)}
+/* Quiz-specific styles layered on top of pet-lab.css */
+.quiz-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;position:relative;overflow:hidden;
+}
+.quiz-card .pet-corner{
+  position:absolute;top:1rem;right:1rem;width:80px;height:80px;
+  border-radius:12px;background:rgba(255,255,255,.02);border:1px solid var(--border);
+}
+.q-num{
+  font-size:.75rem;color:var(--muted);font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:.75rem;
+}
+.q-text{font-size:1.05rem;font-weight:600;margin-bottom:1.5rem;line-height:1.6;max-width:calc(100% - 100px)}
+.options{display:flex;flex-direction:column;gap:10px}
+.opt{
+  padding:.85rem 1.25rem;background:var(--surface2);border:2px solid var(--border);
+  border-radius:12px;cursor:pointer;font-size:.9rem;text-align:left;
+  transition:all .2s;font-family:inherit;color:var(--dim);line-height:1.5;
+}
+.opt:hover{border-color:var(--orange);color:var(--text);transform:translateY(-1px)}
 .opt.correct{border-color:var(--green);color:var(--green);background:rgba(74,222,128,.08)}
-.opt.wrong{border-color:var(--red);color:var(--red);background:rgba(248,113,113,.08)}
-.opt.disabled{pointer-events:none}
+.opt.wrong{border-color:var(--red);color:var(--red);background:rgba(248,113,113,.06)}
+.opt.disabled{pointer-events:none;transform:none}
 
-.feedback{margin-top:1rem;padding:1rem;border-radius:10px;font-size:.9rem;display:none}
+.feedback{
+  margin-top:1.25rem;padding:1rem 1.25rem;border-radius:12px;font-size:.88rem;
+  display:none;line-height:1.6;
+}
 .feedback.show{display:block}
-.feedback.correct{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:var(--green)}
-.feedback.wrong{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:var(--red)}
+.feedback.correct-fb{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.15);color:var(--dim)}
+.feedback.correct-fb strong{color:var(--green)}
+.feedback.wrong-fb{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);color:var(--dim)}
+.feedback.wrong-fb strong{color:var(--red)}
 
-.btn-next{display:none;margin:1.5rem auto 0;background:var(--orange);color:#000;font-weight:700;font-size:.95rem;padding:.75rem 2rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
-.btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,53,.25)}
+.btn-next{
+  display:none;margin:1.5rem auto 0;background:var(--surface2);color:var(--text);
+  font-weight:600;font-size:.9rem;padding:.7rem 1.8rem;border-radius:12px;
+  border:1px solid var(--border);cursor:pointer;transition:all .2s;font-family:inherit;
+}
+.btn-next:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-1px)}
 
-.results{display:none;text-align:center;padding:3rem 0}
-.results h2{font-size:1.75rem;font-weight:800;margin-bottom:1rem}
-.results .score{font-size:3rem;font-weight:800;margin:1rem 0}
-.results .score.good{color:var(--green)}
-.results .score.ok{color:var(--orange)}
-.results .score.bad{color:var(--red)}
-.results p{color:var(--dim);font-size:1rem;margin-bottom:2rem}
-.btn-complete{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
-.btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
+/* Results */
+.results{display:none;text-align:center;padding:2rem 0}
+.results-inner{
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:3rem 2rem;max-width:400px;margin:0 auto;
+}
+.score-ring{width:120px;height:120px;margin:0 auto 1.5rem;position:relative}
+.score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring circle{fill:none;stroke-width:6}
+.score-ring .bg{stroke:var(--border2)}
+.score-ring .fill{stroke:var(--green);stroke-linecap:round;transition:stroke-dashoffset 1s ease,stroke .5s}
+.score-ring .fill.ok{stroke:var(--orange)}
+.score-ring .fill.bad{stroke:var(--red)}
+.score-number{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.6rem;font-weight:800}
+.results-inner h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.results-inner .msg{color:var(--dim);font-size:.9rem;margin:1rem 0 2rem;line-height:1.6}
 
-.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
-.foot a{color:var(--orange);font-weight:600;text-decoration:none}
-.foot a:hover{text-decoration:underline}
+.results-pet{width:120px;height:120px;margin:0 auto 1rem}
 
-@media(max-width:600px){.header h1{font-size:1.5rem}.question-card{padding:1.5rem}}
+@media(max-width:600px){
+  .quiz-card{padding:1.5rem 1.25rem}
+  .quiz-card .pet-corner{width:60px;height:60px;top:.75rem;right:.75rem}
+  .q-text{max-width:calc(100% - 80px)}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div class="top-bar">
+<nav class="local-nav">
   <a href="index.html">&larr; AI Pet Lab</a>
   <span class="lesson-badge">Lesson 6 of 9</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>Training <span class="accent">Knowledge Check.</span></h1>
+  <p class="sub">How well do you understand reward shaping and behavioral patterns?</p>
 </div>
 
-<div class="header">
-  <h1>Training Quiz &#127919;</h1>
-  <p>How well do you understand training concepts, reward shaping, and behavioral patterns?</p>
+<div class="learn-card">
+  <h3>This quiz covers</h3>
+  <ul>
+    <li>Reward shaping and sub-goals</li>
+    <li>Markov Decision Processes</li>
+    <li>Chaining behaviors</li>
+    <li>Catastrophic forgetting</li>
+    <li>Exploration vs exploitation</li>
+  </ul>
 </div>
 
 <div class="quiz-progress" id="qProgress"></div>
 <div id="quizArea"></div>
 
 <div class="results" id="results">
-  <h2 id="resultsTitle"></h2>
-  <div class="score" id="resultsScore"></div>
-  <p id="resultsMsg"></p>
-  <button class="btn-complete" onclick="completeLesson()">Continue to Module 3 &rarr;</button>
+  <div class="results-inner">
+    <canvas class="results-pet" id="resultsPet"></canvas>
+    <div class="score-ring">
+      <svg viewBox="0 0 120 120">
+        <circle class="bg" cx="60" cy="60" r="52"/>
+        <circle class="fill" id="scoreArc" cx="60" cy="60" r="52" stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
+      </svg>
+      <div class="score-number" id="scoreNumber">0/5</div>
+    </div>
+    <h2 id="resultsTitle"></h2>
+    <p class="msg" id="resultsMsg"></p>
+    <button class="btn btn-primary" onclick="completeLesson()">Continue to Module 3 &rarr;</button>
+  </div>
 </div>
 
-<div class="foot">
-  <a href="trick-chain.html">&larr; Trick Chain</a>
-  <a href="learning-rate-dial.html">Next: Learning Rate Dial &rarr;</a>
-</div>
+<div class="lesson-footer">Lesson 6 of 9 &bull; AI Pet Lab &bull; Like One Academy</div>
 
 </div>
 
+<script src="pet-sprite.js"></script>
 <script>
-const questions=[
-  {q:"'Reward shaping' means:",opts:["Giving bigger rewards over time","Providing intermediate rewards for sub-goals along the way","Changing the shape of the reward function graph","Only rewarding at the very end"],answer:1,explain:"Reward shaping provides intermediate rewards to guide the agent toward the final goal, making learning faster and more stable."},
-  {q:"In a Markov Decision Process, what does 'Markov property' mean?",opts:["The agent has perfect memory","The future depends only on the current state, not the history","The agent always makes the best choice","All states are equally likely"],answer:1,explain:"The Markov property means the current state contains all information needed to make optimal decisions — the agent doesn't need to remember all past states."},
-  {q:"Why is it harder to train a chain of tricks than a single trick?",opts:["The pet gets tired","Each step depends on the previous, creating a longer credit assignment problem","It uses more memory","The reward function changes"],answer:1,explain:"With chained behaviors, the agent must figure out which actions in a long sequence deserve credit for the final reward. This 'credit assignment problem' is a core challenge in RL."},
-  {q:"Your pet learned 'sit' perfectly but now sometimes fails when learning 'shake'. Why?",opts:["The pet forgot how to sit","Learning new behaviors can temporarily interfere with previously learned ones (catastrophic forgetting)","The reward isn't big enough","The pet is being stubborn"],answer:1,explain:"Catastrophic forgetting happens when learning new tasks overwrites previous knowledge. In RL, this can cause performance drops on earlier tasks during training."},
-  {q:"What's the difference between 'exploration' and 'exploitation'?",opts:["Exploration is good, exploitation is bad","Exploration tries new actions; exploitation uses the best known action","Exploration is faster than exploitation","They mean the same thing"],answer:1,explain:"The exploration-exploitation tradeoff is fundamental in RL. Exploring discovers new, potentially better strategies; exploiting maximizes reward using what's already known. Balancing both is key."}
+const questions = [
+  {
+    q: "Reward shaping means:",
+    opts: [
+      "Giving bigger rewards over time",
+      "Providing intermediate rewards for sub-goals along the way",
+      "Changing the shape of the reward function graph",
+      "Only rewarding at the very end"
+    ],
+    answer: 1,
+    explain: "Reward shaping provides intermediate rewards to guide the agent toward the final goal, making learning faster and more stable."
+  },
+  {
+    q: "In a Markov Decision Process, what does 'Markov property' mean?",
+    opts: [
+      "The agent has perfect memory",
+      "The future depends only on the current state, not the history",
+      "The agent always makes the best choice",
+      "All states are equally likely"
+    ],
+    answer: 1,
+    explain: "The Markov property means the current state contains all information needed to make optimal decisions -- the agent doesn't need to remember all past states."
+  },
+  {
+    q: "Why is it harder to train a chain of tricks than a single trick?",
+    opts: [
+      "The pet gets tired",
+      "Each step depends on the previous, creating a longer credit assignment problem",
+      "It uses more memory",
+      "The reward function changes"
+    ],
+    answer: 1,
+    explain: "With chained behaviors, the agent must figure out which actions in a long sequence deserve credit for the final reward. This 'credit assignment problem' is a core challenge in RL."
+  },
+  {
+    q: "Your pet learned 'sit' perfectly but now sometimes fails when learning 'shake'. Why?",
+    opts: [
+      "The pet forgot how to sit",
+      "Learning new behaviors can temporarily interfere with previously learned ones (catastrophic forgetting)",
+      "The reward isn't big enough",
+      "The pet is being stubborn"
+    ],
+    answer: 1,
+    explain: "Catastrophic forgetting happens when learning new tasks overwrites previous knowledge. In RL, this can cause performance drops on earlier tasks during training."
+  },
+  {
+    q: "What's the difference between 'exploration' and 'exploitation'?",
+    opts: [
+      "Exploration is good, exploitation is bad",
+      "Exploration tries new actions; exploitation uses the best known action",
+      "Exploration is faster than exploitation",
+      "They mean the same thing"
+    ],
+    answer: 1,
+    explain: "The exploration-exploitation tradeoff is fundamental in RL. Exploring discovers new, potentially better strategies; exploiting maximizes reward using what's already known. Balancing both is key."
+  }
 ];
 
-let current=0,score=0,answered=new Array(questions.length).fill(null);
+let current = 0, score = 0, answered = new Array(questions.length).fill(null);
+let petState = 'neutral';
 
-function renderProgress(){
-  const el=document.getElementById('qProgress');el.innerHTML='';
-  questions.forEach((_,i)=>{
-    const d=document.createElement('div');
-    d.className='qp-dot'+(i===current?' active':'')+(answered[i]==='correct'?' correct':'')+(answered[i]==='wrong'?' wrong':'');
-    el.appendChild(d);
+function renderProgress() {
+  const el = document.getElementById('qProgress');
+  el.innerHTML = '';
+  questions.forEach((_, i) => {
+    const dot = document.createElement('div');
+    let cls = 'quiz-dot';
+    if (i === current && answered[i] === null) cls += ' active';
+    if (answered[i] === 'correct') cls += ' correct';
+    if (answered[i] === 'wrong') cls += ' wrong';
+    dot.className = cls;
+    el.appendChild(dot);
   });
 }
 
-function renderQuestion(){
-  if(current>=questions.length){showResults();return;}
-  const q=questions[current];
-  const area=document.getElementById('quizArea');
-  let h=`<div class="question-card"><div class="q-num">Question ${current+1} of ${questions.length}</div><div class="q-text">${q.q}</div><div class="options">`;
-  q.opts.forEach((o,i)=>{h+=`<div class="opt" data-idx="${i}" onclick="selectAnswer(${i})">${o}</div>`;});
-  h+=`</div><div class="feedback" id="feedback"></div><button class="btn-next" id="btnNext" onclick="nextQuestion()">Next &rarr;</button></div>`;
-  area.innerHTML=h;renderProgress();
+function renderQuestion() {
+  if (current >= questions.length) { showResults(); return; }
+  const q = questions[current];
+  const area = document.getElementById('quizArea');
+
+  let html = '<div class="quiz-card">';
+  html += '<canvas class="pet-corner" id="petCorner"></canvas>';
+  html += '<div class="q-num">Question ' + (current + 1) + ' of ' + questions.length + '</div>';
+  html += '<div class="q-text">' + q.q + '</div>';
+  html += '<div class="options">';
+  q.opts.forEach((o, i) => {
+    html += '<div class="opt" data-idx="' + i + '" onclick="selectAnswer(' + i + ')">' + o + '</div>';
+  });
+  html += '</div>';
+  html += '<div class="feedback" id="feedback"></div>';
+  html += '<button class="btn-next" id="btnNext" onclick="nextQuestion()">' +
+    (current < questions.length - 1 ? 'Next Question' : 'See Results') + '</button>';
+  html += '</div>';
+  area.innerHTML = html;
+
+  petState = 'neutral';
+  const petCanvas = document.getElementById('petCorner');
+  if (petCanvas && typeof PetSprite !== 'undefined') {
+    PetSprite.startAnimation(petCanvas, () => petState);
+  }
+
+  renderProgress();
 }
 
-function selectAnswer(idx){
-  const q=questions[current];const opts=document.querySelectorAll('.opt');const fb=document.getElementById('feedback');
-  opts.forEach(o=>o.classList.add('disabled'));
-  if(idx===q.answer){opts[idx].classList.add('correct');score++;answered[current]='correct';fb.className='feedback show correct';fb.textContent='Correct! '+q.explain;}
-  else{opts[idx].classList.add('wrong');opts[q.answer].classList.add('correct');answered[current]='wrong';fb.className='feedback show wrong';fb.textContent='Not quite. '+q.explain;}
-  document.getElementById('btnNext').style.display='block';renderProgress();
+function selectAnswer(idx) {
+  const q = questions[current];
+  const opts = document.querySelectorAll('.opt');
+  const fb = document.getElementById('feedback');
+
+  opts.forEach(o => o.classList.add('disabled'));
+
+  if (idx === q.answer) {
+    opts[idx].classList.add('correct');
+    score++;
+    answered[current] = 'correct';
+    fb.className = 'feedback show correct-fb';
+    fb.innerHTML = '<strong>Correct.</strong> ' + q.explain;
+    petState = 'happy';
+  } else {
+    opts[idx].classList.add('wrong');
+    opts[q.answer].classList.add('correct');
+    answered[current] = 'wrong';
+    fb.className = 'feedback show wrong-fb';
+    fb.innerHTML = '<strong>Not quite.</strong> ' + q.explain;
+    petState = 'sad';
+  }
+
+  document.getElementById('btnNext').style.display = 'block';
+  renderProgress();
 }
 
-function nextQuestion(){current++;renderQuestion();}
-
-function showResults(){
-  document.getElementById('quizArea').style.display='none';
-  const r=document.getElementById('results');r.style.display='block';
-  const pct=Math.round((score/questions.length)*100);
-  const sc=document.getElementById('resultsScore');sc.textContent=score+'/'+questions.length;
-  sc.className='score '+(pct>=80?'good':pct>=60?'ok':'bad');
-  document.getElementById('resultsTitle').textContent=pct>=80?'Excellent!':pct>=60?'Good effort!':'Keep learning!';
-  document.getElementById('resultsMsg').textContent=pct>=80?'You\'re a natural pet trainer! Ready for the Evolution Chamber.':pct>=60?'Solid understanding! The next module will deepen your knowledge.':'Review the trick lessons and try again. Your pet believes in you!';
+function nextQuestion() {
+  current++;
+  renderQuestion();
 }
 
-function completeLesson(){localStorage.setItem('petlab_lesson_6','complete');LO_NAV.goNext();}
+function showResults() {
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('qProgress').style.display = 'none';
+  const r = document.getElementById('results');
+  r.style.display = 'block';
+
+  const pct = Math.round((score / questions.length) * 100);
+  document.getElementById('scoreNumber').textContent = score + '/' + questions.length;
+
+  // Animate ring
+  const circumference = 326.73;
+  const offset = circumference * (1 - score / questions.length);
+  const arc = document.getElementById('scoreArc');
+  setTimeout(() => { arc.style.strokeDashoffset = offset; }, 100);
+  if (pct < 60) arc.classList.add('bad');
+  else if (pct < 80) arc.classList.add('ok');
+
+  document.getElementById('resultsTitle').textContent =
+    pct >= 80 ? 'Excellent!' : pct >= 60 ? 'Good effort!' : 'Keep learning!';
+  document.getElementById('resultsMsg').textContent =
+    pct >= 80 ? 'You\'re a natural pet trainer! Ready for the Evolution Chamber.' :
+    pct >= 60 ? 'Solid understanding! The next module will deepen your knowledge.' :
+    'Review the trick lessons and try again. Your pet believes in you!';
+
+  // Animate results pet
+  const resultsPetCanvas = document.getElementById('resultsPet');
+  if (resultsPetCanvas && typeof PetSprite !== 'undefined') {
+    const resultsPetState = pct >= 60 ? 'happy' : 'sad';
+    PetSprite.startAnimation(resultsPetCanvas, () => resultsPetState);
+  }
+}
+
+function completeLesson() {
+  localStorage.setItem('petlab_lesson_6', 'complete');
+  LO_NAV.goNext();
+}
 
 renderQuestion();
 </script>
-<script src="/academy/shared/nav.js"></script>
-<script src="/academy/shared/auth.js"></script>
-<script src="/academy/shared/engine.js"></script>
 <script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/engine.js"></script>
 <script src="/academy/shared/lesson-nav.js"></script>
+<script src="/academy/shared/nav.js"></script>
 </body>
 </html>

@@ -6,36 +6,21 @@
 <title>Foundations Assessment — AI Pet Lab</title>
 <link rel="icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pet-lab.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
-.wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
-a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
-
-.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
-.top-bar a:hover{color:var(--text);text-decoration:none}
-.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
-
-.header{padding:2.5rem 0 1.5rem;text-align:center}
-.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
-.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
-
-/* PROGRESS DOTS */
-.quiz-progress{display:flex;gap:.5rem;margin:2rem 0 1.5rem;justify-content:center}
-.qp-dot{width:40px;height:4px;border-radius:2px;background:var(--border2);transition:all .4s}
-.qp-dot.active{background:var(--orange)}
-.qp-dot.correct{background:var(--green)}
-.qp-dot.wrong{background:var(--red)}
-
-/* QUESTION CARD */
-.question-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:1.5rem 0}
+/* Quiz-specific styles */
+.question-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;margin:1.5rem 0;position:relative;
+}
 .q-num{font-size:.75rem;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
-.q-text{font-size:1.05rem;font-weight:600;margin-bottom:1.5rem;line-height:1.6}
+.q-text{font-size:1.05rem;font-weight:600;margin-bottom:1.5rem;line-height:1.6;padding-right:90px}
 .options{display:flex;flex-direction:column;gap:.65rem}
-.opt{background:var(--surface2);border:2px solid var(--border);border-radius:12px;padding:.9rem 1.25rem;cursor:pointer;transition:all .2s;font-size:.92rem;color:var(--dim);line-height:1.5}
+.opt{
+  background:var(--surface2);border:2px solid var(--border);border-radius:12px;
+  padding:.9rem 1.25rem;cursor:pointer;transition:all .2s;font-size:.92rem;
+  color:var(--dim);line-height:1.5;
+}
 .opt:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.02)}
 .opt.selected{border-color:var(--blue);color:var(--text);background:rgba(56,189,248,.05)}
 .opt.correct{border-color:var(--green);color:var(--green);background:rgba(74,222,128,.06)}
@@ -49,10 +34,28 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .feedback.wrong-fb{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);color:var(--dim)}
 .feedback.wrong-fb strong{color:var(--red)}
 
-.btn-next{display:none;margin:1.5rem auto 0;background:var(--surface2);color:var(--text);font-weight:600;font-size:.9rem;padding:.7rem 1.8rem;border-radius:12px;border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.btn-next{
+  display:none;margin:1.5rem auto 0;background:var(--surface2);color:var(--text);
+  font-weight:600;font-size:.9rem;padding:.7rem 1.8rem;border-radius:12px;
+  border:1px solid var(--border);cursor:pointer;transition:all .2s;font-family:inherit;
+}
 .btn-next:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-1px)}
 
-/* RESULTS */
+/* Pet canvas in quiz card */
+.pet-canvas-wrap{
+  position:absolute;top:1rem;right:1rem;width:80px;height:80px;
+  border-radius:12px;background:rgba(0,0,0,.25);border:1px solid var(--border);
+  overflow:hidden;
+}
+.pet-canvas-wrap canvas{width:80px;height:80px;display:block}
+
+/* Progress dots */
+.qp-dot{width:40px;height:4px;border-radius:2px;background:var(--border2);transition:all .4s}
+.qp-dot.active{background:var(--orange)}
+.qp-dot.correct{background:var(--green)}
+.qp-dot.wrong{background:var(--red)}
+
+/* Results */
 .results{display:none;text-align:center;padding:3rem 0}
 .results h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
 .results .score-display{margin:1.5rem 0}
@@ -64,28 +67,43 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .score-ring .fill.ok{stroke:var(--orange)}
 .score-ring .fill.bad{stroke:var(--red)}
 .score-number{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.6rem;font-weight:800}
-.results .msg{color:var(--dim);font-size:.95rem;margin:1.5rem 0 2rem;max-width:500px;margin-left:auto;margin-right:auto}
-.btn-complete{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.results .msg{color:var(--dim);font-size:.95rem;margin:1.5rem auto 2rem;max-width:500px}
+.btn-complete{
+  display:inline-block;background:var(--orange);color:#000;font-weight:700;
+  font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;
+  cursor:pointer;transition:all .2s;font-family:inherit;
+}
 .btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
 
-.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
-.foot a{color:var(--orange);font-weight:600;text-decoration:none}
-.foot a:hover{text-decoration:underline}
-
-@media(max-width:600px){.header h1{font-size:1.5rem}.question-card{padding:1.5rem}}
+@media(max-width:600px){
+  .question-card{padding:1.5rem}
+  .q-text{padding-right:70px}
+  .pet-canvas-wrap{width:60px;height:60px;top:.75rem;right:.75rem}
+  .pet-canvas-wrap canvas{width:60px;height:60px}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div class="top-bar">
+<nav class="local-nav">
   <a href="index.html">&larr; AI Pet Lab</a>
   <span class="lesson-badge">Lesson 3 of 9</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>Check Your <span class="accent">Understanding.</span></h1>
+  <p class="sub">Six questions on RL fundamentals. See how much you've absorbed.</p>
 </div>
 
-<div class="header">
-  <h1>Foundations Assessment</h1>
-  <p>Six questions on reinforcement learning fundamentals. Each answer includes an explanation to deepen your understanding.</p>
+<div class="learn-card">
+  <h3>This quiz covers</h3>
+  <ul>
+    <li>Reward signals and what they mean</li>
+    <li>Exploration vs exploitation</li>
+    <li>Q-learning update rule</li>
+    <li>Discount factors and credit assignment</li>
+  </ul>
 </div>
 
 <div class="quiz-progress" id="qProgress"></div>
@@ -107,13 +125,11 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
   <button class="btn-complete" onclick="completeLesson()">Continue to Module 2</button>
 </div>
 
-<div class="foot">
-  <a href="first-reward.html">&larr; The Reward Signal</a>
-  <a href="teach-sit.html">Next: Shaping a Policy &rarr;</a>
-</div>
+<div class="lesson-footer">Lesson 3 of 9 &bull; AI Pet Lab &bull; Like One Academy</div>
 
 </div>
 
+<script src="pet-sprite.js"></script>
 <script>
 const questions=[
   {
@@ -125,7 +141,7 @@ const questions=[
       "The gradient used to update neural network weights"
     ],
     answer:1,
-    explain:"The reward signal is a scalar number the environment provides after each action, encoding how good or bad the resulting state transition was. It is the agent's only source of evaluative feedback \u2014 unlike supervised learning, there is no explicit \u201ccorrect answer\u201d label."
+    explain:"The reward signal is a scalar number the environment provides after each action, encoding how good or bad the resulting state transition was. It is the agent\u2019s only source of evaluative feedback \u2014 unlike supervised learning, there is no explicit \u201ccorrect answer\u201d label."
   },
   {
     q:"What is the exploration-exploitation tradeoff?",
@@ -147,7 +163,7 @@ const questions=[
       "Q(s,a) is replaced by the reward received on the most recent visit"
     ],
     answer:1,
-    explain:"The Q-learning update rule is Q(s,a) \u2190 Q(s,a) + \u03b1[r + \u03b3 max Q(s',a') - Q(s,a)]. It blends the current estimate with a target: the immediate reward r plus the discounted value of the best action from the next state. This bootstrapping approach is the core of temporal difference learning."
+    explain:"The Q-learning update rule is Q(s,a) \u2190 Q(s,a) + \u03b1[r + \u03b3 max Q(s\u2019,a\u2019) - Q(s,a)]. It blends the current estimate with a target: the immediate reward r plus the discounted value of the best action from the next state. This bootstrapping approach is the core of temporal difference learning."
   },
   {
     q:"What role does the discount factor \u03b3 (gamma) play in reinforcement learning?",
@@ -180,11 +196,12 @@ const questions=[
       "Model-based requires labeled training data while model-free does not"
     ],
     answer:1,
-    explain:"Model-free methods (like Q-learning) learn value functions or policies purely from sampled experience without ever building an explicit model of how the environment works. Model-based methods learn a transition model P(s'|s,a) and reward model R(s,a), then use planning algorithms to derive a policy. Model-based approaches are typically more sample-efficient but computationally heavier."
+    explain:"Model-free methods (like Q-learning) learn value functions or policies purely from sampled experience without ever building an explicit model of how the environment works. Model-based methods learn a transition model P(s\u2019|s,a) and reward model R(s,a), then use planning algorithms to derive a policy. Model-based approaches are typically more sample-efficient but computationally heavier."
   }
 ];
 
-let current=0,score=0,answered=new Array(questions.length).fill(null);
+let current=0, score=0, answered=new Array(questions.length).fill(null);
+let petState='neutral';
 
 function renderProgress(){
   const el=document.getElementById('qProgress');
@@ -204,7 +221,9 @@ function renderQuestion(){
   if(current>=questions.length){showResults();return;}
   const q=questions[current];
   const area=document.getElementById('quizArea');
+  petState='neutral';
   let html='<div class="question-card">';
+  html+='<div class="pet-canvas-wrap"><canvas id="petCanvas"></canvas></div>';
   html+='<div class="q-num">Question '+(current+1)+' of '+questions.length+'</div>';
   html+='<div class="q-text">'+q.q+'</div>';
   html+='<div class="options">';
@@ -217,6 +236,12 @@ function renderQuestion(){
   html+='</div>';
   area.innerHTML=html;
   renderProgress();
+
+  // Start pet animation on the small canvas
+  const canvas=document.getElementById('petCanvas');
+  if(canvas && typeof PetSprite!=='undefined'){
+    PetSprite.startAnimation(canvas, function(){ return petState; });
+  }
 }
 
 function selectAnswer(idx){
@@ -224,7 +249,7 @@ function selectAnswer(idx){
   const opts=document.querySelectorAll('.opt');
   const fb=document.getElementById('feedback');
 
-  opts.forEach(o=>o.classList.add('disabled'));
+  opts.forEach(function(o){ o.classList.add('disabled'); });
 
   if(idx===q.answer){
     opts[idx].classList.add('correct');
@@ -232,12 +257,14 @@ function selectAnswer(idx){
     answered[current]='correct';
     fb.className='feedback show correct-fb';
     fb.innerHTML='<strong>Correct.</strong> '+q.explain;
+    petState='happy';
   }else{
     opts[idx].classList.add('wrong');
     opts[q.answer].classList.add('correct');
     answered[current]='wrong';
     fb.className='feedback show wrong-fb';
     fb.innerHTML='<strong>Incorrect.</strong> '+q.explain;
+    petState='sad';
   }
 
   document.getElementById('btnNext').style.display='block';
@@ -262,16 +289,16 @@ function showResults(){
   const circumference=326.73;
   const offset=circumference*(1-score/questions.length);
   const arc=document.getElementById('scoreArc');
-  setTimeout(()=>{arc.style.strokeDashoffset=offset;},100);
+  setTimeout(function(){ arc.style.strokeDashoffset=offset; },100);
   if(pct<60) arc.classList.add('bad');
   else if(pct<80) arc.classList.add('ok');
 
   document.getElementById('resultsTitle').textContent=
-    pct>=83?'Excellent Understanding':pct>=60?'Solid Foundation':'Review Recommended';
+    pct>=83?'Wonderful \u2014 You Really Get This':pct>=60?'Nice Work, Solid Foundation':'Worth Another Look';
   document.getElementById('resultsMsg').textContent=
-    pct>=83?'You have a strong grasp of reinforcement learning fundamentals. You\'re ready to move on to policy learning and more advanced concepts.':
-    pct>=60?'You understand the core ideas. Consider reviewing the reward signal lesson to strengthen your intuition before continuing.':
-    'Reinforcement learning has nuances that take time to absorb. Revisit the first two lessons and pay special attention to the Q-table visualization before retaking this assessment.';
+    pct>=83?'You\'ve built a strong intuition for reinforcement learning fundamentals. Your pet would be proud \u2014 onward to policy learning and more advanced concepts!':
+    pct>=60?'You\'re picking up the core ideas nicely. A quick revisit of the reward signal lesson could sharpen your instincts even further before moving on.':
+    'Reinforcement learning has layers that take time to click \u2014 that\'s completely normal. Revisit the first two lessons and spend a little extra time with the Q-table visualization. You\'ll nail it next round.';
 }
 
 function completeLesson(){
@@ -281,10 +308,9 @@ function completeLesson(){
 
 renderQuestion();
 </script>
-<script src="/academy/shared/engine.js"></script>
 <script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/engine.js"></script>
 <script src="/academy/shared/lesson-nav.js"></script>
 <script src="/academy/shared/nav.js"></script>
-<script src="/academy/shared/auth.js"></script>
 </body>
 </html>
