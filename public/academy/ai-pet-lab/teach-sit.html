@@ -5,20 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Teach Sit — AI Pet Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pet-lab.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0f;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
+body{background:#08080a;color:#e5e5e5;font-family:'Inter',sans-serif;min-height:100vh}
 a{color:inherit;text-decoration:none}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);max-width:1000px;margin:0 auto}
-.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-link{font-size:.85rem;color:#a1a1aa;transition:color .2s}.nav-link:hover{color:#e5e5e5}
 .container{max-width:800px;margin:0 auto;padding:2rem}
-.lesson-header{margin-bottom:2rem}
-.lesson-header .meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
-.type-badge{padding:.25rem .75rem;border-radius:100px;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;background:rgba(251,146,60,.12);color:#fb923c}
-.xp-badge{font-size:.8rem;font-weight:700;color:#fb923c}.time-badge{font-size:.8rem;color:#71717a}
-.lesson-header h1{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:.5rem}
-.lesson-header p{color:#a1a1aa;line-height:1.6}
 
 .pet-stage{display:flex;align-items:center;justify-content:center;min-height:200px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;margin-bottom:1.5rem;position:relative;overflow:hidden}
 .pet{font-size:5rem;transition:transform .3s;user-select:none}
@@ -63,25 +55,26 @@ a{color:inherit;text-decoration:none}
 .complete-btn{display:block;width:100%;padding:1rem;border:none;border-radius:12px;background:linear-gradient(135deg,#c084fc,#a855f7);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-bottom:2rem}
 .complete-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.3)}
 .complete-btn.done{background:linear-gradient(135deg,#22c55e,#16a34a)}
-.footer-progress{text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#71717a}
-.footer-progress span{color:#c084fc;font-weight:600}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
-</nav>
 <div class="container">
-  <div class="lesson-header">
-    <div class="meta">
-      <span class="type-badge">Simulation</span>
-      <span class="xp-badge">+75 XP</span>
-      <span class="time-badge">~20 min</span>
-    </div>
-    <h1>Teach Sit</h1>
-    <p>Train an AI pet using real Q-learning. Give a command, watch it choose an action based on its Q-values, then reward or punish to update the Q-table. Watch the probabilities shift.</p>
-  </div>
+
+<nav class="local-nav"><a href="index.html">&larr; AI Pet Lab</a><span class="lesson-badge">Lesson 4 of 9</span></nav>
+
+<div class="lesson-hero">
+  <h1>Teach Your Pet to <span class="accent">Sit.</span></h1>
+  <p class="sub">Give commands, reward good behavior, and watch Q-values shift as your pet figures out what you want.</p>
+</div>
+
+<div class="learn-card">
+  <h3>What You'll Learn</h3>
+  <ul>
+    <li>Policy shaping</li>
+    <li>Softmax probability</li>
+    <li>Command-reward cycles</li>
+  </ul>
+</div>
 
   <div class="pet-stage">
     <span class="action-label" id="actionLabel">Give a command to start</span>
@@ -142,9 +135,12 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete &amp; Continue &rarr;</button>
-</div>
-<div class="footer-progress"><span id="footerProgress">0 of 10</span> lessons complete</div>
 
+<div class="lesson-footer">Lesson 4 of 9 &bull; AI Pet Lab &bull; Like One Academy</div>
+
+</div>
+
+<script src="pet-sprite.js"></script>
 <script>
 // === Q-LEARNING ENGINE ===
 var ACTIONS = ['sit', 'stand', 'ignore'];
@@ -310,7 +306,6 @@ updateDisplay();
 function getProgress(){try{return JSON.parse(localStorage.getItem('ai-pet-lab-progress'))||{}}catch(e){return{}}}
 function updateFooter(){
   var p=getProgress();var c=Object.keys(p).filter(function(k){return p[k]}).length;
-  document.getElementById('footerProgress').textContent=c+' of 10';
   if(p['teach-sit']){document.getElementById('completeBtn').textContent='Completed';document.getElementById('completeBtn').classList.add('done')}
 }
 function completeLesson(){
@@ -319,10 +314,10 @@ function completeLesson(){
 }
 updateFooter();
 </script>
+<script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/engine.js"></script>
+<script src="/academy/shared/lesson-nav.js"></script>
 <script src="/academy/shared/nav.js"></script>
 <script src="/academy/shared/auth.js"></script>
-<script src="/academy/shared/engine.js"></script>
-<script src="/academy/shared/courses.js"></script>
-<script src="/academy/shared/lesson-nav.js"></script>
 </body>
 </html>

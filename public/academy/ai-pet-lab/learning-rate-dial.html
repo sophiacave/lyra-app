@@ -6,20 +6,14 @@
 <title>Learning Rate Dial — AI Pet Lab</title>
 <link rel="icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pet-lab.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
+:root{--bg:#08080a;--surface:#12121a;--surface2:#1a1a25;--text:#e5e5e5;--dim:#8888a0;--muted:#55556a;--orange:#FF6B35;--blue:#38bdf8;--green:#4ade80;--red:#f87171;--border:#1e1e28;--border2:#2a2a38}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.04) 0%,transparent 50%);pointer-events:none;z-index:-1}
 .wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
 a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
-.top-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.top-bar a{color:var(--dim);font-size:.875rem;font-weight:500}
-.top-bar a:hover{color:var(--text);text-decoration:none}
-.lesson-badge{font-size:.7rem;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
-.header{padding:2.5rem 0 1.5rem;text-align:center}
-.header h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
-.header p{color:var(--dim);font-size:1rem;max-width:600px;margin:0 auto}
 
 /* SLIDER */
 .control-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0;text-align:center}
@@ -62,24 +56,30 @@ canvas{display:block;width:100%;height:auto}
 .btn-complete{display:none;margin:2rem auto;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.85rem 2.25rem;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
 .btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.3)}
 
-.foot{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);margin-top:2rem;font-size:.85rem;color:var(--muted)}
-.foot a{color:var(--orange);font-weight:600;text-decoration:none}
-.foot a:hover{text-decoration:underline}
-
-@media(max-width:600px){.header h1{font-size:1.5rem}.control-panel{padding:1.25rem}}
+@media(max-width:600px){.lesson-hero h1{font-size:1.5rem}.control-panel{padding:1.25rem}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div class="top-bar">
+<nav class="local-nav">
   <a href="index.html">&larr; AI Pet Lab</a>
   <span class="lesson-badge">Lesson 7 of 9</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>The Learning Rate <span class="accent">Dial.</span></h1>
+  <p class="sub">Too fast and your pet panics. Too slow and it falls asleep. Find the sweet spot.</p>
 </div>
 
-<div class="header">
-  <h1>Learning Rate Dial &#9881;</h1>
-  <p>Adjust the learning rate and watch how it changes the loss curve in real time. Find the sweet spot!</p>
+<div class="learn-card">
+  <h3>What you'll explore</h3>
+  <ul>
+    <li>Learning rate effects on training</li>
+    <li>Convergence vs oscillation</li>
+    <li>Loss curves and what they tell you</li>
+    <li>Hyperparameter sensitivity</li>
+  </ul>
 </div>
 
 <div class="control-panel">
@@ -120,13 +120,11 @@ canvas{display:block;width:100%;height:auto}
 
 <button class="btn-complete" id="completeBtn" onclick="completeLesson()">Complete Lesson &rarr;</button>
 
-<div class="foot">
-  <a href="training-quiz.html">&larr; Training Quiz</a>
-  <a href="architecture-lab.html">Next: Architecture Lab &rarr;</a>
-</div>
+<div class="lesson-footer">Lesson 7 of 9 &bull; AI Pet Lab &bull; Like One Academy</div>
 
 </div>
 
+<script src="pet-sprite.js"></script>
 <script>
 const petType=localStorage.getItem('petlab_pet')||'dog';
 const petColors={cat:'#c084fc',dog:'#FF6B35',robot:'#38bdf8'};
@@ -283,10 +281,9 @@ function completeLesson(){
   LO_NAV.goNext();
 }
 </script>
-<script src="/academy/shared/nav.js"></script>
-<script src="/academy/shared/auth.js"></script>
-<script src="/academy/shared/engine.js"></script>
 <script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/engine.js"></script>
 <script src="/academy/shared/lesson-nav.js"></script>
+<script src="/academy/shared/nav.js"></script>
 </body>
 </html>
