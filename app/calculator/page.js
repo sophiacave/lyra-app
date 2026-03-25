@@ -89,7 +89,7 @@ function SliderInput({ label, value, onChange, min, max, step = 1, prefix = '', 
 
 // ─── Main Page ───
 export default function CalculatorPage() {
-  const [step, setStep] = useState('email'); // email | code | calculator | results
+  const [step, setStep] = useState('calculator'); // skip auth gate — calculator is free
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
