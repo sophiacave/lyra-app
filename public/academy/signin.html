@@ -7,15 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0f;color:#e5e5e5;font-family:Inter,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;-webkit-font-smoothing:antialiased}
-a{color:#c084fc;text-decoration:none
+body{background:#08080a;color:#e5e5e5;font-family:Inter,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;-webkit-font-smoothing:antialiased}
+a{color:#c084fc;text-decoration:none}
 .card{max-width:420px;width:100%;margin:0 1.5rem;background:#111114;border:1px solid #1e1e28;border-radius:20px;padding:2.5rem;text-align:center}
 .logo{font-size:1.2rem;font-weight:800;margin-bottom:.5rem;color:#e5e5e5}
 .logo span{color:#c084fc}
 .badge{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c084fc;border:1px solid rgba(192,132,252,.3);padding:2px 8px;border-radius:4px;margin-left:6px}
 h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
 .sub{color:#737373;font-size:.9rem;line-height:1.5;margin-bottom:2rem}
-.input{width:100%;background:#0a0a0f;border:1px solid #2a2a38;border-radius:10px;padding:.8rem 1rem;color:#e5e5e5;font-family:Inter,sans-serif;font-size:.95rem;outline:none;margin-bottom:1rem}
+.input{width:100%;background:#08080a;border:1px solid #2a2a38;border-radius:10px;padding:.8rem 1rem;color:#e5e5e5;font-family:Inter,sans-serif;font-size:.95rem;outline:none;margin-bottom:1rem}
 .input:focus{border-color:#c084fc}
 .btn{width:100%;background:#fb923c;color:#000;border:none;padding:.85rem;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:Inter,sans-serif;transition:all .2s}
 .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(251,146,60,.25)}
@@ -82,8 +82,8 @@ h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-const SUPABASE_URL = 'https://vpaynwebgmmnwttqkwmh.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYXlud2ViZ21tbnd0dHFrd21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNjc0OTksImV4cCI6MjA4ODg0MzQ5OX0.roRXPjkD1K4EXgaV2slcxGtnhrGfnJnTXz7R2GhQCxo';
+const SUPABASE_URL = 'https://app.likeone.ai';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
