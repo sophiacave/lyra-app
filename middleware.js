@@ -52,6 +52,13 @@ export function middleware(request) {
     return NextResponse.rewrite(url);
   }
 
+  // Thank you page (after purchase)
+  if (pathname === '/thank-you' || pathname === '/thank-you/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/thank-you.html';
+    return NextResponse.rewrite(url);
+  }
+
   // Rewrite /_temp to /temp (Next.js treats _prefixed folders as private)
   if (pathname === '/_temp') {
     const url = request.nextUrl.clone();
@@ -66,5 +73,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/about', '/about/', '/community-access', '/community-access/', '/support', '/support/', '/forum', '/forum/', '/meet-claude', '/meet-claude/', '/account', '/account/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
+  matcher: ['/', '/about', '/about/', '/community-access', '/community-access/', '/support', '/support/', '/forum', '/forum/', '/meet-claude', '/meet-claude/', '/account', '/account/', '/thank-you', '/thank-you/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
 };
