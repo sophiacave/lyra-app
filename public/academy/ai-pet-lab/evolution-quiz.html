@@ -235,6 +235,20 @@ const questions = [
 ];
 
 let current = 0, score = 0, answered = new Array(questions.length).fill(null);
+let currentCorrectIdx = 0;
+
+// Shuffle options and return { shuffled, correctIdx }
+function shuffleOptions(options, correctIdx) {
+  const indexed = options.map((opt, i) => ({ opt, isCorrect: i === correctIdx }));
+  for (let i = indexed.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indexed[i], indexed[j]] = [indexed[j], indexed[i]];
+  }
+  return {
+    shuffled: indexed.map(x => x.opt),
+    correctIdx: indexed.findIndex(x => x.isCorrect)
+  };
+}
 
 function renderProgress() {
   const el = document.getElementById('qProgress');
@@ -258,8 +272,10 @@ function renderQuestion() {
   let html = '<div class="question-card">';
   html += '<div class="q-num">Question ' + (current + 1) + ' of ' + questions.length + '</div>';
   html += '<div class="q-text">' + q.q + '</div>';
+  const { shuffled, correctIdx } = shuffleOptions(q.opts, q.answer);
+  currentCorrectIdx = correctIdx;
   html += '<div class="options">';
-  q.opts.forEach((o, i) => {
+  shuffled.forEach((o, i) => {
     html += '<div class="opt" data-idx="' + i + '" onclick="selectAnswer(' + i + ')">' + o + '</div>';
   });
   html += '</div>';
@@ -279,7 +295,7 @@ function selectAnswer(idx) {
 
   opts.forEach(o => o.classList.add('disabled'));
 
-  if (idx === q.answer) {
+  if (idx === currentCorrectIdx) {
     opts[idx].classList.add('correct');
     score++;
     answered[current] = 'correct';
@@ -288,7 +304,7 @@ function selectAnswer(idx) {
     setPetMood('happy', 'Tail wagging!');
   } else {
     opts[idx].classList.add('wrong');
-    opts[q.answer].classList.add('correct');
+    opts[currentCorrectIdx].classList.add('correct');
     answered[current] = 'wrong';
     fb.className = 'feedback show wrong-fb';
     fb.innerHTML = '<strong>Not quite.</strong> ' + q.explain;
