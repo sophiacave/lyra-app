@@ -90,7 +90,7 @@
 
     gate.innerHTML = `
       <style>
-        #lo-paywall{position:relative;margin-top:-200px;padding-top:200px;background:linear-gradient(to bottom,transparent,#0a0a0f 180px);text-align:center;padding-bottom:60px}
+        #lo-paywall{position:relative;margin-top:-200px;padding-top:200px;background:linear-gradient(to bottom,transparent,#08080a 180px);text-align:center;padding-bottom:60px}
         #lo-paywall .gate-card{max-width:480px;margin:0 auto;background:#111114;border:1px solid #2a2a38;border-radius:20px;padding:2.5rem 2rem}
         #lo-paywall h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         #lo-paywall p{color:#737373;font-size:.9rem;line-height:1.6;margin-bottom:1rem}
