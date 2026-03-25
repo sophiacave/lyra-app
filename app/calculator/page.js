@@ -561,6 +561,26 @@ export default function CalculatorPage() {
         </div>
       </div>
 
+      {/* Footer */}
+      <div style={{
+        borderTop: '1px solid #1e1e28', padding: '2rem', textAlign: 'center', marginTop: '4rem',
+      }}>
+        <div style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '.75rem' }}>
+          like<span style={{ color: '#c084fc' }}>one</span>
+        </div>
+        <p style={{ color: '#55556a', fontSize: '.75rem', marginBottom: '.5rem' }}>
+          Built with love by Faye Cave. Powered by convergence.
+        </p>
+        <p style={{ color: '#55556a', fontSize: '.75rem' }}>
+          &copy; 2026 Like One. All rights reserved. &bull;{' '}
+          <a href="mailto:faye@likeone.ai" style={{ color: '#c084fc', textDecoration: 'none' }}>faye@likeone.ai</a>
+        </p>
+        <p style={{ color: '#55556a', fontSize: '.75rem', marginTop: '8px' }}>
+          <a href="/privacy.html" style={{ color: '#c084fc', textDecoration: 'none' }}>Privacy Policy</a> &bull;{' '}
+          <a href="/terms.html" style={{ color: '#c084fc', textDecoration: 'none' }}>Terms of Service</a>
+        </p>
+      </div>
+
       <style>{`
         @media (max-width: 768px) {
           div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
