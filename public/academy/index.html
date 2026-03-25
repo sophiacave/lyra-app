@@ -330,8 +330,48 @@ COURSES.forEach(c => {
 });
 
 </script>
+<script src="/auth-state.js"></script>
+<script>
+// Update UI for signed-in pro members
+setTimeout(() => {
+  const user = window.__likeone_user;
+  if (user && user.signed_in) {
+    // Check subscription from localStorage (fast) or fetch from API
+    const SESSION_KEY = 'sb-blknphuwwgagtueqtoji-auth-token';
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (raw) {
+      const session = JSON.parse(raw);
+      const email = session?.user?.email;
+      if (email) {
+        fetch('https://app.likeone.ai/rest/v1/profiles?email=eq.' + encodeURIComponent(email) + '&select=subscription_status,subscription_tier', {
+          headers: {
+            apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s'
+          }
+        }).then(r => r.json()).then(profiles => {
+          if (profiles[0]?.subscription_status === 'active') {
+            // Pro member — update all buttons
+            document.querySelectorAll('.card-btn').forEach(btn => {
+              if (btn.textContent.includes('Free Preview') || btn.textContent.includes('Start Free')) {
+                btn.textContent = 'Continue Learning →';
+              }
+            });
+            // Hide subscribe CTA
+            const sub = document.querySelector('.subscribe-cta');
+            if (sub) {
+              sub.innerHTML = '<div style="text-align:center;padding:2rem;"><div style="font-size:1.5rem;margin-bottom:.5rem">💜</div><p style="color:#4ade80;font-weight:700;font-size:1.1rem">You have full access to all courses</p><p style="color:#737373;font-size:.9rem;margin-top:.5rem">Thank you for being a founding member.</p></div>';
+            }
+            // Add pro badge to header
+            const hero = document.querySelector('.hero-badge');
+            if (hero) hero.insertAdjacentHTML('afterend', '<div style="display:inline-block;background:rgba(74,222,128,.12);color:#4ade80;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(74,222,128,.25);margin-left:8px">PRO MEMBER</div>');
+          }
+        }).catch(() => {});
+      }
+    }
+  }
+}, 150);
+</script>
 <script src="/academy/shared/nav.js"></script>
-<script src="/academy/shared/auth.js"></script>
 <script src="/academy/shared/engine.js"></script>
 
 
