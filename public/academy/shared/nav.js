@@ -54,6 +54,7 @@
         ${courseSlug ? `<span class="sep">›</span><a href="/academy/${courseSlug}/">${courseName}</a>` : ''}
       </div>
       <div class="lo-nav-right">
+        <a href="/forum">Forum</a>
         <a href="/academy/community.html">Community</a>
         <a href="/academy/signin.html" class="lo-nav-signin">Sign In</a>
       </div>
