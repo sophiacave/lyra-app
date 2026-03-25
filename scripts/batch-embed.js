@@ -13,12 +13,33 @@ const DELAY_MS = 500; // delay between batches to avoid rate limits
 
 async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+async function fetchWithRetry(url, opts, retries = 5) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetch(url, opts);
+      if (res.ok) return res;
+      if (res.status >= 500 && i < retries - 1) {
+        console.log(`  Retry ${i + 1}/${retries} (HTTP ${res.status})... waiting ${(i + 1) * 3}s`);
+        await sleep((i + 1) * 3000);
+        continue;
+      }
+      throw new Error(`HTTP ${res.status}`);
+    } catch (err) {
+      if (i < retries - 1 && (err.code === 'ECONNRESET' || err.code === 'ETIMEDOUT' || err.message?.includes('fetch failed'))) {
+        console.log(`  Retry ${i + 1}/${retries} (${err.code || err.message})... waiting ${(i + 1) * 3}s`);
+        await sleep((i + 1) * 3000);
+        continue;
+      }
+      throw err;
+    }
+  }
+}
+
 async function fetchUnembedded() {
-  const res = await fetch(
+  const res = await fetchWithRetry(
     `${SUPABASE_URL}/rest/v1/brain_context?select=key,value&embedding=is.null&order=key&limit=500`,
     { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
   );
-  if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
   return res.json();
 }
 
