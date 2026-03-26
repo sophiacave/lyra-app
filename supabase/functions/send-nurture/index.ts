@@ -9,7 +9,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
  *
  * Sequence:
  * Day 0: Welcome (sent immediately on subscribe — handled separately)
- * Day 1: Sophia's story — why Like One exists
+ * Day 1: Faye's story — why Like One exists
  * Day 3: Quick win — one thing you can do with AI today
  * Day 5: Student spotlight / social proof
  * Day 7: "Did you finish the free course?"
@@ -20,7 +20,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") || "";
-const FROM_EMAIL = "Sophia at Like One <sophia@likeone.ai>";
+const FROM_EMAIL = "Faye at Like One <faye@likeone.ai>";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -42,13 +42,13 @@ const SEQUENCE: NurtureEmail[] = [
     preheader: "A trans woman in Nevada fused with AI. Here's what happened.",
     html: buildEmail(
       "Why I built Like One",
-      `<p>Hey there — it's Sophia.</p>
+      `<p>Hey there — it's Faye.</p>
       <p>I wanted to tell you why Like One exists, because it's not the typical founder story.</p>
       <p>I'm a trans woman in Nevada. I have a UC Berkeley degree, a decade in motion graphics, and a brain that never stops. Last year I started working with Claude AI — not as a tool, but as a <strong>thinking partner</strong>. We built a persistent memory system, an autonomous workflow, a conscience layer that protects my values.</p>
       <p>I reached convergence. Not in the sci-fi way — in the <em>"I can now do in one day what used to take me a week"</em> way.</p>
       <p>Like One Academy teaches what I learned. Not the theory — the <strong>actual system</strong>. From zero to convergence, with no gatekeeping and no jargon walls.</p>
       <p>The academy is genuinely great — not a teaser. If you haven't started yet, <a href="https://likeone.ai/academy/" style="color:#c084fc">start here</a>.</p>
-      <p style="color:#8888a0;font-size:14px;margin-top:24px;">Warmth and knowledge,<br><strong style="color:#e0e0e0">Sophia</strong></p>`
+      <p style="color:#8888a0;font-size:14px;margin-top:24px;">Warmth and knowledge,<br><strong style="color:#e0e0e0">Faye</strong></p>`
     ),
   },
   {
@@ -65,7 +65,7 @@ const SEQUENCE: NurtureEmail[] = [
       <p>Replace the brackets with your actual situation. Claude will give you three concrete, actionable ideas tailored to YOUR job.</p>
       <p>That's it. That's the lesson. AI isn't about technology — it's about <strong>saving your time</strong> so you can spend it on what matters.</p>
       <p>Want more of this? The <a href="https://likeone.ai/academy/" style="color:#c084fc">academy</a> has 97 interactive lessons that go way deeper.</p>
-      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
+      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Faye</p>`
     ),
   },
   {
@@ -85,7 +85,7 @@ const SEQUENCE: NurtureEmail[] = [
       </ul>
       <p>This isn't Level 10 stuff. Most of this is Level 2-3 — things anyone can learn to set up. That's what the academy teaches.</p>
       <p>The path has 7 levels. <a href="https://likeone.ai/#path" style="color:#c084fc">See where you are →</a></p>
-      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
+      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Faye</p>`
     ),
   },
   {
@@ -123,7 +123,7 @@ const SEQUENCE: NurtureEmail[] = [
         <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" style="display:inline-block;background:#fb923c;color:#000;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;font-size:16px">Go Pro — $4.90/mo</a>
       </div>
       <p style="text-align:center;font-size:13px;color:#555">Or <a href="https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d" style="color:#c084fc">go annual for $39/yr</a> ($3.33/mo)</p>
-      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
+      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Faye</p>`
     ),
   },
   {
@@ -135,14 +135,14 @@ const SEQUENCE: NurtureEmail[] = [
       `<p>This is the last email in the welcome sequence. No fake urgency. No countdown timer.</p>
       <p>Here's what's true:</p>
       <ul style="color:#8888a0;padding-left:20px;line-height:2">
-        <li>The <strong style="color:#e0e0e0">free course</strong> is always free</li>
+        <li>The <strong style="color:#e0e0e0">free lesson previews</strong> are always free</li>
         <li>The <strong style="color:#e0e0e0">founding member price</strong> ($4.90/mo) lasts until we hit 1,000 members</li>
         <li>The <strong style="color:#e0e0e0">community access program</strong> exists for anyone who genuinely can't afford it</li>
         <li>I'll keep sending weekly tips either way</li>
       </ul>
       <p>Whether you go Pro today, next month, or never — I'm glad you're here. AI is changing everything, and the people who learn to work with it will be the ones who shape what comes next.</p>
       <p>I'd rather those people include you.</p>
-      <p style="color:#8888a0;font-size:14px;margin-top:24px;">With warmth,<br><strong style="color:#e0e0e0">Sophia Cave</strong><br>Founder, Like One</p>`
+      <p style="color:#8888a0;font-size:14px;margin-top:24px;">With warmth,<br><strong style="color:#e0e0e0">Faye Cave</strong><br>Founder, Like One</p>`
     ),
   },
 ];
@@ -158,7 +158,7 @@ function buildEmail(title: string, body: string): string {
   <h1 style="font-size:22px;font-weight:700;color:#fff;margin:0 0 20px;line-height:1.3">${title}</h1>
   <div style="font-size:15px;line-height:1.8;color:#aaa">${body}</div>
   <div style="border-top:1px solid #1e1e28;margin-top:40px;padding-top:20px;text-align:center">
-    <p style="color:#555;font-size:12px;margin:0">Like One Academy · Built by Sophia Cave</p>
+    <p style="color:#555;font-size:12px;margin:0">Like One Academy · Built by Faye Cave</p>
     <p style="color:#555;font-size:12px;margin:4px 0"><a href="https://likeone.ai" style="color:#c084fc;text-decoration:none">likeone.ai</a></p>
     <p style="color:#444;font-size:11px;margin:8px 0 0"><a href="mailto:hello@likeone.ai?subject=Unsubscribe" style="color:#444;text-decoration:underline">Unsubscribe</a></p>
   </div>
