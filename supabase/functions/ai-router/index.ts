@@ -39,7 +39,10 @@ interface RAGResult {
 async function ragSearch(query: string, limit = 5): Promise<RAGResult[]> {
   const res = await fetch(`${SUPABASE_URL}/functions/v1/brain-embed`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${SERVICE_KEY}`,
+    },
     body: JSON.stringify({ action: "search", query, limit }),
   });
 
@@ -132,9 +135,22 @@ function formatRAGAnswer(query: string, results: RAGResult[]): string {
   // Clean up escaped JSON
   valueStr = valueStr.replace(/\\n/g, "\n").replace(/\\"/g, '"').replace(/\\\\/g, "\\");
 
-  // If similarity is very high, the RAG result is likely a direct answer
-  if (topResult.similarity > 0.85) {
-    return valueStr.slice(0, 1500);
+  // BGE-small embeddings: 0.6+ is a good match, 0.75+ is excellent
+  if (topResult.similarity > 0.6) {
+    // High confidence — return top result directly
+    if (topResult.similarity > 0.75) {
+      return valueStr.slice(0, 1500);
+    }
+    // Medium confidence — combine top 2-3 results for richer answer
+    const combined = results
+      .filter(r => r.similarity > 0.55)
+      .slice(0, 3)
+      .map(r => {
+        const v = typeof r.value === "string" ? r.value : JSON.stringify(r.value);
+        return `[${r.key}]: ${v.slice(0, 500)}`;
+      })
+      .join("\n\n");
+    return combined.slice(0, 2000);
   }
 
   return "";
