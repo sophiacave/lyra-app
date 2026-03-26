@@ -55,7 +55,7 @@ async function embedEntry(key, value) {
 
   const res = await fetch(`${SUPABASE_URL}/functions/v1/brain-embed`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${SERVICE_KEY}` },
     body: JSON.stringify({ action: "embed", key, text }),
   });
 
