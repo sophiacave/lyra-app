@@ -23,59 +23,67 @@
 
   async function initAuth() {
     const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-    
+
     const path = location.pathname;
     const parts = path.split('/').filter(Boolean);
     const courseSlug = parts[1] || '';
     const lessonFile = parts[2] || '';
 
-    // Index pages always free
+    // Index pages, community, and signin are always public (browsable without auth)
     if (!lessonFile || lessonFile === 'index.html' || lessonFile === 'community.html' || lessonFile === 'signin.html') return;
 
-    // Free courses always free
-    if (FREE_COURSES.includes(courseSlug)) return;
-
-    // Check if this lesson is in free preview (first N lessons)
-    const isFree = await checkFreePreview(courseSlug, lessonFile);
-    if (isFree) return;
-
-    // Check auth session (app project)
+    // --- EMAIL GATE: All lesson content requires signin ---
+    // Check auth session first (app project)
     const { data: { session } } = await sb.auth.getSession();
 
-    if (session) {
-      // Signed in — check subscription
-      const { data: profile } = await sb
-        .from('profiles')
-        .select('subscription_status')
-        .eq('email', session.user.email)
-        .single();
+    // Also check localStorage for sessions from old/alternative projects
+    let hasSession = !!session;
+    let userEmail = session?.user?.email;
+    let isPro = false;
 
-      if (profile?.subscription_status === 'active') return; // Pro — full access
-    }
-
-    // Also check if user signed in via old brain project or has pro status in localStorage
-    // (handles migration period where session might be on different project)
-    if (!session) {
+    if (!hasSession) {
       const oldSession = localStorage.getItem('sb-vpaynwebgmmnwttqkwmh-auth-token');
       const appSession = localStorage.getItem('sb-blknphuwwgagtueqtoji-auth-token');
       const raw = appSession || oldSession;
       if (raw) {
         try {
           const parsed = JSON.parse(raw);
-          if (parsed?.user?.email) {
-            const { data: profile } = await sb
-              .from('profiles')
-              .select('subscription_status')
-              .eq('email', parsed.user.email)
-              .single();
-            if (profile?.subscription_status === 'active') return;
+          if (parsed?.user?.email && parsed?.access_token) {
+            hasSession = true;
+            userEmail = parsed.user.email;
           }
         } catch(e) {}
       }
     }
 
-    // Not signed in or not subscribed — show gate
-    showGate(!!session);
+    // NOT SIGNED IN → redirect to signin (email gate)
+    if (!hasSession) {
+      window.location.href = SIGNIN_URL;
+      return;
+    }
+
+    // SIGNED IN — check subscription status
+    if (userEmail) {
+      const { data: profile } = await sb
+        .from('profiles')
+        .select('subscription_status')
+        .eq('email', userEmail)
+        .single();
+      if (profile?.subscription_status === 'active') isPro = true;
+    }
+
+    // Pro members get full access
+    if (isPro) return;
+
+    // Free courses are accessible to any signed-in user
+    if (FREE_COURSES.includes(courseSlug)) return;
+
+    // Free preview lessons (first N) are accessible to any signed-in user
+    const isFree = await checkFreePreview(courseSlug, lessonFile);
+    if (isFree) return;
+
+    // Signed in but not Pro, and not free content — show upgrade gate
+    showGate(true);
   }
 
   async function checkFreePreview(courseSlug, lessonFile) {

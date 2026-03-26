@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude for Beginners — Like One Academy</title>
+<meta name="description" content="Learn to use Claude AI to automate your work life — at ANY job. No coding. No jargon. Just real results in your first hour. Free preview lessons.">
+<meta property="og:title" content="Claude for Beginners — Like One Academy">
+<meta property="og:description" content="Automate your work life with Claude AI. No coding required. Free preview lessons.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://likeone.ai/academy/claude-for-beginners/">
+<meta property="og:image" content="https://likeone.ai/api/og">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="claude-beginners.css">
+<style>
+/* Index-specific styles */
+.hero{text-align:center;padding:4rem 0 2rem}
+.hero-badge{display:inline-block;background:rgba(251,146,60,.1);color:var(--orange);font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.4rem 1.25rem;border-radius:20px;border:1px solid rgba(251,146,60,.25);margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.2rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:.75rem;line-height:1.1}
+.hero h1 .accent{color:var(--orange)}
+.hero .tagline{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--dim);max-width:520px;margin:0 auto 2rem;font-weight:400;line-height:1.7}
+.hero-hook{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;max-width:520px;margin:0 auto 2rem;text-align:left}
+.hero-hook p{color:var(--dim);font-size:.9rem;line-height:1.7;margin-bottom:.5rem}
+.hero-hook p:last-child{margin-bottom:0}
+.hero-hook strong{color:var(--text)}
+.hero-hook em{color:var(--orange);font-style:normal}
+
+.meta-row{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0}
+.meta-pill{display:flex;align-items:center;gap:.4rem;background:var(--surface);border:1px solid var(--border);padding:.4rem 1rem;border-radius:20px;font-size:.8rem;color:var(--dim)}
+.meta-pill strong{color:var(--text);font-weight:700}
+
+/* What you'll learn */
+.learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:2rem 0}
+.learn-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:border-color .2s}
+.learn-item:hover{border-color:var(--border2)}
+.learn-item .emoji{font-size:1.5rem;margin-bottom:.5rem}
+.learn-item h4{font-size:.9rem;font-weight:700;margin-bottom:.25rem}
+.learn-item p{color:var(--dim);font-size:.8rem;line-height:1.5}
+
+/* Modules */
+.modules{padding-bottom:2rem}
+.module{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.25rem;transition:border-color .2s}
+.module:hover{border-color:var(--border2)}
+.module-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.module-num{background:var(--glow-orange);color:var(--orange);font-size:.65rem;font-weight:700;padding:.3rem .75rem;border-radius:8px;letter-spacing:.5px}
+.module-title{font-size:1.1rem;font-weight:700}
+.module-desc{color:var(--muted);font-size:.8rem;margin-bottom:1rem;font-style:italic}
+.lessons{list-style:none}
+.lessons li{border-top:1px solid var(--border)}
+.lessons li:first-child{border-top:none}
+.lessons li a{display:flex;align-items:center;justify-content:space-between;padding:.85rem .25rem;color:var(--text);text-decoration:none;transition:all .2s;border-radius:8px}
+.lessons li a:hover{color:var(--orange);background:rgba(251,146,60,.03);padding-left:.75rem}
+.lesson-left{display:flex;align-items:center;gap:.75rem}
+.lesson-num{color:var(--muted);font-size:.78rem;font-weight:600;min-width:1.5rem}
+.lesson-name{font-size:.92rem;font-weight:500}
+.lesson-right{display:flex;align-items:center;gap:.75rem}
+.lesson-tag{font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:.2rem .6rem;border-radius:6px;background:rgba(56,189,248,.1);color:var(--blue)}
+.lesson-tag.quiz{background:rgba(74,222,128,.1);color:var(--green)}
+.lesson-tag.hands-on{background:rgba(251,146,60,.1);color:var(--orange)}
+.lesson-check{font-size:1rem;opacity:.15;transition:opacity .3s}
+.lesson-check.done{opacity:1;color:var(--green)}
+.arrow{color:var(--muted);transition:transform .2s,color .2s;font-size:.8rem}
+.lessons li a:hover .arrow{transform:translateX(4px);color:var(--orange)}
+
+/* Progress */
+.progress-section{margin:1.5rem 0 2.5rem}
+.progress-outer{background:var(--surface);border-radius:12px;height:10px;overflow:hidden;border:1px solid var(--border)}
+.progress-inner{height:100%;background:linear-gradient(90deg,var(--orange),var(--purple));border-radius:12px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.progress-label{display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;color:var(--muted)}
+
+/* CTA */
+.cta-section{text-align:center;padding:2rem 0 3rem}
+.cta-section p{color:var(--dim);font-size:.9rem;margin-bottom:1.25rem}
+.btn-start{display:inline-block;background:var(--orange);color:#000;font-weight:700;font-size:1rem;padding:.9rem 2.5rem;border-radius:12px;text-decoration:none;transition:all .25s}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(251,146,60,.3);text-decoration:none}
+.btn-start-ghost{display:inline-block;background:transparent;border:1px solid var(--border);color:var(--dim);font-weight:600;font-size:.9rem;padding:.75rem 2rem;border-radius:10px;text-decoration:none;transition:all .2s;margin-left:.75rem}
+.btn-start-ghost:hover{border-color:var(--orange);color:var(--text);text-decoration:none}
+
+.foot{text-align:center;padding:2rem 0;border-top:1px solid var(--border);color:var(--muted);font-size:.78rem;margin-top:1rem}
+
+@media(max-width:600px){
+  .hero{padding:3rem 0 1.5rem}
+  .hero-hook{padding:1.25rem}
+  .learn-grid{grid-template-columns:1fr}
+  .module{padding:1.25rem}
+  .meta-row{gap:.75rem}
+  .btn-start-ghost{margin-left:0;margin-top:.75rem;display:block}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/">&larr; All Courses</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Beginner Friendly</div>
+  <h1>Automate Your Work Life<br>with <span class="accent">Claude.</span></h1>
+  <p class="tagline">Learn to use Claude AI to write emails, summarize documents, analyze data, and automate the tasks that eat your day — at ANY job. No coding. No jargon.</p>
+
+  <div class="hero-hook">
+    <p>You don't need to be "technical." You don't need to learn to code. You just need to <strong>talk to Claude like a smart coworker</strong> and know a few tricks.</p>
+    <p>In 9 lessons, you'll go from <em>"what even is this?"</em> to <em>"I just saved 5 hours this week."</em></p>
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-pill"><strong>9</strong> lessons</div>
+    <div class="meta-pill"><strong>3</strong> modules</div>
+    <div class="meta-pill"><strong>~3 hrs</strong></div>
+    <div class="meta-pill" style="border-color:rgba(74,222,128,.3);color:var(--green)"><strong>3 Free</strong> lessons</div>
+  </div>
+</div>
+
+<!-- WHAT YOU'LL LEARN -->
+<div class="learn-grid">
+  <div class="learn-item">
+    <div class="emoji">📧</div>
+    <h4>Write Emails in Seconds</h4>
+    <p>Draft professional emails, replies, and follow-ups. Match your tone perfectly every time.</p>
+  </div>
+  <div class="learn-item">
+    <div class="emoji">📄</div>
+    <h4>Summarize Anything</h4>
+    <p>Turn 20-page reports into 5 bullet points. Extract what matters from meetings, docs, and data.</p>
+  </div>
+  <div class="learn-item">
+    <div class="emoji">📊</div>
+    <h4>Analyze Data Without Excel</h4>
+    <p>Ask Claude to find patterns, create summaries, and answer questions about your spreadsheets.</p>
+  </div>
+  <div class="learn-item">
+    <div class="emoji">🧠</div>
+    <h4>Build Your AI Assistant</h4>
+    <p>Create a custom Claude setup that knows your role, your style, and your priorities.</p>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-section">
+  <div class="progress-outer"><div class="progress-inner" id="progressBar" style="width:0%"></div></div>
+  <div class="progress-label"><span id="progressText">0 / 9 lessons complete</span><span id="pctText">0%</span></div>
+</div>
+
+<!-- MODULES -->
+<div class="modules">
+
+  <div class="module">
+    <div class="module-header">
+      <span class="module-num">MODULE 1</span>
+      <span class="module-title">Meet Claude</span>
+    </div>
+    <p class="module-desc">Understand what Claude can do, have your first real conversation, and see results immediately.</p>
+    <ul class="lessons">
+      <li><a href="what-claude-can-do.html">
+        <div class="lesson-left"><span class="lesson-num">01</span><span class="lesson-name">What Claude Can Do For You</span></div>
+        <div class="lesson-right"><span class="lesson-tag">interactive</span><span class="lesson-check" data-lesson="1">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+      <li><a href="your-first-conversation.html">
+        <div class="lesson-left"><span class="lesson-num">02</span><span class="lesson-name">Your First Conversation</span></div>
+        <div class="lesson-right"><span class="lesson-tag hands-on">hands-on</span><span class="lesson-check" data-lesson="2">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+      <li><a href="basics-quiz.html">
+        <div class="lesson-left"><span class="lesson-num">03</span><span class="lesson-name">Check Your Understanding</span></div>
+        <div class="lesson-right"><span class="lesson-tag quiz">quiz</span><span class="lesson-check" data-lesson="3">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+    </ul>
+  </div>
+
+  <div class="module">
+    <div class="module-header">
+      <span class="module-num">MODULE 2</span>
+      <span class="module-title">Automate Your Day</span>
+    </div>
+    <p class="module-desc">Put Claude to work on the tasks that eat your time — emails, documents, data, and more.</p>
+    <ul class="lessons">
+      <li><a href="email-calendar-magic.html">
+        <div class="lesson-left"><span class="lesson-num">04</span><span class="lesson-name">Email & Calendar Magic</span></div>
+        <div class="lesson-right"><span class="price-tag">Pro</span><span class="lesson-tag hands-on">hands-on</span><span class="lesson-check" data-lesson="4">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+      <li><a href="documents-and-data.html">
+        <div class="lesson-left"><span class="lesson-num">05</span><span class="lesson-name">Documents & Data</span></div>
+        <div class="lesson-right"><span class="price-tag">Pro</span><span class="lesson-tag hands-on">hands-on</span><span class="lesson-check" data-lesson="5">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+      <li><a href="workflow-quiz.html">
+        <div class="lesson-left"><span class="lesson-num">06</span><span class="lesson-name">Workflow Knowledge Check</span></div>
+        <div class="lesson-right"><span class="price-tag">Pro</span><span class="lesson-tag quiz">quiz</span><span class="lesson-check" data-lesson="6">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+    </ul>
+  </div>
+
+  <div class="module">
+    <div class="module-header">
+      <span class="module-num">MODULE 3</span>
+      <span class="module-title">Level Up</span>
+    </div>
+    <p class="module-desc">Build a personalized AI assistant that knows your style, your role, and your priorities.</p>
+    <ul class="lessons">
+      <li><a href="custom-instructions.html">
+        <div class="lesson-left"><span class="lesson-num">07</span><span class="lesson-name">Custom Instructions & Memory</span></div>
+        <div class="lesson-right"><span class="price-tag">Pro</span><span class="lesson-tag">interactive</span><span class="lesson-check" data-lesson="7">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+      <li><a href="build-your-assistant.html">
+        <div class="lesson-left"><span class="lesson-num">08</span><span class="lesson-name">Build Your Personal Assistant</span></div>
+        <div class="lesson-right"><span class="price-tag">Pro</span><span class="lesson-tag hands-on">hands-on</span><span class="lesson-check" data-lesson="8">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+      <li><a href="final-assessment.html">
+        <div class="lesson-left"><span class="lesson-num">09</span><span class="lesson-name">Final Assessment</span></div>
+        <div class="lesson-right"><span class="price-tag">Pro</span><span class="lesson-tag quiz">quiz</span><span class="lesson-check" data-lesson="9">&#10003;</span><span class="arrow">&rarr;</span></div>
+      </a></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <p>Ready to save hours every week?</p>
+  <a href="what-claude-can-do.html" class="btn-start">Start Lesson 1 — Free</a>
+  <a href="/academy/" class="btn-start-ghost">Browse Other Courses</a>
+</div>
+
+<div class="foot">&copy; 2026 Like One Academy &bull; Built by Faye Cave</div>
+
+</div>
+
+<script>
+// Progress tracking
+const SLUG = 'claude-for-beginners';
+const TOTAL = 9;
+function updateProgress(){
+  let done = 0;
+  const stored = localStorage.getItem('lo_progress_' + SLUG);
+  const completed = stored ? JSON.parse(stored) : [];
+  for(let i = 1; i <= TOTAL; i++){
+    if(completed.includes(i)){
+      done++;
+      const el = document.querySelector('[data-lesson="' + i + '"]');
+      if(el) el.classList.add('done');
+    }
+  }
+  const pct = Math.round((done / TOTAL) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = done + ' / ' + TOTAL + ' lessons complete';
+  document.getElementById('pctText').textContent = pct + '%';
+}
+updateProgress();
+</script>
+<script src="/academy/shared/courses.js"></script>
+<script src="/academy/shared/nav.js"></script>
+<script src="/auth-state.js"></script>
+</body>
+</html>
