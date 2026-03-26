@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared-nav.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -22,13 +23,6 @@
     @keyframes bgDrift { 0% { transform: translate(0,0); } 33% { transform: translate(2%,1.5%); } 66% { transform: translate(-1%,2%); } 100% { transform: translate(0,0); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .container { max-width: 640px; margin: 0 auto; padding: 0 2rem; }
-
-    header { position: sticky; top: 0; z-index: 1000; background: rgba(8,8,10,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1100px; margin: 0 auto; }
-    .logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
-    .nav-links a { color: var(--text-dim); text-decoration: none; font-size: .875rem; font-weight: 500; }
 
     .hero { min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5rem 2rem 3rem; }
     .hero-inner { max-width: 600px; }
@@ -77,31 +71,14 @@
     .success-state p { color: var(--text-dim); font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
     .success-state a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
-    footer { padding: 2.5rem 2rem; border-top: 1px solid var(--border); text-align: center; }
-    footer p { color: var(--text-muted); font-size: .75rem; }
-    footer a { color: var(--accent); text-decoration: none; }
-
     @media (max-width: 600px) {
       .who-section { grid-template-columns: 1fr 1fr; }
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: .8rem; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="/" class="logo">like<span>one</span></a>
-    <ul class="nav-links">
-      <li><a href="/academy/">Academy</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/forum">Forum</a></li>
-      <li><a href="/account" style="color: var(--accent);">Sign In</a></li>
-      <li><a href="/support" style="color: var(--warm);">Support</a></li>
-    </ul>
-  </nav>
-</header>
+<header></header>
 
 <section class="hero">
   <div class="hero-inner">
@@ -167,12 +144,7 @@
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <p style="margin-bottom: .5rem;">Built by Faye Cave &middot; Like One</p>
-    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:hello@likeone.ai">hello@likeone.ai</a></p>
-  </div>
-</footer>
+<footer></footer>
 
 <script>
 const SUPABASE_URL = "https://blknphuwwgagtueqtoji.supabase.co";
@@ -237,6 +209,7 @@ async function handleClaim() {
 loadSpots();
 </script>
 
+<script src="/shared-nav.js"></script>
 <script src="/auth-state.js"></script>
 </body>
 </html>

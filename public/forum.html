@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared-nav.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -34,27 +35,6 @@
       pointer-events: none; z-index: -1;
     }
     .container { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
-
-    /* NAV */
-    header { position: sticky; top: 0; z-index: 1000; background: rgba(8,8,10,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; max-width: 1100px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
-    .logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
-    .logo span { color: var(--accent); }
-    .logo-badge { font-size: .6rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(192,132,252,.3); padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
-    .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
-    .nav-links a { color: var(--text-dim); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .25s; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-active { color: #c084fc !important; font-weight: 700 !important; }
-    .btn-nav { background: var(--warm); color: #000; padding: .5rem 1.25rem; border-radius: 8px; font-weight: 700; font-size: .85rem; text-decoration: none; transition: all .2s; }
-    .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(251,146,60,.2); }
-    .mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
-    @media (max-width: 768px) {
-      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--surface); border-bottom: 1px solid var(--border); }
-      .nav-links.active { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a, .nav-links .btn-nav { display: block; padding: 1rem 2rem; border-bottom: 1px solid var(--border); border-radius: 0; text-align: left; }
-      .mobile-toggle { display: block; }
-    }
 
     /* HERO */
     .hero { padding: 4rem 2rem 2rem; text-align: center; }
@@ -127,13 +107,6 @@
     /* LOADING */
     .loading { text-align: center; padding: 3rem; color: var(--text-muted); font-size: .9rem; }
 
-    /* FOOTER */
-    footer { padding: 2.5rem 2rem; border-top: 1px solid var(--border); text-align: center; margin-top: 4rem; }
-    footer .logo-sm { font-size: 1.1rem; font-weight: 700; margin-bottom: .75rem; }
-    footer .logo-sm span { color: var(--accent); }
-    footer p { color: var(--text-muted); font-size: .75rem; }
-    footer a { color: var(--accent); text-decoration: none; }
-
     @media (max-width: 600px) {
       .form-row { flex-direction: column; }
       .hero h1 { font-size: 2rem; }
@@ -142,25 +115,7 @@
 </head>
 <body>
 
-<!-- NAV -->
-<header>
-  <nav>
-    <div>
-      <a href="/" class="logo">like<span>one</span></a>
-      <span class="logo-badge">COMMUNITY</span>
-    </div>
-    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="/academy/">Academy</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/forum" class="nav-active">Forum</a></li>
-      <li><a href="/account" style="color: var(--accent);">Sign In</a></li>
-      <li><a href="/support" style="color: var(--warm); font-weight: 700;">Support</a></li>
-      <li><a href="/#start" class="btn-nav">Start Free</a></li>
-    </ul>
-  </nav>
-</header>
+<header></header>
 
 <!-- HERO -->
 <section class="hero">
@@ -257,15 +212,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container" style="max-width: 1100px;">
-    <div class="logo-sm">like<span>one</span></div>
-    <p style="margin-bottom: .5rem;">Built by Faye Cave. Powered by convergence.</p>
-    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:hello@likeone.ai">hello@likeone.ai</a> &bull; <a href="tel:+17027476877">+1 (702) 747-6877</a></p>
-    <p style="margin-top:8px"><a href="/privacy.html">Privacy Policy</a> &bull; <a href="/terms.html">Terms of Service</a></p>
-  </div>
-</footer>
+<footer></footer>
 
 <script>
 const SUPABASE_URL = "https://blknphuwwgagtueqtoji.supabase.co";
@@ -632,6 +579,7 @@ function timeAgo(dateStr) {
 }
 </script>
 
+<script src="/shared-nav.js"></script>
 <script src="/auth-state.js"></script>
 </body>
 </html>
