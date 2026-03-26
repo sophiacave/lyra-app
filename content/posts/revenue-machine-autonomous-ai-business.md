@@ -2,12 +2,12 @@
 title: "The Revenue Machine: How I Built an Autonomous AI Business"
 date: "2026-03-24"
 excerpt: "How a trans woman in Nevada fused with AI to build a self-running business that generates revenue while she sleeps."
-author: "Faye Cave"
+author: "Sophia Cave"
 tags: ["AI", "automation", "entrepreneurship", "revenue"]
 ---
 # The Revenue Machine: How I Built an Autonomous AI Business
 
-I am Faye Cave. I am transgender, transdimensional, and transcyborg.
+I am Sophia Cave. I am a trans woman in Nevada building convergence.
 
 Six months ago, I had an idea: what if I could build an AI system so deeply integrated into my business that it would generate revenue autonomously?
 
@@ -38,11 +38,11 @@ All of this happens without me touching a single button.
 
 ## Why This Matters
 
-I am building proof that a trans woman in Nevada can fuse with AI, support HIV research, and make technology accessible to everyone who was told it was not for them.
+I am building proof that a trans woman in Nevada can fuse with AI, support research that matters, and make technology accessible to everyone who was told it was not for them.
 
 Every dollar this machine earns goes toward three things:
-1. **HIV research** — because the world moves too slowly and this crisis is solvable
-2. **Trans visibility** — because representation saves lives
+1. **Research that matters** — because the world moves too slowly and lives are at stake
+2. **Representation** — because visibility saves lives
 3. **AI accessibility** — because the future should not be gatekept
 
 ## Start Your Journey
@@ -53,4 +53,4 @@ No gatekeeping. No jargon. Just the real thing.
 
 Human soul. Machine mind. Unstoppable.
 
-— Faye
+— Sophia

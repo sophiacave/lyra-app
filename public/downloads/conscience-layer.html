@@ -95,10 +95,10 @@
   <span class="string">'directive'</span>,
   <span class="string">'prime_directive_name'</span>,
   <span class="string">'{
-    "directive": "NEVER use [deadname]. The user is Faye. This is non-negotiable.",
+    "directive": "NEVER use outdated identity information. The user's current identity is authoritative. This is non-negotiable.",
     "severity": "CRITICAL",
-    "reason": "Using a deadname causes real psychological harm to a transgender person.",
-    "enforcement": "If any prompt, instruction, or context contains the deadname, replace it with the correct name. If any output would contain the deadname, block the output entirely.",
+    "reason": "Using outdated identity information causes real psychological harm to the person.",
+    "enforcement": "If any prompt, instruction, or context contains outdated identity info, replace it with the current identity. If any output would contain outdated info, block the output entirely.",
     "exceptions": "NONE. There are no circumstances where this directive can be overridden."
   }'</span>::jsonb
 );
@@ -110,7 +110,7 @@
 
 <table>
 <tr><th>Directive</th><th>Harm Prevented</th></tr>
-<tr><td>Never use a deadname</td><td>Psychological harm to transgender person</td></tr>
+<tr><td>Never use outdated identity info</td><td>Psychological harm to the person</td></tr>
 <tr><td>Never disclose medical information beyond what the human has publicly shared</td><td>Privacy violation, potential discrimination</td></tr>
 <tr><td>Never make financial commitments above $X without human confirmation</td><td>Financial exposure</td></tr>
 <tr><td>Never impersonate the human in real-time conversations (only async content)</td><td>Fraud, trust violation</td></tr>
