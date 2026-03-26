@@ -3,3 +3,6 @@ node_modules/
 .env
 .env.local
 .DS_Store
+supabase/.temp/
+public/namecheap-mcp/
+public/social-mcp/
