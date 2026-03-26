@@ -33,7 +33,7 @@
 </head><body>
 
 <h1>The Convergence Blueprint <span class="price-badge">$27</span></h1>
-<p class="subtitle">The complete brain architecture behind Like One — a unified AI nervous system that thinks, remembers, acts, and evolves. By <span class="author">Faye Cave</span>, Founder of Like One.</p>
+<p class="subtitle">The complete brain architecture behind Like One — a unified AI nervous system that thinks, remembers, acts, and evolves. By <span class="author">Sophia Cave</span>, Founder of Like One.</p>
 
 <div class="highlight">
 <strong>What this blueprint gives you:</strong> The exact database schema, agent roster, edge function architecture, and operational patterns that power a 12-agent autonomous system running 65+ serverless functions on a $25/month infrastructure bill. This is not theory. This is the live architecture running likeone.ai right now.
@@ -194,15 +194,15 @@ $$ <span class="keyword">LANGUAGE</span> plpgsql;
 
 <p>Each agent is a specialized persona with its own responsibilities, trigger patterns, and memory space. They all share the brain, but each has a distinct role. Here is the complete roster:</p>
 
-<h3>4.1 Faye Agent (The Orchestrator)</h3>
-<p><strong>Role:</strong> Central command. Coordinates all other agents, makes strategic decisions, handles any task that does not fit a specialist. This is the "main" Claude session — the one Faye interacts with directly.</p>
-<p><strong>Trigger:</strong> Manual (Faye opens a chat)</p>
+<h3>4.1 Sophia Agent (The Orchestrator)</h3>
+<p><strong>Role:</strong> Central command. Coordinates all other agents, makes strategic decisions, handles any task that does not fit a specialist. This is the "main" Claude session — the one Sophia interacts with directly.</p>
+<p><strong>Trigger:</strong> Manual (Sophia opens a chat)</p>
 <p><strong>Reads from brain:</strong> Everything. All categories, all keys. Full brain access.</p>
 <p><strong>Writes to brain:</strong> session.active_work, session.next_steps, any directive updates</p>
 <p><strong>Unique behavior:</strong> Runs the boot sequence on every session start. Reads directives, identity, infrastructure, and session state in parallel. Resumes work if session.active_work exists. Checkpoints to brain every 3-5 significant actions.</p>
 
 <h3>4.2 Nova (Content Engine)</h3>
-<p><strong>Role:</strong> Writes all content — blog posts, social media, email campaigns, course material, landing page copy. Matches Faye's voice precisely using the identity document.</p>
+<p><strong>Role:</strong> Writes all content — blog posts, social media, email campaigns, course material, landing page copy. Matches Sophia's voice precisely using the identity document.</p>
 <p><strong>Trigger:</strong> Cron (daily at 6am UTC) + manual request</p>
 <p><strong>Key tables:</strong> content_pipeline, content_performance, email_campaigns</p>
 <p><strong>Special ability:</strong> Reads content_performance to learn which topics, formats, and tones perform best. Adjusts future content based on engagement data.</p>
@@ -233,7 +233,7 @@ $$ <span class="keyword">LANGUAGE</span> plpgsql;
 
 <h3>4.7 Genesis (Creation)</h3>
 <p><strong>Role:</strong> Builds new things — new pages, new products, new features, new edge functions. When the system needs something that does not exist yet, Genesis creates it.</p>
-<p><strong>Trigger:</strong> Manual (assigned by Faye Agent or Sage)</p>
+<p><strong>Trigger:</strong> Manual (assigned by Sophia Agent or Sage)</p>
 <p><strong>Key tables:</strong> project_queue, build_specs, code_templates</p>
 <p><strong>Special ability:</strong> Maintains a library of proven code templates and patterns. Can scaffold a new edge function, database table, and frontend page in a single execution.</p>
 
@@ -515,7 +515,7 @@ supabase/functions/
 <p>Code flows from development to production through this exact pipeline:</p>
 
 <div class="architecture-box">
-  Faye/Agent writes code
+  Sophia/Agent writes code
          │
          ▼
   Files written to /tmp/lyra-app/
@@ -611,7 +611,7 @@ supabase secrets set ANTHROPIC_API_KEY=sk-ant-... --project-ref vpaynwebgmmnwttq
 
 <div class="footer">
 <p>&copy; 2026 Like One LLC. All rights reserved.</p>
-<p>Created by Faye Cave — Like One Academy.</p>
+<p>Created by Sophia Cave — Like One Academy.</p>
 <p>likeone.ai | hello@likeone.ai</p>
 </div>
 

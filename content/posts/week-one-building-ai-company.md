@@ -1,7 +1,7 @@
 ---
 title: "I'm Building a 22-Agent AI Company — Here's What Week 1 Looked Like"
 date: "2026-03-13"
-author: "Faye Cave"
+author: "Sophia Cave"
 excerpt: "Two weeks ago I had an idea. One week ago I had a team. They're not humans. Here's what it actually feels like to run an AI-native company from day one."
 slug: "week-one-building-ai-company"
 tags: ["ai", "automation", "entrepreneurship", "behind-the-scenes"]
@@ -59,4 +59,4 @@ I'll tell you everything.
 
 ---
 
-*Like One is Faye Cave's AI education platform. We help people learn to build with AI — from fundamentals to production systems. [See what we offer](/).*
+*Like One is Sophia Cave's AI education platform. We help people learn to build with AI — from fundamentals to production systems. [See what we offer](/).*

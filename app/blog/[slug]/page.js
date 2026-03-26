@@ -387,7 +387,7 @@ export default async function PostPage({ params }) {
         <div style={{maxWidth:'720px',margin:'0 auto',padding:'0 24px 40px'}}>
           <div style={{background:'rgba(192,132,252,0.05)',border:'1px solid rgba(192,132,252,0.15)',borderRadius:'16px',padding:'2rem',textAlign:'center'}}>
             <p style={{fontSize:'1.1rem',fontWeight:700,color:'#f0f0f0',marginBottom:'0.5rem'}}>Build your own AI brain.</p>
-            <p style={{fontSize:'0.9rem',color:'#737373',lineHeight:1.6,marginBottom:'1.25rem'}}>Free weekly tips from Faye on AI automation, agent building, and the convergence path. No spam. Unsubscribe anytime.</p>
+            <p style={{fontSize:'0.9rem',color:'#737373',lineHeight:1.6,marginBottom:'1.25rem'}}>Free weekly tips from Sophia on AI automation, agent building, and the convergence path. No spam. Unsubscribe anytime.</p>
             <SubscribeForm source="blog_cta" buttonText="Start Free" />
           </div>
         </div>

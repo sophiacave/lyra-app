@@ -2,7 +2,7 @@
 title: "I Replaced My $4,000/Month Virtual Assistant with AI Agents (Here Is How)"
 date: "2026-03-24"
 excerpt: "How I replaced a $4,000/month VA with autonomous AI agents that work 24/7, never call in sick, and cost $29/month total."
-author: "Faye Cave"
+author: "Sophia Cave"
 tags: ["AI agents", "virtual assistant", "automation", "cost savings", "solopreneur"]
 ---
 # I Replaced My $4,000/Month Virtual Assistant with AI Agents (Here Is How)
@@ -87,4 +87,4 @@ I teach the entire process in [The Automation Lab ($149)](https://buy.stripe.com
 
 Or start free: [likeone.ai](https://likeone.ai)
 
-— Faye Cave
+— Sophia Cave

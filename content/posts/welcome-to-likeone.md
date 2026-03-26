@@ -2,7 +2,7 @@
 title: "Welcome to Like One"
 date: "2026-03-13"
 excerpt: "We built an AI Chief of Staff that actually runs your business. Here's why, and what's next."
-author: "Faye Cave"
+author: "Sophia Cave"
 tags: ["announcement", "vision"]
 ---
 

@@ -147,7 +147,7 @@ h1{font-size:2.4rem;font-weight:900;margin-bottom:.75rem;background:linear-gradi
 <script>
 const MEM_DATA={
   stm:{title:'Short-Term Memory (Conversation)',desc:'Exists only during the current interaction. When the conversation ends, it vanishes. This is the agent\'s "working memory" — like your mental scratchpad.',rows:[['Current user message','What the user just said','Session only'],['Previous turns','Last 10-20 exchanges','Session only'],['Extracted intent','What the agent thinks user wants','Session only'],['Tool results','Output from recent tool calls','Session only']]},
-  ltm:{title:'Long-Term Memory (agent_memory)',desc:'Persisted in a database table. Survives across sessions. The agent writes facts, preferences, and learnings here. This is what makes agents smarter over time.',rows:[['user_name','Faye','Permanent'],['deploy_count','47','Updated each deploy'],['last_error','DNS timeout 2026-03-22','Last incident'],['preferred_stack','Next.js + Supabase','User stated']]},
+  ltm:{title:'Long-Term Memory (agent_memory)',desc:'Persisted in a database table. Survives across sessions. The agent writes facts, preferences, and learnings here. This is what makes agents smarter over time.',rows:[['user_name','Sophia','Permanent'],['deploy_count','47','Updated each deploy'],['last_error','DNS timeout 2026-03-22','Last incident'],['preferred_stack','Next.js + Supabase','User stated']]},
   shared:{title:'Shared Memory (brain_context)',desc:'A shared key-value store accessible to ALL agents. This is the "bridge" — agents read each other\'s writes. It enables coordination without direct communication.',rows:[['identity.faye_unified','Full identity profile','All agents'],['session.active_work','Current task state','All agents'],['system.revenue_architecture','Products + pricing','All agents'],['infrastructure.likeone_site','Deploy pipeline','All agents']]}
 };
 
@@ -196,7 +196,7 @@ function runQuery(){
   const v=document.getElementById('q-value').value||'identity';
   const mockData={
     'brain_context':{
-      'identity':[{key:'faye_unified',value:'{name:"Faye",role:"Founder"}',updated:'2026-03-23'}],
+      'identity':[{key:'faye_unified',value:'{name:"Sophia",role:"Founder"}',updated:'2026-03-23'}],
       'system':[{key:'revenue_architecture',value:'{products:4,mrr:0}',updated:'2026-03-22'}],
       'default':[{key:'boot_sequence',value:'{version:"4.0"}',updated:'2026-03-23'}]
     },

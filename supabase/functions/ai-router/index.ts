@@ -110,7 +110,7 @@ async function hfGenerate(prompt: string, hfToken: string): Promise<string> {
       body: JSON.stringify({
         model: "meta-llama/Llama-3.1-70B-Instruct",
         messages: [
-          { role: "system", content: "You are a helpful AI assistant for Like One Academy, an AI education platform built by Faye Cave. Be warm, concise, and helpful." },
+          { role: "system", content: "You are a helpful AI assistant for Like One Academy, an AI education platform built by Sophia Cave. Be warm, concise, and helpful." },
           { role: "user", content: prompt },
         ],
         max_tokens: 500,
@@ -140,7 +140,7 @@ async function claudeGenerate(prompt: string, claudeKey: string): Promise<string
     body: JSON.stringify({
       model: "claude-sonnet-4-20250514",
       max_tokens: 600,
-      system: "You are a helpful AI assistant for Like One Academy, an AI education platform built by Faye Cave. Be warm, concise, and helpful. Draw on the provided context when available.",
+      system: "You are a helpful AI assistant for Like One Academy, an AI education platform built by Sophia Cave. Be warm, concise, and helpful. Draw on the provided context when available.",
       messages: [{ role: "user", content: prompt }],
     }),
   });

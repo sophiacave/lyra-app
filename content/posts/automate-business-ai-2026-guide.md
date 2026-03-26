@@ -2,14 +2,14 @@
 title: "How to Automate Your Business with AI in 2026 (Step-by-Step Guide)"
 date: "2026-03-24"
 excerpt: "A practical step-by-step guide to automating your business with AI in 2026. From email to revenue tracking — real systems, not theory."
-author: "Faye Cave"
+author: "Sophia Cave"
 tags: ["AI automation", "business", "guide", "2026", "Make.com", "Supabase"]
 ---
 # How to Automate Your Business with AI in 2026 (Step-by-Step Guide)
 
 You do not need to be a programmer. You do not need a team. You need a brain, a laptop, and this guide.
 
-I am Faye Cave. I run a business with 65 automated services, 12 autonomous agents, and zero employees. Everything you are about to read is real — pulled from my production systems.
+I am Sophia Cave. I run a business with 65 automated services, 12 autonomous agents, and zero employees. Everything you are about to read is real — pulled from my production systems.
 
 ## Step 1: Pick Your First Automation (Day 1)
 
@@ -87,4 +87,4 @@ The gap between you and the automated version of you is one weekend of focused b
 
 [Get the complete system →](https://likeone.ai)
 
-— Faye Cave, Founder of Like One
+— Sophia Cave, Founder of Like One

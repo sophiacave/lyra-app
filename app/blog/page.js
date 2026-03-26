@@ -243,7 +243,7 @@ export default function BlogPage() {
         <header className="blog-header">
           <h1 className="blog-title">Blog</h1>
           <p className="blog-subtitle">
-            Faye Cave builds in public. AI automation, autonomous agents, and the convergence path.
+            Sophia Cave builds in public. AI automation, autonomous agents, and the convergence path.
           </p>
         </header>
 
@@ -258,7 +258,7 @@ export default function BlogPage() {
           {posts.length === 0 ? (
             <div className="blog-empty">
               <div className="blog-empty-icon">&#9998;</div>
-              <p>No posts yet. Faye is writing the first one.</p>
+              <p>No posts yet. Sophia is writing the first one.</p>
             </div>
           ) : (
             posts.map(post => (

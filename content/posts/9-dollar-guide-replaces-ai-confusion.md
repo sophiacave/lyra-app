@@ -2,7 +2,7 @@
 title: "The $9 Guide That Replaces Your First Month of AI Confusion"
 date: "2026-03-24"
 excerpt: "Stop watching YouTube tutorials. Stop reading Twitter threads. Here is the exact 5-tool, 3-automation stack that actually works — for less than lunch."
-author: "Faye Cave"
+author: "Sophia Cave"
 tags: ["AI", "quick start", "beginner", "automation", "tools"]
 ---
 # The $9 Guide That Replaces Your First Month of AI Confusion
@@ -77,6 +77,6 @@ One purchase. One afternoon. One system that actually works.
 
 No subscription. No upsell wall. Just the guide.
 
-— Faye Cave
+— Sophia Cave
 
 P.S. If you want to go deeper after, check out [Like One Academy](https://likeone.ai). Free tier available. No credit card required.

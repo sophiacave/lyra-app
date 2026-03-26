@@ -569,7 +569,7 @@ export default function CalculatorPage() {
           like<span style={{ color: '#c084fc' }}>one</span>
         </div>
         <p style={{ color: '#55556a', fontSize: '.75rem', marginBottom: '.5rem' }}>
-          Built with love by Faye Cave. Powered by convergence.
+          Built with love by Sophia Cave. Powered by convergence.
         </p>
         <p style={{ color: '#55556a', fontSize: '.75rem' }}>
           &copy; 2026 Like One. All rights reserved. &bull;{' '}

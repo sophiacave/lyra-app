@@ -113,7 +113,7 @@ export async function GET() {
           }}
         >
           <span style={{ fontSize: '18px', color: '#8888a0' }}>likeone.ai</span>
-          <span style={{ fontSize: '18px', color: '#8888a0' }}>By Faye Cave</span>
+          <span style={{ fontSize: '18px', color: '#8888a0' }}>By Sophia Cave</span>
         </div>
       </div>
     ),
