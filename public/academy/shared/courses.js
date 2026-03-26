@@ -4,6 +4,21 @@
  * Referenced by lesson-nav.js for navigation.
  */
 window.ACADEMY_COURSES = {
+  "claude-for-beginners": {
+    slug: "claude-for-beginners",
+    title: "Claude for Beginners",
+    lessons: [
+      { slug: "what-claude-can-do", title: "What Claude Can Do For You" },
+      { slug: "your-first-conversation", title: "Your First Conversation" },
+      { slug: "basics-quiz", title: "Check Your Understanding" },
+      { slug: "email-calendar-magic", title: "Email & Calendar Magic" },
+      { slug: "documents-and-data", title: "Documents & Data" },
+      { slug: "workflow-quiz", title: "Workflow Knowledge Check" },
+      { slug: "custom-instructions", title: "Custom Instructions & Memory" },
+      { slug: "build-your-assistant", title: "Build Your Personal Assistant" },
+      { slug: "final-assessment", title: "Final Assessment" }
+    ]
+  },
   "ai-foundations": {
     slug: "ai-foundations",
     title: "AI Foundations",
