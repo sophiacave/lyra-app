@@ -94,71 +94,8 @@
     .progress-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
     .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width .4s ease; }
 
-    /* ---- FOUNDING BANNER ---- */
-    .founding-banner { background: linear-gradient(135deg, rgba(192,132,252,.08), rgba(251,146,60,.08)); border: 1px solid var(--warm); border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 2rem; position: relative; overflow: hidden; }
-    .founding-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--warm), var(--glow), var(--accent)); }
-    .founding-badge { display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #000; background: var(--warm); padding: 4px 14px; border-radius: 4px; margin-bottom: 1rem; }
-    .founding-headline { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: .5rem; letter-spacing: -0.5px; }
-    .founding-headline .warm { color: var(--warm); }
-    .founding-sub { color: var(--text-dim); font-size: .95rem; margin-bottom: 1rem; line-height: 1.5; }
-    .founding-counter { display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .counter-bar { width: 200px; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-    .counter-fill { height: 100%; background: linear-gradient(90deg, var(--warm), var(--glow)); border-radius: 4px; transition: width 1s ease; }
-    .counter-text { font-size: .8rem; color: var(--text-dim); font-weight: 600; }
-    .counter-text strong { color: var(--warm); }
-    .price-was { text-decoration: line-through; color: var(--text-muted); font-size: 1rem; font-weight: 400; margin-right: 4px; }
-
-    /* ---- PRICING ---- */
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .price-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-    .price-card.featured { border: 2px solid var(--warm); background: var(--surface); }
-    .price-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--warm), var(--glow)); }
-    .price-name { font-size: 1.15rem; font-weight: 700; margin-bottom: .5rem; }
-    .price-amount { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; }    .price-card.featured .price-amount { color: var(--accent); }
-    .price-desc { color: var(--text-dim); font-size: .85rem; margin-bottom: 1.5rem; line-height: 1.5; }
-    .price-features { list-style: none; margin-bottom: 1.5rem; flex: 1; }
-    .price-features li { font-size: .85rem; color: var(--text-dim); padding: .5rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-start; }
-    .price-features li::before { content: '\2713'; color: var(--success); flex-shrink: 0; font-weight: 700; }
-    .btn-price { width: 100%; padding: .75rem; border-radius: 8px; font-weight: 600; font-size: .9rem; cursor: pointer; transition: all .2s; font-family: inherit; text-align: center; text-decoration: none; display: block; }
-    .btn-price.primary { background: var(--warm); color: #000; border: none; }
-    .btn-price.primary:hover { box-shadow: 0 8px 24px rgba(251,146,60,.2); }
-    .btn-price.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-price.secondary:hover { border-color: var(--accent); }
-
-    /* ---- DIGITAL PRODUCTS ---- */
+    /* ---- PRODUCTS CTA ---- */
     .products-section { background: var(--surface); }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .product-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
-    .product-name { font-size: 1rem; font-weight: 700; margin-bottom: .35rem; }
-    .product-price { font-size: 1.5rem; font-weight: 800; color: var(--warm); margin-bottom: .75rem; }
-    .product-desc { color: var(--text-dim); font-size: .8rem; line-height: 1.5; margin-bottom: 1rem; }
-
-
-    /* ---- CONSULTING ---- */
-    .consulting-section { background: var(--bg); }
-    .consulting-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-    .consult-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; }
-    .consult-card.highlight { border: 2px solid var(--warm); }
-    .consult-card.highlight::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--warm), var(--glow)); }
-    .consult-emoji { font-size: 2rem; margin-bottom: .75rem; }
-    .consult-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .35rem; }
-    .consult-price { font-size: 1.75rem; font-weight: 800; color: var(--warm); margin-bottom: .5rem; }
-    .consult-desc { color: var(--text-dim); font-size: .85rem; line-height: 1.5; margin-bottom: 1.25rem; flex: 1; }
-    .consult-includes { list-style: none; margin-bottom: 1.5rem; }
-    .consult-includes li { font-size: .8rem; color: var(--text-dim); padding: .35rem 0; display: flex; gap: 8px; }
-    .consult-includes li::before { content: '\2713'; color: var(--success); flex-shrink: 0; font-weight: 700; }
-
-    /* ---- COURSES ---- */
-    .courses-section { background: var(--surface); }
-    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .course-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; }
-    .course-badge { display: inline-block; font-size: .6rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: .75rem; width: fit-content; }
-    .course-badge.bestseller { background: var(--warm); color: #000; }
-    .course-badge.new { background: var(--accent); color: #000; }
-    .course-badge.popular { background: var(--success); color: #000; }
-    .course-name { font-size: 1rem; font-weight: 700; margin-bottom: .35rem; }
-    .course-price { font-size: 1.5rem; font-weight: 800; color: var(--warm); margin-bottom: .75rem; }
-    .course-desc { color: var(--text-dim); font-size: .8rem; line-height: 1.5; margin-bottom: 1rem; flex: 1; }
     /* ---- MISSION ---- */
     .mission-section { text-align: center; }
     .mission-quote { font-size: clamp(1.1rem, 3vw, 1.5rem); font-style: italic; line-height: 1.6; max-width: 680px; margin: 0 auto 2rem; font-weight: 400; }
@@ -189,11 +126,6 @@
       50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    @keyframes borderFlow {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
     @keyframes bgDrift {
       0%   { transform: translate(0, 0); }
       33%  { transform: translate(2%, 1.5%); }
@@ -215,25 +147,7 @@
       background-clip: text;
       animation: gradientShift 4s ease infinite;
     }
-    .price-card, .product-card {
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-    .price-card:hover, .product-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-light);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
-    }
-    .price-card.featured:hover {
-      box-shadow: 0 16px 48px rgba(251, 146, 60, 0.15);
-    }
-    .founding-banner::before {
-      background: linear-gradient(90deg, var(--warm), var(--glow), var(--accent), var(--warm)) !important;
-      background-size: 300% 100% !important;
-      animation: borderFlow 3s linear infinite;
-    }
-    .founding-banner { transition: box-shadow 0.3s ease; }
-    .founding-banner:hover { box-shadow: 0 0 40px rgba(251, 146, 60, 0.1); }
-    body::before { animation: bgDrift 20s ease-in-out infinite; }
+    body::before { animation: bgDrift 20s ease-in-out; }
   </style>
 </head>
 <body>
