@@ -1,22 +1,27 @@
 {
-  "name": "Lyra — Like One Command",
-  "short_name": "Lyra",
-  "description": "Your AI Chief of Staff. Command Like One from anywhere.",
-  "start_url": "/",
+  "name": "Like One Academy",
+  "short_name": "Like One",
+  "description": "Learn AI from zero to cyborg. 10 courses, 97 interactive lessons. Built by Faye Cave.",
+  "start_url": "/academy/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#8b5cf6",
-  "orientation": "portrait",
+  "background_color": "#08080a",
+  "theme_color": "#c084fc",
+  "orientation": "any",
+  "categories": ["education", "productivity"],
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
 }
