@@ -119,7 +119,7 @@
       </form>
       <div id="signin-sent" style="display:none; margin-top: 1.5rem;">
         <p style="color: var(--success); font-weight: 600;">Check your email for the magic link.</p>
-        <p style="color: var(--text-muted); font-size: .85rem; margin-top: .5rem;">Didn't get it? Check spam, or <a href="mailto:faye@likeone.ai" style="color: var(--accent);">email Faye</a>.</p>
+        <p style="color: var(--text-muted); font-size: .85rem; margin-top: .5rem;">Didn't get it? Check spam, or <a href="mailto:hello@likeone.ai" style="color: var(--accent);">email us</a>.</p>
       </div>
     </div>
 
@@ -190,8 +190,8 @@
 
 <footer>
   <div class="container" style="max-width: 1100px;">
-    <p style="margin-bottom: .5rem;">Built with love by Faye Cave. Powered by convergence.</p>
-    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:faye@likeone.ai">faye@likeone.ai</a></p>
+    <p style="margin-bottom: .5rem;">Built by Sophia Cave. Powered by convergence.</p>
+    <p>&copy; 2026 Like One. All rights reserved. &bull; <a href="mailto:hello@likeone.ai">hello@likeone.ai</a></p>
     <p style="margin-top:8px"><a href="/privacy.html">Privacy Policy</a> &bull; <a href="/terms.html">Terms of Service</a></p>
   </div>
 </footer>
@@ -356,7 +356,7 @@ async function cancelSubscription() {
       throw new Error(data.error || 'Failed to cancel');
     }
   } catch (err) {
-    errorEl.textContent = 'Something went wrong. Email faye@likeone.ai and we\'ll cancel immediately. No questions.';
+    errorEl.textContent = 'Something went wrong. Email hello@likeone.ai and we\'ll cancel immediately. No questions.';
     errorEl.classList.add('visible');
     btn.textContent = 'Cancel Subscription';
     btn.disabled = false;
@@ -393,7 +393,7 @@ async function handleSignin(e) {
   if (error) {
     btn.textContent = 'Sign In';
     btn.disabled = false;
-    alert('Failed to send magic link. Please try again or email faye@likeone.ai');
+    alert('Failed to send magic link. Please try again or email hello@likeone.ai');
   } else {
     document.querySelector('.signin-form').style.display = 'none';
     document.getElementById('signin-sent').style.display = 'block';
