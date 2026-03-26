@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { site, colors, footer as footerConfig } from '../../lib/site-config';
 
 export default function Footer({ variant = 'main' }) {
@@ -17,6 +18,38 @@ export default function Footer({ variant = 'main' }) {
           {' \u00B7 '}
           <a href={`tel:${site.phoneRaw}`} style={{ color: colors.textDim, textDecoration: 'none', transition: 'color 0.2s' }}>{site.phone}</a>
         </p>
+      </footer>
+    );
+  }
+
+  if (variant === 'site') {
+    return (
+      <footer style={{
+        padding: '2.5rem 2rem',
+        borderTop: `1px solid ${colors.border}`,
+        textAlign: 'center',
+      }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '.75rem', color: '#e8e8ec' }}>
+            like<span style={{ color: colors.purple }}>one</span>
+          </div>
+          <p style={{ color: '#8a8aaa', fontSize: '.75rem', marginBottom: '.5rem' }}>
+            Built by {site.founder}. Powered by convergence.
+          </p>
+          <p style={{ color: '#8a8aaa', fontSize: '.75rem', marginBottom: '.5rem' }}>
+            &copy; {site.copyright}. All rights reserved. &bull;{' '}
+            <a href={`mailto:${site.email}`} style={{ color: colors.purple, textDecoration: 'none' }}>{site.email}</a> &bull;{' '}
+            <a href={`tel:${site.phoneRaw}`} style={{ color: colors.purple, textDecoration: 'none' }}>{site.phone}</a>
+          </p>
+          <p style={{ color: '#8a8aaa', fontSize: '.75rem', marginTop: '8px' }}>
+            {footerConfig.links.map((link, i) => (
+              <span key={link.href}>
+                {i > 0 && ' \u2022 '}
+                <Link href={link.href} style={{ color: colors.purple, textDecoration: 'none' }}>{link.label}</Link>
+              </span>
+            ))}
+          </p>
+        </div>
       </footer>
     );
   }
