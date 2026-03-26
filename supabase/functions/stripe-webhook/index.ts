@@ -1,24 +1,21 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 /**
- * Stripe Webhook v5 — Multi-Brain Architecture
- * Deployed on: REVENUE brain (munmhzylfoiyigismbds)
+ * Stripe Webhook v6 — Multi-Brain Architecture (brain-agnostic)
+ * Can be deployed on ANY brain — uses explicit env vars for cross-brain writes.
+ * Primary deploy: brain-v2 (api.likeone.ai) — receives Stripe events
  * Writes to:
  *   - REVENUE brain: revenue_events, donation_ledger, academy_enrollments, notification_log
- *   - APP brain: profiles (via update_subscription_status RPC)
- *   - OLD brain: send-product-delivery edge function (until migrated)
+ *   - APP brain: profiles (via update_subscription_status RPC), send-product-delivery
  */
 
-// REVENUE brain (self — where this function is deployed)
-const REVENUE_URL = Deno.env.get("SUPABASE_URL")!;
-const REVENUE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+// REVENUE brain (explicit — works regardless of which brain this is deployed on)
+const REVENUE_URL = Deno.env.get("REVENUE_SUPABASE_URL") || Deno.env.get("SUPABASE_URL")!;
+const REVENUE_KEY = Deno.env.get("REVENUE_SERVICE_ROLE_KEY") || Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 // APP brain (profiles, subscribers, community)
 const APP_URL = Deno.env.get("APP_SUPABASE_URL") || "https://blknphuwwgagtueqtoji.supabase.co";
 const APP_KEY = Deno.env.get("APP_SERVICE_ROLE_KEY") || REVENUE_KEY;
-
-// APP brain (send-product-delivery + profiles)
-// Note: APP_URL/APP_KEY also used for profile updates above
 
 const STRIPE_WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET")!;
 const DOWNLOAD_TOKEN_SECRET = Deno.env.get("DOWNLOAD_TOKEN_SECRET") || "likeone-dl-2026-secret";
@@ -203,8 +200,8 @@ Deno.serve(async (req: Request) => {
   const body = await req.text();
   const sigHeader = req.headers.get("stripe-signature");
   if (!sigHeader) {
-    try { const json = JSON.parse(body); return new Response(JSON.stringify({ received: true, type: json.type || "health", version: "v5-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
-    catch { return new Response(JSON.stringify({ status: "ok", version: "v5-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
+    try { const json = JSON.parse(body); return new Response(JSON.stringify({ received: true, type: json.type || "health", version: "v6-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
+    catch { return new Response(JSON.stringify({ status: "ok", version: "v6-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
   }
   if (!await verifyStripeSignature(body, sigHeader, STRIPE_WEBHOOK_SECRET)) {
     return new Response(JSON.stringify({ error: "Invalid signature" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -219,5 +216,5 @@ Deno.serve(async (req: Request) => {
       default: console.log(`Unhandled: ${event.type}`);
     }
   } catch (err) { console.error(`Error: ${event.type}:`, err); }
-  return new Response(JSON.stringify({ received: true, type: event.type, version: "v5-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  return new Response(JSON.stringify({ received: true, type: event.type, version: "v6-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
 });
