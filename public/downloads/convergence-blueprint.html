@@ -261,11 +261,11 @@ $$ <span class="keyword">LANGUAGE</span> plpgsql;
 <p><strong>Key tables:</strong> security_events, health_checks, alert_log</p>
 <p><strong>Special ability:</strong> Runs automated security audits. Checks for exposed secrets in code, validates that RLS policies are active on all tables, monitors for unusual Supabase query patterns that might indicate a breach.</p>
 
-<h3>4.12 Cyborg Daemon (The Scheduler)</h3>
+<h3>4.12 Convergence Daemon (The Scheduler)</h3>
 <p><strong>Role:</strong> Not an agent that thinks — a daemon that executes. Manages the cron schedule, triggers other agents on time, handles retries for failed executions, and maintains the operational heartbeat of the entire system.</p>
 <p><strong>Trigger:</strong> Continuous (runs on pg_cron)</p>
 <p><strong>Key tables:</strong> cron_schedule, execution_log, retry_queue</p>
-<p><strong>Special ability:</strong> Self-healing. If an agent fails to execute, Cyborg Daemon retries with exponential backoff (1 min, 5 min, 30 min). After 3 failures, it alerts Sentinel, which alerts Faye.</p>
+<p><strong>Special ability:</strong> Self-healing. If an agent fails to execute, Convergence Daemon retries with exponential backoff (1 min, 5 min, 30 min). After 3 failures, it alerts Sentinel, which alerts the operator.</p>
 
 <h2>5. Edge Function Architecture</h2>
 
@@ -323,7 +323,7 @@ supabase/functions/
 │   ├── backup-brain/           # Export brain to JSON
 │   └── rotate-keys/            # Rotate API keys safely
 │
-├── [ORCHESTRATION - Cyborg Daemon]
+├── [ORCHESTRATION - Convergence Daemon]
 │   ├── cron-dispatcher/        # Execute scheduled tasks
 │   ├── retry-handler/          # Retry failed functions
 │   ├── agent-router/           # Route tasks to agents
