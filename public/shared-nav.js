@@ -5,12 +5,12 @@
 (function () {
   const NAV_LINKS = [
     { label: 'Academy', href: '/academy/' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'About', href: '/about' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Forum', href: '/forum' },
-    { label: 'Sign In', href: '/account' },
-    { label: 'Support', href: '/support' },
+    { label: 'Pricing', href: '/pricing/' },
+    { label: 'About', href: '/about/' },
+    { label: 'Blog', href: '/blog/' },
+    { label: 'Forum', href: '/forum/' },
+    { label: 'Sign In', href: '/account/' },
+    { label: 'Support', href: '/support/' },
   ];
 
   const FOOTER = {
@@ -19,8 +19,8 @@
     phone: '+1 (702) 747-6877',
     phoneRaw: '+17027476877',
     links: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Privacy Policy', href: '/privacy/' },
+      { label: 'Terms of Service', href: '/terms/' },
     ],
   };
 
