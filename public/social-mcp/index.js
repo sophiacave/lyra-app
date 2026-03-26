@@ -317,7 +317,8 @@ server.tool(
     // Read the blog post file
     const fs = await import("node:fs");
     const path = await import("node:path");
-    const postPath = path.join(process.cwd(), "content", "posts", `${slug}.md`);
+    const REPO_ROOT = "/Users/sophiacave/lyra-app";
+    const postPath = path.join(REPO_ROOT, "content", "posts", `${slug}.md`);
 
     let content;
     try {
