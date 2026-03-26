@@ -136,9 +136,9 @@ export default function ThankYouPage() {
           <p className="ty-section-title">Start with these courses:</p>
           <div className="ty-courses">
             <a href="/academy/signin.html" className="ty-course">
-              <span className="ty-course-tag" style={{background:'rgba(34,197,94,0.15)',color:'#4ade80'}}>Free</span>
-              <p className="ty-course-name">AI Pet Lab</p>
-              <p className="ty-course-desc">Build your first AI agent — fun, fast, zero experience needed.</p>
+              <span className="ty-course-tag" style={{background:'rgba(56,189,248,0.15)',color:'#38bdf8'}}>Pro</span>
+              <p className="ty-course-name">Claude for Beginners</p>
+              <p className="ty-course-desc">Start here. Learn Claude from zero to confident in 9 lessons.</p>
             </a>
             <a href="/academy/signin.html" className="ty-course">
               <span className="ty-course-tag" style={{background:'rgba(192,132,252,0.15)',color:'#c084fc'}}>Pro</span>

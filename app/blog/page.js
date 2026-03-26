@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import SubscribeForm from '@/app/components/SubscribeForm';
+import Header from '@/app/components/Header';
+import Footer from '@/app/components/Footer';
+import { site, colors, academy } from '@/lib/site-config';
 
 export const metadata = {
-  title: 'Blog — Like One',
+  title: `Blog \u2014 ${site.name}`,
   description: 'Thoughts on AI, automation, and building the future.',
 };
 
@@ -235,17 +238,7 @@ export default function BlogPage() {
       `}</style>
 
       <div className="blog-shell">
-        <nav className="blog-topnav">
-          <div className="blog-topnav-inner">
-            <Link href="/" className="blog-topnav-brand">Like One</Link>
-            <div className="blog-topnav-links">
-              <Link href="/academy/">Academy</Link>
-              <Link href="/blog" className="active">Blog</Link>
-              <Link href="/forum">Forum</Link>
-              <Link href="/academy/signin.html">Sign In</Link>
-            </div>
-          </div>
-        </nav>
+        <Header variant="blog" activeLink="/blog" />
 
         <header className="blog-header">
           <h1 className="blog-title">Blog</h1>
@@ -256,7 +249,7 @@ export default function BlogPage() {
 
         <div className="blog-academy-cta">
           <div className="blog-academy-cta-inner">
-            <p className="blog-academy-cta-text">Like One Academy — <span>10 courses, 97 interactive lessons.</span></p>
+            <p className="blog-academy-cta-text">{academy.ctaText} — <span>{academy.ctaDescription}</span></p>
             <Link href="/academy/">Free preview &rarr;</Link>
           </div>
         </div>
@@ -285,20 +278,12 @@ export default function BlogPage() {
 
         <div style={{maxWidth:'720px',margin:'0 auto',padding:'0 24px 60px'}}>
           <div style={{background:'rgba(192,132,252,0.05)',border:'1px solid rgba(192,132,252,0.15)',borderRadius:'16px',padding:'2rem',textAlign:'center'}}>
-            <p style={{fontSize:'1.1rem',fontWeight:700,color:'#f0f0f0',marginBottom:'0.5rem'}}>Get weekly AI automation tips from Faye.</p>
+            <p style={{fontSize:'1.1rem',fontWeight:700,color:'#f0f0f0',marginBottom:'0.5rem'}}>Get weekly AI automation tips from {site.founder}.</p>
             <p style={{fontSize:'0.85rem',color:'#737373',lineHeight:1.6,marginBottom:'1rem'}}>No spam. No fake urgency. Just real systems and real results.</p>
             <SubscribeForm source="blog_listing" buttonText="Subscribe" />
           </div>
         </div>
-        <footer className="blog-site-footer">
-          <p>
-            <a href="https://likeone.ai">likeone.ai</a>
-            {' '}&middot;{' '}
-            <a href="mailto:faye@likeone.ai">faye@likeone.ai</a>
-            {' '}&middot;{' '}
-            <a href="tel:+17027476877">+1 (702) 747-6877</a>
-          </p>
-        </footer>
+        <Footer variant="blog" />
       </div>
     </>
   );

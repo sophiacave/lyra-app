@@ -1,32 +1,36 @@
 import './globals.css';
+import { site, colors } from '../lib/site-config';
+
+const fullTitle = `${site.name} \u2014 ${site.tagline}`;
+const shortDesc = "What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn't the future \u2014 it's now.";
 
 export const metadata = {
-  title: 'Like One — Human-AI Collaboration Platform',
-  description: 'What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn\'t the future — it\'s now. Built by Faye Cave.',
+  title: fullTitle,
+  description: site.description,
   manifest: '/manifest.json',
-  themeColor: '#c084fc',
+  themeColor: colors.purple,
   viewport: 'width=device-width, initial-scale=1',
   icons: {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Like One — Human-AI Collaboration Platform',
-    description: 'What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn\'t the future — it\'s now.',
-    url: 'https://likeone.ai',
-    siteName: 'Like One',
+    title: fullTitle,
+    description: shortDesc,
+    url: site.url,
+    siteName: site.name,
     type: 'website',
-    images: [{ url: 'https://likeone.ai/og-image.png', width: 1200, height: 630, alt: 'Like One — Human-AI Collaboration Platform' }],
+    images: [{ url: site.ogImage, ...site.ogImageSize, alt: fullTitle }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Like One — Human-AI Collaboration Platform',
-    description: 'What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn\'t the future — it\'s now.',
-    images: ['https://likeone.ai/og-image.png'],
+    title: fullTitle,
+    description: shortDesc,
+    images: [site.ogImage],
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Like One'
+    title: site.name,
   }
 };
 

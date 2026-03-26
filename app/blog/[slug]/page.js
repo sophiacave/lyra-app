@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { getPostBySlug, getAllSlugs } from '@/lib/posts';
 import SubscribeForm from '@/app/components/SubscribeForm';
+import Header from '@/app/components/Header';
+import Footer from '@/app/components/Footer';
+import { site, colors, academy } from '@/lib/site-config';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -10,23 +13,23 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-  if (!post) return { title: 'Post Not Found — Like One' };
+  if (!post) return { title: `Post Not Found \u2014 ${site.name}` };
   return {
-    title: `${post.title} — Like One`,
+    title: `${post.title} \u2014 ${site.name}`,
     description: post.excerpt,
     openGraph: {
-      title: `${post.title} — Like One`,
+      title: `${post.title} \u2014 ${site.name}`,
       description: post.excerpt,
-      url: `https://likeone.ai/blog/${slug}`,
+      url: `${site.url}/blog/${slug}`,
       type: 'article',
-      siteName: 'Like One',
-      images: [{ url: 'https://likeone.ai/og-image.png', width: 1200, height: 630, alt: post.title }],
+      siteName: site.name,
+      images: [{ url: site.ogImage, ...site.ogImageSize, alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${post.title} — Like One`,
+      title: `${post.title} \u2014 ${site.name}`,
       description: post.excerpt,
-      images: ['https://likeone.ai/og-image.png'],
+      images: [site.ogImage],
     },
   };
 }
@@ -353,17 +356,7 @@ export default async function PostPage({ params }) {
       `}</style>
 
       <div className="post-shell">
-        <nav className="post-topnav">
-          <div className="post-topnav-inner">
-            <Link href="/" className="post-topnav-brand">Like One</Link>
-            <div className="post-topnav-links">
-              <Link href="/academy/">Academy</Link>
-              <Link href="/blog" className="active">Blog</Link>
-              <Link href="/forum">Forum</Link>
-              <Link href="/academy/signin.html">Sign In</Link>
-            </div>
-          </div>
-        </nav>
+        <Header variant="blog" activeLink="/blog" />
 
         <header className="post-header">
           <div className="post-header-meta">
@@ -402,7 +395,7 @@ export default async function PostPage({ params }) {
         <div className="post-related-course">
           <div className="post-related-course-inner">
             <h3>Want to go deeper?</h3>
-            <p>Check out Like One Academy — 10 courses, 97 interactive lessons.</p>
+            <p>Check out {academy.ctaText} — {academy.ctaDescription}</p>
             <Link href="/academy/" className="post-related-course-link">Start free &rarr;</Link>
           </div>
         </div>
@@ -413,15 +406,7 @@ export default async function PostPage({ params }) {
           </Link>
         </footer>
 
-        <footer className="post-site-footer">
-          <p>
-            <a href="https://likeone.ai">likeone.ai</a>
-            {' '}&middot;{' '}
-            <a href="mailto:faye@likeone.ai">faye@likeone.ai</a>
-            {' '}&middot;{' '}
-            <a href="tel:+17027476877">+1 (702) 747-6877</a>
-          </p>
-        </footer>
+        <Footer variant="blog" />
       </div>
     </>
   );

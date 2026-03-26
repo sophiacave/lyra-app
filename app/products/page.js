@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import { products, tiers } from '../../lib/products';
+import { site, colors, fonts } from '../../lib/site-config';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export const metadata = {
-  title: 'Products — Like One',
+  title: `Products \u2014 ${site.name}`,
   description: 'AI playbooks, automation blueprints, and business systems built from a live, working stack. From free tools to full systems.',
 };
 
@@ -96,36 +99,8 @@ export default function ProductsPage() {
   const tierOrder = ['free', 'entry', 'core', 'premium', 'subscription'];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#08080a', color: '#fff', fontFamily: "'Inter', sans-serif" }}>
-      {/* Header */}
-      <header style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000,
-        background: 'rgba(10,10,10,.95)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid #1e1e28',
-        padding: '1.25rem 0',
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link href="/" style={{
-            fontSize: '1.5rem',
-            fontWeight: 800,
-            background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            textDecoration: 'none',
-          }}>
-            Like One
-          </Link>
-          <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <Link href="/" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Home</Link>
-            <Link href="/products" style={{ color: '#c084fc', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Products</Link>
-            <Link href="/blog" style={{ color: '#e0e0e0', textDecoration: 'none', fontSize: '.95rem', fontWeight: 500 }}>Blog</Link>
-          </nav>
-        </div>
-      </header>
+    <div style={{ minHeight: '100vh', background: colors.pageBg, color: '#fff', fontFamily: fonts.primary }}>
+      <Header activeLink="/products" />
 
       {/* Hero */}
       <section style={{
@@ -179,17 +154,7 @@ export default function ProductsPage() {
         })}
       </section>
 
-      {/* Footer */}
-      <footer style={{
-        background: '#111114',
-        borderTop: '1px solid #1e1e28',
-        padding: '2rem 1.5rem',
-        textAlign: 'center',
-        color: '#999',
-        fontSize: '.85rem',
-      }}>
-        <p>&copy; 2026 Like One — Built by Faye Cave.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
