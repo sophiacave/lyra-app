@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Terms of Service — Like One',
   description: "Like One's terms of service. Your agreement with Like One when using our platform and courses.",
   robots: 'noindex',
-  alternates: { canonical: `${site.url}/terms` },
+  alternates: { canonical: `${site.url}/terms/` },
 };
 
 export default function TermsPage() {

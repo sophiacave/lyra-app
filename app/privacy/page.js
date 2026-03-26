@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Privacy Policy — Like One',
   description: "Like One's privacy policy. How we handle your data, what we collect, and your rights.",
   robots: 'noindex',
-  alternates: { canonical: `${site.url}/privacy` },
+  alternates: { canonical: `${site.url}/privacy/` },
 };
 
 export default function PrivacyPage() {

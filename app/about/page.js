@@ -6,11 +6,11 @@ import { site, colors } from '../../lib/site-config';
 export const metadata = {
   title: 'About Like One — AI Education for Everyone',
   description: "Like One Academy teaches people how to build AI systems that think with them, remember everything, and protect their values. 10 courses. 97+ lessons. Start free.",
-  alternates: { canonical: `${site.url}/about` },
+  alternates: { canonical: `${site.url}/about/` },
   openGraph: {
     title: 'About Like One — AI Education for Everyone',
     description: '10 courses, 97+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
-    url: `${site.url}/about`,
+    url: `${site.url}/about/`,
     images: [{ url: site.ogImage, ...site.ogImageSize }],
   },
   twitter: {

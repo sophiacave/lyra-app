@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${post.title} \u2014 ${site.name}`,
       description: post.excerpt,
-      url: `${site.url}/blog/${slug}`,
+      url: `${site.url}/blog/${slug}/`,
       type: 'article',
       siteName: site.name,
       images: [{ url: site.ogImage, ...site.ogImageSize, alt: post.title }],
