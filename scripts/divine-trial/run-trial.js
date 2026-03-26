@@ -43,7 +43,6 @@ const PAGES = [
   { path: '/academy/', name: 'Academy Hub', critical: true },
   { path: '/academy/signin.html', name: 'Signin', critical: true },
   { path: '/academy/claude-for-beginners/', name: 'Claude for Beginners', critical: true },
-  { path: '/academy/ai-pet-lab/', name: 'AI Pet Lab', critical: true },
   { path: '/academy/ai-foundations/', name: 'AI Foundations', critical: false },
   { path: '/academy/claude-mastery/', name: 'Claude Mastery', critical: false },
   { path: '/academy/mcp-masterclass/', name: 'MCP Masterclass', critical: false },

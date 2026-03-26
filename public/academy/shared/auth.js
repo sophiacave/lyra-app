@@ -12,7 +12,7 @@
   const SIGNIN_BASE = '/academy/signin.html';
   const SIGNIN_URL = SIGNIN_BASE + '?return=' + encodeURIComponent(location.pathname);
 
-  const FREE_COURSES = ['ai-pet-lab'];
+  const FREE_COURSES = [];
   const FREE_LESSON_COUNT = 3;
 
   // Load Supabase client

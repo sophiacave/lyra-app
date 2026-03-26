@@ -18,7 +18,6 @@
 
   // Course display names
   const COURSE_NAMES = {
-    'ai-pet-lab': 'AI Pet Lab',
     'ai-foundations': 'AI Foundations',
     'automation-architect': 'Automation Architect',
     'claude-mastery': 'Claude Mastery',

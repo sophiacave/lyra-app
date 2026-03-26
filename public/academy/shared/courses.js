@@ -50,21 +50,6 @@ window.ACADEMY_COURSES = {
       { slug: "business-ai-quiz", title: "Business AI Quiz" }
     ]
   },
-  "ai-pet-lab": {
-    slug: "ai-pet-lab",
-    title: "AI Pet Lab",
-    lessons: [
-      { slug: "choose-your-pet", title: "Choose Your Pet" },
-      { slug: "first-reward", title: "First Reward" },
-      { slug: "behavior-quiz", title: "Behavior Quiz" },
-      { slug: "teach-sit", title: "Teach Sit" },
-      { slug: "trick-chain", title: "Trick Chain" },
-      { slug: "training-quiz", title: "Training Quiz" },
-      { slug: "learning-rate-dial", title: "Learning Rate Dial" },
-      { slug: "architecture-lab", title: "Architecture Lab" },
-      { slug: "evolution-quiz", title: "Evolution Quiz" }
-    ]
-  },
   "claude-mastery": {
     slug: "claude-mastery",
     title: "Claude Mastery",

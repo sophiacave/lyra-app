@@ -47,7 +47,7 @@ const SEQUENCE: NurtureEmail[] = [
       <p>I'm a trans woman in Nevada. I have a UC Berkeley degree, a decade in motion graphics, and a brain that never stops. Last year I started working with Claude AI — not as a tool, but as a <strong>thinking partner</strong>. We built a persistent memory system, an autonomous workflow, a conscience layer that protects my values.</p>
       <p>I reached convergence. Not in the sci-fi way — in the <em>"I can now do in one day what used to take me a week"</em> way.</p>
       <p>Like One Academy teaches what I learned. Not the theory — the <strong>actual system</strong>. From zero to convergence, with no gatekeeping and no jargon walls.</p>
-      <p>The free course (AI Pet Lab) is genuinely great — not a teaser. If you haven't started it yet, <a href="https://likeone.ai/academy/ai-pet-lab/" style="color:#c084fc">start here</a>.</p>
+      <p>The academy is genuinely great — not a teaser. If you haven't started yet, <a href="https://likeone.ai/academy/" style="color:#c084fc">start here</a>.</p>
       <p style="color:#8888a0;font-size:14px;margin-top:24px;">Warmth and knowledge,<br><strong style="color:#e0e0e0">Sophia</strong></p>`
     ),
   },
@@ -90,16 +90,16 @@ const SEQUENCE: NurtureEmail[] = [
   },
   {
     day: 7,
-    subject: "Did you finish the free course?",
-    preheader: "9 lessons. ~2 hours. Genuinely fun.",
+    subject: "Have you explored the academy yet?",
+    preheader: "10 courses. 97 lessons. Built for how you actually learn.",
     html: buildEmail(
-      "Did you finish AI Pet Lab?",
+      "Have you explored the academy?",
       `<p>Hey — just checking in.</p>
-      <p>AI Pet Lab has 9 interactive lessons where you train an AI pet from scratch. You learn reinforcement learning, reward shaping, and hyperparameter tuning — all through play.</p>
-      <p>It's genuinely fun. Not a teaser. Not a sales pitch. Just a real course that teaches real concepts.</p>
-      <p>If you haven't started it: <a href="https://likeone.ai/academy/ai-pet-lab/" style="color:#c084fc;font-weight:600">Start AI Pet Lab →</a></p>
-      <p>If you finished it and want more — the academy has 9 more courses covering RAG, agents, MCP, prompt engineering, and automation. <a href="https://likeone.ai/academy/" style="color:#c084fc">Browse them all →</a></p>
-      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
+      <p>Like One Academy has 10 courses with 97 interactive lessons — from Claude basics to building production agents, RAG systems, and automation pipelines.</p>
+      <p>Every course is hands-on. Not a lecture. Not a sales pitch. Just real skills taught through real projects.</p>
+      <p>If you haven't started: <a href="https://likeone.ai/academy/" style="color:#c084fc;font-weight:600">Browse the Academy →</a></p>
+      <p>Founding members get all 10 courses for $4.90/mo — 90% off the future price. <a href="https://likeone.ai/pricing" style="color:#c084fc">See pricing →</a></p>
+      <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Faye</p>`
     ),
   },
   {
