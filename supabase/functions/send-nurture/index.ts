@@ -221,10 +221,30 @@ Deno.serve(async (req) => {
     });
   }
 
+  // Check which subscribers are already paid (pro) — skip sales nurture for them
+  const subEmails = subscribers.map((s: any) => s.email);
+  const { data: paidProfiles } = await supabase
+    .from("profiles")
+    .select("email")
+    .in("email", subEmails)
+    .eq("subscription_tier", "pro");
+  const paidEmails = new Set((paidProfiles || []).map((p: any) => p.email));
+
   let sent = 0;
   let skipped = 0;
 
   for (const sub of subscribers) {
+    // Paid users: mark nurture complete, no sales emails needed
+    if (paidEmails.has(sub.email)) {
+      await supabase
+        .from("subscribers")
+        .update({ nurture_step: SEQUENCE.length })
+        .eq("id", sub.id);
+      console.log(`Skipped ${sub.email} — already pro subscriber`);
+      skipped++;
+      continue;
+    }
+
     const step = sub.nurture_step ?? 0;
     const email_to_send = SEQUENCE[step];
     if (!email_to_send) { skipped++; continue; }
