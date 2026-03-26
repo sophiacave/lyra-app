@@ -18,6 +18,7 @@
 
   // Course display names
   const COURSE_NAMES = {
+    'claude-for-beginners': 'Claude for Beginners',
     'ai-foundations': 'AI Foundations',
     'automation-architect': 'Automation Architect',
     'claude-mastery': 'Claude Mastery',
