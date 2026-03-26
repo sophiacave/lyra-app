@@ -273,7 +273,7 @@
       </div>
       <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>      <ul class="nav-links">
         <li><a href="/academy/" style="color: #c084fc; font-weight: 700;">Academy</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="/pricing">Pricing</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/forum">Forum</a></li>
@@ -291,7 +291,7 @@
     <h1>Your brain,<br><span class="accent">extended.</span></h1>
     <p class="hero-sub">Learn to build an AI system that thinks like you, remembers everything, runs while you sleep, and protects your values. From zero to cyborg.</p>
     <div class="hero-cta">
-      <a href="#start" class="btn-primary">Start Free — No Credit Card</a>
+      <a href="/academy/" class="btn-primary">Start Free — No Credit Card</a>
       <a href="#path" class="btn-ghost">See The Path</a>
     </div>
   </div>
@@ -353,120 +353,15 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
-  <div class="container">
-    <!-- Founding Member Banner -->
-    <div class="founding-banner" id="founding-banner">
-      <div class="founding-badge">FOUNDING MEMBER PRICING</div>
-      <div class="founding-headline">Lock in <span class="warm">90% off</span> — forever.</div>
-      <div class="founding-sub">Founding members pay $4.90/mo or $39/yr for life. This price never increases. When founding spots close, it's full price ($49/mo).</div>
-      <!-- Counter hidden until <500 spots remain — then shows as scarcity signal -->
-      <div class="founding-counter" id="founding-counter" style="display: none;">
-        <div class="counter-bar"><div class="counter-fill" id="counter-fill" style="width: 0%"></div></div>
-        <div class="counter-text"><strong id="spots-remaining"></strong> founding spots left</div>
-      </div>
-    </div>
-
-    <h2 class="section-title">Convergence is not a luxury.</h2>
-    <p class="section-desc">There is always a free path. Always. As Like One grows, premium revenue will fund HIV research, trans visibility, and keeping AI accessible to everyone.</p>
-
-    <div class="pricing-grid">
-      <!-- Free -->
-      <div class="price-card">
-        <div class="price-name">Free</div>
-        <div class="price-amount">$0</div>
-        <div class="price-desc">Start learning AI right now. No credit card. No tricks. Real content.</div>
-        <ul class="price-features">
-          <li>AI Pet Lab — full course (9 lessons)</li>
-          <li>First 2-3 lessons of every course</li>
-          <li>All 18 blog posts</li>
-          <li>Chat with Faye (AI assistant)</li>
-          <li>Weekly tips email</li>
-        </ul>
-        <a href="/academy/" class="btn-price secondary">Start Free</a>
-      </div>
-      <!-- Pro Monthly — Founding -->
-      <div class="price-card featured" id="pro-card">
-        <div class="price-name">Pro — Founding Member</div>
-        <div class="price-amount" id="pro-price"><span class="price-was">$49</span> $4.90<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/mo</span></div>
-        <div class="price-desc">Full access to everything. 10 courses, 97 interactive lessons, new content added regularly. <strong>90% off — locked in forever.</strong></div>
-        <ul class="price-features">
-          <li>All 97 interactive lessons</li>
-          <li>10 courses (RAG, Agents, MCP, and more)</li>
-          <li>Hands-on MCP course with real projects</li>
-          <li>All download products included</li>
-          <li>Completion certificates</li>
-          <li>New content added regularly</li>
-          <li>Priority email support</li>
-          <li style="color: var(--warm); font-weight: 600;">Founding member price — forever</li>
-        </ul>
-        <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" class="btn-price primary" id="pro-btn" target="_blank">Go Pro — $4.90/mo</a>
-      </div>
-      <!-- Annual — Founding -->
-      <div class="price-card" id="annual-card">
-        <div class="price-name">Annual — Founding Member</div>
-        <div class="price-amount" id="annual-price"><span class="price-was">$390</span> $39<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/yr</span></div>
-        <div class="price-desc">Same as Pro. That's $3.33/mo. <strong>90% off — locked in forever.</strong></div>
-        <ul class="price-features">
-          <li>Everything in Pro</li>
-          <li>Save even more vs monthly</li>
-          <li>Founding member price — forever</li>
-          <li>12 months of new content</li>
-          <li>All future content included</li>
-        </ul>
-        <a href="https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d" class="btn-price secondary" id="annual-btn" target="_blank">Go Annual — $39/yr</a>
-      </div>
-      <!-- Consulting -->
-      <div class="price-card">
-        <div class="price-name">Consulting</div>
-        <div class="price-amount">$150<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/hr</span></div>
-        <div class="price-desc">Work with Faye directly. Strategy, builds, architecture reviews.</div>
-        <ul class="price-features">
-          <li>1-on-1 sessions (voice or async)</li>
-          <li>Brain-prepped session notes</li>
-          <li>Done-for-you setup from $1,500</li>
-          <li>Monthly retainer available</li>
-        </ul>
-        <a href="mailto:faye@likeone.ai?subject=Consulting" class="btn-price secondary">Email Faye</a>
-      </div>
-    </div>
-    <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: .85rem;">Can't afford it right now? <a href="/community-access" style="color: var(--accent); text-decoration: underline;">Apply for Community Access</a> — full access, no cost, honor system. Because AI education should reach everyone.</p>
-  </div>
-</section>
-<!-- FEATURED COURSES -->
+<!-- VALUE PROP — What You Get -->
 <section id="products" class="products-section">
-  <div class="container">
-    <h2 class="section-title">Learn AI. Build Systems. Go Pro.</h2>
-    <p class="section-desc">10 courses. 97 interactive lessons. Free previews of everything. Pro unlocks the full library plus all digital products.</p>
-
-    <div class="products-grid">
-      <div class="product-card" style="border: 2px solid var(--success); position: relative;">
-        <div style="position: absolute; top: -10px; right: 16px; background: var(--success); color: #000; font-size: .65rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;">100% Free</div>
-        <div class="product-name">AI Pet Lab</div>
-        <div class="product-price" style="color: var(--success);">Free</div>
-        <div class="product-desc">Learn reinforcement learning by training an AI pet. Q-learning, reward shaping, and hyperparameter tuning — through play. 9 full lessons.</div>
-        <a href="/academy/ai-pet-lab/" class="btn-price secondary">Start Free</a>
-      </div>
-      <div class="product-card" style="border: 2px solid var(--accent); position: relative;">
-        <div style="position: absolute; top: -10px; right: 16px; background: var(--accent); color: #000; font-size: .65rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;">Popular</div>
-        <div class="product-name">MCP Masterclass</div>
-        <div class="product-price" style="color: var(--accent);">Pro</div>
-        <div class="product-desc">Master the Model Context Protocol. Build real MCP servers, connect AI to tools and databases, deploy to production.</div>
-        <a href="/academy/mcp-masterclass/" class="btn-price secondary">Preview Free</a>
-      </div>
-      <div class="product-card" style="border: 2px solid var(--warm); position: relative;">
-        <div style="position: absolute; top: -10px; right: 16px; background: var(--warm); color: #000; font-size: .65rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;">Hot</div>
-        <div class="product-name">RAG & Vector Search</div>
-        <div class="product-price" style="color: var(--warm);">Pro</div>
-        <div class="product-desc">Build AI that knows YOUR data. Embeddings, vector databases, chunking, and production RAG pipelines.</div>
-        <a href="/academy/rag-vector-search/" class="btn-price secondary">Preview Free</a>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top: 2rem; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: center;">
-      <a href="/academy/" class="btn-price secondary" style="width:auto; padding: .75rem 2rem;">Browse all 10 courses free &rarr;</a>
-      <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" class="btn-price primary" style="width:auto; padding: .75rem 2rem;" target="_blank">Go Pro — $4.90/mo</a>
+  <div class="container" style="text-align: center;">
+    <span class="section-tag">WHAT'S INSIDE</span>
+    <h2 class="section-title">From zero to cyborg. For real.</h2>
+    <p class="section-desc" style="margin: 0 auto 2.5rem; text-align: center;">10 courses, 97 interactive lessons, hands-on projects. Start with a free course — go Pro when you're ready.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/academy/" class="btn-primary">Start Free Course</a>
+      <a href="/pricing" class="btn-ghost">See Pricing</a>
     </div>
   </div>
 </section>
@@ -581,71 +476,8 @@ async function handleSubscribe(e) {
   }
 }
 
-// ---- CHECKOUT ----
-async function checkout(productId) {
-  const btn = event?.target;
-  const originalText = btn?.textContent;
-  if (btn) { btn.textContent = 'Loading...'; btn.disabled = true; btn.style.opacity = '.6'; }
-  try {
-    const res = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product_id: productId })
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else if (data.error) {
-      if (btn) { btn.textContent = originalText; btn.disabled = false; btn.style.opacity = '1'; }
-      alert(data.error);
-    }
-  } catch(err) {
-    if (btn) { btn.textContent = originalText; btn.disabled = false; btn.style.opacity = '1'; }
-    alert('Payment system is loading. Please try again or email faye@likeone.ai');
-  }
-}
-
-// ---- FOUNDING MEMBER COUNTER ----
-const REGULAR_MONTHLY_LINK = 'https://buy.stripe.com/28E00c6zmbBRdPd5tw3sI0a';
-const REGULAR_ANNUAL_LINK = 'https://buy.stripe.com/aFafZag9W7lB6mL9JM3sI0b';
-const FOUNDING_MONTHLY_LINK = 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c';
-const FOUNDING_ANNUAL_LINK = 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d';
-
-async function loadFoundingCount() {
-  try {
-    const res = await fetch(`${SUPABASE_URL}/functions/v1/founding-count`);
-    const data = await res.json();
-    const remaining = data.remaining ?? 1000;
-    const total = data.total ?? 0;
-    const pct = (total / 1000) * 100;
-
-    // Only show counter when <500 spots remain (scarcity, not emptiness)
-    if (remaining < 500) {
-      document.getElementById('founding-counter').style.display = 'flex';
-      document.getElementById('spots-remaining').textContent = remaining.toLocaleString();
-      document.getElementById('counter-fill').style.width = pct + '%';
-    }
-
-    if (data.sold_out) {
-      // Switch to regular pricing
-      document.getElementById('founding-banner').style.display = 'none';
-      document.getElementById('pro-card').querySelector('.price-name').textContent = 'Pro';
-      document.getElementById('pro-price').innerHTML = '$49<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/mo</span>';
-      document.getElementById('pro-btn').href = REGULAR_MONTHLY_LINK;
-      document.getElementById('pro-btn').textContent = 'Go Pro — $49/mo';
-      document.getElementById('annual-card').querySelector('.price-name').textContent = 'Annual';
-      document.getElementById('annual-price').innerHTML = '$390<span style="font-size:.9rem;font-weight:400;color:var(--text-dim)">/yr</span>';
-      document.getElementById('annual-btn').href = REGULAR_ANNUAL_LINK;
-      document.getElementById('annual-btn').textContent = 'Go Annual — Save 33%';
-    }
-  } catch(e) {
-    // Silently fail — founding banner still shows, just no counter
-  }
-}
-
 // Init
 renderLevels();
-loadFoundingCount();
 </script>
 
 <script src="/auth-state.js"></script>

@@ -24,6 +24,13 @@ export function middleware(request) {
     return NextResponse.rewrite(url);
   }
 
+  // Clean URL for pricing
+  if (pathname === '/pricing' || pathname === '/pricing/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/pricing.html';
+    return NextResponse.rewrite(url);
+  }
+
   // Clean URL for support/donate page
   if (pathname === '/support' || pathname === '/support/') {
     const url = request.nextUrl.clone();
@@ -73,5 +80,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/about', '/about/', '/community-access', '/community-access/', '/support', '/support/', '/forum', '/forum/', '/meet-claude', '/meet-claude/', '/account', '/account/', '/thank-you', '/thank-you/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
+  matcher: ['/', '/about', '/about/', '/pricing', '/pricing/', '/community-access', '/community-access/', '/support', '/support/', '/forum', '/forum/', '/meet-claude', '/meet-claude/', '/account', '/account/', '/thank-you', '/thank-you/', '/_temp', '/brain-tools/:path*', '/brain-mcp/:path*'],
 };
