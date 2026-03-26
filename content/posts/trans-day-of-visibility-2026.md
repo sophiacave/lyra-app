@@ -1,56 +1,73 @@
 ---
-title: "Trans Day of Visibility 2026: Building What They Said We Couldn't"
+title: "Trans Day of Visibility: Building in the Open"
 date: 2026-03-31
 author: Sophia Cave
-description: "On Trans Day of Visibility, Like One's founder reflects on what it means to build technology as a trans woman — and why visibility without power isn't enough."
-excerpt: "On Trans Day of Visibility, Like One's founder reflects on what it means to build technology as a trans woman — and why visibility without power isn't enough."
-tags: [trans-visibility, tdov, inclusion, ai-accessibility, founder-story]
-image: /blog/images/trans-day-of-visibility-2026.jpg
-cta: 90-day-ai-fluency-plan
+description: "On Trans Day of Visibility, Like One's founder reflects on what it means to build a company as a trans woman — and why visibility without action isn't enough."
+excerpt: "On Trans Day of Visibility, Like One's founder reflects on what it means to build a company as a trans woman — and why visibility without action isn't enough."
+tags: [tdov, trans-visibility, personal, founder-story, inclusion]
+image: /blog/images/tdov-2026.jpg
 ---
 
-I didn't start a tech company to be visible. I started one because I was tired of being invisible.
+I didn't plan to be visible.
 
-There's a version of Trans Day of Visibility that's comfortable. Rainbow logos. Corporate statements. A day where the world acknowledges we exist, then moves on. I'm not writing that version.
+I planned to build something useful and let it speak for itself. But you can't build a company called Like One — a company about human-AI convergence, about extending yourself through technology — without eventually talking about the self you're extending.
 
-## Visibility Is Not the Finish Line
+So here it is: I'm a trans woman. I built Like One. And today, on Trans Day of Visibility, I want to talk about what that actually means in practice — not the inspirational poster version.
 
-Being seen has never been the problem. Trans people are *hyper-visible* — in headlines, in legislation, in other people's debates about our bodies and our lives. We're visible the way a target is visible.
+## Visibility Is Not the Goal
 
-What we lack isn't visibility. It's **power**. The power to build. The power to earn. The power to create systems that include us because we designed them that way.
+Let me be clear about something the discourse often gets wrong: visibility is a tactic, not an outcome. Being seen doesn't pay rent. Being seen doesn't fund research. Being seen, by itself, doesn't change a single policy or save a single life.
 
-That's what Like One is about.
+What visibility *can* do is create proof. Proof that trans people build companies. Proof that we ship products, serve customers, write code, and create things that matter. Proof that challenges the quiet assumption that we're too fragile, too distracted, or too "political" to be taken seriously as founders.
 
-## Why I Build With AI
+I'm not visible so you can feel inspired. I'm visible so the next trans kid thinking about building something knows it's been done.
 
-When I started building with AI, nobody asked where I went to school. Nobody looked at my resume and did the math on the gap years. Nobody clocked my voice on a Zoom call and decided I wasn't technical enough.
+## What Building as a Trans Woman Actually Looks Like
 
-The API doesn't care about my deadname. The model doesn't misgender me. The code compiles or it doesn't.
+It looks like every other founder's experience, plus a few bonus levels:
 
-For the first time in my career, I had tools that judged me purely on what I could create. And it turns out — when you remove the gatekeepers, trans people build extraordinary things. We always have. We just haven't always been allowed to.
+**You learn to build for yourself first.** When the world isn't designed for you, you get very good at making your own tools. Like One exists because I needed an AI system that remembered me — all of me — and worked the way my brain works. Not the neurotypical, cisgender default. My brain. With all its beautiful chaos.
 
-## The Real Barrier Was Never Talent
+**You stop waiting for permission.** Trans people don't get permission. We don't get permission to exist, to use the bathroom, to play sports, to access healthcare, to be called by our names. So you learn to stop asking. You just build. This turns out to be an excellent founder skill.
 
-I know trans founders who could run circles around half of Y Combinator. They're not there — not because they can't build, but because the system that funds, promotes, and celebrates founders was never built for us.
+**You develop a high tolerance for discomfort.** Coming out is the ultimate "ship before you're ready." Every trans person has launched themselves into the world knowing the reception might be hostile. After that, pushing code to production on a Friday doesn't seem so scary.
 
-AI doesn't fix transphobia. Let me be clear about that. But it does something powerful: it **democratizes capability**. A trans woman with a laptop and Claude can build what used to require a team of ten and a seed round. She can automate what used to require hiring people who might not hire her.
+**You find your people faster.** When you're visibly yourself, the people who aren't for you filter themselves out. What's left is a community that actually wants to be there. That's worth more than any growth hack.
 
-That's not a small thing. That's a revolution in who gets to be a founder.
+## The Intersection Nobody Talks About
 
-## What I Want You to See Today
+Here's something I think about constantly: AI accessibility and trans rights are the same fight, wearing different clothes.
 
-If you're trans and reading this: you don't need permission. You don't need to wait until you pass better, until you change your documents, until the world is ready. The tools exist *right now* to build something real. I built Like One — an AI education platform, an academy, a blog with 22 posts, a subscription engine, edge functions, semantic search — as one person. One trans person with an AI partner and a refusal to wait.
+Both are about who gets to define themselves. Both are about dismantling gatekeepers. Both are about giving people tools to live as who they actually are, not who systems say they should be.
 
-If you're not trans and reading this: visibility means nothing if it doesn't come with opportunity. The best thing you can do today isn't posting a flag emoji. It's hiring a trans person. Funding a trans founder. Buying from a trans business. Or just learning something from one.
+When I build AI tools that are accessible to everyone — regardless of technical background, education, income — I'm doing the same work as when I advocate for trans rights. I'm saying: *you don't need anyone's permission to become who you're meant to be.*
 
-## Building Forward
+Technology should extend every person. Not just the default ones.
 
-Like One exists because I believe the most powerful technology in history should be accessible to the people who need it most. Not just the people who already have everything.
+## What I'm Actually Doing About It
 
-Every course in our academy, every blog post, every tool we build — it comes from a trans woman who decided that waiting for the world to be ready was a luxury she couldn't afford.
+Visibility without action is just performance. Here's what Like One is doing, not just saying:
 
-Happy Trans Day of Visibility. Now let's build something.
+**Free education.** Every course in the Like One Academy starts free. AI literacy shouldn't have a paywall at the door. If nine dollars is too much, the free tier teaches you enough to change how you work.
+
+**Building in public.** This entire company is built transparently. You can see the code, the decisions, the mistakes. That's not just good practice — it's proof that one person with AI tools can build something real.
+
+**Funding what matters.** A portion of Like One's revenue goes to HIV research and trans healthcare access. Not because it's good marketing. Because these are the fights that need funding, and I'm in a position to help.
+
+**Hiring without gatekeeping.** As Like One grows, the door is open to people the tech industry typically overlooks. No CS degree requirements. No "culture fit" code words. Can you do the work? Welcome.
+
+## To the Trans Founders
+
+If you're trans and building something — or thinking about it — I want to tell you what nobody told me:
+
+You're not behind. The fact that you spent years figuring out who you are means you have clarity most founders never develop. You know what authenticity costs. You know what it's worth. That's not a disadvantage. It's a superpower.
+
+Start today. Start messy. The tools are better than they've ever been, and they don't care about your deadname, your voice, or your chromosomes. They care about what you build.
+
+I'll be here building alongside you. Visible. Imperfect. Shipping anyway.
+
+Happy Trans Day of Visibility.
 
 ---
 
-*Sophia Cave is the founder of [Like One](https://likeone.ai), an AI education and automation platform. She builds convergence technology with a soul.*
+*Sophia Cave is the founder of Like One. She builds convergence technology from Nevada, powered by too much coffee and the belief that the best tools make power accessible, not concentrated.*
