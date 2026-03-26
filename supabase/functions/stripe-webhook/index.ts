@@ -1,7 +1,25 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;  // app project (all tables here now)
-const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+/**
+ * Stripe Webhook v5 — Multi-Brain Architecture
+ * Deployed on: REVENUE brain (munmhzylfoiyigismbds)
+ * Writes to:
+ *   - REVENUE brain: revenue_events, donation_ledger, academy_enrollments, notification_log
+ *   - APP brain: profiles (via update_subscription_status RPC)
+ *   - OLD brain: send-product-delivery edge function (until migrated)
+ */
+
+// REVENUE brain (self — where this function is deployed)
+const REVENUE_URL = Deno.env.get("SUPABASE_URL")!;
+const REVENUE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+// APP brain (profiles, subscribers, community)
+const APP_URL = Deno.env.get("APP_SUPABASE_URL") || "https://blknphuwwgagtueqtoji.supabase.co";
+const APP_KEY = Deno.env.get("APP_SERVICE_ROLE_KEY") || REVENUE_KEY;
+
+// APP brain (send-product-delivery + profiles)
+// Note: APP_URL/APP_KEY also used for profile updates above
+
 const STRIPE_WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET")!;
 const DOWNLOAD_TOKEN_SECRET = Deno.env.get("DOWNLOAD_TOKEN_SECRET") || "likeone-dl-2026-secret";
 const DONATION_PCT = 0.01;
@@ -33,20 +51,29 @@ async function generateDownloadToken(email: string): Promise<string> {
   return btoa(`${payload}|${Array.from(new Uint8Array(mac)).map(b => b.toString(16).padStart(2, "0")).join("")}`);
 }
 
-async function supabaseQuery(path: string, method: string, body?: unknown) {
-  return await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-    method, headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+// Write to REVENUE brain (self)
+async function revenueQuery(path: string, method: string, body?: unknown) {
+  return await fetch(`${REVENUE_URL}/rest/v1/${path}`, {
+    method, headers: { "apikey": REVENUE_KEY, "Authorization": `Bearer ${REVENUE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+    body: body ? JSON.stringify(body) : undefined
+  });
+}
+
+// Write to APP brain (profiles, subscribers)
+async function appQuery(path: string, method: string, body?: unknown) {
+  return await fetch(`${APP_URL}/rest/v1/${path}`, {
+    method, headers: { "apikey": APP_KEY, "Authorization": `Bearer ${APP_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
     body: body ? JSON.stringify(body) : undefined
   });
 }
 
 async function updateSubscriptionProfile(email: string, status: string, stripeCustomerId?: string, subscriptionId?: string) {
-  await fetch(`${SUPABASE_URL}/rest/v1/rpc/update_subscription_status`, {
+  await fetch(`${APP_URL}/rest/v1/rpc/update_subscription_status`, {
     method: 'POST',
-    headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json" },
+    headers: { "apikey": APP_KEY, "Authorization": `Bearer ${APP_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({ p_email: email, p_status: status, p_tier: status === 'active' ? 'pro' : 'free', p_stripe_customer_id: stripeCustomerId || null, p_subscription_id: subscriptionId || null })
   });
-  console.log(`Profile updated: ${email} -> ${status}`);
+  console.log(`Profile updated (APP brain): ${email} -> ${status}`);
 }
 
 async function handleCheckout(session: any) {
@@ -66,8 +93,8 @@ async function handleCheckout(session: any) {
 
   console.log(`Checkout: ${email}, ${productId}, $${amountTotal}, mode=${mode}`);
 
-  // 1. Revenue event
-  await supabaseQuery("revenue_events", "POST", {
+  // 1. Revenue event → REVENUE brain
+  await revenueQuery("revenue_events", "POST", {
     date: new Date().toISOString().split("T")[0],
     revenue_stream: mode === "subscription" ? "subscription" : "digital_product",
     amount: amountTotal, currency: currency.toUpperCase(),
@@ -77,40 +104,40 @@ async function handleCheckout(session: any) {
     stripe_payment_intent_id: paymentIntentId, stripe_customer_id: stripeCustomerId,
     metadata: { product_id: productId, product_name: productName, email, session_mode: mode, subscription_id: subscriptionId }
   });
+  console.log("Revenue event recorded");
 
-  // 2. Donation (1%)
+  // 2. Donation (1%) → REVENUE brain
   const donationAmount = Math.round(amountTotal * DONATION_PCT * 100) / 100;
   if (donationAmount > 0) {
-    await supabaseQuery("donation_ledger", "POST", { sale_amount: amountTotal, donation_amount: donationAmount, donation_pct: DONATION_PCT, recipient: "amfAR", status: "accrued" });
+    await revenueQuery("donation_ledger", "POST", { sale_amount: amountTotal, donation_amount: donationAmount, donation_pct: DONATION_PCT, recipient: "amfAR", status: "accrued" });
+    console.log(`Donation accrued: $${donationAmount} to amfAR`);
   }
 
-  // 3. UPDATE SUBSCRIPTION PROFILE
+  // 3. Update subscription profile → APP brain
   if (mode === "subscription") {
     await updateSubscriptionProfile(email, 'active', stripeCustomerId, subscriptionId);
-    console.log(`Subscription activated for ${email}`);
   }
 
-  // 4. Product delivery email
+  // 4. Product delivery email → APP brain
   const downloadToken = await generateDownloadToken(email);
   try {
-    await fetch(`${SUPABASE_URL}/functions/v1/send-product-delivery`, {
-      method: "POST", headers: { "Content-Type": "application/json", "Authorization": `Bearer ${SERVICE_ROLE_KEY}` },
+    await fetch(`${APP_URL}/functions/v1/send-product-delivery`, {
+      method: "POST", headers: { "Content-Type": "application/json", "Authorization": `Bearer ${APP_KEY}` },
       body: JSON.stringify({ email, name: customerName, product_id: productId, amount: amountTotal, download_token: downloadToken })
     });
-  } catch (err) { console.error("Delivery failed:", err); }
+  } catch (err) { console.error("Delivery email failed:", err); }
 
-  // 5. Academy enrollment
+  // 5. Academy enrollment → REVENUE brain
   if (mode === "subscription" && subscriptionId) {
-    await fetch(`${SUPABASE_URL}/rest/v1/academy_enrollments`, {
-      method: "POST", headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
-      body: JSON.stringify({ user_email: email, user_name: customerName, status: "active",
-        stripe_subscription_id: subscriptionId, stripe_payment_intent_id: paymentIntentId,
-        metadata: { product_id: productId, enrolled_via: "stripe_webhook" } })
+    await revenueQuery("academy_enrollments", "POST", {
+      user_email: email, user_name: customerName, status: "active",
+      stripe_subscription_id: subscriptionId, stripe_payment_intent_id: paymentIntentId,
+      metadata: { product_id: productId, enrolled_via: "stripe_webhook" }
     });
   }
 
-  // 6. Notification
-  await supabaseQuery("notification_log", "POST", {
+  // 6. Notification → REVENUE brain
+  await revenueQuery("notification_log", "POST", {
     type: "purchase", recipient: email, recipient_name: customerName,
     subject: `Purchase: ${productName || productId} ($${amountTotal})`,
     source: "stripe-webhook", status: "processed",
@@ -121,24 +148,26 @@ async function handleCheckout(session: any) {
 async function handleSubscriptionDeleted(sub: any) {
   const subscriptionId = sub.id;
   const customerEmail = sub.metadata?.email || sub.customer_email;
-  
-  // Update profile to free
+
+  // Update profile → APP brain
   if (customerEmail) {
     await updateSubscriptionProfile(customerEmail, 'cancelled');
   } else {
-    // Try to find email from profiles table by subscription_id (app project)
-    const resp = await fetch(`${SUPABASE_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
-      headers: { apikey: SERVICE_ROLE_KEY, Authorization: `Bearer ${SERVICE_ROLE_KEY}` }
+    const resp = await fetch(`${APP_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
+      headers: { apikey: APP_KEY, Authorization: `Bearer ${APP_KEY}` }
     });
     const rows = await resp.json();
     if (rows[0]?.email) await updateSubscriptionProfile(rows[0].email, 'cancelled');
   }
 
-  await fetch(`${SUPABASE_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
-    method: "PATCH", headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+  // Academy enrollment → REVENUE brain
+  await fetch(`${REVENUE_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
+    method: "PATCH", headers: { "apikey": REVENUE_KEY, "Authorization": `Bearer ${REVENUE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
     body: JSON.stringify({ status: "cancelled", completed_at: new Date().toISOString() })
   });
-  await supabaseQuery("revenue_events", "POST", {
+
+  // Churn event → REVENUE brain
+  await revenueQuery("revenue_events", "POST", {
     date: new Date().toISOString().split("T")[0], revenue_stream: "subscription",
     amount: 0, currency: "USD", event_type: "churn",
     client: customerEmail || "unknown", description: `Subscription ${subscriptionId} cancelled`,
@@ -150,10 +179,10 @@ async function handleSubscriptionDeleted(sub: any) {
 async function handleSubscriptionUpdated(sub: any) {
   const subscriptionId = sub.id;
   const status = sub.status;
-  
-  // Update profile subscription status
-  const resp = await fetch(`${SUPABASE_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
-    headers: { apikey: SERVICE_ROLE_KEY, Authorization: `Bearer ${SERVICE_ROLE_KEY}` }
+
+  // Profile lookup → APP brain
+  const resp = await fetch(`${APP_URL}/rest/v1/profiles?subscription_id=eq.${subscriptionId}&select=email`, {
+    headers: { apikey: APP_KEY, Authorization: `Bearer ${APP_KEY}` }
   });
   const rows = await resp.json();
   if (rows[0]?.email) {
@@ -161,9 +190,10 @@ async function handleSubscriptionUpdated(sub: any) {
     await updateSubscriptionProfile(rows[0].email, profileStatus);
   }
 
+  // Enrollment update → REVENUE brain
   const enrollmentStatus = status === "active" ? "active" : status === "past_due" ? "past_due" : status === "canceled" ? "cancelled" : status;
-  await fetch(`${SUPABASE_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
-    method: "PATCH", headers: { "apikey": SERVICE_ROLE_KEY, "Authorization": `Bearer ${SERVICE_ROLE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+  await fetch(`${REVENUE_URL}/rest/v1/academy_enrollments?stripe_subscription_id=eq.${subscriptionId}`, {
+    method: "PATCH", headers: { "apikey": REVENUE_KEY, "Authorization": `Bearer ${REVENUE_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
     body: JSON.stringify({ status: enrollmentStatus, metadata: { last_stripe_status: status, updated_at: new Date().toISOString() } })
   });
 }
@@ -173,8 +203,8 @@ Deno.serve(async (req: Request) => {
   const body = await req.text();
   const sigHeader = req.headers.get("stripe-signature");
   if (!sigHeader) {
-    try { const json = JSON.parse(body); return new Response(JSON.stringify({ received: true, type: json.type || "health", version: "v4" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
-    catch { return new Response(JSON.stringify({ status: "ok", version: "v4-sub" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
+    try { const json = JSON.parse(body); return new Response(JSON.stringify({ received: true, type: json.type || "health", version: "v5-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
+    catch { return new Response(JSON.stringify({ status: "ok", version: "v5-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
   }
   if (!await verifyStripeSignature(body, sigHeader, STRIPE_WEBHOOK_SECRET)) {
     return new Response(JSON.stringify({ error: "Invalid signature" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -189,5 +219,5 @@ Deno.serve(async (req: Request) => {
       default: console.log(`Unhandled: ${event.type}`);
     }
   } catch (err) { console.error(`Error: ${event.type}:`, err); }
-  return new Response(JSON.stringify({ received: true, type: event.type, version: "v4" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  return new Response(JSON.stringify({ received: true, type: event.type, version: "v5-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
 });

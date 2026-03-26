@@ -7,6 +7,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
  * Fallback: logs to notification_log if Resend isn't configured.
  */
 
+// Writes notification_log to self (app brain) — email delivery records
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") || "";
