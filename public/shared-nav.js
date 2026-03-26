@@ -37,13 +37,13 @@
   function buildNav() {
     var linksHtml = NAV_LINKS.map(function (link) {
       var cls = isActive(link.href) ? ' class="nav-active"' : '';
-      return '<li><a href="' + link.href + '"' + cls + '>' + link.label + '</a></li>';
+      return '<a href="' + link.href + '"' + cls + '>' + link.label + '</a>';
     }).join('\n        ');
 
-    return '<nav>\n' +
+    return '<nav style="position:relative;">\n' +
       '      <div><a href="/" class="logo">like<span>one</span></a></div>\n' +
       '      <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>\n' +
-      '      <ul class="nav-links">\n        ' + linksHtml + '\n      </ul>\n' +
+      '      <div class="nav-links">\n        ' + linksHtml + '\n      </div>\n' +
       '    </nav>';
   }
 
@@ -70,12 +70,13 @@
     header.classList.add('site-header');
     header.innerHTML = buildNav();
 
-    // Mobile toggle
+    // Mobile toggle with icon swap (matches Next.js Header)
     var toggle = header.querySelector('.mobile-toggle');
     var links = header.querySelector('.nav-links');
     if (toggle && links) {
       toggle.addEventListener('click', function () {
-        links.classList.toggle('active');
+        var isOpen = links.classList.toggle('active');
+        toggle.innerHTML = isOpen ? '\u2715' : '\u2630';
       });
     }
   }
