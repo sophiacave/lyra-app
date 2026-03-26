@@ -35,20 +35,48 @@ interface RAGResult {
   similarity: number;
 }
 
-// Call brain-embed for semantic search
+// Embed text via HuggingFace BGE-small (same as brain-embed)
+async function embedQuery(text: string): Promise<number[]> {
+  const hfToken = Deno.env.get("HF_TOKEN") || "";
+  if (!hfToken) return [];
+  const res = await fetch(
+    "https://router.huggingface.co/hf-inference/models/BAAI/bge-small-en-v1.5/pipeline/feature-extraction",
+    {
+      method: "POST",
+      headers: { Authorization: `Bearer ${hfToken}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ inputs: text }),
+    }
+  );
+  if (!res.ok) return [];
+  const result = await res.json();
+  return Array.isArray(result[0]) ? result[0] : result;
+}
+
+// Direct RAG search — embed query, then call brain_semantic_search RPC
 async function ragSearch(query: string, limit = 5): Promise<RAGResult[]> {
-  const res = await fetch(`${SUPABASE_URL}/functions/v1/brain-embed`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${SERVICE_KEY}`,
-    },
-    body: JSON.stringify({ action: "search", query, limit }),
-  });
+  const queryEmbedding = await embedQuery(query);
+  if (!queryEmbedding.length) return [];
+
+  const res = await fetch(
+    `${SUPABASE_URL}/rest/v1/rpc/brain_semantic_search`,
+    {
+      method: "POST",
+      headers: {
+        apikey: SERVICE_KEY,
+        Authorization: `Bearer ${SERVICE_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query_embedding: `[${queryEmbedding.join(",")}]`,
+        match_count: limit,
+      }),
+    }
+  );
 
   if (!res.ok) return [];
   const data = await res.json();
-  return data.results || [];
+  // RPC returns array directly, not { results: [...] }
+  return Array.isArray(data) ? data : (data.results || []);
 }
 
 // Get credential from brain_context
@@ -126,30 +154,69 @@ async function claudeGenerate(prompt: string, claudeKey: string): Promise<string
   return data.content?.[0]?.text || "";
 }
 
+// Extract clean text from a brain value (strips JSON structure, keeps meaning)
+function extractReadableText(value: unknown): string {
+  if (typeof value === "string") {
+    // Try parsing JSON strings
+    try {
+      const parsed = JSON.parse(value);
+      return extractReadableText(parsed);
+    } catch {
+      return value;
+    }
+  }
+  if (Array.isArray(value)) {
+    return value.map(v => typeof v === "string" ? v : extractReadableText(v)).join(". ");
+  }
+  if (typeof value === "object" && value !== null) {
+    const obj = value as Record<string, unknown>;
+    // Prioritize human-readable fields
+    const readableKeys = ["description", "summary", "purpose", "name", "role", "truth",
+      "core_identity", "mission", "tagline", "what", "north_star", "philosophy",
+      "status", "current_level", "voice", "style"];
+    const parts: string[] = [];
+    for (const key of readableKeys) {
+      if (obj[key] && typeof obj[key] === "string") {
+        parts.push(obj[key] as string);
+      }
+    }
+    if (parts.length > 0) return parts.join(". ");
+    // Fallback: extract all string values
+    const strings = Object.values(obj)
+      .filter(v => typeof v === "string" && (v as string).length > 10 && (v as string).length < 500)
+      .slice(0, 3);
+    if (strings.length > 0) return (strings as string[]).join(". ");
+    return JSON.stringify(value).slice(0, 300);
+  }
+  return String(value);
+}
+
 // Format RAG results into a readable answer
 function formatRAGAnswer(query: string, results: RAGResult[]): string {
   if (!results.length) return "";
 
   const topResult = results[0];
-  let valueStr = typeof topResult.value === "string" ? topResult.value : JSON.stringify(topResult.value);
-  // Clean up escaped JSON
-  valueStr = valueStr.replace(/\\n/g, "\n").replace(/\\"/g, '"').replace(/\\\\/g, "\\");
 
   // BGE-small embeddings: 0.6+ is a good match, 0.75+ is excellent
   if (topResult.similarity > 0.6) {
-    // High confidence — return top result directly
+    const mainText = extractReadableText(topResult.value);
+
+    // High confidence — return clean top result
     if (topResult.similarity > 0.75) {
-      return valueStr.slice(0, 1500);
+      return mainText.slice(0, 1500);
     }
-    // Medium confidence — combine top 2-3 results for richer answer
-    const combined = results
+
+    // Medium confidence — combine top results for richer answer
+    const extras = results
       .filter(r => r.similarity > 0.55)
-      .slice(0, 3)
-      .map(r => {
-        const v = typeof r.value === "string" ? r.value : JSON.stringify(r.value);
-        return `[${r.key}]: ${v.slice(0, 500)}`;
-      })
-      .join("\n\n");
+      .slice(1, 3)
+      .map(r => extractReadableText(r.value))
+      .filter(t => t.length > 20);
+
+    const combined = extras.length > 0
+      ? mainText.slice(0, 800) + "\n\n" + extras.map(e => e.slice(0, 400)).join("\n\n")
+      : mainText;
+
     return combined.slice(0, 2000);
   }
 
