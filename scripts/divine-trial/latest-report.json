@@ -1,0 +1,2804 @@
+{
+  "timestamp": "2026-03-26T04:53:53.946Z",
+  "summary": {
+    "pages_tested": 27,
+    "pages_passed": 4,
+    "pages_failed": 23,
+    "total_tests": 367,
+    "tests_passed": 326,
+    "tests_failed": 41,
+    "pass_rate": "88.8%"
+  },
+  "failures": [
+    {
+      "page": "Blog",
+      "path": "/blog",
+      "issues": [
+        {
+          "test": "Internal Links",
+          "value": "31 links, 1 broken",
+          "issue": "Broken: /icon-192.png (404)"
+        },
+        {
+          "test": "Nav Links",
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "Forum",
+      "path": "/forum",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "2/3 present",
+          "issue": "Missing nav links: /pricing"
+        }
+      ]
+    },
+    {
+      "page": "Account",
+      "path": "/account",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "Privacy Policy",
+      "path": "/privacy",
+      "issues": [
+        {
+          "test": "HTTP Status",
+          "value": "404",
+          "issue": "Expected 200, got 404"
+        },
+        {
+          "test": "Internal Links",
+          "value": "5 links, 1 broken",
+          "issue": "Broken: /icon-192.png (404)"
+        },
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "value": "missing",
+          "issue": "No footer found"
+        }
+      ]
+    },
+    {
+      "page": "Terms of Service",
+      "path": "/terms",
+      "issues": [
+        {
+          "test": "HTTP Status",
+          "value": "404",
+          "issue": "Expected 200, got 404"
+        },
+        {
+          "test": "Internal Links",
+          "value": "5 links, 1 broken",
+          "issue": "Broken: /icon-192.png (404)"
+        },
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "value": "missing",
+          "issue": "No footer found"
+        }
+      ]
+    },
+    {
+      "page": "Community Access",
+      "path": "/community-access",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "2/3 present",
+          "issue": "Missing nav links: /pricing"
+        }
+      ]
+    },
+    {
+      "page": "Thank You",
+      "path": "/thank-you",
+      "issues": [
+        {
+          "test": "Meta Description",
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Internal Links",
+          "value": "5 links, 1 broken",
+          "issue": "Broken: /academy/ai-pet-lab/lesson-1.html (404)"
+        },
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "value": "missing",
+          "issue": "No footer found"
+        }
+      ]
+    },
+    {
+      "page": "Academy Hub",
+      "path": "/academy/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "Signin",
+      "path": "/academy/signin.html",
+      "issues": [
+        {
+          "test": "Meta Description",
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Nav Links",
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "value": "missing",
+          "issue": "No footer found"
+        },
+        {
+          "test": "Auth Script",
+          "value": "missing",
+          "issue": "Academy page missing auth script"
+        }
+      ]
+    },
+    {
+      "page": "Claude for Beginners",
+      "path": "/academy/claude-for-beginners/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "AI Pet Lab",
+      "path": "/academy/ai-pet-lab/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "AI Foundations",
+      "path": "/academy/ai-foundations/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "Claude Mastery",
+      "path": "/academy/claude-mastery/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "MCP Masterclass",
+      "path": "/academy/mcp-masterclass/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "RAG & Vector Search",
+      "path": "/academy/rag-vector-search/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "First AI Agent",
+      "path": "/academy/first-ai-agent/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "Automation Architect",
+      "path": "/academy/automation-architect/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "The Automation Lab",
+      "path": "/academy/the-automation-lab/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "AI Stack Builder",
+      "path": "/academy/ai-stack-builder/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "value": "missing",
+          "issue": "No footer found"
+        }
+      ]
+    },
+    {
+      "page": "AI for Business",
+      "path": "/academy/ai-for-business/",
+      "issues": [
+        {
+          "test": "Nav Links",
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "value": "missing",
+          "issue": "No footer found"
+        }
+      ]
+    },
+    {
+      "page": "CFB Lesson 1",
+      "path": "/academy/claude-for-beginners/what-claude-can-do.html",
+      "issues": [
+        {
+          "test": "Meta Description",
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "CFB Lesson 2",
+      "path": "/academy/claude-for-beginners/your-first-conversation.html",
+      "issues": [
+        {
+          "test": "Meta Description",
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    },
+    {
+      "page": "CFB Lesson 3",
+      "path": "/academy/claude-for-beginners/basics-quiz.html",
+      "issues": [
+        {
+          "test": "Meta Description",
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Nav Links",
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        }
+      ]
+    }
+  ],
+  "all_results": [
+    {
+      "page": "Homepage",
+      "path": "/",
+      "url": "https://likeone.ai/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "225ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "31637 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Like One — Human-AI Collaboration Platform",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "11 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "1 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": true,
+          "value": "3/3 present",
+          "issue": null
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "page": "About",
+      "path": "/about",
+      "url": "https://likeone.ai/about",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "379ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "31664 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "About Faye Cave — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "12 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "1 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": true,
+          "value": "3/3 present",
+          "issue": null
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "page": "Pricing",
+      "path": "/pricing",
+      "url": "https://likeone.ai/pricing",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "283ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "26250 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Pricing — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "12 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "1 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": true,
+          "value": "3/3 present",
+          "issue": null
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "page": "Support",
+      "path": "/support",
+      "url": "https://likeone.ai/support",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "260ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "18749 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Support the Mission — Like One",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "12 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "1 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": true,
+          "value": "3/3 present",
+          "issue": null
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "page": "Blog",
+      "path": "/blog",
+      "url": "https://likeone.ai/blog",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "262ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "52091 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Blog — Like One",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": false,
+          "value": "31 links, 1 broken",
+          "issue": "Broken: /icon-192.png (404)"
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "0 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Forum",
+      "path": "/forum",
+      "url": "https://likeone.ai/forum",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "304ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "29658 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Community Forum — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "11 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "1 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "2/3 present",
+          "issue": "Missing nav links: /pricing"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Account",
+      "path": "/account",
+      "url": "https://likeone.ai/account",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "281ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "23053 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "My Account — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "8 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "1 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Privacy Policy",
+      "path": "/privacy",
+      "url": "https://likeone.ai/privacy",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": false,
+          "value": "404",
+          "issue": "Expected 200, got 404"
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "391ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "8999 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Like One — Human-AI Collaboration Platform",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": false,
+          "value": "5 links, 1 broken",
+          "issue": "Broken: /icon-192.png (404)"
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "0 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": false,
+          "value": "missing",
+          "issue": "No footer found"
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Terms of Service",
+      "path": "/terms",
+      "url": "https://likeone.ai/terms",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": false,
+          "value": "404",
+          "issue": "Expected 200, got 404"
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "337ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "8999 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Like One — Human-AI Collaboration Platform",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": false,
+          "value": "5 links, 1 broken",
+          "issue": "Broken: /icon-192.png (404)"
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "0 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": false,
+          "value": "missing",
+          "issue": "No footer found"
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Community Access",
+      "path": "/community-access",
+      "url": "https://likeone.ai/community-access",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "306ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "14952 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Community Access — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "7 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "1 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "2/3 present",
+          "issue": "Missing nav links: /pricing"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Thank You",
+      "path": "/thank-you",
+      "url": "https://likeone.ai/thank-you",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "439ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "2156 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Thank You | Like One",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": false,
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": false,
+          "value": "5 links, 1 broken",
+          "issue": "Broken: /academy/ai-pet-lab/lesson-1.html (404)"
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "0 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": false,
+          "value": "missing",
+          "issue": "No footer found"
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Academy Hub",
+      "path": "/academy/",
+      "url": "https://likeone.ai/academy/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "147ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "22878 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Like One Academy — From Zero to Cyborg",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "7 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "3 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Signin",
+      "path": "/academy/signin.html",
+      "url": "https://likeone.ai/academy/signin.html",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "149ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "9443 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Sign In — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": false,
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "2 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "0 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": false,
+          "value": "missing",
+          "issue": "No footer found"
+        },
+        {
+          "test": "Auth Script",
+          "pass": false,
+          "value": "missing",
+          "issue": "Academy page missing auth script"
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Claude for Beginners",
+      "path": "/academy/claude-for-beginners/",
+      "url": "https://likeone.ai/academy/claude-for-beginners/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "250ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "14473 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Claude for Beginners — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "2 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "3 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "AI Pet Lab",
+      "path": "/academy/ai-pet-lab/",
+      "url": "https://likeone.ai/academy/ai-pet-lab/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "131ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "17054 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "AI Pet Lab — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "2 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "3 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "AI Foundations",
+      "path": "/academy/ai-foundations/",
+      "url": "https://likeone.ai/academy/ai-foundations/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "268ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "12569 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "AI Foundations — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Claude Mastery",
+      "path": "/academy/claude-mastery/",
+      "url": "https://likeone.ai/academy/claude-mastery/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "299ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "14128 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Claude Mastery — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "MCP Masterclass",
+      "path": "/academy/mcp-masterclass/",
+      "url": "https://likeone.ai/academy/mcp-masterclass/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "387ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "13829 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "MCP & AI Tool Integration — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "RAG & Vector Search",
+      "path": "/academy/rag-vector-search/",
+      "url": "https://likeone.ai/academy/rag-vector-search/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "209ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "12762 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "RAG & Vector Search — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "First AI Agent",
+      "path": "/academy/first-ai-agent/",
+      "url": "https://likeone.ai/academy/first-ai-agent/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "277ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "13973 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Build Your First AI Agent — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "Automation Architect",
+      "path": "/academy/automation-architect/",
+      "url": "https://likeone.ai/academy/automation-architect/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "238ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "12546 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Automation Architect — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "The Automation Lab",
+      "path": "/academy/the-automation-lab/",
+      "url": "https://likeone.ai/academy/the-automation-lab/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "257ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "15962 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "The Automation Lab — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "AI Stack Builder",
+      "path": "/academy/ai-stack-builder/",
+      "url": "https://likeone.ai/academy/ai-stack-builder/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "327ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "11672 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "AI Stack Builder — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": false,
+          "value": "missing",
+          "issue": "No footer found"
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "AI for Business",
+      "path": "/academy/ai-for-business/",
+      "url": "https://likeone.ai/academy/ai-for-business/",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "256ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "10676 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "AI for Business Owners — Like One Academy",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "1 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "4 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "1/3 present",
+          "issue": "Missing nav links: /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": false,
+          "value": "missing",
+          "issue": "No footer found"
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "CFB Lesson 1",
+      "path": "/academy/claude-for-beginners/what-claude-can-do.html",
+      "url": "https://likeone.ai/academy/claude-for-beginners/what-claude-can-do.html",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "238ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "18119 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "What Claude Can Do For You — Claude for Beginners",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": false,
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "2 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "3 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "CFB Lesson 2",
+      "path": "/academy/claude-for-beginners/your-first-conversation.html",
+      "url": "https://likeone.ai/academy/claude-for-beginners/your-first-conversation.html",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "361ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "16085 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Your First Conversation — Claude for Beginners",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": false,
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "2 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "3 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    },
+    {
+      "page": "CFB Lesson 3",
+      "path": "/academy/claude-for-beginners/basics-quiz.html",
+      "url": "https://likeone.ai/academy/claude-for-beginners/basics-quiz.html",
+      "persona": "Priya the Business Owner",
+      "tests": [
+        {
+          "test": "HTTP Status",
+          "pass": true,
+          "value": "200",
+          "issue": null
+        },
+        {
+          "test": "Load Time",
+          "pass": true,
+          "value": "234ms",
+          "issue": null
+        },
+        {
+          "test": "Has Content",
+          "pass": true,
+          "value": "9085 chars",
+          "issue": null
+        },
+        {
+          "test": "Has Title",
+          "pass": true,
+          "value": "Check Your Understanding — Claude for Beginners",
+          "issue": null
+        },
+        {
+          "test": "Meta Description",
+          "pass": false,
+          "value": "missing",
+          "issue": "No meta description — bad for SEO"
+        },
+        {
+          "test": "Viewport Meta",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Internal Links",
+          "pass": true,
+          "value": "2 links, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "JS Element Refs",
+          "pass": true,
+          "value": "0 missing refs",
+          "issue": null
+        },
+        {
+          "test": "External Scripts",
+          "pass": true,
+          "value": "3 scripts, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Stylesheets",
+          "pass": true,
+          "value": "0 CSS, 0 broken",
+          "issue": null
+        },
+        {
+          "test": "Nav Links",
+          "pass": false,
+          "value": "0/3 present",
+          "issue": "Missing nav links: /academy/, /pricing, /about"
+        },
+        {
+          "test": "Footer",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "Auth Script",
+          "pass": true,
+          "value": "present",
+          "issue": null
+        },
+        {
+          "test": "No Mixed Content",
+          "pass": true,
+          "value": "0 http links",
+          "issue": null
+        }
+      ],
+      "pass": false
+    }
+  ]
+}
