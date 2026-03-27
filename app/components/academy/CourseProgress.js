@@ -16,69 +16,48 @@ export default function CourseProgress({ courseSlug, lessons }) {
 
   if (completed === 0) return null;
 
+  const ringRadius = 20;
+  const circumference = 2 * Math.PI * ringRadius;
+
   return (
-    <div className="glass glass-animate-up" style={{
-      padding: '20px 24px',
-      marginBottom: '24px',
-      borderRadius: 'var(--glass-radius)',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '16px',
-    }}>
+    <div className="glass glass-animate-up academy-progress-panel">
       {/* Progress ring */}
-      <svg width="48" height="48" style={{ transform: 'rotate(-90deg)', flexShrink: 0 }}>
+      <svg width="48" height="48" className="academy-progress-ring">
         <circle
-          cx="24" cy="24" r="20"
+          cx="24" cy="24" r={ringRadius}
           fill="none"
-          stroke="rgba(255,255,255,0.04)"
+          stroke="var(--border-subtle)"
           strokeWidth="4"
         />
         <circle
-          cx="24" cy="24" r="20"
+          cx="24" cy="24" r={ringRadius}
           fill="none"
-          stroke={percent === 100 ? '#4ade80' : '#c084fc'}
+          stroke={percent === 100 ? 'var(--status-success)' : 'var(--accent-purple)'}
           strokeWidth="4"
-          strokeDasharray={`${2 * Math.PI * 20}`}
-          strokeDashoffset={`${2 * Math.PI * 20 * (1 - percent / 100)}`}
+          strokeDasharray={circumference}
+          strokeDashoffset={circumference * (1 - percent / 100)}
           strokeLinecap="round"
           style={{ transition: 'stroke-dashoffset 0.5s ease' }}
         />
       </svg>
 
-      <div style={{ flex: 1 }}>
-        <div style={{
-          fontSize: '14px',
-          fontWeight: 600,
-          color: percent === 100 ? '#4ade80' : '#e8e8ec',
-          marginBottom: '4px',
-        }}>
+      <div className="academy-progress-info">
+        <div className={`academy-progress-label ${percent === 100 ? 'complete' : ''}`}>
           {percent === 100 ? 'Course Complete!' : `${percent}% Complete`}
         </div>
-        <div style={{
-          fontSize: '12px',
-          color: 'rgba(255,255,255,0.3)',
-        }}>
+        <div className="academy-progress-sub">
           {completed} of {total} lessons completed
         </div>
       </div>
 
       {/* Progress bar */}
-      <div style={{
-        width: '120px',
-        height: '4px',
-        background: 'rgba(255,255,255,0.04)',
-        borderRadius: '2px',
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          width: `${percent}%`,
-          height: '100%',
-          background: percent === 100
-            ? 'linear-gradient(90deg, #4ade80, #38bdf8)'
-            : 'linear-gradient(90deg, #c084fc, #38bdf8)',
-          borderRadius: '2px',
-          transition: 'width 0.5s ease',
-        }} />
+      <div className="academy-progress-bar-wrap">
+        <div className="glass-progress">
+          <div
+            className={`glass-progress-fill ${percent === 100 ? 'complete' : ''}`}
+            style={{ width: `${percent}%` }}
+          />
+        </div>
       </div>
     </div>
   );

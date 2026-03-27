@@ -6,14 +6,14 @@ export default function ProgressRing({ progress = 0, size = 40, strokeWidth = 3 
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
+    <svg width={size} height={size} className="academy-progress-ring">
       {/* Background ring */}
       <circle
         cx={size / 2}
         cy={size / 2}
         r={radius}
         fill="none"
-        stroke="#1e1e28"
+        stroke="var(--border-default)"
         strokeWidth={strokeWidth}
       />
       {/* Progress ring */}
@@ -22,7 +22,7 @@ export default function ProgressRing({ progress = 0, size = 40, strokeWidth = 3 
         cy={size / 2}
         r={radius}
         fill="none"
-        stroke={progress === 100 ? '#4ade80' : '#c084fc'}
+        stroke={progress === 100 ? 'var(--status-success)' : 'var(--accent-purple)'}
         strokeWidth={strokeWidth}
         strokeDasharray={circumference}
         strokeDashoffset={strokeDashoffset}

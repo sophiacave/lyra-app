@@ -9,12 +9,7 @@ const TIERS = [
 
 export default function TierTabs({ activeTier, onTierChange }) {
   return (
-    <div style={{
-      display: 'flex',
-      gap: '8px',
-      flexWrap: 'wrap',
-      marginBottom: '32px',
-    }}>
+    <div className="glass-tabs">
       {TIERS.map(tier => (
         <button
           key={tier.slug}

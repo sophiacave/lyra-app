@@ -39,32 +39,14 @@ export default async function LessonPage({ params }) {
   const course = getCourse(courseSlug);
 
   return (
-    <div style={{
-      maxWidth: '800px',
-      margin: '0 auto',
-      padding: '32px 24px 64px',
-      position: 'relative',
-      zIndex: 1,
-    }}>
-      {/* Breadcrumb — glass style */}
-      <div className="glass glass-animate-up" style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '8px',
-        fontSize: '13px',
-        padding: '8px 16px',
-        borderRadius: 'var(--glass-radius-sm)',
-        marginBottom: '32px',
-      }}>
-        <a href={`/academy/${courseSlug}/`} style={{
-          color: '#8888a0',
-          textDecoration: 'none',
-          transition: 'color 0.2s',
-        }}>
+    <div className="academy-container">
+      {/* Breadcrumb */}
+      <div className="glass glass-animate-up academy-breadcrumb">
+        <a href={`/academy/${courseSlug}/`} className="academy-breadcrumb-link">
           {course?.emoji} {course?.title}
         </a>
-        <span style={{ color: 'rgba(255,255,255,0.15)' }}>›</span>
-        <span style={{ color: '#c084fc' }}>Lesson {lesson.order}</span>
+        <span className="academy-breadcrumb-sep">›</span>
+        <span className="academy-breadcrumb-current">Lesson {lesson.order}</span>
       </div>
 
       {/* Lesson content */}

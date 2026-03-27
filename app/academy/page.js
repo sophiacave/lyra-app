@@ -29,12 +29,10 @@ export default function AcademyCatalog() {
     }))
   );
 
-  // Filter by tier
   let courses = activeTier === 'all'
     ? allCourses
     : allCourses.filter(c => c.tierSlug === activeTier);
 
-  // Filter by search
   if (search.trim()) {
     const q = search.toLowerCase();
     courses = courses.filter(c =>
@@ -46,67 +44,23 @@ export default function AcademyCatalog() {
 
   const liveCourses = allCourses.filter(c => c.status === 'live');
   const totalLessons = liveCourses.reduce((sum, c) => sum + (c.lessonCount || 10), 0);
-
-  // Calculate overall progress
   const completedLessons = Object.keys(progress).length;
   const progressPercent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
 
   return (
-    <div style={{
-      maxWidth: '1000px',
-      margin: '0 auto',
-      padding: '48px 32px',
-      position: 'relative',
-      zIndex: 1,
-    }}>
-      {/* Hero — Glass Console Header */}
-      <div className="glass glass-animate-up" style={{
-        padding: '36px 32px',
-        marginBottom: '36px',
-        borderRadius: 'var(--glass-radius-lg)',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: '-40px',
-          right: '-40px',
-          width: '200px',
-          height: '200px',
-          background: 'radial-gradient(circle, rgba(192,132,252,0.06) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
+    <div className="academy-container-wide">
+      {/* Hero */}
+      <div className="glass glass-animate-up academy-hero">
+        <div className="academy-hero-glow" />
 
-        <h1 style={{
-          fontSize: '38px',
-          fontWeight: 800,
-          background: 'linear-gradient(135deg, #c084fc 0%, #38bdf8 50%, #e879f9 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          marginBottom: '10px',
-          lineHeight: 1.1,
-          letterSpacing: '-0.5px',
-        }}>
-          Like One Academy
-        </h1>
-        <p style={{
-          color: '#8888a0',
-          fontSize: '15px',
-          lineHeight: 1.6,
-          maxWidth: '520px',
-        }}>
+        <h1 className="academy-hero-title">Like One Academy</h1>
+        <p className="academy-hero-desc">
           {allCourses.length} courses across 3 levels. From your first AI conversation
           to building autonomous agent systems. Start free.
         </p>
 
         {/* Stats bar */}
-        <div style={{
-          display: 'flex',
-          gap: '32px',
-          marginTop: '24px',
-          flexWrap: 'wrap',
-          alignItems: 'flex-end',
-        }}>
+        <div className="academy-stats-bar">
           {[
             { n: allCourses.length, label: 'Courses' },
             { n: `${totalLessons}+`, label: 'Lessons' },
@@ -120,72 +74,35 @@ export default function AcademyCatalog() {
           ))}
 
           {completedLessons > 0 && (
-            <div className="glass-stat" style={{ marginLeft: 'auto' }}>
-              <div className="glass-stat-value" style={{
-                background: 'linear-gradient(135deg, #4ade80, #38bdf8)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
-                {progressPercent}%
-              </div>
+            <div className="glass-stat academy-stat-progress">
+              <div className="glass-stat-value">{progressPercent}%</div>
               <div className="glass-stat-label">{completedLessons} completed</div>
             </div>
           )}
         </div>
       </div>
 
-      {/* Search + Tier Tabs row */}
-      <div style={{
-        display: 'flex',
-        gap: '16px',
-        marginBottom: '32px',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-      }}>
-        <div className="glass-search-wrap" style={{ flex: '1', minWidth: '200px', maxWidth: '320px' }}>
+      {/* Search + Tier Tabs */}
+      <div className="academy-search-row">
+        <div className="glass-search-wrap academy-search-wrap">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search courses..."
             className="glass-input"
-            style={{ paddingLeft: '36px' }}
+            style={{ paddingLeft: 'var(--space-10)' }}
           />
-          <span style={{
-            position: 'absolute',
-            left: '12px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            color: 'rgba(255,255,255,0.2)',
-            fontSize: '14px',
-            pointerEvents: 'none',
-          }}>
-            🔍
-          </span>
+          <span className="academy-search-icon">🔍</span>
         </div>
         <TierTabs activeTier={activeTier} onTierChange={setActiveTier} />
       </div>
 
       {/* Search results indicator */}
       {search.trim() && (
-        <div style={{
-          marginBottom: '20px',
-          fontSize: '13px',
-          color: '#8888a0',
-        }}>
-          {courses.length} result{courses.length !== 1 ? 's' : ''} for "{search}"
-          <button
-            onClick={() => setSearch('')}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#c084fc',
-              cursor: 'pointer',
-              marginLeft: '8px',
-              fontSize: '13px',
-              fontFamily: 'inherit',
-            }}
-          >
+        <div className="academy-search-results">
+          {courses.length} result{courses.length !== 1 ? 's' : ''} for &ldquo;{search}&rdquo;
+          <button onClick={() => setSearch('')} className="academy-search-clear">
             Clear
           </button>
         </div>
@@ -194,30 +111,12 @@ export default function AcademyCatalog() {
       {/* Course Grid */}
       {!search.trim() && activeTier === 'all' ? (
         coursesData.tiers.map(tier => (
-          <div key={tier.slug} style={{ marginBottom: '44px' }}>
-            <h2 style={{
-              fontSize: '18px',
-              fontWeight: 700,
-              color: '#e8e8ec',
-              marginBottom: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-            }}>
+          <div key={tier.slug} className="academy-tier-group">
+            <h2 className="academy-tier-heading">
               <span>{tier.emoji} {tier.name}</span>
-              <span style={{
-                fontSize: '12px',
-                color: 'rgba(255,255,255,0.2)',
-                fontWeight: 400,
-              }}>
-                {tier.description}
-              </span>
+              <span className="academy-tier-heading-desc">{tier.description}</span>
             </h2>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-              gap: '16px',
-            }}>
+            <div className="academy-course-grid">
               {tier.courses.map((c, i) => (
                 <CourseCard key={c.slug} index={i} course={{
                   ...c,
@@ -229,11 +128,7 @@ export default function AcademyCatalog() {
           </div>
         ))
       ) : (
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '16px',
-        }}>
+        <div className="academy-course-grid">
           {courses.map((c, i) => (
             <CourseCard key={c.slug} index={i} course={c} progress={progress} />
           ))}
@@ -241,13 +136,9 @@ export default function AcademyCatalog() {
       )}
 
       {courses.length === 0 && (
-        <div className="glass" style={{
-          padding: '48px 32px',
-          textAlign: 'center',
-          borderRadius: 'var(--glass-radius-lg)',
-        }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔍</div>
-          <p style={{ color: '#8888a0', fontSize: '15px' }}>
+        <div className="glass academy-empty">
+          <div className="academy-empty-emoji">🔍</div>
+          <p className="academy-empty-text">
             No courses found. Try a different search or filter.
           </p>
         </div>
