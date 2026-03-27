@@ -186,42 +186,16 @@ css: "ai-executives.css"
   <p><strong>The leadership takeaway:</strong> AI transformation is 20% technology and 80% people. Your job as an executive isn't to understand the algorithms. It's to create the conditions where your teams feel safe to experiment, supported through the transition, and clear on how AI makes their work better. Do that, and adoption takes care of itself.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 3 &#10003;</button>
+<!-- FLASH DECK: LEADERSHIP APPROACHES TO AI ADOPTION -->
+<div data-learn="FlashDeck" data-props='{"title":"Leadership Approaches to AI Adoption","cards":[{"front":"What is the single most effective driver of AI adoption among frontline teams?","back":"Peer proof — a colleague demonstrating real time savings on a painful task. Executive promises are far less persuasive than a coworker saying, I used to spend two hours on this and now it takes ten minutes."},{"front":"Why should AI champions be peers rather than managers?","back":"Authentic peer enthusiasm creates psychological safety. When a manager champions AI, employees may fear it is a precursor to job cuts. When a peer embraces it and thrives, others follow without defensiveness."},{"front":"What is the honest answer to a team member asking if AI will take their job?","back":"Their role will change. AI handles repetitive low-value tasks; their judgment, relationships, and experience become more important. Promise investment in training, not absolute job guarantees you cannot keep."},{"front":"Why do most enterprise AI projects fail?","back":"Four of the five most common failure causes are leadership and communication failures: no clear business problem, end users excluded from design, change management as an afterthought, and no executive sponsor. Only data quality is technical."},{"front":"What does a CFO need to hear to buy into an AI initiative?","back":"The math. Current cost of the process, projected cost after AI, payback period, and conservative assumptions. CFOs respect sandbags over moonshots — underpromise and overdeliver on financial projections."}]}'>
+</div>
 
-<script>
-const SLUG = 'ai-for-executives';
-const LESSON_NUM = 3;
+<!-- SORT STACK: TRANSFORMATION PHASES IN ORDER -->
+<div data-learn="SortStack" data-props='{"title":"AI Transformation Phases: Put Them in Order","instruction":"Arrange these change management steps in the correct sequence for a successful AI rollout","items":["Identify AI champions across different teams and give them early access","Deploy AI on one painful, visible process to generate a peer success story","Invest in ongoing, role-specific training for affected teams","Communicate results weekly during rollout with metrics and human stories","Iterate publicly when something does not work — model adaptability","Recognize and reward employees who find creative uses for AI tools"]}'>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
+<!-- QUIZ: AI LEADERSHIP QUESTIONS -->
+<div data-learn="QuizMC" data-props='{"title":"Leading AI Transformation: Knowledge Check","questions":[{"q":"A department head asks for reassurance that no jobs will be lost due to AI. What is the most trustworthy response?","options":["Promise that no jobs will be eliminated — this maintains morale","Avoid the topic and redirect to the technology benefits","Acknowledge that roles will evolve, commit to training investment, and be honest that guarantees cannot be made","Tell them AI will create more jobs than it eliminates based on historical trends"],"correct":2,"explanation":"Making promises you cannot keep destroys trust faster than uncertainty does. Honesty about role evolution, combined with genuine commitment to reskilling, is the only approach that builds durable trust during an AI transition."},{"q":"What is the primary reason end-user involvement in AI design is so critical?","options":["End users have technical expertise that leadership lacks","Tools built for how leadership imagines workflows, not how frontline teams actually work, result in AI that nobody uses","End users are the primary budget decision-makers","Frontline teams need to approve all AI expenditures"],"correct":1,"explanation":"Beautiful AI that nobody uses is one of the most common and expensive failure modes. When tools are designed around leadership assumptions rather than actual workflows, adoption fails. End users must be involved in design from the start."},{"q":"When pitching AI to middle management, what is the most effective framing?","options":["Emphasize that AI will reduce their team headcount and improve their budget position","Lead with architecture and security details","Give them ownership of the rollout and show that AI handles what their team complains about most","Focus on board-level competitive pressure to adopt AI"],"correct":2,"explanation":"Middle managers care about their team stability, their own relevance, and workload. Giving them ownership of the rollout and framing AI as handling the work their team hates most speaks directly to those concerns."},{"q":"Which of the following best describes why public iteration builds AI adoption trust?","options":["It demonstrates executive humility for its own sake","It shows teams that leadership is adaptive and that honest feedback is safe to give","It reduces the need for formal change management processes","It signals to the board that the initiative is under budget"],"correct":1,"explanation":"When leaders openly acknowledge what is not working and communicate what is changing, it signals to teams that this is a genuine process, not a mandate. Teams that feel safe to give honest feedback become invested in making the adoption succeed."}]}'>
+</div>
 
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

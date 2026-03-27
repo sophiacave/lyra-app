@@ -199,42 +199,16 @@ css: "ai-executives.css"
   <p><strong>The governance takeaway:</strong> AI governance isn't about control. It's about creating the conditions for responsible speed. A tiered framework that matches oversight to risk, a quick risk assessment for new initiatives, and proactive management of shadow AI. That's the governance posture that lets you move fast without breaking things that matter.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 4 &#10003;</button>
+<!-- FLASH DECK: KEY AI RISKS -->
+<div data-learn="FlashDeck" data-props='{"title":"The Five Key AI Risk Categories","cards":[{"front":"Bias Risk","back":"AI models reflect the biases in their training data. In hiring, lending, insurance, and customer segmentation, biased AI creates legal exposure and reputational damage. Require regular bias testing for any AI that makes decisions about people."},{"front":"Privacy Risk","back":"Every AI system processes data. Key questions: Where does data go? Is it used to train third-party models? Who can access it? In regulated industries, data handling is a compliance requirement with real penalties, not just a best practice."},{"front":"Security Risk","back":"AI systems can be vectors for data exfiltration, prompt injection attacks, and shadow data leakage. Employees using unapproved AI tools with company data represent a significant and often invisible security exposure."},{"front":"Compliance Risk","back":"The EU AI Act is in force. US state-level AI legislation is multiplying rapidly. Industry-specific regulations are evolving. The regulatory landscape 12 months from now will look substantially different from today. Someone must own this tracking function."},{"front":"Reputational Risk","back":"AI errors in customer-facing applications, biased outputs that become public, or association with controversial AI practices can cause brand damage that outlasts the specific incident. Reputational risk compounds other risk types and is the hardest to quantify in advance."}]}'>
+</div>
 
-<script>
-const SLUG = 'ai-for-executives';
-const LESSON_NUM = 4;
+<!-- MATCH CONNECT: RISK SCENARIOS TO GOVERNANCE RESPONSES -->
+<div data-learn="MatchConnect" data-props='{"title":"Risk Scenarios to Governance Responses","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI hiring tool shows disparate rejection rates by race","right":"Immediate bias audit, suspend AI decisions, implement human review"},{"left":"Employee pastes customer PII into ChatGPT","right":"Enforce Tier 1 data rules, launch shadow AI legitimization program"},{"left":"AI customer service bot gives incorrect legal advice","right":"Add human review gate before customer-facing output (Tier 2)"},{"left":"New EU AI Act provision affects your AI deployment","right":"Assign regulatory tracking owner, audit compliance before next release"},{"left":"AI vendor is acquired and data portability is unclear","right":"Enforce data processing agreement, invoke contractual export rights"},{"left":"Financial model using AI produces an outlier projection","right":"Require human-in-the-loop review for all consequential decisions (Tier 3)"}]}'>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
+<!-- QUIZ: AI GOVERNANCE QUESTIONS -->
+<div data-learn="QuizMC" data-props='{"title":"AI Risk & Governance: Knowledge Check","questions":[{"q":"An AI tool used for internal brainstorming and first-draft writing belongs in which governance tier?","options":["Tier 3: Controlled Use — all AI needs maximum oversight","Tier 2: Guided Use — human review before any output is used","Tier 1: Open Use — low risk with basic data rules","No tier — internal tools do not require governance"],"correct":2,"explanation":"Internal brainstorming and first-draft writing are low-risk activities. They belong in Tier 1: Open Use, where employees can use approved tools freely as long as they follow basic data rules like no PII or proprietary IP input."},{"q":"68% of knowledge workers use AI tools at work, but only 26% have employer approval. What is the recommended response?","options":["Issue a company-wide ban on unapproved AI tools","Ignore it — personal productivity tools are each employee's choice","Survey teams to discover usage, then legitimize the most common use cases with approved tools and guidelines","Launch an internal investigation to identify policy violators"],"correct":2,"explanation":"Shadow AI is a signal that employees need better tools. The right response is to discover what they are using, legitimize the most common use cases through approved paths, and set clear data rules. Banning rarely works and drives the behavior further underground."},{"q":"Which of the following AI use cases requires Tier 3: Controlled Use governance?","options":["Meeting summarization for internal use","First drafts of marketing email copy","AI-assisted resume screening for hiring decisions","Research assistance for industry trend analysis"],"correct":2,"explanation":"Hiring decisions affect people and carry significant bias and legal risk. Any AI that influences decisions about people — hiring, lending, pricing, access — requires Tier 3: Controlled Use with bias testing, governance review before deployment, and human-in-the-loop for every consequential decision."},{"q":"What is the most effective framing for an AI governance framework when introducing it to teams?","options":["This is a compliance requirement — adherence is mandatory","Governance is how we say yes safely, not how we say no","These rules protect the company from legal liability","The board requires this level of oversight for all AI initiatives"],"correct":1,"explanation":"Teams that see governance as an enabler — a way to get to yes safely — will engage with it. Teams that experience governance as bureaucracy or punishment will route around it. The framing determines whether your governance framework actually works."}]}'>
+</div>
 
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

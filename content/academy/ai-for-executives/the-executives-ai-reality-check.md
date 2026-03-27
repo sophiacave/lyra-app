@@ -167,42 +167,12 @@ css: "ai-executives.css"
   <p><strong>The executive takeaway:</strong> AI is a powerful operational tool, not a magic strategy generator. The leaders who benefit most are the ones who start with a clear business problem, honest data assessment, and realistic expectations about accuracy. That discipline separates the 30% who see returns from the 70% who don't.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 1 &#10003;</button>
+<!-- FLASH DECK: AI MYTHS VS REALITY -->
+<div data-learn="FlashDeck" data-props='{"title":"AI Myths vs. Reality for Executives","cards":[{"front":"Myth: AI will replace most of our workforce within 2 years.","back":"Reality: AI replaces specific tasks, not whole roles. In 2026, AI augments workers in high-volume, repetitive tasks. New roles emerge alongside AI — the net effect is workforce transformation, not elimination."},{"front":"Myth: More AI adoption always means higher ROI.","back":"Reality: Only 30% of enterprise AI investments generate meaningful returns. ROI comes from targeting the right problems with the right data, not from maximizing AI usage across the board."},{"front":"Myth: AI is objective and free from bias.","back":"Reality: AI reflects the biases in its training data. Systems used in hiring, lending, and customer segmentation have produced discriminatory outcomes. Bias testing is non-negotiable for any people-facing AI."},{"front":"Myth: If a vendor claims 99% accuracy, the AI is reliable.","back":"Reality: Accuracy claims are often cherry-picked from best-case demos. Ask for error rates on your specific data, in your specific context. Every AI system fails — the question is how often and at what cost."},{"front":"Myth: We need a full AI strategy before we can start.","back":"Reality: Start with one clear business problem and a Quadrant 1 use case. Momentum from a small win is worth more than six months of strategy planning. Strategy can catch up to learning."}]}'>
+</div>
 
-<script>
-const SLUG = 'ai-for-executives';
-const LESSON_NUM = 1;
+<!-- QUIZ: REALISTIC AI EXPECTATIONS -->
+<div data-learn="QuizMC" data-props='{"title":"Check Your AI Reality Check","questions":[{"q":"An executive asks you to evaluate an AI vendor claiming their product is 99% accurate. What is the most important follow-up question?","options":["How long has the company been in business?","What is the error rate on data similar to ours, and what happens when it is wrong?","Does the vendor have SOC 2 certification?","How many enterprise customers do they have?"],"correct":1,"explanation":"Vendor accuracy claims are almost always based on ideal conditions. The critical question is how the AI performs on your specific data and what the consequences of errors are in your context."},{"q":"Which of the following is a value signal rather than a hype signal for an AI initiative?","options":["Our competitors are all investing heavily in AI.","We want to become an AI-first organization.","We need to reduce invoice processing time from 4 days to same-day.","AI will transform our entire business model."],"correct":2,"explanation":"Value signals are specific, measurable business problems. Hype signals are vague aspirations or competitive-pressure arguments that don\'t connect to a concrete outcome."},{"q":"Before greenlighting any AI initiative, the 3 key questions are: What is the business problem, what does good enough look like, and what?","options":["Who is the project sponsor?","Where is the data?","What is the vendor\'s valuation?","How long will implementation take?"],"correct":1,"explanation":"AI runs on data. Without clean, accessible, sufficient data, the project fails before it starts. Data readiness is one of the three gates every AI initiative must pass through."},{"q":"Where do the highest-ROI AI deployments consistently focus?","options":["Cutting-edge moonshot projects that create new markets","High-volume, repetitive, language-heavy processes","Executive decision-support and strategic planning","Custom-built proprietary AI models"],"correct":1,"explanation":"The proven ROI pattern in 2026 is high-volume, repetitive, language-heavy processes — customer support triage, document processing, internal search. Moonshots come after building on these foundations."}]}'>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
-
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

@@ -222,42 +222,16 @@ css: "ai-executives.css"
   <p><strong>The final takeaway from this course:</strong> AI is not magic. It's a business tool that, like all business tools, succeeds when it's deployed against clear problems, measured honestly, governed responsibly, and led with empathy for the humans it affects. The executives who win with AI aren't the ones who spend the most or move the fastest. They're the ones who think the clearest. You now have the frameworks to be one of them.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 5 &#10003;</button>
+<!-- MATCH CONNECT: ROI METRICS TO WHAT THEY MEASURE -->
+<div data-learn="MatchConnect" data-props='{"title":"ROI Metrics: Match Each to What It Measures","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Cost per transaction before vs. after AI","right":"Cost reduction — direct savings from reduced labor or errors"},{"left":"Hours reclaimed per employee per week","right":"Efficiency gains — time saved and capacity freed"},{"left":"AI-influenced pipeline increase per quarter","right":"Revenue impact — new revenue or improved conversion"},{"left":"Error rate change in AI-assisted processes","right":"Quality and experience — fewer mistakes, better outcomes"},{"left":"Customer satisfaction delta for AI-touched interactions","right":"Quality and experience — customer perception of AI-assisted service"},{"left":"Weekly active users vs. registered users","right":"Adoption health — leading indicator of whether ROI will grow or stall"}]}'>
+</div>
 
-<script>
-const SLUG = 'ai-for-executives';
-const LESSON_NUM = 5;
+<!-- FLASH DECK: EXECUTIVE ROI FRAMEWORKS -->
+<div data-learn="FlashDeck" data-props='{"title":"Executive ROI Frameworks for AI","cards":[{"front":"The Adversarial Measurement Question","back":"Before measuring ROI, ask: What would we measure if we were trying to prove this initiative was a waste of money? This adversarial framing forces rigorous honesty and prevents cherry-picking metrics that look good but do not show up on the P and L."},{"front":"The 50% Vendor Claim Rule","back":"When building a pre-deployment business case, use 50% of vendor ROI claims as your projected improvement. This conservative approach protects you from over-promising to the board and creates room to exceed expectations rather than explain shortfalls."},{"front":"The Pre and Post-Deployment Business Case","back":"Pre-deployment: get the initiative funded with baseline metrics and conservative projections. Post-deployment: review actual vs. projected at 30, 60, and 90 days. Most organizations do the first and skip the second — that is how ghost AI projects accumulate."},{"front":"The Kill Discipline","back":"If an AI initiative is not delivering at 90 days and the trend is not improving, cut it. Sunk cost fallacy is the enemy of good AI portfolio management. Redirecting budget from a failing initiative to a promising one is a mark of disciplined leadership, not failure."}]}'>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
+<!-- QUIZ: ROI MEASUREMENT QUESTIONS -->
+<div data-learn="QuizMC" data-props='{"title":"Measuring AI ROI: Knowledge Check","questions":[{"q":"A team reports that their AI tool processed 50,000 queries last month with a 94% employee adoption rate. Why are these metrics insufficient for an ROI case?","options":["The sample size is too small to be statistically significant","These are vanity metrics — they measure activity and usage, not business impact","The adoption rate should be higher before claiming success","These metrics need to be reviewed by the board before being accepted"],"correct":1,"explanation":"Query counts and adoption rates are vanity metrics. They measure that people are using the tool, not whether the tool is delivering business value. The ROI case requires metrics like cost per transaction before vs. after, hours reclaimed, or error rate changes."},{"q":"A vendor claims their AI delivers 400% ROI. How should you incorporate this into your pre-deployment business case?","options":["Use 400% as the projected ROI in your board presentation","Use 200% — a 50% haircut on vendor claims — as your conservative projection","Reject the claim entirely and do not proceed","Ask the vendor for a money-back guarantee before accepting the number"],"correct":1,"explanation":"The 50% vendor claim rule: use half of vendor ROI claims as your projected improvement. This protects against over-promising, keeps your board presentation credible, and creates room to exceed expectations. Vendors optimize their claims for the best-case scenario."},{"q":"Which of the following represents the strongest measurement of AI revenue impact?","options":["The AI tool generated 500 pieces of content this quarter","AI-personalized outreach increased response rates from 3.2% to 7.1%, adding $340K to pipeline","Employee satisfaction with AI tools increased from 3.2 to 4.1 out of 5","The AI system processed 8,000 support tickets last month"],"correct":1,"explanation":"A specific percentage improvement in response rates tied to a specific dollar figure in additional pipeline is exactly what revenue impact measurement requires: a before-and-after comparison with a clear causal link and a quantified business outcome."},{"q":"An AI initiative has not hit its projected metrics at 90 days and the trend is flat. What is the recommended action?","options":["Give it another 90 days — AI takes time to reach full potential","Expand the rollout to more teams to improve adoption numbers","Make a go, adjust, or kill recommendation based on the data — and be willing to kill it","Hire a consultant to re-evaluate the implementation"],"correct":2,"explanation":"Discipline around killing underperforming initiatives is one of the hardest and most important parts of AI portfolio management. Sunk cost fallacy keeps failed projects alive too long. At 90 days with flat trends, the right move is an honest go-adjust-kill decision supported by actual data."}]}'>
+</div>
 
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Course Complete!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Course Complete!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>
