@@ -1,5 +1,9 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
+import { validatePrompt, gradePrompt } from '../../../lib/exercise-engine';
+import QualityGrader from '../console/QualityGrader';
+import PromptDiffView from '../console/PromptDiffView';
+import CelebrationEffects from '../console/CelebrationEffects';
 
 const TYPING_SPEED = 18; // ms per character
 
@@ -43,6 +47,10 @@ export default function PromptConsole({ exercises = [], lessonTitle = '' }) {
   const historyRef = useRef(null);
   const [currentResponse, setCurrentResponse] = useState('');
   const [showResponse, setShowResponse] = useState(false);
+  const [gradeResult, setGradeResult] = useState(null);
+  const [showDiff, setShowDiff] = useState(false);
+  const [celebrationTrigger, setCelebrationTrigger] = useState(0);
+  const [allDoneTrigger, setAllDoneTrigger] = useState(0);
 
   const { displayed, isDone } = useTypingEffect(currentResponse, showResponse);
 
@@ -71,15 +79,51 @@ export default function PromptConsole({ exercises = [], lessonTitle = '' }) {
     setInput('');
     setHistory(prev => [...prev, { role: 'user', content: userMsg }]);
     setIsTyping(true);
+    setShowDiff(false);
 
-    // Check if this matches an exercise
+    // Grade every prompt for quality feedback
+    const grade = gradePrompt(userMsg);
+    setGradeResult(grade);
+
+    // If there's an exercise with criteria, use the engine
+    if (exercise && exercise.criteria) {
+      const result = validatePrompt(userMsg, exercise);
+      if (result.pass) {
+        setCompletedExercises(prev => new Set([...prev, activeExercise]));
+        setCelebrationTrigger(t => t + 1);
+        setCurrentResponse(result.feedback);
+        setShowResponse(true);
+        // Check if all exercises done
+        const newCompleted = new Set([...completedExercises, activeExercise]);
+        if (exercises.length > 0 && newCompleted.size === exercises.length) {
+          setTimeout(() => setAllDoneTrigger(t => t + 1), 1500);
+        }
+        // Auto-advance
+        setTimeout(() => {
+          if (activeExercise < exercises.length - 1) {
+            setActiveExercise(activeExercise + 1);
+          }
+        }, 2000);
+        return;
+      } else {
+        // Show diff if exercise has examples and user failed
+        if (exercise.badExample && exercise.goodExample) {
+          setShowDiff(true);
+        }
+        setCurrentResponse(result.feedback);
+        setShowResponse(true);
+        return;
+      }
+    }
+
+    // Legacy: exercise with validate function
     if (exercise && exercise.validate) {
       const isCorrect = exercise.validate(userMsg);
       if (isCorrect) {
         setCompletedExercises(prev => new Set([...prev, activeExercise]));
+        setCelebrationTrigger(t => t + 1);
         setCurrentResponse(exercise.successResponse || 'Great job! That prompt works perfectly.');
         setShowResponse(true);
-        // Auto-advance to next exercise after completion
         setTimeout(() => {
           if (activeExercise < exercises.length - 1) {
             setActiveExercise(activeExercise + 1);
@@ -89,7 +133,7 @@ export default function PromptConsole({ exercises = [], lessonTitle = '' }) {
       }
     }
 
-    // Default: simulate a helpful response
+    // Default response
     const response = exercise?.hintResponse
       ? exercise.hintResponse(userMsg)
       : generateResponse(userMsg);
@@ -220,6 +264,20 @@ export default function PromptConsole({ exercises = [], lessonTitle = '' }) {
         </button>
       </form>
 
+      {/* Quality grader */}
+      {gradeResult && gradeResult.overall > 0 && (
+        <QualityGrader result={gradeResult} />
+      )}
+
+      {/* Prompt diff view */}
+      {showDiff && exercise?.badExample && exercise?.goodExample && (
+        <PromptDiffView
+          badPrompt={exercise.badExample}
+          goodPrompt={exercise.goodExample}
+          onTryGood={() => handleTryPrompt(exercise.goodExample)}
+        />
+      )}
+
       {/* Completion */}
       {exercises.length > 0 && completedExercises.size === exercises.length && (
         <div className="console-complete">
@@ -227,6 +285,10 @@ export default function PromptConsole({ exercises = [], lessonTitle = '' }) {
           All exercises complete
         </div>
       )}
+
+      {/* Celebration effects */}
+      <CelebrationEffects trigger={celebrationTrigger} type="exercise" />
+      <CelebrationEffects trigger={allDoneTrigger} type="course" />
     </div>
   );
 }

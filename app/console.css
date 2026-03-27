@@ -652,6 +652,279 @@
 
 
 /* ═══════════════════════════════════
+   QUALITY GRADER — Prompt scoring UI
+   ═══════════════════════════════════ */
+.lo-grader {
+  padding: var(--space-3);
+  margin: var(--space-2) var(--space-3);
+  background: var(--glass-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  animation: glassSlideUp var(--duration-base) var(--ease-out) both;
+}
+
+.lo-grader-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.lo-grader-label {
+  font-size: var(--font-2xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  flex: 1;
+}
+
+.lo-grader-grade {
+  font-size: var(--font-lg);
+  font-weight: var(--font-weight-black);
+  line-height: 1;
+}
+
+.lo-grader-score {
+  font-size: var(--font-xs);
+  color: var(--text-quaternary);
+  font-family: var(--font-mono);
+}
+
+.lo-grader-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lo-grader-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.lo-grader-dim-label {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.lo-grader-bar-track {
+  flex: 1;
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.lo-grader-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.lo-grader-dim-val {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  font-family: var(--font-mono);
+  width: 24px;
+  text-align: right;
+}
+
+.lo-grader-tip {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background: rgba(192,132,252,0.06);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.lo-grader-tip-icon {
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════
+   PROMPT DIFF VIEW — Bad vs Good
+   ═══════════════════════════════════ */
+.lo-diff {
+  padding: var(--space-3);
+  margin: var(--space-2) var(--space-3);
+  background: var(--glass-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  animation: glassSlideUp var(--duration-base) var(--ease-out) both;
+}
+
+.lo-diff-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.lo-diff-icon {
+  font-size: var(--font-md);
+}
+
+.lo-diff-title {
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.lo-diff-panels {
+  display: flex;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.lo-diff-panel {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.lo-diff-bad {
+  background: rgba(239,68,68,0.04);
+  border-color: rgba(239,68,68,0.15);
+}
+
+.lo-diff-good {
+  background: rgba(74,222,128,0.04);
+  border-color: rgba(74,222,128,0.15);
+}
+
+.lo-diff-panel-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-1);
+}
+
+.lo-diff-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.lo-diff-dot-bad { background: var(--status-error); }
+.lo-diff-dot-good { background: var(--status-success); }
+
+.lo-diff-text {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-normal);
+  font-family: var(--font-mono);
+}
+
+.lo-diff-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--text-quaternary);
+  font-size: var(--font-lg);
+  flex-shrink: 0;
+}
+
+.lo-diff-try {
+  margin-top: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: rgba(192,132,252,0.1);
+  border: 1px solid rgba(192,132,252,0.2);
+  border-radius: var(--radius-sm);
+  color: var(--accent-purple);
+  font-size: var(--font-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  text-align: center;
+}
+.lo-diff-try:hover {
+  background: rgba(192,132,252,0.15);
+  border-color: rgba(192,132,252,0.3);
+}
+
+
+/* ═══════════════════════════════════
+   CELEBRATION EFFECTS — Particles + Glow
+   ═══════════════════════════════════ */
+.lo-celebration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  overflow: hidden;
+}
+
+.lo-celebration-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(192,132,252,0.2) 0%, transparent 70%);
+  animation: lo-celebration-glow-pulse 1s ease-out forwards;
+  border-radius: 50%;
+}
+
+.lo-celebration-glow-big {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(192,132,252,0.25) 0%, rgba(56,189,248,0.1) 40%, transparent 70%);
+  animation-duration: 2s;
+}
+
+@keyframes lo-celebration-glow-pulse {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+}
+
+.lo-celebration-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: lo-particle-fly ease-out forwards;
+}
+
+@keyframes lo-particle-fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0);
+  }
+}
+
+.lo-celebration-star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: var(--accent-purple);
+  animation: lo-star-burst 1.5s ease-out forwards;
+}
+
+@keyframes lo-star-burst {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(0deg); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(180deg); }
+  60% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5) rotate(540deg); }
+}
+
+
+/* ═══════════════════════════════════
    RESPONSIVE — Mobile + Tablet
    ═══════════════════════════════════ */
 
