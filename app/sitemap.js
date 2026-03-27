@@ -28,9 +28,11 @@ export default function sitemap() {
   }));
 
   // Academy courses and lessons
+  const today = new Date().toISOString().split('T')[0];
   const courses = getAllCourses().filter(c => c.status === 'live');
   const coursePages = courses.map(course => ({
     url: `${baseUrl}/academy/${course.slug}/`,
+    lastModified: today,
     changeFrequency: 'weekly',
     priority: 0.8,
   }));
@@ -38,6 +40,7 @@ export default function sitemap() {
   const lessonPages = courses.flatMap(course =>
     course.lessons.map(lesson => ({
       url: `${baseUrl}/academy/${course.slug}/${lesson.slug}/`,
+      lastModified: today,
       changeFrequency: 'monthly',
       priority: 0.7,
     }))

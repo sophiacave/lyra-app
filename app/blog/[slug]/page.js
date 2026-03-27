@@ -1,10 +1,55 @@
 import Link from 'next/link';
 import { getPostBySlug, getAllSlugs } from '@/lib/posts';
+import { getAllCourses } from '@/lib/courses';
 import SubscribeForm from '@/app/components/SubscribeForm';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import { site, academy } from '@/lib/site-config';
 import { notFound } from 'next/navigation';
+
+const TAG_COURSE_MAP = {
+  'claude': ['claude-for-beginners', 'claude-mastery'],
+  'prompt': ['prompt-writing-101', 'advanced-prompt-engineering'],
+  'prompt-engineering': ['prompt-writing-101', 'advanced-prompt-engineering'],
+  'automation': ['automation-architect', 'ai-powered-workflows', 'the-automation-lab'],
+  'ai-workflow': ['ai-powered-workflows', 'automation-architect'],
+  'make-com': ['automation-architect', 'the-automation-lab'],
+  'business': ['ai-for-business'],
+  'small-business': ['ai-for-business'],
+  'marketing': ['ai-for-marketing', 'ai-content-studio'],
+  'content': ['ai-content-studio', 'content-generation-pipeline'],
+  'creative': ['ai-for-creatives', 'ai-images-and-video'],
+  'agent': ['first-ai-agent', 'multi-agent-orchestration'],
+  'agents': ['first-ai-agent', 'multi-agent-orchestration'],
+  'mcp': ['mcp-masterclass'],
+  'rag': ['rag-vector-search'],
+  'data': ['ai-for-data-analysis'],
+  'sales': ['ai-for-sales'],
+  'executive': ['ai-for-executives', 'ai-enterprise-strategy'],
+  'productivity': ['ai-for-personal-productivity'],
+  'ethics': ['ai-ethics-and-safety'],
+  'beginner': ['claude-for-beginners', 'ai-foundations'],
+  'ai-tools': ['ai-stack-builder', 'ai-for-business'],
+  'comparison': ['ai-stack-builder'],
+  'tutorial': ['claude-for-beginners', 'ai-foundations'],
+  'images': ['ai-images-and-video'],
+  'video': ['ai-images-and-video', 'ai-voice-audio'],
+  'audio': ['ai-voice-audio'],
+  'project-management': ['ai-project-management'],
+};
+
+function getRelatedCourses(tags) {
+  if (!tags || !tags.length) return [];
+  const slugSet = new Set();
+  for (const tag of tags) {
+    const t = String(tag).toLowerCase();
+    const mapped = TAG_COURSE_MAP[t];
+    if (mapped) mapped.forEach(s => slugSet.add(s));
+  }
+  if (slugSet.size === 0) return [];
+  const allCourses = getAllCourses().filter(c => c.status === 'live');
+  return allCourses.filter(c => slugSet.has(c.slug)).slice(0, 3);
+}
 
 export async function generateStaticParams() {
   return getAllSlugs().map(slug => ({ slug }));
@@ -41,6 +86,36 @@ function formatDate(dateStr) {
   if (!dateStr) return '';
   const d = new Date(dateStr + 'T00:00:00');
   return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function RelatedCourses({ tags }) {
+  const courses = getRelatedCourses(tags);
+  if (courses.length === 0) {
+    return (
+      <div className="post-related-course">
+        <div className="post-related-course-inner">
+          <h3>Want to go deeper?</h3>
+          <p>Check out {academy.ctaText} — {academy.ctaDescription}</p>
+          <Link href="/academy/" className="post-related-course-link">Start free &rarr;</Link>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="post-related-courses">
+      <h3 className="post-related-heading">Related courses</h3>
+      <div className="post-related-grid">
+        {courses.map(c => (
+          <Link key={c.slug} href={`/academy/${c.slug}/`} className="post-related-card">
+            <span className="post-related-emoji">{c.emoji}</span>
+            <span className="post-related-title">{c.title}</span>
+            <span className="post-related-meta">{c.lessonCount} lessons &middot; {c.tierName}</span>
+          </Link>
+        ))}
+      </div>
+      <Link href="/academy/" className="post-related-all">Browse all courses &rarr;</Link>
+    </div>
+  );
 }
 
 export default async function PostPage({ params }) {
@@ -101,13 +176,7 @@ export default async function PostPage({ params }) {
         </div>
       </div>
 
-      <div className="post-related-course">
-        <div className="post-related-course-inner">
-          <h3>Want to go deeper?</h3>
-          <p>Check out {academy.ctaText} — {academy.ctaDescription}</p>
-          <Link href="/academy/" className="post-related-course-link">Start free &rarr;</Link>
-        </div>
-      </div>
+      <RelatedCourses tags={post.tags} />
 
       <footer className="post-footer">
         <Link href="/blog" className="post-footer-back">
