@@ -126,6 +126,20 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Match It</span>
+  <h2 class="section-title">Match each bias type to its description.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"4 Types of AI Bias","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Representation Bias","right":"Some groups are over- or under-represented in training data"},{"left":"Confirmation Bias","right":"AI tends to reinforce your existing beliefs when you phrase questions with implied answers"},{"left":"Cultural and Language Bias","right":"Training data skews toward English-language and Western perspectives"},{"left":"Recency Bias","right":"AI has a knowledge cutoff and presents outdated information with full confidence"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Bias in AI","questions":[{"q":"Where does AI bias primarily come from?","options":["Deliberately programmed prejudice by developers","Patterns in the training data that reflect human biases","Random errors in the algorithm","Biased prompts from end users"],"correct":1,"explanation":"AI bias comes from training data. AI learns from text written by humans — and humans have biases. The AI is not making moral judgments; it is doing math on patterns from an unequal world."},{"q":"You ask AI: \"Why is remote work better than office work?\" What type of bias does this demonstrate?","options":["Representation Bias","Recency Bias","Confirmation Bias","Cultural Bias"],"correct":2,"explanation":"This is Confirmation Bias. The question already implies an answer, so the AI will reinforce that framing. Rephrasing neutrally — \"Compare remote work and office work\" — reduces this."},{"q":"Which technique helps counter confirmation bias in AI prompts?","options":["Use shorter prompts","Ask for multiple perspectives or ask AI to compare both sides","Repeat the question multiple times","Use a different AI tool"],"correct":1,"explanation":"Asking for multiple perspectives — or framing questions neutrally rather than with implied answers — is the most effective technique for reducing confirmation bias."},{"q":"What should you do if AI output contains suspicious statistics?","options":["Trust them since AI is trained on large datasets","Publish them with a disclaimer","Verify the source with external authoritative references","Ask AI to confirm the number again"],"correct":2,"explanation":"Always verify AI-generated statistics with external sources. AI can and does invent plausible-sounding numbers. Asking AI to confirm does not help — it may just repeat the error."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-ethics-and-safety/privacy-and-data-protection" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Privacy and Data Protection →</a>

@@ -79,6 +79,20 @@ free: false
   <div class="prompt-box"><code>Role-play as a skeptical [TITLE] at a [COMPANY TYPE]. I'm going to pitch you [MY PRODUCT]. Push back hard with realistic objections. After each of my responses, tell me what worked and what didn't, then hit me with the next objection. Be tough but fair.</code></div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each HEARD step to what you do in that moment.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"HEARD Objection Framework","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"H — Hear","right":"Repeat their concern back to show you are listening, not defending"},{"left":"E — Empathize","right":"That makes complete sense — validate before you counter"},{"left":"A — Ask","right":"Dig deeper: Is it the price itself, or the uncertainty about ROI?"},{"left":"D — Direct","right":"Move forward: If we can solve that, are you ready to move ahead?"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Objection Handling","questions":[{"q":"Why does the lesson say objections should not scare salespeople?","options":["Objections mean the prospect is not interested and the deal is over","Objections mean the prospect is thinking about buying — they just need a reason to say yes","Objections are easy to overcome with the right script","Objections always come from budget issues that can be resolved"],"correct":1,"explanation":"The lesson reframes objections as buying signals. Silence is what should scare you — a prospect who says nothing is not engaged. An objection means they are considering the purchase and need something resolved. Objections are conversations, and conversations close deals."},{"q":"When a prospect says I need to think about it, what does the HEARD method suggest?","options":["Give them a week and follow up with an email","Immediately offer a discount to speed up the decision","Ask a deeper question to uncover the real blocker — thinking usually means uncertainty about something specific","Send them a case study that addresses common concerns"],"correct":2,"explanation":"The lesson says: Thinking = uncertainty. The A in HEARD (Ask) is to dig deeper and find what they are actually uncertain about. Is it budget? Risk? Internal approval? Until you know the real concern, any response will miss the mark."},{"q":"What is AI\'s most underrated application for objection handling?","options":["Automatically responding to objections in real-time during calls","Role-playing as a skeptical buyer so you can practice your responses before real calls","Analyzing call recordings to identify objection patterns","Generating scripts you read verbatim during sales conversations"],"correct":1,"explanation":"The lesson highlights role-playing as AI\'s most underrated sales application. Ask AI to play a skeptical buyer and push back hard on your pitch. After each response, AI tells you what worked and what did not — giving you a sparring partner available 24/7."},{"q":"When a prospect says it is too expensive, what does the HEARD method recommend?","options":["Immediately offer a lower price or discount","Explain why your product is worth the price in detail","Reframe to ROI — ask what does NOT buying cost them?","Suggest a payment plan to reduce the per-month impact"],"correct":2,"explanation":"The lesson maps this objection to a reframe: what does NOT buying cost them? Loss aversion is more motivating than cost justification. When the cost of inaction exceeds the price of your solution, the price stops being the objection."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-sales/05-proposal-and-pitch-creation/" class="prev">← Previous: Proposal & Pitch Creation</a>
   <a href="/academy/ai-for-sales/07-pipeline-management/" class="next">Next: Pipeline Management →</a>

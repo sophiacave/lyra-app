@@ -79,6 +79,18 @@ free: false
   <p>Create an AI image you like using the prompt skills from previous lessons. Then take that image to an AI video tool (Pika, Luma, or Runway) and animate it using image-to-video. Add a motion prompt like <strong>"slow cinematic camera push in, subtle movement"</strong> and watch your still image come to life. Save the result — you just created your first AI video.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">AI Video Tools</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Video Platforms and Their Strengths","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Runway Gen-3","right":"Most established — cinematic quality, professionals reach for this first"},{"left":"Pika","right":"Simple and fun — great for quick social clips, generous free tier"},{"left":"Sora","right":"OpenAI tool — remarkably coherent physics and natural motion"},{"left":"Luma Dream Machine","right":"Fast generation — particularly strong at image-to-video animation"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 7 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"AI Video Basics","questions":[{"q":"What is the practical advantage of image-to-video over text-to-video?","options":["Image-to-video is always free","Image-to-video gives you more control because you start with a visual you already like","Text-to-video produces higher quality results","Image-to-video is faster"],"correct":1,"explanation":"Text-to-video gives creative freedom but less control. Starting with an image you already like — one you crafted using your image prompt skills — gives you a known starting point and more predictable results."},{"q":"What is the most important tip for AI video prompts?","options":["Use as many words as possible","Always specify a black and white style","Keep it simple — one subject, one action, one mood","Avoid specifying camera movement"],"correct":2,"explanation":"Complex scenes with multiple moving parts often struggle in AI video. One clear subject, one action, one mood gives the AI a focused direction and typically produces much better results."},{"q":"How long are typical AI video clips in 2026?","options":["30 seconds to 2 minutes","5 to 10 minutes","Typically 4 to 16 seconds","Exactly 60 seconds"],"correct":0,"explanation":"Current AI video tools typically generate clips of 4-16 seconds. Quality has improved dramatically but the format is best for social media clips, concept visualization, and creative projects rather than long-form video."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/ai-for-social-media-visuals">&larr; Previous: AI for Social Media Visuals</a>
   <a href="/academy/ai-images-and-video/practical-use-cases">Next: Practical Use Cases &rarr;</a>

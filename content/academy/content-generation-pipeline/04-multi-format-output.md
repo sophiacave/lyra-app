@@ -76,9 +76,22 @@ Voice guidelines: [DESCRIBE YOUR TONE IN 2-3 SENTENCES]."</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Platform-native format rules.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Format-Native Transformation","cards":[{"front":"Twitter/X Format Rules","back":"Punchy provocative hooks. Each tweet stands alone but builds on the last. Thread format: hook tweet + 4-7 value tweets + CTA closer."},{"front":"LinkedIn Format Rules","back":"Personal story paired with professional takeaway. Short paragraphs with line breaks. End with a question that invites comments."},{"front":"Email Newsletter Rules","back":"Intimate first-person tone. Tease the core insight without giving everything away. Clear CTA to the full piece. Subject line is your ad."},{"front":"YouTube Script Rules","back":"5-minute format. Visual cues. Retention hooks at 30 seconds, 2 minutes, and before CTA. Two-column: audio on left, visuals on right."},{"front":"Instagram Carousel Rules","back":"7 slides. Slide 1 is the hook. Each middle slide delivers one clear idea. Slide 7 is the call to action. Design notes per slide."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Scale</span>
   <h2 class="section-title">The Content Multiplication Engine</h2>
   <p class="section-text">When you combine content architecture (Lesson 2) with templates (Lesson 3) and multi-format output, you get exponential leverage. One core idea, structured as atoms, run through format-specific templates, produces a week's worth of content across all your channels. That's not a theory. That's a pipeline.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Multi-format output quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Multi-Format Output","questions":[{"q":"What is the difference between multi-format output and just sharing the same link everywhere?","options":["There is no real difference — the content is the same","Multi-format means genuinely reformatting content to be native to each platform — not copy-pasting or sharing links","Multi-format means creating entirely different topics for each platform","Multi-format is only useful for social media content"],"correct":1,"explanation":"Each platform has its own language, rules, and audience expectations. Genuine transformation means Twitter gets a punchy thread while LinkedIn gets a personal story angle — same idea, completely different execution."},{"q":"How does a voice document protect brand consistency in multi-format pipelines?","options":["It prevents AI from changing the word count","Injecting your voice doc into every format template ensures every platform version sounds like you regardless of format","It automatically posts content to all platforms","It eliminates the need for editing after generation"],"correct":1,"explanation":"The danger of multi-format output is losing your voice across platforms. Every transformation template references your voice doc as a constraint so each piece stays recognizably yours."},{"q":"What does the combination of content architecture, templates, and multi-format output produce?","options":["A basic content calendar","Exponential leverage — one core idea runs through format-specific templates to produce a full week of cross-channel content","A single high-quality blog post","An automated publishing system"],"correct":1,"explanation":"Architecture provides the structure, templates provide the patterns, and multi-format output multiplies each idea across channels. Together they produce far more than any one system alone."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

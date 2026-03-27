@@ -70,6 +70,18 @@ free: true
   <p>Listen to the output. Notice the pacing, the inflection, the breath sounds. This is where we start.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Five Pillars of AI Audio</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Audio Categories","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Text-to-Speech (TTS)","right":"Turn written words into natural-sounding voice"},{"left":"Voice Cloning","right":"Capture and reproduce a specific person&#39;s voice"},{"left":"Music Generation","right":"Compose and produce original music from text descriptions"},{"left":"Speech-to-Text (STT)","right":"Transcribe spoken audio into accurate written text"},{"left":"Audio Enhancement","right":"Noise removal, voice isolation, and mastering for broadcast quality"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 1 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"The Voice Revolution","questions":[{"q":"Which AI audio category is described as essentially solved in this lesson?","options":["Voice cloning","Music generation","Speech-to-text transcription","Real-time voice conversion"],"correct":2,"explanation":"Speech-to-text transcription is described as essentially solved — OpenAI Whisper achieved near-human accuracy across 99 languages and made transcription virtually free."},{"q":"What are the current limitations of AI audio tools?","options":["They cannot process any audio files","They still struggle with highly emotional delivery, comedic timing, and subtle breath patterns","They only work with English language audio","They require professional recording equipment"],"correct":1,"explanation":"AI audio can generate remarkably natural speech but still struggles with nuanced human qualities like emotional depth, comedic timing, and the subtle breath patterns that make a voice truly feel alive."},{"q":"What does the best AI audio work require according to this lesson?","options":["Only technical knowledge of the tools","No human involvement — full automation","Humans who understand both the tools and the craft of audio","Professional recording studio access"],"correct":2,"explanation":"The best results come from humans who understand both the tools and the craft. The goal is audio engineers who happen to have AI in their toolkit — not button-pushers who outsource all creative judgment."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <span></span>
   <a href="/academy/ai-voice-audio/text-to-speech-basics/" class="next">Next: Text-to-Speech Basics →</a>

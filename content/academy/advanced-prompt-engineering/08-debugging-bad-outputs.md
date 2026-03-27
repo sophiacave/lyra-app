@@ -62,6 +62,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Failure Modes — Match the Problem to Its Fix","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Too Vague","right":"Add specifics: name the audience, context, and show an example of good output"},{"left":"Wrong Format","right":"Be explicit about format and use the Output First technique to anchor structure"},{"left":"Hallucination","right":"Ask it to flag confidence levels and say \u2018if unsure, say so\u2019"},{"left":"Ignored Instructions","right":"Move critical rules to the top and emphasize with IMPORTANT: or NEVER:"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Technique</span>
   <h2 class="section-title">Ask the AI to Debug Itself</h2>
   <p class="section-text">This is a powerful meta-technique. When output is wrong, ask the AI to explain its reasoning.</p>
@@ -95,6 +99,10 @@ Round 4 (add format): "...each post should be under 280 characters with a hook a
 Watch how each round gets closer to what you actually want.</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Debugging Bad Outputs Quiz","questions":[{"q":"What is the most important rule when debugging a prompt?","options":["Rewrite the entire prompt from scratch","Change one thing at a time so you know what fixed it","Add more examples","Make the prompt shorter"],"correct":1,"explanation":"If you rewrite everything at once, you won\u2019t know which change fixed the problem — or what might have broken something else. One targeted change per iteration."},{"q":"What is the self-debug technique?","options":["Running the same prompt multiple times","Asking the AI to explain its interpretation of your instructions and where it made assumptions, then revising","Asking the AI to critique itself","Using a different AI model to check the output"],"correct":1,"explanation":"The self-debug prompt surfaces hidden misinterpretations — the AI might reveal it understood \u2018brief\u2019 to mean 50 words when you meant 200, or focused on the wrong part of a multi-part instruction."},{"q":"Which failure mode describes an AI that confidently states incorrect facts?","options":["Wrong format","Wrong tone","Hallucination","Ignored instructions"],"correct":2,"explanation":"Hallucination is when the AI states something confidently that is factually wrong. The fix is to ask for cited sources, confidence flags, or human verification for critical facts."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

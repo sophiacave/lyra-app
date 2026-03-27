@@ -42,6 +42,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Vendor Evaluation — Match Each Dimension to What It Assesses","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Capability Fit","right":"Does it actually solve your specific problem?"},{"left":"Integration Complexity","right":"How hard is it to connect to your existing systems?"},{"left":"Vendor Viability","right":"Will this company still exist in three years?"},{"left":"Exit Strategy","right":"How painful and expensive is it to leave this vendor?"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Red Flags</span>
   <h2 class="section-title">When to Walk Away</h2>
   <p class="section-text">Walk away if: accuracy claims lack methodology, pricing requires annual commitment before a pilot, the contract locks your data in proprietary formats, the vendor cannot name three enterprise customers you can call, or the sales team cannot explain how the AI works in plain language. These are not minor concerns — they are signals of a vendor that will create more problems than they solve.</p>
@@ -59,6 +63,10 @@ type: "lesson"
   <span class="section-label">The Like One Perspective</span>
   <h2 class="section-title">Your Vendor Is Your Partner</h2>
   <p class="section-text">The best vendor relationships are partnerships, not transactions. Find vendors who invest in your success, not just your contract. Who offer training, not just software. Who share roadmaps, not just release notes. Technology changes fast — you want partners who will evolve with you, not lock you into yesterday's solution.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Vendor Evaluation Quiz","questions":[{"q":"When should you choose to BUILD AI capabilities instead of buying them?","options":["When you want to save money","When AI is your core competitive advantage and you need full control","When external vendors are too expensive","When your IT team recommends it"],"correct":1,"explanation":"Build only when AI is your product and differentiation requires full control. For most orgs, buying or partnering for the first 2-3 use cases is faster and smarter — build institutional knowledge first."},{"q":"What is the most important thing a vendor should agree to before you commit?","options":["A multi-year contract","A proof of concept using your actual data on your actual problem","A price reduction","A reference from another customer in your industry"],"correct":1,"explanation":"Vendor demos use curated data on ideal scenarios. Any vendor unwilling to run a POC with your messy, real-world data is not confident in their product\u2019s actual performance."},{"q":"Which of these is a clear red flag when evaluating an AI vendor?","options":["They offer a free trial","They request annual commitment before you run a pilot","They have fewer than 100 enterprise customers","They use standard cloud infrastructure"],"correct":1,"explanation":"Requiring an annual commitment before you can run a proof of concept is a vendor that wants your money before proving value. This creates lock-in without evidence the product works for your needs."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

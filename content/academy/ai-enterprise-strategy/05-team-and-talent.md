@@ -42,6 +42,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI Team Roles — The Seven Capabilities","cards":[{"front":"AI/ML Engineer","back":"Builds and trains models. Core technical capability for any serious AI initiative."},{"front":"Data Engineer","back":"Builds data pipelines. Ensures data flows cleanly from sources to AI systems."},{"front":"Product Manager (AI)","back":"Translates business needs to technical requirements. The most commonly missing and most critical role — hire this first."},{"front":"Domain Expert","back":"Knows the problem deeply. Provides the business context that makes AI solutions actually work in your industry."},{"front":"MLOps Engineer","back":"Deploys, monitors, and maintains AI systems in production. The difference between a demo and a live product."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Organizational Models</span>
   <h2 class="section-title">Where Does the AI Team Sit?</h2>
   <p class="section-text"><strong>Centralized:</strong> One AI team serves the whole organization. Good for consistency and governance. Bad for responsiveness and business alignment. <strong>Embedded:</strong> AI practitioners sit within business units. Good for relevance. Bad for knowledge sharing and standards. <strong>Hub-and-spoke:</strong> A central team sets standards and builds platforms while embedded practitioners apply them in business units. This is where most mature organizations land.</p>
@@ -60,6 +64,10 @@ type: "lesson"
   <span class="section-label">The Like One Perspective</span>
   <h2 class="section-title">People Are the Strategy</h2>
   <p class="section-text">AI does not replace people. It amplifies them. The organizations that get this right treat AI as a tool that makes every employee more capable, not a replacement that makes employees nervous. Build your team with that philosophy and you will attract talent that your competitors cannot.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Team and Talent Quiz","questions":[{"q":"Which AI team role should you hire first and why?","options":["AI/ML Engineer — they build the models","Data Engineer — you need pipelines before models","Product Manager — they translate between business needs and technical capabilities","MLOps Engineer — you need deployment first"],"correct":2,"explanation":"The product manager stands between the business and the data scientists, translating fluently in both directions. Without this role, AI projects drift from business needs or become technically impressive but operationally useless."},{"q":"Why do existing employees often deliver more value than external AI hires in month one?","options":["They cost less","They already have deep knowledge of your business, customers, and data that no external hire can replicate quickly","They are more loyal","They are easier to manage"],"correct":1,"explanation":"A domain expert who learns prompt engineering delivers immediate value because they understand the problem deeply. A brilliant data scientist who spends months learning your industry may take much longer."},{"q":"When does a centralized AI team model typically transition to hub-and-spoke?","options":["After 1 year","After hiring 20 people","Around your third or fourth production AI system","When the budget doubles"],"correct":2,"explanation":"Start centralized to build capability and standards. Move to hub-and-spoke as you scale — typically when you have 3-4 production systems and business units need embedded AI capability."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

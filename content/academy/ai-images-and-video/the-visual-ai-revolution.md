@@ -73,6 +73,18 @@ free: true
   <p>Before moving to the next lesson, try this: open <a href="https://chatgpt.com" target="_blank">ChatGPT</a> (free account works) or <a href="https://www.bing.com/images/create" target="_blank">Bing Image Creator</a> (completely free). Type a simple prompt like <strong>"a friendly robot reading a book in a sunny garden"</strong> and hit generate. Watch what happens. That feeling of seeing your words become an image? That is what this whole course is about.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">How AI Image Generation Works</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Visual AI Revolution Concepts","cards":[{"front":"What is a diffusion model?","back":"An AI that starts with visual noise and gradually refines it into a coherent image guided by your text prompt — removing noise and adding detail until the final image emerges"},{"front":"What made AI image generation accessible in 2026?","back":"Three things: models got dramatically better, tools got easier to use, and cost dropped to nearly zero for basic usage"},{"front":"What does text-to-image generation mean?","back":"You type a description and an AI creates that image in seconds — no drawing skills, design degree, or expensive software required"},{"front":"What is AI video generation?","back":"You describe a scene or provide a still image and the tool brings it to life with motion, camera angles, and timing"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 1 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"The Visual AI Revolution","questions":[{"q":"What technical term describes how modern AI image generators work?","options":["Convolutional rendering","Diffusion models","Pixel interpolation","Neural painting"],"correct":1,"explanation":"Diffusion models start with visual noise — like TV static — and gradually refine it into a coherent image step by step, guided by your text prompt."},{"q":"What does AI image generation require from you as the creator?","options":["Coding skills","Design experience","The ability to describe what you see in your mind","A professional camera"],"correct":2,"explanation":"If you can describe what you see in your mind, you have everything you need. The tools do the heavy lifting — your job is to bring the vision."},{"q":"Which best describes what changed between 2022 and 2026 for AI image tools?","options":["The tools became more expensive and harder to use","Models improved dramatically, tools got easier, and cost dropped to near zero","Only enterprise users can access them","Quality decreased as more people used the tools"],"correct":1,"explanation":"Three simultaneous shifts made AI image generation mainstream: dramatically better output quality, much simpler interfaces, and costs that dropped to nearly zero for basic usage."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <span></span>
   <a href="/academy/ai-images-and-video/understanding-ai-image-tools">Next: Understanding AI Image Tools &rarr;</a>

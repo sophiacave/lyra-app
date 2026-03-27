@@ -128,6 +128,20 @@ free: false
   <p class="section-text" style="margin-top:1rem">Ask AI for "20 landing page headlines in 5 different styles: benefit, question, social proof, direct offer, and pain-agitate." Then pick your favorite from each style and test them.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each landing page section to its purpose.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Landing Page Structure","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Hero: Headline + Sub + CTA","right":"Clear value proposition in 10 words or less — what you get and why it matters"},{"left":"Problem Section","right":"Show you understand their frustration — make them feel seen"},{"left":"Social Proof","right":"Testimonials, logos, numbers — real results from real people providing evidence it works"},{"left":"Objection Handling","right":"FAQ section, guarantee, risk-reversal — address the reasons they might not buy"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Landing Pages and Conversion","questions":[{"q":"How long should a landing page hero headline be?","options":["Under 5 words","Under 10 words","Under 20 words","Under 50 words"],"correct":1,"explanation":"The lesson specifies the hero headline should be under 10 words. The value proposition must be immediately clear — what you get and why it matters, distilled to its essence. Shorter is almost always more powerful."},{"q":"What reading level should landing page copy be written at?","options":["College level for credibility","8th-grade reading level","Professional level with industry terminology","Elementary level for broad accessibility"],"correct":1,"explanation":"The lesson specifies 8th-grade reading level. Clear, accessible copy converts better than impressive-sounding jargon. Complexity creates friction; simplicity creates conversions."},{"q":"What is wrong with CTA buttons that say Submit or Learn More?","options":["They are too short","They are passive — good CTAs use action verbs that describe what happens next","They are overused across the industry","They do not include urgency language"],"correct":1,"explanation":"The lesson\'s rule: CTA buttons should use action verbs, not Submit or Learn More. Examples of strong CTAs describe the specific outcome: Start Free Trial, Get Instant Access, See It In Action. The button text should make the benefit of clicking obvious."},{"q":"What is the purpose of a final CTA section at the bottom of a landing page?","options":["To add more product information for readers who scrolled past everything","To repeat the offer, include urgency if applicable, and give one last chance to convert","To show social proof that was not included above","To redirect visitors to a different product"],"correct":1,"explanation":"The final CTA section gives one last chance to convert readers who made it to the bottom. It repeats the offer, reinforces urgency if genuine, and makes the button impossible to miss. Not everyone converts at the top — the final CTA catches those who needed more convincing."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/ai-marketing-assessment" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Final Assessment →</a>

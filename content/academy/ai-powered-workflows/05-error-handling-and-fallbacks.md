@@ -68,6 +68,18 @@ free: false
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">The Retry-Fallback-Alert Pattern</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Error Handling Pattern","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Retry","right":"Wait 5 seconds and try again — most transient errors resolve themselves within 3 attempts"},{"left":"Fallback","right":"Retries exhausted — switch to Plan B or apply a default and flag for human review"},{"left":"Alert","right":"Fallback activated — notify someone with what failed, when, what the fallback did, what needs attention"},{"left":"AI confidence threshold","right":"Above 80% act automatically, 50-80% act but flag, below 50% route to human"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 5 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Error Handling and Fallbacks","questions":[{"q":"What is the correct mental model for treating errors in production workflows?","options":["Errors mean the workflow is broken and needs to be rebuilt","Errors are expected operating conditions — the difference is whether your workflow recovers gracefully","Errors should always stop the entire pipeline","Errors only happen during initial setup and testing"],  "correct":1,"explanation":"APIs go down. Data arrives malformed. Rate limits get hit. These are normal operating conditions, not signs of failure. A workflow without error handling is a ticking time bomb. A workflow with error handling is a resilient system."},{"q":"What makes AI uncertainty in classification different from traditional code errors?","options":["AI never produces uncertain outputs","Traditional code has three states: works, error, or uncertain","AI has a third state — uncertainty — requiring confidence thresholds to decide whether to act automatically or route to a human","AI uncertainty is always a sign of bad training data"],  "correct":2,"explanation":"Traditional code either works or throws an error. AI adds a third state: uncertain. An 80%+ confident classification acts automatically. A 40% confident one should route to a human. Confidence thresholds turn AI uncertainty into a manageable feature."},{"q":"What does graceful degradation mean in workflow design?","options":["The workflow always fails completely when one step fails","Workflows should shut down rather than produce incomplete results","A workflow that does the best it can with what is available rather than stopping completely when one step fails","Gradual performance improvement over time"],"correct":2,"explanation":"If step 3 of a 6-step pipeline fails, can steps 4-6 still run with partial data? Often yes. Designing steps to be as independent as possible means a single failure does not block the entire pipeline."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-powered-workflows/04-data-flow-design/" class="prev">← Previous: Data Flow Design</a>
   <a href="/academy/ai-powered-workflows/06-human-in-the-loop/" class="next">Next: Human-in-the-Loop →</a>

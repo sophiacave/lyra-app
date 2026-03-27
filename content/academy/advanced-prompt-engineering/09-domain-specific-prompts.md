@@ -84,6 +84,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Domain-Specific Prompt Patterns","cards":[{"front":"Code Generation Prompt — what must you specify?","back":"Stack, requirements (e.g. RFC compliance), return types, edge cases, no external libraries, documentation style, and test framework."},{"front":"Code Review Prompt — what should you ask AI to check?","back":"Security vulnerabilities, performance issues, error handling gaps, readability — with severity, problematic line, and a fix for each."},{"front":"Blog Post Prompt — what context is essential?","back":"Topic, audience, their baseline knowledge, unique angle, tone, length, and a practical takeaway. Without these, output is generic."},{"front":"Data Analysis Prompt — how do you structure it?","back":"Ask for: top trends with quantified change + likely cause + confidence rating, plus anomalies, plus 2 recommended actions."},{"front":"Research Synthesis Prompt — what 4 things to extract?","back":"Main argument, key evidence, methodology, and limitations — then synthesize: agreements, contradictions, unanswered questions."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Meta-Pattern</span>
   <h2 class="section-title">Adapting to Any Domain</h2>
   <p class="section-text">Every domain has the same underlying needs. When entering a new domain, ask yourself:</p>
@@ -107,6 +111,10 @@ Output format: [domain conventions]
 Avoid: [common mistakes in this domain]</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Domain-Specific Prompts Quiz","questions":[{"q":"When writing a code generation prompt, what should you specify beyond the task itself?","options":["Only the programming language","Stack, return types, edge cases, library restrictions, documentation style, and test framework","Just a description of what the function should do","The AI model to use"],"correct":1,"explanation":"Coding prompts need precision across multiple dimensions — the AI must understand your stack, patterns, type signatures, and constraints or you\u2019ll spend more time fixing than coding."},{"q":"What four questions help you adapt to ANY domain?","options":["Who, what, when, where","What does good look like, what are the common mistakes, what terminology matters, what is the expected output format","Role, context, task, format","Audience, tone, length, examples"],"correct":1,"explanation":"These four domain-adaptation questions ensure your prompt activates the right knowledge, avoids common pitfalls, uses the correct terminology, and matches domain conventions."},{"q":"For a writing prompt, what is the most critical missing element that makes output sound generic?","options":["Not specifying word count","Not defining audience, baseline knowledge, angle, and tone","Not asking for bullet points","Not specifying the title"],"correct":1,"explanation":"Without knowing the audience, what they already know, the unique angle, and the tone — the AI writes for nobody in particular. Voice and audience clarity are the keys to non-generic writing."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

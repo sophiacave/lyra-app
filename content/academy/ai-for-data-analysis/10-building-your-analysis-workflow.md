@@ -87,6 +87,18 @@ free: false
   <p style="color: var(--dim);">You've learned to think like an analyst, communicate like a storyteller, and use AI as your engine. That's a powerful combination. Now go find insights that matter.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Course Review</span>
+  <h2 class="section-title">The Six-Stage Pipeline</h2>
+  <div data-learn="SortStack" data-props='{"title":"The Analysis Pipeline — In Order","instruction":"Arrange the six stages in the correct sequence","items":["Frame the question using SCOPE","Ingest the data — describe columns and context","Clean — fix duplicates, formats, missing values","Analyze — patterns, sentiment, financials","Visualize — charts that tell the story","Report — three-layer structure for your audience"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Final Check</span>
+  <h2 class="section-title">Course Completion Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Building Your Analysis Workflow","questions":[{"q":"What separates the fastest analysts from the rest?","options":["They have the most advanced coding skills","They work longer hours","They have the best reusable prompt templates","They use the most expensive tools"],"correct":2,"explanation":"The fastest analysts have great templates. A well-crafted prompt library turns hours into minutes for every recurring analysis task."},{"q":"Which best describes the purpose of a personal data analysis system?","options":["It replaces the need for any new analysis","It creates a compounding advantage — each workflow and template makes the next analysis faster","It only works for business data","Systems are only useful for teams, not individuals"],"correct":1,"explanation":"Standardized column names, saved prompts, scheduled analyses, and documented findings create a compounding advantage that grows more valuable over time."},{"q":"What is the recommended next step after mastering AI-powered data analysis?","options":["Stop — you have everything you need","Learn basic SQL logic to ask even better questions, and practice daily with real data","Switch entirely to Python and stop using AI","Start over with a different analytical approach"],"correct":1,"explanation":"Understanding SQL logic helps you ask better questions even if AI writes the code. And daily practice with real data sharpens the intuition that separates good analysis from great analysis."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/09-reporting-and-dashboards/">← Previous: Reporting and Dashboards</a>
   <a href="/academy/ai-for-data-analysis/">Back to Course Overview</a>

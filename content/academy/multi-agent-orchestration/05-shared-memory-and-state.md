@@ -91,9 +91,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Shared memory models.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Memory Model to Its Tradeoff","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Context Passing","right":"Simple to implement but context windows fill up after 5-6 agents"},{"left":"Shared Memory Store","right":"Scales to many agents but requires infrastructure and careful schema design"},{"left":"Vector Store","right":"Handles massive context semantically but complex to set up and results can be unpredictable"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Memory Makes the Team</h2>
   <p class="section-text">A multi-agent system without shared memory is just multiple single agents running in proximity. Shared state is what turns them into a team. Start with context passing for simple systems, graduate to a shared store as complexity grows, and add vector search when your context volume outgrows structured queries. The architecture of your memory layer determines the ceiling of your system's intelligence.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Shared memory and state quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Shared Memory and State","questions":[{"q":"What is the core problem that shared memory solves in multi-agent systems?","options":["It makes agents run faster","It prevents each agent from operating in isolation — agents can access context built by other agents without requiring every handoff to carry the full history","It reduces the number of API calls needed","It prevents agents from making mistakes"],"correct":1,"explanation":"Without shared memory, each agent is a goldfish. Agent B cannot use what Agent A learned. Shared state is what transforms a group of isolated agents into a coordinated team."},{"q":"What is a race condition in shared state and how does it cause data loss?","options":["When an agent takes too long to respond","When Agent A reads state, Agent B updates it, and Agent A writes based on stale data — silently overwriting the second agent update","When two agents try to read the same data simultaneously","When the state store becomes too large to query quickly"],"correct":1,"explanation":"Race conditions are silent and destructive. One agent writes based on data that another agent already changed, and the second agent update is lost without any error message."},{"q":"What strategy helps prevent state corruption when multiple agents write to shared memory?","options":["Allowing only one agent to write at a time forever","Optimistic locking with version numbers, agent-specific namespaces, append-only logs, or a designated state manager agent","Storing all state in each agent context window","Using slower API calls to prevent simultaneous writes"],"correct":1,"explanation":"Multiple prevention strategies exist: version numbers catch conflicts, namespaces prevent collisions, append-only logs make corruption impossible, and a state manager serializes all writes."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -54,6 +54,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Scaling Layers — From Cheapest to Most Expensive","cards":[{"front":"Layer 0: CDN + Edge Cache","back":"Static content served from the edge. Zero AI cost. Absorbs all cacheable traffic before it touches your infrastructure."},{"front":"Layer 1: Semantic Cache","back":"Vector similarity search against cached query-answer pairs. Catches repeated or similar questions without any LLM call."},{"front":"Layer 2: RAG from Database","back":"Answer from your knowledge base. A vector search costs fractions of a cent — far cheaper than calling an LLM."},{"front":"Layer 3: Load-Balanced AI Providers","back":"Distribute novel queries across multiple providers. Round-robin routing doubles your effective rate limit."},{"front":"Layer 4: Request Queue","back":"For non-urgent tasks, accept requests immediately and process at your own pace — protecting rate limits and user experience."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Layer Three</span>
   <h2 class="section-title">Queue-Based Processing</h2>
   <p class="section-text">Not every AI request needs a synchronous response. For operations where users can wait a few seconds (document analysis, content generation, batch processing), a queue-based architecture handles burst traffic gracefully.</p>
@@ -75,6 +79,10 @@ type: "lesson"
 <div class="try-it-box">
   <h3>Try it yourself</h3>
   <div class="prompt-box"><code>Implement a simple load balancer for AI API calls. Create a function that accepts a prompt and routes it to one of two providers based on current rate limit usage. Track requests per minute for each provider and switch to the other when one approaches its limit. Add a circuit breaker that stops routing to a provider after 3 consecutive errors.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Scaling Patterns Quiz","questions":[{"q":"Why does adding more app servers NOT solve the AI scaling problem?","options":["App servers are too expensive","The bottleneck is the external AI provider\u2019s rate limits — you can\u2019t add more OpenAI by adding more of your own servers","App servers can\u2019t make AI API calls","Adding servers creates more latency"],"correct":1,"explanation":"Traditional scaling adds capacity on your side. With AI apps, the constraint is the external provider\u2019s rate and token limits. Your scaling strategy must work around provider constraints, not just infrastructure ones."},{"q":"How does round-robin routing across two AI providers help with scaling?","options":["It makes responses faster","If each provider allows 100 RPM, alternating between them effectively doubles your throughput to 200 RPM","It reduces cost","It improves response quality"],"correct":1,"explanation":"Multi-provider load balancing distributes requests across providers, multiplying your effective rate limit by the number of providers in your pool. It also provides automatic failover if one provider goes down."},{"q":"What is the backpressure pattern in queue-based AI architectures?","options":["Sending requests faster when the queue is long","Stopping acceptance of new requests when the queue is too long — showing a clear message rather than timing out after 30 seconds of silence","Deleting old requests from the queue","Routing to a faster provider when queues build up"],"correct":1,"explanation":"Backpressure is about making honest promises. A clear \u2018system busy\u2019 message is far better UX than silently queuing a request that will timeout 30 seconds later with no feedback."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

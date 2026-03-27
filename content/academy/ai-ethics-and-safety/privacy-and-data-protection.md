@@ -116,6 +116,20 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match the data type to the reason it should not be shared.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"What NOT to Paste into AI","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Passwords and API keys","right":"Can expose accounts and systems to unauthorized access"},{"left":"Other people\'s personal data","right":"Violates their privacy and may breach GDPR or CCPA"},{"left":"Confidential business info","right":"Trade secrets and unreleased financials belong to the company"},{"left":"Regulated data (HIPAA, FERPA)","right":"Sending to third-party AI tools may constitute a compliance violation"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Privacy and Data Protection","questions":[{"q":"What is the key difference between free/consumer AI plans and business/API plans?","options":["Business plans are always faster","Free plans may use your data for training; business plans typically do not","Business plans have better AI models","Free plans have stricter privacy controls"],"correct":1,"explanation":"Free and consumer plans may store, review, or use your prompts for training. Business and API plans typically offer stronger guarantees: no training on your data, stricter access controls, and compliance certifications."},{"q":"You need AI to help analyze a sensitive contract. What is the safest approach?","options":["Paste the full contract into a free AI chat","Describe the key terms without pasting the actual document","Use a different AI tool for sensitive work","Ask AI to anonymize the contract for you first"],"correct":1,"explanation":"Describing rather than pasting is a core safe practice. Instead of sharing the actual contract, explain the situation in general terms. This keeps you productive without exposing confidential content."},{"q":"Which of these would be safe to include in an AI prompt without anonymizing?","options":["A customer\'s full name and email","The general category of a problem you are solving","Specific employee performance data","An unreleased product roadmap"],"correct":1,"explanation":"Describing the general category of a problem — without any identifying details — is safe. Names, emails, employee data, and proprietary information should all be anonymized or excluded."},{"q":"What is the \"rule of thumb\" for free or consumer AI plans?","options":["They are safe for all professional use","Treat every prompt as if it could be seen by someone else","Only avoid sharing financial data","Always opt out of training data usage in settings"],"correct":1,"explanation":"The lesson\'s rule of thumb: if you are using a free or consumer plan, treat every prompt as if it could be seen by someone else. This mindset naturally keeps you cautious about what you share."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-ethics-and-safety/misinformation-and-hallucinations" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Misinformation and Hallucinations →</a>

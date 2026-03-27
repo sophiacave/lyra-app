@@ -83,9 +83,22 @@ Content to review: [PASTE YOUR CONTENT]"</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Three quality gate layers.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Quality Gate to What It Checks","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Layer 1: Technical Quality","right":"Grammar, readability, sentence variety, passive voice percentage"},{"left":"Layer 2: Brand Consistency","right":"Voice match, banned words absent, required tone and elements present"},{"left":"Layer 3: Strategic Alignment","right":"Right audience segment, correct pillar, clear next action for reader"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Standard</span>
   <h2 class="section-title">Quality Is the Pipeline's Reputation</h2>
   <p class="section-text">Your audience doesn't know you have a pipeline. They just know whether your content is good. Every piece that goes out is a promise about the next piece. Quality control systems are how you keep that promise at scale, without burning out trying to manually review everything yourself.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Quality control systems quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Quality Control Systems","questions":[{"q":"Why is a pipeline that produces content quickly but inconsistently worse than no pipeline?","options":["Fast pipelines are always low quality","It scales your mistakes — publishing off-brand and mediocre work at high volume makes problems more visible","Speed is never a problem in content pipelines","Inconsistent pipelines cost more to run"],"correct":1,"explanation":"Volume amplifies quality in both directions. A fast pipeline for excellent content is a multiplier. A fast pipeline for mediocre content is a megaphone for mediocrity."},{"q":"What should happen when content fails a quality gate?","options":["Publish it anyway with a disclaimer","Archive it and start a new piece","Return it to the relevant pipeline step with specific feedback, rewrite, recheck","Flag it for human review and pause the pipeline"],"correct":2,"explanation":"Failing content goes back to the specific pipeline step that produced the problem, not to the beginning. The AI rewrites based on feedback, then the piece runs through the gate again."},{"q":"How do repeated quality gate failures improve your pipeline over time?","options":["They do not — failures are just wasted effort","Each failure reveals a template problem. Fix the template and the whole pipeline improves, not just one piece.","They trigger automatic model upgrades","They reduce your AI API usage"],"correct":1,"explanation":"If the same issue keeps appearing at a gate, the problem is in the template, not the content. Fix the template once and your quality floor rises permanently for all future content."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

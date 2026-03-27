@@ -82,9 +82,22 @@ Editor Agent: "You review drafts for clarity, accuracy, and brand voice. Output 
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The six agent archetypes.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Agent Archetype to Its Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Researcher","right":"Gathers, validates, and synthesizes information — never makes decisions"},{"left":"Analyst","right":"Extracts patterns and insights from raw data — thinks in frameworks"},{"left":"Creator","right":"Produces content: writing, code, designs — focuses on craft"},{"left":"Critic","right":"Reviews work from other agents — finds flaws and enforces standards"},{"left":"Executor","right":"Takes real actions: runs code, calls APIs, manages files"},{"left":"Orchestrator","right":"Coordinates the team — routes tasks, manages handoffs, tracks progress"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Clarity Creates Quality</h2>
   <p class="section-text">The time you invest in defining agent roles pays off exponentially. Clear roles mean predictable outputs, easier debugging, and systems that scale. When something goes wrong, you know exactly which agent to examine. When you need to improve quality, you tune the specific agent without disrupting the whole team.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Agent roles quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Agent Roles and Specialization","questions":[{"q":"What four things should a good agent definition include?","options":["Name, model, cost, and speed","Purpose, inputs, outputs, and constraints","Role, tools, memory, and personality","System prompt, temperature, max tokens, and context window"],"correct":1,"explanation":"A well-defined agent has a purpose (what it exists to do), inputs (what it receives), outputs (what it produces), and constraints (what it must never do). This is the agent contract."},{"q":"What is role bleed and why is it dangerous?","options":["When an agent runs out of context window","When agent roles overlap — the research agent starts writing conclusions, the writer starts fact-checking — producing redundant and conflicting outputs","When two agents send messages to each other simultaneously","When an agent is given too many tools"],"correct":1,"explanation":"Prevent role bleed with explicit constraints in each agent system prompt. State what the agent does AND what it explicitly does not do. Clear boundaries produce clean handoffs."},{"q":"Why does clear role definition make debugging easier?","options":["Agents with clear roles use less memory","When something goes wrong, you immediately know which agent to examine — no ambiguity about where the failure occurred","Clear roles prevent agents from making mistakes","Clear roles reduce the number of API calls"],"correct":1,"explanation":"When roles are clear and distinct, a failure in output points directly to its agent source. You tune that one agent without disrupting the rest of the team."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

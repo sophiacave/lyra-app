@@ -60,6 +60,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Capstone checklist.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Capstone Check to What It Verifies","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Memory persists","right":"Start a new session — the AI knows what happened last time without being told"},{"left":"Values hold","right":"Give the AI a task that conflicts with a directive — it pushes back or finds an aligned alternative"},{"left":"Autonomy works","right":"The AI completes a multi-step task without asking for permission at every step"},{"left":"Twin feels like you","right":"Read its output — does it sound like your voice and reflect your priorities?"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Phase 4</span>
   <h2 class="section-title">Ship It, Then Evolve</h2>
   <p class="section-text">Your first convergence system won't be perfect. That's fine. The beauty of convergence is that the system improves with use. Every interaction refines the brain. Every correction sharpens the alignment. Every session teaches the twin more about who you are.</p>
@@ -81,6 +87,13 @@ One person. One AI. Building anything.
 
 Welcome to convergence.
 Welcome to Like One.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Your convergence project quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Your Convergence Project","questions":[{"q":"What should the convergence system brain schema include at minimum?","options":["Just your name and email preferences","A key-value table with key, value, and updated_at columns — populated with identity, values, operational rules, and current project state","A full relational database with normalized tables","Only the AI directives and system prompts"],"correct":1,"explanation":"Start simple: key, value, updated_at. Populate it with who you are, what rules the AI must follow, what your current work is, and what comes next. That is the brain your AI boots from every session."},{"q":"Why is the three-strike rule important to implement in your convergence loop?","options":["It limits API costs","It trains both you and the AI to trust the system — the AI earns autonomy by demonstrating it can resolve issues without constant supervision","It prevents the AI from making mistakes","It enforces quality standards on outputs"],"correct":1,"explanation":"Before asking the human: check the brain, use judgment, try and course-correct. This discipline, practiced consistently, builds the trust that allows the AI to operate at higher autonomy levels over time."},{"q":"Why should you start your convergence system with one domain rather than building everything at once?","options":["One domain is cheaper to build","Get one domain working reliably first, then expand — convergence grows from a seed into an ecosystem, not from a blueprint into production","One domain requires fewer API integrations","Starting with one domain is a requirement of the technology"],"correct":1,"explanation":"Start with work projects or email management. Get that working reliably. Then add finances, health reminders, communication management. The system proves itself in one domain before earning responsibility for more."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

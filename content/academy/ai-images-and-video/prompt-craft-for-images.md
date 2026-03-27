@@ -89,6 +89,18 @@ free: false
   <p>Generate both versions and compare them side by side. The difference will show you exactly why prompt craft matters.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Lighting Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Lighting Keywords for Prompts","cards":[{"front":"Golden hour","back":"Warm, soft natural light just after sunrise or before sunset — creates a flattering, romantic atmosphere"},{"front":"Rembrandt lighting","back":"Studio lighting where one side of the face is lit and the other is in shadow, creating dramatic depth"},{"front":"Volumetric light","back":"Light that interacts with particles in the air — visible rays, god rays, shafts of light through fog"},{"front":"Chiaroscuro","back":"Strong contrast between light and dark, inspired by Renaissance painting — dramatic and moody"},{"front":"Blue hour","back":"The soft, cool light just before sunrise or after sunset — gives images a serene, twilight quality"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 4 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Prompt Craft for Images","questions":[{"q":"What is the complete prompt framework covered in this lesson?","options":["Subject, Style, Quality","Subject, Setting, Composition, Lighting, Style, Mood, Quality modifiers","Size, Color, Background, Format","Genre, Artist, Year, Medium"],"correct":1,"explanation":"The full framework is Subject + Setting/Context + Composition + Lighting + Style/Medium + Mood/Color + Quality modifiers. You don&#39;t need every element every time, but knowing them all gives you a lever to pull when something is not quite right."},{"q":"What does negative prompting accomplish?","options":["It deletes previous images","It specifies what should NOT appear in the image — removing unwanted elements","It reduces image file size","It makes the image darker"],"correct":1,"explanation":"Negative prompts tell the AI what to avoid — blurry, watermark, extra fingers, cartoonish styling. This steers the output away from common generation artifacts."},{"q":"Which lighting term describes light that has beams visible through fog or particles?","options":["Rembrandt lighting","Blue hour","Volumetric light or god rays","Chiaroscuro"],"correct":2,"explanation":"Volumetric light refers to visible light rays that interact with atmospheric particles — fog, dust, smoke. Adding this term to prompts creates dramatic, cinematic lighting effects."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/your-first-ai-image">&larr; Previous: Your First AI Image</a>
   <a href="/academy/ai-images-and-video/editing-and-refining">Next: Editing and Refining &rarr;</a>

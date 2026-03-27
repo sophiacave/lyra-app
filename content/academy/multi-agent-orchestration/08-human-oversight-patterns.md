@@ -99,9 +99,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Oversight patterns by risk level.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Oversight Pattern to Its Risk Level","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Human-in-the-Loop","right":"High-stakes actions: financial transactions, public communications, data deletion"},{"left":"Human-on-the-Loop","right":"Medium-stakes: real-time monitoring with ability to intervene"},{"left":"Exception-Based","right":"Mature systems: auto-run within parameters, pause only for edge cases"},{"left":"Post-Hoc Review","right":"Low-stakes, high-volume: draft generation and data labeling sampled periodically"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Autonomy Is Earned, Not Granted</h2>
   <p class="section-text">Start with more oversight than you think you need. As your system proves reliable, gradually move the dial toward autonomy. The systems that last are the ones that earn trust through demonstrated reliability — not the ones that were given freedom they hadn't proven they could handle.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Human oversight patterns quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Human Oversight Patterns","questions":[{"q":"Why is autonomy a dial rather than a switch?","options":["Because AI autonomy is still experimental","Because different tasks within the same system warrant different levels of oversight based on risk, not a single blanket policy","Because humans always need to be present during AI operations","Because autonomy increases automatically as AI improves"],"correct":1,"explanation":"Sending a notification and transferring money are both agent actions — but they warrant completely different oversight. The dial metaphor captures the spectrum of oversight appropriate to each action."},{"q":"What is the core advantage of exception-based oversight over human-in-the-loop?","options":["It is cheaper to implement","Normal operations flow at full speed — humans only engage when something falls outside defined parameters","It requires less logging","It eliminates the need for audit trails"],"correct":1,"explanation":"Exception-based oversight captures most of the efficiency benefit of full autonomy while preserving human judgment for exactly the situations that need it — edge cases and anomalies."},{"q":"What must every agent action log include to create a trustworthy audit trail?","options":["Just the output text","Agent ID, action taken, input data, output, confidence score, timestamp, and whether a human was involved","Only errors and failures","The full conversation context"],"correct":1,"explanation":"A complete audit trail — who acted, what they decided, what data they used, what happened, and whether a human was involved — is not optional. It is the foundation of trust in autonomous systems."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

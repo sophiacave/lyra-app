@@ -75,10 +75,23 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Content architecture building blocks.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Content Architecture Concepts","cards":[{"front":"Pillars","back":"Your 3-5 core themes. The big ideas your brand owns. Every piece of content traces back to a pillar."},{"front":"Clusters","back":"Subtopics within a pillar — groups of related content that reinforce each other and build topical authority."},{"front":"Atoms","back":"The smallest reusable content units: a statistic, a quote, a framework, a story. One atom can appear in dozens of pieces."},{"front":"The Database Mindset","back":"Treating content like structured data with metadata — pillar, cluster, format, audience, funnel stage — so AI can work with it systematically."},{"front":"Gap Analysis","back":"Using your architecture to identify which topics and formats you have covered and which are missing. AI is exceptional at this with structure to work within."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Design Principle</span>
   <h2 class="section-title">Reuse Is the Whole Point</h2>
   <p class="section-text">The best content architectures are designed for maximum reuse with minimum effort. Every atom should live in at least two pieces. Every cluster should feed at least three formats. Every pillar should generate content for every channel you publish on.</p>
   <p class="section-text">This isn't about being lazy. It's about being strategic. Your audience doesn't see everything you publish. Repeating your best ideas in different formats across different channels is how you actually reach people. Architecture makes that systematic instead of accidental.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Content architecture quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Content Architecture","questions":[{"q":"What is the relationship between pillars, clusters, and atoms?","options":["They are three different names for the same thing","Pillars contain clusters, clusters contain atoms — a hierarchy from broad theme to smallest reusable unit","Atoms form clusters which group into pillars — built from smallest to largest","They are three independent content planning systems"],"correct":1,"explanation":"Pillars are your big themes. Clusters are related subtopics within each pillar. Atoms are the smallest reusable units — statistics, quotes, frameworks — that appear across multiple clusters."},{"q":"Why should you design content for reuse from day one?","options":["Your audience will never notice repeated content","Designing for reuse is how you achieve leverage — one research session generating material for dozens of pieces","Reused content always ranks higher in search","It saves money on AI API costs"],"correct":1,"explanation":"The best architectures maximize reuse with minimum effort. Your audience does not see everything — repeating best ideas in different formats across channels is how you actually reach people."},{"q":"What does treating content like structured data enable?","options":["Faster publishing schedules","AI can work with it systematically — doing gap analysis, suggesting content, and optimizing distribution","Automatic content generation without human input","Lower hosting costs"],"correct":1,"explanation":"When content has metadata — pillar, cluster, format, audience, funnel stage — AI can perform meaningful analysis. A messy folder of docs gives AI nothing to work with."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

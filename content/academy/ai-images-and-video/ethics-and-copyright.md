@@ -78,6 +78,18 @@ free: false
   <p>Go to the terms of service page for the AI image tool you use most. Find the section on ownership and commercial use. Read it carefully and save the key points somewhere you can reference them. This takes five minutes and gives you confidence that you are using the tool within its rules. If you use multiple tools, do this for each one.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Commercial Rights by Tool</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Commercial Use Rights","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"DALL-E / ChatGPT","right":"OpenAI grants commercial use rights on both free and paid tiers"},{"left":"Midjourney paid","right":"Subscribers own generations and can use commercially"},{"left":"Stable Diffusion","right":"Open source model is free commercially — check specific fine-tuned model licenses"},{"left":"Adobe Firefly","right":"Designed for commercial safety with IP indemnity for enterprise customers"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 9 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Ethics and Copyright","questions":[{"q":"According to current US copyright law, are purely AI-generated images copyrightable?","options":["Yes, the tool owner holds the copyright","Yes, the user always owns the copyright","Generally not — but adding substantial human creative input strengthens the copyright claim","Copyright law does not apply to AI images"],"correct":2,"explanation":"The US Copyright Office has indicated that purely AI-generated images generally are not copyrightable. However, if you substantially modify, arrange, or creatively direct the output, your human contribution may be protectable."},{"q":"What is the most important ethical rule for voice and likeness in AI-generated images?","options":["It is always fine to generate images of celebrities for educational purposes","Never generate images of real people without their explicit consent","AI images of public figures are always legal","Historical figures can be depicted freely in any context"],"correct":1,"explanation":"Generating realistic images of real people without consent is harmful and in many jurisdictions illegal. Never generate images of real people without their permission or create misleading or deceptive content."},{"q":"What is the recommended best practice for transparency about AI-generated visuals?","options":["Never disclose AI involvement to avoid bias in how work is perceived","Only disclose if directly asked","Be honest about AI use when asked, and many creators add Created with AI to posts","Disclosure is only required for commercial work"],"correct":2,"explanation":"Transparency builds trust. Many creators add Created with AI to social posts or portfolio pieces. Being honest about your process while adding your own creativity makes the work genuinely yours."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/practical-use-cases">&larr; Previous: Practical Use Cases</a>
   <a href="/academy/ai-images-and-video/building-your-visual-workflow">Next: Building Your Visual Workflow &rarr;</a>

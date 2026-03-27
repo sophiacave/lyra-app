@@ -49,6 +49,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Reference Architecture — Match Each Layer to Its Technology","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Frontend","right":"Next.js on Vercel — auto-deploys from GitHub with streaming responses"},{"left":"Backend / API","right":"Supabase edge functions — serverless, auto-scaling, close to the database"},{"left":"Database","right":"PostgreSQL on Supabase with pgvector — data, vectors, logs, and cache in one"},{"left":"AI Layer","right":"Tiered providers: free embeddings, mid-tier for simple tasks, flagship for complex reasoning"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Pitfalls</span>
   <h2 class="section-title">Mistakes Everyone Makes</h2>
   <p class="section-text"><strong>Over-engineering on day one.</strong> You don't need Kubernetes, multi-region deployment, or a microservices architecture to serve your first 1,000 users. Start simple. Add complexity when simple breaks.</p>
@@ -88,6 +92,10 @@ type: "lesson"
   <h2 class="section-title">You Built Real Infrastructure</h2>
   <p class="section-text">Every lesson in this course came from real production experience — real outages, real cost surprises, real security incidents. The infrastructure you've learned to build isn't theoretical. It's the same stack running Like One right now.</p>
   <p class="section-text">Go build something that matters. The infrastructure will hold.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"AI Infrastructure Stack Quiz","questions":[{"q":"What is the correct build order for a production AI infrastructure?","options":["AI integration first, then database, then frontend","Foundation (Vercel + Supabase) → AI integration → vector search → hardening (rate limiting, caching, alerts)","Security first, then everything else","All layers simultaneously"],"correct":1,"explanation":"This order minimizes rework: first prove CI/CD works with a deployed app, then add AI calls, then add vector search for RAG, then harden with production-grade rate limiting, caching, validation, and monitoring."},{"q":"When should you add Kubernetes and multi-region deployment to your AI infrastructure?","options":["From day one for scalability","After you hit 100 users","Never — Vercel handles it","Only when simple infrastructure breaks under real load — not before"],"correct":3,"explanation":"Over-engineering on day one is a primary failure mode. Vercel and Supabase handle 90% of what you need at 1,000 users. Add complexity only when and because the simple thing breaks."},{"q":"Why is single AI provider dependency an architectural risk?","options":["It costs more","If your entire app breaks when one provider goes down, your architecture is fragile — even a cached response fallback is better than an error page","Providers charge more for single-provider usage","It limits your model options"],"correct":1,"explanation":"Every major AI provider has outages. Building automatic failover — whether to another provider or to cached responses — is the difference between a 5-minute user disruption and a full service outage."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

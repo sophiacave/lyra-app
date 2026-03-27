@@ -127,6 +127,20 @@ Don't use all caps. Don't use excessive punctuation.</pre>
   <p class="section-text" style="margin-top:1rem">Add these to your prompts: "Use social proof and specificity. Include a real number. Frame the benefit as avoiding a loss."</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Review the 5 psychological triggers for high-converting ads.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"5 Ad Psychology Triggers","cards":[{"front":"Social Proof","back":"Join 10,000+ marketers — use specific numbers, testimonials, or trust signals to show others have made this choice."},{"front":"Scarcity","back":"Only 50 spots left or Ends Friday — real scarcity (not manufactured urgency) drives action."},{"front":"Specificity","back":"Save 4.5 hours per week beats save time. Specific numbers feel real and credible to readers."},{"front":"Loss Aversion","back":"Stop wasting $500/month on tools that do not work — people fear loss more than they desire gain."},{"front":"Identity","back":"For marketers who refuse to settle for average — make the audience see themselves in the ad."}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Ad Copy That Converts","questions":[{"q":"What are the character limits for Google Search Ad headlines?","options":["20 characters per headline","30 characters per headline","40 characters per headline","50 characters per headline"],"correct":1,"explanation":"Google Search Ad headlines have a strict limit of 30 characters each. The lesson notes that AI excels at writing within tight constraints — and specifies to count every character, including spaces."},{"q":"In the Facebook/Instagram ad framework, what must the first 3 lines of Primary Text do?","options":["Include the price and discount offer","Hook the reader — that is all they see before the See More button","Introduce the brand and its story","List the top three product features"],"correct":1,"explanation":"The first 3 lines of Facebook/Instagram primary text are critical because that is all readers see before they must click See More. The hook must stop the scroll — everything else comes after."},{"q":"Which psychological trigger is at work in the ad copy: Stop wasting $500/month on tools that do not work?","options":["Social Proof","Scarcity","Specificity","Loss Aversion"],"correct":3,"explanation":"This is Loss Aversion — people fear losing money more than they desire gaining it. Framing the benefit as avoiding a loss is more motivating than promising a gain for many buyers."},{"q":"What is the key difference between Meta Ads and Google Ads from an AI prompting perspective?","options":["Meta Ads need more keywords; Google Ads need emotional stories","Google Ads have strict character limits; Meta Ads focus on stopping the scroll with a human-sounding hook","Meta Ads are shorter; Google Ads can be longer","There is no meaningful difference in how you prompt for each"],"correct":1,"explanation":"Google Ads have strict character limits (30/90) requiring AI to be precise and keyword-focused. Meta Ads need to stop the scroll with a compelling human-sounding hook in the first 3 lines — a fundamentally different writing challenge."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/competitive-analysis-with-ai" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Competitive Analysis with AI →</a>

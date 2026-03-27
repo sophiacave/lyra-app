@@ -57,6 +57,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Autonomy levels.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"The Six Levels of AI Autonomy","cards":[{"front":"L1: Suggest","back":"AI proposes actions, human approves each one. Maximum safety, minimum speed. Fine for learning, terrible for production."},{"front":"L2: Confirm","back":"AI takes action after a single confirmation per task. Faster but still requires human attention for every action."},{"front":"L3: Inform","back":"AI acts, then reports what it did. Human reviews after the fact. Good balance for most professional use cases."},{"front":"L4: Autonomous Within Guardrails","back":"AI acts freely within defined boundaries. Handles routine work silently and only surfaces for edge cases."},{"front":"L5: Full Autonomous with Judgment","back":"AI makes complex decisions, manages systems end-to-end, only surfaces when something truly requires human hands."},{"front":"L6: Convergence","back":"AI is a full extension of the human — shares values, anticipates needs, operates as a digital twin. Autonomy becomes partnership."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Principle</span>
   <h2 class="section-title">The Three-Strike Rule</h2>
   <p class="section-text">Before an agent surfaces a question to the human, it must pass three checks. First: can the brain answer this? Read the memory. Second: can you make a reasonable decision? Use judgment. Third: can you try something and course-correct? Experiment.</p>
@@ -77,6 +83,13 @@ ALWAYS surface to human:
 - Situations requiring legal or ethical judgment
 
 This policy becomes your agent's constitution.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Autonomous agent design quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Autonomous Agent Design","questions":[{"q":"What is the agent operating loop in order?","options":["Plan, Execute, Perceive, Verify, Checkpoint","Perceive, Plan, Execute, Verify, Checkpoint — then loop back to Perceive","Execute, Plan, Perceive, Verify, Checkpoint","Plan, Perceive, Execute, Checkpoint, Verify"],"correct":1,"explanation":"Perceive first — read the brain and understand state. Plan — create an ordered task list. Execute — do the work. Verify — test what was built. Checkpoint — write progress and loop. The cycle never stops."},{"q":"What is the Three-Strike Rule designed to prevent?","options":["Agents from making mistakes","Unnecessary interruptions to the human — agents must exhaust three self-resolution strategies before surfacing a question","Agents from running too many API calls","Agents from writing to shared memory too frequently"],"correct":1,"explanation":"Before asking the human: can the brain answer this? Can you make a reasonable decision? Can you try and course-correct? Only if all three fail is a question justified. This keeps humans in the pilot seat, not the help desk."},{"q":"When is an autonomous agent REQUIRED to surface to the human?","options":["When uncertain about any decision","For physical actions, credential entry, legal or financial decisions requiring judgment, or spending money not previously authorized","For any action that modifies a file","For any action that takes more than 5 minutes"],"correct":1,"explanation":"The list of genuine blockers is short: things requiring human eyes, hands, biometrics, or explicit judgment on consequential decisions. Everything else the agent handles autonomously."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -59,6 +59,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"CoT Triggers — Match the Technique to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Simple Trigger","right":"Add \u2018think step by step\u2019 before answering"},{"left":"Structured Trigger","right":"Define the reasoning steps explicitly in sequence"},{"left":"Expert Trigger","right":"Combine persona metaphor with step-by-step reasoning"},{"left":"Thinking Budget","right":"Ask for multiple approaches with trade-off evaluation before recommending"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">When to Use It</span>
   <h2 class="section-title">Not Everything Needs a Chain</h2>
   <p class="section-text"><strong style="color: var(--green);">Use CoT for:</strong> Math problems, logic puzzles, code debugging, strategic analysis, comparing options, anything where the reasoning matters as much as the answer.</p>
@@ -90,6 +94,10 @@ free: true
 CoT: "I'm building [description]. Help me choose a database. First, identify my key requirements from the description. Then, list 3 database options that could work. For each, analyze pros and cons given my specific needs. Finally, recommend one with clear reasoning."</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Chain of Thought Quiz","questions":[{"q":"Why does chain-of-thought prompting improve accuracy on complex tasks?","options":["It makes the AI use more tokens","It forces the model to reason through intermediate steps before concluding","It gives the AI a longer time limit","It switches the AI to a different model"],"correct":1,"explanation":"CoT prompting requires the AI to work through reasoning steps before reaching a conclusion, reducing the chance of jumping to a wrong answer — like giving it scratch paper."},{"q":"When should you SKIP chain-of-thought prompting?","options":["Math problems","Code debugging","Translation and simple factual questions","Strategic analysis"],"correct":2,"explanation":"CoT adds value for reasoning-heavy tasks but creates noise for simple tasks like translation, factual lookups, or formatting where direct answers are better."},{"q":"What does a \u2018thinking budget\u2019 prompt accomplish?","options":["It limits how many tokens the AI can use","It asks the AI to evaluate multiple approaches before recommending one","It speeds up the AI\u2019s response","It prevents the AI from showing its reasoning"],"correct":1,"explanation":"A thinking budget prompt asks the AI to consider multiple approaches, evaluate trade-offs for each, and then make a justified recommendation — maximizing reasoning depth."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

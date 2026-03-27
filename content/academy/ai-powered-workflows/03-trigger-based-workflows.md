@@ -69,6 +69,18 @@ free: true
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Four Trigger Types</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Workflow Trigger Types","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Time-based trigger","right":"Every Monday at 9am, generate the weekly report"},{"left":"Event-based trigger","right":"When a new customer signs up, send the welcome sequence"},{"left":"Condition-based trigger","right":"When inventory drops below 50 units, alert the team"},{"left":"Manual trigger","right":"When I click this button, run the deployment pipeline"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 3 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Trigger-Based Workflows","questions":[{"q":"What is a trigger in workflow automation?","options":["A type of database query","The output of the final step in a workflow","The starting condition that sets the entire workflow in motion","A way to pause a workflow mid-execution"],  "correct":2,"explanation":"A trigger is the starting gun — the moment that sets everything in motion. Without a trigger you still have a checklist. With one, you have automation that reacts to the world without manual initiation."},{"q":"In the freelance designer example, what event trigger starts the automated response workflow?","options":["The designer checks their email manually","A form submission from the website inquiry","The designer clicks a calendar invite","A time-based schedule every morning"],  "correct":1,"explanation":"The website form submission is the event trigger. That submission kicks off AI categorizing the project type, checking calendar availability, drafting a personalized response, and sending it — all within 60 seconds."},{"q":"What do webhooks enable in event-triggered workflows?","options":["They slow down workflows for safety checks","They are small HTTP requests that fire when something happens in a tool, allowing your workflow platform to react instantly","They require manual setup for each individual event","They only work with certain email platforms"],  "correct":1,"explanation":"Webhooks are how modern tools communicate events — a payment succeeds, a deal changes stages, a form submits. Your workflow platform listens for these signals and springs into action. Almost every modern tool supports them."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-powered-workflows/02-mapping-your-processes/" class="prev">← Previous: Mapping Your Processes</a>
   <a href="/academy/ai-powered-workflows/04-data-flow-design/" class="next">Next: Data Flow Design →</a>

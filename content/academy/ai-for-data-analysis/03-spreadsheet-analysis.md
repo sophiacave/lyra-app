@@ -75,6 +75,18 @@ free: true
   <div class="prompt-box"><code>Here's a sample of my [type] data (CSV format). The columns are: [list columns and what they mean]. Analyze the data and give me: 1) A summary of key metrics, 2) The top 3 insights, 3) Any Google Sheets formulas I should add to track these metrics ongoing.</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Data Input Methods</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Spreadsheet Input Methods","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Best for under a few hundred rows","right":"Copy and paste directly into chat"},{"left":"Best for larger datasets","right":"Upload CSV or Excel file directly"},{"left":"Best for massive datasets","right":"Paste sample rows and describe full scope"},{"left":"Keeps dynamic calculations live","right":"Stay in the spreadsheet natively"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 3 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Spreadsheet Analysis","questions":[{"q":"Which column header style gives AI the best understanding of your data?","options":["Col_F","field6","monthly_revenue","data"],"correct":2,"explanation":"Clear, descriptive headers like monthly_revenue tell the AI exactly what each column means — it reads your headers to interpret the data correctly."},{"q":"What is the sweet spot for using AI vs staying in the spreadsheet?","options":["Always use AI for everything","Always stay in the spreadsheet","Use AI to figure out the approach, then implement it natively for ongoing use","Only use AI for data under 100 rows"],"correct":2,"explanation":"AI is brilliant for figuring out the right analysis approach and writing formulas. For recurring reports and live data, implement the solution natively in the spreadsheet going forward."},{"q":"Why should you specify date formats when giving data to AI?","options":["AI cannot read dates at all","Different formats can be misinterpreted, leading to wrong analysis","AI only understands one date format","Dates are not useful for analysis"],"correct":1,"explanation":"03/15/2024 could be March 15 or the 3rd day of the 15th month depending on locale. Telling AI the exact format prevents misinterpretation and wrong results."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/02-asking-the-right-questions/">← Previous: Asking the Right Questions</a>
   <a href="/academy/ai-for-data-analysis/04-visualization-and-charts/">Next: Visualization and Charts →</a>

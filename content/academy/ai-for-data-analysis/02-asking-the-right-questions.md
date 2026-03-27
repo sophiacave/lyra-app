@@ -77,6 +77,18 @@ free: true
   <div class="prompt-box"><code>I have [describe data, time period, what columns mean]. I need to understand [specific question]. Please present the answer as [format] and flag any unusual patterns. This is for [audience].</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">The SCOPE Framework</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"SCOPE Method Flashcards","cards":[{"front":"S in SCOPE","back":"Specific — define exactly what you want to know, not vague questions like how are sales"},{"front":"C in SCOPE","back":"Context — provide relevant background: industry, time period, what the columns mean"},{"front":"O in SCOPE","back":"Output — specify the format you want: summary, table, list of recommendations"},{"front":"P in SCOPE","back":"Perspective — state who the analysis is for, which shapes depth and language"},{"front":"E in SCOPE","back":"Edge cases — flag outliers to ignore, special circumstances, or anything AI should watch for"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 2 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Asking the Right Questions","questions":[{"q":"What is the main problem with vague data questions like \"Analyze this data\"?","options":["AI refuses to process them","They take too long to generate","They produce generic, unhelpful summaries","They require more tokens"],"correct":2,"explanation":"Vague questions are like telling a chef to make food — you get something, but probably not what you wanted. Specific questions drive specific answers."},{"q":"Which is the strongest version of a data question?","options":["What do you see in this data?","Analyze my sales","Which product category grew fastest in Q3, and which months had exceptions?","Tell me about trends"],"correct":2,"explanation":"This question is specific (Q3, product category), asks for comparison AND explanation of exceptions — hitting multiple SCOPE elements at once."},{"q":"What does question chaining accomplish in data analysis?","options":["It confuses the AI","Each question builds on the last to reach actionable insight","It reduces the quality of analysis","It only works with CSV files"],"correct":1,"explanation":"Chaining lets you start broad and drill down progressively — by round 3, you have found something genuinely actionable that a single question would have missed."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/01-data-analysis-meets-ai/">← Previous: Data Analysis Meets AI</a>
   <a href="/academy/ai-for-data-analysis/03-spreadsheet-analysis/">Next: Spreadsheet Analysis →</a>

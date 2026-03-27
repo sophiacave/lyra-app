@@ -76,6 +76,18 @@ free: false
   <div class="prompt-box"><code>Here's my data [paste data]. Create a [chart type] that shows [what you want to highlight]. Title it with the key insight, not just the topic. Use clear labels. Generate the code in [Python/JavaScript/Google Sheets instructions].</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Chart Type Matcher</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Chart Types and Use Cases","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Trends over time","right":"Line chart"},{"left":"Comparing categories","right":"Bar chart"},{"left":"Parts of a whole (5 or fewer)","right":"Pie chart"},{"left":"Relationship between two variables","right":"Scatter plot"},{"left":"Patterns across two dimensions","right":"Heatmap"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 4 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Visualization and Charts","questions":[{"q":"What makes a chart title effective vs. ineffective?","options":["Longer titles are always better","An effective title states the insight, not just the topic","Titles should be left blank to avoid bias","The title should only show the date range"],"correct":1,"explanation":"Revenue grew 34% after the March campaign launch tells a story. Revenue Data 2024 just labels a topic. Insight-based titles make every chart ten times more effective."},{"q":"When should you use a pie chart vs. a bar chart?","options":["Always use pie charts for financial data","Pie charts work best with more than 10 categories","Use pie charts only when showing parts of a whole with 5 or fewer slices","Bar charts are only for comparisons over time"],"correct":2,"explanation":"Pie charts become unreadable with many slices. With more than 5 categories, a bar chart communicates the same information far more clearly."},{"q":"What is the AI visualization workflow first step?","options":["Generate the code immediately","Ask AI to recommend chart types and explain why each fits your data","Upload the data to a design tool","Choose colors and labels first"],"correct":1,"explanation":"Before generating any code, share your data with AI and ask for visualization recommendations. AI will suggest chart types and explain the reasoning — this gives you a much better starting point."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/03-spreadsheet-analysis/">← Previous: Spreadsheet Analysis</a>
   <a href="/academy/ai-for-data-analysis/05-cleaning-messy-data/">Next: Cleaning Messy Data →</a>

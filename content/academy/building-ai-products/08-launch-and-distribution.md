@@ -59,6 +59,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Three-Wave Launch — Match Each Wave to Its Goal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Wave 1 — Inner Circle","right":"Give to 20-50 people you know to catch embarrassing failures before strangers see them"},{"left":"Wave 2 — Community Seeding","right":"Post the output in communities where target users gather — show the magic trick, not the tool"},{"left":"Wave 3 — Content Flywheel","right":"Turn your product\u2019s outputs into content — screenshots, before/after, testimonials that demonstrate value without ads"},{"left":"Show the Output, Not the Tool","right":"Add a subtle watermark and one-click sharing — every shared output is a free ad that proves value"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Reality</span>
   <h2 class="section-title">Launch Day Is Just Day One</h2>
   <p class="section-text">Most AI products don't go viral on launch day. They grow through consistent demonstration of value over weeks and months. The Product Hunt launch gets you 500 visitors. The Twitter thread that shows a mind-blowing output gets you 5,000. The SEO article that ranks for "best AI tool for [your niche]" gets you 500 visitors every month forever.</p>
@@ -74,6 +78,10 @@ Wave 3 — List 3 types of output-focused content you can create weekly: ___
 
 Bonus: Write the tweet/post that SHOWS what your product does.
 Not "I built an AI tool that..." but "[Result screenshot] — this took 10 seconds."</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Launch and Distribution Quiz","questions":[{"q":"What is the highest-ROI distribution channel for AI products?","options":["Paid ads on Google","Cold email","Twitter/X and niche communities where the AI community and target users already gather","LinkedIn only"],"correct":2,"explanation":"Twitter/X has a massive and active AI builder and user community. Niche subreddits and Discord servers concentrate your exact target users. Both channels reward demonstrating value over advertising it."},{"q":"Why is Building in Public effective for AI product distribution?","options":["It is free marketing","Transparent content about architecture decisions, cost breakdowns, and lessons learned builds trust and establishes authority — attracting users who see the care behind the product","It is required for Product Hunt","It replaces the need for a landing page"],"correct":1,"explanation":"Sharing real numbers and real decisions attracts two types of people simultaneously: potential users who trust your thoughtfulness, and builders who become future advocates. The authenticity creates a compounding audience."},{"q":"What is the correct mental model for a launch day?","options":["It is the moment of maximum impact — everything after is a decline","It is a starting gun, not a finish line — sustained content and community demonstration builds the real user base over weeks and months","It needs to go viral or the product has failed","It is only necessary for consumer products"],"correct":1,"explanation":"Most AI products don\u2019t go viral on launch day. They grow through consistent demonstration of value. Plan for sustained distribution — the Product Hunt launch gets you 500 visitors; the SEO article that ranks gets you 500/month forever."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

@@ -68,6 +68,18 @@ free: false
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Human-in-the-Loop Patterns</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Three Oversight Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Approval Gate","right":"Workflow pauses and waits for a thumbs-up before proceeding — high control"},{"left":"Review Queue","right":"Workflow completes but flags items for after-the-fact review — action is not blocked"},{"left":"Escalation Path","right":"Handles routine cases automatically, only involves humans for exceptions above a threshold"},{"left":"Trust Ladder","right":"Start with approval gates, graduate to review queues, eventually escalation-only based on proven accuracy"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 6 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Human-in-the-Loop","questions":[{"q":"What is the core principle for deciding where to add human checkpoints?","options":["Add human checkpoints to every step for maximum safety","Remove all human checkpoints to maximize automation","Human involvement only where it adds genuine value — machine everywhere else","Only add checkpoints to financial workflows"],  "correct":2,"explanation":"The goal is human involvement only where it adds value — publishing content with your brand name, high-value refunds, sensitive communications. Everywhere else, the machine handles it efficiently."},{"q":"How should you handle the risk of an approval gate creating bottlenecks when the approver is unavailable?","options":["Shut down the workflow until the approver returns","Design around the constraint — set timeouts, designate backup approvers, batch reviews","Remove the approval gate entirely","Only run the workflow when the approver is known to be available"],  "correct":1,"explanation":"Your workflow should work with human schedules, not against them. Set timeouts with auto-approve fallbacks, designate backup approvers, and batch reviews so humans make 10 decisions in one sitting rather than 10 separate interruptions."},{"q":"What evidence should drive moving a workflow checkpoint up the trust ladder?","options":["The workflow has been running for a specific number of days","Tracked accuracy data showing the AI makes consistently correct decisions in that category","Your personal feeling that the workflow seems reliable","The number of times the workflow has run successfully"],"correct":1,"explanation":"You climb the trust ladder based on evidence, not faith. Track the AI&#39;s accuracy over time. When it is right 98% of the time on a specific category of decision, that category graduates to the next level of autonomy."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-powered-workflows/05-error-handling-and-fallbacks/" class="prev">← Previous: Error Handling and Fallbacks</a>
   <a href="/academy/ai-powered-workflows/07-integration-patterns/" class="next">Next: Integration Patterns →</a>

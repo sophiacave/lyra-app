@@ -69,6 +69,18 @@ free: true
   <p>Then type something completely different and hear your clone speak words you never said. That moment changes your understanding of what's possible.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Voice Cloning Quality Factors</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Recording Tips for Better Voice Clones","cards":[{"front":"Most important quality factor","back":"Source audio quality matters more than quantity — one minute of clean, well-paced speech beats ten minutes of noisy recordings"},{"front":"Best recording environment","back":"A quiet room with no echo — closets with clothes work surprisingly well as natural sound dampeners"},{"front":"Microphone distance","back":"Hold a phone steady at about 6 inches from your mouth for consistent, clean capture"},{"front":"Delivery style for cloning","back":"Read naturally, do not perform — the AI needs your real voice, not a character or exaggerated version"},{"front":"Content diversity","back":"Read a variety of text — questions, statements, lists, emotional passages — for a fuller voice capture"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 3 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Voice Cloning and Custom Voices","questions":[{"q":"What does voice cloning technology actually do technically?","options":["It records a voice and plays it back","It extracts voice characteristics into an embedding that the TTS engine uses to generate new speech","It simply increases the volume of existing recordings","It translates one voice to another language"],  "correct":1,"explanation":"Voice cloning extracts unique characteristics — timbre, pitch patterns, rhythm, accent, breathiness — and encodes them into a voice embedding. That embedding is then used as a recipe to generate entirely new speech that sounds like the original speaker."},{"q":"What is the non-negotiable ethical rule for voice cloning?","options":["Always get explicit written informed consent before cloning someone&#39;s voice","Implied consent is sufficient if the person would probably not mind","Voice cloning is always ethical for educational purposes","Only consent is needed for commercial use"],  "correct":0,"explanation":"Always get explicit consent before cloning someone&#39;s voice. Not implied consent. Written, informed, specific consent. This is increasingly the law in many jurisdictions, not just an ethical guideline."},{"q":"What is the difference between instant cloning and professional cloning?","options":["There is no difference in quality","Instant cloning captures the general feel quickly — professional cloning uses more samples for near-indistinguishable results","Professional cloning is only available to enterprise customers","Instant cloning is always more accurate"],"correct":1,"explanation":"Instant cloning needs just seconds of audio and captures the general feel but misses fine details. Professional cloning uses minutes to hours of clean recordings and produces results that can be nearly indistinguishable from the original speaker."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/text-to-speech-basics/" class="prev">← Text-to-Speech Basics</a>
   <a href="/academy/ai-voice-audio/podcast-production/" class="next">Next: Podcast Production →</a>

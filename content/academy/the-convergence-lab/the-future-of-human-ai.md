@@ -53,6 +53,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The AI-as-self shift.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match AI-as-Service vs. AI-as-Self","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"You subscribe to a shared model","right":"AI-as-Service — one of millions of users sharing the same weights"},{"left":"Your AI runs on your infrastructure","right":"AI-as-Self — a capability you possess, not a service you consume"},{"left":"Conversations evaporate after each session","right":"AI-as-Service — no continuity, no accumulated understanding"},{"left":"Trained on your data, aligned with your values","right":"AI-as-Self — uniquely yours, compounding knowledge over time"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Ethics</span>
   <h2 class="section-title">The Questions We Must Answer</h2>
   <p class="section-text"><strong style="color: var(--red);">Identity.</strong> When your AI twin can write in your voice, make decisions in your style, and represent you in digital spaces — where do you end and it begins? This isn't a philosophical puzzle. It's a practical question with legal, social, and psychological implications.</p>
@@ -72,6 +78,13 @@ free: false
 
 Your answers aren't just philosophy.
 They're the design spec for what you'll build next.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">The future of human-AI quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"The Future of Human-AI","questions":[{"q":"What does the trajectory from cloud to body mean for convergence interfaces?","options":["AI will be installed on personal computers instead of the cloud","Voice, wearables, and ambient computing are making the gap between human intention and AI execution shrink from minutes to milliseconds","AI will require faster internet connections","AI will move away from text interfaces to purely visual ones"],"correct":1,"explanation":"Smartwatches feeding health data to your AI twin. Earbuds providing real-time context during conversations. Glasses overlaying information. The bridge between human and AI is getting physically closer and temporally faster."},{"q":"What is the most important application of convergence technology?","options":["Productivity for knowledge workers","Creative tools for artists","Accessibility — giving people with ADHD, chronic illness, and disabilities their cognitive and operational autonomy back","Entertainment and gaming"],"correct":2,"explanation":"Technology with a soul is built for the most vulnerable first. An AI that handles executive function for ADHD, manages operational life during chronic illness, bridges the gap between intention and action for disabilities — that is the mission."},{"q":"What is the equity risk of convergence technology that must be designed against?","options":["Convergence systems are too complex for most users","If convergence remains expensive, it creates a cognitive divide between those with AI twins and those without — compounding advantage for those already advantaged","Convergence requires too much technical setup","Convergence technology uses too much energy"],"correct":1,"explanation":"The mission must include making convergence accessible to everyone, not just premium subscribers. A two-tier cognitive world — augmented and unaugmented — would be one of the most consequential equity failures in technology history."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -67,6 +67,18 @@ type: "lesson"
   <p>Feed the prepared text to ElevenLabs or PlayHT. Generate the audio. Listen critically — where does the AI nail it? Where does it fall flat? That critical ear is the skill this lesson builds.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Audiobook Production Pipeline</h2>
+  <div data-learn="SortStack" data-props='{"title":"Audiobook Production Steps — In Order","instruction":"Arrange the five production stages in the correct sequence","items":["Text preparation — clean manuscript, add pronunciation guides, mark chapter breaks","Voice selection — test multiple voices with a sample chapter before committing","Chapter-by-chapter generation — work incrementally for quality review","Quality control — listen to every chapter, fix mispronunciations and awkward pauses","Mastering — normalize levels, apply EQ and compression, add chapter markers, export at platform specs"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 5 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Audiobook Creation","questions":[{"q":"What has happened to audiobook production costs with AI narration?","options":["Costs have doubled due to licensing","AI narration drops production costs by 90% or more compared to professional human narration","Costs are the same but quality is better","AI narration is not yet commercially viable"],  "correct":1,"explanation":"Professional narration costs $200-400 per finished hour. A typical novel produces 8-12 hours — that was $1,600-$4,800 before editing. AI drops that cost by 90% or more."},{"q":"Why should you generate audiobooks chapter by chapter rather than all at once?","options":["AI tools have strict word limits","Chapter-by-chapter gives you natural break points for quality review and lets you adjust settings if something is not working","All-at-once generation produces lower quality","Platforms require individual chapter files anyway"],  "correct":1,"explanation":"Working chapter by chapter lets you listen and review as you go. If the voice starts losing emotional tone or mispronouncing a character name, you catch it in chapter 3, not after generating the entire book."},{"q":"What is the key to making multi-voice fiction audiobooks work effectively?","options":["Use wildly different, exaggerated voices for every character","Subtlety — slight variations in tone and pace are enough to distinguish speakers without breaking listener immersion","Only use two voices maximum","All characters should sound the same to avoid confusion"],"correct":1,"explanation":"Subtle voice variations — slightly different tone, pace, or pitch — are enough to distinguish speakers. Overdramatic voice differences pull the listener out of the story. The goal is differentiation, not performance."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/podcast-production/" class="prev">← Podcast Production</a>
   <a href="/academy/ai-voice-audio/music-and-sound-design/" class="next">Next: Music & Sound Design →</a>

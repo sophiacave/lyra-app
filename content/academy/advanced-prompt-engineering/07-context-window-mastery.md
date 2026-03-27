@@ -63,6 +63,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Context Window Strategies — Match Each to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Front-Loading","right":"Put critical instructions and the primary task at the very beginning of your prompt"},{"left":"Summarize First","right":"Ask AI to compress a long document before using it as context"},{"left":"Rolling Context","right":"Checkpoint progress in 200 words, then continue in a fresh context"},{"left":"Chunking with Overlap","right":"Split large documents into sections with 10-15% content overlap to prevent gaps"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Strategy 3</span>
   <h2 class="section-title">The Rolling Context Technique</h2>
   <p class="section-text">For long tasks that span many turns in a conversation, context accumulates. Old messages eat up space. The rolling context technique keeps things fresh.</p>
@@ -96,6 +100,10 @@ CONTEXT SUMMARY: [compressed version of your reference material]
 INPUT: [the thing to process]</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Context Window Mastery Quiz","questions":[{"q":"What is the \u2018lost in the middle\u2019 effect?","options":["The AI forgets earlier conversations","Content in the middle of a long context gets less attention than content at the beginning or end","The AI runs out of tokens mid-response","Long prompts cause the AI to lose track of the task"],"correct":1,"explanation":"Research shows AI models pay more attention to content at the beginning and end of the context window than to content in the middle — so structure your prompts with critical info first."},{"q":"What is the correct structure order for a well-organized prompt?","options":["Input first, then task, then rules","System instructions, task, constraints, reference material, examples, input","Examples first, then instructions, then input","Input, examples, instructions"],"correct":1,"explanation":"Front-loading the most critical elements (instructions, task, constraints) ensures the AI prioritizes them. Reference material and input go later since they\u2019re supporting details."},{"q":"Why is a 10-15% overlap important when chunking large documents?","options":["It makes the chunks easier to process","Important context can span chunk boundaries — overlap prevents information from falling through the cracks","It reduces the total token count","It helps the AI remember previous chunks"],"correct":1,"explanation":"If you split a document at a page boundary, key context might span both sides of that boundary. Overlap ensures nothing gets lost between chunks."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

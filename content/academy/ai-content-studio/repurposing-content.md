@@ -63,6 +63,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The content waterfall levels.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Waterfall Level to Its Output","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Level 1 — The Source","right":"Long-form flagship: blog post, video, or podcast"},{"left":"Level 2 — The Breakdown","right":"Newsletter summary, LinkedIn post, Twitter thread"},{"left":"Level 3 — The Snippets","right":"Standalone quotes, carousels, one-liner hooks"},{"left":"Level 4 — The Derivatives","right":"Reel scripts, podcast points, community discussion posts"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Mega-Prompt</span>
   <h2 class="section-title">Let AI do the heavy lifting.</h2>
   <p class="section-text">Here's the prompt that makes this systematic:</p>
@@ -74,6 +80,13 @@ free: false
   <span class="section-label">Try It</span>
   <h2 class="section-title">Repurpose your best-performing piece.</h2>
   <p class="section-text">Find your most successful blog post, newsletter, or long-form content piece. Paste it into AI with the mega-prompt above. Review the outputs and edit for your voice. Schedule them across the next two weeks. Track which repurposed formats get the most engagement — that tells you where to focus your distribution energy going forward.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Repurposing content quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Repurposing Content","questions":[{"q":"What is the core idea behind the content waterfall system?","options":["Publish the same post on every platform simultaneously","Start with your richest format and let it flow into progressively smaller pieces","Write short-form content first, then expand to long-form","Let AI decide which formats to create for each piece"],"correct":1,"explanation":"The waterfall flows from your flagship long-form piece downward — each level producing adapted content that serves different platforms and audiences."},{"q":"How many pieces of content can a single 1500-word blog post realistically generate?","options":["2-3 pieces maximum","10 or more pieces across different formats and platforms","Only pieces for the same platform","As many as you want but quality drops off fast"],"correct":1,"explanation":"One afternoon of writing can fuel two weeks of content across Twitter threads, LinkedIn posts, email newsletters, video scripts, carousels, quote graphics, and community discussions."},{"q":"What is the most important instruction in the repurposing mega-prompt?","options":["Maintain the original word count","Do not just copy-paste sections — genuinely transform the content for each platform","Include a call-to-action on every piece","Keep all repurposed pieces under 200 words"],"correct":1,"explanation":"Platform-native transformation means each piece is genuinely reformatted for its destination — Twitter wants punchy threads, LinkedIn wants personal story angles, email wants intimacy."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

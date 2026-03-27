@@ -77,6 +77,18 @@ free: true
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">The 5-Step Process Audit</h2>
+  <div data-learn="SortStack" data-props='{"title":"Process Audit Steps — In Order","instruction":"Arrange the five audit steps in the correct sequence","items":["Pick one process you do at least weekly","Write down every single step including obvious ones like open email","Mark each step as decision (requires judgment) or mechanical (same every time)","Note where data moves between tools","Score by frequency times time per run times mechanical step count"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 2 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Mapping Your Processes","questions":[{"q":"In the Input-Action-Output framework, what makes a step automatable?","options":["The action is complex and requires expertise","The input is digital","The action is predictable and the rules are clear every time","The output is a document"],  "correct":2,"explanation":"When an action is predictable — it follows the same logic every time — and the rules are clear, that step can be automated. Decision steps that require judgment are harder to automate."},{"q":"What is the biggest mistake people make when starting automation?","options":["Starting too small","Automating their most complex process first instead of the boring, routine ones","Documenting processes before automating","Using no-code tools"],  "correct":1,"explanation":"Starting with your most complex process creates high-stakes failure points while you are still learning. Start with boring, routine tasks where automation delivers obvious value and teaches fundamentals without risk."},{"q":"In the weekly client report example, how many of the 6 steps are fully automatable?","options":["1","2","4","All 6"],  "correct":2,"explanation":"4 of 6 steps are fully automatable (pulling data, copying to template, exporting PDF, emailing). Writing the summary is AI-assistable. Only adding client-specific notes truly requires a human."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-powered-workflows/01-why-workflows-matter/" class="prev">← Previous: Why Workflows Matter</a>
   <a href="/academy/ai-powered-workflows/03-trigger-based-workflows/" class="next">Next: Trigger-Based Workflows →</a>

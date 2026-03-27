@@ -73,6 +73,18 @@ free: false
   <div class="prompt-box"><code>This data is messy and I need it cleaned. Please: 1) Identify all data quality issues, 2) Fix what you can and explain what you changed, 3) Flag anything you need my input on, 4) Return the cleaned data as CSV. Here's the data: [paste data]</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Data Quality Problems</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Common Data Quality Issues","cards":[{"front":"Duplicates","back":"The same record entered twice or more, sometimes with slightly different formatting or casing"},{"front":"Inconsistent names","back":"US, United States, U.S.A., and usa are all the same country but look like four different values"},{"front":"Mixed formats","back":"Dates appearing as 03/15/2024, March 15 2024, and 2024-03-15 in the same column"},{"front":"Missing values","back":"Empty cells that could mean zero, unknown, or not applicable — context determines the right fix"},{"front":"Outliers","back":"Extreme values that may be data entry errors or genuinely important anomalies requiring investigation"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 5 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Cleaning Messy Data","questions":[{"q":"Roughly what percentage of a data analyst&#39;s time is spent on data cleaning?","options":["10%","25%","50%","Up to 80%"],"correct":3,"explanation":"Data analysts spend up to 80% of their time cleaning data — not analyzing it. AI dramatically compresses this bottleneck."},{"q":"What is the first step in the AI data cleaning checklist?","options":["Remove all outliers immediately","Find and delete duplicate rows","Scan for structure: rows, columns, data types, and missing value percentages","Standardize all text to lowercase"],"correct":2,"explanation":"Before fixing anything, you need a structural overview. Describing the shape of the data tells you where to focus cleaning efforts first."},{"q":"Why does AI excel at data cleaning tasks?","options":["AI can only work with clean data","Pattern-matching and tedious repetitive tasks are exactly what AI processes fastest","AI makes cleaning decisions without any context","AI can only clean numerical data"],"correct":1,"explanation":"The tedious pattern-matching work of spotting inconsistencies, grouping variants, and standardizing formats is precisely what AI handles at speed — it catches things human eyes miss."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/04-visualization-and-charts/">← Previous: Visualization and Charts</a>
   <a href="/academy/ai-for-data-analysis/06-pattern-recognition/">Next: Pattern Recognition →</a>

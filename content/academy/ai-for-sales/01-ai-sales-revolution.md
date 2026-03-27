@@ -70,6 +70,20 @@ free: true
   <p class="section-text">By the end, you won't just be using AI. You'll have a sales engine that runs faster, smarter, and more personally than anything you've built before.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each sales task to what AI can or cannot replace.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI in Sales: Can vs Cannot","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Lead research and prospect briefs","right":"AI excels — research in minutes, not hours"},{"left":"Drafting personalized outreach emails","right":"AI excels — volume and personalization at scale"},{"left":"Building genuine trust with a prospect","right":"AI cannot replace — trust requires human connection"},{"left":"Reading the room during a live negotiation","right":"AI cannot replace — requires human presence and intuition"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"The AI Sales Revolution","questions":[{"q":"What is the core mindset shift the lesson describes for AI-powered selling?","options":["From relationship selling to data-driven selling","From making 100 calls per day to having 10 deeply researched, perfectly timed conversations","From solo selling to team-based selling","From short sales cycles to long-term pipeline building"],"correct":1,"explanation":"The mindset shift is from grinder to strategist. AI handles the volume and preparation. You focus on the value — the 10 high-quality conversations instead of 100 generic calls. Quality over quantity, enabled by AI doing the prep work."},{"q":"According to the lesson, who is winning right now in sales?","options":["The most experienced salespeople with the longest track records","The salespeople who are working the longest hours","The salespeople working with AI — closing 2 to 5 times more deals with less effort","The salespeople with the largest contact databases"],"correct":2,"explanation":"The lesson is direct: the salespeople winning right now are not working harder — they are working with AI. They are closing 2-5x more deals with less effort because AI eliminates the busywork that kept them from meaningful conversations."},{"q":"What does AI handle in the AI-powered sales model?","options":["Closing deals and finalizing contracts","The human moments — rapport building and empathy","The speed and scale — research, drafting, analysis, and preparation","Strategic decisions about pricing and positioning"],"correct":2,"explanation":"The lesson frames it clearly: you bring the human skills (relationship, trust, creativity, empathy). AI brings the speed and scale (research, drafts, analysis, prep). Together, you are unstoppable. Neither alone is as effective as both together."},{"q":"What category does competitive analysis fall under in the lesson?","options":["AI excels at this independently","AI assists with this alongside human judgment","AI cannot do this at all","AI replaces humans entirely for this task"],"correct":1,"explanation":"The lesson puts qualifying leads, personalizing pitches, identifying buying signals, and competitive analysis in the AI assists with category — AI can help significantly but works best alongside your own knowledge and judgment, not replacing it."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <span></span>
   <a href="/academy/ai-for-sales/02-lead-research-and-qualification/" class="next">Next: Lead Research & Qualification →</a>

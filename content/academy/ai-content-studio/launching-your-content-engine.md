@@ -58,6 +58,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Your weekly engine rhythm.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Day to Its Content Engine Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Monday","right":"Strategy and planning — review metrics, fill the calendar"},{"left":"Tuesday","right":"Long-form production — write your anchor content"},{"left":"Wednesday","right":"Repurpose and short-form — batch your social posts"},{"left":"Thursday","right":"Email and engagement — draft newsletter, reply to comments"},{"left":"Friday","right":"Review and optimize — SEO check, update prompt library"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--red);">Long-Term Maintenance</span>
   <h2 class="section-title">Keeping the Engine Healthy</h2>
   <p class="section-text">Content engines need maintenance. Once a month, audit your system: Is your voice document still accurate? Are your prompts producing good output or do they need refreshing? Are your content pillars still relevant to your audience?</p>
@@ -74,6 +80,13 @@ free: false
   </div>
 
   <p class="section-text">This is your graduation exercise. Run the engine for one full week. Measure the results. Adjust. Run it again. Within a month, you'll be producing more content — better content — than you ever thought possible. And you'll be doing it in a fraction of the time. Welcome to the studio.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Content engine quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Launching Your Content Engine","questions":[{"q":"What are the five core metrics worth tracking for a content engine?","options":["Follower count, likes, shares, comments, reposts","Reach, engagement, clicks, subscribers, and revenue","Impressions, story views, saves, hashtag reach, profile visits","Open rate, click rate, bounce rate, time on page, conversions"],"correct":1,"explanation":"Reach, engagement, clicks, subscribers, and revenue are the metrics tied to actual outcomes. Everything else is noise until you are at real scale."},{"q":"How often should you do a deeper quarterly content review?","options":["Every week","Every month","Every quarter","Every year"],"correct":2,"explanation":"Monthly you do a lighter review. Quarterly you go deeper — look at three months of data, update strategy based on what actually worked, refresh prompts, and prune pillars that are not resonating."},{"q":"What should the monthly engine audit check?","options":["Your social media follower growth","Whether your voice document is still accurate and prompts are still producing good output","How many pieces you published versus planned","Your email open rate trend"],"correct":1,"explanation":"Monthly maintenance means asking: is the voice document still me? Are these prompts still producing quality output? Are these pillars still relevant? The system degrades without regular tuning."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

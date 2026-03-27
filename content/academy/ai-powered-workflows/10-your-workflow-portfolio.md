@@ -79,6 +79,18 @@ free: false
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Course Review</span>
+  <h2 class="section-title">Workflow Documentation Template</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Workflow Documentation Fields","cards":[{"front":"Purpose field","back":"One sentence — what this workflow does and why it exists, so anyone can understand it at a glance"},{"front":"Trigger field","back":"The specific event, time, or condition that starts the workflow — be exact, not vague"},{"front":"Steps field","back":"Every action in the pipeline with tool names — create CRM record, send welcome email, notify Slack"},{"front":"Dependencies field","back":"Every API, credential, and external service the workflow relies on — so you know what breaks if one changes"},{"front":"Known limits field","back":"Explicit constraints like rate limits, data size restrictions, or edge cases the workflow does not handle"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Final Check</span>
+  <h2 class="section-title">Course Completion Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Your Workflow Portfolio","questions":[{"q":"What is the portfolio effect in workflow automation?","options":["Workflows look more impressive as a collection","Each new workflow gets harder as complexity compounds","Each new workflow gets easier because you reuse patterns, connectors, and error handling from previous ones","Portfolios only matter when sharing work with others"],  "correct":2,"explanation":"Every workflow you build teaches patterns you can reuse. The error handling strategy from workflow 1 applies to workflow 5. The API connector you built for workflow 3 plugs into workflow 7. The portfolio compounds in value over time."},{"q":"What does the automation flywheel describe?","options":["A physical machine component in data centers","Each workflow saves time — you invest that time building the next workflow — that saves more time — the cycle accelerates","A way to visualize workflow performance metrics","The spinning animation shown when a workflow is running"],  "correct":1,"explanation":"The flywheel: each workflow saves time, you invest saved time building the next one, that one saves more time, the cycle accelerates. Within months you are operating at a level that would have required a full team."},{"q":"What do templates do for a workflow portfolio?","options":["Templates reduce quality by making everything look the same","Templates turn hours of building into minutes of configuring — and enforce consistency across all your workflows","Templates are only useful for simple workflows","You need to rebuild from scratch for each new workflow"],  "correct":1,"explanation":"Extracted templates — notify-on-failure, data-validation, API-with-retry — make building new workflows dramatically faster. They also enforce consistency: every workflow handles errors, logs, and alerts the same way, which makes debugging exponentially easier."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-powered-workflows/09-monitoring-and-maintenance/" class="prev">← Previous: Monitoring and Maintenance</a>
   <span></span>

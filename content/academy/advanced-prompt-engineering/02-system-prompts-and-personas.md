@@ -72,6 +72,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"System Prompt Parts — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Identity","right":"Who the AI is — role, expertise, personality"},{"left":"Behavior Rules","right":"Tone, response length, formatting preferences"},{"left":"Knowledge Boundaries","right":"What it knows and when to admit uncertainty"},{"left":"Constraints","right":"Hard limits — what it should never do"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">What Weakens a System Prompt</h2>
   <p class="section-text"><strong style="color: var(--red);">Too vague:</strong> "Be helpful and professional" — this tells the AI nothing it doesn't already default to.</p>
@@ -89,6 +93,10 @@ free: true
       <code>You are a [role] with [experience/expertise]. Your communication style is [tone]. When asked about [domain], always [specific behavior]. Never [constraint]. If you don't know something, [fallback behavior].</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"System Prompts Quiz","questions":[{"q":"What is \"persona stacking\" in system prompts?","options":["Writing a very long system prompt","Layering multiple perspectives or roles into one prompt","Running multiple system prompts at once","Repeating instructions for emphasis"],"correct":1,"explanation":"Persona stacking combines multiple viewpoints — e.g., a marketing strategist who thinks like a psychologist and writes like a journalist — for nuanced, multi-lens output."},{"q":"Which of these is a red flag that weakens a system prompt?","options":["Specifying severity tags for feedback","Including a fallback behavior","Writing contradictory instructions like \u2018be concise\u2019 and \u2018always explain in detail\u2019","Describing the AI\u2019s expertise level"],"correct":2,"explanation":"Contradictory instructions confuse the AI about which rule takes priority and degrade output quality. Every instruction should point in a consistent direction."},{"q":"Why does a vague instruction like \u2018be helpful and professional\u2019 weaken a system prompt?","options":["It is too short","It uses informal language","It tells the AI nothing beyond its default behavior","It lacks a persona name"],"correct":2,"explanation":"The AI already defaults to helpful and professional behavior. Effective system prompts add specificity that changes behavior — tone, format, domain, constraints — beyond the defaults."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

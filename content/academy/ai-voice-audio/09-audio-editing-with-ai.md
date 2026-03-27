@@ -73,6 +73,18 @@ Listen to all three back to back. The difference between step 1 and step 3 is th
   <p>This pipeline takes under two minutes and costs nothing. Every piece of audio you publish should go through it.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Audio Editing Pipeline Steps</h2>
+  <div data-learn="SortStack" data-props='{"title":"AI Audio Editing — Correct Order","instruction":"Arrange the four editing steps in the correct sequence","items":["Noise removal — strip background noise first so every subsequent tool has cleaner input","Content editing — remove filler words, long pauses, false starts, and tangents","Enhancement — EQ, compression, and de-essing handled automatically by AI tools","Mastering — normalize loudness to platform standards and add final limiting"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 9 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Audio Editing with AI","questions":[{"q":"What makes Descript&#39;s editing approach uniquely powerful?","options":["It has the best noise removal algorithm","It edits audio by editing the transcript — delete text and the audio is automatically removed","It supports the most file formats","It automatically publishes to all platforms"],  "correct":1,"explanation":"Descript links the transcript directly to the audio. Edit the text — remove a word, cut a sentence — and that exact audio is removed. This makes editing as fast and intuitive as editing a word document."},{"q":"What is the correct loudness standard for podcasts on Apple and Spotify?","options":["-8 LUFS","-14 LUFS","-16 LUFS","-24 LUFS"],  "correct":2,"explanation":"-16 LUFS with -1dB true peak is the standard for podcasts on Apple Podcasts and Spotify. This ensures your podcast sounds consistent in volume with other shows in any player."},{"q":"What does LALAL.AI specialize in?","options":["Podcast transcription","Automatic podcast distribution","Stem separation — isolating vocals, drums, bass, and instruments from any audio","Real-time voice effects"],"correct":2,"explanation":"LALAL.AI specializes in stem separation — splitting any audio into individual components like vocals, drums, bass, guitar, and piano. Useful for isolating a voice from a noisy recording or extracting a music bed from video."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/voice-interfaces/" class="prev">← Voice Interfaces</a>
   <a href="/academy/ai-voice-audio/your-audio-studio/" class="next">Next: Your Audio Studio →</a>

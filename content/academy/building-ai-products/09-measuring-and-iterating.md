@@ -53,6 +53,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI Product Metrics — Key Concepts","cards":[{"front":"Output Acceptance Rate","back":"What % of AI outputs do users accept without editing? Target: 60-90%. Below 60% means the AI isn\u2019t good enough. Above 90% might mean users are blindly accepting."},{"front":"Edit Depth","back":"How much do users change AI output when they edit? Light edits mean the AI is close. Heavy rewrites mean it is fundamentally missing the mark."},{"front":"Return Rate","back":"Do users come back for a second, third, tenth use? Track day-1, day-7, and day-30 retention separately. Repeated use means consistent value."},{"front":"Cost Per Successful Output","back":"Not cost per query — cost per output the user actually kept. If users need 3 regenerations, your true cost is 3x what you think."},{"front":"The Aha Moment","back":"The action that correlates with long-term retention. Find it by comparing retained vs. churned users in their first session, then engineer onboarding around it."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Decision</span>
   <h2 class="section-title">Optimize Prompts vs. Change Approach</h2>
   <p class="section-text"><strong>Optimize prompts when:</strong> The output is in the right ballpark but lacks precision. Users edit lightly. The structure is correct but the content needs refinement. Prompt optimization is cheap — iterate daily.</p>
@@ -80,6 +84,10 @@ free: false
    - Average edits per output
    - Cost per accepted output
    - Day-1 and day-7 retention</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Measuring and Iterating Quiz","questions":[{"q":"What is the correct output acceptance rate range that signals a healthy AI product?","options":["30-50%","60-90% — below 60% means AI isn\u2019t good enough; above 90% might mean users are blindly accepting","95-100%","50-60%"],"correct":1,"explanation":"Below 60% means users are consistently disappointed and the AI is missing the mark. Above 90% could mean users are accepting without reviewing — which is a different risk. The healthy signal is 60-90% with meaningful engagement."},{"q":"Why is implicit feedback (acceptance, edits, regenerations) more reliable than explicit feedback (ratings)?","options":["It is cheaper to collect","Users give implicit feedback without thinking — it reflects actual behavior rather than what they believe they should say","It is easier to analyze","It requires no instrumentation"],"correct":1,"explanation":"What users do and what they say they do diverge constantly. A user who clicks \u2018thumbs up\u2019 but never returns tells a different story than their behavior. Implicit signals like return rate and acceptance rate don\u2019t lie."},{"q":"When should you change your approach rather than optimize prompts?","options":["After 3 failed prompt iterations","When users consistently reject outputs entirely — no amount of prompt tweaking fixes a fundamental mismatch between output format and user workflow","When a competitor releases a new model","When your cost per query exceeds $0.10"],"correct":1,"explanation":"Prompt optimization handles imprecision — the output is in the right ballpark but needs refinement. If users reject outputs entirely, the problem is architectural — output format, pipeline structure, or even product scope needs to change."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

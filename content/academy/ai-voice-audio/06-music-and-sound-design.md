@@ -71,6 +71,18 @@ Track 3 (Resolution): Acoustic folk, warm and peaceful, fingerpicked guitar with
   <p>Listen to how each track carries different emotional weight. Now imagine them in sequence. You just scored a film without touching an instrument.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Music Prompt Formula</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Music Prompt Components","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Genre","right":"Lo-fi hip hop, orchestral, punk rock, ambient electronic"},{"left":"Mood","right":"Melancholic, triumphant, uneasy, hopeful, tense"},{"left":"Instrumentation","right":"Acoustic guitar, synthesizer, strings, drums, piano"},{"left":"Production style","right":"Warm analog, crisp modern, lo-fi tape hiss, Hans Zimmer style"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 6 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Music and Sound Design","questions":[{"q":"What are the four components of an effective music generation prompt?","options":["Tempo, key, time signature, and volume","Genre, mood, instrumentation, and production style","Artist name, year, album, and song length","Loudness, pitch, reverb, and compression"],  "correct":1,"explanation":"A good music prompt includes genre (lo-fi hip hop), mood (melancholic), instrumentation (acoustic guitar), and production style (warm analog). Together these give the AI enough direction while leaving room for creative interpretation."},{"q":"Which AI music tool is best suited for film and game scoring with MIDI output?","options":["Suno","Udio","AIVA","Mubert"],  "correct":2,"explanation":"AIVA is specifically designed for film and game scoring with a more structured composition approach. It provides MIDI output so you can edit arrangements in a traditional DAW — giving more control than text-only tools."},{"q":"What is Mubert best suited for?","options":["Creating hit pop songs with full lyrics","Generating endless streams of royalty-free background music for videos and streams","Replacing professional film composers","Transcribing existing music"],  "correct":1,"explanation":"Mubert generates endless streams of royalty-free background music — perfect for videos, livestreams, and ambient content. Its API even lets you generate music programmatically for apps and workflows."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/audiobook-creation/" class="prev">← Audiobook Creation</a>
   <a href="/academy/ai-voice-audio/transcription-and-analysis/" class="next">Next: Transcription & Analysis →</a>

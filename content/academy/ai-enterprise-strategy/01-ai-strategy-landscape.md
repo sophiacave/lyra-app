@@ -45,6 +45,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"The Three AI Strategic Archetypes","cards":[{"front":"The Optimizer","back":"Uses AI to do existing work faster, cheaper, more accurately. Fastest ROI. Think automated document processing, predictive maintenance, intelligent routing."},{"front":"The Differentiator","back":"Uses AI to create experiences competitors cannot match — personalization engines, real-time decision systems, adaptive products. Builds lasting moats."},{"front":"The Disruptor","back":"Uses AI to create entirely new business models — AI-native products, autonomous systems, platforms that learn. Highest risk and reward."},{"front":"Which archetype should most enterprises pursue first?","back":"Optimizer. Prove value quickly, then expand. Trying to disrupt before you can optimize is how budgets get burned."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Why Initiatives Fail</span>
   <h2 class="section-title">The Five Failure Patterns</h2>
   <p class="section-text">After studying hundreds of enterprise AI deployments, five patterns emerge consistently: no executive sponsor, no clear success metric, data infrastructure gaps, talent misalignment, and change resistance. Every single one is a strategy problem, not a technology problem.</p>
@@ -64,6 +68,10 @@ free: true
   <h2 class="section-title">Strategy Is a Living System</h2>
   <p class="section-text">At Like One, we believe AI strategy is not a document you write once and file. It is a living system that evolves as your organization learns. The best strategies have feedback loops built in — ways to sense what is working, amplify it, and course-correct what is not.</p>
   <p class="section-text">This course gives you the frameworks to build that living system. Not a PowerPoint. A practice.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"AI Strategy Landscape Quiz","questions":[{"q":"What are the five consistent failure patterns in enterprise AI deployments?","options":["Poor code quality, wrong model, bad data, slow servers, no API","No executive sponsor, no clear success metric, data infrastructure gaps, talent misalignment, change resistance","Budget too small, team too small, timeline too short, vendor too expensive, scope too large","Wrong language, wrong cloud, wrong database, wrong framework, wrong vendor"],"correct":1,"explanation":"Every one of these is a strategy problem, not a technology problem. The technology works — the question is whether your organization can absorb it."},{"q":"What percentage of enterprises have moved beyond pilot programs in AI?","options":["More than 60%","About 40%","Fewer than 15%","About 30%"],"correct":2,"explanation":"According to McKinsey estimates, fewer than 15% of enterprises have moved beyond pilots — meaning the gap between potential and execution is enormous."},{"q":"What is a \u2018living system\u2019 approach to AI strategy?","options":["A strategy that updates itself automatically","A strategy with feedback loops built in to sense what works, amplify it, and course-correct","A strategy that uses real-time data only","A strategy that changes every month"],"correct":1,"explanation":"A living AI strategy is not a document written once. It evolves as the organization learns, with built-in feedback loops rather than static plans."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

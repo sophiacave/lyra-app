@@ -53,6 +53,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Monitoring — Match Each Metric to What It Tells You","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Latency p50/p95/p99","right":"Response time distribution — lets you know if slow responses are rare outliers or a systemic problem"},{"left":"Token usage per call","right":"Maps directly to cost and identifies expensive prompts or unexpectedly verbose responses"},{"left":"Cache hit rate","right":"How often cached responses serve users vs. making a fresh API call — low rates mean overspending"},{"left":"Response quality signals","right":"User thumbs up/down, edit rates, and automated output quality checks — catches model regressions"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Alerts</span>
   <h2 class="section-title">Alerting That Matters</h2>
   <p class="section-text"><strong>Cost alerts:</strong> Daily spend exceeds 2x the average. This catches runaway usage before the monthly bill arrives.</p>
@@ -73,6 +77,10 @@ type: "lesson"
 <div class="try-it-box">
   <h3>Try it yourself</h3>
   <div class="prompt-box"><code>Create a Supabase table called ai_operation_logs with columns for timestamp, user_id, provider, model, input_tokens, output_tokens, latency_ms, estimated_cost, and status. Write an edge function that inserts a log entry after every AI API call. Then write a SQL query that shows daily cost by provider for the last 7 days.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Monitoring and Observability Quiz","questions":[{"q":"Why is AI monitoring fundamentally different from traditional monitoring?","options":["AI apps are slower","A 200 OK response from an AI endpoint can contain complete nonsense — working and working correctly are two different things","AI apps are more expensive","AI logs are harder to parse"],"correct":1,"explanation":"Traditional monitoring checks if your server is up and responding. AI monitoring must also check if the responses are accurate, appropriate, and high quality — a technically successful call can still return harmful or useless output."},{"q":"What structured log fields should every AI operation produce?","options":["Just timestamp and user ID","Timestamp, user ID, provider, model, input tokens, output tokens, latency, estimated cost, and success/failure status","Only error messages","Only the prompt and response"],"correct":1,"explanation":"This structured log gives you everything needed to reconstruct pipeline state when debugging, audit costs per user and feature, and build meaningful dashboards for operational visibility."},{"q":"What is the risk of having too many alerts?","options":["It costs too much storage","Alert fatigue — if you get more than 2-3 alerts per day, you start ignoring them, which is worse than having no alerts at all","It slows down the application","Alerts cause the AI to behave differently"],"correct":1,"explanation":"Alert volume discipline is critical. Overly sensitive thresholds train your team to ignore alerts — meaning the one real critical alert gets missed. Keep thresholds meaningful and alert volume low."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

@@ -97,6 +97,18 @@ free: false
   <p>Congratulations. You started this course wondering what AI images were. You are finishing it with a complete skillset, a personal workflow, and the confidence to create anything you can imagine. That is not a small thing. Go make something beautiful.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Course Review</span>
+  <h2 class="section-title">The Multi-Tool Pipeline</h2>
+  <div data-learn="SortStack" data-props='{"title":"Visual Creation Pipeline — In Order","instruction":"Arrange the six pipeline steps in the correct sequence","items":["Concept — use ChatGPT to brainstorm and sharpen the idea","Generate — create base image in Midjourney, DALL-E, or Stable Diffusion","Refine — inpainting, edits, and detail fixes","Enhance — upscale and color correction","Design — add text and branding in Canva or Figma","Animate — optionally turn final image into video with Runway or Pika"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Final Check</span>
+  <h2 class="section-title">Course Completion Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Building Your Visual Workflow","questions":[{"q":"What is the most valuable creative asset you can build as an AI visual creator?","options":["A fast computer with a good GPU","A subscription to every AI image tool","A prompt library of tested, effective prompts organized by category","A large social media following"],"correct":2,"explanation":"Your prompt library grows more valuable over time. Brand prompts, proven winners, style keywords, and fill-in-the-blank templates turn hours of work into minutes of configuring."},{"q":"What is the recommended approach to managing your AI Visuals file library?","options":["Save every image you generate to preserve all options","Delete ruthlessly — keep the 2 winners and delete the 8 others","Organize by creation date only","Keep drafts and finals in the same folder for easy access"],"correct":1,"explanation":"A curated library is infinitely more useful than a digital junk drawer. If you generated 10 images and picked 2, delete the other 8. Fewer, better files are easier to find and use."},{"q":"What is the benefit of the weekly creative practice recommendation?","options":["It helps you meet deadlines faster","Play time with no pressure is where the biggest creative breakthroughs happen","Weekly practice is required to maintain your account","It helps you memorize more prompt keywords"],"correct":1,"explanation":"When pressure is off and curiosity takes over, you experiment with styles you have never tried. Those experiments are where your unique visual voice emerges — not in production work under a deadline."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/ethics-and-copyright">&larr; Previous: Ethics and Copyright</a>
   <a href="/academy/ai-images-and-video/">Back to Course Home &rarr;</a>

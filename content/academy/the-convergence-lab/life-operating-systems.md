@@ -55,6 +55,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The four life OS domains.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Life OS Domain to Its Responsibilities","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Work","right":"Project management, deployments, email triage, and meeting prep"},{"left":"Finances","right":"Bill tracking, subscription management, tax prep, and spending anomaly alerts"},{"left":"Health","right":"Medication reminders, appointment scheduling, and habit nudges"},{"left":"Communication","right":"Email drafting, social management, and relationship maintenance"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Principle</span>
   <h2 class="section-title">Carrying the Weight</h2>
   <p class="section-text">The core principle of a life OS is weight-carrying. The AI doesn't create tasks for the human — it eliminates them. Every notification, every reminder, every "you should probably..." is cognitive load. A great life OS reduces that load to near zero.</p>
@@ -74,6 +80,13 @@ For each one, ask: could an AI with full context and
 the right integrations handle this autonomously?
 Circle the ones where the answer is yes.
 That's your life OS roadmap.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Life operating systems quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Life Operating Systems","questions":[{"q":"What is the productivity paradox that convergence solves?","options":["Productivity tools are too expensive","Every productivity app assumes you have the executive function to use it — the people who need it most are exactly those who cannot maintain the system","Productivity apps do not integrate with AI","Productivity systems require too much initial setup"],"correct":1,"explanation":"ADHD, chronic illness, mental health challenges — millions of people need life management support but every tool demands they manage the tool first. A life OS flips this: AI manages, the human lives."},{"q":"What is the core principle that distinguishes a life OS from a regular productivity tool?","options":["A life OS uses more advanced AI","Weight-carrying: the AI does not create tasks for the human, it eliminates them — reducing cognitive load toward zero","A life OS has more integrations","A life OS sends more reminders"],"correct":1,"explanation":"The human should wake up and see a clean slate. Not a list of things to manage but a summary of things already handled. That is the life OS principle: carry the weight, do not redistribute it."},{"q":"What does the ideal morning output from a life OS look like?","options":["A detailed to-do list for the day","A summary of what was handled overnight, the top priority, and materials ready for the first meeting — nothing for the human to manage","A calendar view with all appointments","A list of emails requiring responses"],"correct":1,"explanation":"The life OS morning briefing surfaces what the human needs to know, not what they need to do. Everything actionable is already handled or staged. The human makes creative and strategic decisions."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

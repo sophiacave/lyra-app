@@ -53,6 +53,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"CI/CD Deployment Strategies for AI Apps","cards":[{"front":"Contract Testing for AI","back":"Don\u2019t test the exact response — test the shape. Does it have the expected fields? Is it within expected length? Does it contain required information?"},{"front":"Eval Suites","back":"A set of known questions with acceptable answer ranges. Run on every deploy to flag regressions when answers drift outside acceptable bounds."},{"front":"Blue-Green Deployment","back":"Run two identical environments. Deploy to inactive one, verify, then switch traffic. Instant rollback if something breaks."},{"front":"Canary Deployment","back":"Route 5-10% of traffic to the new version. Monitor error rates, latency, and costs before increasing to 100%."},{"front":"Feature Flags for AI","back":"Ship the new AI feature hidden behind a flag, enable for internal users first, then roll out gradually — decouples deployment from release."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Secrets</span>
   <h2 class="section-title">Environment Variables Across Environments</h2>
   <p class="section-text">AI apps often have more secrets than traditional apps: LLM API keys, embedding service keys, vector database credentials, webhook secrets. Managing these across development, staging, and production environments requires discipline.</p>
@@ -68,6 +72,10 @@ type: "lesson"
 <div class="try-it-box">
   <h3>Try it yourself</h3>
   <div class="prompt-box"><code>Set up a GitHub Action that deploys a Supabase edge function when files in the supabase/functions/ directory change. Include a post-deploy step that curls the function's endpoint and verifies a 200 response. Bonus: add a step that checks the function's response time is under 5 seconds.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Deployment Strategies Quiz","questions":[{"q":"Why can\u2019t traditional tests that assert exact outputs be used for AI systems?","options":["AI systems are too fast","AI systems are non-deterministic — the same question can produce different responses, so exact-match testing fails","AI responses are too long to compare","AI APIs don\u2019t support testing"],"correct":1,"explanation":"Traditional tests check exact outputs. AI systems are probabilistic — ask the same question twice and get different responses. Instead, test shape, structure, and whether required information is present."},{"q":"What is the advantage of using different API keys for staging vs. production environments?","options":["It is cheaper","Staging tests cannot accidentally exhaust your production budget, and spending caps can be set separately per environment","It is required by API providers","It makes debugging easier"],"correct":1,"explanation":"Using separate keys with lower spending caps for staging means your testing and development activity has zero impact on your production budget — a critical discipline as test volume grows."},{"q":"What is the critical addition to a CI/CD pipeline specifically for AI apps?","options":["Code coverage requirements","Verifying that API keys are set, rate limits are configured, and AI providers are reachable before traffic hits the new deployment","Automated code formatting","Load testing"],"correct":1,"explanation":"Standard CI/CD pipelines don\u2019t check AI-specific configuration. A post-deploy smoke test that verifies API connectivity and key configuration catches silent failures that only appear under live traffic."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

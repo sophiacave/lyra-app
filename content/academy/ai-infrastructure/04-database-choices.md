@@ -51,6 +51,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Database Types — Match Each to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"PostgreSQL","right":"Structured application data — users, subscriptions, transactions, relationships"},{"left":"pgvector","right":"Adds vector similarity search to PostgreSQL without a separate database"},{"left":"Dedicated Vector DB (Pinecone)","right":"Billions of vectors requiring sub-millisecond latency at massive scale"},{"left":"PostgreSQL JSONB","right":"Flexible schema data — conversation logs, AI outputs, varying metadata — without adding NoSQL"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">Designing for AI and Traditional Queries</h2>
   <p class="section-text">The most practical architecture for most AI apps: PostgreSQL with pgvector on Supabase. One database handles your users table, your content table with embedding columns, and your application logic — all with SQL you already know.</p>
@@ -69,6 +73,10 @@ type: "lesson"
 <div class="try-it-box">
   <h3>Try it yourself</h3>
   <div class="prompt-box"><code>Enable pgvector on a Supabase project. Create a table with a text column and a vector(384) embedding column. Insert 10 text entries with embeddings generated from a free embedding API (like HuggingFace BGE-small). Write a similarity search query that finds the 3 most relevant entries for a given input.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Database Choices Quiz","questions":[{"q":"Why does pgvector on Supabase work well for most AI apps?","options":["It is faster than all dedicated vector databases","For most applications under 1 million vectors, pgvector performs well — and you get semantic search without adding a separate database to manage","It is completely free","It scales to billions of vectors automatically"],"correct":1,"explanation":"pgvector gives you semantic similarity search inside PostgreSQL, meaning one connection, one backup strategy, one set of credentials — and full SQL power alongside vector search for the vast majority of use cases."},{"q":"What is the practical advantage of storing embeddings alongside content in the same database row?","options":["It uses less storage","You can query by vector similarity and retrieve the full content with all its metadata in one query, rather than cross-referencing two separate systems","It is faster to generate embeddings","It makes backups easier"],"correct":1,"explanation":"Co-locating content and its embedding means a single similarity search returns everything you need — the matching text, its metadata, and related structured fields — without expensive cross-database joins."},{"q":"Before reaching for a separate NoSQL database, what should PostgreSQL users try first?","options":["MongoDB Atlas free tier","Redis cache","PostgreSQL JSONB columns for flexible schema data","DynamoDB"],"correct":2,"explanation":"PostgreSQL JSONB columns provide most of the flexibility of a NoSQL database — storing variable-shape documents alongside your relational data — without adding another service to manage."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

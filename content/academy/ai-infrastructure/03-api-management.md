@@ -54,6 +54,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"API Management — Match Each Rule to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Keys in environment variables","right":"Prevents API keys from being committed to GitHub or hardcoded in frontend code"},{"left":"Server-side only calls","right":"Ensures your AI provider keys are never exposed in browser JavaScript"},{"left":"Per-user rate limits","right":"Prevents any single user from burning through your API budget"},{"left":"Exponential backoff","right":"Waits 1s, then 2s, then 4s before retrying — avoids hammering a struggling API"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Resilience</span>
   <h2 class="section-title">Retries, Fallbacks, and Graceful Degradation</h2>
   <p class="section-text">AI APIs go down. They time out. They return errors. Your app needs to handle all of this gracefully.</p>
@@ -70,6 +74,10 @@ free: true
 <div class="try-it-box">
   <h3>Try it yourself</h3>
   <div class="prompt-box"><code>Build a simple edge function that proxies requests to an AI API. Add rate limiting (max 10 requests per minute per IP), cost logging (track token counts), and exponential backoff retry logic. Deploy it to Supabase or Vercel.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"API Management Quiz","questions":[{"q":"Why should AI API calls NEVER be made directly from the browser?","options":["It is too slow","Your API key would be visible in browser JavaScript, exposing it to anyone who inspects the page","It violates browser security policies","It costs more per request"],"correct":1,"explanation":"Browser JavaScript is visible to anyone using developer tools. An AI API key in frontend code is effectively public — anyone can scrape it and rack up thousands of dollars in minutes."},{"q":"What should you track per feature to make informed product and pricing decisions?","options":["Total monthly API spend only","Cost per feature, not just total cost — your chatbot might cost $0.02 per conversation while document analysis costs $0.50","Number of API calls only","Average response time only"],"correct":1,"explanation":"Feature-level cost tracking reveals which parts of your product are expensive — informing which features to optimize, which to price higher, and which to reconsider building at all."},{"q":"What is graceful degradation in the context of AI apps?","options":["Using a cheaper model when the expensive one is too slow","When all AI providers are down, your app still functions without AI — showing cached responses or queuing requests rather than an error page","Reducing response quality to save costs","Disabling AI features for free users"],"correct":1,"explanation":"A blank screen when your AI provider goes down is a terrible user experience. Graceful degradation means your app continues to provide value — with cached data, manual options, or queued processing — even without live AI."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

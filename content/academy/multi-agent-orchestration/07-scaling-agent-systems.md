@@ -87,9 +87,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Tiered model strategy.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Agent Task to Its Optimal Model Tier","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Complex reasoning and analysis","right":"Premium model — GPT-4o or Claude Opus"},{"left":"Writing and research with context","right":"Mid-tier model — Claude Sonnet or GPT-4o mini"},{"left":"Routing and classification decisions","right":"Small cheap model — Haiku or similar"},{"left":"Deterministic validation and formatting","right":"Rule-based logic — no LLM needed at all"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Scale Smart, Not Just Big</h2>
   <p class="section-text">Scaling multi-agent systems is about efficiency, not just capacity. The best production systems use the cheapest model that gets the job done for each agent, parallelize everything they can, cache aggressively, and fail gracefully. An optimized 5-agent system will outperform and outlast a brute-force 20-agent system every time.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Scaling agent systems quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Scaling Agent Systems","questions":[{"q":"How does tiered model strategy achieve 78% cost reduction without sacrificing quality?","options":["By using cheaper hardware","By matching model capability to task complexity — premium models only for tasks that actually need deep reasoning","By reducing the number of agents in the system","By caching all outputs and never regenerating"],"correct":1,"explanation":"Routing, formatting, and classification tasks do not need premium reasoning models. Only the research and analysis agents genuinely benefit from the expensive model. Everyone else gets the right-sized, cheaper option."},{"q":"How can parallelization cut total pipeline latency by 50-70%?","options":["By using faster API endpoints","By running agents that share the same input and produce independent outputs simultaneously instead of sequentially","By reducing the size of messages between agents","By eliminating quality gates from the pipeline"],"correct":1,"explanation":"Map your agent dependencies. Any agents that can start from the same input and produce independent outputs are candidates for parallel execution. Running them simultaneously rather than in sequence slashes total time."},{"q":"What is a circuit breaker in the context of agent system reliability?","options":["A safety mechanism that shuts down all agents when an error occurs","If an agent fails three times in a row, stop calling it and fall back to an alternative — preventing cascading failures","A timeout that limits how long an agent can run","An alert that notifies humans when an agent produces low-confidence output"],"correct":1,"explanation":"Circuit breakers prevent a single failing agent from burning tokens and time on repeated failed calls. Stop after three failures, switch to a fallback, and surface an alert for human investigation."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

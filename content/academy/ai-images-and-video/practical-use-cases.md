@@ -92,6 +92,18 @@ free: false
   <p>Pick one practical project from this lesson that you actually need right now. Maybe it is a presentation you have coming up, a social media graphic, or a thumbnail for content you are creating. Use everything you have learned — the prompt framework, style keywords, editing and refinement — to create something you will actually use. This is not practice anymore. This is production.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Use Cases and Workflows</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Practical AI Visual Use Cases","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Business card background","right":"Generate abstract pattern, then overlay contact details in Canva"},{"left":"Presentation slides","right":"Generate 16:9 soft-focus backgrounds in a consistent style for all slides"},{"left":"YouTube thumbnails","right":"Generate bold high-contrast background, add face and text in design tool"},{"left":"Product mockups","right":"Generate lifestyle context image showing product in realistic setting before production"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 8 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Practical Use Cases","questions":[{"q":"What makes a great YouTube thumbnail when using AI-generated backgrounds?","options":["Subtle, quiet backgrounds with no contrast","Bold, high-contrast images that are immediately readable at small sizes","Complex detailed scenes with lots of elements","Soft pastel colors and minimal contrast"],"correct":1,"explanation":"Thumbnails need to grab attention at small sizes on mobile screens. Bold contrast, clear composition, and space for text overlay are the key requirements."},{"q":"Why should you keep email graphics simple and bold?","options":["Email clients do not support images","Email graphics need to look good at small sizes and load quickly — complex detail is wasted","Simple graphics are cheaper to generate","Email subscribers prefer text-only emails"],"correct":1,"explanation":"Email images display at small sizes and must load fast. Flat illustrations, clean icons, and simple scenes work better than complex detailed images in this context."},{"q":"What is the key workflow for using AI in presentations?","options":["Generate one image for the entire presentation","Generate unique images for each individual word on each slide","Create backgrounds in a consistent style and color palette so the whole deck feels cohesive","Always use text-only slides — AI images distract from the content"],"correct":2,"explanation":"Using the brand prompt technique — consistent style, color palette, artistic approach — across all slides makes the entire presentation feel intentional and professional rather than a random collection."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/ai-video-basics">&larr; Previous: AI Video Basics</a>
   <a href="/academy/ai-images-and-video/ethics-and-copyright">Next: Ethics and Copyright &rarr;</a>

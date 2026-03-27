@@ -70,9 +70,22 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Content calendar building blocks.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Content Strategy Concepts","cards":[{"front":"Content Pillars","back":"3-5 core themes your brand owns. Every piece of content traces back to a pillar."},{"front":"Editorial Calendar","back":"A structured plan mapping what you create, when you publish it, and on which platform."},{"front":"The 40/30/20/10 Ratio","back":"40% educational, 30% engaging, 20% personal/story, 10% promotional — the balanced content mix."},{"front":"Emotional Hook","back":"The feeling that drives someone to click. Every high-performing piece connects to a specific emotion."},{"front":"Content Gap","back":"Topics your audience searches for that you have not yet covered — your opportunity for new traffic."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Mindset</span>
   <h2 class="section-title">Strategy is a living document.</h2>
   <p class="section-text">Your calendar isn't carved in stone. Every two weeks, check in with AI: <em>"Here's what performed well and what flopped. Adjust next month's strategy based on these results."</em> This feedback loop is what separates creators who grow from creators who plateau. Strategy + AI + iteration = compound growth.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Content strategy quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Content Strategy with AI","questions":[{"q":"What does a content pillar do for your strategy?","options":["Sets your posting schedule","Ensures every piece of content connects to a core theme","Determines which platform to publish on","Generates post ideas automatically"],"correct":1,"explanation":"Content pillars are the 3-5 core themes your brand owns. They keep your content focused and make your brand recognizable over time."},{"q":"When using AI for audience research, what makes the prompt truly effective?","options":["Asking for as many topics as possible","Feeding AI real information about your audience and asking for emotional hooks","Requesting only SEO-friendly topics","Keeping the prompt as short as possible"],"correct":1,"explanation":"Feeding AI real audience data and asking for the emotional hook behind each topic is what separates surface-level ideas from content that actually resonates."},{"q":"Why is a content strategy considered a living document?","options":["You should rewrite it every week","It changes based on what performance data tells you actually works","AI updates it automatically","It must align with trending topics daily"],"correct":1,"explanation":"Every two weeks, checking with AI about what performed well and adjusting next month creates the feedback loop that separates growing creators from plateauing ones."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -76,9 +76,22 @@ Format as a table: Day | Platform | Format | Angle | Time"</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Distribution sequence touchpoints.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Distribution Sequence for One Blog Post","cards":[{"front":"Day 0 — Publish","back":"Blog post goes live. Email newsletter sends with teaser. Twitter thread posts simultaneously."},{"front":"Day 1","back":"LinkedIn post goes live with a different angle than Twitter. Instagram carousel queued for the afternoon."},{"front":"Day 3","back":"Follow-up tweet with a key quote graphic. Cross-post to relevant communities and forums."},{"front":"Day 7","back":"In case you missed it email to non-openers. Repurposed short-form video posts on YouTube or TikTok."},{"front":"Day 14","back":"Update the post with any new data or insights. Re-share on social with the update as the hook."},{"front":"Day 30","back":"Performance review. Feed results back into the pipeline to optimize future distribution sequences."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The System</span>
   <h2 class="section-title">Distribution Is a Pipeline, Not a Task</h2>
   <p class="section-text">When you treat distribution as part of the pipeline rather than something you do after the pipeline, everything changes. The content is created with distribution in mind. The formats are platform-ready. The calendar is pre-filled. The human just reviews and approves. That's a system that runs itself.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Scheduling and distribution quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Scheduling and Distribution","questions":[{"q":"Why does a distribution plan need to be part of the pipeline itself rather than an afterthought?","options":["It is cheaper to plan distribution early","Content created with distribution in mind is platform-ready from the start — formats, angles, and timing are baked in","Distribution planning is too complex to automate","Early distribution planning prevents publishing mistakes"],"correct":1,"explanation":"When distribution is the final pipeline stage, content is created knowing where it will go. The formats are platform-ready, the calendar is pre-filled, and the human just reviews and approves."},{"q":"What is the key role of automation tools like Zapier or Make in a distribution pipeline?","options":["They write the content for you","They connect pipeline output to publishing tools so pre-staged content schedules automatically — human reviews, not builds","They optimize content for each platform automatically","They measure performance across all channels"],"correct":1,"explanation":"Automation bridges your pipeline output and your publishing tools. The human role becomes approving pre-staged content rather than building from scratch under deadline pressure."},{"q":"Why should publishing cadence match your capacity rather than your ambition?","options":["Algorithms prefer predictable posting frequencies","Three pieces a week published consistently beats ten pieces once followed by silence — consistency compounds trust","Fewer pieces means more time to promote each one","Algorithms reward lower volume content"],"correct":1,"explanation":"Your pipeline makes consistency easy. The calendar enforces it. Three consistent pieces a week builds more audience trust and algorithmic momentum than sporadic high-volume bursts."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

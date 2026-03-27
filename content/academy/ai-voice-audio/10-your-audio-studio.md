@@ -77,6 +77,18 @@ type: "lesson"
   <p>Document your pipeline. Test it with one real piece of content. Refine it. Run it again. By the third iteration, you'll have a system that produces professional audio as naturally as breathing. That's your studio. You built it. Now use it to make something that matters.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Course Review</span>
+  <h2 class="section-title">Five Core Audio Pipelines</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Audio Studio Pipelines","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Content Pipeline","right":"Idea to script to voice to music to edit to master to publish"},{"left":"Repurposing Pipeline","right":"Long recording to transcript to clips to show notes to blog post"},{"left":"Production Pipeline","right":"Script to multi-voice generation to mix to master to distribute"},{"left":"Intelligence Pipeline","right":"Audio archive to batch transcribe to index to search to analyze patterns"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Final Check</span>
+  <h2 class="section-title">Course Completion Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Your Audio Studio","questions":[{"q":"What is the key principle for deciding what to automate in your audio pipelines?","options":["Automate everything immediately","Automate the plumbing, not the judgment — keep human oversight on quality-critical decisions","Never automate any part of audio production","Automation only works for transcription tasks"],  "correct":1,"explanation":"Automate the mechanical steps — file watching, transcription triggering, format conversion. Keep humans in the loop for voice selection, final content approval, and anything public-facing. Automate the plumbing, not the judgment."},{"q":"What skill underlies all the AI audio tools and will outlast any specific technology?","options":["Python programming","Knowledge of specific tool interfaces","Your ear — the ability to hear what sounds right and what doesn&#39;t","Speed of working"],"correct":2,"explanation":"The tools will change. New models will drop. Platforms will merge and disappear. What doesn&#39;t change is your ear — your ability to hear what sounds right. That critical listening practice is what separates operators from engineers."},{"q":"What makes a connected pipeline system more valuable than individual tools used separately?","options":["Connected tools cost less than individual subscriptions","Individual tools are always more powerful","Each pipeline takes a specific input and produces a specific output reliably — the tools can change but the structure stays","Pipelines only work for large organizations"],"correct":2,"explanation":"Your studio is a set of tested, reliable pipelines. When better tools emerge, you swap them in. The pipeline structure — what goes in, what comes out, what happens between — remains stable and compounds in value over time."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/audio-editing-with-ai/" class="prev">← Audio Editing with AI</a>
   <a href="/academy/ai-voice-audio/" class="next">Back to Course Overview →</a>

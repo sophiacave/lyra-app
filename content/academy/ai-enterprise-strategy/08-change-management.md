@@ -42,6 +42,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Change Management Playbook — Match Step to Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Find Champions","right":"Identify curious, eager early adopters and give them early access, training, and a mandate to explore"},{"left":"Engineer Quick Wins","right":"Deploy AI to solve a widely-complained-about problem so adoption sells itself through genuine value"},{"left":"Let Success Snowball","right":"Document wins, share metrics, let champions train peers — organic adoption beats top-down mandates"},{"left":"Create Feedback Channels","right":"Let people voice concerns without judgment — they often surface real risks strategists miss"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Communication Strategy</span>
   <h2 class="section-title">Tell the Story Before Someone Else Does</h2>
   <p class="section-text">If you do not control the narrative around AI in your organization, the rumor mill will. Be proactive. Communicate early, often, and honestly. Explain why you are investing in AI, what it means for the company, and what it means for individuals. Use concrete examples, not abstract promises.</p>
@@ -60,6 +64,10 @@ type: "lesson"
   <span class="section-label">The Like One Perspective</span>
   <h2 class="section-title">Transformation Is Human Work</h2>
   <p class="section-text">AI transformation is not a technology project with a human component. It is a human project with a technology component. The organizations that lead with empathy, invest in their people, and treat change as a conversation rather than a decree are the ones that actually transform. Technology is the tool. People are the strategy.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Change Management Quiz","questions":[{"q":"What are employees actually afraid of when AI is introduced?","options":["The technology being too hard to learn","What AI means for them — job security, relevance, and their professional identity","Data privacy","System downtime"],"correct":1,"explanation":"People are not afraid of AI itself. They are afraid of what it means for their role, their relevance, and how they see themselves professionally. This fear must be addressed directly and honestly."},{"q":"Why does the rumor mill fill the vacuum when you don\u2019t communicate proactively?","options":["Employees always distrust leadership","People create narratives from incomplete information — and those narratives are usually worse than reality","AI implementations always fail","Communication is too expensive to do well"],"correct":1,"explanation":"If you don\u2019t control the narrative around AI, fear and speculation will. Proactive, honest communication about what is changing, what is not, and what it means for individuals prevents misinformation from taking root."},{"q":"What does framing AI as a promotion rather than a threat mean in practice?","options":["Promise employees raises when AI is deployed","Show how AI removes tedious work, freeing time for complex and meaningful problems","Tell employees AI will never replace anyone","Let employees decide whether to use AI"],"correct":1,"explanation":"The customer service agent who spends 80% of their day on repetitive tickets can now focus on complex, meaningful interactions. Helping people see this shift as professional growth drives adoption better than any mandate."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

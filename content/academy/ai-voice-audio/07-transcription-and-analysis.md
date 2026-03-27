@@ -70,6 +70,18 @@ type: "lesson"
   <p>You just turned a rambling voice memo into a content plan. This is the audio-to-insight pipeline. Once you build it, you'll use it for everything.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Transcription Tools</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Transcription Platforms and Strengths","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Whisper (local)","right":"Free, no data leaves your computer — best for privacy-sensitive content"},{"left":"Deepgram","right":"Fastest cloud transcription with real-time streaming and excellent speaker diarization"},{"left":"AssemblyAI","right":"Best for analysis beyond transcription — sentiment, topic detection, PII redaction built in"},{"left":"Descript","right":"Transcription plus editing in one — edit audio by editing the text transcript"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 7 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Transcription and Analysis","questions":[{"q":"What made OpenAI Whisper significant for the transcription industry?","options":["It was the first transcription software ever","It achieved near-human accuracy across 99 languages as open-source, making transcription essentially free","It can only transcribe English","It requires expensive hardware to run"],  "correct":1,"explanation":"Whisper&#39;s open-source release achieved near-human accuracy across 99 languages. Transcription that used to cost dollars per minute became essentially free. Every tool in the space now either uses Whisper or competes with it."},{"q":"What is speaker diarization?","options":["A method for improving audio quality","Identifying who spoke when in a multi-person recording","Translating speech to another language","Removing background noise from recordings"],  "correct":1,"explanation":"Speaker diarization tags each audio segment with a speaker label — identifying who said what and when. This is critical for meetings, interviews, and any multi-person recording where you need to attribute statements."},{"q":"What is the most valuable outcome of building a searchable audio archive?","options":["You can play recordings at faster speeds","You can search across hundreds of hours of recordings by keyword in seconds","The files take up less storage space","Recordings automatically delete after a set period"],"correct":1,"explanation":"Once your audio library is transcribed and indexed, you can search across all of it instantly. Meeting recordings, podcast episodes, voice memos — all become searchable text rather than locked audio files."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/music-and-sound-design/" class="prev">← Music & Sound Design</a>
   <a href="/academy/ai-voice-audio/voice-interfaces/" class="next">Next: Voice Interfaces →</a>

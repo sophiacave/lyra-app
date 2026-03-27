@@ -70,6 +70,18 @@ free: true
   <p style="color: var(--dim);">Notice how natural it feels. No technical setup. Just a conversation with your data.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Match the Concept</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Data Analysis Concepts","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Thinker role in AI analysis","right":"The human asking questions"},{"left":"Calculator role in AI analysis","right":"The AI crunching numbers"},{"left":"Key skill for AI-powered analysis","right":"Asking better questions"},{"left":"What AI replaces in data work","right":"Manual formulas and pivot tables"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 1 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Data Analysis Meets AI","questions":[{"q":"What is the most important skill in AI-powered data analysis?","options":["Python programming","SQL knowledge","Curiosity and asking good questions","Excel formula writing"],"correct":2,"explanation":"AI handles the technical computation. Your job is to ask the right questions — curiosity drives the quality of insights you get back."},{"q":"Which statement best describes the mindset shift AI brings to data analysis?","options":["AI replaces the need for any human judgment","You become the thinker, AI becomes the calculator","AI is only useful for large enterprise datasets","You need technical skills to benefit from AI analysis"],"correct":1,"explanation":"AI flips the dynamic: you focus on thinking and asking questions, while AI handles the number-crunching and pattern-spotting."},{"q":"What is the biggest barrier AI removes from traditional data analysis?","options":["The need for any data at all","The requirement for Excel, SQL, or coding skills","The time it takes to collect data","The cost of cloud storage"],"correct":1,"explanation":"Traditional analysis required knowing tools like Excel formulas, pivot tables, or SQL. AI lets anyone ask questions in plain English and get real answers."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <span></span>
   <a href="/academy/ai-for-data-analysis/02-asking-the-right-questions/">Next: Asking the Right Questions →</a>

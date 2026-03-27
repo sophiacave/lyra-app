@@ -76,6 +76,18 @@ free: false
   <div class="prompt-box"><code>Here are [N] pieces of customer feedback. Please: 1) Identify the top themes with percentage breakdown, 2) Score overall sentiment, 3) Find the 3 most actionable pieces of feedback — things we could realistically improve based on what people are saying.</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Qualitative Analysis Techniques</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"AI Text Analysis Methods","cards":[{"front":"Sentiment Analysis","back":"Classifies responses as positive, negative, neutral, or mixed — can also score intensity so great is less positive than life-changing"},{"front":"Theme Extraction","back":"AI reads all responses and groups them into themes that emerge naturally without you needing to predefine categories"},{"front":"Categorization","back":"When you have predefined buckets, AI sorts hundreds of responses into your categories faster than any human could"},{"front":"Mixing Qual and Quant","back":"Numbers tell you what happened. Words tell you why. Combining both reveals the story behind the metrics"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 7 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Survey and Feedback Analysis","questions":[{"q":"Why is qualitative data analysis harder to do manually than quantitative data?","options":["There is always less qualitative data","Words cannot be analyzed for patterns","You cannot aggregate words the way you aggregate numbers — you have to read and interpret each response","AI cannot process text data"],"correct":2,"explanation":"Numbers can be averaged, summed, and sorted in seconds. Words require reading every response, identifying themes, and somehow quantifying something inherently qualitative — which used to take days."},{"q":"What is the key warning about feedback data bias?","options":["Positive feedback is always fake","People who leave feedback are not a random sample — extremes respond more than the quiet middle","AI cannot detect sentiment in feedback","You should only analyze 5-star reviews"],"correct":1,"explanation":"Angry customers and delighted customers respond. The middle majority usually doesn&#39;t. This creates a skewed sample, so ask AI to flag this limitation so you don&#39;t over-index on extreme sentiments."},{"q":"What is the most powerful use of qualitative and quantitative data together?","options":["Combining them makes analysis too complex","Qualitative data replaces the need for numbers","Numbers show what happened, qualitative responses reveal why it happened","They should always be analyzed separately"],"correct":2,"explanation":"If your data shows a Q3 churn spike, feedback from Q3 churners might explain the cause — a pricing change, feature removal, or competitor launch. Together they tell the full story."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/06-pattern-recognition/">← Previous: Pattern Recognition</a>
   <a href="/academy/ai-for-data-analysis/08-financial-data-analysis/">Next: Financial Data Analysis →</a>

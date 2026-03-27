@@ -50,6 +50,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"The Three Pillars of AI Infrastructure","cards":[{"front":"Pillar 1: Compute","back":"AI compute comes as self-hosted GPUs or API-based calls (OpenAI, Anthropic). APIs scale with usage — every request has a direct marginal cost unlike fixed server costs."},{"front":"Pillar 2: Memory (Vector Databases)","back":"Stores embeddings — numerical representations of text or data — and lets you search by semantic similarity rather than exact keyword match."},{"front":"Pillar 3: Orchestration","back":"Chains multiple operations: retrieve context, construct prompt, call LLM, parse response, maybe call a tool, respond. Handles timeouts, retries, streaming, and logging."},{"front":"Why is AI infrastructure fundamentally different?","back":"Variable latency (2-30 seconds per call), direct marginal cost per request, non-linear GPU scaling, and semantic memory needs make AI apps behave nothing like traditional web apps."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Pillar Three</span>
   <h2 class="section-title">Orchestration: Chaining Intelligence</h2>
   <p class="section-text">Real AI applications rarely make a single API call. They chain operations: retrieve context from a vector database, construct a prompt, call an LLM, parse the response, maybe call a tool, then respond to the user. This orchestration layer is where most complexity lives.</p>
@@ -73,6 +77,10 @@ free: true
   <h2 class="section-title">Infrastructure Is the Foundation</h2>
   <p class="section-text">You can write the most elegant AI code in the world, but if your infrastructure can't handle variable latency, unpredictable costs, and semantic search — it'll break under real usage. The rest of this course teaches you how to build infrastructure that doesn't break.</p>
   <p class="section-text">Every lesson builds on this foundation. We'll cover cloud platforms, API management, databases, deployment, monitoring, costs, security, scaling, and finally — putting it all together into your own production stack.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"AI Infrastructure Fundamentals Quiz","questions":[{"q":"What is the key cost difference between traditional hosting and AI API usage?","options":["AI APIs are always cheaper","Traditional apps have mostly fixed costs; AI apps have direct marginal cost per request that scales with every user interaction","AI APIs have fixed monthly pricing","Traditional apps are more expensive at scale"],"correct":1,"explanation":"In traditional apps, more users means more server instances at roughly linear cost. With AI APIs, every single request has a direct dollar cost — doubling users doubles your AI bill."},{"q":"What does a vector database store and search by?","options":["SQL rows and columns with exact keyword matching","Embeddings — numerical representations of data — searched by semantic similarity","JSON documents searched by field values","File metadata searched by filename"],"correct":1,"explanation":"Vector databases enable semantic search: finding content similar in meaning to a query, even if it contains different words. This is fundamentally different from keyword search and powers RAG systems."},{"q":"What is the orchestration layer responsible for in an AI app?","options":["Storing user data","Chaining operations: retrieving context, calling LLMs, parsing responses, handling retries and timeouts","Serving frontend pages","Managing API keys"],"correct":1,"explanation":"Real AI apps rarely make a single API call. The orchestration layer manages the sequence of operations, handles failures gracefully, streams partial responses, and logs every step for debugging."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

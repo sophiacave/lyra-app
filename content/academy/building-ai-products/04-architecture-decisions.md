@@ -61,6 +61,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Architecture Options — Match Each to When to Use It","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Prompt Engineering","right":"First tool — free to iterate, instant to deploy, handles 80% of use cases"},{"left":"RAG","right":"When the model needs your data — product docs, knowledge bases, user history"},{"left":"Fine-Tuning","right":"When you need fundamental behavior change — specific tone, specialized vocabulary — not a phase 1 choice"},{"left":"Open-Source Models","right":"After product-market fit, when API costs exceed GPU infrastructure costs and traffic is predictable"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Practical</span>
   <h2 class="section-title">The Starter Stack</h2>
   <p class="section-text">For most AI products on day one: a frontend (Next.js, Svelte, or even a static site), a backend that handles auth and billing (Supabase, Firebase), an AI API (Claude or GPT), and a vector database for RAG (pgvector, Pinecone). That's it. Four components. Ship fast, optimize later.</p>
@@ -73,6 +77,10 @@ free: false
 2. Does it need a unique behavior? → Yes: Consider fine-tuning. No: Stay with prompts.
 3. Do I need &lt;100ms response? → Yes: Consider open source. No: APIs are fine.
 4. Am I spending &gt;$500/mo on API calls? → Yes: Evaluate open source. No: Stay with APIs.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Architecture Decisions Quiz","questions":[{"q":"When should you choose to fine-tune a model?","options":["For every AI product from day one","As a phase 2 optimization when you have domain-specific data that general models cannot match and product-market fit is proven","To save money on API costs","When you want faster response times"],"correct":1,"explanation":"Fine-tuning is expensive, requires clean data, locks you to a specific model version, and is hard to iterate on. It\u2019s a phase 2 optimization for when you have the data and PMF to justify it — never a phase 1 choice."},{"q":"Why should you build model-agnostic from day one?","options":["It is easier to build","Today you use Claude; tomorrow GPT-5 drops, or an open-source model matches quality at 1/10th the cost — a config change should swap models, not a rewrite","All models produce the same results","It is required for production apps"],"correct":1,"explanation":"The AI model landscape changes rapidly. Abstracting your model calls behind a clean interface means you can swap providers as the market evolves without rebuilding your business logic."},{"q":"What is the starter stack recommended for most AI products on day one?","options":["AWS + Kubernetes + custom model infrastructure","Frontend, backend with auth and billing, one AI API, and a vector database for RAG — four components, ship fast","Only one AI API — no database needed","Full microservices architecture with multiple AI providers"],"correct":1,"explanation":"Complexity on day one kills velocity. A frontend, Supabase for auth and storage, one AI API, and pgvector for RAG covers 90% of what you need at launch. Optimize later when you have real usage data."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

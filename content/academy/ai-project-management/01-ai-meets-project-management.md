@@ -69,10 +69,18 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI in Project Management — The Big Three","cards":[{"front":"Information Processing","back":"AI digests a 90-minute meeting transcript and extracts every action item, decision, and open question in seconds. No re-watching recordings."},{"front":"Communication Generation","back":"Status reports, stakeholder updates, executive summaries — AI drafts them from your raw notes in minutes instead of 45 minutes."},{"front":"Pattern Recognition","back":"AI spots risks you might miss — slipping timelines, stacking dependencies, unbalanced team workloads — without getting tired or distracted."},{"front":"What AI will NOT do for you","back":"Navigate office politics, sense burnout from body language, know that \u2018this is fine\u2019 actually means the client hates it. Human judgment stays yours."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">What's Next</span>
   <h2 class="section-title">The Course Ahead</h2>
   <p class="section-text">Over the next nine lessons, we'll go deep into each area of AI-powered project management. You'll build a complete toolkit — from planning and estimation to stakeholder communication and risk management. Every lesson includes real prompts you can use immediately.</p>
   <p class="section-text">This isn't theory. This is how modern PMs actually work.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"AI Meets Project Management Quiz","questions":[{"q":"What percentage of project managers\u2019 time is typically spent on coordination overhead like status updates and meeting notes?","options":["20%","40%","60%","80%"],"correct":2,"explanation":"Project managers spend roughly 60% of their time on coordination — status updates, meeting notes, report formatting, chasing action items. AI takes on this repetitive work so PMs can focus on decisions that actually move projects forward."},{"q":"Which of the following is something AI will NOT do for a project manager?","options":["Extract action items from meeting transcripts","Draft stakeholder status updates","Sense that a developer is burning out from body language","Flag when timelines are slipping"],"correct":2,"explanation":"AI won\u2019t sense burnout from body language, navigate office politics, or know that a client\u2019s \u2018this is fine\u2019 actually means they hate it. The human side of project management — empathy, relationship building, reading the room — stays yours."},{"q":"What are the three areas where AI creates the most impact in project management?","options":["Budgeting, scheduling, and hiring","Information processing, communication generation, and pattern recognition","Meeting facilitation, note-taking, and email","Risk management, resource allocation, and reporting"],"correct":1,"explanation":"The Big Three are: Information Processing (digesting transcripts instantly), Communication Generation (drafting status reports from raw notes), and Pattern Recognition (spotting risks, slipping timelines, unbalanced workloads)."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

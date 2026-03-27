@@ -91,6 +91,18 @@ free: true
   <p class="section-text">In ChatGPT, click the image to expand it, then use the download button. In Midjourney, upscale the image first, then save it. Create a folder on your computer called "AI Visuals" and start organizing by project or style. This library will become incredibly valuable as you develop your eye for what works.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">The Four Prompt Elements</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Prompt Anatomy","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Subject","right":"What is in the image — a golden retriever puppy"},{"left":"Setting","right":"Where is it — in a field of wildflowers"},{"left":"Mood and Lighting","right":"How it feels — golden hour, soft warm light"},{"left":"Style","right":"What it looks like — photograph, oil painting, anime"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 3 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Your First AI Image","questions":[{"q":"How many variations should you typically generate before expecting your best result?","options":["Always just one — the first is usually perfect","Exactly two","3 to 10 variations — professional designers iterate to find the winner","At least 100"],"correct":2,"explanation":"Professional designers using AI image tools typically generate 3-10 variations before they find the one that works. Each iteration teaches you how the AI interprets language."},{"q":"What is the core loop of AI image creation?","options":["Prompt, download, share","Generate, evaluate, refine","Upload, filter, export","Describe, wait, accept"],"correct":1,"explanation":"Generate an image, evaluate what works and what doesn&#39;t, then refine the prompt for the next attempt. The magic is not in the first result — it is in knowing how to guide the next one."},{"q":"Why should you start with a simple one-sentence prompt before adding detail?","options":["Longer prompts confuse AI tools","Starting simple gives you a baseline to build from before layering in specifics","AI only accepts short prompts","Simple prompts always produce the best results"],"correct":1,"explanation":"A simple prompt gives you a baseline result. Once you see what the AI produces, you know exactly which details to add — subject, setting, mood, style — to steer it toward your vision."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/understanding-ai-image-tools">&larr; Previous: Understanding AI Image Tools</a>
   <a href="/academy/ai-images-and-video/prompt-craft-for-images">Next: Prompt Craft for Images &rarr;</a>

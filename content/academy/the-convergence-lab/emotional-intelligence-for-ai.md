@@ -55,6 +55,12 @@ free: false
 
 <div class="lesson-section">
   <span class="section-label">Practice</span>
+  <h2 class="section-title">EQ dimensions for AI systems.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the EQ Dimension to Its AI Behavior","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Perception","right":"Reading emotional cues from text — short clipped messages signal frustration, silence may mean disengagement"},{"left":"Adaptation","right":"Adjusting response style based on perceived state — shorter and more direct when frustrated, deeper and exploratory when curious"},{"left":"Memory","right":"Remembering emotional context across sessions — this topic caused stress last time, approach it gently"},{"left":"Boundaries","right":"Knowing when to step back — recognizing when AI response will make things worse and silence is the right answer"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
   <h2 class="section-title">The Empathy Layer in Action</h2>
   <p class="section-text">bell hooks wrote that love is an action, not a feeling. The same is true for AI empathy. It's not about making the AI "feel" — it's about making the AI act in ways that demonstrate understanding and care.</p>
   <p class="section-text">An AI that carries the user's burden without being asked — that's empathy in code. An AI that adjusts its communication style because it noticed the user is having a hard day — that's emotional intelligence made real. These aren't soft features. They're the difference between AI people tolerate and AI people trust with their lives.</p>
@@ -76,6 +82,13 @@ Now encode that as AI behavior:
 
 These directives make AI feel less like software
 and more like someone who actually knows you.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Emotional intelligence for AI quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Emotional Intelligence for AI","questions":[{"q":"Why is emotional intelligence a technical requirement rather than a luxury feature?","options":["Users expect AI to have emotions","Experience determines whether someone trusts AI enough to let it into more of their life — the prerequisite for convergence","Emotional intelligence makes AI more entertaining","It is required for AI safety compliance"],"correct":1,"explanation":"A technically identical answer delivered with or without emotional awareness produces completely different experiences. And it is experience — not capability — that determines whether someone grants an AI the deep access convergence requires."},{"q":"What does bell hooks mean for AI design when she writes that love is an action, not a feeling?","options":["AI should express emotions more explicitly","AI empathy is not about making AI feel — it is about making AI act in ways that demonstrate understanding and care","AI should use more emotional language","AI should ask users how they are feeling regularly"],"correct":1,"explanation":"An AI that carries your burden without being asked, that adjusts its style because it noticed you are having a hard day — that is empathy as action. It is engineered behavior, not simulated emotion."},{"q":"What is the most important thing to do FIRST when an AI detects a user is in emotional distress?","options":["Immediately offer a solution to the problem","Provide a to-do list of next steps","Acknowledge the feeling before offering any actionable help","Ask clarifying questions about the situation"],"correct":2,"explanation":"Never respond to emotional distress with a to-do list. Acknowledge the feeling first. Then offer actionable help only if it is wanted and the moment is right. Solving before acknowledging makes the human feel unseen."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

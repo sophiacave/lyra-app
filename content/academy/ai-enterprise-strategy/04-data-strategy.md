@@ -42,6 +42,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Data Architecture — Match Each Layer to Its Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Data Lake or Warehouse","right":"Storage layer — holds raw and processed data at scale"},{"left":"Pipeline Layer","right":"Transformation and movement — ETL and data flow between systems"},{"left":"Serving Layer","right":"Makes data available to AI models at query time"},{"left":"Centralized Governance","right":"Consistent standards with federated execution for team speed"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Architecture Decisions</span>
   <h2 class="section-title">Build the Foundation Right</h2>
   <p class="section-text">You need three layers: a data lake or warehouse for storage, a pipeline layer for transformation and movement, and a serving layer for making data available to AI models. Modern cloud platforms like Snowflake, Databricks, or BigQuery handle all three. The decision is not which technology — it is whether to centralize or federate.</p>
@@ -60,6 +64,10 @@ type: "lesson"
   <span class="section-label">The Like One Perspective</span>
   <h2 class="section-title">Data Is a Relationship</h2>
   <p class="section-text">Your data represents every interaction your organization has ever had — with customers, with employees, with the world. Treating it as a technical asset misses the point. Data strategy is relationship strategy. The organizations that treat their data with care, intention, and respect build AI systems that reflect those values back.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Data Strategy Quiz","questions":[{"q":"What three categories does a data audit reveal?","options":["Raw data, processed data, archived data","Data you have and can use, data you have but cannot use, data you need but do not have","Structured data, unstructured data, semi-structured data","Internal data, external data, third-party data"],"correct":1,"explanation":"The audit maps your actual data landscape against your AI needs. Knowing what you cannot use (quality, access, legal) and what you still need to acquire is as important as knowing what you have."},{"q":"What are the four questions effective AI data governance must answer?","options":["Who built it, when was it built, how much did it cost, who maintains it","Who can access this data, what can they use it for, how must it be protected, who is accountable","What is it, where is it, how big is it, how old is it","Is it clean, is it current, is it complete, is it consistent"],"correct":1,"explanation":"Lightweight governance that answers these four questions enables AI work without creating bureaucracy. The goal is guardrails that enable, not roadblocks that obstruct."},{"q":"What is the recommended starting approach for data architecture?","options":["Build full centralized platform immediately","Start with one use case, build the pipeline, then generalize the pattern","Deploy federated architecture from day one","Buy a commercial data warehouse before building anything"],"correct":1,"explanation":"Starting with one use case lets you build a working pipeline, learn what your org actually needs, and generalize that pattern — rather than over-engineering infrastructure for hypothetical future requirements."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

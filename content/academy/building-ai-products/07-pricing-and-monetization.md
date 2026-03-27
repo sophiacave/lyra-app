@@ -54,6 +54,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI Pricing Models — Four Options","cards":[{"front":"Subscription (Flat Monthly)","back":"Simple for users, risky for you. Power users can cost you 10x more than their fee. Requires usage limits or tiered plans to protect margin."},{"front":"Usage-Based (Pay Per Query)","back":"Aligns revenue with costs perfectly but users hate unpredictable bills. Solution: credit packs — buy 100 analyses for $19 — gives users predictability and you margin protection."},{"front":"Hybrid (Subscription + Usage)","back":"Base subscription includes X queries per month, overages billed per unit. Where most mature AI products land — Jasper, Copy.ai, Midjourney."},{"front":"Outcome-Based","back":"Charge for successful outcomes, not attempts — $2 per qualified lead, $5 per completed analysis. Highest perceived value, hardest to implement."},{"front":"The 3-10x Rule","back":"Your price should be 3-10x your cost per query. Not 1.5x. Not 2x. Three minimum. If a query costs $0.03, charge at least $0.10."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Price on Value, Not Cost</h2>
   <p class="section-text">If your AI saves a lawyer 5 hours of document review, that's worth $1,500 at their billing rate. Charging $50 for that analysis is a steal — even if your API cost is $0.50. Never anchor your price to your cost. Anchor it to the value you create.</p>
@@ -76,6 +80,10 @@ free: false
 4. Monthly cost per user: $_____ (queries x cost per query)
 5. Target price per user: $_____ (monthly cost x 5 minimum)
 6. Does this price feel reasonable for the value delivered?</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Pricing and Monetization Quiz","questions":[{"q":"Why can a generous free tier bankrupt an AI startup?","options":["Free users convert poorly","In traditional SaaS, idle free users cost fractions of a cent; in AI products, every free-tier query costs real money — viral free growth can exceed revenue instantly","Free tiers attract the wrong users","Free users share too much feedback"],"correct":1,"explanation":"In traditional SaaS, free users sitting idle cost almost nothing. In AI products, every query — free or paid — has a direct API cost. A generous free tier going viral means you pay for every interaction without receiving revenue."},{"q":"Why should you start with higher prices than you think you should?","options":["Higher prices signal quality","It is easy to lower prices or add a cheaper tier, but nearly impossible to raise prices without losing existing customers — early adopters are the least price-sensitive","Higher prices help with investor optics","Higher prices reduce support volume"],"correct":1,"explanation":"Price anchoring is permanent. Early customers form expectations. If you launch too cheap and later raise prices, you face churn and resentment. Starting higher preserves flexibility to move in either direction."},{"q":"What is the correct anchor for pricing an AI product?","options":["Your cost to provide the service","The price your competitors charge","The value the outcome creates for the customer — not what it costs you to deliver","The market\u2019s median SaaS price"],"correct":2,"explanation":"If your AI saves a lawyer 5 hours at $300/hr billing rate, the outcome is worth $1,500. Charging $50 for that analysis — even if your API cost is $0.50 — is rational value-based pricing, not gouging."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

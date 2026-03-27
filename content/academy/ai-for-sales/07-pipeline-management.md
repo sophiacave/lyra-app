@@ -72,6 +72,20 @@ free: false
   <p class="section-text">The best pipeline managers don't manage deals — they manage a system. Monday: AI pipeline review. Wednesday: re-engagement outreach for stalled deals. Friday: new opportunity planning. AI makes each of these sessions fast and focused. The system runs itself once you build it.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each weekly review focus to what it examines.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Weekly Pipeline Review","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Review 1 — Moved Forward","right":"Celebrate and accelerate deals that progressed last week"},{"left":"Review 2 — Stalled","right":"Diagnose why deals stopped and plan re-engagement"},{"left":"Review 3 — Kill List","right":"Remove dead deals to free up mental energy"},{"left":"Review 4 — Gaps","right":"Assess whether you need more top-of-funnel activity"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Pipeline Management","questions":[{"q":"Why does the lesson say most sales pipelines are lying to you?","options":["CRM tools are inaccurate and prone to data errors","Deals that should be dead are still marked active, inflating the real opportunity number","Salespeople forget to log their activities","Pipeline data is always six weeks out of date"],"correct":1,"explanation":"The lesson is blunt: pipelines are fiction. Ghosted prospects stay marked interested. Stalled deals sit in negotiation. AI brings honesty by analyzing objective signals — last contact date, engagement, deal stage duration — and categorizing deals as ALIVE, ON LIFE SUPPORT, or DEAD."},{"q":"What are the three pipeline audit categories the lesson describes?","options":["Hot, Warm, Cold","Active, Pending, Closed","ALIVE, ON LIFE SUPPORT, DEAD","Open, Stalled, Won"],"correct":2,"explanation":"The pipeline audit prompt categorizes each deal as: ALIVE (active engagement, likely to close), ON LIFE SUPPORT (stalled but recoverable with the right action), or DEAD (remove from pipeline). This forces honest assessment rather than wishful thinking."},{"q":"What does the lesson say traditional deal forecasting really is?","options":["A reliable science based on historical data","Guesswork dressed up in a spreadsheet","A valuable tool that most salespeople underuse","An automated process that CRM tools handle well"],"correct":1,"explanation":"The lesson calls it guesswork in a spreadsheet. AI forecasting uses real patterns: how long deals stay in each stage, what engagement signals predict closes, and which deal characteristics correlate with wins — grounded in data from your own won and lost deals."},{"q":"What is the recommended weekly pipeline rhythm from the lesson?","options":["Daily reviews with the full sales team","Monday AI review, Wednesday re-engagement outreach, Friday new opportunity planning","Weekly meetings with management to review each deal","Monthly forecasting sessions with AI-generated reports"],"correct":2,"explanation":"The lesson prescribes a three-day system: Monday for AI pipeline review, Wednesday for re-engagement outreach on stalled deals, and Friday for new opportunity planning. The system runs itself once built — AI makes each session fast and focused."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-sales/06-objection-handling/" class="prev">← Previous: Objection Handling</a>
   <a href="/academy/ai-for-sales/08-customer-success-with-ai/" class="next">Next: Customer Success with AI →</a>

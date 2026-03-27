@@ -54,6 +54,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Prompt Injection Defenses — Match Each to How It Works","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Input Sanitization","right":"Filter and validate all user input before it reaches your prompt template — strip suspicious patterns, limit length"},{"left":"System Prompt Isolation","right":"Use the provider\u2019s system message parameter instead of concatenating system and user content into one string"},{"left":"Output Validation","right":"Check AI responses before returning to users — look for system prompt leakage or cross-user data"},{"left":"Least Privilege Context","right":"Only give the AI access to information it needs for the current request — scope RAG retrieval to minimum necessary"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Infrastructure Security</span>
   <h2 class="section-title">Hardening Your AI Stack</h2>
   <p class="section-text"><strong>API keys:</strong> Rotate regularly, scope narrowly, set spending caps. Use different keys for different environments. Monitor for unauthorized usage patterns.</p>
@@ -75,6 +79,10 @@ type: "lesson"
 <div class="try-it-box">
   <h3>Try it yourself</h3>
   <div class="prompt-box"><code>Build an input validation layer for your AI endpoint. Create a function that checks user input for common prompt injection patterns (instruction override attempts, system prompt extraction, role-play manipulation). Test it against 10 known prompt injection examples and verify it catches at least 8.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Security and Compliance Quiz","questions":[{"q":"What is prompt injection?","options":["Injecting prompts faster for performance","Crafted input that manipulates the AI\u2019s behavior — e.g., \u2018ignore previous instructions\u2019 or instructions hidden in uploaded documents","A technique for improving prompt quality","Sending multiple prompts simultaneously"],"correct":1,"explanation":"Prompt injection attacks try to override or subvert your system prompt through user input. They can be explicit or subtle — embedded in documents, encoded in images, or hidden in seemingly innocent content."},{"q":"What is the data minimization principle for AI security?","options":["Use less training data","Send only what is necessary to the AI provider — strip PII before API calls, use anonymous IDs not names or emails","Minimize the number of API calls","Use smaller AI models"],"correct":1,"explanation":"Every piece of user data you send to a third-party AI provider is a potential privacy risk. Strip personally identifiable information before it hits the API — the model doesn\u2019t need real names or emails to do its job."},{"q":"What does \u2018data exfiltration through AI outputs\u2019 mean?","options":["The AI downloading data without permission","A crafted prompt that convinces the AI to include sensitive data from its context in its response","The AI provider stealing your data","Users downloading AI outputs illegally"],"correct":1,"explanation":"If your AI has access to sensitive data and a user crafts a prompt cleverly, the model might include that data in its response — not because it\u2019s malicious, but because it generates text based on context without knowing what\u2019s secret."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

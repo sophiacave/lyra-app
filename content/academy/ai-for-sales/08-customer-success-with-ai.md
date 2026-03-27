@@ -75,6 +75,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each expansion signal to what it indicates.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Upsell Expansion Signals","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Growth Signal","right":"Customer just raised funding or expanded to new markets"},{"left":"Usage Signal","right":"They are hitting limits on their current plan"},{"left":"Team Signal","right":"New stakeholders or departments are getting involved"},{"left":"Timing Signal","right":"Contract renewal is approaching in 60 to 90 days"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Customer Success with AI","questions":[{"q":"According to the lesson, how much more does it cost to acquire a new customer versus retaining an existing one?","options":["2 to 3 times more","5 to 7 times more","10 to 15 times more","The costs are roughly equal"],"correct":1,"explanation":"The lesson cites that acquiring a new customer costs 5-7x more than keeping an existing one. A 5% increase in retention can boost profits by 25-95%. This is why customer success is described as the real revenue — the goldmine already inside your current customer base."},{"q":"What does the lesson say about customers who are about to churn?","options":["They usually give clear advance notice before leaving","They churn overnight with no warning signs","There are always warning signs: decreased usage, support tickets, slower responses, missed meetings","They almost always respond to a discount offer"],"correct":2,"explanation":"Customers do not churn overnight. Warning signs come first — decreased usage, rising support tickets, slower response times, missed meetings. AI helps monitor these signals so you can act before it is too late, rather than reacting after the customer is already gone."},{"q":"What is wrong with a just checking in email according to the lesson?","options":["It is too short to be taken seriously","It delivers no value — every touchpoint should make customers glad they are your customer","It sounds too formal for an existing customer relationship","It should only be sent quarterly, not more often"],"correct":1,"explanation":"Nobody wants a just checking in email. The lesson says AI helps you craft check-ins that deliver value: industry insights, product tips, peer introductions, early feature access. Every touchpoint should reinforce why the customer made the right choice — not just maintain a contact log."},{"q":"What should a good customer health review score system look like according to the lesson?","options":["A-B-C grading based on annual contract value","Hot-Warm-Cold based on last contact date","GREEN (healthy), YELLOW (at risk), RED (likely to churn)","1 to 10 NPS-style score with automated follow-up triggers"],"correct":2,"explanation":"The lesson health check prompt scores accounts GREEN (healthy), YELLOW (at risk), or RED (likely to churn). For yellow and red accounts, AI generates a specific re-engagement action plan — what to say, when to reach out, and what value to offer. This turns health monitoring into immediate action."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-sales/07-pipeline-management/" class="prev">← Previous: Pipeline Management</a>
   <a href="/academy/ai-for-sales/09-sales-analytics/" class="next">Next: Sales Analytics →</a>

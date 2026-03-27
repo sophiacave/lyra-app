@@ -137,6 +137,20 @@ Email 5 (Day 10): Direct offer with urgency
   <p class="section-text" style="margin-top:1rem">The marketer who tests 10 variants per month will outperform the one who sends "whatever felt right" every single time.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Review the 5-email welcome sequence arc.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"5-Email Welcome Sequence","cards":[{"front":"Email 1 — Day 0","back":"Welcome + deliver the lead magnet + set expectations about what is coming next."},{"front":"Email 2 — Day 2","back":"Your story — why you started this business. Build personal connection."},{"front":"Email 3 — Day 4","back":"Teach something valuable with no pitch. Pure value to build trust."},{"front":"Email 4 — Day 7","back":"Case study or testimonial plus a soft pitch. Social proof introduces the offer naturally."},{"front":"Email 5 — Day 10","back":"Direct offer with urgency. The clearest ask in the sequence."}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"AI-Powered Email Marketing","questions":[{"q":"What is the #1 mistake marketers make with AI-generated email copy?","options":["Making emails too short","The copy sounds like AI — generic, overpolished, and soulless","Using too many CTAs","Writing in first person"],"correct":1,"explanation":"The #1 mistake is AI copy that sounds like AI — generic, overpolished, and soulless. The fix is to write as if emailing one specific person, use short paragraphs, and open with a story or question rather than a formal greeting."},{"q":"What subject line style asks readers to wonder about something without giving away the answer?","options":["Benefit-driven","Urgency-driven","Curiosity-driven","Authority-driven"],"correct":2,"explanation":"Curiosity-driven subject lines make readers wonder — they create an information gap that drives opens. The lesson recommends generating subject lines across all three styles (curiosity, benefit, urgency) and picking the best performers to test."},{"q":"What makes A/B testing with AI especially powerful for email marketers?","options":["AI can send emails automatically","AI generates 10 variant options in the time it used to take to agonize over 2","AI can predict which variant will win before testing","AI personalizes each email automatically"],"correct":1,"explanation":"AI makes A/B testing trivially easy by generating many variants instantly. Instead of agonizing over two subject lines, you generate 10, pick the two most different in approach, and test them. Volume of testing accelerates learning."},{"q":"In the email body copy framework, what should the opening line do?","options":["Begin with your company name and credentials","Start with a story, observation, or question — NOT I hope this email finds you well","Summarize the main offer immediately","List the top three benefits of your product"],"correct":1,"explanation":"The lesson\'s style rules are clear: open with a story, observation, or question — not a formal greeting. The opening must create immediate connection or curiosity, not announce the purpose of the email."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/social-media-content-with-ai" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Social Media Content with AI →</a>

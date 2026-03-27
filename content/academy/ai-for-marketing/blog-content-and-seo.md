@@ -129,6 +129,20 @@ Skip purely educational topics that attract the wrong audience.</pre>
   <p class="section-text" style="margin-top:1rem"><strong>The formula:</strong> AI draft + your expertise + your examples + your editing = content that ranks AND helps people. Skip any of those steps and you're just adding noise to the internet.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each content quality to what Google loves or penalizes.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Google SEO: Love vs Penalize","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Original insights and unique expertise","right":"Google loves this"},{"left":"Mass-produced content with no new value","right":"Google penalizes this"},{"left":"Content that solves real problems for real readers","right":"Google loves this"},{"left":"Keyword stuffing and SEO manipulation tactics","right":"Google penalizes this"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Blog Content and SEO","questions":[{"q":"What is a topic cluster in content strategy?","options":["A group of social media posts about the same topic","A pillar post plus supporting posts that link to it, targeting related keywords","A collection of competitor blog posts to analyze","A set of email campaigns tied to a blog series"],"correct":1,"explanation":"A topic cluster is a pillar post (comprehensive, 2000+ words) surrounded by supporting posts (focused, 800-1200 words) that link back to it. This structure helps AI generate strategically organized content plans."},{"q":"Where should the target keyword appear in a blog post?","options":["Only in the title","In the first 100 words of the post","Repeated every 50 words throughout","Only in subheadings"],"correct":1,"explanation":"The lesson\'s SEO requirements include using the target keyword in the first 100 words. This signals to search engines what the post is about early, without stuffing the keyword unnaturally throughout."},{"q":"Does Google penalize AI-generated content specifically?","options":["Yes, Google detects and penalizes all AI content","No — Google penalizes low-quality, unhelpful content regardless of how it was written","Only if the content is over 1000 words","Only for AI images, not AI text"],"correct":1,"explanation":"Google\'s stance is that they do not penalize content for being AI-generated — they penalize low-quality, unhelpful content. The rules are the same they have always been: original insights, real helpfulness, and human expertise matter."},{"q":"What is the blog post formula that produces content that both ranks and helps people?","options":["AI draft only — published as-is for speed","AI draft plus SEO plugin optimization","AI draft plus your expertise plus your examples plus your editing","AI draft plus paid promotion"],"correct":2,"explanation":"The formula: AI draft + your expertise + your examples + your editing = content that ranks AND helps people. Skip any of those steps and you are just adding noise to the internet — and Google will notice."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/ad-copy-that-converts" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Ad Copy That Converts →</a>

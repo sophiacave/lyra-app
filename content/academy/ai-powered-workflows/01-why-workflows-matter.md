@@ -74,6 +74,18 @@ free: true
   <p class="section-text">Now you know why workflows matter. In the next lesson, we'll map your actual processes — identifying exactly where automation will have the biggest impact. No guessing. No generic advice. Your work, your opportunities.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Task vs. Workflow</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Tasks vs. Workflows","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"A single action","right":"Task — summarize this email"},{"left":"A connected pipeline","right":"Workflow — classify, draft, route, and log when email arrives"},{"left":"What automation saves beyond time","right":"Cognitive load — every automated decision is one less mental drain"},{"left":"Time saved per year from 3 daily 15-minute automations","right":"Over 270 hours — nearly 7 full work weeks"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 1 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Why Workflows Matter","questions":[{"q":"What is the key difference between a task and a workflow?","options":["Tasks are manual, workflows are digital","A task is a single action, a workflow is a connected sequence of steps that chains multiple actions together","Workflows require coding, tasks do not","Tasks are faster than workflows"],  "correct":1,"explanation":"A task is a moment — summarize this email. A workflow is a system — when a support email arrives, classify urgency, draft a response, route it, and log it. One action vs. a connected pipeline."},{"q":"What does the workflow approach accomplish compared to the manual approach?","options":["The manual approach is always more reliable","Both approaches take the same time","The workflow approach produces the same outcome in zero ongoing time after setup","Workflows produce worse results than manual work"],  "correct":2,"explanation":"The same outcome — reading email, deciding priority, drafting reply, logging, notifying team — happens in zero time with the workflow approach versus 10 minutes per email manually."},{"q":"How should you think about what workflows replace?","options":["Workflows replace human judgment entirely","Workflows replace you, the person","Workflows replace the mechanical parts so you can focus on work that needs a human brain","Workflows only work for simple single-step tasks"],"correct":2,"explanation":"Automation doesn&#39;t replace your judgment — it amplifies it. You still decide what matters and set priorities. The workflow handles the mechanical repetition so your cognitive energy goes to creative, judgment-intensive work."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <span></span>
   <a href="/academy/ai-powered-workflows/02-mapping-your-processes/" class="next">Next: Mapping Your Processes →</a>

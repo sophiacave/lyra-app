@@ -105,6 +105,20 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each dreaded email type to the right AI approach.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"The Dreaded Five Emails","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"The no email","right":"Ask AI to decline politely but firmly, without leaving the door open for negotiation"},{"left":"The complaint email","right":"Give AI the facts and say: Professional but firm. I want a specific resolution."},{"left":"The follow-up email","right":"Ask AI for a friendly follow-up that does not sound desperate after someone went quiet"},{"left":"The apology email","right":"Tell AI what happened and ask for sincere but not groveling language"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Email and Communication","questions":[{"q":"What are the three elements of the email framework taught in this lesson?","options":["Subject, Body, and Signature","Opening, Middle, and Close","Tone, Context, and Goal","Greeting, Request, and Thank You"],"correct":2,"explanation":"The framework is Tone + Context + Goal. Tone tells AI how it should sound. Context provides the relationship and backstory. Goal defines what you want to happen after the recipient reads the message. Together these three elements produce a useful draft every time."},{"q":"What should you do after receiving an AI-drafted email?","options":["Publish it immediately — AI email is always professional","Read it out loud to check if it sounds like you, then edit anything that feels off","Send it without reading since AI is reliable","Ask AI to regenerate until you get a perfect version"],  "correct":1,"explanation":"The lesson recommends reading the draft out loud to check if it sounds like you. If a word feels off or a sentence is too formal, change it or tell AI what to adjust. AI drafts clay, not marble — you shape the final version."},{"q":"How can you help AI match your personal writing style?","options":["Only use AI for formal emails, never casual ones","Tell AI to use shorter sentences","Paste an example of how you actually write and ask AI to match it","Always request the most professional tone possible"],"correct":2,"explanation":"The lesson suggests sharing an example of your previous writing — past a real email you sent. AI learns your style within the conversation and matches it for the new draft. This is one of the fastest ways to make AI-generated communication feel authentically yours."},{"q":"What is the Tone + Context + Goal framework designed to solve?","options":["The problem of AI generating too many options","The mental friction of figuring out what to say and how to say it in difficult messages","The challenge of formatting emails correctly","The problem of emails being too long"],"correct":1,"explanation":"The lesson identifies the real problem: it is not that replies are hard, it is the mental energy of figuring out what to say and how to say it. The Tone + Context + Goal framework eliminates that friction — you give AI the key information and it produces the draft."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-personal-productivity/morning-routines-with-ai">&larr; Previous: Morning Routines with AI</a>
   <a href="/academy/ai-for-personal-productivity/task-management-and-prioritization">Next: Task Management &rarr;</a>

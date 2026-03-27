@@ -61,6 +61,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Scaling Milestones — Match Each Phase to Its Focus","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Phase 1 (0-1K users)","right":"API-only, focus on product-market fit, key metric: retention rate"},{"left":"Phase 2 (1K-10K users)","right":"Add caching, model routing, cost monitoring — key metric: cost per active user"},{"left":"Phase 3 (10K+ users)","right":"Evaluate self-hosting, build data flywheel — key metric: margin per user"},{"left":"Self-Hosting Trigger","right":"When monthly API bill exceeds GPU infrastructure cost AND quality requirements can be met by open-source models"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Vision</span>
   <h2 class="section-title">The Long Game</h2>
   <p class="section-text">AI products that last aren't just wrappers around models. They accumulate data, workflows, and user trust that create compounding value. Your product should get better with every user interaction — through better prompts, richer context, and deeper understanding of what your users actually need.</p>
@@ -84,6 +88,10 @@ Phase 3 (10K+ users): Evaluate self-hosting, build data flywheel
   - Decision point: API costs vs. GPU infrastructure costs
 
 What phase are you in? What's your next milestone?</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Scaling Your AI Product Quiz","questions":[{"q":"What signal should trigger you to evaluate self-hosting AI models?","options":["When you reach 1,000 users","When your monthly API bill exceeds the cost of dedicated GPU infrastructure and quality requirements can be met by open-source models","When your competitors self-host","When your team grows to 10 engineers"],"correct":1,"explanation":"For most products this happens between $5,000 and $20,000 per month in API costs. Self-hosting before that threshold adds enormous operational complexity for minimal savings."},{"q":"What is a data flywheel and why does it matter for long-term competitive advantage?","options":["A caching system for faster responses","Every user interaction teaches the system something — over time you build context and insight that no competitor can replicate by simply using a newer model","A database backup strategy","An A/B testing framework"],"correct":1,"explanation":"The companies that win in AI aren\u2019t the ones with the best model. They\u2019re the ones whose product gets measurably better with every user interaction — creating a compounding advantage that deepens over time."},{"q":"What is the key metric for Phase 1 (0-1K users) of scaling?","options":["Revenue","Cost per active user","Retention rate — proving the product delivers consistent value and users come back","Number of API calls"],"correct":2,"explanation":"At 0-1K users, the only thing that matters is proving product-market fit. Retention rate tells you whether users find enough value to return — the foundation everything else is built on."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

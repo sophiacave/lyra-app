@@ -69,9 +69,17 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Cloud Platforms — Match Each to Its Strength","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AWS","right":"Largest ecosystem, SageMaker for ML, Bedrock for LLMs, most GPU availability"},{"left":"GCP","right":"Deepest AI integration, Vertex AI, TPU access, best for Google models"},{"left":"Azure","right":"OpenAI partnership, enterprise compliance, GPT with data residency guarantees"},{"left":"Vercel + Supabase","right":"Best for small teams — frontend edge functions plus PostgreSQL with pgvector, in production in hours"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Start Simple, Scale Intentionally</h2>
   <p class="section-text">The biggest infrastructure mistake in AI is starting too complex. You don't need Kubernetes on day one. You need a deployed app that works. Pick the simplest platform that meets your requirements, build something real, and add complexity only when the simple thing breaks.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Cloud Platforms Quiz","questions":[{"q":"What makes Azure the preferred choice for enterprises with strict compliance requirements?","options":["It is the cheapest option","It offers OpenAI models with enterprise SLAs, data residency guarantees, and compliance frameworks that direct OpenAI APIs don\u2019t provide","It has the most AI services","It is the oldest cloud provider"],"correct":1,"explanation":"Azure\u2019s OpenAI Service partnership gives enterprises GPT access with the compliance, data sovereignty, and SLA guarantees required by regulated industries — which the direct OpenAI API cannot match."},{"q":"Why is Vercel + Supabase a good starting stack for most AI applications?","options":["It is free forever","It handles 90% of AI app needs with dramatically less complexity than hyperscalers, and you can be in production in hours","It scales to any size automatically","It includes built-in AI models"],"correct":1,"explanation":"For indie developers and small teams, modern platforms like Vercel + Supabase deliver frontend deployment, edge functions, PostgreSQL, vector search, and auth — without the steep learning curve of AWS or GCP."},{"q":"When should you reach for a hyperscaler instead of Vercel + Supabase?","options":["From day one for any project","When you hit a specific capability gap like custom model training, GPU compute at scale, or enterprise compliance requirements","Only for million-user apps","When you hire a DevOps engineer"],"correct":1,"explanation":"The smartest approach is to use modern platforms for your app layer and only add hyperscaler complexity when you hit a specific need that simpler platforms cannot meet."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

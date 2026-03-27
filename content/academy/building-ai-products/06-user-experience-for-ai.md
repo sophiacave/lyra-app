@@ -66,6 +66,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Interface Patterns — Match Each to How It Works","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Structured Input + AI Output","right":"Form fields guide users to optimal input, AI generates result — e.g., Canva\u2019s Magic Write"},{"left":"Select + Transform","right":"Highlight text, choose an AI action from a menu — e.g., Notion AI inline editing"},{"left":"Ambient AI","right":"AI works in the background and surfaces suggestions without disrupting the workflow — e.g., Grammarly"},{"left":"Edit, Don\u2019t Create","right":"AI generates a first draft; the user edits it — maintains user control while eliminating the blank page problem"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Accessibility</span>
   <h2 class="section-title">AI for Everyone</h2>
   <p class="section-text">AI interfaces often exclude people with disabilities. Streaming text can be unreadable for screen readers. Loading animations can trigger seizures. Auto-playing AI responses can overwhelm users with cognitive disabilities. Build with accessibility from day one — it's not a feature, it's a responsibility.</p>
@@ -78,6 +82,10 @@ free: false
 2. What does the AI output look like? (text, table, visual, file)
 3. How does the user edit the AI's work? (inline editing, regenerate, tweak settings)
 4. What happens when the AI is wrong? (easy reject, manual override, feedback loop)</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"User Experience for AI Quiz","questions":[{"q":"Why is a blank chat window usually the wrong interface for AI products?","options":["Chat is too slow","Chat puts the burden on users to know what to ask, how to phrase it, and what\u2019s possible — a terrible experience for anyone who isn\u2019t already an AI power user","Chat is too expensive to build","Chat doesn\u2019t work on mobile"],"correct":1,"explanation":"Most users don\u2019t know how to prompt. A blank chat box that says \u2018how can I help?\u2019 requires expertise the user doesn\u2019t have. Structured inputs guide users toward the interactions your model handles best."},{"q":"What is the single biggest UX improvement for AI response latency?","options":["Faster servers","Smaller AI models","Streaming responses — showing text as it generates — which reduces perceived wait time by 60-70%","Caching common responses"],"correct":2,"explanation":"Streaming lets users start reading immediately instead of staring at a spinner for 5-15 seconds. The total time may be the same but the perceived experience is dramatically better."},{"q":"What must every AI output include to keep users feeling like the pilot?","options":["A confidence score","Easy ways to reject, edit, or regenerate — so users always have agency over AI output","A source citation","An explanation of how it was generated"],"correct":1,"explanation":"If a user has to accept an AI result because there\u2019s no alternative, your UX has failed. Rejection, editing, and regeneration options ensure users remain in control and build the habit of verification."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

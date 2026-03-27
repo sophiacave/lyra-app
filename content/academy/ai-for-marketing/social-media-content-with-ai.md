@@ -119,6 +119,20 @@ We are NOT: Corporate, preachy, or hype-driven.</pre>
   <p class="section-text" style="margin-top:1rem">Save this once. Use it forever. Consistent voice across hundreds of posts — effortlessly.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each platform to its content style.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Social Platform Content Styles","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"LinkedIn","right":"Professional storytelling with a hook in the first line — 150 to 300 words with line breaks"},{"left":"Instagram","right":"Visual-first with captions that support the image — conversational, emoji-friendly, CTA in caption"},{"left":"X (Twitter)","right":"Sharp, punchy, and opinionated — under 280 characters for single posts, threads for depth"},{"left":"Facebook","right":"Community-oriented with questions that drive engagement — slightly longer form, stories resonate"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Social Media Content with AI","questions":[{"q":"What is the most important thing to specify in any AI social media prompt?","options":["The word count","The platform you are posting on","The number of hashtags to include","The publishing schedule"],"correct":1,"explanation":"The lesson is emphatic: specify the platform in every prompt. A LinkedIn post that works on Instagram is a bad LinkedIn post. Each platform has its own culture, format, and audience expectations."},{"q":"What is the repurposing workflow described in this lesson?","options":["Write separate unique content for every platform","Take 1 great idea and reshape it natively for every platform","Schedule the same post across all platforms simultaneously","Only post on the platforms with the most followers"],"correct":1,"explanation":"The repurposing workflow takes 1 great idea and reshapes it for each platform. A blog post becomes a LinkedIn story, an Instagram carousel, an X thread, a Facebook community post, and an email — all from the same core idea."},{"q":"What is a brand voice card used for?","options":["Tracking which AI tool generated each post","A short description of your social media personality pasted into every content prompt to maintain consistency","A schedule of what to post each day","A list of competitors to avoid copying"],"correct":1,"explanation":"A brand voice card is a short description of your brand\'s personality, tone, language dos and don\'ts — pasted into every prompt. It keeps AI on-brand across hundreds of posts without extra effort."},{"q":"According to the lesson, how many posts can 1 idea become through repurposing?","options":["3","5","7","10"],"correct":2,"explanation":"The lesson shows 1 idea becoming 7 posts: LinkedIn, Instagram carousel, X thread, Facebook, email, short video script, plus the original blog post source. Repurposing is the core efficiency unlock."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/blog-content-and-seo" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Blog Content and SEO →</a>

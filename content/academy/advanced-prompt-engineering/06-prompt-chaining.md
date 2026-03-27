@@ -78,6 +78,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Prompt Chaining Patterns","cards":[{"front":"Generate → Critique → Revise","back":"Create something, evaluate it against criteria, then improve it based on the critique. Best for writing, proposals, and designs."},{"front":"Extract → Transform → Load","back":"Pull data from messy sources, clean and restructure it, then format for the destination. Best for data workflows."},{"front":"Brainstorm → Filter → Develop","back":"Generate many ideas, evaluate and select the best, then flesh out the winners. Best for ideation and strategy."},{"front":"What is a Gate Check?","back":"A validation step between chain steps that checks output for accuracy, completeness, and consistency — catching errors before they compound."},{"front":"What is a Parallel Chain?","back":"Running two branches simultaneously (e.g., research + audience analysis) then merging results at a single point before the final output."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Common Patterns</span>
   <h2 class="section-title">Chains You'll Use All the Time</h2>
   <p class="section-text"><strong style="color: var(--orange);">Generate -> Critique -> Revise:</strong> Create something, evaluate it against criteria, improve it based on the critique.</p>
@@ -96,6 +100,10 @@ Step 2: "Given this analysis: [Step 1 output]. Identify [insights/patterns]. Ran
 Step 3: "Using the top insight from: [Step 2 output]. Create [final deliverable]. Style: [specifications]."</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Prompt Chaining Quiz","questions":[{"q":"Why does prompt chaining produce better results than one mega-prompt?","options":["It is faster","Each step focuses on one thing well, and the model isn\u2019t forced to spread attention across too many tasks at once","It costs less","It uses fewer tokens"],"correct":1,"explanation":"When a single prompt asks the AI to research, analyze, write, format, and review simultaneously, quality drops across all tasks. Chaining keeps each step focused."},{"q":"What does a Gate Check do in a prompt chain?","options":["It stops the chain from running too long","It validates output from the previous step for accuracy and completeness before passing it forward","It generates a summary of the chain","It selects the best model for each step"],"correct":1,"explanation":"Gate checks catch errors early. Without them, a mistake in step 2 compounds through steps 3, 4, and 5 — making the final output worse than if you\u2019d caught it immediately."},{"q":"What is the key rule for making each step in a chain work well?","options":["Keep each step under 100 words","Each step should produce clean, structured output that the next step can consume without confusion","Each step should use a different model","Always use JSON between steps"],"correct":1,"explanation":"The output format of each step must be designed to be the clean input for the next step. Messy handoffs between steps are the primary cause of chain failures."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

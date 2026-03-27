@@ -93,6 +93,20 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">What to include in your morning context dump.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Morning Context Dump Elements","cards":[{"front":"What time do you actually wake up?","back":"Not what you wish — your real wake time. AI builds a plan around reality, not aspiration."},{"front":"Non-negotiables","back":"Kids school bus, medication, pet care, standing meetings. These come first in any plan."},{"front":"What drains you in the morning?","back":"Decision fatigue, rushing, skipping breakfast? Name the friction so AI can design around it."},{"front":"What you wish you had time for","back":"Exercise, quiet coffee, reading, journaling. These are the goals — AI finds the time for them."},{"front":"Your biggest morning frustration","back":"This is the problem to solve. The more honest you are, the more useful the plan AI creates."}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Morning Routines with AI","questions":[{"q":"What makes a context dump work better than a generic request like build me a morning routine?","options":["Using more formal language","Providing honest, specific personal details about your real morning — constraints, frustrations, and goals","Asking for a longer, more detailed plan","Requesting multiple options to choose from"],"correct":1,"explanation":"A vague ask gets a generic plan. A real ask gets a real plan. The lesson emphasizes: tell AI your actual wake time (not your ideal), your real non-negotiables, and your actual frustrations. Specificity is the difference between advice you will follow and advice you will ignore."},{"q":"What does the lesson mean by a living plan?","options":["A plan that includes healthy eating habits","A flexible plan you can ask AI to adjust in real-time when life gets in the way","A plan that continues every day without changing","A plan that connects to your fitness goals"],"correct":1,"explanation":"The lesson introduces this concept in Level Up: your plan is not carved in stone. If you oversleep or something disrupts your morning, you can tell AI about it and get an updated plan instantly. That flexibility makes AI planning sustainable."},{"q":"What follow-up technique does the lesson suggest after getting your morning plan?","options":["Ask AI to make the plan shorter","Ask AI what happens if you oversleep by 15 minutes — to see how it adapts","Ask AI to add more tasks","Ask AI to compare your plan to a productivity expert recommendation"],"correct":1,"explanation":"The lesson specifically suggests asking: What if I oversleep by 15 minutes? This demonstrates AI\'s adaptability — it recalculates the timeline instantly rather than forcing you to abandon the whole plan."},{"q":"Why does conventional morning routine advice often fail people?","options":["Most people are lazy and do not follow through","Generic routines do not account for individual constraints like children, chronic pain, or night shifts","People do not take morning routines seriously enough","Morning routines only work for early birds"],"correct":1,"explanation":"The lesson directly challenges cookie-cutter advice — wake up at 5am, meditate, cold shower. This does not work for everyone. AI works with what you actually have rather than prescribing an idealized routine that does not fit your life."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-personal-productivity/ai-as-your-personal-assistant">&larr; Previous: AI as Your Personal Assistant</a>
   <a href="/academy/ai-for-personal-productivity/email-and-communication">Next: Email and Communication &rarr;</a>

@@ -55,6 +55,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match search intent types to the right content response.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Search Intent to Content Type","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Informational","right":"A comprehensive guide or how-to article"},{"left":"Commercial","right":"A comparison or best-of roundup post"},{"left":"Transactional","right":"A product page or checkout landing page"},{"left":"Navigational","right":"Not your opportunity — they want a specific brand page"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Structure</span>
   <h2 class="section-title">On-page SEO that Google actually cares about.</h2>
   <p class="section-text"><strong>Title tag and H1:</strong> Include your primary keyword naturally. Make it compelling enough for a human to click. AI prompt: <em>"Give me 5 title options for an article targeting [keyword]. Each should include the keyword naturally and make a reader want to click."</em></p>
@@ -67,6 +73,13 @@ free: false
   <span class="section-label">Try It</span>
   <h2 class="section-title">Optimize an existing piece of content.</h2>
   <p class="section-text">Take a blog post you've already published. Paste it into AI with this prompt: <em>"Review this blog post for SEO. Identify: (1) the primary keyword I should be targeting, (2) secondary keywords I'm missing, (3) structural improvements for better ranking, (4) a better title tag and meta description, (5) header improvements, and (6) where I should add more depth to fully satisfy search intent. Don't change my voice — just optimize the structure and coverage."</em> Implement the suggestions and republish. Check your analytics in 30 days.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">SEO content optimization quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"SEO Content Optimization","questions":[{"q":"What is the most important thing to understand before choosing keywords?","options":["Monthly search volume","The search intent behind the query","Your domain authority score","Competitor keyword lists"],"correct":1,"explanation":"Matching content to what someone actually wants when they search — their intent — matters more than hitting keywords. Google rewards genuine relevance."},{"q":"Why should independent creators target long-tail keywords?","options":["Long-tail keywords have higher search volume","Long-tail keywords are easier to rank for because big sites ignore specific, niche topics","Long-tail keywords cost less in paid search","Long-tail keywords improve site speed"],"correct":1,"explanation":"You cannot outrank Forbes for best productivity apps. But you can absolutely rank for productivity system for freelance designers with ADHD — specific and underserved."},{"q":"What should the meta description accomplish?","options":["Include every keyword you are targeting","Act as ad copy in search results — summarize the article and make people want to click","Match the first paragraph of the article word for word","Be as long as possible to signal content depth"],"correct":1,"explanation":"Your meta description is your ad in the search results. 150-160 characters that summarize the content and include the keyword naturally — compelling enough for a human to click."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

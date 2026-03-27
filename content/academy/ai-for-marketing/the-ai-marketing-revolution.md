@@ -100,6 +100,20 @@ free: true
   <p class="section-text" style="margin-top:1rem">By the end, you'll have templates, workflows, and techniques that cut your marketing production time in half. Let's go.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each marketing task to whether AI excels or struggles.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Marketing Strengths and Limits","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Generating blog posts, emails, and ad copy at volume","right":"AI excels — content at scale"},{"left":"Creating 10 email versions for 10 audience segments","right":"AI excels — personalization without a data team"},{"left":"Deciding whether to pivot the business to enterprise","right":"AI cannot — strategic decisions require human judgment"},{"left":"Building genuine relationships with clients","right":"AI cannot — trust between humans cannot be automated"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"The AI Marketing Revolution","questions":[{"q":"According to the lesson, who thrives most with AI in marketing?","options":["Those who know the most about AI technology","Those who know the most about marketing and use AI to execute faster","Those who invest in the most expensive AI tools","Those who fully automate their marketing workflow"],"correct":1,"explanation":"The lesson is clear: the marketers who thrive with AI are those who know the most about marketing and use AI to execute faster. Your strategy and customer knowledge are the competitive advantage. AI is the engine."},{"q":"What are the 3 areas where AI gives marketers the biggest edge?","options":["SEO, social media, and influencer marketing","Content at Scale, Personalization Without a Data Team, and Analysis and Insights","Email, Ads, and Analytics","Writing, Design, and Strategy"],"correct":1,"explanation":"The Big 3 are: Content at Scale (drafting all types of content faster), Personalization Without a Data Team (creating segment-specific messaging), and Analysis and Insights (extracting patterns from data instantly)."},{"q":"What is the best mental model for AI in marketing?","options":["AI is your marketing director","AI handles production; you handle direction","AI replaces the need for marketing strategy","AI is only useful for small businesses without budgets"],"correct":1,"explanation":"The lesson frames it clearly: AI handles production, you handle direction. Together you are unstoppable — but human strategy, brand instinct, and customer knowledge remain essential."},{"q":"What can AI do for personalization that was previously only available to large enterprises?","options":["Access customer databases automatically","Create 10 versions of an email for 10 different segments in the time it used to take to write 1","Automatically track and analyze customer behavior","Build custom AI models for each audience segment"],"correct":1,"explanation":"AI makes 1:1 marketing accessible without enterprise budgets. Creating segment-specific messaging that would have required a data team can now be done with a well-crafted prompt."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/ai-powered-email-marketing" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: AI-Powered Email Marketing →</a>

@@ -127,6 +127,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Review the 6 principles of trustworthy AI.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"6 Principles of Trustworthy AI","cards":[{"front":"1. Human Oversight","back":"Humans can always intervene, correct, or override AI decisions. There is always a way to appeal an AI-made decision."},{"front":"2. Explainability","back":"You can understand WHY the AI made a decision. The algorithm decided is not an explanation."},{"front":"3. Fairness","back":"The system is tested for bias across different groups. Disparate impacts are measured, reported, and mitigated."},{"front":"4. Privacy by Design","back":"Data protection is built into the system from day one — not an afterthought. Minimum data collection, clear consent."},{"front":"5. Robustness","back":"The system handles edge cases, adversarial inputs, and failures gracefully. It does not break in dangerous ways."},{"front":"6. Accountability","back":"Someone is responsible. If the AI causes harm, a person or team owns the outcome — not the algorithm."}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Building Trustworthy AI Systems","questions":[{"q":"Which of these is a red flag when evaluating an AI tool?","options":["The tool has a paid subscription tier","The tool claims 100% accuracy or no hallucinations","The tool has a privacy policy","The tool requires an account to use"],"correct":1,"explanation":"Claims of 100% accuracy or no hallucinations are a major red flag. No current AI system is 100% accurate. Any company making this claim is either misleading users or does not understand their own product."},{"q":"For a high-stakes AI workflow like hiring decisions, the lesson recommends:","options":["Fully automate to remove human bias","Require human approval before any decision is finalized","Use the most advanced AI model available","Let the AI decide and document its reasoning"],"correct":1,"explanation":"High-stakes decisions — hiring, customer communications, financial transactions — require human approval. Low-stakes tasks like data formatting can be automated more freely, but consequential decisions need a human in the loop."},{"q":"What does Privacy by Design mean in trustworthy AI systems?","options":["Adding privacy settings after the product launches","Data protection built into the system from the start, with minimum data collection and clear consent","Encrypting all AI outputs","Storing user data in private servers"],"correct":1,"explanation":"Privacy by Design means protection is built in from day one, not bolted on afterward. This includes collecting only the minimum data needed and obtaining clear consent — not retrofitting privacy after the fact."},{"q":"According to the lesson, what does accountability mean in AI systems?","options":["The AI system tracks all its own decisions","A specific person or team is responsible if the AI causes harm — not the algorithm","Users accept responsibility by clicking agree to terms","Accountability is shared equally between users and developers"],"correct":1,"explanation":"Accountability means a human being or team owns the outcome when AI causes harm. Saying the algorithm decided is not accountability — it is deflection. Trustworthy systems name who is responsible."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-ethics-and-safety/ai-ethics-assessment" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Final Assessment →</a>

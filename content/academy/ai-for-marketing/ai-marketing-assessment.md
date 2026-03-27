@@ -108,6 +108,20 @@ free: false
   <p class="section-text"><strong>The gap between marketers who use AI well and those who don't is only going to widen.</strong> You're on the right side of that gap. Now go execute.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each marketing funnel stage to the AI-powered content type.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Full-Funnel AI Marketing","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Top of Funnel","right":"Blog posts, social content, and ads that attract ideal customers"},{"left":"Middle of Funnel","right":"Lead magnet, email sequence, and nurture content that builds trust"},{"left":"Bottom of Funnel","right":"Landing page, sales emails, and conversion copy that closes"},{"left":"Retention","right":"Onboarding emails, customer success content, and referral prompts"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Final Assessment</span>
+  <h2 class="section-title">Apply what you have learned across the course.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"AI Marketing Assessment","questions":[{"q":"A startup has a 15% email open rate against a 22% industry average. What is the first thing to analyze?","options":["The email design and template","The subject lines — they are likely the primary driver of open rate","The sending frequency and time of day","The size of the email list"],"correct":1,"explanation":"Open rate is almost entirely driven by the subject line plus sender reputation. The lesson recommends prompting AI with your existing subject lines to diagnose the problem and generate 20 better options to test."},{"q":"You are the only marketer at a 10-person startup with a 90-day deadline. What should you build first?","options":["A brand identity guide and style system","A content strategy with pillars, calendar, welcome sequence, and lead magnet landing page","A social media following across all platforms","A paid advertising campaign on multiple channels"],"correct":1,"explanation":"The lesson scenario calls for: a 90-day content strategy with milestones, content pillars for the audience, a month 1 calendar, blog post outlines, a welcome email sequence, and landing page copy. This full-stack content foundation is what AI makes achievable for one person."},{"q":"What does AI do better than humans in marketing, according to this course?","options":["Understand what customers really feel","Create breakthrough creative ideas","Produce content volume and handle personalization at scale","Build genuine client relationships"],"correct":2,"explanation":"AI excels at content at scale and personalization without a data team. Human marketers bring the strategy, the customer understanding, the creative breakthroughs, and the relationship-building. AI handles the production volume."},{"q":"What is the most important habit the course recommends to stay ahead as a marketer?","options":["Publishing content every single day","Testing AI-generated variants continuously — the marketer who tests more wins","Spending more on paid advertising","Building a larger social media following"],"correct":1,"explanation":"The lesson is clear: the marketer who tests 10 variants per month outperforms the one who sends whatever felt right every single time. AI makes testing trivially easy — generating variants for subject lines, CTAs, openings, and length in seconds."}]}'></div>
+</div>
+
 <!-- BACK -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">← Back to Academy</a>

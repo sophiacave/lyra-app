@@ -74,6 +74,18 @@ free: false
   <div class="prompt-box"><code>Analyze this data for: 1) Time-based trends, 2) Statistical outliers with possible explanations, 3) Correlations between any columns. For each finding, rate your confidence (high/medium/low) and explain what could be causing it.</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Pattern Types</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Three Types of Data Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Trends","right":"Directional patterns over time — revenue growing 5% monthly"},{"left":"Outliers","right":"Data points that don&#39;t fit the pattern — errors or the most interesting find"},{"left":"Correlations","right":"Relationships between variables — when X goes up, Y goes up too"},{"left":"Confounding variable","right":"A hidden third factor causing two things to appear related"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 6 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Pattern Recognition","questions":[{"q":"Ice cream sales and drowning deaths both increase in summer. What does this illustrate?","options":["Ice cream causes drowning","A strong causal relationship","A correlation caused by a confounding variable (heat)","A trend pattern over time"],"correct":2,"explanation":"Both are caused by hot weather — a confounding variable. This is the correlation-causation trap. Always ask AI if there could be a third factor driving two correlated variables."},{"q":"What is a segmented pattern analysis and why does it matter?","options":["Breaking down overall trends by segments like region, customer type, or time period","Removing outliers from the dataset","Analyzing only the top 10% of data","A technique for pie chart creation"],"correct":0,"explanation":"Overall averages lie — your average customer might not exist. Segmentation can reveal two opposing trends hidden inside a flat overall number, which changes everything about your decisions."},{"q":"What does asking AI to explain \"why\" a pattern exists (rather than just \"what\") accomplish?","options":["It slows down the analysis","It turns pattern detection into genuine business intelligence","It produces less accurate results","It only works for financial data"],"correct":1,"explanation":"Asking for possible explanations and what additional data would confirm them transforms a basic pattern find into actionable intelligence you can actually use."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/05-cleaning-messy-data/">← Previous: Cleaning Messy Data</a>
   <a href="/academy/ai-for-data-analysis/07-survey-and-feedback-analysis/">Next: Survey and Feedback Analysis →</a>

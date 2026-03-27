@@ -96,6 +96,20 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each AI use case to the right category.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"What AI Can Do for You","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Draft an email to a difficult neighbor","right":"Writing anything — AI drafts, you edit"},{"left":"Plan a 4-day trip to Austin on a $1,200 budget","right":"Planning anything — give constraints, get organized output"},{"left":"Explain how your car insurance deductible works","right":"Figuring things out — complex things in plain language"},{"left":"Find out if a specific restaurant is open today","right":"AI limitation — real-time local info may not be reliable"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"AI as Your Personal Assistant","questions":[{"q":"What is the key difference between searching Google and using AI?","options":["AI gives more search results","AI allows a back-and-forth conversation where you can ask follow-up questions and get personalized answers","AI is faster than Google","AI shows no ads"],"correct":1,"explanation":"The lesson emphasizes this distinction: Google returns a list of links. AI allows a conversation. You can provide context, ask for clarification, and get answers tailored to your exact situation — not a list of 500 million results to scroll through."},{"q":"According to the lesson, what is AI best described as?","options":["A replacement for human judgment","A fact-checking tool","A first draft machine and thinking partner","A search engine with better results"],"correct":2,"explanation":"The golden rule from the lesson: AI is a first draft machine and thinking partner, not a fact-checker. Use it to generate ideas, organize your thoughts, and save time — then apply your own judgment to the result."},{"q":"What makes an AI prompt more useful for personal planning tasks?","options":["Using more technical language","Being as vague as possible to give AI creative freedom","Providing specific personal context — your constraints, preferences, and actual situation","Making the prompt as short as possible"],"correct":2,"explanation":"The lesson shows this with the dinner example: a vague search gets 500 million results; a specific AI prompt with real context (what you have, how tired you are, how much time you have) gets one personalized, useful answer."},{"q":"Which of these is a genuine limitation of AI assistants?","options":["They can only answer simple questions","They cannot help with planning or organizing","They may not have real-time information about current events, prices, or local businesses","They only work in English"],"correct":2,"explanation":"AI does not browse the internet in real time (unless the tool specifically says so). It may not know today\'s prices, whether a business is still open, or very recent news. Verify specific current facts with official sources."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <span></span>
   <a href="/academy/ai-for-personal-productivity/morning-routines-with-ai">Next: Morning Routines with AI &rarr;</a>

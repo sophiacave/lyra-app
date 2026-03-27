@@ -54,6 +54,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Voice document components.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Voice Document Building Blocks","cards":[{"front":"Tone Words","back":"Pick 3-5 adjectives that describe your communication personality. Example: Direct, warm, occasionally irreverent, confident but not arrogant."},{"front":"Writing Rules","back":"Explicit instructions about structure and style. Example: Short paragraphs. No jargon. Use contractions. Never say \"dive deep\" or \"game-changer\"."},{"front":"Sample Writing","back":"Paste 3-5 paragraphs of your best content. Tell AI: Match this voice exactly. Examples teach more than descriptions."},{"front":"Audience Awareness","back":"Who your reader is, what they can handle, and what turns them off. The AI writes differently when it knows who is reading."},{"front":"Kill List","back":"Words and phrases that must never appear in your content. AI will respect explicit bans better than vague tone instructions."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">Five things that kill your voice in AI content.</h2>
   <p class="section-text"><strong>1. Accepting the first draft.</strong> AI's first attempt is never its best. Ask for revisions: "This is too formal. Make it sound like I'm talking to a friend over coffee."</p>
@@ -67,6 +73,13 @@ free: false
   <span class="section-label">Try It</span>
   <h2 class="section-title">Create your voice document now.</h2>
   <p class="section-text">Gather 3-5 pieces of your best writing. Open AI and paste this: <em>"Analyze these writing samples and describe my brand voice. Cover: tone, sentence structure, vocabulary level, personality traits, and what makes this voice distinctive. Then create a 'Voice Guide' I can paste into future sessions."</em> Review the output. Refine it. Save it somewhere you can access every time you start a content session. This one document will transform your AI output quality overnight.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Brand voice consistency quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Brand Voice Consistency","questions":[{"q":"Why should you ask AI to describe your voice back to you before writing anything?","options":["It makes the session longer","It forces the model to internalize your voice patterns rather than just scanning past them","It is a required step in all AI writing tools","It helps AI remember your preferences permanently"],"correct":1,"explanation":"Asking AI to describe your voice in 2-3 sentences is a 30-second calibration step that dramatically improves every piece of content in the session."},{"q":"Which voice instruction is more effective?","options":["Make it sound professional","Write like a smart friend explaining something at a dinner party","Use a business-appropriate tone","Keep it formal but approachable"],"correct":1,"explanation":"Specific, vivid tone descriptions give AI a real target. Vague instructions like professional or approachable mean different things to different models."},{"q":"What is the most important mistake to avoid when using AI for brand voice content?","options":["Using AI for subject lines","Accepting the first draft without refinement","Publishing without proofreading","Using templates instead of custom prompts"],"correct":1,"explanation":"The first AI draft is never the best. Asking for revisions with specific feedback — this is too formal, make it sound like a conversation — is how you get content that actually sounds like you."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

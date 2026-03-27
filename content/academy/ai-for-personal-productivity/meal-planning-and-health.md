@@ -99,6 +99,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each health task to what AI can and cannot do.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Health and Wellness Limits","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Create a beginner 4-week walking plan","right":"AI can do this well — general fitness planning"},{"left":"Suggest a 10-minute desk stretching routine","right":"AI can do this well — general wellness guidance"},{"left":"Diagnose symptoms and recommend treatment","right":"AI should not — always consult a real medical professional"},{"left":"Help you prepare smart questions for your doctor appointment","right":"AI can do this well — preparation and research support"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Meal Planning and Health","questions":[{"q":"What is the fridge audit technique?","options":["Asking AI to create a shopping list from scratch","Listing what is already in your fridge and asking AI to suggest meals using only those ingredients — reducing waste and shopping trips","Asking AI to analyze your nutrition from photos of your meals","Tracking food expiration dates with AI assistance"],"correct":1,"explanation":"The fridge audit is one of the most practical techniques in the course: list what you already have and ask AI what meals you can make without buying anything else. It saves money, reduces food waste, and solves the what is for dinner problem instantly."},{"q":"What are the key constraints to include in a one-prompt meal plan?","options":["Favorite celebrity chef and desired difficulty level","Budget, number of people, dietary restrictions, and cooking time per meal","Number of calories per meal and macro breakdown","Preferred cuisine type and cooking equipment"],"correct":1,"explanation":"The one-prompt meal plan includes: budget (about $60 total), number of people (2), dietary needs (no seafood), and time available (30 minutes on weeknights). These four constraints let AI build a realistic plan you will actually cook — not an aspirational one you will abandon."},{"q":"What is the most important limit to understand about AI and health?","options":["AI cannot count calories accurately","AI is not a doctor, dietitian, or therapist — it cannot replace professional medical advice","AI health advice is only valid for people under 50","AI should only be used for fitness, not nutrition"],"correct":1,"explanation":"The lesson is explicit: AI is not a doctor, dietitian, or therapist. It can help plan and think through options, but for medical advice, diagnoses, or treatment plans — always consult a real professional. Use AI to prepare good questions for your doctor, not to replace them."},{"q":"What unexpected benefit does AI often add when planning meals across multiple days?","options":["It automatically orders groceries online","It suggests ways to reuse ingredients across meals to reduce waste and cost","It calculates exact nutritional values for each meal","It adjusts recipes based on your cooking skill level automatically"],"correct":1,"explanation":"The lesson notes that AI often suggests ways to reuse ingredients across meals — cook extra chicken on Monday and use it in Wednesday\'s salad. This efficiency insight comes from thinking across the whole week rather than one meal at a time."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-personal-productivity/research-and-learning">&larr; Previous: Research and Learning</a>
   <a href="/academy/ai-for-personal-productivity/financial-planning-basics">Next: Financial Planning Basics &rarr;</a>

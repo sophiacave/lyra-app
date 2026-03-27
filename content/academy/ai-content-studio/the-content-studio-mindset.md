@@ -64,10 +64,23 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Know your studio roles.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Studio Role to Its Job","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Strategist","right":"Decides what to create and why"},{"left":"Editor","right":"Sharpens and polishes raw material"},{"left":"Producer","right":"Turns one piece into many formats"},{"left":"Scheduler","right":"Keeps the content machine running"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Rule</span>
   <h2 class="section-title">Your voice is non-negotiable.</h2>
   <p class="section-text">The studio mindset doesn't mean handing everything to AI and walking away. Your perspective, your stories, your weird analogies, your lived experience — that's what makes your content yours. AI is the production team. You're the creative director.</p>
   <p class="section-text">Throughout this course, we'll build systems that amplify your voice, not replace it. Every tool, every workflow, every technique is designed to make <em>you</em> louder, faster, and more consistent — without losing what makes your content worth reading in the first place.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Content studio mindset quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Content Studio Mindset","questions":[{"q":"What is the biggest advantage of thinking like a studio instead of a solo writer?","options":["You write faster with fewer edits","You have systems for every part of the content lifecycle","You no longer need a content strategy","AI writes everything for you"],"correct":1,"explanation":"The studio mindset means using AI across strategy, creation, repurposing, and optimization — not just as a writing shortcut."},{"q":"Which AI role is responsible for turning one blog post into five social snippets?","options":["The Strategist","The Editor","The Producer","The Scheduler"],"correct":2,"explanation":"The Producer takes one piece and multiplies it across formats — that is the role that saves the most time in a content studio."},{"q":"Why should you ask AI to THINK with you before asking it to WRITE?","options":["It makes AI responses longer","Thinking prompts produce better content strategy than writing prompts","AI cannot write without planning first","Thinking mode is faster than writing mode"],"correct":1,"explanation":"Asking AI to plan and strategize before writing shifts it from a typing assistant into a genuine creative thinking partner."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

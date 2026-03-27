@@ -80,9 +80,22 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">When to use one agent vs. many.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Scenario to the Right Agent Approach","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Self-contained task that fits one context window","right":"Use a single agent"},{"left":"Workflow with distinct phases requiring different expertise","right":"Use multiple specialized agents"},{"left":"Task requiring parallel processing across data sources","right":"Use multiple agents running simultaneously"},{"left":"Process needing checks and balances on its own output","right":"Use multiple agents where one reviews another"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">The Future Is Collaborative AI</h2>
   <p class="section-text">Multi-agent orchestration isn't about replacing one powerful AI with many weaker ones. It's about unlocking capabilities that emerge only when specialized agents work together. Throughout this course, you'll learn to design, build, and manage these agent teams — turning complex workflows into reliable, scalable systems.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Why multiple agents quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Why Multiple Agents","questions":[{"q":"Why does a single agent struggle with complex multi-step workflows?","options":["Single agents cost more per API call","Context windows fill up and attention drifts when an agent tries to be researcher, writer, editor, and manager simultaneously","Single agents cannot access external tools","Single agents are too slow for multi-step work"],"correct":1,"explanation":"The single-agent ceiling is real. Complex workflows fragment the agent attention, cause context overflow, and produce lower quality output than specialized agents working within their domains."},{"q":"Why does specialization improve AI performance just like it improves human team performance?","options":["Specialized agents use more advanced models","Each agent maintains deep context for its specific domain rather than spreading attention across everything","Specialized agents are cheaper to run","Specialization allows agents to share memory more easily"],"correct":1,"explanation":"A coding agent that only writes code outperforms a general agent that also handles research, testing, and documentation — not because it is smarter, but because focus produces quality."},{"q":"What is the practical rule of thumb for deciding to go multi-agent?","options":["If the task takes longer than one hour","If you would hire multiple people for the job, you probably want multiple agents","If the task involves more than three steps","If you need faster output than a single agent can provide"],"correct":1,"explanation":"This maps agent teams to how real professional work is structured. When you need a researcher and a writer and an editor, those are three different agents — just like three different people on a team."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

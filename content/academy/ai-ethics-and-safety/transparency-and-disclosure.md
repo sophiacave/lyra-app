@@ -105,6 +105,20 @@ free: false
   <p class="section-text" style="margin-top:1rem">Using AI is a skill, not a shortcut. Frame your disclosure accordingly.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each disclosure scenario to the right category.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Disclosure: Must, Should, Optional","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI-generated article published as journalism","right":"Must Disclose"},{"left":"Blog post substantially written by AI","right":"Should Probably Disclose"},{"left":"Using AI to brainstorm ideas you then wrote yourself","right":"Disclosure Optional"},{"left":"Customer-facing chatbot powered by AI","right":"Must Disclose"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Transparency and Disclosure","questions":[{"q":"What is the difference between AI-generated and AI-assisted content?","options":["There is no meaningful difference","AI-generated means AI created the core content; AI-assisted means a human created the core content and used AI as a tool","AI-assisted is always higher quality","AI-generated content is always plagiarized"],"correct":1,"explanation":"AI-generated means AI created the core content with minimal human editing. AI-assisted means a human created the direction and ideas, using AI as one of many tools — like a calculator or grammar checker."},{"q":"Which of the following is a good example of appropriate AI disclosure language?","options":["I totally cheated and used ChatGPT lol","Written with AI assistance","This was 100% written by a robot","AI did everything, I just edited"],"correct":1,"explanation":"Simple, professional language like \"written with AI assistance\" is accurate without being self-deprecating. It frames AI as a professional tool rather than a shortcut."},{"q":"Does using AI to brainstorm ideas you then wrote yourself generally require disclosure?","options":["Yes, any AI use must be disclosed","No, using AI for brainstorming is generally considered disclosure-optional","Only if the AI generated more than 10% of the content","It depends on the word count"],"correct":1,"explanation":"Using AI for brainstorming or ideation — where the writing, ideas, and direction are entirely human — generally falls in the disclosure-optional category. The thinking is yours; AI was just a thinking partner."},{"q":"Why is the distinction between AI-generated and AI-assisted important for professionals?","options":["It determines how much you can charge clients","It affects copyright ownership and ethical transparency","It is only relevant for academic work","It only matters in creative industries"],"correct":1,"explanation":"The distinction matters for both ethics and copyright. AI-generated content may not be copyrightable; AI-assisted content with substantial human creativity likely is. And ethically, the distinction tells your audience how much human judgment shaped the work."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-ethics-and-safety/intellectual-property-and-copyright" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Intellectual Property and Copyright →</a>

@@ -79,6 +79,18 @@ free: false
   <div class="prompt-box"><code>Turn this analysis into a professional report with three sections: 1) Executive summary (3-5 sentences, lead with the key insight), 2) Key metrics with suggested chart types, 3) Detailed findings with recommendations. Write it for [your audience]. Format it in clean markdown.</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">The Three-Layer Report</h2>
+  <div data-learn="SortStack" data-props='{"title":"Report Layers in Order","instruction":"Arrange from first to last in a well-structured report","items":["Executive summary — 3-5 sentences, headline findings and action","Key metrics and visuals — supporting charts, tables, comparisons","Detailed analysis — methodology, caveats, and full nuance"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 9 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Reporting and Dashboards","questions":[{"q":"Why do most reports fail to drive action?","options":["They contain too much data","They start with detailed methodology instead of leading with the key insight","They use too many charts","They are too short"],"correct":1,"explanation":"Most reports start at Layer 3 — the deep analytical detail. But decision-makers need Layer 1 first: what changed, what matters, what to do about it. Always lead with the insight."},{"q":"What do decision-makers want instead of raw information?","options":["More charts and tables","Longer executive summaries","Implications — what the data means and what to do about it","Raw data exports they can analyze themselves"],"correct":2,"explanation":"Revenue was $50,000 is information. Revenue hit $50,000, exceeding target by 12%, driven by the new product launch is an implication. Decision-makers need the second version."},{"q":"What is the benefit of building a recurring report template?","options":["Templates reduce the quality of analysis","The first report takes effort; every subsequent one takes five minutes","Templates only work for weekly reports","You need coding skills to create templates"],"correct":1,"explanation":"The investment goes into the first report. After that, you paste new data into the template and get consistent, high-quality reports in a fraction of the time."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/08-financial-data-analysis/">← Previous: Financial Data Analysis</a>
   <a href="/academy/ai-for-data-analysis/10-building-your-analysis-workflow/">Next: Building Your Analysis Workflow →</a>

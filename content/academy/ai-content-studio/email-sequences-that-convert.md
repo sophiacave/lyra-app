@@ -55,6 +55,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Know your email sequences.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"The Three Email Sequences","cards":[{"front":"Welcome Sequence","back":"5-7 emails. Introduces who you are, what you believe, and how you can help. By email 5 the subscriber trusts you enough to consider buying."},{"front":"Weekly Newsletter","back":"Your relationship-builder. One email per week with genuine value — a lesson, insight, or story. Goal is to be the email people look forward to opening."},{"front":"Launch Sequence","back":"4-6 emails when you have something to sell. Builds anticipation, handles objections, creates urgency, drives action. Only works because of the other 50 weeks of value-giving."},{"front":"Subject Line Curiosity Gap","back":"An open loop the brain must close. Example: The tool I did not want to tell you about."},{"front":"Subject Line Direct Benefit","back":"Clear, specific, desirable. Example: How to write 30 days of content in 2 hours."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Voice</span>
   <h2 class="section-title">The AI email trap (and how to avoid it).</h2>
   <p class="section-text">AI-generated emails have a telltale sound: overly polished, slightly generic, suspiciously perfect. People can smell it. The fix is simple — give AI your raw material and let it structure, not create from scratch.</p>
@@ -67,6 +73,13 @@ free: false
   <span class="section-label">Try It</span>
   <h2 class="section-title">Write your welcome sequence.</h2>
   <p class="section-text">Using the 5-email framework above, generate your complete welcome sequence with AI. For each email, write one paragraph of raw notes in your own voice first — a story, a belief, a lesson — then let AI shape it into a complete email. Review each one: does it sound like you? Would you open it? Would you read to the end? If not, feed it back with specific notes until it does.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Email sequences quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Email Sequences That Convert","questions":[{"q":"Why does email outperform social media for audience ownership?","options":["Emails have higher production value","Email is a direct line with no algorithm or gatekeeper between you and your audience","Email open rates are always higher than social reach","Email is free to send"],"correct":1,"explanation":"Social platforms can change their algorithm overnight and crush your reach. Email gives you direct access to your audience regardless of platform decisions."},{"q":"What is the right goal of a weekly newsletter?","options":["Drive maximum sales every week","Be the email your audience actually looks forward to opening","Repurpose your social media posts","Sell your flagship product every week"],"correct":1,"explanation":"The weekly newsletter is a relationship-builder. The goal is genuine value, not selling. The selling happens in launch sequences — made possible by the trust built week after week."},{"q":"What is the key technique that prevents AI-written emails from sounding robotic?","options":["Asking AI to write in a formal tone","Giving AI your raw personal story first and letting it shape — not create — the email","Using AI only for subject lines","Asking AI to imitate popular email newsletters"],"correct":1,"explanation":"Your raw material is what makes it human. AI shapes it into something polished. If you ask AI to create from scratch, you get generic. Feed it your messy notes first."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

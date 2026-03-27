@@ -88,9 +88,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Common failure modes.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Multi-Agent Anti-Patterns","cards":[{"front":"Agent Sprawl","back":"Adding agents for every small task. More agents equals more complexity equals more failure points. Start with the minimum viable team."},{"front":"Echo Chambers","back":"Agents that only validate each other without genuine critical evaluation. Your critic agent needs teeth — real disagreement, not rubber stamps."},{"front":"Context Amnesia","back":"Critical information disappears during handoffs. The most important data is lost between steps when message contracts are too loose."},{"front":"Infinite Loops","back":"Agent A asks Agent B for clarification, Agent B asks Agent A back. Without loop detection, the system burns tokens forever."},{"front":"Single Point of Failure","back":"Entire system fails when the hub agent fails. Design with fallbacks or distribute control to prevent cascading collapse."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Production Teaches What Theory Can't</h2>
   <p class="section-text">Every multi-agent system looks clean on a whiteboard. Production reveals the real challenges: edge cases, cascading failures, cost explosions, and emergent behaviors you never designed for. The teams that succeed are the ones that ship early, monitor obsessively, and iterate fast. Your first design will be wrong. Your tenth iteration will be solid.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Real-world multi-agent systems quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Real-World Multi-Agent Systems","questions":[{"q":"What does every successful production multi-agent system have in common?","options":["All agents use the same AI model","Clear separation of concerns, a verification layer, graceful degradation, and comprehensive logging","Large context windows for all agents","Real-time human monitoring at all times"],"correct":1,"explanation":"These four patterns appear across every successful deployment: one job per agent, someone checking the work, the system continues when something fails, and every action is recorded."},{"q":"What is the key problem with adding more than 4-5 parallel research agents in a swarm?","options":["More agents cost too much","The synthesis agent struggles to process conflicting findings from too many sources — diminishing returns set in","More agents always produce better results","The blackboard becomes too large to read"],"correct":1,"explanation":"Research swarms hit diminishing returns past 4-5 parallel researchers. The synthesis agent gets overwhelmed by volume and conflicting findings — more does not always mean better."},{"q":"What is the most important lesson from production multi-agent deployments?","options":["Always start with the most complex architecture","Ship early, monitor obsessively, and iterate fast — your first design will be wrong, your tenth will be solid","Never deploy without full human oversight","Always use the most powerful model for every agent"],"correct":1,"explanation":"Production reveals what theory cannot predict: edge cases, cascading failures, cost explosions, emergent behaviors. The teams that succeed ship fast, watch everything, and fix problems as they appear."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

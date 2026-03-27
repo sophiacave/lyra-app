@@ -72,6 +72,20 @@ free: false
   <p class="section-text">After every call, feed your notes to AI and ask for patterns. Over time, you'll build a dataset of what works: which questions open people up, which objections come up most, what closes deals. This is your personal sales playbook, refined by real data.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each call phase to its AI-informed question type.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Sales Call Framework","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Discovery Phase","right":"What is the biggest bottleneck in your process right now?"},{"left":"Pain Amplification","right":"What happens if that problem is not solved in the next 6 months?"},{"left":"Solution Bridge","right":"What if you could achieve a specific outcome without their current pain?"},{"left":"Close Signal","right":"If we could show you this working with your data, would that be worth a deeper look?"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Sales Calls and Meetings","questions":[{"q":"What is the purpose of AI-powered call prep according to the lesson?","options":["To script every word you will say during the call","To have a map so you never get lost in the conversation — not to memorize lines","To replace the need to listen during the call","To automate call scheduling and follow-ups"],"correct":1,"explanation":"The lesson makes this distinction clearly: it is not about scripting every word. It is about having a map. The best salespeople prepare obsessively and then sound completely natural. AI makes the preparation effortless — so you can be fully present in the conversation."},{"q":"How quickly should you send a post-call follow-up email?","options":["Within 24 hours","Within 48 hours","Within 30 minutes of the call","Within 1 week while details are still fresh"],"correct":2,"explanation":"The lesson specifies: send the follow-up within 30 minutes of the call. Speed signals professionalism and urgency. It also demonstrates that the call was important to you — and catches the prospect while the conversation is still fresh in their mind."},{"q":"What does a good post-call follow-up include that a generic one does not?","options":["A standard meeting recap template","Thanks for your time and a next-steps calendar link","Specific references to something they said, their stated pain points, and a clear proposed next step with a date","A PDF of your product brochure and pricing sheet"],"correct":2,"explanation":"The lesson\'s follow-up prompt generates: thanks for something specific they said, recap of their 2-3 key pain points, mapping your solution to those pains, addressing the objection they raised, and proposing a clear next step with a specific date and time."},{"q":"What is the call intelligence system the lesson recommends building?","options":["A CRM integration that records all calls automatically","A personal dataset from call notes fed to AI to find patterns over time — which questions open people up, which objections recur, what closes deals","A shared team library of successful call scripts","A calendar system that optimizes call scheduling based on AI recommendations"],"correct":1,"explanation":"Feed your call notes to AI after every call and ask for patterns. Over time you build a personal sales playbook grounded in real data from your own calls — not generic advice. This is your competitive advantage, refined every week."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-sales/03-outreach-that-converts/" class="prev">← Previous: Outreach That Converts</a>
   <a href="/academy/ai-for-sales/05-proposal-and-pitch-creation/" class="next">Next: Proposal & Pitch Creation →</a>

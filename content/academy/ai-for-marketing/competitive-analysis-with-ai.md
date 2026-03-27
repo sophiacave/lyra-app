@@ -124,6 +124,20 @@ MY product ([describe yours]) to differentiate clearly?</pre>
   <p class="section-text" style="margin-top:1rem">This turns hours of strategic work into a 15-minute AI-assisted session that produces actionable marketing assets.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each competitive analysis prompt goal to its output.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Competitive Analysis Outputs","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Paste competitor homepage text and ask for analysis","right":"Reveals their target audience, value proposition, emotional triggers, and messaging gaps"},{"left":"Build a competitive matrix with your product and 3 rivals","right":"Shows your advantages, where competitors beat you, and market gaps nobody is filling"},{"left":"Ask what audiences are underserved across all competitors","right":"Uncovers gap-finding opportunities to differentiate your positioning"},{"left":"Ask AI to write positioning statements after analysis","right":"Produces landing page copy, why-us bullets, and objection-handling responses"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Competitive Analysis with AI","questions":[{"q":"What is the most valuable insight competitive analysis can produce?","options":["Which competitor has the most ad budget","What competitors are NOT doing — the gaps in the market","Which competitor has the best reviews","Which competitor has been around longest"],"correct":1,"explanation":"The lesson explicitly states: the most valuable competitive intelligence is about what competitors are NOT doing. Gaps are where differentiation lives — and AI excels at identifying them from your research."},{"q":"What should you do AFTER running a competitive analysis with AI?","options":["Archive it for future reference","Immediately use it to write positioning statements, landing page bullets, and objection responses","Share it with your competitors for feedback","Run the same analysis again in a different AI tool to verify"],"correct":1,"explanation":"Competitive analysis is worthless unless it changes what you do. The lesson shows you how to turn analysis directly into marketing assets: positioning statements, why-us bullets, comparison page outlines, and objection-handling responses."},{"q":"How do you deconstruct a competitor\'s messaging with AI?","options":["Ask AI to guess what their strategy is based on their company name","Paste their homepage or landing page text into AI and ask structured analysis questions","Subscribe to their newsletter and summarize it manually","Ask AI to search the web for information about them"],"correct":1,"explanation":"Copy the text from a competitor\'s homepage, landing page, or about page and paste it directly into AI with structured questions. This gives you instant analysis of their audience targeting, emotional triggers, value proposition, and gaps."},{"q":"What does a positioning statement accomplish after competitive analysis?","options":["It lists all the features that competitors lack","It captures in one sentence why someone should choose you over alternatives","It describes your target audience demographics","It outlines your marketing budget allocation"],"correct":1,"explanation":"A positioning statement is one sentence that captures your differentiation — why a buyer should choose you over the alternatives. It flows directly from competitive analysis and anchors all your marketing messaging."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/content-calendars-and-planning" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Content Calendars and Planning →</a>

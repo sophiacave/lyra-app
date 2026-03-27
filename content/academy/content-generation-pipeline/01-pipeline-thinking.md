@@ -74,10 +74,23 @@ Step 3: "Using this outline, write the full draft. Voice: conversational but aut
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Pipeline vs. single prompt.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Pipeline Step to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Research Step","right":"Gather current data and trend information"},{"left":"Outline Step","right":"Structure the argument using a proven framework"},{"left":"Draft Step","right":"Write each section with voice guidelines baked in"},{"left":"Edit Step","right":"Tighten, fact-check, and add transitions"},{"left":"Format Step","right":"Output as blog, social snippets, and email teaser"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Why This Matters</span>
   <h2 class="section-title">Pipelines Scale. Prompts Don't.</h2>
   <p class="section-text">Once you have a pipeline, you can run it a hundred times with different inputs and get consistently excellent results. You can hand it to a team member. You can automate it. You can improve individual steps without rebuilding everything. That's the difference between a content operation and a content gamble.</p>
   <p class="section-text">In the next nine lessons, we're going to build a complete content generation machine. This lesson was the foundation. Everything else stacks on top of pipeline thinking.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Pipeline thinking quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Pipeline Thinking","questions":[{"q":"What is the key difference between a single-prompt approach and a pipeline approach?","options":["Pipelines use more advanced AI models","Pipelines chain discrete steps where each output feeds the next input","Pipelines are always automated without human input","Pipelines produce shorter content than single prompts"],"correct":1,"explanation":"The magic of pipelines is in the connections between steps. Each step does one thing well and passes its output to the next — like a factory assembly line where every station adds value."},{"q":"Why do constraints at each pipeline step produce better results than freedom in one big prompt?","options":["Constraints reduce the number of tokens used","Constraints force the AI to focus on one specific task at a time, dramatically improving quality","Constraints prevent AI from making mistakes","Constraints make prompts easier to write"],"correct":1,"explanation":"When you tell AI to write section 3 in a conversational tone with exactly two examples instead of write a blog post — you get a much sharper result."},{"q":"What is the main advantage of pipelines over one-time prompts?","options":["Pipelines are cheaper to run","Pipelines produce consistent, scalable results you can run repeatedly with different inputs","Pipelines require no human involvement","Pipelines automatically publish content"],"correct":1,"explanation":"A pipeline can be run a hundred times with different inputs and produce consistently excellent results. You can hand it to a team member, automate it, and improve individual steps without rebuilding everything."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -81,6 +81,18 @@ free: true
   <p>Pick two tools from this lesson and sign up for free accounts on both. Generate the same image on each — try <strong>"a lighthouse on a cliff at sunset, dramatic clouds"</strong> — and compare the results side by side. Notice how each tool interprets the same words differently. That difference is their personality, and knowing it helps you choose the right tool for each project.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Tool Strengths</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Image Tools and Their Strengths","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"DALL-E","right":"Easiest starting point — follows instructions precisely"},{"left":"Midjourney","right":"Most beautiful, cinematic output — the artist favorite"},{"left":"Stable Diffusion","right":"Open source — maximum control, run locally"},{"left":"Adobe Firefly","right":"Best for commercial safety — trained on licensed content"},{"left":"Ideogram","right":"Best at including readable text in images"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 2 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Understanding AI Image Tools","questions":[{"q":"Which tool is best for projects requiring commercial safety and IP indemnity?","options":["Midjourney","Stable Diffusion","Adobe Firefly","Bing Image Creator"],"correct":2,"explanation":"Adobe Firefly was trained only on licensed content, making it the safest choice for commercial work. Adobe provides IP indemnity for enterprise customers."},{"q":"What is the main tradeoff of Midjourney compared to DALL-E?","options":["Midjourney is free while DALL-E costs money","Midjourney produces stunning visuals but is less precise at following exact instructions","Midjourney only works for abstract art","DALL-E has better artistic output"],"correct":1,"explanation":"Midjourney produces the most visually striking results but trades some precision. If you describe something very specific, DALL-E tends to be more literal. Midjourney interprets with artistic license."},{"q":"What makes Stable Diffusion fundamentally different from DALL-E and Midjourney?","options":["It only works on Windows","It is the most expensive option","It is open source and can be run locally on your own computer","It has the best photorealism"],"correct":2,"explanation":"Stable Diffusion is open source — you can download and run it on your own computer with a good graphics card. This means maximum control, no ongoing cost, and your data never leaves your machine."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/the-visual-ai-revolution">&larr; Previous: The Visual AI Revolution</a>
   <a href="/academy/ai-images-and-video/your-first-ai-image">Next: Your First AI Image &rarr;</a>

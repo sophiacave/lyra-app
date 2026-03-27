@@ -83,6 +83,18 @@ free: false
   <p>Generate an image in ChatGPT, then click on it and use the editing feature to change one element. Try something like generating a landscape, then editing just the sky to make it more dramatic. Notice how the rest of the image stays consistent while the edited area transforms. That is inpainting in action, and it is one of the most powerful tools in your visual AI toolkit.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Editing Techniques</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Image Editing Methods","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Inpainting","right":"Fix one specific area while keeping the rest of the image unchanged"},{"left":"Outpainting","right":"Extend the image beyond its original canvas borders"},{"left":"Upscaling","right":"Increase resolution while adding genuine detail, not just stretching pixels"},{"left":"Variations","right":"Explore alternative versions from one starting image without starting from scratch"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 5 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Editing and Refining","questions":[{"q":"What is the correct order of the AI editing workflow?","options":["Upscale, then generate, then inpaint","Generate, evaluate, vary, inpaint, outpaint, upscale","Upscale first, then generate variations","Generate once and accept the result"],"correct":1,"explanation":"Generate your initial image, evaluate what works, use variations if the direction is off, inpaint specific problem areas, outpaint if you need different dimensions, then upscale once you are happy."},{"q":"What is the pro tip for getting the best inpainting results?","options":["Make your selection as small as possible","Select exactly the pixels you want to change, nothing more","Make your selection slightly larger than the area you want to change to give context for seamless blending","Only inpaint on portrait images"],"correct":2,"explanation":"A slightly larger selection gives the AI more surrounding context, which helps it blend the regenerated area seamlessly with the rest of the image."},{"q":"What is upscaling used for?","options":["Changing the style of an image","Making small images larger with added detail for print or large display use","Cropping images to different aspect ratios","Removing backgrounds from images"],"correct":1,"explanation":"AI upscaling increases resolution while adding genuine detail — not just stretching pixels. This is essential when you need an image for print, posters, or large displays that require higher resolution than standard AI output."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/prompt-craft-for-images">&larr; Previous: Prompt Craft for Images</a>
   <a href="/academy/ai-images-and-video/ai-for-social-media-visuals">Next: AI for Social Media Visuals &rarr;</a>

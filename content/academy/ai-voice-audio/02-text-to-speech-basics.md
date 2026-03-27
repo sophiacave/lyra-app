@@ -68,6 +68,18 @@ free: true
   <p>Notice how each platform handles the em-dash, the emotional arc, and the final phrase. These differences define your tool choice for real projects.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">TTS Platform Strengths</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Text-to-Speech Tools","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"ElevenLabs","right":"Current quality leader — exceptional emotional range and best voice cloning integration"},{"left":"OpenAI TTS","right":"Built into the API — rock-solid reliability, great for developers building apps"},{"left":"Google Cloud TTS","right":"Enterprise-grade — hundreds of voices across 40+ languages, pay-per-character"},{"left":"Edge TTS","right":"Microsoft free option — surprisingly good quality for zero cost, great for prototyping"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 2 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Text-to-Speech Basics","questions":[{"q":"What is the fundamental difference between old concatenative TTS and modern neural TTS?","options":["Old TTS was faster","Old TTS stitched together recorded chunks — modern TTS generates audio from scratch using learned speech patterns","Neural TTS only works in English","Modern TTS requires more computing power but sounds the same"],"correct":1,"explanation":"Old TTS mechanically stitched together pre-recorded speech fragments — which is why it sounded robotic. Neural TTS learns patterns from thousands of hours of recordings and generates waveforms from scratch, producing natural-sounding results."},{"q":"What is the key writing principle for text that will be converted to speech?","options":["Use complex, sophisticated vocabulary","Write the same way you would for a printed document","Keep sentences short, use contractions, and use punctuation to create natural pauses","Always spell out every number in full"],  "correct":2,"explanation":"Your ears get one shot at audio — unlike eyes that can re-read. Short sentences, contractions like don&#39;t instead of do not, and ellipses or dashes for pauses help TTS output sound natural."},{"q":"What does SSML stand for and what is it used for?","options":["Simple Speech Markup Layer — for adding sound effects","Speech Synthesis Markup Language — for fine-tuning delivery rate, pitch, volume, breaks, and pronunciation","Streaming Speech Memory Language — for real-time audio","Standard Sound Module Language — for equalizer settings"],"correct":1,"explanation":"SSML is Speech Synthesis Markup Language — it gives you fine control over how TTS reads your text, including pauses, emphasis, speaking speed, and specific pronunciation of words."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/the-voice-revolution/" class="prev">← The Voice Revolution</a>
   <a href="/academy/ai-voice-audio/voice-cloning-and-custom-voices/" class="next">Next: Voice Cloning & Custom Voices →</a>

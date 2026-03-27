@@ -94,6 +94,10 @@ Start your response with:
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Structured Output — Match the Technique to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Schema-Driven Prompt","right":"Show the exact JSON structure with field descriptions to get consistent output"},{"left":"Output First Trick","right":"Start the AI\u2019s response yourself to anchor the format from the first token"},{"left":"Markdown Table Prompt","right":"Specify columns, rows, and cell length constraints for parseable tables"},{"left":"Return ONLY directive","right":"Prevent helpful preambles like \u2018Here is the JSON:\u2019 before your data"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">When Structured Output Breaks</h2>
   <p class="section-text"><strong style="color: var(--red);">The "helpful" preamble:</strong> AI loves to add "Here's the JSON:" before your data. Fix: "Return ONLY the JSON. No preamble. No explanation."</p>
@@ -115,6 +119,10 @@ Start your response with:
 Return ONLY valid JSON. No markdown. No explanation.</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Structured Output Quiz","questions":[{"q":"What is the most reliable way to get consistent JSON from an AI?","options":["Ask nicely for JSON","Provide the exact schema with field descriptions and types","Ask for JSON at the end of the prompt","Use bullet points instead"],"correct":1,"explanation":"Schema-driven prompting — showing the exact structure with type descriptions for each field — gives the AI a precise blueprint to follow, dramatically improving consistency."},{"q":"Why does the \u2018Output First\u2019 trick work?","options":["It makes the prompt shorter","Starting the response anchors the AI into your format from the very first token","It prevents hallucinations","It speeds up generation"],"correct":1,"explanation":"When you begin the AI\u2019s response (e.g., \u20181. **\u2019), the model continues in that format rather than inventing its own structure."},{"q":"How do you fix the \u2018helpful preamble\u2019 problem where AI adds \u2018Here is the JSON:\u2019 before your data?","options":["Ask for shorter output","Add \u2018Return ONLY the JSON. No preamble. No explanation.\u2019 to your prompt","Use a different model","Put the schema at the end of the prompt"],"correct":1,"explanation":"Explicitly telling the AI what NOT to include is as important as telling it what to include. \u2018Return ONLY\u2019 directives suppress unwanted framing text."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

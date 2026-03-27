@@ -99,6 +99,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each task to its priority bucket.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Priority Matrix Buckets","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Do Now","right":"Urgent and important — today\'s top priorities"},{"left":"Schedule","right":"Important but not urgent — block time this week"},{"left":"Quick Wins","right":"Under 5 minutes — batch and knock them out"},{"left":"Let Go","right":"Not important enough to do — drop it or delegate it"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Task Management and Prioritization","questions":[{"q":"According to the lesson, why do most people struggle with productivity?","options":["They are lazy or unmotivated","They have too many tasks on their list","They have a clarity problem — everything feels equally important and they cannot figure out where to start","They do not use the right productivity apps"],"correct":2,"explanation":"The lesson is direct: most people do not have a productivity problem, they have a clarity problem. Everything feels urgent so they do easy, low-value tasks instead of the right ones. AI solves this by sorting the chaos into a clear path forward."},{"q":"What is a brain dump and why is it powerful?","options":["A technique for memorizing information quickly","Getting everything out of your head — every task, worry, and errand — before asking AI to sort and prioritize it","A way to speed-read documents with AI","A method for organizing files on your computer"],"correct":1,"explanation":"A brain dump means getting the unfiltered contents of your mind onto paper — every task, errand, worry, and half-finished project. The lesson calls it the most powerful move in personal productivity. AI takes this raw input and turns it into categories and priorities."},{"q":"Why does the lesson recommend breaking large tasks like clean the garage into 15-minute chunks?","options":["15-minute chunks are scientifically optimal for focus","Large tasks feel too overwhelming to start — breaking them into tiny steps removes the barrier","It makes the task easier to assign to other people","AI can only understand tasks that are 15 minutes or shorter"],"correct":1,"explanation":"The number one reason people procrastinate on big tasks: the task feels too large to start. Clean the garage sits on the list for months because it is actually 15 smaller tasks. AI breaks the mountain into a staircase — and suddenly you have a first step that is doable right now."},{"q":"What should you do AFTER getting your prioritized task list from AI?","options":["Print it and file it for reference","Pick your most procrastinated task and ask AI to break it into 15-minute chunks","Ask AI to repeat the prioritization with a different framework","Schedule a meeting to review it with your team"],"correct":1,"explanation":"The Try It section specifically suggests this as a bonus: take your biggest, most procrastinated task and ask AI to break it into 15-minute chunks. This converts the abstract into the actionable — the key to overcoming procrastination."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-personal-productivity/email-and-communication">&larr; Previous: Email and Communication</a>
   <a href="/academy/ai-for-personal-productivity/research-and-learning">Next: Research and Learning &rarr;</a>

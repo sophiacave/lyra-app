@@ -84,9 +84,22 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Communication pattern strengths and risks.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Communication Pattern to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Direct Messaging","right":"Sequential workflows and simple handoffs between two agents"},{"left":"Broadcast (Pub/Sub)","right":"Parallel processing where multiple agents react differently to the same trigger"},{"left":"Blackboard","right":"Complex problems requiring full context and iterative refinement by all agents"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Good Communication Is the Whole Game</h2>
   <p class="section-text">Multi-agent systems fail at the seams — the handoff points between agents. Invest heavily in communication contracts. Define message formats explicitly. Include metadata for debugging. When your agents communicate cleanly, the whole system becomes predictable, debuggable, and reliable.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Communication patterns quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Communication Patterns","questions":[{"q":"Why do multi-agent systems fail at the seams between agents?","options":["Agents run out of memory at handoff points","Format mismatches and lost context at handoff points cause cascading failures downstream","Agents become slower when passing large messages","API rate limits are hit during handoffs"],"correct":1,"explanation":"Each handoff is a potential failure point. Agent A outputs free-form text, Agent B expects JSON — the mismatch corrupts data flowing through the whole system. Communication contracts prevent this."},{"q":"What metadata should a clean agent message include beyond the payload?","options":["Agent name only","Timestamp and token count","From, to, message type, confidence score, timestamp, and tokens used","Just the output data in JSON format"],"correct":2,"explanation":"Metadata like confidence score and source agent makes the message traceable and debuggable. When something goes wrong downstream, you can trace exactly where the data came from and how reliable it was."},{"q":"What is the key risk of the broadcast (pub/sub) communication pattern?","options":["Messages are lost during transmission","Two agents might both handle the same task, causing duplicate work or race conditions","Broadcasting uses too many API tokens","Agents cannot filter which broadcasts to respond to"],"correct":1,"explanation":"In pub/sub, all agents see the same message. Without proper coordination, two agents might both pick up the same task and produce conflicting outputs. Explicit ownership and deduplication logic are essential."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

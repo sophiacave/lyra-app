@@ -74,6 +74,18 @@ Ask Claude to write you a working HTML page that implements this loop using the 
   <p>It won't sound amazing — browser TTS is basic. But the interaction loop is the same one powering every voice assistant on the market. Understand the loop and you understand voice interfaces.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Voice Interface Architecture</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Voice App Three Layers","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Ears layer (STT)","right":"Converts user speech to text — Whisper, Deepgram, Web Speech API"},{"left":"Brain layer (LLM)","right":"Processes text, understands intent, generates a response and can trigger actions"},{"left":"Mouth layer (TTS)","right":"Converts the response back to speech — ElevenLabs, OpenAI TTS"},{"left":"Speech-to-Speech (S2S)","right":"Skips the text layer entirely — audio in, audio out — lowest latency"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 8 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Voice Interfaces","questions":[{"q":"Why are LLM-powered voice interfaces better than traditional voice assistants like Siri?","options":["They are cheaper to run","Traditional assistants are brittle and break off-script — LLMs actually understand language so voice interfaces truly work","Traditional assistants have worse hardware microphones","LLMs respond faster than traditional assistants"],  "correct":1,"explanation":"Siri and similar assistants break the moment you go off-script because they match patterns rather than understanding language. An LLM that genuinely understands language makes voice interfaces that can handle natural, unstructured conversation."},{"q":"What is the key Voice UX design principle about response length?","options":["Longer responses provide more value to users","Responses should be under 30 seconds — voice is linear, users must listen to every word","Voice responses should always be exactly 30 seconds","Users prefer detailed multi-minute responses"],  "correct":1,"explanation":"Screen text can be scanned. Voice responses are linear — the user must listen to every word in order. Keep responses under 30 seconds and offer to go deeper if the user wants more."},{"q":"What does Speech-to-Speech (S2S) architecture do differently?","options":["It adds a third language layer","It processes audio input and produces audio output without converting to text in between","It requires two microphones","It only works with specific languages"],  "correct":1,"explanation":"S2S models skip the text layer entirely — processing audio in and producing audio out. This reduces latency and allows the AI to use tone and inflection as input signals, creating more natural conversation flow."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/transcription-and-analysis/" class="prev">← Transcription & Analysis</a>
   <a href="/academy/ai-voice-audio/audio-editing-with-ai/" class="next">Next: Audio Editing with AI →</a>

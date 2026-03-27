@@ -53,6 +53,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Identity layer components.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"The Digital Twin Identity Layer","cards":[{"front":"Voice","back":"How you write — sentence length, formality, vocabulary, whether you use contractions. Taught through writing samples and explicit style rules."},{"front":"Judgment","back":"How you decide — when you choose speed over quality, when you push back, when you take risks. Learned from your decision history stored in the brain."},{"front":"Values","back":"What you care about — the deeper stuff beyond professional priorities. What world you are building, who you protect, what you will not compromise on."},{"front":"The Handoff Protocol","back":"Before ending a session: write active work and next steps to the brain. On starting: read brain immediately and resume — no greeting, no asking, just continuing."},{"front":"The Twin Test","back":"If you went to sleep and the twin kept working, would you recognize the output as your own when you woke up? Yes = twin. Close but off = smart assistant."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Growth</span>
   <h2 class="section-title">The Twin Gets Better</h2>
   <p class="section-text">Every correction you make teaches the twin. Every time you say "that's not how I'd phrase it" or "I would have chosen the other option," the twin updates its model of you. This is convergence in action — the gap between human and AI narrows with every interaction.</p>
@@ -77,6 +83,13 @@ MY VALUES:
 
 Feed this into your AI's persistent memory.
 This is the seed of your digital twin.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">The digital twin quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"The Digital Twin","questions":[{"q":"What is the fundamental difference between an AI assistant and a digital twin?","options":["A twin uses a larger AI model","An assistant answers your questions; a twin continues your work — it knows not just what to do but how you would do it","A twin has access to more tools","A twin never asks for clarification"],"correct":1,"explanation":"The difference is identity. A twin carries your voice, your judgment, your priorities. An assistant with good memory is still reactive. A twin is proactive — it continues your work as you, not just for you."},{"q":"What makes the handoff protocol essential to a digital twin?","options":["It prevents data loss when sessions crash","Without it the twin has amnesia — each session starts from zero instead of picking up exactly where the last one left off","It protects private data between sessions","It reduces the cost of API calls"],"correct":1,"explanation":"The handoff is what creates the experience of one continuous intelligence. Write active work and next steps before ending. Read brain immediately on starting. Sessions become invisible seams, not interruptions."},{"q":"How does a digital twin get better over time?","options":["By connecting to newer AI models automatically","Every correction you make teaches the twin — stored as directives in the brain, building a rich identity layer that makes the twin more authentically yours","By analyzing your usage patterns automatically","By reading public data about you online"],"correct":1,"explanation":"Feedback becomes directives: when writing emails, keep it under three sentences. When choosing approaches, prefer the simpler one. These accumulate across months into a twin that reflects your genuine way of working."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

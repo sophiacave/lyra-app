@@ -94,6 +94,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each societal AI issue to its core concern.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI and Society","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI and jobs","right":"AI transforms tasks within jobs faster than society can support adaptation"},{"left":"The AI divide","right":"AI benefits disproportionately flow to those who already have resources and access"},{"left":"Environmental cost","right":"Training and running AI models consumes significant energy and water for cooling"},{"left":"Being part of the solution","right":"Share knowledge, advocate for responsible use, support accessible AI tools"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"AI and Society","questions":[{"q":"According to the lesson, what is the primary risk of AI and employment?","options":["AI will eliminate all jobs within 10 years","The speed of transition and whether society supports people who need to adapt","AI will only benefit highly educated workers","AI makes most jobs easier but lower-paying"],"correct":1,"explanation":"The lesson is nuanced: AI transforms jobs rather than eliminating them wholesale. The real risk is the speed of change and whether society has the structures to support people adapting to those changes."},{"q":"Why does the lesson say an AI divide matters?","options":["AI tools are too complicated for most people","AI becomes a productivity multiplier — so if some people get it and others do not, existing inequalities widen fast","AI is too expensive for anyone to use","Most AI tools only work in English"],"correct":1,"explanation":"AI is a productivity multiplier. If some people get a 5x productivity boost and others do not, existing economic and social inequalities widen — and widen quickly. Access to AI is becoming access to opportunity."},{"q":"What does the lesson recommend about AI\'s environmental cost?","options":["Stop using AI because of its carbon footprint","Be mindful — use the right-sized model for the task, do not run the same prompt dozens of times unnecessarily","Only use AI tools powered by renewable energy","The environmental cost is too small to worry about"],"correct":1,"explanation":"The lesson does not say to stop using AI — it says to be mindful. Use the right-sized model for the task, avoid unnecessary repetition, and support companies investing in sustainable AI infrastructure."},{"q":"What historical analogy does the lesson use to explain AI and jobs?","options":["The printing press and publishers","ATMs and bank tellers — ATMs changed what tellers do without eliminating them","The steam engine and factory workers","The internet and travel agents"],"correct":1,"explanation":"The lesson uses ATMs and bank tellers: ATMs did not eliminate tellers, they changed what tellers do. The same pattern appears with every major technology shift, including AI."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-ethics-and-safety/building-trustworthy-ai-systems" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Building Trustworthy AI Systems →</a>

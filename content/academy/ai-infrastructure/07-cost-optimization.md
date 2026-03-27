@@ -53,6 +53,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI Cost Optimization Strategies","cards":[{"front":"Semantic Caching","back":"Before calling an LLM, check if a similar query has been answered recently using vector similarity. One cached answer can serve many slightly different questions."},{"front":"Response Caching","back":"For deterministic operations like embeddings and classifications, cache the result keyed on input hash. Same text always produces the same embedding — compute once, store forever."},{"front":"Prompt Caching","back":"Some providers (including Anthropic) offer discounted pricing when you send the same system prompt repeatedly. Structure requests to take advantage of this."},{"front":"Model Tiering","back":"Use free embeddings for search, mid-tier models for simple tasks, flagship models only for complex reasoning. Route by task complexity, not by habit."},{"front":"RAG Before Generation","back":"A vector search costs fractions of a cent. An LLM call costs 100x more. Check your knowledge base first — only call the LLM for genuinely novel questions."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Discipline</span>
   <h2 class="section-title">Operational Cost Controls</h2>
   <p class="section-text"><strong>Token budgets per request:</strong> Set maximum output token limits. If a user asks a simple question, cap the response at 500 tokens. Don't let the model write an essay when a paragraph will do.</p>
@@ -74,6 +78,10 @@ type: "lesson"
 <div class="try-it-box">
   <h3>Try it yourself</h3>
   <div class="prompt-box"><code>Build a semantic cache layer: before calling an LLM, generate an embedding of the user's query, search your vector database for similar past queries (cosine similarity > 0.95), and return the cached response if found. Measure how many API calls this saves over a week of usage.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Cost Optimization Quiz","questions":[{"q":"Why does your system prompt represent the first cost optimization opportunity?","options":["System prompts cost more per token","A 2000-token system prompt goes with every request — paying for it every single time at scale compounds into serious money","System prompts are charged at 5x the rate","System prompts prevent caching"],"correct":1,"explanation":"If your system prompt is 2,000 tokens and you make 10,000 API calls per day, you are paying for 20 million tokens of system prompt daily. Making it as concise as possible is the fastest cost win."},{"q":"What cost reduction percentage does a well-implemented caching layer typically achieve?","options":["5-10%","10-20%","40-70%","90%+"],"correct":2,"explanation":"A well-implemented cache — combining semantic caching, response caching, and embedding caching — typically reduces AI API costs by 40-70%. This is not an optimization, it is a survival strategy at scale."},{"q":"What is the correct order of operations for serving a user query at minimum cost?","options":["LLM call first, then cache if the answer is good","Check semantic cache, then RAG from knowledge base, then call LLM only for genuinely novel complex queries","Always call LLM first for best quality","Check cache, then call LLM, then store result"],"correct":1,"explanation":"Layer your architecture: cache first (free), RAG from your database second (fractions of a cent), LLM last (most expensive). Only the novel, complex queries that none of your cheaper layers can answer reach the LLM."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

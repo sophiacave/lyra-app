@@ -123,6 +123,20 @@ free: true
   <p class="section-text" style="margin-top:1rem">We'll explore each of these principles in depth throughout this course. By the end, they'll be second nature.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Test your recall on the TRUST framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"The TRUST Framework","cards":[{"front":"T — Transparency","back":"Be honest about when and how you are using AI. Do not pass AI work off as purely human."},{"front":"R — Review","back":"Always review AI output before using it. Check for accuracy, bias, and appropriateness."},{"front":"U — Understand Limits","back":"Know what AI can and cannot do. Do not trust it for medical, legal, or financial decisions without expert verification."},{"front":"S — Safeguard Privacy","back":"Never share sensitive personal data, credentials, or confidential information with AI without understanding data policies."},{"front":"T — Take Responsibility","back":"You own the output. If AI generates something harmful, inaccurate, or biased — and you publish it — that is on you."}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Why AI Ethics Matter","questions":[{"q":"Which of the following is NOT one of the 3 core harms described in this lesson?","options":["Bias Amplification","Misinformation at Scale","Privacy Erosion","Model Hallucination"],"correct":3,"explanation":"The three harms covered are Bias Amplification, Misinformation at Scale, and Privacy Erosion. Model Hallucination is a related but separate concept covered in a later lesson."},{"q":"According to the lesson, who is the ethics layer in AI use?","options":["The AI model itself","The AI company that built the model","The person using the AI","Government regulators"],"correct":2,"explanation":"You are the ethics layer. AI does not evaluate whether its output is ethical — it is up to the human using it to review, judge, and take responsibility for the output."},{"q":"What is the best way to think about your role as an AI user?","options":["A passive consumer of AI output","The last line of defense between AI output and real-world impact","A co-creator with equal responsibility to the AI company","An editor with no legal responsibility"],"correct":1,"explanation":"The lesson frames you as the last line of defense. AI does not know if what it produces is harmful — you do. That knowledge makes you responsible."},{"q":"What does the T in TRUST stand for (first T)?","options":["Testing","Transparency","Tracking","Training"],"correct":1,"explanation":"The first T stands for Transparency — being honest about when and how you use AI, and not passing AI work off as purely human."}]}' ></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-ethics-and-safety/bias-in-ai" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Bias in AI →</a>

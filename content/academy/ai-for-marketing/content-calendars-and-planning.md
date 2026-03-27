@@ -142,6 +142,20 @@ Skip generic holidays that have nothing to do with my business.</pre>
   <p class="section-text" style="margin-top:1rem"><strong>Total: ~4 hours per week</strong> for a full content program across multiple channels. Without AI, this would take 12-15 hours. That's 8-10 hours per week back in your life.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each day to its content pillar in the weekly rotation.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Weekly Content Pillar Rotation","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Monday","right":"Educational — teach a skill or share a tip"},{"left":"Wednesday","right":"Behind-the-scenes — show your process, team, or workspace"},{"left":"Friday","right":"Community — customer story, Q and A, or engagement post"},{"left":"Seasonal content","right":"Plan 4 to 6 weeks ahead — AI makes this effortless"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Content Calendars and Planning","questions":[{"q":"How much time does the lesson estimate a full content program across multiple channels takes per week with AI?","options":["1-2 hours","4 hours","8-10 hours","12-15 hours"],"correct":1,"explanation":"The lesson estimates about 4 hours per week with AI — compared to 12-15 hours without it. That is 8-10 hours per week back in your life, compounded over time into a massive competitive advantage."},{"q":"What is the purpose of content pillars?","options":["To prevent publishing too frequently","To give structure so you are never staring at a blank page wondering what to post","To ensure all content targets the same keyword","To limit content to certain topics only"],"correct":1,"explanation":"Content pillars are recurring themes that give your content structure. Instead of inventing fresh ideas every day, you rotate through pillars — educational, behind-the-scenes, customer stories, industry insights, promotional. Structure beats creativity blocks."},{"q":"When should you start planning seasonal content?","options":["The week before the event","4 to 6 weeks in advance","The day of the event","Only for major holidays like Christmas"],"correct":1,"explanation":"The lesson recommends planning seasonal content 4-6 weeks ahead. The best marketers plan this far in advance — and AI makes generating seasonal content ideas effortless once you ask it to look ahead at the calendar."},{"q":"How many post ideas can you generate for 3 months of 5x-per-week posting?","options":["30 posts","45 posts","60 posts","100 posts"],"correct":2,"explanation":"12 post ideas per pillar times 5 pillars equals 60 posts — enough for 3 months of posting 5 times per week. This is the batch-ideation approach: ask AI once, use the ideas for months."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-for-marketing/analytics-and-reporting" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Analytics and Reporting →</a>

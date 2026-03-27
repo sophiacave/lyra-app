@@ -92,9 +92,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Conflict resolution strategies.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Resolution Strategy to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Hierarchical Override","right":"Time-sensitive systems with a clear chain of command"},{"left":"Voting and Consensus","right":"High-stakes decisions where accuracy matters more than speed"},{"left":"Debate and Synthesis","right":"Creative work and strategy where combining perspectives adds value"},{"left":"Confidence-Weighted","right":"Data-driven classification and prediction tasks with measurable certainty"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Design for Disagreement</h2>
   <p class="section-text">Don't try to eliminate agent conflicts — engineer them. Build systems where agents are expected to challenge each other. The quality of your conflict resolution strategy determines whether disagreements produce better outputs or system failures. Log every conflict and its resolution. Over time, patterns emerge that tell you exactly where your system needs tuning.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Conflict resolution quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Conflict Resolution","questions":[{"q":"Why is agent conflict a feature rather than a bug?","options":["Conflicts prove the system is working correctly","If agents always agree they are not specialized enough — conflict is the system checking its own work","Conflicts trigger automatic quality improvements","Conflicts generate useful training data"],"correct":1,"explanation":"Agents with genuinely different specializations and perspectives will reach different conclusions on the same data. That tension is valuable — it surfaces errors and produces better outputs than unchallenged single-agent work."},{"q":"What is the main risk of the debate and synthesis strategy?","options":["It takes too long for time-sensitive decisions","The synthesizer might produce wishy-washy compromises instead of sharp, decisive outputs","It requires three or more agents for every decision","It cannot handle technical disagreements"],"correct":1,"explanation":"Synthesis can produce the best elements of both positions — or it can produce bland compromises that satisfy neither agent. The synthesis agent needs to be explicitly instructed to integrate the strongest points, not average them."},{"q":"What is the key warning about using confidence scores in confidence-weighted resolution?","options":["Confidence scores slow down the pipeline","LLMs are notoriously poor at calibrating confidence — an agent might report 95% confidence on a hallucinated fact","Confidence scores require human verification","Confidence scoring is only available in premium models"],"correct":1,"explanation":"Self-reported confidence in LLMs does not correlate reliably with accuracy. An agent can be highly confident and completely wrong. Use confidence-weighted resolution only with data-driven systems where confidence is measurable."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

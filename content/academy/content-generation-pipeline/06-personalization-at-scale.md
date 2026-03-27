@@ -71,9 +71,22 @@ For each segment: write a 100-word version that uses their language, addresses t
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Personalization variable types.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Personalization at Scale Concepts","cards":[{"front":"Audience Segmentation","back":"Dividing your audience into 3-5 clearly defined profiles with documented differences in priorities, vocabulary, experience level, and emotional hooks."},{"front":"Variable Injection","back":"Filling template slots with segment-specific values — not just names, but examples, metaphors, reading level, and calls to action tailored to each group."},{"front":"PAIN_POINT Variable","back":"The specific frustration that drives each segment. A solopreneur is stretched thin; a marketing manager is measured on output volume; an executive wants ROI data."},{"front":"Segment Profile Document","back":"A lookup table per segment that the pipeline references. Same template, different variable values, genuinely different content for each reader."},{"front":"Tone Shifting","back":"Adjusting complexity, vocabulary, and examples for each segment while keeping your core brand voice intact across all versions."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Edge</span>
   <h2 class="section-title">Personalization Is a Competitive Moat</h2>
   <p class="section-text">Most businesses are still blasting the same message to everyone. When your content speaks directly to each segment's reality, you stand out. Not because of gimmicks — because of genuine relevance. That's the kind of advantage that compounds over time as your segment profiles get richer and your templates get sharper.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Personalization at scale quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Personalization at Scale","questions":[{"q":"What distinguishes real personalization from simple mail merge?","options":["Real personalization uses the recipient first name everywhere","Real personalization changes examples, complexity, vocabulary, and emotional hooks for each segment — not just a greeting","Real personalization requires different AI models per segment","Real personalization is only possible with expensive enterprise tools"],"correct":1,"explanation":"Injecting variables at every level — pain points, aspirations, industry examples, reading level, CTAs — is what makes content feel written for one person. A first name swap is not personalization."},{"q":"Why is 3-5 segments the sweet spot for content personalization?","options":["AI can only handle 5 segments at once","Enough variety to feel personal, few enough to create and maintain quality profiles for each","More segments always produce better results","Fewer segments produce better AI outputs"],"correct":1,"explanation":"Too few segments and content feels generic. Too many segments and maintaining accurate profiles becomes unmanageable. Three to five is the practical sweet spot for quality and sustainability."},{"q":"What makes personalization a competitive moat over time?","options":["Personalized content always ranks higher in search","Segment profiles get richer and templates get sharper over time — compounding relevance that generic content cannot match","Personalization prevents competitors from copying your content","Personalized content is cheaper to produce at scale"],"correct":1,"explanation":"As your segment profiles deepen and your templates sharpen, your content becomes more relevant with every cycle. Competitors blasting generic messages cannot replicate this accumulated understanding."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -129,6 +129,20 @@ free: false
   <p class="section-text" style="margin-top:1rem">These instructions won't eliminate hallucinations, but they significantly reduce them. The AI is more likely to hedge or qualify when you've explicitly given it permission to be uncertain.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Review the 5 danger zones for AI hallucinations.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Hallucination Danger Zones","cards":[{"front":"Statistics and data","back":"AI will confidently state specific percentages or study findings that do not exist. Always verify the source before publishing any AI-generated number."},{"front":"Citations and references","back":"AI creates perfectly formatted citations to books, papers, and articles that may not exist. Always verify that a cited source actually exists."},{"front":"Legal and regulatory claims","back":"AI mixes up jurisdictions, cites repealed laws, and invents regulations. Never rely on AI for legal compliance without expert verification."},{"front":"Medical and health information","back":"AI can mix up dosages, contraindications, and symptoms. Never use AI as a primary source for health or medical decisions."},{"front":"People and organizations","back":"AI can attribute quotes, actions, or positions to real people that are completely fabricated — potentially damaging reputations."}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Misinformation and Hallucinations","questions":[{"q":"What is an AI hallucination?","options":["When AI refuses to answer a question","When AI generates information that sounds authoritative but is partially or completely false","When AI produces duplicate content","When AI misunderstands your prompt"],"correct":1,"explanation":"A hallucination is when AI generates information that sounds authoritative but is partially or completely false — stated with the same confident tone it uses for accurate facts."},{"q":"Why are AI hallucinations particularly dangerous?","options":["They always contain obvious errors","Hallucinations sound exactly like real facts — there is no change in tone or confidence","They only occur with obscure topics","AI always adds a disclaimer when it is uncertain"],"correct":1,"explanation":"The dangerous part of hallucinations is that they sound identical to accurate information. AI presents fiction and fact with the same confidence, giving users no warning signal."},{"q":"Which prompt instruction helps reduce hallucinations?","options":["Tell AI to write longer responses","Ask AI to use more formal language","Tell AI to say so when unsure rather than guessing","Ask AI to include more citations"],"correct":2,"explanation":"Giving AI explicit permission to be uncertain — \"If you are not sure about something, say so\" — significantly reduces hallucinations. AI is more likely to hedge when you have invited it to do so."},{"q":"According to the lesson, what is a safe approach for AI-generated statistics?","options":["Publish them if the number sounds reasonable","Trust statistics AI presents with specific citations","Verify every specific number with an authoritative source before publishing","Only check statistics if they seem surprising"],"correct":2,"explanation":"Verify all specific numbers. AI will confidently state statistics that do not exist. The rule is: never publish AI-generated statistics without confirming the source independently."}]}'></div>
+</div>
+
 <!-- NEXT -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-ethics-and-safety/transparency-and-disclosure" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Transparency and Disclosure →</a>

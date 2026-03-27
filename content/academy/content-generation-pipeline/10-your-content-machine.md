@@ -54,6 +54,12 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The complete pipeline stages.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Pipeline Stage to Its Function","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Stage 1: Intelligence","right":"Gather analytics data, audience signals, and content gaps"},{"left":"Stage 2: Ideation","right":"Generate and score topic ideas against pillars and performance patterns"},{"left":"Stage 3: Creation","right":"Run topics through templates to produce the core piece"},{"left":"Stage 4: Multiplication","right":"Transform core piece into all formats, personalized per segment"},{"left":"Stage 5: Quality","right":"Run every output through three-layer quality gates"},{"left":"Stage 6: Distribution","right":"Schedule across platforms with optimized timing and promotion sequence"},{"left":"Stage 7: Learning","right":"Collect performance data, update templates, feed back into Stage 1"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Scaling</span>
   <h2 class="section-title">From Machine to Operation</h2>
   <p class="section-text">A content machine for one person looks different from one for a team. When you're ready to scale, the architecture supports it. One person owns the templates. Another runs the pipeline. Someone else manages distribution. Everyone works from the same system, the same voice doc, the same quality standards.</p>
@@ -88,6 +94,13 @@ Make it specific to my operation. No generic advice."</code></div>
   <h2 class="section-title">You Built the Machine. Now Run It.</h2>
   <p class="section-text">This course gave you every component of a professional content generation pipeline. The architecture. The templates. The quality systems. The distribution engine. The analytics feedback loop. But a machine that doesn't run is just an expensive diagram.</p>
   <p class="section-text">Start this week. Pick one pillar. Run one topic through the full pipeline. Publish it across two channels. Measure the results. Then do it again, better. Every cycle, the machine gets smarter. Every cycle, you get faster. That's not a course outcome — that's an operational advantage that compounds for as long as you keep running it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Your content machine quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Your Content Machine","questions":[{"q":"When output feels generic from your pipeline, what is the root cause?","options":["The AI model is not powerful enough","Templates need more specific constraints — voice examples, word-level preferences, and structural patterns from top-performing content","The topic is too broad","The quality gates are too strict"],"correct":1,"explanation":"Generic output is always a template problem. The more specific your constraints — exact voice examples, banned phrases, required structural patterns — the more distinctive and on-brand the output."},{"q":"What is the difference between scaling content volume and scaling content quality?","options":["They are the same — more volume always improves quality","Volume scaling means more pipeline runs with the same templates; quality scaling means improving templates and architecture so every run produces better results","Quality scaling requires more expensive AI models","Volume scaling requires hiring more people"],"correct":1,"explanation":"Going from 3 to 10 pieces a week is volume scaling — more pipeline runs. The system handles that. Quality scaling is the hard work: sharper templates, better voice docs, refined audience profiles."},{"q":"Why is the content machine finish line also a starting line?","options":["You will need to rebuild it after six months","The pipeline never truly finishes — every cycle, data feeds back in, templates improve, and the machine gets smarter","You will need to add more pipeline stages over time","Each piece of content restarts the cycle for that topic"],"correct":1,"explanation":"Ship early. Measure obsessively. Iterate fast. The first design will be wrong. The tenth iteration will be solid. The machine gets better every time you run it — which is why the finish line is a beginning."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

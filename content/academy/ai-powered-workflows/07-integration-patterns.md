@@ -69,6 +69,18 @@ free: false
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Integration Architecture</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Integration Models","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Point-to-Point","right":"Tool A connects directly to Tool B — simple for two tools, becomes spaghetti with five or more"},{"left":"Hub-and-Spoke","right":"All tools connect to a central hub like Make or Zapier — adding a new tool means one new connection"},{"left":"API authentication","right":"API keys — long strings you include with requests to prove you are allowed to use the service"},{"left":"No-code connectors","right":"Zapier, Make, native integrations — cover 80% of needs with pre-built tool connections"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 7 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Integration Patterns","questions":[{"q":"Why does hub-and-spoke become essential as the number of integrated tools grows?","options":["It is always the best architecture regardless of tool count","With 5 tools, point-to-point creates 10 connections — hub-and-spoke reduces this to 5 one-hub connections","Hub-and-spoke tools cost less than direct integrations","Only hub-and-spoke supports webhooks"],  "correct":1,"explanation":"With point-to-point, connections grow exponentially — 5 tools need 10 connections, 10 tools need 45. Hub-and-spoke means each tool connects once to the hub. Adding a new tool adds one connection, not many."},{"q":"What is a webhook in practical terms?","options":["A scheduled job that polls for changes","A webhook is a small HTTP request that fires automatically when something happens in a tool — enabling instant event-driven reactions","A type of API key","A database backup trigger"],  "correct":1,"explanation":"A webhook fires the moment an event happens — not when you poll for it. Payment succeeds? Webhook fires. Deal moves stages? Webhook fires. Your workflow platform catches these signals and reacts instantly."},{"q":"When should you build a custom integration instead of using no-code connectors?","options":["Always — custom integrations are always better","Never — no-code connectors handle everything","When you need complex data transformations, the pre-built connectors do not cover your use case, or you need higher performance","Only when the no-code platform is offline"],  "correct":2,"explanation":"No-code connectors handle about 80% of integration needs. Build custom when you need transformations the connectors cannot handle, hit rate limits on no-code platforms, or require performance the pre-built tools cannot deliver."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-powered-workflows/06-human-in-the-loop/" class="prev">← Previous: Human-in-the-Loop</a>
   <a href="/academy/ai-powered-workflows/08-testing-workflows/" class="next">Next: Testing Workflows →</a>

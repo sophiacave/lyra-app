@@ -90,9 +90,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Architecture comparison.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Orchestration Architecture Tradeoffs","cards":[{"front":"Hub-Spoke: Strength","back":"Easy to reason about. Clear chain of command. Simple debugging. You always know who is in charge."},{"front":"Hub-Spoke: Weakness","back":"The hub is a bottleneck and single point of failure. If it gets confused, the whole system breaks."},{"front":"Pipeline: Strength","back":"Simple and predictable. Easy to test each stage independently. Adding a new step just inserts a new agent."},{"front":"Pipeline: Weakness","back":"No flexibility for branching logic. If step 3 needs to loop back to step 1, the linear architecture fights you."},{"front":"Swarm: Strength","back":"Highly resilient. Scales naturally. Can handle unpredictable workflows. If one agent fails, others adapt."},{"front":"Swarm: Weakness","back":"Hard to debug. Unpredictable behavior. Potential for agents to conflict or duplicate work."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Architecture Is a Decision, Not a Default</h2>
   <p class="section-text">Most people default to hub-spoke because it feels natural. But the right architecture depends on your workflow's shape — linear processes want pipelines, dynamic processes want swarms, and controlled processes want hub-spoke. In practice, you'll often use hybrids: a hub-spoke system where one of the spokes is itself a pipeline. Start simple. Evolve the architecture as your system's needs become clear.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Orchestration architectures quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Orchestration Architectures","questions":[{"q":"Which architecture is best suited for a truly linear workflow like: research, then write, then edit, then publish?","options":["Hub-Spoke","Pipeline","Swarm","Hybrid"],"correct":1,"explanation":"Pipeline architecture is designed for linear sequential flows. Each agent processes its input and passes the result to the next — no branching, no loops, predictable and easy to test."},{"q":"When should you choose a swarm architecture over hub-spoke?","options":["When you want tight central control","When the problem space is dynamic, you need maximum resilience, and you can tolerate some unpredictability","When you have fewer than five agents","When you need the system to be easy to debug"],"correct":1,"explanation":"Swarms excel at dynamic, unpredictable workloads where resilience matters more than control. No single point of failure — if one agent fails, others adapt and continue."},{"q":"What is the most common mistake developers make when choosing an orchestration architecture?","options":["Building pipelines when they need hub-spoke","Defaulting to hub-spoke for everything without considering whether the workflow is actually linear or dynamic","Starting with swarm architecture","Mixing architectures unnecessarily"],"correct":1,"explanation":"Hub-spoke feels natural because it mirrors how we think about management hierarchies. But the right choice depends on your workflow shape — and linear pipelines and dynamic swarms are often better fits."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

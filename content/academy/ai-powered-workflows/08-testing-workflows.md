@@ -68,6 +68,18 @@ free: false
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Three Testing Layers</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Workflow Testing Layers","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Unit testing","right":"Test each step in isolation — does the classifier categorize correctly, does the template render"},{"left":"Integration testing","right":"Test connections between steps — does Step A output actually work as Step B input"},{"left":"End-to-end testing","right":"Run the entire workflow trigger to final output with test data — the full dress rehearsal"},{"left":"Dry run","right":"Execute the workflow logic without actually sending, saving, or processing — see what would happen"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 8 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Testing Workflows","questions":[{"q":"Why is testing described as insurance rather than overhead?","options":["Testing slows down development significantly","An untested workflow that sends wrong emails to 10,000 customers or corrupts records creates damage far exceeding the cost of testing","Testing is only valuable for large enterprise workflows","Testing guarantees a workflow will never fail"],  "correct":1,"explanation":"Testing is the cheapest insurance you will ever buy. An untested workflow that misfires at scale — wrong emails, corrupted data, broken integrations — creates hours or days of cleanup work. Testing prevents this."},{"q":"What does thinking like a chaos gremlin mean for test data?","options":["Intentionally breaking the workflow to see what happens","Creating test cases only for the happy path where everything works","Creating test cases for normal data, edge cases, missing data, malformed data, and extreme values","Testing with very large datasets only"],  "correct":2,"explanation":"Good test data covers the weird stuff, not just the ideal case. What happens with an emoji in a name field? A blank email subject? A $0 order? A date in a different timezone? If your workflow handles all five, it is ready for real-world conditions."},{"q":"What is the first rule of testing workflow environments?","options":["Always test on production data for accuracy","Never test at all — just deploy and monitor","Use sandbox and test modes religiously — never test against production data until you have exhausted every sandbox option","Only test after the workflow has been live for a week"],"correct":2,"explanation":"Every major platform offers sandbox or test modes. Stripe has test mode. Email tools have preview sends. Use them completely before touching production. A dry run that does not actually fire real actions is your first line of defense."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-powered-workflows/07-integration-patterns/" class="prev">← Previous: Integration Patterns</a>
   <a href="/academy/ai-powered-workflows/09-monitoring-and-maintenance/" class="next">Next: Monitoring and Maintenance →</a>

@@ -53,6 +53,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The three layers of AI memory.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Memory Layer to Its Function","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Working Memory","right":"The current conversation context window — fast but evaporates when the session ends"},{"left":"Episodic Memory","right":"Records of specific events and decisions stored permanently with timestamps"},{"left":"Semantic Memory","right":"Distilled knowledge — facts, preferences, and rules that are always true regardless of when they were learned"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Memory Retrieval That Scales</h2>
   <p class="section-text">Storing everything is easy. Retrieving the right thing at the right time is the hard problem. A brain with 10,000 entries is useless if the AI can't find the one entry it needs in the moment it needs it.</p>
@@ -71,6 +77,13 @@ project.*     — Active project details and history
 
 Write 3-5 keys for each category. This becomes your
 AI's permanent knowledge base — the foundation of convergence.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Persistent memory architecture quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Persistent Memory Architecture","questions":[{"q":"Why is chat history not the same as real memory?","options":["Chat history is deleted after 30 days","Scrolling through thousands of messages to find a past decision is a filing cabinet with no labels — not retrievable, contextual memory","Chat history cannot be searched","Chat history does not include the AI responses"],"correct":1,"explanation":"Real memory is structured, searchable, and contextual. It knows not just what was said but what it meant, when it mattered, and how it connects to everything else. Raw chat logs are none of those things."},{"q":"What problem do hierarchical keys solve for semantic memory retrieval?","options":["They prevent unauthorized access to memory","Namespaced keys like directive.* and infrastructure.* let the AI read only what it needs instead of everything — no context bloat","Hierarchical keys compress memory to use less storage","They automatically expire old memories"],"correct":1,"explanation":"A brain with 10,000 entries and no structure is useless. Namespaced keys organize knowledge so the AI reads directive.* for rules, identity.* for who you are, session.* for current work — only what is needed."},{"q":"What makes semantic search the right solution for episodic memory retrieval?","options":["Semantic search is faster than keyword search","It retrieves by meaning — find everything related to customer billing issues — regardless of when or which agent produced the memory","Semantic search works without any infrastructure","Semantic search is less expensive than key-value lookup"],"correct":1,"explanation":"Episodic memories are not organized by keyword — they are organized by meaning and relevance. Vector embeddings and semantic search let the AI retrieve what is contextually relevant, not just what matches a specific word."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

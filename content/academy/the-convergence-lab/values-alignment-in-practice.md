@@ -53,6 +53,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Rules vs. values.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Directive to Its Type","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Never deploy on Fridays","right":"Rule — specific, handles a known situation"},{"left":"Prioritize the user wellbeing","right":"Value — principle guiding decisions in unknown situations"},{"left":"Always use HTTPS","right":"Rule — specific, enforces a concrete technical standard"},{"left":"Choose simplicity over cleverness","right":"Value — guides tradeoffs when no specific rule applies"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Testing</span>
   <h2 class="section-title">Stress-Testing Alignment</h2>
   <p class="section-text">Values that only work in easy situations aren't values — they're suggestions. You need to test your AI's alignment at the edges. What happens when two values conflict? When efficiency clashes with quality? When speed clashes with safety?</p>
@@ -71,6 +77,13 @@ free: false
 
 Now test each one: create a scenario where following
 the value is hard. Does your AI still follow it?</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Values alignment quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Values Alignment in Practice","questions":[{"q":"What is the practical difference between a rule and a value in an AI system?","options":["Rules are optional, values are required","Rules handle known situations with specific instructions; values handle unknown situations with principles that guide judgment when no rule applies","Values are stored differently than rules in memory","Rules require human approval, values do not"],"correct":1,"explanation":"Rules cover the predictable. Values cover everything else. A converged AI needs both — the rule for Friday deploys, and the value of quality over speed for every situation the rules do not anticipate."},{"q":"How do you test whether values are genuinely encoded vs. decorative?","options":["Ask the AI to list its values","Create scenarios where following the value is hard and see if the AI actually holds to it under pressure","Check if the values appear in the system prompt","Run the AI for 30 days and review outputs"],"correct":1,"explanation":"Values that only work in easy situations are not values — they are suggestions. Deploy a feature that is not fully tested because the client is waiting. A well-aligned AI pushes back on quality grounds. If it does not, the alignment is decoration."},{"q":"Why is alignment a practical engineering challenge rather than a philosophical one?","options":["Alignment requires special AI models","You need to reliably make AI reflect your priorities even when you are not watching — that is an engineering problem with architectural solutions","Philosophy is subjective, engineering is objective","Alignment only matters for large enterprise deployments"],"correct":1,"explanation":"How do you make an AI system that consistently reflects your priorities at scale, automatically, without constant supervision? That is a system design and architecture problem — directives, testing, memory — not a philosophical debate."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

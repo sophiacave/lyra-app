@@ -54,6 +54,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Idea Hunting Grounds — Match Each to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Expert Bottlenecks","right":"Expensive humans doing repetitive cognitive work — legal review, medical screening, code review"},{"left":"Translation Gaps","right":"Information existing in one form but needed in another — audio to text, data to narrative, jargon to plain language"},{"left":"Personalization Deserts","right":"Services treating all users identically when they shouldn\u2019t — education, health, finance"},{"left":"Your Own Pain","right":"Problems you personally face — you understand the nuance, the workarounds, and the real frustration"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Warning</span>
   <h2 class="section-title">Red Flags — Ideas to Avoid</h2>
   <p class="section-text"><strong>The "AI for AI's sake" trap.</strong> If you can't explain the value without mentioning AI, the idea is technology-driven, not problem-driven. Nobody cares about your model. They care about their problem disappearing.</p>
@@ -69,6 +73,10 @@ free: true
 3. Do other people have this same problem?
 
 If all three are yes — you have a product idea worth testing.</code></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Finding AI Product Ideas Quiz","questions":[{"q":"What does the Spreadsheet Test signal about a potential product opportunity?","options":["The user needs a better spreadsheet","The problem is real, the user already cares enough to build a janky workaround, and no existing tool serves them well enough","The user is not tech-savvy","The task is too simple for AI"],"correct":1,"explanation":"People using Excel for tasks it was never designed for are showing you three things: the problem is real and painful, they\u2019re motivated to solve it, and the market has left them underserved."},{"q":"What is the accuracy trap in AI product ideas?","options":["Promising 100% accuracy in your marketing","Building products that require 99.9% accuracy to be useful, which current AI cannot reliably guarantee","Measuring accuracy incorrectly","Using the wrong model for the task"],"correct":1,"explanation":"If your product only delivers value at near-perfect accuracy — medical diagnosis, legal compliance, financial compliance — you\u2019re building on a foundation AI cannot currently support. Look for domains where 85% accuracy is still 10x better than the status quo."},{"q":"Why is \u2018just a prompt\u2019 a red flag for an AI product idea?","options":["Prompts are too complicated for most users","A competitor can clone your entire product in an afternoon — you need a data moat, workflow advantage, or network effect","Prompts don\u2019t work well enough yet","Users prefer other interfaces"],"correct":1,"explanation":"If your competitive moat is just a system prompt, there\u2019s no barrier to entry. Sustainable AI products have compounding advantages — accumulated data, deep workflow integration, or network effects that grow with usage."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

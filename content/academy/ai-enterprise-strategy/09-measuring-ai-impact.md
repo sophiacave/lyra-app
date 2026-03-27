@@ -43,6 +43,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI Measurement — Three Categories of Metrics","cards":[{"front":"Leading Indicators","back":"Tell you if the AI is working technically. Model accuracy, response time, error rates, coverage. Monitored in real time by the technical team."},{"front":"Lagging Indicators","back":"Tell you if AI is delivering business value. Revenue impact, cost reduction, customer satisfaction, employee productivity. Reported monthly or quarterly to executives."},{"front":"Guardrail Metrics","back":"Tell you if AI is causing harm. Bias metrics, false positive rates, customer complaints, compliance violations. Non-optional — monitor as rigorously as performance metrics."},{"front":"Why set a baseline BEFORE deployment?","back":"You cannot prove improvement without a before picture. Run AI in shadow mode first — processing real data but not acting — to compare against human decisions."},{"front":"What is A/B testing for AI attribution?","back":"The gold standard for proving AI caused an improvement — routing some users through the AI system and others through the baseline, measuring the difference."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Attribution</span>
   <h2 class="section-title">Proving AI Made the Difference</h2>
   <p class="section-text">The hardest part of measuring AI impact is attribution. Revenue went up — was it the AI, the new marketing campaign, or seasonal trends? Use controlled experiments when possible. A/B testing is the gold standard. If you cannot A/B test, use time-series analysis: compare performance before and after deployment, controlling for other variables.</p>
@@ -61,6 +65,10 @@ type: "lesson"
   <span class="section-label">The Like One Perspective</span>
   <h2 class="section-title">Measure What Matters to Humans</h2>
   <p class="section-text">The most important metrics are often the hardest to quantify. Did AI make someone's workday less frustrating? Did it give a customer the help they needed without making them feel like a ticket number? Did it free up time for work that feels meaningful? These outcomes matter more than any dashboard. Find ways to capture them — even if it means asking people directly.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Measuring AI Impact Quiz","questions":[{"q":"What is the difference between a leading indicator and a lagging indicator in AI measurement?","options":["Leading indicators are more important","Leading indicators measure technical performance in real time; lagging indicators measure business value over time","Leading indicators are reported to executives; lagging indicators to engineers","Leading indicators are optional; lagging indicators are required"],"correct":1,"explanation":"Leading indicators (model accuracy, latency, error rates) tell you if the AI is working. Lagging indicators (revenue impact, cost reduction, satisfaction) tell you if it\u2019s delivering value. You need both."},{"q":"Why are guardrail metrics non-optional?","options":["Regulators require them","An AI system that delivers ROI while causing bias or harm is a net loss for the organization and its stakeholders","They are cheaper to track","They are required for ISO certification"],"correct":1,"explanation":"Monitoring bias, false positive rates, and compliance violations is not optional ethics theater — it is how you catch AI causing harm before it damages trust, triggers regulation, or undermines the program."},{"q":"Why is saying \u2018AI contributed to a 15% improvement with a confidence range of 10-20%\u2019 more credible than claiming exactly 15%?","options":["It makes executives feel better","Precision you cannot support undermines trust in your entire measurement program","Ranges are more statistically correct","It is required by finance"],"correct":1,"explanation":"Overconfident claims that cannot be substantiated erode stakeholder trust. Acknowledging uncertainty while providing a defensible range demonstrates analytical rigor and builds lasting credibility."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

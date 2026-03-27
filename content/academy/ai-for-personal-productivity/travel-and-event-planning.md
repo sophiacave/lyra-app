@@ -94,6 +94,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each planning element to the right type.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Travel and Event Planning Elements","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Budget, dates, interests, and group size","right":"Constraints to give AI first — make the plan realistic"},{"left":"Day-by-day itinerary with food suggestions","right":"Core travel plan output AI generates from your constraints"},{"left":"Packing list customized to destination and weather","right":"Bonus tool — ask for this after the main itinerary is set"},{"left":"Pre-trip checklist with tasks 2 weeks, 1 week, and day before","right":"Countdown timeline — AI generates this in 10 seconds, saves 30 minutes of thinking"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Travel and Event Planning","questions":[{"q":"What is the constraint-first method for travel planning?","options":["Start with the most expensive options and work down","Give AI your budget, dates, preferences, and group size before asking for recommendations — so the plan is realistic, not aspirational","Ask AI to suggest destinations based on what is trending","Focus on activities first, then figure out the budget later"],"correct":1,"explanation":"Constraints first means budget, dates, preferences, and group size go into the prompt before anything else. This produces a realistic plan — not a generic bucket list. The more constraints you give, the more useful and specific the itinerary becomes."},{"q":"What does the lesson say about the trade you make every time you use AI for planning?","options":["You trade accuracy for speed","You trade your mental energy for AI processing speed — AI handles the hundreds of small decisions while you focus on enjoying the result","You trade personalization for convenience","You trade creativity for efficiency"],"correct":1,"explanation":"The lesson frames it as a trade: your mental energy for AI processing speed. Planning involves hundreds of small decisions — where to stay, what to do, what to pack, when to leave. AI handles those decisions so you can focus on the actual experience."},{"q":"How does the lesson suggest handling a rain day during a planned trip?","options":["Cancel the trip if the forecast shows rain","Build one backup plan for rain into the original itinerary prompt","Ask AI about it only if it rains","Always book indoor activities only"],"correct":1,"explanation":"The example prompt specifically includes: and one backup plan for rain. Building contingencies into the original prompt is smarter than scrambling later. AI thinks of alternatives you might forget when you are excited about the main plan."},{"q":"What is the most time-efficient order for using AI in event planning?","options":["Generate the guest list, then plan activities, then set the budget","Give AI the event type, guest count, budget, and location — get a complete plan including timeline, menu, and to-do list in one conversation","Research venues manually first, then use AI for the rest","Plan the menu first since food is the most important part"],"correct":1,"explanation":"The lesson shows event planning working best in one comprehensive conversation: give AI all constraints upfront (event type, guests, budget, location) and get back a complete plan including activities, menu ideas, and timeline. One conversation replaces hours of scattered research."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-personal-productivity/financial-planning-basics">&larr; Previous: Financial Planning Basics</a>
   <a href="/academy/ai-for-personal-productivity/creative-projects-and-hobbies">Next: Creative Projects and Hobbies &rarr;</a>

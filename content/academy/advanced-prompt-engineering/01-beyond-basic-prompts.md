@@ -61,6 +61,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Prompt Engineering Fundamentals","cards":[{"front":"What are the Five Levers of a great prompt?","back":"Role, Context, Task, Format, and Constraints — each one removes ambiguity and guides the AI toward your exact needs."},{"front":"What is Role in prompt engineering?","back":"Telling the AI who it should be — a copywriter, senior developer, patient teacher — so it activates the right expertise and tone."},{"front":"What is Context in a prompt?","back":"Background the AI needs: your audience, constraints, prior work, and any situational details that close the gap between generic and precise."},{"front":"What is the Format lever?","back":"Instructions on how output should look: length, structure, style — e.g. bullet points, under 150 words, numbered list."},{"front":"Why do Constraints matter?","back":"Constraints define what the AI should avoid. Boundaries are just as important as instructions for shaping accurate, on-target output."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Five Levers</span>
   <h2 class="section-title">What Makes a Prompt Work</h2>
   <p class="section-text">Throughout this course, we'll master five core levers that turn average prompts into powerful ones:</p>
@@ -87,6 +91,10 @@ free: true
   <h2 class="section-title">The AI Isn't Bad — Your Prompt Was Incomplete</h2>
   <p class="section-text">This course will teach you to write prompts that work on the first try. No more copy-pasting five times and hoping for the best. Every lesson builds a concrete skill you can use immediately.</p>
   <p class="section-text">The investment is small. The payoff is enormous. Let's go.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Check Your Understanding","questions":[{"q":"What is the key difference between a weak prompt and an engineered prompt?","options":["Engineered prompts are longer","Engineered prompts specify role, context, task, format, and constraints","Engineered prompts always use bullet points","Engineered prompts ask more politely"],"correct":1,"explanation":"An engineered prompt provides all five levers — role, context, task, format, and constraints — giving the AI everything it needs to deliver precisely what you want."},{"q":"According to the lesson, what should you do FIRST when rewriting a weak prompt?","options":["Make it shorter","Add more examples","Apply all five levers: role, context, task, format, and constraints","Use simpler language"],"correct":2,"explanation":"The five-lever framework (role, context, task, format, constraints) is the core technique taught in this lesson for upgrading any prompt."},{"q":"Why does the weak email prompt fail? — \u201cWrite me an email about the project update.\u201d","options":["It is too short","It lacks role, context, specific task, format guidance, and constraints","It uses informal language","It does not mention a deadline"],"correct":1,"explanation":"The weak prompt leaves every important dimension undefined — who the AI is, who the audience is, what to include, how long, and what to avoid. The AI has to guess all of it."}]}' ></div>
 </div>
 
 <nav class="lesson-nav">

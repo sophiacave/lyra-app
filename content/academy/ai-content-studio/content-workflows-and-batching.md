@@ -64,6 +64,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The 3-phase production workflow.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Phase to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Phase 1: Ideation Day","right":"One session per month — brainstorm 30+ ideas and map them to your calendar"},{"left":"Phase 2: Batch Creation","right":"Two sessions per week — write 5-10 pieces per session by type"},{"left":"Phase 3: Schedule and Distribute","right":"One session per week — review, edit, schedule, and let automation handle publishing"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Build your first content batch.</h2>
   <div class="try-it-box">
@@ -71,6 +77,13 @@ free: false
     <div class="prompt-box">
       <code>I'm batching [social posts] for the week. My brand voice is [casual, expert, encouraging]. My content pillars are [pillar 1, pillar 2, pillar 3]. Write 5 posts, one for each weekday. Each should be under 280 characters, include a hook in the first line, and end with a CTA.</code>
     </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Content workflows quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Content Workflows and Batching","questions":[{"q":"Why does batching content produce better consistency than reactive creation?","options":["Batching requires less creativity","You stay in the same mental mode — no context switching between strategy, writing, and editing","Batched content always performs better in algorithms","AI works faster when given batched requests"],"correct":1,"explanation":"Context switching — moving between strategy, creation, and editing across different pieces — is what drains energy and kills consistency. Batching keeps you in one mode at a time."},{"q":"What is the main purpose of Ideation Day in the 3-phase workflow?","options":["To write as many pieces as possible","To plan and map content to the calendar — strategy not writing","To review performance data from last month","To schedule and queue content for publishing"],"correct":1,"explanation":"Ideation Day is pure strategy: brainstorm 30+ ideas, map them to pillars, fill the calendar. No writing happens yet. Planning is the work."},{"q":"How much more content can batching produce compared to one-at-a-time creation?","options":["About 10% more","2x more content","3-5x more content in the same hours","The same amount but with higher quality"],"correct":2,"explanation":"Batching eliminates context-switching overhead and lets AI handle the repetitive parts. The result is 3-5x more content in the same time with better consistency."}]}'>
   </div>
 </div>
 

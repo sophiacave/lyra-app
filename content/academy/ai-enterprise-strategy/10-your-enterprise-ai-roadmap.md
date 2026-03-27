@@ -49,6 +49,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"12-Month Roadmap — Match Each Quarter to Its Goal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Quarter 1 (Months 1-3)","right":"Build credibility through execution — pilot, metrics, success story"},{"left":"Quarter 2 (Months 4-6)","right":"Scale what works and invest in training and vendor formalization"},{"left":"Quarter 3 (Months 7-9)","right":"Shift from projects to products with dedicated owners and SLAs"},{"left":"Quarter 4 (Months 10-12)","right":"Evaluate competitive position and plan Year 2 based on real data"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quarter 4: Transform</span>
   <h2 class="section-title">Months 10-12: Think Bigger</h2>
   <p class="section-text">With operational AI capability established, Q4 is about strategic evolution. Evaluate your competitive position. What can you do with AI that your competitors cannot? Where can AI create entirely new revenue streams, products, or customer experiences? Begin planning your Year 2 roadmap based on real data from Year 1.</p>
@@ -68,6 +72,10 @@ type: "lesson"
   <h2 class="section-title">Strategy Is a Practice, Not a Document</h2>
   <p class="section-text">Your roadmap will change. Markets shift, technology evolves, your organization learns things you did not expect. The value of the roadmap is not the plan itself — it is the clarity of thinking that produced it and the discipline to revisit it. Review quarterly. Adjust without guilt. The organizations that thrive with AI are not the ones that predicted the future correctly. They are the ones that learned faster than everyone else.</p>
   <p class="section-text">You have everything you need to begin. Not next quarter. Not after one more assessment. Now. The best AI strategy is the one you start executing today.</p>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Enterprise AI Roadmap Quiz","questions":[{"q":"What is the primary goal of Quarter 1 in the enterprise AI roadmap?","options":["Deploy AI across the entire organization","Build credibility through a documented success story, measured ROI, and lessons learned","Hire a full AI team","Choose all vendors and sign contracts"],"correct":1,"explanation":"Q1 is about evidence, not transformation. Prove that AI works in your organization with your data for your people. That evidence is the foundation everything else builds on."},{"q":"What is the signal that AI transformation is taking root in Quarter 3?","options":["The AI impact dashboard is live","The budget for Year 2 is approved","AI starts to feel like a normal part of how work gets done, not a special project","All employees have been trained"],"correct":2,"explanation":"Normalization is the key signal. When AI is no longer a special initiative but just how things work, you have genuine organizational transformation — not just successful pilots."},{"q":"Why does the lesson say \u2018the value of the roadmap is not the plan itself\u2019?","options":["Plans are always wrong","The clarity of thinking that produced it and the discipline to revisit it regularly is what delivers value","Roadmaps become outdated quickly","Plans are too expensive to maintain"],"correct":1,"explanation":"Markets shift, technology evolves, organizations learn. The roadmap\u2019s value is in forcing clarity of thinking and establishing a discipline of quarterly review — not in predicting the future correctly."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

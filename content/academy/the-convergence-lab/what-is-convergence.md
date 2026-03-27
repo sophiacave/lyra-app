@@ -53,6 +53,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">The convergence spectrum.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Convergence Level to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Level 1: Tool","right":"You type, AI responds, nothing persists — reactive and stateless"},{"left":"Level 2: Assistant","right":"AI has some memory and knows your preferences — still waits for you to ask"},{"left":"Level 3: Partner","right":"Persistent memory and initiative — anticipates needs and proposes actions"},{"left":"Level 4: Twin","right":"Shares your values, manages your systems, works while you sleep"},{"left":"Level 5: Convergence","right":"The boundary between human intention and machine execution dissolves"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Reality</span>
   <h2 class="section-title">What Convergence Looks Like Today</h2>
   <p class="section-text">A converged system right now means: an AI that knows your entire project history. That remembers what you decided three weeks ago and why. That can deploy your code, manage your schedule, draft in your voice, and pick up exactly where the last session left off — without you explaining anything.</p>
@@ -69,6 +75,13 @@ free: true
 
 If you answered "no" to most of these — you're using a tool.
 This course will show you how to build a twin.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">What is convergence quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"What Is Convergence","questions":[{"q":"What makes the tool model of AI a dead-end mental model?","options":["AI tools are too expensive for most users","Treating AI as a tool wastes its most powerful capability: continuity and accumulated context over time","AI tools are not powerful enough","The tool model requires too much technical knowledge"],"correct":1,"explanation":"Using AI like a search engine — type, get answer, forget everything — is like hiring a brilliant assistant and wiping their memory every night. You never get the compound benefit of shared history."},{"q":"What is the key insight about convergence?","options":["AI must become more human for convergence to work","Convergence is about building the bridge between human and machine — persistent memory, shared values, autonomous action — until the bridge becomes invisible","Humans must become more machine-like for convergence to work","Convergence requires custom AI models trained on your data"],"correct":1,"explanation":"Convergence is not about making AI human or making humans robotic. It is about the bridge becoming invisible — the gap between your intention and the AI execution disappearing."},{"q":"What is the test for whether you have built a digital twin versus a smart assistant?","options":["Whether the AI can code and deploy","If you went to sleep and the twin kept working, would you recognize the output as your own when you woke up?","Whether the AI can answer any question you ask","Whether the AI remembers your name across sessions"],"correct":1,"explanation":"A twin does not just know what to do — it knows how you would do it. Voice, judgment, priorities. If the output could have come from you, you have built a twin. If it just feels close but off, you have a better assistant."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -73,9 +73,22 @@ Keep the core message consistent across all formats."</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Multimedia pipeline steps.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Pipeline Step to Its Multimedia Output","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Step 1","right":"Article draft — the 1500-word source blog post"},{"left":"Step 2","right":"Image briefs — hero image, section illustrations, OG social image prompts"},{"left":"Step 3","right":"Video script — 3-minute explainer with shot-by-shot visual notes"},{"left":"Step 4","right":"Audio outline — podcast segment with talking points and transition notes"},{"left":"Step 5","right":"Carousel design — 8-slide breakdown with headline and body per slide"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Coordination</span>
   <h2 class="section-title">The Media Kit Mindset</h2>
   <p class="section-text">The endgame is this: you don't publish a blog post. You publish a media kit. Every idea ships with its full complement of visual, audio, and video assets — all generated from the same pipeline run, all consistent in message and brand. That's what separates content creators from content operations.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Multimedia pipelines quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Multimedia Pipelines","questions":[{"q":"What does an image brief step in a pipeline produce?","options":["A finished image ready to publish","A ready-to-use prompt for an image generation tool, with style, composition, and mood specifications","A description of what the article is about","A list of stock photo search terms"],"correct":1,"explanation":"The pipeline adds an image brief step after each content step. The brief outputs a specific prompt for DALL-E, Midjourney, or similar — not the image itself, but the exact instructions to generate it."},{"q":"What distinguishes a media kit from a simple blog post?","options":["A media kit is longer than a blog post","A media kit ships with its full complement of visual, audio, and video assets — all generated from the same pipeline run","A media kit is only for press releases","A media kit requires a larger team to produce"],"correct":1,"explanation":"You do not publish a blog post — you publish a media kit. Every idea ships with all its assets: images, video script, podcast outline, social carousel. One pipeline run, five media types."},{"q":"What two-column format should video scripts from a pipeline use?","options":["Topic on the left, notes on the right","Audio narration on the left, what the viewer sees on the right","Hook on the left, CTA on the right","Script on the left, b-roll ideas on the right"],"correct":1,"explanation":"The two-column script format — AUDIO on the left for what is heard, VISUAL on the right for what appears on screen — makes the script immediately usable for production without translation."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

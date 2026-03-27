@@ -54,6 +54,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Trust boundary layers.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Trust Layer to What It Allows","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Sacred Layer","right":"Never shared, never surfaced — medical status, legal matters, private identity details"},{"left":"Protected Layer","right":"Used in private interactions but never public-facing — financial details, relationships, internal strategy"},{"left":"Public Layer","right":"Can appear in published content and external communications — professional work and public identity"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Principle</span>
   <h2 class="section-title">Consent Is Continuous</h2>
   <p class="section-text">Privacy consent isn't a one-time checkbox. It's a continuous relationship. As your AI learns more about you, the consent landscape changes. Something you were comfortable sharing six months ago might feel different now. A life change might reclassify information from public to sacred.</p>
@@ -77,6 +83,13 @@ boundaries? If not, what needs to change?
 
 Build these layers into your brain's data model.
 Every memory entry gets a trust tag.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Privacy and trust quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Privacy and Trust","questions":[{"q":"What is the privacy paradox at the heart of convergence?","options":["More data makes AI slower","The depth of knowledge that makes convergence transformative is exactly what makes a breach catastrophic — you cannot have power without risk","Privacy and utility are always in conflict in AI systems","More privacy always means less useful AI"],"correct":1,"explanation":"Convergence requires your AI to know almost everything about you. That depth is the source of its power. The solution is not less knowledge — it is better architecture where you control the data and enforce access boundaries by design."},{"q":"Why does the middle path of hosted self-controlled infrastructure solve the data sovereignty problem?","options":["Hosted services are always cheaper than self-hosted","You get cloud availability and reliability while holding the database, schema, and access keys yourself — the brain is accessible but you own it","Hosted services have better security than self-hosted","The middle path eliminates the need for encryption"],"correct":1,"explanation":"Corporate-hosted memory means your life story lives under someone else terms of service. Full self-hosting is complex. The middle path — your database on Supabase or a VPS where you control the keys — balances availability with sovereignty."},{"q":"What does continuous consent mean in practice for a convergence system?","options":["Users must re-consent to AI use every month","Privacy consent changes as your life changes — build review mechanisms so you can reclassify or delete information as your comfort level evolves","Consent is given once at setup and never revisited","Continuous consent requires logging every AI action"],"correct":1,"explanation":"Something you shared freely six months ago may feel private now. Life changes reclassify information. A trustworthy convergence system includes easy reclassification, audits of what the AI knows, and the genuine ability to say forget this."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

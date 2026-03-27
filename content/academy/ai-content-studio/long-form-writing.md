@@ -68,10 +68,23 @@ free: true
   <p class="section-text">Like this one.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Order the layered writing process.</h2>
+  <div data-learn="SortStack" data-props='{"title":"Put the Layered Writing Steps in Order","instruction":"Arrange the steps of the layered drafting method from first to last","items":["Brainstorm with AI — pressure-test your angle","Build the outline — structure before sentences","Write your rough draft in your own words","Use AI to expand each section","Run a full edit pass for clarity and flow"]}'></div>
+</div>
+
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Write one blog post using the layered method.</h2>
   <p class="section-text">Pick a topic you know well. Set a 45-minute timer. Spend 5 minutes brainstorming with AI, 10 minutes on the outline, 15 minutes on your rough draft (in your words), and 15 minutes on AI expansion and editing. Compare the result to how you used to write. Notice the difference in both speed and quality.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Long-form writing quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Long-Form Writing with AI","questions":[{"q":"Why is asking AI to write a full 1500-word blog post from a single prompt a mistake?","options":["AI cannot produce long content","The result is generic and lacks your perspective","It takes too long to generate","AI charges more for longer outputs"],"correct":1,"explanation":"Without your ideas, stories, and unique angle seeded in first, AI defaults to generic content that sounds like everyone and no one."},{"q":"What is the main purpose of Layer 1 in the layered writing method?","options":["To produce a publish-ready draft","To lock in your personal voice and lived experience before AI touches it","To check SEO keywords","To create the outline"],"correct":1,"explanation":"Layer 1 is your rough draft in your own words. This is where your authentic voice, stories, and perspective live — AI cannot replicate these."},{"q":"How should subheadings be written to serve both scanners and deep readers?","options":["Use generic labels like Section 1, Section 2","Make each one a mini-promise that reveals what the section delivers","Keep them as short as possible","Use only questions as subheadings"],"correct":1,"explanation":"A subheading like \"The one thing most creators get wrong about hooks\" rewards scanners by telling them exactly what they will learn if they read on."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

@@ -80,6 +80,18 @@ free: false
   <div class="prompt-box"><code>Here's my financial data for the past [N] months. Please: 1) Summarize revenue and expenses by month, 2) Calculate my profit margin trend, 3) Identify the top 3 expense categories and whether they're growing, 4) Flag anything that looks unusual or concerning, 5) Project next month's revenue with your confidence level.</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Financial Red Flags</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Financial Warning Signs","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Margin compression","right":"Revenue growing but expenses growing faster"},{"left":"Revenue concentration risk","right":"More than 30% of revenue from one customer"},{"left":"Cash flow timing problem","right":"Big expenses hitting before revenue comes in"},{"left":"Expense creep","right":"Small monthly increases that compound over time"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 8 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Financial Data Analysis","questions":[{"q":"What does high revenue concentration mean for a business?","options":["The business is performing well","A high percentage from a few clients or products means higher risk","Revenue is growing month over month","Expenses are well diversified"],"correct":1,"explanation":"If your top 3 clients represent 70% of revenue and one leaves, you lose 70% overnight. High concentration means high risk — diversification is safer."},{"q":"What are the three scenarios AI should provide in a financial forecast?","options":["Past, present, and future","Monthly, quarterly, and annual","Conservative, moderate, and optimistic","Best case, worst case, and most likely"],"correct":2,"explanation":"Conservative, moderate, and optimistic scenarios give you a planning range with explicit assumptions. This is better than a single guess and helps you prepare for different outcomes."},{"q":"What is one of the most practical benefits of running expenses through AI analysis?","options":["AI automatically pays your bills","AI catches recurring charges and forgotten subscriptions","AI predicts future stock prices","AI files your taxes automatically"],"correct":1,"explanation":"AI often finds the $29/month tool you forgot about or the subscription that auto-renewed. These small finds frequently pay for the analysis immediately."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-data-analysis/07-survey-and-feedback-analysis/">← Previous: Survey and Feedback Analysis</a>
   <a href="/academy/ai-for-data-analysis/09-reporting-and-dashboards/">Next: Reporting and Dashboards →</a>

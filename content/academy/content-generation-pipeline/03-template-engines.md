@@ -75,10 +75,23 @@ OUTPUT:
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Template anatomy components.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Template Layer to Its Definition","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Role","right":"Who the AI is acting as in this template"},{"left":"Context","right":"Background and constraints that stay constant across all uses"},{"left":"Variables","right":"The slots you fill in each time — topic, audience, angle — wrapped in brackets"},{"left":"Output Spec","right":"What format, length, and structure you want back"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Template Library</span>
   <h2 class="section-title">Building Your Arsenal</h2>
   <p class="section-text">Start with templates for your three most common content types. Test each one at least five times. Refine what doesn't work. Version them — v1, v2, v3. Keep a changelog so you know what you tried and why you changed it. Your template library is a living system, not a static document.</p>
   <p class="section-text">Within a month, you'll have templates that produce first drafts so good they need minimal editing. That's when the pipeline starts feeling less like a process and more like a superpower.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Template engines quiz.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Template Engines","questions":[{"q":"What is the main advantage of a template over writing prompts from scratch each time?","options":["Templates are shorter to write","Templates preserve what worked — voice, structure, quality standards — so you never lose the lessons you learned","Templates always produce identical outputs","Templates use less AI compute"],"correct":1,"explanation":"Without templates, the knowledge of what worked last time evaporates between sessions. Templates lock in proven patterns while keeping only the variables flexible."},{"q":"Why should variables in templates be wrapped in brackets?","options":["Brackets make prompts easier to read","Brackets make variables explicit and unambiguous — anyone picking up the template knows exactly what to fill in","Brackets are required syntax for AI prompts","Brackets prevent the AI from changing variable names"],"correct":1,"explanation":"Explicit variables with brackets — like {{TOPIC}} and {{AUDIENCE}} — eliminate ambiguity. Future you and team members can use the template with zero guesswork."},{"q":"What is template composition?","options":["Combining multiple templates into one long document","Building templates that call other smaller templates — like a blog template that includes a hook sub-template and a CTA sub-template","Writing templates in multiple languages","Creating different template versions for different platforms"],"correct":1,"explanation":"Template composition means small, focused, reusable components combine into complex outputs. Improve the hook generator once and every template using it automatically gets better hooks."}]}'>
+  </div>
 </div>
 
 <nav class="lesson-nav">

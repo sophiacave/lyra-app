@@ -131,6 +131,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each prompt type to its place in your system.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Your Personal Prompt Library","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Daily check-in prompt","right":"Morning routine — tell AI your tasks and available hours, get a clear daily plan"},{"left":"Tone plus Context plus Goal prompt","right":"Email drafting — from Lesson 3, works for any message you dread writing"},{"left":"Brain dump plus four-bucket sort","right":"Task management — clear weekly priorities from Lesson 4"},{"left":"Weekly reset prompt","right":"Sunday planning — review the week, plan ahead, create a meal plan, flag what to prepare for"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Building Your AI Productivity System","questions":[{"q":"What is the daily check-in prompt designed to accomplish?","options":["Replace your to-do app entirely","Give you a clear plan for the day in 60 seconds — no staring at your list, no decision fatigue before coffee","Sync your tasks automatically across all your devices","Create a detailed schedule accounting for every 15-minute block"],"correct":1,"explanation":"The daily check-in is simple: list your tasks, appointments, and available hours — get a prioritized plan. The lesson says this replaces staring at your to-do list wondering where to start. Clarity at the start of the day compounds across weeks and months."},{"q":"Why does the lesson say a system beats willpower?","options":["Willpower is unreliable and AI makes it stronger","Systems become automatic like brushing your teeth — you do not have to decide to do them","Systems are faster than relying on motivation alone","Willpower depletes but systems do not require mental energy"],"correct":1,"explanation":"The lesson makes this analogy: you do not think about brushing your teeth — you just do it. The goal is to make AI part of your daily routine with the same effortlessness. Habits do not require motivation; systems do not require willpower."},{"q":"What does the weekly reset prompt do that daily planning cannot?","options":["It generates longer task lists","It looks back at the whole week, celebrates wins, plans the coming week, creates a meal plan, and flags what to prepare for — all at once","It connects to your calendar automatically","It is faster than daily planning because AI remembers what you did"],"correct":1,"explanation":"The weekly reset is a single Sunday ritual that replaces hours of scattered planning throughout the week. It combines reflection (what happened), planning (what is coming), meal planning, and preparation — giving you a clear head going into Monday."},{"q":"How does AI get better at helping you over time?","options":["AI automatically learns your preferences in the background","By using it more you develop better prompts, and better prompts get better results — your skill grows alongside the tool","AI downloads updates that personalize its responses to you","You have to formally train the AI with your personal data"],"correct":1,"explanation":"The lesson explains that the more you use AI, the better your prompts get — and the more creative you become about what to hand off. Your skill as a prompt writer grows with practice. The first prompt is never the best; iteration is how you improve."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-personal-productivity/creative-projects-and-hobbies">&larr; Previous: Creative Projects and Hobbies</a>
   <a href="/academy/ai-for-personal-productivity/">Back to Course Home &rarr;</a>

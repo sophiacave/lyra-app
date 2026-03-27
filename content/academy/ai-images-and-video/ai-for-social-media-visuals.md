@@ -89,6 +89,18 @@ free: false
   <p>Look at all three together. Do they feel like they belong to the same brand? If yes, you have found your visual formula. If not, adjust the style keywords until they feel cohesive.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Platform Aspect Ratios</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Social Media Image Dimensions","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Instagram feed portrait","right":"4:5 ratio — takes up more screen space for better engagement"},{"left":"Instagram Stories and Reels","right":"9:16 ratio — full vertical screen"},{"left":"YouTube thumbnails","right":"16:9 ratio — landscape format"},{"left":"Pinterest","right":"2:3 ratio — tall vertical format"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 6 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"AI for Social Media Visuals","questions":[{"q":"What is the key to making AI-generated social content feel authentic rather than generic?","options":["Use only photorealistic styles","Generate as many images as possible","Be specific to your world — use detailed, personal descriptions rather than generic subjects","Always use the default AI style settings"],"correct":2,"explanation":"A woman at a laptop is stock photo energy. A freelance writer in a cozy home office with plants and warm lamp light, morning coffee steam visible feels like a real moment. Specificity is authenticity."},{"q":"What is a brand prompt and why does it matter?","options":["A prompt that generates logos","A base style description that keeps your visual identity consistent across all posts","A paid feature in image generation tools","A prompt for generating text overlays"],"correct":1,"explanation":"A brand prompt captures your visual identity — style, colors, aesthetic, feeling. By swapping only the subject while keeping the base consistent, all your posts look like they belong to the same brand."},{"q":"How does the batch creation workflow save time?","options":["It generates all images at the same time with one prompt","It automatically posts to all social platforms","You sit down once, enter a creative flow, generate a week of content, then schedule — no daily scrambling","It eliminates the need for any text overlay or design work"],"correct":2,"explanation":"Planning themes, writing your brand prompt, swapping subjects, and generating 2-3 options per post in one sitting creates a library of cohesive content in about thirty minutes."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-images-and-video/editing-and-refining">&larr; Previous: Editing and Refining</a>
   <a href="/academy/ai-images-and-video/ai-video-basics">Next: AI Video Basics &rarr;</a>

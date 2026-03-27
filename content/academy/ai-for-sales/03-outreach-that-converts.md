@@ -80,6 +80,20 @@ free: true
   <div class="prompt-box"><code>Create a 5-touch outreach sequence for [PROSPECT TYPE] selling [YOUR PRODUCT]. Include: 2 emails, 1 LinkedIn message, 1 LinkedIn comment idea, and 1 breakup email. Each touch should add new value — never just "checking in." Keep each under 100 words.</code></div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each PRISM element to what it does in a cold email.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"PRISM Email Method","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"P — Personal Hook","right":"Something specific about them personally — not their company, them"},{"left":"R — Relevant Problem","back":"A pain point you know they have from research — makes it feel tailored"},{"left":"I — Insight","right":"Something they have not considered — your unique perspective that adds value"},{"left":"M — Micro-CTA","right":"A tiny ask — not book a demo, but worth a 10-minute chat?"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Outreach That Converts","questions":[{"q":"Why does most cold outreach fail, according to the lesson?","options":["Salespeople do not send enough emails","Generic outreach is dead — buyers can detect templates instantly and AI-generated slop has made the problem worse","Cold email is no longer an effective channel","Subject lines are too short to be compelling"],"correct":1,"explanation":"The lesson is direct: generic outreach gets deleted. I noticed your company is growing emails are ignored instantly. The same AI that creates bad outreach can create extraordinary outreach — but only with specificity. Research-backed prompts create messages that feel genuinely personal."},{"q":"What is the maximum word count for a PRISM cold email?","options":["50 words","120 words","200 words","500 words"],"correct":1,"explanation":"The lesson specifies: the email must be under 120 words. Short cold emails respect the reader\'s time and are more likely to be read fully. Every word must earn its place — which is why specificity matters more than length."},{"q":"On Day 5 of the 5-touch outreach sequence, what should you do on LinkedIn?","options":["Send a direct pitch message","Comment on their recent LinkedIn post — genuine, not salesy","Send a connection request for the first time","Share one of their posts with your endorsement"],"correct":1,"explanation":"Day 5 in the sequence is a genuine comment on their recent LinkedIn post — not salesy, just adding value. This shows you follow them and care about their content, building relationship through multiple touchpoints without being pushy."},{"q":"What makes AI outreach extraordinary rather than generic?","options":["Using the most sophisticated AI model","Automating every step of the sequence","Specificity — research-backed prompts that produce messages tailored to that specific person","Sending at the statistically optimal time of day"],"correct":2,"explanation":"The irony the lesson highlights: AI creates both the worst outreach (generic) and the best outreach (specific). The difference is your input. Generic prompts create generic emails. Research context in your prompt creates messages that feel written just for that person — because they were."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-sales/02-lead-research-and-qualification/" class="prev">← Previous: Lead Research & Qualification</a>
   <a href="/academy/ai-for-sales/04-sales-calls-and-meetings/" class="next">Next: Sales Calls & Meetings →</a>

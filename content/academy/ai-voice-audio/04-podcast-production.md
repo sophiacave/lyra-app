@@ -68,6 +68,18 @@ type: "lesson"
   <p>Generate the script with an AI voice. Then generate a 15-second intro jingle with Suno using the prompt "podcast intro, electronic, warm, curious, lo-fi." Layer them together. You just produced a professional podcast intro in under ten minutes.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Three AI Podcast Models</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Podcast Production Approaches","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Fully AI-Generated","right":"Script with Claude, voice with ElevenLabs, music with Suno — zero human audio, always disclose"},{"left":"AI-Assisted Human","right":"You record your voice, AI cleans audio, removes filler words, generates show notes and transcripts"},{"left":"AI Co-Host","right":"You speak as yourself, an AI voice plays the co-host or interviewer role"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Check Your Understanding</span>
+  <h2 class="section-title">Lesson 4 Quiz</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Podcast Production","questions":[{"q":"What is described as the sweet spot for most creators in AI podcast production?","options":["Fully AI-generated with no human involvement","AI-assisted human — your authentic voice with AI handling production polish","AI co-host format only","Traditional recording with no AI involvement"],  "correct":1,"explanation":"The AI-Assisted Human model is the sweet spot: you record your own voice, bringing authenticity, while AI handles the audio cleanup, filler word removal, show notes, transcription, and social clips."},{"q":"What does Descript&#39;s text-based editing capability enable?","options":["Automatic translation to other languages","Delete a word from the transcript and it is automatically deleted from the audio","Generate unlimited AI voices for free","Automatically publish to all podcast platforms"],  "correct":1,"explanation":"Descript lets you edit audio by editing text — the transcript and the audio are linked. Deleting a word from the text removes it from the audio. This makes editing as fast as editing a document."},{"q":"Why is sonic branding important for AI podcasts?","options":["It increases file size for better quality","Using consistent intro music and sound design across episodes creates recognizable audio identity","It is required by podcast platforms","Sonic branding only matters for large-budget productions"],"correct":1,"explanation":"Consistent intro music, transition sounds, and stingers create a recognizable audio identity across episodes — the same way visual branding creates recognition. This builds listener familiarity and professionalism."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-voice-audio/voice-cloning-and-custom-voices/" class="prev">← Voice Cloning & Custom Voices</a>
   <a href="/academy/ai-voice-audio/audiobook-creation/" class="next">Next: Audiobook Creation →</a>

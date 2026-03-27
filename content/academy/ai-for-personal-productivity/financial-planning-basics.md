@@ -98,6 +98,20 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Match each financial task to what AI can and cannot do.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Financial Planning Limits","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Build a monthly budget from your income and expenses","right":"AI is great for this — budgets, plans, and what-if scenarios"},{"left":"Run a what-if comparison between two apartment options","right":"AI is great for this — comparing financial decisions with real math"},{"left":"Tell you which specific stocks to buy","right":"AI should not — specific investment advice requires a licensed professional"},{"left":"Do your annual tax return","right":"AI should not — taxes require a certified professional for accuracy and compliance"}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Financial Planning Basics","questions":[{"q":"What is the financial snapshot prompt designed to reveal?","options":["Your net worth and investment portfolio performance","Where your money actually goes — organized expenses, what is left, where to cut, and a simple plan","Your credit score and debt-to-income ratio","A comparison of your spending against national averages"],"correct":1,"explanation":"The financial snapshot organizes your expenses, calculates what is left after fixed costs, identifies the biggest areas to cut, and suggests a simple plan. It is like having a friend who is good with money sit down with you — without judgment."},{"q":"Why does the lesson say AI is particularly helpful for financial anxiety?","options":["AI calculates faster than humans","AI can access your actual bank account to show real numbers","AI is judgment-free — it treats your financial situation as math to solve, not a reason for shame","AI financial advice is always free"],"correct":2,"explanation":"The lesson makes this point explicitly: AI does not judge. Many people avoid looking at their finances not because they are bad with money, but because the shame and anxiety feel overwhelming. AI removes that barrier — it just asks what you are spending and helps find the leaks."},{"q":"According to the lesson, what is AI best used for in financial planning?","options":["Replacing a certified financial planner entirely","Managing your actual bank accounts automatically","Building budgets, explaining concepts, running what-if scenarios, and preparing questions for a financial advisor","Making investment decisions based on your risk profile"],"correct":2,"explanation":"AI excels at the thinking side of financial planning — building budgets, explaining confusing terms, running what-if comparisons, and creating savings plans. For the big moves — complex investments, taxes, estate planning — work with a certified professional."},{"q":"What does the lesson recommend doing before starting the financial snapshot prompt?","options":["Download a detailed bank statement for the past 12 months","Gather your basic numbers from your bank app — rough estimates are fine, not exact tracking","Schedule a meeting with a financial advisor first","Calculate your exact net worth including all assets"],"correct":1,"explanation":"The lesson keeps it practical: take 5 minutes, check your bank app, get rough numbers. The goal is to see the big picture, not track every penny. Rough numbers get you started — you can refine later."}]}'></div>
+</div>
+
 <nav class="lesson-nav">
   <a href="/academy/ai-for-personal-productivity/meal-planning-and-health">&larr; Previous: Meal Planning and Health</a>
   <a href="/academy/ai-for-personal-productivity/travel-and-event-planning">Next: Travel and Event Planning &rarr;</a>

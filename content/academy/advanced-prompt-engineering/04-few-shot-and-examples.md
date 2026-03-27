@@ -81,6 +81,10 @@ Product: Wireless earbuds"</code>
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Few-Shot Prompting — Key Concepts","cards":[{"front":"What is zero-shot prompting?","back":"No examples provided — just instructions. Works for simple, well-understood tasks where the AI already has strong priors."},{"front":"What is one-shot prompting?","back":"Providing a single example to set the pattern. Good for style matching and demonstrating the desired format."},{"front":"What is few-shot prompting?","back":"Providing 2-5 examples to establish a strong pattern. Best for complex or nuanced tasks where one example cannot capture all the rules."},{"front":"What makes a good few-shot example?","back":"Diverse (covering different scenarios), representative (looking like what you want), and including at least one edge case to show judgment calls."},{"front":"What are negative examples and why use them?","back":"Examples of what NOT to do with explanations. They teach boundaries just as effectively as good examples teach patterns."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Pro Tip</span>
   <h2 class="section-title">Negative Examples Are Powerful</h2>
   <p class="section-text">Show the AI what NOT to do. A "bad example" with an explanation of why it's bad teaches boundaries just as effectively as good examples teach patterns.</p>
@@ -109,6 +113,10 @@ Now write one for: [new topic]
 Match the tone, length, and structure exactly.</code>
     </div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Few-Shot and Examples Quiz","questions":[{"q":"Why is few-shot prompting more effective than describing what you want in abstract terms?","options":["It is shorter","The AI picks up on patterns in your examples — tone, structure, length, detail — and replicates them","It forces the AI to think step by step","It is easier to write"],"correct":1,"explanation":"Examples demonstrate rather than just describe. The AI pattern-matches against your examples and replicates those patterns in its response."},{"q":"How many examples do you typically need for few-shot prompting to be highly effective?","options":["10-20 examples","50+ examples","2-5 examples","Exactly 1 example"],"correct":2,"explanation":"2-5 examples is the sweet spot — enough to establish a strong pattern without bloating your prompt. More examples don\u2019t always mean better results."},{"q":"What is the purpose of including edge case examples?","options":["To make the prompt longer","To show the AI how to handle unusual inputs and demonstrate your judgment calls","To improve the AI\u2019s grammar","To reduce hallucinations on factual questions"],"correct":1,"explanation":"Edge cases teach the AI how to handle tricky scenarios — inputs that don\u2019t fit the normal pattern — so it applies your judgment in unexpected situations."}]}'></div>
 </div>
 
 <nav class="lesson-nav">

@@ -47,6 +47,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI Maturity Levels","cards":[{"front":"Level 1 — Aware","back":"AI exists as a concept. Maybe someone tried ChatGPT. No organizational capability. No data infrastructure. No strategy."},{"front":"Level 2 — Exploring","back":"One or two pilots have run. Some data infrastructure exists. No AI in production yet. Enthusiasm without systems."},{"front":"Level 3 — Operationalizing","back":"At least one AI system in production. Dedicated people assigned. Data pipelines exist and function."},{"front":"Level 4 — Scaling","back":"Multiple AI systems in production. Governance framework exists. AI informs strategic decisions across the org."},{"front":"Level 5 — Transforming","back":"AI embedded in the operating model. Continuous learning systems. AI-native products and processes. Feedback loops institutionalized."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Closing the Gaps</span>
   <h2 class="section-title">Prioritize the Bottleneck</h2>
   <p class="section-text">Your AI readiness is only as strong as your weakest dimension. A brilliant data science team with terrible data infrastructure will produce nothing. A perfect data lake with no strategic alignment will gather dust. Identify the bottleneck and address it first. Everything else accelerates once the constraint is removed.</p>
@@ -58,6 +62,10 @@ free: true
     <p class="section-text">Use this prompt to assess your organization's AI readiness:</p>
     <div class="prompt-box"><code>Conduct an AI readiness assessment for my organization. Rate each dimension 1-5 based on what I tell you. Our data situation: [describe data quality, accessibility, governance]. Our technical infrastructure: [cloud/on-prem, API maturity]. Our talent: [who works on AI, what skills exist]. Our culture: [how failure is treated, experimentation appetite]. Our strategic alignment: [executive sponsorship level, AI in strategy docs]. Give me a readiness score, identify the bottleneck dimension, and recommend three actions to close the gap.</code></div>
   </div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"AI Readiness Assessment Quiz","questions":[{"q":"What are the five dimensions of AI readiness?","options":["Hardware, software, budget, timeline, headcount","Data maturity, technical infrastructure, talent and skills, organizational culture, strategic alignment","Cloud, API, database, compute, network","Security, compliance, governance, risk, audit"],"correct":1,"explanation":"These five dimensions capture the full picture of organizational AI readiness — technical and human. All five must be evaluated because weakness in any one creates a bottleneck."},{"q":"What does it mean to \u2018prioritize the bottleneck\u2019?","options":["Fix the most expensive problem first","Address your weakest readiness dimension first, because AI readiness is only as strong as its weakest link","Hire the most talent first","Buy the best technology first"],"correct":1,"explanation":"A brilliant data science team with terrible data infrastructure produces nothing. A perfect data lake with no strategic alignment gathers dust. Identify the bottleneck and fix it first."},{"q":"Where are most enterprises on the AI maturity staircase?","options":["Level 4 or 5","Level 3","Between Level 1 and Level 2","Level 3 to 4"],"correct":2,"explanation":"Most enterprises are between Level 1 (Aware) and Level 2 (Exploring). This is a starting point, not a weakness — knowing it honestly is the first strategic advantage."}]}'></div>
 </div>
 
 <nav class="lesson-nav">
