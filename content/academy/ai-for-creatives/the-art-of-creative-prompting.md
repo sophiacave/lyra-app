@@ -170,43 +170,16 @@ free: false
   </div>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 7</button>
+<div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Advanced Creative Prompting Techniques","cards":[{"front":"Style Transfer","back":"Feed AI 3-5 samples of your work. Ask it to analyze your style, tone, structure, and patterns. Use that analysis as a reusable style anchor at the top of every future prompt. Now AI has a blueprint, not a guess."},{"front":"Mood Anchoring","back":"Describe the emotional texture of what you want, not just the content. \"Write this like it feels like the last hour of summer.\" Sensory and emotional language maps to rich clusters in AI training data and produces more evocative output."},{"front":"Constraint-Based Creativity","back":"Give AI deliberate creative constraints: exactly 50 words, only one-syllable words, every sentence a question. Constraints force AI out of its default median patterns -- the same way they push human creatives toward originality."},{"front":"Iterative Refinement","back":"Round 1: generate wide (5 approaches). Round 2: pick and push (keep the structure, change the tone). Round 3: refine details (tighten the third paragraph). Round 4: finish by hand. The first output is never the final output."},{"front":"Cross-Medium Translation","back":"Take creative work from one medium and translate it to another. \"Turn this painting description into a poem.\" \"Turn this song lyric into a visual art brief.\" Cross-medium prompting breaks AI out of format defaults and produces genuinely surprising output."}]}'></div>
+</div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 7;
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Creative Goal to the Right Technique","instruction":"Match each creative challenge on the left to the prompting technique that solves it best.","pairs":[{"left":"Your AI output all sounds the same regardless of topic","right":"Style Transfer: build and apply a personal style anchor"},{"left":"You need writing that feels emotionally resonant, not just factually correct","right":"Mood Anchoring: describe texture and feeling, not just content"},{"left":"AI keeps defaulting to cliched structures and phrasing","right":"Constraint-Based Creativity: add deliberate creative limits"},{"left":"First draft is decent but not quite right","right":"Iterative Refinement: pick and push through multiple rounds"},{"left":"You want to explore an idea across different art forms","right":"Cross-Medium Translation: move the concept between media"}]}'></div>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Creative Prompting Strategy","questions":[{"q":"A musician asks AI to \"write lyrics about heartbreak.\" The result is generic and forgettable. What is the most likely cause?","options":["The AI model is not capable of writing lyrics","The prompt is too specific and constrains creativity","The prompt lacks sensory, emotional, and personal specificity","Lyrics are outside AI capabilities"],"correct":2,"explanation":"Generic prompts produce generic work. A prompt like \"write lyrics about heartbreak\" could apply to any project by anyone. Adding sensory anchoring, mood language, and personal specifics (tempo, genre feel, a specific memory) gives AI the raw material for something distinctive."},{"q":"You want every piece you create with AI to sound like you wrote it. What is the single highest-leverage thing to build?","options":["A prompt that says write casually","A detailed style anchor based on analysis of your own work","A collection of famous authors styles to blend","A very long list of things AI should never do"],"correct":1,"explanation":"A style anchor built from analysis of your own work gives AI a concrete blueprint for your voice. Vague instructions like \"write casually\" leave AI guessing. Borrowed styles produce borrowed voices. The anchor approach scales across every piece you create."},{"q":"During iterative prompting, you are in Round 2. The structure of the AI output is good but the tone is too corporate. What is the most effective next prompt?","options":["Start completely over with a new topic angle","Keep the structure but make the tone warmer and more conversational, less corporate","Tell AI the output is bad and ask it to try harder","Accept the corporate tone and edit manually"],"correct":1,"explanation":"Effective iteration is specific about what to preserve and what to change. Saying keep the structure but change the tone tells AI exactly what works. Starting over discards the good parts. Vague negative feedback produces random changes, not targeted improvement."},{"q":"What is the core principle that makes a creative prompt distinctively yours rather than generic?","options":["Using longer prompts with more detail","Including technical formatting instructions","Adding details only you would think to include based on your specific project and taste","Asking AI to cite its sources"],"correct":2,"explanation":"The golden rule of creative prompting: if your prompt could apply to anyone elses project, it is too generic. The details that come from your specific experience, aesthetic preferences, and creative instincts are what separate your output from the median. Your specificity is your superpower."}]}'></div>
+</div>
 
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-  if (typeof LO !== 'undefined') LO.completeLesson(SLUG, LESSON_NUM, 100);
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

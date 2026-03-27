@@ -114,6 +114,8 @@ css: "ai-creatives.css"
     <div class="tip-label">Pro Tip</div>
     <p>Don't accept the first output. <strong>The magic is always in the third or fourth exchange.</strong> The first response is AI warming up. The good stuff comes when you push, redirect, and react. Treat it like a jam session — the best riff comes after you've been playing for a while.</p>
   </div>
+
+  <div data-learn="SortStack" data-props='{"title":"Order a Creative AI Session","instruction":"Arrange these steps in the correct order for a productive creative AI session, from start to finish.","items":["Set the mood and intention — share the feeling, not a spec sheet","Share reference examples — artists, tones, vibes that match your vision","Give evocative direction — open with energy, not instructions","Iterate on promising results — push further, ask for the unexpected","Apply your voice to the best output — steal the gold, make it yours"]}'></div>
 </div>
 
 <!-- SECTION 3: BEATING THE BLANK PAGE -->
@@ -220,42 +222,6 @@ css: "ai-creatives.css"
   <p><strong>The key insight:</strong> Creative AI work isn't about getting the perfect prompt. It's about <strong>having a creative conversation</strong> — sharing energy, reacting honestly, pushing further, and mining the results for gold. Your job isn't to write the perfect instruction. Your job is to be a great creative director. AI is the fastest collaborator you've ever had.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 2 ✓</button>
+<div data-learn="QuizMC" data-props='{"title":"Creative vs. Corporate Prompting","questions":[{"q":"What makes a creative prompt fundamentally different from a corporate/business prompt?","options":["Creative prompts are shorter and less detailed","Creative prompts share energy, emotion, and feeling rather than specs and constraints","Creative prompts never mention a target audience","Creative prompts always ask for multiple options"],"correct":1,"explanation":"Creative prompts lead with feeling, intention, and vibe — they set a direction and leave room for surprise. Corporate prompts define format, length, and constraints. Both have their place, but for creative work, evocative beats prescriptive every time."},{"q":"According to the lesson, when in a creative AI session does the best output typically emerge?","options":["The first response is always the strongest","After the third or fourth exchange, once you have pushed and redirected","Only after you have given a perfect prompt upfront","After switching to a different AI tool"],"correct":1,"explanation":"The first response is AI warming up. The magic comes through iteration — pushing further, reacting honestly, and redirecting based on what you see. Treat it like a jam session, not a vending machine."},{"q":"What is the core purpose of blank-page methods like the Explosion Method or the Flip Method?","options":["To produce a finished piece quickly","To give you something to react to so your creative brain can engage","To test how smart the AI is","To replace the need for your own ideas entirely"],"correct":1,"explanation":"Reacting is infinitely easier than creating from nothing. These methods give you raw material to push against, combine, and respond to. Your creative instincts kick in the moment you have something to disagree with."},{"q":"The lesson says to talk to AI the way you would talk to a creative partner at a coffee shop. What does this mean in practice?","options":["Keep your prompts very short and casual","Use slang and emojis to seem relatable","Share feelings, references, and intentions rather than rigid specifications","Always start with small talk before getting to the task"],"correct":2,"explanation":"A creative conversation with a collaborator is warm, specific, and full of feeling. You share what you are going for emotionally, reference things that have the right vibe, and react honestly to what they give you. That is what great creative prompting looks and feels like."}]}'></div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 2;
-
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
-
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed! ✨';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed! ✨';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

@@ -62,6 +62,8 @@ css: "ai-creatives.css"
     <div class="tip-label">The Real Advice</div>
     <p>Don't try to master every tool. <strong>Pick one that fits your workflow and go deep.</strong> A designer who knows Midjourney inside out will produce better work than someone who's dabbled in five tools. Once you understand prompt engineering for visuals, the skills transfer across platforms.</p>
   </div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"AI Image Tools — Know Your Kit","cards":[{"front":"Midjourney","back":"Best for: visually polished, beautiful output. Concept art, illustration, atmospheric imagery. Runs through Discord. Go here when aesthetics are the priority."},{"front":"DALL-E 3 (via ChatGPT)","back":"Best for: accessibility and iteration. Easiest to control, great for text-in-images and quick concepts. Less stylistically distinctive but more responsive to precise direction."},{"front":"Stable Diffusion","back":"Best for: maximum control and zero usage costs. Open-source, runs locally, supports ControlNet for precise guidance and custom models. Steeper learning curve but unlimited creative freedom."},{"front":"Canva AI","back":"Best for: non-designers and rapid content creation. AI image generation, magic erase, and background removal built into a design tool. Low barrier, high speed, lower ceiling for fine creative control."},{"front":"Adobe Firefly","back":"Best for: augmenting your existing Adobe workflow. Generative fill, extend, and recolor inside Photoshop and Illustrator. Less about generating from scratch, more about enhancing work already in progress."}]}'></div>
 </div>
 
 <!-- SECTION 2: AI FOR YOUR CREATIVE PROCESS -->
@@ -109,6 +111,8 @@ css: "ai-creatives.css"
       </div>
     </div>
   </div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Visual Task — Right AI Approach","instruction":"Match each visual task to the AI approach that serves it best.","pairs":[{"left":"Building a mood board for a client pitch","right":"Text-to-image generation: describe the vibe and generate 20 options in minutes instead of an hour on Pinterest"},{"left":"Removing an unwanted background element from a photo","right":"Adobe Firefly generative fill: AI-powered inpainting inside your existing Photoshop workflow"},{"left":"Exploring 30 logo concept variations","right":"Rapid AI generation: see ideas instead of imagining them, curate the best, then refine by hand"},{"left":"Generating a seamless repeating texture","right":"Stable Diffusion or Midjourney: describe the texture precisely, generate production-ready assets at scale"},{"left":"Pre-visualizing a film scene before a shoot","right":"Text-to-image storyboarding: rough visual direction in minutes, preventing costly on-set surprises"}]}'></div>
 </div>
 
 <!-- SECTION 3: VISUAL PROMPT ENGINEERING -->
@@ -249,42 +253,6 @@ css: "ai-creatives.css"
   <p><strong>The key insight:</strong> AI image generation doesn't threaten great designers — it threatens mediocre stock photography and template-based design. If your value is in your <strong>eye, your taste, and your ability to solve visual problems</strong>, AI makes you faster and more exploratory. If your value was in production speed alone, yes, that's changing. The move is clear: lean into what makes you irreplaceable — your creative judgment — and let AI handle the volume.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 4 ✓</button>
+<div data-learn="QuizMC" data-props='{"title":"AI for Visual Art — Test Your Knowledge","questions":[{"q":"Which AI image tool is best described as the aesthetics champion — most visually polished output, strong at concept art, runs through Discord?","options":["DALL-E 3","Stable Diffusion","Midjourney","Adobe Firefly"],"correct":2,"explanation":"Midjourney is known for producing the most visually striking and polished output. It operates through Discord and excels at illustration, concept art, and atmospheric imagery where beauty out of the box is the priority."},{"q":"What is the correct structure of the Visual Prompt Formula taught in this lesson?","options":["Subject + Length + Format + Audience + Style","Subject + Style + Mood + Technical Details + What to Avoid","Vibe + Reference Artists + Output Size + Color Palette","What + How + Why + When + Who"],"correct":1,"explanation":"Subject (what is in the image), Style (art movement or medium reference), Mood (the emotional feeling), Technical Details (lighting, angle, palette, composition), and Negative Prompts (what to avoid). All five work together to produce controlled, intentional output."},{"q":"Why does the lesson recommend iterating with specifics rather than saying make it better?","options":["AI does not understand vague instructions","Specific feedback gives AI a concrete target, the same way art direction works","Saying make it better uses more processing power","Specific prompts are shorter and cheaper to run"],"correct":1,"explanation":"More dramatic shadows. Pull the camera closer. Make the background darker. These are specific art direction notes that AI can actually act on. Make it better is meaningless without knowing better in which direction. Treat it like directing a shoot."},{"q":"When is using a living artist as a style reference most ethically problematic?","options":["When you reference their color palette for personal inspiration","When you use their distinctive style to produce commercial work without credit or permission","When you mention their name as a general reference point in mood boards","When you study their work to improve your own technique"],"correct":1,"explanation":"The ethical line is around commercial mimicry of a living artist is distinctive and recognizable style. Using a general art movement like impressionism or brutalism as reference is fine. Generating work that looks indistinguishable from a specific living artist is work — for commercial use, without consent or credit — crosses that line."}]}'></div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 4;
-
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
-
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed! ✨';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed! ✨';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

@@ -179,43 +179,16 @@ free: false
   </div>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 6</button>
+<div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Creative AI Tool Categories","cards":[{"front":"Writing AI","back":"Top picks: Claude Pro ($20/mo), ChatGPT Plus ($20/mo). Use for: ideation, drafts, editing, research, repurposing. Free options exist but hit limits fast on real projects."},{"front":"Image AI","back":"Top picks: Midjourney ($10-$30/mo), Adobe Firefly (included in CC). Use for: concept art, mood boards, asset generation, background removal. Firefly is safest for commercial work."},{"front":"Video AI","back":"Top picks: Descript ($12/mo), Opus Clip ($9/mo), RunwayML ($15/mo). Use for: auto-editing, clip generation, transcript-based editing, shorts creation."},{"front":"Audio AI","back":"Top picks: LANDR ($11/mo), Moises ($4/mo), Udio/Suno (free tiers available). Use for: mastering, stem separation, melody sketching, sample creation."},{"front":"Automation AI","back":"Top picks: Zapier AI, Make.com, Notion AI. Use for: connecting tools together, auto-scheduling, repurposing workflows, routing outputs between apps."},{"front":"All-in-One AI","back":"Top picks: Canva AI (included in Pro), Notion AI ($10/mo add-on). Use when: you want one interface for multiple tasks. Trade-off: less powerful per task than dedicated tools."}]}'></div>
+</div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 6;
+<div class="lesson-section">
+  <div data-learn="SortStack" data-props='{"title":"Build Your Stack in the Right Order","instruction":"Drag to arrange the steps for building a creative AI stack from first to last.","items":["Identify your #1 workflow bottleneck","Choose one tool that solves that bottleneck","Use it daily for 2 weeks until it feels effortless","Identify your #2 bottleneck","Add a second tool and integrate it with the first","Build templates and prompt shortcuts for both tools","Only then consider adding a third tool"]}'></div>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Choosing the Right Tools","questions":[{"q":"You are a freelance photographer who needs to generate background-removed product images at scale. Which tool category should you prioritize?","options":["Writing AI for product descriptions","Image AI with background removal features","Audio AI for slideshow music","Automation AI for scheduling posts"],"correct":1,"explanation":"Background removal is a specific image AI task. Tools like Adobe Firefly or Remove.bg solve this bottleneck directly. Writing and audio tools do not address your core workflow friction."},{"q":"A content creator is overwhelmed by tool options and has signed up for 12 free trials. What should they do?","options":["Keep all 12 active and rotate between them","Identify their biggest single bottleneck and pick one tool that solves it","Upgrade all 12 to paid tiers for best results","Wait for one tool to become the clear industry winner"],"correct":1,"explanation":"The 3-Question Filter starts with identifying a real bottleneck. Using 12 tools creates cognitive overhead and prevents deep mastery. Pick one, go deep, add tools only after mastering the first."},{"q":"What is the main trade-off when using a free tier of an image generation tool for professional client work?","options":["The tool will automatically notify your client","Output quality and commercial rights may be limited, and watermarks may appear","Free tools always produce better results than paid ones","You cannot use the tool more than once per day"],"correct":1,"explanation":"Free tiers typically produce lower-resolution outputs, may include watermarks, and often have terms that restrict commercial use or allow the company to train on your outputs. For client deliverables, these trade-offs matter."},{"q":"Which is the best first step when building a multi-tool workflow?","options":["Buy subscriptions to every tool in your category","Start with the most expensive tools so you have room to downgrade","Make sure Tool A output format can feed directly into Tool B","Build a custom API integration between all your tools"],"correct":2,"explanation":"Export format compatibility is the foundation of any multi-tool workflow. If Tool A produces a format Tool B cannot accept, the pipeline breaks. Check compatibility before committing to any combination of tools."}]}'></div>
+</div>
 
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-  if (typeof LO !== 'undefined') LO.completeLesson(SLUG, LESSON_NUM, 100);
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

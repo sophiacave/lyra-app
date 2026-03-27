@@ -150,43 +150,16 @@ free: false
   </div>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lab 8</button>
+<div class="lesson-section">
+  <div data-learn="SortStack" data-props='{"title":"Order the Content Creation Pipeline","instruction":"Drag to arrange the stages of a content creation pipeline from first to last.","items":["Ideation: generate angles, hooks, and concept options","Outline: structure the piece with sections and key points","Draft: produce the full rough draft using your style anchor","Edit: cut, tighten, fact-check, and flag AI-sounding language","Format: adapt for platform, add metadata and visuals","Publish: go live and repurpose across channels"]}'></div>
+</div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 8;
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match Pipeline Stages to AI Tools","instruction":"Match each pipeline stage to the AI tool best suited for that task.","pairs":[{"left":"Ideation and concept generation","right":"Claude: brainstorm angles, find gaps, stress-test concepts"},{"left":"First draft creation","right":"Claude with your style anchor: produces raw material fast"},{"left":"Copy editing and fact-checking","right":"Grammarly or Claude: catches errors, flags inconsistencies"},{"left":"Image and visual asset creation","right":"Midjourney or Adobe Firefly: featured images, social cards"},{"left":"Repurposing across platforms","right":"Claude: transforms one piece into threads, captions, emails"},{"left":"Video editing and clip generation","right":"Descript or Opus Clip: auto-edit, transcript-based cuts"}]}'></div>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Building Efficient Content Pipelines","questions":[{"q":"In the content creation pipeline, what is the primary role of AI during the Draft stage?","options":["Making final editorial decisions about what to include","Producing raw material that you will then shape and refine","Publishing content automatically to all platforms","Replacing your need to read the output before publishing"],"correct":1,"explanation":"At the Draft stage, AI is a first-draft machine, not an editor-in-chief. It produces the clay on the wheel. Your role is Director: you shape what comes next. The editorial decisions about what stays, what gets cut, and what gets rewritten are yours at the Edit stage."},{"q":"You need a month of social content without burning out. Which batching strategy is most sustainable?","options":["Create one post per day using AI each time to stay fresh","Generate all 30 posts in one massive prompt and schedule them all","Batch by format: write all captions in one session, all graphics briefs in another","Let AI auto-post directly to your accounts without review"],"correct":2,"explanation":"Batching by format keeps you and AI in the same creative mode, producing more consistent voice and quality. Daily creation defeats the purpose of batching. A single massive prompt loses nuance across 30 pieces. Auto-posting without review skips the quality gate that keeps your standards high."},{"q":"Before publishing any AI-assisted content, which quality check is most often skipped -- and most important?","options":["Checking the character count for the platform","Reading the piece out loud to check if it sounds like you","Verifying the file format is correct","Making sure the headline has a number in it"],"correct":1,"explanation":"Reading out loud is the voice check -- the test that reveals whether the content sounds like you or like a chatbot. Character counts and file formats are mechanical. The voice check is the human quality gate. If it doesnt pass the out-loud test, it is not ready."},{"q":"What is the main advantage of creating evergreen content batches?","options":["Evergreen content ranks higher in search engines automatically","It allows you to maintain a publishing schedule even when you cannot actively create","Evergreen content is easier for AI to write than timely content","It eliminates the need for a quality control step"],"correct":1,"explanation":"Evergreen content -- how-tos, frameworks, principles, FAQs -- has no expiration date. A batch of it gives you a buffer that holds your publishing schedule during sick days, travel, or creative dry spells. It is a sustainability strategy, not an SEO trick or a quality shortcut."}]}'></div>
+</div>
 
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-  if (typeof LO !== 'undefined') LO.completeLesson(SLUG, LESSON_NUM, 100);
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

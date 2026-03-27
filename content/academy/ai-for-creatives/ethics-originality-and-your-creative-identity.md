@@ -169,43 +169,16 @@ free: false
   </div>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 9</button>
+<div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Key Ethical Questions in Creative AI","cards":[{"front":"Copyright of AI Work","back":"In the US, purely AI-generated content is generally not copyrightable. Work where a human made substantial creative decisions likely is. The more editing, curation, and creative judgment you apply, the stronger your copyright claim. Prompts alone are probably not enough."},{"front":"Disclosure to Clients","back":"If a client is paying for creative work, AI use should be disclosed -- ideally upfront, before delivery. Best practice: \"I use AI tools for drafting and research. All final work is reviewed, edited, and approved by me.\" Transparency builds trust and sets clear expectations."},{"front":"Training Data Consent","back":"Most AI models were trained on data scraped from the internet without explicit consent from creators. This is actively being litigated. For your own work: check each tool\'s terms of service -- some claim the right to train on your outputs. Read before you create professionally."},{"front":"Style Mimicry Ethics","back":"AI can generate work that mimics a specific living artist\'s style. The ethics here are murky -- copyright law protects expression, not style. But mimicking a living artist\'s distinctive style for commercial gain is widely considered ethically problematic, even if not yet clearly illegal."},{"front":"Attribution Best Practices","back":"When AI contributed meaningfully to a piece, acknowledge it: \"Written with AI assistance\" or \"AI-assisted draft, edited by [name].\" This is honest, increasingly normal, and positions you as transparent. In journalism and academia, specific attribution standards are emerging -- check the relevant guidelines for your field."}]}'></div>
+</div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 9;
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Ethical Scenarios and the Right Response","instruction":"Match each ethical scenario to the most appropriate response.","pairs":[{"left":"Client asks if you wrote their website copy yourself -- you used AI for the draft","right":"Disclose: explain your process includes AI drafting with full human editorial oversight"},{"left":"Your recent work is getting comments that it sounds different and less personal","right":"Run a voice audit: compare AI-assisted and fully human pieces, recalibrate your editing process"},{"left":"You want to generate images in the style of a specific living illustrator for a paid project","right":"Reconsider: mimicking a living artist\'s style for commercial gain is ethically problematic"},{"left":"You are submitting an essay to a writing competition","right":"Check competition rules and disclose AI use -- most competitions now require this"},{"left":"You want to publish AI-generated images commercially","right":"Read the tool\'s terms of service to confirm commercial rights and training data policies"}]}'></div>
+</div>
 
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
+<div class="lesson-section">
+  <div data-learn="QuizMC" data-props='{"title":"Creative AI Ethics","questions":[{"q":"Under current US copyright law, which type of AI-generated work is most likely to be protected?","options":["A poem generated entirely by AI with no human editing","An image produced by AI where the human only typed a three-word prompt","A piece where AI produced a draft and a human substantially edited, restructured, and added original content","Any output from a paid AI subscription tool"],"correct":2,"explanation":"The more substantial human creative input, the stronger the copyright claim. Purely AI-generated content with minimal human involvement is generally not copyrightable in the US. Substantial editing, restructuring, and adding original content is what establishes human authorship."},{"q":"What is the clearest warning sign that AI is homogenizing your creative work?","options":["You are producing more content per week than before","Your audience comments that your recent work feels different -- and not in a good way","You have started using a prompt library","You use AI for first drafts but always edit them"],"correct":1,"explanation":"Audience feedback about a negative shift in your voice is the clearest signal that AI defaults are overwriting your distinctive style. Producing more content, using a prompt library, and editing drafts are all neutral or positive practices. The voice shift is the red flag."},{"q":"A journalist uses AI to help research and draft an article, then heavily edits it. What is the most professional approach to disclosure?","options":["No disclosure needed if the final edit is mostly human","Add a note that AI was used for research and drafting assistance","Claim the article is entirely original to avoid reader skepticism","Only disclose if the editor asks directly"],"correct":1,"explanation":"Journalism has strong norms around transparency. Disclosing AI use for research and drafting while making clear that editorial judgment was human is the professional standard. Hiding AI use in journalism erodes trust. Upfront disclosure maintains it."},{"q":"Which of the following best protects your unique creative voice when working with AI regularly?","options":["Only use AI for tasks your audience will never see","Create something with zero AI involvement at least once per week to keep your creative muscles strong","Use the same AI tool for everything to stay consistent","Accept first drafts without editing to preserve the raw creative energy"],"correct":1,"explanation":"Regular unplugged sessions -- creating without AI -- act as creative cross-training. They keep your instincts sharp and prevent dependency. Hiding your AI use from your audience is not a voice protection strategy. And accepting first drafts without editing is exactly what leads to homogenization."}]}'></div>
+</div>
 
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed!';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-  if (typeof LO !== 'undefined') LO.completeLesson(SLUG, LESSON_NUM, 100);
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed!';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

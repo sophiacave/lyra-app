@@ -62,6 +62,8 @@ css: "ai-creatives.css"
   <div class="callout">
     <p><strong>Honest take:</strong> As of right now, AI can produce music that sounds <em>good enough</em> for background, demos, and content. But it struggles with the things that make music <em>great</em>: genuine emotional dynamics, intentional imperfection, the tension between what's expected and what actually happens. That gap is where musicians live — and it's not closing as fast as the tech press thinks.</p>
   </div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"AI Music & Audio Tools — The Landscape","cards":[{"front":"Suno","back":"Best for: accessible text-to-full-track generation with vocals. Describe your song in plain English and get a complete demo in under a minute. Great for brainstorming and quick concept demos."},{"front":"Udio","back":"Best for: musically sophisticated output, especially jazz, classical, soul, and complex genre combinations. Strong vocal generation. Use when you need more harmonic depth than Suno provides."},{"front":"ElevenLabs","back":"Best for: text-to-speech and voice cloning. Near-human quality narration, podcast voices, demo vocals, and multilingual content. Clone your own voice for generating content without re-recording."},{"front":"Descript","back":"Best for: audio and video editing via text. Edit spoken audio by editing a transcript. Overdub feature lets you fix mistakes by typing. Also offers AI noise removal and Studio Sound enhancement."},{"front":"AIVA","back":"Best for: AI composition inside your DAW workflow. Generates full MIDI arrangements and stems for film scoring, game audio, and background music. More compositional control than text-to-track tools."}]}'></div>
 </div>
 
 <!-- SECTION 2: AI FOR COMPOSITION -->
@@ -169,6 +171,8 @@ css: "ai-creatives.css"
   <div class="callout">
     <p><strong>The ethics note:</strong> Voice cloning technology is powerful and easily abused. Never clone someone else's voice without their explicit consent. Never use AI-generated voices to impersonate real people. The same principle applies here as everywhere in this course: <strong>use the power responsibly, and be transparent about when AI is involved.</strong></p>
   </div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Music Task — Right AI Tool","instruction":"Match each music or audio task to the AI tool best suited for it.","pairs":[{"left":"Generate a full demo track with vocals from a text description","right":"Suno or Udio: text-to-music tools that produce complete tracks in under a minute"},{"left":"Fix a spoken-word recording mistake without re-recording","right":"Descript Overdub: edit audio by editing the transcript, regenerate specific words in your voice"},{"left":"Separate the drums from a mixed track for sampling","right":"Lalal.ai or Demucs: AI stem separation that isolates individual instruments from any mix"},{"left":"Generate high-quality narration for a podcast intro","right":"ElevenLabs: near-human TTS quality for spoken content, narration, and multilingual audio"},{"left":"Compose a full orchestral MIDI arrangement for a film score","right":"AIVA: AI composition tool that generates full arrangements and exportable MIDI stems"}]}'></div>
 </div>
 
 <!-- SECTION 5: BUILDING YOUR WORKFLOW -->
@@ -263,42 +267,6 @@ css: "ai-creatives.css"
   <p><strong>The key insight:</strong> Music is the most emotional art form humans have. AI can generate sounds, patterns, and even convincing performances. But it can't feel what it means to play a note with intention, to hold a silence one beat longer than expected, to choose the imperfect take because it's <em>more true</em>. <strong>Your musicianship isn't your technical skill — it's your emotional intelligence expressed through sound.</strong> AI amplifies your capacity. It doesn't replace your soul. Use it to make more music, explore more ideas, and reach more people. The instrument has changed. What it means to play hasn't.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 5 ✓</button>
+<div data-learn="QuizMC" data-props='{"title":"AI for Music & Audio — Check Your Knowledge","questions":[{"q":"What is Suno best described as?","options":["A DAW plugin for generating MIDI chord progressions","An accessible text-to-music tool that produces full tracks with vocals in under a minute","A stem separation tool for isolating instruments from a mix","A voice cloning platform for narration and podcasts"],"correct":1,"explanation":"Suno takes plain English descriptions and generates complete tracks with vocals in under a minute. It is the most accessible entry point into AI music generation and is best suited for demos, brainstorming, and rapid concept testing."},{"q":"According to the Lyricist Rule, when should you use an AI-generated lyric line verbatim?","options":["Always — AI lyrics are optimized for singability","Never — AI cannot write lyrics that are genuinely good","Only when it genuinely moves you, which is rare","Only when you have a tight deadline and need filler lines"],"correct":2,"explanation":"The value of AI for lyrics is in sparks — an unexpected word, a rhyme scheme that opens a door, an image that triggers something real. If a line genuinely moves you, use it. Otherwise, mine the AI output for inspiration and write the actual lyrics yourself."},{"q":"What ethical principle must you follow when using voice cloning technology?","options":["Always disclose that a track was produced with AI assistance","Only clone your own voice, or voices with explicit consent from the owner","Never use voice cloning for commercial work under any circumstances","Voice cloning is unregulated so no ethical rules apply yet"],"correct":1,"explanation":"Voice cloning is powerful and easily abused. The core ethical rule is consent: only clone your own voice, or voices where you have clear explicit permission from the person. Never use AI voices to impersonate real people."},{"q":"In the AI-assisted music workflow, what is the primary goal of the Ideation Phase?","options":["Producing a polished demo ready for release","Quantity of ideas and sparks, not quality — cast a wide net","Finding the one perfect chord progression for the song","Completing the lyrics before touching the DAW"],"correct":1,"explanation":"The Ideation Phase is about casting a wide net: generating many chord progressions, creating multiple demo tracks in Suno or Udio, brainstorming lyric concepts. You are looking for sparks — the one progression, melody, or image that makes you lean forward. Quality comes later in the Selection and Creation phases."}]}'></div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 5;
-
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
-
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed! ✨';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed! ✨';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

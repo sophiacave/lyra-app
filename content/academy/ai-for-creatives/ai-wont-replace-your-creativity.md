@@ -196,6 +196,8 @@ css: "ai-creatives.css"
 
   <p class="section-text">Think about what you could create if you had <strong>unlimited first drafts</strong>. If brainstorming never ran dry. If you could explore every variation of an idea in minutes instead of days. If the tedious production work just... handled itself.</p>
   <p class="section-text">That's not science fiction. That's what this course teaches you to do. Starting next lesson.</p>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Human Strength vs AI Strength","cards":[{"front":"Taste & Judgment","back":"Only humans know WHICH output matters. AI generates; you curate. Your taste is the most irreplaceable skill you have."},{"front":"Speed & Volume","back":"AI generates 50 variations in seconds. What used to take hours of manual work becomes instant raw material for your creative filter."},{"front":"Emotional Truth","back":"AI can produce technically correct emotion-adjacent content. Only humans can produce the thing that makes someone actually cry, laugh, or feel seen."},{"front":"Pattern Recognition","back":"AI excels at cross-pollinating patterns across millions of examples. It can surface combinations and references a single human brain would never encounter."},{"front":"Vision & Intent","back":"AI has no goal of its own. It serves your intent. The creative direction, the why, and the final judgment will always be yours."}]}'></div>
 </div>
 
 <!-- KEY TAKEAWAY -->
@@ -203,42 +205,6 @@ css: "ai-creatives.css"
   <p><strong>The key insight:</strong> Your creativity isn't your output — it's your <strong>taste, vision, and lived experience</strong>. AI can generate a million words or a thousand images, but it can't decide which one matters. That's you. That will always be you. This course teaches you to use AI as the most powerful creative tool you've ever had — while keeping your humanity front and center.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 1 ✓</button>
+<div data-learn="QuizMC" data-props='{"title":"AI vs. Human Creative Roles","questions":[{"q":"A graphic designer asks AI to generate 30 logo concepts in 5 minutes, then selects the 3 best to refine. Who is doing the creative work?","options":["AI — it generated all the concepts","The designer — taste and selection IS the creative work","Both equally — it is a 50/50 split","Neither — real designers sketch by hand"],"correct":1,"explanation":"Curation and judgment ARE creative work. The designer is exercising their taste, their vision, and their understanding of the brief. AI generates volume; humans generate meaning."},{"q":"Which of these is something AI genuinely cannot do, no matter how advanced it gets?","options":["Write a grammatically correct poem","Generate 100 color palette variations","Know from lived experience what heartbreak feels like","Summarize a long document"],"correct":2,"explanation":"AI has no lived experience. It can pattern-match language about heartbreak from millions of texts, but it has never felt it. That gap — between simulated and lived emotion — is where authentic creative work lives."},{"q":"The course says the real threat to creative professionals is not AI itself but what?","options":["AI becoming sentient and autonomous","Creatives who use AI replacing creatives who do not","Clients learning to use AI themselves","AI eventually developing taste"],"correct":1,"explanation":"The competitive threat is between humans — those who adapt and amplify their skills with AI vs. those who resist. The tool is not the threat; the gap in adoption is."},{"q":"In the director/crew analogy for AI creative work, which role does the human creative play?","options":["The crew — executing with skill","The director — setting vision and making final calls","The producer — managing budget and timeline","The audience — evaluating the final result"],"correct":1,"explanation":"You are the director. You set the creative vision, give direction, curate the output, and make the final calls. AI is the crew — fast, tireless, and capable, but always serving your intent."}]}'></div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 1;
-
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
-
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed! ✨';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed! ✨';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>

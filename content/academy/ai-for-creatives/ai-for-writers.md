@@ -105,6 +105,8 @@ css: "ai-creatives.css"
   </div>
 
   <p class="section-text">Most professional writers use <strong>both</strong> — sometimes in the same week. The novel gets Workflow A. The newsletter gets Workflow B. The client blog post might start with B and finish with A. There's no purity test here. Use what serves the work.</p>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Human-First or AI-First?","instruction":"Match each writing task to the workflow that best serves it.","pairs":[{"left":"Personal essay about grief","right":"Human-First: voice is everything, authenticity cannot be faked"},{"left":"50 product descriptions for an e-commerce store","right":"AI-First: volume and speed matter, voice can be injected during editing"},{"left":"Literary short story for submission","right":"Human-First: your lived experience and singular perspective are the entire point"},{"left":"Weekly email newsletter for a brand","right":"AI-First: draft fast, then rewrite to inject personality and voice"},{"left":"Opinion piece for a major publication","right":"Human-First: your specific argument and perspective are what got you the byline"}]}'></div>
 </div>
 
 <!-- SECTION 4: PROMPT TEMPLATES BY WRITING TYPE -->
@@ -158,6 +160,8 @@ css: "ai-creatives.css"
 
     </div>
   </div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Prompt Templates by Writing Type","cards":[{"front":"Blog Post Prompt","back":"Lead with your unique angle, not a definition. Ask for a hook that surprises. Tell AI the feeling the reader should leave with, not just the topic."},{"front":"Fiction Prompt","back":"Give a tone reference (e.g., Carver meets Butler). Ask for multiple opening scenes starting in different emotional and temporal places. Focus AI on emotional logic over plot mechanics."},{"front":"Copywriting Prompt","back":"Define the reader skepticism first. Ask for variations from safe to rule-breaking. For email, tell AI to relate rather than sell — the CTA should feel earned, not pushed."},{"front":"Poetry Prompt","back":"Ban the obvious. Ask for concrete, physical images not abstract feelings. When a stanza fails, ask for 5 alternative endings with different structural approaches."},{"front":"Editing Prompt","back":"Diagnose before rewriting. Ask AI to read as your target audience. Specify what to keep (voice, intentional fragments) and what to cut. The voice test: read it aloud — if it does not sound like you, it is not done."}]}'></div>
 </div>
 
 <!-- SECTION 5: THE EDITING PARTNERSHIP -->
@@ -249,42 +253,6 @@ css: "ai-creatives.css"
   <p><strong>The key insight:</strong> AI is the most powerful writing tool since the word processor. But just like a word processor doesn't make you a writer, AI doesn't make you a writer. <strong>Your voice, your perspective, your willingness to say something real — that's what makes you a writer.</strong> AI just removes the friction between your ideas and the page. Use it to write more, write faster, and write bolder. Never use it to write less like yourself.</p>
 </div>
 
-<!-- COMPLETION -->
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 3 ✓</button>
+<div data-learn="QuizMC" data-props='{"title":"Maintaining Voice While Using AI","questions":[{"q":"What is the single most effective way to get AI to match your writing voice?","options":["Describe your style in adjectives like warm, conversational, and punchy","Paste 2-3 examples of your own writing and say: this is my voice, match it","Use the same AI model every time so it learns you","Always write in first person and keep sentences short"],"correct":1,"explanation":"AI can mimic voice remarkably well when given actual examples of that voice. Describing style in abstract adjectives is far less effective than showing AI a concrete sample of how you actually write."},{"q":"Which of these is an AI writing tell you should edit out?","options":["Short punchy sentences","Starting a paragraph with a question","Phrases like delve or it is important to note","Using contractions like do not and cannot"],"correct":2,"explanation":"AI has characteristic verbal tics: overuse of delve, it is important to note, in conclusion, and the like. These are signals that AI-generated text has not been properly edited. Your editing eye is your voice in action."},{"q":"A personal essay about a difficult life experience should use which workflow?","options":["AI-First: let AI draft it so you are not too close to the material","Human-First: your lived experience and voice are the entire point","Either one works equally well for personal essays","Start with AI then delete everything and rewrite from scratch"],"correct":1,"explanation":"When voice, lived experience, and emotional authenticity are the entire value of the piece, Human-First is the right workflow. AI has no access to your actual life. You write it; AI helps you refine it."},{"q":"Why does the lesson say AI has made competent writing free — and what does that mean for writers?","options":["It means writers no longer need to charge for their work","It means competent writing is now worthless, so writing with voice and perspective is more valuable than ever","It means writers should only focus on editing, not creating","It means AI will eventually replace all writers"],"correct":1,"explanation":"When something becomes free and abundant, it loses market value. Competent, generic writing is now a commodity. What is scarce — and therefore valuable — is writing with a distinct voice, lived experience, and something real to say. AI raises the floor and raises the ceiling for writers who have something genuine to offer."}]}'></div>
 
-<script>
-const SLUG = 'ai-for-creatives';
-const LESSON_NUM = 3;
-
-window.addEventListener('scroll', function() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  if (scrollPct > 0.6) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
-
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) {
-    completed.push(LESSON_NUM);
-    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
-  }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed! ✨';
-  btn.style.background = 'var(--green)';
-  btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible');
-    btn.textContent = 'Completed! ✨';
-    btn.style.background = 'var(--green)';
-    btn.style.pointerEvents = 'none';
-  }
-})();
-</script>
+</div>
