@@ -29,15 +29,7 @@
   `;
   document.head.appendChild(style);
 
-  try {
-    const raw = localStorage.getItem(SESSION_KEY);
-    if (!raw) return;
-
-    const session = JSON.parse(raw);
-    if (!session?.access_token || !session?.user?.email) return;
-    if (session.expires_at && session.expires_at * 1000 < Date.now()) return;
-
-    // User is signed in
+  function applySignedIn(session) {
     document.body.classList.add('lo-signed-in');
 
     window.__likeone_user = {
@@ -53,14 +45,45 @@
     });
 
     // Check subscription status (async, non-blocking)
-    fetch('https://app.likeone.ai/rest/v1/profiles?email=eq.' + encodeURIComponent(session.user.email) + '&select=subscription_status', {
+    fetch('https://app.likeone.ai/rest/v1/profiles?email=eq.' + encodeURIComponent(session.user.email) + '&select=subscription_status,subscription_tier', {
       headers: { apikey: ANON, Authorization: 'Bearer ' + ANON }
     }).then(r => r.json()).then(profiles => {
-      if (profiles[0]?.subscription_status === 'active') {
+      const p = profiles[0];
+      if (p && p.subscription_status === 'active' && p.subscription_tier !== 'free') {
         document.body.classList.add('lo-pro');
         window.__likeone_user.isPro = true;
       }
     }).catch(() => {});
+  }
+
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return;
+
+    const session = JSON.parse(raw);
+    if (!session?.access_token || !session?.user?.email) return;
+
+    // If token is expired but we have a refresh token, refresh it
+    if (session.expires_at && session.expires_at * 1000 < Date.now()) {
+      if (!session.refresh_token) return;
+      // Refresh via Supabase GoTrue REST API (no SDK needed)
+      fetch('https://app.likeone.ai/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: ANON },
+        body: JSON.stringify({ refresh_token: session.refresh_token })
+      }).then(r => r.ok ? r.json() : Promise.reject()).then(data => {
+        if (!data?.access_token || !data?.user?.email) return;
+        // Update stored session with refreshed tokens
+        localStorage.setItem(SESSION_KEY, JSON.stringify(data));
+        applySignedIn(data);
+      }).catch(() => {
+        // Refresh failed — token is truly expired, clear it
+        localStorage.removeItem(SESSION_KEY);
+      });
+      return;
+    }
+
+    applySignedIn(session);
 
   } catch(e) {}
 })();
