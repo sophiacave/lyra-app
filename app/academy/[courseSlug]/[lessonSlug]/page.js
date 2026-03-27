@@ -1,6 +1,7 @@
 import { getLesson, getCourse, getAllCourseSlugs, getLessonSlugs } from '../../../../lib/courses';
 import { notFound } from 'next/navigation';
 import LessonNav from '../../../components/academy/LessonNav';
+import LessonComplete from '../../../components/academy/LessonComplete';
 
 export async function generateStaticParams() {
   const courseSlugs = getAllCourseSlugs();
@@ -42,34 +43,42 @@ export default async function LessonPage({ params }) {
       maxWidth: '800px',
       margin: '0 auto',
       padding: '32px 24px 64px',
+      position: 'relative',
+      zIndex: 1,
     }}>
-      {/* Lesson breadcrumb */}
-      <div style={{
-        display: 'flex',
+      {/* Breadcrumb — glass style */}
+      <div className="glass glass-animate-up" style={{
+        display: 'inline-flex',
         alignItems: 'center',
         gap: '8px',
         fontSize: '13px',
-        color: '#525252',
+        padding: '8px 16px',
+        borderRadius: 'var(--glass-radius-sm)',
         marginBottom: '32px',
       }}>
         <a href={`/academy/${courseSlug}/`} style={{
-          color: '#737373',
+          color: '#8888a0',
           textDecoration: 'none',
+          transition: 'color 0.2s',
         }}>
           {course?.emoji} {course?.title}
         </a>
-        <span>›</span>
-        <span style={{ color: '#a0a0a0' }}>Lesson {lesson.order}</span>
+        <span style={{ color: 'rgba(255,255,255,0.15)' }}>›</span>
+        <span style={{ color: '#c084fc' }}>Lesson {lesson.order}</span>
       </div>
 
       {/* Lesson content */}
       <div
-        className="lesson-content"
+        className="lesson-content glass-animate-up"
+        style={{ animationDelay: '0.1s' }}
         dangerouslySetInnerHTML={{ __html: lesson.contentHtml }}
       />
 
       {/* Universal academy lesson styles */}
       <link rel="stylesheet" href="/academy/shared/academy.css" />
+
+      {/* Completion button */}
+      <LessonComplete courseSlug={courseSlug} lessonSlug={lessonSlug} />
 
       {/* Bottom nav */}
       <LessonNav

@@ -1,8 +1,16 @@
 'use client';
 import Link from 'next/link';
 
-export default function CourseCard({ course, index = 0 }) {
+export default function CourseCard({ course, index = 0, progress = {} }) {
   const isPlanned = course.status === 'planned';
+
+  // Calculate progress for this course
+  const courseProgress = course.lessons
+    ? course.lessons.filter(l => progress[`${course.slug}/${l.slug}`]).length
+    : 0;
+  const totalLessons = course.lessonCount || course.lessons?.length || 0;
+  const progressPercent = totalLessons > 0 ? Math.round((courseProgress / totalLessons) * 100) : 0;
+  const hasProgress = courseProgress > 0;
 
   return (
     <Link
@@ -21,26 +29,18 @@ export default function CourseCard({ course, index = 0 }) {
     >
       <div className="course-card-glow" />
 
-      {isPlanned && (
-        <span className="glass-badge badge-dim" style={{
-          position: 'absolute',
-          top: '16px',
-          right: '16px',
-        }}>
-          COMING SOON
-        </span>
-      )}
-
-      {course.status === 'live' && !isPlanned && (
-        <span className="glass-badge badge-green" style={{
-          position: 'absolute',
-          top: '16px',
-          right: '16px',
-          fontSize: '10px',
-        }}>
-          LIVE
-        </span>
-      )}
+      {/* Status badge */}
+      <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
+        {isPlanned ? (
+          <span className="glass-badge badge-dim">COMING SOON</span>
+        ) : hasProgress ? (
+          <span className="glass-badge badge-green" style={{ fontSize: '10px' }}>
+            {progressPercent === 100 ? '✓ COMPLETE' : `${courseProgress}/${totalLessons}`}
+          </span>
+        ) : course.status === 'live' ? (
+          <span className="glass-badge badge-green" style={{ fontSize: '10px' }}>LIVE</span>
+        ) : null}
+      </div>
 
       <div style={{ fontSize: '36px', marginBottom: '16px' }}>{course.emoji}</div>
 
@@ -63,6 +63,27 @@ export default function CourseCard({ course, index = 0 }) {
         {course.description}
       </p>
 
+      {/* Progress bar */}
+      {hasProgress && (
+        <div style={{
+          marginBottom: '14px',
+          background: 'rgba(255,255,255,0.04)',
+          borderRadius: '4px',
+          height: '4px',
+          overflow: 'hidden',
+        }}>
+          <div style={{
+            width: `${progressPercent}%`,
+            height: '100%',
+            background: progressPercent === 100
+              ? 'linear-gradient(90deg, #4ade80, #38bdf8)'
+              : 'linear-gradient(90deg, #c084fc, #38bdf8)',
+            borderRadius: '4px',
+            transition: 'width 0.4s ease',
+          }} />
+        </div>
+      )}
+
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -70,9 +91,9 @@ export default function CourseCard({ course, index = 0 }) {
         fontSize: '12px',
         flexWrap: 'wrap',
       }}>
-        {course.lessonCount > 0 && (
+        {totalLessons > 0 && (
           <span className="glass-badge badge-dim">
-            {course.lessonCount} lessons
+            {totalLessons} lessons
           </span>
         )}
         {course.audience?.map(a => (
