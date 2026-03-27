@@ -1,0 +1,211 @@
+{
+  "01-the-ai-product-mindset": [
+    {
+      "id": "bap-1-1",
+      "type": "freeform",
+      "instruction": "Name 3 differences between traditional software and AI products. For each, the implication for development.",
+      "placeholder": "Difference 1: ...",
+      "criteria": {
+        "keywords": [
+          "non-deterministic",
+          "data",
+          "user",
+          "feedback",
+          "latency",
+          "cost",
+          "quality"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Understanding these differences separates AI builders from feature factories."
+    }
+  ],
+  "02-finding-ai-product-ideas": [
+    {
+      "id": "bap-2-1",
+      "type": "freeform",
+      "instruction": "Generate 3 AI product ideas: painful manual process + AI capability = product. Score each on pain, feasibility, market.",
+      "placeholder": "Idea 1: Pain: ... + AI: ...",
+      "criteria": {
+        "keywords": [
+          "pain",
+          "AI",
+          "product",
+          "manual",
+          "feasible",
+          "market",
+          "score"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Pain + AI = Product. Simple formula, powerful results."
+    }
+  ],
+  "03-validation-and-prototyping": [
+    {
+      "id": "bap-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for landing page copy to test demand before building. Include headline, value prop, features, CTA.",
+      "placeholder": "Create landing page copy for...",
+      "criteria": {
+        "keywords": [
+          "headline",
+          "value",
+          "feature",
+          "CTA",
+          "benefit",
+          "pain",
+          "solution"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Validate before you build. Could save months."
+    }
+  ],
+  "04-architecture-decisions": [
+    {
+      "id": "bap-4-1",
+      "type": "freeform",
+      "instruction": "Building an AI writing assistant. Make 5 architecture decisions: model, hosting, database, auth, pricing. Justify each.",
+      "placeholder": "1. Model: ... because...",
+      "criteria": {
+        "keywords": [
+          "model",
+          "host",
+          "database",
+          "auth",
+          "pricing",
+          "because",
+          "cost"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Early architecture decisions save 10x the cost of changing later."
+    }
+  ],
+  "05-building-the-mvp": [
+    {
+      "id": "bap-5-1",
+      "type": "freeform",
+      "instruction": "Define MVP scope: ONE core feature, 3 things NOT in v1, the metric that proves it works.",
+      "placeholder": "Core feature: ... NOT in v1: ...",
+      "criteria": {
+        "keywords": [
+          "core",
+          "feature",
+          "NOT",
+          "v1",
+          "metric",
+          "success",
+          "launch"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Saying 'not in v1' is the hardest and most important product skill."
+    }
+  ],
+  "06-user-experience-for-ai": [
+    {
+      "id": "bap-6-1",
+      "type": "freeform",
+      "instruction": "Design UX for an AI feature with 5-10 second response time. 3 patterns to keep users engaged during the wait.",
+      "placeholder": "Pattern 1: ...",
+      "criteria": {
+        "keywords": [
+          "loading",
+          "progress",
+          "stream",
+          "animate",
+          "skeleton",
+          "preview"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Your patterns solve the 'dead air' problem."
+    }
+  ],
+  "07-pricing-and-monetization": [
+    {
+      "id": "bap-7-1",
+      "type": "freeform",
+      "instruction": "Design 3 pricing tiers for your AI product. Each: name, price, features, usage limits, target customer.",
+      "placeholder": "Tier 1 (Free): ...",
+      "criteria": {
+        "keywords": [
+          "free",
+          "pro",
+          "enterprise",
+          "price",
+          "limit",
+          "feature",
+          "usage"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Pricing tiers create a clear upgrade path."
+    }
+  ],
+  "08-launch-and-distribution": [
+    {
+      "id": "bap-8-1",
+      "type": "freeform",
+      "instruction": "Launch plan: 5 distribution channels ranked by ROI, launch day checklist, first-week success metrics.",
+      "placeholder": "Channel 1 (highest ROI): ...",
+      "criteria": {
+        "keywords": [
+          "channel",
+          "launch",
+          "metric",
+          "social",
+          "email",
+          "ROI",
+          "day one"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "A launch plan turns 'ship and pray' into repeatable strategy."
+    }
+  ],
+  "09-measuring-and-iterating": [
+    {
+      "id": "bap-9-1",
+      "type": "freeform",
+      "instruction": "5 post-launch metrics. Each: what it measures, how to track, threshold for 'good' vs 'concerning'.",
+      "placeholder": "Metric 1: ...",
+      "criteria": {
+        "keywords": [
+          "metric",
+          "track",
+          "retention",
+          "NPS",
+          "usage",
+          "churn",
+          "threshold"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "These are your product's vital signs."
+    }
+  ],
+  "10-scaling-your-ai-product": [
+    {
+      "id": "bap-10-1",
+      "type": "freeform",
+      "instruction": "1,000 users, costs climbing. Scaling plan: cost optimization, infrastructure, team growth.",
+      "placeholder": "Cost optimization: ...",
+      "criteria": {
+        "keywords": [
+          "cost",
+          "cache",
+          "scale",
+          "optimize",
+          "infrastructure",
+          "team",
+          "revenue"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Product meets engineering meets business. All three covered."
+    }
+  ]
+}

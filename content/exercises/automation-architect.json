@@ -1,0 +1,197 @@
+{
+  "what-is-an-api": [
+    {
+      "id": "aa-1-1",
+      "type": "prompt",
+      "instruction": "Explain what an API is to a non-technical coworker. Use a real-world analogy.",
+      "placeholder": "An API is like...",
+      "hint": "An API is like a drive-through window. You pull up, read the menu (documentation), place your order (request), and get your food (response) without stepping inside.",
+      "criteria": {
+        "keywords": [
+          "like",
+          "send",
+          "receive",
+          "request",
+          "data",
+          "connect"
+        ],
+        "minLength": 40
+      },
+      "badExample": "An API connects things",
+      "goodExample": "An API is like a drive-through window. You pull up, read the menu (documentation), place your order into the speaker (send a request), and get your food (response) without ever stepping inside the kitchen.",
+      "successMessage": "Great analogy! Making APIs tangible is a superpower for cross-team communication."
+    }
+  ],
+  "triggers-and-actions": [
+    {
+      "id": "aa-2-1",
+      "type": "prompt",
+      "instruction": "Design a trigger-action automation for a real business scenario. Specify the trigger event, conditions/filters, and resulting action(s).",
+      "placeholder": "When [trigger], if [condition], then [action]...",
+      "hint": "When a new lead fills out the contact form (trigger), if company size is 50+ (filter), then: add to CRM as Enterprise Lead, send welcome email, notify sales in Slack.",
+      "criteria": {
+        "keywords": [
+          "when",
+          "then",
+          "if",
+          "trigger",
+          "action",
+          "send",
+          "create",
+          "notify"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Solid automation design! The condition/filter step separates noisy automations from useful ones."
+    }
+  ],
+  "your-first-automation": [
+    {
+      "id": "aa-3-1",
+      "type": "freeform",
+      "instruction": "Describe step-by-step how you'd build an automation that saves email attachments to cloud storage and notifies your team. Include tools.",
+      "placeholder": "Step 1: ...",
+      "hint": "Step 1: Gmail trigger in Make.com. Step 2: Download attachment. Step 3: Upload to Google Drive. Step 4: Slack notification with file link.",
+      "criteria": {
+        "keywords": [
+          "step",
+          "trigger",
+          "email",
+          "save",
+          "notify",
+          "tool",
+          "connect"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "You just designed a real automation! This pattern saves teams hours every week."
+    }
+  ],
+  "smart-routing": [
+    {
+      "id": "aa-4-1",
+      "type": "prompt",
+      "instruction": "Design a smart routing system for incoming customer support tickets. Define at least 3 routes based on urgency, topic, or customer tier.",
+      "placeholder": "Route 1: If... then assign to...",
+      "criteria": {
+        "keywords": [
+          "if",
+          "route",
+          "assign",
+          "tier",
+          "priority",
+          "team",
+          "queue"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Smart routing eliminates the manual triage bottleneck."
+    }
+  ],
+  "build-ai-workflow": [
+    {
+      "id": "aa-5-1",
+      "type": "prompt",
+      "instruction": "Design an AI-powered workflow that takes raw customer feedback and produces an actionable insights report. Include each step.",
+      "placeholder": "Step 1: Collect feedback from...",
+      "criteria": {
+        "keywords": [
+          "AI",
+          "feedback",
+          "classify",
+          "analyze",
+          "report",
+          "automate",
+          "step"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "This is a production-grade AI workflow. You're thinking like an automation architect."
+    }
+  ],
+  "api-playground": [
+    {
+      "id": "aa-6-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to generate a curl command that calls a weather API for your city. Include the endpoint structure.",
+      "placeholder": "Generate a curl command that...",
+      "criteria": {
+        "keywords": [
+          "curl",
+          "API",
+          "endpoint",
+          "response",
+          "key",
+          "request"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "APIs stop being scary once you've written your first curl command."
+    }
+  ],
+  "workflow-quiz": [
+    {
+      "id": "aa-7-1",
+      "type": "freeform",
+      "instruction": "A client's automation breaks every Monday morning. Emails stop forwarding to their CRM. List 3 possible causes and how you'd investigate each.",
+      "placeholder": "Possible cause 1: ...",
+      "criteria": {
+        "keywords": [
+          "token",
+          "limit",
+          "schedule",
+          "error",
+          "log",
+          "check",
+          "rate",
+          "expired"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Systematic debugging is the difference between an automation user and an automation architect."
+    }
+  ],
+  "automation-quiz": [
+    {
+      "id": "aa-8-1",
+      "type": "freeform",
+      "instruction": "You're building an automation suite for a 20-person marketing team. They need social scheduling, lead capture, email sequences, and reporting. Outline the architecture.",
+      "placeholder": "Architecture overview: ...",
+      "criteria": {
+        "keywords": [
+          "connect",
+          "trigger",
+          "AI",
+          "data",
+          "flow",
+          "tool",
+          "integrate",
+          "automate"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "You're thinking at the systems level now. This is the architect mindset."
+    }
+  ],
+  "api-quiz": [
+    {
+      "id": "aa-9-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to explain REST vs webhook-based integrations, with a practical example of when to use each.",
+      "placeholder": "Explain the difference between...",
+      "criteria": {
+        "keywords": [
+          "REST",
+          "webhook",
+          "pull",
+          "push",
+          "when",
+          "example",
+          "use"
+        ],
+        "minLength": 30
+      },
+      "successMessage": "Understanding REST vs webhooks is fundamental to designing efficient automations."
+    }
+  ]
+}

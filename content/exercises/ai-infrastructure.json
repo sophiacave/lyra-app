@@ -1,0 +1,213 @@
+{
+  "01-infrastructure-for-ai": [
+    {
+      "id": "ainf-1-1",
+      "type": "freeform",
+      "instruction": "List 5 infrastructure components AI apps need beyond traditional web apps. Explain why each is unique to AI.",
+      "placeholder": "Component 1: ...",
+      "criteria": {
+        "keywords": [
+          "model",
+          "embedding",
+          "vector",
+          "GPU",
+          "cost",
+          "latency",
+          "cache"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "AI infrastructure has unique requirements. Understanding them prevents expensive mistakes."
+    }
+  ],
+  "02-cloud-platforms-overview": [
+    {
+      "id": "ainf-2-1",
+      "type": "freeform",
+      "instruction": "Compare AWS, GCP, and Vercel for AI apps. Each: best AI feature, pricing model, when you'd choose it.",
+      "placeholder": "AWS: ... GCP: ... Vercel: ...",
+      "criteria": {
+        "keywords": [
+          "AWS",
+          "GCP",
+          "Vercel",
+          "price",
+          "AI",
+          "deploy",
+          "scale"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Cloud choice shapes your entire dev experience."
+    }
+  ],
+  "03-api-management": [
+    {
+      "id": "ainf-3-1",
+      "type": "freeform",
+      "instruction": "Design API rate limiting for your AI app. Limits per tier, what happens when hit, how to communicate limits.",
+      "placeholder": "Free tier: ... Pro tier: ...",
+      "criteria": {
+        "keywords": [
+          "rate limit",
+          "tier",
+          "429",
+          "queue",
+          "retry",
+          "header",
+          "quota"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Rate limiting protects infrastructure and budget."
+    }
+  ],
+  "04-database-choices": [
+    {
+      "id": "ainf-4-1",
+      "type": "freeform",
+      "instruction": "Design database architecture for an AI app needing: user data, conversation history, vector embeddings, analytics. Which DB(s) and why?",
+      "placeholder": "User data: ... Embeddings: ...",
+      "criteria": {
+        "keywords": [
+          "Postgres",
+          "vector",
+          "Redis",
+          "cache",
+          "embedding",
+          "relation",
+          "schema"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Right tools for each job. Multi-database thinking."
+    }
+  ],
+  "05-deployment-strategies": [
+    {
+      "id": "ainf-5-1",
+      "type": "freeform",
+      "instruction": "Compare blue-green, canary, and rolling deployment for AI services. How each works with non-deterministic models.",
+      "placeholder": "Blue-green: ... Canary: ...",
+      "criteria": {
+        "keywords": [
+          "blue-green",
+          "canary",
+          "rolling",
+          "rollback",
+          "traffic",
+          "test",
+          "version"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "AI deployment needs special attention. Model behavior isn't deterministic."
+    }
+  ],
+  "06-monitoring-and-observability": [
+    {
+      "id": "ainf-6-1",
+      "type": "freeform",
+      "instruction": "Design AI app monitoring dashboard: 5 key metrics, 3 alerts, healthy vs unhealthy indicators for each.",
+      "placeholder": "Metric 1: ... Healthy: ...",
+      "criteria": {
+        "keywords": [
+          "latency",
+          "error rate",
+          "cost",
+          "token",
+          "alert",
+          "healthy",
+          "threshold"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "AI failures are often subtle quality degradation, not crashes."
+    }
+  ],
+  "07-cost-optimization": [
+    {
+      "id": "ainf-7-1",
+      "type": "freeform",
+      "instruction": "$500/month API costs for 1,000 users. List 5 strategies to cut costs 50% without hurting quality.",
+      "placeholder": "Strategy 1: ...",
+      "criteria": {
+        "keywords": [
+          "cache",
+          "model",
+          "smaller",
+          "batch",
+          "prompt",
+          "reduce",
+          "token"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Cost optimization = profitable vs money pit."
+    }
+  ],
+  "08-security-and-compliance": [
+    {
+      "id": "ainf-8-1",
+      "type": "freeform",
+      "instruction": "5 security risks unique to AI apps (prompt injection, data leakage, etc.) and mitigation for each.",
+      "placeholder": "Risk 1: Prompt injection \u2014 Mitigation: ...",
+      "criteria": {
+        "keywords": [
+          "injection",
+          "leak",
+          "PII",
+          "sanitize",
+          "validate",
+          "encrypt",
+          "audit"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "AI security awareness puts you ahead of most developers."
+    }
+  ],
+  "09-scaling-patterns": [
+    {
+      "id": "ainf-9-1",
+      "type": "freeform",
+      "instruction": "Design scaling for 10x traffic spikes. Include: auto-scaling, queuing, caching, graceful degradation.",
+      "placeholder": "Auto-scaling: ... Queue: ...",
+      "criteria": {
+        "keywords": [
+          "auto-scale",
+          "queue",
+          "cache",
+          "CDN",
+          "serverless",
+          "degrade",
+          "spike"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Handling 10x spikes separates hobby projects from production."
+    }
+  ],
+  "10-your-ai-infrastructure-stack": [
+    {
+      "id": "ainf-10-1",
+      "type": "freeform",
+      "instruction": "Design your complete AI infrastructure stack. For each layer (compute, storage, AI, networking, monitoring), choose tools and justify.",
+      "placeholder": "Compute: ... Storage: ...",
+      "criteria": {
+        "keywords": [
+          "compute",
+          "storage",
+          "AI",
+          "network",
+          "monitor",
+          "Vercel",
+          "Supabase",
+          "cost"
+        ],
+        "minLength": 70
+      },
+      "successMessage": "Complete production AI infrastructure. A real architecture document."
+    }
+  ]
+}

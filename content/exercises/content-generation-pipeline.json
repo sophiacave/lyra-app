@@ -1,0 +1,212 @@
+{
+  "01-pipeline-thinking": [
+    {
+      "id": "cgp-1-1",
+      "type": "freeform",
+      "instruction": "Map your content creation as a pipeline: inputs, transformations, quality gates, outputs. Where are bottlenecks?",
+      "placeholder": "Input: ... Step 1: ...",
+      "criteria": {
+        "keywords": [
+          "input",
+          "step",
+          "transform",
+          "quality",
+          "output",
+          "bottleneck",
+          "pipeline"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Pipeline thinking enables automation."
+    }
+  ],
+  "02-content-architecture": [
+    {
+      "id": "cgp-2-1",
+      "type": "freeform",
+      "instruction": "Design content architecture: types (blog, social, email, video), relationships, and taxonomy.",
+      "placeholder": "Content types: ...",
+      "criteria": {
+        "keywords": [
+          "type",
+          "blog",
+          "social",
+          "email",
+          "relationship",
+          "taxonomy",
+          "category"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Architecture makes scaling possible."
+    }
+  ],
+  "03-template-engines": [
+    {
+      "id": "cgp-3-1",
+      "type": "prompt",
+      "instruction": "Create a reusable prompt template for blog posts. Variables (topic, audience, tone, length), structure, quality criteria.",
+      "placeholder": "Template: Write about {topic}...",
+      "criteria": {
+        "keywords": [
+          "template",
+          "variable",
+          "topic",
+          "audience",
+          "tone",
+          "structure",
+          "quality"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Prompt templates are the factory machines."
+    }
+  ],
+  "04-multi-format-output": [
+    {
+      "id": "cgp-4-1",
+      "type": "prompt",
+      "instruction": "One core idea, 5 formats: tweet thread, LinkedIn post, blog intro, email subject, video script hook.",
+      "placeholder": "Core idea: [idea]. Generate in 5 formats...",
+      "criteria": {
+        "keywords": [
+          "tweet",
+          "LinkedIn",
+          "blog",
+          "email",
+          "video",
+          "format",
+          "core"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "One idea, five formats. 5x output from single input."
+    }
+  ],
+  "05-quality-control-systems": [
+    {
+      "id": "cgp-5-1",
+      "type": "freeform",
+      "instruction": "Design QC checklist for AI content: factual accuracy, brand voice, readability, SEO, originality. How to automate each?",
+      "placeholder": "Check 1: Accuracy \u2014 Automated by: ...",
+      "criteria": {
+        "keywords": [
+          "accuracy",
+          "voice",
+          "readability",
+          "SEO",
+          "originality",
+          "check",
+          "automate"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Quality control separates AI slop from AI-powered excellence."
+    }
+  ],
+  "06-personalization-at-scale": [
+    {
+      "id": "cgp-6-1",
+      "type": "prompt",
+      "instruction": "Personalize the same content for 3 audience segments. Show how core message stays same but framing changes.",
+      "placeholder": "Segment A (beginners): ...",
+      "criteria": {
+        "keywords": [
+          "segment",
+          "personalize",
+          "beginner",
+          "advanced",
+          "tone",
+          "frame",
+          "core"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Same message, different frames. Enterprise-level personalization."
+    }
+  ],
+  "07-multimedia-pipelines": [
+    {
+      "id": "cgp-7-1",
+      "type": "freeform",
+      "instruction": "Pipeline: blog post -> social graphics, audiogram, video script, infographic brief. Map data flow between steps.",
+      "placeholder": "Input: Blog -> Step 1: Extract quotes...",
+      "criteria": {
+        "keywords": [
+          "blog",
+          "graphic",
+          "audio",
+          "video",
+          "infographic",
+          "extract",
+          "pipeline"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Multimedia pipeline = content factory."
+    }
+  ],
+  "08-scheduling-and-distribution": [
+    {
+      "id": "cgp-8-1",
+      "type": "freeform",
+      "instruction": "Design automated distribution: platforms, optimal posting times, A/B testing, platform-specific formatting.",
+      "placeholder": "Platform 1: ... Time: ...",
+      "criteria": {
+        "keywords": [
+          "platform",
+          "schedule",
+          "time",
+          "A/B",
+          "test",
+          "format",
+          "distribute"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Automated distribution = 24/7 content delivery."
+    }
+  ],
+  "09-analytics-driven-content": [
+    {
+      "id": "cgp-9-1",
+      "type": "freeform",
+      "instruction": "Design feedback loop: performance data improving future content. Metrics, feed-back mechanism, decision rules.",
+      "placeholder": "Track: ... Feed back: ...",
+      "criteria": {
+        "keywords": [
+          "metric",
+          "performance",
+          "feedback",
+          "loop",
+          "improve",
+          "track",
+          "rule"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Analytics-driven creation is the ultimate advantage."
+    }
+  ],
+  "10-your-content-machine": [
+    {
+      "id": "cgp-10-1",
+      "type": "freeform",
+      "instruction": "Complete content pipeline end-to-end: inputs, AI stages, quality gates, output formats, distribution, analytics feedback.",
+      "placeholder": "Input: ... AI Stage 1: ...",
+      "criteria": {
+        "keywords": [
+          "input",
+          "AI",
+          "gate",
+          "output",
+          "distribute",
+          "analytics",
+          "feedback"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "A complete content machine blueprint."
+    }
+  ]
+}

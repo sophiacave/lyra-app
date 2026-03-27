@@ -1,0 +1,207 @@
+{
+  "chatbot-vs-agent": [
+    {
+      "id": "faa-1-1",
+      "type": "prompt",
+      "instruction": "Explain the difference between a chatbot and an AI agent to a business stakeholder. Include a concrete example of each.",
+      "placeholder": "A chatbot is... An agent is...",
+      "criteria": {
+        "keywords": [
+          "chatbot",
+          "agent",
+          "tool",
+          "action",
+          "decision",
+          "respond"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "That distinction is the foundation of everything in this course."
+    }
+  ],
+  "the-agent-loop": [
+    {
+      "id": "faa-2-1",
+      "type": "freeform",
+      "instruction": "Describe each step of the agent loop from receiving a task to completing it. Include the think-act-observe cycle.",
+      "placeholder": "Step 1: Receive task...",
+      "criteria": {
+        "keywords": [
+          "think",
+          "act",
+          "observe",
+          "tool",
+          "loop",
+          "decide",
+          "result"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Think, Act, Observe, Repeat. That's the heartbeat of every agent."
+    }
+  ],
+  "the-system-prompt": [
+    {
+      "id": "faa-3-1",
+      "type": "prompt",
+      "instruction": "Write a system prompt for an AI agent that handles customer refund requests. Include role, rules, available tools, and tone.",
+      "placeholder": "You are a customer service agent...",
+      "hint": "You are a customer service agent for ShopEase. Rules: approve refunds under $50 auto, escalate over $50. Tools: order_lookup, refund_process, escalate_to_human. Tone: empathetic, professional.",
+      "criteria": {
+        "keywords": [
+          "role",
+          "rule",
+          "tool",
+          "tone",
+          "you are",
+          "never",
+          "always"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "A great system prompt is an agent's DNA."
+    }
+  ],
+  "tool-calling-basics": [
+    {
+      "id": "faa-4-1",
+      "type": "prompt",
+      "instruction": "Define a tool for an AI agent in plain language. Include: name, description, required parameters, and what it returns.",
+      "placeholder": "Tool name: ... Description: ...",
+      "criteria": {
+        "keywords": [
+          "name",
+          "description",
+          "parameter",
+          "return",
+          "string",
+          "required"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "You just wrote a tool definition. This is exactly how you give an agent new capabilities."
+    }
+  ],
+  "tools-and-capabilities": [
+    {
+      "id": "faa-5-1",
+      "type": "freeform",
+      "instruction": "Design a toolkit (3-5 tools) for an AI agent that manages social media. Name each tool and explain when the agent would use it.",
+      "placeholder": "Tool 1: ...",
+      "criteria": {
+        "keywords": [
+          "tool",
+          "post",
+          "schedule",
+          "analytics",
+          "generate",
+          "when",
+          "use"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "A well-designed toolkit separates a useful agent from a toy demo."
+    }
+  ],
+  "memory-matters": [
+    {
+      "id": "faa-6-1",
+      "type": "prompt",
+      "instruction": "Design a memory system for a personal assistant agent. Describe short-term vs long-term memory, storage, and recall triggers.",
+      "placeholder": "Short-term memory: ...",
+      "criteria": {
+        "keywords": [
+          "short-term",
+          "long-term",
+          "store",
+          "recall",
+          "context",
+          "remember"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Memory is what makes an agent feel like it truly knows you."
+    }
+  ],
+  "error-handling": [
+    {
+      "id": "faa-7-1",
+      "type": "freeform",
+      "instruction": "Your agent calls a tool and it returns an error. Write 3 recovery strategies it should try, in order, before giving up.",
+      "placeholder": "Strategy 1: ...",
+      "criteria": {
+        "keywords": [
+          "retry",
+          "fallback",
+          "alternative",
+          "error",
+          "log",
+          "user",
+          "notify"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Graceful error handling makes agents production-ready."
+    }
+  ],
+  "design-your-agent": [
+    {
+      "id": "faa-8-1",
+      "type": "freeform",
+      "instruction": "Design your own AI agent: purpose, system prompt summary, 3-5 tools, memory approach, and what it escalates to a human.",
+      "placeholder": "Agent name: ... Purpose: ...",
+      "criteria": {
+        "keywords": [
+          "purpose",
+          "tool",
+          "memory",
+          "escalate",
+          "prompt",
+          "human"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "You just designed a complete AI agent. This is a real spec you could build from."
+    }
+  ],
+  "evaluating-your-agent": [
+    {
+      "id": "faa-9-1",
+      "type": "prompt",
+      "instruction": "Write 3 test cases for evaluating a customer service agent. Each: input, expected behavior, pass/fail criteria.",
+      "placeholder": "Test 1: Input: ...",
+      "criteria": {
+        "keywords": [
+          "test",
+          "input",
+          "expected",
+          "pass",
+          "fail",
+          "should"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Testing agents is harder than testing code \u2014 but you just wrote real eval criteria."
+    }
+  ],
+  "agent-quiz": [
+    {
+      "id": "faa-10-1",
+      "type": "freeform",
+      "instruction": "Pitch your AI agent to a skeptical CTO in 3 sentences. Problem it solves, how it works, ROI.",
+      "placeholder": "Our agent solves...",
+      "criteria": {
+        "keywords": [
+          "solve",
+          "automate",
+          "save",
+          "hours",
+          "cost",
+          "agent"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "If you can pitch it in 3 sentences, you understand it deeply enough to build it."
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "what-are-embeddings": [
+    {
+      "id": "rvs-1-1",
+      "type": "prompt",
+      "instruction": "Explain embeddings to someone who understands spreadsheets but not ML. Use a physical space or coordinates analogy.",
+      "placeholder": "Embeddings are like...",
+      "criteria": {
+        "keywords": [
+          "vector",
+          "space",
+          "similar",
+          "close",
+          "number",
+          "meaning",
+          "dimension"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Making embeddings intuitive is hard. Your analogy nails it."
+    }
+  ],
+  "vector-databases-101": [
+    {
+      "id": "rvs-2-1",
+      "type": "freeform",
+      "instruction": "Compare 3 vector DB options (pgvector, Pinecone, Weaviate). Each: pricing, best use case, one limitation.",
+      "placeholder": "pgvector: ... Pinecone: ...",
+      "criteria": {
+        "keywords": [
+          "pgvector",
+          "Pinecone",
+          "hosted",
+          "cost",
+          "scale",
+          "use case",
+          "limit"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Right vector DB = critical architecture decision. You can advise on it."
+    }
+  ],
+  "chunking-strategies": [
+    {
+      "id": "rvs-3-1",
+      "type": "freeform",
+      "instruction": "50-page technical manual to chunk for RAG. Describe 3 chunking strategies with pros/cons.",
+      "placeholder": "Strategy 1: Fixed-size chunks...",
+      "criteria": {
+        "keywords": [
+          "chunk",
+          "size",
+          "overlap",
+          "semantic",
+          "paragraph",
+          "heading",
+          "token"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Chunking strategy makes or breaks RAG quality."
+    }
+  ],
+  "the-rag-loop": [
+    {
+      "id": "rvs-4-1",
+      "type": "freeform",
+      "instruction": "Draw the complete RAG loop: user query to AI response. Include query embedding, vector search, context assembly, prompt construction.",
+      "placeholder": "Step 1: User asks...",
+      "criteria": {
+        "keywords": [
+          "query",
+          "embed",
+          "search",
+          "retrieve",
+          "context",
+          "prompt",
+          "generate"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "The entire RAG pipeline mapped. Foundation of every AI knowledge system."
+    }
+  ],
+  "build-your-first-rag": [
+    {
+      "id": "rvs-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for Claude to generate a minimal RAG system using Supabase pgvector. Include table schema, embedding function, search, query.",
+      "placeholder": "Build a RAG system that...",
+      "criteria": {
+        "keywords": [
+          "Supabase",
+          "pgvector",
+          "embedding",
+          "table",
+          "search",
+          "match",
+          "query"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Buildable RAG spec. Running in an hour."
+    }
+  ],
+  "prompt-augmentation": [
+    {
+      "id": "rvs-6-1",
+      "type": "prompt",
+      "instruction": "Write a RAG prompt template: retrieved context + user question = answer. Handle cases where context doesn't contain the answer.",
+      "placeholder": "You are a helpful assistant. Context: {context}...",
+      "criteria": {
+        "keywords": [
+          "context",
+          "question",
+          "answer",
+          "based on",
+          "source",
+          "if"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Prompt template with edge case handling. Production-ready."
+    }
+  ],
+  "hybrid-search": [
+    {
+      "id": "rvs-7-1",
+      "type": "freeform",
+      "instruction": "Explain hybrid search (vector + keyword). Give an example where vector-only fails but hybrid succeeds.",
+      "placeholder": "Hybrid search combines...",
+      "criteria": {
+        "keywords": [
+          "vector",
+          "keyword",
+          "hybrid",
+          "semantic",
+          "exact",
+          "combine",
+          "score"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Hybrid search is the secret sauce of production RAG."
+    }
+  ],
+  "evaluation-metrics": [
+    {
+      "id": "rvs-8-1",
+      "type": "freeform",
+      "instruction": "Define 3 RAG quality metrics: one for retrieval, one for answers, one for user satisfaction. How to measure each.",
+      "placeholder": "Metric 1 (Retrieval): ...",
+      "criteria": {
+        "keywords": [
+          "precision",
+          "recall",
+          "relevance",
+          "accuracy",
+          "faithfulness",
+          "measure"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "You can't improve what you can't measure."
+    }
+  ],
+  "advanced-patterns": [
+    {
+      "id": "rvs-9-1",
+      "type": "freeform",
+      "instruction": "Describe 3 advanced RAG patterns: query expansion, re-ranking, multi-step retrieval. When to use each and tradeoffs.",
+      "placeholder": "Pattern 1: Query expansion...",
+      "criteria": {
+        "keywords": [
+          "query expansion",
+          "re-rank",
+          "multi-step",
+          "tradeoff",
+          "latency",
+          "quality"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "These patterns separate basic RAG from production-grade."
+    }
+  ],
+  "rag-quiz": [
+    {
+      "id": "rvs-10-1",
+      "type": "prompt",
+      "instruction": "CTO asks: 'Fine-tuning vs RAG \u2014 when should we use which?' Write a clear comparison.",
+      "placeholder": "Fine-tuning is best when... RAG is best when...",
+      "criteria": {
+        "keywords": [
+          "fine-tune",
+          "RAG",
+          "data",
+          "cost",
+          "update",
+          "knowledge",
+          "style"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "The most important decision in AI engineering. Nailed."
+    }
+  ]
+}

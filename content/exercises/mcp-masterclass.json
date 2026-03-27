@@ -1,0 +1,210 @@
+{
+  "what-is-mcp": [
+    {
+      "id": "mcp-1-1",
+      "type": "prompt",
+      "instruction": "Explain MCP to a developer who knows APIs but not MCP. What problem it solves and how it differs from direct API calls.",
+      "placeholder": "MCP is...",
+      "criteria": {
+        "keywords": [
+          "MCP",
+          "protocol",
+          "tool",
+          "server",
+          "client",
+          "standard",
+          "connect"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Clear explanation. That means deep understanding."
+    }
+  ],
+  "mcp-architecture": [
+    {
+      "id": "mcp-2-1",
+      "type": "freeform",
+      "instruction": "Draw the MCP architecture in words: Client, Server, Tools. What each does and how they communicate.",
+      "placeholder": "Client: ... Server: ... Tools: ...",
+      "criteria": {
+        "keywords": [
+          "client",
+          "server",
+          "tool",
+          "request",
+          "response",
+          "JSON",
+          "transport"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Architecture mapped. This mental model guides everything you build."
+    }
+  ],
+  "servers-vs-tools": [
+    {
+      "id": "mcp-3-1",
+      "type": "freeform",
+      "instruction": "Explain MCP server vs tool with examples. When to create a new server vs adding a tool to an existing one.",
+      "placeholder": "A server is... A tool is...",
+      "criteria": {
+        "keywords": [
+          "server",
+          "tool",
+          "separate",
+          "group",
+          "capability",
+          "endpoint",
+          "resource"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Knowing when to split vs merge is a design skill."
+    }
+  ],
+  "tool-definitions": [
+    {
+      "id": "mcp-4-1",
+      "type": "prompt",
+      "instruction": "Write a complete MCP tool definition in JSON: name, description, input schema with required/optional params, and what it returns.",
+      "placeholder": "{ \"name\": \"...\" }",
+      "criteria": {
+        "keywords": [
+          "name",
+          "description",
+          "inputSchema",
+          "type",
+          "required",
+          "properties"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "A real MCP tool definition. You could register this right now."
+    }
+  ],
+  "your-first-server": [
+    {
+      "id": "mcp-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for Claude to generate a basic MCP server in TypeScript with a 'get_weather' tool. Include setup, registration, handler.",
+      "placeholder": "Create an MCP server that...",
+      "criteria": {
+        "keywords": [
+          "MCP",
+          "server",
+          "tool",
+          "handler",
+          "TypeScript",
+          "weather",
+          "parameter"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Your first MCP server spec. Claude can build it from this."
+    }
+  ],
+  "resources-and-prompts": [
+    {
+      "id": "mcp-6-1",
+      "type": "freeform",
+      "instruction": "Design an MCP server with both resources (data) and tools (actions) for a knowledge base. List 2 resources and 3 tools.",
+      "placeholder": "Resources: 1. ... Tools: 1. ...",
+      "criteria": {
+        "keywords": [
+          "resource",
+          "tool",
+          "read",
+          "search",
+          "create",
+          "update",
+          "knowledge"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Resources vs tools \u2014 you're designing servers like a pro."
+    }
+  ],
+  "connecting-to-claude": [
+    {
+      "id": "mcp-7-1",
+      "type": "freeform",
+      "instruction": "Step by step: connect your MCP server to Claude Desktop. Config file location, JSON structure, verification.",
+      "placeholder": "Step 1: ...",
+      "criteria": {
+        "keywords": [
+          "config",
+          "claude_desktop_config",
+          "mcpServers",
+          "command",
+          "args",
+          "restart"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Config is where most people get stuck. You've got it."
+    }
+  ],
+  "real-world-servers": [
+    {
+      "id": "mcp-8-1",
+      "type": "freeform",
+      "instruction": "Design an MCP server for your specific use case. 5 tools, external services it connects to, one example interaction.",
+      "placeholder": "Server name: ... Purpose: ...",
+      "criteria": {
+        "keywords": [
+          "server",
+          "tool",
+          "connect",
+          "API",
+          "use case",
+          "example",
+          "return"
+        ],
+        "minLength": 70
+      },
+      "successMessage": "Build something you actually need. That's the best way to learn."
+    }
+  ],
+  "security-and-best-practices": [
+    {
+      "id": "mcp-9-1",
+      "type": "freeform",
+      "instruction": "List 5 MCP server security best practices. For each: the risk it prevents and a concrete implementation example.",
+      "placeholder": "Practice 1: ... Risk: ...",
+      "criteria": {
+        "keywords": [
+          "auth",
+          "validate",
+          "input",
+          "secret",
+          "rate limit",
+          "log",
+          "permission"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Security-first MCP development. Safe to deploy."
+    }
+  ],
+  "mcp-quiz": [
+    {
+      "id": "mcp-10-1",
+      "type": "prompt",
+      "instruction": "A founder asks: 'Why should I care about MCP? We already have APIs.' Write a 3-sentence pitch.",
+      "placeholder": "MCP matters because...",
+      "criteria": {
+        "keywords": [
+          "standard",
+          "connect",
+          "AI",
+          "tool",
+          "any",
+          "once",
+          "protocol"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "3-sentence MCP pitch. Ready to advocate."
+    }
+  ]
+}

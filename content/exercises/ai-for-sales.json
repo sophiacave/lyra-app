@@ -1,0 +1,208 @@
+{
+  "01-ai-sales-revolution": [
+    {
+      "id": "afs-1-1",
+      "type": "freeform",
+      "instruction": "List 5 weekly sales tasks that are repetitive. Rate each: automation potential (high/medium/low) and why.",
+      "placeholder": "Task 1: ... Potential: ...",
+      "criteria": {
+        "keywords": [
+          "task",
+          "repetitive",
+          "high",
+          "medium",
+          "low",
+          "automate",
+          "time"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Your sales automation hit list. Start with the highs."
+    }
+  ],
+  "02-lead-research-and-qualification": [
+    {
+      "id": "afs-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to research and qualify a company as a lead. Include info to gather, qualification criteria, output format.",
+      "placeholder": "Research [company] and qualify...",
+      "criteria": {
+        "keywords": [
+          "company",
+          "revenue",
+          "employee",
+          "qualify",
+          "criteria",
+          "score",
+          "fit"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "30 minutes of research in 30 seconds."
+    }
+  ],
+  "03-outreach-that-converts": [
+    {
+      "id": "afs-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a personalized cold outreach email. Include prospect context, value prop, hook, and soft CTA.",
+      "placeholder": "Write an outreach email to...",
+      "criteria": {
+        "keywords": [
+          "personalize",
+          "value",
+          "hook",
+          "CTA",
+          "pain point",
+          "prospect"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Personalization at scale. Generic outreach is dead."
+    }
+  ],
+  "04-sales-calls-and-meetings": [
+    {
+      "id": "afs-4-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a pre-call brief: company research, key stakeholders, likely objections, conversation starters.",
+      "placeholder": "Prepare a pre-call brief for...",
+      "criteria": {
+        "keywords": [
+          "company",
+          "stakeholder",
+          "objection",
+          "question",
+          "prepare",
+          "brief"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Walking in prepared is the difference between closing and losing."
+    }
+  ],
+  "05-proposal-and-pitch-creation": [
+    {
+      "id": "afs-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a tailored proposal outline: pain points, your solution, pricing approach, ROI projection.",
+      "placeholder": "Create a proposal for [client]...",
+      "criteria": {
+        "keywords": [
+          "proposal",
+          "pain point",
+          "solution",
+          "ROI",
+          "pricing",
+          "client"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Custom proposals win deals. AI makes customization effortless."
+    }
+  ],
+  "06-objection-handling": [
+    {
+      "id": "afs-6-1",
+      "type": "prompt",
+      "instruction": "Generate responses to the 5 most common objections in your industry. Each: acknowledge, reframe, evidence.",
+      "placeholder": "Generate objection responses for...",
+      "criteria": {
+        "keywords": [
+          "objection",
+          "price",
+          "competitor",
+          "acknowledge",
+          "reframe",
+          "evidence"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Polished objection responses ready. Never freeze again."
+    }
+  ],
+  "07-pipeline-management": [
+    {
+      "id": "afs-7-1",
+      "type": "freeform",
+      "instruction": "Design AI-powered pipeline review: how AI analyzes deals and flags what needs attention, is at risk, or ready to close.",
+      "placeholder": "AI analyzes the pipeline by...",
+      "criteria": {
+        "keywords": [
+          "pipeline",
+          "deal",
+          "risk",
+          "stage",
+          "flag",
+          "close",
+          "follow-up"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "AI catches deals you'd miss in manual review."
+    }
+  ],
+  "08-customer-success-with-ai": [
+    {
+      "id": "afs-8-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to analyze customer usage data, generate a health score, and recommend actions.",
+      "placeholder": "Analyze this customer's usage...",
+      "criteria": {
+        "keywords": [
+          "health score",
+          "usage",
+          "churn",
+          "risk",
+          "engagement",
+          "action",
+          "recommend"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Proactive AI-powered customer success prevents churn."
+    }
+  ],
+  "09-sales-analytics": [
+    {
+      "id": "afs-9-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to analyze sales data and surface insights. Include data available, questions to answer, output format.",
+      "placeholder": "Analyze my sales data: ...",
+      "criteria": {
+        "keywords": [
+          "data",
+          "trend",
+          "conversion",
+          "rate",
+          "insight",
+          "compare",
+          "revenue"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Data-driven sales decisions beat gut instinct."
+    }
+  ],
+  "10-your-ai-sales-system": [
+    {
+      "id": "afs-10-1",
+      "type": "freeform",
+      "instruction": "Design your complete AI sales system: map each stage (prospecting, outreach, meetings, proposals, closing, post-sale) and what AI handles.",
+      "placeholder": "Stage 1 (Prospecting): AI does...",
+      "criteria": {
+        "keywords": [
+          "stage",
+          "AI",
+          "prospect",
+          "outreach",
+          "meeting",
+          "close",
+          "automate"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "End-to-end AI sales system. This is how top performers scale."
+    }
+  ]
+}

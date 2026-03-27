@@ -1,0 +1,214 @@
+{
+  "01-why-workflows-matter": [
+    {
+      "id": "apw-1-1",
+      "type": "freeform",
+      "instruction": "List 3 manual workflows that are repetitive, error-prone, or time-consuming. Describe each and why it's painful.",
+      "placeholder": "Workflow 1: ...",
+      "criteria": {
+        "keywords": [
+          "manual",
+          "time",
+          "error",
+          "repeat",
+          "step",
+          "pain",
+          "every"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Identifying pain is step one. These 3 are your first automation targets."
+    }
+  ],
+  "02-mapping-your-processes": [
+    {
+      "id": "apw-2-1",
+      "type": "freeform",
+      "instruction": "Pick one painful workflow and map it step by step. Include trigger, each action, decision points, end result. Use arrows.",
+      "placeholder": "Trigger: New email arrives -> ...",
+      "criteria": {
+        "keywords": [
+          "trigger",
+          "step",
+          "decision",
+          "if",
+          "then",
+          "result",
+          "action"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Process mapping reveals hidden complexity and automation opportunities."
+    }
+  ],
+  "03-trigger-based-workflows": [
+    {
+      "id": "apw-3-1",
+      "type": "prompt",
+      "instruction": "Design 3 trigger-based automations. Each: clear trigger, conditions, and 2-3 automated actions.",
+      "placeholder": "Automation 1: When...",
+      "criteria": {
+        "keywords": [
+          "when",
+          "trigger",
+          "if",
+          "then",
+          "send",
+          "create",
+          "update",
+          "notify"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Three automations that run while you sleep."
+    }
+  ],
+  "04-data-flow-design": [
+    {
+      "id": "apw-4-1",
+      "type": "freeform",
+      "instruction": "Design data flow for a form submission routing to the right team. Show data captured, transformations, and destinations.",
+      "placeholder": "Input: Form fields [...] -> Transform: ...",
+      "criteria": {
+        "keywords": [
+          "input",
+          "transform",
+          "route",
+          "field",
+          "team",
+          "database",
+          "notify"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Clean data flow prevents the #1 automation bug: wrong format, wrong place."
+    }
+  ],
+  "05-error-handling-and-fallbacks": [
+    {
+      "id": "apw-5-1",
+      "type": "freeform",
+      "instruction": "Your invoice workflow fails halfway: invoice created but email didn't send. Design the error handling.",
+      "placeholder": "Error detected: ... Fallback: ...",
+      "criteria": {
+        "keywords": [
+          "error",
+          "retry",
+          "fallback",
+          "log",
+          "notify",
+          "queue",
+          "manual",
+          "recover"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Error handling separates demo automations from production systems."
+    }
+  ],
+  "06-human-in-the-loop": [
+    {
+      "id": "apw-6-1",
+      "type": "prompt",
+      "instruction": "Design a workflow where AI does heavy lifting but humans approve critical steps. Define what's autonomous vs needs approval.",
+      "placeholder": "AI handles: ... Human approves: ...",
+      "criteria": {
+        "keywords": [
+          "AI",
+          "human",
+          "approve",
+          "review",
+          "autonomous",
+          "critical",
+          "escalate"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "The best workflows augment humans, not replace them."
+    }
+  ],
+  "07-integration-patterns": [
+    {
+      "id": "apw-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for Claude to recommend integration patterns connecting your CRM, email, and PM tools. Include specific tools and sync needs.",
+      "placeholder": "I use [CRM], [email tool], and [PM tool]...",
+      "criteria": {
+        "keywords": [
+          "sync",
+          "CRM",
+          "email",
+          "data",
+          "integration",
+          "webhook",
+          "API"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Integration architecture is the backbone of modern workflows."
+    }
+  ],
+  "08-testing-workflows": [
+    {
+      "id": "apw-8-1",
+      "type": "freeform",
+      "instruction": "Create a test plan: 3 happy path tests, 2 edge cases, 1 failure scenario. For each, define input and expected output.",
+      "placeholder": "Test 1 (happy path): Input: ...",
+      "criteria": {
+        "keywords": [
+          "test",
+          "input",
+          "expected",
+          "output",
+          "edge case",
+          "failure",
+          "verify"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Testing before go-live prevents the 2 AM panic."
+    }
+  ],
+  "09-monitoring-and-maintenance": [
+    {
+      "id": "apw-9-1",
+      "type": "freeform",
+      "instruction": "Design a monitoring dashboard for automated workflows. Metrics to track, alerts to set, healthy vs unhealthy indicators.",
+      "placeholder": "Metrics: ... Alerts: ...",
+      "criteria": {
+        "keywords": [
+          "metric",
+          "alert",
+          "success rate",
+          "error",
+          "latency",
+          "volume",
+          "healthy"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "You can't manage what you can't measure."
+    }
+  ],
+  "10-your-workflow-portfolio": [
+    {
+      "id": "apw-10-1",
+      "type": "freeform",
+      "instruction": "Create your Workflow Portfolio: 5 workflows ordered by impact. Each: name, trigger, what it automates, time saved/week.",
+      "placeholder": "Workflow 1 (highest impact): ...",
+      "criteria": {
+        "keywords": [
+          "workflow",
+          "trigger",
+          "automate",
+          "save",
+          "hour",
+          "impact",
+          "priority"
+        ],
+        "minLength": 70
+      },
+      "successMessage": "A prioritized portfolio is a roadmap to operational freedom."
+    }
+  ]
+}

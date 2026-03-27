@@ -1,0 +1,211 @@
+{
+  "what-is-an-agent": [
+    {
+      "id": "tal-1-1",
+      "type": "freeform",
+      "instruction": "Define the 4 properties that make an 'agent': autonomy, tool use, reasoning, persistence. One-sentence example for each.",
+      "placeholder": "Autonomy: ... Tool use: ...",
+      "criteria": {
+        "keywords": [
+          "autonomy",
+          "tool",
+          "reason",
+          "persist",
+          "decide",
+          "memory",
+          "act"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Four properties, four sentences. Clearest agent definition."
+    }
+  ],
+  "agent-anatomy": [
+    {
+      "id": "tal-2-1",
+      "type": "freeform",
+      "instruction": "Describe agent internals: brain (LLM), hands (tools), memory (context), conscience (guardrails). How do they interact?",
+      "placeholder": "Brain: ... Hands: ...",
+      "criteria": {
+        "keywords": [
+          "brain",
+          "tool",
+          "memory",
+          "guardrail",
+          "LLM",
+          "action",
+          "decide"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "The anatomy metaphor makes agents concrete and buildable."
+    }
+  ],
+  "orchestration-patterns": [
+    {
+      "id": "tal-3-1",
+      "type": "freeform",
+      "instruction": "Compare 3 orchestration patterns: sequential pipeline, parallel fan-out, router. Diagram in words, use case, failure mode.",
+      "placeholder": "Pattern 1: Sequential \u2014 A then B then C...",
+      "criteria": {
+        "keywords": [
+          "sequential",
+          "parallel",
+          "router",
+          "pipeline",
+          "fan-out",
+          "failure"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Orchestration patterns are multi-agent system blueprints."
+    }
+  ],
+  "agent-communication": [
+    {
+      "id": "tal-4-1",
+      "type": "freeform",
+      "instruction": "Design an inter-agent message format: sender, receiver, type (request/response/event), payload, priority.",
+      "placeholder": "{ sender: ..., type: ... }",
+      "criteria": {
+        "keywords": [
+          "sender",
+          "receiver",
+          "type",
+          "payload",
+          "priority",
+          "request",
+          "response"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Structured communication is the foundation of reliable multi-agent systems."
+    }
+  ],
+  "memory-systems": [
+    {
+      "id": "tal-5-1",
+      "type": "freeform",
+      "instruction": "Design 3-tier memory: working (current task), episodic (past interactions), semantic (learned knowledge). How do they interact?",
+      "placeholder": "Working memory: ... Episodic: ...",
+      "criteria": {
+        "keywords": [
+          "working",
+          "episodic",
+          "semantic",
+          "store",
+          "retrieve",
+          "context",
+          "learn"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Three-tier memory builds agents that genuinely learn."
+    }
+  ],
+  "cron-and-scheduling": [
+    {
+      "id": "tal-6-1",
+      "type": "prompt",
+      "instruction": "Design 3 scheduled agent tasks: hourly, daily, weekly. What the agent does, checks, and what triggers an alert.",
+      "placeholder": "Hourly: ... Daily: ...",
+      "criteria": {
+        "keywords": [
+          "hourly",
+          "daily",
+          "weekly",
+          "check",
+          "alert",
+          "report",
+          "monitor"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Scheduled agents work while everyone sleeps."
+    }
+  ],
+  "monitoring-and-healing": [
+    {
+      "id": "tal-7-1",
+      "type": "freeform",
+      "instruction": "Design self-healing for agents. If one fails: how detected, recovery steps, when to escalate to human.",
+      "placeholder": "Detection: ... Recovery: ...",
+      "criteria": {
+        "keywords": [
+          "detect",
+          "heartbeat",
+          "recover",
+          "restart",
+          "retry",
+          "escalate",
+          "human"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Self-healing agents \u2014 the holy grail of autonomous systems."
+    }
+  ],
+  "conflict-resolution": [
+    {
+      "id": "tal-8-1",
+      "type": "freeform",
+      "instruction": "Agent A wants to send a promo email; Agent B says customer is at churn risk. Design the resolution protocol.",
+      "placeholder": "Step 1: Compare confidence...",
+      "criteria": {
+        "keywords": [
+          "conflict",
+          "priority",
+          "rule",
+          "confidence",
+          "override",
+          "escalate",
+          "resolve"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Conflict resolution prevents agent chaos."
+    }
+  ],
+  "the-conscience-layer": [
+    {
+      "id": "tal-9-1",
+      "type": "freeform",
+      "instruction": "Design a 'conscience layer': rules never broken, actions needing human approval, handling ethical edge cases.",
+      "placeholder": "Hard rules: ... Approval required: ...",
+      "criteria": {
+        "keywords": [
+          "rule",
+          "never",
+          "approve",
+          "human",
+          "ethic",
+          "safety",
+          "limit"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "The conscience layer makes autonomous AI trustworthy."
+    }
+  ],
+  "build-a-team": [
+    {
+      "id": "tal-10-1",
+      "type": "freeform",
+      "instruction": "Design a team of 3-5 specialized agents for a business. Each: role, tools, communication with others, what it owns.",
+      "placeholder": "Agent 1 (Researcher): ...",
+      "criteria": {
+        "keywords": [
+          "agent",
+          "role",
+          "tool",
+          "communicate",
+          "own",
+          "specialize",
+          "team"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "You just designed an AI workforce."
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "stack-anatomy": [
+    {
+      "id": "asb-1-1",
+      "type": "freeform",
+      "instruction": "Map the layers of a full-stack AI app. For each layer (frontend, API, database, AI, deployment), name the tool you'd use and why.",
+      "placeholder": "Frontend: ... API: ...",
+      "criteria": {
+        "keywords": [
+          "frontend",
+          "API",
+          "database",
+          "AI",
+          "deploy",
+          "Next",
+          "Supabase"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "You just drew the architecture diagram in words."
+    }
+  ],
+  "supabase-101": [
+    {
+      "id": "asb-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to generate a Supabase SQL migration for a 'projects' table with id, name, description, owner_id (FK to auth.users), created_at, status.",
+      "placeholder": "Create a Supabase migration...",
+      "criteria": {
+        "keywords": [
+          "create table",
+          "id",
+          "name",
+          "owner",
+          "foreign key",
+          "timestamp"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Production-ready table design. SQL migrations are the foundation of reliable backends."
+    }
+  ],
+  "vercel-deploy": [
+    {
+      "id": "asb-3-1",
+      "type": "freeform",
+      "instruction": "Describe the deployment pipeline from git push to live site on Vercel. Include: build trigger, env variables, rollback process.",
+      "placeholder": "Step 1: Push to...",
+      "criteria": {
+        "keywords": [
+          "push",
+          "build",
+          "deploy",
+          "environment",
+          "variable",
+          "rollback",
+          "preview"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Understanding the deploy pipeline means you'll debug production issues in minutes."
+    }
+  ],
+  "edge-functions": [
+    {
+      "id": "asb-4-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to create a Supabase Edge Function that receives a webhook, validates the payload, and inserts into an 'events' table.",
+      "placeholder": "Create an edge function that...",
+      "criteria": {
+        "keywords": [
+          "edge function",
+          "webhook",
+          "validate",
+          "insert",
+          "table",
+          "serve"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Edge functions are your serverless backend. You just designed a real webhook handler."
+    }
+  ],
+  "database-patterns": [
+    {
+      "id": "asb-5-1",
+      "type": "prompt",
+      "instruction": "Design an RLS policy for a 'documents' table: users read/write own docs, admins read all.",
+      "placeholder": "Policy for SELECT: ...",
+      "criteria": {
+        "keywords": [
+          "policy",
+          "auth.uid",
+          "select",
+          "insert",
+          "admin",
+          "role"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "RLS is security at the database layer. Secure by default."
+    }
+  ],
+  "auth-and-tokens": [
+    {
+      "id": "asb-6-1",
+      "type": "freeform",
+      "instruction": "Explain the JWT auth flow in a Supabase app: from login to authenticated API call. What tokens, where stored?",
+      "placeholder": "When a user logs in...",
+      "criteria": {
+        "keywords": [
+          "JWT",
+          "token",
+          "login",
+          "header",
+          "refresh",
+          "access",
+          "store"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Auth is the most important part of your stack to understand deeply."
+    }
+  ],
+  "make-com-101": [
+    {
+      "id": "asb-7-1",
+      "type": "prompt",
+      "instruction": "Design a Make.com scenario connecting your AI app to an external service. Include trigger, processing, and output modules with data flow.",
+      "placeholder": "Scenario: When...",
+      "criteria": {
+        "keywords": [
+          "trigger",
+          "module",
+          "data",
+          "map",
+          "output",
+          "scenario",
+          "Make"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Make.com is the glue layer. You just designed a real integration."
+    }
+  ],
+  "webhooks-deep-dive": [
+    {
+      "id": "asb-8-1",
+      "type": "freeform",
+      "instruction": "A webhook is failing silently. List your debugging checklist: what to check first, second, third. Include tools.",
+      "placeholder": "Check 1: ...",
+      "criteria": {
+        "keywords": [
+          "log",
+          "status",
+          "payload",
+          "URL",
+          "header",
+          "timeout",
+          "retry"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Systematic webhook debugging saves hours."
+    }
+  ],
+  "wire-it-all": [
+    {
+      "id": "asb-9-1",
+      "type": "freeform",
+      "instruction": "Draw the data flow: user action -> frontend -> API -> AI -> database -> response. Include error handling at each step.",
+      "placeholder": "User clicks 'Generate' -> ...",
+      "criteria": {
+        "keywords": [
+          "user",
+          "frontend",
+          "API",
+          "AI",
+          "database",
+          "response",
+          "error"
+        ],
+        "minLength": 70
+      },
+      "successMessage": "End-to-end thinking separates full-stack builders from tutorial followers."
+    }
+  ],
+  "launch-checklist": [
+    {
+      "id": "asb-10-1",
+      "type": "freeform",
+      "instruction": "Create a pre-launch checklist for your AI app. Cover security, performance, monitoring, error handling, UX. At least 10 items.",
+      "placeholder": "[ ] Environment variables secured...",
+      "criteria": {
+        "keywords": [
+          "security",
+          "env",
+          "monitor",
+          "error",
+          "test",
+          "backup",
+          "SSL",
+          "rate limit"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "This checklist is your insurance policy against launch-day disasters."
+    }
+  ]
+}

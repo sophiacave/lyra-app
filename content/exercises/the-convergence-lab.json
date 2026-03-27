@@ -1,0 +1,213 @@
+{
+  "what-is-convergence": [
+    {
+      "id": "tcl-1-1",
+      "type": "freeform",
+      "instruction": "Define 'convergence' in human-AI collaboration. How it differs from AI as tool, assistant, and partner.",
+      "placeholder": "Convergence means...",
+      "criteria": {
+        "keywords": [
+          "convergence",
+          "human",
+          "AI",
+          "partner",
+          "tool",
+          "assistant",
+          "become",
+          "together"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Convergence is the deepest human-AI relationship. You articulated the vision."
+    }
+  ],
+  "the-digital-twin": [
+    {
+      "id": "tcl-2-1",
+      "type": "freeform",
+      "instruction": "Design your ideal digital twin. What it knows, what it decides autonomously, what it should NEVER do without asking.",
+      "placeholder": "My twin knows: ... Can decide: ...",
+      "criteria": {
+        "keywords": [
+          "know",
+          "decide",
+          "autonomous",
+          "never",
+          "ask",
+          "memory",
+          "personality"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Designing your twin is designing your extended self."
+    }
+  ],
+  "persistent-memory-architecture": [
+    {
+      "id": "tcl-3-1",
+      "type": "freeform",
+      "instruction": "Design persistent memory for an AI twin: types to store, organization, when to forget, handling contradictions.",
+      "placeholder": "Memory types: ... Organization: ...",
+      "criteria": {
+        "keywords": [
+          "memory",
+          "type",
+          "organize",
+          "forget",
+          "contradict",
+          "update",
+          "retrieve"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Memory architecture is the soul of a digital twin."
+    }
+  ],
+  "autonomous-agent-design": [
+    {
+      "id": "tcl-4-1",
+      "type": "freeform",
+      "instruction": "Design autonomy levels L1-L5 for your twin. Each: what it can do, safeguards, what triggers next level.",
+      "placeholder": "L1 (Inform): ... L2 (Suggest): ...",
+      "criteria": {
+        "keywords": [
+          "L1",
+          "L2",
+          "autonomy",
+          "safeguard",
+          "escalate",
+          "level",
+          "decide"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Graduated autonomy builds trust between human and machine."
+    }
+  ],
+  "emotional-intelligence-for-ai": [
+    {
+      "id": "tcl-5-1",
+      "type": "freeform",
+      "instruction": "Design emotional awareness for an AI twin: signals to detect, responses to different states, ethical boundaries.",
+      "placeholder": "Detect: ... Respond: ...",
+      "criteria": {
+        "keywords": [
+          "emotion",
+          "detect",
+          "respond",
+          "empathy",
+          "boundary",
+          "tone",
+          "support"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Emotionally aware AI \u2014 powerful and delicate. Your design respects both."
+    }
+  ],
+  "values-alignment-in-practice": [
+    {
+      "id": "tcl-6-1",
+      "type": "freeform",
+      "instruction": "Define 5 core values for your AI twin. How each influences decisions. Include a value conflict scenario and resolution.",
+      "placeholder": "Value 1: ... Influences: ...",
+      "criteria": {
+        "keywords": [
+          "value",
+          "influence",
+          "decision",
+          "conflict",
+          "resolve",
+          "priority",
+          "ethical"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Values alignment made practical. The most important unsolved AI problem."
+    }
+  ],
+  "privacy-and-trust": [
+    {
+      "id": "tcl-7-1",
+      "type": "freeform",
+      "instruction": "Privacy framework for your twin: data access rules, who sees your data, revocation, breach response.",
+      "placeholder": "Access rules: ... Visibility: ...",
+      "criteria": {
+        "keywords": [
+          "privacy",
+          "access",
+          "data",
+          "revoke",
+          "encrypt",
+          "compromise",
+          "trust"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Privacy isn't a feature, it's a right. Your framework protects it."
+    }
+  ],
+  "life-operating-systems": [
+    {
+      "id": "tcl-8-1",
+      "type": "freeform",
+      "instruction": "Design a Life OS: AI managing health, finances, relationships, career, growth. What does each module do?",
+      "placeholder": "Health module: ... Finance: ...",
+      "criteria": {
+        "keywords": [
+          "health",
+          "finance",
+          "relationship",
+          "career",
+          "growth",
+          "module",
+          "track"
+        ],
+        "minLength": 70
+      },
+      "successMessage": "The ultimate convergence application. Your operating system for living."
+    }
+  ],
+  "the-future-of-human-ai": [
+    {
+      "id": "tcl-9-1",
+      "type": "freeform",
+      "instruction": "Your vision for human-AI convergence in 2030. What's possible, what to be careful about, what excites you most.",
+      "placeholder": "By 2030...",
+      "criteria": {
+        "keywords": [
+          "2030",
+          "possible",
+          "careful",
+          "excite",
+          "convergence",
+          "human",
+          "AI"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Visionary thinking grounded in practical caution. The convergence lab mindset."
+    }
+  ],
+  "your-convergence-project": [
+    {
+      "id": "tcl-10-1",
+      "type": "freeform",
+      "instruction": "Capstone: design your convergence project. What you'll build, architecture, what makes it uniquely yours. Your thesis.",
+      "placeholder": "Project name: ... Architecture: ...",
+      "criteria": {
+        "keywords": [
+          "build",
+          "architecture",
+          "unique",
+          "convergence",
+          "memory",
+          "agent",
+          "personal"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "Your convergence thesis. You've graduated from the Lab. Now go build it."
+    }
+  ]
+}

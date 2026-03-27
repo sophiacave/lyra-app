@@ -1,0 +1,210 @@
+{
+  "01-the-voice-revolution": [
+    {
+      "id": "ava-1-1",
+      "type": "freeform",
+      "instruction": "List 5 applications of AI voice/audio in business. Each: current state (what's possible) and one limitation.",
+      "placeholder": "Application 1: ...",
+      "criteria": {
+        "keywords": [
+          "voice",
+          "audio",
+          "TTS",
+          "clone",
+          "podcast",
+          "transcri",
+          "business"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Understanding capabilities AND limitations is key."
+    }
+  ],
+  "02-text-to-speech-basics": [
+    {
+      "id": "ava-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a TTS-optimized script. Include SSML hints (pauses, emphasis), pacing markers, pronunciation notes.",
+      "placeholder": "Generate a TTS script about...",
+      "criteria": {
+        "keywords": [
+          "pause",
+          "emphasis",
+          "pace",
+          "natural",
+          "pronunciation",
+          "script",
+          "speak"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "TTS-optimized writing sounds natural. Regular writing sounds robotic."
+    }
+  ],
+  "03-voice-cloning-and-custom-voices": [
+    {
+      "id": "ava-3-1",
+      "type": "freeform",
+      "instruction": "Creating a custom AI brand voice: characteristics you'd want, ethical considerations, consent process, use cases.",
+      "placeholder": "Voice characteristics: ... Ethics: ...",
+      "criteria": {
+        "keywords": [
+          "voice",
+          "clone",
+          "consent",
+          "ethical",
+          "brand",
+          "custom",
+          "tone"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Voice cloning with consent and ethics. Responsible usage."
+    }
+  ],
+  "04-podcast-production": [
+    {
+      "id": "ava-4-1",
+      "type": "prompt",
+      "instruction": "Generate a complete podcast episode outline: intro hook, segments, talking points, transitions, outro CTA.",
+      "placeholder": "Create a podcast outline about...",
+      "criteria": {
+        "keywords": [
+          "intro",
+          "segment",
+          "talking point",
+          "transition",
+          "outro",
+          "CTA",
+          "hook"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Structure turns rambling into compelling listening."
+    }
+  ],
+  "05-audiobook-creation": [
+    {
+      "id": "ava-5-1",
+      "type": "freeform",
+      "instruction": "Plan AI-assisted audiobook production: chapter prep, voice selection, quality checks, full pipeline.",
+      "placeholder": "Step 1: Prepare chapters...",
+      "criteria": {
+        "keywords": [
+          "chapter",
+          "voice",
+          "quality",
+          "production",
+          "narrat",
+          "edit",
+          "master"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "AI audiobooks are a real revenue stream."
+    }
+  ],
+  "06-music-and-sound-design": [
+    {
+      "id": "ava-6-1",
+      "type": "prompt",
+      "instruction": "Write a creative brief for AI-generated background music: mood, tempo, instruments, duration, intended use.",
+      "placeholder": "Generate a music brief for...",
+      "criteria": {
+        "keywords": [
+          "mood",
+          "tempo",
+          "instrument",
+          "duration",
+          "background",
+          "music",
+          "genre"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Detailed brief = exact vibe, every time."
+    }
+  ],
+  "07-transcription-and-analysis": [
+    {
+      "id": "ava-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt: take a meeting transcript and extract key topics, sentiment shifts, action items, 1-paragraph summary.",
+      "placeholder": "From this transcript, extract...",
+      "criteria": {
+        "keywords": [
+          "transcript",
+          "topic",
+          "sentiment",
+          "action item",
+          "summary",
+          "speaker"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Hours of audio into actionable intelligence in seconds."
+    }
+  ],
+  "08-voice-interfaces": [
+    {
+      "id": "ava-8-1",
+      "type": "freeform",
+      "instruction": "Design a voice interface for customer service: greeting flow, misunderstood input handling, escalation, personality.",
+      "placeholder": "Greeting: ... If misunderstood: ...",
+      "criteria": {
+        "keywords": [
+          "greeting",
+          "misunderstood",
+          "repeat",
+          "escalate",
+          "human",
+          "personality"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Voice UX designed for edge cases that matter."
+    }
+  ],
+  "09-audio-editing-with-ai": [
+    {
+      "id": "ava-9-1",
+      "type": "freeform",
+      "instruction": "5 audio editing tasks AI automates. Each: manual process replaced, AI tool/technique, quality vs manual.",
+      "placeholder": "Task 1: ... Manual: ... AI: ...",
+      "criteria": {
+        "keywords": [
+          "noise",
+          "edit",
+          "remove",
+          "enhance",
+          "automate",
+          "manual",
+          "quality"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "AI audio editing is mature and useful. You know the toolkit."
+    }
+  ],
+  "10-your-audio-studio": [
+    {
+      "id": "ava-10-1",
+      "type": "freeform",
+      "instruction": "Design your AI audio studio: tools, content to produce, workflow, distribution plan.",
+      "placeholder": "Tools: ... Content: ...",
+      "criteria": {
+        "keywords": [
+          "tool",
+          "produce",
+          "workflow",
+          "distribute",
+          "podcast",
+          "voice",
+          "audio"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Complete audio studio powered by AI. Time to record."
+    }
+  ]
+}

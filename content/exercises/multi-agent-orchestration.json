@@ -1,0 +1,211 @@
+{
+  "01-why-multiple-agents": [
+    {
+      "id": "mao-1-1",
+      "type": "freeform",
+      "instruction": "Give 3 scenarios where one agent isn't enough. For each, explain why a single agent would fail.",
+      "placeholder": "Scenario 1: ...",
+      "criteria": {
+        "keywords": [
+          "complex",
+          "specialize",
+          "parallel",
+          "scale",
+          "single",
+          "fail",
+          "multiple"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Knowing when to go multi-agent is the first architecture decision."
+    }
+  ],
+  "02-agent-roles-and-specialization": [
+    {
+      "id": "mao-2-1",
+      "type": "freeform",
+      "instruction": "Design 4 specialized agent roles for e-commerce: what each owns, its tools, how it interfaces with others.",
+      "placeholder": "Agent 1 (Inventory): ...",
+      "criteria": {
+        "keywords": [
+          "role",
+          "own",
+          "tool",
+          "interface",
+          "specialize",
+          "inventory",
+          "customer"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Clear role boundaries prevent overlap. Solid design."
+    }
+  ],
+  "03-communication-patterns": [
+    {
+      "id": "mao-3-1",
+      "type": "freeform",
+      "instruction": "Compare 3 inter-agent communication patterns: direct messaging, shared blackboard, event bus. Pros/cons for each.",
+      "placeholder": "Pattern 1: Direct messaging...",
+      "criteria": {
+        "keywords": [
+          "direct",
+          "blackboard",
+          "event",
+          "bus",
+          "async",
+          "coupling",
+          "broadcast"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Communication patterns are the nervous system of multi-agent architectures."
+    }
+  ],
+  "04-orchestration-architectures": [
+    {
+      "id": "mao-4-1",
+      "type": "freeform",
+      "instruction": "Centralized (one orchestrator) vs decentralized (peer-to-peer) agents. When to use each and failure modes.",
+      "placeholder": "Centralized: ... Decentralized: ...",
+      "criteria": {
+        "keywords": [
+          "centralized",
+          "decentralized",
+          "orchestrator",
+          "peer",
+          "single point",
+          "failure",
+          "scale"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "The most important multi-agent architecture decision."
+    }
+  ],
+  "05-shared-memory-and-state": [
+    {
+      "id": "mao-5-1",
+      "type": "freeform",
+      "instruction": "Design shared state for 5 agents: read/write without conflicts. Include locking, consistency, conflict resolution.",
+      "placeholder": "Shared state store: ... Locking: ...",
+      "criteria": {
+        "keywords": [
+          "shared",
+          "state",
+          "lock",
+          "conflict",
+          "read",
+          "write",
+          "consistent"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Hardest problem in distributed systems. You've thought it through."
+    }
+  ],
+  "06-conflict-resolution": [
+    {
+      "id": "mao-6-1",
+      "type": "freeform",
+      "instruction": "Design a voting protocol for 3 disagreeing agents. How votes are weighted, tie-breaking, human override trigger.",
+      "placeholder": "Voting protocol: ...",
+      "criteria": {
+        "keywords": [
+          "vote",
+          "weight",
+          "tie",
+          "override",
+          "human",
+          "majority",
+          "confidence"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Democratic agent decisions with human override. Responsible design."
+    }
+  ],
+  "07-scaling-agent-systems": [
+    {
+      "id": "mao-7-1",
+      "type": "freeform",
+      "instruction": "Your system handles 100 tasks/day, needs to handle 10,000. What changes in architecture, infrastructure, monitoring?",
+      "placeholder": "Architecture changes: ...",
+      "criteria": {
+        "keywords": [
+          "queue",
+          "scale",
+          "parallel",
+          "monitor",
+          "cost",
+          "rate limit",
+          "batch"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "100 to 10,000 requires rethinking everything."
+    }
+  ],
+  "08-human-oversight-patterns": [
+    {
+      "id": "mao-8-1",
+      "type": "freeform",
+      "instruction": "Design 3 oversight levels: full autonomy, approval required, human-in-the-loop. What triggers each level.",
+      "placeholder": "Level 1 (Full autonomy): ...",
+      "criteria": {
+        "keywords": [
+          "autonomy",
+          "approval",
+          "human-in-the-loop",
+          "trigger",
+          "risk",
+          "threshold"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Graduated oversight is responsible autonomous deployment."
+    }
+  ],
+  "09-real-world-multi-agent-systems": [
+    {
+      "id": "mao-9-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for Claude to design a multi-agent customer support system: roles, escalation, knowledge sharing, metrics.",
+      "placeholder": "Design a multi-agent system for...",
+      "criteria": {
+        "keywords": [
+          "agent",
+          "support",
+          "escalate",
+          "knowledge",
+          "metric",
+          "quality",
+          "route"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Customer support is the perfect multi-agent use case."
+    }
+  ],
+  "10-building-your-agent-team": [
+    {
+      "id": "mao-10-1",
+      "type": "freeform",
+      "instruction": "Final project: complete multi-agent system for YOUR project. Agent roster, communication, shared state, oversight, deployment.",
+      "placeholder": "System name: ... Agents: ...",
+      "criteria": {
+        "keywords": [
+          "agent",
+          "communicate",
+          "state",
+          "oversight",
+          "deploy",
+          "monitor",
+          "role"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "Graduate-level AI architecture. From scratch."
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "01-ai-meets-project-management": [
+    {
+      "id": "apm-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to identify which parts of your PM workflow could be automated. Be specific about your current process.",
+      "placeholder": "Here's my current PM workflow: ...",
+      "criteria": {
+        "keywords": [
+          "workflow",
+          "automate",
+          "meeting",
+          "report",
+          "track",
+          "status",
+          "manual"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Finding automation opportunities is step one of AI-powered PM."
+    }
+  ],
+  "02-project-planning-with-ai": [
+    {
+      "id": "apm-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to generate a project plan with milestones, dependencies, and estimated effort. Include scope and constraints.",
+      "placeholder": "Create a project plan for...",
+      "criteria": {
+        "keywords": [
+          "milestone",
+          "deadline",
+          "dependency",
+          "task",
+          "week",
+          "deliverable"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "AI project plans save hours of starting from scratch."
+    }
+  ],
+  "03-meeting-notes-and-action-items": [
+    {
+      "id": "apm-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that extracts from raw meeting notes: decisions, action items (with owners/deadlines), and open questions.",
+      "placeholder": "From these meeting notes, extract...",
+      "criteria": {
+        "keywords": [
+          "decision",
+          "action item",
+          "owner",
+          "deadline",
+          "question",
+          "extract"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "This one prompt replaces 30 minutes of post-meeting admin. Every. Single. Time."
+    }
+  ],
+  "04-status-reports-and-updates": [
+    {
+      "id": "apm-4-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to generate a weekly status report from task data. Highlight wins, blockers, upcoming deadlines.",
+      "placeholder": "Generate a status report from...",
+      "criteria": {
+        "keywords": [
+          "status",
+          "week",
+          "completed",
+          "blocked",
+          "upcoming",
+          "risk",
+          "highlight"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Status reports: 2 minutes, not 30. Done."
+    }
+  ],
+  "05-risk-assessment": [
+    {
+      "id": "apm-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for project risk assessment. Include context and ask for risk identification, probability, impact, mitigation.",
+      "placeholder": "Assess risks for this project: ...",
+      "criteria": {
+        "keywords": [
+          "risk",
+          "probability",
+          "impact",
+          "mitigation",
+          "project",
+          "high",
+          "medium"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "AI systematically identifies risks humans overlook."
+    }
+  ],
+  "06-resource-allocation": [
+    {
+      "id": "apm-6-1",
+      "type": "freeform",
+      "instruction": "4 team members, 6 sprint tasks. Describe how you'd use AI to optimize allocation based on skills, availability, priorities.",
+      "placeholder": "Team: Alice (frontend), Bob (backend)...",
+      "criteria": {
+        "keywords": [
+          "skill",
+          "priority",
+          "availability",
+          "assign",
+          "sprint",
+          "capacity"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Resource allocation is where PM becomes art. AI shows the math."
+    }
+  ],
+  "07-documentation-and-sops": [
+    {
+      "id": "apm-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to generate an SOP for a process you manage. Include audience, steps, and quality criteria.",
+      "placeholder": "Create an SOP for...",
+      "criteria": {
+        "keywords": [
+          "SOP",
+          "step",
+          "process",
+          "when",
+          "who",
+          "quality",
+          "checklist"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Good SOPs are a gift to your future self. AI writes the first draft in seconds."
+    }
+  ],
+  "08-agile-with-ai": [
+    {
+      "id": "apm-8-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to generate user stories from a feature description. Include acceptance criteria, story points, edge cases.",
+      "placeholder": "From this feature: ... Generate user stories...",
+      "criteria": {
+        "keywords": [
+          "user story",
+          "as a",
+          "I want",
+          "acceptance criteria",
+          "edge case"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "AI-generated user stories ensure nothing gets missed in the first pass."
+    }
+  ],
+  "09-stakeholder-communication": [
+    {
+      "id": "apm-9-1",
+      "type": "rewrite",
+      "instruction": "Too technical for executives: 'We refactored the API gateway microservice, reduced p99 latency by 40ms, and migrated CI/CD to GitHub Actions with matrix builds.' Rewrite for non-technical audience.",
+      "placeholder": "Rewrite for executives...",
+      "criteria": {
+        "keywords": [
+          "faster",
+          "improved",
+          "customer",
+          "experience",
+          "team",
+          "efficiency"
+        ],
+        "minLength": 30
+      },
+      "badExample": "We refactored the API gateway microservice, reduced p99 latency by 40ms.",
+      "goodExample": "We made our app noticeably faster for customers and upgraded dev tools so the team ships updates twice as fast.",
+      "successMessage": "Translating tech to business impact is a PM superpower."
+    }
+  ],
+  "10-your-ai-pm-toolkit": [
+    {
+      "id": "apm-10-1",
+      "type": "freeform",
+      "instruction": "Design your AI PM toolkit: 5 recurring tasks, the AI prompt/tool for each, and time saved per week.",
+      "placeholder": "Task 1: Weekly status reports \u2014 Tool: ...",
+      "criteria": {
+        "keywords": [
+          "task",
+          "prompt",
+          "tool",
+          "save",
+          "hour",
+          "week",
+          "automate"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "5-10 hours saved per week. That's AI-augmented PM."
+    }
+  ]
+}

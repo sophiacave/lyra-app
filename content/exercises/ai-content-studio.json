@@ -1,0 +1,205 @@
+{
+  "the-content-studio-mindset": [
+    {
+      "id": "acs-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that generates 5 content ideas for your niche. Include target audience, content goals, and preferred formats.",
+      "placeholder": "I create content about... My audience is...",
+      "criteria": {
+        "keywords": [
+          "audience",
+          "content",
+          "idea",
+          "goal",
+          "format",
+          "topic"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Strategy before creation. You just built a content brief worth $200."
+    }
+  ],
+  "short-form-mastery": [
+    {
+      "id": "acs-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that generates a viral-style social media post. Specify platform, hook style, length, and CTA.",
+      "placeholder": "Write a [platform] post about...",
+      "criteria": {
+        "keywords": [
+          "hook",
+          "post",
+          "CTA",
+          "tone",
+          "audience",
+          "platform"
+        ],
+        "minLength": 40
+      },
+      "successMessage": "Short-form is the hardest format. You nailed the brief."
+    }
+  ],
+  "long-form-writing": [
+    {
+      "id": "acs-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a detailed blog post outline. Include topic, target keyword, audience level, sections, and unique angle.",
+      "placeholder": "Write a blog outline about...",
+      "criteria": {
+        "keywords": [
+          "outline",
+          "section",
+          "keyword",
+          "audience",
+          "angle",
+          "heading"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Outlines are the skeleton. AI fills the flesh."
+    }
+  ],
+  "content-strategy-with-ai": [
+    {
+      "id": "acs-4-1",
+      "type": "freeform",
+      "instruction": "Create a 1-week content calendar. Include platform, content type, topic, goal (awareness/engagement/conversion), and posting time.",
+      "placeholder": "Monday: ...",
+      "criteria": {
+        "keywords": [
+          "Monday",
+          "post",
+          "platform",
+          "goal",
+          "topic",
+          "engagement"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "A content calendar turns random posting into a strategic machine."
+    }
+  ],
+  "email-sequences-that-convert": [
+    {
+      "id": "acs-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a 3-email welcome sequence. Define brand voice, value proposition, and end goal.",
+      "placeholder": "Create a welcome email sequence for...",
+      "criteria": {
+        "keywords": [
+          "email",
+          "welcome",
+          "subscriber",
+          "value",
+          "CTA",
+          "sequence"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Email sequences are the highest-ROI content. This one runs on autopilot."
+    }
+  ],
+  "seo-content-optimization": [
+    {
+      "id": "acs-6-1",
+      "type": "rewrite",
+      "instruction": "This paragraph is keyword-stuffed. Rewrite to be SEO-friendly but human: 'AI tools for business are the best AI tools. Our AI tools help businesses use AI tools to improve business with AI tools for business productivity.'",
+      "placeholder": "Rewrite naturally...",
+      "criteria": {
+        "keywords": [
+          "AI",
+          "business",
+          "productivity",
+          "help",
+          "tool"
+        ],
+        "minLength": 30
+      },
+      "badExample": "AI tools for business are the best AI tools. Our AI tools help businesses use AI tools.",
+      "goodExample": "The right AI tools can transform how your team works \u2014 automating repetitive tasks, surfacing insights, and freeing hours for strategic work.",
+      "successMessage": "SEO-friendly AND human-readable. The sweet spot."
+    }
+  ],
+  "repurposing-content": [
+    {
+      "id": "acs-7-1",
+      "type": "prompt",
+      "instruction": "Take a blog post topic and repurpose it into 3 formats: Twitter thread, LinkedIn post, and email newsletter intro.",
+      "placeholder": "Repurpose this blog post about...",
+      "criteria": {
+        "keywords": [
+          "Twitter",
+          "LinkedIn",
+          "email",
+          "thread",
+          "repurpose",
+          "format"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "One idea, three platforms. 3x output without 3x work."
+    }
+  ],
+  "brand-voice-consistency": [
+    {
+      "id": "acs-8-1",
+      "type": "prompt",
+      "instruction": "Define your brand voice: 3 tone adjectives, 3 words you always use, 3 you never use, and an example sentence.",
+      "placeholder": "My brand voice is...",
+      "criteria": {
+        "keywords": [
+          "tone",
+          "voice",
+          "always",
+          "never",
+          "brand",
+          "example"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "A documented brand voice means every AI piece sounds like YOU."
+    }
+  ],
+  "content-workflows-and-batching": [
+    {
+      "id": "acs-9-1",
+      "type": "freeform",
+      "instruction": "Design a content batching workflow: produce 2 weeks of content in one session. List each step from ideation to scheduling.",
+      "placeholder": "Step 1: Brainstorm 14 topics...",
+      "criteria": {
+        "keywords": [
+          "batch",
+          "step",
+          "schedule",
+          "draft",
+          "edit",
+          "review",
+          "publish"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Batching is the secret weapon of every prolific creator."
+    }
+  ],
+  "launching-your-content-engine": [
+    {
+      "id": "acs-10-1",
+      "type": "freeform",
+      "instruction": "Write your Content Engine spec: what you publish, where, how often, what AI handles vs manual. Your operational blueprint.",
+      "placeholder": "My content engine: ...",
+      "criteria": {
+        "keywords": [
+          "publish",
+          "platform",
+          "frequency",
+          "AI",
+          "manual",
+          "schedule",
+          "workflow"
+        ],
+        "minLength": 70
+      },
+      "successMessage": "Most creators never write this down. That's why they burn out. You won't."
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "01-ai-strategy-landscape": [
+    {
+      "id": "aes-1-1",
+      "type": "freeform",
+      "instruction": "Assess AI maturity on 1-5 scale: data readiness, talent, infrastructure, culture, leadership buy-in. Justify each.",
+      "placeholder": "Data readiness: 3/5 because...",
+      "criteria": {
+        "keywords": [
+          "data",
+          "talent",
+          "infrastructure",
+          "culture",
+          "leadership",
+          "score",
+          "maturity"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Self-assessment is the starting point of every AI transformation."
+    }
+  ],
+  "02-building-the-business-case": [
+    {
+      "id": "aes-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt to generate a business case for AI adoption: current costs, projected savings, timeline, risk factors.",
+      "placeholder": "Generate a business case for...",
+      "criteria": {
+        "keywords": [
+          "cost",
+          "saving",
+          "ROI",
+          "timeline",
+          "risk",
+          "implement",
+          "budget"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Numbers speak louder than enthusiasm."
+    }
+  ],
+  "03-ai-readiness-assessment": [
+    {
+      "id": "aes-3-1",
+      "type": "freeform",
+      "instruction": "Create a 10-question AI readiness checklist. Each question reveals a gap or strength. Include scoring.",
+      "placeholder": "Question 1: ...",
+      "criteria": {
+        "keywords": [
+          "data",
+          "team",
+          "process",
+          "tool",
+          "budget",
+          "governance",
+          "ready",
+          "gap"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Any organization can use this checklist."
+    }
+  ],
+  "04-data-strategy": [
+    {
+      "id": "aes-4-1",
+      "type": "freeform",
+      "instruction": "Audit your data: what you have, where stored, how clean, what's missing for AI. Create a readiness map.",
+      "placeholder": "Data source 1: ... Quality: ...",
+      "criteria": {
+        "keywords": [
+          "data",
+          "source",
+          "quality",
+          "clean",
+          "gap",
+          "store",
+          "access"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Data is AI fuel. Your audit shows where to invest."
+    }
+  ],
+  "05-team-and-talent": [
+    {
+      "id": "aes-5-1",
+      "type": "freeform",
+      "instruction": "Design AI skills development plan: current gaps, training resources, timeline, competency measurement.",
+      "placeholder": "Current gaps: ... Training: ...",
+      "criteria": {
+        "keywords": [
+          "skill",
+          "gap",
+          "training",
+          "timeline",
+          "measure",
+          "competency",
+          "team"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "People are the hardest part of AI transformation."
+    }
+  ],
+  "06-vendor-evaluation": [
+    {
+      "id": "aes-6-1",
+      "type": "freeform",
+      "instruction": "Create vendor evaluation matrix: 5 criteria with weights, scoring rubric, tie-breaking.",
+      "placeholder": "Criterion 1 (weight: 30%): ...",
+      "criteria": {
+        "keywords": [
+          "criterion",
+          "weight",
+          "score",
+          "vendor",
+          "cost",
+          "integration",
+          "support"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Structured evaluation prevents the most expensive mistake."
+    }
+  ],
+  "07-governance-and-ethics": [
+    {
+      "id": "aes-7-1",
+      "type": "freeform",
+      "instruction": "Draft AI governance framework: who decides, approval process, data handling rules, audit schedule.",
+      "placeholder": "Decision authority: ...",
+      "criteria": {
+        "keywords": [
+          "governance",
+          "policy",
+          "approve",
+          "audit",
+          "data",
+          "ethics",
+          "risk"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "AI governance is how you scale AI responsibly."
+    }
+  ],
+  "08-change-management": [
+    {
+      "id": "aes-8-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a change management plan for introducing AI to a resistant team. Objections, counter-arguments, quick wins, rollout.",
+      "placeholder": "Create a change management plan...",
+      "criteria": {
+        "keywords": [
+          "resistance",
+          "objection",
+          "quick win",
+          "rollout",
+          "training",
+          "champion"
+        ],
+        "minLength": 50
+      },
+      "successMessage": "Change management is 80% of AI success."
+    }
+  ],
+  "09-measuring-ai-impact": [
+    {
+      "id": "aes-9-1",
+      "type": "freeform",
+      "instruction": "Define 5 KPIs for AI impact. Each: what it measures, baseline, target, tracking method.",
+      "placeholder": "KPI 1: ...",
+      "criteria": {
+        "keywords": [
+          "KPI",
+          "baseline",
+          "target",
+          "measure",
+          "track",
+          "impact",
+          "improve"
+        ],
+        "minLength": 60
+      },
+      "successMessage": "Measurable impact justifies continued investment."
+    }
+  ],
+  "10-your-enterprise-ai-roadmap": [
+    {
+      "id": "aes-10-1",
+      "type": "freeform",
+      "instruction": "12-month AI roadmap: Q1-Q4 milestones, quick wins (month 1), strategic initiatives (month 6+), success criteria.",
+      "placeholder": "Q1: ... Q2: ...",
+      "criteria": {
+        "keywords": [
+          "Q1",
+          "Q2",
+          "milestone",
+          "quick win",
+          "strategic",
+          "success",
+          "roadmap"
+        ],
+        "minLength": 80
+      },
+      "successMessage": "Roadmap turns AI strategy from slides into action."
+    }
+  ]
+}
