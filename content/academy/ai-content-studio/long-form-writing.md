@@ -3,7 +3,7 @@ title: "Long-Form Writing"
 course: "ai-content-studio"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

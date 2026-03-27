@@ -3,7 +3,7 @@ title: "Context Is Everything"
 course: "prompt-writing-101"
 order: 4
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

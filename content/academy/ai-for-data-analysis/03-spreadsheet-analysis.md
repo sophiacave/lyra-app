@@ -3,7 +3,7 @@ title: "Spreadsheet Analysis"
 course: "ai-for-data-analysis"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

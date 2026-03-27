@@ -3,7 +3,7 @@ title: "Understanding AI Image Tools"
 course: "ai-images-and-video"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

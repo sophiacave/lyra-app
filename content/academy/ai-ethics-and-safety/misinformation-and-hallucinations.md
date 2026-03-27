@@ -3,7 +3,7 @@ title: "Misinformation and Hallucinations"
 course: "ai-ethics-and-safety"
 order: 4
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

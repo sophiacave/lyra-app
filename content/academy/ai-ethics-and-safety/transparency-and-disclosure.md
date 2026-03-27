@@ -3,7 +3,7 @@ title: "Transparency and Disclosure"
 course: "ai-ethics-and-safety"
 order: 5
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

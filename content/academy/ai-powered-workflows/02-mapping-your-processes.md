@@ -3,7 +3,7 @@ title: "Mapping Your Processes"
 course: "ai-powered-workflows"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

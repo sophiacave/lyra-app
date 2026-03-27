@@ -3,7 +3,7 @@ title: "Project Planning with AI"
 course: "ai-project-management"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

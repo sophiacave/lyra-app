@@ -3,6 +3,7 @@ title: "Template Engines"
 course: "content-generation-pipeline"
 order: 3
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

@@ -3,6 +3,7 @@ title: "Text-to-Speech Basics"
 course: "ai-voice-audio"
 order: 2
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

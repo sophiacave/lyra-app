@@ -3,7 +3,7 @@ title: "Email and Communication"
 course: "ai-for-personal-productivity"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

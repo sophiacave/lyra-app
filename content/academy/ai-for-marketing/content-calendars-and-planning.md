@@ -3,7 +3,7 @@ title: "Content Calendars and Planning"
 course: "ai-for-marketing"
 order: 7
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

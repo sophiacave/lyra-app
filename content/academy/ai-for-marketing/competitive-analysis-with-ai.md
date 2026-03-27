@@ -3,7 +3,7 @@ title: "Competitive Analysis with AI"
 course: "ai-for-marketing"
 order: 6
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

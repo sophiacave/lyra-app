@@ -3,7 +3,7 @@ title: "Communication Patterns"
 course: "multi-agent-orchestration"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

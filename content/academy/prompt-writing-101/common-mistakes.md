@@ -3,7 +3,7 @@ title: "Common Mistakes"
 course: "prompt-writing-101"
 order: 9
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

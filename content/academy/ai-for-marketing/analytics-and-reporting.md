@@ -3,7 +3,7 @@ title: "Analytics and Reporting"
 course: "ai-for-marketing"
 order: 8
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

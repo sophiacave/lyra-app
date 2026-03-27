@@ -3,7 +3,7 @@ title: "Ad Copy That Converts"
 course: "ai-for-marketing"
 order: 5
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

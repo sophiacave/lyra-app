@@ -3,7 +3,7 @@ title: "Prompt Writing Assessment"
 course: "prompt-writing-101"
 order: 10
 type: "quiz"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

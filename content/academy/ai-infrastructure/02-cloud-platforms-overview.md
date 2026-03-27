@@ -3,6 +3,7 @@ title: "Cloud Platforms Overview"
 course: "ai-infrastructure"
 order: 2
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

@@ -3,6 +3,7 @@ title: "AI Readiness Assessment"
 course: "ai-enterprise-strategy"
 order: 3
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

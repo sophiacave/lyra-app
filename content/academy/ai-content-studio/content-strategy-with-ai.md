@@ -3,7 +3,7 @@ title: "Content Strategy with AI"
 course: "ai-content-studio"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

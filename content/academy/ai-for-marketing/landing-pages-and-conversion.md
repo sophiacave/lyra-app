@@ -3,7 +3,7 @@ title: "Landing Pages and Conversion"
 course: "ai-for-marketing"
 order: 9
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

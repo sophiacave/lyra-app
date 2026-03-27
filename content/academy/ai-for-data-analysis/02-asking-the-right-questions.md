@@ -3,7 +3,7 @@ title: "Asking the Right Questions"
 course: "ai-for-data-analysis"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

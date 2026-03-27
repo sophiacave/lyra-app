@@ -3,7 +3,7 @@ title: "Blog Content and SEO"
 course: "ai-for-marketing"
 order: 4
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

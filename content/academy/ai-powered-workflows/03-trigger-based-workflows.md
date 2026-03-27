@@ -3,7 +3,7 @@ title: "Trigger-Based Workflows"
 course: "ai-powered-workflows"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

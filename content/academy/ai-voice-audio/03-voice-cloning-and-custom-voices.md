@@ -3,6 +3,7 @@ title: "Voice Cloning & Custom Voices"
 course: "ai-voice-audio"
 order: 3
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

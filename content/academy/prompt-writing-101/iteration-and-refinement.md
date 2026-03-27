@@ -3,7 +3,7 @@ title: "Iteration and Refinement"
 course: "prompt-writing-101"
 order: 7
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

@@ -3,7 +3,7 @@ title: "Agent Roles and Specialization"
 course: "multi-agent-orchestration"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

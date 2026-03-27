@@ -3,7 +3,7 @@ title: "Chain of Thought"
 course: "advanced-prompt-engineering"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

@@ -3,7 +3,7 @@ title: "The Art of Constraints"
 course: "prompt-writing-101"
 order: 6
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

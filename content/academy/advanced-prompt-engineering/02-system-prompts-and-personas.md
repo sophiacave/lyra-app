@@ -3,7 +3,7 @@ title: "System Prompts and Personas"
 course: "advanced-prompt-engineering"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

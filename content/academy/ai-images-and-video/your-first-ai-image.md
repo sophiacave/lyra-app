@@ -3,7 +3,7 @@ title: "Your First AI Image"
 course: "ai-images-and-video"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

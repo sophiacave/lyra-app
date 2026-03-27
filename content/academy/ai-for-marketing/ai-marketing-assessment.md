@@ -3,7 +3,7 @@ title: "AI Marketing Assessment"
 course: "ai-for-marketing"
 order: 10
 type: "quiz"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

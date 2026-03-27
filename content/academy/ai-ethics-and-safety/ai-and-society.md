@@ -3,7 +3,7 @@ title: "AI and Society"
 course: "ai-ethics-and-safety"
 order: 8
 type: "lesson"
-free: true
+free: false
 ---<div class="wrap">
 
 <nav class="local-nav">

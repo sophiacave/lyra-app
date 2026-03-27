@@ -3,7 +3,7 @@ title: "Validation and Prototyping"
 course: "building-ai-products"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

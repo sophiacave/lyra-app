@@ -3,6 +3,7 @@ title: "Building the Business Case"
 course: "ai-enterprise-strategy"
 order: 2
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

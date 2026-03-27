@@ -3,6 +3,7 @@ title: "API Management"
 course: "ai-infrastructure"
 order: 3
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

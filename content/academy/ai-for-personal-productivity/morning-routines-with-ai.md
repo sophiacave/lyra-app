@@ -3,7 +3,7 @@ title: "Morning Routines with AI"
 course: "ai-for-personal-productivity"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

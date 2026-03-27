@@ -3,7 +3,7 @@ title: "Lead Research & Qualification"
 course: "ai-for-sales"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

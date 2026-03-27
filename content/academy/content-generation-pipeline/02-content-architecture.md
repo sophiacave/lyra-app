@@ -3,6 +3,7 @@ title: "Content Architecture"
 course: "content-generation-pipeline"
 order: 2
 type: "lesson"
+free: true
 ---
 
 <div class="wrap">

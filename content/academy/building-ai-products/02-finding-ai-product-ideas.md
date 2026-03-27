@@ -3,7 +3,7 @@ title: "Finding AI Product Ideas"
 course: "building-ai-products"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">
