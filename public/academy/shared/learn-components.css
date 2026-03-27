@@ -13,6 +13,34 @@
    - Dark theme native
    ═══════════════════════════════════════════════════════════ */
 
+/* ── XP Toast ── */
+.lo-xp-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  z-index: 9999;
+  animation: xp-pop 2.5s var(--lo-ease) forwards;
+  pointer-events: none;
+}
+.lo-xp-toast-icon { font-size: 1.3rem; }
+@keyframes xp-pop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.8); }
+  15% { opacity: 1; transform: translateY(0) scale(1.05); }
+  25% { transform: translateY(0) scale(1); }
+  75% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
 /* ── Shared Variables ── */
 :root {
   --lo-ease: cubic-bezier(0.22, 1, 0.36, 1);

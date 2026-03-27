@@ -111,6 +111,40 @@ function useSubscriptionStatus() {
   return status;
 }
 
+// XP toast — floats up and fades after award
+function XPToast({ xp, show }) {
+  if (!show) return null;
+  return (
+    <div className="lo-xp-toast" key={xp}>
+      <span className="lo-xp-toast-icon">⚡</span>
+      <span className="lo-xp-toast-text">+{xp} XP</span>
+    </div>
+  );
+}
+
+// Award XP via Supabase RPC — requires user to be authenticated
+async function awardXP(courseSlug, lessonSlug, componentType, xp, metadata = {}) {
+  try {
+    if (!window.supabase) return null;
+    const sb = window.supabase.createClient(APP_URL, APP_ANON);
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) return null; // not logged in — XP not saved
+
+    const { data, error } = await sb.rpc('award_xp', {
+      p_course_slug: courseSlug,
+      p_lesson_slug: lessonSlug,
+      p_component_type: componentType,
+      p_xp: xp,
+      p_metadata: metadata,
+    });
+    if (error) console.warn('[XP] award error:', error);
+    return data;
+  } catch (e) {
+    console.warn('[XP] award failed:', e);
+    return null;
+  }
+}
+
 function LessonGate({ courseSlug }) {
   return (
     <div className="lesson-gate">
@@ -169,6 +203,16 @@ export default function ImmersiveLesson({
   const showGate = !isFree && subStatus !== 'pro';
   const hasExercises = exercises.length > 0;
 
+  // XP toast state
+  const [xpToast, setXpToast] = useState({ xp: 0, show: false });
+  const handleXP = useCallback((xp, componentType) => {
+    // Show toast immediately (even for non-logged-in users)
+    setXpToast({ xp, show: true });
+    setTimeout(() => setXpToast((t) => ({ ...t, show: false })), 2500);
+    // Persist to DB if authenticated
+    awardXP(courseSlug, lessonSlug, componentType, xp, { xp });
+  }, [courseSlug, lessonSlug]);
+
   // Execute inline scripts from lesson HTML.
   // Server marks scripts as type="text/x-lesson" so browser skips them during SSR parse.
   // We wait for subStatus to settle (not 'loading') because the status change triggers
@@ -221,6 +265,7 @@ export default function ImmersiveLesson({
 
   return (
     <div className="immersive-lesson" ref={scrollRef}>
+      <XPToast xp={xpToast.xp} show={xpToast.show} />
       {/* Content flows full-width inside the console frame */}
       <div className={`immersive-content ${showGate ? 'lo-content-gated' : ''}`}>
         <div ref={contentRef} className="lesson-content immersive-lesson-body">
@@ -228,7 +273,11 @@ export default function ImmersiveLesson({
             seg.type === 'html' ? (
               <div key={`html-${i}`} dangerouslySetInnerHTML={{ __html: seg.html }} />
             ) : (
-              <seg.Component key={`${seg.componentName}-${i}`} {...seg.props} />
+              <seg.Component
+                key={`${seg.componentName}-${i}`}
+                {...seg.props}
+                onXP={(xp) => handleXP(xp, seg.componentName)}
+              />
             )
           )}
         </div>
