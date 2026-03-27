@@ -5,8 +5,7 @@ import QualityGrader from '../console/QualityGrader';
 import PromptDiffView from '../console/PromptDiffView';
 import CelebrationEffects from '../console/CelebrationEffects';
 
-const TYPING_SPEED = 18; // ms per character
-
+// Variable-speed typing — faster for common chars, pauses at punctuation
 function useTypingEffect(text, isActive) {
   const [displayed, setDisplayed] = useState('');
   const [isDone, setIsDone] = useState(false);
@@ -22,22 +21,32 @@ function useTypingEffect(text, isActive) {
     let i = 0;
     setDisplayed('');
 
-    const interval = setInterval(() => {
+    const tick = () => {
       i++;
       setDisplayed(text.slice(0, i));
       if (i >= text.length) {
-        clearInterval(interval);
         setIsDone(true);
+        return;
       }
-    }, TYPING_SPEED);
+      // Variable speed: pause at punctuation, fast on spaces
+      const char = text[i - 1];
+      let delay = 16; // base speed (fast)
+      if (char === '.' || char === '!' || char === '?') delay = 120;
+      else if (char === ',' || char === ';' || char === ':') delay = 60;
+      else if (char === '\n') delay = 80;
+      else if (char === ' ') delay = 10;
+      else delay = 14 + Math.random() * 8; // slight jitter for natural feel
+      timer = setTimeout(tick, delay);
+    };
 
-    return () => clearInterval(interval);
+    let timer = setTimeout(tick, 30);
+    return () => clearTimeout(timer);
   }, [text, isActive]);
 
   return { displayed, isDone };
 }
 
-export default function PromptConsole({ exercises = [], lessonTitle = '' }) {
+export default function PromptConsole({ exercises = [], lessonTitle = '', onActivity }) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
@@ -53,6 +62,23 @@ export default function PromptConsole({ exercises = [], lessonTitle = '' }) {
   const [allDoneTrigger, setAllDoneTrigger] = useState(0);
 
   const { displayed, isDone } = useTypingEffect(currentResponse, showResponse);
+
+  // Emit activity state to parent (console glow + status bar)
+  useEffect(() => {
+    if (!onActivity) return;
+    if (isTyping && displayed) onActivity('responding');
+    else if (isTyping && !displayed) onActivity('responding');
+    else if (input.length > 0) onActivity('typing');
+    else onActivity('idle');
+  }, [isTyping, displayed, input, onActivity]);
+
+  // Emit celebration state
+  useEffect(() => {
+    if (!onActivity || celebrationTrigger === 0) return;
+    onActivity('celebrating');
+    const t = setTimeout(() => onActivity('idle'), 2000);
+    return () => clearTimeout(t);
+  }, [celebrationTrigger, onActivity]);
 
   useEffect(() => {
     if (isDone && currentResponse) {

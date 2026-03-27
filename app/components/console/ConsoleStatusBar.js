@@ -8,7 +8,7 @@ function getProgress() {
   } catch { return {}; }
 }
 
-export default function ConsoleStatusBar({ appName = 'Academy' }) {
+export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle' }) {
   const [progress, setProgress] = useState({});
   const [time, setTime] = useState('');
 
@@ -20,22 +20,43 @@ export default function ConsoleStatusBar({ appName = 'Academy' }) {
     };
     updateTime();
     const interval = setInterval(updateTime, 30000);
-    return () => clearInterval(interval);
+
+    // Listen for progress updates from PromptConsole
+    const handleProgress = () => setProgress(getProgress());
+    window.addEventListener('likeone-progress', handleProgress);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('likeone-progress', handleProgress);
+    };
   }, []);
 
   const completedCount = Object.keys(progress).length;
+
+  const pulseClass = activity === 'typing' ? 'lo-pulse-typing'
+    : activity === 'responding' ? 'lo-pulse-active'
+    : activity === 'celebrating' ? 'lo-pulse-celebrating'
+    : '';
+
+  const activityLabel = activity === 'typing' ? 'composing...'
+    : activity === 'responding' ? 'thinking...'
+    : activity === 'celebrating' ? 'nice work!'
+    : null;
 
   return (
     <div className="lo-statusbar">
       <div className="lo-statusbar-left">
         <span className="lo-statusbar-app">
-          <span className="lo-statusbar-pulse" />
+          <span className={`lo-statusbar-pulse ${pulseClass}`} />
           {appName}
         </span>
         {completedCount > 0 && (
           <span className="lo-statusbar-xp">
             ✦ {completedCount} lessons
           </span>
+        )}
+        {activityLabel && (
+          <span className="lo-statusbar-activity">{activityLabel}</span>
         )}
       </div>
       <div className="lo-statusbar-center">

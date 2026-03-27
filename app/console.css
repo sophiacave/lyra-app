@@ -925,6 +925,633 @@
 
 
 /* ═══════════════════════════════════
+   PROMPT CONSOLE — The interactive terminal
+   ═══════════════════════════════════ */
+
+.console-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--surface-sunken);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+.console-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--glass-bg-solid);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  user-select: none;
+  animation: lo-console-header-in 0.4s var(--ease-out) both;
+}
+
+.console-dots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.console-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green { background: #28c840; }
+
+.console-title {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  letter-spacing: 0.03em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Exercise bar */
+.console-exercise-bar {
+  padding: var(--space-3);
+  background: rgba(192,132,252,0.04);
+  border-bottom: 1px solid var(--border-subtle);
+  animation: lo-slide-down 0.5s var(--ease-out) both;
+}
+
+.console-exercise-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.console-exercise-icon {
+  font-size: var(--font-sm);
+  animation: lo-exercise-glow 2s ease-in-out infinite;
+}
+
+.console-exercise-label {
+  font-size: var(--font-2xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.console-exercise-prompt {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-normal);
+  margin: 0;
+}
+
+.console-hint-btn {
+  margin-top: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  background: rgba(192,132,252,0.08);
+  border: 1px solid rgba(192,132,252,0.15);
+  border-radius: var(--radius-sm);
+  color: var(--accent-purple);
+  font-size: var(--font-2xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.console-hint-btn:hover {
+  background: rgba(192,132,252,0.14);
+  border-color: rgba(192,132,252,0.25);
+}
+
+.console-exercise-progress {
+  display: flex;
+  gap: 4px;
+  margin-top: var(--space-2);
+}
+
+.console-exercise-pip {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border-default);
+  transition: all 0.5s var(--ease-out);
+}
+.console-exercise-pip.pip-active {
+  background: var(--accent-purple);
+  box-shadow: 0 0 6px rgba(192,132,252,0.4);
+  animation: lo-pip-pulse 1.5s ease-in-out infinite;
+}
+.console-exercise-pip.pip-done {
+  background: var(--status-success);
+  box-shadow: 0 0 4px rgba(74,222,128,0.3);
+}
+
+/* Message history */
+.console-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  scroll-behavior: smooth;
+}
+
+.console-history::-webkit-scrollbar { width: 4px; }
+.console-history::-webkit-scrollbar-track { background: transparent; }
+.console-history::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 2px;
+}
+
+/* Empty state */
+.console-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  color: var(--text-quaternary);
+  font-size: var(--font-xs);
+  gap: var(--space-2);
+  animation: lo-fade-in 0.6s var(--ease-out) both;
+}
+
+.console-empty-icon {
+  font-size: var(--font-2xl);
+  color: var(--accent-purple);
+  opacity: 0.4;
+  animation: lo-cursor-blink 1.2s steps(2) infinite;
+}
+
+.console-empty-hint {
+  color: var(--text-quaternary);
+  font-size: var(--font-2xs);
+}
+
+.console-inline-prompt {
+  background: rgba(192,132,252,0.08);
+  border: 1px solid rgba(192,132,252,0.15);
+  border-radius: var(--radius-sm);
+  color: var(--accent-purple);
+  font-size: var(--font-2xs);
+  padding: 1px var(--space-2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-mono);
+}
+.console-inline-prompt:hover {
+  background: rgba(192,132,252,0.14);
+}
+
+/* Messages */
+.console-msg {
+  display: flex;
+  gap: var(--space-2);
+  animation: lo-msg-enter 0.35s var(--ease-out) both;
+}
+
+.console-msg-avatar {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-xs);
+  flex-shrink: 0;
+  color: var(--text-quaternary);
+  margin-top: 2px;
+}
+
+.console-msg-user .console-msg-avatar {
+  color: var(--accent-purple);
+}
+
+.console-msg-assistant .console-msg-avatar {
+  color: var(--status-info);
+  animation: lo-avatar-glow 0.5s ease-out;
+}
+
+.console-msg-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.console-msg-label {
+  display: block;
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.console-msg-text {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  line-height: var(--line-relaxed);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.console-msg-user .console-msg-text {
+  color: var(--text-primary);
+}
+
+/* Streaming cursor */
+.console-cursor {
+  display: inline-block;
+  color: var(--accent-purple);
+  animation: lo-cursor-blink 0.8s steps(2) infinite;
+  margin-left: 1px;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Typing indicator */
+.console-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: var(--space-2) var(--space-3);
+  animation: lo-fade-in 0.3s var(--ease-out) both;
+}
+
+.console-typing-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-purple);
+  animation: lo-typing-bounce 1.4s ease-in-out infinite;
+}
+.console-typing-dot:nth-child(2) { animation-delay: 0.16s; }
+.console-typing-dot:nth-child(3) { animation-delay: 0.32s; }
+
+/* Input bar */
+.console-input-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--glass-bg-solid);
+  animation: lo-slide-up 0.4s var(--ease-out) 0.2s both;
+}
+
+.console-input {
+  flex: 1;
+  background: var(--surface-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-primary);
+  font-size: var(--font-xs);
+  font-family: var(--font-mono);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+.console-input::placeholder {
+  color: var(--text-quaternary);
+}
+.console-input:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 2px rgba(192,132,252,0.12), 0 0 12px rgba(192,132,252,0.06);
+}
+.console-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.console-send-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-purple);
+  border: none;
+  color: white;
+  font-size: var(--font-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+.console-send-btn:hover:not(:disabled) {
+  background: var(--accent-purple-hover, #a855f7);
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(192,132,252,0.3);
+}
+.console-send-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Completion banner */
+.console-complete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  margin: var(--space-2) var(--space-3);
+  background: rgba(74,222,128,0.06);
+  border: 1px solid rgba(74,222,128,0.15);
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--status-success);
+  animation: lo-complete-enter 0.6s var(--ease-spring) both;
+}
+
+.console-complete-icon {
+  font-size: var(--font-md);
+  animation: lo-star-spin 2s ease-in-out;
+}
+
+
+/* ═══════════════════════════════════
+   PHASE 4: ANIMATION ENGINE
+   CSS-only — entrance, life, glow, pulse
+   ═══════════════════════════════════ */
+
+/* ── Entrance Animations ── */
+@keyframes lo-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lo-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lo-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lo-msg-enter {
+  from { opacity: 0; transform: translateY(6px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes lo-complete-enter {
+  0% { opacity: 0; transform: scale(0.9); }
+  60% { opacity: 1; transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes lo-console-header-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Cursor & Typing ── */
+@keyframes lo-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes lo-typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ── Exercise & Progress ── */
+@keyframes lo-exercise-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+}
+
+@keyframes lo-pip-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes lo-star-spin {
+  0% { transform: rotate(0deg) scale(0.5); opacity: 0; }
+  30% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+  60% { transform: rotate(360deg) scale(1); }
+  100% { transform: rotate(540deg) scale(1); opacity: 1; }
+}
+
+@keyframes lo-avatar-glow {
+  from { filter: brightness(1.5); }
+  to { filter: brightness(1); }
+}
+
+/* ── Console Glow System ── */
+
+/* Active console pane glow — intensifies when user is interacting */
+.lo-split-console.lo-console-active::before {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(192,132,252,0.15) 30%,
+    rgba(56,189,248,0.12) 70%,
+    transparent 100%
+  );
+  transition: background 0.6s ease;
+}
+
+.lo-split-console.lo-console-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(192,132,252,0.2) 30%,
+    rgba(56,189,248,0.2) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: lo-glow-sweep 3s ease-in-out infinite;
+}
+
+@keyframes lo-glow-sweep {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Input focus glow on the whole console */
+.lo-split-console.lo-console-typing::before {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(192,132,252,0.25) 20%,
+    rgba(56,189,248,0.18) 80%,
+    transparent 100%
+  );
+}
+
+/* ── Lesson Content Transitions ── */
+
+/* Crossfade between lesson content */
+.lo-split-content .lesson-content {
+  animation: lo-lesson-enter 0.5s var(--ease-out) both;
+}
+
+@keyframes lo-lesson-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger children within lesson content */
+.lo-split-content .lesson-content > * {
+  animation: lo-stagger-in 0.4s var(--ease-out) both;
+}
+.lo-split-content .lesson-content > *:nth-child(1) { animation-delay: 0.05s; }
+.lo-split-content .lesson-content > *:nth-child(2) { animation-delay: 0.1s; }
+.lo-split-content .lesson-content > *:nth-child(3) { animation-delay: 0.15s; }
+.lo-split-content .lesson-content > *:nth-child(4) { animation-delay: 0.2s; }
+.lo-split-content .lesson-content > *:nth-child(5) { animation-delay: 0.25s; }
+.lo-split-content .lesson-content > *:nth-child(n+6) { animation-delay: 0.3s; }
+
+@keyframes lo-stagger-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Status Bar Activity States ── */
+
+/* Active: faster pulse, brighter */
+.lo-statusbar-pulse.lo-pulse-active {
+  background: var(--accent-purple);
+  animation: lo-pulse-active 1.2s ease-in-out infinite;
+}
+
+/* Typing: rapid pulse with glow */
+.lo-statusbar-pulse.lo-pulse-typing {
+  background: var(--status-info);
+  animation: lo-pulse-typing 0.6s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(56,189,248,0.4);
+}
+
+/* Celebrating: rainbow pulse */
+.lo-statusbar-pulse.lo-pulse-celebrating {
+  animation: lo-pulse-celebrate 0.8s ease-in-out infinite;
+}
+
+/* Status bar activity text */
+.lo-statusbar-activity {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  animation: lo-fade-in 0.3s ease both;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+}
+
+@keyframes lo-pulse-active {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes lo-pulse-typing {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes lo-pulse-celebrate {
+  0% { background: #c084fc; opacity: 1; transform: scale(1); }
+  25% { background: #38bdf8; }
+  50% { background: #4ade80; transform: scale(1.4); }
+  75% { background: #e879f9; }
+  100% { background: #c084fc; opacity: 1; transform: scale(1); }
+}
+
+/* ── Shell Entrance Sequence ── */
+
+/* Topbar slides down */
+.lo-topbar {
+  animation: lo-shell-topbar 0.4s var(--ease-out) both;
+}
+@keyframes lo-shell-topbar {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dock slides in from left */
+.lo-dock {
+  animation: lo-shell-dock 0.5s var(--ease-out) 0.1s both;
+}
+@keyframes lo-shell-dock {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* App frame fades in */
+.lo-appframe {
+  animation: lo-shell-frame 0.5s var(--ease-out) 0.2s both;
+}
+@keyframes lo-shell-frame {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Status bar slides up */
+.lo-statusbar {
+  animation: lo-shell-statusbar 0.4s var(--ease-out) 0.15s both;
+}
+@keyframes lo-shell-statusbar {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Ambient Life: Breathing Shell ── */
+
+/* Subtle ambient glow that shifts over time */
+.lo-shell::after {
+  content: '';
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(192,132,252,0.08) 25%,
+    rgba(56,189,248,0.06) 50%,
+    rgba(232,121,249,0.08) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: var(--z-sticky);
+  animation: lo-ambient-sweep 8s ease-in-out infinite;
+}
+
+@keyframes lo-ambient-sweep {
+  0%, 100% { opacity: 0.3; background-position: 0% 0%; }
+  50% { opacity: 0.8; background-position: 100% 0%; }
+}
+
+/* Dock edge breathes */
+.lo-dock::after {
+  animation: lo-dock-breathe 6s ease-in-out infinite;
+}
+
+@keyframes lo-dock-breathe {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+
+/* ═══════════════════════════════════
    RESPONSIVE — Mobile + Tablet
    ═══════════════════════════════════ */
 

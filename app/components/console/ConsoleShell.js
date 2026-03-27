@@ -10,6 +10,7 @@ export default function ConsoleShell({
   courses = [],
   currentCourseSlug,
   currentLessonSlug,
+  activity = 'idle',
 }) {
   return (
     <div className="lo-shell">
@@ -24,7 +25,7 @@ export default function ConsoleShell({
           {children}
         </main>
       </div>
-      <ConsoleStatusBar appName={appName} />
+      <ConsoleStatusBar appName={appName} activity={activity} />
     </div>
   );
 }

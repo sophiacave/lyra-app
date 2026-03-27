@@ -1,9 +1,20 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import PromptConsole from '../academy/PromptConsole';
 
 export default function LessonSplitView({ contentHtml, lessonTitle, exercises = [], showConsole = true }) {
   const [consoleOpen, setConsoleOpen] = useState(showConsole);
+  const [consoleState, setConsoleState] = useState('idle');
+
+  const handleActivity = useCallback((state) => {
+    setConsoleState(state);
+  }, []);
+
+  const consoleClasses = [
+    'lo-split-console',
+    consoleState !== 'idle' ? 'lo-console-active' : '',
+    consoleState === 'typing' ? 'lo-console-typing' : '',
+  ].filter(Boolean).join(' ');
 
   return (
     <div className="lo-splitview">
@@ -28,7 +39,7 @@ export default function LessonSplitView({ contentHtml, lessonTitle, exercises = 
 
       {/* Console pane */}
       {consoleOpen && (
-        <div className="lo-split-console">
+        <div className={consoleClasses}>
           <div className="lo-console-close-row">
             <button
               className="lo-console-close"
@@ -41,6 +52,7 @@ export default function LessonSplitView({ contentHtml, lessonTitle, exercises = 
           <PromptConsole
             exercises={exercises}
             lessonTitle={lessonTitle}
+            onActivity={handleActivity}
           />
         </div>
       )}
