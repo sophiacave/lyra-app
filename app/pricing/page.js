@@ -72,12 +72,12 @@ export default function PricingPage() {
       <Header variant="site" />
 
       {/* Hero */}
-      <section className="site-section-sm" style={{ textAlign: 'center' }}>
-        <span className="site-section-tag" style={{ borderColor: 'rgba(251,146,60,0.25)', color: 'var(--accent-warm)', background: 'rgba(251,146,60,0.06)', borderRadius: 'var(--radius-full)', padding: '6px var(--space-5)' }}>Founding Member Pricing</span>
-        <h1 className="dm-serif" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: 'var(--space-5)', marginTop: 'var(--space-8)' }}>
-          Convergence is not<br />a <em style={{ color: 'var(--accent-warm)' }}>luxury.</em>
+      <section className="site-section-sm text-center">
+        <span className="site-section-tag pricing-hero-tag">Founding Member Pricing</span>
+        <h1 className="dm-serif pricing-hero-title">
+          Convergence is not<br />a <em className="text-accent-warm">luxury.</em>
         </h1>
-        <p style={{ fontSize: '1.1rem', color: 'var(--text-tertiary)', maxWidth: '540px', margin: '0 auto', lineHeight: 1.7 }}>
+        <p className="pricing-hero-desc">
           There is always a free path. Always. Premium revenue funds research that matters, representation, and keeping AI accessible to everyone.
         </p>
       </section>
@@ -143,8 +143,8 @@ export default function PricingPage() {
       {/* Comparison Table */}
       <section className="site-section-sm">
         <div className="site-container">
-          <h2 className="dm-serif" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: 'var(--space-3)' }}>Free vs Pro — side by side</h2>
-          <p style={{ textAlign: 'center', color: 'var(--text-tertiary)', fontSize: 'var(--font-base)', marginBottom: 'var(--space-10)' }}>See exactly what you get at each level.</p>
+          <h2 className="dm-serif pricing-compare-title">Free vs Pro — side by side</h2>
+          <p className="pricing-compare-desc">See exactly what you get at each level.</p>
           <table className="site-compare-table">
             <thead>
               <tr>
@@ -169,7 +169,7 @@ export default function PricingPage() {
       {/* FAQ */}
       <section className="site-section-sm">
         <div className="site-container">
-          <h2 className="dm-serif" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: 'var(--space-10)' }}>Common questions</h2>
+          <h2 className="dm-serif pricing-faq-title">Common questions</h2>
           <div className="site-faq-grid">
             {FAQS.map((f, i) => (
               <div key={i} className="site-faq-card">
@@ -182,9 +182,9 @@ export default function PricingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="site-section-sm" style={{ textAlign: 'center' }}>
-        <h2 className="dm-serif" style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: 'var(--space-3)' }}>Ready to start?</h2>
-        <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--font-base)', marginBottom: 'var(--space-6)', maxWidth: '480px', margin: '0 auto var(--space-6)' }}>Preview any course free. Upgrade when you&rsquo;re ready. No pressure. No countdown timers. Just warmth and knowledge.</p>
+      <section className="site-section-sm text-center">
+        <h2 className="dm-serif pricing-cta-title">Ready to start?</h2>
+        <p className="pricing-cta-desc">Preview any course free. Upgrade when you&rsquo;re ready. No pressure. No countdown timers. Just warmth and knowledge.</p>
         <div className="site-cta-row">
           <Link href="/academy/" className="site-btn-primary">Browse Courses</Link>
           <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank" rel="noopener" className="site-btn-secondary">Go Pro — $4.90/mo</a>

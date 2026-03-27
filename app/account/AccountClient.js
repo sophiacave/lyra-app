@@ -203,8 +203,7 @@ export default function AccountClient() {
                   value={signinEmail}
                   onChange={e => setSigninEmail(e.target.value)}
                   required
-                  className="app-input"
-                  style={{ flex: 1 }}
+                  className="app-input flex-1"
                 />
                 <button
                   type="submit"
@@ -243,7 +242,7 @@ export default function AccountClient() {
                   <div className="account-profile-email">{email}</div>
                 </div>
               </div>
-              <div style={{ marginBottom: 'var(--space-3)' }}>
+              <div className="app-form-group">
                 <label className="account-field-label">Display Name</label>
                 <div className="app-form-row">
                   <input
@@ -252,8 +251,7 @@ export default function AccountClient() {
                     onChange={e => setDisplayName(e.target.value)}
                     placeholder="How should we call you?"
                     maxLength={50}
-                    className="app-input"
-                    style={{ flex: 1 }}
+                    className="app-input flex-1"
                   />
                   <button onClick={saveDisplayName} disabled={savingName} className="app-btn-ghost">
                     {nameMsg || (savingName ? 'Saving...' : 'Save')}

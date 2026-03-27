@@ -27,7 +27,7 @@ export default function ProgressRing({ progress = 0, size = 40, strokeWidth = 3 
         strokeDasharray={circumference}
         strokeDashoffset={strokeDashoffset}
         strokeLinecap="round"
-        style={{ transition: 'stroke-dashoffset 0.3s ease' }}
+        className="svg-transition-stroke-fast"
       />
     </svg>
   );

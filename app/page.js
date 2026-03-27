@@ -54,11 +54,11 @@ export default function HomePage() {
 
       {/* Trust Signals */}
       <section className="site-section">
-        <div className="site-container" style={{ textAlign: 'center' }}>
+        <div className="site-container text-center">
           <span className="site-section-tag">BUILT IN PUBLIC</span>
           <h2 className="site-section-title">This isn&rsquo;t theory. It&rsquo;s running.</h2>
           <p className="site-section-desc centered">Like One is built on real infrastructure by a real person. Everything we teach, we use every day.</p>
-          <div className="site-card-grid" style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div className="site-card-grid home-card-grid-narrow">
             {[
               { emoji: '\uD83E\uDDE0', title: 'Persistent AI Memory', desc: 'Your AI remembers everything. Across conversations. Forever.' },
               { emoji: '\u26A1', title: 'Always Running', desc: 'Automations that work while you sleep. Always current.' },
@@ -121,7 +121,7 @@ export default function HomePage() {
 
       {/* What's Inside */}
       <section className="site-section-alt">
-        <div className="site-container" style={{ textAlign: 'center' }}>
+        <div className="site-container text-center">
           <span className="site-section-tag">WHAT&rsquo;S INSIDE</span>
           <h2 className="site-section-title">From zero to convergence. For real.</h2>
           <p className="site-section-desc centered">30 courses, 300+ interactive lessons, hands-on projects. Start with a free course — go Pro when you&rsquo;re ready.</p>
@@ -133,13 +133,13 @@ export default function HomePage() {
       </section>
 
       {/* Mission */}
-      <section className="site-section" style={{ textAlign: 'center' }}>
+      <section className="site-section text-center">
         <div className="site-container">
-          <blockquote style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)', fontStyle: 'italic', lineHeight: 1.6, maxWidth: '680px', margin: '0 auto var(--space-8)' }}>
+          <blockquote className="home-quote">
             &ldquo;I&rsquo;m not building a company. I&rsquo;m building proof that one person and one AI can build something that matters — and make the technology accessible to everyone who was told it wasn&rsquo;t for them.&rdquo;
           </blockquote>
-          <div style={{ color: 'var(--text-tertiary)', fontSize: 'var(--font-base)' }}>— Sophia Cave, Founder</div>
-          <div style={{ color: 'var(--text-quaternary)', fontSize: 'var(--font-sm)' }}>Trans woman &bull; Creative technologist &bull; UC Berkeley</div>
+          <div className="home-founder-name">— Sophia Cave, Founder</div>
+          <div className="home-founder-detail">Trans woman &bull; Creative technologist &bull; UC Berkeley</div>
           <div className="site-divider" />
           <div className="site-pillars">
             {[
@@ -157,10 +157,10 @@ export default function HomePage() {
       </section>
 
       {/* Email Capture */}
-      <section className="site-section-alt" style={{ textAlign: 'center' }}>
+      <section className="site-section-alt text-center">
         <div className="site-container">
           <h2 className="site-section-title">Start your convergence journey.</h2>
-          <p className="site-section-desc centered" style={{ marginBottom: 'var(--space-8)' }}>Free forever. Weekly AI tips from Like One. Unsubscribe anytime. No spam. No fake urgency. Just warmth and knowledge.</p>
+          <p className="site-section-desc centered mb-8">Free forever. Weekly AI tips from Like One. Unsubscribe anytime. No spam. No fake urgency. Just warmth and knowledge.</p>
           <SubscribeForm source="homepage" buttonText="Start Free" />
         </div>
       </section>

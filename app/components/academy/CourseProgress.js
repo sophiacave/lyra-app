@@ -37,7 +37,7 @@ export default function CourseProgress({ courseSlug, lessons }) {
           strokeDasharray={circumference}
           strokeDashoffset={circumference * (1 - percent / 100)}
           strokeLinecap="round"
-          style={{ transition: 'stroke-dashoffset 0.5s ease' }}
+          className="svg-transition-stroke"
         />
       </svg>
 

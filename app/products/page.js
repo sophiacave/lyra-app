@@ -28,7 +28,7 @@ function TierBadge({ tier }) {
 function ProductCard({ product }) {
   const isFree = product.price === 0;
   return (
-    <Link href={`/products/${product.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Link href={`/products/${product.slug}`} className="product-link-reset">
       <div className={`product-card ${product.popular ? 'popular' : ''}`}>
         {product.popular && (
           <div className="product-popular-badge">Popular</div>
@@ -58,19 +58,19 @@ export default function ProductsPage() {
       <Header activeLink="/products" />
 
       {/* Hero */}
-      <section className="site-section-sm" style={{ textAlign: 'center', background: 'linear-gradient(135deg, rgba(232,67,147,0.05) 0%, rgba(108,92,231,0.05) 100%)' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+      <section className="site-section-sm products-hero-section">
+        <div className="products-hero-inner">
           <h1 className="site-hero-title-sm">
             <span className="site-gradient-text">Products & Tools</span>
           </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+          <p className="products-hero-desc">
             Playbooks, blueprints, and business systems built from a live stack. Everything documented from what we actually use.
           </p>
         </div>
       </section>
 
       {/* Products by Tier */}
-      <section style={{ maxWidth: '1200px', margin: '0 auto', padding: 'var(--space-8) var(--space-6) var(--space-20)' }}>
+      <section className="products-content">
         {tierOrder.map(tierKey => {
           const tierProducts = products.filter(p => p.tier === tierKey);
           const tier = tiers[tierKey];

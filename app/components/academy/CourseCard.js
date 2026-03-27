@@ -41,7 +41,7 @@ export default function CourseCard({ course, index = 0, progress = {} }) {
 
       {/* Progress bar */}
       {hasProgress && (
-        <div className="glass-progress" style={{ marginBottom: 'var(--space-4)' }}>
+        <div className="glass-progress mb-4">
           <div
             className={`glass-progress-fill ${progressPercent === 100 ? 'complete' : ''}`}
             style={{ width: `${progressPercent}%` }}

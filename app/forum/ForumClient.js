@@ -264,18 +264,18 @@ export default function ForumClient() {
         {showNewPost && (
           <div className="app-card">
             <div className="app-form-row">
-              <input type="text" placeholder="Your name" maxLength={100} value={postName} onChange={e => setPostName(e.target.value)} className="app-input" style={{ flex: 1 }} />
-              <input type="email" placeholder="Your email (not shown publicly)" maxLength={255} value={postEmail} onChange={e => setPostEmail(e.target.value)} readOnly={!!authUser} className={`app-input${authUser ? ' readonly' : ''}`} style={{ flex: 1 }} />
+              <input type="text" placeholder="Your name" maxLength={100} value={postName} onChange={e => setPostName(e.target.value)} className="app-input flex-1" />
+              <input type="email" placeholder="Your email (not shown publicly)" maxLength={255} value={postEmail} onChange={e => setPostEmail(e.target.value)} readOnly={!!authUser} className={`app-input flex-1${authUser ? ' readonly' : ''}`} />
             </div>
-            <div style={{ marginBottom: 'var(--space-3)' }}>
+            <div className="app-form-group">
               <input type="text" placeholder="Post title" maxLength={200} value={postTitle} onChange={e => setPostTitle(e.target.value)} className="app-input" />
             </div>
-            <div style={{ marginBottom: 'var(--space-3)' }}>
-              <textarea placeholder="What's on your mind? Ask a question, share something you learned, celebrate a win..." maxLength={5000} value={postBody} onChange={e => setPostBody(e.target.value)} className="app-input app-textarea" style={{ minHeight: '100px' }} />
+            <div className="app-form-group">
+              <textarea placeholder="What's on your mind? Ask a question, share something you learned, celebrate a win..." maxLength={5000} value={postBody} onChange={e => setPostBody(e.target.value)} className="app-input app-textarea app-textarea-md" />
             </div>
             <div className="app-form-actions">
               <span className="app-form-note">Email is used for rate limiting only — never shown or shared.</span>
-              <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+              <div className="app-form-inline">
                 <button onClick={() => setShowNewPost(false)} className="app-btn-link">Cancel</button>
                 <button onClick={submitPost} disabled={postSubmitting} className="app-btn-submit">
                   {postSubmitting ? 'Posting...' : 'Post'}
@@ -345,13 +345,13 @@ export default function ForumClient() {
                       ))}
 
                       {/* Reply form */}
-                      <div style={{ marginTop: 'var(--space-2)' }}>
+                      <div className="forum-reply-thread">
                         <div className="app-form-row">
-                          <input type="text" placeholder="Your name" maxLength={100} value={rd.name ?? postName} onChange={e => updateReply(post.id, 'name', e.target.value)} className="app-input" style={{ flex: 1 }} />
-                          <input type="email" placeholder="Email (not shown)" maxLength={255} value={rd.email ?? postEmail} onChange={e => updateReply(post.id, 'email', e.target.value)} readOnly={!!authUser} className={`app-input${authUser ? ' readonly' : ''}`} style={{ flex: 1 }} />
+                          <input type="text" placeholder="Your name" maxLength={100} value={rd.name ?? postName} onChange={e => updateReply(post.id, 'name', e.target.value)} className="app-input flex-1" />
+                          <input type="email" placeholder="Email (not shown)" maxLength={255} value={rd.email ?? postEmail} onChange={e => updateReply(post.id, 'email', e.target.value)} readOnly={!!authUser} className={`app-input flex-1${authUser ? ' readonly' : ''}`} />
                         </div>
                         <textarea placeholder="Write a reply..." maxLength={5000} value={rd.body || ''} onChange={e => updateReply(post.id, 'body', e.target.value)} className="app-input app-textarea" />
-                        <div style={{ textAlign: 'right', marginTop: 'var(--space-2)' }}>
+                        <div className="app-form-actions-right">
                           <button onClick={() => submitReply(post.id)} className="app-btn-submit">Reply</button>
                         </div>
                       </div>
@@ -380,20 +380,20 @@ export default function ForumClient() {
 
             <div className="app-card">
               <div className="app-form-row">
-                <input type="text" placeholder="Your name" maxLength={100} value={reportName} onChange={e => setReportName(e.target.value)} className="app-input" style={{ flex: 1 }} />
-                <input type="email" placeholder="Your email" maxLength={255} value={reportEmail} onChange={e => setReportEmail(e.target.value)} readOnly={!!authUser} className={`app-input${authUser ? ' readonly' : ''}`} style={{ flex: 1 }} />
+                <input type="text" placeholder="Your name" maxLength={100} value={reportName} onChange={e => setReportName(e.target.value)} className="app-input flex-1" />
+                <input type="email" placeholder="Your email" maxLength={255} value={reportEmail} onChange={e => setReportEmail(e.target.value)} readOnly={!!authUser} className={`app-input flex-1${authUser ? ' readonly' : ''}`} />
               </div>
               <div className="app-form-row">
-                <select value={reportCategory} onChange={e => setReportCategory(e.target.value)} className="app-input" style={{ flex: 1, cursor: 'pointer' }}>
+                <select value={reportCategory} onChange={e => setReportCategory(e.target.value)} className="app-input flex-1 app-select">
                   <option value="bug">Bug Report</option>
                   <option value="feature">Feature Request</option>
                   <option value="content">Content Issue</option>
                   <option value="other">Other</option>
                 </select>
-                <input type="text" placeholder="Page URL (optional)" maxLength={500} value={reportUrl} onChange={e => setReportUrl(e.target.value)} className="app-input" style={{ flex: 1 }} />
+                <input type="text" placeholder="Page URL (optional)" maxLength={500} value={reportUrl} onChange={e => setReportUrl(e.target.value)} className="app-input flex-1" />
               </div>
-              <textarea placeholder="Describe the issue or idea..." maxLength={5000} value={reportDesc} onChange={e => setReportDesc(e.target.value)} className="app-input app-textarea" style={{ minHeight: '80px' }} />
-              <div style={{ textAlign: 'right', marginTop: 'var(--space-2)' }}>
+              <textarea placeholder="Describe the issue or idea..." maxLength={5000} value={reportDesc} onChange={e => setReportDesc(e.target.value)} className="app-input app-textarea app-textarea-sm" />
+              <div className="app-form-actions-right">
                 <button onClick={submitReport} disabled={reportSubmitting} className="app-btn-submit">
                   {reportSubmitting ? 'Submitting...' : 'Submit Report'}
                 </button>

@@ -27,9 +27,9 @@ export default function AboutPage() {
       <Header variant="site" />
 
       {/* Hero */}
-      <div className="site-section-sm" style={{ textAlign: 'center' }}>
+      <div className="site-section-sm text-center">
         <h1 className="site-hero-title-sm">
-          AI that remembers.<br /><span style={{ color: 'var(--accent-purple)' }}>For everyone.</span>
+          AI that remembers.<br /><span className="text-purple">For everyone.</span>
         </h1>
         <p className="site-hero-desc-sm">
           Like One Academy teaches you to build AI systems with persistent memory, real automation, and values you choose. 30 courses. 300+ interactive lessons. Start free.
@@ -44,10 +44,10 @@ export default function AboutPage() {
       <section className="site-section-sm">
         <div className="site-container-narrow">
           <span className="site-section-tag">WHAT WE TEACH</span>
-          <h2 className="site-section-title" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)' }}>From your first conversation to a full AI system.</h2>
+          <h2 className="site-section-title-md">From your first conversation to a full AI system.</h2>
           <p className="site-story-text">Whether you&rsquo;re brand new to AI or ready to build autonomous agents, there&rsquo;s a course for you.</p>
 
-          <div className="site-card-grid-lg" style={{ margin: 'var(--space-8) 0' }}>
+          <div className="site-card-grid-lg my-8">
             {[
               { emoji: '\uD83D\uDCAC', title: 'Claude for Beginners', desc: 'Automate emails, documents, and data. No coding required.' },
               { emoji: '\uD83E\uDDE0', title: 'Persistent Memory', desc: 'Give your AI a brain that remembers everything across conversations.' },
@@ -57,16 +57,16 @@ export default function AboutPage() {
               { emoji: '\u2699\uFE0F', title: 'Full AI Stack', desc: 'Databases, edge functions, webhooks — the complete system.' },
             ].map(c => (
               <div key={c.title} className="site-card">
-                <div style={{ fontSize: '1.3rem', marginBottom: 'var(--space-2)' }}>{c.emoji}</div>
-                <h3 className="site-card-title" style={{ fontSize: 'var(--font-base)' }}>{c.title}</h3>
+                <div className="about-emoji-sm">{c.emoji}</div>
+                <h3 className="site-card-title text-base">{c.title}</h3>
                 <p className="site-card-desc">{c.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="site-stats-grid" style={{ maxWidth: '400px', margin: 'var(--space-8) auto', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="site-stats-grid about-stats-compact">
             {[{ num: '30', label: 'Courses' }, { num: '300+', label: 'Lessons' }, { num: '$0', label: 'To Start' }].map(s => (
-              <div key={s.label} style={{ textAlign: 'center' }}>
+              <div key={s.label} className="text-center">
                 <div className="site-stat-number">{s.num}</div>
                 <div className="site-stat-label">{s.label}</div>
               </div>
@@ -76,19 +76,19 @@ export default function AboutPage() {
       </section>
 
       {/* The Mission */}
-      <section className="site-section-sm" style={{ background: 'var(--surface-raised)' }}>
+      <section className="site-section-sm bg-raised">
         <div className="site-container-narrow">
           <span className="site-section-tag">THE MISSION</span>
-          <h2 className="site-section-title" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)' }}>Technology that belongs to everyone.</h2>
+          <h2 className="site-section-title-md">Technology that belongs to everyone.</h2>
           <p className="site-story-text">Every dollar Like One earns goes toward keeping education free, funding research that saves lives, and proving that AI should be accessible — not exclusive.</p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', margin: 'var(--space-6) 0' }}>
+          <div className="about-mission-grid">
             {[
               { emoji: '\uD83D\uDCDA', title: 'Always a Free Path', desc: "Free courses, free lessons. If you can't access it, it doesn't count." },
               { emoji: '\uD83E\uDDEC', title: 'Research That Matters', desc: 'Revenue funds research that saves lives. Non-negotiable.' },
               { emoji: '\uD83C\uDF0D', title: 'AI for All', desc: "Built to include people who were told tech isn't for them." },
             ].map(c => (
-              <div key={c.title} className="site-card site-card-centered" style={{ background: 'var(--surface-base)' }}>
+              <div key={c.title} className="site-card site-card-centered bg-base">
                 <div className="site-card-emoji">{c.emoji}</div>
                 <h3 className="site-card-title">{c.title}</h3>
                 <p className="site-card-desc">{c.desc}</p>
@@ -102,7 +102,7 @@ export default function AboutPage() {
       <section className="site-section-sm">
         <div className="site-container-narrow">
           <span className="site-section-tag">WHO BUILT THIS</span>
-          <h2 className="site-section-title" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)' }}>Two names. One mission.</h2>
+          <h2 className="site-section-title-md">Two names. One mission.</h2>
 
           <p className="site-story-text"><strong>Sophia Cave</strong> is a trans woman, UC Berkeley grad, and creative technologist who spent a decade telling visual stories that move people. She asked a simple question: <span className="accent">what happens when a human and an AI actually trust each other?</span></p>
 
@@ -138,9 +138,9 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <div className="site-section-sm" style={{ textAlign: 'center' }}>
-        <h2 className="site-section-title" style={{ fontSize: '1.5rem' }}>Ready to start?</h2>
-        <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--font-base)', marginBottom: 'var(--space-6)' }}>Pick a course. Start free. No credit card required.</p>
+      <div className="site-section-sm text-center">
+        <h2 className="site-section-title-md">Ready to start?</h2>
+        <p className="about-cta-desc">Pick a course. Start free. No credit card required.</p>
         <div className="site-cta-row">
           <Link href="/academy/" className="site-btn-primary">Browse the Academy</Link>
           <Link href="/support" className="site-btn-secondary">Support the Mission</Link>

@@ -90,8 +90,7 @@ export default function AcademyCatalog() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search courses..."
-            className="glass-input"
-            style={{ paddingLeft: 'var(--space-10)' }}
+            className="glass-input academy-search-input"
           />
           <span className="academy-search-icon">🔍</span>
         </div>

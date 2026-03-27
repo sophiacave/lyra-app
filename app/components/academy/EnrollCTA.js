@@ -31,8 +31,7 @@ function EnrollModal({ onClose }) {
     <div onClick={onClose} className="glass-modal-backdrop">
       <div
         onClick={(e) => e.stopPropagation()}
-        className="glass-modal glass-animate-up"
-        style={{ padding: 'var(--space-10) var(--space-10)' }}
+        className="glass-modal glass-animate-up enroll-modal"
       >
         {/* Close button */}
         <button onClick={onClose} className="academy-modal-close">✕</button>

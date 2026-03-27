@@ -5495,3 +5495,193 @@ html, body {
 .text-purple {
   color: var(--accent-purple);
 }
+
+/* ── Layout Utilities ── */
+
+.text-center { text-align: center; }
+.flex-1 { flex: 1; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* ── Spacing Utilities ── */
+
+.mt-2 { margin-top: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+.my-6 { margin-top: var(--space-6); margin-bottom: var(--space-6); }
+.my-8 { margin-top: var(--space-8); margin-bottom: var(--space-8); }
+.pt-0 { padding-top: 0; }
+
+/* ── Text Utilities ── */
+
+.text-accent-warm { color: var(--accent-warm); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-quaternary { color: var(--text-quaternary); }
+.text-base { font-size: var(--font-base); }
+.text-sm { font-size: var(--font-sm); }
+
+/* ── Section Title Variants ── */
+
+.site-section-title-md {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: var(--font-weight-black);
+  letter-spacing: -1px;
+  margin-bottom: var(--space-4);
+  line-height: 1.15;
+}
+
+/* ── Form Utilities ── */
+
+.app-form-group { margin-bottom: var(--space-3); }
+.app-form-actions-right { text-align: right; margin-top: var(--space-2); }
+.app-form-inline { display: flex; gap: var(--space-2); }
+.app-textarea-sm { min-height: 80px; }
+.app-textarea-md { min-height: 100px; }
+.app-select { cursor: pointer; }
+
+/* ── About Page ── */
+
+.about-emoji-sm { font-size: 1.3rem; margin-bottom: var(--space-2); }
+.about-stats-compact {
+  max-width: 400px;
+  margin: var(--space-8) auto;
+  grid-template-columns: repeat(3, 1fr);
+}
+.about-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: var(--space-6) 0;
+}
+.about-cta-desc {
+  color: var(--text-tertiary);
+  font-size: var(--font-base);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Home Page ── */
+
+.home-card-grid-narrow { max-width: 900px; margin: 0 auto; }
+.home-quote {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto var(--space-8);
+}
+.home-founder-name { color: var(--text-tertiary); font-size: var(--font-base); }
+.home-founder-detail { color: var(--text-quaternary); font-size: var(--font-sm); }
+
+/* ── Products Page ── */
+
+.products-hero-section {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(232,67,147,0.05) 0%, rgba(108,92,231,0.05) 100%);
+}
+.products-hero-inner { max-width: 700px; margin: 0 auto; }
+.products-hero-desc {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.products-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6) var(--space-20);
+}
+.product-link-reset { text-decoration: none; color: inherit; }
+
+/* ── Pricing Page ── */
+
+.pricing-hero-tag {
+  border-color: rgba(251,146,60,0.25);
+  color: var(--accent-warm);
+  background: rgba(251,146,60,0.06);
+  border-radius: var(--radius-full);
+  padding: 6px var(--space-5);
+}
+.pricing-hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: var(--space-5);
+  margin-top: var(--space-8);
+}
+.pricing-hero-desc {
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.pricing-compare-title {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: var(--space-3);
+}
+.pricing-compare-desc {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: var(--font-base);
+  margin-bottom: var(--space-10);
+}
+.pricing-faq-title {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+.pricing-cta-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: var(--space-3);
+}
+.pricing-cta-desc {
+  color: var(--text-tertiary);
+  font-size: var(--font-base);
+  margin-bottom: var(--space-6);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Checklist Overrides ── */
+
+.checklist-section-flush { padding-top: 0; padding-bottom: 4rem; }
+.checklist-section-flush-lg { padding-top: 0; padding-bottom: 6rem; }
+
+/* ── Forum Reply Thread ── */
+
+.forum-reply-thread { margin-top: var(--space-2); }
+
+/* ── Academy Course Page ── */
+
+.academy-lesson-content { flex: 1; }
+.academy-badge-sm {
+  font-size: var(--font-2xs);
+  padding: 1px 6px;
+}
+.academy-difficulty-label { margin-left: 2px; }
+.academy-search-input { padding-left: var(--space-10); }
+
+/* ── Enroll Modal ── */
+
+.glass-modal.enroll-modal {
+  padding: var(--space-10);
+}
+
+/* ── Community Access ── */
+
+.ca-honor-check {
+  margin-top: 4px;
+  accent-color: var(--accent-purple);
+}
+
+/* ── SVG Transitions ── */
+
+.svg-transition-stroke { transition: stroke-dashoffset 0.5s ease; }
+.svg-transition-stroke-fast { transition: stroke-dashoffset 0.3s ease; }
+
+/* ── Surface Variants ── */
+
+.bg-raised { background: var(--surface-raised); }
+.bg-base { background: var(--surface-base); }

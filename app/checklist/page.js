@@ -218,7 +218,7 @@ export default function ChecklistPage() {
 
       {/* ── Preview (3 items, then gate) ──────────────────────────────────── */}
       {!unlocked && (
-        <section className="checklist-hero" style={{ paddingTop: 0, paddingBottom: '4rem' }}>
+        <section className="checklist-hero checklist-section-flush">
           <h2 className="checklist-preview-label">
             Preview — 3 of 15 automations
           </h2>
@@ -289,8 +289,7 @@ export default function ChecklistPage() {
       {unlocked && (
         <section
           id="full-checklist"
-          className="checklist-hero fade-up"
-          style={{ paddingTop: 0, paddingBottom: '6rem' }}
+          className="checklist-hero fade-up checklist-section-flush-lg"
         >
           {/* Confirmation banner */}
           <div className="checklist-success-banner">

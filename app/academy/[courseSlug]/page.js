@@ -79,7 +79,7 @@ export default async function CoursePage({ params }) {
                 style={{ height: i <= diff.bars ? '12px' : '6px' }}
               />
             ))}
-            <span style={{ marginLeft: '2px' }}>{diff.label}</span>
+            <span className="academy-difficulty-label">{diff.label}</span>
           </span>
           {freeLessons > 0 && (
             <span className="glass-badge badge-green">
@@ -105,7 +105,7 @@ export default async function CoursePage({ params }) {
               {index + 1}
             </div>
 
-            <div style={{ flex: 1 }}>
+            <div className="academy-lesson-content">
               <div className="academy-lesson-title">{lesson.title}</div>
               <div className="academy-lesson-meta">
                 <span>
@@ -115,7 +115,7 @@ export default async function CoursePage({ params }) {
                    '📖 Lesson'}
                 </span>
                 {lesson.free && (
-                  <span className="glass-badge badge-green" style={{ fontSize: 'var(--font-2xs)', padding: '1px 6px' }}>
+                  <span className="glass-badge badge-green academy-badge-sm">
                     FREE
                   </span>
                 )}

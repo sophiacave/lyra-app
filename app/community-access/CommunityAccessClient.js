@@ -153,7 +153,7 @@ export default function CommunityAccessClient() {
                   type="checkbox"
                   checked={honor}
                   onChange={e => setHonor(e.target.checked)}
-                  style={{ marginTop: '4px', accentColor: 'var(--accent-purple)' }}
+                  className="ca-honor-check"
                 />
                 <label className="ca-honor-label">
                   I&rsquo;m accessing this program in good faith. I face financial or social barriers to AI education.
