@@ -76,17 +76,17 @@
     },
     {
       "id": "audio-3-2",
-      "type": "prompt",
-      "instruction": "Write a prompt asking AI to create a voice design document for a brand. Include the brand personality and ask for specific voice attributes that match.",
-      "placeholder": "Design an AI brand voice for [brand/company] that matches our personality of...",
-      "hint": "Include your brand personality (innovative, warm, authoritative, playful), target audience, content types, and any voices to avoid. Ask for: specific attributes (gender, age, accent, pace, energy), reference descriptions ('sounds like a knowledgeable friend, not a lecturer'), do's and don'ts, and sample scripts demonstrating the voice.",
+      "type": "debug",
+      "instruction": "A podcast host cloned their voice using AI to auto-generate daily news briefings. After 2 weeks, listeners are complaining the AI version sounds 'off' — same words, but something feels wrong. Diagnose the likely causes and propose fixes for each.",
+      "placeholder": "The 'off' feeling is likely caused by...",
+      "hint": "Voice clones capture pitch and timbre but miss: emotional micro-expressions, breathing patterns, speech rate variations, verbal tics, and dynamic emphasis that changes based on content significance. The clone sounds mechanically perfect, which paradoxically makes it feel uncanny.",
       "criteria": {
         "minLength": 50,
-        "keywords": ["brand", "voice", "personality", "tone", "audience", "design", "attribute"]
+        "keywords": ["emotion", "natural", "breathing", "variation", "monotone", "clone", "fix", "uncanny"]
       },
-      "badExample": "Pick a voice for our brand.",
-      "goodExample": "You are a brand voice designer. Create a voice design document for our AI education platform. Brand personality: approachable expert — we make complex tech accessible without dumbing it down. Audience: 25-45 year old professionals learning AI skills. Content types: course lessons (5-15 min), quick tips (30-60s), marketing videos (2-3 min). Design: (1) Primary voice attributes (gender, age, accent, pace, warmth level). (2) Reference description ('sounds like...'). (3) 3 sample scripts demonstrating the voice in different content types. (4) Voice do's and don'ts (do: conversational, encouraging. Don't: condescending, overly casual, monotone). (5) TTS platform recommendation for this voice profile.",
-      "successMessage": "A voice design document ensures consistency across all audio content. Your brand voice should be as intentional as your visual brand."
+      "badExample": "The AI voice technology isn't good enough yet. Wait for better models.",
+      "goodExample": "Diagnosis — 5 causes of the 'uncanny valley' effect:\n\n1) FLAT EMOTIONAL RANGE: The clone maintains one emotional register. Real hosts get excited about big stories and somber for serious ones. Fix: generate separate takes with different emotion settings per story segment, stitch together.\n\n2) MISSING BREATH PATTERNS: Real speech has audible breaths, slight pauses mid-thought for emphasis. Clones often have unnaturally clean audio. Fix: add synthetic breathing and micro-pauses between phrases.\n\n3) CONSTANT PACE: Real hosts speed up for exciting content, slow down for complex points. Fix: use SSML controls to vary speed per section (1.1x for quick items, 0.9x for important analysis).\n\n4) NO VERBAL FILLERS: Perfect speech sounds robotic. Real hosts say 'now' or 'so' as natural transitions. Fix: script in 2-3 casual fillers per segment.\n\n5) MISSING EMPHASIS VARIATION: The clone emphasizes words based on text position, not semantic importance. Fix: manually mark key words for emphasis in each script.\n\nCombined: treat the clone as a rough take and 'humanize' it in post-production.",
+      "successMessage": "The uncanny valley in voice is about what's MISSING, not what's wrong. Imperfection is what makes voices sound human."
     }
   ],
   "04-podcast-production": [
@@ -226,17 +226,18 @@
     },
     {
       "id": "audio-8-2",
-      "type": "prompt",
-      "instruction": "Write a prompt asking AI to design the conversation flow for a voice assistant that handles appointment booking. Include edge cases like schedule conflicts, cancellations, and multi-step confirmations.",
-      "placeholder": "Design a voice conversation flow for booking appointments...",
-      "hint": "Include: what type of appointments, available slots, confirmation requirements. Ask for: the complete conversation tree with branches for each user response, handling for ambiguous dates ('next Tuesday'), confirmation before booking, handling conflicts ('that slot is taken, here are alternatives'), cancellation flow, and reminder system.",
+      "type": "rewrite",
+      "instruction": "This voice interface script is terrible UX. Rewrite it to be natural and conversational:\n\n'Welcome to TechCo support. Press 1 for billing. Press 2 for technical support. Press 3 for sales. Press 4 for other inquiries. Press 9 to repeat these options.'",
+      "placeholder": "Rewritten voice interface: ...",
+      "hint": "Replace the phone tree with natural language understanding. Let users state their problem in their own words, route intelligently, and handle the most common reason for calling proactively. Nobody wants to listen to a menu of 5 options.",
       "criteria": {
         "minLength": 50,
-        "keywords": ["appointment", "book", "schedule", "confirm", "conflict", "cancel", "voice"]
+        "keywords": ["natural", "tell me", "help", "understand", "how can"],
+        "mustNotInclude": ["Press 1"]
       },
-      "badExample": "Design a voice bot that books appointments.",
-      "goodExample": "You are a conversational UX designer. Design a voice flow for booking medical appointments. Context: patients call to schedule with a specific doctor, appointments are 30 or 60 minutes, available M-F 9am-5pm. Design the complete flow including: (1) Identify patient (name + DOB for verification). (2) Appointment type selection (checkup, follow-up, urgent). (3) Doctor preference (specific or next available). (4) Date/time negotiation — handle: 'next week sometime', 'Tuesday or Wednesday afternoon', 'ASAP.' (5) Conflict handling — 'Dr. Smith is full Tuesday. Available: Wednesday 2pm or Thursday 10am.' (6) Confirmation — repeat all details, get verbal 'yes.' (7) Edge cases: patient changes mind mid-flow, patient is new (no record), patient needs to cancel existing appointment. Show as a conversation tree with user intent branches.",
-      "successMessage": "Appointment booking is one of the highest-value voice interface use cases. The edge cases (conflicts, changes, new patients) are where great design matters."
+      "badExample": "Reduce to 3 options: press 1 for billing, 2 for technical, 3 for other.",
+      "goodExample": "REWRITTEN: 'Hi, you've reached TechCo support. Just tell me what's going on and I'll get you to the right person.'\n\n[If known outage active]: 'Quick heads-up: we're aware of an issue affecting email sync and expect it resolved by 3 PM. If that's why you're calling, I can text you when it's fixed. Otherwise, go ahead and tell me how I can help.'\n\n[User speaks naturally]: AI classifies intent and routes. Billing language -> billing team. Technical keywords (error, broken, not working) -> support with automated troubleshooting first. Pricing questions -> sales.\n\n[If AI can't classify]: 'I want to make sure I connect you with the right person. Is this about a bill, a technical issue, or something else?'\n\n[At any point]: If user says 'representative' or 'human', immediately connect: 'Absolutely, connecting you now. About a 2-minute wait.'\n\nDesign principle: let people speak naturally, handle the #1 reason proactively, and never make anyone listen to options they don't need.",
+      "successMessage": "Phone trees are 1990s UX. Natural language voice interfaces let users state their problem and get routed instantly — no menu memorization required."
     }
   ],
   "09-audio-editing-with-ai": [

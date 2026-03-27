@@ -76,17 +76,17 @@
     },
     {
       "id": "conv-3-2",
-      "type": "freeform",
-      "instruction": "Design a memory evolution system: how does the AI update its understanding of you over time? Cover: how new info relates to old, confidence scoring, and handling contradictions.",
-      "placeholder": "New info: ... Confidence: ... Contradictions: ...",
-      "hint": "Never overwrite — create versioned entries. Confidence starts at 0.3 for one observation, increases with repetition. Contradictions: first occurrence = log, don't change. Third occurrence = flag as preference shift, ask user to confirm.",
+      "type": "debug",
+      "instruction": "A convergent AI stores 50,000 memories over 6 months and has become slow and confused — retrieving irrelevant old memories that contradict current information. The user said 'I'm vegetarian' 5 months ago but started eating meat 2 months ago. The AI keeps suggesting vegetarian restaurants. Diagnose the memory system flaw and propose fixes.",
+      "placeholder": "The flaw is... Fix: ...",
+      "hint": "The flaw: no forgetting mechanism, no temporal decay, no contradiction detection. The 5-month-old 'vegetarian' memory has the same weight as the 2-month-old behavior change. Fix: temporal decay (older memories rank lower), contradiction detection (new observations supersede old statements), and memory consolidation.",
       "criteria": {
         "minLength": 80,
-        "keywords": ["update", "confidence", "contradict", "evolve", "override", "time", "version", "observe"]
+        "keywords": ["decay", "contradict", "old", "new", "supersede", "confidence", "fix", "memory"]
       },
-      "badExample": "When you learn something new, update the database. If there's a contradiction, use newer info.",
-      "goodExample": "Never overwrite — create versioned entries. Old: { diet: 'vegetarian', confidence: 0.9, observations: 47 }. User orders chicken: new entry { diet: 'flexitarian', confidence: 0.3, observations: 1 }. Both coexist.\n\nConfidence: initial observation = 0.3. Each reinforcement +0.1 (diminishing). 5 consistent = 0.8. 10+ = 0.95. Decay: no reinforcement in 90 days -> -0.1/month.\n\nContradictions: 1st occurrence: log, don't change (might be exception). 2nd: reduce old confidence by 0.1, increase new to 0.4. 3rd: flag 'preference shift detected' — ask: 'I noticed you've been eating meat. Update dietary preferences or is this temporary?'\n\nContext-dependent: 'vegetarian at home, flexible traveling' = conditional preference, not contradiction. System learns context rules through observation.",
-      "successMessage": "Nuanced evolution handling the messy reality of human preferences: they change gradually, have context, and sometimes contradict themselves. Versioning over overwriting is key."
+      "badExample": "Delete old memories when storage is full.",
+      "goodExample": "FLAW: The memory system treats all entries equally regardless of age. The explicit statement 'I'm vegetarian' (5 months ago, confidence 1.0) permanently outranks implicit behavioral observations (ordering meat 8 times in 2 months). No temporal decay, no contradiction detection, no distinction between stated preferences and observed behavior.\n\nFIX 1 — TEMPORAL DECAY: Memories get a relevance score that decreases over time. A preference stated 5 months ago without reinforcement decays: confidence drops from 1.0 to 0.5. Recent observations ('ordered chicken 3 times this month') start at 0.3 but accumulate quickly.\n\nFIX 2 — CONTRADICTION DETECTION: When new observations contradict stored preferences, flag it. After 3+ contradictions: mark old memory as 'superseded' and ask once: 'I noticed you've been eating meat lately. Should I update your dietary preferences, or is this temporary?' The human answer becomes the new ground truth.\n\nFIX 3 — MEMORY CONSOLIDATION: Monthly job analyzes episodic memories, extracts patterns into semantic facts, archives raw episodes. 50K memories → 500 semantic facts + 5K recent episodes. Active memory stays manageable.\n\nFIX 4 — STATED vs OBSERVED: Distinguish between what the user SAID ('I'm vegetarian') and what the user DOES (orders meat). When they conflict, observed behavior gets increasing weight over time, but explicit statements can only be overridden by asking the user.",
+      "successMessage": "Memory without forgetting and contradiction handling is the most common convergence bug. Temporal decay + contradiction detection + consolidation keeps memory accurate over time."
     }
   ],
   "emotional-intelligence-for-ai": [
@@ -226,17 +226,18 @@
     },
     {
       "id": "conv-8-2",
-      "type": "prompt",
-      "instruction": "Design a 10-minute automated weekly review for a Life OS. It should surface cross-domain insights and propose specific adjustments for the coming week.",
-      "placeholder": "Section 1: ... Insights: ... Adjustments: ...",
-      "hint": "Sections: health scorecard, work metrics, financial snapshot, relationship check, cross-domain insights, next week adjustments. The insights should connect dots across domains, not just report each in isolation.",
+      "type": "rewrite",
+      "instruction": "This Life OS weekly review is useless because it reports each domain in isolation with no cross-domain insights. Rewrite it to surface the connections between domains:\n\n'Weekly Summary: Work — 47 hours, 12 tasks done. Health — slept 6.8h avg, exercised 3 times. Money — spent $1,240 of $1,500 budget, dining over by $60. Relationships — talked to 8 people. Have a great week!'",
+      "placeholder": "Rewritten weekly review with cross-domain insights: ...",
+      "hint": "The key problem: each domain is reported as if it exists in isolation. A convergent Life OS should connect the dots: WHY was sleep bad (too many meetings), WHY was dining over budget (late work nights → delivery), WHO was missed (Mom, 14 days). The insights should drive specific adjustments for next week.",
       "criteria": {
         "minLength": 70,
-        "keywords": ["weekly", "review", "insight", "adjustment", "health", "work", "finance", "relationship"]
+        "keywords": ["insight", "because", "connect", "adjustment", "next week", "pattern"],
+        "mustNotInclude": ["Have a great week"]
       },
-      "badExample": "Review each area. Make adjustments based on what happened.",
-      "goodExample": "Weekly Review (Sunday 7pm):\n\n1) HEALTH: Sleep avg 6.8h (goal 7.5). Exercise 3/4 sessions. Insight: sleep dropped below 7h on Wed/Thu — both late-meeting days.\n\n2) WORK: 47 hours (target 40). 12/15 tasks done. 18 meeting hours (45%). Insight: 6 back-to-back meetings Tuesday crashed afternoon output.\n\n3) MONEY: $1,240 / $1,500 budget. Dining +$60 over. Insight: dining overspend correlates with late work nights (you order delivery past 7pm).\n\n4) RELATIONSHIPS: Connected with 8 people. Missed: Mom (14 days), Alex (no response — follow up?).\n\n5) CROSS-DOMAIN: worst sleep followed highest meeting-load days. Proposal: cap meetings at 4h/day.\n\n6) ADJUSTMENTS [auto-applied unless overridden]: meetings capped 4h/day (3 moved), meal prep Sunday to reduce delivery, call Mom blocked Tuesday evening, Wednesday workout moved to AM (better per energy data).",
-      "successMessage": "A weekly review that connects dots across domains and proposes concrete changes. This is the convergent AI's heartbeat."
+      "badExample": "Add more detail to each section but keep them separate.",
+      "goodExample": "REWRITTEN — Cross-Domain Weekly Intelligence:\n\nHEADLINE INSIGHT: Your hardest work days caused your worst sleep, which triggered your dining overspend. Here's the chain:\n\nTuesday had 6 back-to-back meetings (4.5h). You worked until 8pm to catch up. Ordered delivery ($28). Slept 5.9h. Wednesday: low energy, skipped workout, another late night, another delivery ($22). This pattern repeated Thursday.\n\nBY THE NUMBERS: Work: 47h (target 40) — 7 extra hours concentrated on Tue-Thu. Health: 6.8h sleep avg, but Tue-Thu averaged 6.1h. Missed 1 of 4 workouts. Finance: $60 dining overage maps directly to 3 late-night delivery orders. Relationships: connected with 8 people. MISSED: Mom (14 days — unusual), Alex (sent message, no reply — follow up?).\n\nNEXT WEEK ADJUSTMENTS (auto-applied unless you override): 1) Tuesday meetings capped at 3h (moved 2 to Wednesday morning). 2) Wednesday workout moved to 7am (energy data shows AM works better). 3) Meal prep: Sunday batch cook to eliminate late-night delivery trigger. 4) Mom: call blocked Tuesday 7pm. 5) Alex: gentle follow-up drafted for your review.\n\nTHE ONE THING: Protecting Tuesday from meeting overload fixes sleep, dining, and energy in one move.",
+      "successMessage": "That's the difference between a report and intelligence. Cross-domain insights reveal root causes, and 'the one thing' focuses your attention where it matters most."
     }
   ],
   "the-future-of-human-ai": [
