@@ -2077,12 +2077,8 @@
   padding-top: var(--space-2);
 }
 
-/* Auto-expanded state — softer entry animation */
-.immersive-console-expanded .immersive-console-body {
-  animation: immersive-console-reveal 0.5s var(--ease-out) both;
-}
-
-@keyframes immersive-console-reveal {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Expanded section gets subtle border glow */
+.immersive-console-expanded .immersive-console-tab {
+  border-color: rgba(192,132,252,0.2);
+  background: var(--surface-elevated);
 }
