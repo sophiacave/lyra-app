@@ -24,6 +24,8 @@
         "minLength": 50,
         "keywords": ["AI", "could", "help", "time", "task", "weekly", "repetitive", "automate"]
       },
+      "badExample": "Writing emails. Making posts. Doing reports.",
+      "goodExample": "1. Writing 5 social captions per week — AI could draft first versions in my brand voice, cutting creation time from 2 hours to 30 minutes. 2. Monthly performance reports — AI could pull metrics from GA and Shopify and write the narrative summary. 3. Answering 10+ identical DMs weekly — AI could generate templated FAQ responses, saving 45 minutes per week.",
       "successMessage": "You just identified your AI quick wins. Start with the most repetitive one — that's where the ROI lives."
     }
   ],

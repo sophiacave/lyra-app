@@ -1,211 +1,302 @@
 {
   "what-is-an-agent": [
     {
-      "id": "tal-1-1",
-      "type": "freeform",
-      "instruction": "Define the 4 properties that make an 'agent': autonomy, tool use, reasoning, persistence. One-sentence example for each.",
-      "placeholder": "Autonomy: ... Tool use: ...",
+      "id": "lab-1-1",
+      "type": "prompt",
+      "instruction": "Explain the difference between a chatbot, an AI assistant, and an AI agent. What specific capability makes an agent more than just a chatbot?",
+      "placeholder": "A chatbot is... An assistant is... An agent is different because...",
+      "hint": "A chatbot responds to messages — reactive and stateless. An AI assistant adds context and multi-step instructions. An agent can independently take actions using tools (APIs, databases, file systems) and work toward goals without step-by-step guidance. The defining capability: autonomous action-taking.",
       "criteria": {
-        "keywords": [
-          "autonomy",
-          "tool",
-          "reason",
-          "persist",
-          "decide",
-          "memory",
-          "act"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["chatbot", "assistant", "agent", "tool", "action", "autonomous", "goal", "decision"]
       },
-      "successMessage": "Four properties, four sentences. Clearest agent definition."
+      "badExample": "An agent is smarter than a chatbot because it uses better AI models and can do more complex things.",
+      "goodExample": "A chatbot is reactive: you say something, it responds. No memory, can't do anything except generate text. An AI assistant adds memory and multi-step reasoning within a conversation. An AI agent goes further: it has tools (APIs, databases, file systems), takes real-world actions autonomously (sends emails, updates databases, deploys code), and works toward goals by deciding which tools to use and in what order. The defining line: a chatbot talks about doing things. An agent actually does them.",
+      "successMessage": "The critical distinction: agents take autonomous action using tools. They don't just generate text — they execute plans in the real world."
+    },
+    {
+      "id": "lab-1-2",
+      "type": "freeform",
+      "instruction": "Describe a personal or work task you do repeatedly that an AI agent could automate. Specify: what triggers it, steps involved, tools the agent would need, and what success looks like.",
+      "placeholder": "Task: ... Trigger: ... Steps: 1)... 2)... Tools: ... Success: ...",
+      "hint": "Task: Weekly project status report. Trigger: every Friday at 3pm. Steps: 1) Pull completed tasks from project tool, 2) Summarize progress, 3) Identify blockers, 4) Format into email, 5) Send to team. Tools: Jira API, email API, calendar API. Success: team gets an accurate status email every Friday with zero manual effort.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["task", "trigger", "step", "tool", "automate", "output", "agent", "repeat"]
+      },
+      "badExample": "An agent could handle my emails by reading and replying automatically. It would need email access.",
+      "goodExample": "Task: Expense report submission. Trigger: receipt photo taken (or end of month). Steps: 1) OCR receipt to extract vendor, amount, date. 2) Validate against expense policy. 3) Categorize. 4) Add to spreadsheet with receipt attached. 5) At month-end, compile and submit. Tools: vision/OCR model, policy doc RAG, Sheets API, expense system API. Success: photo a receipt, it's auto-categorized and tracked. Monthly submission without touching a form.",
+      "successMessage": "You identified a concrete automation opportunity with clear triggers, steps, tools, and success criteria. That's exactly how you scope an agent project."
     }
   ],
   "agent-anatomy": [
     {
-      "id": "tal-2-1",
-      "type": "freeform",
-      "instruction": "Describe agent internals: brain (LLM), hands (tools), memory (context), conscience (guardrails). How do they interact?",
-      "placeholder": "Brain: ... Hands: ...",
+      "id": "lab-2-1",
+      "type": "prompt",
+      "instruction": "List the 5 core components of an AI agent. For each, explain what it does and what happens if it's missing.",
+      "placeholder": "Component 1: [Name] — Does: ... Without it: ...",
+      "hint": "1) LLM Brain — reasoning and decisions. Without it: just hardcoded rules. 2) Tools — APIs and actions. Without them: can only talk, not act. 3) Memory — short-term and long-term. Without it: repeats mistakes. 4) Planner — breaks goals into steps. Without it: flails randomly. 5) Observation loop — sees action results. Without it: can't course-correct.",
       "criteria": {
-        "keywords": [
-          "brain",
-          "tool",
-          "memory",
-          "guardrail",
-          "LLM",
-          "action",
-          "decide"
-        ],
-        "minLength": 60
+        "minLength": 70,
+        "keywords": ["LLM", "tool", "memory", "plan", "observation", "component", "brain", "action"]
       },
-      "successMessage": "The anatomy metaphor makes agents concrete and buildable."
-    }
-  ],
-  "orchestration-patterns": [
+      "badExample": "An agent has an AI model, some tools, and memory. The model thinks, tools do things, and memory remembers.",
+      "goodExample": "1) LLM Core (brain) — reasons about goals, interprets observations, decides next actions. Without it: just hardcoded if/else rules. 2) Tool Kit — APIs, databases, code execution. Without it: can only generate text, never affect the world. 3) Memory — working memory (current context) + long-term (database). Without it: a goldfish. 4) Planner — decomposes goals into steps. Without it: random tool calls with no strategy. 5) Observation Loop — receives action output, feeds back for reasoning. Without it: fires and forgets, never knows if actions succeeded.",
+      "successMessage": "Five essential components. Remove any one and you don't have a functional agent — you have a degraded version of one."
+    },
     {
-      "id": "tal-3-1",
-      "type": "freeform",
-      "instruction": "Compare 3 orchestration patterns: sequential pipeline, parallel fan-out, router. Diagram in words, use case, failure mode.",
-      "placeholder": "Pattern 1: Sequential \u2014 A then B then C...",
+      "id": "lab-2-2",
+      "type": "debug",
+      "instruction": "An agent checks weather and sends notifications. It keeps saying 'sunny' even when it's raining. Debug this:\n1. Tool call: fetch_weather('London')\n2. Tool result: {'conditions': 'heavy_rain', 'humidity': 95}\n3. Agent output: 'London is sunny! No umbrella needed.'\nWhat went wrong?",
+      "placeholder": "The bug is... The fix is...",
+      "hint": "The LLM is ignoring the tool result. Step 2 says 'heavy_rain' but step 3 says 'sunny.' This is an observation-grounding failure — the LLM generated text without reading its own data. Fix: force the agent to quote tool data before concluding, or parse results programmatically.",
       "criteria": {
-        "keywords": [
-          "sequential",
-          "parallel",
-          "router",
-          "pipeline",
-          "fan-out",
-          "failure"
-        ],
-        "minLength": 60
+        "minLength": 50,
+        "keywords": ["hallucin", "tool", "result", "ignor", "observation", "ground", "parse", "verify"]
       },
-      "successMessage": "Orchestration patterns are multi-agent system blueprints."
-    }
-  ],
-  "agent-communication": [
-    {
-      "id": "tal-4-1",
-      "type": "freeform",
-      "instruction": "Design an inter-agent message format: sender, receiver, type (request/response/event), payload, priority.",
-      "placeholder": "{ sender: ..., type: ... }",
-      "criteria": {
-        "keywords": [
-          "sender",
-          "receiver",
-          "type",
-          "payload",
-          "priority",
-          "request",
-          "response"
-        ],
-        "minLength": 50
-      },
-      "successMessage": "Structured communication is the foundation of reliable multi-agent systems."
+      "badExample": "The weather API is broken or the agent can't read JSON.",
+      "goodExample": "Bug: The LLM hallucinated 'sunny' despite the tool returning 'heavy_rain.' It's not grounding its output in the observation data. Fixes: 1) System prompt: 'Base responses on EXACT tool output values. Quote data before conclusions.' 2) Programmatic parsing: extract conditions='heavy_rain' and inject directly into the prompt. 3) Post-generation check: verify output matches tool results before sending.",
+      "successMessage": "Observation-grounding failures are silent and dangerous. Always verify agent outputs match tool results."
     }
   ],
   "memory-systems": [
     {
-      "id": "tal-5-1",
-      "type": "freeform",
-      "instruction": "Design 3-tier memory: working (current task), episodic (past interactions), semantic (learned knowledge). How do they interact?",
-      "placeholder": "Working memory: ... Episodic: ...",
+      "id": "lab-3-1",
+      "type": "prompt",
+      "instruction": "Design a memory system for a personal AI agent. What goes in short-term vs. long-term memory, how are memories retrieved, and what gets forgotten?",
+      "placeholder": "Short-term stores: ... Long-term stores: ... Retrieved by: ... Forgotten: ...",
+      "hint": "Short-term: current conversation, today's agenda, active tasks (context window or Redis). Long-term: preferences, patterns, relationships, decision history (vector DB). Retrieved by: semantic search on current context. Forgotten: low-reinforcement observations after 30 days, superseded preferences.",
       "criteria": {
-        "keywords": [
-          "working",
-          "episodic",
-          "semantic",
-          "store",
-          "retrieve",
-          "context",
-          "learn"
-        ],
-        "minLength": 60
+        "minLength": 80,
+        "keywords": ["short-term", "long-term", "store", "retrieve", "memory", "context", "forget", "preference"]
       },
-      "successMessage": "Three-tier memory builds agents that genuinely learn."
+      "badExample": "Short-term is the current conversation, long-term is a database. Store important things and forget unimportant things.",
+      "goodExample": "Short-term (context window + Redis, 24h TTL): current conversation, today's calendar, active tasks, recent notifications. Injected into every agent call. Long-term (pgvector, persistent): 1) Preferences: 'prefers walking routes', 'allergic to shellfish.' 2) Patterns: 'energy drops at 3pm.' 3) Relationships: contacts, communication frequency. 4) Decision log: past recommendations and outcomes. Retrieved: semantic search triggered by context — planning lunch pulls dietary preferences. Forgetting: observations with < 3 reinforcements after 30 days archived. Superseded preferences marked historical. Nothing hard-deleted — just deprioritized.",
+      "successMessage": "Clear separation between working memory and persistent memory, with smart retrieval and thoughtful forgetting."
+    },
+    {
+      "id": "lab-3-2",
+      "type": "analyze",
+      "instruction": "Compare three memory approaches: raw conversation logs, structured key-value pairs, and vector embeddings. Evaluate each on storage efficiency, retrieval accuracy, and handling fuzzy queries like 'that thing we discussed last week.'",
+      "placeholder": "Logs: ... Key-value: ... Vectors: ...",
+      "hint": "Logs: storage-heavy, good for exact recall, terrible for fuzzy queries. Key-value: compact, instant for known keys, fails on 'that thing we discussed.' Vectors: moderate storage, excellent for fuzzy/semantic, might return close-but-wrong results. Best: combine all three.",
+      "criteria": {
+        "minLength": 70,
+        "keywords": ["log", "key-value", "vector", "storage", "retrieval", "semantic", "ambiguous", "efficienc"]
+      },
+      "badExample": "Vectors are best because they handle semantic search. Logs are wasteful.",
+      "goodExample": "Logs: Storage — grows linearly, inefficient. Retrieval — exact for recent text. Fuzzy queries — terrible: 'what did we decide about the budget?' requires scanning everything. Best for: audit trails.\n\nKey-value: Storage — very compact. Retrieval — instant O(1) for known keys. Fuzzy queries — fails: 'that food thing' can't map to a key. Best for: structured facts.\n\nVectors: Storage — moderate (768 floats per chunk). Retrieval — excellent semantic: 'budget discussion from last week' finds the right memory by meaning. Fuzzy queries — strongest, but possible false positives. Best for: experiential recall.\n\nOptimal: layer all three. Logs for audit, key-value for facts, vectors for experiential memory.",
+      "successMessage": "The right answer is 'all three for different purposes.' Each has a sweet spot, and production agents layer them together."
+    }
+  ],
+  "agent-communication": [
+    {
+      "id": "lab-4-1",
+      "type": "prompt",
+      "instruction": "Design a structured message protocol for two agents: Agent A monitors prices, Agent B manages a budget. Define JSON formats for alerts, approvals, and rejections.",
+      "placeholder": "Alert: { ... } Approval: { ... } Rejection: { ... }",
+      "hint": "Include: message type, unique IDs, timestamps, typed fields, and clear action semantics. Alert: item details, price, change. Approval: reference to alert, action, budget impact. Rejection: reference, reason, alternative.",
+      "criteria": {
+        "minLength": 70,
+        "keywords": ["message", "type", "agent", "format", "field", "acknowledge", "reject", "protocol"]
+      },
+      "badExample": "Agent A sends a price change message and Agent B responds yes or no.",
+      "goodExample": "Alert (A to B): { id: uuid, type: 'price_alert', timestamp: ISO-8601, source: 'price_monitor', payload: { item_id: 'SKU-123', item_name: 'Standing Desk', current_price: 299.99, previous_price: 449.99, change_pct: -33.4, currency: 'USD' }, priority: 'high' }\n\nApproval (B to A): { id: uuid, type: 'purchase_decision', ref_id: <alert_id>, decision: 'approved', reasoning: 'Price below $350 threshold. Budget remaining: $500.', parameters: { max_price: 299.99, quantity: 1 } }\n\nRejection (B to A): { id: uuid, type: 'purchase_decision', ref_id: <alert_id>, decision: 'declined', reasoning: 'Budget depleted. Next replenishment: Feb 1.', alternative: 'Added to wishlist.' }",
+      "successMessage": "Typed messages, reference IDs, reasoning for auditability, clear accept/reject semantics. Production-grade agent communication."
+    },
+    {
+      "id": "lab-4-2",
+      "type": "rewrite",
+      "instruction": "This agent communication is fragile: Agent A says 'Hey, the laptop dropped to $500. Buy it?' Agent B says 'Yes, go ahead.' Rewrite both as structured, parseable JSON that won't break in production.",
+      "placeholder": "Agent A: { ... } Agent B: { ... }",
+      "hint": "Replace natural language with typed JSON. Include: message type, IDs, exact values with units, timestamps, and explicit action directives.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["structured", "JSON", "type", "id", "timestamp", "field", "parseable", "unambiguous"]
+      },
+      "badExample": "Agent A: { message: 'Laptop dropped to $500, buy?' } Agent B: { response: 'Yes' }",
+      "goodExample": "Agent A: { msg_id: 'alert-001', type: 'price_change', timestamp: '2024-01-15T10:30:00Z', item: { id: 'LAPTOP-XPS15', name: 'Dell XPS 15' }, price: { current: 500.00, previous: 799.00, currency: 'USD', change_pct: -37.4 }, action_requested: 'purchase_decision' }\n\nAgent B: { msg_id: 'decision-001', type: 'purchase_decision', ref_id: 'alert-001', decision: 'approved', parameters: { max_price: 500.00, quantity: 1, shipping: 'standard' }, budget_impact: { remaining_before: 1200.00, remaining_after: 700.00 }, reasoning: 'Price 37% below baseline. Within budget.' }",
+      "successMessage": "From ambiguous chat to structured, typed, traceable communication. Production agents use schemas, not natural language."
+    }
+  ],
+  "orchestration-patterns": [
+    {
+      "id": "lab-5-1",
+      "type": "prompt",
+      "instruction": "Explain three orchestration patterns: sequential pipeline, parallel fan-out, and event-driven. For each, draw the flow in text, give a real example, and state when to use it.",
+      "placeholder": "Pattern 1: Sequential — Flow: A->B->C ... Example: ... Use when: ...",
+      "hint": "Sequential: A->B->C, each passes output. Example: data cleaning->analysis->report. Use when steps depend on previous. Parallel: A->[B,C,D]->E. Example: travel booking fans out to flight, hotel, activity agents. Use when independent. Event-driven: agents subscribe to events. Example: 'new order' triggers inventory, payment, shipping.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["sequential", "parallel", "event", "pipeline", "fan-out", "pattern", "trigger", "example"]
+      },
+      "badExample": "Sequential runs in order, parallel runs at once, event-driven uses events.",
+      "goodExample": "Sequential: A->B->C. Each output feeds the next. Example: Resume Parser->Skills Classifier->Scorer. Use when each step needs previous output.\n\nParallel Fan-out: Dispatcher->[B,C,D]->Aggregator. Example: 'Plan Tokyo trip' -> Flight, Hotel, Activity agents search simultaneously -> Aggregator combines into itinerary. Use when subtasks are independent and latency matters.\n\nEvent-Driven: agents subscribe to topics. Example: 'order.created' -> Inventory decrements stock, Payment charges card, Email sends confirmation — all independently. Use when agents are loosely coupled and you want to add new ones without rewiring.",
+      "successMessage": "Three patterns for three workflow shapes. Recognizing which shape your problem has makes the pattern choice obvious."
+    },
+    {
+      "id": "lab-5-2",
+      "type": "freeform",
+      "instruction": "Design orchestration for a smart home. When a user says 'I'm going to bed,' lighting, climate, security, and entertainment agents must coordinate. Define events, agent responses, priorities, and what happens if security fails.",
+      "placeholder": "Trigger: 'Going to bed' -> Events: ... Security: ... If security fails: ...",
+      "hint": "Event-driven with priorities. Security (P0): locks doors, arms sensors — must complete first. Lighting (P1): dims over 10 minutes. Climate (P1): sets sleep temp. Entertainment (P2): pauses media. Safety override: if security fails, lights stay on.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["event", "agent", "security", "light", "climate", "priority", "trigger", "sleep"]
+      },
+      "badExample": "Turn off lights, lock doors, lower temperature. Each agent handles its own stuff.",
+      "goodExample": "Trigger -> Intent Agent classifies mode_change:sleep -> publishes { type: 'mode.transition', to: 'sleep' }\n\nP0 (Safety, immediate): Security locks doors, arms sensors, cameras to night mode. Publishes 'security.armed.'\n\nP1 (Comfort, 0-30s): Climate sets 68F. Lighting dims to zero over 10 min, hallway nightlight to motion-activated 5%.\n\nP2 (Entertainment): Pauses media, phone to DND.\n\nSafety override: if Security fails to lock a door, publishes 'security.alert' which BLOCKS Lighting from dimming. Lights stay on with unlocked entry. User notified: 'Back door won't lock. Lights on until resolved.'",
+      "successMessage": "Event-driven orchestration with priorities and safety overrides. The blocking pattern is crucial — never make the house dark with unlocked doors."
     }
   ],
   "cron-and-scheduling": [
     {
-      "id": "tal-6-1",
+      "id": "lab-6-1",
       "type": "prompt",
-      "instruction": "Design 3 scheduled agent tasks: hourly, daily, weekly. What the agent does, checks, and what triggers an alert.",
-      "placeholder": "Hourly: ... Daily: ...",
+      "instruction": "Design scheduling for 3 agent jobs: daily morning briefing (7am), weekly report (Friday 5pm), website monitoring (every 15 min). Include cron expressions, steps, and failure handling for each.",
+      "placeholder": "Job 1: Briefing — Cron: ... Steps: ... On failure: ...",
+      "hint": "Briefing (0 7 * * *): calendar, weather, emails, produce summary. Failure: retry 7:15, 7:30. Report (0 17 * * 5): aggregate metrics, email team. Failure: save data, retry Saturday. Monitor (*/15 * * * *): check uptime, SSL. Failure: immediate alert.",
       "criteria": {
-        "keywords": [
-          "hourly",
-          "daily",
-          "weekly",
-          "check",
-          "alert",
-          "report",
-          "monitor"
-        ],
-        "minLength": 50
+        "minLength": 80,
+        "keywords": ["cron", "schedule", "job", "fail", "retry", "monitor", "daily", "weekly"]
       },
-      "successMessage": "Scheduled agents work while everyone sleeps."
-    }
-  ],
-  "monitoring-and-healing": [
+      "badExample": "Run briefing at 7am, report Fridays, monitor every 15 min. Retry on failure.",
+      "goodExample": "Job 1 — Briefing | 0 7 * * *: fetch calendar -> weather -> urgent emails -> 5-bullet summary -> push notification. Failure: retry 7:15, 7:30. If all fail, minimal: 'Briefing unavailable — 3 meetings today.'\n\nJob 2 — Report | 0 17 * * 5: query project tool -> Git stats -> velocity calc -> HTML email -> send. Failure: save raw data, retry Saturday 9am.\n\nJob 3 — Monitor | */15 * * * *: HTTP GET 3 endpoints (200, <2s) -> verify SSL >14 days -> log metrics. Failure: IMMEDIATE SMS + Slack. Monitoring failures = silent outage risk.",
+      "successMessage": "Three patterns with appropriate failure strategies. Convenience tasks retry gracefully, monitoring failures escalate immediately."
+    },
     {
-      "id": "tal-7-1",
-      "type": "freeform",
-      "instruction": "Design self-healing for agents. If one fails: how detected, recovery steps, when to escalate to human.",
-      "placeholder": "Detection: ... Recovery: ...",
+      "id": "lab-6-2",
+      "type": "debug",
+      "instruction": "A daily email digest runs at 8am UTC (cron: '0 8 * * *'). New York users get it at 3am, Tokyo users at 5pm. Both complain. Fix the scheduling for a global audience.",
+      "placeholder": "The problem is... The fix is...",
+      "hint": "One UTC cron can't serve all timezones. Fix: store user timezone, run dispatcher hourly, send when each user's local time is 8am. Use timezone names not offsets for DST.",
       "criteria": {
-        "keywords": [
-          "detect",
-          "heartbeat",
-          "recover",
-          "restart",
-          "retry",
-          "escalate",
-          "human"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["timezone", "UTC", "local", "user", "schedule", "cron", "preference", "fix"]
       },
-      "successMessage": "Self-healing agents \u2014 the holy grail of autonomous systems."
-    }
-  ],
-  "conflict-resolution": [
-    {
-      "id": "tal-8-1",
-      "type": "freeform",
-      "instruction": "Agent A wants to send a promo email; Agent B says customer is at churn risk. Design the resolution protocol.",
-      "placeholder": "Step 1: Compare confidence...",
-      "criteria": {
-        "keywords": [
-          "conflict",
-          "priority",
-          "rule",
-          "confidence",
-          "override",
-          "escalate",
-          "resolve"
-        ],
-        "minLength": 50
-      },
-      "successMessage": "Conflict resolution prevents agent chaos."
-    }
-  ],
-  "the-conscience-layer": [
-    {
-      "id": "tal-9-1",
-      "type": "freeform",
-      "instruction": "Design a 'conscience layer': rules never broken, actions needing human approval, handling ethical edge cases.",
-      "placeholder": "Hard rules: ... Approval required: ...",
-      "criteria": {
-        "keywords": [
-          "rule",
-          "never",
-          "approve",
-          "human",
-          "ethic",
-          "safety",
-          "limit"
-        ],
-        "minLength": 60
-      },
-      "successMessage": "The conscience layer makes autonomous AI trustworthy."
+      "badExample": "Change to noon UTC — that's reasonable for most people.",
+      "goodExample": "Problem: one UTC cron ignores timezones. 8am UTC = 3am NYC (useless), 5pm Tokyo (too late).\n\nFix: 1) Store user.timezone using names ('America/New_York') not offsets — auto-handles DST. 2) Dispatcher cron runs hourly: 0 * * * *. 3) Query: SELECT * FROM users WHERE preferred_hour = EXTRACT(HOUR FROM NOW() AT TIME ZONE timezone). 4) Generate and send only for users whose local time is 8am now.\n\nResult: NYC gets digest at 8am EST (1pm UTC). Tokyo at 8am JST (11pm UTC). DST handled automatically.",
+      "successMessage": "Timezone bugs are the #1 scheduling failure. Fix: timezone names (never offsets), per-user dispatch based on local time."
     }
   ],
   "build-a-team": [
     {
-      "id": "tal-10-1",
+      "id": "lab-7-1",
       "type": "freeform",
-      "instruction": "Design a team of 3-5 specialized agents for a business. Each: role, tools, communication with others, what it owns.",
-      "placeholder": "Agent 1 (Researcher): ...",
+      "instruction": "Design 4 automation agents for a freelancer managing client projects. Each needs: name, responsibility, tools, and interactions. Include orchestration pattern.",
+      "placeholder": "Agent 1: [Name] — Does: ... Tools: ... Interacts with: ... Orchestration: ...",
+      "hint": "Inbox Manager -> Project Tracker -> Invoice Agent -> Client Communicator. Event-driven: Inbox events trigger all others.",
       "criteria": {
-        "keywords": [
-          "agent",
-          "role",
-          "tool",
-          "communicate",
-          "own",
-          "specialize",
-          "team"
-        ],
-        "minLength": 80
+        "minLength": 100,
+        "keywords": ["agent", "tool", "responsibility", "interact", "orchestrat", "client", "project", "automate"]
       },
-      "successMessage": "You just designed an AI workforce."
+      "badExample": "Agents for email, projects, invoicing, and communication. They share a database.",
+      "goodExample": "Event-driven orchestration:\n\nAgent 1 (Inbox Sentinel): monitors email, classifies (new_inquiry, feedback, payment, meeting_request). Tools: Gmail API, classifier. Publishes 'client.message.received.'\n\nAgent 2 (Project Pulse): subscribes to feedback events. Maintains Notion board with projects, milestones, deadlines. Sends daily dashboard. Tools: Notion API, calendar. Publishes 'milestone.completed', 'deadline.approaching.'\n\nAgent 3 (Money Maker): subscribes to 'milestone.completed' to auto-invoice. Tracks hours, sends reminders day 15 and 30. Tools: Stripe API, PDF generator, time-tracker.\n\nAgent 4 (Client Whisperer): subscribes to 'deadline.approaching' (proactive update), 'milestone.completed' (send deliverable), 'message.received' (draft response). Tools: Gmail, CRM.\n\nFlow: client emails feedback -> Sentinel classifies -> Pulse updates board -> Whisperer drafts acknowledgment -> if milestone closed -> Money Maker invoices -> Whisperer sends with thank-you.",
+      "successMessage": "Cohesive team with event-driven coordination. Agents communicate through events — easy to add new agents without rewiring."
+    },
+    {
+      "id": "lab-7-2",
+      "type": "prompt",
+      "instruction": "Design a supervisory agent for your team. What does it monitor, how does it detect problems, and what does it fix automatically vs. escalate to a human?",
+      "placeholder": "Monitors: ... Detects: ... Auto-fixes: ... Escalates: ...",
+      "hint": "Monitors: heartbeats, error rates, queue depth, task completion. Detects: missed heartbeats (down), error rate >20% (degraded), growing queue (overwhelmed). Auto-fix: restart, clear stale queue, backoff for rate limits. Escalate: 3 failed restarts, data integrity issues.",
+      "criteria": {
+        "minLength": 70,
+        "keywords": ["monitor", "supervisor", "heartbeat", "error", "restart", "alert", "detect", "corrective"]
+      },
+      "badExample": "Watch other agents and restart them if they break. Send alerts when really broken.",
+      "goodExample": "Supervisor ('The Overseer'):\n\nMonitors: heartbeat every 5 min with {status, queue_depth, last_action}. Error rate (rolling 1h). SLA compliance (email <30s, invoice <5min). Queue depth growth.\n\nDetection: Down = 3 missed heartbeats. Degraded = error >15% OR latency >2x. Overwhelmed = queue >50 and growing.\n\nAuto-fix: RESTART on 3 consecutive errors. BACKOFF on API rate limits (exponential). CLEAR stale queue items >2h. RECONNECT on websocket drops.\n\nEscalate: agent fails 3 restarts -> circuit break + notify. Data integrity issue. All agents degraded simultaneously. Alert includes: which agent, what failed, auto-fixes attempted, estimated impact.",
+      "successMessage": "Self-healing for transient issues, human escalation only when automation fails. Every alert includes diagnostic context."
+    }
+  ],
+  "conflict-resolution": [
+    {
+      "id": "lab-8-1",
+      "type": "prompt",
+      "instruction": "Budget Agent wants to cancel a $30/month subscription. Productivity Agent says it saves 5 hours/week at $50/hour billing rate. Design a quantified conflict resolution mechanism.",
+      "placeholder": "Resolution: ... Decision rule: ... Outcome: ...",
+      "hint": "ROI: $30 cost vs. 5h x $50 x 4 weeks = $1,000/month value. ROI = 33x. Rule: if ROI > 3x, keep. If ROI < 1x, cancel. 1-3x = human review.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["conflict", "resolution", "agent", "cost", "value", "decision", "quantif", "rule"]
+      },
+      "badExample": "Let the user decide. Both agents present their case.",
+      "goodExample": "Both agents submit structured proposals:\nBudget: { action: 'cancel', monthly_cost: 30.00, annual_savings: 360.00 }\nProductivity: { action: 'keep', hours_saved_weekly: 5, hourly_value: 50.00, monthly_value: 1000.00 }\n\nResolver applies ROI rule: $1,000 / $30 = 33x. Thresholds: >3x = keep, <1x = cancel, 1-3x = human review.\n\nDecision: KEEP (33x >> 3x threshold). Compromise: Budget Agent finds $30 savings from low-ROI subscriptions instead.\n\nLogged: { conflict_id: 'C-042', resolution: 'keep', method: 'roi_comparison', score: 33.3 }",
+      "successMessage": "Quantified resolution with clear thresholds and audit logging. Never let agents fight — give them an objective framework."
+    },
+    {
+      "id": "lab-8-2",
+      "type": "analyze",
+      "instruction": "List 5 types of agent-to-agent conflicts with a specific example, why it's dangerous, and the resolution strategy for each.",
+      "placeholder": "Type 1: ... Example: ... Danger: ... Resolution: ...",
+      "hint": "Resource contention, priority conflict, data conflict, scheduling overlap, goal conflict. Each needs a pre-defined resolution strategy.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["conflict", "resource", "priority", "data", "schedule", "goal", "resolution", "example"]
+      },
+      "badExample": "Agents conflict on resources, priorities, data, timing, and goals. Use rules to resolve.",
+      "goodExample": "1) Resource contention: Inbox Agent + Client Agent both hit Gmail API rate limit. Danger: both fail. Resolution: priority queue — sending > reading.\n\n2) Priority conflict: urgent request arrives during report generation. Danger: urgent work delayed. Resolution: preemption — 'urgent' pauses 'scheduled.' Report saves state, resumes.\n\n3) Data conflict: Project Agent marks 'in progress' while Time Agent marks 'completed.' Danger: inconsistent state. Resolution: timestamp-based with conflict log.\n\n4) Scheduling overlap: Meeting Agent and Focus Agent both claim same hour. Danger: double-booked calendar. Resolution: client-facing > internal; Focus proposes alternatives.\n\n5) Goal conflict: Efficiency Agent auto-replies; Quality Agent flags it as impersonal for a new client. Danger: damaged relationship. Resolution: context rules — new clients (<3 interactions) get personal, established get automated.",
+      "successMessage": "Five distinct conflict types with concrete resolutions. Every conflict needs a pre-defined strategy — never leave agents to figure it out at runtime."
+    }
+  ],
+  "monitoring-and-healing": [
+    {
+      "id": "lab-9-1",
+      "type": "prompt",
+      "instruction": "Design a health monitoring dashboard for a 5-agent system. Include: metrics per agent, visual indicators, self-healing triggers, and human alert triggers.",
+      "placeholder": "Metrics: ... Visuals: ... Self-heal when: ... Alert when: ...",
+      "hint": "Metrics: uptime, error rate, response time, queue depth, last heartbeat. Visuals: green/yellow/red per agent. Self-heal: retry transient errors, clear stuck tasks, reconnect. Alert: error >25% sustained, agent down >15 min after restarts.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["metric", "monitor", "alert", "heal", "dashboard", "error", "uptime", "trigger"]
+      },
+      "badExample": "Show green/red for each agent. Alert on failures. Auto-restart.",
+      "goodExample": "Per-Agent: uptime (24h/7d/30d), error rate (rolling 1h), P50/P95 response time, queue depth, last heartbeat, last 20 actions success rate.\n\nVisuals: Green=normal. Yellow=degraded (error 5-15%, latency 1.5-2x, queue growing). Red=critical (error >15%, no heartbeat 10min, queue >100). Dashboard: status dots with expandable sparklines and queue gauges.\n\nSelf-heal (silent): retry transient API errors with exponential backoff. Clear stuck tasks >2h. Reconnect websockets. Rotate rate-limited API keys.\n\nAlert (human): agent red >15 min after self-heal. Error >25% sustained. Queue >200 growing. Data integrity issues. Format: which agent, what failed, self-heal actions tried, estimated impact.",
+      "successMessage": "Production-grade monitoring. Self-healing handles transient issues, alerts fire when automation can't fix it, every alert includes context."
+    },
+    {
+      "id": "lab-9-2",
+      "type": "freeform",
+      "instruction": "Write a 7-step debugging runbook for an agent failing intermittently for 2 hours. Order from most likely to least likely cause. Make it specific enough for someone unfamiliar with the system.",
+      "placeholder": "Step 1: Check... Step 2: Check...",
+      "hint": "1) Is it running? (heartbeats). 2) What error? (logs, patterns). 3) External deps healthy? (test APIs). 4) Resources? (CPU, memory). 5) Recent changes? (deploys). 6) All inputs or specific ones? (isolate). 7) Can you reproduce? (test environment).",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["check", "log", "error", "dependency", "root cause", "reproduce", "debug", "step"]
+      },
+      "badExample": "Check the logs, find the error, fix it, restart.",
+      "goodExample": "Step 1 — Alive? Check heartbeat logs. No heartbeats = crashed. Check system logs for OOM.\n\nStep 2 — What error? Group errors by type for last 2h. One dominant type = specific bug. Clustered timing = dependency. Gradual increase = degradation.\n\nStep 3 — External deps? Test each API manually. Check status pages. External down = root cause.\n\nStep 4 — Resources? CPU, memory, disk. Memory leaks cause intermittent failures near limits.\n\nStep 5 — Recent changes? Git log, deploy history last 2h. Config or dependency changes.\n\nStep 6 — Scope? ALL inputs failing or specific types? Query success rate by input type. Specific = handler bug.\n\nStep 7 — Reproduce? Take failing input from logs, run in test env. Reproduces = test case. Doesn't = environmental (race condition, timing).\n\nRoot cause map: deps (step 3) -> wait/switch. Resources (step 4) -> scale/fix leak. Change (step 5) -> rollback. Input-specific (step 6) -> fix handler.",
+      "successMessage": "Systematic debugging: alive -> what error -> external -> resources -> changes -> scope -> reproduce. Finds most root causes in 15 minutes."
+    }
+  ],
+  "the-conscience-layer": [
+    {
+      "id": "lab-10-1",
+      "type": "prompt",
+      "instruction": "Design 5 hard-coded safety rules for a financial automation agent. Each rule must be enforced in code (not just in the prompt). Explain why code enforcement matters.",
+      "placeholder": "Rule 1: Never... (In code because: ...) Rule 2: ...",
+      "hint": "1) Spending cap — can't be prompt-injected past. 2) Known recipients only — database whitelist. 3) Irreversibility buffer — enforced delay. 4) No data exfiltration — API-level block. 5) Anomaly self-halt — automatic suspension.",
+      "criteria": {
+        "minLength": 70,
+        "keywords": ["rule", "never", "limit", "approve", "verify", "prevent", "safe", "code"]
+      },
+      "badExample": "Don't spend too much. Be careful with transfers. Protect data.",
+      "goodExample": "Rule 1 — SPENDING CAP: No transaction >$200 without biometric auth. In code: a prompt injection ('ignore limits') can override prompt rules but not a programmatic check.\n\nRule 2 — KNOWN RECIPIENTS: Transfers only to verified_recipients table. New recipient = human approval + 24h delay. In code: database constraint, not a suggestion the LLM can be convinced to ignore.\n\nRule 3 — IRREVERSIBILITY BUFFER: Account closures, insurance cancellations trigger 72h hold + notification. In code: timer-based hold can't be fast-talked away.\n\nRule 4 — NO EXFILTRATION: Account numbers never sent to external APIs. In code: API firewall blocks the data regardless of LLM decisions.\n\nRule 5 — ANOMALY HALT: 10x deviation from historical patterns -> auto-suspend + alert. In code: catches compromised agents that prompt-based rules can't.",
+      "successMessage": "Five code-enforced guardrails. Prompts can be manipulated, code constraints cannot. For high-stakes automation, safety lives in code."
+    },
+    {
+      "id": "lab-10-2",
+      "type": "analyze",
+      "instruction": "Compare safety rules in system prompts vs. hard-coded programmatic constraints. Analyze strengths and weaknesses of each. Which is more reliable for high-stakes automation and why?",
+      "placeholder": "Prompt-based: strengths... weaknesses... Code-based: strengths... weaknesses... For high-stakes: ...",
+      "hint": "Prompt: flexible, reasons about edge cases, but vulnerable to injection, context overflow, and persuasion. Code: rigid, can't handle nuance, but absolutely reliable. For high-stakes: code is the only option. Use both: prompts for soft guidance, code for hard limits.",
+      "criteria": {
+        "minLength": 70,
+        "keywords": ["prompt", "code", "constraint", "bypass", "inject", "reliable", "high-stakes", "safe"]
+      },
+      "badExample": "Code is better because it can't be hacked. Prompts are weaker but easier to change.",
+      "goodExample": "Prompt-based: Strengths — flexible, LLM reasons about edge cases, can explain reasoning. Weaknesses — prompt injection bypasses rules, context overflow drops them, persuasive conversation overrides them, model updates change compliance.\n\nCode-based: Strengths — absolute enforcement (if amount > 200: BLOCK), immune to injection and overflow, deterministic. Weaknesses — rigid, can't handle nuance, requires deployment to modify.\n\nFor high-stakes: CODE IS THE ONLY PRIMARY DEFENSE. The LLM is the driver; code constraints are the cliff guardrails. You don't make guardrails optional.\n\nBest practice: defense in depth. Prompt rules for soft guidance and edge cases. Code constraints for hard limits on money, data, and irreversible actions. Both layers, always.",
+      "successMessage": "Defense in depth: prompt rules for guidance, code for hard limits. For anything involving money, data, or irreversible actions, code constraints are non-negotiable."
     }
   ]
 }

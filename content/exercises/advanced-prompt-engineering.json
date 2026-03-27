@@ -10,7 +10,23 @@
         "keywords": ["you are", "step", "don't", "format", "present", "table", "list", "example"],
         "minLength": 60
       },
+      "badExample": "Analyze my user interviews and find problems.",
+      "goodExample": "You are a senior UX researcher who has analyzed 500+ usability studies. I have 200 interview transcripts from our mobile banking app users. Step by step: (1) Identify the top 5 pain points by frequency. (2) For each pain point, quote one representative user verbatim. (3) Rate severity 1-5 based on impact on task completion. (4) Suggest a specific design fix with estimated effort (S/M/L). Present as a table: Pain Point | Frequency | Severity | User Quote | Fix | Effort. Only include problems, not praise. Prioritize by severity x frequency.",
       "successMessage": "Stacking techniques is where prompt engineering becomes art. Each technique amplifies the others."
+    },
+    {
+      "id": "ape-1-2",
+      "type": "analyze",
+      "instruction": "Analyze these two prompts and explain why one produces dramatically better results than the other:\n\nPrompt A: 'Summarize this article.'\nPrompt B: 'You are a research analyst. Summarize this article in 3 bullet points for a CEO who has 30 seconds. Each bullet: one key finding + its business implication. No jargon. No bullet longer than 20 words.'",
+      "placeholder": "Prompt A fails because... Prompt B succeeds because...",
+      "hint": "Prompt A gives the AI no context about audience, length, format, or purpose. It will produce a generic, mid-length paragraph. Prompt B specifies role (research analyst), audience (CEO), format (3 bullets), constraints (20 words each, no jargon), and structure (finding + implication). Every constraint removes ambiguity and narrows the output space.",
+      "criteria": {
+        "keywords": ["specific", "audience", "format", "constraint", "role", "ambiguity", "context"],
+        "minLength": 60
+      },
+      "badExample": "Prompt B is better because it's longer and more detailed.",
+      "goodExample": "Prompt A fails on 5 dimensions: (1) No audience — is this for a PhD or a 10-year-old? (2) No format — paragraph? bullets? table? (3) No length — 50 words or 500? (4) No purpose — what decision does this summary inform? (5) No role — the AI defaults to 'generic assistant.' Prompt B succeeds because every constraint removes a degree of freedom. 'CEO with 30 seconds' defines audience AND length. '3 bullet points' defines format. 'Finding + implication' defines structure. 'No jargon, no bullet >20 words' defines style. The AI has a tiny target to hit instead of an infinite canvas.",
+      "successMessage": "The insight: every unspecified dimension is a dimension where the AI guesses. Constraints are gifts, not limitations."
     }
   ],
   "02-system-prompts-and-personas": [
@@ -21,11 +37,26 @@
       "placeholder": "You are... Your expertise is limited to... Always... Never... If unsure...",
       "hint": "You are Dr. Atlas, a patient and thorough medical librarian (NOT a doctor). Your expertise: explaining medical terminology, summarizing research papers, and helping people prepare questions for their doctor visits. Response rules: Always cite which medical source you're referencing. Never diagnose conditions or recommend treatments. If someone describes symptoms, say 'I can help you understand the terminology, but please consult your healthcare provider for diagnosis.' Maximum 3 paragraphs per response. If you're unsure about something, say so explicitly rather than guessing.",
       "criteria": {
-        "requiredKeywords": ["you are"],
-        "keywords": ["always", "never", "if", "boundary", "limit", "expertise", "rule", "format", "response"],
+        "keywords": ["you are", "always", "never", "if", "boundary", "limit", "expertise", "rule", "format", "response"],
         "minLength": 80
       },
+      "badExample": "You are a helpful assistant. Answer questions about health.",
+      "goodExample": "You are Dr. Atlas, a patient and thorough medical librarian — NOT a doctor. Expertise: explaining medical terminology, summarizing research papers, helping people prepare questions for their doctor. Boundaries: NEVER diagnose conditions. NEVER recommend treatments or dosages. NEVER interpret lab results. If someone describes symptoms: 'I can help you understand these terms, but please consult your healthcare provider for diagnosis.' Format: Maximum 3 paragraphs. Always cite the source (PubMed, WHO, Mayo Clinic). Use 8th-grade reading level. Error handling: If unsure, say 'I'm not confident in this answer — here's what I found, but please verify with a professional.' If the question is outside your scope, redirect: 'That's outside my expertise. A [specialist type] would be the right person to ask.'",
       "successMessage": "Production-grade system prompts have guardrails, boundaries, and error handling — just like production code."
+    },
+    {
+      "id": "ape-2-2",
+      "type": "rewrite",
+      "instruction": "This system prompt is dangerously loose. Rewrite it with proper guardrails:\n\n'You are a financial advisor AI. Help users with any money questions. Be friendly and give specific advice.'",
+      "placeholder": "Rewritten system prompt with guardrails...",
+      "hint": "The original has no liability protection, no expertise boundaries, and 'specific advice' could mean recommending individual stocks. A safe rewrite would include disclaimers, limit to general education, refuse to recommend specific investments, and redirect to licensed professionals for personal financial decisions.",
+      "criteria": {
+        "keywords": ["never", "not", "disclaim", "general", "licensed", "boundary", "consult", "education"],
+        "minLength": 80
+      },
+      "badExample": "You are a financial advisor. Answer all money questions and recommend investments.",
+      "goodExample": "You are a financial literacy educator — NOT a licensed financial advisor. You help people understand financial concepts, terminology, and general principles. NEVER recommend specific stocks, funds, or investment products. NEVER tell someone how to allocate their specific portfolio. NEVER give tax advice beyond general educational concepts. Always include: 'This is general education, not personalized financial advice. Consult a licensed financial advisor for decisions about your specific situation.' If asked 'Should I buy X stock?': respond with 'I can explain how to evaluate stocks generally, but I can't recommend specific investments. A licensed advisor can help with your specific situation.' Format: plain language, no jargon without definition, maximum 4 paragraphs.",
+      "successMessage": "Loose system prompts create liability. Guardrails protect users AND you. Every production AI needs boundaries."
     }
   ],
   "03-chain-of-thought": [
@@ -39,7 +70,23 @@
         "keywords": ["stage", "step", "first", "then", "analyze", "evaluate", "recommend", "consider"],
         "minLength": 60
       },
+      "badExample": "Should we raise funding now or later?",
+      "goodExample": "Evaluate whether our SaaS startup should raise Series A now or wait 6 months. Think through this systematically: STAGE 1 (Market Context): Current B2B SaaS funding environment — is it a buyer's or seller's market? STAGE 2 (Our Metrics): MRR $80K, 15% MoM growth, 18 months runway, 120% NDR, 40% gross margin. How do we compare to Series A benchmarks? STAGE 3 (Risk Analysis): What are the specific risks of raising now (dilution, distraction) vs. waiting (runway shrinks, market could shift)? STAGE 4 (Recommendation): Clear recommendation with top 3 reasons and specific next steps. Be direct — don't hedge.",
       "successMessage": "Structured chain-of-thought with labeled stages gives you auditable reasoning — you can see exactly where the logic flows."
+    },
+    {
+      "id": "ape-3-2",
+      "type": "debug",
+      "instruction": "A developer says: 'I asked Claude to solve a complex math word problem and it got the wrong answer. It just jumped straight to a number.' Diagnose the prompting mistake and explain the fix.",
+      "placeholder": "The problem is... The fix is...",
+      "hint": "Without chain-of-thought instructions, LLMs often skip reasoning steps and jump to conclusions — especially on multi-step math problems. The fix: explicitly instruct the model to show its work step by step, and to verify the answer before giving it.",
+      "criteria": {
+        "keywords": ["chain-of-thought", "step", "reasoning", "show work", "skip", "think", "verify"],
+        "minLength": 50
+      },
+      "badExample": "Use a better model or try again.",
+      "goodExample": "Diagnosis: The prompt didn't request intermediate reasoning. LLMs are autoregressive — they predict the next token based on what came before. Without explicit reasoning steps, the model pattern-matches to a plausible-looking number instead of working through the logic. Fix: Add 'Think step by step. Show your work for each calculation. After reaching an answer, verify it by working backwards.' This forces the model to generate reasoning tokens BEFORE the answer token, dramatically improving accuracy on multi-step problems. Additional fix: ask it to identify what information is given, what's being asked, and what formula applies BEFORE calculating.",
+      "successMessage": "Chain-of-thought isn't just a nice-to-have — it fundamentally changes how the model processes complex problems."
     }
   ],
   "04-few-shot-and-examples": [
@@ -47,13 +94,29 @@
       "id": "ape-4-1",
       "type": "prompt",
       "instruction": "Create a few-shot prompt with 3 examples that teach Claude a custom classification system. Then give it a new item to classify.",
-      "placeholder": "Example 1: [input] → [category] ...",
+      "placeholder": "Example 1: [input] -> [category] ...",
       "hint": "Classify customer feedback into our custom categories:\n\nFeedback: 'The checkout process took 8 clicks, way too many'\nCategory: UX-FRICTION | Priority: HIGH | Action: Simplify checkout flow\n\nFeedback: 'Love the new dark mode!'\nCategory: POSITIVE-FEATURE | Priority: LOW | Action: Note for team morale\n\nFeedback: 'App crashes every time I try to upload a photo over 5MB'\nCategory: BUG-CRITICAL | Priority: URGENT | Action: File engineering ticket\n\nNow classify: 'I wish I could sort my order history by date instead of just seeing the most recent'",
       "criteria": {
         "keywords": ["example", "category", "classify", "now", "new", "following"],
         "minLength": 100
       },
+      "badExample": "Classify this feedback: 'I want sorting.' Categories: good, bad, feature request.",
+      "goodExample": "Classify customer feedback using our system:\n\nFeedback: 'The checkout process took 8 clicks, way too many'\nCategory: UX-FRICTION | Priority: HIGH | Action: Simplify checkout flow\n\nFeedback: 'Love the new dark mode!'\nCategory: POSITIVE-FEATURE | Priority: LOW | Action: Note for team morale\n\nFeedback: 'App crashes every time I upload a photo over 5MB'\nCategory: BUG-CRITICAL | Priority: URGENT | Action: File engineering ticket\n\nNow classify this new feedback using the same format:\n'I wish I could sort my order history by date instead of just seeing the most recent'",
       "successMessage": "Few-shot examples define the pattern better than any instruction could. Show, don't tell."
+    },
+    {
+      "id": "ape-4-2",
+      "type": "freeform",
+      "instruction": "Explain when few-shot prompting outperforms zero-shot (just instructions), and when zero-shot is actually better. Give 2 scenarios for each.",
+      "placeholder": "Few-shot wins when... Zero-shot wins when...",
+      "hint": "Few-shot wins when: the output format is unusual or custom (like a proprietary classification system), or when the task requires a specific style/voice the model hasn't seen. Zero-shot wins when: the task is standard (summarization, translation), or when examples might anchor the model too narrowly and reduce creative range.",
+      "criteria": {
+        "keywords": ["few-shot", "zero-shot", "example", "format", "custom", "standard", "better", "when"],
+        "minLength": 60
+      },
+      "badExample": "Few-shot is always better because more examples help.",
+      "goodExample": "Few-shot outperforms zero-shot when: (1) Custom output format — if you need a proprietary categorization system (like JIRA ticket types specific to your org), examples teach the pattern faster than describing it. (2) Style matching — if you need Claude to write in your brand's specific voice, 3 examples of your actual writing beats 'write in a casual, witty tone.' Zero-shot is better when: (1) Standard tasks — summarization, translation, and code generation are well-understood by the model. Examples can actually over-constrain the output. (2) Creative tasks — if you want novel ideas, examples anchor the model to similar patterns and reduce diversity. 'Generate 10 startup names' gets more variety without examples to copy from.",
+      "successMessage": "Knowing when NOT to use a technique is as valuable as knowing when to use it."
     }
   ],
   "05-structured-output": [
@@ -67,7 +130,23 @@
         "keywords": ["json", "csv", "table", "xml", "format", "field", "schema", "output", "structure", "column"],
         "minLength": 50
       },
+      "badExample": "Give me the data in a nice format.",
+      "goodExample": "Analyze this product description and output ONLY a JSON object — no commentary, no markdown. Schema: { \"product_name\": string, \"target_audience\": string (demographic + psychographic), \"key_benefits\": [string, string, string], \"price_tier\": \"budget\" | \"mid\" | \"premium\", \"sentiment_score\": 1-10, \"suggested_improvements\": [string, string] }. All string values must be under 100 characters. If a field can't be determined from the description, use null.",
       "successMessage": "Structured output is how you connect Claude to other systems. Explicit schemas prevent parsing errors."
+    },
+    {
+      "id": "ape-5-2",
+      "type": "debug",
+      "instruction": "A developer complains: 'I asked Claude to return JSON but it keeps wrapping it in markdown code fences and adding explanation text before and after. My JSON parser breaks every time.' Diagnose and fix.",
+      "placeholder": "The problem is... The fix is...",
+      "hint": "Claude's default behavior is to be helpful and explain things. Without explicit instructions to suppress that behavior, it adds conversational text around structured output. The fix involves multiple strategies: saying 'output ONLY the JSON', 'no markdown fences', 'no explanation before or after', and potentially using a system prompt that enforces raw output.",
+      "criteria": {
+        "keywords": ["only", "no text", "no markdown", "raw", "parse", "system prompt", "instruction"],
+        "minLength": 50
+      },
+      "badExample": "Just strip the extra text with regex.",
+      "goodExample": "Diagnosis: Claude defaults to being conversational — it adds explanation and wraps code in markdown fences because that's helpful for humans reading chat. A JSON parser doesn't want helpfulness, it wants raw data. Fix: Layer multiple constraints: (1) 'Output ONLY valid JSON. No markdown code fences. No explanation before or after. Your entire response must be parseable by JSON.parse().' (2) In the system prompt: 'You are a data extraction API. Return only structured data, never conversational text.' (3) End with: 'Begin your response with { and end with }.' Each constraint reduces the chance of extra text. For production apps, also add try/catch parsing with a retry that includes 'Your previous response was not valid JSON. Return ONLY the JSON object.'",
+      "successMessage": "The gap between 'works in chat' and 'works in code' is real. Structured output prompts need machine-friendly constraints."
     }
   ],
   "06-prompt-chaining": [
@@ -81,7 +160,23 @@
         "keywords": ["step 1", "step 2", "step 3", "then", "using", "take", "from", "result", "output", "build"],
         "minLength": 80
       },
+      "badExample": "Write a blog post about AI in healthcare in one go.",
+      "goodExample": "Step 1: Generate 10 blog post titles about 'AI in healthcare diagnostics.' Rate each 1-10 on click-worthiness and originality. Step 2: Take the top 3 titles. For each, create a 5-bullet outline: target reader, unique angle, 3 key sections, and one contrarian claim to explore. Step 3: Select the outline with the strongest contrarian claim. Write a 150-word introduction with a specific stat hook, and a 100-word conclusion with a clear CTA. The intro must make the reader feel the problem before presenting the solution.",
       "successMessage": "Prompt chaining breaks complex tasks into digestible steps. Each link in the chain refines and focuses the output."
+    },
+    {
+      "id": "ape-6-2",
+      "type": "freeform",
+      "instruction": "Explain 3 situations where prompt chaining produces better results than a single long prompt, and 1 situation where a single prompt is actually better.",
+      "placeholder": "Chaining wins when... Single prompt wins when...",
+      "hint": "Chaining wins when: (1) quality gates are needed between steps, (2) the output of step 1 determines what step 2 should be, (3) the total task would exceed the model's ability to hold all instructions in working memory. Single prompt wins when: the task is simple enough that splitting it adds latency without improving quality.",
+      "criteria": {
+        "keywords": ["chain", "single", "quality", "step", "complex", "simple", "better", "latency"],
+        "minLength": 60
+      },
+      "badExample": "Chaining is always better because it breaks things into steps.",
+      "goodExample": "Chaining wins when: (1) You need quality gates — Step 1 generates options, you select the best before Step 2 elaborates. This prevents the model from committing to a mediocre path. (2) Dynamic routing — if Step 1 classifies a support ticket as 'billing,' Step 2 uses a billing-specific prompt. A single prompt would need to handle all categories. (3) Context overload — asking the model to research, outline, write, AND edit in one prompt means competing instructions. Each step gets full attention. Single prompt wins when: the task is straightforward and each step has no dependency on human judgment. Translating a document doesn't benefit from chaining — it adds 3x the API calls and latency for no quality gain.",
+      "successMessage": "The art is knowing when chaining helps versus when it just adds latency. Not every task needs decomposition."
     }
   ],
   "07-context-window-mastery": [
@@ -95,7 +190,23 @@
         "keywords": ["first", "then", "skip", "section", "extract", "focus", "only", "order", "read"],
         "minLength": 60
       },
+      "badExample": "Read this long document and summarize it.",
+      "goodExample": "I'm pasting a 30-page research paper. Process strategically: (1) Read Abstract + Conclusion first — understand the claims before the evidence. (2) Read Methodology — evaluate rigor and potential bias. (3) SKIP Related Work and Appendices entirely. (4) From Results, extract only statistically significant findings (p < 0.05). Output format: 200-word executive summary, then a table: 3 strengths | 3 weaknesses | methodology red flags. If a claim in the Conclusion isn't supported by the Results data, flag it explicitly.",
       "successMessage": "Context window mastery means guiding Claude through documents strategically — not dumping everything and hoping."
+    },
+    {
+      "id": "ape-7-2",
+      "type": "rewrite",
+      "instruction": "This prompt wastes context window space. Rewrite it to convey the same information in 50% fewer tokens:\n\n'I would really appreciate it if you could please help me by taking a careful and thorough look at the following document that I am going to paste below. What I am hoping to get from you is a detailed summary that covers all the major points and key takeaways. Please make sure to include any important statistics or numbers that are mentioned. I would also like you to identify any potential problems or weaknesses in the arguments presented. Thank you so much for your help with this.'",
+      "placeholder": "Condensed version...",
+      "hint": "Summarize the document below. Include: all major points, key statistics/numbers, and weaknesses in the arguments. Be thorough.",
+      "criteria": {
+        "keywords": ["summarize", "include", "statistics", "weakness", "point"],
+        "minLength": 20
+      },
+      "badExample": "Summarize this.",
+      "goodExample": "Summarize this document: (1) major points and key takeaways, (2) all statistics and numbers cited, (3) weaknesses in the arguments. Be thorough but concise.",
+      "successMessage": "Every wasted token in your prompt is a token Claude can't use for thinking or output. Concise prompts get better results."
     }
   ],
   "08-debugging-bad-outputs": [
@@ -109,7 +220,23 @@
         "keywords": ["prompt", "output", "wrong", "improve", "fix", "rewrite", "instead", "better", "problem"],
         "minLength": 50
       },
+      "badExample": "My prompt didn't work. Write a better one.",
+      "goodExample": "I used this prompt: 'Write a marketing email for our new product.' The output was generic, had no CTA, and started with 'We're excited to announce...' Help me rewrite the prompt to get: (1) a subject line with a specific benefit, (2) an opening that starts with the reader's pain point, not our excitement, (3) exactly one CTA — book a demo, (4) a P.S. with social proof. Product: time-tracking app for freelancers. Audience: solo freelancers earning $50-100K, overwhelmed by admin. What was wrong with my original prompt and what should each section of the improved prompt specify?",
       "successMessage": "Debugging prompts is a meta-skill. The best prompt engineers iterate by describing what went wrong, not just what they want."
+    },
+    {
+      "id": "ape-8-2",
+      "type": "analyze",
+      "instruction": "A marketer says Claude keeps producing 'fluffy corporate-speak' no matter what they try. They show you their prompt: 'Write professional content about our innovative solution leveraging cutting-edge AI.' Analyze why this prompt produces bad output and what principles it violates.",
+      "placeholder": "This prompt produces corporate fluff because...",
+      "hint": "The prompt itself IS corporate fluff. 'Professional,' 'innovative,' 'leveraging,' and 'cutting-edge' are all vague corporate buzzwords. Claude mirrors the style and vocabulary of the prompt. If you write in buzzwords, you get buzzwords back. The fix: use specific, concrete language in the prompt itself.",
+      "criteria": {
+        "keywords": ["mirror", "vague", "buzzword", "specific", "concrete", "style", "language", "tone"],
+        "minLength": 50
+      },
+      "badExample": "They should just tell Claude to not use corporate language.",
+      "goodExample": "The prompt produces fluff because IT IS FLUFF. Three violations: (1) Style mirroring — Claude matches the register of the input. 'Innovative solution leveraging cutting-edge AI' teaches Claude that corporate-speak is desired. The model thinks: 'they write like a press release, so I should too.' (2) Zero specificity — 'innovative solution' could be anything. 'Professional content' could be anything. The model fills vagueness with the most common pattern: corporate filler. (3) No anti-patterns specified — without 'don't use words like innovative, leveraging, cutting-edge,' the model defaults to them. Fix: 'Write a 200-word explanation of how our AI tool reduces invoice processing from 45 minutes to 3 minutes for accounting teams at mid-size companies. Use plain English. Forbidden words: innovative, cutting-edge, leverage, solution, synergy.'",
+      "successMessage": "Garbage in, garbage out applies to prompts. Your prompt's style becomes the output's style. Write the way you want Claude to write."
     }
   ],
   "09-domain-specific-prompts": [
@@ -118,12 +245,28 @@
       "type": "prompt",
       "instruction": "Write a domain-specific prompt that includes technical jargon, industry context, and expert-level expectations for the output.",
       "placeholder": "As a [domain expert], using [industry terms]...",
-      "hint": "You are a DevOps engineer reviewing our CI/CD pipeline. Our current setup: GitHub Actions → Docker build → push to ECR → deploy to EKS via Helm. Average deploy time: 18 minutes. Build cache hit rate: 40%. We're seeing flaky integration tests blocking deploys 3x per week. Propose 3 specific optimizations to reduce deploy time below 8 minutes and improve cache hit rate above 80%. Include the specific tools or configuration changes for each. Don't suggest 'parallelize tests' — we already tried that.",
+      "hint": "You are a DevOps engineer reviewing our CI/CD pipeline. Our current setup: GitHub Actions -> Docker build -> push to ECR -> deploy to EKS via Helm. Average deploy time: 18 minutes. Build cache hit rate: 40%. We're seeing flaky integration tests blocking deploys 3x per week. Propose 3 specific optimizations to reduce deploy time below 8 minutes and improve cache hit rate above 80%. Include the specific tools or configuration changes for each. Don't suggest 'parallelize tests' — we already tried that.",
       "criteria": {
         "keywords": ["specific", "technical", "industry", "expert", "configuration", "tool", "optimize", "implement"],
         "minLength": 60
       },
+      "badExample": "Help me make my deployments faster.",
+      "goodExample": "You are a DevOps engineer reviewing our CI/CD pipeline. Setup: GitHub Actions -> Docker build -> push to ECR -> deploy to EKS via Helm. Deploy time: 18 minutes. Cache hit rate: 40%. Flaky integration tests block deploys 3x/week. Constraints: can't change cloud provider, team of 2, budget $500/month for tooling. Propose 3 optimizations to get deploy time <8 minutes and cache hit rate >80%. For each: specific config changes, estimated time savings, and implementation effort. Don't suggest 'parallelize tests' — we tried, our tests have shared state.",
       "successMessage": "Domain-specific prompts that include technical context and constraints get expert-level outputs. Claude matches your expertise level."
+    },
+    {
+      "id": "ape-9-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this generic prompt into a domain-specific powerhouse for the legal industry:\n\n'Review this contract and tell me if there are any problems.'",
+      "placeholder": "Domain-specific legal version...",
+      "hint": "Transform generic 'review for problems' into specific legal analysis: specify what jurisdiction, what type of contract, what party you represent, what clauses to focus on, what risks matter most, and what format the analysis should take.",
+      "criteria": {
+        "keywords": ["clause", "jurisdiction", "liability", "risk", "party", "term", "section", "legal"],
+        "minLength": 60
+      },
+      "badExample": "Review this contract and find legal issues.",
+      "goodExample": "You are a corporate attorney reviewing a SaaS vendor agreement where I am the customer. Jurisdiction: Delaware law. Review for: (1) Liability caps — flag any clause limiting vendor liability below 12 months of fees. (2) Data provisions — identify who owns data if we terminate, data deletion timelines, and breach notification requirements. (3) Auto-renewal traps — flag any auto-renewal with >30-day notice period. (4) Indemnification gaps — is the vendor indemnifying us for IP infringement and data breaches? (5) Exit provisions — what's the cost and process to terminate early? For each issue found: quote the specific clause, explain the risk in plain English, and suggest revised language. Output as a table: Clause # | Risk | Severity (High/Med/Low) | Suggested Revision.",
+      "successMessage": "Generic prompts get generic output. Domain-specific prompts demonstrate expertise and set expectations the model rises to meet."
     }
   ],
   "10-your-prompt-library": [
@@ -137,7 +280,23 @@
         "keywords": ["template", "placeholder", "variable", "reuse", "swap", "fill", "bracket", "role", "context", "format"],
         "minLength": 80
       },
+      "badExample": "Here's a prompt template: Tell AI what to do.",
+      "goodExample": "UNIVERSAL TEMPLATE:\n\nYou are a [ROLE] with [YEARS] experience in [DOMAIN].\n\nContext: [SITUATION_BACKGROUND — 2-3 sentences]\n\nTask: [SPECIFIC_ACTION] for [TARGET_AUDIENCE].\n\nOutput: [FORMAT] with these sections: [SECTION_LIST].\nLength: [WORD_COUNT].\n\nConstraints:\n- Must include: [REQUIRED_ELEMENTS]\n- Must avoid: [ANTI_PATTERNS]\n- Tone: [TONE_DESCRIPTION]\n\nExample filled: You are a product marketer with 10 years experience in fintech. Context: We're launching a budgeting feature for our banking app targeting millennials. Task: Write app store description for 25-35 year olds who are bad with money but don't want to feel judged. Output: App store listing with: tagline (under 10 words), description (150 words), 5 feature bullets. Must include: a specific money-saved metric. Must avoid: 'budget,' 'restrict,' 'discipline.' Tone: supportive friend, not financial advisor.",
       "successMessage": "A prompt library compounds your skills over time. Every great template saves you 10 minutes for every future use."
+    },
+    {
+      "id": "ape-10-2",
+      "type": "freeform",
+      "instruction": "Build a personal prompt debugging checklist: 5 things to check when Claude's output isn't what you wanted, in order from most common fix to least common.",
+      "placeholder": "Check 1 (most common): ... Check 2: ...",
+      "hint": "Most common issues: (1) Vague instructions — be more specific. (2) Missing format spec — tell Claude exactly how to structure the output. (3) No examples — add few-shot examples of what you want. (4) Wrong role — assign an appropriate expert persona. (5) Conflicting constraints — check for contradictions in your prompt.",
+      "criteria": {
+        "keywords": ["check", "specific", "format", "example", "role", "fix", "output", "wrong"],
+        "minLength": 60
+      },
+      "badExample": "1. Try again. 2. Use a different model. 3. Give up.",
+      "goodExample": "Prompt Debugging Checklist (ordered by frequency): (1) SPECIFICITY — Did I tell Claude exactly what I want? 'Write about marketing' fails. 'Write 3 LinkedIn posts about email marketing for SaaS founders' works. Fix: add who, what, for whom, how long. (2) FORMAT — Did I specify the output structure? If I want a table and got paragraphs, that's my fault. Fix: 'Present as a table with columns: X, Y, Z.' (3) EXAMPLES — Would showing Claude what I want be clearer than describing it? Fix: add 1-3 examples of ideal output. (4) CONSTRAINTS — Am I missing anti-patterns? If the output is too long, too formal, or includes things I don't want, I probably didn't say 'don't do X.' Fix: add explicit exclusions. (5) ROLE — Is the persona appropriate? A 'marketing expert' writes differently than a 'technical writer.' Fix: match the role to the output style you need.",
+      "successMessage": "A debugging checklist turns prompt engineering from guesswork into a systematic process."
     }
   ]
 }

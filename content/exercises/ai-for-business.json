@@ -55,6 +55,8 @@
         "minLength": 60,
         "keywords": ["AI", "can", "human", "because", "need", "help", "essential", "require"]
       },
+      "badExample": "AI can help with stuff. Humans are needed for other stuff.",
+      "goodExample": "AI can help: 1) Drafting first versions of weekly reports — it's pattern recognition on structured data, and a human reviews before sending. 2) Sorting 200+ customer feedback emails by topic — AI catches themes I'd miss. 3) Generating social media caption options — gives me 5 starting points instead of staring at a blank page. Humans essential: 1) Final hiring decisions — legal liability, gut instinct about culture fit, reading between the lines of an interview. 2) Handling escalated client complaints — empathy, relationship history, and judgment calls that AI can't make.",
       "successMessage": "This is strategic AI thinking — knowing where to deploy it and where to protect the human touch."
     }
   ],
@@ -115,6 +117,8 @@
       },
       "badExample": "Write a proposal",
       "goodExample": "Draft a 1-page website proposal for a local gym client. Scope: 5-page site (Home, About, Classes, Trainers, Contact). Timeline: 4 weeks. Include 3 key deliverables and pricing placeholder. Tone: confident, friendly, professional. This usually takes me 45 minutes — let's cut that in half.",
+      "badExample": "Write a proposal",
+      "goodExample": "Draft a 1-page website proposal for a local gym client. Scope: 5-page site (Home, About, Classes, Trainers, Contact). Timeline: 4 weeks. Include 3 key deliverables, a pricing placeholder, and a professional sign-off. Tone: confident, friendly, professional. This usually takes me 45 minutes — I want a solid first draft to edit.",
       "successMessage": "When AI handles the first draft, you become the editor instead of the writer. That's the time-saving superpower."
     }
   ],
@@ -203,6 +207,8 @@
         "minLength": 40,
         "keywords": ["before", "after", "time", "minutes", "hours", "saved", "took", "now"]
       },
+      "badExample": "AI saves me time.",
+      "goodExample": "Before AI: Writing my weekly client report took 90 minutes every Friday. I'd gather data from 3 sources, write summaries, and format everything manually. After AI: I paste the raw data into Claude and ask for a formatted summary with key insights highlighted. I review and adjust the tone. Total time: 25 minutes. Time saved: 65 minutes/week, or 4.3 hours/month — that's half a workday I get back.",
       "successMessage": "That's a measurable win. Track these weekly and you'll build an airtight case for AI investment."
     }
   ],
@@ -231,6 +237,8 @@
         "minLength": 60,
         "keywords": ["build", "buy", "reason", "because", "winner", "better", "custom"]
       },
+      "badExample": "Build is better because it's custom.",
+      "goodExample": "Need: AI email sorting for our support inbox. Build reasons: 1) We can train it on our exact 12 ticket categories for perfect accuracy 2) No recurring subscription — one-time development cost 3) We own the model and data, no vendor lock-in. Buy reasons: 1) Live in 1 day vs. 3 months of development 2) Already battle-tested by thousands of companies 3) Includes ongoing support, updates, and new features we'd have to build ourselves. Winner: BUY — at our stage (15-person team, no ML engineer), speed to value and maintenance burden matter more than perfect customization.",
       "successMessage": "You just did a build-vs-buy analysis. The answer usually depends on your stage — startups buy, scaled companies build."
     }
   ],

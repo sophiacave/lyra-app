@@ -57,6 +57,8 @@
         "keywords": ["top", "highest", "best", "opportunities", "department", "team", "current", "bottleneck", "rank", "impact"],
         "minLength": 45
       },
+      "badExample": "Where should we use AI in our company?",
+      "goodExample": "Identify the top 3 AI opportunities for our HR department (team of 6). Current bottlenecks: screening 300+ resumes per open role, writing consistent job descriptions across 15 departments, and scheduling interviews across 3 time zones. Constraints: must comply with EU AI Act hiring regulations. Rank by: quickest to implement with lowest risk first.",
       "successMessage": "Identifying high-impact, low-risk starting points is the executive superpower. You don't need to transform everything — just start where it matters most."
     }
   ],
@@ -86,6 +88,8 @@
         "keywords": ["KPI", "measure", "track", "dashboard", "metric", "indicator", "weekly", "monthly", "performance", "success"],
         "minLength": 40
       },
+      "badExample": "How do I track if our AI tool is working?",
+      "goodExample": "Design a KPI dashboard for tracking our AI-powered sales email assistant after launch. Measure across 3 dimensions: adoption (% of reps using it daily, prompts per rep per week), quality (open rates and reply rates of AI-drafted vs. human-drafted emails), and efficiency (minutes saved per rep per day). Include leading indicators for weekly check-ins and lagging indicators for the quarterly board review.",
       "successMessage": "KPIs turn AI experiments into managed initiatives. If you can't measure it, you can't manage it — and you definitely can't justify scaling it."
     }
   ],
@@ -115,6 +119,8 @@
         "keywords": ["policy", "approved", "prohibited", "allowed", "must", "never", "accountability", "review", "disclose", "guidelines"],
         "minLength": 50
       },
+      "badExample": "Write an AI policy for us",
+      "goodExample": "Draft a 1-page AI usage policy for a 100-person marketing agency. Cover: approved tools (ChatGPT, Claude, Midjourney), approved uses (brainstorming, first drafts, internal research), prohibited uses (final client deliverables without human review, inputting client confidential data), who approves new AI tools, and how we disclose AI use to clients. Keep it practical and plain-English, not legalistic.",
       "successMessage": "A clear, practical AI policy protects your organization while empowering your team to use AI confidently. Well structured."
     }
   ],
@@ -144,6 +150,8 @@
         "keywords": ["questions", "ask", "vendor", "demo", "how", "what", "data", "claims", "prove", "demonstrate"],
         "minLength": 40
       },
+      "badExample": "What questions should I ask an AI vendor?",
+      "goodExample": "Generate 10 critical questions to ask during a demo of an AI-powered recruitment platform. Focus on: how they handle bias in resume screening, what happens to candidate data after the contract ends, how their model is trained (and on what data), their uptime SLA, and how they handle edge cases the AI can't process. I want questions that expose real capabilities vs. marketing claims.",
       "successMessage": "The right questions during a demo separate AI that works from AI that's just a good pitch deck. These will save you from expensive mistakes."
     }
   ],
@@ -173,6 +181,8 @@
         "minLength": 60,
         "keywords": ["culture", "team", "AI", "change", "learn", "trust", "experiment", "adopt"]
       },
+      "badExample": "We need to adopt AI and everyone should be excited about it.",
+      "goodExample": "An AI-ready culture means every team member sees AI as a power tool, not a threat to their job. It means managers measure output quality and impact, not hours at a desk. It means we have psychological safety to experiment with AI tools and fail without blame. And it means leadership uses AI themselves visibly — not just mandating it for others while avoiding it personally.",
       "successMessage": "Culture eats strategy for breakfast — and it eats AI strategy for every meal. Getting this right determines whether your AI investments pay off."
     }
   ],
@@ -219,6 +229,8 @@
         "keywords": ["explain", "business", "analogy", "non-technical", "board", "executive", "simple", "language", "jargon", "plain"],
         "minLength": 40
       },
+      "badExample": "Explain RAG to my board",
+      "goodExample": "Explain RAG (Retrieval-Augmented Generation) to a board of directors with no technical background. Use a business analogy they'll understand — like a research analyst who checks the company handbook before answering instead of guessing. Then explain why it matters for our customer support AI: how it reduces made-up answers and keeps responses accurate to our actual product documentation. Under 200 words. No jargon.",
       "successMessage": "The ability to translate technical AI concepts into business value is the most important executive AI skill. Well done."
     }
   ],

@@ -1,211 +1,305 @@
 {
   "01-the-ai-product-mindset": [
     {
-      "id": "bap-1-1",
+      "id": "prod-1-1",
       "type": "freeform",
-      "instruction": "Name 3 differences between traditional software and AI products. For each, the implication for development.",
-      "placeholder": "Difference 1: ...",
+      "instruction": "Name 3 differences between traditional software and AI products. For each, explain the implication for how you build and test the product.",
+      "placeholder": "Difference 1: Traditional software is deterministic...",
+      "hint": "1) Non-deterministic outputs: same input can give different results. Implication: you need evaluation frameworks, not just unit tests. 2) Data dependency: AI quality depends on training/prompt data. Implication: data quality is product quality. 3) Cost per query: every AI call costs money. Implication: pricing must account for variable API costs.",
       "criteria": {
-        "keywords": [
-          "non-deterministic",
-          "data",
-          "user",
-          "feedback",
-          "latency",
-          "cost",
-          "quality"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["non-deterministic", "data", "cost", "test", "quality", "traditional"]
       },
+      "badExample": "AI is smarter and more expensive.",
+      "goodExample": "1) Non-deterministic output: Traditional software returns the same result every time for the same input. AI products may give different answers to the same question. Implication: you can't write simple pass/fail tests. You need evaluation rubrics and human review. 2) Data as product: In traditional software, code IS the product. In AI products, the data and prompts are equally important. Implication: prompt engineering is product development, not an afterthought. 3) Variable cost per use: Traditional software costs the same whether 1 or 1000 users hit an endpoint. AI products have per-query API costs. Implication: you must design pricing and usage limits from day one or heavy users destroy your margins.",
       "successMessage": "Understanding these differences separates AI builders from feature factories."
+    },
+    {
+      "id": "prod-1-2",
+      "type": "analyze",
+      "instruction": "Analyze this AI product idea and identify whether it has a real AI advantage or is just 'AI washing':\n\n'An AI-powered alarm clock that uses machine learning to choose the best alarm sound for you.'",
+      "placeholder": "This idea is... because...",
+      "hint": "This is AI washing. Users can pick their favorite alarm sound in 10 seconds. AI adds complexity for negligible benefit. A real AI alarm clock would analyze sleep cycles to wake you during light sleep, or adjust wake time based on your calendar.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["AI washing", "value", "problem", "user", "need", "simple"]
+      },
+      "badExample": "It sounds like a cool idea that uses AI well.",
+      "goodExample": "This is AI washing. The core problem -- 'I want to wake up to a sound I like' -- is trivially solved without AI. Users have strong preferences they can express in one tap. The test: 'Can a user solve this themselves in under 30 seconds?' Yes, so AI adds complexity without value. A genuinely AI-powered alarm would tackle a harder problem: analyzing sleep patterns via phone sensors to wake you during light sleep, adapting to your schedule, and learning that you snooze 3 times on Mondays so it sets the alarm 15 minutes earlier. THAT requires AI because no human can analyze their own sleep cycles in real-time.",
+      "successMessage": "The AI washing test: 'Does AI solve a problem the user genuinely cannot solve themselves?' If not, you're adding complexity for buzzwords."
     }
   ],
   "02-finding-ai-product-ideas": [
     {
-      "id": "bap-2-1",
+      "id": "prod-2-1",
       "type": "freeform",
-      "instruction": "Generate 3 AI product ideas: painful manual process + AI capability = product. Score each on pain, feasibility, market.",
-      "placeholder": "Idea 1: Pain: ... + AI: ...",
+      "instruction": "Generate 3 AI product ideas using the formula: painful manual process + AI capability = product. Score each on pain level (1-5), feasibility (1-5), and market size (1-5).",
+      "placeholder": "Idea 1:\n  Pain: ... (score: /5)\n  AI capability: ...\n  Feasibility: /5\n  Market: /5",
+      "hint": "Idea 1: Pain: Bookkeepers spend 3-5 hours/week categorizing receipts (5/5). AI: OCR + classification extracts vendor, amount, category from photos. Feasibility: 4/5 (APIs exist). Market: 4/5 (millions of small businesses). Idea 2: Pain: Recruiters read 200+ resumes per role (4/5). AI: summarize and rank candidates against job requirements. Feasibility: 4/5. Market: 5/5.",
       "criteria": {
-        "keywords": [
-          "pain",
-          "AI",
-          "product",
-          "manual",
-          "feasible",
-          "market",
-          "score"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["pain", "AI", "product", "manual", "feasible", "market", "score"]
       },
-      "successMessage": "Pain + AI = Product. Simple formula, powerful results."
+      "badExample": "1. AI for emails. 2. AI for photos. 3. AI for data.",
+      "goodExample": "Idea 1: Pain: Property managers read 20+ maintenance requests daily to classify urgency and dispatch trades (pain: 5/5). AI: NLP classifies request type (plumber/electrician/HVAC), urgency (emergency/routine), and auto-dispatches. Feasibility: 5/5 (text classification is solved). Market: 4/5 (300K+ property management companies in US). Idea 2: Pain: Lawyers spend 45 min reading each contract to extract key terms during acquisitions (pain: 4/5). AI: document parsing extracts rent, dates, clauses into structured data. Feasibility: 4/5 (PDF parsing + LLM). Market: 3/5 (niche but high-value). Idea 3: Pain: Content marketers spend 2 hours repurposing each blog post for social media (pain: 3/5). AI: generates platform-native versions from one source. Feasibility: 5/5. Market: 5/5 (every company with a blog).",
+      "successMessage": "Pain + AI = Product. The scoring forces honest evaluation instead of falling in love with ideas."
+    },
+    {
+      "id": "prod-2-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to help you brainstorm AI product ideas for a specific industry. Be specific about constraints: target user, budget, technical complexity, and success criteria.",
+      "placeholder": "Help me brainstorm AI product ideas for...",
+      "hint": "Help me brainstorm 5 AI product ideas for independent real estate agents. Constraints: buildable by a solo developer in 3 months, under $50/month to user, no custom model training. Each idea should solve a task taking 5+ hours/week. Include: one-line pitch, pain point, how AI solves it, and why they'd pay $30-50/month.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["brainstorm", "idea", "industry", "user", "constraint", "build", "pay"]
+      },
+      "badExample": "What AI products could I build?",
+      "goodExample": "I want to find AI product ideas in the legal industry. Target: solo attorneys handling contract law. Constraints: solo developer, $200/month API budget, need revenue in 60 days, off-the-shelf models only. For each idea: the workflow it replaces, hours saved per week, AI technique used (RAG, classification, generation), biggest risk, and one competitor to differentiate from. Generate 7 ideas ranked by feasibility-to-impact ratio.",
+      "successMessage": "Constrained brainstorming produces actionable ideas. Budget, timeline, and user specificity filter out fantasy."
     }
   ],
   "03-validation-and-prototyping": [
     {
-      "id": "bap-3-1",
+      "id": "prod-3-1",
       "type": "prompt",
-      "instruction": "Write a prompt for landing page copy to test demand before building. Include headline, value prop, features, CTA.",
-      "placeholder": "Create landing page copy for...",
+      "instruction": "Write a prompt for landing page copy to test demand before building your AI product. Include headline, value proposition, feature highlights, and CTA.",
+      "placeholder": "Create landing page copy for an AI product that...",
+      "hint": "Create a landing page for an AI meeting summarizer. Headline: benefit-focused, under 10 words. Subheadline: explain the pain and solution in one sentence. 3 feature bullets emphasizing outcomes, not technology. CTA: 'Join the waitlist' with urgency. Tone: professional but conversational.",
       "criteria": {
-        "keywords": [
-          "headline",
-          "value",
-          "feature",
-          "CTA",
-          "benefit",
-          "pain",
-          "solution"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["headline", "value", "feature", "CTA", "benefit", "pain"]
       },
-      "successMessage": "Validate before you build. Could save months."
+      "badExample": "Write a landing page for my AI tool.",
+      "goodExample": "Create landing page copy for MeetingMind, an AI tool that turns meeting recordings into structured summaries with action items. Target audience: team leads at companies with 20-100 employees who average 15+ meetings per week. Headline: benefit-driven, under 8 words. Subheadline: address the pain ('meetings generate action items that get lost'). 3 feature bullets: each starts with a time-saved metric. Include social proof placeholder. CTA: 'Get Early Access' with a note about limited beta spots. Secondary CTA: 'See a demo summary' that shows an example output. Tone: confident, no hype, no 'revolutionary'.",
+      "successMessage": "Validate before you build. A landing page that converts proves demand before you write a line of code."
+    },
+    {
+      "id": "prod-3-2",
+      "type": "rewrite",
+      "instruction": "This validation plan is flawed. Rewrite it with proper methodology:\n\n'I'll build the full AI product over 3 months, then launch it on Product Hunt. If people sign up, it's validated.'",
+      "placeholder": "Better validation plan: ...",
+      "hint": "Week 1: Landing page + waitlist. Week 2: Survey waitlist about pain points. Week 3-4: Wizard of Oz test with 10 volunteers (manually deliver AI output using Claude). Week 5-6: If validated, build minimal prototype with just the core feature. Charge from day one.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["week", "landing page", "waitlist", "test", "measure", "before", "build"],
+        "mustNotInclude": ["3 months"]
+      },
+      "badExample": "Build a simpler version and launch sooner.",
+      "goodExample": "Revised plan -- 4 weeks, not 4 months. Week 1: Problem validation -- post in 3 communities describing the pain point. If 30+ people engage, proceed. Week 2: Solution validation -- Carrd landing page with value prop and real pricing ($29/month). If 3%+ enter email, proceed. Week 3: Wizard of Oz -- offer free access to top 20 signups. Manually deliver the 'AI output' using Claude. Measure NPS and willingness to pay. Week 4: Decision -- if 10+ positive feedback and 5+ would pay, build the MVP with just the #1 feature. Total cost: under $100. Time saved vs. original: 2 months.",
+      "successMessage": "Lean validation: prove the problem, prove the solution, prove the price -- then build."
     }
   ],
   "04-architecture-decisions": [
     {
-      "id": "bap-4-1",
+      "id": "prod-4-1",
       "type": "freeform",
-      "instruction": "Building an AI writing assistant. Make 5 architecture decisions: model, hosting, database, auth, pricing. Justify each.",
-      "placeholder": "1. Model: ... because...",
+      "instruction": "You're building an AI writing assistant. Make 5 architecture decisions: model provider, hosting, database, auth, and pricing model. Justify each choice for a solo developer launching in 60 days.",
+      "placeholder": "1. Model: ... because...\n2. Hosting: ... because...",
+      "hint": "1. Model: Claude API -- best at writing, no fine-tuning needed. 2. Hosting: Vercel -- free tier, serverless, auto-scaling. 3. Database: Supabase -- Postgres + auth + realtime, generous free tier. 4. Auth: Supabase Auth -- built-in, supports OAuth. 5. Pricing: usage-based with monthly cap -- aligns costs with revenue.",
       "criteria": {
-        "keywords": [
-          "model",
-          "host",
-          "database",
-          "auth",
-          "pricing",
-          "because",
-          "cost"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["model", "host", "database", "auth", "pricing", "because", "cost"]
       },
-      "successMessage": "Early architecture decisions save 10x the cost of changing later."
+      "badExample": "Use the best tools available.",
+      "goodExample": "1. Model: Claude API via Anthropic -- best writing quality, structured output support, and I can iterate on prompts instantly without training. Cost: ~$0.01-0.05 per generation. 2. Hosting: Vercel -- zero-config deploys from GitHub, serverless functions for API routes, free tier handles early traffic. Migrating later is easy since it's just Next.js. 3. Database: Supabase -- Postgres + built-in auth + row-level security. Free tier gives 500MB storage and 50K monthly active users. No separate auth service needed. 4. Auth: Supabase Auth with Google + email magic links -- zero custom code, handles sessions and JWTs. No password management headaches. 5. Pricing: Freemium with 10 free generations/month, $19/month for 200 generations. Usage-based means my costs scale with revenue. At $0.03 average cost per generation, 200 generations = $6 cost, $13 margin per paid user.",
+      "successMessage": "Early architecture decisions save 10x the cost of changing later. Justifying each choice forces clear thinking."
+    },
+    {
+      "id": "prod-4-2",
+      "type": "analyze",
+      "instruction": "Analyze the tradeoffs of these two architecture choices for an AI writing assistant:\n\nOption A: Send every keystroke to Claude API for real-time suggestions\nOption B: User clicks 'Suggest' button to get AI feedback on their draft",
+      "placeholder": "Option A tradeoffs: ...\nOption B tradeoffs: ...\nI'd choose...",
+      "hint": "Option A: magical UX but extremely expensive, high latency, partial text gives poor suggestions. Option B: predictable costs, complete context gives better output, simpler to build. Choose B for v1.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["cost", "latency", "UX", "API", "tradeoff", "choose"]
+      },
+      "badExample": "Option A is better because real-time is cooler.",
+      "goodExample": "Option A (real-time): Pros -- feels magical, users see value without learning a workflow. Cons -- API costs could be $5-20 per user per session (100x more expensive), latency makes it janky, incomplete sentences produce bad suggestions, every keystroke is a privacy event. Option B (on-demand): Pros -- 100x cheaper, AI gets complete thoughts so quality is higher, simple to build and maintain. Cons -- less 'wow', requires user action. My choice: Option B for launch. Collect usage data to identify WHERE users most want suggestions, then add targeted real-time at those specific points. Data-driven enhancement beats expensive guesswork.",
+      "successMessage": "Best founders choose 'boring but sustainable' for v1 and save 'magical but expensive' for after they have revenue."
     }
   ],
   "05-building-the-mvp": [
     {
-      "id": "bap-5-1",
+      "id": "prod-5-1",
       "type": "freeform",
-      "instruction": "Define MVP scope: ONE core feature, 3 things NOT in v1, the metric that proves it works.",
-      "placeholder": "Core feature: ... NOT in v1: ...",
+      "instruction": "Define the MVP scope for an AI meeting summarizer. List exactly 3 features for v1 (must-have) and 3 features explicitly deferred to v2. Justify each decision.",
+      "placeholder": "V1 Must-Haves:\n1. ...\nV2 Deferred:\n1. ...",
+      "hint": "V1: 1) Upload audio -> get summary (core value). 2) Action items as bullet list (#1 user need). 3) Share via link (no value in private summaries). V2: 1) Live Zoom/Teams integration (complex, upload-first proves value). 2) Speaker identification (nice but not necessary). 3) CRM integration (premature optimization).",
       "criteria": {
-        "keywords": [
-          "core",
-          "feature",
-          "NOT",
-          "v1",
-          "metric",
-          "success",
-          "launch"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["V1", "V2", "must-have", "defer", "MVP", "feature", "core"]
       },
+      "badExample": "V1: everything. V2: better design.",
+      "goodExample": "V1 Must-Haves: 1) Upload recording + get structured summary in 5 minutes -- this IS the value prop. Using Whisper + Claude. 2) Auto-extracted action items with assignee names -- user research shows this is THE reason 80% want meeting summaries. 3) One-click email to participants -- output is only valuable if the team sees it. V2 Deferred: 1) Zoom/Teams live plugin -- requires OAuth apps, marketplace approval, complex streaming. Upload-first proves value in 1/10th the dev time. 2) Custom templates per meeting type -- valuable but premature; learn what templates users want from v1 data. 3) Searchable history with semantic search -- separate product concern; nail single-meeting experience first.",
       "successMessage": "Saying 'not in v1' is the hardest and most important product skill."
+    },
+    {
+      "id": "prod-5-2",
+      "type": "debug",
+      "instruction": "This MVP plan has a critical flaw. Identify it and propose a fix:\n\n'MVP: AI tool that reads your entire codebase and generates perfect documentation. Timeline: 2 weeks. Stack: Claude API + React frontend.'",
+      "placeholder": "The critical flaw is...",
+      "hint": "Scope vs. timeline mismatch. 'Entire codebase' requires complex parsing for 20+ languages, handling repos with 100K+ files, context window limits. 'Perfect documentation' is undefined. Fix: narrow to pasting a single function -> get a docstring. That's buildable in 2 weeks.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["scope", "timeline", "narrow", "single", "realistic"]
+      },
+      "badExample": "Two weeks might be tight, maybe 4 weeks.",
+      "goodExample": "Critical flaw: the scope is an entire product disguised as an MVP. 'Reads your entire codebase' means building file traversal, parsing 20+ languages, handling monorepos, and managing context windows (most codebases exceed any LLM's token limit). 'Perfect documentation' is undefined. This is 6-12 months, not 2 weeks. Fix: make the scope embarrassingly small. MVP: paste a single Python function -> get a Google-style docstring. That's a textarea + one API call + styled output. Buildable in 3 days. Prove users find AI docs useful for one function before attempting an entire codebase.",
+      "successMessage": "The most dangerous MVP mistake: ambitious scope + short timeline = nothing ships. Make the scope embarrassingly small."
     }
   ],
   "06-user-experience-for-ai": [
     {
-      "id": "bap-6-1",
+      "id": "prod-6-1",
       "type": "freeform",
-      "instruction": "Design UX for an AI feature with 5-10 second response time. 3 patterns to keep users engaged during the wait.",
-      "placeholder": "Pattern 1: ...",
+      "instruction": "Design 3 UX patterns to keep users engaged during a 5-10 second AI processing wait, instead of showing a loading spinner.",
+      "placeholder": "Pattern 1: ...\nPattern 2: ...\nPattern 3: ...",
+      "hint": "1) Streaming -- show text appearing word-by-word. 2) Progressive status updates -- 'Analyzing your document... Finding key themes... Generating summary...' 3) Skeleton UI -- show the shape of the final output loading in.",
       "criteria": {
-        "keywords": [
-          "loading",
-          "progress",
-          "stream",
-          "animate",
-          "skeleton",
-          "preview"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["loading", "progress", "stream", "skeleton", "preview", "wait"]
       },
-      "successMessage": "Your patterns solve the 'dead air' problem."
+      "badExample": "Make the AI faster so there's no loading.",
+      "goodExample": "Pattern 1: Token streaming -- show text appearing word-by-word like ChatGPT. Users start reading immediately, turning 10 seconds of waiting into 10 seconds of reading. Pattern 2: Contextual progress stages -- instead of a generic spinner, show: 'Reading your 3,200-word document...' -> 'Found 7 key themes...' -> 'Writing summary (4/7 sections)...' Each stage gives confidence something real is happening. Pattern 3: Instant partial value -- immediately show quick-extract results (word count, detected language, topic tags) while the full analysis generates. The user gets something useful in 1 second even though the complete result takes 10.",
+      "successMessage": "The golden rule: never make users stare at nothing. Stream, show progress, deliver partial value immediately."
+    },
+    {
+      "id": "prod-6-2",
+      "type": "rewrite",
+      "instruction": "This error message is terrible UX. Rewrite it to be user-friendly with a clear recovery path:\n\n'Error 500: Internal Server Error. The AI model failed to generate a response. Please try again later.'",
+      "placeholder": "Rewritten error: ...",
+      "hint": "Something went wrong with your request. This usually happens with very long or complex inputs. Try: 1) Shortening your text to under 2,000 words, 2) Breaking it into smaller sections, or 3) Clicking 'Try Again' for a fresh attempt. Your input has been saved.",
+      "criteria": {
+        "minLength": 30,
+        "keywords": ["try", "input", "save", "shorter", "again"],
+        "mustNotInclude": ["Error 500", "Internal Server Error"]
+      },
+      "badExample": "Something went wrong. Try again later.",
+      "goodExample": "We had trouble processing that -- it happens occasionally with longer texts. Your input is saved, so nothing is lost. Three things to try: 1) 'Try Again' (sometimes it just needs a second attempt), 2) Shorten your input to under 2,000 words, 3) Break it into smaller sections and process each separately. If this keeps happening, our team has been notified and is looking into it.",
+      "successMessage": "Good error UX has three parts: explain simply, preserve user work, provide clear next steps."
     }
   ],
   "07-pricing-and-monetization": [
     {
-      "id": "bap-7-1",
+      "id": "prod-7-1",
       "type": "freeform",
-      "instruction": "Design 3 pricing tiers for your AI product. Each: name, price, features, usage limits, target customer.",
-      "placeholder": "Tier 1 (Free): ...",
+      "instruction": "Design 3 pricing tiers for an AI meeting summarizer. Include: tier name, price, features, usage limits, target customer, and the psychological strategy behind each tier.",
+      "placeholder": "Tier 1 (Free): ...\nTier 2 (Pro): ...\nTier 3 (Team): ...",
+      "hint": "Free: 5 summaries/month, 30-min max recording -- creates natural upgrade moment in week 2. Pro ($39/month): 100 summaries, unlimited length, all exports, action item tracking -- 'Most Popular' label. Team ($149/month): unlimited, 20 seats, API, SSO -- makes Pro look like a deal (price anchoring).",
       "criteria": {
-        "keywords": [
-          "free",
-          "pro",
-          "enterprise",
-          "price",
-          "limit",
-          "feature",
-          "usage"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["free", "pro", "price", "limit", "feature", "usage", "tier"]
       },
-      "successMessage": "Pricing tiers create a clear upgrade path."
+      "badExample": "Free, $10, and $100 tiers with more features.",
+      "goodExample": "Tier 1 -- Free Forever: 5 meeting summaries/month, max 30-min recordings, email export only. Psychology: limit is low enough to hit by week 2, creating a natural 'I need more' moment. 30-min cap means they can't use it for important long meetings. Tier 2 -- Pro ($39/month, 'Most Popular'): 100 summaries, unlimited length, Slack/Notion/Docs export, action item tracking, searchable history. Psychology: positioned between free and $149, it feels like the smart middle choice (decoy effect). Tier 3 -- Business ($149/month): unlimited everything, 20 seats, API, SSO, custom templates, priority support. Psychology: makes Pro look like a steal AND captures enterprise willingness-to-pay. Most visitors think 'Pro is totally worth it' -- which is the intended behavior.",
+      "successMessage": "Pricing is psychology, not math. Free creates addicts, mid-tier captures revenue, top tier makes mid-tier look cheap."
+    },
+    {
+      "id": "prod-7-2",
+      "type": "analyze",
+      "instruction": "An AI product charges $0.10 per API call and pays $0.03 per call to Claude. At 10,000 users making 50 calls/day, calculate the monthly gross margin. Then identify the biggest financial risk.",
+      "placeholder": "Revenue: ...\nCost: ...\nGross margin: ...\nBiggest risk: ...",
+      "hint": "Revenue: 10K x 50 x $0.10 x 30 = $1.5M/month. Cost: 10K x 50 x $0.03 x 30 = $450K. Margin: $1.05M (70%). Risk: if power users make 500 calls/day on flat monthly plans, costs spike without matching revenue.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["revenue", "cost", "margin", "risk", "user", "month"]
+      },
+      "badExample": "That's a lot of money so it seems fine.",
+      "goodExample": "Revenue: 10,000 x 50 x 30 x $0.10 = $1,500,000/month. Cost: 10,000 x 50 x 30 x $0.03 = $450,000/month. Gross margin: $1,050,000 (70%). Looks great on averages. Biggest risk: USAGE VARIANCE. If 500 power users make 500 calls/day on a flat $49/month plan, they generate $24,500 revenue but cost $225,000. That's a $200K/month loss from 5% of users. Second risk: if Anthropic raises pricing from $0.03 to $0.06, margin drops from 70% to 40% overnight. Mitigation: usage caps per tier, caching for repeated queries, volume discount negotiation.",
+      "successMessage": "The hidden danger: margin looks great on averages but power users can destroy unit economics. Usage caps and caching are your defense."
     }
   ],
   "08-launch-and-distribution": [
     {
-      "id": "bap-8-1",
+      "id": "prod-8-1",
       "type": "freeform",
-      "instruction": "Launch plan: 5 distribution channels ranked by ROI, launch day checklist, first-week success metrics.",
-      "placeholder": "Channel 1 (highest ROI): ...",
+      "instruction": "Create a launch day plan with posts for 3 platforms: Product Hunt, Twitter/X, and one community (Reddit or HN). Each post must be different and tailored to the platform's culture.",
+      "placeholder": "Product Hunt: ...\nTwitter/X: ...\nCommunity: ...",
+      "hint": "Product Hunt: tagline + problem/solution + social proof + demo. Twitter/X: personal story thread starting with a hook stat. Reddit r/SaaS: honest builder story, link in comments not post body.",
       "criteria": {
-        "keywords": [
-          "channel",
-          "launch",
-          "metric",
-          "social",
-          "email",
-          "ROI",
-          "day one"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["Product Hunt", "Twitter", "community", "launch", "platform"]
       },
-      "successMessage": "A launch plan turns 'ship and pray' into repeatable strategy."
+      "badExample": "Post the same announcement everywhere.",
+      "goodExample": "Product Hunt: Title: 'MeetingMind -- AI summaries your team will actually read.' Maker comment: 'I built this because I spent 30 min after every meeting writing summaries nobody read. 200 beta users saved 1,100+ hours. Free tier available.' Twitter/X: Thread. 'I spent 6 months building an AI that does in 60 seconds what used to take me 30 minutes after every meeting. It's live today. [Demo GIF]' Then walk through the story, show results, end with link. HackerNews (Show HN): 'Show HN: AI meeting summarizer -- technical architecture and lessons learned.' Post focuses on Whisper + Claude architecture, context window handling for long meetings, latency optimization. HN respects technical depth over marketing.",
+      "successMessage": "Platform-native content is the key. Same product, completely different positioning for each audience."
+    },
+    {
+      "id": "prod-8-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this terrible launch tweet to be compelling:\n\n'Excited to announce we've launched our new AI-powered productivity tool! It uses cutting-edge machine learning to help you work smarter. Check it out! [link]'",
+      "placeholder": "Rewrite: ...",
+      "hint": "Lead with specific pain and result, not buzzwords. 'I used to spend 45 minutes after every meeting writing summaries nobody read. Now I upload the recording and get a better summary in 60 seconds.'",
+      "criteria": {
+        "minLength": 30,
+        "keywords": ["minute", "result"],
+        "mustNotInclude": ["excited to announce", "cutting-edge"]
+      },
+      "badExample": "Our AI tool is really great, you should use it!",
+      "goodExample": "Every Monday I spent 3 hours turning last week's customer calls into CRM notes. Now I don't. Upload the recording. 2 minutes later: clean summary, follow-ups extracted, CRM fields filled. 6 months of building. 200 beta users. 1,100 hours saved. MeetingMind is live today -- free to try. [demo GIF]",
+      "successMessage": "The formula: specific pain, specific result, social proof, CTA. Nobody cares about 'cutting-edge AI.' They care about getting 3 hours back."
     }
   ],
   "09-measuring-and-iterating": [
     {
-      "id": "bap-9-1",
+      "id": "prod-9-1",
       "type": "freeform",
-      "instruction": "5 post-launch metrics. Each: what it measures, how to track, threshold for 'good' vs 'concerning'.",
-      "placeholder": "Metric 1: ...",
+      "instruction": "Define 5 post-launch metrics for an AI chatbot product. For each: what it measures, how to track it, and the threshold for 'good' vs 'concerning'.",
+      "placeholder": "Metric 1: ...\n  Measures: ...\n  Track: ...\n  Good: ...\n  Concerning: ...",
+      "hint": "1) Resolution rate (% solved without human). Good: >70%. 2) User satisfaction (thumbs up/down). Good: >85% positive. 3) Conversation length (messages per session). Good: 2-4. 4) Return usage (% back within 7 days). Good: >40%. 5) Cost per conversation. Good: <$0.10.",
       "criteria": {
-        "keywords": [
-          "metric",
-          "track",
-          "retention",
-          "NPS",
-          "usage",
-          "churn",
-          "threshold"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["metric", "track", "retention", "usage", "threshold", "good"]
       },
-      "successMessage": "These are your product's vital signs."
+      "badExample": "Track pageviews, signups, and revenue.",
+      "goodExample": "1) Resolution rate -- % of queries resolved without human escalation. Track: tag conversations as resolved/escalated. Good: >75%. Concerning: <50% means the AI isn't actually useful. Fix: audit failed conversations, add to knowledge base. 2) Response quality (thumbs up/down per message). Track: in-app feedback widget. Good: >85% positive. Concerning: <70%. Fix: cluster negative responses by topic, fix worst-performing prompts. 3) Conversations per user per week. Track: analytics events. Good: 3-8 (habitual use). Concerning: <1 (not sticky) or >15 (confused users needing too much help). 4) 7-day retention. Track: cohort analysis. Good: >40%. Concerning: <25%. Fix: onboarding and first-use experience. 5) Cost per resolution. Track: API spend / resolved conversations. Good: <$0.15. Concerning: >$0.50. Fix: caching, model routing, prompt optimization.",
+      "successMessage": "These are your product's vital signs. Monitor them weekly and you'll catch problems before users leave."
+    },
+    {
+      "id": "prod-9-2",
+      "type": "analyze",
+      "instruction": "Your AI product has these metrics after 30 days: 500 signups, 150 active users (30%), 45% weekly retention, 12% paid conversion, NPS 42. Analyze each: good or bad? What's the #1 thing to fix?",
+      "placeholder": "Activation (30%): ...\nRetention (45%): ...\nOverall: ...\n#1 fix: ...",
+      "hint": "30% activation is low (benchmark: 40-60%). 45% retention is decent. 12% paid conversion is excellent (benchmark: 2-5%). NPS 42 is good. Product is loved by users but too many bounce before trying it. #1 fix: onboarding. Getting activation from 30% to 50% nearly doubles revenue.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["activation", "retention", "conversion", "fix", "onboarding"]
+      },
+      "badExample": "Numbers look okay, get more signups.",
+      "goodExample": "Activation (30%): BAD. Benchmark is 40-60%. 350 of 500 signups never experienced value. Retention (45%): GOOD. Above 40% weekly for a new product means real value for active users. Paid conversion (12%): EXCELLENT. SaaS average is 2-5%. Users who activate clearly find serious value. NPS (42): GOOD. Above 30 is positive. Overall: product-market fit disguised as an acquisition problem. The 150 active users love it. But 70% never find out. #1 fix: ONBOARDING. Where do the 70% drop off? Get them to their first AI generation within 60 seconds. Moving activation from 30% to 50% = 100 more active users = ~12 more paid users = $4,176 more ARR. Without spending a cent on acquisition.",
+      "successMessage": "The insight that changes everything: fixing onboarding is more valuable than doubling signups."
     }
   ],
   "10-scaling-your-ai-product": [
     {
-      "id": "bap-10-1",
+      "id": "prod-10-1",
       "type": "freeform",
-      "instruction": "1,000 users, costs climbing. Scaling plan: cost optimization, infrastructure, team growth.",
-      "placeholder": "Cost optimization: ...",
+      "instruction": "You have 1,000 users and costs are climbing. Create a scaling plan covering: cost optimization (3 strategies), infrastructure changes, and when to hire.",
+      "placeholder": "Cost optimization:\n1. ...\nInfrastructure: ...\nHiring: ...",
+      "hint": "Cost: 1) Semantic caching for repeated queries (30-50% reduction). 2) Model routing -- cheap model for simple queries. 3) Prompt optimization -- fewer tokens. Infrastructure: add queue for async processing, CDN for static assets. Hiring: first hire at $10K MRR should be a support/ops person, not an engineer.",
       "criteria": {
-        "keywords": [
-          "cost",
-          "cache",
-          "scale",
-          "optimize",
-          "infrastructure",
-          "team",
-          "revenue"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["cost", "cache", "scale", "optimize", "infrastructure", "revenue"]
       },
-      "successMessage": "Product meets engineering meets business. All three covered."
+      "badExample": "Get more servers and raise prices.",
+      "goodExample": "Cost optimization: 1) Semantic caching -- store embeddings of queries, if new query >92% similar to cached one, serve cached response. Reduces API calls 40-50% for products with repetitive queries. 2) Model routing -- classify queries by complexity. Simple ones (80% of traffic) go to Claude Haiku at 1/10th cost. Complex ones go to Sonnet. 3) Prompt audit -- cut system prompt tokens by 30-40%, use structured output to get shorter responses. Combined: 70% cost reduction. Infrastructure: add Redis for caching layer, implement job queue (Bull/BullMQ) for async processing so API latency stays low under load. Move to connection pooling for database. Hiring: at $10K MRR, first hire = part-time customer support (you need to stay in code). At $30K MRR, hire a frontend developer to ship features faster. At $50K MRR, hire ops/devops to manage infrastructure you've outgrown.",
+      "successMessage": "Product meets engineering meets business. The scaling plan that covers all three wins."
+    },
+    {
+      "id": "prod-10-2",
+      "type": "prompt",
+      "instruction": "Your AI product just went viral with 10x traffic overnight. Write a prompt asking Claude to create an emergency scaling plan covering costs, rate limiting, and user communication.",
+      "placeholder": "My AI product just got 10x traffic...",
+      "hint": "Include: current stats, budget constraints, specific concerns about API costs, questions about rate limiting, caching, and what to tell users about performance.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["scale", "traffic", "cost", "rate limit", "cache", "emergency"]
+      },
+      "badExample": "My app is popular now, what do I do?",
+      "goodExample": "Emergency: my AI document analyzer went from 1,000 to 10,000 DAU overnight after a viral tweet. Solo dev, $5K in the bank, Claude API at $0.03/call average. Current monthly cost: $900. At 10x: $9,000 -- I only have $5K. I need a triage plan: 1) Today: what rate limits and user caps to implement immediately? 2) This week: caching strategy for common queries? 3) This month: cheaper model routing for simple requests? 4) Communication: draft an in-app banner setting expectations. 5) Should I accelerate my paid launch to capture this wave? Specific numbers and priorities, not theory.",
+      "successMessage": "Scaling emergencies are the best problem to have. Costs, rate limits, caching, and communication are the four pillars of the response."
     }
   ]
 }

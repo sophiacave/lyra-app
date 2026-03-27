@@ -6,12 +6,16 @@ import { site, colors } from '../lib/site-config';
 const fullTitle = `${site.name} \u2014 ${site.tagline}`;
 const shortDesc = "What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn't the future \u2014 it's now.";
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: colors.purple,
+};
+
 export const metadata = {
   title: fullTitle,
   description: site.description,
   manifest: '/manifest.json',
-  themeColor: colors.purple,
-  viewport: 'width=device-width, initial-scale=1',
   icons: {
     icon: '/favicon.ico',
   },

@@ -3,210 +3,302 @@
     {
       "id": "cgp-1-1",
       "type": "freeform",
-      "instruction": "Map your content creation as a pipeline: inputs, transformations, quality gates, outputs. Where are bottlenecks?",
-      "placeholder": "Input: ... Step 1: ...",
+      "instruction": "Describe a content creation task you do repeatedly, then break it down into discrete pipeline stages. Each stage should have a clear input and output.",
+      "placeholder": "Task: ...\nStage 1: Input: ... -> Process: ... -> Output: ...\nStage 2: ...",
+      "hint": "Task: Writing a weekly newsletter. Stage 1 (Research): Input: topic keywords -> Scan 10 sources -> Output: 5 curated links with summaries. Stage 2 (Outline): Input: curated articles -> Identify theme, structure 3 sections -> Output: outline with headers. Stage 3 (Draft): Input: outline -> Write each section -> Output: 800-word draft. Stage 4 (Polish): Input: draft -> Edit for voice, add subject line -> Output: publish-ready newsletter.",
       "criteria": {
-        "keywords": [
-          "input",
-          "step",
-          "transform",
-          "quality",
-          "output",
-          "bottleneck",
-          "pipeline"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["input", "output", "stage", "process", "pipeline", "step"]
       },
-      "successMessage": "Pipeline thinking enables automation."
+      "badExample": "I write blog posts. Step 1: write. Step 2: publish.",
+      "goodExample": "Task: Creating a monthly product changelog. Stage 1 (Gather): Input: Jira tickets marked 'done' -> Extract title, description, category -> Output: structured list of 15-30 changes. Stage 2 (Prioritize): Input: change list -> Rank by user impact, group into highlights/improvements/fixes -> Output: ordered list with top 3 flagged. Stage 3 (Narrate): Input: grouped changes -> Write user-facing descriptions emphasizing benefits -> Output: draft with readable descriptions. Stage 4 (Enhance): Input: draft -> Add screenshots for top 3, write intro, add CTA -> Output: complete blog post. Stage 5 (Distribute): Input: final post -> Publish to blog, generate tweet thread, Slack announcement -> Output: 3 platform-specific pieces.",
+      "successMessage": "You've decomposed creative work into a pipeline! Each stage has clear boundaries, making it possible to automate or AI-assist individually."
+    },
+    {
+      "id": "cgp-1-2",
+      "type": "analyze",
+      "instruction": "Analyze this content workflow and identify which stages could be automated with AI and which require human judgment:\n\nWorkflow: Research -> Interview -> Write -> Edit -> Publish",
+      "placeholder": "Research: can/can't automate because...\nInterview: can/can't because...",
+      "hint": "Research: 80% automatable (AI scans sources, summarizes). Interview: 10% automatable (AI preps questions, transcribes after). Write: 60% automatable (AI drafts from notes, human adds voice). Edit: 70% automatable (AI catches grammar, structure; human checks tone). Publish: 95% automatable.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["automate", "human", "AI", "judgment", "can", "because"]
+      },
+      "badExample": "AI can do all of these stages.",
+      "goodExample": "Research: 80% automatable -- AI scans hundreds of sources and summarizes in minutes. Human needed for: judging source credibility, knowing what the audience cares about. Interview: 10% automatable -- requires human rapport and improvisation. AI can prep questions and transcribe afterward. Write: 60% automatable -- AI generates solid first drafts from structured inputs. Human adds original analysis, personal voice, and connects ideas in novel ways. Edit: 70% automatable -- AI handles grammar, consistency, readability scoring, fact-checking against sources. Human for tone sensitivity and the 'does this feel right?' gut check. Publish: 95% automatable -- formatting, scheduling, cross-platform posting, and meta descriptions are pure automation.",
+      "successMessage": "AI handles volume and consistency, humans handle judgment and creativity. The best pipelines use both."
     }
   ],
   "02-content-architecture": [
     {
       "id": "cgp-2-1",
       "type": "freeform",
-      "instruction": "Design content architecture: types (blog, social, email, video), relationships, and taxonomy.",
-      "placeholder": "Content types: ...",
+      "instruction": "Design a content architecture for a SaaS company blog. Define 4 content pillars, the audience for each, a sample topic, and how each connects to a business goal.",
+      "placeholder": "Pillar 1: ...\n  Audience: ...\n  Sample: ...\n  Business goal: ...",
+      "hint": "Pillar 1 (Product Education): current users, 'How to set up automated reports,' reduce support tickets. Pillar 2 (Thought Leadership): decision-makers, 'Why data-driven teams win,' attract enterprise leads. Pillar 3 (Customer Stories): potential buyers, 'How Acme Corp reduced reporting time by 80%,' social proof. Pillar 4 (Technical Deep Dives): developers, 'Building custom integrations with our API,' developer community growth.",
       "criteria": {
-        "keywords": [
-          "type",
-          "blog",
-          "social",
-          "email",
-          "relationship",
-          "taxonomy",
-          "category"
-        ],
-        "minLength": 50
+        "minLength": 60,
+        "keywords": ["pillar", "audience", "goal", "topic", "content", "business"]
       },
-      "successMessage": "Architecture makes scaling possible."
+      "badExample": "Write blog posts about our product and the industry.",
+      "goodExample": "Pillar 1 -- How-To Guides: Audience: users in first 90 days. Sample: '5 dashboard templates that save 3 hours/week.' Goal: activation and retention (users who set up dashboards in week 1 have 3x retention). Pillar 2 -- Data Culture: Audience: VPs and C-suite. Sample: 'The hidden cost of decisions made without data.' Goal: top-of-funnel lead gen and brand authority. Pillar 3 -- Builder Spotlight: Audience: buyers evaluating tools. Sample: 'How a 15-person logistics company built real-time delivery tracking in one afternoon.' Goal: conversion (case studies have 4x higher conversion). Pillar 4 -- Under the Hood: Audience: data engineers evaluating the API. Sample: 'Connecting 50+ data sources: architecture patterns.' Goal: developer adoption drives enterprise deals.",
+      "successMessage": "A content architecture that drives revenue, not just traffic. Every pillar maps to a business outcome."
+    },
+    {
+      "id": "cgp-2-2",
+      "type": "rewrite",
+      "instruction": "This content plan has no structure. Reorganize it into a proper architecture with categories, formats, and cadences:\n\n'We'll write 3 blog posts a week about whatever is trending in AI, plus some product updates when we ship stuff.'",
+      "placeholder": "Restructured plan: ...",
+      "hint": "Monday: Industry Analysis (1 post). Wednesday: Product Content (alternates tutorial/changelog). Friday: Community Content (alternates customer story/expert interview). Monthly: one in-depth report.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["cadence", "category", "format", "week", "schedule", "structure"],
+        "mustNotInclude": ["whatever is trending"]
+      },
+      "badExample": "Write more organized blog posts about AI.",
+      "goodExample": "Category 1 -- AI Industry Intelligence (Tuesday, weekly): Analyze ONE significant development, translate to 'what this means for your business.' 800 words. Source: AI monitors 20 RSS feeds, surfaces top 5, human picks 1 and adds analysis. Category 2 -- Product Education (Thursday, weekly): Rotating: Week 1 = feature tutorial. Week 2 = template of the week. Week 3 = integration guide. Week 4 = release notes roundup. Category 3 -- Social Proof (1st and 3rd Monday): Alternating customer case study and expert Q&A. Monthly Anchor: 'State of AI' report, 2,500 words, original data, gated for lead generation. Cadence: 3/week + 1 monthly pillar = 13 pieces/month with zero guesswork.",
+      "successMessage": "From chaos to clarity. Structured architecture means no more 'whatever is trending' randomness."
     }
   ],
   "03-template-engines": [
     {
       "id": "cgp-3-1",
       "type": "prompt",
-      "instruction": "Create a reusable prompt template for blog posts. Variables (topic, audience, tone, length), structure, quality criteria.",
-      "placeholder": "Template: Write about {topic}...",
+      "instruction": "Create a reusable AI prompt template for generating product descriptions. Include variable placeholders (marked with {curly braces}) for at least 5 dynamic fields.",
+      "placeholder": "Template:\nYou are a...\nProduct: {product_name}\n...",
+      "hint": "You are an e-commerce copywriter for {industry}. Write a product description for {product_name}. Target: {target_audience}. Features: {feature_list}. Tone: {brand_voice}. Include: headline (max 10 words), 2-sentence hook, 4 benefit bullets, and CTA. 150-200 words. No superlatives.",
       "criteria": {
-        "keywords": [
-          "template",
-          "variable",
-          "topic",
-          "audience",
-          "tone",
-          "structure",
-          "quality"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["template", "variable", "product", "tone", "audience", "structure"]
       },
-      "successMessage": "Prompt templates are the factory machines."
+      "badExample": "Write a product description for {product}.",
+      "goodExample": "TEMPLATE: Product Description Generator v1. System: You are a conversion-focused copywriter for {brand_name}, a {industry} company. Writing style: {tone}. Audience: {target_audience} who care about {primary_value_driver}. Generate for: Product: {product_name}. Category: {category}. Features: {feature_list}. Price: {price}. Differentiator: {differentiator}. SEO keyword: {primary_keyword}. Output: 1) Headline (max 8 words, include keyword). 2) Opening hook (2 sentences addressing audience frustration). 3) Benefits (4 bullets translating features into outcomes). 4) Social proof line. 5) CTA (action-oriented). Constraints: 150-200 words, no superlatives, include keyword 2-3 times naturally.",
+      "successMessage": "Production-ready template! Variables for everything that changes, locked-down structure for consistent quality."
+    },
+    {
+      "id": "cgp-3-2",
+      "type": "freeform",
+      "instruction": "Design a template system for weekly email newsletters. Show: the master template structure, 3 section templates, and explain how they compose together.",
+      "placeholder": "Master template: ...\nSection 1: ...\nComposition: ...",
+      "hint": "Master template: Subject + [intro, main_story, quick_hits, cta]. Each section is a separate template. Intro uses {first_name} and {theme}. Main story uses {headline} and {analysis}. Quick hits uses a loop over {curated_items}. Composition: fill each independently, then assemble.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["template", "section", "compose", "master", "variable", "newsletter"]
+      },
+      "badExample": "Write a newsletter template.",
+      "goodExample": "Master Template: Subject: '{emoji} {theme_word}: {subject_hook}'. Body: [greeting] -> [hero_section] -> [curated_section] -> [cta] -> [footer]. Section 1 -- Greeting: 'Hi {first_name}, {seasonal_variant}. {one_line_theme_intro}. Here's what caught my eye:' Variables: first_name (subscriber data), seasonal_variant (auto by date). Section 2 -- Hero: '{hero_headline}. {paragraph_1: 60-80 words}. {paragraph_2: 60-80 words}. The takeaway: {one_sentence_insight}. [{cta_text} -> {link}]'. Section 3 -- Curated: 'Quick Hits: {for item in curated_items (max 4):} {emoji} {item_title} -- {one_sentence_hook} [{source}]({link}). {end for}'. Composition: each section renders independently with its own context -> master stitches them with formatting. Sections can be generated in parallel, A/B tested independently, and swapped without affecting others.",
+      "successMessage": "Composable sections, clear variables, parallel generation. This system could produce a unique newsletter every week with minimal human input."
     }
   ],
   "04-multi-format-output": [
     {
       "id": "cgp-4-1",
       "type": "prompt",
-      "instruction": "One core idea, 5 formats: tweet thread, LinkedIn post, blog intro, email subject, video script hook.",
-      "placeholder": "Core idea: [idea]. Generate in 5 formats...",
+      "instruction": "Write a prompt that takes a single blog post topic and generates content in 4 different formats: blog outline, Twitter/X thread, LinkedIn post, and email newsletter blurb.",
+      "placeholder": "Given the topic: ...\nGenerate 4 formats...",
+      "hint": "One topic, four platform-native outputs. Blog outline: 5-7 H2 sections, target 1200 words. Twitter thread: 6-8 tweets, hook first tweet, CTA last. LinkedIn: 150-200 words, bold opening, ends with question. Email blurb: 3-4 sentences teasing the post with subject line.",
       "criteria": {
-        "keywords": [
-          "tweet",
-          "LinkedIn",
-          "blog",
-          "email",
-          "video",
-          "format",
-          "core"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["blog", "Twitter", "LinkedIn", "email", "format", "topic"]
       },
-      "successMessage": "One idea, five formats. 5x output from single input."
+      "badExample": "Write about AI in different formats.",
+      "goodExample": "Topic: '{topic}'. Audience: {audience}. Voice: {voice}. Generate all 4 optimized for each platform: 1) BLOG OUTLINE: H2 sections, hook intro, 5-7 body sections with bullet points, conclusion + CTA. SEO keyword: {keyword}. Target 1,200 words. 2) TWITTER THREAD (7 tweets): Tweet 1 = standalone hook with surprising stat. Tweets 2-6 = one insight each. Tweet 7 = CTA + link. No mid-thread hashtags. 3) LINKEDIN POST (200 words max): Personal anecdote opening, 3 key insights as short paragraphs with line breaks, end with engagement question. 3-5 hashtags at bottom. 4) EMAIL BLURB (75 words): Subject line under 50 chars. Body: one surprising insight framed as 'what most people get wrong.' CTA: 'Read the full breakdown.' Each piece must stand alone but tell a coherent story together.",
+      "successMessage": "One topic, four platforms, four native formats. This is content multiplication -- create once, distribute everywhere."
+    },
+    {
+      "id": "cgp-4-2",
+      "type": "rewrite",
+      "instruction": "This LinkedIn post reads like a blog paragraph. Rewrite it in native LinkedIn format with line breaks, a hook, and engagement question:\n\n'Artificial intelligence is transforming content marketing. Companies using AI tools see 3x more output with the same team. However, quality remains important and human oversight is still necessary.'",
+      "placeholder": "Rewritten for LinkedIn: ...",
+      "hint": "Short lines. Visual spacing. Personal hook. Data points. Lesson. Engagement question.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["AI", "content", "team"],
+        "mustNotInclude": ["Artificial intelligence is transforming"]
+      },
+      "badExample": "AI is changing content marketing! Use AI tools to create more content!",
+      "goodExample": "Last month I ran an experiment.\n\nI gave my 3-person content team AI writing tools for 30 days.\n\nThe result?\n\n-> Content output: 3x (from 12 to 36 pieces/month)\n-> Team burnout: down\n-> Quality: unchanged (but ONLY because we kept humans in the loop)\n\nThe biggest lesson?\n\nAI doesn't replace the writer.\nIt replaces the blank page.\n\nOur best content now follows this flow:\n1. AI generates structure + first draft\n2. Human adds perspective and voice\n3. AI polishes for SEO\n\nThe teams trying to remove humans entirely? Their content sounds like everyone else's.\n\nAre you using AI in your content workflow? What's working?",
+      "successMessage": "Now THAT's LinkedIn-native! Short lines, personal hook, data, a lesson, and an engagement question. Same info, completely different impact."
     }
   ],
   "05-quality-control-systems": [
     {
       "id": "cgp-5-1",
       "type": "freeform",
-      "instruction": "Design QC checklist for AI content: factual accuracy, brand voice, readability, SEO, originality. How to automate each?",
-      "placeholder": "Check 1: Accuracy \u2014 Automated by: ...",
+      "instruction": "Design an AI-powered quality control checklist for blog posts. Include at least 8 checks that AI could automatically evaluate, with pass/fail criteria for each.",
+      "placeholder": "Check 1: Readability\n  Pass: ...\n  Fail: ...",
+      "hint": "1) Readability: Flesch-Kincaid 55-70. 2) Length: 800-2000 words. 3) Headline: contains keyword, under 60 chars. 4) Intro hook: first paragraph has question, stat, or story. 5) SEO: keyword in title, first paragraph, one H2. 6) Structure: H2 every 200-300 words. 7) CTA: post ends with clear action. 8) Brand voice: tone matches style guide samples.",
       "criteria": {
-        "keywords": [
-          "accuracy",
-          "voice",
-          "readability",
-          "SEO",
-          "originality",
-          "check",
-          "automate"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["check", "pass", "fail", "quality", "readab", "SEO", "automat"]
       },
-      "successMessage": "Quality control separates AI slop from AI-powered excellence."
+      "badExample": "Check that the blog post is good.",
+      "goodExample": "1) READABILITY: Flesch-Kincaid 55-70. Fail: <50 (too complex) or >80 (too simplistic). 2) HEADLINE: contains primary keyword, under 60 chars, uses power word or number. Fail: missing keyword or over limit. 3) INTRO HOOK: first 100 words contain question, stat, anecdote, or contrarian claim. Fail: opens with 'In today's world...' 4) STRUCTURE: H2 every 200-300 words, intro, conclusion with CTA, at least one list. Fail: missing elements. 5) FACTUAL GROUNDING: all claims with numbers are cited or qualified. Fail: uncited specific claims. 6) KEYWORD: primary keyword in title, first paragraph, 1+ H2, meta description. Fail: <3 of 5 locations. 7) VOICE CONSISTENCY: sentence patterns match 10 reference posts (similarity >0.8). Fail: <0.7. 8) ORIGINALITY: zero cliche phrases detected ('at the end of the day', 'in this day and age'). Fail: 2+ cliches.",
+      "successMessage": "Production-grade QC! Each check is specific, measurable, and automatable."
+    },
+    {
+      "id": "cgp-5-2",
+      "type": "debug",
+      "instruction": "This AI-generated blog post passed all automated checks but readers hate it. Identify what automated QC typically misses:\n\n'10 Ways AI Is Transforming Business. 1. AI helps companies automate tasks. 2. AI improves customer service. 3. AI enhances data analysis...'",
+      "placeholder": "Automated checks missed...",
+      "hint": "Missed: 1) Originality -- every point is generic. 2) Depth -- one shallow sentence per point. 3) Voice -- reads like Wikipedia. 4) Value -- reader learns nothing new. 5) Engagement -- no stories, no data, no contrarian takes.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["original", "depth", "voice", "value", "generic", "insight"]
+      },
+      "badExample": "The blog post seems fine, readers are picky.",
+      "goodExample": "What automated QC misses: 1) ORIGINALITY -- every check passes (readability, SEO, structure) while the content says nothing new. No reader finishes thinking 'I never considered that.' Automated systems can't measure insight. 2) DEPTH -- 'AI helps automate tasks' is true and useless. Where's the case study, the specific example, the counter-intuitive finding? QC counts words but can't evaluate substance. 3) VOICE -- this reads like AI-generated content because it IS the most generic version of this topic. Readers feel the absence of a real person's perspective. 4) VALUE -- the fundamental test: 'Is the reader better off after reading this?' No. They knew all 10 points already. 5) ENGAGEMENT -- zero storytelling, zero surprise, zero tension. The lesson: automated QC checks FORMAT, not CONTENT quality. Add a human review asking 'What does this say that hasn't been said a thousand times?'",
+      "successMessage": "Automated QC catches the floor; human judgment reaches for the ceiling. The best pipelines use both."
     }
   ],
   "06-personalization-at-scale": [
     {
       "id": "cgp-6-1",
       "type": "prompt",
-      "instruction": "Personalize the same content for 3 audience segments. Show how core message stays same but framing changes.",
-      "placeholder": "Segment A (beginners): ...",
+      "instruction": "Design a system that personalizes the same email newsletter content for 3 different audience segments. Show how the core message stays the same but framing, tone, and emphasis change.",
+      "placeholder": "Core message: ...\nSegment A (beginners): ...\nSegment B (advanced): ...\nSegment C (executives): ...",
+      "hint": "Core: 'AI content tools are changing how teams work.' Beginners: focus on getting started, simple examples, encouraging tone. Advanced: focus on optimization, advanced techniques, peer-to-peer tone. Executives: focus on ROI, team productivity metrics, strategic tone.",
       "criteria": {
-        "keywords": [
-          "segment",
-          "personalize",
-          "beginner",
-          "advanced",
-          "tone",
-          "frame",
-          "core"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["segment", "personalize", "beginner", "tone", "frame", "core"]
       },
-      "successMessage": "Same message, different frames. Enterprise-level personalization."
+      "badExample": "Send different emails to different people.",
+      "goodExample": "Core message: 'AI content tools produce 3x more output when used correctly.' Segment A (Beginners -- new subscribers, <30 days): 'Getting started with AI content tools can feel overwhelming, but it doesn't have to be. This week's guide walks you through your first AI-assisted blog post, step by step. Start with one tool. Master one workflow. The 3x output comes naturally.' Tone: encouraging, jargon-free. CTA: 'Try your first AI draft.' Segment B (Power Users -- open every email, click 3+ links): 'You're already using AI for content. Here's how to go from 2x to 3x: prompt chaining, output templating, and a feedback loop that improves quality every cycle. Advanced techniques below.' Tone: peer-to-peer, assumes competence. CTA: 'Download the advanced playbook.' Segment C (Executives -- director+ titles, low click rate): 'Your content team can produce 3x more without hiring. Here's the ROI breakdown: $2,400/month in tools replaces $8,000/month in contractor spend. Case study from a team of 5 inside.' Tone: strategic, numbers-driven. CTA: 'See the ROI calculator.'",
+      "successMessage": "Same message, three radically different frames. Personalization isn't creating 3x content -- it's presenting the same content 3 different ways."
+    },
+    {
+      "id": "cgp-6-2",
+      "type": "analyze",
+      "instruction": "A company personalizes website content based on visitor industry (detected from company IP lookup). Analyze the ethical implications and practical problems.",
+      "placeholder": "Ethical concerns: ...\nPractical problems: ...\nBetter approach: ...",
+      "hint": "Ethical: visitors don't know they're profiled, GDPR concerns, potential price discrimination. Practical: IP detection wrong 30-40% (VPNs, remote workers), wrong personalization is worse than none. Better: let users self-select or use behavioral signals.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["privacy", "ethical", "accuracy", "VPN", "consent"]
+      },
+      "badExample": "It's fine, all companies do it.",
+      "goodExample": "Ethical: 1) No consent -- visitors didn't opt into profiling. Under GDPR, IP-based identification likely needs a legal basis. 2) Creepy factor -- seeing 'Welcome, Acme Corp!' when you just visited a website erodes trust. 3) If different industries see different prices, that's undisclosed price discrimination. Practical: 1) IP accuracy is 60-70% at best. Remote workers, VPN users, co-working spaces all misclassify. 2) Wrong personalization actively hurts -- showing healthcare content to a finance visitor wastes time. Better approach: on first visit, show a simple selector: 'I'm interested in solutions for [dropdown].' Or adapt based on which pages they visit (behavioral, transparent, accurate). Opt-in personalization always wins.",
+      "successMessage": "The line between 'helpful' and 'creepy' is consent. Opt-in personalization builds trust; surveillance-based personalization destroys it."
     }
   ],
   "07-multimedia-pipelines": [
     {
       "id": "cgp-7-1",
       "type": "freeform",
-      "instruction": "Pipeline: blog post -> social graphics, audiogram, video script, infographic brief. Map data flow between steps.",
-      "placeholder": "Input: Blog -> Step 1: Extract quotes...",
+      "instruction": "Design a pipeline that takes a single 30-minute podcast episode and generates 10 derivative content pieces across different media. List each output and the AI tool/technique used.",
+      "placeholder": "Input: 30-min podcast\nOutput 1: ... (Tool: ...)\nOutput 2: ...",
+      "hint": "1) Transcript (Whisper). 2) Blog post summary (Claude). 3) Twitter thread (Claude). 4) 5 social quote cards (Claude + Canva). 5) Newsletter blurb (Claude). 6) Show notes with timestamps (Claude). 7) 3 video scripts for Shorts (Claude). 8) Audiogram clips (Headliner). 9) FAQ page (Claude). 10) Chapter markers (Claude).",
       "criteria": {
-        "keywords": [
-          "blog",
-          "graphic",
-          "audio",
-          "video",
-          "infographic",
-          "extract",
-          "pipeline"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["podcast", "transcript", "blog", "social", "video", "newsletter"]
       },
-      "successMessage": "Multimedia pipeline = content factory."
+      "badExample": "Turn the podcast into blog posts and social posts.",
+      "goodExample": "1) TRANSCRIPT (Whisper API) -- timestamped, speaker-identified. Foundation for all text derivatives. 2) BLOG POST 1,500 words (Claude) -- restructured for reading flow, not conversation flow. 3) EXECUTIVE SUMMARY 200 words (Claude) -- 3 key insights + 1 action item. 4) TWITTER THREAD 8 tweets (Claude) -- most quotable insights, hook first. 5) LINKEDIN CAROUSEL 10 slides (Claude text + Canva API) -- one insight per slide. 6) 3 SHORT-FORM VIDEO SCRIPTS 60 sec each (Claude) -- most engaging segments with intro hooks. 7) EMAIL BLURB 75 words (Claude) -- tease with most surprising insight. 8) SEO SHOW NOTES (Claude) -- summary, timestamps, resources, related episodes. 9) 5 QUOTE CARDS (Claude selects + image API) -- branded visual quotes for Instagram. 10) FAQ PAGE (Claude) -- every question asked/implied, with concise answers. Pipeline: Audio -> Whisper -> Claude (all text in parallel) -> Design APIs. Cost: ~$2. Time: 15 minutes. Zero human writing.",
+      "successMessage": "One 30-minute recording becomes 10 assets across 7 platforms. This is how creators produce seemingly impossible volumes -- they multiply, not create."
+    },
+    {
+      "id": "cgp-7-2",
+      "type": "prompt",
+      "instruction": "Explain the concept of 'content atoms' -- the smallest reusable units of content that can be recombined into different formats. Give 5 examples from a single webinar.",
+      "placeholder": "Content atoms are...\nFrom a webinar:\n1. ...",
+      "hint": "Atoms are the smallest meaningful pieces that stand alone or combine into larger pieces. From a webinar: 1) A statistic with context. 2) A quotable statement. 3) A framework/model. 4) A story/anecdote. 5) A practical tip.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["atom", "reusable", "smallest", "combine", "format", "webinar"]
+      },
+      "badExample": "Content atoms are small pieces of content.",
+      "goodExample": "Content atoms are the irreducible units of meaningful content that deliver value alone AND assemble into larger formats. A blog post is a molecule of 10-15 atoms. A webinar produces 50+ atoms. From a webinar on 'AI Content Strategy': 1) STATISTIC: 'Teams using AI pipelines published 312% more content while reducing cost by 67%.' Use in: LinkedIn posts, blog intros, pitch decks. 2) QUOTE: 'Your pipeline is only as smart as the dumbest step.' Use in: social cards, email pull-quotes, presentations. 3) FRAMEWORK: The Create-Review-Multiply model. Use in: infographic, blog series structure, workshop exercise. 4) STORY: Speaker accidentally published an unedited AI draft to 50K subscribers -- open rates went UP. Use in: LinkedIn post, podcast intro, conference talk opener. 5) TIP: 'Include 3 examples of your best content in every AI prompt.' Use in: how-to blog, tweet, course lesson, newsletter quick-tip.",
+      "successMessage": "Content atoms are the secret to prolific output. Create atoms once, recombine infinitely."
     }
   ],
   "08-scheduling-and-distribution": [
     {
       "id": "cgp-8-1",
       "type": "freeform",
-      "instruction": "Design automated distribution: platforms, optimal posting times, A/B testing, platform-specific formatting.",
-      "placeholder": "Platform 1: ... Time: ...",
+      "instruction": "Create a weekly content distribution schedule for 4 platforms (Blog, Twitter/X, LinkedIn, Email). Show what goes where, when, and the strategic reasoning for timing.",
+      "placeholder": "Monday: ...\nTuesday: ...\nReasoning: ...",
+      "hint": "Monday 9am: LinkedIn (professionals planning their week). Tuesday 8am: Blog published (indexing time before peak traffic Wed/Thu). Tuesday 12pm: Email newsletter (highest opens). Wednesday: Twitter thread repurposing blog. Thursday: LinkedIn discussing blog. Friday: analytics review.",
       "criteria": {
-        "keywords": [
-          "platform",
-          "schedule",
-          "time",
-          "A/B",
-          "test",
-          "format",
-          "distribute"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["Monday", "schedule", "platform", "blog", "Twitter", "LinkedIn", "email"]
       },
-      "successMessage": "Automated distribution = 24/7 content delivery."
+      "badExample": "Post stuff every day on every platform.",
+      "goodExample": "MONDAY: 8am LinkedIn thought leadership post (highest engagement, professionals planning their week). 12pm Twitter thread repurposing Friday's email insights. TUESDAY: 6am Blog post live (Google needs 24-48h to index before peak Wed/Thu traffic). 10am Tweet promoting blog with hook quote, link in reply. 2pm Email newsletter (Tuesday 2pm = our highest open rate at 34%). WEDNESDAY: 9am LinkedIn -- blog rewritten as native post (never just share links, LinkedIn suppresses them). 3pm Twitter engagement -- reply to Mon/Tue comments. THURSDAY: 10am Twitter thread -- deeper dive on one blog angle that got most engagement. 1pm LinkedIn comment engagement day. FRIDAY: 9am Twitter casual/BTS post (Friday audience is relaxed). Internal: weekly performance review. NO WEEKENDS (B2B engagement drops 70%). Cascade: Blog (Tue) -> Email (Tue) -> LinkedIn (Wed) -> Twitter threads (Mon/Thu).",
+      "successMessage": "Data-driven distribution, not random posting. Every time slot has a reason, every platform gets native content."
+    },
+    {
+      "id": "cgp-8-2",
+      "type": "analyze",
+      "instruction": "A company posts the exact same content with identical text on Blog, Twitter, LinkedIn, and Facebook at 9am every day. Identify 4 problems and suggest fixes.",
+      "placeholder": "Problem 1: ...\n  Fix: ...",
+      "hint": "1) Algorithms penalize non-native content. 2) 9am isn't optimal for all platforms. 3) Overlapping audiences see the same thing 4 times. 4) No cross-platform strategy.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["platform", "algorithm", "native", "timing", "audience", "adapt"]
+      },
+      "badExample": "It's fine for most companies.",
+      "goodExample": "Problem 1: ALGORITHM PUNISHMENT. LinkedIn suppresses external links. Twitter deprioritizes auto-posted content. Each platform detects and reduces reach of non-native posts. Fix: rewrite each post natively for the platform. Problem 2: WRONG TIMING. 9am works for LinkedIn but Twitter peaks at lunch and email opens peak Tuesday-Thursday 2pm. Fix: schedule per-platform optimal times. Problem 3: AUDIENCE FATIGUE. Same followers on multiple platforms see identical text 4 times -- feels lazy and spammy. Fix: same core message, different angle per platform. LinkedIn gets 'what I learned,' Twitter gets the 'hot take.' Problem 4: NO STRATEGIC ROLE. Every platform doing the same thing wastes cross-platform synergy. Fix: Blog = long-form SEO. Email = retention. LinkedIn = authority. Twitter = reach. Each platform serves a different funnel stage.",
+      "successMessage": "Cross-posting identical content is the cardinal sin of distribution. Same idea, different execution for each platform."
     }
   ],
   "09-analytics-driven-content": [
     {
       "id": "cgp-9-1",
-      "type": "freeform",
-      "instruction": "Design feedback loop: performance data improving future content. Metrics, feed-back mechanism, decision rules.",
-      "placeholder": "Track: ... Feed back: ...",
+      "type": "analyze",
+      "instruction": "Analyze this content performance data and recommend what to create next:\n\nPost A: '5 AI Tools for Small Business' -- 12,000 views, 3% CTR\nPost B: 'How I Built an AI Chatbot in a Weekend' -- 4,000 views, 12% CTR\nPost C: 'The Future of AI in Healthcare' -- 25,000 views, 1.5% CTR",
+      "placeholder": "Post A analysis: ...\nPost B analysis: ...\nRecommendation: ...",
+      "hint": "Post A: good top-of-funnel, moderate engagement. Post B: lower views but 4x higher CTR -- highly engaged niche audience. Post C: viral but lowest CTR, attracts browsers not buyers. Recommendation: create more Post B-style content (personal, practical, specific) because CTR indicates purchase intent.",
       "criteria": {
-        "keywords": [
-          "metric",
-          "performance",
-          "feedback",
-          "loop",
-          "improve",
-          "track",
-          "rule"
-        ],
-        "minLength": 60
+        "minLength": 50,
+        "keywords": ["CTR", "views", "engagement", "recommend", "audience", "value"]
       },
-      "successMessage": "Analytics-driven creation is the ultimate advantage."
+      "badExample": "Post C is best because it has the most views.",
+      "goodExample": "Post A (12K views, 3% CTR): Solid top-of-funnel content. Attracts curious small business owners -- moderate intent. Post B (4K views, 12% CTR): MOST VALUABLE. Lower reach but 4x the engagement rate. These readers are builders who take action. This is your ideal customer profile. Post C (25K views, 1.5% CTR): Vanity metrics. Attracts curious browsers who click because 'AI + healthcare' is trendy but have no intent to buy. Recommendation: create 3 more Post B-style pieces. The pattern: personal, practical, specific ('How I...' + 'in a Weekend'). These readers convert. Post C-style gets shares but not customers. Suggested topics: 'How I Automated My Newsletter in 2 Hours,' 'Building a Customer FAQ Bot: My Weekend Project,' 'I Replaced My Data Entry Process with AI -- Here's How.'",
+      "successMessage": "You found the SIGNAL (CTR, engagement) not the vanity metric (views). Post B's audience is worth 8x more."
+    },
+    {
+      "id": "cgp-9-2",
+      "type": "freeform",
+      "instruction": "Design a feedback loop where content analytics automatically improve your AI content pipeline. Describe: what data you collect, how it feeds back, and how the pipeline adapts.",
+      "placeholder": "Step 1: Collect...\nStep 2: Analyze...\nStep 3: Feed back...\nStep 4: Adapt...",
+      "hint": "Collect: views, CTR, time-on-page, shares, conversions tagged with content attributes (topic, format, length, headline style). Analyze: weekly AI review finds patterns. Feed back: update prompt templates to prefer proven formats. Adapt: A/B test variations, reinforce winners.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["feedback", "loop", "analytics", "pipeline", "learn", "improve", "data"]
+      },
+      "badExample": "Look at what works and make more of that.",
+      "goodExample": "Step 1 -- DATA COLLECTION: Tag every piece at creation with: topic_category, format (listicle/how-to/opinion), word_count, headline_type (question/number/how-to), tone. Post-publication: collect views, read time, CTR, shares, conversions. Step 2 -- PATTERN ANALYSIS (weekly, automated): AI generates a Content Intelligence Report. Example: 'How-to posts with numbered headlines get 2.3x higher CTR. Posts 1,200-1,500 words have 40% higher completion. Tuesday posts outperform Friday by 25%.' Step 3 -- PROMPT UPDATES: Insights auto-update generation templates. If numbers in headlines win, the headline prompt defaults to number format. If 1,300 words is the sweet spot, the length constraint tightens. Step 4 -- A/B TESTING: Generate 2 variants per piece (different headline, intro). Publish to split audiences. Winner's pattern reinforces in future prompts. Step 5 -- DECAY DETECTION: If a format's CTR drops 20% over 4 weeks, flag audience fatigue and rotate. Result: pipeline that gets smarter every week.",
+      "successMessage": "A self-improving content engine. Most pipelines get faster; yours gets smarter."
     }
   ],
   "10-your-content-machine": [
     {
       "id": "cgp-10-1",
       "type": "freeform",
-      "instruction": "Complete content pipeline end-to-end: inputs, AI stages, quality gates, output formats, distribution, analytics feedback.",
-      "placeholder": "Input: ... AI Stage 1: ...",
+      "instruction": "Design your complete content machine -- a full pipeline from idea generation to publication to analysis. Include every stage, tools, and the human vs. AI role at each step.",
+      "placeholder": "Stage 1: Idea Generation\n  AI role: ...\n  Human role: ...\n  Tools: ...",
+      "hint": "Stage 1: AI scans trends, human picks ideas. Stage 2: AI outlines, human reviews. Stage 3: AI drafts. Stage 4: Human adds voice. Stage 5: AI runs QC. Stage 6: AI multiplies for 4 platforms. Stage 7: Automated distribution. Stage 8: AI analyzes performance, feeds back.",
       "criteria": {
-        "keywords": [
-          "input",
-          "AI",
-          "gate",
-          "output",
-          "distribute",
-          "analytics",
-          "feedback"
-        ],
-        "minLength": 80
+        "minLength": 80,
+        "keywords": ["stage", "AI", "human", "tool", "pipeline", "idea", "draft", "publish"]
       },
-      "successMessage": "A complete content machine blueprint."
+      "badExample": "AI writes content and we publish it.",
+      "goodExample": "Stage 1 -- IDEATION (Monday): AI scans 50 RSS feeds, trends, competitor content -> generates 15 topic ideas with search volume. Human: selects 3 topics, defines unique angle. Stage 2 -- ARCHITECTURE (Monday): AI generates outlines with headlines, sections, key data points. Human: reviews, adds stories to include. Stage 3 -- FIRST DRAFT (Tuesday): AI writes complete draft from outline using brand voice guide. Human: none. Stage 4 -- HUMAN LAYER (Wednesday AM): Human reads, adds insights, rewrites generic sections, injects personality. Stage 5 -- QC (Wednesday PM): AI runs 10-point checklist (readability, SEO, facts, voice). Flags issues. Human: resolves flags. Stage 6 -- MULTIPLICATION (Thursday): AI generates Twitter thread, LinkedIn post, email blurb, 3 quote cards from the blog. Human: approves. Stage 7 -- DISTRIBUTION (Friday+): Automated scheduling per platform-optimal times. Stage 8 -- ANALYSIS (ongoing): AI collects performance, generates weekly report, feeds insights back to Stage 1. Human time per piece: ~2 hours. AI time: ~15 minutes compute. Output: 15 content pieces/week from 6 hours of human work.",
+      "successMessage": "You designed a content machine that could power an entire media operation. Humans spend time on judgment and creativity. AI handles everything else."
+    },
+    {
+      "id": "cgp-10-2",
+      "type": "prompt",
+      "instruction": "Write a reflection on the most important principle from this course. What changes how you think about content creation? Include a before/after example.",
+      "placeholder": "The most important lesson is...\nBefore: ...\nAfter: ...",
+      "hint": "Key lesson: content is a system, not an act. Before: blank page every time, each piece a creative struggle. After: pipeline with clear stages, AI handles 70%, human handles the 30% that needs a brain.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["lesson", "before", "after", "pipeline", "system", "change"]
+      },
+      "badExample": "I learned AI can write content.",
+      "goodExample": "The most important lesson: separate the creative from the mechanical. Before: every piece of content was a monolithic act -- research, outline, draft, edit, format, distribute, analyze all as one overwhelming task. 5-6 hours per piece. After: each step is a separate, optimizable pipeline stage. AI handles research (30 seconds), outlining (1 minute), first draft (2 minutes), QC (10 seconds), and multiplication into 4 platform formats (1 minute). My creative energy goes ONLY to the human stages: choosing the angle, adding my experience, making the voice mine. Before: 3 blog posts/week was impossible for one person. After: 3 posts/week is comfortable because I only do the human parts (~90 minutes per post). The mindset shift: I'm not a writer who uses AI. I'm a content architect who designs systems.",
+      "successMessage": "From 'content creator' to 'content architect.' You don't write content -- you design systems that create content. Those systems scale infinitely while effort stays constant."
     }
   ]
 }

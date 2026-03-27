@@ -10,7 +10,23 @@
         "keywords": ["like", "input", "weight", "output", "decide", "process", "signal", "add", "sum", "threshold"],
         "minLength": 40
       },
+      "badExample": "A neuron processes data.",
+      "goodExample": "Explain it like this: A neuron is like a talent show judge with a scoring card. It receives multiple inputs (singing quality: 8/10, stage presence: 6/10, originality: 9/10). Each input has a weight — the judge cares more about singing (weight: 0.5) than stage presence (weight: 0.2). It multiplies each score by its weight, adds them up (8x0.5 + 6x0.2 + 9x0.3 = 7.9), and if the total exceeds a threshold (say 7.0), the neuron 'fires' — meaning it passes a positive signal to the next layer. If below threshold, it stays quiet. Millions of these judges working in layers is how a neural network makes decisions.",
       "successMessage": "Great analogy! The key insight: neurons take weighted inputs, combine them, and produce a decision."
+    },
+    {
+      "id": "af-1-2",
+      "type": "freeform",
+      "instruction": "Explain the difference between AI, machine learning, and deep learning in 3 sentences. Use a nesting metaphor — each one fits inside the other.",
+      "placeholder": "AI is the biggest circle...",
+      "hint": "AI is the broadest concept: any machine that mimics human intelligence (including simple rules like 'if inbox > 50, mark as spam'). Machine learning is a subset: machines that learn patterns from data instead of being explicitly programmed. Deep learning is a subset of ML: using neural networks with many layers to learn complex patterns like recognizing faces or understanding language.",
+      "criteria": {
+        "keywords": ["AI", "machine learning", "deep learning", "subset", "learn", "pattern", "data"],
+        "minLength": 40
+      },
+      "badExample": "They're all the same thing — computers being smart.",
+      "goodExample": "Think of Russian nesting dolls. AI is the outer doll — the broadest concept, covering any system that mimics human intelligence, from simple spam filters with hand-written rules to robots that hold conversations. Machine learning fits inside AI — it's the specific approach where machines learn patterns from data instead of being explicitly programmed with rules ('here are 10,000 emails, figure out what spam looks like'). Deep learning fits inside machine learning — it uses neural networks with dozens or hundreds of layers to learn incredibly complex patterns, and it's behind every impressive AI you've seen: ChatGPT, image generators, self-driving cars.",
+      "successMessage": "The nesting relationship is the most important thing to understand. All deep learning is ML, all ML is AI — but not the reverse."
     }
   ],
   "words-as-numbers": [
@@ -24,7 +40,23 @@
         "keywords": ["explain", "embedding", "word", "vector", "number", "similar", "meaning", "represent"],
         "minLength": 30
       },
+      "badExample": "What are word embeddings?",
+      "goodExample": "Explain word embeddings to my 16-year-old cousin who's good at math but has never studied AI. Use this analogy: imagine every word in the English language has a GPS coordinate, and words with similar meanings are close together on the map. Give 3 examples of word pairs that would be neighbors ('king' and 'queen', 'cat' and 'kitten', etc.) and 2 pairs that would be far apart. Explain why this is useful: if a computer knows 'happy' and 'joyful' are near each other, it can understand they mean similar things. Keep it under 150 words. Use one simple math example showing how 'king - man + woman = queen' works with made-up coordinates.",
       "successMessage": "The magic of embeddings: words become numbers, and similar meanings become nearby points in space."
+    },
+    {
+      "id": "af-2-2",
+      "type": "analyze",
+      "instruction": "Analyze why this search fails and how embeddings fix it:\n\nA user searches a recipe site for 'quick weeknight dinner' but the database only contains recipes tagged with specific ingredients and cooking methods like 'chicken stir fry' and '15-minute pasta.' The keyword search returns zero results.",
+      "placeholder": "The search fails because... Embeddings fix this by...",
+      "hint": "Keyword search requires exact word matches. 'Quick weeknight dinner' contains none of the words in 'chicken stir fry' or '15-minute pasta.' Embeddings convert both the search query and recipe descriptions into vectors where meaning is captured. 'Quick weeknight dinner' would be close in vector space to '15-minute pasta' because they share semantic meaning even without shared words.",
+      "criteria": {
+        "keywords": ["keyword", "semantic", "meaning", "vector", "match", "similar", "embedding"],
+        "minLength": 50
+      },
+      "badExample": "The database needs better tags.",
+      "goodExample": "The search fails because keyword search is LITERAL — it looks for the exact words 'quick,' 'weeknight,' and 'dinner' in recipe titles and tags. None of those words appear in 'chicken stir fry' or '15-minute pasta,' so: zero results. But a human instantly knows those recipes ARE quick weeknight dinners. Embeddings fix this by converting MEANING into numbers. When you embed 'quick weeknight dinner,' you get a vector that captures the concept: fast, easy, evening meal. '15-minute pasta' gets a vector capturing: fast, simple, dinner. These vectors are CLOSE together in math space even though they share zero words. The search becomes: 'find recipes whose meaning-vector is closest to my query-vector.' Result: '15-minute pasta' scores 0.89 similarity, 'chicken stir fry' scores 0.85. Both returned. This is why AI search feels magical — it understands what you MEAN, not just what you typed.",
+      "successMessage": "This is the core insight behind modern AI search: embeddings turn meaning into math, letting computers understand intent instead of just matching keywords."
     }
   ],
   "anatomy-of-a-prompt": [
@@ -35,12 +67,11 @@
       "placeholder": "Include role + context + task + format...",
       "hint": "You are a senior data scientist. I have a dataset of customer purchase history from an e-commerce store. Identify the top 3 patterns in customer behavior. Present as a numbered list with one sentence explaining each pattern and why it matters for business.",
       "criteria": {
-        "requiredKeywords": ["you are", "list"],
-        "keywords": ["role", "context", "explain", "format", "present", "as a"],
+        "keywords": ["you are", "list", "role", "context", "explain", "format", "present", "as a"],
         "minLength": 50
       },
-      "badExample": "Analyze some data",
-      "goodExample": "You are a marketing analyst. I have survey results from 500 customers about our new product launch. Summarize the top 5 themes in their feedback, ranked by frequency. Use bullet points. Include a direct quote for each theme.",
+      "badExample": "Analyze some data.",
+      "goodExample": "You are a marketing analyst with 10 years of e-commerce experience. I have survey results from 500 customers about our new product launch — satisfaction scores (1-10), free-text feedback, and purchase likelihood. Summarize the top 5 themes in their feedback, ranked by frequency. Use bullet points. Include one direct quote for each theme that best represents the sentiment. End with 3 actionable recommendations.",
       "successMessage": "That's the complete prompt anatomy: Role + Context + Task + Format. This structure works for almost anything."
     },
     {
@@ -51,9 +82,10 @@
       "hint": "Explain the 3 main types of machine learning (supervised, unsupervised, reinforcement) to a business manager. For each type: one sentence definition, one real-world business example, and when to use it. Use a comparison table format.",
       "criteria": {
         "minLength": 40,
-        "mustNotInclude": ["tell me about machine learning"],
         "keywords": ["explain", "type", "example", "specific", "format", "table", "list"]
       },
+      "badExample": "Explain machine learning in more detail please.",
+      "goodExample": "Explain the 3 main types of machine learning to a non-technical product manager who needs to choose the right approach for a customer churn prediction project. For each type (supervised, unsupervised, reinforcement learning): one-sentence definition using zero jargon, one real business example they've likely encountered (Netflix recommendations, spam filtering, etc.), and whether it fits their churn prediction use case (yes/no with reason). Present as a comparison table with columns: Type | Definition | Business Example | Fits Our Project? | Why/Why Not.",
       "successMessage": "See the difference? From 5 words to a structured request that gets exactly the answer you need."
     }
   ],
@@ -61,32 +93,180 @@
     {
       "id": "af-4-1",
       "type": "prompt",
-      "instruction": "Write two versions of the same prompt — one vague, one specific — and ask Claude to compare the outputs it would give for each.",
+      "instruction": "Write two versions of the same prompt — one deliberately vague, one highly specific — and ask Claude to compare the outputs it would give for each.",
       "placeholder": "Compare these two prompts...",
       "hint": "Compare these two prompts and explain why one gets better results: PROMPT A: 'Write about dogs.' PROMPT B: 'Write a 200-word guide for first-time golden retriever owners covering the top 3 training mistakes to avoid in the first month. Tone: friendly and encouraging.' Explain specifically what makes Prompt B better.",
       "criteria": {
         "keywords": ["compare", "prompt", "version", "better", "vague", "specific", "why"],
         "minLength": 50
       },
+      "badExample": "Write a good prompt and a bad prompt.",
+      "goodExample": "Compare these two prompts and explain why they produce dramatically different results. PROMPT A (vague): 'Write about dogs.' PROMPT B (specific): 'Write a 200-word guide for first-time golden retriever owners covering the top 3 training mistakes to avoid in the first month. Include one real-world example for each mistake. Tone: friendly and encouraging, like an experienced dog owner talking to a nervous new puppy parent.' For each prompt: describe the output you'd produce, rate its usefulness 1-10, and explain which elements of Prompt B improved the result and why.",
       "successMessage": "Comparing prompts side-by-side is the fastest way to build intuition for what makes a great prompt."
+    },
+    {
+      "id": "af-4-2",
+      "type": "debug",
+      "instruction": "A beginner says: 'I asked Claude to help me write a resume and it gave me something totally generic that doesn't sound like me at all.' Diagnose what they likely did wrong and explain 3 specific things they should include in their prompt.",
+      "placeholder": "They probably did... They should include...",
+      "hint": "They probably typed something like 'Write me a resume' with no context about their experience, industry, or the specific job. They should include: (1) their actual experience and key achievements with metrics, (2) the specific job posting they're applying for, and (3) their professional voice/tone preferences.",
+      "criteria": {
+        "keywords": ["context", "experience", "specific", "job", "achievements", "voice", "generic"],
+        "minLength": 50
+      },
+      "badExample": "They should use a different AI that's better at resumes.",
+      "goodExample": "Diagnosis: They probably typed 'write me a resume' or 'help me with my resume' — giving Claude zero context about who they are, what they've done, or what job they want. Claude fills the void with the most generic resume possible. 3 things they MUST include: (1) THEIR STORY — 'I have 5 years as a marketing manager at a B2B SaaS company. Key achievements: grew organic traffic 300%, launched 2 product lines, managed $500K annual budget.' Without this, Claude invents generic bullets. (2) THE TARGET — 'I'm applying for this specific role [paste job description]. Tailor my resume to emphasize the skills they're looking for.' Without this, the resume is aimed at nothing. (3) THE VOICE — 'I want to sound confident but not arrogant. Use active verbs. No buzzwords like synergy or dynamic.' Without this, Claude defaults to corporate resume-speak that sounds like everyone else.",
+      "successMessage": "The #1 reason AI outputs feel generic: generic inputs. The more of YOU you put into the prompt, the more the output sounds like you."
     }
   ],
   "prompt-battle": [
     {
       "id": "af-5-1",
       "type": "prompt",
-      "instruction": "Write the strongest possible prompt for this task: getting Claude to write a cover letter. Include every prompt engineering technique you've learned.",
+      "instruction": "Write the strongest possible prompt for this task: getting Claude to write a cover letter. Include every prompt engineering technique you've learned so far.",
       "placeholder": "Write the ultimate cover letter prompt...",
-      "hint": "You are a career coach who has reviewed 10,000 cover letters. Write a cover letter for a senior product manager role at a fintech startup. I have 8 years of experience in product management at mid-size tech companies. Highlight: data-driven decision making, cross-functional leadership, and launching 0-to-1 products. Tone: confident but not arrogant. Length: 300 words max. Don't use clichés like 'passionate' or 'team player.' Structure: hook opening, 2 achievement paragraphs with metrics, forward-looking close.",
+      "hint": "You are a career coach who has reviewed 10,000 cover letters. Write a cover letter for a senior product manager role at a fintech startup. I have 8 years of experience in product management at mid-size tech companies. Highlight: data-driven decision making, cross-functional leadership, and launching 0-to-1 products. Tone: confident but not arrogant. Length: 300 words max. Don't use cliches like 'passionate' or 'team player.' Structure: hook opening, 2 achievement paragraphs with metrics, forward-looking close.",
       "criteria": {
         "keywords": ["role", "experience", "tone", "length", "don't", "structure", "format"],
         "minLength": 80
       },
-      "successMessage": "That's a championship-level prompt. Role, context, constraints, anti-patterns, structure — the full arsenal."
+      "badExample": "Write me a really good cover letter for a tech job.",
+      "goodExample": "You are a career coach who has reviewed 10,000 cover letters and knows exactly what hiring managers at startups scan for. Write a cover letter for a Senior Product Manager role at Stripe (job posting pasted below). My background: 8 years in product management at mid-size B2B SaaS companies (Segment, Datadog). Key achievements: launched a payments feature from 0 to $2M ARR in 12 months, led a team of 8 engineers, improved activation rate from 12% to 34% through experimentation. Structure: (1) Hook opening — one sentence that makes the hiring manager want to keep reading. Not 'I'm excited to apply.' (2) Two achievement paragraphs — each leads with a specific metric, then explains the context and my role. (3) Forward-looking close — why Stripe specifically, what I'd focus on in the first 90 days. Constraints: 300 words max. Confident but humble tone. Forbidden words: passionate, team player, leverage, synergy, dynamic. No generic opener about being 'excited to apply.'",
+      "successMessage": "That's a championship-level prompt. Role, context, achievements, constraints, structure, anti-patterns — the full arsenal deployed."
+    },
+    {
+      "id": "af-5-2",
+      "type": "freeform",
+      "instruction": "List the 5 most important prompt engineering principles you've learned in this course, ranked by impact. For each, give a one-sentence rule and a one-sentence example.",
+      "placeholder": "Principle 1 (highest impact): ...",
+      "hint": "1. Be specific (not 'write about marketing' but 'write 3 LinkedIn posts about email marketing for SaaS founders'). 2. Assign a role. 3. Specify the format. 4. Include constraints and anti-patterns. 5. Provide examples of what you want.",
+      "criteria": {
+        "keywords": ["specific", "role", "format", "constraint", "example", "principle", "rule"],
+        "minLength": 60
+      },
+      "badExample": "1. Be good at prompting. 2. Use AI a lot. 3. Practice.",
+      "goodExample": "5 Principles, ranked: (1) SPECIFICITY — The more specific your prompt, the less Claude guesses. Rule: replace every vague word with a concrete detail. Example: 'Write about marketing' becomes 'Write 3 LinkedIn posts about email marketing for B2B SaaS founders, each under 150 words.' (2) ROLE ASSIGNMENT — Give Claude an expert identity to match your desired output quality. Rule: start with 'You are a [specific expert].' Example: 'You are a CFO with 20 years in SaaS' produces sharper financial analysis than asking Claude directly. (3) FORMAT SPECIFICATION — Tell Claude exactly how to structure the output. Rule: specify bullets, tables, paragraphs, word counts. Example: 'Present as a table with columns: Feature | Pros | Cons | Verdict.' (4) ANTI-PATTERNS — Tell Claude what NOT to do. Rule: name the specific things you don't want. Example: 'Don't use passive voice. Don't start with In today's world.' (5) EXAMPLES — Show, don't just tell. Rule: when instructions are complex, one example teaches more than a paragraph of description. Example: paste 3 examples of the tone and style you want, then say 'match this voice.'",
+      "successMessage": "These 5 principles, applied consistently, put you in the top 10% of AI users. Most people never get past principle 1."
     }
   ],
-  "embedding-explorer": [],
-  "similarity-challenge": [],
-  "build-a-network": [],
-  "neural-net-quiz": []
+  "embedding-explorer": [
+    {
+      "id": "af-6-1",
+      "type": "freeform",
+      "instruction": "Imagine you're building a movie recommendation system using embeddings. Describe how you would represent movies as vectors and how you'd use similarity to make recommendations.",
+      "placeholder": "Each movie would be represented by...",
+      "hint": "Each movie gets a vector based on features like genre, tone, pacing, themes, director style, and user ratings. 'The Shawshank Redemption' and 'The Green Mile' would have similar vectors (prison drama, hope theme, Stephen King). To recommend: find the user's top-rated movies, average their vectors, and search for the most similar unwatched movies.",
+      "criteria": {
+        "keywords": ["vector", "similar", "genre", "recommend", "embed", "feature", "movie", "distance"],
+        "minLength": 50
+      },
+      "badExample": "Compare movies by genre and recommend similar ones.",
+      "goodExample": "Each movie gets a multi-dimensional vector capturing: genre mix (0.8 drama, 0.3 thriller), themes (redemption: 0.9, romance: 0.1), pacing (slow-burn: 0.7), tone (dark: 0.6, hopeful: 0.8), era (1990s: 1.0), and critical reception patterns. 'The Shawshank Redemption' vector might be [0.9 drama, 0.2 thriller, 0.95 redemption, 0.7 slow-burn, 0.8 hopeful]. 'The Green Mile' would be very close: [0.85 drama, 0.15 thriller, 0.9 redemption, 0.75 slow-burn, 0.85 hopeful]. The distance between them is tiny. 'Fast & Furious' would be far away: [0.1 drama, 0.8 action, 0.2 redemption, 0.1 slow-burn, 0.6 hopeful]. To recommend: Take the user's 5 highest-rated movies, compute the average vector (their 'taste profile'), then find the closest unwatched movies in vector space. If they love Shawshank and Green Mile, the system recommends movies near that cluster — maybe 'Cool Hand Luke' or 'A Beautiful Mind.'",
+      "successMessage": "You just designed the core logic behind Netflix and Spotify recommendations. Embeddings make 'find things like this' mathematically precise."
+    },
+    {
+      "id": "af-6-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to explain the concept of 'semantic distance' using 5 word pairs — from very similar to completely unrelated.",
+      "placeholder": "Show me semantic distance with word pairs...",
+      "hint": "Give me 5 word pairs that demonstrate a spectrum of semantic distance (from nearly identical meaning to completely unrelated). For each pair: the two words, a similarity score (0-1), and a one-sentence explanation of why they have that score. Start with the closest pair and end with the most distant.",
+      "criteria": {
+        "keywords": ["semantic", "distance", "similar", "pair", "score", "meaning", "spectrum"],
+        "minLength": 40
+      },
+      "badExample": "Explain semantic distance.",
+      "goodExample": "Demonstrate 'semantic distance' by giving me 5 word pairs arranged from most similar to least similar. For each pair: (1) the two words, (2) a similarity score from 0.0 (completely unrelated) to 1.0 (identical meaning), (3) WHY they have that score — what connects or separates them semantically. Include: one pair that's near-synonyms (score ~0.9), one that's related but different (score ~0.7), one that's loosely connected (score ~0.4), one that seems connected but isn't (score ~0.2), and one that's completely unrelated (score ~0.05). The last pair should be surprising — two words that sound like they might be related but aren't. Explain this as if to someone who thinks 'similar' just means 'spelled alike.'",
+      "successMessage": "Semantic distance is the foundation of every AI system that 'understands' language. You now get the math behind meaning."
+    }
+  ],
+  "similarity-challenge": [
+    {
+      "id": "af-7-1",
+      "type": "freeform",
+      "instruction": "List 5 real-world applications where similarity search (finding similar items using embeddings) solves a problem that keyword search cannot. For each, explain what's being embedded and what similarity means.",
+      "placeholder": "Application 1: ... What's embedded: ... Similarity means: ...",
+      "hint": "1. Customer support: embed support tickets, find similar past tickets with solutions. 2. Plagiarism detection: embed documents, find suspiciously similar passages. 3. Product recommendations: embed purchase history, find similar shoppers. 4. Image search: embed images, find visually similar products. 5. Code search: embed code functions, find similar implementations.",
+      "criteria": {
+        "keywords": ["embed", "similar", "search", "application", "keyword", "solve", "vector"],
+        "minLength": 60
+      },
+      "badExample": "1. Search engines. 2. Recommendations. 3. Chatbots.",
+      "goodExample": "5 applications where similarity search beats keyword search: (1) CUSTOMER SUPPORT — Embed: support ticket text. Similarity means: same problem described differently. 'My screen is black' and 'display not working after update' are the same issue with zero shared keywords. Similarity search finds the solution instantly. (2) DUPLICATE BUG DETECTION — Embed: bug reports. Similarity means: same bug reported differently by different users. Saves engineering time triaging duplicates. (3) TALENT MATCHING — Embed: resumes + job descriptions. Similarity means: skills alignment. A resume saying 'built recommendation systems' matches a job asking for 'ML engineer for personalization' — keyword search misses this. (4) LEGAL PRECEDENT SEARCH — Embed: case summaries. Similarity means: similar legal situations. A lawyer searching 'tenant eviction during pandemic' finds relevant cases even if they use different terminology. (5) MUSIC DISCOVERY — Embed: audio features + listening patterns. Similarity means: sounds/feels like songs you enjoy. 'Find me something that feels like this song' is impossible with keywords but natural with embeddings.",
+      "successMessage": "Similarity search is one of the most practical AI concepts. Every time keyword search fails you, embeddings could be the answer."
+    },
+    {
+      "id": "af-7-2",
+      "type": "debug",
+      "instruction": "A developer built a FAQ chatbot using keyword matching. Users ask 'How do I reset my password?' and the bot finds the FAQ entry titled 'Password Reset Instructions.' But when users ask 'I can't log in' or 'my account is locked,' the bot returns nothing. Diagnose the flaw and explain how to fix it with embeddings.",
+      "placeholder": "The flaw is... The fix is...",
+      "hint": "Keyword matching requires exact word overlap. 'I can't log in' shares zero words with 'Password Reset Instructions' even though it's the same underlying problem. Embeddings would capture that 'can't log in,' 'account locked,' and 'password reset' are semantically related and would match them.",
+      "criteria": {
+        "keywords": ["keyword", "semantic", "meaning", "embedding", "match", "intent", "vector"],
+        "minLength": 50
+      },
+      "badExample": "Add more keywords to the FAQ entries like 'login' and 'locked.'",
+      "goodExample": "The flaw: keyword matching is LITERAL. It compares words, not meaning. 'I can't log in' shares ZERO words with 'Password Reset Instructions,' so similarity = 0. The developer could add synonyms manually ('login,' 'locked,' 'access'), but users will always find new ways to describe the same problem ('I'm stuck,' 'it won't let me in,' 'authentication error'). You can never anticipate every phrasing. The fix: Replace keyword matching with embedding similarity. (1) Embed all FAQ entries into vectors. (2) When a user types a question, embed it into a vector. (3) Find the FAQ entry with the highest cosine similarity. 'I can't log in' embeds close to 'Password Reset Instructions' because they share MEANING: both are about authentication problems. 'My account is locked' also lands nearby. The bot now handles any phrasing of the same question without maintaining a keyword list. Implementation: use an embedding model (like OpenAI's text-embedding-3-small), store FAQ vectors in a vector database (pgvector), and do similarity search on each user query.",
+      "successMessage": "This is the exact problem embeddings were born to solve. Keyword search understands words; embedding search understands intent."
+    }
+  ],
+  "build-a-network": [
+    {
+      "id": "af-8-1",
+      "type": "freeform",
+      "instruction": "Explain how a neural network learns to recognize cats in photos, step by step. Cover: input, layers, weights, training, and how it improves over time.",
+      "placeholder": "Step 1: The image enters the network as...",
+      "hint": "Step 1: The image enters as a grid of pixel values (numbers). Step 2: First layers detect simple features (edges, corners). Step 3: Middle layers combine simple features into complex ones (ears, whiskers). Step 4: Final layers combine complex features into a decision (cat or not). Step 5: The network checks if it's right, calculates the error, and adjusts weights to make a better prediction next time. Repeat millions of times.",
+      "criteria": {
+        "keywords": ["pixel", "layer", "feature", "weight", "train", "error", "learn", "adjust"],
+        "minLength": 60
+      },
+      "badExample": "The computer looks at pictures of cats until it learns what cats look like.",
+      "goodExample": "Step 1 (INPUT): A photo enters as a grid of numbers — each pixel becomes a value (0=black, 255=white, or RGB values for color). A 224x224 image = 150,528 input numbers. Step 2 (EARLY LAYERS): The first layers learn to detect simple patterns: horizontal edges, vertical edges, corners, color gradients. These are like the network's vocabulary of basic shapes. Step 3 (MIDDLE LAYERS): Middle layers combine simple patterns into complex features: edges + curves = ear shapes, spots + lines = whisker patterns, circles = eyes. Each layer builds on the previous one. Step 4 (FINAL LAYER): The last layer combines all detected features and outputs a probability: '92% cat, 5% dog, 3% rabbit.' Step 5 (LEARNING): If the answer is wrong (called the cat a dog), the network calculates how wrong it was (the 'loss'). Then it adjusts all its internal weights slightly to be less wrong next time — this is 'backpropagation.' Step 6 (REPEAT): Show it 1 million labeled cat/not-cat images. Each one nudges the weights. After enough examples, the network has learned what 'cat' looks like across thousands of variations — different poses, colors, lighting, breeds.",
+      "successMessage": "You just explained deep learning from pixel to prediction. This same process powers image recognition, medical diagnosis, and self-driving cars."
+    },
+    {
+      "id": "af-8-2",
+      "type": "analyze",
+      "instruction": "A neural network trained to identify skin cancer from photos achieves 95% accuracy in testing but performs poorly on patients with darker skin tones. Analyze why this happens and what it reveals about AI training data.",
+      "placeholder": "This happens because... It reveals that...",
+      "hint": "If the training data was mostly photos of lighter skin, the model learned features specific to that skin tone. It didn't see enough examples of how skin conditions present on darker skin. This reveals a fundamental AI truth: models are only as good as their training data. Biased data produces biased models.",
+      "criteria": {
+        "keywords": ["data", "bias", "training", "representation", "diverse", "accuracy", "fairness"],
+        "minLength": 50
+      },
+      "badExample": "The AI needs more training to get better at darker skin.",
+      "goodExample": "This happens because of TRAINING DATA BIAS. If 85% of the training images showed lighter skin tones, the model learned that 'skin cancer looks like THIS' — where 'THIS' is how conditions appear on light skin. On darker skin, the same condition presents differently (different contrast, different coloring), and the model hasn't seen enough examples to learn those patterns. The 95% accuracy is misleading — it's 98% accurate on light skin and 60% accurate on dark skin, averaging to 95%. This reveals 3 fundamental AI truths: (1) AI doesn't 'understand' — it pattern-matches. Patterns it hasn't seen, it can't recognize. (2) A single accuracy number can hide dangerous disparities. Always check performance across subgroups. (3) The data IS the model. Biased data doesn't create a biased model by accident — the bias is mathematically baked into the weights. The fix isn't just 'add more data' — it's deliberately curating training data that represents ALL populations the model will serve, and testing accuracy per demographic group, not just overall.",
+      "successMessage": "This is one of the most important lessons in AI: models inherit the biases of their training data. Understanding this makes you a more responsible AI user and builder."
+    }
+  ],
+  "neural-net-quiz": [
+    {
+      "id": "af-9-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to quiz you on AI foundations concepts. Specify the format: multiple choice, difficulty level, and that you want explanations for wrong answers.",
+      "placeholder": "Quiz me on AI foundations...",
+      "hint": "Give me a 5-question multiple choice quiz on AI foundations covering: neural networks, embeddings, prompt engineering, and how LLMs work. Difficulty: intermediate (not trivial definitions, but not PhD-level). For each question: 4 options (A-D), one correct answer, and a 2-sentence explanation of why the right answer is right AND why the most tempting wrong answer is wrong.",
+      "criteria": {
+        "keywords": ["quiz", "question", "answer", "explain", "multiple choice", "wrong", "correct"],
+        "minLength": 50
+      },
+      "badExample": "Test me on AI stuff.",
+      "goodExample": "Give me a 5-question multiple choice quiz on AI foundations. Topics to cover: (1) how neural networks learn, (2) what embeddings represent, (3) prompt engineering principles, (4) how LLMs generate text, (5) AI limitations. Difficulty: intermediate — I understand the basics, challenge me on nuances. Format for each question: the question, 4 options (A-D), then the correct answer with a 2-sentence explanation. Also explain why the most commonly chosen WRONG answer is wrong — what misconception does it test? After all 5 questions, give me a score and identify which concept I should review based on any wrong answers.",
+      "successMessage": "Self-testing is the most effective learning technique. Asking Claude to quiz you cements concepts far better than re-reading."
+    },
+    {
+      "id": "af-9-2",
+      "type": "freeform",
+      "instruction": "In your own words, explain the single most important thing you've learned about AI in this course — not just what it is, but why it matters for your work or life.",
+      "placeholder": "The most important thing I learned is...",
+      "hint": "This could be about: how prompts work (specificity matters), what AI can and can't do (pattern matching vs. understanding), how embeddings capture meaning, or why training data matters. The best answers connect a concept to a real application in your life.",
+      "criteria": {
+        "keywords": ["important", "learned", "because", "means", "work", "now", "understand"],
+        "minLength": 40
+      },
+      "badExample": "AI is really cool and useful.",
+      "goodExample": "The most important thing I learned: AI doesn't 'understand' anything — it's pattern matching at an extraordinary scale. This matters because it completely changes how I interact with AI. Before this course, I treated ChatGPT like a knowledgeable human and was frustrated when it got things wrong or gave generic answers. Now I understand: it's finding patterns in its training data that match my input. When I give a vague prompt, there are millions of matching patterns (so I get a generic average). When I give a specific prompt with role, context, and format, I narrow the pattern space to a tiny target — and the output is dramatically better. This single insight has made every AI interaction more productive. I'm not talking TO an intelligence; I'm steering a pattern-matching engine with precision.",
+      "successMessage": "This reflection is the real graduation moment. Understanding AI conceptually — not just using it — makes you a fundamentally better AI user and a more informed citizen."
+    }
+  ]
 }

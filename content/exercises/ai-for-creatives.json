@@ -57,6 +57,8 @@
         "keywords": ["stuck", "block", "can't", "struggling", "help", "ideas", "alternatives", "options", "try"],
         "minLength": 35
       },
+      "badExample": "I have writer's block, help",
+      "goodExample": "I'm stuck on the opening scene of my short film. The story is about a retired astronaut who runs a laundromat. I can't figure out how to show both worlds in the first 30 seconds without dialogue. Give me 5 visual-only opening shots that establish this duality — each should feel cinematic and hint at the backstory without exposition.",
       "successMessage": "Creative blocks are where AI shines brightest — not replacing your vision, but offering angles you haven't considered."
     }
   ],
@@ -86,6 +88,8 @@
         "keywords": ["draft", "rough", "first pass", "starting point", "I'll", "then I", "refine", "rewrite", "adjust", "structure"],
         "minLength": 40
       },
+      "badExample": "Write a product description for candles",
+      "goodExample": "Draft a 300-word product description for handmade soy candles. Target: women aged 25-40 who value sustainability. Include sensory language about the scents (lavender, cedar, vanilla). Focus on the ritual of lighting a candle, not just the product. I'll rewrite the voice to match my brand — just give me the structure and selling points to work from.",
       "successMessage": "The AI-first workflow: let AI build the scaffolding, then you bring the soul. Efficient and authentic."
     }
   ],
@@ -115,6 +119,8 @@
         "keywords": ["series", "collection", "consistent", "style", "each", "all", "rules", "across", "unified", "theme"],
         "minLength": 40
       },
+      "badExample": "Help me make a series of illustrations",
+      "goodExample": "Help me develop a 5-piece illustration series about urban loneliness. Each piece features a single figure in a vast city space. Consistent rules: isometric perspective, limited palette (3 colors per piece from the same cool family), no faces shown, one warm accent object per scene that hints at connection. Give me scene descriptions for all 5 that follow these rules.",
       "successMessage": "Establishing visual rules for a series is advanced creative direction. AI can maintain consistency when you define the constraints clearly."
     }
   ],
@@ -144,6 +150,8 @@
         "keywords": ["lyrics", "verse", "chorus", "song", "rhyme", "theme", "about", "write", "style", "tone"],
         "minLength": 35
       },
+      "badExample": "Write song lyrics about love",
+      "goodExample": "Write a second verse for my indie pop song about outgrowing your hometown. Verse 1 established the narrator driving past their old school. Verse 2 should move to the town diner. Match the syllable count of verse 1 (8-6-8-6 pattern). Rhyme scheme: ABAB. Tone: bittersweet, not bitter. Influences: Brandi Carlile, Hozier.",
       "successMessage": "Great lyric prompting. Giving AI your structure, tone, and influences means the output actually fits your song instead of sounding generic."
     }
   ],
@@ -173,6 +181,8 @@
         "keywords": ["template", "weekly", "monthly", "schedule", "workflow", "repeatable", "brand", "voice", "every", "recurring"],
         "minLength": 40
       },
+      "badExample": "Make me a content schedule",
+      "goodExample": "Create a weekly content template for my tattoo studio's Instagram. Every week I need: Monday (artist spotlight), Wednesday (design process video script), Friday (client story post). For each day, give me a fill-in-the-blank template with my brand voice rules: raw, authentic, zero corporate language, always end with a question to drive engagement.",
       "successMessage": "Templates turn a one-time prompt into an ongoing system. This is how creators scale without burning out."
     }
   ],
@@ -202,6 +212,8 @@
         "minLength": 60,
         "keywords": ["AI", "I", "my", "handle", "decide", "creative", "human", "workflow"]
       },
+      "badExample": "AI should do everything for me so I can relax.",
+      "goodExample": "In my ideal workflow, AI handles research, reference gathering, and first-draft structure — the scaffolding work that takes time but not taste. I handle all final creative decisions, voice, and emotional tone. They meet at the editing stage: AI suggests cuts and structural improvements, I accept or reject each one. The rule is simple: AI proposes, I dispose. My lived experience and creative instinct are what make the work mine.",
       "successMessage": "Knowing your boundaries with AI is a creative superpower. This clarity will serve you in every project."
     }
   ],
@@ -263,6 +275,8 @@
         "minLength": 60,
         "keywords": ["I", "my", "always", "never", "human", "AI", "original", "disclose", "own", "creative"]
       },
+      "badExample": "I use AI however I want, it's fine.",
+      "goodExample": "My creative AI ethics: I use AI for research, brainstorming, and first drafts only — all final creative decisions are mine. I never present AI-generated work as fully human-made without disclosure. I don't ask AI to replicate living artists' specific styles. My voice, taste, and lived experience are what make the work mine. If AI wrote it and I wouldn't change a word, I haven't done my job.",
       "successMessage": "A personal ethics statement is your compass. It keeps you grounded as AI capabilities evolve."
     }
   ],

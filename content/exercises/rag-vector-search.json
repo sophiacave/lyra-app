@@ -1,209 +1,302 @@
 {
   "what-are-embeddings": [
     {
-      "id": "rvs-1-1",
+      "id": "rag-1-1",
       "type": "prompt",
-      "instruction": "Explain embeddings to someone who understands spreadsheets but not ML. Use a physical space or coordinates analogy.",
-      "placeholder": "Embeddings are like...",
+      "instruction": "Explain what a vector embedding is to someone who understands spreadsheets but not ML. Use a coordinates or physical space analogy to show how similar meanings produce similar vectors.",
+      "placeholder": "A vector embedding is like...",
+      "hint": "A vector embedding is like GPS coordinates for meaning. Just as Paris and Lyon have nearby GPS coordinates because they're both in France, the words 'happy' and 'joyful' have nearby vector coordinates because they mean similar things. Each piece of text gets a list of numbers that represent its meaning in multiple dimensions.",
       "criteria": {
-        "keywords": [
-          "vector",
-          "space",
-          "similar",
-          "close",
-          "number",
-          "meaning",
-          "dimension"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["vector", "space", "similar", "close", "number", "meaning", "dimension"]
       },
-      "successMessage": "Making embeddings intuitive is hard. Your analogy nails it."
+      "badExample": "Embeddings turn words into numbers so computers can understand them.",
+      "goodExample": "A vector embedding maps text to a point in multi-dimensional space where distance equals meaning similarity. Imagine a library where books are organized by content, not title — cookbooks near nutrition guides, sci-fi near fantasy. Embeddings do this mathematically: 'dog' becomes [0.9, 0.1, 0.7] and 'puppy' becomes [0.85, 0.15, 0.72] — nearly identical because they mean nearly the same thing.",
+      "successMessage": "Making embeddings intuitive is hard. Your analogy nails it — proximity equals similarity."
+    },
+    {
+      "id": "rag-1-2",
+      "type": "analyze",
+      "instruction": "Compare keyword search (CTRL+F) with vector/semantic search. Give 2 examples where keyword search fails but semantic search succeeds, and 1 example where keyword search is actually better.",
+      "placeholder": "Keyword search fails when... Semantic search wins because... But keyword search is better when...",
+      "hint": "Semantic wins: 1) Searching 'how to fix a slow computer' finds a doc titled 'Improving PC Performance' — no keyword overlap. 2) Searching 'affordable housing' finds 'low-cost apartments.' Keyword wins: searching for exact error code 'ERR_SSL_PROTOCOL_ERROR' needs the exact string match.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["keyword", "semantic", "vector", "meaning", "exact", "synonym", "fail", "better"]
+      },
+      "badExample": "Semantic search is smarter because it understands meaning. Keyword search only matches exact words.",
+      "goodExample": "Semantic wins: 1) Query 'I feel exhausted and unmotivated' matches 'burnout symptoms and recovery' — zero keyword overlap but high semantic similarity. 2) 'dog food recommendations' matches 'canine nutrition best practices.' Keyword wins: searching for a function name like 'calculateTaxRate()' — you want the exact string, not semantically similar functions like 'computeDiscount()'.",
+      "successMessage": "Key insight: semantic search handles synonyms and conceptual matches, keyword search is better for exact identifiers. The best systems use both."
     }
   ],
   "vector-databases-101": [
     {
-      "id": "rvs-2-1",
+      "id": "rag-2-1",
       "type": "freeform",
-      "instruction": "Compare 3 vector DB options (pgvector, Pinecone, Weaviate). Each: pricing, best use case, one limitation.",
-      "placeholder": "pgvector: ... Pinecone: ...",
+      "instruction": "Compare 3 vector database options (pgvector, Pinecone, Weaviate). For each: pricing model, best use case, and one key limitation.",
+      "placeholder": "pgvector: ... Pinecone: ... Weaviate: ...",
+      "hint": "pgvector: free (PostgreSQL extension), best for teams already using Postgres with < 5M vectors, limitation: slower than dedicated vector DBs at scale. Pinecone: managed SaaS (~$70/mo for 1M vectors), best for high-volume production RAG, limitation: separate system means data sync headaches. Weaviate: open-source self-hosted or cloud, best for multi-modal search, limitation: operational overhead of self-hosting.",
       "criteria": {
-        "keywords": [
-          "pgvector",
-          "Pinecone",
-          "hosted",
-          "cost",
-          "scale",
-          "use case",
-          "limit"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["pgvector", "Pinecone", "hosted", "cost", "scale", "use case", "limit"]
       },
-      "successMessage": "Right vector DB = critical architecture decision. You can advise on it."
+      "badExample": "Pinecone is best because it's built for vectors. pgvector is slower. Weaviate is open source.",
+      "goodExample": "pgvector: Free (part of PostgreSQL). Best for: teams already on Postgres who need vector search alongside relational queries (filter by user_id then search semantically). Limitation: at 10M+ vectors, indexing and recall degrade without careful tuning. Pinecone: Managed SaaS, ~$70/mo for 1M vectors. Best for: high-volume production RAG needing sub-50ms latency and auto-scaling. Limitation: can't join with your relational data, data sync between Pinecone and your app DB adds complexity. Weaviate: Open-source, self-host free or cloud $25/mo+. Best for: multi-modal search (text + images) with built-in vectorization modules. Limitation: self-hosting requires DevOps investment; cloud version has fewer regions than Pinecone.",
+      "successMessage": "Right vector DB is a critical architecture decision. The choice usually comes down to: existing Postgres? Use pgvector. Need scale? Pinecone. Need flexibility? Weaviate."
+    },
+    {
+      "id": "rag-2-2",
+      "type": "prompt",
+      "instruction": "Explain what 'similarity search' means in a vector database. Cover: what distance metric is used, what 'top-K' means, and why approximate nearest neighbor (ANN) is used instead of exact search.",
+      "placeholder": "Similarity search works by...",
+      "hint": "Similarity search finds the K vectors closest to your query vector using a distance metric like cosine similarity. Top-K means returning the K nearest results (e.g., top-5). ANN algorithms like HNSW are used because exact nearest neighbor search requires comparing against every vector — O(n) — which is too slow for millions of vectors. ANN trades slight accuracy for massive speed gains.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["cosine", "distance", "top-K", "nearest", "approximate", "vector", "similar", "speed"]
+      },
+      "badExample": "Similarity search finds similar vectors. It uses math to compare them and returns the closest ones.",
+      "goodExample": "Similarity search: given a query vector, find the K most similar vectors in the database. Distance metric: cosine similarity measures the angle between vectors (1.0 = identical direction, 0 = unrelated). Top-K: return the K closest results, e.g., top-5 retrieves the 5 most semantically similar chunks. Why ANN: exact search compares your query against every stored vector — with 1M vectors, that's 1M comparisons per query. ANN algorithms (HNSW, IVFFlat) build graph/cluster indexes that find approximately the nearest neighbors in milliseconds by only checking a subset. Tradeoff: ~95-99% recall (might miss the absolute best match) but 100-1000x faster.",
+      "successMessage": "You understand the core mechanics: distance metrics, top-K retrieval, and the ANN speed-accuracy tradeoff. This is how every vector search works under the hood."
     }
   ],
   "chunking-strategies": [
     {
-      "id": "rvs-3-1",
+      "id": "rag-3-1",
       "type": "freeform",
-      "instruction": "50-page technical manual to chunk for RAG. Describe 3 chunking strategies with pros/cons.",
-      "placeholder": "Strategy 1: Fixed-size chunks...",
+      "instruction": "You have a 50-page technical manual to chunk for RAG. Describe 3 chunking strategies with pros and cons for each. Which would you choose for this specific document type?",
+      "placeholder": "Strategy 1: Fixed-size chunks... Strategy 2: ... Strategy 3: ...",
+      "hint": "Fixed-size (500 tokens): simple but may split mid-sentence. Semantic (by headers/paragraphs): preserves coherence but chunks vary wildly in size. Sliding window (500 tokens, 100 overlap): no info falls between cracks but 20% storage overhead. For a technical manual with clear section headers, semantic chunking by section is ideal.",
       "criteria": {
-        "keywords": [
-          "chunk",
-          "size",
-          "overlap",
-          "semantic",
-          "paragraph",
-          "heading",
-          "token"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["chunk", "size", "overlap", "semantic", "paragraph", "heading", "token"]
       },
-      "successMessage": "Chunking strategy makes or breaks RAG quality."
+      "badExample": "Split the document into equal pieces. Or split by paragraphs. Or use overlapping chunks.",
+      "goodExample": "Strategy 1: Fixed-size (500 tokens). Pro: dead simple, predictable chunk count. Con: cuts mid-sentence, splits related content across chunks — 'see section above' becomes meaningless. Strategy 2: Semantic (by section headers). Pro: each chunk is a coherent topic — 'Installation Guide' stays together. Con: some sections are 50 tokens, others 3000. Strategy 3: Sliding window (500 tokens, 100 overlap). Pro: boundary information appears in two chunks, nothing lost. Con: 20% storage overhead, duplicate results possible. For this technical manual: semantic chunking by H2/H3 headers, with a max-size fallback (if a section exceeds 1000 tokens, split at paragraph boundaries within it). Technical docs have clear structure — use it.",
+      "successMessage": "Chunking strategy makes or breaks RAG quality. You matched the strategy to the document type."
+    },
+    {
+      "id": "rag-3-2",
+      "type": "debug",
+      "instruction": "A RAG system returns irrelevant results. Documents are chunked at 2000 tokens with no overlap. A user asks 'What is the refund policy?' and the answer spans two chunks — chunk 47 ends with 'Refunds are available within' and chunk 48 starts with '30 days of purchase.' Neither chunk alone answers the question. Diagnose and fix.",
+      "placeholder": "The problem is... The fix is...",
+      "hint": "Fixed-size chunking without overlap split a key sentence across chunks. Neither chunk's embedding captures the full refund policy. Fix: add overlapping windows (200-token overlap), or use sentence-boundary chunking, or fetch adjacent chunks when retrieving.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["overlap", "split", "chunk", "boundary", "sentence", "adjacent", "context", "retriev"]
+      },
+      "badExample": "The chunks are too big. Make them smaller so the refund policy fits in one chunk.",
+      "goodExample": "Problem: 2000-token fixed chunking with zero overlap split the sentence 'Refunds are available within 30 days of purchase' at the boundary. Chunk 47's embedding captures 'refunds available' but not the timeframe. Chunk 48 has '30 days' but lacks 'refund.' Neither vector is close enough to 'What is the refund policy?' Fixes: 1) Sliding window overlap: re-chunk with 200-token overlap so the full sentence appears intact. 2) Sentence-boundary chunking: never split mid-sentence. 3) Context window retrieval: when returning chunk N, also fetch N-1 and N+1 to reconstruct split information.",
+      "successMessage": "Most common RAG failure: chunking boundaries split key information. Overlap and sentence-aware splitting are your best defenses."
     }
   ],
   "the-rag-loop": [
     {
-      "id": "rvs-4-1",
+      "id": "rag-4-1",
       "type": "freeform",
-      "instruction": "Draw the complete RAG loop: user query to AI response. Include query embedding, vector search, context assembly, prompt construction.",
-      "placeholder": "Step 1: User asks...",
+      "instruction": "Draw the complete RAG loop from user query to AI response. Include: query embedding, vector search, context assembly, prompt construction, and what happens when retrieval quality is poor.",
+      "placeholder": "Step 1: User asks... Step 2: ...",
+      "hint": "1) User asks a question. 2) Embed the query with the same model used for documents. 3) Vector search for top-K similar chunks. 4) Optionally re-rank results. 5) Assemble context from retrieved chunks with source labels. 6) Construct prompt: grounding instructions + context + query. 7) LLM generates answer. 8) If answer quality is low, reformulate query and loop back to step 2.",
       "criteria": {
-        "keywords": [
-          "query",
-          "embed",
-          "search",
-          "retrieve",
-          "context",
-          "prompt",
-          "generate"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["query", "embed", "search", "retrieve", "context", "prompt", "generate"]
       },
-      "successMessage": "The entire RAG pipeline mapped. Foundation of every AI knowledge system."
+      "badExample": "Get the question, search for documents, put them in a prompt, get an answer from the AI.",
+      "goodExample": "The RAG Loop: 1) User query received. 2) Embed query using same model as document embeddings. 3) Vector search: find top-5 most similar chunks (cosine similarity > 0.7 threshold). 4) Re-rank: cross-encoder scores true relevance of each chunk to the query. 5) Context assembly: format top chunks with source metadata and relevance scores. 6) Prompt construction: system instructions (answer ONLY from context, cite sources) + formatted context + user query. 7) LLM generates grounded answer with citations. 8) Quality check: if confidence is low or answer says 'insufficient information,' reformulate query (LLM rewrites for better retrieval) and loop back to step 2. Max 3 iterations.",
+      "successMessage": "The entire RAG pipeline mapped. Every production AI knowledge system follows this flow."
+    },
+    {
+      "id": "rag-4-2",
+      "type": "analyze",
+      "instruction": "A RAG system has Precision@5 = 0.4 and Recall@5 = 0.6. Explain what these numbers mean in plain language and suggest 3 concrete improvements to each metric.",
+      "placeholder": "Precision@5 means... Recall@5 means... To improve...",
+      "hint": "Precision@5 = 0.4: only 2 of 5 retrieved chunks are relevant (60% noise). Recall@5 = 0.6: only 60% of relevant chunks were found (40% missed). Improve precision: smaller chunks, re-ranking, better embeddings. Improve recall: retrieve more then re-rank, hybrid search, query expansion.",
+      "criteria": {
+        "minLength": 70,
+        "keywords": ["precision", "recall", "relevant", "retrieve", "chunk", "improve", "re-rank", "hybrid"]
+      },
+      "badExample": "Precision is accuracy and recall is completeness. Both need to be higher. Use better models.",
+      "goodExample": "Precision@5 = 0.4: of 5 retrieved chunks, only 2 are relevant — 3 are noise wasting context window. Recall@5 = 0.6: database has ~10 relevant chunks but we only found 6, missing 4 entirely. Improve precision: 1) Smaller, more focused chunks so embeddings are more specific. 2) Cross-encoder re-ranking after retrieval to filter noise. 3) Metadata filtering to narrow search scope. Improve recall: 1) Retrieve 20 then re-rank to top-5 (wider net, then filter). 2) Hybrid search: vector + BM25 keyword matching catches different types of relevance. 3) Query expansion: rephrase query multiple ways and merge retrieval results.",
+      "successMessage": "You understand the precision-recall tradeoff. The retrieve-then-rerank pattern and hybrid search are the two most impactful production improvements."
     }
   ],
   "build-your-first-rag": [
     {
-      "id": "rvs-5-1",
+      "id": "rag-5-1",
       "type": "prompt",
-      "instruction": "Write a prompt for Claude to generate a minimal RAG system using Supabase pgvector. Include table schema, embedding function, search, query.",
-      "placeholder": "Build a RAG system that...",
+      "instruction": "Write a prompt for Claude to generate a minimal RAG system using Supabase pgvector. Include: table schema, embedding function, search function, and query flow.",
+      "placeholder": "Build a RAG system that uses Supabase pgvector...",
+      "hint": "Include: CREATE TABLE with vector column, a function to embed and insert documents, a match_documents function using cosine similarity, and the query flow: embed user question → call match_documents → format context → send to Claude with grounding instructions.",
       "criteria": {
-        "keywords": [
-          "Supabase",
-          "pgvector",
-          "embedding",
-          "table",
-          "search",
-          "match",
-          "query"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["Supabase", "pgvector", "embedding", "table", "search", "match", "query"]
       },
-      "successMessage": "Buildable RAG spec. Running in an hour."
+      "badExample": "Make a RAG system with Supabase that stores vectors and searches them when I ask questions.",
+      "goodExample": "Build a minimal RAG system on Supabase with pgvector. Requirements: 1) Table 'documents' with columns: id (uuid), content (text), embedding (vector(1536)), metadata (jsonb), created_at (timestamptz). 2) Enable pgvector extension. 3) Create RPC function 'match_documents' that takes a query_embedding vector and match_count int, returns documents ordered by cosine similarity (1 - (embedding <=> query_embedding)). 4) Insert flow: chunk text into 500-token segments → embed each with OpenAI text-embedding-3-small → insert into documents table. 5) Query flow: embed user question → call match_documents(query_embedding, 5) → format top-5 results as numbered sources → construct prompt with grounding instructions ('answer ONLY from sources, cite by number') → send to Claude → return answer with citations.",
+      "successMessage": "Buildable RAG spec that could be running in an hour. Supabase + pgvector is the fastest path to production RAG."
+    },
+    {
+      "id": "rag-5-2",
+      "type": "rewrite",
+      "instruction": "This RAG system prompt will produce hallucinations: 'You are a helpful assistant. Use the following information to answer questions. Info: {context}. Question: {query}'. Rewrite it to prevent hallucination with explicit grounding rules.",
+      "placeholder": "Rewrite with anti-hallucination instructions...",
+      "hint": "Add: answer ONLY from provided context, cite sources, say 'I don't have enough information' when context doesn't cover the question, never make up facts, never add outside knowledge.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["context", "only", "cite", "source", "information", "don't know", "ground", "never"]
+      },
+      "badExample": "You are an expert. Answer thoroughly using the context. Be detailed. Context: {context} Question: {query}",
+      "goodExample": "You are a research assistant that answers STRICTLY from the source documents below. Rules: 1) ONLY use information explicitly stated in the sources. 2) Cite every claim as [Source N]. 3) If sources don't contain the answer, say: 'The available documents don't cover this topic.' 4) NEVER add knowledge beyond what's in the sources. 5) When sources conflict, note the discrepancy.\n\n--- SOURCES ---\n{context}\n--- END ---\n\nQuestion: {query}\nAnswer (cite every claim):",
+      "successMessage": "Key anti-hallucination techniques: explicit grounding instruction, required citations, clear fallback for missing info. Production-ready prompt."
     }
   ],
   "prompt-augmentation": [
     {
-      "id": "rvs-6-1",
+      "id": "rag-6-1",
       "type": "prompt",
-      "instruction": "Write a RAG prompt template: retrieved context + user question = answer. Handle cases where context doesn't contain the answer.",
+      "instruction": "Write a RAG prompt template that includes retrieved context and handles edge cases: what if context doesn't contain the answer? What if sources conflict? What if the question is ambiguous?",
       "placeholder": "You are a helpful assistant. Context: {context}...",
+      "hint": "Handle three edge cases: 1) No relevant context → say 'I don't have information about this.' 2) Conflicting sources → note the discrepancy and prefer the more recent source. 3) Ambiguous question → ask for clarification while sharing what you can answer from context.",
       "criteria": {
-        "keywords": [
-          "context",
-          "question",
-          "answer",
-          "based on",
-          "source",
-          "if"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["context", "question", "answer", "based on", "source", "if", "conflict", "cite"]
       },
-      "successMessage": "Prompt template with edge case handling. Production-ready."
+      "badExample": "Answer the question using the context. Context: {context}. Question: {query}.",
+      "goodExample": "You answer questions using ONLY the sources below. Rules:\n- Cite every factual claim as [Source N]\n- If sources don't cover the question: 'Based on available documents, I cannot answer this. The sources cover [related topics] instead.'\n- If sources conflict: present both viewpoints, note the conflict, prefer the more recent source\n- If the question is ambiguous: state your interpretation, answer it, then note alternative interpretations\n\n=== SOURCES (ranked by relevance) ===\n{context}\n=== END ===\n\nQuestion: {query}\nAnswer:",
+      "successMessage": "Prompt template with edge case handling. This is what separates demo RAG from production RAG."
+    },
+    {
+      "id": "rag-6-2",
+      "type": "rewrite",
+      "instruction": "This prompt augmentation dumps context without structure: 'Here is info: {chunk1} {chunk2} {chunk3} {chunk4} {chunk5}. Answer: {query}'. Rewrite with proper formatting that helps the LLM use retrieved information effectively.",
+      "placeholder": "Rewrite with structured context...",
+      "hint": "Number each source, include metadata (title, date, relevance score), separate with clear delimiters, rank by relevance, add instructions for how to prioritize sources.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["source", "context", "structure", "format", "relevant", "cite", "number", "metadata"]
+      },
+      "badExample": "[1] chunk1 [2] chunk2 [3] chunk3. Answer the question: {query}",
+      "goodExample": "System: Answer using ONLY the ranked sources below. Cite by number.\n\n=== SOURCES (most relevant first) ===\n\n[1] {chunk1.title} | {chunk1.date} | Relevance: {chunk1.score}\n{chunk1.text}\n\n[2] {chunk2.title} | {chunk2.date} | Relevance: {chunk2.score}\n{chunk2.text}\n\n[3] {chunk3.title} | {chunk3.date}\n{chunk3.text}\n\n=== END SOURCES ===\n\nPrioritize higher-ranked sources. When sources conflict, prefer the more recent document.\n\nQuestion: {query}\nAnswer (cite sources):",
+      "successMessage": "Structured context formatting dramatically improves answer quality. Source metadata, ranking, and citation instructions are the key improvements."
     }
   ],
   "hybrid-search": [
     {
-      "id": "rvs-7-1",
+      "id": "rag-7-1",
       "type": "freeform",
-      "instruction": "Explain hybrid search (vector + keyword). Give an example where vector-only fails but hybrid succeeds.",
+      "instruction": "Explain hybrid search (combining vector similarity + keyword/BM25). Give a specific example where vector-only search fails but hybrid search succeeds, and explain why.",
       "placeholder": "Hybrid search combines...",
+      "hint": "Vector search finds semantic matches but misses exact terms. BM25 finds exact keyword matches but misses paraphrases. Example: searching 'HIPAA compliance encryption requirements' — vector search returns general healthcare privacy articles, BM25 nails the exact document with 'HIPAA' and 'encryption.' Hybrid combines both signals using reciprocal rank fusion.",
       "criteria": {
-        "keywords": [
-          "vector",
-          "keyword",
-          "hybrid",
-          "semantic",
-          "exact",
-          "combine",
-          "score"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["vector", "keyword", "hybrid", "semantic", "exact", "combine", "score"]
       },
-      "successMessage": "Hybrid search is the secret sauce of production RAG."
+      "badExample": "Hybrid search uses both vector and keyword search. It's better than either alone because it combines them.",
+      "goodExample": "Hybrid search runs two parallel searches: 1) Vector similarity captures semantic meaning (synonyms, paraphrases, related concepts). 2) BM25 keyword matching captures exact terms (proper nouns, technical jargon, codes). Scores are fused via Reciprocal Rank Fusion. Failure example: query 'HIPAA compliance for patient data encryption at rest.' Vector-only returns general articles about healthcare data privacy (semantically similar but not specific). It misses the exact HIPAA technical safeguards document because that doc uses formal language the embedding doesn't closely match. BM25 finds it instantly because 'HIPAA' and 'encryption' appear literally. Hybrid ranks it #1 by combining BM25's exact match with vector's semantic relevance.",
+      "successMessage": "Hybrid search is the secret sauce of production RAG. Vector for meaning, BM25 for specificity, fusion for the best of both."
+    },
+    {
+      "id": "rag-7-2",
+      "type": "prompt",
+      "instruction": "A legal search system needs to handle both conceptual queries ('cases about tenant rights during eviction') and exact citations ('Smith v. Jones 2019'). Design how you'd weight vector vs. keyword search differently for each query type.",
+      "placeholder": "For conceptual queries, weight... For citation queries, weight...",
+      "hint": "Classify the query first: if it matches a citation pattern (contains 'v.', case numbers, statute references), weight BM25 heavily (90%). For conceptual queries, weight vector search heavily (70%). For mixed queries, use 50/50 with reciprocal rank fusion.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["vector", "keyword", "weight", "citation", "conceptual", "classify", "query", "legal"]
+      },
+      "badExample": "Use 50/50 weighting for everything. Or just use vector search since it's smarter.",
+      "goodExample": "Query-adaptive weighting with automatic classification: 1) Citation detection (regex: 'v\\.', USC/CFR patterns, docket numbers): weight BM25 at 90%, vector at 10%. The exact string 'Smith v. Jones' must match literally — semantic similarity would return wrong cases with similar topics. 2) Conceptual query ('tenant rights during eviction'): weight vector at 70%, BM25 at 30%. We need semantic understanding of 'tenant rights' but BM25 still helps catch exact legal terms. 3) Mixed ('cases like Roe v. Wade about bodily autonomy'): 50/50 reciprocal rank fusion. Citation component finds the reference case, vector component finds thematically similar cases. Implementation: run a lightweight classifier on every query before search. Fallback: if classification confidence < 0.7, use 50/50 default.",
+      "successMessage": "Query-adaptive weighting is how you build search that works for both precise and exploratory use cases. Legal search is one of the best examples of why you need it."
     }
   ],
   "evaluation-metrics": [
     {
-      "id": "rvs-8-1",
+      "id": "rag-8-1",
       "type": "freeform",
-      "instruction": "Define 3 RAG quality metrics: one for retrieval, one for answers, one for user satisfaction. How to measure each.",
-      "placeholder": "Metric 1 (Retrieval): ...",
+      "instruction": "Define 3 RAG quality metrics: one measuring retrieval quality, one measuring answer quality, and one measuring user satisfaction. For each, explain exactly how to measure it.",
+      "placeholder": "Metric 1 (Retrieval): ... How to measure: ...",
+      "hint": "Retrieval: Precision@K — what fraction of retrieved chunks are actually relevant (human annotation or LLM-as-judge). Answer: Faithfulness — what fraction of claims in the answer are supported by the retrieved context (automated with an LLM checker). User satisfaction: thumbs up/down ratio on answers, tracked over time with drill-down by topic.",
       "criteria": {
-        "keywords": [
-          "precision",
-          "recall",
-          "relevance",
-          "accuracy",
-          "faithfulness",
-          "measure"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["precision", "recall", "relevance", "accuracy", "faithfulness", "measure"]
       },
-      "successMessage": "You can't improve what you can't measure."
+      "badExample": "Track precision, recall, and user feedback. Higher is better.",
+      "goodExample": "Metric 1 — Retrieval Precision@5: Of the 5 chunks retrieved, how many are actually relevant? Measured by: create a test set of 200 questions with human-annotated relevant documents. Run each query, check if retrieved chunks match the annotations. Target: > 0.8 (4 of 5 relevant). Metric 2 — Answer Faithfulness: What fraction of factual claims in the generated answer are supported by the retrieved context? Measured by: an automated LLM judge extracts claims from the answer, then checks each claim against the context. Score = supported claims / total claims. Target: > 0.9. Metric 3 — User Satisfaction: Do users find answers helpful? Measured by: thumbs up/down on every answer (passive), weekly CSAT survey (active), and implicit signals (did the user ask the same question again? = dissatisfied). Target: > 80% thumbs up, < 15% re-ask rate.",
+      "successMessage": "You can't improve what you can't measure. Three complementary metrics covering retrieval, generation, and user experience."
+    },
+    {
+      "id": "rag-8-2",
+      "type": "analyze",
+      "instruction": "A RAG system has: Retrieval Precision@5 = 0.8, Answer Faithfulness = 0.6, Answer Relevance = 0.9. Diagnose what's happening. Which stage is the weakest link and how would you fix it?",
+      "placeholder": "Precision@5 = 0.8 means... Faithfulness = 0.6 means... The weakest link is...",
+      "hint": "Retrieval is solid (0.8), answer addresses the question well (0.9), but only 60% of claims are grounded in context. The LLM is hallucinating 40% of its answer. Fix the generation stage: stronger grounding prompt, required citations, lower temperature, post-generation faithfulness check.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["precision", "faithfulness", "hallucin", "generation", "ground", "prompt", "weak", "fix"]
+      },
+      "badExample": "Faithfulness is low so there's a hallucination problem. Fix the prompt.",
+      "goodExample": "Diagnosis: Retrieval is strong (Precision@5 = 0.8, 4/5 chunks relevant). Answer Relevance is high (0.9, addresses the right topic). But Faithfulness = 0.6 means 40% of claims in the answer aren't supported by retrieved context — the LLM is hallucinating or adding outside knowledge. Weakest link: the generation/prompting stage. The LLM has good context but isn't grounding its answers in it. Fixes: 1) Rewrite system prompt: 'ONLY use information from the sources. Cite every claim as [Source N]. If sources don't cover something, say so.' 2) Add post-generation faithfulness check: a second LLM pass verifies each claim against context before returning the answer. 3) Reduce temperature from 0.7 to 0.3 for more conservative generation. 4) Test if switching to a more instruction-following model improves grounding compliance.",
+      "successMessage": "Always isolate which RAG stage is failing. Here, retrieval was fine — the generation stage needed stronger grounding constraints."
     }
   ],
   "advanced-patterns": [
     {
-      "id": "rvs-9-1",
+      "id": "rag-9-1",
       "type": "freeform",
-      "instruction": "Describe 3 advanced RAG patterns: query expansion, re-ranking, multi-step retrieval. When to use each and tradeoffs.",
-      "placeholder": "Pattern 1: Query expansion...",
+      "instruction": "Describe 3 advanced RAG patterns: HyDE (hypothetical document embedding), cross-encoder re-ranking, and multi-step retrieval. For each: how it works, when to use it, and the key tradeoff.",
+      "placeholder": "Pattern 1: HyDE — How: ... When: ... Tradeoff: ...",
+      "hint": "HyDE: LLM generates a hypothetical answer, embed that instead of the query. Use for: short queries that don't match document style. Tradeoff: extra LLM call latency, risk of retrieving based on hallucinated content. Re-ranking: after retrieval, a cross-encoder scores true relevance of each chunk. Use for: improving precision when initial retrieval is noisy. Tradeoff: adds 100-500ms latency. Multi-step: decompose complex queries, retrieve for each sub-query, synthesize. Use for: compound questions. Tradeoff: 3x retrieval calls = 3x latency and cost.",
       "criteria": {
-        "keywords": [
-          "query expansion",
-          "re-rank",
-          "multi-step",
-          "tradeoff",
-          "latency",
-          "quality"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["query expansion", "re-rank", "multi-step", "tradeoff", "latency", "quality"]
       },
-      "successMessage": "These patterns separate basic RAG from production-grade."
+      "badExample": "HyDE makes fake answers for better search. Re-ranking sorts results better. Multi-step breaks questions into parts.",
+      "goodExample": "Pattern 1 — HyDE: LLM generates a hypothetical answer to the query, then embed that answer (not the original query) for retrieval. The hypothetical answer's embedding is closer in style to actual documents than a short question. Use when: short, interrogative queries get poor retrieval. Tradeoff: adds 500ms-2s (extra LLM call), and if the LLM hallucinates a wrong hypothesis, retrieval follows the hallucination.\n\nPattern 2 — Cross-encoder Re-ranking: after initial vector retrieval of top-20, a cross-encoder model scores each (query, chunk) pair for true relevance and returns top-5. Use when: initial retrieval has good recall but poor precision. Tradeoff: adds 100-500ms per query, requires a separate re-ranking model.\n\nPattern 3 — Multi-step Retrieval: decompose 'Compare Q1 and Q2 sales' into sub-queries ('Q1 sales', 'Q2 sales'), retrieve for each, merge and deduplicate. Use when: compound questions where single retrieval misses sub-topics. Tradeoff: N sub-queries = N retrieval calls (cost, latency). Diminishing returns beyond 3-4 decompositions.",
+      "successMessage": "These patterns separate basic RAG from production-grade. Each adds latency but dramatically improves quality for specific failure modes."
+    },
+    {
+      "id": "rag-9-2",
+      "type": "prompt",
+      "instruction": "Design a RAG system that handles multi-modal content: text documents, images with captions, and data tables. How do you embed, store, and retrieve across content types with a single text query?",
+      "placeholder": "Text: embed with... Images: embed with... Tables: ...",
+      "hint": "Text: standard text embedding. Images: CLIP model embeds images into shared text-image space, plus OCR/caption for text-based embedding. Tables: serialize to natural language descriptions and embed. Store all in one vector DB with a 'modality' metadata field. A single text query retrieves across all content types because they share the same embedding space.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["text", "image", "table", "embed", "modal", "CLIP", "retrieve", "unified"]
+      },
+      "badExample": "Use different models for each type and put them in the same database. Search normally.",
+      "goodExample": "Multi-modal RAG: Text: chunk and embed with text-embedding-3-small (standard). Images: dual approach — 1) CLIP embeds the image into a shared text-image vector space, 2) OCR + captioning produces a text description, embedded with the text model. Store both embeddings per image. Tables: serialize to natural language ('Q1 revenue: $5.2M, up 12% from Q4') and embed the serialized text. Store raw table as JSON metadata for post-retrieval precision. Unified storage: pgvector table with columns: embedding, modality ('text'|'image'|'table'), content, raw_source, metadata. Cross-modal retrieval: query 'revenue trends' retrieves text chunks about revenue AND serialized table descriptions AND CLIP-embedded charts. Post-retrieval: the LLM receives all modalities with type labels and synthesizes: 'Revenue grew 12% [Source 1, text] as shown in [Source 3, chart]. Detailed breakdown: [Source 2, table].'",
+      "successMessage": "Multi-modal RAG unifies content types in a shared embedding space. One query surfaces text, images, and tables together — that's the future of knowledge systems."
     }
   ],
   "rag-quiz": [
     {
-      "id": "rvs-10-1",
+      "id": "rag-10-1",
       "type": "prompt",
-      "instruction": "CTO asks: 'Fine-tuning vs RAG \u2014 when should we use which?' Write a clear comparison.",
+      "instruction": "A CTO asks: 'Should we fine-tune a model or use RAG?' Write a clear comparison covering: when to use each, cost differences, update speed, and the scenario where you'd use both together.",
       "placeholder": "Fine-tuning is best when... RAG is best when...",
+      "hint": "Fine-tuning: best for teaching a model a new style/format/domain (e.g., writing legal contracts in your firm's voice). Expensive to train, slow to update. RAG: best for giving a model access to current knowledge that changes frequently (e.g., product catalog, policies). Cheap, instant updates. Both together: fine-tune for domain style + RAG for current facts.",
       "criteria": {
-        "keywords": [
-          "fine-tune",
-          "RAG",
-          "data",
-          "cost",
-          "update",
-          "knowledge",
-          "style"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["fine-tune", "RAG", "data", "cost", "update", "knowledge", "style"]
       },
-      "successMessage": "The most important decision in AI engineering. Nailed."
+      "badExample": "RAG is usually better because it's cheaper and easier to update. Fine-tuning is for special cases.",
+      "goodExample": "Fine-tuning: teaches the model HOW to behave — style, format, domain terminology. Best when: you need consistent output format (always JSON), domain voice (legal/medical), or specialized reasoning patterns. Cost: $50-500 per training run, hours to days. Update speed: slow — retrain to update. RAG: gives the model WHAT to know — current facts, documents, data. Best when: knowledge changes frequently (policies, products, news), needs source citations, or data is proprietary. Cost: embedding + storage (~$0.01 per 1000 chunks), instant updates. Both together: fine-tune a model on your domain's writing style and terminology, then RAG in current documents. Example: fine-tune for 'writes like our legal team' + RAG retrieves the latest contract templates and case law. The model writes in the right style using current facts.",
+      "successMessage": "The most important decision in AI engineering. Fine-tuning = how to think. RAG = what to know. Together = the full package."
+    },
+    {
+      "id": "rag-10-2",
+      "type": "debug",
+      "instruction": "A RAG chatbot for a company knowledge base returns competitor vacation policy info when asked 'What is our vacation policy?' The internal policy doc exists in the database. A market research doc mentioning competitor policies is being retrieved instead. Diagnose and fix.",
+      "placeholder": "The bug is... Fix: ...",
+      "hint": "Vector search ranks by semantic similarity alone. The competitor doc's casual language about vacation policies embeds closer to the query than the internal doc's formal HR language. Fix: metadata filtering — tag docs as 'internal_policy' vs. 'market_research' and filter pre-search. Or boost internal documents. Or use query routing.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["metadata", "filter", "source", "internal", "tag", "boost", "retriev", "semantic"]
+      },
+      "badExample": "Delete the competitor document from the database.",
+      "goodExample": "Diagnosis: vector search ranks by semantic similarity with no source awareness. The competitor doc's chunk 'Company X offers 25 days vacation with rollover' embeds closer to 'vacation policy' than the internal doc's formal HR language ('PTO Allocation: employees accrue 1.67 days/month pursuant to Section 4.2'). Fixes: 1) Metadata filtering: tag every doc with source_type ('internal_policy', 'market_research', etc.). For 'our policy' queries, filter to internal_policy BEFORE vector search. 2) Query routing: classify query intent — 'our vacation policy' routes to internal docs only; 'competitor vacation policies' routes to market research. 3) Embedding boost: multiply internal policy embeddings' similarity scores by 1.5x when the query contains 'our' or 'we.'",
+      "successMessage": "Classic RAG failure: semantic similarity without source awareness retrieves the wrong type of document. Metadata filtering is the #1 production fix."
     }
   ]
 }

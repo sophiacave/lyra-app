@@ -3,208 +3,301 @@
     {
       "id": "mcp-1-1",
       "type": "prompt",
-      "instruction": "Explain MCP to a developer who knows APIs but not MCP. What problem it solves and how it differs from direct API calls.",
-      "placeholder": "MCP is...",
+      "instruction": "Explain MCP (Model Context Protocol) to a developer who knows APIs but not MCP. What problem it solves and how it differs from direct API calls.",
+      "placeholder": "MCP is a protocol that...",
+      "hint": "MCP is like USB for AI. Before USB, every device needed its own cable. Before MCP, every AI tool needed custom integration code. MCP provides a standard protocol so any AI model can connect to any tool server with one universal interface.",
       "criteria": {
-        "keywords": [
-          "MCP",
-          "protocol",
-          "tool",
-          "server",
-          "client",
-          "standard",
-          "connect"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["MCP", "protocol", "standard", "tool", "server", "client", "connect"]
       },
-      "successMessage": "Clear explanation. That means deep understanding."
+      "badExample": "MCP is a way for AI to use tools.",
+      "goodExample": "MCP (Model Context Protocol) solves the N-times-M integration problem. Without MCP: if you have 5 AI models and 10 tools, you need 50 custom integrations. Each model needs bespoke code to call each tool. MCP creates a standard protocol -- like HTTP for the web -- so any MCP-compatible model can connect to any MCP server. You build one server, and every Claude, GPT, or Llama client can use your tools. Compared to direct API calls: APIs require the model to know each API's auth, endpoints, and response format. MCP abstracts this -- the model just sees tool names, descriptions, and input schemas. The MCP server handles the messy API details internally. It's the difference between a model needing to know how to call 100 APIs vs. knowing one protocol that connects to 100 tool servers.",
+      "successMessage": "Clear explanation! MCP is the universal adapter that makes AI tools composable and interoperable."
+    },
+    {
+      "id": "mcp-1-2",
+      "type": "analyze",
+      "instruction": "A founder asks: 'Why should I care about MCP? We already have APIs and function calling works fine.' Give 3 compelling reasons MCP matters for their business.",
+      "placeholder": "Reason 1: ...\nReason 2: ...\nReason 3: ...",
+      "hint": "1) Portability -- your tools work with any MCP-compatible AI, not locked to one provider. 2) Ecosystem -- users can discover and connect your tools from AI clients they already use. 3) Reduced maintenance -- standard protocol means less custom integration code to maintain.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["standard", "connect", "AI", "tool", "protocol", "portability", "ecosystem"]
+      },
+      "badExample": "MCP is the future so you should adopt it.",
+      "goodExample": "Three business reasons: 1) PORTABILITY: Your custom function-calling tools are locked to one AI provider. If your team switches from GPT to Claude, you rebuild everything. MCP tools work with any compatible client -- build once, deploy everywhere. That's insurance against vendor lock-in. 2) DISTRIBUTION: Function calling requires developers to wire up each tool manually. MCP servers can be discovered and connected in seconds from Claude Desktop, Cursor, or any MCP client. Your tools become plug-and-play for thousands of developers who use these clients daily. That's free distribution. 3) MAINTENANCE: Custom API integrations are fragile -- every API change, auth rotation, or new model version requires updates. MCP standardizes the interface, so your server handles API complexity internally while presenting a stable tool interface. Less glue code, fewer breaking changes, lower eng costs.",
+      "successMessage": "Portability, distribution, and maintenance -- three arguments that speak to business outcomes, not just technology."
     }
   ],
   "mcp-architecture": [
     {
       "id": "mcp-2-1",
       "type": "freeform",
-      "instruction": "Draw the MCP architecture in words: Client, Server, Tools. What each does and how they communicate.",
-      "placeholder": "Client: ... Server: ... Tools: ...",
+      "instruction": "Describe the MCP architecture in words: Client, Server, and Tools. Explain what each component does and how they communicate.",
+      "placeholder": "Client: ...\nServer: ...\nTools: ...\nCommunication: ...",
+      "hint": "Client: the AI application (Claude Desktop, Cursor) that wants to use tools. Server: a process that exposes tools, resources, and prompts via the MCP protocol. Tools: individual capabilities the server offers (functions with defined inputs/outputs). Communication: JSON-RPC over stdio or HTTP, with the client discovering available tools and calling them as needed.",
       "criteria": {
-        "keywords": [
-          "client",
-          "server",
-          "tool",
-          "request",
-          "response",
-          "JSON",
-          "transport"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["client", "server", "tool", "request", "response", "JSON", "transport"]
       },
-      "successMessage": "Architecture mapped. This mental model guides everything you build."
+      "badExample": "Client talks to server which has tools.",
+      "goodExample": "MCP Architecture -- three layers: CLIENT (the AI host): This is the application containing the AI model -- Claude Desktop, Cursor, a custom chatbot. The client discovers available MCP servers, presents their tools to the model, and routes tool calls to the right server. It speaks MCP protocol. SERVER (the capability provider): A running process that exposes a set of tools, resources, and/or prompts. Each server typically wraps one domain -- a GitHub server, a database server, a Slack server. It registers what it can do when the client connects. TOOLS (the individual functions): Named operations with defined input schemas and return types. Example: a GitHub server might expose: create_issue(title, body, labels), list_repos(org), and search_code(query). Each tool has a description that helps the AI model decide when to use it. COMMUNICATION: Uses JSON-RPC 2.0 protocol. Two transport options: stdio (server runs as a subprocess, communicates via stdin/stdout -- simple, local) or HTTP with SSE (server runs remotely, communicates over the network -- supports remote/shared servers). Flow: Client connects -> Server sends capabilities list -> Client presents tools to AI model -> Model requests a tool call -> Client forwards to server -> Server executes and returns result -> Client gives result back to model.",
+      "successMessage": "Architecture mapped! Client discovers, model decides, server executes. This mental model guides everything you build."
+    },
+    {
+      "id": "mcp-2-2",
+      "type": "debug",
+      "instruction": "An MCP connection isn't working. The client says 'no tools found' but the server is running. Walk through 3 things to check and how to fix each.",
+      "placeholder": "Check 1: ...\nCheck 2: ...\nCheck 3: ...",
+      "hint": "1) Config file path -- is the client pointing to the right server command? 2) Server startup -- is the server actually running and registering tools? Check stderr logs. 3) Protocol mismatch -- is the server using stdio but client expecting HTTP, or vice versa?",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["config", "server", "tool", "check", "log", "path", "transport"]
+      },
+      "badExample": "Restart everything and try again.",
+      "goodExample": "Check 1 -- CONFIG FILE: Is the MCP client config pointing to the correct server? Open claude_desktop_config.json and verify: the command path is absolute (not relative), the args are correct, and there are no JSON syntax errors. Common bug: typo in the command path or missing 'node' before a .js server file. Fix: verify the server binary exists at the specified path by running the command manually in terminal. Check 2 -- SERVER REGISTRATION: The server might start but fail to register tools (crash during initialization). Run the server command manually and check stderr output. Common bug: missing environment variables (API keys), missing npm dependencies, or a syntax error in tool definitions. Fix: check server logs for error messages, ensure all required env vars are set in the config. Check 3 -- TRANSPORT MISMATCH: The server might be starting but using the wrong transport. If config uses 'command' (stdio), the server must communicate via stdin/stdout. If it prints anything to stdout that isn't valid JSON-RPC, the client ignores it. Common bug: console.log() statements in the server that corrupt the stdio stream. Fix: ensure all debug output goes to stderr, not stdout. Also check: did you restart the client after changing the config? Most MCP clients only read config on startup.",
+      "successMessage": "Config, logs, transport -- the debugging trifecta for MCP connections. 90% of 'it doesn't work' issues are in the config file."
     }
   ],
   "servers-vs-tools": [
     {
       "id": "mcp-3-1",
       "type": "freeform",
-      "instruction": "Explain MCP server vs tool with examples. When to create a new server vs adding a tool to an existing one.",
-      "placeholder": "A server is... A tool is...",
+      "instruction": "Explain the difference between an MCP server and a tool with examples. When should you create a new server vs. adding a tool to an existing one?",
+      "placeholder": "A server is... A tool is...\nNew server when: ...\nNew tool when: ...",
+      "hint": "Server = a package of related capabilities (like a GitHub server). Tool = one specific action within that server (like create_issue). New server: when the domain changes (GitHub vs. Slack). New tool: when adding a related capability to an existing domain.",
       "criteria": {
-        "keywords": [
-          "server",
-          "tool",
-          "separate",
-          "group",
-          "capability",
-          "endpoint",
-          "resource"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["server", "tool", "separate", "group", "capability", "domain"]
       },
-      "successMessage": "Knowing when to split vs merge is a design skill."
+      "badExample": "Servers contain tools. Add tools to servers.",
+      "goodExample": "A SERVER is a grouped package of related capabilities around one domain or service. Example: a 'github-server' that wraps the GitHub API. A TOOL is a single action the server can perform. Example: create_issue, list_repos, search_code are all tools within the github-server. CREATE A NEW SERVER when: 1) You're connecting to a different external service (GitHub vs. Slack vs. database). 2) The capabilities need different authentication or permissions. 3) You want independent deployment/versioning. Example: Don't put GitHub tools and Slack tools in one server -- they have different auth, different failure modes, and different maintainers. ADD A TOOL TO EXISTING SERVER when: 1) The new capability uses the same underlying service and auth. 2) It logically belongs with the existing tools. 3) It shares state or connections with other tools. Example: Adding merge_pull_request to the github-server is natural -- it uses the same GitHub API token and relates to existing repo tools. Rule of thumb: one server per external service or data domain. Within that, as many tools as the domain needs.",
+      "successMessage": "Server = domain boundary. Tool = individual action. Knowing when to split vs. merge is a real design skill."
+    },
+    {
+      "id": "mcp-3-2",
+      "type": "analyze",
+      "instruction": "Someone built one giant MCP server with 50 tools covering email, calendar, CRM, file storage, and analytics. Analyze why this is problematic and how to restructure it.",
+      "placeholder": "Problems with one giant server: ...\nRestructured: ...",
+      "hint": "Problems: single point of failure, can't update one domain without risking others, overwhelming tool list confuses the AI model, different auth requirements. Restructure: 5 separate servers, one per domain.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["server", "separate", "domain", "failure", "auth", "model", "confuse"]
+      },
+      "badExample": "It's fine if it works, no need to change.",
+      "goodExample": "Problems with the monolith: 1) SINGLE POINT OF FAILURE: If the CRM connection goes down, email, calendar, and everything else go with it. 2) CONFUSING TOOL SELECTION: AI models get worse at choosing the right tool as the list grows. At 50 tools, the model frequently picks the wrong one. Research shows accuracy drops significantly past 15-20 tools per context. 3) AUTH COMPLEXITY: Email needs OAuth2 with Gmail, CRM needs an API key for Salesforce, files need AWS credentials. One server managing 5 different auth mechanisms is a maintenance nightmare. 4) DEPLOYMENT COUPLING: Updating the analytics tools requires redeploying everything, risking breaking the email tools that were working fine. 5) PERMISSION GRANULARITY: You might want to give some users calendar access but not CRM access. One server = all or nothing. RESTRUCTURED: 5 servers. email-server (8 tools: send, read, search, draft, etc.), calendar-server (6 tools: create_event, find_time, etc.), crm-server (10 tools: lookup, create, update, etc.), files-server (8 tools: upload, download, search, etc.), analytics-server (6 tools: query, report, etc.). Each has independent auth, independent deployment, independent failure domains. Connect only the servers each user needs.",
+      "successMessage": "The monolith problem applies to MCP servers just like microservices. Domain boundaries, independent auth, and manageable tool counts make for better architecture."
     }
   ],
   "tool-definitions": [
     {
       "id": "mcp-4-1",
       "type": "prompt",
-      "instruction": "Write a complete MCP tool definition in JSON: name, description, input schema with required/optional params, and what it returns.",
-      "placeholder": "{ \"name\": \"...\" }",
+      "instruction": "Write a complete MCP tool definition in JSON schema format. Include: name, description, input schema with required and optional parameters, and describe what it returns.",
+      "placeholder": "{\n  \"name\": \"...\",\n  \"description\": \"...\",\n  \"inputSchema\": {...}\n}",
+      "hint": "Name: search_documents. Description explains when to use it. inputSchema: properties with query (string, required), file_type (enum, optional), date_range (object, optional). Each property has a description helping the model use it correctly.",
       "criteria": {
-        "keywords": [
-          "name",
-          "description",
-          "inputSchema",
-          "type",
-          "required",
-          "properties"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["name", "description", "inputSchema", "type", "required", "properties"]
       },
-      "successMessage": "A real MCP tool definition. You could register this right now."
+      "badExample": "{\"name\": \"search\", \"description\": \"searches things\"}",
+      "goodExample": "{ \"name\": \"create_calendar_event\", \"description\": \"Creates a new event on the user's Google Calendar. Use this when the user wants to schedule a meeting, block time, or set a reminder. Returns the event ID and a link to the created event.\", \"inputSchema\": { \"type\": \"object\", \"properties\": { \"title\": { \"type\": \"string\", \"description\": \"Event title, e.g. 'Team Standup' or '1:1 with Sarah'\" }, \"start_time\": { \"type\": \"string\", \"description\": \"Start time in ISO 8601 format, e.g. '2024-03-15T10:00:00-05:00'\" }, \"duration_minutes\": { \"type\": \"integer\", \"description\": \"Event duration in minutes. Default: 30\", \"default\": 30 }, \"attendees\": { \"type\": \"array\", \"items\": { \"type\": \"string\" }, \"description\": \"Email addresses of attendees. Optional -- omit for personal time blocks\" }, \"description\": { \"type\": \"string\", \"description\": \"Optional event description or agenda\" }, \"location\": { \"type\": \"string\", \"description\": \"Physical location or video call link. Optional.\" } }, \"required\": [\"title\", \"start_time\"] } }",
+      "successMessage": "A real MCP tool definition you could register right now. Good descriptions, clear types, required vs. optional -- the model knows exactly how to use this."
+    },
+    {
+      "id": "mcp-4-2",
+      "type": "rewrite",
+      "instruction": "This tool definition has poor descriptions that will cause the AI model to misuse it. Rewrite the descriptions to be specific and helpful:\n\n{\"name\": \"send_message\", \"description\": \"Sends a message\", \"inputSchema\": {\"properties\": {\"to\": {\"type\": \"string\"}, \"body\": {\"type\": \"string\"}}}}",
+      "placeholder": "Improved definition: ...",
+      "hint": "Description should say WHEN to use this tool, WHAT it does, and what it DOESN'T do. Each property description should include format examples and constraints.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["description", "when", "format", "example", "required"],
+        "mustNotInclude": ["Sends a message"]
+      },
+      "badExample": "\"description\": \"This tool sends messages to people\"",
+      "goodExample": "{ \"name\": \"send_message\", \"description\": \"Sends a direct message to a user via the company's internal messaging system (similar to Slack DM). Use this tool when: the user wants to notify a specific colleague, follow up on a conversation, or share information privately. Do NOT use for: group messages (use send_channel_message instead), external emails (use send_email), or scheduling (use create_calendar_event). Returns: message_id and delivery status.\", \"inputSchema\": { \"type\": \"object\", \"properties\": { \"to\": { \"type\": \"string\", \"description\": \"Recipient's username or email. Examples: 'sarah.jones' or 'sarah@company.com'. Must be a single recipient -- for multiple people, call this tool multiple times or use send_channel_message.\" }, \"body\": { \"type\": \"string\", \"description\": \"The message content. Supports basic markdown (bold, italic, links). Maximum 4000 characters. Keep professional -- this is a work messaging system.\" }, \"urgent\": { \"type\": \"boolean\", \"description\": \"If true, sends a push notification to the recipient's phone. Default: false. Use sparingly -- only for time-sensitive matters.\", \"default\": false } }, \"required\": [\"to\", \"body\"] } }",
+      "successMessage": "Night and day! The AI model now knows WHEN to use this tool, WHEN NOT to, and exactly what format each parameter expects. Good descriptions are the #1 factor in tool-calling accuracy."
     }
   ],
   "your-first-server": [
     {
       "id": "mcp-5-1",
       "type": "prompt",
-      "instruction": "Write a prompt for Claude to generate a basic MCP server in TypeScript with a 'get_weather' tool. Include setup, registration, handler.",
-      "placeholder": "Create an MCP server that...",
+      "instruction": "Write a prompt asking Claude to generate a basic MCP server in TypeScript with a 'get_weather' tool. Include: server setup, tool registration, and the handler function.",
+      "placeholder": "Create an MCP server in TypeScript that...",
+      "hint": "Create a TypeScript MCP server using @modelcontextprotocol/sdk. Register one tool: get_weather that takes a city name and returns current temperature and conditions. Include the server setup, tool definition with input schema, and the handler that calls a weather API.",
       "criteria": {
-        "keywords": [
-          "MCP",
-          "server",
-          "tool",
-          "handler",
-          "TypeScript",
-          "weather",
-          "parameter"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["MCP", "server", "tool", "handler", "TypeScript", "weather", "parameter"]
       },
-      "successMessage": "Your first MCP server spec. Claude can build it from this."
+      "badExample": "Make an MCP server for weather.",
+      "goodExample": "Create a complete MCP server in TypeScript using the @modelcontextprotocol/sdk package. Requirements: 1) Server setup: use StdioServerTransport for local Claude Desktop integration. 2) Register one tool: 'get_weather' with inputSchema: city (string, required), units ('celsius' or 'fahrenheit', optional, default 'celsius'). Description: 'Gets current weather conditions for a city. Returns temperature, conditions, humidity, and wind speed.' 3) Handler: call the OpenWeatherMap API (use fetch), parse the response, and return a structured result. 4) Error handling: if the city isn't found, return a clear error message (don't throw). If the API key is missing, fail gracefully on startup. Include: package.json with dependencies, tsconfig.json, and a README with setup instructions. Show the claude_desktop_config.json entry needed to connect this server.",
+      "successMessage": "Your first MCP server spec! Claude can generate a working server from this prompt. The key: specifying SDK, transport, tool schema, and error handling."
+    },
+    {
+      "id": "mcp-5-2",
+      "type": "freeform",
+      "instruction": "Describe the steps to go from zero to a working MCP server connected to Claude Desktop. Include every step from npm init to seeing your tool appear in Claude.",
+      "placeholder": "Step 1: Create project...\nStep 2: ...\nFinal: Verify tool appears in Claude",
+      "hint": "1) npm init, install @modelcontextprotocol/sdk and typescript. 2) Write server code with tool definitions. 3) Build TypeScript. 4) Test server manually. 5) Add entry to claude_desktop_config.json. 6) Restart Claude Desktop. 7) Verify tool appears in the tools list.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["npm", "install", "server", "tool", "config", "Claude", "build"]
+      },
+      "badExample": "Install the SDK and write a server.",
+      "goodExample": "Step 1: CREATE PROJECT. mkdir my-mcp-server && cd my-mcp-server && npm init -y. Install deps: npm install @modelcontextprotocol/sdk typescript @types/node. Add tsconfig.json with module: 'NodeNext'. Step 2: WRITE SERVER. Create src/index.ts. Import McpServer and StdioServerTransport from the SDK. Instantiate server, register tools with name + description + inputSchema, implement handlers. Step 3: BUILD. npx tsc to compile to dist/index.js. Test by running node dist/index.js manually -- it should start without errors (it will wait for JSON-RPC input on stdin). Step 4: CONFIGURE CLAUDE. Open ~/Library/Application Support/Claude/claude_desktop_config.json (macOS). Add your server under 'mcpServers': { \"my-weather\": { \"command\": \"node\", \"args\": [\"/absolute/path/to/dist/index.js\"], \"env\": { \"WEATHER_API_KEY\": \"your-key\" } } }. Step 5: RESTART Claude Desktop completely (quit and reopen, not just close window). Step 6: VERIFY. Open a new conversation in Claude Desktop. You should see a tools icon indicating available MCP tools. Ask Claude 'What's the weather in London?' -- it should call your get_weather tool. Step 7: DEBUG if needed. Check ~/Library/Logs/Claude/mcp*.log for errors. Most common issue: wrong path in config or missing env variables.",
+      "successMessage": "From zero to a working MCP server in Claude Desktop. Once you've done this once, you can build any tool server."
     }
   ],
   "resources-and-prompts": [
     {
       "id": "mcp-6-1",
       "type": "freeform",
-      "instruction": "Design an MCP server with both resources (data) and tools (actions) for a knowledge base. List 2 resources and 3 tools.",
-      "placeholder": "Resources: 1. ... Tools: 1. ...",
+      "instruction": "Design an MCP server with both resources (data the AI can read) and tools (actions the AI can take) for a knowledge base system. List 2 resources and 3 tools with their purposes.",
+      "placeholder": "Resources:\n1. ...\nTools:\n1. ...",
+      "hint": "Resources (read-only data): 1) knowledge://articles -- list of all articles. 2) knowledge://article/{id} -- full content of one article. Tools (actions): 1) search_knowledge(query) -- semantic search. 2) create_article(title, content, tags). 3) update_article(id, content).",
       "criteria": {
-        "keywords": [
-          "resource",
-          "tool",
-          "read",
-          "search",
-          "create",
-          "update",
-          "knowledge"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["resource", "tool", "read", "search", "create", "knowledge"]
       },
-      "successMessage": "Resources vs tools \u2014 you're designing servers like a pro."
+      "badExample": "Resources for reading data and tools for writing data.",
+      "goodExample": "Knowledge Base MCP Server: RESOURCES (data the AI can read proactively): 1) knowledge://categories -- returns the full taxonomy of knowledge base categories with article counts. The AI can browse this to understand what topics are covered before searching. URI template: knowledge://categories/{category_name} for articles within a category. 2) knowledge://recent -- returns the 20 most recently updated articles with title, last_modified, and author. Useful for the AI to check if information might be outdated. TOOLS (actions the AI can execute): 1) search_knowledge(query: string, limit?: number, category?: string) -- performs semantic search across all articles. Returns ranked results with title, snippet, relevance score, and article ID. Use when: user asks a question the knowledge base might answer. 2) create_article(title: string, content: string, tags: string[], category: string) -- creates a new knowledge base article. Use when: user wants to document something new or the AI identifies missing information. 3) update_article(article_id: string, content: string, change_summary: string) -- updates an existing article's content with a change log entry. Use when: information is outdated or needs correction. KEY DIFFERENCE: Resources are declarative data the AI can browse without being asked. Tools are imperative actions that require intent. Resources inform; tools transform.",
+      "successMessage": "Resources vs. tools -- you're designing servers like a pro. Resources let the AI proactively gather context; tools let it take action."
+    },
+    {
+      "id": "mcp-6-2",
+      "type": "prompt",
+      "instruction": "Write an MCP prompt template that helps the AI model use a database server's tools effectively. The prompt should guide how the AI queries data and explains results to users.",
+      "placeholder": "Prompt template for database MCP server: ...",
+      "hint": "When using the database tools: always start with list_tables to understand the schema. Use query_table with specific filters instead of fetching all data. Present results in a user-friendly format, not raw JSON. If a query returns no results, suggest alternative search terms.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["database", "query", "table", "schema", "result", "user", "format"]
+      },
+      "badExample": "Use the database tools to answer questions about data.",
+      "goodExample": "MCP Prompt Template -- Database Assistant: When the user asks about data, follow this protocol: 1) DISCOVER: Before any query, call list_tables() to understand available tables and their schemas. Never assume a table exists. 2) PLAN: Tell the user what you're going to query and why. Example: 'Let me check the orders table for your last 30 days of purchases.' 3) QUERY EFFICIENTLY: Use query_table() with specific WHERE clauses. Never SELECT * without a LIMIT. Start with COUNT queries to gauge result size before pulling data. 4) PRESENT CLEARLY: Transform raw results into readable format. Tables for comparisons. Lists for sequences. Summary sentences for aggregates. Never dump raw JSON to the user. 5) INTERPRET: Don't just show numbers -- explain what they mean. 'Your support tickets increased 40% this month, primarily driven by billing questions (23 of 35 new tickets).' 6) SUGGEST: After presenting data, suggest logical follow-up queries. 'Would you like to see which specific billing issues are most common?' ERROR HANDLING: If a query fails, check the schema first -- the column name might be different than expected. Suggest corrections based on the actual schema.",
+      "successMessage": "MCP prompts guide the AI's behavior with your specific tools. This turns a generic model into a skilled database analyst."
     }
   ],
   "connecting-to-claude": [
     {
       "id": "mcp-7-1",
       "type": "freeform",
-      "instruction": "Step by step: connect your MCP server to Claude Desktop. Config file location, JSON structure, verification.",
-      "placeholder": "Step 1: ...",
+      "instruction": "Write step-by-step instructions to connect an MCP server to Claude Desktop. Include: config file location, JSON structure, environment variables, and how to verify it worked.",
+      "placeholder": "Step 1: Find config file at...\nStep 2: Add server entry...\nStep 3: Verify...",
+      "hint": "Config: ~/Library/Application Support/Claude/claude_desktop_config.json (macOS). JSON: { \"mcpServers\": { \"server-name\": { \"command\": \"node\", \"args\": [\"/path/to/server.js\"], \"env\": {} }}}. Restart Claude Desktop. Verify: tools icon appears, test a tool call.",
       "criteria": {
-        "keywords": [
-          "config",
-          "claude_desktop_config",
-          "mcpServers",
-          "command",
-          "args",
-          "restart"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["config", "claude_desktop_config", "mcpServers", "command", "args", "restart"]
       },
-      "successMessage": "Config is where most people get stuck. You've got it."
+      "badExample": "Edit the config file and restart Claude.",
+      "goodExample": "Step 1: LOCATE CONFIG. macOS: ~/Library/Application Support/Claude/claude_desktop_config.json. Windows: %APPDATA%\\Claude\\claude_desktop_config.json. If the file doesn't exist, create it. Step 2: ADD SERVER ENTRY. The JSON structure: { \"mcpServers\": { \"my-server\": { \"command\": \"node\", \"args\": [\"/Users/me/my-mcp-server/dist/index.js\"], \"env\": { \"API_KEY\": \"sk-abc123\" } } } }. Important: use ABSOLUTE paths in args, not relative. The 'command' is what runs the server (node, python, npx, etc.). Step 3: RESTART CLAUDE DESKTOP completely -- Cmd+Q on macOS, not just close the window. Claude only reads the config on startup. Step 4: VERIFY CONNECTION. Open a new conversation. Look for the tools/hammer icon in the input area -- it should show your server's tools. Ask Claude to use one of your tools ('What's the weather in NYC?' if you built a weather server). Step 5: DEBUG IF NEEDED. Check logs at: ~/Library/Logs/Claude/mcp-server-my-server.log. Common issues: JSON syntax error in config (use a JSON validator), wrong path to server file, missing env variable that the server needs at startup, or the server binary not having execute permissions.",
+      "successMessage": "Config is where most people get stuck. Absolute paths, correct JSON, full restart, and checking logs -- that's the troubleshooting checklist."
+    },
+    {
+      "id": "mcp-7-2",
+      "type": "debug",
+      "instruction": "Claude Desktop shows the MCP tools but every tool call fails with 'server disconnected.' The server works when you run it manually in the terminal. What are 3 likely causes?",
+      "placeholder": "Cause 1: ...\nCause 2: ...\nCause 3: ...",
+      "hint": "1) Environment variables -- running manually you have your shell env, but Claude Desktop launches the server with only the env vars specified in config. 2) Working directory -- the server might depend on relative file paths that work from your project dir but not from Claude's launch context. 3) Node version -- Claude might use a different node than your terminal's nvm/fnm setup.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["environment", "variable", "path", "node", "config", "disconnect"]
+      },
+      "badExample": "The server is buggy.",
+      "goodExample": "Cause 1: MISSING ENVIRONMENT VARIABLES. When you run in terminal, your shell profile loads all env vars (API keys, PATH additions). Claude Desktop launches the server as a child process with ONLY the env vars in the config file. If your server needs WEATHER_API_KEY and it's in your .zshrc but not in the MCP config, the server crashes on startup. Fix: add all required env vars explicitly to the config's 'env' section. Cause 2: WRONG NODE/PYTHON VERSION. Your terminal uses nvm/fnm and runs Node 20, but the 'node' in Claude's PATH might be Node 16 (system default) which doesn't support features your server uses. Fix: use the absolute path to the correct node binary: \"/Users/me/.nvm/versions/node/v20.11.0/bin/node\" instead of just \"node\". Cause 3: RELATIVE PATH DEPENDENCIES. Your server reads a config file with './config.json' or imports a local module. When run from terminal in your project directory, it works. When Claude launches it, the working directory is different, so relative paths resolve to the wrong location. Fix: use absolute paths for all file operations, or set the cwd by using a wrapper script that cd's to the project directory first.",
+      "successMessage": "Environment, paths, and versions -- the invisible differences between 'works in my terminal' and 'works in Claude Desktop.' These three explain 95% of 'server disconnected' errors."
     }
   ],
   "real-world-servers": [
     {
       "id": "mcp-8-1",
       "type": "freeform",
-      "instruction": "Design an MCP server for your specific use case. 5 tools, external services it connects to, one example interaction.",
-      "placeholder": "Server name: ... Purpose: ...",
+      "instruction": "Design a real-world MCP server for a specific use case you care about. Include: 5 tools, external services it connects to, and one example interaction showing the AI using multiple tools in sequence.",
+      "placeholder": "Server: ...\nPurpose: ...\nConnects to: ...\nTools: ...\nExample interaction: ...",
+      "hint": "Example: DevOps MCP server. Connects to: GitHub, AWS, PagerDuty. Tools: check_deployment_status, rollback_deploy, view_logs, create_incident, list_recent_deploys. Interaction: 'Is production healthy?' -> check_deployment_status -> view_logs (sees errors) -> create_incident -> reports to user.",
       "criteria": {
-        "keywords": [
-          "server",
-          "tool",
-          "connect",
-          "API",
-          "use case",
-          "example",
-          "return"
-        ],
-        "minLength": 70
+        "minLength": 70,
+        "keywords": ["server", "tool", "connect", "API", "use case", "example"]
       },
-      "successMessage": "Build something you actually need. That's the best way to learn."
+      "badExample": "A server that does useful things with APIs.",
+      "goodExample": "Server: content-pipeline-server. Purpose: Manages an AI content creation pipeline from research to publication. Connects to: WordPress API, Ahrefs SEO API, Google Analytics, Buffer (social scheduling), Claude API (for content generation). Tools: 1) research_topic(keyword, competitors?) -- calls Ahrefs for search volume, keyword difficulty, top-ranking content analysis. Returns topic opportunity score. 2) generate_draft(topic, outline, word_count, tone) -- calls Claude API to produce a blog post draft following the content template. 3) seo_optimize(draft_text, target_keyword) -- analyzes draft against SEO best practices, suggests improvements for keyword placement, meta description, and heading structure. 4) publish_post(title, content, category, tags, schedule_date?) -- publishes or schedules on WordPress with proper formatting and featured image placeholder. 5) distribute_social(post_url, platforms[]) -- creates platform-native social posts via Buffer for Twitter, LinkedIn, etc. Example interaction: User: 'Create a blog post about MCP servers for beginners.' Step 1: research_topic('MCP servers tutorial') -> 'Search volume: 2,400/mo, difficulty: 23, opportunity: HIGH.' Step 2: AI generates outline based on research. Step 3: generate_draft(topic, outline, 1500, 'educational') -> returns draft. Step 4: seo_optimize(draft, 'MCP servers') -> suggests adding keyword to H2, improving meta description. Step 5: AI applies suggestions. Step 6: publish_post('Getting Started with MCP Servers', optimized_draft, 'Tutorials', ['MCP', 'AI'], 'next Tuesday 8am'). Step 7: distribute_social(post_url, ['twitter', 'linkedin']). User sees: 'Done! Post scheduled for Tuesday 8am. Social posts queued for Tuesday 10am and Wednesday 9am.'",
+      "successMessage": "A complete real-world MCP server design! This is exactly the kind of multi-service orchestration where MCP shines."
+    },
+    {
+      "id": "mcp-8-2",
+      "type": "analyze",
+      "instruction": "Compare building an MCP server vs. building a traditional API integration for connecting Claude to your company's internal tools. When is MCP better? When is a direct API integration better?",
+      "placeholder": "MCP better when: ...\nDirect API better when: ...",
+      "hint": "MCP better: multiple AI clients need access, tools are interactive (model decides when to call), rapid prototyping. Direct API better: high-throughput batch processing, when you need request-level auth/billing, when AI isn't the primary consumer.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["MCP", "API", "better", "when", "integration", "server", "client"]
+      },
+      "badExample": "MCP is always better because it's newer.",
+      "goodExample": "MCP IS BETTER WHEN: 1) Multiple AI clients need access -- one MCP server works with Claude Desktop, Cursor, VS Code Copilot, and custom apps. Building separate integrations for each would be 4x the work. 2) Interactive tool use -- the AI model needs to discover tools, decide when to use them, and chain multiple calls together. MCP's tool discovery and schema system is designed for this. 3) Rapid prototyping -- you can build an MCP server in an hour and connect it to Claude Desktop. No API gateway, no auth system, no deployment pipeline needed for local development. 4) End-user customization -- users can add/remove MCP servers from their client without code changes. DIRECT API IS BETTER WHEN: 1) High-throughput processing -- if you're sending 10,000 documents through a pipeline, you want direct API calls with batching and async processing, not interactive tool calling. 2) Non-AI consumers -- if your frontend, mobile app, and other backend services also need this data, build a proper API that serves everyone. MCP is specifically for AI<->tool communication. 3) Fine-grained auth/billing -- if you need per-request authentication, rate limiting per user, and usage-based billing, a traditional API with middleware is better equipped. 4) Production reliability at scale -- MCP is newer, the ecosystem is still maturing. For mission-critical production systems serving millions of requests, battle-tested REST/GraphQL APIs have more tooling for monitoring, caching, and load balancing.",
+      "successMessage": "Not every problem needs MCP, and not every problem needs a custom API. Choosing the right tool for the context is engineering maturity."
     }
   ],
   "security-and-best-practices": [
     {
       "id": "mcp-9-1",
       "type": "freeform",
-      "instruction": "List 5 MCP server security best practices. For each: the risk it prevents and a concrete implementation example.",
-      "placeholder": "Practice 1: ... Risk: ...",
+      "instruction": "List 5 security best practices for MCP servers. For each: the specific risk it prevents and a concrete implementation example.",
+      "placeholder": "Practice 1: ...\n  Risk: ...\n  Implementation: ...",
+      "hint": "1) Input validation -- prevents injection attacks. Sanitize all tool parameters. 2) Least privilege -- server only has permissions it needs. 3) Rate limiting -- prevents runaway AI loops from overwhelming external services. 4) Secret management -- API keys in env vars, never in code. 5) Audit logging -- track every tool call for debugging and compliance.",
       "criteria": {
-        "keywords": [
-          "auth",
-          "validate",
-          "input",
-          "secret",
-          "rate limit",
-          "log",
-          "permission"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["auth", "validate", "input", "secret", "rate limit", "log", "permission"]
       },
-      "successMessage": "Security-first MCP development. Safe to deploy."
+      "badExample": "Keep things secure and validate inputs.",
+      "goodExample": "1) INPUT VALIDATION: Risk: prompt injection -- a user tricks the AI into passing malicious parameters to a tool (e.g., SQL injection through a query tool). Implementation: validate every tool parameter against its schema before execution. For database tools, use parameterized queries, never string interpolation. Reject inputs that contain suspicious patterns (DROP, DELETE, script tags). 2) LEAST PRIVILEGE: Risk: an MCP server with admin database access could delete tables if the AI makes a mistake. Implementation: create a dedicated database user for the MCP server with only SELECT and INSERT on specific tables. Never use root/admin credentials. If the server only reads data, it should have read-only access. 3) RATE LIMITING: Risk: an AI in a reasoning loop calls your tool 1,000 times in 60 seconds, burning through API quotas or overwhelming a service. Implementation: add a per-tool rate limiter (e.g., max 30 calls/minute for external API tools). Return a clear error when the limit is hit so the AI knows to wait. 4) SECRET MANAGEMENT: Risk: API keys hardcoded in server source code get committed to GitHub and leaked. Implementation: all secrets via environment variables, loaded from the MCP config's 'env' section or a .env file (gitignored). Never log the values of env vars. Rotate keys quarterly. 5) AUDIT LOGGING: Risk: you can't debug what happened or detect abuse without a record of tool calls. Implementation: log every tool invocation with: timestamp, tool name, input parameters (sanitized -- no passwords), execution time, and result status (success/error). Store in a tamper-resistant log. Review weekly for anomalies (unusual call volume, failed auth attempts, unexpected parameter patterns).",
+      "successMessage": "Security-first MCP development. These 5 practices prevent the most common attack vectors and make your servers safe to deploy."
+    },
+    {
+      "id": "mcp-9-2",
+      "type": "analyze",
+      "instruction": "An MCP server gives Claude access to a company database. Analyze the security implications if: the AI can run arbitrary SQL queries, there's no rate limit, and results are shown directly to users.",
+      "placeholder": "Risk 1: ...\nRisk 2: ...\nMitigation: ...",
+      "hint": "Risks: 1) Data exfiltration -- AI could query sensitive tables (salaries, PII) if asked by a clever user. 2) Data modification -- SQL can INSERT, UPDATE, DELETE. 3) Resource exhaustion -- SELECT * on a billion-row table. 4) PII exposure -- query results shown to users might contain data they shouldn't see.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["SQL", "data", "risk", "sensitive", "PII", "limit", "access"]
+      },
+      "badExample": "It's risky but most users won't do anything bad.",
+      "goodExample": "RISK ANALYSIS -- unrestricted database MCP server: Risk 1 -- DATA EXFILTRATION: A user asks 'Show me all employee salaries' or 'What's the CEO's home address?' The AI dutifully queries the database and returns sensitive data. Even well-intentioned queries might accidentally surface PII. Mitigation: restrict the query tool to specific tables (whitelist). Block queries against sensitive tables (employees, financial, PII). Risk 2 -- DATA DESTRUCTION: Arbitrary SQL means INSERT, UPDATE, DELETE, DROP TABLE all work. The AI might 'helpfully' fix data by running an UPDATE, or a prompt injection attack could trick it into dropping tables. Mitigation: read-only database user. Period. If writes are needed, create separate write tools with specific parameters (update_order_status, not run_sql). Risk 3 -- RESOURCE EXHAUSTION: No rate limit means the AI could run SELECT * FROM billion_row_table, or enter a loop running complex JOINs every second, overwhelming the database and causing production outages. Mitigation: enforce LIMIT on all queries (max 100 rows), add query timeout (5 seconds max), rate limit to 10 queries/minute. Risk 4 -- UNAUTHORIZED DATA ACCESS: Even with table restrictions, query results shown directly to users might include columns they shouldn't see. A marketing intern asking about customer orders shouldn't see payment methods. Mitigation: column-level filtering based on user role. The MCP server checks who's asking and strips sensitive columns from results before returning them.",
+      "successMessage": "Every tool you give an AI is a potential attack surface. The principle: minimize access, validate everything, and assume the worst about inputs."
     }
   ],
   "mcp-quiz": [
     {
       "id": "mcp-10-1",
       "type": "prompt",
-      "instruction": "A founder asks: 'Why should I care about MCP? We already have APIs.' Write a 3-sentence pitch.",
+      "instruction": "Write a 3-sentence pitch for MCP to a non-technical CEO who asks 'Why should my company invest in MCP?'",
       "placeholder": "MCP matters because...",
+      "hint": "Focus on business value: reduced integration cost, future-proofing AI investments, and enabling employees to use AI with company tools. No jargon.",
       "criteria": {
-        "keywords": [
-          "standard",
-          "connect",
-          "AI",
-          "tool",
-          "any",
-          "once",
-          "protocol"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["standard", "connect", "AI", "tool", "invest", "cost"]
       },
-      "successMessage": "3-sentence MCP pitch. Ready to advocate."
+      "badExample": "MCP is a protocol that standardizes tool communication for large language models.",
+      "goodExample": "Right now, every time we want our AI tools to work with a new business system -- Salesforce, Jira, our database -- our engineers spend weeks building a custom integration that only works with one AI provider. MCP is an open standard that makes any AI work with any tool through one universal connection, like how USB made one cable work with every device. Investing in MCP servers for our internal tools means every AI assistant our team uses -- today and in the future -- can instantly access company data and take real actions, cutting our integration costs by 80%.",
+      "successMessage": "Business value in plain language. No jargon, just cost savings and future-proofing. That's how you get MCP buy-in."
+    },
+    {
+      "id": "mcp-10-2",
+      "type": "freeform",
+      "instruction": "Describe the 3 most important things you learned about MCP in this course. For each, explain why it matters and how you'll apply it.",
+      "placeholder": "1. ... Why it matters: ... How I'll apply it: ...",
+      "hint": "1) Architecture: client/server/tool separation enables modularity. 2) Tool descriptions matter more than tool code -- the AI only sees descriptions. 3) Security must be designed in from day one, not added later.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["learn", "MCP", "server", "tool", "matter", "apply", "build"]
+      },
+      "badExample": "MCP is cool and useful for connecting AI to tools.",
+      "goodExample": "1) TOOL DESCRIPTIONS ARE THE PRODUCT. The AI model never sees your server code -- it only sees tool names, descriptions, and input schemas. A perfectly coded tool with a vague description will be misused constantly. I'll apply this by writing descriptions that explain WHEN to use the tool, WHEN NOT to, and giving parameter examples. I'll test descriptions by observing how well the model selects the right tool. 2) ONE SERVER PER DOMAIN. Cramming everything into one server creates a fragile monolith. Separate servers for separate services gives independent failure domains, independent auth, and cleaner tool selection. I'll apply this by splitting my planned 'do everything' server into 3 focused servers: database, email, and calendar. 3) SECURITY IS ARCHITECTURE, NOT AN ADD-ON. Every tool you expose to an AI is an attack surface. Read-only by default, input validation on everything, rate limits everywhere. I'll apply this by starting every new server with a security checklist before writing a single tool handler: what's the minimum permission needed? What inputs could be abused? What happens if the AI calls this tool 1000 times?",
+      "successMessage": "Descriptions, modularity, and security -- the three pillars of production MCP development. You're ready to build real servers."
     }
   ]
 }

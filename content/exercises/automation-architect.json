@@ -1,197 +1,273 @@
 {
   "what-is-an-api": [
     {
-      "id": "aa-1-1",
+      "id": "auto-1-1",
       "type": "prompt",
-      "instruction": "Explain what an API is to a non-technical coworker. Use a real-world analogy.",
+      "instruction": "Explain what an API is to a non-technical coworker using a real-world analogy. Include what requests and responses are.",
       "placeholder": "An API is like...",
-      "hint": "An API is like a drive-through window. You pull up, read the menu (documentation), place your order (request), and get your food (response) without stepping inside.",
+      "hint": "An API is like a waiter at a restaurant. You (the app) tell the waiter (API) what you want from the menu. The waiter takes your order to the kitchen (server), and brings back your food (response). You never go into the kitchen yourself.",
       "criteria": {
-        "keywords": [
-          "like",
-          "send",
-          "receive",
-          "request",
-          "data",
-          "connect"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["like", "request", "response", "send", "data", "connect"]
       },
-      "badExample": "An API connects things",
-      "goodExample": "An API is like a drive-through window. You pull up, read the menu (documentation), place your order into the speaker (send a request), and get your food (response) without ever stepping inside the kitchen.",
+      "badExample": "An API connects things together on the internet.",
+      "goodExample": "An API is like a drive-through window. You pull up, read the menu (documentation), place your order into the speaker (send a request with specific parameters), and get your food (structured response) without ever stepping inside the kitchen. The drive-through enforces rules: you can only order what's on the menu, and you have to ask in a way the system understands.",
       "successMessage": "Great analogy! Making APIs tangible is a superpower for cross-team communication."
-    }
-  ],
-  "triggers-and-actions": [
+    },
     {
-      "id": "aa-2-1",
-      "type": "prompt",
-      "instruction": "Design a trigger-action automation for a real business scenario. Specify the trigger event, conditions/filters, and resulting action(s).",
-      "placeholder": "When [trigger], if [condition], then [action]...",
-      "hint": "When a new lead fills out the contact form (trigger), if company size is 50+ (filter), then: add to CRM as Enterprise Lead, send welcome email, notify sales in Slack.",
+      "id": "auto-1-2",
+      "type": "analyze",
+      "instruction": "Look at this API endpoint and explain what it does, what method it uses, and what data you'd expect back: GET https://api.weather.com/v1/forecast?city=london&days=5",
+      "placeholder": "This API call is doing...",
+      "hint": "This is a GET request to a weather API. It's asking for a 5-day forecast for London. The query parameters (city=london, days=5) filter the request. You'd expect back JSON with an array of 5 day objects, each containing temperature, conditions, and humidity.",
       "criteria": {
-        "keywords": [
-          "when",
-          "then",
-          "if",
-          "trigger",
-          "action",
-          "send",
-          "create",
-          "notify"
-        ],
-        "minLength": 50
+        "minLength": 40,
+        "keywords": ["GET", "weather", "forecast", "parameter", "JSON", "response"]
       },
-      "successMessage": "Solid automation design! The condition/filter step separates noisy automations from useful ones."
-    }
-  ],
-  "your-first-automation": [
-    {
-      "id": "aa-3-1",
-      "type": "freeform",
-      "instruction": "Describe step-by-step how you'd build an automation that saves email attachments to cloud storage and notifies your team. Include tools.",
-      "placeholder": "Step 1: ...",
-      "hint": "Step 1: Gmail trigger in Make.com. Step 2: Download attachment. Step 3: Upload to Google Drive. Step 4: Slack notification with file link.",
-      "criteria": {
-        "keywords": [
-          "step",
-          "trigger",
-          "email",
-          "save",
-          "notify",
-          "tool",
-          "connect"
-        ],
-        "minLength": 60
-      },
-      "successMessage": "You just designed a real automation! This pattern saves teams hours every week."
-    }
-  ],
-  "smart-routing": [
-    {
-      "id": "aa-4-1",
-      "type": "prompt",
-      "instruction": "Design a smart routing system for incoming customer support tickets. Define at least 3 routes based on urgency, topic, or customer tier.",
-      "placeholder": "Route 1: If... then assign to...",
-      "criteria": {
-        "keywords": [
-          "if",
-          "route",
-          "assign",
-          "tier",
-          "priority",
-          "team",
-          "queue"
-        ],
-        "minLength": 60
-      },
-      "successMessage": "Smart routing eliminates the manual triage bottleneck."
-    }
-  ],
-  "build-ai-workflow": [
-    {
-      "id": "aa-5-1",
-      "type": "prompt",
-      "instruction": "Design an AI-powered workflow that takes raw customer feedback and produces an actionable insights report. Include each step.",
-      "placeholder": "Step 1: Collect feedback from...",
-      "criteria": {
-        "keywords": [
-          "AI",
-          "feedback",
-          "classify",
-          "analyze",
-          "report",
-          "automate",
-          "step"
-        ],
-        "minLength": 80
-      },
-      "successMessage": "This is a production-grade AI workflow. You're thinking like an automation architect."
+      "badExample": "It gets weather data.",
+      "goodExample": "This is a GET request to the weather.com API's forecast endpoint. The query parameters specify city=london and days=5, asking for a 5-day forecast. The expected response would be JSON containing an array of daily forecast objects with fields like temperature, conditions, precipitation chance, and wind speed. GET means we're only reading data, not creating or changing anything.",
+      "successMessage": "Being able to read API URLs and predict responses is a core automation skill."
     }
   ],
   "api-playground": [
     {
-      "id": "aa-6-1",
+      "id": "auto-2-1",
       "type": "prompt",
-      "instruction": "Write a prompt asking Claude to generate a curl command that calls a weather API for your city. Include the endpoint structure.",
-      "placeholder": "Generate a curl command that...",
+      "instruction": "Write a prompt asking Claude to help you construct an API request to get your latest 10 GitHub repositories sorted by most recently updated.",
+      "placeholder": "Help me build a request to the GitHub API...",
+      "hint": "Help me construct a GET request to the GitHub API to fetch my 10 most recently updated repositories. I need: the full URL with query parameters, required headers including authentication, and an example of what the JSON response body would look like.",
       "criteria": {
-        "keywords": [
-          "curl",
-          "API",
-          "endpoint",
-          "response",
-          "key",
-          "request"
-        ],
-        "minLength": 40
+        "minLength": 30,
+        "keywords": ["GitHub", "API", "repository", "request", "header", "sort"]
       },
-      "successMessage": "APIs stop being scary once you've written your first curl command."
+      "badExample": "How do I use the GitHub API?",
+      "goodExample": "I want to call the GitHub REST API to list my repositories. Build me the full GET request URL for https://api.github.com/users/myuser/repos with parameters to sort by 'updated', direction 'desc', and per_page=10. Show me the required headers (Accept, Authorization) and an example JSON response with the key fields I'd get back.",
+      "successMessage": "You're thinking like an API developer! Specifying endpoint, method, parameters, and headers is exactly how to plan API calls."
+    },
+    {
+      "id": "auto-2-2",
+      "type": "debug",
+      "instruction": "This API call is failing with a 401 error. What's wrong and how would you fix it?\n\ncurl https://api.openai.com/v1/chat/completions -H 'Content-Type: application/json' -d '{\"model\": \"gpt-4\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'",
+      "placeholder": "The problem is...",
+      "hint": "A 401 error means 'Unauthorized' -- the request is missing authentication. The curl command has no Authorization header. Fix: add -H 'Authorization: Bearer YOUR_API_KEY'.",
+      "criteria": {
+        "minLength": 30,
+        "keywords": ["401", "authorization", "authentication", "header", "API key", "missing"]
+      },
+      "badExample": "The API is broken.",
+      "goodExample": "The 401 status code means Unauthorized -- the request is missing authentication credentials. The curl command doesn't include an Authorization header. Fix: add '-H \"Authorization: Bearer sk-your-api-key\"' to the request. The OpenAI API requires a valid API key in every request. Always check for auth headers first when you see 401 errors.",
+      "successMessage": "401 = missing or invalid auth. This is the most common API error beginners hit. You'll debug these in your sleep soon!"
     }
   ],
-  "workflow-quiz": [
+  "triggers-and-actions": [
     {
-      "id": "aa-7-1",
-      "type": "freeform",
-      "instruction": "A client's automation breaks every Monday morning. Emails stop forwarding to their CRM. List 3 possible causes and how you'd investigate each.",
-      "placeholder": "Possible cause 1: ...",
+      "id": "auto-3-1",
+      "type": "prompt",
+      "instruction": "Design an automation with a clear trigger and 3 sequential actions for a small business that receives customer orders via email.",
+      "placeholder": "Trigger: When... Action 1: ... Action 2: ... Action 3: ...",
+      "hint": "Trigger: When a new email arrives with subject containing 'New Order'. Action 1: Extract order details from the email body using AI parsing. Action 2: Add a new row to the Google Sheet 'Orders' with extracted data plus timestamp. Action 3: Send a confirmation email to the customer with their order number.",
       "criteria": {
-        "keywords": [
-          "token",
-          "limit",
-          "schedule",
-          "error",
-          "log",
-          "check",
-          "rate",
-          "expired"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["trigger", "when", "action", "then", "email", "automat"]
       },
-      "successMessage": "Systematic debugging is the difference between an automation user and an automation architect."
+      "badExample": "When something happens, do stuff with the email.",
+      "goodExample": "Trigger: A new email lands in orders@mybusiness.com with 'Purchase' in the subject. Action 1: Parse the email with Claude to extract customer name, items ordered, shipping address, and total amount. Action 2: Create a new record in Airtable with all extracted fields plus a generated order ID. Action 3: Send a personalized Slack message to #fulfillment with the order summary so the team can start packing.",
+      "successMessage": "That's a real automation! Trigger, Parse, Store, Notify is one of the most powerful patterns in business automation."
+    },
+    {
+      "id": "auto-3-2",
+      "type": "freeform",
+      "instruction": "List 5 different types of triggers you could use to start automations in your daily life or work. For each, describe what event starts it and what it could automate.",
+      "placeholder": "1. Time-based trigger: Every Monday at 9am...\n2. Event trigger: When...",
+      "hint": "1. Time-based: Every Friday at 5pm, generate a weekly task summary and email it to my manager. 2. Webhook: When Stripe receives a payment, update the customer record. 3. File trigger: When a new PDF appears in Dropbox/Invoices, extract the amount with AI. 4. Form submission: When someone fills out the contact form, create a CRM lead. 5. Threshold: When server CPU exceeds 80%, send a PagerDuty alert.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["when", "trigger", "time", "event", "new", "automat"]
+      },
+      "badExample": "1. When something happens do something. 2. Timer. 3. Email.",
+      "goodExample": "1. Schedule trigger: Every morning at 7am, pull my calendar events, weather forecast, and top 3 tasks, then send a daily briefing. 2. Email trigger: When I receive an invoice attachment, extract vendor, amount, due date with AI. 3. Webhook trigger: When a customer cancels in Stripe, log the reason and alert retention team. 4. RSS trigger: When a competitor publishes a new blog post, summarize it with AI and post to Slack. 5. Sensor trigger: When my thermostat detects nobody home for 30 minutes, lower temperature.",
+      "successMessage": "Great trigger variety! Automations start from events, and events are everywhere -- time, data changes, user actions, external signals."
     }
   ],
-  "automation-quiz": [
+  "your-first-automation": [
     {
-      "id": "aa-8-1",
+      "id": "auto-4-1",
       "type": "freeform",
-      "instruction": "You're building an automation suite for a 20-person marketing team. They need social scheduling, lead capture, email sequences, and reporting. Outline the architecture.",
-      "placeholder": "Architecture overview: ...",
+      "instruction": "Write a step-by-step plan for your first automation. Pick a repetitive task you do weekly, and describe the trigger, each action step, and what tools you'd connect.",
+      "placeholder": "My automation plan:\nTask I want to automate: ...\nTrigger: ...\nStep 1: ...",
+      "hint": "Task: Every week I manually check 5 competitor websites for pricing changes. Trigger: Every Monday at 8am. Step 1: Scrape pricing pages from 5 URLs. Step 2: Send content to Claude API to compare vs. last week's stored prices. Step 3: If changes found, post summary to Slack. Step 4: Update stored prices in Google Sheet.",
       "criteria": {
-        "keywords": [
-          "connect",
-          "trigger",
-          "AI",
-          "data",
-          "flow",
-          "tool",
-          "integrate",
-          "automate"
-        ],
-        "minLength": 80
+        "minLength": 60,
+        "keywords": ["trigger", "step", "tool", "connect", "automat", "every", "when"]
       },
-      "successMessage": "You're thinking at the systems level now. This is the architect mindset."
+      "badExample": "I want to automate my emails somehow.",
+      "goodExample": "Task: Every week I manually compile social media metrics into a report. Trigger: Every Friday at 4pm. Step 1: Call Twitter, Instagram, and LinkedIn APIs for this week's stats. Step 2: Send raw data to Claude API to generate a narrative summary comparing this week vs. last. Step 3: Format the summary into a Google Doc using our report template. Step 4: Email the report link to the marketing team. Tools: Make.com for orchestration, Claude API for analysis, Google Workspace APIs for output.",
+      "successMessage": "You just designed a real automation! The pattern is always: Trigger, Gather, Process, Output. Now go build it."
+    },
+    {
+      "id": "auto-4-2",
+      "type": "analyze",
+      "instruction": "This automation runs but produces poor results. Identify what's wrong and how to fix it:\n\nTrigger: New email received -> Action 1: Forward entire email to Claude API -> Action 2: Post Claude's response directly to Slack #general",
+      "placeholder": "The problems are...",
+      "hint": "Problems: 1) No filtering -- EVERY email triggers this, including spam. 2) No prompt engineering -- sending raw email with no instructions means unpredictable output. 3) Posting raw AI output to #general with no review is risky. 4) No error handling if Claude API is down.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["filter", "prompt", "review", "error", "spam", "instruction"]
+      },
+      "badExample": "It seems fine to me, maybe just needs better AI.",
+      "goodExample": "Three critical problems: 1) No trigger filter -- every email (spam, newsletters, personal) fires this. Fix: add conditions like 'from: @company.com' and 'subject contains: action required'. 2) No prompt context -- dumping raw email into Claude without instructions produces random output. Fix: add a system prompt like 'Extract the key action item in one sentence. If no action needed, respond SKIP.' 3) No output validation -- posting directly to #general risks sensitive data. Fix: post to a private #automation-review channel, or add a skip condition.",
+      "successMessage": "Sharp eye! Unfiltered triggers, unprompted AI, and unreviewed outputs are the three sins of bad automation."
+    }
+  ],
+  "build-ai-workflow": [
+    {
+      "id": "auto-5-1",
+      "type": "prompt",
+      "instruction": "Design an AI-powered workflow that takes a customer support email and produces a draft response, a priority level, and a CRM update. Describe each step.",
+      "placeholder": "Step 1: Receive the support email...\nStep 2: ...",
+      "hint": "Step 1: Trigger on new email to support@. Step 2: Send to Claude for classification (P1-P4, category, sentiment). Step 3: Send to Claude for draft response. Step 4: Update Salesforce CRM with case details. Step 5: If P1, alert #engineering-oncall in Slack.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["email", "classify", "priority", "response", "draft", "CRM", "update"]
+      },
+      "badExample": "Send the email to AI and let it figure it out.",
+      "goodExample": "Step 1: Email webhook triggers on new support message. Step 2: Preprocessing -- strip signatures and quoted text. Step 3: Classification -- send to Claude: 'Return JSON with priority (P1-P4), category (billing/technical/account), sentiment, and 1-line summary.' Step 4: Draft response -- send to Claude with classification context: 'Draft a response matching our brand voice.' Step 5: CRM update -- POST to Salesforce. Step 6: Routing -- P1 pages on-call, P2 posts to #bugs, P3-P4 queues for review.",
+      "successMessage": "That's a production-quality AI workflow! The key: decompose the AI work into focused steps with clear prompts for each."
+    },
+    {
+      "id": "auto-5-2",
+      "type": "rewrite",
+      "instruction": "This AI workflow step has a bad prompt. Rewrite the prompt to be specific and structured:\n\nStep: Send customer review to Claude with message 'analyze this review'",
+      "placeholder": "Rewrite the prompt to...",
+      "hint": "Analyze this product review and return a JSON object with: sentiment (positive/mixed/negative), star_rating_estimate (1-5), key_praise (array), key_complaints (array), suggested_response (2-sentence reply). Only use information from the review text.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["sentiment", "JSON", "specific", "return", "review"],
+        "mustNotInclude": ["analyze this review"]
+      },
+      "badExample": "Look at this review and tell me about it.",
+      "goodExample": "You are a customer insights analyst. Analyze the following product review and return structured JSON with: 'sentiment' (positive/mixed/negative), 'rating_estimate' (1-5), 'themes' (array of topics like 'shipping', 'quality'), 'action_items' (concrete improvements suggested), 'urgency' (low/medium/high), 'draft_reply' (warm 2-sentence public response). Do not infer details not stated in the review.",
+      "successMessage": "Structured output format + clear constraints = consistent, useful results. That's production-grade prompting."
+    }
+  ],
+  "smart-routing": [
+    {
+      "id": "auto-6-1",
+      "type": "prompt",
+      "instruction": "Design a smart routing system that receives incoming requests and routes them to different workflows based on content. Define at least 4 routes with clear conditions.",
+      "placeholder": "Input: incoming request\nRoute 1: If... then...\nRoute 2: If... then...",
+      "hint": "Route 1: If billing keywords found -> Billing workflow. Route 2: If technical keywords found -> Tech support. Route 3: If non-English language detected -> Translation pipeline. Route 4: If very negative sentiment detected by AI -> Priority escalation.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["route", "if", "condition", "send", "workflow", "detect"]
+      },
+      "badExample": "Route things to the right place based on what they say.",
+      "goodExample": "Smart Email Router: Route 1: If subject contains 'invoice' OR sender matches accounts payable list -> Finance workflow (extract invoice data, match to PO, queue for approval). Route 2: If attachment is .pdf/.docx AND sender in partners list -> Contract review (OCR extract, flag key terms, assign to legal). Route 3: If AI classifies as 'sales inquiry' with >80% confidence -> Sales pipeline (create CRM lead, assign territory rep). Route 4: If spam score >90% -> Archive silently. Default: General inbox with AI-suggested category tag.",
+      "successMessage": "Smart routing is the brain of any automation system. You've built the decision tree that makes workflows intelligent."
+    },
+    {
+      "id": "auto-6-2",
+      "type": "freeform",
+      "instruction": "Explain the difference between rule-based routing and AI-based routing. When would you use each? Give a specific example where rule-based fails but AI-based succeeds.",
+      "placeholder": "Rule-based routing uses... AI-based routing uses...",
+      "hint": "Rule-based uses exact matches and keywords. AI-based uses language understanding for intent and sentiment. Rules fail: 'I've been waiting three weeks and I'm done' -- no keyword matches 'urgent' or 'cancel', but AI detects high churn risk and routes to retention.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["rule", "AI", "keyword", "intent", "meaning", "fail"]
+      },
+      "badExample": "AI is better than rules because it's smarter.",
+      "goodExample": "Rule-based routing matches explicit patterns: keywords, regex, sender addresses. It's deterministic, fast, and free. Use it when categories are clear-cut. AI-based routing interprets meaning and tone. It costs more but handles ambiguity. Where rules fail: 'My daughter loved the toy but it broke on day two and now she's heartbroken.' Rules see 'loved' and route to positive feedback. AI detects the complaint and emotional urgency, routing to priority support. Best practice: use rules first as a fast filter, then AI for anything rules can't classify confidently.",
+      "successMessage": "The pro move: layer rules and AI together. Rules handle obvious cases cheaply, AI handles edge cases intelligently."
     }
   ],
   "api-quiz": [
     {
-      "id": "aa-9-1",
+      "id": "auto-7-1",
       "type": "prompt",
-      "instruction": "Write a prompt asking Claude to explain REST vs webhook-based integrations, with a practical example of when to use each.",
-      "placeholder": "Explain the difference between...",
+      "instruction": "Write a prompt asking Claude to quiz you on API concepts. Specify the difficulty level, number of questions, format, and topics to cover.",
+      "placeholder": "Create a quiz that...",
+      "hint": "Create a 5-question quiz on REST API fundamentals at intermediate difficulty. Cover: HTTP methods, status codes, authentication methods, request/response structure, and rate limiting. Format: multiple choice with 4 options. After I answer, explain why the correct answer is right.",
       "criteria": {
-        "keywords": [
-          "REST",
-          "webhook",
-          "pull",
-          "push",
-          "when",
-          "example",
-          "use"
-        ],
-        "minLength": 30
+        "minLength": 30,
+        "keywords": ["quiz", "question", "API", "HTTP", "format"]
       },
-      "successMessage": "Understanding REST vs webhooks is fundamental to designing efficient automations."
+      "badExample": "Quiz me on APIs.",
+      "goodExample": "Generate a 5-question API knowledge quiz. Difficulty: intermediate. Topics: 1) HTTP methods and when to use each, 2) Status codes, 3) Authentication (API keys vs OAuth), 4) Request headers and body formats, 5) Rate limiting. Format: scenario-based multiple choice with 4 options. Wait for my answer before revealing the explanation.",
+      "successMessage": "Specifying difficulty, topics, and format ensures the quiz tests what you need to learn."
+    },
+    {
+      "id": "auto-7-2",
+      "type": "analyze",
+      "instruction": "Analyze this API response and explain what happened, what the status code means, and what the developer should do next:\n\nHTTP/1.1 429 Too Many Requests\nRetry-After: 60\n{\"error\": \"rate_limit_exceeded\", \"message\": \"You've exceeded 100 requests per minute\"}",
+      "placeholder": "This response tells us...",
+      "hint": "Status 429 means the client hit the rate limit. Retry-After: 60 means wait 60 seconds. Developer should: implement exponential backoff, add rate limit tracking, consider batching or caching.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["429", "rate limit", "Retry-After", "wait", "backoff", "request"]
+      },
+      "badExample": "There's an error with the API.",
+      "goodExample": "The 429 status code means 'Too Many Requests' -- the application exceeded 100 requests per minute. The Retry-After: 60 header tells the client to wait 60 seconds. The developer should: 1) Implement exponential backoff -- wait 60s, then 120s if still throttled. 2) Add a request counter that throttles outgoing calls under 100/min. 3) Batch requests where possible. 4) Cache frequently-requested data.",
+      "successMessage": "Rate limiting is something every automation builder hits eventually. Understanding 429 and Retry-After is essential for reliable systems."
+    }
+  ],
+  "automation-quiz": [
+    {
+      "id": "auto-8-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to create a scenario-based automation challenge -- a business problem that you need to solve by designing a complete automation workflow.",
+      "placeholder": "Give me an automation challenge where...",
+      "hint": "Give me a realistic automation challenge for a small e-commerce business. Describe a specific manual pain point that takes 2+ hours per week. Then ask me to design the complete automation: trigger, steps, tools, error handling, and testing plan.",
+      "criteria": {
+        "minLength": 30,
+        "keywords": ["challenge", "scenario", "business", "automat", "design", "workflow"]
+      },
+      "badExample": "Give me an automation problem to solve.",
+      "goodExample": "Create a realistic automation design challenge. Scenario: a growing SaaS startup (20 employees) with a specific manual bottleneck. Describe the current workflow in detail. Challenge me to design an automation that: eliminates manual work, includes error handling, costs under $50/month in tools, and can be built in a weekend. Grade my solution on completeness, reliability, cost, and scalability.",
+      "successMessage": "Scenario-based learning is the fastest way to build automation skills. Real problems force you to think about edge cases."
+    },
+    {
+      "id": "auto-8-2",
+      "type": "rewrite",
+      "instruction": "This automation has no error handling. Add error handling to each step:\n\nTrigger: New form submission -> Step 1: Call Claude API to classify -> Step 2: Create Zendesk ticket -> Step 3: Send confirmation email",
+      "placeholder": "Step 1: Call Claude API... If it fails...\nStep 2: ...",
+      "hint": "Step 1: If API times out, retry once after 5 seconds. If retry fails, default-classify as 'General Inquiry' and log the failure. Step 2: If Zendesk fails, store ticket data in a fallback queue and alert ops on Slack. Step 3: If email fails, retry once, then log but don't block.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["retry", "fail", "error", "fallback", "log", "alert", "default"]
+      },
+      "badExample": "If something fails, try again.",
+      "goodExample": "Step 1: Call Claude API. Set 10-second timeout. On failure, retry once with 5s delay. On second failure, assign default 'General - Unclassified' with flag needs_manual_review. Log the error. Step 2: Create Zendesk ticket. Validate classification output first. On failure, write to fallback database and post to #ops-alerts: 'Ticket creation failed for submission {id}.' Step 3: Send confirmation email. Verify address format. On failure, retry once. On second failure, log and continue -- the ticket exists. Global: catch unhandled exceptions, log full details, send daily error digest.",
+      "successMessage": "Now THAT's production-ready! Retry, fallback, log, alert -- memorize that error handling pattern."
+    }
+  ],
+  "workflow-quiz": [
+    {
+      "id": "auto-9-1",
+      "type": "freeform",
+      "instruction": "A client's automation breaks every Monday morning. Emails stop forwarding to their CRM. List 3 possible causes and how you'd investigate each.",
+      "placeholder": "Possible cause 1: ...\nInvestigation: ...",
+      "hint": "1) API token expired over the weekend -- check token expiry dates and refresh logic. 2) Rate limit reset -- Monday morning email volume spikes past the limit -- check API logs for 429 errors. 3) Scheduled maintenance -- the CRM has a weekly maintenance window Sunday night -- check CRM status page.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["token", "limit", "schedule", "error", "log", "check", "expired"]
+      },
+      "badExample": "The server is probably down.",
+      "goodExample": "Cause 1: OAuth token expiration -- many tokens last 7 days and the automation was set up on a Monday. Investigation: check token creation date and refresh mechanism in the automation platform logs. Fix: implement automatic token refresh. Cause 2: Rate limiting from Monday morning email surge -- weekend emails queue up and flood the CRM API. Investigation: check for 429 responses in API logs. Fix: add request throttling or batch processing. Cause 3: CRM maintenance window -- scheduled Sunday night, service isn't fully restored by Monday 8am. Investigation: check CRM status page history and compare with error timestamps. Fix: add a startup delay or health check.",
+      "successMessage": "Systematic debugging is the difference between an automation user and an automation architect."
+    },
+    {
+      "id": "auto-9-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to evaluate an automation workflow you've designed. Include the workflow description and ask for specific feedback on reliability, scalability, and cost.",
+      "placeholder": "Here's my workflow... Please evaluate...",
+      "hint": "Here's my lead processing automation. When a form is submitted -> Claude classifies and scores -> high scores go to Salesforce -> low scores go to email nurture. Evaluate on: 1) What could break? 2) What happens at 1000 leads/day? 3) Estimated monthly cost. 4) What improvements am I missing?",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["evaluate", "workflow", "reliability", "cost", "improve"]
+      },
+      "badExample": "Is my automation good?",
+      "goodExample": "Evaluate this lead processing automation for a B2B SaaS company. Workflow: New HubSpot form -> Claude extracts company name, size, budget, urgency -> Lead scoring (1-100) based on weighted criteria -> Score 70+: create Salesforce opportunity, assign rep, send personalized email -> Score 30-69: enter 5-email drip -> Score <30: one-time resource email, archive. Evaluate: 1) What failure points exist? 2) Will this handle 500+ leads/day? 3) Estimated monthly cost at 200 leads/day? 4) What edge cases am I missing?",
+      "successMessage": "Asking for structured evaluation with specific criteria is how professionals refine systems."
     }
   ]
 }

@@ -25,6 +25,8 @@
         "minLength": 50,
         "keywords": ["could", "but", "because", "ethically", "wrong", "harm", "privacy", "trust", "right"]
       },
+      "badExample": "AI could do bad things because it's dangerous.",
+      "goodExample": "AI could technically analyze employees' Slack messages to predict who is likely to quit, but it would be ethically questionable because it violates reasonable expectations of workplace privacy, creates a surveillance culture that erodes trust, and could lead to preemptive discrimination against employees flagged as 'flight risks.'",
       "successMessage": "Drawing the line between 'can' and 'should' is the essence of AI ethics. Your reasoning shows real ethical thinking."
     }
   ],
@@ -86,6 +88,8 @@
         "keywords": ["checklist", "data", "share", "never", "safe", "rule", "before", "check", "sensitive", "approved"],
         "minLength": 40
       },
+      "badExample": "Make a list of data rules for AI",
+      "goodExample": "Create a 10-point data handling checklist for our sales team before they paste anything into an AI tool. Cover: data types never OK to share (Social Security numbers, credit card info, health records), how to anonymize customer data, when to use company-approved AI vs. free tools, and incident response if someone accidentally shares sensitive data. Make it practical — fit on one laminated card.",
       "successMessage": "A simple, practical checklist prevents data breaches better than a 50-page policy nobody reads. This protects your team and your customers."
     }
   ],
@@ -115,6 +119,8 @@
         "keywords": ["only", "don't make up", "don't invent", "provided", "facts", "placeholder", "verify", "hallucinate", "accurate", "real"],
         "minLength": 40
       },
+      "badExample": "Write a blog post about our company and make it accurate",
+      "goodExample": "Write a 200-word company blog post about our new recycling initiative. Here are the ONLY facts you may use: we reduced plastic waste by 30% in 2025, partnered with TerraCycle, and our goal is zero-waste packaging by 2028. Do NOT add any statistics, partner names, or claims I haven't provided. If you need a fact I haven't given you, write [NEED FACT] as a placeholder instead of inventing one.",
       "successMessage": "Constraining AI to ONLY the facts you provide is the most reliable way to prevent hallucination in content creation. The [NEED FACT] placeholder technique is especially powerful."
     }
   ],
@@ -144,6 +150,8 @@
         "minLength": 50,
         "keywords": ["required", "when", "disclose", "optional", "client", "published", "AI", "line"]
       },
+      "badExample": "I disclose AI when I feel like it.",
+      "goodExample": "In my work, AI disclosure is required when: AI generated any part of a client deliverable, AI analyzed data that informs a recommendation, or AI-generated content will be published under my name. Disclosure is optional when I use AI for internal brainstorming, personal research, or administrative tasks like email drafting that don't affect client outcomes.",
       "successMessage": "Having a clear personal policy on disclosure means you never have to make an awkward decision in the moment. Consistency builds trust."
     }
   ],
@@ -173,6 +181,8 @@
         "keywords": ["copyright", "own", "legal", "use", "rights", "generated", "commercial", "implications", "protect"],
         "minLength": 40
       },
+      "badExample": "Can I use AI content for my business?",
+      "goodExample": "I'm using AI to generate product descriptions for my e-commerce store (200 products). Walk me through the copyright considerations: Do I own these descriptions? Can a competitor use the same AI to generate identical copy? What if the AI inadvertently reproduces language from a competitor's site? What steps should I take to ensure my product descriptions are legally defensible?",
       "successMessage": "Understanding the copyright landscape of AI-generated content protects your business. The law is evolving — staying informed is your responsibility."
     }
   ],
@@ -235,6 +245,8 @@
         "minLength": 80,
         "keywords": ["believe", "impact", "society", "because", "example", "specific", "AI", "concern", "people"]
       },
+      "badExample": "AI is bad for society because it takes jobs.",
+      "goodExample": "I believe AI's impact on the digital divide is the most urgent societal concern. When AI-powered tools cost $20-50/month per user, knowledge workers in wealthy countries gain superpowers while workers in developing economies fall further behind. A specific example: an American freelance writer using AI can produce 5x more content than a Kenyan writer who can't afford the tools — widening the income gap despite equal talent.",
       "successMessage": "Forming articulate positions on AI's societal impact is how you move from passive user to responsible citizen. Your specific example grounded the argument powerfully."
     },
     {
@@ -247,6 +259,8 @@
         "keywords": ["both sides", "argument", "debate", "position", "for", "against", "consider", "perspective", "view"],
         "minLength": 45
       },
+      "badExample": "What do people think about AI art?",
+      "goodExample": "Present the strongest arguments on both sides of this debate: 'Should AI-generated art be eligible for copyright protection?' Steelman the YES position (creators direct AI with skill and intent, similar to a photographer directing a camera) and the NO position (no human hand created the output, protecting it devalues human artistry). Include real-world implications of each position for working artists. Don't pick a side — help me understand both.",
       "successMessage": "Understanding both sides of ethical debates makes your own position stronger and more nuanced. This is critical thinking in action."
     }
   ],

@@ -1,208 +1,302 @@
 {
   "01-ai-meets-project-management": [
     {
-      "id": "apm-1-1",
+      "id": "pm-1-1",
       "type": "prompt",
-      "instruction": "Write a prompt asking AI to identify which parts of your PM workflow could be automated. Be specific about your current process.",
-      "placeholder": "Here's my current PM workflow: ...",
+      "instruction": "Write a prompt asking AI to identify which parts of your current PM workflow could be automated. Be specific about your actual process, tools, and where you spend the most time.",
+      "placeholder": "Here's my current PM workflow. I spend most time on...",
+      "hint": "List your specific PM tasks with time estimates: status reports (3 hrs/week), meeting scheduling (2 hrs), risk tracking (1 hr), stakeholder updates (2 hrs). Ask AI to categorize each as: fully automatable, AI-assisted, or human-only. Be specific about your tools (Jira, Slack, Google Docs, etc.).",
       "criteria": {
-        "keywords": [
-          "workflow",
-          "automate",
-          "meeting",
-          "report",
-          "track",
-          "status",
-          "manual"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["workflow", "automate", "meeting", "report", "track", "status", "manual"]
       },
-      "successMessage": "Finding automation opportunities is step one of AI-powered PM."
+      "badExample": "How can AI help with project management?",
+      "goodExample": "You are a PM transformation consultant. I manage 3 software projects with 8-person teams. My weekly time breakdown: 30% status tracking and reporting, 25% meetings and scheduling, 20% risk management, 15% stakeholder comms, 10% planning. Tools: Jira, Slack, Google Meet, Confluence. For each category: what percentage can AI handle at 90%+ quality, what needs AI+human collaboration, and what stays fully human? Estimate my time savings.",
+      "successMessage": "Finding automation opportunities is step one of AI-powered PM. The biggest wins are usually in reporting and status tracking."
+    },
+    {
+      "id": "pm-1-2",
+      "type": "freeform",
+      "instruction": "Describe a specific PM pain point you've experienced (scope creep, missed deadlines, unclear requirements, etc.) and design an AI workflow that would prevent or mitigate it.",
+      "placeholder": "Pain point: [describe it]\nAI solution: When [trigger], AI would [actions]...",
+      "hint": "Pick a real pain point, not a theoretical one. Good examples: scope creep (stakeholders adding features mid-sprint), meeting action items getting lost, status reports being inaccurate, requirements being ambiguous. Design the AI workflow with: trigger, processing, output, and expected impact.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["pain", "problem", "AI", "workflow", "prevent", "solution", "impact"]
+      },
+      "badExample": "Scope creep is bad. AI could help somehow.",
+      "goodExample": "Pain point: Requirements ambiguity — developers work 2 weeks then demo something the stakeholder didn't want. AI solution: Requirements Clarity Checker. When a user story is created: (1) AI scans for vague terms ('improve performance', 'better UX'), missing acceptance criteria, undefined edge cases. (2) Generates specific clarifying questions: 'What does improve performance mean? Target: reduce load time from X to Y?' (3) Story blocked from sprint until questions answered. (4) AI updates story with structured acceptance criteria. Expected impact: catches 80% of requirement gaps before development starts, reduces rework by 60%.",
+      "successMessage": "The best AI PM tools prevent problems rather than just reporting them after the fact."
     }
   ],
   "02-project-planning-with-ai": [
     {
-      "id": "apm-2-1",
+      "id": "pm-2-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate a project plan with milestones, dependencies, and estimated effort. Include scope and constraints.",
-      "placeholder": "Create a project plan for...",
+      "instruction": "Write a prompt asking AI to break down a large project into a detailed work breakdown structure with milestones, dependencies, and time estimates. Include your project scope and team constraints.",
+      "placeholder": "Create a project plan for [project] with milestones and dependencies...",
+      "hint": "Include: what you're building, team size and skills, deadline, budget. Ask for: phases, tasks within each phase with hour estimates, dependencies between tasks, milestones with specific deliverables, critical path identification, and risk buffer recommendations.",
       "criteria": {
-        "keywords": [
-          "milestone",
-          "deadline",
-          "dependency",
-          "task",
-          "week",
-          "deliverable"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["milestone", "deadline", "dependency", "task", "week", "deliverable"]
       },
-      "successMessage": "AI project plans save hours of starting from scratch."
+      "badExample": "Plan my project for me.",
+      "goodExample": "You are a senior technical PM. Break down this project: build an AI-powered customer support chatbot. Team: 3 developers (1 senior, 2 mid), $5K/month AI budget, must integrate with existing Zendesk and Salesforce. Deadline: 10 weeks. Create a WBS with: phases, tasks (story point estimates), dependencies as a DAG, milestones every 2 weeks, resource allocation per developer per week, and critical path analysis. Flag any timeline risks — are 10 weeks realistic?",
+      "successMessage": "AI project plans save hours of starting from scratch. Your job is to validate and adjust the AI's first draft."
+    },
+    {
+      "id": "pm-2-2",
+      "type": "rewrite",
+      "instruction": "Rewrite these vague project plan items into specific, measurable, time-bound tasks with clear 'done when' criteria:\n1. 'Set up the backend'\n2. 'Do some testing'\n3. 'Make it look nice'\n4. 'Handle edge cases'\n5. 'Deploy everything'",
+      "placeholder": "1. 'Set up the backend' → Specific version: ...",
+      "hint": "Each task needs: specific scope (what exactly), deliverable format, estimated hours, and a clear 'done when' statement. For example, 'Set up the backend' becomes 'Implement 5 REST API endpoints using FastAPI with JWT auth, connected to PostgreSQL. Estimated: 16 hours. Done when: all endpoints pass Postman test collection with >80% code coverage.'",
+      "criteria": {
+        "minLength": 100,
+        "keywords": ["specific", "estimate", "done when", "hour", "test", "endpoint", "deploy", "measurable"]
+      },
+      "badExample": "1. Set up Node.js. 2. Test the code. 3. Add CSS. 4. Fix bugs. 5. Push to production.",
+      "goodExample": "1. 'Set up the backend' → Implement REST API with 5 endpoints (CRUD for users and orders) using FastAPI + SQLAlchemy + PostgreSQL. Include JWT auth middleware. Est: 16 hours. Done when: all endpoints pass Postman collection and unit tests at 80% coverage.\n2. 'Do some testing' → Write unit tests for all endpoints + integration test for the full order flow (create user → place order → verify in DB). Est: 12 hours. Done when: pytest green with >80% coverage.\n3. 'Make it look nice' → Implement responsive UI matching Figma mockup screens 4-7. Support desktop (1280px+) and mobile (375px+). Est: 20 hours. Done when: designer approves Figma match, Lighthouse accessibility >90.\n4. 'Handle edge cases' → Implement error handling for: invalid payment, out-of-stock, session timeout, concurrent edits. Est: 10 hours. Done when: each edge case has an automated test.\n5. 'Deploy everything' → Deploy frontend to Vercel, backend to Railway, configure domain, SSL, env vars. Run 10 smoke tests. Est: 8 hours. Done when: production URL serves app, all smoke tests pass.",
+      "successMessage": "Night and day difference. Specific tasks with 'done when' criteria make progress measurable and prevent scope ambiguity."
     }
   ],
   "03-meeting-notes-and-action-items": [
     {
-      "id": "apm-3-1",
+      "id": "pm-3-1",
       "type": "prompt",
-      "instruction": "Write a prompt that extracts from raw meeting notes: decisions, action items (with owners/deadlines), and open questions.",
-      "placeholder": "From these meeting notes, extract...",
+      "instruction": "Write a prompt that takes raw meeting transcript text and extracts structured outputs: decisions made, action items with owners and deadlines, and unresolved questions.",
+      "placeholder": "From these meeting notes, extract decisions, action items, and open questions...",
+      "hint": "Be specific about the output format you want. Ask for: attendees list, key discussion points (2-3 sentences each), decisions with who made them, action items with owner + deadline + priority, open questions with who needs to answer, and any mentioned follow-up meetings.",
       "criteria": {
-        "keywords": [
-          "decision",
-          "action item",
-          "owner",
-          "deadline",
-          "question",
-          "extract"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["decision", "action item", "owner", "deadline", "question", "extract"]
       },
+      "badExample": "Summarize this meeting.",
+      "goodExample": "You are an expert meeting note-taker. Extract and organize from this transcript: (1) ATTENDEES — everyone mentioned by name. (2) DECISIONS — each decision with who made it and rationale. (3) ACTION ITEMS — task, owner, deadline (flag 'NEEDS DATE' if vague), priority (H/M/L). (4) OPEN QUESTIONS — unresolved items with who needs to answer. Rules: if someone says 'I'll look into it,' that's an action item. If deadline is vague ('next week'), flag as 'NEEDS SPECIFIC DATE.' If no owner assigned, flag as 'UNASSIGNED — PM to assign.'",
       "successMessage": "This one prompt replaces 30 minutes of post-meeting admin. Every. Single. Time."
+    },
+    {
+      "id": "pm-3-2",
+      "type": "rewrite",
+      "instruction": "Rewrite these vague meeting action items into clear, assignable tasks:\n1. 'Sarah will look into the performance issue'\n2. 'We should update the docs at some point'\n3. 'Someone needs to talk to the client about the timeline'\n4. 'Let's think about the pricing'\n5. 'The design needs work'",
+      "placeholder": "1. Sarah: [specific deliverable] by [date]...",
+      "hint": "Each action item needs: a named person, a specific deliverable (not 'look into'), a concrete deadline (not 'at some point'), and a priority level. If the original has no owner, flag it. If it has no deadline, assign one.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["owner", "deadline", "deliverable", "priority", "specific", "by", "share"]
+      },
+      "badExample": "1. Sarah: fix performance. 2. Update docs. 3. Talk to client. 4. Figure out pricing. 5. Fix design.",
+      "goodExample": "1. SARAH: Profile the API response time regression on /search endpoint. Identify top 3 causes and propose fixes. Deliverable: 1-page analysis shared in #engineering Slack by Friday March 28. Priority: High (blocking QA).\n2. UNASSIGNED (PM to assign today): Update API docs for v2.3 — new auth flow and deprecated endpoints. Deliverable: published docs by April 4. Priority: Medium.\n3. PM (assign by EOD): Schedule 30-min call with Acme Corp's lead to discuss 2-week delivery delay. Share updated timeline and mitigation plan. Completed by March 31. Priority: High.\n4. LISA (Product): Prepare 3 pricing model options for Enterprise tier with competitive analysis and margin projections. Present at April 2 product sync. Priority: Medium.\n5. ALEX (Design): Revise checkout flow mockups — simplify address form to 1 step, add progress indicator. Updated Figma by March 29. Priority: High (blocks frontend dev).",
+      "successMessage": "Clear action items have: a specific person, a concrete deliverable, a real deadline, and a priority. Vague items never get done."
     }
   ],
   "04-status-reports-and-updates": [
     {
-      "id": "apm-4-1",
+      "id": "pm-4-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate a weekly status report from task data. Highlight wins, blockers, upcoming deadlines.",
-      "placeholder": "Generate a status report from...",
+      "instruction": "Write a prompt that generates a weekly project status report from task management data. Specify the data sources, report format, and what insights to highlight.",
+      "placeholder": "Generate a weekly status report from these data sources...",
+      "hint": "Include: what data sources to pull from (Jira, Slack, Git, last week's report), the report structure (executive summary, traffic lights, completed items, blockers, metrics, next week), and the tone/audience. Ask for comparisons to last week and specific risk callouts.",
       "criteria": {
-        "keywords": [
-          "status",
-          "week",
-          "completed",
-          "blocked",
-          "upcoming",
-          "risk",
-          "highlight"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["status", "week", "completed", "blocked", "upcoming", "risk", "highlight"]
       },
-      "successMessage": "Status reports: 2 minutes, not 30. Done."
+      "badExample": "Write a status report for my project.",
+      "goodExample": "You are my AI PM assistant. Generate a weekly status report from: [Jira sprint data], [Slack digest], [GitHub PR summary], [budget spreadsheet]. Format: (1) 3-bullet executive summary (wins, concerns, asks). (2) RAG status for 6 workstreams. (3) Top 3 accomplishments with business impact. (4) Top 3 risks with likelihood/impact and mitigations. (5) Budget: burn rate vs plan (week 8 of 16). (6) Team capacity next week (flag PTO). (7) Decisions needed with options and recommendations. Tone: confident but honest. Never hide bad news.",
+      "successMessage": "AI status reports from real data: 2 minutes instead of 30. More accurate, more consistent."
+    },
+    {
+      "id": "pm-4-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this weak status update to be clear, actionable, and useful to stakeholders:\n\n'Things are going okay. We're working on the new features. There might be some delays. The team is doing their best. We'll know more next week.'",
+      "placeholder": "Professional version:\nProject Alpha — Week 8 Status: ...",
+      "hint": "Transform vague statements into specific data: 'things are okay' → specific metrics. 'working on features' → which ones, what percentage complete. 'might be delays' → what's at risk, by how much, what's the mitigation. End with a specific ask or decision needed.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["status", "progress", "risk", "mitigation", "team", "next week", "decision", "deadline"]
+      },
+      "badExample": "The project is going well. Features are being built. No major problems.",
+      "goodExample": "Project Alpha — Week 8 Status: YELLOW\n\nProgress: Delivered user auth (SSO + MFA) and dashboard redesign on schedule. 12 of 18 sprint stories completed (67% velocity).\n\nRisk: Payment integration 3 days behind due to Stripe API documentation gaps. Impact: could delay March 31 beta by 1 week. Mitigation: senior developer reassigned to pair-program, Stripe support ticket escalated.\n\nTeam: 6/7 developers at capacity. One returning from sick leave Monday.\n\nNext week: (1) Complete payment integration (critical path), (2) Begin load testing, (3) Draft beta communications.\n\nDecision needed: Launch beta March 31 with payments in test mode, or delay 1 week for full integration? Recommendation: delay 1 week. Please advise by Thursday.",
+      "successMessage": "Transformed from useless to actionable. Good status reports are specific, honest about risks, and end with what you need from the reader."
     }
   ],
   "05-risk-assessment": [
     {
-      "id": "apm-5-1",
+      "id": "pm-5-1",
       "type": "prompt",
-      "instruction": "Write a prompt for project risk assessment. Include context and ask for risk identification, probability, impact, mitigation.",
-      "placeholder": "Assess risks for this project: ...",
+      "instruction": "Write a prompt asking AI to perform a risk assessment for a specific project. Include enough context about scope, team, timeline, and dependencies for meaningful risk identification.",
+      "placeholder": "Assess risks for this project: [description, team, timeline]...",
+      "hint": "Include: what you're building, team size and experience, timeline pressure, technical complexity, external dependencies, and budget constraints. Ask for: risk description, likelihood, impact, risk score, mitigation strategy, early warning signs, and contingency plan. Request at least 10 risks across categories.",
       "criteria": {
-        "keywords": [
-          "risk",
-          "probability",
-          "impact",
-          "mitigation",
-          "project",
-          "high",
-          "medium"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["risk", "probability", "impact", "mitigation", "project", "high", "medium"]
       },
-      "successMessage": "AI systematically identifies risks humans overlook."
+      "badExample": "What could go wrong with my project?",
+      "goodExample": "You are a risk management consultant. Assess risks for: deploying an AI chatbot handling 40% of customer support within 3 months. Context: 50K tickets/month, CSAT is 4.2/5, team has no AI experience, using Claude API, integrating with Zendesk. Identify risks in: technical (API reliability, quality), operational (training data, edge cases), business (customer backlash, legal), resource (skill gaps, budget). For each: score (1-5 likelihood x 1-5 impact), mitigation, trigger indicator, owner. Output as a trackable risk register.",
+      "successMessage": "AI risk assessment catches things humans overlook because it systematically considers every category."
+    },
+    {
+      "id": "pm-5-2",
+      "type": "analyze",
+      "instruction": "Analyze this project risk register and identify what's missing. The PM listed only 3 risks:\n1. Server might crash. Mitigation: Have backups.\n2. Might take longer than expected. Mitigation: Work overtime.\n3. Users might not like it. Mitigation: Train them.\n\nWhat's wrong with this risk register?",
+      "placeholder": "This risk register is inadequate because...",
+      "hint": "Problems: too few risks (need 15-25 for a major project), missing entire categories (data loss, security, dependencies, key person risk), mitigations are vague and reactive, no scoring/prioritization, no owners, no early warning indicators, no contingency plans.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["missing", "data", "security", "owner", "score", "vague", "category", "contingency"]
+      },
+      "badExample": "The risks look reasonable, maybe add a couple more.",
+      "goodExample": "Three critical gaps: (1) Coverage — only 3 risks for a major project is dangerously incomplete. Missing: data corruption, integration failures, security vulnerabilities, key-person dependency, vendor SLA breaches, regulatory compliance. Need 15-20 risks minimum. (2) Quality — every mitigation is vague. 'Have backups' should be: 'Full backup before migration, tested restoration within 4 hours, verified by DBA 24 hours before go-live.' 'Work overtime' is a risk itself (burnout → errors). (3) Structure — no scoring (can't prioritize), no owners (nobody accountable), no trigger indicators (no early warning), no contingency plans (no plan B). Fix: rebuild as a proper register with: ID, category, description, probability (1-5), impact (1-5), score, owner, mitigation, trigger, contingency.",
+      "successMessage": "A weak risk register is worse than none — it creates false confidence. Thorough assessment is essential."
     }
   ],
   "06-resource-allocation": [
     {
-      "id": "apm-6-1",
+      "id": "pm-6-1",
       "type": "freeform",
-      "instruction": "4 team members, 6 sprint tasks. Describe how you'd use AI to optimize allocation based on skills, availability, priorities.",
-      "placeholder": "Team: Alice (frontend), Bob (backend)...",
+      "instruction": "You have 4 team members and 6 sprint tasks. Describe how you'd use AI to optimize allocation based on each person's skills, availability, and the tasks' priorities. Include the specific team and task details.",
+      "placeholder": "Team: Alice (frontend), Bob (backend)...\nTasks: 1. Build login page...",
+      "hint": "Create realistic team members with different skills and constraints, and tasks with varying priorities and skill requirements. Show how AI would match skills to tasks, balance workload, flag conflicts, and suggest an allocation that maximizes velocity while respecting constraints.",
       "criteria": {
-        "keywords": [
-          "skill",
-          "priority",
-          "availability",
-          "assign",
-          "sprint",
-          "capacity"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["skill", "priority", "availability", "assign", "sprint", "capacity"]
       },
-      "successMessage": "Resource allocation is where PM becomes art. AI shows the math."
+      "badExample": "Assign tasks to whoever is free.",
+      "goodExample": "Team: Alice (senior frontend, React expert, 80% capacity — has meetings Tue/Thu), Bob (backend, Python/SQL, 100% capacity), Carol (junior full-stack, needs mentoring, 100% capacity), Dave (DevOps, 50% capacity — shared with another team). Tasks: 1. Dashboard UI redesign (P1, frontend, 8pts), 2. API performance optimization (P1, backend, 5pts), 3. CI/CD pipeline upgrade (P2, DevOps, 3pts), 4. User settings page (P2, frontend, 3pts), 5. Database migration (P1, backend/DevOps, 5pts), 6. Unit test coverage improvement (P3, any, 3pts). AI allocation: Alice → #1 (best React skills, P1). Bob → #2 (backend specialist, P1) then #5 when done. Carol → #4 (good learning task) + #6 (builds testing skills). Dave → #5 with Bob (needs DevOps for migration) then #3. Flag: Carol may need Alice's review on #4. Sprint capacity: 27pts across 4 people, 6 tasks = tight but feasible.",
+      "successMessage": "AI resource allocation matches skills to tasks while respecting constraints humans easily miss."
+    },
+    {
+      "id": "pm-6-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to solve this constraint: you have 5 people but the combined project work requires 7 people. Ask AI to identify what to cut, delay, or automate.",
+      "placeholder": "I have 5 people and 7 people worth of work. Help me...",
+      "hint": "Include all three project scopes, team skills, and deadlines. Ask AI to: categorize all tasks as Must-Have/Should-Have/Nice-to-Have, identify tasks that AI could automate (reducing headcount needed), find optimal sequencing (some tasks can be staggered), and model scenarios (delay one project, reduce scope across all, hire contractors).",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["prioritize", "cut", "delay", "automate", "scope", "scenario", "capacity"]
+      },
+      "badExample": "We need more people, can we hire?",
+      "goodExample": "You are a resource planning consultant. I have 5 engineers and 3 projects totaling 7 FTEs of work. Project A (API rewrite): 3 FTEs, deadline April 30, P1. Project B (mobile app): 2.5 FTEs, deadline May 15, P1. Project C (admin dashboard): 1.5 FTEs, deadline June 1, P2. Model 4 scenarios: (A) Cut Nice-to-Have scope across all projects. (B) Delay Project C by 6 weeks. (C) Hire 2 contractors at $15K total. (D) Use AI to automate test writing and documentation (save ~0.5 FTE). For each: impact on deadlines, cost, quality, and team morale. Recommend the best combination.",
+      "successMessage": "When demand exceeds supply, the PM's job is maximizing value delivered. AI helps see all the options and tradeoffs."
     }
   ],
   "07-documentation-and-sops": [
     {
-      "id": "apm-7-1",
+      "id": "pm-7-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate an SOP for a process you manage. Include audience, steps, and quality criteria.",
-      "placeholder": "Create an SOP for...",
+      "instruction": "Write a prompt asking AI to create a Standard Operating Procedure (SOP) for a repeatable process your team manages. Specify the process, the audience, and the level of detail needed.",
+      "placeholder": "Create an SOP for our [process] that [audience] can follow...",
+      "hint": "Specify: what process, who will follow it (include their experience level), and what format. A good SOP has: purpose, scope, prerequisites, step-by-step procedure with exact commands/URLs, verification steps, rollback procedure, troubleshooting, and contacts.",
       "criteria": {
-        "keywords": [
-          "SOP",
-          "step",
-          "process",
-          "when",
-          "who",
-          "quality",
-          "checklist"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["SOP", "step", "process", "when", "who", "quality", "checklist"]
       },
-      "successMessage": "Good SOPs are a gift to your future self. AI writes the first draft in seconds."
+      "badExample": "Write documentation for our process.",
+      "goodExample": "You are a technical writer. Create an SOP for our production deployment process. Audience: any developer (junior to senior). The process: code merged to main → CI builds → deploy to staging → test → promote to production. Sections: (1) Purpose, (2) Prerequisites (tools, access, permissions), (3) Step-by-step with exact commands and expected outputs, (4) Verification steps after each stage, (5) Rollback procedure, (6) Troubleshooting common issues, (7) Contacts. Every step should be specific enough that someone following it for the first time succeeds without asking for help.",
+      "successMessage": "Good SOPs are a gift to your future self. AI writes the first draft in seconds — you refine with institutional knowledge."
+    },
+    {
+      "id": "pm-7-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this vague internal documentation into a clear, usable setup guide:\n\n'To set up the project, install the dependencies and configure the environment. Then run the app. If it doesn't work, check the settings. Ask Dave if you're stuck.'",
+      "placeholder": "## Project Setup Guide (est. 15 minutes)\n### Prerequisites\n...",
+      "hint": "Transform into structured guide with: prerequisites (specific versions), exact commands to run, expected outputs after each step, specific environment variable values and where to find them, common error messages with fixes, and specific contact info (not just 'ask Dave').",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["step", "command", "expected", "troubleshoot", "install", "configure", "environment", "prerequisite"]
+      },
+      "badExample": "Install Node and PostgreSQL. Run npm install. Copy .env. Run the app.",
+      "goodExample": "## Project Setup Guide (15 min)\n### Prerequisites\nNode.js v18+ (`node --version`), PostgreSQL 15+, Git access to repo\n### Step 1: Clone & Install (2 min)\n```\ngit clone git@github.com:acme/project.git && cd project && npm install\n```\nExpected: 'added ~850 packages'\n### Step 2: Environment (3 min)\n```\ncp .env.example .env\n```\nFill in: DATABASE_URL (create DB: `createdb alpha_dev`), API_KEY (1Password > Engineering > Project Alpha), JWT_SECRET (`openssl rand -hex 32`)\n### Step 3: Database (2 min)\n```\nnpm run db:migrate && npm run db:seed\n```\nExpected: '15 tables created. Seeded: 100 users'\n### Step 4: Run\n```\nnpm run dev\n```\nOpen localhost:3000 — test login: admin@example.com / password123\n### Troubleshooting\nPort 3000 busy: `npx kill-port 3000` | DB refused: `brew services start postgresql@15` | Missing API_KEY: check 1Password\n### Help: #project-alpha on Slack. Tag @dave for architecture questions.",
+      "successMessage": "Good documentation includes exact commands, expected outputs, and solutions for common failures. This saves hours of onboarding time."
     }
   ],
   "08-agile-with-ai": [
     {
-      "id": "apm-8-1",
+      "id": "pm-8-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate user stories from a feature description. Include acceptance criteria, story points, edge cases.",
-      "placeholder": "From this feature: ... Generate user stories...",
+      "instruction": "Write a prompt asking AI to generate user stories with acceptance criteria from a rough feature description. Include the feature and ask for proper agile formatting.",
+      "placeholder": "From this feature description, generate user stories: ...",
+      "hint": "Give a rough feature idea and ask for: user story format (As a [persona], I want [action], so that [benefit]), Given/When/Then acceptance criteria, story point estimates with rationale, dependencies between stories, and edge cases. Ask AI to split stories that are too large.",
       "criteria": {
-        "keywords": [
-          "user story",
-          "as a",
-          "I want",
-          "acceptance criteria",
-          "edge case"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["user story", "as a", "I want", "acceptance criteria", "edge case"]
       },
-      "successMessage": "AI-generated user stories ensure nothing gets missed in the first pass."
+      "badExample": "Write user stories for a favorites feature.",
+      "goodExample": "You are a scrum master. Convert this into sprint-ready user stories: 'Customers can't track order status after purchase. We need order tracking.' Break into stories covering: viewing status, receiving notifications, tracking delivery, edge cases (cancelled orders, split shipments). For each: user story format, Given/When/Then acceptance criteria, story point estimate, technical considerations. Flag stories needing UX design before development. Group into 2-3 sprint implementation order.",
+      "successMessage": "AI-generated user stories catch requirements that humans overlook. The acceptance criteria ensure everyone agrees on 'done.'"
+    },
+    {
+      "id": "pm-8-2",
+      "type": "freeform",
+      "instruction": "Design how AI would assist in each agile ceremony: sprint planning, daily standup, sprint review, and retrospective. Be specific about what AI does before, during, and after each ceremony.",
+      "placeholder": "Sprint Planning:\nBefore — AI prepares: ...\nDuring — AI tracks: ...\nAfter — AI creates: ...",
+      "hint": "For each ceremony, think about: what data AI can pre-gather (saving human prep time), what AI can track in real-time (capturing decisions/items humans miss), and what AI can automate after (follow-up actions, documentation). The best AI assistance makes ceremonies shorter and more focused.",
+      "criteria": {
+        "minLength": 100,
+        "keywords": ["planning", "standup", "review", "retro", "before", "during", "after", "AI"]
+      },
+      "badExample": "AI can help with all sprint ceremonies by summarizing things.",
+      "goodExample": "Sprint Planning: Before — AI ranks backlog by value/effort, flags stories missing acceptance criteria, computes team capacity (accounts for PTO). During — real-time velocity tracker: 'You've committed 34 points, average is 38. Buffer?' Surfaces dependencies: 'Story #45 needs Story #42's API.' After — creates sprint in Jira, sends commitment summary.\n\nDaily Standup: Before — pulls each person's git commits, PR status, Jira transitions, pre-fills standup notes. During — flags stale tasks ('in-progress 4 days, estimate was 2'), auto-creates blocker tickets. After — posts summary to Slack with blocker dashboard.\n\nSprint Review: Before — compiles demo list from completed stories, generates velocity metrics. During — captures stakeholder feedback, tags as praise/change request/bug. After — creates backlog items from feedback.\n\nRetrospective: Before — analyzes sprint data for patterns (estimation accuracy, blocker frequency). During — groups feedback into themes. After — creates action items, tracks completion of LAST retro's actions.",
+      "successMessage": "AI handles data gathering so humans focus on decisions and relationships. That's the AI-augmented agile pattern."
     }
   ],
   "09-stakeholder-communication": [
     {
-      "id": "apm-9-1",
+      "id": "pm-9-1",
       "type": "rewrite",
-      "instruction": "Too technical for executives: 'We refactored the API gateway microservice, reduced p99 latency by 40ms, and migrated CI/CD to GitHub Actions with matrix builds.' Rewrite for non-technical audience.",
-      "placeholder": "Rewrite for executives...",
+      "instruction": "This update is too technical for executives: 'We refactored the API gateway microservice, reduced p99 latency by 40ms, and migrated CI/CD to GitHub Actions with matrix builds.' Rewrite it so non-technical stakeholders understand the business impact.",
+      "placeholder": "Executive-friendly version: ...",
+      "hint": "Translate tech metrics to business outcomes: latency reduction = faster user experience = better satisfaction. Refactoring = reduced technical debt = team ships faster. CI/CD migration = more reliable deployments = fewer outages. Executives care about: customer impact, team velocity, cost, and risk.",
       "criteria": {
-        "keywords": [
-          "faster",
-          "improved",
-          "customer",
-          "experience",
-          "team",
-          "efficiency"
-        ],
-        "minLength": 30
+        "minLength": 30,
+        "keywords": ["faster", "improved", "customer", "experience", "team", "efficiency"]
       },
       "badExample": "We refactored the API gateway microservice, reduced p99 latency by 40ms.",
-      "goodExample": "We made our app noticeably faster for customers and upgraded dev tools so the team ships updates twice as fast.",
-      "successMessage": "Translating tech to business impact is a PM superpower."
+      "goodExample": "We made the app noticeably faster for customers (page loads improved 15%) and upgraded our development tools so the team can ship updates twice as fast with fewer errors. These infrastructure investments reduce our risk of outages and free up engineering time for customer-facing features next quarter.",
+      "successMessage": "Translating tech to business impact is a PM superpower. Executives don't need to know about microservices."
+    },
+    {
+      "id": "pm-9-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to draft a stakeholder communication about a project delay. Include the context (what happened and why), the audience, and the tone you need.",
+      "placeholder": "Draft a stakeholder message about our project delay: ...",
+      "hint": "Include: what's delayed and by how much, the root cause, who the audience is (their concerns differ — CEO cares about revenue, VP Sales cares about client commitments), desired tone (transparent but confident), and what you need from them (decision, acknowledgment, resources).",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["stakeholder", "delay", "communicate", "tone", "impact", "action", "timeline"]
+      },
+      "badExample": "Write an email about the project being late.",
+      "goodExample": "You are a senior PM. Draft an email: our mobile app launch is delayed 3 weeks (April 15 → May 6). Cause: critical security vulnerability found in pen testing affecting payment data — must fix before launch. Audience: CEO, CTO, VP Product, VP Sales (who pre-sold April 15 date to 3 enterprise clients). Tone: confident, transparent, solution-oriented — never apologetic. Include: (1) one-line headline, (2) what happened (no jargon), (3) revised timeline, (4) what we're doing (actions + owners), (5) what we need from them. For VP Sales: suggest framing delay as 'enhanced security testing' for client communication.",
+      "successMessage": "Excellent communication prompt. The key: audience awareness, honest framing, and ending with a specific ask."
     }
   ],
   "10-your-ai-pm-toolkit": [
     {
-      "id": "apm-10-1",
+      "id": "pm-10-1",
       "type": "freeform",
-      "instruction": "Design your AI PM toolkit: 5 recurring tasks, the AI prompt/tool for each, and time saved per week.",
-      "placeholder": "Task 1: Weekly status reports \u2014 Tool: ...",
+      "instruction": "Design your personal AI PM toolkit: 5 recurring tasks you'd automate with AI prompts or workflows. For each, describe the task, the AI prompt/tool, and estimated time saved per week.",
+      "placeholder": "Task 1: Weekly status reports — AI tool: ... Time saved: ...",
+      "hint": "Best PM tasks to automate: status reports from project data, meeting note extraction, risk scanning, stakeholder update generation, capacity forecasting. For each, specify: what triggers it, what data it uses, what it produces, and how much time it saves versus doing it manually.",
       "criteria": {
-        "keywords": [
-          "task",
-          "prompt",
-          "tool",
-          "save",
-          "hour",
-          "week",
-          "automate"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["task", "prompt", "tool", "save", "hour", "week", "automate"]
       },
-      "successMessage": "5-10 hours saved per week. That's AI-augmented PM."
+      "badExample": "1. Reports. 2. Notes. 3. Planning. 4. Emails. 5. Tracking.",
+      "goodExample": "1. Monday Sprint Briefing — Input: Jira sprint data + team calendar. AI: summarizes sprint health, flags at-risk stories, identifies capacity gaps. Output: 5-bullet briefing in Slack at 8am. Saves: 1 hour/week.\n2. Meeting Action Extractor — Input: meeting transcript. AI: extracts decisions, action items with owners/deadlines, open questions. Output: structured notes posted to Confluence + tasks created in Jira. Saves: 2.5 hours/week.\n3. Risk Radar — Input: project data + dependency map. AI: scans for emerging risks (aging tasks, slipping dependencies). Output: weekly risk report color-coded by severity. Saves: 1.5 hours/week.\n4. Stakeholder Update Generator — Input: weekly completed work + metrics. AI: tailors update for each audience (exec summary, technical detail, sales-focused). Output: 3 versions ready to send. Saves: 2 hours/week.\n5. Capacity Forecaster — Input: team assignments + sprint velocity + PTO. AI: models capacity for 4 weeks, flags overallocation. Output: capacity heatmap with recommendations. Saves: 1 hour/week.\nTotal: 8 hours/week saved.",
+      "successMessage": "A 5-tool AI PM toolkit saving 8+ hours per week — that's time redirected to leadership, strategy, and team support."
+    },
+    {
+      "id": "pm-10-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a 'PM playbook' entry for handling a specific recurring project management scenario with step-by-step guidance.",
+      "placeholder": "Create a PM playbook entry for handling: ...",
+      "hint": "Pick a scenario PMs face regularly: key team member resigns mid-project, scope creep exceeds 30%, stakeholder requests conflicting priorities, production outage during sprint. Ask for: immediate actions (first 24 hours), assessment framework, communication templates, prevention strategies, and time estimates for each step.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["playbook", "scenario", "action", "immediate", "plan", "communicate", "prevent"]
+      },
+      "badExample": "Write a guide for handling project problems.",
+      "goodExample": "You are a PM coach. Write a playbook entry for: 'Scope has grown 40% since kickoff but deadline and budget haven't changed.' Cover: (1) Diagnosis — how to measure actual scope creep (compare current backlog to original scope). (2) Root cause — poor initial scoping vs. stakeholder additions vs. discovered complexity? Different causes need different responses. (3) Immediate actions — freeze scope, catalog all additions with justification. (4) Negotiation script — 'We can deliver X by deadline, or X+Y by [new date], or X+Y+Z with [additional budget].' (5) Decision matrix showing all options with tradeoffs. (6) Prevention — scope change request process for the future. Include the actual words to say in the stakeholder conversation.",
+      "successMessage": "A PM playbook turns hard-won experience into repeatable responses. AI generates these from patterns across thousands of projects."
     }
   ]
 }

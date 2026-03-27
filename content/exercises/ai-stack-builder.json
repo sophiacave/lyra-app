@@ -1,210 +1,302 @@
 {
-  "stack-anatomy": [
+  "auth-and-tokens": [
     {
-      "id": "asb-1-1",
+      "id": "stack-1-1",
       "type": "freeform",
-      "instruction": "Map the layers of a full-stack AI app. For each layer (frontend, API, database, AI, deployment), name the tool you'd use and why.",
-      "placeholder": "Frontend: ... API: ...",
+      "instruction": "Explain the JWT auth flow in a Supabase app: from the moment a user clicks 'Log In' to when they make an authenticated API call. Include where tokens are stored and what happens when they expire.",
+      "placeholder": "When a user logs in with Supabase Auth...",
+      "hint": "The flow: user submits credentials → Supabase Auth verifies → returns an access token (JWT, 1-hour TTL) and a refresh token (7-day TTL). Access token stored in memory or httpOnly cookie. Refresh token stored securely. Every API call includes the access token in the Authorization header. Supabase RLS uses the JWT claims to enforce row-level access. When access token expires, the client automatically uses the refresh token to get a new one.",
       "criteria": {
-        "keywords": [
-          "frontend",
-          "API",
-          "database",
-          "AI",
-          "deploy",
-          "Next",
-          "Supabase"
-        ],
-        "minLength": 60
+        "minLength": 50,
+        "keywords": ["JWT", "token", "login", "header", "refresh", "access", "store"]
       },
-      "successMessage": "You just drew the architecture diagram in words."
-    }
-  ],
-  "supabase-101": [
+      "badExample": "User logs in and gets a token that lets them access stuff.",
+      "goodExample": "1. User clicks Login, enters email/password → Supabase Auth validates credentials against auth.users table. 2. On success, Supabase returns two tokens: access_token (JWT, expires in 1 hour, contains user_id, email, role) and refresh_token (opaque, expires in 7 days). 3. Supabase JS client stores tokens — access_token in memory, refresh_token in localStorage (or httpOnly cookie with PKCE flow). 4. Every API call: client adds 'Authorization: Bearer <access_token>' header. 5. Supabase receives request → verifies JWT signature → extracts user_id → makes it available as auth.uid() in RLS policies → executes query with row-level security. 6. At ~55 minutes, client auto-refreshes: sends refresh_token → gets new access_token. 7. If refresh_token expires (7 days inactive), user must re-login.",
+      "successMessage": "Auth is the most critical part of your stack. Understanding the full token lifecycle prevents the most common auth bugs."
+    },
     {
-      "id": "asb-2-1",
-      "type": "prompt",
-      "instruction": "Write a prompt to generate a Supabase SQL migration for a 'projects' table with id, name, description, owner_id (FK to auth.users), created_at, status.",
-      "placeholder": "Create a Supabase migration...",
+      "id": "stack-1-2",
+      "type": "debug",
+      "instruction": "A developer says: 'Users are randomly getting logged out after 1 hour, even though I set session duration to 7 days. I'm using Supabase Auth with React.' Diagnose the most likely cause.",
+      "placeholder": "The random logouts after 1 hour are caused by...",
+      "hint": "The 7-day setting is the refresh token lifetime. Access tokens still expire after 1 hour. The app needs to actively refresh the access token. Most likely: the app isn't calling onAuthStateChange() or autoRefreshToken is disabled. Also possible: tab backgrounding throttles the refresh timer.",
       "criteria": {
-        "keywords": [
-          "create table",
-          "id",
-          "name",
-          "owner",
-          "foreign key",
-          "timestamp"
-        ],
-        "minLength": 40
+        "minLength": 60,
+        "keywords": ["access token", "refresh token", "expire", "hour", "auto-refresh", "onAuthStateChange", "Supabase"]
       },
-      "successMessage": "Production-ready table design. SQL migrations are the foundation of reliable backends."
-    }
-  ],
-  "vercel-deploy": [
-    {
-      "id": "asb-3-1",
-      "type": "freeform",
-      "instruction": "Describe the deployment pipeline from git push to live site on Vercel. Include: build trigger, env variables, rollback process.",
-      "placeholder": "Step 1: Push to...",
-      "criteria": {
-        "keywords": [
-          "push",
-          "build",
-          "deploy",
-          "environment",
-          "variable",
-          "rollback",
-          "preview"
-        ],
-        "minLength": 50
-      },
-      "successMessage": "Understanding the deploy pipeline means you'll debug production issues in minutes."
-    }
-  ],
-  "edge-functions": [
-    {
-      "id": "asb-4-1",
-      "type": "prompt",
-      "instruction": "Write a prompt to create a Supabase Edge Function that receives a webhook, validates the payload, and inserts into an 'events' table.",
-      "placeholder": "Create an edge function that...",
-      "criteria": {
-        "keywords": [
-          "edge function",
-          "webhook",
-          "validate",
-          "insert",
-          "table",
-          "serve"
-        ],
-        "minLength": 40
-      },
-      "successMessage": "Edge functions are your serverless backend. You just designed a real webhook handler."
+      "badExample": "The session timeout is set wrong, increase it.",
+      "goodExample": "Classic Supabase Auth misunderstanding. The 7-day setting is the refresh token lifetime, not the access token. Access tokens expire in 1 hour (default, not configurable on client). The flow should be: access token nears expiry → client uses refresh token → gets new access token → seamlessly continues. The break: (1) Missing onAuthStateChange listener — this detects near-expiry and triggers refresh. Without it, token silently expires and next API call gets 401. Fix: add supabase.auth.onAuthStateChange() in root component. (2) Tab backgrounding — Chrome throttles timers in background tabs, so the refresh interval doesn't fire after 60+ minutes. Fix: add visibilitychange listener that calls supabase.auth.getSession() when tab becomes visible. (3) Multiple tabs — refreshing in one tab can invalidate the other tab's refresh token. Fix: use Supabase's broadcast channel to sync auth state.",
+      "successMessage": "Token lifecycle management is the #1 source of auth bugs. Access tokens expire fast; refresh tokens keep users logged in."
     }
   ],
   "database-patterns": [
     {
-      "id": "asb-5-1",
+      "id": "stack-2-1",
       "type": "prompt",
-      "instruction": "Design an RLS policy for a 'documents' table: users read/write own docs, admins read all.",
-      "placeholder": "Policy for SELECT: ...",
+      "instruction": "Write a prompt asking AI to design a database schema for a specific application. Include your data relationships, expected scale, and the queries you'll run most often.",
+      "placeholder": "Design a PostgreSQL schema for my app that has...",
+      "hint": "Include: what entities you have and how they relate (users, courses, lessons, progress), your expected scale (number of users, records), and your most common query patterns (get all courses for a user with progress, find the next incomplete lesson). Ask for: table definitions with types, primary/foreign keys, indexes for your query patterns, and RLS policies.",
       "criteria": {
-        "keywords": [
-          "policy",
-          "auth.uid",
-          "select",
-          "insert",
-          "admin",
-          "role"
-        ],
-        "minLength": 40
+        "minLength": 50,
+        "keywords": ["schema", "table", "column", "index", "foreign key", "query", "relationship", "PostgreSQL"]
       },
-      "successMessage": "RLS is security at the database layer. Secure by default."
+      "badExample": "Design a database for my app.",
+      "goodExample": "You are a Supabase database expert. Design a schema for a multi-tenant SaaS: organizations have teams, teams have members, members create documents. Requirements: (1) org-level billing, (2) role-based access (admin, lead, member), (3) documents belong to teams but can be shared cross-team, (4) version history (last 10 versions), (5) full-text search on content. Scale: 1K orgs, 10K users, 100K docs. Query patterns: 'all documents I can access', 'document version history', 'search within my org'. Provide: CREATE TABLE statements, RLS policies per role, indexes for each query, and migration file for Supabase CLI.",
+      "successMessage": "A well-designed schema is the foundation. Getting it right early saves enormous refactoring later."
+    },
+    {
+      "id": "stack-2-2",
+      "type": "analyze",
+      "instruction": "A developer put all user data in a single table with 45 columns: profile info, preferences, subscription data, usage stats, and notification settings. What problems will this cause and how should it be restructured?",
+      "placeholder": "Problems with a 45-column user table: ...",
+      "hint": "Problems: query waste (fetching all 45 cols when you need 3), write contention (updating preferences locks subscription data), schema rigidity, different access patterns mixed together, and RLS complexity. Solution: split into focused tables — users (core identity), profiles (public info), preferences (settings), subscriptions (billing), user_stats (analytics).",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["performance", "column", "split", "table", "query", "lock", "access pattern", "normalize"]
+      },
+      "badExample": "45 columns is fine, databases can handle it.",
+      "goodExample": "Five escalating problems: (1) Query waste — SELECT * returns 45 fields when login needs 3. At scale, wasted bandwidth and memory. (2) Write contention — updating usage_stats (every page view) locks the same row as subscription_status (monthly event). Under load, these compete. (3) Cache invalidation — changing any of 45 fields invalidates the entire cached entry. (4) RLS complexity — profile might be public, subscription private, stats admin-only. One table = one policy = compromises. (5) Index bloat — wide tables consume more RAM for indexes. Split into: users (5 cols, auth identity), profiles (8 cols, public), preferences (JSONB, flexible), subscriptions (6 cols, billing), usage_stats (10 cols, write-heavy). Each gets focused indexes, independent RLS, different caching TTLs.",
+      "successMessage": "Tables should group data that changes together and is accessed together. Splitting by access pattern is the key principle."
     }
   ],
-  "auth-and-tokens": [
+  "edge-functions": [
     {
-      "id": "asb-6-1",
-      "type": "freeform",
-      "instruction": "Explain the JWT auth flow in a Supabase app: from login to authenticated API call. What tokens, where stored?",
-      "placeholder": "When a user logs in...",
-      "criteria": {
-        "keywords": [
-          "JWT",
-          "token",
-          "login",
-          "header",
-          "refresh",
-          "access",
-          "store"
-        ],
-        "minLength": 50
-      },
-      "successMessage": "Auth is the most important part of your stack to understand deeply."
-    }
-  ],
-  "make-com-101": [
-    {
-      "id": "asb-7-1",
+      "id": "stack-3-1",
       "type": "prompt",
-      "instruction": "Design a Make.com scenario connecting your AI app to an external service. Include trigger, processing, and output modules with data flow.",
-      "placeholder": "Scenario: When...",
+      "instruction": "Write a prompt asking AI to build a Supabase Edge Function that receives a webhook, validates the payload signature, and updates your database. Specify the webhook source and data model.",
+      "placeholder": "Build a Supabase Edge Function that handles [service] webhooks...",
+      "hint": "Include: which service sends the webhook (Stripe, GitHub, etc.), what events you care about, how to verify the signature (HMAC-SHA256), what database tables to update, and error handling requirements. Ask for complete Deno TypeScript code, the deploy command, and testing instructions.",
       "criteria": {
-        "keywords": [
-          "trigger",
-          "module",
-          "data",
-          "map",
-          "output",
-          "scenario",
-          "Make"
-        ],
-        "minLength": 50
+        "minLength": 40,
+        "keywords": ["edge function", "webhook", "validate", "insert", "table", "serve"]
       },
-      "successMessage": "Make.com is the glue layer. You just designed a real integration."
-    }
-  ],
-  "webhooks-deep-dive": [
+      "badExample": "Write an edge function for webhooks.",
+      "goodExample": "You are a Supabase Edge Functions expert. Build a function handling Stripe webhooks. Requirements: (1) Verify signature using STRIPE_WEBHOOK_SECRET, (2) Handle: checkout.session.completed (create subscription), customer.subscription.deleted (cancel), invoice.payment_failed (mark past_due), (3) Update 'subscriptions' table for each event, (4) Log all events to 'webhook_logs' table, (5) Return 200 quickly, (6) Handle duplicate events with idempotency key. Provide: complete Deno TypeScript code, SQL for webhook_logs table, and `supabase functions deploy` command.",
+      "successMessage": "Edge functions with webhook signature verification are the backbone of modern payment and integration flows."
+    },
     {
-      "id": "asb-8-1",
+      "id": "stack-3-2",
       "type": "freeform",
-      "instruction": "A webhook is failing silently. List your debugging checklist: what to check first, second, third. Include tools.",
-      "placeholder": "Check 1: ...",
+      "instruction": "Compare Supabase Edge Functions (Deno) and Vercel Serverless Functions (Node.js) for handling AI API calls. When would you choose one over the other?",
+      "placeholder": "Supabase Edge Functions: Strengths... Best for...\nVercel Serverless: Strengths... Best for...",
+      "hint": "Supabase Edge: direct DB access (no network hop), built-in JWT verification, <50ms cold start, but 150s timeout limit. Vercel Serverless: full Node.js ecosystem, 300s timeout, native streaming support for LLM responses, but separate DB connection needed. Best approach: use both — Vercel for streaming chat UI, Supabase Edge for webhooks and background processing.",
       "criteria": {
-        "keywords": [
-          "log",
-          "status",
-          "payload",
-          "URL",
-          "header",
-          "timeout",
-          "retry"
-        ],
-        "minLength": 50
+        "minLength": 60,
+        "keywords": ["Supabase", "Vercel", "edge", "serverless", "Deno", "Node", "timeout", "database"]
       },
-      "successMessage": "Systematic webhook debugging saves hours."
-    }
-  ],
-  "wire-it-all": [
-    {
-      "id": "asb-9-1",
-      "type": "freeform",
-      "instruction": "Draw the data flow: user action -> frontend -> API -> AI -> database -> response. Include error handling at each step.",
-      "placeholder": "User clicks 'Generate' -> ...",
-      "criteria": {
-        "keywords": [
-          "user",
-          "frontend",
-          "API",
-          "AI",
-          "database",
-          "response",
-          "error"
-        ],
-        "minLength": 70
-      },
-      "successMessage": "End-to-end thinking separates full-stack builders from tutorial followers."
+      "badExample": "Supabase is better because it's closer to the database.",
+      "goodExample": "Supabase Edge (Deno): Direct DB access (no network hop for RAG queries), 150s timeout (tight for large Claude contexts), sub-50ms cold start, built-in auth JWT verification. Best for: webhook handlers that store results in DB, database triggers, authenticated endpoints needing user data.\n\nVercel Serverless (Node.js): Full npm ecosystem, 300s timeout, native streaming via Next.js API routes (essential for chat UX), but 200-500ms cold starts. Best for: streaming chat interfaces, complex pipelines with npm packages, endpoints serving the frontend.\n\nRecommendation: use BOTH. Vercel handles frontend + streaming chat. Supabase Edge handles webhooks + background processing. Architecture: User → Next.js (streams AI response) → Supabase Edge (logs to DB, triggers follow-up).",
+      "successMessage": "Most AI apps use both — Vercel for user-facing streaming, Supabase Edge for backend automation. They're complementary."
     }
   ],
   "launch-checklist": [
     {
-      "id": "asb-10-1",
+      "id": "stack-4-1",
       "type": "freeform",
-      "instruction": "Create a pre-launch checklist for your AI app. Cover security, performance, monitoring, error handling, UX. At least 10 items.",
-      "placeholder": "[ ] Environment variables secured...",
+      "instruction": "Create a pre-launch checklist for an AI-powered web application. Cover at least 10 items across: security, performance, monitoring, error handling, and UX. Be specific enough to actually verify each item.",
+      "placeholder": "[ ] Security: API keys not in source code (verified with...)\n[ ] Performance: ...",
+      "hint": "Good checklist items are verifiable — not 'make sure it's secure' but 'API keys stored in env vars, .env in .gitignore, verified with `grep -r sk_ src/`'. Cover: secrets management, CORS, auth flow testing, RLS verification, rate limiting, error tracking, uptime monitoring, AI cost tracking, mobile testing, loading states, privacy policy, SSL.",
       "criteria": {
-        "keywords": [
-          "security",
-          "env",
-          "monitor",
-          "error",
-          "test",
-          "backup",
-          "SSL",
-          "rate limit"
-        ],
-        "minLength": 80
+        "minLength": 80,
+        "keywords": ["security", "env", "monitor", "error", "test", "backup", "SSL", "rate limit"]
       },
-      "successMessage": "This checklist is your insurance policy against launch-day disasters."
+      "badExample": "1. Deploy it. 2. Test it. 3. Monitor it.",
+      "goodExample": "Pre-Launch Checklist (15 items):\nSECURITY: [ ] No API keys in source (verified: `grep -rn 'sk_\\|secret' src/`). [ ] CORS: only production domain (test: curl with wrong Origin header → rejected). [ ] RLS enabled on all tables (test: query as anon user → empty result). [ ] Rate limiting active: 100 req/min (test: artillery load test).\nPERFORMANCE: [ ] AI responses stream (not block until complete). [ ] LCP < 2.5s on mobile (verified: Lighthouse). [ ] Static assets on CDN with cache headers.\nMONITORING: [ ] Error tracking active (Sentry test error received). [ ] Uptime check every 3 min (test: manually trigger alert). [ ] AI cost dashboard shows per-day spend.\nUX: [ ] Loading state during AI responses (skeleton/typing indicator). [ ] Friendly error messages (not stack traces). [ ] Mobile responsive (tested on iPhone Safari + Android Chrome).\nLEGAL: [ ] Privacy policy published (mentions AI processing). [ ] Terms of service live.",
+      "successMessage": "A thorough launch checklist is the difference between a professional launch and a scramble to fix production issues."
+    },
+    {
+      "id": "stack-4-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a 72-hour post-launch monitoring plan. Specify your stack and the metrics that matter most.",
+      "placeholder": "Create a 72-hour monitoring plan for my app launch on...",
+      "hint": "Include your stack (what to monitor), expected traffic, and what success looks like. Ask for: hour-by-hour checks for the first 12 hours, then every-4-hours for hours 12-48, and twice-daily for hours 48-72. Include specific thresholds for each metric and what action to take if they're breached.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["72 hours", "monitor", "launch", "metric", "threshold", "alert", "check"]
+      },
+      "badExample": "What should I watch after launching?",
+      "goodExample": "You are an SRE. Build a 72-hour post-launch playbook for my AI chatbot going live to 2,000 beta users. Stack: Vercel (frontend), Supabase (DB + auth + edge functions), Claude API (chat), Stripe (payments). First 6 hours: check every 30 min. Hours 6-24: every 2 hours. Hours 24-72: every 6 hours. For each interval: exact metrics, what 'good' vs 'concerning' vs 'emergency' looks like. Include: rollback decision criteria, user communication templates for outages, and a Day 3 retrospective checklist.",
+      "successMessage": "A post-launch plan turns launch anxiety into systematic observation. The first 72 hours set the tone."
+    }
+  ],
+  "make-com-101": [
+    {
+      "id": "stack-5-1",
+      "type": "prompt",
+      "instruction": "Design a Make.com automation scenario connecting your AI app to an external service. Specify: the trigger module, processing steps, data mapping between modules, and the output action.",
+      "placeholder": "Make.com scenario: When [trigger in tool A], process with [AI], then [action in tool B]...",
+      "hint": "Be specific about module types, data flowing between them, and error handling. Example: Google Sheets trigger (new row) → HTTP module (call Claude API with row data) → Parse JSON response → WordPress module (create draft post) → Google Sheets module (update status) → Slack notification.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["trigger", "module", "data", "map", "output", "scenario", "Make"]
+      },
+      "badExample": "Set up an automation in Make.com.",
+      "goodExample": "You are a Make.com expert. Design a content publishing scenario: Trigger: new row in Google Sheet 'Content Calendar' where Status = 'Ready to Draft'. Steps: (1) HTTP module calls Claude API with prompt built from Topic + Audience + Keywords columns. (2) Parse JSON module extracts Claude's response. (3) WordPress module creates draft post (title = Topic, body = Claude response, category from Keywords). (4) Google Sheets module updates Status to 'Drafted', adds WordPress preview URL. (5) Slack module notifies #content channel. Error handling: if Claude times out, retry once; if WordPress fails, log error and notify via email.",
+      "successMessage": "Well-designed Make.com scenarios follow the pattern: specific trigger → data transformation → multi-tool output → error handling."
+    },
+    {
+      "id": "stack-5-2",
+      "type": "analyze",
+      "instruction": "Analyze the tradeoffs of using Make.com vs building custom integrations with code. Consider cost at different scales, flexibility, maintenance, and when to switch from one to the other.",
+      "placeholder": "Make.com advantages: ... Custom code advantages: ... Switch when: ...",
+      "hint": "Make.com wins at: speed of building (hours vs days), non-developer accessibility, built-in connectors, visual debugging. Code wins at: high volume (>50K ops/month), complex logic, version control, no per-operation cost. The crossover point is typically 50K-100K operations/month or when business logic gets too complex for the visual builder.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["Make.com", "code", "cost", "scale", "flexible", "maintain", "tradeoff"]
+      },
+      "badExample": "Custom code is always better because you have more control.",
+      "goodExample": "Four dimensions: (1) Cost — Make.com at 10K ops/month = $9. At 100K = $99. At 500K = $500+. Custom edge function handling 500K requests = $5-20 in compute. Break-even: ~50K-100K ops/month. (2) Build speed — Make.com: hours to build, minutes to modify. Code: days to build, requires developer. (3) Flexibility — Make.com handles 80% of cases with modules; the remaining 20% requires HTTP modules (losing most advantages). Code handles 100%. (4) Maintenance — Make.com auto-handles retries and logging but scenarios break silently when APIs change. Code requires building monitoring but gives full control. Recommendation: prototype with Make.com, migrate to code when the workflow is proven and volume justifies it.",
+      "successMessage": "Smart teams start with Make.com for speed and migrate high-volume workflows to code for cost and control."
+    }
+  ],
+  "stack-anatomy": [
+    {
+      "id": "stack-6-1",
+      "type": "freeform",
+      "instruction": "Map the layers of a full-stack AI application. For each layer (frontend, API, AI/LLM, database, auth, deployment), name the specific tool you'd use and explain how data flows between layers.",
+      "placeholder": "Frontend: Next.js — handles UI, sends requests to...\nAPI Layer: ...",
+      "hint": "Describe how each layer connects to the next: Frontend sends authenticated requests to API → API validates JWT and checks rate limits → API retrieves context from database → API sends prompt to LLM → LLM streams response → API pipes stream back to frontend → API saves conversation to database. Include where API keys live and how auth tokens flow.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["frontend", "API", "database", "AI", "deploy", "Next", "Supabase"]
+      },
+      "badExample": "Frontend talks to backend which talks to AI and database.",
+      "goodExample": "Six-layer stack with data flow: (1) Frontend (Next.js on Vercel): renders UI, sends POST /api/chat with JWT in Authorization header. Never has API keys. (2) API Layer (Next.js API routes): validates JWT via Supabase, checks rate limit in Redis, retrieves conversation history from DB, calls Claude API with context, streams response back. (3) AI/LLM (Claude API): receives system prompt + context + user message, returns streaming text. Accessed only from API layer, never from frontend. (4) Database (Supabase PostgreSQL + pgvector): stores users, conversations, embeddings for RAG. RLS uses auth.uid() from JWT. (5) Auth (Supabase Auth): handles signup/login, issues JWT tokens (1h access + 7d refresh). Every API call carries JWT. (6) Deployment (GitHub → Vercel): push to main triggers auto-deploy. Edge functions deployed via Supabase CLI.",
+      "successMessage": "Understanding how each layer connects is the foundation for building, debugging, and scaling AI applications."
+    },
+    {
+      "id": "stack-6-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to evaluate your tech stack for a specific project and identify gaps, risks, or better alternatives for any component.",
+      "placeholder": "Evaluate my tech stack for [project]: Frontend: ... Backend: ... AI: ...",
+      "hint": "Include your full stack with specific tools, what you're building, your team size, and budget. Ask AI to score each component (1-5), identify what's missing, flag risks, and suggest improvements. Good areas to evaluate: can your stack handle your expected scale? Is any component a single point of failure? Are you over-engineering or under-engineering?",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["evaluate", "stack", "gap", "risk", "component", "improve", "score"]
+      },
+      "badExample": "Is my stack good?",
+      "goodExample": "You are a CTO reviewing a stack proposal. Evaluate for an AI document analysis platform: Frontend: SvelteKit on Vercel. Backend: Supabase (all features). AI: GPT-4 via Langchain. Vector DB: Pinecone (separate from Supabase). Search: Algolia. Payments: Stripe. Email: SendGrid. Monitoring: none. Queue: none. Concerns: (1) Is Pinecone + Supabase pgvector redundant? (2) Is Langchain adding complexity? (3) Can this handle 50 tenants with 100K docs each? (4) Monthly cost estimate? (5) Missing components? Grade each A-F. Suggest a simpler, cheaper stack that meets the same requirements.",
+      "successMessage": "Stack evaluation prevents expensive mistakes. The simplest stack that meets your requirements is always the best stack."
+    }
+  ],
+  "supabase-101": [
+    {
+      "id": "stack-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to set up Row Level Security (RLS) policies for a multi-user Supabase application. Specify your tables and the exact access rules for each role.",
+      "placeholder": "Set up RLS for these Supabase tables: ... Access rules: ...",
+      "hint": "Include: table names and their columns, user roles (regular user, admin), and what each role can do (SELECT/INSERT/UPDATE/DELETE) on each table. Ask for: the SQL to enable RLS, CREATE POLICY statements for each operation, and a helper function for admin checks. Be specific: 'users can read only their own data' translates to USING (auth.uid() = user_id).",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["policy", "auth.uid", "select", "insert", "admin", "role"]
+      },
+      "badExample": "Set up RLS for my tables.",
+      "goodExample": "You are a Supabase security expert. Set up RLS for my course platform. Tables and rules: (1) courses — anyone can read published, only admins can insert/update/delete. (2) enrollments — users read their own, can insert (self-enroll), only enrolled user or admin can delete. (3) progress — users read/update only their own. (4) submissions — users read/insert their own, cannot update or delete (immutable). Admin detection: 'role' column in profiles table = 'admin'. For each table: write ALTER TABLE ENABLE ROW LEVEL SECURITY and all CREATE POLICY statements using auth.uid(). Include a helper function is_admin().",
+      "successMessage": "RLS is your database-level security layer. Properly configured RLS means even a compromised API can't leak other users' data."
+    },
+    {
+      "id": "stack-7-2",
+      "type": "debug",
+      "instruction": "A developer says: 'My Supabase queries work in the SQL editor but return empty results from my frontend app. I have RLS enabled.' What's the most likely cause and how do you fix it?",
+      "placeholder": "Empty results with RLS enabled means...",
+      "hint": "The SQL editor runs as postgres superuser (bypasses all RLS). The frontend runs as authenticated/anon role (subject to RLS). Most likely: no SELECT policy exists for the authenticated role, or the user isn't authenticated (anon key with no anon policy), or the policy condition doesn't match the data.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["RLS", "policy", "SQL editor", "superuser", "authenticated", "anon", "auth.uid"]
+      },
+      "badExample": "RLS is broken, disable it.",
+      "goodExample": "Classic RLS disconnect. SQL editor = postgres superuser = bypasses ALL RLS. Frontend = authenticated/anon role = subject to RLS. Diagnosis: (1) Check if SELECT policy exists: `SELECT * FROM pg_policies WHERE tablename = 'your_table'`. If empty — that's your answer. Fix: add a SELECT policy. (2) Check auth state: in browser console `await supabase.auth.getUser()` — if null, client is unauthenticated and only anon policies apply. (3) Test as user in SQL: `SET request.jwt.claims = '{\"sub\": \"user-uuid\"}'; SET ROLE authenticated; SELECT * FROM your_table;` — this simulates the frontend experience. If also empty, your policy condition is wrong. (4) Verify the policy condition: if USING (auth.uid() = user_id), check that user_id actually contains the auth UUID.",
+      "successMessage": "Essential debugging skill. The SQL editor vs. frontend RLS gap catches every Supabase developer at least once."
+    }
+  ],
+  "vercel-deploy": [
+    {
+      "id": "stack-8-1",
+      "type": "freeform",
+      "instruction": "Describe the complete deployment pipeline from pushing code to GitHub to a user loading your site on Vercel. Include: what triggers the build, what happens during build, how the site is served globally, and how rollbacks work.",
+      "placeholder": "Step 1: Developer runs git push → GitHub webhook notifies...",
+      "hint": "The pipeline: git push → GitHub webhook → Vercel clones repo → detects framework → npm install → next build → static pages to CDN, serverless functions to Lambda, edge functions to edge network → unique deployment URL created → DNS atomically switches to new deployment → old deployment preserved for instant rollback.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["push", "build", "deploy", "environment", "variable", "rollback", "preview"]
+      },
+      "badExample": "Push code and Vercel deploys it.",
+      "goodExample": "Complete pipeline: (1) `git push origin main` → GitHub fires webhook to Vercel. (2) Vercel queues build: clones repo at commit SHA, runs `npm ci` from lockfile, then `next build`. Output: static HTML → CDN, API routes → serverless functions, middleware → edge runtime. (3) Deploy: artifacts uploaded globally with content-addressed deduplication. Each deploy gets unique URL (project-abc123.vercel.app). (4) Atomic promotion: production domain switches to new deployment instantly. In-flight requests to old deployment complete normally. Zero downtime. (5) Request serving: browser → nearest Vercel edge → static asset? CDN cache (<20ms). Dynamic page? Serverless function in configured region. (6) Rollback: any previous deployment can be promoted to production in <30 seconds via dashboard. No rebuild needed. Every deployment is immutable.",
+      "successMessage": "Understanding the full pipeline makes you confident deploying, debugging, and recovering. Immutable deployments mean rollback is always safe."
+    },
+    {
+      "id": "stack-8-2",
+      "type": "prompt",
+      "instruction": "Write a prompt to troubleshoot a Vercel deployment that builds successfully but shows a blank page or errors in production while working fine on localhost.",
+      "placeholder": "My Vercel build succeeds but production shows...",
+      "hint": "Include specific symptoms: blank page, specific error messages (especially 'window is not defined' or missing env vars), what changed recently (new library, new page). The most common causes: SSR/client mismatch (using browser APIs in server components), missing environment variables in Vercel dashboard, and incorrect build settings.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["build", "blank", "error", "production", "localhost", "debug", "environment"]
+      },
+      "badExample": "My Vercel site doesn't work.",
+      "goodExample": "You are a Vercel + Next.js specialist. My site builds successfully but API routes return 500 in production while working locally. Function log shows: 'Error: supabaseUrl is required.' I have NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local. Diagnose: (1) Why do env vars work locally but not in Vercel? (2) Where exactly do I set them? (3) What's the difference between NEXT_PUBLIC_ vars and server-only vars? (4) Do I need to redeploy after adding them? Give exact steps to fix.",
+      "successMessage": "The most common Vercel issues: SSR/client mismatch, missing environment variables, and build vs. runtime differences."
+    }
+  ],
+  "webhooks-deep-dive": [
+    {
+      "id": "stack-9-1",
+      "type": "freeform",
+      "instruction": "A webhook is failing silently — events are being sent but your endpoint isn't processing them. List your debugging checklist in order: what to check first, second, third. Include specific tools and commands.",
+      "placeholder": "Check 1: Verify the endpoint URL is correct by...\nCheck 2: ...",
+      "hint": "Debugging order: (1) Check if events are being sent (sender's dashboard/logs). (2) Check if your endpoint is reachable (curl from external). (3) Check endpoint logs for incoming requests. (4) Check response status codes your endpoint returns. (5) Check payload format matches what your code expects. (6) Check authentication/signature verification. (7) Check for timeout issues (webhook sender has a timeout limit).",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["log", "status", "payload", "URL", "header", "timeout", "retry"]
+      },
+      "badExample": "Check if the webhook URL is right.",
+      "goodExample": "Webhook debugging checklist (in order): (1) Sender dashboard — are events being sent? Check delivery logs for status codes. If 'pending' or 'failed', note the error. Tool: Stripe Dashboard → Webhooks → Recent events. (2) Endpoint reachable? — `curl -X POST https://your-endpoint.com/webhook -d '{}' -v`. If timeout: DNS or firewall issue. If 404: wrong URL. (3) Check your server logs — is the request arriving? If no: network/routing issue. If yes: check the status code returned. (4) Signature verification — most common silent failure. Your code rejects the webhook because signature verification fails. Check: is the webhook secret correct? Is the raw body being used (not parsed JSON)? (5) Payload parsing — log the raw body. Is the JSON structure what your code expects? Field names change between API versions. (6) Timeout — webhook senders typically allow 5-30 seconds. If your processing takes longer, they get a timeout and retry. Fix: respond 200 immediately, process async. (7) Check for duplicate handling — sender may have retried, your code may have processed it already and is now erroring on a duplicate.",
+      "successMessage": "Systematic webhook debugging saves hours. The most common failures: wrong secret, parsed body instead of raw, and timeouts."
+    },
+    {
+      "id": "stack-9-2",
+      "type": "debug",
+      "instruction": "A developer says: 'My Stripe webhook to a Supabase Edge Function fails 50% of the time with 401 Unauthorized. The other 50% works fine. Same endpoint.' What's causing the intermittent failures?",
+      "placeholder": "The 50% failure rate with 401 is caused by...",
+      "hint": "Supabase Edge Functions require JWT verification by default. Stripe webhooks don't send a Supabase JWT — they send their own signature. The 50/50 pattern suggests the function sometimes enforces JWT auth and sometimes doesn't. Fix: deploy with --no-verify-jwt flag, then verify the Stripe signature manually in your code.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["JWT", "verify", "Stripe", "signature", "Edge Function", "401", "no-verify-jwt"]
+      },
+      "badExample": "The webhook URL is probably wrong for half the events.",
+      "goodExample": "The 50% rate is the giveaway — it's not the URL or payload (those would be 0% or 100%). This is Supabase Edge Function JWT verification. By default, Supabase functions require a valid Supabase JWT in the Authorization header. Stripe doesn't send one — it sends Stripe-Signature. The 50/50 pattern comes from warm vs. cold function instances handling JWT enforcement differently. Fix: `supabase functions deploy my-webhook --no-verify-jwt`. This disables Supabase JWT checking. BUT you MUST then verify the Stripe signature yourself in the function code: extract Stripe-Signature header, compute HMAC-SHA256 with your webhook secret, compare. Without this, anyone could POST to your endpoint. Pattern: external webhooks → disable Supabase JWT → implement sender's signature verification.",
+      "successMessage": "External webhooks and Supabase JWT auth don't mix. Disable JWT verification and implement the sender's own signature check."
+    }
+  ],
+  "wire-it-all": [
+    {
+      "id": "stack-10-1",
+      "type": "freeform",
+      "instruction": "Draw the complete data flow for an AI feature: user types a question, your app retrieves relevant context (RAG), sends it to an LLM, and streams the response back. Map every step from keypress to pixels on screen, including error handling.",
+      "placeholder": "1. User types question in input field → clicks Send →\n2. Frontend: fetch('/api/ask'...",
+      "hint": "Include every hop: user action → frontend fetch call with JWT → API route validates auth → rate limit check → generate query embedding → vector similarity search in database → build prompt with context → call Claude with streaming → pipe tokens back via SSE → frontend renders tokens as they arrive → save conversation to database → show source citations.",
+      "criteria": {
+        "minLength": 70,
+        "keywords": ["user", "frontend", "API", "AI", "database", "response", "error"]
+      },
+      "badExample": "User asks a question, AI answers it.",
+      "goodExample": "End-to-end RAG + streaming flow: (1) User types question, clicks Send. (2) Frontend: fetch('/api/chat', {method: 'POST', body: {message}, headers: {Authorization: 'Bearer ' + jwt}}). (3) API route: verify JWT → get user_id. Rate limit: Redis INCR, reject if >50/hour. (4) Generate embedding: call embedding API → 1536-dim vector. (5) Vector search: SELECT content, similarity FROM docs ORDER BY embedding <=> $vector LIMIT 5. (6) Build prompt: system instruction + retrieved context + conversation history (last 5 turns from DB) + user message. (7) Claude API stream: for each token → write to SSE response. (8) Frontend: ReadableStream reader → append each token to UI → auto-scroll. (9) Stream complete: save full Q&A to conversation_history table. Log token count. (10) Error handling at each step: auth fail → 401, rate limit → 429 with retry-after, embedding fail → retry once then error, vector search fail → fallback to keyword search, Claude timeout → return partial + apology, DB save fail → queue for retry.",
+      "successMessage": "Understanding every step from keypress to pixel makes you capable of building, debugging, and optimizing the entire AI stack."
+    },
+    {
+      "id": "stack-10-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to architect a complete AI application from scratch. Include your project idea, target users, budget, and technical constraints.",
+      "placeholder": "Help me architect a complete AI app: [idea], [users], [budget]...",
+      "hint": "Include: what you're building (specific features), who it's for (target users, expected count), your budget ($X/month for infrastructure), your technical skills, and timeline. Ask for: stack choices with rationale, database schema, API endpoints, AI pipeline design, auth and access control, deployment plan, and cost breakdown.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["architect", "stack", "database", "API", "AI", "deploy", "budget"]
+      },
+      "badExample": "Help me build an AI app.",
+      "goodExample": "You are a solutions architect. I want to build an AI study buddy for college students: (1) upload lecture PDFs and ask questions (RAG), (2) AI generates practice quizzes, (3) flashcard generation with spaced repetition. Target: 1,000 students first semester. Budget: $100/month. Skills: React and SQL. Design: (1) stack choices with rationale, (2) database schema, (3) API endpoints, (4) PDF processing + chunking for RAG, (5) AI pipeline per feature (model, prompts), (6) auth and access control, (7) deployment, (8) cost breakdown. Make it the simplest architecture that works — I can add complexity later. Show the 'v1' I can build in 4 weeks.",
+      "successMessage": "A complete architecture plan is your project's blueprint. Starting with clarity prevents the rewrites that kill solo projects."
     }
   ]
 }

@@ -1,210 +1,302 @@
 {
   "01-the-voice-revolution": [
     {
-      "id": "ava-1-1",
+      "id": "audio-1-1",
       "type": "freeform",
-      "instruction": "List 5 applications of AI voice/audio in business. Each: current state (what's possible) and one limitation.",
-      "placeholder": "Application 1: ...",
+      "instruction": "List 5 applications of AI voice and audio technology in business. For each, describe what's currently possible and one key limitation that still exists.",
+      "placeholder": "Application 1: AI voice assistants for customer service — Currently possible: ... Limitation: ...",
+      "hint": "Think across categories: customer service (voice bots), content creation (podcasts, audiobooks), accessibility (screen readers), internal tools (meeting transcription), marketing (personalized audio ads). Current limitations include: emotional nuance, accents/dialects, real-time conversation handling, and voice cloning ethics.",
       "criteria": {
-        "keywords": [
-          "voice",
-          "audio",
-          "TTS",
-          "clone",
-          "podcast",
-          "transcri",
-          "business"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["voice", "audio", "TTS", "clone", "podcast", "transcri", "business"]
       },
-      "successMessage": "Understanding capabilities AND limitations is key."
+      "badExample": "1. Voice assistants. 2. Podcasts. 3. Audiobooks. 4. Music. 5. Transcription.",
+      "goodExample": "1. Customer service voice bots — Currently: handle 60% of routine calls (balance inquiries, hours, FAQs) with natural-sounding voices. Limitation: struggle with emotional callers, complex multi-turn problem-solving, and heavy accents.\n2. Podcast production — Currently: generate full episodes from text scripts with multiple AI voices, auto-edit filler words. Limitation: AI voices still lack the spontaneity and personality of human hosts.\n3. Real-time translation — Currently: live speech-to-speech translation in 30+ languages with <2s latency. Limitation: idioms, cultural context, and industry jargon are frequently mistranslated.\n4. Meeting transcription + analysis — Currently: speaker diarization, action item extraction, sentiment analysis. Limitation: accuracy drops significantly with overlapping speakers or poor audio.\n5. Audiobook narration — Currently: produce 10-hour audiobooks in hours instead of weeks, voice consistency throughout. Limitation: character voice differentiation and emotional pacing still sound artificial in dramatic scenes.",
+      "successMessage": "Understanding both capabilities AND limitations is essential. The gap between possible and perfect is where business opportunities live."
+    },
+    {
+      "id": "audio-1-2",
+      "type": "analyze",
+      "instruction": "Analyze this business decision: a customer support call center with 50 agents wants to replace 30 of them with AI voice agents, keeping 20 humans for complex cases. What factors should they consider?",
+      "placeholder": "They should consider: customer experience impact, cost savings, implementation risks...",
+      "hint": "Factors: customer satisfaction (will CSAT drop?), cost analysis (AI agent costs vs. human salary + benefits), call types that can/can't be automated, transition plan (gradual rollout), regulatory requirements (must disclose AI), employee impact and PR risk, fallback strategy when AI fails, monitoring and quality assurance.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["customer", "cost", "quality", "transition", "human", "automate", "risk", "monitor"]
+      },
+      "badExample": "They should just do it, AI is cheaper.",
+      "goodExample": "Critical factors: (1) Customer experience — which call types can AI handle at human-equivalent quality? Probably: account balance, hours, order status (70% of volume). Probably not: complaints, cancellations, technical troubleshooting requiring empathy. (2) Cost math — 30 agents at $40K/year = $1.2M. AI voice platform: $200-500K/year. But factor in: implementation cost ($100-300K), ongoing tuning, monitoring staff. Real savings: ~$500K/year. (3) Transition risk — don't cut 30 agents on day 1. Pilot with 20% of calls for 3 months, measure CSAT. If CSAT drops >5%, pause. (4) Regulatory — many jurisdictions require disclosing AI to callers. Some industries (healthcare, finance) have strict rules. (5) Employee impact — layoffs create PR risk and may affect remaining team morale. Consider retraining agents for complex cases or AI supervision roles. (6) Fallback — AI must seamlessly escalate to humans when it hits limits, without making the customer restart.",
+      "successMessage": "Thoughtful analysis. AI voice deployment is as much a people and experience challenge as a technical one."
     }
   ],
   "02-text-to-speech-basics": [
     {
-      "id": "ava-2-1",
+      "id": "audio-2-1",
       "type": "prompt",
-      "instruction": "Write a prompt for a TTS-optimized script. Include SSML hints (pauses, emphasis), pacing markers, pronunciation notes.",
-      "placeholder": "Generate a TTS script about...",
+      "instruction": "Write a prompt asking AI to generate a TTS-optimized script. Include SSML-style hints for pauses, emphasis, pacing, and pronunciation guidance for tricky words.",
+      "placeholder": "Generate a TTS-optimized script about [topic] with pauses and emphasis markers...",
+      "hint": "TTS scripts need: short sentences (easier for synthesis), explicit pause markers (for natural breathing rhythm), emphasis on key words, pronunciation notes for names/acronyms/numbers, and pacing notes (slow down for important points, speed up for lists).",
       "criteria": {
-        "keywords": [
-          "pause",
-          "emphasis",
-          "pace",
-          "natural",
-          "pronunciation",
-          "script",
-          "speak"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["pause", "emphasis", "pace", "natural", "pronunciation", "script", "speak"]
       },
-      "successMessage": "TTS-optimized writing sounds natural. Regular writing sounds robotic."
+      "badExample": "Write a script I can turn into audio.",
+      "goodExample": "You are a professional voice script writer. Write a 60-second TTS script introducing our AI course platform. Optimize for speech synthesis: (1) Use short, punchy sentences (max 15 words). (2) Mark pauses: [PAUSE 0.5s] for brief pauses, [PAUSE 1s] for section breaks. (3) Mark emphasis: *emphasized words* in asterisks. (4) Add pronunciation guides: 'Like One (pronounced: like won)', 'AI (pronounced: A.I., not a word)'. (5) Add pacing notes: [SLOW] before key value propositions, [NORMAL] to resume. (6) Avoid tongue-twisters and awkward consonant clusters. Tone: warm, encouraging, professional but not corporate.",
+      "successMessage": "TTS-optimized writing sounds natural when spoken. Regular writing sounds robotic. The difference is in pauses, pacing, and sentence length."
+    },
+    {
+      "id": "audio-2-2",
+      "type": "freeform",
+      "instruction": "Compare 3 major TTS platforms (ElevenLabs, OpenAI TTS, Google Cloud TTS) for creating professional audio content. For each, evaluate: voice quality, customization options, pricing, and best use case.",
+      "placeholder": "ElevenLabs: Quality: ... Price: ... Best for: ...\nOpenAI TTS: ...",
+      "hint": "ElevenLabs: highest quality voices, voice cloning, emotion control, but most expensive ($5-99/month). OpenAI TTS: good quality, simple API, 6 built-in voices, affordable ($15/1M chars), great for app integration. Google Cloud TTS: most language support (200+ voices in 40+ languages), SSML support, pay-per-character, best for multilingual/enterprise.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["ElevenLabs", "OpenAI", "Google", "voice", "quality", "price", "clone"]
+      },
+      "badExample": "ElevenLabs is the best because it sounds the most natural.",
+      "goodExample": "ElevenLabs: Best quality — most natural prosody, emotion control, voice cloning from 30s sample. Price: $5/month (30 min audio) to $99/month (unlimited). Best for: podcasts, audiobooks, any content where voice quality is paramount. Limitation: expensive at scale.\n\nOpenAI TTS: Strong quality — 6 built-in voices (alloy, echo, fable, onyx, nova, shimmer), simple API. Price: $15/1M characters (~2 hours of audio). Best for: app integration where you need good-enough quality at scale. Limitation: no voice cloning, limited customization.\n\nGoogle Cloud TTS: Widest coverage — 200+ voices in 40+ languages, full SSML control, WaveNet and Neural2 models. Price: $4-16/1M characters depending on voice type. Best for: multilingual content, enterprise with SSML needs. Limitation: less natural than ElevenLabs for English content.",
+      "successMessage": "Choosing the right TTS platform depends on your quality needs, budget, and scale. Many projects use different platforms for different content types."
     }
   ],
   "03-voice-cloning-and-custom-voices": [
     {
-      "id": "ava-3-1",
+      "id": "audio-3-1",
       "type": "freeform",
-      "instruction": "Creating a custom AI brand voice: characteristics you'd want, ethical considerations, consent process, use cases.",
-      "placeholder": "Voice characteristics: ... Ethics: ...",
+      "instruction": "You're creating a custom AI brand voice for a company. Describe: the voice characteristics you'd specify, the ethical requirements you'd put in place, the consent process, and 3 specific use cases for the voice.",
+      "placeholder": "Voice characteristics: [gender, tone, pace, accent]...\nEthics: ...\nConsent: ...\nUse cases: ...",
+      "hint": "Voice characteristics: gender, age range, accent, tone (warm/authoritative/friendly), pace, energy level. Ethics: only clone voices with explicit written consent, never impersonate real people without permission, watermark AI audio, disclose AI-generated content. Consent: written agreement specifying how the voice will be used, for how long, and how to revoke. Use cases: product tutorials, customer support hold messages, internal training content.",
       "criteria": {
-        "keywords": [
-          "voice",
-          "clone",
-          "consent",
-          "ethical",
-          "brand",
-          "custom",
-          "tone"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["voice", "clone", "consent", "ethical", "brand", "custom", "tone"]
       },
-      "successMessage": "Voice cloning with consent and ethics. Responsible usage."
+      "badExample": "Pick a nice sounding voice and use it everywhere.",
+      "goodExample": "Voice characteristics: Female, 30s, neutral American English accent, warm and approachable tone (not corporate), medium pace (150 words/min), natural breath pauses, slight smile quality. Matches our brand: accessible tech education.\n\nEthics requirements: (1) If using a real person's voice, written consent specifying: exact use cases, duration, compensation, right to revoke. (2) All AI-generated audio watermarked with inaudible identifier. (3) Public content labeled 'AI-generated voice' in description. (4) Never use the voice for content the original speaker hasn't approved.\n\nConsent process: Legal agreement covering: voice likeness rights, permitted use cases, prohibited uses (political content, adult content, deception), term (1 year, renewable), compensation, deletion process if revoked.\n\nUse cases: (1) Course lesson narration — consistent voice across 100+ lessons without booking studio time. (2) Welcome messages and onboarding — personalized greetings using student's name. (3) Audio summaries — auto-generate audio versions of written content for accessibility.",
+      "successMessage": "Voice cloning with proper consent and ethics is powerful technology. The consent process is as important as the technical setup."
+    },
+    {
+      "id": "audio-3-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a voice design document for a brand. Include the brand personality and ask for specific voice attributes that match.",
+      "placeholder": "Design an AI brand voice for [brand/company] that matches our personality of...",
+      "hint": "Include your brand personality (innovative, warm, authoritative, playful), target audience, content types, and any voices to avoid. Ask for: specific attributes (gender, age, accent, pace, energy), reference descriptions ('sounds like a knowledgeable friend, not a lecturer'), do's and don'ts, and sample scripts demonstrating the voice.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["brand", "voice", "personality", "tone", "audience", "design", "attribute"]
+      },
+      "badExample": "Pick a voice for our brand.",
+      "goodExample": "You are a brand voice designer. Create a voice design document for our AI education platform. Brand personality: approachable expert — we make complex tech accessible without dumbing it down. Audience: 25-45 year old professionals learning AI skills. Content types: course lessons (5-15 min), quick tips (30-60s), marketing videos (2-3 min). Design: (1) Primary voice attributes (gender, age, accent, pace, warmth level). (2) Reference description ('sounds like...'). (3) 3 sample scripts demonstrating the voice in different content types. (4) Voice do's and don'ts (do: conversational, encouraging. Don't: condescending, overly casual, monotone). (5) TTS platform recommendation for this voice profile.",
+      "successMessage": "A voice design document ensures consistency across all audio content. Your brand voice should be as intentional as your visual brand."
     }
   ],
   "04-podcast-production": [
     {
-      "id": "ava-4-1",
+      "id": "audio-4-1",
       "type": "prompt",
-      "instruction": "Generate a complete podcast episode outline: intro hook, segments, talking points, transitions, outro CTA.",
-      "placeholder": "Create a podcast outline about...",
+      "instruction": "Write a prompt to generate a complete podcast episode outline: compelling intro hook, structured segments, talking points for each segment, transitions, and an outro with call-to-action.",
+      "placeholder": "Create a podcast outline for an episode about [topic]...",
+      "hint": "A good podcast outline includes: cold open hook (grab attention in first 15 seconds), intro with episode preview, 3-4 segments with specific talking points, transitions between segments, listener engagement moments (questions, polls), outro with recap and CTA. Specify: episode length, target audience, and tone.",
       "criteria": {
-        "keywords": [
-          "intro",
-          "segment",
-          "talking point",
-          "transition",
-          "outro",
-          "CTA",
-          "hook"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["intro", "segment", "talking point", "transition", "outro", "CTA", "hook"]
       },
-      "successMessage": "Structure turns rambling into compelling listening."
+      "badExample": "Write a podcast outline about AI.",
+      "goodExample": "You are a podcast producer. Create a detailed episode outline for 'AI for Real People' — Episode 12: 'AI Tools That Actually Save Time.' Target: non-technical professionals. Length: 25 minutes. Structure: (1) Cold open: a surprising stat or personal story (15 seconds). (2) Intro: welcome, what today's episode covers, why it matters (1 min). (3) Segment 1: The 3 AI tools I use daily — specific tools with before/after time savings (7 min). (4) Segment 2: Common mistakes that waste time with AI — the 'garbage in, garbage out' trap (5 min). (5) Segment 3: Listener Q&A from last episode — 3 questions with answers (7 min). (6) Outro: 3 key takeaways, homework challenge, CTA (subscribe, leave review, submit questions). For each segment: 3-4 specific talking points and the transition to the next segment.",
+      "successMessage": "Structure turns rambling into compelling listening. A detailed outline is 80% of a great podcast episode."
+    },
+    {
+      "id": "audio-4-2",
+      "type": "freeform",
+      "instruction": "Design an AI-assisted podcast production workflow from concept to published episode. Include which AI tools handle each step and what still requires a human touch.",
+      "placeholder": "Step 1: Topic research — AI tool: ... Human touch needed: ...\nStep 2: Script writing — ...",
+      "hint": "Steps: topic research (AI + human), outline generation (AI), script writing (AI draft + human edit), recording (human), editing (AI noise removal + human creative edits), show notes (AI), transcription (AI), social media clips (AI selection + human approval), distribution (automated). The key human-touch areas: authentic storytelling, voice performance, editorial judgment on what to keep/cut.",
+      "criteria": {
+        "minLength": 80,
+        "keywords": ["AI", "human", "edit", "record", "script", "publish", "workflow", "tool"]
+      },
+      "badExample": "Use AI for everything and just record.",
+      "goodExample": "9-step AI podcast workflow:\n1. Topic research — AI: scan trending topics, analyze competitor episodes, suggest angles. Human: pick topic that resonates with your unique perspective.\n2. Outline — AI: generate full outline with segments, talking points, transitions (Claude). Human: adjust order, add personal stories.\n3. Script — AI: draft conversational script from outline (Claude). Human: rewrite in your voice, add humor/personality.\n4. Recording — Human only: authentic delivery can't be replaced. AI assist: real-time teleprompter with script.\n5. Editing — AI: auto-remove filler words, normalize volume, reduce background noise (Descript/Adobe Podcast). Human: creative cuts, pacing decisions, add music.\n6. Show notes — AI: generate episode summary, timestamps, key takeaways from transcript (Claude).\n7. Transcription — AI only: Whisper/Deepgram for full transcript, auto-formatted with speaker labels.\n8. Social clips — AI: identify most engaging 60-second clips from transcript (Opus Clip). Human: approve and add captions.\n9. Distribution — Automated: publish to Spotify/Apple/RSS, schedule social posts, send newsletter.\nTotal time: 8 hours traditional → 3 hours with AI assistance.",
+      "successMessage": "AI handles the tedious production work so you can focus on what makes podcasts great: authentic storytelling and genuine connection."
     }
   ],
   "05-audiobook-creation": [
     {
-      "id": "ava-5-1",
+      "id": "audio-5-1",
       "type": "freeform",
-      "instruction": "Plan AI-assisted audiobook production: chapter prep, voice selection, quality checks, full pipeline.",
-      "placeholder": "Step 1: Prepare chapters...",
+      "instruction": "Plan an AI-assisted audiobook production pipeline: from preparing the manuscript to final mastered audio. Include chapter preparation, voice selection, quality checkpoints, and the complete production workflow.",
+      "placeholder": "Step 1: Manuscript preparation — Clean up text for...\nStep 2: Voice selection — ...",
+      "hint": "Pipeline: (1) Manuscript prep — clean formatting, add pronunciation guides, mark chapter breaks and scene changes. (2) Voice selection — audition 3-5 voices with a sample chapter. (3) Chapter-by-chapter generation with consistency checks. (4) Quality review per chapter — pronunciation, pacing, emotional tone. (5) Editing — fix mispronunciations, adjust pacing, add chapter breaks. (6) Mastering — normalize levels, add room tone, format for distribution. (7) Metadata — chapter markers, cover art, description.",
       "criteria": {
-        "keywords": [
-          "chapter",
-          "voice",
-          "quality",
-          "production",
-          "narrat",
-          "edit",
-          "master"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["chapter", "voice", "quality", "production", "narrat", "edit", "master"]
       },
-      "successMessage": "AI audiobooks are a real revenue stream."
+      "badExample": "Feed the book into TTS and publish it.",
+      "goodExample": "7-step AI audiobook pipeline:\n1. Manuscript prep — Strip formatting to plain text. Add pronunciation guides for character names, places, technical terms. Mark: chapter breaks, scene changes, dialogue vs narration, emotional tone shifts ([whisper], [excited]). Estimated: 2 hours for 200-page book.\n2. Voice audition — Generate Chapter 1 with 4 different voices. Evaluate: clarity, warmth, pacing, character differentiation. Get 3 people to blind-rate samples.\n3. Full generation — Process chapter by chapter (not all at once) for consistency. Use same voice settings, same session parameters. Add pronunciation dictionary that persists across chapters.\n4. Per-chapter QA — Listen to each chapter checking: mispronunciations (especially names), unnatural pauses, monotone sections, pace consistency. Flag issues for re-generation.\n5. Editing — Re-generate flagged sections. Splice corrections in. Add 2-second silence between chapters. Insert intro/outro if needed.\n6. Mastering — Normalize to -14 LUFS (audiobook standard). Add subtle room tone to prevent dead silence. De-ess, compress dynamic range. Export as M4B with chapter markers.\n7. Distribution prep — Add metadata (title, author, narrator credit 'AI-narrated'), chapter markers, cover art. Submit to ACX/Findaway.",
+      "successMessage": "AI audiobook production is a real and growing business. The pipeline from manuscript to published audio can now be done in days instead of months."
+    },
+    {
+      "id": "audio-5-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to prepare a book chapter for TTS conversion. Include specific instructions for handling dialogue, technical terms, and emotional shifts.",
+      "placeholder": "Prepare this chapter for AI narration by adding...",
+      "hint": "Ask AI to: add pronunciation guides for unusual names/terms, mark dialogue with speaker attribution, add emotional tone markers, break long paragraphs into TTS-friendly chunks, flag potential problem areas (acronyms, numbers, foreign words), and add pacing notes for dramatic sections.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["chapter", "dialogue", "pronunciation", "tone", "prepare", "TTS", "narration"]
+      },
+      "badExample": "Clean up this chapter for audio.",
+      "goodExample": "You are an audiobook production engineer. Prepare this chapter for AI TTS narration: (1) Add pronunciation guides in brackets for: character names, place names, technical terms, foreign words. Example: Hermione [her-MY-oh-nee]. (2) Mark dialogue with voice direction: 'said Sarah [warm, gentle]', 'shouted Marcus [angry, loud]'. (3) Add pacing markers: [PAUSE 1s] between scene changes, [SLOW] before emotional revelations, [NORMAL] to resume. (4) Break paragraphs longer than 3 sentences into smaller chunks. (5) Convert numbers to spoken form ('42' → 'forty-two', '$1,234' → 'twelve hundred thirty-four dollars'). (6) Flag potential TTS issues: abbreviations, acronyms, unusual punctuation. Output the marked-up chapter text ready for TTS processing.",
+      "successMessage": "Manuscript preparation is the most important step. Well-prepared text generates dramatically better audio than raw text."
     }
   ],
   "06-music-and-sound-design": [
     {
-      "id": "ava-6-1",
+      "id": "audio-6-1",
       "type": "prompt",
-      "instruction": "Write a creative brief for AI-generated background music: mood, tempo, instruments, duration, intended use.",
-      "placeholder": "Generate a music brief for...",
+      "instruction": "Write a detailed creative brief for AI-generated background music. Include: mood, tempo, instruments, duration, and where this music will be used.",
+      "placeholder": "Generate background music that feels [mood] with [instruments]...",
+      "hint": "A good music brief is specific: 'upbeat' is vague, 'energetic but not frantic, like a confident morning routine' is clear. Include: primary emotion, tempo in BPM, key instruments, genre influences, dynamic arc (starts quiet, builds, resolves), specific things to avoid, and the context where it'll be used (podcast intro, video background, hold music).",
       "criteria": {
-        "keywords": [
-          "mood",
-          "tempo",
-          "instrument",
-          "duration",
-          "background",
-          "music",
-          "genre"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["mood", "tempo", "instrument", "duration", "background", "music", "genre"]
       },
-      "successMessage": "Detailed brief = exact vibe, every time."
+      "badExample": "Make some nice background music.",
+      "goodExample": "Creative brief for AI course platform intro music: Mood: optimistic and forward-looking, like starting a new adventure. Not corporate-generic. Think: morning sunrise, fresh start. Tempo: 110-120 BPM (moderate energy). Instruments: acoustic guitar (warm foundation), light electronic pads (modern feel), subtle percussion (not drum-heavy), piano accents. Duration: 15 seconds for short version (logo sting), 60 seconds for full version (fades in and out). Dynamic arc: soft piano + guitar for 5 seconds → add pads at 5s → gentle build to peak at 10s → resolve at 12s → subtle outro. Avoid: heavy bass, aggressive drums, cheesy stock-music feel, anything that sounds like a car commercial. Usage: course video intros, podcast intro, website hero section background.",
+      "successMessage": "Detailed music briefs produce exactly what you envision. Vague briefs produce generic stock music."
+    },
+    {
+      "id": "audio-6-2",
+      "type": "freeform",
+      "instruction": "Design a sound design system for an AI application. Define audio feedback for 5 user interactions: what sound plays, why it was chosen, and how it enhances the experience.",
+      "placeholder": "Interaction 1: Message sent — Sound: [describe] — Why: ...",
+      "hint": "Think about sonic branding: each sound should reinforce the app's personality. Sounds for: sending a message, receiving AI response, success/completion, error/failure, notification. Consider: should sounds be minimal (soft clicks) or expressive (melodic)? Do they match the brand? Are they accessible (not relying solely on audio)?",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["sound", "interaction", "feedback", "user", "brand", "experience", "design"]
+      },
+      "badExample": "Add sound effects for clicks and notifications.",
+      "goodExample": "Sound design for AI chat application:\n1. Message sent — Sound: soft, ascending two-note chime (C to E, 200ms). Why: confirms the action succeeded, ascending pitch = forward progress. Feels like a gentle 'sent' without being intrusive.\n2. AI starts responding — Sound: subtle shimmer/sparkle (400ms, barely audible). Why: signals the AI is working, creates a moment of anticipation. Different from 'sent' sound so user knows the state changed.\n3. AI response complete — Sound: warm, resolved chord (300ms). Why: completion signal. The harmonic resolution creates a satisfying 'done' feeling.\n4. Error/failure — Sound: low, gentle double-tap (not alarming, 150ms). Why: alerts without anxiety. Two taps = 'try again.' Deliberately not a harsh buzzer.\n5. Achievement unlocked (course progress) — Sound: bright ascending arpeggio (500ms). Why: celebratory but not cheesy. Rewards progress, encourages continuation.\nAll sounds share the same instrument palette (piano + pad) for brand consistency. Total volume: 40% of system volume. All interactions also have visual feedback (sounds enhance but aren't required).",
+      "successMessage": "Thoughtful sound design makes apps feel alive and responsive. Every sound should reinforce the brand and provide useful feedback."
     }
   ],
   "07-transcription-and-analysis": [
     {
-      "id": "ava-7-1",
+      "id": "audio-7-1",
       "type": "prompt",
-      "instruction": "Write a prompt: take a meeting transcript and extract key topics, sentiment shifts, action items, 1-paragraph summary.",
-      "placeholder": "From this transcript, extract...",
+      "instruction": "Write a prompt that takes a meeting transcript and extracts: key topics discussed, sentiment shifts throughout the meeting, action items with owners, and a one-paragraph executive summary.",
+      "placeholder": "Analyze this meeting transcript. Extract: topics, sentiment, action items, summary...",
+      "hint": "Ask for structured output with specific formats. Topics: ranked by time spent. Sentiment: track positive/negative/neutral shifts with timestamps and triggers. Action items: task + owner + deadline. Summary: one paragraph covering decisions, outcomes, and next steps. Include speaker-level analysis if speakers are identified.",
       "criteria": {
-        "keywords": [
-          "transcript",
-          "topic",
-          "sentiment",
-          "action item",
-          "summary",
-          "speaker"
-        ],
-        "minLength": 40
+        "minLength": 40,
+        "keywords": ["transcript", "topic", "sentiment", "action item", "summary", "speaker"]
       },
-      "successMessage": "Hours of audio into actionable intelligence in seconds."
+      "badExample": "Summarize this meeting transcript.",
+      "goodExample": "You are a meeting intelligence analyst. Analyze this 45-minute transcript: (1) KEY TOPICS — list each topic discussed, time spent, and resolution status (resolved/open/deferred). (2) SENTIMENT MAP — track emotional tone throughout: positive start? When did tension arise? What triggered it? How was it resolved? Show as a timeline with emoji markers. (3) SPEAKER ANALYSIS — for each identified speaker: talk time percentage, topics they drove, commitments they made. (4) ACTION ITEMS — table: task | owner | deadline | priority | context (which discussion spawned it). (5) DECISIONS LOG — what was decided, by whom, with what rationale. (6) EXECUTIVE SUMMARY — one paragraph: what was the meeting about, what was decided, what's next. (7) FOLLOW-UP QUESTIONS — unresolved items that need answers before next meeting.",
+      "successMessage": "Hours of audio distilled into actionable intelligence. The sentiment analysis catches dynamics that meeting notes miss."
+    },
+    {
+      "id": "audio-7-2",
+      "type": "freeform",
+      "instruction": "Design a workflow for automatically processing and analyzing all recordings from a weekly team meeting series. Include: transcription, analysis, storage, and how insights are delivered to the team.",
+      "placeholder": "Recording uploaded → Step 1: Transcribe using...",
+      "hint": "Workflow: (1) Auto-upload recording to cloud storage, (2) Transcribe with speaker diarization (Whisper/Deepgram), (3) AI analysis (topics, decisions, action items, sentiment), (4) Generate structured notes in standard format, (5) Create action items in project management tool, (6) Post summary to team Slack channel, (7) Store in searchable archive. Bonus: track trends across meetings (recurring topics, unresolved items, action item completion rate).",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["transcribe", "analyze", "action item", "store", "Slack", "automatic", "weekly"]
+      },
+      "badExample": "Record the meeting and send the transcript to everyone.",
+      "goodExample": "Automated meeting intelligence pipeline:\n1. Recording auto-uploaded to S3 via Zoom webhook (when recording available).\n2. Trigger: Supabase Edge Function receives S3 notification → starts processing.\n3. Transcription: Deepgram API with speaker diarization — identifies who said what. Output: JSON with timestamps, speaker labels, text.\n4. AI Analysis: Claude processes transcript → extracts: topics, decisions, action items, sentiment timeline, follow-ups. Structured JSON output.\n5. Action items → automatically created as Jira/Linear tickets assigned to mentioned owners.\n6. Meeting summary → posted to #team-meetings Slack channel within 10 minutes of meeting end.\n7. Archive → full transcript + analysis stored in Supabase. Searchable: 'What did we decide about pricing in the last 3 meetings?'\n8. Weekly trend report (automated Friday): recurring unresolved topics, action item completion rate, meeting time trends.\nEstimated savings: 2 hours/week of manual note-taking and follow-up.",
+      "successMessage": "Automated meeting intelligence saves hours and captures insights that manual notes miss. The archive becomes a searchable team memory."
     }
   ],
   "08-voice-interfaces": [
     {
-      "id": "ava-8-1",
+      "id": "audio-8-1",
       "type": "freeform",
-      "instruction": "Design a voice interface for customer service: greeting flow, misunderstood input handling, escalation, personality.",
-      "placeholder": "Greeting: ... If misunderstood: ...",
+      "instruction": "Design a voice interface for a customer service application. Define: the greeting flow, how it handles misunderstood input, the escalation path to a human, and the personality of the voice.",
+      "placeholder": "Greeting: 'Hi, I'm [name], how can I help today?'\nIf misunderstood: ...\nEscalation: ...",
+      "hint": "Good voice UX: clear greeting with capability preview ('I can help with orders, returns, and account questions'), confirmation before action ('I'll look up order 1234, is that right?'), graceful failure ('I didn't quite catch that, could you say it differently?'), easy escalation ('Say human or press 0 at any time'), and consistent personality throughout.",
       "criteria": {
-        "keywords": [
-          "greeting",
-          "misunderstood",
-          "repeat",
-          "escalate",
-          "human",
-          "personality"
-        ],
-        "minLength": 50
+        "minLength": 50,
+        "keywords": ["greeting", "misunderstood", "repeat", "escalate", "human", "personality"]
       },
-      "successMessage": "Voice UX designed for edge cases that matter."
+      "badExample": "Hello, please state your issue. Error, I don't understand. Goodbye.",
+      "goodExample": "Voice interface design for retail support:\n\nPersonality: Helpful friend at a store — warm, patient, uses natural language (not corporate speak). Name: 'Kai.'\n\nGreeting: 'Hi, I'm Kai! I can help with orders, returns, or account questions. What can I do for you today?'\n\nHappy path: Customer says 'Where's my order?' → 'Sure! Can you give me your order number or the email you used?' → Customer provides info → 'Found it! Order #1234 shipped yesterday and should arrive by Thursday. Would you like tracking details?'\n\nMisunderstood (attempt 1): 'Sorry, I didn't quite catch that. Could you say that again?' [lower background noise threshold]\nMisunderstood (attempt 2): 'I'm still having trouble understanding. Could you try saying it in a different way? Or I can connect you with someone who can help.'\nMisunderstood (attempt 3): 'Let me connect you with a team member who can help right away. One moment.' [auto-escalate]\n\nEscalation: 'Say human or press zero any time to speak with a person. There's currently a 2-minute wait.'\n\nClosing: 'Anything else I can help with? ... Great, have a wonderful day!'",
+      "successMessage": "Voice UX is all about handling the unexpected gracefully. The misunderstood-input flow is more important than the happy path."
+    },
+    {
+      "id": "audio-8-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to design the conversation flow for a voice assistant that handles appointment booking. Include edge cases like schedule conflicts, cancellations, and multi-step confirmations.",
+      "placeholder": "Design a voice conversation flow for booking appointments...",
+      "hint": "Include: what type of appointments, available slots, confirmation requirements. Ask for: the complete conversation tree with branches for each user response, handling for ambiguous dates ('next Tuesday'), confirmation before booking, handling conflicts ('that slot is taken, here are alternatives'), cancellation flow, and reminder system.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["appointment", "book", "schedule", "confirm", "conflict", "cancel", "voice"]
+      },
+      "badExample": "Design a voice bot that books appointments.",
+      "goodExample": "You are a conversational UX designer. Design a voice flow for booking medical appointments. Context: patients call to schedule with a specific doctor, appointments are 30 or 60 minutes, available M-F 9am-5pm. Design the complete flow including: (1) Identify patient (name + DOB for verification). (2) Appointment type selection (checkup, follow-up, urgent). (3) Doctor preference (specific or next available). (4) Date/time negotiation — handle: 'next week sometime', 'Tuesday or Wednesday afternoon', 'ASAP.' (5) Conflict handling — 'Dr. Smith is full Tuesday. Available: Wednesday 2pm or Thursday 10am.' (6) Confirmation — repeat all details, get verbal 'yes.' (7) Edge cases: patient changes mind mid-flow, patient is new (no record), patient needs to cancel existing appointment. Show as a conversation tree with user intent branches.",
+      "successMessage": "Appointment booking is one of the highest-value voice interface use cases. The edge cases (conflicts, changes, new patients) are where great design matters."
     }
   ],
   "09-audio-editing-with-ai": [
     {
-      "id": "ava-9-1",
+      "id": "audio-9-1",
       "type": "freeform",
-      "instruction": "5 audio editing tasks AI automates. Each: manual process replaced, AI tool/technique, quality vs manual.",
-      "placeholder": "Task 1: ... Manual: ... AI: ...",
+      "instruction": "Describe 5 audio editing tasks that AI can automate. For each: the manual process it replaces, the AI tool or technique used, and how the quality compares to manual editing.",
+      "placeholder": "Task 1: Noise removal — Manual: hours of spectral editing... AI: ...",
+      "hint": "Common AI audio editing tasks: background noise removal, filler word removal (um, uh, like), volume normalization/leveling, echo/reverb reduction, music/voice separation. For quality comparison, be honest — AI is great at noise removal and leveling, good at filler word removal, and still developing for creative editing decisions.",
       "criteria": {
-        "keywords": [
-          "noise",
-          "edit",
-          "remove",
-          "enhance",
-          "automate",
-          "manual",
-          "quality"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["noise", "edit", "remove", "enhance", "automate", "manual", "quality"]
       },
-      "successMessage": "AI audio editing is mature and useful. You know the toolkit."
+      "badExample": "AI can remove noise and fix audio.",
+      "goodExample": "5 AI audio editing automations:\n1. Noise removal — Manual: 30-60 min of spectral editing in Audacity, identifying and removing specific frequency bands. AI: Adobe Podcast's Enhance Speech or Krisp — one click, processes in seconds. Quality: AI is 90% as good as expert manual editing for consistent background noise. Struggles with intermittent sounds (dog barks, door slams).\n2. Filler word removal — Manual: listen to entire recording, manually cut each 'um', 'uh', 'you know' and smooth the edit. 2-3 hours for a 1-hour recording. AI: Descript highlights fillers, removes with one click, auto-smooths transitions. Quality: 95% accuracy. Occasionally removes intentional pauses that sound like fillers.\n3. Volume normalization — Manual: compress dynamic range, set target LUFS, manually adjust quiet/loud sections. 30 min. AI: Auphonic or Descript auto-leveling. Quality: equal to manual for speech. Less nuanced than a mastering engineer for music.\n4. Echo/reverb reduction — Manual: extremely difficult, often impossible without artifacts. Hours of careful spectral work. AI: Adobe Podcast or Clarity Vox — significant improvement in seconds. Quality: doesn't fully eliminate echo but makes it 70% less noticeable. Still can't match recording in a treated room.\n5. Music/voice separation — Manual: impossible without stems. AI: Demucs or LALAL.ai separates vocals from instrumentals. Quality: impressive (95% separation for clean recordings), but introduces subtle artifacts in complex mixes.",
+      "successMessage": "AI audio editing is mature and practical. It saves hours on technical tasks so you can focus on creative decisions."
+    },
+    {
+      "id": "audio-9-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create an audio post-production checklist for a podcast episode. Include technical standards, quality checks, and export settings.",
+      "placeholder": "Create a podcast post-production checklist with technical standards...",
+      "hint": "Include: noise floor check, EQ settings for voice, compression ratios, loudness target (podcast standard is -16 LUFS for stereo, -19 for mono), de-essing, room tone padding, intro/outro music levels, export format (MP3 192kbps or higher), metadata, chapter markers.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["checklist", "LUFS", "noise", "EQ", "export", "quality", "standard"]
+      },
+      "badExample": "How do I finish editing my podcast?",
+      "goodExample": "You are a podcast audio engineer. Create a comprehensive post-production checklist for a solo-host podcast episode. Include: (1) NOISE — target noise floor, acceptable background level, tools to check. (2) EQ — recommended voice EQ settings (high-pass filter, presence boost). (3) COMPRESSION — ratio, threshold, attack/release for natural-sounding speech. (4) LOUDNESS — target LUFS for Apple Podcasts and Spotify (they're different!). (5) DE-ESSING — when to apply, settings. (6) MUSIC — intro/outro levels relative to voice, crossfade durations. (7) SILENCE — maximum acceptable silence duration, room tone fills. (8) EXPORT — format, bitrate, sample rate, mono vs stereo for speech. (9) METADATA — ID3 tags, episode artwork, chapter markers. (10) FINAL CHECK — listen on headphones AND phone speakers. For each item: the technical standard and how to verify it.",
+      "successMessage": "A post-production checklist ensures consistent quality across every episode. Technical standards are non-negotiable for professional audio."
     }
   ],
   "10-your-audio-studio": [
     {
-      "id": "ava-10-1",
+      "id": "audio-10-1",
       "type": "freeform",
-      "instruction": "Design your AI audio studio: tools, content to produce, workflow, distribution plan.",
-      "placeholder": "Tools: ... Content: ...",
+      "instruction": "Design your personal AI audio studio: the tools you'd use, the content you'd produce, your production workflow, and your distribution plan. Include both free and paid tools with estimated costs.",
+      "placeholder": "Tools: [TTS platform], [editing tool], [hosting]...\nContent: ...\nWorkflow: ...\nDistribution: ...",
+      "hint": "Consider: what audio content makes sense for your goals (podcast, audiobook, course narration, voice notes)? What tools fit your budget? A complete studio needs: generation (TTS or recording), editing (noise removal, normalization), hosting (podcast host or course platform), and distribution (where your audience is). Start with free tiers and upgrade as needed.",
       "criteria": {
-        "keywords": [
-          "tool",
-          "produce",
-          "workflow",
-          "distribute",
-          "podcast",
-          "voice",
-          "audio"
-        ],
-        "minLength": 60
+        "minLength": 60,
+        "keywords": ["tool", "produce", "workflow", "distribute", "podcast", "voice", "audio"]
       },
-      "successMessage": "Complete audio studio powered by AI. Time to record."
+      "badExample": "Use ElevenLabs and Descript.",
+      "goodExample": "My AI Audio Studio for course content:\n\nTools: (1) Script writing: Claude (included in existing subscription, $0). (2) TTS generation: ElevenLabs Starter ($5/month, 30 min audio — enough for 2 course lessons). (3) Editing: Descript free tier for basic edits, Audacity (free) for advanced. (4) Music: Suno AI free tier for intro jingles, Pixabay for royalty-free backgrounds ($0). (5) Hosting: course audio hosted on Supabase Storage ($0 with existing plan).\n\nContent plan: 2 audio lessons per week (10-15 min each), 1 monthly podcast episode (25 min), audio summaries of written content (2-3 min each).\n\nWorkflow: Monday — Claude drafts script → I edit for voice → ElevenLabs generates audio. Tuesday — edit in Descript (remove artifacts, normalize) → add intro music → export. Wednesday — upload to platform, create show notes.\n\nDistribution: Course lessons on our platform. Podcast on Spotify + Apple via Buzzsprout ($12/month). Audio summaries embedded on blog posts.\n\nTotal cost: $17/month. Produces ~2 hours of content per month.",
+      "successMessage": "A complete AI audio studio for under $20/month. The tools are ready — the content opportunities are enormous."
+    },
+    {
+      "id": "audio-10-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a 30-day content plan for launching your AI audio studio. Include what to produce each week, which tools to learn, and specific milestones.",
+      "placeholder": "Create a 30-day launch plan for my audio studio...",
+      "hint": "A good 30-day plan ramps up gradually: Week 1 is tool setup and learning, Week 2 is first content creation, Week 3 is refinement and workflow optimization, Week 4 is launch and distribution. Include specific deliverables for each week and the skills to practice.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["30 day", "plan", "week", "launch", "produce", "learn", "milestone"]
+      },
+      "badExample": "Help me start making audio content.",
+      "goodExample": "You are an audio content strategist. Create a 30-day launch plan for my AI audio studio. Context: I run an AI education platform and want to add audio content (course narrations + a weekly podcast). Tools available: Claude, ElevenLabs ($5/month), Descript free tier, Audacity. Skills: I can write but have zero audio production experience. Design a week-by-week plan: Week 1 — tool setup + learning (specific tutorials to complete, test recordings). Week 2 — produce first 3 pieces of content (2 narrations + 1 podcast pilot). Week 3 — refine workflow, establish templates, get feedback. Week 4 — launch publicly with 5 published audio pieces. For each week: specific daily tasks, skills to practice, quality milestones, and the deliverable due by week's end. Include a 'minimum viable audio quality' checklist I should meet before publishing.",
+      "successMessage": "A structured 30-day plan gets you from zero to published. By day 30 you'll have a workflow, a library, and the confidence to keep producing."
     }
   ]
 }

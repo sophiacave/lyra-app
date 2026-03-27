@@ -28,14 +28,13 @@ function useTypingEffect(text, isActive) {
         setIsDone(true);
         return;
       }
-      // Variable speed: pause at punctuation, fast on spaces
       const char = text[i - 1];
-      let delay = 16; // base speed (fast)
+      let delay = 16;
       if (char === '.' || char === '!' || char === '?') delay = 120;
       else if (char === ',' || char === ';' || char === ':') delay = 60;
       else if (char === '\n') delay = 80;
       else if (char === ' ') delay = 10;
-      else delay = 14 + Math.random() * 8; // slight jitter for natural feel
+      else delay = 14 + Math.random() * 8;
       timer = setTimeout(tick, delay);
     };
 
@@ -44,6 +43,23 @@ function useTypingEffect(text, isActive) {
   }, [text, isActive]);
 
   return { displayed, isDone };
+}
+
+// Type metadata for exercise badges
+const TYPE_META = {
+  prompt:   { icon: '⚡', label: 'Write a prompt', color: 'var(--accent-blue)' },
+  freeform: { icon: '✦', label: 'Free response', color: 'var(--accent-warm)' },
+  rewrite:  { icon: '✏️', label: 'Rewrite this', color: 'var(--status-warning)' },
+  debug:    { icon: '🐛', label: 'Debug this', color: 'var(--status-error)' },
+  analyze:  { icon: '🔍', label: 'Analyze this', color: 'var(--accent-blue)' },
+  compare:  { icon: '⚖️', label: 'Compare', color: 'var(--text-secondary)' },
+};
+
+// Parse instruction for scenario-based types: split at double newline
+function parseScenario(instruction) {
+  const idx = instruction.indexOf('\n\n');
+  if (idx === -1) return { intro: instruction, scenario: null };
+  return { intro: instruction.slice(0, idx), scenario: instruction.slice(idx + 2) };
 }
 
 export default function PromptConsole({ exercises = [], lessonTitle = '', onActivity }) {
@@ -96,6 +112,10 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
   }, [history, displayed]);
 
   const exercise = exercises[activeExercise] || null;
+  const exType = exercise?.type || 'freeform';
+  const meta = TYPE_META[exType] || TYPE_META.freeform;
+  const usesTextarea = ['debug', 'analyze', 'rewrite', 'freeform', 'compare'].includes(exType);
+  const { intro, scenario } = exercise ? parseScenario(exercise.instruction) : { intro: '', scenario: null };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,12 +139,10 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         setCelebrationTrigger(t => t + 1);
         setCurrentResponse(result.feedback);
         setShowResponse(true);
-        // Check if all exercises done
         const newCompleted = new Set([...completedExercises, activeExercise]);
         if (exercises.length > 0 && newCompleted.size === exercises.length) {
           setTimeout(() => setAllDoneTrigger(t => t + 1), 1500);
         }
-        // Auto-advance
         setTimeout(() => {
           if (activeExercise < exercises.length - 1) {
             setActiveExercise(activeExercise + 1);
@@ -132,7 +150,6 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         }, 2000);
         return;
       } else {
-        // Show diff if exercise has examples and user failed
         if (exercise.badExample && exercise.goodExample) {
           setShowDiff(true);
         }
@@ -172,6 +189,14 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
     inputRef.current?.focus();
   };
 
+  // Handle textarea Enter (submit) vs Shift+Enter (newline)
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && usesTextarea) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className="console-panel">
       {/* Console header */}
@@ -186,14 +211,22 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         </span>
       </div>
 
-      {/* Exercise badge */}
+      {/* Exercise badge — type-aware */}
       {exercise && (
         <div className="console-exercise-bar">
-          <div className="console-exercise-badge">
-            <span className="console-exercise-icon">⚡</span>
-            <span className="console-exercise-label">Try it</span>
+          <div className="console-exercise-badge" style={{ borderColor: meta.color }}>
+            <span className="console-exercise-icon">{meta.icon}</span>
+            <span className="console-exercise-label" style={{ color: meta.color }}>{meta.label}</span>
           </div>
-          <p className="console-exercise-prompt">{exercise.instruction}</p>
+          <p className="console-exercise-prompt">{scenario ? intro : exercise.instruction}</p>
+
+          {/* Scenario block for debug/analyze/rewrite/compare */}
+          {scenario && (
+            <div className={`console-scenario console-scenario-${exType}`}>
+              <pre className="console-scenario-text">{scenario}</pre>
+            </div>
+          )}
+
           {exercise.hint && (
             <button
               className="console-hint-btn"
@@ -269,18 +302,32 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         )}
       </div>
 
-      {/* Input */}
+      {/* Input — textarea for long-form types, input for prompt type */}
       <form className="console-input-bar" onSubmit={handleSubmit}>
-        <input
-          ref={inputRef}
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder={exercise ? exercise.placeholder || 'Type your prompt...' : 'Type a prompt...'}
-          className="console-input"
-          disabled={isTyping}
-          autoComplete="off"
-        />
+        {usesTextarea ? (
+          <textarea
+            ref={inputRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder={exercise ? exercise.placeholder || 'Type your response...' : 'Type a prompt...'}
+            className="console-input console-textarea"
+            disabled={isTyping}
+            autoComplete="off"
+            rows={3}
+          />
+        ) : (
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={exercise ? exercise.placeholder || 'Type your prompt...' : 'Type a prompt...'}
+            className="console-input"
+            disabled={isTyping}
+            autoComplete="off"
+          />
+        )}
         <button
           type="submit"
           className="console-send-btn"
