@@ -1,0 +1,298 @@
+{
+  "tiers": [
+    {
+      "name": "Beginner",
+      "slug": "beginner",
+      "emoji": "🌱",
+      "description": "Start your AI journey. No experience needed.",
+      "courses": [
+        {
+          "slug": "claude-for-beginners",
+          "title": "Claude for Beginners",
+          "emoji": "🤖",
+          "description": "Learn to use Claude AI to automate your work life. From first conversation to building your personal assistant.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-foundations",
+          "title": "AI Foundations",
+          "emoji": "🧠",
+          "description": "Understand how AI actually works — neurons, prompts, embeddings — through hands-on exploration.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-for-business",
+          "title": "AI for Business Owners",
+          "emoji": "💼",
+          "description": "Cut through the AI hype. Learn what AI can (and can't) do for your business, with ROI calculators and policy templates.",
+          "tier": "beginner",
+          "audience": ["executives"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-for-creatives",
+          "title": "AI for Creatives",
+          "emoji": "🎨",
+          "description": "AI tools for writers, designers, and musicians. Generate ideas, remix work, and amplify your creative output.",
+          "tier": "beginner",
+          "audience": ["creatives"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-for-executives",
+          "title": "AI for Executives",
+          "emoji": "👔",
+          "description": "C-suite AI literacy. Strategy, risk assessment, vendor evaluation, and leading AI transformation.",
+          "tier": "beginner",
+          "audience": ["executives"],
+          "status": "planned"
+        },
+        {
+          "slug": "prompt-writing-101",
+          "title": "Prompt Writing 101",
+          "emoji": "✍️",
+          "description": "Master the art of talking to AI. Structure prompts that get exactly what you need, every time.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-ethics-and-safety",
+          "title": "AI Ethics & Safety",
+          "emoji": "🛡️",
+          "description": "Responsible AI use. Bias, privacy, misinformation, and building AI systems you can trust.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-for-marketing",
+          "title": "AI for Marketing",
+          "emoji": "📣",
+          "description": "Content, social media, email campaigns, and analytics — all supercharged with AI.",
+          "tier": "beginner",
+          "audience": ["marketers"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-for-personal-productivity",
+          "title": "AI for Personal Productivity",
+          "emoji": "⚡",
+          "description": "Automate your daily workflow. Email, scheduling, note-taking, research — reclaim 10+ hours per week.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-images-and-video",
+          "title": "Getting Started with AI Images & Video",
+          "emoji": "🖼️",
+          "description": "Create stunning visuals with AI. Image generation, video editing, and visual storytelling for non-designers.",
+          "tier": "beginner",
+          "audience": ["creatives"],
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "name": "Intermediate",
+      "slug": "intermediate",
+      "emoji": "🔧",
+      "description": "Build real systems. Connect tools. Ship products.",
+      "courses": [
+        {
+          "slug": "claude-mastery",
+          "title": "Claude Mastery",
+          "emoji": "🎯",
+          "description": "Advanced Claude techniques — system prompts, chain of thought, tool use, MCP servers, and building agents.",
+          "tier": "intermediate",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "automation-architect",
+          "title": "Automation Architect",
+          "emoji": "⚙️",
+          "description": "Design AI-powered automations. Triggers, APIs, smart routing, and production workflows.",
+          "tier": "intermediate",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "first-ai-agent",
+          "title": "Build Your First AI Agent",
+          "emoji": "🤖",
+          "description": "From chatbot to agent. The agent loop, tool calling, memory systems, and evaluation.",
+          "tier": "intermediate",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-stack-builder",
+          "title": "AI Stack Builder",
+          "emoji": "🏗️",
+          "description": "Full-stack AI development. Supabase, Vercel, Make.com, edge functions, and deployment.",
+          "tier": "intermediate",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-content-studio",
+          "title": "AI Content Studio",
+          "emoji": "🎬",
+          "description": "Create videos, images, and audio with AI. Build a content pipeline that produces professional-quality media.",
+          "tier": "intermediate",
+          "audience": ["creatives"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-for-data-analysis",
+          "title": "AI for Data Analysis",
+          "emoji": "📊",
+          "description": "Turn data into decisions. AI-powered dashboards, reports, and business intelligence for non-engineers.",
+          "tier": "intermediate",
+          "audience": ["executives", "analysts"],
+          "status": "planned"
+        },
+        {
+          "slug": "advanced-prompt-engineering",
+          "title": "Advanced Prompt Engineering",
+          "emoji": "🧬",
+          "description": "Prompt chains, few-shot learning, structured outputs, and production-grade prompt systems.",
+          "tier": "intermediate",
+          "audience": ["general"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-project-management",
+          "title": "AI Project Management",
+          "emoji": "📋",
+          "description": "Run projects with AI copilots. Planning, tracking, risk assessment, and team coordination — automated.",
+          "tier": "intermediate",
+          "audience": ["executives"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-powered-workflows",
+          "title": "Building AI-Powered Workflows",
+          "emoji": "🔄",
+          "description": "Connect AI to your existing tools. CRM, email, docs, spreadsheets — build workflows that think.",
+          "tier": "intermediate",
+          "audience": ["general"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-for-sales",
+          "title": "AI for Sales & Revenue",
+          "emoji": "💰",
+          "description": "AI-powered sales pipelines. Lead scoring, outreach automation, forecasting, and closing with AI assist.",
+          "tier": "intermediate",
+          "audience": ["business"],
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "name": "Advanced",
+      "slug": "advanced",
+      "emoji": "🚀",
+      "description": "Master-level AI. Build what doesn't exist yet.",
+      "courses": [
+        {
+          "slug": "mcp-masterclass",
+          "title": "MCP & AI Tool Integration",
+          "emoji": "🔌",
+          "description": "Model Context Protocol deep dive. Architecture, servers, tools, resources, and production integrations.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "rag-vector-search",
+          "title": "RAG & Vector Search",
+          "emoji": "🔍",
+          "description": "Build AI that knows your data. Embeddings, vector databases, chunking, retrieval, and hybrid search.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "the-automation-lab",
+          "title": "The Automation Lab",
+          "emoji": "🧪",
+          "description": "Multi-agent systems. Orchestration, communication, conflict resolution, monitoring, and the conscience layer.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "multi-agent-orchestration",
+          "title": "Multi-Agent Orchestration",
+          "emoji": "🎭",
+          "description": "Coordinate teams of AI agents. Routing, delegation, consensus, and fault-tolerant multi-agent architectures.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "planned"
+        },
+        {
+          "slug": "building-ai-products",
+          "title": "Building AI Products",
+          "emoji": "🏭",
+          "description": "From idea to revenue. Product design, pricing, launch strategy, and scaling AI-native businesses.",
+          "tier": "advanced",
+          "audience": ["entrepreneurs"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-infrastructure",
+          "title": "AI Infrastructure & DevOps",
+          "emoji": "🖥️",
+          "description": "Production AI systems. Edge functions, databases, caching, monitoring, and cost optimization at scale.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-enterprise-strategy",
+          "title": "AI for Enterprise Strategy",
+          "emoji": "🏢",
+          "description": "Enterprise AI transformation. Governance, procurement, change management, and measuring organizational AI maturity.",
+          "tier": "advanced",
+          "audience": ["executives"],
+          "status": "planned"
+        },
+        {
+          "slug": "content-generation-pipeline",
+          "title": "Advanced Content Generation Pipeline",
+          "emoji": "🎞️",
+          "description": "Build automated content factories. Multi-format output, quality control, brand consistency, and distribution at scale.",
+          "tier": "advanced",
+          "audience": ["creatives"],
+          "status": "planned"
+        },
+        {
+          "slug": "ai-voice-audio",
+          "title": "AI Voice & Audio Engineering",
+          "emoji": "🎙️",
+          "description": "Text-to-speech, voice cloning, podcast automation, music generation, and audio post-production with AI.",
+          "tier": "advanced",
+          "audience": ["creatives"],
+          "status": "planned"
+        },
+        {
+          "slug": "the-convergence-lab",
+          "title": "The Convergence Lab",
+          "emoji": "🌀",
+          "description": "The capstone. Build your own AI twin — persistent memory, autonomous agents, and human-AI convergence. This is where it all comes together.",
+          "tier": "advanced",
+          "audience": ["everyone"],
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

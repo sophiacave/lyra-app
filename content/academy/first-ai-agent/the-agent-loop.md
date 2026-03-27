@@ -1,0 +1,246 @@
+---
+title: "The Agent Loop"
+course: "first-ai-agent"
+order: 2
+type: "lesson"
+free: true
+---<nav class="nav">
+  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
+  <a href="/academy/first-ai-agent/" class="nav-link">← Course</a>
+</nav>
+
+<div class="content">
+  <div class="lesson-num">Lesson 2 of 10</div>
+  <h1>The Agent Loop</h1>
+  <p class="subtitle">Every agent runs the same fundamental cycle. Click each node to understand what happens at every step.</p>
+
+  <canvas id="loop-canvas"></canvas>
+  <p class="hint">Click any node on the loop to explore it</p>
+
+  <div class="node-tracker" id="tracker"></div>
+
+  <div class="info-panel" id="info">
+    <h3 id="info-title">🔄 The Loop</h3>
+    <p id="info-desc">This is the heartbeat of every AI agent. Unlike a chatbot that responds once and stops, an agent cycles through these five steps continuously until its goal is achieved. Click a node above to dive in.</p>
+    <div class="data-flow" id="info-data" style="display:none"></div>
+    <div class="concept" id="info-concept" style="display:none"></div>
+  </div>
+
+  <div class="complete-section" id="complete">
+    <h2>Lesson Complete!</h2>
+    <p>You understand the agent loop — the core pattern behind every autonomous AI system.</p>
+    <a href="tools-and-capabilities.html" class="next-btn">Next: Tools & Capabilities →</a>
+  </div>
+</div>
+
+<script>
+const nodes = [
+  {
+    label: 'Perceive', emoji: '👁', color: '#06b6d4',
+    desc: 'The agent takes in information from its environment. This could be a user message, sensor data, an API response, a file change, or a scheduled trigger. Perception is how the agent knows something needs doing.',
+    data: 'Input: user_message | api_webhook | cron_trigger | file_change',
+    concept: 'Think of perception as the agent\'s senses. Without it, the agent is blind — it can\'t act on what it can\'t see.'
+  },
+  {
+    label: 'Think', emoji: '🧠', color: '#38bdf8',
+    desc: 'The agent reasons about what it perceived. It considers its goal, checks its memory for relevant context, and decides what to do next. This is where the LLM does its core work — understanding intent and planning actions.',
+    data: 'Process: context + memory + goal → decision',
+    concept: 'This is the "intelligence" part. A chatbot thinks once. An agent thinks in context — with memory of what it\'s tried before.'
+  },
+  {
+    label: 'Act', emoji: '⚡', color: '#a855f7',
+    desc: 'The agent takes action by calling tools — sending an email, querying a database, making an API call, writing a file, or generating a response. This is what separates agents from chatbots: they DO things.',
+    data: 'Execute: tool_call(params) → side_effect',
+    concept: 'Actions have real consequences. An agent that can act is an agent that can create value — or cause damage. That\'s why guardrails matter.'
+  },
+  {
+    label: 'Observe', emoji: '📊', color: '#fb923c',
+    desc: 'After acting, the agent checks the result. Did the API call succeed? Did the email send? Was the data valid? Observation closes the feedback loop — without it, the agent flies blind.',
+    data: 'Evaluate: action_result → success | failure | partial',
+    concept: 'Observation is what makes agents self-correcting. If something fails, the agent knows and can try a different approach.'
+  },
+  {
+    label: 'Learn', emoji: '📚', color: '#ec4899',
+    desc: 'The agent updates its memory with what just happened. What worked, what didn\'t, what new information was discovered. This accumulated knowledge makes each loop smarter than the last.',
+    data: 'Store: memory.append(outcome, context, timestamp)',
+    concept: 'Learning is the agent\'s competitive advantage. A chatbot starts fresh every time. An agent that learns gets better with every cycle.'
+  }
+];
+
+const visited = new Set();
+const tracker = document.getElementById('tracker');
+nodes.forEach((n, i) => {
+  const pill = document.createElement('div');
+  pill.className = 'node-pill';
+  pill.textContent = n.emoji + ' ' + n.label;
+  pill.id = `pill-${i}`;
+  tracker.appendChild(pill);
+});
+
+// Canvas
+const canvas = document.getElementById('loop-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, dpr;
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  W = rect.width; H = rect.height;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resize();
+window.addEventListener('resize', resize);
+
+let time = 0;
+let activeNode = -1;
+const nodePositions = [];
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  time += 0.016;
+  const cx = W / 2, cy = H / 2 - 10;
+  const radius = Math.min(W, H) * 0.3;
+  nodePositions.length = 0;
+
+  // Draw connecting arcs
+  for (let i = 0; i < 5; i++) {
+    const a1 = (Math.PI * 2 * i / 5) - Math.PI / 2;
+    const a2 = (Math.PI * 2 * ((i + 1) % 5) / 5) - Math.PI / 2;
+    const x1 = cx + Math.cos(a1) * radius;
+    const y1 = cy + Math.sin(a1) * radius;
+    const x2 = cx + Math.cos(a2) * radius;
+    const y2 = cy + Math.sin(a2) * radius;
+
+    const loopPhase = (time * 0.8) % 5;
+    const isFlowing = Math.floor(loopPhase) === i;
+    const flowProgress = loopPhase - Math.floor(loopPhase);
+
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = isFlowing ? `rgba(6,182,212,${0.3 + flowProgress * 0.4})` : 'rgba(255,255,255,0.06)';
+    ctx.lineWidth = isFlowing ? 3 : 1;
+    ctx.stroke();
+
+    // Flow particle
+    if (isFlowing) {
+      const px = x1 + (x2 - x1) * flowProgress;
+      const py = y1 + (y2 - y1) * flowProgress;
+      ctx.beginPath();
+      ctx.arc(px, py, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#06b6d4';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(px, py, 8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(6,182,212,0.2)';
+      ctx.fill();
+    }
+
+    // Arrow head at midpoint
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+    const angle = Math.atan2(y2 - y1, x2 - x1);
+    ctx.beginPath();
+    ctx.moveTo(mx + Math.cos(angle) * 6, my + Math.sin(angle) * 6);
+    ctx.lineTo(mx + Math.cos(angle + 2.5) * 6, my + Math.sin(angle + 2.5) * 6);
+    ctx.lineTo(mx + Math.cos(angle - 2.5) * 6, my + Math.sin(angle - 2.5) * 6);
+    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    ctx.fill();
+  }
+
+  // Draw nodes
+  const loopActive = Math.floor((time * 0.8) % 5);
+  for (let i = 0; i < 5; i++) {
+    const angle = (Math.PI * 2 * i / 5) - Math.PI / 2;
+    const nx = cx + Math.cos(angle) * radius;
+    const ny = cy + Math.sin(angle) * radius;
+    nodePositions.push({ x: nx, y: ny });
+
+    const isSelected = i === activeNode;
+    const isLoopActive = i === loopActive;
+    const isVisited = visited.has(i);
+    const nodeRadius = isSelected ? 34 : isLoopActive ? 30 : 26;
+
+    // Glow
+    if (isLoopActive || isSelected) {
+      ctx.beginPath();
+      ctx.arc(nx, ny, nodeRadius + 12, 0, Math.PI * 2);
+      const grd = ctx.createRadialGradient(nx, ny, nodeRadius, nx, ny, nodeRadius + 12);
+      grd.addColorStop(0, isSelected ? 'rgba(6,182,212,0.2)' : `${nodes[i].color}20`);
+      grd.addColorStop(1, 'transparent');
+      ctx.fillStyle = grd;
+      ctx.fill();
+    }
+
+    // Circle
+    ctx.beginPath();
+    ctx.arc(nx, ny, nodeRadius, 0, Math.PI * 2);
+    ctx.fillStyle = isSelected ? 'rgba(6,182,212,0.15)' : isVisited ? 'rgba(6,182,212,0.06)' : 'rgba(255,255,255,0.03)';
+    ctx.fill();
+    ctx.strokeStyle = isSelected ? '#06b6d4' : isLoopActive ? nodes[i].color : isVisited ? 'rgba(6,182,212,0.3)' : 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = isSelected ? 3 : isLoopActive ? 2 : 1;
+    ctx.stroke();
+
+    // Emoji
+    ctx.font = `${isSelected ? 22 : 18}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#e5e5e5';
+    ctx.fillText(nodes[i].emoji, nx, ny - 2);
+
+    // Label below
+    ctx.font = `${isSelected ? '700' : '600'} ${isSelected ? 11 : 10}px Inter`;
+    ctx.fillStyle = isSelected ? '#06b6d4' : isVisited ? '#06b6d4' : '#71717a';
+    ctx.fillText(nodes[i].label, nx, ny + nodeRadius + 14);
+  }
+
+  // Center text
+  ctx.font = '600 11px Inter';
+  ctx.fillStyle = '#52525b';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('AGENT', cx, cy - 6);
+  ctx.fillText('LOOP', cx, cy + 8);
+
+  requestAnimationFrame(draw);
+}
+draw();
+
+// Click detection
+canvas.addEventListener('click', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  for (let i = 0; i < nodePositions.length; i++) {
+    const dx = mx - nodePositions[i].x;
+    const dy = my - nodePositions[i].y;
+    if (Math.sqrt(dx * dx + dy * dy) < 40) {
+      selectNode(i);
+      break;
+    }
+  }
+});
+
+function selectNode(i) {
+  activeNode = i;
+  visited.add(i);
+  const n = nodes[i];
+  document.getElementById('info-title').innerHTML = `${n.emoji} ${n.label}`;
+  document.getElementById('info-title').style.color = n.color;
+  document.getElementById('info-desc').textContent = n.desc;
+  const dataEl = document.getElementById('info-data');
+  dataEl.textContent = n.data;
+  dataEl.style.display = 'block';
+  const conceptEl = document.getElementById('info-concept');
+  conceptEl.textContent = n.concept;
+  conceptEl.style.display = 'block';
+  document.getElementById(`pill-${i}`).classList.add('visited');
+
+  if (visited.size === 5) {
+    setTimeout(() => {
+      document.getElementById('complete').style.display = 'block';
+      if (typeof LO !== 'undefined') LO.completeLesson('first_ai_agent', 2, 160);
+    }, 500);
+  }
+}
+</script>

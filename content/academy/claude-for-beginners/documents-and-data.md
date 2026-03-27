@@ -1,0 +1,446 @@
+---
+title: "Documents & Data"
+course: "claude-for-beginners"
+order: 5
+type: "lesson"
+free: false
+css: "claude-beginners.css"
+---<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/claude-for-beginners/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 5 of 9</span>
+</nav>
+
+<!-- HERO -->
+<div class="lesson-hero">
+  <h1>Documents &amp; <span class="accent">Data.</span></h1>
+  <p class="sub">Turn 30-page reports into 30-second summaries. Analyze spreadsheets without a single formula. This is where Claude becomes your superpower.</p>
+</div>
+
+<!-- LEARNING GOALS -->
+<div class="learn-card">
+  <h3>After this lesson you'll be able to</h3>
+  <ul>
+    <li>Summarize any document in seconds using 4 different styles</li>
+    <li>Analyze data without Excel formulas or pivot tables</li>
+    <li>Turn rough notes into polished, professional reports</li>
+    <li>Work with uploaded files effectively (PDFs, images, spreadsheets)</li>
+  </ul>
+</div>
+
+<!-- SECTION 1: SUMMARIZING DOCUMENTS -->
+<div class="lesson-section">
+  <span class="section-label">Hands-On</span>
+  <h2 class="section-title">Summarize anything in seconds.</h2>
+  <p class="section-text">You have a 20-page report and 5 minutes before a meeting. Instead of skimming and praying, <strong>paste the document into Claude and ask for exactly the summary you need.</strong> The secret: different situations need different summary styles.</p>
+
+  <div class="demo-container" id="summary-demo">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <span style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)">INTERACTIVE DEMO</span>
+      <span style="font-size:.75rem;color:var(--muted)">Click a summary style below</span>
+    </div>
+
+    <!-- Source document -->
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:1rem;max-height:180px;overflow-y:auto">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.5rem">SOURCE DOCUMENT (742 words)</div>
+      <p style="font-size:.8rem;color:var(--dim);line-height:1.6;margin:0" id="sourceDoc">The Q3 2026 Digital Transformation Initiative has reached several critical milestones. Cloud migration for the North American operations completed on August 15th, two weeks ahead of schedule, resulting in a 34% reduction in infrastructure costs ($2.1M annual savings). The European migration is 78% complete with full completion expected by October 30th. However, the APAC region has encountered regulatory compliance issues in three markets (Singapore, Japan, South Korea) that require additional legal review before migration can proceed.
+
+Customer-facing platform updates have shown mixed results. The new self-service portal launched in July has reduced support ticket volume by 41%, exceeding the 25% target. Customer satisfaction scores for digital interactions improved from 3.2 to 4.1 (out of 5). However, the mobile app redesign received negative feedback from 23% of users surveyed, primarily around navigation changes. The product team has scheduled a UX revision for Q4.
+
+Cybersecurity investments totaling $1.8M were deployed across all regions. The new zero-trust architecture has blocked 12,400 potential threats since implementation, including three sophisticated phishing campaigns targeting executive accounts. One minor data exposure incident occurred on September 3rd involving 847 customer email addresses. The breach was contained within 4 hours, affected customers were notified within 24 hours, and the vulnerability has been patched. No financial data was compromised.
+
+Staffing remains a challenge. The technology division has 34 open positions, with an average time-to-fill of 67 days (up from 52 days in Q2). Two senior architects departed for competitors, creating knowledge gaps in the payments infrastructure team. A retention bonus program of $500K has been proposed for critical technical roles. The new graduate program successfully onboarded 18 junior developers, with 94% reporting positive onboarding experiences.
+
+Budget utilization stands at 73% of annual allocation with one quarter remaining. Current projections indicate the initiative will come in approximately $400K under budget, primarily due to cloud cost savings offsetting higher-than-expected consulting fees. The board has approved reallocation of surplus funds toward the AI integration pilot program scheduled for Q1 2027.</p>
+    </div>
+
+    <!-- Summary style buttons -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem">
+      <button onclick="showSummary('exec')" style="padding:.75rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;font-size:.8rem;font-weight:600;text-align:left;transition:border-color .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="display:block;font-size:1rem;margin-bottom:4px">📋</span>
+        Executive Summary
+      </button>
+      <button onclick="showSummary('bullets')" style="padding:.75rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;font-size:.8rem;font-weight:600;text-align:left;transition:border-color .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="display:block;font-size:1rem;margin-bottom:4px">🔹</span>
+        Bullet Points
+      </button>
+      <button onclick="showSummary('actions')" style="padding:.75rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;font-size:.8rem;font-weight:600;text-align:left;transition:border-color .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="display:block;font-size:1rem;margin-bottom:4px">🎯</span>
+        Action Items Only
+      </button>
+      <button onclick="showSummary('eli5')" style="padding:.75rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;font-size:.8rem;font-weight:600;text-align:left;transition:border-color .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="display:block;font-size:1rem;margin-bottom:4px">👶</span>
+        ELI5 (Plain English)
+      </button>
+    </div>
+
+    <!-- Summary output -->
+    <div class="chat-window" id="summary-output" style="display:none"></div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Prompt Templates</div>
+    <p>Copy these and swap in your own documents:</p>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:.75rem">
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;color:var(--dim);font-family:monospace">"Summarize this document in 3 paragraphs for a C-suite audience. Focus on financial impact and decisions needed."</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;color:var(--dim);font-family:monospace">"Give me the 5 most important bullet points from this. Each bullet should be one sentence max."</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;color:var(--dim);font-family:monospace">"List only the action items and decisions needed from this document. Include who's responsible if mentioned."</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;color:var(--dim);font-family:monospace">"Explain this document to me like I'm a smart 10-year-old. No jargon. No acronyms."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: ANALYZING DATA WITHOUT CODE -->
+<div class="lesson-section">
+  <span class="section-label">Hands-On</span>
+  <h2 class="section-title">Analyze data without a single formula.</h2>
+  <p class="section-text">You don't need to know VLOOKUP, pivot tables, or Python. Just <strong>paste your data into Claude and ask questions in plain English.</strong> Claude reads tables, CSVs, and spreadsheet data and gives you real analysis — trends, outliers, recommendations.</p>
+
+  <div class="demo-container" id="data-demo">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <span style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)">INTERACTIVE DEMO</span>
+      <span style="font-size:.75rem;color:var(--muted)">Click an analysis prompt</span>
+    </div>
+
+    <!-- Data table -->
+    <div style="overflow-x:auto;margin-bottom:1rem">
+      <table style="width:100%;border-collapse:collapse;font-size:.8rem">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border)">
+            <th style="text-align:left;padding:.5rem .75rem;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Product</th>
+            <th style="text-align:right;padding:.5rem .75rem;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Q1 Sales</th>
+            <th style="text-align:right;padding:.5rem .75rem;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Q2 Sales</th>
+            <th style="text-align:right;padding:.5rem .75rem;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Q3 Sales</th>
+            <th style="text-align:right;padding:.5rem .75rem;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Margin</th>
+            <th style="text-align:right;padding:.5rem .75rem;color:var(--muted);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:1px">Returns</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:.5rem .75rem;color:var(--text);font-weight:600">CloudSync Pro</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$142K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$158K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$189K</td>
+            <td style="padding:.5rem .75rem;color:var(--green,#4ade80);text-align:right">68%</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">2.1%</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:.5rem .75rem;color:var(--text);font-weight:600">DataVault Basic</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$98K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$87K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$72K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">45%</td>
+            <td style="padding:.5rem .75rem;color:var(--red,#f87171);text-align:right">8.4%</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:.5rem .75rem;color:var(--text);font-weight:600">TeamFlow</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$67K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$71K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$69K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">52%</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">3.8%</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:.5rem .75rem;color:var(--text);font-weight:600">SecureNet</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$34K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$52K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$81K</td>
+            <td style="padding:.5rem .75rem;color:var(--green,#4ade80);text-align:right">71%</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">1.2%</td>
+          </tr>
+          <tr>
+            <td style="padding:.5rem .75rem;color:var(--text);font-weight:600">QuickBooks Add-on</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$23K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$21K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">$19K</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">38%</td>
+            <td style="padding:.5rem .75rem;color:var(--dim);text-align:right">5.6%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Analysis prompt buttons -->
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1rem">
+      <button onclick="showAnalysis(0)" style="padding:.75rem 1rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;font-size:.85rem;text-align:left;transition:border-color .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">"What trends do you see in this data?"</button>
+      <button onclick="showAnalysis(1)" style="padding:.75rem 1rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;font-size:.85rem;text-align:left;transition:border-color .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">"Which product should we invest more in and why?"</button>
+      <button onclick="showAnalysis(2)" style="padding:.75rem 1rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;font-size:.85rem;text-align:left;transition:border-color .2s" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">"Write a summary of this data for my boss — 1 paragraph, plain English."</button>
+    </div>
+
+    <!-- Analysis output -->
+    <div class="chat-window" id="analysis-output" style="display:none"></div>
+  </div>
+
+  <div class="callout">
+    <p><strong>How to paste data:</strong> Select your data in Excel or Google Sheets, copy it, and paste directly into Claude. It reads tab-separated data perfectly. For CSV files, just paste the raw text. You can also describe data verbally: "Our revenue was $50K in Jan, $62K in Feb, $58K in Mar..."</p>
+  </div>
+</div>
+
+<!-- SECTION 3: REPORT WRITING -->
+<div class="lesson-section">
+  <span class="section-label">Hands-On</span>
+  <h2 class="section-title">Turn rough notes into polished reports.</h2>
+  <p class="section-text">You have messy meeting notes, scattered observations, and a deadline. Claude transforms <strong>chaotic inputs into structured, professional outputs.</strong> The trick is giving Claude your raw material and telling it what format you need.</p>
+
+  <div class="demo-container" id="report-demo">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <span style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)">BEFORE &amp; AFTER</span>
+      <button onclick="toggleReport()" id="reportToggle" style="background:var(--orange);border:none;color:#000;cursor:pointer;font-size:.75rem;font-weight:700;padding:.4rem .75rem;border-radius:6px">Show Polished Report &rarr;</button>
+    </div>
+
+    <!-- Before: raw notes -->
+    <div id="reportBefore">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.5rem">YOUR RAW NOTES</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem;font-size:.8rem;color:var(--dim);line-height:1.7;font-family:monospace;white-space:pre-wrap">- met with design team tuesday, they want to push new dashboard to march instead of feb
+- sarah's worried about timeline for API migration, says team is stretched thin
+- good news: customer complaints down 30% since the chatbot went live
+- need to hire 2 more devs, maybe 3? budget unclear
+- server costs went up $4K last month, jason looking into it
+- marketing wants to launch the new landing page by valentines day
+- competitor released a similar feature to our roadmap item #4, need to decide if we pivot
+- team morale seems ok but people are tired from the holiday push
+- Q4 revenue came in at $1.2M, slightly above target ($1.15M)
+- the new onboarding flow has 23% better conversion so far</div>
+    </div>
+
+    <!-- After: polished report -->
+    <div id="reportAfter" style="display:none">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green,#4ade80);margin-bottom:.5rem">CLAUDE'S POLISHED REPORT</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;font-size:.8rem;color:var(--dim);line-height:1.7">
+        <div style="font-weight:700;color:var(--text);font-size:.95rem;margin-bottom:.75rem">Weekly Status Report — January 17, 2026</div>
+
+        <div style="font-weight:700;color:var(--orange);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem">Wins This Week</div>
+        <p style="margin:0 0 .75rem">Q4 revenue landed at <strong style="color:var(--text)">$1.2M</strong>, beating our $1.15M target by 4.3%. Customer complaints are <strong style="color:var(--text)">down 30%</strong> since the chatbot launch, and the redesigned onboarding flow is converting <strong style="color:var(--text)">23% better</strong> than the previous version. Momentum is strong.</p>
+
+        <div style="font-weight:700;color:var(--orange);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem">Key Updates</div>
+        <p style="margin:0 0 .75rem"><strong style="color:var(--text)">Dashboard redesign</strong> has been rescheduled from February to March per the design team's recommendation. <strong style="color:var(--text)">API migration</strong> is at risk — the engineering team is stretched thin and may need additional support. Marketing is on track to launch the new landing page by February 14th.</p>
+
+        <div style="font-weight:700;color:var(--orange);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem">Risks &amp; Blockers</div>
+        <p style="margin:0 0 .75rem">A competitor has shipped a feature similar to our roadmap item #4. We need to decide this week whether to proceed as planned or pivot our approach. Server costs increased $4K last month — Jason is investigating root cause. Engineering headcount is a growing concern: we need 2-3 additional developers, pending budget approval.</p>
+
+        <div style="font-weight:700;color:var(--orange);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem">Team Health</div>
+        <p style="margin:0">Morale is stable but the team is fatigued from the Q4 push. Recommend lighter sprint loads in January to prevent burnout heading into a busy Q1.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Report Prompts to Steal</div>
+    <p>Use these templates for different report types:</p>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:.75rem">
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;color:var(--dim);font-family:monospace">"Turn these notes into a weekly status report. Sections: Wins, Key Updates, Risks, Team Health. Professional tone, 1 page max."</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;color:var(--dim);font-family:monospace">"Write a project update email from these bullet points. Keep it to 3 short paragraphs. Highlight the one thing my VP needs to know."</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;color:var(--dim);font-family:monospace">"Create a quarterly business review from this data. Include an executive summary, key metrics, risks, and next quarter's priorities."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: WORKING WITH FILES -->
+<div class="lesson-section">
+  <span class="section-label">Pro Skills</span>
+  <h2 class="section-title">Working with uploaded files.</h2>
+  <p class="section-text">Claude can read <strong>PDFs, Word docs, images, spreadsheets, code files, and more.</strong> On Claude Pro, you can upload files directly into the conversation. Here's how to get the most out of it.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:.75rem;font-weight:700;color:var(--green,#4ade80);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:1px">Works Great</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--green,#4ade80)">&#10003;</span> PDFs (reports, contracts, papers)</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--green,#4ade80)">&#10003;</span> Text files and code files</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--green,#4ade80)">&#10003;</span> Images (screenshots, charts, diagrams)</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--green,#4ade80)">&#10003;</span> CSVs and structured data</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--green,#4ade80)">&#10003;</span> Short-to-medium documents (under 75 pages)</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.75rem;font-weight:700;color:var(--red,#f87171);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:1px">Limitations</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--red,#f87171)">&#10007;</span> Very long documents (200+ pages)</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--red,#f87171)">&#10007;</span> Scanned PDFs with poor image quality</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--red,#f87171)">&#10007;</span> Password-protected files</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--red,#f87171)">&#10007;</span> Complex Excel formulas (data yes, formulas no)</li>
+          <li style="font-size:.85rem;color:var(--dim);display:flex;gap:.5rem"><span style="color:var(--red,#f87171)">&#10007;</span> Audio and video files</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>The "Chunk It" strategy for long documents:</strong> If your document is too long for Claude's context window (you'll get an error or notice it missing details at the end), split it into sections. Paste Section 1, ask Claude to summarize it, then paste Section 2 and say "Here's the next section — combine this with your previous summary." Build up the full picture piece by piece.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Context Window — What You Need to Know</div>
+    <p>Claude has a <strong>context window</strong> — the total amount of text it can "see" at once. Think of it as Claude's working memory. On Claude Pro, this is roughly <strong>150,000 words</strong> (about 200 pages). For most documents, this is more than enough. For very large files, use the chunking strategy above.</p>
+    <p style="margin-top:.5rem">The key thing: <strong>everything in your conversation counts toward the context window</strong> — your messages, Claude's responses, and uploaded files. If you're working with a large document, start a fresh conversation so Claude has maximum room to work with your file.</p>
+  </div>
+
+  <div style="margin-top:1.5rem">
+    <p class="section-text" style="font-weight:600;color:var(--text)">Best practices for file uploads:</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:.75rem">
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem;background:var(--card);border:1px solid var(--border);border-radius:10px">
+        <span style="font-size:1.2rem;flex-shrink:0">1.</span>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Tell Claude what you want BEFORE uploading</div>
+          <div style="color:var(--dim);font-size:.8rem;margin-top:4px">"I'm going to upload a contract. I need you to find any clauses about early termination penalties."</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem;background:var(--card);border:1px solid var(--border);border-radius:10px">
+        <span style="font-size:1.2rem;flex-shrink:0">2.</span>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Give context about the file</div>
+          <div style="color:var(--dim);font-size:.8rem;margin-top:4px">"This is our Q3 sales report. We sell B2B SaaS to mid-market companies."</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem;background:var(--card);border:1px solid var(--border);border-radius:10px">
+        <span style="font-size:1.2rem;flex-shrink:0">3.</span>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Ask specific questions, not vague ones</div>
+          <div style="color:var(--dim);font-size:.8rem;margin-top:4px">Instead of "What do you think?" try "What are the 3 biggest risks in this contract?" or "Which quarter had the best growth rate?"</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem;background:var(--card);border:1px solid var(--border);border-radius:10px">
+        <span style="font-size:1.2rem;flex-shrink:0">4.</span>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Use fresh conversations for large files</div>
+          <div style="color:var(--dim);font-size:.8rem;margin-top:4px">Don't upload a 50-page PDF into a conversation that already has 20 messages. Start fresh so Claude has room.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY TAKEAWAY -->
+<div class="callout purple">
+  <p><strong>The big picture:</strong> Documents and data used to mean hours of reading, analyzing, and formatting. Now it means <strong>paste, prompt, done.</strong> The people who master this lesson don't just save time — they make better decisions because they actually read everything (via Claude) instead of skimming the first two pages.</p>
+</div>
+
+<!-- COMPLETION -->
+<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 5 &#10003;</button>
+
+<div class="lesson-footer">
+  <a href="email-calendar-magic.html" style="color:var(--muted);font-size:.9rem">&larr; Previous: Email &amp; Calendar Magic</a>
+  <a href="workflow-quiz.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Workflow Quiz &rarr;</a>
+</div>
+
+</div>
+
+<script>
+const SLUG = 'claude-for-beginners';
+const LESSON_NUM = 5;
+
+// Show complete button after scrolling 60%
+window.addEventListener('scroll', function() {
+  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  if (scrollPct > 0.6) {
+    document.getElementById('completeBtn').classList.add('visible');
+  }
+});
+
+function completeLesson() {
+  const stored = localStorage.getItem('lo_progress_' + SLUG);
+  const completed = stored ? JSON.parse(stored) : [];
+  if (!completed.includes(LESSON_NUM)) {
+    completed.push(LESSON_NUM);
+    localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed));
+  }
+  const btn = document.getElementById('completeBtn');
+  btn.textContent = 'Completed! \u2728';
+  btn.style.background = 'var(--green)';
+  btn.style.pointerEvents = 'none';
+}
+
+// Check if already completed
+(function() {
+  const stored = localStorage.getItem('lo_progress_' + SLUG);
+  const completed = stored ? JSON.parse(stored) : [];
+  if (completed.includes(LESSON_NUM)) {
+    const btn = document.getElementById('completeBtn');
+    btn.classList.add('visible');
+    btn.textContent = 'Completed! \u2728';
+    btn.style.background = 'var(--green)';
+    btn.style.pointerEvents = 'none';
+  }
+})();
+
+// SECTION 1: Summary demos
+const summaries = {
+  exec: {
+    prompt: "Summarize this report as an executive summary — 3 short paragraphs for a C-suite audience. Focus on financial impact and decisions needed.",
+    response: "The Q3 Digital Transformation Initiative is delivering strong financial results. Cloud migration has generated <strong>$2.1M in annual infrastructure savings</strong>, and the initiative is projected to finish <strong>$400K under budget</strong>. Q4 revenue hit $1.2M, exceeding target by 4.3%. The self-service portal has cut support costs significantly with a 41% reduction in ticket volume.\n\nTwo areas require executive attention. The <strong>APAC cloud migration is stalled</strong> due to regulatory compliance issues in Singapore, Japan, and South Korea — legal review is needed before proceeding. A <strong>minor data breach</strong> on September 3rd exposed 847 customer email addresses; it was contained within 4 hours and patched, but may require board disclosure.\n\nOn the people side, <strong>34 open positions</strong> remain unfilled with increasing time-to-fill (67 days, up from 52). Two senior architects have left for competitors. A $500K retention bonus program has been proposed for critical roles and needs approval. The board has greenlit reallocation of surplus budget toward the Q1 2027 AI integration pilot."
+  },
+  bullets: {
+    prompt: "Give me the 5 most important bullet points from this document. One sentence each, max.",
+    response: "\u2022 Cloud migration is saving <strong>$2.1M annually</strong> and North America completed 2 weeks early, though APAC is stalled on regulatory issues.\n\n\u2022 Customer experience is improving — support tickets <strong>down 41%</strong> and satisfaction up from 3.2 to 4.1, but the mobile app redesign got negative feedback from 23% of users.\n\n\u2022 A data breach exposed <strong>847 customer emails</strong> on Sept 3rd; it was contained in 4 hours and patched, with no financial data compromised.\n\n\u2022 Hiring is a growing problem — <strong>34 open roles</strong>, two senior architects lost to competitors, and a $500K retention package is awaiting approval.\n\n\u2022 The initiative is <strong>$400K under budget</strong>, and surplus funds have been approved for an AI integration pilot in Q1 2027."
+  },
+  actions: {
+    prompt: "List only the action items and decisions needed from this document. Include who's responsible if mentioned.",
+    response: "<strong>Decisions Needed:</strong>\n\n1. <strong>Approve $500K retention bonus program</strong> for critical technical roles (engineering leadership / HR)\n2. <strong>Determine APAC migration timeline</strong> — legal review must clear regulatory compliance in Singapore, Japan, South Korea before proceeding (legal team)\n3. <strong>Decide on mobile app UX revision scope</strong> — 23% negative user feedback requires response (product team, scheduled for Q4)\n\n<strong>Action Items:</strong>\n\n4. <strong>Jason:</strong> Investigate $4K server cost increase from last month — identify root cause\n5. <strong>Product team:</strong> Ship UX revision for mobile app in Q4 to address navigation complaints\n6. <strong>HR/Recruiting:</strong> Fill 34 open positions, address 67-day time-to-fill bottleneck\n7. <strong>Engineering:</strong> Backfill two senior architect positions and address payments infrastructure knowledge gaps\n8. <strong>Finance:</strong> Finalize reallocation of $400K surplus to Q1 2027 AI integration pilot"
+  },
+  eli5: {
+    prompt: "Explain this document like I'm a smart 10-year-old. No jargon. No acronyms.",
+    response: "Okay, so imagine your company is moving all its computer stuff to the cloud (which is basically just someone else's really big computer). The move in North America is <strong>done and it's saving a lot of money</strong> — like $2.1 million a year. Europe is almost done too. But in Asia, some countries have extra rules about how you can store data, so that part is stuck until the lawyers figure it out.\n\nThe company also built a new help page where customers can fix problems themselves, and it's working <strong>really well</strong> — way fewer people are calling for help. But they also redesigned the phone app and a bunch of people didn't like the changes. Oops.\n\nThere was a small security problem where about 850 people's email addresses got exposed, but the team <strong>fixed it in 4 hours</strong> and no credit card info or anything serious got out.\n\nThe biggest headache right now is <strong>hiring</strong>. There are 34 jobs they can't fill, and two of their smartest people left to work somewhere else. They want to offer bonuses to keep the people they still have.\n\nThe good news? They're actually <strong>spending less money than they planned</strong>, and the leftover money is going toward a cool new AI project next year."
+  }
+};
+
+function showSummary(type) {
+  const s = summaries[type];
+  const output = document.getElementById('summary-output');
+  output.innerHTML = `
+    <div class="chat-msg">
+      <div class="chat-avatar user">\ud83d\udc64</div>
+      <div class="chat-bubble">${s.prompt}</div>
+    </div>
+    <div class="chat-msg">
+      <div class="chat-avatar claude" style="background:rgba(192,132,252,.15)">\ud83e\udd16</div>
+      <div class="chat-bubble">${s.response.replace(/\n/g, '<br>')}</div>
+    </div>
+  `;
+  output.style.display = 'block';
+  output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// SECTION 2: Data analysis demos
+const analyses = [
+  {
+    prompt: "What trends do you see in this data?",
+    response: "Three clear trends jump out:\n\n<strong>1. SecureNet is your growth rocket.</strong> It grew 138% from Q1 to Q3 ($34K \u2192 $81K) — by far the fastest-growing product. Combined with the highest margin (71%) and lowest return rate (1.2%), this is your star performer.\n\n<strong>2. DataVault Basic is in serious decline.</strong> Revenue dropped 27% over three quarters ($98K \u2192 $72K), it has the second-lowest margin (45%), and an 8.4% return rate — more than double most other products. Customers are either unhappy with it or finding alternatives.\n\n<strong>3. CloudSync Pro is your reliable cash cow.</strong> Steady growth (33% over 3 quarters), strong 68% margins, and low returns. It's your biggest revenue driver at $189K in Q3.\n\n<strong>4. TeamFlow is flat.</strong> Essentially no growth ($67K \u2192 $69K). It's profitable but stagnant. Could be a mature product or could need a refresh.\n\n<strong>5. QuickBooks Add-on is slowly dying.</strong> Small and shrinking, with the lowest margin (38%). Unless it's strategically important for customer acquisition, it may not be worth continued investment."
+  },
+  {
+    prompt: "Which product should we invest more in and why?",
+    response: "<strong>Invest in SecureNet. Here's why:</strong>\n\nEvery metric points the same direction:\n\n\u2022 <strong>Growth rate:</strong> 138% over 3 quarters — nothing else is even close\n\u2022 <strong>Margin:</strong> 71% — the highest in your portfolio\n\u2022 <strong>Return rate:</strong> 1.2% — customers are happy and keeping it\n\u2022 <strong>Market timing:</strong> Cybersecurity spending is growing industry-wide at ~15% annually. You're riding a macro trend.\n\nIf SecureNet maintains its current trajectory, it'll overtake DataVault Basic next quarter and could challenge CloudSync Pro by mid-next year.\n\n<strong>What I'd recommend:</strong>\n1. Increase marketing spend on SecureNet by reallocating from QuickBooks Add-on\n2. Investigate what's driving the organic growth — is it word-of-mouth, a specific feature, a competitor failing?\n3. Consider sunsetting or selling DataVault Basic (declining revenue + high returns = a product customers are rejecting)\n4. Protect CloudSync Pro's margins but don't over-invest — it's growing steadily on its own\n\n<strong>The math:</strong> Every $1 invested in SecureNet generates $0.71 in margin vs $0.38 for QuickBooks Add-on. That's almost 2x the return per dollar."
+  },
+  {
+    prompt: "Write a summary of this data for my boss — 1 paragraph, plain English.",
+    response: "Our product portfolio is shifting. <strong>CloudSync Pro</strong> remains our top earner at $189K in Q3 with healthy 68% margins and is growing steadily. The standout story is <strong>SecureNet</strong>, which more than doubled from $34K to $81K in three quarters with the best margins (71%) and lowest return rate (1.2%) in our lineup — it deserves more investment. On the concern side, <strong>DataVault Basic</strong> has dropped 27% to $72K with a troubling 8.4% return rate, suggesting a product-market fit issue we need to investigate. TeamFlow is stable but flat at ~$69K, and the QuickBooks Add-on continues to shrink with the weakest margins at 38%. The bottom line: our winners are winning bigger and our losers are losing faster — we should lean into SecureNet and CloudSync Pro while making a call on DataVault Basic before it drags further."
+  }
+];
+
+function showAnalysis(idx) {
+  const a = analyses[idx];
+  const output = document.getElementById('analysis-output');
+  output.innerHTML = `
+    <div class="chat-msg">
+      <div class="chat-avatar user">\ud83d\udc64</div>
+      <div class="chat-bubble">${a.prompt}</div>
+    </div>
+    <div class="chat-msg">
+      <div class="chat-avatar claude" style="background:rgba(192,132,252,.15)">\ud83e\udd16</div>
+      <div class="chat-bubble">${a.response.replace(/\n/g, '<br>')}</div>
+    </div>
+  `;
+  output.style.display = 'block';
+  output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// SECTION 3: Report before/after toggle
+let showingAfter = false;
+function toggleReport() {
+  showingAfter = !showingAfter;
+  document.getElementById('reportBefore').style.display = showingAfter ? 'none' : 'block';
+  document.getElementById('reportAfter').style.display = showingAfter ? 'block' : 'none';
+  document.getElementById('reportToggle').textContent = showingAfter ? '\u2190 Show Raw Notes' : 'Show Polished Report \u2192';
+}
+</script>

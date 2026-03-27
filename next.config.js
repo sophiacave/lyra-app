@@ -12,7 +12,17 @@ const nextConfig = {
         ]
       }
     ];
-  }
+  },
+  // Redirect old static academy HTML URLs to new dynamic routes
+  async redirects() {
+    return [
+      {
+        source: '/academy/:courseSlug/:lessonSlug\\.html',
+        destination: '/academy/:courseSlug/:lessonSlug/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

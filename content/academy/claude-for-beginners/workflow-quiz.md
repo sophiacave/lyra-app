@@ -1,0 +1,224 @@
+---
+title: "Workflow Knowledge Check"
+course: "claude-for-beginners"
+order: 6
+type: "quiz"
+free: false
+css: "claude-beginners.css"
+---<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/claude-for-beginners/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 6 of 9</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>Workflow <span class="accent">Knowledge Check.</span></h1>
+  <p class="sub">8 questions covering emails, documents, and data — everything from Module 2.</p>
+</div>
+
+<div class="quiz-progress" id="quiz-progress"></div>
+<div id="quiz-area"></div>
+<div id="results-area" style="display:none"></div>
+
+<button class="complete-btn" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson 6 ✓</button>
+
+<div class="lesson-footer">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <a href="documents-and-data.html" style="color:var(--dim);font-size:.85rem">&larr; Lesson 5</a>
+    <a href="custom-instructions.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Custom Instructions &rarr;</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+const SLUG = 'claude-for-beginners';
+const LESSON_NUM = 6;
+
+const QUESTIONS = [
+  {
+    q: "What's the BEST way to get Claude to write emails in your voice?",
+    options: ["Just say \"write an email\"", "Give Claude examples of your past emails and describe your tone", "Use formal language always", "Write it yourself and have Claude fix typos"],
+    correct: 1,
+    explanation: "Claude learns your voice from examples. Paste 2–3 emails you've written and describe your tone (casual, direct, warm, etc.) — Claude will match it far better than a generic request."
+  },
+  {
+    q: "You have a 40-page report. What's the most effective approach?",
+    options: ["Paste the whole thing and ask for a summary", "Upload the PDF and ask Claude to summarize key sections", "Read it yourself and ask Claude about confusing parts", "Ask Claude to guess what's in it"],
+    correct: 1,
+    explanation: "Uploading the PDF lets Claude process the entire document at once. You can then ask for section-by-section summaries, action items, or specific analysis without hitting paste limits."
+  },
+  {
+    q: "When pasting an email thread for Claude to draft a reply, what should you include?",
+    options: ["Only the most recent email", "The full thread plus context about what you want to say", "Just your desired reply and let Claude figure it out", "The sender's email address"],
+    correct: 1,
+    explanation: "Claude needs the full conversation to understand tone, history, and relationships. Adding your intent (\"I want to politely decline but leave the door open\") gives Claude everything it needs for a perfect draft."
+  },
+  {
+    q: "Claude says something incorrect in a data analysis. What should you do?",
+    options: ["Trust it — AI is always right", "Point out the error and ask Claude to re-examine the data", "Start over from scratch", "Ignore the analysis entirely"],
+    correct: 1,
+    explanation: "Claude responds well to corrections. Point out what's wrong, and it will re-examine the data with fresh eyes. This iterative process often produces better results than starting over."
+  },
+  {
+    q: "What's the \"chunk it\" strategy for long documents?",
+    options: ["Delete parts you don't need", "Break the document into sections and analyze each separately", "Make the text smaller so more fits", "Use a different AI"],
+    correct: 1,
+    explanation: "Breaking a long document into logical sections lets you give Claude focused context for each part. You get deeper analysis per section and can then ask Claude to synthesize findings across all chunks."
+  },
+  {
+    q: "Which summary style asks Claude to identify ONLY what needs to be done?",
+    options: ["Executive summary", "Bullet points", "Action items only", "ELI5"],
+    correct: 2,
+    explanation: "\"Action items only\" tells Claude to skip the background and analysis and extract only the tasks, decisions, and next steps — perfect for turning a long meeting transcript or report into a to-do list."
+  },
+  {
+    q: "You're using Claude to prep for a meeting. What's MOST useful to include in your prompt?",
+    options: ["Just the meeting title", "The agenda, attendees, your goals, and any relevant context", "A request for small talk topics", "Your calendar for the whole week"],
+    correct: 1,
+    explanation: "The more context Claude has — who's in the room, what's on the agenda, what you want to achieve — the more targeted and useful its prep will be. Context is everything."
+  },
+  {
+    q: "What's the biggest advantage of the copy-paste workflow with Claude?",
+    options: ["It's faster than typing", "It works on any Claude tier and with any email/tool", "Claude remembers your emails forever", "It automatically sends emails for you"],
+    correct: 1,
+    explanation: "Copy-paste is universal. It works whether you're on Free or Pro, using Gmail or Outlook, Slack or Teams. No integrations needed — just copy, paste, and prompt."
+  }
+];
+
+// Shuffle options while tracking correct answer
+function shuffleOptions(q) {
+  const indices = q.options.map((_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return {
+    options: indices.map(i => q.options[i]),
+    correct: indices.indexOf(q.correct)
+  };
+}
+
+const shuffled = QUESTIONS.map(q => {
+  const s = shuffleOptions(q);
+  return { ...q, options: s.options, correct: s.correct };
+});
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function renderProgress() {
+  const el = document.getElementById('quiz-progress');
+  el.innerHTML = shuffled.map((_, i) => `<div class="quiz-dot ${i === current ? 'active' : ''}" id="dot-${i}"></div>`).join('');
+}
+
+function renderQuestion() {
+  const q = shuffled[current];
+  answered = false;
+  renderProgress();
+  document.getElementById('quiz-area').innerHTML = `
+    <div class="quiz-question">
+      <h2>${q.q}</h2>
+      <div class="quiz-options">
+        ${q.options.map((opt, i) => `<button class="quiz-option" onclick="answer(${i})">${opt}</button>`).join('')}
+      </div>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+  `;
+}
+
+function answer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = shuffled[current];
+  const btns = document.querySelectorAll('.quiz-option');
+  const fb = document.getElementById('feedback');
+
+  btns.forEach((btn, i) => {
+    btn.style.pointerEvents = 'none';
+    if (i === q.correct) btn.classList.add('correct');
+    if (i === idx && idx !== q.correct) btn.classList.add('wrong');
+  });
+
+  const dot = document.getElementById('dot-' + current);
+  if (idx === q.correct) {
+    score++;
+    dot.classList.add('correct');
+    fb.className = 'quiz-feedback visible correct';
+    fb.innerHTML = `<strong>Correct!</strong> ${q.explanation}`;
+  } else {
+    dot.classList.add('wrong');
+    fb.className = 'quiz-feedback visible wrong';
+    fb.innerHTML = `<strong>Not quite.</strong> ${q.explanation}`;
+  }
+
+  setTimeout(() => {
+    current++;
+    if (current < shuffled.length) {
+      renderQuestion();
+    } else {
+      showResults();
+    }
+  }, 2500);
+}
+
+function showResults() {
+  const pct = Math.round((score / shuffled.length) * 100);
+  const pass = score >= 6;
+  const emoji = pct === 100 ? '🎯' : pct >= 80 ? '🌟' : pct >= 60 ? '👍' : '📚';
+  const msg = pct === 100 ? "Perfect score! You've mastered the workflows."
+    : pct >= 80 ? "Excellent! You really know how to work with Claude."
+    : pct >= 60 ? "Solid work. Review the Module 2 lessons if anything felt fuzzy."
+    : "Worth reviewing lessons 4 and 5 before moving on.";
+
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('results-area').style.display = 'block';
+  document.getElementById('results-area').innerHTML = `
+    <div class="results-card">
+      <div style="font-size:3rem;margin-bottom:1rem">${emoji}</div>
+      <h2>${score} / ${shuffled.length}</h2>
+      <p>${msg}</p>
+      <div style="margin-top:1.5rem">
+        <button onclick="retryQuiz()" class="btn btn-secondary" style="margin-right:8px">Try Again</button>
+        <a href="custom-instructions.html" class="btn btn-primary">Next Lesson →</a>
+      </div>
+    </div>
+  `;
+
+  if (pass) {
+    completeLesson();
+  }
+  document.getElementById('completeBtn').style.display = 'block';
+  document.getElementById('completeBtn').classList.add('visible');
+}
+
+function retryQuiz() {
+  current = 0; score = 0;
+  document.getElementById('results-area').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+  document.getElementById('completeBtn').style.display = 'none';
+  renderQuestion();
+}
+
+function completeLesson() {
+  const stored = localStorage.getItem('lo_progress_' + SLUG);
+  const completed = stored ? JSON.parse(stored) : [];
+  if (!completed.includes(LESSON_NUM)) { completed.push(LESSON_NUM); localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed)); }
+  const btn = document.getElementById('completeBtn');
+  btn.textContent = 'Completed! ✨'; btn.style.background = 'var(--green)'; btn.style.pointerEvents = 'none';
+}
+
+(function() {
+  const stored = localStorage.getItem('lo_progress_' + SLUG);
+  const completed = stored ? JSON.parse(stored) : [];
+  if (completed.includes(LESSON_NUM)) {
+    const btn = document.getElementById('completeBtn');
+    btn.style.display = 'block'; btn.classList.add('visible');
+    btn.textContent = 'Completed! ✨'; btn.style.background = 'var(--green)'; btn.style.pointerEvents = 'none';
+  }
+})();
+
+renderQuestion();
+</script>

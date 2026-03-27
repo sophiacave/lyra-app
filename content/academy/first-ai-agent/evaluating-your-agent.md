@@ -1,0 +1,240 @@
+---
+title: "Evaluating Your Agent"
+course: "first-ai-agent"
+order: 9
+type: "lesson"
+free: false
+---<nav class="nav">
+  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
+  <a href="/academy/first-ai-agent/" class="nav-link">← Course</a>
+</nav>
+
+<div class="content">
+  <div class="lesson-num">Lesson 9 of 10</div>
+  <h1>Evaluating Your Agent</h1>
+  <p class="subtitle">Rate your agent on 5 dimensions. The radar chart shows how it compares against the "good enough to deploy" threshold.</p>
+
+  <div class="eval-grid">
+    <div class="sliders-panel" id="sliders"></div>
+    <div class="radar-panel">
+      <canvas id="radar"></canvas>
+      <div class="verdict">
+        <div class="score-big" id="avg-score">50</div>
+        <div class="verdict-text" id="verdict-text">Needs work</div>
+        <div class="verdict-sub" id="verdict-sub">Adjust the sliders to evaluate your agent</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips" id="tips">
+    <h3>💡 Improvement Tips</h3>
+  </div>
+
+  <div class="complete-section" id="complete">
+    <h2>Lesson Complete!</h2>
+    <p>You now have a framework for evaluating any AI agent. Use these 5 dimensions to decide when an agent is ready for production.</p>
+    <a href="agent-quiz.html" class="next-btn">Next: Final Quiz →</a>
+  </div>
+</div>
+
+<script>
+const dimensions = [
+  { id: 'accuracy', icon: '🎯', name: 'Accuracy', desc: 'How often does the agent give correct, useful responses?',
+    tips: { low: 'Improve your system prompt with more specific instructions. Add few-shot examples. Validate outputs before returning them.', high: 'Great accuracy. Consider adding edge case handling and confidence scoring to maintain it.' } },
+  { id: 'speed', icon: '⚡', name: 'Speed', desc: 'How quickly does the agent complete tasks?',
+    tips: { low: 'Cache frequent queries. Use parallel tool calls when possible. Consider a smaller, faster model for simple tasks.', high: 'Fast agent. Make sure speed isn\'t coming at the cost of accuracy.' } },
+  { id: 'reliability', icon: '🛡️', name: 'Reliability', desc: 'Does the agent work consistently without failures?',
+    tips: { low: 'Add retry logic with exponential backoff. Implement fallback tools. Add comprehensive error handling for every tool call.', high: 'Reliable agent. Add monitoring and alerting to catch regressions early.' } },
+  { id: 'cost', icon: '💰', name: 'Cost Efficiency', desc: 'Is the agent affordable to run at scale?',
+    tips: { low: 'Use caching to avoid repeated API calls. Route simple queries to cheaper models. Set token limits and budgets per request.', high: 'Cost-efficient. Monitor usage trends to catch cost spikes before they hurt.' } },
+  { id: 'satisfaction', icon: '😊', name: 'User Satisfaction', desc: 'Are users happy with the agent\'s output?',
+    tips: { low: 'Add a feedback mechanism. Study failure cases. Make the agent\'s tone and format match user expectations. Be transparent about limitations.', high: 'Users love it. Collect testimonials and keep iterating based on feedback.' } }
+];
+
+const values = {};
+const THRESHOLD = 70; // "Good enough to deploy"
+let hasInteracted = false;
+
+// Build sliders
+const slidersDiv = document.getElementById('sliders');
+const tipsDiv = document.getElementById('tips');
+
+dimensions.forEach(d => {
+  values[d.id] = 50;
+
+  const div = document.createElement('div');
+  div.className = 'dim';
+  div.innerHTML = `
+    <div class="dim-header">
+      <span class="dim-icon">${d.icon}</span>
+      <span class="dim-name">${d.name}</span>
+      <span class="dim-val" id="val-${d.id}">50</span>
+    </div>
+    <div class="dim-desc">${d.desc}</div>
+    <input type="range" min="0" max="100" value="50" id="slider-${d.id}">
+    <div class="dim-tip" id="tip-${d.id}"></div>
+  `;
+  slidersDiv.appendChild(div);
+
+  const tipCard = document.createElement('div');
+  tipCard.className = 'tip-card';
+  tipCard.id = `tipcard-${d.id}`;
+  tipCard.innerHTML = `<div class="tip-dim">${d.icon} ${d.name}</div><div class="tip-text" id="tiptext-${d.id}"></div>`;
+  tipsDiv.appendChild(tipCard);
+
+  div.querySelector('input').addEventListener('input', e => {
+    values[d.id] = parseInt(e.target.value);
+    document.getElementById(`val-${d.id}`).textContent = values[d.id];
+    hasInteracted = true;
+    updateChart();
+    updateTips();
+  });
+});
+
+// Canvas radar chart
+const canvas = document.getElementById('radar');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  W = rect.width; H = rect.height;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  drawRadar();
+}
+resize();
+window.addEventListener('resize', resize);
+
+function drawRadar() {
+  ctx.clearRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2;
+  const maxR = Math.min(W, H) * 0.38;
+  const n = 5;
+
+  // Grid rings
+  for (let ring = 1; ring <= 5; ring++) {
+    const r = maxR * ring / 5;
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+      const x = cx + Math.cos(angle) * r;
+      const y = cy + Math.sin(angle) * r;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Spokes
+  for (let i = 0; i < n; i++) {
+    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(angle) * maxR, cy + Math.sin(angle) * maxR);
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.stroke();
+  }
+
+  // Threshold polygon
+  ctx.beginPath();
+  for (let i = 0; i <= n; i++) {
+    const angle = (Math.PI * 2 * (i % n) / n) - Math.PI / 2;
+    const r = maxR * THRESHOLD / 100;
+    const x = cx + Math.cos(angle) * r;
+    const y = cy + Math.sin(angle) * r;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = 'rgba(251,146,60,0.3)';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([6, 4]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Data polygon
+  const dims = Object.keys(values);
+  ctx.beginPath();
+  for (let i = 0; i <= n; i++) {
+    const angle = (Math.PI * 2 * (i % n) / n) - Math.PI / 2;
+    const r = maxR * values[dims[i % n]] / 100;
+    const x = cx + Math.cos(angle) * r;
+    const y = cy + Math.sin(angle) * r;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.fillStyle = 'rgba(6,182,212,0.12)';
+  ctx.fill();
+  ctx.strokeStyle = '#06b6d4';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Data points + labels
+  for (let i = 0; i < n; i++) {
+    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+    const r = maxR * values[dims[i]] / 100;
+    const x = cx + Math.cos(angle) * r;
+    const y = cy + Math.sin(angle) * r;
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#06b6d4';
+    ctx.fill();
+
+    // Label
+    const lx = cx + Math.cos(angle) * (maxR + 18);
+    const ly = cy + Math.sin(angle) * (maxR + 18);
+    ctx.font = '600 10px Inter';
+    ctx.fillStyle = '#a1a1aa';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(dimensions[i].name, lx, ly);
+  }
+
+  // Threshold label
+  ctx.font = '500 9px Inter';
+  ctx.fillStyle = '#fb923c';
+  ctx.textAlign = 'left';
+  ctx.fillText('Deploy threshold (70)', cx + maxR * 0.72 * Math.cos(-0.3), cy + maxR * 0.72 * Math.sin(-0.3) - 8);
+}
+
+function updateChart() {
+  drawRadar();
+  const avg = Math.round(Object.values(values).reduce((a, b) => a + b, 0) / 5);
+  document.getElementById('avg-score').textContent = avg;
+
+  let verdict, sub;
+  if (avg >= 85) { verdict = 'Excellent — ship it!'; sub = 'Your agent exceeds the deploy threshold on all fronts.'; }
+  else if (avg >= 70) { verdict = 'Ready to deploy'; sub = 'Meets the threshold. Keep iterating in production.'; }
+  else if (avg >= 50) { verdict = 'Getting close'; sub = 'Focus on the weakest dimensions before deploying.'; }
+  else { verdict = 'Needs more work'; sub = 'Several dimensions need improvement before this agent is production-ready.'; }
+
+  document.getElementById('verdict-text').textContent = verdict;
+  document.getElementById('verdict-sub').textContent = sub;
+
+  if (hasInteracted && avg >= 60) {
+    const comp = document.getElementById('complete');
+    if (comp.style.display !== 'block') {
+      comp.style.display = 'block';
+      if (typeof LO !== 'undefined') LO.completeLesson('first_ai_agent', 9, 160);
+    }
+  }
+}
+
+function updateTips() {
+  dimensions.forEach(d => {
+    const card = document.getElementById(`tipcard-${d.id}`);
+    const text = document.getElementById(`tiptext-${d.id}`);
+    const v = values[d.id];
+    if (v < THRESHOLD) {
+      card.classList.add('show');
+      text.textContent = d.tips.low;
+    } else {
+      card.classList.add('show');
+      text.textContent = d.tips.high;
+    }
+  });
+}
+
+drawRadar();
+updateTips();
+</script>
