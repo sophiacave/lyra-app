@@ -10,17 +10,9 @@ export default function AcademyLayout({ children }) {
   const courses = getAllCourses();
 
   return (
-    <div style={{
-      display: 'flex',
-      minHeight: '100vh',
-      background: '#08080a',
-    }}>
+    <div className="console-layout">
       <AcademySidebar courses={courses} />
-      <main style={{
-        flex: 1,
-        minWidth: 0,
-        overflowX: 'hidden',
-      }}>
+      <main className="console-main">
         {children}
       </main>
     </div>

@@ -27,109 +27,103 @@ export default async function CoursePage({ params }) {
 
   return (
     <div style={{
-      maxWidth: '720px',
+      maxWidth: '760px',
       margin: '0 auto',
-      padding: '48px 24px',
+      padding: '48px 32px',
+      position: 'relative',
+      zIndex: 1,
     }}>
-      {/* Course header */}
-      <div style={{ marginBottom: '40px' }}>
+      {/* Course header — glass panel */}
+      <div className="glass glass-animate-up" style={{
+        padding: '36px 32px',
+        marginBottom: '32px',
+        borderRadius: 'var(--glass-radius-lg)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Background glow */}
+        <div style={{
+          position: 'absolute',
+          top: '-30px',
+          right: '-30px',
+          width: '160px',
+          height: '160px',
+          background: 'radial-gradient(circle, rgba(192,132,252,0.05) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+
         <Link
           href="/academy/"
+          className="glass-btn"
           style={{
-            color: '#737373',
-            textDecoration: 'none',
-            fontSize: '13px',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
-            marginBottom: '16px',
+            marginBottom: '24px',
+            textDecoration: 'none',
+            fontSize: '13px',
+            padding: '6px 14px',
           }}
         >
           ← All Courses
         </Link>
 
-        <div style={{ fontSize: '48px', marginBottom: '16px' }}>{course.emoji}</div>
+        <div style={{ fontSize: '52px', marginBottom: '16px' }}>{course.emoji}</div>
 
         <h1 style={{
-          fontSize: '32px',
+          fontSize: '30px',
           fontWeight: 800,
-          color: '#e5e5e5',
+          color: '#e8e8ec',
           marginBottom: '12px',
           lineHeight: 1.2,
+          letterSpacing: '-0.3px',
         }}>
           {course.title}
         </h1>
 
         <p style={{
-          color: '#a0a0a0',
+          color: '#8888a0',
           fontSize: '15px',
           lineHeight: 1.6,
-          marginBottom: '16px',
+          marginBottom: '20px',
         }}>
           {course.description}
         </p>
 
         <div style={{
           display: 'flex',
-          gap: '16px',
-          fontSize: '13px',
-          color: '#737373',
+          gap: '10px',
+          flexWrap: 'wrap',
         }}>
-          <span style={{
-            background: 'rgba(192,132,252,0.1)',
-            color: '#c084fc',
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontWeight: 600,
-            fontSize: '12px',
-          }}>
+          <span className="glass-badge">
             {course.tierEmoji} {course.tierName}
           </span>
-          <span>{course.lessonCount} lessons</span>
+          <span className="glass-badge badge-dim">
+            {course.lessonCount} lessons
+          </span>
         </div>
       </div>
 
-      {/* Lesson list */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      {/* Lesson list — glass rows */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
         {course.lessons.map((lesson, index) => (
           <Link
             key={lesson.slug}
             href={`/academy/${courseSlug}/${lesson.slug}/`}
+            className="glass-lesson-row glass-animate-up"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '16px',
-              padding: '16px 20px',
-              background: 'rgba(17,17,20,0.6)',
-              border: '1px solid #1e1e28',
-              borderRadius: '12px',
-              textDecoration: 'none',
-              transition: 'all 0.15s ease',
+              animationDelay: `${index * 0.04}s`,
             }}
           >
-            {/* Lesson number */}
-            <div style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '8px',
-              background: lesson.free
-                ? 'linear-gradient(135deg, #c084fc, #38bdf8)'
-                : 'rgba(30,30,40,0.8)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '13px',
-              fontWeight: 700,
-              color: lesson.free ? '#08080a' : '#525252',
-              flexShrink: 0,
-            }}>
+            {/* Lesson number orb */}
+            <div className={`lesson-orb ${lesson.free ? 'orb-free' : 'orb-locked'}`}>
               {index + 1}
             </div>
 
             {/* Lesson info */}
             <div style={{ flex: 1 }}>
               <div style={{
-                color: '#e5e5e5',
+                color: '#e8e8ec',
                 fontSize: '15px',
                 fontWeight: 500,
                 lineHeight: 1.3,
@@ -138,19 +132,20 @@ export default async function CoursePage({ params }) {
               </div>
               <div style={{
                 fontSize: '12px',
-                color: '#525252',
-                marginTop: '2px',
+                color: 'rgba(255,255,255,0.25)',
+                marginTop: '3px',
+                display: 'flex',
+                gap: '8px',
+                alignItems: 'center',
               }}>
-                {lesson.type === 'quiz' ? '📝 Quiz' :
-                 lesson.type === 'lab' ? '🧪 Lab' :
-                 lesson.type === 'builder' ? '🔨 Builder' :
-                 '📖 Lesson'}
+                <span>
+                  {lesson.type === 'quiz' ? '📝 Quiz' :
+                   lesson.type === 'lab' ? '🧪 Lab' :
+                   lesson.type === 'builder' ? '🔨 Builder' :
+                   '📖 Lesson'}
+                </span>
                 {lesson.free && (
-                  <span style={{
-                    marginLeft: '8px',
-                    color: '#4ade80',
-                    fontWeight: 600,
-                  }}>
+                  <span className="glass-badge badge-green" style={{ fontSize: '10px', padding: '1px 6px' }}>
                     FREE
                   </span>
                 )}
@@ -158,7 +153,11 @@ export default async function CoursePage({ params }) {
             </div>
 
             {/* Arrow */}
-            <span style={{ color: '#525252', fontSize: '16px' }}>→</span>
+            <span style={{
+              color: 'rgba(255,255,255,0.15)',
+              fontSize: '16px',
+              transition: 'all 0.2s ease',
+            }}>→</span>
           </Link>
         ))}
       </div>

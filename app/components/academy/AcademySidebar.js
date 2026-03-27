@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import ProgressRing from './ProgressRing';
 
 export default function AcademySidebar({ courses, currentCourseSlug, currentLessonSlug }) {
   const pathname = usePathname();
@@ -11,7 +10,6 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
 
   const liveCourses = courses.filter(c => c.status === 'live');
 
-  // Group by tier
   const tiers = {};
   for (const course of liveCourses) {
     if (!tiers[course.tierSlug]) {
@@ -25,8 +23,8 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
   };
 
   const sidebarContent = (
-    <div style={{
-      padding: '20px 16px',
+    <div className="glass-scroll" style={{
+      padding: '24px 16px',
       height: '100%',
       overflowY: 'auto',
     }}>
@@ -36,8 +34,8 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
-        marginBottom: '28px',
-        padding: '0 4px',
+        marginBottom: '32px',
+        padding: '0 8px',
       }}>
         <span style={{
           fontSize: '20px',
@@ -45,23 +43,28 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           fontWeight: 800,
+          letterSpacing: '-0.3px',
         }}>
           Like One
         </span>
-        <span style={{ color: '#737373', fontSize: '13px' }}>Academy</span>
+        <span style={{
+          color: 'rgba(255,255,255,0.25)',
+          fontSize: '13px',
+          fontWeight: 500,
+        }}>Academy</span>
       </Link>
 
       {/* Tier sections */}
       {Object.entries(tiers).map(([tierSlug, tier]) => (
-        <div key={tierSlug} style={{ marginBottom: '24px' }}>
+        <div key={tierSlug} style={{ marginBottom: '28px' }}>
           <div style={{
-            fontSize: '11px',
+            fontSize: '10px',
             fontWeight: 700,
-            color: '#737373',
+            color: 'rgba(255,255,255,0.2)',
             textTransform: 'uppercase',
-            letterSpacing: '1px',
-            padding: '0 4px',
-            marginBottom: '8px',
+            letterSpacing: '1.5px',
+            padding: '0 8px',
+            marginBottom: '10px',
           }}>
             {tier.emoji} {tier.name}
           </div>
@@ -71,8 +74,7 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
             const isCurrent = currentCourseSlug === course.slug;
 
             return (
-              <div key={course.slug} style={{ marginBottom: '4px' }}>
-                {/* Course header */}
+              <div key={course.slug} style={{ marginBottom: '2px' }}>
                 <button
                   onClick={() => toggleCourse(course.slug)}
                   style={{
@@ -80,36 +82,39 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
                     display: 'flex',
                     alignItems: 'center',
                     gap: '10px',
-                    padding: '8px 8px',
-                    background: isCurrent ? 'rgba(192,132,252,0.08)' : 'transparent',
+                    padding: '9px 10px',
+                    background: isCurrent
+                      ? 'linear-gradient(135deg, rgba(192,132,252,0.1), rgba(56,189,248,0.05))'
+                      : 'transparent',
                     border: 'none',
-                    borderRadius: '8px',
-                    color: isCurrent ? '#e5e5e5' : '#a0a0a0',
+                    borderRadius: '10px',
+                    color: isCurrent ? '#e8e8ec' : '#8888a0',
                     fontSize: '13px',
                     fontWeight: isCurrent ? 600 : 400,
                     cursor: 'pointer',
                     textAlign: 'left',
-                    fontFamily: "'Inter', sans-serif",
-                    transition: 'all 0.15s ease',
+                    fontFamily: "'Inter', -apple-system, system-ui, sans-serif",
+                    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                    borderLeft: isCurrent ? '2px solid rgba(192,132,252,0.5)' : '2px solid transparent',
                   }}
                 >
                   <span style={{ fontSize: '16px', flexShrink: 0 }}>{course.emoji}</span>
                   <span style={{ flex: 1, lineHeight: 1.3 }}>{course.title}</span>
                   <span style={{
                     fontSize: '10px',
-                    color: '#525252',
+                    color: 'rgba(255,255,255,0.15)',
                     transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.15s ease',
+                    transition: 'transform 0.2s ease',
                   }}>
                     ▶
                   </span>
                 </button>
 
-                {/* Lesson list */}
                 {isExpanded && (
                   <div style={{
-                    paddingLeft: '20px',
+                    paddingLeft: '24px',
                     marginTop: '4px',
+                    marginBottom: '8px',
                   }}>
                     {course.lessons.map(lesson => {
                       const isActive = currentLessonSlug === lesson.slug;
@@ -117,17 +122,18 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
                         <Link
                           key={lesson.slug}
                           href={`/academy/${course.slug}/${lesson.slug}/`}
+                          className="glass-animate-in"
                           style={{
                             display: 'block',
                             padding: '6px 12px',
                             fontSize: '12px',
-                            color: isActive ? '#c084fc' : '#737373',
+                            color: isActive ? '#c084fc' : 'rgba(255,255,255,0.35)',
                             textDecoration: 'none',
-                            borderRadius: '6px',
+                            borderRadius: '8px',
                             background: isActive ? 'rgba(192,132,252,0.08)' : 'transparent',
                             borderLeft: isActive ? '2px solid #c084fc' : '2px solid transparent',
-                            transition: 'all 0.15s ease',
-                            lineHeight: 1.4,
+                            transition: 'all 0.2s ease',
+                            lineHeight: 1.5,
                           }}
                         >
                           {lesson.title}
@@ -152,69 +158,48 @@ export default function AcademySidebar({ courses, currentCourseSlug, currentLess
         style={{
           display: 'none',
           position: 'fixed',
-          bottom: '20px',
-          left: '20px',
+          bottom: '24px',
+          left: '24px',
           zIndex: 1001,
-          background: 'linear-gradient(135deg, #c084fc, #38bdf8)',
-          border: 'none',
+          background: 'linear-gradient(135deg, rgba(192,132,252,0.9), rgba(56,189,248,0.9))',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255,255,255,0.15)',
           borderRadius: '50%',
-          width: '48px',
-          height: '48px',
-          color: '#08080a',
+          width: '52px',
+          height: '52px',
+          color: '#fff',
           fontSize: '20px',
           cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(192,132,252,0.3)',
+          boxShadow: '0 8px 32px rgba(192,132,252,0.3), 0 0 0 1px rgba(255,255,255,0.1) inset',
         }}
-        className="sidebar-toggle"
+        className="glass-sidebar-toggle"
       >
         {isOpen ? '✕' : '☰'}
       </button>
 
-      {/* Overlay for mobile */}
+      {/* Mobile overlay */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.5)',
-            zIndex: 999,
-          }}
-          className="sidebar-overlay"
+          className="glass-mobile-overlay"
         />
       )}
 
       {/* Sidebar */}
       <aside
+        className={`glass-sidebar glass-sidebar-mobile ${isOpen ? 'sidebar-open' : ''}`}
         style={{
-          width: '280px',
-          minWidth: '280px',
+          width: '300px',
+          minWidth: '300px',
           height: '100vh',
           position: 'sticky',
           top: 0,
-          background: '#0a0a0f',
-          borderRight: '1px solid #1e1e28',
           overflowY: 'auto',
         }}
-        className={`academy-sidebar ${isOpen ? 'sidebar-open' : ''}`}
       >
         {sidebarContent}
       </aside>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .sidebar-toggle { display: flex !important; align-items: center; justify-content: center; }
-          .academy-sidebar {
-            position: fixed !important;
-            left: -280px;
-            z-index: 1000;
-            transition: left 0.3s ease;
-          }
-          .academy-sidebar.sidebar-open {
-            left: 0 !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

@@ -1,46 +1,51 @@
 'use client';
 import Link from 'next/link';
 
-export default function CourseCard({ course }) {
+export default function CourseCard({ course, index = 0 }) {
   const isPlanned = course.status === 'planned';
 
   return (
     <Link
       href={isPlanned ? '#' : `/academy/${course.slug}/`}
-      className="course-card"
+      className="glass-card course-card-glass glass-animate-up"
       style={{
         display: 'block',
-        background: 'rgba(17,17,20,0.8)',
-        border: '1px solid #1e1e28',
-        borderRadius: '16px',
-        padding: '24px',
+        padding: '28px 24px',
         textDecoration: 'none',
-        transition: 'all 0.2s ease',
-        opacity: isPlanned ? 0.5 : 1,
+        opacity: isPlanned ? 0.4 : 1,
         cursor: isPlanned ? 'default' : 'pointer',
         position: 'relative',
+        animationDelay: `${index * 0.05}s`,
       }}
       onClick={isPlanned ? (e) => e.preventDefault() : undefined}
     >
+      <div className="course-card-glow" />
+
       {isPlanned && (
-        <span style={{
+        <span className="glass-badge badge-dim" style={{
           position: 'absolute',
-          top: '12px',
-          right: '12px',
-          background: 'rgba(192,132,252,0.15)',
-          color: '#c084fc',
-          fontSize: '11px',
-          fontWeight: 600,
-          padding: '3px 8px',
-          borderRadius: '6px',
-          letterSpacing: '0.5px',
+          top: '16px',
+          right: '16px',
         }}>
           COMING SOON
         </span>
       )}
-      <div style={{ fontSize: '32px', marginBottom: '12px' }}>{course.emoji}</div>
+
+      {course.status === 'live' && !isPlanned && (
+        <span className="glass-badge badge-green" style={{
+          position: 'absolute',
+          top: '16px',
+          right: '16px',
+          fontSize: '10px',
+        }}>
+          LIVE
+        </span>
+      )}
+
+      <div style={{ fontSize: '36px', marginBottom: '16px' }}>{course.emoji}</div>
+
       <h3 style={{
-        color: '#e5e5e5',
+        color: '#e8e8ec',
         fontSize: '17px',
         fontWeight: 600,
         marginBottom: '8px',
@@ -48,32 +53,30 @@ export default function CourseCard({ course }) {
       }}>
         {course.title}
       </h3>
+
       <p style={{
-        color: '#a0a0a0',
+        color: '#8888a0',
         fontSize: '13px',
-        lineHeight: 1.5,
-        marginBottom: '12px',
+        lineHeight: 1.6,
+        marginBottom: '16px',
       }}>
         {course.description}
       </p>
+
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '12px',
+        gap: '8px',
         fontSize: '12px',
-        color: '#737373',
+        flexWrap: 'wrap',
       }}>
         {course.lessonCount > 0 && (
-          <span>{course.lessonCount} lessons</span>
+          <span className="glass-badge badge-dim">
+            {course.lessonCount} lessons
+          </span>
         )}
         {course.audience?.map(a => (
-          <span key={a} style={{
-            background: 'rgba(56,189,248,0.1)',
-            color: '#38bdf8',
-            padding: '2px 6px',
-            borderRadius: '4px',
-            fontSize: '11px',
-          }}>
+          <span key={a} className="glass-badge badge-blue">
             {a}
           </span>
         ))}
