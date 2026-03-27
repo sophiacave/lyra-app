@@ -3,21 +3,18 @@ import { useState, useEffect } from 'react';
 import CourseCard from '../components/academy/CourseCard';
 import TierTabs from '../components/academy/TierTabs';
 import coursesData from '../../content/academy/courses.json';
-
-function getProgress() {
-  if (typeof window === 'undefined') return {};
-  try {
-    return JSON.parse(localStorage.getItem('likeone-progress') || '{}');
-  } catch { return {}; }
-}
+import { getProfile, getLevel } from '../../lib/progress-engine';
 
 export default function AcademyCatalog() {
   const [activeTier, setActiveTier] = useState('all');
   const [search, setSearch] = useState('');
   const [progress, setProgress] = useState({});
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    setProgress(getProgress());
+    const p = getProfile();
+    setProfile(p);
+    setProgress(p.lessons);
   }, []);
 
   const allCourses = coursesData.tiers.flatMap(tier =>
@@ -79,6 +76,16 @@ export default function AcademyCatalog() {
               <div className="glass-stat-label">{completedLessons} completed</div>
             </div>
           )}
+
+          {profile && profile.xp > 0 && (() => {
+            const level = getLevel(profile.xp);
+            return (
+              <div className="glass-stat academy-stat-level">
+                <div className="glass-stat-value">{level.emoji} Lv{level.level}</div>
+                <div className="glass-stat-label">{profile.xp} XP · {level.name}</div>
+              </div>
+            );
+          })()}
         </div>
       </div>
 

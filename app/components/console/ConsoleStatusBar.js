@@ -1,19 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
-
-function getProgress() {
-  if (typeof window === 'undefined') return {};
-  try {
-    return JSON.parse(localStorage.getItem('likeone-progress') || '{}');
-  } catch { return {}; }
-}
+import { getProfile, getLevel, getLevelProgress, getNextLevel } from '../../../lib/progress-engine';
 
 export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle' }) {
-  const [progress, setProgress] = useState({});
+  const [profile, setProfile] = useState(null);
   const [time, setTime] = useState('');
 
   useEffect(() => {
-    setProgress(getProgress());
+    setProfile(getProfile());
     const updateTime = () => {
       const now = new Date();
       setTime(now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
@@ -21,8 +15,7 @@ export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle
     updateTime();
     const interval = setInterval(updateTime, 30000);
 
-    // Listen for progress updates from PromptConsole
-    const handleProgress = () => setProgress(getProgress());
+    const handleProgress = () => setProfile(getProfile());
     window.addEventListener('likeone-progress', handleProgress);
 
     return () => {
@@ -30,8 +23,6 @@ export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle
       window.removeEventListener('likeone-progress', handleProgress);
     };
   }, []);
-
-  const completedCount = Object.keys(progress).length;
 
   const pulseClass = activity === 'typing' ? 'lo-pulse-typing'
     : activity === 'responding' ? 'lo-pulse-active'
@@ -43,6 +34,11 @@ export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle
     : activity === 'celebrating' ? 'nice work!'
     : null;
 
+  const level = profile ? getLevel(profile.xp) : null;
+  const levelPct = profile ? getLevelProgress(profile.xp) : 0;
+  const nextLevel = profile ? getNextLevel(profile.xp) : null;
+  const lessonCount = profile ? Object.keys(profile.lessons).length : 0;
+
   return (
     <div className="lo-statusbar">
       <div className="lo-statusbar-left">
@@ -50,9 +46,25 @@ export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle
           <span className={`lo-statusbar-pulse ${pulseClass}`} />
           {appName}
         </span>
-        {completedCount > 0 && (
+        {level && (
+          <span className="lo-statusbar-level" title={`${level.name} — ${profile.xp} XP${nextLevel ? ` (${nextLevel.xp - profile.xp} to ${nextLevel.name})` : ''}`}>
+            <span className="lo-statusbar-level-emoji">{level.emoji}</span>
+            <span className="lo-statusbar-level-name">Lv{level.level}</span>
+            {nextLevel && (
+              <span className="lo-statusbar-level-bar">
+                <span className="lo-statusbar-level-fill" style={{ width: `${levelPct}%` }} />
+              </span>
+            )}
+          </span>
+        )}
+        {profile && profile.xp > 0 && (
           <span className="lo-statusbar-xp">
-            ✦ {completedCount} lessons
+            ✦ {profile.xp} XP
+          </span>
+        )}
+        {profile && profile.streak.current > 1 && (
+          <span className="lo-statusbar-streak">
+            🔥 {profile.streak.current}d
           </span>
         )}
         {activityLabel && (
@@ -61,7 +73,7 @@ export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle
       </div>
       <div className="lo-statusbar-center">
         <span className="lo-statusbar-hint">
-          Built with soul — likeone.ai
+          {lessonCount > 0 ? `${lessonCount} lessons complete` : 'Built with soul — likeone.ai'}
         </span>
       </div>
       <div className="lo-statusbar-right">

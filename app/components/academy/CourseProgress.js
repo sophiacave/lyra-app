@@ -1,16 +1,21 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { getProfile } from '../../../lib/progress-engine';
 
 export default function CourseProgress({ courseSlug, lessons }) {
-  const [progress, setProgress] = useState({});
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    try {
-      setProgress(JSON.parse(localStorage.getItem('likeone-progress') || '{}'));
-    } catch {}
+    setProfile(getProfile());
+
+    const handleProgress = () => setProfile(getProfile());
+    window.addEventListener('likeone-progress', handleProgress);
+    return () => window.removeEventListener('likeone-progress', handleProgress);
   }, []);
 
-  const completed = lessons.filter(l => progress[`${courseSlug}/${l.slug}`]).length;
+  if (!profile) return null;
+
+  const completed = lessons.filter(l => profile.lessons[`${courseSlug}/${l.slug}`]).length;
   const total = lessons.length;
   const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 

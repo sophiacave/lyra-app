@@ -1,37 +1,54 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { getProfile, completeLesson, uncompleteLesson } from '../../../lib/progress-engine';
 
 export default function LessonComplete({ courseSlug, lessonSlug }) {
   const key = `${courseSlug}/${lessonSlug}`;
   const [completed, setCompleted] = useState(false);
+  const [feedback, setFeedback] = useState(null);
 
   useEffect(() => {
-    try {
-      const progress = JSON.parse(localStorage.getItem('likeone-progress') || '{}');
-      setCompleted(!!progress[key]);
-    } catch {}
+    const profile = getProfile();
+    setCompleted(!!profile.lessons[key]);
   }, [key]);
 
   const toggle = () => {
-    try {
-      const progress = JSON.parse(localStorage.getItem('likeone-progress') || '{}');
-      if (completed) {
-        delete progress[key];
-      } else {
-        progress[key] = Date.now();
+    if (completed) {
+      uncompleteLesson(courseSlug, lessonSlug);
+      setCompleted(false);
+      setFeedback(null);
+    } else {
+      const result = completeLesson(courseSlug, lessonSlug);
+      setCompleted(true);
+
+      const parts = [`+${result.xpGained} XP`];
+      if (result.leveledUp && result.newLevel) {
+        parts.push(`Level ${result.newLevel.level}: ${result.newLevel.emoji} ${result.newLevel.name}!`);
       }
-      localStorage.setItem('likeone-progress', JSON.stringify(progress));
-      setCompleted(!completed);
-    } catch {}
+      if (result.newAchievements.length > 0) {
+        for (const a of result.newAchievements) {
+          parts.push(`${a.emoji} ${a.name}`);
+        }
+      }
+      setFeedback(parts.join(' · '));
+      setTimeout(() => setFeedback(null), 4000);
+    }
   };
 
   return (
-    <button
-      onClick={toggle}
-      className={`academy-complete-btn ${completed ? 'completed' : ''}`}
-    >
-      <span className="academy-complete-icon">{completed ? '✓' : '○'}</span>
-      <span>{completed ? 'Lesson Completed' : 'Mark as Complete'}</span>
-    </button>
+    <div className="academy-complete-wrap">
+      <button
+        onClick={toggle}
+        className={`academy-complete-btn ${completed ? 'completed' : ''}`}
+      >
+        <span className="academy-complete-icon">{completed ? '✓' : '○'}</span>
+        <span>{completed ? 'Lesson Completed' : 'Mark as Complete'}</span>
+      </button>
+      {feedback && (
+        <div className="lo-xp-feedback">
+          {feedback}
+        </div>
+      )}
+    </div>
   );
 }
