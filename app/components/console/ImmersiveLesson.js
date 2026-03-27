@@ -111,6 +111,21 @@ export default function ImmersiveLesson({
   const showGate = !isFree && subStatus !== 'pro';
   const hasExercises = exercises.length > 0;
 
+  // Execute inline scripts from lesson HTML (React strips <script> from dangerouslySetInnerHTML)
+  const contentRef = useRef(null);
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const scripts = contentRef.current.querySelectorAll('script');
+    scripts.forEach((orig) => {
+      const fresh = document.createElement('script');
+      // Copy attributes (src, type, etc.)
+      [...orig.attributes].forEach((attr) => fresh.setAttribute(attr.name, attr.value));
+      // Copy inline content
+      if (orig.textContent) fresh.textContent = orig.textContent;
+      orig.parentNode.replaceChild(fresh, orig);
+    });
+  }, [contentHtml]);
+
   // Scroll to console when manually toggled (not on initial render)
   const initialRender = useRef(true);
   useEffect(() => {
@@ -135,6 +150,7 @@ export default function ImmersiveLesson({
       {/* Content flows full-width inside the console frame */}
       <div className={`immersive-content ${showGate ? 'lo-content-gated' : ''}`}>
         <div
+          ref={contentRef}
           className="lesson-content immersive-lesson-body"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
