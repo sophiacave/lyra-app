@@ -154,9 +154,13 @@ export default async function CoursePage({ params }) {
                    lesson.type === 'builder' ? '🔨 Builder' :
                    '📖 Lesson'}
                 </span>
-                {lesson.free && (
+                {lesson.free ? (
                   <span className="glass-badge badge-green academy-badge-sm">
                     FREE
+                  </span>
+                ) : (
+                  <span className="glass-badge badge-dim academy-badge-sm">
+                    🔒 Pro
                   </span>
                 )}
               </div>
