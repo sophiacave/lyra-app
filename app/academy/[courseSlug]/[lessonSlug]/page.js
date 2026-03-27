@@ -160,6 +160,7 @@ export default async function LessonPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <link rel="stylesheet" href="/academy/shared/academy.css" />
+      <link rel="stylesheet" href="/academy/shared/learn-components.css" />
 
       <ImmersiveLesson
         contentHtml={fullContentHtml}

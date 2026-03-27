@@ -1,7 +1,20 @@
 'use client';
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import PromptConsole from '../academy/PromptConsole';
 import EnrollCTA from '../academy/EnrollCTA';
+import { QuizMC, MatchConnect, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation } from '../learn';
+
+// Registry of learn components that can be embedded in lesson HTML
+const LEARN_COMPONENTS = {
+  QuizMC,
+  MatchConnect,
+  FlashDeck,
+  SortStack,
+  PixelQuest,
+  Whiteboard,
+  Citation,
+};
 
 const APP_URL = 'https://app.likeone.ai';
 const APP_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
@@ -134,6 +147,39 @@ export default function ImmersiveLesson({
     });
   }, [subStatus]);
 
+  // Hydrate learn components from data-learn placeholder elements in lesson HTML.
+  // Markdown authors write: <div data-learn="QuizMC" data-props='{"questions":[...]}'></div>
+  // This finds those placeholders and renders React components into them via portals.
+  const [learnPortals, setLearnPortals] = useState([]);
+  useEffect(() => {
+    if (subStatus === 'loading' || !contentRef.current) return;
+    const placeholders = contentRef.current.querySelectorAll('[data-learn]');
+    if (placeholders.length === 0) return;
+
+    const portals = [];
+    placeholders.forEach((el, i) => {
+      const componentName = el.getAttribute('data-learn');
+      const Component = LEARN_COMPONENTS[componentName];
+      if (!Component) return;
+
+      let props = {};
+      try {
+        const raw = el.getAttribute('data-props');
+        if (raw) props = JSON.parse(raw);
+      } catch (e) {
+        console.warn(`[LearnComponent] Invalid props for ${componentName}:`, e);
+      }
+
+      // Add courseSlug/lessonSlug for XP tracking
+      props._courseSlug = courseSlug;
+      props._lessonSlug = lessonSlug;
+
+      portals.push({ key: `${componentName}-${i}`, Component, props, container: el });
+    });
+
+    setLearnPortals(portals);
+  }, [subStatus, contentHtml, courseSlug, lessonSlug]);
+
   // Scroll to console when manually toggled (not on initial render)
   const initialRender = useRef(true);
   useEffect(() => {
@@ -163,6 +209,11 @@ export default function ImmersiveLesson({
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
         {showGate && <LessonGate courseSlug={courseSlug} />}
+
+        {/* Learn component portals — React components hydrated into HTML placeholders */}
+        {learnPortals.map(({ key, Component, props, container }) =>
+          createPortal(<Component {...props} />, container)
+        )}
       </div>
 
       {/* Exercise console — embedded inline after content */}

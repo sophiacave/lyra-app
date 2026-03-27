@@ -17,24 +17,47 @@ css: "claude-beginners.css"
   <p class="sub">6 quick questions to make sure the fundamentals are solid before we move to real workflows.</p>
 </div>
 
-<!-- QUIZ PROGRESS -->
-<div class="quiz-progress" id="quiz-progress">
-  <span class="quiz-dot" id="dot-0"></span>
-  <span class="quiz-dot" id="dot-1"></span>
-  <span class="quiz-dot" id="dot-2"></span>
-  <span class="quiz-dot" id="dot-3"></span>
-  <span class="quiz-dot" id="dot-4"></span>
-  <span class="quiz-dot" id="dot-5"></span>
-</div>
-
-<!-- QUIZ AREA -->
-<div id="quiz-area"></div>
-
-<!-- FEEDBACK -->
-<div id="feedback" class="quiz-feedback"></div>
-
-<!-- RESULTS -->
-<div id="results-area" style="display:none"></div>
+<!-- QUIZ — React QuizMC component hydrated client-side -->
+<div data-learn="QuizMC" data-props='{
+  "questions": [
+    {
+      "q": "What is Claude?",
+      "options": ["A search engine that finds web links", "An AI assistant that reads, writes, and analyzes", "A chatbot that only answers yes or no", "A coding tool for software developers only"],
+      "correct": 1,
+      "explanation": "Claude is an AI assistant made by Anthropic. It can read, write, analyze data, brainstorm, and much more — all through natural conversation."
+    },
+    {
+      "q": "What are the 3 parts of a great prompt?",
+      "options": ["Question, Answer, Follow-up", "Role, Context, Format", "Subject, Body, Signature", "Input, Processing, Output"],
+      "correct": 1,
+      "explanation": "Role (who Claude should be), Context (the situation), and Format (what you want back) — this formula works for almost any prompt."
+    },
+    {
+      "q": "Which prompt will get a better result?",
+      "options": ["Write me something about marketing", "You are a marketing strategist. I run a small bakery with a $200/month budget. Give me 5 social media post ideas with captions.", "Help with marketing please", "Marketing ideas for business"],
+      "correct": 1,
+      "explanation": "The specific prompt includes role (marketing strategist), context (small bakery, $200 budget), and format (5 ideas with captions). Claude can nail this because you told it exactly what you need."
+    },
+    {
+      "q": "Can Claude access the internet to look things up?",
+      "options": ["Yes, it searches Google in real time", "No — it works from its training data, not live internet", "Only with a paid subscription", "Yes, but only Wikipedia"],
+      "correct": 1,
+      "explanation": "Claude works from its training data. It does not browse the web in real time. That is why you should verify important facts and provide context for recent events."
+    },
+    {
+      "q": "What should you do when Claude gives you a factual claim for a presentation?",
+      "options": ["Trust it completely — AI is always accurate", "Verify it with a reliable source", "Ask Claude if it is sure", "Ignore it and make up your own facts"],
+      "correct": 1,
+      "explanation": "Always verify important facts. Claude is excellent at reasoning and writing, but can occasionally get specific facts wrong. Trust the analysis, double-check the numbers."
+    },
+    {
+      "q": "What is the best way to think about Claude?",
+      "options": ["A magic oracle that knows everything", "A brilliant coworker who makes you faster and better", "A replacement for human workers", "A toy that is fun but not useful for real work"],
+      "correct": 1,
+      "explanation": "Claude is a thinking partner — a brilliant coworker who never sleeps. It does not replace you; it amplifies you. Human judgment + AI capability is unstoppable."
+    }
+  ]
+}'></div>
 
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson 3 ✓</button>
 
@@ -44,155 +67,6 @@ css: "claude-beginners.css"
 const SLUG = 'claude-for-beginners';
 const LESSON_NUM = 3;
 
-const QUESTIONS = [
-  {
-    q: "What is Claude?",
-    options: ["A search engine that finds web links", "An AI assistant that reads, writes, and analyzes", "A chatbot that only answers yes or no", "A coding tool for software developers only"],
-    correct: 1,
-    explanation: "Claude is an AI assistant made by Anthropic. It can read, write, analyze data, brainstorm, and much more — all through natural conversation."
-  },
-  {
-    q: "What are the 3 parts of a great prompt?",
-    options: ["Question, Answer, Follow-up", "Role, Context, Format", "Subject, Body, Signature", "Input, Processing, Output"],
-    correct: 1,
-    explanation: "Role (who Claude should be), Context (the situation), and Format (what you want back) — this formula works for almost any prompt."
-  },
-  {
-    q: "Which prompt will get a better result?",
-    options: ["'Write me something about marketing'", "'You are a marketing strategist. I run a small bakery in Portland with a $200/month marketing budget. Give me 5 specific social media post ideas with captions.'", "'Help with marketing please'", "'Marketing ideas for business'"],
-    correct: 1,
-    explanation: "The specific prompt includes role (marketing strategist), context (small bakery, $200 budget), and format (5 ideas with captions). Claude can nail this because you told it exactly what you need."
-  },
-  {
-    q: "Can Claude access the internet to look things up?",
-    options: ["Yes, it searches Google in real time", "No — it works from its training data, not live internet", "Only with a paid subscription", "Yes, but only Wikipedia"],
-    correct: 1,
-    explanation: "Claude works from its training data. It doesn't browse the web in real time. That's why you should verify important facts and provide context for recent events."
-  },
-  {
-    q: "What should you do when Claude gives you a factual claim you'll use in a presentation?",
-    options: ["Trust it completely — AI is always accurate", "Verify it with a reliable source", "Ask Claude if it's sure", "Ignore it and make up your own facts"],
-    correct: 1,
-    explanation: "Always verify important facts. Claude is excellent at reasoning and writing, but can occasionally get specific facts wrong. Think: trust the analysis, double-check the numbers."
-  },
-  {
-    q: "What's the best way to think about Claude?",
-    options: ["A magic oracle that knows everything", "A brilliant coworker who makes you faster and better", "A replacement for human workers", "A toy that's fun but not useful for real work"],
-    correct: 1,
-    explanation: "Claude is a thinking partner — a brilliant coworker who never sleeps. It doesn't replace you; it amplifies you. The combination of human judgment + AI capability is unstoppable."
-  }
-];
-
-// Shuffle options while tracking correct answer
-function shuffleOptions(q) {
-  const indices = q.options.map((_, i) => i);
-  for (let i = indices.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [indices[i], indices[j]] = [indices[j], indices[i]];
-  }
-  return {
-    options: indices.map(i => q.options[i]),
-    correct: indices.indexOf(q.correct)
-  };
-}
-
-const shuffled = QUESTIONS.map(q => {
-  const s = shuffleOptions(q);
-  return { ...q, options: s.options, correct: s.correct };
-});
-
-let current = 0;
-let score = 0;
-let answered = false;
-
-function renderProgress() {
-  const el = document.getElementById('quiz-progress');
-  el.innerHTML = shuffled.map((_, i) => ``).join('');
-}
-
-function renderQuestion() {
-  const q = shuffled[current];
-  answered = false;
-  renderProgress();
-  document.getElementById('quiz-area').innerHTML = `
-    <div class="quiz-question">
-      <h2>${q.q}</h2>
-      <div class="quiz-options">
-        ${q.options.map((opt, i) => `<button class="quiz-option" onclick="answer(${i})">${opt}</button>`).join('')}
-      </div>
-      </div>
-  `;
-}
-
-function answer(idx) {
-  if (answered) return;
-  answered = true;
-  const q = shuffled[current];
-  const btns = document.querySelectorAll('.quiz-option');
-  const fb = document.getElementById('feedback');
-
-  btns.forEach((btn, i) => {
-    btn.style.pointerEvents = 'none';
-    if (i === q.correct) btn.classList.add('correct');
-    if (i === idx && idx !== q.correct) btn.classList.add('wrong');
-  });
-
-  const dot = document.getElementById('dot-' + current);
-  if (idx === q.correct) {
-    score++;
-    dot.classList.add('correct');
-    fb.className = 'quiz-feedback visible correct';
-    fb.innerHTML = `<strong>Correct!</strong> ${q.explanation}`;
-  } else {
-    dot.classList.add('wrong');
-    fb.className = 'quiz-feedback visible wrong';
-    fb.innerHTML = `<strong>Not quite.</strong> ${q.explanation}`;
-  }
-
-  setTimeout(() => {
-    current++;
-    if (current < shuffled.length) {
-      renderQuestion();
-    } else {
-      showResults();
-    }
-  }, 2500);
-}
-
-function showResults() {
-  const pct = Math.round((score / shuffled.length) * 100);
-  const emoji = pct === 100 ? '🎯' : pct >= 80 ? '🌟' : pct >= 60 ? '👍' : '📚';
-  const msg = pct === 100 ? "Perfect score! You're ready to automate."
-    : pct >= 80 ? "Great job! You've got the fundamentals down."
-    : pct >= 60 ? "Solid start. Review lessons 1 and 2 if anything felt fuzzy."
-    : "Worth reviewing the first two lessons before moving on.";
-
-  document.getElementById('quiz-area').style.display = 'none';
-  document.getElementById('results-area').style.display = 'block';
-  document.getElementById('results-area').innerHTML = `
-    <div class="results-card">
-      <div style="font-size:3rem;margin-bottom:1rem">${emoji}</div>
-      <h2>${score} / ${shuffled.length}</h2>
-      <p>${msg}</p>
-      <div style="margin-top:1.5rem">
-        <button onclick="retryQuiz()" class="btn btn-secondary" style="margin-right:8px">Try Again</button>
-        
-      </div>
-    </div>
-  `;
-
-  document.getElementById('completeBtn').style.display = 'block';
-  document.getElementById('completeBtn').classList.add('visible');
-}
-
-function retryQuiz() {
-  current = 0; score = 0;
-  document.getElementById('results-area').style.display = 'none';
-  document.getElementById('quiz-area').style.display = 'block';
-  document.getElementById('completeBtn').style.display = 'none';
-  renderQuestion();
-}
-
 function completeLesson() {
   const stored = localStorage.getItem('lo_progress_' + SLUG);
   const completed = stored ? JSON.parse(stored) : [];
@@ -201,15 +75,21 @@ function completeLesson() {
   btn.textContent = 'Completed! ✨'; btn.style.background = 'var(--green)'; btn.style.pointerEvents = 'none';
 }
 
+// Show complete button after quiz renders
+setTimeout(() => {
+  const btn = document.getElementById('completeBtn');
+  if (btn) { btn.style.display = 'block'; btn.classList.add('visible'); }
+}, 500);
+
 (function() {
   const stored = localStorage.getItem('lo_progress_' + SLUG);
   const completed = stored ? JSON.parse(stored) : [];
   if (completed.includes(LESSON_NUM)) {
     const btn = document.getElementById('completeBtn');
-    btn.style.display = 'block'; btn.classList.add('visible');
-    btn.textContent = 'Completed! ✨'; btn.style.background = 'var(--green)'; btn.style.pointerEvents = 'none';
+    if (btn) {
+      btn.style.display = 'block'; btn.classList.add('visible');
+      btn.textContent = 'Completed! ✨'; btn.style.background = 'var(--green)'; btn.style.pointerEvents = 'none';
+    }
   }
 })();
-
-renderQuestion();
 </script>
