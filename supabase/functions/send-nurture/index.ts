@@ -64,7 +64,7 @@ const SEQUENCE: NurtureEmail[] = [
       </div>
       <p>Replace the brackets with your actual situation. Claude will give you three concrete, actionable ideas tailored to YOUR job.</p>
       <p>That's it. That's the lesson. AI isn't about technology — it's about <strong>saving your time</strong> so you can spend it on what matters.</p>
-      <p>Want more of this? The <a href="https://likeone.ai/academy/" style="color:#c084fc">academy</a> has 97 interactive lessons that go way deeper.</p>
+      <p>Want more of this? The <a href="https://likeone.ai/academy/" style="color:#c084fc">academy</a> has 300+ interactive lessons that go way deeper.</p>
       <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
     ),
   },
@@ -91,14 +91,14 @@ const SEQUENCE: NurtureEmail[] = [
   {
     day: 7,
     subject: "Have you explored the academy yet?",
-    preheader: "10 courses. 97 lessons. Built for how you actually learn.",
+    preheader: "30 courses. 300+ lessons. Built for how you actually learn.",
     html: buildEmail(
       "Have you explored the academy?",
       `<p>Hey — just checking in.</p>
-      <p>Like One Academy has 10 courses with 97 interactive lessons — from Claude basics to building production agents, RAG systems, and automation pipelines.</p>
+      <p>Like One Academy has 30 courses with 300+ interactive lessons — from Claude basics to building production agents, RAG systems, and automation pipelines.</p>
       <p>Every course is hands-on. Not a lecture. Not a sales pitch. Just real skills taught through real projects.</p>
       <p>If you haven't started: <a href="https://likeone.ai/academy/" style="color:#c084fc;font-weight:600">Browse the Academy →</a></p>
-      <p>Founding members get all 10 courses for $4.90/mo — 90% off the future price. <a href="https://likeone.ai/pricing" style="color:#c084fc">See pricing →</a></p>
+      <p>Founding members get all 30 courses for $4.90/mo — 90% off the future price. <a href="https://likeone.ai/pricing" style="color:#c084fc">See pricing →</a></p>
       <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
     ),
   },
@@ -112,7 +112,7 @@ const SEQUENCE: NurtureEmail[] = [
       <p>Like One Academy Pro is normally $49/mo. But the first 1,000 members — the people who believe early — get it for <strong style="color:#fb923c;font-size:18px">$4.90/mo</strong>. Forever. The price never increases.</p>
       <p>What you get:</p>
       <ul style="color:#8888a0;padding-left:20px;line-height:2">
-        <li><strong style="color:#e0e0e0">97 interactive lessons</strong> across 10 courses</li>
+        <li><strong style="color:#e0e0e0">300+ interactive lessons</strong> across 30 courses</li>
         <li><strong style="color:#e0e0e0">MCP, RAG, Agents, Automation</strong> — the skills that matter</li>
         <li><strong style="color:#e0e0e0">New content regularly</strong> — the library keeps growing</li>
         <li><strong style="color:#e0e0e0">All download products</strong> included</li>

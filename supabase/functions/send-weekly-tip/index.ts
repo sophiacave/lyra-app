@@ -313,7 +313,7 @@ const TIPS: WeeklyTip[] = [
       </ul>
       <p>This isn't about AI replacing you. It's about you becoming <strong>unreplaceable</strong> because you've learned to amplify what makes you human.</p>
       <h2 style="font-size:16px;color:#fb923c;margin:24px 0 12px">The path forward</h2>
-      <p>Everything I've shared in these tips is the beginning. The academy goes deeper — 10 courses, 97 lessons, from fundamentals to building production AI systems.</p>
+      <p>Everything I've shared in these tips is the beginning. The academy goes deeper — 30 courses, 300+ lessons, from fundamentals to building production AI systems.</p>
       <p>Founding members get all of it for <strong style="color:#fb923c">$4.90/mo</strong> — 90% off the future price. That won't last forever.</p>
       <div style="text-align:center;margin:24px 0">
         <a href="https://likeone.ai/pricing" style="display:inline-block;background:#fb923c;color:#000;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;font-size:16px">See pricing & join →</a>
