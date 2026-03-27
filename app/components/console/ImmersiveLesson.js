@@ -99,7 +99,7 @@ export default function ImmersiveLesson({
   navNode = null,
 }) {
   const [consoleState, setConsoleState] = useState('idle');
-  const [consoleExpanded, setConsoleExpanded] = useState(false);
+  const [consoleExpanded, setConsoleExpanded] = useState(exercises.length > 0);
   const scrollRef = useRef(null);
   const consoleRef = useRef(null);
   const subStatus = useSubscriptionStatus();
@@ -111,8 +111,13 @@ export default function ImmersiveLesson({
   const showGate = !isFree && subStatus !== 'loading' && subStatus !== 'pro';
   const hasExercises = exercises.length > 0;
 
-  // Scroll to console when expanded
+  // Scroll to console when manually toggled (not on initial render)
+  const initialRender = useRef(true);
   useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
     if (consoleExpanded && consoleRef.current) {
       consoleRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
