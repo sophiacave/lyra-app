@@ -1837,3 +1837,231 @@
   color: var(--accent-blue);
   text-decoration: underline;
 }
+
+
+/* ═══════════════════════════════════
+   IMMERSIVE LESSON — Full-flow console experience
+   Content + exercises in one scrolling document.
+   ═══════════════════════════════════ */
+
+.immersive-lesson {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.immersive-lesson::-webkit-scrollbar { width: 6px; }
+.immersive-lesson::-webkit-scrollbar-track { background: transparent; }
+.immersive-lesson::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+
+/* Content area — full width, centered, comfortable reading */
+.immersive-content {
+  flex: 1 0 auto;
+  padding: var(--space-8) var(--space-8);
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.immersive-lesson-body {
+  animation: lo-lesson-enter 0.5s var(--ease-out) both;
+}
+
+.immersive-lesson-body > * {
+  animation: lo-stagger-in 0.4s var(--ease-out) both;
+}
+.immersive-lesson-body > *:nth-child(1) { animation-delay: 0.05s; }
+.immersive-lesson-body > *:nth-child(2) { animation-delay: 0.1s; }
+.immersive-lesson-body > *:nth-child(3) { animation-delay: 0.15s; }
+.immersive-lesson-body > *:nth-child(4) { animation-delay: 0.2s; }
+.immersive-lesson-body > *:nth-child(5) { animation-delay: 0.25s; }
+.immersive-lesson-body > *:nth-child(n+6) { animation-delay: 0.3s; }
+
+
+/* ── Immersive Console Section ── */
+
+.immersive-console-section {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+  position: relative;
+}
+
+/* Separator line above console */
+.immersive-console-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-8);
+  right: var(--space-8);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(192,132,252,0.2) 20%,
+    rgba(56,189,248,0.15) 50%,
+    rgba(192,132,252,0.2) 80%,
+    transparent 100%
+  );
+}
+
+/* Console tab/toggle header */
+.immersive-console-header {
+  padding: var(--space-4) 0 0;
+}
+
+.immersive-console-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.immersive-console-tab:hover {
+  background: var(--surface-elevated);
+  border-color: var(--border-medium);
+}
+
+.immersive-console-tab-icon {
+  color: var(--accent-purple);
+  font-size: var(--font-md);
+  animation: lo-pulse 2s ease-in-out infinite;
+}
+
+.immersive-console-tab-label {
+  font-weight: var(--font-weight-bold);
+  flex: 1;
+  text-align: left;
+}
+
+.immersive-console-tab-count {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  background: var(--surface-sunken);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.immersive-console-chevron {
+  color: var(--text-tertiary);
+  transition: transform var(--transition-fast);
+  font-size: var(--font-xs);
+}
+
+.immersive-console-chevron.expanded {
+  transform: rotate(180deg);
+}
+
+/* Console body — collapses/expands */
+.immersive-console-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.immersive-console-body.expanded {
+  max-height: 2000px;
+  opacity: 1;
+  padding-bottom: var(--space-4);
+}
+
+/* Console panel inside immersive — no redundant chrome */
+.immersive-console-body .console-panel {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  border-top: none;
+  background: var(--surface-sunken);
+}
+
+.immersive-console-body .console-header {
+  display: none;
+}
+
+/* Active glow on section */
+.immersive-console-active::before {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(192,132,252,0.35) 20%,
+    rgba(56,189,248,0.25) 50%,
+    rgba(192,132,252,0.35) 80%,
+    transparent 100%
+  );
+  transition: background 0.6s ease;
+}
+
+.immersive-console-typing .immersive-console-tab {
+  border-color: rgba(56,189,248,0.3);
+  box-shadow: 0 0 12px rgba(56,189,248,0.08);
+}
+
+
+/* ── Immersive Footer ── */
+
+.immersive-footer {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-8) var(--space-8);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-6);
+}
+
+
+/* ── Responsive: Immersive ── */
+
+@media (max-width: 768px) {
+  .immersive-content {
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .immersive-console-section {
+    padding: 0 var(--space-4);
+  }
+
+  .immersive-console-section::before {
+    left: var(--space-4);
+    right: var(--space-4);
+  }
+
+  .immersive-footer {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .immersive-content {
+    padding: var(--space-3) var(--space-3);
+  }
+
+  .immersive-console-section {
+    padding: 0 var(--space-3);
+  }
+
+  .immersive-console-section::before {
+    left: var(--space-3);
+    right: var(--space-3);
+  }
+
+  .immersive-footer {
+    padding: var(--space-3);
+  }
+}

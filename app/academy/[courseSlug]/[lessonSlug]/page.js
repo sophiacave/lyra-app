@@ -2,7 +2,7 @@ import { getLesson, getCourse, getAllCourseSlugs, getLessonSlugs } from '../../.
 import { notFound } from 'next/navigation';
 import LessonNav from '../../../components/academy/LessonNav';
 import LessonComplete from '../../../components/academy/LessonComplete';
-import LessonSplitView from '../../../components/console/LessonSplitView';
+import ImmersiveLesson from '../../../components/console/ImmersiveLesson';
 import { site } from '@/lib/site-config';
 import fs from 'fs';
 import path from 'path';
@@ -109,24 +109,28 @@ export default async function LessonPage({ params }) {
       />
       <link rel="stylesheet" href="/academy/shared/academy.css" />
 
-      <LessonSplitView
+      <ImmersiveLesson
         contentHtml={fullContentHtml}
         lessonTitle={lesson.title}
         exercises={exercises}
         isFree={lesson.free !== false}
         courseSlug={courseSlug}
+        lessonSlug={lessonSlug}
+        prev={lesson.prev}
+        next={lesson.next}
+        courseTitle={course?.title}
+        completionNode={
+          <LessonComplete courseSlug={courseSlug} lessonSlug={lessonSlug} />
+        }
+        navNode={
+          <LessonNav
+            courseSlug={courseSlug}
+            prev={lesson.prev}
+            next={lesson.next}
+            courseTitle={course?.title}
+          />
+        }
       />
-
-      {/* Completion + nav below the split view on mobile */}
-      <div className="lo-split-footer">
-        <LessonComplete courseSlug={courseSlug} lessonSlug={lessonSlug} />
-        <LessonNav
-          courseSlug={courseSlug}
-          prev={lesson.prev}
-          next={lesson.next}
-          courseTitle={course?.title}
-        />
-      </div>
     </>
   );
 }
