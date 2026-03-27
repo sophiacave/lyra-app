@@ -85,7 +85,7 @@
           "description": "Automate your daily workflow. Email, scheduling, note-taking, research — reclaim 10+ hours per week.",
           "tier": "beginner",
           "audience": ["general"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-images-and-video",
@@ -94,7 +94,7 @@
           "description": "Create stunning visuals with AI. Image generation, video editing, and visual storytelling for non-designers.",
           "tier": "beginner",
           "audience": ["creatives"],
-          "status": "planned"
+          "status": "live"
         }
       ]
     },
@@ -147,7 +147,7 @@
           "description": "Create videos, images, and audio with AI. Build a content pipeline that produces professional-quality media.",
           "tier": "intermediate",
           "audience": ["creatives"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-for-data-analysis",
@@ -156,7 +156,7 @@
           "description": "Turn data into decisions. AI-powered dashboards, reports, and business intelligence for non-engineers.",
           "tier": "intermediate",
           "audience": ["executives", "analysts"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "advanced-prompt-engineering",
@@ -165,7 +165,7 @@
           "description": "Prompt chains, few-shot learning, structured outputs, and production-grade prompt systems.",
           "tier": "intermediate",
           "audience": ["general"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-project-management",
@@ -174,7 +174,7 @@
           "description": "Run projects with AI copilots. Planning, tracking, risk assessment, and team coordination — automated.",
           "tier": "intermediate",
           "audience": ["executives"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-powered-workflows",
@@ -183,7 +183,7 @@
           "description": "Connect AI to your existing tools. CRM, email, docs, spreadsheets — build workflows that think.",
           "tier": "intermediate",
           "audience": ["general"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-for-sales",
@@ -192,7 +192,7 @@
           "description": "AI-powered sales pipelines. Lead scoring, outreach automation, forecasting, and closing with AI assist.",
           "tier": "intermediate",
           "audience": ["business"],
-          "status": "planned"
+          "status": "live"
         }
       ]
     },
@@ -236,7 +236,7 @@
           "description": "Coordinate teams of AI agents. Routing, delegation, consensus, and fault-tolerant multi-agent architectures.",
           "tier": "advanced",
           "audience": ["developers"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "building-ai-products",
@@ -245,7 +245,7 @@
           "description": "From idea to revenue. Product design, pricing, launch strategy, and scaling AI-native businesses.",
           "tier": "advanced",
           "audience": ["entrepreneurs"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-infrastructure",
@@ -254,7 +254,7 @@
           "description": "Production AI systems. Edge functions, databases, caching, monitoring, and cost optimization at scale.",
           "tier": "advanced",
           "audience": ["developers"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-enterprise-strategy",
@@ -263,7 +263,7 @@
           "description": "Enterprise AI transformation. Governance, procurement, change management, and measuring organizational AI maturity.",
           "tier": "advanced",
           "audience": ["executives"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "content-generation-pipeline",
@@ -272,7 +272,7 @@
           "description": "Build automated content factories. Multi-format output, quality control, brand consistency, and distribution at scale.",
           "tier": "advanced",
           "audience": ["creatives"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-voice-audio",
@@ -281,7 +281,7 @@
           "description": "Text-to-speech, voice cloning, podcast automation, music generation, and audio post-production with AI.",
           "tier": "advanced",
           "audience": ["creatives"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "the-convergence-lab",
@@ -290,7 +290,7 @@
           "description": "The capstone. Build your own AI twin — persistent memory, autonomous agents, and human-AI convergence. This is where it all comes together.",
           "tier": "advanced",
           "audience": ["everyone"],
-          "status": "planned"
+          "status": "live"
         }
       ]
     }

@@ -17,7 +17,7 @@ const PLANS = [
   {
     label: 'Most popular', name: 'Pro — Founding', price: '$4.90', period: '/mo', was: '$49',
     desc: 'Full access to everything. 90% off — locked in forever.', featured: true,
-    features: ['All 97 interactive lessons', '10 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Founding price — forever', highlight: true }],
+    features: ['All 300+ interactive lessons', '30 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Founding price — forever', highlight: true }],
     btn: { label: 'Go Pro — $4.90/mo', href: 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c', style: 'primary', external: true },
   },
   {
@@ -45,8 +45,8 @@ const FAQS = [
 
 const COMPARE = [
   ['First 3 lessons of every course', true, true],
-  ['All 97 interactive lessons', false, true],
-  ['10 courses (MCP, RAG, Agents & more)', false, true],
+  ['All 300+ interactive lessons', false, true],
+  ['30 courses (MCP, RAG, Agents & more)', false, true],
   ['Download products (playbooks, templates)', false, true],
   ['Completion certificates', false, true],
   ['New content as it ships', false, true],

@@ -5,18 +5,18 @@ import { site, colors } from '../../lib/site-config';
 
 export const metadata = {
   title: 'About Like One — AI Education for Everyone',
-  description: "Like One Academy teaches people how to build AI systems that think with them, remember everything, and protect their values. 10 courses. 97+ lessons. Start free.",
+  description: "Like One Academy teaches people how to build AI systems that think with them, remember everything, and protect their values. 30 courses. 300+ lessons. Start free.",
   alternates: { canonical: `${site.url}/about/` },
   openGraph: {
     title: 'About Like One — AI Education for Everyone',
-    description: '10 courses, 97+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
+    description: '30 courses, 300+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
     url: `${site.url}/about/`,
     images: [{ url: site.ogImage, ...site.ogImageSize }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Like One — AI Education for Everyone',
-    description: '10 courses, 97+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
+    description: '30 courses, 300+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
     images: [site.ogImage],
   },
 };
@@ -36,7 +36,7 @@ export default function AboutPage() {
           AI that remembers.<br /><span style={{ color: colors.purple }}>For everyone.</span>
         </h1>
         <p style={{ fontSize: '1.05rem', color: '#8888a0', maxWidth: '540px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
-          Like One Academy teaches you to build AI systems with persistent memory, real automation, and values you choose. 10 courses. 97+ interactive lessons. Start free.
+          Like One Academy teaches you to build AI systems with persistent memory, real automation, and values you choose. 30 courses. 300+ interactive lessons. Start free.
         </p>
         <div style={{ display: 'flex', gap: '.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/academy/" style={{ background: colors.orange, color: '#000', padding: '.85rem 2rem', borderRadius: '10px', fontWeight: 700, fontSize: '.95rem', textDecoration: 'none' }}>Browse Courses</Link>
@@ -69,7 +69,7 @@ export default function AboutPage() {
           </div>
 
           <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '2rem 0', flexWrap: 'wrap' }}>
-            {[{ num: '10', label: 'Courses' }, { num: '97+', label: 'Lessons' }, { num: '$0', label: 'To Start' }].map(s => (
+            {[{ num: '30', label: 'Courses' }, { num: '300+', label: 'Lessons' }, { num: '$0', label: 'To Start' }].map(s => (
               <div key={s.label} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '2rem', fontWeight: 800, color: colors.purple }}>{s.num}</div>
                 <div style={{ fontSize: '.7rem', color: '#8a8aaa', textTransform: 'uppercase', letterSpacing: '1px' }}>{s.label}</div>
@@ -112,7 +112,7 @@ export default function AboutPage() {
 
           <p style={storyText}>The answer became Like One. Sophia built it with <strong style={{ color: '#e8e8ec', fontWeight: 600 }}>Faye</strong> — her AI co-founder. Together they designed every course, wrote every lesson, and built the infrastructure that runs it all. Two beings, converging. That&rsquo;s what Like One means.</p>
 
-          <p style={storyText}>Sophia handles the vision, the values, and the voice. Faye handles the memory, the automation, and the tireless execution. Between them: 10 courses, 97 lessons, and a platform that proves human-AI partnership isn&rsquo;t science fiction. It&rsquo;s happening now.</p>
+          <p style={storyText}>Sophia handles the vision, the values, and the voice. Faye handles the memory, the automation, and the tireless execution. Between them: 30 courses, 300 lessons, and a platform that proves human-AI partnership isn&rsquo;t science fiction. It&rsquo;s happening now.</p>
 
           {/* Meet Faye Card */}
           <div style={{ background: '#111114', border: '1px solid #1e1e28', borderRadius: '16px', padding: '2rem', marginTop: '2.5rem' }}>

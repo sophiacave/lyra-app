@@ -29,9 +29,18 @@ export default function AcademyCatalog() {
     // Approximate lesson counts for live courses
     const counts = {
       'claude-for-beginners': 9, 'ai-foundations': 9, 'ai-for-business': 10,
+      'ai-for-creatives': 10, 'ai-for-executives': 10, 'prompt-writing-101': 10,
+      'ai-ethics-and-safety': 10, 'ai-for-marketing': 10,
+      'ai-for-personal-productivity': 10, 'ai-images-and-video': 10,
       'claude-mastery': 10, 'automation-architect': 9, 'first-ai-agent': 10,
-      'ai-stack-builder': 10, 'mcp-masterclass': 10, 'rag-vector-search': 10,
-      'the-automation-lab': 10,
+      'ai-stack-builder': 10, 'ai-content-studio': 10, 'ai-for-data-analysis': 10,
+      'advanced-prompt-engineering': 10, 'ai-project-management': 10,
+      'ai-powered-workflows': 10, 'ai-for-sales': 10,
+      'mcp-masterclass': 10, 'rag-vector-search': 10, 'the-automation-lab': 10,
+      'multi-agent-orchestration': 10, 'building-ai-products': 10,
+      'ai-infrastructure': 10, 'ai-enterprise-strategy': 10,
+      'content-generation-pipeline': 10, 'ai-voice-audio': 10,
+      'the-convergence-lab': 10,
     };
     return sum + (counts[c.slug] || 10);
   }, 0);

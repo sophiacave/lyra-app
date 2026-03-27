@@ -715,7 +715,7 @@ export default function ChecklistPage() {
               }}
             >
               Like One Academy teaches the full system — from your first AI workflow to a
-              fully autonomous business brain. 10 courses, 97 lessons. Start free.
+              fully autonomous business brain. 30 courses, 300+ lessons. Start free.
             </p>
             <a
               href="https://likeone.ai/academy/"

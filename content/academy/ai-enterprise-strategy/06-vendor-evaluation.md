@@ -1,0 +1,69 @@
+---
+title: "Vendor Evaluation"
+course: "ai-enterprise-strategy"
+order: 6
+type: "lesson"
+---
+
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/ai-enterprise-strategy/">← AI for Enterprise Strategy</a>
+  <span class="badge">Lesson 6 of 10</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>Vendor <span class="accent">Evaluation</span></h1>
+  <p class="section-text">The AI vendor landscape is a minefield of bold claims, overlapping capabilities, and pricing models designed to confuse. This lesson gives you a structured framework to cut through the noise, evaluate vendors honestly, and make decisions you will not regret in 18 months.</p>
+</div>
+
+<div class="learn-card">
+  <h3>What you will learn</h3>
+  <ul>
+    <li>A vendor evaluation framework that goes beyond feature checklists</li>
+    <li>The build vs. buy vs. partner decision matrix</li>
+    <li>Red flags that signal a vendor will not deliver on their promises</li>
+    <li>How to structure contracts and pilots to protect your organization</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Build vs. Buy vs. Partner</span>
+  <h2 class="section-title">The First Decision</h2>
+  <p class="section-text"><strong>Build</strong> when AI is your core competitive advantage and you need full control. This requires significant in-house talent and infrastructure. <strong>Buy</strong> when the problem is well-understood and commercial solutions are mature. Customer support AI, document processing, basic analytics. <strong>Partner</strong> when you need domain-specific AI but lack internal capability. Consulting firms and boutique AI shops can accelerate your timeline.</p>
+  <p class="section-text">Most organizations over-index on building. The ego of custom development is seductive but expensive. Unless AI is your product, strongly consider buying or partnering for your first two or three use cases. Build institutional knowledge, then bring capabilities in-house strategically.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Evaluation Framework</span>
+  <h2 class="section-title">Beyond the Feature Matrix</h2>
+  <p class="section-text">Evaluate vendors across six dimensions: <strong>capability fit</strong> (does it solve your actual problem), <strong>integration complexity</strong> (how hard is it to connect to your systems), <strong>total cost</strong> (licensing, implementation, training, ongoing), <strong>vendor viability</strong> (will they exist in three years), <strong>data handling</strong> (where does your data go and who can access it), and <strong>exit strategy</strong> (how painful is it to leave).</p>
+  <p class="section-text">Run a proof of concept with your actual data on your actual problem. Vendor demos use curated data on ideal scenarios. You need to see performance on your messy, real-world data. Any vendor unwilling to do a POC on your data is not confident in their product.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Red Flags</span>
+  <h2 class="section-title">When to Walk Away</h2>
+  <p class="section-text">Walk away if: accuracy claims lack methodology, pricing requires annual commitment before a pilot, the contract locks your data in proprietary formats, the vendor cannot name three enterprise customers you can call, or the sales team cannot explain how the AI works in plain language. These are not minor concerns — they are signals of a vendor that will create more problems than they solve.</p>
+</div>
+
+<div class="demo-container">
+  <div class="try-it-box">
+    <h3>Try it now</h3>
+    <p class="section-text">Use this prompt to evaluate an AI vendor:</p>
+    <div class="prompt-box"><code>Help me evaluate an AI vendor. The vendor is [name/type] offering [product/service]. Our use case is [describe]. I need to assess: capability fit, integration with our [tech stack], total cost of ownership over 3 years, data privacy implications, and exit risk. Generate a vendor evaluation scorecard with weighted criteria and a list of 15 questions I should ask in my next vendor meeting.</code></div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Like One Perspective</span>
+  <h2 class="section-title">Your Vendor Is Your Partner</h2>
+  <p class="section-text">The best vendor relationships are partnerships, not transactions. Find vendors who invest in your success, not just your contract. Who offer training, not just software. Who share roadmaps, not just release notes. Technology changes fast — you want partners who will evolve with you, not lock you into yesterday's solution.</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="/academy/ai-enterprise-strategy/team-and-talent/">← Previous: Team and Talent</a>
+  <a href="/academy/ai-enterprise-strategy/governance-and-ethics/">Next: Governance and Ethics →</a>
+</nav>
+
+</div>

@@ -1,0 +1,86 @@
+---
+title: "Lead Research & Qualification"
+course: "ai-for-sales"
+order: 2
+type: "lesson"
+free: false
+---
+
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/ai-for-sales/">← AI for Sales & Revenue</a>
+  <span class="badge">Lesson 2 of 10</span>
+</nav>
+
+<div class="lesson-hero">
+  <span class="accent">Lesson 2</span>
+  <h1>Lead Research & Qualification</h1>
+  <p class="hero-sub">Use AI to research prospects in minutes and score leads like a pro.</p>
+</div>
+
+<div class="learn-card">
+  <h3>What You'll Learn</h3>
+  <ul>
+    <li>How to build detailed prospect profiles with AI in under 5 minutes</li>
+    <li>AI-powered lead scoring that actually predicts close rates</li>
+    <li>The research prompt stack that top sellers use daily</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Problem</span>
+  <h2 class="section-title">Stop Selling Blind</h2>
+  <p class="section-text">Most salespeople walk into calls knowing almost nothing about their prospect. They skim a LinkedIn profile, glance at the company website, and wing it. That's not selling — that's gambling.</p>
+  <p class="section-text">AI changes this completely. In the time it takes to pour a coffee, you can have a comprehensive prospect brief that covers their company, challenges, recent news, tech stack, competitors, and likely objections.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Workflow</span>
+  <h2 class="section-title">The 5-Minute Prospect Brief</h2>
+  <p class="section-text">Here's the exact process. Run these prompts in sequence before any sales conversation:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Step 1:</strong> Company snapshot — size, industry, recent funding, key products</p>
+    <p><strong style="color: var(--blue);">Step 2:</strong> Contact profile — role, tenure, likely priorities, career trajectory</p>
+    <p><strong style="color: var(--blue);">Step 3:</strong> Pain point analysis — what problems does this company likely face given their stage and industry?</p>
+    <p><strong style="color: var(--blue);">Step 4:</strong> Connection mapping — how does your product solve their specific problems?</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Try It Now</h3>
+  <p>Build a prospect brief for your next sales call:</p>
+  <div class="prompt-box"><code>I'm about to have a sales call with [CONTACT NAME], [TITLE] at [COMPANY]. I sell [YOUR PRODUCT]. Research this company and person, then give me: 1) Company overview and recent news, 2) This person's likely priorities and pain points, 3) How my product specifically addresses their challenges, 4) Three conversation starters that show I've done my homework, 5) Likely objections they'll raise and how to handle them.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Lead Scoring</span>
+  <h2 class="section-title">AI-Powered Lead Qualification</h2>
+  <p class="section-text">Not all leads are equal. AI can help you score and prioritize so you spend time on the deals most likely to close.</p>
+  <p class="section-text">Feed your lead list to AI with your ideal customer profile, and ask it to score each lead on fit, timing, and likelihood to close. Include criteria like company size, industry match, budget signals, and urgency indicators.</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Hot (80-100):</strong> Strong ICP match, budget confirmed, active pain point, decision-maker engaged</p>
+    <p><strong style="color: var(--orange);">Warm (50-79):</strong> Good fit, exploring options, needs nurturing, multiple stakeholders</p>
+    <p><strong style="color: var(--red);">Cold (0-49):</strong> Poor fit, no budget, no urgency, wrong contact level</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Score Your Pipeline</h3>
+  <p>Paste your lead list and let AI prioritize your week:</p>
+  <div class="prompt-box"><code>Here's my ideal customer profile: [DESCRIBE YOUR BEST CUSTOMERS]. Now score these leads from 0-100 based on how well they match. For each, explain your reasoning and suggest the best next action: [PASTE YOUR LEAD LIST]</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Power Move</span>
+  <h2 class="section-title">Build Your Research Template</h2>
+  <p class="section-text">Create a saved prompt template for prospect research that you use before every single call. Consistency is what separates professionals from amateurs. When every prospect gets the same thorough research treatment, your close rate climbs because you never walk in unprepared.</p>
+  <p class="section-text">Save your best prompts. Refine them after every call. Your AI research system gets better every week.</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="/academy/ai-for-sales/01-ai-sales-revolution/" class="prev">← Previous: The AI Sales Revolution</a>
+  <a href="/academy/ai-for-sales/03-outreach-that-converts/" class="next">Next: Outreach That Converts →</a>
+</nav>
+
+</div>

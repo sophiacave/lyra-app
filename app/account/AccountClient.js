@@ -294,10 +294,10 @@ export default function AccountClient() {
               </div>
               <p style={{ color: '#8888a0', fontSize: '.9rem' }}>
                 {isPaid
-                  ? 'Full access to all 97 lessons across 10 courses. Your founding price is locked in forever.'
+                  ? 'Full access to all 300+ lessons across 30 courses. Your founding price is locked in forever.'
                   : isCommunity
                   ? "Full access through our Community Access program. When you're ready, upgrading keeps this program running for others."
-                  : "You're on the free tier. Upgrade to unlock all 97 lessons across 10 courses."}
+                  : "You're on the free tier. Upgrade to unlock all 300+ lessons across 30 courses."}
               </p>
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '1rem' }}>
                 {isPaid ? (

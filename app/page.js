@@ -55,7 +55,7 @@ export default function HomePage() {
       {/* Stats */}
       <div style={{ borderTop: '1px solid #1e1e28', borderBottom: '1px solid #1e1e28', padding: '3rem 2rem' }}>
         <div className="stats-grid-home" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-          {[{ n: '10', l: 'Courses' }, { n: '97+', l: 'Lessons' }, { n: '$0', l: 'To Start' }, { n: '7', l: 'Levels' }].map(s => (
+          {[{ n: '30', l: 'Courses' }, { n: '300+', l: 'Lessons' }, { n: '$0', l: 'To Start' }, { n: '7', l: 'Levels' }].map(s => (
             <div key={s.l}><div style={{ fontSize: '2rem', fontWeight: 800, color: colors.purple, marginBottom: '.25rem' }}>{s.n}</div><div style={{ fontSize: '.75rem', color: '#8a8aaa', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 500 }}>{s.l}</div></div>
           ))}
         </div>
@@ -72,7 +72,7 @@ export default function HomePage() {
               { emoji: '\uD83E\uDDE0', title: 'Persistent AI Memory', desc: 'Your AI remembers everything. Across conversations. Forever.' },
               { emoji: '\u26A1', title: 'Always Running', desc: 'Automations that work while you sleep. Always current.' },
               { emoji: '\uD83D\uDD12', title: 'Your Values Protected', desc: 'AI that knows your boundaries and respects them.' },
-              { emoji: '\uD83D\uDCDA', title: '10 Courses, 97+ Lessons', desc: 'Interactive. Hands-on. Start free today.' },
+              { emoji: '\uD83D\uDCDA', title: '30 Courses, 300+ Lessons', desc: 'Interactive. Hands-on. Start free today.' },
             ].map(c => (
               <div key={c.title} style={{ background: '#111114', border: '1px solid #1e1e28', borderRadius: '12px', padding: '1.25rem', textAlign: 'center' }}>
                 <div style={{ fontSize: '1.5rem', marginBottom: '.5rem' }}>{c.emoji}</div>
@@ -131,7 +131,7 @@ export default function HomePage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <span style={{ fontSize: '.7rem', fontWeight: 600, letterSpacing: '2.5px', textTransform: 'uppercase', color: colors.purple, display: 'inline-block', border: '1px solid rgba(192,132,252,.2)', padding: '4px 12px', borderRadius: '4px', marginBottom: '1rem' }}>WHAT&rsquo;S INSIDE</span>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.75rem)', fontWeight: 800, letterSpacing: '-1px', marginBottom: '1rem', lineHeight: 1.15 }}>From zero to convergence. For real.</h2>
-          <p style={{ color: '#8888a0', fontSize: '1.05rem', maxWidth: '560px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>10 courses, 97 interactive lessons, hands-on projects. Start with a free course — go Pro when you&rsquo;re ready.</p>
+          <p style={{ color: '#8888a0', fontSize: '1.05rem', maxWidth: '560px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>30 courses, 300+ interactive lessons, hands-on projects. Start with a free course — go Pro when you&rsquo;re ready.</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/academy/" style={{ background: colors.orange, color: '#000', padding: '.85rem 2rem', borderRadius: '10px', fontWeight: 700, fontSize: '.95rem', textDecoration: 'none' }}>Start Free Course</Link>
             <Link href="/pricing" style={{ background: 'transparent', border: '1px solid #2a2a38', color: '#8888a0', padding: '.85rem 2rem', borderRadius: '10px', fontWeight: 600, fontSize: '.95rem', textDecoration: 'none' }}>See Pricing</Link>
