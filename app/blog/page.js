@@ -8,6 +8,19 @@ import { site, academy } from '@/lib/site-config';
 export const metadata = {
   title: `Blog — ${site.name}`,
   description: 'Thoughts on AI, automation, and building the future.',
+  alternates: { canonical: `${site.url}/blog/` },
+  openGraph: {
+    title: `Blog — ${site.name}`,
+    description: 'Thoughts on AI, automation, and building the future. By Sophia Cave.',
+    url: `${site.url}/blog/`,
+    images: [{ url: site.ogImage, ...site.ogImageSize }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Blog — ${site.name}`,
+    description: 'Thoughts on AI, automation, and building the future. By Sophia Cave.',
+    images: [site.ogImage],
+  },
 };
 
 function formatDate(dateStr) {

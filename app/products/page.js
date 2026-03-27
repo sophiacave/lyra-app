@@ -7,6 +7,19 @@ import Footer from '../components/Footer';
 export const metadata = {
   title: `Products — ${site.name}`,
   description: 'AI playbooks, automation blueprints, and business systems built from a live, working stack. From free tools to full systems.',
+  alternates: { canonical: `${site.url}/products/` },
+  openGraph: {
+    title: `Products & Tools — ${site.name}`,
+    description: 'AI playbooks, automation blueprints, and business systems. From free tools to full enterprise systems.',
+    url: `${site.url}/products/`,
+    images: [{ url: site.ogImage, ...site.ogImageSize }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Products & Tools — ${site.name}`,
+    description: 'AI playbooks, automation blueprints, and business systems. From free tools to full enterprise systems.',
+    images: [site.ogImage],
+  },
 };
 
 function TierBadge({ tier }) {
