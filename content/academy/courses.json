@@ -58,7 +58,7 @@
           "description": "Master the art of talking to AI. Structure prompts that get exactly what you need, every time.",
           "tier": "beginner",
           "audience": ["general"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-ethics-and-safety",
