@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getCourse, getAllCourseSlugs } from '../../../lib/courses';
 import { notFound } from 'next/navigation';
+import CourseProgress from '../../components/academy/CourseProgress';
 
 export async function generateStaticParams() {
   const slugs = getAllCourseSlugs();
@@ -17,6 +18,22 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Estimate time per lesson type
+function estimateMinutes(lessons) {
+  return lessons.reduce((sum, l) => {
+    if (l.type === 'quiz') return sum + 5;
+    if (l.type === 'lab') return sum + 15;
+    if (l.type === 'builder') return sum + 20;
+    return sum + 8;
+  }, 0);
+}
+
+const DIFFICULTY = {
+  beginner: { label: 'Beginner', color: '#4ade80', bars: 1 },
+  intermediate: { label: 'Intermediate', color: '#38bdf8', bars: 2 },
+  advanced: { label: 'Advanced', color: '#c084fc', bars: 3 },
+};
+
 export default async function CoursePage({ params }) {
   const { courseSlug } = await params;
   const course = getCourse(courseSlug);
@@ -24,6 +41,12 @@ export default async function CoursePage({ params }) {
   if (!course || course.status !== 'live') {
     notFound();
   }
+
+  const minutes = estimateMinutes(course.lessons);
+  const hours = Math.floor(minutes / 60);
+  const timeLabel = hours > 0 ? `${hours}h ${minutes % 60}m` : `${minutes}m`;
+  const diff = DIFFICULTY[course.tierSlug] || DIFFICULTY.beginner;
+  const freeLessons = course.lessons.filter(l => l.free).length;
 
   return (
     <div style={{
@@ -36,12 +59,11 @@ export default async function CoursePage({ params }) {
       {/* Course header — glass panel */}
       <div className="glass glass-animate-up" style={{
         padding: '36px 32px',
-        marginBottom: '32px',
+        marginBottom: '24px',
         borderRadius: 'var(--glass-radius-lg)',
         position: 'relative',
         overflow: 'hidden',
       }}>
-        {/* Background glow */}
         <div style={{
           position: 'absolute',
           top: '-30px',
@@ -94,6 +116,7 @@ export default async function CoursePage({ params }) {
           display: 'flex',
           gap: '10px',
           flexWrap: 'wrap',
+          alignItems: 'center',
         }}>
           <span className="glass-badge">
             {course.tierEmoji} {course.tierName}
@@ -101,8 +124,36 @@ export default async function CoursePage({ params }) {
           <span className="glass-badge badge-dim">
             {course.lessonCount} lessons
           </span>
+          <span className="glass-badge badge-dim">
+            ⏱ {timeLabel}
+          </span>
+          <span className="glass-badge badge-dim" style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px',
+          }}>
+            {[1, 2, 3].map(i => (
+              <span key={i} style={{
+                display: 'inline-block',
+                width: '3px',
+                height: i <= diff.bars ? '12px' : '6px',
+                borderRadius: '2px',
+                background: i <= diff.bars ? diff.color : 'rgba(255,255,255,0.1)',
+                transition: 'all 0.2s ease',
+              }} />
+            ))}
+            <span style={{ marginLeft: '2px' }}>{diff.label}</span>
+          </span>
+          {freeLessons > 0 && (
+            <span className="glass-badge badge-green">
+              {freeLessons} free lesson{freeLessons > 1 ? 's' : ''}
+            </span>
+          )}
         </div>
       </div>
+
+      {/* Progress tracker (client component) */}
+      <CourseProgress courseSlug={courseSlug} lessons={course.lessons} />
 
       {/* Lesson list — glass rows */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -115,12 +166,10 @@ export default async function CoursePage({ params }) {
               animationDelay: `${index * 0.04}s`,
             }}
           >
-            {/* Lesson number orb */}
             <div className={`lesson-orb ${lesson.free ? 'orb-free' : 'orb-locked'}`}>
               {index + 1}
             </div>
 
-            {/* Lesson info */}
             <div style={{ flex: 1 }}>
               <div style={{
                 color: '#e8e8ec',
@@ -152,7 +201,6 @@ export default async function CoursePage({ params }) {
               </div>
             </div>
 
-            {/* Arrow */}
             <span style={{
               color: 'rgba(255,255,255,0.15)',
               fontSize: '16px',
