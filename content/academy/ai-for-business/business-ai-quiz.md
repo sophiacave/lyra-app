@@ -10,7 +10,9 @@ free: false
 <h1>Business AI Readiness Quiz</h1>
 <p class="intro">10 questions that test whether you're ready to lead your business into the AI era. This isn't about technical knowledge — it's about business judgment.</p>
 
-<div class="progress-bar"></div>
+<div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+<div id="quiz-area"></div>
+<div id="result-page" class="result-page"></div>
 </div>
 
 <script>
