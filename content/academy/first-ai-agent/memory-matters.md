@@ -25,27 +25,30 @@ free: false
     <div class="sim-column no-mem" id="col-none">
       <h3>🚫 No Memory</h3>
       <p>Starts fresh every single time. No context from previous runs.</p>
+      <div class="sim-log" id="log-none"></div>
       <div class="score-row">
         <span class="score-label">Score</span>
-        <div class="score-bar"></div>
+        <div class="score-bar"><div class="score-fill" id="score-none" style="width:0%;height:100%;background:#ef4444;border-radius:4px;transition:width .4s"></div></div>
         <span class="score-val" id="val-none">—</span>
       </div>
     </div>
     <div class="sim-column short-mem" id="col-short">
       <h3>⚡ Short-Term Memory</h3>
       <p>Remembers within a session. Forgets between sessions.</p>
+      <div class="sim-log" id="log-short"></div>
       <div class="score-row">
         <span class="score-label">Score</span>
-        <div class="score-bar"></div>
+        <div class="score-bar"><div class="score-fill" id="score-short" style="width:0%;height:100%;background:#eab308;border-radius:4px;transition:width .4s"></div></div>
         <span class="score-val" id="val-short">—</span>
       </div>
     </div>
     <div class="sim-column long-mem" id="col-long">
       <h3>🧠 Long-Term Memory</h3>
       <p>Remembers everything — across sessions, across users.</p>
+      <div class="sim-log" id="log-long"></div>
       <div class="score-row">
         <span class="score-label">Score</span>
-        <div class="score-bar"></div>
+        <div class="score-bar"><div class="score-fill" id="score-long" style="width:0%;height:100%;background:#22c55e;border-radius:4px;transition:width .4s"></div></div>
         <span class="score-val" id="val-long">—</span>
       </div>
     </div>

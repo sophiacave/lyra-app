@@ -30,6 +30,8 @@ free: false
     <button class="tab" onclick="selectTemplate(3)">Role-Play</button>
   </div>
 
+  <div class="template-info" id="templateInfo"></div>
+
   <div class="playground">
     <div class="pane">
       <div class="pane-header"><span class="label">Your Prompt</span><span class="tag" id="templateTag">ZERO-SHOT</span></div>
@@ -37,6 +39,7 @@ free: false
     </div>
     <div class="pane">
       <div class="pane-header"><span class="label">Simulated Output</span><span class="tag" style="font-size:.6rem">(Simulation) AI RESPONSE</span></div>
+      <div class="output-pane" id="outputPane"></div>
       </div>
   </div>
 
@@ -47,9 +50,11 @@ free: false
     <div class="compare-grid">
       <div class="compare-box before">
         <div class="label">Naive Prompt</div>
+        <div class="compare-content" id="beforeContent"></div>
         </div>
       <div class="compare-box after">
         <div class="label">Engineered Prompt</div>
+        <div class="compare-content" id="afterContent"></div>
         </div>
     </div>
   </div>

@@ -45,6 +45,7 @@ free: false
 <textarea id="jwtInput" placeholder="Paste a JWT here... (e.g. eyJhbGciOiJIUzI1NiIs...)">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</textarea>
 <button class="decode-btn" onclick="decodeJWT()">&#x1f50d; Decode</button>
 </div>
+<div class="decode-output" id="decodeOutput" style="display:none"></div>
 
 <h2>Auth Flow: Step by Step</h2>
 <p>Click each step to walk through how Supabase authentication works.</p>
@@ -77,6 +78,8 @@ free: false
 </div>
 
 <div class="panel" id="stepDetail" style="display:none">
+<div class="label" id="stepLabel"></div>
+<div class="code-block" id="stepCode"></div>
 </div>
 
 <div class="panel">
@@ -101,7 +104,7 @@ console.<span class="fn">log</span>(session.access_token) <span class="cm">// Th
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"></div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>

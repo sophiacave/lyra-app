@@ -30,6 +30,7 @@ free: false
 
       <div class="field">
         <label>3. Pick 3 Tools</label>
+        <div class="tool-picker" id="tool-picker"></div>
         <div class="tool-count" id="tool-count">0/3 selected</div>
       </div>
 
@@ -55,6 +56,7 @@ free: false
         </div>
         <div class="card-section">
           <h4>Tools</h4>
+          <div class="card-tools" id="card-tools"></div>
           </div>
         <div class="card-section">
           <h4>Memory</h4>
@@ -67,7 +69,7 @@ free: false
         <div class="card-score">
           <div class="pct" id="card-pct">0%</div>
           <div class="label">Design Completeness</div>
-          <div class="card-completeness"></div>
+          <div class="card-completeness"><div class="card-fill" id="card-fill" style="width:0%;height:100%;background:linear-gradient(90deg,#22c55e,#3b82f6);border-radius:6px;transition:width .3s"></div></div>
         </div>
       </div>
     </div>

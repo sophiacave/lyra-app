@@ -26,15 +26,18 @@ free: false
 <div class="table-tab" onclick="switchTable(2)">consciousness_stream</div>
 </div>
 
+<div class="table-editor" id="tableEditor"></div>
+
 <h2>Entity Relationship Diagram</h2>
 <p>This updates live as you modify the tables above.</p>
-<div class="er-diagram">
+<div class="er-diagram" id="erCanvas">
 </div>
 
 <button class="gen-btn" onclick="generateSQL()">Generate SQL &rarr;</button>
 
 <div class="panel" id="sqlPanel" style="display:none">
 <div class="label">Generated SQL</div>
+<pre class="code-block" id="sqlOutput"></pre>
 </div>
 
 <div class="panel">
@@ -51,7 +54,7 @@ free: false
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"></div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>

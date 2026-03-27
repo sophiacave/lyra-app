@@ -16,7 +16,11 @@ free: false
 
   <div class="question-picker">
     <h3>Pick a question for the agent to answer:</h3>
-    </div>
+    <div class="q-grid" id="q-grid"></div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <div class="flow-viz" id="flow-viz"></div>
 
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>

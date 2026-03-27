@@ -35,6 +35,7 @@ free: false
   </div>
 
   <h2 class="section-title">&#127919; Choose the Right Strategy</h2>
+  <div class="scenarios" id="scenarios"></div>
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>

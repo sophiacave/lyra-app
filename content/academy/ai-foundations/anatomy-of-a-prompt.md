@@ -31,8 +31,9 @@ free: false
     </div>
     <div class="context-bar">
       <div class="context-bar-label"><span>Context Window Usage</span><span id="contextPct">0%</span></div>
-      <div class="context-track"></div>
+      <div class="context-track"><div class="context-fill" id="contextFill"></div></div>
     </div>
+    <div class="token-display" id="tokenDisplay"></div>
     </div>
 
   <div class="concepts">

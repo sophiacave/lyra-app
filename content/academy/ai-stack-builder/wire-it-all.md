@@ -54,6 +54,9 @@ free: false
 </div>
 
 <div class="connection-detail" id="connDetail">
+<div class="conn-header" id="connHeader"></div>
+<div class="conn-flow" id="connFlow"></div>
+<div class="code-block" id="connCode"></div>
 </div>
 
 <h2>Build It: Step by Step</h2>
@@ -139,7 +142,7 @@ free: false
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"></div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
