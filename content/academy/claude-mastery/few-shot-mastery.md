@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 6
 type: "lesson"
 free: false
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -29,17 +28,14 @@ free: false
 <div class="step-icon" style="background:rgba(251,146,60,.15);color:#fb923c">📥</div>
 <div class="step-text"><strong>Example 1: Input → Output</strong><span>Claude observes the first pattern</span></div>
 </div>
-<div class="step-connector"></div>
 <div class="visual-step">
 <div class="step-icon" style="background:rgba(139,92,246,.15);color:#8b5cf6">📥</div>
 <div class="step-text"><strong>Example 2: Input → Output</strong><span>Pattern recognition strengthens</span></div>
 </div>
-<div class="step-connector"></div>
 <div class="visual-step">
 <div class="step-icon" style="background:rgba(56,189,248,.15);color:#38bdf8">📥</div>
 <div class="step-text"><strong>Example 3: Input → Output</strong><span>Claude now deeply understands the pattern</span></div>
 </div>
-<div class="step-connector"></div>
 <div class="visual-step">
 <div class="step-icon" style="background:rgba(52,211,153,.15);color:#34d399">✨</div>
 <div class="step-text"><strong>New Input → Claude generates correct output!</strong><span>Pattern is applied to novel inputs</span></div>
@@ -94,7 +90,6 @@ free: false
 <input type="text" id="testInput" placeholder="Enter a new input to classify...">
 <button class="test-btn" onclick="testPattern()">Test →</button>
 </div>
-<div class="test-result" id="testResult"></div>
 </div>
 </div>
 
@@ -139,7 +134,7 @@ free: false
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 6 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:60%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 2</span>
 </div>
 

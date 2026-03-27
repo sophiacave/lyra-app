@@ -6,7 +6,7 @@ type: "quiz"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -19,13 +19,9 @@ free: false
     <p>Test your knowledge across all 9 lessons. 8 questions covering embeddings, chunking, retrieval, evaluation, and production patterns.</p>
   </div>
 
-  <div class="progress-bar"><div class="progress-fill" id="quizProgress" style="width:0%"></div></div>
-
-  <div id="quizArea"></div>
-  <div class="results" id="results"></div>
+  <div class="progress-bar"></div>
 
   <div class="nav-btns" id="navBtns">
-    <div></div>
     <button class="btn-next" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
   </div>
 
@@ -33,11 +29,7 @@ free: false
     <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Course — Claim 150 XP</button>
   </div>
 
-  <div class="footer-nav">
-    <a href="advanced-patterns.html">&larr; Previous: Advanced Patterns</a>
-    <a href="index.html">Back to Course Overview &rarr;</a>
   </div>
-</div>
 
 <script>
 const QUESTIONS = [

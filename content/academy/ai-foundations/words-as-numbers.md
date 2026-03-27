@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -27,8 +27,6 @@ free: false
     </div>
   </div>
 
-  <div class="step-indicator" id="stepDots"></div>
-
   <div class="equation" id="equationBox" style="display:none">
     <span class="eq-word king">king</span>
     <span class="eq-op">-</span>
@@ -38,8 +36,6 @@ free: false
     <span class="eq-op">=</span>
     <span class="eq-word queen eq-result">queen</span>
   </div>
-
-  <div id="narrationBox" class="narration"></div>
 
   <div class="step-nav">
     <button onclick="prevStep()">← Previous</button>
@@ -121,7 +117,7 @@ const steps=[
 ];
 
 function renderStepDots(){
-  document.getElementById('stepDots').innerHTML=steps.map((_,i)=>`<div class="step-dot${i<currentStep?' done':''}${i===currentStep?' active':''}"></div>`).join('');
+  document.getElementById('stepDots').innerHTML=steps.map((_,i)=>``).join('');
 }
 
 function setStep(s){

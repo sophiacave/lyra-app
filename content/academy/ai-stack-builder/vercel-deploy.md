@@ -6,9 +6,9 @@ type: "lesson"
 free: false
 ---<div class="container">
 <div class="nav">
-<a href="database-patterns.html">&larr; Prev</a>
+
 <span class="current">Lesson 8 of 10</span>
-<a href="wire-it-all.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
@@ -39,7 +39,6 @@ free: false
 
 <button class="deploy-btn" id="deployBtn" onclick="runDeploy()">&#x1f680; Deploy to Vercel</button>
 
-<div class="build-log" id="buildLog"></div>
 <p style="font-size:.75rem;color:#555;text-align:center;margin-top:-.5rem;display:none" id="buildLogNote">Simulated build output — real logs appear in your Vercel dashboard after deployment.</p>
 
 <h2>Environment Variables</h2>
@@ -118,13 +117,9 @@ free: false
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="database-patterns.html">&larr; Database Patterns</a>
-<a href="wire-it-all.html">Next: Wire It All Together &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

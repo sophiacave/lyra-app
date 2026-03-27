@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+  
 </nav>
 
 <header class="lesson-header">
@@ -78,7 +78,6 @@ free: true
         <div class="wire-sublabel">not selected</div>
       </div>
       <div class="wire-connector">
-        <div class="wire-line" id="wireLine"></div>
         <div class="wire-arrow">&rarr;</div>
       </div>
       <div class="wire-node wire-empty" id="wireAction">

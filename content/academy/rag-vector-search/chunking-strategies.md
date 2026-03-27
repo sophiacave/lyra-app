@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -62,12 +62,6 @@ Advanced chunking strategies include semantic chunking (splitting at natural top
     </div>
   </div>
 
-  <div class="stats" id="stats"></div>
-
-  <div class="math-display" id="mathDisplay"></div>
-
-  <div class="chunks-viz" id="chunksViz"></div>
-
   <div class="narration">
     <strong>Rules of thumb:</strong> Start with 200-500 token chunks and 10-20% overlap. <strong>Good overlap</strong> means repeating the last 10-20% of each chunk at the beginning of the next one -- for example, a 100-word chunk with 15-word overlap. This ensures sentences that fall on the boundary between two chunks are not lost. For technical docs, use larger chunks. For Q&A, use smaller chunks. Always test with real queries -- the "best" chunk size depends on your data and questions.
   </div>
@@ -93,11 +87,7 @@ Advanced chunking strategies include semantic chunking (splitting at natural top
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  <div class="footer-nav">
-    <a href="vector-databases-101.html">&larr; Previous: Vector Databases 101</a>
-    <a href="the-rag-loop.html">Next: The RAG Loop &rarr;</a>
   </div>
-</div>
 
 <script>
 const COLORS = ['#10b981','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4','#f97316','#14b8a6','#a855f7','#6366f1','#84cc16','#e11d48','#0ea5e9','#d946ef'];

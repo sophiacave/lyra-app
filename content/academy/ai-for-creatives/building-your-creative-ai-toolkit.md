@@ -182,12 +182,6 @@ free: false
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 6</button>
 
-<div class="lesson-footer">
-  <a href="the-art-of-creative-prompting.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: The Art of Creative Prompting &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-creatives';
 const LESSON_NUM = 6;

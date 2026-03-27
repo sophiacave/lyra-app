@@ -25,30 +25,27 @@ free: false
     <div class="sim-column no-mem" id="col-none">
       <h3>🚫 No Memory</h3>
       <p>Starts fresh every single time. No context from previous runs.</p>
-      <div id="log-none" class="sim-log"></div>
       <div class="score-row">
         <span class="score-label">Score</span>
-        <div class="score-bar"><div class="score-fill" id="score-none" style="width:0"></div></div>
+        <div class="score-bar"></div>
         <span class="score-val" id="val-none">—</span>
       </div>
     </div>
     <div class="sim-column short-mem" id="col-short">
       <h3>⚡ Short-Term Memory</h3>
       <p>Remembers within a session. Forgets between sessions.</p>
-      <div id="log-short" class="sim-log"></div>
       <div class="score-row">
         <span class="score-label">Score</span>
-        <div class="score-bar"><div class="score-fill" id="score-short" style="width:0"></div></div>
+        <div class="score-bar"></div>
         <span class="score-val" id="val-short">—</span>
       </div>
     </div>
     <div class="sim-column long-mem" id="col-long">
       <h3>🧠 Long-Term Memory</h3>
       <p>Remembers everything — across sessions, across users.</p>
-      <div id="log-long" class="sim-log"></div>
       <div class="score-row">
         <span class="score-label">Score</span>
-        <div class="score-bar"><div class="score-fill" id="score-long" style="width:0"></div></div>
+        <div class="score-bar"></div>
         <span class="score-val" id="val-long">—</span>
       </div>
     </div>
@@ -62,7 +59,7 @@ free: false
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>Memory is the difference between a tool and a teammate. Your agent needs both short-term and long-term memory.</p>
-    <a href="tool-calling-basics.html" class="next-btn">Next: Tool Calling Basics →</a>
+    
   </div>
 </div>
 

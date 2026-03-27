@@ -6,9 +6,9 @@ type: "lesson"
 free: false
 ---<div class="container">
 <div class="nav">
-<a href="webhooks-deep-dive.html">&larr; Prev</a>
+
 <span class="current">Lesson 6 of 10</span>
-<a href="database-patterns.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
@@ -44,7 +44,6 @@ free: false
 <div class="decoder">
 <textarea id="jwtInput" placeholder="Paste a JWT here... (e.g. eyJhbGciOiJIUzI1NiIs...)">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</textarea>
 <button class="decode-btn" onclick="decodeJWT()">&#x1f50d; Decode</button>
-<div class="decode-output" id="decodeOutput"></div>
 </div>
 
 <h2>Auth Flow: Step by Step</h2>
@@ -78,8 +77,6 @@ free: false
 </div>
 
 <div class="panel" id="stepDetail" style="display:none">
-<div class="label" id="stepLabel"></div>
-<div class="code-block" id="stepCode"></div>
 </div>
 
 <div class="panel">
@@ -104,13 +101,9 @@ console.<span class="fn">log</span>(session.access_token) <span class="cm">// Th
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="webhooks-deep-dive.html">&larr; Webhooks Deep Dive</a>
-<a href="database-patterns.html">Next: Database Patterns &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

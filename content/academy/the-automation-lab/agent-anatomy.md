@@ -4,7 +4,7 @@ course: "the-automation-lab"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+---<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="/academy" class="nav-link">All Courses</a></div></nav>
 
 <div class="container">
   <div class="lesson-badge">Module 1 &bull; Lesson 2</div>
@@ -17,27 +17,22 @@ free: true
       <div class="comp-header"><div class="comp-icon">&#128100;</div><div class="comp-name">Identity</div><div class="comp-toggle">&#9660;</div></div>
       <div class="comp-detail"><p>Who the agent is. Its name, role, personality, and voice. Identity shapes every decision the agent makes — it's the "soul" of the system.</p><div class="comp-example">name: "Lyra" | role: "Content Strategist" | voice: "Direct, warm, data-driven"</div></div>
     </div>
-    <div class="connector"></div>
     <div class="component" data-comp="memory" onclick="toggleComp(this)">
       <div class="comp-header"><div class="comp-icon">&#129504;</div><div class="comp-name">Memory</div><div class="comp-toggle">&#9660;</div></div>
       <div class="comp-detail"><p>What the agent knows and remembers. Short-term (current conversation), long-term (stored facts, past decisions), and shared (accessible to other agents).</p><div class="comp-example">agent_memory: [{key: "user_preference", value: "prefers bullet points"}]</div></div>
     </div>
-    <div class="connector"></div>
     <div class="component" data-comp="tools" onclick="toggleComp(this)">
       <div class="comp-header"><div class="comp-icon">&#128295;</div><div class="comp-name">Tools</div><div class="comp-toggle">&#9660;</div></div>
       <div class="comp-detail"><p>What the agent can do. API calls, database queries, file operations, sending messages. Tools are the agent's hands — without them, it can only think.</p><div class="comp-example">tools: [send_email, query_db, create_file, call_api, schedule_task]</div></div>
     </div>
-    <div class="connector"></div>
     <div class="component" data-comp="goals" onclick="toggleComp(this)">
       <div class="comp-header"><div class="comp-icon">&#127919;</div><div class="comp-name">Goals</div><div class="comp-toggle">&#9660;</div></div>
       <div class="comp-detail"><p>What the agent is trying to achieve. Goals can be persistent (always active) or triggered (activated by events). They drive the decide-act loop.</p><div class="comp-example">goals: ["Respond to support tickets within 5 min", "Escalate critical issues"]</div></div>
     </div>
-    <div class="connector"></div>
     <div class="component" data-comp="guardrails" onclick="toggleComp(this)">
       <div class="comp-header"><div class="comp-icon">&#128721;</div><div class="comp-name">Guardrails</div><div class="comp-toggle">&#9660;</div></div>
       <div class="comp-detail"><p>What the agent must NOT do. Boundaries, safety rules, ethical constraints. Guardrails prevent the agent from going rogue — they're the conscience before the conscience layer.</p><div class="comp-example">guardrails: ["Never share PII", "Max $50 spend without approval", "No destructive operations"]</div></div>
     </div>
-    <div class="connector"></div>
     <div class="component" data-comp="schedule" onclick="toggleComp(this)">
       <div class="comp-header"><div class="comp-icon">&#9200;</div><div class="comp-name">Schedule</div><div class="comp-toggle">&#9660;</div></div>
       <div class="comp-detail"><p>When the agent runs. Event-driven (reacts to triggers), cron-based (runs on schedule), or always-on (continuously monitoring). Schedule determines autonomy level.</p><div class="comp-example">schedule: "*/30 * * * *" (every 30 minutes) | trigger: "on_new_ticket"</div></div>
@@ -68,11 +63,7 @@ free: true
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
   </div>
 
-  <div class="lesson-nav">
-    <a href="what-is-an-agent.html">&larr; What Is an Agent?</a>
-    <a href="memory-systems.html">Next: Memory Systems &rarr;</a>
   </div>
-</div>
 
 <div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
 

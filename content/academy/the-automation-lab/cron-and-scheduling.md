@@ -4,7 +4,7 @@ course: "the-automation-lab"
 order: 8
 type: "lesson"
 free: false
----<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+---<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="/academy" class="nav-link">All Courses</a></div></nav>
 
 <div class="container">
   <div class="lesson-badge">Module 3 &bull; Lesson 8</div>
@@ -36,24 +36,18 @@ free: false
     <div class="tl-title">24-Hour Agent Timeline</div>
     <div class="tl-desc">Assign schedules to 5 agents and watch the timeline update. Red markers indicate scheduling conflicts -- when too many agents run at the same time, they compete for resources (CPU, memory, API rate limits). Stagger heavy tasks to avoid this.</div>
 
-    <div class="agent-scheduler" id="agent-sched"></div>
     <div class="conflict-alert" id="conflict-alert">&#9888;&#65039; Scheduling conflict detected! Two agents overlap at the same time.</div>
 
     <div class="timeline" id="timeline">
       <div class="tl-hours"><span>12AM</span><span>3AM</span><span>6AM</span><span>9AM</span><span>12PM</span><span>3PM</span><span>6PM</span><span>9PM</span><span>12AM</span></div>
-      <div id="tl-rows"></div>
-    </div>
+      </div>
   </div>
 
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
   </div>
-  <div class="lesson-nav">
-    <a href="build-a-team.html">&larr; Build a Team</a>
-    <a href="monitoring-and-healing.html">Next: Monitoring &amp; Healing &rarr;</a>
   </div>
-</div>
 <div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
 
 <script>
@@ -127,7 +121,7 @@ function updateTimeline(){
     agentSchedules[a.id]=hours;
     hours.forEach(h=>{if(!hourMap[h])hourMap[h]=[];hourMap[h].push(a.id);});
     const row=document.createElement('div');row.className='tl-agent-row';
-    row.innerHTML=`<div class="tl-agent-label" style="color:${a.color}">${a.icon} ${a.name}</div><div class="tl-agent-bar" id="bar-${a.id}"></div>`;
+    row.innerHTML=`<div class="tl-agent-label" style="color:${a.color}">${a.icon} ${a.name}</div>`;
     rows.appendChild(row);
     setTimeout(()=>{
       const bar=document.getElementById(`bar-${a.id}`);

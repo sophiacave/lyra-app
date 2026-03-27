@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -59,8 +59,7 @@ Question: {question}
 
 Answer:</textarea>
     <label>Live Preview (with sample data filled in):</label>
-    <div class="preview-box" id="preview"></div>
-  </div>
+    </div>
 
   <h3 class="section">Prompt Engineering Tips for RAG</h3>
   <div class="tips">
@@ -73,11 +72,7 @@ Answer:</textarea>
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  <div class="footer-nav">
-    <a href="build-your-first-rag.html">&larr; Previous: Build Your First RAG</a>
-    <a href="hybrid-search.html">Next: Hybrid Search &rarr;</a>
   </div>
-</div>
 
 <script>
 const PRESETS = [

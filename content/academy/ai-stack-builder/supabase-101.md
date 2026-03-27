@@ -6,9 +6,9 @@ type: "lesson"
 free: true
 ---<div class="container">
 <div class="nav">
-<a href="stack-anatomy.html">&larr; Prev</a>
+
 <span class="current">Lesson 2 of 10</span>
-<a href="make-com-101.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 1 &middot; 260 XP</div>
@@ -58,7 +58,6 @@ free: true
 <div class="sql-output panel" id="sqlPanel" style="display:none">
 <div class="label">Generated SQL</div>
 <button class="copy-btn" onclick="copySQL()">Copy</button>
-<div class="code-block" id="sqlOutput"></div>
 <div class="success-msg" id="copyMsg">Copied!</div>
 </div>
 
@@ -76,7 +75,6 @@ free: true
 ">SELECT * FROM brain_context;</textarea>
 <button class="run-btn" onclick="runQuery()">&#x25b6; Run Query</button>
 </div>
-<div id="queryResults"></div>
 </div>
 
 <h2>Step 3: Build It Step by Step</h2>
@@ -123,13 +121,9 @@ free: true
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="stack-anatomy.html">&larr; Stack Anatomy</a>
-<a href="make-com-101.html">Next: Make.com 101 &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

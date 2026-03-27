@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+  
 </nav>
 
 <div class="lesson-container">
@@ -33,7 +33,6 @@ free: false
       </div>
       <div class="field">
         <label>Input Parameters</label>
-        <div class="params-list" id="paramsList"></div>
         <button class="add-param-btn" onclick="addParam()">+ Add Parameter</button>
       </div>
     </div>
@@ -42,21 +41,17 @@ free: false
   <div class="preview-split">
     <div class="preview-panel">
       <div class="panel-header">JSON Schema Output</div>
-      <div class="panel-body" id="jsonPreview"></div>
-    </div>
+      </div>
     <div class="preview-panel">
       <div class="panel-header">server.tool() Code</div>
-      <div class="panel-body" id="codePreview"></div>
-    </div>
+      </div>
   </div>
 
   <div class="test-area">
     <h3>Test Your Tool</h3>
     <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Enter example values for each parameter to see what a tool call would look like:</p>
-    <div class="test-input" id="testInputs"></div>
     <button class="test-btn" onclick="testTool()">Run Test Call</button>
-    <div class="test-result" id="testResult"></div>
-  </div>
+    </div>
 
   <div class="ai-decision">
     <h3>How Claude Reads Tool Definitions</h3>
@@ -64,7 +59,7 @@ free: false
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 250 XP</button>
-  <a href="resources-and-prompts.html" class="next-link">Next: Resources & Prompts &rarr;</a>
+  
 </div>
 
 <script>

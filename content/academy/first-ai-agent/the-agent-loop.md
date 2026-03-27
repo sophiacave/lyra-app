@@ -17,19 +17,15 @@ free: true
   <canvas id="loop-canvas"></canvas>
   <p class="hint">Click any node on the loop to explore it</p>
 
-  <div class="node-tracker" id="tracker"></div>
-
   <div class="info-panel" id="info">
     <h3 id="info-title">🔄 The Loop</h3>
     <p id="info-desc">This is the heartbeat of every AI agent. Unlike a chatbot that responds once and stops, an agent cycles through these five steps continuously until its goal is achieved. Click a node above to dive in.</p>
-    <div class="data-flow" id="info-data" style="display:none"></div>
-    <div class="concept" id="info-concept" style="display:none"></div>
-  </div>
+    </div>
 
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>You understand the agent loop — the core pattern behind every autonomous AI system.</p>
-    <a href="tools-and-capabilities.html" class="next-btn">Next: Tools & Capabilities →</a>
+    
   </div>
 </div>
 

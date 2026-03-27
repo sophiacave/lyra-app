@@ -5,20 +5,12 @@ order: 1
 type: "lesson"
 free: true
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 1 of 10</div>
 <h1>AI Without the Jargon</h1>
 <p class="intro">The AI world loves fancy words. Here are the only 10 you need — translated into plain English. Click each card to flip it.</p>
 
-<div class="cards-grid" id="cards"></div>
-
 <h2 class="section-title">Quick Check — Match the Terms</h2>
-<div class="quiz-area" id="quiz"></div>
-
-<div class="nav-row">
-<a href="index.html" class="nav-link">← Course Overview</a>
-<a href="what-ai-can-and-cannot-do.html" class="nav-link">Next: What AI Can & Cannot Do →</a>
-</div>
 </div>
 
 <script>

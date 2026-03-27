@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -64,10 +64,7 @@ free: true
 
   <div class="math-display">
     <span class="label">Live Computation</span>
-    <div id="mathLine1"></div>
-    <div id="mathLine2"></div>
-    <div id="mathLine3"></div>
-  </div>
+    </div>
 
   <div class="concepts">
     <div class="concept" onclick="this.classList.toggle('active')">

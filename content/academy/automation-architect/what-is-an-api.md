@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+  
 </nav>
 
 <header class="lesson-header">
@@ -26,9 +26,6 @@ free: false
       <div class="entity-sub">Your Code</div>
     </div>
     <div class="api-pipe" id="apiPipe">
-      <div class="pipe-line"></div>
-      <div class="packet packet-request" id="packetReq"></div>
-      <div class="packet packet-response" id="packetRes"></div>
       <div class="packet-label label-req" id="labelReq">REQUEST</div>
       <div class="packet-label label-res" id="labelRes">RESPONSE</div>
     </div>
@@ -51,8 +48,7 @@ free: false
 
   <div class="detail-panel" id="detailPanel">
     <h3 id="detailTitle">Click a method above to see its anatomy</h3>
-    <div id="detailContent"></div>
-  </div>
+    </div>
 
   <h2>Status Codes</h2>
   <p class="section-text">The server tells you what happened with a status code.</p>

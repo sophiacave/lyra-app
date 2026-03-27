@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 5
 type: "lesson"
 free: false
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -106,7 +105,7 @@ Step 4: Total discount = $200 - $135 = $65 = 32.5%
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 5 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:50%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 2</span>
 </div>
 

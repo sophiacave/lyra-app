@@ -6,7 +6,7 @@ type: "quiz"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+  
 </nav>
 
 <div class="lesson-container">
@@ -15,15 +15,11 @@ free: false
   <p class="subtitle">Test your knowledge across all three modules — architecture, server building, tool definitions, security, and production patterns.</p>
 
   <div class="quiz-progress">
-    <div class="quiz-dots" id="quizDots"></div>
     <div class="quiz-score" id="quizScore">0 / 10</div>
   </div>
 
-  <div id="questionArea"></div>
-  <div class="results" id="results"></div>
-
   <button class="complete-btn" id="completeBtn" onclick="complete()" style="display:none">Complete Course &mdash; Earn 100 XP</button>
-  <a href="index.html" class="back-link">&larr; Back to Course Overview</a>
+  
 </div>
 
 <script>
@@ -99,7 +95,7 @@ function renderDots(){
     let cls = 'quiz-dot';
     if(i === currentQ && answers[i] === undefined) cls += ' current';
     if(answers[i] !== undefined) cls += answers[i] ? ' correct' : ' wrong';
-    return `<div class="${cls}"></div>`;
+    return ``;
   }).join('');
   document.getElementById('quizScore').textContent = `${score} / ${questions.length}`;
 }
@@ -126,7 +122,6 @@ function renderQuestion(){
             </div>
           `).join('')}
         </div>
-        <div class="explanation" id="explanation"></div>
         <button class="submit-btn" id="submitBtn" onclick="submitAnswer()" disabled>Check Answer</button>
       </div>
     </div>

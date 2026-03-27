@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -30,15 +30,11 @@ free: true
     <button id="addBtn">Add Word</button>
   </div>
 
-  <div class="word-list" id="wordList"></div>
-
   <div style="font-size:.85rem;color:#71717a;margin-bottom:1rem">Click any two word tags below to compare their similarity. The closer their meaning, the higher the score.</div>
 
   <div class="similarity-panel" id="simPanel">
     <h3>Cosine Similarity</h3>
-    <div id="simResults"></div>
-    <div class="math-display" id="simMath" style="margin-top:1rem"></div>
-  </div>
+    </div>
 
   <div class="narration">
     <strong>Why does this matter?</strong> Imagine you have a library of 10,000 documents and a user asks a question. You need to find the right answer — fast. That's what <strong>RAG</strong> (Retrieval-Augmented Generation) does: it fetches the most relevant documents and hands them to an AI. Embeddings are what make that search smart — finding answers by meaning, not just matching keywords.
@@ -71,7 +67,7 @@ free: true
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
   <div class="footer-nav">
     <span>Lesson 1 of 10</span>
-    <a href="vector-databases-101.html">Next: Vector Databases 101 &rarr;</a>
+    
   </div>
 </div>
 
@@ -257,7 +253,7 @@ function showSimilarity(){
   const magB=Math.sqrt(b.pos[0]**2+b.pos[1]**2);
   const color=sim>0.9?'#10b981':sim>0.7?'#f59e0b':'#ef4444';
   document.getElementById('simResults').innerHTML=`
-    <div class="sim-bar"><span class="label">"${a.word}" vs "${b.word}"</span><div class="bar"><div class="bar-fill" style="width:${Math.max(sim*100,2)}%;background:${color}"></div></div><span class="val" style="color:${color}">${sim.toFixed(4)}</span></div>
+    <div class="sim-bar"><span class="label">"${a.word}" vs "${b.word}"</span><div class="bar"></div><span class="val" style="color:${color}">${sim.toFixed(4)}</span></div>
   `;
   document.getElementById('simMath').innerHTML=`<span class="label">Cosine Similarity Formula</span>
 <span class="formula">cos(A, B) = (A · B) / (||A|| × ||B||)</span>

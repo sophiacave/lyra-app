@@ -30,7 +30,6 @@ free: false
 
       <div class="field">
         <label>3. Pick 3 Tools</label>
-        <div class="tool-picker" id="tool-picker"></div>
         <div class="tool-count" id="tool-count">0/3 selected</div>
       </div>
 
@@ -56,8 +55,7 @@ free: false
         </div>
         <div class="card-section">
           <h4>Tools</h4>
-          <div class="card-tools" id="card-tools"></div>
-        </div>
+          </div>
         <div class="card-section">
           <h4>Memory</h4>
           <div class="card-memory" id="card-memory">Not defined yet</div>
@@ -69,7 +67,7 @@ free: false
         <div class="card-score">
           <div class="pct" id="card-pct">0%</div>
           <div class="label">Design Completeness</div>
-          <div class="card-completeness"><div class="card-completeness-fill" id="card-fill" style="width:0"></div></div>
+          <div class="card-completeness"></div>
         </div>
       </div>
     </div>
@@ -78,7 +76,7 @@ free: false
   <div class="complete-section" id="complete">
     <h2>Agent Designed!</h2>
     <p>You just created a complete agent specification. In the next lesson, you'll turn this into a system prompt.</p>
-    <a href="the-system-prompt.html" class="next-btn">Next: The System Prompt →</a>
+    
   </div>
 </div>
 

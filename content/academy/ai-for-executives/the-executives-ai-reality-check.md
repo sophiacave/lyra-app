@@ -170,12 +170,6 @@ css: "ai-executives.css"
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 1 &#10003;</button>
 
-<div class="lesson-footer">
-  <a href="ai-strategy-without-the-jargon.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: AI Strategy Without the Jargon &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-executives';
 const LESSON_NUM = 1;

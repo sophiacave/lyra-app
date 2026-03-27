@@ -13,18 +13,10 @@ free: true
   </div>
 
   <div class="progress-bar">
-    <div class="prog-dot" id="prog-0"></div>
-    <div class="prog-dot" id="prog-1"></div>
-    <div class="prog-dot" id="prog-2"></div>
-    <div class="prog-dot" id="prog-3"></div>
-    <div class="prog-dot" id="prog-4"></div>
-  </div>
-
-  <div id="stackBuilder"></div>
+    </div>
 
   <div class="result-card" id="resultCard">
     <div class="result-title">Your Stack</div>
-    <div class="stack-summary" id="stackSummary"></div>
     <div class="stats-row">
       <div class="stat"><div class="val cost" id="totalCost">$0</div><div class="lbl">Per Month</div></div>
       <div class="stat"><div class="val compat" id="compatScore">0%</div><div class="lbl">Compatibility</div></div>

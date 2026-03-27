@@ -6,9 +6,9 @@ type: "lesson"
 free: false
 ---<div class="container">
 <div class="nav">
-<a href="make-com-101.html">&larr; Prev</a>
+
 <span class="current">Lesson 4 of 10</span>
-<a href="webhooks-deep-dive.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
@@ -69,8 +69,6 @@ serve(async (req) => {
 </div>
 
 <p style="font-size:.75rem;color:#555;margin-top:.5rem;font-style:italic">Simulated terminal — in production, you'd see this output in your Supabase dashboard after running <code style="color:#666">supabase functions deploy</code> from your real terminal.</p>
-<div class="terminal" id="terminal" style="display:none"></div>
-
 <h2>Challenge 2: JSON API</h2>
 <div class="panel" style="border-color:#f59e0b33">
 <div class="label">Why this matters</div>
@@ -109,8 +107,6 @@ serve(async (req) => {
 </div>
 </div>
 <p style="font-size:.75rem;color:#555;margin-top:.5rem;font-style:italic">Simulated terminal — in production, you'd run this from your local terminal and see results in your Supabase dashboard.</p>
-<div class="terminal" id="terminal2" style="display:none"></div>
-
 <h2>Challenge 3: Database Query</h2>
 <div class="panel" style="border-color:#f59e0b33">
 <div class="label">Why this matters</div>
@@ -165,8 +161,6 @@ serve(async (req) => {
 </div>
 </div>
 <p style="font-size:.75rem;color:#555;margin-top:.5rem;font-style:italic">Simulated terminal — in production, you'd run this from your local terminal and see results in your Supabase dashboard.</p>
-<div class="terminal" id="terminal3" style="display:none"></div>
-
 <div class="panel">
 <div class="label">Key Concepts</div>
 <p><strong>Cold starts:</strong> Edge functions spin up on demand. First request may take ~100ms, subsequent requests are near-instant. Deno is faster than Node.js for cold starts.</p>
@@ -179,13 +173,9 @@ serve(async (req) => {
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="make-com-101.html">&larr; Make.com 101</a>
-<a href="webhooks-deep-dive.html">Next: Webhooks Deep Dive &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

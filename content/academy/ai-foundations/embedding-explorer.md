@@ -6,7 +6,7 @@ type: "lab"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -36,8 +36,7 @@ free: false
 
   <div class="formula-display" id="formulaBox" style="display:none">
     <span class="label">Cosine Similarity</span>
-    <div id="formulaContent"></div>
-  </div>
+    </div>
 
   <div class="analogy-section">
     <h3>Vector Analogy Calculator</h3>
@@ -51,8 +50,7 @@ free: false
       <span>=</span>
       <span id="anaResult" style="color:#34d399;font-weight:700">?</span>
     </div>
-    <div class="analogy-result" id="analogyMath"></div>
-  </div>
+    </div>
 
   <div class="narration">
     <strong>Embeddings turn language into geometry.</strong> Words that mean similar things point in similar directions. Cosine similarity measures this by computing the cosine of the angle between two vectors -- 1.0 means identical direction, 0 means unrelated, -1.0 means opposite. Real embeddings use 768+ dimensions, but the math is identical to what you see here in 2D.

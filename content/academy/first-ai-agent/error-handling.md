@@ -14,14 +14,12 @@ free: false
   <h1>Error Handling</h1>
   <p class="subtitle">Agents fail. Good agents fail gracefully. For each scenario, pick the best recovery strategy.</p>
 
-  <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0"></div></div>
-
-  <div id="scenarios"></div>
+  <div class="progress-bar"></div>
 
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>You now know the 5 most common agent failure modes and how to handle each one. Resilient agents are deployable agents.</p>
-    <a href="evaluating-your-agent.html" class="next-btn">Next: Evaluating Your Agent →</a>
+    
   </div>
 </div>
 

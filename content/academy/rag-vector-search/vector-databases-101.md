@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -45,8 +45,7 @@ free: true
       <h3><span class="icon">&#128269;</span> Vector Database</h3>
       <p class="subtitle">Semantic similarity search</p>
       <p class="result-label" id="vecLabel">Results for "joyful":</p>
-      <div class="vector-viz" id="vecResults"></div>
-    </div>
+      </div>
   </div>
 
   <div class="insight" id="insightBox">
@@ -68,11 +67,7 @@ free: true
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  <div class="footer-nav">
-    <a href="what-are-embeddings.html">&larr; Previous: What Are Embeddings</a>
-    <a href="chunking-strategies.html">Next: Chunking Strategies &rarr;</a>
   </div>
-</div>
 
 <script>
 const DOCS = [
@@ -150,7 +145,7 @@ function runSearch(){
     return `<div class="vec-row${isMatch?' match':''}">
       <span class="word">#${d.id}</span>
       <span style="flex:1;font-size:.75rem;color:${isMatch?'#e5e5e5':'#71717a'}">${d.text}</span>
-      <div class="vec-bar" style="max-width:80px"><div class="vec-bar-fill" style="width:${d.sim*100}%"></div></div>
+      <div class="vec-bar" style="max-width:80px"></div>
       <span class="score">${d.sim.toFixed(2)}</span>
     </div>`;
   }).join('');

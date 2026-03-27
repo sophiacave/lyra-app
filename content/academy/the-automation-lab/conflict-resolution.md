@@ -4,7 +4,7 @@ course: "the-automation-lab"
 order: 6
 type: "lesson"
 free: false
----<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+---<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="/academy" class="nav-link">All Courses</a></div></nav>
 
 <div class="container">
   <div class="lesson-badge">Module 2 &bull; Lesson 6</div>
@@ -35,17 +35,11 @@ free: false
   </div>
 
   <h2 class="section-title">&#127919; Choose the Right Strategy</h2>
-  <div class="scenarios" id="scenarios"></div>
-
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
   </div>
-  <div class="lesson-nav">
-    <a href="orchestration-patterns.html">&larr; Orchestration Patterns</a>
-    <a href="build-a-team.html">Next: Build a Team &rarr;</a>
   </div>
-</div>
 <div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
 
 <script>

@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 10
 type: "builder"
 free: false
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -38,7 +37,6 @@ free: false
 <p>What should your agent accomplish?</p>
 </div>
 </div>
-<div class="step-connector"></div>
 <div class="agent-step" onclick="openStep(1)" id="astep1">
 <div class="step-num" style="background:rgba(251,146,60,.15);color:#fb923c">2</div>
 <div class="step-content">
@@ -46,7 +44,6 @@ free: false
 <p>What capabilities does it need?</p>
 </div>
 </div>
-<div class="step-connector"></div>
 <div class="agent-step" onclick="openStep(2)" id="astep2">
 <div class="step-num" style="background:rgba(56,189,248,.15);color:#38bdf8">3</div>
 <div class="step-content">
@@ -54,7 +51,6 @@ free: false
 <p>How should it remember context?</p>
 </div>
 </div>
-<div class="step-connector"></div>
 <div class="agent-step" onclick="openStep(3)" id="astep3">
 <div class="step-num" style="background:rgba(52,211,153,.15);color:#34d399">4</div>
 <div class="step-content">
@@ -62,7 +58,6 @@ free: false
 <p>What limits should it have?</p>
 </div>
 </div>
-<div class="step-connector"></div>
 <div class="agent-step" onclick="openStep(4)" id="astep4">
 <div class="step-num" style="background:rgba(244,114,182,.15);color:#f472b6">5</div>
 <div class="step-content">
@@ -72,7 +67,6 @@ free: false
 </div>
 </div>
 
-<div class="config-panel" id="configPanel"></div>
 </div>
 
 <div class="card" id="launchCard" style="display:none">
@@ -82,10 +76,8 @@ free: false
 <button class="launch-btn" id="launchBtn" onclick="launchAgent()">🚀 Launch Agent</button>
 </div>
 
-<div class="agent-log" id="agentLog"></div>
 <div class="agent-summary" id="agentSummary">
 <div class="summary-title">Mission Complete</div>
-<div id="summaryItems"></div>
 </div>
 </div>
 
@@ -106,7 +98,7 @@ free: false
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 10 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 3 · Final</span>
 </div>
 

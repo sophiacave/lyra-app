@@ -6,7 +6,7 @@ type: "lab"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -30,8 +30,6 @@ free: false
     <button class="tab" onclick="selectTemplate(3)">Role-Play</button>
   </div>
 
-  <div class="template-info" id="templateInfo"></div>
-
   <div class="playground">
     <div class="pane">
       <div class="pane-header"><span class="label">Your Prompt</span><span class="tag" id="templateTag">ZERO-SHOT</span></div>
@@ -39,8 +37,7 @@ free: false
     </div>
     <div class="pane">
       <div class="pane-header"><span class="label">Simulated Output</span><span class="tag" style="font-size:.6rem">(Simulation) AI RESPONSE</span></div>
-      <div class="pane-output" id="outputPane"></div>
-    </div>
+      </div>
   </div>
 
   <button class="run-btn" onclick="runPrompt()">▶ Run Prompt</button>
@@ -50,12 +47,10 @@ free: false
     <div class="compare-grid">
       <div class="compare-box before">
         <div class="label">Naive Prompt</div>
-        <div class="content" id="beforeContent"></div>
-      </div>
+        </div>
       <div class="compare-box after">
         <div class="label">Engineered Prompt</div>
-        <div class="content" id="afterContent"></div>
-      </div>
+        </div>
     </div>
   </div>
 

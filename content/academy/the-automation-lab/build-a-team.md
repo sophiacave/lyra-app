@@ -4,22 +4,20 @@ course: "the-automation-lab"
 order: 7
 type: "builder"
 free: false
----<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+---<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="/academy" class="nav-link">All Courses</a></div></nav>
 
 <div class="container">
   <div class="lesson-badge">Module 2 &bull; Lesson 7</div>
   <h1>Build a Team</h1>
   <p class="subtitle">Given a business goal, assemble the right team of agents. Choose wisely — wrong teams fail. Three scenarios of increasing difficulty.</p>
 
-  <div class="scenario-nav" id="scen-nav"></div>
-
   <div class="game-header">
-    <div class="game-mission"><div class="mission-label" id="mission-label">Mission 1 of 3</div><div class="mission-text" id="mission-text"></div><div class="mission-req" id="mission-req"></div></div>
+    <div class="game-mission"><div class="mission-label" id="mission-label">Mission 1 of 3</div></div>
     <div class="game-score"><div class="score-label">Score</div><div class="score-val" id="score">0</div></div>
   </div>
 
   <div class="game-area">
-    <div class="pool"><div class="pool-title">&#129302; Agent Pool</div><div class="pool-agents" id="agent-pool"></div></div>
+    <div class="pool"><div class="pool-title">&#129302; Agent Pool</div></div>
     <div class="team"><div class="team-title">&#128101; Your Team</div><div class="team-slots" id="team-slots"><span class="team-empty">Click agents to add them...</span></div></div>
   </div>
 
@@ -28,18 +26,13 @@ free: false
     <button class="game-btn reset" onclick="resetTeam()">&#8634; Reset Team</button>
   </div>
 
-  <div class="sim-output" id="sim-output"></div>
-  <div class="result-card" id="result-card"><div class="result-icon" id="result-icon"></div><div class="result-text" id="result-text"></div><div class="result-detail" id="result-detail"></div></div>
+  <div class="result-card" id="result-card"></div>
 
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()" disabled>Complete Lesson &mdash; 350 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +350 XP earned</div>
   </div>
-  <div class="lesson-nav">
-    <a href="conflict-resolution.html">&larr; Conflict Resolution</a>
-    <a href="cron-and-scheduling.html">Next: Cron &amp; Scheduling &rarr;</a>
   </div>
-</div>
 <div class="xp-toast" id="xp-toast">+350 XP earned! &#9889;</div>
 
 <script>

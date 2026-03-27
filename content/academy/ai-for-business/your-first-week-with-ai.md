@@ -5,7 +5,7 @@ order: 7
 type: "lesson"
 free: false
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 7 of 10</div>
 <h1>Your First Week with AI</h1>
 <p class="intro">Five days. Five missions. By Friday, you'll have real experience with AI — not just theory. Check off each task as you complete it.</p>
@@ -18,17 +18,12 @@ free: false
 <div class="progress-text"><strong id="tasks-done">0</strong> of <strong>15</strong> tasks complete</div>
 </div>
 
-<div id="days-container"></div>
 <div class="complete-banner" id="complete-banner">
 <div class="icon">🎉</div>
 <h2>Week Complete!</h2>
 <p>You just did more with AI in 5 days than most business owners do in 6 months. You're ready to scale this across your whole operation.</p>
 </div>
 
-<div class="nav-row">
-<a href="ai-tools-landscape.html" class="nav-link">← Prev: AI Tools</a>
-<a href="ai-policy-template.html" class="nav-link">Next: AI Policy Template →</a>
-</div>
 </div>
 
 <script>

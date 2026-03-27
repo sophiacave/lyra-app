@@ -5,7 +5,7 @@ order: 3
 type: "lesson"
 free: true
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 3 of 10</div>
 <h1>The ROI Calculator</h1>
 <p class="intro">Stop guessing if AI is "worth it." Plug in your real numbers and see the math. This calculator shows you exactly what AI automation could save your business.</p>
@@ -66,10 +66,6 @@ free: true
 <a href="#" class="btn">Get the Quick Start Guide — $9</a>
 </div>
 
-<div class="nav-row">
-<a href="what-ai-can-and-cannot-do.html" class="nav-link">← Prev: What AI Can & Cannot Do</a>
-<a href="find-your-ai-opportunities.html" class="nav-link">Next: Find Your AI Opportunities →</a>
-</div>
 </div>
 
 <script>

@@ -6,7 +6,7 @@ type: "quiz"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+  
 </nav>
 
 <header class="lesson-header">
@@ -16,12 +16,8 @@ free: true
 </header>
 
 <div class="content">
-  <div class="quiz-progress" id="quizProgress"></div>
-  <div id="questionContainer"></div>
   <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question &rarr;</button>
   <div class="results" id="results">
-    <div class="results-score" id="resultsScore"></div>
-    <div class="results-msg" id="resultsMsg"></div>
     <button class="retry-btn" onclick="resetQuiz()">Try Again</button>
   </div>
   <button class="complete-btn" id="completeBtn" style="display:none" onclick="completeLesson()">Complete Lesson &mdash; Earn 40 XP</button>
@@ -47,7 +43,7 @@ let currentQ=0,score=0,answered=false;
 
 function renderProgress(){
   const el=document.getElementById('quizProgress');
-  el.innerHTML=questions.map((_,i)=>`<div class="quiz-pip${i===currentQ?' current':''}" id="pip${i}"></div>`).join('');
+  el.innerHTML=questions.map((_,i)=>``).join('');
 }
 
 function renderQuestion(){

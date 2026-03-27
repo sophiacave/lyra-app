@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+  
 </nav>
 
 <div class="lesson-container">
@@ -86,11 +86,10 @@ free: true
       </div>
     </div>
 
-    <div class="server-detail" id="serverDetail"></div>
-  </div>
+    </div>
 
   <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 200 XP</button>
-  <a href="your-first-server.html" class="next-link">Next: Your First Server &rarr;</a>
+  
 </div>
 
 <script>

@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -41,11 +41,7 @@ free: false
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  <div class="footer-nav">
-    <a href="chunking-strategies.html">&larr; Previous: Chunking Strategies</a>
-    <a href="build-your-first-rag.html">Next: Build Your First RAG &rarr;</a>
   </div>
-</div>
 
 <script>
 const STEPS = [

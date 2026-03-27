@@ -364,11 +364,8 @@ Based on my schedule and open items, give me a prioritized task list for today. 
   <div class="demo-container" style="padding:1.75rem">
     <div style="position:relative;padding-left:32px">
       <!-- Timeline line -->
-      <div style="position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--orange),var(--purple),var(--green),var(--blue))"></div>
-
       <!-- Morning -->
       <div style="position:relative;margin-bottom:28px">
-        <div style="position:absolute;left:-28px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--orange);border:3px solid var(--bg)"></div>
         <div style="font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">8:30 AM - Morning Kickoff</div>
         <div style="font-size:.88rem;color:var(--text);font-weight:600;margin-bottom:2px">Paste calendar + open items. Get prioritized plan.</div>
         <div style="font-size:.8rem;color:var(--dim)">Time saved: <strong style="color:var(--green)">25 min</strong> of planning and decision-making</div>
@@ -376,7 +373,6 @@ Based on my schedule and open items, give me a prioritized task list for today. 
 
       <!-- Pre-meeting -->
       <div style="position:relative;margin-bottom:28px">
-        <div style="position:absolute;left:-28px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--purple);border:3px solid var(--bg)"></div>
         <div style="font-size:.7rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">10:00 AM - Meeting Prep</div>
         <div style="font-size:.88rem;color:var(--text);font-weight:600;margin-bottom:2px">Get talking points, anticipate questions, draft agenda.</div>
         <div style="font-size:.8rem;color:var(--dim)">Time saved: <strong style="color:var(--green)">20 min</strong> of research and prep work</div>
@@ -384,7 +380,6 @@ Based on my schedule and open items, give me a prioritized task list for today. 
 
       <!-- Post-meeting -->
       <div style="position:relative;margin-bottom:28px">
-        <div style="position:absolute;left:-28px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--green);border:3px solid var(--bg)"></div>
         <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">11:30 AM - Post-Meeting</div>
         <div style="font-size:.88rem;color:var(--text);font-weight:600;margin-bottom:2px">Paste meeting notes. Get action items + follow-up emails drafted.</div>
         <div style="font-size:.8rem;color:var(--dim)">Time saved: <strong style="color:var(--green)">30 min</strong> of note cleanup and email writing</div>
@@ -392,7 +387,6 @@ Based on my schedule and open items, give me a prioritized task list for today. 
 
       <!-- Afternoon -->
       <div style="position:relative;margin-bottom:28px">
-        <div style="position:absolute;left:-28px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--blue);border:3px solid var(--bg)"></div>
         <div style="font-size:.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">2:00 PM - Deep Work</div>
         <div style="font-size:.88rem;color:var(--text);font-weight:600;margin-bottom:2px">Research, analysis, document drafting, brainstorming.</div>
         <div style="font-size:.8rem;color:var(--dim)">Time saved: <strong style="color:var(--green)">45 min</strong> of research and first drafts</div>
@@ -400,7 +394,6 @@ Based on my schedule and open items, give me a prioritized task list for today. 
 
       <!-- End of day -->
       <div style="position:relative">
-        <div style="position:absolute;left:-28px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--warm);border:3px solid var(--bg)"></div>
         <div style="font-size:.7rem;font-weight:700;color:var(--warm);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">5:00 PM - End of Day</div>
         <div style="font-size:.88rem;color:var(--text);font-weight:600;margin-bottom:2px">Summarize what you did, prep tomorrow's priorities, draft any final emails.</div>
         <div style="font-size:.8rem;color:var(--dim)">Time saved: <strong style="color:var(--green)">15 min</strong> of wrap-up and planning</div>
@@ -510,8 +503,7 @@ Based on my schedule and open items, give me a prioritized task list for today. 
           <div style="font-size:.7rem;color:var(--dim)">per year</div>
         </div>
       </div>
-      <div id="calc-message" style="margin-top:14px;font-size:.85rem;color:var(--dim);min-height:20px"></div>
-    </div>
+      </div>
   </div>
 </div>
 
@@ -521,13 +513,6 @@ Based on my schedule and open items, give me a prioritized task list for today. 
 </div>
 
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 8 &#10003;</button>
-
-<div class="lesson-footer">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <a href="custom-instructions.html" style="color:var(--dim);font-size:.85rem">&larr; Lesson 7</a>
-    <a href="final-assessment.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Final Assessment &rarr;</a>
-  </div>
-</div>
 
 </div>
 

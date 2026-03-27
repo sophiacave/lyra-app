@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -34,10 +34,6 @@ free: false
     <div class="weight-display"><span id="kwWeight">50%</span><span id="semWeight">50%</span></div>
   </div>
 
-  <div class="results-grid" id="resultsGrid"></div>
-
-  <div class="insight-box" id="insightBox"></div>
-
   <h3 style="font-size:1rem;margin-bottom:1rem">When Each Approach Wins</h3>
   <div class="when-grid">
     <div class="when-card">
@@ -59,11 +55,7 @@ free: false
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  <div class="footer-nav">
-    <a href="prompt-augmentation.html">&larr; Previous: Prompt Augmentation</a>
-    <a href="evaluation-metrics.html">Next: Evaluation Metrics &rarr;</a>
   </div>
-</div>
 
 <script>
 const DOCS = [

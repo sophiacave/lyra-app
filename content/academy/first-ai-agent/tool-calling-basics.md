@@ -16,17 +16,12 @@ free: false
 
   <div class="question-picker">
     <h3>Pick a question for the agent to answer:</h3>
-    <div class="q-grid" id="q-grid"></div>
-  </div>
-
-  <div class="progress-dots" id="dots"></div>
-
-  <div class="flow-viz" id="flow-viz"></div>
+    </div>
 
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>You've seen how tool calling works — the agent reasons about what it needs, calls the right tool, and uses the result. This is the mechanism that makes agents powerful.</p>
-    <a href="error-handling.html" class="next-btn">Next: Error Handling →</a>
+    
   </div>
 </div>
 

@@ -6,7 +6,7 @@ type: "lab"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -20,17 +20,12 @@ free: false
   </div>
 
   <div class="battle-arena">
-    <div class="arena-bg"></div>
     <div class="score-display">
       <div class="score-big" id="scoreBig">0</div>
       <div class="score-label">BATTLE POINTS</div>
       <div class="streak cold" id="streakBadge">No streak yet</div>
     </div>
   </div>
-
-  <div class="battle-progress" id="battleProgress"></div>
-  <div id="battleContainer"></div>
-  <div class="results" id="results"></div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
 </div>
@@ -66,7 +61,7 @@ function renderProgress(){
     let cls='bp-dot';
     if(i<current)cls+=' '+(answered[i]?'correct':'wrong');
     else if(i===current)cls+=' current';
-    return`<div class="${cls}"></div>`;
+    return``;
   }).join('');
 }
 
@@ -84,8 +79,7 @@ function renderQuestion(){
           <span class="streak-effect">${streak>=2?'🔥':''}</span>
         </div>`).join('')}
       </div>
-      <div class="battle-feedback" id="feedback"></div>
-    </div>`;
+      </div>`;
   renderProgress();
 }
 

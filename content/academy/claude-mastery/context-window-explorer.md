@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 2
 type: "lab"
 free: true
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -33,17 +32,17 @@ free: true
 <div class="model-bar">
 <div class="model-name" style="color:#8b5cf6">Claude 3.5</div>
 <div class="model-tokens">200K tokens</div>
-<div class="model-visual"><div class="model-visual-fill" style="width:100%;background:#8b5cf6" data-anim="100"></div></div>
+<div class="model-visual"></div>
 </div>
 <div class="model-bar">
 <div class="model-name" style="color:#34d399">GPT-4o</div>
 <div class="model-tokens">128K tokens</div>
-<div class="model-visual"><div class="model-visual-fill" style="width:0%;background:#34d399" data-anim="64"></div></div>
+<div class="model-visual"></div>
 </div>
 <div class="model-bar">
 <div class="model-name" style="color:#fb923c">Gemini 1.5</div>
 <div class="model-tokens">1M tokens</div>
-<div class="model-visual"><div class="model-visual-fill" style="width:0%;background:#fb923c" data-anim="100"></div></div>
+<div class="model-visual"></div>
 </div>
 </div>
 <p style="font-size:.85rem"><strong>Key insight:</strong> While Gemini has a larger window, Claude's 200K context is often more <em>effectively utilized</em> — Claude shows stronger recall and reasoning across its full context compared to models that may "lose" information in the middle of long contexts (the "lost in the middle" phenomenon).</p>
@@ -65,7 +64,6 @@ free: true
 
 <div class="context-bar-container">
 <div class="context-bar-bg">
-<div class="context-bar-fill" id="ctxBar" style="width:0%;background:linear-gradient(90deg,#8b5cf6,#6d28d9)"></div>
 </div>
 <div class="context-labels">
 <span>0 tokens</span>
@@ -94,27 +92,22 @@ free: true
 <p>Different types of content tokenize very differently. Code tends to use more tokens per character due to special characters and indentation, while prose is more efficient.</p>
 <div id="tokenTypes">
 <div class="token-type">
-<div class="token-color" style="background:#8b5cf6"></div>
 <div class="token-info"><strong>English Prose</strong><span>~4 characters per token</span></div>
 <div class="token-ratio">~4:1</div>
 </div>
 <div class="token-type">
-<div class="token-color" style="background:#fb923c"></div>
 <div class="token-info"><strong>Python Code</strong><span>~3.5 characters per token</span></div>
 <div class="token-ratio">~3.5:1</div>
 </div>
 <div class="token-type">
-<div class="token-color" style="background:#f472b6"></div>
 <div class="token-info"><strong>JSON Data</strong><span>~3 characters per token</span></div>
 <div class="token-ratio">~3:1</div>
 </div>
 <div class="token-type">
-<div class="token-color" style="background:#38bdf8"></div>
 <div class="token-info"><strong>HTML/XML</strong><span>~2.5 characters per token</span></div>
 <div class="token-ratio">~2.5:1</div>
 </div>
 <div class="token-type">
-<div class="token-color" style="background:#34d399"></div>
 <div class="token-info"><strong>Non-English Text</strong><span>~2 characters per token</span></div>
 <div class="token-ratio">~2:1</div>
 </div>
@@ -155,7 +148,7 @@ free: true
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 2 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 1</span>
 </div>
 

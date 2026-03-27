@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 7
 type: "lesson"
 free: false
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -31,14 +30,11 @@ free: false
 <div class="hud-item"><div class="hud-label">Best</div><div class="hud-value hud-timer" id="hudBest">—</div></div>
 </div>
 
-<div id="challengeContainer"></div>
-
 <div class="card" id="finalResults" style="display:none">
 <h2>Game Complete!</h2>
 <div style="text-align:center;padding:2rem 0">
 <div style="font-size:4rem;font-weight:800;background:linear-gradient(135deg,#8b5cf6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent" id="totalScore">0</div>
 <div style="color:#a1a1aa;margin-bottom:2rem" id="totalMsg">points</div>
-<div id="starDisplay" style="font-size:2rem;margin-bottom:1rem"></div>
 </div>
 <div class="leaderboard" id="leaderboard"><h3 style="font-size:.9rem;color:#71717a;margin-bottom:.75rem">YOUR SCORES</h3></div>
 <button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
@@ -47,7 +43,7 @@ free: false
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 7 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:70%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 2</span>
 </div>
 
@@ -107,7 +103,6 @@ ${c.target}
 <button class="submit-btn" onclick="submitPrompt()">Submit Prompt</button>
 <button class="hint-btn" onclick="showHint()">💡 Hint (-10 pts)</button>
 </div>
-<div class="result-card" id="resultCard"></div>
 </div>`;
 document.getElementById('hudLevel').textContent=(idx+1)+'/5';
 }

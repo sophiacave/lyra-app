@@ -17,15 +17,11 @@ free: true
   </div>
 
   <div class="challenge-dots">
-    <div class="dot active" id="dot-0"></div>
-    <div class="dot" id="dot-1"></div>
-    <div class="dot" id="dot-2"></div>
-  </div>
+    </div>
 
   <div class="challenge-bar">
     <div class="challenge-label">Build this automation</div>
-    <div class="challenge-text" id="challengeText"></div>
-  </div>
+    </div>
 
   <div class="builder">
     <div class="palette" id="triggerPalette">
@@ -50,7 +46,6 @@ free: true
   </div>
 
   <button class="run-btn" id="runBtn" onclick="runFlow()">Run Automation</button>
-  <div class="feedback" id="feedback"></div>
   <div class="complete-card" id="completeCard">
     <h3>Lesson Complete!</h3>
     <p>You've built 3 real automation flows. You now understand how triggers initiate workflows and actions execute them.</p>

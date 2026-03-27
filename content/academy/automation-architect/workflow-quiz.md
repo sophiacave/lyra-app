@@ -6,7 +6,7 @@ type: "quiz"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+  
 </nav>
 <header class="lesson-header">
   <div class="lesson-badge">Module 3 &middot; Final Quiz</div>
@@ -14,19 +14,15 @@ free: false
   <p>Final assessment on workflow patterns, AI integration, and error handling in automations.</p>
 </header>
 <div class="content">
-  <div class="quiz-progress" id="quizProgress"></div>
-  <div id="questionContainer"></div>
   <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question &rarr;</button>
   <div class="results" id="results">
-    <div class="results-score" id="resultsScore"></div>
-    <div class="results-msg" id="resultsMsg"></div>
     <button class="retry-btn" onclick="resetQuiz()">Try Again</button>
   </div>
   <button class="complete-btn" id="completeBtn" style="display:none" onclick="completeLesson()">Complete Lesson &mdash; Earn 40 XP</button>
   <div class="course-complete" id="courseComplete">
     <h2>Course Complete!</h2>
     <p>You've finished Automation Architect. You now understand triggers, APIs, and AI-powered workflows.</p>
-    <a href="index.html">View Course Overview</a>
+    
   </div>
 </div>
 <footer class="progress-footer"><p>Lesson 9 of 9 &middot; Automation Architect</p></footer>
@@ -47,7 +43,7 @@ const questions=[
 let currentQ=0,score=0,answered=false;
 
 function renderProgress(){
-  document.getElementById('quizProgress').innerHTML=questions.map((_,i)=>`<div class="quiz-pip${i===currentQ?' current':''}" id="pip${i}"></div>`).join('');
+  document.getElementById('quizProgress').innerHTML=questions.map((_,i)=>``).join('');
 }
 
 function renderQuestion(){

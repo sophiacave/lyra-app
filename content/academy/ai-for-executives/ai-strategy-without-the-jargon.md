@@ -175,13 +175,6 @@ css: "ai-executives.css"
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 2 &#10003;</button>
 
-<div class="lesson-footer">
-  <a href="the-executives-ai-reality-check.html" style="color:var(--dim);font-size:.9rem">&larr; Prev: Reality Check</a>
-  <a href="leading-ai-transformation.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Leading AI Transformation &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-executives';
 const LESSON_NUM = 2;

@@ -4,7 +4,7 @@ course: "the-automation-lab"
 order: 9
 type: "lesson"
 free: false
----<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+---<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="/academy" class="nav-link">All Courses</a></div></nav>
 
 <div class="container">
   <div class="lesson-badge">Module 3 &bull; Lesson 9</div>
@@ -14,14 +14,10 @@ free: false
   <h2 class="section-title">&#128200; Live Agent Dashboard</h2>
   <div class="dashboard">
     <div class="dash-title"><span class="dash-label">Agent Status Monitor</span><span class="dash-time" id="dash-time"></span></div>
-    <div class="agent-grid" id="agent-grid"></div>
     <div class="inspect-panel" id="inspect-panel">
       <div class="ip-header"><span class="ip-name" id="ip-name"></span><button class="ip-close" onclick="closeInspect()">&times;</button></div>
-      <div class="ip-log" id="ip-log"></div>
       <p style="font-size:.8rem;color:#71717a;margin-bottom:.5rem">Choose the right fix:</p>
-      <div class="ip-actions" id="ip-actions"></div>
-      <div class="ip-result" id="ip-result"></div>
-    </div>
+      </div>
   </div>
 
   <h2 class="section-title">&#129657; Build an Auto-Healer</h2>
@@ -35,18 +31,13 @@ free: false
       <div class="hc-field"><label>Max Retries</label><select id="h-retries" onchange="updateHealPreview()"><option value="1">1</option><option value="3">3</option><option value="5">5</option></select></div>
       <div class="hc-field full"><label>Escalation Channel</label><select id="h-escalate" onchange="updateHealPreview()"><option value="slack">#ops-alerts (Slack)</option><option value="email">ops@likeone.ai (Email)</option><option value="both">Both</option></select></div>
     </div>
-    <div class="heal-preview" id="heal-preview"></div>
-  </div>
+    </div>
 
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
   </div>
-  <div class="lesson-nav">
-    <a href="cron-and-scheduling.html">&larr; Cron &amp; Scheduling</a>
-    <a href="the-conscience-layer.html">Next: The Conscience Layer &rarr;</a>
   </div>
-</div>
 <div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
 
 <script>

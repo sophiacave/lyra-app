@@ -153,13 +153,6 @@ free: false
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lab 8</button>
 
-<div class="lesson-footer">
-  <a href="the-art-of-creative-prompting.html" style="color:var(--dim);font-weight:500;font-size:.9rem;margin-right:2rem">&larr; Previous: Creative Prompting</a>
-  <a href="ethics-originality-and-your-creative-identity.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Ethics & Originality &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-creatives';
 const LESSON_NUM = 8;

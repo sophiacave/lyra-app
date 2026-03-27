@@ -17,18 +17,7 @@ css: "claude-beginners.css"
   <p class="sub">6 quick questions to make sure the fundamentals are solid before we move to real workflows.</p>
 </div>
 
-<div class="quiz-progress" id="quiz-progress"></div>
-<div id="quiz-area"></div>
-<div id="results-area" style="display:none"></div>
-
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson 3 ✓</button>
-
-<div class="lesson-footer">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <a href="your-first-conversation.html" style="color:var(--dim);font-size:.85rem">&larr; Lesson 2</a>
-    <a href="email-calendar-magic.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Email & Calendar Magic &rarr;</a>
-  </div>
-</div>
 
 </div>
 
@@ -99,7 +88,7 @@ let answered = false;
 
 function renderProgress() {
   const el = document.getElementById('quiz-progress');
-  el.innerHTML = shuffled.map((_, i) => `<div class="quiz-dot ${i === current ? 'active' : ''}" id="dot-${i}"></div>`).join('');
+  el.innerHTML = shuffled.map((_, i) => ``).join('');
 }
 
 function renderQuestion() {
@@ -112,8 +101,7 @@ function renderQuestion() {
       <div class="quiz-options">
         ${q.options.map((opt, i) => `<button class="quiz-option" onclick="answer(${i})">${opt}</button>`).join('')}
       </div>
-      <div class="quiz-feedback" id="feedback"></div>
-    </div>
+      </div>
   `;
 }
 
@@ -169,7 +157,7 @@ function showResults() {
       <p>${msg}</p>
       <div style="margin-top:1.5rem">
         <button onclick="retryQuiz()" class="btn btn-secondary" style="margin-right:8px">Try Again</button>
-        <a href="email-calendar-magic.html" class="btn btn-primary">Next Lesson →</a>
+        
       </div>
     </div>
   `;

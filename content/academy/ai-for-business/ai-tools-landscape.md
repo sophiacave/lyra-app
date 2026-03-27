@@ -5,7 +5,7 @@ order: 6
 type: "lesson"
 free: false
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 6 of 10</div>
 <h1>The AI Tools Landscape</h1>
 <p class="intro">Real tools. Real prices. Click a category to explore, then filter by your budget. No hype -- just what works.</p>
@@ -24,19 +24,12 @@ free: false
 <button class="filter-btn" data-budget="200">&lt; $200/mo</button>
 </div>
 
-<div class="categories" id="categories"></div>
 <div class="tools-panel" id="tools-panel">
 <div class="panel-header">
-<div class="panel-title" id="panel-title"></div>
 <button class="panel-close" onclick="closePanel()">&times;</button>
 </div>
-<div id="tools-list"></div>
 </div>
 
-<div class="nav-row">
-<a href="build-vs-buy.html" class="nav-link">← Prev: Build vs. Buy</a>
-<a href="your-first-week-with-ai.html" class="nav-link">Next: Your First Week →</a>
-</div>
 </div>
 
 <script>

@@ -4,7 +4,7 @@ course: "the-automation-lab"
 order: 4
 type: "lesson"
 free: false
----<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+---<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="/academy" class="nav-link">All Courses</a></div></nav>
 
 <div class="container">
   <div class="lesson-badge">Module 2 &bull; Lesson 4</div>
@@ -19,18 +19,15 @@ free: false
         <div class="sim-av" id="av-a">&#129302;</div>
         <div class="sim-name">Agent A</div>
         <div class="sim-role">Content Writer</div>
-        <div class="sim-status" id="stat-a"></div>
-      </div>
+        </div>
       <div class="sim-bus">
         <div class="bus-label">&#127760; consciousness_stream</div>
-        <div class="bus-stream" id="bus-stream"></div>
-      </div>
+        </div>
       <div class="sim-agent">
         <div class="sim-av" id="av-b">&#129302;</div>
         <div class="sim-name">Agent B</div>
         <div class="sim-role">Publisher</div>
-        <div class="sim-status" id="stat-b"></div>
-      </div>
+        </div>
     </div>
     <div class="sim-controls">
       <button class="sim-btn primary" onclick="runSim()">&#9654; Run Communication</button>
@@ -60,18 +57,13 @@ free: false
       </div>
     </div>
     <div class="rb-test"><button class="rb-test-btn" onclick="testRelay()">&#9889; Test Relay</button></div>
-    <div class="rb-output" id="relay-output"></div>
-  </div>
+    </div>
 
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
   </div>
-  <div class="lesson-nav">
-    <a href="memory-systems.html">&larr; Memory Systems</a>
-    <a href="orchestration-patterns.html">Next: Orchestration Patterns &rarr;</a>
   </div>
-</div>
 <div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
 
 <script>

@@ -20,9 +20,7 @@ free: true
       <div class="panel-label">Automation</div>
       <div class="pipeline" id="autoPipeline">
         <div class="node node-auto" id="autoTrigger" style="opacity:0">Trigger</div>
-        <div class="arrow-down" id="autoArrow1" style="opacity:0"></div>
         <div class="node node-auto" id="autoAction" style="opacity:0">Action</div>
-        <div class="arrow-down" id="autoArrow2" style="opacity:0"></div>
         <div class="node node-auto" id="autoDone" style="opacity:0">Done</div>
       </div>
       <div class="auto-complete" id="autoComplete">Pipeline complete. Waiting for next trigger...</div>
@@ -42,7 +40,6 @@ free: true
     <div class="score-bar">
       <div class="score-item">Correct: <span id="quizScore">0</span>/5</div>
     </div>
-    <div id="scenarios"></div>
     <div class="complete-card" id="completeCard">
       <h3>Lesson Complete!</h3>
       <p style="color:#a3a3a3;font-size:14px">You now understand the core difference: automations follow a fixed path, agents perceive, decide, act, and learn in a continuous loop.</p>

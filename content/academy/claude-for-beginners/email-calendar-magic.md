@@ -67,8 +67,7 @@ css: "claude-beginners.css"
         <span style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)">LIVE EXAMPLE</span>
         <button onclick="hideEmailDemo()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem">&times;</button>
       </div>
-      <div class="chat-window" id="email-demo-chat"></div>
-    </div>
+      </div>
   </div>
 
   <div class="tip-box">
@@ -170,8 +169,7 @@ css: "claude-beginners.css"
         <span style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)">LIVE EXAMPLE</span>
         <button onclick="hideCalendarDemo()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem">&times;</button>
       </div>
-      <div class="chat-window" id="calendar-demo-chat"></div>
-    </div>
+      </div>
   </div>
 
   <div class="tip-box">
@@ -236,13 +234,6 @@ css: "claude-beginners.css"
 
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 4 ✓</button>
-
-<div class="lesson-footer">
-  <a href="basics-quiz.html" style="color:var(--muted);font-weight:600;font-size:.9rem">&larr; Previous: Basics Quiz</a>
-  <a href="documents-and-data.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Documents & Data &rarr;</a>
-</div>
-
-</div>
 
 <script>
 const SLUG = 'claude-for-beginners';

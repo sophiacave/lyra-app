@@ -6,7 +6,7 @@ type: "builder"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -19,15 +19,8 @@ free: false
     <p>Walk through building a complete RAG system step by step. Choose your documents, chunk them, embed them, store them, and query them.</p>
   </div>
 
-  <div class="step-tracker" id="stepTracker"></div>
-  <div class="builder-area" id="builderArea"></div>
-
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 250 XP</button>
-  <div class="footer-nav">
-    <a href="the-rag-loop.html">&larr; Previous: The RAG Loop</a>
-    <a href="prompt-augmentation.html">Next: Prompt Augmentation &rarr;</a>
   </div>
-</div>
 
 <script>
 const DOCS = [
@@ -172,8 +165,7 @@ function renderQuery(area){
     <div class="query-test">
       <input type="text" id="queryInput" placeholder="Ask a question about your documents..." value="How do you make a good tomato sauce?">
       <button class="next-step-btn" onclick="runQuery()" style="margin-bottom:1rem">Search</button>
-      <div class="result-box" id="queryResults"></div>
-    </div>`;
+      </div>`;
   setTimeout(()=>runQuery(),100);
 }
 window.runQuery=function(){

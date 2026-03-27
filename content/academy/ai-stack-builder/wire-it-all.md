@@ -6,9 +6,9 @@ type: "builder"
 free: false
 ---<div class="container">
 <div class="nav">
-<a href="vercel-deploy.html">&larr; Prev</a>
+
 <span class="current">Lesson 9 of 10</span>
-<a href="launch-checklist.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
@@ -54,9 +54,6 @@ free: false
 </div>
 
 <div class="connection-detail" id="connDetail">
-<div class="conn-header" id="connHeader"></div>
-<div class="conn-flow" id="connFlow"></div>
-<div class="code-block" id="connCode"></div>
 </div>
 
 <h2>Build It: Step by Step</h2>
@@ -142,13 +139,9 @@ free: false
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="vercel-deploy.html">&larr; Vercel Deploy</a>
-<a href="launch-checklist.html">Next: Launch Checklist &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

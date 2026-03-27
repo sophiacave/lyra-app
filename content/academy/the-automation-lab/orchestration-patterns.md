@@ -4,7 +4,7 @@ course: "the-automation-lab"
 order: 5
 type: "lesson"
 free: false
----<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="index.html" class="nav-link">Course Overview</a><a href="/academy" class="nav-link">All Courses</a></div></nav>
+---<nav class="nav"><a href="/academy" class="logo">LIKE ONE ACADEMY</a><div class="nav-links"><a href="/academy" class="nav-link">All Courses</a></div></nav>
 
 <div class="container">
   <div class="lesson-badge">Module 2 &bull; Lesson 5</div>
@@ -23,22 +23,14 @@ free: false
       <div class="demo-title" id="demo-title">Pipeline Pattern</div>
       <button class="demo-play" onclick="playDemo()">&#9654; Animate</button>
     </div>
-    <div class="demo-canvas" id="demo-canvas"></div>
-    <div class="demo-log" id="demo-log"></div>
-  </div>
+    </div>
 
   <h2 class="section-title">&#129504; When to Use Which?</h2>
-  <div class="quiz-section" id="quiz-section"></div>
-
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 350 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +350 XP earned</div>
   </div>
-  <div class="lesson-nav">
-    <a href="agent-communication.html">&larr; Agent Communication</a>
-    <a href="conflict-resolution.html">Next: Conflict Resolution &rarr;</a>
   </div>
-</div>
 <div class="xp-toast" id="xp-toast">+350 XP earned! &#9889;</div>
 
 <script>
@@ -99,7 +91,7 @@ function renderQuiz(){
   const qz=document.getElementById('quiz-section');
   if(qIdx>=QUIZZES.length){qz.innerHTML='<div style="text-align:center;padding:1rem;color:#22c55e;font-weight:600">All questions answered! Great work.</div>';return;}
   const q=QUIZZES[qIdx];
-  qz.innerHTML=`<div class="quiz-q"><strong>Q${qIdx+1}.</strong> ${q.q}</div><div class="quiz-opts">${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQuiz(${i})">${o}</button>`).join('')}</div><div class="quiz-fb" id="quiz-fb"></div>`;
+  qz.innerHTML=`<div class="quiz-q"><strong>Q${qIdx+1}.</strong> ${q.q}</div><div class="quiz-opts">${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQuiz(${i})">${o}</button>`).join('')}</div>`;
 }
 function answerQuiz(i){
   const q=QUIZZES[qIdx];

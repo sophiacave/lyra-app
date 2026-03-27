@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 1
 type: "lesson"
 free: true
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+200 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+200 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -47,7 +46,6 @@ free: true
 <p>All three are powerful. But they're built with different priorities — and that shows in how they behave day to day.</p>
 <div class="compare-grid">
 <div class="compare-row">
-<div class="compare-cell" style="background:transparent;border:none"></div>
 <div class="compare-col-head claude">Claude</div>
 <div class="compare-col-head other">ChatGPT / Gemini</div>
 </div>
@@ -113,17 +111,14 @@ free: true
 <div class="quiz-progress">Question <span id="qNum">1</span> of 5</div>
 <div class="scenario-box">
 <div class="scenario-label">Scenario</div>
-<div class="scenario-text" id="scenarioText"></div>
 </div>
 <div class="quiz-options">
 <button class="quiz-btn opus-opt" id="btnOpus" onclick="answer('opus')">Claude Opus</button>
 <button class="quiz-btn sonnet-opt" id="btnSonnet" onclick="answer('sonnet')">Claude Sonnet</button>
 <button class="quiz-btn haiku-opt" id="btnHaiku" onclick="answer('haiku')">Claude Haiku</button>
 </div>
-<div class="quiz-feedback" id="quizFeedback"></div>
 <button class="quiz-next-btn" id="quizNext" onclick="nextQuestion()">Next Question →</button>
 <div class="quiz-score" id="quizScore">
-<div class="quiz-score-num" id="scoreNum"></div>
 <p id="scoreMsg"></p>
 <button class="quiz-next-btn" style="display:inline-block;margin-top:1rem" onclick="resetQuiz()">Retake Quiz</button>
 </div>
@@ -160,7 +155,7 @@ free: true
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 1 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:10%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 1</span>
 </div>
 

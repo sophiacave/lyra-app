@@ -17,17 +17,13 @@ free: true
   <div class="workspace">
     <div class="toolbox">
       <h3>🧰 Toolbox</h3>
-      <div class="tool-grid" id="tool-grid"></div>
-    </div>
+      </div>
     <div class="agent-zone" id="agent-zone">
       <div class="agent-avatar">🤖</div>
       <div class="agent-label">Your Agent</div>
       <div class="agent-status" id="agent-status">No tools equipped — just a chatbot</div>
-      <div class="equipped-list" id="equipped-list"></div>
-    </div>
+      </div>
   </div>
-
-  <div class="capability-meter" id="meters"></div>
 
   <div class="insight" id="insight">
     <h3>💡 Key Insight</h3>
@@ -37,7 +33,7 @@ free: true
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>Tools are what give agents real power. The right tools turn text generation into autonomous action.</p>
-    <a href="design-your-agent.html" class="next-btn">Next: Design Your Agent →</a>
+    
   </div>
 </div>
 
@@ -86,7 +82,7 @@ tools.forEach(t => {
 const metersDiv = document.getElementById('meters');
 metersDiv.innerHTML = '<h3>📊 Agent Capabilities</h3>';
 for (const [key, label] of Object.entries(capLabels)) {
-  metersDiv.innerHTML += `<div class="meter-row"><div class="meter-label">${label}</div><div class="meter-bar"><div class="meter-fill" id="meter-${key}" style="width:0;background:${capColors[key]}"></div></div><div class="meter-val" id="val-${key}">0%</div></div>`;
+  metersDiv.innerHTML += `<div class="meter-row"><div class="meter-label">${label}</div><div class="meter-bar"></div><div class="meter-val" id="val-${key}">0%</div></div>`;
 }
 
 // Drop zone

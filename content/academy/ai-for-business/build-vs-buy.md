@@ -5,19 +5,11 @@ order: 5
 type: "builder"
 free: false
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 5 of 10</div>
 <h1>Build vs. Buy</h1>
 <p class="intro">Answer 5 questions about your situation. We'll tell you whether to build a custom AI solution, buy an existing tool, hire a consultant, or save your money.</p>
 
-<div class="progress-dots" id="dots"></div>
-<div id="questions"></div>
-<div class="result-card" id="result"></div>
-
-<div class="nav-row">
-<a href="find-your-ai-opportunities.html" class="nav-link">← Prev: AI Opportunities</a>
-<a href="ai-tools-landscape.html" class="nav-link">Next: AI Tools Landscape →</a>
-</div>
 </div>
 
 <script>

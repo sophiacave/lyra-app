@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -25,7 +25,6 @@ free: false
     <div class="q-count" id="qCount">Question 1 of 3</div>
   </div>
 
-  <div id="quizContainer"></div>
   <div class="results" id="results">
     <h2>Challenge Complete!</h2>
     <div class="big-score" id="finalScore">0/3</div>
@@ -76,27 +75,27 @@ function renderQuiz(){
       visualHtml=`<div class="visual-aid">
         <div class="similarity-meter">
           <div class="sim-pair">car ↔ automobile</div>
-          <div class="sim-bar-wrap"><div class="sim-bar" style="width:95%;background:#22c55e"></div></div>
+          <div class="sim-bar-wrap"></div>
           <div class="sim-val" style="color:#22c55e">0.95</div>
         </div>
         <div class="similarity-meter">
           <div class="sim-pair">happy ↔ joyful</div>
-          <div class="sim-bar-wrap"><div class="sim-bar" style="width:88%;background:#34d399"></div></div>
+          <div class="sim-bar-wrap"></div>
           <div class="sim-val" style="color:#34d399">0.88</div>
         </div>
         <div class="similarity-meter">
           <div class="sim-pair">dog ↔ cat</div>
-          <div class="sim-bar-wrap"><div class="sim-bar" style="width:72%;background:#fb923c"></div></div>
+          <div class="sim-bar-wrap"></div>
           <div class="sim-val" style="color:#fb923c">0.72</div>
         </div>
         <div class="similarity-meter">
           <div class="sim-pair">king ↔ purple</div>
-          <div class="sim-bar-wrap"><div class="sim-bar" style="width:18%;background:#ef4444"></div></div>
+          <div class="sim-bar-wrap"></div>
           <div class="sim-val" style="color:#ef4444">0.18</div>
         </div>
         <div class="similarity-meter">
           <div class="sim-pair">happy ↔ banana</div>
-          <div class="sim-bar-wrap"><div class="sim-bar" style="width:12%;background:#ef4444"></div></div>
+          <div class="sim-bar-wrap"></div>
           <div class="sim-val" style="color:#ef4444">0.12</div>
         </div>
         <div style="font-size:.7rem;color:#71717a;margin-top:.5rem;text-align:center">These are approximate values for illustration. Real similarity scores vary by embedding model.</div>
@@ -111,8 +110,7 @@ function renderQuiz(){
           <div class="letter">${String.fromCharCode(65+j)}</div>${o}
         </div>`).join('')}
       </div>
-      <div class="feedback" id="fb${i}"></div>
-    </div>`;
+      </div>`;
   }).join('');
 }
 

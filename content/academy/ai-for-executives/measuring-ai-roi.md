@@ -225,13 +225,6 @@ css: "ai-executives.css"
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 5 &#10003;</button>
 
-<div class="lesson-footer">
-  <a href="ai-risk-and-governance.html" style="color:var(--dim);font-size:.9rem">&larr; Prev: Risk & Governance</a>
-  <a href="/academy/ai-for-executives/" style="color:var(--orange);font-weight:600;font-size:.9rem">Back to Course Home &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-executives';
 const LESSON_NUM = 5;

@@ -38,14 +38,13 @@ free: true
   <div class="scenarios">
     <h2>Classify These 5 Scenarios</h2>
     <p style="color:#71717a;font-size:.85rem;margin-bottom:1.5rem">Is this a chatbot or an agent? Think about autonomy, memory, and actions.</p>
-    <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
-    <div id="scenario-list"></div>
-  </div>
+    <div class="progress-bar"></div>
+    </div>
 
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>You can tell the difference between a chatbot and an agent. That's the first step to building one.</p>
-    <a href="the-agent-loop.html" class="next-btn">Next: The Agent Loop →</a>
+    
   </div>
 </div>
 

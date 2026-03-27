@@ -167,13 +167,6 @@ css: "claude-beginners.css"
 
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 2 ✓</button>
 
-<div class="lesson-footer">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <a href="what-claude-can-do.html" style="color:var(--dim);font-size:.85rem">&larr; Lesson 1</a>
-    <a href="basics-quiz.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Knowledge Check &rarr;</a>
-  </div>
-</div>
-
 </div>
 
 <script>

@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -23,14 +23,6 @@ free: false
     <strong>The RAG quality triangle:</strong> A good RAG answer must be (1) <strong>Relevant</strong> — the retrieved context actually relates to the question, (2) <strong>Faithful</strong> — the answer only contains claims supported by the context, and (3) <strong>Complete</strong> — the answer covers all the important information from the context. Rate the scenarios below.
   </div>
 
-  <div class="scenario-nav" id="scenarioNav"></div>
-
-  <div class="eval-scenario" id="evalScenario"></div>
-
-  <div class="metric-sliders" id="metricSliders"></div>
-
-  <div class="score-summary" id="scoreSummary"></div>
-
   <div class="narration" style="margin-top:2rem">
     <strong>Automated evaluation:</strong> In production, you use LLM-as-a-judge to score these metrics automatically. You send the question + context + answer to GPT-4 and ask it to rate relevance, faithfulness, and completeness on a 1-5 scale. This lets you evaluate thousands of question-answer pairs without manual review.
   </div>
@@ -44,11 +36,7 @@ free: false
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  <div class="footer-nav">
-    <a href="hybrid-search.html">&larr; Previous: Hybrid Search</a>
-    <a href="advanced-patterns.html">Next: Advanced Patterns &rarr;</a>
   </div>
-</div>
 
 <script>
 const SCENARIOS = [
@@ -143,10 +131,10 @@ function updateSummary(){
   function getColor(val){return val>=4?'#10b981':val>=3?'#f59e0b':'#ef4444';}
 
   document.getElementById('scoreSummary').innerHTML = `
-    <div class="score-item"><div class="val" style="color:#3b82f6">${r.relevance}/5</div><div class="lbl">Relevance</div><div class="bar"><div class="bar-fill" style="width:${r.relevance*20}%;background:#3b82f6"></div></div></div>
-    <div class="score-item"><div class="val" style="color:#10b981">${r.faithfulness}/5</div><div class="lbl">Faithfulness</div><div class="bar"><div class="bar-fill" style="width:${r.faithfulness*20}%;background:#10b981"></div></div></div>
-    <div class="score-item"><div class="val" style="color:#f59e0b">${r.completeness}/5</div><div class="lbl">Completeness</div><div class="bar"><div class="bar-fill" style="width:${r.completeness*20}%;background:#f59e0b"></div></div></div>
-    <div class="score-item"><div class="val" style="color:${getColor(avg)}">${avg}</div><div class="lbl">Overall</div><div class="bar"><div class="bar-fill" style="width:${avg*20}%;background:${getColor(avg)}"></div></div></div>
+    <div class="score-item"><div class="val" style="color:#3b82f6">${r.relevance}/5</div><div class="lbl">Relevance</div><div class="bar"></div></div>
+    <div class="score-item"><div class="val" style="color:#10b981">${r.faithfulness}/5</div><div class="lbl">Faithfulness</div><div class="bar"></div></div>
+    <div class="score-item"><div class="val" style="color:#f59e0b">${r.completeness}/5</div><div class="lbl">Completeness</div><div class="bar"></div></div>
+    <div class="score-item"><div class="val" style="color:${getColor(avg)}">${avg}</div><div class="lbl">Overall</div><div class="bar"></div></div>
     <div style="width:100%;font-size:.75rem;color:#71717a;margin-top:.5rem;text-align:center">Expert rating: Relevance ${expected.relevance}, Faithfulness ${expected.faithfulness}, Completeness ${expected.completeness}</div>
   `;
 }

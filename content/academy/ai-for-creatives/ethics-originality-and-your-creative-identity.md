@@ -172,13 +172,6 @@ free: false
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 9</button>
 
-<div class="lesson-footer">
-  <a href="ai-powered-content-creation-pipeline.html" style="color:var(--dim);font-weight:500;font-size:.9rem;margin-right:2rem">&larr; Previous: Content Pipeline</a>
-  <a href="creative-ai-assessment.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Final Assessment &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-creatives';
 const LESSON_NUM = 9;

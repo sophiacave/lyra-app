@@ -15,7 +15,6 @@ free: false
   <p class="subtitle">Rate your agent on 5 dimensions. The radar chart shows how it compares against the "good enough to deploy" threshold.</p>
 
   <div class="eval-grid">
-    <div class="sliders-panel" id="sliders"></div>
     <div class="radar-panel">
       <canvas id="radar"></canvas>
       <div class="verdict">
@@ -33,7 +32,7 @@ free: false
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>You now have a framework for evaluating any AI agent. Use these 5 dimensions to decide when an agent is ready for production.</p>
-    <a href="agent-quiz.html" class="next-btn">Next: Final Quiz →</a>
+    
   </div>
 </div>
 
@@ -72,14 +71,13 @@ dimensions.forEach(d => {
     </div>
     <div class="dim-desc">${d.desc}</div>
     <input type="range" min="0" max="100" value="50" id="slider-${d.id}">
-    <div class="dim-tip" id="tip-${d.id}"></div>
-  `;
+    `;
   slidersDiv.appendChild(div);
 
   const tipCard = document.createElement('div');
   tipCard.className = 'tip-card';
   tipCard.id = `tipcard-${d.id}`;
-  tipCard.innerHTML = `<div class="tip-dim">${d.icon} ${d.name}</div><div class="tip-text" id="tiptext-${d.id}"></div>`;
+  tipCard.innerHTML = `<div class="tip-dim">${d.icon} ${d.name}</div>`;
   tipsDiv.appendChild(tipCard);
 
   div.querySelector('input').addEventListener('input', e => {

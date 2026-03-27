@@ -156,7 +156,4 @@ free: false
   </div>
 </div>
 
-<div class="nav-row">
-  <a href="ai-for-your-industry.html" class="nav-link">Next: AI for Your Industry &rarr;</a>
-</div>
 </div>

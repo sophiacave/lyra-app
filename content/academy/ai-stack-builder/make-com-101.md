@@ -6,9 +6,9 @@ type: "lesson"
 free: true
 ---<div class="container">
 <div class="nav">
-<a href="supabase-101.html">&larr; Prev</a>
+
 <span class="current">Lesson 3 of 10</span>
-<a href="edge-functions.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 1 &middot; 260 XP</div>
@@ -28,56 +28,43 @@ free: true
 <div class="scenario-canvas">
 <div class="scenario-flow" id="flow0">
 <div class="module-node active"><span class="node-icon">&#x1f310;</span><span class="node-name">Webhook</span><span class="node-type">Trigger</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f4e7;</span><span class="node-name">Resend</span><span class="node-type">Send Welcome</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f4be;</span><span class="node-name">Supabase</span><span class="node-type">Insert Row</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f4ac;</span><span class="node-name">Slack</span><span class="node-type">Notify</span></div>
 </div>
 </div>
 <p style="font-size:.9rem;color:#999">When someone subscribes, send a welcome email, store in database, notify your Slack.</p>
 <p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — click to see what each module would process. In production, real data flows through Make.com automatically.</p>
 <button class="btn-run" onclick="runScenario(0)">&#x25b6; Simulate Run</button>
-<div class="data-flow" id="dataFlow0" style="display:none"></div>
 </div>
 
 <div id="scenario1" class="scenario-view" style="display:none">
 <div class="scenario-canvas">
 <div class="scenario-flow" id="flow1">
 <div class="module-node active"><span class="node-icon">&#x23f0;</span><span class="node-name">Schedule</span><span class="node-type">Every Day 9am</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f4be;</span><span class="node-name">Supabase</span><span class="node-type">Get Draft</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f9e0;</span><span class="node-name">Claude</span><span class="node-type">Polish Copy</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f310;</span><span class="node-name">CMS</span><span class="node-type">Publish Post</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f426;</span><span class="node-name">Twitter</span><span class="node-type">Post Thread</span></div>
 </div>
 </div>
 <p style="font-size:.9rem;color:#999">Every morning, grab a draft from Supabase, have Claude polish it, publish to CMS, and auto-tweet.</p>
 <p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — in production, this would run on a schedule and process real content.</p>
 <button class="btn-run" onclick="runScenario(1)">&#x25b6; Simulate Run</button>
-<div class="data-flow" id="dataFlow1" style="display:none"></div>
 </div>
 
 <div id="scenario2" class="scenario-view" style="display:none">
 <div class="scenario-canvas">
 <div class="scenario-flow" id="flow2">
 <div class="module-node active"><span class="node-icon">&#x1f4b3;</span><span class="node-name">Stripe</span><span class="node-type">Webhook</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f527;</span><span class="node-name">Filter</span><span class="node-type">amount &gt; $50</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f4be;</span><span class="node-name">Supabase</span><span class="node-type">Log Revenue</span></div>
-<div class="connector"></div>
 <div class="module-node"><span class="node-icon">&#x1f4ac;</span><span class="node-name">Slack</span><span class="node-type">&#x1f389; Alert</span></div>
 </div>
 </div>
 <p style="font-size:.9rem;color:#999">When Stripe processes a payment over $50, log it and send a celebration alert to Slack.</p>
 <p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — in production, you'd see real Stripe payment data flowing through.</p>
 <button class="btn-run" onclick="runScenario(2)">&#x25b6; Simulate Run</button>
-<div class="data-flow" id="dataFlow2" style="display:none"></div>
 </div>
 
 <h2>How Modules Connect</h2>
@@ -132,13 +119,9 @@ joined_at: <span class="op">{{</span>now<span class="op">}}</span> <span class="
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="supabase-101.html">&larr; Supabase 101</a>
-<a href="edge-functions.html">Next: Edge Functions &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

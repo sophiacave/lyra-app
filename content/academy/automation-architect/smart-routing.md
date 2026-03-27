@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+  
 </nav>
 <header class="lesson-header">
   <div class="lesson-badge">Module 3 &middot; Animated</div>
@@ -27,7 +27,7 @@ free: false
         <div class="wf-sub">customer message</div>
       </div>
     </div>
-    <div class="wf-connector"><div class="wf-line wf-line-down"><div class="wf-pulse wf-pulse-green"></div></div></div>
+    <div class="wf-connector"><div class="wf-line wf-line-down"></div></div>
     <div class="wf-row" style="justify-content:center">
       <div class="wf-node wf-ai" id="wf-ai">
         <div class="wf-icon">&#129504;</div>
@@ -36,9 +36,9 @@ free: false
       </div>
     </div>
     <div class="wf-connector" style="display:flex;flex-direction:row;gap:6rem;justify-content:center;padding:0">
-      <div style="display:flex;flex-direction:column;align-items:center;padding:.75rem 0"><div class="wf-line wf-line-left"><div class="wf-pulse wf-pulse-blue"></div></div></div>
-      <div style="display:flex;flex-direction:column;align-items:center;padding:.75rem 0"><div class="wf-line wf-line-mid"><div class="wf-pulse wf-pulse-orange"></div></div></div>
-      <div style="display:flex;flex-direction:column;align-items:center;padding:.75rem 0"><div class="wf-line wf-line-right"><div class="wf-pulse wf-pulse-red"></div></div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;padding:.75rem 0"><div class="wf-line wf-line-left"></div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;padding:.75rem 0"><div class="wf-line wf-line-mid"></div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;padding:.75rem 0"><div class="wf-line wf-line-right"></div></div>
     </div>
     <div class="wf-branches">
       <div class="wf-branch">

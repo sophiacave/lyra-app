@@ -6,9 +6,9 @@ type: "lesson"
 free: false
 ---<div class="container">
 <div class="nav">
-<a href="edge-functions.html">&larr; Prev</a>
+
 <span class="current">Lesson 5 of 10</span>
-<a href="auth-and-tokens.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
@@ -76,9 +76,6 @@ free: false
 <button class="test-btn" onclick="simulateEvent('failed')">&#x274c; Payment Failed</button>
 </div>
 
-<div class="payload-viewer" id="payloadView" style="display:none"></div>
-<div class="test-result" id="testResult"></div>
-
 <div class="panel">
 <div class="label">Key Concept: Signature Verification</div>
 <p style="font-size:.9rem">Anyone can send a POST to your endpoint. A bad actor could fake a "payment succeeded" event to get free access. Stripe prevents this by cryptographically signing every webhook with a secret only you and Stripe know. <strong>Always verify the signature.</strong></p>
@@ -112,13 +109,9 @@ free: false
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="edge-functions.html">&larr; Edge Functions</a>
-<a href="auth-and-tokens.html">Next: Auth & Tokens &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

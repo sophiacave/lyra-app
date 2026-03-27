@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -46,14 +46,8 @@ free: false
     <div class="pattern-tab" onclick="showPattern(3)">Agentic RAG</div>
   </div>
 
-  <div class="pattern-content" id="patternContent"></div>
-
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  <div class="footer-nav">
-    <a href="evaluation-metrics.html">&larr; Previous: Evaluation Metrics</a>
-    <a href="rag-quiz.html">Next: RAG Mastery Quiz &rarr;</a>
   </div>
-</div>
 
 <script>
 const PATTERNS = [

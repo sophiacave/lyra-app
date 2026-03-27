@@ -6,7 +6,7 @@ type: "builder"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -24,9 +24,9 @@ free: true
   <div class="workspace">
     <div class="palette">
       <h3>Neuron Palette</h3>
-      <div class="drag-neuron" draggable="true" data-type="input"><div class="dot dot-input"></div>Input Neuron</div>
-      <div class="drag-neuron" draggable="true" data-type="hidden"><div class="dot dot-hidden"></div>Hidden Neuron</div>
-      <div class="drag-neuron" draggable="true" data-type="output"><div class="dot dot-output"></div>Output Neuron</div>
+      <div class="drag-neuron" draggable="true" data-type="input">Input Neuron</div>
+      <div class="drag-neuron" draggable="true" data-type="hidden">Hidden Neuron</div>
+      <div class="drag-neuron" draggable="true" data-type="output">Output Neuron</div>
     </div>
     <div class="network-area" id="networkArea">
       <canvas id="connCanvas"></canvas>
@@ -43,11 +43,11 @@ free: true
     <h3>🏆 Challenge: Cats vs Dogs Classifier</h3>
     <p>Build a network that could classify images of cats and dogs. You'll need the right architecture!</p>
     <div class="checklist">
-      <div class="checklist-item" id="check1"><div class="check"></div>Place at least 2 input neurons</div>
-      <div class="checklist-item" id="check2"><div class="check"></div>Add 2+ hidden neurons</div>
-      <div class="checklist-item" id="check3"><div class="check"></div>Place 2 output neurons (cat/dog)</div>
-      <div class="checklist-item" id="check4"><div class="check"></div>Connect all layers</div>
-      <div class="checklist-item" id="check5"><div class="check"></div>Run training to see data flow</div>
+      <div class="checklist-item" id="check1">Place at least 2 input neurons</div>
+      <div class="checklist-item" id="check2">Add 2+ hidden neurons</div>
+      <div class="checklist-item" id="check3">Place 2 output neurons (cat/dog)</div>
+      <div class="checklist-item" id="check4">Connect all layers</div>
+      <div class="checklist-item" id="check5">Run training to see data flow</div>
     </div>
   </div>
 

@@ -83,8 +83,7 @@ css: "claude-beginners.css"
         <span style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)">LIVE EXAMPLE</span>
         <button onclick="hideDemo()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem">&times;</button>
       </div>
-      <div class="chat-window" id="demo-chat"></div>
-    </div>
+      </div>
   </div>
 </div>
 
@@ -167,12 +166,6 @@ css: "claude-beginners.css"
 
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 1 ✓</button>
-
-<div class="lesson-footer">
-  <a href="your-first-conversation.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Your First Conversation &rarr;</a>
-</div>
-
-</div>
 
 <script>
 const SLUG = 'claude-for-beginners';

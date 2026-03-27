@@ -5,38 +5,28 @@ order: 2
 type: "lesson"
 free: true
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 2 of 10</div>
 <h1>What AI Can and Cannot Do</h1>
 <p class="intro">Sort each task into the right category. Click a task, then click the zone where it belongs. Get realistic about AI — it's powerful but it's not magic.</p>
 
 <div class="pool" id="pool">
 <div class="pool-title">Tasks to Sort (<span id="remaining">20</span> remaining)</div>
-<div class="pool-items" id="pool-items"></div>
 </div>
 
 <div class="zones">
 <div class="zone" data-zone="can" id="zone-can">
 <div class="zone-title">AI Can Do This Well</div>
-<div class="zone-items" id="items-can"></div>
 </div>
 <div class="zone" data-zone="help" id="zone-help">
 <div class="zone-title">AI Can Help With This</div>
-<div class="zone-items" id="items-help"></div>
 </div>
 <div class="zone" data-zone="cannot" id="zone-cannot">
 <div class="zone-title">AI Cannot Do This</div>
-<div class="zone-items" id="items-cannot"></div>
 </div>
 </div>
 
 <button class="check-btn" id="check-btn" disabled onclick="checkAnswers()">Check My Answers</button>
-<div class="result hidden" id="result"></div>
-
-<div class="nav-row">
-<a href="ai-without-jargon.html" class="nav-link">← Prev: AI Without Jargon</a>
-<a href="the-roi-calculator.html" class="nav-link">Next: The ROI Calculator →</a>
-</div>
 </div>
 
 <script>

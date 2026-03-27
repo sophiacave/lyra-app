@@ -76,8 +76,7 @@ Budget utilization stands at 73% of annual allocation with one quarter remaining
     </div>
 
     <!-- Summary output -->
-    <div class="chat-window" id="summary-output" style="display:none"></div>
-  </div>
+    </div>
 
   <div class="tip-box">
     <div class="tip-label">Prompt Templates</div>
@@ -169,8 +168,7 @@ Budget utilization stands at 73% of annual allocation with one quarter remaining
     </div>
 
     <!-- Analysis output -->
-    <div class="chat-window" id="analysis-output" style="display:none"></div>
-  </div>
+    </div>
 
   <div class="callout">
     <p><strong>How to paste data:</strong> Select your data in Excel or Google Sheets, copy it, and paste directly into Claude. It reads tab-separated data perfectly. For CSV files, just paste the raw text. You can also describe data verbally: "Our revenue was $50K in Jan, $62K in Feb, $58K in Mar..."</p>
@@ -319,13 +317,6 @@ Budget utilization stands at 73% of annual allocation with one quarter remaining
 
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 5 &#10003;</button>
-
-<div class="lesson-footer">
-  <a href="email-calendar-magic.html" style="color:var(--muted);font-size:.9rem">&larr; Previous: Email &amp; Calendar Magic</a>
-  <a href="workflow-quiz.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Workflow Quiz &rarr;</a>
-</div>
-
-</div>
 
 <script>
 const SLUG = 'claude-for-beginners';

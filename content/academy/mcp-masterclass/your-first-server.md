@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+  
 </nav>
 
 <div class="lesson-container">
@@ -54,8 +54,6 @@ free: false
       <h2>Choose the tools your server exposes</h2>
       <p>Select which capabilities your <strong id="chosenType">server</strong> will offer to AI models:</p>
 
-      <div class="tool-selector" id="toolSelector"></div>
-
       <button class="next-step-btn" id="btn-step1" onclick="goStep(2)" disabled>Generate Code &rarr;</button>
     </div>
   </div>
@@ -71,8 +69,7 @@ free: false
           <span class="filename" id="codeFilename">server.ts</span>
           <span class="lang">TypeScript</span>
         </div>
-        <div class="code-body" id="codeBody"></div>
-      </div>
+        </div>
 
       <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15);border-radius:12px;padding:1.25rem;margin-top:1.5rem;font-size:.9rem;color:#a1a1aa;line-height:1.6">
         <strong style="color:#fb923c">What to do with this code:</strong> Copy the generated code above into a file (e.g., <code style="background:rgba(255,255,255,.05);padding:.15rem .4rem;border-radius:4px;font-size:.8rem">my-server.ts</code>). Install the dependencies with <code style="background:rgba(255,255,255,.05);padding:.15rem .4rem;border-radius:4px;font-size:.8rem">npm install @modelcontextprotocol/sdk zod</code>. Fill in the placeholder logic in each tool handler. Then run it with <code style="background:rgba(255,255,255,.05);padding:.15rem .4rem;border-radius:4px;font-size:.8rem">npx tsx my-server.ts</code>.
@@ -100,7 +97,7 @@ free: false
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 250 XP</button>
-  <a href="tool-definitions.html" class="next-link">Next: Tool Definitions &rarr;</a>
+  
 </div>
 
 <script>

@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+  
 </nav>
 
 <div class="lesson-container">
@@ -15,14 +15,12 @@ free: false
   <p class="subtitle">MCP gives AI real-world power. With great power comes great responsibility. Master these 10 security practices before deploying to production.</p>
 
   <div class="checklist-progress">
-    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-bar-wrap"></div>
     <div class="progress-text" id="progressText">0 / 10</div>
   </div>
 
-  <div class="checklist" id="checklist"></div>
-
   <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 200 XP</button>
-  <a href="mcp-quiz.html" class="next-link">Next: MCP Mastery Quiz &rarr;</a>
+  
 </div>
 
 <script>

@@ -194,8 +194,4 @@ free: false
   </div>
 </div>
 
-<div class="nav-row">
-  <a href="building-your-ai-team.html" class="nav-link">&larr; Prev: Building Your AI Team</a>
-  <a href="executive-ai-assessment.html" class="nav-link">Next: Final Assessment &rarr;</a>
-</div>
 </div>

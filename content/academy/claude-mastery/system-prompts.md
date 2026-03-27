@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 4
 type: "lesson"
 free: false
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -97,7 +96,6 @@ Writing Review Example
 <button class="scenario-tab" onclick="showScenario(1,this)">Explain Concept</button>
 <button class="scenario-tab" onclick="showScenario(2,this)">Review My Work</button>
 </div>
-<div id="scenarioContainer"></div>
 </div>
 
 <div class="card">
@@ -107,7 +105,7 @@ Writing Review Example
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 4 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:40%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 2</span>
 </div>
 

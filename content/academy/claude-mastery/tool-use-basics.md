@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 8
 type: "lesson"
 free: false
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -57,7 +56,6 @@ free: false
 </div>
 </div>
 
-<div class="code-preview" id="codePreview"></div>
 </div>
 
 <div class="card">
@@ -70,25 +68,21 @@ free: false
 <div class="flow-text"><strong>User sends a message</strong><span>"What's the weather in Tokyo?"</span></div>
 <div class="flow-status" style="background:rgba(139,92,246,.15);color:#8b5cf6">Waiting</div>
 </div>
-<div class="flow-connector"></div>
 <div class="flow-step" id="step1">
 <div class="flow-icon" style="background:rgba(56,189,248,.15)">🧠</div>
 <div class="flow-text"><strong>Claude analyzes and decides to use a tool</strong><span>Recognizes it needs real-time weather data</span></div>
 <div class="flow-status" style="background:rgba(56,189,248,.15);color:#38bdf8">Waiting</div>
 </div>
-<div class="flow-connector"></div>
 <div class="flow-step" id="step2">
 <div class="flow-icon" style="background:rgba(251,146,60,.15)">🔧</div>
 <div class="flow-text"><strong>Claude calls: get_weather(location: "Tokyo")</strong><span>Your app receives the tool call and executes it</span></div>
 <div class="flow-status" style="background:rgba(251,146,60,.15);color:#fb923c">Waiting</div>
 </div>
-<div class="flow-connector"></div>
 <div class="flow-step" id="step3">
 <div class="flow-icon" style="background:rgba(52,211,153,.15)">📡</div>
 <div class="flow-text"><strong>Tool returns result</strong><span>{"temp": 22, "condition": "Partly Cloudy", "humidity": 65}</span></div>
 <div class="flow-status" style="background:rgba(52,211,153,.15);color:#34d399">Waiting</div>
 </div>
-<div class="flow-connector"></div>
 <div class="flow-step" id="step4">
 <div class="flow-icon" style="background:rgba(244,114,182,.15)">✨</div>
 <div class="flow-text"><strong>Claude responds with natural language</strong><span>"It's currently 22°C and partly cloudy in Tokyo with 65% humidity."</span></div>
@@ -124,7 +118,7 @@ free: false
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 8 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:80%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 3</span>
 </div>
 

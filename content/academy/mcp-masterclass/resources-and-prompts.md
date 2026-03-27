@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">&larr; Course Overview</a>
+  
 </nav>
 
 <div class="lesson-container">
@@ -37,8 +37,6 @@ free: false
     </div>
   </div>
 
-  <div class="detail-panel" id="detailPanel"></div>
-
   <div class="section">
     <h2>Side-by-Side Comparison</h2>
     <table class="comparison-table">
@@ -57,7 +55,7 @@ free: false
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 200 XP</button>
-  <a href="connecting-to-claude.html" class="next-link">Next: Connecting to Claude &rarr;</a>
+  
 </div>
 
 <script>

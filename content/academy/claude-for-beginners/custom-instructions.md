@@ -256,13 +256,6 @@ css: "claude-beginners.css"
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 7 ✓</button>
 
-<div class="lesson-footer">
-  <a href="workflow-quiz.html" style="color:var(--dim);font-weight:500;font-size:.9rem;margin-right:2rem">&larr; Previous: Workflow Quiz</a>
-  <a href="build-your-assistant.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Build Your Assistant &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'claude-for-beginners';
 const LESSON_NUM = 7;

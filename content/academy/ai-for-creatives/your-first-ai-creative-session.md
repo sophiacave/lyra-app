@@ -223,12 +223,6 @@ css: "ai-creatives.css"
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 2 ✓</button>
 
-<div class="lesson-footer">
-  <a href="ai-for-writers.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: AI for Writers &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-creatives';
 const LESSON_NUM = 2;

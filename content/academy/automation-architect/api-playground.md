@@ -6,7 +6,7 @@ type: "lab"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+  
 </nav>
 
 <header class="lesson-header">
@@ -18,9 +18,6 @@ free: false
 <div class="content">
   <div class="sandbox">
     <div class="sandbox-header">
-      <div class="sandbox-dot dot-red"></div>
-      <div class="sandbox-dot dot-yellow"></div>
-      <div class="sandbox-dot dot-green"></div>
       <div class="sandbox-title">API Sandbox v1.0</div>
     </div>
     <div class="request-bar">
@@ -40,9 +37,7 @@ free: false
     <div class="response-section">
       <div class="response-header">
         <div class="response-label">Response</div>
-        <div class="status-badge" id="statusBadge" style="display:none"></div>
-        <div class="response-time" id="responseTime"></div>
-      </div>
+        </div>
       <div class="response-body" id="responseBody">// Send a request to see the response</div>
     </div>
   </div>

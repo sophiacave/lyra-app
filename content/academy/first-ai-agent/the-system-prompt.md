@@ -14,13 +14,12 @@ free: false
   <h1>The System Prompt</h1>
   <p class="subtitle">A system prompt is an agent's DNA. Drag blocks to assemble your agent's instructions, then fill in the details.</p>
 
-  <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0"></div></div>
+  <div class="progress-bar"></div>
 
   <div class="builder">
     <div>
       <h3 style="font-size:.9rem;color:#a1a1aa;margin-bottom:1rem">Available Blocks — drag to the prompt area or click to add</h3>
-      <div class="blocks-panel" id="blocks-panel"></div>
-    </div>
+      </div>
 
     <div class="preview-panel">
       <div class="preview">
@@ -35,7 +34,7 @@ free: false
   <div class="complete-section" id="complete">
     <h2>System Prompt Built!</h2>
     <p>You've assembled a complete agent system prompt. This is exactly how real agent frameworks structure their instructions.</p>
-    <a href="memory-matters.html" class="next-btn">Next: Memory Matters →</a>
+    
   </div>
 </div>
 

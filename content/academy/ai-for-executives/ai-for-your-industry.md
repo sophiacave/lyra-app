@@ -185,8 +185,4 @@ free: false
   </div>
 </div>
 
-<div class="nav-row">
-  <a href="ai-vendor-selection-playbook.html" class="nav-link">&larr; Prev: Vendor Selection</a>
-  <a href="building-your-ai-team.html" class="nav-link">Next: Building Your AI Team &rarr;</a>
-</div>
 </div>

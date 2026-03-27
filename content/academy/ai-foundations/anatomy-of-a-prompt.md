@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -31,10 +31,9 @@ free: false
     </div>
     <div class="context-bar">
       <div class="context-bar-label"><span>Context Window Usage</span><span id="contextPct">0%</span></div>
-      <div class="context-track"><div class="context-fill" id="contextFill" style="width:0%"></div></div>
+      <div class="context-track"></div>
     </div>
-    <div class="token-display" id="tokenDisplay"></div>
-  </div>
+    </div>
 
   <div class="concepts">
     <div class="concept" onclick="toggleConcept(this)">

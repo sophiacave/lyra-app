@@ -17,12 +17,8 @@ free: false
   <p class="sub">8 questions that separate executives who understand AI from those who just talk about it. No jargon. No trick questions. Just business judgment.</p>
 </div>
 
-<div class="quiz-progress" id="quiz-progress"></div>
-<div id="quiz-area"></div>
-<div class="result-page" id="result-page"></div>
-
 <div class="nav-row">
-  <a href="the-ai-ready-organization.html" class="nav-link">&larr; Prev: AI-Ready Organization</a>
+  
   <a href="/academy/ai-for-executives/" class="nav-link">Back to Course Overview &rarr;</a>
 </div>
 </div>

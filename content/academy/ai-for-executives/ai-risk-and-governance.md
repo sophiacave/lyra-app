@@ -202,13 +202,6 @@ css: "ai-executives.css"
 <!-- COMPLETION -->
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 4 &#10003;</button>
 
-<div class="lesson-footer">
-  <a href="leading-ai-transformation.html" style="color:var(--dim);font-size:.9rem">&larr; Prev: AI Transformation</a>
-  <a href="measuring-ai-roi.html" style="color:var(--orange);font-weight:600;font-size:.9rem">Next: Measuring AI ROI &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-executives';
 const LESSON_NUM = 4;

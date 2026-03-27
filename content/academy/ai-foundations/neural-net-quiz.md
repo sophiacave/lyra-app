@@ -6,7 +6,7 @@ type: "quiz"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="nav-link">← Back to Course</a>
+  
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -25,7 +25,6 @@ free: true
     <div class="q-count" id="qCount">Question 1 of 3</div>
   </div>
 
-  <div id="quizContainer"></div>
   <div class="results" id="results">
     <h2>Quiz Complete!</h2>
     <div class="big-score" id="finalScore">0/3</div>
@@ -71,8 +70,7 @@ function renderQuiz(){
           <div class="letter">${String.fromCharCode(65+j)}</div>${o}
         </div>`).join('')}
       </div>
-      <div class="feedback" id="fb${i}"></div>
-    </div>
+      </div>
   `).join('');
 }
 

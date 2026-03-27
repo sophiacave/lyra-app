@@ -5,7 +5,7 @@ order: 4
 type: "lesson"
 free: false
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 4 of 10</div>
 <h1>Find Your AI Opportunities</h1>
 <p class="intro">Rate each area of your business on three factors. We'll calculate where AI will have the biggest impact and show you exactly where to start.</p>
@@ -32,14 +32,8 @@ free: false
 
 <div class="results-section" id="results-section">
 <h2>Your AI Opportunity Rankings</h2>
-<div id="opp-list"></div>
-<div class="insight-box" id="insight-box"></div>
 </div>
 
-<div class="nav-row">
-<a href="the-roi-calculator.html" class="nav-link">← Prev: ROI Calculator</a>
-<a href="build-vs-buy.html" class="nav-link">Next: Build vs. Buy →</a>
-</div>
 </div>
 
 <script>
@@ -113,7 +107,7 @@ function generateResults(){
       <div class="opp-info">
         <div class="opp-name">${s.emoji} ${s.name}</div>
         <div class="opp-detail">Time: ${s.time}/5 · Repetitive: ${s.rep}/5 · Pain: ${s.pain}/5</div>
-        <div class="opp-bar"><div class="opp-bar-fill" style="width:${s.score}%"></div></div>
+        <div class="opp-bar"></div>
       </div>
       <div class="opp-score">${s.score}</div>
     `;

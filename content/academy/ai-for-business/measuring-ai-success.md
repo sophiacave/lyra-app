@@ -5,7 +5,7 @@ order: 9
 type: "lesson"
 free: false
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 9 of 10</div>
 <h1>Measuring AI Success</h1>
 <p class="intro">What gets measured gets improved. Enter your numbers for the past 4 weeks and see your AI ROI dashboard come to life. This is what "success" looks like, quantified.</p>
@@ -67,14 +67,8 @@ free: false
 <div class="chart-container">
 <canvas id="chart" height="250"></canvas>
 </div>
-<div class="kpi-row" id="kpis"></div>
-<div class="insight" id="insight"></div>
 </div>
 
-<div class="nav-row">
-<a href="ai-policy-template.html" class="nav-link">← Prev: AI Policy</a>
-<a href="business-ai-quiz.html" class="nav-link">Next: Final Assessment →</a>
-</div>
 </div>
 
 <script>

@@ -6,9 +6,9 @@ type: "lesson"
 free: false
 ---<div class="container">
 <div class="nav">
-<a href="auth-and-tokens.html">&larr; Prev</a>
+
 <span class="current">Lesson 7 of 10</span>
-<a href="vercel-deploy.html">Next &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
@@ -26,19 +26,15 @@ free: false
 <div class="table-tab" onclick="switchTable(2)">consciousness_stream</div>
 </div>
 
-<div id="tableEditor"></div>
-
 <h2>Entity Relationship Diagram</h2>
 <p>This updates live as you modify the tables above.</p>
 <div class="er-diagram">
-<div class="er-canvas" id="erCanvas"></div>
 </div>
 
 <button class="gen-btn" onclick="generateSQL()">Generate SQL &rarr;</button>
 
 <div class="panel" id="sqlPanel" style="display:none">
 <div class="label">Generated SQL</div>
-<div class="code-block" id="sqlOutput" style="white-space:pre"></div>
 </div>
 
 <div class="panel">
@@ -55,13 +51,9 @@ free: false
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="auth-and-tokens.html">&larr; Auth & Tokens</a>
-<a href="vercel-deploy.html">Next: Vercel Deploy &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
 

@@ -17,18 +17,7 @@ css: "claude-beginners.css"
   <p class="sub">12 questions across all 3 modules. Score 8 or higher to earn your completion. You've got this.</p>
 </div>
 
-<div class="quiz-progress" id="quiz-progress"></div>
-<div id="quiz-area"></div>
-<div id="results-area" style="display:none"></div>
-
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Course ✓</button>
-
-<div class="lesson-footer">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <a href="build-your-assistant.html" style="color:var(--dim);font-size:.85rem">&larr; Lesson 8</a>
-    <a href="/academy/claude-for-beginners/" style="color:var(--orange);font-weight:600;font-size:.9rem">Back to Course Home &rarr;</a>
-  </div>
-</div>
 
 </div>
 
@@ -146,7 +135,7 @@ let answered = false;
 
 function renderProgress() {
   const el = document.getElementById('quiz-progress');
-  el.innerHTML = shuffled.map((_, i) => `<div class="quiz-dot ${i === current ? 'active' : ''}" id="dot-${i}"></div>`).join('');
+  el.innerHTML = shuffled.map((_, i) => ``).join('');
 }
 
 function renderQuestion() {
@@ -160,8 +149,7 @@ function renderQuestion() {
       <div class="quiz-options">
         ${q.options.map((opt, i) => `<button class="quiz-option" onclick="answer(${i})">${opt}</button>`).join('')}
       </div>
-      <div class="quiz-feedback" id="feedback"></div>
-    </div>
+      </div>
   `;
 }
 

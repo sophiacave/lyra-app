@@ -4,12 +4,11 @@ course: "claude-mastery"
 order: 3
 type: "lab"
 free: true
----<div class="particle-container" id="particles"></div>
-<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
 
 <nav class="nav">
-<a href="index.html" class="logo">Claude Mastery</a>
-<a href="index.html" class="nav-link">← Back to Course</a>
+
+
 </nav>
 
 <div class="lesson-header">
@@ -101,7 +100,7 @@ free: true
 
 <div class="progress-footer">
 <span class="progress-label">Lesson 3 of 10</span>
-<div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:30%"></div></div>
+<div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 1</span>
 </div>
 

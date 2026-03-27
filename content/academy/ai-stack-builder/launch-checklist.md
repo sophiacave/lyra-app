@@ -6,9 +6,9 @@ type: "lesson"
 free: false
 ---<div class="container">
 <div class="nav">
-<a href="wire-it-all.html">&larr; Prev</a>
+
 <span class="current">Lesson 10 of 10</span>
-<a href="index.html">Course &rarr;</a>
+
 </div>
 
 <div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
@@ -31,7 +31,7 @@ free: false
 <div class="overall-progress">
 <div class="big-num" id="bigNum">0</div>
 <div class="of-total">of 20 items checked</div>
-<div class="overall-bar"><div class="overall-fill" id="overallFill" style="width:0%"></div></div>
+<div class="overall-bar"></div>
 <div class="cat-progress">
 <span class="cat-badge" id="catBadge0">Security 0/5</span>
 <span class="cat-badge" id="catBadge1">Performance 0/5</span>
@@ -39,8 +39,6 @@ free: false
 <span class="cat-badge" id="catBadge3">Revenue 0/5</span>
 </div>
 </div>
-
-<div id="checklistContainer"></div>
 
 <div class="celebration" id="celebration">
 <span class="cel-icon">&#x1f680;</span>
@@ -52,17 +50,11 @@ free: false
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+<div class="progress-bar"></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
-<div class="nav" style="border-top:1px solid #1e1e2e;border-bottom:none;margin-top:0;padding-top:1rem">
-<a href="wire-it-all.html">&larr; Wire It All Together</a>
-<a href="index.html">Course Overview &rarr;</a>
-</div>
 <div class="footer">Like One Academy &copy; 2026</div>
 </div>
-<div class="confetti" id="confetti"></div>
-
 <script>
 const categories=[
 {name:'Security',icon:'&#x1f512;',items:[
@@ -110,7 +102,7 @@ const key=ci+'-'+ii;
 const checked=state[key]||false;
 if(checked){catChecked++;totalChecked++}
 html+='<div class="check-item'+(checked?' checked':'')+'" onclick="toggleCheck(\''+key+'\',event)" data-key="'+key+'">';
-html+='<div class="checkbox"></div>';
+html+='';
 html+='<div class="check-content"><div class="check-title">'+item.title+'</div><div class="check-desc">'+item.desc+'</div></div>';
 html+='<span class="expand-hint">&#x25B8;</span></div>'});
 catCounts[ci]=catChecked;

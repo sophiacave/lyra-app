@@ -5,19 +5,12 @@ order: 10
 type: "quiz"
 free: false
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 10 of 10 — Final Assessment</div>
 <h1>Business AI Readiness Quiz</h1>
 <p class="intro">10 questions that test whether you're ready to lead your business into the AI era. This isn't about technical knowledge — it's about business judgment.</p>
 
-<div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-<div id="quiz-area"></div>
-<div class="result-page" id="result-page"></div>
-
-<div class="nav-row">
-<a href="measuring-ai-success.html" class="nav-link">← Prev: Measuring Success</a>
-<a href="index.html" class="nav-link">Back to Course Overview →</a>
-</div>
+<div class="progress-bar"></div>
 </div>
 
 <script>
@@ -153,7 +146,7 @@ function showResults(){
     ${pct >= 60 ? `<div class="cert-card"><h3>Course Complete!</h3><p>You've finished AI for Business Owners. You now have the knowledge to evaluate AI tools, calculate ROI, implement responsibly, and measure results. Go make it happen.</p></div>` : ''}
     <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       ${pct < 80 ? '<button class="btn-outline btn" onclick="retry()">Try Again</button>' : ''}
-      <a href="index.html" class="btn" style="text-decoration:none">Back to Course</a>
+      
     </div>
   `;
 

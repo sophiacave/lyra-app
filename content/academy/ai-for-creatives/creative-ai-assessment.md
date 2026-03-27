@@ -41,18 +41,7 @@ free: false
 </div>
 
 <!-- QUIZ AREA -->
-<div id="quiz-area"></div>
-
 <!-- RESULTS -->
-<div class="result-page" id="result-page"></div>
-
-<div class="lesson-footer">
-  <a href="ethics-originality-and-your-creative-identity.html" style="color:var(--dim);font-weight:500;font-size:.9rem;margin-right:2rem">&larr; Previous: Ethics & Originality</a>
-  <a href="/academy/ai-for-creatives/" style="color:var(--orange);font-weight:600;font-size:.9rem">Back to Course Overview &rarr;</a>
-</div>
-
-</div>
-
 <script>
 const SLUG = 'ai-for-creatives';
 const LESSON_NUM = 10;
@@ -187,8 +176,7 @@ function renderQuestion() {
       <div class="quiz-options">
         ${q.opts.map((o, i) => `<div class="quiz-option" data-i="${i}">${o}</div>`).join('')}
       </div>
-      <div class="quiz-feedback" id="feedback"></div>
-    </div>
+      </div>
   `;
 
   quizArea.querySelectorAll('.quiz-option').forEach(function(el) {

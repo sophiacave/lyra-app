@@ -6,7 +6,7 @@ type: "builder"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  <a href="index.html" class="back-link">&larr; Automation Architect</a>
+  
 </nav>
 <header class="lesson-header">
   <div class="lesson-badge">Module 3 &middot; Interactive</div>
@@ -49,14 +49,11 @@ free: false
 
   <div class="canvas" id="canvas">
     <div class="canvas-label" id="canvasEmpty">Click components above to build your workflow</div>
-    <div class="canvas-flow" id="canvasFlow"></div>
-  </div>
+    </div>
 
   <div class="run-area">
     <button class="run-btn" id="runBtn" disabled onclick="runSimulation()">Run Simulation</button>
   </div>
-
-  <div class="sim-log" id="simLog"></div>
 
   <button class="complete-btn hidden" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 75 XP</button>
 </div>
@@ -115,7 +112,7 @@ function renderCanvas(){
       <button class="cn-remove" onclick="removeComponent('${type}')">&times;</button>
     </div>`;
     if(i<pipeline.length-1){
-      html+=`<div class="canvas-connector"><div class="cc-line"></div><div class="cc-arrow">&#9660;</div></div>`;
+      html+=`<div class="canvas-connector"><div class="cc-arrow">&#9660;</div></div>`;
     }
   });
   flow.innerHTML=html;

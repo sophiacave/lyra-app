@@ -5,7 +5,7 @@ order: 8
 type: "lesson"
 free: false
 ---<div class="wrap">
-<a href="index.html" class="back">← Course Overview</a>
+
 <div class="lesson-num">Lesson 8 of 10</div>
 <h1>AI Policy Template</h1>
 <p class="intro">Every company using AI needs a policy. Toggle sections on or off, customize it, and download a real policy document you can use immediately.</p>
@@ -17,22 +17,15 @@ free: false
 </div>
 
 <h2>Choose Your Policy Sections</h2>
-<div id="sections"></div>
-
 <div class="preview-area">
 <h2>Live Preview</h2>
 <p class="preview-subtitle">This updates as you toggle sections above</p>
-<div class="preview-doc" id="preview"></div>
 <div class="btn-row">
 <button class="btn" onclick="downloadPolicy()">Download as Text File</button>
 <button class="btn btn-outline" onclick="copyPolicy()">Copy to Clipboard</button>
 </div>
 </div>
 
-<div class="nav-row">
-<a href="your-first-week-with-ai.html" class="nav-link">← Prev: Your First Week</a>
-<a href="measuring-ai-success.html" class="nav-link">Next: Measuring Success →</a>
-</div>
 </div>
 
 <script>
@@ -63,7 +56,7 @@ sections.forEach(s => {
   const div = document.createElement('div');
   div.className = 'section-toggle' + (s.default ? ' active' : '');
   div.id = 'section-'+s.id;
-  div.innerHTML = `<div class="toggle-header"><div class="toggle-switch"></div><div class="toggle-info"><div class="toggle-title">${s.title}</div><div class="toggle-desc">${s.desc}</div></div></div><div class="section-content"><div class="policy-text">${s.text.replace(/\{company\}/g, '<em>[Company Name]</em>')}</div></div>`;
+  div.innerHTML = `<div class="toggle-header"><div class="toggle-info"><div class="toggle-title">${s.title}</div><div class="toggle-desc">${s.desc}</div></div></div><div class="section-content"><div class="policy-text">${s.text.replace(/\{company\}/g, '<em>[Company Name]</em>')}</div></div>`;
   div.querySelector('.toggle-header').addEventListener('click', () => {
     const isActive = div.classList.contains('active');
     div.classList.toggle('active');
