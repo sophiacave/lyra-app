@@ -1,304 +1,302 @@
 {
   "01-ai-sales-revolution": [
     {
-      "id": "sales-1-1",
+      "id": "afs-1-1",
       "type": "freeform",
-      "instruction": "List 5 weekly sales tasks that are repetitive. Rate each on automation potential (high/medium/low) and explain why.",
-      "placeholder": "1. Task: ... | Potential: High | Why: ...",
-      "hint": "1. Updating CRM after calls — High — structured data entry, AI can parse call notes. 2. Sending follow-up emails — High — templatable with personalization. 3. Researching new prospects — High — web scraping + summarization. 4. Creating weekly pipeline reports — Medium — needs human judgment on deal quality. 5. Negotiating contracts — Low — requires relationship context and real-time adaptation.",
+      "instruction": "List 5 weekly sales tasks that are repetitive. For each, rate its automation potential (high/medium/low), estimate hours spent per week, and explain specifically what AI would do vs. what the human still handles.",
+      "placeholder": "Task 1: Lead research — 4 hrs/week — Automation: High — AI does...",
+      "hint": "Think about the full sales week: prospecting/research, data entry, follow-up emails, CRM updates, meeting prep, report generation. High automation = structured, repetitive, data-driven. Low automation = relationship-dependent, emotionally nuanced, or requiring creative judgment.",
       "criteria": {
-        "minLength": 80,
-        "keywords": ["task", "repetitive", "high", "medium", "low", "automate", "time"]
+        "keywords": ["task", "repetitive", "high", "medium", "low", "automate", "time", "hours"],
+        "minLength": 60
       },
-      "badExample": "Emails, calls, reports, CRM, research",
-      "goodExample": "1. CRM updates after calls — High — AI can parse call transcripts and auto-fill fields. 2. Follow-up emails — High — templatable, AI personalizes per prospect. 3. Prospect research — High — AI scrapes LinkedIn, news, financials in seconds. 4. Weekly pipeline reports — Medium — AI drafts but human validates deal stages. 5. Contract negotiation — Low — requires live rapport and judgment.",
-      "successMessage": "Your sales automation hit list is ready. Start with the high-potential tasks — that's where AI gives you hours back."
+      "badExample": "1. Emails — high. 2. Calls — low. 3. Reports — high. 4. Meetings — low. 5. Research — high.",
+      "goodExample": "1. Lead research (4 hrs/week) — HIGH: AI scrapes LinkedIn, company websites, and news to build prospect profiles. It scores leads against ICP criteria (company size, industry, tech stack). Human still: validates fit based on gut feel and relationship context. 2. Follow-up emails (3 hrs/week) — HIGH: AI drafts personalized follow-ups based on last interaction, deal stage, and prospect's recent activity. Human still: reviews tone for key accounts, adds personal touches for enterprise deals. 3. CRM data entry (2 hrs/week) — HIGH: AI auto-logs calls, extracts action items from meeting notes, updates deal stages based on email content. Human still: corrects edge cases and adds qualitative notes. 4. Pre-call research (2 hrs/week) — MEDIUM: AI compiles company news, org charts, and competitive intel. Human still: identifies which intel matters for THIS specific conversation. 5. Weekly pipeline reports (1.5 hrs/week) — HIGH: AI generates pipeline summaries, flags at-risk deals, and highlights momentum changes. Human still: adds strategic commentary and reprioritizes based on team context.",
+      "successMessage": "You just mapped your AI automation playbook. Start with the highest-automation, highest-hours tasks for immediate ROI."
     },
     {
-      "id": "sales-1-2",
-      "type": "prompt",
-      "instruction": "Write a prompt asking AI to calculate how many hours per week a sales team could save by automating their top 3 time-consuming tasks.",
-      "placeholder": "Calculate time savings for a sales team that...",
-      "hint": "Our 5-person sales team spends: 8 hrs/week on CRM data entry, 6 hrs/week writing follow-up emails, 5 hrs/week researching prospects. Calculate: hours saved per week if AI handles 80% of each task, annual cost savings at $50/hr, and what reps could do with recovered time.",
+      "id": "afs-1-2",
+      "type": "analyze",
+      "instruction": "A sales team of 10 reps adopted AI tools 3 months ago. Individual productivity is up 20%, but team quota attainment dropped from 85% to 72%. Analyze what's likely happening and recommend 3 fixes.",
+      "placeholder": "What's likely happening: ... Fix 1: ...",
+      "hint": "Productivity metrics (emails sent, calls made) can go up while effectiveness goes down. AI might be enabling reps to do more low-quality outreach instead of fewer high-quality touches. The volume-over-quality trap is the #1 AI sales failure.",
       "criteria": {
-        "minLength": 50,
-        "keywords": ["hours", "week", "save", "team", "task", "automate", "time"]
+        "keywords": ["quality", "quantity", "personalize", "effective", "metric", "quota", "AI", "outreach"],
+        "minLength": 80
       },
-      "badExample": "How much time can AI save my sales team?",
-      "goodExample": "My 5-person sales team spends weekly: CRM entry (8 hrs), follow-up emails (6 hrs), prospect research (5 hrs). If AI handles 80% of each: calculate hours saved per person and team-wide, annual dollar savings at $50/hr loaded cost, and suggest how to reinvest recovered time into revenue-generating activities.",
-      "successMessage": "ROI in black and white. This is how you get leadership to invest in AI tools — show the math."
+      "badExample": "The AI tools aren't good enough. Switch to better ones.",
+      "goodExample": "Classic volume-over-quality trap. What's likely happening: (1) SPRAY-AND-PRAY: Reps use AI to send 3x more emails but each is less personalized. Open rates and reply rates dropped, but nobody's tracking those — they're tracking 'emails sent.' (2) RESEARCH SHORTCUT: AI generates prospect briefs, but reps aren't reading them deeply. They're doing more calls with less prep, leading to worse conversations. (3) CRM INFLATION: AI auto-logs more activities, making pipelines look fuller than they are. Deals are advancing on activity volume, not buyer signals. Three fixes: FIX 1: Change the metrics. Stop tracking volume (emails sent, calls made). Start tracking effectiveness (reply rate, meeting conversion rate, deal velocity). What gets measured gets managed. FIX 2: Implement AI quality gates. Before sending any AI-drafted outreach, require reps to add one specific personal detail that proves they researched the prospect. FIX 3: Weekly AI audit — review 5 random AI-assisted interactions per rep. Score them on personalization and relevance. Coach on quality, not quantity.",
+      "successMessage": "AI amplifies whatever behavior you incentivize. If you measure volume, you get more volume. Measure quality, you get more quality."
     }
   ],
   "02-lead-research-and-qualification": [
     {
-      "id": "sales-2-1",
+      "id": "afs-2-1",
       "type": "prompt",
-      "instruction": "Write a prompt to research and qualify a specific company as a sales lead. Include what info to gather, qualification criteria, and desired output format.",
-      "placeholder": "Research [company] as a potential lead...",
-      "hint": "Research Acme Corp as a potential lead for our B2B SaaS project management tool ($500/mo). Gather: company size, industry, tech stack, recent news, key decision makers. Qualify against: 50+ employees, uses PM tools, growing, in tech/consulting verticals. Output: qualification score (1-10), summary, recommended next step, and draft connection request.",
+      "instruction": "Write a prompt to research and qualify a company as a lead. Include the specific information to gather, your ICP qualification criteria, a scoring rubric, and the output format you want.",
+      "placeholder": "Research [company] and qualify them against our ICP...",
+      "hint": "The best lead research prompts include: your ICP definition (size, industry, tech stack, pain points), what to research (company, decision makers, recent news, competitors), a scoring system, and a clear output format that your team can act on quickly.",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["company", "research", "qualify", "criteria", "score", "decision maker", "output"]
+        "keywords": ["company", "revenue", "employee", "qualify", "criteria", "score", "fit", "ICP"],
+        "minLength": 60
       },
-      "badExample": "Tell me about this company",
-      "goodExample": "Research Acme Corp for our $500/mo PM SaaS. Gather: size, industry, tech stack, news, decision makers with LinkedIn. Qualify: 50+ employees, uses PM tools, growing, tech/consulting/agency. Output: score 1-10, summary, next step, draft outreach for top contact.",
-      "successMessage": "30 minutes of research compressed into 30 seconds. AI-qualified leads let you focus on the ones worth calling."
+      "badExample": "Research this company and tell me if they're a good lead.",
+      "goodExample": "You are a B2B sales researcher. Research [Acme Corp] and qualify them against our ICP. OUR ICP: SaaS companies, 50-500 employees, Series B+, using Salesforce, in US/Canada, with a VP Sales or CRO. RESEARCH: (1) Company basics: headcount, funding stage, revenue estimate, HQ location. (2) Tech stack: check job postings and BuiltWith for Salesforce, HubSpot, or other CRM. (3) Key contacts: identify VP Sales, CRO, Head of Revenue Ops — name, LinkedIn URL, tenure. (4) Pain signals: recent hiring for sales roles (scaling), negative Glassdoor reviews mentioning sales process, or competitor mentions in earnings calls. SCORING: 5 criteria, 1-3 points each. 15 = perfect fit, 10-14 = strong, 5-9 = maybe, <5 = pass. OUTPUT: One-page brief with: fit score, go/no-go recommendation, 3 personalized talking points for outreach, and the single strongest reason they need our product right now.",
+      "successMessage": "That prompt turns 30 minutes of manual research into 30 seconds of AI-powered intelligence. Scale this across your entire prospect list."
     },
     {
-      "id": "sales-2-2",
-      "type": "analyze",
-      "instruction": "Analyze this lead qualification criteria and identify what's missing: 'We qualify leads based on company size and whether they responded to our email.'",
-      "placeholder": "This qualification criteria is missing...",
-      "hint": "Missing: budget/authority indicators, timeline urgency, technology fit, pain point alignment, industry fit, engagement scoring beyond email response, competitor usage, growth signals, and decision-making process complexity.",
+      "id": "afs-2-2",
+      "type": "debug",
+      "instruction": "A sales rep's AI lead scoring system keeps flagging small startups as 'high priority' even though the ICP targets enterprise companies with 500+ employees. The prompt says 'Score leads based on their growth potential and innovation.' Diagnose the problem and fix the prompt.",
+      "placeholder": "The problem is... Fixed prompt: ...",
+      "hint": "The prompt uses subjective criteria ('growth potential,' 'innovation') that favor startups. AI interprets 'growth potential' as fast-growing small companies, not large established ones. The fix: replace subjective criteria with measurable ICP-matching criteria.",
       "criteria": {
-        "minLength": 50,
-        "keywords": ["budget", "authority", "need", "timeline", "missing", "criteria", "pain"]
+        "keywords": ["criteria", "specific", "measurable", "ICP", "score", "size", "employee", "objective"],
+        "minLength": 60
       },
-      "badExample": "It looks incomplete",
-      "goodExample": "Missing critical dimensions: 1) Budget — no spend threshold. 2) Authority — no decision-maker check. 3) Need — no pain/solution alignment. 4) Timeline — no urgency signals. 5) Tech fit — no stack check. 6) Behavioral signals — only email response, ignoring website visits, content engagement. This is a 2-factor model pretending to be qualification.",
-      "successMessage": "Qualification without BANT is just guessing. The more dimensions you score, the better your pipeline quality."
+      "badExample": "Add 'must be enterprise' to the prompt.",
+      "goodExample": "DIAGNOSIS: The scoring criteria are subjective and biased toward startups. 'Growth potential' = AI sees a 20-person startup growing 200% YoY as higher potential than a 5,000-person enterprise growing 15%. 'Innovation' = AI rates cutting-edge startups higher than established companies using proven tech. The criteria reward startup characteristics, not enterprise ICP fit. FIXED PROMPT: 'Score leads against these MEASURABLE criteria (1-5 each): (1) Company size: 1=<100 employees, 3=100-499, 5=500+. (2) Annual revenue: 1=<$10M, 3=$10-50M, 5=$50M+. (3) Tech stack match: 5=uses Salesforce Enterprise, 3=uses Salesforce Professional, 1=no Salesforce. (4) Decision-maker accessibility: 5=CRO/VP Sales identified on LinkedIn, 3=Director-level identified, 1=no relevant contacts found. (5) Timing signals: 5=actively hiring sales ops roles OR mentioned CRM migration in recent news, 3=growing sales team, 1=no signals.' LESSON: Every AI scoring system needs OBJECTIVE, NUMERICAL criteria. Subjective words like 'potential' and 'innovative' mean different things to AI than to your sales team.",
+      "successMessage": "Subjective criteria in AI prompts produce unpredictable results. Measurable criteria produce reliable lead scores your team can trust."
     }
   ],
   "03-outreach-that-converts": [
     {
-      "id": "sales-3-1",
+      "id": "afs-3-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate a personalized cold outreach email. Include specific prospect context, your value proposition, a hook, and a soft CTA.",
-      "placeholder": "Write a personalized cold email to...",
-      "hint": "Write a cold outreach email to Sarah Chen, VP of Marketing at GrowthCo (Series B, 200 employees, just hired 5 content writers). I sell AI content tools ($200/mo). Hook: reference their hiring spree. Value: each writer produces 3x more content. CTA: 'Would a 15-min demo be worth your time?' Under 150 words, warm professional tone.",
+      "instruction": "Write a prompt for a personalized cold outreach email. Include the prospect's context, your value proposition, a hook based on their specific situation, and a soft CTA. The email should feel like it was written by a human who did real research.",
+      "placeholder": "Write an outreach email to [prospect] at [company]...",
+      "hint": "Great outreach prompts include: specific prospect details (not generic 'decision maker'), a hook tied to THEIR recent activity or pain point, your value prop framed as THEIR solution, and a CTA that's easy to say yes to (not 'book a demo' — too big an ask for a cold email).",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["personalize", "value", "hook", "CTA", "prospect", "email", "specific"]
+        "keywords": ["personalize", "value", "hook", "CTA", "pain point", "prospect", "specific", "email"],
+        "minLength": 60
       },
-      "badExample": "Write a cold email to a marketing VP about our product",
-      "goodExample": "Cold email to Sarah Chen, VP Marketing at GrowthCo (Series B, 200 employees, just hired 5 content writers). I sell AI content tools ($200/mo). Hook: their content team expansion. Value: each writer produces 3x more, similar company saved 40%. CTA: 'Worth 15 min this week?' Under 150 words, warm professional tone.",
-      "successMessage": "Personalization at scale is the AI sales superpower. Generic outreach is dead — context-rich outreach converts."
+      "badExample": "Write a cold email to sell our product to a company.",
+      "goodExample": "Write a cold outreach email. PROSPECT: Sarah Chen, VP of Sales at DataFlow (Series C, 200 employees, selling data analytics to enterprises). RECENT INTEL: DataFlow just posted 8 new SDR roles on LinkedIn, and Sarah shared an article about 'scaling outbound without sacrificing quality.' OUR PRODUCT: AI-powered sales engagement platform that personalizes outreach at scale. VALUE PROP FOR SARAH: She's scaling her sales team and worried about quality dilution — exactly the problem we solve. REQUIREMENTS: (1) Opening line references her LinkedIn post specifically — not a generic compliment. (2) Bridge from her challenge to our solution in ONE sentence. (3) Include one specific metric from a similar customer ('DataTech reduced outreach time 60% while improving reply rates 2.3x'). (4) Soft CTA: ask a question, don't push a demo ('Curious — how are you thinking about maintaining personalization as your team doubles?'). (5) Under 120 words. No buzzwords. No 'I hope this email finds you well.'",
+      "successMessage": "That prompt produces emails that feel human-written because they ARE research-driven. AI handles the drafting; you provide the insight."
     },
     {
-      "id": "sales-3-2",
+      "id": "afs-3-2",
       "type": "rewrite",
-      "instruction": "Rewrite this generic cold email into a personalized, compelling outreach: 'Hi, I noticed your company might benefit from our solution. We help businesses grow. Would you like to schedule a call?'",
-      "placeholder": "Transform this generic email into something specific...",
-      "hint": "Hi Sarah, I saw GrowthCo just closed Series B and is scaling the content team — congrats! When we helped a similar 200-person SaaS company scale content, their writers went from 3 to 10 articles/week each. With 5 new writers ramping up, that could save your team months. Worth a 15-min walkthrough this week?",
+      "instruction": "This cold email is generic and will be ignored. Rewrite it to be specific, personal, and compelling:\n\n'Hi there, I noticed your company is growing fast. We help companies like yours improve sales productivity with our AI platform. Would you be open to a quick call this week to learn more? Best, John'",
+      "placeholder": "Rewritten email that feels personal and specific...",
+      "hint": "Every sentence fails: 'Hi there' = no name. 'Growing fast' = could be anyone. 'Companies like yours' = no specificity. 'Improve sales productivity' = vague benefit. 'Quick call this week' = too aggressive for cold outreach. Fix each sentence with specific, researched details.",
       "criteria": {
-        "minLength": 50,
-        "mustNotInclude": ["might benefit", "help businesses grow"],
-        "keywords": ["specific", "company", "result", "value", "name"]
+        "keywords": ["specific", "name", "company", "metric", "relevant", "personal", "research", "CTA"],
+        "minLength": 80
       },
-      "badExample": "Hi, I noticed your company might benefit from our solution. We help businesses grow. Would you like to schedule a call?",
-      "goodExample": "Hi Sarah, saw GrowthCo just closed Series B — congrats! When a similar SaaS company scaled their content team, our AI tools helped writers go from 3 to 10 articles/week each. With 5 new writers ramping up, that could save months. Worth a 15-min walkthrough this week?",
-      "successMessage": "Feel the difference? Specific beats generic every time. The prospect should feel like you wrote this just for them."
+      "badExample": "Hi Sarah, I noticed DataFlow is growing fast. Our AI platform helps companies like DataFlow improve sales productivity. Want to chat?",
+      "goodExample": "Hi Sarah — Your post about scaling outbound without losing the personal touch really resonated. We're seeing the exact same tension at every Series C sales org that's doubling headcount right now. One thing that's worked for teams in your position: DataTech (similar size, similar stage) used our AI engagement platform to let their new SDRs hit quota 40% faster by auto-personalizing outreach based on prospect signals — LinkedIn activity, company news, tech stack changes. Their reply rates actually went UP as they scaled from 8 to 20 reps. I'm curious — are you finding that your newer reps are struggling with personalization compared to your early hires? Either way, congrats on the growth. — John. WHY THIS WORKS: (1) Opens with HER content, not your pitch. (2) Shows you understand her specific challenge. (3) Social proof with metrics from a comparable company. (4) CTA is a question about her experience, not a meeting request. (5) 95 words — respects her time.",
+      "successMessage": "Generic outreach gets deleted. Specific, research-driven outreach gets replies. AI makes this level of personalization scalable."
     }
   ],
   "04-sales-calls-and-meetings": [
     {
-      "id": "sales-4-1",
+      "id": "afs-4-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate a pre-call research brief for an upcoming sales meeting. Include company research, stakeholders, likely objections, and conversation starters.",
+      "instruction": "Write a prompt for an AI-generated pre-call brief. Include: company research, key stakeholders and their likely priorities, anticipated objections with counter-arguments, and 3 conversation starters tied to recent company events.",
       "placeholder": "Prepare a pre-call brief for my meeting with...",
-      "hint": "Pre-call brief for DataFlow Inc meeting (Series A, 80 employees, analytics platform). Attendees: CTO Maria Rodriguez, Head of Eng James Park. Selling API monitoring ($300/mo). Research their product launches, tech blog, job listings. Predict top 3 objections. 3 conversation starters from recent news. Discovery question per stakeholder by role.",
+      "hint": "The best pre-call briefs give you unfair advantage: know the prospect's priorities before they tell you, anticipate objections before they raise them, and open with something that proves you did your homework.",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["company", "stakeholder", "objection", "question", "prepare", "brief", "research"]
+        "keywords": ["company", "stakeholder", "objection", "question", "prepare", "brief", "priority", "research"],
+        "minLength": 60
       },
-      "badExample": "Prepare me for a sales call tomorrow",
-      "goodExample": "Pre-call brief for DataFlow Inc (Series A, 80 employees, analytics platform). Attendees: CTO Maria Rodriguez, Head of Eng James Park. Selling API monitoring ($300/mo). Research: product launches, tech blog, job listings. Predict top 3 objections. 3 conversation starters from news. Discovery question per attendee by role.",
-      "successMessage": "Walking in prepared is the difference between closing and losing. AI makes preparation effortless."
+      "badExample": "Tell me about this company before my call.",
+      "goodExample": "Prepare a pre-call brief for my meeting tomorrow with Sarah Chen (VP Sales) and Marcus Lee (Head of Sales Ops) at DataFlow. RESEARCH NEEDED: (1) Company overview: funding, headcount, growth trajectory, recent news, competitors. (2) Sarah's background: previous companies, LinkedIn activity, speaking topics, stated priorities. (3) Marcus's background: same, plus his tech stack preferences (check job postings he's written). ANALYSIS NEEDED: (4) Their likely TOP 3 priorities based on company stage and roles. (5) TOP 3 objections they'll raise about our product (we're an AI sales platform, $50K/year) and a counter-argument for each with a customer proof point. (6) 3 conversation starters: one about a recent company achievement, one about an industry trend affecting them, one about a challenge their competitors face. FORMAT: One-page brief I can review in 5 minutes before the call. Bold the must-know facts.",
+      "successMessage": "Walking into every call with this level of preparation is what separates closers from presenters. AI makes it effortless."
     },
     {
-      "id": "sales-4-2",
-      "type": "prompt",
-      "instruction": "Write a prompt to summarize a sales call transcript and extract action items, objections raised, buying signals, and recommended next steps.",
-      "placeholder": "Summarize this sales call and extract...",
-      "hint": "Analyze this 30-minute sales call transcript. Extract: key discussion points (bullets), objections (with quotes), buying signals, commitments made, action items with owners/deadlines, deal stage recommendation, risk factors. Format as CRM-ready brief.",
+      "id": "afs-4-2",
+      "type": "freeform",
+      "instruction": "Design an AI-powered post-call workflow. After a sales call ends, describe exactly what AI should do automatically: what to extract from the recording, what to update in the CRM, what follow-up actions to create, and what to draft.",
+      "placeholder": "Step 1: AI processes the call recording and extracts...",
+      "hint": "Think about everything a rep should do after a call but usually doesn't because they're rushing to the next one: log notes, update CRM fields, send a follow-up email, create tasks for next steps, flag concerns to their manager, and update the deal forecast.",
       "criteria": {
-        "minLength": 50,
-        "keywords": ["transcript", "summary", "action", "objection", "signal", "next step"]
+        "keywords": ["call", "CRM", "follow-up", "extract", "summary", "action", "automate", "draft"],
+        "minLength": 60
       },
-      "badExample": "Summarize this call",
-      "goodExample": "Analyze this 30-min sales call transcript. Extract: key points (bullets), objections (with quotes), buying signals, commitments, action items with owners/deadlines, deal stage recommendation, risk factors. Format as a CRM-ready brief.",
-      "successMessage": "Post-call summaries in seconds, not 20 minutes. Every detail captured, nothing slipping through the cracks."
+      "badExample": "AI should take notes and send a follow-up email.",
+      "goodExample": "AI POST-CALL WORKFLOW (triggers automatically when call recording is available): STEP 1 — EXTRACT: Parse the call transcript for: key pain points mentioned, objections raised, competitors discussed, budget signals, timeline statements, decision-maker mentions, and next steps agreed upon. STEP 2 — CRM UPDATE: Auto-fill: deal stage (advance if buying signals detected), next step date, competitor field, budget range, decision timeline. Add a structured call summary: 3 bullet points max. STEP 3 — FOLLOW-UP DRAFT: Generate a follow-up email within 30 minutes. Include: thank you + reference to a specific topic discussed (proves you listened), recap of agreed next steps, any materials promised during the call, and a soft confirmation of the next meeting. STEP 4 — TASK CREATION: Create tasks for: sending promised materials (due: today), internal briefing if a new stakeholder was mentioned, manager alert if a deal-killing objection was raised, and a calendar hold for the next meeting. STEP 5 — INTELLIGENCE: Flag to the sales manager if: prospect mentioned a competitor by name more than twice, expressed budget concerns, or the call was under 10 minutes (likely went poorly). This replaces 20 minutes of post-call admin that 80% of reps skip entirely.",
+      "successMessage": "Post-call follow-through is where deals are won or lost. AI handles the admin so reps can focus on the relationship."
     }
   ],
   "05-proposal-and-pitch-creation": [
     {
-      "id": "sales-5-1",
+      "id": "afs-5-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate a tailored sales proposal outline. Include the client's pain points, your solution mapping, pricing approach, and ROI projection.",
-      "placeholder": "Create a proposal for [client] addressing...",
-      "hint": "Proposal for DataFlow Inc. Pain: manual API monitoring (3 engineers, 10 hrs/week), slow outage detection (45 min avg), no capacity planning data. Solution: our tool ($300/mo), detection in <2 min, analytics dashboard. Include: exec summary, problem-to-solution mapping, 2-week implementation, annual pricing, ROI calc, 3 testimonials from similar companies.",
+      "instruction": "Write a prompt for generating a tailored proposal outline. Include the prospect's specific pain points, your solution mapped to each pain point, pricing approach with ROI justification, and a competitive differentiation section.",
+      "placeholder": "Create a proposal for [client] addressing their specific needs...",
+      "hint": "Winning proposals mirror the prospect's language back to them. Use the exact pain points from discovery calls, tie each solution feature to a specific dollar impact, and position against the specific competitors they mentioned.",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["proposal", "pain point", "solution", "ROI", "pricing", "client", "timeline"]
+        "keywords": ["proposal", "pain point", "solution", "ROI", "pricing", "client", "specific", "competitor"],
+        "minLength": 60
       },
-      "badExample": "Write a proposal for a client about our monitoring tool",
-      "goodExample": "Proposal for DataFlow Inc. Pain: manual API monitoring (3 engineers, 10 hrs/week), slow detection (45 min avg), no capacity data. Solution: our tool ($300/mo), <2 min detection, analytics dashboard. Include: exec summary, problem→solution mapping, 2-week plan, annual pricing option, ROI calc, 3 similar-company testimonials.",
-      "successMessage": "Custom proposals win deals. AI makes the customization effortless while keeping quality sky-high."
+      "badExample": "Write a proposal for our product.",
+      "goodExample": "Create a proposal outline for DataFlow (200-person SaaS company, Series C). THEIR PAIN POINTS (from discovery call): (1) New SDRs take 4 months to ramp — they want it under 2. (2) Reply rates dropped from 12% to 6% as they scaled from 10 to 25 reps. (3) Sales ops spends 15 hours/week on manual CRM cleanup. OUR SOLUTION MAPPING: Pain 1 → AI-guided onboarding playbooks + real-time coaching. Pain 2 → AI personalization engine that maintains quality at scale. Pain 3 → Auto-CRM that logs and cleans data from calls/emails. PRICING CONTEXT: Our platform is $50K/year. Their current cost of these problems: $200K+ (slow ramp = missed quota, low reply rates = lost pipeline, manual CRM = wasted ops salary). COMPETITORS THEY MENTIONED: Outreach (they said 'too complex') and Salesloft (they said 'good but no AI'). PROPOSAL STRUCTURE: Executive summary (1 page), problem-solution mapping (2 pages), ROI model with their numbers, implementation timeline, competitive comparison table, and pricing with 3 tiers. Tone: confident, data-driven, not salesy.",
+      "successMessage": "Tailored proposals win deals because they prove you listened. AI generates the structure; your discovery notes provide the intelligence."
     },
     {
-      "id": "sales-5-2",
+      "id": "afs-5-2",
       "type": "rewrite",
-      "instruction": "Rewrite this weak pitch into a compelling elevator pitch: 'We have a tool that monitors APIs. It's really good and lots of companies use it. You should try it.'",
-      "placeholder": "Transform this weak pitch into something compelling...",
-      "hint": "What if you could detect API outages in under 2 minutes instead of 45? Our monitoring platform saves engineering teams 10+ hours/week and has prevented $2M in downtime costs for companies your size. Your competitors are already using it.",
+      "instruction": "This proposal executive summary is generic and forgettable. Rewrite it to be specific, compelling, and tied to the prospect's actual situation:\n\n'Our AI platform helps sales teams be more productive. With advanced technology and proven results, we enable companies to close more deals faster. Our solution integrates with your existing tools and provides actionable insights.'",
+      "placeholder": "Rewritten executive summary that speaks to THIS prospect...",
+      "hint": "Every sentence is about YOU ('our platform,' 'we enable'). Flip it: make every sentence about THEM and their specific problems. Replace 'advanced technology' with what it actually does. Replace 'proven results' with a specific number.",
       "criteria": {
-        "minLength": 40,
-        "mustNotInclude": ["really good", "lots of companies", "you should try it"],
-        "keywords": ["specific", "result", "number", "value"]
+        "keywords": ["specific", "prospect", "their", "result", "metric", "problem", "solution", "ROI"],
+        "minLength": 80
       },
-      "badExample": "We have a tool that monitors APIs. It's really good and lots of companies use it. You should try it.",
-      "goodExample": "What if you detected API outages in 2 minutes, not 45? Our monitoring platform saves engineering teams 10+ hours/week and has prevented $2M+ in downtime costs. Your competitors are already using it — can you afford not to?",
-      "successMessage": "Specifics sell. Vague pitches die. Numbers, results, and urgency turn 'interesting' into 'where do I sign?'"
+      "badExample": "Our amazing AI platform is the best solution for your sales team's needs. We have great technology and happy customers.",
+      "goodExample": "REWRITTEN: DataFlow is hiring 15 new reps this quarter to hit your $20M ARR target. The challenge you shared with us: every rep you've added in the last 6 months took 4+ months to ramp, and your team's reply rates have been cut in half since scaling began. At your current trajectory, those 15 new reps won't hit full productivity until Q4 — two quarters of missed pipeline. Here's what changes with [Product]: DataTech (same stage, same challenge) cut ramp time from 4 months to 6 weeks and recovered their 12% reply rate within 60 days of deployment. Applied to DataFlow's numbers: 15 reps at full productivity 10 weeks sooner = ~$2.4M in additional pipeline generated this year. We integrate directly with your Salesforce instance and can be live within 2 weeks. WHY IT WORKS: (1) Opens with THEIR goal, not your product. (2) References THEIR specific pain from the discovery call. (3) Quantifies the cost of inaction in THEIR numbers. (4) Social proof from a comparable company. (5) Closes with a specific outcome and timeline.",
+      "successMessage": "Proposals that speak the prospect's language and use their numbers win. AI makes customization fast; discovery calls make it real."
     }
   ],
   "06-objection-handling": [
     {
-      "id": "sales-6-1",
+      "id": "afs-6-1",
       "type": "prompt",
-      "instruction": "Write a prompt to generate responses to the 5 most common sales objections in your industry. Each response should: acknowledge, reframe, and provide evidence.",
-      "placeholder": "Generate objection responses for [industry]...",
-      "hint": "Generate responses to 5 common B2B SaaS objections ($5K/yr deals): 'too expensive', 'built internal tool', 'bad timing', 'need boss approval', 'locked into competitor'. Each: acknowledge (validate), reframe (shift perspective), evidence (case study/stat), bridge (back to value). Consultative tone.",
+      "instruction": "Write a prompt to generate responses to the 5 most common sales objections in your industry. Each response must follow the framework: acknowledge the concern, reframe it, provide evidence, and bridge to next steps.",
+      "placeholder": "Generate objection responses for a [industry] sales team...",
+      "hint": "The acknowledge-reframe-evidence-bridge framework prevents reps from being defensive. Acknowledge = validate their concern. Reframe = shift the perspective. Evidence = prove it with data or a customer story. Bridge = move the conversation forward.",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["objection", "acknowledge", "reframe", "evidence", "price", "competitor", "response"]
+        "keywords": ["objection", "price", "competitor", "acknowledge", "reframe", "evidence", "bridge"],
+        "minLength": 60
       },
-      "badExample": "How do I handle sales objections?",
-      "goodExample": "Generate responses to 5 common B2B SaaS objections ($5K/yr deals): 'too expensive', 'built internal tool', 'bad timing', 'need boss approval', 'locked into competitor'. Each response: acknowledge (validate), reframe (shift perspective), evidence (case study/stat), bridge (back to value). Consultative tone, not pushy.",
-      "successMessage": "Polished objection responses ready to deploy. Never freeze in a meeting again."
+      "badExample": "Give me answers to common objections.",
+      "goodExample": "You are a sales coach for B2B SaaS selling a $50K/year AI sales platform. Generate responses to these 5 objections using the AREB framework (Acknowledge, Reframe, Evidence, Bridge) for each: (1) 'Your price is too high — we found similar tools for $20K.' (2) 'We're already using Outreach/Salesloft and it's working fine.' (3) 'We need to see ROI proof before committing.' (4) 'Our team doesn't have time to learn another tool right now.' (5) 'We want to wait until next quarter when we have more budget.' For each response: keep it under 100 words (reps need to memorize these). Include one specific customer proof point. End with a question that re-engages the prospect, NOT a statement. Tone: confident and empathetic, never defensive or dismissive.",
+      "successMessage": "Scripted objection responses eliminate the freeze moment. Reps who practice AREB handle objections like conversations, not confrontations."
     },
     {
-      "id": "sales-6-2",
-      "type": "analyze",
-      "instruction": "Analyze this objection response and identify what's wrong: Prospect says 'It's too expensive.' Rep responds: 'Actually, we're cheaper than most competitors. Do you want to see a comparison?'",
-      "placeholder": "This objection response fails because...",
-      "hint": "Problems: 1) 'Actually' is confrontational. 2) Jumps to price comparison without understanding budget concern. 3) Doesn't acknowledge the concern. 4) Competing on price instead of reframing to value/ROI. 5) No evidence or social proof.",
+      "id": "afs-6-2",
+      "type": "freeform",
+      "instruction": "Design an AI-powered objection handling training system. Describe how AI would simulate prospect objections, evaluate rep responses in real-time, score their technique, and provide coaching feedback.",
+      "placeholder": "The AI training system works by...",
+      "hint": "Think of it as a flight simulator for sales. AI plays the prospect with realistic objections, varying difficulty levels, and emotional states. It evaluates the rep's response on: did they acknowledge, did they get defensive, did they provide evidence, did they advance the conversation?",
       "criteria": {
-        "minLength": 50,
-        "keywords": ["acknowledge", "confrontational", "value", "ROI", "reframe", "price"]
+        "keywords": ["simulate", "evaluate", "score", "coach", "practice", "objection", "rep", "feedback"],
+        "minLength": 60
       },
-      "badExample": "The response seems fine to me",
-      "goodExample": "Fails on 4 levels: 1) 'Actually' is confrontational — invalidates the prospect. 2) No acknowledgment of concern. 3) Competing on price instead of reframing to value/ROI. 4) No evidence or social proof. Better: validate → ask what they're comparing to → share ROI case study → offer personalized ROI calc.",
-      "successMessage": "The best objection handlers don't fight the objection — they redirect to value. That's a learnable skill."
+      "badExample": "AI quizzes reps on objection responses and scores right or wrong.",
+      "goodExample": "AI OBJECTION TRAINING SYSTEM: SETUP: Rep selects scenario (deal size, prospect persona, objection category). AI generates a realistic prospect with a backstory, emotional state, and set of objections to raise organically during conversation. THREE MODES: (1) Practice Mode — AI raises one objection at a time. After the rep responds, AI provides instant coaching: 'You acknowledged their concern (good) but then got defensive when you said our product is better. Try reframing instead.' Suggested improved response provided. (2) Simulation Mode — Full 10-minute roleplay. AI is a realistic prospect who pushes back naturally, asks follow-up questions, and escalates if the rep handles the first objection poorly. Scored afterward on 5 dimensions: empathy (did they validate?), reframe quality (did they shift perspective?), evidence use (did they cite proof?), composure (did they stay calm under pressure?), and progression (did they advance toward next steps?). (3) Competition Mode — Two reps handle the same AI prospect scenario. Team votes on who handled it better. Builds a leaderboard. SCORING RUBRIC: Each dimension 1-5, with specific behavioral anchors. 20+ = expert, 15-19 = proficient, <15 = needs coaching. AI identifies the rep's weakest dimension and assigns targeted practice drills.",
+      "successMessage": "Sales training that uses AI simulation is 4x more effective than lecture-based training. Reps learn by doing, not by reading scripts."
     }
   ],
   "07-pipeline-management": [
     {
-      "id": "sales-7-1",
+      "id": "afs-7-1",
       "type": "freeform",
-      "instruction": "Design an AI-powered pipeline review system: describe how AI would analyze your deals and flag which need attention, which are at risk, and which are ready to close.",
-      "placeholder": "The AI pipeline system would analyze...",
-      "hint": "AI Pipeline Review: Inputs — CRM fields, email engagement, call transcripts, meeting frequency. Risk signals — no contact 14+ days, champion silent, competitor mentioned, stuck stage 30+ days. Close signals — budget confirmed, timeline set, multiple stakeholders engaged. Output: weekly ranked digest, daily top-3 actions, real-time alerts when health drops below 50.",
+      "instruction": "Design an AI-powered pipeline review system. Describe how AI analyzes each deal across 5 health indicators, flags at-risk deals, identifies stalled opportunities, and recommends specific next actions for each deal.",
+      "placeholder": "The AI pipeline system analyzes deals by...",
+      "hint": "Pipeline health goes beyond stage and close date. AI should analyze: engagement recency (when did the prospect last respond?), stakeholder coverage (are you talking to the decision maker?), competitive mentions, timeline alignment (is the close date realistic?), and activity momentum (are actions increasing or decreasing?).",
       "criteria": {
-        "minLength": 80,
-        "keywords": ["pipeline", "deal", "risk", "stage", "flag", "close", "signal", "analyze"]
+        "keywords": ["pipeline", "deal", "risk", "stage", "flag", "close", "follow-up", "health", "action"],
+        "minLength": 60
       },
-      "badExample": "AI would look at the deals and tell me which ones are good",
-      "goodExample": "System ingests: CRM data, email opens, call transcripts, meeting cadence. Risk flags: 14+ days no contact, champion silent, competitor mentioned, stuck 30+ days. Close signals: budget confirmed, timeline set, proposal opened. Output: weekly ranked digest, daily top-3 actions, real-time alerts on health score drops.",
-      "successMessage": "AI catches the deals you'd miss in a manual pipeline review. This is sales management at scale."
+      "badExample": "AI looks at the pipeline and tells you which deals need attention.",
+      "goodExample": "AI PIPELINE REVIEW SYSTEM: FIVE HEALTH INDICATORS PER DEAL: (1) Engagement Score (0-100): Based on recency and frequency of prospect responses. Emails opened but not replied = 30. Reply within 24 hours = 80. No activity in 14 days = 10. (2) Stakeholder Coverage: Maps contacts engaged vs. typical buying committee for this deal size. Flags: 'Only talking to a champion — no economic buyer engaged yet.' (3) Competitive Threat: Scans email threads and call notes for competitor mentions. Flags: 'Prospect mentioned Gong twice in last call — send competitive battle card.' (4) Timeline Realism: Compares projected close date against actual deal velocity. If average deals at this stage take 45 days but close date is in 15 days with no proposal sent: 'Close date unrealistic — suggest pushing to [date].' (5) Momentum Trend: Tracks activity volume over rolling 2-week windows. Increasing = green. Flat = yellow. Decreasing = red. WEEKLY OUTPUT: Sorted deal list — (A) Ready to close: high engagement + decision maker engaged + proposal sent. (B) At risk: declining momentum or missing stakeholders. (C) Stalled: no activity >14 days. Each deal gets ONE specific recommended action: 'Send competitive comparison to Marcus' or 'Request intro to CFO through Sarah.'",
+      "successMessage": "AI pipeline management catches the deals reps miss because they're too busy. One recommended action per deal turns analysis into results."
     },
     {
-      "id": "sales-7-2",
-      "type": "prompt",
-      "instruction": "Write a prompt to analyze a stalled deal and recommend actions to restart it. Include the deal context and what data AI should examine.",
-      "placeholder": "Analyze this stalled deal and recommend...",
-      "hint": "Stalled deal: Acme Corp, $25K/yr, stuck in Evaluation 6 weeks (normal: 2). Last contact: email 18 days ago, no reply. Champion went quiet after internal reorg. Analyze: email history, org changes, competitor activity, original pain points. Recommend: 3 re-engagement strategies, new outreach draft, go-around assessment, honest kill/continue recommendation.",
+      "id": "afs-7-2",
+      "type": "debug",
+      "instruction": "A sales manager's AI pipeline tool predicted 5 deals would close this month, but only 1 actually closed. The AI was using deal stage and close date as its primary prediction inputs. Diagnose why the predictions failed and design better prediction criteria.",
+      "placeholder": "The predictions failed because... Better criteria: ...",
+      "hint": "Deal stage and close date are SELF-REPORTED by reps, making them unreliable. Reps are optimistic about close dates and advance stages based on their own activity, not buyer behavior. Better signals: prospect behavior (response times, meeting attendance), multi-threading (are multiple stakeholders engaged?), and historical pattern matching.",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["stalled", "deal", "analyze", "recommend", "re-engage", "contact", "strategy"]
+        "keywords": ["predict", "stage", "behavior", "signal", "buyer", "reliable", "self-report", "pattern"],
+        "minLength": 60
       },
-      "badExample": "Why is this deal stuck?",
-      "goodExample": "Stalled deal: Acme Corp, $25K/yr, stuck in Evaluation 6 weeks (normal: 2). Last contact: email 18 days ago, no reply. Champion quiet after reorg. Analyze: email history, org changes, competitor activity, original pain points. Recommend: 3 ranked re-engagement strategies, new outreach draft, go-around assessment, kill/continue call.",
-      "successMessage": "Stalled deals aren't dead — they're misdiagnosed. AI helps you find the real blocker and act on it."
+      "badExample": "The AI needs more data to make better predictions.",
+      "goodExample": "DIAGNOSIS: Stage and close date are both REP-REPORTED, not buyer-verified. This is like predicting the weather based on what people HOPE it will be. Reps advance stages after THEIR actions (sent proposal, had call) regardless of prospect response. Close dates are set optimistically and rarely updated. 4 of the 5 'predicted closes' probably had: stale close dates carried forward from last month, stages advanced without confirmed buyer commitment, single-threaded relationships, and no signed proposal or verbal commitment. BETTER PREDICTION CRITERIA (weighted): (1) Buyer-side signals (40% weight): Last prospect response < 5 days ago, prospect initiated at least one interaction, prospect introduced you to another stakeholder. (2) Deal mechanics (30%): Signed proposal or SOW in hand, legal/procurement engaged, budget confirmed in writing (not just verbally). (3) Historical pattern matching (20%): How does this deal's behavior compare to the last 50 deals that actually closed? If similar deals at this velocity close 70% of the time, weight that. (4) Rep self-assessment (10%): Yes, still include it — but it's only 10% of the score, not 80%. The biggest improvement: track BUYER actions, not SELLER actions.",
+      "successMessage": "The best sales predictions are based on what buyers DO, not what sellers THINK. Buyer behavior is the only honest signal."
     }
   ],
   "08-customer-success-with-ai": [
     {
-      "id": "sales-8-1",
+      "id": "afs-8-1",
       "type": "prompt",
-      "instruction": "Write a prompt to analyze customer usage data, generate a health score, and recommend retention actions.",
-      "placeholder": "Analyze this customer's usage and generate...",
-      "hint": "Customer health for TechStart Inc ($500/mo, 12 months). Data: logins 45→12/week over 3 months, 2/5 seats active, new feature unused, support tickets 3x, NPS 8→5. Generate: health score (1-100), churn risk, root cause hypothesis, 3 ranked retention actions, draft check-in email.",
+      "instruction": "Write a prompt to analyze a customer's usage data, generate a health score, identify churn risk indicators, and recommend specific retention actions. Include the data points available and the output format your CS team needs.",
+      "placeholder": "Analyze this customer's usage data and generate a health score...",
+      "hint": "Health scores should combine product usage (logins, feature adoption, support tickets), relationship signals (NPS response, executive sponsor engagement), and business outcomes (are they achieving the ROI they expected?). The output should be actionable: not just 'at risk' but 'here's exactly what to do.'",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["health score", "usage", "churn", "risk", "engagement", "action", "retention"]
+        "keywords": ["health score", "usage", "churn", "risk", "engagement", "action", "recommend", "retention"],
+        "minLength": 60
       },
-      "badExample": "Is this customer going to churn?",
-      "goodExample": "Customer health analysis for TechStart Inc ($500/mo, 12 months). Data: logins 45→12/week over 3 months, 2/5 seats active, new feature unused, support tickets 3x, NPS 8→5. Generate: health score (1-100) by category, churn risk level, root cause hypothesis, 3 ranked retention actions, draft check-in email.",
-      "successMessage": "Proactive customer success powered by AI prevents churn before the cancellation email lands."
+      "badExample": "Look at this customer's data and tell me if they're at risk.",
+      "goodExample": "You are a customer success analyst. Analyze this customer's health data and generate a comprehensive assessment. CUSTOMER: DataFlow (Enterprise plan, $50K ARR, renewed once, 14 months into contract). USAGE DATA: Daily active users dropped from 45 to 28 over 3 months. Feature adoption: using 4 of 12 core features. Average session time: 6 minutes (down from 15). Support tickets: 8 in last month (up from 2/month average). RELATIONSHIP DATA: Executive sponsor (VP Sales) left the company 2 months ago. Last QBR: 5 months ago (overdue). NPS survey: not responded (sent 3 weeks ago). CONTRACT: Renewal in 4 months. No expansion conversations started. OUTPUT FORMAT: (1) Health score 0-100 with breakdown by category (product usage, relationship, business outcome). (2) Top 3 churn risk indicators ranked by severity. (3) Recommended action plan: immediate (this week), short-term (this month), pre-renewal (next 2 months). Each action should specify WHO does it, WHAT they do, and WHAT SUCCESS looks like. (4) Estimated save probability if actions are executed vs. if nothing changes.",
+      "successMessage": "Proactive customer success powered by AI catches at-risk accounts months before they churn. The data was always there — AI makes it actionable."
     },
     {
-      "id": "sales-8-2",
-      "type": "freeform",
-      "instruction": "Design an AI-powered early warning system for customer churn. List the signals it monitors, thresholds that trigger alerts, and escalation steps.",
-      "placeholder": "Churn warning system monitors: ...",
-      "hint": "Signals: login frequency (40% drop = alert), feature adoption (<30% at 60 days), support sentiment (3+ negative tickets), NPS trend (2+ point drop), billing failures, champion turnover. Escalation: Yellow (1 signal) → CSM alert. Orange (2) → manager + exec check-in. Red (3+) → VP involved + retention offer.",
+      "id": "afs-8-2",
+      "type": "analyze",
+      "instruction": "A CS team implemented AI health scoring and now spends 80% of their time on 'red' accounts (health score <40) and almost no time on 'green' accounts (health score >70). The result: red accounts improved slightly, but 3 previously green accounts churned without warning. Analyze what went wrong.",
+      "placeholder": "What went wrong: ... The fix: ...",
+      "hint": "Green accounts aren't 'safe' — they're 'satisfied right now.' The health score measures current state, not trajectory. An account can be highly engaged today but have an executive sponsor about to leave, a competitor running a POC, or a budget review coming that no one mentioned.",
       "criteria": {
-        "minLength": 80,
-        "keywords": ["signal", "monitor", "alert", "threshold", "churn", "escalation", "login", "usage"]
+        "keywords": ["green", "red", "trajectory", "neglect", "warning", "proactive", "balance", "churn"],
+        "minLength": 60
       },
-      "badExample": "Watch for customers who stop logging in",
-      "goodExample": "Monitors: login frequency (40% drop = alert), feature adoption (<30% at 60 days), support sentiment (3+ negative tickets), NPS (2+ point drop), billing failures, champion turnover. Escalation: Yellow (1 signal) → CSM Slack alert. Orange (2) → manager + exec check-in. Red (3+) → VP involved + retention offer ready.",
-      "successMessage": "A churn early warning system turns reactive firefighting into proactive retention."
+      "badExample": "The AI health scores are inaccurate and need to be fixed.",
+      "goodExample": "WHAT WENT WRONG: Three related failures. (1) TRIAGE TRAP: By focusing exclusively on red accounts, the team created a self-fulfilling prophecy — green accounts got no attention and drifted. A 'green' health score doesn't mean 'no work needed.' It means 'healthy NOW.' (2) MISSING TRAJECTORY: The health score is a SNAPSHOT, not a TREND LINE. An account at 75 that was at 90 three months ago is more dangerous than an account at 45 that was at 30 — but the score doesn't show that. The 3 churned accounts were likely declining gradually, but because they stayed above 70, nobody noticed. (3) EXTERNAL BLIND SPOTS: Health scores measure PRODUCT engagement but miss: executive sponsor changes, budget cycles, competitor evaluation (happening outside your product), strategic priority shifts, and M&A activity. All are churn predictors that don't show up in usage data. THE FIX: (1) Add trajectory tracking: alert when any account drops >15 points in 30 days, regardless of current score. (2) Mandate monthly touchpoints with ALL accounts (green gets 15-min check-in, red gets 60-min deep dive). (3) Track external signals: monitor LinkedIn for sponsor job changes, set up Google Alerts for customer company news, and add 'competitive threat' as a CRM field updated at every touchpoint. (4) Rebalance: 50% time on red, 30% on yellow, 20% on green.",
+      "successMessage": "Health scores are guardrails, not autopilot. The accounts that churn 'out of nowhere' always had warning signs — just not in the product data."
     }
   ],
   "09-sales-analytics": [
     {
-      "id": "sales-9-1",
+      "id": "afs-9-1",
       "type": "prompt",
-      "instruction": "Write a prompt to analyze a quarter of sales data and surface actionable insights. Specify what data is available, questions to answer, and desired output format.",
-      "placeholder": "Analyze our Q1 sales data...",
-      "hint": "Analyze Q1 2026 sales: 150 deals, sizes $1K-$50K, with cycle length, lead source, rep performance, industry, product line. Answer: win rate by source, cycle time by size, top 3 loss reasons, rep performance spread, industry trends. Output: 5-bullet exec summary, detailed analysis, 3 Q2 recommendations.",
+      "instruction": "Write a prompt to analyze a quarter's worth of sales data and surface the 5 most actionable insights. Include the specific data available, the questions you want answered, and the output format that helps a sales VP make decisions.",
+      "placeholder": "Analyze our Q1 sales data and surface insights...",
+      "hint": "The best analytics prompts specify: what data exists, what questions matter (not just 'find patterns'), and what format is actionable (not a 10-page report nobody reads). A sales VP wants: what's working, what's broken, and what to do about it.",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["data", "trend", "conversion", "rate", "insight", "revenue", "quarter", "analysis"]
+        "keywords": ["data", "trend", "conversion", "rate", "insight", "compare", "revenue", "actionable"],
+        "minLength": 60
       },
-      "badExample": "Analyze my sales data",
-      "goodExample": "Analyze Q1 2026 sales: 150 deals, sizes $1K-$50K, with cycle length, lead source, rep, industry, product line. Answer: win rate by source, cycle time by deal size, top 3 loss reasons, rep performance spread, industry trends. Output: 5-bullet exec summary, detailed analysis, 3 Q2 recommendations.",
-      "successMessage": "Data-driven sales strategy beats gut instinct every time. These insights reshape your next quarter."
+      "badExample": "Analyze my sales data and give me insights.",
+      "goodExample": "You are a sales analytics expert. Analyze our Q1 2026 performance and give me 5 insights my VP of Sales can act on THIS QUARTER. DATA AVAILABLE: (1) Pipeline: 847 opportunities created, $12.4M total pipeline, 23% win rate. (2) By source: outbound (40% of pipeline, 18% win rate), inbound (35%, 31% win rate), partner (25%, 28% win rate). (3) By segment: SMB <$10K (62% of deals, 32% win rate), Mid-Market $10-50K (28%, 21% win rate), Enterprise $50K+ (10%, 12% win rate). (4) Cycle times: SMB avg 28 days, MM avg 64 days, Enterprise avg 112 days. (5) Rep performance: top quartile (4 reps) at 142% quota, bottom quartile (4 reps) at 51% quota. QUESTIONS TO ANSWER: Where is the highest ROI opportunity to improve? What's the biggest leak in the funnel? Which segment should we invest more in? What separates top performers from bottom? Should we shift resource allocation? OUTPUT: 5 insights, each with: the finding (one sentence), supporting data, and a specific recommended action. Format as a one-page executive brief with a 'DO THIS MONDAY' section at the top.",
+      "successMessage": "Analytics that end with 'do this Monday' are 10x more valuable than dashboards that end with 'interesting.' AI turns data into decisions."
     },
     {
-      "id": "sales-9-2",
-      "type": "prompt",
-      "instruction": "Write a prompt to create a sales forecasting model with historical data, variables to consider, and accuracy metrics.",
-      "placeholder": "Build a sales forecast using...",
-      "hint": "Q2 forecast from: 4 quarters historical, 80 active deals ($2.1M pipeline), 8 reps (avg 5 deals/mo), 15% YoY market growth. Variables: source conversion, deal size trends, seasonality, stage probabilities. Output: 3 scenarios with monthly breakdown, assumptions, confidence levels, top 3 risks.",
+      "id": "afs-9-2",
+      "type": "freeform",
+      "instruction": "Design an AI-powered weekly sales dashboard that automatically generates itself every Monday morning. Define the 7 key metrics, how each is calculated, what 'good' vs 'bad' looks like, and what automated commentary AI should add.",
+      "placeholder": "Metric 1: Pipeline coverage ratio — Calculated by...",
+      "hint": "The best sales dashboards combine lagging indicators (revenue, win rate) with leading indicators (pipeline created, meeting volume, response rates) so you can predict problems before they hit revenue. AI commentary should explain the 'so what' behind every number.",
       "criteria": {
-        "minLength": 60,
-        "keywords": ["forecast", "historical", "pipeline", "scenario", "predict", "revenue"]
+        "keywords": ["metric", "dashboard", "weekly", "trend", "target", "pipeline", "forecast", "automated"],
+        "minLength": 80
       },
-      "badExample": "Predict our Q2 sales",
-      "goodExample": "Q2 forecast from: 4 quarters historical data, 80 active deals ($2.1M pipeline), 8 reps (avg 5 deals/mo), 15% YoY market growth. Variables: source conversion, deal size trends, seasonality, stage probabilities. Output: conservative/likely/optimistic scenarios with monthly breakdown, assumptions, confidence levels, top 3 risk factors.",
-      "successMessage": "A forecast with scenarios and assumptions is a strategic tool. A single number is a guess."
+      "badExample": "Track revenue, pipeline, and win rate on a dashboard.",
+      "goodExample": "AUTO-GENERATED MONDAY MORNING DASHBOARD: LEADING INDICATORS (predict next month): (1) Pipeline Creation Rate: New pipeline $/week vs. target. Calculation: sum of new opps created this week x expected value. Good: >110% of weekly target. Bad: <80%. AI commentary: 'Pipeline creation is down 15% from last week. 3 of 10 reps created zero new pipeline — check if they're stuck on existing deals.' (2) Meeting Volume: Discovery + demo calls held. Good: >3 per rep/week. Bad: <1.5. AI commentary: 'Team averaged 2.1 meetings/rep — solid. But Enterprise segment had zero demos. Suggest: reallocate 2 SMB-focused reps to Enterprise prospecting.' (3) Email Response Rate: Reply rate on outbound sequences. Good: >8%. Bad: <4%. AI commentary: 'Response rate dropped from 7% to 4.2% — likely sequence fatigue. Recommend A/B testing new subject lines this week.' LAGGING INDICATORS (measure results): (4) Win Rate (rolling 90-day): Closed-won / total closed. Good: >25%. Bad: <18%. (5) Average Deal Size: Mean closed-won deal value. Good: trending up. Bad: trending down (discounting problem). (6) Sales Cycle Length: Average days from creation to close. Good: stable or decreasing. Bad: increasing (deal complexity or buyer hesitation). (7) Quota Attainment Distribution: % of reps at >80% of monthly pace. Good: >70% of team on pace. Bad: <50%. AI COMMENTARY adds the 'so what': (1) Compares every metric to 4-week rolling average. (2) Identifies the ONE metric that needs most attention. (3) Suggests a specific action for the weekly team meeting. (4) Calls out top performer of the week with what they did differently.",
+      "successMessage": "A self-generating dashboard with AI commentary replaces the 2-hour manual pipeline review. Reps get their Mondays back."
     }
   ],
   "10-your-ai-sales-system": [
     {
-      "id": "sales-10-1",
+      "id": "afs-10-1",
       "type": "freeform",
-      "instruction": "Design your complete AI sales system: map each stage (prospecting, outreach, meetings, proposals, closing, post-sale) and describe what AI handles at each.",
-      "placeholder": "Stage 1 (Prospecting): AI handles...",
-      "hint": "Prospecting: AI scrapes + qualifies leads, scores ICP fit. Outreach: personalizes emails at scale, A/B tests, optimizes timing. Meetings: pre-call briefs, transcription, action extraction. Proposals: custom drafts from templates + call notes. Closing: close probability, negotiation tactics. Post-sale: health monitoring, churn flags, upsell timing.",
+      "instruction": "Design your complete end-to-end AI sales system. Map every stage of the sales cycle (prospecting, outreach, discovery, demo, proposal, negotiation, close, onboarding) and define exactly what AI handles, what humans handle, and where they collaborate.",
+      "placeholder": "Stage 1 (Prospecting): AI handles... Human handles... Handoff point: ...",
+      "hint": "The best AI sales systems don't replace humans — they give each stage a specific AI-human division of labor. AI excels at: data gathering, pattern recognition, first-draft generation, scheduling, and reporting. Humans excel at: relationship building, creative strategy, emotional intelligence, and complex negotiation.",
       "criteria": {
-        "minLength": 100,
-        "keywords": ["stage", "AI", "prospect", "outreach", "meeting", "close", "automate", "post-sale"]
+        "keywords": ["stage", "AI", "human", "prospect", "outreach", "close", "automate", "collaborate"],
+        "minLength": 100
       },
-      "badExample": "AI does everything in sales",
-      "goodExample": "Prospecting: AI scrapes leads, scores ICP fit, enriches data. Outreach: personalizes emails, A/B tests, optimizes timing. Meetings: pre-call briefs, transcription, action extraction. Proposals: custom drafts from templates + notes, per-prospect ROI. Closing: probability scoring, negotiation recs. Post-sale: health monitoring, churn flags, upsell timing. Human stays in: relationships, final negotiations, strategy.",
-      "successMessage": "End-to-end AI sales system designed. This is how top performers scale without losing the human touch."
+      "badExample": "AI does research and emails. Humans do calls and close deals.",
+      "goodExample": "END-TO-END AI SALES SYSTEM: STAGE 1 — PROSPECTING: AI: Scrapes target accounts, scores against ICP, enriches with contact data, identifies buying signals (job postings, funding rounds, tech stack changes). Human: Reviews AI-surfaced accounts, applies strategic judgment ('yes this company fits, but they just acquired a competitor — skip'). Collaboration: AI presents top 20 prospects weekly; rep selects top 10 to pursue. STAGE 2 — OUTREACH: AI: Drafts personalized emails using prospect research, A/B tests subject lines, optimizes send times, handles follow-up cadence. Human: Reviews and personalizes emails for top-tier prospects, adds relationship context AI can't know. Collaboration: AI drafts, human approves (enterprise) or AI sends autonomously (SMB). STAGE 3 — DISCOVERY: AI: Generates pre-call briefs, suggests discovery questions based on prospect profile, transcribes calls in real-time, flags when key topics aren't covered. Human: Runs the call, builds rapport, reads emotional cues, asks follow-up questions. Collaboration: AI whispers suggested questions in real-time; human decides which to ask. STAGE 4 — DEMO: AI: Customizes demo environment with prospect's data, prepares competitor battle cards, logs prospect engagement signals. Human: Delivers the demo, handles live objections, reads the room. STAGE 5 — PROPOSAL: AI: Generates tailored proposal using discovery notes, calculates custom ROI, formats and designs. Human: Reviews positioning, adjusts pricing strategy, adds strategic framing. STAGE 6 — NEGOTIATION: AI: Models discount scenarios and their impact on ARR, surfaces precedents from similar deals, drafts redline responses for legal. Human: Makes all negotiation decisions, manages the relationship. STAGE 7 — CLOSE: AI: Generates contract, tracks signature status, alerts on stalled paperwork. Human: Manages urgency, handles executive-level conversations. STAGE 8 — ONBOARDING HANDOFF: AI: Creates onboarding plan based on what was sold, transfers all context to CS, schedules kickoff. Human: Introduces the CS team, ensures relationship continuity. NORTH STAR METRIC: AI should save each rep 10+ hours/week while improving win rates by 15-25%.",
+      "successMessage": "You just designed a complete AI sales operating system. The key insight: AI handles the 60% that's repetitive so humans can excel at the 40% that's relationship-driven."
     },
     {
-      "id": "sales-10-2",
-      "type": "freeform",
-      "instruction": "Create a 30-day implementation plan for rolling out AI across your sales process. Week by week: what tools, what training, what metrics to track.",
-      "placeholder": "Week 1: Focus on... Tools:... Metric:...",
-      "hint": "Week 1: AI prospect research. Tool: Claude. Train: research prompts. Metric: time/lead. Week 2: AI outreach emails. Tool: Claude + templates. Train: personalization prompts. Metric: reply rate. Week 3: Call prep + summaries. Tool: Claude + transcription. Train: brief workflow. Metric: prep time saved. Week 4: Pipeline analytics. Tool: Claude + CRM data. Train: analysis prompts. Metric: forecast accuracy.",
+      "id": "afs-10-2",
+      "type": "prompt",
+      "instruction": "Write the most comprehensive prompt you can: ask AI to audit your current sales process, identify the 3 biggest efficiency gaps, calculate the revenue impact of each gap, and propose an AI-powered solution for the highest-impact gap with a 90-day implementation plan.",
+      "placeholder": "Audit my sales process and find the biggest opportunities for AI...",
+      "hint": "Layer multiple techniques: give context about your current process, define what 'efficiency gap' means, require quantification of impact, and demand a specific implementation plan — not just recommendations.",
       "criteria": {
-        "minLength": 100,
-        "keywords": ["week", "tool", "train", "metric", "implement", "AI", "team", "track"]
+        "keywords": ["audit", "process", "gap", "revenue", "impact", "AI", "implement", "plan"],
+        "minLength": 80
       },
-      "badExample": "Just start using AI in sales",
-      "goodExample": "Week 1: AI prospect research. Tool: Claude. Training: research prompts. Metric: time/lead. Week 2: AI outreach. Tool: Claude + templates. Training: personalization. Metric: reply rate. Week 3: Call prep + summaries. Tool: Claude + transcription. Training: brief workflow. Metric: prep time. Week 4: Pipeline analytics. Tool: Claude + CRM. Training: analysis. Metric: forecast accuracy.",
-      "successMessage": "A phased rollout builds momentum. By week 4, your team will wonder how they sold without AI."
+      "badExample": "How can AI improve my sales process?",
+      "goodExample": "You are a sales operations consultant specializing in AI-powered sales transformation. Audit my current sales process and build a business case for AI investment. MY CURRENT PROCESS: Team of 15 reps, $5M ARR, selling B2B SaaS ($20-80K deals). (1) Prospecting: Reps manually research on LinkedIn — ~5 hours/week each. (2) Outreach: Generic email templates customized by hand — 40 emails/rep/week, 4% reply rate. (3) Meetings: No structured pre-call prep. Reps wing it. (4) CRM: Reps spend ~3 hours/week on data entry. Compliance is 60%. (5) Follow-up: Inconsistent. 30% of demos get no follow-up within 48 hours. (6) Forecasting: Based on rep gut feel. Accuracy is ~55%. ANALYSIS REQUESTED: (1) Identify the 3 biggest efficiency gaps — rank by revenue impact, not just time saved. For each: what it costs us today in lost deals or wasted time, quantified in dollars. (2) For the #1 gap: design a specific AI-powered solution. What tool/workflow, how it works, expected improvement. (3) 90-day implementation plan: Week 1-2 (setup), Week 3-4 (pilot with 3 reps), Week 5-8 (iterate based on data), Week 9-12 (full rollout). (4) Expected ROI: conservative and optimistic scenarios. (5) Top 3 risks and how to mitigate each. FORMAT: Executive brief (1 page), detailed analysis (3 pages), implementation timeline (Gantt chart description). This needs to convince my CEO to approve a $30K AI tool investment.",
+      "successMessage": "That prompt produces a complete AI transformation business case. Role, context, specific data, quantified requirements, and a clear output format — this is how you get AI to do executive-level analysis."
     }
   ]
 }

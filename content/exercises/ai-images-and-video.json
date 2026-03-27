@@ -10,21 +10,53 @@
         "keywords": ["explain", "how", "image", "generate", "understand", "confused", "learn", "AI"],
         "minLength": 35
       },
+      "badExample": "How does AI make images?",
+      "goodExample": "I understand the basics: you type text and AI creates an image. What I don't understand is the training process — how does a model 'learn' what 'a sunset over mountains' looks like from millions of images? Explain the training process in 5 clear steps using the analogy of an art student learning to draw. For each step: what happens technically AND what the art student equivalent is. Keep each step to 2-3 sentences. I have zero technical background — no math, no code. If you use a jargon word, define it immediately.",
       "successMessage": "Starting with what you know and what confuses you helps Claude pitch the explanation at exactly the right level."
+    },
+    {
+      "id": "img-1-2",
+      "type": "freeform",
+      "instruction": "List 5 creative industries being transformed by AI image generation. For each, describe what was done manually before, what AI does now, and what humans still do better.",
+      "placeholder": "Industry 1: ... Before AI: ... AI now: ... Humans still: ...",
+      "hint": "1. Advertising — before: hire photographer + stylist + editor for product shoots. AI now: generates product imagery in any setting instantly. Humans still: creative direction, brand strategy, emotional resonance. 2. Game design — before: concept artists spend days on environment sketches. AI now: generates 50 concepts in an hour. Humans still: final art, style consistency, game-specific technical constraints.",
+      "criteria": {
+        "keywords": ["industry", "before", "AI", "human", "creative", "transform", "manual"],
+        "minLength": 60
+      },
+      "badExample": "AI is changing art, design, and photography.",
+      "goodExample": "5 industries transformed: (1) ADVERTISING — Before: $5-50K photo shoots with photographers, models, stylists, and post-production. AI now: generates product shots in any setting, lighting, and mood for $0.02 per image. Humans still better at: creative direction that captures brand emotion, cultural nuance, and the 'it factor' that makes an ad memorable. (2) GAME DEVELOPMENT — Before: concept artists spent 2-5 days per environment sketch. AI now: generates 50 concept variations in an hour, letting art directors explore more ideas faster. Humans still better at: final polished art, maintaining style consistency across a 40-hour game, and technical constraints (polygon counts, texture tiling). (3) FASHION — Before: mood boards assembled manually from magazine clippings and Pinterest. AI now: generates original garment designs from text descriptions. Humans still better at: understanding fabric behavior, construction feasibility, and cultural fashion context. (4) ARCHITECTURE — Before: rendering firms charged $2-10K per photorealistic building visualization. AI now: generates realistic renders from floor plans or sketches. Humans still better at: structural accuracy, building codes, spatial experience that photographs can't convey. (5) PUBLISHING — Before: illustrators charged $500-5K per book cover, 2-4 week turnaround. AI now: generates cover concepts in minutes for iteration. Humans still better at: typography integration, genre conventions, and illustrations that carry emotional narrative.",
+      "successMessage": "AI doesn't replace creative professionals — it changes what they spend time on. Manual production shrinks; creative judgment becomes more valuable."
     }
   ],
   "understanding-ai-image-tools": [
     {
       "id": "img-2-1",
       "type": "prompt",
-      "instruction": "Write a prompt comparing two or more AI image tools. Specify what criteria matter to you.",
+      "instruction": "Write a prompt comparing two or more AI image tools. Specify what criteria matter to you and what use case you're evaluating them for.",
       "placeholder": "Compare these tools based on...",
       "hint": "Compare DALL-E, Midjourney, and Stable Diffusion for a freelance graphic designer who needs to create social media visuals. Compare on: ease of use, image quality for marketing materials, pricing for commercial use, and style versatility. Present as a comparison table with a final recommendation.",
       "criteria": {
         "keywords": ["compare", "tool", "which", "best", "difference", "vs", "pros", "cons", "recommend"],
         "minLength": 40
       },
-      "successMessage": "Structured comparisons with clear criteria = actionable advice instead of generic overviews."
+      "badExample": "What's the best AI image tool?",
+      "goodExample": "Compare DALL-E 3, Midjourney v6, and Stable Diffusion XL for my specific use case: creating social media visuals for a wellness brand. I need: consistent brand aesthetics (soft colors, minimalist style), commercial use rights, the ability to generate multiple images that look cohesive, and integration with my existing workflow (Canva + Figma). Compare on: (1) Image quality for this specific style, (2) Style consistency across multiple generations, (3) Pricing for 50-100 images/month, (4) Commercial licensing clarity, (5) Ease of use for a non-technical designer. Present as a comparison table. End with a specific recommendation for my use case and budget ($50/month max).",
+      "successMessage": "Structured comparisons with clear criteria and a specific use case produce actionable recommendations, not generic overviews."
+    },
+    {
+      "id": "img-2-2",
+      "type": "analyze",
+      "instruction": "Analyze this decision: A startup is using free AI-generated images for all their marketing instead of hiring a photographer or illustrator. Their website looks 'pretty good' but they're struggling with brand recognition. What's the problem?",
+      "placeholder": "The problem is...",
+      "hint": "AI-generated images without strong art direction all look similar — the same generic style, lighting, and composition. The startup's visuals are technically good but indistinguishable from thousands of other companies using the same tools. Brand recognition requires a consistent, distinctive visual identity that default AI outputs don't provide.",
+      "criteria": {
+        "keywords": ["brand", "distinct", "consistent", "generic", "identity", "visual", "recognizable"],
+        "minLength": 50
+      },
+      "badExample": "They should hire a real photographer. AI images aren't good enough.",
+      "goodExample": "The problem isn't image quality — it's visual DISTINCTIVENESS. AI-generated images with default settings produce a 'house style' that thousands of other companies also use: the same dreamy lighting, the same corporate diverse-team-around-a-laptop, the same soft gradients. Their website looks 'pretty good' in isolation but is visually identical to competitors — no one scrolls past and thinks 'that's THEM.' Brand recognition requires: (1) A consistent color palette that's theirs (not AI defaults). (2) A distinctive illustration or photo style they own. (3) Visual elements that repeat across touchpoints. The fix isn't abandoning AI — it's using AI WITH art direction. Define a specific style guide first (colors, composition rules, mood, subjects), then use that as constraints in every AI generation. Or: use AI for concepts and volume, then have a designer create a consistent visual system that makes the brand unmistakable.",
+      "successMessage": "AI images are commoditized — everyone has access. Brand differentiation comes from art direction, not image generation."
     }
   ],
   "your-first-ai-image": [
@@ -38,7 +70,9 @@
         "keywords": ["style", "light", "color", "mood", "perspective", "composition", "detail", "tone", "warm", "dark", "bright"],
         "minLength": 40
       },
-      "successMessage": "The more sensory detail you give, the more control you have. Style + lighting + mood = the magic formula for AI images."
+      "badExample": "A nice picture of a coffee shop.",
+      "goodExample": "A cozy independent coffee shop interior during golden hour. Warm amber light streaming through floor-to-ceiling windows, casting long shadows across worn wooden floorboards. Watercolor illustration style with visible brush strokes and soft bleeding edges. A tabby cat curled up asleep on a stack of vintage hardcover books on a weathered oak table. Color palette: muted earth tones (warm brown, cream, sage green) with pops of burnt orange from the sunset. Overhead perspective, slightly tilted at 15 degrees. Background: blurred bookshelves and a chalkboard menu. Mood: peaceful, nostalgic, the feeling of a Sunday afternoon with nowhere to be.",
+      "successMessage": "The more sensory detail you give, the more control you have over the output. Style + lighting + mood = the magic formula."
     },
     {
       "id": "img-3-2",
@@ -48,9 +82,10 @@
       "hint": "A snow-capped mountain peak at sunrise, shot from a low valley perspective. Japanese woodblock print style with bold outlines and flat color planes. Warm pink and gold sky reflecting off glacial ice. A single pine tree in the foreground for scale. Misty clouds wrapping around the middle of the mountain.",
       "criteria": {
         "minLength": 40,
-        "mustNotInclude": ["a picture of a mountain"],
         "keywords": ["mountain", "style", "color", "light", "perspective", "detail"]
       },
+      "badExample": "A beautiful mountain with nice colors.",
+      "goodExample": "A lone snow-capped mountain peak at sunrise, viewed from a low valley perspective looking up. Japanese woodblock print style (ukiyo-e) with bold black outlines, flat color planes, and visible wood grain texture. Sky: warm gradient from deep indigo at top to peach and gold at the horizon. The mountain face has sharp angular shadows in deep blue-purple. A single wind-bent pine tree in the lower left foreground provides scale. Misty clouds wrap around the mountain's midsection like a silk scarf. A narrow waterfall catches the first golden light on the east face. Aspect ratio 3:4 (portrait orientation).",
       "successMessage": "From 5 words to a cinematic scene. That's the power of specificity in image prompts."
     }
   ],
@@ -58,42 +93,90 @@
     {
       "id": "img-4-1",
       "type": "prompt",
-      "instruction": "Write an image prompt that specifies a negative constraint — something the AI should NOT include.",
+      "instruction": "Write an image prompt that specifies negative constraints — things the AI should NOT include. Explain why each negative constraint matters.",
       "placeholder": "Generate an image of... without...",
       "hint": "A professional headshot-style portrait of a confident business woman in a modern office. Photorealistic style. Natural window lighting from the left. Neutral background. No text, no logos, no watermarks. No exaggerated features. Subtle, professional color grading.",
       "criteria": {
         "keywords": ["no", "without", "don't", "avoid", "exclude", "not", "never"],
         "minLength": 35
       },
-      "successMessage": "Negative prompts are essential for image generation. They prevent the AI from adding unwanted elements."
+      "badExample": "Make a professional photo of a person.",
+      "goodExample": "Professional headshot portrait of a confident woman in her 30s in a modern office setting. Photorealistic, shot on Canon 85mm f/1.4. Natural window lighting from the left, soft fill light from the right. Neutral gray blurred background. NEGATIVE CONSTRAINTS: No text or watermarks (breaks usability). No logos or brand names on clothing (legal issues). No exaggerated or idealized features (uncanny valley effect). No dramatic makeup or heavy filters (needs to look authentic). No other people in the background (distracting). No props or objects in hands (keeps focus on subject). Each constraint matters: text/watermarks make the image unusable commercially. Exaggerated features make AI portraits feel fake. Background people create unwanted narratives.",
+      "successMessage": "Negative prompts are as important as positive ones. Every unwanted element you prevent saves a regeneration cycle."
+    },
+    {
+      "id": "img-4-2",
+      "type": "debug",
+      "instruction": "A user generated an image of 'a team of diverse professionals in a modern office' but the result looks like a stock photo nightmare — everyone is smiling unnaturally, the composition feels staged, and all the 'diversity' looks tokenistic. Diagnose why AI produces this and how to fix the prompt.",
+      "placeholder": "This happens because... Fix the prompt by...",
+      "hint": "AI image models were trained heavily on stock photography, which has a very specific 'look': staged poses, fake smiles, overly lit environments, and performative diversity. The prompt triggered the stock photo aesthetic because 'diverse professionals in office' is literally how stock photos are captioned.",
+      "criteria": {
+        "keywords": ["stock photo", "training data", "natural", "authentic", "specific", "candid", "staged"],
+        "minLength": 50
+      },
+      "badExample": "Use a different AI model that's better at people.",
+      "goodExample": "Diagnosis: AI image models were trained on millions of stock photos. The prompt 'team of diverse professionals in modern office' is almost LITERALLY a stock photo caption. The model generates exactly what that training data looks like: staged group poses, forced smiles, corporate attire, and diversity that feels like a checkbox exercise. Fix the prompt by making it SPECIFIC and CANDID: Instead of 'team of diverse professionals,' try: 'Four coworkers having an animated discussion around a whiteboard covered in post-it notes. One is gesturing excitedly while explaining something. Another is sketching on the board. Candid photography style, shot from slightly behind one person's shoulder. Natural office lighting, messy desks visible in the background. The energy of a real brainstorming session, not a posed photo.' Key changes: (1) Specific number of people. (2) Specific action, not just standing together. (3) 'Candid' style explicitly. (4) Environmental details that signal real workplace (messy desks). (5) No mention of 'diverse' — describe the scene, not the demographic composition.",
+      "successMessage": "When AI produces cliches, it's because the prompt triggered cliche training data. Specific, action-oriented prompts break out of the stock photo trap."
     }
   ],
   "editing-and-refining": [
     {
       "id": "img-5-1",
       "type": "prompt",
-      "instruction": "Write a prompt asking Claude for help iterating on an AI-generated image that isn't quite right. Describe what's wrong and what you want changed.",
+      "instruction": "Write a prompt asking Claude for help iterating on an AI-generated image that isn't quite right. Describe what's wrong and what you want changed specifically.",
       "placeholder": "The image I generated has... I want to change...",
       "hint": "I generated an image of a sunset beach scene but the colors are too saturated and the people in the background look distorted. How can I modify my prompt to: (1) get more natural, muted colors, (2) remove people entirely, and (3) add more realistic water reflections? Give me the revised prompt.",
       "criteria": {
         "keywords": ["change", "modify", "adjust", "improve", "fix", "too", "instead", "more", "less", "revise"],
         "minLength": 40
       },
-      "successMessage": "Iteration is key. Describing what's wrong is just as valuable as describing what you want."
+      "badExample": "Make my image better.",
+      "goodExample": "I generated an image with this prompt: 'Beautiful sunset beach scene, vibrant colors, photorealistic.' The result has 3 problems: (1) Colors are oversaturated — the sky looks like a filter, not a real sunset. I want natural, slightly muted tones like a Fuji film photograph. (2) People in the background are distorted with extra fingers and blurred faces — I want an empty beach instead. (3) The water has no reflections of the sunset — it looks like a flat blue surface. Help me rewrite the prompt to fix all 3 issues. For each fix, explain which specific words in my prompt caused the problem and what to replace them with. Give me the complete revised prompt ready to paste.",
+      "successMessage": "Iteration is the real skill of image generation. Describing what's wrong is just as valuable as describing what you want."
+    },
+    {
+      "id": "img-5-2",
+      "type": "freeform",
+      "instruction": "Create a 5-step iteration workflow for AI image generation: from first generation to final polished result. Include what to evaluate at each step and how to refine.",
+      "placeholder": "Step 1: Generate initial concept...",
+      "hint": "Step 1: Generate 4 variations with a basic prompt to explore direction. Step 2: Pick the best variation and identify what's working and what's not. Step 3: Refine the prompt with specific fixes. Step 4: Generate again, now adjusting style and fine details. Step 5: Final polish — outpainting, inpainting, or post-processing in an editor.",
+      "criteria": {
+        "keywords": ["step", "generate", "evaluate", "refine", "iterate", "variation", "adjust"],
+        "minLength": 50
+      },
+      "badExample": "Keep generating until it looks good.",
+      "goodExample": "5-STEP IMAGE ITERATION WORKFLOW: STEP 1 — EXPLORE (generate 4 variations): Write a moderately specific prompt. Generate 4 variations to see what the AI interprets. Don't aim for perfection — aim for direction. Evaluate: overall composition, style match, mood. STEP 2 — SELECT & DIAGNOSE: Pick the best variation. Make two lists: 'What's working' (keep these elements) and 'What needs fixing' (be specific: 'sky too blue, person's hand has 6 fingers, background is blurry when it should be sharp'). STEP 3 — TARGETED REFINEMENT: Rewrite the prompt keeping what works, fixing what doesn't. Add negative constraints for things you don't want repeated. Be MORE specific in areas that failed. Evaluate: did the fixes work without breaking what was good? STEP 4 — FINE-TUNING: Adjust subtle details: lighting intensity, color temperature, depth of field, specific textures. This is where 'golden hour' becomes '4:30pm autumn light, warm but not orange.' Generate 2-3 variations of this refined prompt. STEP 5 — FINAL POLISH: Take the best result into a traditional editor (Photoshop, Canva, or even the AI tool's inpainting feature). Fix any remaining artifacts: weird edges, color inconsistencies, text removal. Crop for your target platform's dimensions. Total iteration: ~15-25 minutes for a polished result vs. hours of hoping the first generation is perfect.",
+      "successMessage": "Professional AI image creators iterate like professional photographers: shoot wide, select, refine, polish. The first generation is just the starting point."
     }
   ],
   "practical-use-cases": [
     {
       "id": "img-6-1",
       "type": "prompt",
-      "instruction": "Write a prompt for generating a specific business asset — a social media graphic, presentation slide, or product mockup.",
+      "instruction": "Write a prompt for generating a specific business asset — a social media graphic, presentation slide background, or product mockup. Include brand constraints.",
       "placeholder": "Create a [business asset] for...",
       "hint": "Create an Instagram post graphic for a sustainable clothing brand's summer sale. Minimalist design with lots of white space. Pastel green and cream color palette. Show a single linen shirt laid flat on a marble surface. Text overlay space at the top for '30% Off Summer Edit.' Aspect ratio 1:1. Clean, editorial style.",
       "criteria": {
         "keywords": ["brand", "business", "social", "post", "graphic", "slide", "mockup", "product", "marketing", "design"],
         "minLength": 45
       },
-      "successMessage": "AI-generated business assets save hours of design time. The key is matching brand aesthetics in your prompt."
+      "badExample": "Make a marketing image for my brand.",
+      "goodExample": "Create an Instagram post graphic (1080x1080) for a sustainable clothing brand called 'Evergreen.' Summer sale campaign. Design: minimalist editorial style with generous white space (at least 40% of image). Color palette: sage green (#B7C9A8), warm cream (#F5F0E8), and charcoal (#3A3A3A) — no other colors. Subject: a single folded linen shirt in sage green, placed on a light marble surface. Shot from directly above (flat lay). Soft natural lighting, minimal shadows. Leave a clean space in the upper third for text overlay (the text will be added separately in Canva). Bottom right: small blank space for a logo placement. Mood: calm, luxurious, sustainable. Think Aesop or Everlane art direction.",
+      "successMessage": "AI-generated business assets with strong brand constraints save hours of design time while maintaining visual identity."
+    },
+    {
+      "id": "img-6-2",
+      "type": "rewrite",
+      "instruction": "This image prompt for a business presentation background is generic and will produce an unusable result. Rewrite it to produce something a CEO would actually use:\n\n'Professional business background with technology and innovation theme, blue color'",
+      "placeholder": "Rewritten business background prompt...",
+      "hint": "The original will produce a generic stock-art background with circuit boards and globes. A CEO needs something clean and minimal that doesn't distract from text. Focus on subtle texture, specific color values, and explicit simplicity.",
+      "criteria": {
+        "keywords": ["minimal", "subtle", "text", "clean", "specific", "background", "presentation"],
+        "minLength": 40
+      },
+      "badExample": "A really professional blue background with tech elements for a CEO presentation.",
+      "goodExample": "Abstract presentation slide background for a tech CEO's keynote. Ultra-minimal: NO icons, NO circuit boards, NO globes, NO stock-art elements. Just subtle visual texture. Design: a deep navy (#1B2838) gradient transitioning to a slightly lighter navy (#243447) from bottom-left to upper-right. A single subtle geometric accent — a thin, slightly curved line in muted gold (#C5A55A) sweeping from the lower left corner to mid-right, creating visual flow. Soft, barely-visible noise texture for depth. The entire image must support white text overlay — no busy areas, no high-contrast zones except the gold accent. Aspect ratio: 16:9. Think Apple keynote aesthetic, not corporate clip art.",
+      "successMessage": "The difference between 'generic business background' and 'presentation-ready asset' is specificity and restraint. Less is always more for slides."
     }
   ],
   "ai-for-social-media-visuals": [
@@ -107,23 +190,113 @@
         "keywords": ["series", "set", "consistent", "cohesive", "brand", "style", "multiple", "carousel", "match"],
         "minLength": 45
       },
-      "successMessage": "Brand consistency across AI-generated visuals is the key to looking professional. Style anchors make the difference."
+      "badExample": "Make social media posts for a wellness brand.",
+      "goodExample": "Create a cohesive set of 4 Instagram carousel slides for a wellness brand called 'Bloom.' All 4 MUST share: same soft watercolor background texture, same color palette (lavender #D4B8E0, sage green #B8C9A3, warm white #FAF8F5), same composition layout (icon centered upper third, empty text space in lower third). Slide 1: meditation icon — person sitting cross-legged, simple line drawing style. Slide 2: hydration icon — water droplet with a small plant growing from it. Slide 3: sleep icon — crescent moon with stars. Slide 4: movement icon — figure in a gentle yoga pose. Style: minimalist line art on watercolor background. The set should look like it came from one designer in one sitting. If you showed all 4 side by side, the colors, stroke weight, and spacing should be identical.",
+      "successMessage": "Brand consistency across AI-generated visuals is what separates amateur from professional content. Style anchors make the difference."
+    },
+    {
+      "id": "img-7-2",
+      "type": "freeform",
+      "instruction": "Create a 'visual brand guide' that you could paste into any AI image prompt to maintain consistency. Include: color palette (with hex codes), style rules, composition rules, and things to always/never include.",
+      "placeholder": "VISUAL BRAND GUIDE: Colors: ...",
+      "hint": "GUIDE: Colors: primary sage green (#B7C9A8), secondary warm cream (#F5F0E8), accent charcoal (#3A3A3A). Style: minimalist, editorial, lots of white space. Composition: rule of thirds, single subject, clean backgrounds. Always: natural lighting, muted tones, organic textures. Never: neon colors, busy patterns, multiple subjects, text in the image.",
+      "criteria": {
+        "keywords": ["color", "hex", "style", "composition", "always", "never", "brand", "consistent"],
+        "minLength": 60
+      },
+      "badExample": "My brand is clean and modern with nice colors.",
+      "goodExample": "VISUAL BRAND GUIDE (paste into every AI image prompt): COLORS: Primary — deep forest green (#2D5016). Secondary — warm oat (#E8DCC8). Accent — terracotta (#C46A3E). Background — soft white (#FAFAF7). NEVER use: neon, electric blue, pure black, or pink. STYLE: Minimalist editorial photography. Think Kinfolk magazine. Natural textures (linen, wood, stone, ceramic). Muted and slightly desaturated — never oversaturated. COMPOSITION: Single subject focus. Rule of thirds. 40%+ negative space. Shot from slightly above (15-30 degree angle). Shallow depth of field when appropriate. LIGHTING: Natural daylight only. Soft, directional (from left). No harsh shadows. Golden hour warmth preferred. ALWAYS INCLUDE: organic materials, natural textures, sense of calm, intentional imperfection (a small crease, an off-center placement). NEVER INCLUDE: text, logos, watermarks, people's faces, plastic items, technology/screens, stock-photo-style poses, busy patterns, multiple competing subjects.",
+      "successMessage": "A visual brand guide is the most valuable AI image asset you can create. Paste it once, maintain brand consistency forever."
     }
   ],
   "ai-video-basics": [
     {
       "id": "img-8-1",
       "type": "prompt",
-      "instruction": "Write a prompt describing a short video scene for AI video generation. Include movement, timing, and camera direction.",
+      "instruction": "Write a prompt describing a short video scene for AI video generation. Include movement, timing, camera direction, and mood.",
       "placeholder": "A [duration] video of...",
       "hint": "A 5-second looping video of a coffee cup on a wooden desk. Steam rising slowly from the cup. Camera: static, slightly overhead angle. Soft morning light from the right. Shallow depth of field — desk items in background gently blurred. Cozy, calm mood. Cinematic color grading with warm tones.",
       "criteria": {
         "keywords": ["video", "camera", "movement", "second", "loop", "scene", "angle", "slow", "motion"],
         "minLength": 40
       },
-      "successMessage": "Video prompts need movement and timing — things image prompts don't. Camera direction is the new superpower."
+      "badExample": "Make a video of a coffee cup.",
+      "goodExample": "A 5-second seamlessly looping video of a ceramic coffee cup on a weathered wooden desk. MOVEMENT: Steam rises slowly from the cup in gentle, wispy spirals. A soft breeze from an open window (not visible) slightly shifts the steam direction halfway through. CAMERA: Static, locked-down shot. Slightly overhead angle (about 30 degrees). COMPOSITION: Cup positioned at the left third. A closed book and a pair of reading glasses slightly blurred in the background right. LIGHTING: Soft morning light from the right side, creating a warm glow on the cup. Slight dust particles visible in the light beam. DEPTH: Shallow — only the cup is in sharp focus. MOOD: Peaceful Sunday morning. The feeling of having nowhere to be. COLOR: Cinematic warm grade — slightly orange shadows, cream highlights. Think Wes Anderson's muted palette.",
+      "successMessage": "Video prompts need what image prompts don't: movement, timing, and camera direction. These are the new skills of visual AI."
+    },
+    {
+      "id": "img-8-2",
+      "type": "analyze",
+      "instruction": "Analyze the differences between prompting for AI images vs. AI video. What new dimensions do you need to control, and what concepts from image prompting transfer directly?",
+      "placeholder": "Transfers from image prompting: ... New for video: ...",
+      "hint": "Transfers: composition, color palette, style, lighting, mood, subject description. New for video: temporal elements (movement, speed, direction), camera motion (pan, zoom, dolly), duration, audio mood, scene transitions, and the concept of looping vs. linear storytelling.",
+      "criteria": {
+        "keywords": ["image", "video", "movement", "camera", "transfer", "new", "temporal", "time"],
+        "minLength": 50
+      },
+      "badExample": "Video is just moving images so it's basically the same.",
+      "goodExample": "TRANSFERS DIRECTLY FROM IMAGE PROMPTING: (1) Composition rules — rule of thirds, subject placement, negative space. (2) Color palette and color grading. (3) Lighting direction and quality. (4) Style references (photorealistic, illustration, cinematic). (5) Mood and atmosphere description. (6) Negative constraints (no text, no people, etc.). NEW DIMENSIONS FOR VIDEO: (1) MOVEMENT — what moves, how fast, what direction. 'Steam rising slowly' vs. 'Steam swirling rapidly' creates completely different moods. (2) CAMERA — static vs. pan vs. zoom vs. dolly. Each tells a different visual story. A slow zoom-in creates intimacy; a wide pan creates scope. (3) DURATION — 3 seconds vs. 10 seconds requires different pacing and content density. (4) TEMPORAL LOGIC — things happen in sequence. 'A flower blooms, THEN a butterfly lands' requires ordering that images don't. (5) LOOPING — seamless loops require matching start and end states, a concept that doesn't exist in image generation. (6) PACING — the speed of events communicates mood. Slow motion = dramatic/peaceful. Normal speed = natural. Fast = energetic/anxious. The core insight: image prompting is about WHAT exists. Video prompting adds WHEN and HOW things change over time.",
+      "successMessage": "Understanding these differences makes you immediately better at video prompting. Time is the new dimension — and it changes everything."
     }
   ],
-  "ethics-and-copyright": [],
-  "building-your-visual-workflow": []
+  "ethics-and-copyright": [
+    {
+      "id": "img-9-1",
+      "type": "freeform",
+      "instruction": "List 5 ethical considerations when using AI-generated images commercially. For each, describe the risk and a specific practice to mitigate it.",
+      "placeholder": "Consideration 1: ... Risk: ... Mitigation: ...",
+      "hint": "1. Copyright ambiguity — who owns AI-generated images? Risk: unclear legal rights. Mitigation: use tools with clear commercial licenses. 2. Artist displacement — AI trained on human art. Risk: devaluing human creators. Mitigation: credit AI use, support human artists for key work. 3. Deepfakes and misrepresentation. 4. Bias in generated imagery. 5. Disclosure to audiences.",
+      "criteria": {
+        "keywords": ["ethical", "copyright", "risk", "bias", "disclosure", "commercial", "license"],
+        "minLength": 60
+      },
+      "badExample": "AI images are fine to use however you want.",
+      "goodExample": "5 ETHICAL CONSIDERATIONS: (1) COPYRIGHT OWNERSHIP — Risk: Legal status of AI-generated image ownership is evolving. In the US, purely AI-generated images may not be copyrightable (Thaler v. Perlmutter). Mitigation: add significant human creative direction and editing to strengthen ownership claims. Use platforms with clear commercial licenses. (2) TRAINING DATA CONSENT — Risk: AI models were trained on billions of images, many without artist consent. Generating 'in the style of [living artist]' raises ethical and legal concerns. Mitigation: never reference living artists by name. Use generic style descriptions. (3) REPRESENTATION BIAS — Risk: AI models tend to default to certain demographics, body types, and cultural representations based on training data biases. Mitigation: actively prompt for diverse representation. Test outputs across demographics. (4) MISLEADING CONTENT — Risk: AI images used as 'real' photos (fake testimonials, fake events, fake products) are deceptive. Mitigation: disclose AI generation in commercial contexts. Never use AI-generated faces as 'real customers.' (5) ECONOMIC DISPLACEMENT — Risk: replacing human creatives entirely devalues artistic labor and skills. Mitigation: use AI for ideation and volume, hire human artists for key brand assets, hero images, and work requiring emotional depth. Credit AI usage transparently.",
+      "successMessage": "Ethical AI image use isn't just about legality — it's about building trust with your audience and respecting the creative community."
+    },
+    {
+      "id": "img-9-2",
+      "type": "debug",
+      "instruction": "A marketing team used AI to generate a photo of a 'diverse team celebrating a product launch' for their company blog. A reader comments: 'Those people don't exist. This feels dishonest.' The marketing team is confused — 'It's just a stock photo alternative.' Diagnose why the reader reacted this way and what the team should do differently.",
+      "placeholder": "The reader reacted because... The team should...",
+      "hint": "There's a trust gap between stock photos (understood as representational) and AI-generated photos (perceived as potentially deceptive). The reader feels manipulated because the 'team' isn't real, and the implied message is 'look at our diverse team' when no such team exists. The fix involves disclosure, using AI images for concepts rather than people, or using real team photos.",
+      "criteria": {
+        "keywords": ["trust", "authentic", "real", "disclosure", "deceive", "represent", "people"],
+        "minLength": 50
+      },
+      "badExample": "The reader is overreacting. Everyone uses stock photos.",
+      "goodExample": "The reader's reaction is about TRUST, not technology. Here's the distinction: a stock photo of 'team celebrating' is understood as illustrative — everyone knows it's a model. But AI-generated 'photos' of people who look completely real cross into uncanny territory. The implicit message of the blog post is 'this is OUR team,' and when the reader realizes those people don't exist, they question everything else: 'If the team photo is fake, is the product launch real? Is the company legitimate?' The team should: (1) NEVER use AI-generated realistic faces as stand-ins for real people in company contexts. Use real team photos — even imperfect ones build trust. (2) USE AI for abstract/illustrative visuals: product mockups, concept art, background graphics — things that aren't claiming to be real. (3) IF using AI for people, use obviously illustrated/stylized styles (not photorealistic) so no one mistakes them for real individuals. (4) DISCLOSE AI use when it's not obvious. A simple '(Illustration created with AI)' caption eliminates the trust gap.",
+      "successMessage": "The line between illustration and deception is context. AI photos of products = fine. AI photos posing as real employees = trust violation."
+    }
+  ],
+  "building-your-visual-workflow": [
+    {
+      "id": "img-10-1",
+      "type": "freeform",
+      "instruction": "Design your complete AI visual workflow: from brief to final asset. Include which tools you use at each stage, what AI handles, what you do manually, and your quality control process.",
+      "placeholder": "Stage 1 (Brief): ... Stage 2 (Generation): ...",
+      "hint": "Stage 1: Write the creative brief (manual — define what you need, for what purpose, brand constraints). Stage 2: Generate concepts in AI tool (4-8 variations). Stage 3: Select and iterate (manual selection, AI refinement). Stage 4: Edit and polish (Canva/Photoshop for final adjustments). Stage 5: Quality check against brand guide. Stage 6: Export for target platform dimensions.",
+      "criteria": {
+        "keywords": ["workflow", "tool", "AI", "manual", "brief", "generate", "edit", "quality"],
+        "minLength": 70
+      },
+      "badExample": "Generate images with AI and post them.",
+      "goodExample": "COMPLETE AI VISUAL WORKFLOW: STAGE 1 — CREATIVE BRIEF (Manual, 5 min): Define the asset: what it's for, where it's posted, target dimensions, mood/style. Paste the visual brand guide into a prompt template. STAGE 2 — CONCEPT GENERATION (AI, 10 min): Generate 4-8 variations using the brief. Tool: Midjourney for photography style, DALL-E for illustration. Don't aim for perfect — aim for direction. STAGE 3 — SELECT & DIAGNOSE (Manual, 5 min): Pick the 1-2 best. List what's working and what needs fixing. Don't regenerate from scratch — iterate on the winners. STAGE 4 — TARGETED ITERATION (AI, 10 min): Refine the prompt with specific fixes. Adjust lighting, composition, or specific elements. Generate 2-3 refined versions. STAGE 5 — POLISH (Manual + tools, 10 min): Take the final image into Canva or Photoshop. Adjust color curves to match brand palette exactly. Remove any AI artifacts. Add text overlay, logo, or framing as needed. Crop to exact platform dimensions. STAGE 6 — QUALITY CHECK (Manual, 3 min): Compare against brand guide. Check: colors match? Style consistent with previous assets? No AI weirdness on close inspection? No ethical concerns? TOTAL TIME: ~45 minutes from brief to final asset. Traditional design workflow for the same: 2-4 hours.",
+      "successMessage": "A documented workflow makes AI image creation repeatable and consistent. It's not about luck — it's about process."
+    },
+    {
+      "id": "img-10-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to help you build a library of reusable image prompt templates for your specific brand or use case.",
+      "placeholder": "Help me build a library of image prompt templates for...",
+      "hint": "I run a sustainable fashion brand. Help me create 5 reusable image prompt templates for recurring content needs: (1) product flat-lay, (2) lifestyle/in-use shot, (3) Instagram Story graphic, (4) blog hero image, (5) seasonal campaign visual. Each template should have my brand guide baked in with [VARIABLE] placeholders I can swap out.",
+      "criteria": {
+        "keywords": ["template", "library", "reusable", "brand", "variable", "placeholder", "prompt"],
+        "minLength": 50
+      },
+      "badExample": "Give me some image prompt templates.",
+      "goodExample": "Help me build a library of 5 reusable AI image prompt templates for my sustainable fashion brand 'Evergreen.' Brand guide (paste into every template): colors sage green (#B7C9A8), warm cream (#F5F0E8), charcoal (#3A3A3A). Style: minimalist editorial, Kinfolk aesthetic, natural lighting, organic textures. Create templates for: (1) Product flat-lay — [GARMENT] on [SURFACE] with [SEASONAL_PROP]. (2) Lifestyle shot — model wearing [GARMENT] in [SETTING], candid style. (3) Instagram Story — vertical format, [GARMENT] detail close-up with text space. (4) Blog hero — wide shot of [SCENE] that evokes [SEASON/MOOD]. (5) Campaign visual — [SEASONAL_THEME] with [PRODUCT_GROUP] arrangement. Each template should have: the complete prompt with brand constraints baked in, [VARIABLE] placeholders clearly marked, notes on which AI tool works best for this type, and an example of the template filled in for a summer linen collection.",
+      "successMessage": "A template library is the compound interest of AI image generation. Build once, use hundreds of times with consistent results."
+    }
+  ]
 }
