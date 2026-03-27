@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getCourse, getAllCourseSlugs } from '../../../lib/courses';
 import { notFound } from 'next/navigation';
 import CourseProgress from '../../components/academy/CourseProgress';
+import { site } from '@/lib/site-config';
 
 export async function generateStaticParams() {
   const slugs = getAllCourseSlugs();
@@ -12,9 +13,28 @@ export async function generateMetadata({ params }) {
   const { courseSlug } = await params;
   const course = getCourse(courseSlug);
   if (!course) return {};
+  const title = `${course.title} — Like One Academy`;
+  const description = course.description;
+  const url = `${site.url}/academy/${courseSlug}/`;
+
   return {
-    title: `${course.title} — Like One Academy`,
-    description: course.description,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: site.name,
+      type: 'website',
+      images: [{ url: site.ogImage, ...site.ogImageSize }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [site.ogImage],
+    },
   };
 }
 
@@ -49,6 +69,26 @@ export default async function CoursePage({ params }) {
 
   return (
     <div className="academy-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Course',
+          name: course.title,
+          description: course.description,
+          provider: { '@type': 'Organization', name: 'Like One', url: site.url },
+          educationalLevel: course.tierSlug || 'beginner',
+          numberOfLessons: course.lessonCount,
+          isAccessibleForFree: freeLessons > 0,
+          url: `${site.url}/academy/${courseSlug}/`,
+          hasCourseInstance: {
+            '@type': 'CourseInstance',
+            courseMode: 'online',
+            courseWorkload: `PT${minutes}M`,
+          },
+        }) }}
+      />
+
       {/* Course header */}
       <div className="glass glass-animate-up academy-hero">
         <div className="academy-hero-glow-sm" />

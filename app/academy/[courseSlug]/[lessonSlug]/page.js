@@ -2,6 +2,7 @@ import { getLesson, getCourse, getAllCourseSlugs, getLessonSlugs } from '../../.
 import { notFound } from 'next/navigation';
 import LessonNav from '../../../components/academy/LessonNav';
 import LessonComplete from '../../../components/academy/LessonComplete';
+import { site } from '@/lib/site-config';
 
 export async function generateStaticParams() {
   const courseSlugs = getAllCourseSlugs();
@@ -22,9 +23,29 @@ export async function generateMetadata({ params }) {
   const lesson = await getLesson(courseSlug, lessonSlug);
   if (!lesson) return {};
   const course = getCourse(courseSlug);
+  const courseTitle = course?.title || 'Like One Academy';
+  const title = `${lesson.title} — ${courseTitle} — Like One`;
+  const description = `Learn ${lesson.title.toLowerCase()} in the ${courseTitle} course. Free AI education from Like One Academy.`;
+  const url = `${site.url}/academy/${courseSlug}/${lessonSlug}/`;
+
   return {
-    title: `${lesson.title} — ${course?.title || 'Academy'} — Like One`,
-    description: `${lesson.title} lesson from ${course?.title || 'Like One Academy'}.`,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: site.name,
+      type: 'article',
+      images: [{ url: site.ogImage, ...site.ogImageSize }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [site.ogImage],
+    },
   };
 }
 
@@ -40,6 +61,25 @@ export default async function LessonPage({ params }) {
 
   return (
     <div className="academy-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'LearningResource',
+          name: lesson.title,
+          description: `${lesson.title} lesson from ${course?.title || 'Like One Academy'}`,
+          provider: { '@type': 'Organization', name: 'Like One', url: site.url },
+          isPartOf: {
+            '@type': 'Course',
+            name: course?.title,
+            url: `${site.url}/academy/${courseSlug}/`,
+          },
+          educationalLevel: course?.difficulty || 'beginner',
+          isAccessibleForFree: lesson.free !== false,
+          url: `${site.url}/academy/${courseSlug}/${lessonSlug}/`,
+        }) }}
+      />
+
       {/* Breadcrumb */}
       <div className="glass glass-animate-up academy-breadcrumb">
         <a href={`/academy/${courseSlug}/`} className="academy-breadcrumb-link">
