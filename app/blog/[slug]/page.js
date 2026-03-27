@@ -17,6 +17,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `${post.title} \u2014 ${site.name}`,
     description: post.excerpt,
+    alternates: {
+      canonical: `${site.url}/blog/${slug}/`,
+    },
     openGraph: {
       title: `${post.title} \u2014 ${site.name}`,
       description: post.excerpt,
@@ -249,7 +252,7 @@ export default async function PostPage({ params }) {
           color: #ccc;
         }
         .post-content > h1:first-child {
-          display: none;
+          display: none; /* fallback — H1 is stripped server-side in posts.js */
         }
         .post-content h2 {
           font-size: 26px;
@@ -355,6 +358,20 @@ export default async function PostPage({ params }) {
         }
       `}</style>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.date,
+          author: { '@type': 'Person', name: post.author || 'Sophia Cave' },
+          publisher: { '@type': 'Organization', name: 'Like One', url: site.url },
+          url: `${site.url}/blog/${slug}/`,
+          mainEntityOfPage: `${site.url}/blog/${slug}/`,
+        }) }}
+      />
       <div className="post-shell">
         <Header variant="blog" activeLink="/blog" />
 
