@@ -76,7 +76,7 @@
           "description": "Content, social media, email campaigns, and analytics — all supercharged with AI.",
           "tier": "beginner",
           "audience": ["marketers"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-for-personal-productivity",
