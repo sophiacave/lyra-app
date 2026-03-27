@@ -113,3 +113,11 @@ The **[90-Day AI Fluency Plan](https://likeone.ai/products/ai-fluency-plan)** is
 **$79.** Less than one hour of most consultants' time. Enough to change how you work forever.
 
 [Get the 90-Day AI Fluency Plan →](https://likeone.ai/products/ai-fluency-plan)
+
+---
+
+## Keep Reading
+
+- [The Revenue Machine: How I Built an Autonomous AI Business](/blog/revenue-machine-autonomous-ai-business/)
+- [The AI Solopreneur Tech Stack Under $100/Month](/blog/ai-solopreneur-tech-stack-under-100/)
+- [How to Automate Your Business with AI in 2026 (Step-by-Step Guide)](/blog/automate-business-ai-2026-guide/)

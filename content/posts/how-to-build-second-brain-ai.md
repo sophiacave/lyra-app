@@ -175,3 +175,11 @@ The best time to start building your second brain was yesterday. The second best
 ---
 
 *Sophia Cave is the founder of Like One, where she teaches people to build AI systems that think like them. Her AI has been running on a persistent brain since day one.*
+
+---
+
+## Keep Reading
+
+- [The $9 Guide That Replaces Your First Month of AI Confusion](/blog/9-dollar-guide-replaces-ai-confusion/)
+- [Custom GPTs vs Claude Projects: Which Should You Build?](/blog/custom-gpts-vs-claude-projects/)
+- [The Complete Guide to AI Agents in 2026](/blog/complete-guide-ai-agents-2026/)

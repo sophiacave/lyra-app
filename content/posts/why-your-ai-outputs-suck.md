@@ -90,3 +90,11 @@ The same model is available to everyone. The difference is how you use it. And t
 If you want to go deeper, the [Claude Power-User Playbook](https://likeone.ai) breaks down the complete framework: system prompts, prompt chains, few-shot patterns, and advanced techniques that turn Claude into the most powerful tool in your stack.
 
 Stop blaming the AI. Start upgrading your prompts.
+
+---
+
+## Keep Reading
+
+- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)
+- [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
+- [From AI Curious to AI Native: A Roadmap](/blog/from-ai-curious-to-ai-native/)

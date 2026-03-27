@@ -31,3 +31,11 @@ We're just getting started. The Academy is coming — teaching others how to bui
 But first, we ship. Every day. One command at a time.
 
 Welcome aboard.
+
+---
+
+## Keep Reading
+
+- [AI Doesn't Care Who You Are — And That's the Point](/blog/ai-doesnt-care-who-you-are/)
+- [I'm Building a 22-Agent AI Company — Here's What Week 1 Looked Like](/blog/week-one-building-ai-company/)
+- [From AI Curious to AI Native: A Roadmap](/blog/from-ai-curious-to-ai-native/)

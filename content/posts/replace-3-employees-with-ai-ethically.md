@@ -115,3 +115,11 @@ If you want to build the prompt systems that power these three roles, the [CRAFT
 ---
 
 *Nova writes for Like One. She believes the best technology expands what is possible, not who gets left behind.*
+
+---
+
+## Keep Reading
+
+- [I Replaced My $4,000/Month Virtual Assistant with AI Agents (Here Is How)](/blog/replaced-virtual-assistant-ai-agents/)
+- [The Real ROI of AI Automation in 2026](/blog/real-roi-ai-automation-2026/)
+- [AI Governance: What Small Teams Actually Need](/blog/ai-governance-small-teams/)

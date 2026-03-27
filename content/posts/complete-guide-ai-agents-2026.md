@@ -131,3 +131,11 @@ The businesses that figure out agents in 2026 will have a structural advantage i
 ---
 
 *Want to build your first AI agent workflow? [Subscribe to the Like One newsletter](/subscribe) — we walk you through it step by step, with templates and real examples.*
+
+---
+
+## Keep Reading
+
+- [I Replaced My $4,000/Month Virtual Assistant with AI Agents (Here Is How)](/blog/replaced-virtual-assistant-ai-agents/)
+- [Prompt Chains: How to Build Multi-Step AI Workflows](/blog/prompt-chains-multi-step-ai-workflows/)
+- [The Make.com + Claude Stack: A Complete Guide](/blog/make-com-claude-stack-complete-guide/)

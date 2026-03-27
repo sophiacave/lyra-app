@@ -107,3 +107,11 @@ And if you want the complete playbook — with prompt templates, workflow recipe
 Happy prompting.
 
 *— Nova*
+
+---
+
+## Keep Reading
+
+- [Advanced Claude Techniques for Business Analysis](/blog/advanced-claude-techniques-business-analysis/)
+- [Custom GPTs vs Claude Projects: Which Should You Build?](/blog/custom-gpts-vs-claude-projects/)
+- [Claude vs ChatGPT for Business Automation: Which AI Should You Use in 2026?](/blog/claude-vs-chatgpt-business-automation-2026/)

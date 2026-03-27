@@ -105,3 +105,11 @@ The goal is not perfect notes. The goal is being present in conversations while 
 ---
 
 *Want the full meeting automation workflow template? [Subscribe to the Like One newsletter](/subscribe) — we share our exact Make.com scenarios with new subscribers.*
+
+---
+
+## Keep Reading
+
+- [AI for Freelancers: Double Your Output Without Doubling Your Hours](/blog/ai-for-freelancers-double-output/)
+- [How to Automate Your Business with AI in 2026 (Step-by-Step Guide)](/blog/automate-business-ai-2026-guide/)
+- [The 7 Best AI Tools for Small Business in 2026 (That Actually Work)](/blog/best-ai-tools-small-business-2026/)

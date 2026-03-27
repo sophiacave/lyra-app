@@ -102,3 +102,11 @@ The companies that understand this will attract better talent, move faster, and 
 ---
 
 *Ready to build your AI-first strategy? The [CEO Guide to AI 2026](/products/ceo-guide-ai-2026) gives you the complete framework — from first workflow to full cultural transformation.*
+
+---
+
+## Keep Reading
+
+- [From AI Curious to AI Native: A Roadmap](/blog/from-ai-curious-to-ai-native/)
+- [AI Governance: What Small Teams Actually Need](/blog/ai-governance-small-teams/)
+- [What Every CEO Needs to Know About AI in 2026](/blog/what-every-ceo-needs-to-know-about-ai-2026/)

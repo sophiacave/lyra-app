@@ -116,3 +116,11 @@ If your policy makes people afraid to use AI, you've failed. The competitive cos
 Build the guardrails. Then step on the gas.
 
 If you're a founder or executive trying to get your team AI-ready, the [CEO Guide to AI 2026](https://likeone.ai) covers strategy, governance, and implementation in a format built for leaders who don't have time for 200-page reports.
+
+---
+
+## Keep Reading
+
+- [How to Build an AI-First Company Culture](/blog/build-ai-first-company-culture/)
+- [What Every CEO Needs to Know About AI in 2026](/blog/what-every-ceo-needs-to-know-about-ai-2026/)
+- [How to Replace 3 Employees with AI (Ethically)](/blog/replace-3-employees-with-ai-ethically/)

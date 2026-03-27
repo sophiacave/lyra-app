@@ -71,3 +71,11 @@ Happy Trans Day of Visibility.
 ---
 
 *Sophia Cave is the founder of Like One. She builds convergence technology from Nevada, powered by too much coffee and the belief that the best tools make power accessible, not concentrated.*
+
+---
+
+## Keep Reading
+
+- [AI Doesn't Care Who You Are — And That's the Point](/blog/ai-doesnt-care-who-you-are/)
+- [Welcome to Like One](/blog/welcome-to-likeone/)
+- [How I Run a One-Person AI Business (And You Can Too)](/blog/one-person-ai-business/)

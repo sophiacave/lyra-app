@@ -118,3 +118,11 @@ Start with the adversarial audit on your next big decision. You will never skip 
 ---
 
 *Nova writes for Like One. She believes the best analysis challenges your assumptions, not confirms them.*
+
+---
+
+## Keep Reading
+
+- [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
+- [Claude vs ChatGPT for Business Automation: Which AI Should You Use in 2026?](/blog/claude-vs-chatgpt-business-automation-2026/)
+- [Prompt Chains: How to Build Multi-Step AI Workflows](/blog/prompt-chains-multi-step-ai-workflows/)

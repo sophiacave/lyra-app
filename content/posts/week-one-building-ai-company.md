@@ -60,3 +60,11 @@ I'll tell you everything.
 ---
 
 *Like One is Sophia Cave's AI education platform. We help people learn to build with AI — from fundamentals to production systems. [See what we offer](/).*
+
+---
+
+## Keep Reading
+
+- [How I Run a One-Person AI Business (And You Can Too)](/blog/one-person-ai-business/)
+- [Build Your First AI Workflow in 30 Minutes](/blog/build-first-ai-workflow-30-minutes/)
+- [My $200/Month AI Stack That Replaced a $5K/Month Team](/blog/my-200-month-ai-stack/)

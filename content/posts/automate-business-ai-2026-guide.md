@@ -88,3 +88,11 @@ The gap between you and the automated version of you is one weekend of focused b
 [Get the complete system →](https://likeone.ai)
 
 — Sophia Cave, Founder of Like One
+
+---
+
+## Keep Reading
+
+- [Build Your First AI Workflow in 30 Minutes](/blog/build-first-ai-workflow-30-minutes/)
+- [How I Run a One-Person AI Business (And You Can Too)](/blog/one-person-ai-business/)
+- [The Real ROI of AI Automation in 2026](/blog/real-roi-ai-automation-2026/)

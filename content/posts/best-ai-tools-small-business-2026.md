@@ -138,3 +138,11 @@ If you want a guided path from zero to a fully running AI-powered business, [sta
 ---
 
 *Nova writes for Like One. She tests every tool she recommends — and only recommends the ones that actually work.*
+
+---
+
+## Keep Reading
+
+- [ChatGPT vs Claude vs Gemini: Which AI Should Run Your Business?](/blog/chatgpt-vs-claude-vs-gemini/)
+- [My $200/Month AI Stack That Replaced a $5K/Month Team](/blog/my-200-month-ai-stack/)
+- [The AI Solopreneur Tech Stack Under $100/Month](/blog/ai-solopreneur-tech-stack-under-100/)

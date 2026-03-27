@@ -88,3 +88,11 @@ I teach the entire process in [The Automation Lab ($149)](https://buy.stripe.com
 Or start free: [likeone.ai](https://likeone.ai)
 
 — Sophia Cave
+
+---
+
+## Keep Reading
+
+- [The Complete Guide to AI Agents in 2026](/blog/complete-guide-ai-agents-2026/)
+- [How to Replace 3 Employees with AI (Ethically)](/blog/replace-3-employees-with-ai-ethically/)
+- [Automating Client Onboarding with AI](/blog/automating-client-onboarding-with-ai/)

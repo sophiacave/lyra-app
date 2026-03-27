@@ -146,3 +146,11 @@ Start with one workflow you do every week. Break it into steps. Build the chain.
 ---
 
 *Want a library of production-ready prompt chains for business? The [Claude Power-User Playbook](/products/claude-power-user-playbook) includes 25+ chains for proposals, analysis, content, and client work — ready to use or automate.*
+
+---
+
+## Keep Reading
+
+- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)
+- [The Complete Guide to AI Agents in 2026](/blog/complete-guide-ai-agents-2026/)
+- [The Make.com + Claude Stack: A Complete Guide](/blog/make-com-claude-stack-complete-guide/)

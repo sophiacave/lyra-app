@@ -110,3 +110,11 @@ That is all it takes to start. The sophistication comes later. The speed comes i
 ---
 
 *Want the prompt templates and voice document template? [Subscribe to the Like One newsletter](/subscribe) — we send the toolkit to every new subscriber.*
+
+---
+
+## Keep Reading
+
+- [AI-Powered Email That Actually Converts](/blog/ai-powered-email-that-converts/)
+- [The Prompt Library Every Team Needs](/blog/prompt-library-every-team-needs/)
+- [AI for Freelancers: Double Your Output Without Doubling Your Hours](/blog/ai-for-freelancers-double-output/)

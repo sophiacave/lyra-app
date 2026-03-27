@@ -113,3 +113,11 @@ By day 30, you will not be AI curious anymore. You will be AI native. And you wi
 ---
 
 *Ready to accelerate? The [Like One Academy](https://likeone.ai/academy/) walks you through the full system — from first prompt to autonomous workflows. Start free.*
+
+---
+
+## Keep Reading
+
+- [Why AI Fluency Is the New Literacy](/blog/ai-fluency-new-literacy/)
+- [Build Your First AI Workflow in 30 Minutes](/blog/build-first-ai-workflow-30-minutes/)
+- [I'm Building a 22-Agent AI Company — Here's What Week 1 Looked Like](/blog/week-one-building-ai-company/)

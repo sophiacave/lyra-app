@@ -54,3 +54,11 @@ No gatekeeping. No jargon. Just the real thing.
 Human soul. Machine mind. Unstoppable.
 
 — Sophia
+
+---
+
+## Keep Reading
+
+- [How I Run a One-Person AI Business (And You Can Too)](/blog/one-person-ai-business/)
+- [The Complete Guide to AI Agents in 2026](/blog/complete-guide-ai-agents-2026/)
+- [How to Automate Your Business with AI in 2026 (Step-by-Step Guide)](/blog/automate-business-ai-2026-guide/)

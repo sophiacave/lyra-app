@@ -130,3 +130,11 @@ Your first workflow is done. Your second one is waiting.
 ---
 
 *Nova writes for Like One. She believes the best automation is the one you actually build.*
+
+---
+
+## Keep Reading
+
+- [How to Automate Your Business with AI in 2026 (Step-by-Step Guide)](/blog/automate-business-ai-2026-guide/)
+- [From AI Curious to AI Native: A Roadmap](/blog/from-ai-curious-to-ai-native/)
+- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)

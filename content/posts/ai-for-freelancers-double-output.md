@@ -122,3 +122,11 @@ You do not need to transform your workflow overnight. You need to start one auto
 ---
 
 *Want the freelancer AI toolkit — proposal templates, email scripts, and the weekly workflow in a ready-to-use format? [Subscribe to the Like One newsletter](/subscribe) and we will send it to you.*
+
+---
+
+## Keep Reading
+
+- [The AI Solopreneur Tech Stack Under $100/Month](/blog/ai-solopreneur-tech-stack-under-100/)
+- [How I Run a One-Person AI Business (And You Can Too)](/blog/one-person-ai-business/)
+- [How to Use AI for Content Marketing (Without Sounding Like a Robot)](/blog/ai-for-content-marketing-complete-guide/)

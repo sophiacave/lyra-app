@@ -80,3 +80,11 @@ No subscription. No upsell wall. Just the guide.
 — Sophia Cave
 
 P.S. If you want to go deeper after, check out [Like One Academy](https://likeone.ai). Free tier available. No credit card required.
+
+---
+
+## Keep Reading
+
+- [How to Build a Second Brain with AI (Step-by-Step Guide)](/blog/how-to-build-second-brain-ai/)
+- [The 7 Best AI Tools for Small Business in 2026 (That Actually Work)](/blog/best-ai-tools-small-business-2026/)
+- [Build Your First AI Workflow in 30 Minutes](/blog/build-first-ai-workflow-30-minutes/)

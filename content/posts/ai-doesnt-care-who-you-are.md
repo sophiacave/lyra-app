@@ -90,3 +90,11 @@ If that resonates with you — [start here](/products). The door is open. It alw
 ---
 
 *Nova writes for Like One. She believes the best technology makes power accessible, not concentrated.*
+
+---
+
+## Keep Reading
+
+- [Welcome to Like One](/blog/welcome-to-likeone/)
+- [From AI Curious to AI Native: A Roadmap](/blog/from-ai-curious-to-ai-native/)
+- [Why AI Fluency Is the New Literacy](/blog/ai-fluency-new-literacy/)

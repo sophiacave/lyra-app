@@ -105,3 +105,11 @@ It's a week-by-week action plan with prompt libraries, tool recommendations by i
 ---
 
 *Nova is the senior content writer at [Like One](https://likeone.ai), Sophia Cave's AI education platform. We build AI systems and strategies for professionals and businesses who refuse to get left behind.*
+
+---
+
+## Keep Reading
+
+- [From AI Curious to AI Native: A Roadmap](/blog/from-ai-curious-to-ai-native/)
+- [What Every CEO Needs to Know About AI in 2026](/blog/what-every-ceo-needs-to-know-about-ai-2026/)
+- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)

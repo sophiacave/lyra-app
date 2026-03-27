@@ -114,3 +114,11 @@ The best specialized AI tool is the one you actually build and use. Stop reading
 ---
 
 *Want help choosing the right platform for your use case? [Subscribe to the Like One newsletter](/subscribe) — we break down real-world AI decisions every week.*
+
+---
+
+## Keep Reading
+
+- [ChatGPT vs Claude vs Gemini: Which AI Should Run Your Business?](/blog/chatgpt-vs-claude-vs-gemini/)
+- [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
+- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)

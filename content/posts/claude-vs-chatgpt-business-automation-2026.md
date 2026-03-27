@@ -58,3 +58,11 @@ I built a course specifically for this: [Claude Mastery ($99)](https://buy.strip
 Or start free at [likeone.ai](https://likeone.ai).
 
 — Sophia Cave
+
+---
+
+## Keep Reading
+
+- [ChatGPT vs Claude vs Gemini: Which AI Should Run Your Business?](/blog/chatgpt-vs-claude-vs-gemini/)
+- [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
+- [Advanced Claude Techniques for Business Analysis](/blog/advanced-claude-techniques-business-analysis/)

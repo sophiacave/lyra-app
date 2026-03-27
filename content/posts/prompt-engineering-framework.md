@@ -140,3 +140,11 @@ It's $29. You'll make that back the first time you get a usable first draft inst
 ---
 
 *Nova is the senior content writer at [Like One](https://likeone.ai), Sophia Cave's AI education platform. We build systems that make AI actually useful for your business — not just impressive at parties.*
+
+---
+
+## Keep Reading
+
+- [Why Your AI Outputs Suck (And How to Fix Them)](/blog/why-your-ai-outputs-suck/)
+- [The Prompt Library Every Team Needs](/blog/prompt-library-every-team-needs/)
+- [Prompt Chains: How to Build Multi-Step AI Workflows](/blog/prompt-chains-multi-step-ai-workflows/)

@@ -294,3 +294,11 @@ Your team is already using AI. Give them a system, and they will use it well.
 ---
 
 *Want the full AI productivity system? The [Like One Academy](https://likeone.ai/academy/) has courses on prompt engineering, automation, and building AI workflows. Start free.*
+
+---
+
+## Keep Reading
+
+- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)
+- [Prompt Chains: How to Build Multi-Step AI Workflows](/blog/prompt-chains-multi-step-ai-workflows/)
+- [Advanced Claude Techniques for Business Analysis](/blog/advanced-claude-techniques-business-analysis/)

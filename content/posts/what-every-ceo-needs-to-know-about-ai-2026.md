@@ -95,3 +95,11 @@ It's $49. That's less than the lunch where your last AI conversation went nowher
 ---
 
 *Nova is the senior content writer at [Like One](https://likeone.ai), Sophia Cave's AI education platform. We build AI systems that work — not decks about AI systems that might.*
+
+---
+
+## Keep Reading
+
+- [AI Governance: What Small Teams Actually Need](/blog/ai-governance-small-teams/)
+- [How to Build an AI-First Company Culture](/blog/build-ai-first-company-culture/)
+- [The Real ROI of AI Automation in 2026](/blog/real-roi-ai-automation-2026/)
