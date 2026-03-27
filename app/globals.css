@@ -5489,3 +5489,9 @@ html, body {
   padding-top: var(--space-6);
   border-top: 1px solid var(--border);
 }
+
+/* ── Utility Classes ── */
+
+.text-purple {
+  color: var(--accent-purple);
+}
