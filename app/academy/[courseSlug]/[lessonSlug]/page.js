@@ -98,8 +98,25 @@ export default async function LessonPage({ params }) {
     url: `${site.url}/academy/${courseSlug}/${lessonSlug}/`,
   };
 
-  const fullContentHtml = breadcrumbHtml + lesson.contentHtml;
   const exercises = getExercises(courseSlug, lessonSlug);
+
+  // For paid lessons, only ship a preview — full content loads client-side after auth
+  const isPaid = lesson.free === false;
+  let fullContentHtml;
+  if (isPaid) {
+    // Extract first ~30% of content as a teaser preview for SEO + engagement
+    const sections = lesson.contentHtml.split(/<h[23][^>]*>/);
+    const previewSections = sections.slice(0, Math.max(2, Math.ceil(sections.length * 0.3)));
+    // Rejoin with original h2/h3 tags by finding them
+    const headingMatches = lesson.contentHtml.match(/<h[23][^>]*>/g) || [];
+    let preview = previewSections[0] || '';
+    for (let i = 1; i < previewSections.length; i++) {
+      preview += (headingMatches[i - 1] || '') + previewSections[i];
+    }
+    fullContentHtml = breadcrumbHtml + preview;
+  } else {
+    fullContentHtml = breadcrumbHtml + lesson.contentHtml;
+  }
 
   return (
     <>

@@ -1726,6 +1726,35 @@ html, body {
 }
 
 
+/* ── Course Pro CTA ── */
+.course-pro-cta {
+  margin-top: var(--space-6);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  border: 1px solid rgba(251,146,60,.15);
+  background: linear-gradient(135deg, rgba(251,146,60,.04), rgba(192,132,252,.04));
+}
+.course-pro-cta-title {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+.course-pro-cta-desc {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto var(--space-5);
+  line-height: 1.6;
+}
+.course-pro-cta-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 /* ── Academy Badges Row ── */
 
 .academy-badge-row {

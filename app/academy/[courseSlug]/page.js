@@ -170,6 +170,32 @@ export default async function CoursePage({ params }) {
           </Link>
         ))}
       </div>
+
+      {/* Go Pro CTA — shown when course has paid lessons */}
+      {freeLessons < course.lessons.length && (
+        <div className="course-pro-cta glass glass-animate-up">
+          <div className="course-pro-cta-content">
+            <h3 className="course-pro-cta-title">Unlock the full course</h3>
+            <p className="course-pro-cta-desc">
+              Get all {course.lessonCount} lessons in {course.title} — plus every other course in the academy.
+              Founding members lock in <strong>90% off forever</strong>.
+            </p>
+            <div className="course-pro-cta-actions">
+              <a
+                href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="site-btn-primary"
+              >
+                Go Pro — $4.90/mo
+              </a>
+              <Link href="/pricing/" className="site-btn-ghost">
+                Compare plans
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
