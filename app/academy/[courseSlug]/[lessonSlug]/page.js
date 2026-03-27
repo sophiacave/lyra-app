@@ -101,9 +101,11 @@ export default async function LessonPage({ params }) {
   const exercises = getExercises(courseSlug, lessonSlug);
 
   // For paid lessons, only ship a preview — full content loads client-side after auth
+  // Exception: quiz/assessment lessons need full HTML (including scripts) — gate handles access
   const isPaid = lesson.free === false;
+  const isInteractive = lesson.type === 'quiz' || lesson.type === 'assessment';
   let fullContentHtml;
-  if (isPaid) {
+  if (isPaid && !isInteractive) {
     // Smart truncation: cut at complete section boundaries, never mid-tag
     const html = lesson.contentHtml;
     // Find all h2/h3 heading positions in the raw HTML
