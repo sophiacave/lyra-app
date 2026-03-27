@@ -197,7 +197,7 @@ function renderQuestion() {
       fb.classList.add('show');
       updateDots();
       if (typeof LO !== 'undefined') { correct ? LO.sfx.success() : LO.sfx.error(); }
-      setTimeout(function() { currentQ++; renderQuestion(); }, 3000);
+      setTimeout(function() { currentQ++; renderQuestion(); }, 1200);
     });
   });
 }

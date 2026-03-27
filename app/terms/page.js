@@ -28,7 +28,7 @@ export default function TermsPage() {
         <li className="legal-li">You can cancel anytime from your Stripe billing portal</li>
       </ul>
 
-      <h2 className="legal-h2">Refund Policy</h2>
+      <h2 id="refunds" className="legal-h2">Refund Policy</h2>
       <p className="legal-p">We offer a <strong>7-day refund policy</strong>. If you&rsquo;re not satisfied with Pro within 7 days of your first payment, email <a href="mailto:hello@likeone.ai" className="legal-link">hello@likeone.ai</a> and we&rsquo;ll refund you in full. After 7 days, no refunds for the current billing period, but you can cancel future billing anytime.</p>
 
       <h2 className="legal-h2">Free Content</h2>

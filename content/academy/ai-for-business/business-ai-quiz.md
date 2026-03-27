@@ -116,7 +116,7 @@ function renderQuestion(){
       else { el.classList.add('wrong'); quizArea.querySelector(`[data-i="${q.ans}"]`).classList.add('correct'); LO.sfx.error(); }
       quizArea.querySelectorAll('.q-opt').forEach(o=>o.classList.add('disabled'));
       document.getElementById('explain').classList.add('show');
-      setTimeout(() => { currentQ++; renderQuestion(); }, 2500);
+      setTimeout(() => { currentQ++; renderQuestion(); }, 1200);
     });
   });
 }

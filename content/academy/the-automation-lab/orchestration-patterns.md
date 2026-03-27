@@ -99,7 +99,7 @@ function answerQuiz(i){
   btns.forEach((b,idx)=>{b.disabled=true;b.classList.add(idx===q.correct?'correct':'wrong');});
   btns[i].classList.remove('correct','wrong');btns[i].classList.add(i===q.correct?'correct':'wrong');
   const fb=document.getElementById('quiz-fb');fb.style.display='block';fb.textContent=q.fb;
-  setTimeout(()=>{qIdx++;renderQuiz();},2500);
+  setTimeout(()=>{qIdx++;renderQuiz();},1200);
 }
 renderQuiz();
 
