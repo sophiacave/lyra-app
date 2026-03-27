@@ -45,6 +45,7 @@ free: true
       <h3><span class="icon">&#128269;</span> Vector Database</h3>
       <p class="subtitle">Semantic similarity search</p>
       <p class="result-label" id="vecLabel">Results for "joyful":</p>
+      <div id="vecResults"></div>
       </div>
   </div>
 

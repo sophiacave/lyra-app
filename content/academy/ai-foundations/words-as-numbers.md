@@ -19,6 +19,9 @@ free: false
     <p>Watch words become vectors in space — and discover that math can capture meaning.</p>
   </div>
 
+  <div class="narration-box" id="narrationBox"></div>
+  <div class="step-dots" id="stepDots"></div>
+
   <div class="canvas-wrap">
     <canvas id="embedCanvas" width="800" height="500"></canvas>
     <div class="canvas-controls">
@@ -117,7 +120,7 @@ const steps=[
 ];
 
 function renderStepDots(){
-  document.getElementById('stepDots').innerHTML=steps.map((_,i)=>``).join('');
+  document.getElementById('stepDots').innerHTML=steps.map((_,i)=>`<span class="step-dot${i===currentStep?' active':''}"></span>`).join('');
 }
 
 function setStep(s){

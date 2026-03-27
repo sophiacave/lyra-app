@@ -17,12 +17,13 @@ free: true
     <div class="mem-card ltm" onclick="showMem('ltm')"><div class="mem-icon">&#128451;&#65039;</div><div class="mem-name">Long-Term</div><div class="mem-sub">agent_memory table</div></div>
     <div class="mem-card shared" onclick="showMem('shared')"><div class="mem-icon">&#127760;</div><div class="mem-name">Shared</div><div class="mem-sub">brain_context</div></div>
   </div>
+  <div class="mem-detail" id="mem-detail"></div>
   <h2 class="section-title">&#128260; Memory in Action</h2>
   <div class="flow-section">
     <div class="flow-title">Watch agents read and write to shared memory</div>
     <div class="flow-agents">
       <div class="flow-agent"><div class="agent-avatar" id="agentA-av">&#129302;</div><div class="agent-name">Agent A</div><div class="agent-action" id="agentA-act">Idle</div></div>
-      <div class="flow-db"><div class="flow-db-icon">&#128451;&#65039;</div><div class="flow-db-name">brain_context</div></div>
+      <div class="flow-db"><div class="flow-db-icon">&#128451;&#65039;</div><div class="flow-db-name">brain_context</div><div class="db-entries" id="db-entries"></div></div>
       <div class="flow-agent"><div class="agent-avatar" id="agentB-av">&#129302;</div><div class="agent-name">Agent B</div><div class="agent-action" id="agentB-act">Idle</div></div>
     </div>
     <div style="text-align:center;margin-top:1.5rem">
@@ -58,6 +59,7 @@ free: true
     </div>
     <div class="qb-result" id="q-result">SELECT * FROM brain_context WHERE category = 'identity';</div>
     <button class="qb-run" onclick="runQuery()">Run Query</button>
+    <pre class="qb-output" id="q-output" style="display:none"></pre>
     </div>
 
   <div class="complete-section">

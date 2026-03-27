@@ -31,7 +31,7 @@ free: false
 <div class="overall-progress">
 <div class="big-num" id="bigNum">0</div>
 <div class="of-total">of 20 items checked</div>
-<div class="overall-bar"></div>
+<div class="overall-bar"><div class="overall-fill" id="overallFill"></div></div>
 <div class="cat-progress">
 <span class="cat-badge" id="catBadge0">Security 0/5</span>
 <span class="cat-badge" id="catBadge1">Performance 0/5</span>
@@ -40,17 +40,20 @@ free: false
 </div>
 </div>
 
+<div id="checklistContainer"></div>
+
 <div class="celebration" id="celebration">
 <span class="cel-icon">&#x1f680;</span>
 <h2>Ready to Launch!</h2>
 <p>All 20 items checked. Your product is ready for the world. Ship it.</p>
+<div id="confetti"></div>
 </div>
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
 <span>Lesson Progress</span><span id="lessonPct">0%</span>
 </div>
-<div class="progress-bar"></div>
+<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>

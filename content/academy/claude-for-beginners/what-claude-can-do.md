@@ -83,6 +83,7 @@ css: "claude-beginners.css"
         <span style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)">LIVE EXAMPLE</span>
         <button onclick="hideDemo()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem">&times;</button>
       </div>
+      <div id="demo-chat"></div>
       </div>
   </div>
 </div>

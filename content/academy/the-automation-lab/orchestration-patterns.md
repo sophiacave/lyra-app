@@ -23,9 +23,13 @@ free: false
       <div class="demo-title" id="demo-title">Pipeline Pattern</div>
       <button class="demo-play" onclick="playDemo()">&#9654; Animate</button>
     </div>
+    <div class="demo-canvas" id="demo-canvas"></div>
+    <pre class="demo-log" id="demo-log"></pre>
     </div>
 
   <h2 class="section-title">&#129504; When to Use Which?</h2>
+  <div id="quiz-section"></div>
+  <div class="quiz-fb" id="quiz-fb" style="display:none"></div>
   <div class="complete-section">
     <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 350 XP</button>
     <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +350 XP earned</div>

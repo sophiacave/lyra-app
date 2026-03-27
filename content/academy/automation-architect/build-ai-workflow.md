@@ -49,7 +49,10 @@ free: false
 
   <div class="canvas" id="canvas">
     <div class="canvas-label" id="canvasEmpty">Click components above to build your workflow</div>
+    <div id="canvasFlow"></div>
     </div>
+
+  <div class="sim-log" id="simLog"></div>
 
   <div class="run-area">
     <button class="run-btn" id="runBtn" disabled onclick="runSimulation()">Run Simulation</button>

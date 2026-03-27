@@ -35,6 +35,11 @@ free: false
     <div class="framework"><h4>Custom LLM Judge</h4><p>Build your own evaluator by prompting GPT-4: "Rate this answer's faithfulness to the context on 1-5. Explain." Simple, flexible, and domain-adaptable.</p></div>
   </div>
 
+  <div id="scenarioNav" class="scenario-nav"></div>
+  <div id="evalScenario"></div>
+  <div id="metricSliders"></div>
+  <div class="score-summary" id="scoreSummary"></div>
+
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
   </div>
 

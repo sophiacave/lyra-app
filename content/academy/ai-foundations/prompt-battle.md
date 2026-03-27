@@ -25,6 +25,10 @@ free: false
       <div class="score-label">BATTLE POINTS</div>
       <div class="streak cold" id="streakBadge">No streak yet</div>
     </div>
+    <div class="battle-progress" id="battleProgress"></div>
+    <div id="battleContainer"></div>
+    <div class="battle-feedback" id="feedback"></div>
+    <div class="results" id="results"></div>
   </div>
 
   <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
@@ -61,7 +65,7 @@ function renderProgress(){
     let cls='bp-dot';
     if(i<current)cls+=' '+(answered[i]?'correct':'wrong');
     else if(i===current)cls+=' current';
-    return``;
+    return`<span class="bp-dot ${cls}"></span>`;
   }).join('');
 }
 

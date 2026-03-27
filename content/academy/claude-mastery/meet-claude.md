@@ -4,7 +4,7 @@ course: "claude-mastery"
 order: 1
 type: "lesson"
 free: true
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+200 XP</div></div>
+---<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+200 XP</div><div id="particles"></div></div>
 
 <nav class="nav">
 
@@ -111,7 +111,9 @@ free: true
 <div class="quiz-progress">Question <span id="qNum">1</span> of 5</div>
 <div class="scenario-box">
 <div class="scenario-label">Scenario</div>
+<div id="scenarioText"></div>
 </div>
+<div class="quiz-feedback" id="quizFeedback"></div>
 <div class="quiz-options">
 <button class="quiz-btn opus-opt" id="btnOpus" onclick="answer('opus')">Claude Opus</button>
 <button class="quiz-btn sonnet-opt" id="btnSonnet" onclick="answer('sonnet')">Claude Sonnet</button>
@@ -119,6 +121,7 @@ free: true
 </div>
 <button class="quiz-next-btn" id="quizNext" onclick="nextQuestion()">Next Question →</button>
 <div class="quiz-score" id="quizScore">
+<div id="scoreNum"></div>
 <p id="scoreMsg"></p>
 <button class="quiz-next-btn" style="display:inline-block;margin-top:1rem" onclick="resetQuiz()">Retake Quiz</button>
 </div>

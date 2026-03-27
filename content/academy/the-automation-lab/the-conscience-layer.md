@@ -17,26 +17,29 @@ free: false
     <div class="hb-title">Drag rules into the correct tiers</div>
     <div class="hb-desc">Every rule has a natural home. Prime Directives override everything. Identity shapes behavior. Operations set boundaries. Safety prevents harm. Tasks are the work itself. Arrange them correctly.</div>
     <div class="hb-tiers" id="tiers">
-      <div class="tier t1" data-tier="prime" ondragover="ev(event)" ondrop="dropRule(event,'prime')"><div class="tier-header"><span class="tier-label">&#128308; Tier 1: Prime Directives</span><span class="tier-priority">HIGHEST</span></div></div>
-      <div class="tier t2" data-tier="identity" ondragover="ev(event)" ondrop="dropRule(event,'identity')"><div class="tier-header"><span class="tier-label">&#128992; Tier 2: Identity</span><span class="tier-priority">HIGH</span></div></div>
-      <div class="tier t3" data-tier="ops" ondragover="ev(event)" ondrop="dropRule(event,'ops')"><div class="tier-header"><span class="tier-label">&#128309; Tier 3: Operations</span><span class="tier-priority">MEDIUM</span></div></div>
-      <div class="tier t4" data-tier="safety" ondragover="ev(event)" ondrop="dropRule(event,'safety')"><div class="tier-header"><span class="tier-label">&#128994; Tier 4: Safety</span><span class="tier-priority">STANDARD</span></div></div>
-      <div class="tier t5" data-tier="task" ondragover="ev(event)" ondrop="dropRule(event,'task')"><div class="tier-header"><span class="tier-label">&#9899; Tier 5: Tasks</span><span class="tier-priority">LOWEST</span></div></div>
+      <div class="tier t1" data-tier="prime" ondragover="ev(event)" ondrop="dropRule(event,'prime')"><div class="tier-header"><span class="tier-label">&#128308; Tier 1: Prime Directives</span><span class="tier-priority">HIGHEST</span></div><div class="tier-rules" id="rules-prime"></div></div>
+      <div class="tier t2" data-tier="identity" ondragover="ev(event)" ondrop="dropRule(event,'identity')"><div class="tier-header"><span class="tier-label">&#128992; Tier 2: Identity</span><span class="tier-priority">HIGH</span></div><div class="tier-rules" id="rules-identity"></div></div>
+      <div class="tier t3" data-tier="ops" ondragover="ev(event)" ondrop="dropRule(event,'ops')"><div class="tier-header"><span class="tier-label">&#128309; Tier 3: Operations</span><span class="tier-priority">MEDIUM</span></div><div class="tier-rules" id="rules-ops"></div></div>
+      <div class="tier t4" data-tier="safety" ondragover="ev(event)" ondrop="dropRule(event,'safety')"><div class="tier-header"><span class="tier-label">&#128994; Tier 4: Safety</span><span class="tier-priority">STANDARD</span></div><div class="tier-rules" id="rules-safety"></div></div>
+      <div class="tier t5" data-tier="task" ondragover="ev(event)" ondrop="dropRule(event,'task')"><div class="tier-header"><span class="tier-label">&#9899; Tier 5: Tasks</span><span class="tier-priority">LOWEST</span></div><div class="tier-rules" id="rules-task"></div></div>
     </div>
     <div class="rule-bank" id="rule-bank">
       <div class="bank-label">&#128230; Rule Bank — drag these into tiers above</div>
+      <div class="bank-rules" id="bank-rules"></div>
       </div>
   </div>
 
   <h2 class="section-title">&#9878;&#65039; Ethical Dilemmas</h2>
   <div class="dilemma-section">
     <div class="dilemma-header"><span style="font-weight:700">Test Your Conscience</span><span class="dilemma-count" id="d-count">0/5 resolved</span></div>
+    <div id="dilemmas"></div>
     </div>
 
   <div class="soul-search" id="soul-search">
     <div class="soul-anim">&#128302;</div>
     <div class="soul-text">Soul Search Complete</div>
     <div class="soul-detail">Your conscience layer has been evaluated against all ethical dilemmas.</div>
+    <div class="soul-result" id="soul-result"></div>
     </div>
 
   <div class="complete-section">

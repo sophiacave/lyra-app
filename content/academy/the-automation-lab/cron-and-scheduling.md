@@ -38,8 +38,11 @@ free: false
 
     <div class="conflict-alert" id="conflict-alert">&#9888;&#65039; Scheduling conflict detected! Two agents overlap at the same time.</div>
 
+    <div class="agent-sched" id="agent-sched"></div>
+
     <div class="timeline" id="timeline">
       <div class="tl-hours"><span>12AM</span><span>3AM</span><span>6AM</span><span>9AM</span><span>12PM</span><span>3PM</span><span>6PM</span><span>9PM</span><span>12AM</span></div>
+      <div class="tl-rows" id="tl-rows"></div>
       </div>
   </div>
 
@@ -121,7 +124,7 @@ function updateTimeline(){
     agentSchedules[a.id]=hours;
     hours.forEach(h=>{if(!hourMap[h])hourMap[h]=[];hourMap[h].push(a.id);});
     const row=document.createElement('div');row.className='tl-agent-row';
-    row.innerHTML=`<div class="tl-agent-label" style="color:${a.color}">${a.icon} ${a.name}</div>`;
+    row.innerHTML=`<div class="tl-agent-label" style="color:${a.color}">${a.icon} ${a.name}</div><div class="tl-bar" id="bar-${a.id}"></div>`;
     rows.appendChild(row);
     setTimeout(()=>{
       const bar=document.getElementById(`bar-${a.id}`);
