@@ -149,6 +149,10 @@ export default async function LessonPage({ params }) {
     fullContentHtml = breadcrumbHtml + lesson.contentHtml;
   }
 
+  // Convert <script> to <script type="text/x-lesson"> to prevent browser execution
+  // during SSR HTML parse. ImmersiveLesson's useEffect will re-activate them client-side.
+  fullContentHtml = fullContentHtml.replace(/<script(?=[\s>])/g, '<script type="text/x-lesson"');
+
   return (
     <>
       <script

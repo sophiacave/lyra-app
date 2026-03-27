@@ -111,16 +111,20 @@ export default function ImmersiveLesson({
   const showGate = !isFree && subStatus !== 'pro';
   const hasExercises = exercises.length > 0;
 
-  // Execute inline scripts from lesson HTML (React strips <script> from dangerouslySetInnerHTML)
+  // Execute inline scripts from lesson HTML.
+  // SSR HTML may have already executed scripts during initial parse, so we use
+  // type="text/x-lesson" markers (set server-side) to prevent double execution.
+  // This useEffect finds those markers and creates real executable scripts.
   const contentRef = useRef(null);
   useEffect(() => {
     if (!contentRef.current) return;
-    const scripts = contentRef.current.querySelectorAll('script');
+    const scripts = contentRef.current.querySelectorAll('script[type="text/x-lesson"]');
     scripts.forEach((orig) => {
       const fresh = document.createElement('script');
-      // Copy attributes (src, type, etc.)
-      [...orig.attributes].forEach((attr) => fresh.setAttribute(attr.name, attr.value));
-      // Copy inline content
+      // Copy attributes except type (which was our marker)
+      [...orig.attributes].forEach((attr) => {
+        if (attr.name !== 'type') fresh.setAttribute(attr.name, attr.value);
+      });
       if (orig.textContent) fresh.textContent = orig.textContent;
       orig.parentNode.replaceChild(fresh, orig);
     });
