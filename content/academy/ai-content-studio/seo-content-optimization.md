@@ -15,62 +15,63 @@ free: false
 
 <div class="lesson-hero">
   <h1>SEO Content <span class="accent">Optimization.</span></h1>
-  <p class="sub">Write content that ranks — without sacrificing readability.</p>
+  <p class="sub">Write content that ranks on Google without selling your soul.</p>
 </div>
 
 <div class="learn-card">
   <h3>After this lesson you'll know</h3>
   <ul>
-    <li>How to use AI for keyword research and topic clustering</li>
-    <li>The structure signals that search engines reward</li>
-    <li>How to optimize existing content without making it robotic</li>
-    <li>The balance between writing for search and writing for humans</li>
+    <li>How search intent works and why it matters more than keywords</li>
+    <li>Using AI for keyword research and content gap analysis</li>
+    <li>On-page SEO structure that Google rewards</li>
+    <li>How to write for humans first and search engines second</li>
   </ul>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Real Game</span>
-  <h2 class="section-title">SEO Is a Content Strategy, Not a Hack</h2>
-  <p class="section-text">SEO isn't about stuffing keywords into paragraphs. It hasn't been for years. Modern SEO is about creating the best, most comprehensive answer to the question someone is actually asking. AI is uniquely good at this because it can help you cover a topic more thoroughly than you could alone.</p>
-  <p class="section-text">The strategy: find what people are searching for, understand the intent behind those searches, and create content that satisfies that intent better than what currently exists. AI accelerates every step of this process.</p>
+  <span class="section-label">The Truth</span>
+  <h2 class="section-title">SEO isn't gaming the system. It's understanding what people search for.</h2>
+  <p class="section-text">Forget everything you think you know about SEO from 2015. Keyword stuffing is dead. Thin "500-word SEO articles" are dead. What works now is genuinely helpful content that matches what someone is actually looking for when they type a query into Google.</p>
+  <p class="section-text">AI is phenomenally good at understanding search intent and helping you create content that satisfies it. Not tricks. Not hacks. Just better content, better structured.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Keyword Intelligence</span>
-  <h2 class="section-title">Research Without the Spreadsheet Headache</h2>
-  <p class="section-text">AI can't access real-time search volume data, but it excels at generating keyword ideas, understanding search intent, and clustering related terms. Use it alongside free tools like Google's "People Also Ask" and autocomplete suggestions.</p>
-
-  <div class="demo-container">
-    <p><strong>Keyword clustering prompt:</strong></p>
-    <p>"I want to rank for content related to [main topic]. Generate 30 related long-tail keywords, grouped into 5-6 clusters by search intent (informational, commercial, navigational). For each cluster, suggest one pillar article and 3-4 supporting articles."</p>
-  </div>
-
-  <p class="section-text">This gives you an entire content map organized around search intent — not just a list of keywords, but a publishing strategy.</p>
+  <span class="section-label">Intent</span>
+  <h2 class="section-title">Before keywords, understand why someone is searching.</h2>
+  <p class="section-text">Every search query has intent behind it. There are four types:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Informational:</strong> "How to start a newsletter" — They want to learn. Give them a guide.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Navigational:</strong> "ConvertKit pricing" — They want a specific page. Not your opportunity.</p>
+  <p class="section-text"><strong style="color:var(--green)">Commercial:</strong> "Best email marketing tools for creators" — They're comparing options. Give them a comparison.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Transactional:</strong> "Buy ConvertKit plan" — They're ready to purchase. Not your content play unless you're selling.</p>
+  <p class="section-text">Most content creators should target informational and commercial intent. Ask AI: <em>"For the topic [your topic], what are the top 10 informational search queries people use? For each, tell me the likely intent and what type of content would best satisfy it."</em></p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Structure That Ranks</span>
-  <h2 class="section-title">Giving Search Engines What They Want</h2>
-  <p class="section-text">Search engines love clear structure. That means: descriptive H2 and H3 headers that include relevant terms, a table of contents for longer pieces, short paragraphs that are easy to scan, FAQ sections that directly answer common questions, and internal links to related content on your site.</p>
-  <p class="section-text">AI is perfect for optimizing structure. Feed it a draft and ask it to improve the headers, add an FAQ section based on "People Also Ask" questions, and suggest where to add internal links.</p>
-  <p class="section-text">The key rule: if the optimization makes the content worse to read, undo it. Google increasingly rewards content that humans actually enjoy. Write for people first, then optimize for search.</p>
+  <span class="section-label">Research</span>
+  <h2 class="section-title">AI-powered keyword and content gap research.</h2>
+  <p class="section-text">You don't need expensive SEO tools to do meaningful keyword research. AI can get you 80% of the way there:</p>
+  <p class="section-text"><em>"I write about [your niche]. Give me 20 long-tail keyword phrases my audience is likely searching for. For each keyword, tell me: estimated competition level (high/medium/low), the search intent, and a suggested article title that would rank for it. Focus on keywords where a well-written article from an independent creator could realistically compete against bigger sites."</em></p>
+  <p class="section-text">The magic is in that last instruction. AI knows that a solo creator won't outrank Forbes for "best productivity apps" — but you can absolutely rank for "productivity system for freelance designers with ADHD." Long-tail, specific, underserved topics are your goldmine.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Try It</span>
-  <h2 class="section-title">Optimize an Existing Piece</h2>
-  <p class="section-text">Take a piece of content you've already published and run it through an SEO optimization pass.</p>
+  <span class="section-label">Structure</span>
+  <h2 class="section-title">On-page SEO that Google actually cares about.</h2>
+  <p class="section-text"><strong>Title tag and H1:</strong> Include your primary keyword naturally. Make it compelling enough for a human to click. AI prompt: <em>"Give me 5 title options for an article targeting [keyword]. Each should include the keyword naturally and make a reader want to click."</em></p>
+  <p class="section-text"><strong>Headers (H2, H3):</strong> Use them to structure your content logically. Each H2 should address a subtopic or question. Google uses headers to understand content hierarchy. Ask AI to review your outline and suggest header improvements.</p>
+  <p class="section-text"><strong>Meta description:</strong> 150-160 characters that summarize the article and include the keyword. This is your ad copy in search results. AI can generate 5 options in seconds.</p>
+  <p class="section-text"><strong>Internal and external links:</strong> Link to your own related content and to authoritative external sources. This signals depth and credibility. Ask AI: <em>"Based on this article, suggest 3 internal link opportunities and 3 types of external sources I should reference."</em></p>
+</div>
 
-  <div class="try-it-box">
-    <div class="prompt-box"><code>Here's my article: [paste it]. The target keyword is "[keyword]." Optimize it for search by: (1) rewriting headers to include relevant terms naturally, (2) adding a 5-question FAQ section based on what people search about this topic, (3) suggesting 3 places to add internal links, (4) improving the meta description (under 155 characters), and (5) flagging any sections that are too thin and need more depth. Keep my voice intact — don't make it sound like an SEO robot.</code></div>
-  </div>
-
-  <p class="section-text">Compare the before and after. The optimized version should read just as well — maybe better — while being structured in a way that search engines can understand and reward. That's the sweet spot.</p>
+<div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Optimize an existing piece of content.</h2>
+  <p class="section-text">Take a blog post you've already published. Paste it into AI with this prompt: <em>"Review this blog post for SEO. Identify: (1) the primary keyword I should be targeting, (2) secondary keywords I'm missing, (3) structural improvements for better ranking, (4) a better title tag and meta description, (5) header improvements, and (6) where I should add more depth to fully satisfy search intent. Don't change my voice — just optimize the structure and coverage."</em> Implement the suggestions and republish. Check your analytics in 30 days.</p>
 </div>
 
 <nav class="lesson-nav">
-  <a href="/academy/ai-content-studio/brand-voice-consistency/">&larr; Lesson 7</a>
-  <a href="/academy/ai-content-studio/content-workflows-and-batching/">Lesson 9: Workflows and Batching &rarr;</a>
+  <a href="/academy/ai-content-studio/brand-voice-consistency">&larr; Previous: Brand Voice Consistency</a>
+  <a href="/academy/ai-content-studio/content-workflows-and-batching">Next: Content Workflows and Batching &rarr;</a>
 </nav>
 
 </div>

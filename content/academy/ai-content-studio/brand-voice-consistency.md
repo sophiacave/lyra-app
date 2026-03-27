@@ -15,63 +15,63 @@ free: false
 
 <div class="lesson-hero">
   <h1>Brand Voice <span class="accent">Consistency.</span></h1>
-  <p class="sub">Teach AI to sound like you — not like everyone else.</p>
+  <p class="sub">Teach AI how you sound — and keep it consistent across everything.</p>
 </div>
 
 <div class="learn-card">
   <h3>After this lesson you'll know</h3>
   <ul>
-    <li>How to create a brand voice document AI can actually use</li>
-    <li>The difference between tone, voice, and style — and why it matters</li>
-    <li>Techniques for training AI on your existing content</li>
-    <li>How to catch and fix "AI voice" before it reaches your audience</li>
+    <li>How to define your brand voice in a way AI can actually use</li>
+    <li>The voice document method that transforms AI output quality</li>
+    <li>Common voice-killing mistakes and how to fix them</li>
+    <li>How to maintain consistency across platforms and formats</li>
   </ul>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Consistency Problem</span>
-  <h2 class="section-title">Why AI Keeps Sounding Like AI</h2>
-  <p class="section-text">You've built a brand voice over years. It's the way you phrase things, the words you'd never use, the rhythm of your sentences. Then you start using AI and suddenly everything sounds like a LinkedIn influencer wrote it in 2023. "Leverage." "Unlock." "Game-changer." None of those are your words.</p>
-  <p class="section-text">The problem is that AI defaults to the average of everything it's been trained on. To get your voice, you have to teach it. Explicitly. Every time.</p>
+  <span class="section-label">The Problem</span>
+  <h2 class="section-title">AI doesn't know what you sound like. Yet.</h2>
+  <p class="section-text">Out of the box, AI writes in a generic, slightly corporate, aggressively helpful tone. It uses phrases like "dive deep," "in today's fast-paced world," and "let's unpack this." It sounds like everyone and no one at the same time.</p>
+  <p class="section-text">That's not AI's fault. It's writing in its default voice because you haven't taught it yours. This lesson fixes that permanently.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">The Voice Document</span>
-  <h2 class="section-title">Your Brand's DNA on Paper</h2>
-  <p class="section-text">A brand voice document is the single most valuable asset for AI content creation. It's a reference sheet that tells AI exactly how you communicate. Here's what to include:</p>
-  <p class="section-text"><strong>Voice attributes:</strong> 3-5 adjectives that define how you sound. Example: "Warm, direct, slightly irreverent, expert but approachable."</p>
-  <p class="section-text"><strong>Vocabulary rules:</strong> Words you always use and words you never use. Example: "Say 'people,' never 'individuals.' Say 'use,' never 'utilize.' Never say 'leverage' unless talking about actual levers."</p>
-  <p class="section-text"><strong>Sentence style:</strong> Short and punchy? Long and flowing? Mixed? Do you use fragments? Rhetorical questions? Example: "Mix short and medium sentences. Use fragments for emphasis. Never write paragraphs longer than 4 sentences."</p>
-  <p class="section-text"><strong>Sample passages:</strong> 3-5 paragraphs from your best writing that capture your voice perfectly. This is the most powerful part — AI can pattern-match on examples better than on rules.</p>
-
-  <div class="demo-container">
-    <p><strong>Prompt to build your voice document:</strong></p>
-    <p>"Analyze these 5 writing samples and create a brand voice guide: [paste samples]. Identify my voice attributes, vocabulary patterns, sentence structure preferences, common phrases, and anything that makes my writing distinctive. Format this as a reference document I can paste into future prompts."</p>
-  </div>
+  <span class="section-label">Define</span>
+  <h2 class="section-title">Building your voice document.</h2>
+  <p class="section-text">A voice document is a reference sheet that tells AI exactly how you communicate. Create one and paste it at the start of every content session. Here's what to include:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Tone words (pick 3-5):</strong> Examples: "Direct, warm, occasionally irreverent, confident but not arrogant." These give AI a personality target.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Writing rules:</strong> "Short paragraphs. No jargon unless I define it. Use contractions. Sentence fragments are OK for emphasis. Never use 'dive deep,' 'leverage,' 'unlock,' or 'game-changer.'"</p>
+  <p class="section-text"><strong style="color:var(--green)">Sample writing:</strong> Paste 3-5 paragraphs of your best writing — content that sounds most like you at your best. Tell AI: "Match this voice exactly."</p>
+  <p class="section-text"><strong style="color:var(--blue)">Audience awareness:</strong> "My audience is [who]. They're sophisticated enough to handle [X] but turned off by [Y]. They appreciate honesty and hate fluff."</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">The Voice Check</span>
-  <h2 class="section-title">Catch AI Voice Before Publishing</h2>
-  <p class="section-text">Even with a voice document, AI will occasionally slip into generic mode. Train yourself to spot the tells: overuse of em dashes, "delve into," "it's important to note," "at the end of the day," and the classic "In today's [adjective] world."</p>
-  <p class="section-text">Build a final check into your workflow. After AI generates content, run it through a voice-check prompt that flags anything off-brand. Then fix those spots manually. Over time, your prompts will get better and the fix list will get shorter.</p>
+  <span class="section-label">The Prompt</span>
+  <h2 class="section-title">The voice-training prompt that changes everything.</h2>
+  <p class="section-text">Use this to train AI on your voice at the start of any session:</p>
+  <p class="section-text"><em>"Here's my brand voice guide. Study it carefully and match this voice in everything you write for me today. [Paste voice document]. Before writing anything, confirm you understand my voice by describing it back to me in 2-3 sentences."</em></p>
+  <p class="section-text">That last instruction — asking AI to describe your voice back — is crucial. It forces the model to internalize the patterns rather than just scanning past them. If the description doesn't sound right, correct it until it does. That calibration step takes 30 seconds and dramatically improves every piece of content in the session.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Try It</span>
-  <h2 class="section-title">Build Your Voice Document</h2>
-  <p class="section-text">Gather 3-5 of your best-written pieces and create your brand voice reference sheet.</p>
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">Five things that kill your voice in AI content.</h2>
+  <p class="section-text"><strong>1. Accepting the first draft.</strong> AI's first attempt is never its best. Ask for revisions: "This is too formal. Make it sound like I'm talking to a friend over coffee."</p>
+  <p class="section-text"><strong>2. Using vague tone instructions.</strong> "Make it sound professional" means nothing. "Write like a smart friend explaining something at a dinner party" means everything.</p>
+  <p class="section-text"><strong>3. Not providing examples.</strong> AI learns better from examples than instructions. Show it what good looks like, don't just describe it.</p>
+  <p class="section-text"><strong>4. Ignoring platform differences.</strong> Your voice stays the same, but its expression shifts. You're still you on Twitter and LinkedIn — but the cadence, length, and formality level adjust. Specify this: "Same voice, but LinkedIn-appropriate length and tone."</p>
+  <p class="section-text"><strong>5. Forgetting the kill list.</strong> Every brand has words and phrases that should never appear. Build a "never use these words" list and include it in your voice document. AI will respect it if you're explicit.</p>
+</div>
 
-  <div class="try-it-box">
-    <div class="prompt-box"><code>Here are samples of my writing: [paste 3-5 samples]. Create a brand voice document with: (1) 5 voice attributes, (2) words I love vs. words I avoid, (3) sentence style rules, (4) formatting preferences, and (5) a "this sounds like me" vs. "this doesn't sound like me" comparison. Make it concise enough to paste into any prompt.</code></div>
-  </div>
-
-  <p class="section-text">Save this document somewhere permanent. Paste it at the start of every content prompt. This is the single biggest quality upgrade you can make to your AI content workflow — it turns generic output into something that genuinely sounds like your brand.</p>
+<div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Create your voice document now.</h2>
+  <p class="section-text">Gather 3-5 pieces of your best writing. Open AI and paste this: <em>"Analyze these writing samples and describe my brand voice. Cover: tone, sentence structure, vocabulary level, personality traits, and what makes this voice distinctive. Then create a 'Voice Guide' I can paste into future sessions."</em> Review the output. Refine it. Save it somewhere you can access every time you start a content session. This one document will transform your AI output quality overnight.</p>
 </div>
 
 <nav class="lesson-nav">
-  <a href="/academy/ai-content-studio/repurposing-content/">&larr; Lesson 6</a>
-  <a href="/academy/ai-content-studio/seo-content-optimization/">Lesson 8: SEO Content Optimization &rarr;</a>
+  <a href="/academy/ai-content-studio/repurposing-content">&larr; Previous: Repurposing Content</a>
+  <a href="/academy/ai-content-studio/seo-content-optimization">Next: SEO Content Optimization &rarr;</a>
 </nav>
 
 </div>

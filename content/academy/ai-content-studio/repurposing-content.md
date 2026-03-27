@@ -15,62 +15,70 @@ free: false
 
 <div class="lesson-hero">
   <h1>Repurposing <span class="accent">Content.</span></h1>
-  <p class="sub">One piece becomes ten. Work once, publish everywhere.</p>
+  <p class="sub">One piece becomes ten. Work smarter, not harder.</p>
 </div>
 
 <div class="learn-card">
   <h3>After this lesson you'll know</h3>
   <ul>
-    <li>The content tree model — one trunk, many branches</li>
-    <li>How to adapt content across platforms without it feeling lazy</li>
-    <li>Which formats translate best to other formats</li>
-    <li>How to use AI to handle the transformation work</li>
+    <li>The content waterfall system for maximum output from minimum input</li>
+    <li>How to transform one blog post into 10+ pieces across formats</li>
+    <li>Which formats translate to which platforms (and which don't)</li>
+    <li>The AI prompts that make repurposing nearly automatic</li>
   </ul>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Multiplier</span>
-  <h2 class="section-title">Stop Creating from Scratch</h2>
-  <p class="section-text">The biggest myth in content creation is that every piece needs to be original. It doesn't. The best content studios in the world repurpose relentlessly. That podcast episode becomes a blog post, five social posts, an email, and a short video script — all from the same core idea.</p>
-  <p class="section-text">This isn't lazy. It's smart. Your audience isn't on every platform. The person who reads your newsletter probably didn't see your tweet. Repurposing means more people encounter your best thinking, in the format they prefer.</p>
+  <span class="section-label">The Principle</span>
+  <h2 class="section-title">Create once. Distribute everywhere.</h2>
+  <p class="section-text">The biggest mistake content creators make is treating every piece as a standalone creation. You write a blog post — done. You write a social post — done. You write an email — done. Three separate efforts, three separate ideas, three separate blocks of time.</p>
+  <p class="section-text">Studios don't work this way. A studio creates one flagship piece and then breaks it down into every possible format. A single long-form piece can fuel your entire content operation for a week or more. AI makes this transformation nearly instant.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">The Content Tree</span>
-  <h2 class="section-title">One Trunk, Many Branches</h2>
-  <p class="section-text">Start with your "trunk" — a substantial piece of content like a blog post, video, or podcast episode. Then branch it out:</p>
-  <p class="section-text"><strong>Blog post (2,000 words)</strong> becomes: 1 newsletter featuring the key insight, 5 social posts pulling different angles, 1 Twitter/X thread with the framework, 3 quote graphics, 1 short video script summarizing the main point, and 1 carousel breaking down the steps.</p>
-  <p class="section-text">That's 12 pieces of content from one afternoon of work. AI handles the transformation. You handle the quality check.</p>
-
-  <div class="demo-container">
-    <p><strong>The repurposing prompt:</strong></p>
-    <p>"Here's my blog post: [paste full text]. Repurpose it into: (1) a 150-word newsletter teaser with a link, (2) a 5-tweet thread with hooks, (3) an Instagram carousel outline (8 slides), (4) a 60-second video script, and (5) 3 standalone LinkedIn posts with different angles. Maintain my brand voice: [describe]."</p>
-  </div>
+  <span class="section-label">System</span>
+  <h2 class="section-title">The content waterfall.</h2>
+  <p class="section-text">Start with your richest, deepest format and let it flow downward into smaller pieces:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Level 1 — The Source:</strong> A blog post, podcast episode, video, or long-form article. This is your flagship. Spend the most time here because everything else flows from it.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Level 2 — The Breakdown:</strong> Newsletter email summarizing the key insight. LinkedIn post telling the story behind it. Twitter thread listing the main points.</p>
+  <p class="section-text"><strong style="color:var(--green)">Level 3 — The Snippets:</strong> Individual quotes or stats as standalone social posts. Instagram carousel of the tips. One-liner hooks pulled from the best lines.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Level 4 — The Derivatives:</strong> Video script for a 60-second reel. Podcast talking points. Quora or Reddit answer using the same expertise. Community post starting a discussion on the topic.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Platform Translation</span>
-  <h2 class="section-title">Same Idea, Different Language</h2>
-  <p class="section-text">Each platform has its own culture. What works on LinkedIn (professional insights, numbered lists) doesn't work on Twitter/X (punchy takes, threads). Instagram wants visual-first thinking. Email wants intimacy.</p>
-  <p class="section-text">When repurposing, don't just copy-paste with minor edits. Translate the idea into the native language of each platform. AI is excellent at this because you can specify the platform norms in your prompt.</p>
-  <p class="section-text">The key instruction to include: "Adapt this for [platform] culture. Don't just shorten it — reimagine how this idea would be expressed natively on [platform]."</p>
+  <span class="section-label">In Practice</span>
+  <h2 class="section-title">One blog post, ten pieces of content.</h2>
+  <p class="section-text">Let's say you wrote a 1,500-word blog post about "5 Pricing Mistakes Freelancers Make." Here's what AI can create from it in under 30 minutes:</p>
+  <p class="section-text">1. A Twitter thread covering all 5 mistakes with solutions<br>
+  2. A LinkedIn post focusing on the most surprising mistake<br>
+  3. An Instagram carousel — one mistake per slide<br>
+  4. An email newsletter teasing the post with the juiciest insight<br>
+  5. Three standalone tweets, each highlighting one mistake<br>
+  6. A 60-second video script summarizing the core message<br>
+  7. A quote graphic pulling the best one-liner from the post<br>
+  8. A poll asking your audience which mistake they've made<br>
+  9. A follow-up email with a personal story related to mistake #1<br>
+  10. A community discussion prompt: "What pricing lesson took you the longest to learn?"</p>
+  <p class="section-text">That's two weeks of content from one afternoon of writing.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Try It</span>
-  <h2 class="section-title">Repurpose Your Best Piece</h2>
-  <p class="section-text">Take your best-performing content from the past month and run it through the repurposing engine.</p>
+  <span class="section-label">The Mega-Prompt</span>
+  <h2 class="section-title">Let AI do the heavy lifting.</h2>
+  <p class="section-text">Here's the prompt that makes this systematic:</p>
+  <p class="section-text"><em>"Here's my blog post: [paste full text]. Repurpose it into the following formats, maintaining my voice and key insights throughout: (1) A 6-tweet Twitter thread, (2) A LinkedIn post with personal angle, (3) A 7-slide Instagram carousel script, (4) A newsletter email that teases one key insight, (5) Three standalone social media posts under 100 words each, (6) A 60-second video script, (7) A discussion question for my community. For each piece, adapt the tone and format to suit the platform — don't just copy-paste sections."</em></p>
+  <p class="section-text">The key instruction is that last line: "don't just copy-paste sections." You want AI to genuinely transform the content for each platform, not just chop it up.</p>
+</div>
 
-  <div class="try-it-box">
-    <div class="prompt-box"><code>Here is my best-performing [content type]: [paste it]. This resonated because [why you think it worked]. Repurpose it into 8 pieces across these platforms: [list your active platforms]. For each piece, adapt to that platform's native style. Preserve the core insight but change the framing, length, and format to fit.</code></div>
-  </div>
-
-  <p class="section-text">Schedule these repurposed pieces across the next two weeks. Track which formats and platforms get the most engagement. That data tells you where to double down.</p>
+<div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Repurpose your best-performing piece.</h2>
+  <p class="section-text">Find your most successful blog post, newsletter, or long-form content piece. Paste it into AI with the mega-prompt above. Review the outputs and edit for your voice. Schedule them across the next two weeks. Track which repurposed formats get the most engagement — that tells you where to focus your distribution energy going forward.</p>
 </div>
 
 <nav class="lesson-nav">
-  <a href="/academy/ai-content-studio/email-sequences-that-convert/">&larr; Lesson 5</a>
-  <a href="/academy/ai-content-studio/brand-voice-consistency/">Lesson 7: Brand Voice Consistency &rarr;</a>
+  <a href="/academy/ai-content-studio/email-sequences-that-convert">&larr; Previous: Email Sequences That Convert</a>
+  <a href="/academy/ai-content-studio/brand-voice-consistency">Next: Brand Voice Consistency &rarr;</a>
 </nav>
 
 </div>

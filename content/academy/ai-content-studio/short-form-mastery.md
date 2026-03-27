@@ -21,59 +21,56 @@ free: false
 <div class="learn-card">
   <h3>After this lesson you'll know</h3>
   <ul>
-    <li>Why short-form content requires a completely different prompting style</li>
-    <li>Hook formulas that work across platforms</li>
-    <li>How to generate 20+ post variations from a single idea</li>
-    <li>The edit-down method for turning long thoughts into punchy posts</li>
+    <li>Why short-form is harder than long-form (and how AI helps)</li>
+    <li>The anatomy of a scroll-stopping hook</li>
+    <li>Platform-specific formats that perform (Twitter, LinkedIn, Instagram)</li>
+    <li>How to generate 20 posts from one core idea</li>
   </ul>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Different Game</span>
-  <h2 class="section-title">Short Doesn't Mean Easy</h2>
-  <p class="section-text">Short-form content is harder than long-form. You have fewer words to make someone care. Every syllable has to earn its place. And the competition for attention is brutal — you're not just competing with other creators, you're competing with everything else on the feed.</p>
-  <p class="section-text">AI can generate social posts quickly, but "quickly" isn't the goal. Memorably is. The trick is using AI to generate volume, then using your judgment to pick the winners.</p>
+  <span class="section-label">Reality Check</span>
+  <h2 class="section-title">Short doesn't mean easy.</h2>
+  <p class="section-text">Mark Twain (supposedly) said, "I didn't have time to write you a short letter, so I wrote you a long one." Short-form content is deceptively hard. You have 1-3 seconds to earn someone's attention and 10-30 seconds to keep it. Every word has to pull its weight.</p>
+  <p class="section-text">This is actually where AI shines brightest. It can generate dozens of variations of the same idea, giving you options you'd never think of on your own. Your job is to curate — pick the ones that sound like you, feel authentic, and hit the right nerve.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Hook Science</span>
-  <h2 class="section-title">The First Line Is Everything</h2>
-  <p class="section-text">On social media, the hook is the content. If your first line doesn't stop someone mid-scroll, nothing else matters. Here are five hook patterns that consistently perform:</p>
-  <p class="section-text"><strong>The Contrarian:</strong> "Most [common advice] is wrong. Here's why." — Challenges assumptions and creates curiosity.</p>
-  <p class="section-text"><strong>The Confession:</strong> "I [did something unexpected]. Here's what happened." — Vulnerability drives engagement.</p>
-  <p class="section-text"><strong>The Number:</strong> "I [did thing] for [time period]. [Number] lessons." — Specific numbers feel credible.</p>
-  <p class="section-text"><strong>The Question:</strong> "Why does nobody talk about [obvious thing]?" — Makes people feel seen.</p>
-  <p class="section-text"><strong>The Story Open:</strong> "Last Tuesday, I got an email that changed everything." — Narrative pulls people in.</p>
-
-  <div class="demo-container">
-    <p><strong>Prompt for hooks:</strong></p>
-    <p>"Generate 10 hook variations for a post about [topic]. Use these patterns: contrarian, confession, number-driven, question, and story opener. Platform: [Twitter/LinkedIn/Instagram]. Keep each hook under 15 words."</p>
-  </div>
+  <span class="section-label">The Hook</span>
+  <h2 class="section-title">The first line is the only line that matters.</h2>
+  <p class="section-text">On every platform, the hook determines whether anyone reads the rest. Here are the hook formats that consistently perform:</p>
+  <p class="section-text"><strong style="color:var(--orange)">The Contrarian:</strong> "Everyone says [common advice]. Here's why that's wrong." — Works because it creates tension.</p>
+  <p class="section-text"><strong style="color:var(--purple)">The Specificity Hook:</strong> "I made $12,847 in 30 days by changing one thing about my content." — Specific numbers feel real and credible.</p>
+  <p class="section-text"><strong style="color:var(--green)">The Story Hook:</strong> "Last Tuesday, a client told me something that changed how I think about marketing." — Humans are wired for narrative.</p>
+  <p class="section-text"><strong style="color:var(--blue)">The Question:</strong> "What would change if you could create a week of content in 2 hours?" — Good questions create an open loop the reader needs to close.</p>
+  <p class="section-text">Ask AI: <em>"Give me 10 hook variations for this idea: [your idea]. Use these formats: contrarian, specificity, story opener, and question. Make them punchy — under 15 words each."</em></p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">The Volume Method</span>
-  <h2 class="section-title">Generate Many, Pick Few</h2>
-  <p class="section-text">Professional content studios don't write one post and publish it. They write twenty variations and pick the three that hit hardest. AI makes this possible for solo creators.</p>
-  <p class="section-text">Start with one core idea. Ask AI for 15-20 variations — different angles, different tones, different formats (thread, single post, carousel text, caption). Then review them all and select the ones that make you think, "Oh, that's good."</p>
-  <p class="section-text">The ones that surprise you are usually the ones that will surprise your audience too.</p>
+  <span class="section-label">Platform Formats</span>
+  <h2 class="section-title">Each platform has its own language.</h2>
+  <p class="section-text"><strong style="color:var(--orange)">Twitter/X:</strong> Thread format works best. Hook tweet + 4-7 value tweets + a closer. Each tweet should stand alone. Ask AI: <em>"Turn this idea into a 6-tweet thread. Each tweet should be under 280 characters and make sense on its own."</em></p>
+  <p class="section-text"><strong style="color:var(--purple)">LinkedIn:</strong> Personal story + business lesson. Short paragraphs. Line breaks between every sentence. The algorithm rewards comments, so end with a question. Ask AI: <em>"Write this as a LinkedIn post. Open with a personal moment, connect it to a business insight, and end with a question that invites discussion."</em></p>
+  <p class="section-text"><strong style="color:var(--green)">Instagram:</strong> Carousel posts dominate for education. Each slide needs one clear idea. The first slide is your hook. Ask AI: <em>"Turn this topic into a 7-slide carousel. Slide 1 = hook, Slides 2-6 = one tip each with a brief explanation, Slide 7 = call to action."</em></p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Try It</span>
-  <h2 class="section-title">Build a Post Batch</h2>
-  <p class="section-text">Take one idea from your content strategy and turn it into a batch of short-form posts.</p>
+  <span class="section-label">Volume</span>
+  <h2 class="section-title">The 1-to-20 method.</h2>
+  <p class="section-text">One core idea can become 20 pieces of content. Here's how:</p>
+  <p class="section-text">Take one strong opinion or insight. Ask AI: <em>"I believe [core idea]. Generate 20 different social media posts from this single idea. Vary the format: some as tips, some as stories, some as questions, some as hot takes, some as 'here's what I'd do' advice. Mix short (1-2 sentences) and medium (3-5 sentences) lengths."</em></p>
+  <p class="section-text">You'll throw away half of them. That's the point. You're panning for gold, not manufacturing widgets. The five posts that feel perfect? Those are the ones that will resonate with your audience.</p>
+</div>
 
-  <div class="try-it-box">
-    <div class="prompt-box"><code>Core idea: [your idea]. Platform: [choose one]. Write 15 variations of this as social posts. Mix these formats: punchy one-liner, mini-thread (3 tweets), hot take, how-to tip, story-based, and question post. Each should have a strong hook as the first line. Voice: [your brand tone].</code></div>
-  </div>
-
-  <p class="section-text">Review all 15. Star your top 5. Those go into your content queue. The rest? Delete without guilt. Volume is the engine. Curation is the craft.</p>
+<div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Generate a week of social content in 15 minutes.</h2>
+  <p class="section-text">Pick three ideas from your content pillars. For each idea, ask AI to generate 7 post variations across different formats. Review all 21 options and pick the best 7 — one per day. Edit them in your voice. Schedule them. You just built a week of content in the time it used to take you to write one post.</p>
 </div>
 
 <nav class="lesson-nav">
-  <a href="/academy/ai-content-studio/long-form-writing/">&larr; Lesson 3</a>
-  <a href="/academy/ai-content-studio/email-sequences-that-convert/">Lesson 5: Email Sequences &rarr;</a>
+  <a href="/academy/ai-content-studio/long-form-writing">&larr; Previous: Long-Form Writing</a>
+  <a href="/academy/ai-content-studio/email-sequences-that-convert">Next: Email Sequences That Convert &rarr;</a>
 </nav>
 
 </div>
