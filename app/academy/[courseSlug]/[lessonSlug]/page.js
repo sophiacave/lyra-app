@@ -104,15 +104,38 @@ export default async function LessonPage({ params }) {
   const isPaid = lesson.free === false;
   let fullContentHtml;
   if (isPaid) {
-    // Extract first ~30% of content as a teaser preview for SEO + engagement
-    const sections = lesson.contentHtml.split(/<h[23][^>]*>/);
-    const previewSections = sections.slice(0, Math.max(2, Math.ceil(sections.length * 0.3)));
-    // Rejoin with original h2/h3 tags by finding them
-    const headingMatches = lesson.contentHtml.match(/<h[23][^>]*>/g) || [];
-    let preview = previewSections[0] || '';
-    for (let i = 1; i < previewSections.length; i++) {
-      preview += (headingMatches[i - 1] || '') + previewSections[i];
+    // Smart truncation: cut at complete section boundaries, never mid-tag
+    const html = lesson.contentHtml;
+    // Find all h2/h3 heading positions in the raw HTML
+    const headingRegex = /<h[23][^>]*>/g;
+    const headingPositions = [];
+    let match;
+    while ((match = headingRegex.exec(html)) !== null) {
+      headingPositions.push(match.index);
     }
+
+    let preview;
+    if (headingPositions.length <= 1) {
+      // No section structure — take content up to first <script> or 30% of chars
+      const scriptIdx = html.indexOf('<script');
+      const cutPoint = scriptIdx > 0 ? scriptIdx : Math.floor(html.length * 0.3);
+      preview = html.slice(0, cutPoint);
+    } else {
+      // Take first ~30% of sections (at least 2 headings worth)
+      const targetIdx = Math.max(2, Math.ceil(headingPositions.length * 0.3));
+      const cutAt = headingPositions[Math.min(targetIdx, headingPositions.length - 1)];
+      preview = html.slice(0, cutAt);
+    }
+
+    // Strip any trailing incomplete tags (e.g. "<div class=")
+    preview = preview.replace(/<[^>]*$/, '');
+    // Never include partial <script> blocks
+    const lastScriptOpen = preview.lastIndexOf('<script');
+    const lastScriptClose = preview.lastIndexOf('</script>');
+    if (lastScriptOpen > lastScriptClose) {
+      preview = preview.slice(0, lastScriptOpen);
+    }
+
     fullContentHtml = breadcrumbHtml + preview;
   } else {
     fullContentHtml = breadcrumbHtml + lesson.contentHtml;
