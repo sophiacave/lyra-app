@@ -93,9 +93,12 @@ free: true
 </div>
 </div>
 
-<div class="card">
-<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
-</div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Temperature to Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Temperature 0","right":"Code generation and data extraction"},{"left":"Temperature 0.3-0.5","right":"Conversation, editing, analysis"},{"left":"Temperature 0.7-0.8","right":"Creative writing and brainstorming"},{"left":"Temperature 0.9-1.0","right":"Experimental and artistic exploration"},{"left":"Temperature controls","right":"Randomness of output selection"}]}'></div>
+
+<div data-learn="QuizMC" data-props='{"title":"Temperature Decisions","questions":[{"q":"You are building a function that classifies customer emails as urgent or not urgent. What temperature should you use?","options":["0.0 — needs deterministic, consistent results","0.5 — balanced is best","0.8 — some creativity helps","1.0 — maximum variation"],"correct":0,"explanation":"Classification tasks require consistency. Temperature 0 ensures you always get the most probable, reliable answer — not a creative one."},{"q":"You want Claude to help brainstorm 20 different campaign slogans. What temperature range fits best?","options":["0.0 — precise answers only","0.1-0.2 — slightly flexible","0.7-0.8 — creative variety","Temperature does not affect brainstorming"],"correct":2,"explanation":"Temperature 0.7-0.8 introduces enough randomness to generate varied, surprising ideas — exactly what brainstorming needs."},{"q":"What happens at temperature 0?","options":["The model refuses to answer","The model always picks the most probable next token — deterministic output","The model generates completely random text","The model becomes slower but more accurate"],"correct":1,"explanation":"At temperature 0, the model is fully deterministic — it always picks the highest-probability next token, producing the same output for the same input every time."}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Order Temperatures from Most Precise to Most Creative","instruction":"Arrange these temperature settings from most deterministic (top) to most creative (bottom)","items":["Temperature 0.0 — Deterministic","Temperature 0.25 — Focused","Temperature 0.5 — Balanced","Temperature 0.75 — Creative","Temperature 1.0 — Wild"]}'></div>
+
 </div>
 
 <div class="progress-footer">
@@ -103,78 +106,4 @@ free: true
 <div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 1</span>
 </div>
-
-<script>
-const OUTPUTS={
-0:{low:["SmartFlow Pro","SmartFlow Pro","SmartFlow Pro"],high:["NebulaForge Infinityx","Quantum Dreamweaver 3000","VelvetThunder Pulse"]},
-1:{low:["The sun descends below the horizon, casting warm orange and pink hues across the sky. Wispy clouds reflect the fading light, creating a gradient from deep blue to soft amber. The landscape darkens as the last rays disappear.","The sun sets below the horizon, painting the sky in shades of orange, pink, and purple. Clouds catch the remaining light, creating a warm glow that gradually fades to twilight.","The sun lowers toward the horizon, creating a display of warm colors across the western sky. Orange and pink bands stretch across scattered clouds as daylight fades to dusk."],high:["The sky bleeds marmalade and crushed violets as the sun melts into the earth like a gold coin dropped into dark water — and for one trembling moment, the whole world holds its breath in amber.","Imagine a painter who's furious and tender all at once, slashing the horizon with cadmium and regret. The sun doesn't set — it surrenders, dissolving into the sea like a secret told too loudly.","The sun pirouettes on the edge of forever, trailing scarves of tangerine and crushed ruby. Below, the ocean swallows the light whole, belching up phosphorescent stars in return."]},
-2:{low:["Gravity is a fundamental force of nature that attracts objects with mass toward one another. The strength of gravitational attraction depends on the masses of the objects and the distance between them, as described by Newton's law of universal gravitation: F = G(m1 × m2)/r².","Gravity is the force that pulls objects with mass toward each other. On Earth, this means objects fall toward the ground at approximately 9.8 m/s². Einstein's general relativity describes gravity as the curvature of spacetime caused by mass and energy.","Gravity is a fundamental force that causes all objects with mass or energy to attract one another. It keeps planets in orbit around stars and holds galaxies together. Newton described it mathematically, and Einstein later explained it as curvature in spacetime."],high:["Picture the universe as a vast trampoline, and every planet, star, and galaxy is a bowling ball resting on its surface. They create dips — dimples in the fabric of reality itself. That's gravity: not a force pulling you down, but spacetime bending beneath your feet, whispering 'this way, fall this way.'","What if I told you that you're not standing on Earth — Earth is accelerating upward into your feet? That's one way to think about gravity through Einstein's eyes. Mass doesn't pull; it warps the very stage on which reality performs its dance.","Gravity is the universe's oldest love story. Every atom yearns for every other atom across the void. Stars court planets, galaxies embrace in spiraling waltzes that last billions of years. It's the weakest force and yet it sculpts everything."]},
-3:{low:["The letter arrived on a Tuesday morning, unremarkable except for the fact that it was addressed to someone who had been dead for seven years.","She found the door unlocked when she came home, which was strange because she lived alone and always locked it twice.","The first sign that something was wrong came at 3:47 AM, when every phone in the city rang simultaneously."],high:["The whale fell from the sky on a Wednesday, and honestly, Mira thought, that was the least weird thing about her week.","In the space between one heartbeat and the next, the universe blinked — and when it opened its eyes again, gravity had learned to flow sideways.","They say you shouldn't name the things that live in the walls. But when the scratching spelled out M-O-T-H-E-R in Morse code, naming felt like the least of my problems."]}
-};
-
-let currentPrompt=0,isGenerating=false;
-
-function updateTemp(){
-const v=document.getElementById('tempSlider').value/100;
-const display=document.getElementById('tempVal');
-display.textContent=v.toFixed(2);
-const labels=['Deterministic','Focused','Balanced','Creative','Wild'];
-const colors=['#38bdf8','#8b5cf6','#c084fc','#fb923c','#f87171'];
-const idx=Math.min(Math.floor(v*5),4);
-display.style.color=colors[idx];
-document.getElementById('tempLabel').textContent=labels[idx];
-document.getElementById('tempLabel').style.color=colors[idx];
-// Update slider gradient
-const sl=document.getElementById('tempSlider');
-sl.style.background=`linear-gradient(90deg,#38bdf8,#8b5cf6 25%,#c084fc 50%,#fb923c 75%,#f87171)`;
-// Highlight spectrum
-for(let i=0;i<5;i++){
-document.getElementById('spec'+i).classList.toggle('active',i===idx);
-}
-}
-
-function selectPrompt(idx,btn){
-currentPrompt=idx;
-document.querySelectorAll('.prompt-btn').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-}
-
-async function typeText(el,text,speed=25){
-el.textContent='';
-for(let i=0;i<text.length;i++){
-el.textContent+=text[i];
-await new Promise(r=>setTimeout(r,speed+Math.random()*15));
-}
-}
-
-async function generate(){
-if(isGenerating) return;
-isGenerating=true;
-document.getElementById('genBtn').disabled=true;
-const outs=OUTPUTS[currentPrompt];
-const ri=Math.floor(Math.random()*3);
-const lowEl=document.getElementById('outLow');
-const highEl=document.getElementById('outHigh');
-lowEl.innerHTML='<span class="cursor"></span>';
-highEl.innerHTML='<span class="cursor"></span>';
-await Promise.all([
-typeText(lowEl,outs.low[ri],20),
-typeText(highEl,outs.high[ri],25)
-]);
-isGenerating=false;
-document.getElementById('genBtn').disabled=false;
-}
-
-// Init slider visual
-updateTemp();
-const sl=document.getElementById('tempSlider');
-sl.style.background='linear-gradient(90deg,#38bdf8,#8b5cf6 25%,#c084fc 50%,#fb923c 75%,#f87171)';
-
-function completeLesson(){
-localStorage.setItem('cm_temperature-lab','done');
-const burst=document.getElementById('xpBurst');burst.classList.add('show');
-const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
-setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
-}
-</script>
+</div>

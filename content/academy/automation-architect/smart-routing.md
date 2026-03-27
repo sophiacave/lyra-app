@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 <header class="lesson-header">
   <div class="lesson-badge">Module 3 &middot; Animated</div>
@@ -91,60 +91,12 @@ free: false
     <div style="color:#52525b;font-size:.85rem">Click an email above to see the AI route it</div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 50 XP</button>
+  <div data-learn="QuizMC" data-props='{"title":"Smart Routing Concepts","questions":[{"q":"What advantage does AI classification have over a rules engine for routing?","options":["It is always faster","It handles ambiguous and novel inputs without explicit rules","It never makes mistakes","It requires no training data"],"correct":1,"explanation":"AI classification handles ambiguous and novel inputs gracefully. A rules engine only matches patterns you have explicitly coded — AI generalizes from training data."},{"q":"What should happen when an AI classifier returns low confidence?","options":["Ignore the message","Route it randomly","Flag it for human review","Delete the data"],"correct":2,"explanation":"Low confidence means the AI is unsure. Flagging for human review prevents misrouting while keeping data safe — this is the human-in-the-loop pattern."},{"q":"In the smart routing diagram, what does the AI classifier output?","options":["A formatted email reply","An intent label and confidence score that determines the routing destination","A database record","A status code"],"correct":1,"explanation":"The AI classifier outputs an intent (e.g. billing_issue) and a confidence score. The workflow uses these to route to the correct team."}]}'></div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Email Intent to Team","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Invoice is incorrect","right":"Billing Team"},{"left":"Dashboard not loading","right":"Support Team"},{"left":"Want to demo enterprise plan","right":"Sales Team"},{"left":"Low confidence classification","right":"Human review queue"},{"left":"High confidence classification","right":"Auto-route to correct team"}]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"AI Routing Concepts","cards":[{"front":"Intent classification","back":"An AI model reads text and assigns a category (intent) such as billing_issue, technical_support, or sales_inquiry."},{"front":"Confidence score","back":"A percentage (0-100%) representing how certain the AI is about its classification. Low confidence triggers human review."},{"front":"Human-in-the-loop","back":"A pattern where low-confidence AI decisions are escalated to a human instead of acted upon automatically."},{"front":"Rules engine vs AI classifier","back":"Rules engine: you write every if/else condition explicitly. AI classifier: trained model handles patterns including ones you never explicitly coded."},{"front":"Dead letter queue","back":"Where messages go if routing fails — preserves data for manual inspection and retry."}]}'></div>
+
 </div>
 
 <footer class="progress-footer"><p>Lesson 7 of 9 &middot; Automation Architect</p></footer>
-
-<script>
-const SLUG='smart-routing';
-const STORAGE_KEY='automation-architect-progress';
-
-const classifications={
-  billing:{intent:'Billing Issue',confidence:94,route:'Billing Team',color:'intent-billing',nodeId:'wf-billing',selClass:'billing-sel'},
-  support:{intent:'Technical Support',confidence:97,route:'Support Team',color:'intent-support',nodeId:'wf-support',selClass:'support-sel'},
-  sales:{intent:'Sales Inquiry',confidence:91,route:'Sales Team',color:'intent-sales',nodeId:'wf-sales',selClass:'sales-sel'}
-};
-
-function classifyEmail(type){
-  // Reset
-  document.querySelectorAll('.email-card').forEach(c=>{c.classList.remove('selected','billing-sel','support-sel','sales-sel')});
-  document.querySelectorAll('.wf-node').forEach(n=>n.classList.remove('active'));
-
-  const c=classifications[type];
-  const card=document.getElementById('email-'+type);
-  card.classList.add('selected',c.selClass);
-
-  // Animate workflow
-  const inputNode=document.getElementById('wf-input');
-  const aiNode=document.getElementById('wf-ai');
-  const targetNode=document.getElementById(c.nodeId);
-
-  inputNode.classList.add('active');
-  setTimeout(()=>{inputNode.classList.remove('active');aiNode.classList.add('active')},500);
-  setTimeout(()=>{aiNode.classList.remove('active');targetNode.classList.add('active')},1200);
-
-  // Show classification
-  setTimeout(()=>{
-    document.getElementById('classResult').innerHTML=`
-      <div class="class-label">AI Classification</div>
-      <div class="class-intent ${c.color}">${c.intent}</div>
-      <div class="class-confidence">Confidence: ${c.confidence}%</div>
-      <div class="class-route ${c.color}">Routed to: ${c.route}</div>
-    `;
-  },800);
-}
-
-function completeLesson(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  progress[SLUG]=true;localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
-  const btn=document.getElementById('completeBtn');btn.textContent='Completed! +50 XP';btn.classList.add('done');
-}
-
-(function(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  if(progress[SLUG]){document.getElementById('completeBtn').textContent='Completed! +50 XP';document.getElementById('completeBtn').classList.add('done');}
-})();
-
-setTimeout(()=>classifyEmail('billing'),800);
-</script>

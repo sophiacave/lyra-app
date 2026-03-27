@@ -6,7 +6,7 @@ type: "lab"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 
 <header class="lesson-header">
@@ -63,106 +63,14 @@ free: false
     </div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 75 XP</button>
+  <div data-learn="QuizMC" data-props='{"title":"API Playground Check","questions":[{"q":"Which endpoint and method would you use to list all users?","options":["POST /users","GET /users","DELETE /users","PUT /users"],"correct":1,"explanation":"GET /users retrieves the list of all users without modifying any data."},{"q":"What status code does the sandbox return when you successfully create an order?","options":["200 OK","404 Not Found","201 Created","500 Server Error"],"correct":2,"explanation":"POST requests that successfully create a resource return 201 Created."},{"q":"What happens when you send a request to an endpoint that does not exist in the sandbox?","options":["The server crashes","You get a 200 OK with empty data","You get a 404 Not Found with available endpoints listed","You get a 201 Created"],"correct":2,"explanation":"The sandbox returns 404 Not Found and lists the available endpoints so you know what to try."}]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"API Request Anatomy","cards":[{"front":"Request Method","back":"Tells the server what operation to perform: GET (read), POST (create), PUT (update), DELETE (remove)."},{"front":"Endpoint URL","back":"The address of the resource you want to interact with. Example: /users, /orders/42."},{"front":"Request Body","back":"JSON data sent with POST and PUT requests. Tells the server what to create or update."},{"front":"Response Status Code","back":"A 3-digit number the server sends back. 2xx = success, 4xx = client error, 5xx = server error."},{"front":"Response Body","back":"The JSON data the server sends back. Contains the result of your request."}]}'></div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Method to Operation","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"GET /users","right":"Retrieve list of users"},{"left":"POST /orders","right":"Create a new order"},{"left":"PUT /settings","right":"Update existing settings"},{"left":"DELETE /users/1","right":"Remove user with id 1"},{"left":"201 Created","right":"Success — new resource was made"}]}'></div>
+
 </div>
 
 <footer class="progress-footer">
   <p>Lesson 5 of 9 &middot; Automation Architect</p>
 </footer>
-
-<script>
-const SLUG='api-playground';
-const STORAGE_KEY='automation-architect-progress';
-
-const fakeDB={
-  'GET /users':{status:200,body:{users:[{id:1,name:"Alice Chen",email:"alice@example.com",plan:"pro"},{id:2,name:"Bob Patel",email:"bob@example.com",plan:"free"},{id:3,name:"Cara Diaz",email:"cara@example.com",plan:"enterprise"}],total:3}},
-  'GET /users/1':{status:200,body:{id:1,name:"Alice Chen",email:"alice@example.com",plan:"pro",created:"2025-01-15"}},
-  'GET /orders':{status:200,body:{orders:[{id:"ord_001",product:"Pro Plan",amount:7900,status:"completed"},{id:"ord_002",product:"Enterprise",amount:29900,status:"pending"}]}},
-  'GET /settings':{status:200,body:{theme:"light",notifications:true,timezone:"UTC",language:"en"}},
-  'POST /users':{status:201,body:{id:4,name:"New User",email:"new@user.com",created:"2026-03-23",message:"User created successfully"}},
-  'POST /orders':{status:201,body:{id:"ord_003",status:"created",message:"Order placed successfully",estimated_delivery:"2026-03-26"}},
-  'PUT /settings':{status:200,body:{updated:true,message:"Settings saved successfully"}},
-  'PUT /users/1':{status:200,body:{id:1,updated:true,message:"User updated successfully"}},
-  'DELETE /users/1':{status:200,body:{deleted:true,id:1,message:"User removed"}},
-  'DELETE /orders/1':{status:200,body:{deleted:true,id:"ord_001",message:"Order cancelled"}},
-};
-
-function loadExample(method,url,body){
-  document.getElementById('methodSelect').value=method;
-  document.getElementById('urlInput').value=url;
-  document.getElementById('bodyInput').value=body;
-  sendRequest();
-}
-
-function syntaxHighlight(json){
-  if(typeof json!=='string')json=JSON.stringify(json,null,2);
-  return json.replace(/("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,match=>{
-    let cls='num';
-    if(/^"/.test(match)){cls=/:$/.test(match)?'key':'str'}
-    else if(/true|false/.test(match)){cls='bool'}
-    return`<span class="${cls}">${match}</span>`;
-  });
-}
-
-function sendRequest(){
-  const method=document.getElementById('methodSelect').value;
-  const url=document.getElementById('urlInput').value.trim();
-  const key=method+' '+url;
-  const startTime=performance.now();
-
-  setTimeout(()=>{
-    const endTime=performance.now();
-    const time=Math.round(endTime-startTime+Math.random()*100+50);
-
-    let result=fakeDB[key];
-    if(!result){
-      // Try partial match
-      const partial=Object.keys(fakeDB).find(k=>k.startsWith(method)&&url.startsWith(k.split(' ')[1]));
-      if(partial)result=fakeDB[partial];
-    }
-
-    if(!result){
-      if(url==='/'||url===''){
-        result={status:200,body:{api:"Like One Sandbox API",version:"1.0",endpoints:["/users","/orders","/settings"]}};
-      }else{
-        result={status:404,body:{error:"Not Found",message:`No endpoint matches ${method} ${url}`,available_endpoints:["/users","/orders","/settings"]}};
-      }
-    }
-
-    // Merge request body into response for POST/PUT
-    if((method==='POST'||method==='PUT')&&document.getElementById('bodyInput').value.trim()){
-      try{
-        const reqBody=JSON.parse(document.getElementById('bodyInput').value);
-        result={...result,body:{...result.body,...reqBody}};
-      }catch(e){}
-    }
-
-    const badge=document.getElementById('statusBadge');
-    badge.style.display='inline-block';
-    badge.textContent=result.status+(result.status===200?' OK':result.status===201?' Created':result.status===404?' Not Found':' Error');
-    badge.className='status-badge '+(result.status<300?'status-2xx':result.status<500?'status-4xx':'status-5xx');
-
-    document.getElementById('responseTime').textContent=time+'ms';
-    document.getElementById('responseBody').innerHTML=syntaxHighlight(result.body);
-  },200+Math.random()*300);
-
-  document.getElementById('responseBody').innerHTML='<span style="color:#52525b">Sending request...</span>';
-}
-
-function completeLesson(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  progress[SLUG]=true;
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
-  const btn=document.getElementById('completeBtn');
-  btn.textContent='Completed! +75 XP';
-  btn.classList.add('done');
-}
-
-(function(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  if(progress[SLUG]){
-    document.getElementById('completeBtn').textContent='Completed! +75 XP';
-    document.getElementById('completeBtn').classList.add('done');
-  }
-})();
-</script>

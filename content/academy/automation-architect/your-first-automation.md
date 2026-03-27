@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 
 <header class="lesson-header">
@@ -93,7 +93,6 @@ free: true
     <button class="deploy-btn" id="deployBtn" disabled onclick="deploy()">Deploy Automation</button>
   </div>
 
-  <button class="complete-btn hidden" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 75 XP</button>
 </div>
 
 <div class="success-overlay" id="successOverlay">
@@ -109,78 +108,9 @@ free: true
   <p>Lesson 2 of 9 &middot; Automation Architect</p>
 </footer>
 
-<script>
-const SLUG='your-first-automation';
-const STORAGE_KEY='automation-architect-progress';
-let selectedTrigger=null,selectedAction=null;
+<div data-learn="SortStack" data-props='{"title":"Order the Automation Steps","instruction":"Arrange these steps in the correct order to deploy an automation","items":["Choose your trigger event","Choose your action","Wire trigger to action","Test with sample data","Deploy automation"]}'></div>
 
-function pickTrigger(id,icon,name,desc){
-  selectedTrigger={id,icon,name,desc};
-  document.querySelectorAll('#triggerSection .option-card').forEach(c=>c.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
+<div data-learn="FlashDeck" data-props='{"title":"Automation Patterns","cards":[{"front":"Form Submission + Save to Database","back":"Classic data capture pattern: form data comes in via webhook, gets saved to a database for later use."},{"front":"Schedule + Call API","back":"Polling pattern: run a task on a timed schedule that hits an external API to sync or fetch data."},{"front":"New Email + Send Notification","back":"Alert pattern: incoming email triggers a Slack or push notification to your team."},{"front":"What flows between trigger and action?","back":"The event payload — structured data produced by the trigger that the action consumes and acts upon."},{"front":"What makes an automation \"deployed\"?","back":"The trigger is actively listening and will fire the action automatically when the event occurs — no manual run needed."}]}'></div>
 
-  // Update wire
-  const wt=document.getElementById('wireTrigger');
-  wt.className='wire-node wire-trigger';
-  document.getElementById('wireTriggerIcon').innerHTML=icon;
-  document.getElementById('wireTriggerLabel').textContent=name;
-  wt.querySelector('.wire-sublabel').textContent='trigger ready';
+<div data-learn="QuizMC" data-props='{"title":"Your First Automation Quiz","questions":[{"q":"What must happen before you can select an action?","options":["Write the action code first","Pick a trigger first","Configure a database","Set up an API key"],"correct":1,"explanation":"You always start with a trigger — it defines the event that will cause the action to run."},{"q":"A \"Form Submission\" trigger fires when...","options":["You manually click a button","Someone submits a form on your site","A schedule timer elapses","An API returns an error"],"correct":1,"explanation":"The Form Submission trigger is a webhook that activates when your form receives a submission."},{"q":"What does deploying an automation mean?","options":["Saving a draft for later","Making the automation live so it runs automatically","Running it once manually","Sending it to a developer for review"],"correct":2,"explanation":"Deploying makes the automation active — the trigger starts listening and the action will execute automatically when the event fires."}]}'></div>
 
-  // Advance step
-  document.getElementById('step1').classList.add('done');
-  document.getElementById('step2').classList.add('active');
-  document.getElementById('actionSection').classList.remove('hidden');
-  checkDeploy();
-}
-
-function pickAction(id,icon,name,desc){
-  selectedAction={id,icon,name,desc};
-  document.querySelectorAll('#actionSection .option-card').forEach(c=>c.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
-
-  // Update wire
-  const wa=document.getElementById('wireAction');
-  wa.className='wire-node wire-action';
-  document.getElementById('wireActionIcon').innerHTML=icon;
-  document.getElementById('wireActionLabel').textContent=name;
-  wa.querySelector('.wire-sublabel').textContent='action ready';
-  document.getElementById('wireLine').classList.add('active');
-
-  document.getElementById('step2').classList.add('done');
-  document.getElementById('step3').classList.add('active');
-  checkDeploy();
-}
-
-function checkDeploy(){
-  document.getElementById('deployBtn').disabled=!(selectedTrigger&&selectedAction);
-}
-
-function deploy(){
-  document.getElementById('successDesc').textContent=
-    `When "${selectedTrigger.name}" fires, "${selectedAction.name}" will execute automatically.`;
-  document.getElementById('successOverlay').classList.add('visible');
-}
-
-function closeSuccess(){
-  document.getElementById('successOverlay').classList.remove('visible');
-  document.getElementById('completeBtn').classList.remove('hidden');
-}
-
-function completeLesson(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  progress[SLUG]=true;
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
-  const btn=document.getElementById('completeBtn');
-  btn.textContent='Completed! +75 XP';
-  btn.classList.add('done');
-}
-
-(function(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  if(progress[SLUG]){
-    document.getElementById('completeBtn').classList.remove('hidden');
-    document.getElementById('completeBtn').textContent='Completed! +75 XP';
-    document.getElementById('completeBtn').classList.add('done');
-  }
-})();
-</script>

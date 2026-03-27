@@ -78,91 +78,12 @@ free: false
   <div class="complete-section" id="complete">
     <h2>Agent Designed!</h2>
     <p>You just created a complete agent specification. In the next lesson, you'll turn this into a system prompt.</p>
-    
   </div>
+
+  <div data-learn="QuizMC" data-props='{"title":"Agent Design Principles","questions":[{"q":"Why is a clear goal statement important when designing an agent?","options":["It makes the agent run faster","Vague goals produce confused agents that do not know when they are done","It reduces API costs","The goal is only used for marketing purposes"],"correct":1,"explanation":"An agent needs a clear, specific goal to know what it is working toward and when it has succeeded. Vague goals lead to aimless loops and wasted compute."},{"q":"Why should every agent have at least one guardrail?","options":["Guardrails are optional decorations","Guardrails prevent the agent from taking destructive or unsafe actions even when asked","Guardrails speed up response time","Guardrails replace the need for memory"],"correct":1,"explanation":"Guardrails are safety constraints that the agent must never violate. They protect against accidental data deletion, privacy leaks, and other irreversible mistakes — even if a user explicitly requests the unsafe action."},{"q":"What is the ideal number of tools for a starting agent?","options":["As many as possible — more tools means more power","Zero — tools add complexity","A focused set of 2-4 tools that directly serve its specific goal","Exactly 10 tools"],"correct":2,"explanation":"Start with a small, focused toolset that matches your agent goal. Too many tools increases complexity, cost, and the chance of the agent using the wrong one."}]}'></div>
+
+  <div data-learn="SortStack" data-props='{"title":"Order the Agent Design Steps","instruction":"Arrange these design steps in the recommended order","items":["Define the agent goal first","Choose tools that serve that goal","Set memory requirements","Write guardrails for safety","Define output format"]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Agent Design Checklist","cards":[{"front":"What is a guardrail?","back":"A hard constraint the agent must never violate — e.g., never delete production data, never share credentials, never send emails to external parties."},{"front":"What should agent memory store?","back":"Information the agent needs across sessions — user preferences, past outcomes, learned patterns, and domain-specific context."},{"front":"How do you write a good agent goal?","back":"One clear sentence: what it does, for whom, and to what standard. Avoid vague language like improve things or help users."},{"front":"What does design completeness mean?","back":"Every section is filled in: name, goal, tools, memory, and at least one guardrail. A complete spec produces a deployable agent."},{"front":"Why limit tool selection to 3?","back":"Focused tool sets reduce decision complexity for the agent. The agent spends less reasoning budget deciding which tool to use and more on actually solving the problem."}]}'></div>
+
 </div>
-
-<script>
-const toolOptions = [
-  { id: 'search', icon: '🔍', name: 'Web Search' },
-  { id: 'db', icon: '🗄️', name: 'Database' },
-  { id: 'email', icon: '📧', name: 'Email' },
-  { id: 'calc', icon: '🧮', name: 'Calculator' },
-  { id: 'files', icon: '📁', name: 'File R/W' },
-  { id: 'api', icon: '🔗', name: 'API Calls' },
-  { id: 'code', icon: '💻', name: 'Run Code' },
-  { id: 'schedule', icon: '⏰', name: 'Scheduler' },
-  { id: 'notify', icon: '🔔', name: 'Notifications' }
-];
-const selectedTools = new Set();
-
-const picker = document.getElementById('tool-picker');
-toolOptions.forEach(t => {
-  const div = document.createElement('div');
-  div.className = 'tool-opt';
-  div.dataset.id = t.id;
-  div.innerHTML = `<span class="t-icon">${t.icon}</span><span class="t-name">${t.name}</span>`;
-  div.addEventListener('click', () => toggleTool(t, div));
-  picker.appendChild(div);
-});
-
-function toggleTool(tool, el) {
-  if (selectedTools.has(tool.id)) {
-    selectedTools.delete(tool.id);
-    el.classList.remove('selected');
-  } else if (selectedTools.size < 3) {
-    selectedTools.add(tool.id);
-    el.classList.add('selected');
-  }
-  document.getElementById('tool-count').textContent = `${selectedTools.size}/3 selected`;
-  updateCard();
-}
-
-// Real-time card updates
-document.getElementById('agent-name').addEventListener('input', updateCard);
-document.getElementById('agent-goal').addEventListener('input', updateCard);
-document.getElementById('agent-memory').addEventListener('input', updateCard);
-document.getElementById('agent-guardrail').addEventListener('input', updateCard);
-
-function updateCard() {
-  const name = document.getElementById('agent-name').value.trim();
-  const goal = document.getElementById('agent-goal').value.trim();
-  const memory = document.getElementById('agent-memory').value.trim();
-  const guardrail = document.getElementById('agent-guardrail').value.trim();
-
-  document.getElementById('card-name').textContent = name || 'Your Agent';
-  document.getElementById('card-goal').textContent = goal || 'Define a goal...';
-
-  const toolsDiv = document.getElementById('card-tools');
-  toolsDiv.innerHTML = '';
-  selectedTools.forEach(id => {
-    const t = toolOptions.find(o => o.id === id);
-    if (t) { const span = document.createElement('span'); span.className = 'card-tool'; span.textContent = t.icon + ' ' + t.name; toolsDiv.appendChild(span); }
-  });
-  if (selectedTools.size === 0) toolsDiv.innerHTML = '<span style="color:#52525b;font-size:.75rem">Pick tools above</span>';
-
-  document.getElementById('card-memory').textContent = memory || 'Not defined yet';
-  document.getElementById('card-guardrail').textContent = guardrail || 'Not defined yet';
-
-  // Calculate completeness
-  let score = 0;
-  if (name.length >= 2) score += 20;
-  if (goal.length >= 10) score += 20;
-  if (selectedTools.size === 3) score += 20;
-  if (memory.length >= 10) score += 20;
-  if (guardrail.length >= 10) score += 20;
-
-  document.getElementById('card-pct').textContent = score + '%';
-  document.getElementById('card-fill').style.width = score + '%';
-
-  if (score === 100) {
-    setTimeout(() => {
-      const comp = document.getElementById('complete');
-      if (comp.style.display !== 'block') {
-        comp.style.display = 'block';
-        if (typeof LO !== 'undefined') LO.completeLesson('first_ai_agent', 4, 160);
-      }
-    }, 400);
-  }
-}
-</script>

@@ -98,9 +98,12 @@ Step 4: Total discount = $200 - $135 = $65 = 32.5%
 </div>
 </div>
 
-<div class="card">
-<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
-</div>
+<div data-learn="FlashDeck" data-props='{"title":"Chain-of-Thought Key Concepts","cards":[{"front":"Chain-of-Thought (CoT) prompting","back":"Asking Claude to show its step-by-step reasoning before arriving at an answer. Dramatically improves accuracy on math, logic, and analysis tasks."},{"front":"Classic CoT trigger phrase","back":"Think step by step — simple and effective for most complex problems."},{"front":"Before answering, consider...","back":"A CoT variant that directs Claude to evaluate specific aspects of the problem before concluding."},{"front":"Show your work","back":"A CoT instruction that makes reasoning visible so you can verify each intermediate step."},{"front":"Why CoT helps with compound discounts","back":"Without CoT, models add percentages directly (35%). With CoT, they compute sequentially — 25% off then 10% off the reduced price — giving the correct 32.5%."}]}'></div>
+
+<div data-learn="QuizMC" data-props='{"title":"Chain-of-Thought Comprehension","questions":[{"q":"A store offers 20% off, then an additional 10% off the sale price. Without CoT, Claude says the total discount is 30%. What is the actual answer?","options":["30% — Claude was correct","28% — compound discounts multiply","25% — sequential discounts are always less","The discounts cannot be combined"],"correct":1,"explanation":"Compound discounts are multiplicative, not additive. 20% off leaves 80%, then 10% off that leaves 72% — so 28% total discount, not 30%."},{"q":"Which phrase is the classic chain-of-thought trigger?","options":["Be thorough","Think step by step","Use your best judgment","Answer carefully"],"correct":1,"explanation":"Think step by step is the classic CoT trigger. It is simple, direct, and works across virtually all complex reasoning tasks."},{"q":"When is chain-of-thought prompting MOST valuable?","options":["Simple yes/no questions","Single-word classification tasks","Complex multi-step math, logic, and analysis","Writing creative poetry"],"correct":2,"explanation":"CoT prompting has the biggest impact on complex, multi-step problems where intermediate reasoning steps matter — math, logic puzzles, code debugging, and causal analysis."},{"q":"What is the risk of telling Claude just give me the answer on a hard problem?","options":["Claude refuses to respond","Claude takes longer to answer","Claude skips verification steps and makes more errors","Claude uses more tokens"],"correct":2,"explanation":"Suppressing reasoning means Claude cannot catch and correct its own errors mid-thought. Visible step-by-step reasoning improves accuracy by letting the model verify each stage before proceeding."}]}'></div>
+
+<div data-learn="MatchConnect" data-props='{"title":"Match CoT Phrase to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Think step by step","right":"Classic universal CoT trigger"},{"left":"Before answering, consider...","right":"Directs evaluation of specific aspects first"},{"left":"Show your work","right":"Makes intermediate reasoning visible"},{"left":"Just give me the answer","right":"Anti-pattern — skips verification, increases errors"},{"left":"Walk me through your reasoning","right":"Requests explicit narration of thought process"}]}'></div>
+
 </div>
 
 <div class="progress-footer">
@@ -108,109 +111,4 @@ Step 4: Total discount = $200 - $135 = $65 = 32.5%
 <div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 2</span>
 </div>
-
-<script>
-const QUESTIONS=[
-{nodes:[
-{text:"Read the problem",x:20,y:30,type:"thought",delay:0},
-{text:"Identify: 25% then 10%",x:200,y:60,type:"thought",delay:400},
-{text:"These are sequential, not additive",x:100,y:120,type:"deduction",delay:800},
-{text:"$200 × 0.75 = $150",x:300,y:150,type:"thought",delay:1200},
-{text:"$150 × 0.90 = $135",x:150,y:210,type:"thought",delay:1600},
-{text:"Total saved: $65",x:350,y:240,type:"deduction",delay:2000},
-{text:"Answer: 32.5% discount = $135",x:200,y:300,type:"conclusion",delay:2400}
-],lines:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6]]},
-{nodes:[
-{text:"All suspects in the room",x:30,y:30,type:"thought",delay:0},
-{text:"Alice says Bob is lying",x:250,y:50,type:"thought",delay:400},
-{text:"Bob says Carol did it",x:80,y:120,type:"thought",delay:800},
-{text:"Carol says she was home",x:300,y:140,type:"thought",delay:1200},
-{text:"If Alice is truthful → Bob lies",x:50,y:210,type:"deduction",delay:1600},
-{text:"If Bob lies → Carol didn't do it",x:280,y:230,type:"deduction",delay:2000},
-{text:"Answer: Carol is innocent",x:180,y:300,type:"conclusion",delay:2400}
-],lines:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6]]},
-{nodes:[
-{text:"Read the error message",x:30,y:30,type:"thought",delay:0},
-{text:"TypeError at line 42",x:250,y:50,type:"thought",delay:400},
-{text:"Variable is undefined",x:100,y:120,type:"deduction",delay:800},
-{text:"Check data flow upstream",x:300,y:140,type:"thought",delay:1200},
-{text:"API returns null on error",x:50,y:210,type:"deduction",delay:1600},
-{text:"Missing null check",x:280,y:230,type:"deduction",delay:2000},
-{text:"Fix: Add optional chaining",x:180,y:300,type:"conclusion",delay:2400}
-],lines:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6]]}
-];
-
-let currentQ=0,animating=false;
-
-function selectQuestion(idx,btn){
-currentQ=idx;
-document.querySelectorAll('.q-btn').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-resetCanvas();
-}
-
-function resetCanvas(){
-const canvas=document.getElementById('thinkCanvas');
-canvas.querySelectorAll('.node').forEach(n=>n.remove());
-document.getElementById('connSvg').innerHTML='';
-document.getElementById('playBtn').style.display='block';
-animating=false;
-}
-
-function playAnimation(){
-if(animating) return;
-animating=true;
-document.getElementById('playBtn').style.display='none';
-const q=QUESTIONS[currentQ];
-const canvas=document.getElementById('thinkCanvas');
-const svg=document.getElementById('connSvg');
-
-q.nodes.forEach((n,i)=>{
-const node=document.createElement('div');
-node.className=`node node-${n.type}`;
-node.textContent=n.text;
-node.style.left=n.x+'px';node.style.top=n.y+'px';
-node.id='node-'+i;
-canvas.appendChild(node);
-setTimeout(()=>node.classList.add('show'),n.delay);
-});
-
-q.lines.forEach(([a,b],i)=>{
-const line=document.createElementNS('http://www.w3.org/2000/svg','line');
-const na=q.nodes[a],nb=q.nodes[b];
-line.setAttribute('x1',na.x+60);line.setAttribute('y1',na.y+18);
-line.setAttribute('x2',nb.x+60);line.setAttribute('y2',nb.y+18);
-svg.appendChild(line);
-setTimeout(()=>line.classList.add('show'),q.nodes[b].delay-200);
-});
-}
-
-function analyzePrompt(){
-const text=document.getElementById('cotPrompt').value.toLowerCase();
-let score=0;const feedback=[];
-if(text.includes('step')){score+=25;feedback.push('Uses "step" keyword');}
-if(text.includes('think')||text.includes('reason')||text.includes('consider')){score+=25;feedback.push('Triggers reasoning mode');}
-if(text.includes('before')||text.includes('first')||text.includes('then')){score+=20;feedback.push('Specifies ordering of thoughts');}
-if(text.includes('constraint')||text.includes('rule')||text.includes('cannot')||text.includes("can't")){score+=15;feedback.push('Identifies constraints');}
-if(text.length>80){score+=15;feedback.push('Sufficiently detailed prompt');}
-if(score===0&&text.length<10){score=0;feedback.push('Try writing a more detailed prompt with reasoning instructions');}
-
-const card=document.getElementById('scoreCard');
-card.classList.add('show');
-const circle=document.getElementById('scoreCircle');
-circle.textContent=score;
-if(score>=80){circle.style.background='rgba(52,211,153,.2)';circle.style.color='#34d399';}
-else if(score>=50){circle.style.background='rgba(251,146,60,.2)';circle.style.color='#fb923c';}
-else{circle.style.background='rgba(248,113,113,.2)';circle.style.color='#f87171';}
-document.getElementById('scoreTitle').textContent=score>=80?'Excellent CoT Prompt!':score>=50?'Good Start!':'Needs More Detail';
-document.getElementById('scoreText').textContent=feedback.join(' · ')+(score<80?'. Try adding: explicit step numbering, constraint identification, and reasoning triggers like "think carefully about each crossing."':'');
-}
-
-function completeLesson(){
-localStorage.setItem('cm_chain-of-thought','done');
-const burst=document.getElementById('xpBurst');burst.classList.add('show');
-const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
-setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
-}
-</script>
+</div>

@@ -127,9 +127,12 @@ free: false
 </div>
 </div>
 
-<div class="card">
-<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
-</div>
+<div data-learn="FlashDeck" data-props='{"title":"Few-Shot Prompting Concepts","cards":[{"front":"Few-shot prompting","back":"Providing Claude with a few input-output examples to demonstrate a pattern, then asking it to apply that pattern to new inputs."},{"front":"Zero-shot prompting","back":"Asking Claude to perform a task with no examples — relying entirely on its training. Works for well-understood tasks."},{"front":"Ideal number of examples","back":"3-5 examples is the sweet spot. Too few leaves the pattern ambiguous. Too many wastes context tokens."},{"front":"Why order matters in few-shot","back":"Put the most representative example first and the most complex or edge-case example last — Claude learns the pattern progressively."},{"front":"Covering edge cases","back":"Including boundary condition examples (e.g., Mixed or Neutral sentiment) prevents Claude from defaulting to just the most common class."}]}'></div>
+
+<div data-learn="QuizMC" data-props='{"title":"Few-Shot Prompting Quiz","questions":[{"q":"What is the ideal number of few-shot examples for most tasks?","options":["1 — one clear example is enough","3-5 — the sweet spot for pattern clarity without wasting tokens","10+ — more examples always improve accuracy","It depends on temperature, not example count"],"correct":1,"explanation":"3-5 examples is the proven sweet spot. Too few leaves the pattern ambiguous; too many wastes context window tokens without meaningful accuracy gain."},{"q":"You are building a few-shot classifier for urgency levels: High, Medium, Low. What type of example is most important to include?","options":["Only High urgency examples","Only the most common class","Edge cases and boundary conditions","Examples from a different domain"],"correct":2,"explanation":"Edge cases and boundary conditions (e.g., something that could be High or Medium) are most valuable — they teach Claude how to handle the hard calls, not just the obvious ones."},{"q":"Which statement about few-shot example ordering is correct?","options":["Order has no effect on Claude","Put edge cases first so Claude learns them early","Put the most representative example first, most complex last","Alphabetical order works best"],"correct":2,"explanation":"Starting with a clear, representative example establishes the core pattern. Ending with the most complex case ensures Claude has internalized the nuances before hitting hard inputs."},{"q":"How does few-shot prompting differ from a system prompt with instructions?","options":["They are identical","Few-shot teaches by showing examples; instructions teach by describing rules","Instructions always outperform examples","Few-shot only works for classification"],"correct":1,"explanation":"Instructions describe what to do in words. Few-shot shows what to do through examples. Both are valuable — and combining them (instructions + examples) often yields the best results."}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Order the Few-Shot Example Set","instruction":"Arrange these example types in the recommended order for a few-shot prompt","items":["Most representative / clearest example","Second clear example showing variation","Third example with slight complexity","Edge case or boundary condition example","Most complex or ambiguous example last"]}'></div>
+
 </div>
 
 <div class="progress-footer">
@@ -137,65 +140,4 @@ free: false
 <div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 2</span>
 </div>
-
-<script>
-let pairCount=3;
-
-function addExamplePair(){
-const container=document.getElementById('examplePairs');
-const idx=pairCount++;
-const pair=document.createElement('div');
-pair.className='example-pair';
-pair.dataset.idx=idx;
-pair.innerHTML=`
-<div class="example-input"><span class="example-label label-in">Input</span><input type="text" id="in-${idx}" placeholder="Example input..."></div>
-<div class="example-arrow">→</div>
-<div class="example-output"><span class="example-label label-out">Output</span><input type="text" id="out-${idx}" placeholder="Expected output..."></div>`;
-container.appendChild(pair);
-}
-
-function testPattern(){
-const input=document.getElementById('testInput').value.toLowerCase();
-if(!input.trim()) return;
-
-// Gather examples to determine pattern
-const pairs=[];
-document.querySelectorAll('.example-pair').forEach(p=>{
-const idx=p.dataset.idx;
-const inp=document.getElementById('in-'+idx)?.value||'';
-const out=document.getElementById('out-'+idx)?.value||'';
-if(inp&&out) pairs.push({input:inp.toLowerCase(),output:out});
-});
-
-// Simple sentiment analysis simulation
-const posWords=['fantastic','great','amazing','wonderful','loved','excellent','brilliant','awesome','beautiful','perfect','best','incredible','outstanding','superb','good','enjoy','fun','happy','5 stars'];
-const negWords=['terrible','awful','bad','worst','horrible','waste','boring','disappointed','hate','poor','stupid','ugly','disaster','pathetic','painful','hated','never watch','slept through'];
-const neutralWords=['okay','fine','average','decent','mediocre','nothing special','alright','so-so','not bad'];
-
-let posScore=0,negScore=0,neutScore=0;
-posWords.forEach(w=>{if(input.includes(w)) posScore++});
-negWords.forEach(w=>{if(input.includes(w)) negScore++});
-neutralWords.forEach(w=>{if(input.includes(w)) neutScore++});
-
-let result,confidence;
-if(posScore>negScore&&posScore>neutScore){result='Positive';confidence=Math.min(95,60+posScore*15);}
-else if(negScore>posScore&&negScore>neutScore){result='Negative';confidence=Math.min(95,60+negScore*15);}
-else if(neutScore>0){result='Neutral';confidence=Math.min(90,55+neutScore*15);}
-else if(posScore>0&&negScore>0){result='Mixed/Neutral';confidence=45;}
-else{result=pairs.length>0?pairs[0].output:'Unknown';confidence=30;}
-
-const el=document.getElementById('testResult');
-el.classList.add('show');
-const color=result.includes('Pos')?'#34d399':result.includes('Neg')?'#f87171':'#fb923c';
-el.innerHTML=`<strong style="color:${color}">Predicted: ${result}</strong> <span style="color:#71717a">(${confidence}% confidence based on ${pairs.length} training examples)</span>
-<p style="font-size:.8rem;color:#a1a1aa;margin-top:.5rem">In a real API call, Claude would analyze the patterns from your ${pairs.length} examples and apply them to this new input. More diverse examples = better accuracy.</p>`;
-}
-
-function completeLesson(){
-localStorage.setItem('cm_few-shot','done');
-const burst=document.getElementById('xpBurst');burst.classList.add('show');
-const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
-setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
-}
-</script>
+</div>

@@ -111,9 +111,12 @@ free: false
 </div>
 </div>
 
-<div class="card">
-<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
-</div>
+<div data-learn="SortStack" data-props='{"title":"Order the Tool Use Flow","instruction":"Arrange the tool use steps in the correct sequence","items":["User sends a message to Claude","Claude analyzes the request and decides to call a tool","Claude outputs a structured tool call","Your application executes the tool and gets a result","Your app returns the result to Claude","Claude generates a natural language response"]}'></div>
+
+<div data-learn="FlashDeck" data-props='{"title":"Tool Use Key Concepts","cards":[{"front":"Tool use (function calling)","back":"A feature that lets Claude interact with the real world by calling external functions you define — APIs, databases, web search, code execution, and more."},{"front":"Who decides when to call a tool?","back":"Claude decides autonomously based on the user request. You provide available tools; Claude determines if and when to use them."},{"front":"Who executes the tool?","back":"Your application. Claude outputs a structured tool call (JSON with name and parameters). Your code runs the actual function and returns the result."},{"front":"Tool input_schema","back":"A JSON Schema object that defines the parameters a tool accepts — their names, types, and which are required. This tells Claude how to call the tool correctly."},{"front":"Multi-step tool use","back":"Claude can chain tool calls in sequence — using output from one tool as input to the next, enabling complex multi-step workflows."}]}'></div>
+
+<div data-learn="QuizMC" data-props='{"title":"Tool Use Comprehension","questions":[{"q":"When Claude decides to use a tool, what does it actually output?","options":["A natural language description of what it wants to do","A structured JSON tool call with the tool name and parameters","A Python function call in a code block","A request for the user to run the tool manually"],"correct":1,"explanation":"Claude outputs a structured tool call — a JSON object containing the tool name and the parameter values it wants to pass. Your application receives this and executes the actual function."},{"q":"Who is responsible for executing the tool function?","options":["Claude executes it internally","The user manually runs it","Your application receives the tool call and runs the actual function","Anthropic runs it on their servers"],"correct":2,"explanation":"Your application is always responsible for executing tools. Claude decides to call a tool and outputs the call structure, but the actual execution happens in your code."},{"q":"What is the purpose of the input_schema in a tool definition?","options":["It defines the tool response format","It tells Claude what parameters the tool accepts, their types, and which are required","It sets rate limits on tool calls","It encrypts tool credentials"],"correct":1,"explanation":"The input_schema is a JSON Schema that describes the tool parameters — names, types, descriptions, and required fields. This lets Claude know how to construct a valid tool call."},{"q":"Claude is asked: What is the population of Tokyo right now? You have provided a web_search tool. What happens?","options":["Claude answers from its training data without using any tool","Claude refuses because it cannot browse the web","Claude autonomously calls web_search with an appropriate query","Claude asks the user to search manually"],"correct":2,"explanation":"Claude recognizes it needs current data and autonomously calls the web_search tool with a relevant query — without being explicitly told to do so. That is the power of autonomous tool use."}]}'></div>
+
 </div>
 
 <div class="progress-footer">
@@ -121,101 +124,4 @@ free: false
 <div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 3</span>
 </div>
-
-<script>
-function updatePreview(){
-const name=document.getElementById('toolName').value||'my_tool';
-const desc=document.getElementById('toolDesc').value||'Description';
-const params=[];
-document.querySelectorAll('.param-row').forEach(row=>{
-const n=row.querySelector('.p-name')?.value;
-const t=row.querySelector('.p-type')?.value||'string';
-if(n) params.push({name:n,type:t});
-});
-
-const propStr=params.map(p=>`    <span class="code-string">"${p.name}"</span>: { <span class="code-prop">"type"</span>: <span class="code-string">"${p.type}"</span> }`).join(',\n');
-const reqStr=params.map(p=>`<span class="code-string">"${p.name}"</span>`).join(', ');
-
-document.getElementById('codePreview').innerHTML=`{
-  <span class="code-prop">"name"</span>: <span class="code-string">"${name}"</span>,
-  <span class="code-prop">"description"</span>: <span class="code-string">"${desc}"</span>,
-  <span class="code-prop">"input_schema"</span>: {
-    <span class="code-prop">"type"</span>: <span class="code-string">"object"</span>,
-    <span class="code-prop">"properties"</span>: {
-${propStr}
-    },
-    <span class="code-prop">"required"</span>: [${reqStr}]
-  }
-}`;
-}
-
-function addParam(){
-const list=document.getElementById('paramList');
-const row=document.createElement('div');
-row.className='param-row';
-row.innerHTML=`<div><label style="font-size:.7rem">Name</label><input type="text" class="p-name" placeholder="param_name" oninput="updatePreview()"></div>
-<div><label style="font-size:.7rem">Type</label><input type="text" class="p-type" placeholder="string" oninput="updatePreview()"></div>
-<button class="remove-param" onclick="this.parentElement.remove();updatePreview()">✕</button>`;
-list.appendChild(row);
-}
-
-updatePreview();
-
-let flowRunning=false;
-async function runFlow(){
-if(flowRunning) return;
-flowRunning=true;
-document.getElementById('runBtn').disabled=true;
-
-const steps=['step0','step1','step2','step3','step4'];
-const statuses=['Sent','Thinking...','Executing...','Received','Complete'];
-const statusColors=[
-{bg:'rgba(139,92,246,.15)',color:'#8b5cf6'},
-{bg:'rgba(56,189,248,.15)',color:'#38bdf8'},
-{bg:'rgba(251,146,60,.15)',color:'#fb923c'},
-{bg:'rgba(52,211,153,.15)',color:'#34d399'},
-{bg:'rgba(244,114,182,.15)',color:'#f472b6'}
-];
-
-// Reset all
-steps.forEach(id=>{
-const el=document.getElementById(id);
-el.classList.remove('active','done');
-el.querySelector('.flow-status').textContent='Waiting';
-});
-
-for(let i=0;i<steps.length;i++){
-await new Promise(r=>setTimeout(r,800));
-if(i>0){
-document.getElementById(steps[i-1]).classList.remove('active');
-document.getElementById(steps[i-1]).classList.add('done');
-document.getElementById(steps[i-1]).querySelector('.flow-status').textContent='Done';
-document.getElementById(steps[i-1]).querySelector('.flow-status').style.background='rgba(52,211,153,.15)';
-document.getElementById(steps[i-1]).querySelector('.flow-status').style.color='#34d399';
-}
-const el=document.getElementById(steps[i]);
-el.classList.add('active');
-el.querySelector('.flow-status').textContent=statuses[i];
-el.querySelector('.flow-status').style.background=statusColors[i].bg;
-el.querySelector('.flow-status').style.color=statusColors[i].color;
-}
-
-await new Promise(r=>setTimeout(r,800));
-document.getElementById(steps[4]).classList.remove('active');
-document.getElementById(steps[4]).classList.add('done');
-document.getElementById(steps[4]).querySelector('.flow-status').textContent='Done';
-document.getElementById(steps[4]).querySelector('.flow-status').style.background='rgba(52,211,153,.15)';
-document.getElementById(steps[4]).querySelector('.flow-status').style.color='#34d399';
-
-flowRunning=false;
-document.getElementById('runBtn').disabled=false;
-}
-
-function completeLesson(){
-localStorage.setItem('cm_tool-use','done');
-const burst=document.getElementById('xpBurst');burst.classList.add('show');
-const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
-setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
-}
-</script>
+</div>

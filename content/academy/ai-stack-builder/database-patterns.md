@@ -56,91 +56,12 @@ free: false
 </div>
 <div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
+
+<div data-learn="QuizMC" data-props='{"title":"Database Patterns Quiz","questions":[{"q":"Why use a key-value pattern for brain_context instead of separate columns?","options":["It is faster to query","New keys can be added without database migrations","It uses less storage","It is more secure"],"correct":1,"explanation":"The key-value pattern means your AI agent can learn new types of information without ALTER TABLE migrations. You just insert a new key — the schema stays the same."},{"q":"What does `vector(1536)` store in the agent_memory table?","options":["A list of 1536 user IDs","A 1536-character text string","1536 numbers representing the semantic meaning of text","A compressed image"],"correct":2,"explanation":"Embeddings are lists of floating-point numbers (1536 for OpenAI models) that encode the semantic meaning of text. They enable similarity search — finding memories that are conceptually related even when words differ."},{"q":"What is the primary purpose of the consciousness_stream table?","options":["Storing user preferences","Logging every agent action for debugging and auditing","Caching API responses","Managing user sessions"],"correct":1,"explanation":"The consciousness_stream is an append-only event log. Every agent action is recorded with its input and output, enabling debugging, auditing, and behavioral replay."}]}'></div>
+
+<div data-learn="MatchConnect" data-props='{"title":"Match Table to Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"brain_context","right":"Current agent state (whiteboard)"},{"left":"agent_memory","right":"Past interactions with importance scores"},{"left":"consciousness_stream","right":"Event log of every agent action"},{"left":"vector(1536)","right":"Semantic embedding for similarity search"}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Order the Schema Design Steps","instruction":"Arrange these steps in the correct order for designing an AI agent database","items":["Identify what data the agent needs to remember","Choose key-value vs. relational structure","Add embedding column for semantic search","Enable RLS on all tables","Create indexes on frequently queried columns"]}'></div>
+
 </div>
-
-<script>
-const tables=[
-{name:'brain_context',cols:[
-{name:'id',type:'uuid',pk:true,fk:''},
-{name:'key',type:'text',pk:false,fk:''},
-{name:'value',type:'jsonb',pk:false,fk:''},
-{name:'metadata',type:'jsonb',pk:false,fk:''},
-{name:'updated_at',type:'timestamptz',pk:false,fk:''}
-]},
-{name:'agent_memory',cols:[
-{name:'id',type:'uuid',pk:true,fk:''},
-{name:'context_key',type:'text',pk:false,fk:'brain_context.key'},
-{name:'content',type:'text',pk:false,fk:''},
-{name:'importance',type:'int4',pk:false,fk:''},
-{name:'embedding',type:'vector(1536)',pk:false,fk:''},
-{name:'created_at',type:'timestamptz',pk:false,fk:''}
-]},
-{name:'consciousness_stream',cols:[
-{name:'id',type:'uuid',pk:true,fk:''},
-{name:'agent_id',type:'text',pk:false,fk:''},
-{name:'action',type:'text',pk:false,fk:''},
-{name:'input',type:'jsonb',pk:false,fk:''},
-{name:'output',type:'jsonb',pk:false,fk:''},
-{name:'memory_id',type:'uuid',pk:false,fk:'agent_memory.id'},
-{name:'created_at',type:'timestamptz',pk:false,fk:''}
-]}
-];
-
-let activeTable=0;
-function switchTable(idx){activeTable=idx;document.querySelectorAll('.table-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));renderTable();updateProg()}
-
-function renderTable(){
-const t=tables[activeTable];
-let html='<div class="schema-table"><div class="schema-table-header"><span class="schema-table-name">'+t.name+'</span></div>';
-html+='<div class="col-header"><span>Name</span><span>Type</span><span>Flags</span><span>FK</span><span></span></div>';
-t.cols.forEach((c,i)=>{
-html+='<div class="col-row"><input value="'+c.name+'" onchange="updateCol('+i+',\'name\',this.value)">';
-html+='<select onchange="updateCol('+i+',\'type\',this.value)">';
-['uuid','text','int4','int8','bool','jsonb','timestamptz','vector(1536)','float8'].forEach(typ=>{
-html+='<option'+(c.type===typ?' selected':'')+'>'+typ+'</option>'});
-html+='</select><div class="flags"><span class="flag'+(c.pk?' on':'')+'" onclick="togglePK('+i+')">PK</span></div>';
-html+='<span class="fk" onclick="editFK('+i+')">'+(c.fk||'—')+'</span>';
-html+='<div class="del">'+(c.pk?'':'<button onclick="delCol('+i+')">&times;</button>')+'</div></div>'});
-html+='<button class="add-col" onclick="addCol()">+ Add Column</button></div>';
-document.getElementById('tableEditor').innerHTML=html;
-renderER()}
-
-function updateCol(i,field,val){tables[activeTable].cols[i][field]=val;renderTable();updateProg()}
-function togglePK(i){tables[activeTable].cols[i].pk=!tables[activeTable].cols[i].pk;renderTable();updateProg()}
-function delCol(i){tables[activeTable].cols.splice(i,1);renderTable();updateProg()}
-function addCol(){tables[activeTable].cols.push({name:'new_col',type:'text',pk:false,fk:''});renderTable();updateProg()}
-function editFK(i){const c=tables[activeTable].cols[i];const opts=[];tables.forEach(t=>{if(t.name!==tables[activeTable].name){t.cols.forEach(col=>{if(col.pk)opts.push(t.name+'.'+col.name)})}});let msg='Set foreign key reference.\nA foreign key links this column to a row in another table — it creates a relationship.\n\nAvailable targets:\n'+opts.map(o=>'  '+o).join('\n')+'\n\nEnter reference (e.g. brain_context.id) or leave blank to remove:';const val=prompt(msg,c.fk||'');if(val!==null){c.fk=val;renderTable();updateProg()}}
-
-function renderER(){
-let html='';
-tables.forEach(t=>{
-html+='<div class="er-table"><div class="er-table-name">'+t.name+'</div>';
-t.cols.forEach(c=>{
-let cls='er-col';if(c.pk)cls+=' pk';if(c.fk)cls+=' fk';
-html+='<div class="'+cls+'"><span class="col-n">'+c.name+'</span><span class="col-t">'+c.type+'</span></div>'});
-html+='</div>'});
-document.getElementById('erCanvas').innerHTML=html}
-
-function generateSQL(){
-let sql='';
-tables.forEach(t=>{
-sql+='CREATE TABLE '+t.name+' (\n';
-const lines=[];
-t.cols.forEach(c=>{
-let line='  '+c.name+' '+c.type;
-if(c.pk)line+=' DEFAULT gen_random_uuid() PRIMARY KEY';
-if(c.name.endsWith('_at'))line+=' DEFAULT now()';
-if(c.fk){const parts=c.fk.split('.');if(parts.length===2)line+=' REFERENCES '+parts[0]+'('+parts[1]+')'}
-lines.push(line)});
-sql+=lines.join(',\n')+'\n);\n\n';
-sql+='ALTER TABLE '+t.name+' ENABLE ROW LEVEL SECURITY;\n\n'});
-document.getElementById('sqlOutput').textContent=sql;
-document.getElementById('sqlPanel').style.display='block';updateProg()}
-
-let actions=0;function updateProg(){actions++;const p=Math.min(100,actions*8);document.getElementById('lessonProgress').style.width=p+'%';document.getElementById('lessonPct').textContent=p+'%'}
-function completeLesson(){localStorage.setItem('aisb_lesson_7','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_7')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
-renderTable();
-</script>

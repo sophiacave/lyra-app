@@ -98,9 +98,12 @@ Writing Review Example
 </div>
 </div>
 
-<div class="card">
-<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
-</div>
+<div data-learn="FlashDeck" data-props='{"title":"System Prompt Components","cards":[{"front":"Identity block","back":"Defines who Claude is — role, expertise, and persona. E.g., You are a senior software engineer with 15 years of experience."},{"front":"Constraints block","back":"Sets limits on what Claude will do. E.g., Never provide medical advice. Keep responses under 200 words."},{"front":"Format block","back":"Specifies how responses should be structured. E.g., Always respond with a summary, then detail, then next steps."},{"front":"Tone block","back":"Controls the style and voice. E.g., Be encouraging and use analogies. Or: Be direct and skip pleasantries."},{"front":"Examples block","back":"Shows Claude exactly what good output looks like through input-output demonstrations within the system prompt."}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Order a Well-Structured System Prompt","instruction":"Arrange these system prompt components in the most effective order","items":["Identity — define who Claude is","Constraints — set hard limits","Format — specify response structure","Tone — set the voice and style","Examples — show ideal input-output pairs"]}'></div>
+
+<div data-learn="QuizMC" data-props='{"title":"System Prompt Mastery","questions":[{"q":"What is the primary purpose of a system prompt?","options":["To provide the user message","To define who Claude is and how it behaves before any conversation starts","To store Claude response history","To set the temperature parameter"],"correct":1,"explanation":"The system prompt is the invisible instruction set that shapes Claude identity, constraints, format, tone, and behavior for the entire conversation."},{"q":"Which component of a system prompt is best for preventing Claude from giving dangerous advice?","options":["Identity","Tone","Constraints","Examples"],"correct":2,"explanation":"Constraints are the explicit limits block — they tell Claude what it must never do, such as not providing medical, legal, or financial advice."},{"q":"You want Claude to always respond with bullet points followed by a code example. Which block handles this?","options":["Identity","Format","Tone","Constraints"],"correct":1,"explanation":"Format blocks define response structure — headers, bullet points, code blocks, step numbering, and other output shape directives."},{"q":"Why are Examples blocks valuable in system prompts?","options":["They reduce token usage","They show Claude exactly what ideal output looks like through demonstration","They override the Identity block","They prevent the model from hallucinating"],"correct":1,"explanation":"Examples (few-shot demonstrations) are the most powerful teaching tool in a system prompt — showing the exact pattern you want is often clearer than describing it."}]}'></div>
+
 </div>
 
 <div class="progress-footer">
@@ -108,93 +111,4 @@ Writing Review Example
 <div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 2</span>
 </div>
-
-<script>
-let blocks=[];
-
-const SCENARIOS=[
-{prompt:"My React app crashes when I click the submit button. The console says 'Cannot read property map of undefined'. Help!",
-responses:{
-engineer:"**Summary:** You have a null reference error — you're calling `.map()` on a variable that's `undefined`.\n\n**Root cause:** Your state likely isn't initialized as an array, or an API response returned `undefined` instead of an array.\n\n**Fix:**\n```jsx\n// Add optional chaining and default value\nconst items = data?.results ?? [];\nreturn items.map(item => <Item key={item.id} {...item} />);\n```\n\n**Next steps:** Add error boundaries and loading states.",
-tutor:"Don't worry — this is one of the most common React errors! 🎉 (Seriously, everyone hits this one.)\n\nThink of it like trying to read a book that hasn't been delivered yet. Your code says 'read each page' (.map), but the book (your data) hasn't arrived!\n\n**The fix is simple:** Just add a safety check:\n```jsx\n{data && data.map(item => ...)}\n```\n\nYou're doing great — debugging is a superpower you're building! 💪"}},
-{prompt:"What is a closure in JavaScript?",
-responses:{
-engineer:"A closure is a function that retains access to its lexical scope even when executed outside that scope.\n\n```javascript\nfunction createCounter() {\n  let count = 0; // enclosed variable\n  return () => ++count;\n}\nconst counter = createCounter();\ncounter(); // 1\ncounter(); // 2\n```\n\nKey points:\n- Inner function captures outer variables by reference\n- Enables data privacy and state persistence\n- Common patterns: module pattern, partial application, event handlers\n- Watch for: memory leaks with large closures in loops",
-tutor:"Imagine you have a backpack 🎒. Every time you walk into a room (a function), you can pick up items (variables) and put them in your backpack. A closure is when you leave the room but *keep the backpack* — you still have access to everything you picked up!\n\n```javascript\nfunction makeGreeter(name) {\n  // 'name' goes in the backpack!\n  return () => `Hello, ${name}!`;\n}\nconst greetAlice = makeGreeter('Alice');\ngreetAlice(); // \"Hello, Alice!\"\n// Alice's name is still in the backpack!\n```\n\nPretty cool, right? You already use closures all the time — now you just know the name for it! ✨"}},
-{prompt:"Can you review this function I wrote?\nfunction getData() { var x = fetch('/api'); return x; }",
-responses:{
-engineer:"**Issues identified:**\n\n1. **Missing `await`** — `fetch()` returns a Promise, not data\n2. **No error handling** — network failures will crash silently\n3. **`var` usage** — use `const`/`let` in modern JS\n4. **No response parsing** — need `.json()` call\n\n**Corrected:**\n```javascript\nasync function getData() {\n  const response = await fetch('/api');\n  if (!response.ok) throw new Error(`HTTP ${response.status}`);\n  return response.json();\n}\n```",
-tutor:"Nice work writing your first fetch function! You're on the right track. Let me help you level it up with 3 improvements:\n\n1. **The Promise thing** — `fetch` is like ordering food delivery. Your code grabs the receipt instead of waiting for the food! Add `async/await`:\n```javascript\nasync function getData() {\n  const response = await fetch('/api');\n  return response.json();\n}\n```\n\n2. **Safety net** — What if the API is down? Add error handling (we'll cover this more later!)\n\n3. **Modern style** — Swap `var` for `const` — it's the current best practice.\n\nYou're making great progress! 🚀"}}
-];
-
-function addBlock(el){
-const type=el.dataset.type;
-const text=el.dataset.text;
-const label=el.querySelector('.block-tag').textContent;
-const name=el.textContent.replace(label,'').trim();
-blocks.push({type,text,label,name});
-el.style.opacity='.4';
-el.style.pointerEvents='none';
-renderBlocks();
-}
-
-function removeBlock(idx){
-const block=blocks[idx];
-blocks.splice(idx,1);
-document.querySelectorAll('.draggable-block').forEach(el=>{
-if(el.dataset.text===block.text){el.style.opacity='1';el.style.pointerEvents='auto';}
-});
-renderBlocks();
-}
-
-function renderBlocks(){
-const dz=document.getElementById('dropZone');
-const ph=document.getElementById('dzPlaceholder');
-if(blocks.length===0){
-ph.style.display='block';
-dz.querySelectorAll('.dropped-block').forEach(b=>b.remove());
-}else{
-ph.style.display='none';
-dz.querySelectorAll('.dropped-block').forEach(b=>b.remove());
-blocks.forEach((b,i)=>{
-const d=document.createElement('div');
-d.className='dropped-block';
-d.innerHTML=`<span><span class="block-tag tag-${b.type}" style="margin-right:.5rem">${b.label}</span>${b.name}</span><button class="remove-btn" onclick="removeBlock(${i})">✕</button>`;
-dz.appendChild(d);
-});
-}
-updatePreview();
-}
-
-function updatePreview(){
-const box=document.getElementById('previewBox');
-if(blocks.length===0){box.textContent='Add blocks above to see your system prompt here...';return;}
-box.textContent=blocks.map(b=>b.text.replace(/\\n/g,'\n')).join('\n\n');
-}
-
-function showScenario(idx,btn){
-document.querySelectorAll('.scenario-tab').forEach(t=>t.classList.remove('active'));
-btn.classList.add('active');
-const s=SCENARIOS[idx];
-const cont=document.getElementById('scenarioContainer');
-const hasEngineer=blocks.some(b=>b.name.includes('Software Engineer')||b.name.includes('Direct'));
-const hasTutor=blocks.some(b=>b.name.includes('Writing Tutor')||b.name.includes('Warm'));
-const responseType=(hasEngineer?'engineer':'tutor');
-const response=s.responses[responseType];
-cont.innerHTML=`<div class="scenario-result show">
-<div class="scenario-prompt"><strong>User:</strong> ${s.prompt}</div>
-<div><strong>Claude's response</strong> (shaped by your system prompt):</div>
-<div style="margin-top:.75rem;white-space:pre-wrap;line-height:1.7">${response}</div>
-</div>`;
-}
-
-showScenario(0,document.querySelector('.scenario-tab'));
-
-function completeLesson(){
-localStorage.setItem('cm_system-prompts','done');
-const burst=document.getElementById('xpBurst');burst.classList.add('show');
-const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
-setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
-}
-</script>
+</div>

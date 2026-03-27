@@ -56,145 +56,18 @@ free: false
 
   <div class="insight-box" id="insight">
     <h3>💡 Why Memory Matters</h3>
-    <p id="insight-text">Run the simulation to see how dramatically memory impacts agent performance. The difference isn't subtle — it's the difference between a frustrating tool and a helpful colleague.</p>
+    <p id="insight-text">Run the simulation to see how dramatically memory impacts agent performance. The difference is not subtle — it is the difference between a frustrating tool and a helpful colleague.</p>
   </div>
 
   <div class="complete-section" id="complete">
     <h2>Lesson Complete!</h2>
     <p>Memory is the difference between a tool and a teammate. Your agent needs both short-term and long-term memory.</p>
-    
   </div>
+
+  <div data-learn="QuizMC" data-props='{"title":"Memory Types Quiz","questions":[{"q":"What is the key limitation of short-term memory?","options":["It is too slow to be useful","It is lost when the session ends — the agent cannot learn across sessions","It cannot store user preferences","It uses too much storage"],"correct":1,"explanation":"Short-term memory lives within a single session. When the session ends, the context is gone. The agent must re-learn patterns from scratch on every new session."},{"q":"What makes long-term memory transformative for agents?","options":["It makes the agent respond faster","The agent can accumulate knowledge across all sessions and continuously improve","It reduces API costs","It replaces the need for tools"],"correct":1,"explanation":"Long-term memory persists across sessions. Patterns learned from ticket #1 are available when handling ticket #100. This is what transforms a tool into a teammate that genuinely gets better over time."},{"q":"In the simulation, why does the no-memory agent score 20% on every run?","options":["It deliberately slows down to be fair","It cannot learn from previous runs — every session starts from zero with no accumulated knowledge","It uses a weaker AI model","It has fewer tools available"],"correct":1,"explanation":"Without memory, the agent is in a goldfish loop — repeating the same mistakes indefinitely. It never learns that cache-clearing does not fix login failures, so it tries the same wrong fix every time."}]}'></div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Match Memory Type to Behavior","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"No memory","right":"Repeats the same mistakes every session"},{"left":"Short-term memory","right":"Learns within a session, forgets between sessions"},{"left":"Long-term memory","right":"Accumulates knowledge across all sessions"},{"left":"Session context","right":"Short-term — lost when the session ends"},{"left":"Persistent database","right":"Long-term — survives across restarts"}]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Memory Architecture Flashcards","cards":[{"front":"What is short-term memory in an agent?","back":"Context held during a single session — conversation history, interim results, learned patterns. Lost when the session ends."},{"front":"What is long-term memory in an agent?","back":"Persistent storage (database, vector store) that survives across sessions. The agent can retrieve past outcomes, user preferences, and learned patterns."},{"front":"What is a vector store?","back":"A database that stores text as numerical embeddings, enabling semantic search — the agent can find relevant memories by meaning, not just exact keyword match."},{"front":"Why is memory the difference between a tool and a teammate?","back":"A tool starts fresh every time. A teammate remembers what worked, what failed, and your preferences — getting more useful with every interaction."},{"front":"What should an agent store in long-term memory?","back":"Successful resolutions, failure patterns, user preferences, domain-specific knowledge, and any context that would improve future performance on similar tasks."}]}'></div>
+
 </div>
-
-<script>
-const simData = {
-  none: [
-    // Run 1
-    [
-      { type: 'task', text: 'Run 1: Customer reports login failure' },
-      { type: 'action', text: 'Checking... generic troubleshooting steps' },
-      { type: 'error', text: 'Asked customer to clear cache (wrong fix)' },
-      { type: 'action', text: 'Escalated to human after 3 failed attempts' },
-      { type: 'error', text: 'Took 12 minutes. Customer frustrated.' }
-    ],
-    // Run 2
-    [
-      { type: 'task', text: 'Run 2: Different customer, same login issue' },
-      { type: 'error', text: 'No memory of previous ticket' },
-      { type: 'action', text: 'Tries same generic steps again...' },
-      { type: 'error', text: 'Same wrong fix. Same escalation.' },
-      { type: 'error', text: 'Took 12 minutes again. Pattern not learned.' }
-    ],
-    // Run 3
-    [
-      { type: 'task', text: 'Run 3: Third customer, same issue' },
-      { type: 'error', text: 'Still no memory. Starts from zero.' },
-      { type: 'error', text: 'Repeats exact same mistakes, again.' },
-      { type: 'error', text: 'Never improves. Goldfish loop.' }
-    ]
-  ],
-  short: [
-    [
-      { type: 'task', text: 'Run 1: Customer reports login failure' },
-      { type: 'action', text: 'Trying generic troubleshooting...' },
-      { type: 'error', text: 'Cache clear didn\'t work' },
-      { type: 'memory', text: '📝 Noted: cache clear is not the fix' },
-      { type: 'action', text: 'Tries password reset — works!' },
-      { type: 'success', text: 'Resolved in 8 minutes' }
-    ],
-    [
-      { type: 'task', text: 'Run 2: Same session, similar issue' },
-      { type: 'memory', text: '💭 Recalls: cache clear doesn\'t work for this' },
-      { type: 'action', text: 'Skips cache, goes straight to password reset' },
-      { type: 'success', text: 'Resolved in 3 minutes! Learning within session.' }
-    ],
-    [
-      { type: 'task', text: 'Run 3: New session — memory wiped' },
-      { type: 'error', text: 'Session ended. Short-term memory lost.' },
-      { type: 'action', text: 'Back to generic troubleshooting...' },
-      { type: 'error', text: 'Has to re-learn the pattern from scratch.' }
-    ]
-  ],
-  long: [
-    [
-      { type: 'task', text: 'Run 1: Customer reports login failure' },
-      { type: 'action', text: 'Trying troubleshooting steps...' },
-      { type: 'action', text: 'Password reset works!' },
-      { type: 'memory', text: '💾 Saved to long-term: login failures → password reset' },
-      { type: 'success', text: 'Resolved in 6 minutes. Pattern stored.' }
-    ],
-    [
-      { type: 'task', text: 'Run 2: New session, similar issue' },
-      { type: 'memory', text: '🧠 Retrieved: login failures → try password reset first' },
-      { type: 'action', text: 'Immediately suggests password reset' },
-      { type: 'success', text: 'Resolved in 2 minutes! Memory persisted.' }
-    ],
-    [
-      { type: 'task', text: 'Run 3: Weeks later, same pattern' },
-      { type: 'memory', text: '🧠 Long-term memory: 95% of login issues = password reset' },
-      { type: 'action', text: 'Proactively offers password reset link' },
-      { type: 'memory', text: '💾 Updated: also check for expired 2FA tokens' },
-      { type: 'success', text: 'Resolved in 45 seconds. Continuously improving.' }
-    ]
-  ]
-};
-
-const scores = { none: [20, 20, 20], short: [40, 75, 30], long: [50, 85, 98] };
-let running = false;
-let hasRun = false;
-
-async function runSimulation() {
-  if (running) return;
-  running = true;
-  document.getElementById('btn-run').classList.add('active');
-  resetSimulation();
-
-  for (let run = 0; run < 3; run++) {
-    const types = ['none', 'short', 'long'];
-    const promises = types.map(async type => {
-      const log = document.getElementById(`log-${type}`);
-      const entries = simData[type][run];
-      if (run > 0) {
-        const label = document.createElement('div');
-        label.className = 'run-label';
-        label.textContent = '';
-        log.appendChild(label);
-      }
-      for (let i = 0; i < entries.length; i++) {
-        await new Promise(r => setTimeout(r, 400 + Math.random() * 200));
-        const el = document.createElement('div');
-        el.className = `log-entry ${entries[i].type}`;
-        el.textContent = entries[i].text;
-        log.appendChild(el);
-        requestAnimationFrame(() => el.classList.add('show'));
-      }
-    });
-    await Promise.all(promises);
-    // Update scores after each run
-    ['none', 'short', 'long'].forEach(type => {
-      const s = scores[type][run];
-      document.getElementById(`score-${type}`).style.width = s + '%';
-      document.getElementById(`val-${type}`).textContent = s + '%';
-    });
-    await new Promise(r => setTimeout(r, 800));
-  }
-
-  // Update insight
-  document.getElementById('insight-text').textContent = 'Without memory, the agent is stuck in a loop — repeating the same mistakes forever. Short-term memory helps within a session, but knowledge is lost when the session ends. Long-term memory is what turns an agent into a genuine expert that gets better with every interaction. This is the fundamental difference between a tool and a teammate.';
-
-  running = false;
-  hasRun = true;
-  setTimeout(() => {
-    document.getElementById('complete').style.display = 'block';
-    if (typeof LO !== 'undefined') LO.completeLesson('first_ai_agent', 6, 160);
-  }, 500);
-}
-
-function resetSimulation() {
-  ['none', 'short', 'long'].forEach(type => {
-    document.getElementById(`log-${type}`).innerHTML = '';
-    document.getElementById(`score-${type}`).style.width = '0';
-    document.getElementById(`val-${type}`).textContent = '—';
-  });
-}
-</script>

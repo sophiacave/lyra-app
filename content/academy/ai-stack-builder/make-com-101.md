@@ -121,52 +121,12 @@ joined_at: <span class="op">{{</span>now<span class="op">}}</span> <span class="
 </div>
 <div class="progress-bar"></div>
 </div>
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
+
+<div data-learn="QuizMC" data-props='{"title":"Make.com Quiz","questions":[{"q":"What does {{1.email}} mean in a Make.com scenario?","options":["Send an email to module 1","The email field from the output of module #1","A variable named 1.email","An error in the mapping"],"correct":1,"explanation":"In Make.com, double curly braces reference data from other modules. The number is the module position in the scenario. {{1.email}} means grab the email field from the first module (usually your trigger)."},{"q":"What is the recommended first module type when building a Make.com scenario?","options":["Supabase insert","Filter logic","A trigger — Webhook or Schedule","Slack notification"],"correct":2,"explanation":"Every scenario must start with a trigger — something that initiates the run. Either a Webhook (fires when an external event happens) or a Schedule (runs on a time interval). Other modules follow the trigger."},{"q":"Why should you use the Router module for error handling?","options":["It speeds up execution","It creates parallel paths so failures do not silently swallow errors","It reduces API costs","It is required by Make.com for all scenarios"],"correct":1,"explanation":"The Router creates branching paths — one for success, one for failure. Without it, a module error can cause the entire scenario to fail silently. Routing errors to a notification module ensures you always know when something breaks."}]}'></div>
+
+<div data-learn="MatchConnect" data-props='{"title":"Scenario Module Matcher","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Webhook trigger","right":"Fires when an external POST arrives"},{"left":"Schedule trigger","right":"Fires on a time interval"},{"left":"Filter module","right":"Stops flow if condition is not met"},{"left":"Router module","right":"Creates parallel branches for success/failure"}]}'></div>
+
+<div data-learn="FlashDeck" data-props='{"title":"Make.com Flashcards","cards":[{"front":"What is the difference between a Webhook trigger and a Schedule trigger?","back":"Webhook: fires immediately when an external service sends a POST request (event-driven). Schedule: fires at a set time interval like every hour or every day at 9am (time-driven)."},{"front":"What does idempotency mean when designing Make.com scenarios?","back":"Running the same scenario multiple times with the same data produces the same result without side effects — like duplicate emails or double database inserts. Design scenarios to check for existing records before inserting."},{"front":"How do you reference data from module 3 inside module 5?","back":"Use {{3.fieldName}} syntax. The number is always the module position, and fieldName is the specific output field you want to reference from that module."}]}'></div>
+
 </div>
-
-<script>
-const scenarioData=[
-[{step:'Webhook receives POST',data:'{"email":"alex@example.com","name":"Alex"}'},{step:'Resend sends welcome email',data:'To: alex@example.com | Subject: Welcome, Alex!'},{step:'Supabase inserts subscriber',data:'INSERT INTO subscribers (email, name, joined_at)'},{step:'Slack notification sent',data:'#signups: New subscriber Alex (alex@example.com)'}],
-[{step:'Schedule triggers at 9:00 AM',data:'trigger_time: 2026-03-23T09:00:00Z'},{step:'Supabase returns draft post',data:'{"title":"5 AI Stack Patterns","body":"Draft content...","status":"ready"}'},{step:'Claude polishes the copy',data:'Improved title, fixed grammar, added hook'},{step:'CMS publishes the post',data:'Published at: likeone.ai/blog/5-ai-stack-patterns'},{step:'Twitter thread posted',data:'Thread: 1/5 Most AI apps fail because...'}],
-[{step:'Stripe webhook fires',data:'event: payment_intent.succeeded, amount: $119'},{step:'Filter: amount > $50? YES',data:'$119 > $50 = true, passing through'},{step:'Supabase logs revenue',data:'INSERT INTO revenue (amount, product, customer_email)'},{step:'Slack celebration alert',data:'#revenue: $119 from AI Stack Builder course!'}]
-];
-
-function showScenario(idx){
-document.querySelectorAll('.scenario-view').forEach((v,i)=>v.style.display=i===idx?'block':'none');
-document.querySelectorAll('.scenario-tab').forEach((t,i)=>{t.classList.toggle('active',i===idx)});
-updateProg()}
-
-function runScenario(idx){
-const flow=document.getElementById('flow'+idx);
-const nodes=flow.querySelectorAll('.module-node');
-const connectors=flow.querySelectorAll('.connector');
-const dataDiv=document.getElementById('dataFlow'+idx);
-dataDiv.style.display='block';dataDiv.innerHTML='';
-nodes.forEach(n=>n.classList.remove('active'));connectors.forEach(c=>c.classList.remove('animated'));
-let i=0;
-function animateNext(){
-if(i>=nodes.length)return;
-nodes[i].classList.add('active');
-if(i>0)connectors[i-1].classList.add('animated');
-const step=scenarioData[idx][i];
-dataDiv.innerHTML+='<div class="flow-step"><span class="flow-arrow">'+(i===0?'&#x25b6;':'&#x2192;')+'</span><div><div class="flow-desc">'+step.step+'</div><div class="flow-data">'+step.data+'</div></div></div>';
-dataDiv.scrollTop=dataDiv.scrollHeight;
-i++;setTimeout(animateNext,800)}
-animateNext();updateProg()}
-
-function drag(e){e.dataTransfer.setData('icon',e.target.dataset.icon);e.dataTransfer.setData('name',e.target.dataset.name);e.dataTransfer.setData('type',e.target.dataset.type)}
-let customNodes=[];
-function drop(e){e.preventDefault();const icon=e.dataTransfer.getData('icon');const name=e.dataTransfer.getData('name');const type=e.dataTransfer.getData('type');
-const flow=document.getElementById('customFlow');
-if(customNodes.length===0)flow.innerHTML='';
-if(customNodes.length>0){const conn=document.createElement('div');conn.className='connector animated';flow.appendChild(conn)}
-const node=document.createElement('div');node.className='module-node active';node.innerHTML='<span class="node-icon">'+icon+'</span><span class="node-name">'+name+'</span><span class="node-type">'+type+'</span>';
-flow.appendChild(node);customNodes.push(name);
-setTimeout(()=>node.classList.remove('active'),500);updateProg()}
-function clearCustom(){customNodes=[];document.getElementById('customFlow').innerHTML='<p style="color:#444;font-size:.85rem;margin:0;padding:1rem">Drop modules here to build your scenario...</p>'}
-
-let actions=0;function updateProg(){actions++;const pct=Math.min(100,actions*12);document.getElementById('lessonProgress').style.width=pct+'%';document.getElementById('lessonPct').textContent=pct+'%'}
-function completeLesson(){localStorage.setItem('aisb_lesson_3','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_3')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
-</script>

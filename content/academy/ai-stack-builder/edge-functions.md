@@ -175,73 +175,12 @@ serve(async (req) => {
 </div>
 <div class="progress-bar"></div>
 </div>
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
+
+<div data-learn="QuizMC" data-props='{"title":"Edge Functions Quiz","questions":[{"q":"Why did Supabase choose Deno over Node.js for edge functions?","options":["Deno supports more npm packages","Deno has faster cold starts and better security defaults","Deno is older and more battle-tested","Deno uses Python syntax"],"correct":1,"explanation":"Deno starts up faster than Node.js (critical for edge functions that spin up on demand) and has better security defaults — it requires explicit permission for file, network, and environment access."},{"q":"What is a cold start in the context of edge functions?","options":["A function that returns an error","The delay when a function first spins up after being idle","A network timeout","A failed deployment"],"correct":1,"explanation":"Edge functions spin up on demand. When no requests have come in recently, the runtime needs to initialize — this first request takes ~100ms. Subsequent requests reuse the running instance and are near-instant."},{"q":"Why should you never use Access-Control-Allow-Origin: * in production?","options":["It causes performance issues","It breaks Deno compatibility","It allows any website to call your API, enabling cross-origin attacks","It is not valid syntax"],"correct":2,"explanation":"Wildcard CORS allows any domain to make requests to your API. In production, whitelist only your specific frontend domains to prevent unauthorized sites from abusing your backend."}]}'></div>
+
+<div data-learn="FlashDeck" data-props='{"title":"Edge Functions Flashcards","cards":[{"front":"What command deploys a Supabase edge function?","back":"supabase functions deploy <function-name> --project-ref <your-project-ref>. Run from your local terminal after writing the function in supabase/functions/<name>/index.ts."},{"front":"How do you access environment variables inside a Deno edge function?","back":"Deno.env.get(\"VARIABLE_NAME\"). Supabase automatically injects SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY. Add custom secrets via the Supabase dashboard under Edge Functions > Secrets."},{"front":"What is the minimum response a valid edge function must return?","back":"new Response(body, { headers: {...} }). The body can be a string or JSON.stringify(object). Always include Content-Type: application/json header when returning JSON."}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Edge Function Request Lifecycle","instruction":"Arrange these steps in the order they happen when a user triggers an edge function","items":["User clicks button on frontend","Frontend sends HTTP POST with JSON body","Edge function cold-starts (if needed)","Function reads environment variables","Function queries Supabase database","Function returns JSON response to frontend"]}'></div>
+
 </div>
-
-<script>
-let challenges=[false,false,false];
-function typeLine(termId,lines,cb){
-const term=document.getElementById(termId);term.style.display='block';let i=0;
-function next(){if(i>=lines.length){if(cb)cb();return}
-const div=document.createElement('div');div.className='term-line';div.innerHTML=lines[i];term.appendChild(div);term.scrollTop=term.scrollHeight;i++;setTimeout(next,400)}
-term.innerHTML='';next()}
-
-function deployCode(){
-const code=document.getElementById('codeEditor').value;
-const hasResponse=code.includes('JSON.stringify')&&code.includes('message');
-const hasHeaders=code.includes('Content-Type');
-if(hasResponse){
-typeLine('terminal',[
-'<span class="term-prompt">$</span> supabase functions deploy hello',
-'<span class="term-dim">Bundling function...</span>',
-'<span class="term-dim">Deploying to edge network...</span>',
-'<span class="term-success">&#x2713; Function deployed successfully!</span>',
-'<span class="term-info">URL: https://vpaynwebgmmnwttqkwmh.supabase.co/functions/v1/hello</span>',
-'',
-'<span class="term-prompt">$</span> curl -s https://...functions/v1/hello',
-'<span class="term-success">{"message":"Hello from the edge!"}</span>'
-],()=>{challenges[0]=true;document.getElementById('ch1').classList.add('completed');updateProg()});
-}else{
-typeLine('terminal',[
-'<span class="term-prompt">$</span> supabase functions deploy hello',
-'<span class="term-dim">Bundling function...</span>',
-'<span class="term-error">&#x2717; Error: Response body is empty</span>',
-'<span class="term-dim">Hint: Use JSON.stringify({message: "Hello from the edge!"}) as the Response body</span>',
-'<span class="term-dim">Don\'t forget Content-Type header!</span>'
-])}
-}
-
-function deployCode2(){
-typeLine('terminal2',[
-'<span class="term-prompt">$</span> supabase functions deploy greet',
-'<span class="term-dim">Bundling function...</span>',
-'<span class="term-dim">Deploying to edge network...</span>',
-'<span class="term-success">&#x2713; Function deployed!</span>',
-'',
-'<span class="term-prompt">$</span> curl -X POST -d \'{"name":"Builder"}\' https://...functions/v1/greet',
-'<span class="term-success">{"greeting":"Hello, Builder! Welcome to the edge."}</span>'
-],()=>{challenges[1]=true;document.getElementById('ch2').classList.add('completed');updateProg()});
-}
-
-function deployCode3(){
-typeLine('terminal3',[
-'<span class="term-prompt">$</span> supabase functions deploy read-brain',
-'<span class="term-dim">Bundling function...</span>',
-'<span class="term-dim">Deploying to edge network...</span>',
-'<span class="term-success">&#x2713; Function deployed!</span>',
-'',
-'<span class="term-prompt">$</span> curl -H "Authorization: Bearer $ANON_KEY" https://...functions/v1/read-brain',
-'<span class="term-success">{"brain":[</span>',
-'<span class="term-success">  {"key":"identity.name","value":"\\"Stack Builder Student\\""},</span>',
-'<span class="term-success">  {"key":"session.active_work","value":"\\"building edge functions\\""},</span>',
-'<span class="term-success">  {"key":"system.version","value":"\\"1.0.0\\""}</span>',
-'<span class="term-success">]}</span>'
-],()=>{challenges[2]=true;document.getElementById('ch3').classList.add('completed');updateProg()});
-}
-
-function switchTab(idx){/* placeholder for multi-tab */}
-function updateProg(){const done=challenges.filter(Boolean).length;const pct=Math.round(done/3*100);document.getElementById('lessonProgress').style.width=pct+'%';document.getElementById('lessonPct').textContent=pct+'%'}
-function completeLesson(){localStorage.setItem('aisb_lesson_4','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_4')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
-</script>

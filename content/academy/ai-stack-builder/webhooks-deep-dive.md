@@ -111,90 +111,12 @@ free: false
 </div>
 <div class="progress-bar"></div>
 </div>
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
+
+<div data-learn="QuizMC" data-props='{"title":"Webhooks Quiz","questions":[{"q":"Why must you read the raw request body (req.text()) instead of parsed JSON when verifying a Stripe webhook?","options":["JSON parsing is slower","The signature is computed on the raw bytes — parsing changes the string and invalidates the signature","Stripe does not send JSON","Deno does not support req.json()"],"correct":1,"explanation":"Stripe computes the HMAC signature on the exact raw bytes of the request body. If you parse the JSON first, the serialization may change whitespace or key ordering, producing a different byte sequence and causing signature verification to fail."},{"q":"What is exponential backoff in Stripe webhook retries?","options":["Stripe sends faster retries each time","The wait time between retries grows longer with each attempt","Stripe gives up after 3 failed retries","Your endpoint backs up data before retrying"],"correct":1,"explanation":"Exponential backoff means each retry waits longer than the last — 1 minute, then 5 minutes, then 30, etc. This prevents overwhelming a recovering server. Stripe retries for up to 3 days before marking the event as failed."},{"q":"What is the first two lines your webhook handler should do?","options":["Parse JSON, then verify the user session","Read raw body and verify Stripe signature before doing anything else","Check the database, then send an email","Log the event, then parse the JSON body"],"correct":1,"explanation":"Always verify the signature first — before any business logic. If verification fails, return a 400 immediately. This prevents fraudulent events from being processed. Only after successful verification should you parse the event data."}]}'></div>
+
+<div data-learn="FlashDeck" data-props='{"title":"Webhooks Flashcards","cards":[{"front":"What is the difference between polling and webhooks?","back":"Polling: your app repeatedly asks the other service 'did anything happen?' on an interval — wasteful and delayed. Webhooks: the other service pushes a notification to your endpoint the moment something happens — real-time and efficient."},{"front":"What does idempotency mean for a webhook handler?","back":"An idempotent handler produces the same result whether called once or many times with the same data. Implementation: store the Stripe event ID in your database on first processing, and skip if already seen. This prevents double-grants and duplicate emails when Stripe retries."},{"front":"What prefix does a Stripe webhook signing secret start with?","back":"whsec_ — short for webhook secret. Store it in your environment variables (never in code). Use it with stripe.webhooks.constructEvent() to verify every incoming webhook is genuinely from Stripe."}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Webhook Handler Steps","instruction":"Arrange these steps in the correct order for a secure Stripe webhook handler","items":["Read raw request body with req.text()","Get stripe-signature header","Call stripe.webhooks.constructEvent() to verify","Check event.type to route to correct handler","Insert data into Supabase","Return 200 OK response"]}'></div>
+
 </div>
-
-<script>
-let actions=0;
-function updateProg(){actions++;const p=Math.min(100,actions*15);document.getElementById('lessonProgress').style.width=p+'%';document.getElementById('lessonPct').textContent=p+'%'}
-
-function animateFlow(){
-const ids=['f1','a1','f2','a2','f3','a3','f4','a4','f5'];
-ids.forEach(id=>{const el=document.getElementById(id);el.classList.remove('active')});
-document.getElementById('pkt1').classList.remove('active');
-let i=0;
-function next(){if(i>=ids.length){document.getElementById('pkt1').classList.add('active');updateProg();return}
-document.getElementById(ids[i]).classList.add('active');i++;setTimeout(next,350)}
-next()}
-
-function toggleEvent(el){el.classList.toggle('selected');updateProg()}
-
-const payloads={
-checkout:`{
-  "id": "evt_1Nh4oF2eZvKYlo2C",
-  "type": "checkout.session.completed",
-  "data": {
-    "object": {
-      "id": "cs_live_a1b2c3",
-      "amount_total": 11900,
-      "currency": "usd",
-      "customer_email": "builder@example.com",
-      "payment_status": "paid",
-      "metadata": {
-        "product": "ai-stack-builder",
-        "course_id": "aisb-001"
-      }
-    }
-  },
-  "created": 1711152000
-}`,
-payment:`{
-  "id": "evt_2Mh5pG3fAaLZmp3D",
-  "type": "payment_intent.succeeded",
-  "data": {
-    "object": {
-      "id": "pi_live_d4e5f6",
-      "amount": 11900,
-      "currency": "usd",
-      "status": "succeeded",
-      "receipt_email": "builder@example.com",
-      "description": "AI Stack Builder Course"
-    }
-  },
-  "created": 1711152060
-}`,
-failed:`{
-  "id": "evt_3Ni6qH4gBbMAno4E",
-  "type": "payment_intent.payment_failed",
-  "data": {
-    "object": {
-      "id": "pi_live_g7h8i9",
-      "amount": 11900,
-      "currency": "usd",
-      "status": "requires_payment_method",
-      "last_payment_error": {
-        "code": "card_declined",
-        "message": "Your card was declined."
-      }
-    }
-  },
-  "created": 1711152120
-}`};
-
-function simulateEvent(type){
-const view=document.getElementById('payloadView');
-view.style.display='block';
-view.innerHTML='<span style="color:#888">Incoming webhook...</span>';
-setTimeout(()=>{
-view.innerHTML=syntaxHighlight(payloads[type]);
-const result=document.getElementById('testResult');
-if(type==='failed'){result.className='test-result error';result.textContent='Payment failed — trigger recovery flow (send retry email, log to Supabase)'}
-else{result.className='test-result success';result.textContent='200 OK — Event processed. Logged to database, email sent.'}
-updateProg()},600)}
-
-function syntaxHighlight(json){return json.replace(/(".*?")\s*:/g,'<span style="color:#60a5fa">$1</span>:').replace(/:\s*(".*?")/g,': <span style="color:#34d399">$1</span>').replace(/:\s*(\d+)/g,': <span style="color:#fb923c">$1</span>')}
-
-function completeLesson(){localStorage.setItem('aisb_lesson_5','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_5')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
-</script>

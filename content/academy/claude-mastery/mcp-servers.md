@@ -126,9 +126,12 @@ free: false
 </div>
 </div>
 
-<div class="card">
-<button class="complete-btn" onclick="completeLesson()">Complete & Continue →</button>
-</div>
+<div data-learn="FlashDeck" data-props='{"title":"MCP Key Concepts","cards":[{"front":"Model Context Protocol (MCP)","back":"An open standard by Anthropic that defines how AI models communicate with external tools and data sources — like USB for AI."},{"front":"MCP Client","back":"The AI model (Claude) that sends requests through the MCP protocol to discover and call available tools."},{"front":"MCP Server","back":"The protocol layer that translates Claude requests into actions on real data sources — files, databases, APIs. It exposes tools with schemas."},{"front":"Why MCP instead of custom integrations?","back":"MCP lets you write a server once using standard rules. Any MCP-compatible AI can use it automatically — no custom glue code per AI model."},{"front":"MCP security model","back":"Servers run locally. Data never leaves the machine unless the server explicitly sends it. The developer controls all permissions."}]}'></div>
+
+<div data-learn="MatchConnect" data-props='{"title":"Match MCP Server Type to Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Filesystem Server","right":"Read and analyze entire codebases on disk"},{"left":"Database Server","right":"Natural language queries against PostgreSQL"},{"left":"API Server","right":"Manage GitHub repos, PRs, and issues"},{"left":"Search Server","right":"Real-time web search during conversations"},{"left":"Custom Server","right":"Connect Claude to proprietary business systems"}]}'></div>
+
+<div data-learn="QuizMC" data-props='{"title":"MCP Comprehension","questions":[{"q":"What does MCP stand for?","options":["Machine Code Protocol","Model Context Protocol","Multi-Channel Pipeline","Managed Claude Proxy"],"correct":1,"explanation":"MCP stands for Model Context Protocol — an open standard by Anthropic for how AI models communicate with external tools and data sources."},{"q":"What is the best analogy for MCP?","options":["Bluetooth — short range only","USB — one standard connector that works with everything","HDMI — video output only","WiFi — wireless only"],"correct":1,"explanation":"USB is the right analogy — one universal standard connector. MCP is the single protocol that any tool server can implement, and any MCP-compatible AI can use."},{"q":"Where does an MCP server run by default?","options":["On Anthropic servers","On the cloud provider closest to you","Locally on your machine","Inside Claude model weights"],"correct":2,"explanation":"MCP servers run locally by default. This is a security feature — your data never leaves your machine unless the server explicitly sends it."},{"q":"You want Claude to be able to query your database AND read local files in the same conversation. Is this possible with MCP?","options":["No — one MCP server per conversation only","Yes — you can connect multiple MCP servers simultaneously","Only with the Enterprise plan","Only if both servers are on the same machine"],"correct":1,"explanation":"MCP is composable. You can connect multiple servers simultaneously, and Claude can use all of them in the same conversation — querying a database, reading a file, and calling an API in sequence."}]}'></div>
+
 </div>
 
 <div class="progress-footer">
@@ -136,141 +139,4 @@ free: false
 <div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 3</span>
 </div>
-
-<script>
-const ARCH_DETAILS={
-client:`<h3>Claude (MCP Client)</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">Claude acts as the <strong>MCP Client</strong>. When it needs external data or wants to perform an action, it sends a structured request through the MCP protocol. Claude can discover what tools are available, understand their parameters, and call them intelligently.</p>
-<div class="code-block"><span class="code-comment">// Claude discovers available tools on connection</span>
-<span class="code-fn">listTools</span>() → [
-  { <span class="code-key">name</span>: <span class="code-str">"read_file"</span>, <span class="code-key">description</span>: <span class="code-str">"Read a file from disk"</span> },
-  { <span class="code-key">name</span>: <span class="code-str">"query_db"</span>, <span class="code-key">description</span>: <span class="code-str">"Run a SQL query"</span> }
-]</div>`,
-server:`<h3>MCP Server (Protocol Layer)</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">The MCP Server is the bridge. It implements the MCP protocol, exposing tools, resources, and prompts in a standardized format. A <strong>schema</strong> (a structured description of what inputs a tool expects and what types they should be) tells Claude exactly how to call each tool correctly. The server translates Claude's requests into actions on your data sources.</p>
-<div class="code-block"><span class="code-comment">// Basic MCP server structure (TypeScript)</span>
-<span class="code-key">import</span> { <span class="code-fn">McpServer</span> } <span class="code-key">from</span> <span class="code-str">"@modelcontextprotocol/sdk"</span>;
-
-<span class="code-key">const</span> server = <span class="code-key">new</span> <span class="code-fn">McpServer</span>({
-  <span class="code-key">name</span>: <span class="code-str">"my-server"</span>,
-  <span class="code-key">version</span>: <span class="code-str">"1.0.0"</span>
-});
-
-server.<span class="code-fn">tool</span>(<span class="code-str">"get_data"</span>, { <span class="code-key">id</span>: z.string() },
-  <span class="code-key">async</span> ({ id }) => {
-    <span class="code-key">const</span> data = <span class="code-key">await</span> <span class="code-fn">fetchFromDB</span>(id);
-    <span class="code-key">return</span> { content: [{ type: <span class="code-str">"text"</span>, text: data }] };
-  }
-);</div>`,
-data:`<h3>Data Sources</h3><p style="color:#a1a1aa;font-size:.9rem;line-height:1.6">Data sources are whatever you want Claude to access — files on disk, databases, APIs, or any other system. The MCP server handles the connection details, so Claude never touches raw credentials or connection strings.</p>
-<div style="display:grid;gap:.5rem;margin-top:1rem">
-<div class="use-case"><div class="use-case-icon">📁</div><div class="use-case-text"><strong>Local files</strong> — Read/write code, documents, configs</div></div>
-<div class="use-case"><div class="use-case-icon">🗄️</div><div class="use-case-text"><strong>Databases</strong> — PostgreSQL, MySQL, SQLite, MongoDB</div></div>
-<div class="use-case"><div class="use-case-icon">🌐</div><div class="use-case-text"><strong>APIs</strong> — GitHub, Slack, Jira, Stripe, any REST/GraphQL API</div></div>
-</div>`
-};
-
-const SERVER_DETAILS=[
-{title:"Filesystem MCP Server",
-code:`<span class="code-comment">// claude_desktop_config.json</span>
-{
-  <span class="code-key">"mcpServers"</span>: {
-    <span class="code-str">"filesystem"</span>: {
-      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
-      <span class="code-key">"args"</span>: [
-        <span class="code-str">"@modelcontextprotocol/server-filesystem"</span>,
-        <span class="code-str">"/path/to/allowed/directory"</span>
-      ]
-    }
-  }
-}`,
-cases:["Read and analyze entire codebases","Search files by content or pattern","Create and modify configuration files","Process documents and reports"]},
-{title:"Database MCP Server",
-code:`<span class="code-comment">// PostgreSQL MCP server config</span>
-{
-  <span class="code-key">"mcpServers"</span>: {
-    <span class="code-str">"postgres"</span>: {
-      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
-      <span class="code-key">"args"</span>: [
-        <span class="code-str">"@modelcontextprotocol/server-postgres"</span>,
-        <span class="code-str">"postgresql://user:pass@localhost/mydb"</span>
-      ]
-    }
-  }
-}`,
-cases:["Natural language database queries","Generate reports from live data","Debug data integrity issues","Schema analysis and optimization suggestions"]},
-{title:"API MCP Server",
-code:`<span class="code-comment">// GitHub MCP server config</span>
-{
-  <span class="code-key">"mcpServers"</span>: {
-    <span class="code-str">"github"</span>: {
-      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
-      <span class="code-key">"args"</span>: [<span class="code-str">"@modelcontextprotocol/server-github"</span>],
-      <span class="code-key">"env"</span>: {
-        <span class="code-str">"GITHUB_TOKEN"</span>: <span class="code-str">"your-token"</span>
-      }
-    }
-  }
-}`,
-cases:["Manage GitHub repos, PRs, and issues","Post messages to Slack channels","Create and update Notion pages","Process payments with Stripe"]},
-{title:"Search MCP Server",
-code:`<span class="code-comment">// Brave Search MCP server config</span>
-{
-  <span class="code-key">"mcpServers"</span>: {
-    <span class="code-str">"brave-search"</span>: {
-      <span class="code-key">"command"</span>: <span class="code-str">"npx"</span>,
-      <span class="code-key">"args"</span>: [<span class="code-str">"@modelcontextprotocol/server-brave-search"</span>],
-      <span class="code-key">"env"</span>: {
-        <span class="code-str">"BRAVE_API_KEY"</span>: <span class="code-str">"your-key"</span>
-      }
-    }
-  }
-}`,
-cases:["Real-time web search during conversations","Research topics with current information","Fact-check claims against live sources","Find documentation and tutorials"]},
-{title:"Custom MCP Server",
-code:`<span class="code-comment">// Build your own in ~50 lines of TypeScript</span>
-<span class="code-key">import</span> { <span class="code-fn">McpServer</span> } <span class="code-key">from</span> <span class="code-str">"@modelcontextprotocol/sdk"</span>;
-<span class="code-key">import</span> { z } <span class="code-key">from</span> <span class="code-str">"zod"</span>;
-
-<span class="code-key">const</span> server = <span class="code-key">new</span> <span class="code-fn">McpServer</span>({
-  <span class="code-key">name</span>: <span class="code-str">"my-custom-server"</span>,
-  <span class="code-key">version</span>: <span class="code-str">"1.0.0"</span>
-});
-
-<span class="code-comment">// Define your custom tools</span>
-server.<span class="code-fn">tool</span>(
-  <span class="code-str">"analyze_sales"</span>,
-  { region: z.string(), period: z.string() },
-  <span class="code-key">async</span> ({ region, period }) => {
-    <span class="code-key">const</span> data = <span class="code-key">await</span> <span class="code-fn">getSalesData</span>(region, period);
-    <span class="code-key">return</span> { content: [{ type: <span class="code-str">"text"</span>, text: JSON.stringify(data) }] };
-  }
-);`,
-cases:["Connect Claude to your proprietary business systems","Build domain-specific tools for your workflow","Create data pipelines triggered by natural language","Automate complex multi-step business processes"]}
-];
-
-function showArchDetail(type){
-const el=document.getElementById('archDetail');
-el.innerHTML=ARCH_DETAILS[type];
-el.classList.add('show');
-document.querySelectorAll('.arch-node').forEach(n=>n.classList.remove('active'));
-if(type==='client') document.getElementById('nodeClient').classList.add('active');
-else if(type==='server') document.getElementById('nodeServer').classList.add('active');
-else{document.getElementById('nodeData1').classList.add('active');document.getElementById('nodeData2').classList.add('active');document.getElementById('nodeData3').classList.add('active');}
-}
-
-function showServer(idx,el){
-document.querySelectorAll('.server-card').forEach(c=>c.classList.remove('active'));
-el.classList.add('active');
-const s=SERVER_DETAILS[idx];
-const panel=document.getElementById('serverDetail');
-panel.innerHTML=`<h3>${s.title}</h3><div class="code-block">${s.code}</div><h4 style="font-size:.85rem;font-weight:700;margin:.75rem 0 .5rem;color:#a1a1aa">Use Cases</h4>${s.cases.map(c=>`<div class="use-case"><div class="use-case-icon">→</div><div class="use-case-text">${c}</div></div>`).join('')}`;
-panel.classList.add('show');
-}
-
-function completeLesson(){
-localStorage.setItem('cm_mcp-servers','done');
-const burst=document.getElementById('xpBurst');burst.classList.add('show');
-const cont=document.getElementById('particles');const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left='50%';p.style.top='50%';p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');p.style.animation='particleFly .8s ease forwards';p.style.animationDelay=(Math.random()*.2)+'s';cont.appendChild(p);setTimeout(()=>p.remove(),1200);}
-setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
-}
-</script>
+</div>

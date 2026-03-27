@@ -106,51 +106,12 @@ console.<span class="fn">log</span>(session.access_token) <span class="cm">// Th
 </div>
 <div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
+
+<div data-learn="QuizMC" data-props='{"title":"JWT Knowledge Check","questions":[{"q":"Which part of a JWT is cryptographically signed to prevent tampering?","options":["Header","Payload","Signature","All three parts"],"correct":2,"explanation":"The signature is computed from the header and payload using a secret. Any change to the header or payload invalidates the signature, so the server can detect tampering."},{"q":"What does the `sub` claim in a JWT payload represent?","options":["Subscription tier","Subject (typically the user ID)","Supabase project","Secret key"],"correct":1,"explanation":"The `sub` (subject) claim uniquely identifies the principal — usually the user ID. Supabase's auth.uid() function extracts this value to enforce Row Level Security policies."},{"q":"How long does a Supabase access token (JWT) last by default?","options":["24 hours","7 days","1 hour","30 minutes"],"correct":2,"explanation":"Supabase access tokens expire after 1 hour (3600 seconds). The refresh token is long-lived and can be used to silently get a new access token without re-authentication."}]}'></div>
+
+<div data-learn="FlashDeck" data-props='{"title":"JWT & Auth Flashcards","cards":[{"front":"What are the three parts of a JWT?","back":"Header (algorithm + type), Payload (claims/data), Signature (cryptographic verification). Separated by dots and base64url-encoded."},{"front":"What is RLS and why does it matter for JWTs?","back":"Row Level Security is a Postgres feature that enforces data access rules per row. Supabase RLS policies use auth.uid() to extract the user ID from the JWT, so each user can only access their own data."},{"front":"What is the difference between an access token and a refresh token?","back":"Access token: short-lived JWT (1 hour) sent with every request. Refresh token: long-lived token stored securely, used only to silently get a new access token when the old one expires."},{"front":"What HTTP header carries a JWT in API requests?","back":"Authorization: Bearer <token>. The server reads this header, extracts the token, and verifies the signature to authenticate the request."}]}'></div>
+
+<div data-learn="MatchConnect" data-props='{"title":"JWT Claims Matcher","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"sub","right":"User ID (subject)"},{"left":"iat","right":"Issued at timestamp"},{"left":"exp","right":"Expiration timestamp"},{"left":"role","right":"Supabase permission level"}]}'></div>
+
 </div>
-
-<script>
-let actions=0;
-function updateProg(){actions++;const p=Math.min(100,actions*18);document.getElementById('lessonProgress').style.width=p+'%';document.getElementById('lessonPct').textContent=p+'%'}
-
-function showPanel(which){
-['header','payload','sig'].forEach(p=>{document.getElementById('panel-'+p).classList.remove('active')});
-document.getElementById('panel-'+which).classList.add('active');updateProg()}
-
-function decodeJWT(){
-const token=document.getElementById('jwtInput').value.trim();
-const parts=token.split('.');
-if(parts.length!==3){document.getElementById('decodeOutput').style.display='block';document.getElementById('decodeOutput').innerHTML='<span style="color:#ef4444">Invalid JWT — must have 3 parts separated by dots.</span>';return}
-try{
-const header=JSON.parse(atob(parts[0].replace(/-/g,'+').replace(/_/g,'/')));
-const payload=JSON.parse(atob(parts[1].replace(/-/g,'+').replace(/_/g,'/')));
-const out=document.getElementById('decodeOutput');out.style.display='block';
-let html='<div style="margin-bottom:.75rem"><span style="color:#ef4444;font-weight:600">HEADER:</span></div>';
-html+='<div style="margin-bottom:.75rem">'+syntaxHighlight(JSON.stringify(header,null,2))+'</div>';
-html+='<div style="margin-bottom:.75rem"><span style="color:#c084fc;font-weight:600">PAYLOAD:</span></div>';
-html+='<div style="margin-bottom:.75rem">'+syntaxHighlight(JSON.stringify(payload,null,2))+'</div>';
-if(payload.exp){const exp=new Date(payload.exp*1000);const now=new Date();html+='<div style="margin-top:.5rem;color:'+(exp<now?'#ef4444':'#22c55e')+'">Token '+(exp<now?'EXPIRED':'valid')+' — expires: '+exp.toISOString()+'</div>'}
-out.innerHTML=html;updateProg()}catch(e){document.getElementById('decodeOutput').style.display='block';document.getElementById('decodeOutput').innerHTML='<span style="color:#ef4444">Failed to decode: '+e.message+'</span>'}}
-
-function syntaxHighlight(json){return json.replace(/(".*?")\s*:/g,'<span style="color:#60a5fa">$1</span>:').replace(/:\s*(".*?")/g,': <span style="color:#34d399">$1</span>').replace(/:\s*(\d+)/g,': <span style="color:#fb923c">$1</span>')}
-
-const stepDetails=[
-{label:'Sign Up Code',code:'<span class="kw">const</span> { data, error } = <span class="kw">await</span> supabase.auth.<span class="fn">signUp</span>({<br>&nbsp;&nbsp;email: <span class="str">\'user@email.com\'</span>,<br>&nbsp;&nbsp;password: <span class="str">\'password123\'</span><br>})<br><span class="cm">// data.user is created, but not confirmed yet</span>'},
-{label:'Confirmation',code:'<span class="cm">// User clicks email link, hits:</span><br>https://yourproject.supabase.co/auth/v1/verify?<br>&nbsp;&nbsp;token=<span class="str">abc123</span>&type=<span class="str">signup</span>&redirect_to=<span class="str">https://yoursite.com</span>'},
-{label:'Token Response',code:'<span class="cm">// After verification, Supabase returns:</span><br>{<br>&nbsp;&nbsp;<span class="str">"access_token"</span>: <span class="str">"eyJhbG..."</span>,  <span class="cm">// JWT, 1 hour</span><br>&nbsp;&nbsp;<span class="str">"refresh_token"</span>: <span class="str">"v1.abc..."</span>, <span class="cm">// long-lived</span><br>&nbsp;&nbsp;<span class="str">"expires_in"</span>: <span class="num">3600</span>,<br>&nbsp;&nbsp;<span class="str">"token_type"</span>: <span class="str">"bearer"</span><br>}'},
-{label:'Authenticated Request',code:'<span class="cm">// Every API call includes the token:</span><br><span class="fn">fetch</span>(<span class="str">\'https://proj.supabase.co/rest/v1/brain_context\'</span>, {<br>&nbsp;&nbsp;headers: {<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">\'Authorization\'</span>: <span class="str">`Bearer ${session.access_token}`</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">\'apikey\'</span>: <span class="str">SUPABASE_ANON_KEY</span><br>&nbsp;&nbsp;}<br>})'},
-{label:'Row Level Security',code:'<span class="cm">-- Postgres checks JWT claims in the policy:</span><br><span class="kw">CREATE POLICY</span> <span class="str">"users see own data"</span> <span class="kw">ON</span> brain_context<br>&nbsp;&nbsp;<span class="kw">FOR SELECT USING</span> (<br>&nbsp;&nbsp;&nbsp;&nbsp;auth.uid() = user_id <span class="cm">-- auth.uid() extracts sub from JWT</span><br>&nbsp;&nbsp;);'}
-];
-
-function activateStep(idx){
-document.querySelectorAll('.auth-step').forEach((s,i)=>{s.classList.toggle('active',i<=idx)});
-document.querySelectorAll('.auth-arrow').forEach((a,i)=>{a.classList.toggle('active',i<idx)});
-const detail=document.getElementById('stepDetail');detail.style.display='block';
-document.getElementById('stepLabel').textContent=stepDetails[idx].label;
-document.getElementById('stepCode').innerHTML=stepDetails[idx].code;
-updateProg()}
-
-function completeLesson(){localStorage.setItem('aisb_lesson_6','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_6')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
-</script>

@@ -144,58 +144,12 @@ free: false
 </div>
 <div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
+
+<div data-learn="QuizMC" data-props='{"title":"Full Stack Architecture Quiz","questions":[{"q":"Which service in the stack is responsible for hosting the checkout page when a user buys a course?","options":["Vercel","Supabase","Stripe","Make.com"],"correct":2,"explanation":"Stripe hosts the checkout page entirely. Your edge function creates a session and returns a URL, and the frontend redirects the user there. You never handle raw card data — Stripe manages the entire payment UI and PCI compliance."},{"q":"What triggers the Make.com revenue alert scenario?","options":["A scheduled timer every hour","A Supabase webhook when a new row is inserted into the revenue table","The user clicking a button on the frontend","A Stripe webhook directly to Make.com"],"correct":1,"explanation":"Supabase can fire webhooks when database rows are created. The revenue table gets a row inserted after a successful Stripe payment (via the webhook handler edge function). That Supabase event triggers the Make.com scenario to alert Slack."},{"q":"Why does Claude read from brain_context via an edge function rather than directly from the frontend?","options":["Claude cannot connect to the internet","The service role key that bypasses RLS must stay server-side — never in the browser","Edge functions are faster than direct database queries","The brain_context table does not support direct queries"],"correct":1,"explanation":"The brain_context table uses the service role key for full access, which bypasses RLS. This key must never be exposed to the browser. Edge functions run server-side, keeping the key secure while allowing Claude to read and write the full brain."}]}'></div>
+
+<div data-learn="MatchConnect" data-props='{"title":"User Journey Service Matcher","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"User visits site","right":"Vercel serves from nearest edge server"},{"left":"User submits email","right":"Edge Function stores in Supabase + Resend welcome"},{"left":"User completes purchase","right":"Stripe checkout + webhook logs revenue"},{"left":"Team gets notified","right":"Make.com Slack alert"}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Complete Purchase Flow","instruction":"Arrange the steps in the correct order when a user buys a course","items":["User clicks Buy button on Vercel frontend","Frontend calls create-checkout edge function","Edge function creates Stripe checkout session","User completes payment on Stripe-hosted page","Stripe fires checkout.session.completed webhook","Webhook handler inserts row into revenue table","Make.com scenario alerts Slack channel"]}'></div>
+
 </div>
-
-<script>
-const connections={
-vercel:{
-header:'<span class="conn-from">Vercel</span> <span class="conn-arrow">&#x2194;</span> <span class="conn-to">Supabase, Stripe</span>',
-flow:'<p><strong>Vercel &#x2192; Supabase:</strong> Frontend calls Supabase REST API and Edge Functions using anon key + JWT auth.</p><p><strong>Vercel &#x2192; Stripe:</strong> Frontend calls create-checkout edge function, which returns a Stripe checkout URL for redirect.</p><p><strong>Vercel &#x2190; GitHub:</strong> Auto-deploys on every push to main. Preview deploys for PRs.</p>',
-code:'<span class="cm">// Frontend calling edge function</span>\n<span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(\n  <span class="str">\'https://proj.supabase.co/functions/v1/create-checkout\'</span>,\n  { method: <span class="str">\'POST\'</span>, headers: { Authorization: <span class="str">`Bearer ${token}`</span> }}\n)\n<span class="kw">const</span> { url } = <span class="kw">await</span> res.<span class="fn">json</span>()\nwindow.location.href = url'},
-supabase:{
-header:'<span class="conn-from">Supabase</span> <span class="conn-arrow">&#x2194;</span> <span class="conn-to">Everything</span>',
-flow:'<p><strong>Supabase is the hub.</strong> Database stores all data. Edge functions handle business logic. Auth manages users. RLS protects data.</p><p><strong>&#x2192; Stripe:</strong> Edge functions create checkout sessions + verify webhooks.</p><p><strong>&#x2192; Resend:</strong> Edge functions send transactional emails.</p><p><strong>&#x2192; Claude:</strong> Edge functions call Claude API for AI responses.</p>',
-code:'<span class="cm">// Supabase edge function calling multiple services</span>\n<span class="kw">const</span> { data } = <span class="kw">await</span> supabase.<span class="fn">from</span>(<span class="str">\'brain_context\'</span>).<span class="fn">select</span>(<span class="str">\'*\'</span>)\n<span class="kw">await</span> resend.emails.<span class="fn">send</span>({ to, subject, html })\n<span class="kw">const</span> ai = <span class="kw">await</span> anthropic.messages.<span class="fn">create</span>({...})'},
-stripe:{
-header:'<span class="conn-from">Stripe</span> <span class="conn-arrow">&#x2192;</span> <span class="conn-to">Supabase Edge Functions</span>',
-flow:'<p><strong>Stripe &#x2192; Your Webhook:</strong> When a payment succeeds, Stripe sends a POST to your edge function with the event data.</p><p><strong>Your Webhook &#x2192; Supabase:</strong> Log the revenue. Update user access. Send confirmation email.</p>',
-code:'<span class="cm">// Stripe webhook flow</span>\nStripe checkout &#x2192; payment succeeds\n&#x2192; POST to supabase.co/functions/v1/stripe-webhook\n&#x2192; Verify signature\n&#x2192; INSERT INTO revenue\n&#x2192; Grant course access'},
-resend:{
-header:'<span class="conn-from">Resend</span> <span class="conn-arrow">&#x2190;</span> <span class="conn-to">Supabase Edge Functions</span>',
-flow:'<p><strong>Edge Functions &#x2192; Resend:</strong> Called from edge functions for welcome emails, purchase confirmations, and password resets.</p><p>Resend provides deliverability, templates, and analytics.</p>',
-code:'<span class="kw">await</span> resend.emails.<span class="fn">send</span>({\n  from: <span class="str">\'noreply@likeone.ai\'</span>,\n  to: email,\n  subject: <span class="str">\'Welcome to Like One Academy\'</span>,\n  html: <span class="str">\'<h1>You\\\'re in!</h1>\'</span>\n})'},
-make:{
-header:'<span class="conn-from">Make.com</span> <span class="conn-arrow">&#x2194;</span> <span class="conn-to">Supabase, Slack, Google Sheets</span>',
-flow:'<p><strong>Make.com is the glue</strong> for things that don\'t justify custom code. Notifications, syncing, scheduled tasks, analytics.</p><p>Triggers from Supabase webhooks or schedules, actions to Slack/Sheets/Twitter.</p>',
-code:'<span class="cm">// Make.com scenarios</span>\n1. New subscriber &#x2192; Slack notification\n2. Revenue > $50 &#x2192; Slack celebration\n3. Daily 9am &#x2192; Analytics digest\n4. New blog post &#x2192; Tweet thread'},
-claude:{
-header:'<span class="conn-from">Claude</span> <span class="conn-arrow">&#x2190;</span> <span class="conn-to">Edge Functions + MCP</span>',
-flow:'<p><strong>Claude is the brain.</strong> Called from edge functions for AI-powered features. Uses the brain_context table as its memory via MCP (Model Context Protocol).</p><p>Can read/write to Supabase, trigger Make.com scenarios, and manage the entire system.</p>',
-code:'<span class="kw">const</span> response = <span class="kw">await</span> anthropic.messages.<span class="fn">create</span>({\n  model: <span class="str">\'claude-sonnet-4-20250514\'</span>,\n  messages: [{ role: <span class="str">\'user\'</span>, content: prompt }],\n  tools: [supabaseTool, resendTool]\n})'}
-};
-
-function showNode(name){
-document.querySelectorAll('.arch-node').forEach(n=>n.classList.remove('active'));
-event.currentTarget.classList.add('active');
-const conn=connections[name];
-const detail=document.getElementById('connDetail');
-detail.classList.add('active');
-document.getElementById('connHeader').innerHTML=conn.header;
-document.getElementById('connFlow').innerHTML=conn.flow;
-document.getElementById('connCode').innerHTML=conn.code;
-updateProg()}
-
-const stepsDone=[false,false,false,false,false,false];
-function toggleStep(idx){
-document.querySelectorAll('.build-step').forEach((s,i)=>{
-if(i===idx)s.classList.toggle('active');
-else s.classList.remove('active')});updateProg()}
-function markDone(idx){stepsDone[idx]=true;document.querySelectorAll('.build-step')[idx].classList.add('completed');document.querySelectorAll('.build-step')[idx].classList.remove('active');updateProg()}
-
-let actions=0;
-function updateProg(){actions++;const done=stepsDone.filter(Boolean).length;const p=Math.min(100,Math.max(actions*8,done/6*100));document.getElementById('lessonProgress').style.width=p+'%';document.getElementById('lessonPct').textContent=Math.round(p)+'%'}
-function completeLesson(){localStorage.setItem('aisb_lesson_9','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_9')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
-</script>

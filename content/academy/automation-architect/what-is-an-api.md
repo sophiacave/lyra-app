@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 
 <header class="lesson-header">
@@ -63,128 +63,14 @@ free: false
     <div class="status-card status-5xx"><div class="status-code">500 Server Error</div><div class="status-label">Something broke on the server</div></div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson &mdash; Earn 50 XP</button>
+  <div data-learn="FlashDeck" data-props='{"title":"HTTP Methods","cards":[{"front":"GET","back":"Read data without modifying it. Safe and idempotent. Example: GET /users returns a list of users."},{"front":"POST","back":"Create a new resource. Sends a body with data. Returns 201 Created on success."},{"front":"PUT","back":"Update or replace an existing resource. Idempotent — same result if called multiple times."},{"front":"DELETE","back":"Remove a resource. Example: DELETE /users/42 removes user with id 42."},{"front":"Idempotent","back":"An operation that produces the same result no matter how many times you repeat it. GET, PUT, DELETE are idempotent. POST is not."}]}'></div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Status Codes","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"200 OK","right":"Request succeeded, data returned"},{"left":"201 Created","right":"New resource was created (POST)"},{"left":"401 Unauthorized","right":"Missing or invalid authentication"},{"left":"404 Not Found","right":"Resource does not exist at that URL"},{"left":"500 Server Error","right":"Something broke on the server side"}]}'></div>
+
+  <div data-learn="QuizMC" data-props='{"title":"API Concepts Quiz","questions":[{"q":"Which HTTP method retrieves data without modifying anything?","options":["POST","PUT","GET","DELETE"],"correct":2,"explanation":"GET is the read-only method. It fetches data from the server without creating, updating, or deleting anything."},{"q":"What does a 404 status code mean?","options":["Authentication failed","Request was malformed","Resource not found","Server error"],"correct":2,"explanation":"404 Not Found means the server understood the request but there is no resource at that URL."},{"q":"What is the difference between POST and PUT?","options":["POST updates, PUT creates","POST creates, PUT updates or replaces","They are identical","POST deletes, PUT reads"],"correct":1,"explanation":"POST creates a new resource. PUT updates or replaces an existing resource. PUT is idempotent — POST is not."}]}'></div>
+
 </div>
 
 <footer class="progress-footer">
   <p>Lesson 4 of 9 &middot; Automation Architect</p>
 </footer>
-
-<script>
-const SLUG='what-is-an-api';
-const STORAGE_KEY='automation-architect-progress';
-
-const methods={
-  GET:{
-    title:'GET — Read Data (Weather API)',
-    content:`<div class="code-block"><span class="comment">// Request</span>
-<span class="method-get">GET</span> https://api.weather.com/v1/current?city=tokyo
-<span class="header">Authorization:</span> Bearer sk_abc123
-<span class="header">Accept:</span> application/json</div>
-<div class="code-block"><span class="comment">// Response — <span class="status">200 OK</span></span>
-{
-  <span class="key">"city"</span>: <span class="val">"Tokyo"</span>,
-  <span class="key">"temp"</span>: <span class="val">22</span>,
-  <span class="key">"condition"</span>: <span class="val">"Partly Cloudy"</span>,
-  <span class="key">"humidity"</span>: <span class="val">65</span>
-}</div>`
-  },
-  POST:{
-    title:'POST — Create Data (Stripe API)',
-    content:`<div class="code-block"><span class="comment">// Request</span>
-<span class="method-post">POST</span> https://api.stripe.com/v1/charges
-<span class="header">Authorization:</span> Bearer sk_live_xxx
-<span class="header">Content-Type:</span> application/json
-
-{
-  <span class="key">"amount"</span>: <span class="val">7900</span>,
-  <span class="key">"currency"</span>: <span class="val">"usd"</span>,
-  <span class="key">"customer"</span>: <span class="val">"cus_abc123"</span>
-}</div>
-<div class="code-block"><span class="comment">// Response — <span class="status">201 Created</span></span>
-{
-  <span class="key">"id"</span>: <span class="val">"ch_1abc"</span>,
-  <span class="key">"status"</span>: <span class="val">"succeeded"</span>,
-  <span class="key">"amount"</span>: <span class="val">7900</span>
-}</div>`
-  },
-  PUT:{
-    title:'PUT — Update Data (User Settings)',
-    content:`<div class="code-block"><span class="comment">// Request</span>
-<span class="method-put">PUT</span> https://api.myapp.com/v1/settings/user_42
-<span class="header">Authorization:</span> Bearer token_xxx
-<span class="header">Content-Type:</span> application/json
-
-{
-  <span class="key">"theme"</span>: <span class="val">"dark"</span>,
-  <span class="key">"notifications"</span>: <span class="val">true</span>,
-  <span class="key">"timezone"</span>: <span class="val">"America/New_York"</span>
-}</div>
-<div class="code-block"><span class="comment">// Response — <span class="status">200 OK</span></span>
-{
-  <span class="key">"id"</span>: <span class="val">"user_42"</span>,
-  <span class="key">"updated"</span>: <span class="val">true</span>,
-  <span class="key">"settings"</span>: { <span class="key">"theme"</span>: <span class="val">"dark"</span> ... }
-}</div>`
-  },
-  DELETE:{
-    title:'DELETE — Remove Data',
-    content:`<div class="code-block"><span class="comment">// Request</span>
-<span class="method-delete">DELETE</span> https://api.myapp.com/v1/users/user_42
-<span class="header">Authorization:</span> Bearer admin_token</div>
-<div class="code-block"><span class="comment">// Response — <span class="status">200 OK</span></span>
-{
-  <span class="key">"deleted"</span>: <span class="val">true</span>,
-  <span class="key">"id"</span>: <span class="val">"user_42"</span>
-}</div>`
-  }
-};
-
-function animateRequest(){
-  const req=document.getElementById('packetReq');
-  const res=document.getElementById('packetRes');
-  const lReq=document.getElementById('labelReq');
-  const lRes=document.getElementById('labelRes');
-
-  req.classList.remove('sending');res.classList.remove('returning');
-  lReq.classList.remove('visible');lRes.classList.remove('visible');
-
-  void req.offsetWidth;
-  req.classList.add('sending');
-  lReq.classList.add('visible');
-
-  setTimeout(()=>{
-    lReq.classList.remove('visible');
-    res.classList.add('returning');
-    lRes.classList.add('visible');
-    setTimeout(()=>lRes.classList.remove('visible'),1500);
-  },1400);
-}
-
-function selectMethod(m){
-  document.querySelectorAll('.method-card').forEach(c=>c.classList.remove('selected'));
-  document.querySelector(`[data-method="${m}"]`).classList.add('selected');
-  const d=methods[m];
-  document.getElementById('detailTitle').textContent=d.title;
-  document.getElementById('detailContent').innerHTML=d.content;
-  animateRequest();
-}
-
-function completeLesson(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  progress[SLUG]=true;
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));
-  const btn=document.getElementById('completeBtn');
-  btn.textContent='Completed! +50 XP';
-  btn.classList.add('done');
-}
-
-(function(){
-  const progress=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-  if(progress[SLUG]){
-    document.getElementById('completeBtn').textContent='Completed! +50 XP';
-    document.getElementById('completeBtn').classList.add('done');
-  }
-  setTimeout(()=>selectMethod('GET'),600);
-})();
-</script>

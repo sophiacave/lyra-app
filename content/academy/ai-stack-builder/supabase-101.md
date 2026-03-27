@@ -70,7 +70,7 @@ free: true
 <div class="sandbox">
 <textarea id="sqlInput" placeholder="-- Try a query. Examples:
 -- SELECT * FROM brain_context;
--- INSERT INTO brain_context (key, value) VALUES ('mood', '\"curious\"');
+-- INSERT INTO brain_context (key, value) VALUES ('mood', '&quot;curious&quot;');
 -- SELECT key, value FROM brain_context WHERE key LIKE 'session%';
 ">SELECT * FROM brain_context;</textarea>
 <button class="run-btn" onclick="runQuery()">&#x25b6; Run Query</button>
@@ -123,28 +123,12 @@ free: true
 </div>
 <div class="progress-bar"></div>
 </div>
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson & Earn 260 XP</button>
 <div class="footer">Like One Academy &copy; 2026</div>
-</div>
 
-<script>
-const sampleData=[
-{id:'a1b2c3d4',key:'identity.name',value:'"Stack Builder Student"',updated_at:'2026-03-23T10:00:00Z'},
-{id:'e5f6g7h8',key:'session.active_work',value:'"building brain_context"',updated_at:'2026-03-23T10:05:00Z'},
-{id:'i9j0k1l2',key:'session.mood',value:'"focused"',updated_at:'2026-03-23T10:10:00Z'},
-{id:'m3n4o5p6',key:'system.version',value:'"1.0.0"',updated_at:'2026-03-23T09:00:00Z'},
-{id:'q7r8s9t0',key:'directive.boot_sequence',value:'{"version":"4.0","steps":["read brain","resume work"]}',updated_at:'2026-03-23T08:00:00Z'}
-];
-function addColumn(){const rows=document.getElementById('tableRows');const row=document.createElement('div');row.className='table-row';row.innerHTML='<input placeholder="column name"><select><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>jsonb</option><option>timestamptz</option></select><span class="pk"></span><span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>';rows.appendChild(row);updateProg()}
-function delRow(btn){btn.closest('.table-row').remove();updateProg()}
-function generateSQL(){const rows=document.querySelectorAll('#tableRows .table-row');let sql='<span class="kw">CREATE TABLE</span> brain_context (\n';const cols=[];rows.forEach(r=>{const name=r.querySelector('input').value||'unnamed';const type=r.querySelector('select').value;const pk=r.querySelector('.pk')?.textContent==='PK';let line='  '+name+' <span class="fn">'+type+'</span>';if(pk)line+=' <span class="kw">DEFAULT</span> <span class="fn">gen_random_uuid</span>() <span class="kw">PRIMARY KEY</span>';if(name==='updated_at')line+=' <span class="kw">DEFAULT</span> <span class="fn">now</span>()';cols.push(line)});sql+=cols.join(',\n')+'\n);';document.getElementById('sqlOutput').innerHTML=sql;document.getElementById('sqlPanel').style.display='block';updateProg()}
-function copySQL(){const text=document.getElementById('sqlOutput').textContent;navigator.clipboard.writeText(text);document.getElementById('copyMsg').style.display='block';setTimeout(()=>document.getElementById('copyMsg').style.display='none',1500)}
-function runQuery(){const q=document.getElementById('sqlInput').value.trim().toLowerCase();const out=document.getElementById('queryResults');let data=sampleData;if(q.includes('insert')){out.innerHTML='<p style="color:#22c55e;margin-top:.75rem;font-size:.9rem">&#x2713; 1 row inserted successfully.</p>';updateProg();return}
-if(q.includes('where')){const match=q.match(/like\s+'([^']+)'/i)||q.match(/=\s*'([^']+)'/i);if(match){const filter=match[1].replace(/%/g,'');data=sampleData.filter(r=>r.key.includes(filter))}}
-if(q.includes('select')){let cols=Object.keys(sampleData[0]);const colMatch=q.match(/select\s+(.+?)\s+from/i);if(colMatch&&!colMatch[1].includes('*')){cols=colMatch[1].split(',').map(c=>c.trim())}
-let html='<table class="results-table"><tr>';cols.forEach(c=>html+='<th>'+c+'</th>');html+='</tr>';data.forEach(r=>{html+='<tr>';cols.forEach(c=>html+='<td>'+(r[c]||'null')+'</td>');html+='</tr>'});html+='</table><p style="color:#888;font-size:.8rem;margin-top:.5rem">'+data.length+' rows returned</p>';out.innerHTML=html}else{out.innerHTML='<p style="color:#22c55e;margin-top:.75rem;font-size:.9rem">&#x2713; Query executed successfully.</p>'}
-updateProg()}
-let actions=0;function updateProg(){actions++;const pct=Math.min(100,actions*15);document.getElementById('lessonProgress').style.width=pct+'%';document.getElementById('lessonPct').textContent=pct+'%'}
-function completeLesson(){localStorage.setItem('aisb_lesson_2','complete');const btn=document.getElementById('completeBtn');btn.textContent='\u2713 Lesson Complete — 260 XP Earned!';btn.classList.add('done');document.getElementById('lessonProgress').style.width='100%';document.getElementById('lessonPct').textContent='100%'}
-if(localStorage.getItem('aisb_lesson_2')==='complete'){document.getElementById('completeBtn').textContent='\u2713 Complete';document.getElementById('completeBtn').classList.add('done')}
-</script>
+<div data-learn="QuizMC" data-props='{"title":"Supabase 101 Quiz","questions":[{"q":"What is the difference between the anon key and the service role key?","options":["They are the same key with different names","The anon key is public and safe for frontend use; the service role key is secret and bypasses RLS","The anon key is for Edge Functions only","The service role key is used for read operations only"],"correct":1,"explanation":"The anon key is designed to be public — it can be safely included in frontend JavaScript. Row Level Security policies control what it can access. The service role key bypasses ALL RLS and should only ever exist in server-side code (edge functions, never in the browser)."},{"q":"What does enabling RLS on a table do without adding any policies?","options":["Allows everyone to read but not write","Blocks all access to the table by default","Allows service role access only","Has no effect until policies are added"],"correct":1,"explanation":"Enabling RLS with no policies creates a default-deny state — nobody can access the table. You must explicitly create policies to grant access. This is the safe default: deny all, then open up only what is needed."},{"q":"What is JSONB in Postgres and why use it for an AI brain table?","options":["A faster version of JSON that supports indexing and querying inside the JSON structure","A text format for storing binary data","A UUID generator","A real-time subscription type"],"correct":0,"explanation":"JSONB is a binary JSON storage format in Postgres. Unlike plain text JSON, JSONB allows you to index and query inside the JSON structure (e.g., WHERE value->>'name' = 'Alex'). For an AI brain table, this lets you store flexible, schema-less data while still being able to query it efficiently."}]}'></div>
+
+<div data-learn="FlashDeck" data-props='{"title":"Supabase Flashcards","cards":[{"front":"What SQL command enables Row Level Security on a table?","back":"ALTER TABLE table_name ENABLE ROW LEVEL SECURITY; — This must be followed by CREATE POLICY statements, otherwise the table is locked to all users."},{"front":"What is pgvector and what does it enable?","back":"pgvector is a Postgres extension that adds a vector data type and similarity search operators. It enables storing AI embeddings and finding semantically similar rows — the foundation of AI memory and RAG (Retrieval-Augmented Generation)."},{"front":"How do you connect to Supabase from a JavaScript frontend?","back":"import { createClient } from '@supabase/supabase-js'; const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY); — then use supabase.from('table').select() or supabase.auth.signIn() etc."}]}'></div>
+
+<div data-learn="SortStack" data-props='{"title":"Supabase Project Setup Order","instruction":"Arrange these steps in the correct order to set up a new Supabase project","items":["Create project at supabase.com and save URL + keys","Create tables using the SQL Editor","Enable RLS on all tables","Create access policies for each role","Insert seed data and test queries"]}'></div>
+
+</div>

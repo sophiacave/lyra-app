@@ -105,31 +105,7 @@ free: true
 </div>
 
 <div class="card">
-<h2>Quiz: Which Model Would You Use?</h2>
-<p>5 real scenarios. Pick the right Claude model for each one.</p>
-<div id="quizWrap">
-<div class="quiz-progress">Question <span id="qNum">1</span> of 5</div>
-<div class="scenario-box">
-<div class="scenario-label">Scenario</div>
-<div id="scenarioText"></div>
-</div>
-<div class="quiz-feedback" id="quizFeedback"></div>
-<div class="quiz-options">
-<button class="quiz-btn opus-opt" id="btnOpus" onclick="answer('opus')">Claude Opus</button>
-<button class="quiz-btn sonnet-opt" id="btnSonnet" onclick="answer('sonnet')">Claude Sonnet</button>
-<button class="quiz-btn haiku-opt" id="btnHaiku" onclick="answer('haiku')">Claude Haiku</button>
-</div>
-<button class="quiz-next-btn" id="quizNext" onclick="nextQuestion()">Next Question →</button>
-<div class="quiz-score" id="quizScore">
-<div id="scoreNum"></div>
-<p id="scoreMsg"></p>
-<button class="quiz-next-btn" style="display:inline-block;margin-top:1rem" onclick="resetQuiz()">Retake Quiz</button>
-</div>
-</div>
-</div>
-
-<div class="takeaway-card">
-<h2>The Core Idea</h2>
+<h2>The HHH Framework</h2>
 <p style="color:#a1a1aa;line-height:1.7;margin-bottom:.25rem">Everything about Claude traces back to three words. Anthropic calls it the HHH framework — and it's not just marketing. These properties are baked into how the model is trained and evaluated.</p>
 <div class="three-h">
 <div class="h-pill helpful">
@@ -150,9 +126,11 @@ free: true
 </div>
 </div>
 
-<div class="card">
-<button class="complete-btn" onclick="completeLesson()">Complete &amp; Continue →</button>
-</div>
+<div data-learn="FlashDeck" data-props='{"title":"Claude Model Tiers","cards":[{"front":"Claude Opus","back":"Top tier — best for deep analysis, long-form research, and complex multi-step reasoning. Slower and more expensive."},{"front":"Claude Sonnet","back":"Balanced tier — the everyday powerhouse. Strong reasoning, fast enough for real-time use, cost-effective at scale."},{"front":"Claude Haiku","back":"Lightweight tier — fastest and cheapest. Best for classification, summarization, and high-volume pipelines."},{"front":"Constitutional AI","back":"Anthropic's training approach — Claude is given a set of principles and trained to reason against them, shaping values not just outputs."},{"front":"HHH Framework","back":"Helpful, Harmless, Honest — the three core properties baked into Claude's training and evaluation."}]}'></div>
+
+<div data-learn="QuizMC" data-props='{"title":"Which Claude Model?","questions":[{"q":"You are building a chatbot that auto-tags 10,000 customer support tickets per day by category. Speed and cost matter more than nuance. Which model?","options":["Claude Opus","Claude Sonnet","Claude Haiku","Any model works equally"],"correct":2,"explanation":"High-volume, repetitive classification is exactly where Haiku shines. It is fast, cheap, and more than capable enough for simple categorization."},{"q":"You need to analyze 200 pages of contract language, identify unusual clauses, and write a risk summary for your legal team. Which model?","options":["Claude Opus","Claude Sonnet","Claude Haiku","Temperature matters more than model"],"correct":0,"explanation":"This is exactly where Opus earns its cost — sustained attention over a long document, nuanced judgment on edge cases, and a coherent synthesis at the end."},{"q":"You are writing product descriptions for 50 items in your Shopify store — clear, punchy, conversion-focused copy. Which model?","options":["Claude Opus","Claude Sonnet","Claude Haiku","Use all three in sequence"],"correct":1,"explanation":"Sonnet is the perfect fit — strong enough to write compelling copy at scale, fast enough to get through 50 items, and cost-effective."},{"q":"What does Constitutional AI mean in the context of Claude?","options":["Claude follows US constitutional law","Claude was trained with a set of explicit guiding principles","Claude generates legal documents","Claude refuses all political topics"],"correct":1,"explanation":"Constitutional AI means Anthropic gave Claude a set of principles and trained it to reason against those principles — shaping how it thinks, not just what it says."}]}'></div>
+
+<div data-learn="MatchConnect" data-props='{"title":"Match the Claude Property","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Helpful","right":"Gives what you need, not hedged non-answers"},{"left":"Harmless","right":"Reasons through context before refusing"},{"left":"Honest","right":"Says I am not sure when it does not know"},{"left":"Constitutional AI","right":"Trained with explicit principles, not just feedback"},{"left":"Claude Haiku","right":"Best for speed and high-volume tasks"}]}'></div>
 
 </div>
 
@@ -161,146 +139,4 @@ free: true
 <div class="progress-bar-wrap"></div>
 <span class="progress-label">Module 1</span>
 </div>
-
-<script>
-const QUESTIONS=[
-{
-text:"You're building a chatbot that auto-tags 10,000 customer support tickets per day by category. Speed and cost matter more than nuance.",
-correct:'haiku',
-feedback:{
-haiku:"Correct! High-volume, repetitive classification is exactly where Haiku shines. It's fast, cheap, and more than capable enough for this.",
-sonnet:"Sonnet could do it, but you'd pay significantly more per tag without getting meaningfully better results on simple classification.",
-opus:"Opus would be serious overkill here — and expensive. Save it for tasks where deep reasoning actually changes the outcome."
-}
-},
-{
-text:"You need to analyze 200 pages of contract language, identify unusual clauses, and write a risk summary for your legal team.",
-correct:'opus',
-feedback:{
-opus:"Correct! This is exactly where Opus earns its cost — sustained attention over a long document, nuanced judgment on edge cases, and a coherent synthesis at the end.",
-sonnet:"Sonnet is capable, but with 200 pages of dense legal text, the depth and consistency of Opus will give you a noticeably better result.",
-haiku:"Haiku would struggle to hold the full context and produce the level of legal nuance this task requires."
-}
-},
-{
-text:"You're writing product descriptions for 50 items in your Shopify store — clear, punchy, conversion-focused copy.",
-correct:'sonnet',
-feedback:{
-sonnet:"Correct! Sonnet is the perfect fit — strong enough to write compelling copy at scale, fast enough to get through 50 items, and cost-effective.",
-opus:"Opus works, but you'd be paying premium pricing for a task Sonnet handles just as well.",
-haiku:"Haiku might produce passable copy, but product descriptions benefit from the stronger stylistic judgment Sonnet brings."
-}
-},
-{
-text:"You're prototyping a feature that checks whether a short user message contains profanity — yes or no.",
-correct:'haiku',
-feedback:{
-haiku:"Correct! A yes/no classification on short inputs is one of the simplest tasks imaginable. Haiku handles this reliably at a fraction of the cost.",
-sonnet:"Sonnet works, but it's significantly more expensive per call for a task this simple. Haiku is the right call.",
-opus:"Opus for profanity detection is like using a sledgehammer to crack an egg. Save it for something that actually needs it."
-}
-},
-{
-text:"You're stuck on a hard strategic decision — whether to pivot your product, which market to target, and how to sequence the next 12 months.",
-correct:'opus',
-feedback:{
-opus:"Correct! This is high-stakes, multi-variable reasoning across ambiguous information. Opus is built for exactly this kind of extended strategic thinking.",
-sonnet:"Sonnet is good, but for a decision this consequential — where you want every nuance weighed carefully — the extra depth of Opus is worth the cost.",
-haiku:"Haiku is optimized for speed on simple tasks, not depth on hard strategic problems."
-}
-}
-];
-
-let current=0,score=0,answered=false;
-
-function renderQuestion(){
-const q=QUESTIONS[current];
-document.getElementById('qNum').textContent=current+1;
-document.getElementById('scenarioText').textContent=q.text;
-const fb=document.getElementById('quizFeedback');
-fb.className='quiz-feedback';
-fb.textContent='';
-document.getElementById('quizNext').style.display='none';
-document.getElementById('btnOpus').className='quiz-btn opus-opt';
-document.getElementById('btnSonnet').className='quiz-btn sonnet-opt';
-document.getElementById('btnHaiku').className='quiz-btn haiku-opt';
-[document.getElementById('btnOpus'),document.getElementById('btnSonnet'),document.getElementById('btnHaiku')].forEach(b=>b.disabled=false);
-answered=false;
-}
-
-function answer(choice){
-if(answered) return;
-answered=true;
-const q=QUESTIONS[current];
-const isCorrect=choice===q.correct;
-if(isCorrect) score++;
-const fb=document.getElementById('quizFeedback');
-fb.textContent=q.feedback[choice];
-fb.className='quiz-feedback show '+(isCorrect?'correct':'wrong');
-const map={opus:'btnOpus',sonnet:'btnSonnet',haiku:'btnHaiku'};
-[document.getElementById('btnOpus'),document.getElementById('btnSonnet'),document.getElementById('btnHaiku')].forEach(b=>b.disabled=true);
-document.getElementById(map[choice]).classList.add(isCorrect?'correct':'wrong');
-if(!isCorrect) document.getElementById(map[q.correct]).classList.add('correct');
-const nxt=document.getElementById('quizNext');
-nxt.style.display='inline-block';
-nxt.textContent=current<QUESTIONS.length-1?'Next Question →':'See My Score';
-}
-
-function nextQuestion(){
-current++;
-if(current>=QUESTIONS.length){
-showScore();
-} else {
-renderQuestion();
-}
-}
-
-function showScore(){
-document.getElementById('quizWrap').querySelectorAll('.quiz-progress,.scenario-box,.quiz-options,.quiz-feedback,.quiz-next-btn').forEach(el=>el.style.display='none');
-const scoreEl=document.getElementById('quizScore');
-scoreEl.style.display='block';
-document.getElementById('scoreNum').textContent=score+'/5';
-const msgs=[
-'Keep going — re-read the model tiers section and give it another shot.',
-'Good start! Review the Haiku vs Sonnet boundary and retake.',
-'Not bad! One more pass through the models and you\'ll nail it.',
-'Solid! You\'ve got a good read on when to use each model.',
-'Perfect score. You know your Claude models cold.'
-];
-document.getElementById('scoreMsg').textContent=msgs[score];
-}
-
-function resetQuiz(){
-current=0;score=0;answered=false;
-document.getElementById('quizWrap').querySelectorAll('.quiz-progress,.scenario-box,.quiz-options').forEach(el=>el.style.display='');
-document.getElementById('quizScore').style.display='none';
-renderQuestion();
-}
-
-renderQuestion();
-
-function completeLesson(){
-localStorage.setItem('cm_meet-claude','done');
-const burst=document.getElementById('xpBurst');
-burst.classList.add('show');
-const cont=document.getElementById('particles');
-const colors=['#8b5cf6','#fb923c','#34d399','#f472b6','#38bdf8'];
-for(let i=0;i<30;i++){
-const p=document.createElement('div');
-p.className='particle';
-const s=Math.random()*8+4;
-p.style.width=s+'px';
-p.style.height=s+'px';
-p.style.background=colors[Math.floor(Math.random()*colors.length)];
-p.style.left='50%';
-p.style.top='50%';
-p.style.setProperty('--tx',(Math.random()-0.5)*400+'px');
-p.style.setProperty('--ty',(Math.random()-0.5)*400+'px');
-p.style.animation='particleFly .8s ease forwards';
-p.style.animationDelay=(Math.random()*.2)+'s';
-cont.appendChild(p);
-setTimeout(()=>p.remove(),1200);
-}
-setTimeout(()=>{burst.classList.remove('show');LO_NAV.goNext()},1200);
-}
-</script>
+</div>
