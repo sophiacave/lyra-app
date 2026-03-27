@@ -3,7 +3,7 @@ title: "Persistent Memory Architecture"
 course: "the-convergence-lab"
 order: 2
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">

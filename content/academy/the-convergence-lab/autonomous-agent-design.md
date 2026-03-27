@@ -3,7 +3,7 @@ title: "Autonomous Agent Design"
 course: "the-convergence-lab"
 order: 3
 type: "lesson"
-free: false
+free: true
 ---
 
 <div class="wrap">
