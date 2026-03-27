@@ -22,14 +22,12 @@ export default function SubscribeForm({ source = 'website', buttonText = 'Subscr
     }
   }
 
-  if (done) return <p style={{ color: '#4ade80', fontWeight: 600 }}>Welcome. Check your inbox.</p>;
+  if (done) return <p className="subscribe-success">Welcome. Check your inbox.</p>;
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '8px', maxWidth: '400px', margin: '0 auto' }}>
-      <input name="email" type="email" required placeholder="your@email.com"
-        style={{ flex: 1, padding: '0.65rem 1rem', background: '#0a0a0f', border: '1px solid #1a1a2e', borderRadius: '8px', color: '#e5e5e5', fontSize: '0.9rem', fontFamily: 'inherit' }} />
-      <button type="submit" disabled={loading}
-        style={{ background: '#fb923c', color: '#000', padding: '0.65rem 1.25rem', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', opacity: loading ? 0.6 : 1 }}>
+    <form onSubmit={handleSubmit} className="subscribe-form">
+      <input name="email" type="email" required placeholder="your@email.com" className="subscribe-input" />
+      <button type="submit" disabled={loading} className={`subscribe-btn${loading ? ' loading' : ''}`}>
         {loading ? 'Joining...' : buttonText}
       </button>
     </form>

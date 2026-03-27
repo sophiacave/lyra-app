@@ -11,7 +11,7 @@ const CATEGORIES = [
     id: 'communication',
     label: 'Communication',
     icon: '💬',
-    color: '#38bdf8',
+    color: 'blue',
     items: [
       {
         n: 1,
@@ -43,7 +43,7 @@ const CATEGORIES = [
     id: 'content',
     label: 'Content',
     icon: '✍️',
-    color: '#c084fc',
+    color: 'purple',
     items: [
       {
         n: 5,
@@ -75,7 +75,7 @@ const CATEGORIES = [
     id: 'operations',
     label: 'Operations',
     icon: '⚙️',
-    color: '#fb923c',
+    color: 'warm',
     items: [
       {
         n: 9,
@@ -107,7 +107,7 @@ const CATEGORIES = [
     id: 'strategy',
     label: 'Strategy',
     icon: '🧠',
-    color: '#4ade80',
+    color: 'green',
     items: [
       {
         n: 13,
@@ -182,228 +182,33 @@ export default function ChecklistPage() {
   const totalDone = Object.values(checked).filter(Boolean).length;
 
   return (
-    <div
-      style={{
-        background: '#08080a',
-        color: '#e5e5e5',
-        fontFamily: "'Inter', -apple-system, system-ui, sans-serif",
-        minHeight: '100vh',
-        WebkitFontSmoothing: 'antialiased',
-      }}
-    >
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes gradientShift {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .accent-gradient {
-          background: linear-gradient(135deg, #c084fc, #e879f9, #38bdf8, #c084fc);
-          background-size: 300% 300%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: gradientShift 4s ease infinite;
-        }
-        .fade-up { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
-        .checklist-item {
-          background: #111114;
-          border: 1px solid #1e1e28;
-          border-radius: 12px;
-          padding: 1.25rem 1.5rem;
-          margin-bottom: 0.75rem;
-          display: flex;
-          align-items: flex-start;
-          gap: 1rem;
-          cursor: pointer;
-          transition: border-color 0.2s, background 0.2s;
-        }
-        .checklist-item:hover { border-color: #2a2a38; background: #131318; }
-        .checklist-item.done { border-color: #38bdf820; background: #0a1620; }
-        .check-box {
-          width: 22px;
-          height: 22px;
-          border-radius: 6px;
-          border: 2px solid #2a2a38;
-          flex-shrink: 0;
-          margin-top: 2px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background 0.2s, border-color 0.2s;
-        }
-        .check-box.checked { background: #38bdf8; border-color: #38bdf8; }
-        .category-label {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.7rem;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          padding: 3px 10px;
-          border-radius: 20px;
-          margin-bottom: 1.25rem;
-        }
-        .gate-card {
-          background: #111114;
-          border: 1px solid #1e1e28;
-          border-radius: 16px;
-          padding: 2.5rem;
-          max-width: 560px;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .email-input {
-          width: 100%;
-          padding: 0.8rem 1rem;
-          background: #0a0a0f;
-          border: 1px solid #1a1a2e;
-          border-radius: 10px;
-          color: #e5e5e5;
-          font-size: 1rem;
-          font-family: inherit;
-          margin-bottom: 0.75rem;
-          box-sizing: border-box;
-          outline: none;
-          transition: border-color 0.2s;
-        }
-        .email-input:focus { border-color: #38bdf8; }
-        .cta-btn {
-          width: 100%;
-          background: #fb923c;
-          color: #000;
-          border: none;
-          border-radius: 10px;
-          padding: 0.9rem 1.5rem;
-          font-size: 1rem;
-          font-weight: 700;
-          font-family: inherit;
-          cursor: pointer;
-          transition: opacity 0.2s, transform 0.1s;
-        }
-        .cta-btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
-        .cta-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .preview-blur {
-          position: relative;
-          overflow: hidden;
-        }
-        .preview-blur::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 120px;
-          background: linear-gradient(to bottom, transparent, #08080a);
-          pointer-events: none;
-        }
-        .progress-bar-bg {
-          background: #1e1e28;
-          border-radius: 999px;
-          height: 6px;
-          overflow: hidden;
-        }
-        .progress-bar-fill {
-          height: 100%;
-          border-radius: 999px;
-          background: linear-gradient(90deg, #c084fc, #38bdf8);
-          transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        @media (max-width: 600px) {
-          .gate-card { padding: 1.75rem 1.25rem; }
-          .checklist-item { padding: 1rem 1.1rem; }
-        }
-      `}</style>
-
+    <div className="site-page">
       <Header variant="site" />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section
-        style={{
-          maxWidth: '720px',
-          margin: '0 auto',
-          padding: '6rem 2rem 3rem',
-          textAlign: 'center',
-        }}
-      >
-        <div
-          style={{
-            display: 'inline-block',
-            background: '#1a1a2e',
-            border: '1px solid #2a2a38',
-            color: '#38bdf8',
-            fontSize: '0.72rem',
-            fontWeight: 700,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            padding: '4px 14px',
-            borderRadius: '20px',
-            marginBottom: '1.5rem',
-          }}
-        >
+      <section className="checklist-hero">
+        <div className="checklist-badge">
           Free Resource — Like One AI
         </div>
 
-        <h1
-          style={{
-            fontSize: 'clamp(2rem, 6vw, 3.4rem)',
-            fontWeight: 800,
-            lineHeight: 1.1,
-            letterSpacing: '-1.5px',
-            marginBottom: '1.25rem',
-          }}
-        >
+        <h1 className="checklist-title">
           The AI Automation Checklist:{' '}
           <span className="accent-gradient">15 Tasks You Should Automate This Week</span>
         </h1>
 
-        <p
-          style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
-            color: '#a0a0a0',
-            lineHeight: 1.75,
-            maxWidth: '580px',
-            margin: '0 auto 2rem',
-          }}
-        >
+        <p className="checklist-desc">
           You don&rsquo;t need a dev team. You don&rsquo;t need to learn to code. You need
           15 concrete automations that any solopreneur or small business owner can set up
           this week — and reclaim hours every day.
         </p>
 
-        <div
-          style={{
-            display: 'flex',
-            gap: '1.5rem',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            marginBottom: '3.5rem',
-          }}
-        >
+        <div className="checklist-features">
           {[
             { icon: '⚡', text: '15 ready-to-build automations' },
             { icon: '🛠️', text: 'Claude, Make.com & Zapier' },
             { icon: '🎯', text: 'Built for solopreneurs' },
           ].map((badge) => (
-            <div
-              key={badge.text}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                fontSize: '0.85rem',
-                color: '#8888a0',
-                background: '#111114',
-                border: '1px solid #1e1e28',
-                borderRadius: '8px',
-                padding: '6px 14px',
-              }}
-            >
+            <div key={badge.text} className="checklist-feature">
               <span>{badge.icon}</span>
               <span>{badge.text}</span>
             </div>
@@ -413,54 +218,25 @@ export default function ChecklistPage() {
 
       {/* ── Preview (3 items, then gate) ──────────────────────────────────── */}
       {!unlocked && (
-        <section style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem 4rem' }}>
-          <h2
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#525252',
-              marginBottom: '1.25rem',
-            }}
-          >
+        <section className="checklist-hero" style={{ paddingTop: 0, paddingBottom: '4rem' }}>
+          <h2 className="checklist-preview-label">
             Preview — 3 of 15 automations
           </h2>
 
           <div className="preview-blur">
             {previewItems.map((item) => (
               <div key={item.n} className="checklist-item">
-                <div className="check-box" style={{ borderColor: '#2a2a38' }}>
-                  <span style={{ color: '#2a2a38', fontSize: '13px' }}>✓</span>
+                <div className="check-box">
+                  <span className="checklist-item-number" data-color="blue">✓</span>
                 </div>
-                <div style={{ flex: 1 }}>
-                  <div
-                    style={{
-                      fontWeight: 600,
-                      fontSize: '0.95rem',
-                      color: '#e5e5e5',
-                      marginBottom: '0.4rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <span
-                      style={{
-                        background: '#1a1a2e',
-                        color: '#38bdf8',
-                        borderRadius: '5px',
-                        padding: '1px 7px',
-                        fontSize: '0.72rem',
-                        fontWeight: 700,
-                        flexShrink: 0,
-                      }}
-                    >
+                <div className="checklist-item-content">
+                  <div className="checklist-item-header">
+                    <span className="checklist-item-number" data-color="blue">
                       #{item.n}
                     </span>
                     {item.title}
                   </div>
-                  <p style={{ color: '#737373', fontSize: '0.85rem', lineHeight: 1.65, margin: 0 }}>
+                  <p className="checklist-item-detail">
                     {item.detail}
                   </p>
                 </div>
@@ -469,26 +245,12 @@ export default function ChecklistPage() {
           </div>
 
           {/* Gate card */}
-          <div className="gate-card fade-up" style={{ marginTop: '2rem' }}>
-            <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>🔒</div>
-            <h3
-              style={{
-                fontSize: '1.3rem',
-                fontWeight: 700,
-                marginBottom: '0.6rem',
-                letterSpacing: '-0.5px',
-              }}
-            >
+          <div className="gate-card fade-up">
+            <div className="checklist-gate-emoji">🔒</div>
+            <h3 className="checklist-gate-title">
               Unlock all 15 automations — free
             </h3>
-            <p
-              style={{
-                color: '#737373',
-                fontSize: '0.9rem',
-                lineHeight: 1.65,
-                marginBottom: '1.75rem',
-              }}
-            >
+            <p className="checklist-gate-desc">
               Enter your email to get instant access to the full checklist, plus future
               automation guides from Sophia Cave and the Like One team. No spam. Unsubscribe
               anytime.
@@ -504,19 +266,16 @@ export default function ChecklistPage() {
                 onChange={(e) => setEmail(e.target.value)}
               />
               {error && (
-                <p style={{ color: '#f87171', fontSize: '0.83rem', marginBottom: '0.6rem' }}>
+                <p className="checklist-gate-error">
                   {error}
                 </p>
               )}
               <button className="cta-btn" type="submit" disabled={loading}>
                 {loading ? 'Unlocking...' : 'Get the Full Checklist →'}
               </button>
-              <p style={{ color: '#525252', fontSize: '0.75rem', marginTop: '0.9rem' }}>
+              <p className="checklist-gate-note">
                 Built by{' '}
-                <a
-                  href="https://likeone.ai/about"
-                  style={{ color: '#737373', textDecoration: 'underline' }}
-                >
+                <a href="https://likeone.ai/about">
                   Sophia Cave
                 </a>{' '}
                 · Like One AI · No credit card required
@@ -530,55 +289,29 @@ export default function ChecklistPage() {
       {unlocked && (
         <section
           id="full-checklist"
-          style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem 6rem' }}
-          className="fade-up"
+          className="checklist-hero fade-up"
+          style={{ paddingTop: 0, paddingBottom: '6rem' }}
         >
           {/* Confirmation banner */}
-          <div
-            style={{
-              background: '#0a1a10',
-              border: '1px solid #166534',
-              borderRadius: '12px',
-              padding: '1.1rem 1.5rem',
-              marginBottom: '2.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-            }}
-          >
-            <span style={{ fontSize: '1.4rem' }}>✅</span>
+          <div className="checklist-success-banner">
+            <span className="checklist-success-icon">✅</span>
             <div>
-              <div style={{ fontWeight: 700, color: '#4ade80', fontSize: '0.95rem' }}>
+              <div className="checklist-success-title">
                 You&rsquo;re in. Welcome to Like One.
               </div>
-              <div style={{ color: '#6b7280', fontSize: '0.82rem', marginTop: '2px' }}>
+              <div className="checklist-success-desc">
                 Check your inbox for a confirmation. Now — start automating.
               </div>
             </div>
           </div>
 
           {/* Progress tracker */}
-          <div
-            style={{
-              background: '#111114',
-              border: '1px solid #1e1e28',
-              borderRadius: '12px',
-              padding: '1.25rem 1.5rem',
-              marginBottom: '2.5rem',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '0.75rem',
-              }}
-            >
-              <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#e5e5e5' }}>
+          <div className="checklist-progress">
+            <div className="checklist-progress-header">
+              <span className="checklist-progress-label">
                 Your progress
               </span>
-              <span style={{ color: '#c084fc', fontWeight: 700, fontSize: '0.9rem' }}>
+              <span className="checklist-progress-count">
                 {totalDone} / 15 automated
               </span>
             </div>
@@ -589,14 +322,7 @@ export default function ChecklistPage() {
               />
             </div>
             {totalDone === 15 && (
-              <p
-                style={{
-                  color: '#c084fc',
-                  fontSize: '0.83rem',
-                  marginTop: '0.75rem',
-                  fontWeight: 600,
-                }}
-              >
+              <p className="checklist-progress-msg">
                 ✨ You&rsquo;ve hit full automation. You&rsquo;re running Like One.
               </p>
             )}
@@ -604,8 +330,8 @@ export default function ChecklistPage() {
 
           {/* Categories + items */}
           {CATEGORIES.map((cat) => (
-            <div key={cat.id} style={{ marginBottom: '2.5rem' }}>
-              <div className="category-label" style={{ background: `${cat.color}15`, color: cat.color, border: `1px solid ${cat.color}30` }}>
+            <div key={cat.id} className="checklist-category">
+              <div className="category-label" data-color={cat.color}>
                 <span>{cat.icon}</span>
                 <span>{cat.label}</span>
               </div>
@@ -635,45 +361,14 @@ export default function ChecklistPage() {
                         </svg>
                       )}
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <div
-                        style={{
-                          fontWeight: 600,
-                          fontSize: '0.95rem',
-                          color: done ? '#525252' : '#e5e5e5',
-                          marginBottom: '0.4rem',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          textDecoration: done ? 'line-through' : 'none',
-                          transition: 'color 0.2s',
-                        }}
-                      >
-                        <span
-                          style={{
-                            background: done ? '#1e1e28' : '#1a1a2e',
-                            color: done ? '#525252' : cat.color,
-                            borderRadius: '5px',
-                            padding: '1px 7px',
-                            fontSize: '0.72rem',
-                            fontWeight: 700,
-                            flexShrink: 0,
-                            transition: 'all 0.2s',
-                          }}
-                        >
+                    <div className="checklist-item-content">
+                      <div className={`checklist-item-header${done ? ' done' : ''}`}>
+                        <span className={`checklist-item-number${done ? ' done' : ''}`} data-color={cat.color}>
                           #{item.n}
                         </span>
                         {item.title}
                       </div>
-                      <p
-                        style={{
-                          color: done ? '#3a3a4a' : '#737373',
-                          fontSize: '0.85rem',
-                          lineHeight: 1.65,
-                          margin: 0,
-                          transition: 'color 0.2s',
-                        }}
-                      >
+                      <p className={`checklist-item-detail${done ? ' done' : ''}`}>
                         {item.detail}
                       </p>
                     </div>
@@ -684,55 +379,16 @@ export default function ChecklistPage() {
           ))}
 
           {/* Bottom CTA */}
-          <div
-            style={{
-              background: 'linear-gradient(135deg, #1a0a2e, #0a1020)',
-              border: '1px solid #2a1a4e',
-              borderRadius: '16px',
-              padding: '2.5rem',
-              textAlign: 'center',
-              marginTop: '2rem',
-            }}
-          >
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.75rem' }}>🧠</div>
-            <h3
-              style={{
-                fontSize: '1.25rem',
-                fontWeight: 700,
-                letterSpacing: '-0.5px',
-                marginBottom: '0.6rem',
-              }}
-            >
+          <div className="checklist-deeper">
+            <div className="checklist-deeper-emoji">🧠</div>
+            <h3 className="checklist-deeper-title">
               Ready to go deeper?
             </h3>
-            <p
-              style={{
-                color: '#737373',
-                fontSize: '0.9rem',
-                lineHeight: 1.65,
-                maxWidth: '420px',
-                margin: '0 auto 1.5rem',
-              }}
-            >
+            <p className="checklist-deeper-desc">
               Like One Academy teaches the full system — from your first AI workflow to a
               fully autonomous business brain. 30 courses, 300+ lessons. Start free.
             </p>
-            <a
-              href="https://likeone.ai/academy/"
-              style={{
-                display: 'inline-block',
-                background: '#fb923c',
-                color: '#000',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                padding: '0.85rem 2rem',
-                borderRadius: '10px',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s',
-              }}
-              onMouseOver={(e) => (e.currentTarget.style.opacity = '0.88')}
-              onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
-            >
+            <a href="https://likeone.ai/academy/" className="cta-btn checklist-deeper-link">
               Explore the Academy →
             </a>
           </div>
