@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -39,197 +39,26 @@ free: false
     </div>
   </div>
 
-  <div class="pattern-tabs">
-    <div class="pattern-tab active" onclick="showPattern(0)">Multi-Step RAG</div>
-    <div class="pattern-tab" onclick="showPattern(1)">Self-RAG</div>
-    <div class="pattern-tab" onclick="showPattern(2)">RAG + Tools</div>
-    <div class="pattern-tab" onclick="showPattern(3)">Agentic RAG</div>
+  <div class="narration">
+    <strong>Multi-Step RAG:</strong> Like asking follow-up questions. You Google something, learn the right words, then Google again with better keywords. The AI does this automatically. Query, retrieve, refine the query based on what you found, then retrieve again. Best for vague or colloquial queries that need technical vocabulary, and multi-hop questions requiring info from different document sections.
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
+  <div class="narration">
+    <strong>Self-RAG:</strong> Like checking your own work. Before answering, you ask yourself "Do I actually need to look this up?" and after answering, "Am I sure about this?" The LLM decides whether it even needs to retrieve. Some questions can be answered directly. For others, it retrieves, then self-evaluates whether the retrieved context is sufficient. Best for high-volume systems where not every query needs retrieval.
   </div>
 
-<script>
-const PATTERNS = [
-  {
-    title:'Multi-Step RAG',
-    subtitle:'<strong>Real-world analogy:</strong> Like asking follow-up questions. You Google something, learn the right words, then Google again with better keywords. The AI does this automatically.<br><br>Query, retrieve, refine the query based on what you found, then retrieve again.',
-    steps:[
-      {title:'Initial Query',desc:'User asks: "What causes that disease where you forget things?"'},
-      {title:'First Retrieval',desc:'Finds documents mentioning memory loss, cognitive decline, neurodegeneration.'},
-      {title:'Query Refinement',desc:'LLM refines query to: "What causes Alzheimer\'s disease?" using terminology from retrieved docs.'},
-      {title:'Second Retrieval',desc:'Now finds precise medical literature about amyloid plaques, tau tangles, genetic factors.'},
-      {title:'Generate Answer',desc:'Produces expert-level answer combining both retrieval rounds.'}
-    ],
-    useCases:['Vague or colloquial queries that need technical vocabulary','Multi-hop questions requiring info from different document sections','Research-style queries where initial results inform follow-up searches'],
-    pseudocode:'// Multi-Step RAG pseudocode\\nresults1 = vectorSearch(userQuery)\\nrefinedQuery = LLM("Rewrite this query using terminology from: " + results1)\\nresults2 = vectorSearch(refinedQuery)\\nanswer = LLM("Answer using: " + results1 + results2)',
-    whenNot:'When queries are already precise and technical (no refinement needed), or when speed matters more than depth — each extra step adds latency.'
-  },
-  {
-    title:'Self-RAG',
-    subtitle:'<strong>Real-world analogy:</strong> Like checking your own work. Before answering, you ask yourself "Do I actually need to look this up?" and after answering, "Am I sure about this?" The AI does both checks automatically.<br><br>The LLM decides whether it even needs to retrieve. Some questions can be answered directly. For others, it retrieves, then self-evaluates whether the retrieved context is sufficient.',
-    steps:[
-      {title:'Receive Query',desc:'User asks a question. Self-RAG first evaluates: "Do I need external knowledge for this?"'},
-      {title:'Retrieval Decision',desc:'If "What is 2+2?" — no retrieval needed. If "What is our Q3 revenue?" — retrieval required.'},
-      {title:'Conditional Retrieve',desc:'Only queries the vector DB when the model determines retrieval would improve the answer.'},
-      {title:'Self-Evaluate',desc:'After generating, the model asks: "Is this answer supported by the context? Am I confident?"'},
-      {title:'Regenerate if Needed',desc:'If self-evaluation score is low, retrieve more context and try again.'}
-    ],
-    useCases:['High-volume systems where not every query needs retrieval (saves cost)','Applications requiring high reliability with built-in quality checks','Mixed workloads: some questions are simple, some need deep retrieval'],
-    pseudocode:'// Self-RAG pseudocode\\nneedsRetrieval = LLM("Does this query need external data? " + userQuery)\\nif (needsRetrieval) {\\n  context = vectorSearch(userQuery)\\n  answer = LLM("Answer using: " + context)\\n} else {\\n  answer = LLM("Answer directly: " + userQuery)\\n}\\nconfidence = LLM("Rate confidence 1-10: " + answer)\\nif (confidence < 7) { // try again with more context }',
-    whenNot:'When every query definitely needs retrieval (like a customer support bot for internal docs), or when the self-evaluation step adds too much latency for real-time chat.'
-  },
-  {
-    title:'RAG + Tools',
-    subtitle:'<strong>Real-world analogy:</strong> Like a researcher with a calculator and a phone. They look up data in documents, but when they need to crunch numbers or check live info, they use tools. The AI retrieves knowledge AND takes actions.<br><br>Retrieval alone is not always enough. Sometimes the answer requires calculation, API calls, or data transformation. RAG + Tools combines document retrieval with executable actions.',
-    steps:[
-      {title:'Parse Intent',desc:'User asks: "What was the total revenue from our top 5 customers last quarter?"'},
-      {title:'Retrieve Context',desc:'Vector search finds relevant financial documents and customer records.'},
-      {title:'Identify Tool Need',desc:'LLM recognizes it needs to: (1) filter top 5 customers, (2) sum their revenue.'},
-      {title:'Execute Tools',desc:'Calls calculator tool: sum([$2.3M, $1.8M, $1.5M, $1.2M, $980K]) = $7.78M'},
-      {title:'Synthesize Answer',desc:'"The total revenue from your top 5 customers last quarter was $7.78M."'}
-    ],
-    useCases:['Financial questions requiring calculations on retrieved data','Queries needing real-time data (APIs) combined with knowledge base context','Complex reports that combine retrieved facts with computed metrics'],
-    pseudocode:'// RAG + Tools pseudocode\\ncontext = vectorSearch(userQuery)\\ntoolNeeded = LLM("What tool is needed? Options: calculator, api, none", context)\\nif (toolNeeded === "calculator") {\\n  result = calculator(extractNumbers(context))\\n} else if (toolNeeded === "api") {\\n  result = callAPI(extractEndpoint(context))\\n}\\nanswer = LLM("Answer using: " + context + result)',
-    whenNot:'When questions only need text-based answers from documents (no math, no live data). Adding tool support increases complexity — don\'t over-engineer if basic RAG works fine.'
-  },
-  {
-    title:'Agentic RAG',
-    subtitle:'<strong>Real-world analogy:</strong> Like a research assistant who plans their own investigation. You give them a complex question, and they decide which libraries to visit, what to look up, and when they have enough info to write a complete answer. No hand-holding needed.<br><br>An autonomous agent that plans its own retrieval strategy, executes multiple searches, reasons about results, and iterates until it has a comprehensive answer.',
-    steps:[
-      {title:'Plan',desc:'Agent receives complex query. Creates a retrieval plan: "I need info from 3 different knowledge bases."'},
-      {title:'Execute Search 1',desc:'Queries product documentation database. Evaluates: "Got pricing info, still need technical specs."'},
-      {title:'Execute Search 2',desc:'Queries technical specifications database. Evaluates: "Got specs, still need compatibility info."'},
-      {title:'Execute Search 3',desc:'Queries compatibility matrix. Evaluates: "Now I have everything I need."'},
-      {title:'Reason & Generate',desc:'Synthesizes information from all three sources into a comprehensive, sourced answer.'}
-    ],
-    useCases:['Enterprise knowledge bases spanning multiple document collections','Complex research queries requiring information synthesis across sources','Customer support where answers require product, billing, AND technical knowledge'],
-    pseudocode:'// Agentic RAG pseudocode\\nplan = LLM("What sources do I need for: " + userQuery)\\nallContext = []\\nfor (source of plan.sources) {\\n  results = vectorSearch(source.query, source.database)\\n  allContext.push(results)\\n  enough = LLM("Do I have enough info?", allContext)\\n  if (enough) break\\n}\\nanswer = LLM("Synthesize a complete answer from:", allContext)',
-    whenNot:'For simple, single-source questions where basic RAG would work. Agentic RAG is the most powerful but also the slowest and most expensive — use it only when queries genuinely span multiple knowledge sources.'
-  }
-];
+  <div class="narration">
+    <strong>RAG + Tools:</strong> Like a researcher with a calculator and a phone. They look up data in documents, but when they need to crunch numbers or check live info, they use tools. Retrieval alone is not always enough — sometimes the answer requires calculation, API calls, or data transformation. Best for financial questions requiring calculations on retrieved data.
+  </div>
 
-let currentPattern = 0;
-let animStep = -1;
-let animTimer = null;
+  <div class="narration">
+    <strong>Agentic RAG:</strong> Like a research assistant who plans their own investigation. You give them a complex question, and they decide which libraries to visit, what to look up, and when they have enough info to write a complete answer. An autonomous agent that plans its own retrieval strategy, executes multiple searches, reasons about results, and iterates. Best for enterprise knowledge bases spanning multiple document collections.
+  </div>
 
-function showPattern(i){
-  currentPattern = i;
-  animStep = -1;
-  if(animTimer) clearInterval(animTimer);
+  <div data-learn="QuizMC" data-props='{"title":"Advanced RAG Patterns Quiz","questions":[{"q":"A user asks: \"What causes that disease where you forget things?\" Which pattern is most appropriate?","options":["Basic RAG — just search for the query as-is","Multi-Step RAG — first retrieve with the vague query, then refine to technical terminology","Self-RAG — the model likely knows this without retrieval","Agentic RAG — deploy an agent to plan the search"],"correct":1,"explanation":"Multi-Step RAG is designed for vague, colloquial queries. The first retrieval finds documents mentioning memory loss and cognitive decline. The LLM uses those terms to refine the query to \"Alzheimer's disease amyloid plaques\" — then the second retrieval finds precise medical literature."},{"q":"What is the key cost-saving benefit of Self-RAG?","options":["It uses a cheaper embedding model","It skips retrieval for queries that don't need it, saving vector DB calls and context tokens","It compresses chunk sizes automatically","It caches all previous query results"],"correct":1,"explanation":"Self-RAG lets the LLM decide whether retrieval is needed. Simple factual questions (\"What is 2+2?\") can be answered directly without a vector search. This reduces latency and cost for high-volume applications where many queries are simple."},{"q":"When should you NOT use Agentic RAG?","options":["When the question spans multiple knowledge bases","When complex synthesis across sources is needed","When a simple single-source query would work with basic RAG","When the user needs a comprehensive research-style answer"],"correct":2,"explanation":"Agentic RAG is the most powerful but also the slowest and most expensive pattern. For simple questions with a single knowledge source, basic RAG works better — faster, cheaper, and easier to debug. Only use agentic patterns when queries genuinely require multi-source planning."}]}'></div>
 
-  document.querySelectorAll('.pattern-tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Pattern to Its Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Multi-Step RAG","right":"Vague query that needs vocabulary refinement before precise retrieval"},{"left":"Self-RAG","right":"Mixed workload where some questions need retrieval, others don't"},{"left":"RAG + Tools","right":"Financial question requiring retrieval plus numeric calculation"},{"left":"Agentic RAG","right":"Complex query spanning product, billing, and technical knowledge bases"},{"left":"Basic RAG","right":"Simple, precise question with a single knowledge source"}]}'></div>
 
-  const p = PATTERNS[i];
-  const content = document.getElementById('patternContent');
-  content.innerHTML = `
-    <h3>${p.title}</h3>
-    <div class="subtitle">${p.subtitle}</div>
-    <canvas id="flowCanvas" width="740" height="200"></canvas>
-    <button class="play-btn" onclick="animatePattern()">&#9654; Animate Flow</button>
-    <div class="flow-steps" id="flowSteps">
-      ${p.steps.map((s,idx)=>`<div class="flow-step" id="step_${idx}">
-        <div class="step-num">${idx+1}</div>
-        <div class="step-text"><div class="title">${s.title}</div><div class="desc">${s.desc}</div></div>
-      </div>`).join('')}
-    </div>
-    ${p.pseudocode?`<div style="margin:1.5rem 0;padding:1.25rem;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px">
-      <h4 style="font-size:.8rem;font-weight:700;color:#38bdf8;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.04em">Key Logic (Pseudocode)</h4>
-      <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.7;color:#a1a1aa;white-space:pre-wrap;margin:0">${p.pseudocode.replace(/\\n/g,'\n')}</pre>
-    </div>`:''}
-    <div class="use-cases">
-      <h4>When to use this pattern:</h4>
-      <ul>${p.useCases.map(u=>`<li>${u}</li>`).join('')}</ul>
-    </div>
-    ${p.whenNot?`<div style="margin-top:1rem;padding:1rem;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:8px">
-      <h4 style="font-size:.8rem;font-weight:700;color:#ef4444;margin-bottom:.4rem">When NOT to use this:</h4>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:0;line-height:1.5">${p.whenNot}</p>
-    </div>`:''}
-  `;
+  <div data-learn="FlashDeck" data-props='{"title":"Advanced Pattern Vocabulary","cards":[{"front":"Multi-Step RAG","back":"Query → retrieve → refine query using found terminology → retrieve again. Handles vague or colloquial input by iteratively improving the search."},{"front":"Self-RAG","back":"LLM first decides \"do I need to retrieve?\" then after answering, self-evaluates \"is my answer grounded?\". Reduces unnecessary retrieval calls."},{"front":"RAG + Tools","back":"Combines document retrieval with executable tools (calculator, API calls, database queries) for questions requiring more than text lookup."},{"front":"Agentic RAG","back":"An autonomous agent that plans its own multi-source retrieval strategy, executes searches, evaluates sufficiency, and iterates until it has a complete answer."},{"front":"Query Refinement","back":"Using the LLM to rewrite a user's vague query into precise technical vocabulary based on terms found in the first retrieval round."}]}'></div>
 
-  drawFlow();
-}
-
-function drawFlow(){
-  const canvas = document.getElementById('flowCanvas');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio||1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width*dpr;
-  canvas.height = rect.height*dpr;
-  ctx.scale(dpr,dpr);
-
-  const w = rect.width, h = rect.height;
-  const p = PATTERNS[currentPattern];
-  const n = p.steps.length;
-  const boxW = (w-40)/n - 10;
-  const boxH = 50;
-  const cy = h/2;
-  const colors = ['#3b82f6','#8b5cf6','#10b981','#f59e0b','#ef4444'];
-
-  p.steps.forEach((s,i)=>{
-    const cx = 20 + i*((w-40)/n) + boxW/2;
-    const isActive = i<=animStep;
-
-    // Arrow
-    if(i<n-1){
-      const nx = 20+(i+1)*((w-40)/n)+boxW/2;
-      ctx.strokeStyle = isActive?colors[i]+'aa':'rgba(255,255,255,.08)';
-      ctx.lineWidth = isActive?2.5:1;
-      ctx.beginPath();ctx.moveTo(cx+boxW/2+2,cy);ctx.lineTo(nx-boxW/2-8,cy);ctx.stroke();
-      if(isActive){
-        const ax=nx-boxW/2-8;
-        ctx.fillStyle=colors[i];
-        ctx.beginPath();ctx.moveTo(ax,cy-4);ctx.lineTo(ax+7,cy);ctx.lineTo(ax,cy+4);ctx.fill();
-      }
-    }
-
-    // Box
-    ctx.beginPath();ctx.roundRect(cx-boxW/2,cy-boxH/2,boxW,boxH,8);
-    ctx.fillStyle = isActive?colors[i%5]+'20':'rgba(255,255,255,.03)';
-    ctx.fill();
-    ctx.strokeStyle = isActive?colors[i%5]:'rgba(255,255,255,.08)';
-    ctx.lineWidth = isActive?2:1;
-    ctx.stroke();
-
-    // Label
-    ctx.font = (isActive?'700':'500')+' 10px Inter,sans-serif';
-    ctx.fillStyle = isActive?'#fff':colors[i%5];
-    ctx.textAlign = 'center';
-
-    const words = s.title.split(' ');
-    if(words.length > 1 && boxW < 120){
-      ctx.fillText(words[0],cx,cy-2);
-      ctx.fillText(words.slice(1).join(' '),cx,cy+12);
-    } else {
-      ctx.fillText(s.title,cx,cy+4);
-    }
-  });
-}
-
-function animatePattern(){
-  animStep = -1;
-  if(animTimer) clearInterval(animTimer);
-  const p = PATTERNS[currentPattern];
-  animTimer = setInterval(()=>{
-    animStep++;
-    if(animStep >= p.steps.length){clearInterval(animTimer);return;}
-    document.querySelectorAll('.flow-step').forEach((el,i)=>el.classList.toggle('active',i<=animStep));
-    drawFlow();
-  }, 800);
-}
-
-showPattern(0);
-
-function completeLesson(){
-  const btn=document.getElementById('completeBtn');
-  if(btn.classList.contains('done')) return;
-  const progress=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');
-  progress['advanced-patterns']=true;
-  localStorage.setItem('rag-vector-search-progress',JSON.stringify(progress));
-  LO.completeLesson('rag-vector-search',9,200);
-  btn.textContent='Lesson Complete!';btn.classList.add('done');
-}
-(function(){const p=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');if(p['advanced-patterns']){const b=document.getElementById('completeBtn');b.textContent='Lesson Complete!';b.classList.add('done');}})();
-</script>
+</div>

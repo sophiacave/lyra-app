@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 
 <div class="lesson-container">
@@ -58,140 +58,10 @@ free: false
     <p>When Claude receives a user message, it checks all available tool definitions. The <span class="highlight">description</span> field is the most important — it tells Claude WHEN to use the tool. The <span class="highlight">parameter descriptions</span> tell Claude WHAT to pass. Write clear, specific descriptions and Claude will use your tools correctly without any prompt engineering.</p>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 250 XP</button>
-  
+  <div data-learn="QuizMC" data-props='{"title":"Tool Definition Quiz","questions":[{"q":"Which field in a tool definition is most important for Claude to decide WHEN to use the tool?","options":["The tool name","The description field","The required parameters list","The return type"],"correct":1,"explanation":"The description field is what Claude reads to decide when to invoke a tool. A clear, specific description means Claude calls your tool at exactly the right moment without extra prompt engineering."},{"q":"In JSON Schema, what does the required array inside inputSchema specify?","options":["Which parameters are strings","Which parameters Claude must provide — if absent the call fails","Which parameters have default values","Which parameters are read-only"],"correct":1,"explanation":"The required array lists parameter names that must be provided in every tool call. If Claude omits a required parameter, the MCP protocol rejects the call before it reaches your handler."}]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"JSON Schema Concepts","cards":[{"front":"inputSchema","back":"The JSON Schema object inside a tool definition. Has type: \"object\", a properties map, and a required array. Claude uses this to know what to pass."},{"front":"properties","back":"A map of parameter name to type definition. Each entry specifies type (string/number/boolean) and a description Claude reads."},{"front":"required array","back":"Lists which parameter names are mandatory. If Claude omits one, the call is rejected before reaching your handler."},{"front":"description (parameter level)","back":"Tells Claude what THIS specific parameter means. Example: \"The search query text\" or \"Maximum number of results to return\". Be specific."},{"front":"z.string().describe()","back":"Zod syntax for defining a string parameter with a description. Claude reads the description to know what value to pass. Always include .describe()."}]}'></div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Match Schema Field to Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"name","right":"Unique identifier Claude uses to call the tool"},{"left":"description","right":"Tells Claude WHEN to use this tool"},{"left":"inputSchema","right":"Defines what parameters the tool accepts"},{"left":"required array","right":"Parameters Claude must always provide"}]}'></div>
+
 </div>
-
-<script>
-let params = [
-  {name:'query', type:'string', desc:'The search query text', required:true},
-  {name:'limit', type:'number', desc:'Maximum results to return', required:false}
-];
-
-function renderParams(){
-  const list = document.getElementById('paramsList');
-  list.innerHTML = params.map((p,i) => `
-    <div class="param-row">
-      <input type="text" value="${p.name}" placeholder="name" oninput="params[${i}].name=this.value;updatePreview()">
-      <select onchange="params[${i}].type=this.value;updatePreview()">
-        <option value="string" ${p.type==='string'?'selected':''}>string</option>
-        <option value="number" ${p.type==='number'?'selected':''}>number</option>
-        <option value="boolean" ${p.type==='boolean'?'selected':''}>boolean</option>
-      </select>
-      <input type="text" value="${p.desc}" placeholder="description" oninput="params[${i}].desc=this.value;updatePreview()">
-      <div style="display:flex;align-items:center;gap:.5rem">
-        <label class="req-check"><input type="checkbox" ${p.required?'checked':''} onchange="params[${i}].required=this.checked;updatePreview()">req</label>
-        <button class="remove-btn" onclick="params.splice(${i},1);renderParams();updatePreview()">&times;</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function addParam(){
-  params.push({name:'', type:'string', desc:'', required:false});
-  renderParams();
-  updatePreview();
-}
-
-function updatePreview(){
-  const name = document.getElementById('toolName').value || 'my_tool';
-  const desc = document.getElementById('toolDesc').value || 'Tool description';
-
-  // JSON Schema
-  const schema = {
-    name: name,
-    description: desc,
-    inputSchema: {
-      type: 'object',
-      properties: {},
-      required: []
-    }
-  };
-  params.forEach(p => {
-    if(!p.name) return;
-    schema.inputSchema.properties[p.name] = {type: p.type, description: p.desc};
-    if(p.required) schema.inputSchema.required.push(p.name);
-  });
-
-  const jsonStr = JSON.stringify(schema, null, 2)
-    .replace(/"([^"]+)":/g, '<span class="json-key">"$1"</span>:')
-    .replace(/: "([^"]+)"/g, ': <span class="json-str">"$1"</span>')
-    .replace(/: (\d+)/g, ': <span class="json-num">$1</span>')
-    .replace(/: (true|false)/g, ': <span class="json-bool">$1</span>');
-  document.getElementById('jsonPreview').innerHTML = jsonStr;
-
-  // Code preview
-  const zodParams = params.filter(p=>p.name).map(p => {
-    let z = `z.${p.type}()`;
-    if(p.desc) z += `.describe("${p.desc}")`;
-    if(!p.required) z += `.optional()`;
-    return `  ${p.name}: ${z}`;
-  }).join(',\n');
-
-  document.getElementById('codePreview').innerHTML = `server.tool(
-  <span class="json-str">"${name}"</span>,
-  {
-${zodParams}
-  },
-  async (args) => {
-    <span style="color:#52525b">// Your logic here</span>
-    return {
-      content: [{
-        type: <span class="json-str">"text"</span>,
-        text: JSON.stringify(result)
-      }]
-    };
-  }
-);`;
-
-  // Test inputs
-  document.getElementById('testInputs').innerHTML = params.filter(p=>p.name).map(p => `
-    <div class="field">
-      <label>${p.name} (${p.type})${p.required?' *':''}</label>
-      <input type="${p.type==='number'?'number':'text'}" id="test-${p.name}" placeholder="${p.desc}" value="${p.type==='number'?'10':p.name==='query'?'machine learning':''}">
-    </div>
-  `).join('');
-}
-
-function testTool(){
-  const name = document.getElementById('toolName').value || 'my_tool';
-  const args = {};
-  params.filter(p=>p.name).forEach(p => {
-    const el = document.getElementById('test-'+p.name);
-    if(el){
-      args[p.name] = p.type==='number' ? Number(el.value) : p.type==='boolean' ? el.value==='true' : el.value;
-    }
-  });
-
-  const callObj = {
-    method: 'tools/call',
-    params: { name: name, arguments: args }
-  };
-
-  const result = document.getElementById('testResult');
-  result.classList.add('visible');
-  result.innerHTML = `<span style="color:#71717a">// MCP Request (JSON-RPC)</span>\n${JSON.stringify(callObj, null, 2)}\n\n<span style="color:#71717a">// Simulated Response</span>\n${JSON.stringify({content:[{type:'text',text:'3 documents found matching "'+args.query+'"'}]}, null, 2)}`;
-}
-
-renderParams();
-updatePreview();
-
-function complete(){
-  const btn = document.getElementById('completeBtn');
-  if(btn.disabled) return;
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  progress['tool-definitions'] = true;
-  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
-  LO.completeLesson('mcp-masterclass', 5, 250);
-  btn.textContent = 'Lesson Complete!';
-  btn.disabled = true;
-}
-(function(){
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  if(progress['tool-definitions']){
-    const btn = document.getElementById('completeBtn');
-    btn.textContent = 'Lesson Complete!';
-    btn.disabled = true;
-  }
-})();
-</script>

@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 
 <div class="lesson-container">
@@ -195,115 +195,10 @@ free: false
     </div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 200 XP</button>
-  
+  <div data-learn="QuizMC" data-props='{"title":"Connection Process Quiz","questions":[{"q":"Where do you configure MCP servers for Claude Desktop on macOS?","options":["In the Claude Desktop UI settings panel","In claude_desktop_config.json in ~/Library/Application Support/Claude/","In the server package.json file","In a .env file at the project root"],"correct":1,"explanation":"MCP servers are configured in claude_desktop_config.json, located at ~/Library/Application Support/Claude/ on macOS or %APPDATA%\\Claude\\ on Windows."},{"q":"What happens during the MCP capability negotiation phase when Claude starts?","options":["The user manually selects which tools to enable","Claude sends initialize then tools/list to discover available tools","The server pushes notifications to Claude automatically","The client uploads all local data to the server"],"correct":1,"explanation":"During negotiation, Claude sends an initialize request with its protocol version, the server responds with capabilities, then Claude sends tools/list to discover all available tool definitions."}]}'></div>
+
+  <div data-learn="SortStack" data-props='{"title":"Four Phases of Connecting to Claude","instruction":"Arrange the four connection phases in order","items":["Install the MCP server (npm or run locally)","Configure claude_desktop_config.json with command and args","Claude negotiates capabilities and discovers tools","Claude autonomously invokes tools based on user requests"]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Config File Fields","cards":[{"front":"command field in claude_desktop_config.json","back":"The program that launches your server — e.g. node, npx, or python. This is the executable Claude runs to start the MCP server."},{"front":"args field in claude_desktop_config.json","back":"Array of arguments passed to the command. Used to specify which server package to load, which directory to allow access to, etc."},{"front":"env field in claude_desktop_config.json","back":"Key-value pairs for environment variables. Use this for secrets like API keys or DB connection strings. They stay on your machine and never leave."},{"front":"initialize (MCP message)","back":"The first message Claude sends when connecting. Includes protocol version and capabilities. Server responds with its own capabilities."},{"front":"tools/list (MCP message)","back":"Sent by Claude after initialize. The server returns all available tool definitions. Claude stores these to know what it can call."}]}'></div>
+
 </div>
-
-<script>
-function goPhase(n){
-  document.querySelectorAll('.phase-content').forEach((el,i) => el.classList.toggle('active', i===n));
-  document.querySelectorAll('.phase-tab').forEach((el,i) => {
-    el.classList.toggle('active', i===n);
-    if(i<n) el.classList.add('done');
-  });
-  if(n===2) startDiscoverAnim();
-}
-
-// Discovery animation
-const canvas = document.getElementById('discoverCanvas');
-const ctx = canvas.getContext('2d');
-let animRunning = false;
-let at = 0;
-
-function resizeCanvas(){
-  const rect = canvas.parentElement.getBoundingClientRect();
-  canvas.width = rect.width * 2;
-  canvas.height = rect.height * 2;
-  ctx.scale(2,2);
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-function startDiscoverAnim(){
-  if(animRunning) return;
-  animRunning = true;
-  at = 0;
-  drawDiscover();
-}
-
-function drawRR(x,y,w,h,r,fill,stroke){
-  ctx.beginPath();ctx.roundRect(x,y,w,h,r);
-  if(fill){ctx.fillStyle=fill;ctx.fill();}
-  if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1.5;ctx.stroke();}
-}
-
-function drawDiscover(){
-  const W = canvas.width/2, H = canvas.height/2;
-  ctx.clearRect(0,0,W,H);
-  at += 0.005;
-
-  // Claude box
-  drawRR(30, H/2-30, 120, 60, 10, '#8b5cf615', '#8b5cf640');
-  ctx.font='600 12px Inter,sans-serif';ctx.fillStyle='#8b5cf6';ctx.textAlign='center';
-  ctx.fillText('Claude', 90, H/2+4);
-
-  // Server box
-  drawRR(W-150, H/2-30, 120, 60, 10, '#34d39915', '#34d39940');
-  ctx.font='600 12px Inter,sans-serif';ctx.fillStyle='#34d399';
-  ctx.fillText('MCP Server', W-90, H/2+4);
-
-  // Messages
-  const phase = Math.floor(at * 3) % 3;
-  const subPhase = (at * 3) % 1;
-
-  const messages = [
-    {text:'initialize', color:'#8b5cf6', dir:1},
-    {text:'tools/list', color:'#8b5cf6', dir:1},
-    {text:'[tool definitions]', color:'#34d399', dir:-1}
-  ];
-
-  const msg = messages[phase];
-  const startX = msg.dir > 0 ? 150 : W-150;
-  const endX = msg.dir > 0 ? W-150 : 150;
-  const px = startX + (endX-startX) * Math.min(subPhase * 1.5, 1);
-
-  // Line
-  ctx.beginPath();ctx.moveTo(150,H/2);ctx.lineTo(W-150,H/2);
-  ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=2;ctx.stroke();
-
-  // Pulse
-  ctx.beginPath();ctx.arc(px, H/2, 6, 0, Math.PI*2);
-  ctx.fillStyle=msg.color;ctx.fill();
-  ctx.beginPath();ctx.arc(px, H/2, 12, 0, Math.PI*2);
-  ctx.fillStyle=msg.color+'25';ctx.fill();
-
-  // Label
-  ctx.font='500 10px Inter,sans-serif';ctx.fillStyle=msg.color;ctx.textAlign='center';
-  ctx.fillText(msg.text, W/2, H/2-20);
-
-  // Phase indicator
-  ctx.font='500 10px Inter,sans-serif';ctx.fillStyle='#71717a';ctx.textAlign='center';
-  ctx.fillText(`Step ${phase+1}/3: ${['Handshake','Tool Discovery','Definitions Received'][phase]}`, W/2, H-15);
-
-  if(animRunning) requestAnimationFrame(drawDiscover);
-}
-
-function complete(){
-  const btn = document.getElementById('completeBtn');
-  if(btn.disabled) return;
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  progress['connecting-to-claude'] = true;
-  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
-  LO.completeLesson('mcp-masterclass', 7, 200);
-  btn.textContent = 'Lesson Complete!';
-  btn.disabled = true;
-}
-(function(){
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  if(progress['connecting-to-claude']){
-    const btn = document.getElementById('completeBtn');
-    btn.textContent = 'Lesson Complete!';
-    btn.disabled = true;
-  }
-})();
-</script>

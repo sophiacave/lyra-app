@@ -30,89 +30,11 @@ free: false
   <h2 class="section-title">&#129504; When to Use Which?</h2>
   <div id="quiz-section"></div>
   <div class="quiz-fb" id="quiz-fb" style="display:none"></div>
-  <div class="complete-section">
-    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 350 XP</button>
-    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +350 XP earned</div>
-  </div>
-  </div>
-<div class="xp-toast" id="xp-toast">+350 XP earned! &#9889;</div>
 
-<script>
-const PATTERNS=[
-  {name:'Pipeline Pattern',html:`<div class="d-row"><div class="d-node" id="n0">&#129302;<div class="d-node-label">Writer</div></div><div class="d-arrow" id="a01">&#8594;</div><div class="d-node" id="n1">&#129302;<div class="d-node-label">Editor</div></div><div class="d-arrow" id="a12">&#8594;</div><div class="d-node" id="n2">&#129302;<div class="d-node-label">Publisher</div></div></div>`,
-   steps:[[{node:'n0',mode:'active'},{log:'Writer: Generating draft...'}],[{arrow:'a01',lit:true},{log:'Writer: Passing to Editor'}],[{node:'n0',mode:'done'},{node:'n1',mode:'active'},{log:'Editor: Reviewing & editing...'}],[{arrow:'a12',lit:true},{log:'Editor: Passing to Publisher'}],[{node:'n1',mode:'done'},{node:'n2',mode:'active'},{log:'Publisher: Deploying to site...'}],[{node:'n2',mode:'done'},{log:'✓ Pipeline complete'}]]},
-  {name:'Fan-Out Pattern',html:`<div class="d-row" style="margin-bottom:1.5rem"><div class="d-node" id="n0">&#129302;<div class="d-node-label">Dispatcher</div></div></div><div class="d-row"><div class="d-node" id="n1">&#129302;<div class="d-node-label">Email</div></div><div class="d-node" id="n2">&#129302;<div class="d-node-label">Slack</div></div><div class="d-node" id="n3">&#129302;<div class="d-node-label">Twitter</div></div></div>`,
-   steps:[[{node:'n0',mode:'active'},{log:'Dispatcher: New content ready...'}],[{node:'n0',mode:'done'},{node:'n1',mode:'active'},{node:'n2',mode:'active'},{node:'n3',mode:'active'},{log:'Fan-out: All 3 agents triggered simultaneously'}],[{log:'Email: Sending newsletter...'}],[{log:'Slack: Posting to channel...'}],[{node:'n1',mode:'done'},{node:'n2',mode:'done'},{node:'n3',mode:'done'},{log:'✓ All 3 agents completed in parallel'}]]},
-  {name:'Supervisor Pattern',html:`<div class="d-row" style="margin-bottom:1.5rem"><div class="d-node" id="n0" style="border-color:rgba(251,146,60,.3)">&#128065;&#65039;<div class="d-node-label">Supervisor</div></div></div><div class="d-row"><div class="d-node" id="n1">&#129302;<div class="d-node-label">Agent A</div></div><div class="d-node" id="n2">&#129302;<div class="d-node-label">Agent B</div></div><div class="d-node" id="n3">&#129302;<div class="d-node-label">Agent C</div></div></div>`,
-   steps:[[{node:'n0',mode:'active'},{log:'Supervisor: Monitoring workers...'}],[{node:'n1',mode:'active'},{node:'n2',mode:'active'},{node:'n3',mode:'active'},{log:'All workers running...'}],[{node:'n2',mode:'done',style:'border-color:#ef4444;box-shadow:0 0 15px rgba(239,68,68,.3)'},{log:'⚠ Agent B: ERROR — timeout'}],[{node:'n0',mode:'active'},{log:'Supervisor: Detected failure, restarting B...'}],[{node:'n2',mode:'active'},{log:'Supervisor: Agent B restarted'}],[{node:'n1',mode:'done'},{node:'n2',mode:'done'},{node:'n3',mode:'done'},{node:'n0',mode:'done'},{log:'✓ All workers healthy. Supervisor at rest.'}]]},
-  {name:'Swarm Pattern',html:`<div class="d-row" style="flex-wrap:wrap;gap:1.5rem"><div class="d-node" id="n0">&#129302;<div class="d-node-label">A</div></div><div class="d-node" id="n1">&#129302;<div class="d-node-label">B</div></div><div class="d-node" id="n2">&#129302;<div class="d-node-label">C</div></div><div class="d-node" id="n3">&#129302;<div class="d-node-label">D</div></div></div>`,
-   steps:[[{node:'n0',mode:'active'},{log:'A: I see a task — claiming it'}],[{node:'n1',mode:'active'},{node:'n2',mode:'active'},{log:'B,C: Coordinating on subtasks'}],[{node:'n3',mode:'active'},{log:'D: Picking up overflow from A'}],[{node:'n0',mode:'done'},{log:'A: Done. Releasing resources.'}],[{node:'n1',mode:'done'},{node:'n2',mode:'done'},{node:'n3',mode:'done'},{log:'✓ Swarm self-organized and completed.'}]]}
-];
+  <div data-learn="QuizMC" data-props='{"title":"Orchestration Patterns Quiz","questions":[{"q":"You need to process user uploads: validate, then resize, then store, then notify. What pattern?","options":["Fan-Out","Pipeline","Supervisor","Swarm"],"correct":1,"explanation":"Sequential processing where each step depends on the previous — classic Pipeline pattern."},{"q":"A new blog post needs to be shared on Twitter, LinkedIn, Email, and Slack simultaneously. What pattern?","options":["Pipeline","Supervisor","Fan-Out","Swarm"],"correct":2,"explanation":"One trigger, multiple independent actions in parallel — Fan-Out pattern."},{"q":"You have 5 unreliable scraping agents and need one to watch them all and restart failures. What pattern?","options":["Fan-Out","Swarm","Pipeline","Supervisor"],"correct":3,"explanation":"A dedicated overseer monitoring workers — Supervisor pattern."},{"q":"What is the key characteristic of the Swarm pattern?","options":["One master agent controls all workers","Agents process tasks sequentially","Agents coordinate peer-to-peer with no central hierarchy","A scheduler triggers agents one by one"],"correct":2,"explanation":"Swarms have no hierarchy — agents coordinate directly with each other. Behavior emerges from their interactions."}]}'></div>
 
-let currentPattern=0,demoRunning=false;
-function selectPattern(i){
-  currentPattern=i;
-  document.querySelectorAll('.pattern-card').forEach((c,idx)=>c.classList.toggle('active',idx===i));
-  renderDemo();
-}
+  <div data-learn="FlashDeck" data-props='{"title":"The 4 Orchestration Patterns","cards":[{"front":"Pipeline Pattern","back":"A → B → C. Sequential. Each agent's output is the next agent's input. Use when steps must happen in order and each depends on the last."},{"front":"Fan-Out Pattern","back":"A → B, C, D simultaneously. Use when one event needs to trigger multiple independent actions in parallel (e.g., publish to all channels at once)."},{"front":"Supervisor Pattern","back":"A supervisor agent watches workers and intervenes when one fails. Use when reliability is critical and you need automatic recovery."},{"front":"Swarm Pattern","back":"Agents coordinate peer-to-peer with no hierarchy. Emergent behavior. Use for distributed, resilient workloads where no single point of control is needed."},{"front":"When does Pipeline fail?","back":"When one step blocks — the whole pipeline stalls. Not suitable for independent parallel work."},{"front":"When does Fan-Out fail?","back":"When the downstream agents' results need to be merged or ordered. Fan-Out is for fire-and-forget parallel work."}]}'></div>
 
-function renderDemo(){
-  const p=PATTERNS[currentPattern];
-  document.getElementById('demo-title').textContent=p.name;
-  document.getElementById('demo-canvas').innerHTML=p.html;
-  document.getElementById('demo-log').textContent='Click "Animate" to watch the pattern in action...';
-}
+  <div data-learn="MatchConnect" data-props='{"title":"Match Pattern to Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Pipeline","right":"Write → Edit → Publish (sequential steps)"},{"left":"Fan-Out","right":"Post to Twitter, Slack, Email at once"},{"left":"Supervisor","right":"Watch workers and restart failures"},{"left":"Swarm","right":"Peer-to-peer, no central controller"}]}'></div>
 
-function playDemo(){
-  if(demoRunning)return;demoRunning=true;
-  renderDemo();
-  const p=PATTERNS[currentPattern];
-  const log=document.getElementById('demo-log');log.textContent='';
-  let delay=0;
-  p.steps.forEach((actions,i)=>{
-    delay+=900;
-    setTimeout(()=>{
-      actions.forEach(a=>{
-        if(a.node){const n=document.getElementById(a.node);if(n){n.classList.remove('active','done');n.classList.add(a.mode);if(a.style)n.style.cssText=a.style;}}
-        if(a.arrow){const ar=document.getElementById(a.arrow);if(ar)ar.classList.toggle('lit',a.lit);}
-        if(a.log){log.textContent+=a.log+'\n';log.scrollTop=log.scrollHeight;}
-      });
-      if(i===p.steps.length-1)demoRunning=false;
-    },delay);
-  });
-}
-
-renderDemo();
-
-// Quiz
-const QUIZZES=[
-  {q:'You need to process user uploads: validate → resize → store → notify. What pattern?',opts:['Pipeline','Fan-Out','Supervisor','Swarm'],correct:0,fb:'Sequential processing where each step depends on the previous — classic Pipeline.'},
-  {q:'A new blog post needs to be shared on Twitter, LinkedIn, Email, and Slack simultaneously. What pattern?',opts:['Pipeline','Fan-Out','Supervisor','Swarm'],correct:1,fb:'One trigger, multiple independent actions in parallel — Fan-Out.'},
-  {q:'You have 5 unreliable scraping agents and need one to watch them all and restart failures. What pattern?',opts:['Pipeline','Fan-Out','Supervisor','Swarm'],correct:2,fb:'A dedicated overseer monitoring workers — Supervisor pattern.'}
-];
-let qIdx=0;
-function renderQuiz(){
-  const qz=document.getElementById('quiz-section');
-  if(qIdx>=QUIZZES.length){qz.innerHTML='<div style="text-align:center;padding:1rem;color:#22c55e;font-weight:600">All questions answered! Great work.</div>';return;}
-  const q=QUIZZES[qIdx];
-  qz.innerHTML=`<div class="quiz-q"><strong>Q${qIdx+1}.</strong> ${q.q}</div><div class="quiz-opts">${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQuiz(${i})">${o}</button>`).join('')}</div>`;
-}
-function answerQuiz(i){
-  const q=QUIZZES[qIdx];
-  const btns=document.querySelectorAll('.quiz-opt');
-  btns.forEach((b,idx)=>{b.disabled=true;b.classList.add(idx===q.correct?'correct':'wrong');});
-  btns[i].classList.remove('correct','wrong');btns[i].classList.add(i===q.correct?'correct':'wrong');
-  const fb=document.getElementById('quiz-fb');fb.style.display='block';fb.textContent=q.fb;
-  setTimeout(()=>{qIdx++;renderQuiz();},1200);
-}
-renderQuiz();
-
-function completeLsn(){
-  if(localStorage.getItem('autolab-5')==='complete')return;
-  localStorage.setItem('autolab-5','complete');
-  document.getElementById('complete-btn').disabled=true;
-  document.getElementById('complete-msg').style.display='block';
-  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
-}
-if(localStorage.getItem('autolab-5')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
-</script>
+</div>

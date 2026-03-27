@@ -36,54 +36,11 @@ free: false
 
   <h2 class="section-title">&#127919; Choose the Right Strategy</h2>
   <div class="scenarios" id="scenarios"></div>
-  <div class="complete-section">
-    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
-    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
-  </div>
-  </div>
-<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
 
-<script>
-let raceRunning=false;
-function runRace(){
-  if(raceRunning)return;raceRunning=true;
-  const avA=document.getElementById('ra-a'),avB=document.getElementById('ra-b'),data=document.getElementById('race-data'),val=document.getElementById('race-val'),log=document.getElementById('race-log');
-  log.textContent='';val.textContent='$100';
-  const steps=[
-    {t:0,fn:()=>{log.textContent+='[00:00] A reads balance: $100\n';}},
-    {t:400,fn:()=>{log.textContent+='[00:00] B reads balance: $100\n';}},
-    {t:900,fn:()=>{avA.classList.add('conflict');log.textContent+='[00:01] A calculates: $100 - $30 = $70\n';}},
-    {t:1300,fn:()=>{avB.classList.add('conflict');log.textContent+='[00:01] B calculates: $100 - $50 = $50\n';}},
-    {t:1800,fn:()=>{val.textContent='$70';val.style.color='#ef4444';log.textContent+='[00:02] A writes: balance = $70\n';}},
-    {t:2200,fn:()=>{val.textContent='$50';data.classList.add('danger');log.textContent+='[00:02] B writes: balance = $50 (OVERWRITES A!)\n';}},
-    {t:3000,fn:()=>{log.textContent+='[00:03] BUG: $30 deduction lost! Should be $20, shows $50\n';log.textContent+='[00:03] This is a RACE CONDITION.\n';avA.classList.remove('conflict');avB.classList.remove('conflict');raceRunning=false;}}
-  ];
-  steps.forEach(s=>setTimeout(s.fn,s.t));
-}
+  <div data-learn="QuizMC" data-props='{"title":"Conflict Resolution Strategies","questions":[{"q":"Two agents need to update a user subscription simultaneously. Operations are quick (<1 second). Best strategy?","options":["Conscience Layer","Priority Queue","Locking","Swarm pattern"],"correct":2,"explanation":"Quick operations plus two writers equals locking. Acquire lock, write, release. Simple and effective for fast operations."},{"q":"Five agents submit reports to a dashboard. Security alerts must appear before routine analytics. Best strategy?","options":["Locking","Conscience Layer","Swarm","Priority Queue"],"correct":3,"explanation":"Different importance levels call for a priority queue. Security agents get higher priority and their writes are processed first."},{"q":"An agent wants to delete user data for GDPR compliance. Another wants to retain it for fraud investigation. Both are valid. Best strategy?","options":["Locking","Priority Queue","Conscience Layer","Rollback"],"correct":2,"explanation":"Ethical conflict with competing valid interests requires the conscience layer — an arbiter must weigh values (privacy vs. safety) and make a judgment call."},{"q":"What is a race condition?","options":["An agent running faster than expected","Two agents reading and writing the same data simultaneously, causing one write to be lost","A scheduling conflict between cron jobs","A memory overflow error"],"correct":1,"explanation":"A race condition occurs when two agents both read the same value, calculate changes independently, and then both write — the second write overwrites the first, losing data."}]}'></div>
 
-const SCEN=[
-  {text:'Two agents need to update a user\'s subscription status. One is upgrading, one is canceling. The operations are quick (<1s).',correct:0,opts:['Locking','Priority Queue','Conscience Layer'],fb:'Quick operations + two writers = locking is simplest. Acquire lock, write, release. No complex arbitration needed.'},
-  {text:'Five agents submit reports to the same dashboard. Some are critical (security alerts), some are routine (analytics). You need critical reports to appear first.',correct:1,opts:['Locking','Priority Queue','Conscience Layer'],fb:'Different importance levels = priority queue. Security agents get higher priority, their writes are processed first.'},
-  {text:'An agent wants to delete a user\'s data for GDPR compliance, but another agent wants to retain it for fraud investigation. Both have valid reasons.',correct:2,opts:['Locking','Priority Queue','Conscience Layer'],fb:'Ethical conflict with competing valid interests = conscience layer. An arbiter must weigh values (privacy vs safety) and make a judgment call.'}
-];
-const scenEl=document.getElementById('scenarios');
-SCEN.forEach((s,i)=>{
-  scenEl.innerHTML+=`<div class="scenario"><div class="scen-num">Scenario ${i+1}</div><div class="scen-text">${s.text}</div><div class="scen-opts" id="sopts-${i}">${s.opts.map((o,j)=>`<button class="scen-opt" onclick="checkScen(${i},${j})">${o}</button>`).join('')}</div><div class="scen-fb" id="sfb-${i}">${s.fb}</div></div>`;
-});
+  <div data-learn="FlashDeck" data-props='{"title":"Conflict Resolution Concepts","cards":[{"front":"What is a race condition?","back":"When two agents read the same value, calculate independently, and both write — the second write overwrites the first, silently losing data."},{"front":"What is a rollback?","back":"Undoing a change to restore data to its last safe state. Like Ctrl-Z for database operations. Used when a conflict is detected."},{"front":"Locking strategy","back":"An agent acquires a lock before writing. All others must wait. Simple and reliable for quick operations, but can bottleneck high-traffic systems."},{"front":"Priority Queue strategy","back":"Agents have priority levels. Higher-priority writes are processed first. Best when writes have different levels of importance."},{"front":"Conscience Layer strategy","back":"An arbiter agent reviews conflicting writes and decides which aligns better with system values. Best for ethical or value-based conflicts."}]}'></div>
 
-function checkScen(si,oi){
-  const s=SCEN[si];
-  const btns=document.querySelectorAll(`#sopts-${si} .scen-opt`);
-  btns.forEach((b,j)=>{b.disabled=true;b.classList.add(j===s.correct?'correct':'wrong');});
-  document.getElementById(`sfb-${si}`).style.display='block';
-}
+  <div data-learn="MatchConnect" data-props='{"title":"Match Conflict to Strategy","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Two agents write to balance simultaneously","right":"Locking"},{"left":"Security alert vs. routine report","right":"Priority Queue"},{"left":"GDPR delete vs. fraud hold","right":"Conscience Layer"},{"left":"Undo the last database change","right":"Rollback"}]}'></div>
 
-function completeLsn(){
-  if(localStorage.getItem('autolab-6')==='complete')return;
-  localStorage.setItem('autolab-6','complete');
-  document.getElementById('complete-btn').disabled=true;
-  document.getElementById('complete-msg').style.display='block';
-  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
-}
-if(localStorage.getItem('autolab-6')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
-</script>
+</div>

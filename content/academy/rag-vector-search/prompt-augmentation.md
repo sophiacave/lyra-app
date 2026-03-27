@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -40,27 +40,6 @@ free: false
     </div>
   </div>
 
-  <h3 class="section">Build Your Prompt Template</h3>
-
-  <div class="template-editor">
-    <label>System prompt template (use {context} and {question} placeholders):</label>
-    <div class="presets">
-      <button class="active" onclick="setPreset(0,this)">Simple</button>
-      <button onclick="setPreset(1,this)">Strict</button>
-      <button onclick="setPreset(2,this)">Cited</button>
-      <button onclick="setPreset(3,this)">Conversational</button>
-    </div>
-    <textarea id="templateInput" oninput="updatePreview()">Answer the user's question based on the following context.
-
-Context:
-{context}
-
-Question: {question}
-
-Answer:</textarea>
-    <label>Live Preview (with sample data filled in):</label>
-    </div>
-
   <h3 class="section">Prompt Engineering Tips for RAG</h3>
   <div class="tips">
     <div class="tip"><h4>Be Explicit About Grounding</h4><p>"Answer ONLY based on the provided context" prevents the LLM from filling gaps with training knowledge that may be wrong.</p></div>
@@ -71,77 +50,10 @@ Answer:</textarea>
     <div class="tip"><h4>System vs User Role</h4><p>Put grounding instructions in the system message, context+question in the user message. This leverages the model's role-following behavior.</p></div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  </div>
+  <div data-learn="QuizMC" data-props='{"title":"Prompt Augmentation Quiz","questions":[{"q":"What is the most important instruction to include in a RAG prompt to prevent hallucination?","options":["Set the temperature to 0","Include \"Answer ONLY based on the provided context\"","Use GPT-4 instead of GPT-3.5","Always include at least 10 retrieved chunks"],"correct":1,"explanation":"Explicit grounding instructions tell the model to restrict itself to the retrieved context. Without this, the model may blend context with its training knowledge, which can introduce confident but incorrect information."},{"q":"Why should you add \"If the context doesn't contain the answer, say I don't have that information\"?","options":["To reduce API costs","To prevent the model from hallucinating an answer to a question the retrieved context cannot support","To make responses shorter","To improve vector search recall"],"correct":1,"explanation":"Without this instruction, the model may fill gaps in the context with plausible-sounding invented information. Explicitly handling the \"I don't know\" case forces the model to acknowledge the limits of its retrieved knowledge rather than fabricate."},{"q":"Where should grounding instructions be placed in a chat API prompt?","options":["In the user message alongside the question","In the system message","In the assistant message as a prefix","Grounding instructions should not be used"],"correct":1,"explanation":"The system message sets persistent behavior for the entire conversation. Placing grounding rules there means they apply to every response and cannot be accidentally overridden by user input phrasing."}]}'></div>
 
-<script>
-const PRESETS = [
-  `Answer the user's question based on the following context.
+  <div data-learn="FlashDeck" data-props='{"title":"Prompt Augmentation Vocabulary","cards":[{"front":"Augmented prompt","back":"A prompt that includes retrieved document chunks inserted as context alongside the user question. The foundation of the RAG generation step."},{"front":"Grounding instruction","back":"A directive in the prompt like \"Answer ONLY based on the provided context\" that constrains the LLM to use retrieved facts, not training memory."},{"front":"{context} placeholder","back":"A template variable replaced with the concatenated text of retrieved chunks before sending to the LLM."},{"front":"Citation prompt","back":"An instruction asking the model to reference specific passages: \"Cite the passage that supports each claim.\" Increases answer verifiability."},{"front":"Context delimiter","back":"Clear separators (--- or triple backticks) around context blocks so the LLM can distinguish retrieved content from instructions."}]}'></div>
 
-Context:
-{context}
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Prompt Technique to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Answer ONLY based on context","right":"Prevents blending training knowledge with retrieved facts"},{"left":"If unsure, say I don't know","right":"Prevents hallucination on unanswerable questions"},{"left":"Cite the supporting passage","right":"Makes responses verifiable and traceable"},{"left":"System message placement","right":"Applies grounding rules persistently across turns"},{"left":"Context delimiters (---)","right":"Helps LLM distinguish context from instructions"}]}'></div>
 
-Question: {question}
-
-Answer:`,
-  `You are a precise assistant. Answer the question using ONLY the information in the provided context. If the context does not contain enough information to answer, respond with "I don't have enough information to answer that."
-
-Do NOT use any prior knowledge. Only use the context below.
-
----
-Context:
-{context}
----
-
-Question: {question}
-
-Answer:`,
-  `Answer the question based on the provided context. For each claim in your answer, cite the relevant passage in [brackets].
-
-Context:
-{context}
-
-Question: {question}
-
-Answer (with citations):`,
-  `You are a friendly, helpful assistant for our company. A customer is asking a question. Use the information below to give them a warm, accurate response. If you're not sure, let them know you'll escalate to a human.
-
-Relevant information:
-{context}
-
-Customer question: {question}
-
-Your response:`
-];
-
-const SAMPLE_CONTEXT = `Our Pro plan costs $29/month and includes unlimited projects, priority support, and API access. Refunds are available within 14 days of purchase by contacting billing@acme.io with your order number. After 14 days, refund requests are handled on a case-by-case basis.`;
-const SAMPLE_QUESTION = `What is the refund policy for the Pro plan?`;
-
-function setPreset(i,btn){
-  document.getElementById('templateInput').value=PRESETS[i];
-  document.querySelectorAll('.presets button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  updatePreview();
-}
-
-function updatePreview(){
-  const template=document.getElementById('templateInput').value;
-  const filled=template
-    .replace('{context}',`<span class="filled">${SAMPLE_CONTEXT}</span>`)
-    .replace('{question}',`<span class="filled">${SAMPLE_QUESTION}</span>`);
-  document.getElementById('preview').innerHTML=filled;
-}
-
-updatePreview();
-
-function completeLesson(){
-  const btn=document.getElementById('completeBtn');
-  if(btn.classList.contains('done')) return;
-  const progress=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');
-  progress['prompt-augmentation']=true;
-  localStorage.setItem('rag-vector-search-progress',JSON.stringify(progress));
-  LO.completeLesson('rag-vector-search',6,200);
-  btn.textContent='Lesson Complete!';btn.classList.add('done');
-}
-(function(){const p=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');if(p['prompt-augmentation']){const b=document.getElementById('completeBtn');b.textContent='Lesson Complete!';b.classList.add('done');}})();
-</script>
+</div>

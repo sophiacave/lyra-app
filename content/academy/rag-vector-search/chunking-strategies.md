@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -21,45 +21,6 @@ free: true
 
   <div class="narration">
     <strong>Why chunk at all?</strong> Embedding models have token limits (typically 512-8192 tokens). A <strong>token</strong> is roughly 3/4 of a word -- so 100 tokens is about 75 words. A 50-page document won't fit into one embedding. We split it into smaller pieces, embed each piece separately, then search across all chunks. The art is choosing the right chunk size and overlap.
-  </div>
-
-  <textarea id="docInput" placeholder="Paste your text here, or use the sample text...">Retrieval-Augmented Generation (RAG) is a technique that enhances large language models by providing them with relevant external knowledge. Instead of relying solely on what the model learned during training, RAG systems retrieve relevant documents at query time and include them in the prompt.
-
-The RAG pipeline consists of several key stages. First, documents are split into manageable chunks. Each chunk is then converted into a vector embedding using an embedding model. These embeddings are stored in a vector database for efficient similarity search.
-
-When a user asks a question, the question is also embedded into a vector. The vector database finds the most similar document chunks. These retrieved chunks are then inserted into the LLM's prompt as context, allowing the model to generate answers grounded in specific, relevant information.
-
-Chunk size is one of the most important parameters in a RAG system. Small chunks (100-200 tokens) provide precise, focused retrieval but may lack context. Large chunks (1000+ tokens) preserve more context but may include irrelevant information and reduce retrieval precision.
-
-Overlap between chunks ensures that information at chunk boundaries isn't lost. A typical overlap of 10-20% means the end of one chunk repeats at the beginning of the next. This redundancy prevents the system from missing relevant passages that happen to fall on a chunk boundary.
-
-Advanced chunking strategies include semantic chunking (splitting at natural topic boundaries), recursive chunking (trying multiple split strategies), and document-aware chunking (respecting headers, paragraphs, and sections). The best strategy depends on your document structure and use case.</textarea>
-
-  <div class="controls">
-    <div class="control-group">
-      <label>Chunk Size (words)</label>
-      <div class="slider-row">
-        <input type="range" id="chunkSize" min="20" max="200" value="50" step="10">
-        <span class="slider-val" id="chunkSizeVal">50</span>
-      </div>
-    </div>
-    <div class="control-group">
-      <label>Overlap (words)</label>
-      <div class="slider-row">
-        <input type="range" id="overlap" min="0" max="50" value="10" step="5">
-        <span class="slider-val" id="overlapVal">10</span>
-      </div>
-    </div>
-    <div class="control-group">
-      <label>Strategy</label>
-      <div class="slider-row">
-        <select id="strategy" style="flex:1;padding:.5rem;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(255,255,255,.04);color:#e5e5e5;font-family:Inter,sans-serif;font-size:.8rem;outline:none">
-          <option value="fixed">Fixed Size</option>
-          <option value="sentence">Sentence-Based</option>
-          <option value="paragraph">Paragraph-Based</option>
-        </select>
-      </div>
-    </div>
   </div>
 
   <div class="narration">
@@ -86,110 +47,10 @@ Advanced chunking strategies include semantic chunking (splitting at natural top
     </div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
-  </div>
+  <div data-learn="QuizMC" data-props='{"title":"Chunking Knowledge Check","questions":[{"q":"Why do we need to chunk documents before embedding them?","options":["Smaller files are cheaper to store","Embedding models have token limits and cannot process full documents as a single vector","Chunks load faster in the browser","Vector databases only accept chunks, not full documents"],"correct":1,"explanation":"Embedding models have maximum token limits (typically 512-8192 tokens). Long documents must be split into chunks so each piece can be embedded individually. This also improves retrieval precision since each chunk covers a focused topic."},{"q":"What is the purpose of overlap between chunks?","options":["To make the index larger","To prevent information at chunk boundaries from being lost","To reduce the number of embeddings needed","To increase cosine similarity scores"],"correct":1,"explanation":"Overlap repeats the end of one chunk at the start of the next. This ensures that a sentence or idea spanning the boundary between two chunks is fully represented in at least one chunk, so it is not lost during retrieval."},{"q":"For a customer support FAQ system, which chunk size is generally best?","options":["Very large chunks (1000+ words) to capture full context","Very small chunks (<30 words) for maximum speed","Medium chunks (100-300 words) balancing precision and context","Chunk size does not matter for Q&A systems"],"correct":2,"explanation":"Q&A systems benefit from focused, medium-sized chunks. Large enough to preserve context around an answer, small enough that each chunk covers one specific topic — maximizing retrieval precision."}]}'></div>
 
-<script>
-const COLORS = ['#10b981','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4','#f97316','#14b8a6','#a855f7','#6366f1','#84cc16','#e11d48','#0ea5e9','#d946ef'];
+  <div data-learn="FlashDeck" data-props='{"title":"Chunking Flashcards","cards":[{"front":"Token","back":"Roughly 3/4 of a word. 100 tokens ≈ 75 words. Embedding models have a maximum token limit per input."},{"front":"Chunk Overlap","back":"Repeating the last N words of one chunk at the start of the next. Prevents boundary information loss. Typical: 10-20% of chunk size."},{"front":"Fixed-size chunking","back":"Split text every N words regardless of sentence boundaries. Simple but can cut sentences mid-thought."},{"front":"Sentence-based chunking","back":"Group complete sentences until the chunk reaches the target size. Preserves natural language boundaries."},{"front":"Paragraph-based chunking","back":"Use double newlines as split points. Respects document structure — each paragraph becomes one or more chunks."},{"front":"Semantic chunking","back":"Split at natural topic shifts detected by the model. Most accurate but most computationally expensive."}]}'></div>
 
-function chunk(){
-  const text = document.getElementById('docInput').value.trim();
-  if(!text) return;
-  const strategy = document.getElementById('strategy').value;
-  const chunkSize = parseInt(document.getElementById('chunkSize').value);
-  const overlap = parseInt(document.getElementById('overlap').value);
+  <div data-learn="SortStack" data-props='{"title":"Chunking Pipeline — Order the Steps","instruction":"Arrange these document processing steps in the correct order","items":["Load raw documents (PDFs, web pages, text files)","Split documents into chunks using chosen strategy and size","Embed each chunk using an embedding model","Store chunk vectors + metadata in the vector database"]}'></div>
 
-  let chunks = [];
-
-  if(strategy === 'paragraph'){
-    const paras = text.split(/\n\s*\n/).filter(p=>p.trim());
-    chunks = paras.map(p=>p.trim());
-  } else if(strategy === 'sentence'){
-    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-    let current = [];
-    let wordCount = 0;
-    sentences.forEach(s=>{
-      const words = s.trim().split(/\s+/);
-      if(wordCount + words.length > chunkSize && current.length > 0){
-        chunks.push(current.join(' '));
-        // Overlap: keep last N words
-        const allWords = current.join(' ').split(/\s+/);
-        const overlapWords = allWords.slice(-overlap);
-        current = overlap > 0 ? [overlapWords.join(' '), s.trim()] : [s.trim()];
-        wordCount = overlapWords.length + words.length;
-      } else {
-        current.push(s.trim());
-        wordCount += words.length;
-      }
-    });
-    if(current.length) chunks.push(current.join(' '));
-  } else {
-    // Fixed size
-    const words = text.split(/\s+/);
-    const step = Math.max(1, chunkSize - overlap);
-    for(let i = 0; i < words.length; i += step){
-      const end = Math.min(i + chunkSize, words.length);
-      chunks.push(words.slice(i, end).join(' '));
-      if(end >= words.length) break;
-    }
-  }
-
-  // Stats
-  const totalWords = text.split(/\s+/).length;
-  const avgChunkWords = chunks.length ? Math.round(chunks.reduce((s,c)=>s+c.split(/\s+/).length,0)/chunks.length) : 0;
-  const totalChunkWords = chunks.reduce((s,c)=>s+c.split(/\s+/).length,0);
-  const overlapRatio = totalWords > 0 ? ((totalChunkWords - totalWords) / totalWords * 100).toFixed(1) : 0;
-
-  document.getElementById('stats').innerHTML = `
-    <div class="stat"><div class="val">${chunks.length}</div><div class="lbl">Chunks</div></div>
-    <div class="stat"><div class="val">${totalWords}</div><div class="lbl">Total Words</div></div>
-    <div class="stat"><div class="val">${avgChunkWords}</div><div class="lbl">Avg Words/Chunk</div></div>
-    <div class="stat"><div class="val">${overlapRatio}%</div><div class="lbl">Overlap Ratio</div></div>
-  `;
-
-  const step = Math.max(1, chunkSize - overlap);
-  document.getElementById('mathDisplay').innerHTML = `<span class="label">Chunking Calculation</span>
-<span class="formula">Total words: ${totalWords}</span>
-<span class="formula">Chunk size: ${chunkSize} words | Overlap: ${overlap} words</span>
-<span class="formula">Step size: chunk_size - overlap = ${chunkSize} - ${overlap} = <span class="result">${step} words</span></span>
-<span class="formula">Number of chunks: ceil((${totalWords} - ${overlap}) / ${step}) = <span class="result">${chunks.length} chunks</span></span>
-<span class="formula">Total stored words: ${totalChunkWords} (${overlapRatio}% redundancy from overlap)</span>`;
-
-  // Render chunks
-  const viz = document.getElementById('chunksViz');
-  viz.innerHTML = chunks.map((c,i)=>{
-    const words = c.split(/\s+/);
-    const color = COLORS[i % COLORS.length];
-    const hasOverlap = overlap > 0 && i > 0 && strategy === 'fixed';
-    return `<div class="chunk" style="background:${color}11;border-color:${color}33">
-      <div class="chunk-header">
-        <span class="chunk-num" style="color:${color}">Chunk ${i+1}</span>
-        <span class="chunk-meta">${words.length} words${hasOverlap?' | <span class="overlap-indicator">'+overlap+' word overlap</span>':''}</span>
-      </div>
-      ${hasOverlap ? '<span style="background:rgba(251,146,60,.15);padding:0 3px;border-radius:3px;color:#fb923c">'+words.slice(0,overlap).join(' ')+'</span> '+words.slice(overlap).join(' ') : c}
-    </div>`;
-  }).join('');
-}
-
-document.getElementById('chunkSize').addEventListener('input',e=>{document.getElementById('chunkSizeVal').textContent=e.target.value;chunk();});
-document.getElementById('overlap').addEventListener('input',e=>{
-  const max=Math.floor(parseInt(document.getElementById('chunkSize').value)/2);
-  if(parseInt(e.target.value)>max) e.target.value=max;
-  document.getElementById('overlapVal').textContent=e.target.value;chunk();
-});
-document.getElementById('strategy').addEventListener('change',chunk);
-document.getElementById('docInput').addEventListener('input',chunk);
-
-chunk();
-
-function completeLesson(){
-  const btn=document.getElementById('completeBtn');
-  if(btn.classList.contains('done')) return;
-  const progress=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');
-  progress['chunking-strategies']=true;
-  localStorage.setItem('rag-vector-search-progress',JSON.stringify(progress));
-  LO.completeLesson('rag-vector-search',3,200);
-  btn.textContent='Lesson Complete!';btn.classList.add('done');
-}
-(function(){const p=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');if(p['chunking-strategies']){const b=document.getElementById('completeBtn');b.textContent='Lesson Complete!';b.classList.add('done');}})();
-</script>
+</div>

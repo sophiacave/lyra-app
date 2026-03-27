@@ -58,50 +58,10 @@ free: true
     </div>
   </div>
 
-  <div class="complete-section">
-    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
-    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
-  </div>
+  <div data-learn="FlashDeck" data-props='{"title":"The 6 Agent Components","cards":[{"front":"Identity","back":"Who the agent is — name, role, personality, and voice. Identity shapes every decision the agent makes."},{"front":"Memory","back":"What the agent knows. Short-term (current session), long-term (stored in DB), and shared (accessible to other agents)."},{"front":"Tools","back":"What the agent can do — API calls, database queries, file operations, sending messages. Without tools, agents can only think."},{"front":"Goals","back":"What the agent is trying to achieve. Can be persistent (always active) or triggered (activated by events)."},{"front":"Guardrails","back":"What the agent must NOT do. Safety rules, ethical constraints, and hard limits that prevent it from going rogue."},{"front":"Schedule","back":"When the agent runs — event-driven, cron-based, or always-on. Schedule determines the agent autonomy level."}]}'></div>
 
-  </div>
+  <div data-learn="QuizMC" data-props='{"title":"Agent Anatomy Check","questions":[{"q":"Which component defines what an agent is NOT allowed to do?","options":["Goals","Memory","Guardrails","Schedule"],"correct":2,"explanation":"Guardrails are the hard limits — they define forbidden actions and prevent the agent from going rogue."},{"q":"An agent that reacts to a webhook event rather than running on a timer uses which schedule type?","options":["Cron-based","Always-on","Event-driven","Manual"],"correct":2,"explanation":"Event-driven agents wake up in response to triggers like webhooks, new records, or incoming messages."},{"q":"What is the difference between long-term memory and shared memory?","options":["Long-term is faster","Shared memory is accessible to ALL agents; long-term belongs to one agent","There is no difference","Long-term lasts forever; shared is session-only"],"correct":1,"explanation":"Shared memory (brain_context) is the bridge between agents — any agent can read or write it. Long-term memory belongs to a single agent."}]}'></div>
 
-<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Component to Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Identity","right":"Name, role, and voice"},{"left":"Tools","right":"API calls and file operations"},{"left":"Guardrails","right":"Hard limits and forbidden actions"},{"left":"Goals","right":"Persistent or event-triggered objectives"},{"left":"Schedule","right":"When the agent wakes up and runs"}]}'></div>
 
-<script>
-function toggleComp(el){
-  const wasExpanded=el.classList.contains('expanded');
-  document.querySelectorAll('.component').forEach(c=>c.classList.remove('expanded'));
-  if(!wasExpanded)el.classList.add('expanded');
-}
-
-function updatePreview(){
-  const n=document.getElementById('b-name').value||'Unnamed';
-  const g=document.getElementById('b-goal').value||'No goal set';
-  const t=document.getElementById('b-tools').value||'none';
-  const gu=document.getElementById('b-guard').value||'none';
-  const s=document.getElementById('b-schedule').value||'manual';
-  const m=document.getElementById('b-memory').value||'none';
-  document.getElementById('preview-content').textContent=`{
-  "agent": "${n}",
-  "identity": { "name": "${n}", "role": "Autonomous Agent" },
-  "goal": "${g}",
-  "tools": [${t.split(',').map(x=>`"${x.trim()}"`).join(', ')}],
-  "guardrails": ["${gu}"],
-  "schedule": "${s}",
-  "memory": "${m}"
-}`;
-}
-
-function completeLsn(){
-  if(localStorage.getItem('autolab-2')==='complete')return;
-  localStorage.setItem('autolab-2','complete');
-  document.getElementById('complete-btn').disabled=true;
-  document.getElementById('complete-msg').style.display='block';
-  const t=document.getElementById('xp-toast');t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3000);
-}
-if(localStorage.getItem('autolab-2')==='complete'){
-  document.getElementById('complete-btn').disabled=true;
-  document.getElementById('complete-msg').style.display='block';
-}
-</script>
+</div>

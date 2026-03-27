@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 <div class="container">
   <div class="lesson-header">
@@ -22,19 +22,6 @@ free: true
   <div class="narration">
     <strong>The core idea:</strong> An embedding converts text into a vector (a list of numbers) where <strong>similar meanings are close together</strong> in space. The word "happy" and "joyful" end up near each other, while "happy" and "database" are far apart. Type a word below and watch it appear in semantic space.
   </div>
-
-  <canvas id="embedCanvas" width="760" height="460"></canvas>
-
-  <div class="input-row">
-    <input type="text" id="wordInput" placeholder="Type a word and press Enter..." maxlength="30">
-    <button id="addBtn">Add Word</button>
-  </div>
-
-  <div style="font-size:.85rem;color:#71717a;margin-bottom:1rem">Click any two word tags below to compare their similarity. The closer their meaning, the higher the score.</div>
-
-  <div class="similarity-panel" id="simPanel">
-    <h3>Cosine Similarity</h3>
-    </div>
 
   <div class="narration">
     <strong>Why does this matter?</strong> Imagine you have a library of 10,000 documents and a user asks a question. You need to find the right answer — fast. That's what <strong>RAG</strong> (Retrieval-Augmented Generation) does: it fetches the most relevant documents and hands them to an AI. Embeddings are what make that search smart — finding answers by meaning, not just matching keywords.
@@ -64,253 +51,14 @@ free: true
     </div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson — Claim 200 XP</button>
+  <div data-learn="QuizMC" data-props='{"title":"Check Your Understanding","questions":[{"q":"What does an embedding model output for a piece of text?","options":["A summary paragraph","A fixed-length list of numbers (vector)","A set of keywords","A JSON object with labels"],"correct":1,"explanation":"Embedding models output a dense vector — a fixed-length list of floating-point numbers — where the position in that high-dimensional space captures the text's meaning."},{"q":"Why are the words \"happy\" and \"joyful\" close together in embedding space?","options":["They share the same letters","They have the same number of characters","They have similar meanings, so the model places them nearby","They were always grouped together alphabetically"],"correct":2,"explanation":"Embedding models are trained on vast text corpora and learn that words used in similar contexts carry similar meanings. Semantically related words end up geometrically close in vector space."}]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Embedding Vocabulary","cards":[{"front":"Vector","back":"A list of numbers representing the meaning of a piece of text in multi-dimensional semantic space."},{"front":"Cosine Similarity","back":"A measure of similarity between two vectors based on the angle between them. Range: -1 (opposite) to 1 (identical). Magnitude-independent."},{"front":"Semantic Space","back":"The high-dimensional coordinate system where all embeddings live. Similar meanings cluster together; unrelated meanings are far apart."},{"front":"Embedding Model","back":"A neural network trained to convert text into vectors that preserve meaning relationships, e.g. OpenAI text-embedding-3-small (1536 dimensions)."},{"front":"Contrastive Learning","back":"The training technique used to build embedding models — similar texts are pulled together and dissimilar texts are pushed apart during training."}]}'></div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Concept","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"1536 dimensions","right":"text-embedding-3-small output size"},{"left":"Cosine = 1.0","right":"Vectors point in identical direction"},{"left":"\"king - man + woman\"","right":"Geometry analogy that equals \"queen\""},{"left":"Contrastive learning","right":"Training technique for embedding models"},{"left":"Semantic cluster","right":"Group of nearby vectors with related meaning"}]}'></div>
+
   <div class="footer-nav">
     <span>Lesson 1 of 10</span>
-    
+
   </div>
 </div>
-
-<script>
-// Simulated semantic positions for common words (2D projection)
-const SEMANTIC_MAP = {
-  // Emotions - positive cluster
-  happy:[0.72,0.68], joyful:[0.75,0.71], glad:[0.70,0.65], cheerful:[0.73,0.73], elated:[0.76,0.74],
-  excited:[0.78,0.62], thrilled:[0.80,0.64], delighted:[0.74,0.70],
-  // Emotions - negative cluster
-  sad:[0.65,0.25], unhappy:[0.68,0.28], depressed:[0.63,0.22], miserable:[0.61,0.20],
-  angry:[0.58,0.15], furious:[0.56,0.13], upset:[0.62,0.23], anxious:[0.60,0.30],
-  // Technology cluster
-  computer:[0.15,0.75], software:[0.18,0.78], programming:[0.20,0.80], code:[0.17,0.82],
-  algorithm:[0.22,0.77], database:[0.25,0.73], server:[0.23,0.70], api:[0.20,0.72],
-  // Nature cluster
-  tree:[0.30,0.30], forest:[0.33,0.28], mountain:[0.35,0.25], river:[0.28,0.33],
-  ocean:[0.26,0.36], flower:[0.32,0.35], garden:[0.34,0.32], sun:[0.38,0.38],
-  // Food cluster
-  pizza:[0.85,0.35], burger:[0.83,0.32], pasta:[0.87,0.38], sushi:[0.82,0.40],
-  food:[0.84,0.36], cooking:[0.86,0.33], restaurant:[0.88,0.37], chef:[0.86,0.40],
-  // AI cluster
-  ai:[0.15,0.55], 'machine learning':[0.18,0.58], 'neural network':[0.20,0.56],
-  embedding:[0.16,0.52], vector:[0.14,0.50], rag:[0.12,0.54], llm:[0.17,0.57],
-  // Animals cluster
-  dog:[0.50,0.80], cat:[0.48,0.82], puppy:[0.52,0.83], kitten:[0.47,0.84],
-  animal:[0.49,0.78], pet:[0.51,0.81], bird:[0.45,0.76], fish:[0.44,0.73],
-  // People/body
-  king:[0.40,0.55], queen:[0.42,0.58], prince:[0.41,0.53], princess:[0.43,0.56],
-  man:[0.38,0.50], woman:[0.40,0.52], child:[0.42,0.48], person:[0.39,0.51],
-  // Abstract
-  love:[0.68,0.55], hate:[0.60,0.18], peace:[0.55,0.60], war:[0.52,0.12],
-  good:[0.65,0.60], bad:[0.62,0.20], beautiful:[0.70,0.62], ugly:[0.58,0.19],
-};
-
-// Color by cluster
-function getCluster(x,y){
-  if(x>0.65&&y>0.55) return {name:'Emotion+',color:'#10b981'};
-  if(x>0.55&&y<0.35) return {name:'Emotion-',color:'#ef4444'};
-  if(x<0.3&&y>0.65) return {name:'Tech',color:'#3b82f6'};
-  if(x<0.4&&y<0.4) return {name:'Nature',color:'#22c55e'};
-  if(x>0.75&&y>0.25&&y<0.5) return {name:'Food',color:'#f59e0b'};
-  if(x<0.25&&y>0.45&&y<0.65) return {name:'AI',color:'#8b5cf6'};
-  if(x>0.4&&x<0.55&&y>0.7) return {name:'Animals',color:'#ec4899'};
-  if(x>0.35&&x<0.5&&y>0.45&&y<0.65) return {name:'People',color:'#06b6d4'};
-  return {name:'Other',color:'#71717a'};
-}
-
-function getPos(word){
-  const w = word.toLowerCase().trim();
-  if(SEMANTIC_MAP[w]) return SEMANTIC_MAP[w];
-  // Generate deterministic pseudo-random position from word hash
-  let h=0; for(let i=0;i<w.length;i++) h=((h<<5)-h)+w.charCodeAt(i);
-  h=Math.abs(h);
-  return [(h%1000)/1000*0.8+0.1, ((h*7)%1000)/1000*0.8+0.1];
-}
-
-function cosineSim(a,b){
-  const dot = a[0]*b[0]+a[1]*b[1];
-  const magA = Math.sqrt(a[0]*a[0]+a[1]*a[1]);
-  const magB = Math.sqrt(b[0]*b[0]+b[1]*b[1]);
-  if(magA===0||magB===0) return 0;
-  return dot/(magA*magB);
-}
-
-const canvas = document.getElementById('embedCanvas');
-const ctx = canvas.getContext('2d');
-let words = [];
-let selected = [];
-let dpr = window.devicePixelRatio||1;
-
-function initCanvas(){
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width*dpr;
-  canvas.height = rect.height*dpr;
-  ctx.scale(dpr,dpr);
-  draw();
-}
-
-function draw(){
-  const w = canvas.getBoundingClientRect().width;
-  const h = canvas.getBoundingClientRect().height;
-  ctx.clearRect(0,0,w,h);
-
-  // Grid
-  ctx.strokeStyle='rgba(255,255,255,.04)';
-  ctx.lineWidth=1;
-  for(let i=0;i<=10;i++){
-    ctx.beginPath();ctx.moveTo(i*w/10,0);ctx.lineTo(i*w/10,h);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(0,i*h/10);ctx.lineTo(w,i*h/10);ctx.stroke();
-  }
-
-  // Axis labels
-  ctx.font='11px Inter,sans-serif';
-  ctx.fillStyle='rgba(255,255,255,.2)';
-  ctx.fillText('Semantic Dimension 1 →',w-140,h-8);
-  ctx.save();ctx.translate(12,140);ctx.rotate(-Math.PI/2);ctx.fillText('Semantic Dimension 2 →',0,0);ctx.restore();
-
-  // Draw connection if two selected
-  if(selected.length===2){
-    const a=words.find(wd=>wd.word===selected[0]);
-    const b=words.find(wd=>wd.word===selected[1]);
-    if(a&&b){
-      const ax=a.pos[0]*(w-80)+40, ay=(1-a.pos[1])*(h-80)+40;
-      const bx=b.pos[0]*(w-80)+40, by=(1-b.pos[1])*(h-80)+40;
-      ctx.strokeStyle='rgba(16,185,129,.3)';ctx.lineWidth=2;ctx.setLineDash([5,5]);
-      ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke();
-      ctx.setLineDash([]);
-    }
-  }
-
-  // Draw words
-  words.forEach(wd=>{
-    const x = wd.pos[0]*(w-80)+40;
-    const y = (1-wd.pos[1])*(h-80)+40;
-    const cluster = getCluster(wd.pos[0],wd.pos[1]);
-    const isSel = selected.includes(wd.word);
-
-    // Glow
-    if(isSel){
-      ctx.beginPath();ctx.arc(x,y,18,0,Math.PI*2);
-      ctx.fillStyle='rgba(16,185,129,.15)';ctx.fill();
-    }
-
-    // Dot
-    ctx.beginPath();ctx.arc(x,y,isSel?7:5,0,Math.PI*2);
-    ctx.fillStyle=cluster.color;ctx.fill();
-
-    // Label
-    ctx.font=(isSel?'700 13px':'500 11px')+' Inter,sans-serif';
-    ctx.fillStyle=isSel?'#fff':cluster.color;
-    ctx.textAlign='center';
-    ctx.fillText(wd.word,x,y-12);
-  });
-
-  // Legend
-  if(words.length===0){
-    ctx.font='500 14px Inter,sans-serif';
-    ctx.fillStyle='rgba(255,255,255,.3)';
-    ctx.textAlign='center';
-    ctx.fillText('Type a word below to see it placed in semantic space',w/2,h/2-10);
-    ctx.font='400 12px Inter,sans-serif';
-    ctx.fillText('Try: happy, sad, computer, dog, pizza, king',w/2,h/2+15);
-  }
-}
-
-function addWord(word){
-  word=word.trim().toLowerCase();
-  if(!word||words.find(w=>w.word===word)) return;
-  const pos=getPos(word);
-  words.push({word,pos});
-  renderTags();
-  draw();
-}
-
-function renderTags(){
-  const list=document.getElementById('wordList');
-  list.innerHTML=words.map(w=>`<span class="word-tag${selected.includes(w.word)?' selected':''}" onclick="toggleSelect('${w.word}')">${w.word}</span>`).join('');
-}
-
-function toggleSelect(word){
-  const idx=selected.indexOf(word);
-  if(idx>=0) selected.splice(idx,1);
-  else{
-    if(selected.length>=2) selected.shift();
-    selected.push(word);
-  }
-  renderTags();
-  draw();
-  showSimilarity();
-}
-
-function showSimilarity(){
-  const panel=document.getElementById('simPanel');
-  if(selected.length<2){panel.style.display='none';return;}
-  panel.style.display='block';
-  const a=words.find(w=>w.word===selected[0]);
-  const b=words.find(w=>w.word===selected[1]);
-  if(!a||!b) return;
-  const sim=cosineSim(a.pos,b.pos);
-  const dot=a.pos[0]*b.pos[0]+a.pos[1]*b.pos[1];
-  const magA=Math.sqrt(a.pos[0]**2+a.pos[1]**2);
-  const magB=Math.sqrt(b.pos[0]**2+b.pos[1]**2);
-  const color=sim>0.9?'#10b981':sim>0.7?'#f59e0b':'#ef4444';
-  document.getElementById('simResults').innerHTML=`
-    <div class="sim-bar"><span class="label">"${a.word}" vs "${b.word}"</span><div class="bar"></div><span class="val" style="color:${color}">${sim.toFixed(4)}</span></div>
-  `;
-  document.getElementById('simMath').innerHTML=`<span class="label">Cosine Similarity Formula</span>
-<span class="formula">cos(A, B) = (A · B) / (||A|| × ||B||)</span>
-
-<span class="formula">A = [${a.pos[0].toFixed(3)}, ${a.pos[1].toFixed(3)}]  ("${a.word}")</span>
-<span class="formula">B = [${b.pos[0].toFixed(3)}, ${b.pos[1].toFixed(3)}]  ("${b.word}")</span>
-
-<span class="formula">A · B = ${a.pos[0].toFixed(3)} × ${b.pos[0].toFixed(3)} + ${a.pos[1].toFixed(3)} × ${b.pos[1].toFixed(3)} = ${dot.toFixed(4)}</span>
-<span class="formula">||A|| = ${magA.toFixed(4)},  ||B|| = ${magB.toFixed(4)}</span>
-
-<span class="result">Similarity = ${dot.toFixed(4)} / (${magA.toFixed(4)} × ${magB.toFixed(4)}) = ${sim.toFixed(4)}</span>`;
-}
-
-canvas.addEventListener('click',e=>{
-  const rect=canvas.getBoundingClientRect();
-  const mx=(e.clientX-rect.left);
-  const my=(e.clientY-rect.top);
-  const w=rect.width,h=rect.height;
-  // Check if clicked near a word
-  let closest=null,minDist=30;
-  words.forEach(wd=>{
-    const x=wd.pos[0]*(w-80)+40;
-    const y=(1-wd.pos[1])*(h-80)+40;
-    const d=Math.sqrt((mx-x)**2+(my-y)**2);
-    if(d<minDist){minDist=d;closest=wd.word;}
-  });
-  if(closest) toggleSelect(closest);
-});
-
-document.getElementById('addBtn').addEventListener('click',()=>{
-  const input=document.getElementById('wordInput');
-  addWord(input.value);input.value='';input.focus();
-});
-document.getElementById('wordInput').addEventListener('keydown',e=>{
-  if(e.key==='Enter'){addWord(e.target.value);e.target.value='';}
-});
-
-// Seed some initial words
-['happy','sad','computer','dog','pizza','king','embedding','tree'].forEach(addWord);
-
-window.addEventListener('resize',initCanvas);
-initCanvas();
-
-// Completion
-function completeLesson(){
-  const btn=document.getElementById('completeBtn');
-  if(btn.classList.contains('done')) return;
-  const progress=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');
-  progress['what-are-embeddings']=true;
-  localStorage.setItem('rag-vector-search-progress',JSON.stringify(progress));
-  LO.completeLesson('rag-vector-search',1,200);
-  btn.textContent='Lesson Complete!';
-  btn.classList.add('done');
-}
-// Check if already done
-(function(){
-  const p=JSON.parse(localStorage.getItem('rag-vector-search-progress')||'{}');
-  if(p['what-are-embeddings']){const b=document.getElementById('completeBtn');b.textContent='Lesson Complete!';b.classList.add('done');}
-})();
-</script>

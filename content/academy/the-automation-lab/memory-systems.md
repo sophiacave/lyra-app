@@ -62,84 +62,10 @@ free: true
     <pre class="qb-output" id="q-output" style="display:none"></pre>
     </div>
 
-  <div class="complete-section">
-    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
-    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
-  </div>
-  </div>
-<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
+  <div data-learn="FlashDeck" data-props='{"title":"Memory Types","cards":[{"front":"Short-Term Memory","back":"Exists only during the current conversation. Vanishes when the session ends. Like a mental scratchpad — fast but ephemeral."},{"front":"Long-Term Memory","back":"Persisted in a database (agent_memory table). Survives across sessions. Makes agents smarter over time as they accumulate facts and preferences."},{"front":"Shared Memory","back":"A key-value store accessible to ALL agents (brain_context). The bridge that lets agents coordinate without talking directly to each other."},{"front":"What is brain_context?","back":"The shared memory table used by all agents. Any agent can read or write to it. It enables coordination across an entire agent team."},{"front":"When would you use long-term memory vs shared memory?","back":"Long-term is for one agent to remember things across sessions. Shared is for passing information between different agents."}]}'></div>
 
-<script>
-const MEM_DATA={
-  stm:{title:'Short-Term Memory (Conversation)',desc:'Exists only during the current interaction. When the conversation ends, it vanishes. This is the agent\'s "working memory" — like your mental scratchpad.',rows:[['Current user message','What the user just said','Session only'],['Previous turns','Last 10-20 exchanges','Session only'],['Extracted intent','What the agent thinks user wants','Session only'],['Tool results','Output from recent tool calls','Session only']]},
-  ltm:{title:'Long-Term Memory (agent_memory)',desc:'Persisted in a database table. Survives across sessions. The agent writes facts, preferences, and learnings here. This is what makes agents smarter over time.',rows:[['user_name','Sophia','Permanent'],['deploy_count','47','Updated each deploy'],['last_error','DNS timeout 2026-03-22','Last incident'],['preferred_stack','Next.js + Supabase','User stated']]},
-  shared:{title:'Shared Memory (brain_context)',desc:'A shared key-value store accessible to ALL agents. This is the "bridge" — agents read each other\'s writes. It enables coordination without direct communication.',rows:[['identity.faye_unified','Full identity profile','All agents'],['session.active_work','Current task state','All agents'],['system.revenue_architecture','Products + pricing','All agents'],['infrastructure.likeone_site','Deploy pipeline','All agents']]}
-};
+  <div data-learn="QuizMC" data-props='{"title":"Memory Systems Quiz","questions":[{"q":"Which type of memory disappears when a conversation ends?","options":["Long-term","Shared","Short-term","All of them"],"correct":2,"explanation":"Short-term memory only exists during the current session. Long-term and shared memory persist in databases."},{"q":"An agent needs to remember a user's preferences across multiple sessions. Which memory type should it use?","options":["Short-term","Shared","Long-term","None needed"],"correct":2,"explanation":"Long-term memory (agent_memory table) persists across sessions — perfect for storing user preferences."},{"q":"Two agents need to coordinate — Agent A writes a result that Agent B should act on. Which memory type enables this?","options":["Short-term (session context)","Long-term (agent_memory)","Shared (brain_context)","No memory needed"],"correct":2,"explanation":"Shared memory (brain_context) is the communication bus between agents. Agent A writes, Agent B reads — no direct connection needed."}]}'></div>
 
-function showMem(type){
-  document.querySelectorAll('.mem-card').forEach(c=>c.classList.remove('active'));
-  document.querySelector(`.mem-card.${type}`).classList.add('active');
-  const d=MEM_DATA[type];
-  const det=document.getElementById('mem-detail');
-  det.innerHTML=`<h3>${d.title}</h3><p>${d.desc}</p><table class="mem-table"><tr><th>Key</th><th>Value</th><th>Scope</th></tr>${d.rows.map(r=>`<tr><td style="color:#ef4444;font-weight:600">${r[0]}</td><td>${r[1]}</td><td style="color:#71717a">${r[2]}</td></tr>`).join('')}</table>`;
-}
-showMem('stm');
+  <div data-learn="MatchConnect" data-props='{"title":"Match Memory Type to Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Short-term","right":"Current conversation context"},{"left":"Long-term","right":"Stored user preferences across sessions"},{"left":"Shared","right":"Agent-to-agent coordination bus"},{"left":"agent_memory table","right":"One agent's persistent database"},{"left":"brain_context","right":"Whole-team shared key-value store"}]}'></div>
 
-// Memory flow simulation
-let flowRunning=false;
-function runMemFlow(){
-  if(flowRunning)return;flowRunning=true;
-  const btn=document.getElementById('flow-btn');btn.textContent='Running...';
-  const aA=document.getElementById('agentA-av'),aB=document.getElementById('agentB-av');
-  const actA=document.getElementById('agentA-act'),actB=document.getElementById('agentB-act');
-  const db=document.getElementById('db-entries');
-  db.innerHTML='';
-  const steps=[
-    {t:0,fn:()=>{aA.classList.add('writing');actA.textContent='Writing...';}},
-    {t:800,fn:()=>{db.innerHTML+='<div class="flow-entry" id="fe1">status: "deploying"</div>';setTimeout(()=>document.getElementById('fe1').classList.add('visible'),50);}},
-    {t:1600,fn:()=>{aA.classList.remove('writing');actA.textContent='Write complete';db.innerHTML+='<div class="flow-entry" id="fe2">version: "2.4.1"</div>';setTimeout(()=>document.getElementById('fe2').classList.add('visible'),50);}},
-    {t:2400,fn:()=>{aB.classList.add('reading');actB.textContent='Reading...';}},
-    {t:3200,fn:()=>{actB.textContent='Got: deploying v2.4.1';}},
-    {t:4000,fn:()=>{aB.classList.remove('reading');aB.classList.add('writing');actB.textContent='Writing response...';}},
-    {t:4800,fn:()=>{db.innerHTML+='<div class="flow-entry" id="fe3">health: "monitoring"</div>';setTimeout(()=>document.getElementById('fe3').classList.add('visible'),50);}},
-    {t:5600,fn:()=>{aB.classList.remove('writing');actB.textContent='Done';actA.textContent='Idle';btn.textContent='\u25B6 Run Again';flowRunning=false;}}
-  ];
-  steps.forEach(s=>setTimeout(s.fn,s.t));
-}
-
-function buildQuery(){
-  const t=document.getElementById('q-table').value;
-  const f=document.getElementById('q-filter').value;
-  const v=document.getElementById('q-value').value||'identity';
-  document.getElementById('q-result').textContent=`SELECT * FROM ${t}\nWHERE ${f} = '${v}'\nORDER BY updated_at DESC\nLIMIT 10;`;
-}
-
-function runQuery(){
-  const o=document.getElementById('q-output');
-  const t=document.getElementById('q-table').value;
-  const f=document.getElementById('q-filter').value;
-  const v=document.getElementById('q-value').value||'identity';
-  const mockData={
-    'brain_context':{
-      'identity':[{key:'faye_unified',value:'{name:"Sophia",role:"Founder"}',updated:'2026-03-23'}],
-      'system':[{key:'revenue_architecture',value:'{products:4,mrr:0}',updated:'2026-03-22'}],
-      'default':[{key:'boot_sequence',value:'{version:"4.0"}',updated:'2026-03-23'}]
-    },
-    'agent_memory':{
-      'default':[{key:'deploy_count',value:'47',updated:'2026-03-23'},{key:'last_error',value:'none',updated:'2026-03-22'}]
-    }
-  };
-  const results=mockData[t]?.[v]||mockData[t]?.['default']||[{key:'no_results',value:'null',updated:'-'}];
-  o.style.display='block';
-  o.textContent=`-- Results (${results.length} rows) --\n\n`+results.map(r=>`| ${r.key.padEnd(25)} | ${r.value.padEnd(30)} | ${r.updated} |`).join('\n');
-}
-
-function completeLsn(){
-  if(localStorage.getItem('autolab-3')==='complete')return;
-  localStorage.setItem('autolab-3','complete');
-  document.getElementById('complete-btn').disabled=true;
-  document.getElementById('complete-msg').style.display='block';
-  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
-}
-if(localStorage.getItem('autolab-3')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
-</script>
+</div>

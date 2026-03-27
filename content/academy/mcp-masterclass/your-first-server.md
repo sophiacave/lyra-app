@@ -6,7 +6,7 @@ type: "lesson"
 free: false
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 
 <div class="lesson-container">
@@ -98,141 +98,10 @@ free: false
     </div>
   </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 250 XP</button>
-  
+  <div data-learn="QuizMC" data-props='{"title":"Server Building Quiz","questions":[{"q":"What are the three arguments passed to server.tool()?","options":["url, method, callback","name, schema, handler","route, middleware, controller","endpoint, params, response"],"correct":1,"explanation":"server.tool() takes: name (a string identifier), schema (a Zod schema for input parameters), and handler (an async function that runs the tool logic and returns results)."},{"q":"Which npm packages are required to build a basic MCP server in TypeScript?","options":["express and axios","@modelcontextprotocol/sdk and zod","fastify and joi","hapi and yup"],"correct":1,"explanation":"You need @modelcontextprotocol/sdk (for McpServer and StdioServerTransport) and zod (for defining input schemas). Install with: npm install @modelcontextprotocol/sdk zod"}]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Server Code Patterns","cards":[{"front":"McpServer","back":"The main class from @modelcontextprotocol/sdk. Instantiate with a name and version, then register tools using server.tool()."},{"front":"StdioServerTransport","back":"The transport layer for local servers. Connects your server to Claude via standard input/output streams."},{"front":"server.tool() — name argument","back":"A unique snake_case string. This is what Claude calls when it wants to invoke the tool, e.g. \"read_file\" or \"search_documents\"."},{"front":"server.tool() — schema argument","back":"A Zod object schema defining what parameters the tool accepts. Claude reads this to know what to pass when calling the tool."},{"front":"server.tool() — handler argument","back":"An async function that receives the validated args and returns { content: [{ type: \"text\", text: result }] }."}]}'></div>
+
+  <div data-learn="SortStack" data-props='{"title":"Steps to Build Your First MCP Server","instruction":"Arrange these steps in the correct order","items":["npm install @modelcontextprotocol/sdk zod","Create McpServer instance with name and version","Register tools with server.tool()","Create StdioServerTransport","Call server.connect(transport)"]}'></div>
+
 </div>
-
-<script>
-let selectedType = null;
-let selectedTools = [];
-
-const toolSets = {
-  filesystem: [
-    {id:'read_file', label:'read_file', desc:'Read file contents'},
-    {id:'write_file', label:'write_file', desc:'Write to a file'},
-    {id:'list_directory', label:'list_directory', desc:'List directory contents'},
-    {id:'search_files', label:'search_files', desc:'Search for files by pattern'},
-    {id:'get_file_info', label:'get_file_info', desc:'Get file metadata'},
-    {id:'move_file', label:'move_file', desc:'Move or rename a file'},
-  ],
-  database: [
-    {id:'query', label:'query', desc:'Execute SQL query'},
-    {id:'insert', label:'insert', desc:'Insert a record'},
-    {id:'update', label:'update', desc:'Update records'},
-    {id:'delete_record', label:'delete', desc:'Delete records'},
-    {id:'list_tables', label:'list_tables', desc:'List all tables'},
-    {id:'describe_table', label:'describe_table', desc:'Get table schema'},
-  ],
-  api: [
-    {id:'api_get', label:'GET request', desc:'Fetch data from endpoint'},
-    {id:'api_post', label:'POST request', desc:'Send data to endpoint'},
-    {id:'api_put', label:'PUT request', desc:'Update a resource'},
-    {id:'api_delete', label:'DELETE request', desc:'Remove a resource'},
-    {id:'list_endpoints', label:'list_endpoints', desc:'Show available endpoints'},
-    {id:'check_status', label:'check_status', desc:'API health check'},
-  ]
-};
-
-function selectType(type){
-  selectedType = type;
-  selectedTools = [];
-  document.querySelectorAll('.choice-card').forEach(el => el.classList.remove('selected'));
-  document.getElementById('type-'+type).classList.add('selected');
-  document.getElementById('btn-step0').disabled = false;
-  document.getElementById('chosenType').textContent = type + ' server';
-
-  const selector = document.getElementById('toolSelector');
-  selector.innerHTML = toolSets[type].map(t =>
-    `<div class="tool-chip" onclick="toggleTool('${t.id}',this)" id="chip-${t.id}">${t.label}</div>`
-  ).join('');
-}
-
-function toggleTool(id, el){
-  if(selectedTools.includes(id)){
-    selectedTools = selectedTools.filter(t => t !== id);
-    el.classList.remove('selected');
-  } else {
-    selectedTools.push(id);
-    el.classList.add('selected');
-  }
-  document.getElementById('btn-step1').disabled = selectedTools.length === 0;
-}
-
-function goStep(n){
-  if(n === 1 && !selectedType) return;
-  if(n === 2 && selectedTools.length === 0) return;
-  if(n === 2) generateCode();
-
-  document.querySelectorAll('.step-content').forEach((el,i) => el.classList.toggle('active', i===n));
-  document.querySelectorAll('.step-tab').forEach((el,i) => {
-    el.classList.toggle('active', i===n);
-    if(i < n) el.classList.add('done');
-  });
-}
-
-function generateCode(){
-  const type = selectedType;
-  const tools = selectedTools;
-  const names = {filesystem:'my-fs-server', database:'my-db-server', api:'my-api-server'};
-  document.getElementById('codeFilename').textContent = names[type] + '.ts';
-
-  const imports = {
-    filesystem: 'fs/promises',
-    database: 'better-sqlite3',
-    api: 'node-fetch'
-  };
-
-  let toolCode = '';
-  const allTools = toolSets[type];
-  tools.forEach(tid => {
-    const t = allTools.find(x => x.id === tid);
-    if(!t) return;
-    toolCode += `
-<span class="cm">// Tool: ${t.desc}</span>
-<span class="fn">server</span>.<span class="fn">tool</span>(<span class="ann">name</span>
-  <span class="str">"${t.label}"</span>,<span class="ann">schema</span>
-  { path: <span class="fn">z</span>.<span class="fn">string</span>().<span class="fn">describe</span>(<span class="str">"Target path or identifier"</span>) },<span class="ann">handler</span>
-  <span class="kw">async</span> ({ path }) => {
-    <span class="cm">// Your ${t.desc.toLowerCase()} logic here</span>
-    <span class="kw">const</span> result = <span class="kw">await</span> <span class="fn">${t.id}</span>(path);
-    <span class="kw">return</span> { content: [{ type: <span class="str">"text"</span>, text: result }] };
-  }
-);
-`;
-  });
-
-  document.getElementById('codeBody').innerHTML = `<span class="cm">// ${names[type]}.ts — MCP Server for ${type}</span>
-<span class="kw">import</span> { <span class="fn">McpServer</span> } <span class="kw">from</span> <span class="str">"@modelcontextprotocol/sdk/server/mcp.js"</span>;
-<span class="kw">import</span> { <span class="fn">StdioServerTransport</span> } <span class="kw">from</span> <span class="str">"@modelcontextprotocol/sdk/server/stdio.js"</span>;
-<span class="kw">import</span> { <span class="fn">z</span> } <span class="kw">from</span> <span class="str">"zod"</span>;
-
-<span class="cm">// Create the MCP server instance</span>
-<span class="kw">const</span> server = <span class="kw">new</span> <span class="fn">McpServer</span>({
-  name: <span class="str">"${names[type]}"</span>,
-  version: <span class="str">"1.0.0"</span>,
-});
-${toolCode}
-<span class="cm">// Connect via stdio transport</span>
-<span class="kw">const</span> transport = <span class="kw">new</span> <span class="fn">StdioServerTransport</span>();
-<span class="kw">await</span> <span class="fn">server</span>.<span class="fn">connect</span>(transport);`;
-}
-
-function complete(){
-  const btn = document.getElementById('completeBtn');
-  if(btn.disabled) return;
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  progress['your-first-server'] = true;
-  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
-  LO.completeLesson('mcp-masterclass', 4, 250);
-  btn.textContent = 'Lesson Complete!';
-  btn.disabled = true;
-}
-(function(){
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  if(progress['your-first-server']){
-    const btn = document.getElementById('completeBtn');
-    btn.textContent = 'Lesson Complete!';
-    btn.disabled = true;
-  }
-})();
-</script>

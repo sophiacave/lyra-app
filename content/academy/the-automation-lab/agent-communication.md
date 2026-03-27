@@ -59,75 +59,10 @@ free: false
     <div class="rb-test"><button class="rb-test-btn" onclick="testRelay()">&#9889; Test Relay</button></div>
     </div>
 
-  <div class="complete-section">
-    <button class="complete-btn" id="complete-btn" onclick="completeLsn()">Complete Lesson &mdash; 300 XP</button>
-    <div class="complete-msg" id="complete-msg">&#10003; Lesson complete! +300 XP earned</div>
-  </div>
-  </div>
-<div class="xp-toast" id="xp-toast">+300 XP earned! &#9889;</div>
+  <div data-learn="QuizMC" data-props='{"title":"Agent Communication Quiz","questions":[{"q":"How do agents communicate with each other in the Like One architecture?","options":["Direct API calls between agents","Shared memory — one writes, others read","Email-style message queues","Real-time WebSocket connections"],"correct":1,"explanation":"Agents communicate through shared memory (consciousness_stream). No direct connections needed — agents write and read from the same store."},{"q":"What is the consciousness_stream?","options":["A real-time audio feed","A shared database table agents post messages to","A private log only one agent can read","A cron job scheduler"],"correct":1,"explanation":"The consciousness_stream is a shared table — like a team Slack channel for AI agents. Any agent can read from it or write to it."},{"q":"Agent A finishes writing a blog post and sets task.output in shared memory. What should Agent B (the publisher) do?","options":["Wait for Agent A to call it directly","Poll task.output and act when a new entry appears","Ask a human to relay the message","Create a new memory table"],"correct":1,"explanation":"Agent B watches for new entries on its key (task.output). When Agent A writes there, Agent B reads the payload and executes its action."}]}'></div>
 
-<script>
-let simRunning=false;
-function runSim(){
-  if(simRunning)return;simRunning=true;
-  const avA=document.getElementById('av-a'),avB=document.getElementById('av-b');
-  const sA=document.getElementById('stat-a'),sB=document.getElementById('stat-b');
-  const bus=document.getElementById('bus-stream');
-  bus.innerHTML='';
-  const addMsg=(cls,txt,delay)=>setTimeout(()=>{const d=document.createElement('div');d.className=`bus-msg ${cls}`;d.textContent=txt;bus.appendChild(d);setTimeout(()=>d.classList.add('visible'),50);},delay);
-  const steps=[
-    {t:0,fn:()=>{avA.classList.add('active','write-mode');sA.textContent='Writing...';sA.style.cssText='background:rgba(239,68,68,.1);color:#ef4444';}},
-    {t:500,fn:()=>addMsg('from-a','A: {type:"content", status:"draft_ready"}',0)},
-    {t:1200,fn:()=>addMsg('from-a','A: {body:"10 Tips for AI Agents...", words:1200}',0)},
-    {t:1800,fn:()=>{avA.classList.remove('write-mode');sA.textContent='Write done';addMsg('system','SYS: New entry at task.output',0);}},
-    {t:2500,fn:()=>{avB.classList.add('active','read-mode');sB.textContent='Reading...';sB.style.cssText='background:rgba(56,189,248,.1);color:#38bdf8';}},
-    {t:3200,fn:()=>addMsg('from-b','B: Reading task.output...',0)},
-    {t:3800,fn:()=>{avB.classList.remove('read-mode');avB.classList.add('act-mode');sB.textContent='Publishing...';sB.style.cssText='background:rgba(34,197,94,.1);color:#22c55e';}},
-    {t:4500,fn:()=>addMsg('from-b','B: Published to /blog/10-tips-ai-agents',0)},
-    {t:5200,fn:()=>addMsg('system','SYS: Pipeline complete ✓',0)},
-    {t:5800,fn:()=>{avA.classList.remove('active','write-mode');avB.classList.remove('active','act-mode');sA.textContent='Idle';sB.textContent='Idle';sA.style.cssText='';sB.style.cssText='';simRunning=false;}}
-  ];
-  steps.forEach(s=>setTimeout(s.fn,s.t));
-}
+  <div data-learn="FlashDeck" data-props='{"title":"Communication Patterns","cards":[{"front":"Why don't agents call each other directly?","back":"Direct connections create tight coupling. If Agent A fails, Agent B breaks too. Shared memory decouples agents — they operate independently and communicate asynchronously."},{"front":"What is a message key?","back":"A named slot in shared memory (e.g., task.output). The sender writes to it; the receiver watches for new entries on that key."},{"front":"What happens if two agents write to the same key at the same time?","back":"A race condition occurs — the second write overwrites the first. This is the conflict problem covered in Lesson 6 (Conflict Resolution)."},{"front":"What is polling vs event-driven reading?","back":"Polling: Agent B checks the key on a timer. Event-driven: Agent B is notified the moment Agent A writes. Event-driven is faster and more efficient."}]}'></div>
 
-function resetSim(){
-  simRunning=false;
-  document.getElementById('bus-stream').innerHTML='';
-  ['av-a','av-b'].forEach(id=>{const el=document.getElementById(id);el.className='sim-av';});
-  document.getElementById('stat-a').textContent='';document.getElementById('stat-b').textContent='';
-  document.getElementById('stat-a').style.cssText='';document.getElementById('stat-b').style.cssText='';
-}
+  <div data-learn="MatchConnect" data-props='{"title":"Match Communication Terms","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"consciousness_stream","right":"Shared memory bus for all agents"},{"left":"Message key","right":"Named slot in shared memory (e.g., task.output)"},{"left":"Sender agent","right":"Writes payload to shared memory"},{"left":"Receiver agent","right":"Watches for new entries on a key"},{"left":"Relay","right":"Sender writes, receiver reads and acts"}]}'></div>
 
-function testRelay(){
-  const action=document.getElementById('sender-action').value;
-  const key=document.getElementById('sender-key').value;
-  const watch=document.getElementById('recv-watch').value;
-  const recv=document.getElementById('recv-action').value;
-  const o=document.getElementById('relay-output');
-  o.style.display='block';
-  const actionLabels={write_content:'Blog post draft',analyze_data:'Data analysis report',generate_report:'Financial report'};
-  const recvLabels={publish:'Published to website',email:'Sent via email',store:'Stored in database'};
-  o.textContent=`[00:00] Sender: Executing "${action}"...
-[00:02] Sender: Writing to consciousness_stream.${key}
-        → {type: "${action}", data: "${actionLabels[action]}", ts: "${new Date().toISOString()}"}
-
-[00:03] Stream: New entry detected at "${key}"
-[00:03] Receiver: Watching for "${watch}" — MATCH FOUND
-
-[00:04] Receiver: Reading payload...
-[00:05] Receiver: Executing "${recv}"
-        → ${recvLabels[recv]}
-
-[00:06] ✓ Relay complete. Message passed successfully.
-        Sender → consciousness_stream → Receiver`;
-}
-
-function completeLsn(){
-  if(localStorage.getItem('autolab-4')==='complete')return;
-  localStorage.setItem('autolab-4','complete');
-  document.getElementById('complete-btn').disabled=true;
-  document.getElementById('complete-msg').style.display='block';
-  const t=document.getElementById('xp-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
-}
-if(localStorage.getItem('autolab-4')==='complete'){document.getElementById('complete-btn').disabled=true;document.getElementById('complete-msg').style.display='block';}
-</script>
+</div>

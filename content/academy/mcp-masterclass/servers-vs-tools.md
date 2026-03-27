@@ -6,7 +6,7 @@ type: "lesson"
 free: true
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
-  
+
 </nav>
 
 <div class="lesson-container">
@@ -88,123 +88,10 @@ free: true
 
     </div>
 
-  <button class="complete-btn" id="completeBtn" onclick="complete()">Complete Lesson &mdash; Earn 200 XP</button>
-  
+  <div data-learn="QuizMC" data-props='{"title":"Servers vs Tools Quiz","questions":[{"q":"Which statement correctly describes how an MCP Server differs from a direct tool call?","options":["A server is faster but less reliable","A server is long-running, exposes multiple tools, and maintains state","A server only works with Claude Desktop","There is no meaningful difference"],"correct":1,"explanation":"MCP Servers are persistent processes that expose multiple tools, maintain state (like open DB connections), and support automatic tool discovery. Direct tool calls are one-off and stateless."},{"q":"What transport protocols does MCP use?","options":["REST and GraphQL","HTTP-only over port 443","stdio and HTTP with Server-Sent Events (SSE)","TCP sockets and WebSockets"],"correct":2,"explanation":"MCP supports stdio (standard input/output, ideal for local servers) and HTTP with SSE for remote servers."}]}'></div>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Server Types Flash Review","cards":[{"front":"Filesystem Server","back":"Exposes read_file, write_file, list_directory, search_files. Gives AI controlled access to local or remote files."},{"front":"Database Server","back":"Exposes query, insert, update, list_tables. Maintains a persistent connection pool so Claude can query data without re-connecting each time."},{"front":"Browser Server","back":"Exposes navigate, screenshot, click, type, get_text. Powered by Puppeteer or Playwright for full web automation."},{"front":"Memory Server","back":"Exposes store_memory, recall, search_memory, create_relation. Persists knowledge across sessions in a knowledge graph."},{"front":"Search Server","back":"Exposes web_search, search_docs, search_code, search_news. Connects AI to live search engines and documentation indices."}]}'></div>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Match Server to Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Filesystem Server","right":"Read and write local project files"},{"left":"Database Server","right":"Run SQL queries and return structured results"},{"left":"Browser Server","right":"Navigate pages and fill out forms"},{"left":"Memory Server","right":"Remember facts across multiple sessions"}]}'></div>
+
 </div>
-
-<script>
-const servers = [
-  {
-    name: 'Filesystem Server',
-    color: '#34d399',
-    desc: 'Gives AI direct access to your local or remote filesystem. Claude can read project files, write code, search directories, and manage file operations — all through a controlled, sandboxed interface.',
-    capabilities: [
-      {icon:'&#x1F4D6;', name:'read_file', desc:'Read contents of any file', bg:'rgba(52,211,153,.1)'},
-      {icon:'&#x270F;&#xFE0F;', name:'write_file', desc:'Create or overwrite files', bg:'rgba(52,211,153,.1)'},
-      {icon:'&#x1F50D;', name:'search_files', desc:'Grep/glob across directories', bg:'rgba(52,211,153,.1)'},
-      {icon:'&#x1F4C2;', name:'list_directory', desc:'List files and subdirectories', bg:'rgba(52,211,153,.1)'},
-      {icon:'&#x1F5D1;&#xFE0F;', name:'move_file', desc:'Move or rename files', bg:'rgba(52,211,153,.1)'},
-    ]
-  },
-  {
-    name: 'Database Server',
-    color: '#38bdf8',
-    desc: 'Connects AI to SQL or NoSQL databases. The server maintains a persistent connection pool and lets Claude query, insert, update, and analyze data without exposing raw credentials.',
-    capabilities: [
-      {icon:'&#x1F4CA;', name:'query', desc:'Execute SELECT queries', bg:'rgba(56,189,248,.1)'},
-      {icon:'&#x2795;', name:'insert', desc:'Insert new records', bg:'rgba(56,189,248,.1)'},
-      {icon:'&#x1F504;', name:'update', desc:'Modify existing records', bg:'rgba(56,189,248,.1)'},
-      {icon:'&#x1F4CB;', name:'list_tables', desc:'Show database schema', bg:'rgba(56,189,248,.1)'},
-      {icon:'&#x1F4C8;', name:'describe_table', desc:'Column types and constraints', bg:'rgba(56,189,248,.1)'},
-    ]
-  },
-  {
-    name: 'API Server',
-    color: '#fb923c',
-    desc: 'Wraps any REST or GraphQL API as MCP tools. You define the endpoints, authentication, and rate limits. Claude calls them like native tools without knowing the underlying HTTP details.',
-    capabilities: [
-      {icon:'&#x1F4E8;', name:'api_get', desc:'GET requests to endpoints', bg:'rgba(251,146,60,.1)'},
-      {icon:'&#x1F4E4;', name:'api_post', desc:'POST data to endpoints', bg:'rgba(251,146,60,.1)'},
-      {icon:'&#x1F504;', name:'api_put', desc:'Update existing resources', bg:'rgba(251,146,60,.1)'},
-      {icon:'&#x1F6A8;', name:'webhook_listen', desc:'Listen for incoming webhooks', bg:'rgba(251,146,60,.1)'},
-      {icon:'&#x1F511;', name:'auth_refresh', desc:'Manage API tokens', bg:'rgba(251,146,60,.1)'},
-    ]
-  },
-  {
-    name: 'Browser Server',
-    color: '#f472b6',
-    desc: 'Gives AI browser automation capabilities via Puppeteer or Playwright. Claude can navigate pages, fill forms, take screenshots, and extract data from web applications.',
-    capabilities: [
-      {icon:'&#x1F30D;', name:'navigate', desc:'Go to any URL', bg:'rgba(244,114,182,.1)'},
-      {icon:'&#x1F4F7;', name:'screenshot', desc:'Capture page screenshots', bg:'rgba(244,114,182,.1)'},
-      {icon:'&#x1F5B1;&#xFE0F;', name:'click', desc:'Click elements on page', bg:'rgba(244,114,182,.1)'},
-      {icon:'&#x2328;&#xFE0F;', name:'type', desc:'Type into input fields', bg:'rgba(244,114,182,.1)'},
-      {icon:'&#x1F4C4;', name:'get_text', desc:'Extract page content', bg:'rgba(244,114,182,.1)'},
-    ]
-  },
-  {
-    name: 'Memory Server',
-    color: '#a78bfa',
-    desc: 'Provides persistent memory across AI sessions. Stores knowledge graphs, facts, and context that the AI can recall later. Essential for long-running projects where context exceeds the token window.',
-    capabilities: [
-      {icon:'&#x1F4DD;', name:'store_memory', desc:'Save a fact or observation', bg:'rgba(167,139,250,.1)'},
-      {icon:'&#x1F4A1;', name:'recall', desc:'Retrieve relevant memories', bg:'rgba(167,139,250,.1)'},
-      {icon:'&#x1F517;', name:'create_relation', desc:'Link related concepts', bg:'rgba(167,139,250,.1)'},
-      {icon:'&#x1F50D;', name:'search_memory', desc:'Semantic search across memories', bg:'rgba(167,139,250,.1)'},
-      {icon:'&#x1F5D1;&#xFE0F;', name:'forget', desc:'Remove outdated memories', bg:'rgba(167,139,250,.1)'},
-    ]
-  },
-  {
-    name: 'Search Server',
-    color: '#fbbf24',
-    desc: 'Connects AI to search engines, documentation indices, or code search. Claude can look up current information, find relevant docs, or search across codebases in real-time.',
-    capabilities: [
-      {icon:'&#x1F310;', name:'web_search', desc:'Search the internet', bg:'rgba(251,191,36,.1)'},
-      {icon:'&#x1F4DA;', name:'search_docs', desc:'Search documentation', bg:'rgba(251,191,36,.1)'},
-      {icon:'&#x1F4BB;', name:'search_code', desc:'Search across repositories', bg:'rgba(251,191,36,.1)'},
-      {icon:'&#x1F4F0;', name:'search_news', desc:'Find recent news articles', bg:'rgba(251,191,36,.1)'},
-      {icon:'&#x1F4CC;', name:'search_bookmarks', desc:'Search saved references', bg:'rgba(251,191,36,.1)'},
-    ]
-  }
-];
-
-function showServer(idx){
-  document.querySelectorAll('.server-card').forEach((el,i) => el.classList.toggle('active', i===idx));
-  const s = servers[idx];
-  const detail = document.getElementById('serverDetail');
-  detail.className = 'server-detail visible';
-  detail.innerHTML = `
-    <h3 style="color:${s.color}">${s.name}</h3>
-    <div class="desc">${s.desc}</div>
-    <div style="font-size:.8rem;font-weight:600;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.04em">Exposed Tools</div>
-    <div class="capabilities">
-      ${s.capabilities.map(c => `
-        <div class="capability">
-          <div class="cap-icon" style="background:${c.bg}">${c.icon}</div>
-          <div class="cap-name">${c.name}</div>
-          <div class="cap-desc">${c.desc}</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-}
-
-function complete(){
-  const btn = document.getElementById('completeBtn');
-  if(btn.disabled) return;
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  progress['servers-vs-tools'] = true;
-  localStorage.setItem('mcp-masterclass-progress', JSON.stringify(progress));
-  LO.completeLesson('mcp-masterclass', 3, 200);
-  btn.textContent = 'Lesson Complete!';
-  btn.disabled = true;
-}
-(function(){
-  const progress = JSON.parse(localStorage.getItem('mcp-masterclass-progress')||'{}');
-  if(progress['servers-vs-tools']){
-    const btn = document.getElementById('completeBtn');
-    btn.textContent = 'Lesson Complete!';
-    btn.disabled = true;
-  }
-})();
-</script>
