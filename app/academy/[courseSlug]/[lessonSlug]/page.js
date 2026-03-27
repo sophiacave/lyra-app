@@ -2,6 +2,7 @@ import { getLesson, getCourse, getAllCourseSlugs, getLessonSlugs } from '../../.
 import { notFound } from 'next/navigation';
 import LessonNav from '../../../components/academy/LessonNav';
 import LessonComplete from '../../../components/academy/LessonComplete';
+import LessonSplitView from '../../../components/console/LessonSplitView';
 import { site } from '@/lib/site-config';
 
 export async function generateStaticParams() {
@@ -59,56 +60,58 @@ export default async function LessonPage({ params }) {
 
   const course = getCourse(courseSlug);
 
+  // Build the lesson content HTML with breadcrumb, completion, and nav appended
+  const breadcrumbHtml = `
+    <div class="glass glass-animate-up academy-breadcrumb">
+      <a href="/academy/${courseSlug}/" class="academy-breadcrumb-link">
+        ${course?.emoji || ''} ${course?.title || ''}
+      </a>
+      <span class="academy-breadcrumb-sep">›</span>
+      <span class="academy-breadcrumb-current">Lesson ${lesson.order}</span>
+    </div>
+  `;
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'LearningResource',
+    name: lesson.title,
+    description: `${lesson.title} lesson from ${course?.title || 'Like One Academy'}`,
+    provider: { '@type': 'Organization', name: 'Like One', url: site.url },
+    isPartOf: {
+      '@type': 'Course',
+      name: course?.title,
+      url: `${site.url}/academy/${courseSlug}/`,
+    },
+    educationalLevel: course?.difficulty || 'beginner',
+    isAccessibleForFree: lesson.free !== false,
+    url: `${site.url}/academy/${courseSlug}/${lessonSlug}/`,
+  };
+
+  const fullContentHtml = breadcrumbHtml + lesson.contentHtml;
+
   return (
-    <div className="academy-container">
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'LearningResource',
-          name: lesson.title,
-          description: `${lesson.title} lesson from ${course?.title || 'Like One Academy'}`,
-          provider: { '@type': 'Organization', name: 'Like One', url: site.url },
-          isPartOf: {
-            '@type': 'Course',
-            name: course?.title,
-            url: `${site.url}/academy/${courseSlug}/`,
-          },
-          educationalLevel: course?.difficulty || 'beginner',
-          isAccessibleForFree: lesson.free !== false,
-          url: `${site.url}/academy/${courseSlug}/${lessonSlug}/`,
-        }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-
-      {/* Breadcrumb */}
-      <div className="glass glass-animate-up academy-breadcrumb">
-        <a href={`/academy/${courseSlug}/`} className="academy-breadcrumb-link">
-          {course?.emoji} {course?.title}
-        </a>
-        <span className="academy-breadcrumb-sep">›</span>
-        <span className="academy-breadcrumb-current">Lesson {lesson.order}</span>
-      </div>
-
-      {/* Lesson content */}
-      <div
-        className="lesson-content glass-animate-up"
-        style={{ animationDelay: '0.1s' }}
-        dangerouslySetInnerHTML={{ __html: lesson.contentHtml }}
-      />
-
-      {/* Universal academy lesson styles */}
       <link rel="stylesheet" href="/academy/shared/academy.css" />
 
-      {/* Completion button */}
-      <LessonComplete courseSlug={courseSlug} lessonSlug={lessonSlug} />
-
-      {/* Bottom nav */}
-      <LessonNav
-        courseSlug={courseSlug}
-        prev={lesson.prev}
-        next={lesson.next}
-        courseTitle={course?.title}
+      <LessonSplitView
+        contentHtml={fullContentHtml}
+        lessonTitle={lesson.title}
       />
-    </div>
+
+      {/* Completion + nav below the split view on mobile */}
+      <div className="lo-split-footer">
+        <LessonComplete courseSlug={courseSlug} lessonSlug={lessonSlug} />
+        <LessonNav
+          courseSlug={courseSlug}
+          prev={lesson.prev}
+          next={lesson.next}
+          courseTitle={course?.title}
+        />
+      </div>
+    </>
   );
 }

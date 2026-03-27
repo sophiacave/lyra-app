@@ -1,5 +1,5 @@
 import { getAllCourses } from '../../lib/courses';
-import AcademySidebar from '../components/academy/AcademySidebar';
+import ConsoleShell from '../components/console/ConsoleShell';
 
 export const metadata = {
   title: 'Academy — Like One',
@@ -10,11 +10,12 @@ export default function AcademyLayout({ children }) {
   const courses = getAllCourses();
 
   return (
-    <div className="console-layout">
-      <AcademySidebar courses={courses} />
-      <main className="console-main">
-        {children}
-      </main>
-    </div>
+    <ConsoleShell
+      appName="Academy"
+      appEmoji="📚"
+      courses={courses}
+    >
+      {children}
+    </ConsoleShell>
   );
 }

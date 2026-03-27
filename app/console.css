@@ -1,0 +1,730 @@
+/* ════════════════════════════════════════════════════════════
+   LIKE ONE CONSOLE — The Operating System Shell
+   Everything runs inside this. Apps change. The shell never does.
+   Design: macOS meets cyberpunk. Glass, glow, soul.
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Shell: The outermost frame ── */
+.lo-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--surface-base);
+  position: relative;
+}
+
+/* Ambient glow behind everything */
+.lo-shell::before {
+  content: '';
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(192,132,252,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(232,121,249,0.015) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ═══════════════════════════════════
+   TOP BAR — The title bar / chrome
+   ═══════════════════════════════════ */
+.lo-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  min-height: 38px;
+  padding: 0 var(--space-4);
+  background: var(--glass-bg-solid);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  z-index: var(--z-sticky);
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.lo-topbar-left,
+.lo-topbar-center,
+.lo-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.lo-topbar-left { flex: 1; }
+.lo-topbar-center { flex: 0 0 auto; }
+.lo-topbar-right { flex: 1; justify-content: flex-end; }
+
+/* Traffic lights */
+.lo-traffic-lights {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  -webkit-app-region: no-drag;
+}
+
+.lo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: opacity var(--transition-fast);
+  cursor: default;
+  display: block;
+  text-decoration: none;
+}
+
+.lo-dot-red {
+  background: #ff5f57;
+  cursor: pointer;
+}
+.lo-dot-red:hover { opacity: 0.8; }
+.lo-dot-yellow { background: #febc2e; }
+.lo-dot-green { background: #28c840; }
+
+/* Dim when not hovered */
+.lo-traffic-lights:not(:hover) .lo-dot {
+  opacity: 0.5;
+}
+.lo-traffic-lights:hover .lo-dot {
+  opacity: 1;
+}
+
+/* App indicator */
+.lo-topbar-app {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: var(--space-3);
+}
+
+.lo-topbar-emoji {
+  font-size: var(--font-sm);
+}
+
+.lo-topbar-appname {
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* Center brand */
+.lo-topbar-brand {
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-quaternary);
+  letter-spacing: 0.05em;
+}
+
+.lo-topbar-accent {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Status indicator */
+.lo-topbar-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.lo-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--status-success);
+  animation: lo-pulse 3s ease-in-out infinite;
+}
+
+.lo-status-text {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@keyframes lo-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+
+/* ═══════════════════════════════════
+   SHELL BODY — Dock + App Frame
+   ═══════════════════════════════════ */
+.lo-shell-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  z-index: var(--z-base);
+}
+
+
+/* ═══════════════════════════════════
+   DOCK — The sidebar / app navigator
+   ═══════════════════════════════════ */
+.lo-dock {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  height: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: var(--z-sidebar);
+  transition: width var(--transition-slow), min-width var(--transition-slow);
+}
+
+/* Inner glow on dock edge */
+.lo-dock::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(192,132,252,0.06) 30%,
+    rgba(192,132,252,0.06) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.lo-dock-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4) 0;
+}
+
+.lo-dock-scroll::-webkit-scrollbar { width: 4px; }
+.lo-dock-scroll::-webkit-scrollbar-track { background: transparent; }
+.lo-dock-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 2px;
+}
+
+/* App header in dock */
+.lo-dock-appheader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4) var(--space-4);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: opacity var(--transition-fast);
+}
+.lo-dock-appheader:hover { opacity: 0.8; }
+
+.lo-dock-appicon { font-size: var(--font-lg); }
+.lo-dock-appname {
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.02em;
+}
+
+/* Quick nav */
+.lo-dock-quicknav {
+  padding: 0 var(--space-2);
+}
+
+.lo-dock-quicklink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+.lo-dock-quicklink:hover {
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+}
+.lo-dock-quicklink.active {
+  color: var(--accent-purple);
+  background: rgba(192,132,252,0.08);
+}
+
+.lo-dock-quickicon {
+  font-size: var(--font-md);
+  width: 20px;
+  text-align: center;
+}
+
+/* Divider */
+.lo-dock-divider {
+  height: 1px;
+  margin: var(--space-3) var(--space-4);
+  background: var(--border-subtle);
+}
+
+/* Tier sections */
+.lo-dock-tier {
+  margin-bottom: var(--space-2);
+}
+
+.lo-dock-tier-label {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-2xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-quaternary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Course buttons */
+.lo-dock-course-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  text-align: left;
+  transition: all var(--transition-fast);
+  border-radius: 0;
+}
+.lo-dock-course-btn:hover {
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+}
+.lo-dock-course-btn.current {
+  color: var(--accent-purple);
+  background: rgba(192,132,252,0.06);
+}
+
+.lo-dock-chevron {
+  font-size: 8px;
+  color: var(--text-quaternary);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+  width: 12px;
+}
+.lo-dock-chevron.expanded {
+  transform: rotate(90deg);
+}
+
+.lo-dock-course-emoji {
+  font-size: var(--font-sm);
+  flex-shrink: 0;
+}
+
+.lo-dock-course-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Lesson list */
+.lo-dock-lessons {
+  padding: var(--space-1) 0;
+}
+
+.lo-dock-lesson {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 5px var(--space-3) 5px calc(var(--space-4) + 28px);
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lo-dock-lesson:hover {
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+}
+.lo-dock-lesson.active {
+  color: var(--accent-purple);
+  background: rgba(192,132,252,0.06);
+}
+
+.lo-dock-lesson-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-quaternary);
+  flex-shrink: 0;
+}
+.lo-dock-lesson.active .lo-dock-lesson-dot {
+  background: var(--accent-purple);
+  box-shadow: 0 0 6px rgba(192,132,252,0.4);
+}
+
+.lo-dock-lesson-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mobile toggle */
+.lo-dock-toggle {
+  display: none;
+  position: fixed;
+  top: 46px;
+  left: var(--space-3);
+  z-index: var(--z-modal);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: var(--font-lg);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.lo-dock-toggle:hover {
+  background: var(--surface-elevated);
+  border-color: var(--border-strong);
+}
+
+.lo-dock-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: calc(var(--z-sidebar) - 1);
+}
+
+
+/* ═══════════════════════════════════
+   APP FRAME — Where apps render
+   ═══════════════════════════════════ */
+.lo-appframe {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  z-index: var(--z-base);
+  /* Smooth scroll for in-page navigation */
+  scroll-behavior: smooth;
+}
+
+/* App frame scrollbar */
+.lo-appframe::-webkit-scrollbar { width: 6px; }
+.lo-appframe::-webkit-scrollbar-track { background: transparent; }
+.lo-appframe::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+.lo-appframe::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+
+/* ═══════════════════════════════════
+   STATUS BAR — Bottom bar, always visible
+   ═══════════════════════════════════ */
+.lo-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+  min-height: 24px;
+  padding: 0 var(--space-4);
+  background: var(--glass-bg-solid);
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  z-index: var(--z-sticky);
+  user-select: none;
+}
+
+.lo-statusbar-left,
+.lo-statusbar-center,
+.lo-statusbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.lo-statusbar-left { flex: 1; }
+.lo-statusbar-center { flex: 0 0 auto; }
+.lo-statusbar-right { flex: 1; justify-content: flex-end; }
+
+.lo-statusbar-app {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-2xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-medium);
+}
+
+.lo-statusbar-pulse {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-purple);
+  animation: lo-pulse 3s ease-in-out infinite;
+}
+
+.lo-statusbar-xp {
+  font-size: var(--font-2xs);
+  color: var(--accent-purple);
+  font-weight: var(--font-weight-medium);
+}
+
+.lo-statusbar-hint {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  letter-spacing: 0.03em;
+}
+
+.lo-statusbar-time {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+
+/* ═══════════════════════════════════
+   LESSON SPLIT VIEW — Instruction + Console
+   ═══════════════════════════════════ */
+.lo-splitview {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}
+
+.lo-split-content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.lo-split-content::-webkit-scrollbar { width: 6px; }
+.lo-split-content::-webkit-scrollbar-track { background: transparent; }
+.lo-split-content::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+
+.lo-split-console {
+  width: 420px;
+  min-width: 360px;
+  max-width: 500px;
+  border-left: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-sunken);
+  position: relative;
+}
+
+/* Glow on the console pane edge */
+.lo-split-console::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(56,189,248,0.08) 30%,
+    rgba(192,132,252,0.08) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Resize handle between panes */
+.lo-split-handle {
+  width: 4px;
+  cursor: col-resize;
+  background: transparent;
+  transition: background var(--transition-fast);
+  position: relative;
+  flex-shrink: 0;
+}
+.lo-split-handle:hover {
+  background: var(--accent-purple);
+}
+
+/* Console embedded in split view */
+.lo-split-console .console-panel {
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+}
+
+.lo-split-console .console-header {
+  border-radius: 0;
+}
+
+
+/* Console toggle (when console pane is closed) */
+.lo-console-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 64px;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--border-medium);
+  border-right: none;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  color: var(--accent-purple);
+  font-size: var(--font-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: var(--z-raised);
+}
+.lo-console-toggle:hover {
+  background: var(--surface-elevated);
+  width: 28px;
+}
+.lo-console-toggle-icon {
+  animation: lo-pulse 2s ease-in-out infinite;
+}
+
+/* Console close button */
+.lo-console-close-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-1) var(--space-2);
+  background: var(--surface-sunken);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.lo-console-close {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  color: var(--text-quaternary);
+  font-size: var(--font-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.lo-console-close:hover {
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+}
+
+
+/* Split footer (completion + nav) */
+.lo-split-footer {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+  padding: var(--space-3) var(--space-6);
+}
+
+
+/* ═══════════════════════════════════
+   RESPONSIVE — Mobile + Tablet
+   ═══════════════════════════════════ */
+
+/* Tablet: narrower dock */
+@media (max-width: 1024px) {
+  .lo-dock {
+    width: 240px;
+    min-width: 240px;
+  }
+
+  .lo-split-console {
+    width: 340px;
+    min-width: 300px;
+  }
+}
+
+/* Mobile: dock off-canvas, split view stacks */
+@media (max-width: 768px) {
+  .lo-dock {
+    position: fixed;
+    top: 38px;
+    left: 0;
+    bottom: 24px;
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    transform: translateX(-100%);
+    transition: transform var(--transition-slow);
+    z-index: var(--z-modal);
+  }
+
+  .lo-dock.lo-dock-open {
+    transform: translateX(0);
+  }
+
+  .lo-dock-toggle {
+    display: flex;
+  }
+
+  .lo-dock-overlay {
+    display: block;
+  }
+
+  /* Split view stacks vertically on mobile */
+  .lo-splitview {
+    flex-direction: column;
+  }
+
+  .lo-split-content {
+    flex: 1;
+    padding: var(--space-4);
+  }
+
+  .lo-split-console {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 50vh;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .lo-split-console::before {
+    display: none;
+  }
+
+  .lo-split-handle {
+    display: none;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .lo-topbar-center { display: none; }
+  .lo-topbar { padding: 0 var(--space-3); }
+  .lo-statusbar-center { display: none; }
+}
