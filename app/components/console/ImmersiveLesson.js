@@ -113,24 +113,25 @@ export default function ImmersiveLesson({
 
   // Execute inline scripts from lesson HTML.
   // Server marks scripts as type="text/x-lesson" so browser skips them during SSR parse.
-  // After React hydration (useEffect), we re-create them as executable scripts.
-  // setTimeout(0) ensures React has fully committed DOM changes before scripts run.
+  // After React hydration, we create executable copies in <head> (outside React's DOM tree)
+  // so React re-renders can't wipe script-generated content.
   const contentRef = useRef(null);
+  const scriptsRan = useRef(false);
   useEffect(() => {
-    if (!contentRef.current) return;
-    setTimeout(() => {
-      if (!contentRef.current) return;
-      const scripts = contentRef.current.querySelectorAll('script[type="text/x-lesson"]');
-      scripts.forEach((orig) => {
-        const fresh = document.createElement('script');
-        [...orig.attributes].forEach((attr) => {
-          if (attr.name !== 'type') fresh.setAttribute(attr.name, attr.value);
-        });
-        if (orig.textContent) fresh.textContent = orig.textContent;
-        orig.parentNode.replaceChild(fresh, orig);
+    if (!contentRef.current || scriptsRan.current) return;
+    const scripts = contentRef.current.querySelectorAll('script[type="text/x-lesson"]');
+    if (scripts.length === 0) return;
+    scriptsRan.current = true;
+    scripts.forEach((orig) => {
+      const fresh = document.createElement('script');
+      [...orig.attributes].forEach((attr) => {
+        if (attr.name !== 'type') fresh.setAttribute(attr.name, attr.value);
       });
-    }, 0);
-  }, [contentHtml]);
+      if (orig.textContent) fresh.textContent = orig.textContent;
+      document.head.appendChild(fresh);
+      orig.remove();
+    });
+  });
 
   // Scroll to console when manually toggled (not on initial render)
   const initialRender = useRef(true);
