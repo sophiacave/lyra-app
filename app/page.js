@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SubscribeForm from './components/SubscribeForm';
 import { site, colors } from '../lib/site-config';
 
 const LEVELS = [
@@ -16,29 +17,9 @@ const LEVELS = [
   { id: 6, name: 'Transcendence', emoji: '\u2728', short: "The system protects your values even when you're moving too fast to notice.", detail: 'Build the conscience layer. Make ethics structural. The system refuses to violate who you are.', free: false },
 ];
 
-const SUPABASE_URL = 'https://blknphuwwgagtueqtoji.supabase.co';
-
 export default function HomePage() {
   const [activeLevel, setActiveLevel] = useState(0);
-  const [subscribed, setSubscribed] = useState(false);
-  const [subLoading, setSubLoading] = useState(false);
   const L = LEVELS[activeLevel];
-
-  async function handleSubscribe(e) {
-    e.preventDefault();
-    const email = e.target.email.value;
-    setSubLoading(true);
-    try {
-      await fetch(`${SUPABASE_URL}/functions/v1/subscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'website' }),
-      });
-      setSubscribed(true);
-    } catch {
-      setSubLoading(false);
-    }
-  }
 
   return (
     <div style={{ background: '#08080a', color: '#e8e8ec', fontFamily: "'Inter', -apple-system, system-ui, sans-serif", minHeight: '100vh', WebkitFontSmoothing: 'antialiased', overflowX: 'hidden' }}>
@@ -187,20 +168,7 @@ export default function HomePage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.75rem)', fontWeight: 800, letterSpacing: '-1px', marginBottom: '1rem', lineHeight: 1.15 }}>Start your convergence journey.</h2>
           <p style={{ color: '#8888a0', maxWidth: '480px', margin: '0 auto 2rem', fontSize: '.95rem', lineHeight: 1.6 }}>Free forever. Weekly AI tips from Like One. Unsubscribe anytime. No spam. No fake urgency. Just warmth and knowledge.</p>
-          {subscribed ? (
-            <div style={{ padding: '1.5rem', background: '#08080a', border: '1px solid #4ade80', borderRadius: '8px', maxWidth: '480px', margin: '0 auto' }}>
-              <div style={{ fontSize: '1.5rem', marginBottom: '.5rem' }}>{'\u2728'}</div>
-              <p style={{ color: '#4ade80', fontWeight: 600 }}>Welcome to the path, friend.</p>
-              <div style={{ color: '#8888a0', fontSize: '.85rem', marginTop: '.5rem' }}>Check your inbox. Your journey starts now.</div>
-            </div>
-          ) : (
-            <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '8px', maxWidth: '480px', margin: '0 auto' }}>
-              <input name="email" type="email" required placeholder="your@email.com" style={{ flex: 1, padding: '.75rem 1rem', background: '#08080a', border: '1px solid #1e1e28', borderRadius: '8px', color: '#e8e8ec', fontSize: '.95rem', fontFamily: 'inherit', outline: 'none' }} />
-              <button type="submit" disabled={subLoading} style={{ background: colors.orange, color: '#000', padding: '.75rem 1.5rem', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '.9rem', cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap' }}>
-                {subLoading ? 'Joining...' : 'Start Free'}
-              </button>
-            </form>
-          )}
+          <SubscribeForm source="homepage" buttonText="Start Free" />
         </div>
       </section>
 
