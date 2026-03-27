@@ -67,7 +67,7 @@
           "description": "Responsible AI use. Bias, privacy, misinformation, and building AI systems you can trust.",
           "tier": "beginner",
           "audience": ["general"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-for-marketing",
