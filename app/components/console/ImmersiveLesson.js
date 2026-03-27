@@ -113,12 +113,13 @@ export default function ImmersiveLesson({
 
   // Execute inline scripts from lesson HTML.
   // Server marks scripts as type="text/x-lesson" so browser skips them during SSR parse.
-  // After React hydration, we create executable copies in <head> (outside React's DOM tree)
-  // so React re-renders can't wipe script-generated content.
+  // We wait for subStatus to settle (not 'loading') because the status change triggers
+  // a re-render that resets dangerouslySetInnerHTML, wiping any script-generated DOM.
+  // Scripts run ONCE after the final render, appended to <head> to stay outside React's tree.
   const contentRef = useRef(null);
   const scriptsRan = useRef(false);
   useEffect(() => {
-    if (!contentRef.current || scriptsRan.current) return;
+    if (subStatus === 'loading' || !contentRef.current || scriptsRan.current) return;
     const scripts = contentRef.current.querySelectorAll('script[type="text/x-lesson"]');
     if (scripts.length === 0) return;
     scriptsRan.current = true;
@@ -131,7 +132,7 @@ export default function ImmersiveLesson({
       document.head.appendChild(fresh);
       orig.remove();
     });
-  });
+  }, [subStatus]);
 
   // Scroll to console when manually toggled (not on initial render)
   const initialRender = useRef(true);
