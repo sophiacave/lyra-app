@@ -17,6 +17,27 @@ css: "claude-beginners.css"
   <p class="sub">8 questions covering emails, documents, and data — everything from Module 2.</p>
 </div>
 
+<!-- QUIZ PROGRESS -->
+<div class="quiz-progress" id="quiz-progress">
+  <span class="quiz-dot" id="dot-0"></span>
+  <span class="quiz-dot" id="dot-1"></span>
+  <span class="quiz-dot" id="dot-2"></span>
+  <span class="quiz-dot" id="dot-3"></span>
+  <span class="quiz-dot" id="dot-4"></span>
+  <span class="quiz-dot" id="dot-5"></span>
+  <span class="quiz-dot" id="dot-6"></span>
+  <span class="quiz-dot" id="dot-7"></span>
+</div>
+
+<!-- QUIZ AREA -->
+<div id="quiz-area"></div>
+
+<!-- FEEDBACK -->
+<div id="feedback" class="quiz-feedback"></div>
+
+<!-- RESULTS -->
+<div id="results-area" style="display:none"></div>
+
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson 6 ✓</button>
 
 </div>

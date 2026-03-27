@@ -41,7 +41,13 @@ free: false
 </div>
 
 <!-- QUIZ AREA -->
+<div id="quiz-area"></div>
+
+<div id="feedback" class="quiz-feedback"></div>
+
 <!-- RESULTS -->
+<div id="result-page" class="result-page"></div>
+
 <script>
 const SLUG = 'ai-for-creatives';
 const LESSON_NUM = 10;

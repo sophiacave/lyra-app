@@ -25,6 +25,9 @@ free: true
     <div class="q-count" id="qCount">Question 1 of 3</div>
   </div>
 
+  <!-- QUIZ CONTAINER -->
+  <div id="quizContainer"></div>
+
   <div class="results" id="results">
     <h2>Quiz Complete!</h2>
     <div class="big-score" id="finalScore">0/3</div>

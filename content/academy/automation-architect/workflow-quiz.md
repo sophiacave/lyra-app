@@ -14,8 +14,16 @@ free: false
   <p>Final assessment on workflow patterns, AI integration, and error handling in automations.</p>
 </header>
 <div class="content">
-  <div class="quiz-progress" id="quizProgress"></div>
+  <div class="quiz-progress" id="quizProgress">
+    <span class="pip" id="pip0"></span>
+    <span class="pip" id="pip1"></span>
+    <span class="pip" id="pip2"></span>
+    <span class="pip" id="pip3"></span>
+    <span class="pip" id="pip4"></span>
+    <span class="pip" id="pip5"></span>
+  </div>
   <div id="questionContainer"></div>
+  <div class="explanation" id="explanation"></div>
   <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question &rarr;</button>
   <div class="results" id="results">
     <div class="results-score" id="resultsScore"></div>

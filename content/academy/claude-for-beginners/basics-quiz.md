@@ -17,6 +17,25 @@ css: "claude-beginners.css"
   <p class="sub">6 quick questions to make sure the fundamentals are solid before we move to real workflows.</p>
 </div>
 
+<!-- QUIZ PROGRESS -->
+<div class="quiz-progress" id="quiz-progress">
+  <span class="quiz-dot" id="dot-0"></span>
+  <span class="quiz-dot" id="dot-1"></span>
+  <span class="quiz-dot" id="dot-2"></span>
+  <span class="quiz-dot" id="dot-3"></span>
+  <span class="quiz-dot" id="dot-4"></span>
+  <span class="quiz-dot" id="dot-5"></span>
+</div>
+
+<!-- QUIZ AREA -->
+<div id="quiz-area"></div>
+
+<!-- FEEDBACK -->
+<div id="feedback" class="quiz-feedback"></div>
+
+<!-- RESULTS -->
+<div id="results-area" style="display:none"></div>
+
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Lesson 3 ✓</button>
 
 </div>

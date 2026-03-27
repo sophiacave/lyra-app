@@ -19,7 +19,18 @@ free: false
     <p>Test your knowledge across all 9 lessons. 8 questions covering embeddings, chunking, retrieval, evaluation, and production patterns.</p>
   </div>
 
-  <div class="progress-bar"></div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="quizProgress" style="width:0%"></div>
+  </div>
+
+  <!-- QUIZ AREA -->
+  <div id="quizArea"></div>
+
+  <!-- EXPLANATION -->
+  <div class="explanation" id="explanation" style="display:none"></div>
+
+  <!-- RESULTS -->
+  <div id="results" style="display:none"></div>
 
   <div class="nav-btns" id="navBtns">
     <button class="btn-next" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>

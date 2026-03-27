@@ -15,9 +15,16 @@ free: false
   <p class="subtitle">8 questions covering everything you've learned. Prove you understand agent fundamentals.</p>
 
   <div class="progress-label" id="prog-label">Question 0 of 8</div>
-  <div class="progress-bar"></div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="prog-fill"></div>
+  </div>
+
+  <!-- QUIZ CONTAINER -->
+  <div id="quiz"></div>
 
   <div class="results" id="results">
+    <div class="results-text" id="results-text"></div>
+    <div class="results-sub" id="results-sub"></div>
     <div class="results-score" id="results-score">0/8</div>
     <div class="results-breakdown">
       <div class="rb-item"><div class="rb-num" id="rb-correct" style="color:#06b6d4">0</div><div class="rb-label">Correct</div></div>

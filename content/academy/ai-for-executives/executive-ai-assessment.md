@@ -21,6 +21,18 @@ free: false
   
   <a href="/academy/ai-for-executives/" class="nav-link">Back to Course Overview &rarr;</a>
 </div>
+<!-- QUIZ PROGRESS -->
+<div class="quiz-progress" id="quiz-progress"></div>
+
+<!-- QUIZ AREA -->
+<div id="quiz-area"></div>
+
+<!-- FEEDBACK -->
+<div id="feedback" class="quiz-feedback"></div>
+
+<!-- RESULTS -->
+<div id="result-page" class="result-page"></div>
+
 </div>
 
 <script>

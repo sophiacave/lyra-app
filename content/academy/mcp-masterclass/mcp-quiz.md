@@ -15,11 +15,21 @@ free: false
   <p class="subtitle">Test your knowledge across all three modules — architecture, server building, tool definitions, security, and production patterns.</p>
 
   <div class="quiz-progress">
+    <div class="quiz-dots" id="quizDots"></div>
     <div class="quiz-score" id="quizScore">0 / 10</div>
   </div>
 
+  <!-- QUESTION AREA -->
+  <div id="questionArea"></div>
+
+  <!-- EXPLANATION -->
+  <div class="explanation" id="explanation"></div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results"></div>
+
   <button class="complete-btn" id="completeBtn" onclick="complete()" style="display:none">Complete Course &mdash; Earn 100 XP</button>
-  
+
 </div>
 
 <script>

@@ -17,6 +17,31 @@ css: "claude-beginners.css"
   <p class="sub">12 questions across all 3 modules. Score 8 or higher to earn your completion. You've got this.</p>
 </div>
 
+<!-- QUIZ PROGRESS -->
+<div class="quiz-progress" id="quiz-progress">
+  <span class="quiz-dot" id="dot-0"></span>
+  <span class="quiz-dot" id="dot-1"></span>
+  <span class="quiz-dot" id="dot-2"></span>
+  <span class="quiz-dot" id="dot-3"></span>
+  <span class="quiz-dot" id="dot-4"></span>
+  <span class="quiz-dot" id="dot-5"></span>
+  <span class="quiz-dot" id="dot-6"></span>
+  <span class="quiz-dot" id="dot-7"></span>
+  <span class="quiz-dot" id="dot-8"></span>
+  <span class="quiz-dot" id="dot-9"></span>
+  <span class="quiz-dot" id="dot-10"></span>
+  <span class="quiz-dot" id="dot-11"></span>
+</div>
+
+<!-- QUIZ AREA -->
+<div id="quiz-area"></div>
+
+<!-- FEEDBACK -->
+<div id="feedback" class="quiz-feedback"></div>
+
+<!-- RESULTS -->
+<div id="results-area" style="display:none"></div>
+
 <button class="complete-btn" id="completeBtn" onclick="completeLesson()" style="display:none">Complete Course ✓</button>
 
 </div>
