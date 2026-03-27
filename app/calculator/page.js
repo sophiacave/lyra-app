@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-const SUPABASE_URL = 'https://api.likeone.ai';
+const SUPABASE_URL = 'https://vpaynwebgmmnwttqkwmh.supabase.co';
 
 // ─── Animated Counter ───
 function AnimatedNumber({ value, prefix = '', suffix = '', duration = 1200 }) {
