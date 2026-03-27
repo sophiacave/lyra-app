@@ -1,0 +1,129 @@
+{
+  "the-visual-ai-revolution": [
+    {
+      "id": "img-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to explain how AI image generation works, tailored to your background. Mention what you already know and what confuses you.",
+      "placeholder": "I understand X but I'm confused about...",
+      "hint": "I understand that AI can generate images from text descriptions, but I'm confused about how it actually 'learns' what a dog looks like from training data. Explain the process in 5 steps, using the analogy of an art student learning to draw. Keep each step to 2 sentences.",
+      "criteria": {
+        "keywords": ["explain", "how", "image", "generate", "understand", "confused", "learn", "AI"],
+        "minLength": 35
+      },
+      "successMessage": "Starting with what you know and what confuses you helps Claude pitch the explanation at exactly the right level."
+    }
+  ],
+  "understanding-ai-image-tools": [
+    {
+      "id": "img-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt comparing two or more AI image tools. Specify what criteria matter to you.",
+      "placeholder": "Compare these tools based on...",
+      "hint": "Compare DALL-E, Midjourney, and Stable Diffusion for a freelance graphic designer who needs to create social media visuals. Compare on: ease of use, image quality for marketing materials, pricing for commercial use, and style versatility. Present as a comparison table with a final recommendation.",
+      "criteria": {
+        "keywords": ["compare", "tool", "which", "best", "difference", "vs", "pros", "cons", "recommend"],
+        "minLength": 40
+      },
+      "successMessage": "Structured comparisons with clear criteria = actionable advice instead of generic overviews."
+    }
+  ],
+  "your-first-ai-image": [
+    {
+      "id": "img-3-1",
+      "type": "prompt",
+      "instruction": "Write a detailed image generation prompt. Include subject, style, composition, lighting, and mood.",
+      "placeholder": "A [subject] in [style] with [details]...",
+      "hint": "A cozy coffee shop interior at golden hour. Warm ambient lighting streaming through large windows. Watercolor illustration style with soft edges. A tabby cat sleeping on a stack of vintage books near the window. Muted earth tones with pops of warm orange. Overhead perspective, slightly tilted.",
+      "criteria": {
+        "keywords": ["style", "light", "color", "mood", "perspective", "composition", "detail", "tone", "warm", "dark", "bright"],
+        "minLength": 40
+      },
+      "successMessage": "The more sensory detail you give, the more control you have. Style + lighting + mood = the magic formula for AI images."
+    },
+    {
+      "id": "img-3-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this vague image prompt to be vivid and specific: 'A picture of a mountain'",
+      "placeholder": "Make it vivid...",
+      "hint": "A snow-capped mountain peak at sunrise, shot from a low valley perspective. Japanese woodblock print style with bold outlines and flat color planes. Warm pink and gold sky reflecting off glacial ice. A single pine tree in the foreground for scale. Misty clouds wrapping around the middle of the mountain.",
+      "criteria": {
+        "minLength": 40,
+        "mustNotInclude": ["a picture of a mountain"],
+        "keywords": ["mountain", "style", "color", "light", "perspective", "detail"]
+      },
+      "successMessage": "From 5 words to a cinematic scene. That's the power of specificity in image prompts."
+    }
+  ],
+  "prompt-craft-for-images": [
+    {
+      "id": "img-4-1",
+      "type": "prompt",
+      "instruction": "Write an image prompt that specifies a negative constraint — something the AI should NOT include.",
+      "placeholder": "Generate an image of... without...",
+      "hint": "A professional headshot-style portrait of a confident business woman in a modern office. Photorealistic style. Natural window lighting from the left. Neutral background. No text, no logos, no watermarks. No exaggerated features. Subtle, professional color grading.",
+      "criteria": {
+        "keywords": ["no", "without", "don't", "avoid", "exclude", "not", "never"],
+        "minLength": 35
+      },
+      "successMessage": "Negative prompts are essential for image generation. They prevent the AI from adding unwanted elements."
+    }
+  ],
+  "editing-and-refining": [
+    {
+      "id": "img-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude for help iterating on an AI-generated image that isn't quite right. Describe what's wrong and what you want changed.",
+      "placeholder": "The image I generated has... I want to change...",
+      "hint": "I generated an image of a sunset beach scene but the colors are too saturated and the people in the background look distorted. How can I modify my prompt to: (1) get more natural, muted colors, (2) remove people entirely, and (3) add more realistic water reflections? Give me the revised prompt.",
+      "criteria": {
+        "keywords": ["change", "modify", "adjust", "improve", "fix", "too", "instead", "more", "less", "revise"],
+        "minLength": 40
+      },
+      "successMessage": "Iteration is key. Describing what's wrong is just as valuable as describing what you want."
+    }
+  ],
+  "practical-use-cases": [
+    {
+      "id": "img-6-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for generating a specific business asset — a social media graphic, presentation slide, or product mockup.",
+      "placeholder": "Create a [business asset] for...",
+      "hint": "Create an Instagram post graphic for a sustainable clothing brand's summer sale. Minimalist design with lots of white space. Pastel green and cream color palette. Show a single linen shirt laid flat on a marble surface. Text overlay space at the top for '30% Off Summer Edit.' Aspect ratio 1:1. Clean, editorial style.",
+      "criteria": {
+        "keywords": ["brand", "business", "social", "post", "graphic", "slide", "mockup", "product", "marketing", "design"],
+        "minLength": 45
+      },
+      "successMessage": "AI-generated business assets save hours of design time. The key is matching brand aesthetics in your prompt."
+    }
+  ],
+  "ai-for-social-media-visuals": [
+    {
+      "id": "img-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that generates a cohesive set of social media visuals — multiple images that look like they belong to the same brand.",
+      "placeholder": "Create a series of...",
+      "hint": "Create a series of 4 Instagram carousel slides for a wellness brand. Consistent style: soft watercolor backgrounds in lavender and sage green. Each slide has a different wellness tip icon (meditation, hydration, sleep, movement). Minimalist, airy aesthetic. Same font style placement area at bottom. Cohesive visual identity across all 4.",
+      "criteria": {
+        "keywords": ["series", "set", "consistent", "cohesive", "brand", "style", "multiple", "carousel", "match"],
+        "minLength": 45
+      },
+      "successMessage": "Brand consistency across AI-generated visuals is the key to looking professional. Style anchors make the difference."
+    }
+  ],
+  "ai-video-basics": [
+    {
+      "id": "img-8-1",
+      "type": "prompt",
+      "instruction": "Write a prompt describing a short video scene for AI video generation. Include movement, timing, and camera direction.",
+      "placeholder": "A [duration] video of...",
+      "hint": "A 5-second looping video of a coffee cup on a wooden desk. Steam rising slowly from the cup. Camera: static, slightly overhead angle. Soft morning light from the right. Shallow depth of field — desk items in background gently blurred. Cozy, calm mood. Cinematic color grading with warm tones.",
+      "criteria": {
+        "keywords": ["video", "camera", "movement", "second", "loop", "scene", "angle", "slow", "motion"],
+        "minLength": 40
+      },
+      "successMessage": "Video prompts need movement and timing — things image prompts don't. Camera direction is the new superpower."
+    }
+  ],
+  "ethics-and-copyright": [],
+  "building-your-visual-workflow": []
+}

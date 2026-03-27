@@ -1,0 +1,92 @@
+{
+  "what-is-a-neuron": [
+    {
+      "id": "af-1-1",
+      "type": "prompt",
+      "instruction": "Explain what a neuron does in a neural network using an everyday analogy. Be specific about inputs, weights, and output.",
+      "placeholder": "A neuron is like...",
+      "hint": "A neuron in a neural network is like a judge at a cooking competition. It receives multiple inputs (taste, presentation, creativity), weighs each one differently based on importance, adds them up, and decides: does this dish pass or fail?",
+      "criteria": {
+        "keywords": ["like", "input", "weight", "output", "decide", "process", "signal", "add", "sum", "threshold"],
+        "minLength": 40
+      },
+      "successMessage": "Great analogy! The key insight: neurons take weighted inputs, combine them, and produce a decision."
+    }
+  ],
+  "words-as-numbers": [
+    {
+      "id": "af-2-1",
+      "type": "prompt",
+      "instruction": "Ask Claude to explain word embeddings to someone who has never studied AI. Include what format you want the explanation in.",
+      "placeholder": "Explain word embeddings...",
+      "hint": "Explain word embeddings to a high school student. Use the analogy of plotting words on a map where similar words are close together. Give 3 specific examples of word pairs that would be near each other. Keep it under 150 words.",
+      "criteria": {
+        "keywords": ["explain", "embedding", "word", "vector", "number", "similar", "meaning", "represent"],
+        "minLength": 30
+      },
+      "successMessage": "The magic of embeddings: words become numbers, and similar meanings become nearby points in space."
+    }
+  ],
+  "anatomy-of-a-prompt": [
+    {
+      "id": "af-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that has all four components: role, context, task, and format specification.",
+      "placeholder": "Include role + context + task + format...",
+      "hint": "You are a senior data scientist. I have a dataset of customer purchase history from an e-commerce store. Identify the top 3 patterns in customer behavior. Present as a numbered list with one sentence explaining each pattern and why it matters for business.",
+      "criteria": {
+        "requiredKeywords": ["you are", "list"],
+        "keywords": ["role", "context", "explain", "format", "present", "as a"],
+        "minLength": 50
+      },
+      "badExample": "Analyze some data",
+      "goodExample": "You are a marketing analyst. I have survey results from 500 customers about our new product launch. Summarize the top 5 themes in their feedback, ranked by frequency. Use bullet points. Include a direct quote for each theme.",
+      "successMessage": "That's the complete prompt anatomy: Role + Context + Task + Format. This structure works for almost anything."
+    },
+    {
+      "id": "af-3-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this weak prompt to be specific and structured: 'Tell me about machine learning'",
+      "placeholder": "Make it specific...",
+      "hint": "Explain the 3 main types of machine learning (supervised, unsupervised, reinforcement) to a business manager. For each type: one sentence definition, one real-world business example, and when to use it. Use a comparison table format.",
+      "criteria": {
+        "minLength": 40,
+        "mustNotInclude": ["tell me about machine learning"],
+        "keywords": ["explain", "type", "example", "specific", "format", "table", "list"]
+      },
+      "successMessage": "See the difference? From 5 words to a structured request that gets exactly the answer you need."
+    }
+  ],
+  "prompt-playground": [
+    {
+      "id": "af-4-1",
+      "type": "prompt",
+      "instruction": "Write two versions of the same prompt — one vague, one specific — and ask Claude to compare the outputs it would give for each.",
+      "placeholder": "Compare these two prompts...",
+      "hint": "Compare these two prompts and explain why one gets better results: PROMPT A: 'Write about dogs.' PROMPT B: 'Write a 200-word guide for first-time golden retriever owners covering the top 3 training mistakes to avoid in the first month. Tone: friendly and encouraging.' Explain specifically what makes Prompt B better.",
+      "criteria": {
+        "keywords": ["compare", "prompt", "version", "better", "vague", "specific", "why"],
+        "minLength": 50
+      },
+      "successMessage": "Comparing prompts side-by-side is the fastest way to build intuition for what makes a great prompt."
+    }
+  ],
+  "prompt-battle": [
+    {
+      "id": "af-5-1",
+      "type": "prompt",
+      "instruction": "Write the strongest possible prompt for this task: getting Claude to write a cover letter. Include every prompt engineering technique you've learned.",
+      "placeholder": "Write the ultimate cover letter prompt...",
+      "hint": "You are a career coach who has reviewed 10,000 cover letters. Write a cover letter for a senior product manager role at a fintech startup. I have 8 years of experience in product management at mid-size tech companies. Highlight: data-driven decision making, cross-functional leadership, and launching 0-to-1 products. Tone: confident but not arrogant. Length: 300 words max. Don't use clichés like 'passionate' or 'team player.' Structure: hook opening, 2 achievement paragraphs with metrics, forward-looking close.",
+      "criteria": {
+        "keywords": ["role", "experience", "tone", "length", "don't", "structure", "format"],
+        "minLength": 80
+      },
+      "successMessage": "That's a championship-level prompt. Role, context, constraints, anti-patterns, structure — the full arsenal."
+    }
+  ],
+  "embedding-explorer": [],
+  "similarity-challenge": [],
+  "build-a-network": [],
+  "neural-net-quiz": []
+}

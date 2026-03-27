@@ -1,0 +1,143 @@
+{
+  "01-beyond-basic-prompts": [
+    {
+      "id": "ape-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that uses at least 3 advanced techniques: role assignment, constraints, format specification, chain-of-thought, or few-shot examples.",
+      "placeholder": "Combine multiple techniques...",
+      "hint": "You are a senior UX researcher. I have 200 user interview transcripts about our mobile banking app. Step by step: (1) identify the top 5 pain points by frequency, (2) for each, quote a representative user verbatim, (3) suggest a specific design fix. Present as a table with columns: Pain Point, Frequency, User Quote, Recommended Fix. Don't include positive feedback — only problems. Prioritize by severity, not just frequency.",
+      "criteria": {
+        "keywords": ["you are", "step", "don't", "format", "present", "table", "list", "example"],
+        "minLength": 60
+      },
+      "successMessage": "Stacking techniques is where prompt engineering becomes art. Each technique amplifies the others."
+    }
+  ],
+  "02-system-prompts-and-personas": [
+    {
+      "id": "ape-2-1",
+      "type": "prompt",
+      "instruction": "Design a system prompt for a specialized AI assistant. Include: persona, expertise boundaries, response format rules, and error handling.",
+      "placeholder": "You are... Your expertise is limited to... Always... Never... If unsure...",
+      "hint": "You are Dr. Atlas, a patient and thorough medical librarian (NOT a doctor). Your expertise: explaining medical terminology, summarizing research papers, and helping people prepare questions for their doctor visits. Response rules: Always cite which medical source you're referencing. Never diagnose conditions or recommend treatments. If someone describes symptoms, say 'I can help you understand the terminology, but please consult your healthcare provider for diagnosis.' Maximum 3 paragraphs per response. If you're unsure about something, say so explicitly rather than guessing.",
+      "criteria": {
+        "requiredKeywords": ["you are"],
+        "keywords": ["always", "never", "if", "boundary", "limit", "expertise", "rule", "format", "response"],
+        "minLength": 80
+      },
+      "successMessage": "Production-grade system prompts have guardrails, boundaries, and error handling — just like production code."
+    }
+  ],
+  "03-chain-of-thought": [
+    {
+      "id": "ape-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for a complex reasoning task that explicitly structures the thinking process into labeled stages.",
+      "placeholder": "Stage 1: Analyze... Stage 2: Compare... Stage 3: Recommend...",
+      "hint": "Evaluate whether our SaaS startup should raise a Series A now or wait 6 months. Structure your analysis: STAGE 1 (Market): Assess current market conditions for B2B SaaS. STAGE 2 (Metrics): Our MRR is $80K growing 15% month-over-month, 18 months runway remaining. Evaluate against typical Series A benchmarks. STAGE 3 (Risks): What are the risks of raising now vs waiting? STAGE 4 (Recommendation): Give a clear recommendation with the top 3 reasons. Be direct.",
+      "criteria": {
+        "keywords": ["stage", "step", "first", "then", "analyze", "evaluate", "recommend", "consider"],
+        "minLength": 60
+      },
+      "successMessage": "Structured chain-of-thought with labeled stages gives you auditable reasoning — you can see exactly where the logic flows."
+    }
+  ],
+  "04-few-shot-and-examples": [
+    {
+      "id": "ape-4-1",
+      "type": "prompt",
+      "instruction": "Create a few-shot prompt with 3 examples that teach Claude a custom classification system. Then give it a new item to classify.",
+      "placeholder": "Example 1: [input] → [category] ...",
+      "hint": "Classify customer feedback into our custom categories:\n\nFeedback: 'The checkout process took 8 clicks, way too many'\nCategory: UX-FRICTION | Priority: HIGH | Action: Simplify checkout flow\n\nFeedback: 'Love the new dark mode!'\nCategory: POSITIVE-FEATURE | Priority: LOW | Action: Note for team morale\n\nFeedback: 'App crashes every time I try to upload a photo over 5MB'\nCategory: BUG-CRITICAL | Priority: URGENT | Action: File engineering ticket\n\nNow classify: 'I wish I could sort my order history by date instead of just seeing the most recent'",
+      "criteria": {
+        "keywords": ["example", "category", "classify", "now", "new", "following"],
+        "minLength": 100
+      },
+      "successMessage": "Few-shot examples define the pattern better than any instruction could. Show, don't tell."
+    }
+  ],
+  "05-structured-output": [
+    {
+      "id": "ape-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that asks Claude to output in a specific structured format: JSON, CSV, table, or XML. Be explicit about the schema.",
+      "placeholder": "Output as [format] with fields: ...",
+      "hint": "Analyze this product description and output a JSON object with exactly these fields: { \"product_name\": string, \"target_audience\": string, \"key_benefits\": [string, string, string], \"price_tier\": \"budget\" | \"mid\" | \"premium\", \"sentiment_score\": 1-10, \"suggested_improvements\": [string, string] }. Do not include any text outside the JSON block.",
+      "criteria": {
+        "keywords": ["json", "csv", "table", "xml", "format", "field", "schema", "output", "structure", "column"],
+        "minLength": 50
+      },
+      "successMessage": "Structured output is how you connect Claude to other systems. Explicit schemas prevent parsing errors."
+    }
+  ],
+  "06-prompt-chaining": [
+    {
+      "id": "ape-6-1",
+      "type": "prompt",
+      "instruction": "Design a 3-step prompt chain where each step builds on the previous output. Describe all 3 steps.",
+      "placeholder": "Step 1: Generate... Step 2: Using that, refine... Step 3: From the refined version...",
+      "hint": "Step 1: Generate 10 blog post title ideas about 'AI in healthcare.' For each, rate its click-worthiness 1-10.\n\nStep 2: Take the top 3 titles (highest rated). For each, write a 5-bullet outline covering the key points, target audience, and unique angle.\n\nStep 3: Take the outline with the strongest unique angle. Write the full introduction paragraph (150 words) and conclusion paragraph (100 words). Include a hook that references a specific statistic.",
+      "criteria": {
+        "keywords": ["step 1", "step 2", "step 3", "then", "using", "take", "from", "result", "output", "build"],
+        "minLength": 80
+      },
+      "successMessage": "Prompt chaining breaks complex tasks into digestible steps. Each link in the chain refines and focuses the output."
+    }
+  ],
+  "07-context-window-mastery": [
+    {
+      "id": "ape-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt for processing a long document that uses smart context management: what to read first, what to skip, and how to handle information across sections.",
+      "placeholder": "Read the document in this order: ...",
+      "hint": "I'm pasting a 30-page research paper below. Process it in this order: (1) Read the Abstract and Conclusion first to understand the main claims. (2) Then read the Methodology section to evaluate rigor. (3) Skip the Related Work and Appendix sections entirely. (4) From the Results section, extract only the statistically significant findings (p < 0.05). Output: A 200-word executive summary, followed by 3 strengths and 3 weaknesses of the study. Flag any methodology concerns.",
+      "criteria": {
+        "keywords": ["first", "then", "skip", "section", "extract", "focus", "only", "order", "read"],
+        "minLength": 60
+      },
+      "successMessage": "Context window mastery means guiding Claude through documents strategically — not dumping everything and hoping."
+    }
+  ],
+  "08-debugging-bad-outputs": [
+    {
+      "id": "ape-8-1",
+      "type": "prompt",
+      "instruction": "Write a meta-prompt: ask Claude to critique and improve a prompt you've written. Tell it what went wrong with the original output.",
+      "placeholder": "This prompt gave me [bad result]. Help me fix it...",
+      "hint": "I used this prompt: 'Write a marketing email for our new product.' The output was too generic, had no clear CTA, and sounded like every other marketing email. Help me rewrite this prompt to get: (1) a specific, compelling subject line, (2) a personal opening that doesn't start with 'We're excited to announce', (3) exactly one clear CTA, and (4) a P.S. line. The product is a time-tracking app for freelancers. Audience: solo freelancers making $50-100K who are overwhelmed with admin work.",
+      "criteria": {
+        "keywords": ["prompt", "output", "wrong", "improve", "fix", "rewrite", "instead", "better", "problem"],
+        "minLength": 50
+      },
+      "successMessage": "Debugging prompts is a meta-skill. The best prompt engineers iterate by describing what went wrong, not just what they want."
+    }
+  ],
+  "09-domain-specific-prompts": [
+    {
+      "id": "ape-9-1",
+      "type": "prompt",
+      "instruction": "Write a domain-specific prompt that includes technical jargon, industry context, and expert-level expectations for the output.",
+      "placeholder": "As a [domain expert], using [industry terms]...",
+      "hint": "You are a DevOps engineer reviewing our CI/CD pipeline. Our current setup: GitHub Actions → Docker build → push to ECR → deploy to EKS via Helm. Average deploy time: 18 minutes. Build cache hit rate: 40%. We're seeing flaky integration tests blocking deploys 3x per week. Propose 3 specific optimizations to reduce deploy time below 8 minutes and improve cache hit rate above 80%. Include the specific tools or configuration changes for each. Don't suggest 'parallelize tests' — we already tried that.",
+      "criteria": {
+        "keywords": ["specific", "technical", "industry", "expert", "configuration", "tool", "optimize", "implement"],
+        "minLength": 60
+      },
+      "successMessage": "Domain-specific prompts that include technical context and constraints get expert-level outputs. Claude matches your expertise level."
+    }
+  ],
+  "10-your-prompt-library": [
+    {
+      "id": "ape-10-1",
+      "type": "prompt",
+      "instruction": "Create a reusable prompt template with clear placeholders. It should work across different topics by swapping out the variables.",
+      "placeholder": "Template: [ROLE] + [CONTEXT] + [TASK] + [FORMAT] + [CONSTRAINTS]",
+      "hint": "TEMPLATE: You are a [ROLE] with expertise in [DOMAIN]. Context: [BACKGROUND_SITUATION]. Task: [SPECIFIC_ACTION] for [TARGET_AUDIENCE]. Output format: [FORMAT_SPEC]. Constraints: Must include [REQUIREMENTS]. Must avoid [ANTI_PATTERNS]. Length: [WORD_COUNT]. Tone: [TONE_SPEC].\n\nExample filled in: You are a content strategist with expertise in B2B SaaS. Context: We're launching a new feature next month. Task: Write 3 announcement posts for LinkedIn targeting CTOs at mid-market companies. Output format: Each post under 200 words with a hook, value prop, and CTA. Constraints: Must include a specific metric. Must avoid corporate jargon. Tone: confident and concise.",
+      "criteria": {
+        "keywords": ["template", "placeholder", "variable", "reuse", "swap", "fill", "bracket", "role", "context", "format"],
+        "minLength": 80
+      },
+      "successMessage": "A prompt library compounds your skills over time. Every great template saves you 10 minutes for every future use."
+    }
+  ]
+}

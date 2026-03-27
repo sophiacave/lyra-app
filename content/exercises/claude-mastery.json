@@ -1,0 +1,119 @@
+{
+  "meet-claude": [
+    {
+      "id": "cm-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that explores Claude's capabilities by asking it to do something creative AND analytical in the same response.",
+      "placeholder": "Do something creative and analytical...",
+      "hint": "Write a haiku about machine learning, then explain the scientific concept behind each line. For each line, include the specific ML term it references and why that concept matters.",
+      "criteria": {
+        "keywords": ["and", "also", "both", "then", "plus", "creative", "analyze", "explain", "write"],
+        "minLength": 35
+      },
+      "successMessage": "Claude excels at combining creative and analytical thinking — something most AI struggles with."
+    }
+  ],
+  "system-prompts": [
+    {
+      "id": "cm-2-1",
+      "type": "prompt",
+      "instruction": "Write a system prompt that gives Claude a specific expertise, communication style, and set of rules to follow.",
+      "placeholder": "You are a [expert] who [style]. Rules: ...",
+      "hint": "You are a senior software architect with 20 years of experience. You communicate in clear, direct sentences — never more than 2 sentences per point. Always consider scalability, security, and maintainability. When asked about a technology choice, give your recommendation first, then explain why. Never say 'it depends' without following up with specific criteria for deciding.",
+      "criteria": {
+        "requiredKeywords": ["you are"],
+        "keywords": ["always", "never", "when", "style", "expert", "rule", "respond"],
+        "minLength": 60
+      },
+      "badExample": "Be a helpful assistant",
+      "goodExample": "You are a financial advisor specializing in early-career professionals aged 22-30. Explain everything without jargon. Always give a concrete example with dollar amounts. Never recommend individual stocks. When someone asks 'should I...', give a clear yes/no with reasoning before presenting alternatives. Keep responses under 200 words.",
+      "successMessage": "A great system prompt is like a job description: role, style, rules, and boundaries. This shapes every response Claude gives."
+    },
+    {
+      "id": "cm-2-2",
+      "type": "rewrite",
+      "instruction": "This system prompt is too vague: 'You are a helpful tutor. Be encouraging.' Make it specific and actionable.",
+      "placeholder": "Rewrite with specific rules...",
+      "hint": "You are a math tutor for college calculus students. Start every explanation with the intuition behind the concept before showing formulas. Use real-world physics examples whenever possible. When a student gets something wrong, identify the specific misconception and address it directly. Never just give the answer — guide them to discover it through 2-3 leading questions. Celebrate progress with specific praise about what they did well.",
+      "criteria": {
+        "minLength": 60,
+        "mustNotInclude": ["be encouraging", "be helpful"],
+        "keywords": ["when", "always", "never", "specific", "explain", "start", "guide"]
+      },
+      "successMessage": "Vague instructions get vague behavior. Specific rules get consistent, predictable outputs."
+    }
+  ],
+  "chain-of-thought": [
+    {
+      "id": "cm-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that asks Claude to think step-by-step before giving a final answer. Include the phrase 'think step by step' or 'reason through this'.",
+      "placeholder": "Think through this step by step...",
+      "hint": "A company has 150 employees. They want to switch from individual software licenses ($50/month each) to a team plan ($35/month each, but requires minimum 100 seats). Think step by step: calculate the cost of each option, identify the break-even point, and recommend which plan to choose. Show your reasoning before the final recommendation.",
+      "criteria": {
+        "keywords": ["step by step", "think", "reason", "show", "explain your", "walk through", "before"],
+        "minLength": 40
+      },
+      "successMessage": "Chain-of-thought prompting dramatically improves accuracy on complex reasoning tasks. Always ask Claude to show its work."
+    }
+  ],
+  "few-shot-mastery": [
+    {
+      "id": "cm-4-1",
+      "type": "prompt",
+      "instruction": "Write a few-shot prompt: give Claude 2-3 examples of input→output pairs, then ask it to handle a new input in the same pattern.",
+      "placeholder": "Example 1: ... → ... Example 2: ... → ... Now do: ...",
+      "hint": "Convert these customer complaints into professional, empathetic responses:\n\nComplaint: 'Your app crashed and I lost all my work!'\nResponse: 'I completely understand how frustrating that must be — losing work is incredibly disruptive. Let me help you recover your data right away and investigate what caused the crash.'\n\nComplaint: 'I've been on hold for 45 minutes!'\nResponse: 'I sincerely apologize for the long wait — your time is valuable and I know that was unacceptable. I'm here now and will resolve this as quickly as possible.'\n\nNow convert this complaint: 'You charged me twice for the same order!'",
+      "criteria": {
+        "keywords": ["example", "now", "following", "same", "pattern", "like", "convert", "transform"],
+        "minLength": 80
+      },
+      "successMessage": "Few-shot learning is one of the most powerful techniques. Examples teach Claude the exact pattern you want — no ambiguity."
+    }
+  ],
+  "temperature-lab": [
+    {
+      "id": "cm-5-1",
+      "type": "prompt",
+      "instruction": "Write two versions of the same prompt — one that should produce consistent/factual output (low temperature) and one that should produce creative/varied output (high temperature). Label each.",
+      "placeholder": "LOW TEMP: ... HIGH TEMP: ...",
+      "hint": "LOW TEMPERATURE (factual, consistent): 'List the 5 most common Python sorting algorithms, their time complexity in Big O notation, and when to use each. Be precise and technical.'\n\nHIGH TEMPERATURE (creative, varied): 'Imagine each sorting algorithm is a character at a dinner party. Write a 3-sentence personality description for bubble sort, quicksort, and merge sort. Be creative and funny.'",
+      "criteria": {
+        "keywords": ["low", "high", "temperature", "creative", "factual", "consistent", "varied", "precise"],
+        "minLength": 60
+      },
+      "successMessage": "Temperature control is about matching the task to the creativity level. Facts = low temp. Ideas = high temp."
+    }
+  ],
+  "tool-use-basics": [
+    {
+      "id": "cm-6-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that asks Claude to use a hypothetical tool. Describe the tool and tell Claude when and how to use it.",
+      "placeholder": "You have access to a tool called...",
+      "hint": "You have access to a tool called `search_database(query, filters)` that searches our customer database. When someone asks about a customer, use this tool to look them up before responding. Always search by email first, then by name if email isn't provided. After getting results, summarize the key account details: plan type, join date, and last activity.",
+      "criteria": {
+        "keywords": ["tool", "use", "access", "function", "call", "when", "search", "api"],
+        "minLength": 45
+      },
+      "successMessage": "Tool use is the gateway to agents. Teaching Claude when and how to use tools turns it from a chatbot into a system."
+    }
+  ],
+  "context-window-explorer": [
+    {
+      "id": "cm-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that efficiently uses context window space. Ask Claude to analyze a document by telling it exactly what to focus on and ignore.",
+      "placeholder": "Focus on X, skip Y, extract Z...",
+      "hint": "I'm going to paste a 50-page contract below. I only need you to find: (1) payment terms and amounts, (2) termination clauses, (3) liability limitations. Skip all boilerplate definitions, party descriptions, and standard legal disclaimers. For each item found, give me the section number and a one-line plain-English summary.",
+      "criteria": {
+        "keywords": ["focus", "skip", "ignore", "only", "extract", "find", "relevant", "important"],
+        "minLength": 40
+      },
+      "successMessage": "Context window management is a real skill. Telling Claude what to ignore is as important as telling it what to find."
+    }
+  ],
+  "mcp-servers": [],
+  "building-agents": [],
+  "prompt-engineering-game": []
+}
