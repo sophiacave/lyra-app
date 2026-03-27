@@ -113,6 +113,8 @@ export default async function LessonPage({ params }) {
         contentHtml={fullContentHtml}
         lessonTitle={lesson.title}
         exercises={exercises}
+        isFree={lesson.free !== false}
+        courseSlug={courseSlug}
       />
 
       {/* Completion + nav below the split view on mobile */}

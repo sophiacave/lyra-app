@@ -1743,3 +1743,97 @@
   .lo-topbar { padding: 0 var(--space-3); }
   .lo-statusbar-center { display: none; }
 }
+
+/* ── Lesson Gate (Pro content wall) ── */
+.lo-content-gated {
+  position: relative;
+  overflow: hidden;
+  max-height: 70vh;
+}
+
+.lo-content-gated .lesson-content {
+  mask-image: linear-gradient(to bottom, black 30%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 85%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.lesson-gate {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+}
+
+.lesson-gate-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, var(--surface-base) 40%);
+  pointer-events: none;
+}
+
+.lesson-gate-cta {
+  position: relative;
+  z-index: 2;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.lesson-gate-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.lesson-gate-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.lesson-gate-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 var(--space-5);
+}
+
+.lesson-gate-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.lesson-gate-actions .site-btn-primary {
+  width: 100%;
+  max-width: 280px;
+}
+
+.lesson-gate-actions .site-btn-ghost {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.lesson-gate-note {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+.lesson-gate-note a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+}
