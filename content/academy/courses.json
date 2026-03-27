@@ -40,7 +40,7 @@
           "description": "AI tools for writers, designers, and musicians. Generate ideas, remix work, and amplify your creative output.",
           "tier": "beginner",
           "audience": ["creatives"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "ai-for-executives",
