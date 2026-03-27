@@ -4,127 +4,123 @@ course: "ai-foundations"
 order: 3
 type: "quiz"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
-  
+---<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/ai-foundations/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 3 of 9</span>
 </nav>
-<div class="container">
-  <div class="lesson-header">
-    <div class="meta">
-      <span class="type-badge">Quiz</span>
-      <span class="xp-badge">+40 XP</span>
-      <span class="time-badge">~10 min</span>
-    </div>
-    <h1>Neural Net Quiz</h1>
-    <p>Test your understanding of neurons, weights, and network architecture.</p>
-  </div>
 
-  <div class="score-bar">
-    <div class="score-label">Score</div>
-    <div class="score-val" id="score">0 / 40 XP</div>
-    <div class="q-count" id="qCount">Question 1 of 3</div>
-  </div>
-
-  <!-- QUIZ CONTAINER -->
-  <div id="quizContainer"></div>
-
-  <div class="results" id="results">
-    <h2>Quiz Complete!</h2>
-    <div class="big-score" id="finalScore">0/3</div>
-    <p id="finalMsg">Review your answers above and continue to the next module.</p>
-  </div>
-
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
+<div class="lesson-hero">
+  <h1>Neural Net <span class="accent">Quiz.</span></h1>
+  <p class="sub">Test your understanding of neurons, weights, and network architecture.</p>
 </div>
-<div class="footer-progress"><span id="footerProgress">0 of 9</span> lessons complete</div>
 
-<script>
-const questions=[
-  {
-    q:"What does a weight in a neural network represent?",
-    opts:["The physical size of a neuron","How much influence an input has on the output","The number of connections in the network","The speed at which data flows"],
-    correct:1,
-    explain:"Weights determine how much each input contributes to the neuron's output. Higher weights mean more influence — they're what the network adjusts during training."
-  },
-  {
-    q:"What is the role of a hidden layer?",
-    opts:["To store the training data","To display results to the user","To find patterns and intermediate representations in data","To reduce the network's size"],
-    correct:2,
-    explain:"Hidden layers transform input data through learned patterns. Each layer can detect increasingly complex features — from edges to shapes to objects."
-  },
-  {
-    q:"What does an activation function do?",
-    opts:["Turns the computer on","Decides whether a neuron should fire based on its input","Counts the number of neurons","Stores data permanently"],
-    correct:1,
-    explain:"Activation functions introduce non-linearity — they decide if a neuron's summed input is strong enough to pass a signal forward. Without them, the network could only learn linear patterns."
-  }
-];
+<div class="learn-card">
+  <h3>This quiz covers</h3>
+  <ul>
+    <li>How neurons compute outputs</li>
+    <li>The role of weights, biases, and activation functions</li>
+    <li>How layers work together in a network</li>
+    <li>Key vocabulary from lessons 1-2</li>
+  </ul>
+</div>
 
-let answered=0,totalScore=0;
+<!-- SECTION 1: CORE QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Part 1</span>
+  <h2 class="section-title">Core concepts.</h2>
 
-function renderQuiz(){
-  const container=document.getElementById('quizContainer');
-  container.innerHTML=questions.map((q,i)=>`
-    <div class="quiz-card" id="card${i}">
-      <div class="q-number">Question ${i+1} of ${questions.length}</div>
-      <div class="q-text">${q.q}</div>
-      <div class="options" id="opts${i}">
-        ${q.opts.map((o,j)=>`<div class="option" data-q="${i}" data-o="${j}" onclick="answer(${i},${j})">
-          <div class="letter">${String.fromCharCode(65+j)}</div>${o}
-        </div>`).join('')}
-      </div>
-      </div>
-  `).join('');
-}
+<div data-learn="QuizMC" data-props='{
+  "title": "Neurons and Networks — 6 Questions",
+  "questions": [
+    {
+      "q": "What does a weight in a neural network represent?",
+      "options": ["The physical size of a neuron", "How much influence an input has on the output", "The number of connections in the network", "The speed at which data flows"],
+      "correct": 1,
+      "explanation": "Weights determine how much each input contributes to the neuron output. Higher weights mean more influence — they are what the network adjusts during training."
+    },
+    {
+      "q": "What is the role of a hidden layer?",
+      "options": ["To store the training data", "To display results to the user", "To find patterns and intermediate representations in data", "To reduce the network size"],
+      "correct": 2,
+      "explanation": "Hidden layers transform input data through learned patterns. Each layer can detect increasingly complex features — from edges to shapes to objects."
+    },
+    {
+      "q": "What does an activation function do?",
+      "options": ["Turns the computer on", "Decides whether a neuron should fire based on its input", "Counts the number of neurons", "Stores data permanently"],
+      "correct": 1,
+      "explanation": "Activation functions introduce non-linearity — they decide if a neuron summed input is strong enough to pass a signal forward. Without them, the network could only learn linear patterns."
+    },
+    {
+      "q": "Why is bias important in a neuron?",
+      "options": ["It makes the network run faster", "It lets the neuron fire even when all inputs are zero", "It reduces the number of weights needed", "It prevents the network from overfitting"],
+      "correct": 1,
+      "explanation": "Without bias, a neuron with all-zero inputs always outputs zero (or the activation of zero). Bias shifts the decision boundary, giving the neuron flexibility to activate at different thresholds."
+    },
+    {
+      "q": "What happens during training?",
+      "options": ["New neurons are added to the network", "The weights and biases are adjusted to reduce errors", "The activation functions are changed", "The input data is modified"],
+      "correct": 1,
+      "explanation": "Training adjusts weights and biases so the network output gets closer to the correct answer. This happens through a process called backpropagation — computing how much each weight contributed to the error and nudging it in the right direction."
+    },
+    {
+      "q": "A neural network with more layers can learn more complex patterns. What is the tradeoff?",
+      "options": ["More layers always make the network better with no downsides", "More layers need more data and compute, and risk overfitting", "More layers make the network faster", "More layers reduce the need for training data"],
+      "correct": 1,
+      "explanation": "Deeper networks can represent more complex functions, but they need more training data, more compute power, and are more prone to overfitting (memorizing training data instead of learning general patterns)."
+    }
+  ]
+}'></div>
 
-function answer(qi,oi){
-  const card=document.getElementById('card'+qi);
-  if(card.classList.contains('correct')||card.classList.contains('incorrect'))return;
+</div>
 
-  const opts=document.querySelectorAll(`#opts${qi} .option`);
-  const q=questions[qi];
-  const fb=document.getElementById('fb'+qi);
+<!-- SECTION 2: MATCH CONCEPTS -->
+<div class="lesson-section">
+  <span class="section-label">Part 2</span>
+  <h2 class="section-title">Match the vocabulary.</h2>
 
-  opts.forEach(o=>o.classList.add('disabled'));
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match Term to Definition",
+  "instruction": "Tap a term on the left, then its definition on the right",
+  "pairs": [
+    { "left": "Input Layer", "right": "Receives raw data like pixel values or text" },
+    { "left": "Hidden Layer", "right": "Finds patterns and intermediate representations" },
+    { "left": "Output Layer", "right": "Makes the final decision or prediction" },
+    { "left": "Backpropagation", "right": "Adjusts weights by computing how much each contributed to error" },
+    { "left": "Overfitting", "right": "Memorizing training data instead of learning general patterns" }
+  ]
+}'></div>
 
-  if(oi===q.correct){
-    opts[oi].classList.add('correct-answer');
-    card.classList.add('correct');
-    fb.className='feedback correct show';
-    fb.textContent='✓ Correct! '+q.explain;
-    totalScore+=Math.round(40/questions.length);
-  }else{
-    opts[oi].classList.add('wrong-answer');
-    opts[q.correct].classList.add('correct-answer');
-    card.classList.add('incorrect');
-    fb.className='feedback incorrect show';
-    fb.textContent='✗ Not quite. '+q.explain;
-  }
+</div>
 
-  answered++;
-  document.getElementById('score').textContent=totalScore+' / 40 XP';
-  document.getElementById('qCount').textContent='Answered '+answered+' of '+questions.length;
+<!-- SECTION 3: PIXEL QUEST -->
+<div class="lesson-section">
+  <span class="section-label">Game Time</span>
+  <h2 class="section-title">Collect the correct concepts.</h2>
 
-  if(answered===questions.length){
-    const res=document.getElementById('results');
-    res.classList.add('show');
-    const correct=document.querySelectorAll('.quiz-card.correct').length;
-    document.getElementById('finalScore').textContent=correct+'/'+questions.length;
-    document.getElementById('finalMsg').textContent=correct===questions.length?'Perfect score! You\'ve mastered neural network basics.':'Review the explanations above, then continue to the next module.';
-  }
-}
+<div data-learn="PixelQuest" data-props='{
+  "levels": [
+    {
+      "question": "Collect things that happen INSIDE a single neuron!",
+      "correct": ["Multiply inputs by weights", "Add bias", "Apply activation function", "Sum weighted inputs"],
+      "wrong": ["Store training data", "Display results", "Count other neurons", "Connect to the internet"],
+      "gridSize": 7
+    },
+    {
+      "question": "Collect the three types of layers in a neural network!",
+      "correct": ["Input Layer", "Hidden Layer", "Output Layer"],
+      "wrong": ["Storage Layer", "Display Layer", "Internet Layer", "Speed Layer"],
+      "gridSize": 6
+    }
+  ]
+}'></div>
 
-renderQuiz();
+</div>
 
-function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
-function updateFooter(){
-  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
-  document.getElementById('footerProgress').textContent=c+' of 9';
-  if(p['neural-net-quiz']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
-}
-function completeLesson(){
-  const p=getProgress();p['neural-net-quiz']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
-  LO_NAV.goNext();
-}
-updateFooter();
-</script>
+<!-- NEXT LESSON -->
+<div class="lesson-section" style="text-align:center;padding:2rem 0">
+  <a href="/academy/ai-foundations/anatomy-of-a-prompt" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Anatomy of a Prompt →</a>
+</div>
+
+</div>

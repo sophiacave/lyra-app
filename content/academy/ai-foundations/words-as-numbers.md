@@ -4,30 +4,66 @@ course: "ai-foundations"
 order: 7
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
-  
+---<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/ai-foundations/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 7 of 9</span>
 </nav>
-<div class="container">
-  <div class="lesson-header">
-    <div class="meta">
-      <span class="type-badge">Animated</span>
-      <span class="xp-badge">+50 XP</span>
-      <span class="time-badge">~25 min</span>
-    </div>
-    <h1>Words as Numbers</h1>
-    <p>Watch words become vectors in space — and discover that math can capture meaning.</p>
-  </div>
+
+<div class="lesson-hero">
+  <h1>Words as <span class="accent">Numbers.</span></h1>
+  <p class="sub">Watch words become vectors in space — and discover that math can capture meaning.</p>
+</div>
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How words become vectors (lists of numbers)</li>
+    <li>Why similar words cluster together in space</li>
+    <li>The famous king - man + woman = queen equation</li>
+    <li>Why embeddings are the foundation of modern AI</li>
+  </ul>
+</div>
+
+<!-- SECTION 1: CONCEPT -->
+<div class="lesson-section">
+  <span class="section-label">The Big Idea</span>
+  <h2 class="section-title">Words have coordinates in a universe of meaning.</h2>
+  <p class="section-text">AI cannot read words. It reads numbers. So every word gets converted into a list of numbers — a <strong>vector</strong> — that captures its meaning. "Cat" might be [0.2, 0.8, -0.1, ...] across hundreds of dimensions.</p>
+  <p class="section-text">The magic: words that mean similar things end up close together. "Happy," "joyful," and "delighted" are neighbors. "Sad" is far away. The space itself encodes meaning.</p>
+
+<div data-learn="FlashDeck" data-props='{
+  "title": "Embedding Concepts — Flip for Details",
+  "cards": [
+    {
+      "front": "📊 VECTORS\n\nEach word becomes a list of numbers.\nHundreds of dimensions capturing meaning.",
+      "back": "EXAMPLE: \"cat\" = [0.2, 0.8, -0.1, 0.5, ...]\n\nEach number captures some aspect of meaning — maybe one dimension relates to \"is it alive?\", another to \"is it big?\", another to \"is it domestic?\"\n\nReal embeddings use 768+ dimensions. The more dimensions, the more nuance."
+    },
+    {
+      "front": "🌌 SEMANTIC SPACE\n\nSimilar words cluster together.\nMeaning becomes geometry.",
+      "back": "In embedding space:\n- \"happy\" + \"joyful\" + \"delighted\" = neighbors\n- \"sad\" is far from \"happy\" — opposite direction\n- \"dog\" + \"cat\" + \"puppy\" = a cluster\n- \"king\" + \"queen\" + \"prince\" = another cluster\n\nSearch engines use this: your query becomes a vector and they find the nearest document vectors."
+    },
+    {
+      "front": "➕ VECTOR ARITHMETIC\n\nking - man + woman = queen\n\nMath captures relationships.",
+      "back": "This is not a trick. The vector from king to queen captures royalty + female.\n\nThe vector from man to woman captures the gender direction.\n\nking - man + woman follows the royalty direction from the female side — and lands on queen.\n\nThe AI learned these relationships from patterns in billions of sentences."
+    }
+  ]
+}'></div>
+
+</div>
+
+<!-- SECTION 2: INTERACTIVE VISUALIZATION -->
+<div class="lesson-section">
+  <span class="section-label">Explore</span>
+  <h2 class="section-title">Watch words in semantic space.</h2>
+  <p class="section-text">Use the step buttons to see how words cluster by meaning and how vector arithmetic works.</p>
 
   <div class="narration-box" id="narrationBox"></div>
   <div class="step-dots" id="stepDots"></div>
 
   <div class="canvas-wrap">
     <canvas id="embedCanvas" width="800" height="500"></canvas>
-    <div class="canvas-controls">
-      <button onclick="resetView()">Reset View</button>
-      <button onclick="toggleLabels()">Toggle Labels</button>
-    </div>
   </div>
 
   <div class="equation" id="equationBox" style="display:none">
@@ -44,188 +80,108 @@ free: false
     <button onclick="prevStep()">← Previous</button>
     <button class="primary" onclick="nextStep()">Next Step →</button>
   </div>
-
-  <div class="insight-cards">
-    <div class="insight">
-      <h3>Vectors</h3>
-      <p>Each word becomes a list of numbers (a vector). "Cat" might be [0.2, 0.8, -0.1, ...] — hundreds of dimensions capturing meaning.</p>
-    </div>
-    <div class="insight">
-      <h3>Semantic Space</h3>
-      <p>Similar words cluster together. "Happy", "joyful", and "delighted" are neighbors. "Sad" is far away. The space encodes meaning.</p>
-    </div>
-    <div class="insight">
-      <h3>Vector Arithmetic</h3>
-      <p>king - man + woman = queen. This isn't magic — the "royalty" direction minus the "male" direction plus "female" lands on "queen".</p>
-    </div>
-  </div>
-
-  <button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete & Continue →</button>
 </div>
-<div class="footer-progress"><span id="footerProgress">0 of 9</span> lessons complete</div>
+
+<!-- SECTION 3: KNOWLEDGE CHECK -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Test your understanding.</h2>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Embeddings Mastery",
+  "questions": [
+    {
+      "q": "Why do similar words end up close together in embedding space?",
+      "options": ["Programmers manually placed them there", "Words that appear in similar contexts develop similar vectors", "It is random — sometimes similar words are far apart", "The dictionary determines their position"],
+      "correct": 1,
+      "explanation": "Embeddings are learned from text. Words that appear in similar contexts (you can pet a cat / you can pet a dog) develop similar vectors. The AI discovers meaning from usage patterns."
+    },
+    {
+      "q": "What makes vector arithmetic like king - man + woman = queen possible?",
+      "options": ["A lookup table of word relationships", "The embedding space encodes relationships as directional offsets", "The AI memorized this specific example", "It only works for royalty words"],
+      "correct": 1,
+      "explanation": "The direction from man to king captures royalty. The direction from man to woman captures gender. These are consistent directions in the space — so you can combine them mathematically."
+    },
+    {
+      "q": "How do search engines use embeddings?",
+      "options": ["They match exact keywords only", "They convert queries and documents to vectors and find the nearest matches", "They use embeddings to make web pages load faster", "They do not use embeddings"],
+      "correct": 1,
+      "explanation": "Modern search converts your query to a vector and finds document vectors that point in a similar direction. This is why searching affordable places to eat can find budget-friendly restaurants — even with zero keyword overlap."
+    }
+  ]
+}'></div>
+
+</div>
+
+<!-- NEXT LESSON -->
+<div class="lesson-section" style="text-align:center;padding:2rem 0">
+  <a href="/academy/ai-foundations/embedding-explorer" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Embedding Explorer →</a>
+</div>
+
+</div>
 
 <script>
-const canvas=document.getElementById('embedCanvas');
-const ctx=canvas.getContext('2d');
-const dpr=window.devicePixelRatio||1;
-canvas.width=800*dpr;canvas.height=500*dpr;
-ctx.scale(dpr,dpr);
+var canvas=document.getElementById('embedCanvas');
+if(canvas){
+var ctx=canvas.getContext('2d');var dpr=window.devicePixelRatio||1;
+canvas.width=800*dpr;canvas.height=500*dpr;ctx.scale(dpr,dpr);
 
-const words=[
-  {word:'king',x:500,y:120,color:'#c084fc',group:'royalty'},
-  {word:'queen',x:350,y:120,color:'#34d399',group:'royalty'},
-  {word:'man',x:500,y:300,color:'#38bdf8',group:'people'},
-  {word:'woman',x:350,y:300,color:'#fb923c',group:'people'},
-  {word:'prince',x:550,y:180,color:'#c084fc',group:'royalty'},
-  {word:'princess',x:300,y:180,color:'#34d399',group:'royalty'},
-  {word:'boy',x:550,y:350,color:'#38bdf8',group:'people'},
-  {word:'girl',x:300,y:350,color:'#fb923c',group:'people'},
-  {word:'dog',x:150,y:200,color:'#fbbf24',group:'animals'},
-  {word:'cat',x:120,y:250,color:'#fbbf24',group:'animals'},
-  {word:'puppy',x:180,y:230,color:'#fbbf24',group:'animals'},
-  {word:'kitten',x:100,y:280,color:'#fbbf24',group:'animals'},
-  {word:'happy',x:650,y:400,color:'#f472b6',group:'emotion'},
-  {word:'sad',x:650,y:150,color:'#f472b6',group:'emotion'},
-  {word:'joyful',x:680,y:430,color:'#f472b6',group:'emotion'},
+var words=[
+  {word:'king',x:500,y:120,color:'#c084fc',group:'royalty'},{word:'queen',x:350,y:120,color:'#34d399',group:'royalty'},
+  {word:'man',x:500,y:300,color:'#38bdf8',group:'people'},{word:'woman',x:350,y:300,color:'#fb923c',group:'people'},
+  {word:'prince',x:550,y:180,color:'#c084fc',group:'royalty'},{word:'princess',x:300,y:180,color:'#34d399',group:'royalty'},
+  {word:'boy',x:550,y:350,color:'#38bdf8',group:'people'},{word:'girl',x:300,y:350,color:'#fb923c',group:'people'},
+  {word:'dog',x:150,y:200,color:'#fbbf24',group:'animals'},{word:'cat',x:120,y:250,color:'#fbbf24',group:'animals'},
+  {word:'puppy',x:180,y:230,color:'#fbbf24',group:'animals'},{word:'kitten',x:100,y:280,color:'#fbbf24',group:'animals'},
+  {word:'happy',x:650,y:400,color:'#f472b6',group:'emotion'},{word:'sad',x:650,y:150,color:'#f472b6',group:'emotion'},
+  {word:'joyful',x:680,y:430,color:'#f472b6',group:'emotion'}
 ];
 
-let showLabels=true;
-let currentStep=0;
-let visibleWords=[];
-let arrows=[];
-let time=0;
-let highlightWord=null;
+var currentStep=0,visibleWords=[],arrows=[],time=0;
 
-const steps=[
-  {
-    narration:"<strong>Imagine a vast coordinate space.</strong> In this space, every word has a position — a specific set of coordinates that encodes its meaning. Let's start by placing some words...",
-    visible:['king','queen','man','woman'],arrows:[],showEquation:false
-  },
-  {
-    narration:"<strong>Notice the pattern.</strong> King and queen are at the top (royalty). Man and woman are at the bottom (commoners). Male words are on the right, female on the left. The AI learned this geometry from reading billions of sentences.",
-    visible:['king','queen','man','woman','prince','princess','boy','girl'],
-    arrows:[{from:'king',to:'queen',label:'gender'},{from:'man',to:'woman',label:'gender'},{from:'man',to:'king',label:'royalty'}],
-    showEquation:false
-  },
-  {
-    narration:"<strong>Now the magic: vector arithmetic.</strong> Take the vector for 'king', subtract the direction of 'man', add the direction of 'woman'. Where do you land? Right on 'queen'. The math captures the concept: royalty + female = queen.",
-    visible:['king','queen','man','woman'],
-    arrows:[{from:'king',to:'man',label:'subtract',color:'#ef4444'},{from:'man',to:'woman',label:'add',color:'#22c55e',fromWord:'woman'},{from:'king',to:'queen',label:'result',color:'#c084fc',dashed:true}],
-    showEquation:true
-  },
-  {
-    narration:"<strong>Similar things cluster together.</strong> Animals group in one region. People in another. Emotions in yet another. This is how AI 'understands' meaning — through geometry. Search engines use this: your query becomes a vector, and they find the nearest document vectors.",
-    visible:words.map(w=>w.word),arrows:[],showEquation:false
-  }
+var steps=[
+  {narration:"<strong>Imagine a vast coordinate space.</strong> Every word has a position that encodes its meaning. Let's place some words...",visible:['king','queen','man','woman'],arrows:[],showEquation:false},
+  {narration:"<strong>Notice the pattern.</strong> Royalty at top, commoners at bottom. Male on right, female on left. The AI learned this geometry from billions of sentences.",visible:['king','queen','man','woman','prince','princess','boy','girl'],arrows:[{from:'king',to:'queen',label:'gender'},{from:'man',to:'woman',label:'gender'},{from:'man',to:'king',label:'royalty'}],showEquation:false},
+  {narration:"<strong>Vector arithmetic.</strong> Take king, subtract man, add woman. You land on queen. The math captures the concept: royalty + female = queen.",visible:['king','queen','man','woman'],arrows:[{from:'king',to:'man',label:'subtract',color:'#ef4444'},{from:'man',to:'woman',label:'add',color:'#22c55e'},{from:'king',to:'queen',label:'result',color:'#c084fc',dashed:true}],showEquation:true},
+  {narration:"<strong>Similar things cluster.</strong> Animals in one region. People in another. Emotions in another. This geometry IS how AI understands meaning.",visible:words.map(function(w){return w.word}),arrows:[],showEquation:false}
 ];
 
-function renderStepDots(){
-  document.getElementById('stepDots').innerHTML=steps.map((_,i)=>`<span class="step-dot${i===currentStep?' active':''}"></span>`).join('');
-}
+function renderStepDots(){var el=document.getElementById('stepDots');if(el)el.innerHTML=steps.map(function(_,i){return'<span class="step-dot'+(i===currentStep?' active':'')+'"></span>'}).join('')}
 
 function setStep(s){
-  currentStep=Math.max(0,Math.min(s,steps.length-1));
-  const step=steps[currentStep];
-  visibleWords=words.filter(w=>step.visible.includes(w.word));
+  currentStep=Math.max(0,Math.min(s,steps.length-1));var step=steps[currentStep];
+  visibleWords=words.filter(function(w){return step.visible.indexOf(w.word)>=0});
   arrows=step.arrows;
-  document.getElementById('narrationBox').innerHTML=step.narration;
-  document.getElementById('equationBox').style.display=step.showEquation?'block':'none';
+  var nb=document.getElementById('narrationBox');if(nb)nb.innerHTML=step.narration;
+  var eq=document.getElementById('equationBox');if(eq)eq.style.display=step.showEquation?'block':'none';
   renderStepDots();
 }
-function nextStep(){setStep(currentStep+1)}
-function prevStep(){setStep(currentStep-1)}
-function resetView(){setStep(0)}
-function toggleLabels(){showLabels=!showLabels}
-
+window.nextStep=function(){setStep(currentStep+1)};
+window.prevStep=function(){setStep(currentStep-1)};
 setStep(0);
 
 function drawWord(w,alpha){
-  const size=8;
-  // Glow
-  ctx.beginPath();ctx.arc(w.x,w.y,size+8,0,Math.PI*2);
-  const g=ctx.createRadialGradient(w.x,w.y,size,w.x,w.y,size+12);
-  g.addColorStop(0,w.color+'30');g.addColorStop(1,'transparent');
-  ctx.fillStyle=g;ctx.globalAlpha=alpha;ctx.fill();
-
-  // Dot
-  ctx.beginPath();ctx.arc(w.x,w.y,size,0,Math.PI*2);
+  var size=8;ctx.beginPath();ctx.arc(w.x,w.y,size,0,Math.PI*2);
   ctx.fillStyle=w.color;ctx.globalAlpha=alpha;ctx.fill();
-
-  // Label
-  if(showLabels){
-    ctx.font='600 13px Inter';ctx.textAlign='center';ctx.fillStyle='#e5e5e5';
-    ctx.globalAlpha=alpha;ctx.fillText(w.word,w.x,w.y-16);
-  }
-  ctx.globalAlpha=1;
+  ctx.font='600 13px Inter';ctx.textAlign='center';ctx.fillStyle='#e5e5e5';
+  ctx.globalAlpha=alpha;ctx.fillText(w.word,w.x,w.y-16);ctx.globalAlpha=1;
 }
 
 function drawArrow(from,to,label,color,dashed){
-  const fw=words.find(w=>w.word===from);
-  const tw=words.find(w=>w.word===to);
-  if(!fw||!tw)return;
-  ctx.beginPath();
-  if(dashed)ctx.setLineDash([6,4]);
-  ctx.moveTo(fw.x,fw.y);ctx.lineTo(tw.x,tw.y);
-  ctx.strokeStyle=color||'rgba(255,255,255,.2)';
-  ctx.lineWidth=2;ctx.stroke();
-  ctx.setLineDash([]);
-
-  // Arrowhead
-  const angle=Math.atan2(tw.y-fw.y,tw.x-fw.x);
-  const ax=tw.x-12*Math.cos(angle);
-  const ay=tw.y-12*Math.sin(angle);
-  ctx.beginPath();
-  ctx.moveTo(tw.x-8*Math.cos(angle),tw.y-8*Math.sin(angle));
-  ctx.lineTo(ax-6*Math.cos(angle-Math.PI/6),ay-6*Math.sin(angle-Math.PI/6));
-  ctx.lineTo(ax-6*Math.cos(angle+Math.PI/6),ay-6*Math.sin(angle+Math.PI/6));
-  ctx.fillStyle=color||'rgba(255,255,255,.3)';ctx.fill();
-
-  // Label
-  if(label){
-    const mx=(fw.x+tw.x)/2;const my=(fw.y+tw.y)/2;
-    ctx.font='600 10px Inter';ctx.textAlign='center';
-    ctx.fillStyle=color||'#71717a';ctx.fillText(label,mx,my-8);
-  }
+  var fw=words.find(function(w){return w.word===from});var tw=words.find(function(w){return w.word===to});
+  if(!fw||!tw)return;ctx.beginPath();if(dashed)ctx.setLineDash([6,4]);
+  ctx.moveTo(fw.x,fw.y);ctx.lineTo(tw.x,tw.y);ctx.strokeStyle=color||'rgba(255,255,255,.2)';
+  ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);
+  if(label){var mx=(fw.x+tw.x)/2,my=(fw.y+tw.y)/2;ctx.font='600 10px Inter';ctx.textAlign='center';ctx.fillStyle=color||'#71717a';ctx.fillText(label,mx,my-8)}
 }
 
 function animate(){
-  time++;
-  ctx.clearRect(0,0,800,500);
-
-  // Grid dots
-  for(let x=0;x<800;x+=40){
-    for(let y=0;y<500;y+=40){
-      ctx.beginPath();ctx.arc(x,y,1,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,255,255,.03)';ctx.fill();
-    }
-  }
-
-  // Arrows
-  arrows.forEach(a=>{
-    const progress=Math.min(1,(time%120)/60);
-    if(progress>0)drawArrow(a.from,a.to,a.label,a.color,a.dashed);
-  });
-
-  // Words with floating animation
-  visibleWords.forEach((w,i)=>{
-    const oy=Math.sin(time*0.02+i)*3;
-    const orig=words.find(ww=>ww.word===w.word);
-    drawWord({...orig,y:orig.y+oy},1);
-  });
-
+  time++;ctx.clearRect(0,0,800,500);
+  for(var gx=0;gx<800;gx+=40)for(var gy=0;gy<500;gy+=40){ctx.beginPath();ctx.arc(gx,gy,1,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.03)';ctx.fill()}
+  arrows.forEach(function(a){drawArrow(a.from,a.to,a.label,a.color,a.dashed)});
+  visibleWords.forEach(function(w,i){var oy=Math.sin(time*0.02+i)*3;drawWord({word:w.word,x:w.x,y:w.y+oy,color:w.color},1)});
   requestAnimationFrame(animate);
 }
 animate();
-
-function getProgress(){try{return JSON.parse(localStorage.getItem('ai-foundations-progress'))||{}}catch(e){return{}}}
-function updateFooter(){
-  const p=getProgress();const c=Object.keys(p).filter(k=>p[k]).length;
-  document.getElementById('footerProgress').textContent=c+' of 9';
-  if(p['words-as-numbers']){document.getElementById('completeBtn').textContent='Completed ✓';document.getElementById('completeBtn').classList.add('done')}
 }
-function completeLesson(){
-  const p=getProgress();p['words-as-numbers']=true;localStorage.setItem('ai-foundations-progress',JSON.stringify(p));
-  LO_NAV.goNext();
-}
-updateFooter();
 </script>
