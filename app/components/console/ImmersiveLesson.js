@@ -108,7 +108,7 @@ export default function ImmersiveLesson({
     setConsoleState(state);
   }, []);
 
-  const showGate = !isFree && subStatus !== 'loading' && subStatus !== 'pro';
+  const showGate = !isFree && subStatus !== 'pro';
   const hasExercises = exercises.length > 0;
 
   // Scroll to console when manually toggled (not on initial render)
