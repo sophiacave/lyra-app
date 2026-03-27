@@ -6,121 +6,142 @@ type: "lesson"
 free: false
 ---<div class="wrap">
 
-<div class="lesson-num">Lesson 4 of 10</div>
-<h1>Find Your AI Opportunities</h1>
-<p class="intro">Rate each area of your business on three factors. We'll calculate where AI will have the biggest impact and show you exactly where to start.</p>
+<nav class="local-nav">
+  <a href="/academy/ai-for-business/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 4 of 10</span>
+</nav>
 
-<h2>Rate Your Business Areas</h2>
-<p style="font-size:13px;color:#737373;margin-bottom:16px">1 = Low, 5 = High. Be honest — this is for your eyes only.</p>
-
-<div style="overflow-x:auto">
-<table class="audit-table">
-<thead>
-<tr>
-<th></th>
-<th>Business Area</th>
-<th>Time Spent</th>
-<th>Repetitiveness</th>
-<th>Pain Level</th>
-</tr>
-</thead>
-<tbody id="audit-body"></tbody>
-</table>
+<div class="lesson-hero">
+  <h1>Find Your AI <span class="accent">Opportunities.</span></h1>
+  <p class="sub">Most businesses start AI in the wrong place. This lesson teaches you how to score every area of your business so you start where the impact is biggest.</p>
 </div>
 
-<button class="gen-btn" id="gen-btn" onclick="generateResults()">Generate My AI Opportunity Scores</button>
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>The 3-factor scoring method for identifying high-value AI opportunities</li>
+    <li>Which business areas consistently score highest across industries</li>
+    <li>How to match business areas to specific AI tool types</li>
+    <li>The exact order of steps to identify and implement your first AI win</li>
+  </ul>
+</div>
 
-<div class="results-section" id="results-section">
-<h2>Your AI Opportunity Rankings</h2>
+<div class="lesson-section">
+  <span class="section-label">Section 1</span>
+  <h2 class="section-title">The opportunity formula.</h2>
+  <p class="section-text">The most common mistake businesses make with AI is starting with the shiniest tool instead of the biggest problem. Someone sees a demo of an AI video editor and buys it — but their actual bottleneck is a sales team drowning in manual follow-up emails. The tool does not match the pain.</p>
+
+  <p class="section-text">The 3-factor scoring method fixes this. For every area of your business, you score it on three dimensions. Then you multiply the scores and sort. Start at the top.</p>
+
+  <p class="section-text"><strong>Factor 1: Time Spent (1-5).</strong> How many hours per week does your team spend on this area? Score 1 if it is occasional, 5 if it consumes multiple people's full weeks. Time spent is your multiplier — even modest automation of a high-time-spend area generates big returns.</p>
+
+  <p class="section-text"><strong>Factor 2: Repetitiveness (1-5).</strong> Are the tasks in this area similar or variable? Score 1 if every task is unique and requires fresh judgment, 5 if the same steps are repeated dozens of times per day. AI thrives on repetition. Novel situations still require humans.</p>
+
+  <p class="section-text"><strong>Factor 3: Pain Level (1-5).</strong> How much friction does this area create? Score 1 if it runs smoothly, 5 if it creates bottlenecks, causes errors, frustrates customers, or keeps your best people stuck doing low-value work.</p>
+
+  <p class="section-text">Here is a worked example: Customer support at a growing e-commerce company. Time Spent: 4 (three people, full time). Repetitiveness: 5 (80% of tickets are "where is my order" or "how do I return this"). Pain Level: 4 (slow response times are hurting reviews). Weighted score (Time x 0.3 + Repetitiveness x 0.4 + Pain x 0.3) x 20 = (4 x 0.3 + 5 x 0.4 + 4 x 0.3) x 20 = (1.2 + 2.0 + 1.2) x 20 = 88/100. This is a clear winner. Start here.</p>
+
+  <p class="section-text">The formula is not magic — it is a structured way to stop arguing about opinions and start comparing numbers. Run every major business area through it. The ranking tells you where to deploy your first dollar.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Section 2</span>
+  <h2 class="section-title">Score these business areas.</h2>
+  <p class="section-text">Eight common business areas. Flip each card to see the typical AI opportunity score and why it rates that way. Use these as benchmarks when you score your own business.</p>
+
+  <div data-learn="FlashDeck" data-props='{
+    "title": "Business Area AI Opportunity Scores",
+    "cards": [
+      { "front": "Email and Communication", "back": "Typical score: 80-90/100. High time spend, highly repetitive patterns (follow-ups, confirmations, status updates), and high pain because slow or inconsistent communication directly costs revenue. Strong AI opportunity." },
+      { "front": "Sales and Outreach", "back": "Typical score: 75-85/100. Prospecting and follow-up are highly repetitive and time-consuming. Pain is high because missed follow-ups mean lost deals. AI excels at first-touch outreach and CRM updates." },
+      { "front": "Marketing and Content", "back": "Typical score: 70-80/100. Content creation is repetitive in structure (even if topics vary), time-intensive, and a constant bottleneck. AI drafts; humans edit. High leverage, manageable risk." },
+      { "front": "Customer Support", "back": "Typical score: 85-95/100. Often the single highest-scoring area. Same questions asked hundreds of times, fast response matters, pain from slow or inconsistent answers is visible and measurable." },
+      { "front": "Finance and Accounting", "back": "Typical score: 60-70/100. Highly repetitive tasks (invoice processing, expense categorization, report formatting), but pain from errors is severe. Score reflects strong opportunity tempered by risk of inaccuracy." },
+      { "front": "HR and Recruiting", "back": "Typical score: 65-75/100. Job posting, resume screening, and interview scheduling are highly repetitive. Pain is real when hiring moves slowly. Oversight required — bias risk is genuine." },
+      { "front": "Operations and Logistics", "back": "Typical score: 70-80/100. Scheduling, routing, inventory tracking, and workflow management are all repetitive and time-consuming. When operations bottleneck, it ripples everywhere." },
+      { "front": "Data and Reporting", "back": "Typical score: 75-85/100. Pulling data, building reports, and formatting dashboards is highly repetitive and painful because it takes skilled people away from analysis. AI handles the grunt work; humans do the thinking." }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Section 3</span>
+  <h2 class="section-title">Match areas to AI solutions.</h2>
+  <p class="section-text">Knowing which business area is a high opportunity is only half the answer. The other half is knowing which type of AI tool addresses it. Match these six business areas to the right category of AI solution.</p>
+
+  <div data-learn="MatchConnect" data-props='{
+    "title": "Business Area to AI Solution Type",
+    "instruction": "Tap one item on the left, then its match on the right",
+    "pairs": [
+      { "left": "Customer Support (FAQs)", "right": "AI chatbot trained on your docs" },
+      { "left": "Email and Follow-up", "right": "AI email assistant (e.g. Superhuman, Claude)" },
+      { "left": "Content and Copywriting", "right": "Generative AI writing tool (e.g. Jasper, Claude)" },
+      { "left": "Resume Screening", "right": "AI recruiting platform (e.g. Greenhouse AI, Workable)" },
+      { "left": "Data Reports and Dashboards", "right": "AI analytics tool (e.g. Notion AI, Rows.com)" },
+      { "left": "Meeting Notes and Follow-ups", "right": "AI transcription tool (e.g. Otter.ai, Fireflies)" }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Section 4</span>
+  <h2 class="section-title">Where should you start?</h2>
+  <p class="section-text">Five questions about prioritizing your AI implementation. These test whether you can apply the 3-factor model to real business situations — not just recall the theory.</p>
+
+  <div data-learn="QuizMC" data-props='{
+    "title": "Prioritizing AI Implementation",
+    "questions": [
+      {
+        "q": "You score two business areas: Customer Support (score 88) and Executive Calendar Management (score 42). Where do you start?",
+        "options": ["Calendar Management — it affects leadership directly", "Customer Support — the score is nearly double", "Both simultaneously to maximize speed", "Neither — the gap means you should reassess your scoring"],
+        "correct": 1,
+        "explanation": "The 3-factor score exists precisely to remove this kind of debate. Customer Support at 88 versus Calendar Management at 42 is a clear signal. Start with the highest score. Leadership calendar can be addressed later."
+      },
+      {
+        "q": "A business area scores 5 on Time Spent and 5 on Repetitiveness, but only 1 on Pain Level. What does this tell you?",
+        "options": ["This is your top priority — high time and repetition are all that matter", "This area is a good candidate, but something already working well may not need urgent AI intervention", "Ignore it — pain level is the most important factor", "Score it higher — pain level ratings are usually underestimated"],
+        "correct": 1,
+        "explanation": "High time and repetition are strong indicators, but low pain means the current process is not actively hurting you. It is still a valid AI opportunity — but prioritize areas where the pain is also high, since those have visible ROI from day one."
+      },
+      {
+        "q": "You have identified three high-scoring areas. You only have budget for one AI tool this quarter. What is the right decision framework?",
+        "options": ["Pick whichever area your most vocal employee complains about", "Choose the area where the ROI calculation produces the fastest payback period", "Pick the most technically impressive AI application to build team excitement", "Let each department vote on which area they want automated first"],
+        "correct": 1,
+        "explanation": "With limited budget, the fastest payback period protects your investment and builds internal confidence. A quick win creates momentum and makes the case for the next tool. Start where money comes back fastest."
+      },
+      {
+        "q": "Your content marketing team scores their area at 4/5 for all three factors. But the content they produce is brand-critical and highly nuanced. Should you proceed?",
+        "options": ["Yes — high scores always mean proceed", "Yes — but with a human review process built into the workflow before anything publishes", "No — high-nuance content should never involve AI", "No — brand-critical work disqualifies the area regardless of score"],
+        "correct": 1,
+        "explanation": "The score tells you the opportunity is real. The nuance tells you the implementation needs guardrails. AI drafts content; a human editor reviews and approves before anything goes live. This is AI Can Help territory — not AI Does Well independently."
+      },
+      {
+        "q": "You have never used AI in your business before. Which starting point is most likely to produce a successful first implementation?",
+        "options": ["Build a custom AI model trained on your proprietary data", "Buy the most comprehensive AI platform available", "Start with one high-score area and one focused tool with a clear success metric", "Implement AI across all departments simultaneously to learn faster"],
+        "correct": 2,
+        "explanation": "First implementations succeed when they are narrow and measurable. One area, one tool, one metric to track. This lets you learn the real implementation challenges without betting the whole business on AI working perfectly from day one."
+      }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Section 5</span>
+  <h2 class="section-title">Implementation order.</h2>
+  <p class="section-text">You know where to start. Now put the steps in the right order. Getting the sequence wrong is the most common implementation mistake — especially doing step 5 before step 3.</p>
+
+  <div data-learn="SortStack" data-props='{
+    "title": "Steps to Your First AI Implementation",
+    "instruction": "Drag these into the correct order from first to last",
+    "items": [
+      "Score all major business areas using the 3-factor method",
+      "Select the highest-scoring area with a clear, measurable outcome",
+      "Calculate the expected ROI using the formula from Lesson 3",
+      "Research and shortlist 2-3 AI tools that address this specific area",
+      "Run a 2-week pilot with one tool and track the target metric",
+      "Review results, adjust the workflow, then expand or move to the next area"
+    ]
+  }'></div>
 </div>
 
 </div>
-
-<script>
-const areas = [
-  {name:"Email & Communication", emoji:"📧", tip:"drafting, sorting, responding"},
-  {name:"Sales & Outreach", emoji:"💰", tip:"prospecting, follow-ups, proposals"},
-  {name:"Marketing & Content", emoji:"📣", tip:"social media, blog posts, ads"},
-  {name:"Customer Support", emoji:"🎧", tip:"tickets, FAQs, onboarding"},
-  {name:"Operations & Logistics", emoji:"⚙️", tip:"scheduling, inventory, workflows"},
-  {name:"Finance & Accounting", emoji:"📊", tip:"invoicing, reports, expense tracking"},
-  {name:"HR & Recruiting", emoji:"👥", tip:"job posts, screening, onboarding"},
-  {name:"Content Creation", emoji:"✍️", tip:"writing, design briefs, documentation"},
-  {name:"Data & Analytics", emoji:"📈", tip:"reports, dashboards, insights"},
-  {name:"Admin & Misc", emoji:"🗂️", tip:"filing, data entry, meeting notes"},
-];
-
-const ratings = {};
-const tbody = document.getElementById('audit-body');
-
-areas.forEach((a,i) => {
-  ratings[i] = {time:0, rep:0, pain:0};
-  const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <td class="emoji">${a.emoji}</td>
-    <td class="area">${a.name}<div style="font-size:11px;color:#737373;font-weight:400">${a.tip}</div></td>
-    <td><div class="rating-group" data-area="${i}" data-dim="time">${[1,2,3,4,5].map(n=>`<button class="rating-btn" data-v="${n}">${n}</button>`).join('')}</div></td>
-    <td><div class="rating-group" data-area="${i}" data-dim="rep">${[1,2,3,4,5].map(n=>`<button class="rating-btn" data-v="${n}">${n}</button>`).join('')}</div></td>
-    <td><div class="rating-group" data-area="${i}" data-dim="pain">${[1,2,3,4,5].map(n=>`<button class="rating-btn" data-v="${n}">${n}</button>`).join('')}</div></td>
-  `;
-  tbody.appendChild(tr);
-});
-
-document.querySelectorAll('.rating-group').forEach(group => {
-  group.querySelectorAll('.rating-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const area = +group.dataset.area;
-      const dim = group.dataset.dim;
-      const val = +btn.dataset.v;
-      ratings[area][dim] = val;
-      group.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      LO.sfx.click();
-      checkReady();
-    });
-  });
-});
-
-function checkReady(){
-  let filled = 0;
-  for(let i=0;i<10;i++){
-    if(ratings[i].time && ratings[i].rep && ratings[i].pain) filled++;
-  }
-  document.getElementById('gen-btn').disabled = filled < 5;
-}
-
-function generateResults(){
-  const scored = areas.map((a,i) => {
-    const r = ratings[i];
-    const score = (r.time * 0.3 + r.rep * 0.4 + r.pain * 0.3) * 20;
-    return {...a, idx:i, score: Math.round(score), ...r};
-  }).filter(a => a.time > 0 || a.rep > 0 || a.pain > 0).sort((a,b) => b.score - a.score);
-
-  const list = document.getElementById('opp-list');
-  list.innerHTML = '';
-  scored.forEach((s,i) => {
-    const card = document.createElement('div');
-    card.className = 'opp-card';
-    card.style.animationDelay = i*0.1+'s';
-    card.innerHTML = `
-      <div class="opp-rank ${i<3?'gold':'silver'}">#${i+1}</div>
-      <div class="opp-info">
-        <div class="opp-name">${s.emoji} ${s.name}</div>
-        <div class="opp-detail">Time: ${s.time}/5 · Repetitive: ${s.rep}/5 · Pain: ${s.pain}/5</div>
-        <div class="opp-bar"></div>
-      </div>
-      <div class="opp-score">${s.score}</div>
-    `;
-    list.appendChild(card);
-  });
-
-  const top = scored[0];
-  const insight = document.getElementById('insight-box');
-  insight.innerHTML = `<h3>Start Here: ${top.emoji} ${top.name}</h3><p>This area scored ${top.score}/100 — it's your highest-impact AI opportunity. It's where you spend significant time on repetitive work that causes the most friction. Automating even 30% of this area could save you hours every week.</p>`;
-
-  document.getElementById('results-section').style.display = 'block';
-  document.getElementById('results-section').scrollIntoView({behavior:'smooth'});
-  LO.sfx.success();
-  LO.completeLesson('ai-biz', 4, 120);
-}
-</script>

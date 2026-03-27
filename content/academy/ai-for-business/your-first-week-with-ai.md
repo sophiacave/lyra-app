@@ -6,111 +6,168 @@ type: "lesson"
 free: false
 ---<div class="wrap">
 
-<div class="lesson-num">Lesson 7 of 10</div>
-<h1>Your First Week with AI</h1>
-<p class="intro">Five days. Five missions. By Friday, you'll have real experience with AI — not just theory. Check off each task as you complete it.</p>
+<nav class="local-nav">
+  <a href="/academy/ai-for-business/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 7 of 10</span>
+</nav>
 
-<div class="progress-overview">
-<div class="progress-ring">
-<svg width="64" height="64"><circle class="bg" cx="32" cy="32" r="28"/><circle class="fill" id="ring-fill" cx="32" cy="32" r="28" stroke-dasharray="176" stroke-dashoffset="176"/></svg>
-<div class="progress-pct" id="ring-pct">0%</div>
-</div>
-<div class="progress-text"><strong id="tasks-done">0</strong> of <strong>15</strong> tasks complete</div>
+<div class="lesson-hero">
+  <h1>Your First Week <span class="accent">with AI.</span></h1>
+  <p class="sub">A concrete 5-day plan so your first week builds habits and results — not just tabs and subscriptions.</p>
 </div>
 
-<div class="complete-banner" id="complete-banner">
-<div class="icon">🎉</div>
-<h2>Week Complete!</h2>
-<p>You just did more with AI in 5 days than most business owners do in 6 months. You're ready to scale this across your whole operation.</p>
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>Exactly what to do on each of your first 5 days with AI</li>
+    <li>Why the sequence of days matters for building real habits</li>
+    <li>The most common first-week mistakes and how to skip them</li>
+    <li>How to end the week with measurable time savings documented</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Overview</span>
+  <h2 class="section-title">Five days. Real results. No flailing.</h2>
+  <p class="section-text">Most business owners spend their first week with AI opening 15 tabs, signing up for 8 tools, getting overwhelmed, and going back to doing things the old way. This lesson gives you a different plan: one tool, one workflow, one result per day. By Friday, you'll have real time savings to point to.</p>
+  <p class="section-text">The plan is designed deliberately. Day 1 is setup — not because setup is exciting but because running into a payment wall or login issue on Day 2 derails everything. Day 2 automates one workflow you already do, so you feel the ROI immediately. Day 3 produces real content you can actually use. Day 4 extracts insight from data you already have. Day 5 measures what you accomplished so you have a number — not a feeling — to bring to your team or report to yourself.</p>
+  <p class="section-text">Resist the urge to skip ahead. The person who spends Day 1 building a custom AI chatbot instead of getting set up properly is the same person who gives up by Day 3. The person who follows this plan is the one who, in 90 days, has a fully functioning AI stack and a team trained to use it.</p>
+  <p class="section-text">Each day has three tasks. Tasks take 30-60 minutes each. The whole week requires roughly 2-3 hours of focused work. That's it. The rest is the AI working while you do other things.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Daily Missions</span>
+  <h2 class="section-title">One day, three tasks, one outcome.</h2>
+  <p class="section-text">Each card below represents one day of your first week. The front tells you the day and theme. The back gives you three specific tasks with tips on each. Don't skip the tips — they're where the common mistakes hide.</p>
+
+  <div data-learn="FlashDeck" data-props='{
+    "title": "Your 5-Day AI Plan",
+    "cards": [
+      {
+        "front": "Day 1: Get Set Up",
+        "back": "Task 1: Sign up for Claude or ChatGPT ($20/mo) — pick one, not both. Task 2: Write your first real prompt about your actual business, not a test prompt. Task 3: Save 3 prompts that produced useful output to a personal prompt library doc. Tip: The prompt library is the most underrated habit you can build. Start it on Day 1."
+      },
+      {
+        "front": "Day 2: Automate One Workflow",
+        "back": "Task 1: Identify the one task you do most often that is just moving information from one place to another. Task 2: Sign up for Zapier free tier and build one Zap for that task. Task 3: Run it 3 times and confirm it works, then document the time it saves per week. Tip: Start with the most boring workflow. Boring workflows run 50 times a week. That is where the ROI lives."
+      },
+      {
+        "front": "Day 3: Create Content",
+        "back": "Task 1: Identify one piece of content you have been putting off — a blog post, email sequence, proposal template, or job description. Task 2: Use your AI writing tool to draft it with a detailed prompt. Task 3: Edit the output to match your voice and publish or send it. Tip: The edit step is not optional. AI drafts are 80% there. Your edit makes it 100% yours."
+      },
+      {
+        "front": "Day 4: Analyze Data",
+        "back": "Task 1: Find a spreadsheet or dataset you make decisions from but rarely have time to analyze deeply. Task 2: Upload it to Julius or paste it into Claude and ask three business questions about it. Task 3: Write down one decision you will make differently based on what the AI surfaced. Tip: The point is not the analysis — it is making a decision faster than you would have otherwise."
+      },
+      {
+        "front": "Day 5: Measure Results",
+        "back": "Task 1: Go back to Days 1-4 and count the actual hours saved across all four days. Task 2: Calculate the dollar value of those hours at your effective hourly rate. Task 3: Write a 3-sentence summary of your first week — what worked, what did not, what you will add next week. Tip: This summary is the seed of your AI ROI report. Write it while it is fresh."
+      }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Day-by-Day Order</span>
+  <h2 class="section-title">The sequence is the strategy.</h2>
+  <p class="section-text">It is tempting to start with the thing that excites you most — usually content or a fancy tool. The problem is that if you skip setup and automation, you never build the foundation that makes everything else sustainable. Each day below is ordered because of what the previous day enables. See if you can reconstruct the logic before sorting.</p>
+
+  <div data-learn="SortStack" data-props='{
+    "title": "Why This Order?",
+    "instruction": "Drag these into the correct order — the sequence that builds each day on the last",
+    "items": [
+      "Get Set Up — no tool, no workflow, no results",
+      "Automate One Workflow — feel ROI before building habits",
+      "Create Content — use the writing habit now that setup is done",
+      "Analyze Data — deeper work once the basics are running",
+      "Measure Results — only meaningful after 4 days of real use"
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Spot the Mistakes</span>
+  <h2 class="section-title">Common first-week errors — and the fix.</h2>
+  <p class="section-text">The first week with AI has predictable failure modes. They are not random — they come from treating AI like a toy instead of a business tool, or from trying to do too much instead of doing one thing completely. The questions below cover the five mistakes that derail the most first-time AI adopters.</p>
+
+  <div data-learn="QuizMC" data-props='{
+    "title": "Spot the First-Week Mistakes",
+    "questions": [
+      {
+        "q": "On Day 1, what should you actually do?",
+        "options": [
+          "Sign up for 10 AI tools and compare them",
+          "Sign up for one tool, write a real prompt about your business, save 3 useful outputs",
+          "Build a custom AI chatbot for your website",
+          "Read 50 blog posts about AI strategy"
+        ],
+        "correct": 1,
+        "explanation": "Signing up for 10 tools creates decision paralysis and cost without results. Building a chatbot on Day 1 is building the roof before the foundation. Reading is not doing. One tool plus three real outputs is Day 1 done right."
+      },
+      {
+        "q": "You used AI to write a blog post and the output is pretty good but sounds a little generic. What do you do?",
+        "options": [
+          "Post it as-is — editing defeats the purpose of AI",
+          "Scrap it and write the post yourself",
+          "Edit it to match your voice and add one or two specific examples from your experience",
+          "Ask the AI to rewrite it five more times until it sounds perfect"
+        ],
+        "correct": 2,
+        "explanation": "AI drafts are first drafts. Posting unedited content trains your audience to expect generic. Scrapping it wastes the value. Five rewrites is inefficient. Edit once with your own voice and examples — that is the workflow."
+      },
+      {
+        "q": "By the end of Day 3, you have not saved any prompts that worked well. What is the consequence?",
+        "options": [
+          "Nothing — prompts are easy to recreate",
+          "You will need to pay for a prompt library tool",
+          "You will spend the same 30 minutes rediscovering the same good prompts every time you need them",
+          "The AI will forget what worked"
+        ],
+        "correct": 2,
+        "explanation": "Prompts that work well are intellectual property. Without a library, you rediscover them from scratch every time. A simple doc with 20 saved prompts saves 20-30 minutes per week. Start the library on Day 1."
+      },
+      {
+        "q": "At the end of Day 5, you calculate you saved 4 hours but you are not sure the quality of outputs was as good as doing it yourself. What is the right interpretation?",
+        "options": [
+          "AI is not worth it — quality matters more than speed",
+          "You saved 4 hours and now you need to identify which tasks had quality gaps to fix prompts or add an edit step",
+          "You should go back to doing everything manually",
+          "4 hours saved is not enough to justify the $20/mo cost"
+        ],
+        "correct": 1,
+        "explanation": "4 hours saved in one week is $200-400 in recovered time depending on your rate. Quality gaps are fixable — better prompts, better edit steps, or reserving certain tasks for human-only. The answer is not to stop, it is to improve."
+      },
+      {
+        "q": "A team member suggests you should spend your first week building a full AI content strategy instead of following this 5-day plan. What is the risk?",
+        "options": [
+          "No risk — strategy first is always better",
+          "You might over-plan and under-execute, ending the week with a document but no time saved",
+          "Strategy documents take too long to write",
+          "AI cannot help with strategy"
+        ],
+        "correct": 1,
+        "explanation": "Strategy without execution is a document. The 5-day plan is designed to get time saved in hand immediately, which creates the data and confidence to build a real strategy from a position of experience, not theory."
+      }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Match the Day to the Goal</span>
+  <h2 class="section-title">Every day has one primary outcome.</h2>
+  <p class="section-text">Each day of the plan has a primary goal — the one outcome that makes the day a success even if nothing else goes perfectly. Knowing the primary goal per day helps you prioritize when time is tight and evaluate whether a day actually delivered what it was supposed to.</p>
+
+  <div data-learn="MatchConnect" data-props='{
+    "title": "Days to Primary Goals",
+    "instruction": "Tap one item on the left, then its match on the right",
+    "pairs": [
+      { "left": "Day 1", "right": "Have one working AI tool and a prompt library started" },
+      { "left": "Day 2", "right": "Have one automated workflow running and time savings documented" },
+      { "left": "Day 3", "right": "Have one real piece of content drafted, edited, and shipped" },
+      { "left": "Day 4", "right": "Have one data-driven decision made faster than before" },
+      { "left": "Day 5", "right": "Have a number: hours saved, dollar value, what is next" }
+    ]
+  }'></div>
 </div>
 
 </div>
-
-<script>
-const days = [
-  {day:1, title:"Get Set Up", subtitle:"Sign up and do 3 real tasks", tasks:[
-    {title:"Sign up for Claude or ChatGPT (free tier)", desc:"Go to claude.ai or chat.openai.com. Create an account. Takes 2 minutes.", tip:"Pro tip: Claude is better for business writing, ChatGPT is better for creative brainstorming."},
-    {title:"Ask AI to summarize a long email or document", desc:"Paste something real from your inbox. Ask: 'Summarize this in 3 bullet points.'", tip:"Notice how it pulls out the key points instantly? That's 10 minutes saved."},
-    {title:"Have AI draft a response to a tricky email", desc:"Paste the email and say: 'Write a professional response that declines politely but keeps the door open.'", tip:"Edit the draft to match your voice. It's faster to edit than to write from scratch."},
-  ]},
-  {day:2, title:"Automate One Workflow", subtitle:"Stop doing repetitive email work", tasks:[
-    {title:"Identify your most repetitive email type", desc:"Look at your sent folder. What do you write over and over? Follow-ups? Thank yous? Status updates?", tip:"Most business owners send 5-10 versions of the same email every week."},
-    {title:"Create 3 templates with AI", desc:"Tell AI: 'Create 3 email templates for [your scenario]. Professional tone. Include a subject line.'", tip:"Save these somewhere you can grab them fast — a Google Doc or email drafts folder."},
-    {title:"Use them for real today", desc:"Actually send at least one AI-drafted email (after reviewing and editing it, of course).", tip:"Time yourself. Most people cut email time by 60% with templates."},
-  ]},
-  {day:3, title:"Create Content", subtitle:"Use AI to produce real business content", tasks:[
-    {title:"Generate 5 social media posts for your business", desc:"Tell AI your business, your audience, and your goal. Ask for 5 posts with different angles.", tip:"'Write 5 LinkedIn posts for a [your business] targeting [your customer]. Mix educational and promotional.'"},
-    {title:"Draft a blog post or newsletter outline", desc:"Give AI a topic relevant to your customers. Ask for an outline with key points and a strong opening.", tip:"Don't publish AI content without adding your own experience and perspective."},
-    {title:"Create a customer FAQ page", desc:"List your 10 most common questions. Ask AI to write clear, helpful answers in your brand voice.", tip:"This one saves the most time — every FAQ you write is one less support email you'll answer."},
-  ]},
-  {day:4, title:"Analyze Your Data", subtitle:"Turn numbers into decisions", tasks:[
-    {title:"Upload a spreadsheet to an AI tool", desc:"Use Julius AI (free) or ChatGPT with data analysis. Upload last month's sales, expenses, or customer data.", tip:"Even a simple CSV export from your accounting software works perfectly."},
-    {title:"Ask 3 business questions about your data", desc:"Try: 'What are my top 3 revenue sources?' 'Where am I overspending?' 'What trends do you see?'", tip:"AI finds patterns humans miss. Ask follow-up questions when something surprises you."},
-    {title:"Create one chart or summary for your team", desc:"Ask AI to create a visual summary you can share. 'Make a chart showing monthly revenue trends.'", tip:"One clear chart replaces a 20-minute meeting."},
-  ]},
-  {day:5, title:"Measure Your Results", subtitle:"Quantify what you saved this week", tasks:[
-    {title:"Estimate hours saved this week", desc:"Add up: time saved on emails + content + data analysis + repetitive tasks.", tip:"Most people save 3-5 hours in their first week. That scales to 150+ hours per year."},
-    {title:"Calculate the dollar value", desc:"Multiply hours saved by your hourly rate (or the hourly cost of whoever would do this work).", tip:"If you saved 4 hours at $50/hr, that's $200 this week — $10,400 per year."},
-    {title:"Write down your top 3 AI use cases going forward", desc:"Based on this week, which 3 tasks will you keep using AI for? Commit to them.", tip:"Consistency is the ROI multiplier. One-off use doesn't build momentum."},
-  ]},
-];
-
-const STORAGE_KEY = 'ai-biz-week-tasks';
-let taskStates = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-const container = document.getElementById('days-container');
-
-days.forEach(day => {
-  const card = document.createElement('div');
-  card.className = `day-card day-${day.day}`;
-  const tasksHTML = day.tasks.map((t,i) => {
-    const key = `${day.day}-${i}`;
-    const done = taskStates[key];
-    return `<div class="task"><div class="task-check ${done?'done':''}" data-key="${key}">${done?'✓':''}</div><div class="task-content"><div class="task-title">${t.title}</div><div class="task-desc">${t.desc}</div><div class="task-tip">${t.tip}</div></div></div>`;
-  }).join('');
-
-  card.innerHTML = `<div class="day-header"><div class="day-badge">Day ${day.day}</div><div class="day-info"><div class="day-title">${day.title}</div><div class="day-subtitle">${day.subtitle}</div></div><div class="day-status" id="status-${day.day}">▸</div></div><div class="day-body" id="body-${day.day}">${tasksHTML}</div>`;
-  container.appendChild(card);
-
-  card.querySelector('.day-header').addEventListener('click', () => {
-    const body = document.getElementById('body-'+day.day);
-    const status = document.getElementById('status-'+day.day);
-    const isOpen = body.classList.contains('open');
-    body.classList.toggle('open');
-    status.textContent = isOpen ? '▸' : '▾';
-  });
-});
-
-// Open day 1 by default
-document.getElementById('body-1').classList.add('open');
-document.getElementById('status-1').textContent = '▾';
-
-document.querySelectorAll('.task-check').forEach(el => {
-  el.addEventListener('click', () => {
-    const key = el.dataset.key;
-    const done = !taskStates[key];
-    taskStates[key] = done;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(taskStates));
-    el.classList.toggle('done', done);
-    el.textContent = done ? '✓' : '';
-    if(done) LO.sfx.success(); else LO.sfx.click();
-    updateProgress();
-  });
-});
-
-function updateProgress(){
-  const total = 15;
-  const done = Object.values(taskStates).filter(Boolean).length;
-  document.getElementById('tasks-done').textContent = done;
-  const pct = Math.round(done/total*100);
-  document.getElementById('ring-pct').textContent = pct+'%';
-  const circ = 2 * Math.PI * 28;
-  document.getElementById('ring-fill').style.strokeDashoffset = circ - (circ * pct / 100);
-  if(done >= 10){
-    LO.completeLesson('ai-biz', 7, 120);
-  }
-  if(done >= 15){
-    document.getElementById('complete-banner').style.display = 'block';
-  }
-}
-updateProgress();
-</script>

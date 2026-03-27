@@ -1,154 +1,168 @@
 ---
-title: "AI Tools Landscape"
+title: "The AI Tools Landscape"
 course: "ai-for-business"
 order: 6
 type: "lesson"
 free: false
 ---<div class="wrap">
 
-<div class="lesson-num">Lesson 6 of 10</div>
-<h1>The AI Tools Landscape</h1>
-<p class="intro">Real tools. Real prices. Click a category to explore, then filter by your budget. No hype -- just what works.</p>
+<nav class="local-nav">
+  <a href="/academy/ai-for-business/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
+</nav>
 
-<div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:12px;padding:1.25rem;margin-bottom:24px;font-size:14px;color:#a3a3a3;line-height:1.6">
-  <strong style="color:#f59e0b">New to AI tools?</strong> Start with the <strong>Writing & Content</strong> category -- tools like Claude and ChatGPT have free tiers and are the easiest way to get value from AI immediately. Look for the <span style="color:#22c55e;font-weight:700">green "Best" tags</span> for our recommended starting points in each category.
+<div class="lesson-hero">
+  <h1>The AI Tools <span class="accent">Landscape.</span></h1>
+  <p class="sub">A map of every category of AI tool and how to build a stack that actually works for your business.</p>
 </div>
 
-<p style="font-size:13px;color:#737373;margin-bottom:16px"><strong style="color:#a3a3a3">How filtering works:</strong> Click a budget button below to show only tools within that price range. Then click any category card to see the matching tools. Each category groups tools by what they do.</p>
-
-<div class="filter-row">
-<span style="font-size:13px;font-weight:700;color:#737373;padding:8px 0">Budget:</span>
-<button class="filter-btn active" data-budget="all">All</button>
-<button class="filter-btn" data-budget="0">Free</button>
-<button class="filter-btn" data-budget="50">&lt; $50/mo</button>
-<button class="filter-btn" data-budget="200">&lt; $200/mo</button>
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>The 8 major categories of AI business tools</li>
+    <li>Which real tools exist in each category and what they cost</li>
+    <li>How to match a tool to a business need without getting overwhelmed</li>
+    <li>The right order to build your AI stack so you get ROI fast</li>
+  </ul>
 </div>
 
-<div class="tools-panel" id="tools-panel">
-<div class="panel-header">
-<button class="panel-close" onclick="closePanel()">&times;</button>
+<div class="lesson-section">
+  <span class="section-label">Overview</span>
+  <h2 class="section-title">Stop drowning in tools. Start building a stack.</h2>
+  <p class="section-text">There are over 5,000 AI tools on the market right now. Most of them are noise. The ones that matter fall into 8 clear categories — and once you understand the categories, you can evaluate any new tool in 30 seconds by asking "what problem category does this solve?"</p>
+  <p class="section-text">The goal isn't to use all 8 categories. It's to know where to look when a problem shows up. A solo consultant probably starts with Writing and Automation. A 10-person agency might add Image Generation and Transcription. A 50-person company needs all 8. Build progressively.</p>
+  <p class="section-text">Here's how to think about each category before we map the tools: Writing and Content is your highest-leverage starting point because every business produces writing. Image Generation removes the $500-per-asset design bottleneck. Video and Audio production used to require studios — now it requires a browser tab. Transcription turns spoken words into searchable, actionable text. Automation connects your existing tools so humans stop doing copy-paste work. Analytics makes sense of your data without a data scientist on staff. No-Code Builders let non-developers ship products and internal tools. Customer Service scales your support without scaling your headcount.</p>
+  <p class="section-text">Each of these categories has a clear cost structure, a clear leader, and two or three strong alternatives. Know the category, know the leader, know when the leader is overkill. That's the whole game.</p>
 </div>
+
+<div class="lesson-section">
+  <span class="section-label">Tool Categories</span>
+  <h2 class="section-title">Eight categories, three tools each.</h2>
+  <p class="section-text">Flip each card to see the top tools in that category, what they cost, and what they're actually best for. Don't try to memorize every tool — get familiar with the landscape so you can find what you need when you need it.</p>
+
+  <div data-learn="FlashDeck" data-props='{
+    "title": "AI Tool Categories",
+    "cards": [
+      {
+        "front": "✍️ Writing & Content",
+        "back": "Claude ($20/mo) — best for nuanced long-form, research, complex reasoning. ChatGPT ($20/mo) — best all-around, huge plugin ecosystem. Jasper ($49/mo) — templates built for marketing teams. Use when: you produce blog posts, emails, proposals, social content."
+      },
+      {
+        "front": "🎨 Image Generation",
+        "back": "Midjourney ($10-$30/mo) — highest quality, community-driven, steep learning curve. DALL-E 3 (included in ChatGPT Plus) — easiest to use, good for quick concepts. Adobe Firefly ($5/mo) — commercial-safe, integrates with Creative Cloud. Use when: you need marketing visuals, product mockups, custom illustrations."
+      },
+      {
+        "front": "🎬 Video & Audio",
+        "back": "Runway ($15/mo) — best text-to-video and video editing AI. ElevenLabs ($5-$22/mo) — realistic voice cloning and text-to-speech. Descript ($24/mo) — edit video by editing the transcript, incredible for podcasts. Use when: you produce video content, podcasts, or training materials."
+      },
+      {
+        "front": "🎙️ Transcription",
+        "back": "Otter.ai ($10/mo) — live meeting transcription with AI summaries. Whisper (free, OpenAI) — best raw accuracy, requires some technical setup. Rev ($0.25/min) — human-reviewed transcription when accuracy is critical. Use when: you run client calls, team meetings, or interviews you need searchable records of."
+      },
+      {
+        "front": "⚙️ Automation",
+        "back": "Zapier ($20-$69/mo) — connects 6,000+ apps, no code required. Make ($9-$16/mo) — more powerful than Zapier, better for complex workflows. n8n (free self-hosted) — fully open-source, ideal if you want control. Use when: you have repetitive data-moving tasks between tools (CRM → email → Slack, etc.)."
+      },
+      {
+        "front": "📊 Analytics",
+        "back": "Julius ($20/mo) — chat with your spreadsheets and CSV files in plain English. Tableau Pulse ($15/mo add-on) — AI-generated insights layered onto Tableau dashboards. Polymer ($25/mo) — turns messy spreadsheets into interactive dashboards fast. Use when: you have data you make decisions from but spend too long analyzing."
+      },
+      {
+        "front": "🏗️ No-Code Builders",
+        "back": "Bubble ($29/mo) — full web apps with no code, large community. Webflow (free-$39/mo) — best AI-assisted website builder for design-quality results. Glide ($25/mo) — turns spreadsheets into mobile apps in minutes. Use when: you want to ship an internal tool, client portal, or product without hiring a developer."
+      },
+      {
+        "front": "💬 Customer Service",
+        "back": "Intercom Fin ($39/mo per seat) — AI agent that resolves support tickets automatically. Tidio ($29/mo) — affordable AI chat for small e-commerce and service businesses. Zendesk AI (add-on) — best for teams already using Zendesk, adds AI triage and drafts. Use when: you handle repetitive customer questions and want to scale without adding headcount."
+      }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Match Tools to Categories</span>
+  <h2 class="section-title">Know which tool lives where.</h2>
+  <p class="section-text">Part of being fluent in AI tools is instant pattern recognition — hearing a tool name and knowing what it does and where it fits. This matters when a vendor pitches you, when an employee asks "can we use X?", and when you're evaluating whether a new tool duplicates something you already have.</p>
+
+  <div data-learn="MatchConnect" data-props='{
+    "title": "Tools to Categories",
+    "instruction": "Tap one item on the left, then its match on the right",
+    "pairs": [
+      { "left": "Claude", "right": "Writing & Content" },
+      { "left": "Midjourney", "right": "Image Generation" },
+      { "left": "Zapier", "right": "Automation" },
+      { "left": "Otter.ai", "right": "Transcription" },
+      { "left": "Runway", "right": "Video & Audio" },
+      { "left": "Julius", "right": "Analytics" },
+      { "left": "Bubble", "right": "No-Code Builders" },
+      { "left": "Intercom Fin", "right": "Customer Service" }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Build Your Stack</span>
+  <h2 class="section-title">Right tool for the right problem.</h2>
+  <p class="section-text">Knowing the categories isn't enough — you have to apply them under pressure. A vendor will promise you their tool solves everything. A team member will want to buy the newest shiny thing. Your job is to map every request back to a category and then evaluate whether you already have something in that category that works.</p>
+  <p class="section-text">The questions below are scenario-based. Each one reflects a real business decision you'll face within your first six months of building an AI stack.</p>
+
+  <div data-learn="QuizMC" data-props='{
+    "title": "Build Your Stack",
+    "questions": [
+      {
+        "q": "You need to automatically move new form submissions from your website into your CRM and send a Slack notification to your sales team. Which category solves this?",
+        "options": ["Analytics", "Automation", "No-Code Builders", "Customer Service"],
+        "correct": 1,
+        "explanation": "Automation tools like Zapier or Make are built exactly for this — connecting apps and triggering actions when events happen. No code required, usually live in under an hour."
+      },
+      {
+        "q": "Your support team spends 60% of their time answering the same 20 questions. You want AI to handle those and escalate the rest. Which category?",
+        "options": ["Writing & Content", "Analytics", "Customer Service", "Automation"],
+        "correct": 2,
+        "explanation": "Customer Service AI (Intercom Fin, Tidio, Zendesk AI) is built specifically to deflect repetitive tickets, maintain a knowledge base, and hand off complex issues to humans."
+      },
+      {
+        "q": "You run 10 client discovery calls per week and spend 2 hours after each one writing notes and follow-up emails. Which two categories solve different parts of this problem?",
+        "options": ["Transcription + Writing & Content", "Analytics + Automation", "Video & Audio + No-Code", "Image Generation + Customer Service"],
+        "correct": 0,
+        "explanation": "Transcription (Otter.ai) captures and summarizes the call automatically. Writing & Content AI (Claude, ChatGPT) drafts the follow-up email from the transcript. Together they cut 2 hours to 15 minutes."
+      },
+      {
+        "q": "Your marketing team needs 40 product images for a new line but your design agency quoted $8,000 and 3 weeks. Which category?",
+        "options": ["No-Code Builders", "Video & Audio", "Writing & Content", "Image Generation"],
+        "correct": 3,
+        "explanation": "Image Generation tools like Midjourney or Adobe Firefly can produce product-quality visuals for $10-30/month. A trained team member can generate 40 images in a day. The $8k quote becomes $30."
+      },
+      {
+        "q": "You have a spreadsheet with 3 years of sales data but no analyst on staff. You want to ask questions like which product has the best margin and which customers are at risk of churning. Which category?",
+        "options": ["Automation", "No-Code Builders", "Analytics", "Writing & Content"],
+        "correct": 2,
+        "explanation": "Analytics AI tools like Julius let you upload a spreadsheet and ask questions in plain English. No SQL, no pivot tables, no data science degree needed. You get answers in seconds."
+      }
+    ]
+  }'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Stack Building Order</span>
+  <h2 class="section-title">Sequence matters more than speed.</h2>
+  <p class="section-text">Most businesses try to adopt AI in the wrong order — they go straight for the flashiest tools (image generation, video) instead of the highest-ROI foundations (writing, automation). The order below is based on what delivers measurable ROI fastest, what's easiest to learn without disrupting your existing workflow, and what each layer enables for the next.</p>
+  <p class="section-text">Writing and Content comes first because it pays for itself in the first week. Automation comes second because it multiplies the value of everything else. Analytics third because once you have good processes, you need to measure them. Customer Service fourth because it requires process documentation before it works well. Image, Video, No-Code, and specialized tools come last — high value, but only after the foundation is solid.</p>
+
+  <div data-learn="SortStack" data-props='{
+    "title": "AI Stack Adoption Order",
+    "instruction": "Drag these into the recommended order for adopting AI tools",
+    "items": [
+      "Writing & Content — highest ROI, lowest friction, immediate value",
+      "Automation — multiplies everything else, eliminates busywork",
+      "Transcription — turns meetings into searchable assets",
+      "Analytics — measure what your improved processes produce",
+      "Customer Service — scale support without scaling headcount",
+      "Image Generation — remove design bottlenecks",
+      "Video & Audio — advanced content production",
+      "No-Code Builders — ship internal tools and products"
+    ]
+  }'></div>
 </div>
 
 </div>
-
-<script>
-const data = {
-  writing: {emoji:"✍️", name:"Writing & Content", tools:[
-    {name:"Claude (Anthropic)", price:0, priceTxt:"Free / $20/mo Pro", desc:"Best for long-form writing, analysis, and nuanced business communication. Understands context exceptionally well.", tags:["Best for Business","popular"]},
-    {name:"ChatGPT (OpenAI)", price:0, priceTxt:"Free / $20/mo Plus", desc:"The most well-known AI assistant. Strong at drafting, brainstorming, and general writing tasks.", tags:["Most Popular","popular"]},
-    {name:"Jasper", price:49, priceTxt:"From $49/mo", desc:"Built specifically for marketing teams. Templates for ads, blogs, social media, and product descriptions.", tags:["Marketing Focus"]},
-  ]},
-  image: {emoji:"🎨", name:"Image Generation", tools:[
-    {name:"Midjourney", price:10, priceTxt:"From $10/mo", desc:"Highest quality AI images. Perfect for marketing materials, social posts, and brand visuals.", tags:["Best Quality","popular"]},
-    {name:"DALL-E 3 (via ChatGPT)", price:20, priceTxt:"Included in ChatGPT Plus ($20/mo)", desc:"Easy to use, good quality. Great for quick visuals and brainstorming design ideas.", tags:["Easiest to Use"]},
-    {name:"Canva AI", price:0, priceTxt:"Free / $13/mo Pro", desc:"AI features built into the design tool you probably already use. Magic Write, Magic Design, background removal.", tags:["Best Value","best"]},
-  ]},
-  video: {emoji:"🎬", name:"Video & Audio", tools:[
-    {name:"Descript", price:24, priceTxt:"Free / $24/mo Pro", desc:"Edit video by editing text. Remove filler words automatically. Create clips for social media.", tags:["Best for Business","best"]},
-    {name:"HeyGen", price:29, priceTxt:"From $29/mo", desc:"Create AI avatar videos. Great for training content, product demos, and personalized outreach.", tags:["AI Avatars"]},
-    {name:"ElevenLabs", price:0, priceTxt:"Free / $5/mo Starter", desc:"Ultra-realistic AI voice generation. Clone your voice for consistent content creation.", tags:["Voice Cloning","popular"]},
-  ]},
-  voice: {emoji:"🎙️", name:"Transcription & Voice", tools:[
-    {name:"Otter.ai", price:0, priceTxt:"Free / $17/mo Pro", desc:"Live meeting transcription with speaker identification. Integrates with Zoom, Teams, Google Meet.", tags:["Best for Meetings","best"]},
-    {name:"Fireflies.ai", price:0, priceTxt:"Free / $19/mo Pro", desc:"AI meeting assistant that records, transcribes, and summarizes. Creates action items automatically.", tags:["Auto Summaries","popular"]},
-    {name:"Rev", price:0, priceTxt:"$0.25/minute", desc:"Human + AI transcription for maximum accuracy. Best when you need perfect transcripts.", tags:["Most Accurate"]},
-  ]},
-  automation: {emoji:"⚡", name:"Automation", tools:[
-    {name:"Zapier", price:0, priceTxt:"Free / $20/mo Starter", desc:"Connect 6,000+ apps with AI-powered workflows. The glue between your existing tools.", tags:["Most Integrations","popular"]},
-    {name:"Make (formerly Integromat)", price:0, priceTxt:"Free / $9/mo Core", desc:"Visual automation builder. More powerful than Zapier for complex workflows, lower price.", tags:["Best Value","best"]},
-    {name:"Microsoft Power Automate", price:15, priceTxt:"From $15/user/mo", desc:"Best if your company already uses Microsoft 365. Deep integration with Office apps.", tags:["Best for Microsoft"]},
-  ]},
-  analytics: {emoji:"📊", name:"Analytics & Data", tools:[
-    {name:"Julius AI", price:0, priceTxt:"Free / $20/mo Pro", desc:"Upload a spreadsheet, ask questions in plain English, get charts and insights. No formulas needed.", tags:["Easiest to Use","best"]},
-    {name:"Tableau (with AI)", price:75, priceTxt:"From $75/user/mo", desc:"Enterprise-grade dashboards with AI-powered insights. Ask questions about your data naturally.", tags:["Enterprise"]},
-    {name:"Google Looker Studio + Gemini", price:0, priceTxt:"Free", desc:"Free dashboards with Google's AI built in. Best if you already use Google Workspace.", tags:["Free","popular"]},
-  ]},
-  code: {emoji:"🔌", name:"No-Code AI Builders", tools:[
-    {name:"Bubble", price:0, priceTxt:"Free / $29/mo Starter", desc:"Build full web apps without writing a single line. AI features help you build faster.", tags:["Most Popular","popular"]},
-    {name:"Softr", price:0, priceTxt:"Free / $49/mo Basic", desc:"Turn your Airtable or Google Sheets data into apps, portals, and internal tools.", tags:["Spreadsheet to App"]},
-    {name:"Relevance AI", price:0, priceTxt:"Free / $19/mo", desc:"Build AI agents and workflows without technical knowledge. Automate complex multi-step tasks.", tags:["AI Agents","best"]},
-  ]},
-  support: {emoji:"🎧", name:"Customer Service", tools:[
-    {name:"Intercom Fin", price:99, priceTxt:"From $0.99/resolution", desc:"AI chatbot that actually resolves customer issues. Learns from your help docs and past conversations.", tags:["Best AI Chatbot","popular"]},
-    {name:"Zendesk AI", price:55, priceTxt:"From $55/agent/mo", desc:"AI-powered ticket routing, suggested replies, and automated responses. Integrates with your existing support.", tags:["Enterprise"]},
-    {name:"Tidio", price:0, priceTxt:"Free / $29/mo Starter", desc:"AI chatbot + live chat + helpdesk in one. Great for small businesses getting started with AI support.", tags:["Best for SMBs","best"]},
-  ]},
-};
-
-let activeBudget = 'all';
-let activeCategory = null;
-let explored = new Set();
-
-// Render categories
-const catGrid = document.getElementById('categories');
-Object.entries(data).forEach(([key, cat]) => {
-  const card = document.createElement('div');
-  card.className = 'cat-card';
-  card.dataset.key = key;
-  card.innerHTML = `<div class="cat-emoji">${cat.emoji}</div><div class="cat-name">${cat.name}</div><div class="cat-count">${cat.tools.length} tools</div>`;
-  card.addEventListener('click', () => openCategory(key));
-  catGrid.appendChild(card);
-});
-
-// Budget filter
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    activeBudget = btn.dataset.budget;
-    if(activeCategory) filterTools();
-    LO.sfx.click();
-  });
-});
-
-function openCategory(key){
-  activeCategory = key;
-  explored.add(key);
-  const cat = data[key];
-  document.querySelectorAll('.cat-card').forEach(c=>c.classList.toggle('active', c.dataset.key===key));
-  document.getElementById('panel-title').textContent = cat.emoji + ' ' + cat.name;
-  renderTools(cat.tools);
-  document.getElementById('tools-panel').classList.add('active');
-  document.getElementById('tools-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
-  LO.sfx.click();
-
-  if(explored.size >= 4){
-    LO.completeLesson('ai-biz', 6, 120);
-  }
-}
-
-function renderTools(tools){
-  const list = document.getElementById('tools-list');
-  list.innerHTML = '';
-  tools.forEach(t => {
-    const card = document.createElement('div');
-    card.className = 'tool-card';
-    card.dataset.price = t.price;
-    const tagsHTML = t.tags.map(tag => {
-      const cls = tag.toLowerCase().includes('best') ? 'best' : tag.toLowerCase().includes('popular') ? 'popular' : '';
-      return `<span class="tag ${cls}">${tag}</span>`;
-    }).join('');
-    card.innerHTML = `<div class="tool-header"><div class="tool-name">${t.name}</div><div class="tool-price">${t.price===0?'<span class="free">'+t.priceTxt+'</span>':t.priceTxt}</div></div><div class="tool-desc">${t.desc}</div><div class="tool-tags">${tagsHTML}</div>`;
-    list.appendChild(card);
-  });
-  filterTools();
-}
-
-function filterTools(){
-  document.querySelectorAll('.tool-card').forEach(card => {
-    const price = +card.dataset.price;
-    let show = true;
-    if(activeBudget === '0') show = price === 0;
-    else if(activeBudget === '50') show = price < 50;
-    else if(activeBudget === '200') show = price < 200;
-    card.classList.toggle('hidden', !show);
-  });
-}
-
-function closePanel(){
-  document.getElementById('tools-panel').classList.remove('active');
-  document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('active'));
-  activeCategory = null;
-}
-</script>

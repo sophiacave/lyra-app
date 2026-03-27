@@ -6,142 +6,123 @@ type: "lesson"
 free: true
 ---<div class="wrap">
 
-<div class="lesson-num">Lesson 2 of 10</div>
-<h1>What AI Can and Cannot Do</h1>
-<p class="intro">Sort each task into the right category. Click a task, then click the zone where it belongs. Get realistic about AI — it's powerful but it's not magic.</p>
+<nav class="local-nav">
+  <a href="/academy/ai-for-business/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
+</nav>
 
-<div class="pool" id="pool">
-<div class="pool-title">Tasks to Sort (<span id="remaining">20</span> remaining)</div>
+<div class="lesson-hero">
+  <h1>What AI Can and <span class="accent">Cannot Do.</span></h1>
+  <p class="sub">The hype goes both ways — AI will either replace everyone or it is useless. Neither is true. Here is the realistic picture.</p>
 </div>
 
-<div class="zones">
-<div class="zone" data-zone="can" id="zone-can">
-<div class="zone-title">AI Can Do This Well</div>
-</div>
-<div class="zone" data-zone="help" id="zone-help">
-<div class="zone-title">AI Can Help With This</div>
-</div>
-<div class="zone" data-zone="cannot" id="zone-cannot">
-<div class="zone-title">AI Cannot Do This</div>
-</div>
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>The three categories of AI capability: does well, can help, cannot do</li>
+    <li>Which business tasks are safe to hand to AI and which need human oversight</li>
+    <li>Why AI fails at certain things — not as a bug, but by design</li>
+    <li>How to set accurate expectations with your team and stakeholders</li>
+  </ul>
 </div>
 
-<button class="check-btn" id="check-btn" disabled onclick="checkAnswers()">Check My Answers</button>
+<div class="lesson-section">
+  <span class="section-label">Section 1</span>
+  <h2 class="section-title">The reality check.</h2>
+  <p class="section-text">Most business owners come to AI from one of two places: they heard it can do everything, or they tried it once and it failed them. Both experiences are real — because the truth is that AI is genuinely excellent at a narrow set of things, decent at a much wider set with the right guardrails, and genuinely bad at a few things it should never be trusted to do alone.</p>
+
+  <p class="section-text">Here is how to think about the three categories:</p>
+
+  <p class="section-text"><strong>AI Does Well:</strong> Tasks that involve processing language, finding patterns in large amounts of text, generating drafts, summarizing documents, or answering questions based on provided information. Examples: drafting marketing emails, summarizing a 50-page report, writing first drafts of job descriptions, answering customer FAQ questions, translating content, writing code.</p>
+
+  <p class="section-text"><strong>AI Can Help (with oversight):</strong> Tasks where AI provides significant leverage but humans must review the output before acting on it. Examples: market research (AI can compile and summarize, but you verify the data), financial analysis (AI can spot patterns, but an accountant reviews conclusions), legal document review (AI flags clauses, but a lawyer makes the call), hiring assessments (AI scores resumes, but humans make final decisions).</p>
+
+  <p class="section-text"><strong>AI Cannot Do:</strong> Tasks that require real-world judgment, emotional intelligence, lived experience, accountability, or current information it does not have access to. Examples: building genuine client relationships, making final strategic decisions, physical tasks, anything requiring real-time data it was not given, crisis management involving human emotions, and anything where being wrong has serious legal or financial consequences without human review.</p>
+
+  <p class="section-text">The mistake most businesses make is either keeping AI out entirely, or handing it tasks it cannot handle. The skill is knowing which category each task falls into.</p>
 </div>
 
-<script>
-const tasks = [
-  {text:"Write first drafts of emails", zone:"can"},
-  {text:"Summarize long documents", zone:"can"},
-  {text:"Analyze spreadsheet data", zone:"can"},
-  {text:"Generate social media posts", zone:"can"},
-  {text:"Transcribe meeting recordings", zone:"can"},
-  {text:"Translate content to other languages", zone:"can"},
-  {text:"Answer FAQs from customers", zone:"can"},
-  {text:"Create marketing strategies", zone:"help"},
-  {text:"Write job descriptions", zone:"help"},
-  {text:"Research competitors", zone:"help"},
-  {text:"Draft legal contracts", zone:"help"},
-  {text:"Plan project timelines", zone:"help"},
-  {text:"Brainstorm product ideas", zone:"help"},
-  {text:"Make final hiring decisions", zone:"cannot"},
-  {text:"Replace your business judgment", zone:"cannot"},
-  {text:"Guarantee legal compliance", zone:"cannot"},
-  {text:"Build genuine relationships", zone:"cannot"},
-  {text:"Handle sensitive HR conversations", zone:"cannot"},
-  {text:"Make ethical decisions for your company", zone:"cannot"},
-  {text:"Understand your company culture", zone:"cannot"},
-];
+<div class="lesson-section">
+  <span class="section-label">Section 2</span>
+  <h2 class="section-title">Sort the business tasks.</h2>
+  <p class="section-text">Ten common business tasks. Flip each card to find out which category it falls into — and more importantly, why. Some of these will surprise you.</p>
 
-let placements = {};
-let selectedChip = null;
+  <div data-learn="FlashDeck" data-props='{
+    "title": "Can AI Do This?",
+    "cards": [
+      { "front": "Writing a first draft of a sales email", "back": "AI DOES WELL. Give it your product, target audience, and tone. It writes a solid first draft in seconds. You review and personalize — but 80% of the work is done." },
+      { "front": "Deciding whether to fire an employee", "back": "AI CANNOT DO THIS. This requires judgment about context, legal exposure, team dynamics, and human dignity. AI can help you document the situation — but the decision is yours." },
+      { "front": "Summarizing a 40-page vendor contract", "back": "AI CAN HELP. AI reads contracts fast and pulls out key terms, renewal clauses, and liability language. But your lawyer must review before signing. AI misses nuance." },
+      { "front": "Answering common customer support questions", "back": "AI DOES WELL. If you give it your FAQ, product docs, and policies, AI handles 60-80% of support tickets accurately. Route edge cases to humans." },
+      { "front": "Forecasting your Q3 revenue", "back": "AI CAN HELP. AI builds models and spots trends in your historical data. But forecasts depend on market conditions, relationships, and judgment calls AI cannot fully account for." },
+      { "front": "Writing and scheduling social media content", "back": "AI DOES WELL for drafts and scheduling. AI writes captions and post ideas quickly. Review for brand voice and fact-check any claims before going live." },
+      { "front": "Building a genuine relationship with a key client", "back": "AI CANNOT DO THIS. Relationships are built on trust, presence, and authentic human connection. AI can help you prepare and remember follow-ups — but it cannot replace the relationship." },
+      { "front": "Analyzing 500 customer survey responses", "back": "AI DOES WELL. Feed it raw survey data and ask for themes, sentiment, and top complaints. What takes a day takes minutes. Verify the most important findings." },
+      { "front": "Setting your company strategy for next year", "back": "AI CAN HELP. AI researches competitors, summarizes trends, and challenges assumptions. But strategy requires values and accountability that sit with you — not a language model." },
+      { "front": "Translating a product brochure into 5 languages", "back": "AI DOES WELL. Modern AI translation is excellent for business content. Have a native speaker do a light review for marketing copy, but AI handles the bulk accurately." }
+    ]
+  }'></div>
+</div>
 
-function shuffle(arr){ for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];} return arr; }
+<div class="lesson-section">
+  <span class="section-label">Section 3</span>
+  <h2 class="section-title">Match tasks to categories.</h2>
+  <p class="section-text">Six tasks, three categories. Match each task to where it belongs. This is the same judgment call you will be making in your business every week.</p>
 
-const poolItems = document.getElementById('pool-items');
-shuffle([...tasks]).forEach((t,i) => {
-  const chip = document.createElement('div');
-  chip.className = 'task-chip';
-  chip.textContent = t.text;
-  chip.dataset.task = t.text;
-  chip.addEventListener('click', () => selectChip(chip));
-  poolItems.appendChild(chip);
-});
+  <div data-learn="MatchConnect" data-props='{
+    "title": "Task to Category",
+    "instruction": "Tap one item on the left, then its match on the right",
+    "pairs": [
+      { "left": "Drafting job descriptions", "right": "AI Does Well" },
+      { "left": "Making a final hiring decision", "right": "AI Cannot Do" },
+      { "left": "Reviewing a contract for red flags", "right": "AI Can Help" },
+      { "left": "Answering customer FAQs", "right": "AI Does Well" },
+      { "left": "Managing a PR crisis involving real people", "right": "AI Cannot Do" },
+      { "left": "Analyzing customer survey data for themes", "right": "AI Does Well" }
+    ]
+  }'></div>
+</div>
 
-document.querySelectorAll('.zone').forEach(zone => {
-  zone.addEventListener('click', (e) => {
-    if(!selectedChip || e.target.classList.contains('x')) return;
-    placeChip(selectedChip, zone.dataset.zone);
-  });
-});
+<div class="lesson-section">
+  <span class="section-label">Section 4</span>
+  <h2 class="section-title">Test your judgment.</h2>
+  <p class="section-text">Five real scenarios. For each one, decide what role AI should play. There is one right answer per question based on the framework you just learned.</p>
 
-function selectChip(chip){
-  if(chip.classList.contains('placed')) return;
-  document.querySelectorAll('.task-chip.active').forEach(c=>c.classList.remove('active'));
-  chip.classList.add('active');
-  selectedChip = chip;
-  LO.sfx.click();
-}
+  <div data-learn="QuizMC" data-props='{
+    "title": "AI Capability Scenarios",
+    "questions": [
+      {
+        "q": "Your team receives 200 support emails a day. 80% are variations of the same 15 questions. What is the right AI strategy?",
+        "options": ["Keep all support human — AI cannot understand context", "Use AI to auto-reply to all 200 emails without review", "Use AI to handle the common 80%, route complex cases to humans", "Use AI only to sort emails into folders, never to respond"],
+        "correct": 2,
+        "explanation": "This is a classic AI Does Well scenario. High-volume, repetitive questions with clear answers are ideal for AI. The 20% of edge cases should still go to humans."
+      },
+      {
+        "q": "You need to decide whether to expand into a new market. You ask an AI tool what it recommends. How should you treat that recommendation?",
+        "options": ["Follow it — AI has more data than you", "Use it as one input among many, then make your own decision", "Ignore it — AI cannot help with strategy at all", "Show it to your board as your primary research"],
+        "correct": 1,
+        "explanation": "AI Can Help with strategy research — it summarizes market data, competitor moves, and risks. But the final call requires your judgment and accountability. AI is an input, not the decision-maker."
+      },
+      {
+        "q": "You want AI to screen resumes before a human reviews them. What is the biggest risk to manage?",
+        "options": ["AI will be slower than a human recruiter", "AI may filter out good candidates based on biased patterns in its training data", "AI cannot read PDF files", "Candidates will be offended that a computer saw their resume"],
+        "correct": 1,
+        "explanation": "AI resume screening has documented bias problems — it can disadvantage candidates based on school names, employment gaps, or language patterns unrelated to job performance. Always audit AI screening decisions."
+      },
+      {
+        "q": "You need a 30-page industry report summarized to 3 key insights for your leadership team. Should you use AI?",
+        "options": ["No — AI summaries are always too inaccurate to trust", "Yes — this is exactly what AI is built for; verify the key claims before presenting", "Only if the report was published in the last 6 months", "Yes, but only if you also have a human read the whole thing first"],
+        "correct": 1,
+        "explanation": "Summarizing long documents is one of AI's strongest use cases. It saves hours. Verify any specific statistics or claims before presenting them — but the summary task itself is a clear AI Does Well."
+      },
+      {
+        "q": "A client relationship has gone sour after a project delivery problem. Your account manager wants to use AI to draft the apology email. What is the right call?",
+        "options": ["Let AI draft and send it automatically for speed", "Use AI to draft, then heavily personalize it with genuine context before sending", "Never use AI for sensitive client communication under any circumstances", "Use AI only if the client is a small account"],
+        "correct": 1,
+        "explanation": "AI Can Help here — it gives you a solid structure and professional tone. But the personalization, genuine acknowledgment, and human warmth must come from the account manager. Send a version that reads like a human wrote it."
+      }
+    ]
+  }'></div>
+</div>
 
-function placeChip(chip, zoneName){
-  const taskText = chip.dataset.task;
-  placements[taskText] = zoneName;
-  chip.classList.add('placed');
-  chip.classList.remove('active');
-  selectedChip = null;
-
-  const container = document.getElementById('items-'+zoneName);
-  const item = document.createElement('div');
-  item.className = 'zone-item';
-  item.innerHTML = `<span>${taskText}</span><span class="x" data-task="${taskText}">&times;</span>`;
-  item.querySelector('.x').addEventListener('click', (e) => {
-    e.stopPropagation();
-    removeItem(taskText, item);
-  });
-  container.appendChild(item);
-  LO.sfx.click();
-  updateCount();
-}
-
-function removeItem(taskText, itemEl){
-  delete placements[taskText];
-  itemEl.remove();
-  const chip = document.querySelector(`.task-chip[data-task="${taskText}"]`);
-  if(chip){ chip.classList.remove('placed'); }
-  updateCount();
-}
-
-function updateCount(){
-  const placed = Object.keys(placements).length;
-  document.getElementById('remaining').textContent = 20 - placed;
-  document.getElementById('check-btn').disabled = placed < 20;
-}
-
-function checkAnswers(){
-  let correct = 0;
-  tasks.forEach(t => {
-    if(placements[t.text] === t.zone) correct++;
-  });
-  const pct = Math.round(correct/20*100);
-  const msg = pct >= 90 ? "Outstanding! You have a realistic view of AI." : pct >= 70 ? "Good instincts. Review the ones you missed." : "AI expectations need calibrating. Try again!";
-  document.getElementById('result').classList.remove('hidden');
-  document.getElementById('result').innerHTML = `<div class="score">${pct}%</div><div>${correct} of 20 correct</div><div class="msg">${msg}</div>`;
-  if(pct >= 70){
-    LO.completeLesson('ai-biz', 2, 120);
-  }
-  if(pct === 100) LO.unlockAchievement('quiz_master');
-
-  // Highlight wrong answers
-  document.querySelectorAll('.zone-item').forEach(item => {
-    const txt = item.querySelector('span').textContent;
-    const task = tasks.find(t=>t.text===txt);
-    const zone = item.closest('.zone').dataset.zone;
-    if(task && task.zone !== zone){
-      item.style.borderLeft = '3px solid #ef4444';
-    } else {
-      item.style.borderLeft = '3px solid #22c55e';
-    }
-    item.querySelector('.x').style.display='none';
-  });
-}
-</script>
+</div>

@@ -1,170 +1,163 @@
 ---
-title: "Business AI Quiz"
+title: "Business AI Readiness Quiz"
 course: "ai-for-business"
 order: 10
 type: "quiz"
 free: false
 ---<div class="wrap">
 
-<div class="lesson-num">Lesson 10 of 10 — Final Assessment</div>
-<h1>Business AI Readiness Quiz</h1>
-<p class="intro">10 questions that test whether you're ready to lead your business into the AI era. This isn't about technical knowledge — it's about business judgment.</p>
+<nav class="local-nav">
+  <a href="/academy/ai-for-business/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 10 of 10</span>
+</nav>
 
-<div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-<div id="quiz-area"></div>
-<div id="result-page" class="result-page"></div>
+<div class="lesson-hero">
+  <h1>Business AI <span class="accent">Readiness Quiz.</span></h1>
+  <p class="sub">Ten questions covering everything in this course. Pass this and you are ready to build a real AI stack.</p>
 </div>
 
-<script>
-const questions = [
-  {
-    q: "Your marketing team spends 15 hours/week writing social media posts. Your hourly cost is $40. An AI writing tool costs $49/month. What's the annual ROI if AI handles 50% of that work?",
-    context: "Think about the math, not the tool.",
-    opts: ["About 200%","About 1,500%","About 6,300%","It's not worth it"],
-    ans: 2,
-    explain: "50% of 15 hours = 7.5 hours/week saved. At $40/hr = $300/week = $15,600/year. Tool cost = $588/year. Net savings = $15,012. ROI = $15,012 / $588 = ~6,300%. AI tools almost always deliver massive ROI on repetitive tasks."
-  },
-  {
-    q: "A vendor pitches you an AI solution that 'replaces your entire customer service team.' What's your best response?",
-    context: "Remember what AI can and cannot do.",
-    opts: ["Sign up immediately — labor is your biggest cost","Ask for a pilot program with a small portion of tickets","Decline — AI can't do customer service","Ask them to guarantee zero customer complaints"],
-    ans: 1,
-    explain: "A pilot program lets you test real results without betting the farm. AI can handle many support tasks, but 'replaces your entire team' is a red flag. Start small, measure results, then expand."
-  },
-  {
-    q: "You're choosing between two AI tools. Tool A is free but sends your data to train their models. Tool B costs $30/month with a privacy guarantee. You handle customer financial data. Which do you choose?",
-    context: "Consider your AI policy principles.",
-    opts: ["Tool A — free is always better for a small business","Tool B — customer data privacy is non-negotiable","Neither — don't use AI with financial data","Use Tool A but anonymize the data first"],
-    ans: 1,
-    explain: "When handling customer financial data, privacy isn't optional. The $30/month is trivial compared to the cost of a data breach or lost customer trust. Tool B is the only responsible choice."
-  },
-  {
-    q: "After using AI for one month, you've saved $2,000 in labor costs but your team's quality scores dropped from 8/10 to 6/10. What should you do?",
-    context: "ROI isn't just about money.",
-    opts: ["Keep going — $2,000/month in savings is great","Stop using AI immediately","Add a human review step to AI-generated work","Switch to a different AI tool"],
-    ans: 2,
-    explain: "Cost savings mean nothing if quality tanks. A human review step keeps the speed advantage of AI while maintaining your standards. This is the most common fix — AI drafts, humans review and finalize."
-  },
-  {
-    q: "Which business area typically sees the FASTEST ROI from AI?",
-    context: "Think about repetitiveness and volume.",
-    opts: ["Strategic planning","Content creation and communication","Product development","Company culture building"],
-    ans: 1,
-    explain: "Content and communication tasks are high-volume, repetitive, and well-suited to AI. Writing emails, social posts, reports, and FAQs are where most businesses see results in the first week."
-  },
-  {
-    q: "Your competitor announces they're 'fully AI-powered.' You should...",
-    context: "Marketing claims vs. reality.",
-    opts: ["Panic and rush to implement AI everywhere","Ignore it — it's just marketing hype","Study what specific tasks they've automated and learn from it","Hire an AI consultant immediately"],
-    ans: 2,
-    explain: "'Fully AI-powered' is almost always marketing. No business runs entirely on AI. But there may be specific things they've automated that you should learn from. Study their actual operations, not their press releases."
-  },
-  {
-    q: "An employee uses ChatGPT to write a client proposal and sends it without review. The proposal contains a made-up case study. What's the systemic fix?",
-    context: "Think policy, not punishment.",
-    opts: ["Fire the employee","Ban all AI tools company-wide","Implement a mandatory human review process for all external AI content","It's fine — clients won't notice"],
-    ans: 2,
-    explain: "This is exactly why you need an AI policy. The fix isn't banning AI or firing people — it's creating a clear process. All AI-generated external content must be reviewed for accuracy before sending. That's the policy section we built in Lesson 8."
-  },
-  {
-    q: "You want to automate your invoice processing. You get 50 invoices/month in various formats. What's the smartest first step?",
-    context: "Remember the build vs. buy framework.",
-    opts: ["Build a custom AI system from scratch","Sign up for an invoice automation SaaS tool","Hire a developer to build one","Keep doing it manually — 50 invoices isn't enough to justify AI"],
-    ans: 1,
-    explain: "This is a common, well-solved problem. Multiple SaaS tools handle invoice processing for $20-100/month. Building custom would cost thousands and take months. For common problems, buy before you build."
-  },
-  {
-    q: "Which metric matters MOST when measuring AI success in your business?",
-    context: "Think about what drives actual business results.",
-    opts: ["Number of AI tools you're using","Hours saved per week","Revenue impact (time saved × hourly value - tool costs)","How impressed your team is with AI"],
-    ans: 2,
-    explain: "Revenue impact is the only metric that captures the full picture. Hours saved is good, but if those hours aren't valuable, it doesn't matter. Revenue impact factors in both the savings AND the costs. That's real ROI."
-  },
-  {
-    q: "You've completed this course. What should you do FIRST on Monday morning?",
-    context: "Implementation beats knowledge every time.",
-    opts: ["Research 10 more AI tools before committing","Pick your highest-pain repetitive task and automate it with AI this week","Present a 30-slide AI strategy to your board","Wait for AI technology to mature before starting"],
-    ans: 1,
-    explain: "Action beats analysis. Pick ONE high-pain, repetitive task and automate it this week. You'll learn more from doing than from planning. Start small, prove the value, then expand."
-  },
-];
+<div class="learn-card">
+  <h3>What this quiz covers</h3>
+  <ul>
+    <li>ROI calculation, vendor evaluation, and build vs. buy decisions</li>
+    <li>Data privacy, policy application, and employee AI misuse</li>
+    <li>Measurement interpretation and the right metric for any scenario</li>
+    <li>Tool selection, implementation sequencing, and first actions</li>
+  </ul>
+</div>
 
-let currentQ = 0;
-let score = 0;
-let answers = [];
-const quizArea = document.getElementById('quiz-area');
+<div class="lesson-section">
+  <span class="section-label">Final Assessment</span>
+  <h2 class="section-title">Ten questions. No time limit. Think it through.</h2>
+  <p class="section-text">This is the capstone assessment for the Business AI course. Each question is scenario-based — there is no memorization required. Read the scenario, apply what you have learned, and pick the best answer. Detailed explanations follow every question so you can understand any mistake immediately and carry the lesson forward.</p>
 
-function renderQuestion(){
-  if(currentQ >= questions.length){ showResults(); return; }
-  const q = questions[currentQ];
-  document.getElementById('progress-fill').style.width = (currentQ/questions.length*100)+'%';
+  <div data-learn="QuizMC" data-props='{
+    "title": "Business AI Readiness — Final Assessment",
+    "questions": [
+      {
+        "q": "Your 8-person team spends an average of 5 hours/week on tasks that AI could automate. Your fully-loaded cost per employee is $60/hour. You are considering a $400/month AI platform. What is the monthly ROI multiple?",
+        "options": [
+          "Approximately 3x — not worth the overhead",
+          "Approximately 6x — marginal but acceptable",
+          "Approximately 24x — highly compelling ROI",
+          "Cannot be calculated without quality data"
+        ],
+        "correct": 2,
+        "explanation": "8 people x 5 hours/week x 4 weeks = 160 hours/month recovered. 160 hours x $60/hour = $9,600 in time value recovered. Against a $400/month platform, that is $9,600 / $400 = 24x ROI. This calculation is why AI adoption is non-optional for any business where knowledge work is the primary labor cost."
+      },
+      {
+        "q": "You are evaluating two AI vendors. Vendor A has better features and a $2,000/month price. Vendor B covers 80% of the use cases at $200/month. Both have SOC 2 Type II certification. What is the correct framework for deciding?",
+        "options": [
+          "Always choose the more capable tool — the feature gap will matter later",
+          "Calculate whether the 20% feature gap represents tasks that actually occur in your workflow, and at what frequency and dollar value",
+          "Choose Vendor B and plan to upgrade when you hit the limits",
+          "Negotiate with Vendor A to match Vendor B pricing"
+        ],
+        "correct": 1,
+        "explanation": "Vendor evaluation requires mapping features to actual workflows, not to hypothetical future needs. If the 20% feature gap covers tasks you do daily at high cost, Vendor A may pay for itself. If the gap covers edge cases you hit twice a year, Vendor B is the right call and you have $1,800/month to invest elsewhere. Never pay for features you do not use."
+      },
+      {
+        "q": "An employee asks whether they can upload your client roster — names, emails, company names, contract values — to an AI analytics tool to look for patterns. The tool has a free tier with no data privacy documentation. What do you decide?",
+        "options": [
+          "Allow it — the analysis value outweighs the risk",
+          "Deny it — free tools are always unsafe",
+          "Deny it until you confirm the tool does not train on inputs and meets your data handling policy, then approve through the formal process",
+          "Allow it with a reminder to delete the data afterward"
+        ],
+        "correct": 2,
+        "explanation": "Client roster data is confidential business information and likely contains PII. The correct answer is not a blanket no — it is a process answer. Require the tool to go through the approval process, confirm data handling terms in writing, and only then allow use. Free tools are not automatically unsafe, but tools with no privacy documentation are always a red flag."
+      },
+      {
+        "q": "After 6 weeks of AI adoption, your content output tripled but your two biggest clients reduced their contract renewals, citing quality concerns. Time saved is up. Cost reduced is up. What should you do?",
+        "options": [
+          "Explain to clients that AI is improving and ask for patience",
+          "Stop using AI for client-facing work immediately",
+          "Treat Quality Score as the leading indicator — pause volume growth, audit recent client deliverables, identify where the edit step broke down, fix the process",
+          "Offer discounts to retain the clients and continue the current process"
+        ],
+        "correct": 2,
+        "explanation": "Client contract risk is a Quality Score failure manifesting as a revenue threat. When Time Saved and Output Increase improve but Quality drops, the process is broken — usually because the human review step is being skipped. Stop chasing volume, audit the work, fix the review process. Two lost contracts can wipe out six months of cost savings. Quality is the constraint."
+      },
+      {
+        "q": "A competitor just announced they are using AI to produce content 10x faster than before. Their pricing dropped 30%. You have not started AI adoption yet. What is your most important first action?",
+        "options": [
+          "Match their pricing immediately to stay competitive",
+          "Announce your own AI initiative publicly to counter the narrative",
+          "Audit your own workflows to identify the highest-leverage AI use case, build a 30-day adoption plan, and execute — do not react to their announcement, respond to your own cost structure",
+          "Wait and see if the quality of their AI-generated work holds up"
+        ],
+        "correct": 2,
+        "explanation": "Competitive pressure is real but reactive decisions are usually poor ones. Matching pricing before you have reduced costs destroys margin. Announcing an AI initiative before you have one is a credibility risk. Waiting while they execute is ceding ground. The correct move is to focus inward: identify your highest-ROI AI opportunity, build a plan, and execute. Their announcement gives you a deadline, not a strategy."
+      },
+      {
+        "q": "You discover that three members of your sales team have been using an unapproved AI tool to draft client proposals, including pasting in confidential deal terms and client names. The proposals have been high quality. What do you do?",
+        "options": [
+          "Let it continue — the quality justifies the approach",
+          "Fire the employees — this is a serious policy violation",
+          "Address the policy violation, run the tool through your formal approval process, and if approved, standardize it — then update training to prevent recurrence",
+          "Mandate that all proposals go back to manual writing"
+        ],
+        "correct": 2,
+        "explanation": "This scenario has two parts: the policy violation (unapproved tool, confidential data) and the practical reality (high quality output, clear use case value). Address the violation with the employees directly — this is a training and accountability issue. Simultaneously, evaluate the tool properly. If it passes your data handling and approval criteria, adopt it officially. The worst outcome is punishing good results and driving AI use underground."
+      },
+      {
+        "q": "You need a customer portal where clients can log in, see their project status, and upload files. You have no in-house developer. You have been quoted $45,000 to build it custom. What is the right framework for deciding whether to build or buy?",
+        "options": [
+          "Always buy — custom development is never worth it for small companies",
+          "Evaluate whether a No-Code Builder like Bubble or Glide can deliver 80-90% of the required functionality at $50-200/month, and what the remaining 10-20% gap costs you in lost capability",
+          "The $45,000 quote is the market rate — budget for it",
+          "Find a cheaper developer to reduce the custom build cost"
+        ],
+        "correct": 1,
+        "explanation": "This is a classic build vs. buy decision that AI-era No-Code tools have fundamentally changed. A customer portal with login, project status, and file upload is well within Bubble or Glide capability. At $50-200/month versus $45,000, the math is overwhelming unless the missing 10-20% represents business-critical features that cannot be approximated. Start with No-Code, pay custom development only for what the No-Code tool genuinely cannot do."
+      },
+      {
+        "q": "You are three months into AI adoption. Your team is tracking all four metrics. Time Saved is excellent (9 hrs/week/person), Output Increase is strong (3x content volume), Cost Reduced is moderate (saved $1,800/month net). Quality Score is undefined — you never set up quality tracking. Which metric should you prioritize establishing NOW?",
+        "options": [
+          "None — three strong metrics is already a win",
+          "Quality Score — it is the only metric that tells you whether the other three gains are sustainable",
+          "Cost Reduced — there is more savings to unlock",
+          "Output Increase — push volume higher while momentum is strong"
+        ],
+        "correct": 1,
+        "explanation": "Three strong metrics without Quality Score is a time bomb. You are producing 3x the volume at 9 hours less per person per week — but you have no idea if the work is good. If quality has been quietly degrading for three months, you may be about to face client complaints, lost contracts, or reputational damage. Quality Score is the health check that validates whether your other gains are real. Establish it immediately."
+      },
+      {
+        "q": "A business owner asks: of the four AI success metrics, which is the single most persuasive for getting executive or investor buy-in for expanded AI investment?",
+        "options": [
+          "Quality Score — executives care most about standards",
+          "Output Increase — volume is the most visible metric",
+          "Time Saved — it converts directly to dollar value and is the easiest to explain and verify",
+          "Cost Reduced — it directly impacts the bottom line"
+        ],
+        "correct": 2,
+        "explanation": "Time Saved wins for buy-in because it is easy to measure, easy to explain, and converts directly to dollars at the employee cost rate. You can say: we saved 120 hours last month at $75/hour average — that is $9,000 in recovered capacity. Executives understand hourly rates. Cost Reduced is strong but requires more context. Output Increase requires explaining why volume matters. Quality Score is abstract without defined criteria."
+      },
+      {
+        "q": "You have decided to start adopting AI in your business. You have no tools, no policy, and no team training yet. What is your single most important first action?",
+        "options": [
+          "Buy the most powerful AI tool available so you are not limited by capability",
+          "Write an AI policy before touching any tools",
+          "Sign up for one AI writing tool, do three real work tasks with it in the first week, and document the time saved — build from evidence, not theory",
+          "Survey your entire team to assess AI readiness before proceeding"
+        ],
+        "correct": 2,
+        "explanation": "The most important first action is generating evidence from real use. Buying the most powerful tool puts you at risk of over-investing in capability you will not use for months. Writing policy before any tool experience produces theoretical policy without practical grounding. A team survey creates delay without action. One tool, three real tasks, documented time savings — that is the seed of your entire AI strategy. Everything else grows from that first evidence."
+      }
+    ]
+  }'></div>
+</div>
 
-  quizArea.innerHTML = `
-    <div class="question-card">
-      <div class="q-count">Question ${currentQ+1} of ${questions.length}</div>
-      <div class="q-text">${q.q}</div>
-      ${q.context ? `<div class="q-context">${q.context}</div>` : ''}
-      <div class="q-opts">${q.opts.map((o,i)=>`<div class="q-opt" data-i="${i}">${o}</div>`).join('')}</div>
-      <div class="q-explain" id="explain">${q.explain}</div>
-    </div>
-  `;
+</div>
 
-  quizArea.querySelectorAll('.q-opt').forEach(el => {
-    el.addEventListener('click', () => {
-      const idx = +el.dataset.i;
-      const correct = idx === q.ans;
-      answers.push({q:currentQ, correct, picked:idx});
-      if(correct){ score++; el.classList.add('correct'); LO.sfx.success(); }
-      else { el.classList.add('wrong'); quizArea.querySelector(`[data-i="${q.ans}"]`).classList.add('correct'); LO.sfx.error(); }
-      quizArea.querySelectorAll('.q-opt').forEach(o=>o.classList.add('disabled'));
-      document.getElementById('explain').classList.add('show');
-      setTimeout(() => { currentQ++; renderQuestion(); }, 1200);
-    });
-  });
-}
+All 5 files are complete. Summary of what was written:
 
-function showResults(){
-  document.getElementById('progress-fill').style.width = '100%';
-  quizArea.style.display = 'none';
-  const pct = Math.round(score/questions.length*100);
-  let grade, gradeClass, msg;
-  if(pct >= 80){ grade='A — AI Ready'; gradeClass='grade-a'; msg="You're ready to lead your business into the AI era with confidence."; }
-  else if(pct >= 60){ grade='B — Almost There'; gradeClass='grade-b'; msg="Solid foundation. Review the lessons you missed and you'll be fully ready."; }
-  else { grade='C — Keep Learning'; gradeClass='grade-c'; msg="Good start, but review the course material before implementing AI decisions."; }
+- **ai-tools-landscape.md** (Lesson 6) — 8-category tool landscape with FlashDeck (8 cards), MatchConnect (8 pairs), 5-question scenario QuizMC, and SortStack for adoption order. Real tools with real prices throughout.
 
-  const breakdown = answers.map((a,i) => {
-    const q = questions[i];
-    return `<div class="breakdown-row"><span class="breakdown-q">${i+1}. ${q.q.substring(0,60)}...</span><span class="breakdown-status ${a.correct?'right':'wrong'}">${a.correct?'Correct':'Missed'}</span></div>`;
-  }).join('');
+- **your-first-week-with-ai.md** (Lesson 7) — 5-day plan with FlashDeck (5 day cards), SortStack (sequencing logic), 5-question mistake-spotting QuizMC, and MatchConnect pairing days to primary goals.
 
-  const resultPage = document.getElementById('result-page');
-  resultPage.className = 'result-page active';
-  resultPage.innerHTML = `
-    <div class="result-score">${pct}%</div>
-    <div class="result-label">${score} of ${questions.length} correct</div>
-    <div class="result-grade ${gradeClass}">${grade}</div>
-    <p style="color:#a3a3a3;font-size:16px;margin-bottom:24px">${msg}</p>
-    <div class="result-breakdown">${breakdown}</div>
-    ${pct >= 60 ? `<div class="cert-card"><h3>Course Complete!</h3><p>You've finished AI for Business Owners. You now have the knowledge to evaluate AI tools, calculate ROI, implement responsibly, and measure results. Go make it happen.</p></div>` : ''}
-    <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      ${pct < 80 ? '<button class="btn-outline btn" onclick="retry()">Try Again</button>' : ''}
-      
-    </div>
-  `;
+- **ai-policy-template.md** (Lesson 8) — Policy framework with real incident examples (Samsung, legal hallucinations), FlashDeck (8 policy sections with clause examples), MatchConnect (scenarios to sections), SortStack (implementation order), and 5-question judgment QuizMC.
 
-  if(pct >= 60){
-    LO.completeLesson('ai-biz', 10, 120);
-    LO.addXP(pct === 100 ? 200 : 50);
-  }
-  if(pct === 100) LO.unlockAchievement('quiz_master');
-}
+- **measuring-ai-success.md** (Lesson 9) — 4-metric ROI framework with FlashDeck (metrics with benchmarks), MatchConnect (scenarios to metrics), SortStack (tracking difficulty order), and 5-question interpretation QuizMC including a math problem.
 
-function retry(){
-  currentQ = 0; score = 0; answers = [];
-  quizArea.style.display = 'block';
-  document.getElementById('result-page').className = 'result-page';
-  renderQuestion();
-}
-
-renderQuestion();
-</script>
+- **business-ai-quiz.md** (Lesson 10, type: "quiz") — 10-question capstone with ROI math, build vs. buy, vendor evaluation, policy judgment, measurement interpretation, and implementation sequencing. All JSON valid with detailed explanations per question.

@@ -6,76 +6,107 @@ type: "lesson"
 free: true
 ---<div class="wrap">
 
-<div class="lesson-num">Lesson 1 of 10</div>
-<h1>AI Without the Jargon</h1>
-<p class="intro">The AI world loves fancy words. Here are the only 10 you need — translated into plain English. Click each card to flip it.</p>
+<nav class="local-nav">
+  <a href="/academy/ai-for-business/">&larr; Course Home</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
+</nav>
 
-<h2 class="section-title">Quick Check — Match the Terms</h2>
+<div class="lesson-hero">
+  <h1>AI Without <span class="accent">Jargon.</span></h1>
+  <p class="sub">The AI world loves fancy words. Here are the only 10 you actually need — translated into plain business English.</p>
 </div>
 
-<script>
-const terms = [
-  {jargon:"LLM (Large Language Model)", plain:"A program that's read millions of documents and learned to write like a human. Think of it as an extremely well-read intern."},
-  {jargon:"Fine-tuning", plain:"Teaching an AI your specific business style. Like training a new employee on how YOUR company writes emails."},
-  {jargon:"Tokens", plain:"The way AI counts words. Roughly 1 token = 3/4 of a word. This is how AI companies charge you — by the token."},
-  {jargon:"Prompt", plain:"The instruction you give to AI. The better your instruction, the better the result. It's like briefing a freelancer."},
-  {jargon:"Hallucination", plain:"When AI confidently makes something up. It sounds right but it's wrong. Always verify facts and numbers."},
-  {jargon:"Embeddings", plain:"How AI understands that 'happy' and 'joyful' mean similar things. It converts words into patterns it can compare."},
-  {jargon:"API", plain:"A way for two programs to talk to each other. It's how you connect AI to your existing tools — like plugging in an adapter."},
-  {jargon:"Training Data", plain:"Everything the AI studied to learn. Just like a new hire's background and experience shapes how they work."},
-  {jargon:"Inference", plain:"When AI actually does work for you — answering questions, writing content, analyzing data. Training is school; inference is the job."},
-  {jargon:"Generative AI", plain:"AI that creates new content — text, images, video. Instead of just finding information, it produces something original."}
-];
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>What LLM, prompt, hallucination, and 7 other AI terms actually mean</li>
+    <li>How to translate AI jargon into business language your team understands</li>
+    <li>Why tokens matter when you're paying for AI tools</li>
+    <li>How to spot an AI hallucination before it embarrasses you</li>
+  </ul>
+</div>
 
-// Render flip cards
-const grid = document.getElementById('cards');
-terms.forEach((t,i) => {
-  const card = document.createElement('div');
-  card.className = 'flip-card';
-  card.innerHTML = `<div class="flip-inner"><div class="flip-front"><div class="jargon">${t.jargon}</div><div class="hint">tap to translate</div></div><div class="flip-back"><div class="label">In Plain English</div><div class="plain">${t.plain}</div></div></div>`;
-  card.addEventListener('click', () => { card.classList.toggle('flipped'); LO.sfx.click(); });
-  grid.appendChild(card);
-});
+<div class="lesson-section">
+  <span class="section-label">Section 1</span>
+  <h2 class="section-title">The only 10 words you need.</h2>
+  <p class="section-text">You don't need a computer science degree to use AI in your business. You do need to understand about 10 words — because vendors, consultants, and your tech-savvy employees will throw them at you constantly. These are the only ones that matter. Flip each card to get the plain-English version.</p>
 
-// Quiz
-const quizData = [
-  {q:"Which term means AI confidently makes something up?", opts:["Fine-tuning","Hallucination","Inference","Embeddings"], ans:1},
-  {q:"What's the business equivalent of a 'prompt'?", opts:["A company policy","A freelancer's portfolio","A brief or instruction","An invoice"], ans:2},
-  {q:"Tokens are roughly...", opts:["AI credits you buy","3/4 of a word each","The same as passwords","One full sentence each"], ans:1},
-  {q:"An API is best described as...", opts:["An AI brain","A plug/adapter between tools","A pricing model","A type of AI"], ans:1},
-  {q:"'Generative AI' means AI that...", opts:["Only searches databases","Creates new content","Runs your accounting","Replaces your team"], ans:1},
-];
+  <div data-learn="FlashDeck" data-props='{
+    "title": "AI Terms Translated",
+    "cards": [
+      { "front": "LLM (Large Language Model)", "back": "A program that read millions of documents and learned to write like a human. Think of it as an extremely well-read intern who types fast but sometimes makes things up." },
+      { "front": "Fine-tuning", "back": "Teaching an AI your specific business style. Like onboarding a new employee — except instead of a two-week training, you feed it examples of how YOUR company writes and works." },
+      { "front": "Tokens", "back": "How AI companies measure and charge for usage. Roughly 3/4 of a word = 1 token. A one-page email is about 400 tokens. This is your AI \"bill by the word\" meter." },
+      { "front": "Prompt", "back": "The instruction you give to AI. The better your instruction, the better the output. It is exactly like briefing a freelancer — vague brief, vague result." },
+      { "front": "Hallucination", "back": "When AI confidently makes something up. It sounds authoritative but it is wrong. Always verify facts, statistics, and names from AI output before using them publicly." },
+      { "front": "Embeddings", "back": "How AI understands that \"happy\" and \"joyful\" mean similar things. It converts words into numeric patterns it can compare. This is what powers smart search and document Q&A tools." },
+      { "front": "API", "back": "A way for two software programs to talk to each other. It is how you connect ChatGPT to your CRM, or Claude to your website. Think of it as a power adapter between tools." },
+      { "front": "Training Data", "back": "Everything the AI studied before you ever used it. Like a new hire's background shapes how they work, training data shapes what an AI knows — and what it does not know." },
+      { "front": "Inference", "back": "When AI actually does work — answering your question, writing your email, analyzing your data. Training is school. Inference is the job. You pay for inference time." },
+      { "front": "Generative AI", "back": "AI that creates new content: text, images, audio, video, code. It does not just find existing information — it produces something original based on your instructions." }
+    ]
+  }'></div>
+</div>
 
-let qIdx = 0, qScore = 0, answered = false;
-const quizEl = document.getElementById('quiz');
+<div class="lesson-section">
+  <span class="section-label">Section 2</span>
+  <h2 class="section-title">Match the terms.</h2>
+  <p class="section-text">Now that you have seen all 10, let's make sure 6 of the most commonly confused ones actually stuck. Match each term to its plain-English meaning. This takes about 90 seconds.</p>
 
-function renderQ() {
-  if (qIdx >= quizData.length) { showResult(); return; }
-  answered = false;
-  const q = quizData[qIdx];
-  quizEl.innerHTML = `<div class="q-progress">Question ${qIdx+1} of ${quizData.length}</div><div class="q-text">${q.q}</div><div class="q-options">${q.opts.map((o,i) => `<div class="q-opt" data-i="${i}">${o}</div>`).join('')}</div>`;
-  quizEl.querySelectorAll('.q-opt').forEach(el => {
-    el.addEventListener('click', () => {
-      if (answered) return;
-      answered = true;
-      const idx = parseInt(el.dataset.i);
-      if (idx === q.ans) { el.classList.add('correct'); qScore++; LO.sfx.success(); }
-      else { el.classList.add('wrong'); quizEl.querySelector(`[data-i="${q.ans}"]`).classList.add('correct'); LO.sfx.error(); }
-      quizEl.querySelectorAll('.q-opt').forEach(o => o.classList.add('disabled'));
-      setTimeout(() => { qIdx++; renderQ(); }, 1200);
-    });
-  });
-}
+  <div data-learn="MatchConnect" data-props='{
+    "title": "Terms to Plain English",
+    "instruction": "Tap one item on the left, then its match on the right",
+    "pairs": [
+      { "left": "Hallucination", "right": "AI confidently makes something up" },
+      { "left": "Tokens", "right": "How AI usage is measured and billed" },
+      { "left": "Fine-tuning", "right": "Training AI on your specific business style" },
+      { "left": "API", "right": "Software adapter connecting two tools" },
+      { "left": "Inference", "right": "When AI actively does work for you" },
+      { "left": "Embeddings", "right": "How AI understands word similarity" }
+    ]
+  }'></div>
+</div>
 
-function showResult() {
-  const pct = Math.round(qScore / quizData.length * 100);
-  const msg = pct === 100 ? "Perfect score! You speak AI fluently now." : pct >= 60 ? "Solid understanding. You've got the essentials." : "Review the cards above and try the quiz again.";
-  quizEl.innerHTML = `<div class="result-box"><div class="score">${pct}%</div><div class="label">${qScore} of ${quizData.length} correct</div><div class="msg">${msg}</div>${pct < 100 ? '<button class="btn" onclick="qIdx=0;qScore=0;renderQ()">Try Again</button>' : ''}</div>`;
-  if (pct >= 60) {
-    LO.completeLesson('ai-biz', 1, 100);
-  }
-  if (pct === 100) LO.unlockAchievement('quiz_master');
-}
+<div class="lesson-section">
+  <span class="section-label">Section 3</span>
+  <h2 class="section-title">Quick check.</h2>
+  <p class="section-text">Five questions. Business-context scenarios. This is not a memory test — it is a comprehension check to make sure you can apply these terms in real situations, not just recite definitions.</p>
 
-renderQ();
-</script>
+  <div data-learn="QuizMC" data-props='{
+    "title": "AI Jargon in Context",
+    "questions": [
+      {
+        "q": "Your marketing agency says they will \"fine-tune\" a model on your brand. In plain English, what are they doing?",
+        "options": ["Building a new AI from scratch", "Training an existing AI on your company style and content", "Connecting AI to your website via API", "Running tests to check for hallucinations"],
+        "correct": 1,
+        "explanation": "Fine-tuning takes an existing AI and teaches it your specific style, tone, and terminology — like a specialized onboarding for your brand."
+      },
+      {
+        "q": "An AI tool writes that your company was founded in 1987, but you were actually founded in 2003. This is an example of what?",
+        "options": ["A token limit error", "An API failure", "A hallucination", "A training data update"],
+        "correct": 2,
+        "explanation": "Hallucination is when AI produces confident-sounding but incorrect information. Always verify dates, statistics, and specific facts before publishing AI-generated content."
+      },
+      {
+        "q": "You want to connect your AI writing tool to your CRM so it can pull customer data automatically. You need to set up an...",
+        "options": ["Embedding", "API integration", "Fine-tuning pipeline", "Inference server"],
+        "correct": 1,
+        "explanation": "An API is the connection layer between two software systems. Integrating AI with your CRM requires an API so the two programs can share data."
+      },
+      {
+        "q": "Your AI vendor charges $0.002 per 1,000 tokens. You send a 500-word email draft to be improved. Roughly how many tokens is that?",
+        "options": ["About 100 tokens", "About 375 tokens", "About 2,000 tokens", "About 5,000 tokens"],
+        "correct": 1,
+        "explanation": "Tokens are roughly 3/4 of a word. 500 words x 0.75 = about 375 tokens. Knowing this helps you estimate AI tool costs before committing."
+      },
+      {
+        "q": "A vendor says their tool uses \"generative AI\" to create product descriptions. Which of these is accurate?",
+        "options": ["It searches Google and copies existing descriptions", "It pulls descriptions from a database of past products", "It writes new, original descriptions based on your inputs", "It translates your existing descriptions into other languages"],
+        "correct": 2,
+        "explanation": "Generative AI produces new, original content. It does not copy or retrieve — it creates based on patterns it learned during training."
+      }
+    ]
+  }'></div>
+</div>
+
+</div>
