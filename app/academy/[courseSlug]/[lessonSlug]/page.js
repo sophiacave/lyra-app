@@ -116,14 +116,20 @@ export default async function LessonPage({ params }) {
 
     let preview;
     if (headingPositions.length <= 1) {
-      // No section structure — take content up to first <script> or 30% of chars
+      // No section structure — take content up to first <script> or 40% of chars
       const scriptIdx = html.indexOf('<script');
-      const cutPoint = scriptIdx > 0 ? scriptIdx : Math.floor(html.length * 0.3);
+      const cutPoint = scriptIdx > 0 ? scriptIdx : Math.floor(html.length * 0.4);
       preview = html.slice(0, cutPoint);
     } else {
-      // Take first ~30% of sections (at least 2 headings worth)
-      const targetIdx = Math.max(2, Math.ceil(headingPositions.length * 0.3));
-      const cutAt = headingPositions[Math.min(targetIdx, headingPositions.length - 1)];
+      // Take first ~40% of sections (at least 2 headings worth)
+      const targetIdx = Math.max(2, Math.ceil(headingPositions.length * 0.4));
+      let cutAt = headingPositions[Math.min(targetIdx, headingPositions.length - 1)];
+      // Back up to the nearest opening <div before the heading to avoid orphaned labels
+      const searchRegion = html.slice(Math.max(0, cutAt - 200), cutAt);
+      const lastDivOpen = searchRegion.lastIndexOf('<div');
+      if (lastDivOpen >= 0) {
+        cutAt = Math.max(0, cutAt - 200) + lastDivOpen;
+      }
       preview = html.slice(0, cutAt);
     }
 
