@@ -1,0 +1,343 @@
+{
+  "ai-as-your-personal-assistant": [
+    {
+      "id": "prod-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you plan your day. Include what you need to accomplish and any constraints (time, energy, priorities).",
+      "placeholder": "Help me plan my day. I need to...",
+      "hint": "I have 6 hours of productive time today. Tasks: finish a client proposal (high priority, ~2 hrs), respond to 12 emails (medium, ~45 min), grocery shopping (low, ~1 hr), 30-minute workout, and prep for tomorrow's meeting (high, ~1 hr). I'm a morning person and lose focus after 2pm. Create a time-blocked schedule that puts hard tasks first.",
+      "criteria": {
+        "minLength": 45,
+        "keywords": ["plan", "day", "task", "time", "priority", "schedule", "need", "today", "morning", "afternoon"]
+      },
+      "badExample": "Plan my day",
+      "goodExample": "Plan my day: 6 productive hours. Tasks: client proposal (high priority, 2 hrs), 12 emails (medium, 45 min), groceries (low, 1 hr), workout (30 min), meeting prep (high, 1 hr). I'm sharpest before 2pm. Create a time-blocked schedule, hardest tasks first, with 10-min breaks between blocks.",
+      "successMessage": "A time-blocked plan with energy-matching is how you get 8 hours of output from 6 hours of work."
+    },
+    {
+      "id": "prod-1-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a system for something you always forget or procrastinate on.",
+      "placeholder": "Help me build a system for...",
+      "hint": "I always forget to follow up with people after meetings. Create a simple follow-up system: what to do within 24 hours of any meeting, a template follow-up email (under 50 words), and a weekly 15-minute 'follow-up review' checklist. Make it so simple I can't NOT do it.",
+      "criteria": {
+        "minLength": 35,
+        "keywords": ["system", "always", "forget", "help", "routine", "habit", "remember", "track", "follow", "simple"]
+      },
+      "badExample": "Help me be more organized",
+      "goodExample": "I always forget to follow up after meetings. Create a dead-simple system: what to do within 24 hours, a follow-up email template (under 50 words), and a 15-minute weekly review checklist. Make it so frictionless that I can't skip it.",
+      "successMessage": "Systems beat willpower every time. A good system removes the decision — you just follow the steps."
+    },
+    {
+      "id": "prod-1-3",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to be your accountability partner. Define what you want to accomplish and how you want to be checked in on.",
+      "placeholder": "Be my accountability partner for...",
+      "hint": "Be my accountability partner for learning Spanish. My goal: 20 minutes of practice daily for 30 days. Each time I check in, ask me: (1) Did I practice today? (2) What did I learn? (3) Rate my motivation 1-10. If my motivation drops below 5, suggest a fun change of pace (song lyrics, a recipe, a meme translation). Track my streak.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["accountability", "goal", "daily", "check", "track", "progress", "habit", "partner", "streak"]
+      },
+      "badExample": "Help me learn Spanish",
+      "goodExample": "Be my accountability partner for learning Spanish. Goal: 20 min/day for 30 days. Each check-in ask: Did I practice? What did I learn? Motivation 1-10. If motivation drops below 5, suggest a fun pivot (translate song lyrics, a recipe, memes). Track my streak and celebrate milestones.",
+      "successMessage": "AI as an accountability partner is underrated. It never judges, never forgets, and is available at 3am."
+    }
+  ],
+  "morning-routines-with-ai": [
+    {
+      "id": "prod-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to design a realistic morning routine based on your actual constraints — not a fantasy 5am CEO schedule.",
+      "placeholder": "Design a morning routine for someone who...",
+      "hint": "Design a morning routine for someone who wakes up at 7:30am, has to leave for work by 8:45am, is NOT a morning person, and has a dog that needs walking. I want to include: dog walk, breakfast, and one small personal growth activity. No meditation — I've tried, it's not for me. Make it realistic and sequential with time estimates.",
+      "criteria": {
+        "minLength": 45,
+        "keywords": ["morning", "routine", "wake", "time", "realistic", "minute", "before", "after", "start"]
+      },
+      "badExample": "Give me a morning routine",
+      "goodExample": "Design a morning routine: wake at 7:30am, leave by 8:45 (75 minutes total). Not a morning person. Must include: dog walk, breakfast, one personal growth activity. No meditation (tried it, hate it). Sequential with time estimates. Make it realistic — I will snooze once.",
+      "successMessage": "A routine built around YOUR constraints actually sticks. Fantasy routines collect dust — realistic ones build momentum."
+    },
+    {
+      "id": "prod-2-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a 'morning brain dump' template you can fill out in under 5 minutes to start your day with clarity.",
+      "placeholder": "Create a quick morning brain dump template...",
+      "hint": "Create a morning brain dump template I can complete in under 5 minutes. Include: Today's #1 priority (just one), 3 things I need to do, 1 thing I'm avoiding (and why), how I'm feeling (one word), and one thing I'm grateful for. Keep it to a half-page. Make it something I could print and use as a daily pad.",
+      "criteria": {
+        "minLength": 35,
+        "keywords": ["morning", "template", "brain dump", "daily", "priority", "minute", "quick", "start", "today"]
+      },
+      "badExample": "Help me plan my mornings",
+      "goodExample": "Create a 5-minute morning brain dump template. Sections: #1 Priority (just one thing), 3 Must-Do Tasks, 1 Thing I'm Avoiding (+ why), Mood (one word), Gratitude (one thing). Half-page max, printable as a daily pad. Clean, minimal formatting.",
+      "successMessage": "Five minutes of clarity beats an hour of scattered work. This template is your daily reset button."
+    }
+  ],
+  "task-management-and-prioritization": [
+    {
+      "id": "prod-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt giving AI your full to-do list and asking it to prioritize ruthlessly. Include at least 8 tasks with varying importance.",
+      "placeholder": "Prioritize this list for me...",
+      "hint": "Prioritize my to-do list for this week. I have about 20 hours of work time. Tasks: 1) Tax filing (deadline Friday), 2) Reply to Sarah's email (been 3 days), 3) Reorganize kitchen (want to), 4) Finish presentation for Monday client meeting, 5) Schedule dentist appointment, 6) Read industry report (nice to have), 7) Fix broken website link (customers complaining), 8) Plan birthday party for next month, 9) Update resume, 10) Grocery shopping. Rank by urgency and importance. Tell me what to DROP entirely.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["prioritize", "task", "list", "important", "urgent", "deadline", "first", "drop", "rank", "order"]
+      },
+      "badExample": "What should I do first?",
+      "goodExample": "Prioritize my weekly to-do list (20 hrs available). Tasks: tax filing (due Friday), reply to Sarah (3 days late), reorganize kitchen, client presentation (Monday), dentist appointment, read industry report, fix broken website link (customers complaining), plan party (next month), update resume, groceries. Rank by urgency × importance. Tell me what to CUT.",
+      "successMessage": "Ruthless prioritization means saying no to good things so you can say yes to the right things. Let AI be the bad guy."
+    },
+    {
+      "id": "prod-3-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to break a big overwhelming project into small, doable steps. Each step should take 30 minutes or less.",
+      "placeholder": "Break [big project] into small steps...",
+      "hint": "I need to 'redo my personal website' and I keep procrastinating because it feels huge. Break it into steps that each take 30 minutes or less. Include: content tasks, design decisions, and technical steps. Order them so I can do one per day without the project feeling overwhelming. First step should be the easiest to build momentum.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["break", "step", "small", "project", "overwhelm", "task", "minutes", "doable", "start"]
+      },
+      "badExample": "Help me with my website",
+      "goodExample": "Break 'redo my personal website' into 30-minute-or-less steps. Mix content, design, and technical tasks. Order for maximum momentum — easiest first. Each step should feel completable in one sitting. I procrastinate on big projects, so make each step feel tiny and achievable.",
+      "successMessage": "Big projects aren't scary — unclear next steps are. Thirty-minute chunks make anything achievable."
+    },
+    {
+      "id": "prod-3-3",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you say NO to something. Describe the request and why you're tempted to say yes even though you shouldn't.",
+      "placeholder": "Help me decline [request] politely...",
+      "hint": "My coworker asked me to join a committee that meets weekly for 2 hours. I'm tempted to say yes because I like them and it looks good politically, but I'm already overwhelmed and this would be the 4th committee I'm on. Write a polite but firm decline email that: preserves the relationship, gives a real reason (not 'I'm busy'), and offers a smaller alternative way I can contribute.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["no", "decline", "polite", "say", "can't", "but", "instead", "offer", "boundary", "overwhelm"]
+      },
+      "badExample": "How do I say no?",
+      "goodExample": "Help me decline a committee invitation from a coworker I like. It's 2 hrs/week, I'm already on 3 committees, and I'm overwhelmed. Write a decline email that: preserves the relationship, gives an honest reason (not just 'busy'), and offers a smaller way I can contribute (like reviewing meeting notes monthly).",
+      "successMessage": "Saying no is a productivity skill. A well-crafted decline protects your time AND your relationships."
+    }
+  ],
+  "email-and-communication": [
+    {
+      "id": "prod-4-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to process your email backlog. Describe the types of emails and what you need done with each type.",
+      "placeholder": "Help me process [number] emails. Categories are...",
+      "hint": "I have 47 unread emails from the past week. Help me create a triage system. Categories: 1) Needs reply today (client/boss), 2) Needs reply this week (colleagues), 3) FYI only (newsletters, updates), 4) Delete/unsubscribe. For category 1 and 2, draft a one-sentence reply template I can customize. For category 3, suggest which newsletters to unsubscribe from if I can only keep 5.",
+      "criteria": {
+        "minLength": 45,
+        "keywords": ["email", "triage", "reply", "category", "priority", "sort", "unread", "process", "inbox"]
+      },
+      "badExample": "Help me with my emails",
+      "goodExample": "Triage system for 47 unread emails. Categories: 1) Reply today (client/boss), 2) Reply this week (colleagues), 3) FYI only (newsletters), 4) Delete/unsubscribe. For 1 & 2: draft one-sentence reply templates. For 3: help me pick 5 newsletters to keep, unsubscribe the rest. Goal: inbox zero in 30 minutes.",
+      "successMessage": "Email triage turns inbox anxiety into a system. Categorize first, then batch-process each category."
+    },
+    {
+      "id": "prod-4-2",
+      "type": "rewrite",
+      "instruction": "This email is too long and rambling: 'Hey, so I was thinking about the project and I think maybe we should consider possibly moving the deadline because I've been really busy and also the client hasn't sent us the materials yet and I was wondering if you think that would be okay?' Make it clear and concise.",
+      "placeholder": "Rewrite clearly and concisely...",
+      "hint": "Hi — can we push the project deadline by one week? Two reasons: I'm at capacity with current projects, and the client hasn't sent us the materials we need. Happy to discuss if needed.",
+      "criteria": {
+        "minLength": 20,
+        "mustNotInclude": ["I was thinking", "maybe", "possibly", "I was wondering"],
+        "keywords": ["deadline", "because", "client", "week", "push", "move"]
+      },
+      "badExample": "Hey, so I was thinking about the project and I think maybe we should consider possibly moving the deadline because I've been really busy and also the client hasn't sent us the materials yet and I was wondering if you think that would be okay?",
+      "goodExample": "Hi — can we push the project deadline by one week? Two reasons: (1) I'm at capacity with other deliverables, and (2) the client hasn't sent the materials we're waiting on. Happy to discuss.",
+      "successMessage": "Clear ask + specific reasons + offer to discuss. Three sentences instead of one rambling paragraph. Respect people's time."
+    },
+    {
+      "id": "prod-4-3",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to draft a difficult email — delivering bad news, setting a boundary, or having a hard conversation.",
+      "placeholder": "Draft a difficult email about...",
+      "hint": "Draft an email to a freelance client who keeps expanding the project scope without adjusting the budget. This is the third time they've added new requirements. I need to: acknowledge their vision, explain the scope creep impact, present two options (pay for additional work at $X/hr or stick to original scope), and keep the tone professional and collaborative — not resentful.",
+      "criteria": {
+        "minLength": 45,
+        "keywords": ["email", "draft", "difficult", "tone", "professional", "boundary", "but", "acknowledge", "option"]
+      },
+      "badExample": "Write an email about scope creep",
+      "goodExample": "Draft an email to a freelance client who keeps expanding scope without adjusting budget (3rd time). Structure: acknowledge their vision, explain scope creep impact on timeline/quality, present 2 options (pay for extras at $X/hr OR stay in original scope). Tone: collaborative, not resentful. Under 200 words.",
+      "successMessage": "Difficult emails are AI's sweet spot. It removes your emotions from the first draft so you can add them back strategically."
+    }
+  ],
+  "research-and-learning": [
+    {
+      "id": "prod-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a personalized learning plan for a skill you want to develop. Include your current level and time constraints.",
+      "placeholder": "Create a learning plan for...",
+      "hint": "Create a 30-day learning plan for basic data analysis. I'm a complete beginner with no coding experience, but I'm comfortable with spreadsheets. I can spend 30 minutes per day. Tools I have: Google Sheets and a laptop. By day 30, I want to be able to: clean a dataset, create pivot tables, make charts, and spot trends. Week-by-week breakdown with daily mini-tasks.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["learn", "plan", "day", "week", "beginner", "skill", "level", "time", "goal", "minutes"]
+      },
+      "badExample": "Teach me data analysis",
+      "goodExample": "30-day learning plan for data analysis. Level: complete beginner, comfortable with spreadsheets, no coding. Time: 30 min/day. Tools: Google Sheets, laptop. Goal by day 30: clean data, pivot tables, charts, trend-spotting. Week-by-week breakdown with daily mini-tasks. Each task should build on the previous one.",
+      "successMessage": "A learning plan matched to your level, time, and goals beats random YouTube tutorials. Structured learning compounds."
+    },
+    {
+      "id": "prod-5-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to explain something complex by connecting it to something you already understand well.",
+      "placeholder": "Explain [hard thing] using [thing I know]...",
+      "hint": "Explain how machine learning works using cooking as the analogy. I'm an experienced home cook. Compare training data to recipes, the model to a chef learning, overfitting to memorizing one recipe instead of learning techniques, and testing to having someone else taste your food. Keep each comparison to 2-3 sentences.",
+      "criteria": {
+        "minLength": 35,
+        "keywords": ["explain", "like", "analogy", "compare", "similar", "think of it", "imagine", "using", "understand"]
+      },
+      "badExample": "Explain machine learning",
+      "goodExample": "Explain machine learning using cooking as an analogy (I'm an experienced home cook). Map: training data→recipes, model→chef learning, overfitting→memorizing one dish vs. learning techniques, testing→having others taste your food. 2-3 sentences per comparison. Make it click, not just make sense.",
+      "successMessage": "Analogy-based learning sticks because your brain already has hooks to hang the new info on. This is how experts learn fast."
+    }
+  ],
+  "financial-planning-basics": [
+    {
+      "id": "prod-6-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a simple budget breakdown based on your actual income and expenses. Be specific about your numbers.",
+      "placeholder": "Create a budget for someone earning...",
+      "hint": "Create a monthly budget for someone earning $4,500/month take-home pay. Fixed expenses: rent $1,200, car payment $350, insurance $150, phone $85, subscriptions $45. Variable expenses: groceries (~$400), gas (~$150), dining out (~$200). I want to save at least $500/month and pay off $3,000 in credit card debt. Show me where to cut and a realistic timeline to be debt-free.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["budget", "income", "expense", "save", "month", "spend", "money", "debt", "cut", "plan"]
+      },
+      "badExample": "Help me budget",
+      "goodExample": "Create a monthly budget. Take-home: $4,500. Fixed: rent $1,200, car $350, insurance $150, phone $85, subscriptions $45. Variable: groceries $400, gas $150, dining $200. Goals: save $500/mo + pay off $3K credit card debt. Show where to cut, realistic debt-free timeline, and a simple tracking method.",
+      "successMessage": "A budget with real numbers and specific goals is actionable. Generic budgeting advice isn't. Your numbers, your plan."
+    },
+    {
+      "id": "prod-6-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to explain a financial concept you've been avoiding because it feels too complicated.",
+      "placeholder": "Explain [financial concept] simply...",
+      "hint": "Explain 401(k) matching in the simplest possible terms. I'm 28, just started a new job, and HR said they offer '100% match up to 4%.' What does that actually mean in dollars if I make $60K? How much should I contribute? What happens if I leave the job? Is there a catch? No jargon — talk to me like a friend at a coffee shop.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["explain", "simple", "understand", "mean", "jargon", "money", "invest", "save", "retire"]
+      },
+      "badExample": "Explain 401k",
+      "goodExample": "Explain 401(k) matching like I'm a friend asking at coffee. I'm 28, new job, HR said '100% match up to 4%.' What does that mean in actual dollars on my $60K salary? How much should I put in? What if I leave? Any catches? Zero jargon.",
+      "successMessage": "Financial literacy shouldn't require a finance degree. AI as a patient, jargon-free financial explainer is life-changing."
+    }
+  ],
+  "meal-planning-and-health": [
+    {
+      "id": "prod-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a realistic meal plan based on your actual dietary needs, cooking skill, and schedule.",
+      "placeholder": "Create a meal plan for...",
+      "hint": "Create a 5-day dinner meal plan (Mon-Fri). Constraints: I'm vegetarian, I can cook at an intermediate level, each meal should take under 30 minutes, budget of $50 for all 5 dinners, and I hate mushrooms. Generate a combined grocery list organized by store section. Bonus: suggest one meal I can batch-cook on Sunday to make Wednesday easier.",
+      "criteria": {
+        "minLength": 45,
+        "keywords": ["meal", "plan", "cook", "recipe", "dinner", "grocery", "minutes", "budget", "diet", "ingredient"]
+      },
+      "badExample": "Give me meal ideas",
+      "goodExample": "5-day dinner meal plan (Mon-Fri). Vegetarian, intermediate cook, each meal under 30 min, $50 total budget, no mushrooms. Include: grocery list by store section, prep notes, and 1 Sunday batch-cook option to simplify Wednesday. Focus on variety — don't repeat grains or proteins.",
+      "successMessage": "A meal plan with YOUR constraints means you'll actually follow it. Generic plans get bookmarked and forgotten."
+    },
+    {
+      "id": "prod-7-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you build a sustainable health habit — not a crash program, but something you'll still do in 3 months.",
+      "placeholder": "Help me build a sustainable habit of...",
+      "hint": "Help me start exercising consistently. Current state: completely sedentary for 2 years, slightly overweight, bad knees. I don't want a gym membership. Create a 4-week progression: Week 1 should be embarrassingly easy (I need to build the habit, not get fit). Each week gets slightly harder. Include exactly when to do it (I'm free 6-7pm) and what to do if I miss a day. No guilt, no all-or-nothing.",
+      "criteria": {
+        "minLength": 45,
+        "keywords": ["habit", "sustainable", "start", "small", "week", "easy", "build", "routine", "consistent", "health"]
+      },
+      "badExample": "Help me get fit",
+      "goodExample": "Build a sustainable exercise habit. Current: sedentary 2 years, bad knees, no gym. 4-week plan: Week 1 = embarrassingly easy (habit > fitness). Each week slightly harder. When: 6-7pm daily. Include: miss-a-day protocol (no guilt, just do X). No all-or-nothing. Goal: still doing this in 3 months.",
+      "successMessage": "Starting embarrassingly easy is the secret to lasting habits. Week 1 builds the behavior; week 4 builds the body."
+    }
+  ],
+  "creative-projects-and-hobbies": [
+    {
+      "id": "prod-8-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to be a creative brainstorming partner for a personal project. Give it constraints to make the ideas more interesting.",
+      "placeholder": "Brainstorm ideas for my...",
+      "hint": "I want to start a creative side project but I'm stuck on ideas. Brainstorm 10 projects that combine two of my interests: cooking and photography. Each idea should be completable in under a month, cost under $50 to start, and result in something I could share online. For the top 3, give me the very first step I'd take tomorrow.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["brainstorm", "idea", "project", "creative", "interest", "hobby", "combine", "start", "fun"]
+      },
+      "badExample": "Give me project ideas",
+      "goodExample": "Brainstorm 10 creative projects combining cooking + photography. Each: completable in under 1 month, under $50 to start, shareable online. For top 3: give me the exact first step I'd do tomorrow morning. Make the ideas surprising — not just 'food blog.'",
+      "successMessage": "Constraints breed creativity. 'Cooking + photography + under a month + under $50' generates better ideas than 'give me ideas.'"
+    },
+    {
+      "id": "prod-8-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you get unstuck on a creative project. Describe where you are and what's blocking you.",
+      "placeholder": "I'm stuck on my [project] because...",
+      "hint": "I'm writing a short story and I'm stuck at the middle. Setup: a librarian finds a letter from 1952 hidden in a book. I've established the character and the mystery, but I don't know where the story goes from here. Give me 5 possible plot directions, each in 2-3 sentences. I want options that range from realistic fiction to slightly magical. Don't write the story for me — just show me doors I could walk through.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["stuck", "idea", "help", "creative", "project", "direction", "option", "try", "block"]
+      },
+      "badExample": "Help me with my story",
+      "goodExample": "I'm writing a short story: a librarian finds a 1952 letter hidden in a book. I've set up the character and mystery but I'm stuck in the middle. Give me 5 possible plot directions in 2-3 sentences each, ranging from realistic to slightly magical. Don't write it — just show me doors.",
+      "successMessage": "AI as a brainstorming partner, not a ghostwriter, keeps your creative voice intact while unlocking new possibilities."
+    }
+  ],
+  "travel-and-event-planning": [
+    {
+      "id": "prod-9-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to plan a trip with specific constraints: budget, dates, interests, and deal-breakers.",
+      "placeholder": "Plan a trip to [destination] with these constraints...",
+      "hint": "Plan a 5-day trip to Lisbon, Portugal for 2 people. Budget: $2,000 total (not including flights). Interests: food, history, street art, and local music. Deal-breakers: no tourist traps, no hotels in noisy party areas. Create a day-by-day itinerary with: morning/afternoon/evening activities, restaurant recommendations (mid-range), and neighborhood suggestions for our hotel. Include one 'surprise me' activity we wouldn't find on TripAdvisor.",
+      "criteria": {
+        "minLength": 50,
+        "keywords": ["trip", "plan", "day", "budget", "hotel", "restaurant", "activity", "itinerary", "travel"]
+      },
+      "badExample": "Plan a trip to Portugal",
+      "goodExample": "Plan 5 days in Lisbon for 2. Budget: $2,000 (no flights). Interests: food, history, street art, local music. No tourist traps, no party-district hotels. Day-by-day: morning/afternoon/evening activities, mid-range restaurant picks, hotel neighborhood suggestions. Include 1 'surprise me' activity not on TripAdvisor.",
+      "successMessage": "Specific constraints turn a generic Lisbon guide into YOUR perfect trip. Budget + interests + deal-breakers = personalized travel agent."
+    },
+    {
+      "id": "prod-9-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you plan a gathering or event, including all the details you always forget.",
+      "placeholder": "Help me plan [event] and don't let me forget...",
+      "hint": "Help me plan a dinner party for 8 people, two weeks from Saturday. I need: a menu that accommodates one vegan and one gluten-free guest (3 courses), a shopping list with quantities, a day-of timeline (when to start each dish so everything is ready by 7pm), a playlist vibe suggestion, and a checklist of things I always forget (ice, napkins, phone charger for the speaker, etc.).",
+      "criteria": {
+        "minLength": 45,
+        "keywords": ["plan", "party", "event", "guest", "menu", "list", "forget", "checklist", "timeline"]
+      },
+      "badExample": "Help me plan a dinner party",
+      "goodExample": "Plan a dinner party: 8 guests, 2 weeks from Saturday, 7pm. Dietary needs: 1 vegan, 1 gluten-free. Need: 3-course menu, shopping list with quantities, day-of cooking timeline (so everything's ready at 7pm), playlist vibe, and a 'things you always forget' checklist (ice, napkins, etc.).",
+      "successMessage": "The 'things you always forget' checklist is the real magic. AI remembers what you don't — that's the partnership."
+    }
+  ],
+  "building-your-ai-productivity-system": [
+    {
+      "id": "prod-10-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to design your personal AI productivity system — the 3-5 ways you'll use AI every day, with specific prompts saved as templates.",
+      "placeholder": "Design my daily AI system with...",
+      "hint": "Design my personal AI productivity system. I'm a project manager. Create 5 daily use cases with saved prompt templates: 1) Morning planning (prioritize my day), 2) Email drafting (professional responses in my voice), 3) Meeting prep (create agendas and questions), 4) Status updates (translate my notes into clear updates), 5) End-of-day review (what I accomplished, what moves to tomorrow). For each, give me the exact template I'd paste in every time.",
+      "criteria": {
+        "minLength": 55,
+        "keywords": ["system", "daily", "template", "AI", "productivity", "use", "routine", "prompt", "every day", "workflow"]
+      },
+      "badExample": "How should I use AI daily?",
+      "goodExample": "Design my daily AI system. Role: project manager. 5 daily use cases with copy-paste templates: 1) Morning prioritization, 2) Email drafting in my voice, 3) Meeting prep (agendas + questions), 4) Status update translation, 5) End-of-day review. Each template: specific prompt with [PLACEHOLDERS] for daily variables.",
+      "successMessage": "A personal AI system with saved templates is the endgame. Five templates that run every day will save you 5-10 hours per week."
+    },
+    {
+      "id": "prod-10-2",
+      "type": "freeform",
+      "instruction": "Reflect: what's the ONE thing from this course that you'll actually start doing tomorrow? Write it as a commitment — specific action, specific time.",
+      "placeholder": "Tomorrow at [time], I will [specific action]...",
+      "hint": "Tomorrow at 8:00am, before I check email, I will spend 5 minutes writing my top 3 priorities for the day using the AI morning planning template. I'll do this every workday for 2 weeks before deciding if it sticks.",
+      "criteria": {
+        "minLength": 25,
+        "keywords": ["tomorrow", "will", "start", "every", "daily", "morning", "time", "at"]
+      },
+      "successMessage": "A specific commitment at a specific time beats a vague intention. You just set yourself up for a real change."
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "01-data-analysis-meets-ai": [
+    {
+      "id": "data-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to analyze a dataset. Specify the data type, what patterns to look for, and how to present the findings.",
+      "placeholder": "Analyze this [data type] and look for...",
+      "hint": "I have 12 months of website traffic data (monthly visitors, bounce rate, avg session duration, top 10 pages). Analyze it for: seasonal patterns, which pages drive the most engagement, and any correlation between bounce rate and session duration. Present findings as 5 key insights, each with a recommended action.",
+      "criteria": {
+        "keywords": ["analyze", "data", "pattern", "find", "trend", "insight", "look for", "show", "present"],
+        "minLength": 35,
+        "structure": "instruction"
+      },
+      "badExample": "Analyze my data",
+      "goodExample": "I have 6 months of daily sales data for 3 product lines (columns: date, product, units sold, revenue, region). Find: weekly sales patterns, which product is growing fastest, and whether any region is underperforming relative to its population. Present findings as a summary table + 3 actionable recommendations.",
+      "successMessage": "Telling AI what to look for AND how to present it transforms raw data into decisions. That's the AI analysis mindset."
+    },
+    {
+      "id": "data-1-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this vague data request to make it actionable: 'What do the numbers say?'",
+      "placeholder": "A specific, actionable analysis request...",
+      "hint": "Review our Q1 customer churn data (500 accounts, columns: signup date, plan tier, monthly usage, support tickets filed, churn date). Identify the top 3 predictors of churn. Are there usage thresholds below which customers are likely to leave? Compare churn rates across plan tiers. Give me specific numbers I can present to the retention team.",
+      "criteria": {
+        "minLength": 40,
+        "mustNotInclude": ["what do the numbers say"],
+        "keywords": ["specific", "data", "compare", "identify", "metric", "show", "measure", "calculate"]
+      },
+      "badExample": "What do the numbers say?",
+      "goodExample": "Analyze our email campaign performance data from the last 90 days (200 campaigns, columns: send date, subject line length, audience segment, open rate, click rate, unsubscribe rate). Which audience segment has the highest engagement? Is there an optimal subject line length? Flag any campaigns with unsubscribe rates above 2% and identify what they have in common.",
+      "successMessage": "Specific questions get specific answers. 'What do the numbers say' gets you a vague summary. Your version gets you actionable intelligence."
+    }
+  ],
+  "02-asking-the-right-questions": [
+    {
+      "id": "data-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that asks AI to help you formulate the RIGHT analytical questions before diving into data. Include your business context and goals.",
+      "placeholder": "Help me figure out what questions to ask about...",
+      "hint": "I manage a subscription box service. We've noticed revenue is flat despite growing subscribers. Before I dig into the data, help me formulate 5 analytical questions that could explain this paradox. Consider: pricing changes, plan mix shifts, churn timing, seasonal effects, and discount usage. For each question, tell me what data I'd need to answer it.",
+      "criteria": {
+        "keywords": ["question", "ask", "before", "what should", "investigate", "hypothesis", "why", "understand", "figure out"],
+        "minLength": 40,
+        "structure": "instruction"
+      },
+      "badExample": "What should I look at in my data?",
+      "goodExample": "I'm the marketing director for an online course platform. Our ad spend increased 40% last quarter but new enrollments only grew 10%. Before analyzing campaign data, help me form 5 hypotheses about what might explain this gap. For each hypothesis, specify: what data I need, what the data would show if the hypothesis is correct, and what action I'd take.",
+      "successMessage": "Asking the right questions before touching data is what separates analysts from data entry. Hypotheses drive insight; random exploration drives frustration."
+    },
+    {
+      "id": "data-2-2",
+      "type": "prompt",
+      "instruction": "Write a prompt that gives AI a business problem and asks it to break it down into measurable sub-questions.",
+      "placeholder": "Break this problem into data questions...",
+      "hint": "Business problem: 'Our customer support satisfaction scores dropped from 4.2 to 3.6 over the last quarter.' Break this into 5 measurable sub-questions I can investigate with data. Examples: 'Did response time increase?' 'Is the drop uniform across all support channels or concentrated in one?' For each sub-question, specify the metric and comparison period.",
+      "criteria": {
+        "keywords": ["break down", "sub-question", "measure", "metric", "investigate", "specific", "data", "compare"],
+        "minLength": 40
+      },
+      "successMessage": "Breaking big problems into measurable sub-questions is the analyst's superpower. Each sub-question becomes a targeted investigation with a clear answer."
+    }
+  ],
+  "03-spreadsheet-analysis": [
+    {
+      "id": "data-3-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you analyze spreadsheet data. Describe the columns, rows, and what you're trying to learn.",
+      "placeholder": "I have a spreadsheet with columns...",
+      "hint": "I have a spreadsheet with 1,200 rows of customer orders. Columns: order_date, customer_id, product_category (5 categories), order_value, shipping_method, return_flag (yes/no). Questions: (1) What's the return rate by product category? (2) Is there a correlation between shipping method and returns? (3) What's the average order value trend month-over-month? Give me the analysis approach and any formulas I'd need.",
+      "criteria": {
+        "keywords": ["spreadsheet", "column", "row", "data", "formula", "calculate", "Excel", "sheet", "table", "CSV"],
+        "minLength": 40,
+        "structure": "instruction"
+      },
+      "badExample": "Help me with my spreadsheet",
+      "goodExample": "I have a CSV with 800 rows of employee time-tracking data. Columns: employee_id, department, date, hours_logged, project_code, billable (yes/no). Find: (1) average billable hours per department, (2) which projects consume the most non-billable time, (3) any employees consistently logging fewer than 6 billable hours/day. Present as a summary table I can share with department heads.",
+      "successMessage": "Describing your data structure clearly is the key to useful spreadsheet analysis from AI. Column names + row count + specific questions = actionable results."
+    },
+    {
+      "id": "data-3-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create formulas or pivot table logic for a specific analysis task.",
+      "placeholder": "Create a formula/pivot table to...",
+      "hint": "Create an Excel pivot table setup to analyze my sales data. I need to see: total revenue by region (rows) and quarter (columns), with a calculated field showing each region's percentage of total revenue. Also give me a SUMIFS formula that calculates total revenue for a specific product in a specific region. My columns are: Region, Quarter, Product, Units, Revenue.",
+      "criteria": {
+        "keywords": ["formula", "pivot", "SUMIF", "VLOOKUP", "calculate", "Excel", "Google Sheets", "function", "create"],
+        "minLength": 35
+      },
+      "successMessage": "Having AI generate formulas and pivot table logic saves hours of trial and error. Always test the formulas on a small sample before applying to your full dataset."
+    }
+  ],
+  "04-visualization-and-charts": [
+    {
+      "id": "data-4-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to recommend the best chart type for a specific dataset and audience. Include what story you're trying to tell with the data.",
+      "placeholder": "What's the best way to visualize...",
+      "hint": "I need to present customer acquisition cost (CAC) trends over 24 months to our CFO. The data shows CAC rising steadily but with a sharp drop after we launched a referral program in month 18. I want the chart to clearly show the referral program's impact. What chart type works best? What should the axes be? Should I include a benchmark line? How do I label the referral program launch point?",
+      "criteria": {
+        "keywords": ["chart", "graph", "visualize", "show", "present", "audience", "story", "display", "plot", "best way"],
+        "minLength": 40,
+        "structure": "instruction"
+      },
+      "badExample": "Make a chart of my data",
+      "goodExample": "I'm presenting employee satisfaction survey results (5 departments, 4 quarters, scores 1-10) to the executive team. I want to show: (1) overall trend, (2) which department improved most, (3) which department needs attention. The audience is non-technical. Recommend the chart type, color scheme (our brand uses blue/green), and what annotations to add. I need this to tell a clear story in 10 seconds.",
+      "successMessage": "Choosing the right visualization for your audience and story is as important as the data itself. A chart that tells a clear story in 10 seconds beats a complex one that takes 10 minutes to explain."
+    },
+    {
+      "id": "data-4-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to critique a visualization choice and suggest improvements.",
+      "placeholder": "I'm using a [chart type] to show... Is this the best choice?",
+      "hint": "I'm using a pie chart to show revenue distribution across our 12 product lines. The smallest 6 products each represent 2-4% of revenue. Is a pie chart the right choice here? If not, what would work better? Also, I'm using 12 different colors which my colleague says is too many. How should I handle the color palette for 12 categories?",
+      "criteria": {
+        "keywords": ["chart", "better", "instead", "improve", "problem", "change", "recommend", "wrong", "alternative"],
+        "minLength": 35
+      },
+      "successMessage": "Questioning your visualization choices is a sign of data maturity. Pie charts with 12 slices are almost always a bad idea — and now you know how to fix it."
+    }
+  ],
+  "05-cleaning-messy-data": [
+    {
+      "id": "data-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you clean a messy dataset. Describe the specific problems and what 'clean' looks like.",
+      "placeholder": "Help me clean this dataset. Problems include...",
+      "hint": "I have a customer contact list (3,000 rows) that's a mess. Problems: (1) phone numbers in 5 different formats (some with country codes, some without), (2) duplicate entries where the same person appears with slight name variations ('Bob Smith' vs 'Robert Smith' vs 'bob smith'), (3) state field has mix of abbreviations and full names ('CA' vs 'California'), (4) 200 rows with missing email addresses. Give me a step-by-step cleaning plan and the regex/formulas I need for each fix.",
+      "criteria": {
+        "keywords": ["clean", "fix", "format", "duplicate", "missing", "inconsistent", "standardize", "messy", "error", "normalize"],
+        "minLength": 45,
+        "structure": "instruction"
+      },
+      "badExample": "Fix my data",
+      "goodExample": "My sales data has these quality issues: (1) date column has mix of MM/DD/YYYY, DD-MM-YYYY, and 'Jan 15, 2025' formats, (2) revenue column has some values with dollar signs and commas ('$1,234.56'), some without, (3) 50 rows have 'N/A' in the product field instead of being blank, (4) customer_id has leading zeros in some entries but not others. Give me Excel formulas or Python code to standardize each field.",
+      "successMessage": "Data cleaning is 80% of real data analysis. Describing your specific data quality problems gets you targeted solutions instead of generic advice."
+    },
+    {
+      "id": "data-5-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you create data validation rules to prevent messy data in the future.",
+      "placeholder": "Create validation rules for...",
+      "hint": "Create data validation rules for our CRM's contact entry form. Fields: first_name, last_name, email, phone, company, job_title, lead_source, deal_value. For each field, specify: required or optional, format constraints (e.g., email must contain @), character limits, allowed values for dropdowns (lead_source), and auto-formatting rules (e.g., capitalize first letter of names). Goal: prevent the data quality problems we just spent 3 days fixing.",
+      "criteria": {
+        "keywords": ["validation", "rule", "prevent", "format", "required", "check", "ensure", "before", "entry", "constraint"],
+        "minLength": 40
+      },
+      "successMessage": "Prevention beats cure. Data validation rules at the point of entry save exponentially more time than cleaning data after the fact."
+    }
+  ],
+  "06-pattern-recognition": [
+    {
+      "id": "data-6-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to find patterns or anomalies in a dataset. Describe the data and what would count as interesting or concerning.",
+      "placeholder": "Look for patterns in this data...",
+      "hint": "Analyze our website error logs from the past 30 days (columns: timestamp, error_type, page_URL, user_browser, response_code). Look for: (1) any error type that's increasing in frequency, (2) whether certain pages have disproportionately high error rates, (3) if errors cluster at specific times of day (which might indicate server load issues), (4) any browser-specific errors. Flag anything that spiked more than 3x its average.",
+      "criteria": {
+        "keywords": ["pattern", "trend", "anomaly", "unusual", "spike", "cluster", "correlation", "increase", "decrease", "outlier"],
+        "minLength": 40,
+        "structure": "instruction"
+      },
+      "badExample": "Find patterns in my data",
+      "goodExample": "Review our customer purchase data (10,000 transactions, 6 months). Find: (1) customers who suddenly stopped buying (purchased 3+ months in a row then stopped), (2) products frequently bought together, (3) any day-of-week patterns in order volume, (4) customers whose average order value changed dramatically (up or down 50%+). I want early warning signals, not obvious trends.",
+      "successMessage": "Defining what counts as 'interesting' or 'concerning' is what makes AI pattern recognition useful. Without your context, AI just finds random correlations."
+    },
+    {
+      "id": "data-6-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you distinguish between correlation and causation in a data finding.",
+      "placeholder": "I found a correlation between... Help me determine if it's causal.",
+      "hint": "Our data shows a strong correlation between customers who use our mobile app and higher lifetime value (app users spend 2.3x more). Before I tell the CEO to invest $500K in app features, help me think through: Is the app causing higher spend, or do high-spenders just prefer apps? What confounding variables could explain this? What experiment could I run to test actual causation? What additional data would I need?",
+      "criteria": {
+        "keywords": ["correlation", "causation", "cause", "confounding", "variable", "test", "experiment", "because", "actually", "prove"],
+        "minLength": 40
+      },
+      "successMessage": "Questioning correlation vs. causation before making recommendations is what separates good analysts from dangerous ones. This critical thinking could save your company from a bad $500K bet."
+    }
+  ],
+  "07-survey-and-feedback-analysis": [
+    {
+      "id": "data-7-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to analyze open-ended survey responses. Specify how many responses, what to extract, and how to categorize findings.",
+      "placeholder": "Analyze these survey responses and categorize...",
+      "hint": "I have 350 open-ended responses to the question 'What's the one thing we could improve about our product?' Categorize responses into themes (aim for 5-8 themes). For each theme: count how many responses mention it, pull 2-3 representative quotes, and rate the sentiment (frustrated, neutral, constructive). Flag any theme mentioned by more than 20% of respondents as critical. Present as a summary table.",
+      "criteria": {
+        "keywords": ["survey", "response", "categorize", "theme", "feedback", "sentiment", "analyze", "quote", "group", "open-ended"],
+        "minLength": 45,
+        "structure": "instruction"
+      },
+      "badExample": "Summarize the feedback",
+      "goodExample": "Analyze 200 employee exit interview responses to 'Why are you leaving?' Group into themes with sub-themes (e.g., 'compensation' → 'base pay' vs 'benefits' vs 'equity'). For each theme: frequency count, trend over the last 4 quarters (is it getting worse?), representative quotes (anonymized), and a recommended action. Highlight any theme that increased quarter-over-quarter.",
+      "successMessage": "Turning hundreds of open-ended responses into structured, actionable themes is one of AI's most valuable data skills. The key is clear categorization criteria."
+    },
+    {
+      "id": "data-7-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you design a survey that will produce analyzable data. Include your research question and audience.",
+      "placeholder": "Design a survey to measure...",
+      "hint": "Design a 10-question customer satisfaction survey for our B2B SaaS product (project management tool, 500 active companies). Research question: Why are teams with 10+ users more likely to churn than smaller teams? Mix of: 2 quantitative (NPS-style, 1-10 scale), 3 Likert scale (about specific features), 2 multiple choice (about usage patterns), and 3 open-ended (about pain points). Each question should produce data I can actually analyze, not just read.",
+      "criteria": {
+        "keywords": ["survey", "question", "measure", "scale", "design", "audience", "response", "analyze", "research"],
+        "minLength": 40
+      },
+      "successMessage": "Designing surveys with analysis in mind from the start means you get data you can actually use. Too many surveys produce data that's impossible to analyze meaningfully."
+    }
+  ],
+  "08-financial-data-analysis": [
+    {
+      "id": "data-8-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to analyze financial data. Include the specific financial metrics, comparison periods, and what decisions the analysis needs to inform.",
+      "placeholder": "Analyze our financial data for...",
+      "hint": "Analyze our P&L data for Q1 vs Q4 of last year. Key columns: revenue by product line (3 products), COGS, gross margin, operating expenses broken into marketing, salaries, and infrastructure. I need to understand: (1) which product's margin improved or declined, (2) whether our marketing spend increase resulted in proportional revenue growth, (3) our operating expense ratio trend. This analysis goes to the board — present clearly.",
+      "criteria": {
+        "keywords": ["revenue", "cost", "margin", "profit", "expense", "financial", "quarter", "compare", "trend", "growth", "budget"],
+        "minLength": 45,
+        "structure": "instruction"
+      },
+      "badExample": "Look at our financials",
+      "goodExample": "Compare our monthly recurring revenue (MRR) breakdown for the last 6 months. Data includes: new MRR, expansion MRR, churned MRR, and net MRR by customer segment (SMB, mid-market, enterprise). Calculate: (1) net revenue retention rate per segment, (2) the churn-to-growth ratio trend, (3) which segment is driving the most expansion revenue. I need to decide where to focus our account management team.",
+      "successMessage": "Financial analysis prompts that connect metrics to decisions are infinitely more useful than generic 'look at the numbers' requests. Your analysis directly informs resource allocation."
+    },
+    {
+      "id": "data-8-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to create a financial forecast or scenario analysis based on historical data.",
+      "placeholder": "Forecast [metric] based on...",
+      "hint": "Based on our last 18 months of revenue data (monthly, by product line), create 3 scenarios for the next 6 months: (1) Conservative: current growth rate continues, (2) Moderate: we launch a new product in month 3 and capture 5% of our addressable market, (3) Optimistic: new product + 20% improvement in sales conversion from our new CRM. Show monthly projected revenue for each scenario and the key assumptions driving each one.",
+      "criteria": {
+        "keywords": ["forecast", "scenario", "project", "predict", "assume", "conservative", "optimistic", "trend", "next", "future"],
+        "minLength": 40
+      },
+      "successMessage": "Scenario-based forecasting is how executives plan for multiple futures. Making the assumptions explicit means anyone can challenge or adjust the model."
+    }
+  ],
+  "09-reporting-and-dashboards": [
+    {
+      "id": "data-9-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to design a reporting template or dashboard layout for a specific audience and purpose.",
+      "placeholder": "Design a [weekly/monthly] report for...",
+      "hint": "Design a weekly marketing performance report for our CMO. She has 5 minutes to review it every Monday. Include: top-line metrics (spend, leads, CPL, conversion rate) with week-over-week change, the top 3 performing and bottom 3 performing campaigns with a one-line explanation each, a 'watch list' of metrics trending in the wrong direction, and one recommended action. Keep it to 1 page. Use red/yellow/green status indicators.",
+      "criteria": {
+        "keywords": ["report", "dashboard", "weekly", "monthly", "metric", "KPI", "template", "audience", "summary", "page"],
+        "minLength": 45,
+        "structure": "instruction"
+      },
+      "badExample": "Make me a report",
+      "goodExample": "Design a monthly SaaS metrics dashboard for our leadership team. Must include: MRR, churn rate, CAC, LTV, LTV:CAC ratio, runway in months, and NPS. For each metric: current value, month-over-month trend, and a benchmark comparison (industry average). Layout: top row = 4 headline numbers, middle = trend charts, bottom = commentary section. Color code: green (on track), yellow (watch), red (action needed).",
+      "successMessage": "A report designed for its audience (time-constrained executives) with clear status indicators is worth 10x more than a data dump. Form follows function."
+    },
+    {
+      "id": "data-9-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking AI to help you turn a data insight into a narrative for a non-technical audience.",
+      "placeholder": "Turn this finding into a story...",
+      "hint": "Turn this data finding into a 3-paragraph executive summary: 'Our analysis shows customer support tickets increased 47% in Q1, but 62% of the increase came from a single product feature (the new dashboard) launched in February. Customers in the Enterprise tier filed 3x more tickets about this feature than SMB customers. Resolution time for dashboard tickets averaged 4.2 hours vs. our overall average of 1.8 hours.' Make it tell a clear story with a recommended action. Audience: product VP who needs to prioritize the engineering roadmap.",
+      "criteria": {
+        "keywords": ["story", "narrative", "executive", "explain", "insight", "finding", "recommend", "audience", "non-technical", "summary"],
+        "minLength": 40
+      },
+      "successMessage": "Data without narrative is just numbers. Data with narrative drives decisions. Turning findings into stories for specific audiences is the highest-value analysis skill."
+    }
+  ],
+  "10-building-your-analysis-workflow": [
+    {
+      "id": "data-10-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that creates a reusable data analysis workflow template for a recurring task you perform.",
+      "placeholder": "Create a reusable workflow for...",
+      "hint": "Create a reusable monthly analysis workflow for our e-commerce business. Steps: (1) Data collection: pull [MONTH] data from Shopify, Google Analytics, and Mailchimp. (2) Cleaning: standardize date formats, remove test transactions, deduplicate. (3) Analysis: calculate [METRICS: AOV, conversion rate, traffic sources, email revenue attribution]. (4) Comparison: vs. previous month and same month last year. (5) Insight extraction: top 3 wins, top 3 concerns. (6) Reporting: fill the dashboard template. Include placeholder variables I swap out each month.",
+      "criteria": {
+        "keywords": ["workflow", "template", "reusable", "step", "monthly", "weekly", "recurring", "process", "repeatable", "automate"],
+        "minLength": 50,
+        "structure": "instruction"
+      },
+      "badExample": "Help me analyze data regularly",
+      "goodExample": "Build a reusable weekly content performance analysis workflow. Steps: (1) Pull data from [CMS] and [ANALYTICS TOOL] for the past 7 days. (2) Calculate per-article: pageviews, avg time on page, scroll depth, social shares. (3) Compare each article against the 90-day rolling average for its category. (4) Rank articles by engagement score (formula: 0.4 * time + 0.3 * scroll + 0.3 * shares). (5) Generate a 'Top 5 / Bottom 5' report with one recommendation per article. Include [PLACEHOLDERS] for each tool and date range.",
+      "successMessage": "A reusable workflow template means you spend your time on insights, not setup. This is how analysts scale their impact without scaling their hours."
+    },
+    {
+      "id": "data-10-2",
+      "type": "freeform",
+      "instruction": "Describe your ideal data analysis toolkit in 3-5 sentences: what tools you use, what AI handles, and what requires your human judgment.",
+      "placeholder": "My ideal data analysis setup is...",
+      "hint": "My ideal setup: raw data lives in Google Sheets and BigQuery. AI handles cleaning, formula generation, and first-pass pattern detection. I handle hypothesis formation, choosing what questions matter, interpreting results in business context, and deciding what to recommend. The handoff point: AI surfaces interesting patterns, I decide which ones are meaningful and what to do about them.",
+      "criteria": {
+        "minLength": 60,
+        "keywords": ["AI", "I", "tool", "handle", "human", "judgment", "analyze", "data", "decide"]
+      },
+      "successMessage": "Knowing where AI ends and human judgment begins is what makes a great analyst. Your toolkit reflects a mature understanding of AI's role in data work."
+    }
+  ]
+}
