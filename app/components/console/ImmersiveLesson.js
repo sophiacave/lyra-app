@@ -1,6 +1,5 @@
 'use client';
-import { useState, useCallback, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import PromptConsole from '../academy/PromptConsole';
 import EnrollCTA from '../academy/EnrollCTA';
 import { QuizMC, MatchConnect, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation } from '../learn';
@@ -15,6 +14,52 @@ const LEARN_COMPONENTS = {
   Whiteboard,
   Citation,
 };
+
+// Parse contentHtml string into alternating segments of raw HTML and learn components.
+// This replaces the old createPortal approach which can't reliably hydrate into
+// dangerouslySetInnerHTML containers.
+const LEARN_PLACEHOLDER_RE = /<div\s+data-learn="([^"]+)"(?:\s+data-props='([^']*)')?\s*>\s*<\/div>/g;
+
+function parseContentSegments(html, courseSlug, lessonSlug) {
+  if (!html) return [{ type: 'html', html: '' }];
+  const segments = [];
+  let lastIndex = 0;
+  let match;
+
+  LEARN_PLACEHOLDER_RE.lastIndex = 0;
+  while ((match = LEARN_PLACEHOLDER_RE.exec(html)) !== null) {
+    // Push HTML before this placeholder
+    if (match.index > lastIndex) {
+      segments.push({ type: 'html', html: html.slice(lastIndex, match.index) });
+    }
+
+    const componentName = match[1];
+    const Component = LEARN_COMPONENTS[componentName];
+    if (Component) {
+      let props = {};
+      try {
+        if (match[2]) props = JSON.parse(match[2]);
+      } catch (e) {
+        console.warn(`[LearnComponent] Invalid props for ${componentName}:`, e);
+      }
+      props._courseSlug = courseSlug;
+      props._lessonSlug = lessonSlug;
+      segments.push({ type: 'component', componentName, Component, props });
+    } else {
+      // Unknown component — keep the original HTML
+      segments.push({ type: 'html', html: match[0] });
+    }
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Push remaining HTML after last placeholder
+  if (lastIndex < html.length) {
+    segments.push({ type: 'html', html: html.slice(lastIndex) });
+  }
+
+  return segments.length > 0 ? segments : [{ type: 'html', html }];
+}
 
 const APP_URL = 'https://app.likeone.ai';
 const APP_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
@@ -147,38 +192,13 @@ export default function ImmersiveLesson({
     });
   }, [subStatus]);
 
-  // Hydrate learn components from data-learn placeholder elements in lesson HTML.
-  // Markdown authors write: <div data-learn="QuizMC" data-props='{"questions":[...]}'></div>
-  // This finds those placeholders and renders React components into them via portals.
-  const [learnPortals, setLearnPortals] = useState([]);
-  useEffect(() => {
-    if (subStatus === 'loading' || !contentRef.current) return;
-    const placeholders = contentRef.current.querySelectorAll('[data-learn]');
-    if (placeholders.length === 0) return;
-
-    const portals = [];
-    placeholders.forEach((el, i) => {
-      const componentName = el.getAttribute('data-learn');
-      const Component = LEARN_COMPONENTS[componentName];
-      if (!Component) return;
-
-      let props = {};
-      try {
-        const raw = el.getAttribute('data-props');
-        if (raw) props = JSON.parse(raw);
-      } catch (e) {
-        console.warn(`[LearnComponent] Invalid props for ${componentName}:`, e);
-      }
-
-      // Add courseSlug/lessonSlug for XP tracking
-      props._courseSlug = courseSlug;
-      props._lessonSlug = lessonSlug;
-
-      portals.push({ key: `${componentName}-${i}`, Component, props, container: el });
-    });
-
-    setLearnPortals(portals);
-  }, [subStatus, contentHtml, courseSlug, lessonSlug]);
+  // Parse contentHtml into segments: alternating raw HTML chunks and React learn components.
+  // This replaces the old createPortal approach which broke because React can't reliably
+  // hydrate into DOM nodes managed by dangerouslySetInnerHTML.
+  const contentSegments = useMemo(
+    () => parseContentSegments(contentHtml, courseSlug, lessonSlug),
+    [contentHtml, courseSlug, lessonSlug]
+  );
 
   // Scroll to console when manually toggled (not on initial render)
   const initialRender = useRef(true);
@@ -203,17 +223,16 @@ export default function ImmersiveLesson({
     <div className="immersive-lesson" ref={scrollRef}>
       {/* Content flows full-width inside the console frame */}
       <div className={`immersive-content ${showGate ? 'lo-content-gated' : ''}`}>
-        <div
-          ref={contentRef}
-          className="lesson-content immersive-lesson-body"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <div ref={contentRef} className="lesson-content immersive-lesson-body">
+          {contentSegments.map((seg, i) =>
+            seg.type === 'html' ? (
+              <div key={`html-${i}`} dangerouslySetInnerHTML={{ __html: seg.html }} />
+            ) : (
+              <seg.Component key={`${seg.componentName}-${i}`} {...seg.props} />
+            )
+          )}
+        </div>
         {showGate && <LessonGate courseSlug={courseSlug} />}
-
-        {/* Learn component portals — React components hydrated into HTML placeholders */}
-        {learnPortals.map(({ key, Component, props, container }) =>
-          createPortal(<Component {...props} />, container)
-        )}
       </div>
 
       {/* Exercise console — embedded inline after content */}
