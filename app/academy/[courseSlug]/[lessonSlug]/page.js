@@ -68,10 +68,8 @@ export default async function LessonPage({ params }) {
         dangerouslySetInnerHTML={{ __html: lesson.contentHtml }}
       />
 
-      {/* Course-specific CSS */}
-      {lesson.css && (
-        <link rel="stylesheet" href={`/academy/${courseSlug}/${lesson.css}`} />
-      )}
+      {/* Universal academy lesson styles */}
+      <link rel="stylesheet" href="/academy/shared/academy.css" />
 
       {/* Bottom nav */}
       <LessonNav
