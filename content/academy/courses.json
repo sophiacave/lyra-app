@@ -49,7 +49,7 @@
           "description": "C-suite AI literacy. Strategy, risk assessment, vendor evaluation, and leading AI transformation.",
           "tier": "beginner",
           "audience": ["executives"],
-          "status": "planned"
+          "status": "live"
         },
         {
           "slug": "prompt-writing-101",
