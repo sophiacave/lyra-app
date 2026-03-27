@@ -85,68 +85,49 @@ free: false
   </div>
 </div>
 
-<!-- TEMPLATE 4: MEETING -->
+<!-- TEMPLATES 4-6 AS FLASHDECK -->
 <div class="lesson-section">
-  <span class="section-label">Template 4</span>
-  <h2 class="section-title">The Meeting Prep.</h2>
-  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
-    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Help me prepare for a <span style="color:var(--orange)">[type: client call/team standup/board meeting/1:1]</span>.
+  <span class="section-label">Templates 4-6</span>
+  <h2 class="section-title">Three more you'll use weekly.</h2>
 
-<span style="color:var(--purple)">Meeting with:</span> [who and their role]
-<span style="color:var(--purple)">Purpose:</span> [what needs to be decided/discussed]
-<span style="color:var(--purple)">My goal:</span> [what I want to walk away with]
-<span style="color:var(--purple)">Background:</span> [relevant context, previous interactions]
-<span style="color:var(--purple)">Sensitive topics:</span> [anything I should handle carefully]
+<div data-learn="FlashDeck" data-props='{
+  "title": "More Templates — Flip to See the Full Prompt",
+  "cards": [
+    {
+      "front": "📋 Template 4: Meeting Prep\n\nPrepare for any meeting in 60 seconds",
+      "back": "Help me prepare for a [type] meeting.\n\nMeeting with: [who and their role]\nPurpose: [what needs to be decided]\nMy goal: [what I want to walk away with]\nBackground: [relevant context]\nSensitive topics: [anything to handle carefully]\n\nGive me:\n1. A 3-bullet agenda\n2. Key talking points per agenda item\n3. Likely questions they will ask + suggested responses\n4. One question I should ask to show preparation"
+    },
+    {
+      "front": "💡 Template 5: Brainstormer\n\nGenerate ideas that are actually original",
+      "back": "I need [number] ideas for [what].\n\nContext: [situation, industry, audience]\nWhat has worked before: [examples]\nWhat I want to avoid: [overdone ideas]\nConstraints: [budget/timeline/team]\n\nFor each idea give me:\n- A catchy name\n- One-sentence description\n- Why it could work\n- Biggest risk\n\nPush past the obvious. The first 5 ideas anyone would think of are useless."
+    },
+    {
+      "front": "✏️ Template 6: Editor / Reviewer\n\nGet honest, structured feedback",
+      "back": "Review this [document/email/proposal]:\n\n[paste your content]\n\nReview for: [clarity/persuasiveness/errors/tone]\nAudience: [who will read it]\nMy concern: [what I am unsure about]\n\nGive me:\n1. Overall score (1-10) with one-sentence justification\n2. Top 3 strengths (what to keep)\n3. Top 3 weaknesses (with specific rewrites)\n4. One thing I did not ask about but should fix anyway"
+    }
+  ]
+}'></div>
 
-<span style="color:var(--blue)">Give me:</span>
-1. A 3-bullet agenda
-2. Key talking points for each agenda item
-3. Likely questions they'll ask + suggested responses
-4. One question I should ask to show preparation</pre>
-  </div>
 </div>
 
-<!-- TEMPLATE 5: BRAINSTORM -->
+<!-- SECTION: MATCH TEMPLATE TO TASK -->
 <div class="lesson-section">
-  <span class="section-label">Template 5</span>
-  <h2 class="section-title">The Brainstormer.</h2>
-  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
-    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">I need <span style="color:var(--orange)">[number]</span> ideas for <span style="color:var(--orange)">[what]</span>.
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Which template fits the job?</h2>
 
-<span style="color:var(--purple)">Context:</span> [situation, industry, audience]
-<span style="color:var(--purple)">What's worked before:</span> [examples of past successes]
-<span style="color:var(--purple)">What I want to avoid:</span> [overdone ideas, wrong direction]
-<span style="color:var(--purple)">Constraints:</span> [budget/timeline/team size/etc.]
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match the Situation to the Right Template",
+  "instruction": "Tap a situation on the left, then the best template on the right",
+  "pairs": [
+    { "left": "You need to tell a client about a price increase", "right": "Email Writer" },
+    { "left": "You want 15 blog topic ideas for next quarter", "right": "Brainstormer" },
+    { "left": "You wrote a proposal and want feedback before sending", "right": "Editor / Reviewer" },
+    { "left": "You have a board meeting tomorrow and need to prepare", "right": "Meeting Prep" },
+    { "left": "You need a LinkedIn post about a company milestone", "right": "Content Creator" },
+    { "left": "You want to understand why conversion rates dropped", "right": "Analyst" }
+  ]
+}'></div>
 
-<span style="color:var(--blue)">For each idea, give me:</span>
-- A catchy name/title
-- One-sentence description
-- Why it could work
-- Biggest risk or challenge
-
-<span style="color:var(--red)">Push past the obvious.</span> The first 5 ideas anyone would think of are useless. Give me ideas that make me say "huh, I hadn't thought of that."</pre>
-  </div>
-</div>
-
-<!-- TEMPLATE 6: FEEDBACK -->
-<div class="lesson-section">
-  <span class="section-label">Template 6</span>
-  <h2 class="section-title">The Editor/Reviewer.</h2>
-  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
-    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Review this <span style="color:var(--orange)">[document/email/proposal/code]</span>:
-
-[paste your content here]
-
-<span style="color:var(--purple)">Review for:</span> [clarity/persuasiveness/errors/tone/structure]
-<span style="color:var(--purple)">Audience:</span> [who will read it]
-<span style="color:var(--purple)">My concern:</span> [what specifically I'm unsure about]
-
-<span style="color:var(--blue)">Give me:</span>
-1. Overall score (1-10) with one-sentence justification
-2. Top 3 strengths (what to keep)
-3. Top 3 weaknesses (what to fix, with specific rewrites)
-4. One thing I didn't ask about but should fix anyway</pre>
-  </div>
 </div>
 
 <!-- BUILD YOUR OWN -->
@@ -154,14 +135,14 @@ free: false
   <span class="section-label">Your Assignment</span>
   <h2 class="section-title">Build your own template library.</h2>
   <p class="section-text">The templates above cover common tasks, but <strong>your most powerful templates will be the ones you build for YOUR recurring work.</strong></p>
-  <p class="section-text">Here's how to start:</p>
-  <ul class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
-    <li>Look at the last 10 things you used AI for. Which ones repeat?</li>
-    <li>Take your best prompt for each and turn it into a template with [blanks].</li>
-    <li>Save them somewhere accessible — a note, a doc, a Notion page.</li>
-    <li>Each time you write a prompt that works well, template-ize it.</li>
-  </ul>
-  <p class="section-text">Within a month, you'll have a personal prompt library that handles 80% of your AI work in seconds.</p>
+
+<div data-learn="SortStack" data-props='{
+  "title": "Steps to Build Your Template Library",
+  "instruction": "Arrange these steps in the right order for building a personal prompt library",
+  "items": ["Look at the last 10 things you used AI for — find repeating tasks", "Take your best prompt for each and turn it into a template with blanks", "Save templates somewhere accessible — a note, a doc, a Notion page", "Each time you write a prompt that works well, template-ize it and add it"]
+}'></div>
+
+  <p class="section-text" style="margin-top:1rem">Within a month, you'll have a personal prompt library that handles 80% of your AI work in seconds.</p>
 </div>
 
 <!-- NEXT LESSON -->

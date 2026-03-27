@@ -47,52 +47,19 @@ free: false
   <span class="section-label">The Six Types</span>
   <h2 class="section-title">The 6 types of context that matter most.</h2>
 
-  <div class="demo-container" style="padding:1.75rem">
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">1</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Situation</div>
-          <div style="color:var(--dim);font-size:.85rem">What's happening? "I'm launching a new product next week" or "I received a complaint from a long-time customer."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(192,132,252,.12);color:var(--purple);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">2</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Audience</div>
-          <div style="color:var(--dim);font-size:.85rem">Who is this for? "Tech-savvy millennials" vs "retired professionals" changes everything about the output.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(56,189,248,.12);color:var(--blue);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">3</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Goal</div>
-          <div style="color:var(--dim);font-size:.85rem">What outcome do you want? "Get them to click the link" vs "build trust for a future purchase" leads to very different content.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(74,222,128,.12);color:var(--green);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">4</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Background</div>
-          <div style="color:var(--dim);font-size:.85rem">Relevant history or data. "We've been in business for 3 years and have 2,000 customers" or "This is a follow-up to last week's meeting."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(248,113,113,.12);color:var(--red);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">5</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Constraints</div>
-          <div style="color:var(--dim);font-size:.85rem">Limitations. "Budget is $500" or "Must comply with HIPAA" or "Can't mention competitor by name."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">6</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Prior Attempts</div>
-          <div style="color:var(--dim);font-size:.85rem">What you've already tried. "I wrote a version but it feels too formal" — paste it in and ask for improvements.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match Context Type to Description",
+  "instruction": "Tap a context type on the left, then its description on the right",
+  "pairs": [
+    { "left": "Situation", "right": "What is happening right now? A launch, a complaint, a deadline" },
+    { "left": "Audience", "right": "Who is this for? Their age, role, expertise level" },
+    { "left": "Goal", "right": "What outcome do you want? Click, buy, understand, decide" },
+    { "left": "Background", "right": "Relevant history — company info, previous attempts, data" },
+    { "left": "Constraints", "right": "Budget, compliance rules, things you cannot mention" },
+    { "left": "Prior Attempts", "right": "What you have already tried — paste it for improvement" }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 3: HOW MUCH -->
@@ -100,24 +67,24 @@ free: false
   <span class="section-label">The Balance</span>
   <h2 class="section-title">How much context is the right amount?</h2>
 
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-      <div style="text-align:center">
-        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Too Little</div>
-        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.8rem;color:var(--dim);line-height:1.6">"Write a social media post."</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Just Right</div>
-        <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.8rem;color:var(--dim);line-height:1.6">"Write an Instagram caption for our coffee shop's new cold brew. Audience: 25-35 urban professionals. Tone: witty, casual. Include a CTA to visit this weekend. Under 150 characters."</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Too Much</div>
-        <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:12px;font-size:.8rem;color:var(--dim);line-height:1.6">[500 words of company history, every menu item, founding story, competitor analysis, brand guidelines...]</div>
-      </div>
-    </div>
-  </div>
+<div data-learn="FlashDeck" data-props='{
+  "title": "Too Little vs Just Right vs Too Much",
+  "cards": [
+    {
+      "front": "🔴 TOO LITTLE\n\n\"Write a social media post.\"",
+      "back": "What platform? What brand? What audience? What goal?\n\nThe AI has to guess EVERYTHING. You will get the most generic, forgettable post imaginable."
+    },
+    {
+      "front": "🟢 JUST RIGHT\n\n\"Write an Instagram caption for our coffee shop new cold brew. Audience: 25-35 urban professionals. Tone: witty, casual. Include a CTA to visit this weekend. Under 150 characters.\"",
+      "back": "Platform, product, audience, tone, action, length — all specified.\n\nEvery detail removes a guess. The AI can focus on being creative within clear boundaries."
+    },
+    {
+      "front": "🟠 TOO MUCH\n\n500 words of company history, every menu item, founding story, competitor analysis, brand guidelines...",
+      "back": "Context overload buries the actual ask. The AI gives equal weight to everything and loses focus on what matters.\n\nTHE RULE: Include context that would change the output if it were different. If swapping coffee shop for law firm would change the post — that context matters. If your 2015 founding story would not — leave it out."
+    }
+  ]
+}'></div>
 
-  <p class="section-text" style="margin-top:1rem"><strong>The rule:</strong> Include context that would change the output if it were different. If swapping "coffee shop" for "law firm" would change the post, that context matters. If your founding story from 2015 wouldn't change a social media caption, leave it out.</p>
 </div>
 
 <!-- SECTION 4: BRIEFING DOC -->
@@ -141,6 +108,43 @@ Competitors: We don't trash-talk. Focus on our strengths.
 
   <p class="section-text" style="margin-top:1rem">Save this somewhere you can copy-paste it. Every prompt you write for this company instantly gets the right voice, positioning, and constraints — without retyping it every time.</p>
   <p class="section-text">This is how professionals use AI. Not one-off prompts, but <strong>systems of context</strong> that make every interaction better.</p>
+</div>
+
+<!-- SECTION 5: KNOWLEDGE CHECK -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Test your context skills.</h2>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Context Mastery",
+  "questions": [
+    {
+      "q": "You are writing a prompt for a marketing email. Which context type is MOST likely to change the output dramatically?",
+      "options": ["Your company founding year", "Who the audience is and what they care about", "Your office address", "How many employees you have"],
+      "correct": 1,
+      "explanation": "Audience is the single most impactful context type. An email to tech-savvy millennials vs retired professionals will be completely different in vocabulary, tone, and structure."
+    },
+    {
+      "q": "What is the briefing document technique?",
+      "options": ["Writing the longest possible prompt", "Creating a reusable context block you paste at the start of related prompts", "Sending the AI a separate document before your prompt", "Asking the AI to brief you on a topic first"],
+      "correct": 1,
+      "explanation": "A briefing document is a saved block of context (company info, voice, constraints) that you paste before your specific ask. It ensures consistency across all prompts for the same project."
+    },
+    {
+      "q": "How do you decide if a piece of context is worth including?",
+      "options": ["Include everything just to be safe", "If removing it would change the output, include it", "Only include context the AI specifically asks for", "Keep context under 10 words total"],
+      "correct": 1,
+      "explanation": "The test: would the output change if this context were different? If swapping coffee shop for law firm changes the result, that context matters. If your founding story would not change a social media caption, leave it out."
+    }
+  ]
+}'></div>
+
+<div data-learn="SortStack" data-props='{
+  "title": "Rank Context Types by Typical Impact",
+  "instruction": "Order these context types from MOST impactful to LEAST impactful for a typical business prompt",
+  "items": ["Audience — who will see this output", "Goal — what outcome you want", "Situation — what is happening right now", "Background — relevant history and data", "Prior Attempts — what you already tried"]
+}'></div>
+
 </div>
 
 <!-- NEXT LESSON -->

@@ -26,147 +26,110 @@ free: false
   </ul>
 </div>
 
-<!-- MISTAKE 1 -->
+<!-- MISTAKE FLASHDECK -->
 <div class="lesson-section">
-  <span class="section-label">Mistake 1</span>
-  <h2 class="section-title">Being too vague.</h2>
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Mistake</div>
-        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"Help me with my resume."</div>
-      </div>
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Fix</div>
-        <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"Rewrite the experience section of my resume for a senior product manager role at a fintech company. Here's my current version: [paste]"</div>
-      </div>
-    </div>
-    <p style="font-size:.8rem;color:var(--purple);margin:12px 0 0;padding:10px;background:rgba(192,132,252,.06);border-radius:8px"><strong>Why it matters:</strong> Vague prompts = vague output. The AI doesn't know which part of your resume, what role you're targeting, or what "help" means.</p>
-  </div>
+  <span class="section-label">The Mistakes</span>
+  <h2 class="section-title">8 mistakes and their instant fixes.</h2>
+
+<div data-learn="FlashDeck" data-props='{
+  "title": "Flip Each Card: Mistake → Fix",
+  "cards": [
+    {
+      "front": "❌ Mistake 1: Being Too Vague\n\n\"Help me with my resume.\"\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\n\"Rewrite the experience section of my resume for a senior product manager role at a fintech company. Here is my current version: [paste]\"\n\nVague prompts = vague output. The AI does not know which part, what role, or what help means."
+    },
+    {
+      "front": "❌ Mistake 2: Multiple Questions at Once\n\n\"What is the best CRM, how do I set it up, and can you write me a sales email and suggest a pricing strategy?\"\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\n\"I am setting up a CRM for my 5-person sales team selling B2B SaaS ($5K-$50K deals). Compare HubSpot, Pipedrive, and Close.io in a table: price, best for, biggest limitation.\"\n\nOne focused question gets 10x the depth of four bundled ones."
+    },
+    {
+      "front": "❌ Mistake 3: No Audience Specified\n\n\"Explain machine learning.\"\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\n\"Explain machine learning to a marketing manager who has never written code. Use analogies from advertising and customer behavior. Under 200 words.\"\n\nExplain X to a PhD and a teenager are completely different tasks."
+    },
+    {
+      "front": "❌ Mistake 4: Accepting First Output\n\nGetting mediocre output → \"AI sucks\" → giving up\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\nIterate! \"Make it more specific to my industry. Remove the generic advice. Give me numbers.\"\n\nFirst outputs are first drafts. The iteration is where quality lives. Use the 4 follow-up patterns from Lesson 7."
+    },
+    {
+      "front": "❌ Mistake 5: Being Polite Instead of Clear\n\n\"If it is not too much trouble, could you maybe try to perhaps write something about marketing? Only if you have time!\"\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\n\"Write 5 email subject lines for a Black Friday sale targeting existing customers. Product: online courses. Tone: urgent but not spammy.\"\n\nAI does not have feelings. Hedging adds noise and reduces clarity. Be direct."
+    },
+    {
+      "front": "❌ Mistake 6: No Examples of Good\n\nTrying to match a specific style without showing the AI what it looks like\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\nPaste a sample. \"Write in a style similar to this: [example paragraph].\"\n\nEven a 2-sentence example gives AI a target. Without one, it is guessing in the dark about your voice and style preferences."
+    },
+    {
+      "front": "❌ Mistake 7: Treating AI Like a Search Engine\n\n\"What is content marketing?\"\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\n\"Create a 30-day content marketing plan for a new yoga studio targeting busy professionals. Include specific post ideas, platforms, and a posting schedule.\"\n\nAI generates, analyzes, transforms, and creates. Asking what is X uses 5% of its capability."
+    },
+    {
+      "front": "❌ Mistake 8: Ignoring What You Already Know\n\nNot sharing your drafts, data, or existing knowledge with the AI\n\nWhy is this bad?",
+      "back": "✅ THE FIX:\n\nYou have a rough draft? PASTE IT. You have data? INCLUDE IT. You have a style guide? SHARE IT.\n\nAI works best building on something you started — not creating from nothing. Your existing knowledge is the most valuable context you can provide."
+    }
+  ]
+}'></div>
+
 </div>
 
-<!-- MISTAKE 2 -->
+<!-- PIXEL QUEST: SPOT THE MISTAKE -->
 <div class="lesson-section">
-  <span class="section-label">Mistake 2</span>
-  <h2 class="section-title">Asking multiple questions at once.</h2>
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Mistake</div>
-        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"What's the best CRM, how do I set it up, and can you write me a sales email template and also suggest a pricing strategy?"</div>
-      </div>
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Fix</div>
-        <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"I'm setting up a CRM for my 5-person sales team selling B2B SaaS ($5K-$50K deals). Compare HubSpot, Pipedrive, and Close.io in a table with columns: price, best for, biggest limitation."</div>
-      </div>
-    </div>
-    <p style="font-size:.8rem;color:var(--purple);margin:12px 0 0;padding:10px;background:rgba(192,132,252,.06);border-radius:8px"><strong>Why it matters:</strong> AI spreads attention across all questions equally. One focused question gets 10x the depth of four bundled ones.</p>
-  </div>
-</div>
+  <span class="section-label">Game Time</span>
+  <h2 class="section-title">Collect the fixes, avoid the mistakes.</h2>
 
-<!-- MISTAKE 3 -->
-<div class="lesson-section">
-  <span class="section-label">Mistake 3</span>
-  <h2 class="section-title">No audience specified.</h2>
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Mistake</div>
-        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"Explain machine learning."</div>
-      </div>
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Fix</div>
-        <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"Explain machine learning to a marketing manager who has never written code. Use analogies from advertising and customer behavior. Keep it under 200 words."</div>
-      </div>
-    </div>
-    <p style="font-size:.8rem;color:var(--purple);margin:12px 0 0;padding:10px;background:rgba(192,132,252,.06);border-radius:8px"><strong>Why it matters:</strong> "Explain X" to a PhD and a teenager are completely different tasks. Without an audience, AI picks the middle — which satisfies no one.</p>
-  </div>
-</div>
+<div data-learn="PixelQuest" data-props='{
+  "levels": [
+    {
+      "question": "Collect GOOD prompt practices. Avoid the bad ones!",
+      "correct": ["Be specific", "Add context", "Set a role", "Iterate", "Use constraints"],
+      "wrong": ["Be vague", "Ask 4 questions at once", "Skip the audience", "Give up after 1 try"],
+      "gridSize": 7
+    },
+    {
+      "question": "Collect the FIXES. Avoid the mistakes!",
+      "correct": ["Paste examples", "Specify format", "One question at a time", "Include your data"],
+      "wrong": ["Be polite not clear", "Treat AI like Google", "Accept first output", "No audience"],
+      "gridSize": 7
+    }
+  ]
+}'></div>
 
-<!-- MISTAKE 4 -->
-<div class="lesson-section">
-  <span class="section-label">Mistake 4</span>
-  <h2 class="section-title">Accepting the first output.</h2>
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Mistake</div>
-        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">Getting mediocre output → "AI sucks" → giving up</div>
-      </div>
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Fix</div>
-        <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">Getting mediocre output → "Make it more specific to my industry. Remove the generic advice. Give me numbers." → great result</div>
-      </div>
-    </div>
-    <p style="font-size:.8rem;color:var(--purple);margin:12px 0 0;padding:10px;background:rgba(192,132,252,.06);border-radius:8px"><strong>Why it matters:</strong> First outputs are first drafts. The iteration is where quality lives. (See Lesson 7.)</p>
-  </div>
-</div>
-
-<!-- MISTAKE 5 -->
-<div class="lesson-section">
-  <span class="section-label">Mistake 5</span>
-  <h2 class="section-title">Being polite instead of clear.</h2>
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Mistake</div>
-        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"If it's not too much trouble, could you maybe try to perhaps write something about marketing? Only if you have time!"</div>
-      </div>
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Fix</div>
-        <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim)">"Write 5 email subject lines for a Black Friday sale targeting existing customers. Product: online courses. Tone: urgent but not spammy."</div>
-      </div>
-    </div>
-    <p style="font-size:.8rem;color:var(--purple);margin:12px 0 0;padding:10px;background:rgba(192,132,252,.06);border-radius:8px"><strong>Why it matters:</strong> AI doesn't have feelings. Hedging language adds noise and reduces clarity. Be direct.</p>
-  </div>
-</div>
-
-<!-- MISTAKE 6 -->
-<div class="lesson-section">
-  <span class="section-label">Mistake 6</span>
-  <h2 class="section-title">No examples of what "good" looks like.</h2>
-  <p class="section-text">When you're trying to match a specific style, voice, or format — and you don't provide an example — the AI is guessing in the dark.</p>
-  <p class="section-text"><strong>The fix:</strong> Paste a sample. "Write in a style similar to this: [example paragraph]." Even a 2-sentence example gives AI a target to aim at.</p>
-</div>
-
-<!-- MISTAKE 7 -->
-<div class="lesson-section">
-  <span class="section-label">Mistake 7</span>
-  <h2 class="section-title">Treating AI like a search engine.</h2>
-  <p class="section-text">AI isn't Google. It doesn't just retrieve information — it generates, analyzes, transforms, and creates. When you only ask "what is X?" you're using 5% of its capability.</p>
-  <p class="section-text"><strong>The fix:</strong> Instead of "What is content marketing?" try "Create a 30-day content marketing plan for a new yoga studio targeting busy professionals. Include specific post ideas, platforms, and a posting schedule."</p>
-</div>
-
-<!-- MISTAKE 8 -->
-<div class="lesson-section">
-  <span class="section-label">Mistake 8</span>
-  <h2 class="section-title">Ignoring what you already know.</h2>
-  <p class="section-text">The biggest mistake isn't about prompting technique at all. It's not giving the AI your existing knowledge, drafts, data, or context.</p>
-  <p class="section-text">You have a rough draft? <strong>Paste it.</strong> You have data? <strong>Include it.</strong> You have a style guide? <strong>Share it.</strong> You already know what's wrong with the last version? <strong>Say so.</strong></p>
-  <p class="section-text">AI works best when it's building on something you've started — not creating from nothing.</p>
 </div>
 
 <!-- DIAGNOSTIC -->
 <div class="lesson-section">
   <span class="section-label">Quick Diagnostic</span>
   <h2 class="section-title">When a prompt fails, ask yourself these 3 questions.</h2>
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
-        <div style="color:var(--dim);font-size:.85rem"><strong>Did I tell it what I actually want?</strong> Not what topic, but what specific output — format, length, style, structure.</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
-        <div style="color:var(--dim);font-size:.85rem"><strong>Did I give it enough context to succeed?</strong> Would a smart stranger be able to do this task with only the info in my prompt?</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
-        <div style="color:var(--dim);font-size:.85rem"><strong>Did I tell it what NOT to do?</strong> The patterns I hate — the generic tone, the filler, the hedging — did I explicitly exclude them?</div>
-      </div>
-    </div>
-  </div>
-  <p class="section-text" style="margin-top:1rem">If the answer to any of these is "no," that's your fix. It's almost always that simple.</p>
+
+<div data-learn="SortStack" data-props='{
+  "title": "The 3-Question Diagnostic — In Order",
+  "instruction": "Arrange these diagnostic questions in the order you should ask them when a prompt fails",
+  "items": ["Did I tell it what I actually want? (format, length, style, structure)", "Did I give it enough context for a smart stranger to succeed?", "Did I tell it what NOT to do? (generic tone, filler, hedging)"]
+}'></div>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Diagnose These Prompts",
+  "questions": [
+    {
+      "q": "A prompt says: \"Write something about our product for the website.\" What is the PRIMARY mistake?",
+      "options": ["No examples provided", "Being too vague — no format, audience, tone, or specifics", "Being too polite", "Asking multiple questions at once"],
+      "correct": 1,
+      "explanation": "Something, product, and website are all undefined. The AI has to guess everything. The fix: specify exactly what content, for which product, for which page, for which audience."
+    },
+    {
+      "q": "You asked AI to write a blog post. The content is solid but full of buzzwords like leverage, utilize, and synergy. What should your follow-up be?",
+      "options": ["Start over with a new prompt", "Add a negative constraint: Rewrite without buzzwords — use simple, direct language", "Accept it and edit manually", "Ask AI why it used those words"],
+      "correct": 1,
+      "explanation": "This is a perfect case for a negative constraint follow-up. The content structure is good — you just need to eliminate the AI-isms. One follow-up fixes it."
+    },
+    {
+      "q": "Your prompt has great context and format but the output reads like a textbook. What is the most likely missing element?",
+      "options": ["Examples", "Role", "Constraints", "A longer prompt"],
+      "correct": 2,
+      "explanation": "A tone or audience constraint would fix this: Conversational, not academic. Write like you are explaining to a friend, not lecturing. Negative constraints are the fastest way to eliminate unwanted tone."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- NEXT LESSON -->

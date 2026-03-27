@@ -13,7 +13,7 @@ free: false
 
 <div class="lesson-hero">
   <h1>Prompt Writing <span class="accent">Assessment.</span></h1>
-  <p class="sub">Test what you've learned. Rewrite bad prompts, spot mistakes, and prove you've got the skills.</p>
+  <p class="sub">Test what you've learned. Diagnose bad prompts, apply the framework, and prove your skills.</p>
 </div>
 
 <div class="learn-card">
@@ -21,86 +21,158 @@ free: false
   <ul>
     <li>Identifying prompt weaknesses</li>
     <li>Applying the RCFCE framework</li>
-    <li>Writing prompts from scratch for real scenarios</li>
-    <li>Choosing the right approach for different tasks</li>
+    <li>Choosing the right technique for each situation</li>
+    <li>Diagnosing and fixing failed prompts</li>
   </ul>
 </div>
 
-<!-- CHALLENGE 1 -->
+<!-- SECTION 1: CORE KNOWLEDGE -->
 <div class="lesson-section">
-  <span class="section-label">Challenge 1</span>
-  <h2 class="section-title">Diagnose and fix this prompt.</h2>
+  <span class="section-label">Part 1</span>
+  <h2 class="section-title">Core knowledge.</h2>
 
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="margin-bottom:16px">
-      <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The Bad Prompt</div>
-      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:16px;font-size:.9rem;color:var(--dim);line-height:1.6">"Write something about social media marketing for my business."</div>
-    </div>
-    <div style="padding:16px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:10px">
-      <p style="font-size:.85rem;color:var(--purple);margin:0 0 8px"><strong>What's wrong?</strong></p>
-      <ul style="font-size:.85rem;color:var(--dim);margin:0;padding-left:1.2rem">
-        <li>No role assigned</li>
-        <li>"Something" — no format specified</li>
-        <li>"Social media marketing" — too broad a topic</li>
-        <li>"My business" — what business? No context.</li>
-        <li>No tone, length, audience, or constraints</li>
-      </ul>
-    </div>
-  </div>
+<div data-learn="QuizMC" data-props='{
+  "title": "RCFCE Framework — 5 Questions",
+  "questions": [
+    {
+      "q": "What does RCFCE stand for?",
+      "options": ["Role, Content, Format, Clarity, Examples", "Role, Context, Format, Constraints, Examples", "Research, Context, Feedback, Constraints, Evaluation", "Role, Context, Flow, Constraints, Execution"],
+      "correct": 1,
+      "explanation": "Role, Context, Format, Constraints, Examples — the five building blocks of every effective prompt."
+    },
+    {
+      "q": "Which two RCFCE components are the bare minimum for any effective prompt?",
+      "options": ["Role + Examples", "Context + Format", "Role + Constraints", "Format + Examples"],
+      "correct": 1,
+      "explanation": "Context (what you need) and Format (what the output should look like) are the essentials. These two alone put you ahead of 90% of AI users."
+    },
+    {
+      "q": "When is the best time to add a Role to your prompt?",
+      "options": ["Always — every prompt needs a role", "When you need specialized expertise or a specific perspective", "Only for creative writing tasks", "Only when the AI gives a bad first response"],
+      "correct": 1,
+      "explanation": "Roles shine when you need depth, expertise, or a specific perspective. Skip them for quick factual questions or simple transformations."
+    },
+    {
+      "q": "What is the most impactful type of context for most business prompts?",
+      "options": ["Company founding year", "Audience — who will see this output", "Your job title", "The current date"],
+      "correct": 1,
+      "explanation": "Audience is the single most impactful context type. It changes vocabulary, tone, depth, and structure more than any other piece of information."
+    },
+    {
+      "q": "Why are negative constraints (what NOT to do) often more effective than positive ones?",
+      "options": ["AI is programmed to follow negative instructions better", "They directly target and eliminate AI-isms and generic patterns", "Negative constraints are shorter to write", "They are not more effective — it is a myth"],
+      "correct": 1,
+      "explanation": "Negative constraints directly target the specific AI habits you hate — buzzwords, preambles, hedging, sycophantic openers. Banning them forces more authentic, natural output."
+    }
+  ]
+}'></div>
 
-  <div class="demo-container" style="padding:1.5rem;margin-top:1rem">
-    <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">A Proper Rewrite</div>
-    <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:16px;font-size:.85rem;color:var(--dim);line-height:1.8">"You are a social media strategist who specializes in small local businesses. I run a dog grooming salon in Austin, TX. My audience is dog owners aged 25-45 who use Instagram and Facebook. Create a 2-week social media content calendar with: 3 posts per week, a mix of educational and promotional content, suggested captions under 100 words each, and recommended posting times. Tone: fun, warm, and community-focused. Don't use corporate language or generic stock-photo descriptions."</div>
-  </div>
 </div>
 
-<!-- CHALLENGE 2 -->
+<!-- SECTION 2: DIAGNOSE THE PROMPT -->
 <div class="lesson-section">
-  <span class="section-label">Challenge 2</span>
-  <h2 class="section-title">Which RCFCE component is missing?</h2>
+  <span class="section-label">Part 2</span>
+  <h2 class="section-title">Diagnose and fix.</h2>
 
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px">
-        <div style="font-size:.85rem;color:var(--text);margin-bottom:8px">"You are an experienced financial advisor. My client is a 35-year-old who just inherited $200K and has $40K in student loans. They're risk-averse and want to retire by 55."</div>
-        <div style="font-size:.8rem;color:var(--orange);font-weight:600;margin-top:8px">Missing: <strong>Format</strong> — What output do they want? A plan? Bullet points? A comparison of options? The AI will give generic paragraphs without knowing the desired shape.</div>
-      </div>
+<div data-learn="QuizMC" data-props='{
+  "title": "What Is Wrong With This Prompt? — 5 Questions",
+  "questions": [
+    {
+      "q": "\"Write something about social media marketing for my business.\" — What is the PRIMARY issue?",
+      "options": ["No role assigned", "Too vague — no format, audience, tone, or specific topic", "Missing examples", "Too short"],
+      "correct": 1,
+      "explanation": "Something about is the red flag. No specific format, no audience, no business details, no tone. The AI has to guess everything and will produce generic output."
+    },
+    {
+      "q": "\"You are an experienced financial advisor. My client just inherited $200K and has $40K in student loans. They are risk-averse and want to retire by 55.\" — What is missing?",
+      "options": ["Role", "Context", "Format", "Constraints"],
+      "correct": 2,
+      "explanation": "There is no Format specified. What output does the user want? A step-by-step plan? Bullet points? A comparison table? Without format, AI defaults to generic paragraphs."
+    },
+    {
+      "q": "\"Write a 500-word blog post about remote work trends. Use bullet points for the main trends. Casual, conversational tone.\" — What would improve this most?",
+      "options": ["Making it longer", "Adding a Role and specifying the Audience", "Removing the word count constraint", "Adding more bullet point requirements"],
+      "correct": 1,
+      "explanation": "Who is writing this — a recruiter, CEO, freelancer? And who reads it — HR professionals, remote workers, managers? The perspective and audience change everything about the content."
+    },
+    {
+      "q": "AI gave you a blog post full of phrases like \"in today's fast-paced digital landscape\" and \"leverage synergies.\" What is the fastest fix?",
+      "options": ["Start over with a completely new prompt", "Add a negative constraint: Rewrite. No buzzwords, no corporate jargon, no phrases like in today's fast-paced anything.", "Switch to a different AI model", "Ask the AI to be more creative"],
+      "correct": 1,
+      "explanation": "A targeted negative constraint follow-up is the fastest fix. The content structure is probably fine — you just need to kill the AI-isms."
+    },
+    {
+      "q": "You have iterated 4 times and the output is still not right. What should you do?",
+      "options": ["Keep iterating — persistence wins", "Start over: analyze why the original prompt failed and fix that in a new prompt", "Give up and write it yourself", "Add the word please to your prompt"],
+      "correct": 1,
+      "explanation": "After 3+ rounds with no improvement, the original prompt has a fundamental issue. Start fresh, but use what you learned from the failed attempts to write a better prompt."
+    }
+  ]
+}'></div>
 
-      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px">
-        <div style="font-size:.85rem;color:var(--text);margin-bottom:8px">"Write a 500-word blog post about remote work trends in 2025. Use bullet points for the main trends and end with a prediction. Casual, conversational tone."</div>
-        <div style="font-size:.8rem;color:var(--orange);font-weight:600;margin-top:8px">Missing: <strong>Role</strong> and <strong>Audience</strong> — Who's writing this? A recruiter, a CEO, a freelancer? And who's reading it? The perspective changes everything.</div>
-      </div>
-
-      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px">
-        <div style="font-size:.85rem;color:var(--text);margin-bottom:8px">"You are a senior product manager. We're deciding whether to build a mobile app or improve our web app. Give me a decision framework with pros and cons for each, formatted as a comparison table."</div>
-        <div style="font-size:.8rem;color:var(--orange);font-weight:600;margin-top:8px">Missing: <strong>Context</strong> — What kind of product? Who are the users? What's the current web app's state? Budget? Timeline? Without this, the framework will be generic.</div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<!-- CHALLENGE 3 -->
+<!-- SECTION 3: MATCH TECHNIQUES -->
 <div class="lesson-section">
-  <span class="section-label">Challenge 3</span>
-  <h2 class="section-title">Write prompts for these scenarios.</h2>
-  <p class="section-text">Practice writing prompts using what you've learned. Open Claude (or any AI) and try these:</p>
+  <span class="section-label">Part 3</span>
+  <h2 class="section-title">Match technique to situation.</h2>
 
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px">
-        <div style="font-size:.75rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Scenario A</div>
-        <div style="font-size:.85rem;color:var(--dim)">You're a freelance graphic designer who needs to raise your rates by 20%. Write a prompt that helps you draft an email to your existing clients about the price increase.</div>
-      </div>
-      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px">
-        <div style="font-size:.75rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Scenario B</div>
-        <div style="font-size:.85rem;color:var(--dim)">Your team just had a terrible quarter. You need to present the results to your CEO in a way that's honest but also shows a clear path forward. Write a prompt that helps you structure that presentation.</div>
-      </div>
-      <div style="padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px">
-        <div style="font-size:.75rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Scenario C</div>
-        <div style="font-size:.85rem;color:var(--dim)">You're launching a newsletter about AI tools for small business owners. Write a prompt that generates 20 issue topics for your first 5 months, organized by theme.</div>
-      </div>
-    </div>
-  </div>
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match the Situation to the Best Technique",
+  "instruction": "Tap a situation on the left, then the best technique on the right",
+  "pairs": [
+    { "left": "Output is too broad, need more depth on one section", "right": "Zoom In follow-up pattern" },
+    { "left": "Content is right but sounds too corporate", "right": "Tone Shift follow-up pattern" },
+    { "left": "You write the same type of email every week", "right": "Build a reusable template" },
+    { "left": "AI output is full of buzzwords and filler", "right": "Add negative constraints" },
+    { "left": "Complex recurring task with specific company context", "right": "Briefing document technique" },
+    { "left": "Need data formatted for your spreadsheet", "right": "Output for your tools, not your eyes" }
+  ]
+}'></div>
+
+</div>
+
+<!-- SECTION 4: SORT THE PROCESS -->
+<div class="lesson-section">
+  <span class="section-label">Part 4</span>
+  <h2 class="section-title">Put it all together.</h2>
+
+<div data-learn="SortStack" data-props='{
+  "title": "The Complete Prompt Process — In Order",
+  "instruction": "Arrange these steps in the correct order for writing a great prompt and getting great output",
+  "items": ["Define your goal — what specific output do you need?", "Choose RCFCE components — which ones does this task need?", "Write the prompt — Role, Context, Format, Constraints, Examples", "Review the first output — is it 70%+ usable?", "Iterate with follow-up patterns — Zoom In, Tone Shift, Redirect, or Remix", "If it works well, save it as a reusable template"]
+}'></div>
+
+</div>
+
+<!-- SECTION 5: FINAL PIXEL QUEST -->
+<div class="lesson-section">
+  <span class="section-label">Final Challenge</span>
+  <h2 class="section-title">The prompt writing gauntlet.</h2>
+
+<div data-learn="PixelQuest" data-props='{
+  "levels": [
+    {
+      "question": "Collect the RCFCE components!",
+      "correct": ["Role", "Context", "Format", "Constraints", "Examples"],
+      "wrong": ["Flattery", "Length padding", "Buzzwords", "Vagueness"],
+      "gridSize": 7
+    },
+    {
+      "question": "Collect the good habits! Avoid the mistakes!",
+      "correct": ["Be specific", "Iterate", "Add context", "Use negative constraints", "Paste examples"],
+      "wrong": ["Be vague", "Give up early", "Skip the audience", "Ask 5 questions at once"],
+      "gridSize": 8
+    },
+    {
+      "question": "Collect the follow-up patterns!",
+      "correct": ["Zoom In", "Tone Shift", "Redirect", "Remix", "Best of Both"],
+      "wrong": ["Start over every time", "Add more flattery", "Same prompt again", "Longer prompt"],
+      "gridSize": 7
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- COMPLETION -->
@@ -125,7 +197,7 @@ free: false
 
 <!-- BACK TO ACADEMY -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
-  <a href="/academy/" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">← Back to Academy</a>
+  <a href="/academy/" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">&larr; Back to Academy</a>
 </div>
 
 </div>

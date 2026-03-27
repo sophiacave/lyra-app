@@ -40,50 +40,18 @@ free: false
   <span class="section-label">The Types</span>
   <h2 class="section-title">5 types of constraints.</h2>
 
-  <div class="demo-container" style="padding:1.75rem">
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">1</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Length Constraints</div>
-          <div style="color:var(--dim);font-size:.85rem">"Under 200 words." "Exactly 3 paragraphs." "One sentence per point."</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px">Forces conciseness. Eliminates padding and filler.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(192,132,252,.12);color:var(--purple);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">2</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Tone Constraints</div>
-          <div style="color:var(--dim);font-size:.85rem">"Casual but not sloppy." "Confident, not arrogant." "Empathetic without being patronizing."</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px">Defines the emotional register. Best when paired with what to avoid.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(56,189,248,.12);color:var(--blue);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">3</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Scope Constraints</div>
-          <div style="color:var(--dim);font-size:.85rem">"Only cover the marketing angle." "Focus on the first 30 days." "B2B SaaS only, not consumer."</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px">Prevents AI from going broad when you need depth on one area.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(74,222,128,.12);color:var(--green);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">4</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Audience Constraints</div>
-          <div style="color:var(--dim);font-size:.85rem">"Explain like I'm 12." "Written for a CTO." "Assume the reader has never used AI."</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px">Controls vocabulary, depth, and assumed knowledge level.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(248,113,113,.12);color:var(--red);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">5</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Negative Constraints</div>
-          <div style="color:var(--dim);font-size:.85rem">"Don't use buzzwords." "No emojis." "Avoid the phrase 'in today's fast-paced world.'"</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px">Eliminates the AI's worst habits. Often the most impactful constraint you can add.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match Constraint Type to Example",
+  "instruction": "Tap a constraint type on the left, then its example on the right",
+  "pairs": [
+    { "left": "Length", "right": "Under 200 words. Exactly 3 paragraphs. One sentence per point." },
+    { "left": "Tone", "right": "Casual but not sloppy. Confident, not arrogant." },
+    { "left": "Scope", "right": "Only cover the marketing angle. B2B SaaS only, not consumer." },
+    { "left": "Audience", "right": "Explain like I am 12. Written for a CTO." },
+    { "left": "Negative", "right": "Do not use buzzwords. No emojis. Avoid the word leverage." }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 3: NEGATIVE CONSTRAINTS -->
@@ -93,15 +61,32 @@ free: false
   <p class="section-text">AI has patterns it falls into. You know them: the overly enthusiastic tone, the unnecessary preamble, the "great question!" response, the list that starts with "here are some..." AI-isms are the enemy of authentic output.</p>
   <p class="section-text">Negative constraints kill them instantly:</p>
 
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)">"Don't start with 'Sure!' or 'Great question!' — just answer directly."</div>
-      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)">"Don't use the words 'delve,' 'leverage,' 'utilize,' or 'synergy.'"</div>
-      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)">"No preamble. No summary at the end. Just the content."</div>
-      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)">"Don't hedge with 'it depends' — commit to a recommendation."</div>
-      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)">"Avoid generic advice anyone could give. Be specific to my situation."</div>
-    </div>
-  </div>
+<div data-learn="FlashDeck" data-props='{
+  "title": "Negative Constraints That Work — Flip to See Why",
+  "cards": [
+    {
+      "front": "🚫 \"Do not start with Sure! or Great question! — just answer directly.\"",
+      "back": "WHY IT WORKS: AI defaults to sycophantic openers. This one constraint instantly makes output feel more professional and authentic. Use it in every prompt."
+    },
+    {
+      "front": "🚫 \"Do not use the words delve, leverage, utilize, or synergy.\"",
+      "back": "WHY IT WORKS: These are the most overused AI words. Banning them forces the model to use simpler, more natural language. Your readers will never suspect AI wrote it."
+    },
+    {
+      "front": "🚫 \"No preamble. No summary at the end. Just the content.\"",
+      "back": "WHY IT WORKS: AI loves to add \"Here is what I will cover...\" before and \"In summary...\" after the actual content. This constraint eliminates the fluff and gives you pure value."
+    },
+    {
+      "front": "🚫 \"Do not hedge with it depends — commit to a recommendation.\"",
+      "back": "WHY IT WORKS: AI naturally hedges to seem balanced. But you asked for advice, not a debate. This forces a clear, actionable recommendation instead of wishy-washy on-one-hand analysis."
+    },
+    {
+      "front": "🚫 \"Avoid generic advice anyone could give. Be specific to my situation.\"",
+      "back": "WHY IT WORKS: This is a meta-constraint — it tells AI to actually USE the context you provided instead of falling back on generic platitudes. Pair it with detailed context for maximum impact."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 4 -->
@@ -128,6 +113,31 @@ free: false
   </div>
 
   <p class="section-text" style="margin-top:1rem">This technique draws a precise line. "Confident, not arrogant" gives AI a much clearer target than "professional tone." The negative defines the boundary of the positive.</p>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Constraint Mastery",
+  "questions": [
+    {
+      "q": "Why do constraints IMPROVE AI output instead of limiting it?",
+      "options": ["They make the AI work harder", "They eliminate mediocre possibilities and focus the output space", "They trick the AI into trying harder", "They do not improve output — they just make it shorter"],
+      "correct": 1,
+      "explanation": "Constraints narrow the infinite space of possible outputs into a focused zone where quality is higher. Like giving a songwriter a specific form to work within — the boundaries enable creativity."
+    },
+    {
+      "q": "Which type of constraint is MOST effective at eliminating generic AI-sounding output?",
+      "options": ["Length constraints", "Scope constraints", "Negative constraints (what NOT to do)", "Audience constraints"],
+      "correct": 2,
+      "explanation": "Negative constraints directly target AI-isms — the buzzwords, preambles, hedging, and sycophantic openers that make output feel robotic. Banning specific patterns forces more authentic language."
+    },
+    {
+      "q": "What is the invisible guardrail technique?",
+      "options": ["Hiding constraints inside the context section", "Pairing positive tone instructions with negative boundaries (confident, not arrogant)", "Setting constraints the AI cannot see", "Using only negative constraints with no positive direction"],
+      "correct": 1,
+      "explanation": "The invisible guardrail pairs what you want with what you do not want. Confident, not arrogant draws a precise line that professional tone alone cannot achieve."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- NEXT LESSON -->

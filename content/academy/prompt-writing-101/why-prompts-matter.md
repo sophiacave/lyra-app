@@ -48,6 +48,25 @@ free: true
   </ul>
   <p class="section-text">That last point is the key. AI has infinite general knowledge but zero context about you. Every prompt you write is essentially a briefing document. The better the briefing, the better the work.</p>
   <p class="section-text">When someone says "AI gave me garbage," what they're really saying is: "I gave AI a one-sentence briefing and expected a masterpiece."</p>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Check Your Understanding",
+  "questions": [
+    {
+      "q": "Why does the same AI model give different quality results to different people?",
+      "options": ["Some people have a more expensive subscription", "The AI randomly varies its output quality", "The quality of the prompt determines the quality of the output", "Some people are luckier with AI"],
+      "correct": 2,
+      "explanation": "AI reflects the clarity of your input. A specific, well-structured prompt consistently produces better results than a vague one — regardless of who writes it."
+    },
+    {
+      "q": "What is the best mental model for thinking about AI?",
+      "options": ["A search engine that finds answers", "A capable intern who needs a good briefing", "A magic 8-ball that guesses what you want", "A calculator that processes data"],
+      "correct": 1,
+      "explanation": "AI has vast general knowledge but zero context about YOUR specific situation. Like a brilliant intern, it needs a clear briefing to deliver great work."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 3: THE DIFFERENCE -->
@@ -55,21 +74,24 @@ free: true
   <span class="section-label">See The Difference</span>
   <h2 class="section-title">The $0 prompt vs the $1,000 prompt.</h2>
 
-  <div class="demo-container" style="padding:1.75rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The $0 Prompt</div>
-        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim);line-height:1.6">"Write a blog post about productivity."</div>
-      </div>
-      <div>
-        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">The $1,000 Prompt</div>
-        <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim);line-height:1.6">"You're a productivity coach who works with burnt-out startup founders. Write a 600-word blog post titled 'The 3-Hour Rule' about doing your most important work in the first 3 hours of the day. Tone: conversational, slightly provocative, no listicles. Include one personal anecdote. End with a single actionable challenge for the reader."</div>
-      </div>
-    </div>
-    <div style="margin-top:16px;padding:12px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);border-radius:10px">
-      <p style="font-size:.85rem;color:var(--purple);margin:0"><strong>Why the difference?</strong> The second prompt gives the AI a role, audience, specific topic, length, tone, structure, and a clear ask. It's 60 words instead of 7 — but the output quality jumps by 10x.</p>
-    </div>
-  </div>
+<div data-learn="FlashDeck" data-props='{
+  "title": "Flip to See the Upgrade",
+  "cards": [
+    {
+      "front": "💸 THE $0 PROMPT\n\n\"Write a blog post about productivity.\"",
+      "back": "💰 THE $1,000 PROMPT\n\n\"You are a productivity coach who works with burnt-out startup founders. Write a 600-word blog post titled The 3-Hour Rule about doing your most important work in the first 3 hours of the day. Tone: conversational, slightly provocative, no listicles. Include one personal anecdote. End with a single actionable challenge.\"\n\nThe second prompt adds: role, audience, topic, length, tone, structure, and a clear ask. 60 words instead of 7 — but 10x better output."
+    },
+    {
+      "front": "💸 THE $0 PROMPT\n\n\"Help me with my presentation.\"",
+      "back": "💰 THE $1,000 PROMPT\n\n\"You are a presentation coach. I am presenting Q3 sales results to our executive team tomorrow. Create 5 slide titles with 3 bullet points each. Focus on the 12% revenue growth and what drove it. Professional tone, data-driven. End with a single recommended next step.\"\n\nRole + Context + Format + Constraints = AI nails it every time."
+    },
+    {
+      "front": "💸 THE $0 PROMPT\n\n\"Write an email to my team.\"",
+      "back": "💰 THE $1,000 PROMPT\n\n\"You are a friendly but direct team lead. Write a 4-sentence email to my team of 8 letting them know the website redesign deadline moved from Friday to next Wednesday. Encouraging, not apologetic. End with one clear action item for the team.\"\n\nEvery detail you add is one less thing the AI has to guess."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 4 -->
@@ -79,13 +101,14 @@ free: true
   <p class="section-text">Not length. Not fancy words. Not tricks or hacks. <strong>Specificity.</strong></p>
   <p class="section-text">The more specific you are about what you want, the less the AI has to guess. And every guess is a chance for the output to go sideways.</p>
   <p class="section-text">Specificity means answering the questions the AI can't ask you:</p>
-  <ul class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
-    <li><strong>Who</strong> is this for?</li>
-    <li><strong>What</strong> exactly do you need?</li>
-    <li><strong>How</strong> should it sound, look, or feel?</li>
-    <li><strong>What</strong> should it NOT include?</li>
-  </ul>
-  <p class="section-text">Throughout this course, you'll learn frameworks and techniques for being specific without writing a novel. Because the best prompts aren't long — they're <em>precise</em>.</p>
+
+<div data-learn="SortStack" data-props='{
+  "title": "Rank These by Impact",
+  "instruction": "Order these prompt elements from MOST impactful to LEAST impactful for improving AI output quality",
+  "items": ["Being specific about what you want", "Providing context about your situation", "Specifying the output format", "Adding a role or persona", "Using polite language"]
+}'></div>
+
+  <p class="section-text" style="margin-top:1.5rem">Throughout this course, you'll learn frameworks and techniques for being specific without writing a novel. Because the best prompts aren't long — they're <em>precise</em>.</p>
 </div>
 
 <!-- SECTION 5: WHAT YOU'LL BUILD -->
@@ -93,31 +116,29 @@ free: true
   <span class="section-label">The Road Ahead</span>
   <h2 class="section-title">What this course will give you.</h2>
   <p class="section-text">Over the next 9 lessons, you'll learn:</p>
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">01</div>
-        <div style="color:var(--dim);font-size:.85rem">The anatomy of a great prompt — the building blocks that always work</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">02</div>
-        <div style="color:var(--dim);font-size:.85rem">How to use roles, context, and constraints like a pro</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">03</div>
-        <div style="color:var(--dim);font-size:.85rem">Templates you can steal for emails, content, analysis, and coding</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">04</div>
-        <div style="color:var(--dim);font-size:.85rem">How to debug a bad prompt and fix it in seconds</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">05</div>
-        <div style="color:var(--dim);font-size:.85rem">Multi-turn conversation techniques that build on each response</div>
-      </div>
-    </div>
-  </div>
-  <p class="section-text" style="margin-top:1.5rem">By the end, you'll write prompts that consistently get you exactly what you need on the first try. Let's get started.</p>
+
+<div data-learn="FlashDeck" data-props='{
+  "title": "Course Preview — Flip Each Card",
+  "cards": [
+    {
+      "front": "📐 Lesson 2\n\nThe Anatomy of a Great Prompt",
+      "back": "The RCFCE framework — 5 building blocks that work for any prompt.\n\nRole · Context · Format · Constraints · Examples\n\nYou will never stare at a blank prompt box again."
+    },
+    {
+      "front": "🎭 Lessons 3-6\n\nThe Core Skills",
+      "back": "Roles & Personas — unlock expert-level output\nContext — eliminate AI guesswork\nOutput Formats — get usable results every time\nConstraints — the secret weapon pros use"
+    },
+    {
+      "front": "🔄 Lessons 7-9\n\nAdvanced Techniques",
+      "back": "Iteration — the 4 follow-up patterns that fix anything\nTemplates — copy-paste prompts for 80% of your work\nCommon Mistakes — the 8 errors and their instant fixes"
+    },
+    {
+      "front": "🏆 Lesson 10\n\nFinal Assessment",
+      "back": "Diagnose bad prompts. Rewrite them. Build your own.\n\nBy the end, you will write prompts that get exactly what you need on the first try."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- NEXT LESSON -->

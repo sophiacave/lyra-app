@@ -34,79 +34,24 @@ free: false
   <p class="section-text">The fix is simple: <strong>tell the AI what shape the answer should take.</strong> Not just "give me a list" — but specifically how you want the information organized.</p>
 </div>
 
-<!-- SECTION 2: THE 8 FORMATS -->
+<!-- SECTION 2: MATCH FORMATS -->
 <div class="lesson-section">
   <span class="section-label">The Formats</span>
   <h2 class="section-title">8 formats you'll use constantly.</h2>
 
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">1</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Bullet Points</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: brainstorming, lists, quick summaries</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Give me 10 bullet points on..."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">2</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Numbered Steps</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: instructions, processes, how-tos</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Walk me through this step by step, numbered 1-N."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">3</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Table</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: comparisons, data, decision matrices</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Create a table comparing X, Y, Z with columns for price, features, and pros/cons."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">4</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Email/Message Format</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: communications you'll send directly</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Write this as a ready-to-send email with subject line."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">5</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Pros/Cons</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: decisions, evaluations, debates</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Give me pros and cons in two columns."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">6</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">TL;DR + Deep Dive</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: research, reports, analysis</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Start with a 2-sentence summary, then go deeper in sections."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">7</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">JSON/CSV/Structured Data</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: data you'll import into other tools</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Output as JSON with keys: name, category, priority."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;min-width:36px;text-align:center">8</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:4px">Script/Dialogue</div>
-          <div style="color:var(--dim);font-size:.85rem">Best for: presentations, videos, role-plays</div>
-          <div style="color:var(--muted);font-size:.8rem;margin-top:4px;font-style:italic">"Write this as a 2-minute video script with speaker directions."</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match Format to Best Use Case",
+  "instruction": "Tap a format on the left, then the situation where it works best",
+  "pairs": [
+    { "left": "Bullet Points", "right": "Brainstorming, quick summaries, idea lists" },
+    { "left": "Numbered Steps", "right": "Instructions, processes, how-to guides" },
+    { "left": "Table", "right": "Comparisons, decision matrices, data side-by-side" },
+    { "left": "Email Format", "right": "Communications you will copy-paste and send directly" },
+    { "left": "TL;DR + Deep Dive", "right": "Research, reports, and analysis with varying reader depth" },
+    { "left": "JSON / CSV", "right": "Data you will import into spreadsheets or other tools" }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 3 -->
@@ -136,13 +81,60 @@ Repeat for each topic. Keep each section under 100 words.</pre>
   <span class="section-label">Power Move</span>
   <h2 class="section-title">Output for your tools, not your eyes.</h2>
   <p class="section-text">One of the most underused techniques: ask AI to output in the exact format your next tool needs.</p>
-  <ul class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
-    <li>Need to paste into a spreadsheet? Ask for <strong>CSV format</strong>.</li>
-    <li>Building a website? Ask for <strong>HTML</strong>.</li>
-    <li>Feeding into another AI tool? Ask for <strong>JSON</strong>.</li>
-    <li>Creating a presentation? Ask for <strong>one slide per section with title + 3 bullet points</strong>.</li>
-  </ul>
-  <p class="section-text">Think about where this output is going <em>next</em> and format it for that destination. You'll skip an entire step of reformatting.</p>
+
+<div data-learn="FlashDeck" data-props='{
+  "title": "Format for the Destination — Flip to See the Prompt",
+  "cards": [
+    {
+      "front": "📊 Destination: Spreadsheet\n\nYou need data you can paste into Google Sheets or Excel",
+      "back": "\"Output as CSV with headers: Name, Category, Priority, Due Date.\"\n\nor\n\n\"Format as a markdown table with columns for Feature, Status, and Owner.\"\n\nSkips the entire reformatting step."
+    },
+    {
+      "front": "🖥️ Destination: Website\n\nYou need content ready for a web page",
+      "back": "\"Output as HTML with h2 headings, p tags for paragraphs, and ul/li for lists. Include class names for styling.\"\n\nCopy → paste → publish. No reformatting."
+    },
+    {
+      "front": "📱 Destination: Presentation\n\nYou need slide-ready content",
+      "back": "\"Format as one slide per section. Each slide: a title (under 8 words) and exactly 3 bullet points (under 15 words each). End with a summary slide.\"\n\nDrop straight into your deck."
+    },
+    {
+      "front": "🤖 Destination: Another AI Tool\n\nYou need structured data for automation",
+      "back": "\"Output as JSON with keys: task, priority (1-5), assignee, deadline. Array of objects, one per task.\"\n\nPipe directly into Zapier, Make, or your own code."
+    }
+  ]
+}'></div>
+
+</div>
+
+<!-- SECTION 5: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Test your format skills.</h2>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Format Mastery",
+  "questions": [
+    {
+      "q": "You need to compare 5 project management tools for your team. Which format should you request?",
+      "options": ["3 paragraphs per tool", "A comparison table with columns for features, price, and pros/cons", "A numbered list of all 5 tools", "A single paragraph summary"],
+      "correct": 1,
+      "explanation": "Tables are the ideal format for side-by-side comparisons. They make it easy to scan across options and compare specific attributes at a glance."
+    },
+    {
+      "q": "What is the \"show the structure\" technique?",
+      "options": ["Asking AI to show you its internal structure", "Providing a skeleton of your desired output format in the prompt", "Letting AI choose whatever structure it wants", "Using bullet points in every prompt"],
+      "correct": 1,
+      "explanation": "When you show AI a rough template of what your ideal output looks like, it mirrors that structure precisely. This gives you consistent, scannable output without reformatting."
+    },
+    {
+      "q": "You need meeting notes turned into action items for your project tracker. What format should you request?",
+      "options": ["Flowing paragraphs summarizing the meeting", "Bullet points with owner and deadline for each action item", "A 500-word essay about the meeting outcomes", "A table with columns: Action Item, Owner, Deadline, Priority"],
+      "correct": 3,
+      "explanation": "Since this goes into a project tracker, request the exact format your tracker uses — a table with the right columns. Output for your tools, not your eyes."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- NEXT LESSON -->

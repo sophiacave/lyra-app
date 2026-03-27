@@ -32,45 +32,18 @@ free: true
   <h2 class="section-title">The RCFCE Framework.</h2>
   <p class="section-text">Every great prompt is built from five components. You don't always need all five, but knowing them gives you a toolkit for any situation.</p>
 
-  <div class="demo-container" style="padding:1.75rem">
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.9rem;padding:4px 12px;border-radius:6px;flex-shrink:0;margin-top:2px">R</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Role</div>
-          <div style="color:var(--dim);font-size:.85rem">Who should the AI be? "You are a senior copywriter" sets the expertise level and perspective.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(192,132,252,.12);color:var(--purple);font-weight:800;font-size:.9rem;padding:4px 12px;border-radius:6px;flex-shrink:0;margin-top:2px">C</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Context</div>
-          <div style="color:var(--dim);font-size:.85rem">What's the situation? Background info, audience, constraints, what you've already tried.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(56,189,248,.12);color:var(--blue);font-weight:800;font-size:.9rem;padding:4px 12px;border-radius:6px;flex-shrink:0;margin-top:2px">F</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Format</div>
-          <div style="color:var(--dim);font-size:.85rem">What should the output look like? Bullet points, paragraphs, table, code, email format.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(74,222,128,.12);color:var(--green);font-weight:800;font-size:.9rem;padding:4px 12px;border-radius:6px;flex-shrink:0;margin-top:2px">C</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Constraints</div>
-          <div style="color:var(--dim);font-size:.85rem">What are the boundaries? Word count, tone, things to avoid, specific requirements.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(248,113,113,.12);color:var(--red);font-weight:800;font-size:.9rem;padding:4px 12px;border-radius:6px;flex-shrink:0;margin-top:2px">E</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Examples</div>
-          <div style="color:var(--dim);font-size:.85rem">What does "good" look like? Show the AI a sample of what you want.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match Each Component to Its Definition",
+  "instruction": "Tap a letter on the left, then its definition on the right",
+  "pairs": [
+    { "left": "R — Role", "right": "Who should the AI be? Sets expertise and perspective" },
+    { "left": "C — Context", "right": "The situation, background, audience, and constraints" },
+    { "left": "F — Format", "right": "What the output should look like — bullets, table, email" },
+    { "left": "C — Constraints", "right": "Boundaries like word count, tone, things to avoid" },
+    { "left": "E — Examples", "right": "Samples that show the AI what good looks like" }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 2: MANDATORY VS OPTIONAL -->
@@ -98,6 +71,19 @@ free: true
       </div>
     </div>
   </div>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Quick Check",
+  "questions": [
+    {
+      "q": "Which two RCFCE components should you include in EVERY prompt?",
+      "options": ["Role + Examples", "Context + Format", "Constraints + Role", "Examples + Format"],
+      "correct": 1,
+      "explanation": "Context (what you need) and Format (what the output should look like) are the minimum for any effective prompt. These two alone put you ahead of 90% of users."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- SECTION 3: BUILD A PROMPT -->
@@ -118,7 +104,7 @@ free: true
       </div>
       <div>
         <div style="font-size:.7rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">+ Context + Format + Constraints</div>
-        <div style="background:var(--bg);border:1px solid rgba(192,132,252,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim);line-height:1.6">"Write a thank you email to a client who just signed a $50K annual contract with our design agency. They chose us over two larger competitors. Keep it under 150 words. Tone: warm and professional, not salesy. End with a concrete next step (scheduling a kickoff call). No exclamation marks — they feel forced in business emails."</div>
+        <div style="background:var(--bg);border:1px solid rgba(192,132,252,.2);border-radius:10px;padding:12px;font-size:.85rem;color:var(--dim);line-height:1.6">"Write a thank you email to a client who just signed a $50K annual contract with our design agency. They chose us over two larger competitors. Keep it under 150 words. Tone: warm and professional, not salesy. End with a concrete next step (scheduling a kickoff call). No exclamation marks."</div>
       </div>
       <div>
         <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">+ Role + Context + Format + Constraints</div>
@@ -126,7 +112,13 @@ free: true
       </div>
     </div>
   </div>
-  <p class="section-text" style="margin-top:1rem">Each layer adds specificity. The AI fills in fewer blanks. The output gets closer to what you actually want.</p>
+
+<div data-learn="SortStack" data-props='{
+  "title": "Order the RCFCE Components",
+  "instruction": "Arrange the prompt components in the recommended order for building a great prompt",
+  "items": ["Role — Set the AI expertise and perspective", "Context — Describe the situation and background", "Format — Specify the output shape", "Constraints — Set boundaries and limits", "Examples — Show what good looks like"]
+}'></div>
+
 </div>
 
 <!-- SECTION 4: THE TEMPLATE -->
@@ -154,6 +146,25 @@ Here's an example of what I'm looking for:
 [paste example]</pre>
   </div>
   <p class="section-text" style="margin-top:1rem">You don't need to use labels like [ROLE] in your actual prompts — those are just training wheels. Once you internalize the framework, you'll naturally include these elements in flowing, natural language.</p>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Framework Mastery Check",
+  "questions": [
+    {
+      "q": "A prompt says: \"Write a 500-word blog post about remote work in a casual tone, using bullet points.\" Which RCFCE components does it include?",
+      "options": ["Role + Context + Format", "Context + Format + Constraints", "Role + Format + Constraints", "All five components"],
+      "correct": 1,
+      "explanation": "This prompt has Context (remote work topic), Format (blog post, bullet points), and Constraints (500 words, casual tone). It is missing a Role and Examples."
+    },
+    {
+      "q": "When should you add Examples to your prompt?",
+      "options": ["Always — every prompt needs an example", "When you need the output to match a specific style or format", "Only for creative writing tasks", "Never — examples confuse AI"],
+      "correct": 1,
+      "explanation": "Examples are most powerful when you need style matching — showing the AI exactly what good looks like. For straightforward tasks, Context + Format is often enough."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- NEXT LESSON -->

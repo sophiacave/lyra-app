@@ -41,31 +41,11 @@ free: true
   <h2 class="section-title">The 3 elements of an effective role.</h2>
   <p class="section-text">A great role assignment has three parts:</p>
 
-  <div class="demo-container" style="padding:1.75rem">
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">1</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Title</div>
-          <div style="color:var(--dim);font-size:.85rem">The job title or expertise area. "Senior editor," "tax accountant," "UX researcher."</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(192,132,252,.12);color:var(--purple);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">2</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Experience</div>
-          <div style="color:var(--dim);font-size:.85rem">Level of seniority or years. This controls how advanced the output is.</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="background:rgba(74,222,128,.12);color:var(--green);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">3</div>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Specialization</div>
-          <div style="color:var(--dim);font-size:.85rem">The niche or domain. "Who specializes in healthcare startups" or "focused on conversion optimization."</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div data-learn="SortStack" data-props='{
+  "title": "Build a Role — In Order",
+  "instruction": "Arrange the three elements in the correct order for writing an effective role",
+  "items": ["Title — The job title or expertise area", "Experience — Level of seniority or years", "Specialization — The niche or domain focus"]
+}'></div>
 
   <div class="demo-container" style="padding:1.5rem;margin-top:1rem">
     <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Formula</div>
@@ -73,58 +53,80 @@ free: true
   </div>
 </div>
 
-<!-- SECTION 3: 10 POWER ROLES -->
+<!-- SECTION 3: MATCH ROLES -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match the task to the best role.</h2>
+  <p class="section-text">Different tasks need different experts. Match each task to the role that would produce the best output.</p>
+
+<div data-learn="MatchConnect" data-props='{
+  "title": "Match Task to Best Role",
+  "instruction": "Tap a task on the left, then the ideal role on the right",
+  "pairs": [
+    { "left": "Review a contract for red flags", "right": "Contracts attorney specializing in SaaS" },
+    { "left": "Write a catchy ad headline", "right": "Creative director at a top ad agency" },
+    { "left": "Explain blockchain to a 10-year-old", "right": "Patient teacher who uses everyday analogies" },
+    { "left": "Analyze quarterly sales data", "right": "Data analyst who presents to non-technical execs" },
+    { "left": "Negotiate a higher salary", "right": "Career coach who has helped 500+ professionals" }
+  ]
+}'></div>
+
+</div>
+
+<!-- SECTION 4: 10 POWER ROLES -->
 <div class="lesson-section">
   <span class="section-label">Steal These</span>
   <h2 class="section-title">10 roles that instantly upgrade your prompts.</h2>
 
-  <div class="demo-container" style="padding:1.5rem">
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Writing</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a professional editor at a major publishing house."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Strategy</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a McKinsey-trained management consultant."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Marketing</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a growth marketer who's scaled 3 startups past $10M ARR."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Legal</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a contracts attorney specializing in SaaS agreements."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Teaching</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a patient teacher who explains complex topics using everyday analogies."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Analysis</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a data analyst who presents findings to non-technical executives."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Career</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a career coach who's helped 500+ professionals negotiate raises."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Technical</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a senior software engineer who writes clean, well-documented code."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Creative</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a creative director at a top-10 advertising agency."</span>
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;padding:8px 0">
-        <span style="font-size:.75rem;color:var(--orange);font-weight:700;min-width:80px">Critical</span>
-        <span style="font-size:.85rem;color:var(--dim)">"You are a skeptical investigative journalist. Challenge every claim."</span>
-      </div>
-    </div>
-  </div>
+<div data-learn="FlashDeck" data-props='{
+  "title": "10 Power Roles — Flip to See the Full Prompt",
+  "cards": [
+    {
+      "front": "✍️ Writing\n\nNeed polished, publication-ready text",
+      "back": "\"You are a professional editor at a major publishing house.\"\n\nUse when: blog posts, articles, marketing copy, anything that needs to read beautifully."
+    },
+    {
+      "front": "📊 Strategy\n\nNeed high-level business thinking",
+      "back": "\"You are a McKinsey-trained management consultant.\"\n\nUse when: business plans, competitive analysis, strategic decisions."
+    },
+    {
+      "front": "📈 Marketing\n\nNeed growth-focused content",
+      "back": "\"You are a growth marketer who has scaled 3 startups past $10M ARR.\"\n\nUse when: campaigns, funnels, conversion optimization, social media strategy."
+    },
+    {
+      "front": "⚖️ Legal\n\nNeed contract or policy review",
+      "back": "\"You are a contracts attorney specializing in SaaS agreements.\"\n\nUse when: reviewing terms, writing policies, understanding legal implications."
+    },
+    {
+      "front": "🎓 Teaching\n\nNeed complex ideas explained simply",
+      "back": "\"You are a patient teacher who explains complex topics using everyday analogies.\"\n\nUse when: learning new concepts, creating training materials, explaining to non-experts."
+    },
+    {
+      "front": "🔬 Analysis\n\nNeed data interpreted clearly",
+      "back": "\"You are a data analyst who presents findings to non-technical executives.\"\n\nUse when: interpreting data, building reports, making data-driven recommendations."
+    },
+    {
+      "front": "💼 Career\n\nNeed professional development help",
+      "back": "\"You are a career coach who has helped 500+ professionals negotiate raises.\"\n\nUse when: resumes, interview prep, salary negotiation, career transitions."
+    },
+    {
+      "front": "💻 Technical\n\nNeed clean, working code",
+      "back": "\"You are a senior software engineer who writes clean, well-documented code.\"\n\nUse when: coding, debugging, architecture decisions, code reviews."
+    },
+    {
+      "front": "🎨 Creative\n\nNeed bold, original ideas",
+      "back": "\"You are a creative director at a top-10 advertising agency.\"\n\nUse when: brainstorming, naming, branding, creative campaigns."
+    },
+    {
+      "front": "🔍 Critical\n\nNeed honest, unflinching feedback",
+      "back": "\"You are a skeptical investigative journalist. Challenge every claim.\"\n\nUse when: fact-checking, finding holes in arguments, stress-testing ideas."
+    }
+  ]
+}'></div>
+
 </div>
 
-<!-- SECTION 4: WHEN NOT TO -->
+<!-- SECTION 5: WHEN NOT TO -->
 <div class="lesson-section">
   <span class="section-label">The Exception</span>
   <h2 class="section-title">When to skip the role.</h2>
@@ -133,9 +135,27 @@ free: true
     <li><strong>Quick factual questions</strong> — "What's the capital of Norway?" doesn't need a role.</li>
     <li><strong>Simple transformations</strong> — "Translate this to Spanish" works fine without one.</li>
     <li><strong>You want multiple perspectives</strong> — Sometimes a neutral AI gives a more balanced view.</li>
-    <li><strong>The role would be artificial</strong> — Don't force it. "You are a email-writing expert" is just noise.</li>
+    <li><strong>The role would be artificial</strong> — Don't force it. "You are an email-writing expert" is just noise.</li>
   </ul>
-  <p class="section-text">Use roles when you need <strong>depth, expertise, or a specific perspective.</strong> Skip them when simplicity wins.</p>
+
+<div data-learn="QuizMC" data-props='{
+  "title": "Role Mastery Check",
+  "questions": [
+    {
+      "q": "Which of these prompts would benefit MOST from adding a role?",
+      "options": ["\"Translate this paragraph to French.\"", "\"What year was the Eiffel Tower built?\"", "\"Write a proposal to convince my CEO to invest in AI training for our sales team.\"", "\"Convert 50 miles to kilometers.\""],
+      "correct": 2,
+      "explanation": "The proposal needs a specific perspective and expertise level. Adding a role like senior business strategist or sales enablement consultant would dramatically improve the output. The other tasks are simple enough that a role adds no value."
+    },
+    {
+      "q": "What makes a role assignment effective?",
+      "options": ["Making it as long and detailed as possible", "Including a title, experience level, and specialization", "Always using the exact phrase You are a...", "Picking the most impressive-sounding job title"],
+      "correct": 1,
+      "explanation": "The three elements — title, experience, and specialization — give the AI a precise persona to draw from. You are a senior copywriter who specializes in B2B SaaS is better than You are a writing expert."
+    }
+  ]
+}'></div>
+
 </div>
 
 <!-- NEXT LESSON -->
