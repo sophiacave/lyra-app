@@ -4,6 +4,17 @@ import LessonNav from '../../../components/academy/LessonNav';
 import LessonComplete from '../../../components/academy/LessonComplete';
 import LessonSplitView from '../../../components/console/LessonSplitView';
 import { site } from '@/lib/site-config';
+import fs from 'fs';
+import path from 'path';
+
+function getExercises(courseSlug, lessonSlug) {
+  try {
+    const filePath = path.join(process.cwd(), 'content/exercises', `${courseSlug}.json`);
+    if (!fs.existsSync(filePath)) return [];
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    return data[lessonSlug] || [];
+  } catch { return []; }
+}
 
 export async function generateStaticParams() {
   const courseSlugs = getAllCourseSlugs();
@@ -88,6 +99,7 @@ export default async function LessonPage({ params }) {
   };
 
   const fullContentHtml = breadcrumbHtml + lesson.contentHtml;
+  const exercises = getExercises(courseSlug, lessonSlug);
 
   return (
     <>
@@ -100,6 +112,7 @@ export default async function LessonPage({ params }) {
       <LessonSplitView
         contentHtml={fullContentHtml}
         lessonTitle={lesson.title}
+        exercises={exercises}
       />
 
       {/* Completion + nav below the split view on mobile */}

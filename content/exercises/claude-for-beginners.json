@@ -1,0 +1,194 @@
+{
+  "what-claude-can-do": [
+    {
+      "id": "cfb-1-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to help you with a specific work task. Be concrete — mention your role and what you need.",
+      "placeholder": "e.g., I'm a marketing manager. Help me...",
+      "hint": "I'm a project manager. Write a status update email for my team about our Q2 product launch being on track, with 3 key milestones completed.",
+      "criteria": {
+        "keywords": ["help", "write", "create", "draft", "summarize", "explain", "analyze", "review"],
+        "minLength": 30,
+        "structure": "instruction"
+      },
+      "badExample": "Help me with work stuff",
+      "goodExample": "I'm a marketing manager. Draft a 200-word LinkedIn post announcing our new AI-powered analytics tool, targeting small business owners. Tone: professional but approachable.",
+      "successMessage": "Great start! You included your role and a specific task — that's exactly how to get useful output from Claude."
+    },
+    {
+      "id": "cfb-1-2",
+      "type": "prompt",
+      "instruction": "Now try asking Claude a question about something you're curious about. Include context about WHY you want to know.",
+      "placeholder": "e.g., I'm learning about... Can you explain...",
+      "hint": "I'm new to investing and confused by all the jargon. Can you explain what an ETF is in simple terms, with a real-world analogy?",
+      "criteria": {
+        "keywords": ["explain", "what", "how", "why", "tell", "help me understand"],
+        "minLength": 25,
+        "structure": "question"
+      },
+      "successMessage": "Nice! Adding context about why you're asking helps Claude tailor the explanation to your level."
+    }
+  ],
+  "your-first-conversation": [
+    {
+      "id": "cfb-2-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that includes three things: (1) your role, (2) the task, and (3) the desired format.",
+      "placeholder": "Role + Task + Format...",
+      "hint": "As a freelance writer, create a 5-point outline for a blog post about remote work productivity tips. Use bullet points.",
+      "criteria": {
+        "requiredKeywords": ["as a", "for", "in"],
+        "keywords": ["list", "bullet", "outline", "paragraph", "format", "steps", "points", "table", "summary"],
+        "minLength": 40
+      },
+      "badExample": "Write something about productivity",
+      "goodExample": "As a freelance writer, create a 5-point outline for a blog post about remote work productivity tips. Use bullet points with a one-sentence explanation for each.",
+      "successMessage": "That's the formula: Role + Task + Format. This structure consistently gets better outputs from Claude."
+    },
+    {
+      "id": "cfb-2-2",
+      "type": "rewrite",
+      "instruction": "Rewrite this vague prompt to make it specific: 'Write me an email'",
+      "placeholder": "Write a more specific version...",
+      "hint": "Write a professional follow-up email to a client named Sarah who hasn't responded to our proposal in 2 weeks. Keep it friendly and under 150 words.",
+      "criteria": {
+        "minLength": 40,
+        "keywords": ["email", "to", "about"],
+        "mustNotInclude": ["write me an email"]
+      },
+      "badExample": "Write me an email",
+      "goodExample": "Write a professional follow-up email to a client who hasn't responded to our project proposal in 2 weeks. Tone: warm but direct. Include a soft deadline. Under 150 words.",
+      "successMessage": "See the difference? Specificity transforms a useless prompt into one that gets you exactly what you need."
+    },
+    {
+      "id": "cfb-2-3",
+      "type": "prompt",
+      "instruction": "Write a prompt that tells Claude what NOT to do. Constraints are just as important as instructions.",
+      "placeholder": "Include at least one constraint...",
+      "hint": "Explain blockchain to a 10-year-old. Don't use technical jargon. Don't mention cryptocurrency. Use a fun analogy involving a school lunchroom.",
+      "criteria": {
+        "keywords": ["don't", "do not", "avoid", "without", "never", "no", "skip", "exclude"],
+        "minLength": 30
+      },
+      "successMessage": "Constraints are a superpower. Telling Claude what to avoid is often more impactful than telling it what to include."
+    }
+  ],
+  "custom-instructions": [
+    {
+      "id": "cfb-3-1",
+      "type": "prompt",
+      "instruction": "Write a system prompt that defines Claude's role and communication style for a specific use case.",
+      "placeholder": "You are a... who always...",
+      "hint": "You are a friendly fitness coach who specializes in beginners. Always suggest modifications for exercises. Never recommend extreme diets. Keep responses encouraging and under 200 words.",
+      "criteria": {
+        "requiredKeywords": ["you are"],
+        "keywords": ["always", "never", "tone", "style", "respond", "act as", "specialist", "expert", "coach", "assistant"],
+        "minLength": 50
+      },
+      "badExample": "Be helpful",
+      "goodExample": "You are a patient coding tutor for Python beginners. Always explain concepts with real-world analogies before showing code. Never assume prior programming knowledge. When showing code, include comments explaining each line. Keep a warm, encouraging tone.",
+      "successMessage": "That's a solid system prompt! It gives Claude a clear identity, communication rules, and boundaries."
+    },
+    {
+      "id": "cfb-3-2",
+      "type": "prompt",
+      "instruction": "Write a prompt that asks Claude to adopt a specific tone. Try: formal, casual, sarcastic, motivational, or academic.",
+      "placeholder": "Write in a [tone] style...",
+      "hint": "Write a motivational Monday morning message for a sales team that just had a tough quarter. Be real about the challenges but end on an energizing note. Sound like a coach, not a corporate memo.",
+      "criteria": {
+        "keywords": ["tone", "style", "voice", "formal", "casual", "friendly", "professional", "like", "sound", "write as", "motivational", "sarcastic", "academic"],
+        "minLength": 30
+      },
+      "successMessage": "Tone control is underrated. The same information delivered in the right voice makes all the difference."
+    }
+  ],
+  "documents-and-data": [
+    {
+      "id": "cfb-4-1",
+      "type": "prompt",
+      "instruction": "Write a prompt that asks Claude to analyze or summarize information. Specify what to focus on and how to present the results.",
+      "placeholder": "Analyze this... and focus on...",
+      "hint": "Summarize the key findings from this quarterly report. Focus on revenue trends and customer churn. Present as 5 bullet points, each under 20 words. Flag any numbers that changed more than 15% from last quarter.",
+      "criteria": {
+        "keywords": ["summarize", "analyze", "extract", "key", "focus", "identify", "compare", "review", "highlight"],
+        "minLength": 40,
+        "structure": "instruction"
+      },
+      "badExample": "Summarize this document",
+      "goodExample": "Analyze this meeting transcript and extract: (1) all action items with owners, (2) key decisions made, (3) unresolved questions. Format as a table with columns: Item, Owner, Deadline, Status.",
+      "successMessage": "Telling Claude exactly what to extract and how to format it turns a wall of text into actionable intelligence."
+    },
+    {
+      "id": "cfb-4-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to transform data from one format to another.",
+      "placeholder": "Convert this... into...",
+      "hint": "Take these meeting notes in paragraph form and convert them into a structured action items list. Each item should have: task, responsible person, and deadline. Sort by deadline, soonest first.",
+      "criteria": {
+        "keywords": ["convert", "transform", "turn", "reformat", "restructure", "change", "into", "from", "format"],
+        "minLength": 30
+      },
+      "successMessage": "Data transformation is one of Claude's most practical superpowers. You'll use this daily."
+    }
+  ],
+  "email-calendar-magic": [
+    {
+      "id": "cfb-5-1",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to draft an email. Include: recipient context, purpose, tone, and length constraint.",
+      "placeholder": "Draft an email to... about...",
+      "hint": "Draft a polite but firm email to a vendor who delivered our order 2 weeks late. Acknowledge the relationship, express the impact on our operations, and request a 10% discount on the next order. Professional tone. Under 200 words.",
+      "criteria": {
+        "keywords": ["email", "draft", "write", "send", "reply", "respond"],
+        "minLength": 40,
+        "structure": "instruction"
+      },
+      "badExample": "Write an email to my boss",
+      "goodExample": "Draft a thank-you email to my manager Lisa for approving my conference attendance. Mention I'm excited about the AI track specifically. Keep it brief (3-4 sentences), professional but warm. Don't be overly formal.",
+      "successMessage": "Context + purpose + tone + length = email prompts that save you 15 minutes per email."
+    },
+    {
+      "id": "cfb-5-2",
+      "type": "prompt",
+      "instruction": "Write a prompt asking Claude to help you prepare for a meeting. Include what you need and the context.",
+      "placeholder": "Help me prepare for...",
+      "hint": "I have a 30-minute meeting with a potential client tomorrow. They run a small bakery chain (5 locations) and want to use AI to optimize their supply ordering. Create 5 discovery questions I should ask, plus 3 talking points about how AI can help their specific industry.",
+      "criteria": {
+        "keywords": ["meeting", "prepare", "agenda", "questions", "talking points", "presentation", "brief"],
+        "minLength": 35
+      },
+      "successMessage": "Meeting prep is a killer use case. Claude can generate questions, talking points, and briefing docs in seconds."
+    }
+  ],
+  "build-your-assistant": [
+    {
+      "id": "cfb-6-1",
+      "type": "prompt",
+      "instruction": "Design a prompt template you could reuse every day for a repetitive work task. Include placeholders for variable information.",
+      "placeholder": "Create a template for...",
+      "hint": "Create a daily standup update template: 'Yesterday I completed [TASKS]. Today I'm working on [PRIORITIES]. I'm blocked on [BLOCKERS]. My confidence level for hitting this week's goals: [HIGH/MEDIUM/LOW] because [REASON].'",
+      "criteria": {
+        "keywords": ["template", "every", "daily", "weekly", "routine", "recurring", "regular", "always", "each"],
+        "minLength": 40
+      },
+      "badExample": "Help me with my daily work",
+      "goodExample": "Here's my weekly report template. Fill it in based on the notes I provide: 'This week: [3 accomplishments]. Next week: [3 priorities]. Risk: [any blockers]. Mood: [one emoji].' Keep each item to one sentence.",
+      "successMessage": "Templates are the gateway to automation. Save this pattern — you'll use it constantly."
+    },
+    {
+      "id": "cfb-6-2",
+      "type": "prompt",
+      "instruction": "Write a multi-step prompt — ask Claude to do something, then refine or build on the result.",
+      "placeholder": "First... then... finally...",
+      "hint": "First, brainstorm 10 blog post titles about AI productivity tips. Then, pick the 3 most clickable titles and write a one-paragraph outline for each. Finally, draft the opening paragraph for the best one.",
+      "criteria": {
+        "keywords": ["first", "then", "next", "after", "finally", "step", "once", "based on", "using that"],
+        "minLength": 40
+      },
+      "successMessage": "Multi-step prompts unlock Claude's full power. Each step builds on the last, creating a workflow in one conversation."
+    }
+  ],
+  "basics-quiz": [],
+  "workflow-quiz": [],
+  "final-assessment": []
+}
