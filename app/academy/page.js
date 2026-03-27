@@ -89,6 +89,12 @@ export default function AcademyCatalog() {
         </div>
       </div>
 
+      {/* Pricing hint */}
+      <div className="academy-pricing-hint glass glass-animate-up">
+        <span>First 3 lessons of every course — free. Full access from <strong>$4.90/mo</strong>.</span>
+        <a href="/pricing/" className="academy-pricing-hint-link">See plans →</a>
+      </div>
+
       {/* Search + Tier Tabs */}
       <div className="academy-search-row">
         <div className="glass-search-wrap academy-search-wrap">

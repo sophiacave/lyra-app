@@ -12,6 +12,14 @@ export default function Footer({ variant = 'main' }) {
           {' \u00B7 '}
           <a href={`tel:${site.phoneRaw}`}>{site.phone}</a>
         </p>
+        <p className="blog-footer-legal">
+          {footerConfig.links.map((link, i) => (
+            <span key={link.href}>
+              {i > 0 && ' \u2022 '}
+              <Link href={link.href}>{link.label}</Link>
+            </span>
+          ))}
+        </p>
       </footer>
     );
   }
