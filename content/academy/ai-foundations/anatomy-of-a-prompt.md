@@ -126,7 +126,7 @@ function updateTokenizer(){
   document.getElementById('tokenCount').textContent=tokens.length;
   document.getElementById('charCount').textContent=text.length;
   document.getElementById('wordCount').textContent=words;
-  var pct=Math.min((tokens.length/128000)*100,100);
+  var pct=Math.min((tokens.length/200000)*100,100);
   document.getElementById('contextPct').textContent=pct.toFixed(pct<1?3:1)+'%';
   document.getElementById('contextFill').style.width=Math.max(pct,0.5)+'%';
   if(tokenDisplay){tokenDisplay.innerHTML='';tokens.forEach(function(t,i){var span=document.createElement('span');span.className='token';span.textContent=t;var color=tokenColors[i%tokenColors.length];span.style.background=color+'20';span.style.color=color;span.style.border='1px solid '+color+'30';span.style.animationDelay=(i*30)+'ms';tokenDisplay.appendChild(span)})}

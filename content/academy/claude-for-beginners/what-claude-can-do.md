@@ -57,7 +57,7 @@ css: "claude-beginners.css"
   <h2 class="section-title">What Claude can't do.</h2>
   <p class="section-text">Being honest about limits is more important than hype. Match each statement to whether Claude CAN or CAN'T do it.</p>
 
-<div data-learn="MatchConnect" data-props='{"title":"Can Claude Do This?","instruction":"Drag each ability to the correct column","pairs":[{"left":"Write and edit text in your voice","right":"CAN"},{"left":"Access the internet in real time","right":"CANNOT"},{"left":"Analyze data and find patterns","right":"CAN"},{"left":"Remember past conversations by default","right":"CANNOT"},{"left":"Summarize long documents","right":"CAN"},{"left":"Be 100% accurate on all facts","right":"CANNOT"},{"left":"Help with code and formulas","right":"CAN"},{"left":"Send emails or take actions for you","right":"CANNOT"}]}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Can Claude Do This?","instruction":"Drag each ability to the correct column","pairs":[{"left":"Write and edit text in your voice","right":"CAN"},{"left":"Search the web for current information","right":"CAN"},{"left":"Analyze data and find patterns","right":"CAN"},{"left":"Remember past conversations by default","right":"CANNOT"},{"left":"Summarize long documents","right":"CAN"},{"left":"Be 100% accurate on all facts","right":"CANNOT"},{"left":"Help with code and formulas","right":"CAN"},{"left":"Send emails or take actions for you","right":"CANNOT"},{"left":"Guarantee 100% factual accuracy","right":"CANNOT"}]}'></div>
 
   <div class="tip-box">
     <div class="tip-label">Pro Tip</div>
