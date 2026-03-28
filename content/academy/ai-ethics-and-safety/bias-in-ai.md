@@ -4,7 +4,6 @@ course: "ai-ethics-and-safety"
 order: 2
 type: "lesson"
 free: true
-videoId: "c391ae25-8425-4bac-a321-6a999673de3b"
 ---<div class="wrap">
 
 <nav class="local-nav">

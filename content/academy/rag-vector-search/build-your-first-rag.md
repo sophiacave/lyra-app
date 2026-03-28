@@ -4,7 +4,6 @@ course: "rag-vector-search"
 order: 5
 type: "builder"
 free: false
-videoId: "ecd81ac7-cb75-454d-a92d-489b9b8acb8e"
 ---<nav class="nav">
   <a href="/academy" class="logo">LIKE ONE</a>
 

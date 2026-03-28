@@ -23,6 +23,7 @@ const AUDIO_DIR = path.join(OUTPUT_DIR, 'audio');
 const VIDEO_DIR = path.join(OUTPUT_DIR, 'video');
 
 const DRY_RUN = process.argv.includes('--dry-run');
+const SKIP_EXISTING = !process.argv.includes('--force');
 const ONLY_IDX = process.argv.indexOf('--only');
 const ONLY_SLUG = ONLY_IDX >= 0 ? process.argv[ONLY_IDX + 1] : null;
 
@@ -60,7 +61,7 @@ function renderSilentVideo(compositionId, outputPath, props) {
   ].join(' ');
 
   try {
-    execSync(cmd, { cwd: path.join(STUDIO_DIR, '..'), stdio: 'pipe', timeout: 600000 });
+    execSync(cmd, { cwd: path.join(STUDIO_DIR, '..'), stdio: 'pipe', timeout: 1800000 });
     return true;
   } catch (e) {
     console.error(`  ❌ Render failed:`, e.stderr?.toString?.()?.slice(-300) || e.message?.slice(-300));
@@ -95,6 +96,15 @@ for (const { slug, configPath, audioPath } of configs) {
     continue;
   }
 
+  // Skip already-rendered v2 files unless --force
+  const finalPath = path.join(VIDEO_DIR, `${slug}_v2.mp4`);
+  if (SKIP_EXISTING && existsSync(finalPath)) {
+    const fileSize = execSync(`ls -lh "${finalPath}"`, { encoding: 'utf-8' }).trim().split(/\s+/)[4];
+    console.log(`  ⏭️ Already rendered (${fileSize}), skipping`);
+    success++;
+    continue;
+  }
+
   // Phase 1: Render silent video with v2 visuals
   const silentPath = path.join(VIDEO_DIR, `${slug}_v2_silent.mp4`);
   console.log(`  🎨 Rendering v2 visuals...`);
@@ -107,7 +117,6 @@ for (const { slug, configPath, audioPath } of configs) {
   }
 
   // Phase 2: Merge with existing v2 audio
-  const finalPath = path.join(VIDEO_DIR, `${slug}_v2.mp4`);
   console.log(`  🔊 Merging with v2 audio...`);
   const merged = mergeVideoAudio(silentPath, audioPath, finalPath);
 
