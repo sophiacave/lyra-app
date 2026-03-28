@@ -1,0 +1,52 @@
+{
+  "title": "Build Your Personal Assistant",
+  "subtitle": "Claude for Beginners — Like One Academy",
+  "slug": "build-your-assistant",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Everything you've learned comes together here. Your personal AI assistant is built from five layers. Custom instructions as the foundation. Projects for each area of work. A prompt library for recurring tasks. A daily routine that becomes muscle memory. And iteration to keep improving.",
+      "voice": "sophia",
+      "highlightWords": ["five layers", "foundation", "prompt library", "daily routine"]
+    },
+    {
+      "type": "concept",
+      "label": "5-Layer Assistant Blueprint",
+      "nodes": [
+        { "x": 0.5, "y": 0.9, "label": "1. Instructions" },
+        { "x": 0.5, "y": 0.72, "label": "2. Projects" },
+        { "x": 0.5, "y": 0.54, "label": "3. Prompt Library" },
+        { "x": 0.5, "y": 0.36, "label": "4. Daily Routine" },
+        { "x": 0.5, "y": 0.18, "label": "5. Iteration" }
+      ],
+      "connections": [[0, 1], [1, 2], [2, 3], [3, 4]],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Your morning AI routine takes five minutes. Check your calendar and ask Claude to prep you for the day. Scan your inbox and draft the three most important replies. Review your project board and identify the one thing that moves the needle. Five minutes. Zero stress. Full clarity.",
+      "voice": "sophia",
+      "highlightWords": ["five minutes", "calendar", "inbox", "zero stress"]
+    },
+    {
+      "type": "narration",
+      "text": "Your prompt library is your personal playbook. Eight to ten prompts you use every week. Email drafts. Meeting prep. Status updates. Data analysis. Save them somewhere accessible and reuse them. The more you use Claude, the more patterns you'll discover. That's iteration. The assistant gets better because you get better at directing it.",
+      "voice": "sophia",
+      "highlightWords": ["playbook", "reuse", "patterns", "directing"]
+    },
+    {
+      "type": "quote",
+      "quote": "The best assistant is the one you actually use every day.",
+      "attribution": "— Like One Academy",
+      "durationS": 4
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "You've completed Claude for Beginners!",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}

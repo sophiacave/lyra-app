@@ -1,0 +1,52 @@
+{
+  "title": "Email & Calendar Magic",
+  "subtitle": "Claude for Beginners — Like One Academy",
+  "slug": "email-calendar-magic",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Most people stare at a blank email for ten minutes, write something mediocre, then rewrite it twice. Claude skips all of that. You describe what you need. Claude writes it. You tweak one line and hit send. The key is giving Claude enough context about tone, audience, and goal.",
+      "voice": "sophia",
+      "highlightWords": ["tone", "audience", "goal", "send"]
+    },
+    {
+      "type": "concept",
+      "label": "Email Workflow",
+      "nodes": [
+        { "x": 0.1, "y": 0.5, "label": "Describe need" },
+        { "x": 0.35, "y": 0.3, "label": "Set tone" },
+        { "x": 0.35, "y": 0.7, "label": "Set audience" },
+        { "x": 0.6, "y": 0.5, "label": "Claude drafts" },
+        { "x": 0.85, "y": 0.5, "label": "You send" }
+      ],
+      "connections": [[0, 1], [0, 2], [1, 3], [2, 3], [3, 4]],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Cold outreach, meeting follow-ups, pushing back on your manager, weekly status updates. Claude handles all of them. The trick is including the real context. Who you met. What you agreed on. What your constraint is. Claude turns messy context into polished communication.",
+      "voice": "sophia",
+      "highlightWords": ["outreach", "follow-ups", "context", "polished"]
+    },
+    {
+      "type": "narration",
+      "text": "For meetings, Claude is just as powerful. Paste your calendar invite and ask for a prep agenda. After the meeting, paste your rough notes and get formatted minutes with action items in seconds. You'll never lose track of a decision again.",
+      "voice": "sophia",
+      "highlightWords": ["meetings", "agenda", "minutes", "action items"]
+    },
+    {
+      "type": "quote",
+      "quote": "Stop writing emails. Start directing them.",
+      "attribution": "— Like One Academy",
+      "durationS": 4
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Documents & Data",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}

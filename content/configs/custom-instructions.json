@@ -1,0 +1,51 @@
+{
+  "title": "Custom Instructions & Memory",
+  "subtitle": "Claude for Beginners — Like One Academy",
+  "slug": "custom-instructions",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Imagine hiring a new assistant. On day one, you tell them how you like things done, your role, your style. You say it once, not every morning. That's exactly what custom instructions are. Persistent instructions that shape every conversation with Claude.",
+      "voice": "sophia",
+      "highlightWords": ["custom instructions", "persistent", "every conversation"]
+    },
+    {
+      "type": "concept",
+      "label": "Custom Instructions Flow",
+      "nodes": [
+        { "x": 0.15, "y": 0.5, "label": "You set once" },
+        { "x": 0.42, "y": 0.3, "label": "Role & tone" },
+        { "x": 0.42, "y": 0.7, "label": "Format prefs" },
+        { "x": 0.7, "y": 0.5, "label": "Every chat shaped" }
+      ],
+      "connections": [[0, 1], [0, 2], [1, 3], [2, 3]],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Without custom instructions, every conversation starts from zero. You repeat yourself constantly. With them, Claude already knows your role, your style, your preferences, and your tools. Every response is tailored from the first word.",
+      "voice": "sophia",
+      "highlightWords": ["zero", "tailored", "first word"]
+    },
+    {
+      "type": "narration",
+      "text": "Here's how to build yours. Start with your role and context. Then add your preferred format. Then specify your tone. Finally, include any tools or systems you use daily. Claude remembers all of it across every conversation.",
+      "voice": "sophia",
+      "highlightWords": ["role", "format", "tone", "tools"]
+    },
+    {
+      "type": "quote",
+      "quote": "Tell Claude who you are once. It remembers forever.",
+      "attribution": "— Like One Academy",
+      "durationS": 4
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Build Your Personal Assistant",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}

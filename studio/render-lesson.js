@@ -115,7 +115,7 @@ function renderVideo(compositionId, outputPath, props, durationFrames) {
 
 // ── FFmpeg: Merge audio onto video ──
 function mergeAudioVideo(videoPath, audioPath, outputPath) {
-  const cmd = `ffmpeg -y -i "${videoPath}" -i "${audioPath}" -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart "${outputPath}"`;
+  const cmd = `ffmpeg -y -i "${videoPath}" -i "${audioPath}" -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart "${outputPath}"`;
   try {
     execSync(cmd, { stdio: 'pipe', timeout: 60000 });
     return true;

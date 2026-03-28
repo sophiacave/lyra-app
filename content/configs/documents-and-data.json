@@ -1,0 +1,52 @@
+{
+  "title": "Documents & Data",
+  "subtitle": "Claude for Beginners — Like One Academy",
+  "slug": "documents-and-data",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "You have a twenty page report and five minutes before a meeting. Instead of skimming and hoping for the best, you paste the document into Claude and ask for exactly the summary you need. Executive summary. Bullet points. Action items only. Or explain it like I'm five.",
+      "voice": "sophia",
+      "highlightWords": ["summary", "bullet points", "action items"]
+    },
+    {
+      "type": "concept",
+      "label": "4 Summary Styles",
+      "nodes": [
+        { "x": 0.5, "y": 0.15, "label": "Your Document" },
+        { "x": 0.15, "y": 0.5, "label": "Executive" },
+        { "x": 0.38, "y": 0.7, "label": "Bullets" },
+        { "x": 0.62, "y": 0.7, "label": "Actions" },
+        { "x": 0.85, "y": 0.5, "label": "ELI5" }
+      ],
+      "connections": [[0, 1], [0, 2], [0, 3], [0, 4]],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "But Claude doesn't just summarize. It analyzes. Upload a spreadsheet and ask which region grew fastest. Paste meeting notes and extract every action item with owners and deadlines. Turn rough drafts into polished reports. This is where Claude becomes your superpower.",
+      "voice": "sophia",
+      "highlightWords": ["analyzes", "spreadsheet", "action item", "superpower"]
+    },
+    {
+      "type": "narration",
+      "text": "The secret is giving Claude context about what you need. Don't just say summarize this. Say summarize this as a three paragraph executive summary for my VP, focused on risk factors and next steps. The more specific your ask, the more useful the output.",
+      "voice": "sophia",
+      "highlightWords": ["context", "specific", "useful"]
+    },
+    {
+      "type": "quote",
+      "quote": "Don't just upload. Direct. Claude follows your lead.",
+      "attribution": "— Like One Academy",
+      "durationS": 4
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Custom Instructions & Memory",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}
