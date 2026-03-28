@@ -2,18 +2,23 @@
   "name": "lyra-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.0",
+    "@remotion/cli": "^4.0.441",
+    "@remotion/player": "^4.0.441",
+    "@remotion/renderer": "^4.0.441",
+    "gray-matter": "^4.0.3",
     "next": "^14.2.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "@notionhq/client": "^2.2.0",
-    "gray-matter": "^4.0.3",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "remotion": "^4.0.441"
   }
 }

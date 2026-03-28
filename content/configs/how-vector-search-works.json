@@ -1,0 +1,147 @@
+{
+  "title": "How Vector Search Works",
+  "subtitle": "RAG & Vector Search — Like One Academy",
+  "slug": "how-vector-search-works",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "In the last lesson, we learned that embeddings turn text into numbers. But what do we actually do with those numbers? We search through them. This is vector search — and it is the beating heart of every AI brain.",
+      "voice": "sophia",
+      "highlightWords": [
+        "vector search",
+        "numbers",
+        "beating heart",
+        "AI brain"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "Vector Search in 2D",
+      "nodes": [
+        {
+          "x": 0.3,
+          "y": 0.3,
+          "label": "Your question"
+        },
+        {
+          "x": 0.25,
+          "y": 0.4,
+          "label": "Memory A"
+        },
+        {
+          "x": 0.35,
+          "y": 0.25,
+          "label": "Memory B"
+        },
+        {
+          "x": 0.7,
+          "y": 0.7,
+          "label": "Memory C"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "Memory D"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "When you ask your brain a question, that question becomes an embedding — a point in space. Then we measure the distance between your question and every stored memory. The closest memories are the most relevant answers.",
+      "voice": "sophia",
+      "highlightWords": [
+        "question",
+        "embedding",
+        "distance",
+        "closest",
+        "relevant"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "There are different ways to measure closeness. Cosine similarity looks at the angle between two vectors. Euclidean distance measures the straight line between them. For most text applications, cosine similarity wins — because it cares about direction, not magnitude.",
+      "voice": "sophia",
+      "highlightWords": [
+        "cosine similarity",
+        "angle",
+        "direction",
+        "magnitude"
+      ]
+    },
+    {
+      "type": "code",
+      "label": "Cosine Similarity",
+      "language": "python",
+      "code": "import numpy as np\n\ndef cosine_similarity(a, b):\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))\n\n# Two similar sentences\nq = model.encode(\"How do embeddings work?\")\nm = model.encode(\"What are vector representations?\")\n\nscore = cosine_similarity(q, m)\nprint(f\"Similarity: {score:.3f}\")  # ~0.85",
+      "highlightLines": [
+        4,
+        10
+      ],
+      "durationS": 10
+    },
+    {
+      "type": "narration",
+      "text": "But here is the problem. If you have a million memories, checking every single one is slow. This is where approximate nearest neighbor search comes in. Tools like pgvector use special index structures to find the closest vectors without checking them all.",
+      "voice": "sophia",
+      "highlightWords": [
+        "million",
+        "slow",
+        "approximate nearest neighbor",
+        "pgvector",
+        "index"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Exact Search",
+      "rightTitle": "Approximate Search (ANN)",
+      "leftItems": [
+        "Checks every vector",
+        "Always finds the best match",
+        "Slow at scale"
+      ],
+      "rightItems": [
+        "Uses smart indexing",
+        "Finds nearly-best matches",
+        "Fast even with millions"
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Your Like One brain uses pgvector with an HNSW index. It can search through thousands of memories in milliseconds. When you ask a question, the brain finds the five most relevant memories and hands them to the AI. This is called retrieval augmented generation — RAG.",
+      "voice": "sophia",
+      "highlightWords": [
+        "pgvector",
+        "HNSW",
+        "milliseconds",
+        "five most relevant",
+        "RAG"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "The art of being wise is the art of knowing what to overlook.",
+      "attribution": "— William James",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Building Your First RAG Pipeline",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}
