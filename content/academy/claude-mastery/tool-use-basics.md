@@ -21,7 +21,7 @@ free: false
 <div class="content">
 <div class="card">
 <h2>What Is Tool Use?</h2>
-<p>By default, Claude can only process text. But with <strong>tool use</strong> (also called function calling), Claude can interact with the real world — search the web, query databases, call APIs, run code, and more. You define the tools, and Claude decides when and how to use them.</p>
+<p>Claude can process text and images, and since March 2025 can search the web. With <strong>tool use</strong> (also called function calling), Claude can do even more — query databases, call APIs, run code, and interact with any system you connect. You define the tools, and Claude decides when and how to use them.</p>
 <p>Think of tools as giving Claude hands to go with its brain.</p>
 </div>
 

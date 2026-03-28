@@ -39,7 +39,7 @@ free: true
         <div class="comp-cell"><strong>Discovery</strong>Tools must be explicitly defined and configured per integration.</div>
       </div>
       <div class="comp-row">
-        <div class="comp-cell"><strong>Transport</strong>Communicates over stdio or HTTP with Server-Sent Events (SSE).</div>
+        <div class="comp-cell"><strong>Transport</strong>Communicates over stdio (local) or Streamable HTTP (remote).</div>
         <div class="comp-cell"><strong>Transport</strong>Varies — REST, SDK calls, or inline function execution.</div>
       </div>
       <div class="comp-row">

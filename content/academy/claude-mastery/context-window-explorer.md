@@ -30,8 +30,8 @@ free: true
 <p>See how Claude stacks up against other models:</p>
 <div class="comparison-grid">
 <div class="model-bar">
-<div class="model-name" style="color:#8b5cf6">Claude 3.5</div>
-<div class="model-tokens">200K tokens</div>
+<div class="model-name" style="color:#8b5cf6">Claude 4.6</div>
+<div class="model-tokens">200K tokens (up to 1M with extended context)</div>
 <div class="model-visual"></div>
 </div>
 <div class="model-bar">
@@ -40,12 +40,12 @@ free: true
 <div class="model-visual"></div>
 </div>
 <div class="model-bar">
-<div class="model-name" style="color:#fb923c">Gemini 1.5</div>
+<div class="model-name" style="color:#fb923c">Gemini 2.x</div>
 <div class="model-tokens">1M tokens</div>
 <div class="model-visual"></div>
 </div>
 </div>
-<p style="font-size:.85rem"><strong>Key insight:</strong> While Gemini has a larger window, Claude's 200K context is often more <em>effectively utilized</em> — Claude shows stronger recall and reasoning across its full context compared to models that may "lose" information in the middle of long contexts (the "lost in the middle" phenomenon).</p>
+<p style="font-size:.85rem"><strong>Key insight:</strong> Claude Opus 4.6 can match Gemini's 1M window with extended context. Even at the standard 200K, Claude's context is often more <em>effectively utilized</em> — Claude shows stronger recall and reasoning across its full context compared to models that may "lose" information in the middle of long contexts (the "lost in the middle" phenomenon).</p>
 </div>
 
 <div class="card">
@@ -145,7 +145,7 @@ free: true
 
 <div data-learn="MatchConnect" data-props='{"title":"Match Content Type to Token Density","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"English Prose","right":"~4 chars per token"},{"left":"Python Code","right":"~3.5 chars per token"},{"left":"JSON Data","right":"~3 chars per token"},{"left":"HTML / XML","right":"~2.5 chars per token"},{"left":"Non-English Text","right":"~2 chars per token"}]}'></div>
 
-<div data-learn="QuizMC" data-props='{"title":"Context Window Comprehension","questions":[{"q":"Claude 3.5 has a context window of approximately how many tokens?","options":["50K tokens","128K tokens","200K tokens","1 million tokens"],"correct":2,"explanation":"Claude 3.5 supports a 200K token context window, which equates to roughly 500 pages of a novel."},{"q":"What does the lost in the middle phenomenon describe?","options":["Tokens being dropped mid-response","Models losing track of information buried in the middle of long inputs","Context windows shrinking during a conversation","Tokens costing more as the context grows"],"correct":1,"explanation":"Lost in the middle describes how some models struggle to recall information placed in the middle of a long context. Claude is specifically optimized to reduce this problem."},{"q":"Which content type uses the most tokens per unit of text?","options":["English prose","Non-English text","Python code","JSON data"],"correct":1,"explanation":"Non-English text tokenizes at roughly 2 characters per token — the least efficient, meaning it uses the most tokens for a given amount of text."}]}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Context Window Comprehension","questions":[{"q":"Claude\u0027s standard context window is approximately how many tokens?","options":["50K tokens","128K tokens","200K tokens","1 million tokens"],"correct":2,"explanation":"Claude supports a 200K token standard context window (Opus 4.6 extends to 1M), which equates to roughly 500 pages of a novel."},{"q":"What does the lost in the middle phenomenon describe?","options":["Tokens being dropped mid-response","Models losing track of information buried in the middle of long inputs","Context windows shrinking during a conversation","Tokens costing more as the context grows"],"correct":1,"explanation":"Lost in the middle describes how some models struggle to recall information placed in the middle of a long context. Claude is specifically optimized to reduce this problem."},{"q":"Which content type uses the most tokens per unit of text?","options":["English prose","Non-English text","Python code","JSON data"],"correct":1,"explanation":"Non-English text tokenizes at roughly 2 characters per token — the least efficient, meaning it uses the most tokens for a given amount of text."}]}'></div>
 
 </div>
 
