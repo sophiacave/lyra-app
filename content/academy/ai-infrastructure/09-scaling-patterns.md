@@ -58,6 +58,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Scaling Strategies — Match Each to How It Helps","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Semantic Caching","right":"Catches repeated or similar questions without any LLM call — one answer serves many slightly different queries"},{"left":"Round-Robin Routing","right":"Alternates between AI providers to double your effective rate limit — 100 RPM each becomes 200 RPM total"},{"left":"Smart Routing","right":"Routes simple tasks to cheaper models and complex tasks to capable ones — classification doesn\\\'t need the flagship"},{"left":"Request Queue","right":"Accepts requests immediately, processes at your own pace — protects rate limits during burst traffic"},{"left":"Priority Queue","right":"Paid users processed first, free users when capacity allows — naturally protects paid user experience during spikes"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Layer Three</span>
   <h2 class="section-title">Queue-Based Processing</h2>
   <p class="section-text">Not every AI request needs a synchronous response. For operations where users can wait a few seconds (document analysis, content generation, batch processing), a queue-based architecture handles burst traffic gracefully.</p>

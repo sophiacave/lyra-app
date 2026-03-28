@@ -69,6 +69,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Testing Workflows","cards":[{"front":"Unit Testing","back":"Test each step in isolation. Does the classifier categorize correctly? Does the template render properly? Fix issues before they compound."},{"front":"Integration Testing","back":"Test connections between steps. Does Step A\\\'s output actually work as Step B\\\'s input? This is where most bugs hide."},{"front":"End-to-End Testing","back":"Run the entire workflow from trigger to final output with test data. Your full dress rehearsal before going live."},{"front":"Think Like a Chaos Gremlin","back":"Test with: normal data, edge cases (emoji in names), missing data (blank fields), malformed data, and extreme values ($0 orders)."},{"front":"Sandbox First, Always","back":"Use test modes religiously — Stripe test mode, email preview sends, staging databases. Never test against production until sandboxes are exhausted."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Three Testing Layers</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Workflow Testing Layers","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Unit testing","right":"Test each step in isolation — does the classifier categorize correctly, does the template render"},{"left":"Integration testing","right":"Test connections between steps — does Step A output actually work as Step B input"},{"left":"End-to-end testing","right":"Run the entire workflow trigger to final output with test data — the full dress rehearsal"},{"left":"Dry run","right":"Execute the workflow logic without actually sending, saving, or processing — see what would happen"}]}'></div>

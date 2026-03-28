@@ -66,6 +66,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI UX — Key Concepts","cards":[{"front":"Stop Building Chatbots","back":"Chat puts the burden on users to know what to ask. Structured inputs — buttons, dropdowns, templates, pre-filled forms — guide users toward input your model works best with."},{"front":"Edit, Don\\\'t Create","back":"AI generates a first draft, user edits it. Design around inline editing, track changes, version comparison, and regenerate buttons. The human is editor-in-chief."},{"front":"Streaming Responses","back":"Showing text as it generates reduces perceived wait time by 60-70%. Users start reading immediately instead of staring at a spinner."},{"front":"Design for the Wrong Answer","back":"Every AI output is a suggestion. Make it trivially easy to reject, edit, or regenerate. Add thumbs up/down, try again, and edit links on every output."},{"front":"AI Accessibility","back":"Streaming text can break screen readers. Loading animations can trigger seizures. Auto-playing responses can overwhelm cognitive disabilities. Build accessible from day one."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"AI Interface Patterns — Match Each to How It Works","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Structured Input + AI Output","right":"Form fields guide users to optimal input, AI generates result — e.g., Canva’s Magic Write"},{"left":"Select + Transform","right":"Highlight text, choose an AI action from a menu — e.g., Notion AI inline editing"},{"left":"Ambient AI","right":"AI works in the background and surfaces suggestions without disrupting the workflow — e.g., Grammarly"},{"left":"Edit, Don’t Create","right":"AI generates a first draft; the user edits it — maintains user control while eliminating the blank page problem"}]}'></div>
 </div>
 

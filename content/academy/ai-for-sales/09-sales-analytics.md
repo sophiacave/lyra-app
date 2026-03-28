@@ -72,6 +72,13 @@ free: false
   <p class="section-text">You don't need an expensive sales coach. AI can review your performance data, your email copy, your call notes, and give you targeted coaching every week. Ask it to score your emails, critique your proposals, or identify the skills you need to develop. The feedback is instant, honest, and available at 2 AM when you're prepping for tomorrow's big meeting.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review the key metrics and analytics concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Sales Analytics","cards":[{"front":"Data Rich, Insight Poor","back":"Having lots of sales data without analyzing it is just noise. AI is the analyst you never had — paste your data and it finds patterns and recommends changes."},{"front":"Conversion Rate by Stage","back":"Where do deals die? That is where your core problem is. Fixing the leakiest stage has the biggest impact on overall revenue."},{"front":"Win/Loss Analysis","back":"Feed your last 20 deals to AI with full context. Find what wins have in common and what losses share. These patterns become rules that change how you sell."},{"front":"Activity-to-Revenue Ratio","back":"How many calls and emails per closed deal? Measures efficiency. Fewer touches per close means your targeting and messaging are improving."},{"front":"AI as Sales Coach","back":"AI reviews your performance data, email copy, and call notes to give targeted coaching. Instant, honest feedback available anytime — no expensive coach required."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

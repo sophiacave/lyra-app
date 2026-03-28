@@ -61,6 +61,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Architecture Decisions — Key Concepts","cards":[{"front":"API-First (Claude, GPT, Gemini)","back":"Start here. Fastest time to market, highest general quality. You pay per token but ship in days. Tradeoff: dependent on someone else\\\'s model, pricing, and uptime."},{"front":"RAG (Retrieval-Augmented Generation)","back":"Store your data as embeddings, retrieve relevant chunks at query time, feed to model as context. Sweet spot for most products that need the model to know your data."},{"front":"Model-Agnostic Architecture","back":"Abstract model calls behind a clean interface. Store prompts as templates. Keep model-specific code in a thin adapter layer. Swap models with a config change, not a rewrite."},{"front":"The Starter Stack","back":"Frontend + backend with auth/billing (Supabase) + AI API (Claude/GPT) + vector database (pgvector). Four components. Ship fast, optimize later."},{"front":"Fine-Tuning","back":"Only when you have domain-specific data general models can\\\'t match. Expensive, requires clean data, locks you to a model version. Phase 2 optimization, never phase 1."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Architecture Options — Match Each to When to Use It","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Prompt Engineering","right":"First tool — free to iterate, instant to deploy, handles 80% of use cases"},{"left":"RAG","right":"When the model needs your data — product docs, knowledge bases, user history"},{"left":"Fine-Tuning","right":"When you need fundamental behavior change — specific tone, specialized vocabulary — not a phase 1 choice"},{"left":"Open-Source Models","right":"After product-market fit, when API costs exceed GPU infrastructure costs and traffic is predictable"}]}'></div>
 </div>
 

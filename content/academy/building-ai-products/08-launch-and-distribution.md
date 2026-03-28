@@ -59,6 +59,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Launch & Distribution — Key Concepts","cards":[{"front":"Three-Wave Launch","back":"Wave 1 (Week -2): 20-50 inner circle testers to catch failures. Wave 2 (Week 0): Community seeding — show the output, not the tool. Wave 3 (Week 1+): Content flywheel from product outputs."},{"front":"Show the Output, Not the Tool","back":"AI outputs are inherently shareable. Add subtle watermarks and one-click sharing. Every shared output is a free ad that demonstrates value instead of claiming it."},{"front":"Building in Public","back":"Share architecture decisions, prompt engineering insights, cost breakdowns. Transparency builds trust and establishes authority — attracting users who see the care behind the product."},{"front":"Launch Day Reality","back":"Most AI products don\\\'t go viral on launch day. Product Hunt gets 500 visitors. An SEO article ranking for your niche gets 500/month forever. Plan for sustained distribution."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Three-Wave Launch — Match Each Wave to Its Goal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Wave 1 — Inner Circle","right":"Give to 20-50 people you know to catch embarrassing failures before strangers see them"},{"left":"Wave 2 — Community Seeding","right":"Post the output in communities where target users gather — show the magic trick, not the tool"},{"left":"Wave 3 — Content Flywheel","right":"Turn your product’s outputs into content — screenshots, before/after, testimonials that demonstrate value without ads"},{"left":"Show the Output, Not the Tool","right":"Add a subtle watermark and one-click sharing — every shared output is a free ad that proves value"}]}'></div>
 </div>
 

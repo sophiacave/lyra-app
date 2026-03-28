@@ -90,9 +90,15 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Orchestration flashcards.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Orchestration Architectures Flashcards","cards":[{"front":"What is hub-spoke architecture?","back":"One orchestrator agent sits at the center — it receives tasks, delegates to specialists, collects results, and assembles the final output. Every message flows through the hub. Best for tight control with fewer than 5-6 agents."},{"front":"What is pipeline architecture?","back":"Agents arranged in sequence like an assembly line. Each one processes input, transforms it, and passes it to the next. No central controller — the flow is baked into the structure. Best for truly linear workflows."},{"front":"What is swarm architecture?","back":"No central controller. Agents operate independently, communicating peer-to-peer and self-organizing based on the current state of work. Highly resilient but hard to debug and potentially unpredictable."},{"front":"What is a hybrid architecture?","back":"A combination of patterns — for example, a hub-spoke system where one spoke is itself a pipeline. Most real-world systems end up as hybrids as complexity grows."},{"front":"How do you choose the right architecture?","back":"Match the architecture to your workflow\\\'s shape: linear processes want pipelines, dynamic processes want swarms, controlled processes want hub-spoke. Start simple and evolve as needs become clear."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Architecture comparison.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Orchestration Architecture Tradeoffs","cards":[{"front":"Hub-Spoke: Strength","back":"Easy to reason about. Clear chain of command. Simple debugging. You always know who is in charge."},{"front":"Hub-Spoke: Weakness","back":"The hub is a bottleneck and single point of failure. If it gets confused, the whole system breaks."},{"front":"Pipeline: Strength","back":"Simple and predictable. Easy to test each stage independently. Adding a new step just inserts a new agent."},{"front":"Pipeline: Weakness","back":"No flexibility for branching logic. If step 3 needs to loop back to step 1, the linear architecture fights you."},{"front":"Swarm: Strength","back":"Highly resilient. Scales naturally. Can handle unpredictable workflows. If one agent fails, others adapt."},{"front":"Swarm: Weakness","back":"Hard to debug. Unpredictable behavior. Potential for agents to conflict or duplicate work."}]}'></div>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Architecture to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Hub-Spoke","right":"Customer support system with controlled routing and escalation through a central orchestrator"},{"left":"Pipeline","right":"Code review where linter, security scanner, style checker, and summary agent run in sequence"},{"left":"Swarm","right":"Research exploration where multiple agents investigate different angles in parallel and converge"},{"left":"Hybrid","right":"A hub-spoke system where one of the spokes is itself a pipeline processing subtasks"}]}'></div>
 </div>
 
 <div class="lesson-section">

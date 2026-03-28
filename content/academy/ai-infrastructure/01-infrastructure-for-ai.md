@@ -73,6 +73,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Infrastructure — Match Each Component to Its Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Compute (GPUs / APIs)","right":"Handles the actual AI inference — self-hosted or pay-per-call through providers like OpenAI and Anthropic"},{"left":"Vector Database","right":"Stores embeddings and enables semantic similarity search by meaning rather than keywords"},{"left":"Orchestration Layer","right":"Chains operations — retrieve context, call LLM, parse response, handle retries and streaming"},{"left":"CDN + Load Balancer","right":"Serves static content and distributes traffic before requests reach your AI pipeline"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Bottom Line</span>
   <h2 class="section-title">Infrastructure Is the Foundation</h2>
   <p class="section-text">You can write the most elegant AI code in the world, but if your infrastructure can't handle variable latency, unpredictable costs, and semantic search — it'll break under real usage. The rest of this course teaches you how to build infrastructure that doesn't break.</p>

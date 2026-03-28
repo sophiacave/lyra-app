@@ -69,6 +69,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI in PM — Match Each Capability to Its Impact","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Meeting Transcript Processing","right":"Extracts every action item, decision, and open question from a 90-minute meeting in seconds"},{"left":"Status Report Drafting","right":"Generates stakeholder updates from raw notes — what took 45 minutes now takes 5"},{"left":"Risk Pattern Detection","right":"Spots slipping timelines, stacking dependencies, and unbalanced workloads without fatigue"},{"left":"Agenda Generation","right":"Creates next meeting\\\'s agenda automatically from last week\\\'s open action items"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"AI in Project Management — The Big Three","cards":[{"front":"Information Processing","back":"AI digests a 90-minute meeting transcript and extracts every action item, decision, and open question in seconds. No re-watching recordings."},{"front":"Communication Generation","back":"Status reports, stakeholder updates, executive summaries — AI drafts them from your raw notes in minutes instead of 45 minutes."},{"front":"Pattern Recognition","back":"AI spots risks you might miss — slipping timelines, stacking dependencies, unbalanced team workloads — without getting tired or distracted."},{"front":"What AI will NOT do for you","back":"Navigate office politics, sense burnout from body language, know that ‘this is fine’ actually means the client hates it. Human judgment stays yours."}]}'></div>
 </div>
 

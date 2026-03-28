@@ -128,6 +128,13 @@ free: false
   <p class="section-text" style="margin-top:1rem">Ask AI for "20 landing page headlines in 5 different styles: benefit, question, social proof, direct offer, and pain-agitate." Then pick your favorite from each style and test them.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the landing page conversion framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Landing Page Structure","cards":[{"front":"Hero Section","back":"Headline under 10 words + subheadline + CTA button. Clear value proposition: what you get and why it matters."},{"front":"Problem Section","back":"Agitate the pain in 3-4 sentences. Show you understand their frustration and make them feel seen."},{"front":"Social Proof Section","back":"Testimonials, logos, numbers, case studies. Real results from real people — evidence it works."},{"front":"Objection Handling","back":"FAQ section, guarantee, risk-reversal. Address the specific reasons someone might NOT buy."},{"front":"CTA Button Rules","back":"Use action verbs that describe what happens next. Never use Submit or Learn More. Examples: Start Free Trial, Get Instant Access."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

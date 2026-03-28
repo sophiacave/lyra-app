@@ -69,6 +69,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Error Handling and Fallbacks","cards":[{"front":"Errors Are Expected","back":"APIs go down, data arrives malformed, rate limits get hit. These are normal operating conditions, not signs your workflow is broken."},{"front":"Retry Strategy","back":"Wait 5s, then 15s, then 45s — increasing intervals. Most transient errors resolve themselves within 3 attempts."},{"front":"Fallback Strategy","back":"Retries exhausted? Switch to Plan B. Use backup service, apply a default category, flag for human review."},{"front":"AI Confidence Thresholds","back":"Above 80% = act automatically. Between 50-80% = act but flag for review. Below 50% = route to a human."},{"front":"Graceful Degradation","back":"If step 3 of 6 fails, can steps 4-6 still run with partial data? Design steps to be as independent as possible."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Retry-Fallback-Alert Pattern</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Error Handling Pattern","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Retry","right":"Wait 5 seconds and try again — most transient errors resolve themselves within 3 attempts"},{"left":"Fallback","right":"Retries exhausted — switch to Plan B or apply a default and flag for human review"},{"left":"Alert","right":"Fallback activated — notify someone with what failed, when, what the fallback did, what needs attention"},{"left":"AI confidence threshold","right":"Above 80% act automatically, 50-80% act but flag, below 50% route to human"}]}'></div>

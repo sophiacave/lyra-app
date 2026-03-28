@@ -90,6 +90,13 @@ free: false
   <div class="prompt-box"><code>I just completed a course on AI for sales. Help me design a 5-day challenge where I implement one new AI workflow each day: Day 1: Research, Day 2: Outreach, Day 3: Call Prep, Day 4: Pipeline Review, Day 5: Analytics. For each day, give me the exact prompt to use, the time it should take, and how to measure if it's working. Make it practical and achievable alongside my regular sales activities.</code></div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review the AI sales system and daily rhythm.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Your AI Sales System","cards":[{"front":"The 80/20 AI Goal","back":"AI handles 80% of preparation, analysis, and drafting. You focus 100% of your energy on the human moments that close deals."},{"front":"Morning Block (30 min)","back":"AI pipeline review plus prospect research for today\\u0027s calls. Start every day knowing exactly who to focus on and why."},{"front":"End of Day (15 min)","back":"AI reviews today\\u0027s activity and plans tomorrow\\u0027s priorities. 45 total minutes of AI work bookends a full day of high-value selling."},{"front":"Personal Prompt Library","back":"Saved prompts organized by sales stage: research, outreach, call prep, proposals, objections, pipeline, retention, analytics. Refined weekly based on results."},{"front":"Why AI Sellers Win","back":"Not because AI replaces human selling — but because it frees sellers to connect, understand, and solve real problems for real people. AI perfects the art of selling."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

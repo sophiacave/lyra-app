@@ -99,6 +99,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the task management concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Task Management and Prioritization","cards":[{"front":"Clarity Problem vs. Productivity Problem","back":"Most people don\\u0027t struggle because they\\u0027re lazy. They struggle because everything feels equally important and they can\\u0027t figure out where to start."},{"front":"The Brain Dump","back":"Get everything out of your head — every task, errand, worry, and half-finished project. Don\\u0027t filter or organize. Just dump. AI sorts it for you."},{"front":"The Four Priority Buckets","back":"Do Now (urgent + important), Schedule (important, not urgent), Quick Wins (under 5 min), and Let Go (not worth your energy)."},{"front":"Breaking Down Big Tasks","back":"Ask AI to break overwhelming projects into 15-minute chunks. Clean the garage becomes grab a trash bag and start with the left wall."},{"front":"The Weekly Planning Prompt","back":"Brain dump your whole week, ask AI to sort into four buckets, then get your top 3 priorities for today. Repeat every week."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

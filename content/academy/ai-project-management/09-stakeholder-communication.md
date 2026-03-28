@@ -73,6 +73,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Stakeholder Communication — Match Each Audience to Its Priority","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"CTO","right":"Technical risks, performance benchmarks, architecture decisions — wants signal on engineering health"},{"left":"CEO","right":"Business outcomes, customer impact, budget tracking — wants to know if the investment is paying off"},{"left":"Engineering Team","right":"Operational specifics, task assignments, rollback procedures — needs the details to execute"},{"left":"External Client","right":"Progress narrative, upcoming deliverables, decisions needed from their side — frame risks constructively"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Pro Tip</span>
   <h2 class="section-title">The Stakeholder Map Prompt</h2>
   <p class="section-text">At project kickoff, describe each key stakeholder to AI — their role, what they care about, how much detail they want, how often they want updates. Save this as context. Now every time you need to communicate, remind AI which stakeholder you're writing for. It remembers their preferences and adapts automatically.</p>

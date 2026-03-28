@@ -75,6 +75,12 @@ free: true
 
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Who Uses AI Visuals</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Visual Use Cases by Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Small business owners","right":"Creating product mockups and social media graphics without hiring a designer"},{"left":"Teachers","right":"Generating custom illustrations for lesson plans"},{"left":"Content creators","right":"Producing thumbnails, banners, and visual content at scale"},{"left":"Writers","right":"Visualizing characters, settings, and book covers"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
   <h2 class="section-title">How AI Image Generation Works</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Visual AI Revolution Concepts","cards":[{"front":"What is a diffusion model?","back":"An AI that starts with visual noise and gradually refines it into a coherent image guided by your text prompt — removing noise and adding detail until the final image emerges"},{"front":"What made AI image generation accessible in 2026?","back":"Three things: models got dramatically better, tools got easier to use, and cost dropped to nearly zero for basic usage"},{"front":"What does text-to-image generation mean?","back":"You type a description and an AI creates that image in seconds — no drawing skills, design degree, or expensive software required"},{"front":"What is AI video generation?","back":"You describe a scene or provide a still image and the tool brings it to life with motion, camera angles, and timing"}]}'></div>
 </div>

@@ -76,6 +76,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Meeting Notes & Action Items — Key Concepts","cards":[{"front":"Structure In, Structure Out","back":"Tell AI exactly what sections you need — decisions, action items, parking lot, key points. Vague input like \\\'summarize this\\\' produces vague output."},{"front":"Action Item Format","back":"[Owner] — [Task] — [Deadline if mentioned]. This format drives accountability and makes follow-through trackable."},{"front":"The Follow-Up Loop","back":"Feed last week\\\'s action items into AI to auto-generate the next meeting\\\'s agenda. The system creates accountability without you chasing people."},{"front":"Meeting Input Options","back":"Transcripts from Zoom/Teams/Otter, rough notes taken during the meeting, or a bullet-point brain dump afterward — all work as AI input."},{"front":"Template Once, Use Forever","back":"Save your best meeting summary prompt as a template. Tweak for meeting types — standups get lighter format, steering committees get more detail. 3-4 templates cover everything."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Meeting Output Types — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Executive Summary","right":"3 sentences max — who attended, what was decided, what is the status. Gets the summary without reading the whole document."},{"left":"Action Items","right":"Format: [Owner] — [Task] — [Deadline]. The most important output — drives accountability and follow-through after the meeting."},{"left":"Parking Lot Items","right":"Topics raised but not resolved — questions to answer, decisions to defer, issues to revisit. Prevents good ideas from disappearing."},{"left":"Next Meeting Agenda","right":"Generated automatically from open action items and parking lot topics — closes the loop and starts the next meeting with purpose."}]}'></div>
 </div>
 

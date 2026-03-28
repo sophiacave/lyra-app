@@ -72,6 +72,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Status Reports & Updates — Key Concepts","cards":[{"front":"One Input, Multiple Outputs","back":"Create a single raw status dump with bullet-point facts each week. AI formats it for executives (3 lines + RAG), team (task detail), and clients (polished narrative)."},{"front":"RAG Status Assessment","back":"Red/Amber/Green health rating. AI assigns it objectively from data — when schedule has slipped twice and budget is 80% spent at 50% done, AI calls it Amber even when you might not."},{"front":"The Friday Reporting Rhythm","back":"30-minute block: dump raw status, run through AI, review all versions, send. Done by lunch. Stakeholders start Monday informed."},{"front":"Time Savings","back":"Average PM spends 4-6 hours per week on status reporting. AI compresses this to under 1 hour — same data, multiple audience-tailored formats."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Status Report Audiences — Match Each to Its Format","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Executive Sponsor","right":"3 lines max with RAG (Red/Amber/Green) status and brief justification — decision-makers need signal, not detail."},{"left":"Project Team","right":"Task-level breakdown with completion percentages, blockers per workstream, and next sprint commitments — they need the operational detail."},{"left":"External Client","right":"Professional narrative tone highlighting progress, upcoming deliverables, and any decisions needed from their side — frame risks constructively."},{"left":"RAG Assessment","right":"Ask AI to assign Red/Amber/Green with justification based on data — forces objectivity when you’re too deep in the project to see clearly."}]}'></div>
 </div>
 

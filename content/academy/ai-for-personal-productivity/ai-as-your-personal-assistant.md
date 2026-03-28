@@ -96,6 +96,13 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the core ideas from this lesson.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"AI as Your Personal Assistant","cards":[{"front":"AI vs. Search Engine","back":"A search engine returns a list of links. AI has a conversation — you provide context, ask follow-ups, and get personalized answers."},{"front":"The Three Big Use Cases","back":"Writing anything (emails, posts, letters), planning anything (meals, trips, schedules), and figuring things out (comparing products, understanding bills)."},{"front":"The Golden Rule of AI","back":"AI is a first draft machine and thinking partner, not a fact-checker. Generate ideas and save time, then apply your own judgment."},{"front":"What Makes a Good Prompt","back":"Be specific. Include your real context — what you have, what you need, your constraints. The more detail you give, the more useful the answer."},{"front":"AI\\u0027s Honest Limits","back":"AI may not have real-time info, current prices, or niche local details. Always verify time-sensitive or location-specific facts with official sources."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

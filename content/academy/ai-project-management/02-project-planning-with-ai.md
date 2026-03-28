@@ -63,6 +63,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Planning Concepts — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Work Breakdown Structure","right":"Decomposes a project goal into phases and tasks with dependencies — AI drafts it in 30 seconds instead of an hour"},{"left":"Three-Point Estimation","right":"Optimistic, likely, and pessimistic time estimates that force honest risk thinking and build stakeholder trust"},{"left":"Critical Path","right":"The sequence of dependent tasks that determines minimum project duration — if any slips, the whole project slips"},{"left":"Velocity Data","right":"Historical team throughput (e.g., 20 story points per sprint) that dramatically improves AI estimate accuracy"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Pro Tip</span>
   <h2 class="section-title">Iterate, Don't Accept</h2>
   <p class="section-text">Never take the first output as final. Push back. Ask "what about [specific constraint]?" Challenge assumptions. The best AI-assisted plans come from 3-4 rounds of conversation, not one prompt. You're collaborating, not delegating.</p>

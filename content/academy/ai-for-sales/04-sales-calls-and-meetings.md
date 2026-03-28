@@ -72,6 +72,13 @@ free: false
   <p class="section-text">After every call, feed your notes to AI and ask for patterns. Over time, you'll build a dataset of what works: which questions open people up, which objections come up most, what closes deals. This is your personal sales playbook, refined by real data.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review the call phases and follow-up essentials.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Sales Calls and Meetings","cards":[{"front":"5-Minute Call Prep","back":"A complete call brief: prospect background, likely objections, tailored questions, and a call flow that guides the conversation toward a close. Preparation makes you sound natural."},{"front":"Discovery Phase Question","back":"What is the biggest bottleneck in your process right now? Opens the prospect up to share real pain points you can address."},{"front":"Pain Amplification Question","back":"What happens if that problem is not solved in the next 6 months? Builds urgency by making the cost of inaction concrete."},{"front":"Post-Call Follow-Up Rule","back":"Send within 30 minutes of the call. Speed signals professionalism and urgency. Include specific references to what was discussed."},{"front":"Call Intelligence System","back":"Feed call notes to AI after every call and ask for patterns. Over time, build a personal playbook of what works based on real data."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

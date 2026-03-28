@@ -91,6 +91,12 @@ free: false
 
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Style Control Keywords</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Style Keywords and Their Effects","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Art nouveau","right":"Organic flowing lines, botanical motifs, decorative elegance"},{"left":"Cyberpunk","right":"Neon lights, dark urban settings, high-tech dystopian aesthetic"},{"left":"Chiaroscuro","right":"Strong contrast between light and dark, dramatic Renaissance-inspired mood"},{"left":"Shallow depth of field","right":"Subject is sharp while background blurs softly — creates professional photography feel"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
   <h2 class="section-title">Lighting Terms</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Lighting Keywords for Prompts","cards":[{"front":"Golden hour","back":"Warm, soft natural light just after sunrise or before sunset — creates a flattering, romantic atmosphere"},{"front":"Rembrandt lighting","back":"Studio lighting where one side of the face is lit and the other is in shadow, creating dramatic depth"},{"front":"Volumetric light","back":"Light that interacts with particles in the air — visible rays, god rays, shafts of light through fog"},{"front":"Chiaroscuro","back":"Strong contrast between light and dark, inspired by Renaissance painting — dramatic and moody"},{"front":"Blue hour","back":"The soft, cool light just before sunrise or after sunset — gives images a serene, twilight quality"}]}'></div>
 </div>

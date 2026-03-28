@@ -92,6 +92,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Your AI PM Toolkit — Key Concepts","cards":[{"front":"The Weekly Rhythm","back":"Monday: priorities + team update. Daily: meeting notes. Wednesday: risk check. Friday: status reports. Total AI time: ~2 hours/week. Time saved: 6-8 hours."},{"front":"The Prompt Library","back":"Eight core templates cover 90% of PM needs: kickoff WBS, meeting processing, weekly status, risk review, sprint planning, retro analysis, stakeholder update, doc generation."},{"front":"The 30-Day Adoption Plan","back":"Week 1: meeting notes. Week 2: add status reports. Week 3: add risk + resource tracking. Week 4: full system active. Build habits incrementally."},{"front":"Common Mistakes to Avoid","back":"Don\\\'t over-automate (you\\\'re the quality gate). Don\\\'t hide AI use (transparency builds trust). Don\\\'t skip context (30 extra seconds of input pays back tenfold)."},{"front":"The PM Who Thrives","back":"Not the one who resists AI or blindly trusts it — the one who partners with it, using AI\\\'s processing power and their own human judgment to deliver projects that matter."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"The AI PM Weekly Rhythm — Match Each Day to Its Focus","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Monday","right":"Review last week’s action items with AI. Generate this week’s priorities. Draft the team update to start the week aligned."},{"left":"Daily","right":"Process meeting notes through AI immediately after each meeting. Action items go to your tracker within minutes, not days."},{"left":"Wednesday","right":"Mid-week risk check. Feed AI your current status and risk register. Adjust anything that has shifted since Monday."},{"left":"Friday","right":"Status report generation. Dump raw data, get polished outputs for every audience. Update resource allocations for the following week."}]}'></div>
 </div>
 

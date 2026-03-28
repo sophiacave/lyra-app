@@ -72,6 +72,13 @@ free: false
   <p class="section-text">The best pipeline managers don't manage deals — they manage a system. Monday: AI pipeline review. Wednesday: re-engagement outreach for stalled deals. Friday: new opportunity planning. AI makes each of these sessions fast and focused. The system runs itself once you build it.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review pipeline audit categories and the weekly rhythm.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Pipeline Management","cards":[{"front":"ALIVE Deal","back":"Active engagement, likely to close. The prospect is responding, meetings are happening, and the deal is moving forward through stages."},{"front":"ON LIFE SUPPORT Deal","back":"Stalled but recoverable with the right action. Needs a specific re-engagement strategy — not just another check-in email."},{"front":"DEAD Deal","back":"Remove from pipeline. Free up mental energy. Keeping dead deals inflates your numbers and distorts your forecast."},{"front":"AI Weekly Pipeline Rhythm","back":"Monday: AI pipeline review. Wednesday: re-engagement outreach for stalled deals. Friday: new opportunity planning. The system runs itself."},{"front":"AI Deal Forecasting","back":"Uses patterns from won and lost deals — stage duration, engagement signals, deal characteristics — to predict outcomes grounded in data, not hope."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

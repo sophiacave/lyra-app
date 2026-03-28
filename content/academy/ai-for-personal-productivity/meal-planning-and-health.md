@@ -99,6 +99,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the meal planning and health concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Meal Planning and Health with AI","cards":[{"front":"Decision Fatigue","back":"It\\u0027s not the cooking that drains people — it\\u0027s the deciding. AI eliminates the daily what\\u0027s for dinner question by planning meals from your constraints."},{"front":"The One-Prompt Meal Plan","back":"Include budget, number of people, dietary needs, and cooking time per meal. AI gives you recipes and a grocery list organized by store section."},{"front":"The Fridge Audit","back":"List what\\u0027s already in your fridge and ask AI what you can make — zero waste, no shopping trip needed. This single technique saves real money."},{"front":"Cross-Meal Ingredient Reuse","back":"AI plans across the whole week — cook extra chicken Monday, use it in Wednesday\\u0027s salad. This efficiency reduces cost and waste."},{"front":"AI Is Not a Doctor","back":"AI can plan meals and suggest workouts, but for medical advice, diagnoses, or treatment — always consult a real professional."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

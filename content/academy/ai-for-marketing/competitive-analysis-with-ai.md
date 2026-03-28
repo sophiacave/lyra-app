@@ -124,6 +124,13 @@ MY product ([describe yours]) to differentiate clearly?</pre>
   <p class="section-text" style="margin-top:1rem">This turns hours of strategic work into a 15-minute AI-assisted session that produces actionable marketing assets.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the competitive analysis framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Competitive Analysis with AI","cards":[{"front":"Messaging Analysis","back":"Paste a competitor\\u0027s homepage text into AI to reveal their target audience, value proposition, emotional triggers, objections addressed, and messaging gaps."},{"front":"Competitive Matrix","back":"A comparison table of your product vs competitors across features, pricing, audience, ease of use, support, differentiator, and biggest weakness."},{"front":"Gap Finding","back":"The most valuable insight: what competitors are NOT doing. Underserved audiences, unaddressed pain points, and content topics nobody is covering."},{"front":"Positioning Statement","back":"One sentence that captures why someone should choose you over alternatives — the anchor for all your marketing messaging."},{"front":"From Analysis to Action","back":"Turn insights into marketing assets: landing page bullets, comparison page outlines, and objection-handling responses for sales conversations."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

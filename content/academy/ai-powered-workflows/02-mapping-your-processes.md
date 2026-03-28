@@ -78,6 +78,14 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Process Mapping — Match Each Concept","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Input-Action-Output Framework","right":"Every process breaks into something coming in, something happening to it, and something coming out"},{"left":"Mechanical Step","right":"Same every time — copy data, export PDF, send email. Prime automation candidate."},{"left":"Decision Step","right":"Requires judgment — writing client-specific notes. Harder to automate, but AI can assist."},{"left":"Automation Priority Score","right":"Frequency times time per run times number of mechanical steps — higher score means automate first"},{"left":"The Biggest Mapping Mistake","right":"Trying to automate your most complex process first instead of starting with boring routine tasks"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"The 5-Step Process Audit","cards":[{"front":"Step 1: Pick a Process","back":"Choose one process you do at least weekly. Start with something routine, not your most complex workflow."},{"front":"Step 2: Write Every Step","back":"Document every single step, even obvious ones. Open email counts. Click the link counts. Nothing is too small."},{"front":"Step 3: Mark Decision vs. Mechanical","back":"Each step is either decision (requires judgment) or mechanical (same every time). Mechanical steps are your automation targets."},{"front":"Step 4: Note Data Movement","back":"Where does data move between tools? Email to spreadsheet, form to database, chat to task board. These are integration points."},{"front":"Step 5: Score for Priority","back":"Frequency times time per run times mechanical step count. Higher score = higher automation priority. Start with the highest."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The 5-Step Process Audit</h2>
   <div data-learn="SortStack" data-props='{"title":"Process Audit Steps — In Order","instruction":"Arrange the five audit steps in the correct sequence","items":["Pick one process you do at least weekly","Write down every single step including obvious ones like open email","Mark each step as decision (requires judgment) or mechanical (same every time)","Note where data moves between tools","Score by frequency times time per run times mechanical step count"]}'></div>

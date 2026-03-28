@@ -54,6 +54,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Finding AI Product Ideas — Key Concepts","cards":[{"front":"The Spreadsheet Test","back":"Find someone using a spreadsheet for something it was never meant to do — content calendars, sentiment tracking, ticket categorization. The janky workaround signals a real, underserved problem."},{"front":"Decision Fatigue","back":"People making hundreds of small decisions daily — what to post, what to prioritize, what to respond to. AI as a decision-support layer, not a decision-maker."},{"front":"The Accuracy Trap","back":"If your product requires 99.9% accuracy to be useful (medical, legal, financial), current AI can\\\'t guarantee it. Look for domains where 85% accuracy is still 10x better than status quo."},{"front":"The Just-a-Prompt Trap","back":"If your entire idea is a system prompt in a UI, a competitor clones you in an afternoon. You need a data moat, workflow advantage, or network effect."},{"front":"Strong vs. Weak Signal","back":"Strong: \\\'I pay $50/hr for this\\\' or \\\'I spend 3 hours weekly on this.\\\' Weak: \\\'AI could theoretically do this\\\' or \\\'this would be cool.\\\'"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Idea Hunting Grounds — Match Each to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Expert Bottlenecks","right":"Expensive humans doing repetitive cognitive work — legal review, medical screening, code review"},{"left":"Translation Gaps","right":"Information existing in one form but needed in another — audio to text, data to narrative, jargon to plain language"},{"left":"Personalization Deserts","right":"Services treating all users identically when they shouldn’t — education, health, finance"},{"left":"Your Own Pain","right":"Problems you personally face — you understand the nuance, the workarounds, and the real frustration"}]}'></div>
 </div>
 

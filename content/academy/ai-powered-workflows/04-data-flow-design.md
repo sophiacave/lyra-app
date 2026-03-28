@@ -70,6 +70,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Data Flow Design","cards":[{"front":"Pass-Through Pattern","back":"Data enters Step A and flows unchanged to Step B. Example: customer email from signup form passed directly to your email platform. Just routing."},{"front":"Accumulator Pattern","back":"Each step adds new data. Step 1 gets the name, Step 2 looks up order history, Step 3 combines both into a personalized message."},{"front":"Data Transformation","back":"Converting between formats so each tool gets data in the shape it expects — March 27 2026 vs. 2026-03-27 vs. Thursday March 27th."},{"front":"AI-Powered Transformation","back":"AI interprets messy, inconsistent data and normalizes it. A customer writes next Tuesday — AI converts to an actual date. No rigid rule can do that."},{"front":"The #1 Data Flow Killer","back":"Losing data between steps. By step 5 you need the email from step 1 but it was never explicitly passed forward. Be explicit at every stage."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Data Flow Patterns</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Two Essential Data Flow Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Pass-Through pattern","right":"Data flows unchanged from step to step — just routing, no transformation needed"},{"left":"Accumulator pattern","right":"Each step adds new data to the payload so it grows richer at each stage"},{"left":"Data transformation","right":"Converting between formats — March 27 2026 to 2026-03-27 so each tool gets expected shape"},{"left":"The number one data flow killer","right":"Losing a field between steps — by step 5 you need the email from step 1 but it was never passed forward"}]}'></div>

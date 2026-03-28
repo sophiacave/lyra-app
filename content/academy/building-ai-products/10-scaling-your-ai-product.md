@@ -61,6 +61,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Scaling Your AI Product — Key Concepts","cards":[{"front":"Response Caching","back":"Many users ask similar things. Cache frequent query patterns and serve identical results instantly — reduces API calls by 30-50% with zero quality loss."},{"front":"Tiered Model Routing","back":"Route simple requests to cheaper, faster models. Reserve expensive models for complex tasks. A routing layer classifying query complexity can cut costs by 40%."},{"front":"Prompt Compression","back":"Shorter prompts cost less. Audit system prompts quarterly — the difference between 2,000 and 800 tokens compounds massively at scale."},{"front":"Fallback Models","back":"If Claude is down, route to GPT. If both are down, route to open-source with degraded quality. Some output is always better than an error page."},{"front":"The Data Flywheel","back":"Every user interaction teaches the system something. Over time, you build context and insight no competitor can replicate by simply switching to a newer model."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Scaling Milestones — Match Each Phase to Its Focus","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Phase 1 (0-1K users)","right":"API-only, focus on product-market fit, key metric: retention rate"},{"left":"Phase 2 (1K-10K users)","right":"Add caching, model routing, cost monitoring — key metric: cost per active user"},{"left":"Phase 3 (10K+ users)","right":"Evaluate self-hosting, build data flywheel — key metric: margin per user"},{"left":"Self-Hosting Trigger","right":"When monthly API bill exceeds GPU infrastructure cost AND quality requirements can be met by open-source models"}]}'></div>
 </div>
 

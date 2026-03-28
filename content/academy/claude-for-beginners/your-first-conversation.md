@@ -127,6 +127,10 @@ css: "claude-beginners.css"
 
 </div>
 
+<div data-learn="MatchConnect" data-props='{"title":"Match Prompt Parts","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Role","right":"Tell Claude who to be — e.g. project manager, editor"},{"left":"Context","right":"The situation, background info, and constraints"},{"left":"Format","right":"What you want back — bullets, email, table, plan"},{"left":"Vague prompt","right":"Forces Claude to guess everything — poor results"},{"left":"Specific prompt","right":"Includes role + context + format — excellent results"}]}'></div>
+
+</div>
+
 <!-- KEY TAKEAWAY -->
 <div class="callout purple">
   <p><strong>The key insight:</strong> You don't need to be a "prompt engineer." You just need to tell Claude three things: <strong>who to be, what the situation is, and what format you want.</strong> That's it. The rest is just practice.</p>

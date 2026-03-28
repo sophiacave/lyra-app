@@ -79,6 +79,13 @@ free: false
   <div class="prompt-box"><code>Role-play as a skeptical [TITLE] at a [COMPANY TYPE]. I'm going to pitch you [MY PRODUCT]. Push back hard with realistic objections. After each of my responses, tell me what worked and what didn't, then hit me with the next objection. Be tough but fair.</code></div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review the HEARD method and the Big Five objections.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Objection Handling","cards":[{"front":"Objections Are Buying Signals","back":"An objection means the prospect is thinking about buying — they just need a reason to say yes. Silence is what should scare you."},{"front":"HEARD — H (Hear)","back":"Repeat their concern back. Show you are listening, not defending. This alone defuses tension and builds trust."},{"front":"HEARD — E (Empathize)","back":"That makes complete sense. Validate their concern before you counter it. People need to feel understood first."},{"front":"HEARD — A (Ask)","back":"Dig deeper with a question: Is it the price itself, or the uncertainty about ROI? Find the real blocker behind the stated objection."},{"front":"It\\u0027s Too Expensive — Reframe","back":"Reframe to ROI. Ask what does NOT buying cost them? Loss aversion is more motivating than cost justification."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

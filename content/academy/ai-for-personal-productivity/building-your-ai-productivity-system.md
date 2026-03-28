@@ -131,6 +131,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the building blocks of your AI system.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Your AI Productivity System","cards":[{"front":"System vs. Willpower","back":"A system is a set of habits you repeat until they become automatic — like brushing your teeth. Systems do not require motivation; willpower does."},{"front":"The Daily Check-in","back":"Every morning, tell AI your tasks, appointments, and available hours. In 60 seconds you get a prioritized plan — no decision fatigue before coffee."},{"front":"The Prompt Library","back":"Save your best prompts in a note on your phone. Reuse them forever: morning plan, email draft, brain dump, fridge audit, weekly meal plan."},{"front":"The Weekly Reset","back":"Every Sunday, 10 minutes: tell AI what happened this week and what\\u0027s coming next week. Get priorities, a meal plan, and preparation flags."},{"front":"Keep Growing","back":"The first answer is rarely the best. Say make it shorter or try a different approach. The more you use AI, the better your prompts get."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

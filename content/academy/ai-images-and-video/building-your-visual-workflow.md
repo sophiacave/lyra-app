@@ -99,8 +99,20 @@ free: false
 
 <div class="lesson-section">
   <span class="section-label">Course Review</span>
+  <h2 class="section-title">Prompt Library Categories</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Prompt Library Organization","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Brand prompts","right":"Base style descriptions that keep your visual identity consistent across all posts"},{"left":"Proven winners","right":"Prompts that produced outstanding results, saved with notes about what made them work"},{"left":"Style keywords","right":"Running list of effective lighting, composition, and mood terms organized by category"},{"left":"Templates","right":"Pre-built fill-in-the-blank prompt structures for common needs like thumbnails and headers"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Course Review</span>
   <h2 class="section-title">The Multi-Tool Pipeline</h2>
   <div data-learn="SortStack" data-props='{"title":"Visual Creation Pipeline — In Order","instruction":"Arrange the six pipeline steps in the correct sequence","items":["Concept — use ChatGPT to brainstorm and sharpen the idea","Generate — create base image in Midjourney, DALL-E, or Stable Diffusion","Refine — inpainting, edits, and detail fixes","Enhance — upscale and color correction","Design — add text and branding in Canva or Figma","Animate — optionally turn final image into video with Runway or Pika"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Visual Workflow Vocabulary</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Building Your Visual Workflow","cards":[{"front":"Prompt library","back":"A saved document of tested prompts organized by category — brand prompts, proven winners, style keywords, and templates — your most valuable creative asset"},{"front":"Multi-tool pipeline","back":"A workflow combining several AI tools, each doing what it does best — concept in ChatGPT, generate in Midjourney, refine in Photoshop, design in Canva"},{"front":"Brand prompt base","back":"Two to three saved style variations for different moods — bright and energetic, calm and sophisticated, bold and dramatic — that keep all visuals on-brand"},{"front":"Weekly creative practice","back":"Fifteen minutes of experimental play with AI tools each week — no pressure, just curiosity — where your biggest creative breakthroughs happen"},{"front":"Curated library","back":"An organized file system with project folders, drafts and finals separated, ruthlessly pruned — fewer better files are infinitely more useful than a digital junk drawer"}]}'></div>
 </div>
 
 <div class="lesson-section">

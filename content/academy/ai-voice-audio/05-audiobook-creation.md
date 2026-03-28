@@ -69,8 +69,20 @@ type: "lesson"
 
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Audiobook Distribution Platforms</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Audiobook Distribution Options","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"ACX / Audible","right":"Largest audiobook market — Virtual Voice program accepts AI narration"},{"left":"Google Play Books","right":"Auto-narration feature built in — easiest path for self-publishers"},{"left":"Findaway Voices","right":"Wide distribution to 40+ platforms from a single upload"},{"left":"Direct sales (Gumroad, Payhip)","right":"Keep 95% or more of revenue by selling from your own storefront"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
   <h2 class="section-title">Audiobook Production Pipeline</h2>
   <div data-learn="SortStack" data-props='{"title":"Audiobook Production Steps — In Order","instruction":"Arrange the five production stages in the correct sequence","items":["Text preparation — clean manuscript, add pronunciation guides, mark chapter breaks","Voice selection — test multiple voices with a sample chapter before committing","Chapter-by-chapter generation — work incrementally for quality review","Quality control — listen to every chapter, fix mispronunciations and awkward pauses","Mastering — normalize levels, apply EQ and compression, add chapter markers, export at platform specs"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Audiobook Vocabulary</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Audiobook Creation Key Concepts","cards":[{"front":"Text preparation","back":"Cleaning the manuscript for audio — removing visual elements, adding pronunciation guides for unusual names, marking chapter breaks clearly"},{"front":"Chapter-by-chapter generation","back":"Working incrementally rather than generating the entire book at once — gives natural break points for quality review and mid-production adjustments"},{"front":"Multi-voice narration","back":"Assigning different AI voices to different characters — a neutral narrator for prose, distinct voices for dialogue, tagged by speaker for separate generation"},{"front":"Audio mastering for audiobooks","back":"Normalizing volume across chapters, applying consistent EQ and compression, adding chapter markers, exporting at platform specs like MP3 at 192kbps"},{"front":"LUFS","back":"Loudness Units relative to Full Scale — the standard measurement for audio loudness, with specific targets required by each distribution platform"}]}'></div>
 </div>
 
 <div class="lesson-section">

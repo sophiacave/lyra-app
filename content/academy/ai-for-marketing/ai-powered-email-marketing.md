@@ -144,6 +144,13 @@ Email 5 (Day 10): Direct offer with urgency
   <div data-learn="FlashDeck" data-props='{"title":"5-Email Welcome Sequence","cards":[{"front":"Email 1 — Day 0","back":"Welcome + deliver the lead magnet + set expectations about what is coming next."},{"front":"Email 2 — Day 2","back":"Your story — why you started this business. Build personal connection."},{"front":"Email 3 — Day 4","back":"Teach something valuable with no pitch. Pure value to build trust."},{"front":"Email 4 — Day 7","back":"Case study or testimonial plus a soft pitch. Social proof introduces the offer naturally."},{"front":"Email 5 — Day 10","back":"Direct offer with urgency. The clearest ask in the sequence."}]}'></div>
 </div>
 
+<!-- INTERACTIVE: MATCHCONNECT -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match each email element to its best practice.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Email Marketing Best Practices","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Subject Line","right":"Generate 10+ options and A/B test the two most different in approach"},{"left":"Opening Line","right":"Start with a story, observation, or question — never I hope this email finds you well"},{"left":"Body Copy","right":"Write like you\\u0027re emailing one person — short paragraphs, one clear CTA, under 200 words"},{"left":"Welcome Sequence","right":"5 emails over 10 days: deliver, connect, teach, prove, offer"},{"left":"A/B Testing","right":"Generate many AI variants fast — the marketer who tests more wins"}]}'></div>
+</div>
+
 <!-- INTERACTIVE: QUIZ -->
 <div class="lesson-section">
   <span class="section-label">Knowledge Check</span>

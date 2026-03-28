@@ -80,6 +80,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Building Your Workflow Portfolio","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Documentation","right":"Purpose, trigger, steps, error handling, dependencies, known limits — write it like you\\\'ll forget everything"},{"left":"Templates","right":"Reusable patterns like notify-on-failure or API-with-retry — turn hours of building into minutes of configuring"},{"left":"Portfolio Effect","right":"Each new workflow gets easier because you reuse patterns, connectors, and error handling from previous ones"},{"left":"Automation Flywheel","right":"Each workflow saves time, you invest that time building the next one, the cycle accelerates over months"},{"left":"Consistency","right":"Every workflow handles errors, logs, and alerts the same way — makes debugging exponentially easier"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">Workflow Documentation Template</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Workflow Documentation Fields","cards":[{"front":"Purpose field","back":"One sentence — what this workflow does and why it exists, so anyone can understand it at a glance"},{"front":"Trigger field","back":"The specific event, time, or condition that starts the workflow — be exact, not vague"},{"front":"Steps field","back":"Every action in the pipeline with tool names — create CRM record, send welcome email, notify Slack"},{"front":"Dependencies field","back":"Every API, credential, and external service the workflow relies on — so you know what breaks if one changes"},{"front":"Known limits field","back":"Explicit constraints like rate limits, data size restrictions, or edge cases the workflow does not handle"}]}'></div>

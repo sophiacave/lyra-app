@@ -70,6 +70,10 @@ free: false
   <p class="section-text">Dig into your data to find this moment. Compare retained users vs. churned users. What did the retained users do differently in their first session? Once you find it, engineer your onboarding to push every user toward that moment as fast as possible.</p>
 </div>
 
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Metrics — Match Each to What It Reveals","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Output Acceptance Rate","right":"What % of AI outputs users keep without editing — target 60-90% for a healthy product"},{"left":"Edit Depth","right":"How much users change AI output — light edits mean close, heavy rewrites mean fundamentally off"},{"left":"Cost Per Successful Output","right":"Not cost per query — cost per output users actually kept. 3 regenerations means 3x true cost."},{"left":"Implicit vs. Explicit Feedback","right":"Acceptance, edits, and regenerations are more reliable than ratings — users give implicit signals without thinking"},{"left":"The Aha Moment","right":"The action that correlates with long-term retention — find it by comparing retained vs. churned users\\\' first sessions"}]}'></div>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Set up your AI product's measurement framework:</p>

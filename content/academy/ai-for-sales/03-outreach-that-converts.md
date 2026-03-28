@@ -80,6 +80,13 @@ free: true
   <div class="prompt-box"><code>Create a 5-touch outreach sequence for [PROSPECT TYPE] selling [YOUR PRODUCT]. Include: 2 emails, 1 LinkedIn message, 1 LinkedIn comment idea, and 1 breakup email. Each touch should add new value — never just "checking in." Keep each under 100 words.</code></div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review the PRISM method and outreach essentials.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Outreach That Converts","cards":[{"front":"PRISM — P (Personal Hook)","back":"Something specific about them personally — not their company. Shows you did real research before reaching out."},{"front":"PRISM — R (Relevant Problem)","back":"A pain point you know they have, based on research. Makes the email feel tailored instead of templated."},{"front":"PRISM — I (Insight)","back":"Something they haven\\u0027t considered — your unique perspective. This is the value that earns the reply."},{"front":"PRISM — S (Solution Tease)","back":"How you\\u0027ve solved this for similar companies. Brief, no hard pitch. Just enough to spark curiosity."},{"front":"PRISM — M (Micro-CTA)","back":"A tiny ask — not book a demo, but worth a 10-minute chat? Low pressure increases response rates dramatically."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

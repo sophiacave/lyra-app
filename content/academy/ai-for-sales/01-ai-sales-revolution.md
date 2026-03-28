@@ -70,6 +70,13 @@ free: true
   <p class="section-text">By the end, you won't just be using AI. You'll have a sales engine that runs faster, smarter, and more personally than anything you've built before.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review the core concepts of the AI sales revolution.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"The AI Sales Revolution","cards":[{"front":"AI in Sales — Core Role","back":"AI replaces the busywork that keeps you from making human connections. It handles research, drafting, analysis, and preparation at speed and scale."},{"front":"The Mindset Shift","back":"From grinder to strategist. Instead of 100 generic calls, have 10 deeply researched, perfectly timed conversations. Quality over quantity."},{"front":"AI Excels At","back":"Lead research, email drafting, call prep, objection scripting, data analysis, pipeline tracking, proposal generation, and follow-up scheduling."},{"front":"AI Cannot Replace","back":"Genuine relationship building, reading a room, creative negotiation, trust, empathy, and your unique expertise. These require human presence."},{"front":"The Intersection","back":"You bring the human skills. AI brings the speed and scale. Together you are unstoppable. Neither alone is as effective as both combined."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

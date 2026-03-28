@@ -100,6 +100,13 @@ free: true
   <div data-learn="FlashDeck" data-props='{"title":"Morning Context Dump Elements","cards":[{"front":"What time do you actually wake up?","back":"Not what you wish — your real wake time. AI builds a plan around reality, not aspiration."},{"front":"Non-negotiables","back":"Kids school bus, medication, pet care, standing meetings. These come first in any plan."},{"front":"What drains you in the morning?","back":"Decision fatigue, rushing, skipping breakfast? Name the friction so AI can design around it."},{"front":"What you wish you had time for","back":"Exercise, quiet coffee, reading, journaling. These are the goals — AI finds the time for them."},{"front":"Your biggest morning frustration","back":"This is the problem to solve. The more honest you are, the more useful the plan AI creates."}]}'></div>
 </div>
 
+<!-- INTERACTIVE: MATCHCONNECT -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match each morning scenario to the right AI technique.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Morning Routine Techniques","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"You want a morning plan but every routine you\\u0027ve tried feels unrealistic","right":"Do a context dump — tell AI your real wake time, constraints, and frustrations to get a plan that fits your life"},{"left":"You overslept by 20 minutes and your plan is ruined","right":"Tell AI what happened and ask it to adjust — your plan is a living thing, not carved in stone"},{"left":"You skip breakfast every day and regret it by 10am","right":"Include this in your context dump — AI can suggest quick prep options like overnight oats within your timeline"},{"left":"You want 10 minutes of quiet but your mornings are chaotic","right":"Name it as a wish in your prompt — AI finds the time by reorganizing other tasks around it"}]}'></div>
+</div>
+
 <!-- INTERACTIVE: QUIZ -->
 <div class="lesson-section">
   <span class="section-label">Knowledge Check</span>

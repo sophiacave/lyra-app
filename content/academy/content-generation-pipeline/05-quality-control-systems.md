@@ -85,6 +85,8 @@ Content to review: [PASTE YOUR CONTENT]"</code></div>
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Three quality gate layers.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Quality Control Concepts","cards":[{"front":"Quality Gate","back":"A checkpoint in the pipeline where content must pass automated review before moving to the next stage. Failed content loops back for revision."},{"front":"Layer 1: Technical Quality","back":"Grammar, readability score, sentence length variation, passive voice percentage. Mechanical checks AI handles flawlessly."},{"front":"Layer 2: Brand Consistency","back":"Voice match, banned words absent, required elements present, correct tone. Style guide enforcement at scale."},{"front":"Layer 3: Strategic Alignment","back":"Right audience segment, correct pillar and cluster, clear next action for the reader. Content strategy enforcement."},{"front":"Fail-Fix-Recheck Loop","back":"When content fails a gate, it returns to the relevant pipeline step with specific feedback, gets rewritten, and is rechecked. Repeated failures improve the template itself."}]}'></div>
+
   <div data-learn="MatchConnect" data-props='{"title":"Match the Quality Gate to What It Checks","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Layer 1: Technical Quality","right":"Grammar, readability, sentence variety, passive voice percentage"},{"left":"Layer 2: Brand Consistency","right":"Voice match, banned words absent, required tone and elements present"},{"left":"Layer 3: Strategic Alignment","right":"Right audience segment, correct pillar, clear next action for reader"}]}'></div>
 </div>
 

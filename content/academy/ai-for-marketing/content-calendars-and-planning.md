@@ -142,6 +142,13 @@ Skip generic holidays that have nothing to do with my business.</pre>
   <p class="section-text" style="margin-top:1rem"><strong>Total: ~4 hours per week</strong> for a full content program across multiple channels. Without AI, this would take 12-15 hours. That's 8-10 hours per week back in your life.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the content planning framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Content Calendars and Planning","cards":[{"front":"Content Pillars","back":"Recurring themes (educational, behind-the-scenes, customer stories, industry insights, promotional) that give structure so you never stare at a blank page."},{"front":"Monthly Calendar Prompt","back":"Give AI your business, audience, channels, posting frequency, and content pillars — get a full month of posts formatted as a spreadsheet-ready table."},{"front":"Seasonal Planning","back":"Plan content 4-6 weeks ahead. Ask AI to identify relevant holidays, industry events, and seasonal trends for your audience."},{"front":"Batch Creation Workflow","back":"Plan Monday AM, write social captions Monday PM, blog Tuesday, email Wednesday, review and schedule Thursday — about 4 hours total per week."},{"front":"The 60-Post Trick","back":"Ask AI for 12 post ideas per pillar across 5 pillars. That\\u0027s 60 posts — enough for 3 months of 5x-per-week posting from one prompt session."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

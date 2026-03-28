@@ -75,6 +75,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Review retention, churn signals, and expansion strategies.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Customer Success with AI","cards":[{"front":"Retention Math","back":"Acquiring a new customer costs 5-7x more than keeping an existing one. A 5% increase in retention can boost profits by 25-95%."},{"front":"Churn Warning Signs","back":"Decreased usage, rising support tickets, slower response times, missed meetings. Customers do not churn overnight — there are always signals first."},{"front":"GREEN Account Health","back":"Healthy customer. Engaged, using the product, responding to communications. Maintain the relationship with value-added check-ins."},{"front":"YELLOW Account Health","back":"At risk. Some warning signs present. Needs a specific re-engagement action plan — what to say, when to reach out, what value to offer."},{"front":"Good Check-In vs Bad Check-In","back":"Bad: Just checking in. Good: Saw relevant industry news and thought of their specific project. Every touchpoint should deliver value."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

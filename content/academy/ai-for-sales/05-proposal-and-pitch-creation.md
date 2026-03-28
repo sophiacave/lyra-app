@@ -73,6 +73,13 @@ free: false
   <p class="section-text">Deals have momentum. Every day between "send me a proposal" and actually sending it, your close rate drops. AI lets you send a polished, customized proposal the same day — often within hours of the call. That speed signals competence, eagerness, and professionalism. It also beats your slower competitors to the finish line.</p>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match each proposal section to what it accomplishes.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Winning Proposal Structure","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"1. Their Problem","right":"Show you understand their pain better than they do — the foundation of trust"},{"left":"2. Cost of Inaction","right":"What happens if they don\\u0027t solve this? Make urgency real without pressure"},{"left":"3. Your Solution","right":"Mapped specifically to their stated problems — not a generic feature list"},{"left":"5. Investment and ROI","right":"Frame price as investment and show the math so value exceeds cost"},{"left":"6. Next Steps","right":"Make saying yes easy by removing friction with a clear simple action"}]}'></div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

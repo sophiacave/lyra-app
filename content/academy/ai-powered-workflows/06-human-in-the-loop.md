@@ -69,6 +69,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Human-in-the-Loop Design","cards":[{"front":"Approval Gate","back":"Workflow pauses and waits for thumbs-up before proceeding. AI drafts a blog post, you review, it publishes only after approval."},{"front":"Review Queue","back":"Workflow completes but flags items for after-the-fact review. AI responds to tickets automatically, daily human review catches issues."},{"front":"Escalation Path","back":"Routine cases handled automatically, humans only for exceptions. Refunds under $50 auto-processed, larger ones go to a manager."},{"front":"The Bottleneck Trap","back":"A workflow that stops dead until someone clicks approve — and that person is on vacation. Always set timeouts and backup approvers."},{"front":"The Trust Ladder","back":"Start with approval gates. As AI proves accurate, move to review queues. Eventually escalation-only. Climb based on evidence, not faith."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Human-in-the-Loop Patterns</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Three Oversight Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Approval Gate","right":"Workflow pauses and waits for a thumbs-up before proceeding — high control"},{"left":"Review Queue","right":"Workflow completes but flags items for after-the-fact review — action is not blocked"},{"left":"Escalation Path","right":"Handles routine cases automatically, only involves humans for exceptions above a threshold"},{"left":"Trust Ladder","right":"Start with approval gates, graduate to review queues, eventually escalation-only based on proven accuracy"}]}'></div>

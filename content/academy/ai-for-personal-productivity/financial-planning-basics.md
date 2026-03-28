@@ -98,6 +98,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the key financial planning concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Financial Planning with AI","cards":[{"front":"The Financial Snapshot","back":"Tell AI your take-home pay, fixed expenses, and spending estimates. It organizes everything, calculates what\\u0027s left, and finds where to save."},{"front":"Why AI Helps with Money Anxiety","back":"AI is judgment-free. It treats your finances as math to solve, not a reason for shame. No guilt — just numbers and solutions."},{"front":"Comparing Financial Decisions","back":"Give AI two options with your real numbers (apartments, cars, plans) and ask it to compare total costs including hidden factors like gas and time."},{"front":"AI\\u0027s Financial Boundaries","back":"AI should NOT manage bank accounts, give specific investment advice, do your taxes, or replace a certified financial planner for complex situations."},{"front":"The 80/20 Rule","back":"Start with rough numbers — they\\u0027re fine. The goal is to see the big picture, not track every penny. You can always refine later."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

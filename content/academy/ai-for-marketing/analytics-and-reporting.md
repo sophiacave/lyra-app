@@ -116,6 +116,13 @@ Lead with results, not activity.</pre>
   <div data-learn="FlashDeck" data-props='{"title":"AI Marketing Report Structure","cards":[{"front":"Section 1: Executive Summary","back":"3 bullet points — wins, challenges, next steps. Keep it to 3 sentences max. CEOs do not read long reports."},{"front":"Section 2: Key Metrics vs Goals","back":"A table with: Metric, Goal, Actual, and Percent Change. Make wins and misses visible at a glance."},{"front":"Section 3: Channel Performance","back":"What worked on which channel? Break down performance by email, social, paid, organic, etc."},{"front":"Section 4: Top-Performing Content","back":"Which specific posts, emails, or ads won? Celebrate and understand what drove performance."},{"front":"Section 5: Recommendations","back":"3 specific actions for next month. Lead with results, not activity. Plain language, not marketing jargon."}]}'></div>
 </div>
 
+<!-- INTERACTIVE: MATCHCONNECT -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match each analytics task to how AI helps.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Analytics Tasks","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Paste 3 months of marketing data","right":"AI finds the 3 most important trends, top performers, and what to change next month"},{"left":"Generate a monthly report for the CEO","right":"AI produces a 1-page executive summary with metrics vs goals and 3 recommendations"},{"left":"Analyze 200 customer reviews","right":"AI categorizes by theme, finds top loves and complaints, and extracts exact customer language"},{"left":"Spot industry trends early","right":"AI analyzes news articles and competitor updates to identify strategic market shifts"},{"left":"Anonymize before pasting","right":"Strip names and emails from customer data before using consumer AI tools"}]}'></div>
+</div>
+
 <!-- INTERACTIVE: QUIZ -->
 <div class="lesson-section">
   <span class="section-label">Knowledge Check</span>

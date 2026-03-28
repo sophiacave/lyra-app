@@ -71,6 +71,12 @@ free: true
 
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Voice Cloning Platforms</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Voice Cloning Tools","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"ElevenLabs Instant Clone","right":"Upload as little as 30 seconds — impressive results for the speed, professional tier for studio quality"},{"left":"Resemble AI","right":"Enterprise-built with fine control over emotion and style — strong real-time voice conversion"},{"left":"PlayHT","right":"Voice marketplace lets you license cloned voices from real voice actors — an ethical model worth supporting"},{"left":"OpenVoice","right":"Open-source, run locally — full data control for experimentation and privacy-sensitive projects"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
   <h2 class="section-title">Voice Cloning Quality Factors</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Recording Tips for Better Voice Clones","cards":[{"front":"Most important quality factor","back":"Source audio quality matters more than quantity — one minute of clean, well-paced speech beats ten minutes of noisy recordings"},{"front":"Best recording environment","back":"A quiet room with no echo — closets with clothes work surprisingly well as natural sound dampeners"},{"front":"Microphone distance","back":"Hold a phone steady at about 6 inches from your mouth for consistent, clean capture"},{"front":"Delivery style for cloning","back":"Read naturally, do not perform — the AI needs your real voice, not a character or exaggerated version"},{"front":"Content diversity","back":"Read a variety of text — questions, statements, lists, emotional passages — for a fuller voice capture"}]}'></div>
 </div>

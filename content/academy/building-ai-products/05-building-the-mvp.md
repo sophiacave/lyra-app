@@ -71,6 +71,10 @@ free: false
   <p class="section-text">Show the user what the AI did. If you summarized a document, highlight which sections the summary came from. If you categorized data, show the reasoning. Explainability isn't just ethical — it's good product design.</p>
 </div>
 
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI MVP Checklist — Match Each Step to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Input Capture","right":"How users give you data — file upload, text input, API connection. Every extra step is a drop-off point."},{"left":"Processing Pipeline","right":"Prompt engineering, context assembly, model call, output parsing. Optimize for reliability over cleverness."},{"left":"Output Delivery","right":"Match delivery to user workflow — UI display, email, download, Slack notification. Don\\\'t make users come to you."},{"left":"Error Handling","right":"Clear error messages and retry buttons — AI failures are expected, not edge cases. Never silently fail."},{"left":"The One-Workflow Rule","right":"MVP does one thing end to end. ChatGPT already exists for everything — win by being best at one specific job."}]}'></div>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Define your MVP scope using this template:</p>

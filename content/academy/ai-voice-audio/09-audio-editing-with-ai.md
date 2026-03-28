@@ -75,8 +75,20 @@ Listen to all three back to back. The difference between step 1 and step 3 is th
 
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
+  <h2 class="section-title">Audio Editing Tools</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"AI Audio Editing Arsenal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Adobe Podcast Enhance","right":"Gold standard for voice cleanup — removes background noise, reduces echo, normalizes levels"},{"left":"Descript","right":"Text-based editing — delete a word from the transcript and it\\u0027s deleted from the audio"},{"left":"Auphonic","right":"Automated mastering — handles leveling, noise reduction, loudness normalization, two hours free per month"},{"left":"LALAL.AI","right":"Stem separation specialist — split audio into vocals, drums, bass, guitar, and other instruments"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Review</span>
   <h2 class="section-title">Audio Editing Pipeline Steps</h2>
   <div data-learn="SortStack" data-props='{"title":"AI Audio Editing — Correct Order","instruction":"Arrange the four editing steps in the correct sequence","items":["Noise removal — strip background noise first so every subsequent tool has cleaner input","Content editing — remove filler words, long pauses, false starts, and tangents","Enhancement — EQ, compression, and de-essing handled automatically by AI tools","Mastering — normalize loudness to platform standards and add final limiting"]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Key Terms</span>
+  <h2 class="section-title">Audio Editing Vocabulary</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Audio Editing Key Concepts","cards":[{"front":"De-essing","back":"Removing harsh sibilance — the sharp hissing sounds on S and T consonants that can be painful at high volumes"},{"front":"LUFS normalization","back":"Adjusting audio loudness to platform standards — minus 16 LUFS for podcasts, minus 14 for YouTube — so your content sounds consistent with everything else"},{"front":"Stem separation","back":"Using AI to split any audio into individual components — vocals, drums, bass, guitar, piano — for isolation, remixing, or noise removal"},{"front":"True peak","back":"The absolute maximum level of an audio signal — platforms require minus 1dB true peak to prevent clipping and distortion on playback"},{"front":"Text-based editing","back":"Descript\\u0027s approach where audio and transcript are linked — editing words in the text automatically edits the corresponding audio"}]}'></div>
 </div>
 
 <div class="lesson-section">

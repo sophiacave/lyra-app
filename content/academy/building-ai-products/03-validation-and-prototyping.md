@@ -72,6 +72,10 @@ free: true
   <p class="section-text"><strong>Kill</strong> when the problem itself isn't painful enough. If users shrug at a hand-curated result, automation won't help. Move on. The graveyard of startups is full of solutions to problems nobody has.</p>
 </div>
 
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Validation Outcomes — Match Each Signal to Its Meaning","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Users return unprompted","right":"Go signal — the output solves a real, recurring problem worth coming back for"},{"left":"Users share without being asked","right":"Go signal — the value is obvious enough that they want others to benefit"},{"left":"Users say cool but don\\\'t return","right":"Caution — the problem isn\\\'t painful enough or the output doesn\\\'t fit their workflow"},{"left":"Users try once and ghost","right":"Stop signal — the problem isn\\\'t painful enough to solve. Move on."},{"left":"Users engage but output misses","right":"Pivot signal — the problem is real but your solution needs adjustment, not abandonment"}]}'></div>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Pick your strongest idea from Lesson 2 and run the 48-hour sprint:</p>

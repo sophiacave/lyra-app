@@ -73,6 +73,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Cloud Platforms for AI","cards":[{"front":"AWS for AI","back":"Largest ecosystem — SageMaker for ML pipelines, Bedrock for managed LLM access, Lambda for serverless, most GPU availability."},{"front":"GCP for AI","back":"Deepest AI integration — Vertex AI, TPU access, tight integration with Google\\\'s own models including Gemini."},{"front":"Azure for AI","back":"Owns the OpenAI partnership — GPT models with enterprise compliance, data residency guarantees, and SLAs."},{"front":"Vercel + Supabase","back":"Modern stack for indie devs — frontend edge functions plus PostgreSQL with pgvector. In production in hours, not weeks."},{"front":"When to reach for a hyperscaler","back":"Only when you hit a specific capability gap — custom model training, GPU compute at scale, or enterprise compliance. Don\\\'t start complex."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Start Simple, Scale Intentionally</h2>
   <p class="section-text">The biggest infrastructure mistake in AI is starting too complex. You don't need Kubernetes on day one. You need a deployed app that works. Pick the simplest platform that meets your requirements, build something real, and add complexity only when the simple thing breaks.</p>

@@ -70,6 +70,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Integration Patterns","cards":[{"front":"Point-to-Point Integration","back":"Tool A connects directly to Tool B. Simple for two tools, but 5 tools need 10 connections and 10 tools need 45. Becomes spaghetti fast."},{"front":"Hub-and-Spoke Integration","back":"All tools connect to a central hub like Make or Zapier. Adding a new tool means one new connection, not five. Command center approach."},{"front":"APIs in Plain English","back":"A structured way for two tools to exchange data. You send a request, get a response. Usually JSON format — organized text with labels and values."},{"front":"API Authentication","back":"How APIs know you\\\'re allowed to use them. Usually API keys — treat like passwords. Never share publicly, store securely, rotate if compromised."},{"front":"No-Code vs. Custom: The 80/20 Rule","back":"No-code connectors (Zapier, Make) handle 80% of needs. Build custom only for complex transformations, missing connectors, or performance requirements."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Integration Architecture</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Integration Models","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Point-to-Point","right":"Tool A connects directly to Tool B — simple for two tools, becomes spaghetti with five or more"},{"left":"Hub-and-Spoke","right":"All tools connect to a central hub like Make or Zapier — adding a new tool means one new connection"},{"left":"API authentication","right":"API keys — long strings you include with requests to prove you are allowed to use the service"},{"left":"No-code connectors","right":"Zapier, Make, native integrations — cover 80% of needs with pre-built tool connections"}]}'></div>

@@ -129,6 +129,13 @@ Skip purely educational topics that attract the wrong audience.</pre>
   <p class="section-text" style="margin-top:1rem"><strong>The formula:</strong> AI draft + your expertise + your examples + your editing = content that ranks AND helps people. Skip any of those steps and you're just adding noise to the internet.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the AI blog content and SEO framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Blog Content and SEO","cards":[{"front":"Topic Clusters","back":"A pillar post (2000+ words) surrounded by 4 supporting posts (800-1200 words) that link to it — organized around related keywords."},{"front":"Target Keyword Placement","back":"Use the target keyword in the first 100 words. Include 3-5 related keywords naturally throughout. Write a meta description under 155 characters."},{"front":"Blog Post Structure","back":"Hook opening (not In today\\u0027s digital age), clear H2 subheadings with keyword variations, short paragraphs, practical examples, and a conclusion with CTA."},{"front":"Google\\u0027s AI Content Stance","back":"Google does not penalize AI-generated content. It penalizes low-quality, unhelpful content regardless of who or what wrote it."},{"front":"The Winning Formula","back":"AI draft + your expertise + your examples + your editing = content that ranks AND helps people. Skip any step and you\\u0027re adding noise."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

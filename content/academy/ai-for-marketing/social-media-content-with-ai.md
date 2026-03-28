@@ -119,6 +119,13 @@ We are NOT: Corporate, preachy, or hype-driven.</pre>
   <p class="section-text" style="margin-top:1rem">Save this once. Use it forever. Consistent voice across hundreds of posts — effortlessly.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the AI social media content framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Social Media Content with AI","cards":[{"front":"Platform-Specific Prompts","back":"Always specify the platform in every prompt. A LinkedIn post that works on Instagram is a bad LinkedIn post. Each platform has its own culture and format."},{"front":"The Repurposing Workflow","back":"Take 1 great idea and reshape it for every platform: LinkedIn story, Instagram carousel, X thread, Facebook post, email, and short video script — 7 posts from 1 idea."},{"front":"Brand Voice Card","back":"A short description of your social personality: tone, language dos and don\\u0027ts, emoji use, humor style. Paste it into every prompt for consistent voice across hundreds of posts."},{"front":"The Universal Prompt Template","back":"Platform + topic + brand + audience + goal + voice + format rules + CTA. Always include a hook in the first line that stops the scroll."},{"front":"Content That Sounds Human","back":"Don\\u0027t sound corporate. Don\\u0027t use generic motivational quotes. Don\\u0027t be preachy. Sound like a real person sharing real value."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

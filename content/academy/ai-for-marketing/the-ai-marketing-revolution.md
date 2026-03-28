@@ -100,6 +100,13 @@ free: true
   <p class="section-text" style="margin-top:1rem">By the end, you'll have templates, workflows, and techniques that cut your marketing production time in half. Let's go.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the 3 areas where AI gives marketers the biggest edge.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"The AI Marketing Revolution","cards":[{"front":"Content at Scale","back":"Blog posts, social captions, email sequences, ad copy, landing pages — one marketer with AI produces what used to require a team of five."},{"front":"Personalization Without a Data Team","back":"Create 10 versions of an email for 10 different segments in the time it used to take to write one. AI makes 1:1 marketing accessible without enterprise budgets."},{"front":"Analysis and Insights","back":"Paste analytics data, customer feedback, or competitor pages into AI and get instant analysis. Spot trends and summarize 500 reviews into 5 key themes in seconds."},{"front":"What AI Cannot Do","back":"Understand your customer deeply, make strategic decisions, create truly original ideas, or build real relationships. These still require human judgment."},{"front":"The Mental Model","back":"AI handles production. You handle direction. Your strategy, instincts, and customer knowledge are the competitive advantage. AI is the engine."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

@@ -70,6 +70,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Trigger-Based Workflows","cards":[{"front":"Time-Based Trigger","back":"Scheduled and predictable — every Monday at 9am, generate the weekly report. Best for recurring tasks on a known schedule."},{"front":"Event-Based Trigger","back":"Reactive and immediate — when a customer signs up, send the welcome sequence. Best for response-driven work."},{"front":"Condition-Based Trigger","back":"Watchful and threshold-driven — when inventory drops below 50 units, alert the team. Best for monitoring and safety nets."},{"front":"Manual Trigger","back":"Human-initiated but machine-executed — click a button to run the deployment pipeline. Best for complex tasks you still want control over."},{"front":"Webhooks","back":"Small HTTP requests that fire when something happens in a tool. If a tool has webhooks, it can trigger a workflow — and almost every modern tool does."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Four Trigger Types</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Workflow Trigger Types","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Time-based trigger","right":"Every Monday at 9am, generate the weekly report"},{"left":"Event-based trigger","right":"When a new customer signs up, send the welcome sequence"},{"left":"Condition-based trigger","right":"When inventory drops below 50 units, alert the team"},{"left":"Manual trigger","right":"When I click this button, run the deployment pipeline"}]}'></div>

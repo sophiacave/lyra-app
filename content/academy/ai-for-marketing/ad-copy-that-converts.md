@@ -134,6 +134,13 @@ Don't use all caps. Don't use excessive punctuation.</pre>
   <div data-learn="FlashDeck" data-props='{"title":"5 Ad Psychology Triggers","cards":[{"front":"Social Proof","back":"Join 10,000+ marketers — use specific numbers, testimonials, or trust signals to show others have made this choice."},{"front":"Scarcity","back":"Only 50 spots left or Ends Friday — real scarcity (not manufactured urgency) drives action."},{"front":"Specificity","back":"Save 4.5 hours per week beats save time. Specific numbers feel real and credible to readers."},{"front":"Loss Aversion","back":"Stop wasting $500/month on tools that do not work — people fear loss more than they desire gain."},{"front":"Identity","back":"For marketers who refuse to settle for average — make the audience see themselves in the ad."}]}'></div>
 </div>
 
+<!-- INTERACTIVE: MATCHCONNECT -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match each ad platform to its key constraint.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Ad Platform Constraints","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Google Search Ads","right":"30 characters per headline, 90 per description — tight character limits"},{"left":"Facebook/Instagram Ads","right":"First 3 lines must hook — that\\u0027s all they see before See More"},{"left":"Problem-Agitate-Solve","right":"A Meta ad style that starts with the pain point to stop the scroll"},{"left":"Testimonial-Style","right":"A Meta ad style that opens with a customer result or quote"},{"left":"Direct Offer","right":"A Meta ad style that leads immediately with the deal"}]}'></div>
+</div>
+
 <!-- INTERACTIVE: QUIZ -->
 <div class="lesson-section">
   <span class="section-label">Knowledge Check</span>

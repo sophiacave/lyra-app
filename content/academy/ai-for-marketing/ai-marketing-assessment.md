@@ -108,6 +108,13 @@ free: false
   <p class="section-text"><strong>The gap between marketers who use AI well and those who don't is only going to widen.</strong> You're on the right side of that gap. Now go execute.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the full-funnel AI marketing framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Full-Funnel AI Marketing","cards":[{"front":"Top of Funnel","back":"Blog posts, social content, and ads that attract your ideal customer. The widest part of the funnel — awareness and discovery."},{"front":"Middle of Funnel","back":"Lead magnet, email sequence, and nurture content that builds trust. Educate and connect before asking for the sale."},{"front":"Bottom of Funnel","back":"Landing page, sales emails, and conversion copy that closes. Direct offers with urgency and social proof."},{"front":"Retention","back":"Onboarding emails, customer success content, and referral prompts. Keep customers happy and turn them into advocates."},{"front":"The AI Advantage","back":"One marketer with AI can build a complete full-funnel content system — something that used to require a team of five."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

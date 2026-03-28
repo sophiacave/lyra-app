@@ -105,6 +105,13 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the email and communication framework.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Email and Communication Framework","cards":[{"front":"Tone","back":"How should the message sound? Professional, casual, warm, firm, apologetic, enthusiastic — name it explicitly in your prompt."},{"front":"Context","back":"Who is the person? What\\u0027s the relationship? What happened before this message? The backstory helps AI write something appropriate."},{"front":"Goal","back":"What do you want to happen after they read this? A meeting scheduled? An apology accepted? A bill corrected? Name the outcome."},{"front":"Clay, Not Marble","back":"Treat AI\\u0027s first draft as clay to shape — read it out loud, change words that feel off, tell AI to make it more casual or more direct."},{"front":"Style Matching","back":"Paste an example of how you actually write and ask AI to match your voice. It learns your style within the conversation."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

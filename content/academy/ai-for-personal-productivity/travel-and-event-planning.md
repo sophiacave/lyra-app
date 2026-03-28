@@ -94,6 +94,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the travel and event planning concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Travel and Event Planning with AI","cards":[{"front":"Constraint-First Planning","back":"Give AI your budget, dates, preferences, and group size before asking for recommendations. Constraints make the plan realistic, not aspirational."},{"front":"The One-Conversation Itinerary","back":"Include destination, length, budget, interests, dislikes, and special requests (like a rain backup) — get a complete day-by-day plan in one prompt."},{"front":"Event Coordinator Mode","back":"Give AI the event type, guest count, budget, and location. Get back a timeline, menu ideas, activity suggestions, and a countdown to-do list."},{"front":"Bonus Planning Tools","back":"After the main plan, ask AI for packing lists, pre-trip checklists, or countdown timelines. Each takes 10 seconds and saves 30 minutes of thinking."},{"front":"The Planning Trade","back":"You trade your mental energy for AI\\u0027s processing speed. AI handles hundreds of small decisions so you can focus on enjoying the experience."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

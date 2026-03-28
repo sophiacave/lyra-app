@@ -70,6 +70,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Monitoring and Maintenance","cards":[{"front":"Success Rate","back":"Percentage of workflow runs completing successfully. Anything below 95% needs investigation. Track daily."},{"front":"Execution Time","back":"How long each run takes. Sudden increases often signal upstream problems — an API slowing down or retry loops."},{"front":"Alert Categorization","back":"Info = logged not notified. Warning = notified not urgent. Critical = immediate attention. Most events should be Info."},{"front":"The Monthly Health Check","back":"Review success rates, check for slow steps, verify credentials haven\\\'t expired, test error handling in sandbox. Takes one hour, prevents days of fixes."},{"front":"Silent Failures","back":"The most dangerous kind. An API changes format, a rate limit tightens, a parser breaks — without monitoring, these accumulate unseen for weeks."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Four Vital Signs</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Workflow Monitoring Metrics","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Success rate","right":"Percentage of runs completing — anything below 95% needs investigation"},{"left":"Execution time","right":"How long each run takes — sudden increases signal upstream problems"},{"left":"Data volume","right":"Items processed per run — sudden drops may mean the trigger stopped firing"},{"left":"Error patterns","right":"Which errors and when — three timeouts at 3am every night is a pattern worth investigating"}]}'></div>
