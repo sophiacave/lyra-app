@@ -50,7 +50,7 @@ free: false
   <div class="demo-container">
     <div class="demo-block" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">Agent Specification Template</h4>
-      <code>Name: Research Agent<br>Role: Gather and synthesize information from provided sources<br>Model: Claude Sonnet (needs reasoning, not max capability)<br>System prompt: "You are a research specialist. Given a topic and sources, extract key findings. Output structured JSON with findings, confidence scores, and source citations. Never speculate beyond the data. Never write final copy."<br>Input: { topic: string, sources: string[] }<br>Output: { findings: Finding[], confidence: number }<br>On failure: Return partial findings with low confidence flag</code>
+      <code>Name: Research Agent<br>Role: Gather and synthesize information from provided sources<br>Model: Sonnet 4.6 (needs reasoning, not max capability)<br>System prompt: "You are a research specialist. Given a topic and sources, extract key findings. Output structured JSON with findings, confidence scores, and source citations. Never speculate beyond the data. Never write final copy."<br>Input: { topic: string, sources: string[] }<br>Output: { findings: Finding[], confidence: number }<br>On failure: Return partial findings with low confidence flag</code>
     </div>
   </div>
 </div>

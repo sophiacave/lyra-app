@@ -39,7 +39,7 @@ free: false
   <span class="section-label">Dimension 1</span>
   <h2 class="section-title">Cost Optimization: Tiered Model Strategy</h2>
   <p class="section-text">Not every agent needs the most powerful model. Your orchestrator — which makes routing decisions — might work fine with a smaller, cheaper model. Your research agent, which needs deep reasoning, gets the premium model. Your formatter, which restructures content, could use the cheapest option available.</p>
-  <p class="section-text"><strong style="color: var(--orange);">The rule:</strong> Match model capability to task complexity. Use GPT-4o or Claude for reasoning. Use smaller models for classification, formatting, and routing. Use rule-based logic (no LLM at all) for deterministic tasks like validation and formatting.</p>
+  <p class="section-text"><strong style="color: var(--orange);">The rule:</strong> Match model capability to task complexity. Use GPT-4o or Opus 4.6 for reasoning. Use smaller models for classification, formatting, and routing. Use rule-based logic (no LLM at all) for deterministic tasks like validation and formatting.</p>
 </div>
 
 <div class="lesson-section">
@@ -65,11 +65,11 @@ free: false
   <div class="demo-container">
     <div class="demo-block" style="border-left: 3px solid var(--red);">
       <h4 style="color: var(--red);">Before: All Premium Models</h4>
-      <code>Orchestrator (Claude Opus): $0.08/call<br>Researcher (Claude Opus): $0.12/call<br>Writer (Claude Opus): $0.10/call<br>Editor (Claude Opus): $0.08/call<br>Total per run: ~$0.38 × 100 runs/day = $38/day</code>
+      <code>Orchestrator (Opus 4.6): $0.08/call<br>Researcher (Opus 4.6): $0.12/call<br>Writer (Opus 4.6): $0.10/call<br>Editor (Opus 4.6): $0.08/call<br>Total per run: ~$0.38 × 100 runs/day = $38/day</code>
     </div>
     <div class="demo-block" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">After: Tiered Model Strategy</h4>
-      <code>Orchestrator (Haiku): $0.002/call<br>Researcher (Claude Sonnet): $0.04/call<br>Writer (Claude Sonnet): $0.04/call<br>Editor (Haiku + rules): $0.003/call<br>Total per run: ~$0.085 × 100 runs/day = $8.50/day</code>
+      <code>Orchestrator (Haiku 4.5): $0.002/call<br>Researcher (Sonnet 4.6): $0.04/call<br>Writer (Sonnet 4.6): $0.04/call<br>Editor (Haiku 4.5 + rules): $0.003/call<br>Total per run: ~$0.085 × 100 runs/day = $8.50/day</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">78% cost reduction. Quality stayed the same because we matched model power to task needs.</p>
     </div>
   </div>
@@ -89,7 +89,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Tiered model strategy.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Each Agent Task to Its Optimal Model Tier","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Complex reasoning and analysis","right":"Premium model — GPT-4o or Claude Opus"},{"left":"Writing and research with context","right":"Mid-tier model — Claude Sonnet or GPT-4o mini"},{"left":"Routing and classification decisions","right":"Small cheap model — Haiku or similar"},{"left":"Deterministic validation and formatting","right":"Rule-based logic — no LLM needed at all"}]}'></div>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Each Agent Task to Its Optimal Model Tier","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Complex reasoning and analysis","right":"Premium model — GPT-4o or Opus 4.6"},{"left":"Writing and research with context","right":"Mid-tier model — Sonnet 4.6 or GPT-4o mini"},{"left":"Routing and classification decisions","right":"Small cheap model — Haiku 4.5 or similar"},{"left":"Deterministic validation and formatting","right":"Rule-based logic — no LLM needed at all"}]}'></div>
 </div>
 
 <div class="lesson-section">
