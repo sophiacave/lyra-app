@@ -388,7 +388,7 @@ console.log(`   ${config.sections.length} sections: ${config.sections.map(s => s
 
 if (shouldRender) {
   console.log(`\n🎬 Launching render pipeline...`);
-  const renderScript = path.join(STUDIO_DIR, 'render-lesson.js');
+  const renderScript = path.join(STUDIO_DIR, 'render-lesson-v2.js');
   try {
     execSync(`node "${renderScript}" "${configPath}"`, { stdio: 'inherit', cwd: path.join(STUDIO_DIR, '..') });
   } catch (e) {
