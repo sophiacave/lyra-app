@@ -19,30 +19,69 @@ const VIDEO_DIR = path.join(OUTPUT_DIR, 'video');
   if (!existsSync(d)) mkdirSync(d, { recursive: true });
 });
 
-// ── TTS Generation (calls Python pipeline) ──
-async function generateTTS(text, voiceKey, outputName) {
-  const venvPython = path.join(process.env.HOME, 'like-one-studio', '.venv', 'bin', 'python3');
-  const ttsScript = path.join(process.env.HOME, 'like-one-studio', 'pipeline', 'tts', 'generate.py');
+// ── TTS Engine Selection ──
+// Set via config.ttsEngine or TTS_ENGINE env var. Options: 's2pro' (premium), 'edge' (free fallback)
+const TTS_ENGINE = process.env.TTS_ENGINE || 's2pro';
 
-  const escaped = text.replace(/'/g, "'\\''");
-  const cmd = `${venvPython} -c "
-import asyncio, sys
-sys.path.insert(0, '${path.join(process.env.HOME, 'like-one-studio', 'pipeline', 'tts')}')
-from generate import generate_speech
-result = asyncio.run(generate_speech('''${escaped}''', voice_key='${voiceKey}', output_name='${outputName}'))
-import json
-print(json.dumps(result))
-"`;
+// ── TTS: Fish Audio S2 Pro (premium, local M3 Max) ──
+async function generateTTS_S2Pro(text, voiceKey, outputName) {
+  const s2Script = path.join(STUDIO_DIR, 'tts', 'generate-s2.py');
+  const venvPython = path.join(process.env.HOME, 'likeone-workspace', 'code', 'fish-speech', '.venv', 'bin', 'python');
+  const wavPath = path.join(AUDIO_DIR, `${outputName}.wav`);
+
+  const cmd = `${venvPython} "${s2Script}" --text "${text.replace(/"/g, '\\"')}" --output "${wavPath}"`;
 
   try {
-    const output = execSync(cmd, { encoding: 'utf-8', timeout: 30000 });
-    const lines = output.trim().split('\n');
-    const jsonLine = lines.find(l => l.startsWith('{'));
-    return jsonLine ? JSON.parse(jsonLine) : null;
+    execSync(cmd, { encoding: 'utf-8', timeout: 300000 });
+
+    // Read timing metadata
+    const timingPath = wavPath.replace('.wav', '.timing.json');
+    if (existsSync(timingPath)) {
+      const timing = JSON.parse(readFileSync(timingPath, 'utf-8'));
+      return {
+        audio_path: wavPath,
+        duration_s: timing.duration_s,
+        timing_path: timingPath,
+      };
+    }
+
+    return { audio_path: wavPath, duration_s: 5 }; // Fallback duration
   } catch (e) {
-    console.error(`❌ TTS failed for "${outputName}":`, e.message);
+    console.error(`❌ S2 Pro TTS failed for "${outputName}":`, e.message?.slice(-300));
     return null;
   }
+}
+
+// ── TTS: Edge TTS (free Microsoft fallback) ──
+async function generateTTS_Edge(text, voiceKey, outputName) {
+  const wavPath = path.join(AUDIO_DIR, `${outputName}.mp3`);
+  const voice = voiceKey === 'sophia' ? 'en-US-JennyNeural' : 'en-US-GuyNeural';
+
+  const cmd = `edge-tts --voice "${voice}" --text "${text.replace(/"/g, '\\"')}" --write-media "${wavPath}"`;
+
+  try {
+    execSync(cmd, { encoding: 'utf-8', timeout: 30000 });
+
+    // Get duration via ffprobe
+    const probe = execSync(`ffprobe -v quiet -show_entries format=duration -of csv=p=0 "${wavPath}"`, { encoding: 'utf-8' }).trim();
+    const duration_s = parseFloat(probe) || 5;
+
+    return { audio_path: wavPath, duration_s };
+  } catch (e) {
+    console.error(`❌ Edge TTS failed for "${outputName}":`, e.message?.slice(-200));
+    return null;
+  }
+}
+
+// ── TTS Router ──
+async function generateTTS(text, voiceKey, outputName, engine) {
+  const selectedEngine = engine || TTS_ENGINE;
+  if (selectedEngine === 's2pro') {
+    const result = await generateTTS_S2Pro(text, voiceKey, outputName);
+    if (result) return result;
+    console.log('  ⚠️ S2 Pro failed, falling back to Edge TTS...');
+  }
+  return generateTTS_Edge(text, voiceKey, outputName);
 }
 
 // ── Remotion Render ──
@@ -100,7 +139,7 @@ async function renderLesson(config) {
     const section = config.sections[i];
     if (section.type === 'narration') {
       const audioName = `${lessonSlug}_s${String(i).padStart(2, '0')}`;
-      const result = await generateTTS(section.text, section.voice || 'sophia', audioName);
+      const result = await generateTTS(section.text, section.voice || 'sophia', audioName, config.ttsEngine);
       if (result) {
         audioResults.push({ index: i, ...result });
         section.durationS = Math.ceil(result.duration_s) + 1; // Add 1s buffer
