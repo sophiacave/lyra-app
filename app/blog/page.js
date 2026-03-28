@@ -5,6 +5,9 @@ import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import { site, academy } from '@/lib/site-config';
 
+// Revalidate daily so date-gated posts appear on their publish date
+export const revalidate = 86400;
+
 export const metadata = {
   title: `Blog — ${site.name}`,
   description: 'Thoughts on AI, automation, and building the future.',

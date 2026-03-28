@@ -1,6 +1,8 @@
 import { getAllPosts } from '../lib/posts';
 import { getAllCourses } from '../lib/courses';
 
+export const revalidate = 86400;
+
 export default function sitemap() {
   const baseUrl = 'https://likeone.ai';
 

@@ -7,6 +7,9 @@ import Footer from '@/app/components/Footer';
 import { site, academy } from '@/lib/site-config';
 import { notFound } from 'next/navigation';
 
+// Revalidate daily so date-gated posts appear on their publish date
+export const revalidate = 86400;
+
 const TAG_COURSE_MAP = {
   'claude': ['claude-for-beginners', 'claude-mastery'],
   'prompt': ['prompt-writing-101', 'advanced-prompt-engineering'],
