@@ -1,0 +1,200 @@
+{
+  "title": "Bias in AI",
+  "subtitle": "AI Ethics & Safety — Like One Academy",
+  "slug": "bias-in-ai",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "AI is not neutral. It learns from data created by humans, and humans are biased. When that bias gets baked into AI systems, it scales to millions of decisions per second — amplifying discrimination at a speed and scale no human could match. In this lesson, you will learn how bias enters AI and what you can do about it.",
+      "voice": "sophia",
+      "highlightWords": [
+        "not neutral",
+        "humans are biased",
+        "amplifying discrimination",
+        "scale"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "How Bias Enters AI",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "Training Data"
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "label": "Human Decisions"
+        },
+        {
+          "x": 0.5,
+          "y": 0.55,
+          "label": "AI Model"
+        },
+        {
+          "x": 0.5,
+          "y": 0.8,
+          "label": "Biased Output"
+        },
+        {
+          "x": 0.2,
+          "y": 0.55,
+          "label": "Historical Bias"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "Selection Bias"
+        },
+        {
+          "x": 0.8,
+          "y": 0.55,
+          "label": "Feedback Loops"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Bias enters AI in three main ways. First, training data — if the data reflects historical discrimination, the AI learns to discriminate. Amazon built a hiring AI trained on ten years of resumes. Because the company had historically hired more men, the AI learned to penalize resumes that mentioned women's colleges or activities. Amazon scrapped the system.",
+      "voice": "sophia",
+      "highlightWords": [
+        "training data",
+        "historical discrimination",
+        "Amazon",
+        "penalize",
+        "scrapped"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Second, selection bias — who is in the data and who is not. Facial recognition systems trained mostly on lighter-skinned faces perform poorly on darker-skinned faces. Not because the technology is inherently racist, but because the training data was not representative. If your data does not reflect the real world, your AI will not either.",
+      "voice": "sophia",
+      "highlightWords": [
+        "selection bias",
+        "facial recognition",
+        "not representative",
+        "real world"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Third, feedback loops — when biased AI output becomes the training data for the next version. Predictive policing sends more officers to neighborhoods with high arrest rates. More officers means more arrests. More arrests means the AI sends even more officers. The bias compounds. The neighborhood gets more policed not because more crime happens there, but because the algorithm said so.",
+      "voice": "sophia",
+      "highlightWords": [
+        "feedback loops",
+        "predictive policing",
+        "compounds",
+        "algorithm"
+      ]
+    },
+    {
+      "type": "timeline",
+      "steps": [
+        {
+          "label": "Data",
+          "description": "Biased historical data feeds the model"
+        },
+        {
+          "label": "Training",
+          "description": "Model learns the patterns — including bias"
+        },
+        {
+          "label": "Deployment",
+          "description": "Biased model makes millions of decisions"
+        },
+        {
+          "label": "Feedback",
+          "description": "Biased decisions generate biased new data"
+        },
+        {
+          "label": "Repeat",
+          "description": "Next model trained on even more biased data"
+        }
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "So what can you do? If you use AI at work, ask vendors about their bias testing. Ask what data the model was trained on. Ask if it has been evaluated across different demographics. If they cannot answer, that is a red flag. If you build with AI, test your outputs across different groups before deploying. Bias testing is not optional — it is engineering due diligence.",
+      "voice": "sophia",
+      "highlightWords": [
+        "bias testing",
+        "demographics",
+        "red flag",
+        "engineering due diligence"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Ignoring Bias",
+      "rightTitle": "Addressing Bias",
+      "leftItems": [
+        "AI silently discriminates at scale",
+        "Legal exposure increases over time",
+        "Marginalized groups are harmed most",
+        "Trust erodes when bias is discovered"
+      ],
+      "rightItems": [
+        "Regular audits catch bias early",
+        "Diverse training data reduces risk",
+        "Inclusive AI serves everyone fairly",
+        "Transparent testing builds trust"
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "AI bias is not an unsolvable problem. It is an engineering challenge that requires intention, testing, and accountability. The AI systems that serve everyone fairly are the ones built by teams that actively looked for bias — and fixed it before shipping. Be that team. Demand that standard.",
+      "voice": "sophia",
+      "highlightWords": [
+        "engineering challenge",
+        "intention",
+        "testing",
+        "accountability",
+        "demand that standard"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "AI does not create bias. It inherits it, scales it, and hides it. Our job is to find it and fix it.",
+      "attribution": "— Like One Academy",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — Privacy and Data Protection",
+      "ctaText": "likeone.ai/academy/ai-ethics-and-safety",
+      "durationS": 4
+    }
+  ]
+}
