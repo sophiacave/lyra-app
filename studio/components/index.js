@@ -26,3 +26,13 @@ export { TimelineScene } from './TimelineScene.jsx';
 export { CodeBlock } from './CodeBlock.jsx';
 export { QuoteCard } from './QuoteCard.jsx';
 export { OutroScene } from './OutroScene.jsx';
+
+// V3 Visual Vocabulary
+export { IconReveal } from './IconReveal.jsx';
+export { ProcessFlow } from './ProcessFlow.jsx';
+export { StatReveal } from './StatReveal.jsx';
+export { ProgressiveReveal } from './ProgressiveReveal.jsx';
+export { SplitScreen } from './SplitScreen.jsx';
+export { IconGrid } from './IconGrid.jsx';
+export { GradientArt } from './GradientArt.jsx';
+export { ICONS, getIcon } from './icons.jsx';

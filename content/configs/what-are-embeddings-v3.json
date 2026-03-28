@@ -1,0 +1,97 @@
+{
+  "version": "3.0",
+  "title": "What Are Embeddings?",
+  "subtitle": "RAG & Vector Search — Like One Academy",
+  "slug": "what-are-embeddings-v3",
+  "colorTheme": "rag-vectors",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "What if every word had an address?",
+      "subtext": "A location in mathematical space that captures its meaning",
+      "mood": "dramatic",
+      "colorTheme": "rag-vectors",
+      "durationS": 4
+    },
+    {
+      "type": "narration",
+      "text": "An embedding is a list of numbers that represents the meaning of text. Think of it as giving every word a unique address in mathematical space. Two words that mean similar things get addresses that are close together. Happy lives next to joyful. Sad lives far away from both.",
+      "voice": "sophia",
+      "highlightWords": ["embedding", "numbers", "meaning", "address", "close together"],
+      "pace": "concept"
+    },
+    {
+      "type": "icon-reveal",
+      "icon": "globe",
+      "label": "Embedding Space",
+      "subtitle": "A map where meaning has coordinates",
+      "colorTheme": "rag-vectors",
+      "durationS": 4
+    },
+    {
+      "type": "narration",
+      "text": "Here is why this matters. When you ask an AI a question, it does not search for matching words. It searches for matching meaning. Your question becomes a point in space, and the AI finds the closest answers — even if they use completely different words. That is semantic search. That is the magic.",
+      "voice": "sophia",
+      "highlightWords": ["matching meaning", "point in space", "semantic search", "magic"],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "How Embedding Search Works",
+      "steps": [
+        { "label": "Your question", "desc": "Turned into numbers" },
+        { "label": "Embed", "desc": "Map to vector space" },
+        { "label": "Search", "desc": "Find nearest neighbors" },
+        { "label": "Retrieve", "desc": "Return closest matches" }
+      ],
+      "colorTheme": "rag-vectors",
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "The numbers themselves are not random. Each dimension captures something about meaning. One dimension might track sentiment. Another might track formality. Another might capture topic. A seven-hundred-dimensional embedding captures seven hundred different aspects of what a word means. That is richer than any dictionary.",
+      "voice": "sophia",
+      "highlightWords": ["dimension", "sentiment", "formality", "seven hundred", "richer"],
+      "pace": "concept"
+    },
+    {
+      "type": "stat-reveal",
+      "stat": "768",
+      "unit": "dimensions",
+      "label": "in a typical embedding — each one captures an aspect of meaning",
+      "colorTheme": "rag-vectors",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "This is how your AI brain works. Every memory gets embedded. Every question gets embedded. And the closest memories become context for the answer. Embeddings are the foundation of RAG, of semantic search, of everything that makes AI feel like it understands you.",
+      "voice": "sophia",
+      "highlightWords": ["embedded", "closest memories", "context", "RAG", "understands"],
+      "pace": "concept"
+    },
+    {
+      "type": "icon-grid",
+      "label": "What Embeddings Power",
+      "items": [
+        { "icon": "chat-bubble", "label": "Semantic Search" },
+        { "icon": "database", "label": "RAG Systems" },
+        { "icon": "brain", "label": "AI Memory" },
+        { "icon": "filter", "label": "Recommendations" },
+        { "icon": "eye", "label": "Image Search" },
+        { "icon": "globe", "label": "Translation" }
+      ],
+      "colorTheme": "rag-vectors",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: How Vector Search Works",
+      "subtext": "From embeddings to finding needles in haystacks.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

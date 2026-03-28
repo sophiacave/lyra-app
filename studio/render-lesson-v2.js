@@ -30,20 +30,52 @@ const TTS_ENGINE = process.env.TTS_ENGINE || 's2pro';
 // ── TTS Engines (reused from v1) ──
 
 async function generateTTS_S2Pro(text, voiceKey, outputName) {
-  const s2Script = path.join(STUDIO_DIR, 'tts', 'generate-s2.py');
-  const venvPython = path.join(process.env.HOME, 'likeone-workspace', 'code', 'fish-speech', '.venv', 'bin', 'python');
+  const S2PRO_URL = process.env.S2PRO_URL || 'http://127.0.0.1:8180';
   const wavPath = path.join(AUDIO_DIR, `${outputName}.wav`);
-  const cmd = `${venvPython} "${s2Script}" --text "${text.replace(/"/g, '\\"')}" --output "${wavPath}"`;
+
   try {
-    execSync(cmd, { encoding: 'utf-8', timeout: 300000 });
-    const timingPath = wavPath.replace('.wav', '.timing.json');
-    if (existsSync(timingPath)) {
-      const timing = JSON.parse(readFileSync(timingPath, 'utf-8'));
-      return { audio_path: wavPath, duration_s: timing.duration_s, timing_path: timingPath };
+    // Check server health
+    const health = await fetch(`${S2PRO_URL}/v1/health`);
+    if (!health.ok) throw new Error('S2 Pro server not healthy');
+
+    console.log(`  🔊 S2 Pro: generating "${outputName}" (${text.length} chars)...`);
+    const t0 = Date.now();
+
+    const resp = await fetch(`${S2PRO_URL}/v1/tts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text,
+        references: [],
+        max_new_tokens: 2048,
+        chunk_length: 200,
+        top_p: 0.7,
+        repetition_penalty: 1.5,
+        temperature: 0.7,
+        format: 'wav',
+        seed: 42,
+      }),
+    });
+
+    if (!resp.ok) {
+      const err = await resp.text();
+      throw new Error(`S2 Pro TTS failed (${resp.status}): ${err.slice(-200)}`);
     }
+
+    const audioBuffer = Buffer.from(await resp.arrayBuffer());
+    const outDir = path.dirname(wavPath);
+    if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
+    writeFileSync(wavPath, audioBuffer);
+
     // Get duration via ffprobe
     const probe = execSync(`ffprobe -v quiet -show_entries format=duration -of csv=p=0 "${wavPath}"`, { encoding: 'utf-8' }).trim();
-    return { audio_path: wavPath, duration_s: parseFloat(probe) || 5 };
+    const dur = parseFloat(probe) || 5;
+    const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+    const words = text.split(/\s+/).length;
+    const wpm = Math.round((words / dur) * 60);
+    console.log(`  ✅ ${dur.toFixed(1)}s audio in ${elapsed}s | ${wpm} WPM`);
+
+    return { audio_path: wavPath, duration_s: dur };
   } catch (e) {
     console.error(`  ❌ S2 Pro TTS failed for "${outputName}":`, e.message?.slice(-200));
     return null;

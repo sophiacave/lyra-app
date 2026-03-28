@@ -83,6 +83,34 @@ export function calculateDurationS(section) {
     }
     case 'outro':
       return section.durationS || PACING.OUTRO_S;
+
+    // V3 scene types
+    case 'icon-reveal':
+      return section.durationS || 4;
+    case 'stat-reveal':
+      return section.durationS || 5;
+    case 'process-flow': {
+      const steps = (section.steps || []).length;
+      return section.durationS || Math.max(5, 3 + steps * 1.0);
+    }
+    case 'progressive-reveal': {
+      const steps = (section.steps || []).length;
+      return section.durationS || Math.max(6, 3 + steps * 1.5);
+    }
+    case 'split-screen': {
+      const items = Math.max(
+        (section.leftItems || []).length,
+        (section.rightItems || []).length
+      );
+      return section.durationS || Math.max(5, 4 + items * 0.6);
+    }
+    case 'icon-grid': {
+      const items = (section.items || []).length;
+      return section.durationS || Math.max(4, 3 + items * 0.4);
+    }
+    case 'gradient-art':
+      return section.durationS || 5;
+
     default:
       return section.durationS || 6;
   }
@@ -95,8 +123,8 @@ export function calculateDurationS(section) {
 export function calculateGapS(prevSection, nextSection) {
   if (!prevSection) return 0;
 
-  // After quote or concept: longer pause for absorption
-  if (prevSection.type === 'quote' || prevSection.type === 'concept') return 1.5;
+  // After dramatic/reveal scenes: longer pause for absorption
+  if (['quote', 'concept', 'stat-reveal', 'gradient-art', 'icon-reveal'].includes(prevSection.type)) return 1.5;
 
   // Same type → shorter gap
   if (prevSection.type === nextSection?.type) return 0.8;

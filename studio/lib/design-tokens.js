@@ -204,3 +204,75 @@ export function glassStyle(blur = 40) {
     borderRadius: 20,
   };
 }
+
+// ── V3 Color Themes (per-topic palettes) ──
+export const COLOR_THEMES = {
+  'ai-foundations': {
+    primary: '#4338ca',     // Deep indigo
+    secondary: '#06b6d4',   // Electric cyan
+    accent: '#818cf8',      // Light indigo
+    bg: '#0c0a1a',          // Dark indigo base
+    text: TEXT_PRIMARY,
+    orbColors: ['#4338ca', '#06b6d4', '#818cf8'],
+  },
+  'prompt-writing': {
+    primary: '#f59e0b',     // Warm amber
+    secondary: '#fef3c7',   // Soft cream
+    accent: '#d97706',      // Deep amber
+    bg: '#0f0c08',          // Warm dark base
+    text: TEXT_PRIMARY,
+    orbColors: ['#f59e0b', '#d97706', '#92400e'],
+  },
+  'ethics-safety': {
+    primary: '#059669',     // Forest green
+    secondary: '#d97706',   // Warm gold
+    accent: '#34d399',      // Light green
+    bg: '#060f0a',          // Dark green base
+    text: TEXT_PRIMARY,
+    orbColors: ['#059669', '#d97706', '#34d399'],
+  },
+  'creatives': {
+    primary: '#db2777',     // Magenta
+    secondary: '#f97316',   // Coral
+    accent: '#fbbf24',      // Peach
+    bg: '#120810',          // Dark magenta base
+    text: TEXT_PRIMARY,
+    orbColors: ['#db2777', '#f97316', '#fbbf24'],
+  },
+  'business': {
+    primary: '#1e3a5f',     // Navy
+    secondary: '#94a3b8',   // Silver
+    accent: '#bae6fd',      // Ice blue
+    bg: '#080b10',          // Dark navy base
+    text: TEXT_PRIMARY,
+    orbColors: ['#1e3a5f', '#94a3b8', '#bae6fd'],
+  },
+  'productivity': {
+    primary: '#0d9488',     // Teal
+    secondary: '#f5f5f4',   // Warm white
+    accent: '#5eead4',      // Light teal
+    bg: '#080f0e',          // Dark teal base
+    text: TEXT_PRIMARY,
+    orbColors: ['#0d9488', '#5eead4', '#14b8a6'],
+  },
+  'rag-vectors': {
+    primary: '#7c3aed',     // Purple
+    secondary: '#3b82f6',   // Neon blue
+    accent: '#a78bfa',      // Light purple
+    bg: '#0c0818',          // Dark purple base
+    text: TEXT_PRIMARY,
+    orbColors: ['#7c3aed', '#3b82f6', '#a78bfa'],
+  },
+  'claude-beginners': {
+    primary: '#8b5cf6',     // Soft purple
+    secondary: '#c4b5fd',   // Lavender
+    accent: '#ddd6fe',      // Light lavender
+    bg: '#0a0812',          // Gentle dark base
+    text: TEXT_PRIMARY,
+    orbColors: ['#8b5cf6', '#c4b5fd', '#a78bfa'],
+  },
+};
+
+export function getTheme(themeId) {
+  return COLOR_THEMES[themeId] || COLOR_THEMES['ai-foundations'];
+}

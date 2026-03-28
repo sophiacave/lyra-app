@@ -1,0 +1,105 @@
+{
+  "version": "3.0",
+  "title": "What Is a Neuron?",
+  "subtitle": "AI Foundations — Like One Academy",
+  "slug": "what-is-a-neuron-v3",
+  "colorTheme": "ai-foundations",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "stat-reveal",
+      "stat": "86",
+      "unit": "billion",
+      "label": "neurons in your brain, each doing something embarrassingly simple",
+      "colorTheme": "ai-foundations",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "You have eighty-six billion neurons. And each one does exactly one thing: it receives signals, adds them up, and decides whether to fire. That is it. No single neuron knows what you are thinking. No single neuron understands language or love or music. But together, they create everything you have ever experienced.",
+      "voice": "sophia",
+      "highlightWords": ["eighty-six billion", "fire", "together", "everything"],
+      "pace": "hook"
+    },
+    {
+      "type": "icon-reveal",
+      "icon": "neuron",
+      "label": "The Artificial Neuron",
+      "subtitle": "Inspired by biology, simplified by math",
+      "colorTheme": "ai-foundations",
+      "durationS": 4
+    },
+    {
+      "type": "narration",
+      "text": "An artificial neuron works the same way. It takes in numbers, multiplies each by a weight that says how important it is, adds them all up, and passes the result through a function that decides: should I activate or stay quiet? That is the entire secret of AI. Weighted sum. Activation. That is it.",
+      "voice": "sophia",
+      "highlightWords": ["weight", "how important", "activate", "entire secret"],
+      "pace": "concept"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "How a Neuron Works",
+      "steps": [
+        { "icon": "arrow-flow", "label": "Inputs arrive", "detail": "Numbers from sensors, pixels, or other neurons" },
+        { "icon": "scale", "label": "Multiply by weights", "detail": "Each input has a learned importance score" },
+        { "icon": "calculator", "label": "Sum everything", "detail": "Add all weighted inputs together" },
+        { "icon": "lightbulb", "label": "Activation function", "detail": "Decide: fire or stay quiet" },
+        { "icon": "arrow-flow", "label": "Output", "detail": "Send signal to the next layer" }
+      ],
+      "colorTheme": "ai-foundations",
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Here is the beautiful part. One neuron is useless. It can only draw a single straight line through data. But stack thousands together in layers and something magical happens. The first layer detects edges. The second layer combines edges into shapes. The third recognizes faces. Complexity emerges from simplicity.",
+      "voice": "sophia",
+      "highlightWords": ["layers", "magical", "edges", "shapes", "faces", "Complexity emerges"],
+      "pace": "concept"
+    },
+    {
+      "type": "split-screen",
+      "leftTitle": "One Neuron",
+      "rightTitle": "Neural Network",
+      "leftIcon": "neuron",
+      "rightIcon": "network",
+      "leftItems": [
+        "Draws one straight line",
+        "Yes-or-no decision",
+        "Cannot learn patterns",
+        "Like a single switch"
+      ],
+      "rightItems": [
+        "Millions working together",
+        "Infinite complexity",
+        "Learns any pattern",
+        "Like a thinking brain"
+      ],
+      "colorTheme": "ai-foundations",
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "When you talk to Claude or ask an AI to write a poem, you are sending signals through billions of these simple neurons, arranged in layers so deep they would fill a skyscraper. Each one does its tiny job. And somehow, understanding emerges. That is the miracle of neural networks.",
+      "voice": "sophia",
+      "highlightWords": ["billions", "layers", "understanding emerges", "miracle"],
+      "pace": "concept"
+    },
+    {
+      "type": "gradient-art",
+      "text": "Simplicity, stacked deep enough, becomes intelligence.",
+      "subtext": "That is what a neuron teaches us.",
+      "mood": "dramatic",
+      "colorTheme": "ai-foundations",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: How Neurons Learn",
+      "subtext": "The weights start random. Training makes them meaningful.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

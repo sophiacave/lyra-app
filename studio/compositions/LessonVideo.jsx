@@ -38,6 +38,15 @@ import { ComparisonSplit } from '../components/ComparisonSplit.jsx';
 import { TimelineScene } from '../components/TimelineScene.jsx';
 import { OutroScene } from '../components/OutroScene.jsx';
 import { BreathingGap } from '../components/BreathingGap.jsx';
+// V3 Visual Vocabulary
+import { IconReveal } from '../components/IconReveal.jsx';
+import { ProcessFlow } from '../components/ProcessFlow.jsx';
+import { StatReveal } from '../components/StatReveal.jsx';
+import { ProgressiveReveal } from '../components/ProgressiveReveal.jsx';
+import { SplitScreen } from '../components/SplitScreen.jsx';
+import { IconGrid } from '../components/IconGrid.jsx';
+import { GradientArt } from '../components/GradientArt.jsx';
+import { getTheme } from '../lib/design-tokens.js';
 
 // ── Title Card ──
 // Apple keynote style: centered, generous space, gradient accent, brand whisper.
@@ -526,6 +535,99 @@ function renderScene(section, durationInFrames) {
             <FilmGrain intensity={0.03} />
           </AbsoluteFill>
         </SceneTransition>
+      );
+
+    // ── V3 Scene Types ──
+
+    case 'icon-reveal':
+      return (
+        <IconReveal
+          icon={section.icon}
+          label={section.label}
+          subtitle={section.subtitle}
+          iconSize={section.iconSize}
+          iconColor={section.iconColor}
+          theme={section.colorTheme ? getTheme(section.colorTheme) : undefined}
+          durationInFrames={durationInFrames}
+        />
+      );
+
+    case 'process-flow':
+      return (
+        <ProcessFlow
+          title={section.label}
+          steps={section.steps}
+          layout={section.layout}
+          accentColor={section.accentColor}
+          theme={section.colorTheme ? getTheme(section.colorTheme) : undefined}
+          durationInFrames={durationInFrames}
+        />
+      );
+
+    case 'stat-reveal':
+      return (
+        <StatReveal
+          stat={section.stat}
+          unit={section.unit}
+          label={section.label}
+          prefix={section.prefix}
+          suffix={section.suffix}
+          accentColor={section.accentColor}
+          theme={section.colorTheme ? getTheme(section.colorTheme) : undefined}
+          durationInFrames={durationInFrames}
+        />
+      );
+
+    case 'progressive-reveal':
+      return (
+        <ProgressiveReveal
+          title={section.label}
+          steps={section.steps}
+          accentColor={section.accentColor}
+          theme={section.colorTheme ? getTheme(section.colorTheme) : undefined}
+          durationInFrames={durationInFrames}
+        />
+      );
+
+    case 'split-screen':
+      return (
+        <SplitScreen
+          leftTitle={section.leftTitle}
+          rightTitle={section.rightTitle}
+          leftItems={section.leftItems || []}
+          rightItems={section.rightItems || []}
+          leftIcon={section.leftIcon}
+          rightIcon={section.rightIcon}
+          leftColor={section.leftColor}
+          rightColor={section.rightColor}
+          theme={section.colorTheme ? getTheme(section.colorTheme) : undefined}
+          durationInFrames={durationInFrames}
+        />
+      );
+
+    case 'icon-grid':
+      return (
+        <IconGrid
+          title={section.label}
+          items={section.items}
+          columns={section.columns}
+          iconSize={section.iconSize}
+          accentColor={section.accentColor}
+          theme={section.colorTheme ? getTheme(section.colorTheme) : undefined}
+          durationInFrames={durationInFrames}
+        />
+      );
+
+    case 'gradient-art':
+      return (
+        <GradientArt
+          text={section.text}
+          subtext={section.subtext}
+          mood={section.mood}
+          shapeCount={section.shapeCount}
+          theme={section.colorTheme ? getTheme(section.colorTheme) : undefined}
+          durationInFrames={durationInFrames}
+        />
       );
 
     default:

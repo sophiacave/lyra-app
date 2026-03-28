@@ -1,0 +1,100 @@
+{
+  "version": "3.0",
+  "title": "Why Prompts Matter",
+  "subtitle": "Prompt Writing 101 — Like One Academy",
+  "slug": "why-prompts-matter-v3",
+  "colorTheme": "prompt-writing",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "split-screen",
+      "leftTitle": "Vague Prompt",
+      "rightTitle": "Great Prompt",
+      "leftIcon": "warning",
+      "rightIcon": "sparkle",
+      "leftItems": [
+        "\"Write me something about dogs\"",
+        "Generic output",
+        "Requires multiple retries",
+        "Feels like a search engine"
+      ],
+      "rightItems": [
+        "\"Write a 200-word blog post about golden retrievers as therapy dogs, warm and conversational tone\"",
+        "Precise, usable output",
+        "First try gets close",
+        "Feels like a creative partner"
+      ],
+      "colorTheme": "prompt-writing",
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "The difference between mediocre AI output and jaw-dropping results is not the model. It is the prompt. The same AI that gives you a boring paragraph can write you a masterpiece — if you know how to ask. In this lesson, you will learn why prompts matter more than any other skill in the AI era.",
+      "voice": "sophia",
+      "highlightWords": ["prompt", "masterpiece", "how to ask", "AI era"],
+      "pace": "hook"
+    },
+    {
+      "type": "icon-reveal",
+      "icon": "pen",
+      "label": "The Prompt Is the Skill",
+      "subtitle": "Not the model. Not the subscription. The words you choose.",
+      "colorTheme": "prompt-writing",
+      "durationS": 4
+    },
+    {
+      "type": "narration",
+      "text": "Think of it this way. An AI model is like a world-class chef. It can cook anything. But if you walk into the kitchen and say make me food, you are going to get something random. Give it a recipe — the ingredients, the technique, the plating — and you get a Michelin-star meal. The prompt is the recipe.",
+      "voice": "sophia",
+      "highlightWords": ["world-class chef", "recipe", "ingredients", "technique", "Michelin-star"],
+      "pace": "concept"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "The 5 Elements of a Great Prompt",
+      "steps": [
+        { "icon": "eye", "label": "Role", "detail": "Who should the AI be? An expert, a teacher, a critic?" },
+        { "icon": "book", "label": "Context", "detail": "What background does the AI need to know?" },
+        { "icon": "lightbulb", "label": "Task", "detail": "What exactly do you want it to produce?" },
+        { "icon": "filter", "label": "Format", "detail": "How should the output be structured?" },
+        { "icon": "check", "label": "Constraints", "detail": "What should it avoid or include?" }
+      ],
+      "colorTheme": "prompt-writing",
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Here is the beautiful secret. You do not need to be technical. You do not need to code. The best prompt writers are clear thinkers — people who can say exactly what they want in plain language. If you can explain something to a brilliant friend, you can write a great prompt. That is all it takes.",
+      "voice": "sophia",
+      "highlightWords": ["clear thinkers", "plain language", "brilliant friend", "all it takes"],
+      "pace": "concept"
+    },
+    {
+      "type": "stat-reveal",
+      "stat": "90",
+      "unit": "percent",
+      "label": "of AI users never learn prompting — and settle for mediocre results",
+      "prefix": "",
+      "suffix": "%",
+      "colorTheme": "prompt-writing",
+      "durationS": 5
+    },
+    {
+      "type": "gradient-art",
+      "text": "Master the prompt. Master the AI.",
+      "subtext": "This is the most valuable skill of the decade.",
+      "mood": "dramatic",
+      "colorTheme": "prompt-writing",
+      "durationS": 4
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Anatomy of a Great Prompt",
+      "subtext": "Breaking down the exact structure that gets results every time.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}
