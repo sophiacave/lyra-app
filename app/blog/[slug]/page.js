@@ -36,15 +36,31 @@ const TAG_COURSE_MAP = {
   'video': ['ai-images-and-video', 'ai-voice-audio'],
   'audio': ['ai-voice-audio'],
   'project-management': ['ai-project-management'],
+  'ai-education': ['claude-for-beginners', 'ai-foundations'],
+  'ai-courses': ['claude-for-beginners', 'ai-foundations'],
+  'free-courses': ['claude-for-beginners'],
+  'academy-launch': ['claude-for-beginners', 'ai-foundations', 'ai-for-business'],
+  'solopreneur': ['ai-for-business', 'ai-powered-workflows'],
+  'freelancer': ['ai-for-business', 'ai-for-personal-productivity'],
+  'governance': ['ai-ethics-and-safety', 'ai-enterprise-strategy'],
+  'chatgpt': ['claude-for-beginners', 'claude-mastery'],
+  'gemini': ['claude-for-beginners'],
+  'onboarding': ['ai-powered-workflows', 'automation-architect'],
+  'email': ['ai-for-marketing', 'ai-powered-workflows'],
+  'seo': ['ai-for-marketing', 'ai-content-studio'],
+  'content-marketing': ['ai-content-studio', 'content-generation-pipeline'],
 };
 
 function getRelatedCourses(tags) {
   if (!tags || !tags.length) return [];
   const slugSet = new Set();
   for (const tag of tags) {
-    const t = String(tag).toLowerCase();
+    const t = String(tag).toLowerCase().replace(/\s+/g, '-');
     const mapped = TAG_COURSE_MAP[t];
     if (mapped) mapped.forEach(s => slugSet.add(s));
+    // Also try the original (with spaces) for direct matches
+    const tRaw = String(tag).toLowerCase();
+    if (!mapped && TAG_COURSE_MAP[tRaw]) TAG_COURSE_MAP[tRaw].forEach(s => slugSet.add(s));
   }
   if (slugSet.size === 0) return [];
   const allCourses = getAllCourses().filter(c => c.status === 'live');
