@@ -1,0 +1,197 @@
+{
+  "title": "What Claude Can Do For You",
+  "subtitle": "Claude for Beginners — Like One Academy",
+  "slug": "what-claude-can-do",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Meet Claude. Not a search engine. Not a chatbot. Claude is an AI assistant that understands context, follows complex instructions, and generates thoughtful, nuanced responses. In this lesson, you will discover exactly what Claude can do for you.",
+      "voice": "sophia",
+      "highlightWords": [
+        "Claude",
+        "AI assistant",
+        "context",
+        "instructions"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "What Claude Is",
+      "nodes": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "label": "AI Assistant"
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "label": "Understands Context"
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "label": "Follows Instructions"
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "label": "Generates Content"
+        },
+        {
+          "x": 0.3,
+          "y": 0.4,
+          "label": "Analyzes Data"
+        },
+        {
+          "x": 0.7,
+          "y": 0.4,
+          "label": "Writes Code"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Claude can write. Emails, reports, blog posts, marketing copy, even poetry. But it does not just fill a template — it adapts to your voice, your audience, your goals. Tell it your tone and context, and it writes like it knows you.",
+      "voice": "sophia",
+      "highlightWords": [
+        "write",
+        "adapts",
+        "voice",
+        "audience",
+        "tone"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Claude can analyze. Drop in a spreadsheet, a contract, a research paper. Ask questions. Get summaries, comparisons, insights. Claude reads faster than any human and catches patterns you might miss.",
+      "voice": "sophia",
+      "highlightWords": [
+        "analyze",
+        "spreadsheet",
+        "contract",
+        "summaries",
+        "patterns"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Claude can code. JavaScript, Python, SQL, whatever you need. It explains what it writes, debugs your errors, and teaches you along the way. You do not need to be a developer to use Claude for technical work.",
+      "voice": "sophia",
+      "highlightWords": [
+        "code",
+        "JavaScript",
+        "Python",
+        "SQL",
+        "debugs"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "And here is the most powerful part — Claude can search the web, access real-time information, and work with your documents. It is not stuck in the past. It can look things up, verify facts, and bring you current data.",
+      "voice": "sophia",
+      "highlightWords": [
+        "search",
+        "real-time",
+        "documents",
+        "current data"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "Claude's Superpowers",
+      "nodes": [
+        {
+          "x": 0.15,
+          "y": 0.35,
+          "label": "Writing"
+        },
+        {
+          "x": 0.4,
+          "y": 0.25,
+          "label": "Analysis"
+        },
+        {
+          "x": 0.65,
+          "y": 0.35,
+          "label": "Coding"
+        },
+        {
+          "x": 0.85,
+          "y": 0.25,
+          "label": "Web Search"
+        },
+        {
+          "x": 0.3,
+          "y": 0.65,
+          "label": "Conversation"
+        },
+        {
+          "x": 0.7,
+          "y": 0.65,
+          "label": "Learning"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "The key to getting great results from Claude is understanding one thing — Claude works best when you give it context. The more it knows about what you need, the better it performs. This is what separates a basic prompt from a powerful one.",
+      "voice": "sophia",
+      "highlightWords": [
+        "context",
+        "better",
+        "powerful",
+        "prompt"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Your First Conversation",
+      "ctaText": "likeone.ai/academy/claude-for-beginners",
+      "durationS": 4
+    }
+  ]
+}

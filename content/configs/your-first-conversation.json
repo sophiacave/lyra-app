@@ -1,0 +1,173 @@
+{
+  "title": "Your First Conversation",
+  "subtitle": "Claude for Beginners — Like One Academy",
+  "slug": "your-first-conversation",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Your first conversation with Claude does not need to be complicated. In fact, the best way to start is simple. Just talk to it like you would talk to a smart colleague. No special syntax. No magic words. Just clear, natural language.",
+      "voice": "sophia",
+      "highlightWords": [
+        "simple",
+        "colleague",
+        "clear",
+        "natural language"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Let us start with the basics. Open Claude and type something like: Explain how solar panels work in simple terms. Claude will respond with a clear, structured explanation. No jargon unless you ask for it.",
+      "voice": "sophia",
+      "highlightWords": [
+        "basics",
+        "Claude",
+        "explain",
+        "clear",
+        "structured"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "Anatomy of a Good Prompt",
+      "nodes": [
+        {
+          "x": 0.5,
+          "y": 0.2,
+          "label": "Your Question"
+        },
+        {
+          "x": 0.2,
+          "y": 0.45,
+          "label": "Context"
+        },
+        {
+          "x": 0.5,
+          "y": 0.55,
+          "label": "Audience"
+        },
+        {
+          "x": 0.8,
+          "y": 0.45,
+          "label": "Format"
+        },
+        {
+          "x": 0.35,
+          "y": 0.75,
+          "label": "Constraints"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Now try something more useful. Give Claude a task from your real life. Write a professional email declining a meeting, but keep it friendly. Notice how Claude handles tone and nuance. It does not just generate text — it thinks about the social context.",
+      "voice": "sophia",
+      "highlightWords": [
+        "task",
+        "real life",
+        "professional email",
+        "tone",
+        "nuance"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Here is a pro tip — you can have a conversation. Claude remembers everything in the current chat. So you can say: Make it shorter. Add a line about rescheduling. Change the tone to more casual. Each message builds on the last.",
+      "voice": "sophia",
+      "highlightWords": [
+        "conversation",
+        "remembers",
+        "builds on the last"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "What about when Claude gets it wrong? It happens. The best move is to course-correct in the same conversation. Say: That is not quite right. I meant this. Claude learns from your feedback within the conversation and adjusts immediately.",
+      "voice": "sophia",
+      "highlightWords": [
+        "wrong",
+        "course-correct",
+        "feedback",
+        "adjusts"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The Feedback Loop",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "You Ask"
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "label": "Claude Responds"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "You Refine"
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "label": "Better Result"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "One last thing. Claude works across many platforms now — the web app, mobile, desktop, and even inside developer tools. Wherever you are, Claude is there. Start a conversation on your phone, continue on your laptop. The future of AI is not a destination — it is your daily companion.",
+      "voice": "sophia",
+      "highlightWords": [
+        "platforms",
+        "web",
+        "mobile",
+        "desktop",
+        "daily companion"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Check Your Understanding",
+      "ctaText": "likeone.ai/academy/claude-for-beginners",
+      "durationS": 4
+    }
+  ]
+}
