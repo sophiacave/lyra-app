@@ -1,0 +1,179 @@
+{
+  "title": "Morning Routines with AI",
+  "subtitle": "AI for Personal Productivity — Like One Academy",
+  "slug": "morning-routines-with-ai",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Most morning routines fail because they are designed for someone else's life. A five AM cold plunge sounds great on a podcast, but it does not work if you have kids, chronic fatigue, or a commute. In this lesson, you will build a morning routine that is designed for YOUR life — with AI as your planning partner.",
+      "voice": "sophia",
+      "highlightWords": [
+        "YOUR life",
+        "AI",
+        "planning partner"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The AI Morning System",
+      "nodes": [
+        {
+          "x": 0.15,
+          "y": 0.4,
+          "label": "Context Dump"
+        },
+        {
+          "x": 0.38,
+          "y": 0.4,
+          "label": "AI Plans Your Day"
+        },
+        {
+          "x": 0.62,
+          "y": 0.4,
+          "label": "You Execute"
+        },
+        {
+          "x": 0.85,
+          "y": 0.4,
+          "label": "AI Adjusts"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Step one — the sixty-second context dump. Every morning, open AI and tell it about your day. Not a formal prompt. Just talk. What meetings do you have. What is your energy level. What has been stressing you out. What do you need to accomplish. This takes sixty seconds and gives AI everything it needs to help you.",
+      "voice": "sophia",
+      "highlightWords": [
+        "sixty-second",
+        "context dump",
+        "talk",
+        "sixty seconds"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Step two — let AI plan your day. Ask it to create a realistic schedule that accounts for your energy, your obligations, and your goals. The word realistic is crucial. AI will give you an ambitious plan by default — tell it to factor in transition time, breaks, and the fact that you are a human, not a machine.",
+      "voice": "sophia",
+      "highlightWords": [
+        "realistic schedule",
+        "energy",
+        "obligations",
+        "goals",
+        "human"
+      ]
+    },
+    {
+      "type": "code",
+      "label": "Morning Routine Prompt",
+      "language": "javascript",
+      "code": "Here's my morning context:\n\nEnergy: 6/10 (slept ok, not great)\nMood: anxious about the presentation at 2pm\nSchedule: free until 11am, then meetings\nGoals: prep the presentation, exercise,\n       eat a real lunch\n\nBuild me a morning plan from now (7:30am)\nto 11am. Be realistic. Include breaks.\nI work best in 25-minute focused blocks.",
+      "highlightLines": [
+        3,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Step three is the adjustment loop. Life happens. Your kid gets sick. A meeting gets moved. You oversleep. When your plan breaks, do not abandon it — update AI. Say \"the morning plan fell apart, I now have two hours before my one PM meeting, what should I prioritize?\" AI rebalances in seconds.",
+      "voice": "sophia",
+      "highlightWords": [
+        "adjustment loop",
+        "update AI",
+        "rebalances in seconds"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Traditional Routine",
+      "rightTitle": "AI-Powered Routine",
+      "leftItems": [
+        "Same schedule every day",
+        "Breaks when life changes",
+        "Requires willpower to maintain",
+        "One-size-fits-all advice"
+      ],
+      "rightItems": [
+        "Adapts to your actual day",
+        "Adjusts when things change",
+        "Removes decision fatigue",
+        "Personalized to your context"
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "The power move is building a reusable template. Write your base context once — your typical schedule, your health constraints, your goals — and save it. Each morning, paste it in and update only what changed. This takes thirty seconds and gives you a personal productivity coach every single day for free.",
+      "voice": "sophia",
+      "highlightWords": [
+        "reusable template",
+        "thirty seconds",
+        "productivity coach",
+        "free"
+      ]
+    },
+    {
+      "type": "timeline",
+      "steps": [
+        {
+          "label": "Wake Up",
+          "description": "Open AI, paste your morning template — 30 seconds"
+        },
+        {
+          "label": "Update",
+          "description": "Add today's specific context and energy level — 30 seconds"
+        },
+        {
+          "label": "Plan",
+          "description": "AI generates your personalized morning schedule — instant"
+        },
+        {
+          "label": "Execute",
+          "description": "Follow the plan in focused blocks — 2-3 hours"
+        },
+        {
+          "label": "Adjust",
+          "description": "Tell AI when plans change, get a new plan — 10 seconds"
+        }
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "This is not about productivity hacking. This is about removing the mental overhead of figuring out what to do next — so you can actually do it. Try this tomorrow morning. One minute of context. A personalized plan. A better start to your day.",
+      "voice": "sophia",
+      "highlightWords": [
+        "removing mental overhead",
+        "one minute",
+        "personalized plan",
+        "better start"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — Email and Communication",
+      "ctaText": "likeone.ai/academy/ai-for-personal-productivity",
+      "durationS": 4
+    }
+  ]
+}

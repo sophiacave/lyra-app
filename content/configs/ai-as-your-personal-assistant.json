@@ -1,0 +1,179 @@
+{
+  "title": "AI as Your Personal Assistant",
+  "subtitle": "AI for Personal Productivity — Like One Academy",
+  "slug": "ai-as-your-personal-assistant",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "You already have the most capable assistant ever built. It is sitting on your phone, your laptop, ready to go. But most people use AI like a search engine — asking one question and moving on. In this lesson, you will learn how to treat AI as a personal assistant that handles the mental load of your daily life.",
+      "voice": "sophia",
+      "highlightWords": [
+        "most capable assistant",
+        "personal assistant",
+        "mental load"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "What AI Can Handle",
+      "nodes": [
+        {
+          "x": 0.15,
+          "y": 0.35,
+          "label": "Email Drafting"
+        },
+        {
+          "x": 0.35,
+          "y": 0.35,
+          "label": "Scheduling"
+        },
+        {
+          "x": 0.55,
+          "y": 0.35,
+          "label": "Research"
+        },
+        {
+          "x": 0.75,
+          "y": 0.35,
+          "label": "Meal Planning"
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "label": "Decision Support"
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "label": "Learning"
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "label": "Organization"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "The key mindset shift is this — stop asking AI single questions and start giving it ongoing context. Instead of \"what should I eat tonight,\" say \"I am trying to eat more protein, I have chicken, rice, and vegetables in the fridge, I have thirty minutes to cook, and I am tired. What should I make?\" That extra context turns a generic answer into genuinely helpful advice.",
+      "voice": "sophia",
+      "highlightWords": [
+        "ongoing context",
+        "extra context",
+        "genuinely helpful"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "AI excels at three categories of personal tasks. First, communication — drafting emails, texts, and messages in your tone. Second, planning — meal plans, travel itineraries, daily schedules, project breakdowns. Third, thinking — pros and cons lists, decision frameworks, brainstorming solutions to problems you are stuck on.",
+      "voice": "sophia",
+      "highlightWords": [
+        "communication",
+        "planning",
+        "thinking"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Using AI Like Search",
+      "rightTitle": "Using AI Like an Assistant",
+      "leftItems": [
+        "One question at a time",
+        "No personal context",
+        "Generic responses",
+        "Start over every conversation"
+      ],
+      "rightItems": [
+        "Ongoing conversation with context",
+        "Knows your preferences and constraints",
+        "Tailored advice for your situation",
+        "Builds on what it already knows about you"
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Here is a technique that changes everything — the context dump. At the start of your day, spend sixty seconds telling AI about your life. Your schedule. Your energy level. What is on your plate. Your goals for the week. Then ask it to help you plan. The output will shock you with how specific and useful it is.",
+      "voice": "sophia",
+      "highlightWords": [
+        "context dump",
+        "sixty seconds",
+        "schedule",
+        "energy level",
+        "goals"
+      ]
+    },
+    {
+      "type": "code",
+      "label": "Daily Assistant Prompt",
+      "language": "javascript",
+      "code": "Good morning. Here's my situation today:\n- Back-to-back meetings 9am to 1pm\n- Need to finish the Q2 report by 5pm\n- Feeling low energy (bad sleep)\n- Picking up kids at 3:30\n- Trying to exercise 3x this week\n\nHelp me plan my day realistically.\nPrioritize the report. Suggest when to\nexercise and what type given my energy.",
+      "highlightLines": [
+        1,
+        8,
+        9,
+        10
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "The goal is not to outsource your life to AI. It is to offload the mental overhead — the planning, the organizing, the \"what should I do next\" paralysis. When AI handles the logistics, you have more brain space for the things that actually matter. More presence with your family. More focus on creative work. Less decision fatigue.",
+      "voice": "sophia",
+      "highlightWords": [
+        "mental overhead",
+        "brain space",
+        "presence",
+        "focus",
+        "decision fatigue"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "The best personal assistant doesn't do your life for you. It clears the path so you can live it.",
+      "attribution": "— Like One Academy",
+      "durationS": 4
+    },
+    {
+      "type": "narration",
+      "text": "In the next lesson, you will build an AI-powered morning routine — a sixty-second daily planning habit that sets up your entire day. Start thinking about what you typically struggle with in the morning. AI is about to make it easier.",
+      "voice": "sophia",
+      "highlightWords": [
+        "morning routine",
+        "sixty-second",
+        "daily planning"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — Morning Routines with AI",
+      "ctaText": "likeone.ai/academy/ai-for-personal-productivity",
+      "durationS": 4
+    }
+  ]
+}
