@@ -1,0 +1,160 @@
+{
+  "title": "What Is a Neuron?",
+  "subtitle": "AI Foundations — Like One Academy",
+  "slug": "what-is-a-neuron",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Every AI system you have ever used — Claude, GPT, image generators, self-driving cars — they all start with the same fundamental building block. A neuron. Not a biological neuron in your brain, but a mathematical one. And it is beautifully simple.",
+      "voice": "sophia",
+      "highlightWords": [
+        "neuron",
+        "mathematical",
+        "simple",
+        "building block"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The Artificial Neuron",
+      "nodes": [
+        {
+          "x": 0.15,
+          "y": 0.4,
+          "label": "Inputs"
+        },
+        {
+          "x": 0.35,
+          "y": 0.3,
+          "label": "Weights"
+        },
+        {
+          "x": 0.55,
+          "y": 0.4,
+          "label": "Sum"
+        },
+        {
+          "x": 0.75,
+          "y": 0.4,
+          "label": "Activation"
+        },
+        {
+          "x": 0.9,
+          "y": 0.4,
+          "label": "Output"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Here is how it works. A neuron takes in numbers. Each number gets multiplied by a weight — think of weights as importance levels. The neuron adds everything up, then passes the result through an activation function. If the total is high enough, the neuron fires. If not, it stays quiet.",
+      "voice": "sophia",
+      "highlightWords": [
+        "numbers",
+        "weight",
+        "importance",
+        "activation",
+        "fires"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "This is exactly how your brain works, just simplified. Your biological neurons receive signals from other neurons, and if the combined signal is strong enough, they fire and send a signal forward. The artificial version does the same thing with math.",
+      "voice": "sophia",
+      "highlightWords": [
+        "brain",
+        "signals",
+        "strong enough",
+        "fire",
+        "math"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "Biological vs Artificial",
+      "nodes": [
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "label": "Your Brain"
+        },
+        {
+          "x": 0.25,
+          "y": 0.55,
+          "label": "86 Billion Neurons"
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "label": "AI Model"
+        },
+        {
+          "x": 0.75,
+          "y": 0.55,
+          "label": "Millions of Parameters"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "One neuron alone cannot do much. But when you connect thousands or millions of neurons together in layers, something magical happens. The network starts to learn. It starts to recognize patterns. It starts to understand. This is the foundation of deep learning — and every AI tool you use today.",
+      "voice": "sophia",
+      "highlightWords": [
+        "layers",
+        "learn",
+        "patterns",
+        "understand",
+        "deep learning"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "The weights are the secret. When an AI trains, it adjusts millions of weights until the network produces the right answers. Training is just finding the best weights. That is it. The entire intelligence of a model like Claude comes down to trillions of carefully tuned numbers.",
+      "voice": "sophia",
+      "highlightWords": [
+        "weights",
+        "trains",
+        "adjusts",
+        "right answers",
+        "trillions"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Build a Network",
+      "ctaText": "likeone.ai/academy/ai-foundations",
+      "durationS": 4
+    }
+  ]
+}

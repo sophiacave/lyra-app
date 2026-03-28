@@ -1,0 +1,176 @@
+{
+  "title": "Build a Network",
+  "subtitle": "AI Foundations — Like One Academy",
+  "slug": "build-a-network",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "In the last lesson, you met the neuron. Now we are going to connect them together. Because a single neuron is like a single lightbulb — useful, but limited. A network of neurons? That is a city that never sleeps.",
+      "voice": "sophia",
+      "highlightWords": [
+        "connect",
+        "neuron",
+        "network",
+        "city"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "Neural Network Layers",
+      "nodes": [
+        {
+          "x": 0.15,
+          "y": 0.5,
+          "label": "Input Layer"
+        },
+        {
+          "x": 0.35,
+          "y": 0.35,
+          "label": "Hidden Layer 1"
+        },
+        {
+          "x": 0.55,
+          "y": 0.65,
+          "label": "Hidden Layer 2"
+        },
+        {
+          "x": 0.75,
+          "y": 0.35,
+          "label": "Hidden Layer 3"
+        },
+        {
+          "x": 0.9,
+          "y": 0.5,
+          "label": "Output Layer"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "A neural network has layers. The input layer receives raw data — words, pixels, numbers. The hidden layers transform that data step by step, finding increasingly abstract patterns. The output layer gives you the final answer — a classification, a prediction, a generated sentence.",
+      "voice": "sophia",
+      "highlightWords": [
+        "layers",
+        "input",
+        "hidden",
+        "output",
+        "patterns"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Think of it like cooking. The input layer is your raw ingredients. Each hidden layer is a step in the recipe — chopping, mixing, heating. The output layer is the finished dish. More layers means more sophisticated recipes.",
+      "voice": "sophia",
+      "highlightWords": [
+        "cooking",
+        "ingredients",
+        "recipe",
+        "layers",
+        "sophisticated"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "This is why we call it deep learning. Deep does not mean smart — it means many layers. A shallow network with two layers can learn simple patterns. A deep network with dozens of layers can learn to write poetry, recognize faces, and understand language.",
+      "voice": "sophia",
+      "highlightWords": [
+        "deep learning",
+        "many layers",
+        "simple patterns",
+        "poetry",
+        "language"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "What Each Layer Learns",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "Layer 1: Edges"
+        },
+        {
+          "x": 0.4,
+          "y": 0.5,
+          "label": "Layer 2: Shapes"
+        },
+        {
+          "x": 0.6,
+          "y": 0.3,
+          "label": "Layer 3: Objects"
+        },
+        {
+          "x": 0.8,
+          "y": 0.5,
+          "label": "Layer 4: Concepts"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Training a network means feeding it thousands or millions of examples. For each example, the network makes a prediction, checks if it was right, and adjusts its weights to be a little more accurate next time. This process repeats millions of times until the network gets good.",
+      "voice": "sophia",
+      "highlightWords": [
+        "training",
+        "examples",
+        "prediction",
+        "adjusts",
+        "weights"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "The beautiful thing is — nobody programs these patterns by hand. The network discovers them on its own through training. This is what makes AI fundamentally different from traditional software. It learns from data instead of following rules someone wrote.",
+      "voice": "sophia",
+      "highlightWords": [
+        "discovers",
+        "training",
+        "learns",
+        "data",
+        "rules"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Neural Net Quiz",
+      "ctaText": "likeone.ai/academy/ai-foundations",
+      "durationS": 4
+    }
+  ]
+}

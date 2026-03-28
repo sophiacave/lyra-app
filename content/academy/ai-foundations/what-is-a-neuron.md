@@ -4,6 +4,7 @@ course: "ai-foundations"
 order: 1
 type: "lesson"
 free: true
+videoId: "f6bb7956-0ab7-4882-999c-0ed0e18437d4"
 ---<div class="wrap">
 
 <nav class="local-nav">
