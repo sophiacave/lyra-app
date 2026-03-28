@@ -159,7 +159,8 @@ function TitleCard({ title, subtitle, durationInFrames }) {
 // ── Text Reveal (Narration Scene) ──
 // Left-aligned body text with word-level animation.
 // Rule of thirds: text lives in the left 2/3, right 1/3 is breathing room.
-function NarrationScene({ text, highlightWords = [], durationInFrames }) {
+// When sentenceTiming is provided (from TTS), reveals sync to audio.
+function NarrationScene({ text, highlightWords = [], durationInFrames, sentenceTiming }) {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -190,9 +191,14 @@ function NarrationScene({ text, highlightWords = [], durationInFrames }) {
           gap: SPACE['2xl'],
         }}>
           {sentences.map((sentence, si) => {
-            const sentenceDelay = si * 0.6; // Stagger sentences
-            const timePerSentence = (durationInFrames / fps) / sentences.length;
-            const sentenceStartDelay = si * timePerSentence;
+            // Use TTS timing if available, otherwise distribute evenly
+            let sentenceStartDelay;
+            if (sentenceTiming && sentenceTiming[si]) {
+              sentenceStartDelay = sentenceTiming[si].offset_ms / 1000;
+            } else {
+              const timePerSentence = (durationInFrames / fps) / sentences.length;
+              sentenceStartDelay = si * timePerSentence;
+            }
 
             return (
               <WordReveal
@@ -419,6 +425,7 @@ export function LessonVideo({ title, subtitle, sections }) {
             text={section.text}
             highlightWords={section.highlightWords || []}
             durationInFrames={duration}
+            sentenceTiming={section.sentenceTiming}
           />
           {section.audioSrc && <Audio src={section.audioSrc} />}
         </Sequence>

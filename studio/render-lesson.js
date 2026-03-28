@@ -105,6 +105,15 @@ async function renderLesson(config) {
         audioResults.push({ index: i, ...result });
         section.durationS = Math.ceil(result.duration_s) + 1; // Add 1s buffer
         section.audioSrc = result.audio_path;
+
+        // Read sentence timing for animation sync
+        if (result.timing_path && existsSync(result.timing_path)) {
+          const timing = JSON.parse(readFileSync(result.timing_path, 'utf-8'));
+          if (timing.sentences) {
+            section.sentenceTiming = timing.sentences; // [{offset_ms, duration_ms, text}]
+          }
+        }
+
         console.log(`  ✅ Segment ${i}: ${result.duration_s}s`);
       }
     }
