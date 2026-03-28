@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import LessonNav from '../../../components/academy/LessonNav';
 import LessonComplete from '../../../components/academy/LessonComplete';
 import ImmersiveLesson from '../../../components/console/ImmersiveLesson';
+import VideoPlayer from '../../../components/academy/VideoPlayer';
 import { site } from '@/lib/site-config';
 import fs from 'fs';
 import path from 'path';
@@ -172,6 +173,9 @@ export default async function LessonPage({ params }) {
         prev={lesson.prev}
         next={lesson.next}
         courseTitle={course?.title}
+        videoNode={lesson.videoId ? (
+          <VideoPlayer videoId={lesson.videoId} title={lesson.title} />
+        ) : null}
         completionNode={
           <LessonComplete courseSlug={courseSlug} lessonSlug={lessonSlug} />
         }

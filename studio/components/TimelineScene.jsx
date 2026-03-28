@@ -100,7 +100,7 @@ export function TimelineScene({
               transform: `translateX(${interpolate(textProgress, [0, 1], [20, 0])}px)`,
             }}>
               <span style={typeStyle('headline', TEXT_PRIMARY)}>
-                {step.title || step}
+                {step.title || step.label || String(step)}
               </span>
               {step.description && (
                 <p style={{

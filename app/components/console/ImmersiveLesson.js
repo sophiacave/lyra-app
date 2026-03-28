@@ -190,6 +190,7 @@ export default function ImmersiveLesson({
   courseTitle = '',
   completionNode = null,
   navNode = null,
+  videoNode = null,
 }) {
   const [consoleState, setConsoleState] = useState('idle');
   const [consoleExpanded, setConsoleExpanded] = useState(exercises.length > 0);
@@ -267,6 +268,11 @@ export default function ImmersiveLesson({
   return (
     <div className="immersive-lesson" ref={scrollRef}>
       <XPToast xp={xpToast.xp} show={xpToast.show} />
+      {/* Video player — above lesson content */}
+      {videoNode && !showGate && (
+        <div className="immersive-video">{videoNode}</div>
+      )}
+
       {/* Content flows full-width inside the console frame */}
       <div className={`immersive-content ${showGate ? 'lo-content-gated' : ''}`}>
         <div ref={contentRef} className="lesson-content immersive-lesson-body">
