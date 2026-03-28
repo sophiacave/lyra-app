@@ -29,6 +29,11 @@ import { AccentLine } from '../components/AccentLine.jsx';
 import { SceneTransition } from '../components/SceneTransition.jsx';
 import { KineticType, WordReveal } from '../components/KineticType.jsx';
 import { GlassPanel } from '../components/GlassPanel.jsx';
+import { CodeBlock } from '../components/CodeBlock.jsx';
+import { QuoteCard } from '../components/QuoteCard.jsx';
+import { ComparisonSplit } from '../components/ComparisonSplit.jsx';
+import { TimelineScene } from '../components/TimelineScene.jsx';
+import { OutroScene } from '../components/OutroScene.jsx';
 
 // ── Title Card ──
 // Apple keynote style: centered, generous space, gradient accent, brand whisper.
@@ -431,6 +436,111 @@ export function LessonVideo({ title, subtitle, sections }) {
             connections={section.connections || []}
             durationInFrames={duration}
           />
+        </Sequence>
+      );
+      currentFrame += duration;
+
+    } else if (section.type === 'code') {
+      const duration = fps * (section.durationS || 8);
+
+      sequences.push(
+        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
+          <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4} slideDirection="up">
+            <AbsoluteFill>
+              <DepthBackground lightPosition="top-right" lightColor={ACCENT_BLUE} lightIntensity={0.06} gridOpacity={0.015} orbCount={2} />
+              <CodeBlock
+                code={section.code}
+                language={section.language}
+                title={section.label}
+                highlightLines={section.highlightLines || []}
+                x={GRID.margin.content - 40}
+                y={GRID.margin.outer + 40}
+                width={VIDEO_WIDTH - GRID.margin.content * 2 + 80}
+              />
+              <AmbientParticles count={5} opacity={0.06} speed={0.2} />
+              <Vignette intensity={0.4} radius={80} />
+              <FilmGrain intensity={0.03} />
+            </AbsoluteFill>
+          </SceneTransition>
+        </Sequence>
+      );
+      currentFrame += duration;
+
+    } else if (section.type === 'quote') {
+      const duration = fps * (section.durationS || 6);
+
+      sequences.push(
+        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
+          <SceneTransition fadeInDuration={0.6} fadeOutDuration={0.5}>
+            <AbsoluteFill>
+              <DepthBackground lightPosition="center" lightColor={ACCENT_WARM} lightIntensity={0.08} gridOpacity={0} orbCount={2} orbColors={[ACCENT_WARM, ACCENT_PURPLE]} />
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <QuoteCard quote={section.quote} attribution={section.attribution} accentColor={section.accentColor || ACCENT_PURPLE} />
+              </div>
+              <Vignette intensity={0.5} radius={70} />
+              <FilmGrain intensity={0.03} />
+            </AbsoluteFill>
+          </SceneTransition>
+        </Sequence>
+      );
+      currentFrame += duration;
+
+    } else if (section.type === 'comparison') {
+      const duration = fps * (section.durationS || 8);
+
+      sequences.push(
+        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
+          <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4}>
+            <AbsoluteFill>
+              <DepthBackground lightPosition="center" lightColor={ACCENT_PURPLE} lightIntensity={0.05} gridOpacity={0.015} orbCount={2} />
+              <ComparisonSplit
+                leftTitle={section.leftTitle}
+                rightTitle={section.rightTitle}
+                leftItems={section.leftItems || []}
+                rightItems={section.rightItems || []}
+                leftColor={section.leftColor}
+                rightColor={section.rightColor}
+              />
+              <Vignette intensity={0.4} radius={80} />
+              <FilmGrain intensity={0.03} />
+            </AbsoluteFill>
+          </SceneTransition>
+        </Sequence>
+      );
+      currentFrame += duration;
+
+    } else if (section.type === 'timeline') {
+      const duration = fps * (section.durationS || 8);
+
+      sequences.push(
+        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
+          <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4} slideDirection="up">
+            <AbsoluteFill>
+              <DepthBackground lightPosition="left" lightColor={ACCENT_CYAN} lightIntensity={0.06} gridOpacity={0.02} orbCount={2} />
+              <TimelineScene steps={section.steps} accentColor={section.accentColor || ACCENT_PURPLE} />
+              <AmbientParticles count={6} opacity={0.07} speed={0.2} />
+              <Vignette intensity={0.4} radius={80} />
+              <FilmGrain intensity={0.03} />
+            </AbsoluteFill>
+          </SceneTransition>
+        </Sequence>
+      );
+      currentFrame += duration;
+
+    } else if (section.type === 'outro') {
+      const duration = fps * (section.durationS || 4);
+
+      sequences.push(
+        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
+          <SceneTransition fadeInDuration={0.7} fadeOutDuration={0.5}>
+            <AbsoluteFill>
+              <DepthBackground lightPosition="center" lightColor={ACCENT_PURPLE} lightIntensity={0.1} gridOpacity={0} orbCount={3} />
+              <OutroScene heading={section.heading} subtext={section.subtext} ctaText={section.ctaText} />
+              <AmbientParticles count={10} opacity={0.12} speed={0.15} />
+              <Vignette intensity={0.5} radius={70} />
+              <FilmGrain intensity={0.03} />
+            </AbsoluteFill>
+          </SceneTransition>
         </Sequence>
       );
       currentFrame += duration;
