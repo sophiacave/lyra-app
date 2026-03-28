@@ -3,6 +3,7 @@ import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import PromptConsole from '../academy/PromptConsole';
 import EnrollCTA from '../academy/EnrollCTA';
 import { QuizMC, MatchConnect, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation } from '../learn';
+import LearnErrorBoundary from '../learn/LearnErrorBoundary';
 
 // Registry of learn components that can be embedded in lesson HTML
 const LEARN_COMPONENTS = {
@@ -273,11 +274,12 @@ export default function ImmersiveLesson({
             seg.type === 'html' ? (
               <div key={`html-${i}`} dangerouslySetInnerHTML={{ __html: seg.html }} />
             ) : (
-              <seg.Component
-                key={`${seg.componentName}-${i}`}
-                {...seg.props}
-                onXP={(xp) => handleXP(xp, seg.componentName)}
-              />
+              <LearnErrorBoundary key={`${seg.componentName}-${i}`} name={seg.componentName}>
+                <seg.Component
+                  {...seg.props}
+                  onXP={(xp) => handleXP(xp, seg.componentName)}
+                />
+              </LearnErrorBoundary>
             )
           )}
         </div>
