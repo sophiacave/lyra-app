@@ -59,6 +59,14 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match the concept to its meaning.</h2>
+  <p class="section-text">Connect each ROI term to its practical definition. These are the building blocks of every calculation in this lesson.</p>
+
+  <div data-learn="MatchConnect" data-props='{"title":"ROI Concepts — Match Up","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Net Annual Savings","right":"Gross savings minus all tool and hidden costs over 12 months"},{"left":"Break-even Point","right":"The number of days until savings cover your monthly tool cost"},{"left":"Conservative Estimate","right":"25-35% automation rate with a 6-week ramp to full productivity"},{"left":"Hidden Costs","right":"Setup time, training, integration work, and the learning curve dip"},{"left":"ROI Percentage","right":"Net savings divided by tool costs, multiplied by 100"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 4</span>
   <h2 class="section-title">ROI priorities.</h2>
   <p class="section-text">When you sit down to calculate your AI ROI, not all inputs carry equal weight. Some factors have much more influence on your final number than others. Put these in order from most to least impactful.</p>

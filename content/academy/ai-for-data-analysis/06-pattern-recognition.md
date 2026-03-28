@@ -75,6 +75,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <h2 class="section-title">Learn the Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Pattern Recognition Concepts","cards":[{"front":"Trend","back":"A directional pattern over time — revenue growing 5% month-over-month, support tickets spiking every Monday, open rates declining since September"},{"front":"Outlier","back":"A data point that doesn\\'t fit the pattern — could be a data entry error or the most interesting finding in your dataset"},{"front":"Correlation","back":"A relationship between two variables — when one goes up the other moves too — but correlation does NOT prove causation"},{"front":"Confounding Variable","back":"A hidden third factor that causes two things to appear related — like heat causing both ice cream sales and drowning rates to rise"},{"front":"Segmented Analysis","back":"Breaking overall patterns down by group (region, customer type, product) — a flat average often hides two segments moving in opposite directions"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Pattern Types</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Three Types of Data Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Trends","right":"Directional patterns over time — revenue growing 5% monthly"},{"left":"Outliers","right":"Data points that don&#39;t fit the pattern — errors or the most interesting find"},{"left":"Correlations","right":"Relationships between variables — when X goes up, Y goes up too"},{"left":"Confounding variable","right":"A hidden third factor causing two things to appear related"}]}'></div>

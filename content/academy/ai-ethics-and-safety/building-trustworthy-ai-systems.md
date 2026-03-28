@@ -127,6 +127,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match each trustworthy AI principle to its meaning.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"6 Principles of Trustworthy AI","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Human Oversight","right":"Humans can always intervene, correct, or override AI decisions"},{"left":"Explainability","right":"You can understand WHY the AI made a decision — not just that it did"},{"left":"Fairness","right":"The system is tested for bias across different groups and disparate impacts are mitigated"},{"left":"Privacy by Design","right":"Data protection is built into the system from day one, not added as an afterthought"},{"left":"Accountability","right":"A specific person or team owns the outcome if the AI causes harm"}]}'></div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

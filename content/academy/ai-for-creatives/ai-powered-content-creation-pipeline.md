@@ -151,6 +151,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Content Pipeline Key Concepts","cards":[{"front":"Style Anchor","back":"A reusable description of your unique writing voice, created by having AI analyze samples of your work. It ensures every draft sounds like you, not a chatbot."},{"front":"Batch Creation","back":"Producing multiple pieces of content in a single focused session rather than one at a time. Batching by theme or format keeps your voice consistent and your workflow efficient."},{"front":"Repurposing","back":"Transforming one finished piece into multiple formats for different platforms. A blog post becomes a Twitter thread, a newsletter intro, an Instagram caption, and more -- create once, distribute everywhere."},{"front":"The 5-Point Quality Gate","back":"A pre-publish checklist: voice check (sounds like you), value check (worth bookmarking), fact check (claims are accurate), platform check (formatted correctly), cringe check (no regrets if it goes viral)."},{"front":"Evergreen Content","back":"Content with no expiration date -- how-tos, frameworks, principles, FAQs. It fills gaps in your publishing schedule when you\\\'re sick, traveling, or need a creative break."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="SortStack" data-props='{"title":"Order the Content Creation Pipeline","instruction":"Drag to arrange the stages of a content creation pipeline from first to last.","items":["Ideation: generate angles, hooks, and concept options","Outline: structure the piece with sections and key points","Draft: produce the full rough draft using your style anchor","Edit: cut, tighten, fact-check, and flag AI-sounding language","Format: adapt for platform, add metadata and visuals","Publish: go live and repurpose across channels"]}'></div>
 </div>
 

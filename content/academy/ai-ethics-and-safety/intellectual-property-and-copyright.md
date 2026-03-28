@@ -108,6 +108,13 @@ free: false
   </ul>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the key IP principles for AI content.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"AI and Intellectual Property","cards":[{"front":"Human Authorship Requirement","back":"The U.S. Copyright Office holds that copyright requires human authorship. Pure AI-generated content with no meaningful human creative input generally cannot be copyrighted."},{"front":"AI-Assisted Work","back":"Content substantially created by a human with AI assistance — where the human made creative decisions about selection, arrangement, and editing — can likely be copyrighted."},{"front":"Avoiding IP Infringement","back":"Do not ask AI to reproduce copyrighted text, be cautious with \"in the style of\" prompts, and never feed others\\' proprietary content into AI without permission."},{"front":"Commercial Use Best Practice","back":"Always add meaningful human editing, keep records of your creative process (prompts, edits, direction), and review your AI tool\\'s terms of service."},{"front":"The Core Principle","back":"The more human creativity in the process, the stronger your IP position — both legally and ethically. Transform, edit, and add to AI output."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

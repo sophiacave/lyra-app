@@ -44,6 +44,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Building the Business Case — Key Concepts","cards":[{"front":"Conservative ROI Threshold","back":"Calculate ROI at a 20% improvement, not 80%. If the investment pays off at 20%, you have a robust case. Everything above that is upside."},{"front":"Total Cost of Ownership (TCO)","back":"Licensing, infrastructure, integration, training, ongoing maintenance, and opportunity cost of the team building it. AI projects get expensive by month six without full accounting."},{"front":"Pilot Design Principles","back":"A clearly defined problem, a measurable success metric, and a 90-day timeline. Win small, then scale with evidence."},{"front":"Stakeholder Mapping","back":"Four audiences need four narratives: CEO wants competitive advantage, COO wants efficiency, CTO wants architectural fit, CFO wants payback period."},{"front":"Credibility as Strategy","back":"Being honest about what you don\\\'t know earns more executive trust than promising the moon. Acknowledge uncertainty and show a learning plan."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Business Case Stakeholders — Match Each to What They Want","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"CEO","right":"Competitive advantage and strategic differentiation"},{"left":"COO","right":"Efficiency gains and operational improvement"},{"left":"CTO","right":"Architectural fit and technical viability"},{"left":"CFO","right":"Payback period and total cost of ownership"}]}'></div>
 </div>
 

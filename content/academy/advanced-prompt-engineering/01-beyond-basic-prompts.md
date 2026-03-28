@@ -94,6 +94,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"The Five Levers — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Role","right":"Who the AI should be — expertise and persona"},{"left":"Context","right":"Background the AI needs about your situation"},{"left":"Task","right":"The specific deliverable you want produced"},{"left":"Format","right":"How the output should look — length, structure, style"},{"left":"Constraints","right":"What the AI should avoid or never do"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="QuizMC" data-props='{"title":"Check Your Understanding","questions":[{"q":"What is the key difference between a weak prompt and an engineered prompt?","options":["Engineered prompts are longer","Engineered prompts specify role, context, task, format, and constraints","Engineered prompts always use bullet points","Engineered prompts ask more politely"],"correct":1,"explanation":"An engineered prompt provides all five levers — role, context, task, format, and constraints — giving the AI everything it needs to deliver precisely what you want."},{"q":"According to the lesson, what should you do FIRST when rewriting a weak prompt?","options":["Make it shorter","Add more examples","Apply all five levers: role, context, task, format, and constraints","Use simpler language"],"correct":2,"explanation":"The five-lever framework (role, context, task, format, constraints) is the core technique taught in this lesson for upgrading any prompt."},{"q":"Why does the weak email prompt fail? — “Write me an email about the project update.”","options":["It is too short","It lacks role, context, specific task, format guidance, and constraints","It uses informal language","It does not mention a deadline"],"correct":1,"explanation":"The weak prompt leaves every important dimension undefined — who the AI is, who the audience is, what to include, how long, and what to avoid. The AI has to guess all of it."}]}' ></div>
 </div>
 

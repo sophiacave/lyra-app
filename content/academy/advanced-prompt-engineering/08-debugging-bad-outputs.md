@@ -62,6 +62,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Debugging Bad Outputs — Key Concepts","cards":[{"front":"What are the 5 failure modes of AI output?","back":"Too vague, wrong format, wrong tone, hallucination, and ignored instructions — each has a specific diagnostic fix."},{"front":"What is the 4-step debug loop?","back":"Identify (what\\\'s wrong), Diagnose (which failure mode), Hypothesize (what in the prompt caused it), Fix (make ONE targeted change and test again)."},{"front":"Why change only one thing at a time when debugging?","back":"If you rewrite the entire prompt, you won\\\'t know which change fixed the problem — or what might have broken something else. One targeted change per iteration."},{"front":"What is the self-debug technique?","back":"Asking the AI to explain its interpretation of your instructions and where it made assumptions — this surfaces hidden misinterpretations you didn\\\'t know existed."},{"front":"What is a failure log and why keep one?","back":"A record of what went wrong and what fixed it. Over time it builds intuition for writing good prompts the first time and reveals your personal patterns of mistakes."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Failure Modes — Match the Problem to Its Fix","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Too Vague","right":"Add specifics: name the audience, context, and show an example of good output"},{"left":"Wrong Format","right":"Be explicit about format and use the Output First technique to anchor structure"},{"left":"Hallucination","right":"Ask it to flag confidence levels and say ‘if unsure, say so’"},{"left":"Ignored Instructions","right":"Move critical rules to the top and emphasize with IMPORTANT: or NEVER:"}]}'></div>
 </div>
 

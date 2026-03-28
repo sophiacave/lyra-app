@@ -156,6 +156,11 @@ free: false
   </div>
 </div>
 
+<!-- MATCH CONNECT: VENDOR RED FLAGS TO MEANINGS -->
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Vendor Red Flags Decoded","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"\"Our AI is proprietary\"","right":"Hiding which foundation model they actually use — likely a commodity wrapper"},{"left":"No pilot option","right":"The vendor isn\\u0027t confident their product works on real-world data"},{"left":"\"We replace your team\"","right":"Selling a fantasy — responsible AI augments teams, never eliminates them"},{"left":"No SOC 2 certification","right":"Not ready for enterprise data — a non-negotiable security baseline"},{"left":"ROI claims without methodology","right":"Unverifiable marketing — demand named companies and specific metrics"}]}'></div>
+</div>
+
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Vendor Evaluation Criteria","cards":[{"front":"SOC 2 Type II","back":"The minimum security certification required before sharing enterprise data with any AI vendor. Equivalent standards: ISO 27001, FedRAMP for government."},{"front":"Pilot / Proof of Concept","back":"A 30-90 day trial on YOUR real data. Any confident vendor offers this. No pilot = no deal."},{"front":"Data Ownership Clause","back":"A contract term stating your data stays yours, cannot be used for model training without written consent, and must be fully deleted on termination."},{"front":"Performance SLA","back":"Contractual minimums for accuracy, uptime, and response time, tied to service credits or termination rights if not met."},{"front":"Model Change Notification","back":"A contract clause giving you 60 days notice and testing rights before a vendor switches the underlying AI model powering their product."}]}'></div>

@@ -27,6 +27,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review before you begin.</h2>
+  <p class="section-text">Flip through these cards to refresh the core ideas from every lesson. If any concept feels unfamiliar, revisit that lesson before taking the quiz.</p>
+
+  <div data-learn="FlashDeck" data-props='{"title":"Course Review — Key Concepts","cards":[{"front":"ROI Formula","back":"(Hours saved/week x hourly cost x 52) minus annual tool costs = net savings. Divide net savings by tool costs and multiply by 100 for ROI%. Always use conservative automation rates (30-40%)."},{"front":"Build vs Buy","back":"Default to buying (SaaS or No-Code) unless you have a unique workflow no existing tool covers. Calculate total cost of ownership for both options over 12 months before deciding."},{"front":"AI Policy Framework","back":"Every AI policy needs five pillars: approved tools list, data classification rules, human review requirements, incident response process, and regular audit schedule. No policy = no protection."},{"front":"The Four Success Metrics","back":"Time Saved, Output Increase, Cost Reduced, and Quality Score. Track all four together — strong numbers in three with no data on the fourth is a blind spot that will hurt you."},{"front":"First-Week Principle","back":"Start with one tool, three real tasks, and documented results. Evidence from actual use beats any amount of research or planning. Build your AI strategy from proof, not theory."}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match each scenario to the right response.</h2>
+  <p class="section-text">These pairings test whether you can apply course concepts to real situations. Get these right and the quiz will feel straightforward.</p>
+
+  <div data-learn="MatchConnect" data-props='{"title":"Scenario to Response","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Employee uploads client data to unapproved AI tool","right":"Enforce policy review process before allowing use"},{"left":"AI output volume tripled but clients complain about quality","right":"Pause volume growth and audit the human review step"},{"left":"Competitor drops prices 30% using AI","right":"Audit your own workflows and build a 30-day adoption plan"},{"left":"Three strong metrics but Quality Score is undefined","right":"Establish quality tracking immediately — it validates the other three"},{"left":"No-Code tool covers 80% of needs at 1/10th the custom build cost","right":"Start with No-Code and only pay custom for what it can\\\'t do"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Final Assessment</span>
   <h2 class="section-title">Ten questions. No time limit. Think it through.</h2>
   <p class="section-text">This is the capstone assessment for the Business AI course. Each question is scenario-based — there is no memorization required. Read the scenario, apply what you have learned, and pick the best answer. Detailed explanations follow every question so you can understand any mistake immediately and carry the lesson forward.</p>

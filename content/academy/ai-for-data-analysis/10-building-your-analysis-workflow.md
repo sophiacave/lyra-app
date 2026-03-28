@@ -88,6 +88,18 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <h2 class="section-title">Learn the Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Analysis Workflow Essentials","cards":[{"front":"The Six-Stage Pipeline","back":"Frame the question → Ingest data → Clean → Analyze → Visualize → Report. This handles any data analysis project from start to finish"},{"front":"Quick Analysis Template","back":"A reusable prompt for fast results: provide data type, time period, columns, and ask for trends, top insights, red flags, and one action — under 300 words"},{"front":"Deep Dive Template","back":"A comprehensive prompt: data quality assessment, trends, correlations, outliers, segmentation, visualization of top findings, and executive summary"},{"front":"Prompt Library","back":"A saved collection of prompts that worked well — grows more valuable over time and turns hours of analysis into minutes"},{"front":"Proactive Analysis","back":"Scheduling regular reviews (weekly revenue, monthly customers, quarterly strategy) instead of waiting until someone asks — where the real value lives"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match the Pipeline Stage</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"The Analysis Pipeline","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Frame the question","right":"Use the SCOPE method to define exactly what you need to know"},{"left":"Ingest the data","right":"Get your CSV or spreadsheet into AI with column descriptions"},{"left":"Clean the data","right":"Fix duplicates, standardize formats, handle missing values"},{"left":"Analyze","right":"Find patterns, run sentiment analysis, crunch financials"},{"left":"Report","right":"Package findings into a three-layer structure for your audience"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">The Six-Stage Pipeline</h2>
   <div data-learn="SortStack" data-props='{"title":"The Analysis Pipeline — In Order","instruction":"Arrange the six stages in the correct sequence","items":["Frame the question using SCOPE","Ingest the data — describe columns and context","Clean — fix duplicates, formats, missing values","Analyze — patterns, sentiment, financials","Visualize — charts that tell the story","Report — three-layer structure for your audience"]}'></div>

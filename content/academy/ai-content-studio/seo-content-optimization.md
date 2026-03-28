@@ -61,6 +61,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Learn</span>
+  <h2 class="section-title">Key SEO concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"SEO Content Optimization","cards":[{"front":"Search Intent","back":"The reason behind a search query. There are four types: informational, navigational, commercial, and transactional. Matching intent matters more than hitting keywords."},{"front":"Long-Tail Keywords","back":"Specific, niche phrases with lower competition. Solo creators can realistically rank for these because big sites ignore them."},{"front":"Meta Description","back":"150-160 characters that summarize your article in search results. This is your ad copy — it must include the keyword and compel clicks."},{"front":"Content Gap Analysis","back":"Finding topics your audience searches for that you have not yet covered. AI can identify these gaps without expensive SEO tools."},{"front":"On-Page SEO Structure","back":"Title tags, header hierarchy (H2/H3), internal links, and external references. Google uses these to understand your content\\u0027s depth and relevance."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Structure</span>
   <h2 class="section-title">On-page SEO that Google actually cares about.</h2>
   <p class="section-text"><strong>Title tag and H1:</strong> Include your primary keyword naturally. Make it compelling enough for a human to click. AI prompt: <em>"Give me 5 title options for an article targeting [keyword]. Each should include the keyword naturally and make a reader want to click."</em></p>

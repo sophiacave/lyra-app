@@ -69,6 +69,18 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Learn</span>
+  <h2 class="section-title">Key long-form writing concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Long-Form Writing with AI","cards":[{"front":"Outline-First Method","back":"Build a strong outline before writing. Ten minutes on the outline saves an hour of rewriting later."},{"front":"Layer 1: Rough Draft","back":"Write fast in your own words. This is where your voice, stories, and authentic perspective live. AI cannot replicate this."},{"front":"Layer 2: AI Expansion","back":"Feed rough sections to AI one at a time. Ask it to expand with detail, transitions, and examples while keeping your voice."},{"front":"Layer 3: Edit Pass","back":"Paste the full draft and ask AI to cut repetition, strengthen transitions, and flag generic sections for you to rewrite with personal examples."},{"front":"Scannable Formatting","back":"Subheadings every 200-300 words, paragraphs of 2-3 sentences max, bold text for key phrases — reward both scanners and deep readers."}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match writing layers to their purpose.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Writing Layer to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Brainstorm with AI","right":"Surface ideas and pressure-test your angle before writing"},{"left":"Build the Outline","right":"Create structure that makes the actual writing effortless"},{"left":"Layer 1: Rough Draft","right":"Lock in your personal voice and lived experience"},{"left":"Layer 2: AI Expansion","right":"Add detail, transitions, and examples to each section"},{"left":"Layer 3: Edit Pass","right":"Cut repetition, strengthen flow, and flag generic sections"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Order the layered writing process.</h2>
   <div data-learn="SortStack" data-props='{"title":"Put the Layered Writing Steps in Order","instruction":"Arrange the steps of the layered drafting method from first to last","items":["Brainstorm with AI — pressure-test your angle","Build the outline — structure before sentences","Write your rough draft in your own words","Use AI to expand each section","Run a full edit pass for clarity and flow"]}'></div>

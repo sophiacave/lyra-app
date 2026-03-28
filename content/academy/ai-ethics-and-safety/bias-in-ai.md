@@ -126,6 +126,13 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the 4 types of AI bias.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"4 Types of AI Bias","cards":[{"front":"Representation Bias","back":"Some groups are over- or under-represented in training data. AI knows more about some cultures, languages, and experiences than others."},{"front":"Confirmation Bias","back":"AI tends to agree with you. If you phrase a question with an implied answer, AI will reinforce your existing belief rather than challenge it."},{"front":"Cultural and Language Bias","back":"Most AI training data is English-language and Western-centric. Advice, examples, and frameworks skew toward North American and European perspectives."},{"front":"Recency Bias","back":"AI has a knowledge cutoff. It does not know about events, research, or cultural shifts after its training data ends — and presents outdated info with full confidence."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Match It</span>

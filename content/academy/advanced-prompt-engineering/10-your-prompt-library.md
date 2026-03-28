@@ -95,6 +95,10 @@ Length: {LENGTH} words. Include a practical takeaway at the end.
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Prompt Library — Key Concepts","cards":[{"front":"Why is a prompt library a career asset?","back":"Every great prompt saves 15+ minutes per reuse. Over a year, that compounds into days of reclaimed time — your library grows more valuable the longer you maintain it."},{"front":"What makes a good prompt template?","back":"Fixed structure capturing your expertise (tone, format, constraints) plus variable content using {PLACEHOLDER} brackets — so you adapt to any situation without rebuilding from scratch."},{"front":"What should each template file include?","back":"The prompt template with variables, example usage with variables filled in, notes on what works well, and what to watch out for."},{"front":"Why version control your prompts?","back":"Models update, needs change. Track what changed, why it changed, and the performance impact — e.g., 'v2: added format constraints, reduced off-format responses from 40% to 5%.'"},{"front":"What are the five starter prompts every library needs?","back":"The Extractor (messy input to JSON), The Reviewer (evaluates against criteria), The Explainer (simplifies for audiences), The Debugger (diagnoses and fixes), The Generator (creates in your voice)."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Prompt Library — Match the Starter Prompt to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"The Extractor","right":"Takes messy input and produces structured JSON output"},{"left":"The Reviewer","right":"Evaluates any work product against criteria you define"},{"left":"The Explainer","right":"Takes a complex topic and explains it for a specific audience"},{"left":"The Debugger","right":"Diagnoses why something isn’t working and proposes fixes"},{"left":"The Generator","right":"Creates content in your voice using few-shot examples"}]}'></div>
 </div>
 

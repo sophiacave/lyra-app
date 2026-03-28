@@ -72,6 +72,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"System Prompts — Key Concepts","cards":[{"front":"What is a system prompt?","back":"The instruction layer that sits above every conversation — it tells the AI who it is, how to behave, and what rules to follow before the user says a word."},{"front":"What is persona stacking?","back":"Layering multiple perspectives into one system prompt — e.g., a marketing strategist who thinks like a psychologist and writes like a journalist — for nuanced, multi-lens output."},{"front":"What are the four parts of a system prompt?","back":"Identity (who the AI is), Behavior Rules (tone and formatting), Knowledge Boundaries (what it knows and doesn\\\'t), and Constraints (hard limits on what it should never do)."},{"front":"Why does 'be helpful and professional' fail as a system prompt?","back":"It tells the AI nothing beyond its default behavior. Effective system prompts add specificity that changes output — domain expertise, tone, format, and constraints."},{"front":"What is the #1 cause of a weak system prompt?","back":"Contradictory instructions — e.g., 'be concise' plus 'always explain in detail.' The AI cannot prioritize conflicting rules, so output quality drops."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"System Prompt Parts — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Identity","right":"Who the AI is — role, expertise, personality"},{"left":"Behavior Rules","right":"Tone, response length, formatting preferences"},{"left":"Knowledge Boundaries","right":"What it knows and when to admit uncertainty"},{"left":"Constraints","right":"Hard limits — what it should never do"}]}'></div>
 </div>
 

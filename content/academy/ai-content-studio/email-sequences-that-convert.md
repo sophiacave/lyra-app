@@ -61,6 +61,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match email types to their purpose.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Email Type to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Welcome Sequence","right":"Build trust over 5-7 emails so new subscribers consider buying"},{"left":"Weekly Newsletter","right":"Deliver genuine value to become the email people look forward to"},{"left":"Launch Sequence","right":"Build anticipation and drive action when you have something to sell"},{"left":"Curiosity Gap Subject Line","right":"Create an open loop the reader\\u0027s brain needs to close"},{"left":"Direct Benefit Subject Line","right":"Promise a clear, specific, desirable outcome"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Voice</span>
   <h2 class="section-title">The AI email trap (and how to avoid it).</h2>
   <p class="section-text">AI-generated emails have a telltale sound: overly polished, slightly generic, suspiciously perfect. People can smell it. The fix is simple — give AI your raw material and let it structure, not create from scratch.</p>

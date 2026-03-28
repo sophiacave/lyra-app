@@ -125,6 +125,13 @@ free: false
   <p class="section-text" style="margin-top:1.5rem"><strong>Congratulations.</strong> You now understand AI ethics better than most people in the industry. The goal was never to make you afraid of AI — it was to make you wise about it. Use AI boldly, but use it well.</p>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the core ethical principles from this course.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"AI Ethics Core Principles","cards":[{"front":"The TRUST Framework","back":"Transparency, Review, Understand Limits, Safeguard Privacy, Take Responsibility — the five pillars of ethical AI use covered throughout this course."},{"front":"You Are the Ethics Layer","back":"AI does not evaluate whether its output is ethical. You are the last line of defense between AI output and real-world impact."},{"front":"Anonymize Before You Paste","back":"Replace real names, numbers, and identifying details before sharing sensitive information with AI. Describe rather than paste."},{"front":"The Front Page Test","back":"Would you be comfortable if your AI use appeared on the front page of your industry\\'s top publication? If you hesitate, reconsider."},{"front":"Human Creativity Strengthens IP","back":"The more human creativity you add — editing, direction, curation — the stronger your legal and ethical position with AI-generated content."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Scenario Review</span>

@@ -84,6 +84,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match the Question Quality</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Weak vs. Strong Data Questions","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"What do you see in this data?","right":"Too vague — AI gives a generic summary"},{"left":"Which product category grew fastest in Q3?","right":"Specific — targets exact metric and time period"},{"left":"Analyze my sales","right":"No context, output format, or audience specified"},{"left":"Compare open rates across 4 campaign types and flag exceptions","right":"Uses SCOPE: specific, contextual, and asks for comparison"},{"left":"Summarize trends, then break down March churners by plan type","right":"Question chaining — each round builds deeper insight"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 2 Quiz</h2>
   <div data-learn="QuizMC" data-props='{"title":"Asking the Right Questions","questions":[{"q":"What is the main problem with vague data questions like \"Analyze this data\"?","options":["AI refuses to process them","They take too long to generate","They produce generic, unhelpful summaries","They require more tokens"],"correct":2,"explanation":"Vague questions are like telling a chef to make food — you get something, but probably not what you wanted. Specific questions drive specific answers."},{"q":"Which is the strongest version of a data question?","options":["What do you see in this data?","Analyze my sales","Which product category grew fastest in Q3, and which months had exceptions?","Tell me about trends"],"correct":2,"explanation":"This question is specific (Q3, product category), asks for comparison AND explanation of exceptions — hitting multiple SCOPE elements at once."},{"q":"What does question chaining accomplish in data analysis?","options":["It confuses the AI","Each question builds on the last to reach actionable insight","It reduces the quality of analysis","It only works with CSV files"],"correct":1,"explanation":"Chaining lets you start broad and drill down progressively — by round 3, you have found something genuinely actionable that a single question would have missed."}]}'></div>

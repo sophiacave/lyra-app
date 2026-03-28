@@ -76,6 +76,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match strategy concepts to their definitions.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Strategy Concept to Definition","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Content Pillars","right":"3-5 core themes that keep your brand focused and recognizable"},{"left":"Emotional Hook","right":"The feeling that drives someone to click on your content"},{"left":"Editorial Calendar","right":"A structured plan mapping what to create and when to publish"},{"left":"40/30/20/10 Ratio","right":"Educational, engaging, personal, and promotional content mix"},{"left":"Content Gap","right":"Topics your audience searches for that you haven\\u0027t covered yet"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Mindset</span>
   <h2 class="section-title">Strategy is a living document.</h2>
   <p class="section-text">Your calendar isn't carved in stone. Every two weeks, check in with AI: <em>"Here's what performed well and what flopped. Adjust next month's strategy based on these results."</em> This feedback loop is what separates creators who grow from creators who plateau. Strategy + AI + iteration = compound growth.</p>

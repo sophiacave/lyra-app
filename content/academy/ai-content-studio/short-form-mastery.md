@@ -61,6 +61,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Learn</span>
+  <h2 class="section-title">Key short-form concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Short-Form Mastery","cards":[{"front":"The Contrarian Hook","back":"Challenge common advice to create tension. Format: Everyone says [X]. Here\\u0027s why that\\u0027s wrong."},{"front":"The Specificity Hook","back":"Use a precise number or result to build credibility. Specific details feel real and earn trust."},{"front":"The Story Hook","back":"Open with a narrative moment that triggers human curiosity. We are wired to follow stories."},{"front":"The 1-to-20 Method","back":"Generate 20 variations of one core idea, then curate the best 5-7. Pan for gold, don\\u0027t manufacture widgets."},{"front":"Platform-Specific Formatting","back":"Twitter wants punchy threads. LinkedIn wants personal story plus business lesson. Instagram wants carousel slides with one idea each."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Volume</span>
   <h2 class="section-title">The 1-to-20 method.</h2>
   <p class="section-text">One core idea can become 20 pieces of content. Here's how:</p>

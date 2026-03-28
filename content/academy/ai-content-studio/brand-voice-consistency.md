@@ -60,6 +60,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match voice document elements to their purpose.</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Match Voice Element to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Tone Words","right":"Give AI a personality target with 3-5 adjectives"},{"left":"Writing Rules","right":"Set explicit structure and style instructions"},{"left":"Sample Writing","right":"Show AI what good sounds like with real examples"},{"left":"Kill List","right":"Ban specific words and phrases from all output"},{"left":"Audience Awareness","right":"Tell AI who is reading so it adjusts sophistication"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">Five things that kill your voice in AI content.</h2>
   <p class="section-text"><strong>1. Accepting the first draft.</strong> AI's first attempt is never its best. Ask for revisions: "This is too formal. Make it sound like I'm talking to a friend over coffee."</p>

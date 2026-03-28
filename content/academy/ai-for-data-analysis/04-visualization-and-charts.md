@@ -77,6 +77,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <h2 class="section-title">Learn the Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Visualization Fundamentals","cards":[{"front":"Insight-Based Chart Title","back":"A title that states the finding, not just the topic — Revenue grew 34% after the March campaign launch instead of Revenue Data 2024"},{"front":"Pie Chart Rule","back":"Only use pie charts for parts of a whole with 5 or fewer slices — more than that, switch to a bar chart for clarity"},{"front":"Scatter Plot","back":"Shows the relationship between two variables — use it to explore whether things like ad spend and conversions are correlated"},{"front":"Heatmap","back":"Reveals patterns across two dimensions — like website traffic by day of week and hour of day"},{"front":"AI Visualization Workflow","back":"Share data → get chart type recommendations → generate code (Python, JS, or Sheets instructions) → adjust styling and labels"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Chart Type Matcher</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Chart Types and Use Cases","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Trends over time","right":"Line chart"},{"left":"Comparing categories","right":"Bar chart"},{"left":"Parts of a whole (5 or fewer)","right":"Pie chart"},{"left":"Relationship between two variables","right":"Scatter plot"},{"left":"Patterns across two dimensions","right":"Heatmap"}]}'></div>

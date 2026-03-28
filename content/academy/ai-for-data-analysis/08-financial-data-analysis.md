@@ -81,6 +81,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <h2 class="section-title">Learn the Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Financial Analysis Essentials","cards":[{"front":"Revenue Concentration","back":"The percentage of income from your top clients or products — high concentration (e.g. 70% from 3 clients) means high risk if any one leaves"},{"front":"Seasonality","back":"Predictable peaks and valleys in revenue tied to time of year — knowing the pattern changes how you plan cash flow and marketing"},{"front":"Margin Compression","back":"When revenue grows but expenses grow faster — your profit margin shrinks even though the top line looks healthy"},{"front":"Expense Creep","back":"Small monthly cost increases that seem harmless individually but compound dramatically — $50 here, $100 there adds up fast"},{"front":"Three-Scenario Forecast","back":"Conservative, moderate, and optimistic projections based on historical data — better than a single guess because it gives a planning range with explicit assumptions"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Financial Red Flags</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Financial Warning Signs","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Margin compression","right":"Revenue growing but expenses growing faster"},{"left":"Revenue concentration risk","right":"More than 30% of revenue from one customer"},{"left":"Cash flow timing problem","right":"Big expenses hitting before revenue comes in"},{"left":"Expense creep","right":"Small monthly increases that compound over time"}]}'></div>

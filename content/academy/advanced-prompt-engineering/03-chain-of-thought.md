@@ -59,6 +59,10 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Chain of Thought — Key Concepts","cards":[{"front":"What is chain-of-thought (CoT) prompting?","back":"A technique that forces the AI to reason through intermediate steps before reaching a conclusion — like giving it scratch paper. Research shows it improves accuracy by 20-40% on complex tasks."},{"front":"When should you use CoT?","back":"Math problems, logic puzzles, code debugging, strategic analysis, comparing options — any task where the reasoning matters as much as the answer."},{"front":"When should you skip CoT?","back":"Simple factual questions, creative writing, translation, formatting tasks — forcing reasoning here just adds noise without improving quality."},{"front":"What is a thinking budget?","back":"A prompt that asks the AI to consider multiple approaches (e.g., at least 3), evaluate trade-offs for each, then recommend the best path with justification — maximizing reasoning depth."},{"front":"What is the Expert Trigger technique?","back":"Combining a persona metaphor with step-by-step reasoning — e.g., 'approach this like a detective solving a case' — so the metaphor shapes HOW the AI thinks, not just what it says."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"CoT Triggers — Match the Technique to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Simple Trigger","right":"Add ‘think step by step’ before answering"},{"left":"Structured Trigger","right":"Define the reasoning steps explicitly in sequence"},{"left":"Expert Trigger","right":"Combine persona metaphor with step-by-step reasoning"},{"left":"Thinking Budget","right":"Ask for multiple approaches with trade-off evaluation before recommending"}]}'></div>
 </div>
 

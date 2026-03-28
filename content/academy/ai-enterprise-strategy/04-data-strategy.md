@@ -42,6 +42,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Data Strategy — Key Concepts","cards":[{"front":"Data Audit","back":"Inventory where data lives, how much is structured vs. unstructured, how current it is, who owns it, and who can access it. Reveals what you can use, what you cannot use, and what you still need."},{"front":"Lightweight Data Governance","back":"Answers four questions: who can access this data, what can they use it for, how must it be protected, and who is accountable. Should fit on one page."},{"front":"Centralized vs. Federated Architecture","back":"Centralized is easier to govern but harder to build. Federated lets teams move faster but creates consistency challenges. Most enterprises land on a hybrid approach."},{"front":"Three Data Architecture Layers","back":"Data lake or warehouse for storage, a pipeline layer for transformation and movement, and a serving layer for making data available to AI models."},{"front":"Data as Relationship","back":"Your data represents every interaction your organization has ever had. Treating it as purely technical misses the point — data strategy is relationship strategy."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Data Architecture — Match Each Layer to Its Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Data Lake or Warehouse","right":"Storage layer — holds raw and processed data at scale"},{"left":"Pipeline Layer","right":"Transformation and movement — ETL and data flow between systems"},{"left":"Serving Layer","right":"Makes data available to AI models at query time"},{"left":"Centralized Governance","right":"Consistent standards with federated execution for team speed"}]}'></div>
 </div>
 

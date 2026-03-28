@@ -206,6 +206,11 @@ free: false
   </div>
 </div>
 
+<!-- MATCH CONNECT: ROLES TO RESPONSIBILITIES -->
+<div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Roles and Responsibilities","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI Champion","right":"Senior leader owning strategy, vendor evaluation, and adoption — always the first hire"},{"left":"Data Engineer","right":"Cleans, structures, and pipelines data across systems so AI tools don\\u0027t starve"},{"left":"Change Management Lead","right":"Manages the human side — training, communication, resistance — 3x failure rate if skipped"},{"left":"Hub-and-Spoke Structure","right":"Central strategy team plus embedded department specialists — balances governance with speed"},{"left":"60/20/10/10 Budget","right":"60% people, 20% tools, 10% data prep, 10% training — invert this and you\\u0027ll fail"}]}'></div>
+</div>
+
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Key AI Team Roles","cards":[{"front":"AI Lead / AI Champion","back":"The first hire. A senior leader owning AI strategy, vendor evaluation, and adoption. Does not need to be deeply technical — must understand business operations and change management. Salary: $120-180K."},{"front":"Data Engineer","back":"Makes your data AI-ready. Cleans, structures, and pipelines data across systems. Without this role, AI tools starve. Salary: $130-200K. Often the #1 blocker if absent."},{"front":"ML Engineer","back":"Builds and maintains AI integrations, connects APIs, fine-tunes models, and creates custom workflows. Needed when you move beyond buying SaaS tools. Salary: $150-250K."},{"front":"AI Ethics Officer","back":"Ensures AI complies with regulations, company values, and risk tolerance. Critical in regulated industries. Can start fractional. Salary: $130-180K."},{"front":"Change Management Lead","back":"Manages the human side of AI adoption — training, communication, and resistance. Organizations that skip this role have 3x higher AI project failure rates. Salary: $110-160K."}]}'></div>

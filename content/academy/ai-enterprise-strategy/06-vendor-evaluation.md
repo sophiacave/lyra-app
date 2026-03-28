@@ -42,6 +42,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Vendor Evaluation — Key Concepts","cards":[{"front":"Build","back":"Choose when AI is your core competitive advantage and you need full control. Requires significant in-house talent and infrastructure."},{"front":"Buy","back":"Choose when the problem is well-understood and commercial solutions are mature — customer support AI, document processing, basic analytics."},{"front":"Partner","back":"Choose when you need domain-specific AI but lack internal capability. Consulting firms and boutique AI shops can accelerate your timeline."},{"front":"Proof of Concept (POC)","back":"Run a POC with YOUR actual data on YOUR actual problem. Vendor demos use curated data on ideal scenarios. Any vendor unwilling to do this is not confident in their product."},{"front":"Exit Strategy","back":"Evaluate how painful and expensive it is to leave a vendor. Contracts that lock data in proprietary formats create dangerous dependency."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Vendor Evaluation — Match Each Dimension to What It Assesses","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Capability Fit","right":"Does it actually solve your specific problem?"},{"left":"Integration Complexity","right":"How hard is it to connect to your existing systems?"},{"left":"Vendor Viability","right":"Will this company still exist in three years?"},{"left":"Exit Strategy","right":"How painful and expensive is it to leave this vendor?"}]}'></div>
 </div>
 

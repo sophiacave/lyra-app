@@ -194,6 +194,11 @@ free: false
   </div>
 </div>
 
+<!-- FLASH DECK: AI READINESS CONCEPTS -->
+<div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"AI Readiness Key Concepts","cards":[{"front":"Data Readiness","back":"Whether your data is accessible, clean, sufficient in volume, and governed. The #1 blocker for AI adoption. Fix only the data your first use case needs — don\\u0027t try to fix everything at once."},{"front":"The Four Pillars of AI Readiness","back":"Data, Infrastructure, Culture, and Governance. Score each 1-5. Your lowest score is your biggest blocker. Fix that first before buying any AI tools."},{"front":"AI-Exploring (Stage 2)","back":"First pilot projects running, small budget allocated, informal AI champion exists, basic policies in place. Next step: formalize governance and assign a dedicated AI Champion."},{"front":"The Three Fears Driving AI Resistance","back":"\"AI will take my job\" (address directly), \"I\\u0027ll look stupid using it\" (make experimentation safe), and \"I can\\u0027t trust AI output\" (build human review into every workflow)."},{"front":"87% Failure Rate","back":"87% of AI projects never make it to production — not because the technology fails, but because organizations skip readiness work: data prep, buy-in, governance, and change management."}]}'></div>
+</div>
+
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Organizational Readiness Factors","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Data Readiness","right":"Clean, accessible, governed data that AI can actually use — the #1 blocker for most organizations"},{"left":"Cloud Infrastructure","right":"Modern cloud stack with API-connected systems, SSO, and RBAC — what AI tools plug into"},{"left":"AI Culture","right":"Leaders modeling AI use, safe experimentation, and AI adoption in performance reviews"},{"left":"AI Governance","right":"Usage policy, ethics review process, and contractual awareness of where AI touches customer data"},{"left":"AI-Curious (Stage 1)","right":"Leadership interested, no formal strategy, individuals experimenting on their own"},{"left":"AI-Native (Stage 5)","right":"AI inseparable from operations, every process AI-augmented by default, board-level AI strategy"}]}'></div>

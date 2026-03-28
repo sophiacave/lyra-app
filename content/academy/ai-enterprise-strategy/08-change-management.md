@@ -42,6 +42,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Change Management — Key Concepts","cards":[{"front":"The Fear Factor","back":"People aren\\\'t afraid of AI — they\\\'re afraid of what it means for their job security, relevance, and professional identity. Address this directly and honestly."},{"front":"AI Champions","back":"Curious, eager early adopters who get early access and training. Their enthusiasm is contagious and their success stories become your best internal marketing."},{"front":"Quick Wins Strategy","back":"Choose your first AI deployment to solve a problem everyone complains about. When the tool saves 30 minutes a day on hated work, adoption sells itself."},{"front":"Promotion in Disguise","back":"Frame AI as removing tedious work so people can focus on complex, meaningful problems. A customer service agent freed from repetitive tickets can handle high-value interactions."},{"front":"Narrative Control","back":"If you don\\\'t control the story around AI in your organization, the rumor mill will. Communicate early, often, and honestly with concrete examples."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Change Management Playbook — Match Step to Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Find Champions","right":"Identify curious, eager early adopters and give them early access, training, and a mandate to explore"},{"left":"Engineer Quick Wins","right":"Deploy AI to solve a widely-complained-about problem so adoption sells itself through genuine value"},{"left":"Let Success Snowball","right":"Document wins, share metrics, let champions train peers — organic adoption beats top-down mandates"},{"left":"Create Feedback Channels","right":"Let people voice concerns without judgment — they often surface real risks strategists miss"}]}'></div>
 </div>
 

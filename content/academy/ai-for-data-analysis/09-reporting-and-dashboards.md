@@ -80,6 +80,18 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <h2 class="section-title">Learn the Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Reporting and Dashboard Concepts","cards":[{"front":"Three-Layer Report","back":"Executive summary (3-5 sentences) → key metrics and visuals → detailed analysis. Most reports fail because they start at layer 3 instead of layer 1"},{"front":"Executive Summary","back":"The headline findings in 3-5 sentences — what changed, what matters, what to do about it. A busy person reads only this and still gets the point"},{"front":"KPI Card","back":"A single-number display at the top of a dashboard showing a key metric with comparison context — like revenue vs. last month"},{"front":"Recurring Report Template","back":"A reusable prompt with placeholders for new data — the first report takes effort, every subsequent one takes five minutes"},{"front":"Implication vs. Information","back":"Revenue was $50,000 is information. Revenue hit $50,000, exceeding target by 12% is an implication — decision-makers need implications"}]}'></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match the Report Element</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Report Structure Elements","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Layer 1 of a report","right":"Executive summary — headline findings in 3-5 sentences"},{"left":"Layer 2 of a report","right":"Key metrics and visuals — charts, tables, comparisons"},{"left":"Layer 3 of a report","right":"Detailed analysis — methodology, caveats, and nuance"},{"left":"What decision-makers want","right":"Implications and recommended actions, not raw data"},{"left":"The automation sweet spot","right":"Build the template once, paste new data each period"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Three-Layer Report</h2>
   <div data-learn="SortStack" data-props='{"title":"Report Layers in Order","instruction":"Arrange from first to last in a well-structured report","items":["Executive summary — 3-5 sentences, headline findings and action","Key metrics and visuals — supporting charts, tables, comparisons","Detailed analysis — methodology, caveats, and full nuance"]}'></div>

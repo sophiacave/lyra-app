@@ -64,6 +64,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Learn</span>
+  <h2 class="section-title">Key studio mindset concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"The Content Studio Mindset","cards":[{"front":"Studio Mindset","back":"Treating content creation as a systematic operation with strategy, creation, repurposing, and optimization — not just sitting down to write."},{"front":"The Strategist Role","back":"AI helps you decide what to create by analyzing trends, reviewing past performance, identifying content gaps, and mapping editorial calendars."},{"front":"The Editor Role","back":"AI sharpens your rough ideas and messy drafts. Your voice stays — the quality goes up. Feed it raw material, not blank prompts."},{"front":"The Producer Role","back":"AI turns one piece of content into social snippets, email content, video scripts, and podcast talking points. One hour of work becomes a week of content."},{"front":"Creative Director","back":"Your role in the studio. Your perspective, stories, and lived experience make content yours. AI is the production team — you are the vision."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Know your studio roles.</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Match the Studio Role to Its Job","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Strategist","right":"Decides what to create and why"},{"left":"Editor","right":"Sharpens and polishes raw material"},{"left":"Producer","right":"Turns one piece into many formats"},{"left":"Scheduler","right":"Keeps the content machine running"}]}'></div>

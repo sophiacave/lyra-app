@@ -94,6 +94,10 @@ Start your response with:
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Structured Output — Key Concepts","cards":[{"front":"What is schema-driven prompting?","back":"Providing the exact JSON structure with field names, types, and descriptions — giving the AI a precise blueprint so output is consistent and parseable every time."},{"front":"What is the Output First trick?","back":"Starting the AI\\\'s response for it (e.g., beginning with '1. **') to anchor the format from the very first token, preventing the model from inventing its own structure."},{"front":"How do you prevent the 'helpful preamble' problem?","back":"Add 'Return ONLY the JSON. No preamble. No explanation.' — explicitly telling the AI what NOT to include is as important as telling it what to include."},{"front":"Why do you need cell constraints in table prompts?","back":"Without constraints like '10 words or fewer per cell,' AI turns table cells into paragraphs, making the table unreadable and defeating the purpose of structured format."},{"front":"How do you fix inconsistent JSON keys?","back":"Provide the exact schema and explicitly say 'use these exact key names' — plus specify types in your schema description to prevent numbers returning as strings."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Structured Output — Match the Technique to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Schema-Driven Prompt","right":"Show the exact JSON structure with field descriptions to get consistent output"},{"left":"Output First Trick","right":"Start the AI’s response yourself to anchor the format from the first token"},{"left":"Markdown Table Prompt","right":"Specify columns, rows, and cell length constraints for parseable tables"},{"left":"Return ONLY directive","right":"Prevent helpful preambles like ‘Here is the JSON:’ before your data"}]}'></div>
 </div>
 

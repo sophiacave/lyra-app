@@ -80,6 +80,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Match the Cleaning Step</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Data Cleaning Checklist","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Scan for structure","right":"Count rows, columns, data types, and missing value percentages"},{"left":"Find duplicates","right":"Identify rows that are identical or near-identical matches"},{"left":"Standardize text","right":"List unique values and flag variants like US, U.S.A., and usa"},{"left":"Validate ranges","right":"Check for values that seem unreasonably high or low"},{"left":"Handle blanks","right":"Decide whether to fill, flag, or remove each missing value"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 5 Quiz</h2>
   <div data-learn="QuizMC" data-props='{"title":"Cleaning Messy Data","questions":[{"q":"Roughly what percentage of a data analyst&#39;s time is spent on data cleaning?","options":["10%","25%","50%","Up to 80%"],"correct":3,"explanation":"Data analysts spend up to 80% of their time cleaning data — not analyzing it. AI dramatically compresses this bottleneck."},{"q":"What is the first step in the AI data cleaning checklist?","options":["Remove all outliers immediately","Find and delete duplicate rows","Scan for structure: rows, columns, data types, and missing value percentages","Standardize all text to lowercase"],"correct":2,"explanation":"Before fixing anything, you need a structural overview. Describing the shape of the data tells you where to focus cleaning efforts first."},{"q":"Why does AI excel at data cleaning tasks?","options":["AI can only work with clean data","Pattern-matching and tedious repetitive tasks are exactly what AI processes fastest","AI makes cleaning decisions without any context","AI can only clean numerical data"],"correct":1,"explanation":"The tedious pattern-matching work of spotting inconsistencies, grouping variants, and standardizing formats is precisely what AI handles at speed — it catches things human eyes miss."}]}'></div>

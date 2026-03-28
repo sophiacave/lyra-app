@@ -94,6 +94,13 @@ free: false
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the societal impacts of AI.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"AI and Society","cards":[{"front":"AI and Jobs","back":"AI transforms tasks within jobs rather than eliminating them wholesale. The risk is the speed of the transition and whether society supports people who need to adapt."},{"front":"The AI Divide","back":"AI\\'s benefits disproportionately flow to those who already have resources — better tools, faster internet, modern devices. This widens existing inequalities."},{"front":"Environmental Cost","back":"Training large AI models consumes enormous energy. Running inference requires servers that use electricity and water. Be mindful: use the right-sized model for the task."},{"front":"Language Representation Gap","back":"Many languages are poorly represented in AI training data, making AI less useful for billions of people worldwide and reinforcing Western-centric perspectives."},{"front":"Being Part of the Solution","back":"Share what you learn, advocate for responsible use in your workplace and community, support accessible AI tools, and stay informed about AI regulation and policy."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

@@ -69,6 +69,12 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Learn</span>
+  <h2 class="section-title">Key repurposing concepts.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Repurposing Content","cards":[{"front":"Content Waterfall","back":"A system where you start with your richest format and let it flow downward into progressively smaller pieces across platforms."},{"front":"The Source (Level 1)","back":"Your flagship long-form piece — a blog post, podcast episode, or video. Spend the most time here because everything else flows from it."},{"front":"The Breakdown (Level 2)","back":"Mid-size repurposed pieces: newsletter summaries, LinkedIn posts, and Twitter threads drawn from the source material."},{"front":"The Snippets (Level 3)","back":"Bite-sized content: standalone quotes, Instagram carousels, one-liner hooks pulled from the best lines of the source."},{"front":"Platform-Native Transformation","back":"Genuinely adapting content for each platform\\u0027s format and tone — not just copy-pasting sections. Twitter wants punchy threads; LinkedIn wants personal stories."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Mega-Prompt</span>
   <h2 class="section-title">Let AI do the heavy lifting.</h2>
   <p class="section-text">Here's the prompt that makes this systematic:</p>

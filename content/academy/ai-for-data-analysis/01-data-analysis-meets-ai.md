@@ -71,6 +71,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <h2 class="section-title">Learn the Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"AI Data Analysis Fundamentals","cards":[{"front":"AI-Powered Data Analysis","back":"Using artificial intelligence to ask questions in plain English and get structured insights from data — no formulas or coding required"},{"front":"The Thinker-Calculator Model","back":"You become the thinker (asking the right questions) while AI becomes the calculator (crunching numbers and spotting patterns)"},{"front":"Barrier to Entry","back":"Traditional data analysis required Excel formulas, pivot tables, SQL, or Python — AI removes this barrier so anyone can analyze data"},{"front":"Actionable Insight","back":"A specific, data-backed finding that directly tells you what to do next — the goal of every analysis"},{"front":"The Analysis Mindset","back":"Curiosity is the most important skill — the better your questions, the better the insights AI delivers"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Match the Concept</h2>
   <div data-learn="MatchConnect" data-props='{"title":"AI Data Analysis Concepts","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Thinker role in AI analysis","right":"The human asking questions"},{"left":"Calculator role in AI analysis","right":"The AI crunching numbers"},{"left":"Key skill for AI-powered analysis","right":"Asking better questions"},{"left":"What AI replaces in data work","right":"Manual formulas and pivot tables"}]}'></div>

@@ -63,6 +63,10 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Context Window Mastery — Key Concepts","cards":[{"front":"What is the context window?","back":"The total amount of text an AI model can see at once — your prompt plus its response. Claude handles up to 200K tokens, GPT-4 up to 128K."},{"front":"What is the 'lost in the middle' effect?","back":"AI models pay more attention to content at the beginning and end of the context window than to content in the middle — so you must front-load critical instructions."},{"front":"What is the rolling context technique?","back":"Asking the AI to summarize work so far in ~200 words (what\\\'s decided, built, and remaining), then continuing in a fresh context with that summary — essentially a checkpoint."},{"front":"Why is overlap crucial when chunking documents?","back":"Important context can span chunk boundaries. A 10-15% overlap between chunks prevents information from falling through the cracks at split points."},{"front":"What are structured references?","back":"Instead of pasting full files, you paste function signatures, class names, and key logic blocks — letting the AI reason about architecture without seeing every line of code."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"Context Window Strategies — Match Each to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Front-Loading","right":"Put critical instructions and the primary task at the very beginning of your prompt"},{"left":"Summarize First","right":"Ask AI to compress a long document before using it as context"},{"left":"Rolling Context","right":"Checkpoint progress in 200 words, then continue in a fresh context"},{"left":"Chunking with Overlap","right":"Split large documents into sections with 10-15% content overlap to prevent gaps"}]}'></div>
 </div>
 

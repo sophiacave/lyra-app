@@ -116,6 +116,13 @@ free: true
   </div>
 </div>
 
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">Review the 5 things to never share with AI.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"5 Things to Never Paste into AI","cards":[{"front":"Passwords and API Keys","back":"Never share credentials with AI — not even to check something. Use a password manager instead. Exposed keys can compromise entire systems."},{"front":"Other People\\'s Personal Data","back":"Names, emails, health records, financial info — if it could identify a person, do not share it. This may violate GDPR or CCPA."},{"front":"Confidential Business Information","back":"Trade secrets, unreleased financials, legal strategy, and M&A details belong to the company and should never enter consumer AI tools."},{"front":"Private Communications","back":"Other people\\'s emails, DMs, or messages should never be pasted into AI without their explicit consent."},{"front":"Regulated Data","back":"HIPAA health info, FERPA student records, PCI credit card numbers, and NDA-covered data have legal protections that AI tools may violate."}]}'></div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

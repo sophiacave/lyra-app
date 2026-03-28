@@ -76,6 +76,12 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <h2 class="section-title">Learn the Terms</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"Spreadsheet Analysis Essentials","cards":[{"front":"Copy and Paste Method","back":"Select data in Excel or Google Sheets and paste directly into the AI chat — works great for datasets under a few hundred rows"},{"front":"Describe and Sample Method","back":"For massive datasets, paste the first 20-30 rows and describe the full scope — AI can suggest approaches without seeing every row"},{"front":"Clear Column Headers","back":"Use descriptive names like monthly_revenue instead of Col_F — AI reads headers to understand what each column means"},{"front":"AI-Generated Formulas","back":"Ask AI to write spreadsheet formulas for you in plain English — no need to memorize VLOOKUP or SUMIF syntax ever again"},{"front":"The Sweet Spot","back":"Use AI to figure out the analysis approach, then implement formulas and templates natively in the spreadsheet for ongoing use"}]}'></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Data Input Methods</h2>
   <div data-learn="MatchConnect" data-props='{"title":"Spreadsheet Input Methods","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Best for under a few hundred rows","right":"Copy and paste directly into chat"},{"left":"Best for larger datasets","right":"Upload CSV or Excel file directly"},{"left":"Best for massive datasets","right":"Paste sample rows and describe full scope"},{"left":"Keeps dynamic calculations live","right":"Stay in the spreadsheet natively"}]}'></div>

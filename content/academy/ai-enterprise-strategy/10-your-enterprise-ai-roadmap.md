@@ -49,6 +49,10 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="FlashDeck" data-props='{"title":"Enterprise AI Roadmap — Key Concepts","cards":[{"front":"Q1 Goal: Evidence","back":"Complete readiness assessment, deploy one pilot with clear metrics, identify champions. End with a documented success story, measured ROI, and lessons learned."},{"front":"Q2 Goal: Scale","back":"Expand Q1 pilot to more teams. Launch a second, more ambitious pilot. Formalize vendor relationships and governance. Champions train peers."},{"front":"Q3 Goal: Operationalize","back":"Shift from projects to products with dedicated owners, SLAs, and monitoring. Build MLOps pipeline. AI should feel normal, not special."},{"front":"Q4 Goal: Transform","back":"Evaluate competitive position. Identify new revenue streams and AI-native opportunities. Present comprehensive impact report to secure Year 2 investment."},{"front":"Strategy as Practice","back":"Your roadmap will change. The value is the clarity of thinking and discipline to revisit quarterly. Organizations that thrive learn faster, not predict better."}]}'></div>
+</div>
+
+<div class="lesson-section">
   <div data-learn="MatchConnect" data-props='{"title":"12-Month Roadmap — Match Each Quarter to Its Goal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Quarter 1 (Months 1-3)","right":"Build credibility through execution — pilot, metrics, success story"},{"left":"Quarter 2 (Months 4-6)","right":"Scale what works and invest in training and vendor formalization"},{"left":"Quarter 3 (Months 7-9)","right":"Shift from projects to products with dedicated owners and SLAs"},{"left":"Quarter 4 (Months 10-12)","right":"Evaluate competitive position and plan Year 2 based on real data"}]}'></div>
 </div>
 
