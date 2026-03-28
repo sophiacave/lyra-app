@@ -4,6 +4,7 @@ course: "ai-for-personal-productivity"
 order: 1
 type: "lesson"
 free: true
+videoId: "3da7a7c9-bb83-4809-b956-5719b94068a6"
 ---
 
 <div class="wrap">

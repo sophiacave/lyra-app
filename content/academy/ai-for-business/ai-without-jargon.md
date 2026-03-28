@@ -4,6 +4,7 @@ course: "ai-for-business"
 order: 1
 type: "lesson"
 free: true
+videoId: "cfa548ad-e998-4906-ab23-6c7b94408729"
 ---<div class="wrap">
 
 <nav class="local-nav">
