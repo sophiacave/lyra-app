@@ -11,7 +11,7 @@ import path from 'path';
 import { buildTimingMap, measureWPM, PACING } from './lib/pacing-engine.js';
 import {
   processTTS, normalizeLoudness, mixWithMusic, buildSFXTrack,
-  mergeVideoAudio, verifyLoudness, AUDIO,
+  mergeVideoAudio, verifyLoudness, correctWPM, WPM_TARGETS, AUDIO,
 } from './lib/audio-engine.js';
 
 const STUDIO_DIR = path.dirname(new URL(import.meta.url).pathname);
@@ -203,10 +203,33 @@ async function renderLessonV2(config) {
     // Stage 1: TTS 6-stage chain
     const processed = processTTS(ar.audio_path, processedPath);
     if (processed) {
-      // Stage 2: Loudness normalization
+      let currentPath = processedPath;
+
+      // Stage 2: WPM auto-correction (if outside 130-165 range)
+      const section = sections[ar.index];
+      const wpmEntry = wpmResults.find(w => w.index === ar.index);
+      if (wpmEntry && (wpmEntry.wpm < 130 || wpmEntry.wpm > 165)) {
+        // Determine target WPM by section context
+        const targetWPM = section.pace === 'hook' ? WPM_TARGETS.hook
+          : section.pace === 'concept' ? WPM_TARGETS.concept
+          : section.pace === 'recap' ? WPM_TARGETS.recap
+          : WPM_TARGETS.standard;
+
+        const correctedPath = ar.audio_path.replace(/\.(wav|mp3)$/, '_corrected.wav');
+        const correction = correctWPM(currentPath, correctedPath, wpmEntry.wpm, targetWPM);
+        if (correction.success) {
+          currentPath = correctedPath;
+          // Update section duration with corrected audio
+          section.audioDuration = correction.newDuration;
+          section.durationS = correction.newDuration;
+          console.log(`  🎯 Segment ${ar.index}: ${wpmEntry.wpm}→${targetWPM} WPM (atempo=${correction.atempo.toFixed(3)})`);
+        }
+      }
+
+      // Stage 3: Loudness normalization
       const normalizedPath = ar.audio_path.replace(/\.(wav|mp3)$/, '_normalized.wav');
-      const normalized = normalizeLoudness(processedPath, normalizedPath);
-      const finalPath = normalized ? normalizedPath : processedPath;
+      const normalized = normalizeLoudness(currentPath, normalizedPath);
+      const finalPath = normalized ? normalizedPath : currentPath;
       processedAudioResults.push({ ...ar, processed_path: finalPath });
       console.log(`  ✅ Segment ${ar.index}: processed + normalized`);
     } else {

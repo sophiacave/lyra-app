@@ -248,6 +248,63 @@ export function verifyLoudness(filePath) {
 /**
  * Get audio volume stats (mean + peak dB).
  */
+/**
+ * Target WPM by section context (Divine Plan v2 System 6).
+ * intro/hook: 170 WPM (energy), concept_new: 125 WPM (slow for comprehension),
+ * concept_familiar: 155 WPM, example: 140 WPM, recap: 165 WPM.
+ */
+export const WPM_TARGETS = {
+  hook:     170,
+  concept:  130,
+  standard: 145,
+  example:  140,
+  recap:    165,
+};
+
+/**
+ * Auto-correct audio speed to hit target WPM range.
+ * Uses FFmpeg atempo filter. Returns new duration_s.
+ * @param {string} inputPath - Audio file
+ * @param {string} outputPath - Speed-adjusted output
+ * @param {number} currentWPM - Measured WPM
+ * @param {number} targetWPM - Desired WPM (default 145)
+ * @returns {{ success: boolean, newDuration: number, atempo: number }}
+ */
+export function correctWPM(inputPath, outputPath, currentWPM, targetWPM = 145) {
+  // Only correct if outside 130-165 range
+  if (currentWPM >= 130 && currentWPM <= 165) {
+    return { success: false, newDuration: 0, atempo: 1.0 };
+  }
+
+  // Calculate tempo adjustment: faster WPM = slow down (atempo < 1)
+  let atempo = currentWPM / targetWPM;
+
+  // Clamp to safe range (0.5 - 2.0 per FFmpeg atempo limits)
+  atempo = Math.max(0.5, Math.min(2.0, atempo));
+
+  // Only apply if meaningful change (>3%)
+  if (Math.abs(atempo - 1.0) < 0.03) {
+    return { success: false, newDuration: 0, atempo: 1.0 };
+  }
+
+  try {
+    const cmd = `ffmpeg -y -i "${inputPath}" -af "atempo=${atempo.toFixed(4)}" -ar ${AUDIO.SAMPLE_RATE} "${outputPath}"`;
+    execSync(cmd, { stdio: 'pipe', timeout: 60000 });
+
+    // Get new duration
+    const probe = execSync(`ffprobe -v quiet -show_entries format=duration -of csv=p=0 "${outputPath}"`, { encoding: 'utf-8' }).trim();
+    const newDuration = parseFloat(probe) || 0;
+
+    return { success: true, newDuration, atempo };
+  } catch (e) {
+    console.error(`❌ WPM correction failed:`, e.message?.slice(-200));
+    return { success: false, newDuration: 0, atempo };
+  }
+}
+
+/**
+ * Get audio volume stats (mean + peak dB).
+ */
 export function getVolumeStats(filePath) {
   try {
     const output = execSync(
