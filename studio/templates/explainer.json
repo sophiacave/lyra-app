@@ -1,0 +1,54 @@
+{
+  "_template": "explainer",
+  "_description": "Concept explanation lesson: intro → narration blocks → concept diagram → key insight quote → outro",
+  "_usage": "Copy this template, fill in your content, remove underscore-prefixed keys, run: node studio/render-lesson.js your-config.json",
+  "title": "Your Lesson Title",
+  "subtitle": "Course Name — Like One Academy",
+  "slug": "your-lesson-slug",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Opening hook. Explain the core concept in 2-3 sentences that create curiosity. End with a question or surprising claim.",
+      "voice": "sophia",
+      "highlightWords": ["core", "concept"],
+      "_notes": "durationS is auto-calculated from TTS. highlightWords get warm accent color."
+    },
+    {
+      "type": "concept",
+      "label": "Concept Diagram Title",
+      "nodes": [
+        { "x": 0.2, "y": 0.3, "label": "Node A" },
+        { "x": 0.5, "y": 0.5, "label": "Node B" },
+        { "x": 0.8, "y": 0.3, "label": "Node C" }
+      ],
+      "connections": [[0, 1], [1, 2]],
+      "durationS": 5,
+      "_notes": "x/y are 0-1 proportional to diagram area. connections reference node indices."
+    },
+    {
+      "type": "narration",
+      "text": "Deeper explanation. Now that the visual is established, explain the relationships. Use concrete analogies.",
+      "voice": "sophia",
+      "highlightWords": ["relationships", "analogies"]
+    },
+    {
+      "type": "narration",
+      "text": "Real-world application. Connect the concept to something the viewer cares about. Make it practical and actionable.",
+      "voice": "sophia",
+      "highlightWords": ["practical", "actionable"]
+    },
+    {
+      "type": "quote",
+      "quote": "A memorable quote that reinforces the lesson's core idea.",
+      "attribution": "— Attribution",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Follow-up Lesson Title",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}

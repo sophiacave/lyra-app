@@ -1,0 +1,68 @@
+{
+  "_template": "tutorial",
+  "_description": "Step-by-step tutorial: intro → timeline overview → narration+code pairs → recap → outro",
+  "title": "How to Do the Thing",
+  "subtitle": "Hands-On Tutorial — Like One Academy",
+  "slug": "how-to-do-the-thing",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "What we're building and why it matters. Set expectations: by the end of this lesson, you'll be able to...",
+      "voice": "sophia",
+      "highlightWords": ["building", "by the end"]
+    },
+    {
+      "type": "timeline",
+      "steps": [
+        { "label": "Step 1", "description": "Setup the foundation" },
+        { "label": "Step 2", "description": "Build the core logic" },
+        { "label": "Step 3", "description": "Connect everything" },
+        { "label": "Step 4", "description": "Test and verify" }
+      ],
+      "durationS": 6,
+      "_notes": "Visual roadmap so viewers know what's coming."
+    },
+    {
+      "type": "narration",
+      "text": "Step 1 explanation. Explain what we're doing and why before showing the code.",
+      "voice": "sophia",
+      "highlightWords": ["Step 1"]
+    },
+    {
+      "type": "code",
+      "label": "Step 1: Setup",
+      "language": "javascript",
+      "code": "// Your code here\nconst example = 'hello';",
+      "highlightLines": [2],
+      "durationS": 8,
+      "_notes": "highlightLines uses 1-based line numbers. Keep code blocks under 15 lines."
+    },
+    {
+      "type": "narration",
+      "text": "Step 2 explanation. Build on what we just did. Reference the previous code.",
+      "voice": "sophia",
+      "highlightWords": ["Step 2"]
+    },
+    {
+      "type": "code",
+      "label": "Step 2: Core Logic",
+      "language": "javascript",
+      "code": "// Build on step 1\nfunction process(data) {\n  return data.map(transform);\n}",
+      "highlightLines": [2, 3],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Recap what we built. Reinforce the key takeaway. Mention what's possible now that they know this.",
+      "voice": "sophia",
+      "highlightWords": ["built", "possible"]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Try it yourself — then come back for Part 2",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}

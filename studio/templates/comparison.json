@@ -1,0 +1,79 @@
+{
+  "_template": "comparison",
+  "_description": "Side-by-side comparison: intro → comparison split → deep dive each side → verdict → outro",
+  "title": "Thing A vs Thing B",
+  "subtitle": "Understanding the Difference — Like One Academy",
+  "slug": "thing-a-vs-thing-b",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Why this comparison matters. What problem are people solving when they face this choice? Frame the decision.",
+      "voice": "sophia",
+      "highlightWords": ["comparison", "choice"]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Thing A",
+      "rightTitle": "Thing B",
+      "leftItems": [
+        "Strength of A",
+        "Another strength",
+        "Use case for A"
+      ],
+      "rightItems": [
+        "Strength of B",
+        "Another strength",
+        "Use case for B"
+      ],
+      "durationS": 8,
+      "_notes": "leftColor and rightColor are optional — defaults to blue/purple."
+    },
+    {
+      "type": "narration",
+      "text": "Deep dive into Thing A. When does it shine? What are its tradeoffs? Give concrete examples.",
+      "voice": "sophia",
+      "highlightWords": ["Thing A", "shine", "tradeoffs"]
+    },
+    {
+      "type": "code",
+      "label": "Thing A in Practice",
+      "language": "javascript",
+      "code": "// Thing A approach\nconst result = thingA.solve(problem);",
+      "highlightLines": [2],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Deep dive into Thing B. Same treatment — when it wins, when it doesn't. Be fair and honest.",
+      "voice": "sophia",
+      "highlightWords": ["Thing B", "wins"]
+    },
+    {
+      "type": "code",
+      "label": "Thing B in Practice",
+      "language": "javascript",
+      "code": "// Thing B approach\nconst result = thingB.solve(problem);",
+      "highlightLines": [2],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "The verdict. Don't be wishy-washy — give a clear recommendation based on context. 'If you need X, use A. If you need Y, use B.'",
+      "voice": "sophia",
+      "highlightWords": ["verdict", "recommendation"]
+    },
+    {
+      "type": "quote",
+      "quote": "A quote that captures the wisdom of choosing the right tool for the job.",
+      "attribution": "— Attribution",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next: Deep Dive into the Winner",
+      "ctaText": "likeone.ai/learn",
+      "durationS": 4
+    }
+  ]
+}
