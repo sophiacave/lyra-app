@@ -257,6 +257,8 @@ export default function PixelQuest({
           className="lo-pixel-canvas"
           width={320}
           height={288}
+          role="img"
+          aria-label={`PixelQuest game grid. ${message || 'Navigate to collect correct answers.'}`}
         />
         <div className="lo-pixel-hud">
           <span>{'♥'.repeat(lives)}{'♡'.repeat(Math.max(0, 3 - lives))}</span>
@@ -330,25 +332,26 @@ export default function PixelQuest({
         {/* D-pad */}
         <div className="lo-pixel-dpad">
           <div />
-          <button className="lo-pixel-dpad-btn" onClick={() => move(0, -1)}>↑</button>
+          <button className="lo-pixel-dpad-btn" onClick={() => move(0, -1)} aria-label="Move up">↑</button>
           <div />
-          <button className="lo-pixel-dpad-btn" onClick={() => move(-1, 0)}>←</button>
+          <button className="lo-pixel-dpad-btn" onClick={() => move(-1, 0)} aria-label="Move left">←</button>
           <div className="lo-pixel-dpad-btn lo-pixel-dpad-center" />
-          <button className="lo-pixel-dpad-btn" onClick={() => move(1, 0)}>→</button>
+          <button className="lo-pixel-dpad-btn" onClick={() => move(1, 0)} aria-label="Move right">→</button>
           <div />
-          <button className="lo-pixel-dpad-btn" onClick={() => move(0, 1)}>↓</button>
+          <button className="lo-pixel-dpad-btn" onClick={() => move(0, 1)} aria-label="Move down">↓</button>
           <div />
         </div>
 
         {/* A/B buttons */}
         <div className="lo-pixel-ab">
           {(phase === 'gameOver' || phase === 'allClear') && (
-            <button className="lo-pixel-ab-btn btn-a" onClick={restart}>A</button>
+            <button className="lo-pixel-ab-btn btn-a" onClick={restart} aria-label="Restart game">A</button>
           )}
           {phase === 'playing' && (
             <button
               className="lo-pixel-ab-btn btn-b"
               onClick={() => setMessage(levels[currentLevel]?.question || '')}
+              aria-label="Show question"
             >
               B
             </button>

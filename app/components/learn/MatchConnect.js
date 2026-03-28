@@ -112,7 +112,7 @@ export default function MatchConnect({
       </div>
 
       {complete ? (
-        <div className="lo-match-result">
+        <div className="lo-match-result" role="alert" aria-live="assertive">
           <p className="lo-match-result-text">
             ✓ All matched! {attempts === pairs.length ? 'Perfect — no mistakes!' : `${score}/${pairs.length} in ${attempts} attempts.`}
           </p>
@@ -133,7 +133,7 @@ export default function MatchConnect({
           </div>
 
           {/* Center lines */}
-          <div className="lo-match-lines">
+          <div className="lo-match-lines" aria-hidden="true">
             <svg viewBox="0 0 60 400" preserveAspectRatio="none">
               {lines.map((line, i) => {
                 const leftPos = leftOrder.indexOf(line.leftIdx);

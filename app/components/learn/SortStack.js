@@ -125,7 +125,7 @@ export default function SortStack({
         <p className="lo-sort-sub">{instruction}</p>
       </div>
 
-      <div className="lo-sort-list">
+      <div className="lo-sort-list" role="listbox" aria-label={title}>
         {order.map((item, idx) => (
           <div
             key={`${item}-${idx}`}
@@ -134,14 +134,21 @@ export default function SortStack({
             } ${overIdx === idx ? 'sort-over' : ''} ${
               showCorrect ? 'sort-correct' : ''
             } ${tapIdx === idx ? 'match-selected' : ''}`}
+            role="option"
+            tabIndex={0}
+            aria-selected={tapIdx === idx}
+            aria-label={`Position ${idx + 1}: ${item}`}
             draggable
             onDragStart={() => handleDragStart(idx)}
             onDragOver={(e) => handleDragOver(e, idx)}
             onDrop={() => handleDrop(idx)}
             onDragEnd={() => { setDragIdx(null); setOverIdx(null); }}
             onClick={() => handleTap(idx)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleTap(idx); }
+            }}
           >
-            <span className="lo-sort-handle">⠿</span>
+            <span className="lo-sort-handle" aria-hidden="true">⠿</span>
             <span className="lo-sort-num">{idx + 1}</span>
             <span className="lo-sort-text">{item}</span>
           </div>
@@ -155,12 +162,12 @@ export default function SortStack({
       )}
 
       {result === 'correct' && (
-        <div className="lo-sort-result sort-success">
+        <div className="lo-sort-result sort-success" role="alert" aria-live="assertive">
           ✓ {attempts === 1 ? 'Perfect — first try!' : `Correct! Got it in ${attempts} attempts.`}
         </div>
       )}
       {result === 'wrong' && (
-        <div className="lo-sort-result sort-tryagain">
+        <div className="lo-sort-result sort-tryagain" role="alert" aria-live="assertive">
           Not quite — some items are out of order. Keep trying!
         </div>
       )}

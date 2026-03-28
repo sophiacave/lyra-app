@@ -46,6 +46,7 @@ export default function Header({ variant = 'main', activeLink = '' }) {
           <button
             className="site-mobile-toggle"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? '\u2715' : '\u2630'}

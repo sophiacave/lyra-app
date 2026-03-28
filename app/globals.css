@@ -197,6 +197,40 @@ html, body {
   }
 }
 
+/* ── Accessibility: Focus Visibility ── */
+*:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
+/* Inputs already show focus via border — suppress double ring */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px rgba(192,132,252,0.15);
+}
+
+/* ── Accessibility: Skip Navigation ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 10000;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent-purple);
+  color: var(--text-inverse);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-sm);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: var(--space-2);
+}
+
 .app {
   max-width: 480px;
   margin: 0 auto;
@@ -754,7 +788,8 @@ html, body {
   background: var(--glass-bg-strong);
 }
 .glass-btn:focus-visible {
-  outline: none;
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
   border-color: var(--border-accent);
   box-shadow: var(--glow-purple-subtle);
 }

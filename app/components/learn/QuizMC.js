@@ -174,13 +174,13 @@ export default function QuizMC({
   return (
     <div className="lo-quiz">
       {/* Progress bar */}
-      <div className="lo-quiz-progress">
+      <div className="lo-quiz-progress" role="progressbar" aria-valuenow={current + 1} aria-valuemin={1} aria-valuemax={total} aria-label={`Question ${current + 1} of ${total}`}>
         <div className="lo-quiz-progress-fill" style={{ width: `${progress}%` }} />
       </div>
       <div className="lo-quiz-meta">
         <span className="lo-quiz-counter">{current + 1} / {total}</span>
         {/* Progress dots */}
-        <div className="lo-quiz-dots">
+        <div className="lo-quiz-dots" aria-hidden="true">
           {shuffled.map((_, i) => (
             <span
               key={i}
@@ -226,9 +226,9 @@ export default function QuizMC({
 
       {/* Feedback */}
       {phase === 'feedback' && (
-        <div className={`lo-quiz-feedback ${selected === q.correct ? 'feedback-correct' : 'feedback-wrong'}`}>
+        <div className={`lo-quiz-feedback ${selected === q.correct ? 'feedback-correct' : 'feedback-wrong'}`} role="alert" aria-live="assertive">
           <div className="lo-quiz-feedback-content">
-            <span className="lo-quiz-feedback-icon">
+            <span className="lo-quiz-feedback-icon" aria-hidden="true">
               {selected === q.correct ? '✓' : '✗'}
             </span>
             <p>

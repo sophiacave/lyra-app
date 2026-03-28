@@ -134,8 +134,8 @@ export default function FlashDeck({
         <span className="lo-flash-counter">
           {activeDeck.length} card{activeDeck.length !== 1 ? 's' : ''} remaining
         </span>
-        <div className="lo-flash-mastery">
-          <svg className="lo-flash-mastery-ring" viewBox="0 0 24 24">
+        <div className="lo-flash-mastery" role="progressbar" aria-valuenow={masteredCount} aria-valuemin={0} aria-valuemax={total} aria-label={`${masteredCount} of ${total} cards mastered`}>
+          <svg className="lo-flash-mastery-ring" viewBox="0 0 24 24" aria-hidden="true">
             <circle className="lo-flash-mastery-bg" cx="12" cy="12" r="9" />
             <circle
               className="lo-flash-mastery-fill"
@@ -153,13 +153,17 @@ export default function FlashDeck({
         <div
           className={`lo-flash-card ${flipped ? 'flipped' : ''} ${swipeClass}`}
           onClick={() => !flipped && setFlipped(true)}
+          onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && !flipped) { e.preventDefault(); setFlipped(true); } }}
+          tabIndex={0}
+          role="button"
+          aria-label={flipped ? 'Flash card — showing answer' : 'Flash card — press to reveal answer'}
         >
-          <div className="lo-flash-card-face lo-flash-front">
+          <div className="lo-flash-card-face lo-flash-front" aria-hidden={flipped}>
             <div className="lo-flash-card-q">{current.front}</div>
             <span className="lo-flash-tap-hint">tap to reveal</span>
           </div>
-          <div className="lo-flash-card-face lo-flash-back">
-            <div className="lo-flash-card-a">{current.back}</div>
+          <div className="lo-flash-card-face lo-flash-back" aria-hidden={!flipped}>
+            <div className="lo-flash-card-a" aria-live="polite">{current.back}</div>
           </div>
         </div>
       </div>
