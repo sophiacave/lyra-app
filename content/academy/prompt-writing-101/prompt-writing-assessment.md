@@ -150,25 +150,38 @@ free: false
   <span class="section-label">Final Challenge</span>
   <h2 class="section-title">The prompt writing gauntlet.</h2>
 
-<div data-learn="PixelQuest" data-props='{
-  "levels": [
+<div data-learn="QuizMC" data-props='{
+  "title": "Prompt Writing Final Challenge",
+  "questions": [
     {
-      "question": "Collect the RCFCE components!",
-      "correct": ["Role", "Context", "Format", "Constraints", "Examples"],
-      "wrong": ["Flattery", "Length padding", "Buzzwords", "Vagueness"],
-      "gridSize": 7
+      "q": "What does the R in RCFCE stand for?",
+      "options": ["Results", "Role", "Repetition", "Review"],
+      "correct": 1,
+      "explanation": "Role sets the persona Claude adopts. \"You are a senior copywriter\" produces very different output than no role at all."
     },
     {
-      "question": "Collect the good habits! Avoid the mistakes!",
-      "correct": ["Be specific", "Iterate", "Add context", "Use negative constraints", "Paste examples"],
-      "wrong": ["Be vague", "Give up early", "Skip the audience", "Ask 5 questions at once"],
-      "gridSize": 8
+      "q": "Which RCFCE component is MOST often skipped by beginners?",
+      "options": ["Role", "Context", "Examples", "Format"],
+      "correct": 2,
+      "explanation": "Examples (few-shot) are the most underused component. Pasting 2-3 examples of what you want transforms Claude from generic to precise."
     },
     {
-      "question": "Collect the follow-up patterns!",
-      "correct": ["Zoom In", "Tone Shift", "Redirect", "Remix", "Best of Both"],
-      "wrong": ["Start over every time", "Add more flattery", "Same prompt again", "Longer prompt"],
-      "gridSize": 7
+      "q": "Your prompt gets a decent response but the tone is wrong. What follow-up pattern should you use?",
+      "options": ["Start a new conversation", "Zoom In — ask for more detail", "Tone Shift — specify the voice you actually want", "Send the same prompt again"],
+      "correct": 2,
+      "explanation": "Tone Shift is the right move: \"Rewrite this in a casual, conversational voice\" or \"Make it more direct and punchy.\" No need to start over."
+    },
+    {
+      "q": "Which of these is a negative constraint?",
+      "options": ["\"Write 500 words\"", "\"Use bullet points\"", "\"Do NOT include jargon or buzzwords\"", "\"Add 3 examples\""],
+      "correct": 2,
+      "explanation": "Negative constraints tell Claude what to avoid. They are surprisingly effective at cutting the generic AI-sounding fluff."
+    },
+    {
+      "q": "Claude gives you two good responses to the same prompt with different approaches. What do you do?",
+      "options": ["Pick one and move on", "Ask Claude to combine the best parts of both (Best of Both pattern)", "Discard both and start over", "Accept whichever came first"],
+      "correct": 1,
+      "explanation": "The Best of Both pattern: \"Take the structure from Response 1 and the tone from Response 2. Combine them.\" This produces better results than either alone."
     }
   ]
 }'></div>

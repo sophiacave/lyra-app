@@ -174,11 +174,11 @@ css: "claude-beginners.css"
       "options": [
         "Write emails in your voice",
         "Analyze sales data and find trends",
-        "Access the internet to check live stock prices",
+        "Log into your bank account and make a transfer",
         "Summarize a 15-page report in seconds"
       ],
       "correct": 2,
-      "explanation": "Claude cannot access the internet in real time. It works with the information you give it and its training data — but it cannot browse the web or check live data."
+      "explanation": "Claude can search the web, write, and analyze data — but it cannot log into your accounts or take actions on external services without explicit tool integrations you control."
     }
   ]
 }'></div>

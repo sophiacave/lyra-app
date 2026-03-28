@@ -126,10 +126,10 @@ If Claude's first response isn't perfect, don't rewrite your prompt from scratch
 
 Be honest about the limitations:
 
-- **No internet access** in the free tier — Claude can't Google things for you
-- **Knowledge cutoff** — It doesn't know about very recent events
 - **It can be wrong** — Always verify important facts, especially numbers and dates
-- **It can't take action** — It generates text, not button clicks (unless you use the API)
+- **It can't take action on its own** — It generates text, not button clicks (unless you use the API with tool use)
+- **Web search has limits** — Claude can search the web in real time, but it can't log into your accounts or access paywalled content
+- **Long conversations lose focus** — Very long chats can cause Claude to lose track of earlier context
 
 ## Your Next Step
 

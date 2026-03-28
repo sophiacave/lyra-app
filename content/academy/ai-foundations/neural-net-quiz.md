@@ -99,19 +99,32 @@ free: true
   <span class="section-label">Game Time</span>
   <h2 class="section-title">Collect the correct concepts.</h2>
 
-<div data-learn="PixelQuest" data-props='{
-  "levels": [
+<div data-learn="QuizMC" data-props='{
+  "title": "Inside a Neural Network",
+  "questions": [
     {
-      "question": "Collect things that happen INSIDE a single neuron!",
-      "correct": ["Multiply inputs by weights", "Add bias", "Apply activation function", "Sum weighted inputs"],
-      "wrong": ["Store training data", "Display results", "Count other neurons", "Connect to the internet"],
-      "gridSize": 7
+      "q": "What happens inside a single artificial neuron?",
+      "options": ["It stores training data for later", "It multiplies inputs by weights, adds bias, then applies an activation function", "It connects to the internet to fetch answers", "It displays results to the user"],
+      "correct": 1,
+      "explanation": "A neuron does math: weighted sum of inputs + bias, passed through an activation function. Simple individually, powerful in networks of millions."
     },
     {
-      "question": "Collect the three types of layers in a neural network!",
-      "correct": ["Input Layer", "Hidden Layer", "Output Layer"],
-      "wrong": ["Storage Layer", "Display Layer", "Internet Layer", "Speed Layer"],
-      "gridSize": 6
+      "q": "What are the three types of layers in a neural network?",
+      "options": ["Speed, Storage, and Display layers", "Input, Hidden, and Output layers", "Fast, Medium, and Slow layers", "Text, Image, and Audio layers"],
+      "correct": 1,
+      "explanation": "Input layers receive data, hidden layers process it through learned patterns, and output layers produce the final result."
+    },
+    {
+      "q": "What is the purpose of an activation function?",
+      "options": ["To turn the computer on", "To introduce non-linearity — allowing the network to learn complex patterns", "To speed up training", "To compress the output to save storage"],
+      "correct": 1,
+      "explanation": "Without activation functions, a neural network is just linear algebra — it could only learn straight-line relationships. Activation functions let it learn curves, edges, and complex patterns."
+    },
+    {
+      "q": "What does \"bias\" do in a neuron?",
+      "options": ["Makes the AI biased toward certain answers", "Shifts the activation threshold — letting the neuron fire even when inputs are zero", "Speeds up computation", "Connects the neuron to other layers"],
+      "correct": 1,
+      "explanation": "Bias is a constant added before the activation function. It shifts when the neuron activates, giving the network more flexibility to fit data."
     }
   ]
 }'></div>

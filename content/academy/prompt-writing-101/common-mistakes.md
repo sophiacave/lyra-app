@@ -76,19 +76,38 @@ free: false
   <span class="section-label">Game Time</span>
   <h2 class="section-title">Collect the fixes, avoid the mistakes.</h2>
 
-<div data-learn="PixelQuest" data-props='{
-  "levels": [
+<div data-learn="QuizMC" data-props='{
+  "title": "Good Practice or Common Mistake?",
+  "questions": [
     {
-      "question": "Collect GOOD prompt practices. Avoid the bad ones!",
-      "correct": ["Be specific", "Add context", "Set a role", "Iterate", "Use constraints"],
-      "wrong": ["Be vague", "Ask 4 questions at once", "Skip the audience", "Give up after 1 try"],
-      "gridSize": 7
+      "q": "You write: \"Make it better.\" Is this a good prompting practice?",
+      "options": ["Yes — short prompts are always better", "No — this is too vague for Claude to know what you want"],
+      "correct": 1,
+      "explanation": "\"Make it better\" gives Claude no direction. Better: \"Make this paragraph more concise, use active voice, and cut it to 2 sentences.\""
     },
     {
-      "question": "Collect the FIXES. Avoid the mistakes!",
-      "correct": ["Paste examples", "Specify format", "One question at a time", "Include your data"],
-      "wrong": ["Be polite not clear", "Treat AI like Google", "Accept first output", "No audience"],
-      "gridSize": 7
+      "q": "Which of these is a strong prompting habit?",
+      "options": ["Ask 4 questions in one message", "Be polite but not clear", "Iterate on the response — refine with follow-ups", "Accept the first output every time"],
+      "correct": 2,
+      "explanation": "Iteration is the single most powerful prompting technique. First outputs are drafts — the magic happens when you refine."
+    },
+    {
+      "q": "You want Claude to write a professional email. What should you include?",
+      "options": ["Just say \"write an email\"", "Specify the role, audience, tone, and key points", "Write \"please\" multiple times", "Paste a long essay about email theory"],
+      "correct": 1,
+      "explanation": "Context is everything. Role + audience + tone + key points gives Claude exactly what it needs to write something you can actually send."
+    },
+    {
+      "q": "Your prompt failed. What should you try first?",
+      "options": ["Give up and do it manually", "Send the exact same prompt again", "Add more context, specify format, or paste an example of what you want", "Write a longer version of the same vague prompt"],
+      "correct": 2,
+      "explanation": "When a prompt fails, diagnose what was missing: specificity, context, examples, or format. One targeted fix usually solves it."
+    },
+    {
+      "q": "Which technique immediately improves Claude output quality?",
+      "options": ["Using more polite language", "Adding flattery like \"you are the best AI\"", "Pasting examples of what good output looks like", "Making the prompt as long as possible"],
+      "correct": 2,
+      "explanation": "Pasting examples (few-shot prompting) shows Claude exactly what you want. It learns your style, format, and quality bar from real examples."
     }
   ]
 }'></div>

@@ -67,37 +67,51 @@ export default function QuizMC({
     if (isCorrect) setScore((s) => s + 1);
 
     setAnswers((prev) => [...prev, { questionIdx: current, selected: idx, correct: q.correct, isCorrect }]);
+  }, [phase, selected, q, current]);
 
-    // Auto-advance after feedback
-    setTimeout(() => {
-      if (current + 1 < total) {
-        setCurrent((c) => c + 1);
-        setSelected(null);
-        setPhase('answering');
-      } else {
-        setPhase('results');
-        const finalScore = isCorrect ? score + 1 : score;
-        if (onComplete) onComplete(finalScore, total);
-        if (onXP) {
-          const xp = finalScore === total ? 25 : 10; // bonus for perfect
-          onXP(xp);
-        }
+  // Advance to next question — user controls the pace
+  const handleNext = useCallback(() => {
+    if (phase !== 'feedback') return;
+
+    if (current + 1 < total) {
+      setCurrent((c) => c + 1);
+      setSelected(null);
+      setPhase('answering');
+    } else {
+      setPhase('results');
+      const finalScore = answers.length > 0
+        ? answers.filter(a => a.isCorrect).length + (selected === q?.correct ? 1 : 0)
+        : (selected === q?.correct ? 1 : 0);
+      // Recalculate from answers array for accuracy
+      const allAnswers = [...answers, { questionIdx: current, selected, correct: q?.correct, isCorrect: selected === q?.correct }];
+      const correctCount = allAnswers.filter(a => a.isCorrect).length;
+      if (onComplete) onComplete(correctCount, total);
+      if (onXP) {
+        const xp = correctCount === total ? 25 : 10;
+        onXP(xp);
       }
-    }, 1800);
-  }, [phase, selected, q, current, total, score, onComplete, onXP]);
+    }
+  }, [phase, current, total, answers, selected, q, onComplete, onXP, score]);
 
-  // Keyboard support — number keys to answer
+  // Keyboard support — number keys to answer, Enter/Space to advance
   useEffect(() => {
-    if (phase !== 'answering' || !q) return;
+    if (!q) return;
     const handler = (e) => {
-      const num = parseInt(e.key);
-      if (num >= 1 && num <= q.options.length) {
-        handleAnswer(num - 1);
+      if (phase === 'answering') {
+        const num = parseInt(e.key);
+        if (num >= 1 && num <= q.options.length) {
+          handleAnswer(num - 1);
+        }
+      } else if (phase === 'feedback') {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleNext();
+        }
       }
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [phase, q, handleAnswer]);
+  }, [phase, q, handleAnswer, handleNext]);
 
   const retry = () => {
     setCurrent(0);
@@ -211,12 +225,24 @@ export default function QuizMC({
       </div>
 
       {/* Feedback */}
-      {phase === 'feedback' && q.explanation && (
+      {phase === 'feedback' && (
         <div className={`lo-quiz-feedback ${selected === q.correct ? 'feedback-correct' : 'feedback-wrong'}`}>
-          <span className="lo-quiz-feedback-icon">
-            {selected === q.correct ? '✓' : '→'}
-          </span>
-          <p>{selected === q.correct ? 'Correct! ' : ''}{q.explanation}</p>
+          <div className="lo-quiz-feedback-content">
+            <span className="lo-quiz-feedback-icon">
+              {selected === q.correct ? '✓' : '✗'}
+            </span>
+            <p>
+              {selected === q.correct ? 'Correct!' : `Incorrect — the answer is ${q.options[q.correct]}.`}
+              {q.explanation ? ` ${q.explanation}` : ''}
+            </p>
+          </div>
+          <button
+            className="lo-quiz-btn-next"
+            onClick={handleNext}
+            autoFocus
+          >
+            {current + 1 < total ? 'Next Question →' : 'See Results →'}
+          </button>
         </div>
       )}
     </div>

@@ -99,25 +99,38 @@ free: false
   <span class="section-label">Final Challenge</span>
   <h2 class="section-title">The AI Foundations gauntlet.</h2>
 
-<div data-learn="PixelQuest" data-props='{
-  "levels": [
+<div data-learn="QuizMC" data-props='{
+  "title": "AI Foundations Gauntlet",
+  "questions": [
     {
-      "question": "Collect the core AI concepts!",
-      "correct": ["Neurons", "Weights", "Embeddings", "Tokens", "Activation"],
-      "wrong": ["Pixels", "Megabytes", "Bluetooth", "WiFi"],
-      "gridSize": 7
+      "q": "Which of these is a core component inside an artificial neuron?",
+      "options": ["Pixels", "Weights", "Bluetooth", "Megabytes"],
+      "correct": 1,
+      "explanation": "Weights are the learnable parameters inside each neuron. They determine how much influence each input has on the output."
     },
     {
-      "question": "Collect the prompt techniques!",
-      "correct": ["Zero-Shot", "Few-Shot", "Chain-of-Thought", "Role-Play", "Temperature"],
-      "wrong": ["Copy-Paste", "Spell Check", "Font Size", "Page Layout"],
-      "gridSize": 7
+      "q": "What does \"few-shot prompting\" mean?",
+      "options": ["Sending very short prompts", "Giving Claude 2-3 examples of what you want before asking", "Using Claude for only a few minutes", "Limiting Claude to a few words of response"],
+      "correct": 1,
+      "explanation": "Few-shot means providing examples in your prompt. Claude learns the pattern from your examples and applies it to the new task."
     },
     {
-      "question": "Collect embedding concepts!",
-      "correct": ["Vectors", "Cosine Similarity", "Semantic Space", "RAG", "Analogy"],
-      "wrong": ["Screen Resolution", "File Size", "Printer", "Keyboard"],
-      "gridSize": 7
+      "q": "In embedding space, what does cosine similarity measure?",
+      "options": ["How long two texts are", "How semantically similar two concepts are", "The file size of a document", "How fast the model runs"],
+      "correct": 1,
+      "explanation": "Cosine similarity measures the angle between two vectors in embedding space. Closer angles = more semantically similar concepts."
+    },
+    {
+      "q": "What is RAG (Retrieval-Augmented Generation)?",
+      "options": ["A type of neural network layer", "A technique that retrieves relevant data and feeds it to the AI before generating a response", "A way to compress images", "A programming language for AI"],
+      "correct": 1,
+      "explanation": "RAG searches your data for relevant context, then gives it to the AI so it can generate accurate, grounded responses from your actual information."
+    },
+    {
+      "q": "What does the temperature parameter control?",
+      "options": ["The speed of the AI response", "How creative vs deterministic the output is", "The number of tokens generated", "The size of the context window"],
+      "correct": 1,
+      "explanation": "Temperature controls randomness. Low temperature (0) = deterministic and focused. High temperature (1) = more creative and varied."
     }
   ]
 }'></div>

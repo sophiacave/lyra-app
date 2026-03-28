@@ -98,13 +98,26 @@ free: false
   <span class="section-label">Final Challenge</span>
   <h2 class="section-title">Collect the prompt engineering knowledge.</h2>
 
-<div data-learn="PixelQuest" data-props='{
-  "levels": [
+<div data-learn="QuizMC" data-props='{
+  "title": "Prompt Engineering Concepts",
+  "questions": [
     {
-      "question": "Collect REAL prompt engineering concepts!",
-      "correct": ["Temperature", "Context Window", "System Prompt", "Few-Shot", "Chain-of-Thought"],
-      "wrong": ["RAM Speed", "Pixel Count", "Font Size", "Screen Resolution"],
-      "gridSize": 7
+      "q": "What is a system prompt?",
+      "options": ["The first message a user sends", "Hidden instructions that define how the AI behaves for the entire conversation", "An error message from the operating system", "The AI model name"],
+      "correct": 1,
+      "explanation": "System prompts are behind-the-scenes instructions. They set the AI persona, rules, and behavior before the user says anything."
+    },
+    {
+      "q": "What is a context window?",
+      "options": ["A pop-up window showing AI context", "The maximum amount of text the AI can process in one conversation", "A browser window for reading context", "The speed at which AI processes text"],
+      "correct": 1,
+      "explanation": "The context window is the AI total memory per conversation — input + output combined. Claude Opus 4.6 has a 1M token context window."
+    },
+    {
+      "q": "What is Chain-of-Thought prompting?",
+      "options": ["Sending many prompts in a chain", "Asking the AI to show its reasoning step by step before giving an answer", "Linking multiple AI models together", "A way to speed up AI responses"],
+      "correct": 1,
+      "explanation": "Chain-of-Thought asks the AI to reason out loud. This dramatically improves accuracy on math, logic, and complex analysis tasks."
     }
   ]
 }'></div>
