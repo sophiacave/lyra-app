@@ -1,0 +1,177 @@
+{
+  "title": "AI Without Jargon",
+  "subtitle": "AI for Business Owners — Like One Academy",
+  "slug": "ai-without-jargon",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "The AI world loves fancy words. LLMs, tokens, hallucinations, fine-tuning, RAG. It sounds like science fiction, but every single one of these concepts is simple when you strip away the jargon. In this lesson, you will learn the only ten AI terms you actually need — in plain business English.",
+      "voice": "sophia",
+      "highlightWords": [
+        "LLMs",
+        "tokens",
+        "hallucinations",
+        "ten AI terms",
+        "plain business English"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The AI Vocabulary Map",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "LLM"
+        },
+        {
+          "x": 0.4,
+          "y": 0.3,
+          "label": "Prompt"
+        },
+        {
+          "x": 0.6,
+          "y": 0.3,
+          "label": "Token"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "Hallucination"
+        },
+        {
+          "x": 0.2,
+          "y": 0.65,
+          "label": "Fine-tuning"
+        },
+        {
+          "x": 0.4,
+          "y": 0.65,
+          "label": "RAG"
+        },
+        {
+          "x": 0.6,
+          "y": 0.65,
+          "label": "Context Window"
+        },
+        {
+          "x": 0.8,
+          "y": 0.65,
+          "label": "API"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          6
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "An LLM — Large Language Model — is the engine behind tools like Claude, ChatGPT, and Gemini. Think of it as an incredibly well-read assistant that predicts what words should come next. It has read billions of documents and learned patterns in language. That is it. Not magic. Pattern recognition at a massive scale.",
+      "voice": "sophia",
+      "highlightWords": [
+        "LLM",
+        "Large Language Model",
+        "pattern recognition",
+        "massive scale"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "A prompt is your instruction to the AI. It is the question, the task, the briefing document you give it. A token is how AI measures text — roughly one token per word. This matters because AI tools charge by tokens and have limits on how much text they can process at once. That limit is the context window — think of it as working memory.",
+      "voice": "sophia",
+      "highlightWords": [
+        "prompt",
+        "token",
+        "context window",
+        "working memory"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "A hallucination is when AI confidently states something that is completely wrong. It happens because the model predicts plausible-sounding text, not verified facts. This is the single biggest risk in business AI. The fix is simple — always verify critical facts, and use AI for drafting, not for being your source of truth.",
+      "voice": "sophia",
+      "highlightWords": [
+        "hallucination",
+        "confidently wrong",
+        "verify critical facts",
+        "source of truth"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "AI Jargon",
+      "rightTitle": "Business English",
+      "leftItems": [
+        "Large Language Model",
+        "Prompt engineering",
+        "Hallucination",
+        "Fine-tuning",
+        "RAG"
+      ],
+      "rightItems": [
+        "Smart text prediction engine",
+        "Writing better instructions",
+        "AI making things up",
+        "Customizing AI for your data",
+        "Giving AI access to your documents"
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Fine-tuning means training AI on your specific data so it understands your business better. RAG — Retrieval Augmented Generation — means giving AI access to your documents so it can look things up instead of guessing. Both solve the same problem: making AI know about YOUR business, not just general knowledge.",
+      "voice": "sophia",
+      "highlightWords": [
+        "fine-tuning",
+        "RAG",
+        "your business",
+        "your documents"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "An API — Application Programming Interface — is how software talks to AI behind the scenes. When an app \"uses AI,\" it is making API calls. You do not need to understand the technical details, but knowing the word helps you speak the same language as your tech team.",
+      "voice": "sophia",
+      "highlightWords": [
+        "API",
+        "software talks to AI",
+        "tech team"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "If you can't explain it simply, you don't understand it well enough.",
+      "attribution": "— Albert Einstein",
+      "durationS": 4
+    },
+    {
+      "type": "narration",
+      "text": "You now speak AI. These ten terms cover ninety percent of every AI conversation you will have in business. In the next lesson, we will get practical — what AI can actually do for your business, and more importantly, what it cannot. No hype. Just reality.",
+      "voice": "sophia",
+      "highlightWords": [
+        "speak AI",
+        "ninety percent",
+        "what AI can actually do"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — What AI Can and Cannot Do",
+      "ctaText": "likeone.ai/academy/ai-for-business",
+      "durationS": 4
+    }
+  ]
+}

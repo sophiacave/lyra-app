@@ -1,0 +1,171 @@
+{
+  "title": "Context Is Everything",
+  "subtitle": "Prompt Writing 101 — Like One Academy",
+  "slug": "context-is-everything",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "AI has read virtually everything ever written. But it knows absolutely nothing about you — your company, your audience, your goals, your constraints. Context bridges that gap. It is the single most impactful element of any prompt, and in this lesson, you will master it.",
+      "voice": "sophia",
+      "highlightWords": [
+        "context",
+        "most impactful",
+        "master it"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The 6 Types of Context",
+      "nodes": [
+        {
+          "x": 0.15,
+          "y": 0.35,
+          "label": "Situation"
+        },
+        {
+          "x": 0.35,
+          "y": 0.35,
+          "label": "Audience"
+        },
+        {
+          "x": 0.55,
+          "y": 0.35,
+          "label": "Goal"
+        },
+        {
+          "x": 0.75,
+          "y": 0.35,
+          "label": "Background"
+        },
+        {
+          "x": 0.35,
+          "y": 0.7,
+          "label": "Constraints"
+        },
+        {
+          "x": 0.55,
+          "y": 0.7,
+          "label": "Prior Work"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "There are six types of context that transform AI output. Situation — what is happening right now. Audience — who will read or use the output. Goal — what you are trying to achieve. Background — relevant history or data. Constraints — limitations like word count, tone, or format. And prior work — anything the AI should build on rather than start from scratch.",
+      "voice": "sophia",
+      "highlightWords": [
+        "situation",
+        "audience",
+        "goal",
+        "background",
+        "constraints",
+        "prior work"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Most people provide one type of context at best. They say \"write me an email\" when they should say \"write a follow-up email to a prospect who attended our webinar last Tuesday but did not book a demo — keep it under 150 words, conversational tone, and end with a soft ask.\" The second prompt gives AI everything it needs to deliver something you can actually send.",
+      "voice": "sophia",
+      "highlightWords": [
+        "follow-up email",
+        "prospect",
+        "150 words",
+        "conversational",
+        "soft ask"
+      ]
+    },
+    {
+      "type": "code",
+      "label": "Context-Rich Prompt",
+      "language": "javascript",
+      "code": "Situation: I'm launching a new SaaS product\n           next month.\nAudience:  Technical founders who have used\n           similar tools before.\nGoal:      Get them to sign up for early access.\nBackground: We have 200 beta users and 4.8/5\n            satisfaction score.\nConstraints: Under 200 words. No hype. No\n             exclamation marks.\n\nWrite the launch announcement email.",
+      "highlightLines": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "durationS": 9
+    },
+    {
+      "type": "narration",
+      "text": "Here is the rule of thumb — the more complex the task, the more context you need. A quick grammar check needs almost none. A strategy document needs paragraphs of context. Think of it like a briefing document for a consultant. The more they know, the better their advice. The same is true for AI.",
+      "voice": "sophia",
+      "highlightWords": [
+        "rule of thumb",
+        "briefing document",
+        "consultant"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Low Context",
+      "rightTitle": "High Context",
+      "leftItems": [
+        "Write a blog post about AI",
+        "AI fills gaps with generic assumptions",
+        "Output needs heavy editing"
+      ],
+      "rightItems": [
+        "Write a blog post about how small accounting firms can use AI to automate invoice processing — audience is non-technical CPAs who are skeptical of AI",
+        "AI targets the exact audience and use case",
+        "Output is nearly ready to publish"
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "One technique that saves enormous time is reusable context blocks. Write a paragraph describing your company, your audience, and your brand voice. Save it. Paste it at the start of every prompt. This gives AI consistent context without you rewriting it each time. Think of it as your AI briefing template.",
+      "voice": "sophia",
+      "highlightWords": [
+        "reusable context blocks",
+        "AI briefing template"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "Without context, AI is the smartest person in the room who just walked in five minutes late.",
+      "attribution": "— Like One Academy",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "You now have the two most powerful elements — roles and context. In the next lesson, we will cover output formats and constraints — how to tell AI exactly what shape the answer should take. The RCFCE framework is coming together.",
+      "voice": "sophia",
+      "highlightWords": [
+        "roles",
+        "context",
+        "output formats",
+        "constraints",
+        "RCFCE"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — Output Formats That Work",
+      "ctaText": "likeone.ai/academy/prompt-writing-101",
+      "durationS": 4
+    }
+  ]
+}

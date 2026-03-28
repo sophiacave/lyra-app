@@ -1,0 +1,209 @@
+{
+  "title": "What AI Can and Cannot Do",
+  "subtitle": "AI for Business Owners — Like One Academy",
+  "slug": "what-ai-can-and-cannot-do",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "AI will not replace your entire team. AI is not useless either. The truth is somewhere in the middle, and knowing exactly where that line sits is the difference between wasting money on hype and getting real ROI. In this lesson, you will learn what AI does well, where it needs help, and where it flat out fails.",
+      "voice": "sophia",
+      "highlightWords": [
+        "real ROI",
+        "does well",
+        "needs help",
+        "flat out fails"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The AI Capability Spectrum",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.4,
+          "label": "AI Does Well"
+        },
+        {
+          "x": 0.5,
+          "y": 0.4,
+          "label": "AI Can Help"
+        },
+        {
+          "x": 0.8,
+          "y": 0.4,
+          "label": "AI Cannot Do"
+        },
+        {
+          "x": 0.1,
+          "y": 0.7,
+          "label": "Drafting"
+        },
+        {
+          "x": 0.2,
+          "y": 0.7,
+          "label": "Summarizing"
+        },
+        {
+          "x": 0.3,
+          "y": 0.7,
+          "label": "Analysis"
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "label": "Strategy"
+        },
+        {
+          "x": 0.8,
+          "y": 0.7,
+          "label": "Judgment"
+        },
+        {
+          "x": 0.9,
+          "y": 0.7,
+          "label": "Empathy"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ]
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "AI does well with volume work that follows patterns. Drafting emails, summarizing documents, analyzing data, writing reports, generating social media posts, translating content, and answering common questions. These are tasks where speed matters more than originality, and AI can do them ten times faster than a human.",
+      "voice": "sophia",
+      "highlightWords": [
+        "volume work",
+        "patterns",
+        "ten times faster"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "AI can help with — but not replace — strategic work. Market analysis, competitive research, brainstorming, writing business plans, creating presentations. These tasks need human judgment to direct and validate, but AI accelerates the process enormously. Think of it as a first draft machine. You still need to edit, but starting from something is faster than starting from nothing.",
+      "voice": "sophia",
+      "highlightWords": [
+        "strategic work",
+        "human judgment",
+        "first draft machine"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "AI cannot do anything that requires real-world experience, emotional intelligence, or genuine relationships. It cannot close a deal by reading the room. It cannot comfort an upset customer with authentic empathy. It cannot make a judgment call that requires understanding your company culture. And it cannot take accountability when something goes wrong.",
+      "voice": "sophia",
+      "highlightWords": [
+        "real-world experience",
+        "emotional intelligence",
+        "relationships",
+        "accountability"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Hand to AI",
+      "rightTitle": "Keep Human",
+      "leftItems": [
+        "First drafts of emails and reports",
+        "Data analysis and pattern finding",
+        "FAQ responses and support triage",
+        "Social media post generation",
+        "Document summarization"
+      ],
+      "rightItems": [
+        "Final client communication",
+        "Strategic decisions and negotiations",
+        "Complex customer complaints",
+        "Brand voice and creative direction",
+        "Legal and compliance review"
+      ],
+      "durationS": 9
+    },
+    {
+      "type": "narration",
+      "text": "The biggest mistake businesses make is treating AI as all-or-nothing. Either they try to automate everything and get burned, or they refuse to adopt it and fall behind. The winning strategy is surgical. Identify the specific tasks where AI saves the most time, implement it there first, and expand based on results.",
+      "voice": "sophia",
+      "highlightWords": [
+        "surgical",
+        "specific tasks",
+        "implement there first",
+        "expand based on results"
+      ]
+    },
+    {
+      "type": "timeline",
+      "steps": [
+        {
+          "label": "Audit",
+          "description": "List every repetitive task your team does weekly"
+        },
+        {
+          "label": "Score",
+          "description": "Rate each task: high volume? Pattern-based? Low-risk?"
+        },
+        {
+          "label": "Pilot",
+          "description": "Pick the top 3 and test AI for 2 weeks"
+        },
+        {
+          "label": "Measure",
+          "description": "Track time saved and quality of output"
+        },
+        {
+          "label": "Scale",
+          "description": "Expand to more tasks based on data"
+        }
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Remember — AI is a tool, not a replacement for thinking. The businesses that win with AI are the ones that pair its speed with human judgment. Use AI for the eighty percent that is mechanical. Save your team for the twenty percent that requires a soul.",
+      "voice": "sophia",
+      "highlightWords": [
+        "tool",
+        "not a replacement",
+        "eighty percent",
+        "twenty percent",
+        "soul"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "The goal is not to replace humans with AI. The goal is to free humans from the work that was never human to begin with.",
+      "attribution": "— Like One Academy",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — Find Your AI Opportunities",
+      "ctaText": "likeone.ai/academy/ai-for-business",
+      "durationS": 4
+    }
+  ]
+}

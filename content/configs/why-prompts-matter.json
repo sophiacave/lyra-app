@@ -1,0 +1,146 @@
+{
+  "title": "Why Prompts Matter",
+  "subtitle": "Prompt Writing 101 — Like One Academy",
+  "slug": "why-prompts-matter",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "The difference between mediocre AI output and jaw-dropping results is not the model. It is the prompt. In this lesson, you will learn why prompts matter more than any other skill in the AI era — and why mastering them puts you ahead of ninety percent of users.",
+      "voice": "sophia",
+      "highlightWords": [
+        "prompt",
+        "AI era",
+        "mastering"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The Prompt Effect",
+      "nodes": [
+        {
+          "x": 0.5,
+          "y": 0.25,
+          "label": "Your Prompt"
+        },
+        {
+          "x": 0.5,
+          "y": 0.5,
+          "label": "AI Model"
+        },
+        {
+          "x": 0.5,
+          "y": 0.75,
+          "label": "Output Quality"
+        },
+        {
+          "x": 0.2,
+          "y": 0.5,
+          "label": "Vague Input"
+        },
+        {
+          "x": 0.2,
+          "y": 0.75,
+          "label": "Generic Output"
+        },
+        {
+          "x": 0.8,
+          "y": 0.5,
+          "label": "Precise Input"
+        },
+        {
+          "x": 0.8,
+          "y": 0.75,
+          "label": "Brilliant Output"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Here is what most people get wrong. They type a one-sentence question and expect a masterpiece. Then they say AI is overhyped. But AI is a mirror. It reflects the clarity of your thinking back at you. A vague question gets a vague answer. A precise, thoughtful prompt gets output that feels like it read your mind.",
+      "voice": "sophia",
+      "highlightWords": [
+        "mirror",
+        "clarity",
+        "precise",
+        "thoughtful"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Think of AI as the world's most capable intern. It has read virtually everything ever published. It can write in any style, format, or language. It works instantly and never gets tired. But it has zero knowledge of your specific situation. Every prompt you write is a briefing document. The better the briefing, the better the work.",
+      "voice": "sophia",
+      "highlightWords": [
+        "intern",
+        "briefing document",
+        "specific situation"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Bad Prompt",
+      "rightTitle": "Good Prompt",
+      "leftItems": [
+        "Write me a blog post",
+        "No context given",
+        "Generic output every time"
+      ],
+      "rightItems": [
+        "Write a 500-word blog post for startup founders about reducing churn — use a conversational tone and include 3 actionable tips",
+        "Rich context and constraints",
+        "Targeted and useful output"
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "This is not just about getting better answers from a chatbot. Prompt writing is the new literacy. The people who master it will write faster, analyze deeper, build quicker, and automate what used to take teams of people. It is the highest-leverage skill you can learn right now.",
+      "voice": "sophia",
+      "highlightWords": [
+        "new literacy",
+        "highest-leverage skill"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "The quality of your questions determines the quality of your life — and now, the quality of your AI.",
+      "attribution": "— Tony Robbins, adapted",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "In the next lesson, you will learn the exact anatomy of a great prompt — the five building blocks that work every single time. But for now, remember this: the prompt is not the wrapper around your question. The prompt IS the skill. Master it, and AI becomes your superpower.",
+      "voice": "sophia",
+      "highlightWords": [
+        "anatomy",
+        "five building blocks",
+        "superpower"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — The Anatomy of a Great Prompt",
+      "ctaText": "likeone.ai/academy/prompt-writing-101",
+      "durationS": 4
+    }
+  ]
+}

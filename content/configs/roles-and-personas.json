@@ -1,0 +1,168 @@
+{
+  "title": "Roles and Personas",
+  "subtitle": "Prompt Writing 101 — Like One Academy",
+  "slug": "roles-and-personas",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Tell AI who to be, and it becomes an expert on demand. This is the single most underused technique in prompt writing. In this lesson, you will learn how roles and personas transform AI output — and why most people never think to use them.",
+      "voice": "sophia",
+      "highlightWords": [
+        "roles",
+        "personas",
+        "expert on demand"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "How Roles Work",
+      "nodes": [
+        {
+          "x": 0.3,
+          "y": 0.3,
+          "label": "You Write a Role"
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "label": "AI Shifts Perspective"
+        },
+        {
+          "x": 0.7,
+          "y": 0.3,
+          "label": "Expert-Level Output"
+        },
+        {
+          "x": 0.3,
+          "y": 0.65,
+          "label": "Vocabulary Changes"
+        },
+        {
+          "x": 0.5,
+          "y": 0.65,
+          "label": "Priorities Change"
+        },
+        {
+          "x": 0.7,
+          "y": 0.65,
+          "label": "Format Changes"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "When you say \"act as a senior copywriter with ten years of experience in SaaS,\" the AI does not just acknowledge it — it fundamentally shifts how it thinks. The vocabulary changes. The priorities change. The structure of the output changes. You get output that sounds like it came from a specialist, not a generalist.",
+      "voice": "sophia",
+      "highlightWords": [
+        "senior copywriter",
+        "fundamentally shifts",
+        "specialist"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Here are roles you can use right now. Financial analyst — for spreadsheets, forecasts, and data interpretation. UX researcher — for user interviews, persona creation, and journey maps. Executive coach — for leadership advice with frameworks. Technical writer — for documentation that developers actually read. Each role unlocks a different kind of expertise.",
+      "voice": "sophia",
+      "highlightWords": [
+        "financial analyst",
+        "UX researcher",
+        "executive coach",
+        "technical writer"
+      ]
+    },
+    {
+      "type": "code",
+      "label": "Role Prompt Example",
+      "language": "javascript",
+      "code": "You are a senior marketing strategist\nwho specializes in B2B SaaS companies\nwith annual revenue between $1M-$10M.\n\nAnalyze this landing page and give me\n5 specific improvements with expected\nimpact on conversion rate.",
+      "highlightLines": [
+        1,
+        2,
+        3
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "But here is the nuance — you do not always need a role. For straightforward tasks like summarizing an article or rewriting a paragraph, a role adds unnecessary complexity. Use roles when you need specialized expertise, a specific perspective, or a particular communication style. Skip them for simple utility tasks.",
+      "voice": "sophia",
+      "highlightWords": [
+        "do not always need",
+        "specialized expertise",
+        "specific perspective"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Without Role",
+      "rightTitle": "With Role",
+      "leftItems": [
+        "Generic advice anyone could give",
+        "Surface-level analysis",
+        "One-size-fits-all tone"
+      ],
+      "rightItems": [
+        "Specialized expertise with frameworks",
+        "Deep analysis with industry context",
+        "Professional tone matching the domain"
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "The power move is stacking roles. You can ask AI to be a senior developer who also thinks like a product manager. Or a data scientist who communicates like a journalist. Role stacking gives you output that crosses disciplines — the kind of thinking that is rare and valuable in the real world.",
+      "voice": "sophia",
+      "highlightWords": [
+        "stacking roles",
+        "crosses disciplines",
+        "rare and valuable"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "The role you assign is the lens through which AI sees your problem. Choose the lens carefully.",
+      "attribution": "— Like One Academy",
+      "durationS": 4
+    },
+    {
+      "type": "narration",
+      "text": "In the next lesson, you will learn about context — the single most impactful element of any prompt. If roles tell AI who to be, context tells AI what it is working with. Together, they are unstoppable.",
+      "voice": "sophia",
+      "highlightWords": [
+        "context",
+        "most impactful",
+        "unstoppable"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — Context Is Everything",
+      "ctaText": "likeone.ai/academy/prompt-writing-101",
+      "durationS": 4
+    }
+  ]
+}

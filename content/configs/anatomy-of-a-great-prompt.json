@@ -1,0 +1,178 @@
+{
+  "title": "The Anatomy of a Great Prompt",
+  "subtitle": "Prompt Writing 101 — Like One Academy",
+  "slug": "anatomy-of-a-great-prompt",
+  "sections": [
+    {
+      "type": "narration",
+      "text": "Every great prompt is built from five components. You do not always need all five, but knowing them gives you a toolkit for any situation. This is the RCFCE framework — Role, Context, Format, Constraints, and Examples. Let us break each one down.",
+      "voice": "sophia",
+      "highlightWords": [
+        "five components",
+        "RCFCE framework",
+        "Role",
+        "Context",
+        "Format",
+        "Constraints",
+        "Examples"
+      ]
+    },
+    {
+      "type": "concept",
+      "label": "The RCFCE Framework",
+      "nodes": [
+        {
+          "x": 0.1,
+          "y": 0.5,
+          "label": "Role"
+        },
+        {
+          "x": 0.3,
+          "y": 0.5,
+          "label": "Context"
+        },
+        {
+          "x": 0.5,
+          "y": 0.5,
+          "label": "Format"
+        },
+        {
+          "x": 0.7,
+          "y": 0.5,
+          "label": "Constraints"
+        },
+        {
+          "x": 0.9,
+          "y": 0.5,
+          "label": "Examples"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Role sets who the AI should be. When you say \"act as a senior copywriter,\" the AI shifts its expertise, vocabulary, and perspective. A data analyst gives different output than a marketing director. Role is optional, but powerful when you need specialized knowledge.",
+      "voice": "sophia",
+      "highlightWords": [
+        "Role",
+        "senior copywriter",
+        "expertise",
+        "perspective"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Context is the single most impactful element. This is where you explain the situation, the background, and the audience. AI has infinite general knowledge but zero context about your specific situation. The more relevant context you provide, the more tailored and useful the output becomes.",
+      "voice": "sophia",
+      "highlightWords": [
+        "Context",
+        "most impactful",
+        "situation",
+        "background",
+        "audience"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Format tells the AI what the output should look like. Bullet points, a numbered list, a table, an email, a JSON object. Without a format instruction, AI defaults to generic paragraphs. Specifying format is the fastest way to get usable output.",
+      "voice": "sophia",
+      "highlightWords": [
+        "Format",
+        "bullet points",
+        "table",
+        "email",
+        "JSON"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Constraints are boundaries. Word count, tone of voice, things to avoid. Negative constraints are surprisingly powerful — saying \"no buzzwords, no filler, no exclamation marks\" eliminates the generic AI sound instantly. Constraints turn good output into great output.",
+      "voice": "sophia",
+      "highlightWords": [
+        "Constraints",
+        "boundaries",
+        "negative constraints",
+        "no buzzwords"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "Examples show the AI what good looks like. Even a two-sentence example gives the AI a target for voice, style, and structure. If you want output that matches a specific format or tone, one example is worth a hundred words of instruction.",
+      "voice": "sophia",
+      "highlightWords": [
+        "Examples",
+        "voice",
+        "style",
+        "structure"
+      ]
+    },
+    {
+      "type": "comparison",
+      "leftTitle": "Minimum Viable Prompt",
+      "rightTitle": "Full RCFCE Prompt",
+      "leftItems": [
+        "Context + Format only",
+        "Gets you 80% there",
+        "Perfect for quick tasks"
+      ],
+      "rightItems": [
+        "All five components",
+        "Gets you 99% there",
+        "Perfect for high-stakes work"
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Here is the secret — you do not need all five every time. For most everyday prompts, Context plus Format gets you eighty percent of the way there. Add Role when you need expertise. Add Constraints when precision matters. Add Examples when voice matters. Stack what you need, skip what you do not.",
+      "voice": "sophia",
+      "highlightWords": [
+        "Context plus Format",
+        "eighty percent",
+        "stack what you need"
+      ]
+    },
+    {
+      "type": "quote",
+      "quote": "Give me six hours to chop down a tree, and I will spend the first four sharpening the axe.",
+      "attribution": "— Abraham Lincoln",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "The RCFCE framework is your axe. In the next lesson, we will put it into practice with roles and personas — learning how to make AI think like an expert in any field. Start using RCFCE today, even with just two components, and watch your AI output transform.",
+      "voice": "sophia",
+      "highlightWords": [
+        "RCFCE",
+        "axe",
+        "roles and personas",
+        "transform"
+      ]
+    },
+    {
+      "type": "outro",
+      "heading": "Like One Academy",
+      "subtext": "Next — Roles and Personas",
+      "ctaText": "likeone.ai/academy/prompt-writing-101",
+      "durationS": 4
+    }
+  ]
+}
