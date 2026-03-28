@@ -90,23 +90,7 @@ free: false
   <span class="section-label">Templates 4-6</span>
   <h2 class="section-title">Three more you'll use weekly.</h2>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "More Templates — Flip to See the Full Prompt",
-  "cards": [
-    {
-      "front": "📋 Template 4: Meeting Prep\n\nPrepare for any meeting in 60 seconds",
-      "back": "Help me prepare for a [type] meeting.\n\nMeeting with: [who and their role]\nPurpose: [what needs to be decided]\nMy goal: [what I want to walk away with]\nBackground: [relevant context]\nSensitive topics: [anything to handle carefully]\n\nGive me:\n1. A 3-bullet agenda\n2. Key talking points per agenda item\n3. Likely questions they will ask + suggested responses\n4. One question I should ask to show preparation"
-    },
-    {
-      "front": "💡 Template 5: Brainstormer\n\nGenerate ideas that are actually original",
-      "back": "I need [number] ideas for [what].\n\nContext: [situation, industry, audience]\nWhat has worked before: [examples]\nWhat I want to avoid: [overdone ideas]\nConstraints: [budget/timeline/team]\n\nFor each idea give me:\n- A catchy name\n- One-sentence description\n- Why it could work\n- Biggest risk\n\nPush past the obvious. The first 5 ideas anyone would think of are useless."
-    },
-    {
-      "front": "✏️ Template 6: Editor / Reviewer\n\nGet honest, structured feedback",
-      "back": "Review this [document/email/proposal]:\n\n[paste your content]\n\nReview for: [clarity/persuasiveness/errors/tone]\nAudience: [who will read it]\nMy concern: [what I am unsure about]\n\nGive me:\n1. Overall score (1-10) with one-sentence justification\n2. Top 3 strengths (what to keep)\n3. Top 3 weaknesses (with specific rewrites)\n4. One thing I did not ask about but should fix anyway"
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"More Templates — Flip to See the Full Prompt","cards":[{"front":"📋 Template 4: Meeting Prep\n\nPrepare for any meeting in 60 seconds","back":"Help me prepare for a [type] meeting.\n\nMeeting with: [who and their role]\nPurpose: [what needs to be decided]\nMy goal: [what I want to walk away with]\nBackground: [relevant context]\nSensitive topics: [anything to handle carefully]\n\nGive me:\n1. A 3-bullet agenda\n2. Key talking points per agenda item\n3. Likely questions they will ask + suggested responses\n4. One question I should ask to show preparation"},{"front":"💡 Template 5: Brainstormer\n\nGenerate ideas that are actually original","back":"I need [number] ideas for [what].\n\nContext: [situation, industry, audience]\nWhat has worked before: [examples]\nWhat I want to avoid: [overdone ideas]\nConstraints: [budget/timeline/team]\n\nFor each idea give me:\n- A catchy name\n- One-sentence description\n- Why it could work\n- Biggest risk\n\nPush past the obvious. The first 5 ideas anyone would think of are useless."},{"front":"✏️ Template 6: Editor / Reviewer\n\nGet honest, structured feedback","back":"Review this [document/email/proposal]:\n\n[paste your content]\n\nReview for: [clarity/persuasiveness/errors/tone]\nAudience: [who will read it]\nMy concern: [what I am unsure about]\n\nGive me:\n1. Overall score (1-10) with one-sentence justification\n2. Top 3 strengths (what to keep)\n3. Top 3 weaknesses (with specific rewrites)\n4. One thing I did not ask about but should fix anyway"}]}'></div>
 
 </div>
 
@@ -115,18 +99,7 @@ free: false
   <span class="section-label">Practice</span>
   <h2 class="section-title">Which template fits the job?</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match the Situation to the Right Template",
-  "instruction": "Tap a situation on the left, then the best template on the right",
-  "pairs": [
-    { "left": "You need to tell a client about a price increase", "right": "Email Writer" },
-    { "left": "You want 15 blog topic ideas for next quarter", "right": "Brainstormer" },
-    { "left": "You wrote a proposal and want feedback before sending", "right": "Editor / Reviewer" },
-    { "left": "You have a board meeting tomorrow and need to prepare", "right": "Meeting Prep" },
-    { "left": "You need a LinkedIn post about a company milestone", "right": "Content Creator" },
-    { "left": "You want to understand why conversion rates dropped", "right": "Analyst" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match the Situation to the Right Template","instruction":"Tap a situation on the left, then the best template on the right","pairs":[{"left":"You need to tell a client about a price increase","right":"Email Writer"},{"left":"You want 15 blog topic ideas for next quarter","right":"Brainstormer"},{"left":"You wrote a proposal and want feedback before sending","right":"Editor / Reviewer"},{"left":"You have a board meeting tomorrow and need to prepare","right":"Meeting Prep"},{"left":"You need a LinkedIn post about a company milestone","right":"Content Creator"},{"left":"You want to understand why conversion rates dropped","right":"Analyst"}]}'></div>
 
 </div>
 
@@ -136,11 +109,7 @@ free: false
   <h2 class="section-title">Build your own template library.</h2>
   <p class="section-text">The templates above cover common tasks, but <strong>your most powerful templates will be the ones you build for YOUR recurring work.</strong></p>
 
-<div data-learn="SortStack" data-props='{
-  "title": "Steps to Build Your Template Library",
-  "instruction": "Arrange these steps in the right order for building a personal prompt library",
-  "items": ["Look at the last 10 things you used AI for — find repeating tasks", "Take your best prompt for each and turn it into a template with blanks", "Save templates somewhere accessible — a note, a doc, a Notion page", "Each time you write a prompt that works well, template-ize it and add it"]
-}'></div>
+<div data-learn="SortStack" data-props='{"title":"Steps to Build Your Template Library","instruction":"Arrange these steps in the right order for building a personal prompt library","items":["Look at the last 10 things you used AI for — find repeating tasks","Take your best prompt for each and turn it into a template with blanks","Save templates somewhere accessible — a note, a doc, a Notion page","Each time you write a prompt that works well, template-ize it and add it"]}'></div>
 
   <p class="section-text" style="margin-top:1rem">Within a month, you'll have a personal prompt library that handles 80% of your AI work in seconds.</p>
 </div>

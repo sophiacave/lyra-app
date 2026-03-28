@@ -47,31 +47,7 @@ css: "claude-beginners.css"
   <h2 class="section-title">5 things you can do with Claude today.</h2>
   <p class="section-text">Flip each card to see a real prompt and how Claude responds. These aren't hypothetical — these are things people use Claude for <strong>every single day</strong>.</p>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "5 Real Claude Use Cases",
-  "cards": [
-    {
-      "front": "📧 Draft Emails\n\nClaude writes emails that sound like you — not a robot. Just tell it the situation and tone.",
-      "back": "Prompt: \"Write a follow-up to my client Sarah about the delayed Q3 shipment. Apologetic but professional.\"\n\nClaude writes a complete email with subject line, specific details, next steps, and your tone — ready to send in 30 seconds instead of 15 minutes."
-    },
-    {
-      "front": "📝 Summarize Documents\n\nDrop a 15-page report into Claude and get the key points in seconds.",
-      "back": "Prompt: \"Summarize this quarterly report into 5 bullet points my boss will actually read.\"\n\nClaude pulls out revenue growth, churn risks, cost savings, timeline delays, and cash runway — the stuff that matters, not the filler."
-    },
-    {
-      "front": "💡 Brainstorm Ideas\n\nClaude generates dozens of creative ideas tailored to your specific constraints.",
-      "back": "Prompt: \"Give me 10 team-building activities for a remote team of 12 introverts. Budget: $200.\"\n\nClaude gives you ideas like async photo challenges, virtual escape rooms, skill swaps, and silent co-working hours — with cost estimates for each."
-    },
-    {
-      "front": "📊 Analyze Data\n\nPaste in numbers and Claude finds the story. No formulas needed.",
-      "back": "Prompt: \"Here are our monthly sales by product [data]. What is the story here?\"\n\nClaude identifies which products are growing, which are declining, predicts crossover points, and recommends specific actions — like a free analyst on demand."
-    },
-    {
-      "front": "🎯 Solve Problems\n\nDescribe a challenge and Claude gives you practical, actionable solutions.",
-      "back": "Prompt: \"My team keeps missing deadlines. What are 5 practical things I can try this week?\"\n\nClaude gives you specific tactics: cut scope not deadlines, collaborative deadline-setting, Wednesday check-ins, bottleneck identification, and Monday kickoffs."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"5 Real Claude Use Cases","cards":[{"front":"📧 Draft Emails\n\nClaude writes emails that sound like you — not a robot. Just tell it the situation and tone.","back":"Prompt: \"Write a follow-up to my client Sarah about the delayed Q3 shipment. Apologetic but professional.\"\n\nClaude writes a complete email with subject line, specific details, next steps, and your tone — ready to send in 30 seconds instead of 15 minutes."},{"front":"📝 Summarize Documents\n\nDrop a 15-page report into Claude and get the key points in seconds.","back":"Prompt: \"Summarize this quarterly report into 5 bullet points my boss will actually read.\"\n\nClaude pulls out revenue growth, churn risks, cost savings, timeline delays, and cash runway — the stuff that matters, not the filler."},{"front":"💡 Brainstorm Ideas\n\nClaude generates dozens of creative ideas tailored to your specific constraints.","back":"Prompt: \"Give me 10 team-building activities for a remote team of 12 introverts. Budget: $200.\"\n\nClaude gives you ideas like async photo challenges, virtual escape rooms, skill swaps, and silent co-working hours — with cost estimates for each."},{"front":"📊 Analyze Data\n\nPaste in numbers and Claude finds the story. No formulas needed.","back":"Prompt: \"Here are our monthly sales by product [data]. What is the story here?\"\n\nClaude identifies which products are growing, which are declining, predicts crossover points, and recommends specific actions — like a free analyst on demand."},{"front":"🎯 Solve Problems\n\nDescribe a challenge and Claude gives you practical, actionable solutions.","back":"Prompt: \"My team keeps missing deadlines. What are 5 practical things I can try this week?\"\n\nClaude gives you specific tactics: cut scope not deadlines, collaborative deadline-setting, Wednesday check-ins, bottleneck identification, and Monday kickoffs."}]}'></div>
 
 </div>
 
@@ -81,20 +57,7 @@ css: "claude-beginners.css"
   <h2 class="section-title">What Claude can't do.</h2>
   <p class="section-text">Being honest about limits is more important than hype. Match each statement to whether Claude CAN or CAN'T do it.</p>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Can Claude Do This?",
-  "instruction": "Drag each ability to the correct column",
-  "pairs": [
-    { "left": "Write and edit text in your voice", "right": "CAN" },
-    { "left": "Access the internet in real time", "right": "CANNOT" },
-    { "left": "Analyze data and find patterns", "right": "CAN" },
-    { "left": "Remember past conversations by default", "right": "CANNOT" },
-    { "left": "Summarize long documents", "right": "CAN" },
-    { "left": "Be 100% accurate on all facts", "right": "CANNOT" },
-    { "left": "Help with code and formulas", "right": "CAN" },
-    { "left": "Send emails or take actions for you", "right": "CANNOT" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Can Claude Do This?","instruction":"Drag each ability to the correct column","pairs":[{"left":"Write and edit text in your voice","right":"CAN"},{"left":"Access the internet in real time","right":"CANNOT"},{"left":"Analyze data and find patterns","right":"CAN"},{"left":"Remember past conversations by default","right":"CANNOT"},{"left":"Summarize long documents","right":"CAN"},{"left":"Be 100% accurate on all facts","right":"CANNOT"},{"left":"Help with code and formulas","right":"CAN"},{"left":"Send emails or take actions for you","right":"CANNOT"}]}'></div>
 
   <div class="tip-box">
     <div class="tip-label">Pro Tip</div>
@@ -145,43 +108,7 @@ css: "claude-beginners.css"
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Make sure it stuck.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "questions": [
-    {
-      "q": "What is the best way to think about Claude?",
-      "options": [
-        "A search engine that gives you links",
-        "A smart coworker who reads, writes, and analyzes",
-        "A robot that replaces your job",
-        "A coding tool only developers can use"
-      ],
-      "correct": 1,
-      "explanation": "Claude is like a brilliant colleague — it reads, writes, analyzes, and brainstorms with you. It is not a search engine, not a replacement, and not just for developers."
-    },
-    {
-      "q": "What should you always do when Claude gives you a factual claim?",
-      "options": [
-        "Trust it completely — AI is always accurate",
-        "Ignore it — AI facts are always wrong",
-        "Verify important facts independently",
-        "Ask Claude to verify its own answer"
-      ],
-      "correct": 2,
-      "explanation": "Claude is great at reasoning and writing but can occasionally get specific facts wrong. Always verify important claims, especially numbers and dates."
-    },
-    {
-      "q": "Which of these can Claude NOT do?",
-      "options": [
-        "Write emails in your voice",
-        "Analyze sales data and find trends",
-        "Log into your bank account and make a transfer",
-        "Summarize a 15-page report in seconds"
-      ],
-      "correct": 2,
-      "explanation": "Claude can search the web, write, and analyze data — but it cannot log into your accounts or take actions on external services without explicit tool integrations you control."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the best way to think about Claude?","options":["A search engine that gives you links","A smart coworker who reads, writes, and analyzes","A robot that replaces your job","A coding tool only developers can use"],"correct":1,"explanation":"Claude is like a brilliant colleague — it reads, writes, analyzes, and brainstorms with you. It is not a search engine, not a replacement, and not just for developers."},{"q":"What should you always do when Claude gives you a factual claim?","options":["Trust it completely — AI is always accurate","Ignore it — AI facts are always wrong","Verify important facts independently","Ask Claude to verify its own answer"],"correct":2,"explanation":"Claude is great at reasoning and writing but can occasionally get specific facts wrong. Always verify important claims, especially numbers and dates."},{"q":"Which of these can Claude NOT do?","options":["Write emails in your voice","Analyze sales data and find trends","Log into your bank account and make a transfer","Summarize a 15-page report in seconds"],"correct":2,"explanation":"Claude can search the web, write, and analyze data — but it cannot log into your accounts or take actions on external services without explicit tool integrations you control."}]}'></div>
 
 </div>
 

@@ -32,11 +32,7 @@ free: true
   <h2 class="section-title">Layers are the architecture of intelligence.</h2>
   <p class="section-text">A single neuron can make simple decisions. But stack neurons into layers — input, hidden, output — and suddenly the network can recognize faces, translate languages, and write code. The architecture (how many layers, how they connect) determines what the network can learn.</p>
 
-<div data-learn="SortStack" data-props='{
-  "title": "Order the Layers",
-  "instruction": "Arrange the three layer types in the order data flows through them",
-  "items": ["Input Layer — receives raw data (pixels, text, numbers)", "Hidden Layer — finds patterns and intermediate features", "Output Layer — makes the final prediction or decision"]
-}'></div>
+<div data-learn="SortStack" data-props='{"title":"Order the Layers","instruction":"Arrange the three layer types in the order data flows through them","items":["Input Layer — receives raw data (pixels, text, numbers)","Hidden Layer — finds patterns and intermediate features","Output Layer — makes the final prediction or decision"]}'></div>
 
 </div>
 
@@ -83,23 +79,7 @@ free: true
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your understanding.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Network Architecture",
-  "questions": [
-    {
-      "q": "Why do neural networks need hidden layers?",
-      "options": ["To hide the computation from users", "To find intermediate patterns that are too complex for a single layer", "To reduce the amount of training data needed", "To make the network smaller"],
-      "correct": 1,
-      "explanation": "Hidden layers find intermediate representations — first layer might detect edges, second detects shapes, third detects objects. Each layer builds on the previous one to learn increasingly complex patterns."
-    },
-    {
-      "q": "For a cats vs dogs image classifier, why do you need 2 output neurons?",
-      "options": ["One for each pixel in the image", "One outputs cat probability, the other outputs dog probability", "Two outputs make the network faster", "It is just a convention with no real purpose"],
-      "correct": 1,
-      "explanation": "Each output neuron represents one class. The network learns to activate the cat neuron when it sees a cat and the dog neuron when it sees a dog. The outputs are often probabilities that sum to 1."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Network Architecture","questions":[{"q":"Why do neural networks need hidden layers?","options":["To hide the computation from users","To find intermediate patterns that are too complex for a single layer","To reduce the amount of training data needed","To make the network smaller"],"correct":1,"explanation":"Hidden layers find intermediate representations — first layer might detect edges, second detects shapes, third detects objects. Each layer builds on the previous one to learn increasingly complex patterns."},{"q":"For a cats vs dogs image classifier, why do you need 2 output neurons?","options":["One for each pixel in the image","One outputs cat probability, the other outputs dog probability","Two outputs make the network faster","It is just a convention with no real purpose"],"correct":1,"explanation":"Each output neuron represents one class. The network learns to activate the cat neuron when it sees a cat and the dog neuron when it sees a dog. The outputs are often probabilities that sum to 1."}]}'></div>
 
   <div class="narration" style="margin-top:1.5rem">
     <strong>Neural networks are layers of neurons connected together.</strong> Input neurons receive data. Hidden neurons find patterns. Output neurons make decisions. The magic is in the connections — each one has a weight that gets adjusted during training.

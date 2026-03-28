@@ -33,23 +33,7 @@ free: false
   <p class="section-text">AI cannot read words. It reads numbers. So every word gets converted into a list of numbers — a <strong>vector</strong> — that captures its meaning. "Cat" might be [0.2, 0.8, -0.1, ...] across hundreds of dimensions.</p>
   <p class="section-text">The magic: words that mean similar things end up close together. "Happy," "joyful," and "delighted" are neighbors. "Sad" is far away. The space itself encodes meaning.</p>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Embedding Concepts — Flip for Details",
-  "cards": [
-    {
-      "front": "📊 VECTORS\n\nEach word becomes a list of numbers.\nHundreds of dimensions capturing meaning.",
-      "back": "EXAMPLE: \"cat\" = [0.2, 0.8, -0.1, 0.5, ...]\n\nEach number captures some aspect of meaning — maybe one dimension relates to \"is it alive?\", another to \"is it big?\", another to \"is it domestic?\"\n\nReal embeddings use 768+ dimensions. The more dimensions, the more nuance."
-    },
-    {
-      "front": "🌌 SEMANTIC SPACE\n\nSimilar words cluster together.\nMeaning becomes geometry.",
-      "back": "In embedding space:\n- \"happy\" + \"joyful\" + \"delighted\" = neighbors\n- \"sad\" is far from \"happy\" — opposite direction\n- \"dog\" + \"cat\" + \"puppy\" = a cluster\n- \"king\" + \"queen\" + \"prince\" = another cluster\n\nSearch engines use this: your query becomes a vector and they find the nearest document vectors."
-    },
-    {
-      "front": "➕ VECTOR ARITHMETIC\n\nking - man + woman = queen\n\nMath captures relationships.",
-      "back": "This is not a trick. The vector from king to queen captures royalty + female.\n\nThe vector from man to woman captures the gender direction.\n\nking - man + woman follows the royalty direction from the female side — and lands on queen.\n\nThe AI learned these relationships from patterns in billions of sentences."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Embedding Concepts — Flip for Details","cards":[{"front":"📊 VECTORS\n\nEach word becomes a list of numbers.\nHundreds of dimensions capturing meaning.","back":"EXAMPLE: \"cat\" = [0.2, 0.8, -0.1, 0.5, ...]\n\nEach number captures some aspect of meaning — maybe one dimension relates to \"is it alive?\", another to \"is it big?\", another to \"is it domestic?\"\n\nReal embeddings use 768+ dimensions. The more dimensions, the more nuance."},{"front":"🌌 SEMANTIC SPACE\n\nSimilar words cluster together.\nMeaning becomes geometry.","back":"In embedding space:\n- \"happy\" + \"joyful\" + \"delighted\" = neighbors\n- \"sad\" is far from \"happy\" — opposite direction\n- \"dog\" + \"cat\" + \"puppy\" = a cluster\n- \"king\" + \"queen\" + \"prince\" = another cluster\n\nSearch engines use this: your query becomes a vector and they find the nearest document vectors."},{"front":"➕ VECTOR ARITHMETIC\n\nking - man + woman = queen\n\nMath captures relationships.","back":"This is not a trick. The vector from king to queen captures royalty + female.\n\nThe vector from man to woman captures the gender direction.\n\nking - man + woman follows the royalty direction from the female side — and lands on queen.\n\nThe AI learned these relationships from patterns in billions of sentences."}]}'></div>
 
 </div>
 
@@ -87,29 +71,7 @@ free: false
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your understanding.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Embeddings Mastery",
-  "questions": [
-    {
-      "q": "Why do similar words end up close together in embedding space?",
-      "options": ["Programmers manually placed them there", "Words that appear in similar contexts develop similar vectors", "It is random — sometimes similar words are far apart", "The dictionary determines their position"],
-      "correct": 1,
-      "explanation": "Embeddings are learned from text. Words that appear in similar contexts (you can pet a cat / you can pet a dog) develop similar vectors. The AI discovers meaning from usage patterns."
-    },
-    {
-      "q": "What makes vector arithmetic like king - man + woman = queen possible?",
-      "options": ["A lookup table of word relationships", "The embedding space encodes relationships as directional offsets", "The AI memorized this specific example", "It only works for royalty words"],
-      "correct": 1,
-      "explanation": "The direction from man to king captures royalty. The direction from man to woman captures gender. These are consistent directions in the space — so you can combine them mathematically."
-    },
-    {
-      "q": "How do search engines use embeddings?",
-      "options": ["They match exact keywords only", "They convert queries and documents to vectors and find the nearest matches", "They use embeddings to make web pages load faster", "They do not use embeddings"],
-      "correct": 1,
-      "explanation": "Modern search converts your query to a vector and finds document vectors that point in a similar direction. This is why searching affordable places to eat can find budget-friendly restaurants — even with zero keyword overlap."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Embeddings Mastery","questions":[{"q":"Why do similar words end up close together in embedding space?","options":["Programmers manually placed them there","Words that appear in similar contexts develop similar vectors","It is random — sometimes similar words are far apart","The dictionary determines their position"],"correct":1,"explanation":"Embeddings are learned from text. Words that appear in similar contexts (you can pet a cat / you can pet a dog) develop similar vectors. The AI discovers meaning from usage patterns."},{"q":"What makes vector arithmetic like king - man + woman = queen possible?","options":["A lookup table of word relationships","The embedding space encodes relationships as directional offsets","The AI memorized this specific example","It only works for royalty words"],"correct":1,"explanation":"The direction from man to king captures royalty. The direction from man to woman captures gender. These are consistent directions in the space — so you can combine them mathematically."},{"q":"How do search engines use embeddings?","options":["They match exact keywords only","They convert queries and documents to vectors and find the nearest matches","They use embeddings to make web pages load faster","They do not use embeddings"],"correct":1,"explanation":"Modern search converts your query to a vector and finds document vectors that point in a similar direction. This is why searching affordable places to eat can find budget-friendly restaurants — even with zero keyword overlap."}]}'></div>
 
 </div>
 

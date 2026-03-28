@@ -32,17 +32,7 @@ free: true
   <h2 class="section-title">The RCFCE Framework.</h2>
   <p class="section-text">Every great prompt is built from five components. You don't always need all five, but knowing them gives you a toolkit for any situation.</p>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Each Component to Its Definition",
-  "instruction": "Tap a letter on the left, then its definition on the right",
-  "pairs": [
-    { "left": "R — Role", "right": "Who should the AI be? Sets expertise and perspective" },
-    { "left": "C — Context", "right": "The situation, background, audience, and constraints" },
-    { "left": "F — Format", "right": "What the output should look like — bullets, table, email" },
-    { "left": "C — Constraints", "right": "Boundaries like word count, tone, things to avoid" },
-    { "left": "E — Examples", "right": "Samples that show the AI what good looks like" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Each Component to Its Definition","instruction":"Tap a letter on the left, then its definition on the right","pairs":[{"left":"R — Role","right":"Who should the AI be? Sets expertise and perspective"},{"left":"C — Context","right":"The situation, background, audience, and constraints"},{"left":"F — Format","right":"What the output should look like — bullets, table, email"},{"left":"C — Constraints","right":"Boundaries like word count, tone, things to avoid"},{"left":"E — Examples","right":"Samples that show the AI what good looks like"}]}'></div>
 
 </div>
 
@@ -72,17 +62,7 @@ free: true
     </div>
   </div>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Quick Check",
-  "questions": [
-    {
-      "q": "Which two RCFCE components should you include in EVERY prompt?",
-      "options": ["Role + Examples", "Context + Format", "Constraints + Role", "Examples + Format"],
-      "correct": 1,
-      "explanation": "Context (what you need) and Format (what the output should look like) are the minimum for any effective prompt. These two alone put you ahead of 90% of users."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Quick Check","questions":[{"q":"Which two RCFCE components should you include in EVERY prompt?","options":["Role + Examples","Context + Format","Constraints + Role","Examples + Format"],"correct":1,"explanation":"Context (what you need) and Format (what the output should look like) are the minimum for any effective prompt. These two alone put you ahead of 90% of users."}]}'></div>
 
 </div>
 
@@ -113,11 +93,7 @@ free: true
     </div>
   </div>
 
-<div data-learn="SortStack" data-props='{
-  "title": "Order the RCFCE Components",
-  "instruction": "Arrange the prompt components in the recommended order for building a great prompt",
-  "items": ["Role — Set the AI expertise and perspective", "Context — Describe the situation and background", "Format — Specify the output shape", "Constraints — Set boundaries and limits", "Examples — Show what good looks like"]
-}'></div>
+<div data-learn="SortStack" data-props='{"title":"Order the RCFCE Components","instruction":"Arrange the prompt components in the recommended order for building a great prompt","items":["Role — Set the AI expertise and perspective","Context — Describe the situation and background","Format — Specify the output shape","Constraints — Set boundaries and limits","Examples — Show what good looks like"]}'></div>
 
 </div>
 
@@ -147,23 +123,7 @@ Here's an example of what I'm looking for:
   </div>
   <p class="section-text" style="margin-top:1rem">You don't need to use labels like [ROLE] in your actual prompts — those are just training wheels. Once you internalize the framework, you'll naturally include these elements in flowing, natural language.</p>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Framework Mastery Check",
-  "questions": [
-    {
-      "q": "A prompt says: \"Write a 500-word blog post about remote work in a casual tone, using bullet points.\" Which RCFCE components does it include?",
-      "options": ["Role + Context + Format", "Context + Format + Constraints", "Role + Format + Constraints", "All five components"],
-      "correct": 1,
-      "explanation": "This prompt has Context (remote work topic), Format (blog post, bullet points), and Constraints (500 words, casual tone). It is missing a Role and Examples."
-    },
-    {
-      "q": "When should you add Examples to your prompt?",
-      "options": ["Always — every prompt needs an example", "When you need the output to match a specific style or format", "Only for creative writing tasks", "Never — examples confuse AI"],
-      "correct": 1,
-      "explanation": "Examples are most powerful when you need style matching — showing the AI exactly what good looks like. For straightforward tasks, Context + Format is often enough."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Framework Mastery Check","questions":[{"q":"A prompt says: \"Write a 500-word blog post about remote work in a casual tone, using bullet points.\" Which RCFCE components does it include?","options":["Role + Context + Format","Context + Format + Constraints","Role + Format + Constraints","All five components"],"correct":1,"explanation":"This prompt has Context (remote work topic), Format (blog post, bullet points), and Constraints (500 words, casual tone). It is missing a Role and Examples."},{"q":"When should you add Examples to your prompt?","options":["Always — every prompt needs an example","When you need the output to match a specific style or format","Only for creative writing tasks","Never — examples confuse AI"],"correct":1,"explanation":"Examples are most powerful when you need style matching — showing the AI exactly what good looks like. For straightforward tasks, Context + Format is often enough."}]}'></div>
 
 </div>
 

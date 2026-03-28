@@ -53,16 +53,7 @@ free: false
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">The four things that shape every AI response.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Concept to Description",
-  "instruction": "Tap a concept on the left, then its description on the right",
-  "pairs": [
-    { "left": "Tokens", "right": "Chunks of text (not words) — the atomic units AI reads" },
-    { "left": "Context Window", "right": "The model working memory — everything it can see at once" },
-    { "left": "System Prompt", "right": "Hidden instructions that set the AI personality and behavior" },
-    { "left": "Temperature", "right": "Controls randomness — low is focused, high is creative" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Concept to Description","instruction":"Tap a concept on the left, then its description on the right","pairs":[{"left":"Tokens","right":"Chunks of text (not words) — the atomic units AI reads"},{"left":"Context Window","right":"The model working memory — everything it can see at once"},{"left":"System Prompt","right":"Hidden instructions that set the AI personality and behavior"},{"left":"Temperature","right":"Controls randomness — low is focused, high is creative"}]}'></div>
 
 </div>
 
@@ -85,23 +76,7 @@ free: false
     </div>
   </div>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Temperature Guide — Flip for Details",
-  "cards": [
-    {
-      "front": "🧊 LOW TEMPERATURE (0.0 - 0.3)\n\nDeterministic and focused",
-      "back": "BEST FOR: Code, math, factual questions, data analysis\n\nThe model always picks the most likely next token. Consistent, predictable, correct — but potentially repetitive.\n\nUSE WHEN: You need one right answer, not creative options."
-    },
-    {
-      "front": "⚖️ MEDIUM TEMPERATURE (0.4 - 0.7)\n\nBalanced default",
-      "back": "BEST FOR: General conversations, business writing, explanations\n\nGood mix of coherence and variety. The default for most AI chatbots.\n\nUSE WHEN: You want natural-sounding output that is still reliable."
-    },
-    {
-      "front": "🔥 HIGH TEMPERATURE (0.8 - 1.0+)\n\nCreative and unpredictable",
-      "back": "BEST FOR: Brainstorming, creative writing, generating diverse options\n\nThe model sometimes picks unlikely tokens, leading to surprising and creative output — but also more errors.\n\nUSE WHEN: You want ideas, not accuracy. Be prepared to filter."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Temperature Guide — Flip for Details","cards":[{"front":"🧊 LOW TEMPERATURE (0.0 - 0.3)\n\nDeterministic and focused","back":"BEST FOR: Code, math, factual questions, data analysis\n\nThe model always picks the most likely next token. Consistent, predictable, correct — but potentially repetitive.\n\nUSE WHEN: You need one right answer, not creative options."},{"front":"⚖️ MEDIUM TEMPERATURE (0.4 - 0.7)\n\nBalanced default","back":"BEST FOR: General conversations, business writing, explanations\n\nGood mix of coherence and variety. The default for most AI chatbots.\n\nUSE WHEN: You want natural-sounding output that is still reliable."},{"front":"🔥 HIGH TEMPERATURE (0.8 - 1.0+)\n\nCreative and unpredictable","back":"BEST FOR: Brainstorming, creative writing, generating diverse options\n\nThe model sometimes picks unlikely tokens, leading to surprising and creative output — but also more errors.\n\nUSE WHEN: You want ideas, not accuracy. Be prepared to filter."}]}'></div>
 
 </div>
 
@@ -110,29 +85,7 @@ free: false
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your understanding.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Prompt Anatomy",
-  "questions": [
-    {
-      "q": "How does AI read the word \"unbelievable\"?",
-      "options": ["As one token: unbelievable", "As individual characters: u-n-b-e-l-i-e-v-a-b-l-e", "As subword chunks like: un-believ-able", "As the dictionary definition of the word"],
-      "correct": 2,
-      "explanation": "AI tokenizers break words into subword chunks. Unbelievable becomes something like un + believ + able. The model never sees raw text — only token IDs (numbers)."
-    },
-    {
-      "q": "Claude has a 200K token context window. What does this mean?",
-      "options": ["It can remember 200,000 previous conversations", "Your prompt plus its response must fit within 200,000 tokens total", "It can process 200,000 words per second", "It has 200,000 neurons"],
-      "correct": 1,
-      "explanation": "The context window is the model working memory. Everything it can see at once — your prompt, conversation history, and its response — must fit within this limit."
-    },
-    {
-      "q": "You are writing a system prompt for a customer service bot. It should be helpful but never make promises about refunds. Where does this instruction go?",
-      "options": ["In the user message", "In the system prompt — it gets processed before any user messages", "In a separate configuration file", "Nowhere — AI cannot follow such instructions"],
-      "correct": 1,
-      "explanation": "System prompts set behavioral rules before any user interaction. They are the ideal place for personality, constraints, and behavioral guardrails."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Prompt Anatomy","questions":[{"q":"How does AI read the word \"unbelievable\"?","options":["As one token: unbelievable","As individual characters: u-n-b-e-l-i-e-v-a-b-l-e","As subword chunks like: un-believ-able","As the dictionary definition of the word"],"correct":2,"explanation":"AI tokenizers break words into subword chunks. Unbelievable becomes something like un + believ + able. The model never sees raw text — only token IDs (numbers)."},{"q":"Claude has a 200K token context window. What does this mean?","options":["It can remember 200,000 previous conversations","Your prompt plus its response must fit within 200,000 tokens total","It can process 200,000 words per second","It has 200,000 neurons"],"correct":1,"explanation":"The context window is the model working memory. Everything it can see at once — your prompt, conversation history, and its response — must fit within this limit."},{"q":"You are writing a system prompt for a customer service bot. It should be helpful but never make promises about refunds. Where does this instruction go?","options":["In the user message","In the system prompt — it gets processed before any user messages","In a separate configuration file","Nowhere — AI cannot follow such instructions"],"correct":1,"explanation":"System prompts set behavioral rules before any user interaction. They are the ideal place for personality, constraints, and behavioral guardrails."}]}'></div>
 
   <div class="narration" style="margin-top:1.5rem">
     <strong>Every prompt is a performance.</strong> Your words get chopped into tokens, fed through the context window alongside a system prompt, shaped by temperature, and out comes a response. Understanding this anatomy turns you from a user into an engineer.

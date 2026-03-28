@@ -31,27 +31,7 @@ free: false
   <span class="section-label">The Four Techniques</span>
   <h2 class="section-title">Each one solves a different problem.</h2>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Four Prompt Techniques — Flip for Details",
-  "cards": [
-    {
-      "front": "🎯 ZERO-SHOT\n\nNo examples given.\nJust a clear instruction.",
-      "back": "WHEN TO USE: Simple, well-defined tasks like classification, translation, or formatting.\n\nEXAMPLE: \"Classify this review as POSITIVE or NEGATIVE: [text]\"\n\nTIP: Be specific about format, length, and tone. The more precise, the better."
-    },
-    {
-      "front": "📋 FEW-SHOT\n\nGive 2-3 examples first.\nAI learns the pattern.",
-      "back": "WHEN TO USE: When you need a specific output format or style the AI might not guess.\n\nEXAMPLE: Show 2 informal→professional email conversions, then give a new informal message.\n\nTIP: Make examples diverse. If all examples are similar, the AI may not generalize."
-    },
-    {
-      "front": "🔗 CHAIN-OF-THOUGHT\n\nForce step-by-step reasoning.\nDramatically improves accuracy.",
-      "back": "WHEN TO USE: Math, logic, multi-step reasoning, anything that needs accuracy over speed.\n\nEXAMPLE: \"Solve this step by step: [problem]. Let us think step by step.\"\n\nRESEARCH: Up to 2x accuracy improvement on complex problems."
-    },
-    {
-      "front": "🎭 ROLE-PLAY\n\nGive the AI a persona.\nGet expert-level output.",
-      "back": "WHEN TO USE: When you need specialized expertise or a specific communication style.\n\nEXAMPLE: \"You are a senior security engineer reviewing code for vulnerabilities. Flag issues by severity.\"\n\nTIP: Include expertise level, style, focus areas, and what to avoid."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Four Prompt Techniques — Flip for Details","cards":[{"front":"🎯 ZERO-SHOT\n\nNo examples given.\nJust a clear instruction.","back":"WHEN TO USE: Simple, well-defined tasks like classification, translation, or formatting.\n\nEXAMPLE: \"Classify this review as POSITIVE or NEGATIVE: [text]\"\n\nTIP: Be specific about format, length, and tone. The more precise, the better."},{"front":"📋 FEW-SHOT\n\nGive 2-3 examples first.\nAI learns the pattern.","back":"WHEN TO USE: When you need a specific output format or style the AI might not guess.\n\nEXAMPLE: Show 2 informal→professional email conversions, then give a new informal message.\n\nTIP: Make examples diverse. If all examples are similar, the AI may not generalize."},{"front":"🔗 CHAIN-OF-THOUGHT\n\nForce step-by-step reasoning.\nDramatically improves accuracy.","back":"WHEN TO USE: Math, logic, multi-step reasoning, anything that needs accuracy over speed.\n\nEXAMPLE: \"Solve this step by step: [problem]. Let us think step by step.\"\n\nRESEARCH: Up to 2x accuracy improvement on complex problems."},{"front":"🎭 ROLE-PLAY\n\nGive the AI a persona.\nGet expert-level output.","back":"WHEN TO USE: When you need specialized expertise or a specific communication style.\n\nEXAMPLE: \"You are a senior security engineer reviewing code for vulnerabilities. Flag issues by severity.\"\n\nTIP: Include expertise level, style, focus areas, and what to avoid."}]}'></div>
 
 </div>
 
@@ -88,34 +68,9 @@ free: false
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Pick the right technique.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Task to Best Technique",
-  "instruction": "Tap a task on the left, then the best prompt technique on the right",
-  "pairs": [
-    { "left": "Classify an email as spam or not spam", "right": "Zero-Shot — simple yes/no classification" },
-    { "left": "Convert slang messages to professional tone", "right": "Few-Shot — show example conversions first" },
-    { "left": "Solve a multi-step word problem correctly", "right": "Chain-of-Thought — force step-by-step reasoning" },
-    { "left": "Get a thorough code review with severity ratings", "right": "Role-Play — senior engineer persona" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Task to Best Technique","instruction":"Tap a task on the left, then the best prompt technique on the right","pairs":[{"left":"Classify an email as spam or not spam","right":"Zero-Shot — simple yes/no classification"},{"left":"Convert slang messages to professional tone","right":"Few-Shot — show example conversions first"},{"left":"Solve a multi-step word problem correctly","right":"Chain-of-Thought — force step-by-step reasoning"},{"left":"Get a thorough code review with severity ratings","right":"Role-Play — senior engineer persona"}]}'></div>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Technique Selection",
-  "questions": [
-    {
-      "q": "You need the AI to format data in a very specific way that it has never seen before. Which technique?",
-      "options": ["Zero-shot with detailed instructions", "Few-shot with 2-3 examples of the exact format you want", "Chain-of-thought reasoning", "Role-play as a data formatter"],
-      "correct": 1,
-      "explanation": "When you need a specific, unusual format, showing the AI 2-3 examples is far more effective than trying to describe the format in words. Few-shot lets the AI learn the pattern from examples."
-    },
-    {
-      "q": "Research shows chain-of-thought prompting can improve math accuracy by up to:",
-      "options": ["10%", "25%", "50%", "100% (2x)"],
-      "correct": 3,
-      "explanation": "Studies show chain-of-thought prompting can double accuracy on multi-step reasoning tasks. By forcing the model to show its work, errors in intermediate steps become visible and correctable."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Technique Selection","questions":[{"q":"You need the AI to format data in a very specific way that it has never seen before. Which technique?","options":["Zero-shot with detailed instructions","Few-shot with 2-3 examples of the exact format you want","Chain-of-thought reasoning","Role-play as a data formatter"],"correct":1,"explanation":"When you need a specific, unusual format, showing the AI 2-3 examples is far more effective than trying to describe the format in words. Few-shot lets the AI learn the pattern from examples."},{"q":"Research shows chain-of-thought prompting can improve math accuracy by up to:","options":["10%","25%","50%","100% (2x)"],"correct":3,"explanation":"Studies show chain-of-thought prompting can double accuracy on multi-step reasoning tasks. By forcing the model to show its work, errors in intermediate steps become visible and correctable."}]}'></div>
 
 </div>
 

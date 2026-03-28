@@ -40,17 +40,7 @@ free: false
   <span class="section-label">The Types</span>
   <h2 class="section-title">5 types of constraints.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Constraint Type to Example",
-  "instruction": "Tap a constraint type on the left, then its example on the right",
-  "pairs": [
-    { "left": "Length", "right": "Under 200 words. Exactly 3 paragraphs. One sentence per point." },
-    { "left": "Tone", "right": "Casual but not sloppy. Confident, not arrogant." },
-    { "left": "Scope", "right": "Only cover the marketing angle. B2B SaaS only, not consumer." },
-    { "left": "Audience", "right": "Explain like I am 12. Written for a CTO." },
-    { "left": "Negative", "right": "Do not use buzzwords. No emojis. Avoid the word leverage." }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Constraint Type to Example","instruction":"Tap a constraint type on the left, then its example on the right","pairs":[{"left":"Length","right":"Under 200 words. Exactly 3 paragraphs. One sentence per point."},{"left":"Tone","right":"Casual but not sloppy. Confident, not arrogant."},{"left":"Scope","right":"Only cover the marketing angle. B2B SaaS only, not consumer."},{"left":"Audience","right":"Explain like I am 12. Written for a CTO."},{"left":"Negative","right":"Do not use buzzwords. No emojis. Avoid the word leverage."}]}'></div>
 
 </div>
 
@@ -61,31 +51,7 @@ free: false
   <p class="section-text">AI has patterns it falls into. You know them: the overly enthusiastic tone, the unnecessary preamble, the "great question!" response, the list that starts with "here are some..." AI-isms are the enemy of authentic output.</p>
   <p class="section-text">Negative constraints kill them instantly:</p>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Negative Constraints That Work — Flip to See Why",
-  "cards": [
-    {
-      "front": "🚫 \"Do not start with Sure! or Great question! — just answer directly.\"",
-      "back": "WHY IT WORKS: AI defaults to sycophantic openers. This one constraint instantly makes output feel more professional and authentic. Use it in every prompt."
-    },
-    {
-      "front": "🚫 \"Do not use the words delve, leverage, utilize, or synergy.\"",
-      "back": "WHY IT WORKS: These are the most overused AI words. Banning them forces the model to use simpler, more natural language. Your readers will never suspect AI wrote it."
-    },
-    {
-      "front": "🚫 \"No preamble. No summary at the end. Just the content.\"",
-      "back": "WHY IT WORKS: AI loves to add \"Here is what I will cover...\" before and \"In summary...\" after the actual content. This constraint eliminates the fluff and gives you pure value."
-    },
-    {
-      "front": "🚫 \"Do not hedge with it depends — commit to a recommendation.\"",
-      "back": "WHY IT WORKS: AI naturally hedges to seem balanced. But you asked for advice, not a debate. This forces a clear, actionable recommendation instead of wishy-washy on-one-hand analysis."
-    },
-    {
-      "front": "🚫 \"Avoid generic advice anyone could give. Be specific to my situation.\"",
-      "back": "WHY IT WORKS: This is a meta-constraint — it tells AI to actually USE the context you provided instead of falling back on generic platitudes. Pair it with detailed context for maximum impact."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Negative Constraints That Work — Flip to See Why","cards":[{"front":"🚫 \"Do not start with Sure! or Great question! — just answer directly.\"","back":"WHY IT WORKS: AI defaults to sycophantic openers. This one constraint instantly makes output feel more professional and authentic. Use it in every prompt."},{"front":"🚫 \"Do not use the words delve, leverage, utilize, or synergy.\"","back":"WHY IT WORKS: These are the most overused AI words. Banning them forces the model to use simpler, more natural language. Your readers will never suspect AI wrote it."},{"front":"🚫 \"No preamble. No summary at the end. Just the content.\"","back":"WHY IT WORKS: AI loves to add \"Here is what I will cover...\" before and \"In summary...\" after the actual content. This constraint eliminates the fluff and gives you pure value."},{"front":"🚫 \"Do not hedge with it depends — commit to a recommendation.\"","back":"WHY IT WORKS: AI naturally hedges to seem balanced. But you asked for advice, not a debate. This forces a clear, actionable recommendation instead of wishy-washy on-one-hand analysis."},{"front":"🚫 \"Avoid generic advice anyone could give. Be specific to my situation.\"","back":"WHY IT WORKS: This is a meta-constraint — it tells AI to actually USE the context you provided instead of falling back on generic platitudes. Pair it with detailed context for maximum impact."}]}'></div>
 
 </div>
 
@@ -114,29 +80,7 @@ free: false
 
   <p class="section-text" style="margin-top:1rem">This technique draws a precise line. "Confident, not arrogant" gives AI a much clearer target than "professional tone." The negative defines the boundary of the positive.</p>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Constraint Mastery",
-  "questions": [
-    {
-      "q": "Why do constraints IMPROVE AI output instead of limiting it?",
-      "options": ["They make the AI work harder", "They eliminate mediocre possibilities and focus the output space", "They trick the AI into trying harder", "They do not improve output — they just make it shorter"],
-      "correct": 1,
-      "explanation": "Constraints narrow the infinite space of possible outputs into a focused zone where quality is higher. Like giving a songwriter a specific form to work within — the boundaries enable creativity."
-    },
-    {
-      "q": "Which type of constraint is MOST effective at eliminating generic AI-sounding output?",
-      "options": ["Length constraints", "Scope constraints", "Negative constraints (what NOT to do)", "Audience constraints"],
-      "correct": 2,
-      "explanation": "Negative constraints directly target AI-isms — the buzzwords, preambles, hedging, and sycophantic openers that make output feel robotic. Banning specific patterns forces more authentic language."
-    },
-    {
-      "q": "What is the invisible guardrail technique?",
-      "options": ["Hiding constraints inside the context section", "Pairing positive tone instructions with negative boundaries (confident, not arrogant)", "Setting constraints the AI cannot see", "Using only negative constraints with no positive direction"],
-      "correct": 1,
-      "explanation": "The invisible guardrail pairs what you want with what you do not want. Confident, not arrogant draws a precise line that professional tone alone cannot achieve."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Constraint Mastery","questions":[{"q":"Why do constraints IMPROVE AI output instead of limiting it?","options":["They make the AI work harder","They eliminate mediocre possibilities and focus the output space","They trick the AI into trying harder","They do not improve output — they just make it shorter"],"correct":1,"explanation":"Constraints narrow the infinite space of possible outputs into a focused zone where quality is higher. Like giving a songwriter a specific form to work within — the boundaries enable creativity."},{"q":"Which type of constraint is MOST effective at eliminating generic AI-sounding output?","options":["Length constraints","Scope constraints","Negative constraints (what NOT to do)","Audience constraints"],"correct":2,"explanation":"Negative constraints directly target AI-isms — the buzzwords, preambles, hedging, and sycophantic openers that make output feel robotic. Banning specific patterns forces more authentic language."},{"q":"What is the invisible guardrail technique?","options":["Hiding constraints inside the context section","Pairing positive tone instructions with negative boundaries (confident, not arrogant)","Setting constraints the AI cannot see","Using only negative constraints with no positive direction"],"correct":1,"explanation":"The invisible guardrail pairs what you want with what you do not want. Confident, not arrogant draws a precise line that professional tone alone cannot achieve."}]}'></div>
 
 </div>
 

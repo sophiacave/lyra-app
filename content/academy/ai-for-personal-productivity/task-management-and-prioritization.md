@@ -103,7 +103,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each task to its priority bucket.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Priority Matrix Buckets","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Do Now","right":"Urgent and important — today\'s top priorities"},{"left":"Schedule","right":"Important but not urgent — block time this week"},{"left":"Quick Wins","right":"Under 5 minutes — batch and knock them out"},{"left":"Let Go","right":"Not important enough to do — drop it or delegate it"}]}'></div>
+  <div data-learn="MatchConnect" data-props='{"title":"Priority Matrix Buckets","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Do Now","right":"Urgent and important — today\u0027s top priorities"},{"left":"Schedule","right":"Important but not urgent — block time this week"},{"left":"Quick Wins","right":"Under 5 minutes — batch and knock them out"},{"left":"Let Go","right":"Not important enough to do — drop it or delegate it"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -62,11 +62,7 @@ css: "claude-beginners.css"
 
   <p class="section-text">Now put the formula parts in the right order:</p>
 
-<div data-learn="SortStack" data-props='{
-  "title": "Order the Prompt Formula",
-  "instruction": "Drag these into the correct order for building a great prompt",
-  "items": ["Role — Tell Claude who to be", "Context — Give the situation and details", "Format — Specify what you want back"]
-}'></div>
+<div data-learn="SortStack" data-props='{"title":"Order the Prompt Formula","instruction":"Drag these into the correct order for building a great prompt","items":["Role — Tell Claude who to be","Context — Give the situation and details","Format — Specify what you want back"]}'></div>
 
 </div>
 
@@ -75,23 +71,7 @@ css: "claude-beginners.css"
   <span class="section-label">See The Difference</span>
   <h2 class="section-title">Vague vs specific — side by side.</h2>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Vague vs Specific Prompts",
-  "cards": [
-    {
-      "front": "❌ VAGUE\n\n\"Write me an email to my team about the project.\"",
-      "back": "✅ SPECIFIC\n\n\"You are a friendly but professional team lead. Write a 4-sentence email to my team of 8 letting them know the website redesign deadline is moving from Friday to next Wednesday. Encouraging, not apologetic. End with one action item.\"\n\nThe vague prompt has no role, no context, no format. Claude has to guess everything."
-    },
-    {
-      "front": "❌ VAGUE\n\n\"Help me with my presentation.\"",
-      "back": "✅ SPECIFIC\n\n\"You are a presentation coach. I am presenting our Q3 sales results to the executive team tomorrow. Create 5 slide titles with 3 bullet points each. Focus on the 12% revenue growth and what drove it. Professional tone.\"\n\nRole + Context + Format = Claude nails it every time."
-    },
-    {
-      "front": "❌ VAGUE\n\n\"Summarize this document.\"",
-      "back": "✅ SPECIFIC\n\n\"You are an executive assistant. Summarize this 20-page quarterly report into 5 bullet points for my CEO. Focus on: what changed, what needs attention, and any risks. Each bullet should be one sentence.\"\n\nThe more specific you are, the less work you do editing afterward."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Vague vs Specific Prompts","cards":[{"front":"❌ VAGUE\n\n\"Write me an email to my team about the project.\"","back":"✅ SPECIFIC\n\n\"You are a friendly but professional team lead. Write a 4-sentence email to my team of 8 letting them know the website redesign deadline is moving from Friday to next Wednesday. Encouraging, not apologetic. End with one action item.\"\n\nThe vague prompt has no role, no context, no format. Claude has to guess everything."},{"front":"❌ VAGUE\n\n\"Help me with my presentation.\"","back":"✅ SPECIFIC\n\n\"You are a presentation coach. I am presenting our Q3 sales results to the executive team tomorrow. Create 5 slide titles with 3 bullet points each. Focus on the 12% revenue growth and what drove it. Professional tone.\"\n\nRole + Context + Format = Claude nails it every time."},{"front":"❌ VAGUE\n\n\"Summarize this document.\"","back":"✅ SPECIFIC\n\n\"You are an executive assistant. Summarize this 20-page quarterly report into 5 bullet points for my CEO. Focus on: what changed, what needs attention, and any risks. Each bullet should be one sentence.\"\n\nThe more specific you are, the less work you do editing afterward."}]}'></div>
 
 </div>
 
@@ -143,31 +123,7 @@ css: "claude-beginners.css"
   <h2 class="section-title">5 prompts you can use today.</h2>
   <p class="section-text">Flip each card to see the full prompt. Copy and paste into Claude, then customize for your situation.</p>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Copy-Paste Prompt Library",
-  "cards": [
-    {
-      "front": "📋 Meeting Notes → Action Items\n\nTurn messy meeting notes into a clear checklist in seconds.",
-      "back": "PROMPT:\n\nHere are my meeting notes: [paste notes]. Extract all action items, who is responsible, and deadlines. Format as a checklist I can paste into Slack."
-    },
-    {
-      "front": "💌 Professional Reply\n\nCraft the perfect response to any email — fast.",
-      "back": "PROMPT:\n\nI received this email: [paste email]. Write a professional reply that [agrees/declines/asks for more info]. Match a warm but professional tone. Keep it under 100 words."
-    },
-    {
-      "front": "🧠 Explain Like I Am New\n\nMake any complex topic simple and clear.",
-      "back": "PROMPT:\n\nExplain [complex topic] to someone who has never encountered it before. Use an everyday analogy. Keep it to 3 sentences."
-    },
-    {
-      "front": "📊 Weekly Report\n\nTurn a list of tasks into a polished status update.",
-      "back": "PROMPT:\n\nHere is what I worked on this week: [list tasks]. Write a weekly status report for my manager. Include: what was completed, what is in progress, any blockers, and plan for next week. Professional but not stuffy."
-    },
-    {
-      "front": "⚖️ Decision Helper\n\nGet a clear pros/cons analysis for any choice.",
-      "back": "PROMPT:\n\nI am deciding between [option A] and [option B]. Here is my situation: [context]. Create a pros/cons table for each option, then give me your recommendation with reasoning."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Copy-Paste Prompt Library","cards":[{"front":"📋 Meeting Notes → Action Items\n\nTurn messy meeting notes into a clear checklist in seconds.","back":"PROMPT:\n\nHere are my meeting notes: [paste notes]. Extract all action items, who is responsible, and deadlines. Format as a checklist I can paste into Slack."},{"front":"💌 Professional Reply\n\nCraft the perfect response to any email — fast.","back":"PROMPT:\n\nI received this email: [paste email]. Write a professional reply that [agrees/declines/asks for more info]. Match a warm but professional tone. Keep it under 100 words."},{"front":"🧠 Explain Like I Am New\n\nMake any complex topic simple and clear.","back":"PROMPT:\n\nExplain [complex topic] to someone who has never encountered it before. Use an everyday analogy. Keep it to 3 sentences."},{"front":"📊 Weekly Report\n\nTurn a list of tasks into a polished status update.","back":"PROMPT:\n\nHere is what I worked on this week: [list tasks]. Write a weekly status report for my manager. Include: what was completed, what is in progress, any blockers, and plan for next week. Professional but not stuffy."},{"front":"⚖️ Decision Helper\n\nGet a clear pros/cons analysis for any choice.","back":"PROMPT:\n\nI am deciding between [option A] and [option B]. Here is my situation: [context]. Create a pros/cons table for each option, then give me your recommendation with reasoning."}]}'></div>
 
 </div>
 
@@ -181,32 +137,7 @@ css: "claude-beginners.css"
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "questions": [
-    {
-      "q": "What are the 3 parts of a great prompt?",
-      "options": [
-        "Question, Answer, Follow-up",
-        "Role, Context, Format",
-        "Introduction, Body, Conclusion",
-        "Who, What, When"
-      ],
-      "correct": 1,
-      "explanation": "The 3-part formula is Role (who Claude should be), Context (the situation), and Format (what you want back). This works every time."
-    },
-    {
-      "q": "Which prompt will get a better result?",
-      "options": [
-        "Write me an email about the project.",
-        "Help me with something at work.",
-        "You are a professional editor. Rewrite this paragraph for my company blog. Keep it under 80 words, conversational tone.",
-        "Can you do emails?"
-      ],
-      "correct": 2,
-      "explanation": "The specific prompt has all three parts: Role (professional editor), Context (paragraph for company blog), and Format (under 80 words, conversational). The others are vague and force Claude to guess."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"questions":[{"q":"What are the 3 parts of a great prompt?","options":["Question, Answer, Follow-up","Role, Context, Format","Introduction, Body, Conclusion","Who, What, When"],"correct":1,"explanation":"The 3-part formula is Role (who Claude should be), Context (the situation), and Format (what you want back). This works every time."},{"q":"Which prompt will get a better result?","options":["Write me an email about the project.","Help me with something at work.","You are a professional editor. Rewrite this paragraph for my company blog. Keep it under 80 words, conversational tone.","Can you do emails?"],"correct":2,"explanation":"The specific prompt has all three parts: Role (professional editor), Context (paragraph for company blog), and Format (under 80 words, conversational). The others are vague and force Claude to guess."}]}'></div>
 
 </div>
 

@@ -31,47 +31,7 @@ free: false
   <span class="section-label">The Battle</span>
   <h2 class="section-title">Answer fast, answer right.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Prompt Engineering Battle — 6 Rounds",
-  "questions": [
-    {
-      "q": "Which prompt technique is BEST for getting accurate math solutions?",
-      "options": ["Zero-shot: just ask the question", "Few-shot: show 3 similar solved problems", "Chain-of-thought: ask for step-by-step reasoning", "Role-play: pretend to be a calculator"],
-      "correct": 2,
-      "explanation": "Chain-of-thought prompting forces the model to show its reasoning, which dramatically reduces errors on multi-step problems. Research shows up to 2x accuracy improvement."
-    },
-    {
-      "q": "What does lowering the temperature parameter do?",
-      "options": ["Makes the AI respond faster", "Makes outputs more deterministic and focused", "Reduces the context window size", "Makes the AI more creative"],
-      "correct": 1,
-      "explanation": "Temperature controls randomness. Lower temperature (closer to 0) makes the model always pick the highest-probability token, giving consistent, focused outputs."
-    },
-    {
-      "q": "A system prompt is powerful because it:",
-      "options": ["Gets processed before any user messages, shaping all responses", "Uses fewer tokens than regular prompts", "Bypasses the model safety guidelines", "Runs on a separate, faster processor"],
-      "correct": 0,
-      "explanation": "System prompts set the behavioral framework before any user interaction. They are processed first and influence every subsequent response — like giving the AI its job description."
-    },
-    {
-      "q": "When should you use few-shot prompting instead of zero-shot?",
-      "options": ["Always — few-shot is strictly better", "When the task requires a specific output format or style the AI might not guess", "Only for creative writing tasks", "When you want shorter responses"],
-      "correct": 1,
-      "explanation": "Few-shot prompting shines when you need the AI to follow a specific pattern. Showing 2-3 examples of input-output pairs teaches the format better than describing it."
-    },
-    {
-      "q": "You need AI to write code. What temperature should you use?",
-      "options": ["High (0.8-1.0) for creative solutions", "Medium (0.5) as a balanced default", "Low (0.0-0.2) for deterministic, correct code", "Temperature does not affect code quality"],
-      "correct": 2,
-      "explanation": "Code needs to be correct, not creative. Low temperature makes the model pick the most likely (usually most correct) tokens. High temperature introduces randomness that can cause syntax errors and bugs."
-    },
-    {
-      "q": "What is the context window?",
-      "options": ["The browser window where you chat with AI", "The total amount of text (prompt + response) the model can process at once", "A debugging tool for prompt engineers", "The time limit for each AI response"],
-      "correct": 1,
-      "explanation": "The context window is the model working memory — everything it can see at once. Your prompt plus the response must fit inside. Claude has 200K tokens, GPT-4 has 128K tokens."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Prompt Engineering Battle — 6 Rounds","questions":[{"q":"Which prompt technique is BEST for getting accurate math solutions?","options":["Zero-shot: just ask the question","Few-shot: show 3 similar solved problems","Chain-of-thought: ask for step-by-step reasoning","Role-play: pretend to be a calculator"],"correct":2,"explanation":"Chain-of-thought prompting forces the model to show its reasoning, which dramatically reduces errors on multi-step problems. Research shows up to 2x accuracy improvement."},{"q":"What does lowering the temperature parameter do?","options":["Makes the AI respond faster","Makes outputs more deterministic and focused","Reduces the context window size","Makes the AI more creative"],"correct":1,"explanation":"Temperature controls randomness. Lower temperature (closer to 0) makes the model always pick the highest-probability token, giving consistent, focused outputs."},{"q":"A system prompt is powerful because it:","options":["Gets processed before any user messages, shaping all responses","Uses fewer tokens than regular prompts","Bypasses the model safety guidelines","Runs on a separate, faster processor"],"correct":0,"explanation":"System prompts set the behavioral framework before any user interaction. They are processed first and influence every subsequent response — like giving the AI its job description."},{"q":"When should you use few-shot prompting instead of zero-shot?","options":["Always — few-shot is strictly better","When the task requires a specific output format or style the AI might not guess","Only for creative writing tasks","When you want shorter responses"],"correct":1,"explanation":"Few-shot prompting shines when you need the AI to follow a specific pattern. Showing 2-3 examples of input-output pairs teaches the format better than describing it."},{"q":"You need AI to write code. What temperature should you use?","options":["High (0.8-1.0) for creative solutions","Medium (0.5) as a balanced default","Low (0.0-0.2) for deterministic, correct code","Temperature does not affect code quality"],"correct":2,"explanation":"Code needs to be correct, not creative. Low temperature makes the model pick the most likely (usually most correct) tokens. High temperature introduces randomness that can cause syntax errors and bugs."},{"q":"What is the context window?","options":["The browser window where you chat with AI","The total amount of text (prompt + response) the model can process at once","A debugging tool for prompt engineers","The time limit for each AI response"],"correct":1,"explanation":"The context window is the model working memory — everything it can see at once. Your prompt plus the response must fit inside. Claude has 200K tokens, GPT-4 has 128K tokens."}]}'></div>
 
 </div>
 
@@ -80,16 +40,7 @@ free: false
   <span class="section-label">Technique Mastery</span>
   <h2 class="section-title">Match the technique to the task.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Prompt Technique to Best Use Case",
-  "instruction": "Tap a technique on the left, then the task it solves best",
-  "pairs": [
-    { "left": "Zero-Shot", "right": "Simple classification: is this email spam or not?" },
-    { "left": "Few-Shot", "right": "Convert informal messages to professional emails (with examples)" },
-    { "left": "Chain-of-Thought", "right": "Solve multi-step word problems with shown reasoning" },
-    { "left": "Role-Play", "right": "Get a senior engineer to do a thorough code review" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Prompt Technique to Best Use Case","instruction":"Tap a technique on the left, then the task it solves best","pairs":[{"left":"Zero-Shot","right":"Simple classification: is this email spam or not?"},{"left":"Few-Shot","right":"Convert informal messages to professional emails (with examples)"},{"left":"Chain-of-Thought","right":"Solve multi-step word problems with shown reasoning"},{"left":"Role-Play","right":"Get a senior engineer to do a thorough code review"}]}'></div>
 
 </div>
 
@@ -98,29 +49,7 @@ free: false
   <span class="section-label">Final Challenge</span>
   <h2 class="section-title">Collect the prompt engineering knowledge.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Prompt Engineering Concepts",
-  "questions": [
-    {
-      "q": "What is a system prompt?",
-      "options": ["The first message a user sends", "Hidden instructions that define how the AI behaves for the entire conversation", "An error message from the operating system", "The AI model name"],
-      "correct": 1,
-      "explanation": "System prompts are behind-the-scenes instructions. They set the AI persona, rules, and behavior before the user says anything."
-    },
-    {
-      "q": "What is a context window?",
-      "options": ["A pop-up window showing AI context", "The maximum amount of text the AI can process in one conversation", "A browser window for reading context", "The speed at which AI processes text"],
-      "correct": 1,
-      "explanation": "The context window is the AI total memory per conversation — input + output combined. Claude Opus 4.6 has a 1M token context window."
-    },
-    {
-      "q": "What is Chain-of-Thought prompting?",
-      "options": ["Sending many prompts in a chain", "Asking the AI to show its reasoning step by step before giving an answer", "Linking multiple AI models together", "A way to speed up AI responses"],
-      "correct": 1,
-      "explanation": "Chain-of-Thought asks the AI to reason out loud. This dramatically improves accuracy on math, logic, and complex analysis tasks."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Prompt Engineering Concepts","questions":[{"q":"What is a system prompt?","options":["The first message a user sends","Hidden instructions that define how the AI behaves for the entire conversation","An error message from the operating system","The AI model name"],"correct":1,"explanation":"System prompts are behind-the-scenes instructions. They set the AI persona, rules, and behavior before the user says anything."},{"q":"What is a context window?","options":["A pop-up window showing AI context","The maximum amount of text the AI can process in one conversation","A browser window for reading context","The speed at which AI processes text"],"correct":1,"explanation":"The context window is the AI total memory per conversation — input + output combined. Claude Opus 4.6 has a 1M token context window."},{"q":"What is Chain-of-Thought prompting?","options":["Sending many prompts in a chain","Asking the AI to show its reasoning step by step before giving an answer","Linking multiple AI models together","A way to speed up AI responses"],"correct":1,"explanation":"Chain-of-Thought asks the AI to reason out loud. This dramatically improves accuracy on math, logic, and complex analysis tasks."}]}'></div>
 
 </div>
 

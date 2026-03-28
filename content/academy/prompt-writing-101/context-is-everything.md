@@ -47,18 +47,7 @@ free: false
   <span class="section-label">The Six Types</span>
   <h2 class="section-title">The 6 types of context that matter most.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Context Type to Description",
-  "instruction": "Tap a context type on the left, then its description on the right",
-  "pairs": [
-    { "left": "Situation", "right": "What is happening right now? A launch, a complaint, a deadline" },
-    { "left": "Audience", "right": "Who is this for? Their age, role, expertise level" },
-    { "left": "Goal", "right": "What outcome do you want? Click, buy, understand, decide" },
-    { "left": "Background", "right": "Relevant history — company info, previous attempts, data" },
-    { "left": "Constraints", "right": "Budget, compliance rules, things you cannot mention" },
-    { "left": "Prior Attempts", "right": "What you have already tried — paste it for improvement" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Context Type to Description","instruction":"Tap a context type on the left, then its description on the right","pairs":[{"left":"Situation","right":"What is happening right now? A launch, a complaint, a deadline"},{"left":"Audience","right":"Who is this for? Their age, role, expertise level"},{"left":"Goal","right":"What outcome do you want? Click, buy, understand, decide"},{"left":"Background","right":"Relevant history — company info, previous attempts, data"},{"left":"Constraints","right":"Budget, compliance rules, things you cannot mention"},{"left":"Prior Attempts","right":"What you have already tried — paste it for improvement"}]}'></div>
 
 </div>
 
@@ -67,23 +56,7 @@ free: false
   <span class="section-label">The Balance</span>
   <h2 class="section-title">How much context is the right amount?</h2>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Too Little vs Just Right vs Too Much",
-  "cards": [
-    {
-      "front": "🔴 TOO LITTLE\n\n\"Write a social media post.\"",
-      "back": "What platform? What brand? What audience? What goal?\n\nThe AI has to guess EVERYTHING. You will get the most generic, forgettable post imaginable."
-    },
-    {
-      "front": "🟢 JUST RIGHT\n\n\"Write an Instagram caption for our coffee shop new cold brew. Audience: 25-35 urban professionals. Tone: witty, casual. Include a CTA to visit this weekend. Under 150 characters.\"",
-      "back": "Platform, product, audience, tone, action, length — all specified.\n\nEvery detail removes a guess. The AI can focus on being creative within clear boundaries."
-    },
-    {
-      "front": "🟠 TOO MUCH\n\n500 words of company history, every menu item, founding story, competitor analysis, brand guidelines...",
-      "back": "Context overload buries the actual ask. The AI gives equal weight to everything and loses focus on what matters.\n\nTHE RULE: Include context that would change the output if it were different. If swapping coffee shop for law firm would change the post — that context matters. If your 2015 founding story would not — leave it out."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Too Little vs Just Right vs Too Much","cards":[{"front":"🔴 TOO LITTLE\n\n\"Write a social media post.\"","back":"What platform? What brand? What audience? What goal?\n\nThe AI has to guess EVERYTHING. You will get the most generic, forgettable post imaginable."},{"front":"🟢 JUST RIGHT\n\n\"Write an Instagram caption for our coffee shop new cold brew. Audience: 25-35 urban professionals. Tone: witty, casual. Include a CTA to visit this weekend. Under 150 characters.\"","back":"Platform, product, audience, tone, action, length — all specified.\n\nEvery detail removes a guess. The AI can focus on being creative within clear boundaries."},{"front":"🟠 TOO MUCH\n\n500 words of company history, every menu item, founding story, competitor analysis, brand guidelines...","back":"Context overload buries the actual ask. The AI gives equal weight to everything and loses focus on what matters.\n\nTHE RULE: Include context that would change the output if it were different. If swapping coffee shop for law firm would change the post — that context matters. If your 2015 founding story would not — leave it out."}]}'></div>
 
 </div>
 
@@ -115,35 +88,9 @@ Competitors: We don't trash-talk. Focus on our strengths.
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your context skills.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Context Mastery",
-  "questions": [
-    {
-      "q": "You are writing a prompt for a marketing email. Which context type is MOST likely to change the output dramatically?",
-      "options": ["Your company founding year", "Who the audience is and what they care about", "Your office address", "How many employees you have"],
-      "correct": 1,
-      "explanation": "Audience is the single most impactful context type. An email to tech-savvy millennials vs retired professionals will be completely different in vocabulary, tone, and structure."
-    },
-    {
-      "q": "What is the briefing document technique?",
-      "options": ["Writing the longest possible prompt", "Creating a reusable context block you paste at the start of related prompts", "Sending the AI a separate document before your prompt", "Asking the AI to brief you on a topic first"],
-      "correct": 1,
-      "explanation": "A briefing document is a saved block of context (company info, voice, constraints) that you paste before your specific ask. It ensures consistency across all prompts for the same project."
-    },
-    {
-      "q": "How do you decide if a piece of context is worth including?",
-      "options": ["Include everything just to be safe", "If removing it would change the output, include it", "Only include context the AI specifically asks for", "Keep context under 10 words total"],
-      "correct": 1,
-      "explanation": "The test: would the output change if this context were different? If swapping coffee shop for law firm changes the result, that context matters. If your founding story would not change a social media caption, leave it out."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Context Mastery","questions":[{"q":"You are writing a prompt for a marketing email. Which context type is MOST likely to change the output dramatically?","options":["Your company founding year","Who the audience is and what they care about","Your office address","How many employees you have"],"correct":1,"explanation":"Audience is the single most impactful context type. An email to tech-savvy millennials vs retired professionals will be completely different in vocabulary, tone, and structure."},{"q":"What is the briefing document technique?","options":["Writing the longest possible prompt","Creating a reusable context block you paste at the start of related prompts","Sending the AI a separate document before your prompt","Asking the AI to brief you on a topic first"],"correct":1,"explanation":"A briefing document is a saved block of context (company info, voice, constraints) that you paste before your specific ask. It ensures consistency across all prompts for the same project."},{"q":"How do you decide if a piece of context is worth including?","options":["Include everything just to be safe","If removing it would change the output, include it","Only include context the AI specifically asks for","Keep context under 10 words total"],"correct":1,"explanation":"The test: would the output change if this context were different? If swapping coffee shop for law firm changes the result, that context matters. If your founding story would not change a social media caption, leave it out."}]}'></div>
 
-<div data-learn="SortStack" data-props='{
-  "title": "Rank Context Types by Typical Impact",
-  "instruction": "Order these context types from MOST impactful to LEAST impactful for a typical business prompt",
-  "items": ["Audience — who will see this output", "Goal — what outcome you want", "Situation — what is happening right now", "Background — relevant history and data", "Prior Attempts — what you already tried"]
-}'></div>
+<div data-learn="SortStack" data-props='{"title":"Rank Context Types by Typical Impact","instruction":"Order these context types from MOST impactful to LEAST impactful for a typical business prompt","items":["Audience — who will see this output","Goal — what outcome you want","Situation — what is happening right now","Background — relevant history and data","Prior Attempts — what you already tried"]}'></div>
 
 </div>
 

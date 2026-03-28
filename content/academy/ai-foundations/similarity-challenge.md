@@ -31,47 +31,7 @@ free: false
   <span class="section-label">Part 1</span>
   <h2 class="section-title">Embedding mastery.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Similarity Challenge — 6 Questions",
-  "questions": [
-    {
-      "q": "Which pair of words would have the HIGHEST cosine similarity?",
-      "options": ["happy and banana", "dog and skyscraper", "car and automobile", "king and purple"],
-      "correct": 2,
-      "explanation": "Car and automobile are synonyms — they appear in nearly identical contexts so their embedding vectors point in almost the same direction. Cosine similarity would be around 0.95."
-    },
-    {
-      "q": "Why are embeddings useful for search engines?",
-      "options": ["They make pages load faster", "They allow matching by meaning, not just keywords", "They compress images", "They prevent typos"],
-      "correct": 1,
-      "explanation": "With embeddings, searching affordable places to eat can match budget-friendly restaurants — even with zero keyword overlap. Both phrases map to nearby vectors because they mean similar things."
-    },
-    {
-      "q": "Paris : France :: Tokyo : ? works because:",
-      "options": ["The model memorized geography facts", "The vector from Paris to France captures capital-of and applying it to Tokyo lands near Japan", "All cities are near all countries", "Tokyo and France have similar spelling"],
-      "correct": 1,
-      "explanation": "The vector offset from Paris to France represents capital-of. Adding this same offset to Tokyo points toward Japan. Learned from patterns in text, not from explicit geography lessons."
-    },
-    {
-      "q": "A cosine similarity of 0.0 between two word vectors means:",
-      "options": ["The words are synonyms", "The words are completely unrelated (perpendicular vectors)", "The words are antonyms", "An error occurred in the calculation"],
-      "correct": 1,
-      "explanation": "Cosine similarity of 0 means the vectors are perpendicular — they share no directional component. The words exist in completely unrelated semantic regions."
-    },
-    {
-      "q": "Real word embeddings typically use how many dimensions?",
-      "options": ["2-3 dimensions", "50-100 dimensions", "768-1536 dimensions", "1 million dimensions"],
-      "correct": 2,
-      "explanation": "Modern embeddings typically use 768 to 1536 dimensions. More dimensions capture more nuance in meaning. The 2D visualizations in this course simplify the concept but the math is identical."
-    },
-    {
-      "q": "RAG (Retrieval-Augmented Generation) uses embeddings to:",
-      "options": ["Generate images from text", "Find relevant documents to include in the AI context before generating a response", "Compress AI models to run faster", "Translate between languages"],
-      "correct": 1,
-      "explanation": "RAG converts your question to a vector, searches a database for the most similar document vectors, retrieves those documents, and includes them in the AI prompt. This gives the AI access to specific knowledge without retraining."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Similarity Challenge — 6 Questions","questions":[{"q":"Which pair of words would have the HIGHEST cosine similarity?","options":["happy and banana","dog and skyscraper","car and automobile","king and purple"],"correct":2,"explanation":"Car and automobile are synonyms — they appear in nearly identical contexts so their embedding vectors point in almost the same direction. Cosine similarity would be around 0.95."},{"q":"Why are embeddings useful for search engines?","options":["They make pages load faster","They allow matching by meaning, not just keywords","They compress images","They prevent typos"],"correct":1,"explanation":"With embeddings, searching affordable places to eat can match budget-friendly restaurants — even with zero keyword overlap. Both phrases map to nearby vectors because they mean similar things."},{"q":"Paris : France :: Tokyo : ? works because:","options":["The model memorized geography facts","The vector from Paris to France captures capital-of and applying it to Tokyo lands near Japan","All cities are near all countries","Tokyo and France have similar spelling"],"correct":1,"explanation":"The vector offset from Paris to France represents capital-of. Adding this same offset to Tokyo points toward Japan. Learned from patterns in text, not from explicit geography lessons."},{"q":"A cosine similarity of 0.0 between two word vectors means:","options":["The words are synonyms","The words are completely unrelated (perpendicular vectors)","The words are antonyms","An error occurred in the calculation"],"correct":1,"explanation":"Cosine similarity of 0 means the vectors are perpendicular — they share no directional component. The words exist in completely unrelated semantic regions."},{"q":"Real word embeddings typically use how many dimensions?","options":["2-3 dimensions","50-100 dimensions","768-1536 dimensions","1 million dimensions"],"correct":2,"explanation":"Modern embeddings typically use 768 to 1536 dimensions. More dimensions capture more nuance in meaning. The 2D visualizations in this course simplify the concept but the math is identical."},{"q":"RAG (Retrieval-Augmented Generation) uses embeddings to:","options":["Generate images from text","Find relevant documents to include in the AI context before generating a response","Compress AI models to run faster","Translate between languages"],"correct":1,"explanation":"RAG converts your question to a vector, searches a database for the most similar document vectors, retrieves those documents, and includes them in the AI prompt. This gives the AI access to specific knowledge without retraining."}]}'></div>
 
 </div>
 
@@ -80,17 +40,7 @@ free: false
   <span class="section-label">Part 2</span>
   <h2 class="section-title">Full course review.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Concept to Its Course Section",
-  "instruction": "Tap a concept on the left, then where you learned it on the right",
-  "pairs": [
-    { "left": "Weighted sum + bias + activation", "right": "What Is a Neuron — the core neuron computation" },
-    { "left": "Input → Hidden → Output layers", "right": "Build a Network — layer architecture" },
-    { "left": "Tokens and context windows", "right": "Anatomy of a Prompt — how AI reads text" },
-    { "left": "Zero-shot, few-shot, chain-of-thought", "right": "Prompt Playground — prompt engineering techniques" },
-    { "left": "Cosine similarity and vector arithmetic", "right": "Embedding Explorer — meaning as geometry" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Concept to Its Course Section","instruction":"Tap a concept on the left, then where you learned it on the right","pairs":[{"left":"Weighted sum + bias + activation","right":"What Is a Neuron — the core neuron computation"},{"left":"Input → Hidden → Output layers","right":"Build a Network — layer architecture"},{"left":"Tokens and context windows","right":"Anatomy of a Prompt — how AI reads text"},{"left":"Zero-shot, few-shot, chain-of-thought","right":"Prompt Playground — prompt engineering techniques"},{"left":"Cosine similarity and vector arithmetic","right":"Embedding Explorer — meaning as geometry"}]}'></div>
 
 </div>
 
@@ -99,41 +49,7 @@ free: false
   <span class="section-label">Final Challenge</span>
   <h2 class="section-title">The AI Foundations gauntlet.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "AI Foundations Gauntlet",
-  "questions": [
-    {
-      "q": "Which of these is a core component inside an artificial neuron?",
-      "options": ["Pixels", "Weights", "Bluetooth", "Megabytes"],
-      "correct": 1,
-      "explanation": "Weights are the learnable parameters inside each neuron. They determine how much influence each input has on the output."
-    },
-    {
-      "q": "What does \"few-shot prompting\" mean?",
-      "options": ["Sending very short prompts", "Giving Claude 2-3 examples of what you want before asking", "Using Claude for only a few minutes", "Limiting Claude to a few words of response"],
-      "correct": 1,
-      "explanation": "Few-shot means providing examples in your prompt. Claude learns the pattern from your examples and applies it to the new task."
-    },
-    {
-      "q": "In embedding space, what does cosine similarity measure?",
-      "options": ["How long two texts are", "How semantically similar two concepts are", "The file size of a document", "How fast the model runs"],
-      "correct": 1,
-      "explanation": "Cosine similarity measures the angle between two vectors in embedding space. Closer angles = more semantically similar concepts."
-    },
-    {
-      "q": "What is RAG (Retrieval-Augmented Generation)?",
-      "options": ["A type of neural network layer", "A technique that retrieves relevant data and feeds it to the AI before generating a response", "A way to compress images", "A programming language for AI"],
-      "correct": 1,
-      "explanation": "RAG searches your data for relevant context, then gives it to the AI so it can generate accurate, grounded responses from your actual information."
-    },
-    {
-      "q": "What does the temperature parameter control?",
-      "options": ["The speed of the AI response", "How creative vs deterministic the output is", "The number of tokens generated", "The size of the context window"],
-      "correct": 1,
-      "explanation": "Temperature controls randomness. Low temperature (0) = deterministic and focused. High temperature (1) = more creative and varied."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"AI Foundations Gauntlet","questions":[{"q":"Which of these is a core component inside an artificial neuron?","options":["Pixels","Weights","Bluetooth","Megabytes"],"correct":1,"explanation":"Weights are the learnable parameters inside each neuron. They determine how much influence each input has on the output."},{"q":"What does \"few-shot prompting\" mean?","options":["Sending very short prompts","Giving Claude 2-3 examples of what you want before asking","Using Claude for only a few minutes","Limiting Claude to a few words of response"],"correct":1,"explanation":"Few-shot means providing examples in your prompt. Claude learns the pattern from your examples and applies it to the new task."},{"q":"In embedding space, what does cosine similarity measure?","options":["How long two texts are","How semantically similar two concepts are","The file size of a document","How fast the model runs"],"correct":1,"explanation":"Cosine similarity measures the angle between two vectors in embedding space. Closer angles = more semantically similar concepts."},{"q":"What is RAG (Retrieval-Augmented Generation)?","options":["A type of neural network layer","A technique that retrieves relevant data and feeds it to the AI before generating a response","A way to compress images","A programming language for AI"],"correct":1,"explanation":"RAG searches your data for relevant context, then gives it to the AI so it can generate accurate, grounded responses from your actual information."},{"q":"What does the temperature parameter control?","options":["The speed of the AI response","How creative vs deterministic the output is","The number of tokens generated","The size of the context window"],"correct":1,"explanation":"Temperature controls randomness. Low temperature (0) = deterministic and focused. High temperature (1) = more creative and varied."}]}'></div>
 
 </div>
 

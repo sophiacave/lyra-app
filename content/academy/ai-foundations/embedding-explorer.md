@@ -70,34 +70,9 @@ free: false
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">How similarity is measured.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Similarity Score to Meaning",
-  "instruction": "Tap a cosine similarity value on the left, then what it means on the right",
-  "pairs": [
-    { "left": "Cosine = 1.0", "right": "Identical direction — vectors point the same way (synonyms)" },
-    { "left": "Cosine = 0.0", "right": "Perpendicular — completely unrelated concepts" },
-    { "left": "Cosine = -1.0", "right": "Opposite direction — antonyms or contradictions" },
-    { "left": "Cosine = 0.85", "right": "Very similar — closely related words like dog and puppy" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Similarity Score to Meaning","instruction":"Tap a cosine similarity value on the left, then what it means on the right","pairs":[{"left":"Cosine = 1.0","right":"Identical direction — vectors point the same way (synonyms)"},{"left":"Cosine = 0.0","right":"Perpendicular — completely unrelated concepts"},{"left":"Cosine = -1.0","right":"Opposite direction — antonyms or contradictions"},{"left":"Cosine = 0.85","right":"Very similar — closely related words like dog and puppy"}]}'></div>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Embedding Explorer Quiz",
-  "questions": [
-    {
-      "q": "Which word pair would have the HIGHEST cosine similarity?",
-      "options": ["happy and banana", "car and automobile", "king and purple", "dog and skyscraper"],
-      "correct": 1,
-      "explanation": "Car and automobile are synonyms — they appear in nearly identical contexts so their vectors point in almost the same direction. Cosine similarity would be around 0.95."
-    },
-    {
-      "q": "In the analogy Paris : France :: Tokyo : ?, the answer is Japan because:",
-      "options": ["The model memorized geography", "The vector offset from Paris to France (capital-of) applied to Tokyo lands near Japan", "All cities are near all countries in embedding space", "Tokyo and France are spelled similarly"],
-      "correct": 1,
-      "explanation": "The direction from Paris to France represents capital-of. This same directional offset applied to Tokyo points toward Japan. The model learned these relationships from patterns in text."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Embedding Explorer Quiz","questions":[{"q":"Which word pair would have the HIGHEST cosine similarity?","options":["happy and banana","car and automobile","king and purple","dog and skyscraper"],"correct":1,"explanation":"Car and automobile are synonyms — they appear in nearly identical contexts so their vectors point in almost the same direction. Cosine similarity would be around 0.95."},{"q":"In the analogy Paris : France :: Tokyo : ?, the answer is Japan because:","options":["The model memorized geography","The vector offset from Paris to France (capital-of) applied to Tokyo lands near Japan","All cities are near all countries in embedding space","Tokyo and France are spelled similarly"],"correct":1,"explanation":"The direction from Paris to France represents capital-of. This same directional offset applied to Tokyo points toward Japan. The model learned these relationships from patterns in text."}]}'></div>
 
   <div class="narration" style="margin-top:1.5rem">
     <strong>Embeddings turn language into geometry.</strong> Cosine similarity measures the cosine of the angle between two vectors — 1.0 means identical direction, 0 means unrelated, -1.0 means opposite. Real embeddings use 768+ dimensions, but the math is identical to what you see here in 2D.

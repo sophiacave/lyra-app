@@ -39,18 +39,7 @@ free: false
   <span class="section-label">The Formats</span>
   <h2 class="section-title">8 formats you'll use constantly.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Format to Best Use Case",
-  "instruction": "Tap a format on the left, then the situation where it works best",
-  "pairs": [
-    { "left": "Bullet Points", "right": "Brainstorming, quick summaries, idea lists" },
-    { "left": "Numbered Steps", "right": "Instructions, processes, how-to guides" },
-    { "left": "Table", "right": "Comparisons, decision matrices, data side-by-side" },
-    { "left": "Email Format", "right": "Communications you will copy-paste and send directly" },
-    { "left": "TL;DR + Deep Dive", "right": "Research, reports, and analysis with varying reader depth" },
-    { "left": "JSON / CSV", "right": "Data you will import into spreadsheets or other tools" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Format to Best Use Case","instruction":"Tap a format on the left, then the situation where it works best","pairs":[{"left":"Bullet Points","right":"Brainstorming, quick summaries, idea lists"},{"left":"Numbered Steps","right":"Instructions, processes, how-to guides"},{"left":"Table","right":"Comparisons, decision matrices, data side-by-side"},{"left":"Email Format","right":"Communications you will copy-paste and send directly"},{"left":"TL;DR + Deep Dive","right":"Research, reports, and analysis with varying reader depth"},{"left":"JSON / CSV","right":"Data you will import into spreadsheets or other tools"}]}'></div>
 
 </div>
 
@@ -82,27 +71,7 @@ Repeat for each topic. Keep each section under 100 words.</pre>
   <h2 class="section-title">Output for your tools, not your eyes.</h2>
   <p class="section-text">One of the most underused techniques: ask AI to output in the exact format your next tool needs.</p>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Format for the Destination — Flip to See the Prompt",
-  "cards": [
-    {
-      "front": "📊 Destination: Spreadsheet\n\nYou need data you can paste into Google Sheets or Excel",
-      "back": "\"Output as CSV with headers: Name, Category, Priority, Due Date.\"\n\nor\n\n\"Format as a markdown table with columns for Feature, Status, and Owner.\"\n\nSkips the entire reformatting step."
-    },
-    {
-      "front": "🖥️ Destination: Website\n\nYou need content ready for a web page",
-      "back": "\"Output as HTML with h2 headings, p tags for paragraphs, and ul/li for lists. Include class names for styling.\"\n\nCopy → paste → publish. No reformatting."
-    },
-    {
-      "front": "📱 Destination: Presentation\n\nYou need slide-ready content",
-      "back": "\"Format as one slide per section. Each slide: a title (under 8 words) and exactly 3 bullet points (under 15 words each). End with a summary slide.\"\n\nDrop straight into your deck."
-    },
-    {
-      "front": "🤖 Destination: Another AI Tool\n\nYou need structured data for automation",
-      "back": "\"Output as JSON with keys: task, priority (1-5), assignee, deadline. Array of objects, one per task.\"\n\nPipe directly into Zapier, Make, or your own code."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Format for the Destination — Flip to See the Prompt","cards":[{"front":"📊 Destination: Spreadsheet\n\nYou need data you can paste into Google Sheets or Excel","back":"\"Output as CSV with headers: Name, Category, Priority, Due Date.\"\n\nor\n\n\"Format as a markdown table with columns for Feature, Status, and Owner.\"\n\nSkips the entire reformatting step."},{"front":"🖥️ Destination: Website\n\nYou need content ready for a web page","back":"\"Output as HTML with h2 headings, p tags for paragraphs, and ul/li for lists. Include class names for styling.\"\n\nCopy → paste → publish. No reformatting."},{"front":"📱 Destination: Presentation\n\nYou need slide-ready content","back":"\"Format as one slide per section. Each slide: a title (under 8 words) and exactly 3 bullet points (under 15 words each). End with a summary slide.\"\n\nDrop straight into your deck."},{"front":"🤖 Destination: Another AI Tool\n\nYou need structured data for automation","back":"\"Output as JSON with keys: task, priority (1-5), assignee, deadline. Array of objects, one per task.\"\n\nPipe directly into Zapier, Make, or your own code."}]}'></div>
 
 </div>
 
@@ -111,29 +80,7 @@ Repeat for each topic. Keep each section under 100 words.</pre>
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your format skills.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Format Mastery",
-  "questions": [
-    {
-      "q": "You need to compare 5 project management tools for your team. Which format should you request?",
-      "options": ["3 paragraphs per tool", "A comparison table with columns for features, price, and pros/cons", "A numbered list of all 5 tools", "A single paragraph summary"],
-      "correct": 1,
-      "explanation": "Tables are the ideal format for side-by-side comparisons. They make it easy to scan across options and compare specific attributes at a glance."
-    },
-    {
-      "q": "What is the \"show the structure\" technique?",
-      "options": ["Asking AI to show you its internal structure", "Providing a skeleton of your desired output format in the prompt", "Letting AI choose whatever structure it wants", "Using bullet points in every prompt"],
-      "correct": 1,
-      "explanation": "When you show AI a rough template of what your ideal output looks like, it mirrors that structure precisely. This gives you consistent, scannable output without reformatting."
-    },
-    {
-      "q": "You need meeting notes turned into action items for your project tracker. What format should you request?",
-      "options": ["Flowing paragraphs summarizing the meeting", "Bullet points with owner and deadline for each action item", "A 500-word essay about the meeting outcomes", "A table with columns: Action Item, Owner, Deadline, Priority"],
-      "correct": 3,
-      "explanation": "Since this goes into a project tracker, request the exact format your tracker uses — a table with the right columns. Output for your tools, not your eyes."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Format Mastery","questions":[{"q":"You need to compare 5 project management tools for your team. Which format should you request?","options":["3 paragraphs per tool","A comparison table with columns for features, price, and pros/cons","A numbered list of all 5 tools","A single paragraph summary"],"correct":1,"explanation":"Tables are the ideal format for side-by-side comparisons. They make it easy to scan across options and compare specific attributes at a glance."},{"q":"What is the \"show the structure\" technique?","options":["Asking AI to show you its internal structure","Providing a skeleton of your desired output format in the prompt","Letting AI choose whatever structure it wants","Using bullet points in every prompt"],"correct":1,"explanation":"When you show AI a rough template of what your ideal output looks like, it mirrors that structure precisely. This gives you consistent, scannable output without reformatting."},{"q":"You need meeting notes turned into action items for your project tracker. What format should you request?","options":["Flowing paragraphs summarizing the meeting","Bullet points with owner and deadline for each action item","A 500-word essay about the meeting outcomes","A table with columns: Action Item, Owner, Deadline, Priority"],"correct":3,"explanation":"Since this goes into a project tracker, request the exact format your tracker uses — a table with the right columns. Output for your tools, not your eyes."}]}'></div>
 
 </div>
 

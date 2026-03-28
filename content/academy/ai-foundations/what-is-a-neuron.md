@@ -91,16 +91,7 @@ free: true
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">The building blocks of every neuron.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match Each Concept to Its Role",
-  "instruction": "Tap a concept on the left, then what it does on the right",
-  "pairs": [
-    { "left": "Weights", "right": "Multipliers that control how much each input matters" },
-    { "left": "Bias", "right": "An offset that shifts when the neuron fires" },
-    { "left": "Activation Function", "right": "Non-linear transform that decides if the neuron fires" },
-    { "left": "Forward Pass", "right": "The computation flowing left-to-right through the neuron" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match Each Concept to Its Role","instruction":"Tap a concept on the left, then what it does on the right","pairs":[{"left":"Weights","right":"Multipliers that control how much each input matters"},{"left":"Bias","right":"An offset that shifts when the neuron fires"},{"left":"Activation Function","right":"Non-linear transform that decides if the neuron fires"},{"left":"Forward Pass","right":"The computation flowing left-to-right through the neuron"}]}'></div>
 
 </div>
 
@@ -109,23 +100,7 @@ free: true
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">Three activation functions you need to know.</h2>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Activation Functions — Flip for Details",
-  "cards": [
-    {
-      "front": "📐 STEP FUNCTION (1957)\n\nThe original. Outputs 0 or 1.\nUsed in the first Perceptron.",
-      "back": "HOW IT WORKS: If the weighted sum is >= 0, output 1. Otherwise, output 0.\n\nPROBLEM: No gradient — the network cannot learn gradually. It is either on or off. Like a light switch with no dimmer.\n\nUSED TODAY: Almost never. Historical importance only."
-    },
-    {
-      "front": "⚡ ReLU (Modern Standard)\n\nRectified Linear Unit.\nThe workhorse of modern AI.",
-      "back": "HOW IT WORKS: max(0, z). If positive, pass it through. If negative, output 0.\n\nWHY IT WORKS: Dead simple, trains extremely fast, and avoids the vanishing gradient problem that killed earlier activations.\n\nUSED TODAY: Almost everywhere — image classifiers, language models, recommendation systems."
-    },
-    {
-      "front": "🎯 SIGMOID (Probabilities)\n\nSquashes output to between 0 and 1.\nPerfect for yes/no decisions.",
-      "back": "HOW IT WORKS: 1/(1+e^-z). Smoothly maps any number to the range (0, 1).\n\nWHY IT WORKS: The output can be interpreted as a probability. Is this email spam? 0.92 = 92% likely spam.\n\nUSED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers."
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Activation Functions — Flip for Details","cards":[{"front":"📐 STEP FUNCTION (1957)\n\nThe original. Outputs 0 or 1.\nUsed in the first Perceptron.","back":"HOW IT WORKS: If the weighted sum is >= 0, output 1. Otherwise, output 0.\n\nPROBLEM: No gradient — the network cannot learn gradually. It is either on or off. Like a light switch with no dimmer.\n\nUSED TODAY: Almost never. Historical importance only."},{"front":"⚡ ReLU (Modern Standard)\n\nRectified Linear Unit.\nThe workhorse of modern AI.","back":"HOW IT WORKS: max(0, z). If positive, pass it through. If negative, output 0.\n\nWHY IT WORKS: Dead simple, trains extremely fast, and avoids the vanishing gradient problem that killed earlier activations.\n\nUSED TODAY: Almost everywhere — image classifiers, language models, recommendation systems."},{"front":"🎯 SIGMOID (Probabilities)\n\nSquashes output to between 0 and 1.\nPerfect for yes/no decisions.","back":"HOW IT WORKS: 1/(1+e^-z). Smoothly maps any number to the range (0, 1).\n\nWHY IT WORKS: The output can be interpreted as a probability. Is this email spam? 0.92 = 92% likely spam.\n\nUSED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers."}]}'></div>
 
 </div>
 
@@ -134,29 +109,7 @@ free: true
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your understanding.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Neuron Mastery",
-  "questions": [
-    {
-      "q": "What does a weight in a neural network control?",
-      "options": ["The physical size of a neuron", "How much influence an input has on the output", "The number of connections in the network", "The speed at which data flows"],
-      "correct": 1,
-      "explanation": "Weights determine how much each input contributes to the neuron output. Higher weights mean more influence. Training a neural network means finding the right weights."
-    },
-    {
-      "q": "Why are activation functions necessary?",
-      "options": ["They make the network run faster", "They add non-linearity so the network can learn complex patterns", "They reduce the number of neurons needed", "They store the training data"],
-      "correct": 1,
-      "explanation": "Without activation functions, a neural network is just a linear equation — no matter how many layers you stack. Non-linearity is what allows networks to learn curves, edges, language, and everything else."
-    },
-    {
-      "q": "Which activation function is used in most modern neural networks?",
-      "options": ["Step function", "Sigmoid", "ReLU", "Logarithm"],
-      "correct": 2,
-      "explanation": "ReLU (Rectified Linear Unit) is the standard. It is simple (max(0, z)), trains fast, and avoids the vanishing gradient problem that plagued older activations like sigmoid in hidden layers."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Neuron Mastery","questions":[{"q":"What does a weight in a neural network control?","options":["The physical size of a neuron","How much influence an input has on the output","The number of connections in the network","The speed at which data flows"],"correct":1,"explanation":"Weights determine how much each input contributes to the neuron output. Higher weights mean more influence. Training a neural network means finding the right weights."},{"q":"Why are activation functions necessary?","options":["They make the network run faster","They add non-linearity so the network can learn complex patterns","They reduce the number of neurons needed","They store the training data"],"correct":1,"explanation":"Without activation functions, a neural network is just a linear equation — no matter how many layers you stack. Non-linearity is what allows networks to learn curves, edges, language, and everything else."},{"q":"Which activation function is used in most modern neural networks?","options":["Step function","Sigmoid","ReLU","Logarithm"],"correct":2,"explanation":"ReLU (Rectified Linear Unit) is the standard. It is simple (max(0, z)), trains fast, and avoids the vanishing gradient problem that plagued older activations like sigmoid in hidden layers."}]}'></div>
 
   <div class="narration" style="margin-top:1.5rem">
     <strong>This is the real building block of AI.</strong> Every neural network — from image classifiers to large language models — is made of neurons that compute exactly this: weighted sum + bias, passed through an activation function. Stack thousands of these together and you get intelligence.

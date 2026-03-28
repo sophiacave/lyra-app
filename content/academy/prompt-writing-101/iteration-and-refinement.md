@@ -40,38 +40,9 @@ free: false
   <span class="section-label">The Patterns</span>
   <h2 class="section-title">4 follow-up patterns that fix anything.</h2>
 
-<div data-learn="MatchConnect" data-props='{
-  "title": "Match the Pattern to the Problem",
-  "instruction": "Tap a pattern on the left, then the situation where you would use it",
-  "pairs": [
-    { "left": "The Zoom In", "right": "Output is too broad or surface-level — need more depth" },
-    { "left": "The Tone Shift", "right": "Content is right but the voice or style is wrong" },
-    { "left": "The Redirect", "right": "AI went in completely the wrong direction" },
-    { "left": "The Remix", "right": "You want alternative versions or variations" }
-  ]
-}'></div>
+<div data-learn="MatchConnect" data-props='{"title":"Match the Pattern to the Problem","instruction":"Tap a pattern on the left, then the situation where you would use it","pairs":[{"left":"The Zoom In","right":"Output is too broad or surface-level — need more depth"},{"left":"The Tone Shift","right":"Content is right but the voice or style is wrong"},{"left":"The Redirect","right":"AI went in completely the wrong direction"},{"left":"The Remix","right":"You want alternative versions or variations"}]}'></div>
 
-<div data-learn="FlashDeck" data-props='{
-  "title": "Follow-Up Patterns — Flip for Example Prompts",
-  "cards": [
-    {
-      "front": "🔍 THE ZOOM IN\n\nWhen the output is too broad or surface-level",
-      "back": "EXAMPLE FOLLOW-UPS:\n\n\"Good start. Now expand on point #3 with specific examples and data.\"\n\n\"Go deeper on the pricing section. Give me exact numbers and a comparison table.\"\n\n\"That overview is helpful. Now focus specifically on the onboarding phase — give me a day-by-day breakdown.\""
-    },
-    {
-      "front": "🎭 THE TONE SHIFT\n\nWhen the content is right but the voice is wrong",
-      "back": "EXAMPLE FOLLOW-UPS:\n\n\"Rewrite this but make it sound like a friend giving advice, not a textbook.\"\n\n\"Same content, but more confident. Remove all hedging language.\"\n\n\"This is too formal. Make it conversational — like I am talking to a colleague over coffee.\""
-    },
-    {
-      "front": "🔄 THE REDIRECT\n\nWhen it went in the wrong direction entirely",
-      "back": "EXAMPLE FOLLOW-UPS:\n\n\"Not quite. I do not need the history — I need actionable steps I can implement today.\"\n\n\"You focused on enterprise. I need this for a solo freelancer with no team.\"\n\n\"Wrong angle. I am not trying to sell — I am trying to educate. Reframe the whole thing.\""
-    },
-    {
-      "front": "🎲 THE REMIX\n\nWhen you want variations or alternatives",
-      "back": "EXAMPLE FOLLOW-UPS:\n\n\"Give me 3 completely different versions of this headline.\"\n\n\"Keep the structure but replace all the examples with ones from healthcare.\"\n\n\"I like this one but give me a bolder version — something that would make someone stop scrolling.\""
-    }
-  ]
-}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"Follow-Up Patterns — Flip for Example Prompts","cards":[{"front":"🔍 THE ZOOM IN\n\nWhen the output is too broad or surface-level","back":"EXAMPLE FOLLOW-UPS:\n\n\"Good start. Now expand on point #3 with specific examples and data.\"\n\n\"Go deeper on the pricing section. Give me exact numbers and a comparison table.\"\n\n\"That overview is helpful. Now focus specifically on the onboarding phase — give me a day-by-day breakdown.\""},{"front":"🎭 THE TONE SHIFT\n\nWhen the content is right but the voice is wrong","back":"EXAMPLE FOLLOW-UPS:\n\n\"Rewrite this but make it sound like a friend giving advice, not a textbook.\"\n\n\"Same content, but more confident. Remove all hedging language.\"\n\n\"This is too formal. Make it conversational — like I am talking to a colleague over coffee.\""},{"front":"🔄 THE REDIRECT\n\nWhen it went in the wrong direction entirely","back":"EXAMPLE FOLLOW-UPS:\n\n\"Not quite. I do not need the history — I need actionable steps I can implement today.\"\n\n\"You focused on enterprise. I need this for a solo freelancer with no team.\"\n\n\"Wrong angle. I am not trying to sell — I am trying to educate. Reframe the whole thing.\""},{"front":"🎲 THE REMIX\n\nWhen you want variations or alternatives","back":"EXAMPLE FOLLOW-UPS:\n\n\"Give me 3 completely different versions of this headline.\"\n\n\"Keep the structure but replace all the examples with ones from healthcare.\"\n\n\"I like this one but give me a bolder version — something that would make someone stop scrolling.\""}]}'></div>
 
 </div>
 
@@ -80,29 +51,7 @@ free: false
   <span class="section-label">The Decision</span>
   <h2 class="section-title">When to iterate vs when to start over.</h2>
 
-<div data-learn="QuizMC" data-props='{
-  "title": "Iterate or Start Over?",
-  "questions": [
-    {
-      "q": "The AI wrote a blog post. The structure is great but the tone feels too corporate. What should you do?",
-      "options": ["Start over with a completely new prompt", "Use the Tone Shift pattern to adjust the voice", "Give up and write it yourself", "Add more constraints to the original prompt and re-send it"],
-      "correct": 1,
-      "explanation": "When the structure is right but the tone is off, iterate! The Tone Shift pattern keeps what works and fixes what does not: Same content, but make it conversational and warm."
-    },
-    {
-      "q": "You have tried 3 rounds of iteration and the output is not improving. What should you do?",
-      "options": ["Keep iterating — 4th time is the charm", "Start over with a completely new prompt that fixes what went wrong", "Use more polite language in your follow-ups", "Switch to a different AI model"],
-      "correct": 1,
-      "explanation": "After 3+ rounds with no improvement, the original prompt has a fundamental issue. Start fresh, but analyze WHY the first attempt failed and fix that in your new prompt."
-    },
-    {
-      "q": "You have two AI outputs. Version 1 has a great opening. Version 2 has better structure. What do you do?",
-      "options": ["Pick whichever one is closest and edit manually", "Ask AI to combine the best parts: Use version 1 intro with version 2 structure", "Start over and hope the next version has both", "Average the two versions together"],
-      "correct": 1,
-      "explanation": "The best of both technique — AI excels at synthesis. Tell it exactly which pieces to combine: Use version 1 opening, then follow version 2 format for the rest."
-    }
-  ]
-}'></div>
+<div data-learn="QuizMC" data-props='{"title":"Iterate or Start Over?","questions":[{"q":"The AI wrote a blog post. The structure is great but the tone feels too corporate. What should you do?","options":["Start over with a completely new prompt","Use the Tone Shift pattern to adjust the voice","Give up and write it yourself","Add more constraints to the original prompt and re-send it"],"correct":1,"explanation":"When the structure is right but the tone is off, iterate! The Tone Shift pattern keeps what works and fixes what does not: Same content, but make it conversational and warm."},{"q":"You have tried 3 rounds of iteration and the output is not improving. What should you do?","options":["Keep iterating — 4th time is the charm","Start over with a completely new prompt that fixes what went wrong","Use more polite language in your follow-ups","Switch to a different AI model"],"correct":1,"explanation":"After 3+ rounds with no improvement, the original prompt has a fundamental issue. Start fresh, but analyze WHY the first attempt failed and fix that in your new prompt."},{"q":"You have two AI outputs. Version 1 has a great opening. Version 2 has better structure. What do you do?","options":["Pick whichever one is closest and edit manually","Ask AI to combine the best parts: Use version 1 intro with version 2 structure","Start over and hope the next version has both","Average the two versions together"],"correct":1,"explanation":"The best of both technique — AI excels at synthesis. Tell it exactly which pieces to combine: Use version 1 opening, then follow version 2 format for the rest."}]}'></div>
 
   <p class="section-text"><strong>Pro tip:</strong> When starting over, don't just re-send the same prompt. Analyze <em>why</em> the first attempt failed and fix that in your new prompt. Bad iteration is doing the same thing and expecting different results.</p>
 </div>
