@@ -142,7 +142,8 @@ async function renderLesson(config) {
       const result = await generateTTS(section.text, section.voice || 'sophia', audioName, config.ttsEngine);
       if (result) {
         audioResults.push({ index: i, ...result });
-        section.durationS = Math.ceil(result.duration_s) + 1; // Add 1s buffer
+        section.audioDuration = result.duration_s; // Exact TTS duration for pacing engine
+        section.durationS = result.duration_s;     // Pacing engine adds 1.5s buffer automatically
         section.audioSrc = result.audio_path;
 
         // Read sentence timing for animation sync

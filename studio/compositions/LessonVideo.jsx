@@ -20,6 +20,9 @@ import {
   TYPE, SPACE, GRID, MOTION, DEPTH,
   typeStyle, appleEase, easeOutCubic, easeOutExpo,
 } from '../lib/design-tokens.js';
+import {
+  buildTimingMap, calculateDurationS, calculateGapS, getVisualStartFrame, PACING,
+} from '../lib/pacing-engine.js';
 import { FilmGrain } from '../components/FilmGrain.jsx';
 import { Vignette } from '../components/Vignette.jsx';
 import { AmbientParticles } from '../components/AmbientParticles.jsx';
@@ -34,6 +37,7 @@ import { QuoteCard } from '../components/QuoteCard.jsx';
 import { ComparisonSplit } from '../components/ComparisonSplit.jsx';
 import { TimelineScene } from '../components/TimelineScene.jsx';
 import { OutroScene } from '../components/OutroScene.jsx';
+import { BreathingGap } from '../components/BreathingGap.jsx';
 
 // ── Title Card ──
 // Apple keynote style: centered, generous space, gradient accent, brand whisper.
@@ -64,7 +68,7 @@ function TitleCard({ title, subtitle, durationInFrames }) {
   );
 
   return (
-    <SceneTransition fadeInDuration={0.6} fadeOutDuration={0.5}>
+    <SceneTransition fadeInDuration={1.0} fadeOutDuration={0.7}>
       <AbsoluteFill>
         <DepthBackground
           lightPosition="center"
@@ -192,26 +196,45 @@ function NarrationScene({ text, highlightWords = [], durationInFrames, sentenceT
         }}>
           {sentences.map((sentence, si) => {
             // Use TTS timing if available, otherwise distribute evenly
+            // Visual lead: start text animation 3 frames (100ms) before audio
             let sentenceStartDelay;
+            let nextSentenceStart;
             if (sentenceTiming && sentenceTiming[si]) {
-              sentenceStartDelay = sentenceTiming[si].offset_ms / 1000;
+              const visualFrame = getVisualStartFrame(sentenceTiming[si].offset_ms, fps);
+              sentenceStartDelay = visualFrame / fps;
+              // Next sentence start for dimming calculation
+              if (sentenceTiming[si + 1]) {
+                nextSentenceStart = getVisualStartFrame(sentenceTiming[si + 1].offset_ms, fps);
+              } else {
+                nextSentenceStart = durationInFrames;
+              }
             } else {
               const timePerSentence = (durationInFrames / fps) / sentences.length;
               sentenceStartDelay = si * timePerSentence;
+              nextSentenceStart = (si + 1) * timePerSentence * fps;
             }
 
+            // 3B1B inactive dimming: previous sentences dim to 30% when next appears
+            const sentenceStartFrame = sentenceStartDelay * fps;
+            const isActive = si === sentences.length - 1
+              ? frame >= sentenceStartFrame
+              : frame >= sentenceStartFrame && frame < nextSentenceStart;
+            const hasAppeared = frame >= sentenceStartFrame;
+            const dimOpacity = !hasAppeared ? 1.0 : (isActive ? 1.0 : 0.35);
+
             return (
-              <WordReveal
-                key={si}
-                text={sentence}
-                fontSize={TYPE.title3.size}
-                fontWeight={TYPE.title3.weight}
-                lineHeight={TYPE.title3.leading}
-                wordDelay={MOTION.stagger.normal}
-                startDelay={sentenceStartDelay}
-                highlightWords={highlightWords}
-                highlightColor={ACCENT_WARM}
-              />
+              <div key={si} style={{ opacity: dimOpacity, transition: 'opacity 0.3s' }}>
+                <WordReveal
+                  text={sentence}
+                  fontSize={TYPE.title3.size}
+                  fontWeight={TYPE.title3.weight}
+                  lineHeight={TYPE.title3.leading}
+                  wordDelay={MOTION.stagger.normal}
+                  startDelay={sentenceStartDelay}
+                  highlightWords={highlightWords}
+                  highlightColor={ACCENT_WARM}
+                />
+              </div>
             );
           })}
         </div>
@@ -398,161 +421,159 @@ function ConceptDiagramScene({ title, nodes, connections = [], durationInFrames 
   );
 }
 
-// ── Main Composition ──
-export function LessonVideo({ title, subtitle, sections }) {
-  const { fps } = useVideoConfig();
-
-  let currentFrame = 0;
-  const sequences = [];
-
-  // Title card — 3 seconds
-  const titleDuration = fps * 3;
-  sequences.push(
-    <Sequence key="title" from={currentFrame} durationInFrames={titleDuration}>
-      <TitleCard title={title} subtitle={subtitle} durationInFrames={titleDuration} />
-    </Sequence>
-  );
-  currentFrame += titleDuration;
-
-  // Sections
-  sections.forEach((section, si) => {
-    if (section.type === 'narration') {
-      const duration = fps * (section.durationS || 8);
-
-      sequences.push(
-        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
+// ── Scene Renderer ──
+// Maps a section config to its visual component.
+function renderScene(section, durationInFrames) {
+  switch (section.type) {
+    case 'narration':
+      return (
+        <>
           <NarrationScene
             text={section.text}
             highlightWords={section.highlightWords || []}
-            durationInFrames={duration}
+            durationInFrames={durationInFrames}
             sentenceTiming={section.sentenceTiming}
           />
           {section.audioSrc && <Audio src={section.audioSrc} />}
-        </Sequence>
+        </>
       );
-      currentFrame += duration;
 
-    } else if (section.type === 'concept') {
-      const duration = fps * (section.durationS || 5);
+    case 'concept':
+      return (
+        <ConceptDiagramScene
+          title={section.label}
+          nodes={section.nodes}
+          connections={section.connections || []}
+          durationInFrames={durationInFrames}
+        />
+      );
 
+    case 'code':
+      return (
+        <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4} slideDirection="right">
+          <AbsoluteFill>
+            <DepthBackground lightPosition="top-right" lightColor={ACCENT_BLUE} lightIntensity={0.06} gridOpacity={0.015} orbCount={2} />
+            <CodeBlock
+              code={section.code}
+              language={section.language}
+              title={section.label}
+              highlightLines={section.highlightLines || []}
+              x={GRID.margin.content - 40}
+              y={GRID.margin.outer + 40}
+              width={VIDEO_WIDTH - GRID.margin.content * 2 + 80}
+            />
+            <AmbientParticles count={5} opacity={0.06} speed={0.2} />
+            <Vignette intensity={0.4} radius={80} />
+            <FilmGrain intensity={0.03} />
+          </AbsoluteFill>
+        </SceneTransition>
+      );
+
+    case 'quote':
+      return (
+        <SceneTransition fadeInDuration={0.8} fadeOutDuration={0.6}>
+          <AbsoluteFill>
+            <DepthBackground lightPosition="center" lightColor={ACCENT_WARM} lightIntensity={0.08} gridOpacity={0} orbCount={2} orbColors={[ACCENT_WARM, ACCENT_PURPLE]} />
+            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <QuoteCard quote={section.quote} attribution={section.attribution} accentColor={section.accentColor || ACCENT_PURPLE} />
+            </div>
+            <Vignette intensity={0.5} radius={70} />
+            <FilmGrain intensity={0.03} />
+          </AbsoluteFill>
+        </SceneTransition>
+      );
+
+    case 'comparison':
+      return (
+        <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4}>
+          <AbsoluteFill>
+            <DepthBackground lightPosition="center" lightColor={ACCENT_PURPLE} lightIntensity={0.05} gridOpacity={0.015} orbCount={2} />
+            <ComparisonSplit
+              leftTitle={section.leftTitle}
+              rightTitle={section.rightTitle}
+              leftItems={section.leftItems || []}
+              rightItems={section.rightItems || []}
+              leftColor={section.leftColor}
+              rightColor={section.rightColor}
+            />
+            <Vignette intensity={0.4} radius={80} />
+            <FilmGrain intensity={0.03} />
+          </AbsoluteFill>
+        </SceneTransition>
+      );
+
+    case 'timeline':
+      return (
+        <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4} slideDirection="up">
+          <AbsoluteFill>
+            <DepthBackground lightPosition="left" lightColor={ACCENT_CYAN} lightIntensity={0.06} gridOpacity={0.02} orbCount={2} />
+            <TimelineScene steps={section.steps} accentColor={section.accentColor || ACCENT_PURPLE} />
+            <AmbientParticles count={6} opacity={0.07} speed={0.2} />
+            <Vignette intensity={0.4} radius={80} />
+            <FilmGrain intensity={0.03} />
+          </AbsoluteFill>
+        </SceneTransition>
+      );
+
+    case 'outro':
+      return (
+        <SceneTransition fadeInDuration={0.7} fadeOutDuration={0.5}>
+          <AbsoluteFill>
+            <DepthBackground lightPosition="center" lightColor={ACCENT_PURPLE} lightIntensity={0.1} gridOpacity={0} orbCount={3} />
+            <OutroScene heading={section.heading} subtext={section.subtext} ctaText={section.ctaText} />
+            <AmbientParticles count={10} opacity={0.12} speed={0.15} />
+            <Vignette intensity={0.5} radius={70} />
+            <FilmGrain intensity={0.03} />
+          </AbsoluteFill>
+        </SceneTransition>
+      );
+
+    default:
+      return null;
+  }
+}
+
+// ── Main Composition ──
+// Uses pacing engine's buildTimingMap for research-backed durations
+// and inserts BreathingGap sequences between every section.
+export function LessonVideo({ title, subtitle, sections }) {
+  const { fps } = useVideoConfig();
+
+  // Build the full timing map from pacing engine
+  const { timeline } = buildTimingMap({ title, subtitle, sections }, fps);
+
+  const sequences = [];
+
+  for (const entry of timeline) {
+    const duration = entry.endFrame - entry.startFrame;
+    const gapDuration = entry.gapEndFrame - entry.endFrame;
+
+    if (entry.type === 'title') {
+      // Title card — pacing engine sets TITLE_CARD_S (4s)
       sequences.push(
-        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
-          <ConceptDiagramScene
-            title={section.label}
-            nodes={section.nodes}
-            connections={section.connections || []}
-            durationInFrames={duration}
-          />
+        <Sequence key="title" from={entry.startFrame} durationInFrames={duration}>
+          <TitleCard title={title} subtitle={subtitle} durationInFrames={duration} />
         </Sequence>
       );
-      currentFrame += duration;
-
-    } else if (section.type === 'code') {
-      const duration = fps * (section.durationS || 8);
-
+    } else if (entry.section) {
+      // Content section
       sequences.push(
-        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
-          <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4} slideDirection="up">
-            <AbsoluteFill>
-              <DepthBackground lightPosition="top-right" lightColor={ACCENT_BLUE} lightIntensity={0.06} gridOpacity={0.015} orbCount={2} />
-              <CodeBlock
-                code={section.code}
-                language={section.language}
-                title={section.label}
-                highlightLines={section.highlightLines || []}
-                x={GRID.margin.content - 40}
-                y={GRID.margin.outer + 40}
-                width={VIDEO_WIDTH - GRID.margin.content * 2 + 80}
-              />
-              <AmbientParticles count={5} opacity={0.06} speed={0.2} />
-              <Vignette intensity={0.4} radius={80} />
-              <FilmGrain intensity={0.03} />
-            </AbsoluteFill>
-          </SceneTransition>
+        <Sequence key={`s${entry.index}`} from={entry.startFrame} durationInFrames={duration}>
+          {renderScene(entry.section, duration)}
         </Sequence>
       );
-      currentFrame += duration;
-
-    } else if (section.type === 'quote') {
-      const duration = fps * (section.durationS || 6);
-
-      sequences.push(
-        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
-          <SceneTransition fadeInDuration={0.6} fadeOutDuration={0.5}>
-            <AbsoluteFill>
-              <DepthBackground lightPosition="center" lightColor={ACCENT_WARM} lightIntensity={0.08} gridOpacity={0} orbCount={2} orbColors={[ACCENT_WARM, ACCENT_PURPLE]} />
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <QuoteCard quote={section.quote} attribution={section.attribution} accentColor={section.accentColor || ACCENT_PURPLE} />
-              </div>
-              <Vignette intensity={0.5} radius={70} />
-              <FilmGrain intensity={0.03} />
-            </AbsoluteFill>
-          </SceneTransition>
-        </Sequence>
-      );
-      currentFrame += duration;
-
-    } else if (section.type === 'comparison') {
-      const duration = fps * (section.durationS || 8);
-
-      sequences.push(
-        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
-          <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4}>
-            <AbsoluteFill>
-              <DepthBackground lightPosition="center" lightColor={ACCENT_PURPLE} lightIntensity={0.05} gridOpacity={0.015} orbCount={2} />
-              <ComparisonSplit
-                leftTitle={section.leftTitle}
-                rightTitle={section.rightTitle}
-                leftItems={section.leftItems || []}
-                rightItems={section.rightItems || []}
-                leftColor={section.leftColor}
-                rightColor={section.rightColor}
-              />
-              <Vignette intensity={0.4} radius={80} />
-              <FilmGrain intensity={0.03} />
-            </AbsoluteFill>
-          </SceneTransition>
-        </Sequence>
-      );
-      currentFrame += duration;
-
-    } else if (section.type === 'timeline') {
-      const duration = fps * (section.durationS || 8);
-
-      sequences.push(
-        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
-          <SceneTransition fadeInDuration={0.5} fadeOutDuration={0.4} slideDirection="up">
-            <AbsoluteFill>
-              <DepthBackground lightPosition="left" lightColor={ACCENT_CYAN} lightIntensity={0.06} gridOpacity={0.02} orbCount={2} />
-              <TimelineScene steps={section.steps} accentColor={section.accentColor || ACCENT_PURPLE} />
-              <AmbientParticles count={6} opacity={0.07} speed={0.2} />
-              <Vignette intensity={0.4} radius={80} />
-              <FilmGrain intensity={0.03} />
-            </AbsoluteFill>
-          </SceneTransition>
-        </Sequence>
-      );
-      currentFrame += duration;
-
-    } else if (section.type === 'outro') {
-      const duration = fps * (section.durationS || 4);
-
-      sequences.push(
-        <Sequence key={`s${si}`} from={currentFrame} durationInFrames={duration}>
-          <SceneTransition fadeInDuration={0.7} fadeOutDuration={0.5}>
-            <AbsoluteFill>
-              <DepthBackground lightPosition="center" lightColor={ACCENT_PURPLE} lightIntensity={0.1} gridOpacity={0} orbCount={3} />
-              <OutroScene heading={section.heading} subtext={section.subtext} ctaText={section.ctaText} />
-              <AmbientParticles count={10} opacity={0.12} speed={0.15} />
-              <Vignette intensity={0.5} radius={70} />
-              <FilmGrain intensity={0.03} />
-            </AbsoluteFill>
-          </SceneTransition>
-        </Sequence>
-      );
-      currentFrame += duration;
     }
-  });
+
+    // Breathing gap after this section (Walter Murch inhale/exhale rhythm)
+    if (gapDuration > 0) {
+      const gapIntensity = (entry.type === 'quote' || entry.type === 'concept') ? 'dramatic' : 'normal';
+      sequences.push(
+        <Sequence key={`gap${entry.index}`} from={entry.endFrame} durationInFrames={gapDuration}>
+          <BreathingGap intensity={gapIntensity} />
+        </Sequence>
+      );
+    }
+  }
 
   return <AbsoluteFill>{sequences}</AbsoluteFill>;
 }

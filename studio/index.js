@@ -7,6 +7,7 @@ import { registerRoot } from 'remotion';
 import { Composition } from 'remotion';
 import { LessonVideo } from './compositions/LessonVideo.jsx';
 import { VIDEO_WIDTH, VIDEO_HEIGHT, VIDEO_FPS } from './lib/design-tokens.js';
+import { buildTimingMap } from './lib/pacing-engine.js';
 
 // Sample lesson data for preview
 const SAMPLE_LESSON = {
@@ -43,9 +44,9 @@ const SAMPLE_LESSON = {
 };
 
 function calculateDuration(props) {
-  const titleSeconds = 3;
-  const sectionSeconds = (props.sections || []).reduce((sum, s) => sum + (s.durationS || 8), 0);
-  return (titleSeconds + sectionSeconds) * VIDEO_FPS;
+  // Use pacing engine for research-backed durations + breathing gaps
+  const { totalFrames } = buildTimingMap(props, VIDEO_FPS);
+  return totalFrames;
 }
 
 function Root() {

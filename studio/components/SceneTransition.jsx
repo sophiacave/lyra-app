@@ -15,6 +15,9 @@ export function SceneTransition({
   slideDirection = null,  // 'up' | 'down' | 'left' | 'right' | null
   slideDistance = 40,
   scaleIn = false,
+  kenBurns = true,        // Subtle 2-3% zoom drift — prevents static frames (4s ceiling rule)
+  kenBurnsScale = 1.03,   // End scale (Kurzgesagt: 2-5% drift over scene duration)
+  kenBurnsDriftX = -8,    // Subtle horizontal pan in pixels
 }) {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
@@ -53,16 +56,33 @@ export function SceneTransition({
     }
   }
 
-  // Scale
+  // Scale (explicit scaleIn for entry animation)
   if (scaleIn) {
     const scaleProgress = appleEase(fadeInProgress);
     const scale = interpolate(scaleProgress, [0, 1], [0.96, 1]);
     transform += ` scale(${scale})`;
   }
 
+  // Ken Burns — subtle zoom drift over full scene duration.
+  // Prevents any frame from being truly static (4-second hard ceiling rule).
+  // Inner wrapper so it doesn't conflict with entry animations.
+  let kenBurnsTransform = undefined;
+  if (kenBurns && !scaleIn) {
+    const kbProgress = interpolate(frame, [0, durationInFrames], [0, 1], {
+      extrapolateLeft: 'clamp', extrapolateRight: 'clamp',
+    });
+    const kbScale = interpolate(kbProgress, [0, 1], [1.0, kenBurnsScale]);
+    const kbX = interpolate(kbProgress, [0, 1], [0, kenBurnsDriftX]);
+    kenBurnsTransform = `scale(${kbScale}) translateX(${kbX}px)`;
+  }
+
   return (
     <AbsoluteFill style={{ opacity, transform: transform || undefined }}>
-      {children}
+      {kenBurnsTransform ? (
+        <AbsoluteFill style={{ transform: kenBurnsTransform, transformOrigin: 'center center' }}>
+          {children}
+        </AbsoluteFill>
+      ) : children}
     </AbsoluteFill>
   );
 }

@@ -104,11 +104,14 @@ export const GRID = {
 // ── Motion (spring physics — Apple-style natural movement) ──
 export const MOTION = {
   // Spring configs for Remotion's spring()
-  snappy:  { mass: 1, damping: 28, stiffness: 380 },  // Quick, decisive
-  smooth:  { mass: 1, damping: 26, stiffness: 170 },  // Default Apple feel
-  gentle:  { mass: 1, damping: 30, stiffness: 100 },  // Slow, deliberate
-  bouncy:  { mass: 1, damping: 14, stiffness: 200 },  // Playful bounce
-  heavy:   { mass: 2, damping: 30, stiffness: 120 },  // Weighty, important
+  confident: { mass: 0.8, damping: 15, stiffness: 200 },  // Text, cards, UI
+  smooth:    { mass: 0.8, damping: 20, stiffness: 120 },  // Diagrams, concepts
+  bouncy:    { mass: 0.6, damping: 8,  stiffness: 180 },  // Emphasis (sparingly!)
+  gentle:    { mass: 1.2, damping: 30, stiffness: 60  },  // Background, ambient
+  exit:      { mass: 0.4, damping: 25, stiffness: 250 },  // Clean departure
+  dramatic:  { mass: 2.0, damping: 20, stiffness: 80  },  // Major reveals
+  snappy:    { mass: 1, damping: 28, stiffness: 380 },    // Quick, decisive (legacy)
+  heavy:     { mass: 2, damping: 30, stiffness: 120 },    // Weighty, important (legacy)
 
   // Duration guides (in seconds) for interpolate-based animations
   duration: {
