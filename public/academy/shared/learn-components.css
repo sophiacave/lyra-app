@@ -1053,10 +1053,48 @@
 @media (max-width: 600px) {
   .lo-quiz-q { font-size: 1.15rem; }
   .lo-quiz-option { padding: 0.85rem 1rem; font-size: 0.88rem; }
+
+  /* MatchConnect mobile: stack columns with labels */
   .lo-match-board { grid-template-columns: 1fr; gap: 0.5rem; }
   .lo-match-lines { display: none; }
+  .lo-match-col:first-child::before {
+    content: 'Terms';
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--orange, #fb923c);
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+  .lo-match-col:last-child::before {
+    content: 'Definitions';
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--purple, #c084fc);
+    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+    padding-left: 0.25rem;
+  }
+  .lo-match-col:last-child .lo-match-item {
+    border-left: 2px solid var(--purple, #c084fc);
+  }
+
   .lo-flash-card-face { min-height: 220px; padding: 1.5rem; }
-  .lo-pixel-dpad-btn { width: 40px; height: 40px; }
-  .lo-pixel-ab-btn { width: 46px; height: 46px; }
+
+  /* PixelQuest: maintain 44px WCAG touch targets */
+  .lo-pixel-dpad-btn { width: 44px; height: 44px; }
+  .lo-pixel-ab-btn { width: 48px; height: 48px; }
+
   .lo-board-canvas-wrap { aspect-ratio: 4 / 3; }
+
+  /* Ensure minimum touch target on all buttons */
+  .lo-flash-btn { min-height: 44px; }
+  .lo-sort-check { min-height: 44px; }
+  .lo-quiz-btn-next { min-height: 44px; }
+  .lo-quiz-btn-retry { min-height: 44px; }
 }
