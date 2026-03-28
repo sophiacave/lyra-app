@@ -2,6 +2,7 @@ import './globals.css';
 import './console.css';
 import Script from 'next/script';
 import { site, colors } from '../lib/site-config';
+import BetaReporter from './components/BetaReporter';
 
 const fullTitle = `${site.name} \u2014 ${site.tagline}`;
 const shortDesc = "What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn't the future \u2014 it's now.";
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
+        <BetaReporter />
         <Script src="/auth-state.js" strategy="afterInteractive" />
       </body>
     </html>
