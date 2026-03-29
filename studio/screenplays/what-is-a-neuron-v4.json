@@ -1,0 +1,83 @@
+{
+  "version": "4.0",
+  "title": "What Is a Neuron?",
+  "persona": "faye",
+  "colorTheme": "ai-foundations",
+  "duration_target_s": 120,
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "presenter",
+      "dialogue": "You have eighty-six billion neurons. Each one does something embarrassingly simple.",
+      "direction": "Close-up, direct to camera. Slight knowing smile. Pause 1.5s after 'simple' — let it land.",
+      "beat": "intrigue"
+    },
+    {
+      "id": "awe-1",
+      "type": "broll",
+      "dialogue": "But together, they create everything you have ever experienced.",
+      "visual": "Cinematic macro: bioluminescent neural pathways firing in sequence, blue-violet organic network, shallow depth of field, slow camera push-in, volumetric light",
+      "beat": "awe"
+    },
+    {
+      "id": "hook",
+      "type": "presenter",
+      "dialogue": "And here is the wild part. We figured out how to copy this trick. Not perfectly. Not biologically. But mathematically. And it changed everything.",
+      "direction": "Medium shot, leaning forward slightly. Building energy. Eyes bright.",
+      "beat": "intrigue"
+    },
+    {
+      "id": "explain-neuron",
+      "type": "presenter+overlay",
+      "dialogue": "An artificial neuron takes in numbers. Multiplies each by a weight — a score that says how important this input is. Adds them all up. And then a tiny function decides: fire, or stay quiet.",
+      "overlay": "Animated diagram building left-to-right: inputs flowing in → multiply by weights → summation → activation function → output. Clean, minimal, elegant.",
+      "direction": "Medium shot, gesturing as if tracing the flow with hands. Teaching mode.",
+      "beat": "teach"
+    },
+    {
+      "id": "aha-setup",
+      "type": "broll",
+      "dialogue": "That is it. That is the entire secret.",
+      "visual": "Slow motion: single luminous node pulsing with light against vast dark space. Minimal. Powerful. Then camera pulls back to reveal thousands more.",
+      "beat": "revelation"
+    },
+    {
+      "id": "build-layers",
+      "type": "broll+text",
+      "dialogue": "One neuron draws a single line through data. Useless on its own. But stack thousands in layers and watch what happens.",
+      "visual": "Cinematic sequence: single straight line → camera pulls back → lines multiply into grid → grid folds into 3D structure → structure resolves into recognizable face/object. Abstract to concrete.",
+      "text_overlay": "One → Thousands → Layers → Intelligence",
+      "beat": "build"
+    },
+    {
+      "id": "magic",
+      "type": "presenter",
+      "dialogue": "The first layer learns edges. The second combines edges into shapes. The third recognizes faces. Complexity emerges from simplicity. That is the magic of neural networks.",
+      "direction": "Close-up, building intensity. Slight pause before 'That is the magic.' Voice drops half a register — this is the truth moment.",
+      "beat": "revelation"
+    },
+    {
+      "id": "scale",
+      "type": "broll",
+      "dialogue": "When you talk to an AI, you are sending signals through billions of these simple neurons, arranged in layers so deep they would fill a skyscraper.",
+      "visual": "Extreme wide shot: vast vertical structure of interconnected light networks, scale of a skyscraper, camera tilting up endlessly, cosmic and architectural, lens flare at apex",
+      "beat": "awe"
+    },
+    {
+      "id": "landing",
+      "type": "presenter",
+      "dialogue": "Each one does its tiny job. And somehow — understanding emerges. That is what a neuron teaches us. Simplicity, stacked deep enough, becomes intelligence.",
+      "direction": "Slow push-in to close-up. Final line delivered softly, almost intimate. 2s silence after.",
+      "beat": "revelation"
+    },
+    {
+      "id": "outro",
+      "type": "broll+text",
+      "dialogue": "",
+      "visual": "Atmospheric: neural network structure dissolving into starfield, warm glow, peaceful resolution",
+      "text_overlay": "Next: How Neurons Learn\nlikeone.ai",
+      "beat": "close",
+      "duration_s": 5
+    }
+  ]
+}

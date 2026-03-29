@@ -1,0 +1,28 @@
+{
+  "name": "like-one-studio-remotion",
+  "version": "9.0.0",
+  "description": "Like One Studio V9 — Remotion Video Engine",
+  "scripts": {
+    "preview": "npx remotion preview src/index.ts",
+    "render": "npx remotion render src/index.ts",
+    "studio": "npx remotion studio src/index.ts"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.5.0",
+    "@remotion/bundler": "^4.0.441",
+    "@remotion/cli": "^4.0.441",
+    "@remotion/lottie": "^4.0.441",
+    "@remotion/media-utils": "^4.0.441",
+    "@remotion/three": "^4.0.441",
+    "@remotion/transitions": "^4.0.441",
+    "gsap": "^3.14.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.441",
+    "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "typescript": "^5.9.3"
+  }
+}

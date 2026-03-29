@@ -1,0 +1,70 @@
+{
+  "version": "4.0",
+  "title": "Why Prompts Matter",
+  "persona": "sage",
+  "colorTheme": "prompt-writing",
+  "duration_target_s": 120,
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "presenter",
+      "dialogue": "The difference between mediocre AI output and something that makes your jaw drop is not the model. It is not the subscription. It is six words you chose differently.",
+      "direction": "Close-up, direct to camera. Confident, warm, slightly playful. Pause after 'six words.'",
+      "beat": "intrigue"
+    },
+    {
+      "id": "contrast",
+      "type": "broll+text",
+      "dialogue": "Write me something about dogs. That is what most people type. And then they wonder why the output is boring.",
+      "visual": "Split screen cinematic: left side shows generic text appearing on a cold screen, right side shows a golden retriever in warm sunlight — the gap between generic and specific, clinical vs alive",
+      "text_overlay": "\"Write me something about dogs\"",
+      "beat": "teach"
+    },
+    {
+      "id": "metaphor",
+      "type": "presenter",
+      "dialogue": "Think of it this way. An AI is a world-class chef. It can cook anything. But if you walk into the kitchen and say make me food, you are going to get something random. Give it a recipe — the ingredients, the technique, the plating — and you get a Michelin-star meal. The prompt is the recipe.",
+      "direction": "Medium shot, animated and warm. Gesturing like describing a meal being prepared. This is Sage's strength — making complex feel simple through story.",
+      "beat": "concept"
+    },
+    {
+      "id": "elements",
+      "type": "presenter+overlay",
+      "dialogue": "Every great prompt has five elements. Role — who should the AI be. Context — what it needs to know. Task — what you want it to produce. Format — how it should look. Constraints — what to avoid or include. That is it. Five ingredients. Infinite meals.",
+      "overlay": "Five icons appearing one by one in a clean row: Role (mask icon), Context (book), Task (target), Format (layout), Constraints (filter). Each pulses as named. Final: all five glow together.",
+      "direction": "Medium shot, counting on fingers naturally. Building rhythm. Landing hard on 'Infinite meals.'",
+      "beat": "teach"
+    },
+    {
+      "id": "secret",
+      "type": "presenter",
+      "dialogue": "Here is the beautiful secret. You do not need to be technical. You do not need to code. The best prompt writers are clear thinkers — people who can say exactly what they want in plain language. If you can explain something to a brilliant friend, you can write a great prompt.",
+      "direction": "Close-up, voice softening. This is the reassurance moment. Sage's warmth at full power.",
+      "beat": "revelation"
+    },
+    {
+      "id": "stat",
+      "type": "broll",
+      "dialogue": "Ninety percent of AI users never learn prompting. They settle for mediocre. You will not be one of them.",
+      "visual": "Cinematic: crowd of blurred figures fading to grey, one figure in sharp focus stepping forward into golden light, camera pushing in, dramatic depth of field",
+      "text_overlay": "90% settle. You won't.",
+      "beat": "energy"
+    },
+    {
+      "id": "landing",
+      "type": "presenter",
+      "dialogue": "Master the prompt. Master the AI. This is the most valuable skill of the decade. And it starts right now.",
+      "direction": "Slow push-in to close-up. Final line delivered with quiet conviction. Slight smile.",
+      "beat": "revelation"
+    },
+    {
+      "id": "outro",
+      "type": "broll+text",
+      "dialogue": "",
+      "visual": "Warm amber gradient with soft light particles, creative energy, inviting atmosphere",
+      "text_overlay": "Next: Anatomy of a Great Prompt\nlikeone.ai",
+      "beat": "close",
+      "duration_s": 5
+    }
+  ]
+}

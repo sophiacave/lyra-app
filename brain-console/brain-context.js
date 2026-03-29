@@ -4,7 +4,7 @@ const Store = require('electron-store');
 const DEFAULT_CONFIG = {
   // Brain V2 — primary brain (ACTIVE)
   supabaseUrl: 'https://tnsujchfrixxsdpodygu.supabase.co',
-  supabaseKey: '',
+  supabaseKey: process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U',
   // AI Provider — Ollama first, always (token resilience)
   aiProvider: 'ollama', // ollama | groq | openrouter | anthropic
   // Provider keys (only fill what you use)
@@ -132,18 +132,22 @@ RULES:
     // Check Supabase
     if (this.supabase) {
       try {
-        const [contextRes, taskRes, notifRes] = await Promise.all([
-          this.supabase.from('brain_context').select('key, updated_at').order('updated_at', { ascending: false }).limit(5),
-          this.supabase.from('brain_tasks').select('id, task_type, status, description').eq('status', 'pending').limit(10),
-          this.supabase.from('notification_log').select('id, type, status, created_at').order('created_at', { ascending: false }).limit(5),
-        ]);
-
+        const contextRes = await this.supabase.from('brain_context').select('key, updated_at').order('updated_at', { ascending: false }).limit(5);
         status.connected = true;
         status.lastContextUpdate = contextRes.data?.[0]?.updated_at;
         status.recentContextKeys = contextRes.data?.map(d => d.key);
-        status.pendingTasks = taskRes.data?.length || 0;
-        status.tasks = taskRes.data || [];
-        status.recentNotifications = notifRes.data || [];
+
+        // These tables may not exist on all brains — fail gracefully
+        try {
+          const taskRes = await this.supabase.from('brain_tasks').select('id, task_type, status, description').eq('status', 'pending').limit(10);
+          status.pendingTasks = taskRes.data?.length || 0;
+          status.tasks = taskRes.data || [];
+        } catch { status.pendingTasks = 0; status.tasks = []; }
+
+        try {
+          const notifRes = await this.supabase.from('notification_log').select('id, type, status, created_at').order('created_at', { ascending: false }).limit(5);
+          status.recentNotifications = notifRes.data || [];
+        } catch { status.recentNotifications = []; }
       } catch (error) {
         status.error = error.message;
       }

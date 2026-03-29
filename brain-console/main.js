@@ -124,7 +124,7 @@ app.whenReady().then(async () => {
             systems: bootResults,
           }),
           updated_at: new Date().toISOString(),
-        }, { onConflict: 'key' }).catch(() => {});
+        }, { onConflict: 'key' }).then(() => {}).catch(() => {});
       }
     });
   } catch (initError) {
@@ -369,7 +369,7 @@ async function proactiveCycle() {
         key: 'system.proactive_log',
         value: JSON.stringify({ timestamp: new Date().toISOString(), insights_count: insights.length, actions_taken: actions, insights: insights.slice(0, 10) }),
         updated_at: new Date().toISOString(),
-      }, { onConflict: 'key' }).catch(() => {});
+      }, { onConflict: 'key' }).then(() => {}).catch(() => {});
     }
 
     if (insights.length > 0 || actions.length > 0) {

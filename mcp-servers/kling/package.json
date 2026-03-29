@@ -1,0 +1,16 @@
+{
+  "name": "likeone-kling-mcp",
+  "version": "1.0.0",
+  "description": "Like One Studio — Kling Cinema MCP Server",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.28.0",
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "kling-api": "^1.0.0"
+  }
+}
