@@ -3,12 +3,12 @@
  * Like One Studio V4 — Composition Engine
  * Assembles screenplay scenes into a final video.
  * 
- * Usage: node studio/compose-v4.js studio/screenplays/what-is-a-neuron-v4.json
+ * Usage: node studio/compose-v4.js studio/screenplays/what-is-a-neuron-v5.json
  */
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
-import { generateRoomTone, mapSfxToScenes, buildSfxTrack, mixFiveLayers } from './lib/sound-design.js';
+import { getSceneTiming, buildAudioPadFilter, assembleCrossfade, generateEDL } from './lib/editing-engine.js';
 
 const STUDIO = path.dirname(new URL(import.meta.url).pathname);
 const ROOT = path.join(STUDIO, '..');
@@ -23,17 +23,8 @@ const COMPOSE_TMP = path.join(OUTPUT, 'compose-tmp');
 
 [VIDEO, COMPOSE_TMP].forEach(d => { if (!existsSync(d)) mkdirSync(d, { recursive: true }); });
 
-// Visual Bible V2 beat pauses (seconds of silence after scene)
-// Contemplative beats get longer pauses, precise beats get shorter
-const BEAT_PAUSE = {
-  hook:    0.8,   // breath-held, then release
-  setup:   0.5,   // anticipation, keep moving
-  core:    0.3,   // precise, efficient
-  breathe: 1.5,   // Rothko stillness — let the insight crystallize
-  deepen:  0.5,   // methodical, keep building
-  peak:    2.0,   // McQueen reveal — HOLD
-  close:   1.5,   // the exhale, let it land
-};
+// Beat pauses + head padding now managed by editing-engine.js
+// See: getSceneTiming(), buildAudioPadFilter()
 
 function dur(file) {
   try {
@@ -44,16 +35,19 @@ function dur(file) {
 function slugify(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, ''); }
 
 // ── Generate a single scene segment ──
+// V2: Uses editing engine for proper head padding + beat pauses.
+// Removes -shortest (which was killing beat pauses) and uses
+// audio pad filter to maintain correct duration with silence.
 function renderScene(scene, audioFile, persona, slug, idx) {
   const outFile = path.join(COMPOSE_TMP, `scene_${String(idx).padStart(2,'0')}_${scene.id}.mp4`);
-  if (existsSync(outFile)) { console.log(`  ⏭️  ${scene.id}: cached`); return outFile; }
-  
+  if (existsSync(outFile)) { console.log(`  ⏭️  ${scene.id}: cached`); return { file: outFile, timing: null }; }
+
   const audioDur = audioFile ? dur(audioFile) : (scene.duration_s || 5);
-  const pause = BEAT_PAUSE[scene.beat] || 0.5;
-  const totalDur = audioDur + pause;
+  const timing = getSceneTiming(scene, audioDur);
+  const { headPad, totalDur } = timing;
   const avatarImg = path.join(AVATARS, persona, 'headshot-neutral.png');
   const avatarVideo = path.join(AVATAR_DIR, `${slug}_${scene.id}.mp4`);
-  
+
   // Check for real avatar video first
   const hasAvatarVideo = existsSync(avatarVideo);
   // Check for V2 engine b-roll first, then fall back to legacy naming
@@ -61,16 +55,20 @@ function renderScene(scene, audioFile, persona, slug, idx) {
   const brollLegacy = path.join(BROLL_DIR, `${slug}_${scene.id}.mp4`);
   const brollVideo = existsSync(brollV2) ? brollV2 : brollLegacy;
   const hasBrollVideo = existsSync(brollVideo);
-  
+
+  // Audio pad filter: delays audio by headPad, pads silence to totalDur
+  // This replaces -shortest which was clipping beat pauses
+  const audioPad = buildAudioPadFilter(headPad, totalDur);
+
   let cmd;
-  
+
   if (scene.type.includes('presenter') && hasAvatarVideo) {
     // Real avatar video — scale to 1920x1080@30fps for consistency
     const vf = 'scale=1920:1080:flags=lanczos:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p';
     cmd = audioFile
-      ? `ffmpeg -y -i "${avatarVideo}" -i "${audioFile}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -map 1:a -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -shortest -t ${totalDur} "${outFile}" 2>/dev/null`
-      : `ffmpeg -y -i "${avatarVideo}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur} "${outFile}" 2>/dev/null`; /* silent — audio added by concat if missing */
-      
+      ? `ffmpeg -y -i "${avatarVideo}" -i "${audioFile}" -filter_complex "[0:v]${vf}[v];[1:a]${audioPad}[a]" -map "[v]" -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`
+      : `ffmpeg -y -i "${avatarVideo}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+
   } else if (scene.type.includes('presenter')) {
     // Static presenter + Ken Burns zoom
     const zoomSpeed = scene.beat === 'revelation' ? 0.0003 : 0.0005;
@@ -79,20 +77,18 @@ function renderScene(scene, audioFile, persona, slug, idx) {
       `scale=2560:1440,zoompan=z='${startScale}+${zoomSpeed}*in':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${Math.ceil(totalDur*30)}:s=1920x1080:fps=30`,
       `format=yuv420p`,
     ].join(',');
-    
-    if (audioFile) {
-      cmd = `ffmpeg -y -loop 1 -i "${avatarImg}" -i "${audioFile}" -filter_complex "[0:v]${filterV}[v]" -map "[v]" -map 1:a -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -shortest -t ${totalDur} "${outFile}" 2>/dev/null`;
-    } else {
-      cmd = `ffmpeg -y -loop 1 -i "${avatarImg}" -filter_complex "[0:v]${filterV}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur} "${outFile}" 2>/dev/null`; /* silent — audio added by concat if missing */
-    }
-    
+
+    cmd = audioFile
+      ? `ffmpeg -y -loop 1 -i "${avatarImg}" -i "${audioFile}" -filter_complex "[0:v]${filterV}[v];[1:a]${audioPad}[a]" -map "[v]" -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`
+      : `ffmpeg -y -loop 1 -i "${avatarImg}" -filter_complex "[0:v]${filterV}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+
   } else if (scene.type.includes('broll') && hasBrollVideo) {
     // Real Kling cinema B-roll — normalize to 1920x1080@30fps
     const vf = 'scale=1920:1080:flags=lanczos:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p';
     cmd = audioFile
-      ? `ffmpeg -y -i "${brollVideo}" -i "${audioFile}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -map 1:a -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -shortest -t ${totalDur} "${outFile}" 2>/dev/null`
-      : `ffmpeg -y -i "${brollVideo}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur} "${outFile}" 2>/dev/null`; /* silent — audio added by concat if missing */
-      
+      ? `ffmpeg -y -i "${brollVideo}" -i "${audioFile}" -filter_complex "[0:v]${vf}[v];[1:a]${audioPad}[a]" -map "[v]" -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`
+      : `ffmpeg -y -i "${brollVideo}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+
   } else {
     // Fallback for all other types (broll, diagram, title, etc.)
     // Dark atmospheric color + voiceover — works as placeholder for any scene type
@@ -103,24 +99,25 @@ function renderScene(scene, audioFile, persona, slug, idx) {
       close:   '0B0A10', default: '0B0A10',
     };
     const gradColor = gradColors[scene.beat] || gradColors.default;
+    const colorDur = Math.ceil(totalDur) + 1; // +1s safety margin for filter
 
     if (audioFile) {
-      cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${Math.ceil(totalDur)}:r=30,format=yuv420p -i "${audioFile}" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -shortest -t ${totalDur} "${outFile}" 2>/dev/null`;
+      cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${colorDur}:r=30,format=yuv420p -i "${audioFile}" -filter_complex "[1:a]${audioPad}[a]" -map 0:v -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
     } else {
-      // Silent audio track (required for concat compatibility)
-      cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${Math.ceil(totalDur)}:r=30,format=yuv420p -f lavfi -i anullsrc=r=48000:cl=mono -c:v libx264 -crf 18 -preset fast -c:a aac -b:a 192k -t ${totalDur} "${outFile}" 2>/dev/null`;
+      // Silent audio track (required for concat/crossfade compatibility)
+      cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${colorDur}:r=30,format=yuv420p -f lavfi -i anullsrc=r=48000:cl=mono -c:v libx264 -crf 18 -preset fast -c:a aac -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
     }
   }
-  
+
   if (!cmd) {
     console.log(`  ⚠️  ${scene.id}: no render strategy`);
-    return null;
+    return { file: null, timing };
   }
-  
+
   try {
     execSync(cmd, { encoding: 'utf-8', timeout: 120000, shell: '/bin/zsh' });
 
-    // Ensure audio stream exists (required for concat compatibility)
+    // Ensure audio stream exists (required for crossfade/concat compatibility)
     const hasAudioStream = execSync(
       `ffprobe -v quiet -show_streams -select_streams a "${outFile}" 2>&1`,
       { encoding: 'utf-8' }
@@ -129,17 +126,17 @@ function renderScene(scene, audioFile, persona, slug, idx) {
     if (!hasAudioStream) {
       const withAudio = outFile.replace('.mp4', '_tmp.mp4');
       execSync(
-        `ffmpeg -y -i "${outFile}" -f lavfi -i anullsrc=r=48000:cl=mono -c:v copy -c:a aac -b:a 192k -shortest "${withAudio}" 2>/dev/null`,
+        `ffmpeg -y -i "${outFile}" -f lavfi -i anullsrc=r=48000:cl=mono -c:v copy -c:a aac -b:a 192k -t ${totalDur.toFixed(3)} "${withAudio}" 2>/dev/null`,
         { encoding: 'utf-8', timeout: 30000 }
       );
       execSync(`mv "${withAudio}" "${outFile}"`);
     }
 
-    console.log(`  ✅ ${scene.id}: ${totalDur.toFixed(1)}s (${scene.type})`);
-    return outFile;
+    console.log(`  ✅ ${scene.id}: ${totalDur.toFixed(1)}s (${scene.type}) [head:${headPad.toFixed(2)}s tail:${timing.tailPause.toFixed(2)}s]`);
+    return { file: outFile, timing };
   } catch (e) {
     console.error(`  ❌ ${scene.id}: ${e.message?.slice(-200)}`);
-    return null;
+    return { file: null, timing };
   }
 }
 
@@ -158,35 +155,59 @@ function main() {
   // Phase 1: Render individual scenes
   console.log('📹 Phase 1: Rendering scene segments...');
   const segments = [];
-  
+  const timings = [];
+
   for (let i = 0; i < sp.scenes.length; i++) {
     const scene = sp.scenes[i];
     const audioFile = path.join(AUDIO, `${slug}_${scene.id}.wav`);
     const hasAudio = existsSync(audioFile);
-    
-    const seg = renderScene(scene, hasAudio ? audioFile : null, persona, slug, i);
-    if (seg) segments.push(seg);
+
+    const { file, timing } = renderScene(scene, hasAudio ? audioFile : null, persona, slug, i);
+    if (file) segments.push(file);
+    timings.push(timing);
   }
-  
+
   if (segments.length === 0) { console.error('❌ No segments rendered'); process.exit(1); }
-  
-  // Phase 2: Concatenate with crossfades
-  console.log('\n🔗 Phase 2: Concatenating segments...');
-  const concatList = path.join(COMPOSE_TMP, 'concat.txt');
-  writeFileSync(concatList, segments.map(s => `file '${s}'`).join('\n'));
-  
-  const silentVideo = path.join(COMPOSE_TMP, `${slug}_v4_silent.mp4`);
-  try {
-    execSync(
-      `ffmpeg -y -f concat -safe 0 -i "${concatList}" -c:v libx264 -crf 18 -preset fast -c:a aac -ac 2 -ar 48000 -b:a 192k "${silentVideo}" 2>/dev/null`,
-      { encoding: 'utf-8', timeout: 120000 }
-    );
-    const totalDur = dur(silentVideo);
-    console.log(`  ✅ Concatenated: ${totalDur.toFixed(1)}s`);
-  } catch (e) {
-    console.error(`  ❌ Concat failed: ${e.message?.slice(-200)}`);
-    process.exit(1);
+
+  // Generate EDL (Edit Decision List) for review
+  const edlPath = path.join(COMPOSE_TMP, `${slug}_edl.txt`);
+  const validTimings = timings.filter(t => t !== null);
+  if (validTimings.length > 0) {
+    const edl = generateEDL(sp.scenes, timings, edlPath);
+    console.log(`\n📋 EDL generated: ${edlPath}`);
+    // Print breathing ratio
+    const totalTime = validTimings.reduce((sum, t) => sum + t.totalDur, 0);
+    const totalAudio = validTimings.reduce((sum, t) => sum + t.audioDurS, 0);
+    const breathingPct = ((totalTime - totalAudio) / totalTime * 100).toFixed(1);
+    console.log(`   Breathing ratio: ${breathingPct}% (target: 15-25%)`);
   }
+
+  // Phase 2: Assemble with crossfade transitions
+  console.log('\n🔗 Phase 2: Crossfade assembly...');
+  const silentVideo = path.join(COMPOSE_TMP, `${slug}_v4_silent.mp4`);
+
+  // Try crossfade assembly first (PhD editing quality)
+  let assembled = assembleCrossfade(segments, sp.scenes, silentVideo);
+
+  if (!assembled) {
+    // Fallback: basic concat (still works, just hard cuts)
+    console.log('  ⚠️  Falling back to basic concat...');
+    const concatList = path.join(COMPOSE_TMP, 'concat.txt');
+    writeFileSync(concatList, segments.map(s => `file '${s}'`).join('\n'));
+    try {
+      execSync(
+        `ffmpeg -y -f concat -safe 0 -i "${concatList}" -c:v libx264 -crf 18 -preset fast -c:a aac -ac 2 -ar 48000 -b:a 192k "${silentVideo}" 2>/dev/null`,
+        { encoding: 'utf-8', timeout: 120000 }
+      );
+      assembled = silentVideo;
+    } catch (e) {
+      console.error(`  ❌ Concat also failed: ${e.message?.slice(-200)}`);
+      process.exit(1);
+    }
+  }
+
+  const assembledDur = dur(silentVideo);
+  console.log(`  ✅ Assembled: ${assembledDur.toFixed(1)}s (${segments.length} scenes)`);
   
   // Phase 3: Sound design — 5-layer audio mix (V9 architecture)
   console.log('\n🔊 Phase 3: Sound design (5-layer V9)...');
