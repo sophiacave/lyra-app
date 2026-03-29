@@ -1,0 +1,168 @@
+{
+  "version": "3.0",
+  "title": "Building Your First RAG",
+  "subtitle": "RAG & Vector Search — Like One Academy",
+  "slug": "building-your-first-rag",
+  "colorTheme": "rag-vectors",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "Unlock the Power of RAG",
+      "subtext": "Revolutionize Your Data Retrieval",
+      "mood": "energetic",
+      "colorTheme": "rag-vectors",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know that a RAG pipeline can supercharge your data search capabilities? By the end of this lesson, you'll be able to build your own. Let's dive into the world of Retrieval-Augmented Generation and see how it transforms data retrieval.",
+      "voice": "sophia",
+      "highlightWords": [
+        "RAG pipeline",
+        "supercharge",
+        "Retrieval-Augmented Generation"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "timeline",
+      "steps": [
+        {
+          "label": "Step 1",
+          "description": "Understand the Basics"
+        },
+        {
+          "label": "Step 2",
+          "description": "Set Up Your Environment"
+        },
+        {
+          "label": "Step 3",
+          "description": "Implement RAG Components"
+        },
+        {
+          "label": "Step 4",
+          "description": "Test Your Pipeline"
+        }
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "To kick things off, let's understand what makes a RAG pipeline unique. It's all about combining retrieval and generation to get the best of both worlds.",
+      "voice": "sophia",
+      "highlightWords": [
+        "RAG pipeline",
+        "retrieval",
+        "generation"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "concept",
+      "label": "RAG Pipeline",
+      "nodes": [
+        {
+          "x": 0.1,
+          "y": 0.5,
+          "label": "Data Source"
+        },
+        {
+          "x": 0.4,
+          "y": 0.3,
+          "label": "Retriever"
+        },
+        {
+          "x": 0.7,
+          "y": 0.5,
+          "label": "Generator"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Next, it's time to set up your environment. We'll ensure you have all the tools needed to build and run a RAG pipeline efficiently.",
+      "voice": "sophia",
+      "highlightWords": [
+        "set up",
+        "environment",
+        "tools"
+      ],
+      "pace": "standard"
+    },
+    {
+      "type": "code",
+      "label": "Environment Setup",
+      "language": "python",
+      "code": "# Install required packages\npip install transformers faiss-cpu",
+      "highlightLines": [
+        2
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "With everything ready, let's implement the core components. We'll bring together the retriever and generator to create a seamless data flow.",
+      "voice": "sophia",
+      "highlightWords": [
+        "implement",
+        "retriever",
+        "generator"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "Core Implementation",
+      "steps": [
+        {
+          "label": "Retrieve",
+          "desc": "Fetch relevant data"
+        },
+        {
+          "label": "Generate",
+          "desc": "Create contextual responses"
+        }
+      ],
+      "colorTheme": "rag-vectors",
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Remember, a well-built RAG pipeline can drastically improve data interaction. As we wrap up, think about how you could apply this to your projects.",
+      "voice": "sophia",
+      "highlightWords": [
+        "RAG pipeline",
+        "improve",
+        "projects"
+      ],
+      "pace": "recap"
+    },
+    {
+      "type": "quote",
+      "quote": "The quest for knowledge is endless. Embrace the tools that expand your horizons.",
+      "attribution": "— Like One Academy",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Advanced RAG Techniques",
+      "subtext": "Ready to take your skills to the next level? Join us for more.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

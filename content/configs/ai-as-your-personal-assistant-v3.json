@@ -1,0 +1,141 @@
+{
+  "version": "3.0",
+  "title": "AI as Your Personal Assistant",
+  "subtitle": "AI Productivity — Like One Academy",
+  "slug": "ai-as-your-personal-assistant",
+  "colorTheme": "productivity",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "Transform Your Workday",
+      "subtext": "AI can handle repetitive tasks",
+      "mood": "energetic",
+      "colorTheme": "productivity",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know that using AI as a personal assistant can save you hours every week? Imagine having a tool that handles scheduling, email sorting, and more, allowing you to focus on what truly matters.",
+      "voice": "sophia",
+      "highlightWords": [
+        "AI",
+        "personal assistant",
+        "save you hours"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "process-flow",
+      "label": "AI Workflow",
+      "steps": [
+        {
+          "label": "Input",
+          "desc": "Receive tasks and data"
+        },
+        {
+          "label": "Process",
+          "desc": "AI analyzes and organizes"
+        },
+        {
+          "label": "Output",
+          "desc": "Provides actionable insights"
+        }
+      ],
+      "colorTheme": "productivity",
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "The workflow begins with input, where AI receives tasks like scheduling meetings or sorting emails. Next, it processes this information, analyzing and organizing data efficiently.",
+      "voice": "sophia",
+      "highlightWords": [
+        "workflow",
+        "input",
+        "processes"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "code",
+      "label": "AI Task Automation",
+      "language": "javascript",
+      "code": "// Automate task\nfunction scheduleMeeting(data) {\n  if (data.freeSlots.length > 0) {\n    return 'Meeting scheduled at ' + data.freeSlots[0];\n  }\n  return 'No available slots';\n}",
+      "highlightLines": [
+        2,
+        3,
+        4
+      ],
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Once processed, AI can output actionable insights. For instance, automating meeting schedules based on available time slots saves you the headache of manual planning.",
+      "voice": "sophia",
+      "highlightWords": [
+        "processed",
+        "output",
+        "automating"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "concept",
+      "label": "AI Benefits",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "Efficiency"
+        },
+        {
+          "x": 0.5,
+          "y": 0.5,
+          "label": "Focus"
+        },
+        {
+          "x": 0.8,
+          "y": 0.7,
+          "label": "Productivity"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "AI boosts efficiency by tackling repetitive tasks, allowing you to focus on high-priority work. This ultimately enhances your overall productivity.",
+      "voice": "sophia",
+      "highlightWords": [
+        "efficiency",
+        "focus",
+        "productivity"
+      ],
+      "pace": "recap"
+    },
+    {
+      "type": "quote",
+      "quote": "The future belongs to those who embrace AI.",
+      "attribution": "— Anonymous",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Advanced AI Techniques",
+      "subtext": "Explore deeper AI integrations in your workflow.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

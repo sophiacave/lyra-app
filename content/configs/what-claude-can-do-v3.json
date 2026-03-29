@@ -1,0 +1,152 @@
+{
+  "version": "3.0",
+  "title": "What Claude Can Do",
+  "subtitle": "Getting Started with Claude — Like One Academy",
+  "slug": "what-claude-can-do",
+  "colorTheme": "claude-beginners",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "Discover the Power of Claude",
+      "subtext": "Unleashing AI's Potential",
+      "mood": "dramatic",
+      "colorTheme": "claude-beginners",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know Claude can help write essays, solve problems, and even assist in programming? Imagine having a reliable AI partner that enhances creativity and productivity. How does Claude actually achieve all this?",
+      "voice": "sophia",
+      "highlightWords": [
+        "essays",
+        "problems",
+        "programming"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "concept",
+      "label": "Claude's Core Capabilities",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.4,
+          "label": "Language Mastery"
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "label": "Problem Solving"
+        },
+        {
+          "x": 0.8,
+          "y": 0.4,
+          "label": "Creative Support"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Claude excels in understanding and generating human-like text. It can help you brainstorm ideas or refine your writing. Whether it's a creative story or technical documentation, Claude's got your back.",
+      "voice": "sophia",
+      "highlightWords": [
+        "understanding",
+        "generating",
+        "ideas"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "How Claude Solves Problems",
+      "steps": [
+        {
+          "label": "Input",
+          "desc": "You provide a problem or question"
+        },
+        {
+          "label": "Analysis",
+          "desc": "Claude evaluates the details"
+        },
+        {
+          "label": "Solution",
+          "desc": "Claude offers a thoughtful response"
+        }
+      ],
+      "colorTheme": "claude-beginners",
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Beyond text, Claude can analyze complex problems and suggest solutions. It's like having a knowledgeable assistant always ready to help. From coding challenges to academic questions, Claude is versatile.",
+      "voice": "sophia",
+      "highlightWords": [
+        "analyze",
+        "solutions",
+        "versatile"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "Creative Support Features",
+      "steps": [
+        {
+          "icon": "lightbulb",
+          "label": "Idea Generation",
+          "detail": "Spark new ideas and perspectives"
+        },
+        {
+          "icon": "document",
+          "label": "Content Drafting",
+          "detail": "Draft articles and stories seamlessly"
+        },
+        {
+          "icon": "chat-bubble",
+          "label": "Feedback",
+          "detail": "Receive constructive feedback on drafts"
+        }
+      ],
+      "colorTheme": "claude-beginners",
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "Claude's creative support is invaluable. It helps generate ideas, draft content, and even provides feedback. You're never alone in your creative journey with Claude by your side.",
+      "voice": "sophia",
+      "highlightWords": [
+        "creative",
+        "generate",
+        "feedback"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "quote",
+      "quote": "Claude transforms the way we interact with technology, making AI a true partner in creation.",
+      "attribution": "— AI Enthusiast",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Dive Deeper into Claude",
+      "subtext": "Explore advanced features and tips",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

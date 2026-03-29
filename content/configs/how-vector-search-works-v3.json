@@ -1,0 +1,156 @@
+{
+  "version": "3.0",
+  "title": "How Vector Search Works",
+  "subtitle": "RAG & Vector Search — Like One Academy",
+  "slug": "how-vector-search-works",
+  "colorTheme": "rag-vectors",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "Discover the Magic of Vector Search",
+      "subtext": "Revolutionizing how data is found and used",
+      "mood": "energetic",
+      "colorTheme": "rag-vectors",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know that vector search allows computers to find information based on similarity rather than keywords? It's like finding a song by its vibe instead of its name. How does this magical process work?",
+      "voice": "sophia",
+      "highlightWords": [
+        "vector",
+        "similarity",
+        "keywords"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "concept",
+      "label": "Vector Search Basics",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.4,
+          "label": "Data Point A"
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "label": "Data Point B"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "Data Point C"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Vector search uses mathematical models to represent data points in multi-dimensional space. Each point is a vector, and its position tells us about its characteristics. The magic happens when we measure distances between these points.",
+      "voice": "sophia",
+      "highlightWords": [
+        "mathematical",
+        "multi-dimensional",
+        "distances"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "How Vector Search Works",
+      "steps": [
+        {
+          "label": "Input Data",
+          "desc": "Convert data to vectors"
+        },
+        {
+          "label": "Vector Space",
+          "desc": "Map vectors into space"
+        },
+        {
+          "label": "Search Query",
+          "desc": "Find nearest neighbors"
+        },
+        {
+          "label": "Results",
+          "desc": "Return similar items"
+        }
+      ],
+      "colorTheme": "rag-vectors",
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "By calculating the distance between vectors, we can determine how similar they are. This is like finding the nearest coffee shop based on your current location. The closest vectors represent the most similar data points.",
+      "voice": "sophia",
+      "highlightWords": [
+        "distance",
+        "similar",
+        "nearest"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "Applications of Vector Search",
+      "steps": [
+        {
+          "icon": "search",
+          "label": "Image Recognition",
+          "detail": "Identifying images by content"
+        },
+        {
+          "icon": "network",
+          "label": "Recommendation Systems",
+          "detail": "Suggesting products or media"
+        },
+        {
+          "icon": "graph",
+          "label": "Natural Language Processing",
+          "detail": "Understanding text context"
+        }
+      ],
+      "colorTheme": "rag-vectors",
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "From helping you find the perfect movie to understanding complex language patterns, vector search is transforming how we interact with data. It's all about making connections in a world of information.",
+      "voice": "sophia",
+      "highlightWords": [
+        "transforming",
+        "connections",
+        "information"
+      ],
+      "pace": "recap"
+    },
+    {
+      "type": "quote",
+      "quote": "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.",
+      "attribution": "— Stephen Hawking",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Deep Dive into RAG",
+      "subtext": "Explore the next level of information retrieval with RAG techniques.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

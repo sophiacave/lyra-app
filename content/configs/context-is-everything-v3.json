@@ -1,0 +1,156 @@
+{
+  "version": "3.0",
+  "title": "Context Is Everything",
+  "subtitle": "Like One Academy — Like One Academy",
+  "slug": "context-is-everything",
+  "colorTheme": "ai-foundations",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "Context is Key",
+      "subtext": "Unlocking AI's Potential",
+      "mood": "dramatic",
+      "colorTheme": "ai-foundations",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know that context windows are like the secret sauce for AI? Without context, even the smartest AI can miss the mark. So, what exactly is a context window, and why does it matter so much?",
+      "voice": "sophia",
+      "highlightWords": [
+        "context",
+        "AI",
+        "context window"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "concept",
+      "label": "Context Window Structure",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.4,
+          "label": "Input Data"
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "label": "Context Window"
+        },
+        {
+          "x": 0.8,
+          "y": 0.4,
+          "label": "AI Output"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Think of context windows as a snapshot of information AI uses to make decisions. Just like you need context to understand a joke, AI needs context to provide accurate answers.",
+      "voice": "sophia",
+      "highlightWords": [
+        "snapshot",
+        "decisions",
+        "accurate"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "How Context Windows Work",
+      "steps": [
+        {
+          "label": "Gather Data",
+          "desc": "Collect relevant inputs."
+        },
+        {
+          "label": "Define Context",
+          "desc": "Establish the context window."
+        },
+        {
+          "label": "Analyze",
+          "desc": "AI processes and understands."
+        },
+        {
+          "label": "Output",
+          "desc": "Provides informed results."
+        }
+      ],
+      "colorTheme": "ai-foundations",
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "In real-world applications, context windows ensure AI systems are not just guessing. They help in tasks from language translation to personalizing music recommendations.",
+      "voice": "sophia",
+      "highlightWords": [
+        "real-world",
+        "applications",
+        "personalizing"
+      ],
+      "pace": "standard"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "Benefits of Context",
+      "steps": [
+        {
+          "icon": "brain",
+          "label": "Accuracy",
+          "detail": "Provides precise outputs."
+        },
+        {
+          "icon": "network",
+          "label": "Relevance",
+          "detail": "Keeps outputs contextually aligned."
+        },
+        {
+          "icon": "globe",
+          "label": "Adaptability",
+          "detail": "Adapts to new data flexibly."
+        }
+      ],
+      "colorTheme": "ai-foundations",
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "So, the next time you ask an AI a question, remember it's not just smart—it’s using context to give you the best answer possible.",
+      "voice": "sophia",
+      "highlightWords": [
+        "AI",
+        "context",
+        "best answer"
+      ],
+      "pace": "recap"
+    },
+    {
+      "type": "quote",
+      "quote": "Context is not just about understanding words, but understanding the world around them.",
+      "attribution": "— AI Expert",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Advanced AI Concepts",
+      "subtext": "Explore how AI adapts to complex scenarios.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

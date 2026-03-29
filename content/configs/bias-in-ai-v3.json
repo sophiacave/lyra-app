@@ -1,0 +1,152 @@
+{
+  "version": "3.0",
+  "title": "Bias in AI",
+  "subtitle": "AI Ethics & Safety — Like One Academy",
+  "slug": "bias-in-ai",
+  "colorTheme": "ethics-safety",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "stat-reveal",
+      "stat": "58",
+      "unit": "percent",
+      "label": "of AI systems show bias",
+      "colorTheme": "ethics-safety",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know that over half of AI systems exhibit some form of bias? This can lead to unfair outcomes and perpetuate stereotypes. But why does this happen, and what can we do about it?",
+      "voice": "sophia",
+      "highlightWords": [
+        "bias",
+        "unfair",
+        "stereotypes"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "concept",
+      "label": "Sources of AI Bias",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "Data Collection"
+        },
+        {
+          "x": 0.5,
+          "y": 0.5,
+          "label": "Algorithm Design"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "Deployment"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Bias in AI often stems from data collection, algorithm design, and deployment. Each step can introduce errors that skew results. It's like building a house on a shaky foundation.",
+      "voice": "sophia",
+      "highlightWords": [
+        "data",
+        "algorithm",
+        "errors"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "Addressing AI Bias",
+      "steps": [
+        {
+          "label": "Identify Bias",
+          "desc": "Recognize areas of potential bias in data and models."
+        },
+        {
+          "label": "Mitigate Bias",
+          "desc": "Implement techniques to reduce bias impact."
+        },
+        {
+          "label": "Monitor Systems",
+          "desc": "Continuously check AI outputs for fairness."
+        }
+      ],
+      "colorTheme": "ethics-safety",
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Addressing bias requires identifying it first, then mitigating its effects, and finally, constant monitoring. It's a cycle of vigilance and improvement.",
+      "voice": "sophia",
+      "highlightWords": [
+        "mitigating",
+        "monitoring",
+        "vigilance"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "Impact of AI Bias",
+      "steps": [
+        {
+          "icon": "scale",
+          "label": "Justice",
+          "detail": "AI bias can affect legal outcomes."
+        },
+        {
+          "icon": "calculator",
+          "label": "Finance",
+          "detail": "It influences credit decisions."
+        },
+        {
+          "icon": "user",
+          "label": "Employment",
+          "detail": "Bias impacts hiring processes."
+        }
+      ],
+      "colorTheme": "ethics-safety",
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "The impact of AI bias is far-reaching, affecting justice, finance, and employment. Ensuring fairness is not just ethical; it's essential for trust.",
+      "voice": "sophia",
+      "highlightWords": [
+        "impact",
+        "fairness",
+        "trust"
+      ],
+      "pace": "recap"
+    },
+    {
+      "type": "quote",
+      "quote": "The best way to predict the future is to create it.",
+      "attribution": "— Peter Drucker",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Building Ethical AI",
+      "subtext": "Continue your journey in AI ethics.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

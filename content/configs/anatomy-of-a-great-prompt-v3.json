@@ -1,0 +1,152 @@
+{
+  "version": "3.0",
+  "title": "Anatomy of a Great Prompt",
+  "subtitle": "Prompt Engineering — Like One Academy",
+  "slug": "anatomy-of-a-great-prompt",
+  "colorTheme": "prompt-writing",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "The Power of a Well-Crafted Prompt",
+      "subtext": "Unlocking AI's Potential",
+      "mood": "dramatic",
+      "colorTheme": "prompt-writing",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know the right prompt can transform a basic AI response into something extraordinary? Today, we're diving into the anatomy of a great prompt and why it matters.",
+      "voice": "sophia",
+      "highlightWords": [
+        "prompt",
+        "transform",
+        "extraordinary"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "Anatomy of a Prompt",
+      "steps": [
+        {
+          "icon": "lightbulb",
+          "label": "Clarity",
+          "detail": "Ensure your prompt is clear and unambiguous."
+        },
+        {
+          "icon": "brain",
+          "label": "Context",
+          "detail": "Provide enough context for the AI to understand the task."
+        },
+        {
+          "icon": "sparkle",
+          "label": "Specificity",
+          "detail": "Be specific about what you want the AI to do."
+        }
+      ],
+      "colorTheme": "prompt-writing",
+      "durationS": 8
+    },
+    {
+      "type": "narration",
+      "text": "First, let's talk about clarity. A clear prompt removes ambiguity, making it easier for AI to produce accurate results. Imagine giving directions without a map.",
+      "voice": "sophia",
+      "highlightWords": [
+        "clarity",
+        "ambiguity",
+        "accurate"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "concept",
+      "label": "Clarity in Prompts",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "Clear Instruction"
+        },
+        {
+          "x": 0.5,
+          "y": 0.5,
+          "label": "No Ambiguity"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "Accurate Output"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Next, consider context. Providing AI with context is like setting the scene before a play starts. It frames the task and guides the AI's responses.",
+      "voice": "sophia",
+      "highlightWords": [
+        "context",
+        "setting",
+        "guides"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "Contextual Prompts",
+      "steps": [
+        {
+          "label": "Set Scene",
+          "desc": "Describe the scenario."
+        },
+        {
+          "label": "Define Role",
+          "desc": "Clarify the AI's role."
+        },
+        {
+          "label": "Guide Response",
+          "desc": "Direct the AI's focus."
+        }
+      ],
+      "colorTheme": "prompt-writing",
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Finally, specificity is key. Being specific narrows down the possibilities and helps the AI hit the target. Think of it as aiming with precision.",
+      "voice": "sophia",
+      "highlightWords": [
+        "specificity",
+        "precision",
+        "target"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "quote",
+      "quote": "A great prompt is like a compass, guiding AI to the destination with clarity and precision.",
+      "attribution": "— Like One Academy",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Crafting Effective Prompts",
+      "subtext": "Continue your journey and master prompt writing.",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}

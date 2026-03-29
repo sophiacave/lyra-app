@@ -1,0 +1,174 @@
+{
+  "version": "3.0",
+  "title": "Your First AI Creative Session",
+  "subtitle": "AI for Creatives — Like One Academy",
+  "slug": "your-first-ai-creative-session",
+  "colorTheme": "creatives",
+  "narrative": "progressive",
+  "voice": "s2pro-warm",
+  "ttsEngine": "s2pro",
+  "sections": [
+    {
+      "type": "gradient-art",
+      "text": "Unleash Your Creativity",
+      "subtext": "AI is your new creative partner",
+      "mood": "energetic",
+      "colorTheme": "creatives",
+      "durationS": 5
+    },
+    {
+      "type": "narration",
+      "text": "Did you know AI can help you create stunning images, engaging stories, and even compose music? In this session, you'll discover how AI enhances creativity and how you can start your first creative project with AI.",
+      "voice": "sophia",
+      "highlightWords": [
+        "AI",
+        "images",
+        "stories",
+        "music"
+      ],
+      "pace": "hook"
+    },
+    {
+      "type": "timeline",
+      "steps": [
+        {
+          "label": "Image Generation",
+          "description": "Create visual art"
+        },
+        {
+          "label": "Writing",
+          "description": "Craft engaging stories"
+        },
+        {
+          "label": "Music",
+          "description": "Compose original music"
+        }
+      ],
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "First, let's dive into image generation. AI can transform simple prompts into breathtaking visuals. Imagine the possibilities when you blend your ideas with AI's capabilities.",
+      "voice": "sophia",
+      "highlightWords": [
+        "image",
+        "generation",
+        "breathtaking",
+        "visuals"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "concept",
+      "label": "AI Image Generation",
+      "nodes": [
+        {
+          "x": 0.2,
+          "y": 0.3,
+          "label": "Input Prompt"
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "label": "AI Model"
+        },
+        {
+          "x": 0.8,
+          "y": 0.3,
+          "label": "Visual Output"
+        }
+      ],
+      "connections": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "durationS": 6
+    },
+    {
+      "type": "narration",
+      "text": "Next, AI can help you write. Whether it's brainstorming or drafting, AI tools can enhance your writing process, making it more efficient and creative.",
+      "voice": "sophia",
+      "highlightWords": [
+        "writing",
+        "brainstorming",
+        "drafting",
+        "creative"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "process-flow",
+      "label": "AI Writing Process",
+      "steps": [
+        {
+          "label": "Brainstorm",
+          "desc": "Generate ideas with AI"
+        },
+        {
+          "label": "Draft",
+          "desc": "Write with AI suggestions"
+        },
+        {
+          "label": "Edit",
+          "desc": "Refine your work"
+        }
+      ],
+      "colorTheme": "creatives",
+      "durationS": 7
+    },
+    {
+      "type": "narration",
+      "text": "Finally, let's explore music composition. AI can compose melodies, harmonies, and even full tracks. It's like having a virtual band at your fingertips.",
+      "voice": "sophia",
+      "highlightWords": [
+        "music",
+        "composition",
+        "melodies",
+        "tracks"
+      ],
+      "pace": "concept"
+    },
+    {
+      "type": "progressive-reveal",
+      "label": "AI Music Tools",
+      "steps": [
+        {
+          "icon": "sparkle",
+          "label": "Melody",
+          "detail": "AI generates a catchy tune."
+        },
+        {
+          "icon": "sparkle",
+          "label": "Harmony",
+          "detail": "Add depth with chords and harmony."
+        },
+        {
+          "icon": "sparkle",
+          "label": "Full Track",
+          "detail": "Create complex compositions."
+        }
+      ],
+      "colorTheme": "creatives",
+      "durationS": 8
+    },
+    {
+      "type": "quote",
+      "quote": "Creativity is intelligence having fun.",
+      "attribution": "— Albert Einstein",
+      "durationS": 5
+    },
+    {
+      "type": "outro",
+      "heading": "Next: Explore AI Tools",
+      "subtext": "Start creating with AI today!",
+      "ctaText": "likeone.ai",
+      "durationS": 4
+    }
+  ]
+}
