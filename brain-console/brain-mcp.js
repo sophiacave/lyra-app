@@ -1,7 +1,7 @@
 /**
  * brain-mcp.js — Local Brain MCP Server (Model Context Protocol)
  *
- * Exposes all Brain Console operations as MCP tools over stdio transport.
+ * Exposes all Faye operations as MCP tools over stdio transport.
  * Any MCP-compatible client can connect and use brain operations:
  *   - Read/write brain_context
  *   - Manage tasks (CRUD)
@@ -121,7 +121,7 @@ class BrainMCP {
 
       // ---- TASKS ----
       'brain_list_tasks': {
-        description: 'List tasks from brain_tasks table. Optional status filter.',
+        description: 'List actions from brain_actions table. Optional status filter.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -133,7 +133,7 @@ class BrainMCP {
         handler: async ({ status, limit }) => {
           if (!this.brainContext.supabase) throw new Error('Not connected');
           let query = this.brainContext.supabase
-            .from('brain_tasks')
+            .from('brain_actions')
             .select('*')
             .order('created_at', { ascending: false })
             .limit(limit || 30);
@@ -145,47 +145,44 @@ class BrainMCP {
       },
 
       'brain_create_task': {
-        description: 'Create a new task in brain_tasks.',
+        description: 'Create a new action in brain_actions.',
         inputSchema: {
           type: 'object',
           properties: {
-            task_type: { type: 'string', description: 'Task type (e.g., email_drip, webhook_fire, health_check, custom)' },
-            description: { type: 'string', description: 'Task description' },
+            action_type: { type: 'string', description: 'Action type (e.g., email_drip, webhook_fire, health_check, custom)' },
+            target: { type: 'string', description: 'Action target / description' },
+            payload: { type: 'string', description: 'JSON payload for the action handler' },
+            priority: { type: 'number', description: 'Priority (lower = higher priority)' },
             status: { type: 'string', enum: ['pending', 'scheduled'], default: 'pending' },
-            schedule: { type: 'string', description: 'Cron schedule (e.g., "*/5", "hourly", "daily")' },
-            config: { type: 'string', description: 'JSON config for the task handler' },
           },
-          required: ['task_type', 'description'],
+          required: ['action_type', 'target'],
         },
         annotations: { readOnlyHint: false },
-        handler: async ({ task_type, description, status, schedule, config }) => {
+        handler: async ({ action_type, target, payload, priority, status }) => {
           if (!this.brainContext.supabase) throw new Error('Not connected');
-          const task = {
-            task_type,
-            description,
-            status: schedule ? 'scheduled' : (status || 'pending'),
+          const action = {
+            action_type,
+            target,
+            status: status || 'pending',
             created_at: new Date().toISOString(),
           };
-          if (schedule) {
-            task.schedule = schedule;
-            task.next_run = new Date().toISOString();
-          }
-          if (config) task.config = config;
+          if (payload) action.payload = payload;
+          if (priority !== undefined) action.priority = priority;
           const { data, error } = await this.brainContext.supabase
-            .from('brain_tasks').insert(task).select();
+            .from('brain_actions').insert(action).select();
           if (error) throw error;
           return { success: true, task: data?.[0] };
         },
       },
 
       'brain_update_task': {
-        description: 'Update a task status or fields.',
+        description: 'Update an action status or fields in brain_actions.',
         inputSchema: {
           type: 'object',
           properties: {
-            id: { type: 'string', description: 'Task ID (UUID)' },
+            id: { type: 'string', description: 'Action ID (UUID)' },
             status: { type: 'string', enum: ['pending', 'running', 'scheduled', 'completed', 'failed'] },
-            description: { type: 'string' },
+            target: { type: 'string' },
             result: { type: 'string' },
           },
           required: ['id'],
@@ -199,7 +196,7 @@ class BrainMCP {
           }
           if (updates.status === 'completed') cleanUpdates.completed_at = new Date().toISOString();
           const { error } = await this.brainContext.supabase
-            .from('brain_tasks').update(cleanUpdates).eq('id', id);
+            .from('brain_actions').update(cleanUpdates).eq('id', id);
           if (error) throw error;
           return { success: true, updated: id };
         },
@@ -207,33 +204,32 @@ class BrainMCP {
 
       // ---- CRM ----
       'brain_query_crm': {
-        description: 'Query the CRM/sales pipeline from notion_sales_pipeline.',
+        description: 'Query subscribers from the subscribers table.',
         inputSchema: {
           type: 'object',
           properties: {
-            search: { type: 'string', description: 'Search by company or contact name' },
-            stage: { type: 'string', description: 'Filter by deal_stage' },
+            search: { type: 'string', description: 'Search by email or source' },
+            status: { type: 'string', description: 'Filter by status' },
             limit: { type: 'number', description: 'Max results (default 20)' },
           },
         },
         annotations: { readOnlyHint: true },
-        handler: async ({ search, stage, limit }) => {
+        handler: async ({ search, status, limit }) => {
           if (!this.brainContext.supabase) throw new Error('Not connected');
           let query = this.brainContext.supabase
-            .from('notion_sales_pipeline')
+            .from('subscribers')
             .select('*')
             .order('created_at', { ascending: false })
             .limit(limit || 20);
-          if (stage) query = query.eq('deal_stage', stage);
+          if (status) query = query.eq('status', status);
           if (search) {
             // Sanitize search to prevent SQL injection via ilike patterns
             const safeSearch = search.replace(/[%_\\'"`;]/g, '');
-            query = query.or(`company_name.ilike.%${safeSearch}%,contact_name.ilike.%${safeSearch}%`);
+            query = query.or(`email.ilike.%${safeSearch}%,source.ilike.%${safeSearch}%`);
           }
           const { data, error } = await query;
           if (error) throw error;
-          const totalValue = data?.reduce((s, d) => s + (Number(d.deal_value) || 0), 0) || 0;
-          return { count: data?.length || 0, total_pipeline_value: totalValue, leads: data || [] };
+          return { count: data?.length || 0, leads: data || [] };
         },
       },
 
@@ -263,7 +259,7 @@ class BrainMCP {
       },
 
       'brain_email_log': {
-        description: 'Get recent email activity from notification_log.',
+        description: 'Get recent episodes/events from brain_episodes.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -274,7 +270,7 @@ class BrainMCP {
         handler: async ({ limit }) => {
           if (!this.brainContext.supabase) throw new Error('Not connected');
           const { data, error } = await this.brainContext.supabase
-            .from('notification_log')
+            .from('brain_episodes')
             .select('*')
             .order('created_at', { ascending: false })
             .limit(limit || 20);
@@ -485,7 +481,7 @@ class BrainMCP {
 
       // ---- SEARCH ----
       'brain_search': {
-        description: 'Search across all brain tables: context, tasks, CRM, notifications.',
+        description: 'Search across all brain tables: context, actions, subscribers, episodes.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -498,11 +494,11 @@ class BrainMCP {
           if (!this.brainContext.supabase) throw new Error('Not connected');
           const q = query.toLowerCase();
 
-          const [ctxRes, tasksRes, crmRes, emailsRes] = await Promise.all([
+          const [ctxRes, actionsRes, crmRes, episodesRes] = await Promise.all([
             this.brainContext.getFullContext(),
-            this.brainContext.supabase.from('brain_tasks').select('*').limit(50),
-            this.brainContext.supabase.from('notion_sales_pipeline').select('*').limit(50),
-            this.brainContext.supabase.from('notification_log').select('*').limit(50),
+            this.brainContext.supabase.from('brain_actions').select('*').limit(50),
+            this.brainContext.supabase.from('subscribers').select('*').limit(50),
+            this.brainContext.supabase.from('brain_episodes').select('*').limit(50),
           ]);
 
           const results = { context: {}, tasks: [], crm: [], emails: [] };
@@ -515,23 +511,23 @@ class BrainMCP {
             }
           }
 
-          // Search tasks
-          if (tasksRes.data) {
-            results.tasks = tasksRes.data.filter(t =>
+          // Search actions
+          if (actionsRes.data) {
+            results.tasks = actionsRes.data.filter(t =>
               JSON.stringify(t).toLowerCase().includes(q)
             );
           }
 
-          // Search CRM
+          // Search subscribers
           if (crmRes.data) {
             results.crm = crmRes.data.filter(l =>
               JSON.stringify(l).toLowerCase().includes(q)
             );
           }
 
-          // Search emails
-          if (emailsRes.data) {
-            results.emails = emailsRes.data.filter(e =>
+          // Search episodes
+          if (episodesRes.data) {
+            results.emails = episodesRes.data.filter(e =>
               JSON.stringify(e).toLowerCase().includes(q)
             );
           }
@@ -587,7 +583,7 @@ class BrainMCP {
 
       // ---- EXECUTE SLASH COMMAND ----
       'brain_execute_command': {
-        description: 'Execute any Brain Console slash command (e.g., "/status", "/crm", "/report"). Returns the formatted result.',
+        description: 'Execute any Faye slash command (e.g., "/status", "/crm", "/report"). Returns the formatted result.',
         inputSchema: {
           type: 'object',
           properties: {

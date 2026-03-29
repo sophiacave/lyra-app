@@ -1,7 +1,7 @@
 {
-  "name": "brain-console",
-  "version": "3.0.0",
-  "description": "Brain Console V3 — Local-First Autonomous AI Console",
+  "name": "faye",
+  "version": "4.0.0",
+  "description": "Faye — Sophia's AI Twin. The nervous system that never sleeps.",
   "main": "main.js",
   "author": "Faye Cave <sophiacave.me@gmail.com>",
   "license": "MIT",
@@ -12,8 +12,8 @@
     "pack": "electron-builder --dir"
   },
   "build": {
-    "appId": "ai.likeone.brain-console",
-    "productName": "Brain Console",
+    "appId": "ai.likeone.faye",
+    "productName": "Faye",
     "mac": {
       "category": "public.app-category.productivity",
       "target": ["dmg"],

@@ -7,3 +7,5 @@ supabase/.temp/
 public/namecheap-mcp/
 public/social-mcp/
 output/
+brain-console/dist/
+brain-console/node_modules/

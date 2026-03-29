@@ -1,5 +1,5 @@
 /**
- * smart-router.js — Brain Console V3 Intelligent Router
+ * smart-router.js — Faye Intelligent Router
  *
  * TOKEN RESILIENCE: qwen2.5:32b handles tiers 1-3 locally.
  * Claude is ONLY for tier 4 (extreme complexity). If Claude is unavailable,

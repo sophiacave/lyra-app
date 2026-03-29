@@ -19,8 +19,8 @@ let brainMCP;
 let brainKnowledge;
 let brainAgent;
 
-const APP_NAME = 'Brain Console';
-const APP_VERSION = '3.0.0';
+const APP_NAME = 'Faye';
+const APP_VERSION = '4.0.0';
 
 function createWindow() {
   nativeTheme.themeSource = 'dark';
@@ -78,6 +78,9 @@ app.whenReady().then(async () => {
     // ============ WIRE REFERENCES ============
     localEngine.setScheduler(scheduler);
     localEngine.setBrainMCP(brainMCP);
+
+    // Load Faye's deep context from brain
+    await localEngine.loadDeepContext();
     localEngine.setKnowledge(brainKnowledge);
     localEngine.setAgent(brainAgent);
 
@@ -101,6 +104,20 @@ app.whenReady().then(async () => {
 
       // Start proactive brain loop after 5s
       setTimeout(() => startProactiveBrain(), 5000);
+
+      // ============ AUTO-START DIVINE CYCLE (L6 — never stops) ============
+      setTimeout(async () => {
+        try {
+          console.log('[Divine] Auto-starting L6 divine cycle...');
+          const result = await localEngine.handleCommand('/divine', 'on 10000');
+          console.log('[Divine] Started:', result.response?.slice(0, 80));
+          if (mainWindow && !mainWindow.isDestroyed()) {
+            mainWindow.webContents.send('brain:divine-status', {
+              active: true, phase: localEngine.divinePhase, cycle: localEngine.divineCycle,
+            });
+          }
+        } catch (e) { console.error('[Divine] Auto-start failed:', e.message); }
+      }, 8000);
 
       // ============ AUTO-WARM Ollama primary model ============
       try {
@@ -163,8 +180,14 @@ app.whenReady().then(async () => {
     try {
       const local = await localEngine.tryHandle(message);
       if (local.handled) {
-        mainWindow.webContents.send('brain:stream-chunk', local.response);
-        mainWindow.webContents.send('brain:stream-end', { provider: 'Local Engine', fromLocal: true });
+        // Stream the response in chunks for natural feel
+        const text = local.response || '';
+        const chunkSize = 40; // ~40 chars per chunk for smooth streaming
+        for (let i = 0; i < text.length; i += chunkSize) {
+          mainWindow.webContents.send('brain:stream-chunk', text.slice(i, i + chunkSize));
+          if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 15)); // 15ms between chunks
+        }
+        mainWindow.webContents.send('brain:stream-end', { provider: 'Faye (local)', fromLocal: true });
         return { success: true };
       }
 
@@ -173,7 +196,7 @@ app.whenReady().then(async () => {
       if (!route.providerAvailable) {
         mainWindow.webContents.send('brain:stream-chunk',
           '**No AI provider available.**\n\n' +
-          'Brain Console works best with local AI:\n\n' +
+          'Faye works best with local AI:\n\n' +
           '1. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n' +
           '2. **Groq** — Free key at console.groq.com\n' +
           '3. **OpenRouter** — openrouter.ai\n' +
@@ -290,6 +313,28 @@ app.whenReady().then(async () => {
   });
   ipcMain.handle('brain:agent-status', () => brainAgent.getStatus());
 
+  // Divine Cycle IPC
+  ipcMain.handle('brain:divine-status', () => ({
+    active: localEngine.divineMode,
+    phase: localEngine.divinePhase,
+    cycle: localEngine.divineCycle,
+    taskIndex: localEngine.divineTaskIndex,
+    totalTasks: localEngine.divinePlan?.tasks?.length || 0,
+    log: localEngine.divineLog.slice(-20),
+  }));
+  ipcMain.handle('brain:divine-toggle', async (event, on) => {
+    const result = await localEngine.handleCommand('/divine', on ? 'on' : 'off');
+    return { success: true, response: result.response };
+  });
+
+  // Skills IPC — query brain_skills table
+  ipcMain.handle('brain:skills-list', async () => {
+    if (!brainContext.supabase) return [];
+    const { data } = await brainContext.supabase
+      .from('brain_skills').select('*').eq('active', true).order('use_count', { ascending: false });
+    return data || [];
+  });
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
@@ -317,16 +362,16 @@ async function proactiveCycle() {
     const actions = [];
     const sb = brainContext.supabase;
 
-    // 1. Overdue tasks
+    // 1. Pending actions
     if (sb) {
       try {
-        const { data: overdue } = await sb.from('brain_tasks')
-          .select('id, task_type, description, scheduled_at')
+        const { data: pending } = await sb.from('brain_actions')
+          .select('id, action_type, target, priority')
           .eq('status', 'pending')
-          .lte('scheduled_at', new Date().toISOString())
+          .order('priority')
           .limit(5);
-        if (overdue?.length) {
-          insights.push({ type: 'tasks', priority: 'high', title: `${overdue.length} overdue task${overdue.length > 1 ? 's' : ''}`, detail: overdue.map(t => t.description || t.task_type).join(', ') });
+        if (pending?.length) {
+          insights.push({ type: 'actions', priority: 'high', title: `${pending.length} pending action${pending.length > 1 ? 's' : ''}`, detail: pending.map(a => `${a.action_type} → ${a.target}`).join(', ') });
         }
       } catch {}
     }

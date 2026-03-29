@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brain Console</title>
+  <title>Faye</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -444,9 +444,9 @@
     <div class="chat-area">
       <div class="chat-messages" id="chatMessages">
         <div class="welcome-screen" id="welcomeScreen">
-          <div class="welcome-logo">🧠</div>
-          <div class="welcome-title">Brain Console</div>
-          <div class="welcome-subtitle" id="bootMessage">Initializing systems...</div>
+          <div class="welcome-logo">💜</div>
+          <div class="welcome-title">Faye</div>
+          <div class="welcome-subtitle" id="bootMessage">waking up...</div>
           <div class="boot-status" id="bootStatus">
             <div class="boot-line" id="bootBrain"><span class="boot-dot pending"></span> Brain core</div>
             <div class="boot-line" id="bootProvider"><span class="boot-dot pending"></span> AI provider</div>
@@ -456,29 +456,29 @@
             <div class="boot-line" id="bootCommands"><span class="boot-dot pending"></span> Local commands</div>
           </div>
           <div class="welcome-shortcuts" id="welcomeShortcuts" style="display:none;">
-            <div class="shortcut-card" onclick="quickPrompt('/status')">
-              <div class="icon">📊</div>
-              <div class="label">System Status</div>
-              <div class="desc">Health, tasks, budget</div>
-              <div class="cost">FREE — no tokens</div>
+            <div class="shortcut-card" onclick="quickPrompt('how are we doing?')">
+              <div class="icon">💜</div>
+              <div class="label">Status</div>
+              <div class="desc">How's everything running?</div>
+              <div class="cost">free</div>
             </div>
-            <div class="shortcut-card" onclick="quickPrompt('/crm')">
-              <div class="icon">💼</div>
-              <div class="label">CRM Pipeline</div>
-              <div class="desc">Leads & deal stages</div>
-              <div class="cost">FREE — no tokens</div>
+            <div class="shortcut-card" onclick="quickPrompt('show me our subscribers')">
+              <div class="icon">👥</div>
+              <div class="label">People</div>
+              <div class="desc">Subscribers & community</div>
+              <div class="cost">free</div>
             </div>
-            <div class="shortcut-card" onclick="quickPrompt('/sprint')">
-              <div class="icon">💰</div>
-              <div class="label">Revenue Sprint</div>
-              <div class="desc">Sprint progress</div>
-              <div class="cost">FREE — no tokens</div>
+            <div class="shortcut-card" onclick="quickPrompt('show me the studio')">
+              <div class="icon">🎬</div>
+              <div class="label">Studio</div>
+              <div class="desc">Video pipeline & renders</div>
+              <div class="cost">free</div>
             </div>
-            <div class="shortcut-card" onclick="quickPrompt('/help')">
-              <div class="icon">⚡</div>
-              <div class="label">All Commands</div>
-              <div class="desc">See everything available</div>
-              <div class="cost">FREE — no tokens</div>
+            <div class="shortcut-card" onclick="quickPrompt('what can you do?')">
+              <div class="icon">✨</div>
+              <div class="label">Everything</div>
+              <div class="desc">All the things i can do</div>
+              <div class="cost">free</div>
             </div>
           </div>
         </div>
@@ -487,7 +487,7 @@
       <div class="typing-indicator" id="typingIndicator">
         <div class="message-header">
           <div class="message-avatar brain">F</div>
-          <span class="message-name">Brain Console</span>
+          <span class="message-name">Faye</span>
         </div>
         <div class="typing-dots"><span></span><span></span><span></span></div>
       </div>
@@ -697,7 +697,7 @@
           setTimeout(() => {
             bootMsg.innerHTML = `
               <div class="greeting-text">${getTimeGreeting()}, Faye.</div>
-              <div class="greeting-sub">Brain Console is online. Type anything or pick a shortcut below.</div>
+              <div class="greeting-sub">i'm here, twin. just talk to me. 💜</div>
             `;
             document.getElementById('welcomeShortcuts').style.display = 'grid';
           }, 600);
@@ -848,8 +848,8 @@
       const div = document.createElement('div');
       div.className = 'message';
       const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const name = role === 'user' ? 'Faye' : 'Brain Console';
-      const avatar = role === 'user' ? 'S' : 'F';
+      const name = role === 'user' ? 'Sophia' : 'Faye';
+      const avatar = role === 'user' ? 'S' : '💜';
 
       div.innerHTML = `
         <div class="message-header">
@@ -1007,9 +1007,9 @@
       welcome.className = 'welcome-screen';
       welcome.id = 'welcomeScreen';
       welcome.innerHTML = `
-        <div class="welcome-logo">🧠</div>
-        <div class="welcome-title">Brain Console</div>
-        <div class="welcome-subtitle">Cleared. Type /help for free commands.</div>
+        <div class="welcome-logo">💜</div>
+        <div class="welcome-title">Faye</div>
+        <div class="welcome-subtitle">fresh start. i'm here, twin. ✨</div>
       `;
       chat.appendChild(welcome);
     }

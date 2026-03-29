@@ -1,11 +1,11 @@
 /**
  * scheduler.js — Autonomous task scheduler (Phase 2 / L5)
  *
- * Runs inside the Electron main process. Polls brain_tasks for scheduled work,
+ * Runs inside the Electron main process. Polls brain_actions for scheduled work,
  * executes handlers, and logs results. No AI tokens for execution — only if
- * a task explicitly requires AI.
+ * an action explicitly requires AI.
  *
- * Built-in task types:
+ * Built-in action types:
  *   - email_drip       → Fires Supabase Edge Function for email sequences
  *   - webhook_fire     → POSTs to a webhook URL (Make.com, etc.)
  *   - context_refresh  → Reloads brain_context from Supabase
@@ -15,8 +15,8 @@
  *   - vercel_deploy    → Triggers Vercel deploy hook
  *   - make_scenario    → Manages Make.com scenarios via API
  *
- * Cron-like scheduling via brain_tasks table:
- *   { task_type, status: 'scheduled', schedule: 'every5min', next_run: ISO }
+ * Scheduling via brain_actions table:
+ *   { action_type, status: 'scheduled', payload: { schedule: 'every5min' }, created_at: ISO }
  */
 
 const Store = require('electron-store');
@@ -61,39 +61,38 @@ class Scheduler {
   }
 
   /**
-   * Cleanup zombie tasks stuck in 'running' for >10 minutes
+   * Cleanup zombie actions stuck in 'running' for >10 minutes
    */
   async _cleanupZombieTasks() {
     if (!this.brainContext.supabase) return;
 
     try {
       const tenMinutesAgo = new Date(Date.now() - 600000).toISOString();
-      
-      // Find tasks stuck in running state
+
+      // Find actions stuck in running state
       const { data: zombieTasks } = await this.brainContext.supabase
-        .from('brain_tasks')
+        .from('brain_actions')
         .select('*')
         .eq('status', 'running')
         .lte('updated_at', tenMinutesAgo)
         .limit(20);
 
       if (zombieTasks?.length) {
-        console.log(`[Scheduler] Found ${zombieTasks.length} zombie task(s) — resetting`);
-        
+        console.log(`[Scheduler] Found ${zombieTasks.length} zombie action(s) — resetting`);
+
         for (const task of zombieTasks) {
-          // Reset recurring tasks back to scheduled
-          if (task.schedule) {
-            const nextRun = this._calculateNextRun(task.schedule);
+          // Reset recurring actions back to scheduled (check payload.schedule)
+          const payload = this._parsePayload(task.payload);
+          if (payload.schedule) {
             await this._updateTask(task.id, {
               status: 'scheduled',
-              next_run: nextRun,
-              result: JSON.stringify({ error: 'Task reset after timeout' }),
+              result: JSON.stringify({ error: 'Action reset after timeout' }),
             });
           } else {
-            // Mark one-shot tasks as failed
+            // Mark one-shot actions as failed
             await this._updateTask(task.id, {
               status: 'failed',
-              result: JSON.stringify({ error: 'Task execution timeout (>10 min)' }),
+              result: JSON.stringify({ error: 'Action execution timeout (>10 min)' }),
             });
           }
         }
@@ -101,6 +100,15 @@ class Scheduler {
     } catch (err) {
       console.error('[Scheduler] Cleanup error:', err.message);
     }
+  }
+
+  /**
+   * Parse payload — supports JSON string or object
+   */
+  _parsePayload(payload) {
+    if (!payload) return {};
+    if (typeof payload === 'object') return payload;
+    try { return JSON.parse(payload); } catch { return {}; }
   }
 
   /**
@@ -115,13 +123,13 @@ class Scheduler {
       // 0. Cleanup zombie tasks (every tick)
       await this._cleanupZombieTasks();
 
-      // 1. Get scheduled tasks that are due
+      // 1. Get scheduled actions that are due (created_at in the past, status=scheduled)
       const { data: dueTasks, error } = await this.brainContext.supabase
-        .from('brain_tasks')
+        .from('brain_actions')
         .select('*')
         .eq('status', 'scheduled')
-        .lte('next_run', now)
-        .order('next_run', { ascending: true })
+        .lte('created_at', now)
+        .order('created_at', { ascending: true })
         .limit(10);
 
       if (error) {
@@ -131,19 +139,18 @@ class Scheduler {
 
       if (!dueTasks?.length) return;
 
-      console.log(`[Scheduler] ${dueTasks.length} task(s) due`);
+      console.log(`[Scheduler] ${dueTasks.length} action(s) due`);
 
-      // 2. Execute each task
+      // 2. Execute each action
       for (const task of dueTasks) {
         await this._executeTask(task);
       }
 
-      // 3. Also check for pending (one-shot) tasks
+      // 3. Also check for pending (one-shot) actions
       const { data: pendingTasks } = await this.brainContext.supabase
-        .from('brain_tasks')
+        .from('brain_actions')
         .select('*')
         .eq('status', 'pending')
-        .eq('auto_execute', true)
         .limit(5);
 
       if (pendingTasks?.length) {
@@ -157,15 +164,15 @@ class Scheduler {
   }
 
   /**
-   * Execute a single task
+   * Execute a single action
    */
   async _executeTask(task) {
-    const handler = this.handlers[task.task_type];
+    const handler = this.handlers[task.action_type];
     if (!handler) {
-      console.log(`[Scheduler] No handler for task type: ${task.task_type}`);
+      console.log(`[Scheduler] No handler for action type: ${task.action_type}`);
       await this._updateTask(task.id, {
         status: 'failed',
-        result: JSON.stringify({ error: `No handler for: ${task.task_type}` }),
+        result: JSON.stringify({ error: `No handler for: ${task.action_type}` }),
       });
       return;
     }
@@ -175,55 +182,46 @@ class Scheduler {
     const startTime = Date.now();
 
     try {
-      // Parse task config
-      let config = {};
-      try { config = JSON.parse(task.config || task.description || '{}'); } catch { config = { raw: task.description }; }
+      // Parse action payload
+      const config = this._parsePayload(task.payload);
 
       // Execute
       const result = await handler(config, task, this);
 
       const elapsed = Date.now() - startTime;
-      console.log(`[Scheduler] ✅ ${task.task_type} completed in ${elapsed}ms`);
+      console.log(`[Scheduler] ✅ ${task.action_type} completed in ${elapsed}ms`);
 
-      // If recurring (has schedule), calculate next_run and keep as scheduled
-      if (task.schedule) {
-        const nextRun = this._calculateNextRun(task.schedule);
+      // If recurring (payload has schedule), keep as scheduled
+      if (config.schedule) {
         await this._updateTask(task.id, {
           status: 'scheduled',
           result: JSON.stringify(result),
-          last_run: new Date().toISOString(),
-          next_run: nextRun,
-          run_count: (task.run_count || 0) + 1,
         });
       } else {
-        // One-shot task — mark as completed
+        // One-shot action — mark as completed
         await this._updateTask(task.id, {
           status: 'completed',
           result: JSON.stringify(result),
-          completed_at: new Date().toISOString(),
         });
       }
 
       this._logExecution(task, 'success', result, elapsed);
     } catch (err) {
       const elapsed = Date.now() - startTime;
-      console.error(`[Scheduler] ❌ ${task.task_type} failed:`, err.message);
+      console.error(`[Scheduler] ❌ ${task.action_type} failed:`, err.message);
 
-      // For recurring tasks, keep them scheduled for next attempt
-      if (task.schedule) {
+      // For recurring actions, keep them scheduled for next attempt
+      const config = this._parsePayload(task.payload);
+      if (config.schedule) {
         await this._updateTask(task.id, {
           status: 'scheduled',
           result: JSON.stringify({ error: err.message }),
-          last_run: new Date().toISOString(),
-          next_run: this._calculateNextRun(task.schedule),
-          run_count: (task.run_count || 0) + 1,
         });
       } else {
-        // One-shot task — mark as failed
+        // One-shot action — mark as failed
         await this._updateTask(task.id, {
           status: 'failed',
           result: JSON.stringify({ error: err.message }),
-          failed_at: new Date().toISOString(),
         });
       }
 
@@ -233,14 +231,14 @@ class Scheduler {
 
   async _updateTask(id, updates) {
     await this.brainContext.supabase
-      .from('brain_tasks')
+      .from('brain_actions')
       .update(updates)
       .eq('id', id);
   }
 
   _logExecution(task, status, result, elapsed) {
     const entry = {
-      task_type: task.task_type,
+      task_type: task.action_type,
       task_id: task.id,
       status,
       result: typeof result === 'string' ? result : JSON.stringify(result).slice(0, 200),
@@ -367,26 +365,25 @@ class Scheduler {
     this.registerHandler('report_generate', async () => {
       if (!this.brainContext.supabase) throw new Error('Not connected');
 
-      const [tasksRes, crmRes, emailsRes] = await Promise.all([
-        this.brainContext.supabase.from('brain_tasks').select('status').limit(100),
-        this.brainContext.supabase.from('notion_sales_pipeline').select('deal_stage, deal_value').limit(100),
-        this.brainContext.supabase.from('notification_log').select('status').limit(100),
+      const [actionsRes, subscribersRes, episodesRes] = await Promise.all([
+        this.brainContext.supabase.from('brain_actions').select('status').limit(100),
+        this.brainContext.supabase.from('subscribers').select('status, goal').limit(100),
+        this.brainContext.supabase.from('brain_episodes').select('event_type, summary').limit(100),
       ]);
 
       const report = {
         date: new Date().toISOString().split('T')[0],
-        tasks: {
-          total: tasksRes.data?.length || 0,
-          pending: tasksRes.data?.filter(t => t.status === 'pending').length || 0,
-          completed: tasksRes.data?.filter(t => t.status === 'completed').length || 0,
+        actions: {
+          total: actionsRes.data?.length || 0,
+          pending: actionsRes.data?.filter(t => t.status === 'pending').length || 0,
+          completed: actionsRes.data?.filter(t => t.status === 'completed').length || 0,
         },
-        crm: {
-          total: crmRes.data?.length || 0,
-          pipeline_value: crmRes.data?.reduce((s, l) => s + (Number(l.deal_value) || 0), 0) || 0,
+        subscribers: {
+          total: subscribersRes.data?.length || 0,
+          active: subscribersRes.data?.filter(s => s.status === 'active').length || 0,
         },
-        emails: {
-          total: emailsRes.data?.length || 0,
-          sent: emailsRes.data?.filter(e => e.status === 'sent').length || 0,
+        episodes: {
+          total: episodesRes.data?.length || 0,
         },
         budget: this.brainAPI?.getBudget() || {},
         generated_at: new Date().toISOString(),
