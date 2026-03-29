@@ -462,12 +462,13 @@ function main() {
         console.log(`  ✅ Loudness normalized to -14 LUFS`);
       } catch { console.log(`  ⚠️  Normalization skipped`); }
 
-      // Merge master audio with video
+      // Merge master audio with video — use -t (not -shortest) to preserve full video duration
+      const videoDur = dur(silentVideo);
       execSync(
-        `ffmpeg -y -i "${silentVideo}" -i "${masterAudio}" -map 0:v -map 1:a -c:v copy -c:a aac -ac 2 -ar 48000 -b:a 192k -shortest "${finalVideo}" 2>/dev/null`,
+        `ffmpeg -y -i "${silentVideo}" -i "${masterAudio}" -map 0:v -map 1:a -c:v copy -c:a aac -ac 2 -ar 48000 -b:a 192k -t ${videoDur.toFixed(3)} "${finalVideo}" 2>/dev/null`,
         { encoding: 'utf-8', timeout: 120000 }
       );
-      console.log(`  ✅ Audio merged with video`);
+      console.log(`  ✅ Audio merged with video (${videoDur.toFixed(1)}s)`);
     } catch (e) {
       console.error(`  ⚠️  Mix failed, using assembled audio: ${e.message?.slice(-100)}`);
       execSync(`cp "${silentVideo}" "${finalVideo}"`);
