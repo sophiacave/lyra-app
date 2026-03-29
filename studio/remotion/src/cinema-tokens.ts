@@ -25,6 +25,7 @@ export const COLORS = {
   result: "#8CB89E",
   alert: "#C4616A",
   insight: "#B898C8",
+  focus: "#F5F0E8",
   // McQueen accents
   bone: "#E8DDD0",
   obsidian: "#1A1720",
@@ -54,35 +55,46 @@ export const BEAT_STYLES: Record<
     tailPause: number;
   }
 > = {
-  hook: { grainIntensity: 0.02, vignette: 0.25, colorShift: false, headPad: 0.15, tailPause: 0.8 },
-  setup: { grainIntensity: 0.03, vignette: 0.30, colorShift: true, headPad: 0.25, tailPause: 0.5 },
-  core: { grainIntensity: 0.02, vignette: 0.20, colorShift: false, headPad: 0.15, tailPause: 0.3 },
-  breathe: { grainIntensity: 0.04, vignette: 0.35, colorShift: true, headPad: 0.4, tailPause: 1.5 },
-  deepen: { grainIntensity: 0.03, vignette: 0.25, colorShift: true, headPad: 0.25, tailPause: 0.5 },
-  peak: { grainIntensity: 0.02, vignette: 0.15, colorShift: false, headPad: 0.6, tailPause: 2.0 },
-  close: { grainIntensity: 0.04, vignette: 0.40, colorShift: true, headPad: 0.4, tailPause: 1.5 },
+  // V3 timing synced with editing-engine.js (15-25% breathing ratio, Murch principle)
+  hook: { grainIntensity: 0.02, vignette: 0.25, colorShift: false, headPad: 0.20, tailPause: 1.0 },
+  setup: { grainIntensity: 0.03, vignette: 0.30, colorShift: true, headPad: 0.30, tailPause: 0.7 },
+  core: { grainIntensity: 0.02, vignette: 0.20, colorShift: false, headPad: 0.25, tailPause: 0.6 },
+  breathe: { grainIntensity: 0.04, vignette: 0.35, colorShift: true, headPad: 0.50, tailPause: 1.8 },
+  deepen: { grainIntensity: 0.03, vignette: 0.25, colorShift: true, headPad: 0.35, tailPause: 0.8 },
+  peak: { grainIntensity: 0.02, vignette: 0.15, colorShift: false, headPad: 0.70, tailPause: 2.3 },
+  close: { grainIntensity: 0.04, vignette: 0.40, colorShift: true, headPad: 0.50, tailPause: 1.8 },
 };
 
-// ─── Typography Scale ──────────────────────────────────────────
+// ─── Typography Scale (V3 — synced with design-tokens.js) ─────
+// McQueen principle: light weights carry more authority than bold.
+// The whisper is louder than the shout.
 export const TYPE = {
-  hero: { size: 96, weight: 700, tracking: -2.5, leading: 1.0 },
-  display: { size: 72, weight: 700, tracking: -1.5, leading: 1.05 },
-  title1: { size: 56, weight: 600, tracking: -1.0, leading: 1.1 },
-  title2: { size: 44, weight: 600, tracking: -0.5, leading: 1.15 },
-  title3: { size: 34, weight: 600, tracking: -0.3, leading: 1.2 },
-  headline: { size: 28, weight: 600, tracking: 0, leading: 1.3 },
-  body: { size: 22, weight: 400, tracking: 0.2, leading: 1.6 },
-  callout: { size: 18, weight: 500, tracking: 0.3, leading: 1.5 },
-  caption: { size: 15, weight: 400, tracking: 0.5, leading: 1.4 },
-  overline: { size: 13, weight: 600, tracking: 2.0, leading: 1.3 },
+  mcqueen: { size: 96, weight: 200, tracking: -3.8, leading: 1.05, font: "accent" as const },  // One word. Full screen. Devastating.
+  hero: { size: 72, weight: 300, tracking: -2.2, leading: 1.05, font: "display" as const },
+  display: { size: 72, weight: 700, tracking: -1.5, leading: 1.05, font: "display" as const },
+  title1: { size: 56, weight: 600, tracking: -1.0, leading: 1.1, font: "display" as const },
+  title2: { size: 44, weight: 600, tracking: -0.5, leading: 1.15, font: "display" as const },
+  title3: { size: 34, weight: 600, tracking: -0.3, leading: 1.2, font: "display" as const },
+  headline: { size: 28, weight: 600, tracking: 0, leading: 1.3, font: "display" as const },
+  whisper: { size: 32, weight: 200, tracking: 0.4, leading: 1.4, font: "text" as const },  // The most powerful line — italic
+  body: { size: 24, weight: 400, tracking: 0.2, leading: 1.5, font: "text" as const },
+  bodyLg: { size: 28, weight: 400, tracking: 0.1, leading: 1.5, font: "text" as const },
+  callout: { size: 18, weight: 500, tracking: 0.3, leading: 1.5, font: "text" as const },
+  caption: { size: 20, weight: 400, tracking: 0.4, leading: 1.4, font: "text" as const },
+  code: { size: 22, weight: 400, tracking: 0, leading: 1.4, font: "mono" as const },
+  overline: { size: 14, weight: 700, tracking: 3.0, leading: 1.2, font: "text" as const },  // Uppercase labels
 } as const;
 
-// ─── Font Stacks ───────────────────────────────────────────────
+// ─── Font Stacks (V3 — synced with design-tokens.js) ──────────
 export const FONTS = {
-  display: "'SF Pro Display', 'General Sans', 'Inter', system-ui, sans-serif",
-  text: "'SF Pro Text', 'Inter', system-ui, sans-serif",
+  display: "'Outfit', 'Space Grotesk', 'Inter', system-ui, sans-serif",
+  text: "'Inter', 'DM Sans', system-ui, sans-serif",
   accent: "'Cormorant Garamond', 'Playfair Display', 'Georgia', serif",
-  mono: "'SF Mono', 'JetBrains Mono', 'Fira Code', monospace",
+  mono: "'JetBrains Mono', 'Fira Code', monospace",
+  // Alternates for course variety
+  altDisplay: "'Space Grotesk', 'Outfit', system-ui, sans-serif",
+  altSerif: "'Playfair Display', 'Cormorant Garamond', serif",
+  altWarm: "'Lora', 'Georgia', serif",
 } as const;
 
 // ─── Spring Configs (for Remotion spring()) ────────────────────
@@ -148,7 +160,7 @@ export const PRESETS = {
   },
   explainerScene: {
     type: "diagram" as const,
-    typography: { heading: "title2", body: "body", label: "caption" },
+    typography: { heading: "title3", body: "body", label: "caption" },
     motion: { enter: "confident", exit: "exit" },
     vignette: 0.35,
     grain: 0.025,
@@ -185,6 +197,46 @@ export const PRESETS = {
     letterbox: false,
     glowRadius: 0,
     glowOpacity: 0,
+  },
+  comparisonSplit: {
+    type: "diagram" as const,
+    typography: { heading: "title3", label: "overline", body: "body" },
+    motion: { enter: "confident", exit: "exit" },
+    vignette: 0.30,
+    grain: 0.02,
+    letterbox: false,
+    glowRadius: 200,
+    glowOpacity: 0.03,
+  },
+  dataViz: {
+    type: "diagram" as const,
+    typography: { heading: "title3", value: "display", label: "caption", axis: "overline" },
+    motion: { enter: "smooth", exit: "exit" },
+    vignette: 0.25,
+    grain: 0.02,
+    letterbox: false,
+    glowRadius: 300,
+    glowOpacity: 0.04,
+  },
+  stepByStep: {
+    type: "diagram" as const,
+    typography: { heading: "title2", step: "headline", body: "body", number: "hero" },
+    motion: { enter: "confident", exit: "exit" },
+    vignette: 0.30,
+    grain: 0.025,
+    letterbox: false,
+    glowRadius: 250,
+    glowOpacity: 0.04,
+  },
+  chapterCard: {
+    type: "title" as const,
+    typography: { number: "overline", title: "title2" },
+    motion: { enter: "smooth", exit: "exit" },
+    vignette: 0.40,
+    grain: 0.03,
+    letterbox: true,
+    glowRadius: 180,
+    glowOpacity: 0.04,
   },
 } as const;
 
@@ -233,3 +285,18 @@ export function grainUrl(frame: number): string {
 export function vignetteGradient(intensity: number = 0.4, color: string = COLORS.void): string {
   return `radial-gradient(ellipse at center, transparent 40%, ${color}${Math.round(intensity * 255).toString(16).padStart(2, "0")} 100%)`;
 }
+
+// ─── Colorblind-Safe Palette (Wong 2011) ──────────────────────
+// Use for data visualization bars, lines, chart segments
+export const COLORBLIND_SAFE = [
+  "#000000", "#E69F00", "#56B4E9", "#009E73",
+  "#F0E442", "#0072B2", "#D55E00", "#CC79A7",
+] as const;
+
+// ─── V3 Text Animation Presets ────────────────────────────────
+export const TEXT_ANIMATIONS = {
+  fadeUp: { from: { opacity: 0, y: 30 }, to: { opacity: 1, y: 0 }, durationFrames: 15 },
+  slideLeft: { from: { opacity: 0, x: -60 }, to: { opacity: 1, x: 0 }, durationFrames: 12 },
+  scalePop: { from: { opacity: 0, scale: 0.8 }, to: { opacity: 1, scale: 1.0 }, durationFrames: 10 },
+  revealMask: { direction: "left_to_right" as const, maskColor: COLORS.chalk, durationFrames: 24 },
+} as const;
