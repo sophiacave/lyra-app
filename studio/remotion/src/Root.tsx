@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import { LikeOneVideo } from "./compositions/LikeOneVideo";
+import { CinematicTitle3D } from "./components/CinematicTitle3D";
 
 /**
  * Like One Studio V9 — Remotion Root
@@ -45,6 +46,22 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
         defaultProps={{
           screenplay: loadScreenplay(),
+        }}
+      />
+
+      {/* Cinematic 3D Title Card — standalone for testing & reuse */}
+      <Composition
+        id="CinematicTitle"
+        component={CinematicTitle3D}
+        durationInFrames={30 * 5}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          title: "What Is a Neuron?",
+          subtitle: "Like One • Season 1",
+          beat: "hook",
+          fps: 30,
         }}
       />
     </>

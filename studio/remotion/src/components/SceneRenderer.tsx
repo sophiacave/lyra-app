@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame, interpolate, Audio, Video, Img, Sequence, spring } from "remotion";
 import { LivingFrame } from "./LivingFrame";
 import { KineticText } from "./KineticText";
+import { CinematicTitle3D } from "./CinematicTitle3D";
 
 /**
  * Scene types from V9 architecture:
@@ -176,46 +177,15 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   }
 
   if (scene.type === "title") {
-    const enterProgress = spring({
-      frame,
-      fps,
-      config: { damping: 14, stiffness: 100, mass: 1 },
-    });
-
     return (
-      <AbsoluteFill style={{
-        opacity,
-        background: `linear-gradient(180deg, ${designTokens?.colors?.void || '#08080D'} 0%, #0a0a1a 100%)`,
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
-        <div style={{
-          transform: `translateY(${interpolate(enterProgress, [0, 1], [30, 0])}px)`,
-          opacity: enterProgress,
-          textAlign: "center",
-        }}>
-          {scene.dialogue && (
-            <div style={{
-              color: designTokens?.colors?.chalk || '#EDE9E3',
-              fontSize: 36,
-              fontFamily: "General Sans, Inter, system-ui",
-              fontWeight: 300,
-              letterSpacing: -0.5,
-              marginBottom: 16,
-            }}>
-              {scene.dialogue}
-            </div>
-          )}
-          {scene.motion_graphic && (
-            <div style={{
-              color: designTokens?.colors?.smoke || '#6B6B73',
-              fontSize: 18,
-              fontFamily: "General Sans, Inter, system-ui",
-            }}>
-              {/* Motion graphic description — replaced with actual component at render time */}
-            </div>
-          )}
-        </div>
+      <AbsoluteFill style={{ opacity }}>
+        <CinematicTitle3D
+          title={scene.dialogue || scene.id}
+          subtitle={scene.text_overlay?.text}
+          beat={scene.beat}
+          fps={fps}
+        />
+        {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
       </AbsoluteFill>
     );
   }

@@ -10,15 +10,24 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.0",
+    "@react-three/fiber": "^8.18.0",
     "@remotion/cli": "^4.0.441",
     "@remotion/player": "^4.0.441",
     "@remotion/renderer": "^4.0.441",
+    "@remotion/three": "^4.0.441",
+    "@types/three": "^0.183.1",
     "gray-matter": "^4.0.3",
     "next": "^14.2.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "remotion": "^4.0.441"
+    "remotion": "^4.0.441",
+    "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.2"
   }
 }
