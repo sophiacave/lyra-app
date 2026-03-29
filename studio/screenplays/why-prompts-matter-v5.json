@@ -1,0 +1,160 @@
+{
+  "version": "5.0",
+  "title": "Why Prompts Matter",
+  "persona": "faye",
+  "colorTheme": "prompt-writing",
+  "duration_target_s": 140,
+  "color_arc": [
+    "warm-amber",
+    "cool-teal",
+    "warm-amber",
+    "neutral"
+  ],
+  "negative_global": "blur, distortion, watermark, text overlay, morphing faces, extra limbs, deformed hands, compression artifacts, flickering, flat lighting",
+  "audio_arc": [
+    {
+      "phase": "hook",
+      "music_level": -22,
+      "sfx": "sparse",
+      "ambience": "warm room tone"
+    },
+    {
+      "phase": "setup",
+      "music_level": -18,
+      "sfx": "moderate",
+      "ambience": "textured"
+    },
+    {
+      "phase": "core",
+      "music_level": -16,
+      "sfx": "active",
+      "ambience": "present"
+    },
+    {
+      "phase": "breathe",
+      "music_level": -20,
+      "sfx": "gentle",
+      "ambience": "settling"
+    },
+    {
+      "phase": "deepen",
+      "music_level": -14,
+      "sfx": "building",
+      "ambience": "wide"
+    },
+    {
+      "phase": "peak",
+      "music_level": -10,
+      "sfx": "IMPACT",
+      "ambience": "SILENCE then flood"
+    },
+    {
+      "phase": "close",
+      "music_level": -22,
+      "sfx": "fading",
+      "ambience": "warm fade"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "broll",
+      "beat": "hook",
+      "dialogue": "The same AI that gives you a boring paragraph can write you a masterpiece.",
+      "visual": "Extreme close-up of a single handwritten word dissolving into luminous particles, warm amber light radiating from the dissolving letterforms against deep dark space, intimate and magnetic",
+      "duration_s": 4,
+      "audio_note": "Music from beat 1 — sparse piano note, single and clear. Narration intimate, close-mic. SFX: subtle paper-to-light transformation sound."
+    },
+    {
+      "id": "the-difference",
+      "type": "broll",
+      "beat": "hook",
+      "dialogue": "The difference is not the model. It is the prompt.",
+      "visual": "Two identical luminous spheres side by side in dark space — one dim and unfocused, the other brilliantly sharp and glowing with inner warmth, warm amber key light on the bright sphere, cool muted light on the dim one, stark visual contrast",
+      "duration_s": 4,
+      "audio_note": "Pause 0.5s after 'prompt' — let it land. SFX: the bright sphere hums with a warm tone. Music adds a second note.",
+      "editorial": "KULESHOV: dim sphere (vague prompt) → bright sphere (great prompt). The contrast IS the thesis."
+    },
+    {
+      "id": "skill-claim",
+      "type": "broll",
+      "beat": "setup",
+      "dialogue": "In this lesson, you will learn why prompts matter more than any other skill in the AI era. Not the subscription. Not the model. The words you choose.",
+      "visual": "Medium shot of a single warm hand-like form reaching toward a constellation of floating luminous text fragments, fingertips almost touching the nearest fragment which glows brighter in response, warm practical light from the text itself, cool ambient fill creating depth, the moment before connection",
+      "duration_s": 7,
+      "audio_note": "Music builds gently — add rhythm element. Voice builds energy across the sentence. SFX: soft chime as fingertips approach the text.",
+      "editorial": "VISUAL METAPHOR: hand reaching for words = the human craft of prompting. The glow on approach = the AI responding to intention."
+    },
+    {
+      "id": "chef-metaphor",
+      "type": "broll",
+      "beat": "core",
+      "dialogue": "Think of it this way. An AI model is like a world-class chef. It can cook anything. But if you walk into the kitchen and say make me food, you get something random. Give it a recipe — the ingredients, the technique, the plating — and you get a Michelin-star meal. The prompt is the recipe.",
+      "visual": "Wide shot of a vast pristine kitchen space rendered in warm light — clean surfaces reflecting soft amber glow, a single dramatic beam of light illuminating a preparation area where ingredients are arranged with architectural precision, steam rising and catching the warm light, elegance and craft in every surface",
+      "duration_s": 14,
+      "audio_note": "Music warm and present — melodic. Voice is conversational, enjoying the metaphor. SFX: subtle kitchen ambience — a knife on board, a pan sizzle — woven delicately under narration. Each ingredient gets a soft spatial tone.",
+      "editorial": "CONCRETE BEFORE ABSTRACT (Mayer): the chef metaphor grounds the abstract concept. Viewers remember metaphors 6x better than definitions."
+    },
+    {
+      "id": "five-elements",
+      "type": "diagram",
+      "beat": "core",
+      "dialogue": "A great prompt has five elements. Role — who should the AI be? Context — what background does it need? Task — what exactly do you want? Format — how should the output look? And constraints — what should it avoid?",
+      "motion_graphic": "Manim/Remotion animated diagram: five elements appear one at a time in a vertical stack, each with an icon and label. Role (eye icon) slides in from left with spring animation. Context (book icon) follows. Task (lightbulb icon). Format (filter icon). Constraints (shield icon). Each element glows warm amber as it appears, then settles to soft teal. Clean dark background, progressive reveal synced to narration phrases. Final state: all five visible, connected by a thin warm line.",
+      "duration_s": 16,
+      "audio_note": "Music drops to minimal pad — teaching moment. Voice is clear and measured, giving each element its space. SFX: each element gets a distinct tone — ascending scale across the five. Soft 'lock' sound when all five are revealed."
+    },
+    {
+      "id": "the-secret",
+      "type": "broll",
+      "beat": "breathe",
+      "dialogue": "You do not need to be technical. You do not need to code. The best prompt writers are clear thinkers.",
+      "visual": "Close-up of a calm water surface with a single leaf resting on it, perfectly still, warm golden light reflecting off the water surface, the leaf casting a soft shadow, simplicity and clarity embodied in one natural moment",
+      "duration_s": 6,
+      "audio_note": "DROP ALL MUSIC for 0.5s before 'You do not need to be technical.' Let silence create relief. SFX: single water surface tension sound. Music returns as gentle pad.",
+      "editorial": "VISUAL METAPHOR: still water with leaf = clarity of thought. This is the emotional relief valve — after the density of five elements, the viewer needs to breathe."
+    },
+    {
+      "id": "brilliant-friend",
+      "type": "broll",
+      "beat": "deepen",
+      "dialogue": "If you can explain something to a brilliant friend, you can write a great prompt. That is all it takes. Plain language. Clear thinking. Knowing what you want.",
+      "visual": "Medium shot of two warm light forms facing each other across a small space — one radiating steady amber light, the other responding with matching luminosity, an exchange of light between them like a conversation made visible, warm intimacy in the interaction, cool dark space creating a frame around their dialogue",
+      "duration_s": 8,
+      "audio_note": "Music builds — add melody and warmth. Voice is encouraging, building confidence. SFX: subtle harmonic resonance between the two light forms, growing stronger as the exchange deepens.",
+      "text_overlay": {
+        "text": "Plain language. Clear thinking.",
+        "style": "kinetic_reveal",
+        "timing": "word-by-word synced to narration"
+      }
+    },
+    {
+      "id": "stat-hit",
+      "type": "broll",
+      "beat": "peak",
+      "dialogue": "Ninety percent of AI users never learn prompting. They settle for mediocre results. You are about to join the ten percent.",
+      "visual": "Extreme wide shot of a vast field of dim, scattered points — then a single brilliant warm light ignites in the center, sending a wave of illumination rippling outward, transforming nearby dim points into glowing ones, the wave of light expanding but the original point remaining the brightest, dramatic warm amber against cool dark space",
+      "duration_s": 8,
+      "audio_note": "THIS IS THE PEAK. Music at full force on 'ten percent.' Voice builds across '90 percent' line, then shifts to intimate and direct on 'You are about to join.' 0.5s SILENCE before the last sentence. Impact SFX on ignition moment.",
+      "editorial": "EISENSTEIN INTELLECTUAL MONTAGE: dim field (the 90%) → single ignition (the viewer). The ripple effect = the viewer's future impact."
+    },
+    {
+      "id": "landing",
+      "type": "broll",
+      "beat": "close",
+      "dialogue": "Master the prompt. Master the AI. This is the most valuable skill of the decade.",
+      "visual": "Medium close-up of a single luminous form — warm and steady, like a candle flame but geometric and precise — resting in peaceful dark space, warm golden key light dominant with the softest cool fill at the edges, gentle and resolved, radiating quiet confidence",
+      "duration_s": 10,
+      "audio_note": "Music resolving — final chord progression. Voice drops to intimate, almost whispered on 'most valuable skill of the decade.' 2s silence after final word before outro. SFX: none — let voice and music carry it."
+    },
+    {
+      "id": "outro",
+      "type": "title",
+      "beat": "close",
+      "dialogue": "",
+      "motion_graphic": "Remotion: warm geometric form slowly dissolves into particle constellation. 'Next: Anatomy of a Great Prompt' fades in with spring animation (KineticText component). 'likeone.ai' below in smaller type. Warm amber palette, gentle particle overlay.",
+      "duration_s": 5,
+      "audio_note": "Music fades to silence over 3s. Single soft tone resolves. Ambient room tone holds briefly, then silence."
+    }
+  ]
+}

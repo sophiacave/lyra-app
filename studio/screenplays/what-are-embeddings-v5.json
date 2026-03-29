@@ -1,0 +1,164 @@
+{
+  "version": "5.0",
+  "title": "What Are Embeddings?",
+  "persona": "faye",
+  "colorTheme": "rag-vectors",
+  "duration_target_s": 140,
+  "color_arc": [
+    "cool-teal",
+    "neutral",
+    "warm-amber",
+    "cool-teal"
+  ],
+  "negative_global": "blur, distortion, watermark, text overlay, morphing faces, extra limbs, deformed hands, compression artifacts, flickering, flat lighting",
+  "audio_arc": [
+    {
+      "phase": "hook",
+      "music_level": -22,
+      "sfx": "sparse",
+      "ambience": "warm room tone"
+    },
+    {
+      "phase": "setup",
+      "music_level": -18,
+      "sfx": "moderate",
+      "ambience": "textured"
+    },
+    {
+      "phase": "core",
+      "music_level": -16,
+      "sfx": "active",
+      "ambience": "present"
+    },
+    {
+      "phase": "breathe",
+      "music_level": -20,
+      "sfx": "gentle",
+      "ambience": "settling"
+    },
+    {
+      "phase": "deepen",
+      "music_level": -14,
+      "sfx": "building",
+      "ambience": "wide"
+    },
+    {
+      "phase": "peak",
+      "music_level": -10,
+      "sfx": "IMPACT",
+      "ambience": "SILENCE then flood"
+    },
+    {
+      "phase": "close",
+      "music_level": -22,
+      "sfx": "fading",
+      "ambience": "warm fade"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "broll",
+      "beat": "hook",
+      "dialogue": "What if every word had an address?",
+      "visual": "Extreme close-up of a single luminous point floating in vast dark space, warm amber glow emanating from the point itself, surrounded by faint coordinate grid lines dissolving into darkness, intimate and mysterious",
+      "duration_s": 4,
+      "audio_note": "Music from beat 1 — single sustained pad, low and warm. Narration intimate, close-mic. SFX: subtle crystalline tone as the point pulses."
+    },
+    {
+      "id": "address-reveal",
+      "type": "broll",
+      "beat": "hook",
+      "dialogue": "A location in mathematical space that captures its meaning.",
+      "visual": "The single point multiplies — camera pulls back to reveal hundreds of softly glowing points scattered across a three-dimensional coordinate space, each point a different warm hue, connected by faint translucent threads, deep volumetric darkness between them",
+      "duration_s": 4,
+      "audio_note": "Voice drops to almost a whisper on 'meaning.' SFX: soft chime cascade as points appear. Music adds a second harmonic layer.",
+      "editorial": "KULESHOV: single point (intimate) → constellation of meaning (scale). The zoom-out creates wonder."
+    },
+    {
+      "id": "what-embedding-is",
+      "type": "broll",
+      "beat": "setup",
+      "dialogue": "An embedding is a list of numbers that represents the meaning of text. Think of it as giving every word a unique address in mathematical space. Two words that mean similar things get addresses that are close together. Happy lives next to joyful. Sad lives far away from both.",
+      "visual": "Wide overhead view looking down into a vast luminous map of clustered light points — warm amber clusters grouped tightly together, cool teal isolated points at the edges, soft atmospheric haze creating depth between clusters, like looking down into a living city of meaning from above",
+      "duration_s": 12,
+      "audio_note": "Music builds gently — add a rhythmic pulse. Voice is clear teaching mode, warm. SFX: soft spatial 'ping' when 'happy' and 'joyful' are mentioned, a lower tone shift for 'sad.'",
+      "editorial": "CONCRETE BEFORE ABSTRACT (Mayer): 'address' is the anchor metaphor. Plant it before the math arrives."
+    },
+    {
+      "id": "why-it-matters",
+      "type": "broll",
+      "beat": "core",
+      "dialogue": "When you ask an AI a question, it does not search for matching words. It searches for matching meaning. Your question becomes a point in space, and the AI finds the closest answers — even if they use completely different words.",
+      "visual": "Medium shot of a single bright point of light moving through a field of stationary points, leaving a warm trail — it approaches a cluster and the nearest points illuminate brighter in response, cool teal space between with warm amber at connection points, the moment of recognition captured as convergence",
+      "duration_s": 10,
+      "audio_note": "Music adds melody for the first time. Voice has energy — this is the 'why it matters' moment. SFX: resonant harmonic chord when the moving point finds its match.",
+      "text_overlay": {
+        "text": "Semantic Search",
+        "style": "kinetic_reveal",
+        "timing": "appears on 'matching meaning'"
+      }
+    },
+    {
+      "id": "semantic-magic",
+      "type": "broll",
+      "beat": "breathe",
+      "dialogue": "That is semantic search. That is the magic.",
+      "visual": "Close-up of two luminous points touching and merging into a single warm golden glow, radiating soft concentric waves outward into the surrounding dark space, like a heartbeat of understanding",
+      "duration_s": 5,
+      "audio_note": "DROP ALL MUSIC for 0.5s before 'That is semantic search.' Let silence create weight. SFX: single deep resonant tone on the merge. Music returns softly.",
+      "editorial": "VISUAL METAPHOR: two points merging = meaning connecting. The pause before this line is the emotional hinge of the lesson."
+    },
+    {
+      "id": "dimensions-explain",
+      "type": "diagram",
+      "beat": "core",
+      "dialogue": "Each dimension captures something about meaning. One dimension might track sentiment. Another might track formality. Another might capture topic. A seven-hundred-dimensional embedding captures seven hundred different aspects of what a word means.",
+      "motion_graphic": "Manim/Remotion animated diagram: start with a single horizontal axis labeled 'sentiment' — a word dot slides along it. Second axis appears vertically: 'formality.' Dot now moves in 2D plane. Third axis extends into depth: 'topic.' Progressive axes keep appearing (spring animation, staggered), each adding a new labeled dimension. Counter in corner climbs: 3... 10... 100... 768. Clean dark background, teal axis lines, warm amber dots, white text labels.",
+      "duration_s": 16,
+      "audio_note": "Music minimal — teaching moment. Voice clear and measured. SFX: each new axis gets a soft ascending tone. Counter acceleration matches building SFX crescendo."
+    },
+    {
+      "id": "stat-hit",
+      "type": "broll",
+      "beat": "deepen",
+      "dialogue": "Seven hundred and sixty-eight dimensions. That is richer than any dictionary.",
+      "visual": "Extreme wide shot of a vast crystalline lattice structure stretching in every direction — hundreds of interconnected planes of translucent light forming a hyperdimensional architecture, warm amber nodes at intersections, cool teal edges, the structure breathes with subtle pulsing light",
+      "duration_s": 6,
+      "audio_note": "Voice hits '768' with weight. Music swells on 'richer than any dictionary.' SFX: deep bass expansion sound as the lattice fills the frame.",
+      "text_overlay": {
+        "text": "768 dimensions",
+        "style": "kinetic_reveal",
+        "timing": "appears with stat, holds through sentence"
+      }
+    },
+    {
+      "id": "how-brain-works",
+      "type": "broll",
+      "beat": "peak",
+      "dialogue": "This is how your AI brain works. Every memory gets embedded. Every question gets embedded. And the closest memories become context for the answer. Embeddings are the foundation of everything that makes AI feel like it understands you.",
+      "visual": "Medium shot of a warm luminous core — like a sun — with thousands of tiny points orbiting and flowing toward it and away in streams, incoming streams from one direction meeting the core and returning transformed, warm golden central light with cool teal incoming streams shifting to warm amber as they pass through the core, living and breathing",
+      "duration_s": 12,
+      "audio_note": "THIS IS THE PEAK. Music at full force on 'foundation of everything.' Voice builds across the paragraph, then drops intimate on 'understands you.' 0.7s SILENCE before the last sentence. Impact SFX on 'foundation.'",
+      "editorial": "EISENSTEIN OVERTONAL: the visual of streams converging at a core mirrors the concept of embedding retrieval. The warm/cool color shift = question → understanding."
+    },
+    {
+      "id": "landing",
+      "type": "broll",
+      "beat": "close",
+      "dialogue": "Every word has an address. Every meaning has a location. And the distance between two points is the distance between two ideas. That is what embeddings teach us.",
+      "visual": "Slow pull-back from a pair of warm glowing points close together, revealing them as part of a vast peaceful constellation — thousands of meaning-points resting in their positions across dark space, warm golden key light dominant with soft cool fill, gentle and resolved, like stars at rest",
+      "duration_s": 12,
+      "audio_note": "Music resolving — final chord progression. Voice intimate, almost whispered on the last line. 2s silence after final word before outro. SFX: none — let voice and music carry it."
+    },
+    {
+      "id": "outro",
+      "type": "title",
+      "beat": "close",
+      "dialogue": "",
+      "motion_graphic": "Remotion: constellation slowly dissolves into particle field. 'Next: How Vector Search Works' fades in with spring animation (KineticText component). 'likeone.ai' below in smaller type. Cool teal palette softening to warm amber, gentle particle overlay.",
+      "duration_s": 5,
+      "audio_note": "Music fades to silence over 3s. Single soft tone resolves. Ambient room tone holds briefly, then silence."
+    }
+  ]
+}
