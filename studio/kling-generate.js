@@ -233,35 +233,61 @@ async function generateAvatars(screenplay) {
   console.log(`\n🎭 Avatars complete: ${generated.length}/${presenterScenes.length} scenes`);
 }
 
-// ── QUICK TEST ──
+// ── QUICK TEST (V2 Engine) ──
 async function quickTest() {
-  console.log('\n🧪 KLING API QUICK TEST\n');
-  
+  console.log('\n🧪 KLING API QUICK TEST — Prompt Engine V2\n');
+
+  // Test scene + screenplay matching the V2 Visual Bible
+  const testScreenplay = {
+    title: 'V2 Engine Test',
+    course: 'ai-foundations',
+    scenes: [],
+  };
+  const testScene = {
+    id: 'test-hook',
+    type: 'broll',
+    beat: 'hook',
+    visual: 'A single glowing neural pathway pulses with bioluminescent light, organic tissue texture, intimate macro scale',
+    duration_s: 5,
+  };
+
+  // Generate prompt via V2 engine
+  const engineResult = buildVisualPrompt(testScene, testScreenplay);
+  const check = validatePrompt(engineResult.prompt);
+
+  console.log(`  Beat:     ${engineResult.beat} (${engineResult.motionMode})`);
+  console.log(`  Duration: ${engineResult.duration}s`);
+  console.log(`  Valid:    ${check.valid ? '✅' : '❌ ' + check.violations.join(', ')}`);
+  console.log(`  Prompt:   ${engineResult.prompt.slice(0, 200)}...`);
+  console.log(`  Negative: ${engineResult.negativePrompt.slice(0, 100)}...`);
+  console.log('');
+
   try {
-    console.log('  Testing text-to-video...');
+    console.log('  Submitting to Kling V2 Master...');
     const task = await api.textToVideo({
-      prompt: 'Cinematic macro shot of glowing neural pathways, bioluminescent blue-violet, organic texture, shallow depth of field, 4K, smooth camera push-in',
+      prompt: engineResult.prompt,
+      negative_prompt: engineResult.negativePrompt,
       model_name: 'kling-v2-master',
-      duration: '5',
+      duration: engineResult.duration,
       aspect_ratio: '16:9',
       mode: 'std',
     });
-    
+
     console.log('  Response:', JSON.stringify(task, null, 2).slice(0, 500));
-    
+
     const taskId = task?.data?.task_id;
     if (taskId) {
       console.log(`\n  ✅ Task submitted: ${taskId}`);
       console.log('  ⏳ Waiting for result (5-6 min)...\n');
-      
+
       const result = await api.waitForVideoResult(taskId, api.queryTextToVideoTask.bind(api), {
         interval: 15000,
         timeout: 600000,
       });
-      
+
       const videoUrl = result?.data?.task_result?.videos?.[0]?.url;
       if (videoUrl) {
-        const testFile = path.join(BROLL_DIR, 'kling-test.mp4');
+        const testFile = path.join(BROLL_DIR, 'kling-v2-test.mp4');
         execSync(`curl -sL "${videoUrl}" -o "${testFile}"`, { timeout: 60000 });
         console.log(`  🎬 Test video saved: ${testFile}`);
         execSync(`open "${testFile}"`);
