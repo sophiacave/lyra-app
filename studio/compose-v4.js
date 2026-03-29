@@ -39,7 +39,7 @@ function slugify(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace
 // Removes -shortest (which was killing beat pauses) and uses
 // audio pad filter to maintain correct duration with silence.
 function renderScene(scene, audioFile, persona, slug, idx) {
-  const outFile = path.join(COMPOSE_TMP, `scene_${String(idx).padStart(2,'0')}_${scene.id}.mp4`);
+  const outFile = path.join(COMPOSE_TMP, `${slug}_scene_${String(idx).padStart(2,'0')}_${scene.id}.mp4`);
   if (existsSync(outFile)) { console.log(`  ⏭️  ${scene.id}: cached`); return { file: outFile, timing: null }; }
 
   const audioDur = audioFile ? dur(audioFile) : (scene.duration_s || 5);
@@ -209,60 +209,72 @@ function main() {
   const assembledDur = dur(silentVideo);
   console.log(`  ✅ Assembled: ${assembledDur.toFixed(1)}s (${segments.length} scenes)`);
   
-  // Phase 3: Sound design — 5-layer audio mix (V9 architecture)
-  console.log('\n🔊 Phase 3: Sound design (5-layer V9)...');
+  // Phase 3: Sound design — narration + music bed + room tone (inline mixing)
+  console.log('\n🔊 Phase 3: Sound design...');
   const musicBed = path.join(ASSETS, 'ambient-drone-01.wav');
   const finalVideo = path.join(VIDEO, `${slug}_v4.mp4`);
   const totalDur = dur(silentVideo);
 
-  // Extract narration from concatenated video
+  // Extract narration from assembled video
   const narrationTrack = path.join(COMPOSE_TMP, `${slug}_narration.wav`);
+  let hasNarration = false;
   try {
-    execSync(`ffmpeg -y -i "${silentVideo}" -vn -ar 48000 -ac 1 "${narrationTrack}" 2>/dev/null`, { timeout: 60000 });
+    execSync(`ffmpeg -y -i "${silentVideo}" -vn -ar 48000 -ac 2 "${narrationTrack}" 2>/dev/null`, { timeout: 60000 });
+    hasNarration = existsSync(narrationTrack) && dur(narrationTrack) > 0.5;
   } catch { /* no audio track = silent */ }
 
-  // Generate SFX track (Layer 3)
-  const sfxTrack = path.join(COMPOSE_TMP, `${slug}_sfx.wav`);
-  let sfxPath = null;
-  try {
-    const sfxEvents = mapSfxToScenes(sp.scenes);
-    if (sfxEvents.length > 0) {
-      buildSfxTrack(sfxEvents, totalDur, sfxTrack);
-      sfxPath = sfxTrack;
-      console.log(`  🎵 SFX: ${sfxEvents.length} events mapped`);
-    }
-  } catch (e) { console.log(`  ⚠️  SFX generation skipped: ${e.message?.slice(0, 80)}`); }
-
-  // Generate room tone (Layer 4)
-  const roomTonePath = path.join(COMPOSE_TMP, `${slug}_roomtone.wav`);
-  let roomPath = null;
-  try {
-    generateRoomTone(totalDur, roomTonePath);
-    roomPath = roomTonePath;
-    console.log(`  🌙 Room tone generated`);
-  } catch (e) { console.log(`  ⚠️  Room tone skipped: ${e.message?.slice(0, 80)}`); }
-
-  // 5-layer mix
-  if (existsSync(narrationTrack)) {
+  if (hasNarration) {
     try {
       const masterAudio = path.join(COMPOSE_TMP, `${slug}_master.wav`);
-      mixFiveLayers({
-        narration: narrationTrack,
-        music: existsSync(musicBed) ? musicBed : null,
-        sfxTrack: sfxPath,
-        roomTone: roomPath,
-        outputPath: masterAudio,
-        durationS: totalDur,
-      });
+      const hasMusicBed = existsSync(musicBed);
+      const durCeil = Math.ceil(totalDur);
 
-      // Merge master audio with silent video
+      if (hasMusicBed) {
+        // 3-layer mix: narration + music (ducked -18dB) + room tone (pink noise -42dB)
+        const filter = [
+          `[0:a]aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo[voice]`,
+          `[1:a]aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo,volume=-18dB,atrim=0:${durCeil},apad=whole_dur=${durCeil}[music]`,
+          `anoisesrc=d=${durCeil}:c=pink:r=48000:a=0.003,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo[room]`,
+          `[voice][music][room]amix=inputs=3:duration=first:dropout_transition=3:weights=1 0.15 0.08[out]`,
+        ].join(';');
+        execSync(
+          `ffmpeg -y -i "${narrationTrack}" -i "${musicBed}" -filter_complex "${filter}" -map "[out]" -ar 48000 "${masterAudio}" 2>/dev/null`,
+          { stdio: 'pipe', timeout: 120000 }
+        );
+        console.log(`  ✅ 3-layer mix: narration + music (ducked) + room tone`);
+      } else {
+        // 2-layer: narration + room tone
+        const filter = [
+          `[0:a]aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo[voice]`,
+          `anoisesrc=d=${durCeil}:c=pink:r=48000:a=0.003,aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo[room]`,
+          `[voice][room]amix=inputs=2:duration=first:dropout_transition=3:weights=1 0.08[out]`,
+        ].join(';');
+        execSync(
+          `ffmpeg -y -i "${narrationTrack}" -filter_complex "${filter}" -map "[out]" -ar 48000 "${masterAudio}" 2>/dev/null`,
+          { stdio: 'pipe', timeout: 120000 }
+        );
+        console.log(`  ✅ 2-layer mix: narration + room tone`);
+      }
+
+      // Loudness normalize to -14 LUFS (YouTube standard)
+      const normalizedAudio = path.join(COMPOSE_TMP, `${slug}_normalized.wav`);
+      try {
+        execSync(
+          `ffmpeg -y -i "${masterAudio}" -af loudnorm=I=-14:TP=-1:LRA=11:print_format=summary -ar 48000 "${normalizedAudio}" 2>/dev/null`,
+          { stdio: 'pipe', timeout: 120000 }
+        );
+        execSync(`mv "${normalizedAudio}" "${masterAudio}"`);
+        console.log(`  ✅ Loudness normalized to -14 LUFS`);
+      } catch { console.log(`  ⚠️  Normalization skipped`); }
+
+      // Merge master audio with video
       execSync(
         `ffmpeg -y -i "${silentVideo}" -i "${masterAudio}" -map 0:v -map 1:a -c:v copy -c:a aac -ac 2 -ar 48000 -b:a 192k -shortest "${finalVideo}" 2>/dev/null`,
         { encoding: 'utf-8', timeout: 120000 }
       );
-      console.log(`  ✅ 5-layer mix applied (narration + music + SFX + room tone + silence)`);
+      console.log(`  ✅ Audio merged with video`);
     } catch (e) {
-      console.error(`  ⚠️  5-layer mix failed, falling back to basic: ${e.message?.slice(-100)}`);
+      console.error(`  ⚠️  Mix failed, using assembled audio: ${e.message?.slice(-100)}`);
       execSync(`cp "${silentVideo}" "${finalVideo}"`);
     }
   } else {
