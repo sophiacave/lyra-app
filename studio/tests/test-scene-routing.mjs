@@ -35,7 +35,7 @@ function test(name, condition) {
 // ═══════════════════════════════════════════════════════
 
 const isComparison = (hint) => /compar|vs|versus|before.?after|split|pros?.?cons/i.test(hint);
-const isDataViz = (hint) => /data|chart|graph|metric|stat|bar|percent/i.test(hint);
+const isDataViz = (hint) => /data|chart|\bgraph\b|metric|\bstats?\b|\bbar\b|percent/i.test(hint);
 const isStepByStep = (hint) => /step|process|\bflow\b|pipeline|sequence|how.?to|stages/i.test(hint);
 
 /**
@@ -127,6 +127,18 @@ const datavizHits = [
 for (const hint of datavizHits) {
   test(`dataviz: "${hint}"`, isDataViz(hint));
 }
+
+// DataViz word-boundary regression tests
+test('dataviz: "stat breakdown"', isDataViz('stat breakdown'));
+test('dataviz: "stats panel"', isDataViz('stats panel'));
+test('NOT dataviz: "final state"', !isDataViz('final state'));
+test('NOT dataviz: "statement"', !isDataViz('statement'));
+test('dataviz: "bar chart"', isDataViz('bar chart'));
+test('NOT dataviz: "toolbar"', !isDataViz('toolbar'));
+test('NOT dataviz: "embarrass"', !isDataViz('embarrass'));
+test('dataviz: "graph view"', isDataViz('graph view'));
+test('NOT dataviz: "graphic design"', !isDataViz('graphic design'));
+test('NOT dataviz: "paragraph"', !isDataViz('paragraph'));
 
 // DataViz non-triggers
 const datavizMisses = [
@@ -429,7 +441,7 @@ if (fiveScene) {
   const fiveHint = `${fiveScene.id} ${fiveScene.visual || ''} ${fiveScene.motion_graphic || ''}`.toLowerCase();
   // motion_graphic likely has "progressive reveal" → matches "process"? "progressive" contains no exact match.
   // But check for "sequence" or other step keywords
-  test(`prompts/five-elements → ${fiveRoute}`, ['ExplainerScene', 'DataViz', 'StepByStep'].includes(fiveRoute));
+  test(`prompts/five-elements → ExplainerScene`, fiveRoute === 'ExplainerScene');
 }
 
 // ═══════════════════════════════════════════════════════

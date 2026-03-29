@@ -12,7 +12,7 @@ import { StepByStep } from "./StepByStep";
 import { ChapterCard } from "./ChapterCard";
 import { MontageScene } from "./MontageScene";
 import { OutroScene } from "./OutroScene";
-import { COLORS, BEAT_STYLES } from "../cinema-tokens";
+import { COLORS, BEAT_STYLES, VIDEO } from "../cinema-tokens";
 
 /**
  * Scene types from V9 architecture:
@@ -43,6 +43,9 @@ interface SceneData {
     style: string;
     timing: string;
   };
+  // Presenter overlay (triggers LowerThird on broll scenes)
+  presenter?: string;
+  presenterRole?: string;
   // Runtime paths (populated by pipeline before render)
   videoPath?: string;
   imagePath?: string;
@@ -144,6 +147,19 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
         {scene.narrationPath && (
           <Audio src={scene.narrationPath} volume={1} />
         )}
+
+        {/* LowerThird presenter overlay — appears first 3s when presenter data exists */}
+        {scene.presenter && (
+          <Sequence from={Math.round(fps * 0.5)} durationInFrames={Math.round(fps * 3)}>
+            <LowerThird
+              name={scene.presenter}
+              role={scene.presenterRole}
+              beat={scene.beat}
+              durationFrames={Math.round(fps * 3)}
+              fps={fps}
+            />
+          </Sequence>
+        )}
       </AbsoluteFill>
     );
   }
@@ -162,7 +178,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     // Smart diagram subtype detection from scene ID / visual / motion_graphic
     const hint = `${scene.id} ${scene.visual || ""} ${scene.motion_graphic || ""}`.toLowerCase();
     const isComparison = /compar|vs|versus|before.?after|split|pros?.?cons/i.test(hint);
-    const isDataViz = /data|chart|graph|metric|stat|bar|percent/i.test(hint);
+    const isDataViz = /data|chart|\bgraph\b|metric|\bstats?\b|\bbar\b|percent/i.test(hint);
     const isStepByStep = /step|process|\bflow\b|pipeline|sequence|how.?to|stages/i.test(hint);
 
     if (isComparison) {
