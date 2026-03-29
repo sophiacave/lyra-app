@@ -20,8 +20,9 @@ const BROLL_DIR = path.join(OUTPUT, 'broll');
 const AVATARS = path.join(STUDIO, 'avatars');
 const ASSETS = path.join(STUDIO, 'assets', 'audio');
 const COMPOSE_TMP = path.join(OUTPUT, 'compose-tmp');
+const GFX_DIR = path.join(OUTPUT, 'graphics');
 
-[VIDEO, COMPOSE_TMP].forEach(d => { if (!existsSync(d)) mkdirSync(d, { recursive: true }); });
+[VIDEO, COMPOSE_TMP, GFX_DIR].forEach(d => { if (!existsSync(d)) mkdirSync(d, { recursive: true }); });
 
 // Beat pauses + head padding now managed by editing-engine.js
 // See: getSceneTiming(), buildAudioPadFilter()
@@ -90,22 +91,40 @@ function renderScene(scene, audioFile, persona, slug, idx) {
       : `ffmpeg -y -i "${brollVideo}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
 
   } else {
-    // Fallback for all other types (broll, diagram, title, etc.)
-    // Dark atmospheric color + voiceover — works as placeholder for any scene type
-    // Visual Bible V2: void=#0B0A10, obsidian=#1A1720
-    const gradColors = {
-      hook:    '0B0A10', setup:   '0B0A15', core:    '0B0A10',
-      breathe: '0B0A10', deepen:  '0F0D18', peak:    '1A1720',
-      close:   '0B0A10', default: '0B0A10',
-    };
-    const gradColor = gradColors[scene.beat] || gradColors.default;
-    const colorDur = Math.ceil(totalDur) + 1; // +1s safety margin for filter
+    // Check for graphics engine assets (title cards, diagram placeholders)
+    const gfxTitle = path.join(GFX_DIR, `${slug}_${scene.id}.png`);
+    const gfxTitleGeneric = path.join(GFX_DIR, `${slug}_title.png`);
+    const gfxOverlay = path.join(GFX_DIR, `${slug}_${scene.id}_overlay.png`);
+    const hasGfx = existsSync(gfxTitle);
+    const hasGenericTitle = existsSync(gfxTitleGeneric);
 
-    if (audioFile) {
-      cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${colorDur}:r=30,format=yuv420p -i "${audioFile}" -filter_complex "[1:a]${audioPad}[a]" -map 0:v -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+    if (hasGfx || (scene.type === 'title' && hasGenericTitle)) {
+      // Use graphics engine PNG — title cards, diagram placeholders, outro cards
+      const gfxFile = hasGfx ? gfxTitle : gfxTitleGeneric;
+      const vf = 'scale=1920:1080:flags=lanczos,fps=30,format=yuv420p';
+
+      if (audioFile) {
+        cmd = `ffmpeg -y -loop 1 -i "${gfxFile}" -i "${audioFile}" -filter_complex "[0:v]${vf}[v];[1:a]${audioPad}[a]" -map "[v]" -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+      } else {
+        cmd = `ffmpeg -y -loop 1 -i "${gfxFile}" -f lavfi -i anullsrc=r=48000:cl=mono -filter_complex "[0:v]${vf}[v]" -map "[v]" -map 1:a -c:v libx264 -crf 18 -preset fast -c:a aac -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+      }
+
     } else {
-      // Silent audio track (required for concat/crossfade compatibility)
-      cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${colorDur}:r=30,format=yuv420p -f lavfi -i anullsrc=r=48000:cl=mono -c:v libx264 -crf 18 -preset fast -c:a aac -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+      // Fallback: dark atmospheric gradient + voiceover
+      // Visual Bible V2: void=#0B0A10, obsidian=#1A1720
+      const gradColors = {
+        hook:    '0B0A10', setup:   '0B0A15', core:    '0B0A10',
+        breathe: '0B0A10', deepen:  '0F0D18', peak:    '1A1720',
+        close:   '0B0A10', default: '0B0A10',
+      };
+      const gradColor = gradColors[scene.beat] || gradColors.default;
+      const colorDur = Math.ceil(totalDur) + 1;
+
+      if (audioFile) {
+        cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${colorDur}:r=30,format=yuv420p -i "${audioFile}" -filter_complex "[1:a]${audioPad}[a]" -map 0:v -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+      } else {
+        cmd = `ffmpeg -y -f lavfi -i color=c=0x${gradColor}:s=1920x1080:d=${colorDur}:r=30,format=yuv420p -f lavfi -i anullsrc=r=48000:cl=mono -c:v libx264 -crf 18 -preset fast -c:a aac -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+      }
     }
   }
 
@@ -154,8 +173,27 @@ function main() {
   console.log(`\n🎬 COMPOSE V4 — ${sp.title}`);
   console.log(`   Persona: ${persona} | Scenes: ${sp.scenes.length}\n`);
   
+  // Phase 0: Generate graphics (title cards, diagram placeholders, overlays)
+  console.log('🎨 Phase 0: Generating graphics...');
+  const gfxEngine = path.join(STUDIO, 'graphics-engine.py');
+  if (existsSync(gfxEngine)) {
+    try {
+      const gfxOut = execSync(
+        `python3 "${gfxEngine}" "${path.resolve(args[0])}"`,
+        { encoding: 'utf-8', timeout: 30000, cwd: ROOT }
+      );
+      // Count generated files
+      const gfxCount = (gfxOut.match(/✅/g) || []).length;
+      console.log(`  ✅ Generated ${gfxCount} graphics assets`);
+    } catch (e) {
+      console.log(`  ⚠️  Graphics generation skipped: ${e.message?.slice(-100)}`);
+    }
+  } else {
+    console.log('  ⚠️  graphics-engine.py not found, using gradient fallbacks');
+  }
+
   // Phase 1: Render individual scenes
-  console.log('📹 Phase 1: Rendering scene segments...');
+  console.log('\n📹 Phase 1: Rendering scene segments...');
   const segments = [];
   const timings = [];
 
