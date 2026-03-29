@@ -875,6 +875,156 @@ def render_step_by_step(scene, step_num=1, total_steps=1, accent_rgb=None):
     return img.convert("RGB")
 
 
+def render_quote_card(quote, attribution="", accent_rgb=None):
+    """
+    Quote card — whisper louder than the shout.
+    Typography: title2 (44pt italic feel) for quote, callout (18pt) for attribution.
+    Cosmic purple gradient bg. Oversized ghost quotation mark.
+    """
+    if accent_rgb is None:
+        accent_rgb = COLORS["gold"]
+
+    # Cosmic purple gradient (deep violet → midnight blue)
+    bg_top = (13, 2, 33)
+    bg_bot = (38, 0, 65)
+    img = gradient_bg(bg_top, bg_bot)
+    draw = ImageDraw.Draw(img)
+
+    # Ghost quotation mark — massive, nearly invisible
+    f_mark = font(200)
+    draw.text((int(W * 0.10), int(H * 0.12)), "\u201C", fill=rgb_alpha(COLORS["chalk"], 0.10), font=f_mark)
+
+    # Quote text — word-wrapped, centered
+    f_quote = font(TYPE["title2"]["size"])
+    max_text_w = W - MARGINS["content"] * 2 - 80
+    lines = wrap_text(quote, f_quote, max_text_w)
+
+    line_h = TYPE["title2"]["size"] + 12
+    total_h = len(lines) * line_h
+    y = (H - total_h) // 2 - 30
+
+    for line in lines:
+        bbox = f_quote.getbbox(line)
+        lw = bbox[2] - bbox[0]
+        draw.text(((W - lw) // 2, y), line, fill=rgb_alpha(COLORS["chalk"], 0.92), font=f_quote)
+        y += line_h
+
+    # Attribution — small, smoke
+    if attribution:
+        f_attr = font(TYPE["callout"]["size"])
+        attr_text = f"\u2014 {attribution}"
+        abbox = f_attr.getbbox(attr_text)
+        aw = abbox[2] - abbox[0]
+        draw.text(((W - aw) // 2, y + 24), attr_text, fill=rgb_alpha(COLORS["smoke"], 0.80), font=f_attr)
+
+    img = apply_cinema_post(img, 'quote', accent_rgb)
+    return img.convert("RGB")
+
+
+def render_chapter_card(number, title, accent_rgb=None):
+    """
+    Chapter card — overline number + display title.
+    Visual Bible: overline (caption, uppercase) + accent line + title (headline).
+    """
+    if accent_rgb is None:
+        accent_rgb = COLORS["gold"]
+
+    bg_top = COLORS["void"]
+    bg_bot = COLORS["obsidian"]
+    img = gradient_bg(bg_top, bg_bot)
+    draw = ImageDraw.Draw(img)
+
+    # Chapter number — overline (uppercase, tracked)
+    f_over = font(TYPE["caption"]["size"])
+    f_title = font(TYPE["headline"]["size"])
+
+    num_text = str(number).upper()
+    nbbox = f_over.getbbox(num_text)
+    nw = nbbox[2] - nbbox[0]
+    draw.text(((W - nw) // 2, int(H * 0.38)), num_text, fill=COLORS["smoke"], font=f_over)
+
+    # Accent line between number and title
+    line_y = int(H * 0.38) + (nbbox[3] - nbbox[1]) + 12
+    line_w = min(200, nw + 40)
+    accent_line(draw, line_y, accent_rgb, (W - line_w) // 2, (W + line_w) // 2, 2)
+
+    # Title — headline scale, centered
+    max_text_w = W - MARGINS["content"] * 2
+    lines = wrap_text(title, f_title, max_text_w)
+    line_h = TYPE["headline"]["size"] + 10
+    y = line_y + 20
+
+    for line in lines:
+        bbox = f_title.getbbox(line)
+        lw = bbox[2] - bbox[0]
+        draw.text(((W - lw) // 2, y), line, fill=COLORS["chalk"], font=f_title)
+        y += line_h
+
+    img = apply_cinema_post(img, 'chapter', accent_rgb)
+    return img.convert("RGB")
+
+
+def render_montage(scene, accent_rgb=None):
+    """
+    Montage card — rapid-cut visual summary.
+    Grid of tinted panels representing fragment scenes.
+    Typography: caption (15pt) label + title3 (36pt) heading.
+    Uses scene.visual or dialogue for the heading text.
+    """
+    if accent_rgb is None:
+        accent_rgb = COLORS["process"]
+
+    bg_top = COLORS["void"]
+    bg_bot = COLORS["obsidian"]
+    img = gradient_bg(bg_top, bg_bot)
+    draw = ImageDraw.Draw(img)
+
+    heading = scene.get("visual", scene.get("dialogue", "Montage"))
+    # Truncate heading if too long
+    if len(heading) > 60:
+        heading = heading[:57] + "..."
+
+    # Grid of 6 panels (2×3) — tinted accent rects suggesting rapid cuts
+    panel_margin = int(W * 0.06)
+    panel_w = (W - panel_margin * 4) // 3
+    panel_h = (H - panel_margin * 5) // 2
+    panel_top = int(H * 0.28)
+
+    for row in range(2):
+        for col in range(3):
+            x = panel_margin + col * (panel_w + panel_margin)
+            y = panel_top + row * (panel_h + panel_margin)
+            # Slight opacity variation per panel for visual rhythm
+            opacity = 0.10 + 0.03 * ((row * 3 + col) % 4)
+            fill = rgb_alpha(accent_rgb, opacity)
+            draw.rounded_rectangle([x, y, x + panel_w, y + panel_h], radius=8, fill=fill)
+            # Thin accent border
+            draw.rounded_rectangle([x, y, x + panel_w, y + panel_h], radius=8,
+                                   outline=rgb_alpha(accent_rgb, 0.25), width=1)
+
+    # Overline — "MONTAGE"
+    f_over = font(TYPE["caption"]["size"])
+    over_text = "MONTAGE"
+    obbox = f_over.getbbox(over_text)
+    ow = obbox[2] - obbox[0]
+    draw.text(((W - ow) // 2, int(H * 0.12)), over_text, fill=COLORS["smoke"], font=f_over)
+
+    # Heading — title3 scale, centered
+    f_heading = font(TYPE["title3"]["size"])
+    max_text_w = W - MARGINS["content"] * 2
+    lines = wrap_text(heading, f_heading, max_text_w)
+    line_h = TYPE["title3"]["size"] + 8
+    y = int(H * 0.16)
+    for line in lines:
+        bbox = f_heading.getbbox(line)
+        lw = bbox[2] - bbox[0]
+        draw.text(((W - lw) // 2, y), line, fill=COLORS["chalk"], font=f_heading)
+        y += line_h
+
+    img = apply_cinema_post(img, 'montage', accent_rgb)
+    return img.convert("RGB")
+
+
 def render_outro_card(title, next_lesson="", brand="likeone.ai", accent_rgb=None):
     """
     Outro card — warm dissolve-ready.
@@ -1014,6 +1164,28 @@ def process_screenplay(sp_path, scene_filter=None):
             img.save(str(out_path), "PNG")
             generated.append(str(out_path))
             print(f"  ✅ {sid}: step {step_idx}/{len(step_scenes)} → {out_path.name}")
+
+        elif stype == "quote":
+            quote_text = scene.get("dialogue", "")
+            attribution = scene.get("presenter", "")
+            img = render_quote_card(quote_text, attribution, accent)
+            img.save(str(out_path), "PNG")
+            generated.append(str(out_path))
+            print(f"  ✅ {sid}: quote card → {out_path.name}")
+
+        elif stype == "chapter":
+            chapter_num = scene.get("motion_graphic", sid)
+            chapter_title = scene.get("dialogue", scene.get("visual", sid))
+            img = render_chapter_card(chapter_num, chapter_title, accent)
+            img.save(str(out_path), "PNG")
+            generated.append(str(out_path))
+            print(f"  ✅ {sid}: chapter card → {out_path.name}")
+
+        elif stype == "montage":
+            img = render_montage(scene, accent)
+            img.save(str(out_path), "PNG")
+            generated.append(str(out_path))
+            print(f"  ✅ {sid}: montage → {out_path.name}")
 
         elif scene.get("text_overlay"):
             # Scene with text overlay

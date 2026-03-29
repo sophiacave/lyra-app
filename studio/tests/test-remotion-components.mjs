@@ -302,7 +302,98 @@ test('OutroScene uses insight color for brand', outroSrc.includes('COLORS.insigh
 test('OutroScene no hardcoded V2 colors', !outroSrc.includes('#08080D') && !outroSrc.includes('#EDE9E3'));
 
 // ════════════════════════════════════════════════════
-// 9. COMPOSITION DEFAULT PROPS VALIDATION
+// 9. SFX AUDIO INTEGRATION
+// ════════════════════════════════════════════════════
+console.log('\n── SFX Audio Integration ──');
+
+// SceneRenderer should render sfxPaths for all scene types
+test('SceneRenderer has sfxAudio variable', sceneRendererSrc.includes('const sfxAudio'));
+test('sfxAudio maps over sfxPaths', sceneRendererSrc.includes('scene.sfxPaths?.map'));
+test('sfxAudio renders Audio elements', sceneRendererSrc.includes('key={`sfx-'));
+test('sfxAudio volume is 0.6', sceneRendererSrc.includes('volume={0.6}'));
+
+// Count sfxAudio usage — should appear in all scene type branches
+const sfxCount = (sceneRendererSrc.match(/\{sfxAudio\}/g) || []).length;
+test(`sfxAudio used in all 11 render branches (found ${sfxCount})`, sfxCount >= 11);
+
+// SceneData interface should include sfxPaths
+test('SceneData has sfxPaths field', sceneRendererSrc.includes('sfxPaths?: string[]'));
+
+// ════════════════════════════════════════════════════
+// 10. WHIPPAN TRANSITION INTEGRATION
+// ════════════════════════════════════════════════════
+console.log('\n── WhipPan Transition Integration ──');
+
+// LikeOneVideo should import WhipPan
+test('LikeOneVideo imports WhipPan', likeOneVideoSrc.includes("import") && likeOneVideoSrc.includes("WhipPan"));
+
+// WhipPan beat detection constants
+test('WHIP_PAN_FRAMES defined', likeOneVideoSrc.includes('WHIP_PAN_FRAMES'));
+test('WHIP_PAN_BEATS set defined', likeOneVideoSrc.includes('WHIP_PAN_BEATS'));
+
+// Expected high-energy beat transitions
+test('WhipPan: setup→core transition', likeOneVideoSrc.includes('setup→core'));
+test('WhipPan: core→deepen transition', likeOneVideoSrc.includes('core→deepen'));
+test('WhipPan: deepen→peak transition', likeOneVideoSrc.includes('deepen→peak'));
+
+// WhipPan detection in timeline
+test('timeline detects beatTransition', likeOneVideoSrc.includes('beatTransition'));
+test('timeline detects editorial hints', likeOneVideoSrc.includes('editorialHint'));
+test('editorial regex includes whip/rapid/energy/slam', /whip\|rapid\|energy\|slam/.test(likeOneVideoSrc));
+test('timeline adds whipPan flag', likeOneVideoSrc.includes('whipPan,'));
+test('timeline adds whipDirection', likeOneVideoSrc.includes('whipDirection'));
+
+// WhipPan rendering in Sequence
+test('WhipPan adjusts Sequence start for overlap', likeOneVideoSrc.includes('startFrame - WHIP_PAN_FRAMES'));
+test('WhipPan extends Sequence duration', likeOneVideoSrc.includes('durationFrames + (scene.whipPan'));
+test('WhipPan wraps SceneRenderer', likeOneVideoSrc.includes('<WhipPan direction={scene.whipDirection}'));
+test('Non-whipPan scenes render normally', likeOneVideoSrc.includes(') : ('));
+
+// WhipPan component itself
+const whipPanSrc = readFileSync(resolve(componentsDir, 'WhipPan.tsx'), 'utf-8');
+test('WhipPan has direction prop', whipPanSrc.includes('direction'));
+test('WhipPan has durationFrames prop', whipPanSrc.includes('durationFrames'));
+test('WhipPan applies translateX', whipPanSrc.includes('translateX'));
+test('WhipPan applies blur', whipPanSrc.includes('blur'));
+test('WhipPan clamps animation', whipPanSrc.includes('extrapolateRight: "clamp"'));
+
+// ════════════════════════════════════════════════════
+// 11. COURSE THEME SUPPORT
+// ════════════════════════════════════════════════════
+console.log('\n── Course Theme Support ──');
+
+// LikeOneVideo should import COURSE_THEMES
+test('LikeOneVideo imports COURSE_THEMES', likeOneVideoSrc.includes('COURSE_THEMES'));
+
+// getDesignTokens function
+test('getDesignTokens function exists', likeOneVideoSrc.includes('function getDesignTokens'));
+test('getDesignTokens accepts colorTheme param', likeOneVideoSrc.includes('getDesignTokens(colorTheme'));
+test('getDesignTokens looks up COURSE_THEMES', likeOneVideoSrc.includes('COURSE_THEMES[colorTheme]'));
+test('getDesignTokens spreads COLORS', likeOneVideoSrc.includes('...COLORS'));
+test('getDesignTokens adds accent override', likeOneVideoSrc.includes('accent: courseTheme.accent'));
+test('getDesignTokens returns gradient', likeOneVideoSrc.includes('gradient: courseTheme?.gradient'));
+test('getDesignTokens returns mood', likeOneVideoSrc.includes('mood: courseTheme?.mood'));
+
+// Dynamic usage in component
+test('designTokens computed from screenplay', likeOneVideoSrc.includes('getDesignTokens(screenplay?.colorTheme)'));
+test('preview uses dynamic gradient', likeOneVideoSrc.includes('designTokens.gradient[0]'));
+
+// Course themes in cinema-tokens
+const courseThemes = [
+  'ai-foundations', 'how-ai-works', 'rag-vectors', 'prompt-craft',
+  'ethics-safety', 'creatives', 'business', 'claude-beginners',
+];
+for (const theme of courseThemes) {
+  test(`COURSE_THEMES has "${theme}"`, cinemaTokensSrc.includes(`"${theme}"`));
+}
+
+// Each course theme should have required fields
+test('COURSE_THEMES type has accent field', cinemaTokensSrc.includes('accent:') && cinemaTokensSrc.includes('COURSE_THEMES'));
+test('COURSE_THEMES type has mood field', cinemaTokensSrc.includes('mood:'));
+test('COURSE_THEMES type has gradient field', cinemaTokensSrc.includes('gradient:'));
+
+// ════════════════════════════════════════════════════
+// 12. COMPOSITION DEFAULT PROPS VALIDATION
 // ════════════════════════════════════════════════════
 console.log('\n── Composition Default Props ──');
 

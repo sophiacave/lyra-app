@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame, interpolate, Sequence, Audio } from "remotion";
 import { SceneRenderer } from "../components/SceneRenderer";
-import { COLORS, FONTS } from "../cinema-tokens";
+import { WhipPan } from "../components/WhipPan";
+import { COLORS, FONTS, COURSE_THEMES } from "../cinema-tokens";
 
 /**
  * Like One Studio V9 — Master Composition
@@ -65,17 +66,36 @@ interface Screenplay {
 }
 
 // Design tokens — consumed from cinema-tokens.ts (single source of truth)
-const designTokens = {
-  colors: COLORS,
-};
+// Course theme applied dynamically via screenplay.colorTheme
+function getDesignTokens(colorTheme?: string) {
+  const courseTheme = colorTheme ? COURSE_THEMES[colorTheme] : null;
+  return {
+    colors: {
+      ...COLORS,
+      // Override accent if course theme provides one
+      ...(courseTheme ? { accent: courseTheme.accent } : {}),
+    },
+    gradient: courseTheme?.gradient ?? [COLORS.void, "#1a0a2e"] as [string, string],
+    mood: courseTheme?.mood ?? "default",
+  };
+}
 
 // J-cut and L-cut frame offsets (V9: offset audio/video by 0.3-0.5s)
 const J_CUT_FRAMES = 10; // ~0.33s at 30fps — audio starts before visual
 const L_CUT_FRAMES = 8;  // ~0.27s at 30fps — audio trails after visual
 
+// WhipPan transition — energy bridge between high-energy beat changes
+const WHIP_PAN_FRAMES = 6; // 0.2s at 30fps — fast, decisive
+const WHIP_PAN_BEATS = new Set([
+  "setup→core",    // entering the meat
+  "core→deepen",   // intensifying
+  "deepen→peak",   // building to climax
+]);
+
 export const LikeOneVideo: React.FC<{ screenplay: Screenplay | null }> = ({ screenplay }) => {
   const frame = useCurrentFrame();
   const fps = 30;
+  const designTokens = getDesignTokens(screenplay?.colorTheme);
 
   // ═══════════════════════════════════════════════════
   // NO SCREENPLAY — SHOW PREVIEW CARD
@@ -83,7 +103,7 @@ export const LikeOneVideo: React.FC<{ screenplay: Screenplay | null }> = ({ scre
   if (!screenplay) {
     return (
       <AbsoluteFill style={{
-        background: "linear-gradient(135deg, #08080D 0%, #1a0a2e 100%)",
+        background: `linear-gradient(135deg, ${designTokens.gradient[0]} 0%, ${designTokens.gradient[1]} 100%)`,
         justifyContent: "center",
         alignItems: "center",
       }}>
@@ -127,12 +147,23 @@ export const LikeOneVideo: React.FC<{ screenplay: Screenplay | null }> = ({ scre
     const isFirst = index === 0;
     const isLast = index === scenes.length - 1;
 
+    // WhipPan detection: high-energy beat transitions or editorial hints
+    const prevBeat = index > 0 ? scenes[index - 1].beat : null;
+    const beatTransition = prevBeat ? `${prevBeat}→${scene.beat}` : null;
+    const editorialHint = (scene.editorial || "").toLowerCase();
+    const whipPan = !isFirst && (
+      (beatTransition !== null && WHIP_PAN_BEATS.has(beatTransition)) ||
+      /whip|rapid|energy|slam/.test(editorialHint)
+    );
+
     return {
       ...scene,
       startFrame,
       durationFrames,
       jCut: isFirst ? 0 : J_CUT_FRAMES,
       lCut: isLast ? 0 : L_CUT_FRAMES,
+      whipPan,
+      whipDirection: (index % 2 === 0 ? "left" : "right") as "left" | "right",
     };
   });
 
@@ -146,17 +177,29 @@ export const LikeOneVideo: React.FC<{ screenplay: Screenplay | null }> = ({ scre
       {timeline.map((scene, index) => (
         <Sequence
           key={scene.id}
-          from={scene.startFrame}
-          durationInFrames={scene.durationFrames}
+          from={scene.whipPan ? scene.startFrame - WHIP_PAN_FRAMES : scene.startFrame}
+          durationInFrames={scene.durationFrames + (scene.whipPan ? WHIP_PAN_FRAMES : 0)}
           name={`${scene.beat}:${scene.id}`}
         >
-          <SceneRenderer
-            scene={scene}
-            fps={fps}
-            jCutFrames={scene.jCut}
-            lCutFrames={scene.lCut}
-            designTokens={designTokens}
-          />
+          {scene.whipPan ? (
+            <WhipPan direction={scene.whipDirection} durationFrames={WHIP_PAN_FRAMES}>
+              <SceneRenderer
+                scene={scene}
+                fps={fps}
+                jCutFrames={scene.jCut}
+                lCutFrames={scene.lCut}
+                designTokens={designTokens}
+              />
+            </WhipPan>
+          ) : (
+            <SceneRenderer
+              scene={scene}
+              fps={fps}
+              jCutFrames={scene.jCut}
+              lCutFrames={scene.lCut}
+              designTokens={designTokens}
+            />
+          )}
         </Sequence>
       ))}
 

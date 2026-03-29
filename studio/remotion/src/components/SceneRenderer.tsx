@@ -83,6 +83,11 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
+  // SFX audio — shared across all scene types
+  const sfxAudio = scene.sfxPaths?.map((sfx, i) => (
+    <Audio key={`sfx-${i}`} src={sfx} volume={0.6} />
+  )) ?? null;
+
   if (scene.type === "broll") {
     return (
       <AbsoluteFill style={{ opacity }}>
@@ -171,6 +176,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
         <AbsoluteFill style={{ opacity, background: COLORS.void, justifyContent: "center", alignItems: "center" }}>
           <Video src={scene.videoPath} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
           {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
         </AbsoluteFill>
       );
     }
@@ -196,6 +202,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             fps={fps}
           />
           {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
         </AbsoluteFill>
       );
     }
@@ -209,6 +216,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             fps={fps}
           />
           {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
         </AbsoluteFill>
       );
     }
@@ -226,6 +234,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             fps={fps}
           />
           {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
         </AbsoluteFill>
       );
     }
@@ -243,6 +252,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
           fps={fps}
         />
         {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
       </AbsoluteFill>
     );
   }
@@ -267,6 +277,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             fps={fps}
           />
           {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
         </AbsoluteFill>
       );
     }
@@ -284,6 +295,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             fps={fps}
           />
           {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
         </AbsoluteFill>
       );
     }
@@ -299,6 +311,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             fps={fps}
           />
           {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
         </AbsoluteFill>
       );
     }
@@ -312,6 +325,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
           fps={fps}
         />
         {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
       </AbsoluteFill>
     );
   }
@@ -331,6 +345,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
           durationS={scene.duration_s}
         />
         {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
       </AbsoluteFill>
     );
   }
@@ -345,6 +360,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
           fps={fps}
         />
         {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+          {sfxAudio}
       </AbsoluteFill>
     );
   }
