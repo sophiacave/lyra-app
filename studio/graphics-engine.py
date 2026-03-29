@@ -128,6 +128,24 @@ RENDERING_PRESETS = {
         'letterbox': True,
         'glow': {'radius': 250, 'opacity': 0.05},
     },
+    'comparison-split': {
+        'vignette': 0.30,
+        'grain': 0.025,
+        'letterbox': False,
+        'glow': {'radius': 300, 'opacity': 0.04},
+    },
+    'data-viz': {
+        'vignette': 0.25,
+        'grain': 0.020,
+        'letterbox': False,
+        'glow': {'radius': 350, 'opacity': 0.03},
+    },
+    'step-by-step': {
+        'vignette': 0.30,
+        'grain': 0.025,
+        'letterbox': False,
+        'glow': {'radius': 280, 'opacity': 0.04},
+    },
 }
 
 # ── Font Loading ──
@@ -622,6 +640,235 @@ def render_diagram_placeholder(scene, accent_rgb=None):
     return img.convert("RGB")
 
 
+def render_comparison_split(scene, accent_rgb=None):
+    """
+    Comparison split — two-panel layout for A vs B comparisons.
+    Left panel = item A, right panel = item B, vertical divider.
+    Typography: title3 for headings, body for descriptions.
+    Mirrors renderPresets.comparisonSplit from design-tokens.js.
+    """
+    if accent_rgb is None:
+        accent_rgb = COLORS["process"]
+
+    img = gradient_bg(COLORS["void"], (15, 13, 22))
+    draw = ImageDraw.Draw(img)
+
+    margin = MARGINS["content"]
+    divider_x = W // 2
+
+    # Vertical divider line (ash, subtle)
+    div_color = rgb_alpha(COLORS["ash"], 0.5)
+    draw.line([(divider_x, margin), (divider_x, H - margin)], fill=div_color, width=2)
+
+    # Panel headings
+    f_heading = font(TYPE["title3"]["size"])
+    f_body = font(TYPE["body"]["size"])
+    body_leading = int(TYPE["body"]["size"] * TYPE["body"]["leading"])
+    max_panel_w = divider_x - margin - 48  # 48px inner padding from divider
+
+    # Extract comparison data from scene
+    left_title = scene.get("left_label", scene.get("compare_a", "Option A"))
+    right_title = scene.get("right_label", scene.get("compare_b", "Option B"))
+    left_desc = scene.get("left_text", scene.get("motion_graphic", ""))
+    right_desc = scene.get("right_text", scene.get("visual", ""))
+
+    # Left panel heading
+    y_top = margin + 40
+    bbox = f_heading.getbbox(left_title)
+    lw = bbox[2] - bbox[0]
+    draw.text((margin + (max_panel_w - lw) // 2, y_top), left_title,
+              fill=accent_rgb, font=f_heading)
+
+    # Left accent line
+    accent_line(draw, y_top + bbox[3] - bbox[1] + 12, accent_rgb,
+                margin + 20, margin + max_panel_w - 20, 2)
+
+    # Left description
+    if left_desc:
+        lines = wrap_text(left_desc, f_body, max_panel_w)[:5]
+        y = y_top + bbox[3] - bbox[1] + 30
+        for line in lines:
+            draw.text((margin + 20, y), line, fill=COLORS["smoke"], font=f_body)
+            y += body_leading
+
+    # Right panel heading
+    rx = divider_x + 48
+    bbox_r = f_heading.getbbox(right_title)
+    rw = bbox_r[2] - bbox_r[0]
+    draw.text((rx + (max_panel_w - rw) // 2, y_top), right_title,
+              fill=COLORS["chalk"], font=f_heading)
+
+    # Right accent line
+    accent_line(draw, y_top + bbox_r[3] - bbox_r[1] + 12, COLORS["chalk"],
+                rx + 20, rx + max_panel_w - 20, 2)
+
+    # Right description
+    if right_desc:
+        lines = wrap_text(right_desc, f_body, max_panel_w)[:5]
+        y = y_top + bbox_r[3] - bbox_r[1] + 30
+        for line in lines:
+            draw.text((rx + 20, y), line, fill=COLORS["smoke"], font=f_body)
+            y += body_leading
+
+    # "VS" badge at center
+    f_vs = font(TYPE["overline"]["size"])
+    vs_bbox = f_vs.getbbox("VS")
+    vs_w = vs_bbox[2] - vs_bbox[0]
+    vs_h = vs_bbox[3] - vs_bbox[1]
+    vs_y = H // 2 - vs_h // 2
+    # Circle background for VS
+    circle_r = max(vs_w, vs_h) + 16
+    draw.ellipse([divider_x - circle_r // 2, vs_y - 8,
+                  divider_x + circle_r // 2, vs_y + vs_h + 8],
+                 fill=COLORS["ash"], outline=rgb_alpha(accent_rgb, 0.4), width=1)
+    draw.text((divider_x - vs_w // 2, vs_y), "VS", fill=COLORS["chalk"], font=f_vs)
+
+    img = apply_cinema_post(img, 'comparison-split', accent_rgb)
+    return img.convert("RGB")
+
+
+def render_data_viz(scene, accent_rgb=None):
+    """
+    Data visualization placeholder — chart zone with axes and data hints.
+    Typography: title3 for heading, caption for axis labels, small for values.
+    Mirrors renderPresets.dataVisualization from design-tokens.js.
+    """
+    if accent_rgb is None:
+        accent_rgb = COLORS["process"]
+
+    img = gradient_bg(COLORS["void"], (12, 11, 18))
+    draw = ImageDraw.Draw(img)
+
+    margin = MARGINS["content"]
+
+    # Chart zone (80% width, 70% height — from renderPresets)
+    chart_x = int(W * 0.1)
+    chart_y = int(H * 0.15)
+    chart_w = int(W * 0.8)
+    chart_h = int(H * 0.7)
+    chart_right = chart_x + chart_w
+    chart_bottom = chart_y + chart_h
+
+    # Heading
+    f_heading = font(TYPE["title3"]["size"])
+    heading_text = scene.get("chart_title", scene.get("id", "Data").replace("-", " ").title())
+    bbox = f_heading.getbbox(heading_text)
+    hw = bbox[2] - bbox[0]
+    draw.text(((W - hw) // 2, chart_y - 50), heading_text, fill=COLORS["chalk"], font=f_heading)
+
+    # Axes
+    axis_color = COLORS["ash"]
+    draw.line([(chart_x, chart_y), (chart_x, chart_bottom)], fill=axis_color, width=2)  # Y-axis
+    draw.line([(chart_x, chart_bottom), (chart_right, chart_bottom)], fill=axis_color, width=2)  # X-axis
+
+    # Grid lines (subtle)
+    grid_color = rgb_alpha(COLORS["obsidian"], 0.5)
+    for i in range(1, 5):
+        gy = chart_y + int(chart_h * i / 5)
+        draw.line([(chart_x + 1, gy), (chart_right, gy)], fill=grid_color, width=1)
+
+    # Data bars (from design-tokens.js dataColors: process, signal, result, blush, insight)
+    data_colors = [COLORS["process"], COLORS["signal"], COLORS["result"],
+                   COLORS.get("blush", COLORS["alert"]), COLORS["insight"]]
+    labels = scene.get("data_labels", ["A", "B", "C", "D", "E"])
+    values = scene.get("data_values", [0.75, 0.55, 0.85, 0.40, 0.65])
+
+    num_bars = min(len(labels), len(values), len(data_colors))
+    bar_gap = 24
+    total_bar_space = chart_w - bar_gap * (num_bars + 1)
+    bar_w = total_bar_space // num_bars
+
+    f_label = font(TYPE["caption"]["size"])
+    f_value = font(TYPE["caption"]["size"])
+
+    for i in range(num_bars):
+        bx = chart_x + bar_gap * (i + 1) + bar_w * i
+        bar_h = int(chart_h * 0.85 * values[i])
+        by = chart_bottom - bar_h
+        color = data_colors[i % len(data_colors)]
+
+        # Bar with slight rounded corners effect (draw filled rectangle)
+        draw.rectangle([bx, by, bx + bar_w, chart_bottom - 1], fill=color)
+
+        # Value on top of bar
+        val_text = f"{int(values[i] * 100)}%"
+        vbbox = f_value.getbbox(val_text)
+        vw = vbbox[2] - vbbox[0]
+        draw.text((bx + (bar_w - vw) // 2, by - 22), val_text, fill=COLORS["chalk"], font=f_value)
+
+        # Label below axis
+        lbbox = f_label.getbbox(labels[i])
+        lw = lbbox[2] - lbbox[0]
+        draw.text((bx + (bar_w - lw) // 2, chart_bottom + 8), labels[i], fill=COLORS["smoke"], font=f_label)
+
+    img = apply_cinema_post(img, 'data-viz', accent_rgb)
+    return img.convert("RGB")
+
+
+def render_step_by_step(scene, step_num=1, total_steps=1, accent_rgb=None):
+    """
+    Step-by-step instructional frame — numbered step with content zone.
+    Typography: section (48pt) for step number, heading (36pt) for title, body for content.
+    Progress bar at bottom. Mirrors renderPresets.stepByStep from design-tokens.js.
+    """
+    if accent_rgb is None:
+        accent_rgb = COLORS["process"]
+
+    img = gradient_bg(COLORS["void"], (13, 12, 20))
+    draw = ImageDraw.Draw(img)
+
+    margin = MARGINS["content"]
+
+    # Step number — large, left-aligned (at 8% x, 15% y per renderPresets)
+    f_num = font(TYPE["title2"]["size"])
+    step_label = f"Step {step_num}"
+    draw.text((int(W * 0.08), int(H * 0.15)), step_label, fill=accent_rgb, font=f_num)
+
+    # Step title — below number (at 8% x, 28% y)
+    f_title = font(TYPE["title3"]["size"])
+    step_title = scene.get("step_title", scene.get("narration", "")[:60] if scene.get("narration") else scene.get("id", "Step"))
+    title_lines = wrap_text(step_title, f_title, int(W * 0.84))
+    y = int(H * 0.28)
+    title_leading = int(TYPE["title3"]["size"] * TYPE["title3"]["leading"])
+    for line in title_lines[:2]:
+        draw.text((int(W * 0.08), y), line, fill=COLORS["chalk"], font=f_title)
+        y += title_leading
+
+    # Content zone (8% x, 38% y, 84% width, 50% height)
+    f_body = font(TYPE["body"]["size"])
+    body_leading = int(TYPE["body"]["size"] * TYPE["body"]["leading"])
+    content_text = scene.get("step_content", scene.get("motion_graphic", scene.get("visual", "")))
+    if content_text:
+        content_lines = wrap_text(content_text, f_body, int(W * 0.84))
+        cy = int(H * 0.42)
+        for line in content_lines[:6]:
+            draw.text((int(W * 0.08), cy), line, fill=COLORS["smoke"], font=f_body)
+            cy += body_leading
+
+    # Progress bar at bottom (95% y, 4px height — from renderPresets)
+    bar_y = int(H * 0.95)
+    bar_h = 4
+    bar_margin = int(W * 0.08)
+    bar_total_w = W - bar_margin * 2
+    # Background bar (ash)
+    draw.rectangle([bar_margin, bar_y, bar_margin + bar_total_w, bar_y + bar_h],
+                   fill=COLORS["ash"])
+    # Fill bar (accent, proportional to step/total)
+    fill_w = int(bar_total_w * step_num / max(total_steps, 1))
+    draw.rectangle([bar_margin, bar_y, bar_margin + fill_w, bar_y + bar_h],
+                   fill=accent_rgb)
+
+    # Step indicator dots
+    f_dots = font(TYPE["caption"]["size"])
+    dots_text = f"{step_num}/{total_steps}"
+    dbbox = f_dots.getbbox(dots_text)
+    dw = dbbox[2] - dbbox[0]
+    draw.text((W - bar_margin - dw, bar_y - 20), dots_text, fill=COLORS["smoke"], font=f_dots)
+
+    img = apply_cinema_post(img, 'step-by-step', accent_rgb)
+    return img.convert("RGB")
+
+
 def render_outro_card(title, next_lesson="", brand="likeone.ai", accent_rgb=None):
     """
     Outro card — warm dissolve-ready.
@@ -740,6 +987,27 @@ def process_screenplay(sp_path, scene_filter=None):
             img.save(str(out_path), "PNG")
             generated.append(str(out_path))
             print(f"  ✅ {sid}: diagram placeholder → {out_path.name}")
+
+        elif stype == "comparison-split":
+            img = render_comparison_split(scene, accent)
+            img.save(str(out_path), "PNG")
+            generated.append(str(out_path))
+            print(f"  ✅ {sid}: comparison split → {out_path.name}")
+
+        elif stype == "data-viz":
+            img = render_data_viz(scene, accent)
+            img.save(str(out_path), "PNG")
+            generated.append(str(out_path))
+            print(f"  ✅ {sid}: data visualization → {out_path.name}")
+
+        elif stype == "step-by-step":
+            # Find step index among step-by-step scenes
+            step_scenes = [s for s in sp["scenes"] if s.get("type") == "step-by-step"]
+            step_idx = next((i for i, s in enumerate(step_scenes) if s["id"] == sid), 0) + 1
+            img = render_step_by_step(scene, step_idx, len(step_scenes), accent)
+            img.save(str(out_path), "PNG")
+            generated.append(str(out_path))
+            print(f"  ✅ {sid}: step {step_idx}/{len(step_scenes)} → {out_path.name}")
 
         elif scene.get("text_overlay"):
             # Scene with text overlay
