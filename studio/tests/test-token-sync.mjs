@@ -105,6 +105,25 @@ console.log('\n── Typography Consistency ──');
 const explainerMatch = cinemaTokensSrc.match(/explainerScene[\s\S]*?heading:\s*"(\w+)"/);
 test('explainerScene heading is title3', explainerMatch && explainerMatch[1] === 'title3');
 
+// ── Test 6: SceneRenderer imports all required components ──
+console.log('\n── Component Wiring ──');
+const sceneRendererSrc = readFileSync(
+  new URL('../remotion/src/components/SceneRenderer.tsx', import.meta.url),
+  'utf-8'
+);
+const requiredComponents = [
+  'CinematicTitle3D', 'QuoteCard', 'SectionHeader', 'ChapterCard',
+  'ExplainerScene', 'LowerThird', 'ComparisonSplit', 'DataViz', 'StepByStep',
+];
+for (const comp of requiredComponents) {
+  test(`SceneRenderer imports ${comp}`, sceneRendererSrc.includes(`import { ${comp} }`));
+}
+
+// ── Test 7: ChapterCard component exists ──
+import { existsSync } from 'fs';
+const chapterCardPath = new URL('../remotion/src/components/ChapterCard.tsx', import.meta.url);
+test('ChapterCard.tsx exists', existsSync(chapterCardPath));
+
 // ── Summary ──
 console.log('\n' + '='.repeat(50));
 console.log(`RESULTS: ${passed}/${passed + failed} passed, ${failed} failed`);
