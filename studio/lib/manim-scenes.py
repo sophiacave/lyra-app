@@ -240,10 +240,117 @@ class LayerStack(Scene):
         self.wait(remaining)
 
 
+class NetworkEmergence(Scene):
+    """Emergence: layers processing together → intelligence arises.
+    Matches the network-emergence scene — the climactic "aha" moment.
+    Shows a complete network with data flowing through, then the
+    output crystallizing into a recognizable pattern (a face/word).
+    Semantic color flow: SIGNAL → PROCESS → INSIGHT → RESULT."""
+
+    def construct(self):
+        dur = float(self.duration) if hasattr(self, 'duration') else 12.0
+        self.camera.background_color = VOID
+
+        # Build a 4-layer network (compact, centered)
+        layers = []
+        layer_sizes = [6, 8, 8, 3]
+        layer_colors = [SIGNAL, PROCESS, INSIGHT, RESULT]
+        layer_x = [-4, -1.3, 1.3, 4]
+
+        for li, (size, color, x) in enumerate(zip(layer_sizes, layer_colors, layer_x)):
+            nodes = VGroup()
+            for ni in range(size):
+                y_offset = (size - 1) / 2 * 0.5
+                node = Circle(
+                    radius=0.12, color=color,
+                    fill_opacity=0.4, stroke_width=1.5
+                )
+                node.move_to(RIGHT * x + UP * (ni * 0.5 - y_offset))
+                nodes.add(node)
+            layers.append(nodes)
+
+        # Connections between adjacent layers
+        all_connections = VGroup()
+        for li in range(len(layers) - 1):
+            conns = VGroup()
+            for n1 in layers[li]:
+                for n2 in layers[li + 1]:
+                    line = Line(
+                        n1.get_right(), n2.get_left(),
+                        stroke_width=0.3, color=BONE, stroke_opacity=0.1
+                    )
+                    conns.add(line)
+            all_connections.add(conns)
+
+        # Labels
+        layer_labels = ["Input", "Hidden 1", "Hidden 2", "Output"]
+        labels = VGroup()
+        for li, (name, color) in enumerate(zip(layer_labels, layer_colors)):
+            label = Text(name, font_size=14, color=color)
+            label.next_to(layers[li], DOWN, buff=0.5)
+            labels.add(label)
+
+        # Phase 1: Build network structure (left to right)
+        phase = dur / 6
+
+        for li, layer in enumerate(layers):
+            self.play(
+                *[FadeIn(n, scale=0.5) for n in layer],
+                run_time=phase * 0.4
+            )
+            if li < len(all_connections):
+                self.play(FadeIn(all_connections[li], lag_ratio=0.01), run_time=phase * 0.3)
+
+        self.play(*[FadeIn(l, shift=UP * 0.1) for l in labels], run_time=phase * 0.3)
+
+        # Phase 2: Data pulse flows through (animated highlights)
+        # Simulate activation: light up nodes layer by layer
+        for pulse in range(2):
+            for li, layer in enumerate(layers):
+                highlights = VGroup()
+                for node in layer:
+                    glow = Circle(
+                        radius=0.18, color=layer_colors[li],
+                        fill_opacity=0.6, stroke_width=0
+                    ).move_to(node)
+                    highlights.add(glow)
+                self.play(
+                    *[FadeIn(h, scale=0.8) for h in highlights],
+                    run_time=phase * 0.25
+                )
+                self.play(
+                    *[FadeOut(h) for h in highlights],
+                    run_time=phase * 0.15
+                )
+
+        # Phase 3: Emergence — output nodes glow brightly
+        output_glow = VGroup()
+        for node in layers[-1]:
+            glow = Circle(
+                radius=0.25, color=RESULT,
+                fill_opacity=0.8, stroke_width=2
+            ).move_to(node)
+            output_glow.add(glow)
+
+        emergence_label = Text(
+            "Intelligence emerges", font_size=24, color=GOLD
+        ).next_to(layers[-1], RIGHT, buff=0.6)
+
+        self.play(
+            *[Transform(layers[-1][i], output_glow[i]) for i in range(len(layers[-1]))],
+            run_time=phase * 0.6
+        )
+        self.play(FadeIn(emergence_label, shift=RIGHT * 0.3), run_time=phase * 0.4)
+
+        remaining = max(0.5, dur - self.renderer.time)
+        self.wait(remaining)
+
+
 # Scene registry
 SCENES = {
     'neuron-diagram': NeuronDiagram,
     'layer-stack': LayerStack,
+    'network-emergence': NetworkEmergence,
 }
 
 if __name__ == '__main__':

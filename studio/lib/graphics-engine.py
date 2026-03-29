@@ -82,6 +82,47 @@ PRESET_VIGNETTE = {
     'lower-third':    0.0,
 }
 
+# Full RENDERING_PRESETS — mirrors RENDERING_PRESETS in design-tokens.js
+# Each preset: vignette, grain, letterbox, glow (radius + opacity + color)
+RENDERING_PRESETS = {
+    'title': {
+        'vignette': 0.50,
+        'grain': 0.035,
+        'letterbox': True,
+        'glow': {'radius': 300, 'opacity': 0.06, 'color': GOLD},
+    },
+    'section-header': {
+        'vignette': 0.45,
+        'grain': 0.030,
+        'letterbox': True,
+        'glow': {'radius': 200, 'opacity': 0.05, 'color': GOLD},
+    },
+    'quote': {
+        'vignette': 0.45,
+        'grain': 0.040,
+        'letterbox': True,
+        'glow': {'radius': 250, 'opacity': 0.05, 'color': INSIGHT},
+    },
+    'chapter': {
+        'vignette': 0.40,
+        'grain': 0.030,
+        'letterbox': True,
+        'glow': {'radius': 180, 'opacity': 0.04, 'color': GOLD},
+    },
+    'text-overlay': {
+        'vignette': 0.30,
+        'grain': 0.025,
+        'letterbox': False,
+        'glow': {'radius': 350, 'opacity': 0.04, 'color': PROCESS},
+    },
+    'lower-third': {
+        'vignette': 0.0,
+        'grain': 0.0,
+        'letterbox': False,
+        'glow': {'radius': 0, 'opacity': 0, 'color': CHALK},
+    },
+}
+
 # ═══════════════════════════════════════════════════
 # FONT SYSTEM V3
 # ═══════════════════════════════════════════════════
@@ -183,9 +224,124 @@ def vignette(img, strength=0.4):
         factor = factor[:, :, np.newaxis]
         arr[:, :, :3] *= factor
         arr = np.clip(arr, 0, 255).astype(np.uint8)
-        return Image.fromarray(arr, img.mode)
+        return Image.fromarray(arr)
     except ImportError:
         return img
+
+
+def film_grain(img, intensity=0.035):
+    """Apply subtle film grain overlay. Cinema texture, not noise.
+    Intensity maps to RENDERING_PRESETS grain values (0.025-0.04).
+    Uses Gaussian noise blended at low opacity for organic feel."""
+    if intensity <= 0:
+        return img
+    try:
+        import numpy as np
+        arr = np.array(img, dtype=np.float32)
+        h, w = arr.shape[:2]
+        # Gaussian noise centered on 0, scaled by intensity * 255
+        noise = np.random.normal(0, intensity * 255, (h, w, 1))
+        # Apply to RGB channels only (preserve alpha)
+        arr[:, :, :3] += noise
+        arr = np.clip(arr, 0, 255).astype(np.uint8)
+        return Image.fromarray(arr)
+    except ImportError:
+        return img
+
+
+def letterbox(img, aspect=2.39):
+    """Apply cinematic letterbox bars (2.39:1 anamorphic by default).
+    Fills top/bottom bars with obsidian (#1A1720) for warm darkness.
+    Used by titleCardCinematic, quoteCard, sectionHeader, chapterCard presets."""
+    target_h = int(img.width / aspect)
+    if target_h >= img.height:
+        return img  # Already wider than target aspect
+    bar_h = (img.height - target_h) // 2
+    draw = ImageDraw.Draw(img)
+    bar_color = OBSIDIAN + (255,) if img.mode == 'RGBA' else OBSIDIAN
+    draw.rectangle([0, 0, img.width, bar_h], fill=bar_color)
+    draw.rectangle([0, img.height - bar_h, img.width, img.height], fill=bar_color)
+    return img
+
+
+def ambient_glow(img, color, radius=300, opacity=0.06):
+    """Apply a subtle center-weighted ambient glow. Candlelight atmosphere.
+    Maps to RENDERING_PRESETS glow: { radius, opacity } values."""
+    if opacity <= 0:
+        return img
+    try:
+        import numpy as np
+        arr = np.array(img, dtype=np.float32)
+        h, w = arr.shape[:2]
+        cx, cy = w / 2, h / 2
+        y_coords, x_coords = np.mgrid[0:h, 0:w]
+        dist = np.sqrt((x_coords - cx)**2 + (y_coords - cy)**2)
+        # Gaussian falloff from center
+        glow_mask = np.exp(-(dist**2) / (2 * (radius**2)))
+        glow_mask *= opacity
+        glow_layer = np.zeros_like(arr[:, :, :3])
+        glow_layer[:, :, 0] = color[0]
+        glow_layer[:, :, 1] = color[1]
+        glow_layer[:, :, 2] = color[2]
+        arr[:, :, :3] += glow_layer * glow_mask[:, :, np.newaxis]
+        arr = np.clip(arr, 0, 255).astype(np.uint8)
+        return Image.fromarray(arr)
+    except ImportError:
+        return img
+
+
+def apply_cinema_post(img, preset_name, beat=None):
+    """Apply full cinema post-processing chain from RENDERING_PRESETS.
+    Order: ambient glow → vignette → film grain → letterbox.
+    This is the single function that turns a flat render into cinema."""
+    preset = RENDERING_PRESETS.get(preset_name, {})
+    if not preset:
+        return img
+
+    # 1. Ambient glow (warm candlelight atmosphere)
+    glow = preset.get('glow', {})
+    if glow.get('opacity', 0) > 0:
+        glow_color = glow.get('color', GOLD)
+        # Beat-specific glow color override
+        if beat and beat in BEAT_ACCENTS:
+            glow_color = BEAT_ACCENTS[beat]
+        img = ambient_glow(img, glow_color, glow.get('radius', 200), glow.get('opacity', 0.04))
+
+    # 2. Vignette (McQueen drama)
+    vig = preset.get('vignette', 0)
+    if vig > 0:
+        img = vignette(img, vig)
+
+    # 3. Film grain (cinema texture)
+    grain_val = preset.get('grain', 0)
+    if grain_val > 0:
+        img = film_grain(img, grain_val)
+
+    # 4. Letterbox (2.39:1 anamorphic bars)
+    if preset.get('letterbox', False):
+        img = letterbox(img)
+
+    # 5. Warm floor — ensure no pixel decays below void warmth.
+    # Vignette + grain can push corners to pure black, which the QA gate
+    # rightfully rejects. This preserves the aubergine-black character.
+    try:
+        import numpy as np
+        arr = np.array(img, dtype=np.float32)
+        # Only apply to opaque pixels (skip transparent overlays)
+        if img.mode == 'RGBA':
+            opaque = arr[:, :, 3] > 128
+            for c in range(3):
+                channel = arr[:, :, c]
+                channel[opaque] = np.maximum(channel[opaque], VOID[c] * 0.6)
+                arr[:, :, c] = channel
+        else:
+            for c in range(3):
+                arr[:, :, c] = np.maximum(arr[:, :, c], VOID[c] * 0.6)
+        img = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
+    except ImportError:
+        pass
+
+    return img
 
 
 def text_bbox_size(draw, text, font):
@@ -221,7 +377,6 @@ def render_title(title, subtitle, output_path, beat='hook'):
     draw = ImageDraw.Draw(img)
 
     accent = BEAT_ACCENTS.get(beat, GOLD)
-    vig_strength = PRESET_VIGNETTE.get('title', 0.50)
 
     # Title — Outfit display, light weight (72pt = hero scale)
     title_font = load_font('display', 72)
@@ -250,7 +405,7 @@ def render_title(title, subtitle, output_path, beat='hook'):
         sy = int(H * 0.58)  # 58% vertical
         draw.text((sx, sy), subtitle, font=sub_font, fill=SMOKE + (220,))
 
-    img = vignette(img, vig_strength)
+    img = apply_cinema_post(img, 'title', beat=beat)
     img.save(output_path, 'PNG')
     return output_path
 
@@ -275,6 +430,7 @@ def render_lower_third(text, output_path):
     underline_y = y + th + 8
     draw.rectangle([x, underline_y, x + tw, underline_y + 2], fill=CHALK + (80,))
 
+    img = apply_cinema_post(img, 'lower-third')
     img.save(output_path, 'PNG')
     return output_path
 
@@ -306,6 +462,7 @@ def render_text_overlay(text, output_path):
         draw.text((x, y), line.strip(), font=font, fill=CHALK + (255,))
         y += lh + 16
 
+    img = apply_cinema_post(img, 'text-overlay')
     img.save(output_path, 'PNG')
     return output_path
 
@@ -318,7 +475,6 @@ def render_section_header(text, output_path, beat='setup'):
     draw = ImageDraw.Draw(img)
 
     accent = BEAT_ACCENTS.get(beat, GOLD)
-    vig_strength = PRESET_VIGNETTE.get('section-header', 0.45)
 
     font = load_font('display', 56)
     tw, th = text_bbox_size(draw, text, font)
@@ -332,7 +488,7 @@ def render_section_header(text, output_path, beat='setup'):
     line_w = min(tw, 400)
     draw.rectangle([center_x(line_w), ty - 24, center_x(line_w) + line_w, ty - 22], fill=accent + (130,))
 
-    img = vignette(img, vig_strength)
+    img = apply_cinema_post(img, 'section-header', beat=beat)
     img.save(output_path, 'PNG')
     return output_path
 
@@ -353,7 +509,7 @@ def render_quote(quote, attribution, output_path, beat='breathe'):
         for y in range(H):
             t = y / H
             arr[y, :] = top * (1 - t) + bot * t
-        img = Image.fromarray(arr.astype(np.uint8), 'RGBA')
+        img = Image.fromarray(arr.astype(np.uint8))
     except ImportError:
         pass
 
@@ -399,8 +555,7 @@ def render_quote(quote, attribution, output_path, beat='breathe'):
         aw, ah = text_bbox_size(draw, f'— {attribution}', attr_font)
         draw.text((center_x(aw), int(H * 0.62)), f'— {attribution}', font=attr_font, fill=SMOKE + (200,))
 
-    vig_strength = PRESET_VIGNETTE.get('quote', 0.45)
-    img = vignette(img, vig_strength)
+    img = apply_cinema_post(img, 'quote', beat=beat)
     img.save(output_path, 'PNG')
     return output_path
 
@@ -412,7 +567,6 @@ def render_chapter(number, title, output_path, beat='setup'):
     draw = ImageDraw.Draw(img)
 
     accent = BEAT_ACCENTS.get(beat, GOLD)
-    vig_strength = PRESET_VIGNETTE.get('chapter', 0.40)
 
     # Chapter number — overline style (uppercase, tracked)
     num_font = load_font('body', 16)
@@ -430,7 +584,7 @@ def render_chapter(number, title, output_path, beat='setup'):
     tw, th = text_bbox_size(draw, title, title_font)
     draw.text((center_x(tw), int(H * 0.46)), title, font=title_font, fill=CHALK + (250,))
 
-    img = vignette(img, vig_strength)
+    img = apply_cinema_post(img, 'chapter', beat=beat)
     img.save(output_path, 'PNG')
     return output_path
 
