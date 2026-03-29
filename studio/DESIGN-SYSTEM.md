@@ -360,11 +360,23 @@ Complete visual recipes per scene type. Consumed by Remotion components + graphi
 No video ships without passing ALL of these. Enforced by `qa-frame.py` and compose-v4.js Phase 4.
 
 ### Frame-Level QA (qa-frame.py)
-- Background within 15% luminance of void palette
-- Vignette present (edge < center luminance)
-- No pure black (#000) or pure white (#FFF) pixels in content area
-- Accent color count <= 2 per frame
-- Film grain detected (luma noise variance > 0)
+- **Banned colors**: <1% pixels within distance 8 of pure black/white
+- **Palette compliance**: >70% of visible pixels within tolerance 35 of approved palette
+- **Negative space**: >=30% dark pixels (target 50% — Rothko). Skipped for RGBA overlays.
+- **Color count**: <=4 dominant colors per frame (Cowan's working memory limit)
+- **Contrast ratio**: WCAG AA minimum (4.5:1), AAA preferred (7.0:1)
+- **Void warmth**: Darkest pixels must be warm aubergine, not neutral black
+
+### RGBA Overlay Handling (V3 fix)
+- Transparent pixels (alpha < 10) excluded from all pixel checks
+- Prevents false positives when overlay PNGs become pure black on RGB conversion
+- Negative space check skipped entirely for overlays (background provides the space)
+- Fully transparent images auto-pass (nothing to validate)
+
+### Void Floor (V3 fix — graphics-engine.py)
+- Vignette: floor clamped at 0.25 — corners never darken below `void * 0.25 = (3,3,4)`
+- Noise: dark pixels clamped to minimum `(6,5,8)` — distance 11 from black, above banned threshold
+- Combined: vignette + noise never produces pure black, even at extreme corners
 
 ### Video-Level QC (compose-v4.js Phase 4)
 1. Duration between 60-300s (target 120-180s for 2-3 min sweet spot)
