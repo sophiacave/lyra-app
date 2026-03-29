@@ -79,7 +79,6 @@ function slugify(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace
 // ── QA Frame Gate (Design System V3 compliance) ──
 // Calls qa-frame.py to validate rendered frames against the Visual Bible.
 // Returns JSON with pass/fail, score, and detailed check results.
-const QA_FRAME = path.join(STUDIO, 'lib', 'qa-frame.py');
 
 function qaCheckImage(imagePath) {
   if (!existsSync(QA_FRAME)) return { pass: true, skipped: true };
