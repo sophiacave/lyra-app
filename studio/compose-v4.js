@@ -148,6 +148,8 @@ function main() {
   const sp = JSON.parse(readFileSync(path.resolve(args[0]), 'utf-8'));
   const slug = slugify(sp.title);
   const persona = sp.persona || 'faye';
+  // Use screenplay version for output naming (v5 screenplay → _v5.mp4)
+  const spVersion = sp.version ? `v${sp.version.split('.')[0]}` : 'v4';
   
   console.log(`\n🎬 COMPOSE V4 — ${sp.title}`);
   console.log(`   Persona: ${persona} | Scenes: ${sp.scenes.length}\n`);
@@ -184,7 +186,7 @@ function main() {
 
   // Phase 2: Assemble with crossfade transitions
   console.log('\n🔗 Phase 2: Crossfade assembly...');
-  const silentVideo = path.join(COMPOSE_TMP, `${slug}_v4_silent.mp4`);
+  const silentVideo = path.join(COMPOSE_TMP, `${slug}_${spVersion}_silent.mp4`);
 
   // Try crossfade assembly first (PhD editing quality)
   let assembled = assembleCrossfade(segments, sp.scenes, silentVideo);
@@ -212,7 +214,7 @@ function main() {
   // Phase 3: Sound design — narration + music bed + room tone (inline mixing)
   console.log('\n🔊 Phase 3: Sound design...');
   const musicBed = path.join(ASSETS, 'ambient-drone-01.wav');
-  const finalVideo = path.join(VIDEO, `${slug}_v4.mp4`);
+  const finalVideo = path.join(VIDEO, `${slug}_${spVersion}.mp4`);
   const totalDur = dur(silentVideo);
 
   // Extract narration from assembled video
