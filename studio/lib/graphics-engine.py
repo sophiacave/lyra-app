@@ -49,6 +49,40 @@ W, H = 1920, 1080
 SAFE_MARGIN = 96             # Title-safe area
 
 # ═══════════════════════════════════════════════════
+# RENDERING PRESETS — Beat-specific visual recipes
+# Mirrors renderingPresets in design-system-cinema.json
+# ═══════════════════════════════════════════════════
+
+BEAT_ACCENTS = {
+    'hook':    SIGNAL,
+    'setup':   PROCESS,
+    'core':    RESULT,
+    'breathe': INSIGHT,
+    'deepen':  PROCESS,
+    'peak':    GOLD,
+    'close':   BLUSH,
+}
+
+BEAT_VIGNETTE = {
+    'hook':    0.30,
+    'setup':   0.35,
+    'core':    0.25,
+    'breathe': 0.45,
+    'deepen':  0.30,
+    'peak':    0.20,
+    'close':   0.45,
+}
+
+PRESET_VIGNETTE = {
+    'title':          0.50,
+    'section-header': 0.45,
+    'quote':          0.45,
+    'chapter':        0.40,
+    'text-overlay':   0.30,
+    'lower-third':    0.0,
+}
+
+# ═══════════════════════════════════════════════════
 # FONT SYSTEM V3
 # ═══════════════════════════════════════════════════
 
@@ -178,13 +212,16 @@ def draw_glow(draw, x, y, text, font, color, radius=2, alpha=25):
 # RENDERERS
 # ═══════════════════════════════════════════════════
 
-def render_title(title, subtitle, output_path):
+def render_title(title, subtitle, output_path, beat='hook'):
     """Cinema title card. Outfit display + Inter subtitle.
     McQueen restraint: one devastating title, minimal decoration.
-    Rothko: void canvas with warm gold accent.
+    Rothko: void canvas with beat-specific accent.
     Composition: center-weighted, generous negative space."""
     img = Image.new('RGBA', (W, H), VOID + (255,))
     draw = ImageDraw.Draw(img)
+
+    accent = BEAT_ACCENTS.get(beat, GOLD)
+    vig_strength = PRESET_VIGNETTE.get('title', 0.50)
 
     # Title — Outfit display, light weight (72pt = hero scale)
     title_font = load_font('display', 72)
@@ -192,18 +229,18 @@ def render_title(title, subtitle, output_path):
     tx = center_x(tw)
     ty = int(H * 0.42) - th // 2  # 42% vertical — golden ratio zone
 
-    # Subtle gold glow (barely there — candle, not spotlight)
+    # Subtle accent glow (barely there — candle, not spotlight)
     glow_font = load_font('display', 74)
-    draw_glow(draw, tx, ty, title, glow_font, GOLD, radius=2, alpha=25)
+    draw_glow(draw, tx, ty, title, glow_font, accent, radius=2, alpha=25)
 
     # Title text — chalk on void
     draw.text((tx, ty), title, font=title_font, fill=CHALK + (255,))
 
-    # Accent line — bone, thin, restrained (McQueen: one devastating accent)
+    # Accent line — uses beat accent color, thin, restrained
     line_w = min(tw + 40, 600)
     line_x = center_x(line_w)
     line_y = ty + th + 16
-    draw.rectangle([line_x, line_y, line_x + line_w, line_y + 2], fill=BONE + (100,))
+    draw.rectangle([line_x, line_y, line_x + line_w, line_y + 2], fill=accent + (100,))
 
     # Subtitle — Inter body, smoke color (whisper, not shout)
     if subtitle:
@@ -213,7 +250,7 @@ def render_title(title, subtitle, output_path):
         sy = int(H * 0.58)  # 58% vertical
         draw.text((sx, sy), subtitle, font=sub_font, fill=SMOKE + (220,))
 
-    img = vignette(img, 0.35)
+    img = vignette(img, vig_strength)
     img.save(output_path, 'PNG')
     return output_path
 
@@ -273,12 +310,15 @@ def render_text_overlay(text, output_path):
     return output_path
 
 
-def render_section_header(text, output_path):
+def render_section_header(text, output_path, beat='setup'):
     """Section header card. Obsidian bg (not void — subtle contrast).
-    Outfit display at 56pt. Gold accent line above.
+    Outfit display at 56pt. Beat-specific accent line above.
     The McQueen moment: one word, devastating."""
     img = Image.new('RGBA', (W, H), OBSIDIAN + (255,))
     draw = ImageDraw.Draw(img)
+
+    accent = BEAT_ACCENTS.get(beat, GOLD)
+    vig_strength = PRESET_VIGNETTE.get('section-header', 0.45)
 
     font = load_font('display', 56)
     tw, th = text_bbox_size(draw, text, font)
@@ -288,16 +328,16 @@ def render_section_header(text, output_path):
     # Title text — chalk
     draw.text((tx, ty), text, font=font, fill=CHALK + (240,))
 
-    # Gold accent line above — thin, restrained
+    # Accent line above — thin, restrained, beat-colored
     line_w = min(tw, 400)
-    draw.rectangle([center_x(line_w), ty - 24, center_x(line_w) + line_w, ty - 22], fill=GOLD + (130,))
+    draw.rectangle([center_x(line_w), ty - 24, center_x(line_w) + line_w, ty - 22], fill=accent + (130,))
 
-    img = vignette(img, 0.30)
+    img = vignette(img, vig_strength)
     img.save(output_path, 'PNG')
     return output_path
 
 
-def render_quote(quote, attribution, output_path):
+def render_quote(quote, attribution, output_path, beat='breathe'):
     """Quote card. Cormorant Garamond italic for the quote.
     Cosmic purple gradient bg (if numpy available), else void.
     Visual Bible: the whisper is louder than the shout."""
@@ -359,16 +399,20 @@ def render_quote(quote, attribution, output_path):
         aw, ah = text_bbox_size(draw, f'— {attribution}', attr_font)
         draw.text((center_x(aw), int(H * 0.62)), f'— {attribution}', font=attr_font, fill=SMOKE + (200,))
 
-    img = vignette(img, 0.45)
+    vig_strength = PRESET_VIGNETTE.get('quote', 0.45)
+    img = vignette(img, vig_strength)
     img.save(output_path, 'PNG')
     return output_path
 
 
-def render_chapter(number, title, output_path):
+def render_chapter(number, title, output_path, beat='setup'):
     """Chapter card. Overline number + display title.
     Visual Bible pattern: overline (14pt uppercase) + section title (48pt)."""
     img = Image.new('RGBA', (W, H), VOID + (255,))
     draw = ImageDraw.Draw(img)
+
+    accent = BEAT_ACCENTS.get(beat, GOLD)
+    vig_strength = PRESET_VIGNETTE.get('chapter', 0.40)
 
     # Chapter number — overline style (uppercase, tracked)
     num_font = load_font('body', 16)
@@ -376,12 +420,17 @@ def render_chapter(number, title, output_path):
     nw, nh = text_bbox_size(draw, num_text, num_font)
     draw.text((center_x(nw), int(H * 0.38)), num_text, font=num_font, fill=SMOKE + (180,))
 
+    # Gold accent line between number and title
+    line_w = min(200, nw + 40)
+    line_y = int(H * 0.38) + nh + 12
+    draw.rectangle([center_x(line_w), line_y, center_x(line_w) + line_w, line_y + 1], fill=accent + (80,))
+
     # Title — Outfit display
     title_font = load_font('display', 48)
     tw, th = text_bbox_size(draw, title, title_font)
     draw.text((center_x(tw), int(H * 0.46)), title, font=title_font, fill=CHALK + (250,))
 
-    img = vignette(img, 0.30)
+    img = vignette(img, vig_strength)
     img.save(output_path, 'PNG')
     return output_path
 

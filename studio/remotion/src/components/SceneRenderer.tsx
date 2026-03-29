@@ -2,13 +2,24 @@ import { AbsoluteFill, useCurrentFrame, interpolate, Audio, Video, Img, Sequence
 import { LivingFrame } from "./LivingFrame";
 import { KineticText } from "./KineticText";
 import { CinematicTitle3D } from "./CinematicTitle3D";
+import { QuoteCard } from "./QuoteCard";
+import { SectionHeader } from "./SectionHeader";
+import { ExplainerScene } from "./ExplainerScene";
+import { LowerThird } from "./LowerThird";
+import { COLORS, BEAT_STYLES } from "../cinema-tokens";
 
 /**
  * Scene types from V9 architecture:
  * - broll: AI-generated video/image with LivingFrame treatment
  * - diagram: Motion graphic (Manim/Remotion animated diagrams)
- * - title: End cards, chapter breaks
+ * - title: End cards, chapter breaks (CinematicTitle3D or QuoteCard)
  * - montage: Rapid-cut sequence (multiple shots)
+ *
+ * Beat-specific rendering:
+ * - breathe + title → QuoteCard (gentle, contemplative)
+ * - setup + title → SectionHeader (chapter transition)
+ * - diagram (no video) → ExplainerScene (animated key points)
+ * - All scenes can overlay LowerThird for presenter identification
  */
 
 interface SceneData {
@@ -43,17 +54,6 @@ interface SceneRendererProps {
   lCutFrames?: number;
   designTokens: any;
 }
-
-// Beat → visual treatment mapping
-const BEAT_STYLES: Record<string, { grainIntensity: number; vignette: number; colorShift: boolean }> = {
-  hook:    { grainIntensity: 0.02, vignette: 0.25, colorShift: false },
-  setup:   { grainIntensity: 0.03, vignette: 0.30, colorShift: true },
-  core:    { grainIntensity: 0.02, vignette: 0.20, colorShift: false },
-  breathe: { grainIntensity: 0.04, vignette: 0.35, colorShift: true },
-  deepen:  { grainIntensity: 0.03, vignette: 0.25, colorShift: true },
-  peak:    { grainIntensity: 0.02, vignette: 0.15, colorShift: false },
-  close:   { grainIntensity: 0.04, vignette: 0.40, colorShift: true },
-};
 
 export const SceneRenderer: React.FC<SceneRendererProps> = ({
   scene,
@@ -146,7 +146,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     return (
       <AbsoluteFill style={{
         opacity,
-        background: designTokens?.colors?.void || '#08080D',
+        background: COLORS.void,
         justifyContent: "center",
         alignItems: "center",
       }}>
@@ -154,21 +154,16 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
         {scene.videoPath ? (
           <Video src={scene.videoPath} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
         ) : (
-          /* Placeholder with diagram description */
-          <div style={{
-            color: designTokens?.colors?.process || '#7EB8DA',
-            fontSize: 20,
-            fontFamily: "JetBrains Mono, monospace",
-            textAlign: "center",
-            maxWidth: 800,
-            lineHeight: 1.6,
-            padding: 40,
-            border: `1px solid ${designTokens?.colors?.ash || '#2A2A32'}`,
-            borderRadius: 8,
-          }}>
-            <div style={{ fontSize: 12, opacity: 0.5, marginBottom: 12 }}>DIAGRAM — {scene.id}</div>
-            {scene.motion_graphic || scene.visual || "Motion graphic placeholder"}
-          </div>
+          /* ExplainerScene fallback — animated key points from dialogue */
+          <ExplainerScene
+            heading={scene.motion_graphic || scene.visual || scene.id}
+            points={scene.dialogue
+              ? scene.dialogue.split(/[.!?]+/).filter(s => s.trim().length > 5).map(s => s.trim())
+              : ["Content loading..."]}
+            beat={scene.beat}
+            label={scene.id.toUpperCase().replace(/-/g, " ")}
+            fps={fps}
+          />
         )}
 
         {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
@@ -177,6 +172,43 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   }
 
   if (scene.type === "title") {
+    // Beat-specific title rendering:
+    // - breathe/close → QuoteCard (contemplative, Cormorant Garamond)
+    // - setup with "chapter" in ID → SectionHeader (chapter transition)
+    // - everything else → CinematicTitle3D (dramatic 3D scene)
+    const isQuote = scene.beat === "breathe" || scene.beat === "close";
+    const isSection = scene.beat === "setup" && /chapter|section|part/i.test(scene.id);
+
+    if (isQuote) {
+      return (
+        <AbsoluteFill style={{ opacity }}>
+          <QuoteCard
+            quote={scene.dialogue || scene.id}
+            attribution={scene.text_overlay?.text}
+            beat={scene.beat}
+            fps={fps}
+          />
+          {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+        </AbsoluteFill>
+      );
+    }
+
+    if (isSection) {
+      // Extract chapter number from ID (e.g., "chapter-1" → "Chapter 1")
+      const overline = scene.text_overlay?.text || scene.id.replace(/-/g, " ");
+      return (
+        <AbsoluteFill style={{ opacity }}>
+          <SectionHeader
+            overline={overline}
+            title={scene.dialogue || scene.id}
+            beat={scene.beat}
+            fps={fps}
+          />
+          {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+        </AbsoluteFill>
+      );
+    }
+
     return (
       <AbsoluteFill style={{ opacity }}>
         <CinematicTitle3D
