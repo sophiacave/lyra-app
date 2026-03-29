@@ -60,7 +60,7 @@ class NeuronDiagram(Scene):
         # Summation node (center) — PROCESS = transformation
         sigma = Circle(radius=0.5, color=PROCESS, stroke_width=3)
         sigma.move_to(LEFT * 1.5)
-        sigma_text = MathTex(r"\Sigma", font_size=36, color=CHALK).move_to(sigma)
+        sigma_text = Text("Σ", font_size=36, color=CHALK).move_to(sigma)
         sigma_group = VGroup(sigma, sigma_text)
 
         # Connections: inputs → sigma
@@ -168,15 +168,18 @@ class LayerStack(Scene):
         dur = float(self.duration) if hasattr(self, 'duration') else 10.0
         self.camera.background_color = VOID
 
+        # Proportional timing: 5 phases that scale to requested duration
+        phase = dur / 5
+
         # Phase 1: Single node
         single = Circle(radius=0.15, color=SIGNAL, fill_opacity=0.6, stroke_width=1)
         single_label = Text("One neuron", font_size=20, color=CHALK).next_to(single, DOWN, buff=0.3)
 
-        self.play(FadeIn(single, scale=0.5), FadeIn(single_label), run_time=1.0)
-        self.wait(0.5)
+        self.play(FadeIn(single, scale=0.5), FadeIn(single_label), run_time=phase * 0.6)
+        self.wait(phase * 0.3)
 
         # Phase 2: Multiply into a row
-        self.play(FadeOut(single_label), run_time=0.3)
+        self.play(FadeOut(single_label), run_time=phase * 0.2)
         row = VGroup(*[
             Circle(radius=0.1, color=SIGNAL, fill_opacity=0.5, stroke_width=1)
             for _ in range(12)
@@ -185,15 +188,15 @@ class LayerStack(Scene):
         self.play(
             Transform(single, row[6]),
             *[FadeIn(n, scale=0.3) for i, n in enumerate(row) if i != 6],
-            run_time=1.5
+            run_time=phase * 0.8
         )
 
         row_label = Text("Thousands", font_size=20, color=GOLD).next_to(row, DOWN, buff=0.3)  # gold = earned warmth
-        self.play(FadeIn(row_label), run_time=0.5)
-        self.wait(0.3)
+        self.play(FadeIn(row_label), run_time=phase * 0.3)
+        self.wait(phase * 0.2)
 
         # Phase 3: Stack into layers
-        self.play(FadeOut(row_label), FadeOut(single), run_time=0.3)
+        self.play(FadeOut(row_label), FadeOut(single), run_time=phase * 0.2)
         layers = VGroup()
         layer_colors = [SIGNAL, PROCESS, INSIGHT, RESULT]  # semantic: input → process → aha → output
         for i in range(4):
@@ -206,12 +209,12 @@ class LayerStack(Scene):
 
         self.play(
             *[TransformFromCopy(row[j], layers[0][j]) for j in range(min(10, len(row)))],
-            run_time=1.0
+            run_time=phase * 0.5
         )
         for i in range(1, 4):
             self.play(
                 *[FadeIn(n, shift=DOWN * 0.2) for n in layers[i]],
-                run_time=0.6
+                run_time=phase * 0.3
             )
 
         # Connections between layers
@@ -225,7 +228,7 @@ class LayerStack(Scene):
                     )
                     connections.add(line)
 
-        self.play(FadeIn(connections, lag_ratio=0.02), run_time=1.0)
+        self.play(FadeIn(connections, lag_ratio=0.02), run_time=phase * 0.5)
 
         # Labels
         layer_names = ["Edges", "Shapes", "Faces", "Intelligence"]
@@ -234,7 +237,7 @@ class LayerStack(Scene):
             l = Text(name, font_size=16, color=CHALK).next_to(layers[i], RIGHT, buff=0.4)
             labels.add(l)
 
-        self.play(*[FadeIn(l, shift=RIGHT * 0.2) for l in labels], run_time=0.8)
+        self.play(*[FadeIn(l, shift=RIGHT * 0.2) for l in labels], run_time=phase * 0.4)
 
         remaining = max(0.5, dur - self.renderer.time)
         self.wait(remaining)
