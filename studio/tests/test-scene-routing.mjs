@@ -36,7 +36,7 @@ function test(name, condition) {
 
 const isComparison = (hint) => /compar|vs|versus|before.?after|split|pros?.?cons/i.test(hint);
 const isDataViz = (hint) => /data|chart|graph|metric|stat|bar|percent/i.test(hint);
-const isStepByStep = (hint) => /step|process|flow|pipeline|sequence|how.?to|stages/i.test(hint);
+const isStepByStep = (hint) => /step|process|\bflow\b|pipeline|sequence|how.?to|stages/i.test(hint);
 
 /**
  * Simulate SceneRenderer's diagram routing logic.
@@ -162,6 +162,19 @@ const stepMisses = [
 for (const hint of stepMisses) {
   test(`NOT stepbystep: "${hint}"`, !isStepByStep(hint));
 }
+
+// Word boundary regression: "flowing" should NOT match \bflow\b
+const stepFalsePositives = [
+  'arrows flowing in',       // visual motion, not a flowchart
+  'data flowing through',    // narrative, not "data flow"
+  'processing power',        // "processing" still matches "process" — that's intentional
+];
+test('NOT stepbystep: "arrows flowing in"', !isStepByStep('arrows flowing in'));
+test('NOT stepbystep: "data flowing through"', !isStepByStep('data flowing through'));
+// But "data flow" SHOULD match (standalone word)
+test('stepbystep: "data flow diagram"', isStepByStep('data flow diagram'));
+test('stepbystep: "control flow"', isStepByStep('control flow'));
+test('stepbystep: "flow chart"', isStepByStep('flow chart'));
 
 // ExplainerScene fallback (matches none)
 const explainerFallbacks = [
@@ -313,7 +326,7 @@ const neuronExpected = {
   'the-secret':     'LivingFrame',      // broll/hook
   'awe-reveal':     'LivingFrame',      // broll/setup
   'hook-claim':     'LivingFrame',      // broll/setup
-  'explain-neuron': 'StepByStep',       // diagram/core — motion_graphic has "flowing" → matches /flow/ in stepbystep regex
+  'explain-neuron': 'ExplainerScene',   // diagram/core — neuron explainer (no step/process/flow keywords after \bflow\b fix)
   'simplicity':     'LivingFrame',      // broll/breathe
   'stack-layers':   'LivingFrame',      // broll/deepen
   'emergence':      'LivingFrame',      // broll/peak

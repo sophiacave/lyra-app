@@ -163,7 +163,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     const hint = `${scene.id} ${scene.visual || ""} ${scene.motion_graphic || ""}`.toLowerCase();
     const isComparison = /compar|vs|versus|before.?after|split|pros?.?cons/i.test(hint);
     const isDataViz = /data|chart|graph|metric|stat|bar|percent/i.test(hint);
-    const isStepByStep = /step|process|flow|pipeline|sequence|how.?to|stages/i.test(hint);
+    const isStepByStep = /step|process|\bflow\b|pipeline|sequence|how.?to|stages/i.test(hint);
 
     if (isComparison) {
       // Parse dialogue into left/right items (split by "vs" or sentences)
