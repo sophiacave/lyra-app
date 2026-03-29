@@ -1,14 +1,1 @@
-{
-  "theme": "ai-foundations",
-  "scenes": [
-    {
-      "id": 1,
-      "title": "Introduction",
-      "description": "An introduction to AI foundations.",
-      "duration": 30,
-      "keyframe_description": "A futuristic cityscape with AI elements like drones and holograms.",
-      "music_style": "ambient",
-      "narration_text": "Welcome to the world of AI foundations."
-    }
-  ]
-}
+{"scenes": [{"id": 1, "location": "INT. ROOM - DAY", "actions": ["John enters the room.", "John sits down."]}, {"id": 2, "location": "EXT. PARK - DAY", "actions": ["John walks in the park."]}]}
