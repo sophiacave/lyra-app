@@ -125,9 +125,11 @@ function shouldQaScene(scene) {
 // V2: Uses editing engine for proper head padding + beat pauses.
 // Removes -shortest (which was killing beat pauses) and uses
 // audio pad filter to maintain correct duration with silence.
+let FORCE_REBUILD = false;
+
 function renderScene(scene, audioFile, persona, slug, idx) {
   const outFile = path.join(COMPOSE_TMP, `${slug}_scene_${String(idx).padStart(2,'0')}_${scene.id}.mp4`);
-  if (existsSync(outFile)) { console.log(`  ⏭️  ${scene.id}: cached`); return { file: outFile, timing: null, qa: null }; }
+  if (!FORCE_REBUILD && existsSync(outFile)) { console.log(`  ⏭️  ${scene.id}: cached`); return { file: outFile, timing: null, qa: null }; }
 
   const audioDur = audioFile ? dur(audioFile) : (scene.duration_s || 5);
   const timing = getSceneTiming(scene, audioDur);
@@ -279,16 +281,19 @@ function renderScene(scene, audioFile, persona, slug, idx) {
 // ── Main composition ──
 function main() {
   const args = process.argv.slice(2);
-  if (!args[0]) { console.log('Usage: node studio/compose-v4.js <screenplay.json>'); process.exit(1); }
-  
-  const sp = JSON.parse(readFileSync(path.resolve(args[0]), 'utf-8'));
+  const forceRebuild = args.includes('--force');
+  const filteredArgs = args.filter(a => a !== '--force');
+  if (!filteredArgs[0]) { console.log('Usage: node studio/compose-v4.js <screenplay.json> [--force]'); process.exit(1); }
+
+  FORCE_REBUILD = forceRebuild;
+  const sp = JSON.parse(readFileSync(path.resolve(filteredArgs[0]), 'utf-8'));
   const slug = slugify(sp.title);
   const persona = sp.persona || 'faye';
   // Use screenplay version for output naming (v5 screenplay → _v5.mp4)
   const spVersion = sp.version ? `v${sp.version.split('.')[0]}` : 'v4';
   
   console.log(`\n🎬 COMPOSE V4 — ${sp.title}`);
-  console.log(`   Persona: ${persona} | Scenes: ${sp.scenes.length}\n`);
+  console.log(`   Persona: ${persona} | Scenes: ${sp.scenes.length}${forceRebuild ? ' | FORCE REBUILD (ignoring cache)' : ''}\n`);
   
   // Phase 0: Generate graphics (title cards, section headers, chapter cards)
   // Uses V3 Graphics Engine with QA gate — every frame checked against design system
