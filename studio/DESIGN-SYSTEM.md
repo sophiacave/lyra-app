@@ -160,13 +160,16 @@ Research-backed constants for narration speed, scene duration, and breathing rhy
 | Opening hooks | 180 | Energy, engagement |
 
 ### Breathing Gaps *(Murch: editing rhythm = inhale/exhale)*
+
+**Breathing ratio target: 15-25%** (sum of all head pads + beat pauses ÷ total duration).
+
 | Transition | Gap Duration | Visual Treatment |
 |------------|-------------|------------------|
-| Same-type scenes | 0.8s | Ambient particles at 15% opacity |
-| Different-type scenes | 1.0s | Subtle cross-dissolve |
-| After key insight | 1.5s | Rothko stillness — hold the void |
-| Before dramatic reveal | 2.0s | Silence, then flood |
-| After rhetorical question | 1.0s | Let the viewer's brain answer |
+| Same-type scenes | 1.0s | Ambient particles at 15% opacity |
+| Different-type scenes | 1.2s | Subtle cross-dissolve |
+| After key insight | 1.8s | Rothko stillness — hold the void |
+| Before dramatic reveal | 2.3s | Silence, then flood |
+| After rhetorical question | 1.2s | Let the viewer's brain answer |
 
 ### Scene Duration Formulas *(Backed by cognitive load theory)*
 | Scene Type | Formula | Min | Max |
@@ -266,15 +269,19 @@ Spring physics (Apple-style natural movement). Defined as mass/damping/stiffness
 
 Each screenplay beat type has specific visual treatment. Head/tail pauses create the Murch breathing rhythm.
 
+**Target breathing ratio: 15-25%** of total video duration. Below 15% feels rushed; above 25% feels sluggish.
+
 | Beat      | Head Pad | Tail Pause | Accent    | Visual Treatment               |
 |-----------|----------|------------|-----------|--------------------------------|
-| `hook`    | 0.15s    | 0.8s       | `signal`  | Immediate. Tight. One image.   |
-| `setup`   | 0.25s    | 0.5s       | `process` | Building. Context. Scale.      |
-| `core`    | 0.15s    | 0.3s       | `process` | Teaching. Diagrams. Clear.     |
-| `breathe` | 0.4s     | 1.5s       | `insight` | Rothko stillness. Let it land. |
-| `deepen`  | 0.25s    | 0.5s       | `process` | Layering. Complexity. Build.   |
-| `peak`    | 0.6s     | 2.0s       | `gold`    | McQueen reveal. HOLD.          |
-| `close`   | 0.4s     | 1.5s       | `insight` | The exhale. Warm. Fade.        |
+| `hook`    | 0.20s    | 1.0s       | `signal`  | Immediate. Tight. One image.   |
+| `setup`   | 0.30s    | 0.7s       | `process` | Building. Context. Scale.      |
+| `core`    | 0.25s    | 0.6s       | `process` | Teaching. Diagrams. Clear.     |
+| `breathe` | 0.50s    | 1.8s       | `insight` | Rothko stillness. Let it land. |
+| `deepen`  | 0.35s    | 0.8s       | `process` | Layering. Complexity. Build.   |
+| `peak`    | 0.70s    | 2.3s       | `gold`    | McQueen reveal. HOLD.          |
+| `close`   | 0.50s    | 1.8s       | `insight` | The exhale. Warm. Fade.        |
+
+*V3 tuning (2026-03-29): increased all pauses to achieve 15-25% target. Validated across 3 screenplays: 15.8-16.7% range.*
 
 ---
 
@@ -390,11 +397,12 @@ No video ships without passing ALL of these. Enforced by `qa-frame.py` and compo
 ### The Law *(V3 — Non-Negotiable)*
 1. Narration at 130-165 WPM (target 145)
 2. Audio normalized to -14 LUFS +/-0.5
-3. Breathing gaps between every section
+3. Breathing ratio 15-25% (head pads + beat pauses ÷ total duration)
 4. Background ambient bed ducked under narration
 5. 3+ different scene types per video
 6. No static frame longer than 4 seconds
 7. Visual lead: 3 frames before audio
+8. Peak scenes: ≥2.5s total breathing (head + tail)
 8. TTS post-processed (EQ, compression, limiting)
 9. Narrative arc (cold open -> hook -> build -> aha -> apply -> close)
 10. Quality check pass confirming all metrics

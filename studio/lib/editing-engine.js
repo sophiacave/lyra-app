@@ -13,30 +13,33 @@ import { execSync } from 'child_process';
 import { writeFileSync, existsSync } from 'fs';
 import path from 'path';
 
-// ── Visual Bible V2 Beat Pauses ──
+// ── Visual Bible V3 Beat Pauses ──
 // Seconds of silence AFTER scene narration ends.
 // Calibrated per beat type for emotional pacing.
+// Tuned for 15-25% breathing ratio (Murch principle).
+// V2→V3: increased across all beats to fix sub-15% breathing.
 const BEAT_PAUSE = {
-  hook:    0.8,   // breath-held, then release
-  setup:   0.5,   // anticipation, keep moving
-  core:    0.3,   // precise, efficient
-  breathe: 1.5,   // Rothko stillness — let the insight crystallize
-  deepen:  0.5,   // methodical, keep building
-  peak:    2.0,   // McQueen reveal — HOLD
-  close:   1.5,   // the exhale, let it land
+  hook:    1.0,   // breath-held, then release (was 0.8)
+  setup:   0.7,   // anticipation, keep moving (was 0.5)
+  core:    0.6,   // precise, but give the viewer processing time (was 0.3)
+  breathe: 1.8,   // Rothko stillness — let the insight crystallize (was 1.5)
+  deepen:  0.8,   // methodical, keep building (was 0.5)
+  peak:    2.3,   // McQueen reveal — HOLD (was 2.0)
+  close:   1.8,   // the exhale, let it land (was 1.5)
 };
 
-// ── Head Padding ──
+// ── Head Padding (V3) ──
 // Seconds of silence BEFORE scene narration starts.
 // Prevents narrators from "cutting each other off" across scenes.
+// V2→V3: subtle increases complement beat pause tuning.
 const HEAD_PAD = {
-  hook:    0.15,  // start clean but quick
-  setup:   0.25,  // brief breath
-  core:    0.15,  // efficient
-  breathe: 0.4,   // let the space open
-  deepen:  0.25,  // steady
-  peak:    0.6,   // dramatic pause before reveal
-  close:   0.4,   // gentle entry
+  hook:    0.20,  // start clean but quick (was 0.15)
+  setup:   0.30,  // brief breath (was 0.25)
+  core:    0.25,  // give the viewer a beat to refocus (was 0.15)
+  breathe: 0.50,  // let the space open (was 0.4)
+  deepen:  0.35,  // steady (was 0.25)
+  peak:    0.70,  // dramatic pause before reveal (was 0.6)
+  close:   0.50,  // gentle entry (was 0.4)
 };
 
 // ── Crossfade Durations ──
