@@ -36,6 +36,7 @@ const REQUIRED_COLORS = [
 const REQUIRED_PRESETS = [
   'titleCardCinematic', 'explainerScene', 'quoteCard',
   'sectionHeader', 'lowerThird', 'chapterCard',
+  'montageScene', 'outroScene',
 ];
 
 // ── Parse cinema-tokens.ts ──
@@ -114,6 +115,7 @@ const sceneRendererSrc = readFileSync(
 const requiredComponents = [
   'CinematicTitle3D', 'QuoteCard', 'SectionHeader', 'ChapterCard',
   'ExplainerScene', 'LowerThird', 'ComparisonSplit', 'DataViz', 'StepByStep',
+  'MontageScene', 'OutroScene',
 ];
 for (const comp of requiredComponents) {
   test(`SceneRenderer imports ${comp}`, sceneRendererSrc.includes(`import { ${comp} }`));

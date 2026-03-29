@@ -5,6 +5,12 @@ import { QuoteCard } from "./components/QuoteCard";
 import { SectionHeader } from "./components/SectionHeader";
 import { ExplainerScene } from "./components/ExplainerScene";
 import { LowerThird } from "./components/LowerThird";
+import { ComparisonSplit } from "./components/ComparisonSplit";
+import { DataViz } from "./components/DataViz";
+import { StepByStep } from "./components/StepByStep";
+import { ChapterCard } from "./components/ChapterCard";
+import { MontageScene } from "./components/MontageScene";
+import { OutroScene } from "./components/OutroScene";
 
 /**
  * Like One Studio V9 — Remotion Root
@@ -138,6 +144,113 @@ export const RemotionRoot: React.FC = () => {
           role: "AI Research Lead",
           beat: "setup",
           durationFrames: 90,
+          fps: 30,
+        }}
+      />
+
+      {/* Comparison Split — side-by-side for vs/contrast diagrams */}
+      <Composition
+        id="ComparisonSplit"
+        component={ComparisonSplit}
+        durationInFrames={30 * 8}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          heading: "Traditional vs Neural",
+          leftLabel: "Rule-Based",
+          rightLabel: "Neural Network",
+          leftItems: ["Handcrafted rules", "Brittle to edge cases", "Predictable behavior"],
+          rightItems: ["Learns from data", "Generalizes to new inputs", "Emergent behavior"],
+          beat: "core",
+          fps: 30,
+        }}
+      />
+
+      {/* Data Viz — animated bar charts for metrics/stats */}
+      <Composition
+        id="DataViz"
+        component={DataViz}
+        durationInFrames={30 * 8}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          heading: "Model Performance",
+          beat: "core",
+          fps: 30,
+        }}
+      />
+
+      {/* Step By Step — sequential process/pipeline visualization */}
+      <Composition
+        id="StepByStep"
+        component={StepByStep}
+        durationInFrames={30 * 10}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          heading: "How Training Works",
+          steps: [
+            "Forward pass through the network",
+            "Calculate the loss function",
+            "Backpropagate the gradients",
+            "Update the weights",
+          ],
+          beat: "core",
+          fps: 30,
+        }}
+      />
+
+      {/* Chapter Card — numbered chapter transitions */}
+      <Composition
+        id="ChapterCard"
+        component={ChapterCard}
+        durationInFrames={30 * 5}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          number: "Chapter 1",
+          title: "The Artificial Neuron",
+          beat: "setup",
+          fps: 30,
+        }}
+      />
+      {/* Montage Scene — rapid-cut sequence of multiple shots */}
+      <Composition
+        id="MontageScene"
+        component={MontageScene}
+        durationInFrames={30 * 8}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          fragments: [
+            "Neurons firing in parallel",
+            "Weights adjusting with each pass",
+            "Patterns emerging from chaos",
+            "Intelligence from simplicity",
+          ],
+          beat: "peak",
+          fps: 30,
+          durationS: 8,
+        }}
+      />
+
+      {/* Outro Scene — end card with brand + CTA */}
+      <Composition
+        id="OutroScene"
+        component={OutroScene}
+        durationInFrames={30 * 5}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          heading: "Keep learning.",
+          subtext: "likeone.ai",
+          beat: "close",
           fps: 30,
         }}
       />

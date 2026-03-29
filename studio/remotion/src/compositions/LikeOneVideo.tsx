@@ -1,5 +1,6 @@
 import { AbsoluteFill, useCurrentFrame, interpolate, Sequence, Audio } from "remotion";
 import { SceneRenderer } from "../components/SceneRenderer";
+import { COLORS, FONTS } from "../cinema-tokens";
 
 /**
  * Like One Studio V9 — Master Composition
@@ -60,23 +61,9 @@ interface Screenplay {
   ambiencePath?: string;
 }
 
-// Design tokens — Visual Bible V2 Rothko Palette
+// Design tokens — consumed from cinema-tokens.ts (single source of truth)
 const designTokens = {
-  colors: {
-    void:     '#0B0A10',  // Deep aubergine-black. NEVER pure #000.
-    chalk:    '#F0EBE3',  // Bone white. NEVER pure #FFF.
-    smoke:    '#8A8490',  // Mauve gray. Feminine neutral.
-    ash:      '#2D2A33',  // Warm charcoal.
-    signal:   '#D4956B',  // Terracotta. INPUT / DATA.
-    process:  '#8BAFC4',  // Dusty blue. PROCESS / THINKING.
-    result:   '#8CB89E',  // Sage. OUTPUT / GROWTH.
-    alert:    '#C4616A',  // Muted rose. ATTENTION.
-    insight:  '#B898C8',  // Wisteria. THE AHA.
-    bone:     '#E8DDD0',  // Skeletal elegance.
-    obsidian: '#1A1720',  // Deepest shadow.
-    blush:    '#D4A0A0',  // Muted rose. Feminine touch.
-    gold:     '#C4A86C',  // Earned warmth. Sparingly.
-  },
+  colors: COLORS,
 };
 
 // J-cut and L-cut frame offsets (V9: offset audio/video by 0.3-0.5s)
@@ -100,7 +87,7 @@ export const LikeOneVideo: React.FC<{ screenplay: Screenplay | null }> = ({ scre
         <div style={{
           color: "#EDE9E3",
           fontSize: 48,
-          fontFamily: "Satoshi, General Sans, Inter, system-ui",
+          fontFamily: FONTS.display,
           fontWeight: 300,
           letterSpacing: -1,
           opacity: interpolate(frame, [0, 30], [0, 1], { extrapolateRight: "clamp" }),
@@ -110,7 +97,7 @@ export const LikeOneVideo: React.FC<{ screenplay: Screenplay | null }> = ({ scre
         <div style={{
           color: "rgba(237,233,227,0.4)",
           fontSize: 18,
-          fontFamily: "Satoshi, General Sans, Inter, system-ui",
+          fontFamily: FONTS.display,
           marginTop: 16,
           opacity: interpolate(frame, [15, 45], [0, 1], { extrapolateRight: "clamp" }),
         }}>

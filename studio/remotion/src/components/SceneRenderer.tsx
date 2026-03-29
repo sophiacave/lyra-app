@@ -10,6 +10,8 @@ import { ComparisonSplit } from "./ComparisonSplit";
 import { DataViz } from "./DataViz";
 import { StepByStep } from "./StepByStep";
 import { ChapterCard } from "./ChapterCard";
+import { MontageScene } from "./MontageScene";
+import { OutroScene } from "./OutroScene";
 import { COLORS, BEAT_STYLES } from "../cinema-tokens";
 
 /**
@@ -28,7 +30,7 @@ import { COLORS, BEAT_STYLES } from "../cinema-tokens";
 
 interface SceneData {
   id: string;
-  type: "broll" | "diagram" | "title" | "montage";
+  type: "broll" | "diagram" | "title" | "montage" | "outro";
   beat: "hook" | "setup" | "core" | "breathe" | "deepen" | "peak" | "close";
   dialogue: string;
   duration_s: number;
@@ -290,6 +292,39 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
         <CinematicTitle3D
           title={scene.dialogue || scene.id}
           subtitle={scene.text_overlay?.text}
+          beat={scene.beat}
+          fps={fps}
+        />
+        {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+      </AbsoluteFill>
+    );
+  }
+
+  if (scene.type === "montage") {
+    // Parse dialogue into fragments for rapid-cut display
+    const fragments = scene.dialogue
+      ? scene.dialogue.split(/[.!?]+/).filter(s => s.trim().length > 3).map(s => s.trim())
+      : undefined;
+
+    return (
+      <AbsoluteFill style={{ opacity }}>
+        <MontageScene
+          fragments={fragments}
+          beat={scene.beat}
+          fps={fps}
+          durationS={scene.duration_s}
+        />
+        {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+      </AbsoluteFill>
+    );
+  }
+
+  if (scene.type === "outro") {
+    return (
+      <AbsoluteFill style={{ opacity }}>
+        <OutroScene
+          heading={scene.dialogue || "Keep learning."}
+          subtext={scene.text_overlay?.text || "likeone.ai"}
           beat={scene.beat}
           fps={fps}
         />

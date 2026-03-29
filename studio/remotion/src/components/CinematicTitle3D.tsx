@@ -3,6 +3,7 @@ import { useCurrentFrame, interpolate, spring, AbsoluteFill } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import { COLORS, BEAT_ACCENTS, FONTS, grainUrl } from "../cinema-tokens";
 
 /**
  * Cinematic Title Card — Three.js depth + atmosphere
@@ -15,36 +16,8 @@ import * as THREE from "three";
  * - Bokeh-like particle dust motes
  * - Title text as crisp HTML overlay (reliable across all renderers)
  *
- * Design tokens come from Visual Bible V2 Rothko palette.
+ * All design tokens consumed from cinema-tokens.ts (single source of truth).
  */
-
-// ─── Design Tokens (V2 Rothko Palette) ─────────────────────────
-const COLORS = {
-  void:     "#0B0A10",
-  chalk:    "#F0EBE3",
-  smoke:    "#8A8490",
-  ash:      "#2D2A33",
-  signal:   "#D4956B",
-  process:  "#8BAFC4",
-  result:   "#8CB89E",
-  alert:    "#C4616A",
-  insight:  "#B898C8",
-  bone:     "#E8DDD0",
-  obsidian: "#1A1720",
-  blush:    "#D4A0A0",
-  gold:     "#C4A86C",
-};
-
-// Beat → accent color mapping
-const BEAT_ACCENTS: Record<string, string> = {
-  hook:    COLORS.signal,
-  setup:   COLORS.process,
-  core:    COLORS.result,
-  breathe: COLORS.insight,
-  deepen:  COLORS.process,
-  peak:    COLORS.gold,
-  close:   COLORS.blush,
-};
 
 // ─── Floating Geometry ──────────────────────────────────────────
 interface FloatingShapeProps {
@@ -379,7 +352,7 @@ export const CinematicTitle3D: React.FC<CinematicTitle3DProps> = ({
             style={{
               color: COLORS.chalk,
               fontSize: 64,
-              fontFamily: "'General Sans', 'Inter', system-ui, sans-serif",
+              fontFamily: FONTS.display,
               fontWeight: 300,
               letterSpacing: -1.5,
               lineHeight: 1.15,
@@ -408,7 +381,7 @@ export const CinematicTitle3D: React.FC<CinematicTitle3DProps> = ({
               style={{
                 color: COLORS.smoke,
                 fontSize: 24,
-                fontFamily: "'General Sans', 'Inter', system-ui, sans-serif",
+                fontFamily: FONTS.display,
                 fontWeight: 400,
                 letterSpacing: 2,
                 textTransform: "uppercase",
@@ -426,7 +399,7 @@ export const CinematicTitle3D: React.FC<CinematicTitle3DProps> = ({
       {/* Film grain overlay */}
       <AbsoluteFill
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='${frame}' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundImage: grainUrl(frame),
           opacity: 0.035,
           mixBlendMode: "overlay",
           pointerEvents: "none",

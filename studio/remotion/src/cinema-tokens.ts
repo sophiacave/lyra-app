@@ -238,6 +238,26 @@ export const PRESETS = {
     glowRadius: 180,
     glowOpacity: 0.04,
   },
+  montageScene: {
+    type: "montage" as const,
+    typography: { label: "headline", counter: "caption" },
+    motion: { enter: "confident", exit: "exit" },
+    vignette: 0.35,
+    grain: 0.025,
+    letterbox: false,
+    glowRadius: 0,
+    glowOpacity: 0,
+  },
+  outroScene: {
+    type: "title" as const,
+    typography: { brand: "title3", heading: "title1", subtext: "callout" },
+    motion: { enter: "gentle", exit: "exit" },
+    vignette: 0.45,
+    grain: 0.035,
+    letterbox: true,
+    glowRadius: 200,
+    glowOpacity: 0.05,
+  },
 } as const;
 
 // ─── Course Theme Palettes ─────────────────────────────────────

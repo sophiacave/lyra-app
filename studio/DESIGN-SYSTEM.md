@@ -586,6 +586,8 @@ Complete visual recipes per scene type. Consumed by Remotion components + graphi
 | `sectionHeader` | title | overline + title1 | smooth/exit | 0.45 | 0.030 | Center, obsidian bg, gold line |
 | `lowerThird` | overlay | headline + caption | confident/exit | 0 | 0 | Bottom-left, title-safe zone |
 | `chapterCard` | title | overline + title2 | smooth/exit | 0.40 | 0.030 | Center, void bg, number above title |
+| `montageScene` | montage | headline + caption | confident/exit | 0.35 | 0.025 | Rapid-cut, Ken Burns drift, progress bar |
+| `outroScene` | title | title3 + title1 + callout | gentle/exit | 0.45 | 0.035 | Center, brand + heading + URL, letterbox |
 
 ---
 
@@ -805,7 +807,8 @@ Hierarchy weights determine what the eye sees first. Higher weight = more attent
 | `text-overlay` | graphics-engine.py | Transparent PNG overlay (kinetic/stat/default) |
 | `section-header` | graphics-engine.py | Overline label + accent line + glow |
 | `lower-third` | graphics-engine.py | Glass card + name + role (RGBA overlay) |
-| `outro` | graphics-engine.py | "NEXT" + lesson name + brand |
+| `outro` | graphics-engine.py / Remotion | "NEXT" + lesson name + brand + CTA |
+| `montage` | Remotion | Rapid-cut sequence, Ken Burns drift, progress bar |
 
 ### Fallback (no assets available)
 Dark atmospheric gradient using void/obsidian palette + voiceover. Beat determines gradient color. Always acceptable — the Rothko principle: a void field is still content.
