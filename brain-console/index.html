@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain Console</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-tertiary: #1a1a2e;
+      --border: #2a2a3e;
+      --text-primary: #e4e4ef;
+      --text-secondary: #8888aa;
+      --text-dim: #555570;
+      --accent-purple: #6c5ce7;
+      --accent-pink: #e84393;
+      --accent-cyan: #00cec9;
+      --accent-green: #00b894;
+      --accent-yellow: #fdcb6e;
+      --accent-red: #ff6b6b;
+      --gradient-brand: linear-gradient(135deg, #e84393, #6c5ce7);
+    }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      -webkit-app-region: drag;
+    }
+    .title-bar {
+      height: 38px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-app-region: drag;
+      flex-shrink: 0;
+    }
+    .title-bar-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+    }
+    .title-bar-text .accent {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+    .main-layout {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      -webkit-app-region: no-drag;
+    }
+    .sidebar {
+      width: 260px;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-header h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .status-panel {
+      padding: 16px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .status-item { margin-bottom: 16px; }
+    .status-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .status-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-primary);
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .status-badge.online { background: rgba(0, 184, 148, 0.15); color: var(--accent-green); }
+    .status-badge.offline { background: rgba(255, 107, 107, 0.15); color: var(--accent-red); }
+    .status-badge.free { background: rgba(0, 206, 201, 0.15); color: var(--accent-cyan); }
+    .status-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor; animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .budget-bar {
+      height: 4px; background: var(--bg-tertiary); border-radius: 2px; margin-top: 6px; overflow: hidden;
+    }
+    .budget-fill {
+      height: 100%; border-radius: 2px; transition: width 0.3s;
+    }
+    .task-list { list-style: none; }
+    .task-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 6px 0;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(42, 42, 62, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .task-item .task-status {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .task-status.pending { background: var(--accent-yellow); }
+    .task-status.running { background: var(--accent-cyan); animation: pulse 1s ease-in-out infinite; }
+    .task-status.completed { background: var(--accent-green); }
+    .sidebar-actions {
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+    .sidebar-btn {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .sidebar-btn:hover { border-color: var(--accent-purple); color: var(--text-primary); }
+    .chat-area {
+      flex: 1; display: flex; flex-direction: column; overflow: hidden;
+    }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 24px; scroll-behavior: smooth;
+    }
+    .chat-messages::-webkit-scrollbar { width: 6px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .message { margin-bottom: 24px; animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .message-header {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+    }
+    .message-avatar {
+      width: 24px; height: 24px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .message-avatar.user { background: var(--gradient-brand); color: white; }
+    .message-avatar.brain { background: linear-gradient(135deg, #00cec9, #6c5ce7); color: white; }
+    .message-avatar.local { background: linear-gradient(135deg, #00b894, #00cec9); color: white; }
+    .message-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 600; color: var(--text-secondary);
+    }
+    .message-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--text-dim);
+    }
+    .message-provider {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; color: var(--accent-cyan);
+      background: rgba(0, 206, 201, 0.1);
+      padding: 2px 6px; border-radius: 3px;
+    }
+    .message-provider.local-tag { color: var(--accent-green); background: rgba(0, 184, 148, 0.1); }
+    .message-body {
+      padding-left: 32px; font-size: 14px; line-height: 1.7; color: var(--text-primary);
+    }
+    .message-body p { margin-bottom: 12px; }
+    .message-body p:last-child { margin-bottom: 0; }
+    .message-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; background: var(--bg-tertiary);
+      padding: 2px 6px; border-radius: 4px; color: var(--accent-cyan);
+    }
+    .message-body pre {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 16px; margin: 12px 0; overflow-x: auto;
+    }
+    .message-body pre code { background: none; padding: 0; color: var(--text-primary); font-size: 12px; }
+    .message-body strong { color: var(--accent-purple); font-weight: 600; }
+    .message-body em { color: var(--text-secondary); }
+    .message-body ul, .message-body ol { padding-left: 20px; margin: 8px 0; }
+    .message-body li { margin-bottom: 4px; color: var(--text-secondary); }
+    .message-body h1, .message-body h2, .message-body h3 { color: var(--text-primary); margin: 16px 0 8px; font-weight: 600; }
+    .message-body h1 { font-size: 18px; } .message-body h2 { font-size: 16px; } .message-body h3 { font-size: 14px; }
+    .typing-indicator { display: none; padding-left: 32px; margin-bottom: 24px; }
+    .typing-indicator.active { display: block; }
+    .typing-dots { display: inline-flex; gap: 4px; }
+    .typing-dots span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent-purple); animation: typing 1.4s ease-in-out infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1); } }
+    .input-area { padding: 16px 24px; border-top: 1px solid var(--border); background: var(--bg-secondary); }
+    .input-container {
+      display: flex; align-items: flex-end; gap: 12px;
+      background: var(--bg-primary); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 16px; transition: border-color 0.2s;
+    }
+    .input-container:focus-within { border-color: var(--accent-purple); }
+    .input-container textarea {
+      flex: 1; background: none; border: none; outline: none;
+      color: var(--text-primary); font-family: 'JetBrains Mono', monospace;
+      font-size: 14px; line-height: 1.5; resize: none; max-height: 120px;
+    }
+    .input-container textarea::placeholder { color: var(--text-dim); }
+    .send-btn {
+      width: 36px; height: 36px; border-radius: 8px; border: none;
+      background: var(--gradient-brand); color: white; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.2s; flex-shrink: 0;
+    }
+    .send-btn:hover { opacity: 0.85; }
+    .send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .input-meta {
+      display: flex; justify-content: space-between;
+      padding: 8px 4px 0; font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--text-dim);
+    }
+    .modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7); z-index: 100;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; width: 560px;
+      max-height: 85vh; overflow-y: auto;
+    }
+    .modal h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px; font-weight: 600; margin-bottom: 24px;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .modal h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 600; color: var(--accent-cyan);
+      margin: 20px 0 12px; padding-top: 16px; border-top: 1px solid var(--border);
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    }
+    .form-group .hint {
+      font-size: 10px; color: var(--text-dim); margin-top: 4px;
+    }
+    .form-group input, .form-group select {
+      width: 100%; padding: 10px 14px;
+      background: var(--bg-primary); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--accent-purple); }
+    .modal-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
+    .modal-btn {
+      padding: 10px 20px; border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+    }
+    .modal-btn.secondary { background: var(--bg-tertiary); border: 1px solid var(--border); color: var(--text-secondary); }
+    .modal-btn.primary { background: var(--gradient-brand); border: none; color: white; }
+    .welcome-screen {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; flex: 1; text-align: center; padding: 48px;
+    }
+    .welcome-logo { font-size: 64px; margin-bottom: 24px; }
+    .welcome-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px; font-weight: 700;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .welcome-subtitle {
+      color: var(--text-secondary); font-size: 14px;
+      max-width: 460px; line-height: 1.6; margin-bottom: 32px;
+    }
+    .welcome-shortcuts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 500px; }
+    .shortcut-card {
+      padding: 16px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 12px;
+      text-align: left; cursor: pointer; transition: all 0.2s;
+    }
+    .shortcut-card:hover { border-color: var(--accent-purple); transform: translateY(-2px); }
+    .shortcut-card .icon { font-size: 20px; margin-bottom: 8px; }
+    .shortcut-card .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;
+    }
+    .shortcut-card .desc { font-size: 11px; color: var(--text-dim); }
+    .shortcut-card .cost {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; color: var(--accent-green); margin-top: 6px;
+    }
+    .boot-status {
+      display: flex; flex-direction: column; gap: 6px;
+      margin-bottom: 28px; text-align: left; max-width: 280px;
+    }
+    .boot-line {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--text-secondary);
+      display: flex; align-items: center; gap: 8px;
+      opacity: 0; animation: bootFadeIn 0.3s ease forwards;
+    }
+    .boot-line:nth-child(1) { animation-delay: 0.1s; }
+    .boot-line:nth-child(2) { animation-delay: 0.25s; }
+    .boot-line:nth-child(3) { animation-delay: 0.4s; }
+    .boot-line:nth-child(4) { animation-delay: 0.55s; }
+    .boot-line:nth-child(5) { animation-delay: 0.7s; }
+    .boot-line:nth-child(6) { animation-delay: 0.85s; }
+    @keyframes bootFadeIn { to { opacity: 1; } }
+    .boot-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      display: inline-block; flex-shrink: 0;
+    }
+    .boot-dot.pending { background: var(--text-dim); }
+    .boot-dot.ok { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+    .boot-dot.warn { background: var(--accent-yellow); box-shadow: 0 0 6px var(--accent-yellow); }
+    .boot-dot.fail { background: var(--accent-red); box-shadow: 0 0 6px var(--accent-red); }
+    .greeting-text {
+      font-size: 16px; color: var(--text-primary); margin-bottom: 8px;
+      font-weight: 500; opacity: 0; animation: bootFadeIn 0.5s ease 1.2s forwards;
+    }
+    .greeting-sub {
+      font-size: 13px; color: var(--text-secondary); margin-bottom: 24px;
+      opacity: 0; animation: bootFadeIn 0.5s ease 1.4s forwards;
+    }
+    .insight-bar {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+      background: var(--bg-tertiary); border: 1px solid var(--accent-purple);
+      border-radius: 12px; padding: 12px 16px; display: flex; align-items: center;
+      gap: 10px; max-width: 600px; width: 90%;
+      box-shadow: 0 4px 24px rgba(108, 92, 231, 0.25);
+      animation: slideUp 0.4s ease; z-index: 100;
+    }
+    @keyframes slideUp { from { opacity:0; transform: translateX(-50%) translateY(20px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+    .insight-icon { font-size: 20px; flex-shrink: 0; }
+    .insight-content {
+      font-size: 13px; color: var(--text-primary); flex: 1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .insight-content .insight-title { font-weight: 600; margin-bottom: 2px; }
+    .insight-content .insight-detail { color: var(--text-secondary); font-size: 11px; }
+    .insight-dismiss {
+      background: none; border: none; color: var(--text-dim); cursor: pointer;
+      font-size: 18px; padding: 4px; line-height: 1;
+    }
+    .insight-dismiss:hover { color: var(--text-primary); }
+    .insight-priority-high { border-color: var(--accent-red); }
+    .insight-priority-medium { border-color: var(--accent-yellow); }
+  </style>
+</head>
+<body>
+  <div class="title-bar">
+    <span class="title-bar-text"><span class="accent">BRAIN CONSOLE</span> — Local-First Agent Console</span>
+  </div>
+
+  <div class="main-layout">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2>System Status</h2>
+      </div>
+      <div class="status-panel">
+        <div class="status-item">
+          <div class="status-label">Brain</div>
+          <div class="status-badge online" id="brainStatus">
+            <span class="dot"></span>
+            <span id="brainStatusText">Connecting...</span>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">AI Provider</div>
+          <div class="status-value" id="providerName">Detecting...</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Token Budget</div>
+          <div class="status-value" id="budgetText">—</div>
+          <div class="budget-bar"><div class="budget-fill" id="budgetFill" style="width:0%; background: var(--accent-green);"></div></div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Pending Tasks</div>
+          <div class="status-value" id="pendingTasks">—</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Recent Activity</div>
+          <ul class="task-list" id="taskList">
+            <li class="task-item"><span class="task-status pending"></span>Loading...</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <button class="sidebar-btn" onclick="openSettings()">Settings</button>
+        <button class="sidebar-btn" onclick="refreshStatus()">Refresh</button>
+        <button class="sidebar-btn" onclick="clearChat()">Clear</button>
+      </div>
+    </div>
+
+    <div class="chat-area">
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-logo">🧠</div>
+          <div class="welcome-title">Brain Console</div>
+          <div class="welcome-subtitle" id="bootMessage">Initializing systems...</div>
+          <div class="boot-status" id="bootStatus">
+            <div class="boot-line" id="bootBrain"><span class="boot-dot pending"></span> Brain core</div>
+            <div class="boot-line" id="bootProvider"><span class="boot-dot pending"></span> AI provider</div>
+            <div class="boot-line" id="bootScheduler"><span class="boot-dot pending"></span> Scheduler</div>
+            <div class="boot-line" id="bootKnowledge"><span class="boot-dot pending"></span> Knowledge base</div>
+            <div class="boot-line" id="bootMCP"><span class="boot-dot pending"></span> MCP tools</div>
+            <div class="boot-line" id="bootCommands"><span class="boot-dot pending"></span> Local commands</div>
+          </div>
+          <div class="welcome-shortcuts" id="welcomeShortcuts" style="display:none;">
+            <div class="shortcut-card" onclick="quickPrompt('/status')">
+              <div class="icon">📊</div>
+              <div class="label">System Status</div>
+              <div class="desc">Health, tasks, budget</div>
+              <div class="cost">FREE — no tokens</div>
+            </div>
+            <div class="shortcut-card" onclick="quickPrompt('/crm')">
+              <div class="icon">💼</div>
+              <div class="label">CRM Pipeline</div>
+              <div class="desc">Leads & deal stages</div>
+              <div class="cost">FREE — no tokens</div>
+            </div>
+            <div class="shortcut-card" onclick="quickPrompt('/sprint')">
+              <div class="icon">💰</div>
+              <div class="label">Revenue Sprint</div>
+              <div class="desc">Sprint progress</div>
+              <div class="cost">FREE — no tokens</div>
+            </div>
+            <div class="shortcut-card" onclick="quickPrompt('/help')">
+              <div class="icon">⚡</div>
+              <div class="label">All Commands</div>
+              <div class="desc">See everything available</div>
+              <div class="cost">FREE — no tokens</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="message-header">
+          <div class="message-avatar brain">F</div>
+          <span class="message-name">Brain Console</span>
+        </div>
+        <div class="typing-dots"><span></span><span></span><span></span></div>
+      </div>
+
+      <div class="input-area">
+        <div class="input-container">
+          <textarea id="messageInput" placeholder="Type /help for free commands, or chat with AI..." rows="1"
+                    onkeydown="handleKeyDown(event)" oninput="autoResize(this)"></textarea>
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <div class="input-meta">
+          <span id="inputHint">/ = free local commands · plain text = AI (uses tokens)</span>
+          <span id="tokenCount"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proactive Insight Bar -->
+  <div class="insight-bar" id="insightBar" style="display:none;">
+    <div class="insight-icon">🧠</div>
+    <div class="insight-content" id="insightContent"></div>
+    <button class="insight-dismiss" onclick="dismissInsight()">×</button>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal">
+      <h2>Configuration</h2>
+
+      <h3>SUPABASE (Required)</h3>
+      <div class="form-group">
+        <label>Supabase URL</label>
+        <input type="text" id="settingsSupabaseUrl" placeholder="https://xxx.supabase.co">
+      </div>
+      <div class="form-group">
+        <label>Supabase Service Role Key</label>
+        <input type="password" id="settingsSupabaseKey" placeholder="eyJ...">
+      </div>
+
+      <h3>AI PROVIDER (Pick one — free options first)</h3>
+      <div class="form-group">
+        <label>Active Provider</label>
+        <select id="settingsProvider">
+          <option value="ollama">Ollama (Free — Local)</option>
+          <option value="groq">Groq (Free Tier — Cloud)</option>
+          <option value="openrouter">OpenRouter (Cheap — Cloud)</option>
+          <option value="anthropic">Anthropic (Premium — Cloud)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Ollama Model</label>
+        <input type="text" id="settingsOllamaModel" placeholder="llama3.1:8b">
+        <div class="hint">Free. Install: brew install ollama && ollama pull llama3.1:8b</div>
+      </div>
+
+      <div class="form-group">
+        <label>Groq API Key</label>
+        <input type="password" id="settingsGroqKey" placeholder="gsk_...">
+        <div class="hint">Free tier: 30 req/min. Get key at console.groq.com</div>
+      </div>
+
+      <div class="form-group">
+        <label>OpenRouter API Key</label>
+        <input type="password" id="settingsOpenrouterKey" placeholder="sk-or-...">
+        <div class="hint">~$0.001/1k tokens. Get key at openrouter.ai</div>
+      </div>
+
+      <div class="form-group">
+        <label>Anthropic API Key</label>
+        <input type="password" id="settingsAnthropicKey" placeholder="sk-ant-...">
+        <div class="hint">Premium. ~$0.015/1k tokens. Only if you need Claude specifically.</div>
+      </div>
+
+      <h3>INTEGRATIONS (Optional — enables slash commands)</h3>
+      <div class="form-group">
+        <label>Slack Bot Token</label>
+        <input type="password" id="settingsSlackToken" placeholder="xoxb-...">
+        <div class="hint">Enables /slack commands. Create at api.slack.com/apps</div>
+      </div>
+      <div class="form-group">
+        <label>Notion API Key</label>
+        <input type="password" id="settingsNotionToken" placeholder="ntn_...">
+        <div class="hint">Enables /notion commands. Get at notion.so/my-integrations</div>
+      </div>
+      <div class="form-group">
+        <label>GitHub Token</label>
+        <input type="password" id="settingsGithubToken" placeholder="ghp_...">
+        <div class="hint">Enables /github commands. Get at github.com/settings/tokens</div>
+      </div>
+      <div class="form-group">
+        <label>Vercel Token</label>
+        <input type="password" id="settingsVercelToken" placeholder="...">
+        <div class="hint">Enables /vercel commands. Get at vercel.com/account/tokens</div>
+      </div>
+      <div class="form-group">
+        <label>Make.com API Key</label>
+        <input type="password" id="settingsMakeApiKey" placeholder="...">
+        <div class="hint">Enables Make.com scenario management from /make commands</div>
+      </div>
+      <div class="form-group">
+        <label>Vercel Deploy Hook URL</label>
+        <input type="text" id="settingsVercelDeployHook" placeholder="https://api.vercel.com/v1/integrations/deploy/...">
+        <div class="hint">One-click deploy trigger. Create in Vercel project → Settings → Git → Deploy Hooks</div>
+      </div>
+
+      <h3>LIMITS</h3>
+      <div class="form-group">
+        <label>Max Tokens per Response</label>
+        <input type="number" id="settingsMaxTokens" value="4096">
+      </div>
+      <div class="form-group">
+        <label>Monthly Token Budget</label>
+        <input type="number" id="settingsMonthlyLimit" value="100000">
+        <div class="hint">Auto-warns at 80%. Set to 0 for unlimited.</div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="modal-btn secondary" onclick="closeSettings()">Cancel</button>
+        <button class="modal-btn primary" onclick="saveSettings()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    let messageCount = 0;
+    let isStreaming = false;
+    let currentStreamDiv = null;
+
+    function getTimeGreeting() {
+      const h = new Date().getHours();
+      if (h < 5) return 'Late night session';
+      if (h < 12) return 'Good morning';
+      if (h < 17) return 'Good afternoon';
+      if (h < 21) return 'Good evening';
+      return 'Late night session';
+    }
+
+    function setBootDot(id, status, label) {
+      const line = document.getElementById(id);
+      if (!line) return;
+      const dot = line.querySelector('.boot-dot');
+      dot.className = 'boot-dot ' + status;
+      if (label) line.innerHTML = `<span class="boot-dot ${status}"></span> ${label}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Start boot sequence
+      const bootMsg = document.getElementById('bootMessage');
+      bootMsg.textContent = 'Initializing systems...';
+
+      // Listen for boot-ready signal from main process
+      window.brain.onBootReady(async (data) => {
+        try {
+          // Step 1: Brain core
+          if (data.connected) {
+            setBootDot('bootBrain', 'ok', 'Brain core — connected');
+          } else if (data.error) {
+            setBootDot('bootBrain', 'fail', 'Brain core — ' + data.error.slice(0, 40));
+          } else {
+            setBootDot('bootBrain', 'warn', 'Brain core — no Supabase key (set in Settings)');
+          }
+
+          // Step 2: Detect AI provider
+          try {
+            const providers = await window.brain.checkProviders();
+            if (providers.detected) {
+              setBootDot('bootProvider', 'ok', 'AI provider — ' + providers.detected.name);
+            } else if (providers.ollama) {
+              setBootDot('bootProvider', 'ok', 'AI provider — Ollama (local, free)');
+            } else {
+              setBootDot('bootProvider', 'warn', 'AI provider — none (43 commands still free)');
+            }
+          } catch { setBootDot('bootProvider', 'warn', 'AI provider — detection skipped'); }
+
+          // Step 3: Scheduler
+          try {
+            const sched = await window.brain.getSchedulerStatus();
+            setBootDot('bootScheduler', sched.running ? 'ok' : 'warn',
+              'Scheduler — ' + (sched.running ? 'running' : 'idle'));
+          } catch { setBootDot('bootScheduler', 'warn', 'Scheduler — idle'); }
+
+          // Step 4: Knowledge base
+          try {
+            const kb = await window.brain.kbStats();
+            const count = kb.totalEntries || kb.localEntries || 0;
+            setBootDot('bootKnowledge', 'ok', `Knowledge base — ${count} entries`);
+          } catch { setBootDot('bootKnowledge', 'warn', 'Knowledge base — empty'); }
+
+          // Step 5: MCP tools
+          try {
+            const tools = await window.brain.mcpListTools();
+            setBootDot('bootMCP', 'ok', `MCP tools — ${tools.length || 0} registered`);
+          } catch { setBootDot('bootMCP', 'warn', 'MCP tools — 0'); }
+
+          // Step 6: Local commands (always works)
+          setBootDot('bootCommands', 'ok', 'Local commands — 43 loaded');
+
+          // Show personalized greeting
+          setTimeout(() => {
+            bootMsg.innerHTML = `
+              <div class="greeting-text">${getTimeGreeting()}, Faye.</div>
+              <div class="greeting-sub">Brain Console is online. Type anything or pick a shortcut below.</div>
+            `;
+            document.getElementById('welcomeShortcuts').style.display = 'grid';
+          }, 600);
+
+          // Refresh sidebar status
+          await refreshStatus();
+        } catch (e) {
+          console.error('Boot error:', e);
+          bootMsg.textContent = 'Boot complete with warnings. Type /help to begin.';
+        }
+      });
+
+      document.getElementById('messageInput').focus();
+    });
+
+    // Proactive insight listener
+    let insightQueue = [];
+    let insightVisible = false;
+
+    window.brain.onProactiveInsight((data) => {
+      if (!data.insights?.length) return;
+
+      // Sort by priority: high first
+      const sorted = data.insights.sort((a, b) => {
+        const order = { high: 0, medium: 1, low: 2 };
+        return (order[a.priority] || 2) - (order[b.priority] || 2);
+      });
+
+      insightQueue.push(...sorted);
+      if (!insightVisible) showNextInsight();
+    });
+
+    function showNextInsight() {
+      if (!insightQueue.length) { insightVisible = false; return; }
+      insightVisible = true;
+      const insight = insightQueue.shift();
+      const bar = document.getElementById('insightBar');
+      const content = document.getElementById('insightContent');
+
+      const icons = { tasks: '📋', crm: '💼', budget: '💰', email: '📧', system: '⚙️' };
+      document.querySelector('.insight-icon').textContent = icons[insight.type] || '🧠';
+
+      bar.className = `insight-bar insight-priority-${insight.priority || 'low'}`;
+      content.innerHTML = `<div class="insight-title">${insight.title}</div><div class="insight-detail">${insight.detail || ''}</div>`;
+      bar.style.display = 'flex';
+
+      // Auto-dismiss after 12 seconds, show next
+      setTimeout(() => {
+        if (bar.style.display !== 'none') {
+          bar.style.display = 'none';
+          setTimeout(() => showNextInsight(), 500);
+        }
+      }, 12000);
+    }
+
+    function dismissInsight() {
+      document.getElementById('insightBar').style.display = 'none';
+      insightVisible = false;
+      setTimeout(() => showNextInsight(), 500);
+    }
+
+    // Stream listeners
+    window.brain.onStreamChunk((chunk) => {
+      if (currentStreamDiv) {
+        const bodyDiv = currentStreamDiv.querySelector('.message-body');
+        bodyDiv.dataset.raw = (bodyDiv.dataset.raw || '') + chunk;
+        bodyDiv.innerHTML = marked.parse(bodyDiv.dataset.raw);
+        scrollToBottom();
+      }
+    });
+
+    window.brain.onStreamEnd((meta) => {
+      isStreaming = false;
+      if (currentStreamDiv && meta) {
+        const header = currentStreamDiv.querySelector('.message-header');
+        const tag = document.createElement('span');
+
+        if (meta.fromLocal) {
+          tag.className = 'message-provider local-tag';
+          tag.textContent = 'LOCAL — 0 tokens';
+          const avatar = currentStreamDiv.querySelector('.message-avatar');
+          avatar.className = 'message-avatar local';
+          avatar.textContent = 'L';
+        } else {
+          const tierLabel = { 1: 'SIMPLE', 2: 'STANDARD', 3: 'COMPLEX' }[meta.tier] || '';
+          const costLabel = meta.cost === 0 ? 'FREE' : `$${meta.cost}/1k`;
+          tag.className = 'message-provider';
+          tag.textContent = `${meta.provider || 'AI'} · T${meta.tier || '?'} ${tierLabel} · ${costLabel}`;
+        }
+        header.appendChild(tag);
+      }
+      currentStreamDiv = null;
+      document.getElementById('typingIndicator').classList.remove('active');
+      document.getElementById('sendBtn').disabled = false;
+      messageCount++;
+      updateMessageCount();
+      refreshBudget();
+    });
+
+    window.brain.onStreamError((error) => {
+      isStreaming = false;
+      currentStreamDiv = null;
+      document.getElementById('typingIndicator').classList.remove('active');
+      document.getElementById('sendBtn').disabled = false;
+      addMessage('brain', `Error: ${error}`, true);
+    });
+
+    async function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+      if (!message || isStreaming) return;
+
+      const welcome = document.getElementById('welcomeScreen');
+      if (welcome) welcome.style.display = 'none';
+
+      addMessage('user', message);
+      input.value = '';
+      autoResize(input);
+      messageCount++;
+      updateMessageCount();
+
+      isStreaming = true;
+      document.getElementById('sendBtn').disabled = true;
+
+      // Show typing for AI calls, not for local
+      if (!message.startsWith('/')) {
+        document.getElementById('typingIndicator').classList.add('active');
+      }
+      scrollToBottom();
+
+      currentStreamDiv = createMessageElement('brain', '');
+      document.getElementById('chatMessages').appendChild(currentStreamDiv);
+
+      setTimeout(() => {
+        document.getElementById('typingIndicator').classList.remove('active');
+      }, 300);
+
+      await window.brain.streamMessage(message);
+    }
+
+    function addMessage(role, content, isError = false) {
+      const el = createMessageElement(role, content, isError);
+      document.getElementById('chatMessages').appendChild(el);
+      scrollToBottom();
+    }
+
+    function createMessageElement(role, content, isError = false) {
+      const div = document.createElement('div');
+      div.className = 'message';
+      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const name = role === 'user' ? 'Faye' : 'Brain Console';
+      const avatar = role === 'user' ? 'S' : 'F';
+
+      div.innerHTML = `
+        <div class="message-header">
+          <div class="message-avatar ${role}">${avatar}</div>
+          <span class="message-name">${name}</span>
+          <span class="message-time">${time}</span>
+        </div>
+        <div class="message-body" data-raw="${escapeHtml(content)}">${
+          isError ? `<span style="color:var(--accent-red)">${content}</span>` :
+          (content ? marked.parse(content) : '')
+        }</div>
+      `;
+      return div;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function quickPrompt(text) {
+      document.getElementById('messageInput').value = text;
+      sendMessage();
+    }
+
+    function handleKeyDown(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+    }
+
+    function autoResize(el) {
+      el.style.height = 'auto';
+      el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+    }
+
+    function scrollToBottom() {
+      const chat = document.getElementById('chatMessages');
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function updateMessageCount() {
+      document.getElementById('tokenCount').textContent = `${messageCount} msgs`;
+    }
+
+    async function refreshStatus() {
+      try {
+        const result = await window.brain.getStatus();
+        const statusBadge = document.getElementById('brainStatus');
+        const statusText = document.getElementById('brainStatusText');
+
+        if (result.success && result.status.connected) {
+          statusBadge.className = 'status-badge online';
+          statusText.textContent = 'Connected';
+          document.getElementById('pendingTasks').textContent = `${result.status.pendingTasks} pending`;
+
+          const taskList = document.getElementById('taskList');
+          if (result.status.tasks?.length > 0) {
+            taskList.innerHTML = result.status.tasks.map(t => `
+              <li class="task-item"><span class="task-status ${t.status}"></span>${t.task_type}</li>
+            `).join('');
+          } else if (result.status.recentNotifications?.length > 0) {
+            taskList.innerHTML = result.status.recentNotifications.map(n => `
+              <li class="task-item"><span class="task-status ${n.status === 'sent' ? 'completed' : 'pending'}"></span>${n.type}: ${n.status}</li>
+            `).join('');
+          } else {
+            taskList.innerHTML = '<li class="task-item"><span class="task-status completed"></span>All clear</li>';
+          }
+        } else {
+          statusBadge.className = 'status-badge offline';
+          statusText.textContent = 'Disconnected';
+        }
+
+        // Provider
+        document.getElementById('providerName').textContent = result.provider || '—';
+
+        // Budget
+        if (result.budget) {
+          const b = result.budget;
+          const pct = b.limit > 0 ? Math.min((b.tokensUsed / b.limit) * 100, 100) : 0;
+          document.getElementById('budgetText').textContent =
+            `${(b.tokensUsed / 1000).toFixed(1)}k / ${(b.limit / 1000).toFixed(0)}k`;
+          const fill = document.getElementById('budgetFill');
+          fill.style.width = pct + '%';
+          fill.style.background = pct > 80 ? 'var(--accent-red)' : pct > 50 ? 'var(--accent-yellow)' : 'var(--accent-green)';
+        }
+      } catch (e) {
+        document.getElementById('brainStatusText').textContent = 'Error';
+      }
+    }
+
+    async function refreshBudget() {
+      const result = await window.brain.getStatus();
+      if (result.budget) {
+        const b = result.budget;
+        const pct = b.limit > 0 ? Math.min((b.tokensUsed / b.limit) * 100, 100) : 0;
+        document.getElementById('budgetText').textContent =
+          `${(b.tokensUsed / 1000).toFixed(1)}k / ${(b.limit / 1000).toFixed(0)}k`;
+        const fill = document.getElementById('budgetFill');
+        fill.style.width = pct + '%';
+        fill.style.background = pct > 80 ? 'var(--accent-red)' : pct > 50 ? 'var(--accent-yellow)' : 'var(--accent-green)';
+      }
+    }
+
+    async function openSettings() {
+      const config = await window.brain.getConfig();
+      document.getElementById('settingsSupabaseUrl').value = config.supabaseUrl || '';
+      document.getElementById('settingsSupabaseKey').value = config.supabaseKey || '';
+      document.getElementById('settingsProvider').value = config.aiProvider || 'ollama';
+      document.getElementById('settingsOllamaModel').value = config.ollamaModel || 'llama3.1:8b';
+      document.getElementById('settingsGroqKey').value = config.groqKey || '';
+      document.getElementById('settingsOpenrouterKey').value = config.openrouterKey || '';
+      document.getElementById('settingsAnthropicKey').value = config.anthropicKey || '';
+      document.getElementById('settingsMaxTokens').value = config.maxTokens || 4096;
+      document.getElementById('settingsMonthlyLimit').value = config.monthlyTokenLimit || 100000;
+      document.getElementById('settingsSlackToken').value = config.slackToken || '';
+      document.getElementById('settingsNotionToken').value = config.notionToken || '';
+      document.getElementById('settingsGithubToken').value = config.githubToken || '';
+      document.getElementById('settingsVercelToken').value = config.vercelToken || '';
+      document.getElementById('settingsMakeApiKey').value = config.makeApiKey || '';
+      document.getElementById('settingsVercelDeployHook').value = config.vercelDeployHook || '';
+      document.getElementById('settingsModal').classList.add('active');
+    }
+
+    function closeSettings() { document.getElementById('settingsModal').classList.remove('active'); }
+
+    async function saveSettings() {
+      await window.brain.updateConfig({
+        supabaseUrl: document.getElementById('settingsSupabaseUrl').value,
+        supabaseKey: document.getElementById('settingsSupabaseKey').value,
+        aiProvider: document.getElementById('settingsProvider').value,
+        ollamaModel: document.getElementById('settingsOllamaModel').value,
+        groqKey: document.getElementById('settingsGroqKey').value,
+        openrouterKey: document.getElementById('settingsOpenrouterKey').value,
+        anthropicKey: document.getElementById('settingsAnthropicKey').value,
+        maxTokens: parseInt(document.getElementById('settingsMaxTokens').value),
+        monthlyTokenLimit: parseInt(document.getElementById('settingsMonthlyLimit').value),
+        slackToken: document.getElementById('settingsSlackToken').value,
+        notionToken: document.getElementById('settingsNotionToken').value,
+        githubToken: document.getElementById('settingsGithubToken').value,
+        vercelToken: document.getElementById('settingsVercelToken').value,
+        makeApiKey: document.getElementById('settingsMakeApiKey').value,
+        vercelDeployHook: document.getElementById('settingsVercelDeployHook').value,
+      });
+      closeSettings();
+      await refreshStatus();
+    }
+
+    async function clearChat() {
+      await window.brain.clearConversation();
+      const chat = document.getElementById('chatMessages');
+      chat.innerHTML = '';
+      messageCount = 0;
+      updateMessageCount();
+      const welcome = document.createElement('div');
+      welcome.className = 'welcome-screen';
+      welcome.id = 'welcomeScreen';
+      welcome.innerHTML = `
+        <div class="welcome-logo">🧠</div>
+        <div class="welcome-title">Brain Console</div>
+        <div class="welcome-subtitle">Cleared. Type /help for free commands.</div>
+      `;
+      chat.appendChild(welcome);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "brain-console",
+  "version": "3.0.0",
+  "description": "Brain Console V3 — Local-First Autonomous AI Console",
+  "main": "main.js",
+  "author": "Faye Cave <sophiacave.me@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder --mac --arm64",
+    "pack": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "ai.likeone.brain-console",
+    "productName": "Brain Console",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg"],
+      "icon": "assets/icon.icns"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,readme.md,readme}",
+      "!**/node_modules/.cache/**"
+    ]
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "marked": "^15.0.0",
+    "electron-store": "^8.2.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  }
+}
