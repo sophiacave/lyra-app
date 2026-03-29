@@ -1,0 +1,10 @@
+{
+  "daily self_heal": {
+    "schedule": "0 2 * * *",
+    "command": "self-heal"
+  },
+  "daily self_upgrade": {
+    "schedule": "30 2 * * *",
+    "command": "self-upgrade"
+  }
+}

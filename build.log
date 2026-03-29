@@ -1,0 +1,31 @@
+▲ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 1226ms
+  Running TypeScript ...
+  Finished TypeScript in 95ms ...
+  Collecting page data using 13 workers ...
+⚠ Using edge runtime on a page currently disables static generation for that page
+  Generating static pages using 13 workers (0/396) ...
+Error occurred prerendering page "/academy/rag-vector-search/evaluation-metrics". Read more: https://nextjs.org/docs/messages/prerender-error
+Error occurred prerendering page "/academy/claude-mastery". Read more: https://nextjs.org/docs/messages/prerender-error
+Error occurred prerendering page "/blog/ai-doesnt-care-who-you-are". Read more: https://nextjs.org/docs/messages/prerender-error
+Error [InvariantError]: Invariant: Expected workStore to be initialized. This is a bug in Next.js.
+    at N (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:8:86453)
+    at M (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:8:86354)
+    at <unknown> (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:13:29237)
+Export encountered an error on /academy/[courseSlug]/[lessonSlug]/page: /academy/rag-vector-search/evaluation-metrics, exiting the build.
+Error [InvariantError]: Invariant: Expected workStore to be initialized. This is a bug in Next.js.
+    at N (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:8:86453)
+    at M (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:8:86354)
+    at <unknown> (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:13:29237)
+Export encountered an error on /academy/[courseSlug]/page: /academy/claude-mastery, exiting the build.
+Error occurred prerendering page "/academy/ai-for-data-analysis/06-pattern-recognition". Read more: https://nextjs.org/docs/messages/prerender-error
+Error [InvariantError]: Invariant: Expected workStore to be initialized. This is a bug in Next.js.
+    at N (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:8:86453)
+    at M (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:8:86354)
+    at <unknown> (.next/server/chunks/ssr/[root-of-the-server]__0bd0tfh._.js:13:29237)
+Export encountered an error on /blog/[slug]/page: /blog/ai-doesnt-care-who-you-are, exiting the build.
+⨯ Next.js build worker exited with code: 1 and signal: null
