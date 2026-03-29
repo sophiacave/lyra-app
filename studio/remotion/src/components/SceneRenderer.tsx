@@ -6,6 +6,10 @@ import { QuoteCard } from "./QuoteCard";
 import { SectionHeader } from "./SectionHeader";
 import { ExplainerScene } from "./ExplainerScene";
 import { LowerThird } from "./LowerThird";
+import { ComparisonSplit } from "./ComparisonSplit";
+import { DataViz } from "./DataViz";
+import { StepByStep } from "./StepByStep";
+import { ChapterCard } from "./ChapterCard";
 import { COLORS, BEAT_STYLES } from "../cinema-tokens";
 
 /**
@@ -143,29 +147,83 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   }
 
   if (scene.type === "diagram") {
-    return (
-      <AbsoluteFill style={{
-        opacity,
-        background: COLORS.void,
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
-        {/* Diagram scenes use pre-rendered motion graphic video from Manim/Remotion */}
-        {scene.videoPath ? (
+    // If pre-rendered video exists, use it directly
+    if (scene.videoPath) {
+      return (
+        <AbsoluteFill style={{ opacity, background: COLORS.void, justifyContent: "center", alignItems: "center" }}>
           <Video src={scene.videoPath} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
-        ) : (
-          /* ExplainerScene fallback — animated key points from dialogue */
-          <ExplainerScene
-            heading={scene.motion_graphic || scene.visual || scene.id}
-            points={scene.dialogue
-              ? scene.dialogue.split(/[.!?]+/).filter(s => s.trim().length > 5).map(s => s.trim())
-              : ["Content loading..."]}
+          {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+        </AbsoluteFill>
+      );
+    }
+
+    // Smart diagram subtype detection from scene ID / visual / motion_graphic
+    const hint = `${scene.id} ${scene.visual || ""} ${scene.motion_graphic || ""}`.toLowerCase();
+    const isComparison = /compar|vs|versus|before.?after|split|pros?.?cons/i.test(hint);
+    const isDataViz = /data|chart|graph|metric|stat|bar|percent/i.test(hint);
+    const isStepByStep = /step|process|flow|pipeline|sequence|how.?to|stages/i.test(hint);
+
+    if (isComparison) {
+      // Parse dialogue into left/right items (split by "vs" or sentences)
+      const parts = scene.dialogue ? scene.dialogue.split(/\bvs\.?\b|\bversus\b/i) : ["", ""];
+      const leftItems = (parts[0] || "").split(/[.;]+/).filter(s => s.trim().length > 3).map(s => s.trim());
+      const rightItems = (parts[1] || parts[0] || "").split(/[.;]+/).filter(s => s.trim().length > 3).map(s => s.trim());
+      return (
+        <AbsoluteFill style={{ opacity }}>
+          <ComparisonSplit
+            heading={scene.motion_graphic || scene.visual || scene.id.replace(/-/g, " ")}
+            leftItems={leftItems.length > 0 ? leftItems : ["..."]}
+            rightItems={rightItems.length > 0 ? rightItems : ["..."]}
             beat={scene.beat}
-            label={scene.id.toUpperCase().replace(/-/g, " ")}
             fps={fps}
           />
-        )}
+          {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+        </AbsoluteFill>
+      );
+    }
 
+    if (isDataViz) {
+      return (
+        <AbsoluteFill style={{ opacity }}>
+          <DataViz
+            heading={scene.motion_graphic || scene.visual || scene.id.replace(/-/g, " ")}
+            beat={scene.beat}
+            fps={fps}
+          />
+          {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+        </AbsoluteFill>
+      );
+    }
+
+    if (isStepByStep) {
+      const steps = scene.dialogue
+        ? scene.dialogue.split(/[.!?]+/).filter(s => s.trim().length > 5).map(s => s.trim())
+        : ["Step 1", "Step 2", "Step 3"];
+      return (
+        <AbsoluteFill style={{ opacity }}>
+          <StepByStep
+            heading={scene.motion_graphic || scene.visual || scene.id.replace(/-/g, " ")}
+            steps={steps}
+            beat={scene.beat}
+            fps={fps}
+          />
+          {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+        </AbsoluteFill>
+      );
+    }
+
+    // Default: ExplainerScene fallback — animated key points from dialogue
+    return (
+      <AbsoluteFill style={{ opacity, background: COLORS.void, justifyContent: "center", alignItems: "center" }}>
+        <ExplainerScene
+          heading={scene.motion_graphic || scene.visual || scene.id}
+          points={scene.dialogue
+            ? scene.dialogue.split(/[.!?]+/).filter(s => s.trim().length > 5).map(s => s.trim())
+            : ["Content loading..."]}
+          beat={scene.beat}
+          label={scene.id.toUpperCase().replace(/-/g, " ")}
+          fps={fps}
+        />
         {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
       </AbsoluteFill>
     );
@@ -174,10 +232,12 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   if (scene.type === "title") {
     // Beat-specific title rendering:
     // - breathe/close → QuoteCard (contemplative, Cormorant Garamond)
-    // - setup with "chapter" in ID → SectionHeader (chapter transition)
+    // - setup with numbered "chapter-N" ID → ChapterCard (numbered transition)
+    // - setup with "section/part" in ID → SectionHeader (chapter transition)
     // - everything else → CinematicTitle3D (dramatic 3D scene)
     const isQuote = scene.beat === "breathe" || scene.beat === "close";
-    const isSection = scene.beat === "setup" && /chapter|section|part/i.test(scene.id);
+    const isChapter = scene.beat === "setup" && /chapter[-\s]?\d/i.test(scene.id);
+    const isSection = scene.beat === "setup" && !isChapter && /chapter|section|part/i.test(scene.id);
 
     if (isQuote) {
       return (
@@ -193,8 +253,24 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
       );
     }
 
+    if (isChapter) {
+      // Extract chapter number from ID (e.g., "chapter-2-hidden-layers" → "Chapter 2")
+      const numMatch = scene.id.match(/chapter[-\s]?(\d+)/i);
+      const chapterNum = numMatch ? `Chapter ${numMatch[1]}` : scene.text_overlay?.text || "Chapter";
+      return (
+        <AbsoluteFill style={{ opacity }}>
+          <ChapterCard
+            number={chapterNum}
+            title={scene.dialogue || scene.id.replace(/chapter[-\s]?\d+[-\s]?/i, "").replace(/-/g, " ")}
+            beat={scene.beat}
+            fps={fps}
+          />
+          {scene.narrationPath && <Audio src={scene.narrationPath} volume={1} />}
+        </AbsoluteFill>
+      );
+    }
+
     if (isSection) {
-      // Extract chapter number from ID (e.g., "chapter-1" → "Chapter 1")
       const overline = scene.text_overlay?.text || scene.id.replace(/-/g, " ");
       return (
         <AbsoluteFill style={{ opacity }}>
