@@ -1,0 +1,13 @@
+{
+  "name": "fractal-mac-link",
+  "version": "1.0.0",
+  "description": "Purpose-built Mac MCP for Sophia / Like One — replaces Desktop Commander + Control Mac. mac_boot = zero-handoff session start.",
+  "type": "module",
+  "main": "server.js",
+  "bin": { "fractal-mac-link": "server.js" },
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "zod": "^3.23.8"
+  }
+}
