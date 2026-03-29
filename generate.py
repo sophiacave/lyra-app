@@ -1,5 +1,17 @@
+
+def save_interpolated_frames(frames):
+    for i, frame in enumerate(frames):
+        frame_path = f'interpolated_frame_{i}.png'
+        cv2.imwrite(frame_path, frame)
+
+def save_interpolated_frames(frames):
+    for i, frame in enumerate(frames):
+        frame_path = f'interpolated_frame_{i}.png'
+        cv2.imwrite(frame_path, frame)
 #!/usr/bin/env python3
 import os
+import kling
+import cv2
 import subprocess
 import argparse
 from kling import interpolate_frames
@@ -26,7 +38,11 @@ def main():
         run_command('python3 /Users/sophiacave/lyra-app/studio/narration-generator.py')
         run_command('python3 /Users/sophiacave/lyra-app/studio/composer.py')
         run_command('python3 /Users/sophiacave/lyra-app/studio/cinema-grade-effects.py')
-        run_command(f'ffmpeg -f concat -safe 0 -i /Users/sophiacave/lyra-app/concat_list.txt -c copy /Users/sophiacave/lyra-app/final_video.mp4')
+            # Interpolate frames using KLING I2V
+    interpolated_frames = kling.interpolate_frames(start_frame, end_frame)
+    save_interpolated_frames(interpolated_frames)
+
+    run_command(f'ffmpeg -f concat -safe 0 -i /Users/sophiacave/lyra-app/concat_list.txt -c copy /Users/sophiacave/lyra-app/final_video.mp4')
 
 if __name__ == '__main__':
     main()
