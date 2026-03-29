@@ -199,8 +199,9 @@ Glass effect: `rgba(255,255,255,0.04)` background + `blur(40px)` + `1px solid rg
 
 ## IMPLEMENTATION
 
-- **Code source of truth**: `studio/lib/design-tokens.js`
-- **Graphics engine**: `studio/graphics-engine.py` (Pillow renderer)
-- **Composition engine**: `studio/compose-v4.js`
+- **Cinema design system (JSON)**: `src/lib/design-system-cinema.json` — universal interchange format consumed by all pipeline modules
+- **Code source of truth (JS)**: `studio/lib/design-tokens.js` — JS exports with helpers
+- **Graphics engine**: `studio/graphics-engine.py` (Pillow renderer, loads cinema JSON)
+- **Composition engine**: `studio/compose-v4.js` (loads cinema JSON for fallback colors)
 - **Editing engine**: `studio/lib/editing-engine.js` (beat pauses, crossfades)
 - **Remotion components**: `studio/remotion/` (Three.js title cards, motion graphics)
