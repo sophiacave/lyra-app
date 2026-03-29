@@ -146,6 +146,12 @@ RENDERING_PRESETS = {
         'letterbox': False,
         'glow': {'radius': 280, 'opacity': 0.04},
     },
+    'montage': {
+        'vignette': 0.35,
+        'grain': 0.025,
+        'letterbox': False,
+        'glow': {'radius': 0, 'opacity': 0},
+    },
 }
 
 # ── Font Loading ──
