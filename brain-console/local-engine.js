@@ -3468,4 +3468,4 @@ You have access to: Supabase brain (25+ tables), Ollama (local AI), Like One Stu
   getCommandCount() { return 79; }
 }
 
-module.exports = LocalEngine;
+module.exports = { LocalEngine };
