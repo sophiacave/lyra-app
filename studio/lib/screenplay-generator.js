@@ -21,6 +21,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
+import { ollamaChat, ollamaHealthCheck } from './ollama-engine.js';
 
 // ── Constants ──
 
@@ -257,7 +258,42 @@ async function callOpenAI(apiKey, systemPrompt, userPrompt, model = 'gpt-4o') {
   return content;
 }
 
+async function callOllama(systemPrompt, userPrompt, model = 'qwen2.5:32b') {
+  const result = await ollamaChat({
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt },
+      { role: 'assistant', content: '{' },
+    ],
+    model,
+    temperature: 0.7,
+    timeout: 180000,
+  });
+
+  // Reconstruct JSON (prefilled with '{')
+  return '{' + result.text;
+}
+
 async function callLLM(apiKey, systemPrompt, userPrompt, model, provider) {
+  // Token resilience: try Ollama first unless explicitly requesting cloud
+  if (provider === 'ollama') {
+    return callOllama(systemPrompt, userPrompt, model);
+  }
+
+  if (provider !== 'openai' && provider !== 'anthropic') {
+    // Auto-route: try local first, fall back to cloud
+    const health = await ollamaHealthCheck();
+    if (health.healthy && health.models.some(m => m.includes('qwen2.5'))) {
+      try {
+        console.log('  [Token Resilience] Using local Ollama (qwen2.5:32b)...');
+        return await callOllama(systemPrompt, userPrompt, 'qwen2.5:32b');
+      } catch (err) {
+        console.log(`  [Token Resilience] Ollama failed: ${err.message.slice(0, 80)}`);
+        console.log('  [Token Resilience] Falling back to Claude API...');
+      }
+    }
+  }
+
   if (provider === 'openai') {
     return callOpenAI(apiKey, systemPrompt, userPrompt, model);
   }
@@ -483,7 +519,7 @@ function estimateDuration(screenplay) {
  * @param {number} [opts.durationTarget=120] - Target duration in seconds
  * @param {string} [opts.style='explainer'] - Lesson style: explainer, tutorial, comparison
  * @param {string} [opts.theme] - Color theme override
- * @param {string} [opts.provider='anthropic'] - LLM provider: 'anthropic' (default) or 'openai'
+ * @param {string} [opts.provider='auto'] - LLM provider: 'auto' (local first), 'ollama', 'anthropic', or 'openai'
  * @param {string} [opts.model] - Model override (default: claude-sonnet-4-6 or gpt-4o)
  * @param {string} [opts.apiKey] - API key (falls back to env/credentials)
  * @returns {Promise<{screenplay: Object, estimatedDuration: number, issues: string[], provider: string, model: string}>}
@@ -495,7 +531,7 @@ export async function generateScreenplay(opts) {
     durationTarget = 120,
     style = 'explainer',
     theme,
-    provider = 'anthropic',
+    provider = 'auto',
     model: modelOverride,
     apiKey: providedKey,
   } = opts;
@@ -506,8 +542,9 @@ export async function generateScreenplay(opts) {
   const defaultModel = provider === 'openai' ? 'gpt-4o' : 'claude-sonnet-4-6';
   const model = modelOverride || defaultModel;
 
-  const apiKey = providedKey || resolveApiKey(provider);
-  if (!apiKey) {
+  // For local-first providers, API key is optional (only needed for cloud fallback)
+  const apiKey = providedKey || resolveApiKey(provider === 'auto' ? 'anthropic' : provider);
+  if (!apiKey && (provider === 'anthropic' || provider === 'openai')) {
     const envVar = provider === 'anthropic' ? 'ANTHROPIC_API_KEY' : 'OPENAI_API_KEY';
     throw new Error(
       `No ${provider} API key found. Set ${envVar} env var, add it to .env, or provide via opts.apiKey`
@@ -664,7 +701,7 @@ Examples:
   const duration = parseInt(getArg('duration') || '120', 10);
   const style = getArg('style') || 'explainer';
   const theme = getArg('theme');
-  const provider = getArg('provider') || 'anthropic';
+  const provider = getArg('provider') || 'auto';
   const model = getArg('model');
   const outPath = getArg('out');
   const dryRun = args.includes('--dry-run');

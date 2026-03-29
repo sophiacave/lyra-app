@@ -1,0 +1,77 @@
+{
+  "version": "4.0",
+  "title": "What Are Embeddings",
+  "persona": "lyra",
+  "colorTheme": "rag-vectors",
+  "duration_target_s": 120,
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "broll",
+      "dialogue": "What if every word had an address? A precise location in mathematical space that captures exactly what it means.",
+      "visual": "Cinematic flythrough of a vast 3D space with luminous floating points, clusters of similar colors grouping together, camera slowly pushing through like flying through a galaxy, purple-blue-teal palette",
+      "beat": "intrigue"
+    },
+    {
+      "id": "define",
+      "type": "presenter",
+      "dialogue": "An embedding is a list of numbers that represents meaning. Not spelling. Not grammar. Meaning. The word happy gets a set of coordinates. Joyful gets coordinates right next to it. Sad lives on the other side of the map.",
+      "direction": "Medium shot, direct to camera. Clear, precise delivery. Slight excitement on 'meaning.'",
+      "beat": "teach"
+    },
+    {
+      "id": "why-matters",
+      "type": "presenter",
+      "dialogue": "Here is why this changes everything. When you ask an AI a question, it does not search for matching words. It searches for matching meaning. Your question becomes a point in space, and the AI finds the closest answers — even if they use completely different words.",
+      "direction": "Leaning forward, building energy. This is the key insight.",
+      "beat": "concept"
+    },
+    {
+      "id": "semantic-search",
+      "type": "broll+text",
+      "dialogue": "That is semantic search. That is the magic behind every AI that feels like it understands you.",
+      "visual": "Abstract visualization: a question transforms into a glowing point, then nearby points light up in response, connections forming like synapses, warm golden light spreading through the network",
+      "text_overlay": "Semantic Search",
+      "beat": "revelation"
+    },
+    {
+      "id": "dimensions",
+      "type": "presenter+overlay",
+      "dialogue": "Each number in the embedding captures something specific. One dimension might track sentiment. Another formality. Another topic. A typical embedding has seven hundred and sixty-eight dimensions — that is seven hundred and sixty-eight different aspects of what a word means.",
+      "overlay": "Animated bar chart growing: dimensions appearing one by one, each labeled (sentiment, formality, topic, abstraction...), counter climbing to 768",
+      "direction": "Medium shot, gesturing upward as numbers climb. Nerdy excitement visible.",
+      "beat": "teach"
+    },
+    {
+      "id": "stat",
+      "type": "broll",
+      "dialogue": "",
+      "visual": "Dramatic slow reveal: the number 768 materializing in vast space, each digit glowing, camera pulling back to show it surrounded by streaming data points, cinematic scale",
+      "beat": "awe",
+      "duration_s": 4
+    },
+    {
+      "id": "brain",
+      "type": "presenter",
+      "dialogue": "This is how your AI brain works. Every memory gets embedded — turned into coordinates. Every question gets embedded. And the closest memories become context for the answer. The better the embeddings, the smarter the brain.",
+      "direction": "Close-up, building to conclusion. Voice warm and confident. This is Lyra's domain.",
+      "beat": "concept"
+    },
+    {
+      "id": "landing",
+      "type": "broll",
+      "dialogue": "Embeddings are the foundation of RAG, of semantic search, of everything that makes AI feel like it truly understands. A map where meaning has coordinates.",
+      "visual": "Extreme wide shot: vast embedding space resolving into a beautiful geometric structure, points connected by light, rotating slowly like a constellation map, cinematic lens flare at center",
+      "beat": "revelation"
+    },
+    {
+      "id": "outro",
+      "type": "broll+text",
+      "dialogue": "",
+      "visual": "Atmospheric fade: embedding space dissolving into soft purple-teal gradient, peaceful resolution",
+      "text_overlay": "Next: How Vector Search Works\nlikeone.ai",
+      "beat": "close",
+      "duration_s": 5
+    }
+  ]
+}
