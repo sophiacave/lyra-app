@@ -30,48 +30,51 @@ OUTPUT = ROOT / "output"
 GFX_DIR = OUTPUT / "graphics"
 GFX_DIR.mkdir(parents=True, exist_ok=True)
 
-# ── Visual Bible V2 Palette (from design-tokens.js) ──
-COLORS = {
-    "void":     (11,  10,  16),    # #0B0A10 — deep aubergine-black
-    "chalk":    (240, 235, 227),   # #F0EBE3 — bone white
-    "smoke":    (138, 132, 144),   # #8A8490 — mauve gray
-    "ash":      (45,  42,  51),    # #2D2A33 — warm charcoal
-    "signal":   (212, 149, 107),   # #D4956B — terracotta (input/data)
-    "process":  (139, 175, 196),   # #8BAFC4 — dusty blue (process)
-    "result":   (140, 184, 158),   # #8CB89E — sage (output/growth)
-    "alert":    (196,  97, 106),   # #C4616A — muted rose
-    "insight":  (184, 152, 200),   # #B898C8 — wisteria (aha)
-    "bone":     (232, 221, 208),   # #E8DDD0
-    "obsidian": (26,  23,  32),    # #1A1720
-    "blush":    (212, 160, 160),   # #D4A0A0
-    "gold":     (196, 168, 108),   # #C4A86C
-}
+# ── Load Cinema Design System (single source of truth) ──
+CINEMA_JSON = ROOT / "src" / "lib" / "design-system-cinema.json"
+with open(CINEMA_JSON) as f:
+    DS = json.load(f)
 
-# Course accent colors (from design-tokens.js courseThemes)
-COURSE_ACCENTS = {
-    "ai-foundations":   (139, 175, 196),   # process blue
-    "how-ai-works":     (184, 152, 200),   # insight purple
-    "rag-vectors":      (155, 136, 184),   # depth purple
-    "prompt-craft":     (212, 149, 107),   # signal terracotta
-    "prompt-writing":   (212, 149, 107),   # alias for prompt-craft
-    "ethics-safety":    (140, 184, 158),   # result sage
-    "creatives":        (212, 160, 160),   # blush rose
-    "business":         (196, 168, 108),   # gold
-    "claude-beginners": (184, 152, 200),   # insight purple
-}
+# ── Colors (from design-system-cinema.json) ──
+def _build_colors():
+    """Build flat color dict from cinema JSON color groups."""
+    c = {}
+    for group in ("foundations", "semantic", "accents"):
+        for name, val in DS["colors"][group].items():
+            c[name] = tuple(val["rgb"])
+    return c
 
-# Beat → accent mapping for scene-specific accents
-BEAT_ACCENTS = {
-    "hook":    "signal",
-    "setup":   "process",
-    "core":    "process",
-    "breathe": "insight",
-    "deepen":  "process",
-    "peak":    "gold",
-    "close":   "insight",
-}
+COLORS = _build_colors()
 
-W, H = 1920, 1080
+# ── Course accent colors (resolved from courseThemes → semantic/accent names) ──
+def _build_course_accents():
+    ca = {}
+    for course, theme in DS["courseThemes"].items():
+        accent_name = theme["accent"]
+        ca[course] = COLORS.get(accent_name, COLORS["process"])
+    return ca
+
+COURSE_ACCENTS = _build_course_accents()
+
+# ── Beat → accent mapping (from beats section) ──
+BEAT_ACCENTS = {beat: info["accent"] for beat, info in DS["beats"].items()}
+
+# ── Typography scale ──
+TYPE = DS["typography"]["scale"]
+
+# ── Grid & Layout ──
+GRID = DS["grid"]
+MARGINS = GRID["margins"]
+
+# ── Cinema grade ──
+CINEMA = DS["cinemaGrade"]
+
+# ── Depth / Glow ──
+GLOW = DS["depth"]["glow"]
+
+# ── Video dimensions ──
+W = DS["video"]["width"]
+H = DS["video"]["height"]
 
 # ── Font Loading ──
 FONT_PATH = "/System/Library/Fonts/SFNS.ttf"
@@ -175,6 +178,7 @@ def render_title_card(title, subtitle="", accent_rgb=None, theme_bg=None):
     """
     Opening/closing title card.
     McQueen: devastating simplicity. One title. One accent line. Void.
+    Typography: display scale (72pt/700) for title, body scale (22pt) for subtitle.
     """
     if accent_rgb is None:
         accent_rgb = COLORS["process"]
@@ -182,16 +186,20 @@ def render_title_card(title, subtitle="", accent_rgb=None, theme_bg=None):
     bg_bot = theme_bg[1] if theme_bg else COLORS["obsidian"]
 
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, 0.5)
-    img = noise_overlay(img, 4)
+    img = vignette(img, CINEMA["vignette"]["titleCard"])
+    img = noise_overlay(img, CINEMA["grainAmount"])
     draw = ImageDraw.Draw(img)
 
-    # Title — centered, large
-    f_title = font(72)
-    f_sub = font(24)
+    # Title — display scale, centered
+    t_display = TYPE["display"]
+    t_body = TYPE["body"]
+    f_title = font(t_display["size"])
+    f_sub = font(t_body["size"])
 
-    lines = wrap_text(title, f_title, W - 400)
-    total_h = sum(f_title.getbbox(l)[3] - f_title.getbbox(l)[1] + 16 for l in lines)
+    max_text_w = W - MARGINS["content"] * 2
+    lines = wrap_text(title, f_title, max_text_w)
+    line_gap = int(t_display["size"] * (t_display["leading"] - 1.0))
+    total_h = sum(f_title.getbbox(l)[3] - f_title.getbbox(l)[1] + line_gap for l in lines)
     y = (H - total_h) // 2 - 40
 
     for line in lines:
@@ -199,7 +207,7 @@ def render_title_card(title, subtitle="", accent_rgb=None, theme_bg=None):
         lw = bbox[2] - bbox[0]
         x = (W - lw) // 2
         draw.text((x, y), line, fill=COLORS["chalk"], font=f_title)
-        y += bbox[3] - bbox[1] + 16
+        y += bbox[3] - bbox[1] + line_gap
 
     # Accent line below title
     line_y = y + 20
@@ -213,7 +221,8 @@ def render_title_card(title, subtitle="", accent_rgb=None, theme_bg=None):
         draw.text(((W - sw) // 2, line_y + 30), subtitle, fill=COLORS["smoke"], font=f_sub)
 
     # Soft glow behind title (Rothko warmth)
-    img = glow_circle(img, (W // 2, H // 2 - 30), 300, accent_rgb, 0.06)
+    glow_cfg = GLOW["titleCard"]
+    img = glow_circle(img, (W // 2, H // 2 - 30), glow_cfg["radius"], accent_rgb, glow_cfg["opacity"])
 
     return img.convert("RGB")
 
@@ -222,6 +231,7 @@ def render_lower_third(name, role="", accent_rgb=None):
     """
     Lower-third name card — transparent PNG overlay.
     Apple-style glass: subtle blur backing, thin border, restrained type.
+    Typography: headline scale (28pt/600) for name, callout scale (18pt/500) for role.
     Returns RGBA image (overlay onto video frame).
     """
     if accent_rgb is None:
@@ -230,12 +240,12 @@ def render_lower_third(name, role="", accent_rgb=None):
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    # Glass backing rectangle — bottom-left, with generous margin
-    margin_left = 120
-    margin_bottom = 100
+    # Glass backing rectangle — bottom-left, design system margins
+    margin_left = MARGINS["outer"]
+    margin_bottom = MARGINS["inner"] + 20
     pad_x, pad_y = 32, 20
-    f_name = font(28)
-    f_role = font(18)
+    f_name = font(TYPE["headline"]["size"])
+    f_role = font(TYPE["callout"]["size"])
 
     name_bbox = f_name.getbbox(name)
     name_w = name_bbox[2] - name_bbox[0]
@@ -284,6 +294,7 @@ def render_text_overlay(text, style="default", accent_rgb=None):
     """
     Text overlay — transparent PNG for compositing.
     Styles: 'default', 'kinetic_reveal', 'quote', 'stat'.
+    Typography mapped to design system scale per style.
     Returns RGBA image.
     """
     if accent_rgb is None:
@@ -293,41 +304,46 @@ def render_text_overlay(text, style="default", accent_rgb=None):
     draw = ImageDraw.Draw(img)
 
     if style == "kinetic_reveal":
-        # Big words stacked vertically — one per line, centered
-        f_big = font(56)
+        # Big words stacked — title1 scale (56pt/600)
+        t = TYPE["title1"]
+        f_big = font(t["size"])
+        line_h = int(t["size"] * t["leading"])
         parts = [p.strip() for p in text.replace("→", "\n").replace("->", "\n").split("\n") if p.strip()]
-        total_h = len(parts) * 80
+        total_h = len(parts) * line_h
         y = (H - total_h) // 2
 
         for i, part in enumerate(parts):
             bbox = f_big.getbbox(part)
             pw = bbox[2] - bbox[0]
             x = (W - pw) // 2
-            # Alternating accent colors
             color = accent_rgb if i % 2 == 0 else COLORS["chalk"]
             draw.text((x, y), part, fill=rgb_alpha(color, 0.9), font=f_big)
-            y += 80
+            y += line_h
 
     elif style == "quote":
-        f_quote = font(36)
-        lines = wrap_text(f'"{text}"', f_quote, W - 500)
-        total_h = len(lines) * 52
+        # Quote — title3 scale (34pt/600)
+        t = TYPE["title3"]
+        f_quote = font(t["size"])
+        line_h = int(t["size"] * t["leading"])
+        max_w = W - MARGINS["content"] * 2 - 100
+        lines = wrap_text(f'"\u200b{text}"', f_quote, max_w)
+        total_h = len(lines) * line_h
         y = (H - total_h) // 2
 
         # Subtle quote mark
         f_mark = font(120)
-        draw.text((200, y - 80), "\u201C", fill=rgb_alpha(accent_rgb, 0.15), font=f_mark)
+        draw.text((MARGINS["content"], y - 80), "\u201C", fill=rgb_alpha(accent_rgb, 0.15), font=f_mark)
 
         for line in lines:
             bbox = f_quote.getbbox(line)
             lw = bbox[2] - bbox[0]
             draw.text(((W - lw) // 2, y), line, fill=rgb_alpha(COLORS["chalk"], 0.9), font=f_quote)
-            y += 52
+            y += line_h
 
     elif style == "stat":
-        # Large number/stat centered
-        f_stat = font(96)
-        f_label = font(22)
+        # Large stat — hero scale (96pt/700) + body label (22pt/400)
+        f_stat = font(TYPE["hero"]["size"])
+        f_label = font(TYPE["body"]["size"])
         parts = text.split("|") if "|" in text else [text, ""]
         stat_text = parts[0].strip()
         label_text = parts[1].strip() if len(parts) > 1 else ""
@@ -342,17 +358,20 @@ def render_text_overlay(text, style="default", accent_rgb=None):
             draw.text(((W - lw) // 2, H // 2 + 50), label_text, fill=COLORS["smoke"] + (200,), font=f_label)
 
     else:
-        # Default: centered text block
-        f_text = font(34)
-        lines = wrap_text(text, f_text, W - 400)
-        total_h = len(lines) * 48
+        # Default: centered text block — title3 scale (34pt/600)
+        t = TYPE["title3"]
+        f_text = font(t["size"])
+        line_h = int(t["size"] * t["leading"])
+        max_w = W - MARGINS["content"] * 2
+        lines = wrap_text(text, f_text, max_w)
+        total_h = len(lines) * line_h
         y = (H - total_h) // 2
 
         for line in lines:
             bbox = f_text.getbbox(line)
             lw = bbox[2] - bbox[0]
             draw.text(((W - lw) // 2, y), line, fill=rgb_alpha(COLORS["chalk"], 0.85), font=f_text)
-            y += 48
+            y += line_h
 
     return img
 
@@ -360,6 +379,7 @@ def render_text_overlay(text, style="default", accent_rgb=None):
 def render_section_header(label, beat="core", accent_rgb=None):
     """
     Section header — full-frame with overline label.
+    Typography: overline scale (13pt/600, +2.0 tracking).
     Used for beat transitions (e.g., "CORE CONCEPT", "THE REVEAL").
     """
     if accent_rgb is None:
@@ -368,12 +388,12 @@ def render_section_header(label, beat="core", accent_rgb=None):
     bg_top = COLORS["void"]
     bg_bot = COLORS["obsidian"]
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, 0.45)
-    img = noise_overlay(img, 3)
+    img = vignette(img, CINEMA["vignette"]["sectionHeader"])
+    img = noise_overlay(img, CINEMA["grainAmount"] - 1)
     draw = ImageDraw.Draw(img)
 
-    # Overline (small caps, tracked)
-    f_over = font(13)
+    # Overline (small caps, tracked) — overline scale from design system
+    f_over = font(TYPE["overline"]["size"])
     overline = label.upper()
     over_bbox = f_over.getbbox(overline)
     ow = over_bbox[2] - over_bbox[0]
@@ -384,7 +404,8 @@ def render_section_header(label, beat="core", accent_rgb=None):
     accent_line(draw, line_y, accent_rgb, (W - 60) // 2, (W + 60) // 2, 2)
 
     # Soft glow
-    img = glow_circle(img, (W // 2, H // 2), 200, accent_rgb, 0.05)
+    glow_cfg = GLOW["sectionHeader"]
+    img = glow_circle(img, (W // 2, H // 2), glow_cfg["radius"], accent_rgb, glow_cfg["opacity"])
 
     return img.convert("RGB")
 
@@ -392,8 +413,8 @@ def render_section_header(label, beat="core", accent_rgb=None):
 def render_diagram_placeholder(scene, accent_rgb=None):
     """
     Diagram placeholder — structured background for scenes with type='diagram'.
-    Shows the scene description with a clean layout, ready for manim/Remotion overlay.
-    Not a final diagram — a production-quality backdrop.
+    Typography: overline (13pt) for label, callout (18pt) for description.
+    Grid: uses composition margins + corner marks at content boundary.
     """
     if accent_rgb is None:
         accent_rgb = COLORS["process"]
@@ -401,51 +422,55 @@ def render_diagram_placeholder(scene, accent_rgb=None):
     bg_top = COLORS["void"]
     bg_bot = (15, 13, 22)  # slightly lighter than obsidian
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, 0.35)
+    img = vignette(img, CINEMA["vignette"]["diagram"])
     draw = ImageDraw.Draw(img)
 
-    # Grid dots (subtle structure hint)
+    # Grid dots (subtle structure hint) — spaced at 5xl (128px) intervals
+    grid_step = DS["spacing"]["3xl"]  # 64px for tighter grid
     dot_color = rgb_alpha(COLORS["ash"], 0.3)
-    for gx in range(0, W, 80):
-        for gy in range(0, H, 80):
+    for gx in range(0, W, grid_step):
+        for gy in range(0, H, grid_step):
             draw.ellipse([gx - 1, gy - 1, gx + 1, gy + 1], fill=dot_color)
 
-    # Scene ID label — top left
-    f_label = font(13)
+    # Scene ID label — top left, at outer margin
+    f_label = font(TYPE["overline"]["size"])
     scene_id = scene.get("id", "diagram")
-    draw.text((120, 60), scene_id.upper(), fill=COLORS["smoke"], font=f_label)
-    accent_line(draw, 82, accent_rgb, 120, 120 + len(scene_id) * 9, 2)
+    draw.text((MARGINS["outer"], 60), scene_id.upper(), fill=COLORS["smoke"], font=f_label)
+    accent_line(draw, 82, accent_rgb, MARGINS["outer"], MARGINS["outer"] + len(scene_id) * 9, 2)
 
     # Diagram description (motion_graphic field) — centered, wrapped
     motion_desc = scene.get("motion_graphic", scene.get("visual", ""))
     if motion_desc:
-        f_desc = font(18)
-        lines = wrap_text(motion_desc, f_desc, W - 400)
-        # Show first 4 lines max (preview, not full spec)
+        f_desc = font(TYPE["callout"]["size"])
+        line_h = int(TYPE["callout"]["size"] * TYPE["callout"]["leading"])
+        max_w = W - MARGINS["content"] * 2
+        lines = wrap_text(motion_desc, f_desc, max_w)
         lines = lines[:4]
         if len(lines) == 4:
             lines[-1] = lines[-1][:60] + "..."
-        total_h = len(lines) * 30
+        total_h = len(lines) * line_h
         y = H // 2 - total_h // 2
 
         for line in lines:
             bbox = f_desc.getbbox(line)
             lw = bbox[2] - bbox[0]
             draw.text(((W - lw) // 2, y), line, fill=rgb_alpha(COLORS["smoke"], 0.6), font=f_desc)
-            y += 30
+            y += line_h
 
-    # Corner marks (compositional grid hints)
+    # Corner marks at content boundary (compositional grid hints)
     mark_color = rgb_alpha(accent_rgb, 0.15)
     mark_len = 30
-    corners = [(200, 200), (W - 200, 200), (200, H - 200), (W - 200, H - 200)]
+    cm = MARGINS["content"]
+    corners = [(cm, cm), (W - cm, cm), (cm, H - cm), (W - cm, H - cm)]
     for cx, cy in corners:
         draw.line([(cx - mark_len, cy), (cx + mark_len, cy)], fill=mark_color, width=1)
         draw.line([(cx, cy - mark_len), (cx, cy + mark_len)], fill=mark_color, width=1)
 
-    img = noise_overlay(img, 3)
+    img = noise_overlay(img, CINEMA["grainAmount"] - 1)
 
     # Soft central glow
-    img = glow_circle(img, (W // 2, H // 2), 350, accent_rgb, 0.04)
+    glow_cfg = GLOW["diagram"]
+    img = glow_circle(img, (W // 2, H // 2), glow_cfg["radius"], accent_rgb, glow_cfg["opacity"])
 
     return img.convert("RGB")
 
@@ -453,7 +478,7 @@ def render_diagram_placeholder(scene, accent_rgb=None):
 def render_outro_card(title, next_lesson="", brand="likeone.ai", accent_rgb=None):
     """
     Outro card — warm dissolve-ready.
-    Shows next lesson prompt + brand.
+    Typography: caption (15pt) for "NEXT", title2 (44pt) for lesson name, callout (18pt) for brand.
     """
     if accent_rgb is None:
         accent_rgb = COLORS["gold"]
@@ -461,17 +486,17 @@ def render_outro_card(title, next_lesson="", brand="likeone.ai", accent_rgb=None
     bg_top = COLORS["void"]
     bg_bot = COLORS["obsidian"]
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, 0.5)
-    img = noise_overlay(img, 4)
+    img = vignette(img, CINEMA["vignette"]["titleCard"])
+    img = noise_overlay(img, CINEMA["grainAmount"])
     draw = ImageDraw.Draw(img)
 
     y_center = H // 2
 
     if next_lesson:
-        # "Next:" overline
-        f_over = font(15)
-        f_next = font(44)
-        f_brand = font(18)
+        # "Next:" — caption scale for overline
+        f_over = font(TYPE["caption"]["size"])
+        f_next = font(TYPE["title2"]["size"])
+        f_brand = font(TYPE["callout"]["size"])
 
         draw.text(((W - f_over.getbbox("NEXT")[2]) // 2, y_center - 60),
                    "NEXT", fill=COLORS["smoke"], font=f_over)
@@ -487,13 +512,14 @@ def render_outro_card(title, next_lesson="", brand="likeone.ai", accent_rgb=None
         bw = bbox_b[2] - bbox_b[0]
         draw.text(((W - bw) // 2, y_center + 50), brand, fill=COLORS["smoke"], font=f_brand)
     else:
-        # Just brand
-        f_brand = font(28)
+        # Just brand — headline scale
+        f_brand = font(TYPE["headline"]["size"])
         bbox_b = f_brand.getbbox(brand)
         bw = bbox_b[2] - bbox_b[0]
         draw.text(((W - bw) // 2, y_center), brand, fill=COLORS["smoke"], font=f_brand)
 
-    img = glow_circle(img, (W // 2, H // 2), 250, accent_rgb, 0.06)
+    glow_cfg = GLOW["titleCard"]
+    img = glow_circle(img, (W // 2, H // 2), 250, accent_rgb, glow_cfg["opacity"])
 
     return img.convert("RGB")
 
@@ -511,19 +537,11 @@ def get_accent_for_scene(scene, color_theme=None):
     return COLORS.get(color_name, COLORS["process"])
 
 def get_theme_gradient(color_theme=None):
-    """Get background gradient for course theme."""
-    theme_grads = {
-        "ai-foundations":   ((11, 10, 16), (26, 37, 53)),
-        "how-ai-works":     ((11, 10, 16), (26, 21, 37)),
-        "rag-vectors":      ((11, 10, 16), (26, 24, 40)),
-        "prompt-craft":     ((11, 10, 16), (26, 21, 16)),
-        "prompt-writing":   ((11, 10, 16), (26, 21, 16)),
-        "ethics-safety":    ((11, 10, 16), (16, 26, 21)),
-        "creatives":        ((11, 10, 16), (26, 16, 21)),
-        "business":         ((11, 10, 16), (26, 24, 16)),
-        "claude-beginners": ((11, 10, 16), (26, 21, 37)),
-    }
-    return theme_grads.get(color_theme, (COLORS["void"], COLORS["obsidian"]))
+    """Get background gradient for course theme from cinema design system."""
+    if color_theme and color_theme in DS["courseThemes"]:
+        grad = DS["courseThemes"][color_theme]["gradient"]
+        return (hex_to_rgb(grad[0]), hex_to_rgb(grad[1]))
+    return (COLORS["void"], COLORS["obsidian"])
 
 
 def process_screenplay(sp_path, scene_filter=None):

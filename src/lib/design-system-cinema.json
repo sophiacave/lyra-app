@@ -1,0 +1,191 @@
+{
+  "_meta": {
+    "name": "Visual Bible V2 — Cinema Design System",
+    "description": "Universal interchange format for McQueen × Rothko × Apple design tokens. Consumed by graphics-engine.py, compose-v4.js, editing-engine.js, and Remotion components.",
+    "source": "studio/DESIGN-SYSTEM.md + studio/lib/design-tokens.js",
+    "version": "2.0"
+  },
+
+  "colors": {
+    "foundations": {
+      "void":     { "hex": "#0B0A10", "rgb": [11, 10, 16],    "usage": "Deep aubergine-black. NEVER pure #000." },
+      "chalk":    { "hex": "#F0EBE3", "rgb": [240, 235, 227], "usage": "Bone white. NEVER pure #FFF." },
+      "smoke":    { "hex": "#8A8490", "rgb": [138, 132, 144], "usage": "Mauve gray. Feminine neutral." },
+      "ash":      { "hex": "#2D2A33", "rgb": [45, 42, 51],    "usage": "Warm charcoal. Subtle structure." }
+    },
+    "semantic": {
+      "signal":   { "hex": "#D4956B", "rgb": [212, 149, 107], "meaning": "INPUT / DATA / The human element" },
+      "process":  { "hex": "#8BAFC4", "rgb": [139, 175, 196], "meaning": "PROCESS / TRANSFORMATION / Thinking" },
+      "result":   { "hex": "#8CB89E", "rgb": [140, 184, 158], "meaning": "OUTPUT / GROWTH / Living success" },
+      "alert":    { "hex": "#C4616A", "rgb": [196, 97, 106],  "meaning": "ATTENTION / Without aggression" },
+      "insight":  { "hex": "#B898C8", "rgb": [184, 152, 200], "meaning": "THE AHA / The sublime" }
+    },
+    "accents": {
+      "bone":     { "hex": "#E8DDD0", "rgb": [232, 221, 208], "usage": "Skeletal elegance. Structural elements." },
+      "obsidian": { "hex": "#1A1720", "rgb": [26, 23, 32],    "usage": "Deepest shadow. Maximum contrast." },
+      "blush":    { "hex": "#D4A0A0", "rgb": [212, 160, 160], "usage": "Muted rose. The feminine touch." },
+      "gold":     { "hex": "#C4A86C", "rgb": [196, 168, 108], "usage": "Earned warmth. Sparingly." }
+    },
+    "rules": [
+      "One accent color per scene. Two maximum.",
+      "Never pure black (#000) or pure white (#FFF).",
+      "Accent on void = the McQueen principle.",
+      "Gradients always start from void."
+    ]
+  },
+
+  "courseThemes": {
+    "ai-foundations":   { "accent": "process",  "mood": "trust",      "gradient": ["#0B0A10", "#1a2535"] },
+    "how-ai-works":     { "accent": "insight",  "mood": "wonder",     "gradient": ["#0B0A10", "#1a1525"] },
+    "rag-vectors":      { "accent": "insight",  "mood": "depth",      "gradient": ["#0B0A10", "#1a1828"] },
+    "prompt-craft":     { "accent": "signal",   "mood": "craft",      "gradient": ["#0B0A10", "#1a1510"] },
+    "prompt-writing":   { "accent": "signal",   "mood": "craft",      "gradient": ["#0B0A10", "#1a1510"] },
+    "ethics-safety":    { "accent": "result",   "mood": "care",       "gradient": ["#0B0A10", "#101a15"] },
+    "creatives":        { "accent": "blush",    "mood": "expression", "gradient": ["#0B0A10", "#1a1015"] },
+    "business":         { "accent": "gold",     "mood": "authority",  "gradient": ["#0B0A10", "#1a1810"] },
+    "claude-beginners": { "accent": "insight",  "mood": "wonder",     "gradient": ["#0B0A10", "#1a1525"] }
+  },
+
+  "typography": {
+    "families": {
+      "display": "'SF Pro Display', 'Inter', -apple-system, system-ui, sans-serif",
+      "text": "'SF Pro Text', 'Inter', -apple-system, system-ui, sans-serif",
+      "mono": "'SF Mono', 'Fira Code', 'JetBrains Mono', monospace"
+    },
+    "scale": {
+      "hero":     { "size": 96, "weight": 700, "tracking": -2.5, "leading": 1.0, "usage": "Full-screen statements" },
+      "display":  { "size": 72, "weight": 700, "tracking": -1.5, "leading": 1.05, "usage": "Title cards" },
+      "title1":   { "size": 56, "weight": 600, "tracking": -1.0, "leading": 1.1, "usage": "Section headers" },
+      "title2":   { "size": 44, "weight": 600, "tracking": -0.5, "leading": 1.15, "usage": "Scene titles" },
+      "title3":   { "size": 34, "weight": 600, "tracking": -0.3, "leading": 1.2, "usage": "Subheadings" },
+      "headline": { "size": 28, "weight": 600, "tracking": 0,    "leading": 1.3, "usage": "Lower thirds, labels" },
+      "body":     { "size": 22, "weight": 400, "tracking": 0.2,  "leading": 1.6, "usage": "Dialogue, explanations" },
+      "callout":  { "size": 18, "weight": 500, "tracking": 0.3,  "leading": 1.5, "usage": "Supporting text" },
+      "caption":  { "size": 15, "weight": 400, "tracking": 0.5,  "leading": 1.4, "usage": "Metadata, timestamps" },
+      "overline": { "size": 13, "weight": 600, "tracking": 2.0,  "leading": 1.3, "usage": "Labels, categories" }
+    },
+    "rules": [
+      "Display sizes (56+): tight tracking, heavy weight.",
+      "Body sizes (22-): positive tracking, relaxed leading.",
+      "Color hierarchy: chalk → smoke → ash. Never skip levels.",
+      "Monospace only for code and data."
+    ]
+  },
+
+  "spacing": {
+    "xs": 4, "sm": 8, "md": 16, "lg": 24, "xl": 32,
+    "2xl": 48, "3xl": 64, "4xl": 96, "5xl": 128, "6xl": 192
+  },
+
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+
+  "grid": {
+    "thirds": {
+      "left": 640, "right": 1280,
+      "top": 360, "bottom": 720
+    },
+    "goldenRatio": 1.618033988749895,
+    "golden": {
+      "left": 1187, "right": 733,
+      "top": 667, "bottom": 413
+    },
+    "margins": {
+      "outer": 120,
+      "inner": 80,
+      "content": 200
+    },
+    "principles": [
+      "Negative space is content. Empty void is a Rothko field.",
+      "One focal point per frame. If everything is important, nothing is.",
+      "Asymmetric balance. Title at left-third, accent at right-golden.",
+      "Vignette always. Radial darkening draws focus. 35-50% intensity.",
+      "Film grain always. Subtle luma noise (3-6). Organic."
+    ]
+  },
+
+  "motion": {
+    "spring": {
+      "confident": { "mass": 0.8, "damping": 15, "stiffness": 200, "usage": "Text, cards, UI" },
+      "smooth":    { "mass": 0.8, "damping": 20, "stiffness": 120, "usage": "Diagrams, concepts" },
+      "bouncy":    { "mass": 0.6, "damping": 8,  "stiffness": 180, "usage": "Emphasis (sparingly!)" },
+      "gentle":    { "mass": 1.2, "damping": 30, "stiffness": 60,  "usage": "Background, ambient" },
+      "exit":      { "mass": 0.4, "damping": 25, "stiffness": 250, "usage": "Clean departure" },
+      "dramatic":  { "mass": 2.0, "damping": 20, "stiffness": 80,  "usage": "Major reveals" }
+    },
+    "duration": {
+      "instant": 0.15,
+      "fast": 0.25,
+      "normal": 0.4,
+      "slow": 0.7,
+      "glacial": 1.2
+    },
+    "stagger": {
+      "tight": 0.04,
+      "normal": 0.08,
+      "loose": 0.15,
+      "wave": 0.25
+    }
+  },
+
+  "beats": {
+    "hook":    { "headPad": 0.15, "tailPause": 0.8,  "accent": "signal",  "visual": "Immediate. Tight. One image." },
+    "setup":   { "headPad": 0.25, "tailPause": 0.5,  "accent": "process", "visual": "Building. Context. Scale." },
+    "core":    { "headPad": 0.15, "tailPause": 0.3,  "accent": "process", "visual": "Teaching. Diagrams. Clear." },
+    "breathe": { "headPad": 0.4,  "tailPause": 1.5,  "accent": "insight", "visual": "Rothko stillness. Let it land." },
+    "deepen":  { "headPad": 0.25, "tailPause": 0.5,  "accent": "process", "visual": "Layering. Complexity. Build." },
+    "peak":    { "headPad": 0.6,  "tailPause": 2.0,  "accent": "gold",    "visual": "McQueen reveal. HOLD." },
+    "close":   { "headPad": 0.4,  "tailPause": 1.5,  "accent": "insight", "visual": "The exhale. Warm. Fade." }
+  },
+
+  "crossfade": {
+    "default": 0.5,
+    "hook→hook": 0.3,
+    "hook→setup": 0.3,
+    "setup→setup": 0.4,
+    "setup→core": 0.4,
+    "core→core": 0.3,
+    "core→breathe": 0.8,
+    "breathe→deepen": 0.6,
+    "deepen→deepen": 0.4,
+    "deepen→peak": 0.3,
+    "peak→deepen": 0.6,
+    "peak→close": 1.0,
+    "close→close": 0.8
+  },
+
+  "cinemaGrade": {
+    "grain": "subtle organic film grain, 3-6 luma noise",
+    "grainAmount": 4,
+    "blacks": "lifted blacks with deep aubergine undertone, never crushed",
+    "highlights": "soft rolloff, warm bone-white peaks",
+    "contrast": "medium contrast, Caravaggio single-source lighting",
+    "negative": "blur, distortion, watermark, text overlay, morphing faces, extra limbs, deformed hands, compression artifacts, flickering, flat lighting",
+    "vignette": {
+      "default": 0.4,
+      "titleCard": 0.5,
+      "sectionHeader": 0.45,
+      "diagram": 0.35
+    }
+  },
+
+  "depth": {
+    "soft":     "0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2)",
+    "medium":   "0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)",
+    "heavy":    "0 16px 64px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.4)",
+    "floating": "0 24px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4)",
+    "glass": {
+      "background": "rgba(255, 255, 255, 0.04)",
+      "blur": 40,
+      "border": "rgba(255, 255, 255, 0.08)"
+    },
+    "glow": {
+      "titleCard": { "radius": 300, "opacity": 0.06 },
+      "sectionHeader": { "radius": 200, "opacity": 0.05 },
+      "diagram": { "radius": 350, "opacity": 0.04 }
+    }
+  }
+}

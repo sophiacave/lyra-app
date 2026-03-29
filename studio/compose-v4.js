@@ -10,6 +10,12 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
 import { getSceneTiming, buildAudioPadFilter, assembleCrossfade, generateEDL } from './lib/editing-engine.js';
 
+// ── Cinema Design System (single source of truth) ──
+const DS = JSON.parse(readFileSync(
+  path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'src', 'lib', 'design-system-cinema.json'),
+  'utf-8'
+));
+
 const STUDIO = path.dirname(new URL(import.meta.url).pathname);
 const ROOT = path.join(STUDIO, '..');
 const OUTPUT = path.join(ROOT, 'output');
@@ -91,15 +97,26 @@ function renderScene(scene, audioFile, persona, slug, idx) {
       : `ffmpeg -y -i "${brollVideo}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
 
   } else {
-    // Check for graphics engine assets (title cards, diagram placeholders)
+    // Check for 3D video title cards first (from render-3d-titles.mjs), then PNG fallback
+    const gfxVideo = path.join(GFX_DIR, `${slug}_${scene.id}.mp4`);
     const gfxTitle = path.join(GFX_DIR, `${slug}_${scene.id}.png`);
     const gfxTitleGeneric = path.join(GFX_DIR, `${slug}_title.png`);
     const gfxOverlay = path.join(GFX_DIR, `${slug}_${scene.id}_overlay.png`);
+    const hasGfxVideo = existsSync(gfxVideo);
     const hasGfx = existsSync(gfxTitle);
     const hasGenericTitle = existsSync(gfxTitleGeneric);
 
-    if (hasGfx || (scene.type === 'title' && hasGenericTitle)) {
-      // Use graphics engine PNG — title cards, diagram placeholders, outro cards
+    if (hasGfxVideo) {
+      // 3D title card video from Remotion Three.js — use directly
+      const vf = 'scale=1920:1080:flags=lanczos:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p';
+      if (audioFile) {
+        cmd = `ffmpeg -y -i "${gfxVideo}" -i "${audioFile}" -filter_complex "[0:v]${vf}[v];[1:a]${audioPad}[a]" -map "[v]" -map "[a]" -c:v libx264 -crf 18 -preset fast -c:a aac -ar 48000 -b:a 192k -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+      } else {
+        cmd = `ffmpeg -y -i "${gfxVideo}" -filter_complex "[0:v]${vf}[v]" -map "[v]" -c:v libx264 -crf 18 -preset fast -t ${totalDur.toFixed(3)} "${outFile}" 2>/dev/null`;
+      }
+
+    } else if (hasGfx || (scene.type === 'title' && hasGenericTitle)) {
+      // Pillow graphics engine PNG fallback — title cards, diagram placeholders
       const gfxFile = hasGfx ? gfxTitle : gfxTitleGeneric;
       const vf = 'scale=1920:1080:flags=lanczos,fps=30,format=yuv420p';
 
@@ -111,11 +128,13 @@ function renderScene(scene, audioFile, persona, slug, idx) {
 
     } else {
       // Fallback: dark atmospheric gradient + voiceover
-      // Visual Bible V2: void=#0B0A10, obsidian=#1A1720
+      // Colors from design-system-cinema.json — void/obsidian palette
+      const voidHex = DS.colors.foundations.void.hex.slice(1);
+      const obsidianHex = DS.colors.foundations.obsidian.hex.slice(1);
       const gradColors = {
-        hook:    '0B0A10', setup:   '0B0A15', core:    '0B0A10',
-        breathe: '0B0A10', deepen:  '0F0D18', peak:    '1A1720',
-        close:   '0B0A10', default: '0B0A10',
+        hook:    voidHex,    setup:   '0B0A15', core:    voidHex,
+        breathe: voidHex,    deepen:  '0F0D18', peak:    obsidianHex,
+        close:   voidHex,    default: voidHex,
       };
       const gradColor = gradColors[scene.beat] || gradColors.default;
       const colorDur = Math.ceil(totalDur) + 1;
