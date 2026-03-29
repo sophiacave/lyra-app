@@ -595,6 +595,153 @@ const validBeats = new Set(['hook', 'setup', 'core', 'breathe', 'deepen', 'peak'
 test('all beats are valid', allScenes.every(s => validBeats.has(s.beat)));
 
 // ═══════════════════════════════════════════════════════
+// 14. LOWERTHIRD PRESENTER OVERLAY ROUTING
+// ═══════════════════════════════════════════════════════
+console.log('\n── LowerThird Presenter Overlay ──');
+
+/**
+ * Simulate the LowerThird overlay logic from SceneRenderer:
+ * - Only renders on broll scenes
+ * - Only when scene.presenter is set
+ * - Appears as Sequence from 0.5s, duration 3s
+ */
+function hasLowerThird(scene) {
+  return scene.type === 'broll' && !!scene.presenter;
+}
+
+// LowerThird appears on broll with presenter
+test('broll + presenter → LowerThird overlay',
+  hasLowerThird({ id: 'intro', type: 'broll', beat: 'hook', presenter: 'Dr. Faye Mitchell' }));
+
+test('broll + presenter + role → LowerThird overlay',
+  hasLowerThird({ id: 'intro', type: 'broll', beat: 'hook', presenter: 'Faye', presenterRole: 'AI Researcher' }));
+
+// No LowerThird without presenter
+test('broll without presenter → no overlay',
+  !hasLowerThird({ id: 'cold-open', type: 'broll', beat: 'hook' }));
+
+test('broll with empty presenter → no overlay',
+  !hasLowerThird({ id: 'cold-open', type: 'broll', beat: 'hook', presenter: '' }));
+
+// No LowerThird on non-broll types (even with presenter)
+test('diagram + presenter → no LowerThird',
+  !hasLowerThird({ id: 'explain', type: 'diagram', beat: 'core', presenter: 'Faye' }));
+
+test('title + presenter → no LowerThird',
+  !hasLowerThird({ id: 'outro', type: 'title', beat: 'close', presenter: 'Faye' }));
+
+test('montage + presenter → no LowerThird',
+  !hasLowerThird({ id: 'montage', type: 'montage', beat: 'peak', presenter: 'Faye' }));
+
+test('outro + presenter → no LowerThird',
+  !hasLowerThird({ id: 'end', type: 'outro', beat: 'close', presenter: 'Faye' }));
+
+// LowerThird with all beat types (any beat is valid for broll overlay)
+for (const beat of ['hook', 'setup', 'core', 'breathe', 'deepen', 'peak', 'close']) {
+  test(`broll/${beat} + presenter → LowerThird`,
+    hasLowerThird({ id: `scene-${beat}`, type: 'broll', beat, presenter: 'Faye' }));
+}
+
+// ═══════════════════════════════════════════════════════
+// 15. LOWERTHIRD TIMING VALIDATION
+// ═══════════════════════════════════════════════════════
+console.log('\n── LowerThird Timing ──');
+
+// Sequence start: fps * 0.5 (half-second delay after scene starts)
+// Duration: fps * 3 (3 seconds)
+const lowerThirdFps = 30;
+const lowerThirdStart = Math.round(lowerThirdFps * 0.5);
+const lowerThirdDuration = Math.round(lowerThirdFps * 3);
+
+test('LowerThird starts at frame 15 (0.5s @ 30fps)', lowerThirdStart === 15);
+test('LowerThird lasts 90 frames (3s @ 30fps)', lowerThirdDuration === 90);
+test('LowerThird ends before a 5s scene ends', lowerThirdStart + lowerThirdDuration < 5 * 30);
+test('LowerThird ends before a 4s scene ends', lowerThirdStart + lowerThirdDuration < 4 * 30);
+
+// Edge: very short scene — LowerThird may exceed scene duration (component handles this gracefully)
+test('LowerThird fits in 4s scene', lowerThirdStart + lowerThirdDuration <= 4 * 30);
+test('LowerThird exceeds 3s scene (acceptable — Sequence clamps)', lowerThirdStart + lowerThirdDuration > 3 * 30);
+
+// ═══════════════════════════════════════════════════════
+// 16. TYPE SYNC — SceneRenderer ↔ LikeOneVideo
+// ═══════════════════════════════════════════════════════
+console.log('\n── Type Sync: SceneRenderer ↔ LikeOneVideo ──');
+
+// Read both files and verify their SceneData type unions match
+const sceneRendererSrc = readFileSync(new URL('../remotion/src/components/SceneRenderer.tsx', import.meta.url), 'utf-8');
+const likeOneVideoSrc = readFileSync(new URL('../remotion/src/compositions/LikeOneVideo.tsx', import.meta.url), 'utf-8');
+
+// Extract type union for scene type
+function extractTypeUnion(src, field) {
+  const regex = new RegExp(`${field}:\\s*("[^"]+?"(?:\\s*\\|\\s*"[^"]+?")*)`);
+  const match = src.match(regex);
+  if (!match) return [];
+  return match[1].split('|').map(s => s.trim().replace(/"/g, '')).sort();
+}
+
+const srTypes = extractTypeUnion(sceneRendererSrc, 'type');
+const lovTypes = extractTypeUnion(likeOneVideoSrc, 'type');
+test('SceneRenderer has "outro" in type union', srTypes.includes('outro'));
+test('LikeOneVideo has "outro" in type union', lovTypes.includes('outro'));
+test('type unions match (SceneRenderer ↔ LikeOneVideo)', JSON.stringify(srTypes) === JSON.stringify(lovTypes));
+
+const srBeats = extractTypeUnion(sceneRendererSrc, 'beat');
+const lovBeats = extractTypeUnion(likeOneVideoSrc, 'beat');
+test('beat unions match (SceneRenderer ↔ LikeOneVideo)', JSON.stringify(srBeats) === JSON.stringify(lovBeats));
+
+// Verify both have presenter fields
+test('SceneRenderer has presenter field', sceneRendererSrc.includes('presenter?: string'));
+test('LikeOneVideo has presenter field', likeOneVideoSrc.includes('presenter?: string'));
+test('SceneRenderer has presenterRole field', sceneRendererSrc.includes('presenterRole?: string'));
+test('LikeOneVideo has presenterRole field', likeOneVideoSrc.includes('presenterRole?: string'));
+
+// Verify LowerThird import in SceneRenderer
+test('SceneRenderer imports LowerThird', sceneRendererSrc.includes("import { LowerThird }"));
+
+// Verify LowerThird is used in broll path (not just imported)
+test('SceneRenderer uses LowerThird in render', sceneRendererSrc.includes('<LowerThird'));
+
+// Verify SceneRenderer imports VIDEO from cinema-tokens
+test('SceneRenderer imports VIDEO constant', sceneRendererSrc.includes('VIDEO'));
+
+// ═══════════════════════════════════════════════════════
+// 17. RENDERING PRESETS COMPLETENESS
+// ═══════════════════════════════════════════════════════
+console.log('\n── Rendering Presets Completeness ──');
+
+// cinema-tokens.ts should have presets for all component types
+const cinemaTokensSrc = readFileSync(new URL('../remotion/src/cinema-tokens.ts', import.meta.url), 'utf-8');
+
+const expectedPresets = [
+  'titleCardCinematic', 'explainerScene', 'quoteCard', 'sectionHeader',
+  'lowerThird', 'comparisonSplit', 'dataViz', 'stepByStep',
+  'chapterCard', 'montageScene', 'outroScene',
+];
+
+for (const preset of expectedPresets) {
+  test(`preset exists: ${preset}`, cinemaTokensSrc.includes(`${preset}:`));
+}
+
+// Every component in SceneRenderer has a corresponding preset
+const componentToPreset = {
+  CinematicTitle3D: 'titleCardCinematic',
+  ExplainerScene: 'explainerScene',
+  QuoteCard: 'quoteCard',
+  SectionHeader: 'sectionHeader',
+  LowerThird: 'lowerThird',
+  ComparisonSplit: 'comparisonSplit',
+  DataViz: 'dataViz',
+  StepByStep: 'stepByStep',
+  ChapterCard: 'chapterCard',
+  MontageScene: 'montageScene',
+  OutroScene: 'outroScene',
+};
+
+for (const [component, preset] of Object.entries(componentToPreset)) {
+  test(`${component} has preset "${preset}" in cinema-tokens`, cinemaTokensSrc.includes(`${preset}:`));
+}
+
+// ═══════════════════════════════════════════════════════
 // SUMMARY
 // ═══════════════════════════════════════════════════════
 console.log('\n' + '═'.repeat(60));

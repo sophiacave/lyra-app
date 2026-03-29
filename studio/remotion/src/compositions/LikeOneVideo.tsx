@@ -24,7 +24,7 @@ interface AudioArcEntry {
 
 interface SceneData {
   id: string;
-  type: "broll" | "diagram" | "title" | "montage";
+  type: "broll" | "diagram" | "title" | "montage" | "outro";
   beat: "hook" | "setup" | "core" | "breathe" | "deepen" | "peak" | "close";
   dialogue: string;
   duration_s: number;
@@ -37,6 +37,9 @@ interface SceneData {
     style: string;
     timing: string;
   };
+  // Presenter overlay (triggers LowerThird on broll scenes)
+  presenter?: string;
+  presenterRole?: string;
   // Runtime paths
   videoPath?: string;
   imagePath?: string;
