@@ -1,7 +1,7 @@
 /**
  * Like One Studio — Design Tokens
- * Inspired by Apple HIG: clarity, deference, depth.
- * Every value is intentional. Every ratio is considered.
+ * Visual Bible V2: McQueen x Rothko x Apple
+ * Every value traces to DESIGN-SYSTEM.md. This is the code source of truth.
  */
 
 // ── Surfaces (Apple-inspired depth layers) ──
@@ -276,3 +276,49 @@ export const COLOR_THEMES = {
 export function getTheme(themeId) {
   return COLOR_THEMES[themeId] || COLOR_THEMES['ai-foundations'];
 }
+
+// ═══════════════════════════════════════════════════
+// VISUAL BIBLE V2 — The Rothko Palette
+// Source of truth: DESIGN-SYSTEM.md
+// These are the ONLY colors for AI-generated visuals.
+// ═══════════════════════════════════════════════════
+
+export const colors = {
+  // Foundations — always present
+  void:     '#0B0A10',  // Deep aubergine-black. NEVER pure #000.
+  chalk:    '#F0EBE3',  // Bone white. NEVER pure #FFF.
+  smoke:    '#8A8490',  // Mauve gray. Feminine neutral.
+  ash:      '#2D2A33',  // Warm charcoal. Subtle structure.
+
+  // Semantic — meaning is fixed
+  signal:   '#D4956B',  // Terracotta. INPUT / DATA / The human element.
+  process:  '#8BAFC4',  // Dusty blue. PROCESS / TRANSFORMATION / Thinking.
+  result:   '#8CB89E',  // Sage. OUTPUT / GROWTH / Living success.
+  alert:    '#C4616A',  // Muted rose. ATTENTION / Without aggression.
+  insight:  '#B898C8',  // Wisteria. THE AHA / The sublime.
+
+  // McQueen accents — devastating single-use
+  bone:     '#E8DDD0',  // Skeletal elegance. Structural elements.
+  obsidian: '#1A1720',  // Deepest shadow. Maximum contrast moments.
+  blush:    '#D4A0A0',  // Muted rose. The feminine touch.
+  gold:     '#C4A86C',  // Earned warmth. Used sparingly.
+};
+
+export const courseThemes = {
+  'ai-foundations':  { accent: '#8BAFC4', mood: 'trust',      gradient: ['#0B0A10', '#1a2535'] },
+  'how-ai-works':    { accent: '#B898C8', mood: 'wonder',     gradient: ['#0B0A10', '#1a1525'] },
+  'rag-vectors':     { accent: '#9B88B8', mood: 'depth',      gradient: ['#0B0A10', '#1a1828'] },
+  'prompt-craft':    { accent: '#D4956B', mood: 'craft',      gradient: ['#0B0A10', '#1a1510'] },
+  'ethics-safety':   { accent: '#8CB89E', mood: 'care',       gradient: ['#0B0A10', '#101a15'] },
+  'creatives':       { accent: '#D4A0A0', mood: 'expression', gradient: ['#0B0A10', '#1a1015'] },
+  'business':        { accent: '#C4A86C', mood: 'authority',  gradient: ['#0B0A10', '#1a1810'] },
+  'claude-beginners':{ accent: '#B898C8', mood: 'wonder',     gradient: ['#0B0A10', '#1a1525'] },
+};
+
+// Cinema grade constants for prompt engine
+export const cinemaGrade = {
+  grain: 'subtle organic film grain, 3-6 luma noise',
+  blacks: 'lifted blacks with deep aubergine undertone, never crushed',
+  highlights: 'soft rolloff, warm bone-white peaks',
+  contrast: 'medium contrast, Caravaggio single-source lighting',
+};
