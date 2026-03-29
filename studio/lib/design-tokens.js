@@ -322,3 +322,73 @@ export const cinemaGrade = {
   highlights: 'soft rolloff, warm bone-white peaks',
   contrast: 'medium contrast, Caravaggio single-source lighting',
 };
+
+// ═══════════════════════════════════════════════════
+// RENDERING PRESETS — Complete visual recipes per scene type
+// Consumed by Remotion components + graphics-engine.py
+// Each preset defines typography, motion, grade, and composition.
+// ═══════════════════════════════════════════════════
+
+export const RENDERING_PRESETS = {
+  titleCardCinematic: {
+    type: 'title',
+    typography: { title: 'display', subtitle: 'overline' },
+    motion: { enter: 'dramatic', exit: 'exit' },
+    vignette: 0.5,
+    grain: 0.035,
+    letterbox: true,
+    glow: { radius: 300, opacity: 0.06 },
+    composition: 'center-weighted, 42% vertical golden ratio zone',
+  },
+  explainerScene: {
+    type: 'diagram',
+    typography: { heading: 'title3', body: 'body', label: 'caption' },
+    motion: { enter: 'confident', exit: 'exit' },
+    vignette: 0.35,
+    grain: 0.025,
+    letterbox: false,
+    glow: { radius: 350, opacity: 0.04 },
+    composition: 'left-aligned, content inset 200px, accent line left edge',
+  },
+  quoteCard: {
+    type: 'title',
+    typography: { quote: 'title2', attribution: 'callout' },
+    fontStack: 'accent',  // Cormorant Garamond italic
+    motion: { enter: 'gentle', exit: 'exit' },
+    vignette: 0.45,
+    grain: 0.04,
+    letterbox: true,
+    glow: { radius: 250, opacity: 0.05 },
+    composition: 'center, cosmic gradient bg, ghostly quotation mark',
+  },
+  sectionHeader: {
+    type: 'title',
+    typography: { overline: 'overline', title: 'title1' },
+    motion: { enter: 'smooth', exit: 'exit' },
+    vignette: 0.45,
+    grain: 0.03,
+    letterbox: true,
+    glow: { radius: 200, opacity: 0.05 },
+    composition: 'center, obsidian bg, gold line above title',
+  },
+  lowerThird: {
+    type: 'overlay',
+    typography: { name: 'headline', role: 'caption' },
+    motion: { enter: 'confident', exit: 'exit' },
+    vignette: 0,
+    grain: 0,
+    letterbox: false,
+    glow: { radius: 0, opacity: 0 },
+    composition: 'bottom-left, title-safe zone, transparent bg',
+  },
+  chapterCard: {
+    type: 'title',
+    typography: { number: 'overline', title: 'title2' },
+    motion: { enter: 'smooth', exit: 'exit' },
+    vignette: 0.40,
+    grain: 0.03,
+    letterbox: true,
+    glow: { radius: 180, opacity: 0.04 },
+    composition: 'center, void bg, number above title',
+  },
+};
