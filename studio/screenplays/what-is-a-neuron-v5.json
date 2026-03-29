@@ -1,0 +1,168 @@
+{
+  "version": "5.0",
+  "title": "What Is a Neuron?",
+  "persona": "faye",
+  "colorTheme": "ai-foundations",
+  "duration_target_s": 150,
+  "color_arc": [
+    "warm-amber",
+    "neutral",
+    "cool-teal",
+    "warm-amber"
+  ],
+  "negative_global": "blur, distortion, watermark, text overlay, morphing faces, extra limbs, deformed hands, compression artifacts, flickering, flat lighting",
+  "audio_arc": [
+    {
+      "phase": "hook",
+      "music_level": -22,
+      "sfx": "sparse",
+      "ambience": "warm room tone"
+    },
+    {
+      "phase": "setup",
+      "music_level": -18,
+      "sfx": "moderate",
+      "ambience": "textured"
+    },
+    {
+      "phase": "core",
+      "music_level": -16,
+      "sfx": "active",
+      "ambience": "present"
+    },
+    {
+      "phase": "breathe",
+      "music_level": -20,
+      "sfx": "gentle",
+      "ambience": "settling"
+    },
+    {
+      "phase": "deepen",
+      "music_level": -14,
+      "sfx": "building",
+      "ambience": "wide"
+    },
+    {
+      "phase": "peak",
+      "music_level": -10,
+      "sfx": "IMPACT",
+      "ambience": "SILENCE then flood"
+    },
+    {
+      "phase": "close",
+      "music_level": -22,
+      "sfx": "fading",
+      "ambience": "warm fade"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "broll",
+      "beat": "hook",
+      "dialogue": "You have eighty-six billion neurons.",
+      "visual": "Extreme wide shot of vast bioluminescent neural network stretching to infinity, volumetric cyan backlight, warm amber key light, from below",
+      "duration_s": 4,
+      "audio_note": "Music from beat 1 — single low synth pad. Narration intimate, close-mic."
+    },
+    {
+      "id": "the-secret",
+      "type": "broll",
+      "beat": "hook",
+      "dialogue": "Each one does something embarrassingly simple.",
+      "visual": "Extreme close-up macro of a single luminous neuron node pulsing with soft light, warm practical light emanating from the neuron itself, cool ambient fill, staticwith subtle depth-of-field breathing",
+      "duration_s": 3,
+      "audio_note": "Pause 0.5s after 'simple' — let it land. SFX: subtle organic pulse on the neuron glow."
+    },
+    {
+      "id": "awe-reveal",
+      "type": "broll",
+      "beat": "setup",
+      "dialogue": "But together, they create everything you have ever experienced.",
+      "visual": "Medium shot pulling back from single neuron to reveal thousands firing in cascading waves of light, bioluminescent rim light, deep volumetric fog creating god rays",
+      "duration_s": 5,
+      "audio_note": "Music adds rhythm element. Voice builds energy. SFX: cascading sparkle as neurons fire in sequence.",
+      "editorial": "KULESHOV: single neuron (intimate) → vast network (awe). The scale shift creates the emotion."
+    },
+    {
+      "id": "hook-claim",
+      "type": "broll",
+      "beat": "setup",
+      "dialogue": "We figured out how to copy this trick. Not perfectly. Not biologically. But mathematically. And it changed everything.",
+      "visual": "Wide overhead shot looking down into a crystalline geometric structure — an artificial neural network rendered as architectural glass and light, cool blue-white key light, reflecting through geometric facets with warm amber accents, slow orbital arc camera circling the structure, clean and mathematical",
+      "duration_s": 7,
+      "audio_note": "Voice builds across the sentence. Music swells on 'changed everything.' Brief 0.3s silence after.",
+      "editorial": "EISENSTEIN INTELLECTUAL MONTAGE: biological network (prev scene) → geometric structure (this scene). Brain builds: nature inspired mathematics."
+    },
+    {
+      "id": "explain-neuron",
+      "type": "diagram",
+      "beat": "core",
+      "dialogue": "An artificial neuron takes in numbers. Multiplies each by a weight — a score that says how important this input is. Adds them all up. And then a tiny function decides: fire, or stay quiet.",
+      "motion_graphic": "Manim/Remotion animated diagram building left-to-right: input arrows flowing in → multiply symbols with weight values appearing (spring animation, staggered) → summation node collecting streams → activation function curve drawing itself → output arrow firing with glow. Clean dark background, teal accent lines, white text labels. Progressive reveal synced to narration phrases.",
+      "duration_s": 18,
+      "audio_note": "Music drops to minimal pad. Voice is clear teaching mode. SFX: each element gets its sound — soft 'tick' for inputs, 'whoosh' for multiply, 'thud' for summation, 'sparkle' for activation firing."
+    },
+    {
+      "id": "simplicity",
+      "type": "broll",
+      "beat": "breathe",
+      "dialogue": "That is it. That is the entire secret.",
+      "visual": "Close-up of a single water droplet falling in slow motion onto a still surface, creating perfect concentric ripples, warm golden backlight, catching the droplet edge with rim lightwith",
+      "duration_s": 5,
+      "audio_note": "DROP ALL MUSIC for 0.5s before 'That is it.' Let the silence create weight. SFX: single water drop impact, then ripple spreading. Music returns softly.",
+      "editorial": "VISUAL METAPHOR: water droplet = simplicity. Ripples = emergent complexity. Concrete before abstract (Mayer)."
+    },
+    {
+      "id": "stack-layers",
+      "type": "broll",
+      "beat": "deepen",
+      "dialogue": "One neuron draws a single line through data. Useless on its own. But stack thousands in layers — and watch what happens.",
+      "visual": "Wide shot of a single glowing line cutting through darkness, camera pulls back to reveal thousands of parallel lines forming a grid, grid folds into a three-dimensional lattice structure of light, cool teal volumetric light, warm amber node points, smooth",
+      "duration_s": 8,
+      "audio_note": "Music builds — add bass pulse, then rhythm, then melody as layers stack. Voice accelerates with energy. SFX: layering sounds, each new layer adds a harmonic.",
+      "text_overlay": {
+        "text": "One → Thousands → Layers → Intelligence",
+        "style": "kinetic_reveal",
+        "timing": "word-by-word synced to narration"
+      }
+    },
+    {
+      "id": "emergence",
+      "type": "broll",
+      "beat": "peak",
+      "dialogue": "The first layer learns edges. The second combines edges into shapes. The third recognizes faces. Complexity emerges from simplicity. That is the magic of neural networks.",
+      "visual": "Extreme close-up of abstract edge patterns sharpening into geometric shapes, shapes assembling into a recognizable human face emerging from pure mathematics — face resolves from wireframe to photorealistic in a single continuous shot, dramatic split lighting — cool analytical teal, from left, warm human amber, from right as the face emerges",
+      "duration_s": 12,
+      "audio_note": "THIS IS THE PEAK. Music at full force when face resolves. 0.7s SILENCE before 'That is the magic.' Then voice drops half a register — intimate, revelatory. Impact SFX on the recognition moment.",
+      "editorial": "EISENSTEIN OVERTONAL MONTAGE: metric (accelerating cuts during edge→shape→face), rhythmic (matching visual complexity), tonal (cool→warm as abstract→human). The cut rhythm + color shift + music swell all peak simultaneously."
+    },
+    {
+      "id": "scale",
+      "type": "broll",
+      "beat": "deepen",
+      "dialogue": "When you talk to an AI, you are sending signals through billions of these neurons, arranged in layers so deep they would fill a skyscraper.",
+      "visual": "Extreme wide shot looking up at a vast vertical tower of interconnected light networks stretching beyond frame — architectural and cosmic simultaneously, volumetric fog with cool teal ambient, warm amber node clusters, creating depth separation, slow tilt upward that never reaches the top",
+      "duration_s": 8,
+      "audio_note": "Music wide and spacious — reverb opens up. Voice has awe in it. SFX: deep resonant hum of the structure, subtle electrical crackle."
+    },
+    {
+      "id": "landing",
+      "type": "broll",
+      "beat": "close",
+      "dialogue": "Each one does its tiny job. And somehow — understanding emerges. That is what a neuron teaches us. Simplicity, stacked deep enough, becomes intelligence.",
+      "visual": "Medium close-up of a single neuron node glowing warmly, camera slowly pulling back to show it nested within a vast but gentle constellation of others — warm and peaceful, not overwhelming, warm golden key light, dominant now with soft cool fill, gentle",
+      "duration_s": 12,
+      "audio_note": "Music resolving — final chord progression. Voice intimate, almost whispered on the last line. 2s silence after final word before outro. SFX: none — let voice and music carry it."
+    },
+    {
+      "id": "outro",
+      "type": "title",
+      "beat": "close",
+      "dialogue": "",
+      "motion_graphic": "Remotion: warm neural constellation slowly dissolves into starfield. 'Next: How Neurons Learn' fades in with spring animation (KineticText component). 'likeone.ai' below in smaller type. Warm amber palette, gentle particle overlay.",
+      "duration_s": 5,
+      "audio_note": "Music fades to silence over 3s. Single soft tone resolves. Ambient room tone holds briefly, then silence."
+    }
+  ]
+}
