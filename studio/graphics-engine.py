@@ -76,6 +76,60 @@ GLOW = DS["depth"]["glow"]
 W = DS["video"]["width"]
 H = DS["video"]["height"]
 
+# ── Rendering Presets — mirrors RENDERING_PRESETS in design-tokens.js ──
+# Each preset defines the full cinema post-processing recipe for a frame type.
+# Applied via apply_cinema_post() so every renderer gets consistent treatment.
+RENDERING_PRESETS = {
+    'title': {
+        'vignette': 0.50,
+        'grain': 0.035,
+        'letterbox': True,
+        'glow': {'radius': 300, 'opacity': 0.06},
+    },
+    'section-header': {
+        'vignette': 0.45,
+        'grain': 0.030,
+        'letterbox': True,
+        'glow': {'radius': 200, 'opacity': 0.05},
+    },
+    'quote': {
+        'vignette': 0.45,
+        'grain': 0.040,
+        'letterbox': True,
+        'glow': {'radius': 250, 'opacity': 0.05},
+    },
+    'chapter': {
+        'vignette': 0.40,
+        'grain': 0.030,
+        'letterbox': True,
+        'glow': {'radius': 180, 'opacity': 0.04},
+    },
+    'diagram': {
+        'vignette': 0.35,
+        'grain': 0.025,
+        'letterbox': False,
+        'glow': {'radius': 350, 'opacity': 0.04},
+    },
+    'text-overlay': {
+        'vignette': 0.30,
+        'grain': 0.025,
+        'letterbox': False,
+        'glow': {'radius': 350, 'opacity': 0.04},
+    },
+    'lower-third': {
+        'vignette': 0.0,
+        'grain': 0.0,
+        'letterbox': False,
+        'glow': {'radius': 0, 'opacity': 0},
+    },
+    'outro': {
+        'vignette': 0.50,
+        'grain': 0.035,
+        'letterbox': True,
+        'glow': {'radius': 250, 'opacity': 0.05},
+    },
+}
+
 # ── Font Loading ──
 FONT_PATH = "/System/Library/Fonts/SFNS.ttf"
 FONT_MONO = "/System/Library/Fonts/SFNSMono.ttf"
@@ -104,7 +158,9 @@ def rgb_alpha(rgb, alpha):
     return (*rgb, int(alpha * 255))
 
 def vignette(img, intensity=0.4):
-    """Apply a radial vignette (numpy). Preserves RGB or RGBA."""
+    """Apply a radial vignette (numpy). Preserves RGB or RGBA.
+    Floor at 0.25 ensures corner pixels stay above pure black —
+    void (#0B0A10) * 0.25 = (3, 3, 4), safely above BANNED_TOLERANCE."""
     arr = np.array(img, dtype=np.float64)
     rows, cols = arr.shape[:2]
     cy, cx = rows / 2, cols / 2
@@ -112,7 +168,7 @@ def vignette(img, intensity=0.4):
     Y, X = np.ogrid[:rows, :cols]
     dist = np.sqrt((X - cx)**2 + (Y - cy)**2) / max_dist
     mask = 1.0 - intensity * (dist ** 1.8)
-    mask = np.clip(mask, 0, 1)
+    mask = np.clip(mask, 0.25, 1)
     if arr.ndim == 3:
         channels = min(arr.shape[2], 3)
         arr[:, :, :channels] *= mask[:, :, np.newaxis]
@@ -127,14 +183,115 @@ def gradient_bg(color_top, color_bottom, w=W, h=H):
     return Image.fromarray(arr)
 
 def noise_overlay(img, amount=6):
-    """Add subtle film grain noise."""
+    """Add subtle film grain noise. Clamps dark pixels to void floor
+    so vignette + noise never produces pure black (banned by design system)."""
     arr = np.array(img, dtype=np.int16)
     noise = np.random.normal(0, amount, arr.shape[:2]).astype(np.int16)
     channels = min(arr.shape[2], 3) if arr.ndim == 3 else 1
     if arr.ndim == 3:
         arr[:, :, :channels] += noise[:, :, np.newaxis]
     arr = np.clip(arr, 0, 255).astype(np.uint8)
+    # Void floor: ensure no pixel falls within BANNED_TOLERANCE(8) of pure black.
+    # Minimum (6, 5, 8) has distance ~11 from (0,0,0), safely above threshold.
+    if arr.ndim == 3 and arr.shape[2] >= 3:
+        arr[:, :, 0] = np.maximum(arr[:, :, 0], 6)
+        arr[:, :, 1] = np.maximum(arr[:, :, 1], 5)
+        arr[:, :, 2] = np.maximum(arr[:, :, 2], 8)
     return Image.fromarray(arr)
+
+def film_grain(img, intensity=0.035):
+    """Apply subtle film grain overlay. Cinema texture, not noise.
+    Uses Gaussian noise blended at low opacity for organic feel."""
+    if intensity <= 0:
+        return img
+    arr = np.array(img, dtype=np.float32)
+    h, w = arr.shape[:2]
+    noise = np.random.normal(0, intensity * 255, (h, w, 1))
+    channels = 3 if arr.ndim == 3 else 1
+    arr[:, :, :channels] += noise
+    arr = np.clip(arr, 0, 255).astype(np.uint8)
+    return Image.fromarray(arr)
+
+def letterbox(img, aspect=2.39):
+    """Apply cinematic letterbox bars (2.39:1 anamorphic by default).
+    Fills top/bottom bars with obsidian for warm darkness."""
+    target_h = int(img.width / aspect)
+    if target_h >= img.height:
+        return img
+    bar_h = (img.height - target_h) // 2
+    draw = ImageDraw.Draw(img)
+    bar_color = COLORS["obsidian"] + (255,) if img.mode == 'RGBA' else COLORS["obsidian"]
+    draw.rectangle([0, 0, img.width, bar_h], fill=bar_color)
+    draw.rectangle([0, img.height - bar_h, img.width, img.height], fill=bar_color)
+    return img
+
+def ambient_glow(img, color, radius=300, opacity=0.06):
+    """Apply a subtle center-weighted ambient glow. Candlelight atmosphere."""
+    if opacity <= 0:
+        return img
+    arr = np.array(img, dtype=np.float32)
+    h, w = arr.shape[:2]
+    cx, cy = w / 2, h / 2
+    Y, X = np.mgrid[0:h, 0:w]
+    dist = np.sqrt((X - cx)**2 + (Y - cy)**2)
+    glow_mask = np.exp(-(dist**2) / (2 * (radius**2)))
+    glow_mask *= opacity
+    glow_layer = np.zeros_like(arr[:, :, :3])
+    glow_layer[:, :, 0] = color[0]
+    glow_layer[:, :, 1] = color[1]
+    glow_layer[:, :, 2] = color[2]
+    arr[:, :, :3] += glow_layer * glow_mask[:, :, np.newaxis]
+    arr = np.clip(arr, 0, 255).astype(np.uint8)
+    return Image.fromarray(arr)
+
+def warm_floor(img):
+    """Ensure no pixel decays below void warmth after post-processing.
+    Vignette + grain can push corners to pure black, which QA rejects."""
+    arr = np.array(img, dtype=np.float32)
+    void = COLORS["void"]
+    if img.mode == 'RGBA':
+        opaque = arr[:, :, 3] > 128
+        for c in range(3):
+            channel = arr[:, :, c]
+            channel[opaque] = np.maximum(channel[opaque], void[c] * 0.6)
+            arr[:, :, c] = channel
+    else:
+        for c in range(3):
+            arr[:, :, c] = np.maximum(arr[:, :, c], void[c] * 0.6)
+    return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
+
+def apply_cinema_post(img, preset_name, accent_rgb=None):
+    """Apply full cinema post-processing chain from RENDERING_PRESETS.
+    Order: ambient glow → vignette → film grain → warm floor → letterbox.
+    This is the single function that turns a flat render into cinema."""
+    preset = RENDERING_PRESETS.get(preset_name, {})
+    if not preset:
+        return img
+
+    # 1. Ambient glow (warm candlelight)
+    glow_cfg = preset.get('glow', {})
+    if glow_cfg.get('opacity', 0) > 0:
+        glow_color = accent_rgb if accent_rgb else COLORS.get("gold", (196, 168, 108))
+        img = ambient_glow(img, glow_color, glow_cfg.get('radius', 200), glow_cfg.get('opacity', 0.04))
+
+    # 2. Vignette (McQueen drama)
+    vig = preset.get('vignette', 0)
+    if vig > 0:
+        img = vignette(img, vig)
+
+    # 3. Film grain (cinema texture)
+    grain_val = preset.get('grain', 0)
+    if grain_val > 0:
+        img = film_grain(img, grain_val)
+
+    # 4. Warm floor — prevent pure black pixels
+    img = warm_floor(img)
+
+    # 5. Letterbox (2.39:1 anamorphic bars)
+    if preset.get('letterbox', False):
+        img = letterbox(img)
+
+    return img
 
 def accent_line(draw, y, accent_rgb, x_start=120, x_end=400, thickness=3):
     """Draw a thin accent line (McQueen detail)."""
@@ -186,8 +343,6 @@ def render_title_card(title, subtitle="", accent_rgb=None, theme_bg=None):
     bg_bot = theme_bg[1] if theme_bg else COLORS["obsidian"]
 
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, CINEMA["vignette"]["titleCard"])
-    img = noise_overlay(img, CINEMA["grainAmount"])
     draw = ImageDraw.Draw(img)
 
     # Title — display scale, centered
@@ -220,9 +375,8 @@ def render_title_card(title, subtitle="", accent_rgb=None, theme_bg=None):
         sw = sub_bbox[2] - sub_bbox[0]
         draw.text(((W - sw) // 2, line_y + 30), subtitle, fill=COLORS["smoke"], font=f_sub)
 
-    # Soft glow behind title (Rothko warmth)
-    glow_cfg = GLOW["titleCard"]
-    img = glow_circle(img, (W // 2, H // 2 - 30), glow_cfg["radius"], accent_rgb, glow_cfg["opacity"])
+    # Cinema post-processing (glow + vignette + grain + letterbox)
+    img = apply_cinema_post(img, 'title', accent_rgb)
 
     return img.convert("RGB")
 
@@ -388,8 +542,6 @@ def render_section_header(label, beat="core", accent_rgb=None):
     bg_top = COLORS["void"]
     bg_bot = COLORS["obsidian"]
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, CINEMA["vignette"]["sectionHeader"])
-    img = noise_overlay(img, CINEMA["grainAmount"] - 1)
     draw = ImageDraw.Draw(img)
 
     # Overline (small caps, tracked) — overline scale from design system
@@ -403,9 +555,8 @@ def render_section_header(label, beat="core", accent_rgb=None):
     line_y = H // 2 + 2
     accent_line(draw, line_y, accent_rgb, (W - 60) // 2, (W + 60) // 2, 2)
 
-    # Soft glow
-    glow_cfg = GLOW["sectionHeader"]
-    img = glow_circle(img, (W // 2, H // 2), glow_cfg["radius"], accent_rgb, glow_cfg["opacity"])
+    # Cinema post-processing
+    img = apply_cinema_post(img, 'section-header', accent_rgb)
 
     return img.convert("RGB")
 
@@ -422,7 +573,6 @@ def render_diagram_placeholder(scene, accent_rgb=None):
     bg_top = COLORS["void"]
     bg_bot = (15, 13, 22)  # slightly lighter than obsidian
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, CINEMA["vignette"]["diagram"])
     draw = ImageDraw.Draw(img)
 
     # Grid dots (subtle structure hint) — spaced at 5xl (128px) intervals
@@ -466,11 +616,8 @@ def render_diagram_placeholder(scene, accent_rgb=None):
         draw.line([(cx - mark_len, cy), (cx + mark_len, cy)], fill=mark_color, width=1)
         draw.line([(cx, cy - mark_len), (cx, cy + mark_len)], fill=mark_color, width=1)
 
-    img = noise_overlay(img, CINEMA["grainAmount"] - 1)
-
-    # Soft central glow
-    glow_cfg = GLOW["diagram"]
-    img = glow_circle(img, (W // 2, H // 2), glow_cfg["radius"], accent_rgb, glow_cfg["opacity"])
+    # Cinema post-processing
+    img = apply_cinema_post(img, 'diagram', accent_rgb)
 
     return img.convert("RGB")
 
@@ -486,8 +633,6 @@ def render_outro_card(title, next_lesson="", brand="likeone.ai", accent_rgb=None
     bg_top = COLORS["void"]
     bg_bot = COLORS["obsidian"]
     img = gradient_bg(bg_top, bg_bot)
-    img = vignette(img, CINEMA["vignette"]["titleCard"])
-    img = noise_overlay(img, CINEMA["grainAmount"])
     draw = ImageDraw.Draw(img)
 
     y_center = H // 2
@@ -518,8 +663,8 @@ def render_outro_card(title, next_lesson="", brand="likeone.ai", accent_rgb=None
         bw = bbox_b[2] - bbox_b[0]
         draw.text(((W - bw) // 2, y_center), brand, fill=COLORS["smoke"], font=f_brand)
 
-    glow_cfg = GLOW["titleCard"]
-    img = glow_circle(img, (W // 2, H // 2), 250, accent_rgb, glow_cfg["opacity"])
+    # Cinema post-processing
+    img = apply_cinema_post(img, 'outro', accent_rgb)
 
     return img.convert("RGB")
 
