@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Like One Studio — Lesson Render Pipeline v2
- * Full 7-phase cinematic pipeline: content analysis → TTS → audio post → pacing → render → merge → QC.
+ * Full 8-phase cinematic pipeline: content analysis → TTS → audio post → pacing → render → merge → cinema grade → QC.
  *
  * Usage: node studio/render-lesson-v2.js [lesson-config.json]
  */
@@ -13,6 +13,7 @@ import {
   processTTS, normalizeLoudness, mixWithMusic, buildSFXTrack,
   mergeVideoAudio, verifyLoudness, correctWPM, WPM_TARGETS, AUDIO,
 } from './lib/audio-engine.js';
+import { cinemaGrade } from './lib/cinema-grade.js';
 
 const STUDIO_DIR = path.dirname(new URL(import.meta.url).pathname);
 const ASSETS_DIR = path.join(STUDIO_DIR, 'assets', 'audio');
@@ -401,8 +402,23 @@ async function renderLessonV2(config) {
     console.log(`  📹 No audio — silent video only`);
   }
 
-  // ── PHASE 7: QUALITY CHECK ──
-  console.log('\n🔍 Phase 7: Quality check...');
+  // ── PHASE 7: CINEMA GRADE ──
+  console.log('\n🎨 Phase 7: Cinema grade...');
+  const gradeResult = await cinemaGrade(finalPath, {
+    theme: config.colorTheme,
+    replaceOriginal: true,
+    grain: true,
+    vignette: true,
+    lessonKey: lessonSlug,
+  });
+  if (gradeResult.success) {
+    console.log(`  ✅ Graded with ${gradeResult.lutUsed} LUT (${(gradeResult.duration / 1000).toFixed(1)}s)`);
+  } else {
+    console.log(`  ⚠️ Cinema grade skipped: ${gradeResult.error}`);
+  }
+
+  // ── PHASE 8: QUALITY CHECK ──
+  console.log('\n🔍 Phase 8: Quality check...');
   const qc = { pass: true, issues: [] };
 
   // Audio loudness
