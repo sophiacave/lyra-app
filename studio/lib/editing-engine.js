@@ -13,6 +13,14 @@ import { execSync } from 'child_process';
 import { writeFileSync, existsSync } from 'fs';
 import path from 'path';
 
+// ── Long Scene Breathing Bonus ──
+// Mayer segmenting principle: longer explanations need more processing time.
+// For scenes with narration > LONG_SCENE_THRESHOLD, add proportional
+// tail pause so breathing ratio stays in the 15-25% target zone.
+// Without this, videos with many long narration scenes (15s+) drop to ~15%.
+const LONG_SCENE_THRESHOLD = 10; // seconds — scenes shorter than this get no bonus
+const LONG_SCENE_BONUS_RATE = 0.08; // seconds per second beyond threshold
+
 // ── Visual Bible V3 Beat Pauses ──
 // Seconds of silence AFTER scene narration ends.
 // Calibrated per beat type for emotional pacing.
@@ -72,7 +80,12 @@ const CROSSFADE = {
 export function getSceneTiming(scene, audioDurS) {
   const beat = scene.beat || 'core';
   const headPad = HEAD_PAD[beat] || 0.2;
-  const tailPause = BEAT_PAUSE[beat] || 0.5;
+  const baseTailPause = BEAT_PAUSE[beat] || 0.5;
+  // Long scene bonus: proportional extra pause for cognitive processing
+  const longBonus = audioDurS > LONG_SCENE_THRESHOLD
+    ? (audioDurS - LONG_SCENE_THRESHOLD) * LONG_SCENE_BONUS_RATE
+    : 0;
+  const tailPause = baseTailPause + longBonus;
   const totalDur = headPad + audioDurS + tailPause;
   return { headPad, tailPause, audioDurS, totalDur, beat };
 }
