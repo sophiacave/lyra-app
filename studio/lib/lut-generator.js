@@ -63,13 +63,17 @@ function hexToRGB(hex) {
  * Filmic S-curve contrast.
  * toe = shadow compression, shoulder = highlight rolloff
  * Emulates the density response of motion picture film.
+ *
+ * V2: Softer curve inspired by McQueen x Rothko aesthetic —
+ * blacks breathe (lifted toe), highlights roll gently (lower shoulder).
+ * The result is elegant, never crushed or blown.
  */
 function filmicCurve(x, contrast = 1.0, pivot = 0.435) {
   // Apply contrast around pivot point
   const adjusted = pivot + (x - pivot) * contrast;
-  // Soft S-curve: toe lifts blacks, shoulder compresses highlights
-  const toe = 0.04;    // Lifted black point (film never hits pure black)
-  const shoulder = 0.97; // Compressed white point (film shoulder rolloff)
+  // V2: Lifted toe + gentle shoulder — Rothko color fields need room to breathe
+  const toe = 0.06;    // Lifted black point (softer than V1's 0.04)
+  const shoulder = 0.95; // Gentle rolloff (softer than V1's 0.97)
 
   if (adjusted <= 0) return toe;
   if (adjusted >= 1) return shoulder;

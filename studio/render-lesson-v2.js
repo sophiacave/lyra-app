@@ -85,13 +85,49 @@ async function generateTTS_S2Pro(text, voiceKey, outputName) {
 }
 
 async function generateTTS_Edge(text, voiceKey, outputName) {
-  const wavPath = path.join(AUDIO_DIR, `${outputName}.mp3`);
-  const voice = voiceKey === 'sophia' ? 'en-US-JennyNeural' : 'en-US-GuyNeural';
-  const cmd = `edge-tts --voice "${voice}" --text "${text.replace(/"/g, '\\"')}" --write-media "${wavPath}"`;
+  const VOICE_MAP = {
+    sophia: 'en-US-AvaNeural',          // Expressive, caring — ideal for educational narration
+    warm: 'en-US-AvaNeural',
+    default: 'en-US-AriaNeural',         // Positive, confident — news/novel style
+    male: 'en-US-AndrewNeural',          // Warm, authentic
+    guy: 'en-US-BrianNeural',            // Approachable, casual
+  };
+
+  const voice = VOICE_MAP[voiceKey] || VOICE_MAP[voiceKey?.replace('s2pro-', '')] || VOICE_MAP.sophia;
+  const mp3Path = path.join(AUDIO_DIR, `${outputName}_edge.mp3`);
+  const wavPath = path.join(AUDIO_DIR, `${outputName}.wav`);
+
+  // Write text to temp file to avoid shell injection with special characters
+  const textFile = path.join(AUDIO_DIR, `${outputName}_text.txt`);
+  writeFileSync(textFile, text, 'utf-8');
+
   try {
-    execSync(cmd, { encoding: 'utf-8', timeout: 30000 });
-    const probe = execSync(`ffprobe -v quiet -show_entries format=duration -of csv=p=0 "${wavPath}"`, { encoding: 'utf-8' }).trim();
-    return { audio_path: wavPath, duration_s: parseFloat(probe) || 5 };
+    console.log(`  🔊 Edge TTS: generating "${outputName}" (${text.length} chars, voice: ${voice})...`);
+    const t0 = Date.now();
+
+    // Generate mp3 via edge-tts (reads text from file via -f flag)
+    execSync(
+      `python3 -m edge_tts --voice "${voice}" -f "${textFile}" --write-media "${mp3Path}"`,
+      { encoding: 'utf-8', timeout: 60000 }
+    );
+
+    // Convert mp3 → wav at 48kHz stereo for pipeline compatibility
+    execSync(
+      `ffmpeg -y -i "${mp3Path}" -ar ${AUDIO.SAMPLE_RATE} -ac 2 "${wavPath}"`,
+      { stdio: 'pipe', timeout: 30000 }
+    );
+
+    const probe = execSync(
+      `ffprobe -v quiet -show_entries format=duration -of csv=p=0 "${wavPath}"`,
+      { encoding: 'utf-8' }
+    ).trim();
+    const dur = parseFloat(probe) || 5;
+    const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+    const words = text.split(/\s+/).length;
+    const wpm = Math.round((words / dur) * 60);
+    console.log(`  ✅ ${dur.toFixed(1)}s audio in ${elapsed}s | ${wpm} WPM (Edge TTS)`);
+
+    return { audio_path: wavPath, duration_s: dur };
   } catch (e) {
     console.error(`  ❌ Edge TTS failed for "${outputName}":`, e.message?.slice(-200));
     return null;
@@ -99,7 +135,11 @@ async function generateTTS_Edge(text, voiceKey, outputName) {
 }
 
 async function generateTTS(text, voiceKey, outputName, engine) {
-  const sel = engine || TTS_ENGINE;
+  // Env var TTS_ENGINE overrides config-level engine (useful when S2-Pro is down)
+  const sel = (process.env.TTS_ENGINE === 'edge') ? 'edge' : (engine || TTS_ENGINE);
+  if (sel === 'edge') {
+    return generateTTS_Edge(text, voiceKey, outputName);
+  }
   if (sel === 's2pro') {
     const result = await generateTTS_S2Pro(text, voiceKey, outputName);
     if (result) return result;
