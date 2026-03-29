@@ -84,7 +84,7 @@ function qaCheckImage(imagePath) {
   if (!existsSync(QA_FRAME)) return { pass: true, skipped: true };
   try {
     const out = execSync(
-      `python3 "${QA_FRAME}" "${imagePath}" --json`,
+      `${PYTHON} "${QA_FRAME}" "${imagePath}" --json`,
       { encoding: 'utf-8', timeout: 30000 }
     );
     return JSON.parse(out);
@@ -100,7 +100,7 @@ function qaCheckVideo(videoFile, numSamples = 3) {
   if (!existsSync(QA_FRAME)) return { pass: true, skipped: true };
   try {
     const out = execSync(
-      `python3 "${QA_FRAME}" "${videoFile}" --sample ${numSamples} --json`,
+      `${PYTHON} "${QA_FRAME}" "${videoFile}" --sample ${numSamples} --json`,
       { encoding: 'utf-8', timeout: 60000 }
     );
     return JSON.parse(out);
@@ -210,7 +210,7 @@ function renderScene(scene, audioFile, persona, slug, idx) {
       // Fallback: dark atmospheric gradient + voiceover
       // Colors from design-system-cinema.json — void/obsidian palette
       const voidHex = DS.colors.foundations.void.hex.slice(1);
-      const obsidianHex = DS.colors.foundations.obsidian.hex.slice(1);
+      const obsidianHex = DS.colors.accents.obsidian.hex.slice(1);
       const gradColors = {
         hook:    voidHex,    setup:   '0B0A15', core:    voidHex,
         breathe: voidHex,    deepen:  '0F0D18', peak:    obsidianHex,
