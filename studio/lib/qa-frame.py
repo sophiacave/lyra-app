@@ -140,7 +140,19 @@ def analyze_frame(img_path, strict=False):
     if not HAS_DEPS:
         return {'pass': False, 'error': 'Missing PIL/numpy. Install: pip install Pillow numpy'}
 
-    img = Image.open(img_path).convert('RGB')
+    img_raw = Image.open(img_path)
+    has_alpha = img_raw.mode == 'RGBA'
+
+    if has_alpha:
+        # For overlay PNGs: build an opaque-pixel mask BEFORE converting to RGB.
+        # Transparent pixels (alpha < 10) would become pure black and false-positive
+        # the banned_colors check.
+        alpha_arr = np.array(img_raw)[:, :, 3]
+        opaque_mask = alpha_arr >= 10  # Pixels with meaningful opacity
+    else:
+        opaque_mask = None
+
+    img = img_raw.convert('RGB')
     arr = np.array(img)
     h, w = arr.shape[:2]
     total_pixels = h * w
@@ -149,9 +161,24 @@ def analyze_frame(img_path, strict=False):
 
     # ── CHECK 1: Banned Colors ──
     # Sample pixels (full scan is slow for 1080p — sample 50k pixels)
-    sample_size = min(50000, total_pixels)
-    indices = np.random.choice(total_pixels, sample_size, replace=False)
+    # For RGBA images: only sample opaque pixels (transparent = composited later)
     flat = arr.reshape(-1, 3)
+    if opaque_mask is not None:
+        opaque_flat = opaque_mask.flatten()
+        opaque_indices = np.where(opaque_flat)[0]
+        if len(opaque_indices) == 0:
+            # Fully transparent image — skip all pixel checks
+            return {
+                'pass': True, 'score': 100, 'checks': [],
+                'critical_fails': 0, 'warnings': 0,
+                'summary': 'PASS — fully transparent overlay (no pixels to check)',
+                'frame': img_path, 'resolution': f'{w}x{h}',
+            }
+        sample_size = min(50000, len(opaque_indices))
+        indices = np.random.choice(opaque_indices, sample_size, replace=False)
+    else:
+        sample_size = min(50000, total_pixels)
+        indices = np.random.choice(total_pixels, sample_size, replace=False)
     sample = flat[indices]
 
     banned_count = 0
@@ -178,6 +205,9 @@ def analyze_frame(img_path, strict=False):
     # Check what % of non-dark pixels are within palette tolerance
     luminance = 0.2126 * arr[:,:,0].astype(float) + 0.7152 * arr[:,:,1].astype(float) + 0.0722 * arr[:,:,2].astype(float)
     non_dark_mask = luminance > DARK_PIXEL_THRESHOLD
+    # For RGBA: also require opacity
+    if opaque_mask is not None:
+        non_dark_mask = non_dark_mask & opaque_mask
     non_dark_pixels = flat[non_dark_mask.flatten()]
 
     if len(non_dark_pixels) > 0:
@@ -211,20 +241,33 @@ def analyze_frame(img_path, strict=False):
         })
 
     # ── CHECK 3: Negative Space ──
-    dark_pixels = np.sum(luminance <= DARK_PIXEL_THRESHOLD)
-    neg_space_pct = dark_pixels / total_pixels
-    neg_space_pass = neg_space_pct >= NEGATIVE_SPACE_MIN
-    neg_space_target = neg_space_pct >= NEGATIVE_SPACE_TARGET
+    if has_alpha:
+        # RGBA overlays are compositing layers — they get placed onto dark backgrounds.
+        # Negative space is provided by the background video, not the overlay itself.
+        # Measuring it here would false-positive because opaque pixels are mostly text.
+        checks.append({
+            'name': 'negative_space',
+            'pass': True,
+            'expected': 'N/A for RGBA overlays (composited onto dark background)',
+            'actual': 'overlay — skipped',
+            'severity': 'info',
+            'target_met': True,
+        })
+    else:
+        dark_pixels = np.sum(luminance <= DARK_PIXEL_THRESHOLD)
+        neg_space_pct = dark_pixels / total_pixels
+        neg_space_pass = neg_space_pct >= NEGATIVE_SPACE_MIN
+        neg_space_target = neg_space_pct >= NEGATIVE_SPACE_TARGET
 
-    checks.append({
-        'name': 'negative_space',
-        'pass': neg_space_pass,
-        'expected': f'>={NEGATIVE_SPACE_MIN*100:.0f}% (target {NEGATIVE_SPACE_TARGET*100:.0f}%)',
-        'actual': f'{neg_space_pct*100:.1f}%',
-        'detail': None if neg_space_pass else f'Frame too busy — only {neg_space_pct*100:.1f}% empty. Rothko says 50%.',
-        'severity': 'critical' if neg_space_pct < 0.20 else 'warning',
-        'target_met': neg_space_target,
-    })
+        checks.append({
+            'name': 'negative_space',
+            'pass': neg_space_pass,
+            'expected': f'>={NEGATIVE_SPACE_MIN*100:.0f}% (target {NEGATIVE_SPACE_TARGET*100:.0f}%)',
+            'actual': f'{neg_space_pct*100:.1f}%',
+            'detail': None if neg_space_pass else f'Frame too busy — only {neg_space_pct*100:.1f}% empty. Rothko says 50%.',
+            'severity': 'critical' if neg_space_pct < 0.20 else 'warning',
+            'target_met': neg_space_target,
+        })
 
     # ── CHECK 4: Dominant Color Count ──
     # Quantize to find dominant colors
@@ -286,7 +329,10 @@ def analyze_frame(img_path, strict=False):
 
     # ── CHECK 6: Void Background Warmth ──
     # The darkest pixels should be warm (aubergine), not pure black
-    darkest_pixels = flat[luminance.flatten() <= 10]
+    dark_lum_mask = luminance.flatten() <= 10
+    if opaque_mask is not None:
+        dark_lum_mask = dark_lum_mask & opaque_mask.flatten()
+    darkest_pixels = flat[dark_lum_mask]
     if len(darkest_pixels) > 100:
         avg_dark = darkest_pixels.mean(axis=0)
         # Void should be (11, 10, 16) — has blue/purple tint
