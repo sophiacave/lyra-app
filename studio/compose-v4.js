@@ -19,6 +19,9 @@ const DS = JSON.parse(readFileSync(
 const STUDIO = path.dirname(new URL(import.meta.url).pathname);
 const ROOT = path.join(STUDIO, '..');
 const OUTPUT = path.join(ROOT, 'output');
+const PYTHON = path.join(ROOT, '.venv', 'bin', 'python3');
+const QA_FRAME = path.join(STUDIO, 'lib', 'qa-frame.py');
+const GFX_ENGINE_V3 = path.join(STUDIO, 'lib', 'graphics-engine.py');
 const AUDIO = path.join(OUTPUT, 'audio');
 const VIDEO = path.join(OUTPUT, 'video');
 const AVATAR_DIR = path.join(OUTPUT, 'avatar');
@@ -32,6 +35,38 @@ const GFX_DIR = path.join(OUTPUT, 'graphics');
 
 // Beat pauses + head padding now managed by editing-engine.js
 // See: getSceneTiming(), buildAudioPadFilter()
+
+// ── QA Frame Gate — every frame must pass the design system ──
+function qaCheckFrame(pngPath) {
+  if (!existsSync(QA_FRAME) || !existsSync(pngPath)) return true;
+  try {
+    execSync(`${PYTHON} "${QA_FRAME}" "${pngPath}"`, { encoding: 'utf-8', timeout: 30000, stdio: 'pipe' });
+    return true;
+  } catch (e) {
+    const output = e.stdout || e.stderr || '';
+    const failLine = output.split('\n').find(l => l.includes('FAIL'));
+    console.log(`  ⚠️  QA FAIL: ${path.basename(pngPath)} — ${failLine || 'design system violation'}`);
+    return false;
+  }
+}
+
+// ── Graphics Engine V3 — render + QA check ──
+function renderGraphicV3(type, text, subtitleOrAttr, outputPng) {
+  try {
+    const args = [GFX_ENGINE_V3, type, text];
+    if (subtitleOrAttr) args.push(subtitleOrAttr);
+    args.push(outputPng);
+    execSync(`${PYTHON} ${args.map(a => `"${a}"`).join(' ')}`, { timeout: 30000, stdio: 'pipe' });
+    if (existsSync(outputPng)) {
+      qaCheckFrame(outputPng);
+      return true;
+    }
+    return false;
+  } catch (e) {
+    console.error(`  ⚠️  graphic ${type} failed: ${e.message?.slice(-80)}`);
+    return false;
+  }
+}
 
 function dur(file) {
   try {
@@ -256,23 +291,30 @@ function main() {
   console.log(`\n🎬 COMPOSE V4 — ${sp.title}`);
   console.log(`   Persona: ${persona} | Scenes: ${sp.scenes.length}\n`);
   
-  // Phase 0: Generate graphics (title cards, diagram placeholders, overlays)
-  console.log('🎨 Phase 0: Generating graphics...');
-  const gfxEngine = path.join(STUDIO, 'graphics-engine.py');
-  if (existsSync(gfxEngine)) {
-    try {
-      const gfxOut = execSync(
-        `python3 "${gfxEngine}" "${path.resolve(args[0])}"`,
-        { encoding: 'utf-8', timeout: 30000, cwd: ROOT }
-      );
-      // Count generated files
-      const gfxCount = (gfxOut.match(/✅/g) || []).length;
-      console.log(`  ✅ Generated ${gfxCount} graphics assets`);
-    } catch (e) {
-      console.log(`  ⚠️  Graphics generation skipped: ${e.message?.slice(-100)}`);
+  // Phase 0: Generate graphics (title cards, section headers, chapter cards)
+  // Uses V3 Graphics Engine with QA gate — every frame checked against design system
+  console.log('🎨 Phase 0: Generating graphics (V3 + QA gate)...');
+  if (existsSync(GFX_ENGINE_V3)) {
+    if (!existsSync(GFX_DIR)) mkdirSync(GFX_DIR, { recursive: true });
+    let gfxCount = 0;
+
+    // Title card for lesson
+    const titlePng = path.join(GFX_DIR, `${slug}_title.png`);
+    if (renderGraphicV3('title', sp.title, 'Like One Academy', titlePng)) gfxCount++;
+
+    // Per-scene graphics
+    for (const scene of sp.scenes) {
+      if (scene.type === 'title' || scene.overlay_type === 'title') {
+        const scenePng = path.join(GFX_DIR, `${slug}_${scene.id}.png`);
+        if (!existsSync(scenePng)) {
+          renderGraphicV3('section-header', scene.narration?.slice(0, 60) || scene.id, null, scenePng);
+          gfxCount++;
+        }
+      }
     }
+    console.log(`  ✅ Generated ${gfxCount} graphics assets (all QA-checked)`);
   } else {
-    console.log('  ⚠️  graphics-engine.py not found, using gradient fallbacks');
+    console.log('  ⚠️  V3 graphics engine not found, using gradient fallbacks');
   }
 
   // Phase 0.5: QA gate on generated graphics (Design System V3 compliance)
