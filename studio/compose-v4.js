@@ -6,7 +6,7 @@
  * Usage: node studio/compose-v4.js studio/screenplays/what-is-a-neuron-v5.json
  */
 import { execSync } from 'child_process';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
 import path from 'path';
 import { getSceneTiming, buildAudioPadFilter, assembleCrossfade, generateEDL } from './lib/editing-engine.js';
 
@@ -41,13 +41,59 @@ function dur(file) {
 
 function slugify(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, ''); }
 
+// ── QA Frame Gate (Design System V3 compliance) ──
+// Calls qa-frame.py to validate rendered frames against the Visual Bible.
+// Returns JSON with pass/fail, score, and detailed check results.
+const QA_FRAME = path.join(STUDIO, 'lib', 'qa-frame.py');
+
+function qaCheckImage(imagePath) {
+  if (!existsSync(QA_FRAME)) return { pass: true, skipped: true };
+  try {
+    const out = execSync(
+      `python3 "${QA_FRAME}" "${imagePath}" --json`,
+      { encoding: 'utf-8', timeout: 30000 }
+    );
+    return JSON.parse(out);
+  } catch (e) {
+    // qa-frame.py exits 1 on QA failure but stdout still has valid JSON
+    const stdout = e.stdout || '';
+    try { return JSON.parse(stdout); } catch {}
+    return { pass: false, error: e.message?.slice(-200) };
+  }
+}
+
+function qaCheckVideo(videoFile, numSamples = 3) {
+  if (!existsSync(QA_FRAME)) return { pass: true, skipped: true };
+  try {
+    const out = execSync(
+      `python3 "${QA_FRAME}" "${videoFile}" --sample ${numSamples} --json`,
+      { encoding: 'utf-8', timeout: 60000 }
+    );
+    return JSON.parse(out);
+  } catch (e) {
+    const stdout = e.stdout || '';
+    try { return JSON.parse(stdout); } catch {}
+    return { pass: false, error: e.message?.slice(-200) };
+  }
+}
+
+// Scene types where design system QA is meaningful (graphics-heavy, not real footage)
+function shouldQaScene(scene) {
+  const gfxTypes = ['title', 'section-header', 'chapter', 'quote', 'diagram', 'text-overlay'];
+  if (gfxTypes.some(t => scene.type.includes(t))) return true;
+  // Skip QA for presenter/broll (real footage won't match palette constraints)
+  if (scene.type.includes('presenter') || scene.type.includes('broll')) return false;
+  // Default: QA fallback/gradient scenes too
+  return true;
+}
+
 // ── Generate a single scene segment ──
 // V2: Uses editing engine for proper head padding + beat pauses.
 // Removes -shortest (which was killing beat pauses) and uses
 // audio pad filter to maintain correct duration with silence.
 function renderScene(scene, audioFile, persona, slug, idx) {
   const outFile = path.join(COMPOSE_TMP, `${slug}_scene_${String(idx).padStart(2,'0')}_${scene.id}.mp4`);
-  if (existsSync(outFile)) { console.log(`  ⏭️  ${scene.id}: cached`); return { file: outFile, timing: null }; }
+  if (existsSync(outFile)) { console.log(`  ⏭️  ${scene.id}: cached`); return { file: outFile, timing: null, qa: null }; }
 
   const audioDur = audioFile ? dur(audioFile) : (scene.duration_s || 5);
   const timing = getSceneTiming(scene, audioDur);
@@ -149,7 +195,7 @@ function renderScene(scene, audioFile, persona, slug, idx) {
 
   if (!cmd) {
     console.log(`  ⚠️  ${scene.id}: no render strategy`);
-    return { file: null, timing };
+    return { file: null, timing, qa: null };
   }
 
   try {
@@ -170,11 +216,29 @@ function renderScene(scene, audioFile, persona, slug, idx) {
       execSync(`mv "${withAudio}" "${outFile}"`);
     }
 
-    console.log(`  ✅ ${scene.id}: ${totalDur.toFixed(1)}s (${scene.type}) [head:${headPad.toFixed(2)}s tail:${timing.tailPause.toFixed(2)}s]`);
-    return { file: outFile, timing };
+    // QA gate: validate design system compliance for graphics-heavy scenes
+    let qa = null;
+    if (shouldQaScene(scene)) {
+      qa = qaCheckVideo(outFile, 2);
+      if (qa.pass || qa.skipped) {
+        console.log(`  ✅ ${scene.id}: ${totalDur.toFixed(1)}s (${scene.type}) [head:${headPad.toFixed(2)}s tail:${timing.tailPause.toFixed(2)}s] QA:PASS`);
+      } else {
+        const score = qa.avg_score ?? qa.score ?? 100;
+        console.log(`  ⚠️  ${scene.id}: ${totalDur.toFixed(1)}s (${scene.type}) QA:FAIL (score:${score}%)`);
+        // Auto-reject only for egregious failures (score <50% = truly off-brand).
+        // Single critical failures (e.g. vignette edge pixels) are warned, not rejected.
+        if (score < 50) {
+          console.log(`  🚫 ${scene.id}: REJECTED — score ${score}% (min 50% to pass)`);
+          return { file: null, timing, qa };
+        }
+      }
+    } else {
+      console.log(`  ✅ ${scene.id}: ${totalDur.toFixed(1)}s (${scene.type}) [head:${headPad.toFixed(2)}s tail:${timing.tailPause.toFixed(2)}s]`);
+    }
+    return { file: outFile, timing, qa };
   } catch (e) {
     console.error(`  ❌ ${scene.id}: ${e.message?.slice(-200)}`);
-    return { file: null, timing };
+    return { file: null, timing, qa: null };
   }
 }
 
@@ -211,19 +275,50 @@ function main() {
     console.log('  ⚠️  graphics-engine.py not found, using gradient fallbacks');
   }
 
+  // Phase 0.5: QA gate on generated graphics (Design System V3 compliance)
+  console.log('\n🔍 Phase 0.5: Graphics QA gate...');
+  const gfxPngs = existsSync(GFX_DIR)
+    ? readdirSync(GFX_DIR).filter(f => f.startsWith(slug) && f.endsWith('.png')).map(f => path.join(GFX_DIR, f))
+    : [];
+
+  let gfxQaPass = 0, gfxQaWarn = 0, gfxQaFail = 0;
+  for (const gfxFile of gfxPngs) {
+    const qa = qaCheckImage(gfxFile);
+    if (qa.skipped) continue;
+    if (qa.pass) {
+      gfxQaPass++;
+    } else if ((qa.critical_fails || 0) > 0) {
+      gfxQaFail++;
+      console.log(`  🚫 ${path.basename(gfxFile)}: CRITICAL (score: ${qa.score || '?'}%)`);
+      for (const c of (qa.checks || []).filter(c => !c.pass && c.severity === 'critical')) {
+        console.log(`     → ${c.name}: ${c.actual}`);
+      }
+    } else {
+      gfxQaWarn++;
+      console.log(`  ⚠️  ${path.basename(gfxFile)}: warnings (score: ${qa.score || '?'}%)`);
+    }
+  }
+  if (gfxPngs.length > 0) {
+    console.log(`  📊 Graphics QA: ${gfxQaPass} pass, ${gfxQaWarn} warn, ${gfxQaFail} critical of ${gfxPngs.length} assets`);
+  } else {
+    console.log('  ⏭️  No PNG assets to QA');
+  }
+
   // Phase 1: Render individual scenes
   console.log('\n📹 Phase 1: Rendering scene segments...');
   const segments = [];
   const timings = [];
+  const qaResults = [];
 
   for (let i = 0; i < sp.scenes.length; i++) {
     const scene = sp.scenes[i];
     const audioFile = path.join(AUDIO, `${slug}_${scene.id}.wav`);
     const hasAudio = existsSync(audioFile);
 
-    const { file, timing } = renderScene(scene, hasAudio ? audioFile : null, persona, slug, i);
+    const { file, timing, qa } = renderScene(scene, hasAudio ? audioFile : null, persona, slug, i);
     if (file) segments.push(file);
     timings.push(timing);
+    if (qa) qaResults.push({ scene: scene.id, type: scene.type, ...qa });
   }
 
   if (segments.length === 0) { console.error('❌ No segments rendered'); process.exit(1); }
@@ -353,6 +448,26 @@ function main() {
     { name: `Output exists`, pass: existsSync(finalVideo) },
   ];
   
+  // QA gate summary (scene-level design system compliance)
+  const qaScenes = qaResults.filter(r => r && !r.skipped);
+  if (qaScenes.length > 0) {
+    const qaPassCount = qaScenes.filter(r => r.pass).length;
+    const qaWarnCount = qaScenes.filter(r => !r.pass && (r.avg_score ?? r.score ?? 100) >= 50).length;
+    const qaRejectCount = qaScenes.filter(r => !r.pass && (r.avg_score ?? r.score ?? 100) < 50).length;
+    checks.push({
+      name: `QA gate: ${qaPassCount} pass, ${qaWarnCount} warn, ${qaRejectCount} rejected of ${qaScenes.length} scenes`,
+      pass: qaRejectCount === 0
+    });
+  }
+
+  // Graphics QA summary
+  if (gfxPngs.length > 0) {
+    checks.push({
+      name: `Graphics QA: ${gfxQaPass}/${gfxPngs.length} assets pass (${gfxQaFail} critical)`,
+      pass: gfxQaFail === 0
+    });
+  }
+
   // LUFS check
   try {
     const lufsOut = execSync(
