@@ -288,6 +288,99 @@ def generate_motion(
 
 
 # ═══════════════════════════════════════════════
+# PHASE 1.5: AVATAR / LIP-SYNC (Kling API)
+# ═══════════════════════════════════════════════
+
+AVATAR_DIR = OUTPUT_DIR / "avatar"
+AVATAR_DIR.mkdir(parents=True, exist_ok=True)
+
+def generate_avatar_clip(
+    audio_path: Path,
+    avatar_image: Path = None,
+    persona: str = "faye",
+    output_path: Path = None,
+    poll_interval: int = 10,
+    poll_timeout: int = 300,
+) -> Path:
+    """Generate a lip-synced avatar video using Kling API.
+
+    Takes an audio file (narration) and a face image, returns a video
+    where the avatar speaks the audio with realistic lip movements.
+    """
+    if not KLING_ACCESS_KEY or not KLING_SECRET_KEY:
+        raise RuntimeError("KLING_ACCESS_KEY and KLING_SECRET_KEY must be set")
+
+    # Resolve avatar image
+    if avatar_image is None:
+        avatar_image = STUDIO_DIR / "avatars" / persona / "headshot-neutral.png"
+    if not avatar_image.exists():
+        raise FileNotFoundError(f"Avatar image not found: {avatar_image}")
+    if not audio_path.exists():
+        raise FileNotFoundError(f"Audio file not found: {audio_path}")
+
+    if output_path is None:
+        output_path = AVATAR_DIR / f"avatar-{audio_path.stem}-{int(time.time())}.mp4"
+
+    print(f"🎭 Generating avatar clip: {persona} + {audio_path.name}...")
+    t0 = time.time()
+
+    # Encode inputs as base64 data URLs
+    face_b64 = _image_to_base64(avatar_image)
+
+    import base64
+    audio_bytes = audio_path.read_bytes()
+    audio_ext = audio_path.suffix.lstrip(".")
+    audio_b64 = f"data:audio/{audio_ext};base64,{base64.b64encode(audio_bytes).decode()}"
+
+    # Submit lip-sync task
+    payload = {
+        "model_name": "kling-v1",
+        "input": {
+            "face_image_url": face_b64,
+            "voice_url": audio_b64,
+        },
+    }
+    resp = _kling_request("POST", "/v1/videos/lip-sync", payload)
+    if resp.get("code") != 0:
+        raise RuntimeError(f"Kling lip-sync submit failed: {resp}")
+
+    task_id = resp["data"]["task_id"]
+    print(f"   Task: {task_id}")
+
+    # Poll for completion
+    deadline = time.time() + poll_timeout
+    while time.time() < deadline:
+        time.sleep(poll_interval)
+        status_resp = _kling_request("GET", f"/v1/videos/lip-sync/{task_id}")
+        if status_resp.get("code") != 0:
+            raise RuntimeError(f"Kling lip-sync poll failed: {status_resp}")
+
+        task_data = status_resp["data"]
+        task_status = task_data.get("task_status", "")
+
+        if task_status == "succeed":
+            video_url = task_data["task_result"]["videos"][0]["url"]
+            print(f"   Downloading avatar clip...")
+
+            import urllib.request
+            urllib.request.urlretrieve(video_url, str(output_path))
+
+            elapsed = time.time() - t0
+            size_mb = output_path.stat().st_size / (1024 * 1024)
+            print(f"✅ Avatar: {output_path.name} ({size_mb:.1f}MB, {elapsed:.0f}s)")
+            return output_path
+
+        elif task_status == "failed":
+            msg = task_data.get("task_status_msg", "unknown error")
+            raise RuntimeError(f"Kling lip-sync failed: {msg}")
+
+        elapsed = int(time.time() - t0)
+        print(f"   ⏳ {task_status} ({elapsed}s)...", end="\r")
+
+    raise RuntimeError(f"Kling lip-sync timed out after {poll_timeout}s")
+
+
+# ═══════════════════════════════════════════════
 # PHASE 2: MUSIC GENERATION (ACE-Step 1.5)
 # ═══════════════════════════════════════════════
 
@@ -781,6 +874,18 @@ def process_screenplay(screenplay_path: Path, cinema_preset: str = "arri", anima
                 voice=scene.get("voice", DEFAULT_VOICE),
             )
 
+        # Generate avatar clip for presenter scenes (lip-synced talking head)
+        avatar_video = None
+        if "presenter" in scene.get("type", "") and narration and narration.exists():
+            try:
+                avatar_video = generate_avatar_clip(
+                    audio_path=narration,
+                    persona=screenplay.get("persona", "faye"),
+                    output_path=AVATAR_DIR / f"{slug(title)}-scene-{i+1}.mp4",
+                )
+            except Exception as e:
+                print(f"⚠️ Avatar generation failed for {scene.get('id','?')}: {e}")
+
         # Generate music (only for first scene or if specified)
         music = None
         music_prompt = scene.get("music", "")
@@ -791,16 +896,17 @@ def process_screenplay(screenplay_path: Path, cinema_preset: str = "arri", anima
                 output_path=MUSIC_DIR / f"{slug(title)}-scene-{i+1}.wav",
             )
 
-        # Compose if we have a keyframe
-        if keyframe:
+        # Compose: avatar overrides motion_video for presenter scenes
+        video_source = avatar_video or motion_video
+        if keyframe or video_source:
             render = compose_video(
-                keyframe=keyframe,
+                keyframe=keyframe or video_source,
                 music=music,
-                narration=narration,
+                narration=narration if not avatar_video else None,  # avatar already has audio
                 duration=scene.get("duration_s", 10),
                 output_path=RENDER_DIR / f"{slug(title)}-scene-{i+1}.mp4",
                 cinema_preset=cinema_preset,
-                motion_video=motion_video,
+                motion_video=video_source,
             )
             outputs.append(render)
 
