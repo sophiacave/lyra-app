@@ -5,7 +5,6 @@ order: 2
 type: "lesson"
 free: true
 css: "ai-creatives.css"
-videoId: "f0fed7ed-9fbc-42f2-8db4-0395d06e7a08"
 ---<div class="wrap">
 
 <nav class="local-nav">

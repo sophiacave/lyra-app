@@ -5,7 +5,6 @@ order: 2
 type: "lesson"
 free: true
 css: "claude-beginners.css"
-videoId: "16dfb516-f049-4ec3-bf46-c46c782bed09"
 ---<div class="wrap">
 
 <nav class="local-nav">

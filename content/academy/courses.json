@@ -13,8 +13,7 @@
           "description": "Learn to use Claude AI to automate your work life. From first conversation to building your personal assistant.",
           "tier": "beginner",
           "audience": ["general"],
-          "status": "live",
-          "introVideoId": "16dfb516-f049-4ec3-bf46-c46c782bed09"
+          "status": "live"
         },
         {
           "slug": "ai-foundations",
@@ -42,8 +41,7 @@
           "description": "AI tools for writers, designers, and musicians. Generate ideas, remix work, and amplify your creative output.",
           "tier": "beginner",
           "audience": ["creatives"],
-          "status": "live",
-          "introVideoId": "f0fed7ed-9fbc-42f2-8db4-0395d06e7a08"
+          "status": "live"
         },
         {
           "slug": "ai-for-executives",
@@ -61,8 +59,7 @@
           "description": "Master the art of talking to AI. Structure prompts that get exactly what you need, every time.",
           "tier": "beginner",
           "audience": ["general"],
-          "status": "live",
-          "introVideoId": "0e8d9e07-8ffb-49bf-80d0-2ea6645f9355"
+          "status": "live"
         },
         {
           "slug": "ai-ethics-and-safety",
@@ -71,8 +68,7 @@
           "description": "Responsible AI use. Bias, privacy, misinformation, and building AI systems you can trust.",
           "tier": "beginner",
           "audience": ["general"],
-          "status": "live",
-          "introVideoId": "703c72e9-1ddb-4ad8-a59e-24c73e7f8900"
+          "status": "live"
         },
         {
           "slug": "ai-for-marketing",
