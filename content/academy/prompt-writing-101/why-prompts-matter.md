@@ -4,6 +4,7 @@ course: "prompt-writing-101"
 order: 1
 type: "lesson"
 free: true
+videoId: "0e8d9e07-8ffb-49bf-80d0-2ea6645f9355"
 ---<div class="wrap">
 
 <nav class="local-nav">

@@ -76,6 +76,8 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
   const [showDiff, setShowDiff] = useState(false);
   const [celebrationTrigger, setCelebrationTrigger] = useState(0);
   const [allDoneTrigger, setAllDoneTrigger] = useState(0);
+  const [aiProvider, setAiProvider] = useState(null);
+  const [streamingText, setStreamingText] = useState('');
 
   const { displayed, isDone } = useTypingEffect(currentResponse, showResponse);
 
@@ -109,7 +111,7 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
     }
-  }, [history, displayed]);
+  }, [history, displayed, streamingText]);
 
   const exercise = exercises[activeExercise] || null;
   const exType = exercise?.type || 'freeform';
@@ -117,7 +119,54 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
   const usesTextarea = ['debug', 'analyze', 'rewrite', 'freeform', 'compare'].includes(exType);
   const { intro, scenario } = exercise ? parseScenario(exercise.instruction) : { intro: '', scenario: null };
 
-  const handleSubmit = (e) => {
+  // Stream response from /api/chat (Ollama -> Claude auto-routing)
+  const streamAIResponse = async (messages) => {
+    try {
+      const resp = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages }),
+      });
+
+      const provider = resp.headers.get('X-AI-Provider');
+      if (provider) setAiProvider(provider);
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ error: 'Unknown error' }));
+        return err.hint || err.error || 'AI unavailable.';
+      }
+
+      const reader = resp.body.getReader();
+      const decoder = new TextDecoder();
+      let full = '';
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const data = line.slice(6);
+          if (data === '[DONE]') break;
+          try {
+            const parsed = JSON.parse(data);
+            if (parsed.text) {
+              full += parsed.text;
+              setStreamingText(full);
+            }
+          } catch { /* skip */ }
+        }
+      }
+      return full || 'No response received.';
+    } catch (e) {
+      return `Connection error: ${e.message}`;
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim() || isTyping) return;
 
@@ -126,12 +175,13 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
     setHistory(prev => [...prev, { role: 'user', content: userMsg }]);
     setIsTyping(true);
     setShowDiff(false);
+    setStreamingText('');
 
     // Grade every prompt for quality feedback
     const grade = gradePrompt(userMsg);
     setGradeResult(grade);
 
-    // If there's an exercise with criteria, use the engine
+    // If there's an exercise with criteria, use the engine first
     if (exercise && exercise.criteria) {
       const result = validatePrompt(userMsg, exercise);
       if (result.pass) {
@@ -176,12 +226,20 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
       }
     }
 
-    // Default response
-    const response = exercise?.hintResponse
-      ? exercise.hintResponse(userMsg)
-      : generateResponse(userMsg);
-    setCurrentResponse(response);
-    setShowResponse(true);
+    // Real AI response — stream from Ollama/Claude (auto-routed)
+    const chatMessages = [
+      ...history.filter(m => m.role === 'user' || m.role === 'assistant').slice(-10).map(m => ({
+        role: m.role, content: m.content,
+      })),
+      { role: 'user', content: exercise
+        ? `[Exercise context: ${exercise.instruction}]\n\nStudent response: ${userMsg}`
+        : userMsg },
+    ];
+
+    const aiResponse = await streamAIResponse(chatMessages);
+    setStreamingText('');
+    setHistory(prev => [...prev, { role: 'assistant', content: aiResponse }]);
+    setIsTyping(false);
   };
 
   const handleTryPrompt = (prompt) => {
@@ -271,19 +329,35 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
             </div>
             <div className="console-msg-content">
               <span className="console-msg-label">
-                {msg.role === 'user' ? 'You' : 'Claude'}
+                {msg.role === 'user' ? 'You' : 'Faye'}
               </span>
               <div className="console-msg-text">{msg.content}</div>
             </div>
           </div>
         ))}
 
-        {/* Streaming response */}
-        {isTyping && displayed && (
+        {/* Streaming AI response */}
+        {isTyping && streamingText && (
           <div className="console-msg console-msg-assistant">
             <div className="console-msg-avatar">◆</div>
             <div className="console-msg-content">
-              <span className="console-msg-label">Claude</span>
+              <span className="console-msg-label">
+                Faye {aiProvider && <span style={{ opacity: 0.4, fontSize: '0.75em', marginLeft: 6 }}>via {aiProvider}</span>}
+              </span>
+              <div className="console-msg-text">
+                {streamingText}
+                <span className="console-cursor">▊</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Typing effect for exercise validation responses */}
+        {isTyping && !streamingText && displayed && (
+          <div className="console-msg console-msg-assistant">
+            <div className="console-msg-avatar">◆</div>
+            <div className="console-msg-content">
+              <span className="console-msg-label">Faye</span>
               <div className="console-msg-text">
                 {displayed}
                 <span className="console-cursor">▊</span>
@@ -293,7 +367,7 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         )}
 
         {/* Typing indicator */}
-        {isTyping && !displayed && (
+        {isTyping && !displayed && !streamingText && (
           <div className="console-typing">
             <span className="console-typing-dot" />
             <span className="console-typing-dot" />
@@ -366,19 +440,3 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
   );
 }
 
-function generateResponse(prompt) {
-  const lower = prompt.toLowerCase();
-  if (lower.includes('hello') || lower.includes('hi')) {
-    return "Hello! I'm Claude, made by Anthropic. I'm here to help you learn. Try asking me to do something specific — like drafting an email, summarizing a paragraph, or brainstorming ideas.";
-  }
-  if (lower.includes('email') || lower.includes('write')) {
-    return "Here's a draft:\n\nSubject: Quick follow-up\n\nHi [Name],\n\nJust wanted to circle back on our conversation. I'd love to move forward when you're ready — no rush, just keeping the thread warm.\n\nBest,\n[Your name]\n\nWant me to adjust the tone or add more detail?";
-  }
-  if (lower.includes('summarize') || lower.includes('summary')) {
-    return "I'd be happy to summarize something for you! Paste the text you'd like summarized, and I'll distill it into the key points. I can do bullet points, a one-paragraph summary, or an executive brief — your choice.";
-  }
-  if (lower.includes('brainstorm') || lower.includes('ideas')) {
-    return "Here are 5 ideas to get started:\n\n1. Automate your weekly status reports with a template + AI\n2. Create a prompt library for your most common tasks\n3. Use AI to draft first versions, then edit with your expertise\n4. Build a personal knowledge base that AI can reference\n5. Set up AI-powered email sorting and priority flagging\n\nWant me to go deeper on any of these?";
-  }
-  return "That's a great prompt! In a real conversation with Claude, you'd get a detailed, thoughtful response here. The key to getting great outputs is being specific about what you want — include context, format preferences, and constraints.\n\nTry being more specific: who is this for? What tone? What format?";
-}

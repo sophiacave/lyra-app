@@ -50,11 +50,19 @@ VOICE_DIR = OUTPUT_DIR / "voice"
 KEYFRAME_DIR = OUTPUT_DIR / "keyframes"
 MOTION_DIR = OUTPUT_DIR / "motion"
 
-# Venv paths
-IMAGEGEN_VENV = STUDIO_DIR / "venvs" / "imagegen"
-ACESTEP_VENV = STUDIO_DIR / "venvs" / "ace-step"
-AUDIOGEN_VENV = STUDIO_DIR / "venvs" / "audiogen"
-ACESTEP_REPO = STUDIO_DIR / "venvs" / "ace-step-repo"
+# Venv paths (check both old and new locations)
+def _find_venv(name, alt_name=None):
+    for prefix in [STUDIO_DIR / ".venv-", STUDIO_DIR / "venvs" / ""]:
+        for n in [name, alt_name] if alt_name else [name]:
+            p = Path(str(prefix) + n) if ".venv-" in str(prefix) else prefix / n
+            if p.exists():
+                return p
+    return STUDIO_DIR / "venvs" / name  # fallback
+
+IMAGEGEN_VENV = _find_venv("imagegen")
+ACESTEP_VENV = _find_venv("ace-step")
+AUDIOGEN_VENV = _find_venv("audiogen")
+ACESTEP_REPO = _find_venv("ace-step-repo")
 
 # Ensure output dirs
 for d in [OUTPUT_DIR, RENDER_DIR, AUDIO_DIR, MUSIC_DIR, VOICE_DIR, KEYFRAME_DIR, MOTION_DIR]:
@@ -119,8 +127,8 @@ def run_in_venv(venv_path: Path, python_code: str, timeout: int = 300) -> str:
 def generate_keyframe(
     prompt: str,
     output_path: Path = None,
-    width: int = 1024,
-    height: int = 1024,
+    width: int = 1360,
+    height: int = 768,
     steps: int = 4,
     seed: int = None,
 ) -> Path:
@@ -133,16 +141,22 @@ def generate_keyframe(
     print(f"🎨 Generating keyframe: {prompt[:50]}...")
     t0 = time.time()
 
-    mflux_bin = IMAGEGEN_VENV / "bin" / "mflux-generate-z-image-turbo"
+    mflux_bin = IMAGEGEN_VENV / "bin" / "mflux-generate"
+    # Model selection: dev for premium quality (25 steps), schnell for speed (4 steps)
+    # z-image-turbo requires separate download; schnell is always cached
+    model = os.environ.get("MFLUX_MODEL", "schnell")
+    if model == "dev" and steps < 15:
+        steps = 25  # dev needs more steps for quality
     result = subprocess.run([
         str(mflux_bin),
+        "--model", model,
         "--prompt", prompt,
         "--width", str(width),
         "--height", str(height),
         "--steps", str(steps),
         "--seed", str(seed),
         "--output", str(output_path),
-    ], capture_output=True, text=True, timeout=120)
+    ], capture_output=True, text=True, timeout=300)
 
     if result.returncode != 0:
         raise RuntimeError(f"Keyframe generation failed:\n{result.stderr}")
@@ -272,6 +286,9 @@ def _kling_request(method: str, endpoint: str, payload: dict = None) -> dict:
         raise RuntimeError(f"Kling API {e.code}: {body}")
 
 
+KLING_NEGATIVE_PROMPT = "cgi, 3d render, digital art, illustration, anime, cartoon, plastic, airbrushed, smooth skin, oversaturated, hdr, watermark, artificial lighting, perfect symmetry, uncanny valley, blur, distortion, morphing, extra limbs, flickering, compression artifacts"
+
+
 def generate_motion(
     image_path: Path,
     prompt: str = "",
@@ -280,6 +297,8 @@ def generate_motion(
     duration: str = "5",
     mode: str = "pro",
     model: str = "kling-v2-master",
+    cfg_scale: float = 0.5,
+    negative_prompt: str = None,
     poll_interval: int = 10,
     poll_timeout: int = 600,
 ) -> Path:
@@ -312,9 +331,13 @@ def generate_motion(
         "image": _image_to_base64(image_path),
         "mode": mode,
         "duration": duration,
+        "cfg_scale": cfg_scale,
     }
     if prompt:
         payload["prompt"] = prompt
+    neg = negative_prompt or KLING_NEGATIVE_PROMPT
+    if neg:
+        payload["negative_prompt"] = neg
     if image_tail_path and image_tail_path.exists():
         payload["image_tail"] = _image_to_base64(image_tail_path)
 
@@ -529,13 +552,81 @@ def generate_narration(
     text: str,
     output_path: Path = None,
     voice: str = DEFAULT_VOICE,
-    engine: str = "edge",  # "edge" or "fish"
-    fish_model: str = "s1-mini",
+    engine: str = "fish-api",  # "fish-api" (S2-Pro server), "fish" (local), or "edge" (free fallback)
+    fish_model: str = "s2-pro",
 ) -> Path:
-    """Generate narration with edge-tts or Fish Speech."""
+    """Generate narration with Fish Speech S2-Pro API (default), local Fish, or edge-tts fallback."""
+    if engine == "fish-api":
+        return _generate_narration_fish_api(text, output_path, voice)
     if engine == "fish":
         return _generate_narration_fish(text, output_path, voice, fish_model)
     return _generate_narration_edge(text, output_path, voice)
+
+
+def _generate_narration_fish_api(
+    text: str,
+    output_path: Path = None,
+    voice: str = "faye",
+) -> Path:
+    """Generate narration via Fish Speech S2-Pro API server (localhost:8180).
+
+    Highest quality voice. Uses voice cloning with reference audio.
+    Falls back to edge-tts if server is not running.
+    """
+    import urllib.request
+    import urllib.error
+
+    if output_path is None:
+        output_path = VOICE_DIR / f"narration-{slug(text)}-fish-api.wav"
+
+    # Check if S2-Pro server is running
+    try:
+        urllib.request.urlopen("http://127.0.0.1:8180/v1/health", timeout=2)
+    except Exception:
+        print("⚠️ Fish S2-Pro server not running, falling back to edge-tts")
+        return _generate_narration_edge(text, output_path, voice)
+
+    print(f"🗣️ Generating narration (Fish S2-Pro API, voice: {voice}): {text[:50]}...")
+    t0 = time.time()
+
+    # Build request with optional voice reference
+    ref = FISH_VOICE_REFS.get(voice)
+    references = []
+    if ref and ref["audio"].exists():
+        audio_bytes = ref["audio"].read_bytes()
+        references.append({
+            "audio": base64.b64encode(audio_bytes).decode("utf-8"),
+            "text": ref.get("text", ""),
+        })
+
+    payload = json.dumps({
+        "text": text,
+        "references": references,
+        "format": "wav",
+        "temperature": 0.7,
+        "top_p": 0.7,
+        "repetition_penalty": 1.5,
+    }).encode("utf-8")
+
+    req = urllib.request.Request(
+        "http://127.0.0.1:8180/v1/tts",
+        data=payload,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            audio_data = resp.read()
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_bytes(audio_data)
+        elapsed = time.time() - t0
+        size_kb = len(audio_data) / 1024
+        print(f"✅ Narration: {output_path.name} ({size_kb:.0f}KB, {elapsed:.1f}s)")
+        return output_path
+    except Exception as e:
+        print(f"⚠️ Fish S2-Pro API failed: {e}, falling back to edge-tts")
+        return _generate_narration_edge(text, output_path, voice)
 
 
 def _generate_narration_edge(
@@ -651,25 +742,44 @@ print('OK')
 # ═══════════════════════════════════════════════
 
 def cinema_grade(input_path: Path, output_path: Path = None, preset: str = "arri") -> Path:
-    """Apply cinema-grade color grading to an image or video."""
-    if preset not in CINEMA_PRESETS:
-        raise ValueError(f"Unknown preset: {preset}. Available: {list(CINEMA_PRESETS.keys())}")
+    """Apply cinema-grade color grading with full realism pipeline (V2).
+
+    Uses cinema-grade-v2.sh for video (adds grain, aberration, shake, rolloff, micro-contrast).
+    Falls back to FFmpeg filter chain for images.
+    """
+    VALID_PRESETS = ["arri", "red", "kodak", "noir", "warm", "cool", "vintage", "documentary"]
+    if preset not in CINEMA_PRESETS and preset not in VALID_PRESETS:
+        raise ValueError(f"Unknown preset: {preset}. Available: {VALID_PRESETS}")
 
     if output_path is None:
         output_path = input_path.with_stem(f"{input_path.stem}-{preset}")
 
-    p = CINEMA_PRESETS[preset]
     is_image = input_path.suffix.lower() in ('.png', '.jpg', '.jpeg', '.webp')
 
     if is_image:
+        # Images: use legacy filter (v2 script is video-only)
+        p = CINEMA_PRESETS.get(preset, CINEMA_PRESETS["arri"])
         vf = f"{p['grade']},{p['grain']},vignette=PI/5,unsharp=3:3:0.3"
         cmd = ["ffmpeg", "-y", "-i", str(input_path), "-vf", vf, str(output_path)]
+        print(f"🎬 Cinema grade ({preset}): {input_path.name}")
+        subprocess.run(cmd, capture_output=True, timeout=120, check=True)
     else:
-        vf = f"crop=iw:round(iw/2.39/2)*2:0:(ih-round(iw/2.39/2)*2)/2,{p['grade']},{p['grain']},vignette=PI/5,unsharp=3:3:0.3,format=yuv420p"
-        cmd = ["ffmpeg", "-y", "-i", str(input_path), "-vf", vf, "-c:v", "libx264", "-crf", "16", "-preset", "slow", "-c:a", "copy", str(output_path)]
+        # Video: use cinema-grade-v2.sh (full realism pipeline)
+        v2_script = STUDIO_DIR / "cinema-grade-v2.sh"
+        if v2_script.exists():
+            print(f"🎬 Cinema grade V2 ({preset}): {input_path.name}")
+            subprocess.run(
+                ["bash", str(v2_script), str(input_path), str(output_path), preset],
+                capture_output=True, timeout=120, check=True,
+            )
+        else:
+            # Fallback to legacy
+            p = CINEMA_PRESETS.get(preset, CINEMA_PRESETS["arri"])
+            vf = f"crop=iw:round(iw/2.39/2)*2:0:(ih-round(iw/2.39/2)*2)/2,{p['grade']},{p['grain']},vignette=PI/5,unsharp=3:3:0.3,format=yuv420p"
+            cmd = ["ffmpeg", "-y", "-i", str(input_path), "-vf", vf, "-c:v", "libx264", "-crf", "16", "-preset", "slow", "-c:a", "copy", str(output_path)]
+            print(f"🎬 Cinema grade ({preset}): {input_path.name}")
+            subprocess.run(cmd, capture_output=True, timeout=120, check=True)
 
-    print(f"🎬 Cinema grade ({preset}): {input_path.name}")
-    subprocess.run(cmd, capture_output=True, timeout=120, check=True)
     print(f"✅ Graded: {output_path.name}")
     return output_path
 
@@ -1018,11 +1128,11 @@ def main():
     parser.add_argument("--lyrics", type=str, default="[instrumental]", help="Lyrics for music generation")
     parser.add_argument("--narration", type=str, help="Text to narrate")
     parser.add_argument("--voice", type=str, default=DEFAULT_VOICE, help=f"Voice: {', '.join(VOICES.keys())} (edge) or faye (fish)")
-    parser.add_argument("--engine", type=str, default="edge", choices=["edge", "fish"], help="TTS engine: edge (free/instant) or fish (voice clone)")
+    parser.add_argument("--engine", type=str, default="fish-api", choices=["fish-api", "edge", "fish"], help="TTS engine: fish-api (S2-Pro server, best), edge (free/instant), fish (local model)")
     parser.add_argument("--fish-model", type=str, default="s1-mini", choices=list(FISH_MODELS.keys()), help="Fish Speech model")
     parser.add_argument("--duration", type=int, default=30, help="Duration in seconds")
-    parser.add_argument("--width", type=int, default=1024, help="Keyframe width")
-    parser.add_argument("--height", type=int, default=1024, help="Keyframe height")
+    parser.add_argument("--width", type=int, default=1360, help="Keyframe width (16:9 for Kling)")
+    parser.add_argument("--height", type=int, default=768, help="Keyframe height (16:9 for Kling)")
     parser.add_argument("--seed", type=int, default=None, help="Random seed")
     parser.add_argument("--cinema", type=str, default="arri", choices=CINEMA_PRESETS.keys(), help="Cinema grade preset")
     parser.add_argument("--output", type=Path, default=None, help="Output path override")
