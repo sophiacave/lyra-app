@@ -34,6 +34,7 @@ import asyncio
 import base64
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -150,6 +151,78 @@ def generate_keyframe(
     size_mb = output_path.stat().st_size / (1024 * 1024)
     print(f"✅ Keyframe: {output_path.name} ({size_mb:.1f}MB, {elapsed:.1f}s)")
     return output_path
+
+
+# ═══════════════════════════════════════════════
+# PHASE 1.25: UPSCALE (Real-ESRGAN 4x)
+# ═══════════════════════════════════════════════
+
+def upscale_keyframe(
+    image_path: Path,
+    output_path: Path = None,
+    scale: int = 4,
+    model: str = "realesrgan-x4plus",
+) -> Path:
+    """Upscale a keyframe image using Real-ESRGAN.
+
+    Requires realesrgan-ncnn-vulkan or python realesrgan installed.
+    Falls back gracefully if not available — returns original image.
+    """
+    if output_path is None:
+        output_path = image_path.with_stem(f"{image_path.stem}-4k")
+
+    # Try realesrgan-ncnn-vulkan (fast, no Python deps)
+    ncnn_bin = shutil.which("realesrgan-ncnn-vulkan")
+    if ncnn_bin:
+        print(f"🔍 Upscaling {scale}x (ncnn): {image_path.name}...")
+        t0 = time.time()
+        result = subprocess.run([
+            ncnn_bin,
+            "-i", str(image_path),
+            "-o", str(output_path),
+            "-s", str(scale),
+            "-n", model,
+        ], capture_output=True, text=True, timeout=120)
+        if result.returncode == 0 and output_path.exists():
+            elapsed = time.time() - t0
+            w, h = _get_image_size(output_path)
+            print(f"✅ Upscaled: {w}x{h} ({elapsed:.1f}s)")
+            return output_path
+        print(f"⚠️ ncnn upscale failed, using original")
+        return image_path
+
+    # Try Python Real-ESRGAN
+    try:
+        result = subprocess.run([
+            sys.executable, "-c",
+            f"""
+from realesrgan import RealESRGANer
+from basicsr.archs.rrdbnet_arch import RRDBNet
+from PIL import Image
+import numpy as np, torch
+model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32, scale={scale})
+upsampler = RealESRGANer(scale={scale}, model_path=None, dni_weight=None, model=model, half=True)
+img = np.array(Image.open('{image_path}'))
+output, _ = upsampler.enhance(img, outscale={scale})
+Image.fromarray(output).save('{output_path}')
+""",
+        ], capture_output=True, text=True, timeout=180)
+        if result.returncode == 0 and output_path.exists():
+            w, h = _get_image_size(output_path)
+            print(f"✅ Upscaled (Python): {w}x{h}")
+            return output_path
+    except Exception:
+        pass
+
+    print(f"⚠️ Real-ESRGAN not available — using original keyframe")
+    return image_path
+
+
+def _get_image_size(path: Path) -> tuple:
+    """Get image width, height without loading full image."""
+    from PIL import Image
+    with Image.open(path) as img:
+        return img.size
 
 
 # ═══════════════════════════════════════════════
@@ -841,6 +914,10 @@ def process_screenplay(screenplay_path: Path, cinema_preset: str = "arri", anima
                 output_path=KEYFRAME_DIR / f"{slug(title)}-scene-{i+1}.png",
                 seed=scene.get("seed", i * 1000 + 42),
             )
+
+        # Upscale keyframe to 4K if requested
+        if keyframe and scene.get("upscale", False):
+            keyframe = upscale_keyframe(keyframe)
 
         # Animate keyframe with Kling I2V if enabled
         motion_video = None
