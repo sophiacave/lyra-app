@@ -2,17 +2,8 @@
 import { useState, useEffect } from 'react';
 import CourseCard from '../components/academy/CourseCard';
 import TierTabs from '../components/academy/TierTabs';
-import VideoThumbnail from '../components/academy/VideoThumbnail';
 import coursesData from '../../content/academy/courses.json';
 import { getProfile, getLevel } from '../../lib/progress-engine';
-
-// Featured video — The Convergence Lab intro (the capstone, the flagship)
-const FEATURED_VIDEO = {
-  videoId: '1f0b6854-fe3d-4f77-ab97-674b1486fa1b',
-  title: 'What Is Convergence?',
-  course: 'The Convergence Lab',
-  courseSlug: 'the-convergence-lab',
-};
 
 export default function AcademyCatalog() {
   const [activeTier, setActiveTier] = useState('all');
@@ -52,7 +43,7 @@ export default function AcademyCatalog() {
   const totalLessons = liveCourses.reduce((sum, c) => sum + (c.lessonCount || 10), 0);
   const completedLessons = Object.keys(progress).length;
   const progressPercent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
-  const videoCourses = allCourses.filter(c => c.introVideoId);
+  const liveCourseCount = liveCourses.length;
 
   return (
     <div className="academy-container-wide">
@@ -65,11 +56,11 @@ export default function AcademyCatalog() {
           <div className="academy-v2-hero__text">
             <span className="academy-v2-hero__overline">LIKE ONE ACADEMY</span>
             <h1 className="academy-v2-hero__title">
-              Learn by <span className="academy-v2-hero__accent">watching.</span>
+              Learn by <span className="academy-v2-hero__accent">building.</span>
             </h1>
             <p className="academy-v2-hero__desc">
-              {allCourses.length} courses. Cinema-grade video lessons.
-              From your first AI conversation to building autonomous systems.
+              {allCourses.length} courses. From your first AI conversation
+              to building autonomous systems.
             </p>
 
             {/* Stats */}
@@ -77,7 +68,7 @@ export default function AcademyCatalog() {
               {[
                 { n: allCourses.length, label: 'Courses' },
                 { n: `${totalLessons}+`, label: 'Lessons' },
-                { n: `${videoCourses.length}`, label: 'Video Courses' },
+                { n: `${liveCourseCount}`, label: 'Live' },
                 { n: '$0', label: 'To Start' },
               ].map(s => (
                 <div key={s.label} className="academy-v2-stat">
@@ -105,20 +96,7 @@ export default function AcademyCatalog() {
             </div>
           </div>
 
-          {/* Featured Video */}
-          <div className="academy-v2-hero__video">
-            <a href={`/academy/${FEATURED_VIDEO.courseSlug}/`} className="academy-v2-hero__video-link">
-              <VideoThumbnail
-                videoId={FEATURED_VIDEO.videoId}
-                title={FEATURED_VIDEO.title}
-                size="hero"
-              />
-              <div className="academy-v2-hero__video-caption">
-                <span className="academy-v2-hero__video-course">{FEATURED_VIDEO.course}</span>
-                <span className="academy-v2-hero__video-title">{FEATURED_VIDEO.title}</span>
-              </div>
-            </a>
-          </div>
+          {/* Video section removed — pending approved content */}
         </div>
       </div>
 

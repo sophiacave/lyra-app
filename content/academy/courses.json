@@ -22,8 +22,7 @@
           "description": "Understand how AI actually works — neurons, prompts, embeddings — through hands-on exploration.",
           "tier": "beginner",
           "audience": ["general"],
-          "status": "live",
-          "introVideoId": "603dbd8a-2333-4615-a0f5-deb7e4917533"
+          "status": "live"
         },
         {
           "slug": "ai-for-business",
@@ -291,8 +290,7 @@
           "description": "The capstone. Build your own AI twin — persistent memory, autonomous agents, and human-AI convergence. This is where it all comes together.",
           "tier": "advanced",
           "audience": ["everyone"],
-          "status": "live",
-          "introVideoId": "1f0b6854-fe3d-4f77-ab97-674b1486fa1b"
+          "status": "live"
         }
       ]
     }
