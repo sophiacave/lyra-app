@@ -9,19 +9,21 @@ import { site, academy } from '@/lib/site-config';
 export const revalidate = 86400;
 
 export const metadata = {
-  title: `Blog — ${site.name}`,
-  description: 'Thoughts on AI, automation, and building the future.',
+  title: `AI Blog — Claude Tips, Automation Guides & Honest Comparisons | Like One`,
+  description: 'Practical AI guides by Sophia Cave. Claude vs ChatGPT, prompt engineering, AI automation, writing with AI, and building an AI-native business. No hype, just real systems.',
   alternates: { canonical: `${site.url}/blog/` },
   openGraph: {
-    title: `Blog — ${site.name}`,
-    description: 'Thoughts on AI, automation, and building the future. By Sophia Cave.',
+    title: `AI Blog — Claude Tips, Automation Guides & Honest Comparisons`,
+    description: 'Practical AI guides by Sophia Cave. Claude vs ChatGPT, prompt engineering, AI automation, and building an AI-native business.',
     url: `${site.url}/blog/`,
+    siteName: site.name,
+    type: 'website',
     images: [{ url: site.ogImage, ...site.ogImageSize }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Blog — ${site.name}`,
-    description: 'Thoughts on AI, automation, and building the future. By Sophia Cave.',
+    title: `AI Blog — Like One`,
+    description: 'Practical AI guides. Claude tips, automation, prompt engineering, and honest tool comparisons.',
     images: [site.ogImage],
   },
 };
