@@ -63,7 +63,7 @@ export default function BlogPage() {
           </div>
         ) : (
           posts.map(post => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="post-card">
+            <Link key={post.slug} href={`/blog/${post.slug}/`} className="post-card">
               <div className="post-meta">
                 <span className="post-date">{formatDate(post.date)}</span>
                 {post.tags.slice(0, 2).map(tag => (

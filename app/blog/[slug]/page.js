@@ -198,7 +198,7 @@ export default async function PostPage({ params }) {
       <RelatedCourses tags={post.tags} />
 
       <footer className="post-footer">
-        <Link href="/blog" className="post-footer-back">
+        <Link href="/blog/" className="post-footer-back">
           &larr; Back to all posts
         </Link>
       </footer>

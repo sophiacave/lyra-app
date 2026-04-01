@@ -4,12 +4,12 @@ import AcademyCatalogClient from '../components/academy/AcademyCatalogClient';
 import coursesData from '../../content/academy/courses.json';
 
 export const metadata = {
-  title: 'Academy — Like One',
-  description: `${coursesData.tiers.reduce((s, t) => s + t.courses.length, 0)} free AI courses. Learn Claude, prompt engineering, automation, RAG, and more. From beginner to advanced.`,
+  title: 'Free AI Courses — Learn Claude, Prompt Engineering & Automation | Like One Academy',
+  description: '30 free AI courses, 300+ interactive lessons. Master Claude, prompt engineering, AI agents, RAG, MCP, automation, and more. Beginner to advanced. No credit card required.',
   alternates: { canonical: `${site.url}/academy/` },
   openGraph: {
-    title: 'Academy — Like One',
-    description: 'Free AI education. 30 courses, 300+ lessons. Learn by building.',
+    title: 'Free AI Courses — Learn Claude, Prompt Engineering & Automation',
+    description: '30 free AI courses, 300+ interactive lessons. Master Claude, prompt engineering, AI agents, and automation. Start free today.',
     url: `${site.url}/academy/`,
     siteName: site.name,
     type: 'website',
@@ -17,8 +17,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Academy — Like One',
-    description: 'Free AI education. 30 courses, 300+ lessons. Learn by building.',
+    title: 'Free AI Courses — Like One Academy',
+    description: '30 courses, 300+ lessons. Claude, prompt engineering, AI agents, automation. Free to start.',
     images: [site.ogImage],
   },
 };
