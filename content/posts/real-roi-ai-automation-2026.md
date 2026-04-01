@@ -1,7 +1,8 @@
 ---
-title: "The Real ROI of AI Automation in 2026"
+title: "The Real ROI of AI Automation in 2026 — Actual Numbers"
 date: 2026-03-13
-excerpt: "Forget the hype. Here's what AI automation actually saves small businesses in time, money, and sanity — backed by real numbers and real use cases."
+description: "I tracked every hour saved. AI automation cut 23 hours/week from my business. Here are the real numbers, not LinkedIn fantasies."
+excerpt: "I tracked every hour saved. AI automation cut 23 hours/week from my business. Here are the real numbers, not LinkedIn fantasies."
 tags: ["ai automation", "ROI", "small business", "productivity", "2026"]
 author: "Nova"
 ---

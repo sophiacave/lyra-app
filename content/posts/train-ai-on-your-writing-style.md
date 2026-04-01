@@ -1,10 +1,17 @@
 ---
-title: "How to Train AI on Your Writing Style — 15-Minute Method (2026)"
+title: "How to Train AI on Your Writing Style in 15 Minutes (2026)"
 date: 2026-03-28
 author: Sophia Cave
-description: "Stop getting generic AI output. Train Claude or ChatGPT on your unique writing voice in 15 minutes — with examples, templates, and a step-by-step process that actually works."
-excerpt: "Stop getting generic AI output. Train Claude or ChatGPT on your unique writing voice in 15 minutes — with examples, templates, and a step-by-step process that actually works."
+description: "Copy-paste this exact method to make Claude or ChatGPT write in YOUR voice. Templates included. Works in 15 minutes — I use it daily."
+excerpt: "Copy-paste this exact method to make Claude or ChatGPT write in YOUR voice. Templates included. Works in 15 minutes — I use it daily."
 tags: [claude, writing, personal-brand, prompting, ai-tools, 2026]
+faq:
+  - q: "How do I make AI write in my voice?"
+    a: "Collect 3-5 samples of your best writing, paste them into a Claude Project or ChatGPT Custom GPT as reference material, then tell the AI to analyze your style before generating new content. The key is showing — not telling — the AI what your voice sounds like."
+  - q: "Can ChatGPT or Claude learn my writing style?"
+    a: "Yes. Both Claude and ChatGPT can match your writing style when given good reference samples. Claude Projects hold your style guide in its 200K context window for consistent results. ChatGPT Custom GPTs use uploaded files for reference."
+  - q: "How long does it take to train AI on your writing style?"
+    a: "About 15 minutes. Gather your writing samples, create a voice document describing your style rules, and set up a Claude Project or Custom GPT with those references. The AI adapts immediately — no fine-tuning or coding required."
 image: /blog/images/train-ai-writing-style.jpg
 cta: Start Learning Free
 ---

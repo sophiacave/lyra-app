@@ -158,6 +158,20 @@ export default async function PostPage({ params }) {
           mainEntityOfPage: `${site.url}/blog/${slug}/`,
         }) }}
       />
+      {post.faq && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: post.faq.map(item => ({
+              '@type': 'Question',
+              name: item.q,
+              acceptedAnswer: { '@type': 'Answer', text: item.a },
+            })),
+          }) }}
+        />
+      )}
 
       <Header variant="blog" activeLink="/blog" />
 
