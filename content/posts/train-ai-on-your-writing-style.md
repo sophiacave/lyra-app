@@ -1,9 +1,9 @@
 ---
-title: "How to Train AI on Your Writing Style (So It Sounds Like You)"
+title: "How to Train AI on Your Writing Style — 15-Minute Method (2026)"
 date: 2026-03-28
 author: Sophia Cave
-description: "Stop getting generic AI output. Learn how to train Claude or any AI on your unique writing voice — with examples, templates, and a step-by-step process that takes 15 minutes."
-excerpt: "Stop getting generic AI output. Learn how to train Claude or any AI on your unique writing voice — with examples, templates, and a step-by-step process that takes 15 minutes."
+description: "Stop getting generic AI output. Train Claude or ChatGPT on your unique writing voice in 15 minutes — with examples, templates, and a step-by-step process that actually works."
+excerpt: "Stop getting generic AI output. Train Claude or ChatGPT on your unique writing voice in 15 minutes — with examples, templates, and a step-by-step process that actually works."
 tags: [claude, writing, personal-brand, prompting, ai-tools, 2026]
 image: /blog/images/train-ai-writing-style.jpg
 cta: Start Learning Free

@@ -1,5 +1,5 @@
 ---
-title: "Custom GPTs vs Claude Projects: Which Should You Build?"
+title: "Custom GPTs vs Claude Projects: The Honest Comparison (2026)"
 date: 2026-03-28
 author: Sophia Cave
 description: "Custom GPTs and Claude Projects both let you create specialized AI tools. Here's an honest comparison of features, limitations, and which one actually works better for real business use."
