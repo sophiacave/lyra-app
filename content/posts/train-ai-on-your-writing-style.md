@@ -149,3 +149,11 @@ Your voice is your competitive advantage. In a world where everyone has access t
 ---
 
 *Want to go deeper on AI writing workflows? [Explore our free academy](/academy) for hands-on courses that teach you to build AI into your daily work.*
+
+---
+
+## Keep Reading
+
+- [Custom GPTs vs Claude Projects: The Honest Comparison](/blog/custom-gpts-vs-claude-projects/)
+- [ChatGPT vs Claude vs Gemini: Which AI Should Run Your Business?](/blog/chatgpt-vs-claude-vs-gemini/)
+- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)
