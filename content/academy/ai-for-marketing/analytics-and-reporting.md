@@ -120,7 +120,6 @@ Lead with results, not activity.</pre>
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each analytics task to how AI helps.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Analytics Tasks","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Paste 3 months of marketing data","right":"AI finds the 3 most important trends, top performers, and what to change next month"},{"left":"Generate a monthly report for the CEO","right":"AI produces a 1-page executive summary with metrics vs goals and 3 recommendations"},{"left":"Analyze 200 customer reviews","right":"AI categorizes by theme, finds top loves and complaints, and extracts exact customer language"},{"left":"Spot industry trends early","right":"AI analyzes news articles and competitor updates to identify strategic market shifts"},{"left":"Anonymize before pasting","right":"Strip names and emails from customer data before using consumer AI tools"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

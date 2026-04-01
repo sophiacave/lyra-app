@@ -68,7 +68,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Metrics — Match Each KPI Type to Its Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Cost Reduction AI","right":"Hours saved, error reduction, cost per transaction before and after"},{"left":"Revenue AI","right":"Incremental revenue, conversion lift, average order value"},{"left":"Experience AI","right":"Customer satisfaction, resolution time, Net Promoter Score"},{"left":"Shadow Mode Testing","right":"AI processes real data without acting on it — compare its decisions to human decisions before going live"},{"left":"Attribution via A/B Testing","right":"Gold standard — route some users through AI and others through baseline, measure the difference"}]}'></div>
 </div>
 
 <div class="lesson-section">

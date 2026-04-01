@@ -58,7 +58,6 @@ free: false
     <button class="run-btn" id="runBtn" disabled onclick="runSimulation()">Run Simulation</button>
   </div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match Workflow Components","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Webhook Trigger","right":"Receives incoming HTTP data to start the pipeline"},{"left":"AI Classify","right":"Reads content and assigns an intent label with confidence"},{"left":"Filter","right":"Only passes data that meets a confidence threshold"},{"left":"Transform","right":"Reshapes data structure for the next step"},{"left":"Send to Team","right":"Routes processed data to the correct destination"}]}'></div>
 
   <div data-learn="SortStack" data-props='{"title":"Order the AI Workflow Components","instruction":"Arrange these pipeline components in the correct order","items":["Webhook Trigger","AI Classify","Filter (confidence check)","Transform (reshape data)","Send to Team (action)"]}'></div>
 

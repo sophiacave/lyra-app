@@ -72,7 +72,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Voice Cloning Platforms</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Voice Cloning Tools","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"ElevenLabs Instant Clone","right":"Upload as little as 30 seconds — impressive results for the speed, professional tier for studio quality"},{"left":"Resemble AI","right":"Enterprise-built with fine control over emotion and style — strong real-time voice conversion"},{"left":"PlayHT","right":"Voice marketplace lets you license cloned voices from real voice actors — an ethical model worth supporting"},{"left":"OpenVoice","right":"Open-source, run locally — full data control for experimentation and privacy-sensitive projects"}]}'></div>
 </div>
 
 <div class="lesson-section">

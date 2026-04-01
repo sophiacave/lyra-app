@@ -114,7 +114,6 @@ Avoid: [common mistakes in this domain]</code>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Domain Prompts — Match the Domain to Its Key Requirement","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Code Generation","right":"Specify stack, return types, edge cases, library restrictions, and test framework"},{"left":"Code Review","right":"Check security, performance, error handling, and readability with severity ratings"},{"left":"Blog Writing","right":"Define audience, baseline knowledge, unique angle, tone, and practical takeaway"},{"left":"Data Analysis","right":"Identify trends with quantified change, confidence rating, anomalies, and actions"},{"left":"Research Synthesis","right":"Extract argument, evidence, methodology, limitations — then find agreements and gaps"}]}'></div>
 </div>
 
 <div class="lesson-section">

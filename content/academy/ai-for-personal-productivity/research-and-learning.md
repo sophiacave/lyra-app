@@ -110,7 +110,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each learning scenario to the right AI technique.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Research and Learning Techniques","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"You need to understand what a 401(k) is from scratch","right":"Level 1 — ask AI to explain it like you\\u0027re 10 years old, no jargon"},{"left":"You understand the basics but want to see real numbers","right":"Level 2 — ask AI to explain a specific aspect with concrete examples and actual figures"},{"left":"You\\u0027re ready to make a decision for your own situation","right":"Level 3 — give AI your income, goals, and constraints and ask what you should do"},{"left":"You\\u0027re buying a used car and don\\u0027t know what to ask the dealer","right":"Research mode — AI helps you discover the right questions when you don\\u0027t know where to start"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

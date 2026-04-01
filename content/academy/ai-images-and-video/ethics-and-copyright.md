@@ -81,7 +81,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Commercial Rights by Tool</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Commercial Use Rights","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"DALL-E / ChatGPT","right":"OpenAI grants commercial use rights on both free and paid tiers"},{"left":"Midjourney paid","right":"Subscribers own generations and can use commercially"},{"left":"Stable Diffusion","right":"Open source model is free commercially — check specific fine-tuned model licenses"},{"left":"Adobe Firefly","right":"Designed for commercial safety with IP indemnity for enterprise customers"}]}'></div>
 </div>
 
 <div class="lesson-section">

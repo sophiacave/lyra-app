@@ -51,7 +51,6 @@ free: false
   <span class="section-label">Part 3</span>
   <h2 class="section-title">Match technique to situation.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match the Situation to the Best Technique","instruction":"Tap a situation on the left, then the best technique on the right","pairs":[{"left":"Output is too broad, need more depth on one section","right":"Zoom In follow-up pattern"},{"left":"Content is right but sounds too corporate","right":"Tone Shift follow-up pattern"},{"left":"You write the same type of email every week","right":"Build a reusable template"},{"left":"AI output is full of buzzwords and filler","right":"Add negative constraints"},{"left":"Complex recurring task with specific company context","right":"Briefing document technique"},{"left":"Need data formatted for your spreadsheet","right":"Output for your tools, not your eyes"}]}'></div>
 
 </div>
 

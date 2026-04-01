@@ -54,7 +54,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"API Management — Match Each Rule to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Keys in environment variables","right":"Prevents API keys from being committed to GitHub or hardcoded in frontend code"},{"left":"Server-side only calls","right":"Ensures your AI provider keys are never exposed in browser JavaScript"},{"left":"Per-user rate limits","right":"Prevents any single user from burning through your API budget"},{"left":"Exponential backoff","right":"Waits 1s, then 2s, then 4s before retrying — avoids hammering a struggling API"}]}'></div>
 </div>
 
 <div class="lesson-section">

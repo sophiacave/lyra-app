@@ -76,7 +76,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Who Uses AI Visuals</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Visual Use Cases by Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Small business owners","right":"Creating product mockups and social media graphics without hiring a designer"},{"left":"Teachers","right":"Generating custom illustrations for lesson plans"},{"left":"Content creators","right":"Producing thumbnails, banners, and visual content at scale"},{"left":"Writers","right":"Visualizing characters, settings, and book covers"}]}'></div>
 </div>
 
 <div class="lesson-section">

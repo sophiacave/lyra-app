@@ -77,7 +77,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Resource Allocation Concepts — Match Each to Its Definition","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Skill Mapping","right":"Describe your team (roles, skills, availability, commitments) to AI, then describe the work needed — AI suggests assignments based on fit, capacity, and development opportunities."},{"left":"Capacity Planning","right":"Modeling current and future team availability — who is overloaded, who has slack, and where bottlenecks will form. AI flags conflicts before they become crises."},{"left":"Scenario Modeling","right":"AI models different allocation splits (e.g., 60/40 vs. 100% on one project) and shows you the tradeoffs — which project slips, by how much, and what the critical path impact is."},{"left":"Actuals vs. Plan","right":"Update AI weekly with how time was actually spent versus planned. Over time, AI surfaces patterns (e.g., production support always eats 20% more) to improve future estimates."}]}'></div>
 </div>
 
 <div class="lesson-section">

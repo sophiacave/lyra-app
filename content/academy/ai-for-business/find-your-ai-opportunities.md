@@ -57,7 +57,6 @@ free: false
   <h2 class="section-title">Match areas to AI solutions.</h2>
   <p class="section-text">Knowing which business area is a high opportunity is only half the answer. The other half is knowing which type of AI tool addresses it. Match these six business areas to the right category of AI solution.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Business Area to AI Solution Type","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"Customer Support (FAQs)","right":"AI chatbot trained on your docs"},{"left":"Email and Follow-up","right":"AI email assistant (e.g. Superhuman, Claude)"},{"left":"Content and Copywriting","right":"Generative AI writing tool (e.g. Jasper, Claude)"},{"left":"Resume Screening","right":"AI recruiting platform (e.g. Greenhouse AI, Workable)"},{"left":"Data Reports and Dashboards","right":"AI analytics tool (e.g. Notion AI, Rows.com)"},{"left":"Meeting Notes and Follow-ups","right":"AI transcription tool (e.g. Otter.ai, Fireflies)"}]}'></div>
 </div>
 
 <div class="lesson-section">

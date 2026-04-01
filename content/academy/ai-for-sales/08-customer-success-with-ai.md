@@ -86,7 +86,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each expansion signal to what it indicates.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Upsell Expansion Signals","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Growth Signal","right":"Customer just raised funding or expanded to new markets"},{"left":"Usage Signal","right":"They are hitting limits on their current plan"},{"left":"Team Signal","right":"New stakeholders or departments are getting involved"},{"left":"Timing Signal","right":"Contract renewal is approaching in 60 to 90 days"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

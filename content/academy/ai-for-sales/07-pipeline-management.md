@@ -83,7 +83,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each weekly review focus to what it examines.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Weekly Pipeline Review","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Review 1 — Moved Forward","right":"Celebrate and accelerate deals that progressed last week"},{"left":"Review 2 — Stalled","right":"Diagnose why deals stopped and plan re-engagement"},{"left":"Review 3 — Kill List","right":"Remove dead deals to free up mental energy"},{"left":"Review 4 — Gaps","right":"Assess whether you need more top-of-funnel activity"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -42,7 +42,6 @@ free: false
   <span class="section-label">Part 2</span>
   <h2 class="section-title">Full course review.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Concept to Its Course Section","instruction":"Tap a concept on the left, then where you learned it on the right","pairs":[{"left":"Weighted sum + bias + activation","right":"What Is a Neuron — the core neuron computation"},{"left":"Input → Hidden → Output layers","right":"Build a Network — layer architecture"},{"left":"Tokens and context windows","right":"Anatomy of a Prompt — how AI reads text"},{"left":"Zero-shot, few-shot, chain-of-thought","right":"Prompt Playground — prompt engineering techniques"},{"left":"Cosine similarity and vector arithmetic","right":"Embedding Explorer — meaning as geometry"}]}'></div>
 
 </div>
 

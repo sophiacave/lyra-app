@@ -94,7 +94,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Conflict resolution strategies.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Resolution Strategy to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Hierarchical Override","right":"Time-sensitive systems with a clear chain of command"},{"left":"Voting and Consensus","right":"High-stakes decisions where accuracy matters more than speed"},{"left":"Debate and Synthesis","right":"Creative work and strategy where combining perspectives adds value"},{"left":"Confidence-Weighted","right":"Data-driven classification and prediction tasks with measurable certainty"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -65,7 +65,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Scaling Milestones — Match Each Phase to Its Focus","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Phase 1 (0-1K users)","right":"API-only, focus on product-market fit, key metric: retention rate"},{"left":"Phase 2 (1K-10K users)","right":"Add caching, model routing, cost monitoring — key metric: cost per active user"},{"left":"Phase 3 (10K+ users)","right":"Evaluate self-hosting, build data flywheel — key metric: margin per user"},{"left":"Self-Hosting Trigger","right":"When monthly API bill exceeds GPU infrastructure cost AND quality requirements can be met by open-source models"}]}'></div>
 </div>
 
 <div class="lesson-section">

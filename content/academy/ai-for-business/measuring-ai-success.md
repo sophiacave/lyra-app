@@ -48,7 +48,6 @@ free: false
   <h2 class="section-title">Every business problem maps to a metric.</h2>
   <p class="section-text">When you are evaluating whether AI is working in a specific area, the first question is always "which metric matters most here?" A customer service team cares most about resolution rate and CSAT — that is Quality Score. A content team under deadline pressure cares about volume — Output Increase. A founder looking at the monthly P&L cares about the bottom line — Cost Reduced. Match the metric to the context or you will measure the wrong thing and draw the wrong conclusion.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Scenarios to Metrics","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"Your content team went from 4 blog posts/month to 16","right":"Output Increase"},{"left":"You stopped paying a $2,500/mo copywriting retainer","right":"Cost Reduced"},{"left":"Your support team spends 3 fewer hours/day on tickets","right":"Time Saved"},{"left":"Client revision requests dropped from 4 rounds to 1.5","right":"Quality Score"}]}'></div>
 </div>
 
 <div class="lesson-section">

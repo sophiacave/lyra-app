@@ -153,7 +153,6 @@ Skip generic holidays that have nothing to do with my business.</pre>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each day to its content pillar in the weekly rotation.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Weekly Content Pillar Rotation","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Monday","right":"Educational — teach a skill or share a tip"},{"left":"Wednesday","right":"Behind-the-scenes — show your process, team, or workspace"},{"left":"Friday","right":"Community — customer story, Q and A, or engagement post"},{"left":"Seasonal content","right":"Plan 4 to 6 weeks ahead — AI makes this effortless"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

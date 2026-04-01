@@ -66,7 +66,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The 3-phase production workflow.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Phase to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Phase 1: Ideation Day","right":"One session per month — brainstorm 30+ ideas and map them to your calendar"},{"left":"Phase 2: Batch Creation","right":"Two sessions per week — write 5-10 pieces per session by type"},{"left":"Phase 3: Schedule and Distribute","right":"One session per week — review, edit, schedule, and let automation handle publishing"}]}'></div>
 </div>
 
 <div class="lesson-section">

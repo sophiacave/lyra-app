@@ -58,7 +58,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Idea Hunting Grounds — Match Each to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Expert Bottlenecks","right":"Expensive humans doing repetitive cognitive work — legal review, medical screening, code review"},{"left":"Translation Gaps","right":"Information existing in one form but needed in another — audio to text, data to narrative, jargon to plain language"},{"left":"Personalization Deserts","right":"Services treating all users identically when they shouldn’t — education, health, finance"},{"left":"Your Own Pain","right":"Problems you personally face — you understand the nuance, the workarounds, and the real frustration"}]}'></div>
 </div>
 
 <div class="lesson-section">

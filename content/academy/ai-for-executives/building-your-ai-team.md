@@ -208,7 +208,6 @@ free: false
 
 <!-- MATCH CONNECT: ROLES TO RESPONSIBILITIES -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Roles and Responsibilities","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI Champion","right":"Senior leader owning strategy, vendor evaluation, and adoption — always the first hire"},{"left":"Data Engineer","right":"Cleans, structures, and pipelines data across systems so AI tools don\\u0027t starve"},{"left":"Change Management Lead","right":"Manages the human side — training, communication, resistance — 3x failure rate if skipped"},{"left":"Hub-and-Spoke Structure","right":"Central strategy team plus embedded department specialists — balances governance with speed"},{"left":"60/20/10/10 Budget","right":"60% people, 20% tools, 10% data prep, 10% training — invert this and you\\u0027ll fail"}]}'></div>
 </div>
 
 <!-- LEARN COMPONENTS -->

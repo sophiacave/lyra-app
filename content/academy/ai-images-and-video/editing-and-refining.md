@@ -86,7 +86,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Editing Techniques</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Image Editing Methods","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Inpainting","right":"Fix one specific area while keeping the rest of the image unchanged"},{"left":"Outpainting","right":"Extend the image beyond its original canvas borders"},{"left":"Upscaling","right":"Increase resolution while adding genuine detail, not just stretching pixels"},{"left":"Variations","right":"Explore alternative versions from one starting image without starting from scratch"}]}'></div>
 </div>
 
 <div class="lesson-section">

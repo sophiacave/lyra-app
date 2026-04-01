@@ -135,7 +135,6 @@ MY product ([describe yours]) to differentiate clearly?</pre>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each competitive analysis prompt goal to its output.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Competitive Analysis Outputs","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Paste competitor homepage text and ask for analysis","right":"Reveals their target audience, value proposition, emotional triggers, and messaging gaps"},{"left":"Build a competitive matrix with your product and 3 rivals","right":"Shows your advantages, where competitors beat you, and market gaps nobody is filling"},{"left":"Ask what audiences are underserved across all competitors","right":"Uncovers gap-finding opportunities to differentiate your positioning"},{"left":"Ask AI to write positioning statements after analysis","right":"Produces landing page copy, why-us bullets, and objection-handling responses"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

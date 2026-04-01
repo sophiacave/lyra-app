@@ -53,7 +53,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"12-Month Roadmap — Match Each Quarter to Its Goal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Quarter 1 (Months 1-3)","right":"Build credibility through execution — pilot, metrics, success story"},{"left":"Quarter 2 (Months 4-6)","right":"Scale what works and invest in training and vendor formalization"},{"left":"Quarter 3 (Months 7-9)","right":"Shift from projects to products with dedicated owners and SLAs"},{"left":"Quarter 4 (Months 10-12)","right":"Evaluate competitive position and plan Year 2 based on real data"}]}'></div>
 </div>
 
 <div class="lesson-section">

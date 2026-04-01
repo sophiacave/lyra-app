@@ -96,6 +96,5 @@ free: true
 
   <div data-learn="SortStack" data-props='{"title":"Put the Data Flow in Order","instruction":"Arrange these steps in the correct order for an MCP request","items":["User asks a question","Host identifies a tool is needed","MCP Client sends tools/call to Server","Server executes and returns data","Host generates an informed answer"]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match Component to Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Host","right":"The AI application the user interacts with"},{"left":"MCP Client","right":"Protocol bridge inside the Host"},{"left":"MCP Server","right":"Lightweight program exposing tools and data"},{"left":"JSON-RPC","right":"The message format used between Client and Server"}]}'></div>
 
 </div>

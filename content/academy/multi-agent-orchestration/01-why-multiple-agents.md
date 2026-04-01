@@ -82,7 +82,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">When to use one agent vs. many.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Scenario to the Right Agent Approach","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Self-contained task that fits one context window","right":"Use a single agent"},{"left":"Workflow with distinct phases requiring different expertise","right":"Use multiple specialized agents"},{"left":"Task requiring parallel processing across data sources","right":"Use multiple agents running simultaneously"},{"left":"Process needing checks and balances on its own output","right":"Use multiple agents where one reviews another"}]}'></div>
 </div>
 
 <div class="lesson-section">

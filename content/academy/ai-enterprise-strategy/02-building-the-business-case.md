@@ -48,7 +48,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Business Case Stakeholders — Match Each to What They Want","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"CEO","right":"Competitive advantage and strategic differentiation"},{"left":"COO","right":"Efficiency gains and operational improvement"},{"left":"CTO","right":"Architectural fit and technical viability"},{"left":"CFO","right":"Payback period and total cost of ownership"}]}'></div>
 </div>
 
 <div class="lesson-section">

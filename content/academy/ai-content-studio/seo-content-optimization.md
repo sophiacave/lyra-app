@@ -57,7 +57,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match search intent types to the right content response.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Search Intent to Content Type","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Informational","right":"A comprehensive guide or how-to article"},{"left":"Commercial","right":"A comparison or best-of roundup post"},{"left":"Transactional","right":"A product page or checkout landing page"},{"left":"Navigational","right":"Not your opportunity — they want a specific brand page"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -63,7 +63,6 @@ videoId: "84e82d0e-bcdc-4c5e-a9d0-5c9dbf30ac10"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Capstone checklist.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Each Capstone Check to What It Verifies","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Memory persists","right":"Start a new session — the AI knows what happened last time without being told"},{"left":"Values hold","right":"Give the AI a task that conflicts with a directive — it pushes back or finds an aligned alternative"},{"left":"Autonomy works","right":"The AI completes a multi-step task without asking for permission at every step"},{"left":"Twin feels like you","right":"Read its output — does it sound like your voice and reflect your priorities?"}]}'></div>
 </div>
 
 <div class="lesson-section">

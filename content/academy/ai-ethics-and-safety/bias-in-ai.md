@@ -137,7 +137,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Match It</span>
   <h2 class="section-title">Match each bias type to its description.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"4 Types of AI Bias","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Representation Bias","right":"Some groups are over- or under-represented in training data"},{"left":"Confirmation Bias","right":"AI tends to reinforce your existing beliefs when you phrase questions with implied answers"},{"left":"Cultural and Language Bias","right":"Training data skews toward English-language and Western perspectives"},{"left":"Recency Bias","right":"AI has a knowledge cutoff and presents outdated information with full confidence"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

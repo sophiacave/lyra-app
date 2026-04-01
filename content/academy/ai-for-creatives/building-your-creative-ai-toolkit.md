@@ -184,7 +184,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Bottleneck to the Right Tool","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Writer stuck on the blank page","right":"Claude Pro: ideation, brainstorming, and first drafts"},{"left":"Designer needs 30 concept variations fast","right":"Midjourney or Adobe Firefly: rapid image generation"},{"left":"Musician wants to isolate vocals from a track","right":"Moises: AI-powered stem separation"},{"left":"Content creator repurposing a blog into social posts","right":"Claude: transforms one piece into threads, captions, emails"},{"left":"Podcaster needs transcript-based editing","right":"Descript: AI video and podcast editing from transcripts"}]}'></div>
 </div>
 
 <div class="lesson-section">

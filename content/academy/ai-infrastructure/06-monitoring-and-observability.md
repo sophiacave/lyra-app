@@ -53,7 +53,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Monitoring — Match Each Metric to What It Tells You","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Latency p50/p95/p99","right":"Response time distribution — lets you know if slow responses are rare outliers or a systemic problem"},{"left":"Token usage per call","right":"Maps directly to cost and identifies expensive prompts or unexpectedly verbose responses"},{"left":"Cache hit rate","right":"How often cached responses serve users vs. making a fresh API call — low rates mean overspending"},{"left":"Response quality signals","right":"User thumbs up/down, edit rates, and automated output quality checks — catches model regressions"}]}'></div>
 </div>
 
 <div class="lesson-section">

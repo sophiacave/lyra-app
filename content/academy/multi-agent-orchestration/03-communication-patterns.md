@@ -86,7 +86,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Communication pattern strengths and risks.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Each Communication Pattern to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Direct Messaging","right":"Sequential workflows and simple handoffs between two agents"},{"left":"Broadcast (Pub/Sub)","right":"Parallel processing where multiple agents react differently to the same trigger"},{"left":"Blackboard","right":"Complex problems requiring full context and iterative refinement by all agents"}]}'></div>
 </div>
 
 <div class="lesson-section">

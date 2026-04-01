@@ -57,7 +57,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Cost Optimization — Match Each Strategy to Its Impact","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Semantic Caching","right":"One cached answer serves many slightly different questions — uses vector similarity to find near-matches"},{"left":"Model Tiering","right":"Free embeddings for search, mid-tier for simple tasks, flagship only for complex reasoning — route by task complexity"},{"left":"RAG Before Generation","right":"Check the knowledge base first — a vector search costs fractions of a cent vs. 100x more for an LLM call"},{"left":"Token Budget Per Request","right":"Cap output tokens so the model doesn\\\'t write an essay when a paragraph will do — saves cost on every call"},{"left":"Context Window Management","right":"Summarize older messages, keep only last N turns in full, retrieve context via RAG on demand"}]}'></div>
 </div>
 
 <div class="lesson-section">

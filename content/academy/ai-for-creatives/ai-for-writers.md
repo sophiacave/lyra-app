@@ -106,7 +106,6 @@ css: "ai-creatives.css"
 
   <p class="section-text">Most professional writers use <strong>both</strong> — sometimes in the same week. The novel gets Workflow A. The newsletter gets Workflow B. The client blog post might start with B and finish with A. There's no purity test here. Use what serves the work.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Human-First or AI-First?","instruction":"Match each writing task to the workflow that best serves it.","pairs":[{"left":"Personal essay about grief","right":"Human-First: voice is everything, authenticity cannot be faked"},{"left":"50 product descriptions for an e-commerce store","right":"AI-First: volume and speed matter, voice can be injected during editing"},{"left":"Literary short story for submission","right":"Human-First: your lived experience and singular perspective are the entire point"},{"left":"Weekly email newsletter for a brand","right":"AI-First: draft fast, then rewrite to inject personality and voice"},{"left":"Opinion piece for a major publication","right":"Human-First: your specific argument and perspective are what got you the byline"}]}'></div>
 </div>
 
 <!-- SECTION 4: PROMPT TEMPLATES BY WRITING TYPE -->

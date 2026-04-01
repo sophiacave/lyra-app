@@ -112,7 +112,6 @@ css: "ai-creatives.css"
     </div>
   </div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Visual Task — Right AI Approach","instruction":"Match each visual task to the AI approach that serves it best.","pairs":[{"left":"Building a mood board for a client pitch","right":"Text-to-image generation: describe the vibe and generate 20 options in minutes instead of an hour on Pinterest"},{"left":"Removing an unwanted background element from a photo","right":"Adobe Firefly generative fill: AI-powered inpainting inside your existing Photoshop workflow"},{"left":"Exploring 30 logo concept variations","right":"Rapid AI generation: see ideas instead of imagining them, curate the best, then refine by hand"},{"left":"Generating a seamless repeating texture","right":"Stable Diffusion or Midjourney: describe the texture precisely, generate production-ready assets at scale"},{"left":"Pre-visualizing a film scene before a shoot","right":"Text-to-image storyboarding: rough visual direction in minutes, preventing costly on-set surprises"}]}'></div>
 </div>
 
 <!-- SECTION 3: VISUAL PROMPT ENGINEERING -->

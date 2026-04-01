@@ -53,7 +53,6 @@ free: false
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">The four things that shape every AI response.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Concept to Description","instruction":"Tap a concept on the left, then its description on the right","pairs":[{"left":"Tokens","right":"Chunks of text (not words) — the atomic units AI reads"},{"left":"Context Window","right":"The model working memory — everything it can see at once"},{"left":"System Prompt","right":"Hidden instructions that set the AI personality and behavior"},{"left":"Temperature","right":"Controls randomness — low is focused, high is creative"}]}'></div>
 
 </div>
 

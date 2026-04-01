@@ -76,7 +76,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"System Prompt Parts — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Identity","right":"Who the AI is — role, expertise, personality"},{"left":"Behavior Rules","right":"Tone, response length, formatting preferences"},{"left":"Knowledge Boundaries","right":"What it knows and when to admit uncertainty"},{"left":"Constraints","right":"Hard limits — what it should never do"}]}'></div>
 </div>
 
 <div class="lesson-section">

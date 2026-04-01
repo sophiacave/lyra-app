@@ -191,7 +191,6 @@ css: "ai-executives.css"
 </div>
 
 <!-- MATCH CONNECT: STAKEHOLDER BUY-IN APPROACHES -->
-<div data-learn="MatchConnect" data-props='{"title":"Stakeholder Buy-In Strategies","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"CFO","right":"Lead with the math — current cost, projected cost after AI, and conservative payback period"},{"left":"CTO / CIO","right":"Lead with architecture, security posture, and how AI fits the existing tech stack"},{"left":"Middle Management","right":"Give them ownership of the rollout and show AI handles what their team hates most"},{"left":"Frontline Teams","right":"Use peer proof — a colleague\\u0027s real success story beats any executive promise"},{"left":"AI Resistors","right":"Show accuracy data AND build a human review step so they keep agency over errors"}]}'></div>
 
 <!-- SORT STACK: TRANSFORMATION PHASES IN ORDER -->
 <div data-learn="SortStack" data-props='{"title":"AI Transformation Phases: Put Them in Order","instruction":"Arrange these change management steps in the correct sequence for a successful AI rollout","items":["Identify AI champions across different teams and give them early access","Deploy AI on one painful, visible process to generate a peer success story","Invest in ongoing, role-specific training for affected teams","Communicate results weekly during rollout with metrics and human stories","Iterate publicly when something does not work — model adaptability","Recognize and reward employees who find creative uses for AI tools"]}'>

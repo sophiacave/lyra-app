@@ -66,7 +66,6 @@ videoId: "1a92e9f4-805e-47f3-b72b-75709a4a733c"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Autonomy levels.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Autonomy Level to Its Behavior","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"L1-L2: Suggest and Confirm","right":"AI proposes or acts only after explicit human approval for each task"},{"left":"L3: Inform","right":"AI acts first, then reports what it did — human reviews after the fact"},{"left":"L4: Autonomous Within Guardrails","right":"AI handles routine work silently within defined boundaries, surfaces only for edge cases"},{"left":"L5-L6: Full Autonomy and Convergence","right":"AI makes complex decisions end-to-end as a digital twin sharing the human\\\'s values"}]}'></div>
 </div>
 
 <div class="lesson-section">

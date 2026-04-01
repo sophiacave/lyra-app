@@ -107,7 +107,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each AI use case to the right category.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"What AI Can Do for You","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Draft an email to a difficult neighbor","right":"Writing anything — AI drafts, you edit"},{"left":"Plan a 4-day trip to Austin on a $1,200 budget","right":"Planning anything — give constraints, get organized output"},{"left":"Explain how your car insurance deductible works","right":"Figuring things out — complex things in plain language"},{"left":"Find out if a specific restaurant is open today","right":"AI limitation — real-time local info may not be reliable"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

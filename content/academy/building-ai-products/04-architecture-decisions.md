@@ -65,7 +65,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Architecture Options — Match Each to When to Use It","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Prompt Engineering","right":"First tool — free to iterate, instant to deploy, handles 80% of use cases"},{"left":"RAG","right":"When the model needs your data — product docs, knowledge bases, user history"},{"left":"Fine-Tuning","right":"When you need fundamental behavior change — specific tone, specialized vocabulary — not a phase 1 choice"},{"left":"Open-Source Models","right":"After product-market fit, when API costs exceed GPU infrastructure costs and traffic is predictable"}]}'></div>
 </div>
 
 <div class="lesson-section">

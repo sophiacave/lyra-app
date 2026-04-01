@@ -71,7 +71,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Strategy — Match Each Failure Pattern to Its Root Cause","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"No executive sponsor","right":"AI lacks budget protection and organizational authority to proceed"},{"left":"No clear success metric","right":"Impossible to prove value or justify continued investment"},{"left":"Data infrastructure gaps","right":"Models cannot access the clean, connected data they need to perform"},{"left":"Talent misalignment","right":"Wrong skills in wrong roles — no one translates between business and tech"},{"left":"Change resistance","right":"Organization rejects AI adoption due to fear, culture, or poor communication"}]}'></div>
 </div>
 
 <div class="lesson-section">

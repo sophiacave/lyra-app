@@ -56,7 +56,6 @@ videoId: "1ad254e4-6411-4f8c-9c6d-7174442d544c"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Rules vs. values.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Each Directive to Its Type","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Never deploy on Fridays","right":"Rule — specific, handles a known situation"},{"left":"Prioritize the user wellbeing","right":"Value — principle guiding decisions in unknown situations"},{"left":"Always use HTTPS","right":"Rule — specific, enforces a concrete technical standard"},{"left":"Choose simplicity over cleverness","right":"Value — guides tradeoffs when no specific rule applies"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -130,7 +130,6 @@ We are NOT: Corporate, preachy, or hype-driven.</pre>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each platform to its content style.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Social Platform Content Styles","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"LinkedIn","right":"Professional storytelling with a hook in the first line — 150 to 300 words with line breaks"},{"left":"Instagram","right":"Visual-first with captions that support the image — conversational, emoji-friendly, CTA in caption"},{"left":"X (Twitter)","right":"Sharp, punchy, and opinionated — under 280 characters for single posts, threads for depth"},{"left":"Facebook","right":"Community-oriented with questions that drive engagement — slightly longer form, stories resonate"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

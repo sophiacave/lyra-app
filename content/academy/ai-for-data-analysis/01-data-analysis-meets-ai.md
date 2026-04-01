@@ -79,7 +79,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Match the Concept</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Data Analysis Concepts","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Thinker role in AI analysis","right":"The human asking questions"},{"left":"Calculator role in AI analysis","right":"The AI crunching numbers"},{"left":"Key skill for AI-powered analysis","right":"Asking better questions"},{"left":"What AI replaces in data work","right":"Manual formulas and pivot tables"}]}'></div>
 </div>
 
 <div class="lesson-section">

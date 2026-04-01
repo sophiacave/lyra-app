@@ -77,7 +77,6 @@ Ask Claude to write you a working HTML page that implements this loop using the 
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Voice Interface Architecture</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Voice App Three Layers","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Ears layer (STT)","right":"Converts user speech to text — Whisper, Deepgram, Web Speech API"},{"left":"Brain layer (LLM)","right":"Processes text, understands intent, generates a response and can trigger actions"},{"left":"Mouth layer (TTS)","right":"Converts the response back to speech — ElevenLabs, OpenAI TTS"},{"left":"Speech-to-Speech (S2S)","right":"Skips the text layer entirely — audio in, audio out — lowest latency"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -54,7 +54,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Prompt Injection Defenses — Match Each to How It Works","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Input Sanitization","right":"Filter and validate all user input before it reaches your prompt template — strip suspicious patterns, limit length"},{"left":"System Prompt Isolation","right":"Use the provider’s system message parameter instead of concatenating system and user content into one string"},{"left":"Output Validation","right":"Check AI responses before returning to users — look for system prompt leakage or cross-user data"},{"left":"Least Privilege Context","right":"Only give the AI access to information it needs for the current request — scope RAG retrieval to minimum necessary"}]}'></div>
 </div>
 
 <div class="lesson-section">

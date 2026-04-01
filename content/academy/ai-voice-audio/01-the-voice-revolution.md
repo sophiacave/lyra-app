@@ -73,7 +73,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Five Pillars of AI Audio</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Audio Categories","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Text-to-Speech (TTS)","right":"Turn written words into natural-sounding voice"},{"left":"Voice Cloning","right":"Capture and reproduce a specific person&#39;s voice"},{"left":"Music Generation","right":"Compose and produce original music from text descriptions"},{"left":"Speech-to-Text (STT)","right":"Transcribe spoken audio into accurate written text"},{"left":"Audio Enhancement","right":"Noise removal, voice isolation, and mastering for broadcast quality"}]}'></div>
 </div>
 
 <div class="lesson-section">

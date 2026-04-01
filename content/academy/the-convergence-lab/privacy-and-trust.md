@@ -57,7 +57,6 @@ videoId: "1a5ddf0a-20ac-4ae4-83ae-801f10ea0e6b"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Trust boundary layers.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Trust Layer to What It Allows","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Sacred Layer","right":"Never shared, never surfaced — medical status, legal matters, private identity details"},{"left":"Protected Layer","right":"Used in private interactions but never public-facing — financial details, relationships, internal strategy"},{"left":"Public Layer","right":"Can appear in published content and external communications — professional work and public identity"}]}'></div>
 </div>
 
 <div class="lesson-section">

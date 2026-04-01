@@ -101,7 +101,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Oversight patterns by risk level.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Oversight Pattern to Its Risk Level","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Human-in-the-Loop","right":"High-stakes actions: financial transactions, public communications, data deletion"},{"left":"Human-on-the-Loop","right":"Medium-stakes: real-time monitoring with ability to intervene"},{"left":"Exception-Based","right":"Mature systems: auto-run within parameters, pause only for edge cases"},{"left":"Post-Hoc Review","right":"Low-stakes, high-volume: draft generation and data labeling sampled periodically"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -85,7 +85,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Agile with AI — Match Each Practice to Its AI Enhancement","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Sprint Planning","right":"Feed AI your backlog, team velocity, and sprint duration — AI suggests a sprint plan, flags overcommitment against historical velocity, and drafts user stories with acceptance criteria and edge cases."},{"left":"User Story Writing","right":"Give AI a feature concept and it produces stories with acceptance criteria, edge cases, and testable conditions — planning meetings shift from writing stories to reviewing and refining them."},{"left":"Retrospective Analysis","right":"Feed AI 5-6 retro outputs — it identifies recurring themes, tracks which action items were completed, and recommends the one change that would address the most feedback."},{"left":"Backlog Health","right":"AI audits your backlog: identifies duplicates, flags tickets untouched for 90+ days, suggests groupings by theme, and recommends prioritization by effort-vs-impact. Quarterly cleanup in an afternoon instead of a week."}]}'></div>
 </div>
 
 <div class="lesson-section">

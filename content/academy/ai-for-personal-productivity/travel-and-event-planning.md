@@ -105,7 +105,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each planning element to the right type.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Travel and Event Planning Elements","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Budget, dates, interests, and group size","right":"Constraints to give AI first — make the plan realistic"},{"left":"Day-by-day itinerary with food suggestions","right":"Core travel plan output AI generates from your constraints"},{"left":"Packing list customized to destination and weather","right":"Bonus tool — ask for this after the main itinerary is set"},{"left":"Pre-trip checklist with tasks 2 weeks, 1 week, and day before","right":"Countdown timeline — AI generates this in 10 seconds, saves 30 minutes of thinking"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

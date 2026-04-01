@@ -111,7 +111,6 @@ free: false
 </div>
 </div>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Tool Use Concept to Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Tool definition","right":"JSON schema describing the tool name, description, and input parameters"},{"left":"Autonomous invocation","right":"Claude decides when to call a tool without being explicitly told"},{"left":"input_schema","right":"Defines parameter names, types, and which are required"},{"left":"Tool execution","right":"Your application runs the function and returns the result to Claude"},{"left":"Multi-step chaining","right":"Using output from one tool call as input to the next"}]}'></div>
 
 <div data-learn="SortStack" data-props='{"title":"Order the Tool Use Flow","instruction":"Arrange the tool use steps in the correct sequence","items":["User sends a message to Claude","Claude analyzes the request and decides to call a tool","Claude outputs a structured tool call","Your application executes the tool and gets a result","Your app returns the result to Claude","Claude generates a natural language response"]}'></div>
 

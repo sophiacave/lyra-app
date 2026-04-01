@@ -76,7 +76,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Integration Architecture</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Integration Models","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Point-to-Point","right":"Tool A connects directly to Tool B — simple for two tools, becomes spaghetti with five or more"},{"left":"Hub-and-Spoke","right":"All tools connect to a central hub like Make or Zapier — adding a new tool means one new connection"},{"left":"API authentication","right":"API keys — long strings you include with requests to prove you are allowed to use the service"},{"left":"No-code connectors","right":"Zapier, Make, native integrations — cover 80% of needs with pre-built tool connections"}]}'></div>
 </div>
 
 <div class="lesson-section">

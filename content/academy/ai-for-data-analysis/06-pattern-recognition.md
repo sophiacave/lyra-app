@@ -83,7 +83,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Pattern Types</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Three Types of Data Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Trends","right":"Directional patterns over time — revenue growing 5% monthly"},{"left":"Outliers","right":"Data points that don&#39;t fit the pattern — errors or the most interesting find"},{"left":"Correlations","right":"Relationships between variables — when X goes up, Y goes up too"},{"left":"Confounding variable","right":"A hidden third factor causing two things to appear related"}]}'></div>
 </div>
 
 <div class="lesson-section">

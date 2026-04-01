@@ -55,7 +55,6 @@ free: true
 
   <div data-learn="FlashDeck" data-props='{"title":"Embedding Vocabulary","cards":[{"front":"Vector","back":"A list of numbers representing the meaning of a piece of text in multi-dimensional semantic space."},{"front":"Cosine Similarity","back":"A measure of similarity between two vectors based on the angle between them. Range: -1 (opposite) to 1 (identical). Magnitude-independent."},{"front":"Semantic Space","back":"The high-dimensional coordinate system where all embeddings live. Similar meanings cluster together; unrelated meanings are far apart."},{"front":"Embedding Model","back":"A neural network trained to convert text into vectors that preserve meaning relationships, e.g. OpenAI text-embedding-3-small (1536 dimensions)."},{"front":"Contrastive Learning","back":"The training technique used to build embedding models — similar texts are pulled together and dissimilar texts are pushed apart during training."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Concept","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"1536 dimensions","right":"text-embedding-3-small output size"},{"left":"Cosine = 1.0","right":"Vectors point in identical direction"},{"left":"\"king - man + woman\"","right":"Geometry analogy that equals \"queen\""},{"left":"Contrastive learning","right":"Training technique for embedding models"},{"left":"Semantic cluster","right":"Group of nearby vectors with related meaning"}]}'></div>
 
   <div class="footer-nav">
     <span>Lesson 1 of 10</span>

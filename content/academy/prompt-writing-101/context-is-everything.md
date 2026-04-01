@@ -47,7 +47,6 @@ free: false
   <span class="section-label">The Six Types</span>
   <h2 class="section-title">The 6 types of context that matter most.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Context Type to Description","instruction":"Tap a context type on the left, then its description on the right","pairs":[{"left":"Situation","right":"What is happening right now? A launch, a complaint, a deadline"},{"left":"Audience","right":"Who is this for? Their age, role, expertise level"},{"left":"Goal","right":"What outcome do you want? Click, buy, understand, decide"},{"left":"Background","right":"Relevant history — company info, previous attempts, data"},{"left":"Constraints","right":"Budget, compliance rules, things you cannot mention"},{"left":"Prior Attempts","right":"What you have already tried — paste it for improvement"}]}'></div>
 
 </div>
 

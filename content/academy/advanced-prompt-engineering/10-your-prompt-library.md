@@ -99,7 +99,6 @@ Length: {LENGTH} words. Include a practical takeaway at the end.
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Prompt Library — Match the Starter Prompt to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"The Extractor","right":"Takes messy input and produces structured JSON output"},{"left":"The Reviewer","right":"Evaluates any work product against criteria you define"},{"left":"The Explainer","right":"Takes a complex topic and explains it for a specific audience"},{"left":"The Debugger","right":"Diagnoses why something isn’t working and proposes fixes"},{"left":"The Generator","right":"Creates content in your voice using few-shot examples"}]}'></div>
 </div>
 
 <div class="lesson-section">

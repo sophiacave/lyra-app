@@ -39,7 +39,6 @@ free: false
   <span class="section-label">The Formats</span>
   <h2 class="section-title">8 formats you'll use constantly.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Format to Best Use Case","instruction":"Tap a format on the left, then the situation where it works best","pairs":[{"left":"Bullet Points","right":"Brainstorming, quick summaries, idea lists"},{"left":"Numbered Steps","right":"Instructions, processes, how-to guides"},{"left":"Table","right":"Comparisons, decision matrices, data side-by-side"},{"left":"Email Format","right":"Communications you will copy-paste and send directly"},{"left":"TL;DR + Deep Dive","right":"Research, reports, and analysis with varying reader depth"},{"left":"JSON / CSV","right":"Data you will import into spreadsheets or other tools"}]}'></div>
 
 </div>
 

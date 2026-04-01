@@ -159,7 +159,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match Pipeline Stages to AI Tools","instruction":"Match each pipeline stage to the AI tool best suited for that task.","pairs":[{"left":"Ideation and concept generation","right":"Claude: brainstorm angles, find gaps, stress-test concepts"},{"left":"First draft creation","right":"Claude with your style anchor: produces raw material fast"},{"left":"Copy editing and fact-checking","right":"Grammarly or Claude: catches errors, flags inconsistencies"},{"left":"Image and visual asset creation","right":"Midjourney or Adobe Firefly: featured images, social cards"},{"left":"Repurposing across platforms","right":"Claude: transforms one piece into threads, captions, emails"},{"left":"Video editing and clip generation","right":"Descript or Opus Clip: auto-edit, transcript-based cuts"}]}'></div>
 </div>
 
 <div class="lesson-section">

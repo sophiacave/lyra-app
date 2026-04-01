@@ -81,6 +81,5 @@ free: true
 
   <div data-learn="FlashDeck" data-props='{"title":"MCP Vocabulary","cards":[{"front":"Model Context Protocol","back":"An open standard by Anthropic that defines how AI models communicate with external tools, files, and data sources."},{"front":"Why was MCP created?","back":"Before MCP every integration was custom and fragile. MCP standardizes AI-to-tool connections so you build once and it works everywhere."},{"front":"What can AI do WITH MCP that it cannot do without it?","back":"Read files, query databases, call APIs, send messages, manage code repos, and take real-world actions beyond just answering questions."},{"front":"MCP ecosystem","back":"Millions of SDK downloads and growing — any MCP server works with any MCP-compatible AI client like Claude Desktop or Claude Code."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Analogy","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Before USB","right":"Proprietary connectors for every device"},{"left":"After USB","right":"One port, every device works"},{"left":"Before MCP","right":"Custom AI-tool wrappers, nothing standard"},{"left":"After MCP","right":"One protocol, every tool connected"}]}'></div>
 
 </div>

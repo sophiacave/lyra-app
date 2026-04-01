@@ -98,7 +98,6 @@ free: false
     </div>
   </div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match the server.tool() Argument to Its Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"name","right":"A unique snake_case string identifier Claude uses to call the tool"},{"left":"schema","right":"A Zod object defining input parameters and their types"},{"left":"handler","right":"An async function that executes the tool logic and returns results"},{"left":"McpServer","right":"The main class from the SDK — instantiate with name and version"},{"left":"StdioServerTransport","right":"Connects your server to Claude via standard input/output streams"}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Server Building Quiz","questions":[{"q":"What are the three arguments passed to server.tool()?","options":["url, method, callback","name, schema, handler","route, middleware, controller","endpoint, params, response"],"correct":1,"explanation":"server.tool() takes: name (a string identifier), schema (a Zod schema for input parameters), and handler (an async function that runs the tool logic and returns results)."},{"q":"Which npm packages are required to build a basic MCP server in TypeScript?","options":["express and axios","@modelcontextprotocol/sdk and zod","fastify and joi","hapi and yup"],"correct":1,"explanation":"You need @modelcontextprotocol/sdk (for McpServer and StdioServerTransport) and zod (for defining input schemas). Install with: npm install @modelcontextprotocol/sdk zod"}]}'></div>
 

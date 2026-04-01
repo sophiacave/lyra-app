@@ -78,7 +78,6 @@ Step 3: "Using this outline, write the full draft. Voice: conversational but aut
   <h2 class="section-title">Pipeline vs. single prompt.</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Pipeline Thinking Concepts","cards":[{"front":"Pipeline","back":"A repeatable system where raw ideas go in one end and polished, publish-ready content comes out the other. Every single time."},{"front":"Input layer","back":"Your raw material — topics, data, audience signals. The starting point of every pipeline run."},{"front":"Transform layer","back":"The AI steps that shape, refine, and format raw material into structured content."},{"front":"Output layer","back":"The finished pieces, ready for publishing across channels. The end product of the pipeline."},{"front":"Why constraints beat freedom","back":"Telling AI to write section 3 in a conversational tone with two examples produces far better results than write a blog post."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match Each Pipeline Step to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Research Step","right":"Gather current data and trend information"},{"left":"Outline Step","right":"Structure the argument using a proven framework"},{"left":"Draft Step","right":"Write each section with voice guidelines baked in"},{"left":"Edit Step","right":"Tighten, fact-check, and add transitions"},{"left":"Format Step","right":"Output as blog, social snippets, and email teaser"}]}'></div>
 </div>
 
 <div class="lesson-section">

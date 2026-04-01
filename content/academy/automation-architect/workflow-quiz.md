@@ -19,7 +19,6 @@ free: false
 
   <div data-learn="FlashDeck" data-props='{"title":"Advanced Automation Patterns","cards":[{"front":"Dead letter queue","back":"A holding queue for messages that failed processing. Prevents data loss and enables retry and debugging."},{"front":"Idempotency","back":"An operation that produces the same result no matter how many times you repeat it. Essential when webhooks can fire more than once."},{"front":"Exponential backoff","back":"A retry strategy that waits progressively longer between attempts: 1s, 2s, 4s, 8s. Avoids hammering a struggling API."},{"front":"Human-in-the-loop","back":"Low-confidence AI decisions are escalated to a human instead of acted upon automatically."},{"front":"Staging environment","back":"A copy of production used for testing. Run full pipeline tests with sample data here before going live."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Error Handling Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Dead letter queue","right":"Stores failed messages for later retry"},{"left":"Exponential backoff","right":"Wait longer between each retry attempt"},{"left":"Idempotency","right":"Same input always produces same output"},{"left":"Human-in-the-loop","right":"Escalate low-confidence AI decisions"},{"left":"Staging environment","right":"Test full pipeline before going live"}]}'></div>
 
   <div class="course-complete" id="courseComplete">
     <h2>Course Complete!</h2>

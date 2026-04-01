@@ -204,7 +204,6 @@ css: "ai-executives.css"
 </div>
 
 <!-- MATCH CONNECT: RISK SCENARIOS TO GOVERNANCE RESPONSES -->
-<div data-learn="MatchConnect" data-props='{"title":"Risk Scenarios to Governance Responses","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI hiring tool shows disparate rejection rates by race","right":"Immediate bias audit, suspend AI decisions, implement human review"},{"left":"Employee pastes customer PII into ChatGPT","right":"Enforce Tier 1 data rules, launch shadow AI legitimization program"},{"left":"AI customer service bot gives incorrect legal advice","right":"Add human review gate before customer-facing output (Tier 2)"},{"left":"New EU AI Act provision affects your AI deployment","right":"Assign regulatory tracking owner, audit compliance before next release"},{"left":"AI vendor is acquired and data portability is unclear","right":"Enforce data processing agreement, invoke contractual export rights"},{"left":"Financial model using AI produces an outlier projection","right":"Require human-in-the-loop review for all consequential decisions (Tier 3)"}]}'>
 </div>
 
 <!-- QUIZ: AI GOVERNANCE QUESTIONS -->

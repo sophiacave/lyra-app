@@ -46,7 +46,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Vendor Evaluation — Match Each Dimension to What It Assesses","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Capability Fit","right":"Does it actually solve your specific problem?"},{"left":"Integration Complexity","right":"How hard is it to connect to your existing systems?"},{"left":"Vendor Viability","right":"Will this company still exist in three years?"},{"left":"Exit Strategy","right":"How painful and expensive is it to leave this vendor?"}]}'></div>
 </div>
 
 <div class="lesson-section">

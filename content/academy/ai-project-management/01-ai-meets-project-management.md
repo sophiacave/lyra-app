@@ -69,7 +69,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI in PM — Match Each Capability to Its Impact","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Meeting Transcript Processing","right":"Extracts every action item, decision, and open question from a 90-minute meeting in seconds"},{"left":"Status Report Drafting","right":"Generates stakeholder updates from raw notes — what took 45 minutes now takes 5"},{"left":"Risk Pattern Detection","right":"Spots slipping timelines, stacking dependencies, and unbalanced workloads without fatigue"},{"left":"Agenda Generation","right":"Creates next meeting\\\'s agenda automatically from last week\\\'s open action items"}]}'></div>
 </div>
 
 <div class="lesson-section">

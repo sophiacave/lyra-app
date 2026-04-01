@@ -104,7 +104,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each morning scenario to the right AI technique.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Morning Routine Techniques","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"You want a morning plan but every routine you\\u0027ve tried feels unrealistic","right":"Do a context dump — tell AI your real wake time, constraints, and frustrations to get a plan that fits your life"},{"left":"You overslept by 20 minutes and your plan is ruined","right":"Tell AI what happened and ask it to adjust — your plan is a living thing, not carved in stone"},{"left":"You skip breakfast every day and regret it by 10am","right":"Include this in your context dump — AI can suggest quick prep options like overnight oats within your timeline"},{"left":"You want 10 minutes of quiet but your mornings are chaotic","right":"Name it as a wish in your prompt — AI finds the time by reorganizing other tasks around it"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

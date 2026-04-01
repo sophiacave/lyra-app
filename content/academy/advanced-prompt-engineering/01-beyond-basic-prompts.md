@@ -94,7 +94,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"The Five Levers — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Role","right":"Who the AI should be — expertise and persona"},{"left":"Context","right":"Background the AI needs about your situation"},{"left":"Task","right":"The specific deliverable you want produced"},{"left":"Format","right":"How the output should look — length, structure, style"},{"left":"Constraints","right":"What the AI should avoid or never do"}]}'></div>
 </div>
 
 <div class="lesson-section">

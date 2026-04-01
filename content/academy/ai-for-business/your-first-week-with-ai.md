@@ -64,7 +64,6 @@ free: false
   <h2 class="section-title">Every day has one primary outcome.</h2>
   <p class="section-text">Each day of the plan has a primary goal — the one outcome that makes the day a success even if nothing else goes perfectly. Knowing the primary goal per day helps you prioritize when time is tight and evaluate whether a day actually delivered what it was supposed to.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Days to Primary Goals","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"Day 1","right":"Have one working AI tool and a prompt library started"},{"left":"Day 2","right":"Have one automated workflow running and time savings documented"},{"left":"Day 3","right":"Have one real piece of content drafted, edited, and shipped"},{"left":"Day 4","right":"Have one data-driven decision made faster than before"},{"left":"Day 5","right":"Have a number: hours saved, dollar value, what is next"}]}'></div>
 </div>
 
 </div>

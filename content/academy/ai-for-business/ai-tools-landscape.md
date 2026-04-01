@@ -48,7 +48,6 @@ free: false
   <h2 class="section-title">Know which tool lives where.</h2>
   <p class="section-text">Part of being fluent in AI tools is instant pattern recognition — hearing a tool name and knowing what it does and where it fits. This matters when a vendor pitches you, when an employee asks "can we use X?", and when you're evaluating whether a new tool duplicates something you already have.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Tools to Categories","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"Claude","right":"Writing & Content"},{"left":"Midjourney","right":"Image Generation"},{"left":"Zapier","right":"Automation"},{"left":"Otter.ai","right":"Transcription"},{"left":"Runway","right":"Video & Audio"},{"left":"Julius","right":"Analytics"},{"left":"Bubble","right":"No-Code Builders"},{"left":"Intercom Fin","right":"Customer Service"}]}'></div>
 </div>
 
 <div class="lesson-section">

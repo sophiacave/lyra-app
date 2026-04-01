@@ -109,7 +109,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each financial task to what AI can and cannot do.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Financial Planning Limits","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Build a monthly budget from your income and expenses","right":"AI is great for this — budgets, plans, and what-if scenarios"},{"left":"Run a what-if comparison between two apartment options","right":"AI is great for this — comparing financial decisions with real math"},{"left":"Tell you which specific stocks to buy","right":"AI should not — specific investment advice requires a licensed professional"},{"left":"Do your annual tax return","right":"AI should not — taxes require a certified professional for accuracy and compliance"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

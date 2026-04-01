@@ -117,7 +117,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each creative challenge to the right AI approach.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI for Creative Projects","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Blank page syndrome on a writing project","right":"Ask AI for 5 opening lines for your story idea — pick the one that gives you energy"},{"left":"Want to start watercolors as a complete beginner","right":"Ask AI for a starter supply list on your budget, first things to practice, and a 4-week plan"},{"left":"Stuck halfway through a craft project","right":"Tell AI where you\\u0027re stuck and ask for 5 different approaches with brief explanations"},{"left":"Need a custom trivia game for game night","right":"Give AI the group size, interests, and difficulty mix — get a complete game in seconds"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

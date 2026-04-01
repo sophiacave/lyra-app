@@ -96,7 +96,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Common failure modes.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Real-World System to Its Architecture","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Autonomous Coding Assistant","right":"Hub-spoke with planner as orchestrator and pipeline elements within each subtask"},{"left":"Customer Support Orchestration","right":"Hub-spoke with exception-based human oversight for routing and escalation"},{"left":"Research and Analysis Swarm","right":"Parallel research agents feeding into a centralized synthesis and fact-check pipeline"},{"left":"Code Review Pipeline","right":"Linear sequence of linter, security scanner, style checker, and summary agents"}]}'></div>
 </div>
 
 <div class="lesson-section">

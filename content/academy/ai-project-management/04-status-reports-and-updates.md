@@ -76,7 +76,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Status Report Audiences — Match Each to Its Format","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Executive Sponsor","right":"3 lines max with RAG (Red/Amber/Green) status and brief justification — decision-makers need signal, not detail."},{"left":"Project Team","right":"Task-level breakdown with completion percentages, blockers per workstream, and next sprint commitments — they need the operational detail."},{"left":"External Client","right":"Professional narrative tone highlighting progress, upcoming deliverables, and any decisions needed from their side — frame risks constructively."},{"left":"RAG Assessment","right":"Ask AI to assign Red/Amber/Green with justification based on data — forces objectivity when you’re too deep in the project to see clearly."}]}'></div>
 </div>
 
 <div class="lesson-section">

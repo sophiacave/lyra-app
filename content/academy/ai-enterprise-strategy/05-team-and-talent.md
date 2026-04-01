@@ -67,7 +67,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Team Models — Match Each Structure to Its Characteristics","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Centralized Model","right":"One AI team serves the whole org — good for consistency, bad for responsiveness"},{"left":"Embedded Model","right":"AI practitioners sit within business units — good for relevance, bad for knowledge sharing"},{"left":"Hub-and-Spoke Model","right":"Central team sets standards while embedded practitioners apply them in business units"},{"left":"Upskilling Over Hiring","right":"Existing employees with domain knowledge plus AI training outperform external hires in month one"},{"left":"Product Manager (AI)","right":"The most commonly missing and most critical role — translates between business and technical"}]}'></div>
 </div>
 
 <div class="lesson-section">

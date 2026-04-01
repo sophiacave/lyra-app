@@ -158,7 +158,6 @@ free: false
 
 <!-- MATCH CONNECT: VENDOR RED FLAGS TO MEANINGS -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Vendor Red Flags Decoded","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"\"Our AI is proprietary\"","right":"Hiding which foundation model they actually use — likely a commodity wrapper"},{"left":"No pilot option","right":"The vendor isn\\u0027t confident their product works on real-world data"},{"left":"\"We replace your team\"","right":"Selling a fantasy — responsible AI augments teams, never eliminates them"},{"left":"No SOC 2 certification","right":"Not ready for enterprise data — a non-negotiable security baseline"},{"left":"ROI claims without methodology","right":"Unverifiable marketing — demand named companies and specific metrics"}]}'></div>
 </div>
 
 <!-- LEARN COMPONENTS -->

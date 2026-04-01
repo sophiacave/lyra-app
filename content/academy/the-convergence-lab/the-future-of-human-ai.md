@@ -56,7 +56,6 @@ videoId: "1e2e9ddb-3c64-4e0c-b12f-79c9b7323c40"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The AI-as-self shift.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match AI-as-Service vs. AI-as-Self","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"You subscribe to a shared model","right":"AI-as-Service — one of millions of users sharing the same weights"},{"left":"Your AI runs on your infrastructure","right":"AI-as-Self — a capability you possess, not a service you consume"},{"left":"Conversations evaporate after each session","right":"AI-as-Service — no continuity, no accumulated understanding"},{"left":"Trained on your data, aligned with your values","right":"AI-as-Self — uniquely yours, compounding knowledge over time"}]}'></div>
 </div>
 
 <div class="lesson-section">

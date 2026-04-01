@@ -51,7 +51,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Database Types — Match Each to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"PostgreSQL","right":"Structured application data — users, subscriptions, transactions, relationships"},{"left":"pgvector","right":"Adds vector similarity search to PostgreSQL without a separate database"},{"left":"Dedicated Vector DB (Pinecone)","right":"Billions of vectors requiring sub-millisecond latency at massive scale"},{"left":"PostgreSQL JSONB","right":"Flexible schema data — conversation logs, AI outputs, varying metadata — without adding NoSQL"}]}'></div>
 </div>
 
 <div class="lesson-section">

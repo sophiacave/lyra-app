@@ -65,7 +65,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The content waterfall levels.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Waterfall Level to Its Output","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Level 1 — The Source","right":"Long-form flagship: blog post, video, or podcast"},{"left":"Level 2 — The Breakdown","right":"Newsletter summary, LinkedIn post, Twitter thread"},{"left":"Level 3 — The Snippets","right":"Standalone quotes, carousels, one-liner hooks"},{"left":"Level 4 — The Derivatives","right":"Reel scripts, podcast points, community discussion posts"}]}'></div>
 </div>
 
 <div class="lesson-section">

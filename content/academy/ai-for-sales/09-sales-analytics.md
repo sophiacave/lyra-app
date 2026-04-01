@@ -83,7 +83,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each key metric to what it reveals about your sales performance.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Sales Metrics That Matter","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Conversion Rate by Stage","right":"Where deals die — that is where your core problem is"},{"left":"Sales Cycle Length","right":"How long from first touch to close, and what speeds it up"},{"left":"Activity-to-Revenue Ratio","right":"How many calls and emails per closed deal — measures efficiency"},{"left":"Win/Loss Ratio","right":"Not just the number, but WHY you win and WHY you lose"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

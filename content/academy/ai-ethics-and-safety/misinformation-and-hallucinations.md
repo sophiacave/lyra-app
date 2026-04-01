@@ -133,7 +133,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each fact-checking strategy to when you should use it.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Fact-Checking AI Output","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Verify all specific numbers","right":"Any time AI states a statistic, date, price, or measurement"},{"left":"Check all named sources","right":"When AI cites a study, book, or article — confirm it actually exists"},{"left":"Validate legal and medical claims","right":"Cross-reference with government sites or medical databases before relying on them"},{"left":"Confirm quotes and attributions","right":"Search for the exact quote — if you cannot find it, it probably does not exist"},{"left":"Trust general advice, verify specifics","right":"General wisdom is usually safe, but specific percentages and figures need a source"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

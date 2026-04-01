@@ -66,7 +66,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Failure Modes — Match the Problem to Its Fix","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Too Vague","right":"Add specifics: name the audience, context, and show an example of good output"},{"left":"Wrong Format","right":"Be explicit about format and use the Output First technique to anchor structure"},{"left":"Hallucination","right":"Ask it to flag confidence levels and say ‘if unsure, say so’"},{"left":"Ignored Instructions","right":"Move critical rules to the top and emphasize with IMPORTANT: or NEVER:"}]}'></div>
 </div>
 
 <div class="lesson-section">

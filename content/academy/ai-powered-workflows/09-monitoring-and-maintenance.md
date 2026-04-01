@@ -76,7 +76,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Four Vital Signs</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Workflow Monitoring Metrics","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Success rate","right":"Percentage of runs completing — anything below 95% needs investigation"},{"left":"Execution time","right":"How long each run takes — sudden increases signal upstream problems"},{"left":"Data volume","right":"Items processed per run — sudden drops may mean the trigger stopped firing"},{"left":"Error patterns","right":"Which errors and when — three timeouts at 3am every night is a pattern worth investigating"}]}'></div>
 </div>
 
 <div class="lesson-section">

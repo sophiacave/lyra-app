@@ -83,7 +83,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each call phase to its AI-informed question type.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Sales Call Framework","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Discovery Phase","right":"What is the biggest bottleneck in your process right now?"},{"left":"Pain Amplification","right":"What happens if that problem is not solved in the next 6 months?"},{"left":"Solution Bridge","right":"What if you could achieve a specific outcome without their current pain?"},{"left":"Close Signal","right":"If we could show you this working with your data, would that be worth a deeper look?"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

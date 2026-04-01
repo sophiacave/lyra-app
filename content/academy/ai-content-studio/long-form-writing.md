@@ -77,7 +77,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match writing layers to their purpose.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Writing Layer to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Brainstorm with AI","right":"Surface ideas and pressure-test your angle before writing"},{"left":"Build the Outline","right":"Create structure that makes the actual writing effortless"},{"left":"Layer 1: Rough Draft","right":"Lock in your personal voice and lived experience"},{"left":"Layer 2: AI Expansion","right":"Add detail, transitions, and examples to each section"},{"left":"Layer 3: Edit Pass","right":"Cut repetition, strengthen flow, and flag generic sections"}]}'></div>
 </div>
 
 <div class="lesson-section">

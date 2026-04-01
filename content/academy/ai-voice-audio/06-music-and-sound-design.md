@@ -74,7 +74,6 @@ Track 3 (Resolution): Acoustic folk, warm and peaceful, fingerpicked guitar with
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Music Prompt Formula</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Music Prompt Components","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Genre","right":"Lo-fi hip hop, orchestral, punk rock, ambient electronic"},{"left":"Mood","right":"Melancholic, triumphant, uneasy, hopeful, tense"},{"left":"Instrumentation","right":"Acoustic guitar, synthesizer, strings, drums, piano"},{"left":"Production style","right":"Warm analog, crisp modern, lo-fi tape hiss, Hans Zimmer style"}]}'></div>
 </div>
 
 <div class="lesson-section">

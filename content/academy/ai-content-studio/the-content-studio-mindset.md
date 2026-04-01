@@ -72,7 +72,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Know your studio roles.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Studio Role to Its Job","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Strategist","right":"Decides what to create and why"},{"left":"Editor","right":"Sharpens and polishes raw material"},{"left":"Producer","right":"Turns one piece into many formats"},{"left":"Scheduler","right":"Keeps the content machine running"}]}'></div>
 </div>
 
 <div class="lesson-section">

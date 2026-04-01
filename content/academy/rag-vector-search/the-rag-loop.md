@@ -35,7 +35,6 @@ free: false
     </ol>
   </div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match the RAG Step to What Happens","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"User Query","right":"A natural language question enters the pipeline as the starting point"},{"left":"Embed Query","right":"The question is converted to a vector using the same model as the documents"},{"left":"Vector Search","right":"Query vector is compared against stored vectors using cosine similarity"},{"left":"Augment Prompt","right":"Retrieved chunks are inserted into a prompt template with the original question"},{"left":"LLM Response","right":"The model generates an answer grounded in retrieved context, not training data"}]}'></div>
 
   <div data-learn="SortStack" data-props='{"title":"The RAG Pipeline — Order the Steps","instruction":"Arrange the six RAG steps in the correct sequence","items":["Receive user query in natural language","Embed the query into a vector","Search the vector database for similar chunks","Retrieve the top-K matching chunks with scores","Augment the prompt with retrieved context","Send to LLM and generate grounded answer"]}'></div>
 

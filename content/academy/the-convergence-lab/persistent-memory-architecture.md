@@ -56,7 +56,6 @@ videoId: "605bd83b-81e4-455e-b024-f3545acb151b"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The three layers of AI memory.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Memory Layer to Its Function","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Working Memory","right":"The current conversation context window — fast but evaporates when the session ends"},{"left":"Episodic Memory","right":"Records of specific events and decisions stored permanently with timestamps"},{"left":"Semantic Memory","right":"Distilled knowledge — facts, preferences, and rules that are always true regardless of when they were learned"}]}'></div>
 </div>
 
 <div class="lesson-section">

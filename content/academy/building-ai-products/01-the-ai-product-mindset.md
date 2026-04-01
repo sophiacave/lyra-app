@@ -77,7 +77,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Product Traits — Match Each to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Compress Time","right":"What took hours now takes seconds — dramatic enough that users tell everyone they know"},{"left":"Lower the Skill Floor","right":"Things that required expertise become accessible — a non-designer creates professional graphics"},{"left":"Handle the Tedious","right":"Replace the work nobody wants to do — data entry, categorization, summarization"},{"left":"Product vs. Demo","right":"A product has workflows, data persistence, user context, and compounding value — not just a prompt in a UI"}]}'></div>
 </div>
 
 <div class="lesson-section">

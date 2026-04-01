@@ -81,7 +81,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each sales task to what AI can or cannot replace.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI in Sales: Can vs Cannot","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Lead research and prospect briefs","right":"AI excels — research in minutes, not hours"},{"left":"Drafting personalized outreach emails","right":"AI excels — volume and personalization at scale"},{"left":"Building genuine trust with a prospect","right":"AI cannot replace — trust requires human connection"},{"left":"Reading the room during a live negotiation","right":"AI cannot replace — requires human presence and intuition"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -40,7 +40,6 @@ free: false
   <span class="section-label">The Types</span>
   <h2 class="section-title">5 types of constraints.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Constraint Type to Example","instruction":"Tap a constraint type on the left, then its example on the right","pairs":[{"left":"Length","right":"Under 200 words. Exactly 3 paragraphs. One sentence per point."},{"left":"Tone","right":"Casual but not sloppy. Confident, not arrogant."},{"left":"Scope","right":"Only cover the marketing angle. B2B SaaS only, not consumer."},{"left":"Audience","right":"Explain like I am 12. Written for a CTO."},{"left":"Negative","right":"Do not use buzzwords. No emojis. Avoid the word leverage."}]}'></div>
 
 </div>
 

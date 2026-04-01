@@ -76,7 +76,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Data Flow Patterns</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Two Essential Data Flow Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Pass-Through pattern","right":"Data flows unchanged from step to step — just routing, no transformation needed"},{"left":"Accumulator pattern","right":"Each step adds new data to the payload so it grows richer at each stage"},{"left":"Data transformation","right":"Converting between formats — March 27 2026 to 2026-03-27 so each tool gets expected shape"},{"left":"The number one data flow killer","right":"Losing a field between steps — by step 5 you need the email from step 1 but it was never passed forward"}]}'></div>
 </div>
 
 <div class="lesson-section">

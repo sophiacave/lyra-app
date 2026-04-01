@@ -57,7 +57,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Deployment Strategies — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Blue-Green Deployment","right":"Run two identical environments, deploy to inactive one, verify, switch traffic — instant rollback if broken"},{"left":"Canary Deployment","right":"Route 5-10% of traffic to the new version, monitor errors and costs, then gradually increase to 100%"},{"left":"Feature Flags","right":"Ship new AI features hidden behind a toggle — enable for internal users first, decouple deployment from release"},{"left":"Eval Suites","right":"Known questions with acceptable answer ranges — run on every deploy to catch regressions in AI output quality"},{"left":"Post-Deploy Smoke Tests","right":"Automatically hit key AI endpoints after production deploy to verify configuration and connectivity"}]}'></div>
 </div>
 
 <div class="lesson-section">

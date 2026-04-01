@@ -46,7 +46,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Change Management Playbook — Match Step to Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Find Champions","right":"Identify curious, eager early adopters and give them early access, training, and a mandate to explore"},{"left":"Engineer Quick Wins","right":"Deploy AI to solve a widely-complained-about problem so adoption sells itself through genuine value"},{"left":"Let Success Snowball","right":"Document wins, share metrics, let champions train peers — organic adoption beats top-down mandates"},{"left":"Create Feedback Channels","right":"Let people voice concerns without judgment — they often surface real risks strategists miss"}]}'></div>
 </div>
 
 <div class="lesson-section">

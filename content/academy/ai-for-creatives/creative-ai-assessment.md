@@ -33,7 +33,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Creative Challenge to the Best Strategy","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Your AI-generated content sounds generic","right":"Build a style anchor from samples of your own writing"},{"left":"You\\\'re overwhelmed by too many AI tool options","right":"Apply the 3-Question Filter and start with just two tools"},{"left":"First AI draft is decent but too formal","right":"Iterate: keep the structure, ask for warmer and more conversational tone"},{"left":"You need a month of social content without burnout","right":"Batch by format: all captions in one session, all graphics in another"},{"left":"A client asks if you used AI on their project","right":"Disclose upfront: AI assists drafting and research, you handle all final decisions"}]}'></div>
 </div>
 
 <div class="lesson-section">

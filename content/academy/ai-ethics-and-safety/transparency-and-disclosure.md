@@ -116,7 +116,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each disclosure scenario to the right category.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Disclosure: Must, Should, Optional","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI-generated article published as journalism","right":"Must Disclose"},{"left":"Blog post substantially written by AI","right":"Should Probably Disclose"},{"left":"Using AI to brainstorm ideas you then wrote yourself","right":"Disclosure Optional"},{"left":"Customer-facing chatbot powered by AI","right":"Must Disclose"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

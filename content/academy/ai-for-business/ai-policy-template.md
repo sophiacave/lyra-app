@@ -48,7 +48,6 @@ free: false
   <h2 class="section-title">Every incident has a policy section that prevents it.</h2>
   <p class="section-text">Real policy violations do not look like violations when they happen — they look like employees trying to do their jobs faster. The value of a policy is that it gives employees a clear answer before they act, not an uncomfortable conversation after. Match each scenario to the policy section that directly addresses it.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Scenarios to Policy Sections","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"Employee pastes client contract into ChatGPT to summarize it","right":"Data Handling"},{"left":"Marketing sends AI-written blog post to client with no review","right":"Quality Standards"},{"left":"Support rep tells customer their response was AI-generated","right":"Customer Disclosure"},{"left":"Developer wants to use a new AI coding tool not on the list","right":"Approval Process"},{"left":"New hire uses AI on day one without any training","right":"Training Requirements"},{"left":"Employee uses AI to write a resignation letter for a colleague","right":"Acceptable Use"},{"left":"Sales team inputs full CRM export into an analytics AI","right":"Prohibited Use"},{"left":"Company describes why AI policy covers contractors too","right":"Purpose"}]}'></div>
 </div>
 
 <div class="lesson-section">

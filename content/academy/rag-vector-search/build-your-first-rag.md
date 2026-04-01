@@ -47,7 +47,6 @@ free: false
     <strong>Step 6 — Generate:</strong> The retrieved chunks are passed to the LLM as context, along with the original question. The LLM generates a grounded answer — because it has the actual documents, it gives specific, accurate, sourced answers instead of hallucinating.
   </div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match the RAG Build Step to What It Does","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Choose Documents","right":"Select the files that become the system\\\'s entire knowledge base"},{"left":"Chunk","right":"Split documents into 40-100 word pieces with overlap for precise search"},{"left":"Embed","right":"Convert each chunk into a vector using a model like text-embedding-3-small"},{"left":"Store","right":"Save vectors in a specialized database with an HNSW index for fast search"},{"left":"Generate","right":"Pass retrieved chunks and the query to the LLM for a grounded answer"}]}'></div>
 
   <div data-learn="SortStack" data-props='{"title":"RAG Build Pipeline — Order the Steps","instruction":"Arrange the six build steps in the correct sequence","items":["Choose and load source documents","Chunk documents into overlapping segments","Select an embedding model and embed all chunks","Store chunk vectors in a vector database","Embed the user query and run similarity search","Pass retrieved chunks + query to LLM for generation"]}'></div>
 

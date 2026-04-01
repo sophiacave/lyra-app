@@ -67,7 +67,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Governance — Match Each Concept to Its Definition","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Tiered Governance","right":"Not every AI system needs the same oversight — classify by risk level and match controls accordingly"},{"left":"Bias Testing","right":"Measurable, testable, fixable — built into the deployment pipeline, not done once"},{"left":"EU AI Act","right":"Landmark regulation requiring AI system inventory, risk assessments, and audit trails"},{"left":"Fairness","right":"A set of deliberate choices about what kind of organization you want to be — made by humans, not algorithms"},{"left":"AI Ethics as Design Principle","right":"Not a compliance function but a shared responsibility for everyone who builds, deploys, or uses AI"}]}'></div>
 </div>
 
 <div class="lesson-section">

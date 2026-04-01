@@ -62,7 +62,6 @@ videoId: "623c7d86-6e8e-4fe6-8778-52ed7ddcbb13"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Identity layer components.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Twin Component to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Voice","right":"How you write — sentence length, formality, vocabulary. Taught through writing samples and style rules."},{"left":"Judgment","right":"How you decide — when to choose speed over quality, when to push back. Learned from decision history."},{"left":"Values","right":"What you care about — the deeper stuff beyond professional priorities. The soul of the twin."},{"left":"Handoff Protocol","right":"Write active work and next steps before ending, read brain immediately on starting. Sessions become invisible seams."}]}'></div>
 </div>
 
 <div class="lesson-section">

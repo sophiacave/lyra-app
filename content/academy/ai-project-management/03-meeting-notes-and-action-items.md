@@ -80,7 +80,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Meeting Output Types — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Executive Summary","right":"3 sentences max — who attended, what was decided, what is the status. Gets the summary without reading the whole document."},{"left":"Action Items","right":"Format: [Owner] — [Task] — [Deadline]. The most important output — drives accountability and follow-through after the meeting."},{"left":"Parking Lot Items","right":"Topics raised but not resolved — questions to answer, decisions to defer, issues to revisit. Prevents good ideas from disappearing."},{"left":"Next Meeting Agenda","right":"Generated automatically from open action items and parking lot topics — closes the loop and starts the next meeting with purpose."}]}'></div>
 </div>
 
 <div class="lesson-section">

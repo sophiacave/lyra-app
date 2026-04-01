@@ -98,7 +98,6 @@ Writing Review Example
 </div>
 </div>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match System Prompt Block to Its Function","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Identity block","right":"Defines who Claude is — role, expertise, and persona"},{"left":"Constraints block","right":"Sets hard limits on what Claude must never do"},{"left":"Format block","right":"Specifies how responses should be structured"},{"left":"Tone block","right":"Controls the voice and style of responses"},{"left":"Examples block","right":"Shows ideal input-output pairs as demonstrations"}]}'></div>
 
 <div data-learn="FlashDeck" data-props='{"title":"System Prompt Components","cards":[{"front":"Identity block","back":"Defines who Claude is — role, expertise, and persona. E.g., You are a senior software engineer with 15 years of experience."},{"front":"Constraints block","back":"Sets limits on what Claude will do. E.g., Never provide medical advice. Keep responses under 200 words."},{"front":"Format block","back":"Specifies how responses should be structured. E.g., Always respond with a summary, then detail, then next steps."},{"front":"Tone block","back":"Controls the style and voice. E.g., Be encouraging and use analogies. Or: Be direct and skip pleasantries."},{"front":"Examples block","back":"Shows Claude exactly what good output looks like through input-output demonstrations within the system prompt."}]}'></div>
 

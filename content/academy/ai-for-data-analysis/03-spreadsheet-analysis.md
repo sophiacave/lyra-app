@@ -84,7 +84,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Data Input Methods</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Spreadsheet Input Methods","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Best for under a few hundred rows","right":"Copy and paste directly into chat"},{"left":"Best for larger datasets","right":"Upload CSV or Excel file directly"},{"left":"Best for massive datasets","right":"Paste sample rows and describe full scope"},{"left":"Keeps dynamic calculations live","right":"Stay in the spreadsheet natively"}]}'></div>
 </div>
 
 <div class="lesson-section">

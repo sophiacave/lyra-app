@@ -67,7 +67,6 @@ free: false
 
   <div data-learn="FlashDeck" data-props='{"title":"API Request Anatomy","cards":[{"front":"Request Method","back":"Tells the server what operation to perform: GET (read), POST (create), PUT (update), DELETE (remove)."},{"front":"Endpoint URL","back":"The address of the resource you want to interact with. Example: /users, /orders/42."},{"front":"Request Body","back":"JSON data sent with POST and PUT requests. Tells the server what to create or update."},{"front":"Response Status Code","back":"A 3-digit number the server sends back. 2xx = success, 4xx = client error, 5xx = server error."},{"front":"Response Body","back":"The JSON data the server sends back. Contains the result of your request."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Method to Operation","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"GET /users","right":"Retrieve list of users"},{"left":"POST /orders","right":"Create a new order"},{"left":"PUT /settings","right":"Update existing settings"},{"left":"DELETE /users/1","right":"Remove user with id 1"},{"left":"201 Created","right":"Success — new resource was made"}]}'></div>
 
 </div>
 

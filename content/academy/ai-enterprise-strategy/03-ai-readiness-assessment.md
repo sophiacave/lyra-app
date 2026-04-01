@@ -65,7 +65,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Readiness — Match Each Dimension to What It Evaluates","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Data Maturity","right":"Is your data accessible, clean, governed, and connected across systems?"},{"left":"Technical Infrastructure","right":"Do you have the compute, storage, APIs, and security to support AI workloads?"},{"left":"Talent and Skills","right":"Do you have people who can translate between business needs and technical capabilities?"},{"left":"Organizational Culture","right":"Does your organization reward experimentation or punish failure?"},{"left":"Strategic Alignment","right":"Is AI connected to your business strategy with executive sponsorship?"}]}'></div>
 </div>
 
 <div class="lesson-section">

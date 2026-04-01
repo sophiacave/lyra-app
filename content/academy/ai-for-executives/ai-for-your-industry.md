@@ -187,7 +187,6 @@ free: false
 
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Industry AI Use Cases","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Healthcare","right":"Clinical documentation AI reduces physician note time by 50-70%"},{"left":"Finance","right":"Real-time fraud detection catches transactions rule-based systems miss"},{"left":"Retail","right":"Demand forecasting reduces overstock by 20-30% and stockouts by 30-50%"},{"left":"Manufacturing","right":"Predictive maintenance cuts unplanned downtime by 30-50%"},{"left":"Legal","right":"Contract and discovery review runs 60-80% faster than manual associates"},{"left":"Accounting","right":"AI flags anomalies and automates sampling in audit workflows"}]}'></div>
 </div>
 
 <div class="lesson-section">

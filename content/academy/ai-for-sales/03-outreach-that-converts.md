@@ -91,7 +91,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each PRISM element to what it does in a cold email.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"PRISM Email Method","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"P — Personal Hook","right":"Something specific about them personally — not their company, them"},{"left":"R — Relevant Problem","back":"A pain point you know they have from research — makes it feel tailored"},{"left":"I — Insight","right":"Something they have not considered — your unique perspective that adds value"},{"left":"M — Micro-CTA","right":"A tiny ask — not book a demo, but worth a 10-minute chat?"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

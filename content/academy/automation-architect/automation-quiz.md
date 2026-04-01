@@ -21,7 +21,6 @@ free: true
 
   <div data-learn="FlashDeck" data-props='{"title":"Key Automation Concepts","cards":[{"front":"Trigger","back":"The event that starts an automation — the when. Examples: new email, form submitted, schedule fires."},{"front":"Action","back":"The task executed after a trigger fires. Examples: send email, save to DB, call API."},{"front":"Webhook","back":"A URL endpoint that receives real-time HTTP POST data from external systems."},{"front":"Cron expression 0 0 * * *","back":"Runs every day at midnight. minute=0, hour=0, day=any, month=any, weekday=any."},{"front":"Event payload","back":"The structured data produced by a trigger and passed to the action for processing."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Triggers vs Actions","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Webhook","right":"Trigger: receives HTTP POST"},{"left":"Send Email","right":"Action: notifies someone"},{"left":"Cron schedule","right":"Trigger: runs on a timer"},{"left":"Save to Database","right":"Action: persists data"},{"left":"Event payload","right":"Data flowing from trigger to action"}]}'></div>
 
 </div>
 

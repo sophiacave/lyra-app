@@ -80,7 +80,6 @@ type: "lesson"
 <div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">Five Core Audio Pipelines</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Audio Studio Pipelines","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Content Pipeline","right":"Idea to script to voice to music to edit to master to publish"},{"left":"Repurposing Pipeline","right":"Long recording to transcript to clips to show notes to blog post"},{"left":"Production Pipeline","right":"Script to multi-voice generation to mix to master to distribute"},{"left":"Intelligence Pipeline","right":"Audio archive to batch transcribe to index to search to analyze patterns"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -88,7 +88,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Report Element</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Report Structure Elements","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Layer 1 of a report","right":"Executive summary — headline findings in 3-5 sentences"},{"left":"Layer 2 of a report","right":"Key metrics and visuals — charts, tables, comparisons"},{"left":"Layer 3 of a report","right":"Detailed analysis — methodology, caveats, and nuance"},{"left":"What decision-makers want","right":"Implications and recommended actions, not raw data"},{"left":"The automation sweet spot","right":"Build the template once, paste new data each period"}]}'></div>
 </div>
 
 <div class="lesson-section">

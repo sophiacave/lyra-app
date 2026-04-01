@@ -98,7 +98,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Architecture comparison.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Each Architecture to Its Best Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Hub-Spoke","right":"Customer support system with controlled routing and escalation through a central orchestrator"},{"left":"Pipeline","right":"Code review where linter, security scanner, style checker, and summary agent run in sequence"},{"left":"Swarm","right":"Research exploration where multiple agents investigate different angles in parallel and converge"},{"left":"Hybrid","right":"A hub-spoke system where one of the spokes is itself a pipeline processing subtasks"}]}'></div>
 </div>
 
 <div class="lesson-section">

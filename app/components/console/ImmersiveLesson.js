@@ -2,13 +2,12 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import PromptConsole from '../academy/PromptConsole';
 import EnrollCTA from '../academy/EnrollCTA';
-import { QuizMC, MatchConnect, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation } from '../learn';
+import { QuizMC, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation } from '../learn';
 import LearnErrorBoundary from '../learn/LearnErrorBoundary';
 
 // Registry of learn components that can be embedded in lesson HTML
 const LEARN_COMPONENTS = {
   QuizMC,
-  MatchConnect,
   FlashDeck,
   SortStack,
   PixelQuest,

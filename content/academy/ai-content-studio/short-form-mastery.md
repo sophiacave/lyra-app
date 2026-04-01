@@ -57,7 +57,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match hook types to their techniques.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Hook Type to Its Technique","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"The Contrarian Hook","right":"Challenge common advice to create tension"},{"left":"The Specificity Hook","right":"Use a precise number or result to build credibility"},{"left":"The Story Hook","right":"Open with a narrative that triggers human curiosity"},{"left":"The Question Hook","right":"Create an open loop the reader must close"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -116,7 +116,6 @@ Match the tone, length, and structure exactly.</code>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Few-Shot Techniques — Match Each to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Zero-Shot","right":"No examples — just instructions. Works for simple, well-understood tasks"},{"left":"One-Shot","right":"One example sets the pattern. Good for style matching and format demos"},{"left":"Few-Shot","right":"2-5 examples establish a strong pattern for complex or nuanced tasks"},{"left":"Negative Example","right":"Shows what NOT to do, with explanation — teaches boundaries effectively"},{"left":"Edge Case Example","right":"A tricky input that demonstrates your judgment calls for unusual scenarios"}]}'></div>
 </div>
 
 <div class="lesson-section">

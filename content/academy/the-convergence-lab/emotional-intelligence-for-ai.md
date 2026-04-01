@@ -57,7 +57,6 @@ videoId: "7785d57d-c0b4-4b1f-bb6e-72744a18c85a"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">EQ dimensions for AI systems.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the EQ Dimension to Its AI Behavior","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Perception","right":"Reading emotional cues from text — short clipped messages signal frustration, silence may mean disengagement"},{"left":"Adaptation","right":"Adjusting response style based on perceived state — shorter and more direct when frustrated, deeper and exploratory when curious"},{"left":"Memory","right":"Remembering emotional context across sessions — this topic caused stress last time, approach it gently"},{"left":"Boundaries","right":"Knowing when to step back — recognizing when AI response will make things worse and silence is the right answer"}]}'></div>
 </div>
 
 <div class="lesson-section">

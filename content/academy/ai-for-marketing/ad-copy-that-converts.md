@@ -138,7 +138,6 @@ Don't use all caps. Don't use excessive punctuation.</pre>
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each ad platform to its key constraint.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Ad Platform Constraints","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Google Search Ads","right":"30 characters per headline, 90 per description — tight character limits"},{"left":"Facebook/Instagram Ads","right":"First 3 lines must hook — that\\u0027s all they see before See More"},{"left":"Problem-Agitate-Solve","right":"A Meta ad style that starts with the pain point to stop the scroll"},{"left":"Testimonial-Style","right":"A Meta ad style that opens with a customer result or quote"},{"left":"Direct Offer","right":"A Meta ad style that leads immediately with the deal"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

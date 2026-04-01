@@ -60,7 +60,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Your weekly engine rhythm.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Day to Its Content Engine Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Monday","right":"Strategy and planning — review metrics, fill the calendar"},{"left":"Tuesday","right":"Long-form production — write your anchor content"},{"left":"Wednesday","right":"Repurpose and short-form — batch your social posts"},{"left":"Thursday","right":"Email and engagement — draft newsletter, reply to comments"},{"left":"Friday","right":"Review and optimize — SEO check, update prompt library"}]}'></div>
 </div>
 
 <div class="lesson-section">

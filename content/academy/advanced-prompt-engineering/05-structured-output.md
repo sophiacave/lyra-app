@@ -98,7 +98,6 @@ Start your response with:
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Structured Output — Match the Technique to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Schema-Driven Prompt","right":"Show the exact JSON structure with field descriptions to get consistent output"},{"left":"Output First Trick","right":"Start the AI’s response yourself to anchor the format from the first token"},{"left":"Markdown Table Prompt","right":"Specify columns, rows, and cell length constraints for parseable tables"},{"left":"Return ONLY directive","right":"Prevent helpful preambles like ‘Here is the JSON:’ before your data"}]}'></div>
 </div>
 
 <div class="lesson-section">

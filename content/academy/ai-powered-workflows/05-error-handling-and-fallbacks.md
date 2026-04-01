@@ -75,7 +75,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Retry-Fallback-Alert Pattern</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Error Handling Pattern","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Retry","right":"Wait 5 seconds and try again — most transient errors resolve themselves within 3 attempts"},{"left":"Fallback","right":"Retries exhausted — switch to Plan B or apply a default and flag for human review"},{"left":"Alert","right":"Fallback activated — notify someone with what failed, when, what the fallback did, what needs attention"},{"left":"AI confidence threshold","right":"Above 80% act automatically, 50-80% act but flag, below 50% route to human"}]}'></div>
 </div>
 
 <div class="lesson-section">

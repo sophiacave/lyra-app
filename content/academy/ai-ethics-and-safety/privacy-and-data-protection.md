@@ -127,7 +127,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match the data type to the reason it should not be shared.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"What NOT to Paste into AI","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Passwords and API keys","right":"Can expose accounts and systems to unauthorized access"},{"left":"Other people\u0027s personal data","right":"Violates their privacy and may breach GDPR or CCPA"},{"left":"Confidential business info","right":"Trade secrets and unreleased financials belong to the company"},{"left":"Regulated data (HIPAA, FERPA)","right":"Sending to third-party AI tools may constitute a compliance violation"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -55,7 +55,6 @@ free: false
   <h2 class="section-title">Match scenario to strategy.</h2>
   <p class="section-text">Six real business scenarios. Match each one to the right strategic approach. Some are obvious, some are tricky — think through the five factors before you match.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Scenario to Strategy","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"A 3-person agency needs AI to write client reports faster. Budget: $100/mo.","right":"Buy a SaaS tool"},{"left":"A hospital needs AI to analyze patient records. HIPAA applies.","right":"Build custom or hire specialist"},{"left":"A founder wants to automate email outreach but has no tech staff.","right":"Buy a SaaS tool"},{"left":"A manufacturer needs AI to predict equipment failures from proprietary sensor data.","right":"Build custom AI"},{"left":"A law firm wants a custom chatbot trained on their internal case library.","right":"Hire a consultant"},{"left":"A startup with $200 wants to try AI for social media content.","right":"Wait or use free tier"}]}'></div>
 </div>
 
 <div class="lesson-section">

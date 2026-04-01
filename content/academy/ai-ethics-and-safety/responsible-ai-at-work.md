@@ -124,7 +124,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each workplace AI principle to its rationale.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Responsible AI at Work","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Start with guidelines, not bans","right":"Blanket bans drive AI use underground — clear guidelines make it safe and visible"},{"left":"Define approved tools","right":"Specify which AI tools the team can use and whether free, paid, or company-licensed accounts are required"},{"left":"Set data boundaries","right":"Make it extremely specific what information can and cannot go into AI tools"},{"left":"Require human review","right":"All AI output that goes to clients or gets published should be checked by a person"},{"left":"The front page test","right":"Would you be comfortable if your AI use appeared in your industry\\'s top publication?"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

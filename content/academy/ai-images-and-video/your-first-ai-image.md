@@ -94,7 +94,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Four Prompt Elements</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Prompt Anatomy","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Subject","right":"What is in the image — a golden retriever puppy"},{"left":"Setting","right":"Where is it — in a field of wildflowers"},{"left":"Mood and Lighting","right":"How it feels — golden hour, soft warm light"},{"left":"Style","right":"What it looks like — photograph, oil painting, anime"}]}'></div>
 </div>
 
 <div class="lesson-section">

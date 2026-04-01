@@ -95,7 +95,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Use Cases and Workflows</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Practical AI Visual Use Cases","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Business card background","right":"Generate abstract pattern, then overlay contact details in Canva"},{"left":"Presentation slides","right":"Generate 16:9 soft-focus backgrounds in a consistent style for all slides"},{"left":"YouTube thumbnails","right":"Generate bold high-contrast background, add face and text in design tool"},{"left":"Product mockups","right":"Generate lifestyle context image showing product in realistic setting before production"}]}'></div>
 </div>
 
 <div class="lesson-section">

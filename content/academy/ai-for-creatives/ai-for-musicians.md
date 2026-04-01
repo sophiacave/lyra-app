@@ -172,7 +172,6 @@ css: "ai-creatives.css"
     <p><strong>The ethics note:</strong> Voice cloning technology is powerful and easily abused. Never clone someone else's voice without their explicit consent. Never use AI-generated voices to impersonate real people. The same principle applies here as everywhere in this course: <strong>use the power responsibly, and be transparent about when AI is involved.</strong></p>
   </div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Music Task — Right AI Tool","instruction":"Match each music or audio task to the AI tool best suited for it.","pairs":[{"left":"Generate a full demo track with vocals from a text description","right":"Suno or Udio: text-to-music tools that produce complete tracks in under a minute"},{"left":"Fix a spoken-word recording mistake without re-recording","right":"Descript Overdub: edit audio by editing the transcript, regenerate specific words in your voice"},{"left":"Separate the drums from a mixed track for sampling","right":"Lalal.ai or Demucs: AI stem separation that isolates individual instruments from any mix"},{"left":"Generate high-quality narration for a podcast intro","right":"ElevenLabs: near-human TTS quality for spoken content, narration, and multilingual audio"},{"left":"Compose a full orchestral MIDI arrangement for a film score","right":"AIVA: AI composition tool that generates full arrangements and exportable MIDI stems"}]}'></div>
 </div>
 
 <!-- SECTION 5: BUILDING YOUR WORKFLOW -->

@@ -71,7 +71,6 @@ type: "lesson"
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Three AI Podcast Models</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Podcast Production Approaches","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Fully AI-Generated","right":"Script with Claude, voice with ElevenLabs, music with Suno — zero human audio, always disclose"},{"left":"AI-Assisted Human","right":"You record your voice, AI cleans audio, removes filler words, generates show notes and transcripts"},{"left":"AI Co-Host","right":"You speak as yourself, an AI voice plays the co-host or interviewer role"}]}'></div>
 </div>
 
 <div class="lesson-section">

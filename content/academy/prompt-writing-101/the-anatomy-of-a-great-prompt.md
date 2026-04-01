@@ -34,7 +34,6 @@ free: true
 
 <div data-learn="FlashDeck" data-props='{"title":"RCFCE Building Blocks","cards":[{"front":"Role (R)","back":"Sets who the AI should be — expertise and perspective. A senior copywriter produces different output than a data analyst."},{"front":"Context (C)","back":"The situation, background, and audience. The single most impactful element. AI has infinite knowledge but zero context about YOUR situation."},{"front":"Format (F)","back":"What the output should look like — bullets, table, numbered list, email format. Without it, AI defaults to generic paragraphs."},{"front":"Constraints (C)","back":"Boundaries: word count, tone, things to avoid. Negative constraints like no buzzwords are surprisingly powerful at eliminating AI-isms."},{"front":"Examples (E)","back":"Samples showing the AI what good looks like. Even a 2-sentence example gives the AI a target for voice and style."}]}'></div>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Each Component to Its Definition","instruction":"Tap a letter on the left, then its definition on the right","pairs":[{"left":"R — Role","right":"Who should the AI be? Sets expertise and perspective"},{"left":"C — Context","right":"The situation, background, audience, and constraints"},{"left":"F — Format","right":"What the output should look like — bullets, table, email"},{"left":"C — Constraints","right":"Boundaries like word count, tone, things to avoid"},{"left":"E — Examples","right":"Samples that show the AI what good looks like"}]}'></div>
 
 </div>
 

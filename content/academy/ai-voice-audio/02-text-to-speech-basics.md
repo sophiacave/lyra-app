@@ -71,7 +71,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">TTS Platform Strengths</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Text-to-Speech Tools","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"ElevenLabs","right":"Current quality leader — exceptional emotional range and best voice cloning integration"},{"left":"OpenAI TTS","right":"Built into the API — rock-solid reliability, great for developers building apps"},{"left":"Google Cloud TTS","right":"Enterprise-grade — hundreds of voices across 40+ languages, pay-per-character"},{"left":"Edge TTS","right":"Microsoft free option — surprisingly good quality for zero cost, great for prototyping"}]}'></div>
 </div>
 
 <div class="lesson-section">

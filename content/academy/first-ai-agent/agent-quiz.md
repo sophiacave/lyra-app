@@ -18,6 +18,5 @@ free: false
 
   <div data-learn="FlashDeck" data-props='{"title":"Agent Concept Flashcards","cards":[{"front":"What is the agent loop?","back":"Perceive → Think → Act → Observe → Learn — a continuous cycle that runs until the agent achieves its goal."},{"front":"What makes an agent different from a chatbot?","back":"Agents use tools, maintain memory, and loop autonomously. Chatbots respond once per turn and have no persistent state."},{"front":"What are the 6 blocks of a good system prompt?","back":"Identity, Goal, Tools, Memory, Guardrails, Output Format."},{"front":"What is graceful degradation?","back":"When a tool fails, try fallback alternatives before escalating to the user. Never give up on the first failure."},{"front":"What are the 5 agent evaluation dimensions?","back":"Accuracy, Speed, Reliability, Cost Efficiency, User Satisfaction."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Agent Concept","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Perceive","right":"Taking in input from the environment"},{"left":"Observe","right":"Checking if an action succeeded or failed"},{"left":"Guardrail","right":"A rule the agent must never violate"},{"left":"Long-term memory","right":"Persists across sessions"},{"left":"Tool","right":"Lets the agent take real-world actions"}]}'></div>
 
 </div>

@@ -174,7 +174,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Ethical Scenarios and the Right Response","instruction":"Match each ethical scenario to the most appropriate response.","pairs":[{"left":"Client asks if you wrote their website copy yourself -- you used AI for the draft","right":"Disclose: explain your process includes AI drafting with full human editorial oversight"},{"left":"Your recent work is getting comments that it sounds different and less personal","right":"Run a voice audit: compare AI-assisted and fully human pieces, recalibrate your editing process"},{"left":"You want to generate images in the style of a specific living illustrator for a paid project","right":"Reconsider: mimicking a living artist\u0027s style for commercial gain is ethically problematic"},{"left":"You are submitting an essay to a writing competition","right":"Check competition rules and disclose AI use -- most competitions now require this"},{"left":"You want to publish AI-generated images commercially","right":"Read the tool\u0027s terms of service to confirm commercial rights and training data policies"}]}'></div>
 </div>
 
 <div class="lesson-section">

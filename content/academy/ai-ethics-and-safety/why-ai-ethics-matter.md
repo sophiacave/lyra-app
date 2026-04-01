@@ -127,7 +127,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each harm to the real-world example.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Harms in the Real World","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Bias Amplification","right":"A hiring tool penalizes women\\'s resumes because it learned from male-dominated data"},{"left":"Misinformation at Scale","right":"One person uses AI to produce thousands of fake articles or reviews"},{"left":"Privacy Erosion","right":"Customer data pasted into AI prompts may be stored or used for training"},{"left":"The TRUST Framework","right":"A set of five principles — Transparency, Review, Understand Limits, Safeguard Privacy, Take Responsibility"},{"left":"You Are the Ethics Layer","right":"AI does not evaluate whether its output is ethical — that judgment falls on the human user"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

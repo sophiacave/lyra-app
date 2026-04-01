@@ -76,7 +76,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Four Trigger Types</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Workflow Trigger Types","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Time-based trigger","right":"Every Monday at 9am, generate the weekly report"},{"left":"Event-based trigger","right":"When a new customer signs up, send the welcome sequence"},{"left":"Condition-based trigger","right":"When inventory drops below 50 units, alert the team"},{"left":"Manual trigger","right":"When I click this button, run the deployment pipeline"}]}'></div>
 </div>
 
 <div class="lesson-section">

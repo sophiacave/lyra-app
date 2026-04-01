@@ -93,7 +93,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Shared memory models.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Memory Model to Its Tradeoff","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Context Passing","right":"Simple to implement but context windows fill up after 5-6 agents"},{"left":"Shared Memory Store","right":"Scales to many agents but requires infrastructure and careful schema design"},{"left":"Vector Store","right":"Handles massive context semantically but complex to set up and results can be unpredictable"}]}'></div>
 </div>
 
 <div class="lesson-section">

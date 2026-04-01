@@ -46,7 +46,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Data Architecture — Match Each Layer to Its Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Data Lake or Warehouse","right":"Storage layer — holds raw and processed data at scale"},{"left":"Pipeline Layer","right":"Transformation and movement — ETL and data flow between systems"},{"left":"Serving Layer","right":"Makes data available to AI models at query time"},{"left":"Centralized Governance","right":"Consistent standards with federated execution for team speed"}]}'></div>
 </div>
 
 <div class="lesson-section">

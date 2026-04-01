@@ -75,7 +75,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Human-in-the-Loop Patterns</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Three Oversight Patterns","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Approval Gate","right":"Workflow pauses and waits for a thumbs-up before proceeding — high control"},{"left":"Review Queue","right":"Workflow completes but flags items for after-the-fact review — action is not blocked"},{"left":"Escalation Path","right":"Handles routine cases automatically, only involves humans for exceptions above a threshold"},{"left":"Trust Ladder","right":"Start with approval gates, graduate to review queues, eventually escalation-only based on proven accuracy"}]}'></div>
 </div>
 
 <div class="lesson-section">

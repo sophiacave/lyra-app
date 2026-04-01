@@ -111,7 +111,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each marketing task to whether AI excels or struggles.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Marketing Strengths and Limits","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Generating blog posts, emails, and ad copy at volume","right":"AI excels — content at scale"},{"left":"Creating 10 email versions for 10 audience segments","right":"AI excels — personalization without a data team"},{"left":"Deciding whether to pivot the business to enterprise","right":"AI cannot — strategic decisions require human judgment"},{"left":"Building genuine relationships with clients","right":"AI cannot — trust between humans cannot be automated"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

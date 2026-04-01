@@ -39,7 +39,6 @@ free: true
   <h2 class="section-title">Match the terms.</h2>
   <p class="section-text">Now that you have seen all 10, let's make sure 6 of the most commonly confused ones actually stuck. Match each term to its plain-English meaning. This takes about 90 seconds.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Terms to Plain English","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"Hallucination","right":"AI confidently makes something up"},{"left":"Tokens","right":"How AI usage is measured and billed"},{"left":"Fine-tuning","right":"Training AI on your specific business style"},{"left":"API","right":"Software adapter connecting two tools"},{"left":"Inference","right":"When AI actively does work for you"},{"left":"Embeddings","right":"How AI understands word similarity"}]}'></div>
 </div>
 
 <div class="lesson-section">

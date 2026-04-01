@@ -69,7 +69,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Cloud Platforms — Match Each to Its Strength","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AWS","right":"Largest ecosystem, SageMaker for ML, Bedrock for LLMs, most GPU availability"},{"left":"GCP","right":"Deepest AI integration, Vertex AI, TPU access, best for Google models"},{"left":"Azure","right":"OpenAI partnership, enterprise compliance, GPT with data residency guarantees"},{"left":"Vercel + Supabase","right":"Best for small teams — frontend edge functions plus PostgreSQL with pgvector, in production in hours"}]}'></div>
 </div>
 
 <div class="lesson-section">

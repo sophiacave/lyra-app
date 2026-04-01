@@ -92,7 +92,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Style Control Keywords</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Style Keywords and Their Effects","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Art nouveau","right":"Organic flowing lines, botanical motifs, decorative elegance"},{"left":"Cyberpunk","right":"Neon lights, dark urban settings, high-tech dystopian aesthetic"},{"left":"Chiaroscuro","right":"Strong contrast between light and dark, dramatic Renaissance-inspired mood"},{"left":"Shallow depth of field","right":"Subject is sharp while background blurs softly — creates professional photography feel"}]}'></div>
 </div>
 
 <div class="lesson-section">

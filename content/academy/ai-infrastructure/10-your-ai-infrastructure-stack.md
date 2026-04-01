@@ -49,7 +49,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Reference Architecture — Match Each Layer to Its Technology","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Frontend","right":"Next.js on Vercel — auto-deploys from GitHub with streaming responses"},{"left":"Backend / API","right":"Supabase edge functions — serverless, auto-scaling, close to the database"},{"left":"Database","right":"PostgreSQL on Supabase with pgvector — data, vectors, logs, and cache in one"},{"left":"AI Layer","right":"Tiered providers: free embeddings, mid-tier for simple tasks, flagship for complex reasoning"}]}'></div>
 </div>
 
 <div class="lesson-section">

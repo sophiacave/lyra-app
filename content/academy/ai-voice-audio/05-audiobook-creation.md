@@ -70,7 +70,6 @@ type: "lesson"
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Audiobook Distribution Platforms</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Audiobook Distribution Options","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"ACX / Audible","right":"Largest audiobook market — Virtual Voice program accepts AI narration"},{"left":"Google Play Books","right":"Auto-narration feature built in — easiest path for self-publishers"},{"left":"Findaway Voices","right":"Wide distribution to 40+ platforms from a single upload"},{"left":"Direct sales (Gumroad, Payhip)","right":"Keep 95% or more of revenue by selling from your own storefront"}]}'></div>
 </div>
 
 <div class="lesson-section">

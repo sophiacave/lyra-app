@@ -85,7 +85,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Technique</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Qualitative Analysis Techniques","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Classifying responses as positive, negative, or mixed","right":"Sentiment analysis"},{"left":"Grouping responses into naturally emerging topics","right":"Theme extraction"},{"left":"Sorting responses into predefined buckets","right":"Categorization"},{"left":"Numbers show what happened, words show why","right":"Mixing qualitative and quantitative data"},{"left":"Angry and delighted customers respond more than the middle","right":"Response bias in feedback data"}]}'></div>
 </div>
 
 <div class="lesson-section">

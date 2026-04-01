@@ -223,7 +223,6 @@ css: "ai-executives.css"
 </div>
 
 <!-- MATCH CONNECT: ROI METRICS TO WHAT THEY MEASURE -->
-<div data-learn="MatchConnect" data-props='{"title":"ROI Metrics: Match Each to What It Measures","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Cost per transaction before vs. after AI","right":"Cost reduction — direct savings from reduced labor or errors"},{"left":"Hours reclaimed per employee per week","right":"Efficiency gains — time saved and capacity freed"},{"left":"AI-influenced pipeline increase per quarter","right":"Revenue impact — new revenue or improved conversion"},{"left":"Error rate change in AI-assisted processes","right":"Quality and experience — fewer mistakes, better outcomes"},{"left":"Customer satisfaction delta for AI-touched interactions","right":"Quality and experience — customer perception of AI-assisted service"},{"left":"Weekly active users vs. registered users","right":"Adoption health — leading indicator of whether ROI will grow or stall"}]}'>
 </div>
 
 <!-- FLASH DECK: EXECUTIVE ROI FRAMEWORKS -->

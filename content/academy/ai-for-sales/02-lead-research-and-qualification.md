@@ -82,7 +82,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each lead score range to what it means for your pipeline.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Lead Scoring and Qualification","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Hot Lead (80-100)","right":"Strong ICP match, budget confirmed, active pain point, decision-maker engaged"},{"left":"Warm Lead (50-79)","right":"Good fit, exploring options, needs nurturing, multiple stakeholders involved"},{"left":"Cold Lead (0-49)","right":"Poor fit, no budget, no urgency, wrong contact level — deprioritize"},{"left":"Step 1 — Company Snapshot","right":"Size, industry, recent funding, and key products before any conversation"},{"left":"Step 3 — Pain Point Analysis","right":"What problems does this company likely face given their stage and industry?"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

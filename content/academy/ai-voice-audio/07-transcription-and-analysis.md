@@ -73,7 +73,6 @@ type: "lesson"
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Transcription Tools</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Transcription Platforms and Strengths","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Whisper (local)","right":"Free, no data leaves your computer — best for privacy-sensitive content"},{"left":"Deepgram","right":"Fastest cloud transcription with real-time streaming and excellent speaker diarization"},{"left":"AssemblyAI","right":"Best for analysis beyond transcription — sentiment, topic detection, PII redaction built in"},{"left":"Descript","right":"Transcription plus editing in one — edit audio by editing the text transcript"}]}'></div>
 </div>
 
 <div class="lesson-section">

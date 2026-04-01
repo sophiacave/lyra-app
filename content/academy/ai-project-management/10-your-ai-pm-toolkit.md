@@ -96,7 +96,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"The AI PM Weekly Rhythm — Match Each Day to Its Focus","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Monday","right":"Review last week’s action items with AI. Generate this week’s priorities. Draft the team update to start the week aligned."},{"left":"Daily","right":"Process meeting notes through AI immediately after each meeting. Action items go to your tracker within minutes, not days."},{"left":"Wednesday","right":"Mid-week risk check. Feed AI your current status and risk register. Adjust anything that has shifted since Monday."},{"left":"Friday","right":"Status report generation. Dump raw data, get polished outputs for every audience. Update resource allocations for the following week."}]}'></div>
 </div>
 
 <div class="lesson-section">

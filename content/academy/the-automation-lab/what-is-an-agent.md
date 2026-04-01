@@ -46,7 +46,6 @@ free: true
     </div>
   </div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match Agent vs Automation","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Automation","right":"Fixed path: trigger, action, done — no decisions"},{"left":"Agent","right":"Continuous loop: perceive, decide, act, learn"},{"left":"Perceive","right":"Observe the environment and gather information"},{"left":"Decide","right":"Choose what to do based on current observations"},{"left":"Adapt","right":"Learn from outcomes and improve over time"}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Agent vs. Automation","questions":[{"q":"A cron job sends a weekly analytics report every Monday at 9am. What is this?","options":["Agent","Automation","Both","Neither"],"correct":1,"explanation":"Fixed schedule, fixed action, no decision-making or adaptation. Classic automation."},{"q":"A system monitors your inbox, categorizes emails by urgency, drafts responses, and improves based on your corrections. What is this?","options":["Automation","Agent","Script","Workflow"],"correct":1,"explanation":"It perceives, decides, acts, and learns — the full agent loop."},{"q":"Which of these is part of the agent loop?","options":["Trigger → Action → Done","Perceive → Decide → Act → Learn","Input → Process → Output","Schedule → Run → Stop"],"correct":1,"explanation":"Agents run a continuous perceive-decide-act-learn cycle, not a fixed linear path."}]}'></div>
 

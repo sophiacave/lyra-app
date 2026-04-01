@@ -89,7 +89,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Financial Red Flags</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Financial Warning Signs","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Margin compression","right":"Revenue growing but expenses growing faster"},{"left":"Revenue concentration risk","right":"More than 30% of revenue from one customer"},{"left":"Cash flow timing problem","right":"Big expenses hitting before revenue comes in"},{"left":"Expense creep","right":"Small monthly increases that compound over time"}]}'></div>
 </div>
 
 <div class="lesson-section">

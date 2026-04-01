@@ -101,7 +101,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each part of the AI-powered sales day to its focus.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"The AI Sales Day","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Morning Block (30 min)","right":"AI pipeline review and prospect research for the day ahead"},{"left":"Mid-Morning","right":"Calls and meetings — you are fully prepped, AI did the homework"},{"left":"Lunch","right":"AI generates follow-ups from morning calls and new outreach batch"},{"left":"End of Day (15 min)","right":"AI reviews today\u0027s activity and plans tomorrow\u0027s priorities"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

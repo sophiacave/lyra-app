@@ -116,7 +116,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each dreaded email type to the right AI approach.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"The Dreaded Five Emails","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"The no email","right":"Ask AI to decline politely but firmly, without leaving the door open for negotiation"},{"left":"The complaint email","right":"Give AI the facts and say: Professional but firm. I want a specific resolution."},{"left":"The follow-up email","right":"Ask AI for a friendly follow-up that does not sound desperate after someone went quiet"},{"left":"The apology email","right":"Tell AI what happened and ask for sincere but not groveling language"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

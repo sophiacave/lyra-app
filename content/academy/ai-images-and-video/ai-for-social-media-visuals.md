@@ -92,7 +92,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Platform Aspect Ratios</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Social Media Image Dimensions","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Instagram feed portrait","right":"4:5 ratio — takes up more screen space for better engagement"},{"left":"Instagram Stories and Reels","right":"9:16 ratio — full vertical screen"},{"left":"YouTube thumbnails","right":"16:9 ratio — landscape format"},{"left":"Pinterest","right":"2:3 ratio — tall vertical format"}]}'></div>
 </div>
 
 <div class="lesson-section">

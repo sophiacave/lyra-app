@@ -139,7 +139,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each landing page section to its purpose.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Landing Page Structure","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Hero: Headline + Sub + CTA","right":"Clear value proposition in 10 words or less — what you get and why it matters"},{"left":"Problem Section","right":"Show you understand their frustration — make them feel seen"},{"left":"Social Proof","right":"Testimonials, logos, numbers — real results from real people providing evidence it works"},{"left":"Objection Handling","right":"FAQ section, guarantee, risk-reversal — address the reasons they might not buy"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

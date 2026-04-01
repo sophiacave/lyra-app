@@ -110,7 +110,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each health task to what AI can and cannot do.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Health and Wellness Limits","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Create a beginner 4-week walking plan","right":"AI can do this well — general fitness planning"},{"left":"Suggest a 10-minute desk stretching routine","right":"AI can do this well — general wellness guidance"},{"left":"Diagnose symptoms and recommend treatment","right":"AI should not — always consult a real medical professional"},{"left":"Help you prepare smart questions for your doctor appointment","right":"AI can do this well — preparation and research support"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

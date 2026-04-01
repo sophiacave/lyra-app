@@ -90,7 +90,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each HEARD step to what you do in that moment.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"HEARD Objection Framework","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"H — Hear","right":"Repeat their concern back to show you are listening, not defending"},{"left":"E — Empathize","right":"That makes complete sense — validate before you counter"},{"left":"A — Ask","right":"Dig deeper: Is it the price itself, or the uncertainty about ROI?"},{"left":"D — Direct","right":"Move forward: If we can solve that, are you ready to move ahead?"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

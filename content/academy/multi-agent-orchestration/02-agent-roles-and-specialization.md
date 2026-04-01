@@ -84,7 +84,6 @@ Editor Agent: "You review drafts for clarity, accuracy, and brand voice. Output 
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The six agent archetypes.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Agent Archetype to Its Role","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Researcher","right":"Gathers, validates, and synthesizes information — never makes decisions"},{"left":"Analyst","right":"Extracts patterns and insights from raw data — thinks in frameworks"},{"left":"Creator","right":"Produces content: writing, code, designs — focuses on craft"},{"left":"Critic","right":"Reviews work from other agents — finds flaws and enforces standards"},{"left":"Executor","right":"Takes real actions: runs code, calls APIs, manages files"},{"left":"Orchestrator","right":"Coordinates the team — routes tasks, manages handoffs, tracks progress"}]}'></div>
 </div>
 
 <div class="lesson-section">

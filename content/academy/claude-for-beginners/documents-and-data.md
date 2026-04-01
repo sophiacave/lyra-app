@@ -39,7 +39,6 @@ css: "claude-beginners.css"
 
   <p class="section-text">Now match each summary style to the right situation:</p>
 
-<div data-learn="MatchConnect" data-props='{"title":"Pick the Right Summary Style","instruction":"Match each situation to the best summary approach","pairs":[{"left":"Quick Slack update for your team","right":"Bullet Points"},{"left":"Board presentation next hour","right":"Executive Summary"},{"left":"Legal contract you do not understand","right":"ELI5"},{"left":"Meeting notes need to become a to-do list","right":"Action Items Only"}]}'></div>
 
 </div>
 
@@ -69,7 +68,6 @@ css: "claude-beginners.css"
   <h2 class="section-title">Working with uploaded files.</h2>
   <p class="section-text">Claude can read PDFs, images, spreadsheets, and more. But there are limits. Know what works and what needs a different approach.</p>
 
-<div data-learn="MatchConnect" data-props='{"title":"File Strategy Guide","instruction":"Match each file type to the best approach","pairs":[{"left":"Short PDF (under 50 pages)","right":"Upload directly — Claude reads the whole thing"},{"left":"Massive document (200+ pages)","right":"Use the chunk strategy — break into sections"},{"left":"Screenshot of a chart or graph","right":"Upload the image — Claude can read visuals"},{"left":"Live spreadsheet with formulas","right":"Copy-paste the data as text for best results"}]}'></div>
 
   <div class="tip-box">
     <div class="tip-label">The Chunk Strategy</div>

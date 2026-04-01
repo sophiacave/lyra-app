@@ -148,7 +148,6 @@ Email 5 (Day 10): Direct offer with urgency
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match each email element to its best practice.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Email Marketing Best Practices","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Subject Line","right":"Generate 10+ options and A/B test the two most different in approach"},{"left":"Opening Line","right":"Start with a story, observation, or question — never I hope this email finds you well"},{"left":"Body Copy","right":"Write like you\\u0027re emailing one person — short paragraphs, one clear CTA, under 200 words"},{"left":"Welcome Sequence","right":"5 emails over 10 days: deliver, connect, teach, prove, offer"},{"left":"A/B Testing","right":"Generate many AI variants fast — the marketer who tests more wins"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

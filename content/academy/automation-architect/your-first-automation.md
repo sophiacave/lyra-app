@@ -108,7 +108,6 @@ free: true
   <p>Lesson 2 of 9 &middot; Automation Architect</p>
 </footer>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Automation Concepts","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Trigger","right":"The event that starts your automation running"},{"left":"Action","right":"What happens when the trigger fires"},{"left":"Event payload","right":"Structured data produced by the trigger for the action"},{"left":"Deploy","right":"Making the automation live so it runs automatically"},{"left":"Webhook","right":"An HTTP endpoint that listens for incoming data"}]}'></div>
 
 <div data-learn="SortStack" data-props='{"title":"Order the Automation Steps","instruction":"Arrange these steps in the correct order to deploy an automation","items":["Choose your trigger event","Choose your action","Wire trigger to action","Test with sample data","Deploy automation"]}'></div>
 

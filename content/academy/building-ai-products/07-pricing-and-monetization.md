@@ -72,7 +72,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Pricing Concepts — Match Each to Its Impact","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"The Free Tier Trap","right":"Every free-tier query costs real money — a generous free tier with viral growth can literally bankrupt an AI startup"},{"left":"Credit Packs","right":"Buy 100 analyses for $19 — gives users bill predictability while protecting your margin on usage-based pricing"},{"left":"Value-Based Pricing","right":"Anchor price to the outcome\\\'s worth, not your cost — a $0.50 API call saving a lawyer 5 hours is worth $50+"},{"left":"The 3-10x Rule","right":"Your price should be 3-10x your cost per query — if a query costs $0.03, charge at least $0.10"}]}'></div>
 </div>
 
 <div class="try-it-box">

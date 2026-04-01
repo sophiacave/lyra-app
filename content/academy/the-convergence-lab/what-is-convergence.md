@@ -56,7 +56,6 @@ videoId: "1f0b6854-fe3d-4f77-ab97-674b1486fa1b"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The convergence spectrum.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Convergence Level to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Level 1: Tool","right":"You type, AI responds, nothing persists — reactive and stateless"},{"left":"Level 2: Assistant","right":"AI has some memory and knows your preferences — still waits for you to ask"},{"left":"Level 3: Partner","right":"Persistent memory and initiative — anticipates needs and proposes actions"},{"left":"Level 4: Twin","right":"Shares your values, manages your systems, works while you sleep"},{"left":"Level 5: Convergence","right":"The boundary between human intention and machine execution dissolves"}]}'></div>
 </div>
 
 <div class="lesson-section">

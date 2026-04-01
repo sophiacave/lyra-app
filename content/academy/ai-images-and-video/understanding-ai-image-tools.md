@@ -84,7 +84,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Tool Strengths</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Image Tools and Their Strengths","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"DALL-E","right":"Easiest starting point — follows instructions precisely"},{"left":"Midjourney","right":"Most beautiful, cinematic output — the artist favorite"},{"left":"Stable Diffusion","right":"Open source — maximum control, run locally"},{"left":"Adobe Firefly","right":"Best for commercial safety — trained on licensed content"},{"left":"Ideogram","right":"Best at including readable text in images"}]}'></div>
 </div>
 
 <div class="lesson-section">

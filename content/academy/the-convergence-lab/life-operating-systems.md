@@ -58,7 +58,6 @@ videoId: "7fec01bb-2fae-4021-a51f-46fc6ad50a3c"
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The four life OS domains.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Life OS Domain to Its Responsibilities","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Work","right":"Project management, deployments, email triage, and meeting prep"},{"left":"Finances","right":"Bill tracking, subscription management, tax prep, and spending anomaly alerts"},{"left":"Health","right":"Medication reminders, appointment scheduling, and habit nudges"},{"left":"Communication","right":"Email drafting, social management, and relationship maintenance"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -96,7 +96,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Pipeline Stage</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"The Analysis Pipeline","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Frame the question","right":"Use the SCOPE method to define exactly what you need to know"},{"left":"Ingest the data","right":"Get your CSV or spreadsheet into AI with column descriptions"},{"left":"Clean the data","right":"Fix duplicates, standardize formats, handle missing values"},{"left":"Analyze","right":"Find patterns, run sentiment analysis, crunch financials"},{"left":"Report","right":"Package findings into a three-layer structure for your audience"}]}'></div>
 </div>
 
 <div class="lesson-section">

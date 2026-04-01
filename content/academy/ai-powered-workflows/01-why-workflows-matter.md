@@ -77,7 +77,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Task vs. Workflow</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Tasks vs. Workflows","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"A single action","right":"Task — summarize this email"},{"left":"A connected pipeline","right":"Workflow — classify, draft, route, and log when email arrives"},{"left":"What automation saves beyond time","right":"Cognitive load — every automated decision is one less mental drain"},{"left":"Time saved per year from 3 daily 15-minute automations","right":"Over 270 hours — nearly 7 full work weeks"}]}'></div>
 </div>
 
 <div class="lesson-section">

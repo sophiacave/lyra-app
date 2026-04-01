@@ -119,7 +119,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each marketing funnel stage to the AI-powered content type.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Full-Funnel AI Marketing","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Top of Funnel","right":"Blog posts, social content, and ads that attract ideal customers"},{"left":"Middle of Funnel","right":"Lead magnet, email sequence, and nurture content that builds trust"},{"left":"Bottom of Funnel","right":"Landing page, sales emails, and conversion copy that closes"},{"left":"Retention","right":"Onboarding emails, customer success content, and referral prompts"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

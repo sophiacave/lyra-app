@@ -92,7 +92,6 @@ videoId: "603dbd8a-2333-4615-a0f5-deb7e4917533"
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">The building blocks of every neuron.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Each Concept to Its Role","instruction":"Tap a concept on the left, then what it does on the right","pairs":[{"left":"Weights","right":"Multipliers that control how much each input matters"},{"left":"Bias","right":"An offset that shifts when the neuron fires"},{"left":"Activation Function","right":"Non-linear transform that decides if the neuron fires"},{"left":"Forward Pass","right":"The computation flowing left-to-right through the neuron"}]}'></div>
 
 </div>
 

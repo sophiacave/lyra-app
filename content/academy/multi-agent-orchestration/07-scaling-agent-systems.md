@@ -89,7 +89,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Tiered model strategy.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Match Each Agent Task to Its Optimal Model Tier","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Complex reasoning and analysis","right":"Premium model — GPT-4o or Opus 4.6"},{"left":"Writing and research with context","right":"Mid-tier model — Sonnet 4.6 or GPT-4o mini"},{"left":"Routing and classification decisions","right":"Small cheap model — Haiku 4.5 or similar"},{"left":"Deterministic validation and formatting","right":"Rule-based logic — no LLM needed at all"}]}'></div>
 </div>
 
 <div class="lesson-section">

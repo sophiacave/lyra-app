@@ -70,7 +70,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Interface Patterns — Match Each to How It Works","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Structured Input + AI Output","right":"Form fields guide users to optimal input, AI generates result — e.g., Canva’s Magic Write"},{"left":"Select + Transform","right":"Highlight text, choose an AI action from a menu — e.g., Notion AI inline editing"},{"left":"Ambient AI","right":"AI works in the background and surfaces suggestions without disrupting the workflow — e.g., Grammarly"},{"left":"Edit, Don’t Create","right":"AI generates a first draft; the user edits it — maintains user control while eliminating the blank page problem"}]}'></div>
 </div>
 
 <div class="lesson-section">

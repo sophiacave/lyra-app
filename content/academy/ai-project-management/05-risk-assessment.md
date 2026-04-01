@@ -69,7 +69,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Risk Register Fields — Match Each to Its Purpose","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Probability Rating","right":"Low/medium/high with percentage — quantifies how likely the risk is to occur"},{"left":"Impact Rating","right":"Low/medium/high with consequence description — quantifies the damage if the risk materializes"},{"left":"Mitigation Strategy","right":"Specific actions to prevent or reduce the risk — e.g., submit for review 2 weeks early, prepare fallback"},{"left":"Trigger Indicator","right":"The early warning sign that a risk is becoming reality — enables proactive response instead of reactive scrambling"},{"left":"Pre-Mortem Technique","right":"Ask AI to imagine the project failed spectacularly — reframes risk identification from defensive to creative"}]}'></div>
 </div>
 
 <div class="lesson-section">

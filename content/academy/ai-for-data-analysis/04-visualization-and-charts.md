@@ -85,7 +85,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Chart Type Matcher</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Chart Types and Use Cases","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Trends over time","right":"Line chart"},{"left":"Comparing categories","right":"Bar chart"},{"left":"Parts of a whole (5 or fewer)","right":"Pie chart"},{"left":"Relationship between two variables","right":"Scatter plot"},{"left":"Patterns across two dimensions","right":"Heatmap"}]}'></div>
 </div>
 
 <div class="lesson-section">

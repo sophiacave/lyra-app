@@ -140,7 +140,6 @@ Skip purely educational topics that attract the wrong audience.</pre>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each content quality to what Google loves or penalizes.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Google SEO: Love vs Penalize","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Original insights and unique expertise","right":"Google loves this"},{"left":"Mass-produced content with no new value","right":"Google penalizes this"},{"left":"Content that solves real problems for real readers","right":"Google loves this"},{"left":"Keyword stuffing and SEO manipulation tactics","right":"Google penalizes this"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -201,7 +201,6 @@ free: false
 
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Organizational Readiness Factors","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Data Readiness","right":"Clean, accessible, governed data that AI can actually use — the #1 blocker for most organizations"},{"left":"Cloud Infrastructure","right":"Modern cloud stack with API-connected systems, SSO, and RBAC — what AI tools plug into"},{"left":"AI Culture","right":"Leaders modeling AI use, safe experimentation, and AI adoption in performance reviews"},{"left":"AI Governance","right":"Usage policy, ethics review process, and contractual awareness of where AI touches customer data"},{"left":"AI-Curious (Stage 1)","right":"Leadership interested, no formal strategy, individuals experimenting on their own"},{"left":"AI-Native (Stage 5)","right":"AI inseparable from operations, every process AI-augmented by default, board-level AI strategy"}]}'></div>
 </div>
 
 <div class="lesson-section">

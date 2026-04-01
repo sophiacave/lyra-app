@@ -76,7 +76,6 @@ Listen to all three back to back. The difference between step 1 and step 3 is th
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Audio Editing Tools</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Audio Editing Arsenal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Adobe Podcast Enhance","right":"Gold standard for voice cleanup — removes background noise, reduces echo, normalizes levels"},{"left":"Descript","right":"Text-based editing — delete a word from the transcript and it\\u0027s deleted from the audio"},{"left":"Auphonic","right":"Automated mastering — handles leveling, noise reduction, loudness normalization, two hours free per month"},{"left":"LALAL.AI","right":"Stem separation specialist — split audio into vocals, drums, bass, guitar, and other instruments"}]}'></div>
 </div>
 
 <div class="lesson-section">

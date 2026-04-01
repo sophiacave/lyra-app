@@ -82,7 +82,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Cleaning Step</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Data Cleaning Checklist","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Scan for structure","right":"Count rows, columns, data types, and missing value percentages"},{"left":"Find duplicates","right":"Identify rows that are identical or near-identical matches"},{"left":"Standardize text","right":"List unique values and flag variants like US, U.S.A., and usa"},{"left":"Validate ranges","right":"Check for values that seem unreasonably high or low"},{"left":"Handle blanks","right":"Decide whether to fill, flag, or remove each missing value"}]}'></div>
 </div>
 
 <div class="lesson-section">

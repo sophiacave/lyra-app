@@ -100,7 +100,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">Prompt Library Categories</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Prompt Library Organization","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Brand prompts","right":"Base style descriptions that keep your visual identity consistent across all posts"},{"left":"Proven winners","right":"Prompts that produced outstanding results, saved with notes about what made them work"},{"left":"Style keywords","right":"Running list of effective lighting, composition, and mood terms organized by category"},{"left":"Templates","right":"Pre-built fill-in-the-blank prompt structures for common needs like thumbnails and headers"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -60,7 +60,6 @@ css: "claude-beginners.css"
   <h2 class="section-title">Calendar & meeting prep, handled.</h2>
   <p class="section-text">Meetings don't have to be chaos. Match each scenario to the right Claude approach:</p>
 
-<div data-learn="MatchConnect" data-props='{"title":"Meeting Prep Playbook","instruction":"Match each situation to the best Claude prompt approach","pairs":[{"left":"30-minute project status meeting","right":"Ask Claude to create a timed agenda with sections"},{"left":"Overbooked week with 12 meetings","right":"Paste your calendar and ask Claude to find deep work time"},{"left":"Performance review tomorrow","right":"Ask Claude to help prep talking points and anticipate questions"},{"left":"Post-meeting chaos with no notes","right":"Paste rough notes and ask Claude to extract action items"}]}'></div>
 
   <div class="tip-box">
     <div class="tip-label">Pro Tip</div>

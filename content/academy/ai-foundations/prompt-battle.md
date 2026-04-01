@@ -42,7 +42,6 @@ free: false
   <span class="section-label">Technique Mastery</span>
   <h2 class="section-title">Match the technique to the task.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Prompt Technique to Best Use Case","instruction":"Tap a technique on the left, then the task it solves best","pairs":[{"left":"Zero-Shot","right":"Simple classification: is this email spam or not?"},{"left":"Few-Shot","right":"Convert informal messages to professional emails (with examples)"},{"left":"Chain-of-Thought","right":"Solve multi-step word problems with shown reasoning"},{"left":"Role-Play","right":"Get a senior engineer to do a thorough code review"}]}'></div>
 
 </div>
 

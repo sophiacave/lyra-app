@@ -62,7 +62,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Documentation Types — Match Each to Its Source Material","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Standard Operating Procedure","right":"Created from a plain-language description of who does what, when, and in what order — AI formalizes tribal knowledge into structured steps"},{"left":"Architecture Decision Record","right":"Created from Slack threads or meeting debates about technical approach — captures the why before context is lost"},{"left":"Onboarding Guide","right":"Created from a new hire\\\'s first month of questions and answers — the newcomer writes the doc by asking what nobody thought to document"},{"left":"Living Documentation","right":"Monthly update: feed AI current SOP plus process changes — produces updated version with changelog in 15 minutes"}]}'></div>
 </div>
 
 <div class="lesson-section">

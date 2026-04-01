@@ -78,7 +78,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Process Mapping — Match Each Concept","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Input-Action-Output Framework","right":"Every process breaks into something coming in, something happening to it, and something coming out"},{"left":"Mechanical Step","right":"Same every time — copy data, export PDF, send email. Prime automation candidate."},{"left":"Decision Step","right":"Requires judgment — writing client-specific notes. Harder to automate, but AI can assist."},{"left":"Automation Priority Score","right":"Frequency times time per run times number of mechanical steps — higher score means automate first"},{"left":"The Biggest Mapping Mistake","right":"Trying to automate your most complex process first instead of starting with boring routine tasks"}]}'></div>
 </div>
 
 <div class="lesson-section">

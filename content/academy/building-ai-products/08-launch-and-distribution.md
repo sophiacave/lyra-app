@@ -63,7 +63,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Three-Wave Launch — Match Each Wave to Its Goal","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Wave 1 — Inner Circle","right":"Give to 20-50 people you know to catch embarrassing failures before strangers see them"},{"left":"Wave 2 — Community Seeding","right":"Post the output in communities where target users gather — show the magic trick, not the tool"},{"left":"Wave 3 — Content Flywheel","right":"Turn your product’s outputs into content — screenshots, before/after, testimonials that demonstrate value without ads"},{"left":"Show the Output, Not the Tool","right":"Add a subtle watermark and one-click sharing — every shared output is a free ad that proves value"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -99,7 +99,6 @@ free: false
   <span class="section-label">Practice</span>
   <h2 class="section-title">Which template fits the job?</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match the Situation to the Right Template","instruction":"Tap a situation on the left, then the best template on the right","pairs":[{"left":"You need to tell a client about a price increase","right":"Email Writer"},{"left":"You want 15 blog topic ideas for next quarter","right":"Brainstormer"},{"left":"You wrote a proposal and want feedback before sending","right":"Editor / Reviewer"},{"left":"You have a board meeting tomorrow and need to prepare","right":"Meeting Prep"},{"left":"You need a LinkedIn post about a company milestone","right":"Content Creator"},{"left":"You want to understand why conversion rates dropped","right":"Analyst"}]}'></div>
 
 </div>
 

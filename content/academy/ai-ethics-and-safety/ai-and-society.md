@@ -105,7 +105,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each societal AI issue to its core concern.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI and Society","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"AI and jobs","right":"AI transforms tasks within jobs faster than society can support adaptation"},{"left":"The AI divide","right":"AI benefits disproportionately flow to those who already have resources and access"},{"left":"Environmental cost","right":"Training and running AI models consumes significant energy and water for cooling"},{"left":"Being part of the solution","right":"Share knowledge, advocate for responsible use, support accessible AI tools"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

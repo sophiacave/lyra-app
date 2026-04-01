@@ -19,7 +19,6 @@ free: false
 
   <div data-learn="FlashDeck" data-props='{"title":"API Headers & Auth","cards":[{"front":"Authorization header","back":"Sends authentication credentials with a request. Common formats: Bearer <token> for OAuth, X-API-Key: <key> for API keys."},{"front":"Content-Type header","back":"Tells the server the format of your request body. Use application/json when sending JSON data."},{"front":"Accept header","back":"Tells the server what format you want in the response. Example: Accept: application/json."},{"front":"Bearer token","back":"An OAuth access token sent in the Authorization header: Authorization: Bearer <token>"},{"front":"401 vs 403","back":"401 Unauthorized = no valid credentials sent. 403 Forbidden = credentials are valid but you do not have permission."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Status Codes to Meanings","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"200","right":"OK — request succeeded"},{"left":"201","right":"Resource created successfully"},{"left":"401","right":"Missing or invalid authentication"},{"left":"404","right":"Resource not found"},{"left":"500","right":"Server-side error occurred"}]}'></div>
 
 </div>
 <footer class="progress-footer"><p>Lesson 6 of 9 &middot; Automation Architect</p></footer>

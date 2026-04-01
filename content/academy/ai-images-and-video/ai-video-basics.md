@@ -82,7 +82,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">AI Video Tools</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Video Platforms and Their Strengths","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Runway Gen-3","right":"Most established — cinematic quality, professionals reach for this first"},{"left":"Pika","right":"Simple and fun — great for quick social clips, generous free tier"},{"left":"Sora","right":"OpenAI tool — remarkably coherent physics and natural motion"},{"left":"Luma Dream Machine","right":"Fast generation — particularly strong at image-to-video animation"}]}'></div>
 </div>
 
 <div class="lesson-section">

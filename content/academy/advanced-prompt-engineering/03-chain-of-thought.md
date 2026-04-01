@@ -63,7 +63,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"CoT Triggers — Match the Technique to Its Description","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Simple Trigger","right":"Add ‘think step by step’ before answering"},{"left":"Structured Trigger","right":"Define the reasoning steps explicitly in sequence"},{"left":"Expert Trigger","right":"Combine persona metaphor with step-by-step reasoning"},{"left":"Thinking Budget","right":"Ask for multiple approaches with trade-off evaluation before recommending"}]}'></div>
 </div>
 
 <div class="lesson-section">

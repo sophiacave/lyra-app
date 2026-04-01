@@ -42,7 +42,6 @@ free: true
   <span class="section-label">Part 2</span>
   <h2 class="section-title">Match the vocabulary.</h2>
 
-<div data-learn="MatchConnect" data-props='{"title":"Match Term to Definition","instruction":"Tap a term on the left, then its definition on the right","pairs":[{"left":"Input Layer","right":"Receives raw data like pixel values or text"},{"left":"Hidden Layer","right":"Finds patterns and intermediate representations"},{"left":"Output Layer","right":"Makes the final decision or prediction"},{"left":"Backpropagation","right":"Adjusts weights by computing how much each contributed to error"},{"left":"Overfitting","right":"Memorizing training data instead of learning general patterns"}]}'></div>
 
 </div>
 

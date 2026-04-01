@@ -175,7 +175,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Creative Goal to the Right Technique","instruction":"Match each creative challenge on the left to the prompting technique that solves it best.","pairs":[{"left":"Your AI output all sounds the same regardless of topic","right":"Style Transfer: build and apply a personal style anchor"},{"left":"You need writing that feels emotionally resonant, not just factually correct","right":"Mood Anchoring: describe texture and feeling, not just content"},{"left":"AI keeps defaulting to cliched structures and phrasing","right":"Constraint-Based Creativity: add deliberate creative limits"},{"left":"First draft is decent but not quite right","right":"Iterative Refinement: pick and push through multiple rounds"},{"left":"You want to explore an idea across different art forms","right":"Cross-Medium Translation: move the concept between media"}]}'></div>
 </div>
 
 <div class="lesson-section">

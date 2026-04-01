@@ -55,7 +55,6 @@ free: true
   <h2 class="section-title">Match tasks to categories.</h2>
   <p class="section-text">Six tasks, three categories. Match each task to where it belongs. This is the same judgment call you will be making in your business every week.</p>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Task to Category","instruction":"Tap one item on the left, then its match on the right","pairs":[{"left":"Drafting job descriptions","right":"AI Does Well"},{"left":"Making a final hiring decision","right":"AI Cannot Do"},{"left":"Reviewing a contract for red flags","right":"AI Can Help"},{"left":"Answering customer FAQs","right":"AI Does Well"},{"left":"Managing a PR crisis involving real people","right":"AI Cannot Do"},{"left":"Analyzing customer survey data for themes","right":"AI Does Well"}]}'></div>
 </div>
 
 <div class="lesson-section">

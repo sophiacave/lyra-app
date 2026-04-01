@@ -86,7 +86,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Question Quality</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Weak vs. Strong Data Questions","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"What do you see in this data?","right":"Too vague — AI gives a generic summary"},{"left":"Which product category grew fastest in Q3?","right":"Specific — targets exact metric and time period"},{"left":"Analyze my sales","right":"No context, output format, or audience specified"},{"left":"Compare open rates across 4 campaign types and flag exceptions","right":"Uses SCOPE: specific, contextual, and asks for comparison"},{"left":"Summarize trends, then break down March churners by plan type","right":"Question chaining — each round builds deeper insight"}]}'></div>
 </div>
 
 <div class="lesson-section">

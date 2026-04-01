@@ -92,6 +92,5 @@ free: true
 
   <div data-learn="FlashDeck" data-props='{"title":"Server Types Flash Review","cards":[{"front":"Filesystem Server","back":"Exposes read_file, write_file, list_directory, search_files. Gives AI controlled access to local or remote files."},{"front":"Database Server","back":"Exposes query, insert, update, list_tables. Maintains a persistent connection pool so Claude can query data without re-connecting each time."},{"front":"Browser Server","back":"Exposes navigate, screenshot, click, type, get_text. Powered by Puppeteer or Playwright for full web automation."},{"front":"Memory Server","back":"Exposes store_memory, recall, search_memory, create_relation. Persists knowledge across sessions in a knowledge graph."},{"front":"Search Server","back":"Exposes web_search, search_docs, search_code, search_news. Connects AI to live search engines and documentation indices."}]}'></div>
 
-  <div data-learn="MatchConnect" data-props='{"title":"Match Server to Use Case","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Filesystem Server","right":"Read and write local project files"},{"left":"Database Server","right":"Run SQL queries and return structured results"},{"left":"Browser Server","right":"Navigate pages and fill out forms"},{"left":"Memory Server","right":"Remember facts across multiple sessions"}]}'></div>
 
 </div>

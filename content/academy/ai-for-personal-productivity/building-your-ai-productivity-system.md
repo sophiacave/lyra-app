@@ -142,7 +142,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Match each prompt type to its place in your system.</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Your Personal Prompt Library","instruction":"Tap one on the left, then its match on the right","pairs":[{"left":"Daily check-in prompt","right":"Morning routine — tell AI your tasks and available hours, get a clear daily plan"},{"left":"Tone plus Context plus Goal prompt","right":"Email drafting — from Lesson 3, works for any message you dread writing"},{"left":"Brain dump plus four-bucket sort","right":"Task management — clear weekly priorities from Lesson 4"},{"left":"Weekly reset prompt","right":"Sunday planning — review the week, plan ahead, create a meal plan, flag what to prepare for"}]}'></div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->
