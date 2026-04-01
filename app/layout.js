@@ -4,8 +4,8 @@ import Script from 'next/script';
 import { site, colors } from '../lib/site-config';
 import BetaReporter from './components/BetaReporter';
 
-const fullTitle = `${site.name} \u2014 ${site.tagline}`;
-const shortDesc = "What happens when human creativity meets AI intelligence? Like One is the platform proving that human-AI collaboration isn't the future \u2014 it's now.";
+const fullTitle = `Like One — Free AI Courses | Learn Claude, Automation & Prompt Engineering`;
+const shortDesc = '30 free AI courses, 300+ interactive lessons. Learn Claude, prompt engineering, AI automation, and more. Beginner to advanced. Start free today.';
 
 export const viewport = {
   width: 'device-width',
@@ -15,7 +15,8 @@ export const viewport = {
 
 export const metadata = {
   title: fullTitle,
-  description: site.description,
+  description: shortDesc,
+  alternates: { canonical: `${site.url}/` },
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.ico',
