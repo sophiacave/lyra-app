@@ -1695,6 +1695,7 @@
     transform: translateX(-100%);
     transition: transform var(--transition-slow);
     z-index: var(--z-modal);
+    animation: none; /* Override desktop slide-in — animation fill-mode overrides transform */
   }
 
   .lo-dock.lo-dock-open {
