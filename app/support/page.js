@@ -22,10 +22,43 @@ function SupportContent() {
 
   return (
     <SiteLayout maxWidth="680px">
+      {/* Support / Help Section */}
       <div className="donate-hero">
         <h1 className="donate-hero-title">
-          Help keep AI<br /><span className="accent-warm">accessible.</span>
+          How can we <span className="accent-warm">help?</span>
         </h1>
+        <p className="donate-hero-desc">
+          We respond to every message personally. Here are the fastest ways to get help.
+        </p>
+      </div>
+
+      <div className="donate-impact-grid">
+        {[
+          { emoji: '\u2709\uFE0F', title: 'Email Us', desc: 'hello@likeone.ai — we reply within 24 hours.', link: `mailto:${site.email}` },
+          { emoji: '\uD83D\uDCAC', title: 'Community Forum', desc: 'Ask questions and get help from the community.', link: '/forum/' },
+          { emoji: '\uD83D\uDCD6', title: 'Browse Courses', desc: 'First 3 lessons of every course are free.', link: '/academy/' },
+        ].map(c => (
+          <a key={c.title} href={c.link} className="donate-impact-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div className="donate-impact-emoji">{c.emoji}</div>
+            <h3 className="donate-impact-title">{c.title}</h3>
+            <p className="donate-impact-desc">{c.desc}</p>
+          </a>
+        ))}
+      </div>
+
+      <div className="donate-disclosure" style={{ marginBottom: '3rem' }}>
+        <h3 className="donate-disclosure-title">Common Questions</h3>
+        <p className="donate-disclosure-text"><strong>Cancel my subscription?</strong> Log into your <a href="/account/" className="donate-note-link">account</a> and use the Stripe billing portal. Instant, no questions asked.</p>
+        <p className="donate-disclosure-text"><strong>Refund?</strong> 7-day full refund on your first payment. Email <a href={`mailto:${site.email}`} className="donate-note-link">{site.email}</a>.</p>
+        <p className="donate-disclosure-text"><strong>Bug or broken page?</strong> Use the Report button at the bottom of any page, or post in the <a href="/forum/" className="donate-note-link">forum</a>.</p>
+        <p className="donate-disclosure-text"><strong>Community Access?</strong> Can&rsquo;t afford Pro? <a href="/community-access/" className="donate-note-link">Apply here</a> — full access, honor system.</p>
+      </div>
+
+      {/* Donation Section */}
+      <div className="donate-hero">
+        <h2 className="donate-hero-title" style={{ fontSize: '1.8rem' }}>
+          Help keep AI<br /><span className="accent-warm">accessible.</span>
+        </h2>
         <p className="donate-hero-desc">
           Like One keeps a free path open for everyone. Your support funds free courses, research, and technology built with empathy.
         </p>

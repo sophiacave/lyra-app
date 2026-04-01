@@ -89,10 +89,10 @@ export default function PricingPage() {
           <div className="pricing-banner-badge">LIMITED — FIRST 1,000 MEMBERS</div>
           <div className="dm-serif pricing-banner-title">Lock in <span className="accent">90% off</span> — forever.</div>
           <div className="pricing-banner-desc">Founding members pay $4.90/mo or $39/yr for life. This price never increases. When founding spots close, it&rsquo;s full price ($49/mo).</div>
-          {foundingData && foundingData.remaining < 500 && (
+          {foundingData && foundingData.remaining != null && (
             <div className="pricing-spots-row">
               <div className="pricing-spots-bar">
-                <div className="pricing-spots-fill" style={{ width: `${((foundingData.total || 0) / 1000) * 100}%` }} />
+                <div className="pricing-spots-fill" style={{ width: `${((1000 - (foundingData.remaining || 0)) / 1000) * 100}%` }} />
               </div>
               <span className="pricing-spots-text"><strong>{foundingData.remaining?.toLocaleString()}</strong> founding spots left</span>
             </div>
