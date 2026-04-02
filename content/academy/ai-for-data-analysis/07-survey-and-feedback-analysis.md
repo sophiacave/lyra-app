@@ -70,6 +70,38 @@ free: false
   <p class="section-text">Remember: people who leave feedback are not a random sample. Angry customers and delighted customers respond. The quiet middle usually doesn't. Ask AI to flag this limitation in its analysis so you don't over-index on extreme sentiments.</p>
 </div>
 
+  <div class="tip-box">
+    <div class="tip-label">Python Sentiment Analysis</div>
+    <p>Ask Claude to write a script that processes feedback at scale:</p>
+  </div>
+
+  <pre><code class="language-python">import pandas as pd
+from collections import Counter
+
+# Load survey responses
+df = pd.read_csv("feedback.csv")  # columns: response_text, rating
+
+# Basic sentiment from ratings
+df["sentiment"] = df["rating"].apply(
+    lambda r: "positive" if r >= 4 else "negative" if r <= 2 else "neutral"
+)
+print("Sentiment distribution:")
+print(df["sentiment"].value_counts())
+
+# Theme extraction: find most common words (excluding stop words)
+stop_words = {"the", "a", "is", "it", "to", "and", "of", "in", "for", "was", "i", "my", "that"}
+all_words = " ".join(df["response_text"].str.lower()).split()
+meaningful = [w for w in all_words if w not in stop_words and len(w) > 3]
+top_themes = Counter(meaningful).most_common(10)
+print(f"\nTop themes: {top_themes}")
+
+# Compare themes by sentiment
+for sentiment in ["positive", "negative"]:
+    subset = df[df["sentiment"] == sentiment]
+    words = " ".join(subset["response_text"].str.lower()).split()
+    top = Counter([w for w in words if w not in stop_words and len(w) > 3]).most_common(5)
+    print(f"\nTop words ({sentiment}): {top}")</code></pre>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Collect text feedback from any source — app reviews, survey responses, even social media comments. Paste them in and try:</p>
@@ -85,6 +117,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Technique</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Qualitative Analysis Techniques","instruction":"Match each scenario to the best analysis technique","pairs":[{"left":"Classify 500 reviews as positive, negative, or neutral","right":"Sentiment analysis — score and categorize emotional tone"},{"left":"Find common topics in 200 open-ended survey responses","right":"Theme extraction — let AI identify categories from the data"},{"left":"Sort feedback into predefined buckets: pricing, UX, support","right":"Categorization — AI assigns responses to your existing categories"},{"left":"Understand why Q3 churn spiked using customer comments","right":"Mixing qual and quant — combine feedback with metrics data"},{"left":"Identify the 3 most impactful changes to make","right":"Actionable feedback extraction — find specific improvement opportunities"},{"left":"Check if happy vs unhappy customers mention different things","right":"Cross-referencing by segment — compare themes across rating groups"}]}'></div>
 </div>
 
 <div class="lesson-section">

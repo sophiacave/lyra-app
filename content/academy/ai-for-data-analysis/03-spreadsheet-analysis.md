@@ -67,6 +67,35 @@ free: true
   <p class="section-text"><strong>Shared workbooks:</strong> When a team collaborates on the same sheet, AI analysis works best as a side investigation.</p>
   <p class="section-text"><strong>Recurring reports:</strong> Once AI helps you build the formula or template, run it natively in the sheet going forward.</p>
   <p class="section-text">The sweet spot: use AI to figure out the approach, then implement it in your spreadsheet for ongoing use.</p>
+
+  <div class="tip-box">
+    <div class="tip-label">Python Bonus</div>
+    <p>Ask Claude to write Python code for recurring analysis. Here is what Claude generates when you say <em>"Write a Python script to analyze my monthly sales CSV"</em>:</p>
+  </div>
+
+  <pre><code class="language-python">import pandas as pd
+
+# Load your CSV — works with any spreadsheet export
+df = pd.read_csv("sales_data.csv")
+
+# Quick overview: shape, column types, missing values
+print(f"Rows: {len(df)}, Columns: {len(df.columns)}")
+print(f"Missing values:\n{df.isnull().sum()}")
+
+# Monthly revenue summary
+df["date"] = pd.to_datetime(df["date"])
+monthly = df.groupby(df["date"].dt.to_period("M"))["revenue"].agg(["sum", "mean", "count"])
+monthly.columns = ["total_revenue", "avg_transaction", "num_transactions"]
+print(monthly)
+
+# Top products by revenue
+top_products = df.groupby("product")["revenue"].sum().sort_values(ascending=False).head(5)
+print(f"\nTop 5 products:\n{top_products}")
+
+# Month-over-month growth rate
+monthly["growth_pct"] = monthly["total_revenue"].pct_change() * 100
+print(f"\nMonth-over-month growth:\n{monthly['growth_pct']}")</code></pre>
+
 </div>
 
 <div class="try-it-box">
@@ -84,6 +113,7 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Data Input Methods</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"When to Use Each Input Method","instruction":"Match each scenario to the best data input method","pairs":[{"left":"A quick expense report with 50 rows","right":"Copy and paste directly into the chat"},{"left":"A 5,000-row customer database in Excel format","right":"Upload the file — handles larger datasets and preserves formatting"},{"left":"A 2 million row production database","right":"Describe and sample — paste first 20-30 rows, describe the full scope"},{"left":"A Google Sheet with live formulas","right":"Copy and paste the visible values (formulas won\'t transfer)"},{"left":"A CSV exported from your CRM","right":"Upload the file for best results with structured data"},{"left":"Quick check on a few data points","right":"Copy and paste — fastest for small, targeted questions"}]}'></div>
 </div>
 
 <div class="lesson-section">

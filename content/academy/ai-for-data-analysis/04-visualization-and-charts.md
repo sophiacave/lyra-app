@@ -59,6 +59,40 @@ free: false
   </div>
 
   <p class="section-text">Claude's analysis tool can generate charts directly in the conversation. Upload a CSV and ask for a visualization — you'll get an interactive chart right there.</p>
+
+  <div class="tip-box">
+    <div class="tip-label">Python Visualization Code</div>
+    <p>Ask Claude to generate this and run it locally or in a notebook:</p>
+  </div>
+
+  <pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("sales_data.csv")
+df["date"] = pd.to_datetime(df["date"])
+monthly = df.groupby(df["date"].dt.to_period("M"))["revenue"].sum()
+
+# Line chart with insight-based title
+fig, ax = plt.subplots(figsize=(10, 5))
+monthly.plot(kind="line", ax=ax, marker="o", color="#7c3aed")
+ax.set_title("Revenue grew 34% after the March campaign launch", fontsize=14, fontweight="bold")
+ax.set_ylabel("Revenue ($)")
+ax.set_xlabel("")
+ax.grid(axis="y", alpha=0.3)
+plt.tight_layout()
+plt.savefig("revenue_trend.png", dpi=150)
+plt.show()
+
+# Bar chart comparing categories
+by_product = df.groupby("product")["revenue"].sum().sort_values()
+fig, ax = plt.subplots(figsize=(8, 5))
+by_product.plot(kind="barh", ax=ax, color="#f97316")
+ax.set_title("Product C drives 42% of total revenue", fontsize=14, fontweight="bold")
+ax.set_xlabel("Total Revenue ($)")
+plt.tight_layout()
+plt.savefig("product_comparison.png", dpi=150)
+plt.show()</code></pre>
+
 </div>
 
 <div class="lesson-section">
@@ -85,6 +119,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Chart Type Matcher</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Pick the Right Chart","instruction":"Match each data scenario to the best chart type","pairs":[{"left":"Monthly revenue over 12 months","right":"Line chart — shows trends over time"},{"left":"Sales by region comparison","right":"Bar chart — compares categories side by side"},{"left":"Market share of 4 competitors","right":"Pie chart — parts of a whole with 5 or fewer slices"},{"left":"Ad spend vs conversion rate relationship","right":"Scatter plot — shows correlation between two variables"},{"left":"Website traffic by day of week and hour","right":"Heatmap — reveals patterns across two dimensions"},{"left":"Budget allocation across 12 departments","right":"Bar chart — too many slices for a pie chart"}]}'></div>
 </div>
 
 <div class="lesson-section">

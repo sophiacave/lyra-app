@@ -80,6 +80,50 @@ free: false
   <p class="section-text"><strong>Practice daily:</strong> The more data you analyze, the sharper your intuition gets. Start looking at data everywhere — your email analytics, your website traffic, your personal spending.</p>
 </div>
 
+  <div class="tip-box">
+    <div class="tip-label">Python: Full Pipeline Script</div>
+    <p>The entire 6-stage pipeline in one reusable script — ask Claude to customize it for your data:</p>
+  </div>
+
+  <pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+
+# Stage 2: Ingest
+df = pd.read_csv("your_data.csv")
+df["date"] = pd.to_datetime(df["date"])
+print(f"Loaded {len(df)} rows, {len(df.columns)} columns")
+
+# Stage 3: Clean
+df = df.drop_duplicates()
+df["category"] = df["category"].str.strip().str.title()
+df["revenue"] = pd.to_numeric(df["revenue"], errors="coerce").fillna(0)
+print(f"After cleaning: {len(df)} rows")
+
+# Stage 4: Analyze
+monthly = df.groupby(df["date"].dt.to_period("M"))["revenue"].sum()
+growth = monthly.pct_change() * 100
+top_categories = df.groupby("category")["revenue"].sum().sort_values(ascending=False)
+
+print(f"\nTotal revenue: ${monthly.sum():,.0f}")
+print(f"Avg monthly growth: {growth.mean():.1f}%")
+print(f"\nTop categories:\n{top_categories.head(5)}")
+
+# Stage 5: Visualize
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+monthly.plot(kind="line", ax=ax1, marker="o", color="#7c3aed")
+ax1.set_title(f"Revenue trend: {growth.mean():.1f}% avg monthly growth")
+top_categories.head(5).plot(kind="barh", ax=ax2, color="#f97316")
+ax2.set_title("Revenue by category")
+plt.tight_layout()
+plt.savefig("analysis_dashboard.png", dpi=150)
+
+# Stage 6: Report
+print("\n--- EXECUTIVE SUMMARY ---")
+print(f"Revenue totaled ${monthly.sum():,.0f} with {growth.mean():.1f}% avg growth.")
+print(f"Top category: {top_categories.index[0]} (${top_categories.iloc[0]:,.0f})")
+if growth.iloc[-1] < 0:
+    print("WARNING: Most recent month shows decline — investigate.")</code></pre>
+
 <div class="try-it-box">
   <h3>Your Final Exercise</h3>
   <p>Run a complete end-to-end analysis using the full pipeline. Pick a real dataset that matters to you — business data, personal finances, a project you care about. Use this master prompt:</p>
@@ -96,6 +140,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Pipeline Stage</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Pipeline Stage Matcher","instruction":"Match each task to the correct pipeline stage","pairs":[{"left":"Use the SCOPE method to define what you need to know","right":"Stage 1 — Frame the question"},{"left":"Upload CSV and describe columns, units, and time period","right":"Stage 2 — Ingest the data"},{"left":"Remove duplicates, fix date formats, handle missing values","right":"Stage 3 — Clean"},{"left":"Find trends, correlations, and outliers in the numbers","right":"Stage 4 — Analyze"},{"left":"Create a line chart showing revenue trend with insight-based title","right":"Stage 5 — Visualize"},{"left":"Write a three-layer report with executive summary for leadership","right":"Stage 6 — Report"}]}'></div>
 </div>
 
 <div class="lesson-section">

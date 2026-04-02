@@ -67,6 +67,43 @@ free: false
   <p class="section-text"><strong>5. Handle blanks:</strong> "For missing values, recommend whether to fill, flag, or remove each case and explain why."</p>
 </div>
 
+  <div class="tip-box">
+    <div class="tip-label">Python Data Cleaning</div>
+    <p>Ask Claude to generate a cleaning script you can reuse on any dataset:</p>
+  </div>
+
+  <pre><code class="language-python">import pandas as pd
+
+df = pd.read_csv("messy_data.csv")
+
+# 1. Scan structure
+print(f"Shape: {df.shape}")
+print(f"Missing values:\n{df.isnull().sum()}")
+print(f"Duplicates: {df.duplicated().sum()}")
+
+# 2. Remove exact duplicates
+df = df.drop_duplicates()
+
+# 3. Standardize text columns (e.g., country names)
+df["country"] = df["country"].str.strip().str.title()
+country_map = {"Us": "United States", "Usa": "United States", "U.S.A.": "United States"}
+df["country"] = df["country"].replace(country_map)
+
+# 4. Fix date formats
+df["date"] = pd.to_datetime(df["date"], format="mixed", dayfirst=False)
+
+# 5. Handle missing values
+df["revenue"] = df["revenue"].fillna(0)           # Missing revenue = zero
+df["category"] = df["category"].fillna("Unknown")  # Missing category = flag it
+
+# 6. Flag outliers (values beyond 3 standard deviations)
+mean, std = df["revenue"].mean(), df["revenue"].std()
+df["is_outlier"] = (df["revenue"] - mean).abs() > 3 * std
+print(f"Outliers flagged: {df['is_outlier'].sum()}")
+
+df.to_csv("cleaned_data.csv", index=False)
+print("Cleaned data saved.")</code></pre>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Find the messiest spreadsheet you have. We all have one. Paste it into Claude with this prompt:</p>
@@ -82,6 +119,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Cleaning Step</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Data Problem → Cleaning Action","instruction":"Match each data problem to the correct cleaning action","pairs":[{"left":"Same customer appears 3 times with slightly different names","right":"Deduplicate — merge records and standardize the name"},{"left":"Date column mixes MM/DD/YYYY and YYYY-MM-DD","right":"Standardize format — convert all dates to one consistent format"},{"left":"Revenue column shows $1M in a row of $500 transactions","right":"Investigate outlier — determine if it is a typo or legitimate"},{"left":"50 cells are blank in the Status column","right":"Handle missing values — fill, flag, or remove based on context"},{"left":"US, United States, and U.S.A. in the Country column","right":"Standardize text — map all variants to a single canonical name"},{"left":"Column headers say Col_A, Col_B, Col_C","right":"Rename headers — use descriptive names AI can understand"}]}'></div>
 </div>
 
 <div class="lesson-section">

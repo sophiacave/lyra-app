@@ -88,6 +88,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Report Element</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Report Element Matcher","instruction":"Match each content type to the correct report layer","pairs":[{"left":"Revenue hit $50K, exceeding target by 12% — recommend scaling ad spend","right":"Layer 1 — Executive summary (headline finding + action)"},{"left":"Bar chart comparing Q2 vs Q3 revenue by product category","right":"Layer 2 — Key metrics and visuals (supporting evidence)"},{"left":"Statistical methodology, sample size limitations, confidence intervals","right":"Layer 3 — Detailed analysis (methodology and nuance)"},{"left":"Three bullet points a CEO reads in 30 seconds","right":"Layer 1 — Executive summary (designed for busy decision-makers)"},{"left":"KPI cards showing revenue, orders, and average order value","right":"Layer 2 — Key metrics and visuals (dashboard-style at a glance)"},{"left":"Full breakdown of outlier investigation with data tables","right":"Layer 3 — Detailed analysis (deep dive for curious readers)"}]}'></div>
 </div>
 
 <div class="lesson-section">

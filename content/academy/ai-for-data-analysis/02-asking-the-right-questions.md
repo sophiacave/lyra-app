@@ -86,6 +86,7 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Question Quality</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Question Quality Matcher","instruction":"Match each question to its quality level","pairs":[{"left":"What do you see in this data?","right":"Weak — too vague, produces generic summaries"},{"left":"Compare open rates across 4 campaign types and explain exceptions","right":"Strong — specific, contextual, asks for comparison AND explanation"},{"left":"Analyze my sales","right":"Weak — no specificity about what aspect of sales to examine"},{"left":"Which product grew fastest in Q3 and what drove it?","right":"Strong — time-bounded, asks for both finding and cause"},{"left":"Show me trends","right":"Weak — no context about which trends matter or for whom"},{"left":"For March churners, what was their usage in the 30 days before?","right":"Strong — precise segment, specific metric, clear time window"}]}'></div>
 </div>
 
 <div class="lesson-section">

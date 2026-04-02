@@ -74,6 +74,39 @@ free: false
   <p class="section-text"><strong>Expense creep:</strong> Small increases that compound — $50/month here, $100/month there.</p>
 </div>
 
+  <div class="tip-box">
+    <div class="tip-label">Python Financial Analysis</div>
+    <p>Claude generates scripts like this for financial data:</p>
+  </div>
+
+  <pre><code class="language-python">import pandas as pd
+
+df = pd.read_csv("transactions.csv")
+df["date"] = pd.to_datetime(df["date"])
+df["month"] = df["date"].dt.to_period("M")
+
+# Revenue vs expenses by month
+revenue = df[df["type"] == "income"].groupby("month")["amount"].sum()
+expenses = df[df["type"] == "expense"].groupby("month")["amount"].sum()
+profit = revenue - expenses
+margin = (profit / revenue * 100).round(1)
+
+print("Monthly P&L:")
+for m in revenue.index:
+    print(f"  {m}: Revenue ${revenue[m]:,.0f} | Expenses ${expenses[m]:,.0f} | Margin {margin[m]}%")
+
+# Revenue concentration: top sources
+top_sources = df[df["type"] == "income"].groupby("source")["amount"].sum().sort_values(ascending=False)
+total_rev = top_sources.sum()
+print(f"\nRevenue concentration:")
+for src, amt in top_sources.head(3).items():
+    print(f"  {src}: ${amt:,.0f} ({amt/total_rev*100:.0f}%)")
+
+# Find forgotten subscriptions (recurring small expenses)
+recurring = df[df["type"] == "expense"].groupby("description")["amount"].agg(["count", "sum"])
+subscriptions = recurring[recurring["count"] >= 3].sort_values("sum", ascending=False)
+print(f"\nRecurring expenses (3+ charges):\n{subscriptions}")</code></pre>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Export 3-6 months of financial data from your bank, Stripe, or accounting software. Ask Claude:</p>
@@ -89,6 +122,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Financial Red Flags</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Spot the Financial Red Flag","instruction":"Match each scenario to the financial warning sign","pairs":[{"left":"Revenue up 10% but expenses up 25%","right":"Margin compression — costs growing faster than income"},{"left":"Biggest client pays net-60 but rent is due net-30","right":"Cash flow timing — big expenses hit before revenue arrives"},{"left":"One client represents 45% of total revenue","right":"Single-source dependency — losing them means losing almost half"},{"left":"Three new $50/month subscriptions added this quarter","right":"Expense creep — small additions that compound over time"},{"left":"Top 3 products earn 90% of revenue","right":"Revenue concentration — high risk if any product declines"},{"left":"Profit margin dropped from 25% to 18% over 6 months","right":"Margin compression — profitability declining despite growth"}]}'></div>
 </div>
 
 <div class="lesson-section">

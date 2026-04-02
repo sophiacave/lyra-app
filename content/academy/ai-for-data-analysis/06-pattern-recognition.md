@@ -68,6 +68,41 @@ free: false
   <p class="section-text">A flat overall trend might actually be two segments moving in opposite directions — one growing fast, one declining. That insight changes everything about your next decision.</p>
 </div>
 
+  <div class="tip-box">
+    <div class="tip-label">Python Pattern Detection</div>
+    <p>Claude can generate this pattern analysis script for your data:</p>
+  </div>
+
+  <pre><code class="language-python">import pandas as pd
+import numpy as np
+
+df = pd.read_csv("sales_data.csv")
+df["date"] = pd.to_datetime(df["date"])
+
+# Trend detection: month-over-month growth
+monthly = df.groupby(df["date"].dt.to_period("M"))["revenue"].sum()
+growth = monthly.pct_change() * 100
+print("Month-over-month growth (%):")
+print(growth.round(1))
+
+# Outlier detection: flag values beyond 2 standard deviations
+mean, std = df["revenue"].mean(), df["revenue"].std()
+outliers = df[abs(df["revenue"] - mean) > 2 * std]
+print(f"\nOutliers found: {len(outliers)}")
+if len(outliers) > 0:
+    print(outliers[["date", "product", "revenue"]])
+
+# Correlation analysis: find relationships between numeric columns
+numeric_cols = df.select_dtypes(include=[np.number]).columns
+correlations = df[numeric_cols].corr()
+print("\nCorrelation matrix:")
+print(correlations.round(2))
+
+# Segmented analysis: compare patterns by category
+for segment, group in df.groupby("product"):
+    seg_growth = group.groupby(group["date"].dt.to_period("M"))["revenue"].sum().pct_change().mean() * 100
+    print(f"{segment}: avg monthly growth = {seg_growth:.1f}%")</code></pre>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Upload a dataset with at least 3 columns and 50+ rows. Ask Claude to go hunting:</p>
@@ -83,6 +118,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Pattern Types</h2>
+  <div data-learn="MatchConnect" data-props='{"title":"Identify the Pattern Type","instruction":"Match each example to the correct pattern type","pairs":[{"left":"Revenue growing 5% every month","right":"Trend — directional pattern over time"},{"left":"One customer spent 20x the average transaction","right":"Outlier — data point that does not fit the pattern"},{"left":"Ad spend goes up and conversions go up","right":"Correlation — relationship between two variables"},{"left":"Support tickets spike every Monday morning","right":"Trend — recurring cyclical pattern"},{"left":"Ice cream sales and drowning both rise in summer","right":"Correlation with confounding variable — heat causes both"},{"left":"Two segments moving in opposite directions behind a flat average","right":"Segmented pattern — overall average hides opposing trends"}]}'></div>
 </div>
 
 <div class="lesson-section">
