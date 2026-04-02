@@ -14,19 +14,13 @@ free: true
 
 <div class="lesson-hero">
   <h1>Stack Anatomy</h1>
-  <p class="sub">Build your perfect AI stack layer by layer. Click to choose, watch it come together.</p>
+  <p class="sub">The layers of a modern AI-powered web app — and the battle-tested stack that runs Like One Academy.</p>
 </div>
 
-  <div class="result-card" id="resultCard">
-    <div class="result-title">Your Stack</div>
-    <div class="stats-row">
-      <div class="stat"><div class="val cost" id="totalCost">$0</div><div class="lbl">Per Month</div></div>
-      <div class="stat"><div class="val compat" id="compatScore">0%</div><div class="lbl">Compatibility</div></div>
-    </div>
-    <div class="faye-stack">
-      <h4>The Sophia Stack (Recommended)</h4>
-      <p><strong>Supabase + Edge Functions + Claude + Next.js + Vercel</strong> — $29/mo, 95% compatibility. Battle-tested for AI-powered apps. This is what Like One Academy runs on.</p>
-    </div>
+  <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin:1rem 0">
+    <h4 style="color:#c084fc;margin:0 0 .5rem">The Like One Stack (Battle-Tested)</h4>
+    <p style="font-size:.88rem;color:#e5e5e5;margin:0"><strong>Supabase + Edge Functions + Claude + Next.js + Vercel</strong></p>
+    <p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0">~$29/mo total. This is what Like One Academy runs on in production — 30 courses, 300+ lessons, AI memory, Stripe payments, and global CDN. Every layer below is explained with the real config we use.</p>
   </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">

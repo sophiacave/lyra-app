@@ -90,11 +90,35 @@ nearest = words[np.argmax(similarities)]
 
 </div>
 
-<!-- SECTION 2: INTERACTIVE VISUALIZATION -->
+<!-- SECTION 2: SEMANTIC SPACE VISUALIZATION -->
 <div class="lesson-section">
-  <span class="section-label">Explore</span>
-  <h2 class="section-title">Watch words in semantic space.</h2>
-  <p class="section-text">Use the step buttons to see how words cluster by meaning and how vector arithmetic works.</p>
+  <span class="section-label">See It</span>
+  <h2 class="section-title">How words cluster in semantic space.</h2>
+  <p class="section-text">If we squash the 384 dimensions down to 2D, here is what the word map looks like. Notice how meaning creates geography:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.4;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">        Semantic Space (2D projection)</span>
+
+                    <span style="color:#c084fc">queen</span> ♛
+                   ╱
+             <span style="color:#c084fc">king</span> ♚     <span style="color:#71717a">← royalty cluster</span>
+               ╲
+                <span style="color:#38bdf8">woman</span>
+                  │
+                <span style="color:#38bdf8">man</span>        <span style="color:#71717a">← people cluster</span>
+                  │
+                <span style="color:#38bdf8">boy</span>
+
+      <span style="color:#34d399">dog</span> 🐕 ─── <span style="color:#34d399">cat</span> 🐈   <span style="color:#71717a">← pet cluster</span>
+            ╲
+            <span style="color:#34d399">puppy</span>
+
+  <span style="color:#fb923c">car</span> 🚗 ─── <span style="color:#fb923c">truck</span> 🚛  <span style="color:#71717a">← vehicle cluster</span>
+
+<span style="color:#71717a">  Words with similar meanings = nearby coordinates</span>
+<span style="color:#71717a">  The DIRECTION from king→queen = the DIRECTION from man→woman</span>
+<span style="color:#71717a">  That's why king - man + woman ≈ queen</span></code></pre>
+</div>
 </div>
 
 <!-- SECTION 3: KNOWLEDGE CHECK -->

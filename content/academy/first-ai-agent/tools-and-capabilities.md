@@ -167,24 +167,52 @@ free: true
   </div>
 
   <div class="section">
-    <h2>Interactive: Equip Your Agent</h2>
-    <p>Drag tools onto the agent and watch its capabilities expand:</p>
-  </div>
+    <h2>Equip Your Agent with Tools</h2>
+    <p>Here is how to define tools in the Claude API. Each tool needs a name, description (tells Claude WHEN to use it), and an input schema (tells Claude WHAT to send):</p>
 
-  <div class="workspace">
-    <div class="toolbox">
-      <h3>Toolbox</h3>
-    </div>
-    <div class="agent-zone" id="agent-zone">
-      <div class="agent-avatar">&#x1F916;</div>
-      <div class="agent-label">Your Agent</div>
-      <div class="agent-status" id="agent-status">No tools equipped — just a chatbot</div>
-    </div>
-  </div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — defining tools for a Claude agent</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Tools are JSON schemas that tell Claude what it can do</span>
+tools = [
+    {
+        <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"lookup_customer"</span>,
+        <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Look up a customer by email. Use when the user mentions their account, billing, or subscription."</span>,
+        <span style="color:#fbbf24">"input_schema"</span>: {
+            <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"object"</span>,
+            <span style="color:#fbbf24">"properties"</span>: {
+                <span style="color:#fbbf24">"email"</span>: {<span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"string"</span>, <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Customer email address"</span>}
+            },
+            <span style="color:#fbbf24">"required"</span>: [<span style="color:#fbbf24">"email"</span>]
+        }
+    },
+    {
+        <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"web_search"</span>,
+        <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Search the web. Use when the user asks about current events, prices, or information not in the knowledge base."</span>,
+        <span style="color:#fbbf24">"input_schema"</span>: {
+            <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"object"</span>,
+            <span style="color:#fbbf24">"properties"</span>: {
+                <span style="color:#fbbf24">"query"</span>: {<span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"string"</span>, <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Search query"</span>}
+            },
+            <span style="color:#fbbf24">"required"</span>: [<span style="color:#fbbf24">"query"</span>]
+        }
+    },
+]
 
-  <div class="insight" id="insight">
-    <h3>Key Insight</h3>
-    <p id="insight-text">Right now your agent has zero tools. It can only generate text — exactly like a chatbot. Try dragging some tools over to see what changes.</p>
+<span style="color:#71717a"># Pass tools to Claude — now it's an AGENT, not a chatbot</span>
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+    max_tokens=<span style="color:#fb923c">1024</span>,
+    tools=tools,           <span style="color:#71717a"># ← this is what makes it an agent</span>
+    messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">"What plan is jane@acme.co on?"</span>}]
+)
+<span style="color:#71717a"># Claude will respond with a tool_use block:</span>
+<span style="color:#71717a"># {"type": "tool_use", "name": "lookup_customer", "input": {"email": "jane@acme.co"}}</span></code></pre>
+</div>
+
+    <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);margin:1rem 0">
+      <strong style="color:#34d399;font-size:.85rem">Zero tools = chatbot. One tool = capable. Three tools = agent.</strong>
+      <span style="font-size:.82rem;color:#a1a1aa"> Each tool you add multiplies what the agent can do. A web search + database + email sender turns a text generator into a full support agent that can research, look up accounts, and follow up — all autonomously.</span>
+    </div>
   </div>
 </div>
 

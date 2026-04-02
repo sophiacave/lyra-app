@@ -13,7 +13,7 @@ free: false
 
 <div class="lesson-hero">
   <h1>Embedding <span class="accent">Explorer.</span></h1>
-  <p class="sub">Click words to see their vectors. Click two to compute real cosine similarity.</p>
+  <p class="sub">How to read word vectors, compute similarity, and build semantic search — with production Python code.</p>
 </div>
 
 <div class="learn-card">
@@ -26,18 +26,19 @@ free: false
   </ul>
 </div>
 
-<!-- SECTION 1: INTERACTIVE EXPLORER -->
+<!-- SECTION 1: CORE CONCEPT -->
 <div class="lesson-section">
-  <span class="section-label">Explore</span>
-  <h2 class="section-title">Click words to compare their vectors.</h2>
-  <p class="section-text">Click one word to see its vector. Click a second to compute the angle and cosine similarity between them.</p>
+  <span class="section-label">The Big Picture</span>
+  <h2 class="section-title">Every word lives at a specific address in meaning-space.</h2>
+  <p class="section-text">Imagine a massive warehouse where every word in the English language has its own shelf. Synonyms are on the same shelf. Related words are in the same aisle. Unrelated words are in different buildings. That warehouse is <strong style="color:#e5e5e5">embedding space</strong> — and the shelf number is the word's <strong style="color:#e5e5e5">vector</strong>.</p>
+  <p class="section-text">When you search "affordable dining" and the system returns "budget-friendly restaurants" — that's embeddings at work. The two phrases have zero words in common, but they live on the same shelf.</p>
 </div>
 
 <!-- SECTION 2B: CODE — PRODUCTION EMBEDDING PATTERNS -->
 <div class="lesson-section">
   <span class="section-label">Production Code</span>
   <h2 class="section-title">Embeddings in real applications.</h2>
-  <p class="section-text">The interactive explorer above uses 2D vectors. Real applications use 768+ dimensions and store vectors in databases for instant lookup. Here are the two patterns that power modern AI applications:</p>
+  <p class="section-text">Real applications use 768+ dimensions and store vectors in databases for instant lookup. Here are the two patterns that power modern AI applications:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — semantic search (find similar documents)</div>

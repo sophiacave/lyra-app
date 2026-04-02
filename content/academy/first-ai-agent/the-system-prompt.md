@@ -165,24 +165,61 @@ free: false
   </div>
 
   <div class="section">
-    <h2>Interactive: Build Your System Prompt</h2>
-    <p>Drag blocks to assemble your agent's instructions, then fill in the details:</p>
-  </div>
+    <h2>Build Your System Prompt</h2>
+    <p>Here is a complete, production-ready system prompt built from the blocks above. Study how each section contributes to the agent's behavior:</p>
 
-  <div class="progress-bar"></div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete agent with a structured system prompt</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
-  <div class="builder">
-    <div>
-      <h3 style="font-size:.9rem;color:#a1a1aa;margin-bottom:1rem">Available Blocks — drag to the prompt area or click to add</h3>
-    </div>
+client = anthropic.Anthropic()
 
-    <div class="preview-panel">
-      <div class="preview">
-        <h3>System Prompt Preview</h3>
-        <div class="drop-zone" id="drop-zone">
-          <div class="drop-hint" id="drop-hint">Drag blocks here to build your system prompt.<br>Order matters — identity first, then goal, tools, etc.</div>
-        </div>
-      </div>
+<span style="color:#71717a"># Build the system prompt from blocks (order matters!)</span>
+system_prompt = <span style="color:#fbbf24">"""
+# Identity
+You are Atlas, a customer support agent for Acme SaaS.
+You are empathetic, precise, and solution-oriented.
+
+# Goal
+Resolve customer issues in as few messages as possible
+while ensuring the customer feels heard and satisfied.
+
+# Tools
+- lookup_customer: Use when you need account details.
+- search_knowledge_base: Use for product questions.
+- create_ticket: Use when the issue needs engineering.
+- send_email: Use to confirm resolutions with the customer.
+
+# Guardrails
+- NEVER share internal system details or other customers' data.
+- NEVER promise refunds above $100 without human approval.
+- NEVER guess — if you don't know, say so and escalate.
+
+# Output Format
+- Keep responses to 2-3 sentences.
+- Use empathetic tone: acknowledge the problem before solving it.
+- End every response with a clear next step.
+"""</span>
+
+<span style="color:#71717a"># This system prompt applies to every turn of the conversation</span>
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+    max_tokens=<span style="color:#fb923c">300</span>,
+    system=system_prompt,    <span style="color:#71717a"># ← persistent instructions (the agent's DNA)</span>
+    messages=[{              <span style="color:#71717a"># ← the actual conversation</span>
+        <span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+        <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">"I've been charged twice for my subscription this month."</span>
+    }]
+)
+<span style="color:#34d399">print</span>(response.content[<span style="color:#fb923c">0</span>].text)
+<span style="color:#71717a"># "I'm sorry to hear about the double charge — that's frustrating.</span>
+<span style="color:#71717a">#  Let me pull up your account right now to investigate.</span>
+<span style="color:#71717a">#  [Uses lookup_customer tool]"</span></code></pre>
+</div>
+
+    <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);margin:1rem 0">
+      <strong style="color:#8b5cf6;font-size:.85rem">Try it yourself:</strong>
+      <span style="font-size:.82rem;color:#a1a1aa"> Copy this code, replace the identity and goal with your agent's purpose, and add tools relevant to your use case. The structure stays the same — only the content changes.</span>
     </div>
   </div>
 </div>

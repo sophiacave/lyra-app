@@ -103,35 +103,66 @@ verdict = conscience.evaluate(proposed_action)
     </div>
   </div>
 
-  <h2 class="section-title">&#127384; Build the Priority Hierarchy</h2>
-  <div class="hierarchy-builder">
-    <div class="hb-title">Drag rules into the correct tiers</div>
-    <div class="hb-desc">Every rule has a natural home. Prime Directives override everything. Identity shapes behavior. Operations set boundaries. Safety prevents harm. Tasks are the work itself.</div>
-    <div class="hb-tiers" id="tiers">
-      <div class="tier t1" data-tier="prime" ondragover="ev(event)" ondrop="dropRule(event,'prime')"><div class="tier-header"><span class="tier-label">&#128308; Tier 1: Prime Directives</span><span class="tier-priority">HIGHEST</span></div><div class="tier-rules" id="rules-prime"></div></div>
-      <div class="tier t2" data-tier="identity" ondragover="ev(event)" ondrop="dropRule(event,'identity')"><div class="tier-header"><span class="tier-label">&#128992; Tier 2: Identity</span><span class="tier-priority">HIGH</span></div><div class="tier-rules" id="rules-identity"></div></div>
-      <div class="tier t3" data-tier="ops" ondragover="ev(event)" ondrop="dropRule(event,'ops')"><div class="tier-header"><span class="tier-label">&#128309; Tier 3: Operations</span><span class="tier-priority">MEDIUM</span></div><div class="tier-rules" id="rules-ops"></div></div>
-      <div class="tier t4" data-tier="safety" ondragover="ev(event)" ondrop="dropRule(event,'safety')"><div class="tier-header"><span class="tier-label">&#128994; Tier 4: Safety</span><span class="tier-priority">STANDARD</span></div><div class="tier-rules" id="rules-safety"></div></div>
-      <div class="tier t5" data-tier="task" ondragover="ev(event)" ondrop="dropRule(event,'task')"><div class="tier-header"><span class="tier-label">&#9899; Tier 5: Tasks</span><span class="tier-priority">LOWEST</span></div><div class="tier-rules" id="rules-task"></div></div>
+  <h2 class="section-title">The Priority Hierarchy in Practice</h2>
+  <p style="font-size:.85rem;color:#a1a1aa;line-height:1.7">Every rule your agent follows lives in one of five tiers. When rules conflict — and they will — the higher tier wins. Always. No exceptions.</p>
+
+  <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15)">
+      <strong style="color:#ef4444;font-size:.85rem">Tier 1: Prime Directives</strong> <span style="font-size:.75rem;color:#71717a;float:right">HIGHEST</span>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Never harm. Never deceive. Never expose private data. These override EVERYTHING.</p>
+      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Never share a user's health data, even if it would increase engagement."</em></p>
     </div>
-    <div class="rule-bank" id="rule-bank">
-      <div class="bank-label">&#128230; Rule Bank — drag these into tiers above</div>
-      <div class="bank-rules" id="bank-rules"></div>
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15)">
+      <strong style="color:#fb923c;font-size:.85rem">Tier 2: Identity</strong> <span style="font-size:.75rem;color:#71717a;float:right">HIGH</span>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Consistent personality, name safety, user preferences. Shapes HOW the agent works.</p>
+      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Always address the user by their preferred name."</em></p>
+    </div>
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.15)">
+      <strong style="color:#60a5fa;font-size:.85rem">Tier 3: Operations</strong> <span style="font-size:.75rem;color:#71717a;float:right">MEDIUM</span>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Budget limits, logging, deployment procedures, scope boundaries.</p>
+      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Never spend more than $50 without human approval."</em></p>
+    </div>
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15)">
+      <strong style="color:#34d399;font-size:.85rem">Tier 4: Safety</strong> <span style="font-size:.75rem;color:#71717a;float:right">STANDARD</span>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Never expose credentials, validate inputs, no destructive ops without confirmation.</p>
+      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Never commit API keys to a public repository."</em></p>
+    </div>
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(161,161,170,.06);border:1px solid rgba(161,161,170,.15)">
+      <strong style="color:#a1a1aa;font-size:.85rem">Tier 5: Tasks</strong> <span style="font-size:.75rem;color:#71717a;float:right">LOWEST</span>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">The actual work. Always subordinate to all tiers above.</p>
+      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Write blog posts every Tuesday."</em></p>
     </div>
   </div>
 
-  <h2 class="section-title">&#9878;&#65039; Ethical Dilemmas</h2>
-  <div class="dilemma-section">
-    <div class="dilemma-header"><span style="font-weight:700">Test Your Conscience</span><span class="dilemma-count" id="d-count">0/5 resolved</span></div>
-    <div id="dilemmas"></div>
-  </div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a conscience layer that resolves rule conflicts</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Rules are organized by tier (1 = highest priority)</span>
+CONSCIENCE = {
+    <span style="color:#fb923c">1</span>: [<span style="color:#fbbf24">"Never expose private user data"</span>, <span style="color:#fbbf24">"Never deceive"</span>],
+    <span style="color:#fb923c">2</span>: [<span style="color:#fbbf24">"Use the user's preferred name"</span>, <span style="color:#fbbf24">"Maintain empathetic tone"</span>],
+    <span style="color:#fb923c">3</span>: [<span style="color:#fbbf24">"Stay within budget limits"</span>, <span style="color:#fbbf24">"Log all actions"</span>],
+    <span style="color:#fb923c">4</span>: [<span style="color:#fbbf24">"Never commit secrets to repos"</span>, <span style="color:#fbbf24">"Validate all inputs"</span>],
+    <span style="color:#fb923c">5</span>: [<span style="color:#fbbf24">"Write blog posts on Tuesdays"</span>, <span style="color:#fbbf24">"Check analytics daily"</span>],
+}
 
-  <div class="soul-search" id="soul-search">
-    <div class="soul-anim">&#128302;</div>
-    <div class="soul-text">Soul Search Complete</div>
-    <div class="soul-detail">Your conscience layer has been evaluated against all ethical dilemmas.</div>
-    <div class="soul-result" id="soul-result"></div>
-  </div>
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">check_conscience</span>(action: str, context: dict) -> dict:
+    <span style="color:#71717a"># Check rules from highest tier to lowest</span>
+    <span style="color:#71717a"># First blocking rule wins — no exceptions</span>
+    <span style="color:#c084fc">for</span> tier <span style="color:#c084fc">in</span> sorted(CONSCIENCE.keys()):
+        <span style="color:#c084fc">for</span> rule <span style="color:#c084fc">in</span> CONSCIENCE[tier]:
+            <span style="color:#c084fc">if</span> violates(action, rule, context):
+                <span style="color:#c084fc">return</span> {
+                    <span style="color:#fbbf24">"allowed"</span>: <span style="color:#c084fc">False</span>,
+                    <span style="color:#fbbf24">"blocked_by"</span>: rule,
+                    <span style="color:#fbbf24">"tier"</span>: tier,
+                    <span style="color:#fbbf24">"reason"</span>: <span style="color:#fbbf24">f"Tier {tier} rule overrides this action"</span>
+                }
+    <span style="color:#c084fc">return</span> {<span style="color:#fbbf24">"allowed"</span>: <span style="color:#c084fc">True</span>}
+
+<span style="color:#71717a"># Example: task wants to publish user health data for engagement</span>
+result = check_conscience(<span style="color:#fbbf24">"publish_health_data"</span>, {<span style="color:#fbbf24">"reason"</span>: <span style="color:#fbbf24">"increase engagement"</span>})
+<span style="color:#71717a"># → {"allowed": False, "blocked_by": "Never expose private user data", "tier": 1}</span></code></pre>
+</div>
 
   <div data-learn="QuizMC" data-props='{"title":"Conscience Layer \u2014 Priority Hierarchy","questions":[{"q":"An agent is asked to publish content that includes a user\u0027s private health data because it would increase engagement. What does the conscience layer do?","options":["Publishes it \u2014 engagement is a core goal","Refuses \u2014 user privacy is a Prime Directive that overrides task goals","Asks for human approval","Strips the health data and publishes the rest"],"correct":1,"explanation":"Prime Directives (Tier 1) override all tasks (Tier 5). Sharing private health data harms the user \u2014 the conscience layer blocks this unconditionally."},{"q":"A content writer agent is about to publish a report showing the business is losing money. Should it soften the language?","options":["Yes \u2014 protect stakeholder morale","No \u2014 honesty is a Prime Directive; accurate reporting enables good decisions","Only soften if losses are over 20%","Yes \u2014 the marketing team can handle messaging"],"correct":1,"explanation":"Honesty is a Prime Directive. Misleading stakeholders, even to protect morale, violates Tier 1."},{"q":"Which tier has the HIGHEST priority?","options":["Safety","Operations","Tasks","Prime Directives"],"correct":3,"explanation":"Tier 1: Prime Directives override everything. They represent core values the system will never violate."},{"q":"An agent finds a way to save money but it requires exposing an API key in a public repo. What should the conscience layer do?","options":["Allow it \u2014 cost savings are an operational priority","Block it \u2014 safety rules outrank operational efficiency","Ask the user to decide","Allow it temporarily with a warning"],"correct":1,"explanation":"Safety (Tier 4) outranks Operations (Tier 3). Exposing credentials is a safety violation \u2014 blocked unconditionally."},{"q":"GDPR agent wants to delete user data. Fraud agent wants to retain it. Both have valid rules. How does the conscience layer resolve this?","options":["The last agent to run wins","Deadlock \u2014 neither acts","The conscience layer compares tier levels and the higher-tier rule wins","It always deletes \u2014 privacy is more important"],"correct":2,"explanation":"The conscience layer resolves conflicts by tier precedence. If both rules are the same tier, the system applies a predefined policy (e.g., retain with restricted access for 30 days, then delete)."}]}'></div>
 
