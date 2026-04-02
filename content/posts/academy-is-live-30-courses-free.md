@@ -46,7 +46,7 @@ I don't believe in making AI education expensive. The people who need it most ca
 
 ## What's Next
 
-This is day one. The Academy is live but it's not done. New lessons ship every week. The exercise engine is getting smarter. Community features are coming. And every dollar beyond operating costs goes toward two things: making AI accessible and funding HIV research.
+This is day one. The Academy is live but it's not done. New lessons ship every week. Community features are coming. 1% of all revenue goes to HIV research — growing as we grow. The rest keeps AI accessible to everyone.
 
 If you've been waiting for a good starting point with AI, this is it.
 

@@ -52,7 +52,7 @@ Visibility without action is just performance. Here's what Like One is doing, no
 
 **Building in public.** This entire company is built transparently. You can see the code, the decisions, the mistakes. That's not just good practice — it's proof that one person with AI tools can build something real.
 
-**Funding what matters.** A portion of Like One's revenue goes to HIV research and trans healthcare access. Not because it's good marketing. Because these are the fights that need funding, and I'm in a position to help.
+**Funding what matters.** Like One donates 1% of all revenue to HIV research — and we plan to grow that percentage as the company grows. Not because it's good marketing. Because these are the fights that need funding, and I'm in a position to help.
 
 **Hiring without gatekeeping.** As Like One grows, the door is open to people the tech industry typically overlooks. No CS degree requirements. No "culture fit" code words. Can you do the work? Welcome.
 

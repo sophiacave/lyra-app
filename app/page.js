@@ -177,7 +177,7 @@ export default function HomePage() {
           <div className="site-divider" />
           <div className="site-pillars">
             {[
-              { emoji: '\uD83E\uDDEC', label: 'Fund research that matters' },
+              { emoji: '\uD83E\uDDEC', label: '1% of revenue → HIV research' },
               { emoji: '\uD83C\uDFF3\uFE0F\u200D\u26A7\uFE0F', label: 'Trans visibility & rights' },
               { emoji: '\uD83C\uDF0D', label: 'AI accessible to everyone' },
             ].map(p => (

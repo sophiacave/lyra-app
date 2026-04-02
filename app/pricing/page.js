@@ -78,7 +78,7 @@ export default function PricingPage() {
           Convergence is not<br />a <em className="text-accent-warm">luxury.</em>
         </h1>
         <p className="pricing-hero-desc">
-          There is always a free path. Always. Premium revenue funds research that matters, representation, and keeping AI accessible to everyone.
+          There is always a free path. Always. 1% of all revenue goes to HIV research — growing as we grow. The rest keeps AI accessible to everyone.
         </p>
       </section>
 

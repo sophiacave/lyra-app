@@ -3,7 +3,7 @@ import './console.css';
 import Script from 'next/script';
 import { site, colors } from '../lib/site-config';
 
-import FayeChat from './components/FayeChat';
+
 
 const fullTitle = `Like One — Free AI Courses | Learn Claude, Automation & Prompt Engineering`;
 const shortDesc = '30 free AI courses, 300+ interactive lessons. Learn Claude, prompt engineering, AI automation, and more. Beginner to advanced. Start free today.';
@@ -93,7 +93,6 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
-        <FayeChat />
         <Script src="/auth-state.js" strategy="afterInteractive" />
       </body>
     </html>
