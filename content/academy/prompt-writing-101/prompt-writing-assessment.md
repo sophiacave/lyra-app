@@ -51,6 +51,7 @@ free: false
   <span class="section-label">Part 3</span>
   <h2 class="section-title">Match technique to situation.</h2>
 
+<div data-learn="MatchConnect" data-props='{"title":"Technique → Situation","instruction":"Match each prompting technique to when you should use it","pairs":[{"left":"Assign a specific expert role","right":"When you need a particular perspective or expertise level"},{"left":"Add negative constraints (Don\'t...)","right":"When AI keeps including things you don\'t want"},{"left":"Show a structural example","right":"When the output format matters more than the content"},{"left":"Use the Zoom In follow-up","right":"When the first output is good overall but one section needs depth"},{"left":"Chain questions progressively","right":"When exploring data and each answer informs the next question"},{"left":"Start over with a fresh prompt","right":"When 3+ iterations haven\'t improved the output"},{"left":"Provide tone examples","right":"When you need a very specific voice that words alone can\'t describe"},{"left":"Use the SCOPE method","right":"When asking AI to analyze data and you need specific, actionable results"}]}'></div>
 
 </div>
 

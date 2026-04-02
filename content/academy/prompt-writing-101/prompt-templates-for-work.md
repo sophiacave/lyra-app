@@ -99,6 +99,7 @@ free: false
   <span class="section-label">Practice</span>
   <h2 class="section-title">Which template fits the job?</h2>
 
+<div data-learn="MatchConnect" data-props='{"title":"Template → Task","instruction":"Match each work task to the best prompt template","pairs":[{"left":"Draft a follow-up email to a hesitant client","right":"Email Writer — tone, context, and CTA matter most"},{"left":"Write a LinkedIn post about your product launch","right":"Content Creator — format, audience, and voice defined"},{"left":"Find insights in last quarter sales data","right":"Analyst — patterns, risks, and recommendations focus"},{"left":"Prepare for a board meeting in 30 minutes","right":"Meeting Prep — agenda, talking points, likely questions"},{"left":"Generate 15 names for a new product feature","right":"Brainstormer — creative constraints, push past obvious"},{"left":"Get honest feedback on your proposal draft","right":"Editor / Reviewer — strengths, weaknesses, specific rewrites"}]}'></div>
 
 </div>
 

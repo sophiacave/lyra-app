@@ -55,6 +55,7 @@ free: true
   <h2 class="section-title">Match the task to the best role.</h2>
   <p class="section-text">Different tasks need different experts. Match each task to the role that would produce the best output.</p>
 
+<div data-learn="MatchConnect" data-props='{"title":"Task → Best Role","instruction":"Match each task to the role that would produce the best output","pairs":[{"left":"Review a vendor contract for hidden risks","right":"Contracts attorney specializing in SaaS agreements"},{"left":"Write a compelling product launch email","right":"Growth marketer who has scaled startups past $10M ARR"},{"left":"Explain blockchain to your non-technical CEO","right":"Patient teacher who uses everyday analogies"},{"left":"Find patterns in quarterly sales data","right":"Data analyst who presents to non-technical executives"},{"left":"Write clean, well-documented Python code","right":"Senior software engineer with clean code focus"},{"left":"Challenge holes in your business plan","right":"Skeptical investigative journalist"},{"left":"Create a viral social media campaign concept","right":"Creative director at a top advertising agency"},{"left":"Prepare talking points for a salary negotiation","right":"Career coach who has helped 500+ professionals"}]}'></div>
 
 </div>
 
