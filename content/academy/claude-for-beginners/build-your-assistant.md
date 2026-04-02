@@ -65,6 +65,7 @@ css: "claude-beginners.css"
   <h2 class="section-title">The time you will save.</h2>
   <p class="section-text">Match each task to the time most people save once Claude becomes part of their workflow:</p>
 
+<div data-learn="MatchConnect" data-props='{"title":"Time Saved Per Task","instruction":"Match each task to the typical time savings with Claude","pairs":[{"left":"Drafting a professional email","right":"10-15 minutes saved per email"},{"left":"Summarizing a long report","right":"20-30 minutes saved per document"},{"left":"Meeting prep and agenda creation","right":"15-20 minutes saved per meeting"},{"left":"Weekly status report","right":"20-30 minutes saved per week"},{"left":"Data analysis and recommendations","right":"30-60 minutes saved per analysis"},{"left":"Brainstorming session","right":"15-25 minutes saved per session"}]}'></div>
 
   <div class="callout">
     <p><strong>Conservative estimate:</strong> Most people save 5-8 hours per week once these habits stick. That is an extra workday every week — or leaving the office at 4pm instead of 6pm.</p>

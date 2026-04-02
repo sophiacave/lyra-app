@@ -60,6 +60,7 @@ css: "claude-beginners.css"
   <h2 class="section-title">Calendar & meeting prep, handled.</h2>
   <p class="section-text">Meetings don't have to be chaos. Match each scenario to the right Claude approach:</p>
 
+<div data-learn="MatchConnect" data-props='{"title":"Meeting Prep Scenarios","instruction":"Match each meeting situation to the best Claude approach","pairs":[{"left":"You have 5 minutes before a meeting with a new client","right":"Paste the agenda and ask Claude for 3 smart questions to ask"},{"left":"Your team meeting just ended with 20 action items","right":"Paste notes and ask Claude to create a checklist with owners and deadlines"},{"left":"You are presenting quarterly results to executives","right":"Give Claude your data and ask for 5 slide titles with 3 bullets each"},{"left":"Back-to-back meetings all day, no prep time","right":"Paste your calendar and ask Claude to prioritize which meetings need prep"},{"left":"A difficult conversation with a direct report","right":"Describe the situation and ask Claude for talking points and potential responses"},{"left":"Weekly standup needs an agenda","right":"List your team updates and ask Claude to format as a 15-minute standup agenda"}]}'></div>
 
   <div class="tip-box">
     <div class="tip-label">Pro Tip</div>

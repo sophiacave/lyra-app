@@ -41,6 +41,40 @@ css: "claude-beginners.css"
   </div>
 </div>
 
+<!-- SECTION 1.5: WHAT IT LOOKS LIKE -->
+<div class="lesson-section">
+  <span class="section-label">In Practice</span>
+  <h2 class="section-title">What a Claude conversation actually looks like.</h2>
+  <p class="section-text">If you have never used Claude before, here is a real example. You type in plain English. Claude responds with exactly what you need.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.7rem;padding:4px 8px;border-radius:6px;flex-shrink:0;margin-top:2px">YOU</div>
+        <div style="font-size:.88rem;color:var(--text);line-height:1.6">I have a meeting with my boss in 20 minutes. She wants to discuss why our team missed the Q3 deadline. I do not want to be defensive — I want to take ownership and show I have a plan. Can you help me prep?</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(192,132,252,.12);color:var(--purple);font-weight:800;font-size:.7rem;padding:4px 8px;border-radius:6px;flex-shrink:0;margin-top:2px">CLAUDE</div>
+        <div style="font-size:.88rem;color:var(--dim);line-height:1.6">
+          Here is a quick prep framework for a 20-minute conversation:<br><br>
+          <strong>Open with ownership (30 seconds):</strong><br>
+          "I want to start by owning this — we missed the deadline and I take responsibility for that."<br><br>
+          <strong>Brief root cause (2 minutes):</strong><br>
+          Name the 1-2 real reasons (scope creep? resource gap?) without blame. "The main factor was X."<br><br>
+          <strong>Your plan forward (5 minutes):</strong><br>
+          • Specific changes to prevent recurrence<br>
+          • Revised timeline with buffer built in<br>
+          • Weekly check-in proposal so she has visibility<br><br>
+          <strong>Close with a question:</strong><br>
+          "What would make you feel confident we won't repeat this?"<br><br>
+          <em>Want me to help you draft specific talking points based on what actually caused the delay?</em>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="section-text" style="margin-top:1rem">That took 10 seconds. No searching. No reading 5 articles. Just a clear, actionable answer tailored to your exact situation. <strong>That is what Claude does.</strong></p>
+</div>
+
 <!-- SECTION 2: 5 THINGS — FlashDeck -->
 <div class="lesson-section">
   <span class="section-label">The Good Stuff</span>
@@ -57,6 +91,9 @@ css: "claude-beginners.css"
   <h2 class="section-title">What Claude can't do.</h2>
   <p class="section-text">Being honest about limits is more important than hype. Match each statement to whether Claude CAN or CAN'T do it.</p>
 
+
+
+<div data-learn="MatchConnect" data-props='{"title":"Can Claude Do This?","instruction":"Match each task to whether Claude CAN or CANNOT do it","pairs":[{"left":"Write a professional email in your voice","right":"CAN do"},{"left":"Log into your bank and transfer money","right":"CANNOT do"},{"left":"Summarize a 30-page PDF in 60 seconds","right":"CAN do"},{"left":"Guarantee 100% factual accuracy","right":"CANNOT do"},{"left":"Analyze a spreadsheet and find trends","right":"CAN do"},{"left":"Access your private files without you sharing them","right":"CANNOT do"},{"left":"Brainstorm 20 creative marketing ideas","right":"CAN do"},{"left":"Replace your judgment on important decisions","right":"CANNOT do"}]}'></div>
 
   <div class="tip-box">
     <div class="tip-label">Pro Tip</div>
