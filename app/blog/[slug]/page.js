@@ -46,6 +46,7 @@ const TAG_COURSE_MAP = {
   'solopreneur': ['ai-for-business', 'ai-powered-workflows'],
   'freelancer': ['ai-for-business', 'ai-for-personal-productivity'],
   'governance': ['ai-ethics-and-safety', 'ai-enterprise-strategy'],
+  'claude-code': ['claude-mastery', 'claude-for-beginners'],
   'chatgpt': ['claude-for-beginners', 'claude-mastery'],
   'gemini': ['claude-for-beginners'],
   'onboarding': ['ai-powered-workflows', 'automation-architect'],
