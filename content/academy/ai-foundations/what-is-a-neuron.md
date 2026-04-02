@@ -64,7 +64,8 @@ z = np.dot(inputs, weights) + bias
 output = max(<span style="color:#fb923c">0</span>, z)
 <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"ReLU output   = </span>{output:<span style="color:#fbbf24">.4f}</span><span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># output = 0.7200</span></code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem"><code>np.dot()</code> computes the dot product — it multiplies each input by its weight and sums the results. This is exactly what the interactive slider above is doing.</p>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem"><strong>Reading the code:</strong> <code>np.dot()</code> multiplies each input by its matching weight, then adds all the results together. Input 1 (0.50) × Weight 1 (0.80) = 0.40, Input 2 (0.30) × Weight 2 (-0.40) = -0.12, Input 3 (0.70) × Weight 3 (0.60) = 0.42. Add them up: 0.40 + (-0.12) + 0.42 = 0.70. Plus the bias (0.10) = 0.80. Then ReLU checks: is 0.80 positive? Yes → pass it through. That is the entire computation.</p>
+<p style="font-size:.82rem;color:#525252;margin-top:.25rem"><em>Don't worry if code isn't your thing — the voting analogy above captures the same idea. The code is here for learners who want to see the exact math.</em></p>
 
   <div style="display:grid;gap:.75rem;margin-top:1.25rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
@@ -77,7 +78,7 @@ output = max(<span style="color:#fb923c">0</span>, z)
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
       <strong style="color:#fb923c;font-size:.88rem">Activation Function — the decision gate</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Without an activation function, a neural network is just a linear equation — no matter how many layers you stack. The activation function introduces non-linearity, which is what allows networks to learn curves, edges, language patterns, and everything complex.</p>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Without an activation function, a neural network can only learn simple straight-line relationships (like "more input = more output"). The activation function lets the neuron learn complex, curved patterns — like recognizing a face, understanding a sentence, or predicting whether an email is spam. This ability to go beyond straight lines is called <strong>non-linearity</strong>, and it is what makes AI powerful.</p>
     </div>
   </div>
 </div>
@@ -117,7 +118,7 @@ z = <span style="color:#fb923c">-1.5</span>
 <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"relu({z})    = </span>{relu(z)<span style="color:#fbbf24">}"</span>)       <span style="color:#71717a"># 0</span>
 <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"sigmoid({z}) = </span>{sigmoid(z):.4f<span style="color:#fbbf24">}"</span>) <span style="color:#71717a"># 0.1824</span></code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice: Step and ReLU both output 0 for negative inputs, but sigmoid still outputs 0.18 — it never fully "turns off." That's why sigmoid is useful for probabilities but problematic for deep networks (the vanishing gradient problem).</p>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice: Step and ReLU both output 0 for negative inputs, but sigmoid still outputs 0.18 — it never fully "turns off." That is why sigmoid is useful for probability outputs (like "92% chance this is spam") but ReLU is preferred for the hidden layers inside the network because it trains faster and more reliably.</p>
 
 <div data-learn="FlashDeck" data-props='{"title":"Activation Functions — Flip for Details","cards":[{"front":"📐 STEP FUNCTION (1957)\n\nThe original. Outputs 0 or 1.\nUsed in the first Perceptron.","back":"HOW IT WORKS: If the weighted sum is >= 0, output 1. Otherwise, output 0.\n\nPROBLEM: No gradient — the network cannot learn gradually. It is either on or off. Like a light switch with no dimmer.\n\nUSED TODAY: Almost never. Historical importance only."},{"front":"⚡ ReLU (Modern Standard)\n\nRectified Linear Unit.\nThe workhorse of modern AI.","back":"HOW IT WORKS: max(0, z). If positive, pass it through. If negative, output 0.\n\nWHY IT WORKS: Dead simple, trains extremely fast, and avoids the vanishing gradient problem that killed earlier activations.\n\nUSED TODAY: Almost everywhere — image classifiers, language models, recommendation systems."},{"front":"🎯 SIGMOID (Probabilities)\n\nSquashes output to between 0 and 1.\nPerfect for yes/no decisions.","back":"HOW IT WORKS: 1/(1+e^-z). Smoothly maps any number to the range (0, 1).\n\nWHY IT WORKS: The output can be interpreted as a probability. Is this email spam? 0.92 = 92% likely spam.\n\nUSED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers."}]}'></div>
 
