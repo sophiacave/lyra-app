@@ -53,6 +53,46 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">A complete AI MVP in 30 lines.</h2>
+  <p class="section-text">Here is the entire "AI Meeting Notes" MVP — from audio upload to structured output. This is a real, shippable product:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — AI Meeting Notes MVP (complete pipeline)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
+<span style="color:#c084fc">from</span> pathlib <span style="color:#c084fc">import</span> Path
+
+client = anthropic.Anthropic()
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">process_meeting</span>(transcript: str) -> dict:
+    <span style="color:#71717a"># One prompt. One model call. One workflow. That's the MVP.</span>
+    response = client.messages.create(
+        model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+        max_tokens=<span style="color:#fb923c">2000</span>,
+        system=<span style="color:#fbbf24">"""You are a meeting notes assistant. Extract structured notes.
+Return JSON with exactly these keys:
+- summary (2-3 sentences)
+- decisions (list of decisions made)
+- action_items (list of {owner, task, deadline})
+- key_topics (list of topics discussed)"""</span>,
+        messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: transcript}]
+    )
+    <span style="color:#c084fc">return</span> json.loads(response.content[<span style="color:#fb923c">0</span>].text)
+
+<span style="color:#71717a"># That's it. Input → AI → Output. Ship it.</span>
+notes = process_meeting(<span style="color:#fbbf24">"Sarah: Let's move the launch to March 15..."</span>)
+<span style="color:#71717a"># → {"summary": "Team agreed to delay launch...",</span>
+<span style="color:#71717a">#    "action_items": [{"owner": "Sarah", "task": "Update timeline", "deadline": "March 10"}],</span>
+<span style="color:#71717a">#    ...}</span></code></pre>
+</div>
+
+  <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);margin:1rem 0">
+    <strong style="color:#34d399;font-size:.85rem">This is a complete product.</strong>
+    <span style="font-size:.82rem;color:#a1a1aa"> Wrap it in a Next.js page with a file upload, call this function, and display the results. You have an AI product. Calendar integration, team sharing, search — all of that is post-MVP.</span>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Critical</span>
   <h2 class="section-title">Handling AI Failures</h2>
   <p class="section-text">Your AI will be wrong sometimes. This isn't a bug — it's a fundamental property of probabilistic systems. The question isn't how to prevent failures, but how to design for them.</p>
