@@ -2,8 +2,9 @@ import { getAllCourses } from '../../lib/courses';
 import ConsoleShell from '../components/console/ConsoleShell';
 
 export const metadata = {
-  title: 'Academy — Like One',
-  description: '30 courses, 300+ interactive lessons. AI education for everyone — beginners, executives, creatives, and developers.',
+  title: 'Like One Academy — 30 Free AI Courses | Claude, Agents, RAG, MCP & More',
+  description: 'Learn AI hands-on with 300+ interactive lessons. From Claude basics to building autonomous agents. Start free — no credit card, no time limit. Beginner to advanced.',
+  alternates: { canonical: 'https://likeone.ai/academy/' },
 };
 
 export default function AcademyLayout({ children }) {

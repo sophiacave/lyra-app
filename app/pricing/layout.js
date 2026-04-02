@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'Pricing — Like One Academy | From $4.90/mo (90% Off)',
-  description: 'Start free — no credit card. Pro from $4.90/mo gets you 30 AI courses, 300+ lessons. First 1,000 members lock in 90% off forever. Cancel anytime.',
+  title: 'AI Course Pricing — 90% Off Founding Member Deal | Like One Academy',
+  description: 'Free tier available — no credit card needed. Pro from $4.90/mo (normally $49). 30 AI courses, 300+ lessons. First 1,000 founding members lock in 90% off forever.',
   alternates: { canonical: 'https://likeone.ai/pricing/' },
   openGraph: {
-    title: 'Pricing — Like One Academy | From $4.90/mo',
-    description: '30 AI courses, 300+ lessons. Free tier or Pro from $4.90/mo. Founding members lock in 90% off forever.',
+    title: 'AI Course Pricing — 90% Off Founding Member Deal | Like One',
+    description: 'Free tier or Pro from $4.90/mo. 30 AI courses, 300+ lessons. Founding members lock in 90% off forever.',
     url: 'https://likeone.ai/pricing/',
   },
 };
