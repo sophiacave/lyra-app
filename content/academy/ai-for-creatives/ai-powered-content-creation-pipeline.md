@@ -159,6 +159,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Pipeline Stage to Its Role","instruction":"Match each content pipeline stage to what happens there.","pairs":[{"left":"Concept Stage","right":"Brainstorm angles, explore gaps, and stress-test ideas before building"},{"left":"Draft Stage","right":"AI produces raw material using your outline and style anchor"},{"left":"Edit Stage","right":"Cut, tighten, fact-check, and flag AI-sounding language"},{"left":"Polish Stage","right":"Format for platform, generate metadata, descriptions, and social cards"},{"left":"Repurpose Stage","right":"Transform one finished piece into multiple formats for different platforms"},{"left":"Batch by Format","right":"Write all captions in one session, all graphics briefs in another for consistency"}]}'></div>
 </div>
 
 <div class="lesson-section">

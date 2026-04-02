@@ -99,6 +99,7 @@ Length: {LENGTH} words. Include a practical takeaway at the end.
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Library Component","instruction":"Match each prompt library concept to its purpose.","pairs":[{"left":"Template Variables","right":"Placeholder brackets that adapt a prompt to any situation"},{"left":"Version Control","right":"Tracking what changed, why, and the performance impact"},{"left":"The Extractor","right":"Turns messy input into structured JSON output"},{"left":"The Reviewer","right":"Evaluates work against criteria you define"},{"left":"The Explainer","right":"Simplifies complex topics for a specific audience"},{"left":"The Debugger","right":"Diagnoses why something is broken and proposes fixes"}]}'></div>
 </div>
 
 <div class="lesson-section">

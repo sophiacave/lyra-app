@@ -67,6 +67,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Context Strategy","instruction":"Match each context window concept to its definition.","pairs":[{"left":"Context Window","right":"Total text the AI can see at once — prompt plus response"},{"left":"Lost in the Middle","right":"AI pays less attention to content in the middle of context"},{"left":"Front-Loading","right":"Placing critical instructions at the very beginning"},{"left":"Rolling Context","right":"Summarizing progress as a checkpoint for a fresh context"},{"left":"Chunking with Overlap","right":"Splitting large docs with 10-15% overlap to prevent gaps"},{"left":"Structured References","right":"Pasting signatures and key logic instead of full files"}]}'></div>
 </div>
 
 <div class="lesson-section">

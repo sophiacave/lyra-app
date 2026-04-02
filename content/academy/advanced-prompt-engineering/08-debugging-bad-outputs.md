@@ -66,6 +66,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Failure Mode to Its Fix","instruction":"Match each AI output failure mode to the correct debugging fix.","pairs":[{"left":"Too Vague","right":"Add specifics — audience, context, constraints, example of good"},{"left":"Wrong Format","right":"Be explicit about format and use the Output First trick"},{"left":"Wrong Tone","right":"Describe tone with comparisons and provide a style example"},{"left":"Hallucination","right":"Ask for sources, confidence levels, and \"say if unsure\""},{"left":"Ignored Instructions","right":"Move rules to the top, repeat key constraints, use NEVER/IMPORTANT"},{"left":"Self-Debug Technique","right":"Ask the AI to explain its interpretation and assumptions"}]}'></div>
 </div>
 
 <div class="lesson-section">

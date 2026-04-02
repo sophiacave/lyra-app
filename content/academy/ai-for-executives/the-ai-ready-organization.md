@@ -201,6 +201,7 @@ free: false
 
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Readiness Pillars and Key Concepts","instruction":"Match each readiness concept to its definition","pairs":[{"left":"Data Readiness","right":"Whether your data is accessible, clean, sufficient in volume, and governed"},{"left":"Infrastructure Readiness","right":"Modern cloud, API-connected systems, SSO, RBAC, and data pipelines"},{"left":"Culture Readiness","right":"Leaders model AI use, experimentation is safe, and training is invested in"},{"left":"Governance Readiness","right":"AI usage policy exists, ethics review is in place, and vendor contracts are AI-aware"},{"left":"AI-Exploring (Stage 2)","right":"First pilots running, small budget, informal champion, basic policies in place"},{"left":"AI-Native (Stage 5)","right":"AI is inseparable from operations, every process is AI-augmented by default"}]}'></div>
 </div>
 
 <div class="lesson-section">

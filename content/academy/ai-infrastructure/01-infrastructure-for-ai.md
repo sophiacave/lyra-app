@@ -73,6 +73,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Infrastructure Concepts","instruction":"Match each AI infrastructure concept with its description.","pairs":[{"left":"Vector Database","right":"Stores embeddings and enables semantic similarity search"},{"left":"Orchestration Layer","right":"Chains multiple AI operations like retrieval, prompting, and parsing"},{"left":"Marginal Cost per Request","right":"Every AI API call has a direct dollar cost unlike fixed server hosting"},{"left":"Variable Latency","right":"AI calls can take 2-30 seconds unlike predictable web page loads"},{"left":"Embeddings","right":"Numerical representations of text used for searching by meaning"},{"left":"GPU Compute","right":"Specialized hardware for running AI models either self-hosted or via API"}]}'></div>
 </div>
 
 <div class="lesson-section">

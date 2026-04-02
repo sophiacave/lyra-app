@@ -62,6 +62,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Documentation & SOPs — Key Concepts","instruction":"Match each documentation concept with its description.","pairs":[{"left":"Standard Operating Procedure","right":"Step-by-step document with purpose, roles, process, decision points, and troubleshooting"},{"left":"Architecture Decision Record","right":"Captures why a technical decision was made from Slack threads or meeting debates"},{"left":"Tribal Knowledge","right":"Undocumented information that lives only in people's heads and oral tradition"},{"left":"Living Documentation","right":"Monthly update cycle where AI revises SOPs based on recent process changes"},{"left":"Onboarding Doc Strategy","right":"Capture a new hire's questions and answers, then AI converts them into a guide"},{"left":"Changelog","right":"A record of what changed in each document revision to track process evolution"}]}'></div>
 </div>
 
 <div class="lesson-section">

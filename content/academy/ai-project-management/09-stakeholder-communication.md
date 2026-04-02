@@ -73,6 +73,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Stakeholder Communication — Key Concepts","instruction":"Match each communication concept with its description.","pairs":[{"left":"Executive Summary","right":"Under 200 words answering: Are we on track? What do you need from me? What should I worry about?"},{"left":"Audience Adaptation","right":"Same project data reframed for technical, business, and operational audiences"},{"left":"Stakeholder Map","right":"Kickoff document describing each stakeholder's role, preferences, and update frequency"},{"left":"Project Proposal Structure","right":"Problem, solution, approach, timeline, cost, ROI, risks, and recommendation"},{"left":"Delivering Bad News","right":"AI frames the issue with context and mitigation plan in a professional, honest tone"},{"left":"Ruthless Compression","right":"Giving AI full context then asking it to strip away everything the audience doesn't need"}]}'></div>
 </div>
 
 <div class="lesson-section">

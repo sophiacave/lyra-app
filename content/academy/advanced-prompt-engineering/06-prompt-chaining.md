@@ -103,6 +103,7 @@ Step 3: "Using the top insight from: [Step 2 output]. Create [final deliverable]
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Chain Pattern","instruction":"Match each prompt chaining concept to its description.","pairs":[{"left":"Generate → Critique → Revise","right":"Create, evaluate against criteria, then improve"},{"left":"Extract → Transform → Load","right":"Pull messy data, restructure it, format for destination"},{"left":"Brainstorm → Filter → Develop","right":"Generate many ideas, select the best, flesh out winners"},{"left":"Gate Check","right":"A validation step that catches errors between chain steps"},{"left":"Parallel Chains","right":"Running independent branches then merging at a single point"},{"left":"Clean Handoff","right":"Each step produces structured output the next step can consume"}]}'></div>
 </div>
 
 <div class="lesson-section">

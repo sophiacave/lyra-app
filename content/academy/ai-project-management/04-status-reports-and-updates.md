@@ -76,6 +76,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Status Reports & Updates — Key Concepts","instruction":"Match each reporting concept with its description.","pairs":[{"left":"One Input, Multiple Outputs","right":"A single raw status dump formatted into versions for executives, team, and clients"},{"left":"RAG Status","right":"Red/Amber/Green health assessment that AI assigns objectively from project data"},{"left":"Executive Version","right":"Three-line summary with overall status, key risk, and decision needed"},{"left":"Team Version","right":"Detailed task breakdown with completion percentages and blockers per workstream"},{"left":"Client Version","right":"Polished professional narrative highlighting progress and framing risks constructively"},{"left":"Friday Reporting Rhythm","right":"30-minute weekly block to dump raw data, run through AI, review, and send all versions"}]}'></div>
 </div>
 
 <div class="lesson-section">

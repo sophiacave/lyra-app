@@ -63,6 +63,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Launch & Distribution — Key Terms","instruction":"Match each launch concept to its description.","pairs":[{"left":"Wave 1 — Inner Circle","right":"20-50 testers who catch embarrassing failures before strangers see them"},{"left":"Wave 2 — Community Seeding","right":"Post in communities where target users gather — show the output"},{"left":"Wave 3 — Content Flywheel","right":"Turn product outputs into shareable content that demonstrates value"},{"left":"Show the Output","right":"AI outputs are inherently shareable — every share is a free ad"},{"left":"Building in Public","right":"Share real numbers, architecture decisions, and lessons to build trust"},{"left":"Sustained Distribution","right":"Launch day is a starting gun, not the finish line — plan for months"}]}'></div>
 </div>
 
 <div class="lesson-section">

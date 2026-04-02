@@ -72,6 +72,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Pricing & Monetization — Key Terms","instruction":"Match each pricing concept to its description.","pairs":[{"left":"Subscription Model","right":"Flat monthly fee — simple for users but risky without usage limits"},{"left":"Usage-Based Model","right":"Pay per query — aligns cost and revenue but users hate unpredictable bills"},{"left":"Hybrid Model","right":"Base subscription plus overage billing — where most mature AI products land"},{"left":"Outcome-Based Model","right":"Charge per successful result, not per attempt — highest perceived value"},{"left":"Free Tier Trap","right":"Every free query costs real money — viral growth can exceed revenue"},{"left":"Value-Based Pricing","right":"Anchor price to what the outcome is worth, not what it costs to deliver"}]}'></div>
 </div>
 
 <div class="try-it-box">

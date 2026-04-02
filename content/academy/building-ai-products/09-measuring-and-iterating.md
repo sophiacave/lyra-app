@@ -71,6 +71,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Measuring & Iterating — Key Terms","instruction":"Match each metric to what it measures.","pairs":[{"left":"Output Acceptance Rate","right":"Percentage of AI outputs users accept without editing — target 60-90%"},{"left":"Edit Depth","right":"How much users change AI output — light edits vs. heavy rewrites"},{"left":"Return Rate","right":"Whether users come back for a second, third, and tenth use"},{"left":"Cost Per Successful Output","right":"True cost accounting for regenerations — not just cost per query"},{"left":"Aha Moment","right":"The action that correlates with long-term retention"},{"left":"Implicit Feedback","right":"Behavioral signals like acceptance and edits — more reliable than ratings"}]}'></div>
 </div>
 
 <div class="try-it-box">

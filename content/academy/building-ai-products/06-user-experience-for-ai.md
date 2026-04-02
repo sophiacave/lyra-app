@@ -70,6 +70,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI User Experience — Key Terms","instruction":"Match each UX pattern to its description.","pairs":[{"left":"Structured Input","right":"Forms, dropdowns, and templates that guide users toward optimal prompts"},{"left":"Edit, Don't Create","right":"AI drafts first, human edits — mirrors natural collaboration"},{"left":"Streaming Responses","right":"Show text as it generates to reduce perceived wait time by 60-70%"},{"left":"Design for Wrong Answers","right":"Make it trivially easy to reject, edit, or regenerate AI output"},{"left":"Ambient AI","right":"AI works in the background and surfaces suggestions automatically"},{"left":"AI Accessibility","right":"Ensuring streaming text, animations, and auto-play work for all users"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -53,6 +53,7 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Monitoring Metrics","instruction":"Match each monitoring metric with what it reveals about your AI system.","pairs":[{"left":"P50/P95/P99 Latency","right":"Distribution of AI call response times from typical to worst-case"},{"left":"Token Usage Logging","right":"Input and output token counts that map directly to API cost"},{"left":"Cache Hit Rate","right":"How often cached responses serve users vs. fresh expensive API calls"},{"left":"Error Rate by Provider","right":"Identifies which AI provider is experiencing outages or misconfiguration"},{"left":"Response Quality Signals","right":"User feedback and length anomalies that catch model regressions"},{"left":"Cost Per Request","right":"Actual dollar cost of each AI operation aggregated by user and feature"}]}'></div>
 </div>
 
 <div class="lesson-section">

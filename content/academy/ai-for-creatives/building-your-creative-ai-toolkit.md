@@ -184,6 +184,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Tool Category to Its Use Case","instruction":"Match each AI tool category to its primary creative use.","pairs":[{"left":"Writing AI (Claude, ChatGPT)","right":"Ideation, drafts, editing, research, and repurposing text content"},{"left":"Image AI (Midjourney, Firefly)","right":"Concept art, mood boards, asset generation, and background removal"},{"left":"Video AI (Descript, Opus Clip)","right":"Auto-editing, transcript-based editing, and clip generation for shorts"},{"left":"Audio AI (LANDR, Moises)","right":"AI mastering, stem separation, and melody sketching"},{"left":"Automation AI (Zapier, Make)","right":"Connecting tools together, auto-scheduling, and routing outputs between apps"},{"left":"The 3-Question Filter","right":"Does it solve a bottleneck, can I learn it in an hour, will I use it weekly?"}]}'></div>
 </div>
 
 <div class="lesson-section">

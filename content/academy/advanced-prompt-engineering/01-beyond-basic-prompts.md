@@ -94,6 +94,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Prompt Lever","instruction":"Match each of the five prompt engineering levers to its definition.","pairs":[{"left":"Role","right":"Who the AI should be — expertise and personality"},{"left":"Context","right":"Background info: audience, constraints, prior work"},{"left":"Task","right":"The specific deliverable the AI should produce"},{"left":"Format","right":"How the output should look — length, structure, style"},{"left":"Constraints","right":"What the AI should avoid or never do"},{"left":"Engineered Prompt","right":"A prompt using all five levers for precise output"}]}'></div>
 </div>
 
 <div class="lesson-section">

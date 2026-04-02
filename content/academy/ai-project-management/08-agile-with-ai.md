@@ -85,6 +85,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Agile with AI — Key Concepts","instruction":"Match each agile concept with how AI enhances it.","pairs":[{"left":"Sprint Planning","right":"AI suggests sprint scope from backlog priority, dependencies, and historical velocity"},{"left":"User Story Generation","right":"AI drafts stories with acceptance criteria, edge cases, and testable conditions"},{"left":"Retrospective Analysis","right":"AI identifies recurring themes and tracks which action items were actually completed"},{"left":"Backlog Audit","right":"AI finds duplicates, flags stale tickets, and suggests effort-vs-impact prioritization"},{"left":"Velocity Forecasting","right":"AI produces confidence interval predictions from 8-10 sprints of historical data"},{"left":"Acceptance Criteria","right":"Specific testable conditions that define when a user story is complete"}]}'></div>
 </div>
 
 <div class="lesson-section">

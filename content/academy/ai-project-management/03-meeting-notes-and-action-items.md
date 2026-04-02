@@ -80,6 +80,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Meeting Notes & Action Items — Key Concepts","instruction":"Match each meeting workflow concept with its description.","pairs":[{"left":"Structure In, Structure Out","right":"Specify exact output sections like decisions, action items, and parking lot for quality results"},{"left":"Action Item Format","right":"[Owner] — [Task] — [Deadline] for trackable accountability"},{"left":"Follow-Up Loop","right":"Feed last week's action items to AI to auto-generate the next meeting agenda"},{"left":"Meeting Input Options","right":"Transcripts from Zoom/Teams, rough notes, or post-meeting brain dumps"},{"left":"Prompt Templates","right":"Saved and tweaked formats for standups, steering committees, and other meeting types"},{"left":"Executive Summary","right":"A 3-sentence overview distilling the entire meeting for leadership"}]}'></div>
 </div>
 
 <div class="lesson-section">

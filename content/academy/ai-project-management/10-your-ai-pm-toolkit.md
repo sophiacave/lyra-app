@@ -96,6 +96,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Your AI PM Toolkit — Key Concepts","instruction":"Match each toolkit element with its description.","pairs":[{"left":"Weekly Rhythm","right":"Monday priorities, daily meeting notes, Wednesday risk check, Friday status reports"},{"left":"Prompt Library","right":"Eight core templates covering 90% of PM communication needs"},{"left":"30-Day Adoption Plan","right":"Week 1 meeting notes, Week 2 reporting, Week 3 risk/resources, Week 4 full system"},{"left":"Quality Gate","right":"Every AI output gets your review before it goes to anyone — you decide, not AI"},{"left":"AI Transparency","right":"Telling your team you use AI builds trust; pretending you don't erodes it"},{"left":"Context Investment","right":"30 extra seconds of input — constraints, preferences, history — pays back tenfold"}]}'></div>
 </div>
 
 <div class="lesson-section">

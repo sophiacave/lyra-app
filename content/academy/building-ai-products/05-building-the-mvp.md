@@ -72,6 +72,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Building the MVP — Key Terms","instruction":"Match each MVP concept to its meaning.","pairs":[{"left":"One-Workflow Rule","right":"MVP does one thing end-to-end, not three features or a platform"},{"left":"Input Capture","right":"How the user gives you data — make it frictionless"},{"left":"Output Delivery","right":"Match the result format to the user's existing workflow"},{"left":"Error Handling","right":"Clear error messages and retry buttons — AI failures are expected"},{"left":"Confidence Levels","right":"Show certainty percentages so users know when to verify"},{"left":"Transparency","right":"Show what the AI did and keep original source accessible"}]}'></div>
 </div>
 
 <div class="try-it-box">

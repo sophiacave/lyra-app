@@ -69,6 +69,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI in Project Management — Key Concepts","instruction":"Match each AI capability with what it does for project managers.","pairs":[{"left":"Information Processing","right":"Digests meeting transcripts and extracts action items in seconds"},{"left":"Communication Generation","right":"Drafts status reports and stakeholder updates from raw notes"},{"left":"Pattern Recognition","right":"Spots slipping timelines, stacking dependencies, and workload imbalances"},{"left":"Human Judgment","right":"Navigates office politics, reads the room, and senses burnout"},{"left":"Coordination Overhead","right":"The 60% of PM time spent on updates, notes, and chasing action items"},{"left":"AI-Assisted Workflow","right":"Agenda generation, transcription, summary, and progress tracking loop"}]}'></div>
 </div>
 
 <div class="lesson-section">

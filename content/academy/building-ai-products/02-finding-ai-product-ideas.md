@@ -58,6 +58,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Finding AI Product Ideas — Key Terms","instruction":"Match each concept to its definition.","pairs":[{"left":"Spreadsheet Test","right":"Find someone using Excel for a task it was never designed for"},{"left":"Expert Bottleneck","right":"Where companies pay expensive humans for repetitive cognitive work"},{"left":"Translation Gap","right":"Information exists in one form but is needed in another"},{"left":"Decision Fatigue","right":"Hundreds of small daily decisions that AI can support"},{"left":"Accuracy Trap","right":"Building where 99.9% accuracy is required but AI cannot guarantee it"},{"left":"Just-a-Prompt Trap","right":"An idea a competitor can clone in an afternoon with no moat"}]}'></div>
 </div>
 
 <div class="lesson-section">

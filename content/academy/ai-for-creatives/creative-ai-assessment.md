@@ -33,6 +33,7 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the Creative AI Concept","instruction":"Match each concept to its correct definition.","pairs":[{"left":"3-Question Filter","right":"Does it solve a bottleneck, can I learn it in an hour, will I use it weekly?"},{"left":"Style Anchor","right":"A reusable description of your voice built from AI analysis of your work samples"},{"left":"Iterative Prompting","right":"Refining AI output through multiple rounds of conversation, not a single prompt"},{"left":"The Quality Gate","right":"Five pre-publish checks: voice, value, fact, platform, and cringe"},{"left":"Creative Disclosure","right":"Being upfront about AI use while emphasizing human editorial oversight"},{"left":"Homogenization","right":"When AI default patterns overwrite your distinctive creative voice"}]}'></div>
 </div>
 
 <div class="lesson-section">

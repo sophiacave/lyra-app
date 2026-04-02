@@ -76,6 +76,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Match the System Prompt Component","instruction":"Match each system prompt element to what it controls.","pairs":[{"left":"Identity","right":"Who the AI is — role, expertise, and personality"},{"left":"Behavior Rules","right":"Tone, length, and formatting preferences"},{"left":"Knowledge Boundaries","right":"What the AI knows and should admit it does not know"},{"left":"Constraints","right":"Hard limits on what the AI must never do"},{"left":"Persona Stacking","right":"Layering multiple perspectives into one prompt"},{"left":"Contradictory Instructions","right":"The #1 cause of weak system prompt output"}]}'></div>
 </div>
 
 <div class="lesson-section">

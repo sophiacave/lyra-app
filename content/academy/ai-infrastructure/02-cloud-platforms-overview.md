@@ -69,6 +69,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Cloud Platforms for AI","instruction":"Match each platform with what it offers for AI workloads.","pairs":[{"left":"AWS SageMaker / Bedrock","right":"ML pipelines and managed LLM access with the largest GPU availability"},{"left":"GCP Vertex AI","right":"Deepest AI integration with TPU access and Gemini model support"},{"left":"Azure OpenAI Service","right":"GPT models with enterprise SLAs and data residency guarantees"},{"left":"Vercel","right":"Frontend deployment with edge functions and streaming AI responses"},{"left":"Supabase","right":"PostgreSQL with pgvector, auth, realtime, and edge functions in one platform"},{"left":"Replicate / Modal / RunPod","right":"Specialized pay-per-second GPU access for running open-source models"}]}'></div>
 </div>
 
 <div class="lesson-section">
