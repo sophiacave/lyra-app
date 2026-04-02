@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "audit": "node scripts/audit-academy.js",
+    "audit:fix": "node scripts/audit-academy.js --fix",
+    "audit:json": "node scripts/audit-academy.js --json"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.0",
