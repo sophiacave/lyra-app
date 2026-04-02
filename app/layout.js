@@ -2,7 +2,7 @@ import './globals.css';
 import './console.css';
 import Script from 'next/script';
 import { site, colors } from '../lib/site-config';
-import BetaReporter from './components/BetaReporter';
+
 import FayeChat from './components/FayeChat';
 
 const fullTitle = `Like One — Free AI Courses | Learn Claude, Automation & Prompt Engineering`;
@@ -94,7 +94,6 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <FayeChat />
-        <BetaReporter />
         <Script src="/auth-state.js" strategy="afterInteractive" />
       </body>
     </html>
