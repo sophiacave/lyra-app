@@ -59,6 +59,40 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Your ROI Calculator Prompt</span>
+  <h2 class="section-title">Calculate ROI for any AI tool in 60 seconds.</h2>
+  <p class="section-text">Instead of building a spreadsheet, paste this prompt into Claude or ChatGPT. It does the math for you and gives you a recommendation.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="filename">AI ROI Calculator</span><span class="lang">Prompt Template</span></div>
+    <div class="code-body"><span class="cm"># Copy this into Claude or ChatGPT</span>
+
+I'm evaluating an AI tool for my business. Calculate the ROI.
+
+Tool: [NAME]
+Monthly cost: $[AMOUNT]
+Task it replaces: [DESCRIBE THE TASK]
+Hours spent on this task per week: [NUMBER]
+Who does this task: [ROLE]
+Their total annual compensation: $[AMOUNT]
+
+Calculate:
+1. Effective hourly rate of the employee
+2. Conservative estimate (30% automation rate)
+3. Moderate estimate (50% automation rate)
+4. Gross and net annual savings for each
+5. ROI percentage for each
+6. Break-even point in days per month
+7. Your recommendation: buy, wait, or skip
+
+Use the conservative estimate for decision-making.
+Flag any hidden costs I should account for.</div>
+  </div>
+
+  <p class="section-text">Run this prompt for every AI tool you consider. Save the outputs in a "Tool ROI" document. In six months, compare the projections to actuals — you'll calibrate your estimates and make faster decisions.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the concept to its meaning.</h2>
   <p class="section-text">Connect each ROI term to its practical definition. These are the building blocks of every calculation in this lesson.</p>
