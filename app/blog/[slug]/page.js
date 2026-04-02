@@ -137,10 +137,19 @@ function RelatedCourses({ tags }) {
   );
 }
 
+function estimateReadTime(html) {
+  if (!html) return 1;
+  const text = html.replace(/<[^>]*>/g, '');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 238));
+}
+
 export default async function PostPage({ params }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
+
+  const readTime = estimateReadTime(post.contentHtml);
 
   return (
     <div className="post-shell">
@@ -152,10 +161,27 @@ export default async function PostPage({ params }) {
           headline: post.title,
           description: post.excerpt,
           datePublished: post.date,
-          author: { '@type': 'Person', name: post.author || 'Sophia Cave' },
+          author: {
+            '@type': 'Person',
+            name: post.author || 'Sophia Cave',
+            url: `${site.url}/about/`,
+          },
           publisher: { '@type': 'Organization', name: 'Like One', url: site.url },
           url: `${site.url}/blog/${slug}/`,
           mainEntityOfPage: `${site.url}/blog/${slug}/`,
+          wordCount: post.contentHtml ? post.contentHtml.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length : 0,
+        }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: `${site.url}/blog/` },
+            { '@type': 'ListItem', position: 3, name: post.title, item: `${site.url}/blog/${slug}/` },
+          ],
         }) }}
       />
       {post.faq && (
@@ -184,6 +210,8 @@ export default async function PostPage({ params }) {
               <span className="post-header-author">{post.author}</span>
             </>
           )}
+          <span className="post-header-dot">&middot;</span>
+          <span className="post-header-readtime">{readTime} min read</span>
           {post.tags.map(tag => (
             <span key={tag} className="post-header-tag">{tag}</span>
           ))}
