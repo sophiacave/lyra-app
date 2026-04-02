@@ -79,7 +79,6 @@ free: true
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each sales task to what AI can or cannot replace.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

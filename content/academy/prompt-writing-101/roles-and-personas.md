@@ -83,7 +83,6 @@ and one real-world app that does this well.</span></code></pre>
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the task to the best role.</h2>
-  <p class="section-text">Different tasks need different experts. Match each task to the role that would produce the best output.</p>
 </div>
 
 <!-- SECTION 4: 10 POWER ROLES -->

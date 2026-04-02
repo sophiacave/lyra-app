@@ -74,8 +74,6 @@ delay, explain briefly, give the new timeline, and
 end with one concrete action we are taking to
 prevent this from happening again.</code></pre>
 </div>
-
-  <p class="section-text">Now put the formula parts in the right order:</p>
 </div>
 
 <!-- SECTION 2: BAD VS GOOD -->
@@ -87,18 +85,18 @@ prevent this from happening again.</code></pre>
 
 </div>
 
-<!-- SECTION 3: PRACTICE BUILDER -->
+<!-- SECTION 3: TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Your Turn</span>
-  <h2 class="section-title">Build a prompt using the formula.</h2>
-  <p class="section-text">Use the builder below to construct a prompt. Pick a role, add your context, choose a format. Then copy it and try it in <a href="https://claude.ai" target="_blank" style="color:var(--purple)">Claude</a>.</p>
+  <h2 class="section-title">Try the formula right now.</h2>
+  <p class="section-text">Open <a href="https://claude.ai" target="_blank" style="color:var(--purple)">claude.ai</a> and write a prompt using the 3-part formula: pick a <strong>role</strong>, describe your <strong>context</strong>, and specify the <strong>format</strong> you want back. You'll be surprised how much better the result is.</p>
 </div>
 
 <!-- SECTION 4: STEAL THESE -->
 <div class="lesson-section">
   <span class="section-label">Steal These</span>
   <h2 class="section-title">5 prompts you can use today.</h2>
-  <p class="section-text">Flip each card to see the full prompt. Copy and paste into Claude, then customize for your situation.</p>
+  <p class="section-text">Open each card to see the full prompt. Copy and paste into Claude, then customize for your situation.</p>
 
 <div data-learn="FlashDeck" data-props='{"title":"Copy-Paste Prompt Library","cards":[{"front":"📋 Meeting Notes → Action Items\n\nTurn messy meeting notes into a clear checklist in seconds.","back":"PROMPT:\n\nHere are my meeting notes: [paste notes]. Extract all action items, who is responsible, and deadlines. Format as a checklist I can paste into Slack."},{"front":"💌 Professional Reply\n\nCraft the perfect response to any email — fast.","back":"PROMPT:\n\nI received this email: [paste email]. Write a professional reply that [agrees/declines/asks for more info]. Match a warm but professional tone. Keep it under 100 words."},{"front":"🧠 Explain Like I Am New\n\nMake any complex topic simple and clear.","back":"PROMPT:\n\nExplain [complex topic] to someone who has never encountered it before. Use an everyday analogy. Keep it to 3 sentences."},{"front":"📊 Weekly Report\n\nTurn a list of tasks into a polished status update.","back":"PROMPT:\n\nHere is what I worked on this week: [list tasks]. Write a weekly status report for my manager. Include: what was completed, what is in progress, any blockers, and plan for next week. Professional but not stuffy."},{"front":"⚖️ Decision Helper\n\nGet a clear pros/cons analysis for any choice.","back":"PROMPT:\n\nI am deciding between [option A] and [option B]. Here is my situation: [context]. Create a pros/cons table for each option, then give me your recommendation with reasoning."}]}'></div>
 

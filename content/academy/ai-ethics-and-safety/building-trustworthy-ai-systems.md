@@ -130,7 +130,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each trustworthy AI principle to its meaning.</h2>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

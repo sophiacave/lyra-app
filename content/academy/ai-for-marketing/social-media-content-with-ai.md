@@ -129,7 +129,6 @@ We are NOT: Corporate, preachy, or hype-driven.</pre>
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each platform to its content style.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -137,7 +137,6 @@ Don't use all caps. Don't use excessive punctuation.</pre>
 <!-- INTERACTIVE: MATCHCONNECT -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each ad platform to its key constraint.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

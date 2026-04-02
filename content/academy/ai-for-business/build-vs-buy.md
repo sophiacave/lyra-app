@@ -79,8 +79,6 @@ Explain your reasoning for each factor and give me a confidence level (high/medi
 <div class="lesson-section">
   <span class="section-label">Section 3</span>
   <h2 class="section-title">Match scenario to strategy.</h2>
-  <p class="section-text">Six real business scenarios. Match each one to the right strategic approach. Some are obvious, some are tricky — think through the five factors before you match.</p>
-
 </div>
 
 <div class="lesson-section">

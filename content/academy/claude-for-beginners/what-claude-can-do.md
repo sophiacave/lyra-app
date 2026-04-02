@@ -126,7 +126,6 @@ me which one you would pick and why.</code></pre>
 <div class="lesson-section">
   <span class="section-label">Honesty Check</span>
   <h2 class="section-title">What Claude can't do.</h2>
-  <p class="section-text">Being honest about limits is more important than hype. Match each statement to whether Claude CAN or CAN'T do it.</p>
 <div class="tip-box">
     <div class="tip-label">Pro Tip</div>
     <p><strong>Always verify important facts.</strong> Claude is incredibly good at reasoning and writing, but it can occasionally get specific facts wrong. Think of it like a brilliant intern — trust the analysis, double-check the numbers.</p>

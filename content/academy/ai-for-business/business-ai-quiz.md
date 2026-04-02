@@ -36,8 +36,7 @@ free: false
 
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each scenario to the right response.</h2>
-  <p class="section-text">These pairings test whether you can apply course concepts to real situations. Get these right and the quiz will feel straightforward.</p>
+<p class="section-text">These pairings test whether you can apply course concepts to real situations. Get these right and the quiz will feel straightforward.</p>
 
 </div>
 

@@ -82,7 +82,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each call phase to its AI-informed question type.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

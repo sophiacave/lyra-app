@@ -149,7 +149,6 @@ IMPORTANT RULES:
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each fact-checking strategy to when you should use it.</h2>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

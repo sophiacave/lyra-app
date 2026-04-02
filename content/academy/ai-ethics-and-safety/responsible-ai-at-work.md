@@ -147,7 +147,6 @@ Give me a clear GO / CAUTION / STOP recommendation for each checkpoint.</code></
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each workplace AI principle to its rationale.</h2>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

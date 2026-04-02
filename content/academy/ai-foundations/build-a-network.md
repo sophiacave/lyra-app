@@ -37,8 +37,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">The Code</span>
   <h2 class="section-title">A neural network in 15 lines of Python.</h2>
-  <p class="section-text">The drag-and-drop builder below lets you visualize it. But here is what the same thing looks like in actual code — a complete forward pass through a 2-layer network:</p>
-
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a complete neural network forward pass</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np

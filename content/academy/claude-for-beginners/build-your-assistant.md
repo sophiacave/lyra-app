@@ -90,7 +90,6 @@ I should reschedule.</code></pre>
 <div class="lesson-section">
   <span class="section-label">The ROI</span>
   <h2 class="section-title">The time you will save.</h2>
-  <p class="section-text">Match each task to the time most people save once Claude becomes part of their workflow:</p>
 <div class="callout">
     <p><strong>Conservative estimate:</strong> Most people save 5-8 hours per week once these habits stick. That is an extra workday every week — or leaving the office at 4pm instead of 6pm.</p>
   </div>

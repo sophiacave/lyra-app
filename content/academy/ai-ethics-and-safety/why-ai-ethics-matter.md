@@ -153,7 +153,6 @@ Be specific to my task. Give me a checklist I can use right now.</code></pre>
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each harm to the real-world example.</h2>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

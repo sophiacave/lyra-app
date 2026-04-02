@@ -131,7 +131,6 @@ every recommendation with a reason.</code></pre>
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each marketing task to whether AI excels or struggles.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

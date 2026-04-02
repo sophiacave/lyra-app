@@ -13,8 +13,6 @@ free: false
 
 <div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
 <h1>Wire It All Together</h1>
-<p class="intro">This is THE BIG ONE. Every tool you've learned connects into one architecture. Click each node to see how it talks to the others. Then build it step by step.</p>
-
 <h2>The Complete Architecture</h2>
 <p>Click any service to see its connections, data flows, and example code. Each node shows you what that service does and how it communicates with the others.</p>
 
@@ -115,7 +113,6 @@ free: false
 <div class="build-step-header"><span class="build-step-title">6. Make.com: Wire automations</span><span class="build-step-num">Glue</span></div>
 <div class="build-step-body">
 <p style="font-size:.9rem;color:#999">Create scenarios: new subscriber notification, revenue alert to Slack, daily analytics digest. Make.com connects everything that doesn't have a direct API integration.</p>
-<p style="font-size:.85rem;color:#888">This is pseudocode showing the flow of a Make.com scenario. In Make.com's visual editor, you'd drag these modules onto the canvas and connect them — no coding required. Each arrow represents data flowing from one module to the next.</p>
 <div class="code-block"><span class="cm">// Make.com Scenario: Revenue Alert</span><br>Trigger: Supabase webhook (new row in revenue)<br> &#x2192; Filter: amount > $50<br> &#x2192; Slack: Post to #revenue channel<br> &#x2192; Google Sheets: Log to spreadsheet</div>
 <button class="check-btn" onclick="event.stopPropagation();markDone(5)">&#x2713; Done</button>
 </div>

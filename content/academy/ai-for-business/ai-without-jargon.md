@@ -37,8 +37,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Section 2</span>
   <h2 class="section-title">Match the terms.</h2>
-  <p class="section-text">Now that you have seen all 10, let's make sure 6 of the most commonly confused ones actually stuck. Match each term to its plain-English meaning. This takes about 90 seconds.</p>
-
 </div>
 
 <div class="lesson-section">

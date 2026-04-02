@@ -16,7 +16,6 @@ free: true
 <div class="lesson-hero">
   <h1>The AI Product Mindset</h1>
   <p><span class="accent">Stop thinking like an engineer. Start thinking like someone who solves problems.</span></p>
-  <p>Most AI products fail not because the technology is wrong, but because the builder forgot to ask: does anyone actually need this?</p>
 </div>
 
 <div class="learn-card">

@@ -74,8 +74,6 @@ Keep the language clear and specific. No legalese. This should be readable by an
 <div class="lesson-section">
   <span class="section-label">Match Sections to Scenarios</span>
   <h2 class="section-title">Every incident has a policy section that prevents it.</h2>
-  <p class="section-text">Real policy violations do not look like violations when they happen — they look like employees trying to do their jobs faster. The value of a policy is that it gives employees a clear answer before they act, not an uncomfortable conversation after. Match each scenario to the policy section that directly addresses it.</p>
-
 </div>
 
 <div class="lesson-section">

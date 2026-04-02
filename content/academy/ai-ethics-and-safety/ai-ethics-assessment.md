@@ -135,7 +135,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Scenario Review</span>
-  <h2 class="section-title">Match each scenario to the primary ethical issue it raises.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

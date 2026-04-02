@@ -89,7 +89,6 @@ Give me:
 <div class="lesson-section">
   <span class="section-label">Level Up</span>
   <h2 class="section-title">Calendar & meeting prep, handled.</h2>
-  <p class="section-text">Meetings don't have to be chaos. Match each scenario to the right Claude approach:</p>
 <div class="tip-box">
     <div class="tip-label">Pro Tip</div>
     <p><strong>Paste your actual calendar.</strong> Copy your week from Google Calendar, paste into Claude, and say "Help me find 2 hours for deep work and identify back-to-back meetings I should reschedule." Instant scheduling assistant.</p>

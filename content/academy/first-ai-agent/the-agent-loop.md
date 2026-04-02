@@ -16,8 +16,7 @@ free: true
 
   <div class="section">
     <h2>The Five Steps</h2>
-    <p>Click each node on the loop to explore what happens at every step:</p>
-    <canvas id="loop-canvas"></canvas>
+<canvas id="loop-canvas"></canvas>
     <p class="hint">Click any node on the loop to explore it</p>
 
     <div class="info-panel" id="info">

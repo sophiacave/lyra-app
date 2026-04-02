@@ -65,8 +65,6 @@ and deadlines where mentioned.
 What are the key trends? What should I worry about?
 Give me your top 3 recommendations ranked by impact.</code></pre>
 </div>
-
-  <p class="section-text">Now match each summary style to the right situation:</p>
 </div>
 
 <!-- SECTION 2: DATA ANALYSIS -->
