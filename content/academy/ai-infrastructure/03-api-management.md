@@ -54,6 +54,42 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Code</span>
+  <h2 class="section-title">Rate Limiter Implementation</h2>
+  <p class="section-text">Here is a production-ready rate limiter using a sliding window in Supabase. This tracks requests per user and blocks when the limit is exceeded.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Edge function rate limiter</div>
+<pre><code class="language-typescript">import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+);
+
+async function checkRateLimit(userId: string, maxRequests = 20, windowMinutes = 60) {
+  const windowStart = new Date(Date.now() - windowMinutes * 60 * 1000).toISOString();
+
+  // Count requests in the sliding window
+  const { count } = await supabase
+    .from("api_usage")
+    .select("*", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .gte("created_at", windowStart);
+
+  if ((count ?? 0) >= maxRequests) {
+    return { allowed: false, remaining: 0 };
+  }
+
+  // Log this request
+  await supabase.from("api_usage").insert({
+    user_id: userId,
+    tokens_used: 0, // updated after AI call completes
+    estimated_cost: 0,
+  });
+
+  return { allowed: true, remaining: maxRequests - (count ?? 0) - 1 };
+}</code></pre>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -63,6 +99,41 @@ free: true
   <p class="section-text"><strong>Exponential backoff:</strong> When a call fails, wait 1 second, then 2, then 4. Don't hammer a struggling API — you'll make it worse and get rate-limited.</p>
   <p class="section-text"><strong>Provider fallback:</strong> If Claude is down, can you fall back to GPT? If your primary vector DB is slow, do you have a cache layer? Multi-provider setups are more work but dramatically more reliable.</p>
   <p class="section-text"><strong>Graceful degradation:</strong> If all AI providers are down, your app should still function — just without AI features. Show cached responses, display a status message, or queue requests for later processing.</p>
+
+<div class="code-block"><div class="code-label">Python — Exponential backoff with provider fallback</div>
+<pre><code class="language-python">import anthropic
+import openai
+import time
+
+def call_ai_with_retry(prompt: str, max_retries: int = 3) -> str:
+    """Call Claude first, fall back to GPT, with exponential backoff."""
+
+    providers = [
+        ("claude", lambda: anthropic.Anthropic().messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}]
+        ).content[0].text),
+        ("gpt", lambda: openai.OpenAI().chat.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": prompt}]
+        ).choices[0].message.content),
+    ]
+
+    for name, call_fn in providers:
+        for attempt in range(max_retries):
+            try:
+                result = call_fn()
+                print(f"✅ {name} responded (attempt {attempt + 1})")
+                return result
+            except Exception as e:
+                wait = 2 ** attempt  # 1s, 2s, 4s
+                print(f"⚠️ {name} failed (attempt {attempt + 1}): {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(wait)
+
+    return "All AI providers unavailable. Please try again later."</code></pre>
+</div>
 </div>
 
 <div class="demo-container">

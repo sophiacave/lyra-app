@@ -24,10 +24,82 @@ free: false
 <div class="label">Key Patterns</div>
 <h3 style="margin-top:0">Pattern 1: Key-Value Brain</h3>
 <p style="font-size:.9rem"><strong>Why this pattern:</strong> Instead of creating a new column for every piece of information, you store everything as key-value pairs. This means your AI agent can learn new things without database migrations. The <code style="color:#f59e0b">brain_context</code> table is a flexible key-value store. Keys use dot notation (like <code style="color:#f59e0b">identity.name</code>, <code style="color:#f59e0b">session.active_work</code>) for namespacing — the dots create a hierarchy, like folders on your computer. Values are JSONB (a Postgres data type that stores structured JSON data — it can hold strings, numbers, arrays, or nested objects, and you can query inside it).</p>
+
+<div class="code-block"><div class="code-label">SQL — Create the brain_context table</div>
+<pre><code class="language-sql">-- Pattern 1: Key-Value Brain (flexible, no migrations needed)
+CREATE TABLE brain_context (
+  id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  key        TEXT UNIQUE NOT NULL,        -- dot notation: 'identity.name'
+  value      JSONB NOT NULL DEFAULT '{}', -- any structured data
+  category   TEXT DEFAULT 'general',      -- namespace: session, directive, system
+  description TEXT,                       -- human-readable note
+  priority   INT DEFAULT 5 CHECK (priority BETWEEN 1 AND 10),
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- Fast lookups by key and category
+CREATE INDEX idx_brain_key ON brain_context(key);
+CREATE INDEX idx_brain_category ON brain_context(category);
+
+-- Upsert example: write or update a brain key
+INSERT INTO brain_context (key, value, category, description)
+VALUES ('session.active_work', '{"task": "deploy v2"}', 'session', 'Current work')
+ON CONFLICT (key) DO UPDATE SET
+  value = EXCLUDED.value,
+  description = EXCLUDED.description,
+  updated_at = now();</code></pre>
+</div>
+
 <h3>Pattern 2: Append-Only Memory</h3>
 <p style="font-size:.9rem"><strong>Why this pattern:</strong> Deleting data destroys context. An AI agent that forgets past interactions can't learn or improve. By always appending, you build a complete history the agent can search through. The <code style="color:#f59e0b">agent_memory</code> table stores every interaction. Use <code style="color:#f59e0b">importance</code> scores (1-10) to prioritize retrieval — when the agent needs context, it grabs high-importance memories first. The <code style="color:#f59e0b">embedding</code> column uses <code style="color:#f59e0b">vector(1536)</code> — that's a list of 1,536 numbers that represent the meaning of text. AI models convert text into these vectors so you can find semantically similar memories (e.g., "find memories about deployment" would match "pushed code to Vercel" even though the words are different). The 1536 number matches OpenAI's embedding model dimensions.</p>
+
+<div class="code-block"><div class="code-label">SQL — Create the agent_memory table with vector search</div>
+<pre><code class="language-sql">-- Enable pgvector extension (run once per database)
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Pattern 2: Append-Only Memory (never delete, always append)
+CREATE TABLE agent_memory (
+  id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  content    TEXT NOT NULL,                -- what happened
+  role       TEXT DEFAULT 'system',        -- user, assistant, system
+  importance INT DEFAULT 5 CHECK (importance BETWEEN 1 AND 10),
+  embedding  vector(1536),                -- semantic meaning as numbers
+  metadata   JSONB DEFAULT '{}',          -- tags, source, context
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- Find the 5 most relevant memories by semantic similarity
+SELECT content, importance,
+       1 - (embedding <=> $1::vector) AS similarity
+FROM agent_memory
+WHERE importance >= 7
+ORDER BY embedding <=> $1::vector
+LIMIT 5;</code></pre>
+</div>
+
 <h3>Pattern 3: Event Streaming</h3>
 <p style="font-size:.9rem"><strong>Why this pattern:</strong> When something goes wrong (and it will), you need to know exactly what your agent did and when. The <code style="color:#f59e0b">consciousness_stream</code> is an event log — every action the agent takes gets logged with its input and output. This is invaluable for debugging ("why did the agent send that email?"), auditing ("who changed this data?"), and replaying agent behavior to test improvements.</p>
+
+<div class="code-block"><div class="code-label">SQL — Create the consciousness_stream event log</div>
+<pre><code class="language-sql">-- Pattern 3: Event Streaming (every action logged, never deleted)
+CREATE TABLE consciousness_stream (
+  id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  event_type TEXT NOT NULL,               -- 'tool_call', 'decision', 'error'
+  agent_id   TEXT DEFAULT 'primary',      -- which agent acted
+  input      JSONB DEFAULT '{}',          -- what was the prompt/trigger
+  output     JSONB DEFAULT '{}',          -- what was the result
+  duration_ms INT,                        -- how long it took
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- Debug: what did the agent do in the last hour?
+SELECT event_type, input->>'action' AS action,
+       output->>'status' AS status, duration_ms
+FROM consciousness_stream
+WHERE created_at > now() - interval '1 hour'
+ORDER BY created_at DESC;</code></pre>
+</div>
 </div>
 
 
