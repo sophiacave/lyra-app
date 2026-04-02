@@ -61,7 +61,7 @@ export default function QuizMC({
   const handleAnswer = useCallback((idx) => {
     if (phase !== 'answering' || selected !== null) return;
     setSelected(idx);
-    setPhase('feedback');
+    setPhase('feedback'); handleNext();
 
     const isCorrect = idx === q.correct;
     if (isCorrect) setScore((s) => s + 1);
