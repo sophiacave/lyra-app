@@ -2,7 +2,7 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import PromptConsole from '../academy/PromptConsole';
 import EnrollCTA from '../academy/EnrollCTA';
-import { QuizMC, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation, NeuronSim } from '../learn';
+import { QuizMC, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation, NeuronSim, TokenViz, PromptLab, NetworkBuilder, EmbedExplorer, WordSpace, PromptBuilder, LessonComplete } from '../learn';
 import LearnErrorBoundary from '../learn/LearnErrorBoundary';
 
 // Registry of learn components that can be embedded in lesson HTML
@@ -14,6 +14,13 @@ const LEARN_COMPONENTS = {
   Whiteboard,
   Citation,
   NeuronSim,
+  TokenViz,
+  PromptLab,
+  NetworkBuilder,
+  EmbedExplorer,
+  WordSpace,
+  PromptBuilder,
+  LessonComplete,
 };
 
 // Parse contentHtml string into alternating segments of raw HTML and learn components.

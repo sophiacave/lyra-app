@@ -81,40 +81,7 @@ css: "claude-beginners.css"
   <h2 class="section-title">Build a prompt using the formula.</h2>
   <p class="section-text">Use the builder below to construct a prompt. Pick a role, add your context, choose a format. Then copy it and try it in <a href="https://claude.ai" target="_blank" style="color:var(--purple)">Claude</a>.</p>
 
-  <div class="demo-container" id="prompt-builder">
-    <div style="margin-bottom:16px">
-      <label style="font-size:.75rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px">1. Role</label>
-      <select id="role-select" onchange="buildPrompt()" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:.9rem;font-family:inherit;outline:none">
-        <option value="">Choose a role...</option>
-        <option value="You are a professional email writer who matches my tone perfectly.">Professional email writer</option>
-        <option value="You are an experienced project manager who gives practical advice.">Project manager</option>
-        <option value="You are a data analyst who explains findings in plain English.">Data analyst</option>
-        <option value="You are a creative brainstorming partner who thinks outside the box.">Creative brainstormer</option>
-        <option value="You are a patient teacher who explains complex topics simply.">Patient teacher</option>
-      </select>
-    </div>
-    <div style="margin-bottom:16px">
-      <label style="font-size:.75rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px">2. Context (your situation)</label>
-      <textarea id="context-input" onkeyup="buildPrompt()" placeholder="Describe your situation... e.g., 'I need to tell my boss that the Q3 numbers are 15% below target, but we have a plan to recover in Q4.'" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:.9rem;font-family:inherit;outline:none;min-height:80px;resize:vertical;line-height:1.6"></textarea>
-    </div>
-    <div style="margin-bottom:16px">
-      <label style="font-size:.75rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px">3. Format</label>
-      <select id="format-select" onchange="buildPrompt()" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:.9rem;font-family:inherit;outline:none">
-        <option value="">Choose a format...</option>
-        <option value="Write a short email (under 150 words).">Short email</option>
-        <option value="Give me 5 bullet points.">5 bullet points</option>
-        <option value="Write 3 paragraphs.">3 paragraphs</option>
-        <option value="Create a table comparing the options.">Comparison table</option>
-        <option value="Give me a step-by-step action plan.">Step-by-step plan</option>
-      </select>
-    </div>
-
-    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px;min-height:60px">
-      <div style="font-size:.65rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Your Prompt</div>
-      <div id="built-prompt" style="font-size:.9rem;color:var(--dim);line-height:1.7;white-space:pre-wrap">Select a role, add context, and choose a format to build your prompt...</div>
-    </div>
-    <button onclick="copyPrompt()" id="copy-btn" class="btn btn-primary" style="width:100%" disabled>Copy Prompt to Clipboard</button>
-  </div>
+  <div data-learn="PromptBuilder" data-props='{}'></div>
 </div>
 
 <!-- SECTION 4: STEAL THESE -->
@@ -144,67 +111,6 @@ css: "claude-beginners.css"
 
 </div>
 
-<button class="complete-btn" id="completeBtn" onclick="completeLesson()">Complete Lesson 2 ✓</button>
+<div data-learn="LessonComplete" data-props='{"courseSlug":"claude-for-beginners","lessonNum":2}'></div>
 
 </div>
-
-<script type="text/x-lesson">
-const SLUG = 'claude-for-beginners';
-const LESSON_NUM = 2;
-
-window.addEventListener('scroll', function() {
-  if (window.scrollY / (document.body.scrollHeight - window.innerHeight) > 0.5) {
-    document.getElementById('completeBtn').classList.add('visible');
-  }
-});
-
-function completeLesson() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (!completed.includes(LESSON_NUM)) { completed.push(LESSON_NUM); localStorage.setItem('lo_progress_' + SLUG, JSON.stringify(completed)); }
-  const btn = document.getElementById('completeBtn');
-  btn.textContent = 'Completed! ✨'; btn.style.background = 'var(--green)'; btn.style.pointerEvents = 'none';
-}
-
-(function() {
-  const stored = localStorage.getItem('lo_progress_' + SLUG);
-  const completed = stored ? JSON.parse(stored) : [];
-  if (completed.includes(LESSON_NUM)) {
-    const btn = document.getElementById('completeBtn');
-    btn.classList.add('visible'); btn.textContent = 'Completed! ✨'; btn.style.background = 'var(--green)'; btn.style.pointerEvents = 'none';
-  }
-})();
-
-function buildPrompt() {
-  const role = document.getElementById('role-select').value;
-  const context = document.getElementById('context-input').value.trim();
-  const format = document.getElementById('format-select').value;
-  const parts = [];
-  if (role) parts.push(role);
-  if (context) parts.push(context);
-  if (format) parts.push(format);
-  const prompt = parts.join('\n\n') || 'Select a role, add context, and choose a format to build your prompt...';
-  document.getElementById('built-prompt').textContent = prompt;
-  document.getElementById('copy-btn').disabled = parts.length === 0;
-}
-
-function copyPrompt() {
-  const text = document.getElementById('built-prompt').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('copy-btn');
-    btn.textContent = 'Copied! Now paste it into Claude →';
-    btn.style.background = 'var(--green)';
-    setTimeout(() => { btn.textContent = 'Copy Prompt to Clipboard'; btn.style.background = ''; }, 2000);
-  });
-}
-
-function copyText(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    const toast = document.createElement('div');
-    toast.textContent = 'Copied!';
-    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#000;padding:8px 20px;border-radius:8px;font-weight:700;font-size:.85rem;z-index:9999';
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 1500);
-  });
-}
-</script>

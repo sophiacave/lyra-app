@@ -95,27 +95,7 @@ nearest = words[np.argmax(similarities)]
   <h2 class="section-title">Watch words in semantic space.</h2>
   <p class="section-text">Use the step buttons to see how words cluster by meaning and how vector arithmetic works.</p>
 
-  <div class="narration-box" id="narrationBox"></div>
-  <div class="step-dots" id="stepDots"></div>
-
-  <div class="canvas-wrap">
-    <canvas id="embedCanvas" width="800" height="500"></canvas>
-  </div>
-
-  <div class="equation" id="equationBox" style="display:none">
-    <span class="eq-word king">king</span>
-    <span class="eq-op">-</span>
-    <span class="eq-word man">man</span>
-    <span class="eq-op">+</span>
-    <span class="eq-word woman">woman</span>
-    <span class="eq-op">=</span>
-    <span class="eq-word queen eq-result">queen</span>
-  </div>
-
-  <div class="step-nav">
-    <button onclick="prevStep()">← Previous</button>
-    <button class="primary" onclick="nextStep()">Next Step →</button>
-  </div>
+  <div data-learn="WordSpace" data-props='{}'></div>
 </div>
 
 <!-- SECTION 3: KNOWLEDGE CHECK -->
@@ -135,68 +115,3 @@ nearest = words[np.argmax(similarities)]
 
 </div>
 
-<script type="text/x-lesson">
-var canvas=document.getElementById('embedCanvas');
-if(canvas){
-var ctx=canvas.getContext('2d');var dpr=window.devicePixelRatio||1;
-canvas.width=800*dpr;canvas.height=500*dpr;ctx.scale(dpr,dpr);
-
-var words=[
-  {word:'king',x:500,y:120,color:'#c084fc',group:'royalty'},{word:'queen',x:350,y:120,color:'#34d399',group:'royalty'},
-  {word:'man',x:500,y:300,color:'#38bdf8',group:'people'},{word:'woman',x:350,y:300,color:'#fb923c',group:'people'},
-  {word:'prince',x:550,y:180,color:'#c084fc',group:'royalty'},{word:'princess',x:300,y:180,color:'#34d399',group:'royalty'},
-  {word:'boy',x:550,y:350,color:'#38bdf8',group:'people'},{word:'girl',x:300,y:350,color:'#fb923c',group:'people'},
-  {word:'dog',x:150,y:200,color:'#fbbf24',group:'animals'},{word:'cat',x:120,y:250,color:'#fbbf24',group:'animals'},
-  {word:'puppy',x:180,y:230,color:'#fbbf24',group:'animals'},{word:'kitten',x:100,y:280,color:'#fbbf24',group:'animals'},
-  {word:'happy',x:650,y:400,color:'#f472b6',group:'emotion'},{word:'sad',x:650,y:150,color:'#f472b6',group:'emotion'},
-  {word:'joyful',x:680,y:430,color:'#f472b6',group:'emotion'}
-];
-
-var currentStep=0,visibleWords=[],arrows=[],time=0;
-
-var steps=[
-  {narration:"<strong>Imagine a vast coordinate space.</strong> Every word has a position that encodes its meaning. Let's place some words...",visible:['king','queen','man','woman'],arrows:[],showEquation:false},
-  {narration:"<strong>Notice the pattern.</strong> Royalty at top, commoners at bottom. Male on right, female on left. The AI learned this geometry from billions of sentences.",visible:['king','queen','man','woman','prince','princess','boy','girl'],arrows:[{from:'king',to:'queen',label:'gender'},{from:'man',to:'woman',label:'gender'},{from:'man',to:'king',label:'royalty'}],showEquation:false},
-  {narration:"<strong>Vector arithmetic.</strong> Take king, subtract man, add woman. You land on queen. The math captures the concept: royalty + female = queen.",visible:['king','queen','man','woman'],arrows:[{from:'king',to:'man',label:'subtract',color:'#ef4444'},{from:'man',to:'woman',label:'add',color:'#22c55e'},{from:'king',to:'queen',label:'result',color:'#c084fc',dashed:true}],showEquation:true},
-  {narration:"<strong>Similar things cluster.</strong> Animals in one region. People in another. Emotions in another. This geometry IS how AI understands meaning.",visible:words.map(function(w){return w.word}),arrows:[],showEquation:false}
-];
-
-function renderStepDots(){var el=document.getElementById('stepDots');if(el)el.innerHTML=steps.map(function(_,i){return'<span class="step-dot'+(i===currentStep?' active':'')+'"></span>'}).join('')}
-
-function setStep(s){
-  currentStep=Math.max(0,Math.min(s,steps.length-1));var step=steps[currentStep];
-  visibleWords=words.filter(function(w){return step.visible.indexOf(w.word)>=0});
-  arrows=step.arrows;
-  var nb=document.getElementById('narrationBox');if(nb)nb.innerHTML=step.narration;
-  var eq=document.getElementById('equationBox');if(eq)eq.style.display=step.showEquation?'block':'none';
-  renderStepDots();
-}
-window.nextStep=function(){setStep(currentStep+1)};
-window.prevStep=function(){setStep(currentStep-1)};
-setStep(0);
-
-function drawWord(w,alpha){
-  var size=8;ctx.beginPath();ctx.arc(w.x,w.y,size,0,Math.PI*2);
-  ctx.fillStyle=w.color;ctx.globalAlpha=alpha;ctx.fill();
-  ctx.font='600 13px Inter';ctx.textAlign='center';ctx.fillStyle='#e5e5e5';
-  ctx.globalAlpha=alpha;ctx.fillText(w.word,w.x,w.y-16);ctx.globalAlpha=1;
-}
-
-function drawArrow(from,to,label,color,dashed){
-  var fw=words.find(function(w){return w.word===from});var tw=words.find(function(w){return w.word===to});
-  if(!fw||!tw)return;ctx.beginPath();if(dashed)ctx.setLineDash([6,4]);
-  ctx.moveTo(fw.x,fw.y);ctx.lineTo(tw.x,tw.y);ctx.strokeStyle=color||'rgba(255,255,255,.2)';
-  ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);
-  if(label){var mx=(fw.x+tw.x)/2,my=(fw.y+tw.y)/2;ctx.font='600 10px Inter';ctx.textAlign='center';ctx.fillStyle=color||'#71717a';ctx.fillText(label,mx,my-8)}
-}
-
-function animate(){
-  time++;ctx.clearRect(0,0,800,500);
-  for(var gx=0;gx<800;gx+=40)for(var gy=0;gy<500;gy+=40){ctx.beginPath();ctx.arc(gx,gy,1,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.03)';ctx.fill()}
-  arrows.forEach(function(a){drawArrow(a.from,a.to,a.label,a.color,a.dashed)});
-  visibleWords.forEach(function(w,i){var oy=Math.sin(time*0.02+i)*3;drawWord({word:w.word,x:w.x,y:w.y+oy,color:w.color},1)});
-  requestAnimationFrame(animate);
-}
-animate();
-}
-</script>

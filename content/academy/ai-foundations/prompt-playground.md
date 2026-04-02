@@ -126,27 +126,7 @@ app.get("/user", (req, res) => {
   <span class="section-label">Try It</span>
   <h2 class="section-title">Edit prompts and see the difference.</h2>
 
-  <div class="template-tabs">
-    <button class="tab active" onclick="selectTemplate(0)">Zero-Shot</button>
-    <button class="tab" onclick="selectTemplate(1)">Few-Shot</button>
-    <button class="tab" onclick="selectTemplate(2)">Chain-of-Thought</button>
-    <button class="tab" onclick="selectTemplate(3)">Role-Play</button>
-  </div>
-
-  <div class="template-info" id="templateInfo"></div>
-
-  <div class="playground">
-    <div class="pane">
-      <div class="pane-header"><span class="label">Your Prompt</span><span class="tag" id="templateTag">ZERO-SHOT</span></div>
-      <textarea id="promptEditor"></textarea>
-    </div>
-    <div class="pane">
-      <div class="pane-header"><span class="label">Simulated Output</span><span class="tag" style="font-size:.6rem">(Simulation)</span></div>
-      <div class="output-pane" id="outputPane"></div>
-    </div>
-  </div>
-
-  <button class="run-btn" onclick="runPrompt()">▶ Run Prompt</button>
+  <div data-learn="PromptLab" data-props='{}'></div>
 </div>
 
 <!-- SECTION 3: QUIZ -->
@@ -166,32 +146,3 @@ app.get("/user", (req, res) => {
 
 </div>
 
-<script type="text/x-lesson">
-var templates=[
-  {name:'Zero-Shot',tag:'ZERO-SHOT',desc:'No examples — just a clear instruction. Best for simple, well-defined tasks.',tip:'Be specific about format, length, and tone.',prompt:'Classify the following movie review as POSITIVE or NEGATIVE.\n\nReview: "This film was a masterpiece of storytelling. The performances were breathtaking and the cinematography was stunning."\n\nClassification:',output:'POSITIVE\n\nThe review uses strongly favorable language: "masterpiece," "breathtaking," and "stunning" all indicate a highly positive sentiment.'},
-  {name:'Few-Shot',tag:'FEW-SHOT',desc:'Give 2-3 examples of input→output pairs before your actual request.',tip:'Make your examples diverse for better generalization.',prompt:'Convert these informal messages to professional emails:\n\nInformal: "hey can u send me that report asap"\nProfessional: "Hi, could you please send me the quarterly report at your earliest convenience? Thank you."\n\nInformal: "the meeting was kinda boring ngl"\nProfessional: "The meeting covered familiar ground. I\'d suggest a more focused agenda for next time."\n\nInformal: "yo this new feature is fire"\nProfessional:',output:'"I\'m impressed with the new feature — it\'s a significant improvement that should resonate well with our users. Great work by the development team."'},
-  {name:'Chain-of-Thought',tag:'CHAIN-OF-THOUGHT',desc:'Force step-by-step reasoning. Dramatically improves accuracy on complex tasks.',tip:'Add "Let\'s think step by step" or show a worked example.',prompt:'Solve this step by step:\n\nA store sells notebooks for $3 each. They offer a "buy 2, get 1 free" deal. If Sarah wants 7 notebooks, how much does she pay?\n\nLet\'s think step by step:',output:'Step 1: With "buy 2, get 1 free," every group of 3 notebooks costs only 2 × $3 = $6.\n\nStep 2: Sarah wants 7 notebooks. 7 ÷ 3 = 2 groups with 1 remaining.\n\nStep 3: Cost for 2 groups: 2 × $6 = $12 (covers 6 notebooks).\n\nStep 4: 1 remaining notebook at full price: $3.\n\nStep 5: Total = $12 + $3 = $15.\n\nSarah pays $15.'},
-  {name:'Role-Play',tag:'ROLE-PLAY',desc:'Give the AI a persona with specific expertise and communication style.',tip:'Include expertise level, style, focus areas, and what to avoid.',prompt:'You are a senior security engineer. Review this code for vulnerabilities. Flag by severity (CRITICAL/HIGH/MEDIUM/LOW). Always suggest a fix.\n\napp.get("/user", (req, res) => {\n  const userId = req.query.id;\n  const query = `SELECT * FROM users WHERE id = ${userId}`;\n  db.query(query).then(user => res.json(user));\n});',output:'🔴 CRITICAL: SQL Injection\n\nThe userId is concatenated directly into the SQL query. An attacker can inject arbitrary SQL.\n\nFix: Use parameterized queries.\nconst query = "SELECT * FROM users WHERE id = $1";\ndb.query(query, [userId]);\n\n🟡 MEDIUM: No input validation\nAdd type checking — userId should be a number.\n\n🟡 MEDIUM: SELECT * exposes all columns\nList specific columns to avoid leaking sensitive fields.'}
-];
-
-var currentTemplate=0;
-
-window.selectTemplate=function(i){
-  currentTemplate=i;
-  document.querySelectorAll('.tab').forEach(function(t,j){t.classList.toggle('active',j===i)});
-  var t=templates[i];
-  document.getElementById('templateTag').textContent=t.tag;
-  document.getElementById('templateInfo').innerHTML='<h3>'+t.name+'</h3><p>'+t.desc+'</p><div class="tip">'+t.tip+'</div>';
-  document.getElementById('promptEditor').value=t.prompt;
-  document.getElementById('outputPane').innerHTML='<span style="color:#52525b">Click "Run Prompt" to see the output →</span>';
-};
-
-window.runPrompt=function(){
-  var t=templates[currentTemplate];var output=document.getElementById('outputPane');output.innerHTML='';
-  var text=t.output;var i=0;
-  function type(){if(i<text.length){output.textContent+=text[i];i++;setTimeout(type,Math.random()*20+10)}}
-  type();
-};
-
-selectTemplate(0);
-</script>
