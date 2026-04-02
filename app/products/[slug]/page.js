@@ -15,6 +15,21 @@ export async function generateMetadata({ params }) {
   return {
     title: `${product.name} — ${site.name}`,
     description: product.tagline,
+    alternates: { canonical: `${site.url}/products/${slug}/` },
+    openGraph: {
+      title: `${product.name} — ${site.name}`,
+      description: product.tagline,
+      url: `${site.url}/products/${slug}/`,
+      siteName: site.name,
+      type: 'website',
+      images: [{ url: site.ogImage, ...site.ogImageSize }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} — ${site.name}`,
+      description: product.tagline,
+      images: [site.ogImage],
+    },
   };
 }
 

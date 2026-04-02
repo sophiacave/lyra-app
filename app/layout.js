@@ -5,8 +5,8 @@ import { site, colors } from '../lib/site-config';
 
 
 
-const fullTitle = `Like One — 30 Free AI Courses & 300+ Lessons | likeone.ai`;
-const shortDesc = 'Build an AI system that thinks like you. 30 courses, 300+ hands-on lessons — Claude, prompt engineering, agents, RAG, MCP & more. Start free, no credit card.';
+const fullTitle = `Like One — 30 Free AI Courses & 300+ Lessons`;
+const shortDesc = 'Build an AI system that thinks like you. 30 courses, 300+ hands-on lessons covering Claude, prompt engineering, agents, RAG, MCP & more. Free.';
 
 export const viewport = {
   width: 'device-width',

@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata = {
-  title: `Products — ${site.name}`,
+  title: `AI Products & Automation Tools — ${site.name}`,
   description: 'AI playbooks, automation blueprints, and business systems built from a live, working stack. From free tools to full systems.',
   alternates: { canonical: `${site.url}/products/` },
   openGraph: {

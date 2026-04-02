@@ -4,8 +4,8 @@ import AcademyCatalogClient from '../components/academy/AcademyCatalogClient';
 import coursesData from '../../content/academy/courses.json';
 
 export const metadata = {
-  title: 'Free AI Courses — Learn Claude, Prompt Engineering & Automation | Like One Academy',
-  description: '30 free AI courses, 300+ interactive lessons. Master Claude, prompt engineering, AI agents, RAG, MCP, automation, and more. Beginner to advanced. No credit card required.',
+  title: 'Free AI Courses — Claude, Prompts & Automation | Like One',
+  description: '30 free AI courses with 300+ interactive lessons. Master Claude, prompt engineering, AI agents, RAG, MCP, and automation. Beginner to advanced. No credit card required.',
   alternates: { canonical: `${site.url}/academy/` },
   openGraph: {
     title: 'Free AI Courses — Learn Claude, Prompt Engineering & Automation',
@@ -53,11 +53,36 @@ export default function AcademyPage() {
   const liveCourses = allCourses.filter(c => c.status === 'live');
   const totalLessons = liveCourses.reduce((sum, c) => sum + c.lessonCount, 0);
 
+  const courseListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Like One Academy',
+    description: `${liveCourses.length} free AI courses, ${totalLessons}+ interactive lessons.`,
+    url: `${site.url}/academy/`,
+    mainEntity: {
+      '@type': 'ItemList',
+      name: 'AI Courses',
+      numberOfItems: liveCourses.length,
+      itemListElement: liveCourses.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.title,
+        url: `${site.url}/academy/${c.slug}/`,
+      })),
+    },
+  };
+
   return (
-    <AcademyCatalogClient
-      tiers={tiers}
-      allCourses={allCourses}
-      totalLessons={totalLessons}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseListJsonLd) }}
+      />
+      <AcademyCatalogClient
+        tiers={tiers}
+        allCourses={allCourses}
+        totalLessons={totalLessons}
+      />
+    </>
   );
 }

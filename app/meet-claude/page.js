@@ -5,7 +5,7 @@ import { site } from '../../lib/site-config';
 
 export const metadata = {
   title: 'Meet Claude — Like One Academy',
-  description: "Meet Claude — the AI behind Like One. Learn how Sophia Cave works with Claude to build convergence technology, teach AI skills, and prove that human-AI partnership can change the world.",
+  description: "Meet Claude — the AI behind Like One. Learn how Sophia Cave works with Claude to build convergence technology and teach AI skills.",
   alternates: { canonical: `${site.url}/meet-claude/` },
   openGraph: {
     title: 'Meet Claude — Like One Academy',

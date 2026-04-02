@@ -9,7 +9,7 @@ import { site, academy } from '@/lib/site-config';
 export const revalidate = 86400;
 
 export const metadata = {
-  title: `AI Blog — Claude Tips, Automation Guides & Honest Comparisons | Like One`,
+  title: `AI Blog — Claude Tips & Automation Guides | Like One`,
   description: 'Practical AI guides by Sophia Cave. Claude vs ChatGPT, prompt engineering, AI automation, writing with AI, and building an AI-native business. No hype, just real systems.',
   alternates: {
     canonical: `${site.url}/blog/`,
@@ -40,8 +40,28 @@ function formatDate(dateStr) {
 export default function BlogPage() {
   const posts = getAllPosts();
 
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Like One Blog',
+    description: 'Practical AI guides — Claude tips, automation, prompt engineering, and honest tool comparisons.',
+    url: `${site.url}/blog/`,
+    publisher: { '@type': 'Organization', name: site.name, url: site.url },
+    blogPost: posts.slice(0, 20).map(post => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      url: `${site.url}/blog/${post.slug}/`,
+      datePublished: post.date,
+      author: { '@type': 'Person', name: post.author || site.founder },
+    })),
+  };
+
   return (
     <div className="blog-shell">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <Header variant="blog" activeLink="/blog" />
 
       <header className="blog-header">
