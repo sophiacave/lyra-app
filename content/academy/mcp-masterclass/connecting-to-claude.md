@@ -196,7 +196,54 @@ free: false
   </div>
 
 
-  <div data-learn="QuizMC" data-props='{"title":"Connection Process Quiz","questions":[{"q":"Where do you configure MCP servers for Claude Desktop on macOS?","options":["In the Claude Desktop UI settings panel","In claude_desktop_config.json in ~/Library/Application Support/Claude/","In the server package.json file","In a .env file at the project root"],"correct":1,"explanation":"MCP servers are configured in claude_desktop_config.json, located at ~/Library/Application Support/Claude/ on macOS or %APPDATA%\\Claude\\ on Windows."},{"q":"What happens during the MCP capability negotiation phase when Claude starts?","options":["The user manually selects which tools to enable","Claude sends initialize then tools/list to discover available tools","The server pushes notifications to Claude automatically","The client uploads all local data to the server"],"correct":1,"explanation":"During negotiation, Claude sends an initialize request with its protocol version, the server responds with capabilities, then Claude sends tools/list to discover all available tool definitions."}]}'></div>
+  <div class="section">
+    <h2>Claude Code Configuration</h2>
+    <p>Claude Code (the CLI tool) uses a different config location. MCP servers are configured in your project's <code>.mcp.json</code> file or in the global settings:</p>
+
+    <div class="code-block">
+      <div class="code-header"><span class="filename">.mcp.json (project root)</span><span class="lang">JSON</span></div>
+      <div class="code-body">{
+  <span class="key">"mcpServers"</span>: {
+    <span class="key">"notes"</span>: {
+      <span class="key">"command"</span>: <span class="str">"npx"</span>,
+      <span class="key">"args"</span>: [<span class="str">"tsx"</span>, <span class="str">"./my-notes-server/server.ts"</span>]
+    }
+  }
+}</div>
+    </div>
+
+    <p style="font-size:.85rem;color:#a1a1aa">You can also add MCP servers interactively via <code>/mcp</code> in Claude Code. The format is the same — command, args, and optional env.</p>
+  </div>
+
+  <div class="section">
+    <h2>Troubleshooting</h2>
+    <p>When your MCP server is not connecting, check these common issues in order:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
+        <strong style="color:#ef4444;font-size:.85rem">Server not appearing in Claude</strong>
+        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Restart Claude Desktop after editing config. Check that your JSON is valid (a missing comma or bracket breaks everything). Use <code>npx jsonlint claude_desktop_config.json</code> to validate.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
+        <strong style="color:#ef4444;font-size:.85rem">Tools show but calls fail silently</strong>
+        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Your server crashes during handler execution. Run it manually in a terminal to see errors: <code>npx tsx server.ts</code>. Check stderr output. Common cause: missing environment variables (the <code>env</code> field is not set in config).</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
+        <strong style="color:#ef4444;font-size:.85rem">"npx: command not found" in Claude</strong>
+        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Claude Desktop does not inherit your shell's PATH. Use the full absolute path: <code>/usr/local/bin/npx</code> or <code>/opt/homebrew/bin/npx</code> (find it with <code>which npx</code> in your terminal).</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
+        <strong style="color:#ef4444;font-size:.85rem">Server works locally but not in Claude</strong>
+        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Most likely a relative path issue. Claude launches servers from a different working directory. Always use absolute paths for file arguments, e.g. <code>/Users/you/project/server.ts</code> not <code>./server.ts</code>.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
+        <strong style="color:#ef4444;font-size:.85rem">Multiple servers — some work, some do not</strong>
+        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Each server is independent. If one fails, check its config entry specifically. Look at Claude Desktop's developer tools (View &rarr; Developer &rarr; Developer Tools) for MCP connection errors in the console.</p>
+      </div>
+    </div>
+  </div>
+
+  <div data-learn="QuizMC" data-props='{"title":"Connection Process Quiz","questions":[{"q":"Where do you configure MCP servers for Claude Desktop on macOS?","options":["In the Claude Desktop UI settings panel","In claude_desktop_config.json in ~/Library/Application Support/Claude/","In the server package.json file","In a .env file at the project root"],"correct":1,"explanation":"MCP servers are configured in claude_desktop_config.json, located at ~/Library/Application Support/Claude/ on macOS or %APPDATA%\\Claude\\ on Windows."},{"q":"What happens during the MCP capability negotiation phase when Claude starts?","options":["The user manually selects which tools to enable","Claude sends initialize then tools/list to discover available tools","The server pushes notifications to Claude automatically","The client uploads all local data to the server"],"correct":1,"explanation":"During negotiation, Claude sends an initialize request with its protocol version, the server responds with capabilities, then Claude sends tools/list to discover all available tool definitions."},{"q":"Your MCP server works when you run it manually in the terminal, but Claude Desktop says no tools are available. What is the most likely cause?","options":["The server needs to be rewritten in Python","The command path in config is relative instead of absolute","Claude Desktop does not support custom servers","The server needs a paid license"],"correct":1,"explanation":"Claude Desktop launches servers from its own working directory, not your project directory. Relative paths like ./server.ts will not resolve. Always use absolute paths like /Users/you/project/server.ts."}]}'></div>
 
   <div data-learn="SortStack" data-props='{"title":"Four Phases of Connecting to Claude","instruction":"Arrange the four connection phases in order","items":["Install the MCP server (npm or run locally)","Configure claude_desktop_config.json with command and args","Claude negotiates capabilities and discovers tools","Claude autonomously invokes tools based on user requests"]}'></div>
 
