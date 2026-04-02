@@ -1,9 +1,9 @@
 ---
-title: "How to Train AI on Your Writing Style in 15 Minutes (2026)"
+title: "How to Train AI to Write Like You (Exact Method, 15 Minutes)"
 date: 2026-03-28
 author: Sophia Cave
-description: "Copy-paste this exact method to make Claude or ChatGPT write in YOUR voice. Templates included. Works in 15 minutes — I use it daily."
-excerpt: "Copy-paste this exact method to make Claude or ChatGPT write in YOUR voice. Templates included. Works in 15 minutes — I use it daily."
+description: "Stop sounding like every other AI user. This copy-paste method teaches Claude or ChatGPT your voice in 15 minutes — with templates I use daily for clients."
+excerpt: "Stop sounding like every other AI user. This copy-paste method teaches Claude or ChatGPT your voice in 15 minutes — with templates I use daily for clients."
 tags: [claude, writing, personal-brand, prompting, ai-tools, 2026]
 faq:
   - q: "How do I make AI write in my voice?"
