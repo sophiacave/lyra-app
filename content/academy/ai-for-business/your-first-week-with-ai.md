@@ -46,7 +46,51 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Day-by-Day Order</span>
   <h2 class="section-title">The sequence is the strategy.</h2>
-  <p class="section-text">It is tempting to start with the thing that excites you most — usually content or a fancy tool. The problem is that if you skip setup and automation, you never build the foundation that makes everything else sustainable. Each day below is ordered because of what the previous day enables. See if you can reconstruct the logic before sorting.</p>
+  <p class="section-text">It is tempting to start with the thing that excites you most — usually content or a fancy tool. The problem is that if you skip setup and automation, you never build the foundation that makes everything else sustainable. Each day below is ordered because of what the previous day enables.</p>
+
+  <p class="section-text"><strong>Day 1 → Day 2:</strong> You cannot automate a workflow until you have a working AI tool. Setup first, automation second.</p>
+  <p class="section-text"><strong>Day 2 → Day 3:</strong> Automation teaches you what AI is good at (repetitive, structured tasks). That understanding makes your content prompts on Day 3 significantly better.</p>
+  <p class="section-text"><strong>Day 3 → Day 4:</strong> Writing content is creative work. Analyzing data is analytical work. Doing creative first builds confidence. Doing analytical second builds trust in AI's accuracy — and by Day 4 you know how to verify outputs.</p>
+  <p class="section-text"><strong>Day 4 → Day 5:</strong> You cannot measure results until you have results. Days 1-4 produce the artifacts. Day 5 quantifies the impact so you have real numbers, not feelings.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Your Day 1 Prompt Library Starter</span>
+  <h2 class="section-title">Three prompts to copy on your first day.</h2>
+  <p class="section-text">Your prompt library is the single most valuable artifact you build in Week 1. Here are three starter prompts — tested and refined — that work for any business. Copy them, use them, then save the ones that produce the best output.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="filename">Prompt 1: Business Brief</span><span class="lang">Prompt Template</span></div>
+    <div class="code-body">I run a [TYPE OF BUSINESS] serving [TARGET CUSTOMER].
+Our biggest challenge right now is [CHALLENGE].
+Give me 5 specific ways AI could help with this challenge.
+For each one, tell me: what tool to use, how long setup takes,
+and what the weekly time savings would be.
+Be specific — no generic advice.</div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><span class="filename">Prompt 2: Email Drafter</span><span class="lang">Prompt Template</span></div>
+    <div class="code-body">Write a [TYPE: follow-up / cold outreach / proposal] email.
+Recipient: [WHO THEY ARE AND WHAT THEY CARE ABOUT]
+Goal: [WHAT YOU WANT THEM TO DO]
+Tone: [professional / warm / direct]
+Length: under 150 words.
+Include one specific detail that shows I understand their situation.</div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><span class="filename">Prompt 3: Meeting Prep</span><span class="lang">Prompt Template</span></div>
+    <div class="code-body">I have a meeting with [PERSON/COMPANY] about [TOPIC] in 1 hour.
+Here is what I know about them: [CONTEXT]
+Give me:
+1. Three smart questions to ask
+2. Two potential objections they might raise and how to handle them
+3. A one-paragraph opening that sets the right tone
+4. The single most important outcome I should push for</div>
+  </div>
+
+  <p class="section-text">These three prompts cover the tasks that eat the most time in any business: strategic thinking, communication, and meeting prep. Save the outputs that work. By the end of Week 1, you will have 10-15 saved prompts — your personal AI playbook.</p>
 </div>
 
 <div class="lesson-section">

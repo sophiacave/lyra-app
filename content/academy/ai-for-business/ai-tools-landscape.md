@@ -66,4 +66,60 @@ free: false
   <p class="section-text">Writing and Content comes first because it pays for itself in the first week. Automation comes second because it multiplies the value of everything else. Analytics third because once you have good processes, you need to measure them. Customer Service fourth because it requires process documentation before it works well. Image, Video, No-Code, and specialized tools come last — high value, but only after the foundation is solid.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Your Tool Evaluation Prompt</span>
+  <h2 class="section-title">Evaluate any AI tool in 60 seconds.</h2>
+  <p class="section-text">When a vendor pitches you, a team member sends you a link, or you see a new tool on Twitter — run this prompt before you sign up for anything. It saves you from shiny-object syndrome and keeps your stack lean.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="filename">AI Tool Evaluator</span><span class="lang">Prompt Template</span></div>
+    <div class="code-body">I'm evaluating an AI tool called [TOOL NAME] for my business.
+
+Here's what I know about it: [PASTE THEIR HOMEPAGE DESCRIPTION
+OR PITCH DECK SUMMARY]
+
+My business: [WHAT YOU DO, TEAM SIZE, CURRENT TOOLS]
+
+Answer these 6 questions:
+1. Which of the 8 AI tool categories does this fall into?
+   (Writing, Image, Video/Audio, Transcription, Automation,
+    Analytics, No-Code, Customer Service)
+2. Do I already have a tool in this category? If so, what
+   does this one do better?
+3. What is the realistic monthly cost at my usage level?
+4. How long until I see measurable ROI (days, weeks, months)?
+5. What is the biggest risk of adopting this tool?
+6. Should I buy this now, later, or never? Give me a
+   one-sentence recommendation.</div>
+  </div>
+
+  <p class="section-text">This prompt turns a 2-hour evaluation process into a 2-minute conversation. Use it every time. Save the results in a "Tools Evaluated" doc so you never re-evaluate the same tool twice.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The $100/month Starter Stack</span>
+  <h2 class="section-title">Everything you need for under $100.</h2>
+  <p class="section-text">Here is the exact stack a solo business owner or small team should start with. Total cost: $89/month. Combined weekly time savings: 8-15 hours.</p>
+
+  <div class="analogy-grid" style="grid-template-columns:1fr 1fr">
+    <div class="analogy-card">
+      <h3>Layer 1: Writing — $20/mo</h3>
+      <p><strong>Claude Pro</strong> — long-form content, proposals, emails, analysis. Replaces 3-5 hours of writing per week.</p>
+    </div>
+    <div class="analogy-card">
+      <h3>Layer 2: Automation — $20/mo</h3>
+      <p><strong>Zapier Starter</strong> — connects your CRM, email, calendar, Slack. Replaces 2-4 hours of copy-paste per week.</p>
+    </div>
+    <div class="analogy-card">
+      <h3>Layer 3: Transcription — $10/mo</h3>
+      <p><strong>Otter.ai Pro</strong> — meeting notes, call summaries, action items. Replaces 1-2 hours of note-taking per week.</p>
+    </div>
+    <div class="analogy-card">
+      <h3>Layer 4: Images — $10/mo</h3>
+      <p><strong>Midjourney Basic</strong> — social graphics, blog headers, product shots. Replaces $200-500 in freelance design per month.</p>
+    </div>
+  </div>
+  <p class="section-text"><strong>What you skip for now:</strong> Analytics (use Claude to analyze CSV uploads for free), No-Code (only needed when you're building tools), Customer Service AI (only needed at 50+ tickets per week), Video (nice-to-have, not essential). Add layers as your needs grow — not before.</p>
+</div>
+
 </div>

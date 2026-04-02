@@ -36,11 +36,49 @@ free: true
 
 <div class="lesson-section">
   <span class="section-label">Section 2</span>
-  <h2 class="section-title">Match the terms.</h2>
+  <h2 class="section-title">How these terms show up in real conversations.</h2>
+  <p class="section-text">Knowing the definitions is step one. The real value is recognizing these terms in context — when a vendor pitches you, when your developer mentions them in a meeting, or when you're reading an AI product page and trying to figure out what it actually does.</p>
+  <p class="section-text">Here are five real scenarios you will encounter in your first month with AI tools:</p>
+
+  <p class="section-text"><strong>Scenario 1: The vendor pitch.</strong> "Our platform uses a fine-tuned LLM with RAG capabilities." Translation: they took an existing AI model, trained it on industry-specific data, and added the ability to search your documents before answering. This is good — it means their answers will be grounded in your data, not just general knowledge.</p>
+
+  <p class="section-text"><strong>Scenario 2: The cost conversation.</strong> "We charge $0.01 per 1,000 input tokens and $0.03 per 1,000 output tokens." Translation: they charge by how much text you send in (your prompt) and how much text the AI sends back (the response). A 500-word prompt costs about $0.004. A 1,000-word response costs about $0.02. Your monthly bill depends on volume.</p>
+
+  <p class="section-text"><strong>Scenario 3: The accuracy concern.</strong> "We've seen some hallucinations in the output." Translation: the AI made things up. This is normal and expected. The fix is verification, not abandoning AI. Build a review step into your workflow — the same way you'd proofread a junior employee's first draft.</p>
+
+  <p class="section-text"><strong>Scenario 4: The integration question.</strong> "Can we connect this to our CRM via API?" Translation: can the AI tool talk to your customer database automatically? If yes, your team stops copy-pasting between systems. If no, someone is still doing manual data entry.</p>
+
+  <p class="section-text"><strong>Scenario 5: The capability check.</strong> "This uses generative AI, not just search." Translation: it creates new content rather than finding existing content. A search engine finds pages. Generative AI writes the page. Big difference when you're evaluating tools for content production, proposal writing, or customer communication.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Section 3</span>
+  <h2 class="section-title">Your jargon-busting prompt template.</h2>
+  <p class="section-text">When you encounter AI jargon you don't understand — in a pitch deck, a product page, a Slack message from your dev team — use this prompt to get a plain-English translation instantly.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="filename">Jargon Translator</span><span class="lang">Prompt Template</span></div>
+    <div class="code-body"><span class="cm"># Copy this into Claude or ChatGPT</span>
+
+I'm a business owner evaluating AI tools. I encountered this
+text and need a plain-English translation:
+
+"[PASTE THE JARGON-HEAVY TEXT HERE]"
+
+For each technical term:
+1. What does it actually mean in simple language?
+2. Why should I care as a business owner?
+3. Is this a real capability or marketing fluff?
+
+Keep your explanation at a 10th-grade reading level.
+No jargon in your response.</div>
+  </div>
+
+  <p class="section-text">This single prompt replaces hours of Googling. Use it every time you hit a wall of technical language. Over time, you'll internalize the vocabulary — but until then, let AI translate AI for you.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Section 4</span>
   <h2 class="section-title">Quick check.</h2>
   <p class="section-text">Five questions. Business-context scenarios. This is not a memory test — it is a comprehension check to make sure you can apply these terms in real situations, not just recite definitions.</p>
 
