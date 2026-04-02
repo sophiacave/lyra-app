@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 7
 type: "lesson"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 7 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 7 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Database Patterns</h1>
+  <p class="sub">Your AI needs a brain — a structured place to store memory, context, and agent state. Let's design that schema interactively and see the relationships in real-time.</p>
 </div>
-
-<div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
-<h1>Database Patterns</h1>
-<p class="intro">Your AI needs a brain — a structured place to store memory, context, and agent state. Let's design that schema interactively and see the relationships in real-time.</p>
 
 <h2>The Three-Table Brain Schema</h2>
 <p style="font-size:.85rem;color:#888"><strong>Why 3 tables instead of 1?</strong> Each table serves a different purpose: <code style="color:#f59e0b">brain_context</code> holds the agent's current state (like a whiteboard), <code style="color:#f59e0b">agent_memory</code> stores past interactions (like a journal), and <code style="color:#f59e0b">consciousness_stream</code> logs every action (like security footage). Separating them lets you query and optimize each independently.</p>
@@ -28,12 +30,6 @@ free: false
 <p style="font-size:.9rem"><strong>Why this pattern:</strong> When something goes wrong (and it will), you need to know exactly what your agent did and when. The <code style="color:#f59e0b">consciousness_stream</code> is an event log — every action the agent takes gets logged with its input and output. This is invaluable for debugging ("why did the agent send that email?"), auditing ("who changed this data?"), and replaying agent behavior to test improvements.</p>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 <div data-learn="FlashDeck" data-props='{"title":"Database Patterns Flashcards","cards":[{"front":"What is the key-value brain pattern?","back":"Instead of creating a new column for every piece of information, you store everything as key-value pairs in brain_context. New keys can be added without database migrations — the schema stays the same."},{"front":"What does vector(1536) store and why?","back":"A list of 1,536 floating-point numbers representing the semantic meaning of text. These embeddings let you find similar memories by meaning rather than exact keyword match. The 1536 dimension matches OpenAI\\\'s embedding model."},{"front":"Why use append-only memory instead of updating records?","back":"Deleting data destroys context. An AI agent that forgets past interactions can\\\'t learn. By always appending to agent_memory, you build a complete searchable history with importance scores for prioritized retrieval."},{"front":"What is the consciousness_stream table for?","back":"An append-only event log recording every agent action with its input and output. Invaluable for debugging (why did the agent do that?), auditing (who changed this?), and replaying behavior to test improvements."},{"front":"What does dot notation in brain_context keys provide?","back":"Namespacing — keys like identity.name and session.active_work create a hierarchy similar to folders on a computer. This organizes the key-value store so related data is grouped logically."}]}'></div>
 

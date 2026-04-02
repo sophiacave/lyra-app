@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 6
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 6</div>
+<div class="lesson-hero">
   <h1>Prompt Augmentation</h1>
-  <p class="subtitle">The "A" in RAG. You have retrieved the right documents — now you need to hand them to the LLM in a way that produces accurate, grounded answers instead of confident hallucinations. Prompt engineering for RAG is a discipline of its own. This lesson teaches you the templates, the rules, and the code to get it right.</p>
+  <p class="sub">The "A" in RAG. You have retrieved the right documents — now you need to hand them to the LLM in a way that produces accurate, grounded answers instead of confident hallucinations. Prompt engineering for RAG is a discipline of its own. This lesson teaches you the templates, the rules, and the code to get it right.</p>
+</div>
 
   <div class="section">
     <h2>The Critical Moment</h2>

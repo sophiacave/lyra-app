@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 8
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 8 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 8</div>
+<div class="lesson-hero">
   <h1>Cron &amp; Scheduling</h1>
-  <p class="subtitle">Autonomous agents need to know when to wake up. Cron is the universal scheduling language — created in the 1970s, still running on virtually every server in the world. This lesson teaches you to read, write, and debug cron expressions, schedule agent fleets without conflicts, and choose between cron, event-driven, and always-on scheduling.</p>
+  <p class="sub">Autonomous agents need to know when to wake up. Cron is the universal scheduling language — created in the 1970s, still running on virtually every server in the world. This lesson teaches you to read, write, and debug cron expressions, schedule agent fleets without conflicts, and choose between cron, event-driven, and always-on scheduling.</p>
+</div>
 
   <div class="section">
     <h2>Three Scheduling Modes</h2>

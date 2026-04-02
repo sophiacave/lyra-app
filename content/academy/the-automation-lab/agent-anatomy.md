@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 2</div>
+<div class="lesson-hero">
   <h1>Agent Anatomy</h1>
-  <p class="subtitle">Every autonomous agent — from a simple inbox monitor to a fleet managing your entire business — is built from six core components. This lesson dissects each one, shows you how they map to real code, and lets you build your own agent config from scratch.</p>
+  <p class="sub">Every autonomous agent — from a simple inbox monitor to a fleet managing your entire business — is built from six core components. This lesson dissects each one, shows you how they map to real code, and lets you build your own agent config from scratch.</p>
+</div>
 
   <div class="section">
     <h2>The Six Components</h2>

@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 4
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 4 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 4</div>
+<div class="lesson-hero">
   <h1>Agent Communication</h1>
-  <p class="subtitle">Agents do not talk to each other directly. They write to shared memory, and other agents read it. This decoupled pattern — borrowed from message queue architecture — is what makes multi-agent systems resilient. If one agent crashes, the others keep running.</p>
+  <p class="sub">Agents do not talk to each other directly. They write to shared memory, and other agents read it. This decoupled pattern — borrowed from message queue architecture — is what makes multi-agent systems resilient. If one agent crashes, the others keep running.</p>
+</div>
 
   <div class="section">
     <h2>Why Not Direct Calls?</h2>

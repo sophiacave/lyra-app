@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 8
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 8 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 8</div>
+<div class="lesson-hero">
   <h1>Error Handling</h1>
-  <p class="subtitle">Agents fail. Good agents fail gracefully. Here are the five most common failure modes, how to detect them, and production code patterns to handle each one.</p>
+  <p class="sub">Agents fail. Good agents fail gracefully. Here are the five most common failure modes, how to detect them, and production code patterns to handle each one.</p>
+</div>
 
   <div class="section">
     <h2>The Five Failure Modes</h2>
@@ -209,10 +212,6 @@ free: false
     </div>
   </div>
 </div>
-
-<footer class="progress-footer">
-  <p>Lesson 8 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 
 <div data-learn="FlashDeck" data-props='{"title":"Error Handling Patterns","cards":[{"front":"Exponential backoff","back":"Retry with increasing wait times: 1s, 2s, 4s. Gives a struggling service time to recover without hammering it. Standard max: 3 retries."},{"front":"Graceful degradation","back":"When the primary tool fails, fall back to an alternative tool instead of giving up. Example: weather API fails → try web search → if both fail, tell the user."},{"front":"Circuit breaker","back":"Stop retrying after a set number of failures. Prevents wasting resources on a dead service. If 3 retries fail, 97 more will not help."},{"front":"Data validation","back":"Check tool results for anomalies before passing to Claude. Negative balances, future dates, missing fields — flag these instead of presenting bad data as truth."},{"front":"Human escalation","back":"When all automated recovery fails: summarize what was tried, what failed, the last known good state, and what remains. The human picks up where the agent left off."},{"front":"Why not retry 100 times?","back":"If 3 retries with backoff fail, the service is genuinely down. More retries waste API credits, delay the user, and can overload the struggling service further."},{"front":"Returning errors to Claude","back":"When a tool fails, return the error as the tool_result content. Claude sees the failure and can adapt — trying a different tool, asking the user, or explaining the limitation."},{"front":"Guardrail violation handling","back":"Never override safety constraints. Explain what was requested, why it cannot be done, and offer a safe alternative. The agent refuses the unsafe action while remaining helpful."}]}'></div>
 

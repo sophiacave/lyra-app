@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 5
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 5 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 5</div>
+<div class="lesson-hero">
   <h1>Tool Definitions</h1>
-  <p class="subtitle">The tool definition is how Claude knows what your tool does, what inputs it needs, and when to use it. A great definition means Claude calls your tool correctly without any prompt engineering. A bad one means it guesses wrong or ignores your tool entirely.</p>
+  <p class="sub">The tool definition is how Claude knows what your tool does, what inputs it needs, and when to use it. A great definition means Claude calls your tool correctly without any prompt engineering. A bad one means it guesses wrong or ignores your tool entirely.</p>
+</div>
 
   <div class="section">
     <h2>What Claude Sees</h2>

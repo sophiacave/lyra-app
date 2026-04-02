@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 2
 type: "lab"
 free: true
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 2 · Lab</div>
-<h1>Context Window Explorer</h1>
-<p>Understand tokens, context windows, and how to manage Claude's working memory — with real code</p>
-<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 1</span></div>
+<div class="lesson-hero">
+  <h1>Context Window Explorer</h1>
+  <p class="sub">Understand tokens, context windows, and how to manage Claude's working memory — with real code</p>
 </div>
 
 <div class="content">

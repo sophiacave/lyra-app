@@ -4,16 +4,18 @@ course: "automation-architect"
 order: 4
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 4 of 9</span>
 </nav>
 
-<header class="lesson-header">
-  <div class="lesson-badge">Module 2 &middot; Animated</div>
+<div class="lesson-hero">
   <h1>What Is an API?</h1>
-  <p>APIs are how machines talk to each other. Master this and you can connect anything to anything — the foundation of every automation you will ever build.</p>
-</header>
+  <p class="sub">APIs are how machines talk to each other. Master this and you can connect anything to anything — the foundation of every automation you will ever build.</p>
+</div>
 
 <div class="content">
   <h2>The Request / Response Cycle</h2>
@@ -189,6 +191,3 @@ free: false
 
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 4 of 9 &middot; Automation Architect</p>
-</footer>

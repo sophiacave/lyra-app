@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 7
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 7 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 7</div>
+<div class="lesson-hero">
   <h1>Hybrid Search</h1>
-  <p class="subtitle">Keyword search is precise but misses synonyms. Vector search understands meaning but sometimes misses exact terms. Hybrid search combines both — and it is what production RAG systems actually use. This lesson teaches you when each approach wins, how to implement hybrid search, and how to tune the balance between them.</p>
+  <p class="sub">Keyword search is precise but misses synonyms. Vector search understands meaning but sometimes misses exact terms. Hybrid search combines both — and it is what production RAG systems actually use. This lesson teaches you when each approach wins, how to implement hybrid search, and how to tune the balance between them.</p>
+</div>
 
   <div class="section">
     <h2>The Problem with Pure Approaches</h2>

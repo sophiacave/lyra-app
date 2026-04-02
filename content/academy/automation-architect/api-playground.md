@@ -4,16 +4,18 @@ course: "automation-architect"
 order: 5
 type: "lab"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 5 of 9</span>
 </nav>
 
-<header class="lesson-header">
-  <div class="lesson-badge">Module 2 &middot; Interactive</div>
+<div class="lesson-hero">
   <h1>API Playground</h1>
-  <p>A fake API sandbox. Send real-looking requests and see how APIs respond. No backend needed.</p>
-</header>
+  <p class="sub">A fake API sandbox. Send real-looking requests and see how APIs respond. No backend needed.</p>
+</div>
 
 <div class="content">
   <div style="padding:0 1.5rem;margin:1.5rem 0">
@@ -76,6 +78,3 @@ payload = {
 
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 5 of 9 &middot; Automation Architect</p>
-</footer>

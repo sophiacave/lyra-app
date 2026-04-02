@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 3
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 3</div>
+<div class="lesson-hero">
   <h1>Tools &amp; Capabilities</h1>
-  <p class="subtitle">An agent without tools is just a chatbot. Each tool you add unlocks a new dimension of capability. Here is how tools work, what categories they fall into, and how to choose the right ones for your agent.</p>
+  <p class="sub">An agent without tools is just a chatbot. Each tool you add unlocks a new dimension of capability. Here is how tools work, what categories they fall into, and how to choose the right ones for your agent.</p>
+</div>
 
   <div class="section">
     <h2>Three Categories of Tools</h2>
@@ -184,10 +187,6 @@ free: true
     <p id="insight-text">Right now your agent has zero tools. It can only generate text — exactly like a chatbot. Try dragging some tools over to see what changes.</p>
   </div>
 </div>
-
-<footer class="progress-footer">
-  <p>Lesson 3 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 
 <div data-learn="QuizMC" data-props='{"title":"Tools and Agent Capabilities","questions":[{"q":"What capability does adding an API Caller tool unlock?","options":["The agent can do math more accurately","The agent can connect to any external service — payments, CRMs, social media, anything with an API","The agent can read local files","The agent can send emails"],"correct":1,"explanation":"API access is the ultimate force multiplier. With an API Caller, your agent can interact with virtually any external system — booking platforms, payment processors, data services."},{"q":"Why does a Calculator tool exist when LLMs can attempt math?","options":["It is faster than reasoning","LLMs produce probabilistic outputs — a calculator guarantees exact precision for every calculation","Calculators use less memory","Users prefer seeing a separate tool was used"],"correct":1,"explanation":"LLMs predict the most likely next token, which makes them unreliable at precise arithmetic. A calculator tool delegates math to a deterministic system, eliminating hallucinated numbers."},{"q":"What is the difference between a knowledge tool and an action tool?","options":["Knowledge tools are faster","Knowledge tools retrieve information, action tools change the world — send emails, write files, call APIs","Knowledge tools are free, action tools cost money","There is no difference"],"correct":1,"explanation":"Knowledge tools (search, database query, file read) bring information IN. Action tools (email, API call, file write) push changes OUT. Both are essential for a capable agent."},{"q":"An agent needs to: (1) look up a customer, (2) check their payment status, (3) send a refund notification. Which tool categories are needed?","options":["Knowledge only","Action only","Knowledge (database lookup, payment API) + Action (email sender)","Autonomy only"],"correct":2,"explanation":"Database lookup and payment API check are knowledge tools (retrieving data). Email sender is an action tool (taking action). This task needs both categories working together."},{"q":"What makes tools compound in value?","options":["Each tool gets faster when more tools are added","Tools can chain together — the output of one becomes the input for another, enabling tasks no single tool could handle","More tools make the model smarter","Tools share memory with each other"],"correct":1,"explanation":"A web search alone finds information. An email sender alone sends messages. Combined: the agent researches a topic AND emails a summary. The combination enables tasks neither tool could do alone."}]}'></div>
 

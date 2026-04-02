@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 10
 type: "quiz"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 10 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 4 &middot; Final Assessment</div>
+<div class="lesson-hero">
   <h1>RAG Mastery Quiz</h1>
-  <p class="subtitle">Test your knowledge across all 9 lessons. This assessment covers embeddings, chunking, the RAG pipeline, prompt augmentation, hybrid search, evaluation, and advanced patterns. A score of 80% or higher means you are ready to build production RAG systems.</p>
+  <p class="sub">Test your knowledge across all 9 lessons. This assessment covers embeddings, chunking, the RAG pipeline, prompt augmentation, hybrid search, evaluation, and advanced patterns. A score of 80% or higher means you are ready to build production RAG systems.</p>
+</div>
 
   <div class="section">
     <h2>What You Have Learned</h2>

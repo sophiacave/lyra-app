@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 5
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 5 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 5</div>
+<div class="lesson-hero">
   <h1>Orchestration Patterns</h1>
-  <p class="subtitle">A single agent can do a lot. But real systems need multiple agents working together. There are exactly four patterns for coordinating them — and choosing the wrong one is the most common multi-agent architecture mistake. This lesson teaches all four, when to use each, and when each one fails.</p>
+  <p class="sub">A single agent can do a lot. But real systems need multiple agents working together. There are exactly four patterns for coordinating them — and choosing the wrong one is the most common multi-agent architecture mistake. This lesson teaches all four, when to use each, and when each one fails.</p>
+</div>
 
   <div class="section">
     <h2>Why Orchestration Matters</h2>

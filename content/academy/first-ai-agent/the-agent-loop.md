@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 2</div>
+<div class="lesson-hero">
   <h1>The Agent Loop</h1>
-  <p class="subtitle">Every agent runs the same fundamental cycle: Perceive, Think, Act, Observe, Learn. This is the pattern behind every autonomous AI system — from Claude Code to self-driving cars. Here is how it works, in theory and in code.</p>
+  <p class="sub">Every agent runs the same fundamental cycle: Perceive, Think, Act, Observe, Learn. This is the pattern behind every autonomous AI system — from Claude Code to self-driving cars. Here is how it works, in theory and in code.</p>
+</div>
 
   <div class="section">
     <h2>The Five Steps</h2>
@@ -194,9 +197,6 @@ free: true
   </div>
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 2 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 <div data-learn="FlashDeck" data-props='{"title":"Agent Loop Concepts","cards":[{"front":"Perceive","back":"The agent takes in information from its environment — a user message, API response, file change, or scheduled trigger. Perception is how the agent knows something needs doing."},{"front":"Think","back":"The agent reasons about what it perceived, considering its goal, memory, and context. The LLM combines all inputs to decide the best next action. This is the intelligence step."},{"front":"Act","back":"The agent calls a tool — sending an email, querying a database, making an API call, writing a file. This is what separates agents from chatbots: they do things in the real world."},{"front":"Observe","back":"After acting, the agent checks the result. Did the API call succeed? Was the data valid? Observation closes the feedback loop and enables self-correction."},{"front":"Learn","back":"The agent updates its memory with the outcome. What worked, what failed, what new information was discovered. Each loop becomes smarter than the last."},{"front":"stop_reason: tool_use","back":"When Claude returns stop_reason=tool_use, it means the model wants to call a tool. Your code executes the tool and feeds the result back. When stop_reason is end_turn, the agent is done."},{"front":"max_turns","back":"A safety limit on how many loops an agent can run. Prevents runaway agents that loop forever without making progress. Typical values: 5-25 depending on task complexity."},{"front":"Context overflow","back":"When memory grows so large the LLM cannot process it. Fix by summarizing old memory (keep recent results full, compress older ones) or using a sliding window."}]}'></div>
 
 <div data-learn="QuizMC" data-props='{"title":"The Agent Loop","questions":[{"q":"What is the correct order of the agent loop steps?","options":["Think → Act → Perceive → Learn → Observe","Perceive → Think → Act → Observe → Learn","Act → Observe → Think → Learn → Perceive","Learn → Perceive → Think → Act → Observe"],"correct":1,"explanation":"The agent loop always starts with Perceive (taking in input), then Think (reasoning about what to do), Act (calling a tool), Observe (checking the result), and Learn (updating memory). Then it loops back."},{"q":"In the Python code, what tells the loop the agent is finished?","options":["The agent calls a special done() function","The stop_reason is not tool_use — meaning the agent responded with text instead of a tool call","The max_turns variable reaches zero","The memory list becomes empty"],"correct":1,"explanation":"When Claude responds with text instead of requesting a tool call, stop_reason will be end_turn instead of tool_use. This means the agent has decided its goal is achieved and the loop exits."},{"q":"Why is max_turns important?","options":["It makes the agent run faster","It prevents runaway agents that loop forever without making progress","It determines the model to use","It controls the response length"],"correct":1,"explanation":"Without max_turns, a confused agent could loop indefinitely — calling tools, getting results, but never making progress. The limit is a safety net that forces the agent to stop and report after a set number of iterations."},{"q":"An agent keeps calling the same tool with the same input across 5 loops. What is happening?","options":["The agent is working correctly but slowly","The agent is stuck in an infinite loop — it is not learning from results","The tool is broken","The max_turns is set too high"],"correct":1,"explanation":"If the agent repeats the same action without progress, it is failing to learn from the Observe step. The tool result is not changing the agent reasoning. This is the infinite loop failure mode — fix with progress detection or better tool result formatting."}]}'></div>

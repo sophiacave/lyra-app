@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 1
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 1</div>
+<div class="lesson-hero">
   <h1>What Is MCP?</h1>
-  <p class="subtitle">Model Context Protocol is the USB standard for AI. It is how AI goes from answering questions to actually doing things — reading your files, checking your calendar, sending emails, managing code.</p>
+  <p class="sub">Model Context Protocol is the USB standard for AI. It is how AI goes from answering questions to actually doing things — reading your files, checking your calendar, sending emails, managing code.</p>
+</div>
 
   <div class="section">
     <h2>The Problem: Isolated AI</h2>

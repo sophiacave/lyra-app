@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 4
 type: "builder"
 free: false
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">← Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 4 of 10</span>
 </nav>
 
-<div class="content">
-  <div class="lesson-num">Lesson 4 of 10</div>
+<div class="lesson-hero">
   <h1>Design Your Agent</h1>
-  <p class="subtitle">Every great agent starts with a clear design. Fill in each section to create your agent's identity card.</p>
+  <p class="sub">Every great agent starts with a clear design. Fill in each section to create your agent's identity card.</p>
+</div>
 
   <div class="design-grid">
     <div class="form-section">

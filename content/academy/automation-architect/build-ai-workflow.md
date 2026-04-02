@@ -4,15 +4,18 @@ course: "automation-architect"
 order: 8
 type: "builder"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 8 of 9</span>
 </nav>
-<header class="lesson-header">
-  <div class="lesson-badge">Module 3 &middot; Interactive</div>
+
+<div class="lesson-hero">
   <h1>Build AI Workflow</h1>
-  <p>Assemble a workflow from components: trigger, AI classify, filter, transform, and action. Then simulate data flowing through it.</p>
-</header>
+  <p class="sub">Assemble a workflow from components: trigger, AI classify, filter, transform, and action. Then simulate data flowing through it.</p>
+</div>
 
 <div class="content">
   <div style="padding:0 1.5rem;margin:1.5rem 0">
@@ -84,4 +87,3 @@ ticket = {<span style="color:#fb923c">"email"</span>: <span style="color:#fb923c
 
 </div>
 
-<footer class="progress-footer"><p>Lesson 8 of 9 &middot; Automation Architect</p></footer>

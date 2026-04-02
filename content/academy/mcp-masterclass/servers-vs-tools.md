@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 3
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 3</div>
+<div class="lesson-hero">
   <h1>Servers vs Tools</h1>
-  <p class="subtitle">MCP Servers are long-running processes that expose multiple tools. Understand the difference — and explore six real server types.</p>
+  <p class="sub">MCP Servers are long-running processes that expose multiple tools. Understand the difference — and explore six real server types.</p>
+</div>
 
   <div class="section">
     <h2>MCP Servers vs Direct Tool Calls</h2>

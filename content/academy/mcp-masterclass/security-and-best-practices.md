@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 9
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 9 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 9</div>
+<div class="lesson-hero">
   <h1>Security &amp; Best Practices</h1>
-  <p class="subtitle">MCP gives AI real power over your files, databases, and APIs. This lesson teaches you how to build servers that are safe by default — with real code showing what goes wrong and how to fix it.</p>
+  <p class="sub">MCP gives AI real power over your files, databases, and APIs. This lesson teaches you how to build servers that are safe by default — with real code showing what goes wrong and how to fix it.</p>
+</div>
 
   <div class="section">
     <h2>Why MCP Security Matters</h2>

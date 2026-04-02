@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 1
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 1</div>
+<div class="lesson-hero">
   <h1>What Are Embeddings?</h1>
-  <p class="subtitle">Every word, sentence, and document can become a list of numbers — a vector — that captures its meaning. Embeddings are the foundation of modern AI search. Without them, there is no RAG. This lesson teaches you what they are, how they work, and how to create them in code.</p>
+  <p class="sub">Every word, sentence, and document can become a list of numbers — a vector — that captures its meaning. Embeddings are the foundation of modern AI search. Without them, there is no RAG. This lesson teaches you what they are, how they work, and how to create them in code.</p>
+</div>
 
   <div class="section">
     <h2>The Core Idea</h2>

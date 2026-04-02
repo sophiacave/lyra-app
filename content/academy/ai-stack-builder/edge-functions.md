@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 4
 type: "lesson"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 4 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 4 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Edge Functions</h1>
+  <p class="sub">Edge functions are serverless code that runs close to your users. Write once, deploy globally, pay per invocation. Supabase edge functions use Deno (TypeScript runtime).</p>
 </div>
-
-<div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
-<h1>Edge Functions</h1>
-<p class="intro">Edge functions are serverless code that runs close to your users. Write once, deploy globally, pay per invocation. Supabase edge functions use Deno (TypeScript runtime).</p>
 
 <div class="panel">
 <div class="label">What you're building in this lesson</div>
@@ -142,12 +144,6 @@ free: false
 <div class="code-block"><span class="kw">const</span> corsHeaders = {<br>  <span class="str">"Access-Control-Allow-Origin"</span>: <span class="str">"*"</span>,<br>  <span class="str">"Access-Control-Allow-Headers"</span>: <span class="str">"authorization, x-client-info, apikey, content-type"</span>,<br>}</div>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 
 <div data-learn="QuizMC" data-props='{"title":"Edge Functions Quiz","questions":[{"q":"Why did Supabase choose Deno over Node.js for edge functions?","options":["Deno supports more npm packages","Deno has faster cold starts and better security defaults","Deno is older and more battle-tested","Deno uses Python syntax"],"correct":1,"explanation":"Deno starts up faster than Node.js (critical for edge functions that spin up on demand) and has better security defaults — it requires explicit permission for file, network, and environment access."},{"q":"What is a cold start in the context of edge functions?","options":["A function that returns an error","The delay when a function first spins up after being idle","A network timeout","A failed deployment"],"correct":1,"explanation":"Edge functions spin up on demand. When no requests have come in recently, the runtime needs to initialize — this first request takes ~100ms. Subsequent requests reuse the running instance and are near-instant."},{"q":"Why should you never use Access-Control-Allow-Origin: * in production?","options":["It causes performance issues","It breaks Deno compatibility","It allows any website to call your API, enabling cross-origin attacks","It is not valid syntax"],"correct":2,"explanation":"Wildcard CORS allows any domain to make requests to your API. In production, whitelist only your specific frontend domains to prevent unauthorized sites from abusing your backend."}]}'></div>

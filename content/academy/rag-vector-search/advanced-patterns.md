@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 9
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 9 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 4 &middot; Lesson 9</div>
+<div class="lesson-hero">
   <h1>Advanced RAG Patterns</h1>
-  <p class="subtitle">Basic RAG handles straightforward questions. But real-world queries are messy — vague, multi-step, requiring calculations, or spanning multiple knowledge bases. Four advanced patterns handle these cases: Multi-Step RAG, Self-RAG, RAG+Tools, and Agentic RAG. This lesson teaches you when to use each and how to implement them.</p>
+  <p class="sub">Basic RAG handles straightforward questions. But real-world queries are messy — vague, multi-step, requiring calculations, or spanning multiple knowledge bases. Four advanced patterns handle these cases: Multi-Step RAG, Self-RAG, RAG+Tools, and Agentic RAG. This lesson teaches you when to use each and how to implement them.</p>
+</div>
 
   <div class="section">
     <h2>When Basic RAG Is Not Enough</h2>

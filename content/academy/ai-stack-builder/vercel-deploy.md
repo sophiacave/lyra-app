@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 8
 type: "lesson"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 8 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 8 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Vercel Deploy</h1>
+  <p class="sub">Vercel turns <code style="color:#f59e0b">git push</code> into a live URL. No servers, no Docker, no YAML. Push code, get a website. Let's simulate the full pipeline.</p>
 </div>
-
-<div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
-<h1>Vercel Deploy</h1>
-<p class="intro">Vercel turns <code style="color:#f59e0b">git push</code> into a live URL. No servers, no Docker, no YAML. Push code, get a website. Let's simulate the full pipeline.</p>
 
 <h2>The Deploy Pipeline</h2>
 <p>Click "Deploy" to watch code go from your machine to a live global CDN (Content Delivery Network — servers around the world that serve your site from the closest location to each visitor).</p>
@@ -83,12 +85,6 @@ free: false
 </div>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 <div data-learn="QuizMC" data-props='{"title":"Vercel Deploy Quiz","questions":[{"q":"What happens automatically when you push to the main branch on GitHub?","options":["Nothing — you must run vercel --prod manually","Vercel detects the push and triggers a production deployment","A preview deployment is created but not promoted to production","Vercel sends you an email to confirm the deploy"],"correct":1,"explanation":"When you connect your GitHub repo to Vercel, it watches for pushes to the main branch and automatically triggers a production deployment. No manual step needed — git push is the entire deploy workflow."},{"q":"What is the purpose of a preview deployment?","options":["To deploy to a staging server","Each pull request gets its own unique URL so you can test changes before merging","To reduce production costs","To test environment variables"],"correct":1,"explanation":"Vercel creates a unique preview URL for every pull request. You can share the URL with teammates, test the changes in a real browser, and confirm everything works before merging to main and deploying to production."},{"q":"Which environment variable prefix exposes values to the browser in Next.js?","options":["PUBLIC_","BROWSER_","NEXT_PUBLIC_","CLIENT_"],"correct":2,"explanation":"In Next.js, only variables prefixed with NEXT_PUBLIC_ are included in the browser bundle. All other environment variables remain server-side only. This distinction is critical — secret keys (Stripe, service role) must never use this prefix."}]}'></div>
 

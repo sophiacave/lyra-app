@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 1
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 1</div>
+<div class="lesson-hero">
   <h1>What Is an Agent?</h1>
-  <p class="subtitle">Most "AI" you have used is actually just automation — a trigger, an action, done. An agent is fundamentally different: it perceives, decides, acts, and adapts in a continuous loop. This lesson teaches you to tell the difference and understand why it matters.</p>
+  <p class="sub">Most "AI" you have used is actually just automation — a trigger, an action, done. An agent is fundamentally different: it perceives, decides, acts, and adapts in a continuous loop. This lesson teaches you to tell the difference and understand why it matters.</p>
+</div>
 
   <div class="section">
     <h2>The Core Distinction</h2>

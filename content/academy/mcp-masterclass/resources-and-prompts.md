@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 6
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 6</div>
+<div class="lesson-hero">
   <h1>Resources &amp; Prompts</h1>
-  <p class="subtitle">MCP has three primitives: Tools, Resources, and Prompts. You already know Tools. This lesson covers the other two — data the AI can read (Resources) and interaction templates the user can select (Prompts) — with working code for both.</p>
+  <p class="sub">MCP has three primitives: Tools, Resources, and Prompts. You already know Tools. This lesson covers the other two — data the AI can read (Resources) and interaction templates the user can select (Prompts) — with working code for both.</p>
+</div>
 
   <div class="section">
     <h2>The Three MCP Primitives</h2>

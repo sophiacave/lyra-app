@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 9
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 9 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 9</div>
+<div class="lesson-hero">
   <h1>Monitoring &amp; Healing</h1>
-  <p class="subtitle">An autonomous system is not complete until it can watch itself and fix its own problems. This lesson teaches you to build health checks, auto-healers, and escalation pipelines — the immune system of your agent fleet.</p>
+  <p class="sub">An autonomous system is not complete until it can watch itself and fix its own problems. This lesson teaches you to build health checks, auto-healers, and escalation pipelines — the immune system of your agent fleet.</p>
+</div>
 
   <div class="section">
     <h2>Why Monitoring Is Non-Negotiable</h2>

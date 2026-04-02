@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 7
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 7 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 7</div>
+<div class="lesson-hero">
   <h1>Tool Calling Basics</h1>
-  <p class="subtitle">Tool calling is how agents take action in the real world. You define tools as JSON schemas, Claude decides when to use them, and your code executes them. Here is the complete pattern with production code.</p>
+  <p class="sub">Tool calling is how agents take action in the real world. You define tools as JSON schemas, Claude decides when to use them, and your code executes them. Here is the complete pattern with production code.</p>
+</div>
 
   <div class="section">
     <h2>How Tool Calling Works</h2>
@@ -255,10 +258,6 @@ free: false
 
   <div class="flow-viz" id="flow-viz"></div>
 </div>
-
-<footer class="progress-footer">
-  <p>Lesson 7 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 
 <div data-learn="FlashDeck" data-props='{"title":"Tool Calling Concepts","cards":[{"front":"What is a tool definition?","back":"A JSON schema that tells Claude what a tool does (description), what parameters it accepts (input_schema), and what they mean. Claude uses this to decide when and how to call the tool."},{"front":"What is a tool_use block?","back":"Claude\u0027s response when it wants to call a tool. Contains the tool name, a unique ID, and the filled-in parameters. Your code executes the tool and returns the result."},{"front":"What is a tool_result message?","back":"Your response after executing a tool. Contains the tool_use_id (linking back to the request) and the result data. Claude uses this to continue reasoning."},{"front":"Chained tool calls","back":"When an agent uses the output of one tool call as context for the next. Example: look up customer → find their plan → create a refund ticket. Each call builds on the previous result."},{"front":"Why does the description field matter most?","back":"Claude reads tool descriptions to decide which tool to use. Vague descriptions cause wrong tool selection. Include WHAT the tool does and WHEN to use it for accurate selection."},{"front":"How to handle tool failures","back":"Return the error as the tool_result content. Claude sees the failure and can adapt — trying a different tool, asking for clarification, or explaining the limitation gracefully."},{"front":"input_schema required vs optional","back":"Required parameters must always be provided by Claude. Optional parameters have defaults. Use required for data Claude MUST extract from the user message."},{"front":"enum in tool parameters","back":"Constrains a parameter to specific valid values (e.g., priority: low/medium/high/urgent). Prevents Claude from inventing invalid values and makes your tool handling predictable."}]}'></div>
 

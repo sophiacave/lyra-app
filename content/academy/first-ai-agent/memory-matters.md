@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 6
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 6</div>
+<div class="lesson-hero">
   <h1>Memory Matters</h1>
-  <p class="subtitle">Without memory, your agent is a goldfish — it forgets everything between sessions. With memory, it learns from every interaction and gets better over time. Here is how to implement both types.</p>
+  <p class="sub">Without memory, your agent is a goldfish — it forgets everything between sessions. With memory, it learns from every interaction and gets better over time. Here is how to implement both types.</p>
+</div>
 
   <div class="section">
     <h2>Two Types of Memory</h2>
@@ -182,10 +185,6 @@ free: false
     </div>
   </div>
 </div>
-
-<footer class="progress-footer">
-  <p>Lesson 6 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 
 <div data-learn="QuizMC" data-props='{"title":"Memory Architecture Quiz","questions":[{"q":"What is the key limitation of short-term memory?","options":["It is too slow","It is lost when the session ends — the agent cannot learn across sessions","It cannot store user preferences","It uses too much storage"],"correct":1,"explanation":"Short-term memory lives within a single session. When the session ends, the context is gone. The agent must re-learn from scratch on every new session."},{"q":"In the code example, where does long-term memory get injected?","options":["In the messages array as a user message","In the system prompt as additional context","In the tools parameter","In the response"],"correct":1,"explanation":"Long-term memories are loaded from the database and appended to the system prompt. This gives Claude persistent context without cluttering the message history."},{"q":"What should you NOT store in long-term memory?","options":["Successful resolutions","Failure patterns that should not be retried","Raw conversation logs — too noisy, save the insight instead","User preferences"],"correct":2,"explanation":"Raw conversation logs are too noisy and consume too much storage and context window. Save the insight: what was learned, what worked, what failed. Not every word of the conversation."},{"q":"What is RAG and why does it matter for agent memory?","options":["A model architecture that replaces transformers","Retrieval-Augmented Generation — retrieve only relevant memories from a vector store, enabling memory to scale to millions of entries","A type of fine-tuning","A caching strategy"],"correct":1,"explanation":"RAG stores memories as embeddings and retrieves only the most relevant ones on each turn. This means your agent can have millions of memories without overflowing the context window."}]}'></div>
 

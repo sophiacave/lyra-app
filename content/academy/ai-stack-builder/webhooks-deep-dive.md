@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 5
 type: "lesson"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 5 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 5 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Webhooks Deep Dive</h1>
+  <p class="sub">Webhooks are how services talk to each other in real-time. When something happens in one system, it sends an HTTP POST to your endpoint. No polling. No delays.</p>
 </div>
-
-<div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
-<h1>Webhooks Deep Dive</h1>
-<p class="intro">Webhooks are how services talk to each other in real-time. When something happens in one system, it sends an HTTP POST to your endpoint. No polling. No delays.</p>
 
 <h2>How Webhooks Work</h2>
 <p>Click "Trigger Event" to watch data flow through the webhook pipeline step by step.</p>
@@ -77,12 +79,6 @@ free: false
 <p style="font-size:.9rem"><strong>Retry logic with exponential backoff:</strong> If your endpoint returns an error (500, timeout, etc.), Stripe retries automatically. "Exponential backoff" means it waits longer between each retry — first 1 minute, then 5 minutes, then 30, and so on — for up to 3 days. This gives your server time to recover without being hammered with requests. Design your endpoint to handle retries gracefully (see idempotency above).</p>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 
 <div data-learn="QuizMC" data-props='{"title":"Webhooks Quiz","questions":[{"q":"Why must you read the raw request body (req.text()) instead of parsed JSON when verifying a Stripe webhook?","options":["JSON parsing is slower","The signature is computed on the raw bytes — parsing changes the string and invalidates the signature","Stripe does not send JSON","Deno does not support req.json()"],"correct":1,"explanation":"Stripe computes the HMAC signature on the exact raw bytes of the request body. If you parse the JSON first, the serialization may change whitespace or key ordering, producing a different byte sequence and causing signature verification to fail."},{"q":"What is exponential backoff in Stripe webhook retries?","options":["Stripe sends faster retries each time","The wait time between retries grows longer with each attempt","Stripe gives up after 3 failed retries","Your endpoint backs up data before retrying"],"correct":1,"explanation":"Exponential backoff means each retry waits longer than the last — 1 minute, then 5 minutes, then 30, etc. This prevents overwhelming a recovering server. Stripe retries for up to 3 days before marking the event as failed."},{"q":"What is the first two lines your webhook handler should do?","options":["Parse JSON, then verify the user session","Read raw body and verify Stripe signature before doing anything else","Check the database, then send an email","Log the event, then parse the JSON body"],"correct":1,"explanation":"Always verify the signature first — before any business logic. If verification fails, return a 400 immediately. This prevents fraudulent events from being processed. Only after successful verification should you parse the event data."}]}'></div>

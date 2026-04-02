@@ -4,12 +4,18 @@ course: "automation-architect"
 order: 1
 type: "lesson"
 free: true
----<div class="container">
-  <div class="header">
-    <div class="tag">Automation Architect — Lesson 1</div>
-    <h1>Triggers & Actions</h1>
-    <p>Every automation has two parts: something that starts it (the trigger) and something that happens because of it (the action). Master this pattern and you can automate anything.</p>
-  </div>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 1 of 9</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>Triggers & Actions</h1>
+  <p class="sub">Every automation has two parts: something that starts it (the trigger) and something that happens because of it (the action). Master this pattern and you can automate anything.</p>
+</div>
 
   <div class="section" style="padding:0 1.5rem">
     <h2>The Trigger-Action Pattern</h2>

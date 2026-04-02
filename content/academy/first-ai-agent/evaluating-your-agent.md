@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 9
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 9 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 9</div>
+<div class="lesson-hero">
   <h1>Evaluating Your Agent</h1>
-  <p class="subtitle">An agent that works in demo does not always work in production. Here are the five dimensions you must measure, the code to measure them, and the thresholds that separate "deployable" from "dangerous."</p>
+  <p class="sub">An agent that works in demo does not always work in production. Here are the five dimensions you must measure, the code to measure them, and the thresholds that separate "deployable" from "dangerous."</p>
+</div>
 
   <div class="section">
     <h2>The Five Evaluation Dimensions</h2>
@@ -148,10 +151,6 @@ free: false
     <h3>Improvement Tips</h3>
   </div>
 </div>
-
-<footer class="progress-footer">
-  <p>Lesson 9 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 
 <div data-learn="QuizMC" data-props='{"title":"Agent Evaluation","questions":[{"q":"What is the recommended deploy threshold across all 5 dimensions?","options":["50 — above average is good enough","70 — meets the baseline for production reliability","90 — near-perfect only","100 — must be perfect"],"correct":1,"explanation":"70 across all five dimensions is the standard deploy threshold. Below 70 on any dimension means meaningful risk of poor user experience or production failures."},{"q":"An agent is 95% accurate but takes 45 seconds per query. Should you deploy?","options":["Yes — accuracy is all that matters","No — investigate caching, parallel tool calls, or faster models for simple tasks","Yes — users will wait for accuracy","No — shut down the entire project"],"correct":1,"explanation":"Speed is one of five critical dimensions. 45 seconds frustrates users even with perfect accuracy. Cache frequent queries, parallelize tool calls, route simple tasks to faster models."},{"q":"Why should you run each test case multiple times?","options":["To waste more API credits","LLM outputs are non-deterministic — an agent that passes 3/5 times is only 60% reliable","To warm up the model","Multiple runs average out network latency"],"correct":1,"explanation":"LLMs can give different responses to the same input. Running each test 3-5 times reveals the true reliability rate. An agent that sometimes fails is not reliable enough for production."},{"q":"Your agent scores 85 on accuracy, speed, reliability, and cost — but 40 on user satisfaction. What does this mean?","options":["Deploy — 4 out of 5 is passing","The agent is technically solid but users are not happy — fix tone, format, or transparency before deploying","Ignore user satisfaction — it is subjective","Average the scores — 77 overall is passing"],"correct":1,"explanation":"All five dimensions must meet the threshold. High technical scores with low user satisfaction means the agent may be correct but unhelpful — wrong tone, confusing output, or poor transparency about limitations."}]}'></div>
 

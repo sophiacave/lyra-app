@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 7
 type: "builder"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 7 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 7</div>
+<div class="lesson-hero">
   <h1>Build a Team</h1>
-  <p class="subtitle">A single agent hits its limits fast. Real systems need teams — agents with distinct roles that complement each other. This lesson teaches you how to compose agent teams, which roles are essential for common use cases, and what happens when you pick the wrong team.</p>
+  <p class="sub">A single agent hits its limits fast. Real systems need teams — agents with distinct roles that complement each other. This lesson teaches you how to compose agent teams, which roles are essential for common use cases, and what happens when you pick the wrong team.</p>
+</div>
 
   <div class="section">
     <h2>Why Teams, Not Solo Agents?</h2>

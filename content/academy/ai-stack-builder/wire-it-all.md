@@ -4,15 +4,19 @@ course: "ai-stack-builder"
 order: 9
 type: "builder"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 9 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 9 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Wire It All Together</h1>
+  <p class="sub">Connect all the pieces into one working architecture. Six services, one product, revenue from day one.</p>
 </div>
 
-<div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
-<h1>Wire It All Together</h1>
 <h2>The Complete Architecture</h2>
 <p>Click any service to see its connections, data flows, and example code. Each node shows you what that service does and how it communicates with the others.</p>
 
@@ -72,12 +76,6 @@ free: false
 <p style="font-size:.9rem;color:#f59e0b;margin-top:1rem"><strong>That's the whole stack. 6 services. One product. Revenue from day 1.</strong></p>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 <div data-learn="FlashDeck" data-props='{"title":"Full Stack Architecture Flashcards","cards":[{"front":"Why does Claude read brain_context via an edge function instead of directly from the frontend?","back":"The service role key that bypasses RLS must stay server-side — never in the browser. Edge functions run server-side, keeping the key secure while allowing Claude to read and write the full brain."},{"front":"What is the role of Stripe in the stack?","back":"Stripe hosts the entire checkout page and handles PCI compliance. Your edge function creates a session and returns a URL — the frontend redirects users there. You never touch raw credit card data."},{"front":"How does Make.com fit into the architecture?","back":"Make.com is the automation glue connecting services without direct API integrations. It triggers on Supabase webhooks (new rows), filters data, and routes to Slack, Google Sheets, or email — no code required."},{"front":"What triggers the revenue logging flow?","back":"User completes payment on Stripe → Stripe fires checkout.session.completed webhook → your edge function verifies the signature → inserts a row into the revenue table → Make.com alerts Slack."},{"front":"Why use Vercel for the frontend?","back":"Vercel auto-deploys from GitHub on every push to main. It serves your Next.js app from global edge servers closest to each user, with zero-config SSL, preview deploys for branches, and environment variable management."}]}'></div>
 

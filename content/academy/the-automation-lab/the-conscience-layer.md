@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 10
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 10 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">&#128081; Capstone &middot; Lesson 10</div>
+<div class="lesson-hero">
   <h1>The Conscience Layer</h1>
-  <p class="subtitle">The soul of the system. Every agent needs guardrails, but guardrails alone are not enough. The conscience layer is a priority hierarchy that resolves conflicts between competing rules — deciding not just what an agent CAN do, but what it SHOULD do when values collide.</p>
+  <p class="sub">The soul of the system. Every agent needs guardrails, but guardrails alone are not enough. The conscience layer is a priority hierarchy that resolves conflicts between competing rules — deciding not just what an agent CAN do, but what it SHOULD do when values collide.</p>
+</div>
 
   <div class="section">
     <h2>Why Guardrails Are Not Enough</h2>

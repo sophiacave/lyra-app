@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 4
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 4 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 4</div>
+<div class="lesson-hero">
   <h1>The RAG Loop</h1>
-  <p class="subtitle">Follow a query through the complete RAG pipeline — from user question to AI-generated answer grounded in your data. This is the heartbeat of every RAG system: embed, search, retrieve, augment, generate. Understanding each step is essential to building systems that give accurate answers instead of confident hallucinations.</p>
+  <p class="sub">Follow a query through the complete RAG pipeline — from user question to AI-generated answer grounded in your data. This is the heartbeat of every RAG system: embed, search, retrieve, augment, generate. Understanding each step is essential to building systems that give accurate answers instead of confident hallucinations.</p>
+</div>
 
   <div class="section">
     <h2>RAG in One Sentence</h2>

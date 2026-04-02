@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 10
 type: "builder"
 free: false
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 10 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 10 · Builder · Final</div>
-<h1>Building Agents</h1>
-<p>The grand finale — design, configure, and build a real AI agent with working code</p>
-<div class="lesson-meta-bar">⏱ <span>90 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 3</span></div>
+<div class="lesson-hero">
+  <h1>Building Agents</h1>
+  <p class="sub">The grand finale — design, configure, and build a real AI agent with working code</p>
 </div>
 
 <div class="content">

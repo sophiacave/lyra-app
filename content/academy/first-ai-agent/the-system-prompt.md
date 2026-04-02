@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 5
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 5 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 5</div>
+<div class="lesson-hero">
   <h1>The System Prompt</h1>
-  <p class="subtitle">A system prompt is an agent's DNA — it defines identity, goal, capabilities, and constraints. A bad system prompt makes a bad agent, no matter how good the model. Here is how to write one that works.</p>
+  <p class="sub">A system prompt is an agent's DNA — it defines identity, goal, capabilities, and constraints. A bad system prompt makes a bad agent, no matter how good the model. Here is how to write one that works.</p>
+</div>
 
   <div class="section">
     <h2>The Six Blocks of a System Prompt</h2>
@@ -184,9 +187,6 @@ free: false
   </div>
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 5 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 <div data-learn="FlashDeck" data-props='{"title":"System Prompt Architecture","cards":[{"front":"Identity Block","back":"Tells the agent who it is and what role it plays. Grounds all reasoning with a consistent voice, expertise area, and sense of purpose. Always comes first."},{"front":"Goal Block","back":"The agent\u0027s primary mission in one clear sentence. Everything the agent does serves this goal. \u0027Be helpful\u0027 is NOT a goal — \u0027Resolve issues in minimal messages\u0027 IS."},{"front":"Tools Block","back":"Lists available tools with \u0027Use when...\u0027 guidance for each one. Without guidance, the model picks tools by guessing. With it, tool selection accuracy jumps significantly."},{"front":"Guardrails Block","back":"Hard rules the agent must never violate. Written as explicit NEVER statements. Examples: never share internal data, never promise refunds above $X without escalation."},{"front":"Output Format Block","back":"Controls response style: length (2-3 sentences), tone (empathetic, professional), structure (bullets, prose). Without it, responses default to verbose paragraphs."},{"front":"Why does block order matter?","back":"The model processes context sequentially. Identity first means all subsequent instructions are interpreted through the right persona. Guardrails before identity makes them harder to internalize."},{"front":"system vs messages parameter","back":"system = persistent instructions applying to every turn. messages = the actual conversation (user + assistant turns). Keep them separate — system is the agent\u0027s DNA, messages are the dialogue."},{"front":"Most common system prompt mistake","back":"Vague goals and no tool guidance. \u0027Be helpful\u0027 + \u0027you have tools\u0027 produces unpredictable behavior. \u0027Resolve issues in minimal messages\u0027 + \u0027Use lookup_customer when...\u0027 produces reliable agents."}]}'></div>
 
 <div data-learn="QuizMC" data-props='{"title":"System Prompt Structure","questions":[{"q":"What is the purpose of the Identity block?","options":["It stores the agent API key","It tells the agent who it is, grounding all reasoning with a consistent persona and expertise","It lists which users can access the agent","It defines how fast the agent responds"],"correct":1,"explanation":"The Identity block establishes the agent persona and role. It grounds all reasoning — giving it a consistent voice that shapes every decision the agent makes."},{"q":"Why does block order matter?","options":["It does not — the LLM reads it all at once","Identity and goal first ensures the agent interprets all subsequent instructions through the correct lens","The last block always takes priority","Order only matters for output format"],"correct":1,"explanation":"LLMs process context sequentially. Identity and goal first means every tool, guardrail, and format instruction is interpreted through the correct framing."},{"q":"Which is a better goal statement?","options":["Be helpful to users","Resolve customer issues in as few messages as possible while ensuring satisfaction","Help people","Answer questions"],"correct":1,"explanation":"A good goal is specific and measurable. \u0027Resolve issues in minimal messages while ensuring satisfaction\u0027 gives the agent clear criteria for success. \u0027Be helpful\u0027 is too vague to guide behavior."},{"q":"Where does the system prompt go in the Claude API?","options":["In the messages array as the first message","In the system parameter, separate from messages","In the tools parameter","In the response"],"correct":1,"explanation":"The system parameter is separate from messages. It applies to every turn of the conversation as persistent instructions — the agent\u0027s DNA that shapes all responses."},{"q":"Your agent sometimes picks the wrong tool. What is the most likely fix?","options":["Use a more expensive model","Add Use when... guidance to each tool description in the system prompt","Remove tools the agent does not need","Increase max_tokens"],"correct":1,"explanation":"Tool selection is driven by descriptions. Adding \u0027Use when...\u0027 to each tool tells the model exactly when each tool is appropriate, dramatically improving selection accuracy."}]}'></div>

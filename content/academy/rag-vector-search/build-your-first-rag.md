@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 5
 type: "builder"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 5 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 5</div>
+<div class="lesson-hero">
   <h1>Build Your First RAG</h1>
-  <p class="subtitle">Theory is over. In this lesson, you build a complete RAG system from scratch — loading documents, chunking them, embedding them, storing them in a vector database, and querying them with an LLM. Every line of code is explained. By the end, you will have a working system you can adapt to any knowledge base.</p>
+  <p class="sub">Theory is over. In this lesson, you build a complete RAG system from scratch — loading documents, chunking them, embedding them, storing them in a vector database, and querying them with an LLM. Every line of code is explained. By the end, you will have a working system you can adapt to any knowledge base.</p>
+</div>
 
   <div class="section">
     <h2>What You Are Building</h2>

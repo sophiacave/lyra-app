@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 8
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 8 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 8</div>
+<div class="lesson-hero">
   <h1>Real-World Servers</h1>
-  <p class="subtitle">Six production MCP server patterns that developers use every day. For each pattern, you will see the architecture, the tools it exposes, real code, and the security considerations that matter most.</p>
+  <p class="sub">Six production MCP server patterns that developers use every day. For each pattern, you will see the architecture, the tools it exposes, real code, and the security considerations that matter most.</p>
+</div>
 
   <div class="section">
     <h2>Server Gallery</h2>

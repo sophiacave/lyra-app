@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 2</div>
+<div class="lesson-hero">
   <h1>Vector Databases 101</h1>
-  <p class="subtitle">Traditional databases find exact matches. Vector databases find similar meanings. This shift — from "contains this string" to "means something like this" — is what makes AI search intelligent. This lesson teaches you how vector databases work, when to use them, and how to store your first vectors.</p>
+  <p class="sub">Traditional databases find exact matches. Vector databases find similar meanings. This shift — from "contains this string" to "means something like this" — is what makes AI search intelligent. This lesson teaches you how vector databases work, when to use them, and how to store your first vectors.</p>
+</div>
 
   <div class="section">
     <h2>The Problem with Traditional Search</h2>

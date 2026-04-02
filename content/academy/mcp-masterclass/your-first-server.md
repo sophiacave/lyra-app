@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 4
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 4 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 4</div>
+<div class="lesson-hero">
   <h1>Your First Server</h1>
-  <p class="subtitle">Build a working MCP server from scratch. By the end of this lesson, you will have a real server running on your machine that Claude can talk to. Every line of code is explained.</p>
+  <p class="sub">Build a working MCP server from scratch. By the end of this lesson, you will have a real server running on your machine that Claude can talk to. Every line of code is explained.</p>
+</div>
 
   <div class="section">
     <h2>What You Will Build</h2>

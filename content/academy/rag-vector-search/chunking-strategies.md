@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 3
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 3</div>
+<div class="lesson-hero">
   <h1>Chunking Strategies</h1>
-  <p class="subtitle">Before you can search documents by meaning, you need to split them into pieces. The size and overlap of those pieces dramatically affects whether your RAG system finds the right answer or returns garbage. This lesson teaches you the art and science of chunking.</p>
+  <p class="sub">Before you can search documents by meaning, you need to split them into pieces. The size and overlap of those pieces dramatically affects whether your RAG system finds the right answer or returns garbage. This lesson teaches you the art and science of chunking.</p>
+</div>
 
   <div class="section">
     <h2>Why Chunk at All?</h2>

@@ -4,15 +4,18 @@ course: "automation-architect"
 order: 7
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 7 of 9</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 7</div>
+<div class="lesson-hero">
   <h1>Smart Routing</h1>
-  <p class="subtitle">Replace hundreds of if/else rules with one AI classifier. Build real intent detection that routes data to the right team — with confidence scoring, fallback handling, and production error patterns.</p>
+  <p class="sub">Replace hundreds of if/else rules with one AI classifier. Build real intent detection that routes data to the right team — with confidence scoring, fallback handling, and production error patterns.</p>
+</div>
 
   <div class="section">
     <h2>Why AI Routing Beats Rules Engines</h2>
@@ -391,9 +394,6 @@ free: false
       </div>
     </div>
   </div>
-</div>
-
-<footer class="progress-footer"><p>Lesson 7 of 9 &middot; Automation Architect</p></footer>
 
 <div data-learn="FlashDeck" data-props='{"title":"AI Routing Concepts","cards":[{"front":"Intent classification","back":"An AI model reads text and assigns a category (intent) such as billing_issue, technical_support, or sales_inquiry. Returns the intent label plus a confidence score."},{"front":"Confidence score","back":"A number from 0 to 1 representing how certain the AI is about its classification. Below the threshold (typically 0.8), the message goes to human review instead of auto-routing."},{"front":"Human-in-the-loop","back":"A pattern where low-confidence AI decisions are escalated to a human instead of acted upon automatically. Prevents misrouting while keeping data safe."},{"front":"Rules engine vs AI classifier","back":"Rules engine: you write every if/else condition explicitly — breaks on ambiguous or novel inputs. AI classifier: one model handles patterns including ones you never explicitly coded."},{"front":"Dead letter queue","back":"Where messages go if routing fails entirely — preserves data for manual inspection and retry instead of losing it."},{"front":"Exponential backoff","back":"Retry strategy that waits progressively longer between attempts (1s, 2s, 4s). Prevents hammering a struggling API while still recovering from transient failures."},{"front":"Structured output prompting","back":"Constraining the AI to return valid JSON with specific fields (intent, confidence, reasoning). Makes downstream parsing reliable and predictable."},{"front":"Classifier accuracy monitoring","back":"Log every classification, compare AI intent vs human corrections weekly. Alert if accuracy drops below 90%. Use corrections to improve the system prompt."},{"front":"Multi-intent messages","back":"Messages containing multiple requests (billing AND support). Handle by classifying the primary intent, or modifying the prompt to return multiple intents with individual confidence scores."},{"front":"Adversarial input","back":"Users trying to manipulate the classifier via prompt injection. Mitigate with constrained output format, input logging, and never exposing raw AI responses to end users."}]}'></div>
 

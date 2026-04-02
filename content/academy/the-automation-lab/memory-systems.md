@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 3
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 3</div>
+<div class="lesson-hero">
   <h1>Memory Systems</h1>
-  <p class="subtitle">Memory is what separates a stateless tool from an intelligent agent. Without memory, every interaction is a first interaction — the agent cannot learn, cannot coordinate with other agents, and cannot improve. This lesson covers the three types of agent memory, how they work in practice, and how to query them.</p>
+  <p class="sub">Memory is what separates a stateless tool from an intelligent agent. Without memory, every interaction is a first interaction — the agent cannot learn, cannot coordinate with other agents, and cannot improve. This lesson covers the three types of agent memory, how they work in practice, and how to query them.</p>
+</div>
 
   <div class="section">
     <h2>Why Memory Matters</h2>

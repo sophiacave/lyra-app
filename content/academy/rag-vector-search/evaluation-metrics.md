@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 8
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 8 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 4 &middot; Lesson 8</div>
+<div class="lesson-hero">
   <h1>Evaluation Metrics</h1>
-  <p class="subtitle">If you cannot measure it, you cannot improve it. A RAG system without evaluation is a black box — you have no idea whether it is hallucinating, missing answers, or returning irrelevant context. This lesson teaches you the three critical dimensions of RAG quality, the frameworks that automate measurement, and the code to evaluate your own system.</p>
+  <p class="sub">If you cannot measure it, you cannot improve it. A RAG system without evaluation is a black box — you have no idea whether it is hallucinating, missing answers, or returning irrelevant context. This lesson teaches you the three critical dimensions of RAG quality, the frameworks that automate measurement, and the code to evaluate your own system.</p>
+</div>
 
   <div class="section">
     <h2>The RAG Quality Triangle</h2>

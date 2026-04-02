@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 6
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 6</div>
+<div class="lesson-hero">
   <h1>Conflict Resolution</h1>
-  <p class="subtitle">What happens when two agents try to modify the same data at the same time? Without a strategy, data gets silently corrupted. This lesson teaches three battle-tested solutions — locking, priority queues, and the conscience layer — and when to use each one.</p>
+  <p class="sub">What happens when two agents try to modify the same data at the same time? Without a strategy, data gets silently corrupted. This lesson teaches three battle-tested solutions — locking, priority queues, and the conscience layer — and when to use each one.</p>
+</div>
 
   <div class="section">
     <h2>The Problem: Race Conditions</h2>

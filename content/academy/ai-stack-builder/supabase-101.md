@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 2
 type: "lesson"
 free: true
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 2 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Supabase 101</h1>
+  <p class="sub">Supabase gives you a Postgres database, auth, edge functions, and real-time subscriptions — all in one platform. It's the foundation of your stack.</p>
 </div>
-
-<div class="lesson-badge">MODULE 1 &middot; 260 XP</div>
-<h1>Supabase 101</h1>
-<p class="intro">Supabase gives you a Postgres database, auth, edge functions, and real-time subscriptions — all in one platform. It's the foundation of your stack.</p>
 
 <h2>Step 1: Understanding Tables</h2>
 <p>Every Supabase project is a Postgres database. Data lives in tables. Let's build one interactively.</p>
@@ -141,12 +143,6 @@ free: true
 <p style="font-size:.9rem">Supabase is Postgres with superpowers: <strong>Auth</strong> (user management), <strong>Edge Functions</strong> (serverless code that runs close to your users), <strong>Realtime</strong> (live subscriptions — your UI updates instantly when data changes), <strong>Storage</strong> (files/images), and <strong>pgvector</strong> (a Postgres extension that lets you store AI embeddings — numerical representations of text — so you can do similarity search, like "find memories related to this topic"). One tool covers database + backend + auth. That's why it's the foundation of most modern AI stacks.</p>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 
 <div data-learn="QuizMC" data-props='{"title":"Supabase 101 Quiz","questions":[{"q":"What is the difference between the anon key and the service role key?","options":["They are the same key with different names","The anon key is public and safe for frontend use; the service role key is secret and bypasses RLS","The anon key is for Edge Functions only","The service role key is used for read operations only"],"correct":1,"explanation":"The anon key is designed to be public — it can be safely included in frontend JavaScript. Row Level Security policies control what it can access. The service role key bypasses ALL RLS and should only ever exist in server-side code (edge functions, never in the browser)."},{"q":"What does enabling RLS on a table do without adding any policies?","options":["Allows everyone to read but not write","Blocks all access to the table by default","Allows service role access only","Has no effect until policies are added"],"correct":1,"explanation":"Enabling RLS with no policies creates a default-deny state — nobody can access the table. You must explicitly create policies to grant access. This is the safe default: deny all, then open up only what is needed."},{"q":"What is JSONB in Postgres and why use it for an AI brain table?","options":["A faster version of JSON that supports indexing and querying inside the JSON structure","A text format for storing binary data","A UUID generator","A real-time subscription type"],"correct":0,"explanation":"JSONB is a binary JSON storage format in Postgres. Unlike plain text JSON, JSONB allows you to index and query inside the JSON structure (e.g., WHERE value->>\u0027name\u0027 = \u0027Alex\u0027). For an AI brain table, this lets you store flexible, schema-less data while still being able to query it efficiently."}]}'></div>

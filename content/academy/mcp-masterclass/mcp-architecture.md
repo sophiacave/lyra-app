@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 2</div>
+<div class="lesson-hero">
   <h1>MCP Architecture</h1>
-  <p class="subtitle">Three components, one protocol. Understand how Hosts, Clients, and Servers form the MCP communication layer.</p>
+  <p class="sub">Three components, one protocol. Understand how Hosts, Clients, and Servers form the MCP communication layer.</p>
+</div>
 
   <div class="section">
     <h2>The Three Components</h2>

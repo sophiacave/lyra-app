@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 1
 type: "lesson"
 free: true
----<canvas id="confettiCanvas"></canvas>
-<div class="container">
-  <div class="header">
-    <div class="tag">AI Stack Builder — Lesson 1</div>
-    <h1>Stack Anatomy</h1>
-    <p>Build your perfect AI stack layer by layer. Click to choose, watch it come together.</p>
-  </div>
+---
+<div class="wrap">
 
-  <div class="progress-bar">
-    </div>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>Stack Anatomy</h1>
+  <p class="sub">Build your perfect AI stack layer by layer. Click to choose, watch it come together.</p>
+</div>
 
   <div class="result-card" id="resultCard">
     <div class="result-title">Your Stack</div>

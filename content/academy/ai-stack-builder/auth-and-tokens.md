@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 6
 type: "lesson"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 6 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Auth & Tokens</h1>
+  <p class="sub">Authentication is how your app knows who's talking to it. JWTs (JSON Web Tokens) are the standard. Let's crack one open.</p>
 </div>
-
-<div class="lesson-badge">MODULE 2 &middot; 260 XP</div>
-<h1>Auth & Tokens</h1>
-<p class="intro">Authentication is how your app knows who's talking to it. JWTs (JSON Web Tokens) are the standard. Let's crack one open.</p>
 
 <h2>JWT Anatomy</h2>
 <p>A JWT has three parts separated by dots. Here is an example token broken down:</p>
@@ -125,12 +127,6 @@ console.<span class="fn">log</span>(session.access_token) <span class="cm">// Th
 </div>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 <div data-learn="QuizMC" data-props='{"title":"JWT Knowledge Check","questions":[{"q":"Which part of a JWT is cryptographically signed to prevent tampering?","options":["Header","Payload","Signature","All three parts"],"correct":2,"explanation":"The signature is computed from the header and payload using a secret. Any change to the header or payload invalidates the signature, so the server can detect tampering."},{"q":"What does the `sub` claim in a JWT payload represent?","options":["Subscription tier","Subject (typically the user ID)","Supabase project","Secret key"],"correct":1,"explanation":"The `sub` (subject) claim uniquely identifies the principal — usually the user ID. Supabase\u0027s auth.uid() function extracts this value to enforce Row Level Security policies."},{"q":"How long does a Supabase access token (JWT) last by default?","options":["24 hours","7 days","1 hour","30 minutes"],"correct":2,"explanation":"Supabase access tokens expire after 1 hour (3600 seconds). The refresh token is long-lived and can be used to silently get a new access token without re-authentication."}]}'></div>
 

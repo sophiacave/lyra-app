@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 5
 type: "lesson"
 free: false
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 5 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 5 · Visual</div>
-<h1>Chain-of-Thought Reasoning</h1>
-<p>Unlock Claude's deeper reasoning — from simple CoT to extended thinking, with production code</p>
-<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 2</span></div>
+<div class="lesson-hero">
+  <h1>Chain-of-Thought Reasoning</h1>
+  <p class="sub">Unlock Claude's deeper reasoning — from simple CoT to extended thinking, with production code</p>
 </div>
 
 <div class="content">

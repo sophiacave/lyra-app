@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 3
 type: "lesson"
 free: true
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 3 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Make.com 101</h1>
+  <p class="sub">Make.com is visual automation. You connect triggers to actions, and data flows between services automatically. It's the glue that holds your stack together.</p>
 </div>
-
-<div class="lesson-badge">MODULE 1 &middot; 260 XP</div>
-<h1>Make.com 101</h1>
-<p class="intro">Make.com is visual automation. You connect triggers to actions, and data flows between services automatically. It's the glue that holds your stack together.</p>
 
 <h2>Scenario Builder</h2>
 <p>A Make.com scenario is a chain of modules. Each module does one thing: watch for an event, transform data, or send it somewhere. Explore three real scenarios below.</p>
@@ -66,12 +68,6 @@ joined_at: <span class="op">{{</span>now<span class="op">}}</span> <span class="
 <p style="font-size:.9rem"><strong>Testing:</strong> Always use "Run Once" to test before turning on scheduling. Check every module's output.</p>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span>
-</div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 <div data-learn="QuizMC" data-props='{"title":"Make.com Quiz","questions":[{"q":"What does {{1.email}} mean in a Make.com scenario?","options":["Send an email to module 1","The email field from the output of module #1","A variable named 1.email","An error in the mapping"],"correct":1,"explanation":"In Make.com, double curly braces reference data from other modules. The number is the module position in the scenario. {{1.email}} means grab the email field from the first module (usually your trigger)."},{"q":"What is the recommended first module type when building a Make.com scenario?","options":["Supabase insert","Filter logic","A trigger — Webhook or Schedule","Slack notification"],"correct":2,"explanation":"Every scenario must start with a trigger — something that initiates the run. Either a Webhook (fires when an external event happens) or a Schedule (runs on a time interval). Other modules follow the trigger."},{"q":"Why should you use the Router module for error handling?","options":["It speeds up execution","It creates parallel paths so failures do not silently swallow errors","It reduces API costs","It is required by Make.com for all scenarios"],"correct":1,"explanation":"The Router creates branching paths — one for success, one for failure. Without it, a module error can cause the entire scenario to fail silently. Routing errors to a notification module ensures you always know when something breaks."}]}'></div>
 

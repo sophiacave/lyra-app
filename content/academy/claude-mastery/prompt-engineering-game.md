@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 7
 type: "lesson"
 free: false
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div><div id="particles"></div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 7 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 7 · Game</div>
-<h1>Prompt Engineering Game</h1>
-<p>5 real-world challenges. Craft production-quality prompts. Earn your score.</p>
-<div class="lesson-meta-bar">⏱ <span>90 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 2</span></div>
+<div class="lesson-hero">
+  <h1>Prompt Engineering Game</h1>
+  <p class="sub">5 real-world challenges. Craft production-quality prompts. Earn your score.</p>
 </div>
 
 <div class="content">

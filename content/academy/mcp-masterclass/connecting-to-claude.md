@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 7
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 7 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 7</div>
+<div class="lesson-hero">
   <h1>Connecting to Claude</h1>
-  <p class="subtitle">Walk through the four phases of connecting an MCP server to Claude Desktop or Claude Code -- from installation to live tool usage. Click each phase tab below to walk through the process step by step.</p>
+  <p class="sub">Walk through the four phases of connecting an MCP server to Claude Desktop or Claude Code -- from installation to live tool usage. Click each phase tab below to walk through the process step by step.</p>
+</div>
 
   <div class="section">
       <h2>Phase 1: Install Your MCP Server</h2>

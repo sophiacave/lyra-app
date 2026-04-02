@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 9
 type: "lesson"
 free: false
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 9 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 9 · Visual</div>
-<h1>MCP Servers</h1>
-<p>The Model Context Protocol — Claude's universal connector, with a working server example</p>
-<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 3</span></div>
+<div class="lesson-hero">
+  <h1>MCP Servers</h1>
+  <p class="sub">The Model Context Protocol — Claude's universal connector, with a working server example</p>
 </div>
 
 <div class="content">
