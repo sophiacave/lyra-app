@@ -237,37 +237,9 @@ z.object({
   </div>
 
   <div class="section">
-    <h2>Build a Tool Definition</h2>
-    <p>Use the interactive builder below to create a tool definition. Fill in the fields and watch the JSON Schema and <code>server.tool()</code> code update live:</p>
+    <h2>Building Your Own Tool Definitions</h2>
+    <p>When building a tool definition, start with these three questions: (1) What should the tool be called? Use <code>snake_case</code> and make it descriptive. (2) When should Claude use it? Write a clear description. (3) What inputs does it need? Define each parameter with type, constraints, and a <code>.describe()</code> string. The complete example above (<code>search_documents</code>) demonstrates all of these elements working together.</p>
   </div>
-
-  <div class="builder">
-    <div class="builder-header">Tool Definition Builder</div>
-    <div class="builder-body">
-      <div class="field">
-        <label>Tool Name</label>
-        <input type="text" id="toolName" value="search_documents" oninput="updatePreview()" placeholder="e.g. search_documents">
-      </div>
-      <div class="field">
-        <label>Description (what Claude reads to decide when to use this tool)</label>
-        <textarea id="toolDesc" oninput="updatePreview()" placeholder="e.g. Search through a document collection by keyword or semantic query">Search through a document collection by keyword or semantic query. Returns matching documents ranked by relevance.</textarea>
-      </div>
-      <div class="field">
-        <label>Input Parameters</label>
-        <button class="add-param-btn" onclick="addParam()">+ Add Parameter</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="preview-split">
-    <div class="preview-panel">
-      <div class="panel-header">JSON Schema Output</div>
-      </div>
-    <div class="preview-panel">
-      <div class="panel-header">server.tool() Code</div>
-      </div>
-  </div>
-
 
   <div data-learn="QuizMC" data-props='{"title":"Tool Definition Quiz","questions":[{"q":"Which field in a tool definition is most important for Claude to decide WHEN to use the tool?","options":["The tool name","The description field","The required parameters list","The return type"],"correct":1,"explanation":"The description field is what Claude reads to decide when to invoke a tool. A clear, specific description means Claude calls your tool at exactly the right moment without extra prompt engineering."},{"q":"In JSON Schema, what does the required array inside inputSchema specify?","options":["Which parameters are strings","Which parameters Claude must provide — if absent the call fails","Which parameters have default values","Which parameters are read-only"],"correct":1,"explanation":"The required array lists parameter names that must be provided in every tool call. If Claude omits a required parameter, the MCP protocol rejects the call before it reaches your handler."},{"q":"How do you make a parameter optional in a Zod schema?","options":["Add .optional() or .default(value) to the chain","Set required: false in the JSON Schema","Pass null as the default in server.tool()","Optional parameters are not supported in MCP"],"correct":0,"explanation":"Use .optional() to let Claude omit the parameter entirely, or .default(value) to provide a fallback. Both result in the parameter being excluded from the JSON Schema required array."},{"q":"If Claude is calling your tool with wrong argument values, what should you fix first?","options":["The tool name","The handler logic","The .describe() strings on each parameter","The transport configuration"],"correct":2,"explanation":"Claude generates argument values by reading the .describe() text on each parameter. If the descriptions are vague or ambiguous, Claude will guess wrong. Make descriptions specific about format, range, and meaning."}]}'></div>
 

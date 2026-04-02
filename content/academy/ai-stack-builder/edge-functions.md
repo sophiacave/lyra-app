@@ -45,30 +45,21 @@ free: false
 <p style="font-size:.85rem;color:#666"><strong>Your task:</strong> Fill in the empty <code style="color:#f59e0b">return new Response()</code> below. You need to put <code style="color:#f59e0b">JSON.stringify({message: "Hello from the edge!"})</code> inside the Response, and add a Content-Type header. Try writing it yourself before looking at Challenge 2 for the pattern.</p>
 </div>
 
-<div class="editor-container">
-<div class="editor-tabs">
-<div class="editor-tab active" onclick="switchTab(0)">index.ts</div>
-<div class="editor-tab" onclick="switchTab(1)">response</div>
+<div class="panel">
+<div class="label">supabase/functions/hello/index.ts</div>
+<div class="code-block">
+<span class="kw">import</span> { serve } <span class="kw">from</span> <span class="str">"https://deno.land/std@0.168.0/http/server.ts"</span><br><br>
+<span class="fn">serve</span>(<span class="kw">async</span> (req) => {<br>
+&nbsp;&nbsp;<span class="cm">// Your code here: return a JSON response</span><br>
+&nbsp;&nbsp;<span class="cm">// Hint: use new Response() with JSON.stringify()</span><br><br>
+&nbsp;&nbsp;<span class="kw">return new</span> <span class="fn">Response</span>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;JSON.<span class="fn">stringify</span>({ message: <span class="str">"Hello from the edge!"</span> }),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{ headers: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> } }<br>
+&nbsp;&nbsp;)<br>
+})
 </div>
-<div class="editor-body">
-<textarea id="codeEditor" spellcheck="false">import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-
-serve(async (req) => {
-  // Your code here: return a JSON response
-  // Hint: use new Response() with JSON.stringify()
-
-  return new Response(
-
-  )
-})</textarea>
+<p style="font-size:.85rem;color:#888">Deploy this with: <code style="color:#f59e0b">supabase functions deploy hello --project-ref &lt;your-ref&gt;</code></p>
 </div>
-<div class="editor-toolbar">
-<span class="file-name">supabase/functions/hello/index.ts</span>
-<button class="deploy-btn" onclick="deployCode()">&#x1f680; Deploy</button>
-</div>
-</div>
-
-<p style="font-size:.75rem;color:#555;margin-top:.5rem;font-style:italic">Simulated terminal — in production, you'd see this output in your Supabase dashboard after running <code style="color:#666">supabase functions deploy</code> from your real terminal.</p>
 <h2>Challenge 2: JSON API</h2>
 <div class="panel" style="border-color:#f59e0b33">
 <div class="label">Why this matters</div>
@@ -83,30 +74,22 @@ serve(async (req) => {
 <p style="font-size:.85rem;color:#666"><strong>Study the code below</strong>, then try modifying it: change the greeting message, add a second field (like <code style="color:#f59e0b">age</code>), or return different responses based on the name. The code is provided as a reference — understanding <em>why</em> each line exists is the real skill.</p>
 </div>
 
-<div class="editor-container">
-<div class="editor-tabs">
-<div class="editor-tab active">index.ts</div>
+<div class="panel">
+<div class="label">supabase/functions/greet/index.ts</div>
+<div class="code-block">
+<span class="kw">import</span> { serve } <span class="kw">from</span> <span class="str">"https://deno.land/std@0.168.0/http/server.ts"</span><br><br>
+<span class="fn">serve</span>(<span class="kw">async</span> (req) => {<br>
+&nbsp;&nbsp;<span class="cm">// Parse the JSON body</span><br>
+&nbsp;&nbsp;<span class="kw">const</span> { name } = <span class="kw">await</span> req.<span class="fn">json</span>()<br><br>
+&nbsp;&nbsp;<span class="cm">// Return a personalized greeting</span><br>
+&nbsp;&nbsp;<span class="kw">return new</span> <span class="fn">Response</span>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;JSON.<span class="fn">stringify</span>({ greeting: <span class="str">`Hello, ${name}! Welcome to the edge.`</span> }),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{ headers: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> } }<br>
+&nbsp;&nbsp;)<br>
+})
 </div>
-<div class="editor-body">
-<textarea id="codeEditor2" spellcheck="false">import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-
-serve(async (req) => {
-  // Parse the JSON body
-  const { name } = await req.json()
-
-  // Return a personalized greeting
-  return new Response(
-    JSON.stringify({ greeting: `Hello, ${name}! Welcome to the edge.` }),
-    { headers: { "Content-Type": "application/json" } }
-  )
-})</textarea>
+<p style="font-size:.85rem;color:#888">Try modifying this: change the greeting message, add a second field (like <code style="color:#f59e0b">age</code>), or return different responses based on the name.</p>
 </div>
-<div class="editor-toolbar">
-<span class="file-name">supabase/functions/greet/index.ts</span>
-<button class="deploy-btn" onclick="deployCode2()">&#x1f680; Deploy</button>
-</div>
-</div>
-<p style="font-size:.75rem;color:#555;margin-top:.5rem;font-style:italic">Simulated terminal — in production, you'd run this from your local terminal and see results in your Supabase dashboard.</p>
 <h2>Challenge 3: Database Query</h2>
 <div class="panel" style="border-color:#f59e0b33">
 <div class="label">Why this matters</div>
@@ -121,46 +104,36 @@ serve(async (req) => {
 <p style="font-size:.85rem;color:#666"><strong>Study the code below</strong>, then try modifying it: change the table name, adjust the query limit, or add a filter with <code style="color:#f59e0b">.eq("key", "some_value")</code>. The reference code shows the pattern — your job is to understand each piece and experiment with variations.</p>
 </div>
 
-<div class="editor-container">
-<div class="editor-tabs">
-<div class="editor-tab active">index.ts</div>
+<div class="panel">
+<div class="label">supabase/functions/read-brain/index.ts</div>
+<div class="code-block">
+<span class="kw">import</span> { serve } <span class="kw">from</span> <span class="str">"https://deno.land/std@0.168.0/http/server.ts"</span><br>
+<span class="kw">import</span> { createClient } <span class="kw">from</span> <span class="str">"https://esm.sh/@supabase/supabase-js@2"</span><br><br>
+<span class="fn">serve</span>(<span class="kw">async</span> (req) => {<br>
+&nbsp;&nbsp;<span class="kw">const</span> supabase = <span class="fn">createClient</span>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Deno.env.<span class="fn">get</span>(<span class="str">"SUPABASE_URL"</span>)!,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Deno.env.<span class="fn">get</span>(<span class="str">"SUPABASE_SERVICE_ROLE_KEY"</span>)!<br>
+&nbsp;&nbsp;)<br><br>
+&nbsp;&nbsp;<span class="cm">// Query the brain_context table</span><br>
+&nbsp;&nbsp;<span class="kw">const</span> { data, error } = <span class="kw">await</span> supabase<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.<span class="fn">from</span>(<span class="str">"brain_context"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.<span class="fn">select</span>(<span class="str">"key, value"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.<span class="fn">order</span>(<span class="str">"updated_at"</span>, { ascending: <span class="kw">false</span> })<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.<span class="fn">limit</span>(<span class="num">10</span>)<br><br>
+&nbsp;&nbsp;<span class="kw">if</span> (error) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return new</span> <span class="fn">Response</span>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSON.<span class="fn">stringify</span>({ error: error.message }),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ status: <span class="num">400</span>, headers: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> } }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+&nbsp;&nbsp;}<br><br>
+&nbsp;&nbsp;<span class="kw">return new</span> <span class="fn">Response</span>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;JSON.<span class="fn">stringify</span>({ brain: data }),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{ headers: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> } }<br>
+&nbsp;&nbsp;)<br>
+})
 </div>
-<div class="editor-body">
-<textarea id="codeEditor3" spellcheck="false">import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
-
-serve(async (req) => {
-  const supabase = createClient(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
-  )
-
-  // Query the brain_context table
-  const { data, error } = await supabase
-    .from("brain_context")
-    .select("key, value")
-    .order("updated_at", { ascending: false })
-    .limit(10)
-
-  if (error) {
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { status: 400, headers: { "Content-Type": "application/json" } }
-    )
-  }
-
-  return new Response(
-    JSON.stringify({ brain: data }),
-    { headers: { "Content-Type": "application/json" } }
-  )
-})</textarea>
+<p style="font-size:.85rem;color:#888">Try modifying this: change the table name, adjust the query limit, or add a filter with <code style="color:#f59e0b">.eq("key", "some_value")</code>.</p>
 </div>
-<div class="editor-toolbar">
-<span class="file-name">supabase/functions/read-brain/index.ts</span>
-<button class="deploy-btn" onclick="deployCode3()">&#x1f680; Deploy</button>
-</div>
-</div>
-<p style="font-size:.75rem;color:#555;margin-top:.5rem;font-style:italic">Simulated terminal — in production, you'd run this from your local terminal and see results in your Supabase dashboard.</p>
 <div class="panel">
 <div class="label">Key Concepts</div>
 <p><strong>Cold starts:</strong> Edge functions spin up on demand. First request may take ~100ms, subsequent requests are near-instant. Deno is faster than Node.js for cold starts.</p>
@@ -171,9 +144,8 @@ serve(async (req) => {
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
+<span>Lesson Progress</span>
 </div>
-<div class="progress-bar"></div>
 </div>
 <div class="footer">Like One Academy &copy; 2026</div>
 

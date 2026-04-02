@@ -21,15 +21,23 @@ free: true
 
   <div class="section">
     <h2>Three Types of Agent Memory</h2>
-    <p><strong>Click each card</strong> to see details, implementation patterns, and trade-offs:</p>
-  </div>
+    <p>Here are the three types of memory, their characteristics, and when to use each:</p>
 
-  <div class="memory-viz">
-    <div class="mem-card stm active" onclick="showMem('stm')"><div class="mem-icon">&#9889;</div><div class="mem-name">Short-Term</div><div class="mem-sub">Conversation context</div></div>
-    <div class="mem-card ltm" onclick="showMem('ltm')"><div class="mem-icon">&#128451;&#65039;</div><div class="mem-name">Long-Term</div><div class="mem-sub">agent_memory table</div></div>
-    <div class="mem-card shared" onclick="showMem('shared')"><div class="mem-icon">&#127760;</div><div class="mem-name">Shared</div><div class="mem-sub">brain_context</div></div>
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">&#9889; Short-Term Memory</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The current conversation window. Exists only during the active session — vanishes when the session ends. Fast and immediate, like a mental scratchpad. Implementation: the messages array passed to the API on each turn.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">&#128451;&#65039; Long-Term Memory</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Persisted in a database (<code>agent_memory</code> table). Survives across sessions, making agents smarter over time. Use for user preferences, past decisions, learned facts, and resolution patterns.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">&#127760; Shared Memory</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A key-value store accessible to ALL agents (<code>brain_context</code>). The communication bus that lets agents coordinate without talking directly to each other. One agent writes; others read.</p>
+      </div>
+    </div>
   </div>
-  <div class="mem-detail" id="mem-detail"></div>
 
   <div class="section">
     <h2>Memory in Code</h2>
@@ -103,48 +111,21 @@ free: true
     <p style="font-size:.85rem;color:#71717a">Supabase supports vector search natively via pgvector. You store embeddings alongside your brain_context rows, then query with cosine similarity. This is the foundation of RAG (Retrieval-Augmented Generation), covered in depth in the RAG & Vector Search course.</p>
   </div>
 
-  <h2 class="section-title">&#128260; Memory in Action</h2>
-  <div class="flow-section">
-    <div class="flow-title">Watch agents read and write to shared memory</div>
-    <div class="flow-agents">
-      <div class="flow-agent"><div class="agent-avatar" id="agentA-av">&#129302;</div><div class="agent-name">Agent A</div><div class="agent-action" id="agentA-act">Idle</div></div>
-      <div class="flow-db"><div class="flow-db-icon">&#128451;&#65039;</div><div class="flow-db-name">brain_context</div><div class="db-entries" id="db-entries"></div></div>
-      <div class="flow-agent"><div class="agent-avatar" id="agentB-av">&#129302;</div><div class="agent-name">Agent B</div><div class="agent-action" id="agentB-act">Idle</div></div>
-    </div>
-    <div style="text-align:center;margin-top:1.5rem">
-      <button onclick="runMemFlow()" style="padding:.6rem 1.5rem;border:1px solid rgba(239,68,68,.3);border-radius:10px;background:rgba(239,68,68,.08);color:#ef4444;font-family:Inter;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s" id="flow-btn">&#9654; Run Simulation</button>
-    </div>
-  </div>
+  <div class="section">
+    <h2>Querying Agent Memory</h2>
+    <p>To read from agent memory, you use SQL queries against the appropriate table. Here are common query patterns:</p>
 
-  <h2 class="section-title">&#128269; Build a Memory Query</h2>
-  <div class="query-builder">
-    <div class="qb-title">Query Builder</div>
-    <div class="qb-desc">Construct a query to read from agent memory. See the SQL and results.</div>
-    <div style="background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.15);border-radius:10px;padding:1rem;margin-bottom:1rem;font-size:.82rem;color:#a1a1aa;line-height:1.6">
-      <strong style="color:#38bdf8">SQL 101:</strong> SQL (Structured Query Language) is how you ask questions to a database. <strong>SELECT *</strong> means "get all columns." <strong>FROM</strong> names the table. <strong>WHERE</strong> filters rows by a condition. <strong>ORDER BY</strong> sorts results. <strong>LIMIT</strong> caps how many rows to return.
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0"><code><span style="color:#71717a">-- Read all shared memories in a category</span>
+<span style="color:#c084fc">SELECT</span> * <span style="color:#c084fc">FROM</span> brain_context <span style="color:#c084fc">WHERE</span> category = <span style="color:#fbbf24">'identity'</span>;
+
+<span style="color:#71717a">-- Read a specific agent's long-term memories</span>
+<span style="color:#c084fc">SELECT</span> * <span style="color:#c084fc">FROM</span> agent_memory <span style="color:#c084fc">WHERE</span> agent = <span style="color:#fbbf24">'atlas'</span>;
+
+<span style="color:#71717a">-- Find a specific key</span>
+<span style="color:#c084fc">SELECT</span> value <span style="color:#c084fc">FROM</span> brain_context <span style="color:#c084fc">WHERE</span> key = <span style="color:#fbbf24">'session.active_work'</span>;</code></pre>
     </div>
-    <div class="qb-row">
-      <div class="qb-label">Table:</div>
-      <select class="qb-select" id="q-table" onchange="buildQuery()">
-        <option value="brain_context">brain_context (shared)</option>
-        <option value="agent_memory">agent_memory (long-term)</option>
-      </select>
-    </div>
-    <div class="qb-row">
-      <div class="qb-label">Filter by:</div>
-      <select class="qb-select" id="q-filter" onchange="buildQuery()">
-        <option value="category">Category</option>
-        <option value="agent_name">Agent Name</option>
-        <option value="key">Key (exact)</option>
-      </select>
-    </div>
-    <div class="qb-row">
-      <div class="qb-label">Value:</div>
-      <input class="qb-select" id="q-value" placeholder="e.g., identity" oninput="buildQuery()">
-    </div>
-    <div class="qb-result" id="q-result">SELECT * FROM brain_context WHERE category = 'identity';</div>
-    <button class="qb-run" onclick="runQuery()">Run Query</button>
-    <pre class="qb-output" id="q-output" style="display:none"></pre>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem"><strong>SELECT *</strong> means "get all columns." <strong>FROM</strong> names the table. <strong>WHERE</strong> filters rows by a condition. Use <code>brain_context</code> for shared memory and <code>agent_memory</code> for an individual agent's long-term storage.</p>
   </div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Memory Types","cards":[{"front":"Short-Term Memory","back":"Exists only during the current conversation (the context window). Vanishes when the session ends. Fast but ephemeral — like a mental scratchpad."},{"front":"Long-Term Memory","back":"Persisted in a database (agent_memory table). Survives across sessions. Makes agents smarter over time. Use for user preferences, past decisions, learned facts."},{"front":"Shared Memory","back":"A key-value store accessible to ALL agents (brain_context). The communication bus that lets agents coordinate without talking directly to each other."},{"front":"What is the context window problem?","back":"LLMs have a max context size. After many tool calls, older context gets pushed out. Solution: checkpoint critical state to long-term memory before overflow."},{"front":"What are vector embeddings?","back":"Numerical arrays that capture the meaning of text. Enable semantic search \u2014 find memories by meaning, not just exact key match. Powered by pgvector in Supabase."},{"front":"When to use long-term vs shared memory?","back":"Long-term: one agent remembering things across its own sessions. Shared: passing information between different agents or storing system-wide state."}]}'></div>

@@ -18,53 +18,22 @@ free: true
 <h2>Scenario Builder</h2>
 <p>A Make.com scenario is a chain of modules. Each module does one thing: watch for an event, transform data, or send it somewhere. Explore three real scenarios below.</p>
 
-<div class="scenario-tabs">
-<div class="scenario-tab active" onclick="showScenario(0)">&#x1f4e7; Email Capture</div>
-<div class="scenario-tab" onclick="showScenario(1)">&#x1f4dd; Content Publish</div>
-<div class="scenario-tab" onclick="showScenario(2)">&#x1f4b0; Revenue Alert</div>
-</div>
-
-<div id="scenario0" class="scenario-view">
-<div class="scenario-canvas">
-<div class="scenario-flow" id="flow0">
-<div class="module-node active"><span class="node-icon">&#x1f310;</span><span class="node-name">Webhook</span><span class="node-type">Trigger</span></div>
-<div class="module-node"><span class="node-icon">&#x1f4e7;</span><span class="node-name">Resend</span><span class="node-type">Send Welcome</span></div>
-<div class="module-node"><span class="node-icon">&#x1f4be;</span><span class="node-name">Supabase</span><span class="node-type">Insert Row</span></div>
-<div class="module-node"><span class="node-icon">&#x1f4ac;</span><span class="node-name">Slack</span><span class="node-type">Notify</span></div>
-</div>
-</div>
+<div class="panel">
+<div class="label">Scenario 1: Email Capture</div>
+<p style="font-size:.9rem;color:#999"><strong>Webhook</strong> (Trigger) &rarr; <strong>Resend</strong> (Send Welcome) &rarr; <strong>Supabase</strong> (Insert Row) &rarr; <strong>Slack</strong> (Notify)</p>
 <p style="font-size:.9rem;color:#999">When someone subscribes, send a welcome email, store in database, notify your Slack.</p>
-<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — click to see what each module would process. In production, real data flows through Make.com automatically.</p>
-<button class="btn-run" onclick="runScenario(0)">&#x25b6; Simulate Run</button>
 </div>
 
-<div id="scenario1" class="scenario-view" style="display:none">
-<div class="scenario-canvas">
-<div class="scenario-flow" id="flow1">
-<div class="module-node active"><span class="node-icon">&#x23f0;</span><span class="node-name">Schedule</span><span class="node-type">Every Day 9am</span></div>
-<div class="module-node"><span class="node-icon">&#x1f4be;</span><span class="node-name">Supabase</span><span class="node-type">Get Draft</span></div>
-<div class="module-node"><span class="node-icon">&#x1f9e0;</span><span class="node-name">Claude</span><span class="node-type">Polish Copy</span></div>
-<div class="module-node"><span class="node-icon">&#x1f310;</span><span class="node-name">CMS</span><span class="node-type">Publish Post</span></div>
-<div class="module-node"><span class="node-icon">&#x1f426;</span><span class="node-name">Twitter</span><span class="node-type">Post Thread</span></div>
-</div>
-</div>
+<div class="panel">
+<div class="label">Scenario 2: Content Publish</div>
+<p style="font-size:.9rem;color:#999"><strong>Schedule</strong> (Every Day 9am) &rarr; <strong>Supabase</strong> (Get Draft) &rarr; <strong>Claude</strong> (Polish Copy) &rarr; <strong>CMS</strong> (Publish Post) &rarr; <strong>Twitter</strong> (Post Thread)</p>
 <p style="font-size:.9rem;color:#999">Every morning, grab a draft from Supabase, have Claude polish it, publish to CMS, and auto-tweet.</p>
-<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — in production, this would run on a schedule and process real content.</p>
-<button class="btn-run" onclick="runScenario(1)">&#x25b6; Simulate Run</button>
 </div>
 
-<div id="scenario2" class="scenario-view" style="display:none">
-<div class="scenario-canvas">
-<div class="scenario-flow" id="flow2">
-<div class="module-node active"><span class="node-icon">&#x1f4b3;</span><span class="node-name">Stripe</span><span class="node-type">Webhook</span></div>
-<div class="module-node"><span class="node-icon">&#x1f527;</span><span class="node-name">Filter</span><span class="node-type">amount &gt; $50</span></div>
-<div class="module-node"><span class="node-icon">&#x1f4be;</span><span class="node-name">Supabase</span><span class="node-type">Log Revenue</span></div>
-<div class="module-node"><span class="node-icon">&#x1f4ac;</span><span class="node-name">Slack</span><span class="node-type">&#x1f389; Alert</span></div>
-</div>
-</div>
+<div class="panel">
+<div class="label">Scenario 3: Revenue Alert</div>
+<p style="font-size:.9rem;color:#999"><strong>Stripe</strong> (Webhook) &rarr; <strong>Filter</strong> (amount > $50) &rarr; <strong>Supabase</strong> (Log Revenue) &rarr; <strong>Slack</strong> (Alert)</p>
 <p style="font-size:.9rem;color:#999">When Stripe processes a payment over $50, log it and send a celebration alert to Slack.</p>
-<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — in production, you'd see real Stripe payment data flowing through.</p>
-<button class="btn-run" onclick="runScenario(2)">&#x25b6; Simulate Run</button>
 </div>
 
 <h2>How Modules Connect</h2>
@@ -86,27 +55,9 @@ joined_at: <span class="op">{{</span>now<span class="op">}}</span> <span class="
 </div>
 </div>
 
-<h2>Build Your Own Scenario</h2>
-<p>Drag modules from the palette into the canvas to create your own automation.</p>
+<h2>Building Your Own Scenario</h2>
 <p style="font-size:.85rem;color:#888"><strong>Tip:</strong> Start with a trigger (Webhook or Schedule), then add processing steps, and end with an output (Slack, Supabase, or Email). A good first scenario: <strong>Webhook &rarr; Supabase &rarr; Slack</strong> — receive data, store it, notify yourself.</p>
-
-<div class="palette" id="palette">
-<div class="palette-item" draggable="true" data-icon="&#x1f310;" data-name="Webhook" data-type="Trigger" ondragstart="drag(event)"><span class="p-icon">&#x1f310;</span>Webhook</div>
-<div class="palette-item" draggable="true" data-icon="&#x23f0;" data-name="Schedule" data-type="Timer" ondragstart="drag(event)"><span class="p-icon">&#x23f0;</span>Schedule</div>
-<div class="palette-item" draggable="true" data-icon="&#x1f4be;" data-name="Supabase" data-type="Database" ondragstart="drag(event)"><span class="p-icon">&#x1f4be;</span>Supabase</div>
-<div class="palette-item" draggable="true" data-icon="&#x1f9e0;" data-name="Claude" data-type="AI" ondragstart="drag(event)"><span class="p-icon">&#x1f9e0;</span>Claude</div>
-<div class="palette-item" draggable="true" data-icon="&#x1f4e7;" data-name="Resend" data-type="Email" ondragstart="drag(event)"><span class="p-icon">&#x1f4e7;</span>Resend</div>
-<div class="palette-item" draggable="true" data-icon="&#x1f4b3;" data-name="Stripe" data-type="Payments" ondragstart="drag(event)"><span class="p-icon">&#x1f4b3;</span>Stripe</div>
-<div class="palette-item" draggable="true" data-icon="&#x1f4ac;" data-name="Slack" data-type="Notify" ondragstart="drag(event)"><span class="p-icon">&#x1f4ac;</span>Slack</div>
-<div class="palette-item" draggable="true" data-icon="&#x1f527;" data-name="Filter" data-type="Logic" ondragstart="drag(event)"><span class="p-icon">&#x1f527;</span>Filter</div>
-</div>
-
-<div class="scenario-canvas" id="customCanvas" ondrop="drop(event)" ondragover="event.preventDefault()" style="min-height:120px">
-<div class="scenario-flow" id="customFlow">
-<p style="color:#444;font-size:.85rem;margin:0;padding:1rem">Drop modules here to build your scenario...</p>
-</div>
-</div>
-<button class="btn-run" onclick="clearCustom()">Clear</button>
+<p style="font-size:.9rem">The available modules in Make.com include: <strong>Webhook</strong> (trigger on HTTP POST), <strong>Schedule</strong> (timer-based trigger), <strong>Supabase</strong> (database operations), <strong>Claude</strong> (AI processing), <strong>Resend</strong> (email), <strong>Stripe</strong> (payments), <strong>Slack</strong> (notifications), and <strong>Filter</strong> (conditional logic). You chain these together in the Make.com visual editor to build your automation flows.</p>
 
 <div class="panel">
 <div class="label">Pro Tips</div>
@@ -117,9 +68,8 @@ joined_at: <span class="op">{{</span>now<span class="op">}}</span> <span class="
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
+<span>Lesson Progress</span>
 </div>
-<div class="progress-bar"></div>
 </div>
 <div class="footer">Like One Academy &copy; 2026</div>
 

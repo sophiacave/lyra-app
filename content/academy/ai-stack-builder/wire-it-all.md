@@ -16,108 +16,45 @@ free: false
 <h2>The Complete Architecture</h2>
 <p>Click any service to see its connections, data flows, and example code. Each node shows you what that service does and how it communicates with the others.</p>
 
-<div class="arch-diagram">
-<div class="arch-grid">
-<div class="arch-node" onclick="showNode('vercel')">
-<span class="node-icon">&#x25b2;</span>
-<span class="node-name">Vercel</span>
-<span class="node-desc">Frontend + Deploy</span>
-</div>
-<div class="arch-node" onclick="showNode('supabase')">
-<span class="node-icon">&#x26a1;</span>
-<span class="node-name">Supabase</span>
-<span class="node-desc">DB + Auth + Edge</span>
-</div>
-<div class="arch-node" onclick="showNode('stripe')">
-<span class="node-icon">&#x1f4b3;</span>
-<span class="node-name">Stripe</span>
-<span class="node-desc">Payments</span>
-</div>
-<div class="arch-node" onclick="showNode('resend')">
-<span class="node-icon">&#x1f4e7;</span>
-<span class="node-name">Resend</span>
-<span class="node-desc">Email</span>
-</div>
-<div class="arch-node" onclick="showNode('make')">
-<span class="node-icon">&#x1f527;</span>
-<span class="node-name">Make.com</span>
-<span class="node-desc">Automation</span>
-</div>
-<div class="arch-node" onclick="showNode('claude')">
-<span class="node-icon">&#x1f9e0;</span>
-<span class="node-name">Claude</span>
-<span class="node-desc">AI Intelligence</span>
-</div>
-</div>
-</div>
-
-<div class="connection-detail" id="connDetail">
-<div class="conn-header" id="connHeader"></div>
-<div class="conn-flow" id="connFlow"></div>
-<div class="code-block" id="connCode"></div>
+<div class="panel">
+<div class="label">The 6 Services</div>
+<p style="font-size:.9rem"><strong>Vercel</strong> — Frontend hosting + auto-deploy from GitHub. Serves your Next.js app from 50+ global edge servers.</p>
+<p style="font-size:.9rem"><strong>Supabase</strong> — Database + Auth + Edge Functions. Your data layer, user management, and serverless backend in one.</p>
+<p style="font-size:.9rem"><strong>Stripe</strong> — Payments. Hosts checkout pages, processes cards, sends webhooks on payment events.</p>
+<p style="font-size:.9rem"><strong>Resend</strong> — Email delivery. Sends transactional emails (welcome, receipts, notifications) via API.</p>
+<p style="font-size:.9rem"><strong>Make.com</strong> — Visual automation. Connects services that don't have direct integrations. No code required.</p>
+<p style="font-size:.9rem"><strong>Claude</strong> — AI intelligence. Powers the brain that coordinates everything, processes natural language, and makes decisions.</p>
 </div>
 
 <h2>Build It: Step by Step</h2>
 <p>Follow these 6 steps to wire the complete architecture. Click each to expand.</p>
 
-<div id="buildSteps">
-<div class="build-step" onclick="toggleStep(0)">
-<div class="build-step-header"><span class="build-step-title">1. Supabase: Create tables + RLS</span><span class="build-step-num">Foundation</span></div>
-<div class="build-step-body">
+<h3>Step 1: Supabase — Create tables + RLS (Foundation)</h3>
 <p style="font-size:.9rem;color:#999">Create brain_context, subscribers, and revenue tables. Enable RLS on all of them. This is your data layer.</p>
-<p style="font-size:.85rem;color:#888">This SQL creates two tables: <code style="color:#f59e0b">subscribers</code> stores everyone who signs up (with a unique email constraint so duplicates are rejected), and <code style="color:#f59e0b">revenue</code> tracks every payment with the Stripe session ID so you can cross-reference. Copy this SQL into your Supabase SQL Editor and run it.</p>
+<p style="font-size:.85rem;color:#888">The <code style="color:#f59e0b">subscribers</code> table stores everyone who signs up (with a unique email constraint so duplicates are rejected), and <code style="color:#f59e0b">revenue</code> tracks every payment with the Stripe session ID so you can cross-reference.</p>
 <div class="code-block"><span class="cm">-- Core tables</span><br><span class="kw">CREATE TABLE</span> subscribers (id <span class="fn">uuid</span> <span class="kw">DEFAULT</span> <span class="fn">gen_random_uuid</span>() <span class="kw">PRIMARY KEY</span>, email <span class="fn">text</span> <span class="kw">UNIQUE NOT NULL</span>, created_at <span class="fn">timestamptz</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>());<br><span class="kw">CREATE TABLE</span> revenue (id <span class="fn">uuid</span> <span class="kw">DEFAULT</span> <span class="fn">gen_random_uuid</span>() <span class="kw">PRIMARY KEY</span>, amount <span class="fn">int4</span>, product <span class="fn">text</span>, customer_email <span class="fn">text</span>, stripe_session_id <span class="fn">text</span>, created_at <span class="fn">timestamptz</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>());</div>
-<button class="check-btn" onclick="event.stopPropagation();markDone(0)">&#x2713; Done</button>
-</div>
-</div>
 
-<div class="build-step" onclick="toggleStep(1)">
-<div class="build-step-header"><span class="build-step-title">2. Edge Function: subscribe</span><span class="build-step-num">Email Capture</span></div>
-<div class="build-step-body">
+<h3>Step 2: Edge Function — subscribe (Email Capture)</h3>
 <p style="font-size:.9rem;color:#999">Edge function that receives email, stores in Supabase, sends welcome email via Resend.</p>
 <div class="code-block"><span class="kw">serve</span>(<span class="kw">async</span> (req) => {<br>&nbsp;&nbsp;<span class="kw">const</span> { email } = <span class="kw">await</span> req.<span class="fn">json</span>()<br>&nbsp;&nbsp;<span class="cm">// 1. Store in Supabase</span><br>&nbsp;&nbsp;<span class="kw">await</span> supabase.<span class="fn">from</span>(<span class="str">'subscribers'</span>).<span class="fn">insert</span>({ email })<br>&nbsp;&nbsp;<span class="cm">// 2. Send welcome via Resend</span><br>&nbsp;&nbsp;<span class="kw">await</span> resend.emails.<span class="fn">send</span>({ to: email, subject: <span class="str">'Welcome!'</span> })<br>&nbsp;&nbsp;<span class="kw">return new</span> <span class="fn">Response</span>(<span class="str">'ok'</span>)<br>})</div>
-<button class="check-btn" onclick="event.stopPropagation();markDone(1)">&#x2713; Done</button>
-</div>
-</div>
 
-<div class="build-step" onclick="toggleStep(2)">
-<div class="build-step-header"><span class="build-step-title">3. Edge Function: create-checkout</span><span class="build-step-num">Payments</span></div>
-<div class="build-step-body">
+<h3>Step 3: Edge Function — create-checkout (Payments)</h3>
 <p style="font-size:.9rem;color:#999">Creates a Stripe checkout session and returns the URL. Frontend redirects the user there.</p>
 <p style="font-size:.85rem;color:#888">This code tells Stripe "create a payment page for this product at this price." Stripe hosts the checkout page (you never touch credit card data), and redirects the user back to your success or cancel URL when done.</p>
 <div class="code-block"><span class="kw">const</span> session = <span class="kw">await</span> stripe.checkout.sessions.<span class="fn">create</span>({<br>&nbsp;&nbsp;mode: <span class="str">'payment'</span>,<br>&nbsp;&nbsp;line_items: [{ price: <span class="str">'price_xxx'</span>, quantity: <span class="num">1</span> }],<br>&nbsp;&nbsp;success_url: <span class="str">'https://likeone.ai/success'</span>,<br>&nbsp;&nbsp;cancel_url: <span class="str">'https://likeone.ai'</span>,<br>})<br><span class="kw">return new</span> <span class="fn">Response</span>(JSON.<span class="fn">stringify</span>({ url: session.url }))</div>
-<button class="check-btn" onclick="event.stopPropagation();markDone(2)">&#x2713; Done</button>
-</div>
-</div>
 
-<div class="build-step" onclick="toggleStep(3)">
-<div class="build-step-header"><span class="build-step-title">4. Stripe Webhook Handler</span><span class="build-step-num">Revenue Tracking</span></div>
-<div class="build-step-body">
+<h3>Step 4: Stripe Webhook Handler (Revenue Tracking)</h3>
 <p style="font-size:.9rem;color:#999">Listens for checkout.session.completed, logs revenue to Supabase, triggers Make.com notification.</p>
 <p style="font-size:.85rem;color:#888">This code verifies the Stripe webhook is genuine (not spoofed), checks if it's a completed checkout, and saves the payment amount and customer email to your revenue table.</p>
 <div class="code-block"><span class="kw">const</span> event = stripe.webhooks.<span class="fn">constructEvent</span>(body, sig, secret)<br><span class="kw">if</span> (event.type === <span class="str">'checkout.session.completed'</span>) {<br>&nbsp;&nbsp;<span class="kw">const</span> session = event.data.object<br>&nbsp;&nbsp;<span class="kw">await</span> supabase.<span class="fn">from</span>(<span class="str">'revenue'</span>).<span class="fn">insert</span>({<br>&nbsp;&nbsp;&nbsp;&nbsp;amount: session.amount_total,<br>&nbsp;&nbsp;&nbsp;&nbsp;customer_email: session.customer_email<br>&nbsp;&nbsp;})<br>}</div>
-<button class="check-btn" onclick="event.stopPropagation();markDone(3)">&#x2713; Done</button>
-</div>
-</div>
 
-<div class="build-step" onclick="toggleStep(4)">
-<div class="build-step-header"><span class="build-step-title">5. Vercel: Deploy frontend</span><span class="build-step-num">Go Live</span></div>
-<div class="build-step-body">
+<h3>Step 5: Vercel — Deploy frontend (Go Live)</h3>
 <p style="font-size:.9rem;color:#999">Push your Next.js app to GitHub. Vercel auto-deploys. Set environment variables for Supabase URL and anon key.</p>
 <div class="code-block"><span class="kw">git</span> add . && <span class="kw">git</span> commit -m <span class="str">"wire complete stack"</span><br><span class="kw">git</span> push origin main<br><span class="cm"># Vercel auto-deploys from main branch</span><br><span class="cm"># Set NEXT_PUBLIC_SUPABASE_URL in Vercel dashboard</span></div>
-<button class="check-btn" onclick="event.stopPropagation();markDone(4)">&#x2713; Done</button>
-</div>
-</div>
 
-<div class="build-step" onclick="toggleStep(5)">
-<div class="build-step-header"><span class="build-step-title">6. Make.com: Wire automations</span><span class="build-step-num">Glue</span></div>
-<div class="build-step-body">
+<h3>Step 6: Make.com — Wire automations (Glue)</h3>
 <p style="font-size:.9rem;color:#999">Create scenarios: new subscriber notification, revenue alert to Slack, daily analytics digest. Make.com connects everything that doesn't have a direct API integration.</p>
-<div class="code-block"><span class="cm">// Make.com Scenario: Revenue Alert</span><br>Trigger: Supabase webhook (new row in revenue)<br> &#x2192; Filter: amount > $50<br> &#x2192; Slack: Post to #revenue channel<br> &#x2192; Google Sheets: Log to spreadsheet</div>
-<button class="check-btn" onclick="event.stopPropagation();markDone(5)">&#x2713; Done</button>
-</div>
-</div>
-</div>
+<div class="code-block"><span class="cm">// Make.com Scenario: Revenue Alert</span><br>Trigger: Supabase webhook (new row in revenue)<br> &rarr; Filter: amount > $50<br> &rarr; Slack: Post to #revenue channel<br> &rarr; Google Sheets: Log to spreadsheet</div>
 
 <div class="panel">
 <div class="label">The Big Picture</div>
@@ -137,9 +74,8 @@ free: false
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
+<span>Lesson Progress</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
 <div class="footer">Like One Academy &copy; 2026</div>
 

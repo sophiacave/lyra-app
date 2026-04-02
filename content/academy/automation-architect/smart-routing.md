@@ -44,7 +44,7 @@ free: false
 
   <div class="section">
     <h2>Architecture: How Smart Routing Works</h2>
-    <p>The routing pipeline has four stages. Click each sample email below the diagram to see it flow through all four stages in real time.</p>
+    <p>The routing pipeline has four stages. An incoming message enters the AI classifier, which determines intent and confidence, then routes to the appropriate team.</p>
   </div>
 
   <!-- Workflow diagram -->
@@ -337,31 +337,29 @@ free: false
   </div>
 
   <div class="section">
-    <h2>Try It: Click an Email</h2>
-    <p>Click each sample email to see the AI classify its intent and route it to the correct team.</p>
-  </div>
+    <h2>Example: Classifying Real Emails</h2>
+    <p>Consider how the classifier would handle these three emails:</p>
 
-  <div class="email-grid">
-    <div class="email-card" id="email-billing" onclick="classifyEmail('billing')">
-      <div class="email-from">From: jane@acme.co</div>
-      <div class="email-subject">Invoice #4821 is incorrect</div>
-      <div class="email-preview">Hi, I was charged $299 instead of $199 on my last invoice. Can you correct this and issue a refund for the difference?</div>
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
+        <div style="font-size:.75rem;color:#71717a">From: jane@acme.co</div>
+        <div style="font-size:.85rem;color:#e2e8f0;font-weight:600;margin:.2rem 0">Invoice #4821 is incorrect</div>
+        <div style="font-size:.8rem;color:#a1a1aa">Hi, I was charged $299 instead of $199 on my last invoice. Can you correct this and issue a refund for the difference?</div>
+        <div style="font-size:.75rem;color:#34d399;margin-top:.4rem">AI routes to: <strong>Billing Team</strong> (high confidence — clear invoice/refund language)</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
+        <div style="font-size:.75rem;color:#71717a">From: mike@startup.io</div>
+        <div style="font-size:.85rem;color:#e2e8f0;font-weight:600;margin:.2rem 0">Dashboard not loading</div>
+        <div style="font-size:.8rem;color:#a1a1aa">Getting a blank white screen when I try to access the analytics dashboard. Cleared cache, tried different browser. Still broken.</div>
+        <div style="font-size:.75rem;color:#34d399;margin-top:.4rem">AI routes to: <strong>Support Team</strong> (high confidence — technical issue with troubleshooting steps)</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
+        <div style="font-size:.75rem;color:#71717a">From: cto@enterprise.com</div>
+        <div style="font-size:.85rem;color:#e2e8f0;font-weight:600;margin:.2rem 0">Enterprise plan for 500 seats</div>
+        <div style="font-size:.8rem;color:#a1a1aa">We're evaluating your platform for our engineering org (500+ people). Can we schedule a demo and discuss enterprise pricing?</div>
+        <div style="font-size:.75rem;color:#34d399;margin-top:.4rem">AI routes to: <strong>Sales Team</strong> (high confidence — demo request with enterprise sizing)</div>
+      </div>
     </div>
-    <div class="email-card" id="email-support" onclick="classifyEmail('support')">
-      <div class="email-from">From: mike@startup.io</div>
-      <div class="email-subject">Dashboard not loading</div>
-      <div class="email-preview">Getting a blank white screen when I try to access the analytics dashboard. Cleared cache, tried different browser. Still broken.</div>
-    </div>
-    <div class="email-card" id="email-sales" onclick="classifyEmail('sales')">
-      <div class="email-from">From: cto@enterprise.com</div>
-      <div class="email-subject">Enterprise plan for 500 seats</div>
-      <div class="email-preview">We're evaluating your platform for our engineering org (500+ people). Can we schedule a demo and discuss enterprise pricing?</div>
-    </div>
-  </div>
-
-  <div class="classification-result" id="classResult">
-    <div class="class-label">AI Classification</div>
-    <div style="color:#52525b;font-size:.85rem">Click an email above to see the AI route it</div>
   </div>
 
   <div class="section">

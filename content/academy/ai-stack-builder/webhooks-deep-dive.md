@@ -18,63 +18,35 @@ free: false
 <h2>How Webhooks Work</h2>
 <p>Click "Trigger Event" to watch data flow through the webhook pipeline step by step.</p>
 
-<div class="flow-diagram">
-<div class="flow-row">
-<div class="flow-box trigger" id="f1">&#x26a1; Event Occurs</div>
-<span class="flow-arrow-h" id="a1">&#x2192;</span>
-<div class="flow-box" id="f2">&#x1f4e8; HTTP POST</div>
-<span class="flow-arrow-h" id="a2">&#x2192;</span>
-<div class="flow-box endpoint" id="f3">&#x1f3af; Your Endpoint</div>
-<span class="flow-arrow-h" id="a3">&#x2192;</span>
-<div class="flow-box process" id="f4">&#x2699; Process</div>
-<span class="flow-arrow-h" id="a4">&#x2192;</span>
-<div class="flow-box respond" id="f5">&#x2705; 200 OK</div>
+<div class="panel">
+<div class="label">Webhook Flow</div>
+<p style="font-size:.9rem"><strong>Event Occurs</strong> &rarr; <strong>HTTP POST</strong> (with JSON payload like <code style="color:#f59e0b">{"type":"checkout.session.completed"}</code>) &rarr; <strong>Your Endpoint</strong> &rarr; <strong>Process</strong> (verify signature, handle event) &rarr; <strong>200 OK</strong> (respond quickly)</p>
+<p style="font-size:.85rem;color:#888">The key difference from regular API calls: with webhooks, the external service (Stripe, GitHub, etc.) initiates the request to YOUR server, not the other way around.</p>
 </div>
-<div class="flow-row">
-<div class="flow-packet" id="pkt1">{"type":"checkout.session.completed"}</div>
-</div>
-</div>
-<button class="test-btn" onclick="animateFlow()">&#x26a1; Trigger Event</button>
 
 <h2>Configure a Stripe Webhook</h2>
 <p>Build a real Stripe webhook configuration. Pick which events to listen for and set your endpoint URL.</p>
 <p style="font-size:.85rem;color:#888"><strong>Where to do this in production:</strong> Go to your <a href="https://dashboard.stripe.com/webhooks" target="_blank" style="color:#f59e0b">Stripe Dashboard</a> &rarr; Developers &rarr; Webhooks &rarr; "Add endpoint." Paste your Supabase Edge Function URL and select the events below. Stripe will give you a signing secret (starts with <code style="color:#888">whsec_</code>) — save it as an environment variable in Supabase.</p>
 
-<div class="config-section">
-<div class="config-group">
-<div class="config-label">Endpoint URL</div>
-<input class="config-input" id="webhookUrl" value="https://yourproject.supabase.co/functions/v1/stripe-webhook" placeholder="https://your-endpoint.com/webhook">
-</div>
-<div class="config-group">
-<div class="config-label">Events to Listen For</div>
-<p style="font-size:.8rem;color:#888;margin:.25rem 0 .5rem"><strong>Recommended for a course/product site:</strong> Start with <code style="color:#f59e0b">checkout.session.completed</code> (fires when someone pays) and <code style="color:#f59e0b">customer.subscription.deleted</code> (fires when someone cancels). Add others as your product grows.</p>
-<div class="event-grid" id="eventGrid">
-<div class="event-chip" onclick="toggleEvent(this)">checkout.session.completed</div>
-<div class="event-chip" onclick="toggleEvent(this)">payment_intent.succeeded</div>
-<div class="event-chip" onclick="toggleEvent(this)">payment_intent.failed</div>
-<div class="event-chip" onclick="toggleEvent(this)">customer.subscription.created</div>
-<div class="event-chip" onclick="toggleEvent(this)">customer.subscription.deleted</div>
-<div class="event-chip" onclick="toggleEvent(this)">invoice.paid</div>
-<div class="event-chip" onclick="toggleEvent(this)">invoice.payment_failed</div>
-<div class="event-chip" onclick="toggleEvent(this)">charge.refunded</div>
-</div>
-</div>
-<div class="config-group">
-<div class="config-label">Signing Secret</div>
-<input class="config-input" value="whsec_..." readonly style="color:#666">
-<p style="font-size:.8rem;color:#666;margin-top:.3rem">Always verify the signature to prevent spoofed events.</p>
-</div>
+<div class="panel">
+<div class="label">Stripe Webhook Configuration</div>
+<p style="font-size:.9rem"><strong>Endpoint URL:</strong> Your Supabase Edge Function URL, e.g. <code style="color:#f59e0b">https://yourproject.supabase.co/functions/v1/stripe-webhook</code></p>
+<p style="font-size:.9rem"><strong>Recommended events for a course/product site:</strong></p>
+<p style="font-size:.85rem;color:#999">
+<code style="color:#f59e0b">checkout.session.completed</code> — fires when someone pays<br>
+<code style="color:#f59e0b">payment_intent.succeeded</code> — payment confirmed<br>
+<code style="color:#f59e0b">payment_intent.failed</code> — payment failed<br>
+<code style="color:#f59e0b">customer.subscription.created</code> — new subscription<br>
+<code style="color:#f59e0b">customer.subscription.deleted</code> — subscription cancelled<br>
+<code style="color:#f59e0b">invoice.paid</code> — invoice payment successful<br>
+<code style="color:#f59e0b">invoice.payment_failed</code> — invoice payment failed<br>
+<code style="color:#f59e0b">charge.refunded</code> — refund processed
+</p>
+<p style="font-size:.85rem;color:#888"><strong>Signing Secret:</strong> Stripe provides a <code style="color:#f59e0b">whsec_...</code> secret when you create the endpoint. Store it as an environment variable and always verify the signature to prevent spoofed events.</p>
 </div>
 
-<h2>Test with Simulated Events</h2>
-<p>Click an event to see the exact payload Stripe would send to your endpoint.</p>
-<p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — the payloads below match Stripe's real format, but run in your browser. In production, Stripe sends these JSON payloads to your endpoint URL automatically when events occur.</p>
-
-<div style="display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0">
-<button class="test-btn" onclick="simulateEvent('checkout')">&#x1f4b3; Checkout Complete</button>
-<button class="test-btn" onclick="simulateEvent('payment')">&#x2705; Payment Succeeded</button>
-<button class="test-btn" onclick="simulateEvent('failed')">&#x274c; Payment Failed</button>
-</div>
+<h2>Understanding Stripe Event Payloads</h2>
+<p>When Stripe fires a webhook, it sends a JSON payload to your endpoint. You can test this in your Stripe dashboard under Developers &rarr; Webhooks &rarr; "Send test webhook." In production, these payloads arrive automatically when real events occur.</p>
 
 <div class="panel">
 <div class="label">Key Concept: Signature Verification</div>
@@ -107,9 +79,8 @@ free: false
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
+<span>Lesson Progress</span>
 </div>
-<div class="progress-bar"></div>
 </div>
 <div class="footer">Like One Academy &copy; 2026</div>
 

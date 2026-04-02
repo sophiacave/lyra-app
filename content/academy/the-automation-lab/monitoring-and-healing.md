@@ -83,26 +83,9 @@ check <span style="color:#fbbf24">"academy"</span> https://likeone.ai/academy/</
     </div>
   </div>
 
-  <h2 class="section-title">&#128200; Live Agent Dashboard</h2>
-  <div class="dashboard">
-    <div class="dash-title"><span class="dash-label">Agent Status Monitor</span><span class="dash-time" id="dash-time"></span></div>
-    <div class="inspect-panel" id="inspect-panel">
-      <div class="ip-header"><span class="ip-name" id="ip-name"></span><button class="ip-close" onclick="closeInspect()">&times;</button></div>
-      <p style="font-size:.8rem;color:#71717a;margin-bottom:.5rem">Choose the right fix:</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">&#129657; Build an Auto-Healer</h2>
-  <div class="healer-section">
-    <div class="heal-title">Auto-Healer Configuration</div>
-    <div class="heal-desc">An auto-healer is an agent that watches other agents and automatically fixes problems. Configure yours below.</div>
-    <div class="heal-config">
-      <div class="hc-field"><label>Watch Target</label><select id="h-target" onchange="updateHealPreview()"><option value="all">All Agents</option><option value="critical">Critical Only</option><option value="content">Content Pipeline</option></select></div>
-      <div class="hc-field"><label>Check Interval</label><select id="h-interval" onchange="updateHealPreview()"><option value="30s">Every 30 seconds</option><option value="1m">Every minute</option><option value="5m">Every 5 minutes</option></select></div>
-      <div class="hc-field"><label>On Error</label><select id="h-error" onchange="updateHealPreview()"><option value="restart">Auto-Restart</option><option value="rollback">Rollback to Last Good State</option><option value="escalate">Escalate to Human</option></select></div>
-      <div class="hc-field"><label>Max Retries</label><select id="h-retries" onchange="updateHealPreview()"><option value="1">1</option><option value="3">3</option><option value="5">5</option></select></div>
-      <div class="hc-field full"><label>Escalation Channel</label><select id="h-escalate" onchange="updateHealPreview()"><option value="slack">#ops-alerts (Slack)</option><option value="email">ops@likeone.ai (Email)</option><option value="both">Both</option></select></div>
-    </div>
+  <div class="section">
+    <h2>Auto-Healer Configuration</h2>
+    <p>An auto-healer is a supervisor agent that monitors other agents and automatically fixes problems. A typical configuration specifies: which agents to watch (all, critical only, or a specific pipeline), how often to check (every 30 seconds to every 5 minutes), the default action on error (restart, rollback, or escalate), a maximum retry count to prevent restart loops, and an escalation channel (Slack, email, or both) for when automatic fixes fail.</p>
   </div>
 
   <div class="section">

@@ -18,21 +18,21 @@ free: false
     <h2>The Three MCP Primitives</h2>
     <p>Think of MCP primitives as three different directions of information flow:</p>
 
-    <div class="primitives">
-      <div class="primitive-card tools-card active" onclick="showPrimitive('tools')">
-        <div class="icon">&#x2699;&#xFE0F;</div>
-        <h3>Tools</h3>
-        <p>Actions the AI can take</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);text-align:center">
+        <div style="font-size:1.5rem">&#x2699;&#xFE0F;</div>
+        <strong style="color:#8b5cf6;font-size:.85rem">Tools</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Actions the AI can take</p>
       </div>
-      <div class="primitive-card resources-card" onclick="showPrimitive('resources')">
-        <div class="icon">&#x1F4C4;</div>
-        <h3>Resources</h3>
-        <p>Data the AI can read</p>
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);text-align:center">
+        <div style="font-size:1.5rem">&#x1F4C4;</div>
+        <strong style="color:#34d399;font-size:.85rem">Resources</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Data the AI can read</p>
       </div>
-      <div class="primitive-card prompts-card" onclick="showPrimitive('prompts')">
-        <div class="icon">&#x1F4DD;</div>
-        <h3>Prompts</h3>
-        <p>Templates the user selects</p>
+      <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);text-align:center">
+        <div style="font-size:1.5rem">&#x1F4DD;</div>
+        <strong style="color:#fb923c;font-size:.85rem">Prompts</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Templates the user selects</p>
       </div>
     </div>
   </div>

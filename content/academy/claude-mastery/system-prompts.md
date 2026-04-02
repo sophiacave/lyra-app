@@ -103,59 +103,31 @@ response = client.messages.create(
 </div>
 
 <div class="card">
-<h2>Build Your System Prompt</h2>
-<p>Click blocks from the palette to add them to your prompt. Arrange the components to create the perfect system prompt.</p>
+<h2>Building a System Prompt — Example Blocks</h2>
+<p>A good system prompt assembles blocks from each component. Here is a practical example combining all five:</p>
 
-<div class="builder-grid">
-<div class="block-palette">
-<h3>Available Blocks</h3>
-<div class="draggable-block" data-type="identity" data-text="You are a senior software engineer with 15 years of experience in full-stack development." onclick="addBlock(this)">
-<span class="block-tag tag-identity">Identity</span>
-Senior Software Engineer
-</div>
-<div class="draggable-block" data-type="identity" data-text="You are a friendly writing tutor who specializes in helping beginners improve their creative writing." onclick="addBlock(this)">
-<span class="block-tag tag-identity">Identity</span>
-Writing Tutor
-</div>
-<div class="draggable-block" data-type="constraints" data-text="Never provide medical, legal, or financial advice. Always recommend consulting a professional for those topics." onclick="addBlock(this)">
-<span class="block-tag tag-constraints">Constraints</span>
-Safety Guardrails
-</div>
-<div class="draggable-block" data-type="constraints" data-text="Keep all responses under 200 words unless the user explicitly asks for more detail." onclick="addBlock(this)">
-<span class="block-tag tag-constraints">Constraints</span>
-Concise Responses
-</div>
-<div class="draggable-block" data-type="format" data-text="Always structure your response with: 1) A brief summary, 2) Detailed explanation, 3) Code example if applicable, 4) Next steps." onclick="addBlock(this)">
-<span class="block-tag tag-format">Format</span>
-Structured Response
-</div>
-<div class="draggable-block" data-type="format" data-text="Respond using markdown with headers, bullet points, and code blocks where appropriate." onclick="addBlock(this)">
-<span class="block-tag tag-format">Format</span>
-Markdown Output
-</div>
-<div class="draggable-block" data-type="tone" data-text="Be encouraging and supportive. Celebrate progress. Use analogies to explain complex concepts." onclick="addBlock(this)">
-<span class="block-tag tag-tone">Tone</span>
-Warm &amp; Encouraging
-</div>
-<div class="draggable-block" data-type="tone" data-text="Be direct and technical. Skip pleasantries. Focus on accuracy and efficiency." onclick="addBlock(this)">
-<span class="block-tag tag-tone">Tone</span>
-Direct &amp; Technical
-</div>
-</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+<pre style="margin:0"><code><span style="color:#8b5cf6"># Identity</span>
+You are a senior software engineer with 15 years
+of experience in full-stack development.
 
-<div>
-<h3 style="font-size:.85rem;font-weight:700;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem">Your System Prompt</h3>
-<div class="drop-zone" id="dropZone">
-<div class="drop-zone-placeholder" id="dzPlaceholder">Click blocks from the left to build your system prompt</div>
-</div>
-</div>
-</div>
-</div>
+<span style="color:#f87171"># Constraints</span>
+Never provide medical, legal, or financial advice.
+Keep all responses under 200 words unless the user
+explicitly asks for more detail.
 
-<div class="card">
-<h2>Preview</h2>
-<p>Your assembled system prompt:</p>
-<div class="preview-box" id="previewBox">Add blocks above to see your system prompt here...</div>
+<span style="color:#38bdf8"># Format</span>
+Always structure your response with:
+1) A brief summary
+2) Detailed explanation
+3) Code example if applicable
+4) Next steps
+
+<span style="color:#fb923c"># Tone</span>
+Be direct and technical. Skip pleasantries.
+Focus on accuracy and efficiency.</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">When building your own system prompts, select one block from each component category and combine them. The order matters — put Identity first, then Constraints, Format, and Tone. Claude pays the most attention to content at the beginning.</p>
 </div>
 
 <div class="card">
@@ -236,12 +208,22 @@ response = client.messages.create(
 </div>
 
 <div class="card">
-<h2>Test Against Scenarios</h2>
-<p>See how your system prompt would influence Claude's response to these user messages:</p>
-<div class="scenario-tabs">
-<button class="scenario-tab active" onclick="showScenario(0,this)">Debugging Help</button>
-<button class="scenario-tab" onclick="showScenario(1,this)">Explain Concept</button>
-<button class="scenario-tab" onclick="showScenario(2,this)">Review My Work</button>
+<h2>Testing Your System Prompt</h2>
+<p>A good way to validate a system prompt is to test it against different types of user messages. Try these scenarios and check if the responses match your expectations:</p>
+
+<div style="display:grid;gap:.75rem;margin-top:.75rem">
+<div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+<strong style="color:#8b5cf6;font-size:.85rem">Scenario 1: Debugging Help</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">User says: "My API is returning 500 errors intermittently." Does Claude respond in the correct format? Does it stay within the identity you defined?</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+<strong style="color:#fb923c;font-size:.85rem">Scenario 2: Explain a Concept</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">User says: "What is dependency injection?" Does Claude explain at the right level for your target audience? Does the tone match?</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+<strong style="color:#34d399;font-size:.85rem">Scenario 3: Review My Work</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">User shares code for review. Does Claude use the format you specified? Does it respect the constraints (e.g., not reviewing style if you said the linter handles that)?</p>
+</div>
 </div>
 </div>
 

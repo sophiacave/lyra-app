@@ -33,42 +33,24 @@ free: false
 </div>
 
 <div class="card">
-<h2>Architecture Diagram</h2>
-<p>Click on each component to learn more about its role:</p>
+<h2>Architecture Overview</h2>
+<p>The MCP architecture has three layers:</p>
 
-<div class="arch-diagram" id="archDiagram">
-<div class="arch-node active" id="nodeClient" style="left:50%;top:20px;transform:translateX(-50%);background:rgba(139,92,246,.15);border:2px solid rgba(139,92,246,.4)" onclick="showArchDetail('client')">
-<div class="arch-label" style="color:#8b5cf6">MCP CLIENT</div>
-<div class="arch-name">Claude Code / Claude Desktop</div>
-<div class="arch-sub">Discovers and calls tools via MCP</div>
+<div style="display:grid;gap:.75rem;margin-top:.75rem">
+<div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+<strong style="color:#8b5cf6;font-size:.88rem">MCP Client (Claude Code / Claude Desktop)</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The application that connects to MCP servers. It discovers available tools at startup and lets the AI model call them during conversations. Clients include Claude Code, Claude Desktop, Cursor, and Windsurf.</p>
 </div>
-
-<div class="arch-node" id="nodeServer" style="left:50%;top:140px;transform:translateX(-50%);background:rgba(56,189,248,.15);border:2px solid rgba(56,189,248,.4)" onclick="showArchDetail('server')">
-<div class="arch-label" style="color:#38bdf8">MCP SERVER</div>
-<div class="arch-name">Your Server (TypeScript/Python)</div>
-<div class="arch-sub">Exposes tools, resources, prompts</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+<strong style="color:#38bdf8;font-size:.88rem">MCP Server (Your TypeScript/Python Server)</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">A program you write that exposes tools, resources, and prompts via the MCP protocol. It runs locally and acts as a bridge between the AI model and your data sources.</p>
 </div>
-
-<div class="arch-node" id="nodeData1" style="left:10%;top:270px;background:rgba(251,146,60,.15);border:2px solid rgba(251,146,60,.4)" onclick="showArchDetail('data')">
-<div class="arch-label" style="color:#fb923c">DATA</div>
-<div class="arch-name">Files</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+<strong style="color:#fb923c;font-size:.88rem">Data Sources (Files, Databases, APIs)</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The actual data the server connects to — local files, PostgreSQL databases, REST APIs, and more. The MCP server translates AI tool calls into real data operations.</p>
 </div>
-<div class="arch-node" id="nodeData2" style="left:38%;top:270px;background:rgba(52,211,153,.15);border:2px solid rgba(52,211,153,.4)" onclick="showArchDetail('data')">
-<div class="arch-label" style="color:#34d399">DATA</div>
-<div class="arch-name">Database</div>
 </div>
-<div class="arch-node" id="nodeData3" style="right:10%;top:270px;background:rgba(244,114,182,.15);border:2px solid rgba(244,114,182,.4)" onclick="showArchDetail('data')">
-<div class="arch-label" style="color:#f472b6">DATA</div>
-<div class="arch-name">APIs</div>
-</div>
-
-<svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1">
-<line x1="50%" y1="80" x2="50%" y2="140" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
-<line x1="50%" y1="200" x2="20%" y2="270" stroke="#fb923c" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
-<line x1="50%" y1="200" x2="50%" y2="270" stroke="#34d399" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
-<line x1="50%" y1="200" x2="80%" y2="270" stroke="#f472b6" stroke-width="2" stroke-dasharray="6 3" style="animation:dashFlow 1s linear infinite"/>
-</svg>
-</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.75rem">The flow is: Client discovers server tools at startup → AI model decides to call a tool → Client sends the call to the server → Server executes against data sources → Result flows back to the AI model.</p>
 </div>
 
 <div class="card">
@@ -166,33 +148,28 @@ server.tool(
 
 <div class="card">
 <h2>MCP Server Types</h2>
-<p>Click each server type to see its use cases:</p>
+<p>MCP servers can connect to virtually any data source. Here are the most common types:</p>
 
-<div class="server-types">
-<div class="server-card" onclick="showServer(0,this)">
-<div class="server-emoji">📁</div>
-<div class="server-name">Filesystem Server</div>
-<div class="server-desc">Read, write, and search files on the local machine</div>
+<div style="display:grid;gap:.75rem;margin-top:.75rem">
+<div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+<strong style="color:#8b5cf6;font-size:.88rem">Filesystem Server</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Read, write, and search files on the local machine. Common for code editors and document management. Claude can browse your project files, read configs, and write output.</p>
 </div>
-<div class="server-card" onclick="showServer(1,this)">
-<div class="server-emoji">🗄️</div>
-<div class="server-name">Database Server</div>
-<div class="server-desc">Query PostgreSQL, SQLite, or any database</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+<strong style="color:#34d399;font-size:.88rem">Database Server</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Query PostgreSQL, SQLite, or any database. Claude can run SELECT queries, analyze schemas, and help with data exploration without needing direct database access.</p>
 </div>
-<div class="server-card" onclick="showServer(2,this)">
-<div class="server-emoji">🌐</div>
-<div class="server-name">API Server</div>
-<div class="server-desc">Connect to REST APIs, webhooks, and web services</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+<strong style="color:#fb923c;font-size:.88rem">API Server</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Connect to REST APIs, webhooks, and web services. Turn any third-party API (Slack, GitHub, Notion) into tools Claude can use directly in conversation.</p>
 </div>
-<div class="server-card" onclick="showServer(3,this)">
-<div class="server-emoji">🔍</div>
-<div class="server-name">Search Server</div>
-<div class="server-desc">Web search, semantic search, vector databases</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+<strong style="color:#38bdf8;font-size:.88rem">Search Server</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Web search, semantic search, and vector databases. Enable Claude to find current information or search your private knowledge base using embeddings.</p>
 </div>
-<div class="server-card" onclick="showServer(4,this)">
-<div class="server-emoji">🛠️</div>
-<div class="server-name">Custom Server</div>
-<div class="server-desc">Build your own for any data source</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+<strong style="color:#f472b6;font-size:.88rem">Custom Server</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Build your own for any data source. The MCP SDK makes it straightforward to wrap any functionality — from smart home devices to internal business tools.</p>
 </div>
 </div>
 </div>

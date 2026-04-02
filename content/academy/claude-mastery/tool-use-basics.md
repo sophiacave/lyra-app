@@ -62,7 +62,6 @@ free: false
 </div>
 </div>
 
-<button class="run-btn" id="runBtn" onclick="runFlow()">Run the Flow</button>
 </div>
 
 <div class="card">
@@ -199,35 +198,31 @@ answer = run_agent(
 </div>
 
 <div class="card">
-<h2>Build a Tool Definition</h2>
-<p>Define a tool that Claude can use. Fill in the fields below to see the JSON schema update in real-time.</p>
+<h2>Anatomy of a Tool Definition</h2>
+<p>Every tool definition has three parts: a name, a description, and an input schema. Here is what the weather tool definition looks like as the JSON Claude receives:</p>
 
-<div class="tool-builder">
-<div>
-<label>Tool Name</label>
-<input type="text" id="toolName" placeholder="e.g., get_weather" value="get_weather" oninput="updatePreview()">
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JSON — tool definition schema</div>
+<pre style="margin:0;color:#e5e5e5"><code>{
+  <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"get_weather"</span>,
+  <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Get the current weather for a given location. Returns temperature, conditions, and humidity."</span>,
+  <span style="color:#fbbf24">"input_schema"</span>: {
+    <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"object"</span>,
+    <span style="color:#fbbf24">"properties"</span>: {
+      <span style="color:#fbbf24">"location"</span>: {
+        <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"string"</span>,
+        <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"City name, e.g. Tokyo"</span>
+      },
+      <span style="color:#fbbf24">"units"</span>: {
+        <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"string"</span>,
+        <span style="color:#fbbf24">"enum"</span>: [<span style="color:#fbbf24">"celsius"</span>, <span style="color:#fbbf24">"fahrenheit"</span>]
+      }
+    },
+    <span style="color:#fbbf24">"required"</span>: [<span style="color:#fbbf24">"location"</span>]
+  }
+}</code></pre>
 </div>
-<div>
-<label>Description</label>
-<textarea id="toolDesc" placeholder="What does this tool do?" rows="2" oninput="updatePreview()">Get the current weather for a given location. Returns temperature, conditions, and humidity.</textarea>
-</div>
-<div>
-<label>Parameters</label>
-<div id="paramList">
-<div class="param-row">
-<div><label style="font-size:.7rem">Name</label><input type="text" class="p-name" value="location" oninput="updatePreview()"></div>
-<div><label style="font-size:.7rem">Type</label><input type="text" class="p-type" value="string" oninput="updatePreview()"></div>
-<button class="remove-param" onclick="this.parentElement.remove();updatePreview()">x</button>
-</div>
-<div class="param-row">
-<div><label style="font-size:.7rem">Name</label><input type="text" class="p-name" value="units" oninput="updatePreview()"></div>
-<div><label style="font-size:.7rem">Type</label><input type="text" class="p-type" value="string" oninput="updatePreview()"></div>
-<button class="remove-param" onclick="this.parentElement.remove();updatePreview()">x</button>
-</div>
-</div>
-<button class="add-param-btn" onclick="addParam()">+ Add Parameter</button>
-</div>
-</div>
+<p style="font-size:.85rem;color:#a1a1aa">The <strong>name</strong> should be descriptive and use snake_case. The <strong>description</strong> tells Claude when to use the tool and what it returns. The <strong>input_schema</strong> uses JSON Schema to define parameters — including types, descriptions, enums, and which fields are required. Good descriptions are critical: Claude chooses tools based on their name and description, so "get_current_weather" with a clear description outperforms "do_thing" with none.</p>
 </div>
 
 <div class="card">

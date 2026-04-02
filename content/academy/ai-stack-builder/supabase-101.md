@@ -19,61 +19,28 @@ free: true
 <p>Every Supabase project is a Postgres database. Data lives in tables. Let's build one interactively.</p>
 
 <div class="panel">
-<div class="label">Interactive Table Builder</div>
-<h3 style="margin-top:0">brain_context</h3>
-<p style="font-size:.9rem">This table stores your AI agent's memory — key-value pairs with metadata.</p>
-<div class="table-builder">
-<div class="table-header"><span>Column Name</span><span>Type</span><span>Key</span><span></span></div>
-<div id="tableRows">
-<div class="table-row">
-<input value="id" readonly style="color:#f59e0b">
-<select disabled><option>uuid</option></select>
-<span class="pk">PK</span>
-<span class="del-col"></span>
+<div class="label">brain_context Table Structure</div>
+<p style="font-size:.9rem">This table stores your AI agent's memory — key-value pairs with metadata. Here are the columns:</p>
+<div class="code-block">
+<span class="kw">id</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">uuid</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">-- Primary Key</span><br>
+<span class="kw">key</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">text</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">-- Unique identifier (e.g. "identity.name")</span><br>
+<span class="kw">value</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">jsonb</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">-- Flexible JSON data</span><br>
+<span class="kw">updated_at</span>&nbsp;<span class="fn">timestamptz</span>&nbsp;&nbsp;<span class="cm">-- Last modified timestamp</span>
 </div>
-<div class="table-row">
-<input value="key" placeholder="column name">
-<select><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>jsonb</option><option>timestamptz</option></select>
-<span class="pk"></span>
-<span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>
-</div>
-<div class="table-row">
-<input value="value" placeholder="column name">
-<select><option value="jsonb">jsonb (flexible JSON data)</option><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>timestamptz</option></select>
-<span class="pk"></span>
-<span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>
-</div>
-<div class="table-row">
-<input value="updated_at" placeholder="column name">
-<select><option>timestamptz</option><option>text</option><option>uuid</option><option>int8</option><option>bool</option><option>jsonb</option></select>
-<span class="pk"></span>
-<span class="del-col"><button class="del-btn" onclick="delRow(this)">&times;</button></span>
-</div>
-</div>
-<button class="add-col-btn" onclick="addColumn()">+ Add Column</button>
-</div>
-<button class="run-btn" onclick="generateSQL()" style="border-radius:8px;margin-top:.75rem;border:1px solid #1e1e2e">Generate SQL &rarr;</button>
 </div>
 
-<div class="sql-output panel" id="sqlPanel" style="display:none">
-<div class="label">Generated SQL</div>
-<button class="copy-btn" onclick="copySQL()">Copy</button>
-<div class="success-msg" id="copyMsg">Copied!</div>
-</div>
-
-<h2>Step 2: SQL Sandbox</h2>
-<p>Supabase lets you run raw SQL. Practice querying your brain_context table.</p>
-<p style="font-size:.85rem;color:#888;font-style:italic">This is a simulation — it runs against sample data in your browser, not a real database. In production, you'd run these same queries in the Supabase SQL Editor against your actual tables.</p>
+<h2>Step 2: Essential SQL Queries</h2>
+<p>Supabase lets you run raw SQL. Here are the essential queries for working with your brain_context table. Run these in the Supabase SQL Editor in your dashboard.</p>
 
 <div class="panel">
-<div class="label">SQL Sandbox</div>
-<div class="sandbox">
-<textarea id="sqlInput" placeholder="-- Try a query. Examples:
--- SELECT * FROM brain_context;
--- INSERT INTO brain_context (key, value) VALUES ('mood', '&quot;curious&quot;');
--- SELECT key, value FROM brain_context WHERE key LIKE 'session%';
-">SELECT * FROM brain_context;</textarea>
-<button class="run-btn" onclick="runQuery()">&#x25b6; Run Query</button>
+<div class="label">Common Queries</div>
+<div class="code-block">
+<span class="cm">-- Fetch all rows</span><br>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> brain_context;<br><br>
+<span class="cm">-- Insert a new key-value pair</span><br>
+<span class="kw">INSERT INTO</span> brain_context (key, value) <span class="kw">VALUES</span> (<span class="str">'mood'</span>, <span class="str">'"curious"'</span>);<br><br>
+<span class="cm">-- Filter by key pattern</span><br>
+<span class="kw">SELECT</span> key, value <span class="kw">FROM</span> brain_context <span class="kw">WHERE</span> key <span class="kw">LIKE</span> <span class="str">'session%'</span>;
 </div>
 </div>
 
@@ -176,9 +143,8 @@ free: true
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
+<span>Lesson Progress</span>
 </div>
-<div class="progress-bar"></div>
 </div>
 <div class="footer">Like One Academy &copy; 2026</div>
 

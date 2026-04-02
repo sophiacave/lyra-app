@@ -22,18 +22,6 @@ free: false
     </div>
   </div>
 
-  <h2 class="section-title">&#9888;&#65039; The Race Condition</h2>
-  <div class="race-demo">
-    <div class="race-title">Watch two agents collide</div>
-    <div class="race-scene">
-      <div class="race-agent"><div class="race-av" id="ra-a">&#129302;</div><div class="race-name">Agent A</div></div>
-      <div class="race-data" id="race-data"><div class="race-data-icon">&#128451;&#65039;</div><div class="race-data-label">user.balance</div><div class="race-data-val" id="race-val">$100</div></div>
-      <div class="race-agent"><div class="race-av" id="ra-b">&#129302;</div><div class="race-name">Agent B</div></div>
-    </div>
-    <div class="race-log" id="race-log">Click "Run Race Condition" to see what happens...</div>
-    <button class="race-btn" onclick="runRace()">&#9889; Run Race Condition</button>
-  </div>
-
   <div class="section">
     <h2>Three Solutions</h2>
     <p>Every conflict resolution strategy in computing — from database transactions to distributed systems — falls into one of three categories:</p>
@@ -109,9 +97,6 @@ queue = [
     </div>
     <p style="font-size:.82rem;color:#71717a">Production databases handle this natively through transactions. <code>BEGIN ... COMMIT</code> groups operations atomically — if any step fails, the entire transaction rolls back.</p>
   </div>
-
-  <h2 class="section-title">&#127919; Choose the Right Strategy</h2>
-  <div class="scenarios" id="scenarios"></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Conflict Resolution Strategies","questions":[{"q":"Two agents need to update a user subscription simultaneously. Operations are quick (<1 second). Best strategy?","options":["Conscience Layer","Priority Queue","Locking","Swarm pattern"],"correct":2,"explanation":"Quick operations plus two writers equals locking. Acquire lock, write, release. Simple and effective for fast operations."},{"q":"Five agents submit reports to a dashboard. Security alerts must appear before routine analytics. Best strategy?","options":["Locking","Conscience Layer","Swarm","Priority Queue"],"correct":3,"explanation":"Different importance levels call for a priority queue. Security agents get higher priority and their writes are processed first."},{"q":"An agent wants to delete user data for GDPR compliance. Another wants to retain it for fraud investigation. Both are valid. Best strategy?","options":["Locking","Priority Queue","Conscience Layer","Rollback"],"correct":2,"explanation":"Ethical conflict with competing valid interests requires the conscience layer \u2014 an arbiter must weigh values (privacy vs. safety) and make a judgment call."},{"q":"What is a race condition?","options":["An agent running faster than expected","Two agents reading and writing the same data simultaneously, causing one write to be lost","A scheduling conflict between cron jobs","A memory overflow error"],"correct":1,"explanation":"A race condition occurs when two agents both read the same value, calculate changes independently, and then both write \u2014 the second write overwrites the first."},{"q":"What is a deadlock?","options":["When an agent runs out of memory","When Agent A locks resource X and waits for Y, while Agent B locks Y and waits for X \u2014 neither can proceed","When a database transaction is too slow","When an agent loses its identity"],"correct":1,"explanation":"Deadlocks happen when two agents each hold a lock the other needs. Neither can proceed. Prevented by always acquiring locks in the same order, or using lock timeouts."}]}'></div>
 

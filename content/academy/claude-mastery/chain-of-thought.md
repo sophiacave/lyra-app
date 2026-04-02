@@ -146,17 +146,16 @@ response = client.messages.create(
 </div>
 
 <div class="card">
-<h2>Watch the Thinking Process</h2>
-<p>Select a question and watch Claude's chain-of-thought reasoning build in real-time:</p>
-<div class="question-select">
-<button class="q-btn active" onclick="selectQuestion(0,this)">Math Puzzle</button>
-<button class="q-btn" onclick="selectQuestion(1,this)">Logic Problem</button>
-<button class="q-btn" onclick="selectQuestion(2,this)">Code Debug</button>
+<h2>How the Thinking Process Works</h2>
+<p>When Claude uses chain-of-thought, its reasoning unfolds in a visible sequence. For a math puzzle, it might look like this:</p>
+
+<div style="display:grid;gap:.5rem;margin-top:.75rem">
+<div style="padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border-left:3px solid #8b5cf6;font-size:.85rem;color:#a1a1aa"><strong style="color:#8b5cf6">Step 1:</strong> Identify the key variables and constraints in the problem.</div>
+<div style="padding:.75rem 1rem;background:rgba(56,189,248,.04);border-radius:8px;border-left:3px solid #38bdf8;font-size:.85rem;color:#a1a1aa"><strong style="color:#38bdf8">Step 2:</strong> Break the problem into sub-problems that can be solved sequentially.</div>
+<div style="padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border-left:3px solid #fb923c;font-size:.85rem;color:#a1a1aa"><strong style="color:#fb923c">Step 3:</strong> Solve each sub-problem, checking intermediate results for consistency.</div>
+<div style="padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border-left:3px solid #34d399;font-size:.85rem;color:#a1a1aa"><strong style="color:#34d399">Step 4:</strong> Combine results and verify the final answer against the original constraints.</div>
 </div>
-<div class="thinking-canvas" id="thinkCanvas">
-<svg class="connections" id="connSvg"></svg>
-<button class="play-btn" id="playBtn" onclick="playAnimation()">Watch Claude Think</button>
-</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.75rem">This pattern applies to math puzzles, logic problems, and code debugging alike. The key is that each step becomes context for the next — allowing Claude to catch errors mid-reasoning rather than jumping to a wrong conclusion.</p>
 </div>
 
 <div class="card">
@@ -189,15 +188,7 @@ response = client.messages.create(
 <div style="background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;padding:1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.95rem">
 <strong>Question:</strong> A farmer has a fox, a chicken, and a bag of grain. He needs to cross a river in a boat that can only carry him and one item at a time. If left alone, the fox will eat the chicken, and the chicken will eat the grain. How can he get everything across safely?
 </div>
-<textarea id="cotPrompt" placeholder="Write your chain-of-thought prompt here. Include instructions that will make Claude reason through the problem step by step..."></textarea>
-<button class="analyze-btn" onclick="analyzePrompt()">Analyze My Prompt</button>
-<div class="score-card" id="scoreCard">
-<div class="score-circle" id="scoreCircle" style="background:rgba(139,92,246,.2);color:#8b5cf6">?</div>
-<div class="score-detail">
-<h3 id="scoreTitle">Analysis</h3>
-<p id="scoreText"></p>
-</div>
-</div>
+<p style="font-size:.85rem;color:#a1a1aa;margin-top:.75rem">A good CoT prompt for this problem would include: "Think step by step. List all constraints first. Consider what happens if you leave each pair alone. Then find a sequence of crossings that satisfies all constraints."</p>
 
 <div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:12px;padding:1.25rem;margin-top:1rem;font-size:.85rem;color:#a1a1aa;line-height:1.7">
 <strong style="color:#34d399">Solution (spoiler):</strong> Take chicken across. Return empty. Take fox across. Bring chicken back. Take grain across. Return empty. Take chicken across. The key insight: the chicken is the problem — it conflicts with both others. So it needs to travel back once.

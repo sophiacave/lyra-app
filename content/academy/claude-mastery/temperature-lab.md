@@ -94,43 +94,26 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 </div>
 
 <div class="card">
-<h2>Temperature Playground</h2>
-<p>Adjust the temperature slider and generate outputs to see the difference in real-time.</p>
+<h2>Temperature in Practice — Same Prompt, Different Results</h2>
+<p>To understand temperature intuitively, consider the prompt "Write a product name for a sleep aid." Here is what you might get at different temperature settings:</p>
 
-<div class="temp-display">
-<div class="temp-value" id="tempVal">0.50</div>
-<div class="temp-label" id="tempLabel">Balanced</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+<div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+<strong style="color:#38bdf8;font-size:.85rem">Temperature 0.0 (Deterministic)</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Output: "SleepWell"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "SleepWell"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "SleepWell"</p>
+<p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0">Always the same — the most probable answer every time.</p>
 </div>
-
-<div class="slider-container">
-<input type="range" id="tempSlider" min="0" max="100" value="50" oninput="updateTemp()">
-<div class="slider-labels">
-<span>0.0 — Deterministic</span>
-<span>0.5 — Balanced</span>
-<span>1.0 — Maximum Creativity</span>
-</div>
-</div>
-
-<p style="font-size:.9rem;margin-top:1rem">Choose a prompt:</p>
-<div class="prompt-selector">
-<button class="prompt-btn active" onclick="selectPrompt(0,this)">Write a product name</button>
-<button class="prompt-btn" onclick="selectPrompt(1,this)">Describe a sunset</button>
-<button class="prompt-btn" onclick="selectPrompt(2,this)">Explain gravity</button>
-<button class="prompt-btn" onclick="selectPrompt(3,this)">Write a story opener</button>
-</div>
-
-<button class="gen-btn" id="genBtn" onclick="generate()">Generate at Current Temperature</button>
-
-<div class="output-grid">
-<div class="output-box">
-<div class="output-label" style="color:#38bdf8">🧊 Low Temperature (0.0-0.3)</div>
-<div class="output-text" id="outLow">Click generate to see output...</div>
-</div>
-<div class="output-box">
-<div class="output-label" style="color:#f87171">🔥 High Temperature (0.7-1.0)</div>
-<div class="output-text" id="outHigh">Click generate to see output...</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
+<strong style="color:#f87171;font-size:.85rem">Temperature 0.8 (Creative)</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Output: "DreamDrift"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "NightHaven"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "LunaRest"</p>
+<p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0">Different each time — less probable tokens get a real chance.</p>
 </div>
 </div>
+<p style="font-size:.85rem;color:#71717a">Try this yourself: run the same prompt at temperature 0 five times (identical results), then at temperature 0.8 five times (five different creative answers). The difference is immediately obvious.</p>
 </div>
 
 <div class="card">

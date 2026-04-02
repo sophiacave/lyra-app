@@ -20,23 +20,26 @@ free: false
 
   <div class="section">
     <h2>The Four Patterns</h2>
-    <p><strong>Click each pattern</strong> to see its animation and learn when to use it:</p>
-  </div>
+    <p>Here are the four patterns at a glance:</p>
 
-  <div class="patterns-grid">
-    <div class="pattern-card active" onclick="selectPattern(0)"><div class="pattern-icon">&#8594;</div><div class="pattern-name">Pipeline</div><div class="pattern-desc">A &rarr; B &rarr; C. Sequential. Each agent's output becomes the next agent's input.</div></div>
-    <div class="pattern-card" onclick="selectPattern(1)"><div class="pattern-icon">&#128268;</div><div class="pattern-name">Fan-Out</div><div class="pattern-desc">A &rarr; B, C, D. Parallel. One agent triggers many simultaneously.</div></div>
-    <div class="pattern-card" onclick="selectPattern(2)"><div class="pattern-icon">&#128065;&#65039;</div><div class="pattern-name">Supervisor</div><div class="pattern-desc">S monitors A, B, C. Overseer watches workers and intervenes when needed.</div></div>
-    <div class="pattern-card" onclick="selectPattern(3)"><div class="pattern-icon">&#129704;</div><div class="pattern-name">Swarm</div><div class="pattern-desc">All agents coordinate peer-to-peer. No hierarchy. Emergent behavior.</div></div>
-  </div>
-
-  <div class="pattern-demo">
-    <div class="demo-header">
-      <div class="demo-title" id="demo-title">Pipeline Pattern</div>
-      <button class="demo-play" onclick="playDemo()">&#9654; Animate</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6;font-size:.85rem">&#8594; Pipeline</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">A &rarr; B &rarr; C. Sequential. Each agent's output becomes the next agent's input.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">&#128268; Fan-Out</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">A &rarr; B, C, D. Parallel. One agent triggers many simultaneously.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c;font-size:.85rem">&#128065;&#65039; Supervisor</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">S monitors A, B, C. Overseer watches workers and intervenes when needed.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">&#129704; Swarm</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">All agents coordinate peer-to-peer. No hierarchy. Emergent behavior.</p>
+      </div>
     </div>
-    <div class="demo-canvas" id="demo-canvas"></div>
-    <pre class="demo-log" id="demo-log"></pre>
   </div>
 
   <div class="section">
@@ -87,10 +90,6 @@ free: false
     </div>
     <p style="font-size:.82rem;color:#71717a">Most production systems combine patterns. A supervisor might manage a pipeline of fan-out workers. The patterns are building blocks, not mutually exclusive.</p>
   </div>
-
-  <h2 class="section-title">&#129504; When to Use Which?</h2>
-  <div id="quiz-section"></div>
-  <div class="quiz-fb" id="quiz-fb" style="display:none"></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Orchestration Patterns Quiz","questions":[{"q":"You need to process user uploads: validate, then resize, then store, then notify. What pattern?","options":["Fan-Out","Pipeline","Supervisor","Swarm"],"correct":1,"explanation":"Sequential processing where each step depends on the previous \u2014 classic Pipeline pattern. Validate must finish before resize starts."},{"q":"A new blog post needs to be shared on Twitter, LinkedIn, Email, and Slack simultaneously. What pattern?","options":["Pipeline","Supervisor","Fan-Out","Swarm"],"correct":2,"explanation":"One trigger, multiple independent actions in parallel \u2014 Fan-Out pattern. Each channel is independent."},{"q":"You have 5 unreliable scraping agents and need one to watch them all and restart failures. What pattern?","options":["Fan-Out","Swarm","Pipeline","Supervisor"],"correct":3,"explanation":"A dedicated overseer monitoring workers and intervening on failure \u2014 Supervisor pattern."},{"q":"What is the key characteristic of the Swarm pattern?","options":["One master agent controls all workers","Agents process tasks sequentially","Agents coordinate peer-to-peer with no central hierarchy","A scheduler triggers agents one by one"],"correct":2,"explanation":"Swarms have no hierarchy \u2014 agents coordinate directly through shared state. Behavior emerges from their interactions."},{"q":"A supervisor agent crashes. What happens to the workers?","options":["They all stop immediately","They keep running but nobody monitors or recovers failures","They automatically elect a new supervisor","Nothing \u2014 supervisors are optional"],"correct":1,"explanation":"The supervisor is a single point of failure. Workers continue running, but if they fail, nobody restarts them. Solution: make the supervisor stateless and restartable."}]}'></div>
 

@@ -15,53 +15,14 @@ free: false
 </header>
 
 <div class="content">
-  <div class="palette">
-    <h2>Component Palette</h2>
-    <p>Click components to add them to your workflow canvas. Build a pipeline that processes incoming data with AI.</p>
-    <div class="palette-grid" id="paletteGrid">
-      <div class="palette-item pi-trigger" onclick="addComponent('trigger')" id="pal-trigger">
-        <div class="pi-icon">&#9889;</div>
-        <div class="pi-name">Webhook Trigger</div>
-        <div class="pi-type">trigger</div>
-      </div>
-      <div class="palette-item pi-ai" onclick="addComponent('ai')" id="pal-ai">
-        <div class="pi-icon">&#129504;</div>
-        <div class="pi-name">AI Classify</div>
-        <div class="pi-type">ai (claude)</div>
-      </div>
-      <div class="palette-item pi-filter" onclick="addComponent('filter')" id="pal-filter">
-        <div class="pi-icon">&#128269;</div>
-        <div class="pi-name">Filter</div>
-        <div class="pi-type">condition</div>
-      </div>
-      <div class="palette-item pi-transform" onclick="addComponent('transform')" id="pal-transform">
-        <div class="pi-icon">&#128260;</div>
-        <div class="pi-name">Transform</div>
-        <div class="pi-type">reshape data</div>
-      </div>
-      <div class="palette-item pi-action" onclick="addComponent('action')" id="pal-action">
-        <div class="pi-icon">&#128640;</div>
-        <div class="pi-name">Send to Team</div>
-        <div class="pi-type">action</div>
-      </div>
-    </div>
+  <div style="padding:0 1.5rem;margin:1.5rem 0">
+    <h2>AI Workflow Components</h2>
+    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">An AI workflow is a pipeline of components that process data in sequence. Each component has a specific role: a <strong>trigger</strong> receives incoming data, an <strong>AI classifier</strong> analyzes intent, a <strong>filter</strong> gates by confidence, a <strong>transform</strong> reshapes the output, and an <strong>action</strong> delivers the result. The code example below shows exactly how these components connect in production.</p>
   </div>
-
-  <div class="canvas" id="canvas">
-    <div class="canvas-label" id="canvasEmpty">Click components above to build your workflow</div>
-    <div id="canvasFlow"></div>
-    </div>
-
-  <div class="sim-log" id="simLog"></div>
-
-  <div class="run-area">
-    <button class="run-btn" id="runBtn" disabled onclick="runSimulation()">Run Simulation</button>
-  </div>
-
 
   <div style="padding:0 1.5rem;margin:1.5rem 0">
     <h2>The Code Behind the Canvas</h2>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">The visual builder above maps directly to real code. Here is a complete AI workflow script that does exactly what the canvas simulates — receive data, classify it with an LLM, filter by confidence, transform the output, and route it to the right team:</p>
+    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Here is a complete AI workflow script — receive data, classify it with an LLM, filter by confidence, transform the output, and route it to the right team:</p>
 
     <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Complete AI classification workflow</div>

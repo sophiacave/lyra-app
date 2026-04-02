@@ -14,16 +14,7 @@ free: false
   <h1>Connecting to Claude</h1>
   <p class="subtitle">Walk through the four phases of connecting an MCP server to Claude Desktop or Claude Code -- from installation to live tool usage. Click each phase tab below to walk through the process step by step.</p>
 
-  <div class="phase-nav">
-    <div class="phase-tab active" onclick="goPhase(0)" id="ptab0"><span class="num">1</span>Install</div>
-    <div class="phase-tab" onclick="goPhase(1)" id="ptab1"><span class="num">2</span>Configure</div>
-    <div class="phase-tab" onclick="goPhase(2)" id="ptab2"><span class="num">3</span>Discover</div>
-    <div class="phase-tab" onclick="goPhase(3)" id="ptab3"><span class="num">4</span>Use</div>
-  </div>
-
-  <!-- Phase 1: Install -->
-  <div class="phase-content active" id="phase0">
-    <div class="section">
+  <div class="section">
       <h2>Phase 1: Install Your MCP Server</h2>
       <p>In this phase, you get the MCP server code onto your machine. MCP servers are typically Node.js packages published to npm, or standalone scripts you run locally. Installation is straightforward:</p>
 
@@ -59,13 +50,9 @@ free: false
 <span class="kw">tsc</span> my-server.ts && <span class="kw">node</span> my-server.js</div>
       </div>
 
-      <button class="phase-btn" onclick="goPhase(1)">Next: Configure &rarr;</button>
     </div>
-  </div>
 
-  <!-- Phase 2: Configure -->
-  <div class="phase-content" id="phase1">
-    <div class="section">
+  <div class="section">
       <h2>Phase 2: Configure in Claude</h2>
       <p>In this phase, you tell Claude where to find your server by editing a config file. This JSON file maps server names to the commands that launch them.</p>
 
@@ -111,19 +98,11 @@ free: false
         </div>
       </div>
 
-      <button class="phase-btn" onclick="goPhase(2)">Next: Discover &rarr;</button>
     </div>
-  </div>
 
-  <!-- Phase 3: Discover -->
-  <div class="phase-content" id="phase2">
-    <div class="section">
+  <div class="section">
       <h2>Phase 3: Claude Discovers Tools</h2>
       <p>In this phase, Claude automatically connects to your server and asks "what can you do?" This handshake happens every time Claude starts. Here is what happens under the hood:</p>
-
-      <div class="anim-canvas">
-        <canvas id="discoverCanvas"></canvas>
-      </div>
 
       <div class="visual-step">
         <div class="step-icon" style="background:rgba(139,92,246,.1)">1</div>
@@ -147,13 +126,9 @@ free: false
         </div>
       </div>
 
-      <button class="phase-btn" onclick="goPhase(3)">Next: Use &rarr;</button>
     </div>
-  </div>
 
-  <!-- Phase 4: Use -->
-  <div class="phase-content" id="phase3">
-    <div class="section">
+  <div class="section">
       <h2>Phase 4: Claude Uses Tools</h2>
       <p>Now the connection is live. When a user asks a question that needs external data or action, Claude automatically selects and invokes the right tool from your server:</p>
 
@@ -193,8 +168,6 @@ free: false
         </div>
       </div>
     </div>
-  </div>
-
 
   <div class="section">
     <h2>Claude Code Configuration</h2>

@@ -15,30 +15,8 @@ free: false
 <h1>Database Patterns</h1>
 <p class="intro">Your AI needs a brain — a structured place to store memory, context, and agent state. Let's design that schema interactively and see the relationships in real-time.</p>
 
-<h2>Design Your Brain Schema</h2>
-<p>Click each table tab to edit its columns. Add new columns, set types, mark primary and foreign keys. The ER diagram below updates as you build.</p>
+<h2>The Three-Table Brain Schema</h2>
 <p style="font-size:.85rem;color:#888"><strong>Why 3 tables instead of 1?</strong> Each table serves a different purpose: <code style="color:#f59e0b">brain_context</code> holds the agent's current state (like a whiteboard), <code style="color:#f59e0b">agent_memory</code> stores past interactions (like a journal), and <code style="color:#f59e0b">consciousness_stream</code> logs every action (like security footage). Separating them lets you query and optimize each independently.</p>
-<p style="font-size:.85rem;color:#888">These tables are pre-populated as a starting point. Try modifying them — rename columns, change types, add new ones. The generated SQL updates live so you can see the impact of your changes.</p>
-
-<div class="table-tabs" id="tableTabs">
-<div class="table-tab active" onclick="switchTable(0)">brain_context</div>
-<div class="table-tab" onclick="switchTable(1)">agent_memory</div>
-<div class="table-tab" onclick="switchTable(2)">consciousness_stream</div>
-</div>
-
-<div class="table-editor" id="tableEditor"></div>
-
-<h2>Entity Relationship Diagram</h2>
-<p>This updates live as you modify the tables above.</p>
-<div class="er-diagram" id="erCanvas">
-</div>
-
-<button class="gen-btn" onclick="generateSQL()">Generate SQL &rarr;</button>
-
-<div class="panel" id="sqlPanel" style="display:none">
-<div class="label">Generated SQL</div>
-<pre class="code-block" id="sqlOutput"></pre>
-</div>
 
 <div class="panel">
 <div class="label">Key Patterns</div>
@@ -52,9 +30,8 @@ free: false
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
+<span>Lesson Progress</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
 <div class="footer">Like One Academy &copy; 2026</div>
 

@@ -164,51 +164,6 @@ ACTIONS = {
     </div>
   </div>
 
-  <div class="section" style="padding:0 1.5rem">
-    <h2>Practice: Build Automation Flows</h2>
-    <p>Drag triggers and actions onto the canvas below to build three automation flows:</p>
-  </div>
-
-  <div class="hud">
-    <div class="hud-item"><div class="hud-label">Challenge</div><div class="hud-val" id="challengeNum">1/3</div></div>
-    <div class="hud-item"><div class="hud-label">Score</div><div class="hud-val" id="scoreVal">0</div></div>
-  </div>
-
-  <div class="challenge-dots">
-    </div>
-
-  <div class="challenge-bar">
-    <div class="challenge-label">Build this automation</div>
-    </div>
-
-  <div class="builder">
-    <div class="palette" id="triggerPalette">
-      <div class="palette-title">Triggers</div>
-      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="webhook"><span class="icon">&#x1F517;</span>Webhook</div>
-      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="schedule"><span class="icon">&#x23F0;</span>Schedule</div>
-      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="event"><span class="icon">&#x26A1;</span>Event</div>
-    </div>
-
-    <div class="canvas-area" id="canvasArea">
-      <div class="canvas-label" id="canvasLabel">Drop a trigger here,<br>then add an action</div>
-      <canvas id="flowCanvas"></canvas>
-    </div>
-
-    <div class="palette" id="actionPalette">
-      <div class="palette-title">Actions</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="email"><span class="icon">&#x1F4E7;</span>Send Email</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="database"><span class="icon">&#x1F4BE;</span>Save to DB</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="api"><span class="icon">&#x1F310;</span>Call API</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="notify"><span class="icon">&#x1F514;</span>Notification</div>
-    </div>
-  </div>
-
-  <button class="run-btn" id="runBtn" onclick="runFlow()">Run Automation</button>
-  <div class="complete-card" id="completeCard">
-    <h3>Lesson Complete!</h3>
-    <p>You've built 3 real automation flows. You now understand how triggers initiate workflows and actions execute them.</p>
-  </div>
-
   <div data-learn="FlashDeck" data-props='{"title":"Triggers vs Actions","cards":[{"front":"What is a Trigger?","back":"An event that starts an automation — the \"when\" that fires before any actions execute. Three types: webhook (real-time), schedule (time-based), event (internal system)."},{"front":"What is an Action?","back":"The task performed after a trigger fires. Can be anything: send email, save to database, call API, send notification, create record, update dashboard."},{"front":"Webhook Trigger","back":"Receives real-time HTTP POST data from an external system. Zero delay. Used for: payments, form submissions, GitHub events, Slack messages."},{"front":"Schedule Trigger","back":"Fires on a time-based schedule using cron expressions. Used for: daily reports, data sync, cleanup tasks, digest emails."},{"front":"Event Trigger","back":"Fires when something happens inside your own system — user signup, status change, threshold crossed. Internal, not from external services."},{"front":"Payload","back":"The structured data that flows from trigger to action. Contains the event details — who, what, when. The action reads the payload to know what to do."},{"front":"Idempotent Action","back":"An action that produces the same result even if run multiple times. Critical because webhooks can fire twice. Example: check if record exists before creating."},{"front":"Dead Letter Queue","back":"Where failed messages go when an action cannot process them. Preserves data for manual inspection and retry instead of losing it forever."}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Triggers & Actions Check","questions":[{"q":"What is the role of a trigger in automation?","options":["Transform data into a new format","Start the automation when an event occurs","Store the result of an action","Connect two APIs together"],"correct":1,"explanation":"A trigger is the event that kicks off your automation — nothing runs until the trigger fires."},{"q":"Which of these is an action, not a trigger?","options":["New email arrives","Form submitted","Schedule fires","Send Slack notification"],"correct":3,"explanation":"Send Slack notification is what happens after a trigger — it is an action. The others are events that can start a workflow."},{"q":"A webhook trigger listens for what type of data?","options":["CSV files","Incoming HTTP POST requests","Database queries","Scheduled cron jobs"],"correct":1,"explanation":"A webhook is a URL that receives real-time HTTP POST data when an external event occurs."},{"q":"Why should automation actions be idempotent?","options":["It makes them run faster","Webhooks can fire twice, so the action must be safe to repeat","Idempotent actions use less memory","It is required by all automation platforms"],"correct":1,"explanation":"Webhooks can be retried by the sender, causing your trigger to fire multiple times. An idempotent action (like checking before creating) prevents duplicate records or double-sends."},{"q":"What is a dead letter queue?","options":["A queue for deleted emails","A storage location for messages that failed to process","A type of webhook trigger","An action that sends error notifications"],"correct":1,"explanation":"A dead letter queue stores messages that could not be processed successfully. This preserves the data for manual inspection and retry instead of losing it."}]}'></div>

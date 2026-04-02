@@ -163,46 +163,21 @@ free: false
   </div>
 
   <div class="section">
-    <h2>Interactive: Compare Memory Configurations</h2>
-    <p>Same agent, same task, three memory configurations. Watch how memory transforms performance across repeated runs:</p>
-  </div>
+    <h2>Comparing Memory Configurations</h2>
+    <p>Consider a customer support agent that handles the same type of ticket three times. Each time, the issue is slightly different — but the pattern is the same. Here is how each memory configuration performs:</p>
 
-  <p style="font-size:.9rem;color:#a1a1aa;line-height:1.6;margin-bottom:1rem"><strong style="color:#e5e5e5">The scenario:</strong> A customer support agent handles the same type of ticket three times. Each time, the issue is slightly different — but the pattern is the same.</p>
-
-  <div class="sim-controls">
-    <button class="sim-btn active" id="btn-run" onclick="runSimulation()">&#x25B6; Run Simulation</button>
-    <button class="sim-btn" onclick="resetSimulation()">&#x21BB; Reset</button>
-  </div>
-
-  <div class="sim-area">
-    <div class="sim-column no-mem" id="col-none">
-      <h3>No Memory</h3>
-      <p>Starts fresh every single time.</p>
-      <div class="sim-log" id="log-none"></div>
-      <div class="score-row">
-        <span class="score-label">Score</span>
-        <div class="score-bar"><div class="score-fill" id="score-none" style="width:0%;height:100%;background:#ef4444;border-radius:4px;transition:width .4s"></div></div>
-        <span class="score-val" id="val-none">&mdash;</span>
+    <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">No Memory</strong>
+        <span style="font-size:.8rem;color:#a1a1aa"> — Starts fresh every single time. On ticket 3, it tries the same failed fix from ticket 1 because it has no record of what did not work. Performance stays flat.</span>
       </div>
-    </div>
-    <div class="sim-column short-mem" id="col-short">
-      <h3>Short-Term</h3>
-      <p>Remembers within a session. Forgets between.</p>
-      <div class="sim-log" id="log-short"></div>
-      <div class="score-row">
-        <span class="score-label">Score</span>
-        <div class="score-bar"><div class="score-fill" id="score-short" style="width:0%;height:100%;background:#eab308;border-radius:4px;transition:width .4s"></div></div>
-        <span class="score-val" id="val-short">&mdash;</span>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(234,179,8,.04);border:1px solid rgba(234,179,8,.1)">
+        <strong style="color:#eab308;font-size:.85rem">Short-Term Memory</strong>
+        <span style="font-size:.8rem;color:#a1a1aa"> — Remembers within a single session. If all three tickets come in the same session, it learns from ticket 1 when handling ticket 3. But after a restart, it forgets everything.</span>
       </div>
-    </div>
-    <div class="sim-column long-mem" id="col-long">
-      <h3>Long-Term</h3>
-      <p>Remembers everything, across all sessions.</p>
-      <div class="sim-log" id="log-long"></div>
-      <div class="score-row">
-        <span class="score-label">Score</span>
-        <div class="score-bar"><div class="score-fill" id="score-long" style="width:0%;height:100%;background:#22c55e;border-radius:4px;transition:width .4s"></div></div>
-        <span class="score-val" id="val-long">&mdash;</span>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.1)">
+        <strong style="color:#22c55e;font-size:.85rem">Long-Term Memory</strong>
+        <span style="font-size:.8rem;color:#a1a1aa"> — Remembers everything, across all sessions. By ticket 3, it has stored the resolution pattern and solves it immediately. Performance improves with every interaction.</span>
       </div>
     </div>
   </div>

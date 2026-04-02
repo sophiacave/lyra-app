@@ -167,53 +167,16 @@ result = extract_event(<span style="color:#fbbf24">"Dentist appointment next Fri
 </div>
 
 <div class="card">
-<h2>Interactive Few-Shot Builder</h2>
-<p>Build your own few-shot prompt by adding example pairs. Then test with new inputs to see if Claude would learn the pattern.</p>
+<h2>Building a Few-Shot Prompt — The Pattern</h2>
+<p>When constructing a few-shot prompt, follow this template. Each example pair is an alternating user/assistant message in the API:</p>
 
-<div id="examplePairs">
-<div class="example-pair" data-idx="0">
-<div class="example-input">
-<span class="example-label label-in">Input</span>
-<input type="text" id="in-0" placeholder="Example input..." value="The movie was absolutely fantastic!">
+<div style="display:grid;gap:.5rem;margin-top:.75rem">
+<div style="padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border-left:3px solid #fb923c;font-size:.85rem;color:#a1a1aa"><strong style="color:#fb923c">Example 1:</strong> "The movie was absolutely fantastic!" → <strong>Positive</strong></div>
+<div style="padding:.75rem 1rem;background:rgba(248,113,113,.04);border-radius:8px;border-left:3px solid #f87171;font-size:.85rem;color:#a1a1aa"><strong style="color:#f87171">Example 2:</strong> "I wasted two hours of my life on this terrible film." → <strong>Negative</strong></div>
+<div style="padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border-left:3px solid #8b5cf6;font-size:.85rem;color:#a1a1aa"><strong style="color:#8b5cf6">Example 3:</strong> "It was okay, nothing special but not bad either." → <strong>Neutral</strong></div>
+<div style="padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border-left:3px solid #34d399;font-size:.85rem;color:#a1a1aa"><strong style="color:#34d399">New input:</strong> "Great acting but terrible plot" → Claude applies the pattern and outputs <strong>Negative</strong></div>
 </div>
-<div class="example-arrow">-></div>
-<div class="example-output">
-<span class="example-label label-out">Output</span>
-<input type="text" id="out-0" placeholder="Expected output..." value="Positive">
-</div>
-</div>
-<div class="example-pair" data-idx="1">
-<div class="example-input">
-<span class="example-label label-in">Input</span>
-<input type="text" id="in-1" placeholder="Example input..." value="I wasted two hours of my life on this terrible film.">
-</div>
-<div class="example-arrow">-></div>
-<div class="example-output">
-<span class="example-label label-out">Output</span>
-<input type="text" id="out-1" placeholder="Expected output..." value="Negative">
-</div>
-</div>
-<div class="example-pair" data-idx="2">
-<div class="example-input">
-<span class="example-label label-in">Input</span>
-<input type="text" id="in-2" placeholder="Example input..." value="It was okay, nothing special but not bad either.">
-</div>
-<div class="example-arrow">-></div>
-<div class="example-output">
-<span class="example-label label-out">Output</span>
-<input type="text" id="out-2" placeholder="Expected output..." value="Neutral">
-</div>
-</div>
-</div>
-<button class="add-btn" onclick="addExamplePair()">+ Add Another Example</button>
-
-<div class="test-section">
-<p><strong>Test your pattern:</strong></p>
-<div class="test-input">
-<input type="text" id="testInput" placeholder="Enter a new input to classify...">
-<button class="test-btn" onclick="testPattern()">Test</button>
-</div>
-</div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.75rem">Notice how the examples teach both the classification logic AND the output format (a single word). When building your own few-shot prompts, make sure all examples follow the exact same structure.</p>
 </div>
 
 <div class="card">
@@ -245,12 +208,13 @@ result = extract_event(<span style="color:#fbbf24">"Dentist appointment next Fri
 <div class="card">
 <div class="challenge-box">
 <h3>Challenge: Tricky Sentiment Cases</h3>
-<p style="font-size:.85rem;color:#a1a1aa">Using the few-shot builder above, test these tricky inputs. Can your examples handle ambiguity?</p>
+<p style="font-size:.85rem;color:#a1a1aa">Consider how your few-shot examples would handle these ambiguous inputs:</p>
 <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem">
-<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem;cursor:pointer" onclick="document.getElementById('testInput').value=this.textContent;testPattern();">"The acting was great but the plot made no sense"</div>
-<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem;cursor:pointer" onclick="document.getElementById('testInput').value=this.textContent;testPattern();">"I wouldn't say I hated it, but I'd never watch it again"</div>
-<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem;cursor:pointer" onclick="document.getElementById('testInput').value=this.textContent;testPattern();">"My kids loved it, I slept through it — 5 stars"</div>
+<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem">"The acting was great but the plot made no sense"</div>
+<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem">"I wouldn't say I hated it, but I'd never watch it again"</div>
+<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem">"My kids loved it, I slept through it — 5 stars"</div>
 </div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.75rem">If your examples only cover clearly positive and clearly negative cases, Claude may struggle with mixed sentiment. Adding a mixed-sentiment example (like "Good food but terrible service" → "Negative") teaches Claude how to handle the hard calls.</p>
 </div>
 </div>
 

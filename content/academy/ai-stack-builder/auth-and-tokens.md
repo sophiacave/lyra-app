@@ -16,34 +16,29 @@ free: false
 <p class="intro">Authentication is how your app knows who's talking to it. JWTs (JSON Web Tokens) are the standard. Let's crack one open.</p>
 
 <h2>JWT Anatomy</h2>
+<p>A JWT has three parts separated by dots. Here is an example token broken down:</p>
 <div class="jwt-display">
-<span class="jwt-header" onclick="showPanel('header')">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="jwt-dot">.</span><span class="jwt-payload" onclick="showPanel('payload')">eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0</span><span class="jwt-dot">.</span><span class="jwt-signature" onclick="showPanel('sig')">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+<span class="jwt-header">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="jwt-dot">.</span><span class="jwt-payload">eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0</span><span class="jwt-dot">.</span><span class="jwt-signature">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
 </div>
 
-<div class="jwt-decode-panel header-panel" id="panel-header">
+<div class="jwt-decode-panel header-panel">
 <h4 class="hdr-color">Header (Algorithm + Type)</h4>
 <div class="code-block" style="margin:0">{<br>&nbsp;&nbsp;<span class="str">"alg"</span>: <span class="str">"HS256"</span>, <span class="cm">// signing algorithm</span><br>&nbsp;&nbsp;<span class="str">"typ"</span>: <span class="str">"JWT"</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// token type</span><br>}</div>
 </div>
 
-<div class="jwt-decode-panel payload-panel" id="panel-payload">
+<div class="jwt-decode-panel payload-panel">
 <h4 class="pay-color">Payload (Claims — Your Data)</h4>
 <div class="code-block" style="margin:0">{<br>&nbsp;&nbsp;<span class="str">"sub"</span>: <span class="str">"1234567890"</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// subject (user ID)</span><br>&nbsp;&nbsp;<span class="str">"email"</span>: <span class="str">"builder@example.com"</span>, <span class="cm">// custom claim</span><br>&nbsp;&nbsp;<span class="str">"role"</span>: <span class="str">"authenticated"</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Supabase role</span><br>&nbsp;&nbsp;<span class="str">"iat"</span>: <span class="num">1711152000</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// issued at</span><br>&nbsp;&nbsp;<span class="str">"exp"</span>: <span class="num">1711155600</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// expires (1 hour)</span><br>}</div>
 </div>
 
-<div class="jwt-decode-panel sig-panel" id="panel-sig">
+<div class="jwt-decode-panel sig-panel">
 <h4 class="sig-color">Signature (Verification)</h4>
 <div class="code-block" style="margin:0"><span class="fn">HMACSHA256</span>(<br>&nbsp;&nbsp;<span class="fn">base64UrlEncode</span>(header) + <span class="str">"."</span> +<br>&nbsp;&nbsp;<span class="fn">base64UrlEncode</span>(payload),<br>&nbsp;&nbsp;secret <span class="cm">// your JWT secret</span><br>)</div>
 <p style="font-size:.85rem;color:#888;margin:.5rem 0 0">The server uses this to verify the token wasn't tampered with. If anyone changes the payload, the signature won't match.</p>
 </div>
 
-<h2>Live JWT Decoder</h2>
-<p>Paste any JWT below to decode it instantly. Try it with tokens from your Supabase project.</p>
-
-<div class="decoder">
-<textarea id="jwtInput" placeholder="Paste a JWT here... (e.g. eyJhbGciOiJIUzI1NiIs...)">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</textarea>
-<button class="decode-btn" onclick="decodeJWT()">&#x1f50d; Decode</button>
-</div>
-<div class="decode-output" id="decodeOutput" style="display:none"></div>
+<h2>Decoding a JWT</h2>
+<p>You can decode any JWT by base64url-decoding each of the three parts (separated by dots). Many online tools like <strong>jwt.io</strong> let you paste a token to inspect its header and payload. In production, you can also decode tokens programmatically using the <code style="color:#f59e0b">atob()</code> function in JavaScript or the <code style="color:#f59e0b">jose</code> library for proper verification.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Protecting an API route with JWT verification</div>
@@ -101,38 +96,15 @@ free: false
 </div>
 
 <h2>Auth Flow: Step by Step</h2>
-<p>Click each step to walk through how Supabase authentication works.</p>
+<p>Here is how Supabase authentication works from signup to database query:</p>
 
-<div class="auth-flow" id="authFlow">
-<div class="auth-step" onclick="activateStep(0)">
-<span class="step-icon">&#x1f464;</span>
-<div class="step-info"><h4>1. User Signs Up</h4><p>Email + password sent to Supabase Auth</p></div>
-</div>
-<div class="auth-arrow" id="arrow0">&#x2193;</div>
-<div class="auth-step" onclick="activateStep(1)">
-<span class="step-icon">&#x1f4e7;</span>
-<div class="step-info"><h4>2. Confirmation Email</h4><p>Supabase sends magic link or OTP to verify</p></div>
-</div>
-<div class="auth-arrow" id="arrow1">&#x2193;</div>
-<div class="auth-step" onclick="activateStep(2)">
-<span class="step-icon">&#x1f511;</span>
-<div class="step-info"><h4>3. JWT Issued</h4><p>Access token (1hr) + refresh token returned</p></div>
-</div>
-<div class="auth-arrow" id="arrow2">&#x2193;</div>
-<div class="auth-step" onclick="activateStep(3)">
-<span class="step-icon">&#x1f4e8;</span>
-<div class="step-info"><h4>4. Authenticated Requests</h4><p>JWT sent in Authorization: Bearer header</p></div>
-</div>
-<div class="auth-arrow" id="arrow3">&#x2193;</div>
-<div class="auth-step" onclick="activateStep(4)">
-<span class="step-icon">&#x1f6e1;</span>
-<div class="step-info"><h4>5. RLS Enforced</h4><p>Postgres checks JWT claims against row policies</p></div>
-</div>
-</div>
-
-<div class="panel" id="stepDetail" style="display:none">
-<div class="label" id="stepLabel"></div>
-<div class="code-block" id="stepCode"></div>
+<div class="panel">
+<div class="label">The 5-Step Auth Flow</div>
+<p style="font-size:.9rem"><strong>1. User Signs Up</strong> — Email + password sent to Supabase Auth.</p>
+<p style="font-size:.9rem"><strong>2. Confirmation Email</strong> — Supabase sends a magic link or OTP to verify the user's email address.</p>
+<p style="font-size:.9rem"><strong>3. JWT Issued</strong> — After verification, Supabase returns an access token (1 hour lifespan) and a long-lived refresh token.</p>
+<p style="font-size:.9rem"><strong>4. Authenticated Requests</strong> — The JWT is sent in the <code style="color:#f59e0b">Authorization: Bearer</code> header with every API request.</p>
+<p style="font-size:.9rem"><strong>5. RLS Enforced</strong> — Postgres checks the JWT claims (like <code style="color:#f59e0b">auth.uid()</code>) against your Row Level Security policies to determine what data the user can access.</p>
 </div>
 
 <div class="panel">
@@ -155,9 +127,8 @@ console.<span class="fn">log</span>(session.access_token) <span class="cm">// Th
 
 <div class="progress-section">
 <div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
+<span>Lesson Progress</span>
 </div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
 </div>
 <div class="footer">Like One Academy &copy; 2026</div>
 

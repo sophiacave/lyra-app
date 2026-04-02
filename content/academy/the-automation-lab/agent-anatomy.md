@@ -16,33 +16,34 @@ free: true
   <div class="section">
     <h2>The Six Components</h2>
     <p>Strip away the framework-specific jargon and every agent has the same anatomy. Whether you are using Claude Agent SDK, LangGraph, CrewAI, or building from scratch — these six pieces are always present, even if they go by different names.</p>
-    <p><strong>Click each component below</strong> to expand its details, see its code representation, and understand why it matters:</p>
+    <p>Here is each component explained:</p>
   </div>
 
-  <div class="exploded-view" id="exploded">
-    <div class="component" data-comp="identity" onclick="toggleComp(this)">
-      <div class="comp-header"><div class="comp-icon">&#128100;</div><div class="comp-name">Identity</div><div class="comp-toggle">&#9660;</div></div>
-      <div class="comp-detail"><p>Who the agent is. Its name, role, personality, and voice. Identity is not decoration — it shapes every decision the agent makes. An agent with the identity "cautious security auditor" will behave very differently from one with the identity "creative marketing writer," even given the same tools and inputs.</p><p style="font-size:.82rem;color:#71717a;margin-top:.5rem">In practice, identity is encoded in the system prompt. Claude Agent SDK calls this the <code>instructions</code> field. LangChain calls it <code>system_message</code>. Same concept.</p><div class="comp-example">name: "Lyra" | role: "Content Strategist" | voice: "Direct, warm, data-driven"</div></div>
+  <div style="display:flex;flex-direction:column;gap:.75rem;margin:0 0 1.5rem">
+    <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+      <strong style="color:#8b5cf6">&#128100; Identity</strong>
+      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Who the agent is. Its name, role, personality, and voice. Identity is not decoration — it shapes every decision the agent makes. An agent with the identity "cautious security auditor" will behave very differently from one with the identity "creative marketing writer," even given the same tools and inputs.</p>
+      <p style="font-size:.82rem;color:#71717a;margin-top:.4rem">In practice, identity is encoded in the system prompt. Claude Agent SDK calls this the <code>instructions</code> field. LangChain calls it <code>system_message</code>.</p>
     </div>
-    <div class="component" data-comp="memory" onclick="toggleComp(this)">
-      <div class="comp-header"><div class="comp-icon">&#129504;</div><div class="comp-name">Memory</div><div class="comp-toggle">&#9660;</div></div>
-      <div class="comp-detail"><p>What the agent knows and remembers. There are three types: <strong>short-term</strong> (the current conversation window — fast but ephemeral), <strong>long-term</strong> (stored in a database — survives across sessions), and <strong>shared</strong> (accessible to other agents — the communication bus). Memory is what makes an agent smarter over time instead of starting from zero every session.</p><p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Without memory, every interaction is a first interaction. The agent cannot learn from past mistakes, recall user preferences, or coordinate with other agents.</p><div class="comp-example">short_term: conversation context | long_term: agent_memory table | shared: brain_context</div></div>
+    <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399">&#129504; Memory</strong>
+      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent knows and remembers. Three types: <strong>short-term</strong> (the current conversation window — fast but ephemeral), <strong>long-term</strong> (stored in a database — survives across sessions), and <strong>shared</strong> (accessible to other agents — the communication bus). Memory is what makes an agent smarter over time.</p>
     </div>
-    <div class="component" data-comp="tools" onclick="toggleComp(this)">
-      <div class="comp-header"><div class="comp-icon">&#128295;</div><div class="comp-name">Tools</div><div class="comp-toggle">&#9660;</div></div>
-      <div class="comp-detail"><p>What the agent can do. API calls, database queries, file operations, sending messages, running shell commands. Tools are the agent's hands — without them, it can only think. The quality and scope of an agent's tools directly determines what it can accomplish.</p><p style="font-size:.82rem;color:#71717a;margin-top:.5rem">In Claude's API, tools are defined as JSON schemas describing the function name, parameters, and descriptions. The model reads the schema and decides when and how to call each tool. MCP (Model Context Protocol) standardizes this — one tool definition works across all MCP-compatible clients.</p><div class="comp-example">tools: [send_email, query_db, create_file, call_api, schedule_task, read_file]</div></div>
+    <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+      <strong style="color:#fb923c">&#128295; Tools</strong>
+      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent can do. API calls, database queries, file operations, sending messages, running shell commands. Tools are the agent's hands — without them, it can only think. In Claude's API, tools are defined as JSON schemas. MCP standardizes this across all clients.</p>
     </div>
-    <div class="component" data-comp="goals" onclick="toggleComp(this)">
-      <div class="comp-header"><div class="comp-icon">&#127919;</div><div class="comp-name">Goals</div><div class="comp-toggle">&#9660;</div></div>
-      <div class="comp-detail"><p>What the agent is trying to achieve. Goals drive the decide phase of the agent loop — they are the "why" behind every action. Goals can be <strong>persistent</strong> (always active, like "keep the server healthy") or <strong>triggered</strong> (activated by events, like "respond to this support ticket"). Well-defined goals prevent agents from drifting into irrelevant work.</p><p style="font-size:.82rem;color:#71717a;margin-top:.5rem">A common mistake is vague goals like "be helpful." Effective agent goals are specific and measurable: "Respond to all support tickets within 5 minutes with a resolution or escalation."</p><div class="comp-example">goals: ["Respond to support tickets within 5 min", "Escalate P0 issues immediately", "Log all actions"]</div></div>
+    <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+      <strong style="color:#38bdf8">&#127919; Goals</strong>
+      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent is trying to achieve. Goals drive the decide phase of the agent loop. They can be <strong>persistent</strong> (always active, like "keep the server healthy") or <strong>triggered</strong> (activated by events, like "respond to this support ticket"). A common mistake is vague goals like "be helpful." Effective goals are specific: "Respond to all support tickets within 5 minutes."</p>
     </div>
-    <div class="component" data-comp="guardrails" onclick="toggleComp(this)">
-      <div class="comp-header"><div class="comp-icon">&#128721;</div><div class="comp-name">Guardrails</div><div class="comp-toggle">&#9660;</div></div>
-      <div class="comp-detail"><p>What the agent must NOT do. Boundaries, safety rules, ethical constraints, and hard limits. Guardrails prevent the agent from going rogue — they are the brakes on the system. Without guardrails, an agent optimizing for "resolve tickets fast" might start deleting tickets instead of solving them.</p><p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Guardrails operate at a higher priority than goals. A goal says "send marketing emails." A guardrail says "never send more than 100 emails per hour." When they conflict, the guardrail wins. This hierarchy is formalized in Lesson 10 (The Conscience Layer).</p><div class="comp-example">guardrails: ["Never share PII", "Max $50 spend without approval", "No destructive operations without logging"]</div></div>
+    <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+      <strong style="color:#ef4444">&#128721; Guardrails</strong>
+      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent must NOT do. Boundaries, safety rules, ethical constraints, and hard limits. Guardrails operate at a higher priority than goals. A goal says "send marketing emails." A guardrail says "never send more than 100 emails per hour." When they conflict, the guardrail wins.</p>
     </div>
-    <div class="component" data-comp="schedule" onclick="toggleComp(this)">
-      <div class="comp-header"><div class="comp-icon">&#9200;</div><div class="comp-name">Schedule</div><div class="comp-toggle">&#9660;</div></div>
-      <div class="comp-detail"><p>When and how the agent runs. Three modes: <strong>event-driven</strong> (reacts to triggers like webhooks or new database rows), <strong>cron-based</strong> (runs on a fixed schedule), or <strong>always-on</strong> (continuously monitoring, like a chat agent). The schedule determines the agent's autonomy level and resource usage.</p><p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Always-on agents consume the most resources but respond instantly. Cron agents are efficient but have latency. Event-driven agents balance both — they sleep until something happens, then wake up fast. Lesson 8 covers scheduling in depth.</p><div class="comp-example">schedule: "*/30 * * * *" (every 30 min) | trigger: "on_new_ticket" | mode: "always-on"</div></div>
+    <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+      <strong style="color:#f472b6">&#9200; Schedule</strong>
+      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When and how the agent runs. Three modes: <strong>event-driven</strong> (reacts to triggers like webhooks), <strong>cron-based</strong> (runs on a fixed schedule), or <strong>always-on</strong> (continuously monitoring). Always-on agents respond instantly but consume the most resources. Event-driven agents balance responsiveness and efficiency.</p>
     </div>
   </div>
 
@@ -109,25 +110,6 @@ support_agent = AgentConfig(
         <strong style="color:#ef4444">No guardrails</strong>
         <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An agent without guardrails will optimize its goals at any cost. A sales agent told to "maximize conversions" with no guardrails might start making false promises. Always define what the agent must NOT do.</p>
       </div>
-    </div>
-  </div>
-
-  <h2 class="section-title">&#128736;&#65039; Build Your First Agent</h2>
-  <div class="builder-section">
-    <div class="builder-title">Agent Builder</div>
-    <div class="builder-desc">Fill in each component to design your agent. Watch the preview update in real time as a JSON config.</div>
-    <div class="builder-grid">
-      <div class="builder-field"><label>&#128100; Agent Name</label><input type="text" id="b-name" placeholder="e.g., Atlas" oninput="updatePreview()"></div>
-      <div class="builder-field"><label>&#127919; Primary Goal</label><input type="text" id="b-goal" placeholder="e.g., Monitor uptime" oninput="updatePreview()"></div>
-      <div class="builder-field full"><label>&#128295; Tools (comma-separated)</label><input type="text" id="b-tools" placeholder="e.g., ping_server, send_alert, restart_service" oninput="updatePreview()"></div>
-      <div class="builder-field full"><label>&#128721; Guardrails</label><textarea id="b-guard" rows="2" placeholder="e.g., Never restart production without logging" oninput="updatePreview()"></textarea></div>
-      <div class="builder-field"><label>&#9200; Schedule</label><input type="text" id="b-schedule" placeholder="e.g., every 5 minutes" oninput="updatePreview()"></div>
-      <div class="builder-field"><label>&#129504; Memory Type</label><input type="text" id="b-memory" placeholder="e.g., logs last 24h of checks" oninput="updatePreview()"></div>
-    </div>
-    <div class="agent-preview" id="agent-preview">
-      <div class="preview-title">&#9889; Agent Config Preview (JSON)</div>
-      <p style="font-size:.8rem;color:#71717a;margin-bottom:.75rem">This JSON structure is how agent configurations are typically stored. Each field maps to one of the six components above.</p>
-      <div id="preview-content" style="font-family:monospace;font-size:.8rem;color:#a1a1aa;white-space:pre-wrap">Fill in the fields above to see your agent come to life...</div>
     </div>
   </div>
 

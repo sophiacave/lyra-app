@@ -17,7 +17,7 @@ free: false
 
 <div class="content">
   <h2>The Request / Response Cycle</h2>
-  <p class="section-text">Every API interaction follows one pattern: your code sends a <strong>request</strong>, the server processes it, and sends back a <strong>response</strong>. Click a method below to see it in action.</p>
+  <p class="section-text">Every API interaction follows one pattern: your code sends a <strong>request</strong>, the server processes it, and sends back a <strong>response</strong>.</p>
 
   <div class="api-animation" id="apiAnimation">
     <div class="api-entity entity-client">
@@ -65,18 +65,26 @@ free: false
   </div>
 
   <h2>HTTP Methods</h2>
-  <p class="section-text">Click each method to see a real-world example with request and response details.</p>
+  <p class="section-text">There are four core HTTP methods. Each tells the server what operation to perform:</p>
 
-  <div class="method-grid">
-    <div class="method-card" data-method="GET" onclick="selectMethod('GET')"><div class="method-name">GET</div><div class="method-desc">Read data</div></div>
-    <div class="method-card" data-method="POST" onclick="selectMethod('POST')"><div class="method-name">POST</div><div class="method-desc">Create data</div></div>
-    <div class="method-card" data-method="PUT" onclick="selectMethod('PUT')"><div class="method-name">PUT</div><div class="method-desc">Update data</div></div>
-    <div class="method-card" data-method="DELETE" onclick="selectMethod('DELETE')"><div class="method-name">DELETE</div><div class="method-desc">Remove data</div></div>
-  </div>
-
-  <div class="detail-panel" id="detailPanel">
-    <h3 id="detailTitle">Click a method above to see its anatomy</h3>
+  <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.85rem">GET</strong>
+      <span style="font-size:.8rem;color:#a1a1aa"> — Read data without modifying it. Example: <code>GET /users</code> returns a list of users. Safe and idempotent.</span>
     </div>
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
+      <strong style="color:#60a5fa;font-size:.85rem">POST</strong>
+      <span style="font-size:.8rem;color:#a1a1aa"> — Create a new resource. Sends a JSON body with the data. Example: <code>POST /orders</code> with <code>{"product": "Pro Plan"}</code> creates a new order. Returns 201 Created.</span>
+    </div>
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+      <strong style="color:#fb923c;font-size:.85rem">PUT</strong>
+      <span style="font-size:.8rem;color:#a1a1aa"> — Update or replace an existing resource. Example: <code>PUT /users/42</code> with updated fields replaces that user's data. Idempotent — same result if called multiple times.</span>
+    </div>
+    <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+      <strong style="color:#ef4444;font-size:.85rem">DELETE</strong>
+      <span style="font-size:.8rem;color:#a1a1aa"> — Remove a resource. Example: <code>DELETE /users/42</code> removes the user with id 42. Usually returns 200 OK or 204 No Content.</span>
+    </div>
+  </div>
 
   <div style="padding:0 .5rem">
     <h2>Try It: cURL Examples</h2>

@@ -31,28 +31,9 @@ free: false
     </div>
   </div>
 
-  <h2 class="section-title">&#128172; Message Passing Simulation</h2>
-  <div class="sim-arena">
-    <div class="sim-title">Shared Memory Communication</div>
-    <div class="sim-layout">
-      <div class="sim-agent">
-        <div class="sim-av" id="av-a">&#129302;</div>
-        <div class="sim-name">Agent A</div>
-        <div class="sim-role">Content Writer</div>
-      </div>
-      <div class="sim-bus">
-        <div class="bus-label">&#127760; consciousness_stream</div>
-      </div>
-      <div class="sim-agent">
-        <div class="sim-av" id="av-b">&#129302;</div>
-        <div class="sim-name">Agent B</div>
-        <div class="sim-role">Publisher</div>
-      </div>
-    </div>
-    <div class="sim-controls">
-      <button class="sim-btn primary" onclick="runSim()">&#9654; Run Communication</button>
-      <button class="sim-btn secondary" onclick="resetSim()">&#8634; Reset</button>
-    </div>
+  <div class="section">
+    <h2>Message Passing in Practice</h2>
+    <p>In a typical shared memory setup, Agent A (a content writer) writes its output to a key in the <code>consciousness_stream</code> table. Agent B (a publisher) watches that key and acts when new data appears. The two agents never communicate directly — they only share a key name.</p>
   </div>
 
   <div class="section">
@@ -109,26 +90,6 @@ free: false
 
   <div class="key-insight">
     <strong>The consciousness_stream</strong> is a shared table where agents post messages. Think of it like a team Slack channel — but for AI agents. Every agent can read from it, and any agent can write to it. No direct connections needed.
-  </div>
-
-  <h2 class="section-title">&#128279; Build a Relay</h2>
-  <div class="relay-builder">
-    <div class="rb-title">Set Up Agent-to-Agent Relay</div>
-    <div class="rb-desc">Configure two agents and watch messages flow between them through shared memory.</div>
-    <div class="rb-grid">
-      <div class="rb-agent">
-        <div class="rb-agent-title">&#129302; Sender Agent</div>
-        <div class="rb-field"><label>Action</label><select id="sender-action"><option value="write_content">Write blog post</option><option value="analyze_data">Analyze data</option><option value="generate_report">Generate report</option></select></div>
-        <div class="rb-field"><label>Message Key</label><input id="sender-key" value="task.output" placeholder="e.g., task.output"></div>
-      </div>
-      <div class="rb-arrow">&#8594;</div>
-      <div class="rb-agent">
-        <div class="rb-agent-title blue">&#129302; Receiver Agent</div>
-        <div class="rb-field"><label>Watches For</label><select id="recv-watch"><option value="task.output">task.output</option><option value="task.status">task.status</option><option value="task.error">task.error</option></select></div>
-        <div class="rb-field"><label>Then Does</label><select id="recv-action"><option value="publish">Publish to site</option><option value="email">Send via email</option><option value="store">Store in database</option></select></div>
-      </div>
-    </div>
-    <div class="rb-test"><button class="rb-test-btn" onclick="testRelay()">&#9889; Test Relay</button></div>
   </div>
 
   <div class="section">
