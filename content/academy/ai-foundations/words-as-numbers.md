@@ -37,6 +37,58 @@ free: false
 
 </div>
 
+<!-- SECTION 1B: CODE — EMBEDDINGS IN PYTHON -->
+<div class="lesson-section">
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Embeddings in real Python.</h2>
+  <p class="section-text">Here is how to generate embeddings and compute similarity yourself — the exact same math that powers semantic search, RAG, and recommendation systems:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — generate embeddings with sentence-transformers (free, runs locally)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> sentence_transformers <span style="color:#c084fc">import</span> SentenceTransformer
+<span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
+
+<span style="color:#71717a"># Load a free embedding model (downloads once, ~90MB)</span>
+model = SentenceTransformer(<span style="color:#fbbf24">"all-MiniLM-L6-v2"</span>)
+
+<span style="color:#71717a"># Convert words to vectors (384 dimensions each)</span>
+words = [<span style="color:#fbbf24">"king"</span>, <span style="color:#fbbf24">"queen"</span>, <span style="color:#fbbf24">"man"</span>, <span style="color:#fbbf24">"woman"</span>, <span style="color:#fbbf24">"dog"</span>, <span style="color:#fbbf24">"cat"</span>]
+vectors = model.encode(words)
+
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"Each vector has </span>{vectors.shape[<span style="color:#fb923c">1</span>]}<span style="color:#fbbf24"> dimensions"</span>)
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"'king' vector (first 5): </span>{vectors[<span style="color:#fb923c">0</span>][:<span style="color:#fb923c">5</span>].round(<span style="color:#fb923c">3</span>)}<span style="color:#fbbf24">"</span>)</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — cosine similarity from scratch</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">cosine_similarity</span>(a, b):
+    <span style="color:#71717a">"""Measure the angle between two vectors. 1.0 = identical, 0 = unrelated."""</span>
+    <span style="color:#c084fc">return</span> np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+<span style="color:#71717a"># Compare word pairs</span>
+king, queen, man, woman, dog, cat = vectors
+
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"king ↔ queen:  </span>{cosine_similarity(king, queen):.3f}<span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># ~0.78 (both royalty)</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"king ↔ man:    </span>{cosine_similarity(king, man):.3f}<span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># ~0.45 (some overlap)</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"king ↔ dog:    </span>{cosine_similarity(king, dog):.3f}<span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># ~0.15 (unrelated)</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"dog  ↔ cat:    </span>{cosine_similarity(dog, cat):.3f}<span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># ~0.80 (both pets)</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — vector arithmetic: king - man + woman = ?</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># The famous equation</span>
+result = king - man + woman
+
+<span style="color:#71717a"># Find the nearest word to the result vector</span>
+similarities = [cosine_similarity(result, v) <span style="color:#c084fc">for</span> v <span style="color:#c084fc">in</span> vectors]
+nearest = words[np.argmax(similarities)]
+
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"king - man + woman ≈ </span>{nearest}<span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># → queen</span></code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">This is not magic — it is linear algebra. The direction from "man" to "king" encodes royalty. Apply that same direction from "woman" and you land on "queen." The model learned these relationships from patterns in billions of sentences.</p>
+
+</div>
+
 <!-- SECTION 2: INTERACTIVE VISUALIZATION -->
 <div class="lesson-section">
   <span class="section-label">Explore</span>

@@ -53,6 +53,52 @@ free: false
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">The four things that shape every AI response.</h2>
 
+  <div style="display:grid;gap:.75rem;margin-top:.75rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
+      <strong style="color:#c084fc;font-size:.88rem">1. Tokens — how AI reads text</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">AI does not read words or characters. It reads <em>tokens</em> — subword chunks like "un" + "believ" + "able." Common words are one token; rare words get split. A token is roughly 4 characters or 0.75 words. This matters because you pay per token and your context window is measured in tokens.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+      <strong style="color:#38bdf8;font-size:.88rem">2. Context Window — the model's working memory</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Everything the model can see at once: your prompt, conversation history, and its response. Claude Opus 4.6 has a 1M token context window. GPT-4o has 128K. Once you exceed the window, the oldest content gets dropped. This is why long conversations can "forget" earlier context.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+      <strong style="color:#fb923c;font-size:.88rem">3. System Prompt — the invisible instructions</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">A hidden message processed before any user input. It defines the AI's persona, rules, and constraints. The user never sees it, but it shapes every response. Think of it as giving the AI a job description before it starts work.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.88rem">4. Temperature — creativity vs accuracy dial</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Controls randomness in the output. Low (0.0) = always picks the most likely word = deterministic, focused, correct. High (1.0) = sometimes picks unlikely words = creative, surprising, error-prone. Use low for code and facts, high for brainstorming.</p>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1.25rem">Here is a real API call showing all four concepts in action:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — all four concepts in one API call</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
+
+client = anthropic.Anthropic()
+
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,       <span style="color:#71717a"># which model</span>
+    max_tokens=<span style="color:#fb923c">500</span>,                  <span style="color:#71717a"># ← context window budget</span>
+    temperature=<span style="color:#fb923c">0.2</span>,                 <span style="color:#71717a"># ← low = factual, precise</span>
+    system=<span style="color:#fbbf24">"You are a helpful coding tutor. "</span>  <span style="color:#71717a"># ← system prompt</span>
+           <span style="color:#fbbf24">"Explain concepts simply. "</span>
+           <span style="color:#fbbf24">"Always include a code example."</span>,
+    messages=[                         <span style="color:#71717a"># ← user message (tokenized)</span>
+        {<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+         <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">"What is a list comprehension in Python?"</span>}
+    ]
+)
+
+<span style="color:#71717a"># Check token usage</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"Input tokens:  </span>{response.usage.input_tokens}<span style="color:#fbbf24">"</span>)
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"Output tokens: </span>{response.usage.output_tokens}<span style="color:#fbbf24">"</span>)
+<span style="color:#34d399">print</span>(response.content[<span style="color:#fb923c">0</span>].text)</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Every parameter in this call maps to one of the four concepts. The <code>system</code> message is the invisible instruction. The <code>messages</code> content gets tokenized. <code>max_tokens</code> limits the context window budget. <code>temperature</code> controls creativity.</p>
 
 </div>
 

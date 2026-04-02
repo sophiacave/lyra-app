@@ -87,18 +87,84 @@ videoId: "603dbd8a-2333-4615-a0f5-deb7e4917533"
   </div>
 </div>
 
-<!-- SECTION 3: CORE CONCEPTS -->
+<!-- SECTION 3: CORE CONCEPTS + CODE -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">The building blocks of every neuron.</h2>
 
+  <p class="section-text">Every artificial neuron does the same three-step dance: <strong>multiply</strong> inputs by weights, <strong>sum</strong> everything plus a bias, and <strong>decide</strong> whether to fire via an activation function. Here is the exact math in code:</p>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a single neuron from scratch</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
+
+<span style="color:#71717a"># Three inputs and their weights</span>
+inputs  = np.array([<span style="color:#fb923c">0.50</span>, <span style="color:#fb923c">0.30</span>, <span style="color:#fb923c">0.70</span>])
+weights = np.array([<span style="color:#fb923c">0.80</span>, <span style="color:#fb923c">-0.40</span>, <span style="color:#fb923c">0.60</span>])
+bias    = <span style="color:#fb923c">0.10</span>
+
+<span style="color:#71717a"># Step 1: weighted sum + bias</span>
+z = np.dot(inputs, weights) + bias
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"weighted sum z = </span>{z:<span style="color:#fbbf24">.4f}</span><span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># z = 0.7200</span>
+
+<span style="color:#71717a"># Step 2: activation function (ReLU)</span>
+output = max(<span style="color:#fb923c">0</span>, z)
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"ReLU output   = </span>{output:<span style="color:#fbbf24">.4f}</span><span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># output = 0.7200</span></code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem"><code>np.dot()</code> computes the dot product — it multiplies each input by its weight and sums the results. This is exactly what the interactive slider above is doing.</p>
+
+  <div style="display:grid;gap:.75rem;margin-top:1.25rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
+      <strong style="color:#c084fc;font-size:.88rem">Weights — how much you trust each input</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">A high positive weight means "this input matters a lot, in a positive way." A negative weight means "this input pulls the output <em>down</em>." Training a neural network means finding the right weights — it is the <em>entire</em> learning process.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+      <strong style="color:#38bdf8;font-size:.88rem">Bias — the default nudge</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Without bias, a neuron with all-zero inputs always outputs zero. Bias shifts the activation threshold — it lets the neuron fire even when inputs are weak. Think of it as the neuron's baseline mood: optimistic (positive bias) or skeptical (negative bias).</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+      <strong style="color:#fb923c;font-size:.88rem">Activation Function — the decision gate</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Without an activation function, a neural network is just a linear equation — no matter how many layers you stack. The activation function introduces non-linearity, which is what allows networks to learn curves, edges, language patterns, and everything complex.</p>
+    </div>
+  </div>
 </div>
 
 <!-- SECTION 4: ACTIVATION FUNCTIONS -->
 <div class="lesson-section">
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">Three activation functions you need to know.</h2>
+
+  <p class="section-text">Every activation function takes the weighted sum <em>z</em> and transforms it. Here they are in Python — copy this code and run it yourself:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — the three activation functions</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">step</span>(z):
+    <span style="color:#71717a">"""Historical (1957). Binary: fire or don't."""</span>
+    <span style="color:#c084fc">return</span> <span style="color:#fb923c">1</span> <span style="color:#c084fc">if</span> z >= <span style="color:#fb923c">0</span> <span style="color:#c084fc">else</span> <span style="color:#fb923c">0</span>
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">relu</span>(z):
+    <span style="color:#71717a">"""Modern standard. Simple, fast, effective."""</span>
+    <span style="color:#c084fc">return</span> max(<span style="color:#fb923c">0</span>, z)
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">sigmoid</span>(z):
+    <span style="color:#71717a">"""Outputs a probability between 0 and 1."""</span>
+    <span style="color:#c084fc">return</span> <span style="color:#fb923c">1</span> / (<span style="color:#fb923c">1</span> + np.exp(-z))
+
+<span style="color:#71717a"># Try them with the same input</span>
+z = <span style="color:#fb923c">0.72</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"step({z})    = </span>{step(z)<span style="color:#fbbf24">}"</span>)       <span style="color:#71717a"># 1</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"relu({z})    = </span>{relu(z)<span style="color:#fbbf24">}"</span>)       <span style="color:#71717a"># 0.72</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"sigmoid({z}) = </span>{sigmoid(z):.4f<span style="color:#fbbf24">}"</span>) <span style="color:#71717a"># 0.6726</span>
+
+<span style="color:#71717a"># Now try with a negative input</span>
+z = <span style="color:#fb923c">-1.5</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"step({z})    = </span>{step(z)<span style="color:#fbbf24">}"</span>)       <span style="color:#71717a"># 0</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"relu({z})    = </span>{relu(z)<span style="color:#fbbf24">}"</span>)       <span style="color:#71717a"># 0</span>
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"sigmoid({z}) = </span>{sigmoid(z):.4f<span style="color:#fbbf24">}"</span>) <span style="color:#71717a"># 0.1824</span></code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice: Step and ReLU both output 0 for negative inputs, but sigmoid still outputs 0.18 — it never fully "turns off." That's why sigmoid is useful for probabilities but problematic for deep networks (the vanishing gradient problem).</p>
 
 <div data-learn="FlashDeck" data-props='{"title":"Activation Functions — Flip for Details","cards":[{"front":"📐 STEP FUNCTION (1957)\n\nThe original. Outputs 0 or 1.\nUsed in the first Perceptron.","back":"HOW IT WORKS: If the weighted sum is >= 0, output 1. Otherwise, output 0.\n\nPROBLEM: No gradient — the network cannot learn gradually. It is either on or off. Like a light switch with no dimmer.\n\nUSED TODAY: Almost never. Historical importance only."},{"front":"⚡ ReLU (Modern Standard)\n\nRectified Linear Unit.\nThe workhorse of modern AI.","back":"HOW IT WORKS: max(0, z). If positive, pass it through. If negative, output 0.\n\nWHY IT WORKS: Dead simple, trains extremely fast, and avoids the vanishing gradient problem that killed earlier activations.\n\nUSED TODAY: Almost everywhere — image classifiers, language models, recommendation systems."},{"front":"🎯 SIGMOID (Probabilities)\n\nSquashes output to between 0 and 1.\nPerfect for yes/no decisions.","back":"HOW IT WORKS: 1/(1+e^-z). Smoothly maps any number to the range (0, 1).\n\nWHY IT WORKS: The output can be interpreted as a probability. Is this email spam? 0.92 = 92% likely spam.\n\nUSED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers."}]}'></div>
 

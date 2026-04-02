@@ -35,6 +35,92 @@ free: false
 
 </div>
 
+<!-- SECTION 1B: CODE EXAMPLES -->
+<div class="lesson-section">
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Each technique in real Python.</h2>
+  <p class="section-text">Here is how each technique looks when you call the Claude API. These are production-ready patterns you can copy directly:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — zero-shot classification</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
+
+client = anthropic.Anthropic()
+
+<span style="color:#71717a"># Zero-shot: just a clear instruction, no examples</span>
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+    max_tokens=<span style="color:#fb923c">50</span>,
+    messages=[{
+        <span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+        <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">"Classify this review as POSITIVE or NEGATIVE:\n\n"</span>
+                   <span style="color:#fbbf24">"'The food was incredible but the service was painfully slow.'\n\n"</span>
+                   <span style="color:#fbbf24">"Classification:"</span>
+    }]
+)</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — few-shot (teach by example)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Few-shot: give 2 examples, then the real task</span>
+prompt = <span style="color:#fbbf24">"""Extract the product and sentiment:
+
+Review: "Love my new AirPods, sound quality is amazing"
+→ Product: AirPods | Sentiment: positive
+
+Review: "The laptop keyboard broke after two weeks"
+→ Product: laptop | Sentiment: negative
+
+Review: "This standing desk changed my work life"
+→"""</span>
+
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+    max_tokens=<span style="color:#fb923c">50</span>,
+    messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: prompt}]
+)
+<span style="color:#71717a"># → Product: standing desk | Sentiment: positive</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — chain-of-thought (step-by-step reasoning)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Chain-of-thought: "think step by step" = 2x accuracy</span>
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+    max_tokens=<span style="color:#fb923c">500</span>,
+    messages=[{
+        <span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+        <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">"A store has a 'buy 2, get 1 free' deal on $3 notebooks. "</span>
+                   <span style="color:#fbbf24">"Sarah wants 7 notebooks. How much does she pay?\n\n"</span>
+                   <span style="color:#fbbf24">"Think step by step before giving the final answer."</span>
+    }]
+)</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — role-play (expert persona via system prompt)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Role-play: system prompt sets the expert persona</span>
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+    max_tokens=<span style="color:#fb923c">500</span>,
+    system=<span style="color:#fbbf24">"You are a senior security engineer with 15 years of "</span>
+           <span style="color:#fbbf24">"experience. Review code for vulnerabilities. Flag by "</span>
+           <span style="color:#fbbf24">"severity: CRITICAL, HIGH, MEDIUM, LOW. Always suggest a fix."</span>,
+    messages=[{
+        <span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+        <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">"""Review this code:
+app.get("/user", (req, res) => {
+  const userId = req.query.id;
+  const query = `SELECT * FROM users WHERE id = ${userId}`;
+  db.query(query).then(user => res.json(user));
+});"""</span>
+    }]
+)</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice the pattern: zero-shot and chain-of-thought modify the <em>user message</em>. Role-play uses the <em>system prompt</em>. Few-shot embeds examples <em>inside</em> the user message. Same API call — different strategy.</p>
+
+</div>
+
 <!-- SECTION 2: INTERACTIVE PLAYGROUND -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>
