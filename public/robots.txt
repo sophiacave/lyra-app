@@ -5,3 +5,6 @@ Disallow: /brain-mcp/
 Disallow: /api/
 Disallow: /downloads/
 Sitemap: https://likeone.ai/sitemap.xml
+
+# RSS Feed
+# https://likeone.ai/blog/feed.xml
