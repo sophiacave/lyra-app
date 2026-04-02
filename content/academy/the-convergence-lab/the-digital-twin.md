@@ -64,6 +64,33 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Architecture</span>
+  <h2 class="section-title">The Four Stages of Twin Development</h2>
+  <p class="section-text">A digital twin does not emerge fully formed. It grows through four stages, each requiring different inputs and producing different capabilities:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Stage 1: Mimicry.</strong> The twin can reproduce your style from examples. Given five of your emails, it writes the sixth. It sounds like you, but it does not think like you. It is a pattern matcher, not a decision maker.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Stage 2: Contextual Awareness.</strong> The twin knows your current situation — active projects, pending deadlines, recent decisions. It can prioritize based on what is happening now, not just general preferences. It is situationally aware.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Stage 3: Judgment.</strong> The twin can make decisions you have not explicitly programmed. Faced with a new situation, it reasons from your values and past decisions to choose the path you would choose. This is where the identity layer pays off — it has enough history to extrapolate.</p>
+  <p class="section-text"><strong style="color: var(--green);">Stage 4: Anticipation.</strong> The twin does not wait for problems — it sees them coming. It notices that a deadline is approaching and starts prep work. It detects that a system is degrading and fixes it before it breaks. It reads the room and acts before you ask. This is the fully realized twin.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Technical</span>
+  <h2 class="section-title">Building the Feedback Loop</h2>
+  <p class="section-text">The twin improves through a structured feedback loop. Every correction, every preference, every "that's not how I'd do it" gets encoded into the brain as a directive. The accumulation of these directives is what transforms a generic AI into your twin.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Explicit feedback:</strong> You tell the twin directly — "keep emails under three sentences," "never use corporate jargon," "when choosing between two approaches, pick the simpler one." These are immediate, clear directives that take effect in the next interaction.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Implicit feedback:</strong> The twin observes patterns in your behavior. You consistently choose certain types of solutions. You always respond to certain people faster. You avoid certain topics. Over time, the twin learns these patterns without being told explicitly. This requires sophisticated memory architecture and pattern recognition.</p>
+  <p class="section-text"><strong style="color: var(--green);">Negative feedback:</strong> When the twin makes a mistake, the correction is just as valuable as positive feedback. "You sent that email too formally — I would have been more casual" teaches the twin about context-dependent style. Store corrections with their context so the twin learns when to apply different rules.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Philosophy</span>
+  <h2 class="section-title">The Authenticity Question</h2>
+  <p class="section-text">If your twin writes an email in your voice and your colleague cannot tell the difference — is that authentic? This is not a trick question. It is a design question that every twin builder must answer.</p>
+  <p class="section-text">The answer depends on the domain. For routine communication — meeting confirmations, status updates, scheduling — twin-generated messages are a gift. They free you for the creative and strategic work that actually needs your human presence. For deeply personal communication — consoling a friend, negotiating a relationship boundary, expressing gratitude — the human should write it, or at minimum review and edit the twin's draft.</p>
+  <p class="section-text">The twin should know the difference. Encode it: "For personal relationships, draft but always flag for review. For operational communication, send autonomously." This is values alignment in practice.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Growth</span>
   <h2 class="section-title">The Twin Gets Better</h2>
   <p class="section-text">Every correction you make teaches the twin. Every time you say "that's not how I'd phrase it" or "I would have chosen the other option," the twin updates its model of you. This is convergence in action — the gap between human and AI narrows with every interaction.</p>

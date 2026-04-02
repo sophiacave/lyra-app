@@ -113,6 +113,87 @@ free: false
   </div>
 </div>
 
+<!-- SECTION: DETECTION TECHNIQUES -->
+<div class="lesson-section">
+  <span class="section-label">Detection</span>
+  <h2 class="section-title">Advanced techniques for detecting AI hallucinations.</h2>
+  <p class="section-text">Beyond basic fact-checking, there are systematic approaches to catching hallucinations before they cause harm. These techniques work whether you're reviewing your own AI output or evaluating someone else's AI-generated content.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">The Regeneration Test</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Ask the same question multiple times. If the AI gives different specific facts each time (different numbers, different dates, different names), those specifics are likely hallucinated. Real facts stay consistent across regenerations.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">The Specificity Red Flag</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Suspiciously specific details are a hallucination signal. "A 2019 study by researchers at Stanford found that 67.3% of..." — the extreme precision suggests AI is constructing a plausible-sounding citation rather than recalling a real one.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">The Cross-Model Check</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Ask the same factual question to different AI models (Claude, GPT, Gemini). If they agree on a fact, it's more likely real. If they all give different "specific" answers, the fact is probably hallucinated.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">The Self-Contradiction Probe</div>
+          <div style="color:#a1a1aa;font-size:.85rem">After AI makes a claim, ask it to argue the opposite. If it immediately provides equally confident arguments for a contradictory position, neither claim is grounded in solid evidence — the AI is just being agreeable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: VERIFICATION WORKFLOWS -->
+<div class="lesson-section">
+  <span class="section-label">Workflows</span>
+  <h2 class="section-title">Building a verification workflow into your process.</h2>
+  <p class="section-text">Fact-checking shouldn't be something you do when you remember. It should be built into your workflow so it happens automatically. Here's a practical verification process for any AI-assisted content:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Step 1: Flag</span> — Read through AI output and highlight every specific factual claim: numbers, dates, names, quotes, citations, legal references, and cause-effect statements.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Step 2: Triage</span> — Sort flagged claims by risk: high (published externally, legal/medical, attributed to real people), medium (internal reports, non-critical decisions), low (brainstorming, internal notes).</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Step 3: Verify</span> — Check high-risk claims against authoritative sources: official websites, peer-reviewed research, government databases. For citations, confirm the source actually exists.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Step 4: Soften or Remove</span> — For claims you can't verify, either remove them, replace with verifiable alternatives, or add hedging language: "research suggests" instead of "studies prove."</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Step 5: Document</span> — For high-stakes content, keep a brief log of what you verified and your sources. This protects you if accuracy is ever questioned.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: GROUNDING -->
+<div class="lesson-section">
+  <span class="section-label">Grounding</span>
+  <h2 class="section-title">Grounding strategies: anchoring AI to reality.</h2>
+  <p class="section-text">Grounding means giving AI real-world data to work with instead of relying on its training data alone. The more grounded context you provide, the less room there is for hallucination.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">RAG</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Retrieval-Augmented Generation.</strong> Instead of relying on AI's memory, feed it the actual documents, data, or sources relevant to your question. "Based on this report [paste report], summarize the key findings" hallucinations far less than "summarize recent findings in X field."</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Context</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Provide specific context.</strong> The more detail you give about your real situation, the less the AI needs to fabricate. "Write a marketing email for our B2B SaaS product that costs $49/month and serves small law firms" gives AI anchors that reduce invention.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Search</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Use AI tools with web access.</strong> Models with real-time web search (like Claude with search, Perplexity, or Copilot) can ground responses in current sources. This doesn't eliminate hallucination, but it significantly reduces it for factual queries.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 4: REDUCE -->
 <div class="lesson-section">
   <span class="section-label">Prevention</span>

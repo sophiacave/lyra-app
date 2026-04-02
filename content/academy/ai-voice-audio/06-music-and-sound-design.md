@@ -52,6 +52,37 @@ type: "lesson"
   <p class="section-text">For sound design, describe what you hear in your head. "The sound of a massive stone door slowly grinding open in an ancient temple, with dust and echo" will give you something usable. The more cinematic your description, the better the output.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Platform Comparison: Which Tool for Which Job</h2>
+  <p class="section-text">Each AI music tool has a sweet spot. Choosing wrong wastes time and credits:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Suno</strong> — Best for: complete songs with vocals and lyrics, social media content, jingles, full productions. Strengths: polished output, handles lyrics well, massive style range. Cost: free tier (50 credits/day), Pro $10/month. Limitation: limited control over arrangement details, cannot edit individual stems.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Udio</strong> — Best for: instrumentals, complex arrangements, genre-specific production. Strengths: superior audio fidelity, better at replicating specific production styles. Cost: free tier available, Pro $10/month. Limitation: lyric handling less consistent than Suno.</p>
+  <p class="section-text"><strong style="color: var(--green);">AIVA</strong> — Best for: film scoring, game music, classical and orchestral compositions. Strengths: MIDI output for DAW editing, structured composition, emotional arc control. Cost: free tier (3 downloads/month), Pro $15/month. Limitation: less effective for modern pop, hip-hop, or electronic genres.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Stable Audio</strong> — Best for: sound effects, ambient textures, short clips, app integration. Strengths: good API, fast generation, strong on atmospheric content. Cost: free tier, Pro $12/month. Limitation: full songs lack the polish of Suno or Udio.</p>
+  <p class="section-text"><strong style="color: var(--red);">Mubert</strong> — Best for: background music streams, video soundtracks, continuous ambient audio. Strengths: generates endlessly without looping, royalty-free, good API. Cost: free with attribution, paid from $14/month. Limitation: not designed for individual songs or specific compositions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Sound Design for Video, Games, and Apps</h2>
+  <p class="section-text">Music generation gets the headlines, but sound design is where AI audio tools create the most immediate value for creators. Custom sound effects and ambient audio used to require expensive sample libraries or recording sessions. Now you can describe what you need:</p>
+  <p class="section-text"><strong>Foley and effects:</strong> "A heavy wooden door creaking open slowly in a stone corridor" or "Rain on a tin roof transitioning to thunder" or "Futuristic computer interface beeps, soft and glassy." Stable Audio and ElevenLabs Sound Effects handle these well. Be cinematic in your descriptions — the AI responds to vivid, sensory language.</p>
+  <p class="section-text"><strong>Ambient landscapes:</strong> "Dense forest at dawn with birds, distant stream, and occasional wind through leaves" or "Busy cafe in Paris with muffled conversations, clinking cups, and jazz piano." These create immersive backgrounds for podcasts, meditation apps, and video content.</p>
+  <p class="section-text"><strong>UI sounds:</strong> "Soft, positive notification chime, like a crystal bell" or "Error sound, gentle but clear, two descending tones." Apps and games need dozens of interface sounds. AI generates variations quickly so you can audition options without commissioning a sound designer.</p>
+  <p class="section-text"><strong>Adaptive scoring:</strong> For games and interactive media, generate multiple variations of the same theme at different energy levels — calm exploration, building tension, combat intensity, victory resolution. AIVA is particularly good at this because you can request variations of a base composition.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Legal</span>
+  <h2 class="section-title">Licensing and Copyright: What You Can Actually Use</h2>
+  <p class="section-text">AI-generated music copyright is one of the most actively contested areas in law. Here is the practical reality as of 2026:</p>
+  <p class="section-text"><strong>Copyright ownership:</strong> In the US, purely AI-generated works cannot receive copyright protection — the Copyright Office requires human authorship. However, if you substantially modify AI output (arrange, edit, mix, add your own elements), the resulting work can qualify for copyright as a derivative human creation.</p>
+  <p class="section-text"><strong>Commercial use:</strong> Suno and Udio both offer commercial licenses on paid plans. This means you can use their output in videos, podcasts, and products without additional licensing. Free tier output typically requires attribution and may not be cleared for commercial use — read the terms carefully.</p>
+  <p class="section-text"><strong>Sampling risk:</strong> AI music models were trained on copyrighted music. If output sounds recognizably similar to a specific existing song, you could face a copyright claim. Use AI music detection tools to check for similarity before publishing. When in doubt, regenerate with a more specific prompt that steers away from any single reference.</p>
+  <p class="section-text"><strong>Safe practices:</strong> Always use paid-tier commercial licenses for any revenue-generating content. Keep records of your prompts and generation settings. If you edit the output significantly, document your modifications. This paper trail protects you if questions arise.</p>
+</div>
+
 <div class="demo-container">
   <h3>Music Prompt Formula</h3>
   <p><strong>Structure:</strong> [Genre] + [Mood] + [Instruments] + [Production Style]</p>

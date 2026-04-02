@@ -69,9 +69,55 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Industry Examples</span>
+  <h2 class="section-title">Workflows Across Different Roles</h2>
+  <p class="section-text">Workflows aren't limited to tech companies or developers. Every role that involves repeatable steps benefits from automation. Here are real examples across industries:</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Content Creator:</strong> New video published → AI generates title, description, and tags → thumbnails auto-created in three sizes → cross-posted to social platforms → analytics tracking begins. What used to take 45 minutes per video now takes zero.</p>
+    <p><strong style="color: var(--green);">Freelance Consultant:</strong> Client inquiry received → AI qualifies the lead based on budget and scope → calendar availability checked → personalized proposal drafted → sent with one click. Response time drops from 24 hours to 60 seconds.</p>
+    <p><strong style="color: var(--purple);">E-commerce Seller:</strong> New order placed → inventory updated → shipping label generated → customer confirmation sent → tracking number logged → review request scheduled for 7 days after delivery. End-to-end, hands-free.</p>
+    <p><strong style="color: var(--orange);">HR Manager:</strong> Job application received → AI screens resume against role requirements → qualified candidates scheduled for interviews → rejection emails sent with personalized feedback → hiring dashboard updated in real time.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Compound Effect</span>
+  <h2 class="section-title">Why Small Workflows Create Massive Impact</h2>
+  <p class="section-text">Most people think automation only matters for big, complex processes. That's backwards. The power of workflows is in the compound effect — many small automations stacking on top of each other. Each one saves a few minutes. Together, they transform how you work.</p>
+  <p class="section-text">Consider this progression: Week 1, you automate your morning email triage (saves 20 minutes/day). Week 3, you automate report generation (saves 45 minutes/week). Week 5, you automate client follow-ups (saves 30 minutes/day). By week 6, you've freed up almost two hours every single day — permanently. That's not a productivity hack. That's a structural change in how you spend your life.</p>
+  <p class="section-text">The compound effect also applies to cognitive load. Each decision you automate isn't just time saved — it's mental bandwidth returned to you. By the end of month two, you're not just faster. You're clearer, calmer, and more creative because your brain isn't bogged down by repetitive decisions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Misconceptions</span>
+  <h2 class="section-title">What Workflows Are Not</h2>
+  <p class="section-text"><strong style="color: var(--red);">Myth: You need to be a programmer.</strong> Modern workflow tools like Make, Zapier, and n8n offer visual, drag-and-drop interfaces. You can build powerful automations without writing a single line of code. Code is optional — understanding your process is mandatory.</p>
+  <p class="section-text"><strong style="color: var(--red);">Myth: Automation is all-or-nothing.</strong> You don't have to automate an entire process. Automating just the data entry portion of a 10-step process still saves significant time. Partial automation is real automation.</p>
+  <p class="section-text"><strong style="color: var(--red);">Myth: AI workflows are unpredictable.</strong> With proper guardrails — confidence thresholds, human review steps, and fallback paths — AI-powered workflows are as reliable as any traditional automation. The AI adds intelligence; the workflow structure adds predictability.</p>
+  <p class="section-text"><strong style="color: var(--red);">Myth: Setup takes longer than it saves.</strong> A typical workflow takes 1-3 hours to build and test. If it saves you 15 minutes a day, it pays for itself within two weeks. Everything after that is pure return.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">What's Next</span>
   <h2 class="section-title">From Awareness to Action</h2>
   <p class="section-text">Now you know why workflows matter. In the next lesson, we'll map your actual processes — identifying exactly where automation will have the biggest impact. No guessing. No generic advice. Your work, your opportunities.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Before and After</span>
+  <h2 class="section-title">A Day Without Workflows vs. A Day With Them</h2>
+  <p class="section-text"><strong style="color: var(--red);">8am without workflows:</strong> Check email. 47 new messages. Manually scan each one, flag the urgent ones, file the rest. Forward three invoices to accounting. Copy-paste meeting notes from yesterday into the project tracker. Search Slack for that link someone shared. Update the client spreadsheet with last week's numbers. It's 9:30am and you haven't started your actual work yet.</p>
+  <p class="section-text"><strong style="color: var(--green);">8am with workflows:</strong> Check your dashboard. Email triage ran overnight — urgent items are flagged, invoices are already in accounting, low-priority messages are auto-filed. Meeting notes were automatically synced to the project tracker. The client spreadsheet was updated at 6am. You sit down to your first creative task at 8:15am with a clear mind and a full battery.</p>
+  <p class="section-text">That's the real promise of workflows. Not some abstract efficiency gain — a fundamentally different experience of your workday. Less friction. More focus. The mechanical parts handled by machines. The meaningful parts handled by you.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Getting Started</span>
+  <h2 class="section-title">Your First Workflow Doesn't Have to Be Complex</h2>
+  <p class="section-text">The best first workflow is embarrassingly simple. Don't start with a 10-step pipeline connecting five services. Start with one trigger and one action: "When I receive an email from my boss, send me a Slack notification." That's a workflow. It works. It saves you from checking email constantly. And it teaches you the fundamental pattern — trigger, action, done.</p>
+  <p class="section-text">From there, add one step at a time. "When I receive an email from my boss, classify its urgency, and send me a Slack notification with a priority tag." Two steps. Then three. Each addition builds your confidence and your understanding of how pieces connect. Within a week, you'll be designing five-step workflows instinctively.</p>
+  <p class="section-text">The enemy of progress is perfectionism. A running workflow that handles 80% of cases is infinitely more valuable than a perfect workflow that's still in the planning stage. Ship the simple version. Improve it based on what you learn.</p>
 </div>
 
 <div class="lesson-section">

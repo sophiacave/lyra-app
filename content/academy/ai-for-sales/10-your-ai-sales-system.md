@@ -71,9 +71,43 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Architecture</span>
+  <h2 class="section-title">System Architecture: How the Pieces Connect</h2>
+  <p class="section-text">A system is more than a collection of tools. It is tools connected by workflows that feed each other. Here is how each component of your AI sales system passes information to the next:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Research feeds Outreach:</strong> Prospect briefs from Lesson 2 become the raw material for personalized PRISM emails in Lesson 3. The better your research, the higher your response rates.</p>
+    <p><strong style="color: var(--green);">Outreach feeds Calls:</strong> Responses to your outreach become discovery call context. AI takes the email thread and builds a call prep brief that references what the prospect already told you.</p>
+    <p><strong style="color: var(--purple);">Calls feed Proposals:</strong> Discovery notes become the foundation for customized proposals. AI maps their stated pain points to your solution — no generic templates needed.</p>
+    <p><strong style="color: var(--orange);">Proposals feed Objections:</strong> Questions raised during proposal review become objection prep for the closing call. AI generates HEARD-method responses for every concern.</p>
+    <p><strong style="color: var(--red);">Closes feed Analytics:</strong> Won and lost deal data feeds your win/loss analysis. Patterns emerge that improve every upstream activity — research, outreach, calls, and proposals all get better.</p>
+    <p><strong style="color: var(--accent);">Analytics feeds Research:</strong> The cycle restarts. Insights from analytics refine your ICP, your targeting, and your messaging. Each cycle through the system makes every step more effective.</p>
+  </div>
+  <p class="section-text">This is a flywheel, not a funnel. Every cycle through the system produces better data, which produces better prompts, which produces better results. The system accelerates over time.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Integration</span>
+  <h2 class="section-title">Integration Patterns: AI + Your Existing Tools</h2>
+  <p class="section-text">You do not need to replace your CRM or abandon your existing workflow. AI integrates alongside your tools:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">AI + CRM:</strong> Export your pipeline data weekly, paste it into AI for analysis, and use the insights to update your CRM. As you get more comfortable, explore your CRM's built-in AI features or API integrations. Start manual, automate later.</p>
+    <p><strong style="color: var(--blue);">AI + Email:</strong> Draft emails in AI, then paste into your email client or outreach tool. Some email platforms now integrate directly with AI — use these when available. The key is that AI does the thinking, your email tool does the sending.</p>
+    <p><strong style="color: var(--purple);">AI + Calendar:</strong> Before each meeting, run your call prep prompt. After each meeting, run your follow-up prompt. Tie these to calendar events so they become automatic habits, not extra tasks.</p>
+    <p><strong style="color: var(--orange);">AI + Notes:</strong> Keep all your AI-generated briefs, proposals, and analyses in one place — a note-taking app, a shared drive, or your CRM's notes section. Searchable history means you never lose an insight.</p>
+  </div>
+  <p class="section-text">The simplest integration is copy-paste. Do not wait for perfect automation. Start by copying data into AI, getting results, and pasting them back. Speed comes later. The habit comes first.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Scaling</span>
-  <h2 class="section-title">Growing Your AI Sales Engine</h2>
-  <p class="section-text">As your business grows, your AI system scales with you. Feed it more data and it gives better insights. Build more templates and your team gets consistent. Connect AI workflows to your CRM and automation tools and the system starts running itself.</p>
+  <h2 class="section-title">Scaling Tips: From Solo Seller to Sales Team</h2>
+  <p class="section-text">If you manage a team or plan to grow, your AI sales system scales in specific ways:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Standardize Prompts:</strong> Build a shared prompt library for your team. Every rep uses the same research prompt, the same outreach framework, the same call prep template. Consistency across the team means consistent quality for every prospect.</p>
+    <p><strong style="color: var(--blue);">Centralize Insights:</strong> Feed all win/loss data into a single AI analysis monthly. Team-wide patterns are more reliable than individual patterns. The team learns from everyone's wins and losses, not just their own.</p>
+    <p><strong style="color: var(--purple);">Onboard with AI:</strong> New reps ramp faster when they have your prompt library, your objection playbook, and your research templates from day one. AI becomes the institutional knowledge that used to live only in senior reps' heads.</p>
+    <p><strong style="color: var(--orange);">Measure AI Impact:</strong> Track the before and after. Compare close rates, cycle length, and activity efficiency from before AI adoption to after. Quantify the ROI so you can invest more confidently in tools and training.</p>
+  </div>
   <p class="section-text">The salespeople who build these systems now will dominate their markets for years. Not because AI replaces human selling — but because it frees human sellers to do what they do best: connect, understand, and solve real problems for real people.</p>
 </div>
 

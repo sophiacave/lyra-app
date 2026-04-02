@@ -114,6 +114,36 @@ negative space on the right for text overlay,
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Workflow Optimization</span>
+  <h2 class="section-title">Work faster without sacrificing quality.</h2>
+  <p class="section-text">Once your basic workflow is in place, these optimization techniques will save you hours every week:</p>
+  <p class="section-text"><strong>Prompt snippets:</strong> Create a collection of reusable prompt fragments you can mix and match. Keep a file with your favorite lighting descriptions ("soft golden hour backlight with lens flare"), your best style modifiers ("editorial photography, shallow depth of field, 85mm lens"), and your proven mood setters ("warm, nostalgic, intimate"). When building a new prompt, assemble from tested parts.</p>
+  <p class="section-text"><strong>Tool-specific shortcuts:</strong> Each tool has features that save time. In Midjourney, the --repeat flag generates multiple variations at once. In ChatGPT, you can say "generate 4 variations of this concept" in one message. In Stable Diffusion, batch processing lets you queue up dozens of generations. Learn your tool's shortcuts and your speed doubles.</p>
+  <p class="section-text"><strong>The two-tool workflow:</strong> Most experienced creators settle on two tools: a primary generator (Midjourney, DALL-E, or Stable Diffusion) and a primary editor (Photoshop, Canva, or Photopea). Mastering two tools deeply is more efficient than knowing five tools superficially. Pick your pair and go deep.</p>
+  <p class="section-text"><strong>Color consistency system:</strong> Save your brand hex codes and color descriptions. Reference them in every prompt. "My brand palette: deep navy (#1a1a3e), warm coral (#ff6b6b), cream white (#fef9ef)" — paste this into every brand-related prompt for instant consistency.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Batch Processing Strategies</span>
+  <h2 class="section-title">Create a month of content in a single focused session.</h2>
+  <p class="section-text">Batch processing is the difference between feeling like content creation is a daily grind and feeling like it is a creative flow state you enter occasionally:</p>
+  <p class="section-text"><strong>The content sprint:</strong> Block 2 hours once a month. Open your content calendar. Write all prompts first (do not generate yet). Review and refine the prompts. Then generate all images in one focused session. This separation of planning and execution produces better results because you are in "writing mode" when crafting prompts and "visual mode" when evaluating results.</p>
+  <p class="section-text"><strong>Seasonal batching:</strong> Generate seasonal content 3-4 weeks early. Spring visuals in late February. Summer visuals in late May. Holiday visuals in early November. This gives you a library of ready-to-use assets when the season arrives, and you never scramble for timely content.</p>
+  <p class="section-text"><strong>Platform multiplication:</strong> When you generate one image, immediately create versions for every platform you use. Square crop for Instagram. Wide crop for Twitter. Vertical crop for Stories. Add text overlay for Pinterest. One generation session, five platform-ready assets. Keep a checklist of your platforms and their dimensions so you never miss one.</p>
+  <p class="section-text"><strong>Asset library maintenance:</strong> Spend 15 minutes each month reviewing your AI Visuals folder. Delete unused drafts. Move finals to the right project folders. Note which prompts produced your best work. This small maintenance habit keeps your system clean and your prompt library growing.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Staying Current</span>
+  <h2 class="section-title">The AI visual landscape evolves fast. Here is how to keep up without drowning.</h2>
+  <p class="section-text">New tools, model updates, and techniques emerge constantly. You do not need to track everything — that is a recipe for overwhelm. Instead, use this low-effort system to stay informed:</p>
+  <p class="section-text"><strong>Follow three sources:</strong> Pick one YouTube channel that covers AI art news, one subreddit or community forum, and one newsletter. Three sources give you enough signal without drowning in noise. Check them once a week during your creative practice time.</p>
+  <p class="section-text"><strong>Test one new thing per month:</strong> When you hear about a new tool, model update, or technique, try it in a dedicated 30-minute experiment session. If it improves your workflow, adopt it. If not, move on. This prevents both stagnation and shiny-object syndrome.</p>
+  <p class="section-text"><strong>Update your prompt library:</strong> When you discover a new keyword, style modifier, or technique that works, add it to your prompt library immediately. Your library should be a living document that grows with your skills.</p>
+  <p class="section-text"><strong>Share and learn from others:</strong> The AI visual community is remarkably generous. People share prompts, techniques, and workflows freely. Participate in communities, share your own discoveries, and learn from what others create. The fastest way to improve is to see how other people solve the same creative challenges you face.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">Prompt Library Categories</h2>
 </div>

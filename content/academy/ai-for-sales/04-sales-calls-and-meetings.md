@@ -67,6 +67,100 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Templates</span>
+  <h2 class="section-title">Call Prep Templates by Meeting Type</h2>
+  <p class="section-text">Not all calls are the same. Your prep should match the type of meeting. Here are focused templates for the four most common sales call types:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Discovery Call Prep:</strong> Focus on open-ended questions that uncover pain. Research their industry challenges, recent company changes, and the contact's role-specific pressures. Your goal is to listen 70% and talk 30%.</p>
+    <p><strong style="color: var(--green);">Demo Call Prep:</strong> Map your product features to their stated pain points from the discovery call. Prepare 3 use cases relevant to their industry. Have a "wow moment" planned — the single feature that makes their eyes light up.</p>
+    <p><strong style="color: var(--purple);">Proposal Review Prep:</strong> Anticipate every question about pricing, timeline, and implementation. Prepare ROI calculations with their actual numbers. Have competitor comparison points ready without being the one to bring up competitors.</p>
+    <p><strong style="color: var(--orange);">Closing Call Prep:</strong> Know every stakeholder's concern. Have the contract terms clear. Prepare responses for last-minute objections. Plan your ask — the specific next step that means "yes."</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Demo-Specific Prep</h3>
+  <p>Prepare a demo that sells, not just shows:</p>
+  <div class="prompt-box"><code>I'm giving a product demo to [NAME, TITLE] at [COMPANY] tomorrow. From our discovery call, their main pain points are: [LIST PAINS]. My product: [PRODUCT]. Create a demo flow that: 1) Opens with their biggest pain point as a story, 2) Shows 3 features mapped directly to their problems, 3) Includes a "wow moment" — the single most impressive thing for their use case, 4) Ends with a transition to next steps. Keep the demo under 20 minutes.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Automation</span>
+  <h2 class="section-title">Meeting Automation That Saves Hours</h2>
+  <p class="section-text">Beyond prep and follow-up, AI can automate the entire meeting workflow. Here is the full system:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Before the Meeting:</strong> AI generates the call brief, compiles recent account activity, and drafts an agenda email to send 24 hours in advance. The agenda email confirms attendees, sets expectations, and shows professionalism.</p>
+    <p><strong style="color: var(--blue);">During the Meeting:</strong> Keep a running note of key points, commitments, and objections. Even bullet points work — AI will clean them up after.</p>
+    <p><strong style="color: var(--purple);">Immediately After:</strong> AI turns your raw notes into a structured summary: decisions made, action items with owners, objections raised, and next steps. This becomes your CRM update and your follow-up email source.</p>
+    <p><strong style="color: var(--orange);">24 Hours Later:</strong> AI drafts a value-add follow-up — not "great to chat," but a relevant article, case study, or insight related to something they mentioned on the call.</p>
+  </div>
+  <p class="section-text">This system turns every meeting from a one-time event into a momentum engine. Each interaction builds on the last because nothing falls through the cracks.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Follow-Up</span>
+  <h2 class="section-title">The Three-Touch Follow-Up Strategy</h2>
+  <p class="section-text">One follow-up email is not enough. The best closers use a three-touch follow-up sequence after every meaningful call:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Touch 1 — Same Day (within 30 min):</strong> Recap email. Reference specific things they said. Confirm next steps with dates. This is your standard post-call follow-up.</p>
+    <p><strong style="color: var(--blue);">Touch 2 — Day 2-3:</strong> Value-add touch. Send something useful: an article about their industry challenge, a case study from a similar company, or an answer to a question they raised. No pitch. Just value.</p>
+    <p><strong style="color: var(--red);">Touch 3 — Day 5-7:</strong> Momentum check. A brief, direct message: "Wanted to make sure [next step] is still on track for [date]. Anything you need from me in the meantime?" This keeps the deal alive without being pushy.</p>
+  </div>
+  <p class="section-text">AI can draft all three touches from a single set of call notes. After the call, generate all three emails at once, schedule them, and move on to your next call. The follow-up system runs itself.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Virtual Meetings</span>
+  <h2 class="section-title">Mastering Virtual Sales Calls</h2>
+  <p class="section-text">Most sales calls happen over video now.
+  Virtual meetings have different dynamics than in-person meetings,
+  and AI can help you optimize for the format:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Before the Call — Environment Check:</strong>
+    AI can generate a pre-call checklist: lighting, background, audio quality,
+    screen sharing setup, and backup materials loaded. Professionalism in the
+    details builds unconscious trust.</p>
+    <p><strong style="color: var(--blue);">Opening Minutes — Engagement Hook:</strong>
+    Virtual calls lose attention faster than in-person meetings. AI can craft
+    a 30-second opening that immediately engages: a relevant insight, a bold
+    question, or a surprising data point about their business. Skip the small talk
+    and lead with value.</p>
+    <p><strong style="color: var(--purple);">During the Call — Attention Anchors:</strong>
+    On video, you cannot read body language as easily. Plan "attention anchors"
+    every 5-7 minutes — a question, a screen share, a poll, or a story.
+    AI can map these into your call flow so the energy never drops.</p>
+    <p><strong style="color: var(--orange);">Screen Sharing — Story, Not Slides:</strong>
+    When sharing your screen, AI can structure your presentation as a narrative,
+    not a slide deck. Each screen should answer one question and lead naturally
+    to the next. Viewers follow stories. They tune out bullet point lists.</p>
+  </div>
+  <p class="section-text">Virtual selling is a skill that compounds.
+  Every call, ask AI to review your approach and suggest one improvement.
+  Small adjustments over weeks create massive differences in close rates.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Difficult Calls</span>
+  <h2 class="section-title">Handling Tough Conversations</h2>
+  <p class="section-text">Not every call goes smoothly. AI can prepare you for
+  the difficult conversations that derail unprepared salespeople:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">The Price Pushback Call:</strong>
+    They loved the demo but flinched at the price. AI preps your ROI narrative,
+    competitive pricing context, and flexible packaging options before you get on the call.
+    Walk in with three pricing scenarios and the confidence to hold your value.</p>
+    <p><strong style="color: var(--orange);">The Multi-Stakeholder Call:</strong>
+    Five people on the call, each with different priorities. AI generates a
+    stakeholder map: who cares about what, whose objections to address first,
+    and how to make the champion look good in front of their team.</p>
+    <p><strong style="color: var(--blue);">The Rescue Call:</strong>
+    A deal that went cold and you are trying to revive. AI researches what
+    changed since your last contact — new leadership, budget cycles, competitor
+    moves — and gives you a fresh angle that is not "just circling back."</p>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Pro Tip</span>
   <h2 class="section-title">Build a Call Intelligence System</h2>
   <p class="section-text">After every call, feed your notes to AI and ask for patterns. Over time, you'll build a dataset of what works: which questions open people up, which objections come up most, what closes deals. This is your personal sales playbook, refined by real data.</p>

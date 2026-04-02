@@ -63,6 +63,39 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Your Prompt Library</span>
+  <h2 class="section-title">The Master Prompt Collection</h2>
+  <p class="section-text">Throughout this course, you have encountered dozens of prompts. Here is a curated summary of the essential prompts organized by workflow stage. Save these in a single document and customize them for your brand:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Strategy prompts:</strong> Content pillar discovery, 30-day calendar generation, competitive analysis, content scoring matrix, and audience research. These are your planning tools — use them during your monthly ideation session.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Creation prompts:</strong> Blog post outlines, hook generators, thread structures, email sequences, and carousel scripts. These are your production tools — load them at the start of every batching session.</p>
+  <p class="section-text"><strong style="color:var(--green)">Optimization prompts:</strong> SEO audit, voice consistency check, headline testing, and engagement analysis. These are your quality tools — run them before you publish anything.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Repurposing prompts:</strong> Content waterfall, reverse repurposing, platform-native transformation. These are your multiplication tools — they turn one piece into ten.</p>
+  <p class="section-text">The key is customization. Every generic prompt becomes powerful when you add your specific business, audience, voice, and pillars. A prompt with "[describe your business]" filled in with actual details produces 5x better output than one with placeholders. Take the time to create your personalized versions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Common Engine Failures</span>
+  <h2 class="section-title">Why Content Engines Stall — and How to Fix Them</h2>
+  <p class="section-text">Every content engine breaks down eventually. Knowing the failure modes in advance lets you diagnose and fix problems fast:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Failure 1: Skipping strategy.</strong> You jump straight to creation because it feels productive. But without strategy, you are creating random content that does not build toward anything. The fix: never skip your Monday planning session. Even 15 minutes of strategy prevents hours of wasted creation.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Failure 2: Voice drift.</strong> Over time, your AI output starts sounding generic because you stopped pasting your voice document. The fix: make the voice document the first thing you paste in every session. No exceptions. Set it as the first step in your batching checklist.</p>
+  <p class="section-text"><strong style="color:var(--green)">Failure 3: Metric blindness.</strong> You publish consistently but never check what is working. After three months, you have no idea which topics, formats, or platforms drive results. The fix: Friday review, every Friday. Fifteen minutes. Paste your numbers into AI and let it tell you what to change.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Failure 4: Burnout by overcommitting.</strong> You planned to publish daily across four platforms and burned out in three weeks. The fix: start with a sustainable rhythm. Three posts per week is better than seven posts for two weeks followed by silence. Scale up only when the current rhythm feels easy.</p>
+  <p class="section-text"><strong>Failure 5: Never updating the system.</strong> Your content pillars made sense six months ago but your business has evolved. Your prompts worked in January but AI has improved since then. The fix: monthly audit, quarterly deep review. Engines need maintenance.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Scaling Up</span>
+  <h2 class="section-title">From Solo Engine to Team Operation</h2>
+  <p class="section-text">Once your engine is running smoothly as a solo operator, you may want to scale by bringing in help — a VA, a freelance writer, or a small team. Your content studio system makes this transition smooth because everything is documented:</p>
+  <p class="section-text"><strong>Your voice document</strong> becomes the onboarding guide for any writer. They know exactly how you sound without months of trial and error.</p>
+  <p class="section-text"><strong>Your prompt library</strong> becomes the operations manual. A VA can run your prompts, generate drafts, and queue content using the same system you built.</p>
+  <p class="section-text"><strong>Your content calendar</strong> becomes the project management tool. Everyone sees what is planned, what is in progress, and what is published.</p>
+  <p class="section-text"><strong>Your metrics dashboard</strong> becomes the performance review. The team can see what works and adjust without needing your input on every decision.</p>
+  <p class="section-text">The studio mindset from Lesson 1 was never just a metaphor. You have been building an actual studio this entire course — documented systems, repeatable processes, quality standards, and feedback loops. That is what makes scaling possible.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--red);">Long-Term Maintenance</span>
   <h2 class="section-title">Keeping the Engine Healthy</h2>
   <p class="section-text">Content engines need maintenance. Once a month, audit your system: Is your voice document still accurate? Are your prompts producing good output or do they need refreshing? Are your content pillars still relevant to your audience?</p>

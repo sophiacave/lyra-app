@@ -52,6 +52,87 @@ type: "lesson"
   <p class="section-text"><strong>Post-Production:</strong> Auto-generate show notes, chapter markers, social media clips, and SEO descriptions. Whisper for transcription. Claude for summarization.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Automated Podcast Production Script</h2>
+  <p class="section-text">Here is a Python script that automates the core podcast production pipeline — from script to multi-voice audio file:</p>
+  <div class="prompt-box"><code>from openai import OpenAI
+import requests
+from pydub import AudioSegment
+
+client = OpenAI()
+
+# Step 1: Generate a podcast script with Claude or GPT
+script_response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{
+        "role": "user",
+        "content": "Write a 2-minute podcast segment for 'Signal and Noise' "
+                   "about AI voice technology. Two speakers: Alex (host, curious) "
+                   "and Sam (expert, warm). Format as ALEX: and SAM: lines."
+    }]
+)
+script = script_response.choices[0].message.content
+
+# Step 2: Split script by speaker and generate voices
+lines = script.strip().split("\n")
+segments = []
+for line in lines:
+    if line.startswith("ALEX:"):
+        voice, text = "nova", line.replace("ALEX:", "").strip()
+    elif line.startswith("SAM:"):
+        voice, text = "onyx", line.replace("SAM:", "").strip()
+    else:
+        continue
+
+    audio = client.audio.speech.create(
+        model="tts-1-hd", voice=voice, input=text
+    )
+    filename = f"segment_{len(segments)}.mp3"
+    audio.stream_to_file(filename)
+    segments.append(filename)
+
+# Step 3: Concatenate segments with natural pauses
+pause = AudioSegment.silent(duration=400)  # 400ms between speakers
+final = AudioSegment.empty()
+for seg_file in segments:
+    final += AudioSegment.from_mp3(seg_file) + pause
+
+final.export("episode_draft.mp3", format="mp3")</code></div>
+  <p class="section-text">This script produces a rough cut in under two minutes. From here, you would add intro/outro music (generated with Suno), run the file through Auphonic for mastering, and generate show notes by feeding the script back to Claude.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Show Notes and Metadata Automation</h2>
+  <p class="section-text">Show notes are the hidden workhorse of podcast growth. They drive SEO, help listeners find specific topics, and give your back catalog discoverability. AI makes them effortless:</p>
+  <p class="section-text"><strong>Episode descriptions:</strong> Feed your transcript to Claude with the prompt: "Write a 150-word episode description optimized for podcast search. Include 3-5 keywords naturally. Tone: conversational but informative." This produces descriptions that rank well and read naturally.</p>
+  <p class="section-text"><strong>Chapter markers:</strong> Ask Claude to identify natural topic transitions in your transcript and output them as timestamps. Most podcast hosts (Spotify for Podcasters, Buzzsprout) support chapter markers — they dramatically improve listener experience on long episodes.</p>
+  <p class="section-text"><strong>Social clips:</strong> Identify the most quotable 30-60 second segments. Generate standalone audio clips. Pair them with a text quote card for social media. One episode can produce 3-5 social posts with this method.</p>
+  <p class="section-text"><strong>Newsletter integration:</strong> Summarize each episode as a 3-paragraph newsletter section. Include a key insight, a memorable quote, and a link to the full episode. This cross-pollinates your podcast audience with your email list.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Tips</span>
+  <h2 class="section-title">Making AI Voices Sound Natural in Podcasts</h2>
+  <p class="section-text">AI voices in podcasts face a unique challenge: listeners spend 20-60 minutes with them. Any robotic quality that is tolerable for 30 seconds becomes grating over a full episode. Here are production techniques that solve this:</p>
+  <p class="section-text"><strong>Vary the pacing.</strong> Do not generate the entire episode in one shot. Break scripts into paragraphs and adjust the voice settings slightly between sections. Subtle changes in stability (0.4 to 0.6 range) add natural variation without breaking character.</p>
+  <p class="section-text"><strong>Add room tone.</strong> Pure silence between segments sounds artificial. Record 10 seconds of quiet room ambience and layer it faintly under the entire episode. This creates a sense of physical space that makes AI voices feel more present.</p>
+  <p class="section-text"><strong>Use music transitions wisely.</strong> A 3-5 second music bed between topic changes gives the listener's ear a reset. It also masks any tonal shifts between separately generated audio segments. Keep transition music at -20dB relative to voice.</p>
+  <p class="section-text"><strong>Match voice to format.</strong> Solo narration needs a warm, intimate voice. Interview formats need a voice with energy and clear diction. Educational content needs a steady, authoritative tone. The wrong voice-format pairing is the number one reason AI podcasts feel "off."</p>
+  <p class="section-text"><strong>Disclosure matters.</strong> Always tell your audience the voices are AI-generated. Listeners who discover it on their own feel deceived. Listeners who are told upfront are usually fascinated. Transparency builds trust — deception destroys it permanently.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Distribution</span>
+  <h2 class="section-title">Publishing and Growing Your AI Podcast</h2>
+  <p class="section-text">Production is half the battle. Distribution determines whether anyone actually hears your work:</p>
+  <p class="section-text"><strong>RSS hosting:</strong> Buzzsprout, Spotify for Podcasters, and RSS.com all accept AI-generated content. Buzzsprout offers the smoothest setup with automatic distribution to Apple Podcasts, Spotify, Amazon Music, and 15+ other platforms from a single upload.</p>
+  <p class="section-text"><strong>Episode cadence:</strong> Consistency matters more than frequency. A reliable weekly episode builds more audience than sporadic daily drops. AI production makes weekly consistency achievable even as a solo creator.</p>
+  <p class="section-text"><strong>Cross-platform clips:</strong> Short audio clips (30-90 seconds) posted to YouTube Shorts, TikTok, and Instagram Reels drive podcast discovery. Tools like Opus Clip can automatically identify the best moments for clipping.</p>
+  <p class="section-text"><strong>Transcripts for SEO:</strong> Publish full transcripts on your website alongside each episode. Google indexes text, not audio. A transcript turns every episode into a searchable, linkable webpage that drives organic traffic to your show.</p>
+</div>
+
 <div class="demo-container">
   <h3>AI Podcast Tool Stack</h3>
   <p><strong>Scripting:</strong> Claude, GPT-4, Gemini</p>

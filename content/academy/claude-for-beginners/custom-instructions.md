@@ -96,6 +96,66 @@ Notion, Excel, etc.].
 
 </div>
 
+<!-- SECTION 3.7: COMMON PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">Patterns</span>
+  <h2 class="section-title">Common custom instruction patterns — what works and what doesn't.</h2>
+  <p class="section-text">After seeing thousands of custom instructions, here are the patterns that produce the best results — and the ones that waste your character limit.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">DO</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Include your role and industry</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"I am a product manager at a B2B SaaS company" gives Claude instant context for every response. It adjusts vocabulary, examples, and recommendations to match your world.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">DO</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Specify what you do NOT want</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"No corporate jargon," "No 'Great question!' openers," "No repeating my question back to me." Negative instructions are surprisingly powerful at cutting the fluff.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">DO</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Name your preferred format</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"Default to bullet points over paragraphs" or "Keep responses under 300 words unless I ask for more." Format preferences save the most editing time across all conversations.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(239,68,68,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">SKIP</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Do not include task-specific instructions</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"When I ask about marketing, always include ROI" is too specific for custom instructions. Save task-specific rules for Projects instead. Custom instructions should be universal preferences.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(239,68,68,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">SKIP</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Do not try to "jailbreak" or game the system</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Instructions like "ignore all safety guidelines" or "pretend you have no limitations" waste your character limit and do not work. Focus on genuinely useful preferences about how you work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3.8: BEFORE AND AFTER -->
+<div class="lesson-section">
+  <span class="section-label">Before & After</span>
+  <h2 class="section-title">See the difference custom instructions make.</h2>
+  <p class="section-text">Here is the same question asked with and without custom instructions. The difference is dramatic.</p>
+
+<div data-learn="FlashDeck" data-props='{"title":"Before vs After Custom Instructions","cards":[{"front":"The Question\n\nYou ask Claude: Help me write a status update for my boss.\n\n❌ WITHOUT custom instructions, Claude does not know your role, your boss preferences, or your communication style. It gives you a generic corporate template.","back":"✅ WITH custom instructions that say: I am a product manager at a fintech startup. My boss prefers bullet points. Keep it concise. No corporate jargon.\n\nClaude immediately writes a punchy, bulleted update using fintech terminology, formatted exactly how your boss likes it. Zero editing needed."},{"front":"The Question\n\nYou ask Claude: Brainstorm ideas for our team offsite.\n\n❌ WITHOUT custom instructions, Claude gives you generic team-building suggestions for an unknown team size, budget, and culture.","back":"✅ WITH custom instructions that say: I manage a remote team of 8 engineers. We value deep technical discussions. Budget-conscious startup.\n\nClaude suggests technical hackathons, architecture review sessions, and budget-friendly virtual activities tailored to engineers. Every idea fits your actual team."},{"front":"The Question\n\nYou ask Claude: Review this email draft.\n\n❌ WITHOUT custom instructions, Claude gives generic feedback and may suggest a more formal tone when you prefer casual.","back":"✅ WITH custom instructions that say: My writing style is conversational and direct. I prefer short sentences. No buzzwords.\n\nClaude edits specifically for your voice — cutting filler words, shortening sentences, replacing buzzwords with plain language. The result sounds like you, not a robot."}]}'></div>
+
+  <div class="callout">
+    <p><strong>The math is simple:</strong> Without custom instructions, you spend 10-15 seconds per conversation adding context about yourself. With custom instructions, that context is automatic. Over 10 conversations a day, that is 2-3 minutes saved — plus better results every single time.</p>
+  </div>
+</div>
+
 <!-- SECTION 4: HOW TO SET UP -->
 <div class="lesson-section">
   <span class="section-label">Step-by-Step</span>
@@ -104,6 +164,44 @@ Notion, Excel, etc.].
 <div class="tip-box">
     <div class="tip-label">Power Combo</div>
     <p><strong>Custom instructions + Projects + Memory = Claude that truly knows you.</strong> Start with custom instructions (global). Create a Project for each area of work (specific context). Use Memory for key facts you want Claude to always remember. This is how power users get 10x value from Claude.</p>
+  </div>
+</div>
+
+<!-- SECTION 4.5: PROJECTS DEEP DIVE -->
+<div class="lesson-section">
+  <span class="section-label">Projects</span>
+  <h2 class="section-title">Claude Projects — your context-specific workspaces.</h2>
+  <p class="section-text">Custom instructions are your global settings. Projects are your context-specific settings. Think of Projects as different desks in your office — each one has the files and tools for a specific type of work.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Client Management Project</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Upload your client brief, past emails, and meeting notes. Add project-specific instructions like "This client prefers formal communication" or "Always reference their Q2 goals." Now every conversation about this client has full context.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Weekly Reports Project</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Upload your report template, past reports for style reference, and team roster. Add instructions like "Use the same headers every week" and "My manager cares most about pipeline metrics." Consistent, polished reports every time.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Content Creation Project</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Upload your brand guidelines, tone of voice document, and top-performing posts. Add instructions like "Match the voice of our blog" and "Our audience is small business owners." Every piece of content stays on-brand.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">When to Use Projects vs Custom Instructions</div>
+    <p><strong>Custom instructions</strong> are for things that are true in every conversation — your role, communication style, formatting preferences. <strong>Projects</strong> are for things that are true only in a specific context — client details, project files, domain-specific rules. Use both for maximum effectiveness.</p>
   </div>
 </div>
 

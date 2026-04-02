@@ -76,6 +76,49 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <h2 class="section-title">Meeting Templates for Every Situation</h2>
+  <p class="section-text">Different meetings need different processing. Here are four templates that cover the most common PM meeting types:</p>
+  <p class="section-text"><strong>Daily Standup Template:</strong></p>
+  <div class="prompt-box"><code>Process these standup notes into a clean summary. For each person, list: (1) what they completed yesterday, (2) what they are working on today, (3) any blockers. Then add a "Blockers Summary" section at the bottom with suggested actions to unblock each one.
+
+Notes: [paste standup notes]</code></div>
+  <p class="section-text"><strong>Sprint Review / Demo Template:</strong></p>
+  <div class="prompt-box"><code>Here are notes from our sprint review demo. Please produce: (1) Features demonstrated with status (complete/partial/needs rework), (2) Stakeholder feedback captured during the demo, (3) Items that need follow-up or revision, (4) Stories that can be marked as Done vs. those that carry over. Flag any scope creep — new requests that came up during the demo that were not in the original sprint commitment.
+
+Notes: [paste review notes]</code></div>
+  <p class="section-text"><strong>Steering Committee Template:</strong></p>
+  <div class="prompt-box"><code>Process these steering committee meeting notes into a formal record. Include: (1) Attendees and apologies, (2) Decisions made with rationale, (3) Actions assigned with owners and deadlines, (4) Risks escalated, (5) Budget or timeline changes approved, (6) Items deferred to next meeting. Use formal language appropriate for executive-level documentation.
+
+Notes: [paste meeting notes]</code></div>
+  <p class="section-text"><strong>One-on-One / Coaching Template:</strong></p>
+  <div class="prompt-box"><code>Summarize this 1:1 meeting into private PM notes. Include: (1) Key topics discussed, (2) Any concerns or morale signals the team member raised, (3) Commitments made by either party, (4) Development goals or career topics mentioned, (5) Suggested follow-up items for the next 1:1. Keep this confidential-grade — it is for my reference only.
+
+Notes: [paste 1:1 notes]</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Deep Dive</span>
+  <h2 class="section-title">The Action Item Lifecycle</h2>
+  <p class="section-text">Extracting action items is only the beginning. The real value comes from tracking them through their full lifecycle. Here is how AI supports each stage:</p>
+  <p class="section-text"><strong>Capture.</strong> AI extracts every action item from a meeting — including the implicit ones that were not stated as explicit commitments but are clearly needed. "Mike said he would look into the API issue" becomes an action item even if nobody formally assigned it.</p>
+  <p class="section-text"><strong>Clarify.</strong> Many action items are vague. "Follow up on the design" — follow up how? With whom? By when? AI flags ambiguous items and suggests specific rewrites: "Follow up on the design" becomes "[Owner] — Schedule design review meeting with UX team — by Friday."</p>
+  <p class="section-text"><strong>Track.</strong> Before your next meeting, feed AI the previous action items list. Ask it to generate a tracking table: item, owner, status (not started / in progress / complete / blocked), and notes. This becomes the opening agenda item for your next meeting.</p>
+  <p class="section-text"><strong>Escalate.</strong> Items that appear on the action list for three or more consecutive meetings are stuck. AI can flag these chronic open items and draft an escalation message to the appropriate manager or stakeholder.</p>
+  <p class="section-text"><strong>Close.</strong> When an action is completed, AI updates the record and links it to any resulting decisions or documents. Over time, you build a complete history of every commitment made and fulfilled across your project.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">From Chaos to Clarity in One Meeting Cycle</h2>
+  <p class="section-text">A marketing PM at a mid-size SaaS company was drowning in meetings — eight per day, each generating action items that slipped through the cracks. Here is how she transformed her process:</p>
+  <p class="section-text"><strong>Before AI:</strong> She took rough notes during meetings. Spent 30-60 minutes after each meeting cleaning them up. Action items lived in three different tools (email, Slack, Jira). Follow-through was inconsistent. Stakeholders regularly asked "what happened with X?" and she had to dig through notes to find the answer.</p>
+  <p class="section-text"><strong>After AI:</strong> She types rough bullet points during the meeting — no formatting, no worrying about structure. Within two minutes after the meeting ends, AI processes those bullets into a clean summary with formatted action items. She copies the actions directly into her tracker. The summary goes to attendees within 10 minutes of the meeting ending.</p>
+  <p class="section-text"><strong>The result:</strong> Processing time dropped from 30-60 minutes per meeting to under 5 minutes. Action item completion rates went from roughly 60% to over 90% because nothing slipped through the cracks. Her team started commenting that meetings felt more productive because everyone always knew the context coming in.</p>
+  <p class="section-text">The total investment: learning to use four prompt templates and building the habit of pasting her notes immediately after each meeting. No new tools. No new processes. Just AI applied to the workflow she already had.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Meeting Notes & Action Items — Key Concepts","cards":[{"front":"Structure In, Structure Out","back":"Tell AI exactly what sections you need — decisions, action items, parking lot, key points. Vague input like \\\'summarize this\\\' produces vague output."},{"front":"Action Item Format","back":"[Owner] — [Task] — [Deadline if mentioned]. This format drives accountability and makes follow-through trackable."},{"front":"The Follow-Up Loop","back":"Feed last week\\\'s action items into AI to auto-generate the next meeting\\\'s agenda. The system creates accountability without you chasing people."},{"front":"Meeting Input Options","back":"Transcripts from Zoom/Teams/Otter, rough notes taken during the meeting, or a bullet-point brain dump afterward — all work as AI input."},{"front":"Template Once, Use Forever","back":"Save your best meeting summary prompt as a template. Tweak for meeting types — standups get lighter format, steering committees get more detail. 3-4 templates cover everything."}]}'></div>
 </div>
 

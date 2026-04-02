@@ -61,6 +61,148 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Implementation</span>
+  <h2 class="section-title">Building a Multi-Provider Load Balancer</h2>
+  <p class="section-text">Here's a complete load balancer implementation that distributes AI requests across providers, tracks rate limits, and handles failures automatically.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Production Load Balancer</div>
+<pre><code class="language-typescript">interface ProviderState {
+  name: string;
+  rpmLimit: number;
+  currentRpm: number;
+  errorCount: number;
+  healthy: boolean;
+  lastReset: number;
+}
+
+class AILoadBalancer {
+  private providers: Map&lt;string, ProviderState&gt; = new Map();
+  private circuitBreakerMax = 3;
+
+  addProvider(name: string, rpmLimit: number) {
+    this.providers.set(name, {
+      name, rpmLimit, currentRpm: 0,
+      errorCount: 0, healthy: true, lastReset: Date.now()
+    });
+  }
+
+  selectProvider(): ProviderState | null {
+    // Reset RPM counters every minute
+    const now = Date.now();
+    for (const [, p] of this.providers) {
+      if (now - p.lastReset > 60_000) {
+        p.currentRpm = 0;
+        p.lastReset = now;
+        if (p.errorCount < this.circuitBreakerMax) p.healthy = true;
+      }
+    }
+
+    // Find healthiest provider with most remaining capacity
+    let best: ProviderState | null = null;
+    let bestCapacity = 0;
+
+    for (const [, p] of this.providers) {
+      if (!p.healthy) continue;
+      const remaining = p.rpmLimit - p.currentRpm;
+      if (remaining > bestCapacity) {
+        best = p;
+        bestCapacity = remaining;
+      }
+    }
+
+    if (best) best.currentRpm++;
+    return best;
+  }
+
+  reportError(providerName: string) {
+    const p = this.providers.get(providerName);
+    if (!p) return;
+    p.errorCount++;
+    if (p.errorCount >= this.circuitBreakerMax) {
+      p.healthy = false;
+      console.warn(`Circuit breaker OPEN for ${providerName}`);
+    }
+  }
+
+  reportSuccess(providerName: string) {
+    const p = this.providers.get(providerName);
+    if (p) p.errorCount = 0;
+  }
+
+  getStatus(): Record&lt;string, any&gt; {
+    const status: Record&lt;string, any&gt; = {};
+    for (const [name, p] of this.providers) {
+      status[name] = {
+        healthy: p.healthy,
+        rpm: `${p.currentRpm}/${p.rpmLimit}`,
+        errors: p.errorCount,
+      };
+    }
+    return status;
+  }
+}
+
+// Usage
+const balancer = new AILoadBalancer();
+balancer.addProvider("anthropic", 100);
+balancer.addProvider("openai", 100);
+
+// Effective capacity: 200 RPM across both providers</code></pre>
+</div>
+
+  <p class="section-text">The load balancer selects the provider with the most remaining capacity each minute. This naturally distributes load and prevents hitting any single provider's rate limit. The circuit breaker opens after 3 consecutive errors, giving the failing provider time to recover before trying again.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Architecture</span>
+  <h2 class="section-title">Complete Scaling Architecture Diagram</h2>
+  <p class="section-text">Here's how all the scaling layers fit together in a production system. Each layer absorbs a portion of traffic, so only genuinely novel queries reach the expensive AI providers.</p>
+
+<div class="code-block"><div class="code-label">Text Architecture — Scaling Layers</div>
+<pre><code>User Request
+     │
+     ▼
+┌─────────────────────────────────────┐
+│  LAYER 0: Edge Cache / CDN          │  ← Static content (100% absorbed)
+│  Vercel Edge Network                │
+└────────────────┬────────────────────┘
+                 │  Dynamic requests only
+                 ▼
+┌─────────────────────────────────────┐
+│  LAYER 1: Semantic Cache            │  ← Similar queries (40-60% absorbed)
+│  pgvector similarity search         │
+│  Threshold: cosine > 0.95           │
+└────────────────┬────────────────────┘
+                 │  Novel queries only
+                 ▼
+┌─────────────────────────────────────┐
+│  LAYER 2: RAG Knowledge Base        │  ← Factual answers (20-30% absorbed)
+│  Vector search → context injection  │
+│  Answers from stored knowledge      │
+└────────────────┬────────────────────┘
+                 │  Complex/novel queries only
+                 ▼
+┌─────────────────────────────────────┐
+│  LAYER 3: Load-Balanced Providers   │  ← Distributed across providers
+│  Anthropic ←→ OpenAI ←→ Google     │
+│  Smart routing by task complexity   │
+└────────────────┬────────────────────┘
+                 │  Overflow / non-urgent
+                 ▼
+┌─────────────────────────────────────┐
+│  LAYER 4: Request Queue             │  ← Burst absorption
+│  Priority: paid → free              │
+│  Process at controlled rate         │
+└─────────────────────────────────────┘
+
+Result: Only 10-20% of user requests actually hit
+the expensive LLM providers.</code></pre>
+</div>
+
+  <p class="section-text">With all layers active, 80-90% of requests are served without an LLM call. The semantic cache handles repeated questions. RAG handles factual queries from your knowledge base. Only genuinely novel, complex questions reach the LLM — and even those are distributed across providers. This is how you scale to thousands of users without your AI bill scaling linearly.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Layer Three</span>
   <h2 class="section-title">Queue-Based Processing</h2>
   <p class="section-text">Not every AI request needs a synchronous response. For operations where users can wait a few seconds (document analysis, content generation, batch processing), a queue-based architecture handles burst traffic gracefully.</p>

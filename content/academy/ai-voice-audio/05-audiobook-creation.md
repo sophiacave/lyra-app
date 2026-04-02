@@ -51,6 +51,83 @@ type: "lesson"
   <p class="section-text">The key is subtlety. You don't need wildly different voices for every character. Slight variations in tone, pace, and pitch are enough to distinguish speakers without pulling the listener out of the story.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Automated Audiobook Generation Script</h2>
+  <p class="section-text">Here is a Python script that processes a manuscript chapter by chapter, generating consistent narration with quality controls built in:</p>
+  <div class="prompt-box"><code>import requests
+import json
+from pathlib import Path
+
+API_KEY = "your_elevenlabs_api_key"
+VOICE_ID = "your_selected_voice_id"
+BASE_URL = "https://api.elevenlabs.io/v1"
+
+# Voice settings for consistent audiobook narration
+VOICE_SETTINGS = {
+    "stability": 0.65,          # Higher for consistency across chapters
+    "similarity_boost": 0.80,   # Strong voice match
+    "style": 0.15,              # Subtle expressiveness
+    "use_speaker_boost": True   # Cleaner output
+}
+
+def generate_chapter(chapter_text, chapter_num, output_dir="audiobook"):
+    """Generate audio for a single chapter with consistent settings."""
+    Path(output_dir).mkdir(exist_ok=True)
+
+    url = f"{BASE_URL}/text-to-speech/{VOICE_ID}"
+    headers = {
+        "xi-api-key": API_KEY,
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "text": chapter_text,
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": VOICE_SETTINGS
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+
+    if response.status_code == 200:
+        output_path = f"{output_dir}/chapter_{chapter_num:02d}.mp3"
+        with open(output_path, "wb") as f:
+            f.write(response.content)
+        print(f"Chapter {chapter_num} generated: {output_path}")
+        return output_path
+    else:
+        print(f"Error on chapter {chapter_num}: {response.status_code}")
+        return None
+
+# Process manuscript
+manuscript = Path("manuscript.txt").read_text()
+chapters = manuscript.split("CHAPTER ")  # Split by chapter markers
+
+for i, chapter in enumerate(chapters[1:], 1):  # Skip empty first split
+    generate_chapter(chapter.strip(), i)</code></div>
+  <p class="section-text">The key insight is the voice settings. For audiobooks, you want higher stability (0.6-0.7) than for conversational content because listeners need the voice to sound consistent across 8+ hours. Lower style values (0.1-0.2) keep the narration steady without making it flat.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Text Preparation: The Make-or-Break Step</h2>
+  <p class="section-text">80% of audiobook quality problems come from poor text preparation. Here is a systematic approach to preparing any manuscript for AI narration:</p>
+  <p class="section-text"><strong>Pronunciation guides:</strong> Create a list of every unusual name, place, and technical term in your book. Write the phonetic pronunciation next to each one. "Siobhan" becomes "shih-VAWN." "Euler" becomes "OY-ler." Feed these to Claude and ask it to rewrite the manuscript with phonetic hints inline.</p>
+  <p class="section-text"><strong>Dialogue formatting:</strong> Strip out "he said" and "she said" attribution tags that sound awkward when read aloud. Instead, add a brief pause before dialogue switches. Use SSML break tags or simply add ellipses in the text to create natural speaker transitions.</p>
+  <p class="section-text"><strong>Visual element handling:</strong> Tables, charts, graphs, and images do not translate to audio. Rewrite each visual element as a verbal description. "Figure 3 shows quarterly revenue growing from $2 million to $8 million" becomes a spoken sentence rather than a reference to something the listener cannot see.</p>
+  <p class="section-text"><strong>Chapter length calibration:</strong> Most TTS APIs have character or token limits per request. Split chapters into segments of 2,000-4,000 characters for optimal generation quality. Longer segments can cause the voice to drift or lose energy near the end.</p>
+  <p class="section-text"><strong>Front and back matter:</strong> Write a spoken introduction, copyright notice, and dedication specifically for the audio format. These sound awkward if read directly from the print version. "Copyright 2026, all rights reserved" should become "This audiobook is copyright twenty twenty-six. All rights reserved."</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mastering</span>
+  <h2 class="section-title">Audiobook Technical Requirements</h2>
+  <p class="section-text">Distribution platforms have strict technical requirements. Submitting audio that does not meet these specs will get your audiobook rejected. Here are the standards you must hit:</p>
+  <p class="section-text"><strong>ACX/Audible requirements:</strong> MP3 format, 192kbps constant bit rate, 44.1kHz sample rate, mono or stereo. Each chapter as a separate file. Peak values must not exceed -3dB. RMS (average volume) between -23dB and -18dB. Noise floor below -60dB. Room tone at the start and end of each file (0.5-1 second of silence).</p>
+  <p class="section-text"><strong>Apple Books requirements:</strong> AAC or MP3 format. Chapter markers embedded in the file. Cover art at 2400x2400 pixels minimum. AI-generated narration must be disclosed in the metadata.</p>
+  <p class="section-text"><strong>Mastering workflow:</strong> Use Auphonic with the "Audiobook" preset — it handles loudness normalization, noise reduction, and leveling automatically. For manual mastering, apply a gentle compressor (ratio 2:1, threshold -20dB) followed by a limiter at -3dB peak. Then normalize loudness to -20 LUFS for consistent listening experience.</p>
+  <p class="section-text"><strong>Quality assurance checklist:</strong> Listen to the first and last 30 seconds of every chapter. Check for pronunciation errors on character names. Verify that chapter transitions do not have abrupt volume changes. Spot-check three random segments per chapter for tonal consistency. This QA pass catches 95% of issues before submission.</p>
+</div>
+
 <div class="demo-container">
   <h3>Audiobook Distribution Platforms</h3>
   <p><strong>ACX / Audible:</strong> Largest market. Virtual Voice program accepts AI narration.</p>

@@ -77,6 +77,60 @@ free: false
   <p class="section-text"><strong>Don't skip the context.</strong> AI outputs are only as good as the context you provide. Spend the extra 30 seconds adding team constraints, stakeholder preferences, and project history. It pays back tenfold.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Master Template</span>
+  <h2 class="section-title">The Universal PM Prompt Structure</h2>
+  <p class="section-text">Every prompt in this course follows the same underlying structure. Master this pattern and you can create effective prompts for any PM task, even ones we did not cover:</p>
+  <div class="prompt-box"><code>You are an experienced [role relevant to the task — project manager, scrum master, program director].
+
+CONTEXT:
+- Project: [name, type, current phase]
+- Team: [size, composition, constraints]
+- Timeline: [where we are, what is coming]
+- Stakeholders: [who cares about this output]
+- History: [relevant past decisions, changes, patterns]
+
+TASK:
+[Clearly state what you need — be specific about deliverables]
+
+FORMAT:
+- [Specify structure — headers, bullets, tables, narrative]
+- [Specify length — one page, three paragraphs, 200 words]
+- [Specify tone — formal, conversational, urgent]
+
+CONSTRAINTS:
+- [What to include]
+- [What to exclude]
+- [Assumptions to flag]
+
+Please also identify anything I may have overlooked or any assumptions in my request that could lead to problems.</code></div>
+  <p class="section-text">This six-part structure — Role, Context, Task, Format, Constraints, and Self-Check — produces consistently high-quality output. The self-check at the end is the secret weapon: it turns AI into a thinking partner, not just a text generator.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Framework</span>
+  <h2 class="section-title">Measuring Your AI PM Impact</h2>
+  <p class="section-text">You cannot improve what you do not measure. Track these metrics over your first 90 days of AI-assisted PM to quantify the impact:</p>
+  <p class="section-text"><strong>Time Metrics:</strong></p>
+  <p class="section-text">Hours spent on reporting before vs. after AI adoption. Hours spent on meeting processing before vs. after. Hours spent on planning and documentation before vs. after. Most PMs see a 40-60% reduction in these categories within the first month.</p>
+  <p class="section-text"><strong>Quality Metrics:</strong></p>
+  <p class="section-text">Number of action items that slip through the cracks (should decrease). Stakeholder satisfaction with reporting clarity (ask for feedback). Frequency of scope misunderstandings (should decrease as documentation improves). Risk identification rate — how many risks were caught proactively vs. discovered as surprises.</p>
+  <p class="section-text"><strong>Capacity Metrics:</strong></p>
+  <p class="section-text">Hours per week you spend on strategic work vs. administrative work (track for two weeks before AI, then track again after one month). Number of proactive communications sent vs. reactive responses. Time spent coaching team members vs. chasing status updates.</p>
+  <p class="section-text">These numbers tell a compelling story when your manager asks "what is AI doing for you?" — and they tell you where to focus your next round of optimization.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">The 90-Day Transformation</h2>
+  <p class="section-text">A PM at a healthcare company tracked his workflow for two weeks before adopting AI-assisted practices, then measured again at 30, 60, and 90 days:</p>
+  <p class="section-text"><strong>Day 0 (baseline):</strong> 12 hours/week on reporting and status updates. 8 hours/week on meeting processing. 4 hours/week on documentation. Strategic work: about 6 hours/week. Constantly felt behind.</p>
+  <p class="section-text"><strong>Day 30:</strong> Reporting dropped to 4 hours/week (meeting notes template adopted, status report template working). Documentation unchanged. Strategic work: 10 hours/week. Starting to feel in control.</p>
+  <p class="section-text"><strong>Day 60:</strong> Reporting at 3 hours/week (process refined). Meeting processing at 3 hours/week (all templates dialed in). Documentation at 2 hours/week (SOPs being generated from tribal knowledge). Strategic work: 14 hours/week. Proactively identifying risks before they became problems.</p>
+  <p class="section-text"><strong>Day 90:</strong> Total administrative PM work: 8 hours/week (down from 24). Strategic work: 20 hours/week. His project hit every milestone on time for the first time in two years. His stakeholders rated his communication clarity at 4.7/5, up from 3.2. He received a promotion at his next review cycle.</p>
+  <p class="section-text">The AI did not make him smarter. It made him faster at the work that was stealing his time — and that gave him the space to do the work that actually differentiated him as a PM.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Your Final Exercise</h3>
   <p>Build your personal AI PM toolkit right now:</p>

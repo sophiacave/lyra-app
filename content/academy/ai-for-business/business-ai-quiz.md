@@ -35,6 +35,106 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Course Recap</span>
+  <h2 class="section-title">Everything you learned in 10 lessons.</h2>
+  <p class="section-text">This course took you from zero AI knowledge to a complete business AI playbook. Here is every major framework, tool, and concept organized by lesson — your permanent reference guide.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:1rem">
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#34d399;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 1: AI Without Jargon</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">20 essential AI terms translated into plain English. Key takeaway: you do not need a CS degree — you need 20 words and the confidence to ask "what does that actually mean?" when vendors throw jargon at you.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#8b5cf6;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 2: What AI Can and Cannot Do</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Three categories: AI Does Well, AI Can Help, AI Cannot Do. Key takeaway: the skill is knowing which category a task falls into before you hand it to AI, not after.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#fb923c;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 3: The ROI Calculator</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">The formula: (hours saved x hourly cost x 52) minus tool costs. Seven cost categories. Conservative estimates beat optimistic ones. Key takeaway: math replaces gut feelings.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#38bdf8;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 4: Find Your AI Opportunities</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">3-factor scoring: Time Spent, Repetitiveness, Pain Level. The prioritization matrix with four quadrants. Key takeaway: start where the score is highest, not where the excitement is.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#ef4444;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 5: Build vs. Buy</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Four options: Build, Buy, Hire, Wait. Five decision factors. Seven vendor evaluation questions. Key takeaway: default to Buy unless you have a genuinely unique problem that no existing tool solves.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#34d399;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 6: The AI Tools Landscape</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Eight tool categories, three tools each. The $100/month starter stack. Selection criteria before adding any tool. Key takeaway: know the category first, then pick the tool.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#8b5cf6;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 7: Your First Week with AI</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Five-day plan: Setup, Automate, Create, Analyze, Measure. Pre-flight checklist. Prompt library starter. Key takeaway: one tool, one result per day, evidence over theory.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#fb923c;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 8: AI Policy Template</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Eight essential policy sections with copy-paste clauses. 30-day rollout plan. Key takeaway: a 2-page policy everyone reads beats a 20-page policy nobody opens.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#38bdf8;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 9: Measuring AI Success</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Four metrics: Time Saved, Cost Reduced, Output Increase, Quality Score. 90-day tracker template. Key takeaway: what gets measured gets managed — track all four, not just the easy ones.</div>
+      </div>
+      <div>
+        <div style="color:#ef4444;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Lesson 10: This Quiz</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Scenario-based assessment covering every framework in the course. Key takeaway: if you can apply these frameworks to real situations, you are ready to build your AI stack.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Key Frameworks</span>
+  <h2 class="section-title">The six frameworks that run your AI strategy.</h2>
+  <p class="section-text">Everything in this course distills down to six frameworks. Master these and you can evaluate any AI tool, make any AI investment decision, and measure any AI implementation — for the rest of your career.</p>
+
+  <div class="analogy-grid" style="grid-template-columns:1fr 1fr">
+    <div class="analogy-card">
+      <h3 style="color:#34d399">1. The ROI Formula</h3>
+      <p>Calculate the financial return of any AI investment. Includes all seven cost categories. Use conservative estimates. If the math does not work, do not buy the tool.</p>
+    </div>
+    <div class="analogy-card">
+      <h3 style="color:#8b5cf6">2. The 3-Factor Score</h3>
+      <p>Time Spent x 0.3 + Repetitiveness x 0.4 + Pain x 0.3, multiplied by 20. Rank every business area. Start with the highest score. Stop arguing about opinions.</p>
+    </div>
+    <div class="analogy-card">
+      <h3 style="color:#fb923c">3. The Build vs Buy Matrix</h3>
+      <p>Five factors — Uniqueness, Budget, Technical Capability, Speed, Data Sensitivity. Score each 1-5. Total determines whether to Build, Buy, Hire, or Wait.</p>
+    </div>
+    <div class="analogy-card">
+      <h3 style="color:#38bdf8">4. The Four Success Metrics</h3>
+      <p>Time Saved, Cost Reduced, Output Increase, Quality Score. Track all four together. No single metric tells the whole story. Quality is the one most people forget.</p>
+    </div>
+    <div class="analogy-card">
+      <h3 style="color:#ef4444">5. The AI Capability Framework</h3>
+      <p>AI Does Well, AI Can Help (with oversight), AI Cannot Do. Every task fits one category. Knowing which one before you start prevents failures and builds trust.</p>
+    </div>
+    <div class="analogy-card">
+      <h3 style="color:#e5e5e5">6. The Tool Evaluation Checklist</h3>
+      <p>Six questions before adding any tool. Three deal-breakers (real problem, data safety, easy cancellation) and three nice-to-haves. If it fails any deal-breaker, stop.</p>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Your Next Steps</span>
+  <h2 class="section-title">What to do after you pass this quiz.</h2>
+  <p class="section-text">Passing the quiz means you have the knowledge. Here is how to turn knowledge into results — the five actions that separate people who "know about AI" from people who actually use it.</p>
+
+  <p class="section-text"><strong>Action 1: Run the 3-factor score on your business this week.</strong> Take your top 5 business areas, score them, and identify your number one AI opportunity. Do not skip this step. Everything else depends on knowing where to start.</p>
+
+  <p class="section-text"><strong>Action 2: Start your first week plan on Monday.</strong> Follow the 5-day plan from Lesson 7. One tool, one result per day. By Friday you will have real data — hours saved, content created, workflows automated — not just theory.</p>
+
+  <p class="section-text"><strong>Action 3: Calculate ROI on your first tool within 30 days.</strong> Use the ROI formula with all seven cost categories. Compare your projection to actuals. Adjust your automation rate estimate based on real data. This calibrates your judgment for every future AI decision.</p>
+
+  <p class="section-text"><strong>Action 4: Write your AI policy within 60 days.</strong> Use the 8-section template and the 30-day rollout plan. You do not need a lawyer for the first draft — you need clarity. Legal review comes after you have a working document. Do not let perfect be the enemy of good.</p>
+
+  <p class="section-text"><strong>Action 5: Set up your measurement tracker within 90 days.</strong> All four metrics, tracked weekly. The tracker from Lesson 9 takes 10 minutes to set up and 5 minutes per week to maintain. At 90 days, you will have a dataset that tells you exactly where AI is working, where it is not, and what to do next.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Practice</span>
 <p class="section-text">These pairings test whether you can apply course concepts to real situations. Get these right and the quiz will feel straightforward.</p>
 

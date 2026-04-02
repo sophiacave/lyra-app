@@ -68,6 +68,80 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">Levels of Oversight: The Autonomy Ladder</h2>
+  <p class="section-text">The four patterns above form a progression — an autonomy ladder that your system climbs as it earns trust. Here is the full spectrum, from maximum human control to full autonomy, with guidance on when each level is appropriate.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid #ef4444;">
+      <h4 style="color: #ef4444;">Level 0: Full Manual</h4>
+      <code>Agents draft outputs but humans make EVERY decision and take EVERY action. The AI is a tool, not an actor. Use for: first deployment of a new system, actions with irreversible consequences (data deletion, legal filings), contexts where AI errors have regulatory implications.</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid #fb923c;">
+      <h4 style="color: #fb923c;">Level 1: Approval Gates</h4>
+      <code>Agents work autonomously within each step but pause at defined checkpoints for human approval. "I've drafted the email — shall I send it?" Use for: customer-facing communications, financial transactions under a threshold, content publishing. The system runs at the speed of human review.</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid #8b5cf6;">
+      <h4 style="color: #8b5cf6;">Level 2: Human-on-the-Loop</h4>
+      <code>Agents act continuously but humans monitor a live dashboard and can intervene at any moment. Like air traffic control — the system runs itself, but a human watches and can override. Use for: medium-risk workflows with good track records, systems where errors are detectable and reversible within minutes.</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid #38bdf8;">
+      <h4 style="color: #38bdf8;">Level 3: Exception-Based</h4>
+      <code>Full autonomy within defined parameters. The system only surfaces to humans when something falls outside normal bounds. Use for: mature systems with well-characterized edge cases, high-volume workflows where human review of every item is impractical.</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid #34d399;">
+      <h4 style="color: #34d399;">Level 4: Full Autonomy</h4>
+      <code>Agents operate without any human intervention. Periodic audits verify system behavior but do not block operations. Use for: low-stakes, high-volume tasks with robust error handling and self-correction mechanisms. Most systems never reach this level for all actions — they reach it selectively for specific low-risk subtasks.</code>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Decision Tree</span>
+  <h2 class="section-title">When to Require Human Approval</h2>
+  <p class="section-text">Use this decision tree to determine the right oversight level for any agent action in your system. Walk through the questions in order — the first "yes" answer determines the minimum oversight level.</p>
+
+  <p class="section-text"><strong style="color: #ef4444;">Is the action irreversible?</strong> (Deleting data, sending a legal document, publishing to millions of users.) If yes: <em>Level 0 or Level 1. Require explicit human approval before execution.</em></p>
+
+  <p class="section-text"><strong style="color: #fb923c;">Does the action involve real money?</strong> (Processing payments, issuing refunds, changing pricing.) If yes: <em>Level 1. Approval gates with clear dollar thresholds. Auto-approve under $10, human approval above.</em></p>
+
+  <p class="section-text"><strong style="color: #8b5cf6;">Is the action customer-facing?</strong> (Sending emails, posting on social media, responding to support tickets.) If yes: <em>Level 1 for new systems, graduating to Level 2 or Level 3 as the system proves reliable. Track customer satisfaction scores to validate the transition.</em></p>
+
+  <p class="section-text"><strong style="color: #38bdf8;">Is the error detectable and reversible within minutes?</strong> (Writing a draft that can be edited, classifying a ticket that can be reclassified, generating a report that can be regenerated.) If yes: <em>Level 2 or Level 3. Let agents act, monitor for errors, fix quickly when they occur.</em></p>
+
+  <p class="section-text"><strong style="color: #34d399;">Is the action purely internal with no external impact?</strong> (Organizing files, summarizing internal documents, generating analytics dashboards.) If yes: <em>Level 3 or Level 4. Full autonomy with periodic audits.</em></p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Audit Trails</span>
+  <h2 class="section-title">Logging Agent Decisions for Accountability</h2>
+  <p class="section-text">An audit trail is not just for debugging — it's the foundation of trust. When a stakeholder asks "why did the system do X?", you need an answer within minutes, not hours of investigation. Here is what a production-grade audit trail looks like.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JSON — Audit trail entry for an agent decision</div>
+<pre style="margin:0;color:#e5e5e5"><code>{
+  <span style="color:#fbbf24">"event_id"</span>: <span style="color:#fbbf24">"evt_a7f3c2d1"</span>,
+  <span style="color:#fbbf24">"timestamp"</span>: <span style="color:#fbbf24">"2026-04-02T14:23:07Z"</span>,
+  <span style="color:#fbbf24">"agent"</span>: <span style="color:#fbbf24">"escalation-agent"</span>,
+  <span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"escalate_to_human"</span>,
+  <span style="color:#fbbf24">"input_summary"</span>: <span style="color:#fbbf24">"Customer ticket #4891 — billing dispute, $247"</span>,
+  <span style="color:#fbbf24">"decision"</span>: <span style="color:#fbbf24">"Escalated: amount exceeds $100 threshold"</span>,
+  <span style="color:#fbbf24">"confidence"</span>: <span style="color:#fb923c">0.94</span>,
+  <span style="color:#fbbf24">"model"</span>: <span style="color:#fbbf24">"haiku-4.5"</span>,
+  <span style="color:#fbbf24">"tokens_used"</span>: { <span style="color:#fbbf24">"input"</span>: <span style="color:#fb923c">340</span>, <span style="color:#fbbf24">"output"</span>: <span style="color:#fb923c">45</span> },
+  <span style="color:#fbbf24">"human_involved"</span>: <span style="color:#c084fc">false</span>,
+  <span style="color:#fbbf24">"outcome"</span>: <span style="color:#fbbf24">"pending_human_review"</span>,
+  <span style="color:#fbbf24">"upstream_agents"</span>: [<span style="color:#fbbf24">"router-agent"</span>, <span style="color:#fbbf24">"response-agent"</span>],
+  <span style="color:#fbbf24">"trace_id"</span>: <span style="color:#fbbf24">"trace_ticket_4891"</span>
+}</code></pre>
+</div>
+
+  <p class="section-text"><strong style="color: #fb923c;">Key fields explained:</strong> The <code>trace_id</code> links every agent action across the full pipeline for a single request — you can reconstruct the entire decision chain. The <code>upstream_agents</code> field shows which agents contributed to this decision. The <code>confidence</code> score lets you audit whether low-confidence decisions correlated with errors. The <code>tokens_used</code> field enables cost tracking per action.</p>
+
+  <p class="section-text">Store audit trails in an append-only log — never delete or modify entries. Set retention policies (90 days for routine actions, 1 year for customer-facing decisions, indefinite for financial actions). Build dashboards that surface patterns: which agents produce the most errors, which actions get overridden by humans most often, which conflict types occur most frequently.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Real Example</span>
   <h2 class="section-title">Layered Oversight in a Content System</h2>
 

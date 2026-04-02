@@ -53,6 +53,90 @@ free: true
   <p class="section-text">SSML (Speech Synthesis Markup Language) gives you fine control. You can adjust rate, pitch, volume, add breaks, and specify pronunciation. Not every platform supports it, but when it's available, it's your best friend for polishing output.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">TTS Platform Comparison: Cost, Quality, and Use Cases</h2>
+  <p class="section-text">Choosing the right TTS platform depends on your project type, budget, and technical requirements. Here is a detailed breakdown:</p>
+  <p class="section-text"><strong style="color: var(--orange);">ElevenLabs</strong> — Best for: content creators, voiceover, audiobooks. Free tier: 10,000 characters/month. Starter plan: $5/month for 30,000 characters. Strengths: emotional range, multilingual (29 languages), voice cloning built in. Weakness: can sound slightly over-processed on dry technical content.</p>
+  <p class="section-text"><strong style="color: var(--purple);">OpenAI TTS</strong> — Best for: developers building apps, quick prototypes. Pricing: $15/million characters (tts-1), $30/million characters (tts-1-hd). Strengths: dead-simple API, rock-solid reliability, consistent output. Weakness: only six voices, no voice cloning, limited customization.</p>
+  <p class="section-text"><strong style="color: var(--green);">Google Cloud TTS</strong> — Best for: enterprise, multilingual apps, IVR systems. Pricing: free for first 4 million characters/month (standard), $4-16/million for WaveNet/Neural2. Strengths: 220+ voices, 40+ languages, SSML support. Weakness: requires GCP account setup, more complex integration.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Coqui / XTTS</strong> — Best for: privacy-sensitive projects, offline use, experimentation. Cost: free (open-source). Strengths: runs locally, no data leaves your machine, full customization. Weakness: requires technical setup, quality slightly behind commercial options.</p>
+  <p class="section-text"><strong style="color: var(--red);">Edge TTS</strong> — Best for: prototyping, budget projects, bulk generation. Cost: free. Strengths: surprisingly good quality for zero cost, easy Python library (edge-tts). Weakness: limited voice customization, depends on Microsoft servers.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">TTS API Integration in Python</h2>
+  <p class="section-text">Here is how to call three different TTS APIs from Python. Each example generates speech from the same text so you can compare outputs directly:</p>
+  <div class="prompt-box"><code># --- OpenAI TTS ---
+from openai import OpenAI
+client = OpenAI()
+response = client.audio.speech.create(
+    model="tts-1-hd",
+    voice="nova",
+    input="Writing for the ear is fundamentally different from writing for the eye."
+)
+response.stream_to_file("openai_output.mp3")
+
+# --- ElevenLabs TTS ---
+import requests
+url = "https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM"
+headers = {"xi-api-key": "YOUR_KEY", "Content-Type": "application/json"}
+data = {
+    "text": "Writing for the ear is fundamentally different from writing for the eye.",
+    "model_id": "eleven_multilingual_v2",
+    "voice_settings": {"stability": 0.5, "similarity_boost": 0.75}
+}
+response = requests.post(url, json=data, headers=headers)
+with open("elevenlabs_output.mp3", "wb") as f:
+    f.write(response.content)
+
+# --- Edge TTS (free, no API key) ---
+import edge_tts, asyncio
+async def generate():
+    communicate = edge_tts.Communicate(
+        "Writing for the ear is fundamentally different from writing for the eye.",
+        "en-US-JennyNeural"
+    )
+    await communicate.save("edge_output.mp3")
+asyncio.run(generate())</code></div>
+  <p class="section-text">Run all three scripts and compare the output files. Notice the differences in naturalness, pacing, and warmth. This comparison exercise is the fastest way to develop your ear for TTS quality and choose the right tool for each project.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced Craft</span>
+  <h2 class="section-title">SSML Mastery: Fine-Tuning Every Syllable</h2>
+  <p class="section-text">SSML is your precision tool. While basic text input gets you 80% of the way, SSML handles the remaining 20% — the pauses that create drama, the emphasis that drives meaning, the pronunciation that prevents embarrassing errors.</p>
+  <p class="section-text">Here is a complete SSML example that demonstrates the most useful tags working together:</p>
+  <div class="prompt-box"><code>&lt;speak&gt;
+  &lt;prosody rate="95%" pitch="+2%"&gt;
+    Welcome to Signal and Noise.
+  &lt;/prosody&gt;
+  &lt;break time="800ms"/&gt;
+  Today we are talking about
+  &lt;emphasis level="strong"&gt;the future of voice.&lt;/emphasis&gt;
+  &lt;break time="400ms"/&gt;
+  Not the &lt;say-as interpret-as="spell-out"&gt;AI&lt;/say-as&gt; hype.
+  &lt;break time="300ms"/&gt;
+  The real, practical, &lt;prosody rate="slow"&gt;ship-it-tomorrow&lt;/prosody&gt; future.
+  &lt;break time="600ms"/&gt;
+  Let's get into it.
+&lt;/speak&gt;</code></div>
+  <p class="section-text"><strong>Pro tips for SSML:</strong> Use <code>&lt;break&gt;</code> tags generously — they create the breathing room that makes AI speech feel human. The <code>&lt;prosody&gt;</code> tag's rate attribute accepts percentages (90% for slower, 110% for faster) or keywords (slow, medium, fast). The <code>&lt;say-as&gt;</code> tag prevents the AI from mangling dates, acronyms, and phone numbers.</p>
+  <p class="section-text"><strong>Platform support:</strong> Google Cloud TTS has the most complete SSML implementation. Amazon Polly is a close second. ElevenLabs supports a subset and uses its own style tags for emotion. OpenAI TTS does not support SSML — it relies on punctuation and natural language cues instead.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Tips</span>
+  <h2 class="section-title">Common TTS Mistakes and How to Fix Them</h2>
+  <p class="section-text">Even the best TTS engines produce flawed output if you feed them poorly prepared text. Here are the most common mistakes and their fixes:</p>
+  <p class="section-text"><strong>Mistake: Long, complex sentences.</strong> Fix: Break sentences at natural breath points. If a sentence has more than one comma, split it into two sentences. TTS handles short, punchy sentences dramatically better than long compound ones.</p>
+  <p class="section-text"><strong>Mistake: Ambiguous abbreviations.</strong> Fix: Spell out "Dr." as "Doctor," "St." as "Street" or "Saint" depending on context, "Mr." as "Mister." TTS engines guess, and they guess wrong more often than you'd expect.</p>
+  <p class="section-text"><strong>Mistake: Numbers without context.</strong> Fix: Write "fifteen dollars" not "$15." Write "March twenty-seventh" not "3/27." Write "two point five million" not "2.5M." Control exactly how numbers are spoken.</p>
+  <p class="section-text"><strong>Mistake: Missing emotional cues.</strong> Fix: Use exclamation points for energy, ellipses for thoughtful pauses, em dashes for dramatic shifts. TTS engines read punctuation as performance cues — give them more to work with.</p>
+  <p class="section-text"><strong>Mistake: Ignoring the first and last sentences.</strong> Fix: The opening sentence sets the voice's tone for the entire piece. The closing sentence is what the listener remembers. Write these two sentences with extra care — they carry disproportionate weight in audio.</p>
+</div>
+
 <div class="demo-container">
   <h3>SSML Quick Reference</h3>
   <p><code>&lt;break time="500ms"/&gt;</code> — Insert a pause</p>

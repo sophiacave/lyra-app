@@ -124,6 +124,70 @@ MY product ([describe yours]) to differentiate clearly?</pre>
   <p class="section-text" style="margin-top:1rem">This turns hours of strategic work into a 15-minute AI-assisted session that produces actionable marketing assets.</p>
 </div>
 
+<!-- SECTION 5: SWOT WITH AI -->
+<div class="lesson-section">
+  <span class="section-label">SWOT Analysis</span>
+  <h2 class="section-title">AI-powered SWOT analysis in 10 minutes.</h2>
+  <p class="section-text">The classic SWOT framework becomes dramatically more useful when you feed AI your competitive data and let it map the landscape:</p>
+
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Based on my competitive analysis, create a SWOT analysis
+for my business:
+
+<span style="color:#8b5cf6">My product:</span> [Name + what it does]
+<span style="color:#8b5cf6">Competitors analyzed:</span> [List competitors you researched]
+<span style="color:#8b5cf6">Key findings:</span> [Paste your competitive matrix or notes]
+
+<span style="color:#fb923c">For each quadrant, give me:</span>
+- Strengths: 5 internal advantages I have over competitors
+- Weaknesses: 5 internal areas where competitors beat me
+- Opportunities: 5 external trends or gaps I can exploit
+- Threats: 5 external risks from competitors or market changes
+
+<span style="color:#34d399">Then:</span>
+For each item, suggest ONE specific marketing action I can take.
+Not vague strategy — specific copy, campaigns, or content I should create.
+
+<span style="color:#ef4444">Be brutally honest.</span> A SWOT that only shows strengths is useless.</pre>
+  </div>
+</div>
+
+<!-- SECTION 6: ONGOING MONITORING -->
+<div class="lesson-section">
+  <span class="section-label">Monitoring</span>
+  <h2 class="section-title">Set up ongoing competitor monitoring with AI.</h2>
+  <p class="section-text">Competitive analysis isn't a one-time event. The best marketers monitor their competitors continuously. Here's a monthly competitor check-in prompt you can run every 30 days:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#38bdf8;font-weight:700">Website changes:</span> Visit your top 3 competitors' homepages monthly. Paste the new copy into AI alongside the old copy. Ask: "What changed in their messaging? What does that suggest about their strategy?"</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Content tracking:</span> Subscribe to competitors' newsletters and follow their social accounts. Monthly, paste their recent content into AI and ask: "What topics are they focusing on? What content gaps remain?"</div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#fb923c;font-weight:700">Review mining:</span> Read competitors' latest reviews on G2, Capterra, or Trustpilot. Paste them into AI and ask: "What are customers complaining about? What pain points can I address in my marketing?"</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Pricing intel:</span> Check competitors' pricing pages quarterly. Ask AI: "Compare these pricing models. Where is there a pricing gap I could fill? Are competitors moving upmarket or downmarket?"</div>
+      <div style="background:var(--bg);border:1px solid rgba(244,114,182,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#f472b6;font-weight:700">New entrant watch:</span> Ask AI: "Based on my industry ([describe it]), what types of new competitors should I watch for? What adjacent markets could produce a disruptor?"</div>
+    </div>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>The discipline:</strong> Block 30 minutes on the first Monday of every month for competitor check-in. Use the prompts above. Update your competitive matrix. The marketers who track their competitive landscape monthly will never be surprised by a competitor's move.</p>
+
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2);margin-top:1rem">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0"><span style="color:#fb923c">Monthly Competitor Check-in Prompt:</span>
+
+Here are the latest updates from my top 3 competitors:
+[Paste recent changes, content, or announcements]
+
+Compare to their previous positioning:
+[Paste or summarize what they used to say/do]
+
+<span style="color:#8b5cf6">Tell me:</span>
+1. What strategic shifts are they making?
+2. Are they moving toward or away from my positioning?
+3. Any new gaps opening up that I should exploit?
+4. What should I adjust in my marketing this month?
+
+<span style="color:#ef4444">Be specific.</span> Give me actions, not observations.</pre>
+  </div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

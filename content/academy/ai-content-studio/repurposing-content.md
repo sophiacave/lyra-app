@@ -104,11 +104,54 @@ Create these pieces, maintaining my voice throughout:
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Reverse repurposing — building up instead of breaking down.</h2>
+  <p class="section-text">The waterfall flows downward, but sometimes you want to flow upward. Reverse repurposing takes your best-performing short-form content and expands it into long-form:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Viral tweet to blog post:</strong> If a tweet or LinkedIn post got outsized engagement, that topic has proven demand. Expand it into a full blog post with the depth your audience clearly wants. Ask AI: <em>"This tweet got 500+ likes: [paste tweet]. Expand the idea into a 1,500-word blog post outline. The tweet proved the hook — now give me the substance."</em></p>
+  <p class="section-text"><strong style="color:var(--purple)">Email reply to case study:</strong> When a subscriber replies to your newsletter with a great question or result, that is raw material for a case study or FAQ-style post. With permission, turn real conversations into real content.</p>
+  <p class="section-text"><strong style="color:var(--green)">Instagram carousel to guide:</strong> If a carousel performed well, each slide becomes a section header in a comprehensive guide. The carousel already proved the structure works — now add depth, examples, and nuance that the slide format could not hold.</p>
+  <p class="section-text">Reverse repurposing is powerful because you are building on validated ideas, not guessing. The audience already told you what they care about through their engagement.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">System</span>
+  <h2 class="section-title">The repurposing tracking system.</h2>
+  <p class="section-text">Without tracking, you lose the thread. You forget which pieces have been repurposed and which are sitting untouched. Build a simple spreadsheet or Notion table with these columns:</p>
+  <p class="section-text"><strong>Source piece:</strong> Title and link to the original content.<br>
+  <strong>Date published:</strong> When the original went live.<br>
+  <strong>Formats created:</strong> Check boxes for each repurposed format (thread, carousel, email, video script, etc.).<br>
+  <strong>Best performer:</strong> Which repurposed format got the most engagement? This reveals your audience's preferred formats over time.<br>
+  <strong>Next action:</strong> Is there a format you have not tried yet? A reverse repurposing opportunity?</p>
+  <p class="section-text">Review this tracker monthly. After three months, patterns emerge. Maybe your threads consistently outperform your carousels. Maybe your emails drive more clicks than your social posts. This data tells you where to focus your repurposing energy for maximum return.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pitfalls</span>
+  <h2 class="section-title">Repurposing mistakes that make you look lazy.</h2>
+  <p class="section-text"><strong style="color:var(--orange)">Mistake 1: Cross-posting identical content.</strong> Copying your LinkedIn post word-for-word to Twitter is not repurposing — it is cross-posting, and audiences can tell. Each platform has its own language, rhythm, and expectations. Transform the content, do not transplant it.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Mistake 2: Repurposing bad content.</strong> If the original piece flopped, making five versions of it will not fix the underlying problem. Only repurpose content that has already proven it resonates — either through engagement data or because the idea is genuinely strong.</p>
+  <p class="section-text"><strong style="color:var(--green)">Mistake 3: No time gap.</strong> Publishing a blog post and immediately tweeting every key point from it feels spammy. Space your repurposed pieces across days or weeks. Your audience does not remember your content as well as you think — a week later, the same idea in a new format feels fresh.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Mistake 4: Losing the best lines.</strong> Your blog post might have one killer sentence that would make a perfect standalone social post. If you do not extract it, it stays buried in paragraph 7 where nobody sees it. Ask AI to identify the most quotable, shareable lines from every long-form piece you publish.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Mega-Prompt</span>
   <h2 class="section-title">Let AI do the heavy lifting.</h2>
   <p class="section-text">Here's the prompt that makes this systematic:</p>
   <p class="section-text"><em>"Here's my blog post: [paste full text]. Repurpose it into the following formats, maintaining my voice and key insights throughout: (1) A 6-tweet Twitter thread, (2) A LinkedIn post with personal angle, (3) A 7-slide Instagram carousel script, (4) A newsletter email that teases one key insight, (5) Three standalone social media posts under 100 words each, (6) A 60-second video script, (7) A discussion question for my community. For each piece, adapt the tone and format to suit the platform — don't just copy-paste sections."</em></p>
   <p class="section-text">The key instruction is that last line: "don't just copy-paste sections." You want AI to genuinely transform the content for each platform, not just chop it up.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Template</span>
+  <h2 class="section-title">The repurposing checklist — use it every time.</h2>
+  <p class="section-text">After publishing any long-form piece, run through this checklist to extract maximum value:</p>
+  <p class="section-text"><strong style="color:var(--orange)">1. Pull the best one-liner.</strong> Every long-form piece has one sentence that could stand alone as a quote graphic or standalone tweet. Find it. Share it.</p>
+  <p class="section-text"><strong style="color:var(--purple)">2. Extract the framework.</strong> If your piece teaches a process or system, turn it into a visual carousel. One step per slide. The carousel format makes processes immediately actionable.</p>
+  <p class="section-text"><strong style="color:var(--green)">3. Write the email tease.</strong> Draft a 200-word email that teases the most surprising insight from the piece and links to the full version. Your email list should always get first notice.</p>
+  <p class="section-text"><strong style="color:var(--blue)">4. Create the discussion prompt.</strong> Ask one open-ended question related to the topic. Post it in your community or as a social post. Engagement on discussion prompts often outperforms the original content.</p>
+  <p class="section-text"><strong>5. Record a 60-second take.</strong> Summarize the core message in a short video or voice memo. Video content reaches audiences who will never read your blog post. Meet them where they are.</p>
+  <p class="section-text"><strong>6. Schedule the thread.</strong> Turn the main points into a platform-native thread for Twitter or LinkedIn. Schedule it for 2-3 days after the original publication so it feels fresh, not redundant.</p>
 </div>
 
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">

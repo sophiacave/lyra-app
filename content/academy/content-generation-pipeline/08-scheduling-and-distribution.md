@@ -83,6 +83,59 @@ Format as a table: Day | Platform | Format | Angle | Time"</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Timing Science</span>
+  <h2 class="section-title">When to Post Where</h2>
+  <p class="section-text">Optimal posting times vary by platform, audience, and content type. Generic "best time to post" advice is mostly wrong because it averages across millions of accounts that aren't yours. The real answer comes from your own data — but you need starting points to generate that data.</p>
+  <p class="section-text"><strong>Email newsletters:</strong> Tuesday through Thursday, 9-10 AM in your audience's primary time zone. Avoid Monday morning (inbox overload) and Friday afternoon (weekend mindset). Test: send the same content at different times to different segments and compare open rates.</p>
+  <p class="section-text"><strong>LinkedIn:</strong> Tuesday through Thursday, 7-8 AM or 12-1 PM. Professionals check LinkedIn during commute or lunch. Weekend posts get 60% lower engagement. Exception: Sunday evening "week ahead" posts can perform well for certain audiences.</p>
+  <p class="section-text"><strong>Twitter/X:</strong> Platform is always-on, but engagement peaks at 8-9 AM, 12-1 PM, and 5-6 PM on weekdays. Threads perform best posted at 8 AM when people are scrolling with coffee. Single tweets work at any peak time.</p>
+  <p class="section-text"><strong>YouTube:</strong> Publish 2-3 hours before your peak viewer time (YouTube needs indexing time). Most audiences peak at 2-4 PM weekdays and 9-11 AM weekends. Consistent weekly schedule matters more than perfect timing.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Automated Distribution Stack</h3>
+  <pre>
+PIPELINE OUTPUT → DISTRIBUTION LAYER
+─────────────────────────────────────────────
+Blog post     → WordPress (scheduled publish)
+                └→ Trigger: Zapier webhook on publish
+                    ├→ Buffer: queue social posts
+                    ├→ Mailchimp: send newsletter
+                    └→ Slack: notify team
+
+Social posts  → Buffer/Hootsuite (pre-scheduled)
+                └→ Platform-native scheduling as backup
+
+Email         → Mailchimp/ConvertKit (timed send)
+                └→ Segment-specific send times
+
+Video script  → Google Docs (shared with video team)
+                └→ Trello card auto-created for production
+
+MONITORING:
+- Zapier error alerts → Slack #content-ops channel
+- Buffer analytics → weekly performance email
+- UTM tracking on every link → Google Analytics
+  </pre>
+  <p>The pipeline output feeds directly into publishing tools. The human reviews and approves — but the staging, scheduling, and monitoring are all automated.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cadence Strategy</span>
+  <h2 class="section-title">Building a Sustainable Publishing Rhythm</h2>
+  <p class="section-text">The most common content failure isn't bad content — it's inconsistent content. You publish five pieces one week, one piece the next, then nothing for two weeks. Your audience can't build a habit around unpredictable publishing. Your algorithms can't build momentum from sporadic signals.</p>
+  <p class="section-text">Set your cadence based on sustainable output, not aspirational output. If your pipeline reliably produces three quality pieces per week, publish three per week. Don't promise five and deliver three inconsistently. Build a four-week content buffer before increasing cadence — that buffer absorbs the inevitable weeks when everything breaks.</p>
+  <p class="section-text">The content buffer is critical. At any given time, you should have two to four weeks of pre-produced content staged and ready. This buffer means a sick day, a broken pipeline, or an unexpected priority doesn't create a publishing gap. The audience never notices because the buffer keeps the rhythm steady.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Evergreen Recycling</span>
+  <h2 class="section-title">Your Best Content Should Publish More Than Once</h2>
+  <p class="section-text">Most content has a 48-hour window of attention and then it's forgotten. But your best pieces — the ones that drove traffic, conversions, and engagement — deserve repeat distribution. Build a recycling queue into your distribution calendar. Every 30-60 days, your top-performing evergreen content re-enters the distribution sequence with a fresh angle or updated data.</p>
+  <p class="section-text">The pipeline handles this automatically. Your analytics step identifies top performers. Your transformation templates create new angles for the reshare. Your scheduling system queues the recycled content alongside new content. The audience sees a "fresh" post that's actually your proven winner with a new hook. This doubles the lifetime value of every piece you create.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The System</span>
   <h2 class="section-title">Distribution Is a Pipeline, Not a Task</h2>
   <p class="section-text">When you treat distribution as part of the pipeline rather than something you do after the pipeline, everything changes. The content is created with distribution in mind. The formats are platform-ready. The calendar is pre-filled. The human just reviews and approves. That's a system that runs itself.</p>

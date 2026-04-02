@@ -68,6 +68,96 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Types</span>
+  <h2 class="section-title">Three Types of Agent Conflict</h2>
+  <p class="section-text">Not all conflicts are the same. Understanding the type of conflict helps you choose the right resolution strategy. Each type has different causes, different signals, and different solutions.</p>
+
+  <p class="section-text"><strong style="color: #ef4444;">Resource Conflicts</strong> — Two or more agents need the same limited resource at the same time. This might be a shared database connection, an API with rate limits, a file that only one process can write to, or a context window that both agents want to fill with their data. Resource conflicts are mechanical, not intellectual — the agents don't disagree on substance, they're just competing for access.</p>
+  <p class="section-text" style="color: #a1a1aa; padding-left: 1.5rem;"><em>Signal:</em> Timeouts, lock errors, rate limit exceptions, corrupted shared state. <em>Fix:</em> Queue management, resource locks, turn-taking protocols.</p>
+
+  <p class="section-text"><strong style="color: #fb923c;">Opinion Conflicts</strong> — Two agents analyze the same data and reach different conclusions. Your sentiment agent says the customer is frustrated. Your topic agent says the message is a routine inquiry. Your writer produces an assertive draft. Your editor says the tone is too aggressive. These are the productive conflicts — they surface genuine ambiguity in the data.</p>
+  <p class="section-text" style="color: #a1a1aa; padding-left: 1.5rem;"><em>Signal:</em> Contradictory outputs from different agents given the same input. <em>Fix:</em> Debate and synthesis, voting, or confidence-weighted resolution.</p>
+
+  <p class="section-text"><strong style="color: #8b5cf6;">Priority Conflicts</strong> — Agents agree on the facts but disagree on what matters most. Security says block the deployment because of a vulnerability. Product says ship it because the feature is promised to a customer today. Both are right about the facts — they disagree about priorities. Priority conflicts cannot be resolved by better data. They require a decision framework that encodes your organization's values.</p>
+  <p class="section-text" style="color: #a1a1aa; padding-left: 1.5rem;"><em>Signal:</em> Both agents produce valid outputs that recommend incompatible actions. <em>Fix:</em> Hierarchical override with clear priority rules, or escalation to a human decision-maker.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategies</span>
+  <h2 class="section-title">Resolution Strategies: A Complete Toolkit</h2>
+  <p class="section-text">Beyond the four core strategies covered above, here are additional resolution approaches and when to deploy each one.</p>
+
+  <p class="section-text"><strong style="color: #34d399;">Voting with Weighted Ballots</strong> — Not all agents' opinions should carry equal weight. A security agent's vote on security matters should outweigh a formatting agent's vote. Assign domain-specific weights so that expertise is reflected in the resolution. Three agents vote, but the domain expert's vote counts double.</p>
+
+  <p class="section-text"><strong style="color: #38bdf8;">Authority Hierarchy</strong> — Define a clear chain of command. When the security agent and the performance agent conflict, security always wins (or vice versa, depending on your system's values). The hierarchy is encoded in the orchestrator's decision logic, not left to ad-hoc judgment. This is fast and predictable, but inflexible — the hierarchy might be wrong for edge cases.</p>
+
+  <p class="section-text"><strong style="color: #fb923c;">Structured Consensus</strong> — Instead of simple majority vote, require agents to explain their reasoning. A consensus agent reviews all positions and their justifications, then produces a resolution that addresses each agent's core concerns. Slower than voting, but produces higher-quality decisions because it forces engagement with dissenting views.</p>
+
+  <p class="section-text"><strong style="color: #8b5cf6;">Fallback to Human</strong> — When automated resolution fails or the stakes are too high, escalate to a human decision-maker. The system presents both positions with supporting evidence and a recommendation. The human makes the call, and that decision is logged and fed back into the system to improve future automated resolution.</p>
+
+  <p class="section-text"><strong style="color: #ef4444;">Time-Bounded Debate</strong> — Give conflicting agents a fixed number of rounds to resolve their disagreement. Each round, both agents see the other's position and can update their own. If they converge, the conflict is resolved. If they don't converge within the limit, the orchestrator makes a forced decision. This prevents infinite debate loops while still allowing productive back-and-forth.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Implementing Conflict Resolution</h2>
+  <p class="section-text">Here is a practical implementation showing how to build a conflict resolution layer into an orchestrator agent.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Conflict resolution with voting and escalation</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">class</span> <span style="color:#38bdf8">ConflictResolver</span>:
+    <span style="color:#c084fc">def</span> <span style="color:#38bdf8">__init__</span>(self, strategy: str = <span style="color:#fbbf24">"weighted_vote"</span>):
+        self.strategy = strategy
+        self.conflict_log = []
+
+    <span style="color:#c084fc">def</span> <span style="color:#38bdf8">detect_conflict</span>(self, outputs: dict) -> bool:
+        <span style="color:#71717a"># Compare agent outputs — do they recommend different actions?</span>
+        actions = [o[<span style="color:#fbbf24">"recommendation"</span>] <span style="color:#c084fc">for</span> o <span style="color:#c084fc">in</span> outputs.values()]
+        <span style="color:#c084fc">return</span> len(set(actions)) > <span style="color:#fb923c">1</span>  <span style="color:#71717a"># conflict if not unanimous</span>
+
+    <span style="color:#c084fc">def</span> <span style="color:#38bdf8">resolve</span>(self, outputs: dict, weights: dict) -> dict:
+        <span style="color:#c084fc">if</span> self.strategy == <span style="color:#fbbf24">"weighted_vote"</span>:
+            <span style="color:#71717a"># Tally weighted votes for each recommendation</span>
+            scores = {}
+            <span style="color:#c084fc">for</span> agent, output <span style="color:#c084fc">in</span> outputs.items():
+                action = output[<span style="color:#fbbf24">"recommendation"</span>]
+                weight = weights.get(agent, <span style="color:#fb923c">1.0</span>)
+                scores[action] = scores.get(action, <span style="color:#fb923c">0</span>) + weight
+            winner = max(scores, key=scores.get)
+            <span style="color:#c084fc">return</span> {<span style="color:#fbbf24">"resolution"</span>: winner, <span style="color:#fbbf24">"method"</span>: <span style="color:#fbbf24">"weighted_vote"</span>, <span style="color:#fbbf24">"scores"</span>: scores}
+
+        <span style="color:#c084fc">elif</span> self.strategy == <span style="color:#fbbf24">"authority"</span>:
+            <span style="color:#71717a"># Highest-authority agent wins</span>
+            authority_order = [<span style="color:#fbbf24">"security"</span>, <span style="color:#fbbf24">"compliance"</span>, <span style="color:#fbbf24">"product"</span>, <span style="color:#fbbf24">"style"</span>]
+            <span style="color:#c084fc">for</span> agent <span style="color:#c084fc">in</span> authority_order:
+                <span style="color:#c084fc">if</span> agent <span style="color:#c084fc">in</span> outputs:
+                    <span style="color:#c084fc">return</span> {<span style="color:#fbbf24">"resolution"</span>: outputs[agent][<span style="color:#fbbf24">"recommendation"</span>],
+                            <span style="color:#fbbf24">"method"</span>: <span style="color:#fbbf24">"authority"</span>, <span style="color:#fbbf24">"decided_by"</span>: agent}
+
+        <span style="color:#c084fc">elif</span> self.strategy == <span style="color:#fbbf24">"escalate"</span>:
+            <span style="color:#71717a"># Log the conflict and ask a human</span>
+            self.conflict_log.append({
+                <span style="color:#fbbf24">"outputs"</span>: outputs,
+                <span style="color:#fbbf24">"timestamp"</span>: now(),
+                <span style="color:#fbbf24">"status"</span>: <span style="color:#fbbf24">"awaiting_human"</span>
+            })
+            <span style="color:#c084fc">return</span> {<span style="color:#fbbf24">"resolution"</span>: <span style="color:#fbbf24">"pending"</span>, <span style="color:#fbbf24">"method"</span>: <span style="color:#fbbf24">"human_escalation"</span>}
+
+<span style="color:#71717a"># Usage: security and performance agents disagree on a deployment</span>
+resolver = ConflictResolver(strategy=<span style="color:#fbbf24">"weighted_vote"</span>)
+outputs = {
+    <span style="color:#fbbf24">"security"</span>: {<span style="color:#fbbf24">"recommendation"</span>: <span style="color:#fbbf24">"block"</span>, <span style="color:#fbbf24">"reason"</span>: <span style="color:#fbbf24">"SQL injection risk"</span>},
+    <span style="color:#fbbf24">"performance"</span>: {<span style="color:#fbbf24">"recommendation"</span>: <span style="color:#fbbf24">"approve"</span>, <span style="color:#fbbf24">"reason"</span>: <span style="color:#fbbf24">"3x speed improvement"</span>},
+    <span style="color:#fbbf24">"style"</span>: {<span style="color:#fbbf24">"recommendation"</span>: <span style="color:#fbbf24">"approve"</span>, <span style="color:#fbbf24">"reason"</span>: <span style="color:#fbbf24">"clean code"</span>}
+}
+weights = {<span style="color:#fbbf24">"security"</span>: <span style="color:#fb923c">3.0</span>, <span style="color:#fbbf24">"performance"</span>: <span style="color:#fb923c">1.5</span>, <span style="color:#fbbf24">"style"</span>: <span style="color:#fb923c">1.0</span>}
+result = resolver.resolve(outputs, weights)
+<span style="color:#71717a"># → {"resolution": "block", "method": "weighted_vote", "scores": {"block": 3.0, "approve": 2.5}}</span>
+<span style="color:#71717a"># Security wins because its weight (3.0) outweighs combined approve votes (2.5)</span></code></pre>
+</div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Real Example</span>
   <h2 class="section-title">Productive Conflict in Practice</h2>
 

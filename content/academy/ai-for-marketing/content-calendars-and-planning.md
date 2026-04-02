@@ -142,6 +142,86 @@ Skip generic holidays that have nothing to do with my business.</pre>
   <p class="section-text" style="margin-top:1rem"><strong>Total: ~4 hours per week</strong> for a full content program across multiple channels. Without AI, this would take 12-15 hours. That's 8-10 hours per week back in your life.</p>
 </div>
 
+<!-- SECTION 5: CONTENT PILLAR DEEP DIVE -->
+<div class="lesson-section">
+  <span class="section-label">Pillar Strategy</span>
+  <h2 class="section-title">Building content pillars that drive revenue — not just engagement.</h2>
+  <p class="section-text">Most marketers create content pillars based on topics. Smart marketers create pillars based on the buyer journey. Here's the revenue-focused pillar framework:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Awareness</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Problem-aware content</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Content that helps people realize they have a problem. "5 signs your marketing isn't working." Broad reach, low conversion — but builds your audience.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Education</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Solution-aware content</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Content that teaches approaches to the problem. "How to automate your marketing with AI." Positions you as an expert. Builds trust before the pitch.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Comparison</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Product-aware content</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Content that compares solutions. "Tool A vs Tool B vs Our approach." Helps buyers who know what they want but are comparing options. High conversion intent.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Conversion</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Decision-stage content</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Case studies, testimonials, demos, and direct offers. "How [Customer] grew revenue 40% in 3 months." The content that closes deals.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(244,114,182,.12);color:#f472b6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Retention</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Customer success content</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Onboarding guides, advanced tips, community spotlights. Keeps customers happy, reduces churn, and turns buyers into advocates who refer others.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>The balance:</strong> Most businesses create too much awareness content and not enough comparison and conversion content. Aim for 30% awareness, 25% education, 20% comparison, 15% conversion, and 10% retention.</p>
+</div>
+
+<!-- SECTION 6: PLANNING FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Planning</span>
+  <h2 class="section-title">The quarterly planning prompt that sets up 3 months of content.</h2>
+  <p class="section-text">Instead of planning month by month, zoom out. A quarterly plan gives you strategic direction while monthly calendars handle execution:</p>
+
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Create a quarterly content plan for Q<span style="color:#fb923c">[X]</span> <span style="color:#fb923c">[year]</span>.
+
+<span style="color:#8b5cf6">Business:</span> [What you do + who you serve]
+<span style="color:#8b5cf6">Revenue goal:</span> [What you want to achieve this quarter]
+<span style="color:#8b5cf6">Channels:</span> [Blog, social, email, ads, etc.]
+<span style="color:#8b5cf6">Current audience size:</span> [Rough numbers by channel]
+
+<span style="color:#fb923c">For each month, plan:</span>
+1. Theme of the month (one overarching focus)
+2. One major content piece (pillar post, guide, or launch)
+3. Supporting content across channels
+4. One promotional campaign or offer
+5. Key dates and events to leverage
+
+<span style="color:#34d399">Also include:</span>
+- Content distribution strategy (how you promote each piece)
+- Repurposing plan (how each major piece becomes 5-7 smaller pieces)
+- Metrics to track for each month
+
+<span style="color:#ef4444">Keep it strategic.</span> This is the 30,000-foot view.
+Monthly calendars handle the day-to-day details.</pre>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>The workflow:</strong> Quarterly plan (1 hour with AI) drives 3 monthly calendars (30 minutes each with AI) which drive weekly batch creation (4 hours each with AI). Total planning time: about 6 hours for 3 full months of multi-channel content.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

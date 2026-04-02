@@ -26,6 +26,100 @@ free: false
   </ul>
 </div>
 
+<!-- SECTION: SOCIETAL IMPACT EXAMPLES -->
+<div class="lesson-section">
+  <span class="section-label">Impact</span>
+  <h2 class="section-title">Real-world examples of AI reshaping society.</h2>
+  <p class="section-text">AI's societal impact isn't theoretical. It's happening right now across every sector, every country, and every community. Understanding these concrete examples helps you see the pattern — and prepare for what's next.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Healthcare</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">AI diagnostic tools are detecting cancers earlier than human radiologists in clinical trials. But they're primarily available in wealthy hospitals in developed nations — creating a care gap between those who have access and those who don't.</p>
+      </div>
+      <div style="padding:14px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#8b5cf6;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Education</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">AI tutoring systems can provide personalized learning at scale. Khan Academy's Khanmigo and similar tools are transforming how students learn — but only for those who can afford premium subscriptions or attend schools that can license these tools.</p>
+      </div>
+      <div style="padding:14px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Criminal Justice</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Predictive policing algorithms and risk assessment tools influence who gets surveilled, arrested, and sentenced. Studies have shown these tools disproportionately flag communities of color — encoding decades of biased policing data into automated decisions.</p>
+      </div>
+      <div style="padding:14px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Financial Services</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">AI-powered credit scoring can evaluate borrowers more holistically than traditional models. But when trained on historical lending data that excluded minorities, the same technology can automate discrimination at scale — faster and more efficiently than any human loan officer could.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: WORKFORCE IMPLICATIONS -->
+<div class="lesson-section">
+  <span class="section-label">Workforce</span>
+  <h2 class="section-title">The workforce transformation is already here.</h2>
+  <p class="section-text">The conversation about AI and jobs usually falls into two extremes: "AI will take all jobs" or "AI is just a tool, nothing to worry about." The truth is more complex and more interesting than either camp admits.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(248,113,113,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Myth</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>"AI will replace 80% of jobs."</strong> Headlines like this drive fear, not understanding. Most research shows AI will transform tasks within jobs rather than eliminate entire job categories overnight.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Reality</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Tasks change before jobs disappear.</strong> A marketing manager still exists — but instead of spending 3 hours writing copy, they spend 30 minutes directing AI and 2.5 hours on strategy. The role evolves.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Watch</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>The transition speed matters most.</strong> Previous technology shifts (steam, electricity, internet) took decades. AI adoption is happening in years. The faster the shift, the more support workers need — retraining, safety nets, time to adapt.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-text">Industries most affected right now: content creation, customer service, data analysis, coding, legal research, and administrative work. Industries least affected (so far): skilled trades, healthcare delivery, childcare, creative arts requiring physical presence, and roles requiring deep human relationships.</p>
+</div>
+
+<!-- SECTION: DIGITAL DIVIDE DEEP DIVE -->
+<div class="lesson-section">
+  <span class="section-label">The Divide</span>
+  <h2 class="section-title">The AI divide runs deeper than access to tools.</h2>
+  <p class="section-text">The digital divide isn't just about who has a ChatGPT subscription. It operates on multiple layers, each compounding the others:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Layer 1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Infrastructure Access</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Fast internet, modern devices, reliable electricity. Billions of people globally lack the basic infrastructure to use AI tools at all.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Layer 2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Financial Access</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Premium AI tools cost $20-200/month. Enterprise features cost thousands. Free tiers offer limited capability. The best AI is paywalled.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Layer 3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Literacy Access</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Knowing how to prompt effectively, evaluate output, and integrate AI into workflows is a skill. Without training (like this course), many people underuse or misuse AI even when they have access.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Layer 4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Language Access</div>
+          <div style="color:#a1a1aa;font-size:.85rem">AI performs best in English. Performance drops significantly for many of the world's 7,000+ languages. If your language isn't well-represented in training data, AI is less useful for you.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 1 -->
 <div class="lesson-section">
   <span class="section-label">Jobs</span>

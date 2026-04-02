@@ -36,6 +36,23 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Pre-Flight Checklist</span>
+  <h2 class="section-title">Set up before Day 1 starts.</h2>
+  <p class="section-text">Do this over the weekend or the evening before. It takes 15 minutes and prevents the most common Day 1 derailments — payment issues, login problems, and decision paralysis about which tool to pick.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:.75rem;font-size:.85rem;color:#a1a1aa">
+      <div style="display:flex;gap:.5rem;align-items:baseline"><span style="color:#34d399;font-weight:600">1.</span> Choose your AI writing tool. If you have no preference, start with Claude Pro ($20/mo). If you already have ChatGPT Plus, use that. Do not sign up for both.</div>
+      <div style="display:flex;gap:.5rem;align-items:baseline"><span style="color:#34d399;font-weight:600">2.</span> Create your account and confirm payment went through. Nothing kills Day 1 momentum like a failed credit card charge.</div>
+      <div style="display:flex;gap:.5rem;align-items:baseline"><span style="color:#34d399;font-weight:600">3.</span> Create a Google Doc or Notion page titled "AI Prompt Library — [Your Name]." This is where you will save prompts that work.</div>
+      <div style="display:flex;gap:.5rem;align-items:baseline"><span style="color:#34d399;font-weight:600">4.</span> Identify 3 real business tasks you need to do this week. Not practice tasks — real work you are going to do anyway. Examples: a follow-up email to send, a blog post to write, a report to summarize.</div>
+      <div style="display:flex;gap:.5rem;align-items:baseline"><span style="color:#34d399;font-weight:600">5.</span> Block 45 minutes on your calendar for each of the next 5 work days. Label them "AI Practice." If it is not on the calendar, it will not happen.</div>
+      <div style="display:flex;gap:.5rem;align-items:baseline"><span style="color:#34d399;font-weight:600">6.</span> Find one spreadsheet or data file you have been meaning to analyze. You will need it on Day 4. Locate it now so you are not searching during your practice time.</div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Daily Missions</span>
   <h2 class="section-title">One day, three tasks, one outcome.</h2>
   <p class="section-text">Each card below represents one day of your first week. The front tells you the day and theme. The back gives you three specific tasks with tips on each. Don't skip the tips — they're where the common mistakes hide.</p>
@@ -91,6 +108,49 @@ Give me:
   </div>
 
   <p class="section-text">These three prompts cover the tasks that eat the most time in any business: strategic thinking, communication, and meeting prep. Save the outputs that work. By the end of Week 1, you will have 10-15 saved prompts — your personal AI playbook.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Day-by-Day Quick Wins</span>
+  <h2 class="section-title">What success looks like each day.</h2>
+  <p class="section-text">If you do nothing else, hit these benchmarks. Each one takes under 15 minutes and gives you proof that the day delivered value. Save these outputs — they become your Week 1 evidence file.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:1rem">
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#34d399;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Day 1 Quick Win: Send one AI-drafted email</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.6">Pick a real email you need to send today. Use AI to draft it. Edit for your voice. Send it. Time yourself: the draft took how long versus writing from scratch? That difference is your first data point.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#8b5cf6;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Day 2 Quick Win: Automate one notification</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.6">Set up one Zapier zap that sends you a Slack or email notification when something happens — a form submission, a new lead, a calendar event. This takes 10 minutes and shows you the power of tools talking to each other.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#fb923c;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Day 3 Quick Win: Publish one piece of content</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.6">Draft a LinkedIn post, a blog paragraph, or an internal memo using AI. Edit it. Publish or send it. The first time you ship AI-assisted content, the psychological barrier breaks and AI becomes a normal part of your workflow.</div>
+      </div>
+      <div style="padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="color:#38bdf8;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Day 4 Quick Win: Ask AI one question about your data</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.6">Upload a spreadsheet and ask: "What is the most interesting pattern in this data?" The answer may surprise you. More importantly, you just did in 30 seconds what used to take an hour of manual analysis.</div>
+      </div>
+      <div>
+        <div style="color:#ef4444;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Day 5 Quick Win: Calculate your Week 1 ROI</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.6">Add up total hours saved across all 5 days. Multiply by your hourly rate. Compare against the tool cost. Even 2 hours saved at $50/hour = $100 value from a $20 tool. That is 5x ROI in week one.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Week 2 Preview</span>
+  <h2 class="section-title">What comes after the first week.</h2>
+  <p class="section-text">Week 1 is about proving AI works for your business. Week 2 is about building it into your daily routine. Here is what to focus on in your second week — no new tools, no new subscriptions, just deeper use of what you already have.</p>
+
+  <p class="section-text"><strong>Day 6-7: Template everything.</strong> Take the prompts that worked best in Week 1 and turn them into reusable templates. Instead of writing a new prompt every time you draft an email, have a template that you fill in with specifics. This cuts your prompting time from 5 minutes to 30 seconds.</p>
+
+  <p class="section-text"><strong>Day 8-9: Expand to a second workflow.</strong> You automated one workflow in Week 1. Now pick a second one. Same approach: identify the most repetitive task, build the automation, test it three times, document the time saved. Two automated workflows compound — you are now saving time in two areas simultaneously.</p>
+
+  <p class="section-text"><strong>Day 10: Teach someone.</strong> Show one colleague or team member what you have been doing. Walk them through your top 3 prompts and your automation. Teaching solidifies your own understanding and starts building AI capability beyond just yourself. If you are a solo operator, write up your process instead — your future self will thank you.</p>
 </div>
 
 <div class="lesson-section">

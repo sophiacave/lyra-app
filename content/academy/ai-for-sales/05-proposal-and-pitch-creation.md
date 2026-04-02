@@ -68,6 +68,85 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Templates</span>
+  <h2 class="section-title">Proposal Templates by Deal Type</h2>
+  <p class="section-text">Different deals need different proposal approaches. AI can generate the right format for each situation when you specify the context:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Small Deal / Quick Close:</strong> A 1-2 page proposal. Executive summary, 3 pain points mapped to your solution, pricing, and a single next step. No fluff. Speed and clarity win small deals.</p>
+    <p><strong style="color: var(--green);">Mid-Market / Multiple Stakeholders:</strong> A 3-5 page proposal with an executive summary for the decision-maker, a detailed section for the evaluator, ROI calculations for the CFO, and implementation timeline for the project manager. Each section speaks to a different reader.</p>
+    <p><strong style="color: var(--purple);">Enterprise / RFP Response:</strong> A comprehensive document structured around their requirements. AI maps your capabilities to each requirement, generates compliance matrices, and drafts differentiator sections. This is where AI saves days of work.</p>
+    <p><strong style="color: var(--orange);">Renewal / Upsell:</strong> A results-focused proposal. Lead with what you have already delivered — metrics, outcomes, milestones. Then show how the expansion builds on proven success. Renewals sell on track record, not promises.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Multi-Stakeholder Proposal</h3>
+  <p>Build a proposal that speaks to every reader:</p>
+  <div class="prompt-box"><code>Create a proposal for [COMPANY] with sections tailored to multiple stakeholders. Decision-maker: [NAME, TITLE] — cares about ROI and strategic alignment. Evaluator: [NAME, TITLE] — cares about features and integration. Finance: needs an ROI model and cost breakdown. Our product: [PRODUCT]. Their pain points: [LIST]. Pricing: [PRICING]. Write each section in the language that reader cares about. Include an executive summary that works as a standalone document.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pitch Strategy</span>
+  <h2 class="section-title">Pitch Deck Strategies That Win Rooms</h2>
+  <p class="section-text">A pitch deck is not a document you read aloud. It is a visual aid for a conversation. AI helps you build decks that support your story without replacing it:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">The Problem-Solution Arc:</strong> Open with their world (the problem), show the gap (the cost of inaction), reveal the bridge (your solution), and land on the destination (their future with you). Every great pitch follows this arc.</p>
+    <p><strong style="color: var(--blue);">The Rule of Three:</strong> No more than three bullet points per slide. No more than three key messages per section. Human brains process information in threes. AI can distill complex ideas into three-point summaries perfectly.</p>
+    <p><strong style="color: var(--purple);">The Proof Sandwich:</strong> Before any claim, set it up with context. After every claim, back it with proof — a number, a case study, a testimonial. AI can generate these proof sandwiches for every slide in your deck.</p>
+  </div>
+  <p class="section-text">Ask AI to critique your pitch deck outline before you build it. Feed it the outline and your prospect's profile, and ask: "What would a skeptical [TITLE] challenge in this pitch? Where is my argument weakest?" Fix the weaknesses before you walk into the room.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Executive Summaries</span>
+  <h2 class="section-title">The Art of the Executive Summary</h2>
+  <p class="section-text">Many decision-makers read only the executive summary. If your entire proposal had to be reduced to three sentences, could it still win the deal? That is the standard your executive summary must meet.</p>
+  <p class="section-text">AI excels at distillation. Feed it your full proposal and ask for a three-sentence executive summary that answers: What is the problem? What is the solution? What is the expected outcome? Then ask for a one-paragraph version for stakeholders who will read slightly more. Having both versions gives you flexibility in how you present.</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Bad Executive Summary:</strong> "We are pleased to present this proposal for your consideration. Our company has been a leader in this space for 15 years. We believe our solution is a strong fit." — This says nothing about their problem or the value you deliver.</p>
+    <p><strong style="color: var(--green);">Good Executive Summary:</strong> "[Company] is losing $500K annually to manual data entry errors. Our automated validation system eliminates 95% of these errors within 60 days of implementation. The projected ROI is 340% in the first year." — Three sentences. Problem, solution, outcome.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">ROI Models</span>
+  <h2 class="section-title">Building ROI Models with AI</h2>
+  <p class="section-text">The most persuasive part of any proposal is the ROI model.
+  When a buyer can see the math — when the investment clearly pays for itself —
+  price objections disappear. AI builds these models quickly from basic inputs:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Cost of the Problem:</strong>
+    How much is the current problem costing them? AI calculates this from data
+    points like hours wasted, error rates, missed revenue, and employee turnover.
+    Make the cost of inaction a concrete number, not a vague feeling.</p>
+    <p><strong style="color: var(--blue);">Value of the Solution:</strong>
+    What specific outcomes does your product deliver? Time saved, revenue gained,
+    costs reduced, risks eliminated. Map each outcome to a dollar value using
+    their company's actual numbers when possible.</p>
+    <p><strong style="color: var(--purple);">Time to Value:</strong>
+    How quickly do they see results? A solution that pays for itself in 90 days
+    is an easier yes than one that takes 18 months. AI can model the timeline
+    based on similar customer implementations.</p>
+    <p><strong style="color: var(--orange);">Total ROI:</strong>
+    Value of the solution minus cost of the solution, expressed as a percentage
+    and a payback period. A 3x ROI in year one is compelling. A 10x ROI is
+    undeniable. AI calculates these from the inputs above.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>ROI Calculator Prompt</h3>
+  <div class="prompt-box"><code>Build an ROI model for [COMPANY]. Their problem:
+[DESCRIBE THE PROBLEM]. Current cost of the problem: [ESTIMATED ANNUAL COST
+OR "help me estimate"]. My solution: [YOUR PRODUCT] at [YOUR PRICE].
+Expected outcomes: [LIST EXPECTED IMPROVEMENTS]. Calculate: 1) Annual cost
+savings, 2) Revenue impact, 3) Total ROI percentage, 4) Payback period in
+months, 5) A one-paragraph ROI summary I can paste into the proposal.
+Use conservative estimates — understating ROI builds more trust than
+overstating it.</code></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Speed Wins</span>
   <h2 class="section-title">The Fast-Proposal Advantage</h2>
   <p class="section-text">Deals have momentum. Every day between "send me a proposal" and actually sending it, your close rate drops. AI lets you send a polished, customized proposal the same day — often within hours of the call. That speed signals competence, eagerness, and professionalism. It also beats your slower competitors to the finish line.</p>

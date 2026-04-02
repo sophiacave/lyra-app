@@ -86,6 +86,75 @@ free: false
   <p class="section-text">This works for everything: "plan mom's birthday party," "switch car insurance," "learn to cook." AI turns the mountain into a staircase.</p>
 </div>
 
+<!-- PRIORITIZATION FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Frameworks</span>
+  <h2 class="section-title">Three prioritization frameworks you can use with AI.</h2>
+  <p class="section-text">The four-bucket matrix is great for daily tasks. But different situations call for different frameworks. Here are three more approaches you can combine with AI for any type of prioritization challenge.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The 1-3-5 Rule</p>
+      <p style="font-size:0.9rem">Every day, commit to completing: 1 big task, 3 medium tasks, and 5 small tasks. This prevents the common trap of doing 20 small things and avoiding the one that actually matters.</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-top:0.5rem">
+        <code style="font-size:0.9rem;line-height:1.6">"Here's my task list for today: [LIST]. Sort them into the 1-3-5 format: 1 big task that will make the biggest impact, 3 medium tasks I should also complete, and 5 small tasks I can knock out quickly. Explain why you chose the big one."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">The Energy Matching Method</p>
+      <p style="font-size:0.9rem">Match tasks to your energy level throughout the day. Hard thinking when you're sharp, routine tasks when you're tired. AI helps you map this out.</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-top:0.5rem">
+        <code style="font-size:0.9rem;line-height:1.6">"I'm sharpest from 9-11am, decent from 1-3pm, and low energy after 3pm. Here are my tasks: [LIST]. Schedule them to match my energy levels — hardest tasks in my peak, easiest tasks when I'm drained."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">The Deadline-Based Sort</p>
+      <p style="font-size:0.9rem">When everything has a deadline, let AI create a timeline that accounts for how long each task actually takes, not just when it's due.</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-top:0.5rem">
+        <code style="font-size:0.9rem;line-height:1.6">"Here are my tasks with deadlines: [LIST WITH DATES]. Estimate how long each one will take, then build me a daily schedule for the next 5 days that gets everything done on time without cramming. Flag if anything is already too late to start."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TASK MANAGEMENT PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Advanced Prompts</span>
+  <h2 class="section-title">Task management prompts for specific situations.</h2>
+  <p class="section-text">Beyond daily prioritization, AI can help with the bigger task management challenges that trip people up. Here are prompts for the situations where most people get stuck.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">The overwhelm emergency</p>
+      <p style="font-size:0.9rem">"I'm completely overwhelmed. I have [NUMBER] things to do and I can't think straight. Here's everything: [DUMP IT ALL]. I have [HOURS] of realistic work time today. Tell me the ONLY 3 things I should focus on today. Everything else can wait. Help me breathe."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">The project breakdown</p>
+      <p style="font-size:0.9rem">"I need to [BIG PROJECT — move apartments, plan a wedding, start a side business]. I don't even know where to begin. Break this into phases, then break each phase into specific tasks. Tell me what to do first, second, third. Give me a realistic timeline."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">The weekly review</p>
+      <p style="font-size:0.9rem">"Here's what I planned to do this week: [ORIGINAL LIST]. Here's what I actually did: [COMPLETED LIST]. Help me understand why I didn't finish the rest. Am I overcommitting? Is something consistently getting pushed? What should change next week?"</p>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">The delegation identifier</p>
+      <p style="font-size:0.9rem">"Here's everything on my plate this week: [FULL LIST]. Which of these could I realistically delegate, automate, or ask someone else to help with? I live with [HOUSEHOLD MEMBERS]. I work with [TEAM/COLLEAGUES]. Help me see what I'm holding onto that I don't need to."</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROCRASTINATION -->
+<div class="lesson-section">
+  <span class="section-label">Procrastination</span>
+  <h2 class="section-title">Using AI to understand and beat procrastination patterns.</h2>
+  <p class="section-text">Procrastination isn't laziness — it's usually an emotional response. The task feels too big, too boring, too confusing, or too scary to start. AI helps you diagnose the real reason and find a way around it.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-bottom:1rem">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The procrastination diagnosis prompt:</p>
+      <code style="font-size:0.9rem;line-height:1.6">"I've been putting off [TASK] for [HOW LONG]. Every time I think about it, I [WHAT YOU DO INSTEAD]. Help me figure out why I'm avoiding it — is it because it's overwhelming, boring, scary, or confusing? Then give me the absolute smallest first step I can take in the next 5 minutes."</code>
+    </div>
+    <p style="font-size:0.9rem;color:var(--dim)">The smallest step is the key. "Clean the entire house" is paralyzing. "Put 5 things away in the living room" is doable. Once you start, momentum usually carries you further than you planned.</p>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>

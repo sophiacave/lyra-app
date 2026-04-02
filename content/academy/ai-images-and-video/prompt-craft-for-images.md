@@ -101,6 +101,42 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Prompt Formulas</span>
+  <h2 class="section-title">Reusable formulas for common image types.</h2>
+  <p class="section-text">Once you understand the framework, you can create formula templates for your most common needs. Here are tested formulas you can use immediately:</p>
+  <p class="section-text"><strong>Portrait formula:</strong> "[Person description], [camera framing], [lighting type], [background], [style], [mood/color palette]"<br>
+  Example: "A young woman with curly hair and a warm smile, close-up portrait, Rembrandt lighting, blurred garden background, fine art photography, warm golden tones"</p>
+  <p class="section-text"><strong>Landscape formula:</strong> "[Scene description], [time of day], [weather/atmosphere], [camera angle], [style], [color mood]"<br>
+  Example: "A winding mountain road through autumn forest, golden hour, light fog in the valleys, aerial perspective, landscape photography, rich warm palette"</p>
+  <p class="section-text"><strong>Product formula:</strong> "[Product description], [surface/setting], [lighting], [camera angle], [style], [background]"<br>
+  Example: "A handmade ceramic mug with speckled glaze, on a rustic wooden table, soft diffused window light, 45-degree angle, product photography, clean minimal background"</p>
+  <p class="section-text"><strong>Abstract/background formula:</strong> "[Visual concept], [color palette], [texture/pattern], [movement/flow], [mood], [use case modifier]"<br>
+  Example: "Flowing gradient of deep ocean blue to coral pink, subtle noise texture, organic wave patterns, calm and sophisticated, negative space for text overlay"</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Style Modifiers Reference</span>
+  <h2 class="section-title">A reference library of style keywords that consistently produce strong results.</h2>
+  <p class="section-text">Save this section as a reference. These are keywords tested across multiple tools that reliably steer the visual output:</p>
+  <p class="section-text"><strong>Photography styles:</strong> editorial photography, fashion photography, street photography, macro photography, astrophotography, food photography, architectural photography, documentary photography, portrait photography, product photography</p>
+  <p class="section-text"><strong>Illustration styles:</strong> digital illustration, editorial illustration, children's book illustration, botanical illustration, technical illustration, fashion illustration, concept art, character design</p>
+  <p class="section-text"><strong>Fine art references:</strong> impressionist painting, expressionist brushwork, photorealist painting, abstract expressionism, pointillism, Pre-Raphaelite, Hudson River School, Bauhaus design</p>
+  <p class="section-text"><strong>Modern aesthetics:</strong> flat design, isometric, low poly, pixel art, synthwave, dark academia, light academia, cottagecore, brutalist architecture, Memphis design, Scandinavian minimalism</p>
+  <p class="section-text"><strong>Quality and rendering:</strong> 8K, ultra-detailed, hyperrealistic, ray tracing, subsurface scattering, unreal engine, octane render, cinematic, professional color grading</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Composition Techniques</span>
+  <h2 class="section-title">Advanced composition language that elevates your images from good to gallery-worthy.</h2>
+  <p class="section-text">Beyond basic framing, these composition techniques add visual sophistication to your prompts:</p>
+  <p class="section-text"><strong>Depth layers:</strong> Describe foreground, midground, and background separately. "Wildflowers in soft focus foreground, a stone cottage in sharp focus midground, misty mountains in the distant background" creates rich visual depth that makes images feel three-dimensional.</p>
+  <p class="section-text"><strong>Color contrast:</strong> Specify complementary color relationships. "Warm amber subject against cool blue shadows" or "a single red element in an otherwise muted gray scene." Color contrast creates visual focal points that draw the eye.</p>
+  <p class="section-text"><strong>Negative space:</strong> Deliberately leaving empty areas in an image creates elegance and breathing room. "Vast empty sky above a small figure on a cliff" uses negative space to convey scale and solitude. This is also practical for social media — negative space gives you room for text overlays.</p>
+  <p class="section-text"><strong>Leading lines:</strong> Elements that guide the viewer's eye through the image. "A winding path leading toward a distant lighthouse" or "rows of bookshelves converging toward a bright window." These create visual narrative — your eye follows the lines toward the focal point.</p>
+  <p class="section-text"><strong>Tonal range:</strong> Specify whether you want high contrast (bright highlights and deep shadows) or low contrast (soft, even tones). "High contrast, deep blacks and bright highlights" feels dramatic. "Soft, low contrast, even tonal range" feels calm and gentle. This single choice transforms the emotional impact of any image.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Style Control Keywords</h2>
 </div>

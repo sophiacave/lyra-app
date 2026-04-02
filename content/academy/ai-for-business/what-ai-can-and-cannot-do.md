@@ -43,6 +43,38 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">By Department</span>
+  <h2 class="section-title">AI capabilities by business function.</h2>
+  <p class="section-text">The three categories look different depending on which department you are looking at. Here is a department-by-department breakdown so you can have specific conversations with each team leader about what AI can and cannot do in their area.</p>
+
+  <p class="section-text"><strong>Marketing.</strong> AI Does Well: writing first drafts of blog posts, social media captions, email subject lines, ad copy variations, and SEO meta descriptions. AI Can Help: brand strategy research, competitive analysis, campaign performance interpretation, audience segmentation. AI Cannot Do: develop your brand voice from scratch, build genuine community relationships, make judgment calls about sensitive messaging, or guarantee that content will resonate emotionally with your specific audience.</p>
+
+  <p class="section-text"><strong>Sales.</strong> AI Does Well: drafting outreach emails, personalizing follow-ups based on CRM data, summarizing call transcripts, generating proposal templates, and scoring leads based on historical patterns. AI Can Help: identifying upsell opportunities, forecasting pipeline, analyzing win/loss patterns, preparing for discovery calls. AI Cannot Do: close a deal, build trust with a prospect, navigate complex negotiations, or handle objections that require emotional intelligence and relationship history.</p>
+
+  <p class="section-text"><strong>Operations.</strong> AI Does Well: automating data entry, formatting reports, scheduling recurring tasks, routing support tickets, and monitoring system alerts. AI Can Help: optimizing workflows, predicting inventory needs, identifying bottlenecks, planning resource allocation. AI Cannot Do: manage a team, handle a supplier crisis that requires human judgment, make trade-off decisions between competing priorities, or resolve conflicts between departments.</p>
+
+  <p class="section-text"><strong>Finance.</strong> AI Does Well: categorizing expenses, reconciling transactions, formatting financial reports, generating invoice reminders, and converting data between formats. AI Can Help: spotting anomalies in spending patterns, forecasting cash flow, summarizing financial statements, and preparing audit documentation. AI Cannot Do: make investment decisions, sign off on financial statements, navigate complex tax situations that require professional judgment, or replace the accountability that a qualified accountant provides.</p>
+
+  <p class="section-text"><strong>Human Resources.</strong> AI Does Well: writing job descriptions, screening resumes for basic qualifications, scheduling interviews, drafting onboarding materials, and summarizing employee feedback surveys. AI Can Help: identifying retention risk factors, analyzing compensation benchmarks, generating training content, and tracking compliance requirements. AI Cannot Do: make hiring decisions (bias risk is real and documented), handle sensitive employee conversations, navigate terminations, or replace the human judgment required in conflict resolution and workplace culture decisions.</p>
+
+  <p class="section-text"><strong>Customer Service.</strong> AI Does Well: answering FAQ questions, routing tickets to the right department, drafting response templates, and handling status inquiries. AI Can Help: identifying trending issues, escalating complex cases with context summaries, suggesting responses for agents to edit, and analyzing satisfaction trends. AI Cannot Do: handle an emotionally charged complaint with genuine empathy, make exceptions to policy that require judgment, or rebuild trust after a serious service failure.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Why AI Fails</span>
+  <h2 class="section-title">Understanding the limits is the real skill.</h2>
+  <p class="section-text">AI fails at certain things not because the technology is broken, but because of how it works at a fundamental level. Understanding why it fails helps you predict where it will fail in your business — before it embarrasses you or costs you money.</p>
+
+  <p class="section-text"><strong>It has no real-world experience.</strong> AI learned from text, not from living. It knows what a customer complaint looks like in writing, but it has never felt the frustration of a customer or the pressure of managing an angry caller. This is why AI-written apology emails often sound polished but hollow — they lack the genuine understanding that comes from having been on both sides.</p>
+
+  <p class="section-text"><strong>It cannot verify its own output.</strong> When AI writes "your company was founded in 1987," it has no way to check whether that is true. It is pattern-matching, not fact-checking. This is why hallucinations happen — the AI produces text that sounds right because the pattern fits, even when the facts are wrong. Verification must always be a human step.</p>
+
+  <p class="section-text"><strong>It does not understand consequences.</strong> AI does not know that sending an email with the wrong price could cost you a $50,000 contract. It does not understand that a poorly worded social media post could become a PR crisis. Every output is equally weightless to the AI. The stakes are invisible to it. That is your job — to know which outputs carry risk and build review steps accordingly.</p>
+
+  <p class="section-text"><strong>It reflects its training data.</strong> If the data it learned from contains biases — and it does, because all human-generated data contains biases — the AI will reproduce those biases. This is documented in hiring tools that penalize resumes from certain schools, content tools that default to male pronouns, and analytics tools that over-index on majority populations. Awareness of this limitation is the first defense.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 2</span>
 <p class="section-text">Ten common business tasks. Flip each card to find out which category it falls into — and more importantly, why. Some of these will surprise you.</p>
 

@@ -112,6 +112,40 @@ notes = process_meeting(<span style="color:#fbbf24">"Sarah: Let's move the launc
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The Two-Week MVP Sprint</h2>
+  <p class="section-text">A structured two-week sprint that takes you from validated idea to shippable product. Follow this timeline to avoid both under-building and over-engineering.</p>
+  <p class="section-text"><strong>Days 1-2: Core pipeline.</strong> Build the AI pipeline end-to-end with hardcoded inputs. Your system prompt, model call, and output parser should work perfectly on your test cases before you touch any UI. If the pipeline doesn't produce good results, nothing else matters.</p>
+  <p class="section-text"><strong>Days 3-4: Input and output UI.</strong> Build the minimum interface for users to provide input and receive output. One page. One form. One result view. No settings, no history, no profiles. Just the magic trick.</p>
+  <p class="section-text"><strong>Days 5-6: Error handling and edge cases.</strong> What happens when the input is too long? Too short? In the wrong format? What happens when the API times out? What happens when the model hallucinates? Handle every failure mode with a clear, helpful message.</p>
+  <p class="section-text"><strong>Days 7-8: Auth and billing.</strong> User signup, login, and a payment wall. Use Supabase Auth or Clerk for authentication. Use Stripe for billing. Don't build these from scratch — that's a months-long detour. Integrate existing services.</p>
+  <p class="section-text"><strong>Days 9-10: Polish and testing.</strong> Test with 5 real users. Watch them use it. Note where they get confused, stuck, or frustrated. Fix the top 3 issues. Don't fix everything — fix the biggest friction points.</p>
+  <p class="section-text"><strong>Days 11-12: Deploy and monitor.</strong> Ship to production. Set up error tracking (Sentry), analytics (PostHog or Mixpanel), and cost monitoring. You need to know what's happening from day one.</p>
+  <p class="section-text"><strong>Days 13-14: Launch prep.</strong> Write your launch post. Create 3 demo outputs to share. Prepare your Wave 1 invite list. You're ready.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pattern</span>
+  <h2 class="section-title">Prompt Engineering as Product Development</h2>
+  <p class="section-text">Your system prompt is your product's brain. Treat prompt development with the same rigor you'd apply to code — versioned, tested, and iteratively improved.</p>
+  <p class="section-text"><strong>Start with examples.</strong> Include 2-3 examples of ideal input-output pairs in your system prompt. Few-shot examples improve output quality more reliably than verbose instructions. Show the model what "good" looks like instead of describing it abstractly.</p>
+  <p class="section-text"><strong>Constrain the output format.</strong> If you need JSON, say "Respond with valid JSON matching this schema:" and provide the schema. If you need bullet points, specify the format explicitly. Ambiguous format instructions produce inconsistent results that break your parser.</p>
+  <p class="section-text"><strong>Version your prompts.</strong> Store prompts in a config file or database, not hardcoded in your application. Tag each version. When you change a prompt, compare 20 outputs from the old version vs. the new version before deploying. A prompt that improves 15 outputs but ruins 5 is a net negative.</p>
+  <p class="section-text"><strong>Test on your worst inputs.</strong> Find the inputs that produce the worst outputs. These are your regression tests. Every prompt change must not make these worse. Build a test suite of 20-30 challenging inputs and run them before every prompt update.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Critical</span>
+  <h2 class="section-title">MVP Infrastructure Checklist</h2>
+  <p class="section-text">Beyond the product itself, your MVP needs operational infrastructure. Ship without these and you're flying blind.</p>
+  <p class="section-text"><strong>Error tracking:</strong> Sentry, LogRocket, or Bugsnag. You need to know when things break before your users tell you. AI failures are often silent — the model returns something, it's just wrong. Track model errors separately from application errors.</p>
+  <p class="section-text"><strong>Cost monitoring:</strong> Track API costs in real time. Set up alerts when daily spend exceeds your threshold. A single bug that sends requests in a loop can burn through your monthly budget in hours. Anthropic and OpenAI both provide usage dashboards — check them daily in week one.</p>
+  <p class="section-text"><strong>Usage analytics:</strong> Track every AI interaction — input length, output length, latency, model used, whether the user accepted or rejected the output. This data drives every optimization decision you'll make in the next six months.</p>
+  <p class="section-text"><strong>Rate limiting:</strong> Protect yourself from abuse and runaway costs. Limit free-tier users to 10 queries/day. Limit paid users to a reasonable number based on their plan. Always rate limit, even in beta.</p>
+  <p class="section-text"><strong>Backup and recovery:</strong> Your user data, prompt templates, and configuration must be backed up. Your AI provider's API key should be rotatable without downtime. If your database dies, recovery should take minutes, not days.</p>
+</div>
+
+<div class="lesson-section">
 </div>
 
 <div class="try-it-box">

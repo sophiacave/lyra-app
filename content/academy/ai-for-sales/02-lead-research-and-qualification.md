@@ -72,6 +72,86 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">BANT Framework</span>
+  <h2 class="section-title">Qualification with BANT</h2>
+  <p class="section-text">BANT is the classic qualification framework: Budget, Authority, Need, Timeline. AI can assess all four dimensions from the information you already have about a prospect:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Budget:</strong> Can they afford your solution? AI can estimate budget range based on company size, industry, recent funding, and job postings. A company hiring for your product's category likely has budget allocated.</p>
+    <p><strong style="color: var(--blue);">Authority:</strong> Are you talking to the decision-maker? AI can map org structures and tell you if your contact has buying power or if you need to get higher. Title alone does not tell you this — AI analyzes the company's decision-making patterns.</p>
+    <p><strong style="color: var(--purple);">Need:</strong> Do they have a problem your product solves? AI identifies pain points from job postings, press releases, review sites, and industry trends. No need means no deal, no matter how good the conversation feels.</p>
+    <p><strong style="color: var(--orange);">Timeline:</strong> Is there urgency? AI looks for trigger events — contract expirations, regulatory deadlines, new leadership, strategic initiatives. A prospect with a deadline closes faster than one without.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>BANT Qualification Prompt</h3>
+  <div class="prompt-box"><code>Qualify this lead using the BANT framework. Company: [COMPANY NAME]. Contact: [NAME, TITLE]. Industry: [INDUSTRY]. Company size: [EMPLOYEES/REVENUE]. What I sell: [YOUR PRODUCT] at [PRICE POINT]. Based on publicly available information, assess: 1) Budget — can they likely afford this? What signals suggest budget availability? 2) Authority — is this contact likely a decision-maker for this purchase? 3) Need — what problems do they likely face that my product solves? 4) Timeline — are there any trigger events suggesting urgency? Give me an overall BANT score from 1-10 and recommend whether to pursue, nurture, or deprioritize.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">MEDDIC Framework</span>
+  <h2 class="section-title">Advanced Qualification with MEDDIC</h2>
+  <p class="section-text">For complex, enterprise deals, MEDDIC provides deeper qualification than BANT. AI can help you assess each element before and after discovery calls:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Metrics:</strong> What quantifiable outcome does the buyer need? AI helps you calculate the business impact — "reducing churn by 5% saves them $2M annually." Buyers who cannot define success metrics rarely buy.</p>
+    <p><strong style="color: var(--blue);">Economic Buyer:</strong> Who controls the budget? AI maps organizational structures to identify the person with final sign-off authority. Selling to someone without budget authority wastes everyone's time.</p>
+    <p><strong style="color: var(--purple);">Decision Criteria:</strong> What factors will determine their choice? AI analyzes their industry and role to predict evaluation criteria — price, integration ease, support quality, scalability. Knowing their criteria lets you position accordingly.</p>
+    <p><strong style="color: var(--orange);">Decision Process:</strong> What steps do they follow to buy? AI can outline typical procurement processes for their company size and industry. Knowing the process lets you map your sales activities to their buying journey.</p>
+    <p><strong style="color: var(--red);">Identify Pain:</strong> What specific pain point drives the purchase? AI surfaces industry-specific challenges and company-specific signals from news, reviews, and job postings.</p>
+    <p><strong style="color: var(--accent);">Champion:</strong> Who inside the organization will sell for you when you are not in the room? AI can suggest which roles typically champion solutions like yours, and what they need from you to advocate internally.</p>
+  </div>
+  <p class="section-text">MEDDIC takes more effort than BANT, but for deals over $50K, it is the difference between a qualified pipeline and a fantasy pipeline. AI makes MEDDIC assessment fast enough to use on every enterprise lead.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Research Prompts</span>
+  <h2 class="section-title">The Research Prompt Stack</h2>
+  <p class="section-text">Top-performing sellers do not use a single research prompt. They use a stack — a sequence of prompts that builds a complete picture layer by layer. Here is the stack, in order:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Layer 1 — Company Intel:</strong> "Give me a business overview of [COMPANY] including recent news, funding, leadership changes, product launches, and competitive position."</p>
+    <p><strong style="color: var(--green);">Layer 2 — Industry Context:</strong> "What are the top 3 challenges facing [INDUSTRY] companies of [SIZE] in 2026? How are market trends affecting businesses like [COMPANY]?"</p>
+    <p><strong style="color: var(--purple);">Layer 3 — Contact Deep Dive:</strong> "Based on this LinkedIn profile [PASTE], what are this person's likely priorities, communication style preferences, and career motivations?"</p>
+    <p><strong style="color: var(--orange);">Layer 4 — Competitive Landscape:</strong> "Who are [COMPANY]'s main competitors? What solutions are they likely using today for [YOUR CATEGORY]? What would make them switch?"</p>
+    <p><strong style="color: var(--red);">Layer 5 — Connection Map:</strong> "Given everything above, what are the 3 strongest angles to connect my product [PRODUCT] to their specific situation? Give me one conversation opener for each angle."</p>
+  </div>
+  <p class="section-text">Running all five layers takes about 10 minutes with AI. Compare that to the 2-3 hours it would take to do this research manually — and you will do it for every single prospect, not just the ones you feel like researching.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Signals</span>
+  <h2 class="section-title">Reading Buying Signals with AI</h2>
+  <p class="section-text">Buying signals are actions or events that indicate
+  a prospect is ready to purchase. AI can monitor and interpret these signals
+  across multiple data sources to tell you who is ready now:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Hiring Signals:</strong>
+    A company posting jobs in your product's category — hiring a
+    "Revenue Operations Manager" signals investment in sales infrastructure.
+    AI connects job postings to your offering.</p>
+    <p><strong style="color: var(--blue);">Technology Signals:</strong>
+    A company adopting complementary tools or sunsetting a competitor product.
+    If they just implemented a new CRM, they may need your integration.
+    If their current vendor raised prices, they may be evaluating alternatives.</p>
+    <p><strong style="color: var(--purple);">Growth Signals:</strong>
+    New funding, expansion into new markets, or rapid headcount growth.
+    Growth creates new problems and new budgets. AI connects growth events
+    to the specific problems your product solves.</p>
+    <p><strong style="color: var(--orange);">Engagement Signals:</strong>
+    A prospect visiting your website multiple times, downloading content,
+    or engaging with your social posts. These are intent signals that most
+    salespeople miss unless they are specifically watching for them.</p>
+    <p><strong style="color: var(--red);">Leadership Signals:</strong>
+    New CEO, new VP of Sales, or new CTO. New leaders bring new priorities
+    and new budgets. The first 90 days of a new leader is the highest-probability
+    window for new vendor evaluation.</p>
+  </div>
+  <p class="section-text">Feed a list of your target accounts to AI along with
+  recent news, job postings, and LinkedIn activity. Ask it to score each account
+  for buying signals and prioritize your outreach accordingly. The accounts
+  with the strongest signals get your attention first.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Power Move</span>
   <h2 class="section-title">Build Your Research Template</h2>
   <p class="section-text">Create a saved prompt template for prospect research that you use before every single call. Consistency is what separates professionals from amateurs. When every prospect gets the same thorough research treatment, your close rate climbs because you never walk in unprepared.</p>

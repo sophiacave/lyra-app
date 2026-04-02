@@ -60,12 +60,65 @@ free: false
   <p class="section-text">A dry run — executing the workflow but not actually sending, saving, or processing — is your first line of defense. See what would happen without making it happen.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Mock Services</span>
+  <h2 class="section-title">Testing Without Hitting Real APIs</h2>
+  <p class="section-text">You don't want to send 500 test emails through SendGrid or create 200 test contacts in your production CRM. Mock services solve this by simulating API responses locally, so your workflow thinks it's talking to the real service.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Why mock?</strong> Speed (local mocks respond in milliseconds vs. hundreds of milliseconds for real APIs), cost (no API charges for test runs), isolation (your tests don't depend on external service availability), and safety (you won't accidentally modify production data).</p>
+  <p class="section-text"><strong style="color: var(--blue);">What to mock:</strong> External API calls, email sending, database writes during destructive tests, payment processing, and notification services. Basically, anything that has side effects in the real world.</p>
+  <p class="section-text"><strong style="color: var(--blue);">What NOT to mock:</strong> Your own business logic, data transformations, routing decisions, and validation code. These are the things you're actually testing — mocking them defeats the purpose.</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Mock example with Python's unittest.mock:</strong></p>
+    <p><code>@patch("workflow.send_email")</code></p>
+    <p><code>def test_welcome_flow(mock_send):</code></p>
+    <p><code>&nbsp;&nbsp;mock_send.return_value = {"status": "sent"}</code></p>
+    <p><code>&nbsp;&nbsp;result = onboarding_workflow(test_customer)</code></p>
+    <p><code>&nbsp;&nbsp;mock_send.assert_called_once_with(to="test@example.com")</code></p>
+    <p><em style="color: var(--dim);">The mock captures what arguments were passed, how many times it was called, and what it returned — without sending a real email.</em></p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Regression Testing</span>
+  <h2 class="section-title">Making Sure Fixes Don't Break Other Things</h2>
+  <p class="section-text">You fix a bug in your workflow's routing logic. The routing works now — but did the fix accidentally break the data transformation in step 2? Regression testing catches this by re-running all existing tests every time you make a change.</p>
+  <p class="section-text"><strong style="color: var(--orange);">The golden rule:</strong> Every bug you fix should come with a new test case that would have caught the bug. Found that your classifier fails on emails with Unicode characters? Write a test with Unicode input. Now that specific bug can never return without being caught.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Automate your test suite:</strong> Run all tests automatically before every deployment. If any test fails, the deployment is blocked. This is called a CI/CD pipeline, and it's the single most important quality gate for production workflows. Tools like GitHub Actions, GitLab CI, or even a simple pre-deploy script make this easy.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pre-Launch</span>
+  <h2 class="section-title">The Pre-Launch Checklist That Saves Careers</h2>
+  <p class="section-text">Before any workflow goes live, walk through this checklist. Print it. Tape it to your monitor. Treat it as sacred:</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">1. All unit tests pass?</strong> Every individual step produces correct output for normal AND edge case inputs.</p>
+    <p><strong style="color: var(--green);">2. Integration tests pass?</strong> Data flows correctly between all connected steps. No format mismatches.</p>
+    <p><strong style="color: var(--green);">3. End-to-end test with realistic data?</strong> The full pipeline runs from trigger to final output. Result matches expectations.</p>
+    <p><strong style="color: var(--green);">4. Error handling tested?</strong> You've intentionally broken each step and verified the retry/fallback/alert chain works.</p>
+    <p><strong style="color: var(--green);">5. Rate limits respected?</strong> Your workflow won't exceed any API's rate limit, even under peak load.</p>
+    <p><strong style="color: var(--green);">6. Credentials are production-ready?</strong> No test keys in production config. All secrets stored securely. No hardcoded values.</p>
+    <p><strong style="color: var(--green);">7. Monitoring is active?</strong> Logging, alerting, and dashboards are configured BEFORE launch, not after.</p>
+    <p><strong style="color: var(--green);">8. Rollback plan exists?</strong> You can disable or revert the workflow in under 60 seconds if something goes wrong.</p>
+  </div>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Now</h3>
   <p>Build a test plan for your workflow.</p>
   <div class="prompt-box">
     <code>For your workflow, create: (1) Three normal test cases with expected outputs. (2) Three edge cases — weird, empty, or extreme data. (3) A list of every external service the workflow touches and whether you can test it in sandbox mode.</code>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Load Testing</span>
+  <h2 class="section-title">Will Your Workflow Survive a Traffic Spike?</h2>
+  <p class="section-text">Your workflow handles 10 items per hour beautifully. But what happens when a marketing campaign drives 500 signups in 30 minutes? Or a product launch creates 1,000 orders in an hour? Load testing answers these questions before your customers do.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Baseline first:</strong> Measure how long your workflow takes to process one item. This is your baseline. If one item takes 3 seconds, you can theoretically handle 20 per minute — but external API rate limits might cap you at 10.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Ramp up gradually:</strong> Test with 2x your normal volume, then 5x, then 10x. At each level, check: do all items process successfully? Does latency increase? Do you hit any rate limits? At what volume does the workflow start failing?</p>
+  <p class="section-text"><strong style="color: var(--blue);">Plan for the spike:</strong> If your workflow can't handle peak load, you have three options: queue items and process them at a sustainable rate, provision more resources (if self-hosted), or design the workflow to gracefully shed load (process the most important items first, delay the rest).</p>
 </div>
 
 <div class="lesson-section">

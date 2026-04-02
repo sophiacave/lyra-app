@@ -116,6 +116,89 @@ free: true
   </div>
 </div>
 
+<!-- SECTION: GDPR/CCPA SPECIFICS -->
+<div class="lesson-section">
+  <span class="section-label">Regulations</span>
+  <h2 class="section-title">GDPR, CCPA, and what they mean for your AI use.</h2>
+  <p class="section-text">You don't need to be a lawyer to understand the key data protection laws that affect AI use. Here's what matters for everyday users and professionals.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#8b5cf6;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">GDPR (Europe)</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:#a1a1aa">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Applies if you process data of EU residents — regardless of where you are</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Right to erasure: people can demand their data be deleted</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Right to explanation: people can ask how automated decisions were made</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Data minimization: only collect what you actually need</li>
+          <li style="padding:6px 0">Fines up to 4% of annual global revenue</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">CCPA (California)</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:#a1a1aa">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Applies to businesses handling data of California residents</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Right to know: consumers can ask what data is collected about them</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Right to delete: consumers can request data deletion</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Right to opt out of data sales</li>
+          <li style="padding:6px 0">Fines up to $7,500 per intentional violation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1rem"><strong>Why this matters for AI:</strong> When you paste someone's personal data into an AI tool, you may be transferring it to a third party (the AI provider). Under GDPR, that transfer likely requires the data subject's consent. Under CCPA, it could qualify as a "sale" of personal information if the provider uses it for training.</p>
+</div>
+
+<!-- SECTION: DATA MINIMIZATION -->
+<div class="lesson-section">
+  <span class="section-label">Minimization</span>
+  <h2 class="section-title">Data minimization: share only what the task requires.</h2>
+  <p class="section-text">Data minimization is one of the most practical privacy principles for AI users. The idea is simple: give AI only the information it needs to complete the task — nothing more.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#ef4444;font-weight:700">Over-sharing:</span> "Help me write a response to John Smith (john.smith@company.com, Account #49281, overdue balance $3,200) who complained about our service on March 15th."</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Minimized:</span> "Help me write a professional response to a customer who has an overdue balance and recently complained about our service. The tone should be empathetic but firm about the balance."</div>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1rem">The minimized version gives AI everything it needs to write a great response — without exposing any personal information. The name, email, account number, and specific balance are irrelevant to the task of drafting the response.</p>
+</div>
+
+<!-- SECTION: CONSENT FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Consent</span>
+  <h2 class="section-title">Understanding consent in the age of AI.</h2>
+  <p class="section-text">Consent is foundational to data privacy, but AI complicates it in new ways. When someone gives you their email address, they consented to you having it — not to you pasting it into an AI model that might store it indefinitely or use it for training.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Original Purpose</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Data collected for one purpose (e.g., order fulfillment) shouldn't be repurposed for another (e.g., AI analysis) without additional consent. Using customer data to train internal AI models may violate the original consent.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Third-Party Transfer</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Pasting data into an AI tool transfers it to a third party. Most privacy policies don't cover this. If your company's privacy policy says "we don't share your data with third parties" and employees are pasting data into AI — that's a breach.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Informed Consent</div>
+          <div style="color:#a1a1aa;font-size:.85rem">True consent requires understanding. "We may use AI to process your data" in a terms of service nobody reads isn't meaningful consent. Best practice: be specific about how AI is used and give people a genuine choice.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="lesson-section">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Anonymize sensitive data before sending it to AI.</h2>

@@ -73,6 +73,65 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <h2 class="section-title">Communication Templates for Critical PM Moments</h2>
+  <p class="section-text">These templates cover the communications that make or break a PM's credibility:</p>
+  <p class="section-text"><strong>Project Kickoff Announcement:</strong></p>
+  <div class="prompt-box"><code>Draft a project kickoff announcement for [audience — full organization / department / team].
+
+Project: [name and one-line description]
+Why it matters: [business value / strategic importance]
+Timeline: [key dates]
+Team: [who is involved]
+What people need to know: [any impact on their work, any input needed]
+
+Tone: [excited but professional / formal / casual depending on org culture]
+Length: Under 300 words. Include a clear call-to-action at the end (attend kickoff meeting, review documentation, reach out with questions, etc.).</code></div>
+  <p class="section-text"><strong>Scope Change Communication:</strong></p>
+  <div class="prompt-box"><code>Draft a communication about a scope change to [audience — client / sponsor / team].
+
+Original scope: [what was planned]
+Change: [what is being added, removed, or modified]
+Reason: [why the change is needed]
+Impact on timeline: [faster, slower, same]
+Impact on budget: [higher, lower, same]
+Impact on quality: [any tradeoffs]
+Decision needed: [what you need from this audience — approval, awareness, input]
+
+Frame this constructively. Do not apologize — present it as a thoughtful adjustment based on new information. Be transparent about tradeoffs. End with a specific ask.</code></div>
+  <p class="section-text"><strong>Escalation Email:</strong></p>
+  <div class="prompt-box"><code>Draft an escalation email to [senior leader / VP / director].
+
+Issue: [what is the problem]
+Impact: [what happens if this is not resolved — timeline, budget, customer impact]
+What I have tried: [actions already taken to resolve this at my level]
+What I need: [specific decision, resource, intervention needed]
+Deadline: [by when this decision is needed to avoid the impact described]
+
+Tone: Respectful but urgent. Show that I have done my due diligence. Be specific about what I need — do not make them guess. Keep it under 200 words.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The SCQA Framework for Stakeholder Communication</h2>
+  <p class="section-text">SCQA (Situation, Complication, Question, Answer) is a narrative framework used by management consultants at McKinsey and BCG. It is devastatingly effective for PM communications because it mirrors how decision-makers think:</p>
+  <p class="section-text"><strong>Situation:</strong> The shared understanding. What everyone already knows and agrees on. "We launched the beta in March and have 500 active users."</p>
+  <p class="section-text"><strong>Complication:</strong> The new tension. What has changed or what problem has emerged. "User retention drops 40% after week two, and our NPS is 22 — well below the 40 threshold for launch."</p>
+  <p class="section-text"><strong>Question:</strong> The implied or explicit question this raises. "Should we extend the beta to fix retention before full launch, or launch on schedule and iterate?"</p>
+  <p class="section-text"><strong>Answer:</strong> Your recommendation with supporting evidence. "I recommend a 4-week beta extension. Here is why: [data, analysis, risk comparison]. Cost: $X. Risk of not doing it: Y."</p>
+  <p class="section-text">AI is excellent at restructuring your raw thinking into SCQA format. Feed it your project situation and ask: "Restructure this as SCQA for a [C-level / VP / client] audience." The output is immediately more compelling than a chronological brain dump.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">The Email That Saved the Budget</h2>
+  <p class="section-text">A PM needed to request a $150,000 budget increase for a project that was originally scoped at $400,000. This is the kind of communication where tone and framing determine whether you get the money or get your project cancelled.</p>
+  <p class="section-text">She drafted a quick paragraph explaining the situation and asked AI to restructure it using the SCQA framework for a CFO audience. Here is what AI produced:</p>
+  <p class="section-text"><strong>Situation:</strong> "Project Atlas has delivered Phase 1 on time and under budget ($180K of $200K allocated). Customer adoption exceeded our 500-user target by 40%, reaching 700 users in the first month."</p>
+  <p class="section-text"><strong>Complication:</strong> "This success has created demand we did not anticipate. Enterprise customers are requesting features originally planned for v3, and two competitors launched similar products last month. Our Phase 2 scope needs to expand to capture the market window before it closes."</p>
+  <p class="section-text"><strong>Question:</strong> "Should we invest an additional $150K to capture the enterprise segment now, or proceed with the original Phase 2 plan and risk losing the early-mover advantage?"</p>
+  <p class="section-text"><strong>Answer:</strong> "I recommend the expanded investment. The enterprise features would add $800K in annual recurring revenue based on three signed letters of intent. The ROI is 5.3x within 12 months. Risk: if competitors ship first, we lose the enterprise positioning entirely."</p>
+  <p class="section-text">The CFO approved the budget increase within 24 hours. The framing made the difference — it was not "we need more money" but "here is a time-sensitive opportunity with quantified returns." AI gave her the structure; she provided the data and the judgment to back it up.</p>
 </div>
 
 <div class="lesson-section">

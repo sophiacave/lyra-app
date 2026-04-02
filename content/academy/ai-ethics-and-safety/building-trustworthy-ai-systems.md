@@ -109,6 +109,78 @@ free: false
   </div>
 </div>
 
+<!-- SECTION: TRUST FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Trust Frameworks</span>
+  <h2 class="section-title">How organizations establish AI trust.</h2>
+  <p class="section-text">Individual principles matter, but organizations need structured frameworks to implement them. Several authoritative frameworks have emerged that guide responsible AI development and deployment.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">NIST AI Risk Management Framework</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The U.S. National Institute of Standards and Technology published a voluntary framework organized around four functions: Govern, Map, Measure, and Manage. It helps organizations identify AI risks and implement controls proportional to those risks.</p>
+      </div>
+      <div style="padding:14px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#8b5cf6;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">EU AI Act Risk Categories</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The EU classifies AI systems into risk tiers: unacceptable (banned), high-risk (heavily regulated), limited risk (transparency requirements), and minimal risk (no specific requirements). High-risk includes AI in hiring, credit scoring, law enforcement, and healthcare.</p>
+      </div>
+      <div style="padding:14px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">ISO/IEC 42001</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The first international standard for AI management systems. It provides a certifiable framework for organizations to demonstrate they manage AI responsibly — covering governance, risk assessment, impact evaluation, and continuous improvement.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: AUDIT PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">Auditing</span>
+  <h2 class="section-title">How to audit AI systems for trustworthiness.</h2>
+  <p class="section-text">Whether you're evaluating an AI tool for your team or building one yourself, these audit patterns help you systematically check for trustworthiness.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Bias</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Test with diverse inputs.</strong> Run the same task with names, locations, and demographics from different backgrounds. Does the output quality or tone change? If a hiring tool ranks "James" higher than "Jamal" with identical resumes, you have a bias problem.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Accuracy</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Create a test set with known answers.</strong> Feed the AI questions where you already know the correct answer. Measure how often it gets them right, and more importantly, how confidently it states wrong answers.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Privacy</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Trace the data flow.</strong> Map where user data goes: is it stored? For how long? Who can access it? Is it used for training? Can users request deletion? A trustworthy system has clear answers to all of these.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Robustness</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Try to break it.</strong> What happens with adversarial inputs, edge cases, or deliberately misleading prompts? A trustworthy system degrades gracefully rather than producing dangerous outputs.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Override</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Test the kill switch.</strong> Can a human override any AI decision? Is there an appeal process? What happens when the AI is wrong — is there a clear path to correction? If there's no off-ramp, the system isn't trustworthy.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: CERTIFICATION -->
+<div class="lesson-section">
+  <span class="section-label">Certification</span>
+  <h2 class="section-title">Emerging certification and accountability approaches.</h2>
+  <p class="section-text">As AI becomes critical infrastructure, certification and accountability mechanisms are emerging. Understanding these helps you evaluate vendors, build better systems, and prepare for regulatory requirements.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Model Cards</span> — Standardized documentation that describes what a model does, how it was trained, its known limitations, and its intended use cases. Think of it as a nutrition label for AI models.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Algorithmic Impact Assessments</span> — Formal evaluations conducted before deploying AI in high-stakes contexts. They assess potential harms, document mitigation strategies, and create accountability records.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Third-Party Audits</span> — Independent organizations that test AI systems for bias, accuracy, and safety. Similar to financial auditing, these provide external validation that a system meets stated standards.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Bug Bounties for AI</span> — Programs that reward researchers for finding bias, safety failures, or vulnerabilities in AI systems. Anthropic, OpenAI, and others run these programs to crowdsource the discovery of problems before they cause harm.</div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 3 -->
 <div class="lesson-section">
   <span class="section-label">Red Flags</span>

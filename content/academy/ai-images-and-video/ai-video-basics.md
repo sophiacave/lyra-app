@@ -89,8 +89,86 @@ golden hour light, cinematic color grade, atmospheric haze</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Understanding Video Generation</span>
+  <h2 class="section-title">How AI video actually works under the hood.</h2>
+  <p class="section-text">AI video generation extends the same diffusion model concept from image generation into the time dimension. Instead of generating one frame, the model generates a sequence of frames that are temporally coherent — meaning objects move smoothly and consistently from one frame to the next.</p>
+  <p class="section-text">The reason clips are currently short (4-16 seconds) is that maintaining coherence over longer durations is exponentially harder. Every frame needs to be consistent with every other frame in terms of lighting, object appearance, physics, and camera position. The compute cost scales dramatically with duration.</p>
+  <p class="section-text">This is why the image-to-video approach often produces better results than text-to-video. When you give the model a starting image, it has a concrete visual reference to maintain consistency against. With pure text-to-video, the model must invent the entire visual world from scratch and keep it consistent — a much harder task.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tool Comparison</span>
+  <h2 class="section-title">Choosing the right video tool for your specific needs.</h2>
+  <p class="section-text">Each video tool has distinct strengths. Here is a more detailed comparison to help you decide:</p>
+</div>
+
+<div class="demo-container" style="border-left: 3px solid var(--orange); padding: 1.2rem; margin: 2rem 0; background: var(--bg);">
+  <h3 style="color: var(--orange);">Detailed tool comparison</h3>
+  <ul>
+    <li><strong>Runway Gen-3:</strong> Best overall quality. Strong motion coherence. Good for cinematic content. $12/month starting. The professional's first choice for client work.</li>
+    <li><strong>Pika:</strong> Most beginner-friendly. Fun effects and filters. Generous free tier. Best for social media clips and creative experiments where speed matters.</li>
+    <li><strong>Kling AI:</strong> Best motion quality for complex scenes. Longer generation times. Growing rapidly. Best when you need realistic movement and physics.</li>
+    <li><strong>Sora:</strong> Most coherent and realistic output. Understands physics and natural motion deeply. Available via ChatGPT Plus/Pro. Best for photorealistic scenes.</li>
+    <li><strong>Luma Dream Machine:</strong> Fastest generation. Excellent for dreamy and artistic styles. Strong image-to-video. Best when you want artistic, ethereal results quickly.</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Video Prompt Techniques</span>
+  <h2 class="section-title">Writing prompts for video requires a different mindset than images.</h2>
+  <p class="section-text">When you write prompts for still images, you describe a moment frozen in time. Video prompts need to describe what happens over time — motion, transitions, camera behavior. Here are the key techniques:</p>
+  <p class="section-text"><strong>Camera language:</strong> Borrow from cinematography. "Slow dolly push in" means the camera moves forward gradually. "Tracking shot from left to right" means the camera follows alongside. "Crane up to reveal" means the camera rises to show something new. These terms give AI video tools clear direction about camera behavior.</p>
+  <p class="section-text"><strong>Motion intensity:</strong> Specify how much movement you want. "Subtle movement, almost still" produces gentle breathing-like motion. "Dynamic action, fast-paced" produces energetic clips. Most beginners make the mistake of asking for too much motion, which can cause visual artifacts.</p>
+  <p class="section-text"><strong>Temporal structure:</strong> Describe what happens at the beginning versus the end. "Starts with a close-up of a flower bud, slowly blooms open to reveal vibrant petals" gives the AI a narrative arc to follow.</p>
+  <p class="section-text"><strong>Atmospheric motion:</strong> Some of the most beautiful AI video comes from subtle environmental motion — clouds drifting, water flowing, leaves rustling, smoke curling, light shifting. These elements are much more reliably generated than complex character movement.</p>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — atmospheric video with temporal structure</div>
+<pre style="margin:0;color:#e5e5e5"><code>A misty forest at dawn, first rays of sunlight breaking
+through ancient trees, camera slowly gliding forward along
+a mossy path, dust particles floating in golden light beams,
+birds visible in distant canopy, starts in shadow and
+gradually fills with warm golden light, serene and magical,
+cinematic 24fps, shallow depth of field</code></pre>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practical Workflow</span>
+  <h2 class="section-title">The image-to-video pipeline that consistently produces the best results.</h2>
+  <p class="section-text">Based on what works in practice, here is the most reliable workflow for creating quality AI video:</p>
+  <p class="section-text"><strong>1. Create your perfect frame:</strong> Use your image generation skills to create exactly the starting frame you want. Spend time getting the composition, colors, and mood right. This image is the foundation of your video.</p>
+  <p class="section-text"><strong>2. Plan the motion:</strong> Before uploading to a video tool, decide what kind of motion will enhance the image. A peaceful landscape? Gentle clouds and water ripples. A dramatic portrait? Subtle hair movement and eye blinks. A city scene? Traffic and neon light flicker.</p>
+  <p class="section-text"><strong>3. Generate with conservative motion:</strong> Start with less motion than you think you need. "Subtle, gentle movement" almost always looks better than "dramatic fast action" in AI video. You can always regenerate with more motion if the first attempt is too static.</p>
+  <p class="section-text"><strong>4. Generate multiple takes:</strong> Just like with images, your first video generation might not be perfect. Generate 3-5 takes and pick the one with the best motion coherence and timing.</p>
+  <p class="section-text"><strong>5. Trim and combine:</strong> Use a simple video editor (CapCut is free and excellent) to trim the best moments, add music, and combine multiple clips if needed.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">AI Video Tools</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">What AI Video Cannot Do Yet</span>
+  <h2 class="section-title">Knowing the limits helps you work within them — and work around them.</h2>
+  <p class="section-text">AI video is impressive but has clear limitations in 2026 that you should understand:</p>
+  <p class="section-text"><strong>Character consistency:</strong> The same person or character may look slightly different across multiple generated clips. Maintaining a consistent character appearance over several video segments remains challenging.</p>
+  <p class="section-text"><strong>Complex interactions:</strong> Two characters shaking hands, a person picking up and throwing a ball, or detailed physical interactions between objects often produce visual glitches. Simple, single-subject motion is much more reliable.</p>
+  <p class="section-text"><strong>Text and detail:</strong> Just like image generation, text within video scenes is usually garbled. Fine details like watch faces, book titles, or street signs will not be readable.</p>
+  <p class="section-text"><strong>Audio:</strong> Most AI video tools generate silent video. You will need to add music, sound effects, or narration separately using tools like CapCut, Premiere, or dedicated AI audio generators.</p>
+  <p class="section-text"><strong>Length:</strong> Feature-length or even minute-long continuous generation is not yet reliable. Think of AI video as a short-form creative medium for now — social clips, mood pieces, concept visualizations.</p>
+  <p class="section-text">These limitations are shrinking with every model update. What matters is understanding them so you can design your creative work around them rather than fighting against them.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Combining Clips</span>
+  <h2 class="section-title">Create longer narratives by chaining short clips together.</h2>
+  <p class="section-text">Since individual AI video clips are short, creating longer content requires combining multiple clips. Here is the approach:</p>
+  <p class="section-text"><strong>Shot list approach:</strong> Plan your video like a film director. Write a shot list — "Shot 1: wide establishing shot of the city. Shot 2: close-up of rain on a window. Shot 3: a person walking down a street." Generate each shot as a separate clip, then edit them together.</p>
+  <p class="section-text"><strong>Consistent style prompts:</strong> Use the same style descriptors across all clips. "Cinematic, warm color grading, 24fps, shallow depth of field" in every prompt helps the final edit feel cohesive rather than jumbled.</p>
+  <p class="section-text"><strong>Transition planning:</strong> Plan transitions between clips during generation. If clip 1 ends with a camera pan right, start clip 2 with content that flows from the right side. Or use simple crossfades and cuts in your editor to join clips smoothly.</p>
+  <p class="section-text"><strong>Music-first editing:</strong> Choose your music track first, then cut your video clips to match the beat and mood of the music. This simple technique makes even short AI clips feel cinematic and intentional.</p>
 </div>
 
 <div class="lesson-section">

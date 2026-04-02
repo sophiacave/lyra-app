@@ -121,6 +121,70 @@ every recommendation with a reason.</code></pre>
   <p class="section-text" style="margin-top:1rem">By the end, you'll have templates, workflows, and techniques that cut your marketing production time in half. Let's go.</p>
 </div>
 
+<!-- SECTION 5: MARKET TRENDS -->
+<div class="lesson-section">
+  <span class="section-label">Market Trends</span>
+  <h2 class="section-title">Where AI marketing is heading — and what to watch.</h2>
+  <p class="section-text">Understanding the landscape helps you stay ahead. Here are the trends shaping AI marketing right now:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Hyper-personalization at scale</div>
+          <div style="color:#a1a1aa;font-size:.85rem">AI enables truly personal messaging for every segment. Not "Dear [First Name]" personalization — actual content variations tailored to behavior, preferences, and stage in the buyer journey.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">AI-native search is changing SEO</div>
+          <div style="color:#a1a1aa;font-size:.85rem">People are searching with AI chatbots instead of Google. Content that answers questions clearly and provides genuine expertise will win in both traditional and AI search.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Content velocity is the new arms race</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Teams using AI produce 5-10x more content. The bar for quality hasn't dropped — the bar for volume has risen. You need both speed and substance.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Authenticity premium</div>
+          <div style="color:#a1a1aa;font-size:.85rem">As AI content floods the internet, genuinely human perspectives become more valuable. Your personal stories, opinions, and experiences are now a competitive moat.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">5</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Multimodal content creation</div>
+          <div style="color:#a1a1aa;font-size:.85rem">AI now generates text, images, video, and audio. A single marketer can produce a full multimedia campaign — blog post, social graphics, video script, and podcast outline — in one session.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: TRANSFORMATION ROADMAP -->
+<div class="lesson-section">
+  <span class="section-label">Your Roadmap</span>
+  <h2 class="section-title">The 30-day AI marketing transformation.</h2>
+  <p class="section-text">You don't need to change everything at once. Here's how to integrate AI into your marketing over the next month:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Week 1 — Learn the language:</span> Use AI to draft 3 pieces of content you would normally write from scratch. Compare the AI draft to what you would have written. Edit it to your standards. Notice what AI does well and where it falls short.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Week 2 — Build your toolkit:</span> Create your brand voice card, save your best prompts, and set up a prompt library. Start using AI for email subject lines and social captions daily.</div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#fb923c;font-weight:700">Week 3 — Scale up:</span> Generate your first full content calendar with AI. Batch-create a week of social content. Use AI to analyze your last month of marketing data and write an executive report.</div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#38bdf8;font-weight:700">Week 4 — Optimize:</span> Run your first AI-generated A/B tests on email subject lines and ad copy. Use AI for competitive analysis. Start the full batch-creation workflow from lesson 7.</div>
+    </div>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>By day 30:</strong> You'll have a working AI marketing system — templates, prompts, workflows, and data — that saves you 10+ hours per week. The rest of this course gives you every tool you need to get there.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

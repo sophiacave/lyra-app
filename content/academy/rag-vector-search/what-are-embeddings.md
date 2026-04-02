@@ -161,6 +161,61 @@ vectors = [item.embedding <span style="color:#c084fc">for</span> item <span styl
     </div>
   </div>
 
+  <div class="section">
+    <h2>Embedding Gotchas and Best Practices</h2>
+    <p>Embeddings look simple — call an API, get a vector, store it. But production systems break in subtle ways when you skip the fundamentals. Every one of the gotchas below has caused real outages, corrupted search results, or silently degraded RAG quality in production systems. These five practices separate toy demos from reliable RAG pipelines.</p>
+
+    <p>Think of these as the "hygiene layer" of your embedding pipeline. Getting the vectors right is necessary but not sufficient — you also need to manage how they are created, stored, compared, and maintained over time. Skip any one of these, and your system will work in development but fail in production.</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Batch Embedding, Not One-at-a-Time</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When you have a collection of documents, <strong>always embed them in batches</strong>. Sending one API call per document means thousands of round trips, each with network latency and rate-limit overhead. A single batch call with 100 texts is faster, cheaper, and uses the same number of tokens. Most APIs accept arrays of inputs — use them. The OpenAI API, for example, accepts up to 2,048 inputs per batch call. Structure your ingestion pipeline around batch sizes of 100-500 texts for the best throughput.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Token Limits: Truncation and Chunking</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Every embedding model has a maximum input length — typically around 8,192 tokens (roughly 6,000 words). Text beyond that limit is silently truncated by some APIs or rejected outright by others. If your documents are longer than the limit, you must <strong>chunk them first</strong> — split them into passages of 256-512 tokens with overlap. Never assume the model will handle arbitrarily long input. Check your model's documentation for the exact limit, and build your chunking step <em>before</em> your embedding step in the pipeline.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Caching: Never Re-Embed the Same Text</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Embedding the same document twice wastes money and compute. Once you generate a vector, <strong>store it in your database alongside the source text</strong>. On subsequent runs, check whether the text has changed before re-embedding. A content hash (SHA-256 of the text) makes this trivial — if the hash matches, skip the embedding call. This is especially important during development, when you might re-run your ingestion pipeline dozens of times. A proper caching layer can cut your embedding costs by 90% or more.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444">Normalization: Know Your Vectors</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Some embedding models return <strong>normalized vectors</strong> (unit length, magnitude = 1), and some do not. This matters because cosine similarity and dot product give <em>identical results</em> on normalized vectors — but different results on unnormalized ones. If your vector database uses inner product (dot product) for speed, but your model returns unnormalized vectors, your similarity scores will be wrong. Always check: OpenAI's models return normalized vectors. Many HuggingFace models do not. When in doubt, normalize explicitly: divide each vector by its L2 norm before storing.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(229,229,229,.04);border:1px solid rgba(229,229,229,.1)">
+        <strong style="color:#e5e5e5">Version Pinning: Model Updates Break Everything</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When an embedding model provider releases a new version, the vector space changes. Vectors from the old model and vectors from the new model are <strong>incompatible</strong> — even for the same text, the numbers will be different. This means a "minor update" can silently destroy your search quality. The fix: <strong>pin your model version explicitly</strong> (e.g., <code style="color:#71717a">text-embedding-3-small</code>, not just "latest"). When you do upgrade, re-embed your entire corpus in one operation. Track which model version produced each vector in your database schema — a simple <code style="color:#71717a">model_version</code> column prevents weeks of debugging inconsistent results.</p>
+      </div>
+    </div>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
+<span style="color:#c084fc">import</span> hashlib
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">normalize_vector</span>(vec):
+    <span style="color:#fb923c">"""Normalize a vector to unit length for consistent similarity."""</span>
+    norm = np.linalg.norm(vec)
+    <span style="color:#c084fc">return</span> vec / norm <span style="color:#c084fc">if</span> norm > <span style="color:#fbbf24">0</span> <span style="color:#c084fc">else</span> vec
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">should_reembed</span>(text, stored_hash):
+    <span style="color:#fb923c">"""Check if text has changed since last embedding."""</span>
+    current_hash = hashlib.sha256(text.encode()).hexdigest()
+    <span style="color:#c084fc">return</span> current_hash != stored_hash
+
+<span style="color:#71717a"># Production pattern: hash → check cache → embed if needed → normalize → store</span>
+text = <span style="color:#fbbf24">"How do I handle customer complaints?"</span>
+text_hash = hashlib.sha256(text.encode()).hexdigest()
+
+<span style="color:#c084fc">if</span> should_reembed(text, cached_hash):
+    vector = get_embedding(text)            <span style="color:#71717a"># API call</span>
+    vector = normalize_vector(np.array(vector))  <span style="color:#71717a"># safe for dot product</span>
+    store_in_db(text, vector, text_hash, model_version=<span style="color:#fbbf24">"text-embedding-3-small"</span>)</code></pre>
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">This pattern — hash, check, embed, normalize, store with version — handles all five gotchas in a single pipeline. Build it once and every document flows through the same reliable path.</p>
+  </div>
+
   <div class="divider"><span>Test Your Understanding</span></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Embedding Fundamentals","questions":[{"q":"What does an embedding model output for a piece of text?","options":["A summary paragraph","A fixed-length list of numbers (vector)","A set of keywords","A JSON object with labels"],"correct":1,"explanation":"Embedding models output a dense vector — a fixed-length list of floating-point numbers — where the position in that high-dimensional space captures the text\u0027s meaning."},{"q":"Why are the words \"happy\" and \"joyful\" close together in embedding space?","options":["They share the same letters","They have the same number of characters","They have similar meanings, so the model places them nearby","They were always grouped together alphabetically"],"correct":2,"explanation":"Embedding models are trained on vast text corpora and learn that words used in similar contexts carry similar meanings. Semantically related words end up geometrically close in vector space."},{"q":"Why is cosine similarity preferred over Euclidean distance for comparing embeddings?","options":["Cosine similarity is faster to compute","Cosine similarity measures direction (meaning), not magnitude (length)","Euclidean distance only works in 2D","Cosine similarity always returns values between 0 and 1"],"correct":1,"explanation":"Cosine similarity measures the angle between vectors, making it magnitude-independent. Two vectors pointing in the same direction are similar regardless of their length — which is what we want when comparing semantic meaning."},{"q":"You embed documents with OpenAI text-embedding-3-small and queries with BGE-small. Will similarity search work?","options":["Yes, embeddings are universal","No — the models produce vectors in different spaces, making similarity scores meaningless","Yes, as long as the dimensions match","It depends on the vector database"],"correct":1,"explanation":"Different embedding models learn different vector spaces. A vector from OpenAI and a vector from BGE represent meaning in incompatible coordinate systems. You MUST use the same model for both documents and queries."}]}'></div>

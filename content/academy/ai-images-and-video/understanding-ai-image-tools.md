@@ -93,8 +93,66 @@ That difference is their personality.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">How Models Work</span>
+  <h2 class="section-title">Understanding the architecture helps you understand the results.</h2>
+  <p class="section-text">You do not need a computer science degree, but knowing the basics of how these tools work under the hood makes you a more effective user. There are two main architectures powering AI image generation today:</p>
+  <p class="section-text"><strong>Diffusion models:</strong> Used by DALL-E, Stable Diffusion, and Midjourney. These start with random noise (visual static) and gradually "denoise" it step by step until a coherent image emerges. Your text prompt guides this denoising process — like a sculptor removing material to reveal the form inside. The number of denoising steps affects quality: more steps generally means more detail but takes longer.</p>
+  <p class="section-text"><strong>Transformer-based models:</strong> Some newer systems use transformer architectures (the same technology behind ChatGPT) to generate images as sequences of visual tokens. These models can be faster and sometimes better at understanding complex spatial relationships in prompts.</p>
+  <p class="section-text"><strong>Why this matters to you:</strong> When you increase "quality" or "steps" in a tool's settings, you are asking the diffusion process to take more denoising steps. When a tool seems to "misunderstand" your prompt, it is because the text-to-image alignment in that particular model interpreted your words differently than you intended. Knowing this helps you troubleshoot — if a tool consistently misinterprets a word, try a synonym.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Model Versions Matter</span>
+  <h2 class="section-title">The same tool can produce dramatically different results depending on the model version.</h2>
+  <p class="section-text">AI image tools release new model versions regularly, and the differences can be significant:</p>
+  <p class="section-text"><strong>DALL-E 3 vs DALL-E 2:</strong> DALL-E 3 (the current version in ChatGPT) is dramatically better at following complex prompts, understanding spatial relationships, and producing readable text in images. If you tried DALL-E 2 a year ago and were underwhelmed, DALL-E 3 is a completely different experience.</p>
+  <p class="section-text"><strong>Stable Diffusion versions:</strong> SD 1.5 was the community workhorse. SDXL brought higher resolution and better composition. SD 3 and SD 3.5 improved text rendering and prompt adherence. Each version has its own community of fine-tuned models and workflows.</p>
+  <p class="section-text"><strong>Midjourney versions:</strong> Midjourney v6 is significantly more photorealistic and prompt-adherent than v5. Each version shifts the tool's personality and capabilities. Some users prefer older versions for certain aesthetic styles.</p>
+  <p class="section-text">The takeaway: if you tried a tool six months ago and were disappointed, try it again. The models evolve fast enough that your experience could be completely different today.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pricing Deep Dive</span>
+  <h2 class="section-title">Understanding the real cost of each tool so you can budget wisely.</h2>
+  <p class="section-text">AI image generation ranges from completely free to professional-tier pricing. Here is a detailed breakdown:</p>
+  <p class="section-text"><strong>Free options:</strong> Bing Image Creator (unlimited, powered by DALL-E), Leonardo AI (150 free tokens/day), Stable Diffusion (completely free if you run it locally), ChatGPT free tier (limited daily image generations).</p>
+  <p class="section-text"><strong>$10-20/month tier:</strong> Midjourney Basic ($10, ~200 images/month), ChatGPT Plus ($20, generous image generation), Adobe Firefly standalone ($10, limited credits).</p>
+  <p class="section-text"><strong>$20-60/month tier:</strong> Midjourney Standard ($30, unlimited relaxed mode), Midjourney Pro ($60, fast mode hours), Adobe Creative Cloud with Firefly ($55, full suite).</p>
+  <p class="section-text"><strong>Cost optimization:</strong> Start with free tools to learn and experiment. Once you know which tool matches your style, invest in a paid plan. Most people find that one tool at $10-30/month covers all their needs. The best value depends entirely on what you create and how much you create.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Choosing Your First Tool</span>
+  <h2 class="section-title">A decision framework based on who you are and what you need.</h2>
+  <p class="section-text"><strong>If you are a complete beginner:</strong> Start with ChatGPT (DALL-E). The conversational interface means you can describe what you want in natural language and iterate through conversation. No special syntax to learn.</p>
+  <p class="section-text"><strong>If you are a visual artist or designer:</strong> Try Midjourney first. Its aesthetic sensibility and artistic output quality are unmatched. The Discord interface takes a few minutes to learn but becomes second nature.</p>
+  <p class="section-text"><strong>If you are a developer or power user:</strong> Explore Stable Diffusion. Running it locally gives you unlimited generations, full control over parameters, and the ability to use custom fine-tuned models. The community is incredibly active and generous with shared resources.</p>
+  <p class="section-text"><strong>If you need images for business:</strong> Adobe Firefly is the safest choice. Trained on licensed content with IP indemnity. Integrates with Photoshop and the Adobe ecosystem you may already use.</p>
+  <p class="section-text"><strong>If budget is a concern:</strong> Start with Bing Image Creator (free, powered by DALL-E) or Leonardo AI's free tier. You can create stunning work without spending a dollar. Upgrade when you know exactly what you need.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Tool Strengths</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Privacy and Data Considerations</span>
+  <h2 class="section-title">What happens to the images you create and the prompts you write.</h2>
+  <p class="section-text">Each tool handles your data differently. Understanding this helps you choose the right tool for sensitive work:</p>
+  <p class="section-text"><strong>Cloud-based tools (ChatGPT, Midjourney, Firefly):</strong> Your prompts and generated images are processed on the company's servers. Most tools use your data to improve their models unless you opt out. For sensitive business or personal projects, check each tool's privacy policy and opt-out options.</p>
+  <p class="section-text"><strong>Local tools (Stable Diffusion):</strong> When you run Stable Diffusion on your own computer, nothing leaves your machine. Your prompts, your images, your creative process — all completely private. This is a significant advantage for confidential work like unreleased product designs or private creative projects.</p>
+  <p class="section-text"><strong>Midjourney's public gallery:</strong> By default, Midjourney images generated on the standard plan are visible in the community gallery. This means other people can see what you are creating. The Pro plan includes a "stealth mode" that keeps your generations private. Consider this if you are working on confidential projects.</p>
+  <p class="section-text"><strong>Image ownership:</strong> On most paid plans, you own the images you generate and can use them commercially. But read the fine print. Some tools retain certain rights or require attribution. When in doubt, check the current terms of service before using AI-generated images in commercial products.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Getting Help and Learning More</span>
+  <h2 class="section-title">Every tool has a community eager to help you succeed.</h2>
+  <p class="section-text"><strong>Official documentation:</strong> Each tool maintains help docs and tutorials. Midjourney's documentation is particularly good for learning prompt techniques. OpenAI's guides cover DALL-E best practices. Stability AI's resources help with Stable Diffusion setup.</p>
+  <p class="section-text"><strong>Community forums:</strong> Reddit communities like r/midjourney, r/StableDiffusion, and r/dalle2 are goldmines of technique sharing, troubleshooting, and inspiration. Sort by "top" to see the best advice and most impressive results.</p>
+  <p class="section-text"><strong>YouTube tutorials:</strong> Search for "[tool name] tutorial 2026" to find up-to-date guides. The landscape changes fast, so look for recent content. Channels dedicated to AI art regularly cover new features and techniques.</p>
+  <p class="section-text"><strong>Prompt sharing sites:</strong> Sites like PromptHero, Lexica, and Civitai let you browse images with their prompts visible. This is the fastest way to learn what words produce what results — reverse-engineering great images.</p>
 </div>
 
 <div class="lesson-section">

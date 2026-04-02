@@ -102,6 +102,63 @@ queue = [
     <p style="font-size:.82rem;color:#71717a">Production databases handle this natively through transactions. <code>BEGIN ... COMMIT</code> groups operations atomically — if any step fails, the entire transaction rolls back.</p>
   </div>
 
+  <div class="section">
+    <h2>Optimistic vs. Pessimistic Concurrency</h2>
+    <p>Locking is a <strong>pessimistic</strong> strategy — it assumes conflicts will happen and prevents them upfront. There is an alternative: <strong>optimistic concurrency</strong>, which assumes conflicts are rare and handles them after the fact.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">Pessimistic (Locking)</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Lock before write. Others wait. Guarantees no conflicts but adds latency. Best when conflicts are frequent and writes are fast.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">Optimistic (Version Check)</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Read the current version. Write with a version check — <code>WHERE version = @expected</code>. If another agent wrote first, the version has changed and your write fails. Retry with the new value. Best when conflicts are rare.</p>
+      </div>
+    </div>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0"><code><span style="color:#71717a">-- Optimistic concurrency: version-based check</span>
+<span style="color:#c084fc">UPDATE</span> brain_context
+<span style="color:#c084fc">SET</span> value = <span style="color:#fbbf24">'new_value'</span>, version = version + <span style="color:#fbbf24">1</span>
+<span style="color:#c084fc">WHERE</span> key = <span style="color:#fbbf24">'session.active_work'</span>
+  <span style="color:#c084fc">AND</span> version = <span style="color:#fbbf24">42</span>;  <span style="color:#71717a">-- only succeeds if nobody else updated</span>
+
+<span style="color:#71717a">-- If 0 rows affected → conflict detected → retry</span></code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Conflict Detection Strategies</h2>
+    <p>Before you can resolve a conflict, you need to detect it. Three detection strategies:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8">Timestamp Comparison</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Each write includes an <code>updated_at</code> timestamp. Before writing, the agent checks whether the timestamp has changed since it last read. If it has, someone else wrote in between. Simple and effective for most use cases.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
+        <strong style="color:#c084fc">Hash Comparison</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Hash the value before reading. Before writing, hash the current value and compare. If the hashes differ, the data changed. More reliable than timestamps when clock synchronization is imperfect across distributed systems.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+        <strong style="color:#f472b6">Write-Ahead Log</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Every intended write is logged before execution. A separate process reviews the log and detects conflicts before they happen. More complex but provides an audit trail and enables conflict resolution before any data is changed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Real-World Conflict Scenarios</h2>
+    <p>Conflicts are not abstract — they happen in every multi-agent system. Here are three scenarios you will encounter:</p>
+
+    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
+      <strong style="color:#e5e5e5">1. Simultaneous session checkpoints:</strong> Two agents running on different machines both try to write <code>session.active_work</code> at the same time. The second write silently overwrites the first, losing that agent's progress. Fix: use agent-specific keys (<code>session.active_work.agent_a</code>) or optimistic concurrency.<br><br>
+      <strong style="color:#e5e5e5">2. Counter increment race:</strong> A page view counter is read as 100 by two agents simultaneously. Both increment to 101 and write. Final value: 101 instead of 102. Fix: use atomic SQL operations (<code>SET count = count + 1</code>) instead of read-then-write.<br><br>
+      <strong style="color:#e5e5e5">3. Config update during deploy:</strong> An admin agent updates the config while a deploy agent is reading it. The deploy uses a mix of old and new values — a <em>torn read</em>. Fix: read the config inside a transaction, or use versioned config snapshots.
+    </div>
+  </div>
+
   <div data-learn="QuizMC" data-props='{"title":"Conflict Resolution Strategies","questions":[{"q":"Two agents need to update a user subscription simultaneously. Operations are quick (<1 second). Best strategy?","options":["Conscience Layer","Priority Queue","Locking","Swarm pattern"],"correct":2,"explanation":"Quick operations plus two writers equals locking. Acquire lock, write, release. Simple and effective for fast operations."},{"q":"Five agents submit reports to a dashboard. Security alerts must appear before routine analytics. Best strategy?","options":["Locking","Conscience Layer","Swarm","Priority Queue"],"correct":3,"explanation":"Different importance levels call for a priority queue. Security agents get higher priority and their writes are processed first."},{"q":"An agent wants to delete user data for GDPR compliance. Another wants to retain it for fraud investigation. Both are valid. Best strategy?","options":["Locking","Priority Queue","Conscience Layer","Rollback"],"correct":2,"explanation":"Ethical conflict with competing valid interests requires the conscience layer \u2014 an arbiter must weigh values (privacy vs. safety) and make a judgment call."},{"q":"What is a race condition?","options":["An agent running faster than expected","Two agents reading and writing the same data simultaneously, causing one write to be lost","A scheduling conflict between cron jobs","A memory overflow error"],"correct":1,"explanation":"A race condition occurs when two agents both read the same value, calculate changes independently, and then both write \u2014 the second write overwrites the first."},{"q":"What is a deadlock?","options":["When an agent runs out of memory","When Agent A locks resource X and waits for Y, while Agent B locks Y and waits for X \u2014 neither can proceed","When a database transaction is too slow","When an agent loses its identity"],"correct":1,"explanation":"Deadlocks happen when two agents each hold a lock the other needs. Neither can proceed. Prevented by always acquiring locks in the same order, or using lock timeouts."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Conflict Resolution Concepts","cards":[{"front":"What is a race condition?","back":"When two agents read the same value, calculate independently, and both write \u2014 the second write overwrites the first, silently losing data."},{"front":"What is a rollback?","back":"Undoing a change to restore data to its last safe state. Like Ctrl-Z for database operations. Implemented via database transactions (BEGIN/ROLLBACK)."},{"front":"Locking (Pessimistic Concurrency)","back":"Agent acquires a lock before writing. Others must wait. Simple, reliable for quick ops. Risk: deadlocks if agents lock resources in different orders."},{"front":"Priority Queue","back":"Writes are ordered by importance level. Higher-priority agents go first. Risk: low-priority tasks may starve."},{"front":"Conscience Layer","back":"An arbiter agent reviews conflicting writes and decides based on system values. Best for ethical/policy conflicts where both sides are valid."},{"front":"What is a deadlock?","back":"Agent A locks X, waits for Y. Agent B locks Y, waits for X. Neither can proceed. Fix: always acquire locks in the same global order, or use timeouts."}]}'></div>

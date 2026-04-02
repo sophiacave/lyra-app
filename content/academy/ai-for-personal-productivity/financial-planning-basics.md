@@ -85,6 +85,78 @@ free: false
   </div>
 </div>
 
+<!-- BUDGETING TEMPLATES -->
+<div class="lesson-section">
+  <span class="section-label">Budget Templates</span>
+  <h2 class="section-title">Ready-to-use budgeting prompts for different situations.</h2>
+  <p class="section-text">Everyone's financial situation is different. Here are specific prompts for common scenarios. Copy the one that matches your life, fill in your numbers, and let AI do the math.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The paycheck-to-paycheck budget</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I make $2,800/month after taxes. I'm paid biweekly. My rent is $1,100, car payment $350, phone $85, insurance $120. I spend about $400 on groceries and $200 on gas. I'm usually broke by the end of the month. Help me figure out where the rest goes and build a budget that actually works for biweekly paychecks."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">The debt payoff plan</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I have 3 debts: a credit card with $3,200 at 24% interest, a personal loan with $5,000 at 12%, and a medical bill of $1,800 at 0% interest. I can put $400/month toward debt. Should I use the avalanche method or the snowball method? Show me both payoff timelines with total interest paid."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">The savings goal calculator</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I want to save $5,000 for an emergency fund. I make $3,500/month. After all my expenses I usually have about $300 left over. Is it realistic to save $5,000 in a year? Help me find another $100/month in my budget. My expenses are: [LIST THEM]."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.5rem">The subscription audit</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"Here are all my subscriptions: Netflix $15, Spotify $11, gym $40, Amazon Prime $15, iCloud $3, Hulu $18, DoorDash Pass $10, HelloFresh $60, NYT $17, Adobe $55. Total: $244/month. Help me figure out which ones I'm actually using enough to justify and which I should cancel. Be honest."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINANCIAL ANALYSIS PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Analysis Prompts</span>
+  <h2 class="section-title">Use AI to understand financial decisions you face every day.</h2>
+  <p class="section-text">Financial decisions feel overwhelming because they involve math, time horizons, and hidden factors you don't think about. AI can break down any financial choice into clear numbers and trade-offs.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">Rent vs. buy analysis</p>
+      <p style="font-size:0.9rem">"I currently pay $1,400/month in rent. I'm looking at a house that would be $1,800/month mortgage (including taxes and insurance). I have $15,000 saved. Compare renting vs. buying over the next 5 years — total cost, equity built, and hidden costs I might not be thinking about."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">Car buying helper</p>
+      <p style="font-size:0.9rem">"I need a reliable car. My budget is $300/month for a payment. Should I buy new, buy used, or lease? I drive about 12,000 miles a year. What should I know about each option? Include total cost of ownership over 5 years."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">Understanding your paycheck</p>
+      <p style="font-size:0.9rem">"My gross pay is $4,200/month but I only take home $3,100. Can you explain what all the deductions probably are? What do FICA, federal withholding, and state tax mean in plain language? Am I having too much withheld?"</p>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">Insurance comparison</p>
+      <p style="font-size:0.9rem">"My employer offers two health insurance plans. Plan A: $150/month premium, $2,000 deductible, $6,000 max out-of-pocket. Plan B: $280/month premium, $500 deductible, $3,000 max out-of-pocket. I go to the doctor about 4 times a year and take one prescription. Which plan saves me more money?"</p>
+    </div>
+  </div>
+</div>
+
+<!-- FINANCIAL LITERACY -->
+<div class="lesson-section">
+  <span class="section-label">Financial Literacy</span>
+  <h2 class="section-title">Use AI to finally understand the money terms that confuse everyone.</h2>
+  <p class="section-text">Financial literacy isn't about being smart with money — it's about understanding the language. Most people feel lost because no one ever explained these terms in plain English. AI fixes that.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-bottom:1rem">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The jargon buster prompt:</p>
+      <code style="font-size:0.9rem;line-height:1.6">"Explain these financial terms to me like I'm a smart adult who just never learned this stuff: APR, APY, compound interest, amortization, escrow, 401(k) match, Roth vs. Traditional IRA, and credit utilization ratio. Use real dollar amounts in your examples."</code>
+    </div>
+    <p style="font-size:0.9rem;color:var(--dim)">This single prompt gives you a financial vocabulary lesson that most people never get. Understanding these terms means you can read your own statements, ask better questions, and catch when someone is trying to confuse you.</p>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>

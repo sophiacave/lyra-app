@@ -87,6 +87,85 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Anatomy of the Five Levers in Practice</h2>
+  <p class="section-text">Let's walk through each lever with a real-world scenario. Imagine you're preparing a quarterly business review presentation and need AI to help.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+      <h4 style="color: var(--orange);">Lever 1: Role</h4>
+      <code>"You are a management consultant who specializes in SaaS metrics and has presented to C-suite executives for 10 years."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">This activates business expertise and executive communication style. Without it, you get generic advice that could come from a blog post.</p>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+      <h4 style="color: var(--purple);">Lever 2: Context</h4>
+      <code>"Our company is a B2B SaaS startup, Series A, 50 employees. We grew ARR from $1.2M to $2.1M this quarter. Churn increased from 3% to 5%. Our board meeting is in 2 weeks."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">Now the AI knows your stage, your numbers, and your deadline. Every recommendation will be calibrated to your reality.</p>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">Lever 3: Task</h4>
+      <code>"Create a 5-slide outline for a quarterly business review. Each slide needs a title, 3 key talking points, and one data visualization suggestion."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">Specific deliverable. The AI knows exactly what to produce — not a report, not an essay, but a slide outline with defined components.</p>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+      <h4 style="color: var(--blue);">Lever 4: Format</h4>
+      <code>"Use this structure for each slide: SLIDE [N]: [TITLE] / Talking Points: (bulleted list) / Visualization: (one sentence describing the chart type and what it shows)."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">Prescriptive format means the output is immediately usable. No reformatting needed.</p>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--red);">
+      <h4 style="color: var(--red);">Lever 5: Constraints</h4>
+      <code>"Do not sugarcoat the churn increase — address it head-on with a remediation plan. Avoid jargon the board won't know. Keep each talking point to one sentence."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">Constraints prevent the AI from dodging hard truths or producing fluff. They're guardrails that keep quality high.</p>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Pitfalls</span>
+  <h2 class="section-title">Mistakes That Keep Prompts Weak</h2>
+  <p class="section-text"><strong style="color: var(--red);">Assuming context:</strong> You know your project inside and out. The AI knows nothing. Every time you think "obviously it knows what I mean" — it doesn't. Spell it out.</p>
+  <p class="section-text"><strong style="color: var(--red);">Skipping constraints:</strong> Most people tell AI what to do but never what to avoid. Constraints eliminate the most common failure modes. "Don't use cliches." "Don't exceed 200 words." "Don't include a greeting."</p>
+  <p class="section-text"><strong style="color: var(--red);">Being polite instead of precise:</strong> "Could you maybe write something about marketing?" is not a prompt — it's a suggestion. Be direct. The AI doesn't have feelings to hurt.</p>
+  <p class="section-text"><strong style="color: var(--red);">One-and-done thinking:</strong> Your first prompt is a draft. Great prompt engineers iterate. Run it, see what's off, adjust one lever, run again. Three rounds of refinement beats one hour of upfront planning.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The ROI</span>
+  <h2 class="section-title">Why This Skill Pays for Itself</h2>
+  <p class="section-text">Consider a professional who uses AI 10 times a day. If each poorly-crafted prompt wastes 5 minutes of back-and-forth and revision, that's 50 minutes lost daily. Over a year, that's over 200 hours — more than five full work weeks.</p>
+  <p class="section-text">A well-engineered prompt works on the first or second try. It saves those 5 minutes per interaction. Multiply that across your career and you're looking at one of the highest-leverage skills you can develop.</p>
+  <p class="section-text">This isn't about being clever with AI. It's about being effective. The gap between someone who "uses AI" and someone who engineers prompts is the same gap between someone who types search queries and someone who builds databases. Same tool, completely different outcomes.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mental Model</span>
+  <h2 class="section-title">Think of AI as a New Team Member on Day One</h2>
+  <p class="section-text">The most useful mental model for prompt engineering is this: the AI is a brilliant new hire who joined your team today. They have incredible general knowledge but zero context about your specific situation.</p>
+  <p class="section-text">You wouldn't hand a new employee a one-line task and expect perfect work. You'd brief them: here's the project, here's our audience, here's what we've tried before, here's what "done" looks like, here's what to avoid. That briefing is your prompt.</p>
+  <p class="section-text">The better the briefing, the better the output. The faster you internalize this mental model, the faster every prompt you write improves. Throughout this course, we'll build on this foundation — teaching you exactly how to brief your AI collaborator for every type of task.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">What's Next</span>
+  <h2 class="section-title">The Road Ahead</h2>
+  <p class="section-text">This lesson gave you the foundation: the five levers, the mindset shift, and the ROI of prompt engineering. Here's what's coming in the next nine lessons:</p>
+  <p class="section-text"><strong>Lesson 2:</strong> System prompts and personas — how to set the AI's identity before the conversation starts.</p>
+  <p class="section-text"><strong>Lesson 3:</strong> Chain-of-thought — making the AI show its reasoning for dramatically better accuracy.</p>
+  <p class="section-text"><strong>Lesson 4:</strong> Few-shot examples — showing instead of telling, the most underused technique.</p>
+  <p class="section-text"><strong>Lessons 5-10:</strong> Structured output, prompt chaining, context management, debugging, domain patterns, and building your reusable prompt library.</p>
+  <p class="section-text">Each lesson builds on the previous one. By the end, you'll have a complete professional skillset for working with AI.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Perspective</span>
+  <h2 class="section-title">Prompt Engineering Is Communication Design</h2>
+  <p class="section-text">At its core, prompt engineering is a communication problem. You're translating a goal in your head into language that activates the right behavior in an AI system. This is the same challenge that designers face when creating user interfaces, that managers face when delegating tasks, and that writers face when crafting instructions.</p>
+  <p class="section-text">The people who become great at prompt engineering are rarely the most technical. They're the clearest communicators. They can articulate exactly what they want, anticipate misunderstandings, and specify boundaries. If you've ever written a clear bug report, a good creative brief, or a detailed project specification — you already have the foundation.</p>
+  <p class="section-text">The five levers are your communication toolkit. Role eliminates identity ambiguity. Context eliminates knowledge gaps. Task eliminates goal ambiguity. Format eliminates output ambiguity. Constraints eliminate behavioral ambiguity. Together, they close every gap between what you imagine and what the AI produces.</p>
+  <p class="section-text">That's the skill we're building. Not memorizing tricks — developing a way of thinking about AI communication that works across any model, any task, any domain. Let's start.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">The AI Isn't Bad — Your Prompt Was Incomplete</h2>
   <p class="section-text">This course will teach you to write prompts that work on the first try. No more copy-pasting five times and hoping for the best. Every lesson builds a concrete skill you can use immediately.</p>

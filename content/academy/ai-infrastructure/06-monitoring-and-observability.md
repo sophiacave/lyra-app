@@ -56,6 +56,125 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Implementation</span>
+  <h2 class="section-title">Building an AI Monitoring Dashboard</h2>
+  <p class="section-text">You don't need expensive observability platforms to monitor AI systems effectively. A Supabase table, a few SQL views, and a cron-triggered edge function give you everything you need.</p>
+
+<div class="code-block"><div class="code-label">SQL — Monitoring Schema and Views</div>
+<pre><code class="language-sql">-- Core operations log table
+CREATE TABLE ai_operations (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  ts TIMESTAMPTZ DEFAULT now(),
+  user_id UUID,
+  operation TEXT NOT NULL,     -- 'chat', 'embed', 'search', 'classify'
+  provider TEXT NOT NULL,      -- 'anthropic', 'openai', 'huggingface'
+  model TEXT,
+  input_tokens INT DEFAULT 0,
+  output_tokens INT DEFAULT 0,
+  latency_ms INT NOT NULL,
+  cost_usd NUMERIC(10,6) DEFAULT 0,
+  status TEXT DEFAULT 'ok',    -- 'ok', 'error', 'timeout', 'rate_limited'
+  cache_hit BOOLEAN DEFAULT false,
+  metadata JSONB DEFAULT '{}'
+);
+
+-- Real-time health dashboard view
+CREATE VIEW ai_health_dashboard AS
+SELECT
+  date_trunc('hour', ts) AS hour,
+  COUNT(*) AS total_ops,
+  COUNT(*) FILTER (WHERE status = 'ok') AS successes,
+  COUNT(*) FILTER (WHERE status = 'error') AS errors,
+  COUNT(*) FILTER (WHERE cache_hit) AS cache_hits,
+  ROUND(100.0 * COUNT(*) FILTER (WHERE cache_hit) / COUNT(*), 1) AS cache_rate,
+  ROUND(AVG(latency_ms)) AS avg_latency,
+  percentile_cont(0.95) WITHIN GROUP (ORDER BY latency_ms) AS p95_latency,
+  SUM(cost_usd)::NUMERIC(10,4) AS total_cost
+FROM ai_operations
+WHERE ts > now() - interval '24 hours'
+GROUP BY 1
+ORDER BY 1 DESC;
+
+-- Provider health comparison
+CREATE VIEW provider_health AS
+SELECT
+  provider,
+  COUNT(*) AS total_calls,
+  ROUND(100.0 * COUNT(*) FILTER (WHERE status != 'ok') / COUNT(*), 2) AS error_rate,
+  ROUND(AVG(latency_ms)) AS avg_latency_ms,
+  SUM(cost_usd)::NUMERIC(10,4) AS total_cost
+FROM ai_operations
+WHERE ts > now() - interval '1 hour'
+GROUP BY provider;</code></pre>
+</div>
+
+  <p class="section-text">These views give you instant answers to the most important questions: How healthy is each provider? What's my cache hit rate? Am I spending more than expected? The <code>p95_latency</code> metric is especially important — it tells you what the slowest 5% of your users experience.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Automation</span>
+  <h2 class="section-title">Automated Alert Edge Function</h2>
+  <p class="section-text">Monitoring is useless if nobody looks at it. Automated alerts ensure you know about problems within minutes, not hours.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Alert Edge Function (runs on cron)</div>
+<pre><code class="language-typescript">import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+);
+
+Deno.serve(async () => {
+  const alerts: string[] = [];
+
+  // Check error rate (last 15 minutes)
+  const { data: errors } = await supabase
+    .from("ai_operations")
+    .select("status", { count: "exact" })
+    .gte("ts", new Date(Date.now() - 15 * 60_000).toISOString());
+
+  const errorCount = errors?.filter(e => e.status === "error").length ?? 0;
+  const totalCount = errors?.length ?? 1;
+  const errorRate = errorCount / totalCount;
+
+  if (errorRate > 0.05) {
+    alerts.push(`Error rate ${(errorRate * 100).toFixed(1)}% (threshold: 5%)`);
+  }
+
+  // Check daily spend vs average
+  const { data: costData } = await supabase
+    .from("ai_health_dashboard")
+    .select("total_cost")
+    .limit(24);
+
+  const todayCost = costData?.[0]?.total_cost ?? 0;
+  const avgCost = costData?.slice(1)
+    .reduce((sum: number, r: any) => sum + (r.total_cost ?? 0), 0)
+    / Math.max(costData?.length ?? 1 - 1, 1);
+
+  if (todayCost > avgCost * 2) {
+    alerts.push(`Hourly cost $${todayCost} is 2x+ the average $${avgCost.toFixed(4)}`);
+  }
+
+  // Send alerts if any triggered
+  if (alerts.length > 0) {
+    await fetch(Deno.env.get("SLACK_WEBHOOK_URL")!, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        text: `AI System Alerts:\n${alerts.map(a => `• ${a}`).join("\n")}`,
+      }),
+    });
+  }
+
+  return new Response(JSON.stringify({ alerts }), { status: 200 });
+});</code></pre>
+</div>
+
+  <p class="section-text">Schedule this function to run every 5-15 minutes using Supabase's cron extension (<code>pg_cron</code>). It checks error rates and cost anomalies, sending alerts to Slack only when thresholds are breached — keeping alert volume low and signal quality high.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Alerts</span>
   <h2 class="section-title">Alerting That Matters</h2>
   <p class="section-text"><strong>Cost alerts:</strong> Daily spend exceeds 2x the average. This catches runaway usage before the monthly bill arrives.</p>

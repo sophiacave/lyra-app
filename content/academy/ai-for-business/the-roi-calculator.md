@@ -43,6 +43,73 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Cost Categories</span>
+  <h2 class="section-title">Every cost you need to include.</h2>
+  <p class="section-text">Most ROI calculations fail because they only count the subscription fee. The real cost of an AI tool includes at least seven line items. Miss any of them and your ROI projection will be wrong — usually in the optimistic direction, which leads to disappointment when the numbers come in.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:.75rem">
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#34d399;font-weight:600;min-width:180px;font-size:.85rem">1. Subscription Fee</span><span style="color:#a1a1aa;font-size:.85rem">The sticker price. Monthly or annual. Check whether pricing is per user or per organization.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#8b5cf6;font-weight:600;min-width:180px;font-size:.85rem">2. Setup Time</span><span style="color:#a1a1aa;font-size:.85rem">Hours spent configuring, integrating, and testing the tool before it is productive. Typically 4-20 hours.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#fb923c;font-weight:600;min-width:180px;font-size:.85rem">3. Training Time</span><span style="color:#a1a1aa;font-size:.85rem">Hours spent teaching your team to use the tool effectively. Include practice time, not just the tutorial.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:180px;font-size:.85rem">4. Learning Curve Dip</span><span style="color:#a1a1aa;font-size:.85rem">Productivity drops 10-30% in the first 2-4 weeks as people learn. Factor this temporary loss into your timeline.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:180px;font-size:.85rem">5. Integration Cost</span><span style="color:#a1a1aa;font-size:.85rem">If the tool needs to connect to your CRM, email, or other systems, include developer time or Zapier fees.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#34d399;font-weight:600;min-width:180px;font-size:.85rem">6. Prompt Maintenance</span><span style="color:#a1a1aa;font-size:.85rem">Time spent refining prompts, updating templates, and adjusting workflows as your needs evolve. Typically 1-2 hours/week ongoing.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#8b5cf6;font-weight:600;min-width:180px;font-size:.85rem">7. Quality Review</span><span style="color:#a1a1aa;font-size:.85rem">Time spent reviewing and editing AI output before it is used. This is often the largest hidden cost. Track it.</span></div>
+    </div>
+  </div>
+
+  <p class="section-text">Rule of thumb: add 25-35% to the sticker price to get the true first-year cost. In year two, setup, training, and learning curve costs disappear, and the ROI improves significantly. This is why AI investments look marginal at 90 days but compelling at 12 months.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Worked Examples</span>
+  <h2 class="section-title">Three ROI calculations for real business scenarios.</h2>
+  <p class="section-text">Theory becomes useful when you see it applied. Here are three complete ROI calculations for different business types, including all seven cost categories. Use whichever is closest to your situation as a template.</p>
+
+  <p class="section-text"><strong>Example 1: Solo consultant using Claude Pro for proposal writing.</strong></p>
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.7">
+    <div>Tool cost: $20/month ($240/year)</div>
+    <div>Task: Writing proposals — currently 8 hours/week</div>
+    <div>Billable rate: $150/hour</div>
+    <div>Automation rate (conservative): 35%</div>
+    <div>Hours saved: 8 x 0.35 = 2.8 hours/week</div>
+    <div>Annual value: 2.8 x $150 x 52 = <span style="color:#34d399;font-weight:600">$21,840</span></div>
+    <div>Hidden costs: 10 hours setup ($1,500) + 1 hr/week prompt maintenance ($7,800) = $9,300</div>
+    <div>Net year 1 savings: $21,840 - $240 - $9,300 = <span style="color:#34d399;font-weight:600">$12,300</span></div>
+    <div>ROI: 5,125% on tool cost alone. 99% including all hidden costs.</div>
+    <div>Payback: Under 2 weeks.</div>
+  </div>
+
+  <p class="section-text"><strong>Example 2: 10-person marketing agency using AI writing + automation.</strong></p>
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.7">
+    <div>Tool costs: Claude Team $30/user x 10 = $300/mo + Zapier $69/mo = $369/mo ($4,428/year)</div>
+    <div>Tasks: Content drafting (40 hrs/week team total) + workflow automation (15 hrs/week)</div>
+    <div>Average employee cost: $35/hour</div>
+    <div>Automation rate: 40% content, 60% workflow</div>
+    <div>Hours saved: (40 x 0.4) + (15 x 0.6) = 16 + 9 = 25 hours/week</div>
+    <div>Annual value: 25 x $35 x 52 = <span style="color:#34d399;font-weight:600">$45,500</span></div>
+    <div>Hidden costs: 80 hours setup ($2,800) + training 10 people ($3,500) + review time ($9,100) = $15,400</div>
+    <div>Net year 1 savings: $45,500 - $4,428 - $15,400 = <span style="color:#34d399;font-weight:600">$25,672</span></div>
+    <div>ROI: 580% on tool cost. 129% including all costs.</div>
+    <div>Payback: About 3 months.</div>
+  </div>
+
+  <p class="section-text"><strong>Example 3: E-commerce company using AI for customer support.</strong></p>
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.7">
+    <div>Tool cost: Intercom Fin $39/seat x 3 agents = $117/mo ($1,404/year)</div>
+    <div>Current support: 3 agents handling 500 tickets/week, 35 hrs/week each = 105 hrs/week total</div>
+    <div>Agent cost: $22/hour</div>
+    <div>AI deflection rate: 50% (250 tickets handled automatically)</div>
+    <div>Hours saved: 52.5 hours/week (equivalent to 1.5 full-time agents)</div>
+    <div>Annual value: 52.5 x $22 x 52 = <span style="color:#34d399;font-weight:600">$60,060</span></div>
+    <div>Hidden costs: 40 hours KB setup ($880) + training ($660) + monitoring ($5,720) = $7,260</div>
+    <div>Net year 1 savings: $60,060 - $1,404 - $7,260 = <span style="color:#34d399;font-weight:600">$51,396</span></div>
+    <div>ROI: 3,661% on tool cost. 593% including all costs. Payback: Under 2 weeks.</div>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 2</span>
   <h2 class="section-title">Key concepts.</h2>
   <p class="section-text">Before you calculate ROI for your own business, make sure these four concepts are clear. They are the difference between an accurate projection and wishful thinking.</p>

@@ -87,6 +87,58 @@ I'll correct anything that's off before we start writing.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Template</span>
+  <h2 class="section-title">The complete voice document template.</h2>
+  <p class="section-text">Copy this template, fill it in, and save it somewhere you can paste at the start of every AI session. This is the single most impactful thing you can do to improve AI output quality:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Template — Brand Voice Document</div>
+<pre style="margin:0;color:#e5e5e5"><code>BRAND VOICE DOCUMENT — [Your Name / Brand]
+
+TONE (pick 3-5 adjectives):
+[e.g., Direct, warm, occasionally irreverent, confident
+but not arrogant, conversational]
+
+WRITING RULES:
+- Sentence length: [e.g., mix short punchy with medium]
+- Paragraph length: [e.g., 2-3 sentences max]
+- Contractions: [yes/no]
+- Jargon policy: [e.g., only if defined immediately]
+- Sentence fragments: [OK for emphasis? yes/no]
+- Formatting: [e.g., use bold for key phrases, headers
+  every 200-300 words]
+
+KILL LIST (never use these words/phrases):
+[e.g., dive deep, leverage, unlock, game-changer,
+in today's fast-paced world, let's unpack this,
+at the end of the day, synergy, circle back]
+
+SIGNATURE PHRASES (words/patterns I use often):
+[e.g., "Here's the thing," "That's the move,"
+"Not the vibe," short paragraphs for emphasis]
+
+AUDIENCE:
+[Who they are, what they know, what turns them off]
+
+SAMPLE WRITING (paste 3-5 paragraphs of your best):
+[Your actual writing samples here]</code></pre>
+</div>
+
+  <p class="section-text">The kill list is especially powerful. AI will respect explicit bans far better than vague instructions like "don't be too corporate." If you know the words that make your skin crawl when you read AI output, name them specifically and they will disappear from the output.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Voice consistency across different content types.</h2>
+  <p class="section-text">Your voice stays the same everywhere, but its expression shifts depending on the context. You are still you on Twitter and in a blog post — but the cadence, depth, and formality adjust. Here is how to handle that:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Social media voice:</strong> Your most casual, punchy self. Shorter sentences. More attitude. Contractions everywhere. This is you talking to a friend in a crowded room — you need to be loud, clear, and memorable in a few words.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Blog/newsletter voice:</strong> Your teaching self. Still conversational, but with more room for nuance, stories, and depth. This is you sitting across a coffee table from someone who has 5-10 minutes to listen.</p>
+  <p class="section-text"><strong style="color:var(--green)">Sales page voice:</strong> Your most persuasive self. Still honest, still you — but with clear structure, benefit-focused language, and confident authority. This is not "salesy" — it is you genuinely believing in what you are offering and communicating that clearly.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Email voice:</strong> Your most intimate self. Emails land in personal inboxes, so they should feel personal. Write like you are sending a message to one specific person, not broadcasting to a list.</p>
+  <p class="section-text">Add platform-specific notes to your voice document: <em>"On Twitter, I'm punchier and more opinionated. In emails, I'm warmer and more personal. In blog posts, I go deeper with more examples."</em> This gives AI the nuance to adjust without losing your core identity.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">Five things that kill your voice in AI content.</h2>
   <p class="section-text"><strong>1. Accepting the first draft.</strong> AI's first attempt is never its best. Ask for revisions: "This is too formal. Make it sound like I'm talking to a friend over coffee."</p>

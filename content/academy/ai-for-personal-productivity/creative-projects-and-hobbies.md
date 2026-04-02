@@ -90,6 +90,86 @@ free: false
   <p class="section-text">This removes the biggest barrier to new hobbies: not knowing where to start. AI gives you the on-ramp so you can just start doing the fun part.</p>
 </div>
 
+<!-- PROJECT PLANNING PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Project Planning</span>
+  <h2 class="section-title">Turn creative ideas into actionable project plans.</h2>
+  <p class="section-text">The gap between "I have an idea" and "I'm actually working on it" is where most creative projects die. AI bridges that gap by turning vague inspiration into concrete next steps.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The creative project roadmap</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I want to [CREATIVE PROJECT — write a children's book, build a bookshelf, record a song, paint a mural]. I have about [HOURS] per week to work on it. I'd like to finish in [TIMEFRAME]. Break this into phases with specific milestones. What should I do in week 1 vs. the final week?"</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">The materials and budget planner</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I want to start [HOBBY/PROJECT]. My total budget is $[AMOUNT]. Give me a materials list with estimated costs, sorted from essential to nice-to-have. Suggest where to buy things affordably. Tell me what I can skip as a beginner and add later."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">The creative constraint prompt</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I want to do a creative project but I'm short on time and budget. I have [MATERIALS YOU OWN], [TIME AVAILABLE], and [SPACE AVAILABLE]. Give me 5 project ideas that work within these exact constraints. Rank them by how satisfying the finished product will be."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOBBY-SPECIFIC EXAMPLES -->
+<div class="lesson-section">
+  <span class="section-label">Hobby Deep Dives</span>
+  <h2 class="section-title">AI prompts tailored to specific hobbies and creative pursuits.</h2>
+  <p class="section-text">Different hobbies need different kinds of help. Here are specific, ready-to-use prompts organized by hobby type.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">Writing and storytelling</p>
+      <p style="font-size:0.9rem">"I'm writing a [TYPE — short story, blog post, memoir, poem]. The theme is [THEME]. I'm stuck on [SPECIFIC PART — the ending, a character's motivation, the opening hook]. Give me 5 different directions I could take it, with a one-sentence description of each."</p>
+      <p style="font-size:0.9rem;margin-top:0.5rem">"I wrote this paragraph but something feels off: [PASTE TEXT]. What's not working? Give me 3 ways to rewrite it, each with a different energy."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">Visual arts and crafts</p>
+      <p style="font-size:0.9rem">"I'm a beginner at [watercolor/knitting/pottery/digital art]. I just finished my first project and it looks [DESCRIPTION]. What are the 3 most common beginner mistakes with this craft, and what should I practice next to improve the fastest?"</p>
+      <p style="font-size:0.9rem;margin-top:0.5rem">"Give me a 30-day creative challenge for [CRAFT]. One small project or exercise per day, getting progressively harder. Include materials needed for each."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">Music</p>
+      <p style="font-size:0.9rem">"I play [INSTRUMENT] at a [LEVEL] level. I want to learn a song that sounds impressive but is actually achievable for my skill level. I like [GENRES]. Suggest 5 songs and explain why each one is a good fit for my level."</p>
+      <p style="font-size:0.9rem;margin-top:0.5rem">"I want to write a simple song. Give me a chord progression, a song structure (verse-chorus-verse), and some lyric-writing prompts around the theme of [THEME]."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">Cooking as a creative hobby</p>
+      <p style="font-size:0.9rem">"I want to learn to cook [CUISINE] at home. I'm comfortable with basic cooking but I've never made [SPECIFIC DISH]. Walk me through a beginner-friendly version, explain the techniques involved, and tell me what equipment I actually need vs. what's optional."</p>
+    </div>
+    <div>
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">DIY and home projects</p>
+      <p style="font-size:0.9rem">"I want to build [PROJECT — a floating shelf, a raised garden bed, a desk organizer]. I have [TOOLS]. My skill level with tools is [LEVEL]. Give me a step-by-step plan with measurements, a materials list with costs, and highlight any steps where I should be extra careful."</p>
+    </div>
+  </div>
+</div>
+
+<!-- CREATIVE BLOCKS -->
+<div class="lesson-section">
+  <span class="section-label">Creative Blocks</span>
+  <h2 class="section-title">When you're stuck, AI can help you find the way through.</h2>
+  <p class="section-text">Creative blocks aren't about lack of talent — they're about getting stuck in your own head. AI provides an outside perspective that breaks the loop. Here are specific prompts for different types of creative blocks.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:0.75rem;padding:0.75rem;background:var(--bg);border-radius:8px">
+      <p style="font-size:0.9rem"><strong style="color:var(--orange)">Perfectionism block:</strong> "I keep starting [PROJECT] over because nothing feels good enough. Help me set a 'good enough for now' standard — what does an acceptable first version look like? Give me permission to be messy."</p>
+    </div>
+    <div style="margin-bottom:0.75rem;padding:0.75rem;background:var(--bg);border-radius:8px">
+      <p style="font-size:0.9rem"><strong style="color:var(--purple)">Direction block:</strong> "I have too many ideas for my [PROJECT] and I can't pick one. Here are my options: [LIST]. Help me evaluate each one based on: how excited I'd be to work on it, how realistic it is, and how satisfying the result would be."</p>
+    </div>
+    <div style="margin-bottom:0.75rem;padding:0.75rem;background:var(--bg);border-radius:8px">
+      <p style="font-size:0.9rem"><strong style="color:var(--green)">Inspiration block:</strong> "I want to create something but I have zero ideas. I like [THINGS YOU ENJOY]. I have [MATERIALS/TOOLS]. Give me 10 creative project ideas I've probably never thought of. Surprise me."</p>
+    </div>
+    <div style="padding:0.75rem;background:var(--bg);border-radius:8px">
+      <p style="font-size:0.9rem"><strong style="color:var(--blue)">Skill block:</strong> "I know what I want to create but I don't have the skills yet. I want to [GOAL]. What's the minimum I need to learn to make a basic version? Give me a focused learning plan — not everything about [CRAFT], just enough to finish this one project."</p>
+    </div>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>

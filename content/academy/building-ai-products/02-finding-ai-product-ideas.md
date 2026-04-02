@@ -68,6 +68,47 @@ free: true
   <p class="section-text"><strong>The "just a prompt" trap.</strong> If your entire idea is a system prompt wrapped in a UI, a competitor can clone you in an afternoon. Ideas need a data moat, a workflow advantage, or a network effect.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The Opportunity Scoring Matrix</h2>
+  <p class="section-text">Not all ideas are equal. Score each candidate on five dimensions, each rated 1-5. Any idea scoring below 15 total probably isn't worth building.</p>
+  <p class="section-text"><strong>Pain intensity (1-5):</strong> How much does this problem hurt? A score of 1 means "mild annoyance." A score of 5 means "people lose sleep over this." Scoring tip: if you can find forum posts, tweets, or Reddit threads where people vent about this exact problem, that's a 4 or 5.</p>
+  <p class="section-text"><strong>Frequency (1-5):</strong> How often does the user encounter this problem? Daily problems build habits. Weekly problems build workflows. Monthly problems get forgotten between uses. A daily-use AI product has 30x more retention opportunity than a monthly one.</p>
+  <p class="section-text"><strong>Willingness to pay (1-5):</strong> Is the user already spending money to solve this? Existing spend is the strongest signal. If they pay a freelancer $200/month for this, they'll pay you $49/month without blinking. If they currently solve it for free with a workaround, pricing gets harder.</p>
+  <p class="section-text"><strong>AI advantage (1-5):</strong> How much better is the AI solution compared to traditional software? If a rules-based script can do 90% of the job, AI isn't adding much. If the task requires judgment, pattern recognition, or natural language understanding, AI creates a genuine step change.</p>
+  <p class="section-text"><strong>Market size (1-5):</strong> How many people share this problem? A brilliant product for 500 people is a hobby. A decent product for 500,000 people is a business. Estimate total addressable market before you start building.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Method</span>
+  <h2 class="section-title">The "Day in the Life" Research Method</h2>
+  <p class="section-text">The richest AI product ideas come from observing how people actually work — not from brainstorming sessions. Shadow a potential user for a full workday. Watch what they do, what tools they switch between, where they copy-paste, where they sigh.</p>
+  <p class="section-text"><strong>Step 1:</strong> Pick a specific role — content marketer, recruiter, accountant, customer support rep. Not a generic "business person." Specificity reveals problems that generality hides.</p>
+  <p class="section-text"><strong>Step 2:</strong> Document every task they perform in a four-hour window. Time each one. Note which tasks require creativity (leave these alone) and which are mechanical (these are your targets).</p>
+  <p class="section-text"><strong>Step 3:</strong> For each mechanical task, ask: "Could AI do 80% of this with the information already available?" If yes, you have a candidate. Bonus points if the task involves converting information from one format to another — that's AI's sweet spot.</p>
+  <p class="section-text"><strong>Step 4:</strong> Calculate the dollar value. If the person earns $35/hour and spends 90 minutes daily on a task AI could handle, that's $52.50/day or about $1,100/month of recoverable time. Now you know both the problem and the price ceiling.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">Industry-Specific Goldmines</h2>
+  <p class="section-text">Some industries have dramatically higher concentrations of AI-solvable problems. These are industries drowning in unstructured text, repetitive analysis, or manual classification.</p>
+  <p class="section-text"><strong>Legal:</strong> Contract review, clause extraction, case law research, compliance checking. Lawyers bill $300-800/hour and spend 40% of their time on tasks an AI could accelerate dramatically. Even a tool that saves 5 hours per week justifies a $500/month subscription.</p>
+  <p class="section-text"><strong>Healthcare administration:</strong> Not diagnosis (too risky) but the paperwork around it. Prior authorizations, insurance coding, medical record summarization, patient intake forms. The administrative burden in healthcare is staggering — and very solvable.</p>
+  <p class="section-text"><strong>Real estate:</strong> Property descriptions, market analysis summaries, contract comparison, lead qualification. Agents spend hours writing listings and analyzing comps. AI can reduce this to minutes.</p>
+  <p class="section-text"><strong>E-commerce:</strong> Product descriptions at scale, review analysis, inventory categorization, customer email responses. Any business with 1,000+ SKUs is doing enormous amounts of repetitive writing that AI can handle.</p>
+  <p class="section-text"><strong>Education:</strong> Personalized learning paths, automated grading of written work, study guide generation, accessibility accommodations. The one-size-fits-all model is breaking — AI enables true personalization at scale.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Insight</span>
+  <h2 class="section-title">The "Boring AI" Advantage</h2>
+  <p class="section-text">The sexiest AI ideas — art generation, music composition, video creation — attract the most competition. Hundreds of teams with billions in funding are racing to build these tools. You probably can't outspend them.</p>
+  <p class="section-text">The boring ideas — invoice processing, meeting minutes, data entry, email categorization — have dramatically less competition and dramatically higher willingness to pay. Nobody tweets about their invoice processing tool going viral. But the company making $200K/month from it isn't complaining.</p>
+  <p class="section-text">Boring AI has three structural advantages. First, the bar for "good enough" is lower — an 85% accurate invoice parser still saves hours of manual work. Second, the buyers are businesses with budgets, not consumers with credit card fatigue. Third, the switching costs are higher — once your tool is embedded in an accounting workflow, migration is painful.</p>
+  <p class="section-text">Chase the boring problems. Let the funded startups fight over the glamorous ones.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>List three tasks you did this week that were tedious, repetitive, or required translating information from one format to another. For each one, ask:</p>

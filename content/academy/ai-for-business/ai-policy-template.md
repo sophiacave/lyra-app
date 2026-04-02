@@ -36,6 +36,22 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">What Good Policies Look Like</span>
+  <h2 class="section-title">Five characteristics of policies people actually follow.</h2>
+  <p class="section-text">Writing a policy is easy. Writing one that people read, understand, and follow is hard. The difference is not legal language — it is structure, clarity, and practicality. Here are the five characteristics that separate a policy that changes behavior from a policy that collects dust.</p>
+
+  <p class="section-text"><strong>1. Short enough to read in one sitting.</strong> If your AI policy is longer than 3 pages, most employees will not finish it. Target 2 pages of core policy with appendices for tool lists, approval forms, and reference material. The appendices can be long. The policy itself must be scannable.</p>
+
+  <p class="section-text"><strong>2. Written in plain language.</strong> If employees need a lawyer to understand it, they will not follow it. Replace "notwithstanding the provisions herein" with "regardless of other rules in this policy." Every sentence should be understandable by the newest person on your team.</p>
+
+  <p class="section-text"><strong>3. Specific about what is allowed, not just what is banned.</strong> Most policies focus on prohibitions. The best ones also include explicit permissions — "you are encouraged to use AI for these tasks" — because employees who are unsure will default to not using AI at all. Lost productivity from over-caution is a real cost.</p>
+
+  <p class="section-text"><strong>4. Updated quarterly.</strong> AI tools change every month. A policy written in January may reference tools that no longer exist by June. Build a quarterly review into the policy itself: "This policy is reviewed and updated every 90 days by [role]. Last review: [date]."</p>
+
+  <p class="section-text"><strong>5. Communicated, not just distributed.</strong> Sending a PDF is not communication. Walk your team through the policy in a 30-minute meeting. Answer questions. Give examples. Share the "why" behind each rule. People follow rules they understand the reason for.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The 8 Essential Sections</span>
   <h2 class="section-title">Every AI policy needs these eight pieces.</h2>
   <p class="section-text">Flip each card to understand what each section covers and see a key clause example you can adapt. These sections were developed by reviewing AI policies from 50+ companies across industries and identifying the universal requirements every business faces — regardless of size or sector.</p>
@@ -74,6 +90,49 @@ Keep the language clear and specific. No legalese. This should be readable by an
 <div class="lesson-section">
   <span class="section-label">Match Sections to Scenarios</span>
   <h2 class="section-title">Every incident has a policy section that prevents it.</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Example Clauses</span>
+  <h2 class="section-title">Copy-paste clauses for each section.</h2>
+  <p class="section-text">These are ready-to-use clause templates for each of the 8 sections. Copy them into your policy document, replace the bracketed placeholders with your company specifics, and you have a working first draft in 15 minutes.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="margin-bottom:1.25rem">
+      <div style="color:#34d399;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Purpose Clause</div>
+      <div style="color:#a1a1aa;font-size:.85rem;line-height:1.6">"This policy establishes guidelines for the responsible use of artificial intelligence tools at [Company Name]. It applies to all employees, contractors, interns, and third-party vendors performing work on behalf of [Company Name], effective [Date]. The goal is to encourage productive AI use while protecting company data, client relationships, and brand reputation."</div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <div style="color:#8b5cf6;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Acceptable Use Clause</div>
+      <div style="color:#a1a1aa;font-size:.85rem;line-height:1.6">"Employees are encouraged to use approved AI tools for: drafting internal and external communications, summarizing documents and meeting notes, generating first drafts of marketing content, automating data formatting and entry tasks, and research and competitive analysis. Approved tools are listed in Appendix A and updated quarterly."</div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <div style="color:#ef4444;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Prohibited Use Clause</div>
+      <div style="color:#a1a1aa;font-size:.85rem;line-height:1.6">"The following uses of AI tools are prohibited without exception: inputting customer personally identifiable information (PII) including names, emails, phone numbers, or financial data; uploading proprietary source code, trade secrets, or unreleased product information; making final hiring, firing, or legal decisions based solely on AI output; using AI to impersonate clients, colleagues, or public figures."</div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <div style="color:#fb923c;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Data Handling Clause</div>
+      <div style="color:#a1a1aa;font-size:.85rem;line-height:1.6">"Before inputting any data into an AI tool, employees must verify: (1) the tool is on the approved list, (2) the data does not contain customer PII or confidential business information as defined in our Data Classification Guide, and (3) the tool provider has confirmed in writing that inputs are not used for model training. When in doubt, anonymize data before input or consult [IT/Legal contact]."</div>
+    </div>
+    <div>
+      <div style="color:#38bdf8;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Quality Standards Clause</div>
+      <div style="color:#a1a1aa;font-size:.85rem;line-height:1.6">"All AI-generated content intended for external use — including client deliverables, legal documents, financial reports, public communications, and marketing materials — must be reviewed and approved by a qualified human employee before distribution. The reviewer must verify factual accuracy, brand voice consistency, and compliance with applicable regulations. AI output alone does not meet [Company Name] quality standards."</div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Implementation Roadmap</span>
+  <h2 class="section-title">The 30-day policy rollout plan.</h2>
+  <p class="section-text">You have the sections. You have the clauses. Now you need a timeline. Trying to launch a complete AI policy in one day leads to a document nobody understands. This 30-day plan breaks rollout into manageable phases.</p>
+
+  <p class="section-text"><strong>Week 1: Draft and review.</strong> Write the policy using the 8 sections and the prompt template from this lesson. Have your legal contact review it for regulatory compliance. Have one non-technical employee read it and flag anything confusing. If they cannot understand a sentence, rewrite it.</p>
+
+  <p class="section-text"><strong>Week 2: Tool audit and approved list.</strong> Survey your team to discover which AI tools are already in use. You will be surprised — most companies find 3-5 tools being used without anyone's knowledge. Evaluate each one against your data handling and approval criteria. Build Appendix A: the approved tools list.</p>
+
+  <p class="section-text"><strong>Week 3: Team training.</strong> Hold a 30-minute all-hands meeting to walk through the policy. Cover: what is allowed, what is not, where to find the approved tools list, how to request a new tool, and what to do if they are unsure about a specific use case. Record the meeting for future hires.</p>
+
+  <p class="section-text"><strong>Week 4: Go live and monitor.</strong> Distribute the final policy. Set a calendar reminder for 90-day review. For the first 30 days after go-live, collect questions and edge cases from employees — these become your FAQ addendum and highlight gaps in the original document.</p>
 </div>
 
 <div class="lesson-section">

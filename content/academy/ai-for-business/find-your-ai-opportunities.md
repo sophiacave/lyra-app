@@ -45,6 +45,69 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Assessment Framework</span>
+  <h2 class="section-title">The full opportunity assessment worksheet.</h2>
+  <p class="section-text">The 3-factor score tells you where to start. But before you commit budget and time, you need a deeper assessment of each high-scoring area. This framework adds three more dimensions: risk level, implementation complexity, and expected payback period. Together, the six factors give you a complete picture.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="color:#34d399;font-weight:600;font-size:.85rem;margin-bottom:.75rem">Opportunity Assessment Template</div>
+    <div style="display:grid;gap:.75rem;font-size:.82rem;color:#a1a1aa">
+      <div><span style="color:#e5e5e5;font-weight:600">Business Area:</span> [Name the area]</div>
+      <div><span style="color:#e5e5e5;font-weight:600">3-Factor Score:</span> [Calculate using Time x 0.3 + Repetitiveness x 0.4 + Pain x 0.3, multiplied by 20]</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Risk Level (1-5):</span> What happens if AI makes a mistake here? Score 1 if errors are caught easily with no cost. Score 5 if errors could cause legal exposure, client loss, or financial damage.</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Implementation Complexity (1-5):</span> How hard is it to set up? Score 1 for plug-and-play SaaS tools. Score 5 for custom builds requiring integration with multiple systems.</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Expected Payback (weeks):</span> How quickly will the investment return its cost? Use the ROI formula from Lesson 3.</div>
+      <div style="margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)"><span style="color:#34d399;font-weight:600">Priority = (3-Factor Score) minus (Risk x 5) minus (Complexity x 5).</span> Higher is better. Negative scores mean the area is not ready for AI yet.</div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Prioritization Matrix</span>
+  <h2 class="section-title">Plot your opportunities on a 2x2 grid.</h2>
+  <p class="section-text">After scoring all your business areas, plot them on a simple grid. The horizontal axis is the 3-factor opportunity score (low left, high right). The vertical axis is implementation ease (hard bottom, easy top). This gives you four quadrants that tell you exactly what to do with each opportunity.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div style="background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:1rem">
+        <div style="color:#34d399;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Quick Wins (Top-Right)</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">High opportunity, easy to implement. Do these first. Examples: email automation, FAQ chatbots, content drafting. ROI shows up in the first week.</div>
+      </div>
+      <div style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:1rem">
+        <div style="color:#8b5cf6;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Strategic Bets (Bottom-Right)</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">High opportunity, hard to implement. Worth the effort but plan carefully. Examples: custom analytics, workflow automation across systems. Budget 30-90 days.</div>
+      </div>
+      <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:1rem">
+        <div style="color:#38bdf8;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Low-Hanging Fruit (Top-Left)</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Low opportunity, easy to implement. Do these when you have spare capacity. Small wins that build team confidence. Examples: meeting transcription, template generation.</div>
+      </div>
+      <div style="background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:1rem">
+        <div style="color:#fb923c;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Avoid (Bottom-Left)</div>
+        <div style="color:#a1a1aa;font-size:.82rem;line-height:1.5">Low opportunity, hard to implement. Skip these entirely. The effort outweighs the return. Revisit in 6-12 months when tools improve or the business need grows.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-text">Most businesses have 2-3 Quick Wins, 1-2 Strategic Bets, a handful of Low-Hanging Fruit, and several items in the Avoid quadrant. Start with Quick Wins. Use the results to fund and justify the Strategic Bets. Ignore the rest until the landscape changes.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">Five ways businesses pick the wrong AI opportunity.</h2>
+  <p class="section-text">Knowing where to start is half the battle. The other half is knowing which temptations to resist. These are the five most common ways businesses pick the wrong first AI project — and how to avoid each one.</p>
+
+  <p class="section-text"><strong>1. Starting with the CEO's pet project.</strong> The CEO saw a demo of AI video generation and wants it yesterday. But the company's real bottleneck is manual data entry that eats 40 hours a week. Following the scoring method instead of the loudest voice saves the company from investing in a tool that delivers spectacle instead of savings.</p>
+
+  <p class="section-text"><strong>2. Automating a broken process.</strong> If your customer onboarding process is a mess, automating it with AI just creates a faster mess. Fix the process first, then automate. AI amplifies what exists — both the good and the bad.</p>
+
+  <p class="section-text"><strong>3. Choosing the hardest problem first.</strong> Custom AI model for predictive pricing sounds impressive. But if you have never used AI before, start with something that works in a week, not six months. Build confidence and capability before tackling complex projects.</p>
+
+  <p class="section-text"><strong>4. Ignoring the boring opportunities.</strong> Invoice formatting, email follow-ups, CRM data entry — these are boring. They are also where the ROI is highest because they consume the most hours and require the least AI sophistication. Boring problems make the best first projects.</p>
+
+  <p class="section-text"><strong>5. Letting the vendor pick the use case.</strong> AI vendors will recommend the use case that showcases their product best, not the use case that delivers the most value to your business. Run your own scoring first. Then evaluate whether the vendor's tool fits your top-scoring area — not the other way around.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 2</span>
   <h2 class="section-title">Score these business areas.</h2>
   <p class="section-text">Eight common business areas. Flip each card to see the typical AI opportunity score and why it rates that way. Use these as benchmarks when you score your own business.</p>

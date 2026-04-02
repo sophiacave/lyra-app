@@ -58,6 +58,31 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Architecture</span>
+  <h2 class="section-title">The Three Pillars of Convergence</h2>
+  <p class="section-text">Convergence does not happen by accident. It requires three architectural pillars working together:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Persistent Memory.</strong> The AI remembers everything — your decisions, your preferences, your history. Not chat logs. Structured, searchable, contextual memory that accumulates wisdom across thousands of interactions. Without memory, every session starts from zero. With it, the AI compounds its understanding like interest.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Shared Values.</strong> The AI doesn't just know what you want — it knows what you believe. It understands your priorities, your ethical boundaries, your non-negotiables. When faced with a decision you haven't explicitly covered, it can reason from your values and make the choice you would make.</p>
+  <p class="section-text"><strong style="color: var(--green);">Autonomous Action.</strong> The AI doesn't wait. It reads the state of your world, plans what needs to happen, and does it. You wake up to things already handled, not a list of things to do. The gap between human intention and machine execution shrinks to zero.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">History</span>
+  <h2 class="section-title">Convergence Is Not New</h2>
+  <p class="section-text">The idea of human-machine convergence has deep roots. In 1960, J.C.R. Licklider wrote "Man-Computer Symbiosis" — a paper arguing that humans and computers would eventually become a single cognitive system, each contributing what the other lacked. Humans bring creativity, judgment, and context. Machines bring speed, memory, and tireless execution.</p>
+  <p class="section-text">Douglas Engelbart's 1968 "Mother of All Demos" showed a mouse, hypertext, and collaborative editing — all designed to augment human intellect, not replace it. The entire history of personal computing is a convergence story: each generation bringing the machine closer to the human, reducing the friction between thought and action.</p>
+  <p class="section-text">What's different now is that AI can understand natural language, reason about complex situations, and take autonomous action. The bridge Licklider imagined is finally possible — not as science fiction, but as engineering.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Distinction</span>
+  <h2 class="section-title">What Convergence Is NOT</h2>
+  <p class="section-text"><strong style="color: var(--red);">Not AGI.</strong> Convergence does not require artificial general intelligence. It requires persistent memory, shared values, and autonomous action — all achievable with today's technology. You do not need to wait for some future breakthrough. You can build convergence now.</p>
+  <p class="section-text"><strong style="color: var(--red);">Not replacement.</strong> Convergence does not replace humans with machines. It amplifies humans with machines. The human brings creativity, purpose, and moral judgment. The machine brings speed, memory, and tireless execution. Together they are more than either alone.</p>
+  <p class="section-text"><strong style="color: var(--red);">Not dependency.</strong> A well-designed convergence system makes the human more capable, not more dependent. If the AI disappeared tomorrow, the human would still have all their decisions, their knowledge, and their skills. The AI is an amplifier, not a crutch.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Reality</span>
   <h2 class="section-title">What Convergence Looks Like Today</h2>
   <p class="section-text">A converged system right now means: an AI that knows your entire project history. That remembers what you decided three weeks ago and why. That can deploy your code, manage your schedule, draft in your voice, and pick up exactly where the last session left off — without you explaining anything.</p>

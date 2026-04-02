@@ -71,10 +71,71 @@ Include a simple Google Sheets structure I can set up in 10 minutes. Tell me exa
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">The Tracker Template</span>
+  <h2 class="section-title">Your 90-day measurement spreadsheet.</h2>
+  <p class="section-text">Here is the exact structure for tracking all four metrics. Set this up in Google Sheets or Excel in 10 minutes. Fill it in weekly. At 30, 60, and 90 days, the trends will tell you everything you need to know about whether your AI investment is working.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="color:#34d399;font-weight:600;font-size:.85rem;margin-bottom:.75rem">Sheet 1: Weekly Tracking</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:.5rem;font-size:.78rem;color:#a1a1aa;margin-bottom:1rem">
+      <div style="color:#71717a;font-weight:600">Week</div>
+      <div style="color:#71717a;font-weight:600">Hours Saved</div>
+      <div style="color:#71717a;font-weight:600">Units Produced</div>
+      <div style="color:#71717a;font-weight:600">Quality Score</div>
+      <div style="color:#71717a;font-weight:600">Notes</div>
+      <div>Week 1</div><div>3 hrs</div><div>12 posts</div><div>7/10</div><div>Learning curve</div>
+      <div>Week 2</div><div>5 hrs</div><div>18 posts</div><div>7/10</div><div>Prompts improving</div>
+      <div>Week 4</div><div>8 hrs</div><div>24 posts</div><div>8/10</div><div>Workflow stable</div>
+      <div>Week 8</div><div>9 hrs</div><div>28 posts</div><div>8/10</div><div>Full adoption</div>
+      <div>Week 12</div><div>10 hrs</div><div>30 posts</div><div>9/10</div><div>Optimized</div>
+    </div>
+    <div style="color:#8b5cf6;font-weight:600;font-size:.85rem;margin-bottom:.75rem">Sheet 2: Monthly Cost Comparison</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.5rem;font-size:.78rem;color:#a1a1aa;margin-bottom:1rem">
+      <div style="color:#71717a;font-weight:600">Category</div>
+      <div style="color:#71717a;font-weight:600">Before AI</div>
+      <div style="color:#71717a;font-weight:600">After AI</div>
+      <div style="color:#71717a;font-weight:600">Net Change</div>
+      <div>Freelancers</div><div>$3,000</div><div>$800</div><div style="color:#34d399">-$2,200</div>
+      <div>AI Subscriptions</div><div>$0</div><div>$120</div><div style="color:#ef4444">+$120</div>
+      <div>Editor Time</div><div>$0</div><div>$400</div><div style="color:#ef4444">+$400</div>
+      <div style="font-weight:600">Total</div><div style="font-weight:600">$3,000</div><div style="font-weight:600">$1,320</div><div style="color:#34d399;font-weight:600">-$1,680</div>
+    </div>
+    <div style="color:#fb923c;font-weight:600;font-size:.85rem;margin-bottom:.35rem">Sheet 3: Quality Criteria</div>
+    <div style="font-size:.78rem;color:#a1a1aa;line-height:1.6">Define 3-5 quality criteria specific to your output type. Score each on a 1-10 scale per batch. Example for content: (1) factual accuracy, (2) brand voice match, (3) client revision requests, (4) audience engagement metrics, (5) compliance with style guide.</div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">ROI by Department</span>
+  <h2 class="section-title">What good metrics look like in real businesses.</h2>
+  <p class="section-text">Abstract metrics become meaningful when you see what they look like in specific business contexts. Here are benchmark numbers from companies that have been using AI for 90+ days. Use these as targets — not guarantees.</p>
+
+  <p class="section-text"><strong>Content team (5 people):</strong> Time Saved: 8 hrs/week/person. Output Increase: 3x blog volume. Cost Reduced: $2,500/mo (cut freelance budget by 80%). Quality Score: flat — same client satisfaction scores. Net ROI: $2,380/mo after $120/mo tool cost.</p>
+
+  <p class="section-text"><strong>Sales team (8 people):</strong> Time Saved: 5 hrs/week/person on email and CRM updates. Output Increase: 2x outreach volume. Cost Reduced: minimal (no freelancers to cut). Quality Score: improved — response rates up 15% with AI-personalized outreach. Net ROI: $12,000/mo in recovered time value at $75/hr average.</p>
+
+  <p class="section-text"><strong>Support team (3 people):</strong> Time Saved: 12 hrs/week total (AI handles 60% of tickets). Output Increase: 4x ticket resolution capacity. Cost Reduced: avoided hiring a fourth support agent ($4,000/mo). Quality Score: CSAT flat at 4.2/5 — same satisfaction, faster resolution. Net ROI: $3,700/mo net.</p>
+
+  <p class="section-text"><strong>Solo consultant:</strong> Time Saved: 10 hrs/week. Output Increase: 2x proposal volume. Cost Reduced: $500/mo (eliminated virtual assistant for scheduling and follow-ups). Quality Score: improved — proposals win rate up from 25% to 35% with AI research and drafting. Net ROI: $3,250/mo in recovered billable hours at $150/hr.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Match Metrics to Scenarios</span>
   <h2 class="section-title">Every business problem maps to a metric.</h2>
   <p class="section-text">When you are evaluating whether AI is working in a specific area, the first question is always "which metric matters most here?" A customer service team cares most about resolution rate and CSAT — that is Quality Score. A content team under deadline pressure cares about volume — Output Increase. A founder looking at the monthly P&L cares about the bottom line — Cost Reduced. Match the metric to the context or you will measure the wrong thing and draw the wrong conclusion.</p>
 
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">When Metrics Conflict</span>
+  <h2 class="section-title">What to do when the numbers disagree.</h2>
+  <p class="section-text">In a perfect world, all four metrics improve together. In the real world, they often conflict. Here are the three most common conflicts and how to resolve them.</p>
+
+  <p class="section-text"><strong>Conflict 1: Time Saved is up, Quality Score is down.</strong> This is the most common problem. Your team is moving faster but producing worse work. The fix is almost always in the review process — either the edit step is being skipped, or the prompts are too generic. Slow down the volume, fix the process, then scale back up. Never sacrifice quality for speed.</p>
+
+  <p class="section-text"><strong>Conflict 2: Output Increase is up, Cost Reduced is flat.</strong> You are producing more but spending the same. This happens when AI tool costs, editor time, and management overhead absorb the savings from cutting freelancers or reducing hours. The ROI is still real — it lives in Output Increase and Time Saved, not in Cost Reduced. Reframe the conversation: "We produce 3x the content for the same budget" is a compelling story.</p>
+
+  <p class="section-text"><strong>Conflict 3: Cost Reduced is strong, but the team is unhappy.</strong> You cut costs but the experience of using AI is frustrating — tools are unreliable, prompts are finicky, or the edit burden shifted to people who were not prepared for it. This is a sustainability problem. Short-term cost savings that burn out your team will reverse when people leave. Fix the tooling and training before you celebrate the savings.</p>
 </div>
 
 <div class="lesson-section">

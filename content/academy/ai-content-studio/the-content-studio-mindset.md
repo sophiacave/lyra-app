@@ -104,10 +104,57 @@ create should trace back to it.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Common Traps</span>
+  <h2 class="section-title">Five mistakes that keep creators stuck in writer mode.</h2>
+  <p class="section-text"><strong style="color:var(--orange)">Trap 1: Treating AI as a vending machine.</strong> You put in a prompt, get out a finished piece, and publish. This skips strategy, editing, and your own perspective entirely. The output reads like it came from nowhere — because it did. Use AI at every stage, not just the drafting stage.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Trap 2: No content pillars.</strong> Without 3-5 core themes to anchor every piece, your content drifts. One week you write about productivity, the next about cooking, the next about travel. Your audience never knows what to expect. Studios have verticals. You need them too.</p>
+  <p class="section-text"><strong style="color:var(--green)">Trap 3: Perfectionism before publishing.</strong> Studios ship. They edit, they review, they quality-check — but they ship. If your blog post has been in drafts for three weeks because "it's not ready," you are operating as a writer, not a studio. Set a quality bar, meet it, and publish.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Trap 4: No repurposing pipeline.</strong> Every piece of content you create should live in at least three formats. A blog post becomes a Twitter thread, an email, and a carousel. If you're creating and discarding, you're wasting 70% of your effort.</p>
+  <p class="section-text"><strong>Trap 5: Ignoring data.</strong> A studio reviews what worked. It checks which posts got engagement, which emails got opens, which topics drove traffic. Without a feedback loop, you are guessing. AI can analyze your past performance and tell you exactly what to create more of.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Studio Stack</span>
+  <h2 class="section-title">Tools and systems that make the studio work.</h2>
+  <p class="section-text">A content studio runs on systems, not willpower. Here is the minimum viable stack you need to operate like a studio from day one:</p>
+  <p class="section-text"><strong style="color:var(--orange)">AI assistant:</strong> Claude, ChatGPT, or any model that handles long conversations. This is your strategist, editor, and producer rolled into one. The specific tool matters less than how you use it — which is what this entire course teaches.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Content calendar:</strong> Notion, Google Sheets, Trello, or even a plain text file. The format does not matter. What matters is that you have a single place where every planned piece of content lives with its topic, platform, pillar, and publish date.</p>
+  <p class="section-text"><strong style="color:var(--green)">Prompt library:</strong> A document where you save every prompt that produces great results. Over time, this becomes your most valuable creative asset. Every session starts faster because you are not reinventing the wheel.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Scheduling tool:</strong> Buffer, Later, or native platform schedulers. The studio mindset means content is batched and queued — not posted in real-time while you scramble. Scheduling is what transforms reactive posting into proactive publishing.</p>
+  <p class="section-text"><strong>Voice document:</strong> A reference sheet that tells AI exactly how you communicate. Your tone words, writing rules, sample paragraphs, and a kill list of words you never use. We will build this in Lesson 7, but start thinking about it now.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">From overwhelmed freelancer to content studio in one week.</h2>
+  <p class="section-text">Consider a freelance web designer who posts sporadically on Instagram, has an email list of 200 subscribers, and publishes a blog post every six weeks when inspiration strikes. She spends about 5 hours per week on content but has almost nothing to show for it.</p>
+  <p class="section-text"><strong>Week 1 transformation:</strong> She defines three content pillars (web design trends, client communication tips, freelance business strategy). She uses AI to brainstorm 30 topic ideas mapped to those pillars. She batches 10 social posts, 2 blog outlines, and 1 email in a single 3-hour session. She schedules everything for the next two weeks.</p>
+  <p class="section-text"><strong>The result:</strong> Same 5 hours, but now she has two weeks of consistent, strategically aligned content instead of one rushed post. Her audience sees a recognizable brand forming. Engagement increases because the content connects to clear themes. This is what happens when you stop thinking like a writer and start thinking like a studio.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Rule</span>
   <h2 class="section-title">Your voice is non-negotiable.</h2>
   <p class="section-text">The studio mindset doesn't mean handing everything to AI and walking away. Your perspective, your stories, your weird analogies, your lived experience — that's what makes your content yours. AI is the production team. You're the creative director.</p>
   <p class="section-text">Throughout this course, we'll build systems that amplify your voice, not replace it. Every tool, every workflow, every technique is designed to make <em>you</em> louder, faster, and more consistent — without losing what makes your content worth reading in the first place.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The daily studio operating rhythm.</h2>
+  <p class="section-text">A studio does not work on inspiration. It works on rhythm. Here is a daily operating pattern that takes 60-90 minutes and keeps your content machine running:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Morning (15 min) — Check and engage:</strong> Review comments and messages from yesterday's posts. Respond to anything meaningful. Note what sparked conversations — these are future content ideas. Engagement is not optional; it is how you build community.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Midday (45-60 min) — Create or repurpose:</strong> This is your production block. Either draft new content using your calendar and prompts, or repurpose an existing piece into a new format. AI handles the heavy lifting — you add perspective and polish.</p>
+  <p class="section-text"><strong style="color:var(--green)">Evening (10 min) — Schedule and prep:</strong> Queue tomorrow's content in your scheduling tool. Glance at your calendar for what is coming. This ensures you never wake up scrambling.</p>
+  <p class="section-text">This rhythm compounds. After a month, you will have published more content than most creators publish in a quarter — and it will all be strategically aligned because every piece traces back to your pillars and calendar.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mindset Shift</span>
+  <h2 class="section-title">Perfectionism is the enemy of the studio.</h2>
+  <p class="section-text">Writers agonize. Studios ship. The difference matters because content that lives in your drafts folder helps nobody — not you, not your audience, not your business.</p>
+  <p class="section-text">This does not mean publishing garbage. It means setting a quality bar — "Is this helpful? Does it sound like me? Would I share this with a friend?" — and publishing when the bar is met. A good piece published today beats a perfect piece published never.</p>
+  <p class="section-text">AI helps with this because it compresses the distance between rough idea and publishable piece. What used to take three hours of agonizing now takes 45 minutes of focused co-creation. The speed is a feature, not a shortcut. Use it to publish more, not to stress less while publishing the same amount.</p>
 </div>
 
 <div class="lesson-section">

@@ -78,6 +78,76 @@ For each segment: write a 100-word version that uses their language, addresses t
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Segment Profiles</span>
+  <h2 class="section-title">Building Production-Ready Segment Profiles</h2>
+  <p class="section-text">A segment profile isn't a persona document with a stock photo and a fictional name. It's a reference sheet your pipeline templates consume as input. Every field directly maps to a template variable. No fluff — just data the AI needs to personalize effectively.</p>
+  <p class="section-text">Here's the minimum viable segment profile:</p>
+</div>
+
+<div class="demo-container">
+  <h3>Segment Profile Template</h3>
+  <pre>
+SEGMENT: Marketing Managers (B2B SaaS)
+─────────────────────────────────────────────
+PAIN_POINTS:
+  - "My team can't keep up with the content calendar"
+  - "We need to prove content ROI to leadership"
+  - "Quality drops when we try to increase volume"
+
+ASPIRATIONS:
+  - Build a content engine that scales without hiring
+  - Get promoted by showing measurable pipeline results
+  - Become the team that other departments envy
+
+VOCABULARY:
+  - Uses: "pipeline," "ROI," "KPIs," "stakeholders," "bandwidth"
+  - Avoids: "hustle," "grind," "guru," jargon from other industries
+
+TECHNICAL_LEVEL: Intermediate
+  - Knows basic AI prompting but hasn't built systems
+  - Comfortable with tools like Zapier, HubSpot, Buffer
+  - Needs step-by-step for anything code-adjacent
+
+EXAMPLES_THAT_RESONATE:
+  - SaaS marketing team case studies
+  - Before/after metrics (time saved, output increased)
+  - Manager-to-leadership communication wins
+
+CTA_STYLE: Professional, results-oriented
+  - "See the case study" over "Click here now"
+  - "Get the template" over "Download free PDF"
+  </pre>
+  <p>Every field in this profile maps to a variable in your content templates. When the pipeline runs for this segment, it pulls these values automatically. The content feels personal because it literally references their world.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Dynamic Personalization</span>
+  <h2 class="section-title">Going Beyond Static Segments</h2>
+  <p class="section-text">Static segments are the foundation. Dynamic personalization takes it further by adjusting content based on real-time signals — what the reader clicked last, how far they are in your funnel, what content they've already consumed, even what time zone they're in.</p>
+  <p class="section-text">The pipeline approach: create conditional branches. If the reader has consumed three beginner articles, the next email skips the basics and goes straight to intermediate tactics. If they clicked on a pricing page but didn't convert, the next content piece addresses objections. Same pipeline, different paths based on behavior data.</p>
+  <p class="section-text">You don't need enterprise-grade technology for this. A simple spreadsheet tracking "last content consumed" and "funnel stage" per subscriber, fed into your pipeline as intake variables, produces surprisingly sophisticated personalization. The intelligence is in the template logic, not the tooling.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Personalization Testing</span>
+  <h2 class="section-title">Proving Personalization Actually Works</h2>
+  <p class="section-text">Personalization only matters if it improves outcomes. Run A/B tests: send the generic version to half your list and the personalized version to the other half. Measure open rates, click-through rates, and conversion rates. If the personalized version doesn't win by at least 15%, your segments need refinement or your personalization isn't deep enough.</p>
+  <p class="section-text">Track which personalization variables drive the biggest impact. You might find that changing the examples matters more than changing the tone. Or that pain-point-specific hooks boost opens but don't affect conversions. This data refines your segment profiles and tells you where to invest personalization effort for maximum return.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Personalization Layers</span>
+  <h2 class="section-title">Five Levels of Content Personalization</h2>
+  <p class="section-text">Not all personalization is equal. Understanding the levels helps you decide where to invest effort based on your pipeline maturity and audience data.</p>
+  <p class="section-text"><strong>Level 1: Name and basics.</strong> "Hi {{NAME}}" — the minimum. Better than nothing, but barely personalization. Most email tools handle this natively.</p>
+  <p class="section-text"><strong>Level 2: Segment-aware content.</strong> Different versions for different groups. Marketing managers get case studies; executives get ROI data. This is where pipeline personalization starts to matter.</p>
+  <p class="section-text"><strong>Level 3: Behavior-triggered content.</strong> Content adapts based on what the reader did. Clicked a pricing page? Next email addresses objections. Watched a tutorial video? Next content goes deeper on that topic. Requires behavioral data integration.</p>
+  <p class="section-text"><strong>Level 4: Journey-aware content.</strong> Content changes based on where the reader is in their full lifecycle — not just the marketing funnel, but onboarding, adoption, expansion, renewal. Each stage gets fundamentally different messaging.</p>
+  <p class="section-text"><strong>Level 5: Predictive personalization.</strong> Content is selected based on predicted preferences using engagement patterns, similar-user behavior, and content performance data. This is where AI truly shines — pattern matching across thousands of users to serve the right content to the right person at the right moment.</p>
+  <p class="section-text">Most content operations should target Level 2-3. Levels 4-5 require more data infrastructure but deliver dramatically higher engagement. Build the foundation at Level 2, then graduate as your data matures.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Edge</span>
   <h2 class="section-title">Personalization Is a Competitive Moat</h2>
   <p class="section-text">Most businesses are still blasting the same message to everyone. When your content speaks directly to each segment's reality, you stand out. Not because of gimmicks — because of genuine relevance. That's the kind of advantage that compounds over time as your segment profiles get richer and your templates get sharper.</p>

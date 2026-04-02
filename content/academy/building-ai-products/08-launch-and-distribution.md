@@ -72,6 +72,48 @@ free: false
   <p class="section-text">Plan for sustained distribution, not a single moment. The launch is a starting gun, not the finish line.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Checklist</span>
+  <h2 class="section-title">The Pre-Launch Checklist</h2>
+  <p class="section-text">Launching without preparation is like opening a restaurant before the kitchen is ready. Complete these before you announce anything publicly.</p>
+  <p class="section-text"><strong>Product readiness:</strong> The core workflow works reliably on 20+ test cases. Error messages are clear and helpful. Loading states communicate progress. The happy path is smooth and the failure path is graceful.</p>
+  <p class="section-text"><strong>Infrastructure readiness:</strong> Error tracking is active (Sentry or equivalent). Analytics events fire correctly. Cost monitoring has alerts set. Rate limiting protects against abuse. Your database can handle 10x your expected day-one traffic.</p>
+  <p class="section-text"><strong>Content readiness:</strong> Landing page clearly communicates the magic trick. Pricing page is live with working payment links. Three demo outputs are prepared for social sharing. A "how it works" video or GIF is ready (under 60 seconds).</p>
+  <p class="section-text"><strong>Support readiness:</strong> You have a way for users to report issues (email, Discord, or in-app chat). FAQ covers the top 5 questions you anticipate. You have a process for handling the first 24 hours of feedback — even if that process is just "check email every 2 hours."</p>
+  <p class="section-text"><strong>Legal readiness:</strong> Privacy policy exists and covers AI-specific concerns (how you handle user data, whether inputs are used for training). Terms of service are in place. If your AI handles sensitive data, you've reviewed relevant compliance requirements.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">Platform-Specific Launch Playbooks</h2>
+  <p class="section-text">Each platform has its own culture, rules, and optimal posting strategies. What works on Twitter fails on Reddit. What works on LinkedIn fails on Product Hunt. Adapt your message to the medium.</p>
+  <p class="section-text"><strong>Product Hunt:</strong> Launch on Tuesday, Wednesday, or Thursday (highest traffic days). Have 5-10 supporters ready to upvote and comment at launch time. Your tagline should be outcome-focused, not feature-focused. Create a compelling "maker's comment" that tells the story behind the product. Include a special offer for Product Hunt users.</p>
+  <p class="section-text"><strong>Twitter/X:</strong> Lead with the output, not the announcement. A tweet showing a before/after transformation outperforms "I just launched my AI product" by 10x. Use a thread format: Hook (the problem) → Demo (the magic trick) → Social proof (beta user quote) → CTA (try it free). Post between 9-11am EST for maximum engagement.</p>
+  <p class="section-text"><strong>Reddit:</strong> Never post "check out my product" — it will be removed and you'll be banned. Instead, share a genuine insight about the problem you solve. "I analyzed 500 customer support tickets and found that 60% could be automated. Here's what I learned." Mention your product naturally in the comments, not the post.</p>
+  <p class="section-text"><strong>LinkedIn:</strong> Works best for B2B AI products. Write a personal story about why you built it. "I watched my team spend 3 hours every Friday compiling reports. Last week, I built something that does it in 30 seconds." LinkedIn rewards vulnerability and narrative. Include a screenshot of the output, not a link (LinkedIn suppresses posts with external links).</p>
+  <p class="section-text"><strong>Hacker News:</strong> The audience is technical and skeptical. Don't oversell. A "Show HN" post with an honest description — including limitations — performs far better than marketing language. Be in the comments answering technical questions. The HN audience respects builders who engage candidly.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Flywheel</span>
+  <h2 class="section-title">The Content Flywheel for AI Products</h2>
+  <p class="section-text">AI products have a unique content advantage: the product itself generates content. Every output is a potential marketing asset. Build a system that turns product usage into distribution fuel.</p>
+  <p class="section-text"><strong>User-generated showcases:</strong> Ask users for permission to share their best outputs (anonymized if necessary). "See what our users built this week" is more compelling than any marketing copy you could write. Create a gallery or a weekly showcase newsletter.</p>
+  <p class="section-text"><strong>Tutorial content:</strong> Write "How to use [your product] for [specific use case]" articles. These rank for long-tail SEO queries and demonstrate value simultaneously. Each article is both content marketing and a user guide. Aim for one per week.</p>
+  <p class="section-text"><strong>Comparison content:</strong> "How [your product] compares to doing it manually" with real time-savings data. This content targets users actively searching for solutions and provides the evidence they need to convert. Be honest about limitations — credibility converts better than hype.</p>
+  <p class="section-text"><strong>Behind-the-scenes:</strong> Share your prompt engineering process, your architecture decisions, your cost breakdowns. The AI builder community consumes this content voraciously, and many builders are also potential users or recommenders.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Growth</span>
+  <h2 class="section-title">Post-Launch Growth Levers</h2>
+  <p class="section-text">After the launch spike subsides, sustained growth requires deliberate strategy. These are the growth levers that work specifically for AI products.</p>
+  <p class="section-text"><strong>Output watermarking:</strong> A subtle "Made with [Product Name]" on every shareable output. Canva grew significantly through watermarked free-tier outputs. When users share their AI-generated content, your product gets credited. Make the watermark small enough to be acceptable but visible enough to be noticed.</p>
+  <p class="section-text"><strong>Referral programs:</strong> "Give 20 free queries, get 20 free queries." Referral programs work especially well for AI products because the product is easy to demonstrate — the referrer can show the referred person a specific output and say "look what this did."</p>
+  <p class="section-text"><strong>Integration partnerships:</strong> Build integrations with tools your users already use — Slack, Notion, Google Workspace, Zapier. Each integration puts your product in front of that platform's user base. Zapier alone has 6 million users browsing for AI automations.</p>
+  <p class="section-text"><strong>SEO for AI queries:</strong> People search for "AI [your category] tool" in growing numbers. Create landing pages optimized for these queries. "AI meeting notes tool" gets 12,000 searches/month and growing. A top-3 ranking for your category's search term is a permanent growth engine.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Plan your three-wave launch:</p>

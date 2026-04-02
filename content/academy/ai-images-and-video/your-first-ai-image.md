@@ -100,6 +100,38 @@ fine art photography, shallow depth of field, 8K detail</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Prompt Construction Tips</span>
+  <h2 class="section-title">Small prompt changes create big visual differences.</h2>
+  <p class="section-text">As you practice, you will notice that certain words have outsized impact on results. Here are practical tips that immediately improve your images:</p>
+  <p class="section-text"><strong>Front-load the important stuff:</strong> AI tools pay more attention to words at the beginning of your prompt. Put your most important element first. "A golden retriever in a field" prioritizes the dog. "A vast wildflower field with a small golden retriever" prioritizes the landscape.</p>
+  <p class="section-text"><strong>Use quality modifiers:</strong> Adding "high resolution," "detailed," "8K," or "professional photography" nudges the AI toward higher quality output. These modifiers act as quality floor-raisers — they do not guarantee perfection, but they reduce the chance of getting something blurry or low-effort.</p>
+  <p class="section-text"><strong>Specify what you do not want:</strong> If you keep getting something in your images that you do not want — text overlays, borders, watermarks — add "no text, no watermark, no border" to your prompt. In ChatGPT, you can also just say "please do not include any text in the image."</p>
+  <p class="section-text"><strong>Be specific about quantity:</strong> "Some flowers" is vague. "A field of hundreds of purple wildflowers" is specific. "Three birds in the sky" is specific. The more precise your numbers and quantities, the more control you have.</p>
+  <p class="section-text"><strong>Describe relationships:</strong> "A cat and a ball" might put them anywhere. "A cat batting a red ball with its paw on a hardwood floor" tells the AI exactly how the elements relate to each other spatially.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common First-Timer Mistakes</span>
+  <h2 class="section-title">Avoid these and you will be ahead of 90% of beginners.</h2>
+  <p class="section-text"><strong>Mistake 1 — Being too vague:</strong> "A nice picture" gives the AI almost nothing to work with. "A cozy reading nook with warm lamp light, a stack of books, and rain on the window" gives it a clear vision. The more specific you are, the better your results.</p>
+  <p class="section-text"><strong>Mistake 2 — Cramming too many subjects:</strong> "A dog, a cat, three birds, a mountain, a river, a castle, and a dragon" overwhelms the AI. Start with one main subject and build outward. Complex scenes work better when you add detail gradually through iteration rather than trying to get everything in one prompt.</p>
+  <p class="section-text"><strong>Mistake 3 — Giving up after one try:</strong> Your first generation is a starting point, not the final result. Professional AI artists rarely use their first attempt. The iteration process — generate, evaluate, refine — is where the real magic happens. Give yourself permission to experiment.</p>
+  <p class="section-text"><strong>Mistake 4 — Ignoring aspect ratio:</strong> If you need a vertical image for Instagram, say so in the prompt. If you need a wide landscape for a presentation, specify 16:9. Getting the right dimensions from the start saves you from awkward cropping later.</p>
+  <p class="section-text"><strong>Mistake 5 — Forgetting about lighting:</strong> Lighting is the single most impactful thing you can add to a prompt. "A portrait" and "a portrait with soft golden hour lighting" produce dramatically different results. Always think about light.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Step-by-Step Walkthrough</span>
+  <h2 class="section-title">Let's build a complete image together, step by step.</h2>
+  <p class="section-text">Here is a real walkthrough showing how iteration works in practice. Follow along with any AI image tool:</p>
+  <p class="section-text"><strong>Attempt 1:</strong> Start minimal. Type "A coffee shop." Look at what you get. The AI will give you something — probably a generic coffee shop interior. Notice the style, the colors, the perspective.</p>
+  <p class="section-text"><strong>Attempt 2:</strong> Add setting and mood. "A cozy independent coffee shop on a rainy afternoon, warm interior lighting." Now the AI has more to work with. Compare this to attempt 1 — see how the added context changed the mood and atmosphere.</p>
+  <p class="section-text"><strong>Attempt 3:</strong> Add style and composition. "A cozy independent coffee shop on a rainy afternoon, warm interior lighting glowing through foggy windows, watercolor painting style, soft muted palette." Now you are directing both what it looks like and how it feels.</p>
+  <p class="section-text"><strong>Attempt 4:</strong> Fine-tune with specific details. "A cozy independent coffee shop on a rainy afternoon, warm interior lighting glowing through foggy windows, a single empty chair by the window with a steaming cup, watercolor painting style, soft muted palette of amber, cream, and dusty blue." Each iteration gets you closer to the image in your mind.</p>
+  <p class="section-text">This is the process. Four attempts, each building on the last. By attempt 4, you have something you could frame on your wall — and you built the skill of intentional prompt construction along the way.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Four Prompt Elements</h2>
 </div>

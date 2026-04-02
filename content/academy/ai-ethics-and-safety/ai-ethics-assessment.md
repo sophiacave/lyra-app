@@ -106,6 +106,85 @@ free: false
   </div>
 </div>
 
+<!-- SECTION: COURSE RECAP -->
+<div class="lesson-section">
+  <span class="section-label">Course Recap</span>
+  <h2 class="section-title">Everything you've learned in one view.</h2>
+  <p class="section-text">Before building your personal ethics code, let's review the core principles from every lesson in this course. These aren't abstract rules — they're practical guidelines that protect you, your audience, and your organization.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">L1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Why AI Ethics Matter</div>
+          <div style="color:#a1a1aa;font-size:.85rem">You are the ethics layer. AI doesn't evaluate whether its output is ethical — you do. The TRUST framework (Transparency, Review, Understand Limits, Safeguard Privacy, Take Responsibility) guides every decision.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">L2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Bias in AI</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Bias comes from data, not from the algorithm being "prejudiced." Four types to watch: representation, confirmation, cultural/language, and recency. Ask for multiple perspectives and challenge framing.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">L3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Privacy and Data Protection</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Never paste passwords, personal data, confidential info, private communications, or regulated data. Anonymize before you paste. Describe, don't share. Use business-tier plans for sensitive work.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">L4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Misinformation and Hallucinations</div>
+          <div style="color:#a1a1aa;font-size:.85rem">AI predicts words, not truth. Hallucinations are most dangerous with statistics, citations, legal claims, medical info, and attributions to real people. Give AI permission to say "I'm not sure."</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(248,113,113,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">L5-9</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Transparency, IP, Workplace, Society, Trust</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Disclosure sits on a spectrum. Human creativity strengthens your IP position. The front page test guides workplace use. AI amplifies existing inequalities. Trustworthy systems need human oversight, explainability, fairness, privacy, robustness, and accountability.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: ETHICAL DECISION FRAMEWORK -->
+<div class="lesson-section">
+  <span class="section-label">Decision Framework</span>
+  <h2 class="section-title">A step-by-step ethical decision framework for AI use.</h2>
+  <p class="section-text">When you encounter a new AI use case and aren't sure about the ethics, run through this decision tree. It combines everything from the course into a practical sequence.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Step 1: Data Check</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">What data am I sharing with AI? Does it contain personal information, confidential business data, or regulated content? If yes — anonymize, describe instead of paste, or use an enterprise tool with data protection agreements.</p>
+      </div>
+      <div style="padding:14px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#8b5cf6;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Step 2: Accuracy Check</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Will someone rely on this output being factually correct? If yes — verify all statistics, confirm all citations exist, cross-reference legal or medical claims with authoritative sources. Give AI permission to express uncertainty.</p>
+      </div>
+      <div style="padding:14px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Step 3: Bias Check</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Could this output unfairly affect or exclude anyone? Check for default assumptions about gender, race, age, or cultural background. Ask for multiple perspectives. Review hiring criteria, evaluations, and public-facing content with extra scrutiny.</p>
+      </div>
+      <div style="padding:14px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Step 4: Transparency Check</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Should the audience know AI was involved? Consider the stakes, your industry norms, and whether the context demands disclosure. When in doubt, disclose. Use professional language that frames AI as a tool, not a shortcut.</p>
+      </div>
+      <div style="padding:14px;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Step 5: Responsibility Check</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Apply the front page test: would you be comfortable if your AI use in this case appeared on the front page of your industry's top publication? If you hesitate — reconsider your approach. You own the output. Own the process too.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- YOUR PRACTICE -->
 <div class="lesson-section">
   <span class="section-label">Your Ethical Practice</span>

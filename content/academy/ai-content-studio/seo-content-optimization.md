@@ -104,10 +104,54 @@ Analyze and return:
   <p class="section-text"><strong>Internal and external links:</strong> Link to your own related content and to authoritative external sources. This signals depth and credibility. Ask AI: <em>"Based on this article, suggest 3 internal link opportunities and 3 types of external sources I should reference."</em></p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Checklist</span>
+  <h2 class="section-title">The complete on-page SEO checklist.</h2>
+  <p class="section-text">Use this checklist every time you publish. Paste it into AI with your draft and ask it to audit each item:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Title tag:</strong> Under 60 characters. Includes primary keyword naturally. Compelling enough for a human to click in search results. Not just a label — a promise.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Meta description:</strong> 150-160 characters. Includes primary keyword. Reads like ad copy — specific benefit, clear value, call to curiosity. This is your pitch in search results.</p>
+  <p class="section-text"><strong style="color:var(--green)">URL slug:</strong> Short, descriptive, includes keyword. No dates, no numbers, no filler words. Example: /pricing-mistakes-freelancers not /blog/2024/03/15/top-5-pricing-mistakes-that-freelancers-make-number-3-will-shock-you.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Header hierarchy:</strong> One H1 (your title). H2s for main sections. H3s for subsections. Each header should include a relevant keyword or synonym naturally. Headers are your content's skeleton — Google reads them to understand structure.</p>
+  <p class="section-text"><strong>First 100 words:</strong> Include your primary keyword in the opening paragraph. Google pays special attention to early content. But make it natural — forced keyword placement reads terribly and Google can tell.</p>
+  <p class="section-text"><strong>Image alt text:</strong> Every image needs descriptive alt text that includes relevant keywords where natural. Alt text serves accessibility first and SEO second. Describe what the image shows, not what keyword you want to rank for.</p>
+  <p class="section-text"><strong>Internal links:</strong> Link to 2-3 of your own related pages. This passes authority between your pages and keeps readers on your site longer. Ask AI to suggest which existing content to link to.</p>
+  <p class="section-text"><strong>External links:</strong> Link to 1-2 authoritative sources. This signals depth and credibility to Google. Linking out does not hurt you — it helps.</p>
+  <p class="section-text"><strong>Content depth:</strong> Does the article fully answer the searcher's question? If someone clicks your result and then goes back to Google to search again, that signals to Google that your content did not satisfy them. Cover the topic completely.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Content refresh strategy — keep old posts ranking.</h2>
+  <p class="section-text">SEO is not "publish and forget." Your best-performing posts need regular updates to maintain their rankings. Google favors fresh, accurate content.</p>
+  <p class="section-text"><strong style="color:var(--orange)">Every 90 days:</strong> Review your top 10 ranking pages. Are the statistics still current? Are the recommendations still valid? Has anything changed in the industry? Use AI to identify outdated sections: <em>"Review this post published [date]. Flag any statistics, tools, or advice that may be outdated. Suggest updated information for each flagged item."</em></p>
+  <p class="section-text"><strong style="color:var(--purple)">Content expansion:</strong> When a post is ranking on page 2 (positions 11-20), it is close to breaking through. These are your highest-ROI refresh targets. Add 300-500 words of new content addressing questions the current version does not answer. Ask AI: <em>"This post ranks for [keyword] but is on page 2. What subtopics or questions should I add to make it the most comprehensive result for this query?"</em></p>
+  <p class="section-text"><strong style="color:var(--green)">Featured snippet optimization:</strong> If a competitor holds the featured snippet (position 0) for your target keyword, study the format. Snippets usually come from concise paragraph answers, numbered lists, or tables. Ask AI to reformat a section of your post to match the snippet format Google prefers for that query.</p>
+</div>
+
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Optimize an existing piece of content.</h2>
   <p class="section-text">Take a blog post you've already published. Paste it into AI with this prompt: <em>"Review this blog post for SEO. Identify: (1) the primary keyword I should be targeting, (2) secondary keywords I'm missing, (3) structural improvements for better ranking, (4) a better title tag and meta description, (5) header improvements, and (6) where I should add more depth to fully satisfy search intent. Don't change my voice — just optimize the structure and coverage."</em> Implement the suggestions and republish. Check your analytics in 30 days.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Topical authority — the long game that wins.</h2>
+  <p class="section-text">Google does not just rank individual pages. It evaluates whether your entire site has authority on a topic. This is called topical authority, and it is the single most important long-term SEO strategy for independent creators.</p>
+  <p class="section-text"><strong style="color:var(--orange)">How it works:</strong> If you write one post about email marketing, Google sees you as someone who wrote about email marketing. If you write twenty posts covering every angle of email marketing — sequences, subject lines, segmentation, deliverability, automation, A/B testing — Google sees you as an authority. Your individual posts start ranking higher because the cluster of content signals deep expertise.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Content clusters:</strong> Pick 3-5 topics that align with your content pillars. For each topic, plan 8-15 articles that cover every subtopic, question, and angle. Link them all together internally. Create one pillar page that serves as the hub, linking to every article in the cluster.</p>
+  <p class="section-text"><strong style="color:var(--green)">AI for cluster planning:</strong> Ask AI: <em>"I want to build topical authority on [topic]. Map out a content cluster of 12 articles. Include: a pillar page that covers the topic comprehensively, and 11 supporting articles that go deep on specific subtopics. Show how they should link to each other."</em></p>
+  <p class="section-text">Topical authority takes 3-6 months to build, but once established, it creates a compounding advantage. New articles on the same topic rank faster because Google already trusts your site for that subject.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Toolkit</span>
+  <h2 class="section-title">Free SEO tools that complement AI research.</h2>
+  <p class="section-text">AI gets you 80% of the way on keyword research, but combining it with free tools gives you actual search data to validate your decisions:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Google Search Console:</strong> Free. Shows you exactly which queries bring traffic to your site, your average position, and your click-through rate. This is the most valuable SEO data you have because it is real data from your actual audience.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Google Trends:</strong> Free. Shows relative search interest over time. Use it to compare topics and identify seasonal patterns. Ask AI to interpret the trends data for you.</p>
+  <p class="section-text"><strong style="color:var(--green)">AnswerThePublic:</strong> Free tier available. Shows questions people ask about any topic. These questions become your article headers and FAQ sections — which are exactly what Google wants to feature in search results.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Google's "People Also Ask":</strong> Free and always available. Search your target keyword and look at the "People Also Ask" box. These questions are Google telling you exactly what subtopics your article should cover. Add them as H2 or H3 headers.</p>
 </div>
 
 <div class="lesson-section">

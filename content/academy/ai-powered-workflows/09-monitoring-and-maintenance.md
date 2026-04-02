@@ -61,12 +61,64 @@ free: false
   <p class="section-text">This monthly ritual takes an hour. It prevents the kind of catastrophic failures that take days to fix. The math is heavily in your favor.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Dashboards</span>
+  <h2 class="section-title">Building a Workflow Health Dashboard</h2>
+  <p class="section-text">Raw logs are valuable but painful to read. A dashboard transforms those logs into visual indicators that tell you the health of every workflow at a glance. You should be able to look at your dashboard for 10 seconds and know whether everything is healthy or something needs attention.</p>
+  <p class="section-text"><strong style="color: var(--green);">Essential dashboard panels:</strong></p>
+  <p class="section-text"><strong>Success rate over time:</strong> A line chart showing the percentage of successful runs per day. A healthy workflow stays above 95%. Dips are immediately visible and correlatable with external events.</p>
+  <p class="section-text"><strong>Average execution time:</strong> A line chart with a baseline average. When execution time creeps upward, it's an early warning — often weeks before actual failures begin.</p>
+  <p class="section-text"><strong>Error breakdown:</strong> A pie chart or bar chart showing error types. Are 80% of errors timeouts? That's different from 80% being authentication failures. The breakdown drives your debugging priority.</p>
+  <p class="section-text"><strong>Throughput:</strong> How many items your workflow processes per hour/day. Unexpected drops mean your trigger might be broken. Unexpected spikes mean you might be processing duplicates.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Refactor vs. Rebuild</span>
+  <h2 class="section-title">When to Fix and When to Start Over</h2>
+  <p class="section-text">Every workflow eventually needs to evolve. The question is whether to modify the existing workflow or build a new one from scratch. Here's the decision framework:</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Refactor when:</strong></p>
+    <p>- The core logic is sound but one or two steps need updating</p>
+    <p>- You're adding a feature that fits naturally into the existing flow</p>
+    <p>- Performance needs improvement but the architecture is correct</p>
+    <p>- An API you use released a new version with better endpoints</p>
+    <p><strong style="color: var(--red);">Rebuild when:</strong></p>
+    <p>- The workflow has been patched so many times that nobody understands how it works</p>
+    <p>- The original requirements have fundamentally changed</p>
+    <p>- You've learned better patterns since the original build and the old approach creates ongoing maintenance burden</p>
+    <p>- Error rates are climbing despite fixes, suggesting architectural problems</p>
+  </div>
+
+  <p class="section-text">The rebuild decision is never easy because the existing workflow is "working" (sort of). But a workflow held together by duct tape will eventually fail in a way that takes days to fix. Sometimes the most professional choice is a planned rebuild before the emergency rebuild is forced upon you.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Incident Response</span>
+  <h2 class="section-title">What to Do When Things Go Wrong at 2am</h2>
+  <p class="section-text">Production incidents happen. Having a clear response protocol turns a panic moment into a systematic resolution:</p>
+  <p class="section-text"><strong style="color: var(--red);">Step 1 — Assess impact:</strong> How many users/items are affected? Is data being corrupted or just delayed? Is the workflow completely down or partially degraded? This determines urgency.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Step 2 — Contain:</strong> If the workflow is causing damage (sending wrong emails, corrupting data), disable the trigger immediately. A paused workflow is better than an actively harmful one.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Step 3 — Diagnose:</strong> Check logs around the time the issue started. What changed? New deployment? API update? Data volume spike? The cause is almost always a recent change.</p>
+  <p class="section-text"><strong style="color: var(--green);">Step 4 — Fix and verify:</strong> Apply the fix, test it in sandbox, then re-enable the workflow. Process any items from the dead-letter queue. Verify outputs are correct.</p>
+  <p class="section-text"><strong style="color: var(--green);">Step 5 — Post-mortem:</strong> Write a brief incident report: what happened, why, how it was fixed, and what changes prevent it from happening again. This is the most important step — without it, the same incident will recur.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Now</h3>
   <p>Create a monitoring plan for your workflow.</p>
   <div class="prompt-box">
     <code>For your workflow, define: (1) Which vital signs will you track? (2) What thresholds trigger a Warning vs. Critical alert? (3) What does your monthly health check checklist look like? Write it down — this becomes your ops playbook.</code>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cost Monitoring</span>
+  <h2 class="section-title">Tracking What Your Workflows Actually Cost</h2>
+  <p class="section-text">AI-powered workflows have running costs — API calls, compute time, email sends. These costs compound as your workflows scale. Monitor them alongside performance metrics to avoid surprise bills.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Per-run cost tracking:</strong> Calculate the cost of each workflow run. If your onboarding workflow makes 2 Claude API calls ($0.003 each), 1 CRM API call (free), and 1 email send ($0.001), each run costs about $0.007. At 100 new customers per day, that's $0.70/day — manageable. At 10,000 customers, it's $70/day — worth optimizing.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Model selection matters:</strong> Using Claude Sonnet for a task that Claude Haiku handles equally well costs 10x more. Audit your AI steps regularly — downgrade to cheaper models where quality isn't noticeably different. Reserve expensive models for tasks that genuinely need them.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Set budget alerts:</strong> Most API providers let you set spending alerts. Set them at 50%, 80%, and 100% of your monthly budget. Better to learn you're trending over budget on day 15 than to discover a $500 bill on day 30.</p>
 </div>
 
 <div class="lesson-section">

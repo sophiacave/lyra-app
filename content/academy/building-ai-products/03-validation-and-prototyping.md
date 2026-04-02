@@ -73,6 +73,45 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The Five Validation Levels</h2>
+  <p class="section-text">Not all validation is equal. Each level provides increasingly strong evidence that your idea is worth building. Don't skip levels — each one filters out a different kind of bad idea.</p>
+  <p class="section-text"><strong>Level 1 — Problem validation:</strong> Does the problem actually exist? Talk to 10 people in your target audience. Don't pitch your solution — describe the problem and ask if they experience it. If fewer than 7 out of 10 recognize the pain, the problem isn't universal enough.</p>
+  <p class="section-text"><strong>Level 2 — Solution validation:</strong> Does AI solve it better than alternatives? Show people the output — not the product, just the output. A summary. A categorized list. A generated draft. Ask: "Is this useful? Would you use this regularly?" If they say "I can do this myself in 10 minutes," your AI advantage isn't strong enough.</p>
+  <p class="section-text"><strong>Level 3 — Willingness-to-pay validation:</strong> Will people actually pay? The simplest test: create a Stripe payment link for your product before it exists. Put it on a landing page. Track clicks. Even if you refund everyone, you now know who was willing to enter credit card details.</p>
+  <p class="section-text"><strong>Level 4 — Usage validation:</strong> Do people use it more than once? This is where the Wizard of Oz prototype earns its keep. Deliver results manually to 20 people. Track how many come back for a second request without prompting. Repeat usage is the strongest pre-product signal.</p>
+  <p class="section-text"><strong>Level 5 — Referral validation:</strong> Do people share it unprompted? If users send it to colleagues without being asked, you have something real. Referral behavior is the highest-fidelity signal because it costs the user social capital — they won't recommend garbage.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Method</span>
+  <h2 class="section-title">The Concierge MVP for AI Products</h2>
+  <p class="section-text">A concierge MVP goes beyond Wizard of Oz. Instead of just simulating the AI output, you simulate the entire product experience — onboarding, delivery, follow-up — by doing everything manually.</p>
+  <p class="section-text"><strong>The process:</strong> Recruit 5-10 users through direct outreach. Set up a simple intake form (Typeform, Google Forms). When they submit a request, you manually produce the result using AI tools, then deliver it via email or a shared document within a defined SLA (e.g., 2 hours).</p>
+  <p class="section-text"><strong>Why it works:</strong> You learn things a prototype never teaches you. What questions do users ask during onboarding? What format do they actually want the output in? How often do they come back? What do they complain about? These insights shape your real product in ways that no amount of theorizing can match.</p>
+  <p class="section-text"><strong>When to graduate:</strong> When you're spending more time fulfilling requests than you have available — that's demand exceeding your manual capacity. That's the green light to automate.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tactic</span>
+  <h2 class="section-title">Building a Validation Landing Page</h2>
+  <p class="section-text">Your landing page has one job: convert visitors into signal. Not into customers — into data points that tell you whether to build or not.</p>
+  <p class="section-text"><strong>Headline:</strong> State the transformation, not the technology. "Stop spending 3 hours on expense reports" beats "AI-powered expense automation." The headline should make your target user think "that's me."</p>
+  <p class="section-text"><strong>Before/after:</strong> Show the pain (current state) and the relief (future state). A screenshot of a messy spreadsheet next to a clean, categorized report. Visual transformation is more convincing than any paragraph of text.</p>
+  <p class="section-text"><strong>Social proof:</strong> Even pre-launch, you can use proof. "47 accountants are waiting for early access." "Built by a team that processed 10,000 expense reports the hard way." Credibility signals reduce skepticism.</p>
+  <p class="section-text"><strong>The ask:</strong> Email signup is the minimum. A paid pre-order or deposit is stronger signal. A short survey ("how much time do you spend on this weekly?") gives you segmentation data. The more friction in your ask, the higher-fidelity your signal — but the fewer responses you'll get.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">Validation Anti-Patterns</h2>
+  <p class="section-text"><strong>Asking friends and family.</strong> They'll say it's great because they love you. Their validation is worthless. Test with strangers who have no social obligation to be kind.</p>
+  <p class="section-text"><strong>Validating the technology instead of the product.</strong> "Can AI summarize documents?" is a technology question — the answer is obviously yes. "Will busy executives pay $39/month to never read a full report again?" is a product question — the answer is unknown. Validate the second one.</p>
+  <p class="section-text"><strong>Building too much before validating.</strong> If you've written more than 200 lines of code before talking to a single potential user, you're building on assumptions. Assumptions are comfortable but often wrong. One afternoon of user interviews saves months of misdirected engineering.</p>
+  <p class="section-text"><strong>Treating "cool" as validation.</strong> "This is really cool!" is the most dangerous feedback you can receive. Cool means interesting. It doesn't mean useful. It doesn't mean valuable. It definitely doesn't mean "I'll pay for this." Dig deeper: "Would you use this tomorrow? What would you use it for? What would you pay?"</p>
+</div>
+
+<div class="lesson-section">
 </div>
 
 <div class="try-it-box">

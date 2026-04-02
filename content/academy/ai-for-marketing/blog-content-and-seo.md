@@ -129,6 +129,85 @@ Skip purely educational topics that attract the wrong audience.</pre>
   <p class="section-text" style="margin-top:1rem"><strong>The formula:</strong> AI draft + your expertise + your examples + your editing = content that ranks AND helps people. Skip any of those steps and you're just adding noise to the internet.</p>
 </div>
 
+<!-- SECTION 5: SEO CHECKLIST -->
+<div class="lesson-section">
+  <span class="section-label">SEO Checklist</span>
+  <h2 class="section-title">The complete on-page SEO checklist for every blog post.</h2>
+  <p class="section-text">Before you hit publish, run through this checklist. Ask AI to audit your post against each item:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#34d399;font-weight:700;font-size:.85rem;flex-shrink:0">Title tag</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Under 60 characters. Keyword near the front. Compelling enough to click in search results.</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#34d399;font-weight:700;font-size:.85rem;flex-shrink:0">Meta description</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Under 155 characters. Includes the keyword naturally. Reads like a mini-ad that makes searchers want to click.</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#34d399;font-weight:700;font-size:.85rem;flex-shrink:0">URL slug</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Short, descriptive, keyword-included. Use hyphens between words. No dates, no numbers, no random characters.</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#34d399;font-weight:700;font-size:.85rem;flex-shrink:0">H1 heading</span>
+        <span style="color:#a1a1aa;font-size:.85rem">One per page. Contains the primary keyword. Different from the title tag (slightly) for variety.</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#8b5cf6;font-weight:700;font-size:.85rem;flex-shrink:0">H2 subheadings</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Include keyword variations naturally. Break content into scannable sections. Every 200-300 words should have a subheading.</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#8b5cf6;font-weight:700;font-size:.85rem;flex-shrink:0">First 100 words</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Contains the primary keyword. Sets up the topic clearly. Hooks the reader immediately.</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#8b5cf6;font-weight:700;font-size:.85rem;flex-shrink:0">Internal links</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Link to 3-5 related pages on your site. Use descriptive anchor text, not "click here."</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border)">
+        <span style="color:#fb923c;font-weight:700;font-size:.85rem;flex-shrink:0">Image alt text</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Descriptive alt text on every image. Include keywords where natural. Helps accessibility and image search.</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <span style="color:#fb923c;font-weight:700;font-size:.85rem;flex-shrink:0">Readability</span>
+        <span style="color:#a1a1aa;font-size:.85rem">Short paragraphs (2-3 sentences). Active voice. No jargon unless your audience expects it. 8th-grade reading level.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: KEYWORD STRATEGY -->
+<div class="lesson-section">
+  <span class="section-label">Keyword Strategy</span>
+  <h2 class="section-title">The AI keyword research workflow.</h2>
+  <p class="section-text">You don't need expensive SEO tools to do keyword research. AI can help you build a keyword strategy from scratch:</p>
+
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">I run a <span style="color:#fb923c">[type of business]</span> targeting <span style="color:#fb923c">[audience]</span>.
+
+Help me build a keyword strategy:
+
+<span style="color:#8b5cf6">Step 1:</span> Generate 10 "seed keywords" — broad terms
+my audience would search for.
+
+<span style="color:#8b5cf6">Step 2:</span> For each seed keyword, generate 5 long-tail
+variations (3-5 word phrases with lower competition).
+
+<span style="color:#8b5cf6">Step 3:</span> Categorize all 60 keywords by search intent:
+- Informational ("how to...", "what is...")
+- Commercial ("best...", "vs...", "review...")
+- Transactional ("buy...", "pricing...", "sign up...")
+
+<span style="color:#34d399">Then prioritize:</span> Which 10 keywords should I target
+first? Consider: relevance to my business, likely
+competition level, and closeness to a purchase decision.
+
+<span style="color:#ef4444">Format as a table:</span> Keyword | Intent | Priority | Blog Post Idea</pre>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>Pro tip:</strong> Target commercial and transactional keywords first — those are people closer to buying. Informational keywords build traffic but convert less directly. A mix of both is ideal, but revenue-driving keywords come first.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

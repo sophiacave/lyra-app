@@ -95,6 +95,54 @@ free: false
     <p style="font-size:.82rem;color:#71717a">Most production systems combine patterns. A supervisor might manage a pipeline of fan-out workers. The patterns are building blocks, not mutually exclusive.</p>
   </div>
 
+  <div class="section">
+    <h2>Hybrid Patterns in Production</h2>
+    <p>Real systems rarely use a single pattern. Here are three common hybrids you will encounter in production:</p>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;margin:1rem 0">
+      <div style="padding:1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8;font-size:.95rem">Pipeline + Fan-Out</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.5rem 0">Step 1 processes data sequentially (validate &rarr; transform), then the final step fans out to multiple independent consumers (store in DB, send notification, update dashboard). The sequential part ensures data integrity. The parallel part maximizes throughput.</p>
+      </div>
+      <div style="padding:1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+        <strong style="color:#f472b6;font-size:.95rem">Supervisor + Pipeline Workers</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.5rem 0">A supervisor manages multiple pipeline workers, each running the same sequence (scrape &rarr; parse &rarr; store) on different data sources. The supervisor handles load balancing, failure recovery, and progress tracking. This is the workhorse pattern for data ingestion at scale.</p>
+      </div>
+      <div style="padding:1.25rem;border-radius:10px;background:rgba(250,204,21,.04);border:1px solid rgba(250,204,21,.1)">
+        <strong style="color:#facc15;font-size:.95rem">Fan-Out / Fan-In (Map-Reduce)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.5rem 0">One agent splits work into N parallel chunks (fan-out). Each chunk is processed independently by a worker agent. A collector agent waits for all results and merges them (fan-in). This is the map-reduce pattern — used by Google, Hadoop, and every large-scale data processing system.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Orchestration Anti-Patterns</h2>
+    <p>Avoid these common mistakes when designing multi-agent orchestration:</p>
+
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
+      <strong style="color:#ef4444">God Agent:</strong> One agent that does everything — routing, processing, monitoring, and error handling. It becomes a bottleneck and single point of failure. Split responsibilities into specialized agents.<br><br>
+      <strong style="color:#ef4444">Circular Dependencies:</strong> Agent A waits for Agent B, which waits for Agent C, which waits for Agent A. The system deadlocks. Always design acyclic workflows or add timeout-based circuit breakers.<br><br>
+      <strong style="color:#ef4444">Over-Orchestration:</strong> Using a supervisor pattern when a simple pipeline would suffice. More coordination means more complexity, more failure modes, and more latency. Start simple. Add orchestration only when the simpler pattern breaks.<br><br>
+      <strong style="color:#ef4444">No Timeout:</strong> A pipeline step that blocks forever because nobody defined a maximum wait time. Every inter-agent communication should have a timeout. When it expires, the system must have a fallback — skip, retry, or escalate.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Scaling Orchestration</h2>
+    <p>As your agent fleet grows, orchestration must scale with it. Key principles:</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">Horizontal Scaling</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Add more worker agents of the same type. Fan-out and supervisor patterns scale naturally — just add more workers. Pipeline patterns scale by running multiple pipeline instances in parallel.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6;font-size:.85rem">Backpressure</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">When downstream agents cannot keep up, upstream agents must slow down. Without backpressure, queues grow unbounded and the system crashes. Use queue depth limits and rate limiting to prevent this.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="QuizMC" data-props='{"title":"Orchestration Patterns Quiz","questions":[{"q":"You need to process user uploads: validate, then resize, then store, then notify. What pattern?","options":["Fan-Out","Pipeline","Supervisor","Swarm"],"correct":1,"explanation":"Sequential processing where each step depends on the previous \u2014 classic Pipeline pattern. Validate must finish before resize starts."},{"q":"A new blog post needs to be shared on Twitter, LinkedIn, Email, and Slack simultaneously. What pattern?","options":["Pipeline","Supervisor","Fan-Out","Swarm"],"correct":2,"explanation":"One trigger, multiple independent actions in parallel \u2014 Fan-Out pattern. Each channel is independent."},{"q":"You have 5 unreliable scraping agents and need one to watch them all and restart failures. What pattern?","options":["Fan-Out","Swarm","Pipeline","Supervisor"],"correct":3,"explanation":"A dedicated overseer monitoring workers and intervening on failure \u2014 Supervisor pattern."},{"q":"What is the key characteristic of the Swarm pattern?","options":["One master agent controls all workers","Agents process tasks sequentially","Agents coordinate peer-to-peer with no central hierarchy","A scheduler triggers agents one by one"],"correct":2,"explanation":"Swarms have no hierarchy \u2014 agents coordinate directly through shared state. Behavior emerges from their interactions."},{"q":"A supervisor agent crashes. What happens to the workers?","options":["They all stop immediately","They keep running but nobody monitors or recovers failures","They automatically elect a new supervisor","Nothing \u2014 supervisors are optional"],"correct":1,"explanation":"The supervisor is a single point of failure. Workers continue running, but if they fail, nobody restarts them. Solution: make the supervisor stateless and restartable."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"The 4 Orchestration Patterns","cards":[{"front":"Pipeline Pattern","back":"A \u2192 B \u2192 C. Sequential. Each agent\u0027s output is the next agent\u0027s input. Use when steps have strict dependencies. Fails when one step blocks."},{"front":"Fan-Out Pattern","back":"A \u2192 B, C, D simultaneously. Parallel independent actions. Use when one event triggers multiple independent tasks. Fails when results need merging."},{"front":"Supervisor Pattern","back":"A supervisor watches workers and intervenes on failure. Use when reliability is critical. Single point of failure if supervisor crashes."},{"front":"Swarm Pattern","back":"Peer-to-peer, no hierarchy. Agents coordinate through shared state. Most resilient but hardest to debug. Used by OpenAI Swarm framework."},{"front":"When does Pipeline fail?","back":"When one step blocks \u2014 the whole pipeline stalls. Add timeouts and fallback paths."},{"front":"How to choose the right pattern?","back":"Tasks depend on each other? Pipeline. Same trigger, independent tasks? Fan-Out. Need a manager? Supervisor. Equal peers? Swarm. Most systems combine patterns."}]}'></div>

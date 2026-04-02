@@ -73,6 +73,46 @@ free: false
   <p class="section-text">For most AI products on day one: a frontend (Next.js, Svelte, or even a static site), a backend that handles auth and billing (Supabase, Firebase), an AI API (Claude or GPT), and a vector database for RAG (pgvector, Pinecone). That's it. Four components. Ship fast, optimize later.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Embedding Strategies for RAG</h2>
+  <p class="section-text">RAG is the most common architecture for AI products that need domain knowledge. But "just add RAG" hides a dozen decisions that determine whether your retrieval actually works.</p>
+  <p class="section-text"><strong>Chunk size matters.</strong> Too small (50 tokens) and you lose context. Too large (2,000 tokens) and you dilute relevance. Start with 300-500 tokens with 50-token overlap between chunks. Test on 20 real queries and adjust. There is no universal optimal size — it depends entirely on your data.</p>
+  <p class="section-text"><strong>Embedding model selection.</strong> OpenAI's text-embedding-3-small is cheap and good. Cohere's embed-v3 handles multilingual well. For free, open-source options, BGE-small runs on CPU and produces surprisingly good results. Don't overthink this choice on day one — embedding models are easily swappable.</p>
+  <p class="section-text"><strong>Hybrid search.</strong> Pure vector search misses exact matches. Pure keyword search misses semantic meaning. The best RAG systems combine both — use pgvector for semantic similarity and full-text search for exact keyword matches, then merge and re-rank results. This catches queries that either approach alone would miss.</p>
+  <p class="section-text"><strong>Metadata filtering.</strong> Store metadata alongside embeddings — document type, date, author, category. At query time, filter by metadata before doing vector similarity. A user asking about "Q3 revenue" shouldn't get results from Q1 documents, even if they're semantically similar.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Architecture</span>
+  <h2 class="section-title">The Pipeline Pattern</h2>
+  <p class="section-text">Most AI products follow a pipeline: input preprocessing, context assembly, model call, output parsing, post-processing. Designing each stage as an independent, testable component makes your system dramatically easier to debug and improve.</p>
+  <p class="section-text"><strong>Stage 1 — Input preprocessing:</strong> Validate and clean user input. Strip HTML. Detect language. Check length limits. Classify intent if your product handles multiple query types. Bad input is the #1 cause of bad output.</p>
+  <p class="section-text"><strong>Stage 2 — Context assembly:</strong> Gather everything the model needs. System prompt, user history, RAG results, tool definitions, formatting instructions. This stage determines output quality more than model choice does.</p>
+  <p class="section-text"><strong>Stage 3 — Model call:</strong> The actual API request. Include timeout handling, retry logic with exponential backoff, and token budget management. Log the full request and response for debugging.</p>
+  <p class="section-text"><strong>Stage 4 — Output parsing:</strong> Extract structured data from the model response. Parse JSON, validate against a schema, handle malformed output gracefully. Never trust the model to return perfectly formatted data — always validate.</p>
+  <p class="section-text"><strong>Stage 5 — Post-processing:</strong> Apply business rules, filter sensitive content, format for delivery. This is where you add guardrails that the model alone can't guarantee.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Critical</span>
+  <h2 class="section-title">Cost Architecture: Thinking About Tokens</h2>
+  <p class="section-text">Every architecture decision has a cost implication. Understanding token economics before you build prevents nasty surprises at scale.</p>
+  <p class="section-text"><strong>System prompts compound.</strong> A 1,000-token system prompt sent with every request costs almost nothing at 100 queries/day. At 100,000 queries/day, that same prompt costs $150-500/day in input tokens alone. Design system prompts for efficiency from day one.</p>
+  <p class="section-text"><strong>Context windows aren't free.</strong> Stuffing 50,000 tokens of RAG context into every request because "more context is better" is a recipe for bankruptcy. Retrieve 3-5 relevant chunks (1,500-2,500 tokens total), not 50. Relevance beats volume every time.</p>
+  <p class="section-text"><strong>Output tokens cost more.</strong> With most providers, output tokens are 3-5x more expensive than input tokens. If your product generates long-form content, set explicit output length limits. A 2,000-token summary costs 3x more than a 700-token summary — and the shorter one is often better anyway.</p>
+  <p class="section-text"><strong>Cache aggressively.</strong> If two users ask the same question about the same document, the second response should come from cache, not from a fresh API call. Implement semantic caching — not just exact match — to catch paraphrased queries. A good cache layer can reduce API costs by 30-50%.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pattern</span>
+  <h2 class="section-title">Multi-Model Architecture</h2>
+  <p class="section-text">The most cost-effective AI products don't use one model for everything. They route different tasks to different models based on complexity, cost, and speed requirements.</p>
+  <p class="section-text"><strong>Classification layer:</strong> A small, fast model (or even a rules-based classifier) examines each incoming request and routes it. Simple queries go to a cheap, fast model. Complex queries go to the premium model. This routing layer typically adds 50-100ms of latency but saves 40-60% on model costs.</p>
+  <p class="section-text"><strong>Specialization:</strong> Use different models for different tasks within the same workflow. Embeddings from one model, generation from another, summarization from a third. Each model does what it does best instead of forcing one model to be mediocre at everything.</p>
+  <p class="section-text"><strong>Fallback chains:</strong> Primary model times out? Fall back to a secondary. Secondary down? Fall back to a cached response or a simpler model with a quality warning. Never show the user an error page when a degraded response is possible.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Map your product's architecture using this decision tree:</p>

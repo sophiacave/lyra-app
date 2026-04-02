@@ -67,6 +67,83 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Stages</span>
+  <h2 class="section-title">The Seven Pipeline Stages That Matter</h2>
+  <p class="section-text">A healthy pipeline has clearly defined stages. Without them, deals sit in vague buckets and forecasts become fiction. Here are the seven stages every sales pipeline should include, with AI-powered actions at each:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">1. Prospecting:</strong> AI identifies potential accounts and prioritizes by fit score. Action: research and initial outreach.</p>
+    <p><strong style="color: var(--green);">2. Qualification:</strong> AI scores leads against your ICP using BANT or MEDDIC criteria. Action: discovery call scheduled.</p>
+    <p><strong style="color: var(--purple);">3. Discovery:</strong> AI preps call briefs and generates questions. Action: understand pain, confirm budget and timeline.</p>
+    <p><strong style="color: var(--orange);">4. Proposal:</strong> AI drafts customized proposals from discovery notes. Action: present solution and pricing.</p>
+    <p><strong style="color: var(--red);">5. Negotiation:</strong> AI prepares objection responses and competitor comparisons. Action: address concerns, adjust terms.</p>
+    <p><strong style="color: var(--accent);">6. Closing:</strong> AI drafts final agreements and follow-up sequences. Action: get the signature.</p>
+    <p><strong style="color: var(--dim);">7. Won/Lost:</strong> AI runs win/loss analysis for pattern recognition. Action: celebrate or learn.</p>
+  </div>
+  <p class="section-text">AI does not just help at individual stages — it moves deals between stages by automating the prep work that gets the next meeting booked, the proposal sent, the objection handled. Deals stall when the salesperson does not take the next action. AI makes the next action obvious and fast.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Scoring</span>
+  <h2 class="section-title">AI Deal Scoring: Prioritize What Will Close</h2>
+  <p class="section-text">Not every deal in your pipeline deserves equal attention. AI can score each active deal based on multiple factors and tell you exactly where to focus today:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Engagement Score:</strong> How responsive is the prospect? Frequent replies, meeting attendance, and document reviews signal a deal that is alive and moving.</p>
+    <p><strong style="color: var(--blue);">Fit Score:</strong> How closely does this prospect match your ideal customer profile? Industry, company size, budget, and use case alignment all factor in.</p>
+    <p><strong style="color: var(--purple);">Velocity Score:</strong> Is this deal moving at a normal pace for its stage, or has it slowed down? Deals that stall at any stage for longer than average need intervention or removal.</p>
+    <p><strong style="color: var(--orange);">Champion Score:</strong> Do you have an internal advocate? Deals with an identified champion close 3x faster than deals without one.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Score Your Deals</h3>
+  <div class="prompt-box"><code>Here are my active deals: [LIST: Company, Deal Size, Stage, Days in Stage, Last Contact, Champion (yes/no), ICP Fit (strong/medium/weak)]. Score each deal from 0-100 based on likelihood to close. Weight the scoring: Engagement (30%), Fit (25%), Velocity (25%), Champion (20%). Rank them from highest to lowest priority. For each deal scoring below 50, recommend whether to re-engage or remove from pipeline.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Forecasting</span>
+  <h2 class="section-title">Three Forecasting Methods with AI</h2>
+  <p class="section-text">Accurate forecasting is the difference between strategic planning and wishful thinking. AI supports three forecasting approaches — use the one that matches your data maturity:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">1. Stage-Weighted Forecast:</strong> Multiply each deal's value by the historical close rate at its current stage. Demo stage deals close at 30%? A $100K demo-stage deal is worth $30K in your forecast. Simple, effective, and AI calculates it instantly.</p>
+    <p><strong style="color: var(--blue);">2. Historical Pattern Forecast:</strong> Feed AI your last 6-12 months of closed deals. It identifies patterns — which deal characteristics predict wins, what the average cycle length is by segment, and how seasonal factors affect your numbers. The forecast is grounded in your own data.</p>
+    <p><strong style="color: var(--purple);">3. Multi-Signal Forecast:</strong> Combine deal data with engagement signals — email open rates, meeting attendance, document views, response times. AI weights all signals to produce a confidence score for each deal. This is the most accurate method but requires the most data.</p>
+  </div>
+  <p class="section-text">Start with stage-weighted forecasting if you are new to AI pipeline management. Graduate to multi-signal forecasting as you accumulate more data. The key insight: any AI-assisted forecast beats a gut-feel forecast.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pipeline Hygiene</span>
+  <h2 class="section-title">Keeping Your Pipeline Clean</h2>
+  <p class="section-text">A dirty pipeline is worse than an empty one.
+  Stale deals inflate your numbers, distort your forecast, and waste your
+  mental energy on opportunities that will never close. AI enforces pipeline
+  hygiene automatically:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">The 14-Day Rule:</strong>
+    Any deal with no contact in 14 days gets flagged for review. AI generates
+    a re-engagement message or recommends removal. No deal should sit untouched
+    for two weeks without a deliberate decision to keep or kill it.</p>
+    <p><strong style="color: var(--orange);">The Stage Duration Rule:</strong>
+    If a deal has been in any stage longer than 1.5x your average for that stage,
+    it is stalling. AI identifies these deals and diagnoses why — missing champion,
+    budget uncertainty, competing priority — and recommends specific unblocking actions.</p>
+    <p><strong style="color: var(--blue);">The Qualification Recheck:</strong>
+    Monthly, AI re-evaluates every deal against your ICP and qualification criteria.
+    Deals that no longer meet the bar get downgraded or removed. Markets change,
+    contacts leave, budgets get cut — your pipeline should reflect current reality.</p>
+    <p><strong style="color: var(--green);">The Win Rate Audit:</strong>
+    Compare your stage-by-stage conversion rates month over month.
+    If a stage's conversion drops, something broke — your messaging,
+    your targeting, or your process at that stage needs attention.
+    AI spots these drops before they become trends.</p>
+  </div>
+  <p class="section-text">Clean pipeline, accurate forecast, focused effort.
+  These three things compound. A salesperson with a clean 20-deal pipeline
+  outperforms someone with a messy 100-deal pipeline every time — because
+  they know exactly where to focus.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">System</span>
   <h2 class="section-title">Build Your Pipeline Rhythm</h2>
   <p class="section-text">The best pipeline managers don't manage deals — they manage a system. Monday: AI pipeline review. Wednesday: re-engagement outreach for stalled deals. Friday: new opportunity planning. AI makes each of these sessions fast and focused. The system runs itself once you build it.</p>

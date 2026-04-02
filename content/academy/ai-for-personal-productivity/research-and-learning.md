@@ -86,6 +86,89 @@ free: false
   <p class="section-text"><strong>Rule of thumb:</strong> use AI to understand the landscape and know what questions to ask. Then verify specific facts (prices, deadlines, regulations) with official sources. AI gets you 80% there; you confirm the last 20%.</p>
 </div>
 
+<!-- RESEARCH METHODOLOGY -->
+<div class="lesson-section">
+  <span class="section-label">Research Method</span>
+  <h2 class="section-title">A systematic approach to researching any topic with AI.</h2>
+  <p class="section-text">Random questions get random answers. A structured research approach gets comprehensive understanding. Here's a method you can use for any topic, from buying a house to understanding a health condition.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">Step 1: The landscape question</p>
+      <p style="font-size:0.9rem">"I want to understand [TOPIC]. Give me the big picture — what are the key concepts, the main options or approaches, and the most important things a beginner should know? Keep it high-level."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">Step 2: The deep dive</p>
+      <p style="font-size:0.9rem">"Now go deeper on [SPECIFIC PART]. Explain how it works, what the trade-offs are, and give me a real example with actual numbers or scenarios."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">Step 3: The application question</p>
+      <p style="font-size:0.9rem">"Here's my specific situation: [YOUR DETAILS]. Based on what we've discussed, what would you recommend for me and why?"</p>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">Step 4: The blind spot check</p>
+      <p style="font-size:0.9rem">"What am I not thinking about? What questions should I be asking that I haven't? What mistakes do people commonly make with [TOPIC]?"</p>
+    </div>
+  </div>
+</div>
+
+<!-- LEARNING STRATEGIES -->
+<div class="lesson-section">
+  <span class="section-label">Learning Strategies</span>
+  <h2 class="section-title">Advanced prompts for learning any skill faster with AI.</h2>
+  <p class="section-text">AI is the most patient tutor you'll ever have. Here are specific strategies for different types of learning — each with a ready-to-use prompt.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The Feynman technique with AI</p>
+      <p style="font-size:0.9rem">The best way to know if you understand something is to explain it. Use AI to test yourself:</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-top:0.5rem">
+        <code style="font-size:0.9rem;line-height:1.6">"I'm going to try to explain [TOPIC] to you. Tell me where my understanding is right, where I'm wrong, and what I'm missing. Here's my explanation: [YOUR EXPLANATION]."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">The analogy builder</p>
+      <p style="font-size:0.9rem">When a concept won't stick, ask AI to explain it through something you already understand:</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-top:0.5rem">
+        <code style="font-size:0.9rem;line-height:1.6">"Explain how [COMPLEX TOPIC] works using an analogy from [SOMETHING I KNOW WELL — cooking, sports, music, building things]. Make the analogy detailed enough that I can use it to remember the concept."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">The quiz generator</p>
+      <p style="font-size:0.9rem">Testing yourself is one of the most effective learning techniques. Let AI create the test:</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-top:0.5rem">
+        <code style="font-size:0.9rem;line-height:1.6">"I've been learning about [TOPIC]. Create a 10-question quiz to test my understanding — mix of easy, medium, and hard. Give me the questions first, then I'll answer, and you grade me."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.5rem">The study plan builder</p>
+      <p style="font-size:0.9rem">Learning a big topic? Let AI map out the path:</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px;margin-top:0.5rem">
+        <code style="font-size:0.9rem;line-height:1.6">"I want to learn [TOPIC] well enough to [SPECIFIC GOAL]. I can spend about 30 minutes a day. Create a 4-week learning plan with specific topics for each day and recommended resources. Start with fundamentals and build up."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VERIFICATION STRATEGIES -->
+<div class="lesson-section">
+  <span class="section-label">Fact-Checking</span>
+  <h2 class="section-title">How to verify what AI tells you — a practical guide.</h2>
+  <p class="section-text">Trust but verify isn't just a catchphrase — it's a survival skill in the AI age. Here's a practical system for knowing what to check and how to check it.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">Usually reliable (light verification)</p>
+      <p style="font-size:0.9rem">General explanations of how things work, step-by-step instructions for common tasks, writing advice and communication frameworks, brainstorming and idea generation.</p>
+    </div>
+    <div style="margin-bottom:1rem">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">Check before using (moderate verification)</p>
+      <p style="font-size:0.9rem">Specific statistics and data points, historical dates and details, recipe measurements and cooking times, legal or financial specifics for your state or country.</p>
+    </div>
+    <div>
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">Always verify independently (high verification)</p>
+      <p style="font-size:0.9rem">Medical information, current prices and availability, business hours and location details, regulatory requirements and deadlines, academic citations and quotes.</p>
+    </div>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>

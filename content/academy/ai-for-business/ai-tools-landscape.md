@@ -36,6 +36,35 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Selection Criteria</span>
+  <h2 class="section-title">Six questions before you add any tool.</h2>
+  <p class="section-text">Every AI tool you add to your stack comes with a cost beyond the subscription — setup time, learning curve, maintenance, and the cognitive load of one more login. Before you add anything, run it through these six criteria. If it fails any of the first three, stop. The tool is not ready for your business.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:.75rem">
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:190px;font-size:.85rem">1. Does it solve a real problem?</span><span style="color:#a1a1aa;font-size:.85rem">Can you name the specific task it replaces and the hours it saves? If not, you are buying a solution without a problem.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:190px;font-size:.85rem">2. Is your data safe?</span><span style="color:#a1a1aa;font-size:.85rem">Does the tool have a clear privacy policy? Does it train on your inputs? Can you opt out? If unclear, do not use it for business data.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:190px;font-size:.85rem">3. Can you cancel easily?</span><span style="color:#a1a1aa;font-size:.85rem">Monthly billing, no annual lock-in, data export available. If you cannot leave in 30 days with your data, reconsider.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:190px;font-size:.85rem">4. Does it duplicate a tool you have?</span><span style="color:#a1a1aa;font-size:.85rem">Check your existing stack. If you already have a tool in this category that works, adding another creates confusion and waste.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:190px;font-size:.85rem">5. Is the ROI clear within 30 days?</span><span style="color:#a1a1aa;font-size:.85rem">Use the ROI formula from Lesson 3. If the tool does not pay for itself within a month, it needs a stronger justification.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:190px;font-size:.85rem">6. Can your team actually use it?</span><span style="color:#a1a1aa;font-size:.85rem">A powerful tool nobody uses is worse than no tool. Consider the learning curve and your team's technical comfort level.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Free vs Paid</span>
+  <h2 class="section-title">When free tools are enough and when they are not.</h2>
+  <p class="section-text">Every major AI category has free options. The question is whether free is good enough for your business use case — or whether the limitations will cost you more in lost time than a paid subscription would.</p>
+
+  <p class="section-text"><strong>Free is enough when:</strong> you are a solo operator or very small team, your usage is under 20-30 prompts per day, you do not need priority access during peak times, your tasks are straightforward (drafting, brainstorming, summarizing short documents), and you are still evaluating whether AI fits your workflow at all. Free tiers are perfect for the first 2-4 weeks of experimentation.</p>
+
+  <p class="section-text"><strong>Paid is worth it when:</strong> you hit usage limits that interrupt your workflow, you need longer context windows (processing documents over 10 pages), you need faster response times for time-sensitive work, you want access to advanced features (file uploads, image generation, API access), or you are using AI for client-facing work where reliability matters. The jump from free to $20/month is the single highest-ROI upgrade in AI tooling.</p>
+
+  <p class="section-text"><strong>Enterprise is worth it when:</strong> you have 10+ people using the tool, you need admin controls (who can use what features), you need audit logs for compliance, you need SSO integration with your company identity provider, or you handle regulated data that requires contractual privacy guarantees. Enterprise pricing typically starts at $25-60 per user per month.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Tool Categories</span>
   <h2 class="section-title">Eight categories, three tools each.</h2>
   <p class="section-text">Flip each card to see the top tools in that category, what they cost, and what they're actually best for. Don't try to memorize every tool — get familiar with the landscape so you can find what you need when you need it.</p>

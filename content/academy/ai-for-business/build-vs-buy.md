@@ -51,6 +51,77 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Decision Matrix</span>
+  <h2 class="section-title">The 5-factor scoring grid.</h2>
+  <p class="section-text">Use this matrix to score your specific situation. For each factor, rate your situation on the scale described. Then follow the scoring guide at the bottom to get a recommendation. This takes the guesswork out of the decision.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.5rem;font-size:.78rem;color:#a1a1aa;margin-bottom:.5rem">
+      <div style="color:#71717a;font-weight:600">Factor</div>
+      <div style="color:#71717a;font-weight:600">Score 1 (Low)</div>
+      <div style="color:#71717a;font-weight:600">Score 3 (Medium)</div>
+      <div style="color:#71717a;font-weight:600">Score 5 (High)</div>
+      <div style="color:#e5e5e5">Problem Uniqueness</div><div>Very common</div><div>Industry-specific</div><div>Entirely proprietary</div>
+      <div style="color:#e5e5e5">Budget</div><div>Under $500/yr</div><div>$500-$10K/yr</div><div>$10K+/yr</div>
+      <div style="color:#e5e5e5">Technical Capability</div><div>No tech staff</div><div>1-2 developers</div><div>Full engineering team</div>
+      <div style="color:#e5e5e5">Speed Needed</div><div>This week</div><div>This quarter</div><div>This year</div>
+      <div style="color:#e5e5e5">Data Sensitivity</div><div>Public data only</div><div>Internal data</div><div>Regulated PII/PHI</div>
+    </div>
+    <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.06)">
+      <div style="color:#34d399;font-size:.82rem;margin-bottom:.35rem"><strong>Total 5-9:</strong> BUY a SaaS tool. Your problem is common, budget is limited, and speed matters.</div>
+      <div style="color:#8b5cf6;font-size:.82rem;margin-bottom:.35rem"><strong>Total 10-15:</strong> HIRE a consultant. You need customization but not a full build.</div>
+      <div style="color:#fb923c;font-size:.82rem;margin-bottom:.35rem"><strong>Total 16-21:</strong> BUILD custom. Unique problem, resources available, data requires control.</div>
+      <div style="color:#38bdf8;font-size:.82rem"><strong>Total under 5:</strong> WAIT. Budget and capability do not support any option yet.</div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cost Comparison</span>
+  <h2 class="section-title">The real cost of each option over 12 months.</h2>
+  <p class="section-text">The sticker price of a SaaS tool or a consultant quote tells you almost nothing about the real cost. Here is what each option actually costs when you include setup time, maintenance, training, and opportunity cost. These numbers are based on typical small-to-medium business scenarios.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.75rem;font-size:.82rem;margin-bottom:.5rem">
+      <div style="color:#71717a;font-weight:600">Cost Category</div>
+      <div style="color:#34d399;font-weight:600">BUY (SaaS)</div>
+      <div style="color:#8b5cf6;font-weight:600">HIRE (Consultant)</div>
+      <div style="color:#fb923c;font-weight:600">BUILD (Custom)</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.75rem;font-size:.78rem;color:#a1a1aa">
+      <div>Subscription/Fee</div><div>$240-$6,000/yr</div><div>$2,000-$15,000</div><div>$0</div>
+      <div>Setup Time</div><div>2-8 hours</div><div>10-40 hours</div><div>200-2,000 hours</div>
+      <div>Training</div><div>2-4 hours</div><div>4-8 hours</div><div>20-40 hours</div>
+      <div>Ongoing Maintenance</div><div>$0 (vendor handles)</div><div>$500-$2,000/yr</div><div>$5,000-$50,000/yr</div>
+      <div>Switching Cost</div><div>Low (export data)</div><div>Medium</div><div>High (sunk cost)</div>
+      <div style="color:#e5e5e5;font-weight:600">Typical Year 1 Total</div><div style="color:#34d399;font-weight:600">$500-$8,000</div><div style="color:#8b5cf6;font-weight:600">$3,000-$20,000</div><div style="color:#fb923c;font-weight:600">$20,000-$200,000+</div>
+    </div>
+  </div>
+
+  <p class="section-text">The numbers make the default clear: Buy first. Only move to Hire or Build when the Buy option genuinely cannot solve your problem. Most businesses overestimate their uniqueness and underestimate what off-the-shelf tools can do.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Vendor Evaluation</span>
+  <h2 class="section-title">Seven questions to ask any AI vendor.</h2>
+  <p class="section-text">If you decide to Buy, you still need to evaluate which vendor to buy from. These seven questions separate serious tools from marketing fluff. Ask them in every demo, every sales call, every evaluation.</p>
+
+  <p class="section-text"><strong>1. "Where does my data go?"</strong> Acceptable answers: "Your data is stored in [specific region], encrypted at rest and in transit, and not used for model training." Red flag: vague answers about "cloud infrastructure" or inability to specify data residency.</p>
+
+  <p class="section-text"><strong>2. "Can I export my data if I leave?"</strong> Acceptable answer: "Yes, you can export all data in standard formats (CSV, JSON, API)." Red flag: no export option, proprietary formats only, or a fee to export your own data.</p>
+
+  <p class="section-text"><strong>3. "What happens when the AI is wrong?"</strong> Acceptable answer: "We have a feedback loop, human review options, and accuracy metrics we share with customers." Red flag: claims of 99% accuracy without methodology, or dismissal of the question.</p>
+
+  <p class="section-text"><strong>4. "What does your pricing look like at 3x my current usage?"</strong> Acceptable answer: clear pricing tiers with predictable scaling. Red flag: usage-based pricing with no caps, or inability to estimate costs at higher volume.</p>
+
+  <p class="section-text"><strong>5. "Do you have SOC 2, GDPR compliance, or equivalent certifications?"</strong> Acceptable answer: yes, with documentation available. Red flag: "we are working on it" or "our cloud provider has it" (that is not the same thing).</p>
+
+  <p class="section-text"><strong>6. "What is your uptime over the last 12 months?"</strong> Acceptable answer: 99.5% or higher with a public status page. Red flag: no status page, no uptime data, or refusal to share incident history.</p>
+
+  <p class="section-text"><strong>7. "Can I talk to three current customers in my industry?"</strong> Acceptable answer: yes, here are references. Red flag: "we cannot share customer names" (every serious vendor has reference customers willing to talk).</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Get a build-vs-buy recommendation for your situation.</h2>
   <p class="section-text">Describe your specific AI need and let the five-factor framework guide you to the right strategy.</p>

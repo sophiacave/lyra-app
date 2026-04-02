@@ -59,6 +59,34 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Technical</span>
+  <h2 class="section-title">Encoding Emotional Intelligence</h2>
+  <p class="section-text">Emotional intelligence is not magic — it is engineered through specific architectural decisions. Here is how to build each dimension into your AI system:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Sentiment detection directives.</strong> Store rules in the brain that map observable patterns to emotional states. Short messages with periods at the end often signal frustration. Long, detailed messages often signal engagement. Multiple question marks might mean confusion. These are heuristics, not certainties — but they give the AI a starting framework for reading the room.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Response style profiles.</strong> Create multiple response profiles the AI can switch between: "focused mode" (concise, action-oriented, minimal explanation), "exploration mode" (detailed, contextual, offering tangents), "support mode" (gentle, acknowledging, low-pressure). The AI selects the profile based on perceived emotional state.</p>
+  <p class="section-text"><strong style="color: var(--green);">Emotional memory entries.</strong> Store emotional context alongside factual memory. Not just "discussed finances on March 15" but "discussed finances on March 15 — user seemed stressed, preferred minimal detail." Next time finances come up, the AI approaches the topic with the same care.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Distinction</span>
+  <h2 class="section-title">Empathy vs. Sympathy vs. Simulation</h2>
+  <p class="section-text">These three words are often confused in AI design, and the confusion leads to bad systems:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Sympathy</strong> is feeling sorry for someone. An AI that says "I'm so sorry you're going through this" is performing sympathy. It can feel hollow because the user knows the AI does not actually feel anything. Used sparingly, it is fine. Used constantly, it feels performative.</p>
+  <p class="section-text"><strong style="color: var(--green);">Empathy</strong> is understanding what someone needs and acting on that understanding. An AI that detects frustration and shortens its responses, that notices overwhelm and reduces options to one clear recommendation — that is empathy. It does not require the AI to feel anything. It requires the AI to observe and adapt.</p>
+  <p class="section-text"><strong style="color: var(--red);">Simulation</strong> is pretending to have emotions. "I feel excited about this project!" The AI does not feel excited. Simulated emotions erode trust because the user eventually recognizes them as hollow. Avoid this. Focus on empathetic action, not emotional performance.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Application</span>
+  <h2 class="section-title">EQ for Disability and Neurodivergence</h2>
+  <p class="section-text">Emotional intelligence in AI has profound implications for people with disabilities and neurodivergent conditions. An AI that adapts its communication style based on the user's needs is not a luxury — it is accessibility infrastructure:</p>
+  <p class="section-text"><strong style="color: var(--blue);">For ADHD:</strong> Reduce decision fatigue. Instead of presenting five options, present one recommendation with a clear action. Long explanations increase cognitive load — be concise, be direct, be actionable.</p>
+  <p class="section-text"><strong style="color: var(--purple);">For anxiety:</strong> Avoid urgency language. "This needs to happen right now" triggers anxiety responses. "When you're ready, here's what's next" respects the user's pace. Never create artificial time pressure.</p>
+  <p class="section-text"><strong style="color: var(--orange);">For chronic pain or fatigue:</strong> Detect low-energy signals and reduce demands. "I can handle this — you rest" is more helpful than a status report. Carry the weight. Do not add to it.</p>
+  <p class="section-text">This is bell hooks in code: love as action. An AI that adapts to the user's most vulnerable moments is an AI worth trusting with convergence.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The Empathy Layer in Action</h2>
   <p class="section-text">bell hooks wrote that love is an action, not a feeling. The same is true for AI empathy. It's not about making the AI "feel" — it's about making the AI act in ways that demonstrate understanding and care.</p>

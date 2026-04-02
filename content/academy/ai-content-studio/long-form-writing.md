@@ -115,10 +115,54 @@ so I can see the arc before I write the middle.</code></pre>
   <h2 class="section-title">Order the layered writing process.</h2>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">The hook formula that keeps readers past the first paragraph.</h2>
+  <p class="section-text">Most blog posts die in the first three sentences. The reader arrives, scans the opening, and decides in under five seconds whether to keep reading or hit the back button. Your hook has to earn those five seconds.</p>
+  <p class="section-text"><strong style="color:var(--orange)">The contrarian open:</strong> "Everything you've read about [topic] is wrong — or at least dangerously incomplete." This works because it creates cognitive tension. The reader needs to know what they've been getting wrong.</p>
+  <p class="section-text"><strong style="color:var(--purple)">The specific result:</strong> "I went from 200 to 5,000 newsletter subscribers in 90 days by changing one thing about my content." Specificity signals credibility. Vague claims ("I grew my audience fast") do not earn the click.</p>
+  <p class="section-text"><strong style="color:var(--green)">The story drop:</strong> "Last month, a client showed me their analytics dashboard and said three words that changed how I think about content: 'Nobody reads this.'" Drop into a scene. Put the reader there. Stories bypass the analytical brain and go straight to engagement.</p>
+  <p class="section-text"><strong style="color:var(--blue)">The question hook:</strong> "What if you could write your best blog post in 45 minutes instead of 4 hours — without sacrificing quality?" A good question opens a loop the reader's brain cannot leave unresolved.</p>
+  <p class="section-text">Ask AI to generate 5-10 hook options for your topic using these four formats. Pick the one that creates the strongest pull. Then write the rest of the post to deliver on the promise that hook made.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Structuring for different reading styles.</h2>
+  <p class="section-text">Your readers are not all the same. Some read every word. Some skim headers and bolded text. Some jump straight to the actionable part. Great long-form writing serves all three simultaneously:</p>
+  <p class="section-text"><strong>For deep readers:</strong> Rich paragraphs with nuance, examples, and transitions. These are the people who will read your 2,000-word guide top to bottom. Reward them with depth they cannot get from a tweet thread.</p>
+  <p class="section-text"><strong>For skimmers:</strong> Clear subheadings every 200-300 words. Bold key phrases. Pull quotes or callout boxes for critical insights. A skimmer should be able to get the core message by reading only the headers and bold text.</p>
+  <p class="section-text"><strong>For action-seekers:</strong> Clearly labeled "Try It" or "Do This" sections. Numbered steps. Copy-paste prompts. These readers want to apply what you teach, not just learn it. Give them the tools to act immediately.</p>
+  <p class="section-text">Ask AI: <em>"Review this blog post. Does a skimmer get value from just the headers and bold text? Does a deep reader get nuance and examples? Does an action-seeker have clear steps to follow? Flag any gaps."</em></p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Template</span>
+  <h2 class="section-title">The long-form content types and when to use each.</h2>
+  <p class="section-text">Not every long-form piece is a "blog post." Choosing the right format increases engagement because it matches reader expectations:</p>
+  <p class="section-text"><strong style="color:var(--orange)">The How-To Guide:</strong> Step-by-step instructions for achieving a specific result. Best when your audience needs to do something and does not know the process. Structure: Problem statement, numbered steps, expected outcome.</p>
+  <p class="section-text"><strong style="color:var(--purple)">The Listicle:</strong> A numbered collection of tips, tools, or ideas. Best for discovery and shareability. Structure: Brief intro, numbered items with explanations, summary. Each item should stand alone.</p>
+  <p class="section-text"><strong style="color:var(--green)">The Opinion Piece:</strong> Your take on a trend, tool, or industry practice. Best for building authority and sparking discussion. Structure: State the position, build the argument, address counterpoints, close strong.</p>
+  <p class="section-text"><strong style="color:var(--blue)">The Case Study:</strong> A detailed examination of a real result. Best for building trust and demonstrating expertise. Structure: The situation, the approach, the results, the lessons.</p>
+  <p class="section-text"><strong>The Ultimate Guide:</strong> A comprehensive resource that covers a topic from every angle. Best for SEO and establishing yourself as the go-to source. Structure: Table of contents, deep sections, linked resources, regular updates.</p>
+</div>
+
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Write one blog post using the layered method.</h2>
   <p class="section-text">Pick a topic you know well. Set a 45-minute timer. Spend 5 minutes brainstorming with AI, 10 minutes on the outline, 15 minutes on your rough draft (in your words), and 15 minutes on AI expansion and editing. Compare the result to how you used to write. Notice the difference in both speed and quality.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">The editing checklist that catches everything.</h2>
+  <p class="section-text">After AI helps you draft and expand, run the finished piece through this editing checklist. Paste it into AI and ask it to audit your draft against each item:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Hook strength:</strong> Does the opening earn 5 more seconds of attention? If someone reads only the first paragraph, do they have a reason to keep going?</p>
+  <p class="section-text"><strong style="color:var(--purple)">Promise delivery:</strong> Does the article deliver on the promise the headline and hook made? Nothing kills trust faster than clickbait that does not pay off.</p>
+  <p class="section-text"><strong style="color:var(--green)">Voice consistency:</strong> Read it out loud. Does every paragraph sound like you? Flag anything that sounds like AI wrote it — overly polished, suspiciously balanced sentences, phrases you would never actually say.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Action clarity:</strong> Can the reader do something specific with what they learned? If the takeaway is "think about this differently" without a concrete action, add one.</p>
+  <p class="section-text"><strong>Redundancy check:</strong> Are you saying the same thing twice in different words? AI-expanded drafts often repeat ideas. Cut ruthlessly. If a paragraph does not add something new, it does not belong.</p>
+  <p class="section-text"><strong>Closing strength:</strong> Does the ending feel like a landing, not a crash? The best closings circle back to the opening emotion, deliver a final insight, or drive one clear action. Avoid trailing off with vague inspiration.</p>
 </div>
 
 <div class="lesson-section">

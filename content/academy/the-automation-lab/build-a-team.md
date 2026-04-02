@@ -97,6 +97,65 @@ free: false
     </div>
   </div>
 
+  <div class="section">
+    <h2>Scaling Teams: When to Add Agents</h2>
+    <p>Adding agents to a team is not always the answer. Here is when adding a new agent is the right call — and when it is not:</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">Add an agent when...</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">An existing agent has too many tools (15+). A new responsibility has different failure modes. You need independent scaling for a specific task. Two roles should never share state or permissions.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">Do NOT add an agent when...</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">A simple function call would suffice. The "agent" would only have one tool. Adding it creates unnecessary coordination overhead. The existing agent handles the task fine — you are just over-engineering.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Communication Between Team Members</h2>
+    <p>Team agents communicate through shared memory (Lesson 4), but the <em>protocol</em> matters. Here are three patterns for team communication:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Task Queue</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">One agent creates tasks; others claim and execute them. Tasks sit in a shared queue (<code>task_queue</code> table) with fields for status, assignee, and priority. Any available agent can claim the next unassigned task. This prevents work from piling up on a single agent.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Status Board</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Each agent writes its current status to a shared key: <code>agent.writer.status = "drafting blog post"</code>, <code>agent.editor.status = "idle"</code>. Other agents can check who is busy and who is available before assigning work. Like a team standup, but automated.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Event Stream</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agents emit events: <code>"draft_complete"</code>, <code>"review_passed"</code>, <code>"deploy_failed"</code>. Other agents subscribe to events they care about. This is the most decoupled pattern — agents do not need to know about each other, only about events.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Failure Modes in Agent Teams</h2>
+    <p>Teams fail differently from solo agents. Three failure modes unique to multi-agent systems:</p>
+
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
+      <strong style="color:#ef4444">Cascade failure:</strong> Agent A crashes, which means Agent B never gets its input, so Agent B sits idle, and Agent C (which depends on B) also stalls. One failure cascades through the entire team. Fix: timeouts and fallback paths at every handoff point.<br><br>
+      <strong style="color:#ef4444">Silent duplication:</strong> Two agents both claim the same task from the queue because the claim operation is not atomic. Both do the work. The user gets two emails, two reports, two deploys. Fix: use database-level locking on task claims (<code>SELECT ... FOR UPDATE SKIP LOCKED</code>).<br><br>
+      <strong style="color:#ef4444">Role confusion:</strong> An agent's identity is too similar to another agent's. Both try to handle the same type of request, producing conflicting outputs. Fix: make each agent's scope explicit and non-overlapping. If in doubt, add a router agent that directs requests to the right specialist.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>The Minimum Viable Team</h2>
+    <p>For any project, start with the smallest team that covers your critical path. The minimum viable team for most autonomous systems is three agents:</p>
+
+    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
+      <strong style="color:#34d399">1. Worker</strong> — Does the actual task (writing, processing, scraping, deploying).<br>
+      <strong style="color:#34d399">2. Reviewer</strong> — Checks the worker's output before it goes live. Quality gate.<br>
+      <strong style="color:#34d399">3. Monitor</strong> — Watches both the worker and reviewer for health. Restarts failures.<br><br>
+      <span style="color:#71717a">This three-agent team covers production, quality, and reliability. Add more agents only when you have a specific need that these three cannot handle.</span>
+    </div>
+  </div>
+
   <div data-learn="QuizMC" data-props='{"title":"Team Composition Quiz","questions":[{"q":"You are building a content pipeline. Which three agents are essential?","options":["Writer, Scheduler, Monitor","Writer, Editor, Publisher","Analyst, Notifier, Guardian","Scheduler, Monitor, Guardian"],"correct":1,"explanation":"A content pipeline needs: Writer (creates content), Editor (quality control), Publisher (deploys it). Without any one of these, the pipeline has a gap."},{"q":"You are building a self-healing server monitor. Which agent enforces safety rules before allowing restarts?","options":["Notifier","Monitor","Scheduler","Guardian"],"correct":3,"explanation":"The Guardian agent checks compliance rules before allowing potentially dangerous actions like server restarts."},{"q":"Your analytics pipeline runs on a schedule but nobody knows when it breaks. Which missing agent fixes this?","options":["Writer","Editor","Monitor","Publisher"],"correct":2,"explanation":"A Monitor agent watches the pipeline health. Without it, failures go undetected until someone notices the missing report."},{"q":"Why is a team of 3 specialized agents better than 1 agent with 30 tools?","options":["It uses less memory","Specialized agents focus better, fail independently, and check each other\u0027s work","More agents always means better results","It is easier to debug"],"correct":1,"explanation":"Focus (fewer tools = better decisions), separation of concerns (independent failure), and checks and balances (agents reviewing each other) all improve with specialization."},{"q":"An agent team has a Writer and Publisher but no Editor. What is the risk?","options":["No risk \u2014 the Writer checks its own work","Content with errors reaches production unchecked","The Publisher will refuse to deploy","The team will deadlock"],"correct":1,"explanation":"Without an Editor, there is no quality gate. The Writer checking its own work is unreliable \u2014 a separate reviewer catches errors the creator misses."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Agent Roles","cards":[{"front":"Content Writer agent","back":"Generates blog posts, emails, and social copy. Essential for any content pipeline. Keep its tools focused on writing \u2014 not publishing."},{"front":"Editor agent","back":"Reviews, fact-checks, and improves content. The quality gate. An agent checking its own work is unreliable \u2014 always use a separate editor."},{"front":"Publisher agent","back":"Deploys content to websites and platforms. Without it, content sits in drafts forever. Connects to CMS, social APIs, email services."},{"front":"Monitor agent","back":"Watches systems for errors and anomalies. First to know when something breaks. Essential for any production system."},{"front":"Guardian agent","back":"Enforces rules, checks compliance, validates actions. Safety net for the whole system. Guardrails with teeth."},{"front":"Why teams over solo agents?","back":"Focus (fewer tools = better decisions), separation of concerns (independent failure), checks and balances (agents reviewing each other). Three specialists beat one generalist."}]}'></div>

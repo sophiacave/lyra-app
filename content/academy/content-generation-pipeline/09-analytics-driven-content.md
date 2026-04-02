@@ -92,6 +92,63 @@ Be specific. Reference the actual data in your analysis."</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Analytics Dashboard</span>
+  <h2 class="section-title">Building Your Content Analytics Dashboard</h2>
+  <p class="section-text">You don't need enterprise analytics tools to run data-driven content. A simple dashboard tracking the right metrics in a spreadsheet or Notion database is enough. What matters is consistency — tracking the same metrics for every piece, every month, without gaps.</p>
+  <p class="section-text">Your dashboard needs four views:</p>
+  <p class="section-text"><strong>Piece-Level View:</strong> Every content piece with title, format, pillar, publish date, views, engagement rate, conversion rate, and performance tier (A/B/C). This is your raw data — the source of truth for all other views.</p>
+  <p class="section-text"><strong>Template-Level View:</strong> Group pieces by which template produced them. Which templates consistently produce A-tier content? Which ones generate the most C-tier? This tells you where to invest template improvement effort.</p>
+  <p class="section-text"><strong>Pillar-Level View:</strong> Aggregate metrics by content pillar. Is your "AI Productivity" pillar outperforming "Team Adoption" 3:1? That's a signal to shift production emphasis — or to fix the underperforming pillar's templates.</p>
+  <p class="section-text"><strong>Trend View:</strong> Month-over-month performance across all content. Are your average engagement rates rising or falling? Is the pipeline improving or degrading? This is your executive summary — the number that tells you whether the system is working.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Monthly Analytics Review Template</h3>
+  <pre>
+MONTHLY CONTENT PERFORMANCE REVIEW — {{MONTH}} {{YEAR}}
+──────────────────────────────────────────────────────
+VOLUME:
+  - Pieces published: __
+  - Formats used: __
+  - Pillars covered: __
+
+PERFORMANCE:
+  - A-tier pieces (top 20%): __
+  - B-tier pieces (middle 60%): __
+  - C-tier pieces (bottom 20%): __
+
+TOP PERFORMER:
+  - Title: __
+  - Why it worked: __
+  - Pattern to replicate: __
+
+WORST PERFORMER:
+  - Title: __
+  - Why it failed: __
+  - Template fix needed: __
+
+TEMPLATE HEALTH:
+  - Best template: __ (avg score: __)
+  - Worst template: __ (avg score: __)
+  - Templates needing update: __
+
+ACTIONS FOR NEXT MONTH:
+  1. __
+  2. __
+  3. __
+  </pre>
+  <p>Run this review on the first of every month. Feed the "actions" directly into your pipeline as template updates and topic adjustments. The review isn't a report — it's an input for the next cycle.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Predictive Content</span>
+  <h2 class="section-title">Using Data to Predict What Will Work Next</h2>
+  <p class="section-text">After three months of analytics data, you have enough to move from reactive to predictive. Instead of publishing and hoping, you can score topic ideas before writing a single word. Feed your top-performer patterns into a scoring template: Does this topic match the characteristics of our A-tier content? Does it serve a segment that's been under-targeted? Does it fill a gap in our content matrix?</p>
+  <p class="section-text">The scoring prompt: "Based on these patterns from our top 10 performers [PASTE PATTERNS], score this topic idea from 1-10 on: audience relevance, format fit, competitive gap, and alignment with our best-performing hooks. Total score determines priority in the production queue."</p>
+  <p class="section-text">Topics scoring 8+ go straight to production. Topics scoring 5-7 get refined and rescored. Topics scoring below 5 get archived. This prevents wasting pipeline capacity on ideas that your data predicts will underperform. Your hit rate goes up. Your C-tier percentage goes down. The pipeline gets more efficient with every cycle.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Compounding</span>
   <h2 class="section-title">The Pipeline That Teaches Itself</h2>
   <p class="section-text">Every month of data makes next month's content better. Every quarter, your templates are sharper, your topics are more relevant, and your formats are more engaging. This is the compounding effect that separates amateurs from professionals. Not talent — systems that learn.</p>

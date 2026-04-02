@@ -36,6 +36,102 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Architecture Map</span>
+  <h2 class="section-title">AI Infrastructure Stack — Layer by Layer</h2>
+  <p class="section-text">Understanding the full stack helps you see where each component fits. Here is a text-based architecture diagram of a production AI system, from the user's browser to the model and back.</p>
+
+<div class="code-block"><div class="code-label">Text Architecture — Production AI Stack</div>
+<pre><code>┌─────────────────────────────────────────────────┐
+│                   USER BROWSER                  │
+│  (Next.js / React frontend on Vercel CDN)       │
+└──────────────────────┬──────────────────────────┘
+                       │ HTTPS / WebSocket
+                       ▼
+┌─────────────────────────────────────────────────┐
+│              EDGE MIDDLEWARE                     │
+│  • Auth check (JWT validation)                  │
+│  • Rate limiting (sliding window)               │
+│  • Request routing                              │
+└──────────────────────┬──────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────┐
+│           ORCHESTRATION LAYER                    │
+│  (Supabase Edge Functions / serverless)          │
+│                                                  │
+│  1. Check semantic cache for similar query       │
+│  2. If miss → retrieve context via RAG           │
+│  3. Construct prompt with system + context       │
+│  4. Call LLM provider (Claude / GPT)             │
+│  5. Parse + validate response                    │
+│  6. Log tokens, cost, latency                    │
+│  7. Cache response for future queries            │
+│  8. Stream result back to user                   │
+└───────┬──────────┬──────────┬───────────────────┘
+        │          │          │
+        ▼          ▼          ▼
+┌──────────┐ ┌──────────┐ ┌──────────────────────┐
+│ LLM API  │ │ Vector   │ │ PostgreSQL            │
+│ (Claude, │ │ Search   │ │ (Users, sessions,     │
+│  GPT,    │ │ (pgvec)  │ │  subscriptions,       │
+│  Gemini) │ │          │ │  operation logs)       │
+└──────────┘ └──────────┘ └──────────────────────┘</code></pre>
+</div>
+
+  <p class="section-text">Notice the orchestration layer sits at the center. It coordinates every other service — cache, vector search, LLM, relational database, and logging. This is the piece that doesn't exist in traditional web architectures, and it's where most of the engineering complexity lives.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Latency Profiles: Traditional vs. AI</h2>
+  <p class="section-text">One of the most jarring differences when building AI systems is the latency profile. Traditional web apps aim for sub-100ms responses. AI systems routinely take 2-30 seconds for a single operation. Understanding these numbers shapes every architectural decision.</p>
+
+<div class="code-block"><div class="code-label">Latency Comparison Table</div>
+<pre><code>Operation                    │ Traditional Web │ AI-Powered
+─────────────────────────────┼─────────────────┼───────────
+Static page load             │     50-100ms    │   50-100ms
+Database query               │      5-50ms     │    5-50ms
+API call to third party      │    100-500ms    │  100-500ms
+LLM inference (small model)  │       N/A       │   500ms-3s
+LLM inference (large model)  │       N/A       │   2-30s
+Embedding generation         │       N/A       │  100-500ms
+Vector similarity search     │       N/A       │   10-100ms
+Full RAG pipeline            │       N/A       │   1-10s
+─────────────────────────────┼─────────────────┼───────────
+Typical end-to-end           │    200-500ms    │   3-15s</code></pre>
+</div>
+
+  <p class="section-text">This is why streaming is non-negotiable in AI apps. If a user has to wait 10 seconds staring at a blank screen, they'll leave. Streaming partial tokens as they're generated turns a 10-second wait into an engaging experience where the user reads along as the response builds.</p>
+  <p class="section-text">It also explains why caching matters so much more in AI systems. Shaving 50ms off a 200ms response is nice. Eliminating a 5-second LLM call entirely by serving a cached result is transformative — both for user experience and for your budget.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cost Reality</span>
+  <h2 class="section-title">The Economics of AI Infrastructure</h2>
+  <p class="section-text">AI infrastructure costs behave fundamentally differently from traditional hosting. In a traditional app, your biggest costs are fixed — servers, databases, CDN bandwidth. In an AI app, your biggest cost is variable — every API call has a direct marginal cost.</p>
+
+<div class="code-block"><div class="code-label">Monthly Cost Comparison — 10,000 Active Users</div>
+<pre><code>Component                │ Traditional App │ AI-Powered App
+─────────────────────────┼─────────────────┼────────────────
+Hosting (Vercel)         │      $20/mo     │      $20/mo
+Database (Supabase)      │      $25/mo     │      $25/mo
+CDN / Bandwidth          │      $10/mo     │      $10/mo
+Authentication           │      $0/mo      │       $0/mo
+─── Fixed costs total ───┼──── $55/mo ─────┼──── $55/mo ────
+                         │                 │
+AI API calls             │      $0/mo      │  $200-2000/mo
+Embedding generation     │      $0/mo      │    $5-50/mo
+Vector search compute    │      $0/mo      │     $0-10/mo
+─── Variable costs ──────┼──── $0/mo ──────┼─ $205-2060/mo ─
+                         │                 │
+TOTAL                    │    ~$55/mo      │  $260-2115/mo</code></pre>
+</div>
+
+  <p class="section-text">The variable cost component is what makes or breaks AI businesses. Without caching, rate limiting, and model tiering, costs scale linearly with every user interaction. With those optimizations, you can reduce AI costs by 40-70% — turning a money pit into a viable business.</p>
+  <p class="section-text">This is why infrastructure decisions matter so much more for AI apps. A bad database choice in a traditional app costs you some performance. A bad caching strategy in an AI app can cost you thousands of dollars per month.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Pillar One</span>
   <h2 class="section-title">Compute: GPUs, APIs, and the Cost Curve</h2>
   <p class="section-text">AI compute comes in two flavors: self-hosted (running models on your own GPUs) and API-based (calling OpenAI, Anthropic, or similar services). Most teams start with APIs because running your own GPU infrastructure requires serious capital and expertise.</p>
@@ -65,6 +161,17 @@ free: true
   <p class="section-text"><strong>Traditional:</strong> CDN → Load Balancer → App Server → SQL Database</p>
   <p class="section-text"><strong>AI-Enabled:</strong> CDN → Load Balancer → App Server → Orchestration Layer → [LLM API + Vector DB + SQL Database + Cache]</p>
   <p class="section-text">The orchestration layer is the new piece. It decides what to call, when, and how to handle the response. Everything else adapts around it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Streaming</span>
+  <h2 class="section-title">Why Streaming Changes Everything</h2>
+  <p class="section-text">Streaming is not optional in AI applications — it's a fundamental UX requirement. When a response takes 5-15 seconds, streaming partial tokens transforms the experience from "is this broken?" to an engaging real-time conversation. Without streaming, users routinely abandon AI interfaces before the response arrives.</p>
+  <p class="section-text">Every major AI provider — Anthropic, OpenAI, Google — supports streaming natively. The infrastructure cost of implementing streaming is minimal; the user experience cost of not implementing it is enormous.</p>
+  <p class="section-text">Most AI providers support Server-Sent Events (SSE) for streaming. Instead of waiting for the complete response, you receive tokens as they're generated and display them immediately. The user sees text appearing word by word — similar to watching someone type in real time.</p>
+  <p class="section-text">From an infrastructure perspective, streaming requires your entire stack to support it. Your frontend must handle SSE or WebSocket connections. Your backend must proxy the stream without buffering the entire response. And your edge functions must support long-lived connections rather than timing out at 10 seconds.</p>
+  <p class="section-text">Vercel Edge Functions and Supabase Edge Functions both handle streaming natively — no special configuration required.</p>
+  <p class="section-text">The performance perception difference is dramatic. A 10-second response that streams from the first token feels fast. A 3-second response that arrives all at once after a blank screen feels slow. Perceived performance matters as much as actual performance.</p>
 </div>
 
 <div class="try-it-box">

@@ -104,6 +104,126 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Checklist</span>
+  <h2 class="section-title">Team Design Checklist</h2>
+  <p class="section-text">Before you deploy any multi-agent system, walk through this checklist. Every item should have a clear answer. If you're unsure about any item, that's a design gap to address before going to production.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid #34d399;">
+      <h4 style="color: #34d399;">Pre-Deploy Checklist</h4>
+      <code><strong>Workflow Mapping</strong>
+[ ] Full workflow documented end-to-end (input → output)
+[ ] Each step has a clear owner (which agent or human)
+[ ] Dependencies between steps are mapped
+[ ] Parallel opportunities identified
+
+<strong>Agent Design</strong>
+[ ] Each agent has a single, clear responsibility
+[ ] System prompts include both capabilities AND constraints
+[ ] Input/output formats are documented and validated
+[ ] Model tier is matched to task complexity (not "use the best for everything")
+
+<strong>Communication</strong>
+[ ] Handoff format between each pair of agents is defined
+[ ] Shared state schema is documented
+[ ] Conflict resolution strategy is chosen for each potential disagreement
+
+<strong>Reliability</strong>
+[ ] Every agent has a failure mode (what happens when it breaks)
+[ ] Retry logic with backoff is implemented
+[ ] Circuit breakers prevent cascading failures
+[ ] Fallback agents or paths exist for critical steps
+
+<strong>Oversight</strong>
+[ ] Each action has an assigned oversight level
+[ ] Audit trail captures agent, action, input, output, confidence, timestamp
+[ ] Escalation paths are defined for edge cases
+[ ] A human can inspect any decision within 5 minutes
+
+<strong>Cost</strong>
+[ ] Token budgets set per agent per request
+[ ] Caching implemented for repeated queries
+[ ] Cost per completed task is calculated and within budget
+[ ] Alerts set for cost spikes</code>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pitfalls</span>
+  <h2 class="section-title">Common Multi-Agent Pitfalls</h2>
+  <p class="section-text">These are the mistakes that kill multi-agent systems. Every one of them is common, every one of them is preventable, and every one of them will cost you more to fix later than to avoid now.</p>
+
+  <p class="section-text"><strong style="color: #ef4444;">Pitfall 1: Over-Engineering from Day One</strong> — Building a 10-agent system when 3 agents would work fine. Every additional agent adds complexity: more handoffs, more failure points, more prompts to maintain, more costs to track. Start with the minimum viable team. Add agents only when you have evidence — not intuition — that a new specialist is needed. The system that launches with 3 agents and grows to 6 will be more reliable than the one that launches with 8.</p>
+
+  <p class="section-text"><strong style="color: #fb923c;">Pitfall 2: Ignoring the Handoff Points</strong> — Spending all your testing time on individual agents and none on the connections between them. Agent A produces beautiful output. Agent B does excellent work when given perfect input. But the format Agent A produces is subtly different from what Agent B expects, and the result is garbage. The seams between agents are where systems fail. Test every handoff with realistic data, including edge cases and malformed inputs.</p>
+
+  <p class="section-text"><strong style="color: #8b5cf6;">Pitfall 3: No Observability</strong> — Deploying without comprehensive logging and monitoring. When something goes wrong — and it will — you need to trace exactly what happened: which agent received what input, what it produced, how long it took, and what the downstream agents did with that output. Without this, debugging is guesswork. A multi-agent system without observability is a black box that you cannot fix.</p>
+
+  <p class="section-text"><strong style="color: #38bdf8;">Pitfall 4: Treating All Agents Equally</strong> — Using the same model, same timeout, same retry logic for every agent. Your router agent (simple classification) and your analysis agent (complex reasoning) have fundamentally different needs. Tiered model selection, tailored timeouts, and agent-specific error handling are not premature optimization — they are correct engineering.</p>
+
+  <p class="section-text"><strong style="color: #34d399;">Pitfall 5: Forgetting the Human Escape Hatch</strong> — Building a fully autonomous system with no way for a human to intervene, inspect, or override. Even the most reliable systems encounter situations they were not designed for. A human escape hatch is not a sign of weakness — it's a sign of mature engineering. The best systems make it easy for humans to step in when needed and step back when the system is handling things well.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Template</span>
+  <h2 class="section-title">Your Agent Team Architecture Template</h2>
+  <p class="section-text">Use this template as a starting point for any multi-agent system. Fill in each section before writing code. This forces you to think through the design decisions that matter most.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">YAML — Agent team architecture template</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#38bdf8">system_name</span>: <span style="color:#fbbf24">"Your System Name"</span>
+<span style="color:#38bdf8">purpose</span>: <span style="color:#fbbf24">"One-sentence description of what this system does"</span>
+<span style="color:#38bdf8">architecture</span>: <span style="color:#fbbf24">"hub-spoke | pipeline | swarm | hybrid"</span>
+
+<span style="color:#38bdf8">agents</span>:
+  - <span style="color:#38bdf8">name</span>: <span style="color:#fbbf24">"Orchestrator"</span>
+    <span style="color:#38bdf8">role</span>: <span style="color:#fbbf24">"Routes requests and coordinates the team"</span>
+    <span style="color:#38bdf8">model</span>: <span style="color:#fbbf24">"haiku"</span>           <span style="color:#71717a"># cheap — routing is simple</span>
+    <span style="color:#38bdf8">input</span>: <span style="color:#fbbf24">"Raw user request"</span>
+    <span style="color:#38bdf8">output</span>: <span style="color:#fbbf24">"Routing decision + task assignment"</span>
+    <span style="color:#38bdf8">constraints</span>: <span style="color:#fbbf24">"Never fulfills requests directly"</span>
+    <span style="color:#38bdf8">on_failure</span>: <span style="color:#fbbf24">"Route to default agent with low-priority flag"</span>
+
+  - <span style="color:#38bdf8">name</span>: <span style="color:#fbbf24">"Specialist A"</span>
+    <span style="color:#38bdf8">role</span>: <span style="color:#fbbf24">"[Your specialist's one job]"</span>
+    <span style="color:#38bdf8">model</span>: <span style="color:#fbbf24">"sonnet"</span>           <span style="color:#71717a"># mid-tier — needs reasoning</span>
+    <span style="color:#38bdf8">input</span>: <span style="color:#fbbf24">"Structured task from orchestrator"</span>
+    <span style="color:#38bdf8">output</span>: <span style="color:#fbbf24">"Structured result in defined schema"</span>
+    <span style="color:#38bdf8">constraints</span>: <span style="color:#fbbf24">"[What it must never do]"</span>
+    <span style="color:#38bdf8">on_failure</span>: <span style="color:#fbbf24">"Retry 2x, then return partial result with error flag"</span>
+
+  - <span style="color:#38bdf8">name</span>: <span style="color:#fbbf24">"Quality Gate"</span>
+    <span style="color:#38bdf8">role</span>: <span style="color:#fbbf24">"Reviews all outputs before delivery"</span>
+    <span style="color:#38bdf8">model</span>: <span style="color:#fbbf24">"haiku"</span>           <span style="color:#71717a"># cheap — checking is simpler than creating</span>
+    <span style="color:#38bdf8">input</span>: <span style="color:#fbbf24">"Draft output + original request"</span>
+    <span style="color:#38bdf8">output</span>: <span style="color:#fbbf24">"approve | revise (with feedback) | reject"</span>
+    <span style="color:#38bdf8">constraints</span>: <span style="color:#fbbf24">"Never modifies content, only evaluates"</span>
+    <span style="color:#38bdf8">on_failure</span>: <span style="color:#fbbf24">"Pass through with 'unreviewed' flag"</span>
+
+<span style="color:#38bdf8">communication</span>:
+  <span style="color:#38bdf8">format</span>: <span style="color:#fbbf24">"JSON with schema validation at every handoff"</span>
+  <span style="color:#38bdf8">state_management</span>: <span style="color:#fbbf24">"shared state object | message passing | event log"</span>
+  <span style="color:#38bdf8">conflict_resolution</span>: <span style="color:#fbbf24">"weighted vote | authority hierarchy | escalation"</span>
+
+<span style="color:#38bdf8">oversight</span>:
+  <span style="color:#38bdf8">default_level</span>: <span style="color:#fbbf24">"exception-based"</span>
+  <span style="color:#38bdf8">escalation_triggers</span>:
+    - <span style="color:#fbbf24">"Confidence below 0.7"</span>
+    - <span style="color:#fbbf24">"Cost exceeds $X per request"</span>
+    - <span style="color:#fbbf24">"Action involves [high-risk category]"</span>
+  <span style="color:#38bdf8">audit_retention</span>: <span style="color:#fbbf24">"90 days routine, 1 year customer-facing"</span>
+
+<span style="color:#38bdf8">cost_controls</span>:
+  <span style="color:#38bdf8">token_budget_per_agent</span>: <span style="color:#fbbf24">"[max tokens per call]"</span>
+  <span style="color:#38bdf8">cache_strategy</span>: <span style="color:#fbbf24">"Hash-based response cache, 24h TTL"</span>
+  <span style="color:#38bdf8">daily_budget_alert</span>: <span style="color:#fbbf24">"$[threshold]"</span></code></pre>
+</div>
+
+  <p class="section-text">This template encodes every lesson from this course: clear roles, defined constraints, tiered models, structured communication, conflict resolution, oversight levels, and cost controls. Fill it in before you write a single line of agent code, and you'll avoid 80% of the mistakes that kill multi-agent systems.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Course Complete</span>
   <h2 class="section-title">You Now Think in Systems, Not Prompts</h2>
   <p class="section-text">You started this course asking one AI to do everything. Now you understand how to design teams of specialized agents, choose the right architecture, manage shared state, resolve conflicts, scale efficiently, maintain human oversight, and deploy production systems that actually work.</p>

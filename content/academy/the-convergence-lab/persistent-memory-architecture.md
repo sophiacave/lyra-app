@@ -58,6 +58,33 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Implementation</span>
+  <h2 class="section-title">Building a Brain in Practice</h2>
+  <p class="section-text">Here is a concrete implementation using Supabase (PostgreSQL). This is the actual pattern used by production convergence systems — not a toy example:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Step 1: Create the table.</strong> A single <code>brain_context</code> table with columns: <code>key</code> (text, primary key), <code>value</code> (jsonb for flexibility), <code>category</code> (text — identity, directive, session, system), and <code>updated_at</code> (timestamp, auto-updated). This is your semantic memory store.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Step 2: Populate the foundation.</strong> Start with 10-15 keys that define your AI's world: <code>identity.user</code> (who you are), <code>directive.rules</code> (what the AI must always do), <code>directive.guardrails</code> (what the AI must never do), <code>system.infrastructure</code> (what tools are available), <code>session.active_work</code> (what is being worked on right now).</p>
+  <p class="section-text"><strong style="color: var(--green);">Step 3: Add vector support.</strong> Enable pgvector and add an <code>embedding</code> column. Every brain entry gets embedded when created or updated. This enables semantic search — finding memories by meaning, not just by key name.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Step 4: Build the boot sequence.</strong> On every session start, the AI reads its critical keys in parallel: identity, directives, active work, and next steps. This takes under a second and gives the AI full context immediately.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Anti-Patterns</span>
+  <h2 class="section-title">Memory Architecture Mistakes</h2>
+  <p class="section-text"><strong style="color: var(--red);">The everything-in-one-key mistake.</strong> Storing all your rules in a single giant JSON blob under <code>system.config</code>. The AI has to read the entire blob even when it only needs one rule. Break it up: <code>directive.name_safety</code>, <code>directive.autonomy</code>, <code>directive.privacy</code>. Each key is independently readable and updatable.</p>
+  <p class="section-text"><strong style="color: var(--red);">The no-category mistake.</strong> Every key lives in a flat namespace with no grouping. After 500 keys, the AI cannot efficiently find what it needs. Use hierarchical categories: <code>identity.*</code>, <code>directive.*</code>, <code>session.*</code>, <code>project.*</code>. The AI reads an entire category at once instead of guessing individual keys.</p>
+  <p class="section-text"><strong style="color: var(--red);">The write-never-read mistake.</strong> Diligently storing every decision and interaction, but never building retrieval into the agent loop. The brain fills up but the AI never consults it. Memory that is not read is not memory — it is a log file. Build reads into the boot sequence and decision-making loop.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Scale</span>
+  <h2 class="section-title">When Memory Gets Large</h2>
+  <p class="section-text">A brain with 100 keys is easy. A brain with 10,000 keys requires strategy. The AI cannot read everything on boot — that would consume the entire context window. Three solutions:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Tiered loading.</strong> Boot reads only critical keys (identity, active work, directives). Other keys are loaded on-demand when the AI encounters a relevant task. This keeps boot fast while preserving access to everything.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Semantic retrieval.</strong> Instead of loading keys by name, embed the current task description and retrieve the most semantically relevant memories. The AI gets context it did not know it needed — surfacing connections that key-name-based retrieval would miss.</p>
+  <p class="section-text"><strong style="color: var(--green);">Memory consolidation.</strong> Periodically merge old entries into summaries. 200 daily session logs become one quarterly summary. This keeps the brain's active size manageable while preserving historical knowledge in compressed form.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Memory Retrieval That Scales</h2>
   <p class="section-text">Storing everything is easy. Retrieving the right thing at the right time is the hard problem. A brain with 10,000 entries is useless if the AI can't find the one entry it needs in the moment it needs it.</p>

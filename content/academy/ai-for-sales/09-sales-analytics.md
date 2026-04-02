@@ -67,6 +67,92 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Frameworks</span>
+  <h2 class="section-title">Analytics Frameworks That Drive Action</h2>
+  <p class="section-text">Raw numbers mean nothing without a framework to interpret them. Here are three analytics frameworks that turn data into decisions:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">1. The Leaky Bucket Framework:</strong> Map your conversion rate at every pipeline stage. Find the biggest drop-off — that is your leaky bucket. Fix the leak before doing anything else. A 10% improvement at your weakest stage compounds across your entire pipeline.</p>
+    <p><strong style="color: var(--blue);">2. The Efficiency Matrix:</strong> Plot your activities (calls, emails, meetings, proposals) against their revenue outcomes. Identify which activities produce the most revenue per hour invested. Double down on high-ROI activities. Reduce or automate low-ROI ones.</p>
+    <p><strong style="color: var(--purple);">3. The Trend Compass:</strong> Track your five key metrics week over week for at least 8 weeks. Are they trending up, down, or flat? A flat or declining metric that should be growing is an early warning. A rising metric you did not expect is a hidden strength to exploit.</p>
+  </div>
+  <p class="section-text">Ask AI to apply all three frameworks to your data at once. It will find the leak, the efficiency gap, and the trend you missed — in one analysis.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Dashboards</span>
+  <h2 class="section-title">Designing Your AI Sales Dashboard</h2>
+  <p class="section-text">You do not need a BI tool to have a dashboard. AI can create a weekly snapshot from your raw data that gives you everything you need at a glance:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Top Row — Health Indicators:</strong> Total pipeline value, number of active deals, average deal size, weighted forecast for the month. These tell you whether you have enough opportunity to hit your target.</p>
+    <p><strong style="color: var(--blue);">Middle Row — Activity Metrics:</strong> Calls made, emails sent, meetings held, proposals delivered. These tell you whether you are doing enough of the right work.</p>
+    <p><strong style="color: var(--purple);">Bottom Row — Conversion Metrics:</strong> Stage-by-stage conversion rates, win rate, average cycle length, activity-to-revenue ratio. These tell you how efficiently your work converts to revenue.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Generate Your Weekly Dashboard</h3>
+  <div class="prompt-box"><code>Here is my sales data for this week: [PASTE: Calls made, Emails sent, Meetings held, Proposals sent, Deals won, Deals lost, Deal sizes, Pipeline total, New leads added]. Create a weekly dashboard summary with: 1) Health indicators (pipeline value, deal count, weighted forecast), 2) Activity metrics with week-over-week comparison, 3) Conversion rates by stage, 4) One insight I would miss from looking at the numbers alone, 5) The single most important action I should take next week based on this data.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Definitions</span>
+  <h2 class="section-title">The Metric Glossary Every Salesperson Needs</h2>
+  <p class="section-text">Knowing what each metric actually measures — and what it does not measure — prevents you from chasing the wrong numbers:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Close Rate:</strong> Deals won divided by total deals that reached proposal stage. Measures your ability to convert qualified opportunities. Does NOT measure the quality of your prospecting — use lead-to-opportunity rate for that.</p>
+    <p><strong style="color: var(--blue);">Average Deal Size:</strong> Total revenue from won deals divided by number of won deals. Trending up means you are selling bigger or selling more per account. Trending down may signal discounting or smaller accounts entering the pipeline.</p>
+    <p><strong style="color: var(--purple);">Sales Velocity:</strong> Number of opportunities multiplied by average deal size multiplied by close rate, divided by average sales cycle length. This single formula captures pipeline health. Improve any of the four inputs and velocity increases.</p>
+    <p><strong style="color: var(--orange);">Customer Acquisition Cost (CAC):</strong> Total sales and marketing spend divided by new customers acquired. Compare this to customer lifetime value — if CAC exceeds LTV, you are losing money on every sale.</p>
+    <p><strong style="color: var(--red);">Pipeline Coverage Ratio:</strong> Total pipeline value divided by your quota or revenue target. Healthy coverage is typically 3x to 4x your target. Below 3x means you need more top-of-funnel activity immediately.</p>
+  </div>
+  <p class="section-text">Feed these definitions to AI along with your actual numbers and ask it to calculate each metric, interpret the results, and flag any that are outside healthy ranges. Data literacy plus AI analysis equals a sales system that improves itself.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Advanced Analytics: Cohort and Segment Analysis</h2>
+  <p class="section-text">Once you have basic metrics covered, AI can run deeper
+  analyses that reveal hidden patterns in your sales data:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Cohort Analysis:</strong>
+    Group your deals by when they entered the pipeline. Do deals from Q1 close
+    differently than Q3 deals? Are January leads higher quality than July leads?
+    Cohort analysis reveals seasonal patterns and helps you plan prospecting
+    activity around your strongest periods.</p>
+    <p><strong style="color: var(--blue);">Segment Analysis:</strong>
+    Split your deals by industry, company size, deal size, or lead source.
+    Which segments close fastest? Which have the highest average deal size?
+    Which have the best win rate? Segment analysis tells you where to focus
+    your prospecting for maximum return.</p>
+    <p><strong style="color: var(--purple);">Channel Attribution:</strong>
+    Where do your best deals come from? Cold email, LinkedIn, referrals,
+    inbound, events? Track the full journey from first touch to close.
+    AI can map the attribution and tell you which channels deserve more
+    investment and which are wasting your time.</p>
+    <p><strong style="color: var(--orange);">Rep Benchmarking:</strong>
+    If you manage a team, compare metrics across reps. Who has the highest
+    conversion at each stage? Who has the shortest cycle? These benchmarks
+    identify best practices that can be shared across the team — and coaching
+    needs that can be addressed individually.</p>
+  </div>
+  <p class="section-text">AI makes these analyses accessible to anyone with
+  a spreadsheet of deal data. You do not need a data analyst or a BI tool.
+  Paste your data, ask the question, and get insights that used to require
+  a dedicated analytics team.</p>
+</div>
+
+<div class="try-it-box">
+  <h3>Segment Analysis Prompt</h3>
+  <div class="prompt-box"><code>Here are my closed deals from the past 6 months:
+[LIST: Company, Industry, Company Size, Deal Size, Won/Lost, Sales Cycle Days,
+Lead Source, Number of Meetings]. Segment this data by: 1) Industry — which
+industries have the highest win rate and largest average deal? 2) Company size
+— what is the sweet spot for my product? 3) Lead source — which channels
+produce the most revenue per deal? 4) Give me one strategic recommendation
+based on each segment analysis.</code></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Coaching</span>
   <h2 class="section-title">AI as Your Sales Coach</h2>
   <p class="section-text">You don't need an expensive sales coach. AI can review your performance data, your email copy, your call notes, and give you targeted coaching every week. Ask it to score your emails, critique your proposals, or identify the skills you need to develop. The feedback is instant, honest, and available at 2 AM when you're prepping for tomorrow's big meeting.</p>

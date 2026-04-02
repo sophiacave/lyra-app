@@ -88,6 +88,93 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Real-World Application</span>
+  <h2 class="section-title">CoT for Code Debugging</h2>
+  <p class="section-text">Chain-of-thought shines when debugging. Instead of asking "why doesn't this work?", structure the AI's reasoning process.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--red);">
+      <h4 style="color: var(--red);">Without CoT</h4>
+      <code>"My React component re-renders infinitely. Here's the code: [code]. Fix it."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">The AI might give you a fix that works — or it might guess wrong because it skipped the diagnosis.</p>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">With CoT</h4>
+      <code>"My React component re-renders infinitely. Here's the code: [code].
+
+Debug this step by step:
+1. Identify all useEffect hooks and their dependency arrays
+2. Trace which state changes trigger which effects
+3. Find the circular dependency (state change → effect → state change)
+4. Explain exactly which line creates the loop and why
+5. Provide the minimal fix — change as few lines as possible"</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">The AI walks through each step, catches the real root cause, and provides a targeted fix instead of rewriting your component.</p>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced Technique</span>
+  <h2 class="section-title">Self-Consistency: Multiple Reasoning Paths</h2>
+  <p class="section-text">One of the most powerful extensions of CoT is self-consistency — asking the AI to solve the same problem multiple ways and compare results.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+      <h4 style="color: var(--purple);">Self-Consistency Prompt</h4>
+      <code>"Solve this problem using three different approaches:
+
+Approach 1: Work through it mathematically
+Approach 2: Use an analogy or mental model
+Approach 3: Reason from first principles
+
+After all three, compare your answers. If they agree, you can be confident. If they disagree, identify where the reasoning diverges and determine which approach is most reliable for this type of problem."</code>
+    </div>
+  </div>
+
+  <p class="section-text">This technique is especially valuable for ambiguous problems where there's no single "right" method. When multiple reasoning paths converge on the same answer, your confidence in that answer should be high.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">CoT Anti-Patterns to Avoid</h2>
+  <p class="section-text"><strong style="color: var(--red);">Over-specifying steps:</strong> If you dictate 15 micro-steps, you're doing the thinking for the AI. Give it 3-5 high-level steps and let it fill in the details. The sweet spot is structured enough to guide but flexible enough to reason.</p>
+  <p class="section-text"><strong style="color: var(--red);">Using CoT on trivial tasks:</strong> "Think step by step about what the capital of France is" adds latency and tokens without improving accuracy. Reserve CoT for tasks where reasoning genuinely matters.</p>
+  <p class="section-text"><strong style="color: var(--red);">Ignoring the reasoning:</strong> If you ask for step-by-step reasoning but only read the final answer, you're missing the point. The reasoning is where you catch errors, learn the AI's assumptions, and refine your prompt.</p>
+  <p class="section-text"><strong style="color: var(--red);">Forgetting to ask for a conclusion:</strong> Some prompts trigger great reasoning but never ask for a clear final answer. Always end with "Based on this analysis, your recommendation is:" or "Therefore, the answer is:" to ensure a clear deliverable.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Research Insight</span>
+  <h2 class="section-title">The Science Behind CoT</h2>
+  <p class="section-text">Chain-of-thought prompting was formalized in a 2022 paper by Google researchers (Wei et al.). The key finding: CoT improved performance on math word problems from 17.7% to 78.7% accuracy in PaLM 540B. The technique has since been validated across dozens of models and task types.</p>
+  <p class="section-text">Why does it work? Large language models generate one token at a time. When you ask for a direct answer, the model must "compress" all reasoning into the first few tokens of its response. When you ask it to think step by step, each reasoning token becomes context for the next one — the model can build up to the answer incrementally.</p>
+  <p class="section-text">This is why CoT works better on larger models. Smaller models may not have enough capacity to produce useful intermediate reasoning. If you're using a lightweight model and CoT isn't helping, it's not your prompt — the model may simply lack the reasoning capacity to benefit from the technique.</p>
+  <p class="section-text">The practical takeaway: CoT is free. It costs a few extra output tokens but requires no special tools, no fine-tuning, no API changes. It's the single highest-ROI prompting technique available today.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Real-World Application</span>
+  <h2 class="section-title">CoT for Decision Making</h2>
+  <p class="section-text">Chain-of-thought is uniquely powerful for decisions with multiple factors. Here's a decision-making template that produces consistently thoughtful analysis.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+      <h4 style="color: var(--blue);">Decision Analysis Prompt</h4>
+      <code>"I need to decide between [Option A] and [Option B]. Context: [situation].
+
+Analyze this decision step by step:
+1. List the top 3 criteria that matter most for this decision
+2. Score each option against each criterion (1-10) with a one-sentence justification
+3. Identify the biggest risk for each option
+4. Consider: what would I regret more — choosing A and being wrong, or choosing B and being wrong?
+5. Give your recommendation with confidence level (high/medium/low)"</code>
+    </div>
+  </div>
+
+  <p class="section-text">Step 4 — the "regret minimization" question — is what makes this template exceptional. It forces the AI to consider asymmetric risks, not just balanced pros and cons. Many real decisions hinge on which downside is more painful, and this step surfaces that insight.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Compare Direct vs. Chain-of-Thought</h2>
   <div class="try-it-box">

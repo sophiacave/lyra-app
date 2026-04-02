@@ -54,6 +54,89 @@ type: "lesson"
   <p class="section-text"><strong>Step 4 — Mastering:</strong> Normalize loudness to platform standards (-16 LUFS for podcasts, -14 for YouTube, -14 to -11 for music). Auphonic handles this with platform presets. Add final limiting to prevent clipping.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Automated Audio Processing Pipeline</h2>
+  <p class="section-text">Here is a Python script that automates the most common audio editing tasks — noise profiling, normalization, and format conversion — using free, open-source tools:</p>
+  <div class="prompt-box"><code>from pydub import AudioSegment
+from pydub.effects import normalize, compress_dynamic_range
+import subprocess
+import os
+
+def process_audio(input_path, output_path):
+    """Complete audio processing pipeline."""
+
+    # Step 1: Load audio
+    audio = AudioSegment.from_file(input_path)
+    print(f"Loaded: {len(audio)/1000:.1f}s, {audio.frame_rate}Hz")
+
+    # Step 2: Convert to mono if stereo (podcast standard)
+    if audio.channels > 1:
+        audio = audio.set_channels(1)
+
+    # Step 3: Normalize volume
+    audio = normalize(audio)
+
+    # Step 4: Apply gentle compression (even out loud/quiet parts)
+    audio = compress_dynamic_range(
+        audio,
+        threshold=-20.0,   # Start compressing above -20dB
+        ratio=3.0,         # 3:1 compression ratio
+        attack=5.0,        # 5ms attack
+        release=50.0       # 50ms release
+    )
+
+    # Step 5: Target loudness normalization with ffmpeg
+    # Export intermediate file
+    temp_path = "temp_processed.wav"
+    audio.export(temp_path, format="wav")
+
+    # Use ffmpeg loudnorm filter for LUFS targeting
+    subprocess.run([
+        "ffmpeg", "-i", temp_path,
+        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",  # Podcast standard
+        "-ar", "44100",     # Sample rate
+        "-ab", "192k",      # Bit rate
+        output_path
+    ], capture_output=True)
+
+    os.remove(temp_path)
+    print(f"Processed: {output_path}")
+
+# Process a single file
+process_audio("raw_recording.mp3", "mastered_episode.mp3")
+
+# Batch process a folder
+import glob
+for f in glob.glob("raw_episodes/*.mp3"):
+    output = f.replace("raw_episodes", "mastered_episodes")
+    process_audio(f, output)</code></div>
+  <p class="section-text">This script handles 80% of what Auphonic does for free. The ffmpeg <code>loudnorm</code> filter is the same algorithm used by professional broadcast chains. For the remaining 20% — AI noise removal and voice enhancement — Adobe Podcast Enhance and Descript's Studio Sound are still the best options.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">AI Audio Editing Tools: Detailed Comparison</h2>
+  <p class="section-text">Understanding what each tool does best prevents wasted time and subscription costs:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Adobe Podcast Enhance</strong> — What it does: one-click voice cleanup — noise removal, echo reduction, level normalization. Cost: free tier available, included with Creative Cloud. Best for: quick cleanup of interviews, voice memos, field recordings. Limitation: voice-only — does not handle music or sound effects well. The AI is trained specifically on speech and can damage non-speech audio.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Descript</strong> — What it does: text-based editing with Studio Sound enhancement. Cost: free tier, Creator at $24/month. Best for: podcast and video editing where you need to cut content and clean audio simultaneously. Limitation: the text-editing paradigm has a learning curve, and export options are limited on lower tiers.</p>
+  <p class="section-text"><strong style="color: var(--green);">Auphonic</strong> — What it does: automated mastering — loudness normalization, noise reduction, EQ, encoding to platform specs. Cost: 2 hours free/month, then $11/month for 9 hours. Best for: final mastering step before publishing. Limitation: it is a mastering tool, not an editor — it does not cut or rearrange content.</p>
+  <p class="section-text"><strong style="color: var(--blue);">LALAL.AI</strong> — What it does: stem separation — isolates vocals, drums, bass, guitar, piano, and other instruments. Cost: 10 minutes free, packages from $15. Best for: isolating a voice from background music, extracting music beds from video, remixing. Limitation: extreme separation (very quiet instruments) can introduce artifacts.</p>
+  <p class="section-text"><strong style="color: var(--red);">iZotope RX</strong> — What it does: professional-grade AI repair — spectral editing, de-click, de-hum, de-reverb, dialogue isolation. Cost: $129-$1,199 depending on edition. Best for: forensic-level audio repair, broadcast post-production, film audio. Limitation: steep learning curve, expensive, overkill for casual use.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Tips</span>
+  <h2 class="section-title">Common Audio Problems and AI Solutions</h2>
+  <p class="section-text">Here is a troubleshooting guide for the most frequent audio problems and exactly which tool fixes each one:</p>
+  <p class="section-text"><strong>Background noise (fan, AC, traffic):</strong> Adobe Podcast Enhance or iZotope RX Voice De-noise. Both use AI to profile the noise and remove it while preserving speech clarity. For severe noise, run Adobe Enhance first, then apply a gentle noise gate in Audacity to catch residual hum.</p>
+  <p class="section-text"><strong>Room echo / reverb:</strong> iZotope RX De-reverb is the gold standard. Adobe Podcast Enhance handles moderate echo well. Prevention is better than cure — record in a small, furnished room. A closet full of clothes is acoustically excellent.</p>
+  <p class="section-text"><strong>Volume inconsistency (quiet then loud):</strong> Auphonic's adaptive leveler handles this automatically. Manually, apply compression (ratio 3:1, threshold -18dB) followed by normalization to your target LUFS. This evens out the dynamic range without making everything sound flat.</p>
+  <p class="section-text"><strong>Mouth clicks and pops:</strong> iZotope RX De-click with "mouth de-click" mode. For a free alternative, use Audacity's Click Removal effect with sensitivity set to 200 and minimum click width at 20. Multiple passes at low sensitivity work better than one aggressive pass.</p>
+  <p class="section-text"><strong>Sibilance (harsh S and T sounds):</strong> Apply a de-esser targeting 4-8kHz. iZotope RX has a dedicated De-ess module. In Audacity, use the Equalizer to gently reduce frequencies around 6-7kHz by 3-5dB. Over-de-essing makes speech sound lispy — use a light touch.</p>
+  <p class="section-text"><strong>Clipping (audio too loud, distorted):</strong> iZotope RX De-clip can repair moderate clipping by reconstructing the waveform peaks. Severe clipping is not recoverable — the original signal is permanently destroyed. Prevention: always record with input levels peaking around -12dB, giving you headroom for louder moments.</p>
+</div>
+
 <div class="demo-container">
   <h3>Platform Loudness Standards</h3>
   <p><strong>Podcasts (Apple/Spotify):</strong> -16 LUFS, -1dB true peak</p>

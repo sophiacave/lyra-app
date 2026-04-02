@@ -76,6 +76,90 @@ free: true
   <p class="section-text">This course isn't about making you feel guilty for using AI. It's about making you <em>effective</em> at using AI without causing harm — to others or to yourself.</p>
 </div>
 
+<!-- SECTION: CASE STUDIES -->
+<div class="lesson-section">
+  <span class="section-label">Case Studies</span>
+  <h2 class="section-title">When AI ethics failures made headlines.</h2>
+  <p class="section-text">These aren't hypothetical scenarios. These are real events that happened because ethical guardrails were missing or ignored. Each one illustrates why AI ethics is a practical concern, not an academic exercise.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Amazon's Hiring Tool (2018)</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Amazon built an AI recruiting tool trained on 10 years of resumes. The system learned to penalize resumes containing the word "women's" (as in "women's chess club") and downgraded graduates of all-women's colleges. It reflected the bias in the historical data: a male-dominated tech industry. Amazon scrapped the tool.</p>
+      </div>
+      <div style="padding:14px;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">COMPAS Recidivism Algorithm</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The COMPAS algorithm, used in U.S. courts to predict recidivism risk, was found to be nearly twice as likely to falsely flag Black defendants as future criminals compared to white defendants. Judges used these scores in sentencing decisions, affecting real people's freedom.</p>
+      </div>
+      <div style="padding:14px;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Lawyer's Fake Citations (2023)</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">A New York attorney used ChatGPT to research a legal brief and submitted it to court with six case citations — none of which existed. The AI had hallucinated plausible-sounding cases complete with docket numbers. The lawyer was sanctioned. Trust AI for brainstorming, not for facts.</p>
+      </div>
+      <div style="padding:14px;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Healthcare Algorithm Racial Bias (2019)</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">A healthcare algorithm used by hospitals to prioritize patients for extra care was found to systematically deprioritize Black patients. It used healthcare costs as a proxy for health needs — but because Black patients historically had less access to healthcare, their costs were lower, making them appear "healthier" to the algorithm.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: ETHICAL FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Frameworks</span>
+  <h2 class="section-title">Ethical frameworks beyond TRUST.</h2>
+  <p class="section-text">TRUST is the practical framework we'll use throughout this course, but it doesn't exist in a vacuum. Understanding the broader philosophical traditions behind AI ethics helps you reason through situations the framework doesn't explicitly cover.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Consequentialism</span> — Judge AI use by its outcomes. Does this AI application create more good than harm? Who benefits, who is harmed, and are the benefits distributed fairly?</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Deontology</span> — Some actions are inherently right or wrong regardless of outcomes. Using AI to deceive people is wrong even if no one gets hurt. Respecting privacy is right even when violating it would be efficient.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Virtue Ethics</span> — What kind of person do you want to be? Using AI ethically isn't just about following rules — it's about developing the character traits (honesty, responsibility, care for others) that lead to consistently good decisions.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Care Ethics</span> — Prioritize relationships and the impact on vulnerable people. When making AI decisions, ask: who is most vulnerable in this situation? How does this affect people with less power, fewer resources, or greater risk?</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: STAKEHOLDER IMPACT -->
+<div class="lesson-section">
+  <span class="section-label">Stakeholders</span>
+  <h2 class="section-title">Stakeholder impact analysis: who is affected by your AI use?</h2>
+  <p class="section-text">Every time you use AI, multiple stakeholders are affected — most of whom you've never thought about. Running a quick stakeholder impact analysis before high-stakes AI use helps you anticipate problems.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Direct</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">People who directly receive AI output</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Clients who read AI-assisted reports, candidates screened by AI-generated criteria, customers who interact with AI chatbots, students who learn from AI-created materials. These people bear the most immediate impact of quality and bias.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Indirect</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">People affected by decisions based on AI output</div>
+          <div style="color:#a1a1aa;font-size:.85rem">If AI-assisted analysis leads to a business decision that affects employees, communities, or markets — those people are stakeholders even though they never saw the AI output directly.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Silent</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">People whose data trained the AI</div>
+          <div style="color:#a1a1aa;font-size:.85rem">The millions of people whose writing, art, code, and conversations were used to train AI models. They had no say in how their work would be used, and they receive no compensation when AI produces value from their collective contributions.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Future</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Future users and society</div>
+          <div style="color:#a1a1aa;font-size:.85rem">How we use AI today shapes the norms, regulations, and expectations for tomorrow. Responsible use now creates a healthier AI ecosystem for everyone who comes after us. Irresponsible use creates the case studies future ethics courses will teach from.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 4: FRAMEWORK -->
 <div class="lesson-section">
   <span class="section-label">The Framework</span>

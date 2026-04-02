@@ -53,6 +53,92 @@ type: "lesson"
   <p class="section-text"><strong>Provide escape hatches.</strong> "You can say 'start over' at any time." Voice-only interfaces can feel like a trap if users don't know how to navigate. Always offer a way out.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Building a Voice Assistant in Python</h2>
+  <p class="section-text">Here is a complete voice loop in Python that listens, thinks, and speaks — the same architecture powering commercial voice assistants:</p>
+  <div class="prompt-box"><code>import speech_recognition as sr
+from openai import OpenAI
+import edge_tts
+import asyncio
+import subprocess
+
+client = OpenAI()
+recognizer = sr.Recognizer()
+
+async def speak(text):
+    """Convert text to speech using Edge TTS (free)."""
+    communicate = edge_tts.Communicate(text, "en-US-JennyNeural")
+    await communicate.save("response.mp3")
+    subprocess.run(["afplay", "response.mp3"])  # macOS playback
+
+def listen():
+    """Capture speech from microphone and convert to text."""
+    with sr.Microphone() as source:
+        print("Listening...")
+        recognizer.adjust_for_ambient_noise(source, duration=0.5)
+        audio = recognizer.listen(source, timeout=10)
+
+    try:
+        text = recognizer.recognize_google(audio)  # Free Google STT
+        print(f"You said: {text}")
+        return text
+    except sr.UnknownValueError:
+        return None
+
+def think(user_input, conversation_history):
+    """Process input with an LLM and generate a response."""
+    conversation_history.append({"role": "user", "content": user_input})
+
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[{
+            "role": "system",
+            "content": "You are a helpful voice assistant. Keep responses "
+                       "under 3 sentences. Be conversational and warm."
+        }] + conversation_history
+    )
+
+    reply = response.choices[0].message.content
+    conversation_history.append({"role": "assistant", "content": reply})
+    return reply
+
+# Main voice loop
+history = []
+print("Voice assistant ready. Say 'goodbye' to exit.")
+while True:
+    user_text = listen()
+    if user_text is None:
+        continue
+    if "goodbye" in user_text.lower():
+        asyncio.run(speak("Goodbye! It was nice talking with you."))
+        break
+    response = think(user_text, history)
+    asyncio.run(speak(response))</code></div>
+  <p class="section-text">This runs on any Mac or Linux machine with a microphone. The architecture is identical to commercial assistants: ears (speech_recognition) capture audio, brain (GPT-4) processes it, mouth (Edge TTS) speaks the response. Swap components to upgrade — Deepgram for faster STT, ElevenLabs for better TTS, Claude for a different thinking style.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Latency: The Make-or-Break Metric</h2>
+  <p class="section-text">Voice interfaces live or die on latency. In a normal conversation, the gap between one person finishing and another responding is about 200-400 milliseconds. If your voice app takes longer than 1.5 seconds to respond, users perceive it as broken. Here is where latency hides and how to crush it:</p>
+  <p class="section-text"><strong>STT latency:</strong> Batch transcription (send audio, wait for full text) adds 1-3 seconds. Streaming transcription (send audio in real-time, get text as it arrives) reduces this to 100-300ms. Deepgram streaming is the fastest option. The Web Speech API in browsers is surprisingly good for prototypes.</p>
+  <p class="section-text"><strong>LLM latency:</strong> The brain is usually the bottleneck. GPT-4 takes 2-5 seconds for a response. GPT-3.5-turbo or Claude Haiku respond in 0.5-1 second. Use streaming responses — start speaking the first sentence while the LLM is still generating the rest. This alone cuts perceived latency by 50%.</p>
+  <p class="section-text"><strong>TTS latency:</strong> Cloud TTS adds 0.5-2 seconds for generation plus network round-trip. Edge TTS is faster than ElevenLabs for real-time applications. For the lowest latency, use browser-native speechSynthesis (low quality but instant) or cache common responses as pre-generated audio files.</p>
+  <p class="section-text"><strong>The streaming trick:</strong> The best voice apps stream everything. STT streams partial transcripts to the LLM. The LLM streams tokens to TTS. TTS streams audio chunks to the speaker. Nothing waits for anything else to finish. This pipelining approach gets total response time under 1 second even with cloud services.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Use Cases</span>
+  <h2 class="section-title">Real-World Voice Interface Applications</h2>
+  <p class="section-text">Voice interfaces are not just about assistants. Here are the most valuable applications being built today:</p>
+  <p class="section-text"><strong>Voice-to-CRM:</strong> Sales reps speak their notes after a call. The system transcribes, extracts key details (contact name, deal size, next steps), and updates the CRM automatically. No typing. No forgetting. Every interaction is captured.</p>
+  <p class="section-text"><strong>Accessibility tools:</strong> Voice-controlled interfaces for users with motor disabilities. Screen readers enhanced with natural-sounding TTS. Real-time captioning for deaf users in meetings. AI voice interfaces are one of the most impactful accessibility technologies available.</p>
+  <p class="section-text"><strong>Language tutoring:</strong> A voice AI that speaks a target language, listens to the student's pronunciation, provides corrections, and adapts difficulty based on performance. The AI never loses patience and is available 24/7.</p>
+  <p class="section-text"><strong>Phone agents:</strong> Businesses deploying AI voice agents that answer calls, schedule appointments, handle FAQs, and transfer to humans only when needed. Platforms like Vapi and Bland AI make this deployable without building infrastructure from scratch.</p>
+  <p class="section-text"><strong>In-car interfaces:</strong> Voice-first design is mandatory when users' hands and eyes are occupied. Navigation, music, messaging, and vehicle controls all benefit from conversational AI that understands context — "Take me to that coffee shop we went to last Tuesday" instead of typing an address.</p>
+</div>
+
 <div class="demo-container">
   <h3>Voice Interface Building Blocks</h3>
   <p><strong>Web Speech API:</strong> Built into browsers. Free. Good for prototypes.</p>

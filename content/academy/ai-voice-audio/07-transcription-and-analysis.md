@@ -53,6 +53,74 @@ type: "lesson"
   <p class="section-text"><strong>Searchable Archives:</strong> Transcribe your entire audio library. Index it. Now you can search across hundreds of hours of recordings by keyword. Your meeting notes, podcast episodes, voice memos — all searchable in seconds.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Building a Transcription Pipeline in Python</h2>
+  <p class="section-text">Here is a complete pipeline that transcribes audio, identifies speakers, and generates a structured summary — all automated:</p>
+  <div class="prompt-box"><code>import whisper
+from openai import OpenAI
+
+# Step 1: Transcribe with Whisper (local, free, private)
+model = whisper.load_model("base")  # Options: tiny, base, small, medium, large
+result = model.transcribe("meeting_recording.mp3")
+transcript = result["text"]
+
+# Step 2: Get timestamped segments
+segments = result["segments"]
+for seg in segments[:5]:  # Preview first 5 segments
+    start = f"{seg['start']:.1f}s"
+    end = f"{seg['end']:.1f}s"
+    print(f"[{start} - {end}] {seg['text']}")
+
+# Step 3: Analyze with Claude/GPT
+client = OpenAI()
+analysis = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{
+        "role": "user",
+        "content": f"""Analyze this meeting transcript:
+
+{transcript}
+
+Provide:
+1. Executive summary (3 sentences)
+2. Key decisions made
+3. Action items with owners (if identifiable)
+4. Unresolved questions
+5. Suggested follow-up topics"""
+    }]
+)
+print(analysis.choices[0].message.content)
+
+# Step 4: Save structured output
+with open("meeting_analysis.md", "w") as f:
+    f.write("# Meeting Analysis\n\n")
+    f.write(f"## Transcript\n{transcript}\n\n")
+    f.write(f"## Analysis\n{analysis.choices[0].message.content}")</code></div>
+  <p class="section-text">This pipeline runs entirely on your local machine (Whisper) plus one API call for analysis. For a 30-minute meeting, Whisper base model takes about 2-3 minutes on a modern laptop. The large model takes longer but handles accents and technical jargon significantly better.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Choosing the Right Transcription Tool</h2>
+  <p class="section-text">Each transcription tool has a specific sweet spot. The wrong choice wastes time or money:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Whisper (local)</strong> — Best when: privacy matters, budget is zero, you have time. Speed: 1-5x slower than real-time depending on model size. Accuracy: 95-99% on clean audio in major languages. Run the "large-v3" model for best accuracy or "tiny" for fast drafts. No internet required.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Deepgram Nova-2</strong> — Best when: speed is critical, real-time streaming needed, production applications. Speed: faster than real-time. Accuracy: matches Whisper large model. Cost: $0.0043/minute. Unique: WebSocket streaming API, custom vocabulary for domain-specific terms.</p>
+  <p class="section-text"><strong style="color: var(--green);">AssemblyAI Universal</strong> — Best when: you need analysis beyond raw transcription. Speed: near real-time. Accuracy: competitive with Whisper large. Cost: $0.00025/second ($0.015/minute). Unique: built-in sentiment analysis, topic detection, PII redaction, content moderation — all in one API call.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Descript</strong> — Best when: you are editing audio/video content. Speed: fast. Accuracy: excellent. Cost: $24/month for Creator plan. Unique: transcript and audio are linked — edit text to edit audio. Not an API — it is an editing application.</p>
+  <p class="section-text"><strong>Decision framework:</strong> If privacy matters most, use Whisper locally. If speed matters most, use Deepgram. If you need analysis on top of transcription, use AssemblyAI. If you are editing content, use Descript. If budget is zero and you need decent quality, use Whisper tiny or base model.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Building Searchable Audio Knowledge Bases</h2>
+  <p class="section-text">The real power of transcription is not individual files — it is what happens when you transcribe everything and make it searchable. Here is how to build an audio knowledge base:</p>
+  <p class="section-text"><strong>Batch transcription:</strong> Write a script that watches a folder for new audio files and automatically transcribes them. Whisper handles this well locally. Deepgram's batch API handles it at scale in the cloud. Either way, every recording in your archive becomes searchable text.</p>
+  <p class="section-text"><strong>Semantic indexing:</strong> Raw keyword search misses context. Use embeddings (OpenAI, HuggingFace BGE-small, or Cohere) to convert each transcript segment into a vector. Store these in a vector database (Supabase pgvector, Pinecone, or Chroma). Now you can search by meaning — "discussions about pricing strategy" finds relevant segments even if the word "pricing" was never spoken.</p>
+  <p class="section-text"><strong>RAG over audio:</strong> Combine your searchable archive with an LLM. Ask questions like "What did we decide about the Q3 launch timeline across all meetings in March?" The system retrieves relevant transcript segments and synthesizes an answer. This turns hours of recordings into an answerable knowledge base.</p>
+  <p class="section-text"><strong>Practical applications:</strong> Legal firms search depositions. Journalists search interview archives. Product teams search user research recordings. Sales teams search call recordings for objection patterns. Medical researchers search patient interviews. The use cases are everywhere once the infrastructure exists.</p>
+</div>
+
 <div class="demo-container">
   <h3>Transcription Use Cases</h3>
   <p><strong>Content Repurposing:</strong> Record once → transcribe → blog post, social clips, newsletter</p>

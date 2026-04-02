@@ -48,6 +48,40 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Chart Selection Guide</span>
+  <h2 class="section-title">Matching Data to Chart Type</h2>
+  <p class="section-text">Choosing the wrong chart is one of the most common visualization mistakes. Here is a decision framework you can use every time:</p>
+
+  <div class="demo-container" style="border-left: 3px solid var(--orange); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Ask: "What am I showing?"</strong></p>
+    <p><strong>Change over time →</strong> Line chart (continuous) or bar chart (discrete periods)</p>
+    <p><strong>Comparison between categories →</strong> Bar chart (horizontal for long labels, vertical for time-based)</p>
+    <p><strong>Part of a whole →</strong> Pie chart (under 5 slices) or stacked bar (more categories)</p>
+    <p><strong>Relationship between variables →</strong> Scatter plot or bubble chart</p>
+    <p><strong>Distribution of values →</strong> Histogram or box plot</p>
+    <p><strong>Geographic patterns →</strong> Map or choropleth</p>
+    <p><strong>Composition over time →</strong> Stacked area chart</p>
+  </div>
+
+  <p class="section-text"><strong>Common mistakes to avoid:</strong></p>
+  <p class="section-text">Using a pie chart with 12 slices — the human eye cannot reliably compare angles beyond 5 segments. Switch to a horizontal bar chart.</p>
+  <p class="section-text">Using a line chart for unrelated categories — lines imply continuity and connection between points. If there is no natural order, use bars instead.</p>
+  <p class="section-text">Using 3D effects — they distort perception and make data harder to read. Always use flat, 2D charts for accuracy.</p>
+  <p class="section-text">Truncating the y-axis — starting at a number other than zero makes small changes look dramatic. If you must truncate, label it clearly.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Design Principles</span>
+  <h2 class="section-title">Visual Design That Works</h2>
+  <p class="section-text">Good chart design follows a few universal principles. Ask AI to apply these when generating visualizations:</p>
+  <p class="section-text"><strong>Data-ink ratio:</strong> Every pixel should communicate data. Remove gridlines, borders, backgrounds, and decorations that do not carry information. Less ink, more insight.</p>
+  <p class="section-text"><strong>Color with purpose:</strong> Use color to highlight the important thing, not to decorate. One accent color for the key data point, muted tones for everything else. Never use red and green together — colorblind viewers cannot distinguish them.</p>
+  <p class="section-text"><strong>Readable labels:</strong> Every axis needs a label. Every label needs units. If a viewer has to guess what the numbers mean, the chart has failed.</p>
+  <p class="section-text"><strong>Annotation over decoration:</strong> Instead of adding clip art or fancy backgrounds, add annotations that point out the key insight directly on the chart. A callout arrow saying "Campaign launched here" is worth more than any gradient.</p>
+  <p class="section-text"><strong>Consistent scales:</strong> When comparing two charts side by side, use the same y-axis scale. Different scales create the illusion of different magnitudes when the data may be similar.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--green);">Practical Method</span>
   <h2 class="section-title">The AI Visualization Workflow</h2>
 
@@ -102,6 +136,16 @@ plt.show()</code></pre>
   <p class="section-text"><strong>Bad title:</strong> "Revenue Data 2024"</p>
   <p class="section-text"><strong>Good title:</strong> "Revenue grew 34% after the March campaign launch"</p>
   <p class="section-text">Ask AI to title your charts with the insight, not the topic. This one change makes every visualization ten times more effective.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Advanced</span>
+  <h2 class="section-title">Multi-Chart Dashboards</h2>
+  <p class="section-text">Individual charts answer individual questions. Dashboards answer business questions by combining multiple visualizations into a coherent view:</p>
+  <p class="section-text"><strong>The overview-detail pattern:</strong> Start with a high-level summary chart (total revenue over time) followed by breakdown charts (revenue by product, by region, by customer segment). The viewer gets context first, then detail.</p>
+  <p class="section-text"><strong>The comparison pattern:</strong> Place related charts side by side with identical axes. This month vs. last month. Our product vs. competitor. Plan A vs. Plan B. Identical scales make comparison instant and accurate.</p>
+  <p class="section-text"><strong>The funnel pattern:</strong> Show a process from start to finish — website visitors to signups to purchases to repeat purchases. Each stage shows the drop-off, making it visually obvious where the biggest opportunity lies.</p>
+  <p class="section-text">Ask AI: "Design a dashboard layout for [your use case]. Tell me which charts go where, what type each should be, and what insight each chart should highlight."</p>
 </div>
 
 <div class="try-it-box">

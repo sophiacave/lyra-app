@@ -68,6 +68,32 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Architecture</span>
+  <h2 class="section-title">Designing the Decision Engine</h2>
+  <p class="section-text">An autonomous agent's decision engine is the bridge between perception and action. It takes the current state of the world (from perception) and produces a plan (for execution). The quality of this engine determines whether the agent makes good decisions or chaotic ones.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Rule-based decisions:</strong> For known situations, the agent follows explicit rules. "If the deploy fails, rollback. If a ticket is P0, escalate immediately. If the user is offline, queue the notification." These are fast, predictable, and debuggable. Encode them as directives in the brain.</p>
+  <p class="section-text"><strong style="color: var(--purple);">LLM-based reasoning:</strong> For novel situations where no rule applies, the agent uses an LLM to reason about the best action. The LLM receives the current state, the agent's goals, its memory, and its values — then produces a plan. This is slower and less predictable, but handles situations no rule could anticipate.</p>
+  <p class="section-text"><strong style="color: var(--green);">Hybrid approach:</strong> The most effective agents use both. Check rules first (fast, cheap). If no rule matches, fall back to LLM reasoning (flexible, expensive). This tiered approach minimizes API costs while maximizing coverage.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Safety</span>
+  <h2 class="section-title">Guardrails for Autonomous Agents</h2>
+  <p class="section-text">Autonomy without guardrails is chaos. Every autonomous agent needs three types of safety constraints:</p>
+  <p class="section-text"><strong style="color: var(--red);">Action limits:</strong> Cap the number of actions per cycle. An agent in an infinite loop can send thousands of emails, make hundreds of API calls, or burn through your entire cloud budget in minutes. Set maximum actions per loop iteration, per hour, and per day.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Spending limits:</strong> Any agent that can spend money must have a hard ceiling. "Never spend more than $10 without human approval." "Never exceed $100/day total across all agents." These are non-negotiable and must be enforced at the system level, not just in the agent's instructions.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Irreversibility checks:</strong> Before taking an action that cannot be undone — deleting data, sending a public communication, transferring money — the agent must pause and verify. Reversible actions can be taken freely. Irreversible actions require an extra confirmation step, even at L6 autonomy.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Growth</span>
+  <h2 class="section-title">Earning Higher Autonomy</h2>
+  <p class="section-text">Trust between human and AI is earned, not declared. Start your agent at L2 or L3. Watch how it performs. When it consistently makes good decisions, promote it. When it makes a mistake, analyze why and adjust the guardrails.</p>
+  <p class="section-text">This is the same pattern used in every trust relationship: demonstrate competence, earn responsibility, get more freedom. An agent that starts at L6 with no track record is a liability. An agent that earns L6 over weeks of proven performance is a partner.</p>
+  <p class="section-text">Document the promotion criteria in the brain: "Agent promoted to L4 on 2026-03-15 after 30 days of zero errors in deploy operations." This creates an audit trail and helps new team members understand why the agent has its current level of autonomy.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Principle</span>
   <h2 class="section-title">The Three-Strike Rule</h2>
   <p class="section-text">Before an agent surfaces a question to the human, it must pass three checks. First: can the brain answer this? Read the memory. Second: can you make a reasonable decision? Use judgment. Third: can you try something and course-correct? Experiment.</p>

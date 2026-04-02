@@ -81,8 +81,75 @@ soft muted palette, gentle and inviting atmosphere</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">The Visual AI Landscape</span>
+  <h2 class="section-title">A quick map of the tools shaping this revolution.</h2>
+  <p class="section-text">The AI image space is not one tool — it is an ecosystem. Understanding the landscape at a high level helps you navigate it with confidence. Here are the major categories:</p>
+  <p class="section-text"><strong>Text-to-image generators:</strong> These are the tools that turn your written descriptions into images. DALL-E (built into ChatGPT), Midjourney (known for stunning aesthetics), Stable Diffusion (open source, runs on your own computer), and Adobe Firefly (designed for commercial safety) are the current leaders. Each has a distinct personality — the same prompt produces noticeably different results across tools.</p>
+  <p class="section-text"><strong>Text-to-video generators:</strong> The next frontier. Tools like Runway Gen-3, Pika, Kling AI, and Sora can generate short video clips from text descriptions or animate still images. The clips are typically 4-16 seconds, but the quality is improving rapidly.</p>
+  <p class="section-text"><strong>Editing and enhancement tools:</strong> Once you generate an image, tools like Photoshop (with Firefly's Generative Fill), Topaz Gigapixel (for upscaling), and Canva (for design and layout) help you refine and use your creations professionally.</p>
+  <p class="section-text"><strong>Specialized tools:</strong> Ideogram excels at putting readable text in images. Leonardo AI is popular for game assets. Google's Imagen is integrated into the Google ecosystem. New tools emerge every month.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Key Comparisons</span>
+  <h2 class="section-title">How the major tools differ — and why it matters to you.</h2>
+  <p class="section-text">Choosing the right tool is not about finding "the best" one. It is about finding the one that fits how you work and what you create. Here is a practical comparison:</p>
+</div>
+
+<div class="demo-container" style="border-left: 3px solid var(--purple); padding: 1.2rem; margin: 2rem 0; background: var(--bg);">
+  <h3 style="color: var(--purple);">Tool comparison at a glance</h3>
+  <ul>
+    <li><strong>DALL-E (ChatGPT):</strong> Easiest to start. Best at following precise instructions. Free tier available. Great for beginners and people who want conversational control.</li>
+    <li><strong>Midjourney:</strong> Most visually striking output. Cinematic, painterly default style. Starts at $10/month. Best for artistic projects and concept art.</li>
+    <li><strong>Stable Diffusion:</strong> Open source, runs locally. Maximum control, zero ongoing cost. Steeper learning curve. Best for technical users who want full control.</li>
+    <li><strong>Adobe Firefly:</strong> Trained on licensed content. Safest for commercial work. IP indemnity available. Best for business and brand use.</li>
+    <li><strong>Bing Image Creator:</strong> Completely free, powered by DALL-E. Best free option for casual exploration.</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">What AI Cannot Do (Yet)</span>
+  <h2 class="section-title">Honest expectations save you frustration.</h2>
+  <p class="section-text">AI image generation is remarkable, but it has real limitations you should know about upfront:</p>
+  <p class="section-text"><strong>Hands and fingers:</strong> AI has improved dramatically here, but complex hand poses can still produce extra or oddly bent fingers. This is improving with every model update, but it is worth checking.</p>
+  <p class="section-text"><strong>Specific text in images:</strong> Most tools struggle to render readable text within images. Ideogram is an exception — it was built specifically for this. For all other tools, plan to add text in a design app afterward.</p>
+  <p class="section-text"><strong>Exact replication:</strong> If you need the exact same character to appear consistently across multiple images, most tools will vary the appearance slightly each time. Some tools offer "character reference" features, but consistency remains a challenge.</p>
+  <p class="section-text"><strong>Complex spatial relationships:</strong> Prompts like "the red ball is on top of the blue box which is behind the green cylinder" can confuse current models. Simple, clear spatial descriptions work best.</p>
+  <p class="section-text">These limitations are shrinking rapidly. What was impossible a year ago is routine today. But knowing the current boundaries helps you work with the tools effectively rather than fighting against them.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Accessibility Factor</span>
+  <h2 class="section-title">This technology is for everyone. That is the point.</h2>
+  <p class="section-text">Before AI image generation, creating professional visuals required one of three things: artistic talent developed over years of practice, expensive software with a steep learning curve, or a budget to hire designers. AI removes all three barriers at once.</p>
+  <p class="section-text">A small business owner in a rural town has the same access to visual creation as a design agency in New York. A student with a free ChatGPT account can create presentation visuals that rival corporate marketing departments. A writer who has never drawn a straight line can visualize their characters and worlds.</p>
+  <p class="section-text">This is not about replacing designers — talented human designers create work that AI cannot match in terms of intentionality, cultural nuance, and strategic thinking. It is about giving everyone a baseline level of visual capability that did not exist before. The playing field has leveled, and that is genuinely exciting.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Who Uses AI Visuals</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">From Consumer to Creator</span>
+  <h2 class="section-title">The shift from consuming images to creating them changes everything.</h2>
+  <p class="section-text">For most of human history, image creation required specialized skill. Photography democratized capturing reality. Smartphones democratized distribution. AI image generation democratizes creation itself. You no longer need to find an existing image that approximately matches your idea — you can bring the exact image in your mind into existence.</p>
+  <p class="section-text">This has practical implications that go far beyond making pretty pictures:</p>
+  <p class="section-text"><strong>Communication:</strong> Instead of describing what you mean, you can show it. A product idea, a room renovation concept, a character for your story — visual communication is faster and more precise than words alone. AI bridges the gap between imagination and expression.</p>
+  <p class="section-text"><strong>Rapid prototyping:</strong> Test visual concepts in minutes instead of days. A marketing team can explore ten campaign visual directions before lunch. An architect can show a client five design moods in one meeting. Speed of visualization becomes a competitive advantage.</p>
+  <p class="section-text"><strong>Personal expression:</strong> People who never considered themselves "visual" suddenly have a visual voice. Journaling with generated images. Creating personalized gifts. Visualizing dreams and memories. The barrier between thought and visual expression has essentially disappeared.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Looking Ahead</span>
+  <h2 class="section-title">Where this technology is heading in the next 12 months.</h2>
+  <p class="section-text">The pace of improvement in AI visual generation is accelerating, not slowing down. Here is what is coming:</p>
+  <p class="section-text"><strong>Longer, better video:</strong> Today's 4-16 second clips will extend to minutes. Coherent, cinematic AI video that tells complete short stories is on the near horizon.</p>
+  <p class="section-text"><strong>Real-time generation:</strong> Some tools already generate images in under a second. As this speeds up further, AI image generation will feel as instant as taking a photo.</p>
+  <p class="section-text"><strong>3D and spatial:</strong> AI is beginning to generate not just flat images but 3D objects and environments. This has massive implications for gaming, architecture, product design, and virtual reality.</p>
+  <p class="section-text"><strong>Deeper integration:</strong> AI image generation is being embedded directly into design tools, presentation software, email clients, and even word processors. Within a year, generating an image will be as natural as inserting an emoji — just part of how you communicate.</p>
+  <p class="section-text">By learning these skills now, you are not just picking up a trendy tool. You are developing a fundamental literacy that will be as important as typing or using a search engine. This course gives you that foundation.</p>
 </div>
 
 <div class="lesson-section">

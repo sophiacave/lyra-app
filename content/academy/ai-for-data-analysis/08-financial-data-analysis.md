@@ -46,6 +46,40 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Metrics</span>
+  <h2 class="section-title">Essential Financial Metrics</h2>
+  <p class="section-text">Understanding these metrics turns raw financial data into business intelligence. Ask AI to calculate them from your data:</p>
+  <p class="section-text"><strong>Gross margin:</strong> (Revenue - Cost of Goods Sold) / Revenue. Tells you how much you keep from each sale before overhead. A declining gross margin means your costs are rising faster than your prices.</p>
+  <p class="section-text"><strong>Burn rate:</strong> How fast you are spending cash reserves. Monthly expenses minus monthly revenue equals net burn. At your current burn rate, how many months of runway do you have?</p>
+  <p class="section-text"><strong>Customer Acquisition Cost (CAC):</strong> Total marketing and sales spend divided by new customers acquired. If your CAC exceeds your average customer's lifetime value, you are losing money on every new customer.</p>
+  <p class="section-text"><strong>Customer Lifetime Value (LTV):</strong> Average revenue per customer multiplied by average customer lifespan. The LTV-to-CAC ratio should be at least 3:1 — meaning each customer brings in three times what it costs to acquire them.</p>
+  <p class="section-text"><strong>Revenue per employee:</strong> Total revenue divided by headcount. A quick efficiency benchmark you can compare against industry averages.</p>
+  <p class="section-text"><strong>Working capital ratio:</strong> Current assets divided by current liabilities. Below 1.0 means you may not be able to pay short-term obligations. Above 2.0 is generally healthy.</p>
+  <p class="section-text">You do not need to know these formulas by heart. Ask AI: "Calculate these financial metrics from my data and flag any that are outside healthy ranges for a [your industry] business."</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Templates</span>
+  <h2 class="section-title">Financial Analysis Templates</h2>
+  <p class="section-text">Save these prompt templates for recurring financial analysis tasks:</p>
+
+  <div class="demo-container" style="border-left: 3px solid var(--purple); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Monthly P&L Review:</strong></p>
+    <p><em>"Here's this month's financial data. Create a profit and loss summary: total revenue by source, total expenses by category, net profit, and margin percentage. Compare to last month and highlight anything that changed by more than 10%."</em></p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--green); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Cash Flow Forecast:</strong></p>
+    <p><em>"Based on the last 6 months of revenue and expense data, project my cash position for the next 3 months. Account for known upcoming expenses [list them]. Show me when cash gets tight and how much buffer I need."</em></p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--orange); padding: 1rem; background: var(--bg);">
+    <p><strong>Subscription Revenue Analysis:</strong></p>
+    <p><em>"Here's my subscription data (signup date, plan, monthly amount, cancellation date if any). Calculate: Monthly Recurring Revenue, churn rate, expansion revenue from upgrades, and net revenue retention. Show the trend for each over the last 6 months."</em></p>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--green);">Expense Analysis</span>
   <h2 class="section-title">Where Money Disappears</h2>
 

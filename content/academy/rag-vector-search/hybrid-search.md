@@ -176,6 +176,36 @@ $$;</code></pre>
     </div>
   </div>
 
+  <div class="section">
+    <h2>Hybrid Search in Production</h2>
+    <p>Hybrid search is not a "set it and forget it" feature. These production tips will save you weeks of debugging:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">1. Start with alpha = 0.5, then tune with real queries</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Log your users' actual search queries for two weeks before adjusting. Most teams find alpha = 0.5-0.6 is optimal for mixed workloads — but your data is unique. Let the data decide, not intuition.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6;font-size:.85rem">2. Monitor search quality continuously</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Track click-through rates and "no results" rates for both keyword and semantic components separately. If keyword CTR drops while semantic stays high, your BM25 index may need retuning. If semantic drops, your embeddings may be stale or your chunking strategy needs revision.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c;font-size:.85rem">3. A/B test keyword vs vector weights</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Run 50% of traffic at alpha = 0.5 and 50% at alpha = 0.6. Measure which cohort has higher engagement, lower bounce rates, and fewer follow-up searches. Small alpha shifts (0.05-0.1) can produce measurably different user satisfaction.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8;font-size:.85rem">4. Reindex when your corpus changes significantly</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Adding a new document category (e.g., adding API docs to a support knowledge base) shifts the BM25 IDF weights. Full-text indexes should be rebuilt after major corpus changes to keep keyword scores accurate.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">5. Log both score components</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">For every search result, log the semantic score and keyword score separately alongside the final hybrid score. When debugging poor results, these logs tell you instantly whether the problem is on the keyword side, the semantic side, or the fusion logic.</p>
+      </div>
+    </div>
+
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Most teams spend weeks tuning their embedding model — then leave the alpha parameter at the default value forever. Alpha is often the highest-leverage parameter in your entire search stack. Tune it, measure it, and revisit it quarterly.</p>
+  </div>
+
   <div class="divider"><span>Test Your Understanding</span></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Hybrid Search Quiz","questions":[{"q":"A user searches for \"Section 42(b)(3)\" in a legal document database. Which search type should be weighted higher?","options":["Pure semantic search — it understands legal concepts","Keyword search — the exact statute reference must match precisely","Neither — a full-text scan is better for legal documents","Equal weighting always produces the best results"],"correct":1,"explanation":"Exact identifiers like statute numbers, error codes, and product IDs require precise keyword matching. A semantic search might find related legal concepts but miss the specific section."},{"q":"What does the alpha parameter control in hybrid search?","options":["The number of results to return","The balance between keyword and semantic score contributions","The embedding model dimensions","The chunk size used during indexing"],"correct":1,"explanation":"Alpha (0 to 1) is the weight given to semantic vs keyword scores. Alpha=0 is pure keyword, alpha=1 is pure semantic, alpha=0.5 is equal weighting."},{"q":"What is Reciprocal Rank Fusion (RRF)?","options":["A way to compress vectors","An alternative to alpha weighting that merges ranked lists by position rather than raw scores","A technique for generating embeddings","A method for chunking documents"],"correct":1,"explanation":"RRF combines results from keyword and vector search by their rank positions rather than raw scores. This avoids the problem of normalizing scores from different systems and is simpler to implement than alpha-weighted fusion."},{"q":"A user queries \"how to fix React rendering bugs.\" What alpha value is best?","options":["alpha=0.0 — pure keyword","alpha=0.3 — mostly keyword","alpha=0.7 — mostly semantic","alpha=1.0 — pure semantic"],"correct":2,"explanation":"This is a conceptual \"how to\" question that benefits from semantic understanding (finding pages about debugging and performance), but \"React\" and \"rendering\" are specific terms that keyword matching should catch. A higher semantic weight (0.7) with some keyword backing is ideal."}]}'></div>

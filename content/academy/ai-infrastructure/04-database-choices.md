@@ -54,11 +54,131 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Under the Hood</span>
+  <h2 class="section-title">How Vector Search Actually Works</h2>
+  <p class="section-text">Understanding the mechanics of vector search helps you make better decisions about indexing, performance, and when pgvector is sufficient vs. when you need a dedicated solution.</p>
+  <p class="section-text"><strong>Step 1: Embedding.</strong> Text is converted into a fixed-length array of floating-point numbers (a vector). A 384-dimensional embedding model produces an array of 384 numbers for any input text, regardless of length. These numbers encode semantic meaning — similar concepts produce similar vectors.</p>
+  <p class="section-text"><strong>Step 2: Storage.</strong> The vector is stored alongside its source content in the database. In pgvector, this is a column of type <code>vector(384)</code> — just another column in your table.</p>
+  <p class="section-text"><strong>Step 3: Indexing.</strong> For fast search, you create an index. pgvector supports IVFFlat (inverted file flat) and HNSW (hierarchical navigable small world) indexes. HNSW is slower to build but faster to query — the right choice for most applications.</p>
+  <p class="section-text"><strong>Step 4: Querying.</strong> To search, you embed the query text using the same model, then find the nearest neighbors in vector space using cosine similarity, inner product, or L2 distance.</p>
+
+<div class="code-block"><div class="code-label">SQL — Vector Search Flow in pgvector</div>
+<pre><code class="language-sql">-- 1. Enable the extension
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- 2. Create a table with a vector column
+CREATE TABLE knowledge_base (
+  id BIGSERIAL PRIMARY KEY,
+  content TEXT NOT NULL,
+  metadata JSONB DEFAULT '{}',
+  embedding vector(384),
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- 3. Create an HNSW index for fast similarity search
+CREATE INDEX ON knowledge_base
+  USING hnsw (embedding vector_cosine_ops)
+  WITH (m = 16, ef_construction = 64);
+
+-- 4. Insert content with its embedding
+INSERT INTO knowledge_base (content, metadata, embedding)
+VALUES (
+  'How to deploy a Next.js app to Vercel',
+  '{"category": "deployment", "source": "docs"}',
+  '[0.023, -0.041, 0.089, ...]'  -- 384-dimensional vector
+);
+
+-- 5. Semantic similarity search
+SELECT content, metadata,
+       1 - (embedding &lt;=&gt; $1::vector) AS similarity
+FROM knowledge_base
+WHERE 1 - (embedding &lt;=&gt; $1::vector) > 0.7  -- similarity threshold
+ORDER BY embedding &lt;=&gt; $1::vector
+LIMIT 5;</code></pre>
+</div>
+
+  <p class="section-text">The <code>&lt;=&gt;</code> operator computes cosine distance. Subtracting from 1 gives cosine similarity (1.0 = identical, 0.0 = unrelated). The threshold of 0.7 filters out low-quality matches — adjust based on your use case.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Pattern</span>
+  <h2 class="section-title">RAG Pipeline with pgvector</h2>
+  <p class="section-text">Retrieval Augmented Generation (RAG) is the most common pattern for AI apps that need to answer questions from a knowledge base. Here's the complete pipeline implementation.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Complete RAG Pipeline</div>
+<pre><code class="language-typescript">import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+);
+
+async function ragQuery(userQuestion: string): Promise&lt;string&gt; {
+  // Step 1: Generate embedding for the user's question
+  const embeddingResponse = await fetch(
+    "https://api-inference.huggingface.co/pipeline/feature-extraction/BAAI/bge-small-en-v1.5",
+    {
+      method: "POST",
+      headers: { Authorization: `Bearer ${Deno.env.get("HF_TOKEN")}` },
+      body: JSON.stringify({ inputs: userQuestion }),
+    }
+  );
+  const queryEmbedding = await embeddingResponse.json();
+
+  // Step 2: Find relevant documents via vector similarity
+  const { data: documents } = await supabase.rpc("match_documents", {
+    query_embedding: queryEmbedding,
+    match_threshold: 0.7,
+    match_count: 5,
+  });
+
+  // Step 3: Build context from retrieved documents
+  const context = documents
+    ?.map((d: any) => d.content)
+    .join("\n\n") ?? "No relevant context found.";
+
+  // Step 4: Call LLM with context-enriched prompt
+  const response = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "x-api-key": Deno.env.get("ANTHROPIC_API_KEY")!,
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-6",
+      max_tokens: 1024,
+      messages: [{
+        role: "user",
+        content: `Answer based on this context:\n\n${context}\n\nQuestion: ${userQuestion}`,
+      }],
+    }),
+  });
+
+  const result = await response.json();
+  return result.content[0].text;
+}</code></pre>
+</div>
+
+  <p class="section-text">This four-step pipeline — embed, retrieve, contextualize, generate — is the backbone of every RAG system. The database handles the heavy lifting of semantic search, and the LLM only gets called with relevant context, keeping both costs and hallucinations low.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">Designing for AI and Traditional Queries</h2>
   <p class="section-text">The most practical architecture for most AI apps: PostgreSQL with pgvector on Supabase. One database handles your users table, your content table with embedding columns, and your application logic — all with SQL you already know.</p>
   <p class="section-text">Store embeddings alongside the content they represent. When you insert a piece of content, generate its embedding and store both in the same row. When you search, query by vector similarity and get back the full content with all its metadata in one query.</p>
   <p class="section-text">This is exactly how Like One's brain works. Every memory has both structured metadata (key, category, timestamps) and a vector embedding for semantic search. One table. One query. Full context.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Performance</span>
+  <h2 class="section-title">pgvector Performance and Indexing Guide</h2>
+  <p class="section-text">pgvector's performance depends heavily on your index configuration. Understanding the tradeoffs helps you get fast queries without over-provisioning resources.</p>
+  <p class="section-text"><strong>No index (brute force):</strong> Perfect recall but O(n) scan time. Fine for under 10,000 vectors. Above that, queries slow down noticeably.</p>
+  <p class="section-text"><strong>IVFFlat:</strong> Partitions vectors into clusters, then searches only the closest clusters. Fast to build, good for datasets that don't change often. Set <code>lists</code> to roughly <code>sqrt(n)</code> where n is your row count.</p>
+  <p class="section-text"><strong>HNSW:</strong> Builds a graph structure for navigation. Slower to build than IVFFlat but faster to query and better recall. The recommended choice for most production workloads. Key parameters: <code>m</code> (connections per layer, default 16) and <code>ef_construction</code> (build quality, default 64).</p>
+  <p class="section-text"><strong>Rule of thumb:</strong> Under 100K vectors, pgvector with HNSW handles everything beautifully. 100K-1M vectors, it still works but monitor query times. Over 1M vectors, evaluate dedicated vector databases like Qdrant or Pinecone.</p>
 </div>
 
 <div class="demo-container">

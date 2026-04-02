@@ -80,6 +80,85 @@ free: true
   <p class="section-text">This is the shift: your plan isn't carved in stone. It's a living thing you can reshape in seconds. That flexibility is what makes AI planning actually sustainable.</p>
 </div>
 
+<!-- ROUTINE TEMPLATES -->
+<div class="lesson-section">
+  <span class="section-label">Templates</span>
+  <h2 class="section-title">Morning routine templates for different lives.</h2>
+  <p class="section-text">No two mornings look the same. Here are ready-to-use prompts for different situations. Copy the one closest to your life, customize the details, and paste it into any AI chat.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The Parent Morning</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I wake up at 6:30am. I have two kids (ages 4 and 7) who need breakfast, dressed, and out the door by 8:15 for school. My partner leaves at 7am so I'm solo for most of it. I need to shower, and I'd love 10 minutes to myself before the chaos. Build me a realistic morning schedule."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">The Remote Worker Morning</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I work from home and my first meeting is at 9am. I wake up at 7:30 but usually scroll my phone until 8:15. I want to stop doing that. Help me build a morning routine that includes a short walk, a real breakfast, and 15 minutes of focused work before my first meeting."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">The Night Owl Morning</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I'm not a morning person at all. I go to bed around 1am and wake up at 8:30. I have to be at work by 10. My mornings feel rushed and chaotic even though I technically have 90 minutes. Help me build a minimal, low-energy morning routine that actually works for someone who hates mornings."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.5rem">The Chronic Pain Morning</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I have chronic back pain that's worst in the morning. Some days I can move pretty well, other days I need extra time. I wake up at 7am, take medication that needs 30 minutes to kick in, and need to leave by 9. Build me a flexible morning routine with a 'good day' version and a 'tough day' version."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAILY PLANNING PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Daily Planning</span>
+  <h2 class="section-title">AI prompt examples for planning every part of your day.</h2>
+  <p class="section-text">Your morning routine is just the start. Once you have a morning plan that works, you can extend AI planning to the rest of your day. Here are prompts that connect your morning routine to the bigger picture.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">The energy-based schedule</p>
+      <p style="font-size:0.9rem">"I have the most energy from 9-11am and hit a slump around 2pm. Here are my tasks for today: [LIST]. Schedule them based on my energy patterns — hardest work in my peak hours, easy stuff during the slump."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">The transition prompt</p>
+      <p style="font-size:0.9rem">"I just finished my morning routine and I'm about to start work. Here are my top 3 priorities for today: [LIST]. What order should I tackle them in, and what's one thing I should do before I start to set myself up for success?"</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">The evening wind-down</p>
+      <p style="font-size:0.9rem">"I want to build an evening routine that sets up a better morning. I get home at 6pm, need dinner, and want to be in bed by 10:30. Help me plan the evening so tomorrow morning goes smoother."</p>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">The weekend morning</p>
+      <p style="font-size:0.9rem">"My weekday routine is dialed in but weekends are a mess. I want my Saturday morning to include something fun, some errands, and still feel relaxed. Wake up: whenever. Flexible end time. Build me a loose Saturday plan."</p>
+    </div>
+  </div>
+</div>
+
+<!-- ITERATION -->
+<div class="lesson-section">
+  <span class="section-label">Refining</span>
+  <h2 class="section-title">How to iterate on your routine over time.</h2>
+  <p class="section-text">The best morning routines evolve. What works this month might not work next month — seasons change, schedules shift, kids grow up, jobs change. AI makes it easy to update your routine without starting from scratch.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">The weekly review</p>
+      <p style="font-size:0.9rem">"I've been using this morning routine for a week: [PASTE ROUTINE]. Here's what worked: [WINS]. Here's what didn't: [STRUGGLES]. Adjust the routine based on my experience."</p>
+    </div>
+    <div style="margin-bottom:1rem">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">The seasonal update</p>
+      <p style="font-size:0.9rem">"It's getting darker in the mornings now and I'm having trouble getting out of bed. My summer routine started at 6:30 but I need a winter version that starts at 7. Keep the same priorities but compress the timeline."</p>
+    </div>
+    <div>
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">The life change adjustment</p>
+      <p style="font-size:0.9rem">"I just started a new job and my commute changed from 15 to 40 minutes. Here's my current morning routine: [PASTE]. Rebuild it with the new commute time. I still want breakfast and my 10 minutes of quiet."</p>
+    </div>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>
@@ -91,6 +170,15 @@ free: true
     </div>
     <p style="margin-top:1rem;color:var(--dim)">After you get the plan, try a follow-up: "What if I oversleep by 15 minutes?" See how fast AI adapts the schedule.</p>
   </div>
+</div>
+
+<!-- MORNING MINDSET -->
+<div class="lesson-section">
+  <span class="section-label">Mindset Shift</span>
+  <h2 class="section-title">The real magic: mornings stop being something that happens to you.</h2>
+  <p class="section-text">Most people experience their mornings passively. The alarm goes off, they react, and the morning happens to them. By the time they're out the door, they already feel behind.</p>
+  <p class="section-text">When you have a plan — even a loose one — you move through the morning with intention. You know what's coming next. You built in the things that matter to you. You're not scrambling; you're executing. That shift from reactive to intentional changes the energy of your entire day.</p>
+  <p class="section-text">AI makes this accessible because it removes the hardest part: designing the plan. You don't need to be a productivity expert. You just need to be honest about your morning, and AI does the rest.</p>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

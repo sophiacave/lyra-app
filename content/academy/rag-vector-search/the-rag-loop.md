@@ -185,6 +185,30 @@ $$;</code></pre>
     <p>This does not eliminate hallucination entirely — the LLM can still misinterpret context or connect dots that are not there. But it reduces hallucination from "the norm" to "the exception." Lesson 8 covers how to measure this with evaluation metrics.</p>
   </div>
 
+  <div class="section">
+    <h2>RAG Pipeline Debugging</h2>
+    <p>When your RAG system gives bad answers, the bug can hide at any step. Work through these checkpoints in order — most issues are retrieval problems, not generation problems:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6;font-size:.85rem">1. Check Embedding Quality</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Embed a known query and its expected answer. Compute cosine similarity — it should be above 0.8. If not, your embedding model may be too weak for your domain, or your chunks are poorly formatted. Try a larger model or clean up chunk preprocessing.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">2. Verify Retrieval Returns Relevant Chunks</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Log the retrieved chunks for failing queries. Read them yourself — are they actually relevant? If the right chunks exist in your database but are not retrieved, adjust your similarity threshold or increase top-K. If the right content was never chunked properly, fix your ingestion pipeline.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c;font-size:.85rem">3. Test the Augmented Prompt</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Copy the exact prompt your system sends to the LLM (context + question) and paste it into a playground. Does the model answer correctly with this prompt? If yes, your retrieval is the bottleneck. If no, your prompt template needs work — the grounding instructions may be too weak or the context format confusing.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8;font-size:.85rem">4. Validate Generation Output</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Check if the model is faithfully using the context or hallucinating beyond it. Ask it to cite sources for each claim. If it cites a chunk that does not support the claim, lower the temperature or add stricter grounding instructions like "If the context does not contain the answer, say so."</p>
+      </div>
+    </div>
+  </div>
+
   <div class="divider"><span>Test Your Understanding</span></div>
 <div data-learn="QuizMC" data-props='{"title":"RAG Loop Deep Dive","questions":[{"q":"Why must the query be embedded with the SAME model used to embed the documents?","options":["It is faster to reuse the same model","Both query and documents must live in the same semantic space for similarity scores to be meaningful","The documents cannot be accessed otherwise","Using different models would cause a server error"],"correct":1,"explanation":"Cosine similarity only makes sense when comparing vectors from the same embedding space. If the query is embedded with model A and documents with model B, the vectors exist in different spaces — the similarity scores would be meaningless."},{"q":"What is \"hallucination\" in the context of LLMs, and how does RAG reduce it?","options":["When the model runs too slowly","When the model confidently generates plausible but incorrect information — RAG reduces this by grounding answers in retrieved facts","When the embedding model produces duplicate vectors","When the vector database returns too many results"],"correct":1,"explanation":"Hallucination is when an LLM invents plausible-sounding but false information. RAG reduces hallucination by providing the model with actual source documents and instructing it to answer ONLY based on that context."},{"q":"In the Augment Prompt step, what instruction prevents the LLM from using its own training knowledge instead of the context?","options":["temperature=0","max_tokens=100","Answer based ONLY on the provided context. If unsure, say I don\u0027t know.","model=gpt-4-turbo"],"correct":2,"explanation":"Explicit grounding instructions like \"Answer based ONLY on the provided context\" constrain the model to use retrieved information. Without this instruction, the model may blend context with potentially incorrect training knowledge."},{"q":"What does the similarity threshold parameter control?","options":["How many documents to return","The minimum relevance score required for a chunk to be included in results","The speed of the vector search","The size of each chunk"],"correct":1,"explanation":"The similarity threshold (typically 0.7-0.85) filters out chunks with low relevance scores. Without it, every query returns top-K results even when none of them are actually relevant — leading to answers grounded in irrelevant context."}]}'></div>
 

@@ -46,6 +46,29 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Framework</span>
+  <h2 class="section-title">The Data Quality Framework</h2>
+  <p class="section-text">Professional data teams use quality frameworks to ensure data is fit for analysis. Here are the six dimensions of data quality — and how to check each one with AI:</p>
+  <p class="section-text"><strong>1. Completeness:</strong> Is all required data present? Ask AI: "What percentage of each column has missing values? Are the missing values random or concentrated in specific time periods or categories?"</p>
+  <p class="section-text"><strong>2. Accuracy:</strong> Does the data reflect reality? Ask AI: "Flag any values that seem implausible given the context — negative ages, future dates in a historical dataset, revenue amounts that are orders of magnitude outside the norm."</p>
+  <p class="section-text"><strong>3. Consistency:</strong> Does the same thing always look the same? Ask AI: "List all unique values in the country column, the status column, and the category column. Group any that appear to be variants of the same value."</p>
+  <p class="section-text"><strong>4. Timeliness:</strong> Is the data current enough for your analysis? Ask AI: "What is the date range of this dataset? Are there any gaps in the time series — missing days, weeks, or months?"</p>
+  <p class="section-text"><strong>5. Validity:</strong> Does the data conform to expected formats and rules? Ask AI: "Check that all emails contain @, all phone numbers have the expected digit count, all dates parse correctly, and all numeric fields are actually numeric."</p>
+  <p class="section-text"><strong>6. Uniqueness:</strong> Is each record truly distinct? Ask AI: "Identify exact duplicates and near-duplicates. For near-duplicates, show me the rows side by side so I can decide which to keep."</p>
+  <p class="section-text">Running these six checks before any analysis takes about five minutes with AI and can save you from hours of chasing false insights caused by dirty data.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Strategies</span>
+  <h2 class="section-title">Advanced Cleaning Strategies</h2>
+  <p class="section-text">Beyond the basics, here are strategies for the trickiest cleaning challenges:</p>
+  <p class="section-text"><strong>Fuzzy matching:</strong> When the same entity appears with different spellings — "McDonald's," "McDonalds," "Mc Donald's" — ask AI to group them. Prompt: "These company names likely contain duplicates with different spellings. Group them and suggest a canonical name for each group."</p>
+  <p class="section-text"><strong>Imputation strategies:</strong> Missing values need different treatments depending on context. AI can recommend the right approach for each column: mean/median for normally distributed numerics, mode for categorical data, interpolation for time series, or flagging as "Unknown" when the absence itself is meaningful.</p>
+  <p class="section-text"><strong>Cross-field validation:</strong> Some errors only become visible when you compare columns. A shipping date before the order date. A discount percentage over 100%. An employee listed in two departments simultaneously. Ask AI: "Check for logical inconsistencies across columns — any values that contradict each other."</p>
+  <p class="section-text"><strong>Encoding issues:</strong> Data from different systems often has character encoding problems — accented names that appear as garbage characters, special characters that break CSV parsing. Ask AI to identify and fix encoding artifacts in your text columns.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--green);">AI Cleaning</span>
   <h2 class="section-title">Let AI Do the Scrubbing</h2>
 
@@ -65,6 +88,30 @@ free: false
   <p class="section-text"><strong>3. Standardize text:</strong> "List all unique values in [column] and flag any that look like variants of the same thing."</p>
   <p class="section-text"><strong>4. Validate ranges:</strong> "Are there any values in [column] that seem unreasonably high or low?"</p>
   <p class="section-text"><strong>5. Handle blanks:</strong> "For missing values, recommend whether to fill, flag, or remove each case and explain why."</p>
+
+  <p class="section-text"><strong>6. Verify transformations:</strong> After cleaning, always verify. Ask AI: "Compare summary statistics before and after cleaning. Did removing duplicates or fixing values change the overall distribution in unexpected ways?"</p>
+  <p class="section-text"><strong>7. Document changes:</strong> Ask AI to generate a cleaning log — every change made, why it was made, and how many records were affected. This audit trail is essential if anyone questions your analysis later.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Prevention</span>
+  <h2 class="section-title">Preventing Messy Data</h2>
+  <p class="section-text">The best cleaning strategy is prevention. If you control the data collection process, these practices dramatically reduce future cleaning work:</p>
+  <p class="section-text"><strong>Use dropdowns instead of free text:</strong> If there are only 5 valid categories, do not let people type them. Use a dropdown menu. This eliminates typos and inconsistencies at the source.</p>
+  <p class="section-text"><strong>Validate on entry:</strong> Set data validation rules. Dates must be in the correct range. Numbers must be positive. Required fields cannot be blank. Catch errors at entry, not during analysis.</p>
+  <p class="section-text"><strong>Standardize early:</strong> Establish naming conventions, date formats, and units before data collection begins. Share them with everyone who enters data. "United States" — not "US" or "USA."</p>
+  <p class="section-text"><strong>Regular quality audits:</strong> Run the AI cleaning checklist monthly on your live data. Catching problems early prevents them from compounding into a massive cleaning project later.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Practical</span>
+  <h2 class="section-title">Cleaning Different Data Types</h2>
+  <p class="section-text">Different data types have different cleaning challenges. Here is how to handle each:</p>
+  <p class="section-text"><strong>Dates:</strong> The most common source of errors. "01/02/2024" is January 2nd in the US but February 1st in Europe. Always tell AI your locale and expected format. Ask AI to parse all dates and flag any that do not match the expected pattern.</p>
+  <p class="section-text"><strong>Currency:</strong> Watch for mixed currencies, missing currency symbols, and numbers stored as text ("$1,234.56" vs. 1234.56). Ask AI to strip formatting, convert to numeric, and standardize to one currency if applicable.</p>
+  <p class="section-text"><strong>Phone numbers:</strong> Parentheses, dashes, spaces, country codes, extensions — phone numbers appear in dozens of formats. Ask AI to normalize all phone numbers to a standard format like +1-555-123-4567.</p>
+  <p class="section-text"><strong>Addresses:</strong> Street abbreviations (St vs Street vs St.), suite numbers, missing zip codes, state abbreviations vs. full names. Ask AI to standardize all addresses to a consistent format.</p>
+  <p class="section-text"><strong>Free-text fields:</strong> Remove extra whitespace, fix obvious typos in common words, standardize capitalization. But be careful not to change the meaning — ask AI to flag anything it is unsure about rather than silently modifying it.</p>
 </div>
 
   <div class="tip-box">

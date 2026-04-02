@@ -102,6 +102,50 @@ Additional refinements:
   <p class="section-text">This 3-step chain works because each step has a different job: generate, critique, refine. The AI literally argues with itself to find weaknesses, then fixes them. Try it — the difference between step 1 and step 3 is dramatic.</p>
 </div>
 
+<!-- SECTION 3B: ITERATION STRATEGIES -->
+<div class="lesson-section">
+  <span class="section-label">Strategies</span>
+  <h2 class="section-title">5 iteration strategies beyond the basics.</h2>
+  <p class="section-text">The 4 follow-up patterns cover most situations. But there are more advanced techniques that experienced AI users rely on when the standard patterns are not enough.</p>
+
+<div data-learn="FlashDeck" data-props='{"title":"Advanced Iteration Techniques — Flip for Details","cards":[{"front":"🎯 Strategy 1: The Precision Follow-Up\n\nWhen 80% of the output is perfect but one specific thing is off.","back":"Instead of asking for a full rewrite, target the exact element:\n\n\"Keep everything except the third paragraph. Rewrite ONLY that paragraph to focus on cost savings instead of features.\"\n\n\"The bullet points are perfect. Just rewrite the intro sentence to be more direct.\"\n\nThis preserves what works and fixes only what does not."},{"front":"🔀 Strategy 2: The Role Switch\n\nWhen you need a completely different perspective on the same content.","back":"\"Now read what you just wrote as if you are a skeptical customer. What questions would you have? What claims feel unsupported?\"\n\n\"Switch roles: you are now a senior editor. Cut this by 40% without losing any key information.\"\n\nThe AI evaluates its own work through a fresh lens — catching weaknesses it created."},{"front":"📊 Strategy 3: The A/B Generator\n\nWhen you are not sure which direction is best.","back":"\"Give me two completely different versions of this:\nVersion A: Short, punchy, direct.\nVersion B: Story-driven, warm, personal.\"\n\nThen pick the one that resonates — or ask AI to combine the best elements of both.\n\nThis is faster than iterating toward a direction you are not sure about."},{"front":"🔬 Strategy 4: The Constraint Tightener\n\nWhen the output is good but not great.","back":"Add constraints one at a time and see which ones improve the output:\n\n\"Rewrite this with a maximum of 2 sentences per paragraph.\"\n\"Now cut every adjective that is not absolutely necessary.\"\n\"Replace every passive voice sentence with active voice.\"\n\nEach constraint forces a specific improvement."},{"front":"🧪 Strategy 5: The Stress Test\n\nWhen you need to validate the output before using it.","back":"\"Read this email as if you are the recipient. Does anything sound passive-aggressive? Would you respond positively to this?\"\n\n\"Pretend you are a competitor reading our marketing copy. What would you attack?\"\n\n\"As a fact-checker, identify any claim in this text that I should verify before publishing.\"\n\nThis catches problems before they reach your audience."}]}'></div>
+
+</div>
+
+<!-- SECTION 3C: WHEN TO RESTART -->
+<div class="lesson-section">
+  <span class="section-label">The Reset</span>
+  <h2 class="section-title">How to know when iteration won't work.</h2>
+  <p class="section-text">Iteration is powerful, but it has limits. Sometimes the foundation is wrong and no amount of refinement will fix it. Here are the signs that you should start fresh.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Start over when...</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:#a1a1aa">
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">3 rounds of iteration and no meaningful improvement</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">The structure is fundamentally wrong (not just tone)</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">You realize your original prompt asked the wrong question</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">Each fix creates a new problem elsewhere</li>
+          <li style="padding:6px 0">The conversation has gotten so long the AI is confused</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Keep iterating when...</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:#a1a1aa">
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">The structure is right but the tone is off</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">You can point to the specific thing that needs to change</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">Each round is getting closer to what you want</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">You just need to adjust length, examples, or formatting</li>
+          <li style="padding:6px 0">The content is solid but needs polish</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1rem"><strong>The restart rule:</strong> When you start over, do not just re-send the same prompt. Write down what went wrong — "I didn't specify the audience" or "I asked for too many things at once" — and fix THAT in your new prompt. A restart without learning is just repetition.</p>
+</div>
+
 <!-- SECTION 4 -->
 <div class="lesson-section">
   <span class="section-label">The Power Move</span>

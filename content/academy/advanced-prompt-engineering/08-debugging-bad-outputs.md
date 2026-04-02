@@ -90,6 +90,81 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">Debugging a Real Prompt: Before and After</h2>
+  <p class="section-text">Let's walk through a complete debugging session. The task: generate product comparison content for a website.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--red);">
+      <h4 style="color: var(--red);">Round 1 — The Failing Prompt</h4>
+      <code>"Compare our product to competitors. Make it sound good."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">Problem: Output was a generic, biased puff piece with made-up competitor features. Three failure modes at once: vague (no specifics), hallucination (invented features), wrong tone (too salesy).</p>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+      <h4 style="color: var(--orange);">Round 2 — Fix: Add Context</h4>
+      <code>"Compare our project management tool (features: Kanban boards, time tracking, Slack integration, $15/user/mo) to Asana and Monday.com. Be factually accurate about competitor features."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">Better: eliminated hallucination by specifying features. But output was still a wall of text with no clear structure. Diagnosis: wrong format.</p>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">Round 3 — Fix: Add Format + Constraints</h4>
+      <code>"...Present as a comparison table with these columns: Feature, Our Tool, Asana, Monday.com. Include rows for: task management, time tracking, integrations, pricing, best for. Keep cells under 8 words. Tone: honest and confident — acknowledge where competitors are stronger. Do NOT make up features you're unsure about — write 'unverified' instead."</code>
+      <p style="color: var(--dim); margin-top: 0.5rem;">Result: clean, honest, usable comparison table. Three rounds, one fix per round, clear improvement each time.</p>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced Technique</span>
+  <h2 class="section-title">The Contrastive Debugging Method</h2>
+  <p class="section-text">When you can't figure out why a prompt fails, try the contrastive method: run the same task with two different prompts and compare the outputs to isolate what's working.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+      <h4 style="color: var(--blue);">Contrastive Debugging</h4>
+      <code>Prompt A (your failing prompt): "Write a professional bio for my LinkedIn."
+
+Prompt B (control prompt): "Write a LinkedIn bio. Role: senior data scientist, 8 years experience. Tone: confident but approachable. Include: ML expertise, team leadership, business impact. Format: 3 paragraphs, under 150 words. Avoid: buzzwords like 'passionate' or 'guru'."
+
+Compare outputs A and B. The gap between them shows you exactly which levers Prompt A was missing.</code>
+    </div>
+  </div>
+
+  <p class="section-text">This method is especially helpful when you're stuck. Instead of staring at a bad prompt trying to figure out what's wrong, you build a good prompt alongside it. The contrast reveals the gaps.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Systematic Testing</span>
+  <h2 class="section-title">Building a Prompt Test Suite</h2>
+  <p class="section-text">For prompts you use repeatedly, build a test suite — a set of inputs with known expected outputs. Run your prompt against these test cases whenever you modify it.</p>
+  <p class="section-text"><strong style="color: var(--green);">Standard case:</strong> A typical input that should produce a typical output. This confirms your prompt still works for the common scenario.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Edge case:</strong> An unusual input that tests your prompt's boundaries. Empty input, very long input, ambiguous input, input in a different language.</p>
+  <p class="section-text"><strong style="color: var(--red);">Adversarial case:</strong> An input designed to break the prompt. Contradictory information, instructions to ignore the system prompt, deliberately misleading context.</p>
+  <p class="section-text">Three test cases — one of each type — give you confidence that a prompt change is an improvement, not a trade-off. This is how professionals iterate on prompts without regressions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mindset</span>
+  <h2 class="section-title">The Debugging Mindset for Prompt Engineers</h2>
+  <p class="section-text">Software debugging and prompt debugging share a critical principle: resist the urge to start over. When code has a bug, experienced developers don't rewrite the entire file — they isolate the issue, understand the root cause, and make a surgical fix.</p>
+  <p class="section-text">Apply the same discipline to prompts. When output is wrong, your first instinct might be to scrap the prompt and start fresh. Resist that. Instead, ask: "What specifically is wrong?" Then: "Which part of my prompt is responsible?" Then fix just that part.</p>
+  <p class="section-text">Over time, this discipline builds a mental model of how prompts work. You'll start predicting failure modes before they happen: "This instruction is ambiguous — the AI might interpret it two ways." That predictive ability is the hallmark of an expert prompt engineer.</p>
+  <p class="section-text">Every prompt you debug successfully teaches you something that every future prompt benefits from. The debugging process is not overhead — it is the primary learning mechanism for becoming better at prompt engineering.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Reference</span>
+  <h2 class="section-title">The Debugging Cheat Sheet</h2>
+  <p class="section-text">Bookmark this. When output goes wrong, scan this list for the fastest fix.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Output too generic?</strong> Add specific context: audience, numbers, names, constraints.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Wrong format?</strong> Show the exact format you want. Use the "output first" technique.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Wrong tone?</strong> Describe tone with comparisons: "like a Slack message" not "professional."</p>
+  <p class="section-text"><strong style="color: var(--orange);">Hallucinating facts?</strong> Add: "If unsure, say so. Cite sources. Flag confidence levels."</p>
+  <p class="section-text"><strong style="color: var(--orange);">Ignoring instructions?</strong> Move critical rules to the top. Use "IMPORTANT:" prefix. Repeat key constraints.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Too long?</strong> Add explicit word/sentence limits. "Under 150 words. Maximum 3 paragraphs."</p>
+  <p class="section-text"><strong style="color: var(--orange);">Too short?</strong> Ask for depth: "Explain in detail. Include examples. Cover edge cases."</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Debug a Bad Prompt</h2>
   <div class="try-it-box">

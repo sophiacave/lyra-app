@@ -95,6 +95,105 @@ free: true
   </div>
 </div>
 
+<!-- SECTION 3B: DISSECTING REAL PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Dissection</span>
+  <h2 class="section-title">Breaking down prompts component by component.</h2>
+  <p class="section-text">The best way to internalize the RCFCE framework is to see it deconstructed in real prompts. Let's dissect three prompts and label every component.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Dissection 1 — A Blog Post Prompt</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">[R]</span> <span style="color:#c084fc">You are a tech journalist who writes for Wired.</span>
+
+<span style="color:#8b5cf6">[C]</span> <span style="color:#c084fc">Write a 600-word blog post about why most AI tools
+    fail in enterprise companies. My readers are CTOs and
+    VP Engineering at companies with 500+ employees. They
+    are skeptical of AI hype and want practical insight.</span>
+
+<span style="color:#38bdf8">[F]</span> <span style="color:#c084fc">Structure: hook (1 paragraph) → 3 reasons with subheads
+    → closing with one actionable takeaway. No bullet points.</span>
+
+<span style="color:#34d399">[C]</span> <span style="color:#c084fc">Tone: sharp, slightly provocative, data-informed. Under
+    600 words. Do not use "game-changing," "revolutionary,"
+    or "in today's rapidly evolving landscape."</span>
+
+<span style="color:#ef4444">[E]</span> <span style="color:#c084fc">Style reference: write like Ben Thompson (Stratechery)
+    — analytical, opinionated, no fluff.</span>
+
+<span style="color:#71717a">ALL 5 components present. This prompt leaves almost nothing
+to chance. The AI knows who to be, who to write for, what
+format to use, what boundaries to respect, and what good
+looks like. The output will be publication-ready.</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Dissection 2 — A Data Analysis Prompt</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">[R]</span> <span style="color:#c084fc">You are a data analyst presenting to non-technical
+    executives.</span>
+
+<span style="color:#8b5cf6">[C]</span> <span style="color:#c084fc">Our Q3 website traffic dropped 23% compared to Q2.
+    We launched a redesign in July. We also cut our ad
+    budget by 40% the same month. Help me figure out
+    which factor drove the decline.</span>
+
+<span style="color:#38bdf8">[F]</span> <span style="color:#c084fc">Format: Start with your best hypothesis in 1 sentence.
+    Then give me a table with columns: Factor, Evidence For,
+    Evidence Against, Confidence Level (High/Med/Low).</span>
+
+<span style="color:#34d399">[C]</span> <span style="color:#c084fc">Do not hedge with "it could be many things." Give me
+    your actual assessment. Under 300 words total.</span>
+
+<span style="color:#71717a">[E] — Not included, and that is fine for this task.
+The context and format are strong enough to produce
+a focused, actionable analysis.</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Dissection 3 — A Simple Prompt That Works</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#8b5cf6">[C]</span> <span style="color:#c084fc">I need to tell my team of 12 that our Friday deadline
+    is moving to next Wednesday.</span>
+
+<span style="color:#38bdf8">[F]</span> <span style="color:#c084fc">Write a 3-sentence Slack message.</span>
+
+<span style="color:#34d399">[C]</span> <span style="color:#c084fc">Encouraging, not apologetic.</span>
+
+<span style="color:#71717a">No role. No examples. Just Context + Format + one Constraint.
+And it will work perfectly — because the task is simple.
+
+THIS IS THE KEY INSIGHT: Match your prompt complexity to
+your task complexity. Not every prompt needs all 5 components.</span></code></pre>
+</div>
+
+  <p class="section-text">These dissections reveal the real skill: knowing which components to include based on the task. Complex, high-stakes work needs all five. Quick everyday tasks need two or three. The framework gives you options — not obligations.</p>
+</div>
+
+<!-- SECTION 3C: COMPONENT IMPACT -->
+<div class="lesson-section">
+  <span class="section-label">Impact Map</span>
+  <h2 class="section-title">What each component actually changes in the output.</h2>
+  <p class="section-text">Understanding the RCFCE components is one thing. Understanding what each one <strong>does</strong> to the output helps you decide which ones to invest time in.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#fb923c">Role</strong> changes: vocabulary, depth of expertise, perspective, confidence level. A "junior copywriter" hedges. A "senior conversion specialist" commits. The same knowledge, filtered through a different lens.
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#8b5cf6">Context</strong> changes: relevance, specificity, usefulness. Without context, AI gives you information that is correct but generic. With context, it gives you information that is correct AND applicable to your specific situation.
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#38bdf8">Format</strong> changes: structure, scanability, usability. The difference between a wall of text you have to reformat and something you can paste directly into your deliverable. Format is about respecting YOUR time.
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#34d399">Constraints</strong> change: precision, authenticity, focus. They eliminate the generic, the verbose, and the AI-sounding. Constraints are what turn "pretty good" output into "actually usable" output.
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#ef4444">Examples</strong> change: style, voice, quality bar. They show AI exactly what "good" looks like for YOU. Two sentences of example can do more for style matching than a paragraph of description.
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 4: THE TEMPLATE -->
 <div class="lesson-section">
   <span class="section-label">Your Template</span>

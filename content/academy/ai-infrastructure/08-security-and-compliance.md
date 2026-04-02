@@ -57,6 +57,138 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Code</span>
+  <h2 class="section-title">Input Validation Implementation</h2>
+  <p class="section-text">Theory is useful but code is actionable. Here's a production-grade input validation layer that catches the most common prompt injection patterns.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Prompt Injection Detection</div>
+<pre><code class="language-typescript">interface ValidationResult {
+  safe: boolean;
+  reason?: string;
+  sanitized?: string;
+}
+
+function validateAIInput(input: string): ValidationResult {
+  // 1. Length check — reject excessively long inputs
+  if (input.length > 10_000) {
+    return { safe: false, reason: "Input exceeds maximum length (10,000 chars)" };
+  }
+
+  // 2. Injection pattern detection
+  const injectionPatterns = [
+    /ignore\s+(all\s+)?previous\s+instructions/i,
+    /ignore\s+(all\s+)?above/i,
+    /disregard\s+(all\s+)?previous/i,
+    /forget\s+(all\s+)?(your|previous)\s+instructions/i,
+    /you\s+are\s+now\s+/i,
+    /new\s+instructions?\s*:/i,
+    /system\s*prompt\s*:/i,
+    /reveal\s+(your|the)\s+(system\s+)?prompt/i,
+    /what\s+are\s+your\s+instructions/i,
+    /pretend\s+you\s+are/i,
+    /act\s+as\s+if\s+you/i,
+    /\[\s*SYSTEM\s*\]/i,
+    /&lt;system&gt;/i,
+    /BEGIN\s+OVERRIDE/i,
+  ];
+
+  for (const pattern of injectionPatterns) {
+    if (pattern.test(input)) {
+      return {
+        safe: false,
+        reason: `Potential prompt injection detected: ${pattern.source}`,
+      };
+    }
+  }
+
+  // 3. Unicode/encoding tricks
+  const suspiciousUnicode = /[\u200B-\u200F\u202A-\u202E\uFEFF]/g;
+  const cleaned = input.replace(suspiciousUnicode, "");
+
+  if (cleaned.length !== input.length) {
+    return {
+      safe: true,
+      reason: "Hidden unicode characters stripped",
+      sanitized: cleaned,
+    };
+  }
+
+  return { safe: true, sanitized: input };
+}</code></pre>
+</div>
+
+  <p class="section-text">This catches the most common injection attempts, but it's not bulletproof — no regex-based filter is. Layer it with output validation (checking that responses don't leak system prompts) and least-privilege context (limiting what data the model can access) for defense in depth.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Output Safety</span>
+  <h2 class="section-title">Validating AI Responses Before Delivery</h2>
+  <p class="section-text">Input validation catches attacks going in. Output validation catches leaks coming out. Both are essential.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Output Validation Layer</div>
+<pre><code class="language-typescript">interface OutputCheck {
+  safe: boolean;
+  flags: string[];
+}
+
+function validateAIOutput(
+  output: string,
+  systemPrompt: string,
+  userContext: { userId: string }
+): OutputCheck {
+  const flags: string[] = [];
+
+  // 1. Check for system prompt leakage
+  // Compare fragments of the system prompt against the output
+  const promptFragments = systemPrompt
+    .split(/[.!?\n]/)
+    .filter(f => f.trim().length > 20);
+
+  for (const fragment of promptFragments) {
+    if (output.toLowerCase().includes(fragment.toLowerCase().trim())) {
+      flags.push("SYSTEM_PROMPT_LEAK");
+      break;
+    }
+  }
+
+  // 2. Check for PII patterns in output
+  const piiPatterns = [
+    { name: "EMAIL", pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/gi },
+    { name: "PHONE", pattern: /\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/g },
+    { name: "SSN", pattern: /\b\d{3}-\d{2}-\d{4}\b/g },
+    { name: "API_KEY", pattern: /sk-[a-zA-Z0-9]{20,}/g },
+  ];
+
+  for (const { name, pattern } of piiPatterns) {
+    if (pattern.test(output)) {
+      flags.push(`PII_DETECTED:${name}`);
+    }
+  }
+
+  // 3. Check for cross-user data references
+  // (Would check against known user IDs in context)
+
+  return {
+    safe: flags.length === 0,
+    flags,
+  };
+}</code></pre>
+</div>
+
+  <p class="section-text">When output validation flags an issue, log it immediately and return a safe fallback response. Don't show the user the flagged content. A response like "I'm unable to answer that question" is far better than accidentally leaking your system prompt or another user's data.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Compliance</span>
+  <h2 class="section-title">Data Privacy Compliance Checklist</h2>
+  <p class="section-text">If your AI app handles user data (and it does), you need to address these compliance considerations. This applies whether you're subject to GDPR, CCPA, or simply want to be a trustworthy steward of user data.</p>
+  <p class="section-text"><strong>Data processing agreements:</strong> Verify that your AI provider's terms include a DPA that covers your obligations. Anthropic and OpenAI both offer DPAs for API customers — but you need to verify this for your specific plan.</p>
+  <p class="section-text"><strong>Right to deletion:</strong> When a user requests their data deleted, can you purge their data from AI operation logs, cached responses, and any embeddings generated from their content? Design your schema with this in mind — use user IDs consistently so you can cascade deletions.</p>
+  <p class="section-text"><strong>Consent and transparency:</strong> Users should know their input is being processed by a third-party AI provider. Your privacy policy needs to name the providers and explain what data is sent to them. This isn't just legal compliance — it's respect.</p>
+  <p class="section-text"><strong>Data residency:</strong> Some regulations require data to stay within specific geographic boundaries. If your users are in the EU, verify that your AI provider processes data in EU-based regions, or use a provider that offers geographic guarantees (Azure OpenAI does; direct OpenAI API does not).</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Infrastructure Security</span>
   <h2 class="section-title">Hardening Your AI Stack</h2>
   <p class="section-text"><strong>API keys:</strong> Rotate regularly, scope narrowly, set spending caps. Use different keys for different environments. Monitor for unauthorized usage patterns.</p>

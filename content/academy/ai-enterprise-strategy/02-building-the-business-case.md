@@ -162,6 +162,49 @@ free: true
 </div>
 
 <div class="card">
+<h2>Common Business Case Mistakes</h2>
+<p>Even experienced teams sabotage their own AI business cases. These are the patterns that kill funding — not because the technology was wrong, but because the argument was flawed. Avoid every one of these.</p>
+
+<div style="display:grid;gap:.75rem;margin-top:1rem">
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(239,68,68,.04);border-radius:10px;border:1px solid rgba(239,68,68,.08)">
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(239,68,68,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#ef4444;font-size:.9rem">1</div>
+<div>
+<strong style="color:#ef4444;font-size:.88rem">Leading With Technology Instead of the Problem</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">The business case opens with "We want to implement a large language model" instead of "We are losing $540K/year to manual ticket classification." Executives do not fund technology. They fund solutions to expensive problems. Start with the pain, not the tool.</p>
+</div>
+</div>
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(251,146,60,.04);border-radius:10px;border:1px solid rgba(251,146,60,.08)">
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(251,146,60,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fb923c;font-size:.9rem">2</div>
+<div>
+<strong style="color:#fb923c;font-size:.88rem">Using Vendor ROI Numbers as Your Own</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Vendor case studies assume ideal conditions that do not exist in your organization. Copying their "300% ROI" into your business case destroys credibility the moment a skeptical CFO asks how you derived the numbers. Build your own math from your own data — even if the numbers are smaller, they are yours and they are defensible.</p>
+</div>
+</div>
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#8b5cf6;font-size:.9rem">3</div>
+<div>
+<strong style="color:#8b5cf6;font-size:.88rem">Skipping the Change Management Cost</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">The model works perfectly in testing. Then it ships and nobody uses it. Training, workflow redesign, user resistance, and the parallel-running period where old and new systems overlap — these are real costs that most business cases ignore entirely. Change management typically accounts for 20-40% of total project cost in enterprise AI.</p>
+</div>
+</div>
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(244,114,182,.04);border-radius:10px;border:1px solid rgba(244,114,182,.08)">
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(244,114,182,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#f472b6;font-size:.9rem">4</div>
+<div>
+<strong style="color:#f472b6;font-size:.88rem">No Kill Criteria</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">A business case without a clear "when to stop" threshold signals that you are advocating, not analyzing. Executives want to know you will protect their investment. Define specific metrics that trigger a go/no-go decision at day 45 and day 90. Projects without kill criteria become zombie initiatives that drain budget for months after they should have been shut down.</p>
+</div>
+</div>
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(56,189,248,.04);border-radius:10px;border:1px solid rgba(56,189,248,.08)">
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(56,189,248,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#38bdf8;font-size:.9rem">5</div>
+<div>
+<strong style="color:#38bdf8;font-size:.88rem">Treating the Pilot as a Proof of Concept</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">A proof of concept proves the technology works. A pilot proves the <em>business value</em> works. Too many teams run a POC, declare success because the model hit 92% accuracy, and then cannot explain why the business should care. Design your pilot around business metrics — dollars saved, hours recovered, customer satisfaction improved — not model performance metrics.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
 <h2>Try It Now: Draft Your Business Case</h2>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">

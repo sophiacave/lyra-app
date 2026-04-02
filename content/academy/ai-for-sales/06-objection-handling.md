@@ -68,6 +68,38 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Categories</span>
+  <h2 class="section-title">The Six Objection Categories</h2>
+  <p class="section-text">Every objection falls into one of six categories. Knowing the category tells you the real concern behind the words, so you can address the root issue instead of the surface statement:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Price Objections:</strong> "It's too expensive." "We don't have the budget." "Your competitor is cheaper." These are about perceived value, not actual price. The cure is ROI framing — show the cost of NOT buying.</p>
+    <p><strong style="color: var(--orange);">Timing Objections:</strong> "Not right now." "Maybe next quarter." "We're in the middle of something." These are about priority, not time. The cure is urgency — show what waiting costs them.</p>
+    <p><strong style="color: var(--blue);">Authority Objections:</strong> "I need to check with my boss." "This has to go through procurement." "The team needs to weigh in." These are about process. The cure is enabling your champion to sell internally.</p>
+    <p><strong style="color: var(--green);">Need Objections:</strong> "We're fine with what we have." "I don't see how this applies to us." These are about awareness. The cure is asking better questions to surface pain they have not articulated yet.</p>
+    <p><strong style="color: var(--purple);">Trust Objections:</strong> "How do I know this works?" "We tried something similar before." "Your company is too small/new." These are about risk. The cure is proof — case studies, pilots, guarantees.</p>
+    <p><strong style="color: var(--accent);">Competitor Objections:</strong> "We're already talking to [COMPETITOR]." "Why should we switch?" These are about differentiation. The cure is positioning on your unique value, not attacking the competitor.</p>
+  </div>
+  <p class="section-text">When you hear an objection, mentally categorize it first. Then apply the HEARD method with category-specific framing. AI can generate responses tailored to each category for your specific product.</p>
+</div>
+
+<div class="try-it-box">
+  <h3>Category-Specific Responses</h3>
+  <div class="prompt-box"><code>I sell [YOUR PRODUCT/SERVICE] at [PRICE POINT] to [TARGET BUYER]. For each of these six objection categories — Price, Timing, Authority, Need, Trust, and Competitor — give me: 1) The most common objection in that category for my industry, 2) The real concern behind it, 3) A HEARD-method response that addresses the root issue, 4) A follow-up question that advances the conversation. Make each response sound natural and empathetic, not scripted.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Objection Handling Practice Scenarios</h2>
+  <p class="section-text">Reading about objection handling and doing it are different skills. Here are three practice scenarios to work through with AI. For each one, use the HEARD method and notice how identifying the objection category shapes your response:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Scenario 1 — The Budget Squeeze:</strong> You are presenting to a mid-size company. The meeting has gone well. At the end, the VP says: "This looks great, but honestly, we just went through budget cuts and there is no way I can get this approved this quarter." What do you do?</p>
+    <p><strong style="color: var(--green);">Scenario 2 — The Happy Customer:</strong> You are pitching a SaaS product. The director says: "We are already using [COMPETITOR] and everyone on the team likes it. I do not see a reason to switch." They seem genuinely satisfied. How do you respond?</p>
+    <p><strong style="color: var(--purple);">Scenario 3 — The Committee:</strong> After a strong demo, the decision-maker says: "I love this, but I cannot make this call alone. I need to present it to our leadership team next month, and they are going to have tough questions about ROI and implementation." How do you turn this into an opportunity?</p>
+  </div>
+  <p class="section-text">For each scenario, type your response into AI and ask it to evaluate you. Did you hear the concern? Did you empathize? Did you ask the right follow-up question? AI gives you instant coaching on every practice round.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Level Up</span>
   <h2 class="section-title">Role-Play with AI</h2>
   <p class="section-text">One of AI's most underrated sales applications: objection role-playing. Ask AI to play the role of a skeptical buyer and practice your responses in real-time. It's like having a sparring partner available 24/7.</p>

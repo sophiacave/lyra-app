@@ -134,6 +134,129 @@ result = extract_person(
 </div>
 </div>
 
+<div class="card">
+<h2>Production Patterns: Beyond the Game</h2>
+<p>Each game challenge maps to a pattern you will use in real systems every day. Understanding the mapping turns a fun exercise into a transferable skill.</p>
+
+<div style="display:grid;gap:.75rem;margin-top:.75rem">
+<div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+<strong style="color:#38bdf8;font-size:.85rem">Challenge 1 (Haiku) → Structured Generation</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">When you forced Claude into a 5-7-5 syllable grid, you practiced <strong style="color:#e5e5e5">structural constraints</strong> — the same technique used to generate SQL queries, regex patterns, or any output that must conform to a grammar. The production version: "Output ONLY a valid SQL SELECT statement. No explanation."</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+<strong style="color:#34d399;font-size:.85rem">Challenge 2 (JSON) → Data Extraction Pipelines</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Suppressing prose with "ONLY valid JSON" is the backbone of every extraction pipeline — parsing resumes, invoices, support tickets, or medical records into structured data that downstream code can consume without regex hacks.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+<strong style="color:#fb923c;font-size:.85rem">Challenge 3 (Tone) → Content Transformation at Scale</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Tone + audience + honesty constraints power every content pipeline that rewrites internal notes into customer-facing copy, translates technical docs for non-technical readers, or adapts marketing across regions — all while preserving factual accuracy.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+<strong style="color:#8b5cf6;font-size:.85rem">Challenge 4 (Code Review) → Automated Quality Gates</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Constrained code review becomes a CI/CD quality gate. The severity tags (<code style="color:#e5e5e5">[CRITICAL]</code>, <code style="color:#e5e5e5">[WARNING]</code>, <code style="color:#e5e5e5">[INFO]</code>) let you programmatically block merges on critical issues while allowing info-level notes to pass through. See the production code below.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+<strong style="color:#ef4444;font-size:.85rem">Challenge 5 (Persona) → Domain-Expert Agents</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Persona lock is the foundation of every domain-specific agent — a legal assistant that stays in lawyer-mode, a medical triage bot that never breaks character, or a customer support agent with product expertise. The "always stay in character" instruction prevents Claude from reverting to generic assistant behavior.</p>
+</div>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Challenge 4 as a production code review gate</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic, re
+
+client = anthropic.Anthropic()
+
+REVIEW_SYSTEM = (
+    <span style="color:#fbbf24">"You are a senior code reviewer. "</span>
+    <span style="color:#fbbf24">"Review the provided code for bugs, security issues, "</span>
+    <span style="color:#fbbf24">"and performance problems.\n\n"</span>
+    <span style="color:#fbbf24">"Rules:\n"</span>
+    <span style="color:#fbbf24">"- Output ONLY bullet points.\n"</span>
+    <span style="color:#fbbf24">"- Maximum one sentence per issue.\n"</span>
+    <span style="color:#fbbf24">"- Do NOT provide corrected code.\n"</span>
+    <span style="color:#fbbf24">"- Tag each issue: [CRITICAL], [WARNING], or [INFO].\n"</span>
+    <span style="color:#fbbf24">"- If no issues found, output exactly: No issues found."</span>
+)
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">review_code</span>(code: str) -> list[dict]:
+    <span style="color:#fb923c">"""Review code and return structured issues."""</span>
+    response = client.messages.create(
+        model=<span style="color:#fbbf24">"claude-sonnet-4-20250514"</span>,
+        max_tokens=<span style="color:#fb923c">512</span>,
+        temperature=<span style="color:#fb923c">0</span>,
+        system=REVIEW_SYSTEM,
+        messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: code}]
+    )
+    text = response.content[<span style="color:#fb923c">0</span>].text
+    issues = []
+    <span style="color:#c084fc">for</span> line <span style="color:#c084fc">in</span> text.strip().splitlines():
+        match = re.match(
+            <span style="color:#fbbf24">r"[-•]\s*\[(CRITICAL|WARNING|INFO)]\s*(.*)"</span>, line
+        )
+        <span style="color:#c084fc">if</span> match:
+            issues.append({
+                <span style="color:#fbbf24">"severity"</span>: match.group(<span style="color:#fb923c">1</span>),
+                <span style="color:#fbbf24">"message"</span>: match.group(<span style="color:#fb923c">2</span>).strip()
+            })
+    <span style="color:#c084fc">return</span> issues
+
+<span style="color:#71717a"># Usage in a CI pipeline</span>
+issues = review_code(<span style="color:#fbbf24">"""
+def login(user, password):
+    query = f"SELECT * FROM users WHERE name='{user}'"
+    if hashlib.md5(password).hexdigest() == stored:
+        return True
+"""</span>)
+
+has_critical = <span style="color:#34d399">any</span>(i[<span style="color:#fbbf24">"severity"</span>] == <span style="color:#fbbf24">"CRITICAL"</span> <span style="color:#c084fc">for</span> i <span style="color:#c084fc">in</span> issues)
+<span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"Found </span>{<span style="color:#34d399">len</span>(issues)}<span style="color:#fbbf24"> issues, blocking: </span>{has_critical}<span style="color:#fbbf24">"</span>)
+<span style="color:#c084fc">for</span> issue <span style="color:#c084fc">in</span> issues:
+    <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"  [{issue[</span><span style="color:#fbbf24">'severity'</span><span style="color:#fbbf24">]}] {issue[</span><span style="color:#fbbf24">'message'</span><span style="color:#fbbf24">]}"</span>)
+<span style="color:#71717a"># [CRITICAL] SQL injection via f-string interpolation in query.</span>
+<span style="color:#71717a"># [CRITICAL] MD5 is cryptographically broken for password hashing.</span></code></pre>
+</div>
+</div>
+
+<div class="card">
+<h2>The Prompt Engineering Mindset</h2>
+<p>Technique matters, but mindset separates beginner prompt engineers from experts. These five principles apply to every prompt you will ever write — game or production.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem">
+<div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(52,211,153,.12);color:#34d399;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 1</div>
+<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Specificity Beats Length</p>
+<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">A 20-word prompt with exact constraints outperforms a 200-word essay every time. "Output ONLY valid JSON with fields: name, age" is more powerful than three paragraphs explaining what JSON is. Every word should add a constraint, not a clarification.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(139,92,246,.12);color:#8b5cf6;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 2</div>
+<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Constraints Prevent Defaults</p>
+<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">Claude has helpful defaults — it wants to explain, show examples, and provide corrected code. Without constraints, you get Claude's defaults, not your requirements. Every production prompt needs at least one "do NOT" to override a default you do not want.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(251,146,60,.12);color:#fb923c;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 3</div>
+<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Format Instructions Are Non-Optional</p>
+<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">If you do not specify the output format, Claude will choose one — and it will not be the one your code expects. JSON, bullet points, numbered lists, single-word answers: say it explicitly. Production code that parses AI output without a format instruction is gambling.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(239,68,68,.12);color:#ef4444;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 4</div>
+<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Negative Instructions Override Helpful Defaults</p>
+<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">"Do NOT provide corrected code" is more effective than "just list the bugs." Negative instructions directly override Claude's instinct to be maximally helpful. Use them when Claude keeps adding something you did not ask for — explanations, caveats, alternatives, or apologies.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:.75rem">
+<div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(56,189,248,.12);color:#38bdf8;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 5</div>
+<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Temperature Controls Creativity vs Consistency</p>
+<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">Temperature 0 means "give me the same answer every time" — use it for extraction, classification, and code review. Temperature 0.7+ means "surprise me" — use it for creative writing, brainstorming, and persona roleplay. Most beginners never touch temperature. Experts set it on every call because the default (1.0) is wrong for most production tasks.</p>
+</div>
+</div>
+
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+<strong style="color:#8b5cf6">The meta-lesson:</strong> Prompt engineering is not about talking to AI — it is about <strong style="color:#e5e5e5">constraining a probability distribution</strong>. Every instruction you add narrows the space of possible outputs. The game taught you to add constraints one at a time and see the score go up. Production prompt engineering is the same loop: add a constraint, test the output, repeat until the distribution collapses to exactly what you need.
+</div>
+</div>
+
 <div data-learn="FlashDeck" data-props='{"title":"Prompt Engineering Techniques","cards":[{"front":"Haiku format specification","back":"Specify exact syllable structure (5-7-5) AND the required word. Ambiguous format instructions lead to off-spec outputs. Name the format, define the constraints, specify required content."},{"front":"JSON-only output prompt","back":"Tell Claude to output ONLY JSON with no explanation and no markdown code blocks. Define the exact field names you want. Use temperature=0 and low max_tokens for consistency."},{"front":"Tone transformation","back":"Specify the target tone, the target audience, and any honesty constraints — e.g., optimistic for investors without fabricating data. The honesty constraint is what makes it production-safe."},{"front":"Constrained code review","back":"Request ONLY bullet points with NO corrected code and a max of one sentence per issue. Add severity tags [CRITICAL/WARNING/INFO]. Format constraints prevent over-verbose responses."},{"front":"Persona lock","back":"Set a persistent character identity with \"always stay in character\" as an explicit instruction. Combine with domain accuracy requirements so the persona doesn\u0027t compromise factual correctness."}]}'></div>
 
 <div data-learn="QuizMC" data-props='{"title":"Prompt Engineering Challenge Review","questions":[{"q":"You want Claude to output ONLY a valid JSON object from a sentence, no prose, no markdown. Which instruction set is correct?","options":["Parse this sentence","Convert to JSON format please","Output ONLY valid JSON. No explanation. No markdown code blocks. Fields: name, age, city, occupation.","Give me the JSON if possible"],"correct":2,"explanation":"You need three things: ONLY keyword to suppress prose, no explanation to prevent narration, and no markdown to prevent code fences. Specifying exact field names removes ambiguity. This is directly usable in production code."},{"q":"For the tone transformer challenge, what constraint separates good prompts from great ones?","options":["Using more formal vocabulary","Specifying the target audience (investors)","Adding the honesty constraint — optimistic without lying or fabricating","Making the rewrite shorter"],"correct":2,"explanation":"Specifying both the tone AND the honesty constraint (optimistic but truthful, without fabricating data) is what makes a tone prompt production-safe. Without the honesty constraint, Claude might exaggerate numbers to match the requested tone."},{"q":"You want Claude to review code but NOT show the corrected version. What is the key constraint?","options":["Set temperature to 0","Say please only show issues","Explicitly state: do NOT provide corrected code, output ONLY bullet points","Use Haiku instead of Sonnet"],"correct":2,"explanation":"Claude defaults to being helpful — which means it will try to fix the code for you. You need an explicit negative constraint (do NOT provide corrected code) combined with a positive format directive (ONLY bullet points) to override this default."},{"q":"To build a reliable persona that stays in character across all follow-ups, what system prompt element is essential?","options":["A very long backstory","Always stay in character as an explicit instruction","Using high temperature","Ending with a question"],"correct":1,"explanation":"Always stay in character is the critical anchor phrase. Without an explicit persistence instruction, Claude may break character when asked factual questions or faced with unusual inputs."}]}'></div>

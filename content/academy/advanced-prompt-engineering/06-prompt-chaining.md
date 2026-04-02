@@ -90,6 +90,66 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Real-World Chain</span>
+  <h2 class="section-title">Content Creation Pipeline</h2>
+  <p class="section-text">Here's a complete 5-step chain for creating a blog post — the kind of workflow that produces consistently high-quality content.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+      <h4 style="color: var(--orange);">Step 1: Research Brief</h4>
+      <code>"Research the topic: [topic]. Produce a brief with: 5 key facts, 3 common misconceptions, 2 expert perspectives, and 1 surprising angle most articles miss. Format as a structured brief I can hand to a writer."</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+      <h4 style="color: var(--purple);">Step 2: Audience Analysis</h4>
+      <code>"Given this research brief: [Step 1 output]. My audience is [description]. What do they already know about this topic? What's their #1 question? What objection will they raise? What format do they prefer (listicle, deep-dive, how-to)?"</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">Step 3: Outline</h4>
+      <code>"Using this research and audience analysis: [Step 1 + 2 outputs]. Create a detailed blog post outline. Include: headline, subheads, key points under each section, the hook for the intro, and the takeaway for the conclusion. Target: [word count] words."</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+      <h4 style="color: var(--blue);">Step 4: Draft</h4>
+      <code>"Write the full blog post from this outline: [Step 3 output]. Tone: [tone]. Use specific examples and data from the research brief. Every paragraph must either teach something or prove something — no filler."</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--red);">
+      <h4 style="color: var(--red);">Step 5: Edit</h4>
+      <code>"Edit this draft: [Step 4 output]. Check for: weak openings on any paragraph, unsupported claims, redundant sentences, passive voice, and jargon the target audience won't know. Return the edited version with changes tracked in [brackets]."</code>
+    </div>
+  </div>
+
+  <p class="section-text">Each step is focused, and the output of each step is designed to be the perfect input for the next. This is the difference between prompt engineering and workflow engineering.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Error Recovery</span>
+  <h2 class="section-title">What to Do When a Chain Step Fails</h2>
+  <p class="section-text">Chains aren't fragile if you build in recovery points. When a step produces bad output, you have three options.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Option 1: Re-run the step.</strong> Sometimes the same prompt produces better output on a second run. This works when the issue is randomness, not a flawed prompt.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Option 2: Fix the prompt.</strong> If the output is consistently wrong, the prompt needs adjustment. Apply the debugging techniques from Lesson 8 — identify which failure mode it is, make one targeted change.</p>
+  <p class="section-text"><strong style="color: var(--green);">Option 3: Insert a correction step.</strong> Add a new step between the failed step and the next one: "The previous step produced this output: [output]. It has this problem: [problem]. Fix the output so it meets these criteria: [criteria]. Then continue."</p>
+  <p class="section-text">The correction step is often the fastest fix because it doesn't require you to redesign the original prompt — it just patches the output before it flows downstream.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Automation</span>
+  <h2 class="section-title">From Manual Chains to Automated Workflows</h2>
+  <p class="section-text">Once you've validated a chain manually, you can automate it. The same sequence of prompts that you run by hand — copying output from one step into the next — can be scripted.</p>
+  <p class="section-text"><strong style="color: var(--blue);">API-based chaining:</strong> Use the AI's API to run each step programmatically. The script captures each response and passes it as input to the next call. This is the foundation of AI agents and workflow automation tools.</p>
+  <p class="section-text"><strong style="color: var(--blue);">No-code tools:</strong> Platforms like Make, Zapier, or n8n let you build multi-step AI chains visually. Each step calls the AI with a different prompt, and connectors handle passing data between them.</p>
+  <p class="section-text">The skill you're learning here — decomposing tasks and designing clean handoffs between steps — is the same skill used to build production AI systems. You're learning architecture, not just prompting.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Design Principle</span>
+  <h2 class="section-title">How to Decompose Any Task Into a Chain</h2>
+  <p class="section-text">The hardest part of chaining isn't writing the prompts — it's deciding where to split. Here's a framework for decomposing any complex task.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Rule 1: Split at context switches.</strong> When the AI needs to shift from "gathering information" to "creating something" to "evaluating quality" — those are natural chain boundaries. Each mode of thinking gets its own step.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Rule 2: Split when output format changes.</strong> If one part of the task produces structured data and another produces prose, those should be separate steps. Format shifts are a signal that the task has distinct phases.</p>
+  <p class="section-text"><strong style="color: var(--green);">Rule 3: Split at decision points.</strong> If the next step depends on a judgment call (which option is best, which direction to take), make the judgment its own step. This lets you review the decision before the chain continues.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Rule 4: Don't over-split.</strong> Every step adds overhead — prompting, reviewing output, passing data forward. If two sub-tasks are simple and closely related, keep them in one step. The goal is focused steps, not microscopic ones.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Build a 3-Step Chain</h2>
   <div class="try-it-box">

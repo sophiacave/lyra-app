@@ -165,6 +165,46 @@ me which one you would pick and why.</code></pre>
   </div>
 </div>
 
+<!-- SECTION 4.5: USE CASE COMPARISON -->
+<div class="lesson-section">
+  <span class="section-label">Comparison</span>
+  <h2 class="section-title">Claude vs other tools you already use.</h2>
+  <p class="section-text">You might be wondering: how is Claude different from Google, ChatGPT, or the tools I already have? Here is a clear comparison so you know exactly when to reach for Claude.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">VS</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Claude vs Google Search</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Google gives you links to read. Claude gives you answers, drafts, and analysis. Use Google when you need to find a specific website or resource. Use Claude when you need something written, analyzed, or explained for your specific situation.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">VS</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Claude vs templates (Google Docs, Notion)</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Templates give you a blank structure to fill in. Claude fills it in for you. Instead of staring at a template wondering what to write, describe what you need and Claude writes the first draft. You just edit.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">VS</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Claude vs spreadsheets (Excel, Google Sheets)</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Spreadsheets need formulas and pivot tables. Claude reads your data and tells you the story in plain English. Use spreadsheets for storing and organizing data. Use Claude for understanding what the data means.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">VS</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Claude vs a human assistant</div>
+          <div style="color:#a1a1aa;font-size:.85rem">A human assistant has judgment, relationships, and physical world access. Claude has speed, infinite patience, and can work at 3am. They complement each other. Claude handles the drafting and analysis; humans handle the judgment calls and relationships.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- KEY TAKEAWAY -->
 <div class="callout purple">
   <p><strong>The key insight:</strong> Claude is not about AI. It's about <strong>you being better at your job</strong>. The people who win with AI aren't the most technical — they're the ones who learn to communicate clearly with it. That's what this course teaches.</p>

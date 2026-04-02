@@ -98,6 +98,74 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Education</span>
+  <h2 class="section-title">Prompts for Teaching and Learning</h2>
+  <p class="section-text">Education prompts require a different mindset — the goal isn't just accurate output, it's output that builds understanding.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">Concept Explanation</h4>
+      <code>"Explain [concept] to someone who understands [prerequisite] but has never encountered [concept] before. Use an analogy from everyday life. Then give a concrete example. Then explain what the analogy gets wrong — where the analogy breaks down. Target: 200 words."</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+      <h4 style="color: var(--purple);">Quiz Generator</h4>
+      <code>"Create 5 multiple-choice questions testing understanding of [topic]. Requirements:
+- Each question tests a different concept or skill
+- One obviously wrong answer (eliminates guessing)
+- One 'close but wrong' answer (tests deeper understanding)
+- One correct answer
+- One tricky answer that's partially correct
+- Include a brief explanation for why the correct answer is right and why the tricky answer is wrong"</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+      <h4 style="color: var(--orange);">Socratic Tutor</h4>
+      <code>"You are a Socratic tutor. When I ask a question, don't give me the answer directly. Instead: ask me what I already know about the topic, then ask a question that leads me toward the answer. If I get stuck, give a hint — never the full answer. If I'm wrong, ask me to explain my reasoning so we can find where the logic breaks. Only give the direct answer if I explicitly ask for it."</code>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Legal and Compliance</span>
+  <h2 class="section-title">Prompts That Require Precision and Caution</h2>
+  <p class="section-text">Some domains carry higher stakes. Legal, medical, and financial prompts need extra guardrails because errors have real consequences.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+      <h4 style="color: var(--blue);">Contract Review</h4>
+      <code>"Review this contract clause for potential risks. For each risk identified:
+- Quote the exact language that creates the risk
+- Explain the risk in plain English
+- Rate severity: HIGH (could cause significant financial/legal harm), MEDIUM (disadvantageous but manageable), LOW (minor concern)
+- Suggest alternative language that protects both parties
+
+IMPORTANT: Flag any clause you're uncertain about with [NEEDS LAWYER REVIEW]. Do not provide definitive legal advice — frame findings as 'potential concerns for discussion with counsel.'"</code>
+    </div>
+  </div>
+
+  <p class="section-text">Notice the explicit disclaimer instruction. In high-stakes domains, telling the AI to flag uncertainty and recommend professional review is a critical safety pattern — not because the AI can't analyze, but because the consequences of overconfidence are severe.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Creative</span>
+  <h2 class="section-title">Prompts for Creative Work</h2>
+  <p class="section-text">Creative prompts are paradoxically the hardest to write. Too many constraints kill creativity. Too few produce generic output. The sweet spot: constrain the structure, free the content.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Constrain structure:</strong> "Write a 6-word story" or "Write a poem in three stanzas of four lines each." Structure gives the AI a creative challenge to work within.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Free content:</strong> Instead of dictating what to write about, provide a theme or emotion. "Write about the moment right before everything changes" gives more creative space than "write about a person deciding to quit their job."</p>
+  <p class="section-text"><strong style="color: var(--green);">Reference creative influences:</strong> "Write in the style of Raymond Carver" activates a specific literary voice. "Write like a noir detective narrating a cooking show" creates an unexpected combination that produces original output.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Use anti-cliche constraints:</strong> "Write a love story. You may not use the words: heart, soul, forever, destiny, or fate." Constraints that remove defaults force the AI into more original territory.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cross-Domain</span>
+  <h2 class="section-title">Combining Domain Patterns for Unique Results</h2>
+  <p class="section-text">The most powerful prompts often combine patterns from multiple domains. Here are three combinations that produce unexpectedly strong results.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Code + Writing:</strong> "Document this API endpoint like you're writing a tutorial for a developer who's used REST APIs but never used ours. Include a working curl example, explain what each parameter does in plain English, and show the response with annotations."</p>
+  <p class="section-text"><strong style="color: var(--purple);">Analysis + Creative:</strong> "Analyze our customer churn data and present the findings as a narrative — tell the story the data is telling. Who are the characters (segments)? What's the conflict (why they leave)? What's the resolution (what we should do)?"</p>
+  <p class="section-text"><strong style="color: var(--green);">Education + Analysis:</strong> "Explain our quarterly financial results to the marketing team. They understand revenue and growth but not CAC, LTV, or cohort analysis. Use analogies from marketing (campaigns, conversion funnels) to explain financial concepts. Include a glossary of terms they'll need."</p>
+  <p class="section-text">Cross-domain prompts work because they force the AI to translate between modes of thinking. The output isn't just accurate — it's accessible to people outside the original domain.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Write a Domain-Specific Prompt</h2>
   <div class="try-it-box">

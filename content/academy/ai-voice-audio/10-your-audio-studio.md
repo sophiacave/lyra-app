@@ -59,6 +59,115 @@ type: "lesson"
   <p class="section-text">Listen critically every day. Not just to your own output but to professional audio — podcasts, audiobooks, film scores, sound design in games. Notice the details. How do they handle transitions? Where do they place music? How does the voice sit in the mix? That critical listening practice is what separates operators from engineers.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Automated Content Pipeline Script</h2>
+  <p class="section-text">Here is a Python script that implements the Content Pipeline end-to-end — from topic to published-ready audio with show notes:</p>
+  <div class="prompt-box"><code>from openai import OpenAI
+import edge_tts
+import asyncio
+from pydub import AudioSegment
+import subprocess
+
+client = OpenAI()
+
+def generate_script(topic):
+    """Generate a podcast script from a topic."""
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[{
+            "role": "user",
+            "content": f"Write a 3-minute podcast script about: {topic}. "
+                       f"Conversational tone. Short sentences. Include a "
+                       f"hook, 3 key points, and a strong closing."
+        }]
+    )
+    return response.choices[0].message.content
+
+async def generate_voice(text, output_path, voice="en-US-JennyNeural"):
+    """Generate speech using Edge TTS (free)."""
+    communicate = edge_tts.Communicate(text, voice)
+    await communicate.save(output_path)
+
+def generate_show_notes(script):
+    """Generate SEO-optimized show notes from the script."""
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[{
+            "role": "user",
+            "content": f"From this podcast script, generate:\n"
+                       f"1. Episode title (under 60 chars)\n"
+                       f"2. Description (150 words, SEO-optimized)\n"
+                       f"3. Three key takeaways as bullet points\n"
+                       f"4. Five relevant keywords\n\n"
+                       f"Script:\n{script}"
+        }]
+    )
+    return response.choices[0].message.content
+
+def master_audio(input_path, output_path):
+    """Apply loudness normalization for podcast standards."""
+    subprocess.run([
+        "ffmpeg", "-i", input_path,
+        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
+        "-ar", "44100", "-ab", "192k",
+        output_path
+    ], capture_output=True)
+
+# === Run the full pipeline ===
+topic = "Why AI voice tools are the great equalizer for indie creators"
+
+# Step 1: Script
+script = generate_script(topic)
+print("Script generated.")
+
+# Step 2: Voice
+asyncio.run(generate_voice(script, "raw_episode.mp3"))
+print("Voice generated.")
+
+# Step 3: Master
+master_audio("raw_episode.mp3", "final_episode.mp3")
+print("Audio mastered.")
+
+# Step 4: Show notes
+notes = generate_show_notes(script)
+with open("show_notes.md", "w") as f:
+    f.write(notes)
+print("Show notes generated.")
+print("Pipeline complete. Ready to publish.")</code></div>
+  <p class="section-text">This entire pipeline runs in under 3 minutes and costs pennies. Swap Edge TTS for ElevenLabs when quality matters more than cost. Add a Suno-generated intro jingle by concatenating it with pydub before mastering. The pipeline structure stays the same — only the components inside change.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Budget Tiers: Building Your Studio at Any Price Point</h2>
+  <p class="section-text">Your AI audio studio can cost anywhere from zero to hundreds per month. Here are three tiers with specific tool recommendations for each:</p>
+  <p class="section-text"><strong style="color: var(--green);">Free Tier ($0/month):</strong> Edge TTS for voice generation. Suno free tier for music (50 credits/day). Whisper locally for transcription. Audacity for editing. ffmpeg for mastering. Adobe Podcast Enhance free tier for cleanup. This stack produces genuinely professional output for zero dollars. The trade-off is more manual work and less automation.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Creator Tier ($25-50/month):</strong> ElevenLabs Starter ($5) for premium voice quality. Descript Creator ($24) for text-based editing plus Studio Sound. Suno Pro ($10) for commercial-use music. Auphonic ($11) for automated mastering. Total: ~$50/month. This tier eliminates most manual work and produces broadcast-quality output consistently.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Professional Tier ($100-200/month):</strong> ElevenLabs Scale ($22) for high-volume TTS and voice cloning. Descript Business ($33). Deepgram ($0.0043/min) for real-time transcription. AssemblyAI for audio intelligence. iZotope RX ($129 one-time). This tier handles production at scale — multiple shows, client work, or commercial products.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">Monetizing Your AI Audio Skills</h2>
+  <p class="section-text">AI audio skills are immediately monetizable. Here are proven revenue streams:</p>
+  <p class="section-text"><strong>Podcast production services:</strong> Offer end-to-end podcast production — scripting, voice generation, editing, mastering, show notes. Charge $200-500 per episode. Your AI pipeline lets you deliver in hours what traditionally takes days. The margin is enormous.</p>
+  <p class="section-text"><strong>Audiobook narration:</strong> Independent authors need affordable audiobook production. Charge $50-150 per finished hour (still 50-75% cheaper than human narration). A typical novel produces $400-1,800 in revenue per project with AI production costs under $50.</p>
+  <p class="section-text"><strong>Voice-over for video:</strong> YouTube creators, course creators, and businesses need professional narration. Offer AI voice-over with human quality control at $50-200 per project. Volume is the play — AI lets you handle 10 clients per week instead of 2.</p>
+  <p class="section-text"><strong>Custom voice design:</strong> Create branded voices for businesses. Charge $500-2,000 for voice design, cloning setup, and documentation. This is high-value consulting work that most businesses cannot do themselves.</p>
+  <p class="section-text"><strong>Transcription and intelligence:</strong> Offer meeting transcription with AI analysis — summaries, action items, searchable archives. Charge $100-300/month per client for ongoing service. The pipeline is fully automated; you are selling the output, not your time.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Future</span>
+  <h2 class="section-title">What Is Coming Next in AI Audio</h2>
+  <p class="section-text">The AI audio space is moving faster than any other AI domain. Here is what to watch for and prepare for:</p>
+  <p class="section-text"><strong>Real-time voice translation:</strong> Speak in English, your listener hears your voice in Japanese — in real-time, with your natural inflection preserved. Meta's SeamlessM4T and Google's Universal Speech Model are pushing toward this. When it ships, language barriers in audio content disappear entirely.</p>
+  <p class="section-text"><strong>Emotional AI voices:</strong> Current TTS handles basic emotions. Next-generation models will understand and produce subtle emotional nuance — sarcasm, tenderness, excitement, exhaustion. This closes the last major gap between AI and human voice performance.</p>
+  <p class="section-text"><strong>Personalized audio experiences:</strong> AI that adjusts narration speed, voice tone, and music intensity based on listener preferences and context. Your podcast sounds different for a morning commuter versus a late-night listener — same content, different delivery.</p>
+  <p class="section-text"><strong>On-device models:</strong> TTS and STT models running entirely on phones and laptops with no internet connection. Apple, Google, and Meta are all investing heavily here. When these models mature, voice interfaces work everywhere — even offline, even in airplane mode.</p>
+</div>
+
 <div class="demo-container">
   <h3>Your Studio Toolkit (Summary)</h3>
   <p><strong>Voice:</strong> ElevenLabs, OpenAI TTS, PlayHT</p>

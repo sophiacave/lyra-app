@@ -36,6 +36,18 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Taxonomy</span>
+  <h2 class="section-title">The Pattern Type Catalog</h2>
+  <p class="section-text">Patterns in data fall into distinct categories. Knowing the types helps you ask AI the right questions and interpret results with confidence:</p>
+  <p class="section-text"><strong>Seasonal patterns:</strong> Recurring cycles tied to calendar periods. Retail spikes in December. Gym memberships surge in January. Ice cream sales peak in July. Ask AI: "Is there a seasonal pattern in this data? Show me the same metric for the same month across multiple years."</p>
+  <p class="section-text"><strong>Cyclical patterns:</strong> Recurring fluctuations not tied to a fixed calendar. Business cycles, economic expansions and contractions, product adoption curves. These are harder to spot because the period length varies.</p>
+  <p class="section-text"><strong>Step changes:</strong> Sudden, permanent shifts in a metric. A new pricing model that moved average order value from $30 to $45 overnight. A policy change that cut support tickets by 40%. Ask AI: "Are there any abrupt level changes in this time series? When did they occur, and what could have caused them?"</p>
+  <p class="section-text"><strong>Gradual drift:</strong> Slow changes that are invisible day-to-day but significant over months or years. Customer satisfaction slowly declining. Average response time creeping up. These are the most dangerous because nobody notices until it is too late.</p>
+  <p class="section-text"><strong>Clustering:</strong> Groups of similar data points that form naturally. Customers who behave similarly, products with similar sales patterns, regions with similar demographics. Ask AI: "Are there natural clusters or groups in this data based on these variables?"</p>
+  <p class="section-text"><strong>Absence patterns:</strong> Sometimes the most important pattern is what is missing. No sales on certain days. No support tickets from a region that should be generating them. Zero values where there should be data. Ask AI: "Are there any gaps, zeros, or missing data points that seem unusual given the surrounding context?"</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--purple);">Three Types</span>
   <h2 class="section-title">Trends, Outliers, and Correlations</h2>
   <p class="section-text"><strong>Trends</strong> are directional patterns over time. Revenue is growing 5% month-over-month. Customer support tickets increase every Monday. Your email open rate has been declining since September.</p>
@@ -66,6 +78,50 @@ free: false
   <h2 class="section-title">Segmented Pattern Analysis</h2>
   <p class="section-text">Overall averages lie. Your "average customer" might not exist. Ask AI to break patterns down by segments: by region, by customer type, by time period, by product.</p>
   <p class="section-text">A flat overall trend might actually be two segments moving in opposite directions — one growing fast, one declining. That insight changes everything about your next decision.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Detection</span>
+  <h2 class="section-title">Anomaly Detection Methods</h2>
+  <p class="section-text">Anomalies — data points that deviate significantly from the expected pattern — are often the most valuable findings in any analysis. Here are the methods AI uses to detect them:</p>
+  <p class="section-text"><strong>Statistical thresholds:</strong> Flag any value more than 2 or 3 standard deviations from the mean. Simple and effective for normally distributed data. Ask AI: "Flag values beyond 2 standard deviations in each numeric column and tell me if they look like errors or genuine outliers."</p>
+  <p class="section-text"><strong>IQR method:</strong> The Interquartile Range method flags values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR. More robust than standard deviation because it is not skewed by the outliers themselves.</p>
+  <p class="section-text"><strong>Time-series anomalies:</strong> Values that break the expected pattern for a specific time period. A Monday with half the usual traffic. A month with twice the usual revenue. Ask AI: "Compare each data point to the expected value for its time period and flag significant deviations."</p>
+  <p class="section-text"><strong>Contextual anomalies:</strong> Values that are normal in one context but abnormal in another. $500 revenue is normal for a Tuesday but anomalous for a Black Friday. Ask AI: "Flag values that are unusual given their context — day of week, season, or category."</p>
+  <p class="section-text">The critical question for every anomaly: <strong>is this a data error or a genuine signal?</strong> Ask AI to help you distinguish by checking surrounding data, cross-referencing other columns, and looking for corroborating evidence.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Practical</span>
+  <h2 class="section-title">Pattern Recognition Prompt Patterns</h2>
+  <p class="section-text">Use these prompt structures when asking AI to find patterns in your data:</p>
+
+  <div class="demo-container" style="border-left: 3px solid var(--orange); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Multi-dimensional scan:</strong></p>
+    <p><em>"Analyze this data across three dimensions: time (weekly trends), category (differences between groups), and magnitude (are changes accelerating or decelerating?). For each pattern found, rate your confidence and suggest what could be causing it."</em></p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--purple); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Before-and-after analysis:</strong></p>
+    <p><em>"Something changed on [date]. Compare all metrics before and after that date. Which metrics changed significantly? Which stayed the same? What does the pattern of changes suggest about the cause?"</em></p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--green); padding: 1rem; background: var(--bg);">
+    <p><strong>Cohort pattern analysis:</strong></p>
+    <p><em>"Group customers by their signup month. For each cohort, track [metric] over the following 6 months. Do newer cohorts behave differently than older ones? Is there a pattern in how behavior changes over time?"</em></p>
+  </div>
+
+  <p class="section-text">Each of these prompt patterns gives AI clear structure while leaving room for it to surface unexpected findings. The key is always asking "why might this be happening?" alongside "what pattern exists?" — the combination produces actionable intelligence rather than just interesting trivia.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Verification</span>
+  <h2 class="section-title">Validating Patterns</h2>
+  <p class="section-text">Not every pattern is real. Before acting on a finding, verify it:</p>
+  <p class="section-text"><strong>Check sample size:</strong> A "trend" based on 5 data points is not a trend — it is noise. Ask AI: "How many data points support this pattern? Is the sample large enough to be statistically meaningful?"</p>
+  <p class="section-text"><strong>Test across segments:</strong> Does the pattern hold when you split the data differently? If a trend only appears in one segment and disappears in all others, it might be a segment-specific phenomenon rather than a general pattern.</p>
+  <p class="section-text"><strong>Look for external explanations:</strong> Before concluding that your actions caused a change, ask if something external happened. A sudden traffic spike might be a viral mention, not your SEO working. A revenue dip might be a holiday, not a product problem.</p>
+  <p class="section-text"><strong>Reproduce with different methods:</strong> If AI found a pattern using one approach, ask it to verify using a different method. "You found this correlation using monthly averages. Does the same relationship hold when we look at weekly data?"</p>
 </div>
 
   <div class="tip-box">

@@ -60,11 +60,56 @@ free: false
   <p class="section-text">Think of it like a restaurant kitchen. If the dishwasher breaks, you don't close the restaurant. You adapt. Your workflows should do the same.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Error Categories</span>
+  <h2 class="section-title">Knowing What Went Wrong Changes Everything</h2>
+  <p class="section-text">Not all errors are created equal. Categorizing errors helps you build the right response for each type:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Transient errors:</strong> Network timeouts, rate limits, temporary service outages. These resolve themselves. Strategy: retry with backoff. Most APIs recover within 30-60 seconds.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Data errors:</strong> Malformed input, missing required fields, type mismatches. These won't fix themselves on retry. Strategy: validate at the boundary, return a clear error message, route to a dead-letter queue for manual review.</p>
+  <p class="section-text"><strong style="color: var(--red);">Configuration errors:</strong> Expired API keys, wrong endpoint URLs, missing environment variables. These affect every request until fixed. Strategy: detect early (test on startup), alert immediately, fail fast rather than retrying endlessly.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Logic errors:</strong> The workflow ran successfully but produced the wrong result — wrong classification, wrong routing, wrong calculation. The hardest to detect because no exception is thrown. Strategy: output validation, sample auditing, and anomaly detection.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Dead Letter Queues</span>
+  <h2 class="section-title">Where Failed Items Go to Wait</h2>
+  <p class="section-text">When a workflow item fails all retries and there's no viable fallback, it shouldn't just vanish. A dead-letter queue (DLQ) captures every failed item with its full context — the original data, which step failed, the error message, the timestamp, and how many retries were attempted.</p>
+  <p class="section-text">This serves two purposes. First, no data is ever lost. That customer inquiry that failed at 3am because the CRM was down? It's sitting in the DLQ, ready to be reprocessed when the CRM comes back. Second, DLQ patterns reveal systemic issues. If 200 items fail with the same error in one hour, that's not 200 individual problems — it's one root cause.</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--purple);">Dead-letter queue entry example:</strong></p>
+    <p><code>{"item_id": "inv-4521", "step": "crm_update", "error": "401 Unauthorized", "retries": 3, "original_data": {...}, "failed_at": "2026-03-15T03:22:00Z"}</code></p>
+    <p><em style="color: var(--dim);">Review your DLQ daily. Process items manually or requeue them in batches. Never let it grow silently.</em></p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Circuit Breakers</span>
+  <h2 class="section-title">Stop Hammering a Dead Service</h2>
+  <p class="section-text">Imagine an API goes down and your workflow keeps retrying — 3 retries per item, 100 items per minute, that's 300 failed requests per minute hammering a service that's already struggling. You're making the problem worse.</p>
+  <p class="section-text">A circuit breaker pattern solves this. After a threshold of failures (say, 5 consecutive errors from the same service), the circuit "opens" — your workflow stops calling that service entirely and goes straight to fallback. After a cooldown period (say, 60 seconds), it tries one request. If it succeeds, the circuit "closes" and normal operation resumes. If it fails, the circuit stays open for another cooldown period.</p>
+  <p class="section-text">This protects the failing service, saves your API quota, and keeps your workflow responsive by immediately routing to fallbacks instead of waiting through retry cycles.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Now</h3>
   <p>Add error handling to your workflow design from previous lessons.</p>
   <div class="prompt-box">
     <code>For each step in your workflow, answer: (1) What could go wrong? (2) What's the retry strategy? (3) What's the fallback? (4) Who gets alerted, and with what information?</code>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Real-World Example</span>
+  <h2 class="section-title">Error Handling in a Complete Workflow</h2>
+  <p class="section-text">Here's how all these error handling patterns come together in a real customer onboarding workflow. Each step has its own strategy:</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Step 1 — Create CRM contact:</strong> Retry 3x with backoff (transient). If still failing, log to DLQ with all customer data so nothing is lost. Alert: warning.</p>
+    <p><strong style="color: var(--blue);">Step 2 — AI classify segment:</strong> Retry 2x (transient). Fallback: default to "general" segment. Circuit breaker if API is down. Alert: info (fallback is safe).</p>
+    <p><strong style="color: var(--purple);">Step 3 — Send welcome email:</strong> Retry 3x. Fallback: switch to backup email provider (SendGrid → Mailgun). If both fail, queue email for later delivery. Alert: critical (customer experience impacted).</p>
+    <p><strong style="color: var(--orange);">Step 4 — Notify sales team:</strong> Retry 1x. Fallback: log notification to database for manual review. No circuit breaker needed (Slack is highly reliable). Alert: warning.</p>
+    <p><em style="color: var(--dim);">Each step fails independently. If the CRM is down, the welcome email still sends. If the email provider is down, the sales notification still fires. That's graceful degradation in practice.</em></p>
   </div>
 </div>
 

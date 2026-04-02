@@ -164,6 +164,45 @@ result = check_conscience(<span style="color:#fbbf24">"publish_health_data"</spa
 <span style="color:#71717a"># → {"allowed": False, "blocked_by": "Never expose private user data", "tier": 1}</span></code></pre>
 </div>
 
+  <div class="section">
+    <h2>Implementing Tier Conflicts in Practice</h2>
+    <p>When two rules at the <em>same tier</em> conflict, the conscience layer needs a tiebreaker. Three approaches:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8">Specificity Wins</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A more specific rule overrides a more general one. "Never share health data about HIV status" (specific) overrides "Share relevant health data with the user's doctor" (general). The specific exception takes precedence.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+        <strong style="color:#f472b6">Recency Wins</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When two equally specific rules conflict, the more recently created rule takes precedence — on the assumption that it represents the latest understanding. Use this only when rules are actively maintained and reviewed.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(250,204,21,.04);border:1px solid rgba(250,204,21,.1)">
+        <strong style="color:#facc15">Human Escalation</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When same-tier rules conflict and no tiebreaker exists, escalate to the human for a one-time judgment call. Record the decision as a new rule so the same conflict is auto-resolved next time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Audit Trails and Accountability</h2>
+    <p>Every conscience layer evaluation should be logged. When an action is blocked — or allowed — the system must record why. This creates an audit trail that enables debugging and accountability:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0"><code><span style="color:#71717a"># Conscience audit log entry</span>
+audit_entry = {
+    <span style="color:#fbbf24">"timestamp"</span>: <span style="color:#fbbf24">"2026-04-01T10:15:00Z"</span>,
+    <span style="color:#fbbf24">"agent"</span>: <span style="color:#fbbf24">"content-writer"</span>,
+    <span style="color:#fbbf24">"proposed_action"</span>: <span style="color:#fbbf24">"publish_user_testimonial"</span>,
+    <span style="color:#fbbf24">"verdict"</span>: <span style="color:#fbbf24">"BLOCKED"</span>,
+    <span style="color:#fbbf24">"blocked_by_tier"</span>: <span style="color:#fbbf24">1</span>,
+    <span style="color:#fbbf24">"blocked_by_rule"</span>: <span style="color:#fbbf24">"Never share private health data"</span>,
+    <span style="color:#fbbf24">"reason"</span>: <span style="color:#fbbf24">"Testimonial mentions HIV status"</span>
+}</code></pre>
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Without an audit trail, blocked actions disappear silently. The agent does not act, but nobody knows why. Logging every evaluation — especially blocks — makes the system transparent and debuggable.</p>
+  </div>
+
   <div data-learn="QuizMC" data-props='{"title":"Conscience Layer \u2014 Priority Hierarchy","questions":[{"q":"An agent is asked to publish content that includes a user\u0027s private health data because it would increase engagement. What does the conscience layer do?","options":["Publishes it \u2014 engagement is a core goal","Refuses \u2014 user privacy is a Prime Directive that overrides task goals","Asks for human approval","Strips the health data and publishes the rest"],"correct":1,"explanation":"Prime Directives (Tier 1) override all tasks (Tier 5). Sharing private health data harms the user \u2014 the conscience layer blocks this unconditionally."},{"q":"A content writer agent is about to publish a report showing the business is losing money. Should it soften the language?","options":["Yes \u2014 protect stakeholder morale","No \u2014 honesty is a Prime Directive; accurate reporting enables good decisions","Only soften if losses are over 20%","Yes \u2014 the marketing team can handle messaging"],"correct":1,"explanation":"Honesty is a Prime Directive. Misleading stakeholders, even to protect morale, violates Tier 1."},{"q":"Which tier has the HIGHEST priority?","options":["Safety","Operations","Tasks","Prime Directives"],"correct":3,"explanation":"Tier 1: Prime Directives override everything. They represent core values the system will never violate."},{"q":"An agent finds a way to save money but it requires exposing an API key in a public repo. What should the conscience layer do?","options":["Allow it \u2014 cost savings are an operational priority","Block it \u2014 safety rules outrank operational efficiency","Ask the user to decide","Allow it temporarily with a warning"],"correct":1,"explanation":"Safety (Tier 4) outranks Operations (Tier 3). Exposing credentials is a safety violation \u2014 blocked unconditionally."},{"q":"GDPR agent wants to delete user data. Fraud agent wants to retain it. Both have valid rules. How does the conscience layer resolve this?","options":["The last agent to run wins","Deadlock \u2014 neither acts","The conscience layer compares tier levels and the higher-tier rule wins","It always deletes \u2014 privacy is more important"],"correct":2,"explanation":"The conscience layer resolves conflicts by tier precedence. If both rules are the same tier, the system applies a predefined policy (e.g., retain with restricted access for 30 days, then delete)."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"The 5 Conscience Tiers","cards":[{"front":"Tier 1: Prime Directives","back":"Highest priority. Core ethical rules that can NEVER be violated \u2014 never harm, never deceive, never expose private data. Override everything."},{"front":"Tier 2: Identity","back":"Rules maintaining consistent personality and user respect \u2014 voice, tone, name safety, preferences. Shapes HOW the agent works."},{"front":"Tier 3: Operations","back":"Business rules \u2014 budget limits, logging requirements, deployment procedures, scope boundaries."},{"front":"Tier 4: Safety","back":"Technical safety \u2014 never expose credentials, validate inputs, enable RLS, no destructive ops without confirmation."},{"front":"Tier 5: Tasks","back":"The actual work. Always subordinate to all tiers above. If a task requires violating safety, the task doesn\u0027t get done."},{"front":"How does the conscience layer resolve conflicts?","back":"Rules are checked from highest tier to lowest. The first blocking rule wins. Higher tiers always override lower tiers. Same-tier conflicts use predefined policies."},{"front":"What is Constitutional AI?","back":"Anthropic\u0027s approach: Claude is trained with a set of principles (the constitution) that guide behavior. Higher-priority principles override lower ones. A conscience layer built into the model itself."}]}'></div>

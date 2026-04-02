@@ -103,6 +103,45 @@ of field, clean modern interior background</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Website and Landing Page Visuals</span>
+  <h2 class="section-title">Build a professional web presence with zero stock photo budget.</h2>
+  <p class="section-text">Stock photos are expensive, generic, and your competitors use the same ones. AI-generated visuals let you create unique imagery that matches your exact brand aesthetic. Here are specific approaches:</p>
+  <p class="section-text"><strong>Hero images:</strong> The large banner image at the top of a landing page. Generate wide-format (16:9 or wider) images with your brand colors, leaving negative space for headline text. Use soft focus or abstract elements so text remains readable on top.</p>
+  <p class="section-text"><strong>Section dividers:</strong> Subtle gradient backgrounds, abstract patterns, or atmospheric scenes that separate content sections. These should enhance readability, not compete with your text. Prompt tip: add "subtle, understated, background element" to keep them from being too attention-grabbing.</p>
+  <p class="section-text"><strong>About page imagery:</strong> Create lifestyle scenes that represent your brand values and culture. A coaching business might generate warm, inviting conversation spaces. A tech startup might generate clean, modern workspaces with innovative details.</p>
+  <p class="section-text"><strong>Feature illustrations:</strong> Instead of generic icons, generate custom illustrations for each product feature or service offering. "A minimal line illustration of a shield representing security, clean white background, single accent color" creates something unique and on-brand.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Education and Training Materials</span>
+  <h2 class="section-title">AI visuals make learning materials more engaging and more accessible.</h2>
+  <p class="section-text">Whether you are a teacher, trainer, course creator, or content producer, AI images solve the persistent problem of finding the right visual to explain a concept:</p>
+  <p class="section-text"><strong>Concept visualization:</strong> Abstract concepts become concrete. "A visual metaphor for compound interest: a small snowball at the top of a hill growing into a massive snowball at the bottom, simple and clear" creates an illustration that no stock photo library has.</p>
+  <p class="section-text"><strong>Diagram backgrounds:</strong> Generate atmospheric or abstract backgrounds for diagrams, flowcharts, and infographics. Overlay your actual diagram in a design tool. The background elevates the visual from a flat chart to something that feels polished and intentional.</p>
+  <p class="section-text"><strong>Scenario illustrations:</strong> Training materials often need illustrations of workplace scenarios, customer interactions, or hypothetical situations. AI generates these instantly. "A diverse group of colleagues having a positive brainstorming session in a modern office, natural light, illustration style" is faster and more customizable than any stock photo search.</p>
+  <p class="section-text"><strong>Historical and cultural illustrations:</strong> Need an image of a medieval marketplace for a history lesson? An ancient Roman forum? A 1920s jazz club? AI generates these in seconds, giving you custom illustrations for any historical period or cultural context.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Personal and Creative Projects</span>
+  <h2 class="section-title">The most fun use cases are the ones you do purely for yourself.</h2>
+  <p class="section-text">Beyond business and professional use, AI visuals open up creative possibilities that are just plain enjoyable:</p>
+  <p class="section-text"><strong>Custom wallpapers and backgrounds:</strong> Generate phone wallpapers, desktop backgrounds, and lock screens that match your exact aesthetic. Change them with the seasons or your mood. Try: "A serene Japanese garden in autumn, koi pond with golden maple leaves floating on water, soft morning mist, peaceful and contemplative, phone wallpaper format 9:16."</p>
+  <p class="section-text"><strong>Gift and card design:</strong> Create personalized greeting cards, invitations, and gift prints. "A birthday card illustration of a whimsical cake made of flowers and butterflies, watercolor style, joyful pastel palette" gives you something no store-bought card can match.</p>
+  <p class="section-text"><strong>Story and world-building:</strong> Writers, game masters, and creative hobbyists can visualize characters, locations, items, and scenes from their imaginative worlds. See your characters' faces. Walk through your fictional settings. This is not just fun — it deepens your creative process.</p>
+  <p class="section-text"><strong>Photo manipulation and art:</strong> Upload a real photo and transform it into different artistic styles. Turn a family photo into an oil painting. Transform a vacation snapshot into a watercolor. Create art from your own life that feels both personal and extraordinary.</p>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — website hero image with brand colors and text space</div>
+<pre style="margin:0;color:#e5e5e5"><code>Wide panoramic hero image for a wellness brand website,
+soft gradient from warm terracotta to cream, abstract
+organic shapes suggesting growth and calm, generous negative
+space on the left side for headline text, subtle texture,
+sophisticated and modern, 1920x600 pixels, clean and airy</code></pre>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Use Cases and Workflows</h2>
 </div>

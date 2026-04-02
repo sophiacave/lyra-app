@@ -80,6 +80,50 @@ Keep the core message consistent across all formats."</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Image Pipeline</span>
+  <h2 class="section-title">Building a Consistent Visual Pipeline</h2>
+  <p class="section-text">Visual consistency across content requires a visual style guide that every image prompt references. Without one, your blog hero images look like they came from ten different brands. The style guide covers: color palette (hex codes), illustration style (flat, 3D, photographic), mood (bright and optimistic vs. dark and dramatic), composition patterns (centered subject, rule of thirds, text overlay zones).</p>
+  <p class="section-text">Your image brief template encodes these constraints automatically. Every prompt starts with the style preamble, then adds content-specific elements. The result: every generated image is unmistakably yours, regardless of which AI tool creates it.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Image Brief Template</h3>
+  <pre>
+STYLE PREAMBLE (constant):
+"Minimalist flat illustration. Color palette: #2D3436, #0984E3,
+#00CEC9, #FDCB6E on white background. Clean lines, no gradients.
+Modern tech aesthetic. No photorealism. No people."
+
+CONTENT-SPECIFIC (varies):
+"Subject: {{CONCEPT}} represented as [specific visual metaphor].
+Composition: centered, with breathing room for text overlay on
+the left third. Aspect ratio: 16:9 for blog hero, 1:1 for social.
+Must work at both 1200px and 400px width."
+
+OUTPUT:
+- Hero image prompt (16:9)
+- Social thumbnail prompt (1:1)
+- Email header prompt (600x200)
+  </pre>
+  <p>Three image sizes, one style, one pipeline step. Feed these prompts into DALL-E, Midjourney, or Flux and get brand-consistent visuals every time.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Audio Pipeline</span>
+  <h2 class="section-title">Text-to-Audio Workflows</h2>
+  <p class="section-text">Audio content is booming — podcasts, voice newsletters, audio articles. Your text pipeline can feed audio production with minimal extra effort. The key step: a "spoken version" template that converts written text into natural speech patterns. Written and spoken language are different — the template removes visual formatting, expands abbreviations, adds conversational transitions, and marks emphasis points.</p>
+  <p class="section-text">For AI-generated narration (using tools like ElevenLabs or Play.ht), the spoken version template also includes SSML-like markers: pauses, speed changes, and emphasis tags. A blog post becomes a polished audio article in two pipeline steps: convert-to-spoken → generate-audio. No recording studio needed.</p>
+  <p class="section-text">For human narration (podcasts, YouTube), the template produces a teleprompter-ready script with breathing marks, emphasis cues, and natural pause points. The host reads with confidence because the script was designed for speaking, not reading.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Workflow</span>
+  <h2 class="section-title">Coordinating Multi-Modal Production</h2>
+  <p class="section-text">The challenge with multimedia pipelines isn't generating each piece — it's coordinating them so they ship together. A blog post that goes live without its social carousel, without its email teaser, without its video script, is a missed opportunity. Build your pipeline so all media types complete before any single one publishes.</p>
+  <p class="section-text">Use a production checklist as the final pipeline gate: Blog post: ready. Hero image: generated. Social carousel: designed. Email teaser: drafted. Video script: written. Audio brief: prepared. All six items checked? Ship everything on the same schedule. Missing one? Hold the entire kit until it's complete. Coordinated launches outperform staggered ones by 3-5x in engagement.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Coordination</span>
   <h2 class="section-title">The Media Kit Mindset</h2>
   <p class="section-text">The endgame is this: you don't publish a blog post. You publish a media kit. Every idea ships with its full complement of visual, audio, and video assets — all generated from the same pipeline run, all consistent in message and brand. That's what separates content creators from content operations.</p>

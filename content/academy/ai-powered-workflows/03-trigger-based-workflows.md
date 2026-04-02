@@ -61,12 +61,60 @@ free: true
   <p class="section-text">You don't need to understand the deep technical layer yet. Just know this: if a tool has webhooks, it can trigger a workflow. And almost every modern tool has webhooks.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced Triggers</span>
+  <h2 class="section-title">Compound Triggers and Trigger Chains</h2>
+  <p class="section-text">Real-world workflows often need more than a single trigger. A <strong>compound trigger</strong> requires multiple conditions to be true simultaneously: "When a new order arrives AND the order value is above $500 AND the customer is new." All three conditions must be met before the workflow fires.</p>
+  <p class="section-text">A <strong>trigger chain</strong> is when one workflow's completion triggers another workflow. The customer signs up (Workflow A triggers), onboarding completes (Workflow B triggers), and 7 days later a feedback request fires (Workflow C triggers). Each workflow is independent but connected through a chain of events.</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Compound trigger example:</strong></p>
+    <p><code>WHEN new_signup AND plan == "enterprise" AND company_size > 100</code></p>
+    <p>→ Route to enterprise sales team with full company dossier</p>
+    <p><strong style="color: var(--blue);">Trigger chain example:</strong></p>
+    <p><code>Signup webhook → Onboarding workflow → [completion event] → Day-7 check-in workflow → [completion event] → Day-30 review workflow</code></p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Trigger Safety</span>
+  <h2 class="section-title">Preventing Runaway Triggers</h2>
+  <p class="section-text">A trigger without guardrails is dangerous. What happens when your webhook fires 10,000 times in a minute because of a duplicate event bug? Or when a condition-based trigger gets stuck in a loop — the workflow updates a database field, which triggers the same workflow again, which updates the field again, forever?</p>
+  <p class="section-text"><strong style="color: var(--orange);">Deduplication:</strong> Track event IDs and skip duplicates. If you've already processed event <code>evt_abc123</code>, ignore the second delivery.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Rate limiting:</strong> Cap how many times a workflow can fire per minute. If your customer signup workflow fires more than 100 times per minute, something is probably wrong — pause and alert.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Loop detection:</strong> If a workflow modifies the same data that triggers it, add a "processed" flag. Only fire on records where <code>processed = false</code>, and set it to <code>true</code> as the first step.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Kill switch:</strong> Every production workflow should have a way to instantly disable its trigger without deleting the workflow. A simple boolean flag in your config — <code>workflow_enabled: true/false</code> — can prevent catastrophic runaway scenarios.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Platform Comparison</span>
+  <h2 class="section-title">Triggers Across Popular Platforms</h2>
+  <p class="section-text">Different platforms offer different trigger capabilities. Knowing what's available helps you choose the right tool:</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Zapier:</strong> 6,000+ app triggers. Best for non-technical users. Each "Zap" starts with one trigger. Limited compound trigger support — use filters as workarounds.</p>
+    <p><strong style="color: var(--green);">Make (Integromat):</strong> Visual scenario builder with compound triggers built in. Supports watching folders, databases, and APIs. Excellent for multi-branch workflows.</p>
+    <p><strong style="color: var(--purple);">n8n:</strong> Open-source, self-hosted option. Full webhook support, cron triggers, and custom JavaScript triggers. Best for teams that want full control over their automation infrastructure.</p>
+    <p><strong style="color: var(--orange);">Custom Python/Node:</strong> Maximum flexibility. FastAPI webhooks, APScheduler for cron, database polling for conditions. Best for workflows that need to be deeply integrated with your own systems.</p>
+  </div>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Now</h3>
   <p>Take the process you mapped in Lesson 2 and identify its ideal trigger type.</p>
   <div class="prompt-box">
     <code>Look at your mapped process. What event, time, or condition should kick it off? Write: "WHEN [trigger] THEN [first action]." Is it time-based, event-based, condition-based, or manual?</code>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Debugging Triggers</span>
+  <h2 class="section-title">When Your Workflow Doesn't Fire</h2>
+  <p class="section-text">The most frustrating debugging experience: you set up a workflow, the trigger should have fired, but nothing happened. Here's a systematic approach to diagnosing trigger failures:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Check 1: Did the event actually occur?</strong> Verify in the source system that the event happened. Check the webhook delivery logs (most platforms show recent webhook deliveries and their HTTP status codes). If the event didn't fire, the problem is upstream.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Check 2: Did the webhook arrive?</strong> Check your endpoint's request logs. If you're using a custom server, add logging to the webhook handler. If using a platform like Make or Zapier, check their execution history. No request means a network or URL issue.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Check 3: Did the payload match your expectations?</strong> Even if the webhook arrives, the data might be structured differently than your workflow expects. Log the raw payload and compare it to your code's expectations. A field named <code>customer_email</code> vs. <code>email</code> will silently break everything.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Check 4: Did a filter block it?</strong> If you have conditions on your trigger (only fire for orders over $50), verify that the event data actually meets those conditions. Often the data is there but doesn't pass the filter.</p>
 </div>
 
 <div class="lesson-section">

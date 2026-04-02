@@ -60,6 +60,130 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Implementation</span>
+  <h2 class="section-title">Building a Semantic Cache</h2>
+  <p class="section-text">A semantic cache is the single highest-impact cost optimization for AI apps. Instead of matching queries exactly, it finds previously answered questions that are semantically similar — serving cached responses for questions that are worded differently but mean the same thing.</p>
+
+<div class="code-block"><div class="code-label">SQL — Semantic Cache Schema</div>
+<pre><code class="language-sql">CREATE TABLE semantic_cache (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  query_text TEXT NOT NULL,
+  query_embedding vector(384) NOT NULL,
+  response_text TEXT NOT NULL,
+  provider TEXT NOT NULL,
+  model TEXT NOT NULL,
+  tokens_saved INT DEFAULT 0,
+  hit_count INT DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  expires_at TIMESTAMPTZ DEFAULT now() + interval '24 hours'
+);
+
+-- HNSW index for fast similarity search
+CREATE INDEX ON semantic_cache
+  USING hnsw (query_embedding vector_cosine_ops);
+
+-- Function to find cached responses
+CREATE OR REPLACE FUNCTION find_cached_response(
+  query_vec vector(384),
+  similarity_threshold FLOAT DEFAULT 0.95
+)
+RETURNS TABLE(response_text TEXT, similarity FLOAT) AS $$
+  SELECT
+    response_text,
+    1 - (query_embedding &lt;=&gt; query_vec) AS similarity
+  FROM semantic_cache
+  WHERE expires_at > now()
+    AND 1 - (query_embedding &lt;=&gt; query_vec) > similarity_threshold
+  ORDER BY query_embedding &lt;=&gt; query_vec
+  LIMIT 1;
+$$ LANGUAGE sql;</code></pre>
+</div>
+
+<div class="code-block"><div class="code-label">TypeScript — Semantic Cache Middleware</div>
+<pre><code class="language-typescript">async function queryWithCache(
+  userQuery: string,
+  generateEmbedding: (text: string) => Promise&lt;number[]&gt;,
+  callLLM: (prompt: string) => Promise&lt;string&gt;
+): Promise&lt;{ response: string; cached: boolean; savings: number }&gt; {
+  // Step 1: Embed the query
+  const embedding = await generateEmbedding(userQuery);
+
+  // Step 2: Check semantic cache
+  const { data: cached } = await supabase.rpc("find_cached_response", {
+    query_vec: JSON.stringify(embedding),
+    similarity_threshold: 0.95,
+  });
+
+  if (cached && cached.length > 0) {
+    // Cache hit — increment counter and return
+    await supabase.from("semantic_cache")
+      .update({ hit_count: cached[0].hit_count + 1 })
+      .eq("id", cached[0].id);
+
+    return { response: cached[0].response_text, cached: true, savings: 0.03 };
+  }
+
+  // Step 3: Cache miss — call LLM
+  const response = await callLLM(userQuery);
+
+  // Step 4: Store in cache for future queries
+  await supabase.from("semantic_cache").insert({
+    query_text: userQuery,
+    query_embedding: JSON.stringify(embedding),
+    response_text: response,
+    provider: "anthropic",
+    model: "claude-sonnet-4-6",
+  });
+
+  return { response, cached: false, savings: 0 };
+}</code></pre>
+</div>
+
+  <p class="section-text">The similarity threshold of 0.95 is a good starting point — it catches near-identical questions while avoiding false matches. Lower it to 0.90 for broader caching (more savings, slightly higher risk of returning a less relevant answer). Monitor your cache hit rate and adjust.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Calculator</span>
+  <h2 class="section-title">AI Cost Calculator</h2>
+  <p class="section-text">Use this reference to estimate monthly AI costs before you build. Plug in your expected usage numbers and model choices to get a realistic budget.</p>
+
+<div class="code-block"><div class="code-label">Cost Calculator Reference</div>
+<pre><code>MODEL PRICING (per 1M tokens, as of 2025):
+──────────────────────────────────────────────────────
+Model                    │ Input      │ Output
+─────────────────────────┼────────────┼──────────────
+Claude Opus 4            │ $15.00     │ $75.00
+Claude Sonnet 4          │  $3.00     │ $15.00
+Claude Haiku 3.5         │  $0.80     │  $4.00
+GPT-4o                   │  $2.50     │ $10.00
+GPT-4o-mini              │  $0.15     │  $0.60
+BGE-small (HuggingFace)  │  FREE      │  N/A
+──────────────────────────────────────────────────────
+
+EXAMPLE CALCULATION — 1,000 daily active users:
+──────────────────────────────────────────────────────
+Assumption: 5 AI interactions per user per day
+Avg input: 500 tokens | Avg output: 300 tokens
+
+Daily tokens: 1,000 × 5 × (500 + 300) = 4,000,000
+
+Using Claude Sonnet:
+  Input:  2,500,000 × $3.00/1M  = $7.50/day
+  Output: 1,500,000 × $15.00/1M = $22.50/day
+  Total:                          $30.00/day = $900/month
+
+With 50% cache hit rate:
+  Total: $15.00/day = $450/month  (saved $450!)
+
+With model tiering (70% Haiku, 30% Sonnet):
+  Haiku:  $3.36/day + Sonnet: $9.00/day = $12.36/day
+  With cache: ~$6.18/day = $185/month   (saved $715!)</code></pre>
+</div>
+
+  <p class="section-text">The difference between naive API usage ($900/month) and optimized usage ($185/month) is 5x. That's the difference between a profitable AI product and one that hemorrhages money. Caching and model tiering aren't optional — they're the business model.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Discipline</span>
   <h2 class="section-title">Operational Cost Controls</h2>
   <p class="section-text"><strong>Token budgets per request:</strong> Set maximum output token limits. If a user asks a simple question, cap the response at 500 tokens. Don't let the model write an essay when a paragraph will do.</p>

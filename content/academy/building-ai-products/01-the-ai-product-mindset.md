@@ -68,6 +68,53 @@ free: true
   <p class="section-text">If your entire product can be replicated by pasting a prompt into ChatGPT, you don't have a product. You have a shortcut. Products have workflows, data persistence, user context, and compounding value over time.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The Product vs. Demo Litmus Test</h2>
+  <p class="section-text">Ask five questions about your idea. Every "yes" moves you closer to product territory. Every "no" keeps you in demo land.</p>
+  <p class="section-text"><strong>1. Does it remember?</strong> A product accumulates context over time. Your second session should be better than your first because the system knows more about you. A demo treats every interaction as brand new.</p>
+  <p class="section-text"><strong>2. Does it integrate?</strong> A product fits into the user's existing workflow — their calendar, their Slack, their file system. A demo lives on its own island, requiring copy-paste to be useful.</p>
+  <p class="section-text"><strong>3. Does it compound?</strong> A product gets more valuable the more you use it. Historical data, learned preferences, accumulated outputs all create switching costs. A demo delivers the same flat value on day one and day one hundred.</p>
+  <p class="section-text"><strong>4. Does it handle edge cases?</strong> A product gracefully manages errors, unusual inputs, and boundary conditions. A demo works perfectly on the happy path and falls apart everywhere else.</p>
+  <p class="section-text"><strong>5. Does it have a business model?</strong> A product has clear unit economics — you know what each user costs and what each user pays. A demo has no pricing because the creator hasn't figured out whether it's sustainable.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">The Four Stages of AI Product Thinking</h2>
+  <p class="section-text">Most builders progress through four stages. Knowing where you are helps you level up faster.</p>
+  <p class="section-text"><strong>Stage 1: Technology-first.</strong> "I learned about embeddings, so I want to build something with embeddings." This is backwards. You're looking for problems that match your solution instead of solutions that match real problems. Nearly every hackathon project lives here.</p>
+  <p class="section-text"><strong>Stage 2: Feature-first.</strong> "What if we added AI to our existing product?" Better — you're starting from a real product. But bolting AI onto existing workflows often creates complexity without clarity. The user didn't ask for AI. They asked for their problem to go away.</p>
+  <p class="section-text"><strong>Stage 3: Problem-first.</strong> "People spend four hours a week writing status reports. What if that took zero?" Now you're thinking correctly. The problem drives the solution. AI is invisible — it's just the engine under the hood.</p>
+  <p class="section-text"><strong>Stage 4: Outcome-first.</strong> "Every Monday morning, your team has a perfectly written status report waiting in their inbox. Nobody wrote it." This is the pinnacle. You're not selling a tool. You're selling a world where the problem doesn't exist anymore.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mindset</span>
+  <h2 class="section-title">Thinking in Workflows, Not Features</h2>
+  <p class="section-text">Features are things your product does. Workflows are things your user accomplishes. The distinction matters because AI products succeed when they own an entire workflow — not when they're a clever feature inside someone else's workflow.</p>
+  <p class="section-text">Consider email. "AI-powered email drafting" is a feature — it lives inside Gmail or Outlook and competes with every other plugin. "Zero-touch client communication" is a workflow — it handles drafting, scheduling, follow-ups, and response categorization as one seamless experience. One is a vitamin. The other is a painkiller.</p>
+  <p class="section-text">Map your user's complete workflow from trigger to outcome. Where do they start? What steps do they take? Where do they get stuck? Where do they waste time? Your product should own as many of those steps as possible — not just the single moment where AI generates text.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">The Defensibility Question</h2>
+  <p class="section-text">AI products face a unique defensibility challenge. If your moat is "we use a better prompt," you have no moat. Prompts are trivially copyable. The real question every AI product builder must answer: what makes this harder to replicate over time?</p>
+  <p class="section-text"><strong>Data moats:</strong> Every user interaction generates proprietary data that improves your product. A medical AI that has processed 10 million diagnoses produces fundamentally different results than a competitor starting from zero.</p>
+  <p class="section-text"><strong>Workflow moats:</strong> Deep integration into the user's daily workflow creates switching costs. If your product manages their content calendar, publishes to their channels, and tracks performance — leaving means rebuilding everything.</p>
+  <p class="section-text"><strong>Network moats:</strong> Products that get better as more people use them. A document collaboration AI where shared editing creates collective intelligence. An industry benchmarking tool where every company's data improves everyone's insights.</p>
+  <p class="section-text"><strong>Brand moats:</strong> Trust in AI is earned slowly. Being the name people associate with reliability in your category — "the Grammarly of legal writing" — creates an intangible but powerful barrier to entry.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Mistake</span>
+  <h2 class="section-title">The "AI Does Everything" Trap</h2>
+  <p class="section-text">The most common mistake in AI product thinking is scope creep disguised as ambition. "Our AI handles customer support, generates marketing copy, analyzes sales data, and manages projects." That's not a product — that's four products, each of which will be mediocre.</p>
+  <p class="section-text">Pick one problem. Solve it so well that users can't imagine going back to the old way. Then — and only then — consider expanding. Notion started as a note-taking tool. Figma started as a design tool. They expanded after proving one thing. Your AI product should do the same.</p>
+  <p class="section-text">A useful heuristic: if you can't explain your product's value in eight words or fewer, it's too broad. "Turn meeting recordings into action items." "Generate social posts from blog articles." "Convert receipts into expense reports." Tight scope. Clear value. That's the mindset.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Write your AI product idea using the magic trick formula:</p>

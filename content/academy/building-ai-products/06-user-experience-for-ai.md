@@ -78,6 +78,48 @@ free: false
   <p class="section-text">AI interfaces often exclude people with disabilities. Streaming text can be unreadable for screen readers. Loading animations can trigger seizures. Auto-playing AI responses can overwhelm users with cognitive disabilities. Build with accessibility from day one — it's not a feature, it's a responsibility.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Pattern</span>
+  <h2 class="section-title">Progressive Disclosure for AI Complexity</h2>
+  <p class="section-text">AI products often have a complexity problem: power users want fine-grained control (model selection, temperature, output length), while casual users just want the magic trick. Progressive disclosure solves this by hiding complexity behind layers.</p>
+  <p class="section-text"><strong>Layer 1 — One-click:</strong> The default experience. User provides the minimum input, AI uses smart defaults for everything else. This should handle 70% of use cases perfectly. No settings. No options. Just input and output.</p>
+  <p class="section-text"><strong>Layer 2 — Guided options:</strong> An "Advanced" toggle reveals 3-5 meaningful controls. Output length (short/medium/long). Tone (formal/casual/technical). Format (bullet points/paragraphs/table). These controls use human language, not technical parameters.</p>
+  <p class="section-text"><strong>Layer 3 — Expert mode:</strong> For the 5% of users who want full control. Model selection, temperature sliders, custom instructions, raw prompt editing. Hidden behind a developer tools panel. Never shown to casual users.</p>
+  <p class="section-text">The key insight: each layer should be fully functional without the layers above it. A user who never opens advanced settings should have an excellent experience. Progressive disclosure means every user gets exactly the complexity they want — no more, no less.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Design</span>
+  <h2 class="section-title">The Confidence Spectrum in AI UX</h2>
+  <p class="section-text">Not all AI outputs deserve the same level of visual confidence. A well-designed AI product communicates certainty visually, so users know when to trust and when to verify.</p>
+  <p class="section-text"><strong>High confidence:</strong> Factual extraction from structured data. The AI pulled a date, a name, or a number from a document. Display these as solid facts with a "source" link. Use strong visual styling — bold text, solid borders, no hedging language.</p>
+  <p class="section-text"><strong>Medium confidence:</strong> Summarization, categorization, or pattern recognition. The AI interpreted unstructured content. Display these as "likely" findings with softer styling — lighter borders, subtle background color. Include an "edit" button prominently.</p>
+  <p class="section-text"><strong>Low confidence:</strong> Creative generation, prediction, or inference. The AI is making a judgment call. Display these as "suggestions" with dashed borders, italicized text, and explicit language: "We think this might be..." Always show alternatives alongside the primary suggestion.</p>
+  <p class="section-text">This visual confidence spectrum teaches users to calibrate their trust appropriately. They learn that bold, solid outputs are reliable, while dotted, soft outputs need review. Over time, this builds a healthy relationship with your AI's capabilities and limitations.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Detail</span>
+  <h2 class="section-title">Onboarding That Sets Expectations</h2>
+  <p class="section-text">The first 60 seconds of an AI product experience determine whether a user becomes a regular or a churner. Onboarding for AI is different from traditional software because users don't know what to expect from the AI's capabilities.</p>
+  <p class="section-text"><strong>Show, don't tell.</strong> Instead of a tour that explains features, show a pre-loaded demo. "Here's what we did with a sample meeting transcript." The user sees the output quality before they invest time providing their own input. If the demo output impresses them, they'll try it with their own data.</p>
+  <p class="section-text"><strong>Template the first interaction.</strong> Don't drop users into a blank input field. Provide a pre-filled example they can modify. "We've loaded a sample — click 'Run' to see it work, or paste your own content." This eliminates the anxiety of "what do I type?" and guarantees a successful first experience.</p>
+  <p class="section-text"><strong>Set honest boundaries.</strong> During onboarding, tell users what the AI does well and what it struggles with. "This tool excels at summarizing English-language documents under 50 pages. It may struggle with heavily formatted PDFs or scanned images." Honesty upfront prevents disappointment later.</p>
+  <p class="section-text"><strong>Celebrate the first success.</strong> When the user gets their first AI output, make it feel like a moment. A subtle animation, a "Your first analysis is ready" message, a share button. First-output-to-satisfaction is the most important metric in your onboarding funnel.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Anti-Pattern</span>
+  <h2 class="section-title">Seven UX Mistakes That Kill AI Products</h2>
+  <p class="section-text"><strong>1. The blank canvas.</strong> An empty chat window with "How can I help?" is not an interface. It's an invitation for users to feel stupid when they don't know what to ask.</p>
+  <p class="section-text"><strong>2. No undo.</strong> AI generated something wrong and the user can't go back? They'll close the tab and never return. Every AI action must be reversible.</p>
+  <p class="section-text"><strong>3. Silent failures.</strong> The model hallucinated, the response is nonsense, but your UI presents it with the same confidence as a perfect answer. Users lose trust when they discover errors that your product should have caught.</p>
+  <p class="section-text"><strong>4. Over-explaining.</strong> A paragraph explaining "how our AI works" before every output. Users don't care about your architecture. They care about the result. Save explanations for a help page.</p>
+  <p class="section-text"><strong>5. No history.</strong> Users generate an output, navigate away, and it's gone forever. AI products must save output history. Users will want to compare, reuse, and reference past results.</p>
+  <p class="section-text"><strong>6. Ignoring mobile.</strong> If your AI product works on desktop but breaks on mobile, you've lost 50%+ of your potential users. AI interfaces need responsive design just like everything else.</p>
+  <p class="section-text"><strong>7. Feature overload on day one.</strong> Ten buttons, five settings, three output formats. The user doesn't know where to start. Ship with one button. Add complexity only when users ask for it.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Redesign your product's main interaction without using a chat interface:</p>

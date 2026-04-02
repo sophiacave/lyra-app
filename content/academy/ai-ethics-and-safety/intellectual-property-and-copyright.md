@@ -95,6 +95,90 @@ free: false
   </div>
 </div>
 
+<!-- SECTION: IP FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Global View</span>
+  <h2 class="section-title">IP frameworks vary by country — and they're all evolving.</h2>
+  <p class="section-text">Intellectual property law around AI isn't just a U.S. issue. Different jurisdictions are taking dramatically different approaches, and if you work internationally or publish globally, you need to be aware of the landscape.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">US</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Human authorship required.</strong> The Copyright Office has denied registration for purely AI-generated works. However, works with "sufficient human authorship" in selection, arrangement, or creative modification may qualify.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">EU</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Originality standard.</strong> EU copyright requires the work to be the "author's own intellectual creation." AI-generated works without human intellectual input likely fail this test. The AI Act adds transparency requirements for AI-generated content.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">UK</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Computer-generated works provision.</strong> Unique among major jurisdictions — UK law has a provision granting copyright in computer-generated works to "the person by whom the arrangements necessary for the creation of the work are undertaken." This could apply to AI users, though it's untested.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">China</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Evolving rapidly.</strong> Chinese courts have ruled both for and against copyright protection of AI-generated works. Recent decisions suggest that works with significant human involvement in the creative process may receive protection.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: FAIR USE -->
+<div class="lesson-section">
+  <span class="section-label">Fair Use</span>
+  <h2 class="section-title">Fair use considerations when AI is involved.</h2>
+  <p class="section-text">Fair use is the legal doctrine that allows limited use of copyrighted material without permission. When AI enters the picture, fair use gets complicated in two directions: can AI training on copyrighted data be fair use? And is AI-generated output that resembles existing works protected by fair use?</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Training Data</span> — Ongoing lawsuits (NYT v. OpenAI, Getty v. Stability AI) are testing whether using copyrighted works to train AI models constitutes fair use. No definitive ruling yet.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Transformative Use</span> — Courts traditionally favor fair use when the new work is "transformative" — it adds new meaning rather than substituting for the original. AI output that merely imitates a specific work is less defensible than AI output used in a genuinely new creative context.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Commercial Impact</span> — Fair use is harder to claim when the AI output competes directly with the original work. Using AI to generate content that substitutes for licensed content is risky territory.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Your Safest Bet</span> — Use AI to generate genuinely new ideas, then add substantial human creativity. The more original and transformative your final work, the stronger your position under fair use.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: LICENSING PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">Licensing</span>
+  <h2 class="section-title">Understanding AI tool licensing for your output.</h2>
+  <p class="section-text">Every AI tool has terms of service that define who owns the output. These vary significantly between providers. Before using any AI tool commercially, check these critical licensing questions:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Q1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Who owns the output?</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Most major providers (OpenAI, Anthropic, Google) assign output rights to the user. But read the specific terms — some tools, especially free or niche ones, retain rights or grant themselves a license to use your output.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Q2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Can you use the output commercially?</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Most paid plans allow commercial use. Some free tiers restrict it. Image generators vary widely — DALL-E allows commercial use on paid plans, while some open-source models have non-commercial licenses.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Q3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Is your input used for training?</div>
+          <div style="color:#a1a1aa;font-size:.85rem">If the tool uses your prompts to train future models, your proprietary ideas could end up influencing outputs for competitors. API and enterprise plans typically offer opt-out. Free consumer plans often don't.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Q4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Are there indemnification provisions?</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Some enterprise AI providers offer IP indemnification — they'll defend you if someone claims AI output infringes their copyright. This is increasingly important for businesses relying heavily on AI-generated content.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 4 -->
 <div class="lesson-section">
   <span class="section-label">Practical Guidelines</span>

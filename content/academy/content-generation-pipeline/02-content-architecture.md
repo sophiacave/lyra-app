@@ -82,10 +82,78 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Architecture Patterns</span>
+  <h2 class="section-title">Three Architecture Models That Work</h2>
+  <p class="section-text"><strong>The Hub-and-Spoke Model.</strong> One pillar piece (a comprehensive guide, whitepaper, or course) sits at the center. Every other piece of content is a "spoke" that links back to it. The hub captures search traffic with depth. The spokes capture social and email traffic with specificity. Together they build topical authority that no single piece can match.</p>
+  <p class="section-text"><strong>The Content Ladder Model.</strong> Content is organized by complexity level — beginner, intermediate, advanced. Each piece links to the next level up and down. A beginner blog post links to an intermediate deep-dive, which links to an advanced case study. This creates natural user journeys and keeps people climbing your ladder instead of leaving for a competitor.</p>
+  <p class="section-text"><strong>The Content Matrix Model.</strong> A two-dimensional grid where one axis is topic (your pillars) and the other is format (blog, video, email, social). Every cell in the matrix represents a piece of content. Fill the matrix systematically — if you have five pillars and four formats, that's twenty planned pieces. Gap analysis becomes visual: empty cells are your content opportunities.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Content Matrix Example</h3>
+  <pre>
+                 │ Blog Post  │ Video     │ Email     │ Social    │
+─────────────────┼────────────┼───────────┼───────────┼───────────┤
+ AI Productivity │ ✅ Written │ ✅ Shot   │ ✅ Sent   │ ⬜ Gap    │
+ Prompt Eng.     │ ✅ Written │ ⬜ Gap    │ ⬜ Gap    │ ✅ Posted │
+ Team Adoption   │ ⬜ Gap     │ ⬜ Gap    │ ✅ Sent   │ ✅ Posted │
+ Workflow Auto.  │ ✅ Written │ ✅ Shot   │ ⬜ Gap    │ ⬜ Gap    │
+  </pre>
+  <p>Eight gaps visible instantly. Each gap is a prioritized content opportunity. Feed these gaps into your pipeline as intake items and watch the matrix fill systematically.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Metadata Schema</span>
+  <h2 class="section-title">The Fields That Make Architecture Work</h2>
+  <p class="section-text">Every content atom needs metadata to be useful in a pipeline. Without metadata, content is just files in a folder. With it, your AI can search, filter, combine, and repurpose intelligently. Here's the minimum viable metadata schema:</p>
+  <p class="section-text"><strong>Pillar:</strong> Which core theme does this serve? <strong>Cluster:</strong> Which subtopic? <strong>Format:</strong> Blog, email, social, video, audio? <strong>Audience segment:</strong> Who is this for? <strong>Funnel stage:</strong> Awareness, consideration, decision? <strong>Status:</strong> Draft, review, published, archived? <strong>Publish date:</strong> When did it go live? <strong>Performance tier:</strong> Top, middle, bottom performer? <strong>Reuse count:</strong> How many other pieces reference this atom?</p>
+  <p class="section-text">Store this in a spreadsheet, Airtable, Notion database, or any structured format. The tool matters less than the discipline. Every piece gets tagged on creation. Every piece gets scored after publication. This data is what turns content from an art into a system.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Scaling Architecture</span>
+  <h2 class="section-title">From Solo to Team Without Losing Structure</h2>
+  <p class="section-text">When you're a solo creator, architecture lives in your head (bad) or in a single document (better). When a team forms, architecture becomes the shared language everyone speaks. New writers don't ask "what should I write about?" — they look at the matrix, find a gap, and fill it using the templates and voice docs.</p>
+  <p class="section-text">Architecture also prevents the most common team failure: content overlap. Without a map, two writers produce nearly identical pieces. With a matrix, every assignment has a unique cell. No duplication. No wasted effort. No awkward conversations about whose version to publish.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Design Principle</span>
   <h2 class="section-title">Reuse Is the Whole Point</h2>
   <p class="section-text">The best content architectures are designed for maximum reuse with minimum effort. Every atom should live in at least two pieces. Every cluster should feed at least three formats. Every pillar should generate content for every channel you publish on.</p>
   <p class="section-text">This isn't about being lazy. It's about being strategic. Your audience doesn't see everything you publish. Repeating your best ideas in different formats across different channels is how you actually reach people. Architecture makes that systematic instead of accidental.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Architecture Audit</span>
+  <h2 class="section-title">Auditing Your Existing Content</h2>
+  <p class="section-text">Most creators already have content — it's just unstructured. Before building new architecture, audit what exists. Pull every piece of content you've published in the last 12 months. For each one, tag it: which pillar does it serve? Which cluster? What format? What audience segment? What funnel stage?</p>
+  <p class="section-text">The audit will reveal three things instantly. First, imbalances — you probably over-produce for one pillar and neglect others. Second, orphaned content — pieces that don't connect to anything else. Third, hidden atoms — statistics, stories, and frameworks buried in old content that could fuel dozens of new pieces.</p>
+  <p class="section-text">Use AI to accelerate the audit. Feed it your content list and ask it to categorize each piece by pillar, cluster, format, and funnel stage. Then ask it to identify the atoms — reusable units worth extracting. A thorough audit of 100 pieces takes about two hours with AI assistance. Without it, plan a full day.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Architecture Audit Prompt</h3>
+  <pre>
+"Here are the titles and first paragraphs of my last 50 pieces
+of content: [PASTE LIST]
+
+My content pillars are: [LIST PILLARS]
+
+For each piece:
+1. Assign a pillar (or flag as orphan if none fits)
+2. Suggest a cluster within that pillar
+3. Note the format (blog, email, social, video, etc.)
+4. Identify funnel stage (awareness, consideration, decision)
+5. Extract any atoms (stats, quotes, frameworks, stories)
+
+Then summarize:
+- Which pillar is over-represented?
+- Which pillar is under-represented?
+- What clusters are missing entirely?
+- List the top 10 atoms worth reusing immediately."
+  </pre>
+  <p>Run this audit quarterly. Each round reveals new gaps and surfaces atoms you forgot you had. The architecture stays alive instead of becoming a dusty planning document.</p>
 </div>
 
 <div class="lesson-section">

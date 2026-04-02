@@ -13,3 +13,4 @@ output/
 brain-console/dist/
 brain-console/node_modules/
 plaid-quickstart
+studio/venvs/

@@ -143,6 +143,55 @@ free: false
     </div>
   </div>
 
+  <div class="section">
+    <h2>Timezone Pitfalls</h2>
+    <p>Cron expressions run in the timezone of the server, not the user. This causes real problems in production:</p>
+
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
+      <strong style="color:#ef4444">DST trap:</strong> A cron job scheduled at <code>0 2 * * *</code> (2:00 AM) will either skip or double-fire during daylight saving transitions. In spring, 2:00 AM does not exist (clocks jump from 1:59 to 3:00). In fall, 2:00 AM happens twice. Use UTC for all server cron to avoid this entirely.<br><br>
+      <strong style="color:#ef4444">Multi-region trap:</strong> If your agents run across US-East and EU-West, "9:00 AM" is two different moments. Coordinate with UTC timestamps in the database, then convert to local time only for display.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Dead Letter Queues</h2>
+    <p>When a scheduled task fails repeatedly, it needs to go somewhere instead of being silently dropped. A <strong>dead letter queue</strong> (DLQ) captures failed tasks for later analysis:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0"><code><span style="color:#71717a"># When a scheduled task fails after max retries</span>
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">handle_failure</span>(task, error, retry_count):
+    <span style="color:#c084fc">if</span> retry_count >= MAX_RETRIES:
+        <span style="color:#71717a"># Move to dead letter queue for manual review</span>
+        db.execute(
+            <span style="color:#fbbf24">"INSERT INTO dead_letter_queue "</span>
+            <span style="color:#fbbf24">"(task_id, error, failed_at, payload) "</span>
+            <span style="color:#fbbf24">"VALUES (%s, %s, NOW(), %s)"</span>,
+            [task.id, str(error), json.dumps(task.payload)]
+        )
+        alert_human(f<span style="color:#fbbf24">"Task {task.id} moved to DLQ after {MAX_RETRIES} retries"</span>)
+    <span style="color:#c084fc">else</span>:
+        <span style="color:#71717a"># Retry with exponential backoff</span>
+        schedule_retry(task, delay=<span style="color:#fbbf24">2</span> ** retry_count)</code></pre>
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Dead letter queues prevent data loss and give you a clear list of failures to investigate. Review the DLQ regularly — patterns in failed tasks reveal systemic issues.</p>
+  </div>
+
+  <div class="section">
+    <h2>Idempotency in Scheduled Tasks</h2>
+    <p>Scheduled tasks must be <strong>idempotent</strong> — running the same task twice should produce the same result as running it once. This is critical because cron jobs can fire twice (clock skew, restart recovery, DST) and you cannot guarantee exactly-once execution.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">Non-idempotent (dangerous)</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0"><code>INSERT INTO reports ...</code> — running twice creates duplicate reports. <code>balance += 100</code> — running twice adds $200 instead of $100.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">Idempotent (safe)</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0"><code>INSERT ... ON CONFLICT DO UPDATE</code> — upsert instead of insert. <code>SET balance = 200</code> — absolute value, not relative. Running twice produces the same result.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="QuizMC" data-props='{"title":"Cron & Scheduling Quiz","questions":[{"q":"What does the cron expression `0 9 * * 1-5` mean?","options":["Every 9 minutes on weekdays","At 9:00 AM, Monday through Friday","Every hour on weekdays starting at 9","At minute 0 of the 9th hour every month"],"correct":1,"explanation":"Fields are: minute(0) hour(9) day(*) month(*) weekday(1-5 = Mon-Fri). So: at 9:00 AM, every weekday."},{"q":"What is a scheduling conflict?","options":["Two cron expressions that are identical","Too many agents running at the same time, competing for shared resources","An agent running at the wrong time zone","A cron job that never fires"],"correct":1,"explanation":"When multiple heavy agents run simultaneously they compete for CPU, memory, and API rate limits. Staggering their schedules prevents this."},{"q":"Which cron expression runs every 30 minutes?","options":["30 * * * *","* 30 * * *","*/30 * * * *","0,30 * * * *"],"correct":2,"explanation":"*/30 in the minute field means every 30 minutes (0 and 30 past each hour). `30 * * * *` runs only at :30 each hour \u2014 that is once per hour, not every 30 minutes."},{"q":"An agent needs to run only on weekdays at midnight for a backup. What cron expression fits?","options":["0 0 * * *","0 0 * * 1-5","* * * * 1-5","0 * * * 1-5"],"correct":1,"explanation":"0 0 * * 1-5 \u2014 minute 0, hour 0 (midnight), any day of month, any month, Mon-Fri only."},{"q":"Why are systemd timers better than crontab for production agents?","options":["They run faster","They have built-in failure tracking, dependency management, and survive reboots with lingering","They use less CPU","They support more scheduling options"],"correct":1,"explanation":"Systemd timers log failures to journalctl, can depend on other services, and persist across reboots with loginctl enable-linger. Crontab fails silently."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Cron & Scheduling Concepts","cards":[{"front":"Cron field order","back":"Minute | Hour | Day-of-month | Month | Day-of-week. Example: 30 17 * * 1-5 = 5:30 PM weekdays."},{"front":"* (asterisk) in cron","back":"Means every \u2014 every minute, every hour, every day. The wildcard."},{"front":"*/N in cron","back":"Every N units. */5 in the minute field = every 5 minutes. */2 in hour = every 2 hours."},{"front":"1-5 in cron weekday field","back":"Monday through Friday. 0 = Sunday, 6 = Saturday."},{"front":"Three scheduling modes","back":"Cron (time-triggered, periodic), Event-driven (webhook/trigger, zero latency), Always-on (continuous loop, highest resource cost)."},{"front":"Scheduling conflict","back":"Multiple resource-heavy agents firing simultaneously, competing for CPU/memory/API limits. Fix: stagger start times by 1-2 minutes."},{"front":"Crontab vs systemd timers","back":"Crontab: simple, no failure logging. Systemd: built-in failure tracking via journalctl, service dependencies, survives reboots. Use systemd for production."}]}'></div>

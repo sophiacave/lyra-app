@@ -73,6 +73,69 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <h2 class="section-title">Resource Planning Templates</h2>
+  <p class="section-text">These templates cover the most common resource allocation challenges PMs face:</p>
+  <p class="section-text"><strong>New Project Staffing Template:</strong></p>
+  <div class="prompt-box"><code>I need to staff a new project. Here are the requirements:
+
+Project scope: [describe the work]
+Duration: [timeline]
+Required skills: [list specific skills needed]
+Available team members: [for each person: name, role, current skills, current allocation %, availability constraints]
+
+Please:
+1. Map required skills to available team members (who can do what)
+2. Identify skill gaps — work that nobody on the team can currently do
+3. Propose a staffing plan with % allocation per person per phase
+4. Flag anyone who would be overallocated (over 100%)
+5. Suggest alternatives: hire, contract, train, or defer specific work items
+6. Identify the single biggest staffing risk in this plan</code></div>
+  <p class="section-text"><strong>Capacity Rebalancing Template:</strong></p>
+  <div class="prompt-box"><code>My team is unbalanced — some people are overloaded and others have slack. Here is the current state:
+
+[For each team member: name, role, current projects and % allocation, known upcoming changes]
+
+Please:
+1. Visualize the workload distribution — who is over/under capacity
+2. Identify the top 3 bottleneck people and what makes them bottlenecks
+3. Suggest specific work items that could shift from overloaded to underloaded people
+4. Flag skill gaps that prevent rebalancing
+5. Recommend a 2-week transition plan to reach a healthier balance</code></div>
+  <p class="section-text"><strong>What-If Scenario Template:</strong></p>
+  <div class="prompt-box"><code>I need to model resource scenarios for a decision. Here is the situation:
+
+Current team allocation: [describe]
+Change being considered: [describe the change — new project, person leaving, timeline shift, etc.]
+
+Please model these scenarios:
+- Scenario A: [describe option A]
+- Scenario B: [describe option B]
+- Scenario C: [describe option C, if applicable]
+
+For each scenario, show: impact on each project's timeline, who becomes overloaded, what work gets delayed, and the overall risk level. Recommend which scenario has the best risk/reward tradeoff.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The Resource Allocation Triangle</h2>
+  <p class="section-text">Every resource decision balances three competing forces. Understanding this triangle helps you make better tradeoffs — and helps AI give you better recommendations:</p>
+  <p class="section-text"><strong>Utilization.</strong> How much of each person's time is productively allocated. Under 70% means you are paying for idle capacity. Over 90% means there is no room for unplanned work, learning, or recovery. The sweet spot is 75-85% for most knowledge workers.</p>
+  <p class="section-text"><strong>Skill Fit.</strong> How well each person's skills match the work they are assigned. Perfect skill fit means faster delivery but no growth. Deliberate stretch assignments (70% competent, 30% learning) build team capability over time. AI can flag where assignments are all comfort zone versus where growth opportunities exist.</p>
+  <p class="section-text"><strong>Resilience.</strong> How vulnerable your plan is to disruption. If only one person can do a critical task and they get sick, the project stalls. AI can identify single points of failure in your resource plan and suggest cross-training or pairing to build redundancy.</p>
+  <p class="section-text">When you give AI your resource data, ask it to evaluate your allocation against all three dimensions. Most PMs optimize for utilization alone and get blindsided when skill fit or resilience fails.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">Solving the Bus Factor Problem</h2>
+  <p class="section-text">A development team had a "bus factor" of one — a single senior engineer who was the only person who understood the payment processing system. The PM knew this was a risk but could never justify pulling that engineer off feature work to train others.</p>
+  <p class="section-text">She used AI to model the scenario: "If this engineer is unavailable for two weeks (illness, vacation, resignation), what happens to each active project?" AI mapped the impact across four projects — three would stall completely, and the fourth would lose its most complex workstream.</p>
+  <p class="section-text">The visualization was sobering. She then asked AI: "Design a 6-week knowledge transfer plan that costs no more than 10% of this engineer's time per week." AI produced a plan: pair programming sessions on Tuesdays, documented runbooks for the three most critical processes, and a shadow rotation where junior engineers spent one day per sprint observing payment system work.</p>
+  <p class="section-text">Six weeks later, three people could handle payment system issues. The senior engineer was no longer a single point of failure — and she reported feeling less stressed because on-call no longer fell exclusively on her. The 10% time investment prevented what would have been a catastrophic project disruption.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Resource Allocation — Key Concepts","cards":[{"front":"Skill Mapping","back":"Describe your team\\\'s roles, skills, availability, and commitments to AI, then describe the work. AI suggests assignments based on fit, capacity, and growth opportunities."},{"front":"Capacity Planning","back":"AI models current and future team availability — flags overloaded members, identifies slack, and spots bottleneck risks before they become crises."},{"front":"Scenario Modeling","back":"AI models different allocation splits (e.g., 60/40 vs. 100% on one project) and shows tradeoffs — which project slips, by how much, and the critical path impact."},{"front":"Actuals vs. Plan Tracking","back":"Update AI weekly with actual time spent vs. planned. Over time, AI surfaces patterns like production support consistently eating 20% more than allocated."},{"front":"Growth Assignments","back":"AI might suggest pairing a junior developer with complex work as a growth opportunity — something you might miss when focused on speed over development."}]}'></div>
 </div>
 

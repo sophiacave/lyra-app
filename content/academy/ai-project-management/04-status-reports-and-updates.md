@@ -72,6 +72,57 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <h2 class="section-title">Status Report Templates for Every Audience</h2>
+  <p class="section-text">Here are three specialized templates for different reporting contexts:</p>
+  <p class="section-text"><strong>Weekly Project Dashboard Template:</strong></p>
+  <div class="prompt-box"><code>Generate a weekly project dashboard from this raw data. Include:
+- Overall RAG status with one-sentence justification
+- Key metrics: % complete, budget consumed vs. planned, schedule variance
+- Top 3 accomplishments this week
+- Top 3 priorities for next week
+- Blockers requiring escalation (if any)
+- Upcoming milestones in the next 2 weeks
+
+Raw data: [paste your bullet points]</code></div>
+  <p class="section-text"><strong>Monthly Executive Report Template:</strong></p>
+  <div class="prompt-box"><code>Create a monthly executive report from this month's weekly updates. The audience is C-level — they want outcomes, not tasks. Include:
+- Executive summary (3 sentences max)
+- Month-over-month progress on key deliverables
+- Budget summary: spent, remaining, forecast to complete
+- Strategic risks and mitigation status
+- Decisions needed from leadership (if any)
+- 30-day outlook
+
+Weekly updates: [paste all 4 weekly updates]</code></div>
+  <p class="section-text"><strong>Program-Level Roll-Up Template:</strong></p>
+  <div class="prompt-box"><code>I manage multiple projects. Create a program-level status roll-up from these individual project updates. For each project show: name, RAG status, one-line summary, key risk. Then add a "Cross-Project Risks" section identifying dependencies or conflicts between projects. End with "Program Manager Attention Items" — the 3 things I should focus on this week.
+
+Project updates: [paste status from each project]</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Deep Dive</span>
+  <h2 class="section-title">The Art of the RAG Status</h2>
+  <p class="section-text">RAG (Red/Amber/Green) is the universal language of project health. But most PMs use it badly — everything stays green until it is suddenly red. AI helps you use RAG honestly by applying consistent criteria:</p>
+  <p class="section-text"><strong>Green</strong> means the project is on track across schedule, budget, scope, and quality. No unmitigated high-impact risks. The plan is holding.</p>
+  <p class="section-text"><strong>Amber</strong> means one or more areas are at risk but recoverable with action. The PM has a plan to get back to green. Examples: schedule has slipped but can be recovered by adjusting scope. Budget is trending over but a specific cost reduction has been identified.</p>
+  <p class="section-text"><strong>Red</strong> means the project cannot recover without leadership intervention — a scope change, additional resources, or a timeline extension. The PM does not have a path back to green within their own authority.</p>
+  <p class="section-text">Ask AI to apply these criteria objectively to your project data. When you are deep inside a project, you carry optimism bias — "we can make it up next sprint." AI looks at the numbers without ego. If velocity has declined three sprints in a row and the deadline is fixed, the data says Amber even when your gut says Green.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">Turning Reporting from a Chore into an Asset</h2>
+  <p class="section-text">A program manager running five simultaneous projects used to spend all of Friday afternoon on status reports — roughly 5 hours every week. The reports were inconsistent in format, sometimes late, and the quality depended entirely on how tired she was by project number four.</p>
+  <p class="section-text">She switched to the "one input, multiple outputs" method with AI. Here is what changed:</p>
+  <p class="section-text"><strong>Data collection:</strong> Each project lead sends her three bullet points by Thursday EOD — done, doing, blocked. No formatting required. She spends 15 minutes consolidating into a single raw dump.</p>
+  <p class="section-text"><strong>AI processing:</strong> She runs the raw dump through three templates — executive roll-up, individual project dashboards, and client-facing updates. AI also assigns RAG status with justification for each project. Total processing time: 20 minutes.</p>
+  <p class="section-text"><strong>Review and send:</strong> She reads each output, adjusts tone for specific stakeholder relationships, and sends. Another 25 minutes.</p>
+  <p class="section-text"><strong>Total time: 1 hour instead of 5.</strong> But the bigger win was consistency. Every report followed the same structure. Every RAG status had a data-backed justification. Her VP commented that her program reporting was "the clearest in the department." That is the kind of reputation that gets you promoted — and it came from a system, not from working harder.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Status Reports & Updates — Key Concepts","cards":[{"front":"One Input, Multiple Outputs","back":"Create a single raw status dump with bullet-point facts each week. AI formats it for executives (3 lines + RAG), team (task detail), and clients (polished narrative)."},{"front":"RAG Status Assessment","back":"Red/Amber/Green health rating. AI assigns it objectively from data — when schedule has slipped twice and budget is 80% spent at 50% done, AI calls it Amber even when you might not."},{"front":"The Friday Reporting Rhythm","back":"30-minute block: dump raw status, run through AI, review all versions, send. Done by lunch. Stakeholders start Monday informed."},{"front":"Time Savings","back":"Average PM spends 4-6 hours per week on status reporting. AI compresses this to under 1 hour — same data, multiple audience-tailored formats."}]}'></div>
 </div>
 

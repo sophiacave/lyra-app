@@ -90,6 +90,58 @@ Content to review: [PASTE YOUR CONTENT]"</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Quality Checklist</span>
+  <h2 class="section-title">The 15-Point Quality Gate Checklist</h2>
+  <p class="section-text">Use this checklist as the foundation for your quality gates. Every piece of content should pass all fifteen points before it leaves the pipeline.</p>
+  <p class="section-text"><strong>Technical (1-5):</strong></p>
+  <p class="section-text">1. Zero grammar and spelling errors. 2. Readability score at or below target grade level. 3. Passive voice under 15% of total sentences. 4. No paragraph exceeds four sentences. 5. Sentence length varies — mix of short punchy and longer explanatory.</p>
+  <p class="section-text"><strong>Brand (6-10):</strong></p>
+  <p class="section-text">6. Tone matches voice document (conversational, authoritative, playful — whatever yours is). 7. Zero banned words or phrases. 8. Required brand elements present (CTA, signature, tagline, disclaimer). 9. Formatting matches channel requirements (character limits, image specs, link placement). 10. No off-brand claims, exaggerations, or unsupported superlatives.</p>
+  <p class="section-text"><strong>Strategic (11-15):</strong></p>
+  <p class="section-text">11. Hook addresses the target segment's specific pain point. 12. Content maps to the correct pillar and cluster. 13. CTA is appropriate for the reader's funnel stage. 14. At least one specific example, data point, or story. 15. Reader knows exactly what to do next after finishing.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Automated Scoring Matrix</h3>
+  <pre>
+QUALITY GATE SCORECARD
+──────────────────────────────────────────────
+Category     │ Points │ Score │ Pass Threshold
+─────────────┼────────┼───────┼───────────────
+Technical    │ 5      │ __/5  │ 4/5 minimum
+Brand        │ 5      │ __/5  │ 5/5 required
+Strategic    │ 5      │ __/5  │ 4/5 minimum
+─────────────┼────────┼───────┼───────────────
+TOTAL        │ 15     │ __/15 │ 13/15 to pass
+
+RESULT: ☐ PASS → proceed to output
+        ☐ FAIL → return to generation with fix notes
+        ☐ HOLD → human review needed (ambiguous issues)
+
+FIX NOTES (if fail):
+- Issue: _______________
+- Which gate failed: _______________
+- Specific fix instruction: _______________
+  </pre>
+  <p>Encode this scorecard into your quality review template. The AI fills in scores and fix instructions automatically. You review the scorecard, not the content — saving time while maintaining rigor.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Fact-Checking</span>
+  <h2 class="section-title">Building a Fact-Check Step into Your Pipeline</h2>
+  <p class="section-text">AI generates plausible-sounding content that can contain fabricated statistics, misattributed quotes, and outdated information. A dedicated fact-check step catches these before they damage your credibility. This isn't optional — it's table stakes for any serious content operation.</p>
+  <p class="section-text">The fact-check template isolates every claim, statistic, and attribution in the draft. For each one, it asks: Is this verifiable? Is the source cited? Is the data current (within 2 years)? Could this be an AI hallucination? Flag anything that can't pass these tests for human verification.</p>
+  <p class="section-text">Build a "known facts" reference document that your pipeline can verify claims against. Your company's metrics, industry benchmarks, verified customer results, published research you trust. The more data you give the fact-checker, the fewer false claims slip through.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Continuous Improvement</span>
+  <h2 class="section-title">Quality Gate Analytics</h2>
+  <p class="section-text">Track which gates fail most often and why. If 80% of failures come from Gate 2 (brand consistency), your voice document needs strengthening, not your quality gates. If Gate 3 (strategic alignment) constantly fails on CTA appropriateness, your CTA template section needs revision.</p>
+  <p class="section-text">Run a monthly quality review: What percentage of content passed on first attempt? What's the most common failure type? Which template produces the most gate failures? This data tells you exactly where to invest improvement effort for maximum return.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Standard</span>
   <h2 class="section-title">Quality Is the Pipeline's Reputation</h2>
   <p class="section-text">Your audience doesn't know you have a pipeline. They just know whether your content is good. Every piece that goes out is a promise about the next piece. Quality control systems are how you keep that promise at scale, without burning out trying to manually review everything yourself.</p>

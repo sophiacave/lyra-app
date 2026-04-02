@@ -72,6 +72,45 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Calculating True Cost Per Query</h2>
+  <p class="section-text">Most AI founders dramatically underestimate their cost per query because they only count the API call. True cost includes everything the system does to produce one output.</p>
+  <p class="section-text"><strong>Direct AI costs:</strong> Input tokens + output tokens at your provider's rate. For Claude Sonnet with a 1,500-token input and 500-token output, that's roughly $0.01-0.02 per query. For GPT-4o with the same, it's similar. These are your marginal costs.</p>
+  <p class="section-text"><strong>Embedding costs:</strong> If you use RAG, every query triggers an embedding call to convert the user's question into a vector. At OpenAI's rates, this is about $0.0001 per query — negligible individually, meaningful at millions of queries.</p>
+  <p class="section-text"><strong>Infrastructure costs:</strong> Database hosting, vector storage, compute for pre-processing, CDN for serving the frontend. Divide your monthly infrastructure bill by your monthly query count. For early-stage products, this is often $0.05-0.50 per query because the fixed costs are spread across few users.</p>
+  <p class="section-text"><strong>Retry costs:</strong> If 20% of queries require a regeneration, your effective AI cost is 1.2x what you calculated. If some queries fail and trigger automatic retry logic, factor that in. Your cost per successful output matters more than cost per API call.</p>
+  <p class="section-text"><strong>The formula:</strong> True cost = (AI tokens + embedding + retry overhead) + (monthly infrastructure / monthly queries). Track this number weekly. It should decrease over time as you optimize prompts and grow query volume to amortize fixed costs.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">The Freemium Decision Framework</h2>
+  <p class="section-text">Whether to offer a free tier is the most consequential pricing decision for an AI product. Unlike traditional SaaS, every free user costs you real money. Here's how to decide.</p>
+  <p class="section-text"><strong>Offer free if:</strong> Your product has strong network effects (each user makes the product better for others). Your product's output is inherently viral (users share generated content, bringing new users). Your marginal cost per query is below $0.005 (you can absorb it as marketing spend).</p>
+  <p class="section-text"><strong>Don't offer free if:</strong> Your product targets businesses (they expect to pay for professional tools). Your cost per query is above $0.02 (free users will eat your runway). Your product doesn't benefit from virality (B2B tools rarely go viral).</p>
+  <p class="section-text"><strong>The middle path:</strong> Instead of a free tier, offer a free trial — 7 days or 20 queries, whichever comes first. This gives users enough time to experience the value without becoming a permanent cost center. Require a credit card upfront and convert automatically. The credit card requirement filters out tire-kickers and increases trial-to-paid conversion by 2-3x.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Model</span>
+  <h2 class="section-title">Building a Pricing Page That Converts</h2>
+  <p class="section-text">Your pricing page is the most important page on your site after the homepage. It must answer three questions instantly: What do I get? How much does it cost? Is it worth it?</p>
+  <p class="section-text"><strong>Anchor with value, not features.</strong> Don't list "10,000 tokens" or "GPT-4 access." List outcomes: "50 document analyses per month" or "Unlimited email drafts." Users don't know what tokens are. They know what documents and emails are.</p>
+  <p class="section-text"><strong>Show the math.</strong> "The average user saves 8 hours/month. At $50/hour, that's $400 in recaptured time — for $39/month." Making the ROI explicit removes the "is this worth it?" objection before it forms.</p>
+  <p class="section-text"><strong>Limit plan options.</strong> Two plans is ideal for launch. Three is maximum. Five is a maze. Analysis paralysis kills conversion. If you must have three plans, make the middle plan visually prominent — it should be the obvious choice for 70% of users.</p>
+  <p class="section-text"><strong>Annual discounts.</strong> Offer 20% off for annual billing. This serves two purposes: it reduces churn (users who pay annually feel committed) and it improves your cash flow (you receive 12 months of revenue upfront). Never offer more than 30% off — it signals that your monthly price is inflated.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Warning</span>
+  <h2 class="section-title">Pricing Mistakes That Kill AI Startups</h2>
+  <p class="section-text"><strong>Pricing too low.</strong> The most common mistake. You set $9/month because it "feels accessible." But your cost per user is $7/month in API fees. That's a $2 gross margin before you pay for anything else — hosting, Stripe fees, support, your own salary. You've built a charity, not a business.</p>
+  <p class="section-text"><strong>No usage limits on flat plans.</strong> A $29/month plan with no query cap. Your average user sends 50 queries. Your power user sends 5,000. That power user costs you $150/month and pays you $29. Without caps, a small number of power users can make your business unprofitable.</p>
+  <p class="section-text"><strong>Competing on price.</strong> If your competitor charges $49/month, you charge $19/month. This is a race to the bottom. AI products should compete on quality, specialization, and user experience — not price. The customer who chooses the cheapest option will leave for an even cheaper option tomorrow.</p>
+  <p class="section-text"><strong>Ignoring churn economics.</strong> If your monthly churn rate is 10%, you lose half your customers every 7 months. At that rate, no amount of new acquisition keeps you growing. Before optimizing acquisition, fix retention. A product people keep paying for is infinitely more valuable than one that attracts and loses customers in a revolving door.</p>
+</div>
+
+<div class="lesson-section">
 </div>
 
 <div class="try-it-box">

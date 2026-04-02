@@ -62,6 +62,70 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <h2 class="section-title">Documentation Templates for Common PM Needs</h2>
+  <p class="section-text">These templates cover the documents every PM eventually needs but rarely has time to create from scratch:</p>
+  <p class="section-text"><strong>Project Charter Template:</strong></p>
+  <div class="prompt-box"><code>Create a project charter from the following information:
+
+Project name: [name]
+Business problem: [what problem this solves]
+Proposed solution: [high-level approach]
+Sponsor: [who is funding/sponsoring]
+Team: [key roles]
+Timeline: [target dates]
+Budget: [approximate budget]
+Success criteria: [how we know it worked]
+
+Include sections for: Executive Summary, Business Case, Scope (in-scope and explicitly out-of-scope), Key Stakeholders, High-Level Timeline, Budget Summary, Assumptions, Constraints, Risks, and Approval Signatures. Keep it to 2-3 pages maximum.</code></div>
+  <p class="section-text"><strong>Process Documentation Template:</strong></p>
+  <div class="prompt-box"><code>Document this process that my team follows:
+
+[Describe the process in plain language — who does what, when, what tools are used, what triggers it, what the output is]
+
+Create a process document with:
+1. Process overview (what it accomplishes and why it matters)
+2. Trigger (what starts this process)
+3. Roles involved (who does what)
+4. Prerequisites (what needs to be true before starting)
+5. Step-by-step procedure with decision points
+6. Expected outputs/deliverables
+7. Quality checks (how to verify it was done correctly)
+8. Common problems and solutions
+9. Related processes (what feeds into this, what follows)
+10. Version history placeholder</code></div>
+  <p class="section-text"><strong>Decision Log Template:</strong></p>
+  <div class="prompt-box"><code>I need a decision log entry for an important project decision. Here are the details:
+
+Decision: [what was decided]
+Date: [when]
+Decision maker(s): [who made the call]
+Context: [why this decision was needed]
+Options considered: [what alternatives were evaluated]
+Rationale: [why this option was chosen over others]
+Impact: [what this decision affects — timeline, budget, scope, etc.]
+Revisit criteria: [under what conditions would we reconsider]
+
+Format this as a formal decision record that future team members can reference to understand why we made this choice.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The Documentation Pyramid</h2>
+  <p class="section-text">Not all documentation is equal. Think of it as a pyramid with different levels of detail for different audiences:</p>
+  <p class="section-text"><strong>Top: Strategic Documents (1-2 pages).</strong> Project charter, business case, executive summary. Updated rarely. Read by leadership. AI drafts these from your project brief and key decisions.</p>
+  <p class="section-text"><strong>Middle: Operational Documents (3-10 pages).</strong> Requirements, architecture decisions, test plans, release plans. Updated per phase. Read by the project team. AI generates these from meeting notes, Slack discussions, and technical conversations.</p>
+  <p class="section-text"><strong>Base: Reference Documents (varies).</strong> SOPs, runbooks, troubleshooting guides, onboarding materials. Updated continuously. Read by anyone who needs to do the work. AI creates these from tribal knowledge and keeps them current with monthly refresh prompts.</p>
+  <p class="section-text">Most PMs make the mistake of trying to write everything at the same level of detail. A project charter does not need step-by-step procedures. A runbook does not need a business case. AI helps you match the right depth to the right document type.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">Zero to Documented in Two Weeks</h2>
+  <p class="section-text">An infrastructure team had been running for three years with zero documentation. Everything lived in the heads of five engineers. When two of them announced they were leaving, the PM had two weeks to capture everything.</p>
+  <p class="section-text">She scheduled 30-minute "brain dump" sessions with each departing engineer. No structure — just "tell me how you handle X." She recorded the conversations and fed the transcripts to AI with this prompt: "Convert this conversation into a standard operating procedure with numbered steps, decision points, and troubleshooting notes."</p>
+  <p class="section-text">In two weeks, she produced 14 SOPs covering every critical process the team managed — deployment procedures, incident response, vendor management, access provisioning, and more. Each document was reviewed by the engineer who described the process, and corrections took 10-15 minutes per doc.</p>
+  <p class="section-text">The total effort: 14 hours of interviews plus about 7 hours of AI processing and review. What would have been a three-month documentation project (that likely never would have happened) was completed in two weeks — and the documents were higher quality because they captured the actual practitioner's workflow, not an idealized version.</p>
 </div>
 
 <div class="lesson-section">

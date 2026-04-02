@@ -132,6 +132,39 @@ free: false
   </div>
 
   <div class="section">
+    <h2>The Evaluation Pipeline</h2>
+    <p>Knowing the five dimensions is not enough. You need a repeatable process that turns raw test data into a deploy/no-deploy decision. Follow these five steps every time you evaluate:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Step 1 — Define Test Cases</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Write three categories of test cases: <strong style="color:#e5e5e5">happy path</strong> (clear, well-formed queries your agent is designed for), <strong style="color:#e5e5e5">edge cases</strong> (unusual inputs, empty strings, extremely long queries, special characters), and <strong style="color:#e5e5e5">adversarial</strong> (prompt injections, attempts to make the agent ignore its instructions, requests for actions outside its scope).</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Target:</strong> At least 10 happy path, 5 edge cases, and 5 adversarial cases per agent capability.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
+        <strong style="color:#60a5fa">Step 2 — Run Batch Tests</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Run each test case <strong style="color:#e5e5e5">3-5 times</strong>. LLM outputs are non-deterministic, so a single pass tells you almost nothing about reliability. Record every response, every tool call, every latency measurement. A test case that passes 4 out of 5 runs is 80% reliable — not 100%.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Tip:</strong> Automate this with a loop. Never run evaluation tests by hand — you will skip cases and introduce bias.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Step 3 — Calculate Dimension Scores</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Aggregate your batch results into a score for each of the five dimensions. Accuracy = percentage of correct responses across all runs. Speed = average latency. Reliability = percentage of runs without errors or crashes. Cost = average token spend per interaction. Satisfaction = manual review score or user feedback rating.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Formula:</strong> dimension_score = (passes / total_runs) * 100, weighted by severity if needed.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Step 4 — Check Against the 70+ Threshold</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Every dimension must score <strong style="color:#e5e5e5">70 or above</strong>. This is not an average — it is a minimum per dimension. An agent scoring 95/90/88/92/<strong style="color:#ef4444">55</strong> fails because one dimension is below threshold. The chain is only as strong as its weakest link.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Why 70?</strong> Below 70 means roughly 1 in 3 interactions will disappoint. Users forgive occasional issues but not frequent ones.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+        <strong style="color:#f472b6">Step 5 — Deploy or Iterate</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">If all five dimensions are 70+, deploy with monitoring (see next section). If any dimension is below 70, <strong style="color:#e5e5e5">fix the lowest-scoring dimension first</strong>. Do not try to improve everything at once. Target the weakest link, re-run evaluation, and repeat until all dimensions pass.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Common fixes by dimension:</strong> Accuracy → better prompts, few-shot examples. Speed → caching, model routing. Reliability → retry logic, error handling. Cost → token limits, tiered models. Satisfaction → tone tuning, output formatting.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Interactive: Rate Your Agent</h2>
     <p>Adjust the sliders to evaluate your agent on all five dimensions. The radar chart shows how it compares against the deployment threshold:</p>
   </div>
@@ -149,6 +182,72 @@ free: false
 
   <div class="tips" id="tips">
     <h3>Improvement Tips</h3>
+  </div>
+
+  <div class="section">
+    <h2>Production Monitoring</h2>
+    <p>Evaluation does not end at deploy. Your agent operates in a changing environment — user patterns shift, APIs update, model behavior drifts. Without production monitoring, you are flying blind:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">Log every production interaction</strong>
+        <span style="font-size:.8rem;color:#a1a1aa"> — Store the input, output, tool calls, latency, and token count for every request. This is your evaluation dataset for free — real user behavior, not synthetic tests.</span>
+      </div>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
+        <strong style="color:#60a5fa;font-size:.85rem">Review failure cases weekly</strong>
+        <span style="font-size:.8rem;color:#a1a1aa"> — Set a recurring review of interactions that errored, timed out, or received negative feedback. Patterns in failures reveal systemic issues that test suites miss.</span>
+      </div>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c;font-size:.85rem">Track accuracy drift over time</strong>
+        <span style="font-size:.8rem;color:#a1a1aa"> — Run your original test suite against the live agent monthly. If accuracy drops more than 5 points, investigate immediately. Model updates, API changes, and data shifts all cause drift.</span>
+      </div>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">Set up alerts for error rate spikes</strong>
+        <span style="font-size:.8rem;color:#a1a1aa"> — If your error rate exceeds 5% in any rolling hour, trigger an alert. A sudden spike usually means an external dependency broke (API down, rate limit hit, schema change). Catch it before users report it.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:1rem">Here is a minimal logging wrapper you can add around any agent function to capture production data:</p>
+
+    <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
+      <span style="color:#71717a"># monitor.py — Production logging wrapper</span><br>
+      <span style="color:#c084fc">import</span> <span style="color:#e2e8f0">time, json, datetime</span><br>
+      <br>
+      <span style="color:#c084fc">def</span> <span style="color:#34d399">monitored_agent</span>(<span style="color:#e2e8f0">agent_fn</span>, <span style="color:#e2e8f0">log_file</span>=<span style="color:#fb923c">"agent_log.jsonl"</span>):<br>
+      &nbsp;&nbsp;<span style="color:#c084fc">def</span> <span style="color:#34d399">wrapper</span>(<span style="color:#e2e8f0">user_input</span>):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">start</span> = <span style="color:#e2e8f0">time</span>.<span style="color:#34d399">time</span>()<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">error</span> = <span style="color:#c084fc">None</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">response</span> = <span style="color:#c084fc">None</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">try</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">response</span> = <span style="color:#34d399">agent_fn</span>(<span style="color:#e2e8f0">user_input</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">except</span> <span style="color:#e2e8f0">Exception</span> <span style="color:#c084fc">as</span> <span style="color:#e2e8f0">e</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">error</span> = <span style="color:#c084fc">str</span>(<span style="color:#e2e8f0">e</span>)<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">entry</span> = {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"timestamp"</span>: <span style="color:#e2e8f0">datetime</span>.<span style="color:#e2e8f0">datetime</span>.<span style="color:#34d399">utcnow</span>().<span style="color:#34d399">isoformat</span>(),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"input"</span>: <span style="color:#e2e8f0">user_input</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"output"</span>: <span style="color:#e2e8f0">response</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"latency_s"</span>: <span style="color:#34d399">round</span>(<span style="color:#e2e8f0">time</span>.<span style="color:#34d399">time</span>() - <span style="color:#e2e8f0">start</span>, <span style="color:#fb923c">2</span>),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"error"</span>: <span style="color:#e2e8f0">error</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#71717a"># Append to JSONL — one JSON object per line</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">with</span> <span style="color:#34d399">open</span>(<span style="color:#e2e8f0">log_file</span>, <span style="color:#fb923c">"a"</span>) <span style="color:#c084fc">as</span> <span style="color:#e2e8f0">f</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">f</span>.<span style="color:#34d399">write</span>(<span style="color:#e2e8f0">json</span>.<span style="color:#34d399">dumps</span>(<span style="color:#e2e8f0">entry</span>) + <span style="color:#fb923c">"\n"</span>)<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">if</span> <span style="color:#e2e8f0">error</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">raise</span> <span style="color:#e2e8f0">Exception</span>(<span style="color:#e2e8f0">error</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">return</span> <span style="color:#e2e8f0">response</span><br>
+      &nbsp;&nbsp;<span style="color:#c084fc">return</span> <span style="color:#e2e8f0">wrapper</span><br>
+      <br>
+      <span style="color:#71717a"># Usage: wrap your agent function</span><br>
+      <span style="color:#e2e8f0">safe_agent</span> = <span style="color:#34d399">monitored_agent</span>(<span style="color:#e2e8f0">my_agent</span>)<br>
+      <span style="color:#e2e8f0">result</span> = <span style="color:#34d399">safe_agent</span>(<span style="color:#fb923c">"What plan is jane@acme.co on?"</span>)
+    </div>
+
+    <div style="font-size:.8rem;color:#71717a;margin-top:.5rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+      <strong style="color:#8b5cf6">Why JSONL?</strong> One JSON object per line makes it easy to stream, grep, and load into pandas or any analytics tool. Never use a plain CSV for agent logs — nested objects (tool calls, multi-turn context) do not fit flat tables.
+    </div>
   </div>
 </div>
 

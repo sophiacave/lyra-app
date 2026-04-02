@@ -90,8 +90,73 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Platform-Specific Strategies</span>
+  <h2 class="section-title">Each platform has its own visual language. Learn to speak all of them.</h2>
+  <p class="section-text">Knowing the right dimensions is just the start. Each platform rewards different types of visual content. Here is what performs best on each:</p>
+  <p class="section-text"><strong>Instagram:</strong> High-quality, aesthetic-driven content wins. Warm tones, lifestyle imagery, and cohesive color palettes get the most engagement. Use carousel posts (multiple images in one post) to increase time-on-post, which the algorithm rewards. Stories and Reels should feel casual and authentic — polished but not corporate. Recommended dimensions: 1080x1350 (4:5 feed), 1080x1920 (9:16 Stories/Reels).</p>
+  <p class="section-text"><strong>LinkedIn:</strong> Professional but not boring. Images with faces get more engagement. Use clean, modern aesthetics with your brand colors. Infographic-style images and data visualizations perform exceptionally well. Header images should be wide and uncluttered. Recommended dimensions: 1200x627 (feed), 1584x396 (banner).</p>
+  <p class="section-text"><strong>X (Twitter):</strong> Bold, high-contrast images stop the scroll. Simple compositions with one clear focal point. Twitter cards (the image previews) crop to 16:9, so design with that in mind. Memes and illustrated concepts often outperform photography. Recommended dimensions: 1200x675 (single image), 1200x600 (card).</p>
+  <p class="section-text"><strong>Pinterest:</strong> Tall, vertical pins dominate. Text overlays work extremely well here — Pinterest is essentially a visual search engine. Use clean fonts on eye-catching backgrounds. Seasonal and aspirational content performs best. Recommended dimensions: 1000x1500 (2:3).</p>
+  <p class="section-text"><strong>TikTok:</strong> Raw, authentic visuals beat polished corporate content. Use AI to create eye-catching thumbnails and background visuals, but keep the overall aesthetic casual. 9:16 vertical format is mandatory. Recommended dimensions: 1080x1920.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Content Calendar Strategies</span>
+  <h2 class="section-title">Plan your visual content strategically, not reactively.</h2>
+  <p class="section-text">The batch creation approach from earlier in this lesson becomes even more powerful when combined with a content calendar. Here are proven strategies:</p>
+  <p class="section-text"><strong>Theme days:</strong> Assign visual themes to specific days. Monday Motivation (inspiring quote backgrounds), Tip Tuesday (infographic-style tips), Behind the Scenes Wednesday (workspace or process visuals), Feature Friday (product or portfolio highlights). Each theme gets a prompt template you reuse weekly.</p>
+  <p class="section-text"><strong>Seasonal prep:</strong> Generate seasonal content 2-3 weeks early. Holiday graphics, seasonal color palettes, event-related visuals — having these ready means you are never scrambling. AI makes this easy: swap "autumn leaves and warm tones" for "spring blossoms and pastels" in your brand prompt.</p>
+  <p class="section-text"><strong>Repurpose across platforms:</strong> One AI image can become five pieces of content. Generate a landscape image. Crop it square for Instagram feed. Use it full-width for a blog header. Add a quote overlay for Pinterest. Animate it with AI video for a Reel. Create a close-up crop for a Twitter card. Same image, five platforms, five minutes of work.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced Batch Techniques</span>
+  <h2 class="section-title">Scale your content production without losing quality.</h2>
+  <p class="section-text"><strong>Prompt variations in bulk:</strong> Write your brand prompt once, then create a spreadsheet with 20 subject variations. Work through them in one session. In 30 minutes, you can generate enough content for a month.</p>
+  <p class="section-text"><strong>Color palette locking:</strong> Use hex codes in your prompts when your tool supports it, or describe your colors precisely. "Coral (#FF6B6B), sage green (#9DC183), warm cream (#FFF5E4)" gives the AI specific targets. Even when the AI cannot read hex codes, the descriptive names help it stay in the right color family.</p>
+  <p class="section-text"><strong>Template overlays:</strong> Create a reusable template in Canva with your logo, fonts, and layout. Then generate only the background image with AI. Drop the new background into your template, adjust if needed, and export. This is how professional social media managers produce dozens of on-brand posts per week.</p>
+  <p class="section-text"><strong>A/B testing visuals:</strong> Generate two versions of the same post concept with different visual approaches — warm tones vs cool tones, illustration vs photography, minimal vs detailed. Post both over time and track which style gets more engagement. Let the data guide your visual strategy.</p>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — platform-optimized social media template</div>
+<pre style="margin:0;color:#e5e5e5"><code>Instagram feed (4:5 ratio):
+A flat-lay workspace scene with a notebook, coffee cup,
+and small plant, soft coral and sage green color palette,
+clean minimalist styling, natural window light from above,
+lifestyle photography, negative space at top for text overlay,
+warm and inviting, 1080x1350 pixels
+
+Pinterest (2:3 ratio):
+Same scene, vertical crop, more negative space at top and
+bottom for text overlay, slightly brighter exposure,
+clean white background areas for readability</code></pre>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Platform Aspect Ratios</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Pitfalls</span>
+  <h2 class="section-title">Mistakes that make AI social media content look amateur.</h2>
+  <p class="section-text">Knowing what to avoid is just as important as knowing what to do. Here are the most common mistakes:</p>
+  <p class="section-text"><strong>Over-polished aesthetic:</strong> If every image looks like it came from a high-end photography studio, your feed will feel cold and impersonal. Mix AI-generated visuals with real photos, behind-the-scenes content, and casual shots. The combination feels human.</p>
+  <p class="section-text"><strong>Inconsistent branding:</strong> Using a different visual style every post makes your feed look chaotic. Stick to your brand prompt. Consistency builds recognition. When someone scrolls past your post, they should recognize your visual style before they read your name.</p>
+  <p class="section-text"><strong>Ignoring platform culture:</strong> What works on LinkedIn does not work on TikTok. Corporate-looking AI images on TikTok will get ignored. Casual, raw-looking content on LinkedIn will look unprofessional. Match the platform's culture.</p>
+  <p class="section-text"><strong>Forgetting accessibility:</strong> Always add alt text to AI-generated images. Describe what the image shows for screen reader users. Use sufficient color contrast for any text overlays. Accessibility is not optional — it is part of being a good creator.</p>
+  <p class="section-text"><strong>Not disclosing AI use:</strong> As AI detection and labeling become standard, being upfront about AI-generated content builds trust. Trying to pass AI content as photography erodes credibility when discovered.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Measuring What Works</span>
+  <h2 class="section-title">Use data to refine your visual strategy over time.</h2>
+  <p class="section-text">Creating content is step one. Understanding what resonates is step two. Track these metrics for your AI-generated posts:</p>
+  <p class="section-text"><strong>Save rate:</strong> On Instagram, saves indicate that people found your content valuable enough to come back to. High save rates on specific visual styles tell you what your audience genuinely values.</p>
+  <p class="section-text"><strong>Click-through rate:</strong> For thumbnails and preview images, track how often people click. A/B testing different visual approaches reveals which styles drive action.</p>
+  <p class="section-text"><strong>Engagement patterns:</strong> Do warm-toned images get more comments than cool-toned? Do illustrations outperform photography? Do people prefer clean minimalism or rich detail? The data tells you what your specific audience responds to.</p>
+  <p class="section-text">Let these insights inform your brand prompt and content strategy. The best visual strategy is one that evolves based on real audience feedback, not assumptions.</p>
 </div>
 
 <div class="lesson-section">

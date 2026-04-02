@@ -170,6 +170,34 @@ ACTIONS = {
     </div>
   </div>
 
+  <div class="section" style="padding:0 1.5rem">
+    <h2>Trigger Design Patterns</h2>
+    <p>Beyond the three trigger types, there are four design patterns that determine how triggers behave in production. Understanding these patterns helps you choose the right approach for reliability, latency, and resource usage.</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8">Time-Based (Polling)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Your system checks for new data at regular intervals using a cron schedule. Simple but introduces delay — if you poll every 5 minutes, events can wait up to 5 minutes before processing. Best for batch operations where real-time is not critical: daily reports, hourly data sync, nightly cleanup jobs.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem;font-style:italic">Trade-off: simple to implement, but wastes resources when nothing changes and adds latency.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Event-Based (Push)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Your system reacts to events as they happen within your own infrastructure. A database trigger fires when a row changes. A message queue consumer processes events as they arrive. Zero delay, no wasted resources. Best for internal system events: user signups, order status changes, inventory updates.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem;font-style:italic">Trade-off: requires infrastructure (message queues, database triggers), but gives real-time response.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Condition-Based (Threshold)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A monitor watches a metric and fires when it crosses a threshold. CPU usage exceeds 90%. Revenue drops below a target. Error rate spikes above 5%. The trigger is not a single event but a state change — something crossed a line. Best for alerting, auto-scaling, and business rules.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem;font-style:italic">Trade-off: needs continuous monitoring, but catches problems that discrete events miss.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Webhook-Based (External Push)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An external service sends an HTTP POST to your URL when something happens in their system. Stripe sends a webhook when a payment succeeds. GitHub sends one when code is pushed. You do not poll — the external system tells you. Real-time with no wasted requests. Best for third-party integrations.</p>
+        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem;font-style:italic">Trade-off: you depend on the external service's reliability and must handle retries (webhooks can fire twice).</div>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"Triggers vs Actions","cards":[{"front":"What is a Trigger?","back":"An event that starts an automation — the \"when\" that fires before any actions execute. Three types: webhook (real-time), schedule (time-based), event (internal system)."},{"front":"What is an Action?","back":"The task performed after a trigger fires. Can be anything: send email, save to database, call API, send notification, create record, update dashboard."},{"front":"Webhook Trigger","back":"Receives real-time HTTP POST data from an external system. Zero delay. Used for: payments, form submissions, GitHub events, Slack messages."},{"front":"Schedule Trigger","back":"Fires on a time-based schedule using cron expressions. Used for: daily reports, data sync, cleanup tasks, digest emails."},{"front":"Event Trigger","back":"Fires when something happens inside your own system — user signup, status change, threshold crossed. Internal, not from external services."},{"front":"Payload","back":"The structured data that flows from trigger to action. Contains the event details — who, what, when. The action reads the payload to know what to do."},{"front":"Idempotent Action","back":"An action that produces the same result even if run multiple times. Critical because webhooks can fire twice. Example: check if record exists before creating."},{"front":"Dead Letter Queue","back":"Where failed messages go when an action cannot process them. Preserves data for manual inspection and retry instead of losing it forever."}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Triggers & Actions Check","questions":[{"q":"What is the role of a trigger in automation?","options":["Transform data into a new format","Start the automation when an event occurs","Store the result of an action","Connect two APIs together"],"correct":1,"explanation":"A trigger is the event that kicks off your automation — nothing runs until the trigger fires."},{"q":"Which of these is an action, not a trigger?","options":["New email arrives","Form submitted","Schedule fires","Send Slack notification"],"correct":3,"explanation":"Send Slack notification is what happens after a trigger — it is an action. The others are events that can start a workflow."},{"q":"A webhook trigger listens for what type of data?","options":["CSV files","Incoming HTTP POST requests","Database queries","Scheduled cron jobs"],"correct":1,"explanation":"A webhook is a URL that receives real-time HTTP POST data when an external event occurs."},{"q":"Why should automation actions be idempotent?","options":["It makes them run faster","Webhooks can fire twice, so the action must be safe to repeat","Idempotent actions use less memory","It is required by all automation platforms"],"correct":1,"explanation":"Webhooks can be retried by the sender, causing your trigger to fire multiple times. An idempotent action (like checking before creating) prevents duplicate records or double-sends."},{"q":"What is a dead letter queue?","options":["A queue for deleted emails","A storage location for messages that failed to process","A type of webhook trigger","An action that sends error notifications"],"correct":1,"explanation":"A dead letter queue stores messages that could not be processed successfully. This preserves the data for manual inspection and retry instead of losing it."}]}'></div>

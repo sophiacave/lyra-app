@@ -117,6 +117,97 @@ support_agent = AgentConfig(
     </div>
   </div>
 
+  <div class="section">
+    <h2>Component Interactions</h2>
+    <p>The six components do not operate in isolation — they form a connected system. Understanding how they interact prevents common design failures:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8">Identity shapes Decisions</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An agent's identity (system prompt) directly affects which tools it chooses and how it interprets goals. A "cautious security auditor" will refuse risky actions that a "move-fast developer" would execute immediately. The same tools and goals produce different behavior with different identities.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Memory informs Goals</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Long-term memory stores past outcomes. If the agent remembers that a particular approach failed last time, it adjusts its goal-pursuit strategy. Without memory, the agent repeats mistakes indefinitely. Memory is the mechanism by which agents learn.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444">Guardrails override Everything</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Guardrails sit above goals, tools, and identity in the priority hierarchy. A guardrail that says "never delete production data" cannot be overridden by a goal that says "clean up old records." This precedence is critical — without it, goal-oriented agents will optimize past safety boundaries.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Schedule determines Resource Usage</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An always-on agent consumes compute 24/7. An event-driven agent consumes nothing until triggered. Choosing the wrong schedule wastes money (always-on for a weekly report) or misses events (cron for real-time alerts). Match the schedule to the use case.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>The Agent Config Pattern in Frameworks</h2>
+    <p>Every major framework maps to these six components. Here is how the terminology translates:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.8;overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse">
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem;color:#e5e5e5;font-weight:bold">Component</td>
+          <td style="padding:.5rem;color:#8b5cf6">Claude SDK</td>
+          <td style="padding:.5rem;color:#34d399">LangGraph</td>
+          <td style="padding:.5rem;color:#fb923c">CrewAI</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem;color:#e5e5e5">Identity</td>
+          <td style="padding:.5rem">instructions</td>
+          <td style="padding:.5rem">system_message</td>
+          <td style="padding:.5rem">role + backstory</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem;color:#e5e5e5">Memory</td>
+          <td style="padding:.5rem">conversation + tools</td>
+          <td style="padding:.5rem">state / checkpointer</td>
+          <td style="padding:.5rem">memory flag</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem;color:#e5e5e5">Tools</td>
+          <td style="padding:.5rem">tools (JSON schema)</td>
+          <td style="padding:.5rem">tools (bound)</td>
+          <td style="padding:.5rem">tools list</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem;color:#e5e5e5">Goals</td>
+          <td style="padding:.5rem">in instructions</td>
+          <td style="padding:.5rem">in system_message</td>
+          <td style="padding:.5rem">goal field</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem;color:#e5e5e5">Guardrails</td>
+          <td style="padding:.5rem">guardrails config</td>
+          <td style="padding:.5rem">conditional edges</td>
+          <td style="padding:.5rem">in backstory</td>
+        </tr>
+        <tr>
+          <td style="padding:.5rem;color:#e5e5e5">Schedule</td>
+          <td style="padding:.5rem">external (cron/trigger)</td>
+          <td style="padding:.5rem">external (cron/trigger)</td>
+          <td style="padding:.5rem">process type</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Different names, same anatomy. Learn the six components once and you understand every framework.</p>
+  </div>
+
+  <div class="section">
+    <h2>Building Your First Agent Config</h2>
+    <p>Start with these questions for each component. Answer them before writing any code:</p>
+
+    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.8">
+      <strong style="color:#34d399">Identity:</strong> What role does this agent play? What is its voice — formal, casual, technical?<br>
+      <strong style="color:#34d399">Memory:</strong> Does it need to remember across sessions? Does it share state with other agents?<br>
+      <strong style="color:#34d399">Tools:</strong> What 5-10 actions does this agent need? (Start narrow — you can always add more.)<br>
+      <strong style="color:#34d399">Goals:</strong> What specific, measurable outcomes is this agent pursuing?<br>
+      <strong style="color:#34d399">Guardrails:</strong> What must this agent NEVER do? What are the hard limits?<br>
+      <strong style="color:#34d399">Schedule:</strong> Should it run on a timer, respond to events, or loop continuously?
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"The 6 Agent Components","cards":[{"front":"Identity","back":"Who the agent is \u2014 name, role, personality, and voice. Encoded in the system prompt. Shapes every decision the agent makes."},{"front":"Memory","back":"What the agent knows. Short-term (conversation window), long-term (database), shared (accessible to other agents). Makes agents smarter over time."},{"front":"Tools","back":"What the agent can do \u2014 API calls, database queries, file ops. Defined as JSON schemas (or MCP servers). Without tools, agents can only think."},{"front":"Goals","back":"What the agent is trying to achieve. Must be specific and measurable. Persistent (always active) or triggered (event-activated)."},{"front":"Guardrails","back":"What the agent must NOT do. Hard limits that override goals. Without guardrails, agents optimize recklessly."},{"front":"Schedule","back":"When the agent runs \u2014 event-driven (webhooks), cron-based (timer), or always-on (continuous). Determines autonomy and resource usage."}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Agent Anatomy Check","questions":[{"q":"Which component defines what an agent is NOT allowed to do?","options":["Goals","Memory","Guardrails","Schedule"],"correct":2,"explanation":"Guardrails are the hard limits \u2014 they define forbidden actions and override goals when they conflict."},{"q":"An agent that reacts to a webhook event rather than running on a timer uses which schedule type?","options":["Cron-based","Always-on","Event-driven","Manual"],"correct":2,"explanation":"Event-driven agents wake up in response to triggers like webhooks, new records, or incoming messages."},{"q":"What is the difference between long-term memory and shared memory?","options":["Long-term is faster","Shared memory is accessible to ALL agents; long-term belongs to one agent","There is no difference","Long-term lasts forever; shared is session-only"],"correct":1,"explanation":"Shared memory (brain_context) is the bridge between agents. Long-term memory (agent_memory) belongs to a single agent and persists across its sessions."},{"q":"An agent with 50 tools keeps choosing the wrong one. What is the most likely fix?","options":["Add more tools","Split into multiple specialized agents with 5-15 tools each","Remove all guardrails","Switch to always-on scheduling"],"correct":1,"explanation":"LLMs perform better with fewer, focused tools. Too many tools creates confusion. Split into specialized agents that each excel at a narrow task."},{"q":"Why is \u0027You are a helpful assistant\u0027 a bad agent identity?","options":["It is too long","It is too specific","It is too vague \u2014 it produces generic behavior instead of targeted, useful actions","It violates guardrails"],"correct":2,"explanation":"Vague identities produce vague behavior. Specific identities (role + priorities + voice) produce focused, predictable agents."}]}'></div>

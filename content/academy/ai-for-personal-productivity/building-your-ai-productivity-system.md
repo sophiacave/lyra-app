@@ -114,6 +114,93 @@ free: false
   </div>
 </div>
 
+<!-- SYSTEM DESIGN PRINCIPLES -->
+<div class="lesson-section">
+  <span class="section-label">Design Principles</span>
+  <h2 class="section-title">Five principles for building a system that actually lasts.</h2>
+  <p class="section-text">Most productivity systems fail within two weeks. Here's why — and how to design yours differently.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">1. Start with one workflow, not ten</p>
+      <p style="font-size:0.9rem">Pick the single area where AI will save you the most time or mental energy. Master it until it's automatic. Then add the next one. A system that does one thing reliably beats a system that does ten things inconsistently.</p>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">2. Reduce friction to zero</p>
+      <p style="font-size:0.9rem">If your AI tool takes more than one tap to open, you won't use it. Put it on your home screen. Bookmark it. Set a morning reminder. The best system is the one you actually use, and you'll only use what's effortless to access.</p>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">3. Build on existing habits</p>
+      <p style="font-size:0.9rem">Don't create a new routine from scratch. Attach AI to something you already do. "After I pour my coffee, I do my 5-minute check-in." Habit stacking works because you're adding to an existing pattern, not building a new one from nothing.</p>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">4. Save what works</p>
+      <p style="font-size:0.9rem">When a prompt gives you a great result, save it immediately. Your prompt library is your most valuable productivity asset. Every saved prompt is a shortcut you never have to think about again.</p>
+    </div>
+    <div>
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">5. Review and adjust monthly</p>
+      <p style="font-size:0.9rem">Your system should evolve. What you need from AI in January might be different from July. Set a monthly reminder to review: what's working, what I've stopped using, and what new use cases I should try.</p>
+    </div>
+  </div>
+</div>
+
+<!-- INTEGRATION PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">Integration</span>
+  <h2 class="section-title">How to connect your AI workflows into a seamless system.</h2>
+  <p class="section-text">Individual prompts are useful. A connected system is transformational. Here's how the pieces from this course fit together into daily, weekly, and monthly cycles.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">Daily cycle (5-10 minutes total)</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <p style="font-size:0.9rem;line-height:1.7"><strong>Morning:</strong> Daily check-in prompt → get prioritized task list</p>
+        <p style="font-size:0.9rem;line-height:1.7"><strong>Midday:</strong> Draft any emails or messages using Tone + Context + Goal</p>
+        <p style="font-size:0.9rem;line-height:1.7"><strong>Evening:</strong> Quick fridge audit → decide what's for dinner tomorrow</p>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">Weekly cycle (15-20 minutes total)</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <p style="font-size:0.9rem;line-height:1.7"><strong>Sunday:</strong> Weekly reset → review last week, plan next week, create meal plan</p>
+        <p style="font-size:0.9rem;line-height:1.7"><strong>Ongoing:</strong> Brain dump whenever overwhelm hits → get instant clarity</p>
+        <p style="font-size:0.9rem;line-height:1.7"><strong>As needed:</strong> Research mode for any decision or purchase over $100</p>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">Monthly cycle (30 minutes)</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <p style="font-size:0.9rem;line-height:1.7"><strong>Financial snapshot:</strong> Check where your money went this month</p>
+        <p style="font-size:0.9rem;line-height:1.7"><strong>System review:</strong> Which AI workflows are you using? Which have you dropped? Why?</p>
+        <p style="font-size:0.9rem;line-height:1.7"><strong>Prompt library update:</strong> Add new favorites, remove ones you don't use</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMON PITFALLS -->
+<div class="lesson-section">
+  <span class="section-label">Pitfalls</span>
+  <h2 class="section-title">Why productivity systems fail — and how yours won't.</h2>
+  <p class="section-text">Knowing the failure modes helps you avoid them. Here are the most common reasons AI productivity systems don't stick, with specific solutions for each.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">Pitfall: The novelty wears off</p>
+      <p style="font-size:0.9rem"><strong>Solution:</strong> Don't rely on excitement. Rely on habit. The daily check-in should feel as routine as brushing your teeth. Boring consistency beats exciting inconsistency.</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">Pitfall: You try to do too much too fast</p>
+      <p style="font-size:0.9rem"><strong>Solution:</strong> One workflow per week. Master email drafting before adding meal planning. Master meal planning before adding financial snapshots. Slow is smooth, smooth is fast.</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">Pitfall: You stop because one prompt didn't work</p>
+      <p style="font-size:0.9rem"><strong>Solution:</strong> Bad prompts are normal. Say "try a different approach" or add more context. The skill of prompting improves with practice. A bad result is feedback, not failure.</p>
+    </div>
+    <div>
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">Pitfall: You over-rely on AI and stop thinking for yourself</p>
+      <p style="font-size:0.9rem"><strong>Solution:</strong> AI generates options. You make decisions. Always read drafts out loud. Always apply your own judgment. The goal is augmentation, not replacement.</p>
+    </div>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>

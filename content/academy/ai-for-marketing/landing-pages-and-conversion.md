@@ -128,6 +128,84 @@ free: false
   <p class="section-text" style="margin-top:1rem">Ask AI for "20 landing page headlines in 5 different styles: benefit, question, social proof, direct offer, and pain-agitate." Then pick your favorite from each style and test them.</p>
 </div>
 
+<!-- SECTION 4: CRO PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">CRO Patterns</span>
+  <h2 class="section-title">7 conversion rate optimization patterns that work.</h2>
+  <p class="section-text">Beyond the page structure, these CRO patterns consistently lift conversion rates. Ask AI to incorporate them into your landing page copy:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Directional cues</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Arrows, eye-line from photos, and visual flow that guide the reader's eye toward the CTA. Ask AI to suggest where to place visual cues in your layout.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Anchoring</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Show a higher price first, then reveal the actual price. "Agencies charge $5,000/month. Get the same results for $99." The contrast makes the real price feel small.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Risk reversal</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"30-day money-back guarantee. No questions asked." Remove every reason someone might hesitate. The easier it is to undo the purchase, the easier it is to make it.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Specificity in numbers</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"2,847 businesses use this" converts better than "Thousands of businesses use this." Specific numbers feel real. Round numbers feel made up.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">5</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Microcopy near CTAs</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Small text near the button that reduces anxiety: "No credit card required," "Cancel anytime," "Takes 30 seconds." These tiny phrases remove friction at the moment of decision.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">6</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Social proof placement</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Place testimonials near the CTA, not just in a dedicated section. A quote right above the "Buy Now" button reinforces confidence at the moment of action.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">7</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">One page, one goal</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Every landing page should have exactly one desired action. No navigation menu, no sidebar links, no "also check out" sections. Every element serves the single conversion goal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: TESTING LANDING PAGES -->
+<div class="lesson-section">
+  <span class="section-label">Testing</span>
+  <h2 class="section-title">What to A/B test on your landing page — in priority order.</h2>
+  <p class="section-text">Not all tests are equal. Test these elements in order of impact — starting with the changes that move the needle most:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#ef4444;font-weight:700">Highest impact:</span> The headline. It's the first thing visitors read and the #1 factor in whether they stay or bounce. Ask AI for 20 headline variations and test the top 2.</div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#fb923c;font-weight:700">High impact:</span> The CTA button text and color. "Start Free Trial" vs "See It In Action" can produce a 20%+ difference in click rates.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Medium impact:</span> Social proof format. Test a single powerful testimonial vs multiple short quotes vs a customer logo bar. Different audiences respond to different proof formats.</div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#38bdf8;font-weight:700">Medium impact:</span> Page length. Test a short page (hero + CTA + social proof) vs a long page (full 6-section structure). Short pages often win for simple offers; long pages win for high-ticket products.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Lower impact:</span> Microcopy, image choices, and layout details. These matter, but test them after you've optimized the big elements. A great headline with mediocre images beats mediocre headlines with great images.</div>
+    </div>
+  </div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

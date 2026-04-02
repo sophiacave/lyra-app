@@ -107,6 +107,65 @@ free: false
     </div>
   </div>
 
+  <div class="section">
+    <h2>Message Schemas and Contracts</h2>
+    <p>When agents communicate through shared memory, they need to agree on a message format. Without a schema, Agent B cannot reliably parse what Agent A wrote. Here is a practical message schema:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0"><code><span style="color:#71717a"># Standard message schema for agent communication</span>
+message = {
+    <span style="color:#fbbf24">"key"</span>: <span style="color:#fbbf24">"task.content_review"</span>,       <span style="color:#71717a"># namespaced key</span>
+    <span style="color:#fbbf24">"sender"</span>: <span style="color:#fbbf24">"writer-agent"</span>,           <span style="color:#71717a"># who wrote this</span>
+    <span style="color:#fbbf24">"timestamp"</span>: <span style="color:#fbbf24">"2026-04-01T14:30:00Z"</span>, <span style="color:#71717a"># when</span>
+    <span style="color:#fbbf24">"status"</span>: <span style="color:#fbbf24">"pending"</span>,               <span style="color:#71717a"># pending / in_progress / done</span>
+    <span style="color:#fbbf24">"payload"</span>: {                        <span style="color:#71717a"># the actual data</span>
+        <span style="color:#fbbf24">"title"</span>: <span style="color:#fbbf24">"Weekly Update"</span>,
+        <span style="color:#fbbf24">"body"</span>: <span style="color:#fbbf24">"..."</span>,
+        <span style="color:#fbbf24">"priority"</span>: <span style="color:#fbbf24">2</span>
+    },
+    <span style="color:#fbbf24">"ttl"</span>: <span style="color:#fbbf24">3600</span>                        <span style="color:#71717a"># expires after 1 hour</span>
+}</code></pre>
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">A consistent schema means any agent can read any message. The <code>ttl</code> (time-to-live) field prevents stale messages from clogging the stream. The <code>status</code> field lets downstream agents know whether the task is still pending or already claimed.</p>
+  </div>
+
+  <div class="section">
+    <h2>Fan-Out Communication</h2>
+    <p>Sometimes one agent's output needs to reach multiple downstream agents. This is the fan-out pattern applied to communication:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Single Key, Multiple Readers</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A writes to <code>task.new_post</code>. Agent B (Twitter publisher), Agent C (email sender), and Agent D (Slack notifier) all watch this key. When Agent A writes, all three activate independently. No coordination needed — each reads the same payload and does its own job.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Multiple Keys, Targeted Delivery</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A writes to <code>task.twitter</code>, <code>task.email</code>, and <code>task.slack</code> separately, each with a tailored payload. More work for the sender, but each receiver gets exactly the data it needs — no parsing required.</p>
+      </div>
+    </div>
+    <p style="font-size:.85rem;color:#a1a1aa">The first approach is simpler and works when all receivers need the same data. The second is better when each downstream agent needs a different format or subset of the data.</p>
+  </div>
+
+  <div class="section">
+    <h2>Acknowledgment and Delivery Guarantees</h2>
+    <p>In production systems, you need to know whether a message was received and processed. Three levels of delivery guarantee:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">At-most-once (fire and forget)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A writes the message and moves on. If Agent B never reads it, the message is lost. Simple but unreliable. Fine for non-critical notifications.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">At-least-once (with acknowledgment)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent B marks the message as <code>processed = true</code> after handling it. If B crashes mid-processing, the message stays unprocessed and gets retried. May process the same message twice — actions must be idempotent.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Exactly-once (transactional)</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Uses database transactions to ensure the message is processed exactly one time. The read, process, and acknowledgment happen atomically. Most reliable but most complex. Use for financial transactions and critical state changes.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="QuizMC" data-props='{"title":"Agent Communication Quiz","questions":[{"q":"How do agents communicate in a decoupled architecture?","options":["Direct API calls between agents","Shared memory \u2014 one writes, others read","Email-style message queues","Real-time WebSocket only"],"correct":1,"explanation":"Agents communicate through shared memory (consciousness_stream). No direct connections needed \u2014 agents write and read from the same store independently."},{"q":"What is the consciousness_stream?","options":["A real-time audio feed","A shared database table agents post messages to","A private log only one agent can read","A cron job scheduler"],"correct":1,"explanation":"The consciousness_stream is a shared table \u2014 like a team Slack channel for AI agents. Any agent can read from it or write to it."},{"q":"Agent A finishes writing a blog post and sets task.output in shared memory. What should Agent B (the publisher) do?","options":["Wait for Agent A to call it directly","Poll task.output and act when a new entry appears","Ask a human to relay the message","Create a new memory table"],"correct":1,"explanation":"Agent B watches for new entries on its key (task.output). When Agent A writes there, Agent B reads the payload and executes its action."},{"q":"Why is direct coupling between agents fragile?","options":["It is slower","If one agent fails, all agents that depend on it also fail","It uses more memory","It requires more code"],"correct":1,"explanation":"Direct coupling means Agent A directly calls Agent B. If B goes down, A crashes too. Shared memory decouples them \u2014 A writes regardless of B\u0027s status."},{"q":"What is the fastest way for Agent B to learn that Agent A has written new data?","options":["Polling every second","Supabase Realtime / database trigger that pushes notifications instantly","Reading the full table every minute","Asking a supervisor agent"],"correct":1,"explanation":"Database triggers and Supabase Realtime push changes via WebSockets the moment a row is inserted \u2014 zero latency, no polling required."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Communication Patterns","cards":[{"front":"Why don\u0027t agents call each other directly?","back":"Direct connections create tight coupling. If Agent A fails, Agent B breaks too. Shared memory decouples them \u2014 they operate independently and communicate asynchronously."},{"front":"What is a message key?","back":"A named slot in shared memory (e.g., task.output). The sender writes to it; the receiver watches for new entries on that key."},{"front":"What happens if two agents write to the same key at the same time?","back":"A race condition \u2014 the second write overwrites the first. Solved with locking, priority queues, or a conscience layer (Lesson 6)."},{"front":"Polling vs event-driven reading","back":"Polling: check the key on a timer (simple, has latency). Event-driven: get notified instantly via WebSocket or trigger (faster, more complex)."},{"front":"What is Supabase Realtime?","back":"A feature that pushes database changes to subscribers via WebSockets in real time. Agents get notified the moment a new row is inserted \u2014 no polling."},{"front":"What happens if the database is down when an agent writes?","back":"The message is lost. Solution: retry with exponential backoff, or buffer writes locally with a write-ahead log."}]}'></div>

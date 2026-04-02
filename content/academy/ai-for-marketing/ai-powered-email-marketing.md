@@ -137,6 +137,64 @@ Email 5 (Day 10): Direct offer with urgency
   <p class="section-text" style="margin-top:1rem">The marketer who tests 10 variants per month will outperform the one who sends "whatever felt right" every single time.</p>
 </div>
 
+<!-- SECTION 5: SEGMENTATION -->
+<div class="lesson-section">
+  <span class="section-label">Segmentation</span>
+  <h2 class="section-title">AI-powered email segmentation strategies.</h2>
+  <p class="section-text">Sending the same email to everyone is leaving money on the table. AI makes segmentation easy — even for small lists:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">By engagement level</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Active (opened in last 30 days), Warm (opened in last 90 days), Cold (no opens in 90+ days). Each group gets different messaging. Ask AI to write a re-engagement sequence for your cold subscribers.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">By source</div>
+          <div style="color:#a1a1aa;font-size:.85rem">How did they join your list? Lead magnet downloaders, blog readers, webinar attendees, and direct signups all have different intent levels. Tailor your welcome sequence to how they found you.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">By purchase history</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Customers get different emails than prospects. Past buyers are your warmest leads for upsells and referrals. Ask AI to write a post-purchase nurture sequence.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">By interest</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Track which links people click and what content they engage with. Someone who clicked on pricing 3 times needs a different email than someone who only reads your blog content.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: AUTOMATION FLOWS -->
+<div class="lesson-section">
+  <span class="section-label">Automation</span>
+  <h2 class="section-title">5 email automation flows every business needs.</h2>
+  <p class="section-text">Beyond the welcome sequence, these automated flows work around the clock. Ask AI to write the copy for each one:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Abandoned cart / checkout:</span> 3 emails over 48 hours. Email 1: "Did something go wrong?" (1 hour later). Email 2: Address common objections (24 hours). Email 3: Final reminder with incentive (48 hours).</div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#fb923c;font-weight:700">Post-purchase onboarding:</span> 4 emails over 2 weeks. Help new customers get value fast. Reduce refund requests. Turn buyers into fans. Ask AI: "Write a 4-email onboarding sequence for [product]."</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Re-engagement:</span> 3 emails for subscribers who haven't opened in 90+ days. "We miss you" angle, a best-of content roundup, and a final "should we remove you?" email that creates urgency to stay.</div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#38bdf8;font-weight:700">Review / testimonial request:</span> 1-2 emails sent 7-14 days after purchase. Ask for feedback when the customer has had enough time to experience the product. Use responses as social proof.</div>
+      <div style="background:var(--bg);border:1px solid rgba(244,114,182,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#f472b6;font-weight:700">Referral request:</span> 1 email sent 30 days after purchase (when satisfaction is highest). Offer an incentive for referrals. "Know someone who'd love this? Share your unique link and get $X off your next purchase."</div>
+    </div>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>The prompt for any flow:</strong> "Write a [X]-email automation flow triggered by [event]. For each email, give me: timing (when to send), subject line, preview text, body copy, and CTA. Voice: [your brand voice card]."</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

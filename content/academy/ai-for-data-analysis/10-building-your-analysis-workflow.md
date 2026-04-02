@@ -72,12 +72,45 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Architecture</span>
+  <h2 class="section-title">Workflow Architecture</h2>
+  <p class="section-text">A well-designed analysis workflow has three layers that work together:</p>
+  <p class="section-text"><strong>Layer 1 — Data layer:</strong> Where your raw data lives and how it flows into your analysis. This includes data sources (spreadsheets, databases, APIs, exports), storage formats (CSV, Excel, JSON), and update frequency (real-time, daily, weekly, monthly). Map your data sources once, and every future analysis starts faster.</p>
+  <p class="section-text"><strong>Layer 2 — Analysis layer:</strong> Your repeatable processes for turning raw data into insights. This is where your prompt templates, cleaning checklists, and analysis patterns live. The key principle: anything you do more than twice should become a template.</p>
+  <p class="section-text"><strong>Layer 3 — Output layer:</strong> How insights reach the people who act on them. Reports, dashboards, alerts, and presentations. Different audiences need different outputs from the same underlying analysis.</p>
+  <p class="section-text">Ask AI to help you design your architecture: "Here are my regular data sources and the analyses I run most often. Design a workflow architecture that minimizes repetitive work and ensures consistency."</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Automation</span>
+  <h2 class="section-title">Automation Patterns</h2>
+  <p class="section-text">The highest-value skill in data analysis is not doing the analysis — it is automating it so it runs without you. Here are patterns you can implement today:</p>
+  <p class="section-text"><strong>Prompt chains:</strong> Build a sequence of prompts where each one feeds into the next. Clean → Analyze → Visualize → Report. Save the entire chain as a document. Next time, paste in new data and run the chain. Same quality, fraction of the time.</p>
+  <p class="section-text"><strong>Alert triggers:</strong> Define thresholds that matter. "If monthly churn exceeds 5%, flag it." "If any single expense grows more than 20% month-over-month, investigate." When you run your regular analysis, AI checks these triggers automatically if you include them in your prompt.</p>
+  <p class="section-text"><strong>Script generation:</strong> For analyses you run frequently, ask AI to write a Python script once. Then run the script whenever new data arrives. The script handles cleaning, analysis, visualization, and report generation without any manual prompting.</p>
+  <p class="section-text"><strong>Template evolution:</strong> Every time you run an analysis, note what you wish the output included. Update your template. Over weeks and months, your templates evolve into highly refined analysis machines perfectly tuned to your needs.</p>
+  <p class="section-text"><strong>Comparative baselines:</strong> Save the output of each analysis as a baseline. Your next analysis can automatically compare against the previous one, tracking changes over time without any manual comparison work.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">What's Next</span>
   <h2 class="section-title">Continuing Your Journey</h2>
   <p class="section-text">You now have the skills to analyze any dataset that comes your way, without writing a single line of code. But this is just the foundation. Here's where to grow:</p>
   <p class="section-text"><strong>Learn basic SQL:</strong> AI can write SQL for you, but understanding the logic helps you ask better questions.</p>
   <p class="section-text"><strong>Explore Python with AI:</strong> Ask Claude to write Python scripts for analyses that need to run repeatedly or handle very large datasets.</p>
   <p class="section-text"><strong>Practice daily:</strong> The more data you analyze, the sharper your intuition gets. Start looking at data everywhere — your email analytics, your website traffic, your personal spending.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Mastery</span>
+  <h2 class="section-title">Signs You Are Becoming a Data Thinker</h2>
+  <p class="section-text">You know the skills are taking hold when you start noticing these shifts in your thinking:</p>
+  <p class="section-text"><strong>You question claims:</strong> When someone says "sales are up," your first instinct is "compared to what?" You think in baselines and comparisons, not isolated numbers.</p>
+  <p class="section-text"><strong>You spot bias:</strong> You notice when a chart's y-axis starts at 500 instead of 0, making a 2% change look like a 50% change. You ask about sample sizes and selection effects.</p>
+  <p class="section-text"><strong>You think in segments:</strong> "Average" is never good enough. You ask "average for whom?" and "does this pattern hold across all groups?"</p>
+  <p class="section-text"><strong>You demand the "so what?":</strong> A finding without an implication is incomplete. You always push from "what the data shows" to "what we should do about it."</p>
+  <p class="section-text"><strong>You version your analyses:</strong> You keep a log of questions asked, methods used, and conclusions reached. When assumptions change, you know exactly what to re-examine.</p>
+  <p class="section-text">These habits compound. A year from now, you will look back at your first analyses and see how far your thinking has come. The tools help, but the mindset is what makes you genuinely effective.</p>
 </div>
 
   <div class="tip-box">

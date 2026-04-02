@@ -90,8 +90,73 @@ collaborative spirit of open-source communities."</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Copyright Framework in Practice</span>
+  <h2 class="section-title">A practical decision tree for your AI-generated content.</h2>
+  <p class="section-text">The legal landscape can feel confusing. Here is a clear framework for making decisions about your AI-generated images:</p>
+  <p class="section-text"><strong>Level 1 — Raw AI output:</strong> You typed a prompt and got an image with no further editing. This has the weakest copyright position. In the US, this is likely not copyrightable. However, you still have a license to use it per your tool's terms of service, which usually includes commercial use on paid plans.</p>
+  <p class="section-text"><strong>Level 2 — Directed generation:</strong> You went through multiple rounds of careful prompting, selected specific results, and made intentional creative decisions about the final output. The copyright claim is stronger because of your creative direction, but the legal position is still evolving.</p>
+  <p class="section-text"><strong>Level 3 — Substantial modification:</strong> You generated an AI image and then significantly edited it — inpainting, compositing with other elements, painting over sections, adding original design work. This has the strongest copyright position because your human creative contribution is substantial and demonstrable.</p>
+  <p class="section-text"><strong>The practical takeaway:</strong> The more you transform and add to an AI-generated image, the stronger your legal position. Using AI as a starting point in a larger creative process is both the most legally sound and the most creatively satisfying approach.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Disclosure Guidelines</span>
+  <h2 class="section-title">When, where, and how to disclose AI use in your visuals.</h2>
+  <p class="section-text">Transparency about AI use is becoming an industry norm and, in some contexts, a legal requirement. Here is a practical guide:</p>
+  <p class="section-text"><strong>Social media posts:</strong> Adding "Created with AI" or "AI-generated imagery" in your caption or as a hashtag (#AIart, #AIgenerated) is increasingly expected. Many platforms are rolling out mandatory AI labels. Getting ahead of this trend builds trust with your audience.</p>
+  <p class="section-text"><strong>Client and commercial work:</strong> If you are using AI-generated visuals in work for clients, disclose this upfront. Many clients appreciate the efficiency but want to know. Some industries (journalism, legal, medical) have stricter disclosure requirements.</p>
+  <p class="section-text"><strong>Portfolio and professional work:</strong> If you are showcasing AI-assisted work in a portfolio, be clear about what was AI-generated and what was your original contribution. This is not about diminishing the work — it is about honesty, which clients and collaborators respect.</p>
+  <p class="section-text"><strong>Educational and informational content:</strong> If AI-generated images are used to illustrate concepts, adding a note ("Illustration generated with DALL-E") maintains credibility. This is especially important in journalism, academic work, and health-related content.</p>
+  <p class="section-text"><strong>Personal creative projects:</strong> The disclosure expectations are lower for personal art and creative expression. But many AI artists choose to label their work anyway because they are proud of their prompt craft and want to contribute to a culture of honesty around AI tools.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Fair Use Principles</span>
+  <h2 class="section-title">Understanding fair use helps you navigate the gray areas.</h2>
+  <p class="section-text">Fair use is a legal doctrine that allows limited use of copyrighted material without permission under certain circumstances. While fair use traditionally applies to using existing works, understanding its principles helps you think about AI-generated content responsibly:</p>
+  <p class="section-text"><strong>Transformative use:</strong> The more you transform AI output into something new and different from its training data, the stronger your position. A prompt that generates something in "the style of [living artist]" is ethically and potentially legally problematic. A prompt that combines multiple influences into something original is much safer ground.</p>
+  <p class="section-text"><strong>Commercial vs non-commercial:</strong> Non-commercial use (education, personal projects, commentary) generally has wider latitude than commercial use. If you are selling AI-generated content, be more careful about potential IP issues.</p>
+  <p class="section-text"><strong>Impact on the market:</strong> If your AI-generated work could substitute for and harm the market of an identifiable artist whose style you are replicating, that is both ethically questionable and legally risky. Create original work that draws on broad influences rather than copying specific creators.</p>
+</div>
+
+<div class="demo-container" style="border-left: 3px solid var(--purple); padding: 1.2rem; margin: 2rem 0; background: var(--bg);">
+  <h3 style="color: var(--purple);">The responsible creator's checklist</h3>
+  <ul>
+    <li>I know the commercial use terms for every AI tool I use</li>
+    <li>I disclose AI use in professional and commercial contexts</li>
+    <li>I never generate images of real people without consent</li>
+    <li>I never present AI images as real photographs</li>
+    <li>I add my own creative contribution rather than using raw AI output</li>
+    <li>I avoid replicating the specific style of living artists</li>
+    <li>I stay informed about evolving copyright law and platform terms</li>
+    <li>I support human artists and value their work alongside AI tools</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Commercial Rights by Tool</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Platform Labeling Requirements</span>
+  <h2 class="section-title">Major platforms are introducing mandatory AI content labels.</h2>
+  <p class="section-text">The regulatory landscape for AI-generated content is tightening. Here is what you need to know about where major platforms stand:</p>
+  <p class="section-text"><strong>Meta (Facebook/Instagram):</strong> Requires labels on AI-generated content. Automatically detects and labels content from major AI tools using embedded metadata. Unlabeled AI content may be removed or restricted.</p>
+  <p class="section-text"><strong>YouTube:</strong> Requires creators to disclose when realistic AI-generated content is used, especially content depicting real people or events. Failure to disclose may result in content removal or channel penalties.</p>
+  <p class="section-text"><strong>TikTok:</strong> Requires AI-generated content to be labeled. Automatically labels content detected as AI-generated. Content depicting fictional events as real must be clearly marked.</p>
+  <p class="section-text"><strong>LinkedIn:</strong> Encourages transparency about AI use. Does not yet have mandatory labeling but is expected to follow other platforms.</p>
+  <p class="section-text"><strong>What this means for you:</strong> Proactive disclosure is no longer just a best practice — it is becoming a requirement. Getting comfortable with labeling now means you will not be caught off guard as enforcement increases. The creators who embrace transparency early build the most trusted brands.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Navigating the Artist Relationship</span>
+  <h2 class="section-title">How to use AI tools while genuinely supporting the creative community.</h2>
+  <p class="section-text">The tension between AI tools and human artists is real and valid. Here are concrete ways to be a responsible member of the creative community:</p>
+  <p class="section-text"><strong>Hire artists for high-stakes work:</strong> AI is excellent for drafts, concepts, social media, and internal materials. For a brand identity, album cover, book illustration, or anything that defines your public face — hire a human artist. Their intentionality, cultural understanding, and creative depth add value that AI cannot replicate.</p>
+  <p class="section-text"><strong>Credit your influences:</strong> If an AI generation was inspired by a specific artist's style (even broadly), acknowledge that inspiration. "Inspired by the color palettes of Hayao Miyazaki" is honest and respectful.</p>
+  <p class="section-text"><strong>Use ethically-trained models when possible:</strong> Tools like Adobe Firefly are trained exclusively on licensed content. Choosing these tools when you have the option supports a model of AI development that respects creators' rights.</p>
+  <p class="section-text"><strong>Advocate for fair compensation:</strong> Support policies and platforms that compensate artists whose work contributed to training data. The long-term health of AI art depends on a fair relationship with the human artists who made it possible.</p>
 </div>
 
 <div class="lesson-section">

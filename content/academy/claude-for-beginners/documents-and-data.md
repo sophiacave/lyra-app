@@ -133,6 +133,70 @@ Give me your top 3 recommendations ranked by impact.</code></pre>
   </div>
 </div>
 
+<!-- SECTION 4.5: DOCUMENT ANALYSIS EXAMPLES -->
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Real-world document analysis — see how it works.</h2>
+  <p class="section-text">Different types of documents need different approaches. Here is how to handle the most common ones you will encounter at work.</p>
+
+<div data-learn="FlashDeck" data-props='{"title":"Document Analysis by Type","cards":[{"front":"Legal Contracts\n\nYou received a vendor contract. You need to understand the key terms before signing.","back":"PROMPT: I just received this vendor contract. I am not a lawyer. Please:\n\n1. Summarize the key terms in plain English\n2. Flag anything unusual or risky\n3. Highlight the payment terms and penalties\n4. List any deadlines or auto-renewal clauses\n5. Tell me what questions I should ask before signing\n\nClaude translates legalese into language you can actually understand, and flags the things a lawyer would flag."},{"front":"Financial Reports\n\nQuarterly earnings, budget reports, or financial statements you need to understand quickly.","back":"PROMPT: Here is our Q3 financial report: [paste]. Explain it to me as if I am not a finance person. What are the 3 most important numbers? What changed from last quarter? Should I be worried about anything?\n\nClaude finds the story in the numbers — revenue trends, cost increases, cash flow concerns — without requiring you to know accounting terminology."},{"front":"Technical Documentation\n\nAPI docs, software specs, or technical proposals that need to be understood by non-technical stakeholders.","back":"PROMPT: Here is a technical specification document: [paste]. I need to present the key points to our executive team who are not technical. Translate this into business language. Focus on: what it does, why it matters, what it costs, and what the timeline looks like.\n\nClaude bridges the gap between technical and business language, keeping the important details while cutting the jargon."},{"front":"Research Papers / Studies\n\nAcademic papers, market research, or industry reports filled with methodology and statistics.","back":"PROMPT: Here is a research paper: [paste]. Give me:\n1. The main finding in one sentence\n2. Why it matters for [your industry/role]\n3. How strong the evidence is (sample size, methodology)\n4. The 2-3 most important takeaways\n5. Any limitations or caveats I should know about\n\nClaude reads the methodology section so you do not have to, and tells you how much to trust the conclusions."}]}'></div>
+
+</div>
+
+<!-- SECTION 4.7: DATA EXTRACTION PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">Extract</span>
+  <h2 class="section-title">Data extraction patterns — pull exactly what you need.</h2>
+  <p class="section-text">Sometimes you do not need a summary. You need specific information pulled out of a document. Here are the extraction patterns that save the most time.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Pattern — Extract All Names and Roles</div>
+<pre style="margin:0;color:#e5e5e5"><code>From this document, extract every person mentioned.
+For each person, list:
+- Full name
+- Title or role
+- What they are responsible for
+- Any action items assigned to them
+
+Format as a table.
+
+[Paste document here]</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Pattern — Extract All Dates and Deadlines</div>
+<pre style="margin:0;color:#e5e5e5"><code>From this document, extract every date, deadline,
+and timeline mentioned. For each, list:
+- The date
+- What it refers to
+- Who is responsible (if mentioned)
+- Whether it is a hard deadline or estimate
+
+Sort chronologically.
+
+[Paste document here]</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Pattern — Extract Numbers and Metrics</div>
+<pre style="margin:0;color:#e5e5e5"><code>From this document, extract every number, metric,
+percentage, and dollar amount mentioned. For each:
+- The number
+- What it measures
+- The time period (if mentioned)
+- Whether it is up, down, or flat vs prior period
+
+Format as a table sorted by importance.
+
+[Paste document here]</code></pre>
+</div>
+
+  <div class="tip-box">
+    <div class="tip-label">When to Extract vs Summarize</div>
+    <p><strong>Extract</strong> when you need specific data points pulled out of a document — names, dates, numbers, action items. <strong>Summarize</strong> when you need to understand the big picture — key themes, decisions, overall direction. For many documents, doing both gives you the complete picture: the summary tells you what happened, and the extraction gives you the details you need to act on.</p>
+  </div>
+</div>
+
 <!-- KEY TAKEAWAY -->
 <div class="callout purple">
   <p><strong>The key insight:</strong> Claude turns you into someone who can summarize, analyze, and report on <em>anything</em> — regardless of your background. A marketer can analyze financial data. A manager can parse legal contracts. The barrier between "I can" and "I can't" just disappeared.</p>

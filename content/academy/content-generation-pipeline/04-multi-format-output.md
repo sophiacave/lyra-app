@@ -83,9 +83,65 @@ Voice guidelines: [DESCRIBE YOUR TONE IN 2-3 SENTENCES]."</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Format Specifications</span>
+  <h2 class="section-title">Platform-Specific Output Specs</h2>
+  <p class="section-text">Each platform has non-negotiable technical requirements. Knowing these upfront prevents rework. Build them into your transformation templates so every output is publish-ready — no manual adjustments needed.</p>
+  <p class="section-text"><strong>Twitter/X:</strong> 280 characters per tweet. Threads: 4-12 tweets. First tweet is the hook — it appears in feeds alone, so it must compel the click to expand. No hashtag spam. One or two maximum. Line breaks improve readability. Use them generously.</p>
+  <p class="section-text"><strong>LinkedIn:</strong> 3,000 character limit. First two lines visible before "see more" — these are your ad copy. Short paragraphs with line breaks between. No links in the post body (kills reach). Link in first comment instead. End with a question or poll for engagement.</p>
+  <p class="section-text"><strong>Email:</strong> Subject line under 50 characters. Preview text is the second hook — 90 characters visible in most clients. Body: 200-400 words for newsletters, under 150 for promotional. Single CTA above the fold. Mobile-first formatting — one column, large buttons.</p>
+  <p class="section-text"><strong>YouTube:</strong> Title under 60 characters. Description: front-load keywords in first 150 characters. Script pacing: 150 words per minute for speaking. Hook in first 8 seconds. Retention checkpoint at 30 seconds (state what they'll learn). Chapters with timestamps.</p>
+  <p class="section-text"><strong>Instagram Carousel:</strong> Up to 10 slides. 1080x1350px (4:5 ratio) for maximum feed real estate. Slide 1: pattern-interrupt hook. Slides 2-9: one idea per slide, large text. Slide 10: CTA + "save this post." Alt text on every image for accessibility.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Format Transformation Chain</h3>
+  <pre>
+SOURCE: 1,500-word blog post
+
+STEP 1 — Extract core message (1 sentence)
+STEP 2 — Extract 5 key points (1 sentence each)
+STEP 3 — Extract best quote/stat/story
+
+THEN IN PARALLEL:
+├── Twitter template  → hook + 5 point tweets + CTA tweet
+├── LinkedIn template → personal angle + 3 key points + question
+├── Email template    → subject + preview + teaser + CTA link
+├── YouTube template  → 2-column script with visual cues
+└── Carousel template → 8-slide breakdown with design notes
+
+QUALITY GATE: Each output checked against platform specs
+  </pre>
+  <p>Steps 1-3 run once. The five format steps run in parallel from the same extracted data. Total pipeline: 8 steps, 5 formats, one source.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Angle Variation</span>
+  <h2 class="section-title">Different Entry Points, Same Idea</h2>
+  <p class="section-text">The most common mistake in multi-format output is producing the same text in different shapes. A Twitter thread that reads like a chopped-up blog post. A LinkedIn post that's just the introduction copy-pasted. This defeats the purpose — audiences on different platforms need different entry points into your idea.</p>
+  <p class="section-text"><strong>The contrarian angle</strong> works on Twitter — lead with what everyone gets wrong. <strong>The personal story angle</strong> works on LinkedIn — lead with what happened to you. <strong>The curiosity angle</strong> works in email — tease the insight without revealing it. <strong>The visual metaphor angle</strong> works on Instagram — show the concept as an image. Same core idea, genuinely different approaches.</p>
+  <p class="section-text">Build angle variation into your format templates. Instead of "rewrite this for Twitter," your template says "find the most contrarian take from this content and build a thread that challenges conventional wisdom." The format template isn't just about length and structure — it's about perspective.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quality Across Formats</span>
+  <h2 class="section-title">Format-Specific Quality Checks</h2>
+  <p class="section-text">Quality gates for multi-format output need format-specific criteria. A blog post quality check looks different from a Twitter thread quality check. Build separate review checklists for each format your pipeline produces.</p>
+  <p class="section-text"><strong>Blog post gate:</strong> Readability score, paragraph length, internal links, meta description, image alt text, CTA placement. <strong>Twitter thread gate:</strong> Character count per tweet, hook strength in tweet 1, standalone value per tweet, thread coherence, CTA in final tweet. <strong>Email gate:</strong> Subject line length, preview text, single CTA above fold, mobile rendering, unsubscribe link present.</p>
+  <p class="section-text"><strong>LinkedIn gate:</strong> First two lines as hook (visible before "see more"), no links in body, question or poll at end, no hashtag spam (3 max), professional tone maintained. <strong>Video script gate:</strong> Hook within 8 seconds, retention checkpoint at 30 seconds, visual cues for every 30 seconds of audio, clear CTA with timestamp.</p>
+  <p class="section-text">Each format gate runs independently after transformation. A piece can pass the blog gate but fail the email gate. When that happens, only the email version loops back for revision — the blog version proceeds to distribution. This parallel quality checking is what makes multi-format pipelines efficient at scale.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Scale</span>
   <h2 class="section-title">The Content Multiplication Engine</h2>
   <p class="section-text">When you combine content architecture (Lesson 2) with templates (Lesson 3) and multi-format output, you get exponential leverage. One core idea, structured as atoms, run through format-specific templates, produces a week's worth of content across all your channels. That's not a theory. That's a pipeline.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Measurement</span>
+  <h2 class="section-title">Tracking Cross-Format Performance</h2>
+  <p class="section-text">When one source produces five formats, you can finally answer: which format performs best for which type of content? Maybe your "how-to" content crushes on YouTube but underperforms as email. Maybe your contrarian takes dominate Twitter but fall flat on LinkedIn. This cross-format data is gold for optimizing your pipeline.</p>
+  <p class="section-text">Build a simple tracking table: Source piece | Format | Platform | Impressions | Engagement rate | Conversion rate. After a month of data, patterns emerge that tell you exactly where to invest production effort. Stop producing formats that consistently underperform. Double down on the combinations that win.</p>
 </div>
 
 <div class="lesson-section">

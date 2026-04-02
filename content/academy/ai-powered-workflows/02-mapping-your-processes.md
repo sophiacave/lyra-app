@@ -69,12 +69,69 @@ free: true
   <p class="section-text">The second trap: skipping the map entirely and jumping to tools. Tools change. Your understanding of your own processes is forever.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Decision Steps Aren't Always Human-Only</h2>
+  <p class="section-text">When you mark a step as "decision," don't automatically assume it requires a human. AI has fundamentally changed what counts as a decision step. Many decisions that felt like they needed human judgment are actually pattern-matching tasks that AI handles exceptionally well.</p>
+  <p class="section-text">Ask three questions about each decision step:</p>
+  <p class="section-text"><strong style="color: var(--blue);">1. Is there a pattern?</strong> If the decision follows a recognizable pattern — "emails about refunds go to billing, emails about bugs go to engineering" — AI can learn that pattern and apply it faster than you can.</p>
+  <p class="section-text"><strong style="color: var(--blue);">2. What's the cost of being wrong?</strong> If misclassifying one email means it takes an extra 10 minutes to reach the right person, that's low-stakes. AI can handle it. If approving the wrong expense report could cost $50,000, keep a human in the loop.</p>
+  <p class="section-text"><strong style="color: var(--blue);">3. Can it be verified after the fact?</strong> Some decisions can be made automatically and then reviewed in batches. The AI routes support tickets all day; a human reviews the routing decisions in a 15-minute daily audit. This gives you speed AND accuracy.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced Mapping</span>
+  <h2 class="section-title">Mapping Multi-Branch Processes</h2>
+  <p class="section-text">Real processes aren't always linear. Sometimes step 3 has two possible outcomes, and each leads to a different path. A customer inquiry might be a sales question (route to sales team) or a support issue (route to support queue). Your process map needs to capture these branches.</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--purple);">Process:</strong> Incoming customer inquiry</p>
+    <p><strong>Step 1:</strong> Receive inquiry (mechanical)</p>
+    <p><strong>Step 2:</strong> Classify as sales vs. support (decision — AI-automatable)</p>
+    <p><strong>Branch A — Sales:</strong> Check CRM for existing record → Enrich with company data → Route to sales rep with context</p>
+    <p><strong>Branch B — Support:</strong> Check for open tickets → Classify urgency → Route to support queue with priority</p>
+    <p><strong>Step 5 (both branches):</strong> Log interaction in CRM (mechanical)</p>
+    <p><strong style="color: var(--green);">Key insight:</strong> Branches often converge again at the end. Map both the divergence point and the convergence point.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Prioritization Matrix</span>
+  <h2 class="section-title">The Impact-Effort Grid</h2>
+  <p class="section-text">Once you've mapped several processes, you need to decide which to automate first. The scoring formula from earlier gives you raw numbers, but the impact-effort grid adds strategic thinking:</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">High Impact, Low Effort (DO FIRST):</strong> Processes with many mechanical steps, clear rules, and existing tool integrations. Example: email forwarding rules, data entry from forms, notification routing.</p>
+    <p><strong style="color: var(--blue);">High Impact, High Effort (PLAN CAREFULLY):</strong> Complex processes that save significant time but require custom integration work. Example: end-to-end client onboarding, multi-system report generation.</p>
+    <p><strong style="color: var(--orange);">Low Impact, Low Effort (QUICK WINS):</strong> Small automations that take minutes to build. Example: auto-labeling emails, calendar reminders, file organization scripts.</p>
+    <p><strong style="color: var(--red);">Low Impact, High Effort (SKIP):</strong> Processes that rarely run, involve too many edge cases, or would take longer to automate than they save. Know when to leave something manual.</p>
+  </div>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Now</h3>
   <p>Map one of your weekly processes using the Input-Action-Output framework.</p>
   <div class="prompt-box">
     <code>Pick a task you do every week. List every step from start to finish. For each step, write: [Input] → [Action] → [Output] and mark it as "mechanical" or "decision."</code>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tools</span>
+  <h2 class="section-title">Simple Tools for Process Mapping</h2>
+  <p class="section-text">You don't need expensive software to map processes. Start simple:</p>
+  <p class="section-text"><strong style="color: var(--green);">Pen and paper:</strong> Seriously. Sketch the flow with boxes and arrows. It's fast, it forces clarity, and it doesn't let you hide complexity behind fancy formatting. Most great workflows started as napkin sketches.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Markdown lists:</strong> Write each step as a numbered list item with its type (mechanical/decision) in brackets. Indent sub-steps. This format is easy to share, version-control with Git, and convert into actual workflow code later.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Flowchart tools:</strong> When your process has branches (if X then do Y, else do Z), visual flowcharts help. Free options: Excalidraw, draw.io, Mermaid (text-to-diagram). Use these when the linear list format breaks down.</p>
+  <p class="section-text">The tool matters less than the act of mapping. A rough map on a sticky note beats a perfect diagram that never gets made.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Time Tracking</span>
+  <h2 class="section-title">Measuring Before You Automate</h2>
+  <p class="section-text">Before automating a process, time it. Actually time it — with a stopwatch, not an estimate. People are notoriously bad at estimating how long tasks take. You think "oh, that report takes five minutes" but when you actually time it, it's 22 minutes including all the context-switching, tool-opening, and data-hunting.</p>
+  <p class="section-text">Time tracking gives you two essential things: an accurate ROI calculation for your automation investment, and a baseline to measure improvement against. After building the workflow, time the new process. The difference is your concrete, measurable win — not a guess, but proof.</p>
+  <p class="section-text">Track three runs of the manual process before automating. Average them. Write that number down. It's the "before" in your before-and-after story.</p>
 </div>
 
 <div class="lesson-section">

@@ -91,6 +91,65 @@ Make it specific to my operation. No generic advice."</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Implementation</span>
+  <h2 class="section-title">Your First Week With the Machine</h2>
+  <p class="section-text">Don't try to launch all seven stages at once. You'll get overwhelmed and abandon the system. Instead, follow this five-day implementation plan that builds one layer at a time, each day adding to the previous day's work.</p>
+  <p class="section-text"><strong>Day 1: Architecture.</strong> Define your 3-5 pillars and build a content matrix with topics and formats. Identify your first month of content gaps. This is your roadmap — everything else flows from it.</p>
+  <p class="section-text"><strong>Day 2: Templates.</strong> Build one generator template for your primary content format (blog post, newsletter, whatever you publish most). Test it five times with different topics. Refine until the output consistently meets your quality bar.</p>
+  <p class="section-text"><strong>Day 3: Quality.</strong> Build a quality review template based on the 15-point checklist from Lesson 5. Run yesterday's test outputs through it. Fix the template based on what the quality gate catches.</p>
+  <p class="section-text"><strong>Day 4: Multi-format.</strong> Build two transformation templates — take your primary format and produce two additional formats (e.g., blog → email teaser + LinkedIn post). Run one piece through the full chain: generate → quality check → transform.</p>
+  <p class="section-text"><strong>Day 5: Distribution.</strong> Set up your distribution calendar for the next two weeks. Stage the content you produced in days 2-4. Connect at least one automation (even if it's just scheduling social posts in Buffer). Publish your first pipeline-produced piece.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Complete Pipeline Configuration Document</h3>
+  <pre>
+YOUR CONTENT MACHINE — CONFIGURATION
+═══════════════════════════════════════════════
+
+ARCHITECTURE:
+  Pillars: [1. ___ | 2. ___ | 3. ___ | 4. ___ | 5. ___]
+  Primary format: ___
+  Secondary formats: ___, ___
+  Publishing cadence: ___ pieces/week
+
+TEMPLATES (file locations):
+  Generator:   /templates/generate-{{FORMAT}}.md
+  Transformer: /templates/transform-{{SOURCE}}-to-{{TARGET}}.md
+  Reviewer:    /templates/review-quality-gate.md
+  Voice doc:   /templates/voice-guide.md
+
+QUALITY GATES:
+  Technical threshold: ___/5
+  Brand threshold: ___/5
+  Strategic threshold: ___/5
+  Overall pass: ___/15
+
+DISTRIBUTION:
+  Channels: ___
+  Scheduling tool: ___
+  Automation tool: ___
+  Buffer size: ___ weeks
+
+ANALYTICS:
+  Dashboard location: ___
+  Review cadence: Monthly, day ___
+  Key metrics: ___, ___, ___
+  </pre>
+  <p>Fill this out before your first pipeline run. It's your machine's operating manual — the single document that anyone can read to understand and operate your entire content system.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Maintenance</span>
+  <h2 class="section-title">Keeping the Machine Running</h2>
+  <p class="section-text">A content machine requires maintenance, just like any system. Without regular upkeep, templates go stale, quality gates lose calibration, and the pipeline slowly degrades. Build these maintenance rituals into your calendar:</p>
+  <p class="section-text"><strong>Weekly (15 minutes):</strong> Review the last week's published content. Note any quality issues that slipped past gates. Quick-fix template tweaks for obvious problems.</p>
+  <p class="section-text"><strong>Monthly (1 hour):</strong> Run the full analytics review. Update templates based on performance data. Refresh segment profiles if audience feedback suggests shifts. Check your content matrix for imbalances.</p>
+  <p class="section-text"><strong>Quarterly (half day):</strong> Deep audit of the entire pipeline. Re-evaluate pillars based on three months of data. Version up your core templates with significant improvements. Retire templates that consistently underperform. Add new formats or channels if data supports expansion.</p>
+  <p class="section-text">The quarterly audit is where the machine makes its biggest leaps. You have enough data to see real patterns, enough experience with the templates to know what's working, and enough perspective to make strategic changes. Skip it and the machine stagnates. Do it and the machine evolves.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Finish Line Is a Starting Line</span>
   <h2 class="section-title">You Built the Machine. Now Run It.</h2>
   <p class="section-text">This course gave you every component of a professional content generation pipeline. The architecture. The templates. The quality systems. The distribution engine. The analytics feedback loop. But a machine that doesn't run is just an expensive diagram.</p>

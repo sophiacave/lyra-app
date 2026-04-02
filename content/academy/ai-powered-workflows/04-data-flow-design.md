@@ -61,12 +61,69 @@ free: false
   <p class="section-text">A good practice: name your data clearly at every stage. Not "field1" — "customer_email." Not "value" — "total_order_amount." Future you will be grateful.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced Pattern</span>
+  <h2 class="section-title">The Branching Data Flow</h2>
+  <p class="section-text">Not all data flows in a straight line. Sometimes the output of one step determines which path the data takes next. A customer's plan type might route their data through completely different enrichment steps — enterprise customers get a Clearbit lookup, while free-tier users skip straight to the welcome email.</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--purple);">Branching flow example:</strong></p>
+    <p>Step 1: Receive signup data → <code>{email, name, plan}</code></p>
+    <p>Step 2: Check plan type (branch point)</p>
+    <p><strong style="color: var(--blue);">Branch A (Enterprise):</strong> Clearbit enrichment → sales team assignment → personalized onboarding deck → white-glove welcome</p>
+    <p><strong style="color: var(--green);">Branch B (Free):</strong> Basic welcome email → self-serve tutorial link → add to product-led growth sequence</p>
+    <p>Step 5 (convergence): Both branches → log to analytics → update CRM</p>
+  </div>
+
+  <p class="section-text">The key design principle for branching flows: ensure every branch produces a compatible output format at the convergence point. If Branch A outputs <code>{customer_id, segment, onboarding_type}</code>, Branch B should output the same fields — even if some values are defaults.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Data Validation</span>
+  <h2 class="section-title">Validate Early, Validate Often</h2>
+  <p class="section-text">The single best practice that separates amateur workflows from production-grade ones: validate your data at every boundary. A boundary is any point where data enters your workflow from an external source — a webhook payload, an API response, a user form submission.</p>
+  <p class="section-text"><strong style="color: var(--green);">Required field checks:</strong> Before processing, verify every required field exists and isn't empty. A missing email address in step 1 shouldn't crash step 5 — it should be caught immediately.</p>
+  <p class="section-text"><strong style="color: var(--green);">Type validation:</strong> Is that "amount" field actually a number, or did someone submit the string "fifty dollars"? Check types before you calculate with them.</p>
+  <p class="section-text"><strong style="color: var(--green);">Range validation:</strong> A negative order quantity, a date from 1970, an email without an @ symbol — these are signs of bad data. Catch them at the door, not three steps later when they corrupt your database.</p>
+  <p class="section-text"><strong style="color: var(--green);">Sanitization:</strong> Strip leading/trailing whitespace, normalize case for categorical fields, and remove any unexpected characters. The difference between "BILLING" and " billing " and "Billing" shouldn't break your routing logic.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Schema Design</span>
+  <h2 class="section-title">Designing Your Workflow's Data Contract</h2>
+  <p class="section-text">A data contract defines exactly what data each step expects to receive and what it promises to produce. Think of it as a handshake between steps — "I'll give you these fields in these formats, and you'll give me back those fields in those formats."</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Step 1 (Receive Signup) contract:</strong></p>
+    <p>Input: Webhook payload (any format)</p>
+    <p>Output: <code>{email: string, name: string, plan: "free"|"pro"|"enterprise", signup_date: ISO-8601}</code></p>
+    <p><strong style="color: var(--green);">Step 2 (Enrich) contract:</strong></p>
+    <p>Input: <code>{email: string}</code> (minimum required)</p>
+    <p>Output: <code>{...input, company: string|null, industry: string|null, employee_count: number|null}</code></p>
+    <p><strong style="color: var(--orange);">Step 3 (Personalize) contract:</strong></p>
+    <p>Input: Full accumulated context</p>
+    <p>Output: <code>{...input, welcome_message: string, recommended_plan: string}</code></p>
+  </div>
+
+  <p class="section-text">When every step has a clear contract, debugging becomes straightforward. If step 3 fails, check whether step 2's output matches step 3's expected input. The contract tells you exactly where to look.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Now</h3>
   <p>Map the data flow for your workflow from the previous lessons.</p>
   <div class="prompt-box">
     <code>For each step in your workflow, write: INPUT DATA [list fields] → ACTION → OUTPUT DATA [list fields, including any new ones added]. Circle any field that needs format transformation.</code>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Pitfalls</span>
+  <h2 class="section-title">Five Data Flow Mistakes That Break Production Workflows</h2>
+  <p class="section-text"><strong style="color: var(--red);">1. Overwriting instead of accumulating.</strong> A step that replaces the context with its own output instead of merging into it. Suddenly the customer email from step 1 is gone because step 3 returned only its own fields. Always merge: <code>{...existing_context, ...new_data}</code>.</p>
+  <p class="section-text"><strong style="color: var(--red);">2. Trusting external data formats.</strong> An API returns dates as "MM/DD/YYYY" today and "YYYY-MM-DD" next week after an update. If you didn't validate and normalize at the boundary, your downstream steps break silently.</p>
+  <p class="section-text"><strong style="color: var(--red);">3. Ignoring null values.</strong> A field that's sometimes present and sometimes missing. Your code works when it's there and crashes when it's not. Always define defaults: <code>context.get("industry", "unknown")</code>.</p>
+  <p class="section-text"><strong style="color: var(--red);">4. Circular dependencies.</strong> Step A needs output from Step C, but Step C needs output from Step A. This is a design problem, not a code problem. Restructure so data flows in one direction.</p>
+  <p class="section-text"><strong style="color: var(--red);">5. Massive payloads.</strong> Accumulating every piece of data into one ever-growing context object until it's 50MB and your API calls start timing out. Only carry forward what downstream steps actually need.</p>
 </div>
 
 <div class="lesson-section">

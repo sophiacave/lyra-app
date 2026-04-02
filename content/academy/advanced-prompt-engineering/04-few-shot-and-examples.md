@@ -99,6 +99,82 @@ WHY: No personality, no specific details, reads like every other product page."<
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Advanced Technique</span>
+  <h2 class="section-title">Few-Shot for Classification Tasks</h2>
+  <p class="section-text">Few-shot prompting is devastatingly effective for classification — sorting items into categories. The examples teach the AI your exact criteria.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+      <h4 style="color: var(--blue);">Sentiment Classification</h4>
+      <code>"Classify customer feedback as POSITIVE, NEGATIVE, or MIXED. Here are examples:
+
+INPUT: 'Love the new dashboard, but the export feature is broken.'
+OUTPUT: MIXED (positive about UI, negative about functionality)
+
+INPUT: 'Best purchase I've made this year. Worth every penny.'
+OUTPUT: POSITIVE (strong endorsement, no negatives)
+
+INPUT: 'Cancelled my subscription. Support never responded to my tickets.'
+OUTPUT: NEGATIVE (action taken, service failure cited)
+
+INPUT: 'It's fine. Does what it says.'
+OUTPUT: MIXED (neutral-to-positive, no enthusiasm — lukewarm is mixed, not positive)
+
+NOW CLASSIFY:
+'The onboarding was confusing but once I got through it, the tool is incredible.'"</code>
+    </div>
+  </div>
+
+  <p class="section-text">Notice the fourth example: it teaches the AI that "fine" isn't positive — it's mixed. Without that edge case, the AI would likely classify lukewarm feedback as positive. One example changed the boundary.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Technique</span>
+  <h2 class="section-title">How Many Examples Do You Need?</h2>
+  <p class="section-text">There's no universal answer, but here's a practical framework based on task complexity.</p>
+  <p class="section-text"><strong style="color: var(--green);">1 example:</strong> Enough for simple format matching — "write in this style" or "follow this structure." The AI picks up formatting patterns from a single demonstration.</p>
+  <p class="section-text"><strong style="color: var(--green);">2-3 examples:</strong> The sweet spot for most tasks. Two examples establish a pattern; three confirm it. This covers standard classification, writing style, and data extraction.</p>
+  <p class="section-text"><strong style="color: var(--green);">4-5 examples:</strong> Use when your task has subtle edge cases or the boundary between categories is blurry. The extra examples disambiguate tricky scenarios.</p>
+  <p class="section-text"><strong style="color: var(--red);">6+ examples:</strong> Diminishing returns. If 5 examples aren't enough, the task may be too complex for few-shot prompting alone. Consider combining with explicit rules or chain-of-thought reasoning.</p>
+  <p class="section-text">A key insight: the diversity of your examples matters more than the quantity. Three examples that cover different scenarios beat ten examples that are all similar.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pro Tip</span>
+  <h2 class="section-title">Combining Few-Shot with Chain-of-Thought</h2>
+  <p class="section-text">You can supercharge few-shot prompting by including the reasoning in your examples — not just the input and output, but the thinking process.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+      <h4 style="color: var(--purple);">Few-Shot + CoT</h4>
+      <code>"Evaluate whether a startup idea is viable. Here's how I think through it:
+
+IDEA: 'AI-powered pet food delivery'
+REASONING: Market exists (pet food is $50B+). But AI adds no clear value over a standard subscription — this is a solution looking for a problem. Customer acquisition will be expensive against Chewy/Amazon. Low defensibility.
+VERDICT: WEAK — AI is a gimmick here, not a genuine advantage.
+
+IDEA: 'AI that reads medical imaging for rural clinics without radiologists'
+REASONING: Clear problem (radiologist shortage in rural areas). AI adds genuine value (faster reads, 24/7 availability). Regulatory hurdles are real but navigable. High defensibility once trained on specific imaging types.
+VERDICT: STRONG — solves a real gap with genuine AI advantage.
+
+NOW EVALUATE:
+IDEA: 'AI tutor for K-12 math'"</code>
+    </div>
+  </div>
+
+  <p class="section-text">By showing the reasoning alongside the examples, you teach the AI both your evaluation criteria AND your thinking process. The output quality jumps dramatically.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">Few-Shot Anti-Patterns</h2>
+  <p class="section-text"><strong style="color: var(--red);">All similar examples:</strong> If every example is a variation of the same scenario, the AI over-fits to that pattern and struggles with anything different. Vary your examples across categories, tones, or complexity levels.</p>
+  <p class="section-text"><strong style="color: var(--red);">Sloppy formatting in examples:</strong> The AI mimics everything — including inconsistencies. If your first example uses dashes and your second uses bullets, the AI might mix formats randomly. Be meticulous about consistency across your examples.</p>
+  <p class="section-text"><strong style="color: var(--red);">Too much explanation between examples:</strong> Keep the space between examples clean. Long paragraphs of instructions between examples break the pattern the AI is trying to learn. Put instructions before or after the example block, not inside it.</p>
+  <p class="section-text"><strong style="color: var(--red);">Using poor-quality examples:</strong> Your examples set the quality ceiling. If your examples are mediocre, the AI matches mediocre. Always use your best work as examples — the AI will match that quality level.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Build a Few-Shot Prompt</h2>
   <div class="try-it-box">

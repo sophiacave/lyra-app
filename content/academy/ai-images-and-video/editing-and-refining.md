@@ -92,8 +92,69 @@ existing landscape below, seamless blend at the edges</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Advanced Inpainting Techniques</span>
+  <h2 class="section-title">Master inpainting and you will never need to start over.</h2>
+  <p class="section-text">Beyond simple fixes, inpainting unlocks powerful creative possibilities:</p>
+  <p class="section-text"><strong>Object replacement:</strong> Select any object in your image and replace it with something entirely different. A vase of flowers can become a stack of books. A cat can become a dog. The surrounding scene stays perfectly intact because the AI only regenerates the selected area.</p>
+  <p class="section-text"><strong>Style blending:</strong> Generate an image in one style, then inpaint specific regions with different style descriptions. This creates unique hybrid aesthetics that would be extremely difficult to achieve with a single prompt.</p>
+  <p class="section-text"><strong>Face and expression correction:</strong> AI-generated faces sometimes have subtle issues — asymmetry, uncanny valley expressions, or slightly off proportions. Select the face region and describe the expression you want: "natural relaxed smile, warm eyes, symmetrical features." This is one of the most common professional uses of inpainting.</p>
+  <p class="section-text"><strong>Background swap:</strong> Keep a perfect foreground subject and completely change the background. You generated a great portrait but the background is generic? Inpaint the background with "a cozy bookshelf-lined study with warm lamp light" and the person stays exactly the same while the world behind them transforms.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Outpainting Deep Dive</span>
+  <h2 class="section-title">Extend any image in any direction with intention.</h2>
+  <p class="section-text">Outpainting is not just about making images bigger — it is about reimagining the canvas. Here are techniques that produce the best results:</p>
+  <p class="section-text"><strong>Directional extension:</strong> Think about what logically exists beyond each edge of your image. Extending a portrait upward might reveal a ceiling or sky. Extending left or right might show more of the environment. The AI uses visual context from the existing image to predict what should be there.</p>
+  <p class="section-text"><strong>Aspect ratio conversion:</strong> This is outpainting's most practical use. You have a square image but need a 16:9 landscape for a presentation? Outpaint the sides. Need a 9:16 vertical for Instagram Stories? Outpaint top and bottom. The style and content remain coherent with the original.</p>
+  <p class="section-text"><strong>Scene expansion for storytelling:</strong> Start with a tight close-up and progressively outpaint to reveal more of the scene. This technique is powerful for creating a sense of scale and discovery — like slowly zooming out to reveal a grand vista from a small starting detail.</p>
+  <p class="section-text"><strong>Guided outpainting:</strong> When outpainting, add a text description of what you want in the extended area. "Extend the left side to show a window with rain outside" gives the AI specific guidance rather than letting it guess. Tools with text-guided outpainting produce significantly better results than fully automatic extension.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Refinement Mindset</span>
+  <h2 class="section-title">Professional results come from professional refinement habits.</h2>
+  <p class="section-text">The difference between amateur and professional AI image work is almost entirely in the refinement stage. Here are the habits that separate good from great:</p>
+  <p class="section-text"><strong>The 90% rule:</strong> If an image is 90% perfect, do not regenerate — refine. Regenerating throws away the 90% you love. Inpainting fixes the 10% you don't. This mindset saves enormous time and produces better results.</p>
+  <p class="section-text"><strong>Multiple refinement passes:</strong> Professional creators often make 3-5 refinement passes on a single image. First pass fixes obvious issues. Second pass improves composition details. Third pass adjusts color and mood. Each pass brings the image closer to the vision.</p>
+  <p class="section-text"><strong>Reference comparison:</strong> Keep reference images handy — photos or artworks that capture the mood, lighting, or composition you want. Compare your AI output to these references and use the gap to guide your refinement. "The lighting in my image is flatter than my reference — let me inpaint the lighting to add more contrast."</p>
+  <p class="section-text"><strong>Know when to stop:</strong> There is a point of diminishing returns where further refinement does not meaningfully improve the image. Recognizing this point is itself a skill. If you have been editing the same image for more than 15 minutes, step back and evaluate whether it is "good enough" for its intended use.</p>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — inpainting to replace a background while keeping the subject</div>
+<pre style="margin:0;color:#e5e5e5"><code>Replace the selected background with a cozy library
+interior, warm wood bookshelves filled with leather-bound
+books, soft amber reading lamp light, slight bokeh in
+the background, matching the warm color temperature of
+the existing subject lighting, seamless natural blend</code></pre>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Editing Techniques</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tool-Specific Editing Features</span>
+  <h2 class="section-title">Each platform has unique editing strengths worth knowing.</h2>
+  <p class="section-text">Different tools offer different editing capabilities. Knowing which tool excels at what saves you time and produces better results:</p>
+  <p class="section-text"><strong>ChatGPT (DALL-E):</strong> Click any generated image and highlight the area you want to change. Describe the edit in natural language. This is the most intuitive inpainting interface — you literally have a conversation about what to fix. Best for quick edits and iterative refinement through dialogue.</p>
+  <p class="section-text"><strong>Adobe Photoshop (Generative Fill):</strong> Select any area with Photoshop's precision tools (lasso, magic wand, pen tool) and use Generative Fill to replace it. This gives you pixel-perfect selection control combined with AI generation. Best for professional work where precision matters.</p>
+  <p class="section-text"><strong>Stable Diffusion (inpainting mode):</strong> Paint a mask over the area to change, set the denoising strength (how much to change), and generate. Lower denoising strength preserves more of the original. Higher strength allows more radical changes. Best for users who want fine control over the generation parameters.</p>
+  <p class="section-text"><strong>Midjourney (vary region):</strong> Use the vary region feature to select and regenerate portions of an image while maintaining Midjourney's signature aesthetic quality. Best for maintaining that distinctive Midjourney look in edited images.</p>
+  <p class="section-text"><strong>Canva (Magic Edit):</strong> Brush over an area and describe what you want. Simple and accessible. Best for non-technical users who want quick edits integrated into their design workflow.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Building an Editing Checklist</span>
+  <h2 class="section-title">A systematic checklist catches issues before you publish.</h2>
+  <p class="section-text">Before declaring any AI image "finished," run through this quality checklist:</p>
+  <p class="section-text"><strong>Anatomy check:</strong> Count fingers on all visible hands. Check that faces are symmetrical and natural. Look at eyes — are they aligned and focused correctly? These are the most common AI generation artifacts.</p>
+  <p class="section-text"><strong>Text check:</strong> Is there any unintended text or writing in the image? AI sometimes generates gibberish text on signs, books, or clothing. If you see it, inpaint it out or regenerate that area.</p>
+  <p class="section-text"><strong>Edge check:</strong> Look at the edges of objects and subjects. Are there any strange blending artifacts where two elements meet? Zoom in on boundaries between foreground and background.</p>
+  <p class="section-text"><strong>Consistency check:</strong> Does the lighting direction make sense across the whole image? Are shadows falling in the same direction? Is the color temperature consistent? These subtle issues are what make images feel "off" even when you cannot immediately say why.</p>
+  <p class="section-text"><strong>Resolution check:</strong> Is the image large enough for its intended use? Social media may be fine at standard resolution, but print needs upscaling. Check before you deliver.</p>
 </div>
 
 <div class="lesson-section">

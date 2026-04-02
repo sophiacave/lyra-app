@@ -69,6 +69,68 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <h2 class="section-title">Risk Assessment Templates for Every Phase</h2>
+  <p class="section-text">Different project phases need different risk lenses. Here are three templates for the most critical moments:</p>
+  <p class="section-text"><strong>Project Kickoff Risk Assessment:</strong></p>
+  <div class="prompt-box"><code>I am kicking off a new project. Help me build a comprehensive risk register.
+
+Project: [describe project, goals, timeline]
+Team: [size, experience level, any known constraints]
+Dependencies: [external vendors, other teams, systems]
+Budget: [approximate budget and flexibility]
+
+Generate a risk register with 15-20 risks across these categories:
+- Technical risks (architecture, integration, performance)
+- Resource risks (skills gaps, availability, turnover)
+- Schedule risks (dependencies, holidays, parallel work)
+- Scope risks (unclear requirements, stakeholder changes)
+- External risks (vendors, market, regulatory)
+
+For each risk: Description | Category | Probability (Low/Med/High + %) | Impact (Low/Med/High + consequence) | Mitigation strategy | Trigger indicator | Suggested owner role
+
+Rank by combined probability-impact score, highest first.</code></div>
+  <p class="section-text"><strong>Mid-Project Risk Review:</strong></p>
+  <div class="prompt-box"><code>Here is my current risk register and this week's project status update. Please:
+1. Review each existing risk — has the probability or impact changed based on current status?
+2. Identify 3-5 new risks that have emerged from this week's developments
+3. Recommend which risks can be retired (probability has dropped to negligible)
+4. Flag any risks that have become issues (they are no longer risks — they are happening)
+5. Update the overall risk profile: is the project's risk exposure increasing, stable, or decreasing?
+
+Risk register: [paste current register]
+Status update: [paste this week's status]</code></div>
+  <p class="section-text"><strong>Pre-Launch Risk Checklist:</strong></p>
+  <div class="prompt-box"><code>We are [X days] from launch. Generate a pre-launch risk checklist that covers:
+- Technical readiness (testing, performance, security, rollback plan)
+- Operational readiness (support team trained, runbooks written, monitoring in place)
+- Communication readiness (stakeholders informed, users notified, marketing aligned)
+- Contingency plans (what if launch fails, what if load exceeds expectations, what if a critical bug is found day 1)
+
+For each item, mark as: Ready / Needs attention / Not started
+Flag any showstoppers that should delay the launch.
+
+Project details: [describe what is launching and when]</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The Probability-Impact Matrix</h2>
+  <p class="section-text">Every risk has two dimensions: how likely it is to happen (probability) and how bad it would be if it did (impact). The combination determines your response strategy:</p>
+  <p class="section-text"><strong>High Probability + High Impact = Mitigate aggressively.</strong> This is your top priority. Build contingency plans, assign dedicated owners, and check weekly. Example: "Key developer might leave during the project" when you know they are interviewing elsewhere.</p>
+  <p class="section-text"><strong>High Probability + Low Impact = Accept and monitor.</strong> It will probably happen, but it will not derail the project. Build a small buffer. Example: "Minor UI bugs in the first release" — they will happen, budget time for a quick patch.</p>
+  <p class="section-text"><strong>Low Probability + High Impact = Have a contingency plan.</strong> Unlikely but devastating if it happens. You do not mitigate daily, but you have a plan ready. Example: "Cloud provider has a major outage on launch day" — keep a rollback plan and a communication template ready.</p>
+  <p class="section-text"><strong>Low Probability + Low Impact = Document and ignore.</strong> Not worth your active attention. Log it in the register so it is tracked, then move on. Example: "Office internet goes down for a day" — annoying but not project-threatening.</p>
+  <p class="section-text">Ask AI to categorize each risk in your register into one of these four quadrants. It forces disciplined prioritization — you focus your limited mitigation energy where it matters most.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">The Risk Nobody Saw Coming</h2>
+  <p class="section-text">A project team was building a healthcare scheduling system. Traditional risk assessment focused on the obvious — HIPAA compliance, integration complexity, training requirements. The PM ran a pre-mortem with AI: "Imagine this project failed spectacularly six months after launch. What happened?"</p>
+  <p class="section-text">AI generated twelve failure scenarios. Most were expected. But one stood out: "The system worked perfectly, but clinicians refused to use it because the appointment slots were in 15-minute blocks and their existing workflow used 20-minute blocks. The mismatch created constant friction, workarounds proliferated, and within three months staff reverted to the old system."</p>
+  <p class="section-text">That was not a technical risk. It was not in any requirements document. But it was real — and the team had not considered it. They immediately added a discovery task to observe actual clinic workflows before finalizing the scheduling logic. That one insight, surfaced by AI in a 30-second prompt, saved the entire project from a silent, slow-motion failure.</p>
+  <p class="section-text">This is the power of AI risk assessment: it does not just check boxes on a standard risk checklist. It generates scenarios from patterns across thousands of projects, including failure modes you would never think to look for.</p>
 </div>
 
 <div class="lesson-section">

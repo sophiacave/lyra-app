@@ -80,6 +80,51 @@ free: true
   <div class="prompt-box"><code>Create a 5-touch outreach sequence for [PROSPECT TYPE] selling [YOUR PRODUCT]. Include: 2 emails, 1 LinkedIn message, 1 LinkedIn comment idea, and 1 breakup email. Each touch should add new value — never just "checking in." Keep each under 100 words.</code></div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Templates</span>
+  <h2 class="section-title">Outreach Templates for Common Scenarios</h2>
+  <p class="section-text">While every outreach should be personalized, having templates for common scenarios saves time. AI can customize these templates in seconds for any specific prospect:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">The Trigger Event Email:</strong> A prospect just raised funding, hired a key role, or launched a product. Reference the specific event and connect it to a relevant challenge your product solves. Trigger events create natural openings that feel timely, not salesy.</p>
+    <p><strong style="color: var(--blue);">The Mutual Connection Email:</strong> A shared connection, alumni network, or industry group gives you a warm angle. Lead with the connection, then transition to value. People respond to familiar names and shared affiliations.</p>
+    <p><strong style="color: var(--purple);">The Insight Email:</strong> Share a genuine insight about their industry that they might not have considered. No pitch — just value. End with "Thought this might be relevant to what you are building at [COMPANY]." The pitch comes in the follow-up, after they reply.</p>
+    <p><strong style="color: var(--orange);">The Case Study Email:</strong> Lead with results from a similar company. "We helped [SIMILAR COMPANY] achieve [SPECIFIC RESULT] in [TIMEFRAME]." Social proof from a peer company is the strongest opener for risk-averse buyers.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Trigger Event Outreach</h3>
+  <div class="prompt-box"><code>Write a cold email based on this trigger event: [DESCRIBE THE EVENT — e.g., "Company X just announced Series B funding of $25M"]. My product: [WHAT YOU SELL]. Target contact: [NAME, TITLE]. Connect the trigger event to a challenge they will likely face as a result, and position my product as relevant. Under 100 words. PRISM framework. No buzzwords.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Personalization</span>
+  <h2 class="section-title">Deep Personalization Techniques</h2>
+  <p class="section-text">Surface-level personalization — using someone's name and company — is table stakes. Deep personalization is what separates replies from deletes. Here are the levels:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Level 0 — No Personalization:</strong> "Hi, I'd love to show you how our platform can help your team." This gets deleted. Every time.</p>
+    <p><strong style="color: var(--orange);">Level 1 — Name and Company:</strong> "Hi Sarah, I noticed CompanyX is growing fast." Slightly better, but buyers know this is a mail merge. Still gets deleted.</p>
+    <p><strong style="color: var(--blue);">Level 2 — Role-Specific:</strong> "As VP of Sales at a Series B SaaS company, you are probably dealing with scaling your outbound team while keeping quality high." Now you are showing you understand their world.</p>
+    <p><strong style="color: var(--green);">Level 3 — Individual-Specific:</strong> "Your LinkedIn post about the challenges of hiring SDRs in a remote-first culture resonated — especially the point about onboarding being the real bottleneck." Now you are showing you know them, not just their title.</p>
+    <p><strong style="color: var(--purple);">Level 4 — Insight-Specific:</strong> "Based on your team's growth from 5 to 20 reps this year and the 3 SDR roles you currently have open, I suspect pipeline generation is outpacing your ability to qualify leads consistently." You are telling them something about their own business they might not have articulated. This is where AI research shines.</p>
+  </div>
+  <p class="section-text">AI makes Level 3 and Level 4 personalization possible at scale. Feed it LinkedIn profiles, company news, job postings, and recent content — and it generates outreach that feels individually crafted because it is.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Sequence Design</span>
+  <h2 class="section-title">Designing Sequences That Build Momentum</h2>
+  <p class="section-text">A great outreach sequence is not five separate messages. It is one story told across five touchpoints. Each touch should build on the last, add new value, and create a reason to respond that did not exist in the previous message.</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Touch 1 — The Hook:</strong> Personalized email using PRISM. Introduces a relevant problem and hints at your perspective. Goal: get them curious enough to open touch 2.</p>
+    <p><strong style="color: var(--green);">Touch 2 — The Connection:</strong> LinkedIn connection request with a note referencing your email. Multi-channel signals persistence and professionalism. Goal: get on their radar across platforms.</p>
+    <p><strong style="color: var(--purple);">Touch 3 — The Value Add:</strong> Share something useful — an article, a data point, a case study. No pitch. Just proof you have relevant expertise. Goal: earn credibility.</p>
+    <p><strong style="color: var(--orange);">Touch 4 — The Follow-Up:</strong> Email referencing something new — a recent company announcement, a mutual connection, or a new angle on the original problem. Goal: create urgency or a new entry point.</p>
+    <p><strong style="color: var(--red);">Touch 5 — The Breakup:</strong> Short, honest, and respectful. "I do not want to clutter your inbox. If the timing is not right, no hard feelings. But if [PROBLEM] becomes a priority, I am here." Goal: leave the door open while showing respect for their time.</p>
+  </div>
+  <p class="section-text">AI can generate an entire five-touch sequence from a single research brief. Draft all five touches at once, review them as a story arc, then schedule them. What used to take an afternoon now takes 15 minutes.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Terms</span>

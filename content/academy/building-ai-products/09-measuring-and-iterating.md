@@ -71,6 +71,47 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The AI Product Iteration Cycle</h2>
+  <p class="section-text">Traditional product iteration follows a build-measure-learn loop. AI products need a more specific cycle that accounts for the unique ways AI output quality affects everything.</p>
+  <p class="section-text"><strong>Week 1 — Observe:</strong> Don't change anything. Just watch. Read every piece of user feedback. Review the outputs users rejected. Track the queries that produced the worst results. Build a "worst outputs" list — this is your improvement roadmap.</p>
+  <p class="section-text"><strong>Week 2 — Hypothesize:</strong> For each category of bad output, form a hypothesis. "Users rejecting summaries because they're too long" → "If I constrain output to 150 words, acceptance rate will increase." Be specific. Vague hypotheses ("make it better") lead to vague improvements.</p>
+  <p class="section-text"><strong>Week 3 — Test:</strong> Change one thing at a time. If you change the prompt, the model, and the temperature simultaneously, you won't know which change helped (or hurt). Run the new version on your test suite first. Then A/B test with 10% of live traffic.</p>
+  <p class="section-text"><strong>Week 4 — Measure and decide:</strong> Did acceptance rate go up? Did edit depth go down? Did retention improve? If yes, roll out to 100%. If no, revert and try a different hypothesis. If the data is ambiguous, extend the test for another week.</p>
+  <p class="section-text">This four-week cycle should run continuously. At any given time, you should have one experiment in observation, one in hypothesis, one in testing, and one in measurement. Parallel cycles accelerate learning without introducing chaos.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tactic</span>
+  <h2 class="section-title">Building an Evaluation Pipeline</h2>
+  <p class="section-text">You need an automated way to evaluate AI output quality. Manual review doesn't scale past 50 queries/day. An evaluation pipeline runs automatically and flags problems before users encounter them.</p>
+  <p class="section-text"><strong>Automated test suites:</strong> Maintain 50-100 input-output pairs that represent your product's expected behavior. Run every prompt change against this suite before deploying. If more than 5% of outputs degrade, block the deployment.</p>
+  <p class="section-text"><strong>LLM-as-judge:</strong> Use a second AI model to evaluate the output of your primary model. "Rate this summary on a scale of 1-5 for accuracy, completeness, and readability." This sounds circular but works surprisingly well — studies show LLM judges correlate strongly with human evaluators at a fraction of the cost.</p>
+  <p class="section-text"><strong>Regression detection:</strong> Track output quality metrics over time. If acceptance rate drops 5% week over week, something changed — a prompt edit, a model version update, a change in user behavior. Automatic alerts let you catch and fix regressions before they compound.</p>
+  <p class="section-text"><strong>User feedback integration:</strong> Every thumbs-down, every rejection, every "try again" click should feed into a database alongside the prompt, context, and output that generated it. Review this database weekly. Patterns in negative feedback reveal systematic issues that individual reports miss.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Analytics</span>
+  <h2 class="section-title">Cohort Analysis for AI Products</h2>
+  <p class="section-text">Aggregate metrics hide the truth. Your overall retention might be 60%, but if January's cohort retains at 80% and March's retains at 30%, you have a regression problem, not a stable product. Cohort analysis reveals the trajectory.</p>
+  <p class="section-text"><strong>Signup cohorts:</strong> Group users by the week they signed up. Track each cohort's retention, usage, and spending separately. This reveals whether product changes are improving the experience for new users or just coasting on early adopters' loyalty.</p>
+  <p class="section-text"><strong>Feature cohorts:</strong> Group users by which features they use. "Users who use the template library retain 3x better than users who start from scratch." This tells you where to invest product development time and what to push during onboarding.</p>
+  <p class="section-text"><strong>Quality cohorts:</strong> Group by output quality received. "Users whose first 3 outputs scored above 4/5 in quality retain 5x better than users who got mediocre first outputs." This reveals the quality threshold your AI must exceed for a given user to convert from trial to loyal.</p>
+  <p class="section-text"><strong>Revenue cohorts:</strong> Track not just retention but spending per cohort. A cohort that retains at 50% but upgrades to premium at high rates might be more valuable than one that retains at 70% on the free plan. Revenue cohorts inform pricing decisions and feature prioritization.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">When to Rebuild vs. Optimize</h2>
+  <p class="section-text">At some point, prompt optimization hits diminishing returns. You've squeezed every drop of quality from your system prompt and the output still isn't good enough. This is the decision point: iterate or rebuild.</p>
+  <p class="section-text"><strong>Signs you need to optimize (not rebuild):</strong> Acceptance rate is 60-80% and trending up slowly. Users edit lightly. The output structure is right but content needs refinement. You have clear, actionable hypotheses for improvement.</p>
+  <p class="section-text"><strong>Signs you need to rebuild:</strong> Acceptance rate is below 50% and flat or declining. Users rewrite most of the output. Your core assumptions about the workflow were wrong — users need a different output format, a different interaction model, or a different scope entirely.</p>
+  <p class="section-text"><strong>Signs you need to pivot:</strong> Users love the technology but use it for something you didn't intend. Your document summarizer is being used as a contract analyzer. Your email drafter is being used as a customer support tool. Follow the users — they're showing you the real product.</p>
+  <p class="section-text">The hardest decision in AI product development is admitting that optimization won't fix a structural problem. If the foundation is wrong, iterating on the details wastes months. Recognize the signals early and act decisively.</p>
+</div>
+
+<div class="lesson-section">
 </div>
 
 <div class="try-it-box">

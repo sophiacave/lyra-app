@@ -63,6 +63,88 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Deep Dive</span>
+  <h2 class="section-title">The Critical Path Method with AI</h2>
+  <p class="section-text">The critical path is the longest sequence of dependent tasks in your project. If any task on that path slips, the entire project slips. Identifying it manually requires mapping every dependency and calculating durations — tedious work that AI handles effortlessly.</p>
+  <p class="section-text">Here is a prompt specifically for critical path analysis:</p>
+  <div class="prompt-box"><code>Here is my project task list with dependencies and estimated durations:
+
+[Paste your WBS with task names, durations, and dependencies]
+
+Please:
+1. Identify the critical path — the longest sequence of dependent tasks
+2. Calculate the minimum project duration based on this path
+3. Identify which tasks have float (slack time) and how much
+4. Highlight which tasks, if delayed by even one day, would delay the entire project
+5. Suggest where I could add parallel work to shorten the overall timeline</code></div>
+  <p class="section-text">Understanding your critical path changes how you allocate attention. Tasks with float can slip a bit without consequence. Tasks on the critical path need your daily focus. AI makes this distinction visible immediately instead of buried in a Gantt chart nobody reads.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Framework</span>
+  <h2 class="section-title">The Planning Hierarchy: Vision to Tasks</h2>
+  <p class="section-text">Effective AI-assisted planning follows a top-down hierarchy. Each level feeds the next, and AI helps you decompose at every stage:</p>
+  <p class="section-text"><strong>Level 1 — Project Vision.</strong> One sentence. "Launch a customer feedback portal that increases NPS response rates by 40%." This gives AI the success criteria to plan against.</p>
+  <p class="section-text"><strong>Level 2 — Phases.</strong> The major chunks of work. Discovery, Design, Build, Test, Launch. AI generates these from your vision statement and adds phases you might forget — like Data Migration or Training.</p>
+  <p class="section-text"><strong>Level 3 — Deliverables.</strong> What each phase produces. "Design phase delivers: wireframes, visual mockups, design system components, and a clickable prototype." AI ensures nothing falls through the cracks between phases.</p>
+  <p class="section-text"><strong>Level 4 — Tasks.</strong> The actual work items your team picks up. "Create wireframes for the dashboard view — 3 days — assigned to Designer." AI generates these with duration estimates and skill requirements.</p>
+  <p class="section-text"><strong>Level 5 — Subtasks.</strong> For complex tasks, AI breaks them further. "Create wireframes" becomes: review existing analytics layout, sketch three layout options, get team feedback, refine selected option, export to Figma.</p>
+  <p class="section-text">When you give AI the vision and constraints, it can generate all five levels in a single conversation. You spend your time validating and adjusting, not building from blank.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Real-World Example</span>
+  <h2 class="section-title">Planning a Product Launch in 30 Minutes</h2>
+  <p class="section-text">Here is how a real PM used AI to plan a product launch that would normally take a full day of planning sessions:</p>
+  <p class="section-text"><strong>Step 1 (5 min):</strong> Fed AI the product brief — a two-paragraph description of the feature, the target audience, and the launch date. Asked for a complete WBS with phases, tasks, dependencies, and duration estimates.</p>
+  <p class="section-text"><strong>Step 2 (5 min):</strong> Reviewed the WBS. Added two tasks AI missed (legal review, accessibility audit). Removed three that did not apply (the project had no hardware component). Adjusted two duration estimates based on team experience.</p>
+  <p class="section-text"><strong>Step 3 (5 min):</strong> Asked AI: "What are the top 10 risks to this plan? What usually goes wrong with product launches of this type?" Got a risk list that included three risks the PM had not considered — API rate limiting, timezone-related launch timing, and support team training gaps.</p>
+  <p class="section-text"><strong>Step 4 (5 min):</strong> Asked AI to identify the critical path and suggest a resource allocation plan for a team of six with specific skills listed.</p>
+  <p class="section-text"><strong>Step 5 (10 min):</strong> Refined the plan with two rounds of follow-up questions: "What if the design phase takes a week longer?" and "Can we parallelize the backend and frontend development?"</p>
+  <p class="section-text">Total time: 30 minutes. The PM walked into the kickoff meeting with a complete plan, a risk register, and a resource allocation — all ready for team input and refinement.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">Assumption Mapping</h2>
+  <p class="section-text">Every project plan is built on assumptions — and unexamined assumptions are where plans collapse. AI is remarkably good at surfacing the assumptions buried in your planning.</p>
+  <div class="prompt-box"><code>Review this project plan and list every assumption it relies on. For each assumption, rate how confident we should be (high/medium/low) and suggest how to validate it before it becomes a problem.
+
+[Paste your project plan]</code></div>
+  <p class="section-text">AI might surface assumptions like: "This plan assumes the API vendor will deliver on time (medium confidence — validate by requesting their development timeline)." Or: "This plan assumes the team can maintain current velocity during the holiday season (low confidence — check historical December velocity)."</p>
+  <p class="section-text">Mapping assumptions upfront turns invisible risks into visible, testable hypotheses. It is one of the highest-value uses of AI in project planning.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Prompt Template</span>
+  <h2 class="section-title">The Dependency Mapping Prompt</h2>
+  <p class="section-text">Dependencies are where project plans silently fail. Two tasks that seem independent turn out to share a resource, a system, or a decision. AI is excellent at identifying hidden dependencies:</p>
+  <div class="prompt-box"><code>Here is my project task list:
+
+[Paste task list with descriptions]
+
+For each task, identify:
+1. Hard dependencies — tasks that MUST complete before this one can start
+2. Soft dependencies — tasks that SHOULD ideally complete first but can overlap
+3. Resource dependencies — tasks that need the same person, tool, or system
+4. External dependencies — tasks waiting on people or systems outside our team
+5. Hidden dependencies — connections between tasks that are not obvious from their descriptions
+
+Then draw the dependency chain and identify: which tasks can run in parallel? Where are the bottlenecks? What is the longest sequential chain (critical path)?</code></div>
+  <p class="section-text">Running this prompt early in planning prevents the mid-project discovery that two parallel workstreams actually needed the same database migration to finish first. Catching dependencies during planning costs minutes. Catching them during execution costs days or weeks.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Checklist</span>
+  <h2 class="section-title">The AI Planning Completeness Checklist</h2>
+  <p class="section-text">Before you finalize any AI-assisted project plan, run through this checklist to ensure nothing critical is missing:</p>
+  <p class="section-text"><strong>Scope:</strong> Is the scope clearly defined? Are exclusions explicitly listed? Does the team agree on what "done" looks like?</p>
+  <p class="section-text"><strong>Timeline:</strong> Does every task have a duration estimate? Are there buffers for uncertainty? Have holidays and team vacations been accounted for?</p>
+  <p class="section-text"><strong>Resources:</strong> Is every task assigned to a role or person? Are there any tasks where nobody on the team has the required skill? Is anyone overallocated?</p>
+  <p class="section-text"><strong>Dependencies:</strong> Are all task dependencies mapped? Are external dependencies identified with owners? Is the critical path clearly marked?</p>
+  <p class="section-text"><strong>Risks:</strong> Have at least 10 risks been identified? Does each risk have a mitigation plan? Are there trigger indicators for the top five risks?</p>
+  <p class="section-text"><strong>Communication:</strong> Is there a stakeholder communication plan? Are reporting cadences defined? Does everyone know who gets what information and when?</p>
+  <p class="section-text">Ask AI to evaluate your plan against this checklist. It will flag gaps you overlooked — and filling those gaps during planning is dramatically cheaper than discovering them during execution.</p>
 </div>
 
 <div class="lesson-section">
