@@ -4,7 +4,6 @@ course: "claude-for-beginners"
 order: 4
 type: "lesson"
 free: false
-css: "claude-beginners.css"
 ---<div class="wrap">
 
 <nav class="local-nav">
@@ -91,10 +90,7 @@ Give me:
   <span class="section-label">Level Up</span>
   <h2 class="section-title">Calendar & meeting prep, handled.</h2>
   <p class="section-text">Meetings don't have to be chaos. Match each scenario to the right Claude approach:</p>
-
-<div data-learn="MatchConnect" data-props='{"title":"Meeting Prep Scenarios","instruction":"Match each meeting situation to the best Claude approach","pairs":[{"left":"You have 5 minutes before a meeting with a new client","right":"Paste the agenda and ask Claude for 3 smart questions to ask"},{"left":"Your team meeting just ended with 20 action items","right":"Paste notes and ask Claude to create a checklist with owners and deadlines"},{"left":"You are presenting quarterly results to executives","right":"Give Claude your data and ask for 5 slide titles with 3 bullets each"},{"left":"Back-to-back meetings all day, no prep time","right":"Paste your calendar and ask Claude to prioritize which meetings need prep"},{"left":"A difficult conversation with a direct report","right":"Describe the situation and ask Claude for talking points and potential responses"},{"left":"Weekly standup needs an agenda","right":"List your team updates and ask Claude to format as a 15-minute standup agenda"}]}'></div>
-
-  <div class="tip-box">
+<div class="tip-box">
     <div class="tip-label">Pro Tip</div>
     <p><strong>Paste your actual calendar.</strong> Copy your week from Google Calendar, paste into Claude, and say "Help me find 2 hours for deep work and identify back-to-back meetings I should reschedule." Instant scheduling assistant.</p>
   </div>
@@ -105,10 +101,7 @@ Give me:
   <span class="section-label">The System</span>
   <h2 class="section-title">The copy-paste workflow that saves hours.</h2>
   <p class="section-text">No magic integration needed. Just a <strong>simple, repeatable system</strong> that becomes muscle memory within a week. Put these steps in the right order:</p>
-
-<div data-learn="SortStack" data-props='{"title":"The 60-Second Email Workflow","instruction":"Drag these steps into the correct order","items":["Copy the email (or thread) from your inbox","Paste into Claude + add one sentence of context and tone","Read Claude response (10 seconds) — tweak if needed","Paste into email client and hit send"]}'></div>
-
-  <div class="tip-box">
+<div class="tip-box">
     <div class="tip-label">Power Move: Claude Projects</div>
     <p><strong>For people you email regularly</strong> (your manager, key clients, close collaborators), create a Claude Project. Add context about the relationship, their communication style, past interactions. Now every email Claude drafts for that person is <em>perfectly tailored</em>.</p>
   </div>

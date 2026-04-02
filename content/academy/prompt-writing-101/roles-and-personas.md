@@ -40,10 +40,7 @@ free: true
   <span class="section-label">The Structure</span>
   <h2 class="section-title">The 3 elements of an effective role.</h2>
   <p class="section-text">A great role assignment has three parts:</p>
-
-<div data-learn="SortStack" data-props='{"title":"Build a Role — In Order","instruction":"Arrange the three elements in the correct order for writing an effective role","items":["Title — The job title or expertise area","Experience — Level of seniority or years","Specialization — The niche or domain focus"]}'></div>
-
-  <div class="demo-container" style="padding:1.5rem;margin-top:1rem">
+<div class="demo-container" style="padding:1.5rem;margin-top:1rem">
     <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Formula</div>
     <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.9rem;color:var(--text);line-height:1.6;font-weight:600">"You are a <span style="color:var(--orange)">[senior/expert]</span> <span style="color:var(--purple)">[title]</span> who specializes in <span style="color:var(--green)">[niche]</span>."</div>
   </div>
@@ -87,9 +84,6 @@ and one real-world app that does this well.</span></code></pre>
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the task to the best role.</h2>
   <p class="section-text">Different tasks need different experts. Match each task to the role that would produce the best output.</p>
-
-<div data-learn="MatchConnect" data-props='{"title":"Task → Best Role","instruction":"Match each task to the role that would produce the best output","pairs":[{"left":"Review a vendor contract for hidden risks","right":"Contracts attorney specializing in SaaS agreements"},{"left":"Write a compelling product launch email","right":"Growth marketer who has scaled startups past $10M ARR"},{"left":"Explain blockchain to your non-technical CEO","right":"Patient teacher who uses everyday analogies"},{"left":"Find patterns in quarterly sales data","right":"Data analyst who presents to non-technical executives"},{"left":"Write clean, well-documented Python code","right":"Senior software engineer with clean code focus"},{"left":"Challenge holes in your business plan","right":"Skeptical investigative journalist"},{"left":"Create a viral social media campaign concept","right":"Creative director at a top advertising agency"},{"left":"Prepare talking points for a salary negotiation","right":"Career coach who has helped 500+ professionals"}]}'></div>
-
 </div>
 
 <!-- SECTION 4: 10 POWER ROLES -->

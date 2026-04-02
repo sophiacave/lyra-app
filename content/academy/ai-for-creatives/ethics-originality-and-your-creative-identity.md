@@ -174,7 +174,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Ethics Concept","instruction":"Match each creative AI ethics concept to its meaning.","pairs":[{"left":"AI Copyright (US)","right":"Purely AI-generated work is not copyrightable; substantial human editing strengthens claims"},{"left":"Homogenization","right":"When AI default patterns overwrite your distinctive voice and style"},{"left":"The 80/20 Rule","right":"Let AI handle mechanical work but always do the final creative 20% yourself"},{"left":"Unplugged Sessions","right":"Creating without AI at least weekly to keep creative muscles strong"},{"left":"Voice Audit","right":"Monthly review of recent work to check if AI-assisted pieces still sound like you"},{"left":"Disclosure Framework","right":"Be upfront about AI use for drafting and research while emphasizing human oversight"}]}'></div>
 </div>
 
 <div class="lesson-section">

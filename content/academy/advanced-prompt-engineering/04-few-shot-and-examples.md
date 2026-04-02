@@ -116,7 +116,6 @@ Match the tone, length, and structure exactly.</code>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Prompting Style","instruction":"Match each few-shot concept to its definition.","pairs":[{"left":"Zero-Shot","right":"No examples — just instructions for simple tasks"},{"left":"One-Shot","right":"A single example to set the pattern and style"},{"left":"Few-Shot","right":"2-5 examples establishing a strong output pattern"},{"left":"Negative Example","right":"Showing what NOT to do with an explanation of why"},{"left":"Edge Case Example","right":"A tricky input that teaches the AI your judgment calls"},{"left":"Pattern Matching","right":"How the AI replicates tone, structure, and detail from examples"}]}'></div>
 </div>
 
 <div class="lesson-section">

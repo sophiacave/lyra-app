@@ -47,8 +47,6 @@ free: false
   <span class="section-label">Day-by-Day Order</span>
   <h2 class="section-title">The sequence is the strategy.</h2>
   <p class="section-text">It is tempting to start with the thing that excites you most — usually content or a fancy tool. The problem is that if you skip setup and automation, you never build the foundation that makes everything else sustainable. Each day below is ordered because of what the previous day enables. See if you can reconstruct the logic before sorting.</p>
-
-  <div data-learn="SortStack" data-props='{"title":"Why This Order?","instruction":"Drag these into the correct order — the sequence that builds each day on the last","items":["Get Set Up — no tool, no workflow, no results","Automate One Workflow — feel ROI before building habits","Create Content — use the writing habit now that setup is done","Analyze Data — deeper work once the basics are running","Measure Results — only meaningful after 4 days of real use"]}'></div>
 </div>
 
 <div class="lesson-section">

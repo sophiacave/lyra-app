@@ -98,8 +98,6 @@ Rank them from highest to lowest. For the top 3, recommend a specific AI tool ca
   <span class="section-label">Section 5</span>
   <h2 class="section-title">Implementation order.</h2>
   <p class="section-text">You know where to start. Now put the steps in the right order. Getting the sequence wrong is the most common implementation mistake — especially doing step 5 before step 3.</p>
-
-  <div data-learn="SortStack" data-props='{"title":"Steps to Your First AI Implementation","instruction":"Drag these into the correct order from first to last","items":["Score all major business areas using the 3-factor method","Select the highest-scoring area with a clear, measurable outcome","Calculate the expected ROI using the formula from Lesson 3","Research and shortlist 2-3 AI tools that address this specific area","Run a 2-week pilot with one tool and track the target metric","Review results, adjust the workflow, then expand or move to the next area"]}'></div>
 </div>
 
 </div>

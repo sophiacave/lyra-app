@@ -125,8 +125,6 @@ app.get("/user", (req, res) => {
 <div class="lesson-section">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Edit prompts and see the difference.</h2>
-
-  <div data-learn="PromptLab" data-props='{}'></div>
 </div>
 
 <!-- SECTION 3: QUIZ -->

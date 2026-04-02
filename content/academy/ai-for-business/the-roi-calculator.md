@@ -69,8 +69,6 @@ free: true
   <span class="section-label">Section 4</span>
   <h2 class="section-title">ROI priorities.</h2>
   <p class="section-text">When you sit down to calculate your AI ROI, not all inputs carry equal weight. Some factors have much more influence on your final number than others. Put these in order from most to least impactful.</p>
-
-  <div data-learn="SortStack" data-props='{"title":"ROI Factors: Most to Least Impactful","instruction":"Drag these into order from most impactful (top) to least impactful (bottom)","items":["Hourly labor cost of the time being automated","Percentage of tasks the AI can realistically automate","Number of hours per week spent on the target tasks","Annual cost of the AI tool","Time spent on setup and employee training","Ongoing maintenance and prompt management time"]}'></div>
 </div>
 
 </div>

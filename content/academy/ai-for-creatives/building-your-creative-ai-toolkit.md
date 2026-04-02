@@ -184,11 +184,9 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Tool Category to Its Use Case","instruction":"Match each AI tool category to its primary creative use.","pairs":[{"left":"Writing AI (Claude, ChatGPT)","right":"Ideation, drafts, editing, research, and repurposing text content"},{"left":"Image AI (Midjourney, Firefly)","right":"Concept art, mood boards, asset generation, and background removal"},{"left":"Video AI (Descript, Opus Clip)","right":"Auto-editing, transcript-based editing, and clip generation for shorts"},{"left":"Audio AI (LANDR, Moises)","right":"AI mastering, stem separation, and melody sketching"},{"left":"Automation AI (Zapier, Make)","right":"Connecting tools together, auto-scheduling, and routing outputs between apps"},{"left":"The 3-Question Filter","right":"Does it solve a bottleneck, can I learn it in an hour, will I use it weekly?"}]}'></div>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="SortStack" data-props='{"title":"Build Your Stack in the Right Order","instruction":"Drag to arrange the steps for building a creative AI stack from first to last.","items":["Identify your #1 workflow bottleneck","Choose one tool that solves that bottleneck","Use it daily for 2 weeks until it feels effortless","Identify your #2 bottleneck","Add a second tool and integrate it with the first","Build templates and prompt shortcuts for both tools","Only then consider adding a third tool"]}'></div>
 </div>
 
 <div class="lesson-section">

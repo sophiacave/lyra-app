@@ -50,18 +50,12 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Part 3</span>
   <h2 class="section-title">Match technique to situation.</h2>
-
-<div data-learn="MatchConnect" data-props='{"title":"Technique → Situation","instruction":"Match each prompting technique to when you should use it","pairs":[{"left":"Assign a specific expert role","right":"When you need a particular perspective or expertise level"},{"left":"Add negative constraints (Don\'t...)","right":"When AI keeps including things you don\'t want"},{"left":"Show a structural example","right":"When the output format matters more than the content"},{"left":"Use the Zoom In follow-up","right":"When the first output is good overall but one section needs depth"},{"left":"Chain questions progressively","right":"When exploring data and each answer informs the next question"},{"left":"Start over with a fresh prompt","right":"When 3+ iterations haven\'t improved the output"},{"left":"Provide tone examples","right":"When you need a very specific voice that words alone can\'t describe"},{"left":"Use the SCOPE method","right":"When asking AI to analyze data and you need specific, actionable results"}]}'></div>
-
 </div>
 
 <!-- SECTION 4: SORT THE PROCESS -->
 <div class="lesson-section">
   <span class="section-label">Part 4</span>
   <h2 class="section-title">Put it all together.</h2>
-
-<div data-learn="SortStack" data-props='{"title":"The Complete Prompt Process — In Order","instruction":"Arrange these steps in the correct order for writing a great prompt and getting great output","items":["Define your goal — what specific output do you need?","Choose RCFCE components — which ones does this task need?","Write the prompt — Role, Context, Format, Constraints, Examples","Review the first output — is it 70%+ usable?","Iterate with follow-up patterns — Zoom In, Tone Shift, Redirect, or Remix","If it works well, save it as a reusable template"]}'></div>
-
 </div>
 
 <!-- SECTION 5: FINAL PIXEL QUEST -->

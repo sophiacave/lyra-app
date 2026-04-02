@@ -49,7 +49,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Your AI Infrastructure Stack","instruction":"Match each infrastructure layer with the recommended tool or approach.","pairs":[{"left":"Frontend","right":"Next.js on Vercel with edge middleware and streaming AI responses"},{"left":"Backend / API","right":"Supabase edge functions for serverless AI orchestration"},{"left":"Database","right":"PostgreSQL with pgvector for data, vectors, logs, and cache in one place"},{"left":"AI Layer","right":"Tiered providers from free embeddings to mid-tier to flagship models"},{"left":"Monitoring","right":"Structured logs in Supabase with cost tracking and cron-triggered alerts"},{"left":"Build Order Week 1","right":"Foundation — set up Vercel and Supabase, confirm CI/CD pipeline works"}]}'></div>
 </div>
 
 <div class="lesson-section">

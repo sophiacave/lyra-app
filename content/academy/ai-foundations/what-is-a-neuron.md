@@ -38,8 +38,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Play With It</span>
   <h2 class="section-title">Live neuron — move the sliders and watch.</h2>
-
-  <div data-learn="NeuronSim" data-props='{"inputs":3}'></div>
 </div>
 
 <!-- SECTION 3: CORE CONCEPTS + CODE -->

@@ -98,9 +98,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Which template fits the job?</h2>
-
-<div data-learn="MatchConnect" data-props='{"title":"Template → Task","instruction":"Match each work task to the best prompt template","pairs":[{"left":"Draft a follow-up email to a hesitant client","right":"Email Writer — tone, context, and CTA matter most"},{"left":"Write a LinkedIn post about your product launch","right":"Content Creator — format, audience, and voice defined"},{"left":"Find insights in last quarter sales data","right":"Analyst — patterns, risks, and recommendations focus"},{"left":"Prepare for a board meeting in 30 minutes","right":"Meeting Prep — agenda, talking points, likely questions"},{"left":"Generate 15 names for a new product feature","right":"Brainstormer — creative constraints, push past obvious"},{"left":"Get honest feedback on your proposal draft","right":"Editor / Reviewer — strengths, weaknesses, specific rewrites"}]}'></div>
-
 </div>
 
 <!-- BUILD YOUR OWN -->
@@ -110,10 +107,7 @@ free: false
   <p class="section-text">The templates above cover common tasks, but <strong>your most powerful templates will be the ones you build for YOUR recurring work.</strong></p>
 
 <div data-learn="QuizMC" data-props='{"title":"Prompt Templates for Work","questions":[{"q":"What is the main advantage of using prompt templates instead of writing prompts from scratch?","options":["Templates are shorter","Templates preserve what worked — structure, tone, and quality — so you never start from zero","Templates prevent AI from making errors","Templates are required by all AI platforms"],"correct":1,"explanation":"Templates lock in proven patterns. The structure, voice, and quality standards stay consistent while only the variables change between uses."},{"q":"Which template would you use if your boss asks you to prepare talking points for tomorrow\\\'s board meeting?","options":["Email Writer","Content Creator","Meeting Prep","Brainstormer"],"correct":2,"explanation":"The Meeting Prep template generates an agenda, talking points, likely questions with responses, and a preparation question — exactly what you need before a high-stakes meeting."},{"q":"What makes the Analyst template different from the Content Creator template?","options":["The Analyst template is longer","The Analyst template focuses on finding patterns, risks, and recommendations from data — not creating new content","The Analyst template does not need an audience specification","The Analyst template only works with numbers"],"correct":1,"explanation":"The Analyst template is designed for examining existing data to surface insights, while the Content Creator template generates new material. Different goals require different prompt structures."},{"q":"You write the same type of weekly report every Friday. What should you do?","options":["Write the prompt from scratch each week for freshness","Turn your best prompt into a reusable template with variable slots","Ask AI to remember your previous prompts","Use a different AI model each week"],"correct":1,"explanation":"Any recurring task should be templatized. Take your best prompt, replace the changing parts with variable slots, and save it. Within a month you will have a personal prompt library covering 80% of your AI work."}]}'></div>
-
-<div data-learn="SortStack" data-props='{"title":"Steps to Build Your Template Library","instruction":"Arrange these steps in the right order for building a personal prompt library","items":["Look at the last 10 things you used AI for — find repeating tasks","Take your best prompt for each and turn it into a template with blanks","Save templates somewhere accessible — a note, a doc, a Notion page","Each time you write a prompt that works well, template-ize it and add it"]}'></div>
-
-  <p class="section-text" style="margin-top:1rem">Within a month, you'll have a personal prompt library that handles 80% of your AI work in seconds.</p>
+<p class="section-text" style="margin-top:1rem">Within a month, you'll have a personal prompt library that handles 80% of your AI work in seconds.</p>
 </div>
 
 <!-- NEXT LESSON -->

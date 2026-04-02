@@ -117,7 +117,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The 5-Step Process Audit</h2>
-  <div data-learn="SortStack" data-props='{"title":"Process Audit Steps — In Order","instruction":"Arrange the five audit steps in the correct sequence","items":["Pick one process you do at least weekly","Write down every single step including obvious ones like open email","Mark each step as decision (requires judgment) or mechanical (same every time)","Note where data moves between tools","Score by frequency times time per run times mechanical step count"]}'></div>
 </div>
 
 <div class="lesson-section">

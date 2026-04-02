@@ -94,8 +94,6 @@ nearest = words[np.argmax(similarities)]
   <span class="section-label">Explore</span>
   <h2 class="section-title">Watch words in semantic space.</h2>
   <p class="section-text">Use the step buttons to see how words cluster by meaning and how vector arithmetic works.</p>
-
-  <div data-learn="WordSpace" data-props='{}'></div>
 </div>
 
 <!-- SECTION 3: KNOWLEDGE CHECK -->

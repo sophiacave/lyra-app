@@ -93,9 +93,6 @@ free: true
       </div>
     </div>
   </div>
-
-<div data-learn="SortStack" data-props='{"title":"Order the RCFCE Components","instruction":"Arrange the prompt components in the recommended order for building a great prompt","items":["Role — Set the AI expertise and perspective","Context — Describe the situation and background","Format — Specify the output shape","Constraints — Set boundaries and limits","Examples — Show what good looks like"]}'></div>
-
 </div>
 
 <!-- SECTION 4: THE TEMPLATE -->

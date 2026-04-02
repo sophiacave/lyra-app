@@ -95,8 +95,6 @@ Explain your reasoning for each factor and give me a confidence level (high/medi
   <span class="section-label">Section 5</span>
   <h2 class="section-title">Decision priority.</h2>
   <p class="section-text">When you sit down to make a build-vs-buy call, you should weigh the five factors in a specific order. Some factors eliminate options outright; others just nudge the decision. Put them in order from most to least decisive.</p>
-
-  <div data-learn="SortStack" data-props='{"title":"Build vs. Buy Decision Factors: Most to Least Decisive","instruction":"Drag these into order from most decisive (top) to least decisive (bottom)","items":["Data sensitivity — regulated or sensitive data can eliminate SaaS options entirely","Problem uniqueness — common problems almost always have existing tools","Technical capability — a build decision with no developers is not a real option","Budget — rules out high-cost options; does not choose between remaining ones","Speed needed — urgent timelines favor Buy over Build or Hire"]}'></div>
 </div>
 
 </div>

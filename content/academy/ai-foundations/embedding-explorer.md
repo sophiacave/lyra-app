@@ -31,8 +31,6 @@ free: false
   <span class="section-label">Explore</span>
   <h2 class="section-title">Click words to compare their vectors.</h2>
   <p class="section-text">Click one word to see its vector. Click a second to compute the angle and cosine similarity between them.</p>
-
-  <div data-learn="EmbedExplorer" data-props='{}'></div>
 </div>
 
 <!-- SECTION 2B: CODE — PRODUCTION EMBEDDING PATTERNS -->

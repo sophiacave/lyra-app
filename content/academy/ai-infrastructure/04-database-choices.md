@@ -51,7 +51,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Database Types for AI","instruction":"Match each database technology with its primary use case in AI applications.","pairs":[{"left":"PostgreSQL","right":"Structured relational data like users, subscriptions, and permissions"},{"left":"pgvector","right":"Adds vector similarity search to PostgreSQL for semantic queries"},{"left":"JSONB Columns","right":"Flexible schema storage for conversation logs and AI outputs in PostgreSQL"},{"left":"Pinecone / Qdrant","right":"Dedicated vector databases for billions of vectors with sub-millisecond latency"},{"left":"Embeddings","right":"High-dimensional numerical representations that enable searching by meaning"},{"left":"Co-located Storage","right":"Storing content and its embedding in the same row for single-query retrieval"}]}'></div>
 </div>
 
 <div class="lesson-section">

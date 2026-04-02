@@ -47,9 +47,6 @@ free: true
   </div>
   <p class="section-text">The magic happens at the intersection. You bring the human skills. AI brings the speed and scale. Together, you're unstoppable.</p>
 </div>
-
-<div data-learn="CompareView" data-props='{"title":"Old Sales vs. AI-Powered Sales","instruction":"Reveal each mindset to see the transformation.","revealMode":"sequential","items":[{"label":"The Grinder","content":"100 cold calls a day. Hours drafting generic emails. Manual lead research across LinkedIn, Google, databases. Pipeline tracking in spreadsheets. Volume is the only strategy.","highlight":"Success metric: calls made. Time spent: 80% preparation, 20% selling."},{"label":"The Strategist","content":"10 deeply researched conversations daily. AI-drafted personalized outreach in seconds. Instant competitive intelligence before every call. Automated pipeline and follow-ups. Quality over quantity.","highlight":"Success metric: deals closed. Time spent: 20% preparation, 80% selling."}]}'></div>
-
 <div class="lesson-section">
   <span class="section-label">The Mindset</span>
   <h2 class="section-title">From Grinder to Strategist</h2>

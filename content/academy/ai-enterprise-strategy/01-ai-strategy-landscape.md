@@ -71,7 +71,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Strategy Concepts","instruction":"Match each concept to its definition","pairs":[{"left":"The pilot-to-production gap","right":"Fewer than 15% of enterprises have moved beyond pilot programs"},{"left":"No executive sponsor","right":"A consistent failure pattern — strategy without leadership buy-in dies"},{"left":"Data infrastructure gaps","right":"The AI works but the data is not ready to support it at scale"},{"left":"Change resistance","right":"People fear what AI means for their job security and relevance"},{"left":"Living system approach","right":"Strategy that evolves with feedback loops, not a static document"},{"left":"Talent misalignment","right":"The wrong skills in the wrong roles, blocking AI execution"}]}'></div>
 </div>
 
 <div class="lesson-section">

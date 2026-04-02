@@ -175,7 +175,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Prompting Technique","instruction":"Match each creative prompting technique to its description.","pairs":[{"left":"Sensory Anchoring","right":"Describe how the output should feel rather than what it should say"},{"left":"Reference Stacking","right":"Layer multiple cultural references to triangulate a unique style"},{"left":"Constraint-Driven Creativity","right":"Impose deliberate limits like word count or structure rules to break defaults"},{"left":"Persona Prompting","right":"Give AI a specific backstory and worldview to produce a distinct voice"},{"left":"Style Anchor","right":"A reusable description of your voice that you paste into every creative prompt"},{"left":"Iterative Refinement","right":"Shape output across multiple rounds from wide generation to line-level polish"}]}'></div>
 </div>
 
 <div class="lesson-section">

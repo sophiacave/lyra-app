@@ -67,7 +67,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Governance Tiers","instruction":"Match each AI system to its appropriate governance tier","pairs":[{"left":"Internal document search tool","right":"Tier 1 — Low risk, standard monitoring"},{"left":"Content recommendation engine","right":"Tier 2 — Medium risk, regular review and bias checks"},{"left":"Loan approval affecting credit access","right":"Tier 3 — High risk, pre-deploy review + continuous monitoring + human oversight"},{"left":"Marketing email personalization","right":"Tier 1 — Low risk, standard monitoring"},{"left":"Hiring resume screening system","right":"Tier 3 — High risk, directly affects employment and legal rights"},{"left":"Customer chatbot with escalation to humans","right":"Tier 2 — Medium risk, needs quality monitoring and fallback rules"}]}'></div>
 </div>
 
 <div class="lesson-section">

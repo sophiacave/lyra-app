@@ -4,7 +4,6 @@ course: "claude-for-beginners"
 order: 5
 type: "lesson"
 free: false
-css: "claude-beginners.css"
 ---<div class="wrap">
 
 <nav class="local-nav">
@@ -68,9 +67,6 @@ Give me your top 3 recommendations ranked by impact.</code></pre>
 </div>
 
   <p class="section-text">Now match each summary style to the right situation:</p>
-
-<div data-learn="MatchConnect" data-props='{"title":"Match the Summary Style","instruction":"Match each situation to the best summary style","pairs":[{"left":"CEO needs a 30-second overview before a board meeting","right":"Executive Summary"},{"left":"You need a quick update to post in Slack","right":"Bullet Points"},{"left":"After a 90-minute meeting, you need to know who does what","right":"Action Items Only"},{"left":"Legal contract in a domain you have never worked in","right":"ELI5 (Explain Like I Am 5)"},{"left":"Monthly report for your skip-level manager","right":"Executive Summary"},{"left":"Medical test results you want to understand clearly","right":"ELI5 (Explain Like I Am 5)"}]}'></div>
-
 </div>
 
 <!-- SECTION 2: DATA ANALYSIS -->

@@ -117,7 +117,6 @@ for sentiment in ["positive", "negative"]:
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Technique</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Qualitative Analysis Techniques","instruction":"Match each scenario to the best analysis technique","pairs":[{"left":"Classify 500 reviews as positive, negative, or neutral","right":"Sentiment analysis — score and categorize emotional tone"},{"left":"Find common topics in 200 open-ended survey responses","right":"Theme extraction — let AI identify categories from the data"},{"left":"Sort feedback into predefined buckets: pricing, UX, support","right":"Categorization — AI assigns responses to your existing categories"},{"left":"Understand why Q3 churn spiked using customer comments","right":"Mixing qual and quant — combine feedback with metrics data"},{"left":"Identify the 3 most impactful changes to make","right":"Actionable feedback extraction — find specific improvement opportunities"},{"left":"Check if happy vs unhappy customers mention different things","right":"Cross-referencing by segment — compare themes across rating groups"}]}'></div>
 </div>
 
 <div class="lesson-section">

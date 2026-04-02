@@ -65,7 +65,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Architecture Decisions — Key Terms","instruction":"Match each architecture choice to its description.","pairs":[{"left":"API-First (Claude/GPT)","right":"Fastest time to market, pay per token, dependent on provider"},{"left":"Open Source (Llama/Mistral)","right":"Lower cost at scale but you own hosting, scaling, and monitoring"},{"left":"Fine-Tuning","right":"Phase 2 optimization requiring domain-specific data and clean datasets"},{"left":"RAG","right":"Store data as embeddings, retrieve relevant chunks at query time"},{"left":"Prompt Engineering","right":"First tool to exhaust — free to iterate, instant to deploy"},{"left":"Model-Agnostic Design","right":"Abstract model calls so you can swap providers with a config change"}]}'></div>
 </div>
 
 <div class="lesson-section">

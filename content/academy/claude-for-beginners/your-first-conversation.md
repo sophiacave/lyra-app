@@ -4,7 +4,6 @@ course: "claude-for-beginners"
 order: 2
 type: "lesson"
 free: true
-css: "claude-beginners.css"
 ---<div class="wrap">
 
 <nav class="local-nav">
@@ -77,9 +76,6 @@ prevent this from happening again.</code></pre>
 </div>
 
   <p class="section-text">Now put the formula parts in the right order:</p>
-
-<div data-learn="SortStack" data-props='{"title":"Order the Prompt Formula","instruction":"Drag these into the correct order for building a great prompt","items":["Role — Tell Claude who to be","Context — Give the situation and details","Format — Specify what you want back"]}'></div>
-
 </div>
 
 <!-- SECTION 2: BAD VS GOOD -->
@@ -96,8 +92,6 @@ prevent this from happening again.</code></pre>
   <span class="section-label">Your Turn</span>
   <h2 class="section-title">Build a prompt using the formula.</h2>
   <p class="section-text">Use the builder below to construct a prompt. Pick a role, add your context, choose a format. Then copy it and try it in <a href="https://claude.ai" target="_blank" style="color:var(--purple)">Claude</a>.</p>
-
-  <div data-learn="PromptBuilder" data-props='{}'></div>
 </div>
 
 <!-- SECTION 4: STEAL THESE -->
@@ -126,7 +120,4 @@ prevent this from happening again.</code></pre>
 <div data-learn="QuizMC" data-props='{"questions":[{"q":"What are the 3 parts of a great prompt?","options":["Question, Answer, Follow-up","Role, Context, Format","Introduction, Body, Conclusion","Who, What, When"],"correct":1,"explanation":"The 3-part formula is Role (who Claude should be), Context (the situation), and Format (what you want back). This works every time."},{"q":"Which prompt will get a better result?","options":["Write me an email about the project.","Help me with something at work.","You are a professional editor. Rewrite this paragraph for my company blog. Keep it under 80 words, conversational tone.","Can you do emails?"],"correct":2,"explanation":"The specific prompt has all three parts: Role (professional editor), Context (paragraph for company blog), and Format (under 80 words, conversational). The others are vague and force Claude to guess."}]}'></div>
 
 </div>
-
-<div data-learn="LessonComplete" data-props='{"courseSlug":"claude-for-beginners","lessonNum":2}'></div>
-
 </div>

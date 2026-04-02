@@ -31,9 +31,6 @@ free: true
   <span class="section-label">The Concept</span>
   <h2 class="section-title">Layers are the architecture of intelligence.</h2>
   <p class="section-text">A single neuron can make simple decisions. But stack neurons into layers — input, hidden, output — and suddenly the network can recognize faces, translate languages, and write code. The architecture (how many layers, how they connect) determines what the network can learn.</p>
-
-<div data-learn="SortStack" data-props='{"title":"Order the Layers","instruction":"Arrange the three layer types in the order data flows through them","items":["Input Layer — receives raw data (pixels, text, numbers)","Hidden Layer — finds patterns and intermediate features","Output Layer — makes the final prediction or decision"]}'></div>
-
 </div>
 
 <!-- SECTION 1B: CODE — BUILDING A NETWORK IN PYTHON -->
@@ -90,8 +87,6 @@ probs = model(X)
 <div class="lesson-section">
   <span class="section-label">Build It</span>
   <h2 class="section-title">Drag, drop, connect, train.</h2>
-
-  <div data-learn="NetworkBuilder" data-props='{}'></div>
 </div>
 
 <!-- SECTION 3: KNOWLEDGE CHECK -->

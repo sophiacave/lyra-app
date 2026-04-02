@@ -5,17 +5,6 @@ import LessonComplete from '../../../components/academy/LessonComplete';
 import ImmersiveLesson from '../../../components/console/ImmersiveLesson';
 import VideoPlayer from '../../../components/academy/VideoPlayer';
 import { site } from '@/lib/site-config';
-import fs from 'fs';
-import path from 'path';
-
-function getExercises(courseSlug, lessonSlug) {
-  try {
-    const filePath = path.join(process.cwd(), 'content/exercises', `${courseSlug}.json`);
-    if (!fs.existsSync(filePath)) return [];
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    return data[lessonSlug] || [];
-  } catch { return []; }
-}
 
 export async function generateStaticParams() {
   const courseSlugs = getAllCourseSlugs();
@@ -99,8 +88,6 @@ export default async function LessonPage({ params }) {
     url: `${site.url}/academy/${courseSlug}/${lessonSlug}/`,
   };
 
-  const exercises = getExercises(courseSlug, lessonSlug);
-
   // For paid lessons, only ship a preview — full content loads client-side after auth
   // Exception: quiz/assessment lessons need full HTML (including scripts) — gate handles access
   const isPaid = lesson.free === false;
@@ -166,7 +153,6 @@ export default async function LessonPage({ params }) {
       <ImmersiveLesson
         contentHtml={fullContentHtml}
         lessonTitle={lesson.title}
-        exercises={exercises}
         isFree={lesson.free !== false}
         courseSlug={courseSlug}
         lessonSlug={lessonSlug}

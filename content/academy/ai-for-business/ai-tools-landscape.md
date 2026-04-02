@@ -64,8 +64,6 @@ free: false
   <h2 class="section-title">Sequence matters more than speed.</h2>
   <p class="section-text">Most businesses try to adopt AI in the wrong order — they go straight for the flashiest tools (image generation, video) instead of the highest-ROI foundations (writing, automation). The order below is based on what delivers measurable ROI fastest, what's easiest to learn without disrupting your existing workflow, and what each layer enables for the next.</p>
   <p class="section-text">Writing and Content comes first because it pays for itself in the first week. Automation comes second because it multiplies the value of everything else. Analytics third because once you have good processes, you need to measure them. Customer Service fourth because it requires process documentation before it works well. Image, Video, No-Code, and specialized tools come last — high value, but only after the foundation is solid.</p>
-
-  <div data-learn="SortStack" data-props='{"title":"AI Stack Adoption Order","instruction":"Drag these into the recommended order for adopting AI tools","items":["Writing & Content — highest ROI, lowest friction, immediate value","Automation — multiplies everything else, eliminates busywork","Transcription — turns meetings into searchable assets","Analytics — measure what your improved processes produce","Customer Service — scale support without scaling headcount","Image Generation — remove design bottlenecks","Video & Audio — advanced content production","No-Code Builders — ship internal tools and products"]}'></div>
 </div>
 
 </div>

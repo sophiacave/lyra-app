@@ -75,7 +75,6 @@ type: "lesson"
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Audiobook Production Pipeline</h2>
-  <div data-learn="SortStack" data-props='{"title":"Audiobook Production Steps — In Order","instruction":"Arrange the five production stages in the correct sequence","items":["Text preparation — clean manuscript, add pronunciation guides, mark chapter breaks","Voice selection — test multiple voices with a sample chapter before committing","Chapter-by-chapter generation — work incrementally for quality review","Quality control — listen to every chapter, fix mispronunciations and awkward pauses","Mastering — normalize levels, apply EQ and compression, add chapter markers, export at platform specs"]}'></div>
 </div>
 
 <div class="lesson-section">

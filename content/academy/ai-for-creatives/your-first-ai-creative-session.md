@@ -4,7 +4,6 @@ course: "ai-for-creatives"
 order: 2
 type: "lesson"
 free: true
-css: "ai-creatives.css"
 ---<div class="wrap">
 
 <nav class="local-nav">
@@ -114,8 +113,6 @@ css: "ai-creatives.css"
     <div class="tip-label">Pro Tip</div>
     <p>Don't accept the first output. <strong>The magic is always in the third or fourth exchange.</strong> The first response is AI warming up. The good stuff comes when you push, redirect, and react. Treat it like a jam session — the best riff comes after you've been playing for a while.</p>
   </div>
-
-  <div data-learn="SortStack" data-props='{"title":"Order a Creative AI Session","instruction":"Arrange these steps in the correct order for a productive creative AI session, from start to finish.","items":["Set the mood and intention — share the feeling, not a spec sheet","Share reference examples — artists, tones, vibes that match your vision","Give evocative direction — open with energy, not instructions","Iterate on promising results — push further, ask for the unexpected","Apply your voice to the best output — steal the gold, make it yours"]}'></div>
 </div>
 
 <!-- SECTION 3: BEATING THE BLANK PAGE -->

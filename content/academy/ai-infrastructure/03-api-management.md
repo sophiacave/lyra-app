@@ -54,7 +54,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"API Management Essentials","instruction":"Match each API management concept with its purpose.","pairs":[{"left":"Environment Variables","right":"Secure storage for API keys that keeps them out of code repositories"},{"left":"Server-Side Only Calls","right":"Prevents API key exposure by never calling AI providers from the browser"},{"left":"Per-User Rate Limiting","right":"Prevents any single user from burning through your entire API budget"},{"left":"Spending Caps","right":"Monthly limits set with AI providers to prevent runaway costs"},{"left":"Exponential Backoff","right":"Wait 1s, 2s, 4s between retries to avoid hammering a struggling API"},{"left":"Provider Fallback","right":"Route to an alternative AI provider when the primary one is down"}]}'></div>
 </div>
 
 <div class="lesson-section">

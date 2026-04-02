@@ -113,7 +113,6 @@ print(f"\nMonth-over-month growth:\n{monthly['growth_pct']}")</code></pre>
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Data Input Methods</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"When to Use Each Input Method","instruction":"Match each scenario to the best data input method","pairs":[{"left":"A quick expense report with 50 rows","right":"Copy and paste directly into the chat"},{"left":"A 5,000-row customer database in Excel format","right":"Upload the file — handles larger datasets and preserves formatting"},{"left":"A 2 million row production database","right":"Describe and sample — paste first 20-30 rows, describe the full scope"},{"left":"A Google Sheet with live formulas","right":"Copy and paste the visible values (formulas won\'t transfer)"},{"left":"A CSV exported from your CRM","right":"Upload the file for best results with structured data"},{"left":"Quick check on a few data points","right":"Copy and paste — fastest for small, targeted questions"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -81,7 +81,6 @@ Listen to all three back to back. The difference between step 1 and step 3 is th
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Audio Editing Pipeline Steps</h2>
-  <div data-learn="SortStack" data-props='{"title":"AI Audio Editing — Correct Order","instruction":"Arrange the four editing steps in the correct sequence","items":["Noise removal — strip background noise first so every subsequent tool has cleaner input","Content editing — remove filler words, long pauses, false starts, and tangents","Enhancement — EQ, compression, and de-essing handled automatically by AI tools","Mastering — normalize loudness to platform standards and add final limiting"]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -77,7 +77,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Resource Allocation — Key Concepts","instruction":"Match each resource management concept with its description.","pairs":[{"left":"Skill Mapping","right":"Describing team roles, skills, and availability so AI can suggest task assignments"},{"left":"Capacity Planning","right":"Modeling current and future team availability to flag overloads and bottlenecks"},{"left":"Scenario Modeling","right":"Comparing different allocation splits to show which project slips and by how much"},{"left":"Actuals vs. Plan","right":"Weekly tracking of real time spent versus planned to surface recurring estimation patterns"},{"left":"Growth Assignments","right":"Pairing junior team members with complex tasks as development opportunities"},{"left":"Resource Conflict Resolution","right":"Using data-driven tradeoff analysis to resolve competing project demands for the same person"}]}'></div>
 </div>
 
 <div class="lesson-section">

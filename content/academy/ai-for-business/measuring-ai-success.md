@@ -82,8 +82,6 @@ Include a simple Google Sheets structure I can set up in 10 minutes. Tell me exa
   <h2 class="section-title">Start with the easiest. Build toward the hardest.</h2>
   <p class="section-text">Not all metrics are equally easy to track. Time Saved requires only a before-and-after time log, which anyone can do with a timer and a spreadsheet. Cost Reduced requires invoice comparison, which is easy if your accounting is organized. Output Increase requires consistent output counting, which takes discipline but not data infrastructure. Quality Score requires defining quality criteria and collecting data consistently over time — that is the hardest because it depends on your specific business context and requires more setup.</p>
   <p class="section-text">Start where you can get data immediately. Build rigor into the harder metrics over time. A rough Quality Score tracked consistently beats a perfect Quality Score tracked never.</p>
-
-  <div data-learn="SortStack" data-props='{"title":"Metrics by Tracking Difficulty","instruction":"Drag these from easiest to track (top) to hardest to track (bottom)","items":["Time Saved — a before/after time log is all you need","Cost Reduced — compare last month invoice to this month","Output Increase — count deliverables per week, same type","Quality Score — requires defined criteria and consistent data collection"]}'></div>
 </div>
 
 <div class="lesson-section">

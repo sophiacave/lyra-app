@@ -4,7 +4,6 @@ course: "ai-for-creatives"
 order: 3
 type: "lesson"
 free: true
-css: "ai-creatives.css"
 ---<div class="wrap">
 
 <nav class="local-nav">

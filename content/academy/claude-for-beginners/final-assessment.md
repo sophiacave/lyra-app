@@ -4,7 +4,6 @@ course: "claude-for-beginners"
 order: 9
 type: "quiz"
 free: false
-css: "claude-beginners.css"
 ---<div class="wrap">
 
 <nav class="local-nav">

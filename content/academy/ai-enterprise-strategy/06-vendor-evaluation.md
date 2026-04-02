@@ -46,7 +46,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Build vs Buy vs Partner","instruction":"Match each scenario to the right acquisition strategy","pairs":[{"left":"AI is your core competitive advantage and you need full control","right":"Build — requires significant in-house talent and infrastructure"},{"left":"Well-understood problem with mature commercial solutions","right":"Buy — customer support AI, document processing, basic analytics"},{"left":"Domain-specific AI needed but lack internal capability","right":"Partner — consulting firms or boutique AI shops accelerate your timeline"},{"left":"Capability fit","right":"Does the solution solve your actual problem, not a demo problem?"},{"left":"Exit strategy","right":"How painful and expensive is it to leave this vendor?"},{"left":"Proof of concept","right":"Test with YOUR real data — any vendor unwilling lacks confidence"}]}'></div>
 </div>
 
 <div class="lesson-section">

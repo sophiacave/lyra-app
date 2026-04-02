@@ -148,7 +148,6 @@ Be specific to my task. Give me a checklist I can use right now.</code></pre>
 <div class="lesson-section">
   <span class="section-label">See the Difference</span>
   <h2 class="section-title">Without ethics vs. with TRUST.</h2>
-  <div data-learn="CompareView" data-props='{"title":"AI Usage: Before and After TRUST","instruction":"Reveal each scenario to see what ethical AI use actually changes.","revealMode":"sequential","items":[{"label":"Without Ethics","content":"You paste confidential client data into an AI chat. You publish the AI-generated report without checking facts. A biased recommendation slips through. The client finds out their data was shared with a third-party AI service.","highlight":"Real consequence: legal liability, lost trust, career damage."},{"label":"With TRUST Framework","content":"You anonymize data before AI processing. You review every output for accuracy and bias. You disclose AI assistance where appropriate. You verify sensitive claims with domain experts before publishing.","highlight":"Same AI power, zero ethical landmines. Professional-grade output."}]}'></div>
 </div>
 
 <!-- INTERACTIVE: MATCH -->

@@ -82,8 +82,6 @@ Keep the language clear and specific. No legalese. This should be readable by an
   <span class="section-label">Policy Priorities</span>
   <h2 class="section-title">You cannot implement everything at once. Here is the order.</h2>
   <p class="section-text">When you are starting from zero, trying to implement all 8 sections simultaneously means you end up with a half-finished policy in a folder nobody reads. The order below prioritizes by risk reduction first, then productivity enablement. Get the guardrails in place before you optimize the on-ramp.</p>
-
-  <div data-learn="SortStack" data-props='{"title":"Policy Implementation Order","instruction":"Drag these into the recommended order for rolling out your AI policy","items":["Prohibited Use — stop the highest-risk behaviors immediately","Data Handling — protect customer and proprietary data from day one","Acceptable Use — clarify what is encouraged so people can get value","Quality Standards — set the bar before AI content reaches clients","Customer Disclosure — address transparency with your market","Approval Process — create a path for new tool requests","Training Requirements — build knowledge across the team","Purpose — formalize the full document once the pieces are live"]}'></div>
 </div>
 
 <div class="lesson-section">

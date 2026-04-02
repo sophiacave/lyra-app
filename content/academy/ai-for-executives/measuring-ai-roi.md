@@ -4,7 +4,6 @@ course: "ai-for-executives"
 order: 5
 type: "lesson"
 free: false
-css: "ai-executives.css"
 ---<div class="wrap">
 
 <nav class="local-nav">

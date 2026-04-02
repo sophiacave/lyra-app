@@ -48,7 +48,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Stakeholder Language","instruction":"Match each executive to the story they need to hear","pairs":[{"left":"CEO","right":"Competitive advantage — how AI positions us ahead of rivals"},{"left":"COO","right":"Efficiency — how AI reduces costs and speeds up operations"},{"left":"CTO","right":"Architectural fit — how AI integrates with existing systems"},{"left":"CFO","right":"Payback period — when the investment returns its cost"},{"left":"Conservative ROI threshold","right":"Calculate at 20% improvement, not 80% — robust if it pays off at low estimates"},{"left":"Total Cost of Ownership","right":"Licensing + infrastructure + integration + training + maintenance + opportunity cost"}]}'></div>
 </div>
 
 <div class="lesson-section">

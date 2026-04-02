@@ -4,7 +4,6 @@ course: "claude-for-beginners"
 order: 1
 type: "lesson"
 free: true
-css: "claude-beginners.css"
 ---<div class="wrap">
 
 <nav class="local-nav">
@@ -128,12 +127,7 @@ me which one you would pick and why.</code></pre>
   <span class="section-label">Honesty Check</span>
   <h2 class="section-title">What Claude can't do.</h2>
   <p class="section-text">Being honest about limits is more important than hype. Match each statement to whether Claude CAN or CAN'T do it.</p>
-
-
-
-<div data-learn="MatchConnect" data-props='{"title":"Can Claude Do This?","instruction":"Match each task to whether Claude CAN or CANNOT do it","pairs":[{"left":"Write a professional email in your voice","right":"CAN do"},{"left":"Log into your bank and transfer money","right":"CANNOT do"},{"left":"Summarize a 30-page PDF in 60 seconds","right":"CAN do"},{"left":"Guarantee 100% factual accuracy","right":"CANNOT do"},{"left":"Analyze a spreadsheet and find trends","right":"CAN do"},{"left":"Access your private files without you sharing them","right":"CANNOT do"},{"left":"Brainstorm 20 creative marketing ideas","right":"CAN do"},{"left":"Replace your judgment on important decisions","right":"CANNOT do"}]}'></div>
-
-  <div class="tip-box">
+<div class="tip-box">
     <div class="tip-label">Pro Tip</div>
     <p><strong>Always verify important facts.</strong> Claude is incredibly good at reasoning and writing, but it can occasionally get specific facts wrong. Think of it like a brilliant intern — trust the analysis, double-check the numbers.</p>
   </div>
