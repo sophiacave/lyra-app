@@ -35,6 +35,43 @@ free: false
   <p class="section-text"><strong style="color: var(--green);">Strengths:</strong> Easy to reason about, clear chain of command, simple debugging. You always know who's in charge.</p>
   <p class="section-text"><strong style="color: var(--red);">Weaknesses:</strong> The hub is a bottleneck and a single point of failure. If it gets confused, the whole system breaks.</p>
   <p class="section-text"><strong style="color: var(--blue);">Use when:</strong> You need tight control, the workflow is well-defined, and you have fewer than 5-6 agents.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Hub-spoke: orchestrator delegates to specialists</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
+
+client = anthropic.Anthropic()
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">call_agent</span>(system: str, message: str) -> str:
+    <span style="color:#71717a"># Each agent is a Claude call with a specialized system prompt</span>
+    r = client.messages.create(
+        model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>, max_tokens=<span style="color:#fb923c">1024</span>,
+        system=system, messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: message}]
+    )
+    <span style="color:#c084fc">return</span> r.content[<span style="color:#fb923c">0</span>].text
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">orchestrator</span>(task: str) -> str:
+    <span style="color:#71717a"># Step 1: Hub decides which specialist to use</span>
+    route = call_agent(
+        <span style="color:#fbbf24">"You are a router. Given a support ticket, respond with ONLY one word: billing, technical, or account."</span>,
+        task
+    ).strip().lower()
+
+    <span style="color:#71717a"># Step 2: Hub delegates to the right specialist</span>
+    specialists = {
+        <span style="color:#fbbf24">"billing"</span>:   <span style="color:#fbbf24">"You handle billing issues. Check charges, process refunds, explain invoices."</span>,
+        <span style="color:#fbbf24">"technical"</span>: <span style="color:#fbbf24">"You handle technical issues. Debug errors, check system status, guide fixes."</span>,
+        <span style="color:#fbbf24">"account"</span>:   <span style="color:#fbbf24">"You handle account issues. Reset passwords, update profiles, manage access."</span>,
+    }
+    result = call_agent(specialists.get(route, specialists[<span style="color:#fbbf24">"technical"</span>]), task)
+
+    <span style="color:#71717a"># Step 3: Hub assembles the final response</span>
+    <span style="color:#c084fc">return</span> <span style="color:#fbbf24">f"[Routed to {route}]\n{result}"</span>
+
+<span style="color:#34d399">print</span>(orchestrator(<span style="color:#fbbf24">"I was charged twice for my subscription"</span>))
+<span style="color:#71717a"># → [Routed to billing]</span>
+<span style="color:#71717a"># → "I can see a duplicate charge on your account..."</span></code></pre>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -44,6 +81,27 @@ free: false
   <p class="section-text"><strong style="color: var(--green);">Strengths:</strong> Simple, predictable, easy to test each stage independently. Adding a new step is just inserting a new agent.</p>
   <p class="section-text"><strong style="color: var(--red);">Weaknesses:</strong> No flexibility for branching logic. If step 3 needs to go back to step 1, the architecture fights you.</p>
   <p class="section-text"><strong style="color: var(--blue);">Use when:</strong> Your workflow is truly linear — research, then write, then edit, then publish. No loops, no branches.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Pipeline: each agent transforms and passes forward</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Define pipeline stages — each agent's output feeds the next agent's input</span>
+PIPELINE = [
+    (<span style="color:#fbbf24">"researcher"</span>,  <span style="color:#fbbf24">"Research this topic. Return key findings as bullet points."</span>),
+    (<span style="color:#fbbf24">"writer"</span>,      <span style="color:#fbbf24">"Turn these research findings into a polished blog post."</span>),
+    (<span style="color:#fbbf24">"editor"</span>,      <span style="color:#fbbf24">"Edit this draft for clarity, grammar, and flow. Return the improved version."</span>),
+    (<span style="color:#fbbf24">"seo"</span>,         <span style="color:#fbbf24">"Add SEO metadata: title tag, meta description, suggested internal links."</span>),
+]
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">run_pipeline</span>(initial_input: str) -> str:
+    current = initial_input
+    <span style="color:#c084fc">for</span> name, system_prompt <span style="color:#c084fc">in</span> PIPELINE:
+        <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"  Stage: {name}..."</span>)
+        current = call_agent(system_prompt, current)  <span style="color:#71717a"># output → next input</span>
+    <span style="color:#c084fc">return</span> current
+
+result = run_pipeline(<span style="color:#fbbf24">"Write about AI agents for small business owners"</span>)
+<span style="color:#71717a"># Research → Draft → Edited draft → Final post with SEO metadata</span></code></pre>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -53,6 +111,50 @@ free: false
   <p class="section-text"><strong style="color: var(--green);">Strengths:</strong> Highly resilient, scales naturally, can handle unpredictable workflows. If one agent fails, others adapt.</p>
   <p class="section-text"><strong style="color: var(--red);">Weaknesses:</strong> Hard to debug, unpredictable behavior, potential for agents to conflict or duplicate work.</p>
   <p class="section-text"><strong style="color: var(--blue);">Use when:</strong> The problem space is dynamic, you need maximum resilience, and you can tolerate some unpredictability.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Swarm: parallel agents converge on a shared blackboard</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> asyncio
+
+<span style="color:#71717a"># Swarm agents work independently on the same topic</span>
+SWARM = [
+    (<span style="color:#fbbf24">"academic"</span>,   <span style="color:#fbbf24">"Find peer-reviewed papers and technical reports on this topic."</span>),
+    (<span style="color:#fbbf24">"industry"</span>,   <span style="color:#fbbf24">"Find real-world case studies and company implementations."</span>),
+    (<span style="color:#fbbf24">"contrarian"</span>, <span style="color:#fbbf24">"Find criticisms, failures, and reasons this approach might not work."</span>),
+]
+
+<span style="color:#c084fc">async def</span> <span style="color:#38bdf8">research_swarm</span>(topic: str) -> dict:
+    <span style="color:#71717a"># All agents research the SAME topic in parallel — no coordinator</span>
+    tasks = [call_agent_async(sys, topic) <span style="color:#c084fc">for</span> _, sys <span style="color:#c084fc">in</span> SWARM]
+    results = <span style="color:#c084fc">await</span> asyncio.gather(*tasks)
+    <span style="color:#71717a"># Collect results on a "blackboard"</span>
+    blackboard = {name: result <span style="color:#c084fc">for</span> (name, _), result <span style="color:#c084fc">in</span> zip(SWARM, results)}
+
+    <span style="color:#71717a"># Synthesis agent reads the full blackboard and produces a report</span>
+    synthesis = call_agent(
+        <span style="color:#fbbf24">"Synthesize these three research perspectives into a balanced report."</span>,
+        str(blackboard)
+    )
+    <span style="color:#c084fc">return</span> {<span style="color:#fbbf24">"perspectives"</span>: blackboard, <span style="color:#fbbf24">"synthesis"</span>: synthesis}
+
+report = asyncio.run(research_swarm(<span style="color:#fbbf24">"AI agents in healthcare"</span>))
+<span style="color:#71717a"># 3 agents research simultaneously → synthesis agent merges findings</span></code></pre>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin:1rem 0">
+  <div style="padding:.75rem;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);text-align:center">
+    <strong style="color:#fb923c;font-size:.82rem">Hub-Spoke</strong>
+    <p style="font-size:.75rem;color:#71717a;margin:.3rem 0 0">Control + clarity</p>
+  </div>
+  <div style="padding:.75rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);text-align:center">
+    <strong style="color:#8b5cf6;font-size:.82rem">Pipeline</strong>
+    <p style="font-size:.75rem;color:#71717a;margin:.3rem 0 0">Simplicity + testability</p>
+  </div>
+  <div style="padding:.75rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);text-align:center">
+    <strong style="color:#34d399;font-size:.82rem">Swarm</strong>
+    <p style="font-size:.75rem;color:#71717a;margin:.3rem 0 0">Resilience + speed</p>
+  </div>
+</div>
 </div>
 
 <div class="lesson-section">
