@@ -1,9 +1,9 @@
 ---
-title: "Custom GPTs vs Claude Projects: Which One Wins? (2026)"
+title: "Custom GPTs vs Claude Projects: Honest Comparison (2026)"
 date: 2026-03-28
 author: Sophia Cave
-description: "I built dozens of both. Here's the honest verdict — features, limitations, and which one actually works better. Spoiler: it's not the one you'd expect."
-excerpt: "I built dozens of both. Here's the honest verdict — features, limitations, and which one actually works better. Spoiler: it's not the one you'd expect."
+description: "Does Claude have Custom GPTs? Not exactly — Claude Projects are different and arguably better. Side-by-side comparison of features, pricing, context windows, and real-world use cases."
+excerpt: "Does Claude have Custom GPTs? Not exactly — Claude Projects are different and arguably better. Side-by-side comparison of features, pricing, context windows, and real-world use cases."
 tags: [claude, chatgpt, comparison, ai-tools, projects]
 faq:
   - q: "What is the difference between Custom GPTs and Claude Projects?"
