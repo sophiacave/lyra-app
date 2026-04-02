@@ -12,6 +12,10 @@ faq:
     a: "Yes. Both Claude and ChatGPT can match your writing style when given good reference samples. Claude Projects hold your style guide in its 200K context window for consistent results. ChatGPT Custom GPTs use uploaded files for reference."
   - q: "How long does it take to train AI on your writing style?"
     a: "About 15 minutes. Gather your writing samples, create a voice document describing your style rules, and set up a Claude Project or Custom GPT with those references. The AI adapts immediately — no fine-tuning or coding required."
+  - q: "What's the best AI for matching my writing style?"
+    a: "Claude is the strongest for voice matching because Claude Projects hold your style guide in a 200K-token context window — it never forgets your voice mid-conversation. ChatGPT Custom GPTs work too but have smaller context. Both outperform Gemini for consistent voice replication."
+  - q: "Do I need to fine-tune a model to get my writing style?"
+    a: "No. Fine-tuning is expensive, slow, and unnecessary for voice matching. Prompt-based voice training — where you give the AI your writing samples and a style guide — works immediately and costs nothing extra. Fine-tuning is for companies training on millions of documents, not individual writers."
 image: /blog/images/train-ai-writing-style.jpg
 cta: Start Learning Free
 ---
@@ -120,6 +124,76 @@ and only keeping 3 — and what those 3 had in common.
 
 See the difference? The first prompt gets you generic content in a generic voice. The second gets you *your* content in *your* voice.
 
+## Platform Setup: Claude vs ChatGPT
+
+The method above works in any AI tool, but the setup differs:
+
+**Claude Projects (recommended):**
+1. Create a new Project in Claude
+2. Add your voice profile as a Project instruction — it loads automatically in every conversation
+3. Upload your 3-5 writing samples as Project knowledge files
+4. Claude keeps your entire voice profile in its 200K-token context window — it never "forgets" your style mid-conversation
+
+Want the full Claude Projects walkthrough? See our [complete setup guide](/blog/how-to-use-claude-projects-complete-guide/).
+
+**ChatGPT Custom GPTs:**
+1. Create a new GPT in ChatGPT
+2. Paste your voice profile in the Instructions field
+3. Upload writing samples as knowledge files
+4. The GPT loads your voice every time you start a chat
+
+**Key difference:** Claude Projects keep your voice active across long conversations. ChatGPT Custom GPTs can drift on longer pieces because the context window is smaller. For a detailed comparison, see [Custom GPTs vs Claude Projects](/blog/custom-gpts-vs-claude-projects/).
+
+## Copy-Paste Templates for Common Use Cases
+
+Here are ready-to-use prompts that work with your voice profile already loaded:
+
+**Blog post from rough notes:**
+```
+Here are my rough notes on [topic]:
+[paste bullet points, voice memos transcripts, random thoughts]
+
+Turn these into a 800-word blog post. Keep my original points and
+phrasing where possible — polish, don't rewrite. Add transitions
+between ideas but don't add opinions I didn't express.
+```
+
+**Email newsletter:**
+```
+Write a newsletter edition about [topic]. Opening hook should
+reference [recent event or personal anecdote]. Main insight:
+[your actual opinion]. Close with one clear action the reader
+can take today. Keep it under 400 words.
+```
+
+**LinkedIn post:**
+```
+Turn this idea into a LinkedIn post (under 200 words):
+[your idea in 1-2 sentences]
+
+Format: bold opening line, 2-3 short paragraphs, end with a
+question or call to action. No hashtags. No emojis. Make it
+sound like I'm talking to one person, not broadcasting.
+```
+
+**Client proposal:**
+```
+Write a proposal introduction for [client name] about [project].
+Their main pain point is [specific problem]. My proposed solution:
+[your approach]. Tone: confident but not salesy. Show I understand
+their problem before jumping to the solution.
+```
+
+## Common Mistakes That Kill Your AI Voice
+
+**Mistake 1: Using someone else's style prompt.** Your voice is yours. Copying a "viral prompt template" from Twitter gives you that person's voice, not yours. Always build from your own writing samples.
+
+**Mistake 2: Over-describing your voice.** "Write in a casual, friendly, warm, approachable, authentic, human, relatable tone" tells the AI nothing. Specific rules beat adjective lists: "Use one-sentence paragraphs for emphasis. Never start with a question. Swear once per piece, maximum."
+
+**Mistake 3: Not feeding it your ideas.** The voice profile handles *how* you write. You still need to provide *what* you think. An AI writing in your voice about nothing is still nothing — it's just nothing that sounds like you.
+
+**Mistake 4: Skipping the refinement loop.** Your first voice profile won't be perfect. After 3-4 pieces, update it. Remove rules that aren't working. Add new patterns you've noticed. The voice profile is a living document, not a one-time setup.
+
 ## Advanced: Build a Voice Library
 
 Once you've nailed your primary voice, create variations:
@@ -155,12 +229,14 @@ Your voice is your competitive advantage. In a world where everyone has access t
 
 ---
 
-*Want to go deeper on AI writing workflows? [Explore our free academy](/academy) for hands-on courses that teach you to build AI into your daily work.*
+*Want to go deeper on AI writing workflows? [Explore our free academy](/academy) — 30 courses, 300+ lessons, all free. Start with [AI Content Studio](/academy/ai-content-studio/) for hands-on writing workflows.*
 
 ---
 
 ## Keep Reading
 
+- [How to Use Claude Projects: Complete Setup Guide](/blog/how-to-use-claude-projects-complete-guide/)
 - [Custom GPTs vs Claude Projects: The Honest Comparison](/blog/custom-gpts-vs-claude-projects/)
 - [ChatGPT vs Claude vs Gemini: Which AI Should Run Your Business?](/blog/chatgpt-vs-claude-vs-gemini/)
+- [10 Best MCP Servers for Claude in 2026](/blog/best-mcp-servers-claude-2026/)
 - [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)

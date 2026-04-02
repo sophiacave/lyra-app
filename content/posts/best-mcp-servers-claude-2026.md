@@ -167,3 +167,13 @@ Add more as your workflow demands. Each server you add makes Claude more capable
 ---
 
 *Want to master MCP from zero to production? The [MCP Masterclass](https://likeone.ai/academy/mcp-masterclass/) covers installation, custom server development, security, and real-world architectures across 10 hands-on lessons. First 3 lessons free.*
+
+---
+
+## Keep Reading
+
+- [How to Use Claude Code: The Complete Guide](/blog/how-to-use-claude-code-complete-guide/)
+- [How to Use Claude Projects: Complete Setup Guide](/blog/how-to-use-claude-projects-complete-guide/)
+- [Custom GPTs vs Claude Projects: Which One Wins?](/blog/custom-gpts-vs-claude-projects/)
+- [Claude Code vs Cursor: Which AI Coding Tool?](/blog/claude-code-vs-cursor/)
+- [How to Train AI to Write Like You](/blog/train-ai-on-your-writing-style/)

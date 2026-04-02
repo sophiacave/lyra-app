@@ -120,13 +120,14 @@ The best specialized AI tool is the one you actually build and use. Stop reading
 
 ---
 
-*Want help choosing the right platform for your use case? [Subscribe to the Like One newsletter](/subscribe) — we break down real-world AI decisions every week.*
+*Want to master Claude Projects from scratch? Read our [complete Claude Projects setup guide](/blog/how-to-use-claude-projects-complete-guide/) or explore the full [Claude Mastery course](/academy/claude-mastery/) — free, 300+ lessons.*
 
 ---
 
 ## Keep Reading
 
+- [How to Use Claude Projects: Complete Setup Guide (2026)](/blog/how-to-use-claude-projects-complete-guide/)
 - [How to Train AI on Your Writing Style — 15-Minute Method](/blog/train-ai-on-your-writing-style/)
+- [10 Best MCP Servers for Claude in 2026](/blog/best-mcp-servers-claude-2026/)
 - [ChatGPT vs Claude vs Gemini: Which AI Should Run Your Business?](/blog/chatgpt-vs-claude-vs-gemini/)
 - [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
-- [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)

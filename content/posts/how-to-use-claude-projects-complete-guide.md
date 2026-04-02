@@ -179,3 +179,13 @@ Start with one Project — the Voice Clone is the easiest win. Upload your writi
 ---
 
 *Want to go deeper? The [Claude Mastery](https://likeone.ai/academy/claude-mastery/) course covers Projects, Extended Thinking, MCP, and advanced prompting techniques across 10 hands-on lessons. First 3 lessons are free.*
+
+---
+
+## Keep Reading
+
+- [Custom GPTs vs Claude Projects: Which One Wins?](/blog/custom-gpts-vs-claude-projects/)
+- [How to Train AI to Write Like You (15-Minute Method)](/blog/train-ai-on-your-writing-style/)
+- [10 Best MCP Servers for Claude in 2026](/blog/best-mcp-servers-claude-2026/)
+- [How to Use Claude Code: The Complete Guide](/blog/how-to-use-claude-code-complete-guide/)
+- [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
