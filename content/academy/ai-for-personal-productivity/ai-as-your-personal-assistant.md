@@ -55,6 +55,8 @@ free: true
   </div>
 </div>
 
+<div data-learn="CompareView" data-props='{"title":"Search Engine vs. AI Conversation","instruction":"See the real difference between searching and asking.","revealMode":"sequential","items":[{"label":"Google Search","content":"You type generic keywords. Get 500 million results, ads, blog posts with life stories. Scroll for 20 minutes to find something useful. No personalization, no context about your situation.","highlight":"Input: keywords. Output: a haystack with a needle somewhere inside."},{"label":"AI Conversation","content":"You describe your exact situation: what you have, what you need, your constraints. Get one personalized answer with step-by-step instructions. Instantly actionable. Done in 10 seconds.","highlight":"Input: your real context. Output: exactly what you need, nothing more."}]}'></div>
+
 <!-- SECTION 3 -->
 <div class="lesson-section">
   <span class="section-label">The Big Three</span>

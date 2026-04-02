@@ -66,6 +66,8 @@ free: true
   </div>
 </div>
 
+<div data-learn="CompareView" data-props='{"title":"AI in Marketing: What It Can vs. Can\u0027t Do","instruction":"Reveal each side to see where AI excels and where humans are irreplaceable.","revealMode":"sequential","items":[{"label":"AI Excels At","content":"Content production at scale: blog posts, social media, email sequences, ad copy, landing pages. One marketer with AI produces like a 5-person team. Analysis and pattern recognition across thousands of data points instantly.","highlight":"AI handles the production. Volume, speed, consistency."},{"label":"Humans Are Irreplaceable","content":"Deep customer understanding from real conversations. Strategic decisions like market pivots. Truly original creative breakthroughs. Building genuine trust and relationships that close deals.","highlight":"You handle the direction. Judgment, creativity, connection."}]}'></div>
+
 <!-- SECTION 3 -->
 <div class="lesson-section">
   <span class="section-label">The Limits</span>
