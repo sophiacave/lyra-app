@@ -13,7 +13,7 @@ export const metadata = {
   description: 'Practical AI guides by Sophia Cave. Claude vs ChatGPT, prompt engineering, AI automation, writing with AI, and building an AI-native business. No hype, just real systems.',
   alternates: {
     canonical: `${site.url}/blog/`,
-    types: { 'application/rss+xml': `${site.url}/blog/feed.xml` },
+    types: { 'application/rss+xml': `${site.url}/feed` },
   },
   openGraph: {
     title: `AI Blog — Claude Tips, Automation Guides & Honest Comparisons`,

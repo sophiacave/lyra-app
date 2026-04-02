@@ -24,7 +24,7 @@ export async function GET() {
     <description>AI education, automation, and convergence. Free courses, tutorials, and insights from Like One.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${baseUrl}/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${baseUrl}/feed" rel="self" type="application/rss+xml" />
 ${items}
   </channel>
 </rss>`;
