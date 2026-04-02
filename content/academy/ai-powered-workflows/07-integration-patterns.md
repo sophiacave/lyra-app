@@ -74,8 +74,39 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <span class="section-label">Quick Review</span>
-  <h2 class="section-title">Integration Architecture</h2>
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">API integration in Python.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — calling an API with authentication</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> requests
+<span style="color:#c084fc">import</span> os
+
+<span style="color:#71717a"># API key from environment variable (NEVER hardcode)</span>
+API_KEY = os.environ[<span style="color:#fbbf24">"SLACK_BOT_TOKEN"</span>]
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">send_to_slack</span>(channel: str, message: str):
+    <span style="color:#71717a">"""Post a message to Slack via their API."""</span>
+    response = requests.post(
+        <span style="color:#fbbf24">"https://slack.com/api/chat.postMessage"</span>,
+        headers={<span style="color:#fbbf24">"Authorization"</span>: <span style="color:#fbbf24">f"Bearer {API_KEY}"</span>},
+        json={<span style="color:#fbbf24">"channel"</span>: channel, <span style="color:#fbbf24">"text"</span>: message}
+    )
+    data = response.json()
+    <span style="color:#c084fc">if not</span> data[<span style="color:#fbbf24">"ok"</span>]:
+        <span style="color:#c084fc">raise</span> Exception(<span style="color:#fbbf24">f"Slack error: {data['error']}"</span>)
+    <span style="color:#c084fc">return</span> data
+
+<span style="color:#71717a"># Hub-and-spoke: one function per integration</span>
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">add_to_crm</span>(email, name):
+    <span style="color:#71717a">"""HubSpot API — create a contact."""</span>
+    <span style="color:#c084fc">return</span> requests.post(
+        <span style="color:#fbbf24">"https://api.hubapi.com/crm/v3/objects/contacts"</span>,
+        headers={<span style="color:#fbbf24">"Authorization"</span>: <span style="color:#fbbf24">f"Bearer {os.environ['HUBSPOT_KEY']}"</span>},
+        json={<span style="color:#fbbf24">"properties"</span>: {<span style="color:#fbbf24">"email"</span>: email, <span style="color:#fbbf24">"firstname"</span>: name}}
+    ).json()</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Each integration is one function. Your workflow chains them: <code>webhook trigger → classify with AI → add_to_crm() → send_to_slack()</code>. This is the hub-and-spoke pattern in code — your Python script is the hub.</p>
 </div>
 
 <div class="lesson-section">

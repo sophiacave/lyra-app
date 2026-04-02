@@ -74,8 +74,44 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <span class="section-label">Quick Review</span>
-  <h2 class="section-title">The Four Vital Signs</h2>
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Monitoring in Python.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — workflow monitoring with structured logging</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> time
+<span style="color:#c084fc">import</span> logging
+<span style="color:#c084fc">from</span> datetime <span style="color:#c084fc">import</span> datetime
+
+<span style="color:#71717a"># Structured logging — machine-readable, human-friendly</span>
+logging.basicConfig(level=logging.INFO,
+    format=<span style="color:#fbbf24">"%(asctime)s [%(levelname)s] %(message)s"</span>)
+log = logging.getLogger(<span style="color:#fbbf24">"workflow"</span>)
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">run_with_monitoring</span>(workflow_fn, *args):
+    <span style="color:#71717a">"""Wrap any workflow with timing + error tracking."""</span>
+    start = time.time()
+    <span style="color:#c084fc">try</span>:
+        result = workflow_fn(*args)
+        elapsed = time.time() - start
+        log.info(<span style="color:#fbbf24">f"✓ {workflow_fn.__name__} completed in {elapsed:.2f}s"</span>)
+
+        <span style="color:#71717a"># Alert if unusually slow</span>
+        <span style="color:#c084fc">if</span> elapsed > <span style="color:#fb923c">30</span>:
+            send_alert(<span style="color:#fbbf24">f"⚠️ {workflow_fn.__name__} took {elapsed:.0f}s "</span>
+                       <span style="color:#fbbf24">f"(expected &lt;30s)"</span>, level=<span style="color:#fbbf24">"warning"</span>)
+        <span style="color:#c084fc">return</span> result
+
+    <span style="color:#c084fc">except</span> Exception <span style="color:#c084fc">as</span> e:
+        elapsed = time.time() - start
+        log.error(<span style="color:#fbbf24">f"✗ {workflow_fn.__name__} FAILED after {elapsed:.2f}s: {e}"</span>)
+        send_alert(<span style="color:#fbbf24">f"🔴 {workflow_fn.__name__} failed: {e}"</span>, level=<span style="color:#fbbf24">"critical"</span>)
+        <span style="color:#c084fc">raise</span>
+
+<span style="color:#71717a"># Usage: wrap your workflow</span>
+run_with_monitoring(support_email_workflow, email_body, sender)</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">This wrapper logs every run with timing, catches failures with full error details, and sends tiered alerts (warning for slow, critical for failures). Wrap every workflow with it — five minutes of setup prevents weeks of silent failures.</p>
 </div>
 
 <div class="lesson-section">

@@ -78,6 +78,36 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Process mapping as a data structure.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — score processes to find the best automation targets</div>
+<pre style="margin:0;color:#e5e5e5"><code>processes = [
+    {
+        <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"Weekly client report"</span>,
+        <span style="color:#fbbf24">"frequency_per_week"</span>: <span style="color:#fb923c">5</span>,
+        <span style="color:#fbbf24">"minutes_per_run"</span>: <span style="color:#fb923c">45</span>,
+        <span style="color:#fbbf24">"steps"</span>: [
+            {<span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Pull data from analytics"</span>, <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"mechanical"</span>},
+            {<span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Copy to report template"</span>, <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"mechanical"</span>},
+            {<span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Write executive summary"</span>, <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"decision"</span>},
+            {<span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Add client-specific notes"</span>, <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"decision"</span>},
+            {<span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Export as PDF"</span>, <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"mechanical"</span>},
+            {<span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Email to client"</span>, <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"mechanical"</span>},
+        ]
+    },
+]
+
+<span style="color:#71717a"># Score each process: higher = automate first</span>
+<span style="color:#c084fc">for</span> p <span style="color:#c084fc">in</span> processes:
+    mechanical = sum(<span style="color:#fb923c">1</span> <span style="color:#c084fc">for</span> s <span style="color:#c084fc">in</span> p[<span style="color:#fbbf24">"steps"</span>] <span style="color:#c084fc">if</span> s[<span style="color:#fbbf24">"type"</span>] == <span style="color:#fbbf24">"mechanical"</span>)
+    score = p[<span style="color:#fbbf24">"frequency_per_week"</span>] * p[<span style="color:#fbbf24">"minutes_per_run"</span>] * mechanical
+    hours_saved = (p[<span style="color:#fbbf24">"frequency_per_week"</span>] * p[<span style="color:#fbbf24">"minutes_per_run"</span>] * <span style="color:#fb923c">52</span>) / <span style="color:#fb923c">60</span>
+    <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"{p['name']}: score={score}, {hours_saved:.0f} hrs/year saved"</span>)
+    <span style="color:#71717a"># → Weekly client report: score=900, 195 hrs/year saved</span></code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">The scoring formula: <code>frequency × time × mechanical_steps</code>. The weekly client report scores 900 (5 × 45 × 4 mechanical steps). That's 195 hours/year — nearly 5 full work weeks. This is how you prioritize what to automate first.</p>
 </div>
 
 <div class="lesson-section">

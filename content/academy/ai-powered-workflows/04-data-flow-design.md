@@ -74,8 +74,41 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <span class="section-label">Quick Review</span>
-  <h2 class="section-title">Data Flow Patterns</h2>
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Data flow patterns in Python.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — pass-through + accumulator patterns</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">onboarding_workflow</span>(signup_data: dict):
+    <span style="color:#71717a">"""Data accumulates as it flows through each step."""</span>
+
+    <span style="color:#71717a"># Step 1: Pass-through — email goes straight to CRM</span>
+    crm_id = add_to_crm(signup_data[<span style="color:#fbbf24">"email"</span>])  <span style="color:#71717a"># unchanged</span>
+
+    <span style="color:#71717a"># Step 2: Accumulator — enrich with new data</span>
+    context = {
+        **signup_data,                    <span style="color:#71717a"># keep original</span>
+        <span style="color:#fbbf24">"crm_id"</span>: crm_id,               <span style="color:#71717a"># add CRM ID</span>
+        <span style="color:#fbbf24">"company_size"</span>: lookup_company(   <span style="color:#71717a"># add company info</span>
+            signup_data[<span style="color:#fbbf24">"email"</span>]
+        ),
+    }
+
+    <span style="color:#71717a"># Step 3: Transform — AI normalizes messy input</span>
+    context[<span style="color:#fbbf24">"industry"</span>] = classify_industry(
+        signup_data.get(<span style="color:#fbbf24">"company"</span>, <span style="color:#fbbf24">"unknown"</span>)
+    )
+
+    <span style="color:#71717a"># Step 4: Every field available for personalization</span>
+    send_welcome_email(
+        to=context[<span style="color:#fbbf24">"email"</span>],           <span style="color:#71717a"># from step 0</span>
+        name=context[<span style="color:#fbbf24">"name"</span>],           <span style="color:#71717a"># from step 0</span>
+        industry=context[<span style="color:#fbbf24">"industry"</span>],   <span style="color:#71717a"># from step 3</span>
+        plan=recommend_plan(context)    <span style="color:#71717a"># uses ALL context</span>
+    )
+    <span style="color:#c084fc">return</span> context</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice: the <code>context</code> dictionary grows at each step. By step 4, it has the original signup data PLUS CRM ID, company size, and industry. That's the accumulator pattern. The email address passes through unchanged — that's the pass-through pattern.</p>
 </div>
 
 <div class="lesson-section">

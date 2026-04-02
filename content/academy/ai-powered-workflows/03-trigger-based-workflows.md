@@ -74,8 +74,55 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <span class="section-label">Quick Review</span>
-  <h2 class="section-title">Four Trigger Types</h2>
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Triggers in real code.</h2>
+  <p class="section-text">Here are all four trigger types as actual Python code you can run:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — event trigger (webhook with FastAPI)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> fastapi <span style="color:#c084fc">import</span> FastAPI, Request
+
+app = FastAPI()
+
+<span style="color:#38bdf8">@app.post</span>(<span style="color:#fbbf24">"/webhook/new-customer"</span>)
+<span style="color:#c084fc">async def</span> <span style="color:#38bdf8">handle_signup</span>(request: Request):
+    <span style="color:#71717a">"""Event trigger: fires when a customer signs up."""</span>
+    data = <span style="color:#c084fc">await</span> request.json()
+    customer_email = data[<span style="color:#fbbf24">"email"</span>]
+    customer_name = data[<span style="color:#fbbf24">"name"</span>]
+
+    <span style="color:#71717a"># Workflow starts here</span>
+    send_welcome_email(customer_email, customer_name)
+    add_to_crm(customer_email, customer_name)
+    notify_sales_team(customer_name)
+
+    <span style="color:#c084fc">return</span> {<span style="color:#fbbf24">"status"</span>: <span style="color:#fbbf24">"workflow triggered"</span>}</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — time trigger (scheduled with APScheduler)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> apscheduler.schedulers.blocking <span style="color:#c084fc">import</span> BlockingScheduler
+
+scheduler = BlockingScheduler()
+
+<span style="color:#38bdf8">@scheduler.scheduled_job</span>(<span style="color:#fbbf24">"cron"</span>, day_of_week=<span style="color:#fbbf24">"mon"</span>, hour=<span style="color:#fb923c">9</span>)
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">weekly_report</span>():
+    <span style="color:#71717a">"""Time trigger: every Monday at 9am."""</span>
+    data = fetch_weekly_metrics()
+    report = generate_report_with_ai(data)
+    send_to_slack(<span style="color:#fbbf24">"#team-updates"</span>, report)
+
+<span style="color:#38bdf8">@scheduler.scheduled_job</span>(<span style="color:#fbbf24">"interval"</span>, minutes=<span style="color:#fb923c">5</span>)
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">check_inventory</span>():
+    <span style="color:#71717a">"""Condition trigger: check every 5 min, act when threshold hit."""</span>
+    stock = get_inventory_levels()
+    low_items = [i <span style="color:#c084fc">for</span> i <span style="color:#c084fc">in</span> stock <span style="color:#c084fc">if</span> i[<span style="color:#fbbf24">"quantity"</span>] < <span style="color:#fb923c">50</span>]
+    <span style="color:#c084fc">if</span> low_items:
+        alert_purchasing_team(low_items)
+
+scheduler.start()</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Event triggers react instantly via webhooks. Time triggers run on a schedule. Condition triggers combine scheduled checking with threshold logic. Manual triggers are just API endpoints you call when you choose.</p>
 </div>
 
 <div class="lesson-section">

@@ -73,8 +73,39 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <span class="section-label">Quick Review</span>
-  <h2 class="section-title">Three Testing Layers</h2>
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Testing workflows with pytest.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — unit, integration, and chaos tests</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> pytest
+
+<span style="color:#71717a"># UNIT TEST: test one step in isolation</span>
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">test_classify_urgency</span>():
+    result = classify_urgency(<span style="color:#fbbf24">"My payment was charged twice!"</span>)
+    <span style="color:#c084fc">assert</span> result <span style="color:#c084fc">in</span> [<span style="color:#fbbf24">"LOW"</span>, <span style="color:#fbbf24">"MEDIUM"</span>, <span style="color:#fbbf24">"HIGH"</span>]
+    <span style="color:#c084fc">assert</span> result == <span style="color:#fbbf24">"HIGH"</span>  <span style="color:#71717a"># billing = urgent</span>
+
+<span style="color:#71717a"># INTEGRATION TEST: does step A's output work as step B's input?</span>
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">test_classify_then_route</span>():
+    urgency = classify_urgency(<span style="color:#fbbf24">"How do I reset my password?"</span>)
+    team = route_to_team(urgency)
+    <span style="color:#c084fc">assert</span> team <span style="color:#c084fc">in</span> [<span style="color:#fbbf24">"#urgent-support"</span>, <span style="color:#fbbf24">"#support-queue"</span>, <span style="color:#fbbf24">"#general"</span>]
+
+<span style="color:#71717a"># CHAOS GREMLIN: test with weird data</span>
+<span style="color:#38bdf8">@pytest.mark.parametrize</span>(<span style="color:#fbbf24">"input_text"</span>, [
+    <span style="color:#fbbf24">""</span>,                          <span style="color:#71717a"># empty</span>
+    <span style="color:#fbbf24">"🔥💀🤬"</span>,                     <span style="color:#71717a"># emoji only</span>
+    <span style="color:#fbbf24">"a" * 10000</span>,                  <span style="color:#71717a"># extremely long</span>
+    <span style="color:#fbbf24">"SELECT * FROM users; --"</span>,    <span style="color:#71717a"># injection attempt</span>
+    <span style="color:#fbbf24">"null"</span>,                       <span style="color:#71717a"># literal null string</span>
+])
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">test_classify_handles_chaos</span>(input_text):
+    <span style="color:#71717a">"""Workflow should never crash, even with garbage input."""</span>
+    result = classify_urgency(input_text)
+    <span style="color:#c084fc">assert</span> result <span style="color:#c084fc">in</span> [<span style="color:#fbbf24">"LOW"</span>, <span style="color:#fbbf24">"MEDIUM"</span>, <span style="color:#fbbf24">"HIGH"</span>]</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">The chaos gremlin test is the most important. If your workflow survives emoji-only input, SQL injection attempts, and 10,000-character strings, it is ready for production. Run <code>pytest -v</code> to see all tests pass.</p>
 </div>
 
 <div class="lesson-section">

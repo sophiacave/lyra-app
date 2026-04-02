@@ -73,8 +73,64 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <span class="section-label">Quick Review</span>
-  <h2 class="section-title">The Retry-Fallback-Alert Pattern</h2>
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Retry-fallback-alert in Python.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — production retry with exponential backoff</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> time
+<span style="color:#c084fc">import</span> anthropic
+
+client = anthropic.Anthropic()
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">classify_with_retry</span>(text: str, max_retries=<span style="color:#fb923c">3</span>):
+    <span style="color:#71717a">"""Retry → Fallback → Alert pattern."""</span>
+    <span style="color:#c084fc">for</span> attempt <span style="color:#c084fc">in</span> range(max_retries):
+        <span style="color:#c084fc">try</span>:
+            response = client.messages.create(
+                model=<span style="color:#fbbf24">"claude-haiku-4-5-20251001"</span>,
+                max_tokens=<span style="color:#fb923c">50</span>,
+                messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+                    <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">f"Classify as BILLING, TECHNICAL, or GENERAL:\n{text}"</span>}]
+            )
+            <span style="color:#c084fc">return</span> response.content[<span style="color:#fb923c">0</span>].text.strip()
+
+        <span style="color:#c084fc">except</span> anthropic.RateLimitError:
+            wait = <span style="color:#fb923c">5</span> * (<span style="color:#fb923c">3</span> ** attempt)  <span style="color:#71717a"># 5s, 15s, 45s</span>
+            <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"Rate limited. Retry {attempt+1}/{max_retries} in {wait}s"</span>)
+            time.sleep(wait)
+
+        <span style="color:#c084fc">except</span> anthropic.APIError <span style="color:#c084fc">as</span> e:
+            <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"API error: {e}. Retry {attempt+1}/{max_retries}"</span>)
+            time.sleep(<span style="color:#fb923c">5</span>)
+
+    <span style="color:#71717a"># FALLBACK: retries exhausted → default + flag</span>
+    send_alert(<span style="color:#fbbf24">"Classification API failed after 3 retries"</span>)
+    <span style="color:#c084fc">return</span> <span style="color:#fbbf24">"GENERAL"</span>  <span style="color:#71717a"># safe default category</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — AI confidence thresholds</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">route_by_confidence</span>(text: str):
+    <span style="color:#71717a">"""Route based on AI confidence level."""</span>
+    response = client.messages.create(
+        model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+        max_tokens=<span style="color:#fb923c">100</span>,
+        messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+            <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">f"Classify this ticket and rate your confidence 0-100:\n{text}\n"</span>
+                       <span style="color:#fbbf24">"Reply as JSON: {{\"category\": \"...\", \"confidence\": N}}"</span>}]
+    )
+    result = json.loads(response.content[<span style="color:#fb923c">0</span>].text)
+
+    <span style="color:#c084fc">if</span> result[<span style="color:#fbbf24">"confidence"</span>] >= <span style="color:#fb923c">80</span>:
+        auto_route(result[<span style="color:#fbbf24">"category"</span>])        <span style="color:#71717a"># act automatically</span>
+    <span style="color:#c084fc">elif</span> result[<span style="color:#fbbf24">"confidence"</span>] >= <span style="color:#fb923c">50</span>:
+        auto_route(result[<span style="color:#fbbf24">"category"</span>])        <span style="color:#71717a"># act but flag</span>
+        flag_for_review(result)
+    <span style="color:#c084fc">else</span>:
+        route_to_human(result)              <span style="color:#71717a"># too uncertain</span></code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">The retry pattern uses exponential backoff (5s → 15s → 45s) to handle transient API failures. The confidence threshold pattern turns AI uncertainty into a routing decision — high confidence acts, low confidence escalates.</p>
 </div>
 
 <div class="lesson-section">

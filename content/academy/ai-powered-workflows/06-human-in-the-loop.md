@@ -73,8 +73,46 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <span class="section-label">Quick Review</span>
-  <h2 class="section-title">Human-in-the-Loop Patterns</h2>
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">Approval gates in Python.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — approval gate with timeout and escalation</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
+<span style="color:#c084fc">from</span> datetime <span style="color:#c084fc">import</span> datetime, timedelta
+
+client = anthropic.Anthropic()
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">refund_workflow</span>(order_id: str, amount: float, reason: str):
+    <span style="color:#71717a">"""Trust ladder: auto-approve small, escalate large."""</span>
+
+    <span style="color:#71717a"># Step 1: AI assesses the request</span>
+    assessment = client.messages.create(
+        model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>, max_tokens=<span style="color:#fb923c">200</span>,
+        messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>,
+            <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">f"Assess this refund. Order: {order_id}, Amount: ${amount}, "</span>
+                       <span style="color:#fbbf24">f"Reason: {reason}. Reply JSON: {{\"approve\": bool, \"confidence\": 0-100}}"</span>}]
+    ).content[<span style="color:#fb923c">0</span>].text
+
+    result = json.loads(assessment)
+
+    <span style="color:#71717a"># Step 2: Trust ladder routing</span>
+    <span style="color:#c084fc">if</span> amount < <span style="color:#fb923c">50</span> <span style="color:#c084fc">and</span> result[<span style="color:#fbbf24">"confidence"</span>] >= <span style="color:#fb923c">80</span>:
+        process_refund(order_id, amount)    <span style="color:#71717a"># auto-approve</span>
+        log_decision(<span style="color:#fbbf24">"auto"</span>, order_id)
+
+    <span style="color:#c084fc">elif</span> amount < <span style="color:#fb923c">200</span>:
+        request_approval(                   <span style="color:#71717a"># review queue</span>
+            approver=<span style="color:#fbbf24">"support-lead"</span>,
+            timeout=timedelta(hours=<span style="color:#fb923c">4</span>),     <span style="color:#71717a"># auto-escalate if no response</span>
+            backup=<span style="color:#fbbf24">"support-manager"</span>,
+            data={<span style="color:#fbbf24">"order"</span>: order_id, <span style="color:#fbbf24">"amount"</span>: amount, <span style="color:#fbbf24">"ai_assessment"</span>: result}
+        )
+
+    <span style="color:#c084fc">else</span>:
+        escalate_to_manager(order_id)       <span style="color:#71717a"># human required</span></code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Under $50 with high AI confidence: auto-approved. Under $200: support lead reviews with a 4-hour timeout (auto-escalates to manager if no response). Over $200: always goes to a manager. That's the trust ladder in code.</p>
 </div>
 
 <div class="lesson-section">

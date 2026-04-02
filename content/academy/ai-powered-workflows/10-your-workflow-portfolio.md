@@ -80,6 +80,38 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">The Code</span>
+  <h2 class="section-title">A workflow documented as code.</h2>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — self-documenting workflow template</div>
+<pre style="margin:0;color:#e5e5e5"><code>WORKFLOW = {
+    <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"Customer Onboarding Pipeline"</span>,
+    <span style="color:#fbbf24">"purpose"</span>: <span style="color:#fbbf24">"Auto-onboard new customers with personalized welcome"</span>,
+    <span style="color:#fbbf24">"trigger"</span>: {
+        <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"event"</span>,
+        <span style="color:#fbbf24">"source"</span>: <span style="color:#fbbf24">"Stripe webhook: customer.subscription.created"</span>
+    },
+    <span style="color:#fbbf24">"steps"</span>: [
+        {<span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"classify"</span>, <span style="color:#fbbf24">"tool"</span>: <span style="color:#fbbf24">"Claude Haiku"</span>, <span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Classify customer segment"</span>},
+        {<span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"enrich"</span>, <span style="color:#fbbf24">"tool"</span>: <span style="color:#fbbf24">"Clearbit API"</span>, <span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Lookup company info"</span>},
+        {<span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"personalize"</span>, <span style="color:#fbbf24">"tool"</span>: <span style="color:#fbbf24">"Claude Sonnet"</span>, <span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Draft welcome email"</span>},
+        {<span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"send"</span>, <span style="color:#fbbf24">"tool"</span>: <span style="color:#fbbf24">"SendGrid"</span>, <span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Send personalized welcome"</span>},
+        {<span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"notify"</span>, <span style="color:#fbbf24">"tool"</span>: <span style="color:#fbbf24">"Slack API"</span>, <span style="color:#fbbf24">"action"</span>: <span style="color:#fbbf24">"Alert sales team"</span>},
+    ],
+    <span style="color:#fbbf24">"error_handling"</span>: {
+        <span style="color:#fbbf24">"retries"</span>: <span style="color:#fb923c">3</span>, <span style="color:#fbbf24">"backoff"</span>: <span style="color:#fbbf24">"exponential"</span>,
+        <span style="color:#fbbf24">"fallback"</span>: <span style="color:#fbbf24">"Send generic welcome, flag for manual follow-up"</span>,
+        <span style="color:#fbbf24">"alert_channel"</span>: <span style="color:#fbbf24">"#ops-alerts"</span>
+    },
+    <span style="color:#fbbf24">"dependencies"</span>: [<span style="color:#fbbf24">"Anthropic API"</span>, <span style="color:#fbbf24">"Clearbit"</span>, <span style="color:#fbbf24">"SendGrid"</span>, <span style="color:#fbbf24">"Slack"</span>],
+    <span style="color:#fbbf24">"known_limits"</span>: [
+        <span style="color:#fbbf24">"Clearbit free tier: 50 lookups/month"</span>,
+        <span style="color:#fbbf24">"SendGrid rate limit: 100 emails/second"</span>,
+    ]
+}</code></pre>
+</div>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">This is your workflow portfolio template in code. Every workflow you build gets this structure: purpose, trigger, steps, error handling, dependencies, and known limits. When something breaks at 2am, this documentation tells you exactly what to check.</p>
 </div>
 
 <div class="lesson-section">
