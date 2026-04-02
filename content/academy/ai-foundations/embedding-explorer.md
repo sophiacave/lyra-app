@@ -153,7 +153,7 @@ response = client.messages.create(
 
 </div>
 
-<script>
+<script type="text/x-lesson">
 var embWords={king:{x:3.8,y:3.5,color:'#c084fc'},queen:{x:3.2,y:4.2,color:'#c084fc'},prince:{x:4.2,y:3.0,color:'#c084fc'},princess:{x:3.6,y:3.8,color:'#c084fc'},man:{x:1.5,y:1.2,color:'#fb923c'},woman:{x:0.9,y:1.9,color:'#fb923c'},boy:{x:1.9,y:0.7,color:'#fb923c'},girl:{x:1.3,y:1.4,color:'#fb923c'},cat:{x:-2.0,y:1.5,color:'#34d399'},dog:{x:-1.5,y:1.0,color:'#34d399'},puppy:{x:-1.2,y:0.6,color:'#34d399'},kitten:{x:-1.7,y:1.8,color:'#34d399'},apple:{x:-1.0,y:-2.5,color:'#f472b6'},banana:{x:-0.5,y:-2.8,color:'#f472b6'},pizza:{x:0.8,y:-2.2,color:'#f472b6'},sushi:{x:1.2,y:-2.6,color:'#f472b6'},computer:{x:3.0,y:-1.5,color:'#38bdf8'},robot:{x:3.5,y:-0.8,color:'#38bdf8'},code:{x:2.5,y:-1.8,color:'#38bdf8'},AI:{x:3.2,y:-1.0,color:'#38bdf8'}};
 var wordList=Object.keys(embWords);
 var canvas=document.getElementById('embedCanvas');

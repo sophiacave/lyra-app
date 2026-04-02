@@ -30,7 +30,7 @@ css: "claude-beginners.css"
 
 </div>
 
-<script>
+<script type="text/x-lesson">
 const SLUG = 'claude-for-beginners';
 const LESSON_NUM = 3;
 

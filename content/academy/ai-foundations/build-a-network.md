@@ -146,7 +146,7 @@ probs = model(X)
 
 </div>
 
-<script>
+<script type="text/x-lesson">
 const area=document.getElementById('networkArea');
 if(area){
 const connCanvas=document.getElementById('connCanvas');

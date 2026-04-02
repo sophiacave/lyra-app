@@ -166,7 +166,7 @@ app.get("/user", (req, res) => {
 
 </div>
 
-<script>
+<script type="text/x-lesson">
 var templates=[
   {name:'Zero-Shot',tag:'ZERO-SHOT',desc:'No examples — just a clear instruction. Best for simple, well-defined tasks.',tip:'Be specific about format, length, and tone.',prompt:'Classify the following movie review as POSITIVE or NEGATIVE.\n\nReview: "This film was a masterpiece of storytelling. The performances were breathtaking and the cinematography was stunning."\n\nClassification:',output:'POSITIVE\n\nThe review uses strongly favorable language: "masterpiece," "breathtaking," and "stunning" all indicate a highly positive sentiment.'},
   {name:'Few-Shot',tag:'FEW-SHOT',desc:'Give 2-3 examples of input→output pairs before your actual request.',tip:'Make your examples diverse for better generalization.',prompt:'Convert these informal messages to professional emails:\n\nInformal: "hey can u send me that report asap"\nProfessional: "Hi, could you please send me the quarterly report at your earliest convenience? Thank you."\n\nInformal: "the meeting was kinda boring ngl"\nProfessional: "The meeting covered familiar ground. I\'d suggest a more focused agenda for next time."\n\nInformal: "yo this new feature is fire"\nProfessional:',output:'"I\'m impressed with the new feature — it\'s a significant improvement that should resonate well with our users. Great work by the development team."'},

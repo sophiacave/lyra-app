@@ -135,7 +135,7 @@ nearest = words[np.argmax(similarities)]
 
 </div>
 
-<script>
+<script type="text/x-lesson">
 var canvas=document.getElementById('embedCanvas');
 if(canvas){
 var ctx=canvas.getContext('2d');var dpr=window.devicePixelRatio||1;

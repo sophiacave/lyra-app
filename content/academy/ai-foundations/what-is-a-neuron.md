@@ -188,7 +188,7 @@ z = <span style="color:#fb923c">-1.5</span>
 
 </div>
 
-<script>
+<script type="text/x-lesson">
 let activationFn = 'step';
 const canvas = document.getElementById('neuronCanvas');
 if (canvas) {

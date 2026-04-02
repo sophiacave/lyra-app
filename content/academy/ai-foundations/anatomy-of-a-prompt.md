@@ -144,7 +144,7 @@ response = client.messages.create(
 
 </div>
 
-<script>
+<script type="text/x-lesson">
 var tokenColors=['#c084fc','#fb923c','#38bdf8','#34d399','#f472b6','#facc15','#a78bfa','#fb7185','#2dd4bf','#fbbf24'];
 
 function simpleTokenize(text){
