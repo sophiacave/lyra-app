@@ -53,6 +53,7 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Roadmap Quarters","instruction":"Match each quarter to its primary goal","pairs":[{"left":"Q1 (Months 1-3)","right":"Evidence — one pilot with clear metrics and a documented success story"},{"left":"Q2 (Months 4-6)","right":"Scale — expand pilot, launch second project, formalize governance"},{"left":"Q3 (Months 7-9)","right":"Operationalize — shift from projects to products with SLAs and monitoring"},{"left":"Q4 (Months 10-12)","right":"Transform — evaluate competitive position and plan Year 2"},{"left":"Strategy as practice","right":"The roadmap will change — the value is discipline to revisit quarterly"},{"left":"The normalization signal","right":"AI feels like a normal part of how work gets done, not a special project"}]}'></div>
 </div>
 
 <div class="lesson-section">

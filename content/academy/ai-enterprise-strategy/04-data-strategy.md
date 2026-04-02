@@ -46,6 +46,7 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Data Strategy Concepts","instruction":"Match each concept to its description","pairs":[{"left":"Data audit","right":"Inventory where data lives, its quality, who owns it, and who can access it"},{"left":"Lightweight governance","right":"Four questions: who accesses, what for, how protected, who is accountable"},{"left":"Centralized architecture","right":"Easier to govern but harder to build — one team controls all data"},{"left":"Federated architecture","right":"Teams move faster but consistency is harder to maintain"},{"left":"Data lake / warehouse","right":"Storage layer where raw and processed data lives"},{"left":"Serving layer","right":"Makes data available to AI models for inference and training"}]}'></div>
 </div>
 
 <div class="lesson-section">

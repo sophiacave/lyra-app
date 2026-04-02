@@ -46,6 +46,7 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"Change Management Strategies","instruction":"Match each challenge to the right approach","pairs":[{"left":"Employees fear AI will replace their jobs","right":"Frame AI as removing tedious work so they focus on meaningful problems"},{"left":"Nobody is using the new AI tool","right":"Find champions with early access — their enthusiasm becomes your best marketing"},{"left":"Executive team skeptical of AI ROI","right":"Engineer a quick win that saves time on a universally hated task"},{"left":"Rumors spreading about layoffs due to AI","right":"Control the narrative — communicate early, often, and honestly with concrete examples"},{"left":"One team adopted AI but others haven\'t","right":"Let champions train their peers — organic adoption beats top-down mandates"},{"left":"Resistance from middle management","right":"Show them how AI makes their team more productive, making them look good"}]}'></div>
 </div>
 
 <div class="lesson-section">

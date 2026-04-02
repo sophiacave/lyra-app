@@ -68,6 +68,7 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Measurement Framework","instruction":"Match each metric type to its purpose","pairs":[{"left":"Leading indicators","right":"Real-time technical metrics: model accuracy, latency, error rates"},{"left":"Lagging indicators","right":"Business value over time: revenue impact, cost reduction, satisfaction"},{"left":"Guardrail metrics","right":"Safety monitoring: bias rates, false positives, compliance violations"},{"left":"Attribution with confidence range","right":"15% improvement with 10-20% range is more credible than exact 15%"},{"left":"Human impact metrics","right":"Did AI make workdays less frustrating? Free up time for meaningful work?"},{"left":"Quarterly review cycle","right":"Regularly compare AI performance against baseline and business goals"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -65,6 +65,7 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Readiness Dimensions","instruction":"Match each readiness dimension to its key question","pairs":[{"left":"Data maturity","right":"Is your data clean, accessible, and governed?"},{"left":"Technical infrastructure","right":"Can your systems support AI workloads at scale?"},{"left":"Talent and skills","right":"Do you have people who can build, deploy, and maintain AI?"},{"left":"Organizational culture","right":"Does your organization tolerate experimentation and failure?"},{"left":"Strategic alignment","right":"Is AI connected to executive priorities and business goals?"},{"left":"Bottleneck principle","right":"Readiness is only as strong as the weakest dimension"}]}'></div>
 </div>
 
 <div class="lesson-section">

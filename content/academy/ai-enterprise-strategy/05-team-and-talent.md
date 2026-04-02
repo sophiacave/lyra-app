@@ -67,6 +67,7 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <div data-learn="MatchConnect" data-props='{"title":"AI Team Roles","instruction":"Match each role to its primary function","pairs":[{"left":"AI Product Manager","right":"Translates between business needs and technical capabilities"},{"left":"Data Engineer","right":"Builds pipelines that get the right data to the right place"},{"left":"ML Engineer","right":"Builds, trains, and optimizes the models themselves"},{"left":"MLOps Engineer","right":"Deploys, monitors, and maintains models in production"},{"left":"Domain expert with AI training","right":"Deep business knowledge + prompt skills = immediate value"},{"left":"Centralized team model","right":"Start here to build capability and standards before scaling"}]}'></div>
 </div>
 
 <div class="lesson-section">
