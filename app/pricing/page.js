@@ -20,9 +20,9 @@ const PLANS = [
     btn: { label: 'Go Pro — $4.90/mo', href: 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c', style: 'primary', external: true },
   },
   {
-    label: 'Best value', name: 'Annual — Founding', price: '$39', period: '/yr', was: '$390',
-    desc: "Everything in Pro. That's $3.33/mo. 90% off forever.",
-    features: ['Everything in Pro', 'Save vs monthly billing', '12 months of new content', 'All future content included', { text: 'Founding price — forever', highlight: true }],
+    label: 'Best value — save 33%', name: 'Annual — Founding', price: '$39', period: '/yr', was: '$390',
+    desc: "Everything in Pro. That's $3.25/mo — save 33% vs monthly. 90% off forever.",
+    features: ['Everything in Pro', { text: 'Save 33% vs monthly ($3.25/mo)', highlight: true }, '12 months of new content', 'All future content included', { text: 'Founding price — forever', highlight: true }],
     btn: { label: 'Go Annual — $39/yr', href: 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d', style: 'secondary', external: true },
   },
   {
@@ -132,6 +132,24 @@ export default function PricingPage() {
                 )}
               </div>
             ))}
+          </div>
+
+          {/* Why Go Pro — Outcome-driven */}
+          <div className="pricing-outcomes">
+            <h3 className="pricing-outcomes-title">What Pro members build:</h3>
+            <div className="pricing-outcomes-grid">
+              {[
+                { icon: '🤖', text: 'AI agents that run your workflows autonomously' },
+                { icon: '🧠', text: 'Persistent memory systems that never forget' },
+                { icon: '⚡', text: 'Automations that save 10-40 hours per week' },
+                { icon: '🔗', text: 'MCP integrations connecting AI to every tool you use' },
+              ].map(o => (
+                <div key={o.text} className="pricing-outcome-item">
+                  <span className="pricing-outcome-icon">{o.icon}</span>
+                  <span>{o.text}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="pricing-community-note">

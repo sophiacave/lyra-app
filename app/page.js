@@ -40,6 +40,17 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Founding Member Banner */}
+      <div className="site-founding-banner">
+        <div className="site-founding-inner">
+          <span className="site-founding-badge">🔥 Founding Member</span>
+          <span className="site-founding-text">
+            Lock in <strong>90% off forever</strong> — $4.90/mo instead of $49. Limited spots.
+          </span>
+          <Link href="/pricing" className="site-founding-cta">Claim Your Spot →</Link>
+        </div>
+      </div>
+
       {/* Stats */}
       <div className="site-stats-bar">
         <div className="site-stats-grid">
@@ -69,6 +80,29 @@ export default function HomePage() {
                 <div className="site-card-emoji">{c.emoji}</div>
                 <div className="site-card-title">{c.title}</div>
                 <div className="site-card-desc">{c.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="site-section">
+        <div className="site-container text-center">
+          <span className="site-section-tag">REAL RESULTS</span>
+          <h2 className="site-section-title">What founders are building.</h2>
+          <div className="site-card-grid home-card-grid-narrow">
+            {[
+              { quote: 'I automated 40 hours of weekly reporting in one weekend. The ROI calculator said $200k/year — it wasn\'t lying.', name: 'Marketing Director', detail: 'Completed AI-Powered Workflows' },
+              { quote: 'Built my first AI agent that actually works in production. Not a tutorial demo — a real system handling real customers.', name: 'Solo Founder', detail: 'Completed Build Your First AI Agent' },
+              { quote: 'Finally understand what Claude can actually do. Went from "write me a blog post" to building autonomous workflows.', name: 'Content Creator', detail: 'Completed Claude for Beginners → Claude Mastery' },
+            ].map(t => (
+              <div key={t.name} className="site-testimonial-card">
+                <div className="site-testimonial-quote">&ldquo;{t.quote}&rdquo;</div>
+                <div className="site-testimonial-author">
+                  <strong>{t.name}</strong>
+                  <span className="site-testimonial-detail">{t.detail}</span>
+                </div>
               </div>
             ))}
           </div>

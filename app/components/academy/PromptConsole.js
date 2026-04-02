@@ -1,49 +1,17 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { validatePrompt, gradePrompt } from '../../../lib/exercise-engine';
 import QualityGrader from '../console/QualityGrader';
 import PromptDiffView from '../console/PromptDiffView';
 import CelebrationEffects from '../console/CelebrationEffects';
 
-// Variable-speed typing — faster for common chars, pauses at punctuation
-function useTypingEffect(text, isActive) {
-  const [displayed, setDisplayed] = useState('');
-  const [isDone, setIsDone] = useState(false);
-
-  useEffect(() => {
-    if (!isActive || !text) {
-      setDisplayed('');
-      setIsDone(false);
-      return;
-    }
-
-    setIsDone(false);
-    let i = 0;
-    setDisplayed('');
-
-    const tick = () => {
-      i++;
-      setDisplayed(text.slice(0, i));
-      if (i >= text.length) {
-        setIsDone(true);
-        return;
-      }
-      const char = text[i - 1];
-      let delay = 16;
-      if (char === '.' || char === '!' || char === '?') delay = 120;
-      else if (char === ',' || char === ';' || char === ':') delay = 60;
-      else if (char === '\n') delay = 80;
-      else if (char === ' ') delay = 10;
-      else delay = 14 + Math.random() * 8;
-      timer = setTimeout(tick, delay);
-    };
-
-    let timer = setTimeout(tick, 30);
-    return () => clearTimeout(timer);
-  }, [text, isActive]);
-
-  return { displayed, isDone };
-}
+/**
+ * PromptConsole V2 — Zero-Keystroke Learning
+ *
+ * Core UX change: exercises can be completed with 1 CLICK via quick-answer
+ * buttons. Typing is still available for advanced users. Reduces decision
+ * fatigue by providing curated response options.
+ */
 
 // Type metadata for exercise badges
 const TYPE_META = {
@@ -55,6 +23,43 @@ const TYPE_META = {
   compare:  { icon: '⚖️', label: 'Compare', color: 'var(--text-secondary)' },
 };
 
+// Generate quick-answer options from exercise data
+function getQuickAnswers(exercise) {
+  if (!exercise) return [];
+  const answers = [];
+
+  // Good example is the gold standard — always offer if available
+  if (exercise.goodExample) {
+    answers.push({
+      label: '✓ Try the strong version',
+      value: exercise.goodExample,
+      type: 'good',
+    });
+  }
+
+  // Hint is a guided path — offer as primary if no goodExample
+  if (exercise.hint && exercise.hint !== exercise.goodExample) {
+    answers.push({
+      label: '💡 Use hint',
+      value: exercise.hint,
+      type: 'hint',
+    });
+  }
+
+  // Generate a starter from criteria keywords if we have them
+  if (exercise.criteria?.requiredKeywords?.length > 0 && answers.length < 2) {
+    const kws = exercise.criteria.requiredKeywords;
+    const starter = `I need help with ${kws.slice(0, 3).join(', ')}. Please provide a detailed, step-by-step approach.`;
+    answers.push({
+      label: '🚀 Quick start',
+      value: starter,
+      type: 'starter',
+    });
+  }
+
+  return answers;
+}
+
 // Parse instruction for scenario-based types: split at double newline
 function parseScenario(instruction) {
   const idx = instruction.indexOf('\n\n');
@@ -63,30 +68,32 @@ function parseScenario(instruction) {
 }
 
 export default function PromptConsole({ exercises = [], lessonTitle = '', onActivity }) {
-  const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
-  const [isTyping, setIsTyping] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [activeExercise, setActiveExercise] = useState(0);
   const [completedExercises, setCompletedExercises] = useState(new Set());
+  const [showCustomInput, setShowCustomInput] = useState(false);
+  const [input, setInput] = useState('');
   const inputRef = useRef(null);
   const historyRef = useRef(null);
-  const [currentResponse, setCurrentResponse] = useState('');
-  const [showResponse, setShowResponse] = useState(false);
   const [gradeResult, setGradeResult] = useState(null);
   const [showDiff, setShowDiff] = useState(false);
   const [celebrationTrigger, setCelebrationTrigger] = useState(0);
   const [allDoneTrigger, setAllDoneTrigger] = useState(0);
 
-  const { displayed, isDone } = useTypingEffect(currentResponse, showResponse);
+  const exercise = exercises[activeExercise] || null;
+  const exType = exercise?.type || 'freeform';
+  const meta = TYPE_META[exType] || TYPE_META.freeform;
+  const quickAnswers = exercise ? getQuickAnswers(exercise) : [];
+  const { intro, scenario } = exercise ? parseScenario(exercise.instruction) : { intro: '', scenario: null };
 
-  // Emit activity state to parent (console glow + status bar)
+  // Emit activity state to parent
   useEffect(() => {
     if (!onActivity) return;
-    if (isTyping && displayed) onActivity('responding');
-    else if (isTyping && !displayed) onActivity('responding');
+    if (isProcessing) onActivity('responding');
     else if (input.length > 0) onActivity('typing');
     else onActivity('idle');
-  }, [isTyping, displayed, input, onActivity]);
+  }, [isProcessing, input, onActivity]);
 
   // Emit celebration state
   useEffect(() => {
@@ -96,112 +103,91 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
     return () => clearTimeout(t);
   }, [celebrationTrigger, onActivity]);
 
-  useEffect(() => {
-    if (isDone && currentResponse) {
-      setHistory(prev => [...prev, { role: 'assistant', content: currentResponse }]);
-      setCurrentResponse('');
-      setShowResponse(false);
-      setIsTyping(false);
-    }
-  }, [isDone, currentResponse]);
-
+  // Auto-scroll history
   useEffect(() => {
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
     }
-  }, [history, displayed]);
+  }, [history]);
 
-  const exercise = exercises[activeExercise] || null;
-  const exType = exercise?.type || 'freeform';
-  const meta = TYPE_META[exType] || TYPE_META.freeform;
-  const usesTextarea = ['debug', 'analyze', 'rewrite', 'freeform', 'compare'].includes(exType);
-  const { intro, scenario } = exercise ? parseScenario(exercise.instruction) : { intro: '', scenario: null };
+  // Core submit logic — shared between quick answers and custom input
+  const submitAnswer = useCallback((text) => {
+    if (!text.trim() || isProcessing) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!input.trim() || isTyping) return;
-
-    const userMsg = input.trim();
+    const userMsg = text.trim();
     setInput('');
+    setShowCustomInput(false);
     setHistory(prev => [...prev, { role: 'user', content: userMsg }]);
-    setIsTyping(true);
+    setIsProcessing(true);
     setShowDiff(false);
-    // Grade every prompt for quality feedback
+
     const grade = gradePrompt(userMsg);
     setGradeResult(grade);
 
-    // If there's an exercise with criteria, use the engine first
-    if (exercise && exercise.criteria) {
+    // Validate against exercise criteria
+    if (exercise?.criteria) {
       const result = validatePrompt(userMsg, exercise);
       if (result.pass) {
-        setCompletedExercises(prev => new Set([...prev, activeExercise]));
-        setCelebrationTrigger(t => t + 1);
-        setCurrentResponse(result.feedback);
-        setShowResponse(true);
         const newCompleted = new Set([...completedExercises, activeExercise]);
+        setCompletedExercises(newCompleted);
+        setCelebrationTrigger(t => t + 1);
+        setHistory(prev => [...prev, { role: 'assistant', content: result.feedback }]);
+
         if (exercises.length > 0 && newCompleted.size === exercises.length) {
-          setTimeout(() => setAllDoneTrigger(t => t + 1), 1500);
+          setTimeout(() => setAllDoneTrigger(t => t + 1), 1200);
         }
+
+        // Auto-advance to next exercise
         setTimeout(() => {
           if (activeExercise < exercises.length - 1) {
-            setActiveExercise(activeExercise + 1);
+            setActiveExercise(prev => prev + 1);
           }
-        }, 2000);
+          setIsProcessing(false);
+        }, 1200);
         return;
       } else {
         if (exercise.badExample && exercise.goodExample) {
           setShowDiff(true);
         }
-        setCurrentResponse(result.feedback);
-        setShowResponse(true);
+        setHistory(prev => [...prev, { role: 'assistant', content: result.feedback }]);
+        setIsProcessing(false);
         return;
       }
     }
 
-    // Legacy: exercise with validate function
-    if (exercise && exercise.validate) {
-      const isCorrect = exercise.validate(userMsg);
-      if (isCorrect) {
-        setCompletedExercises(prev => new Set([...prev, activeExercise]));
-        setCelebrationTrigger(t => t + 1);
-        setCurrentResponse(exercise.successResponse || 'Great job! That prompt works perfectly.');
-        setShowResponse(true);
-        setTimeout(() => {
-          if (activeExercise < exercises.length - 1) {
-            setActiveExercise(activeExercise + 1);
-          }
-        }, 2000);
-        return;
-      }
-    }
-
-    // All exercises have criteria — if we reach here, it's freeform chat after exercises.
-    // Check if AI backend is available before streaming.
-    setIsTyping(false);
+    // Fallback for exercises without criteria
     setHistory(prev => [...prev, {
       role: 'assistant',
       content: exercise
-        ? 'Try rephrasing your response to match the exercise criteria. Check the hint for guidance!'
-        : 'Nice work completing the exercises! AI chat is coming soon — for now, head to claude.ai to keep practicing.',
+        ? 'Try including more specific details. Check the hint for guidance!'
+        : 'Nice work! Head to claude.ai to keep practicing.',
     }]);
+    setIsProcessing(false);
+  }, [exercise, exercises, activeExercise, completedExercises, isProcessing]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitAnswer(input);
   };
 
-  const handleTryPrompt = (prompt) => {
-    setInput(prompt);
-    inputRef.current?.focus();
-  };
-
-  // Handle textarea Enter (submit) vs Shift+Enter (newline)
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey && usesTextarea) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit(e);
+      submitAnswer(input);
+    }
+  };
+
+  const handleSkip = () => {
+    if (activeExercise < exercises.length - 1) {
+      setActiveExercise(prev => prev + 1);
+      setShowDiff(false);
+      setGradeResult(null);
     }
   };
 
   return (
     <div className="console-panel">
-      {/* Console header */}
+      {/* Compact header */}
       <div className="console-header">
         <div className="console-dots">
           <span className="console-dot dot-red" />
@@ -209,39 +195,62 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
           <span className="console-dot dot-green" />
         </div>
         <span className="console-title">
-          {lessonTitle ? `${lessonTitle} — Console` : 'Like One Console'}
+          Practice Console
         </span>
+        {exercises.length > 0 && (
+          <span className="console-progress-label">
+            {completedExercises.size}/{exercises.length}
+          </span>
+        )}
       </div>
 
-      {/* Exercise badge — type-aware */}
-      {exercise && (
-        <div className="console-exercise-bar">
-          <div className="console-exercise-badge" style={{ borderColor: meta.color }}>
-            <span className="console-exercise-icon">{meta.icon}</span>
-            <span className="console-exercise-label" style={{ color: meta.color }}>{meta.label}</span>
+      {/* Exercise card — clean, action-focused */}
+      {exercise && !completedExercises.has(activeExercise) && (
+        <div className="console-exercise-card">
+          <div className="console-exercise-meta">
+            <span className="console-exercise-badge-mini" style={{ color: meta.color }}>
+              {meta.icon} {meta.label}
+            </span>
+            <span className="console-exercise-counter">
+              {activeExercise + 1} of {exercises.length}
+            </span>
           </div>
-          <p className="console-exercise-prompt">{scenario ? intro : exercise.instruction}</p>
 
-          {/* Scenario block for debug/analyze/rewrite/compare */}
+          <p className="console-exercise-instruction">
+            {scenario ? intro : exercise.instruction}
+          </p>
+
           {scenario && (
-            <div className={`console-scenario console-scenario-${exType}`}>
-              <pre className="console-scenario-text">{scenario}</pre>
+            <pre className="console-scenario-block">{scenario}</pre>
+          )}
+
+          {/* Quick answer buttons — zero keystrokes */}
+          {quickAnswers.length > 0 && !isProcessing && (
+            <div className="console-quick-answers">
+              {quickAnswers.map((qa, i) => (
+                <button
+                  key={i}
+                  className={`console-quick-btn console-quick-${qa.type}`}
+                  onClick={() => submitAnswer(qa.value)}
+                >
+                  {qa.label}
+                </button>
+              ))}
+              <button
+                className="console-quick-btn console-quick-custom"
+                onClick={() => { setShowCustomInput(true); setTimeout(() => inputRef.current?.focus(), 100); }}
+              >
+                ✍️ Write my own
+              </button>
             </div>
           )}
 
-          {exercise.hint && (
-            <button
-              className="console-hint-btn"
-              onClick={() => handleTryPrompt(exercise.hint)}
-            >
-              Show hint
-            </button>
-          )}
-          <div className="console-exercise-progress">
+          {/* Progress pips */}
+          <div className="console-exercise-pips">
             {exercises.map((_, i) => (
               <span
                 key={i}
-                className={`console-exercise-pip ${
+                className={`console-pip ${
                   completedExercises.has(i) ? 'pip-done' : i === activeExercise ? 'pip-active' : ''
                 }`}
               />
@@ -250,97 +259,75 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         </div>
       )}
 
-      {/* Message history */}
-      <div className="console-history" ref={historyRef}>
-        {history.length === 0 && !isTyping && (
-          <div className="console-empty">
-            <div className="console-empty-icon">▸</div>
-            <p>Type a prompt below to get started.</p>
-            {exercise && (
-              <p className="console-empty-hint">
-                Try: <button className="console-inline-prompt" onClick={() => handleTryPrompt(exercise.hint || exercise.instruction)}>
-                  {exercise.hint || exercise.instruction}
-                </button>
-              </p>
-            )}
-          </div>
-        )}
+      {/* All complete state */}
+      {exercises.length > 0 && completedExercises.size === exercises.length && (
+        <div className="console-all-done">
+          <span className="console-all-done-icon">✦</span>
+          <span>All {exercises.length} exercises complete!</span>
+        </div>
+      )}
 
-        {history.map((msg, i) => (
-          <div key={i} className={`console-msg console-msg-${msg.role}`}>
-            <div className="console-msg-avatar">
-              {msg.role === 'user' ? '→' : '◆'}
-            </div>
-            <div className="console-msg-content">
-              <span className="console-msg-label">
-                {msg.role === 'user' ? 'You' : 'Faye'}
-              </span>
-              <div className="console-msg-text">{msg.content}</div>
-            </div>
-          </div>
-        ))}
-
-        {/* Typing effect for exercise validation responses */}
-        {isTyping && displayed && (
-          <div className="console-msg console-msg-assistant">
-            <div className="console-msg-avatar">◆</div>
-            <div className="console-msg-content">
-              <span className="console-msg-label">Faye</span>
-              <div className="console-msg-text">
-                {displayed}
-                <span className="console-cursor">▊</span>
+      {/* Conversation history — compact */}
+      {history.length > 0 && (
+        <div className="console-history console-history-compact" ref={historyRef}>
+          {history.map((msg, i) => (
+            <div key={i} className={`console-msg console-msg-${msg.role}`}>
+              <div className="console-msg-avatar">
+                {msg.role === 'user' ? '→' : '◆'}
+              </div>
+              <div className="console-msg-content">
+                <span className="console-msg-label">
+                  {msg.role === 'user' ? 'You' : 'Faye'}
+                </span>
+                <div className="console-msg-text">{msg.content}</div>
               </div>
             </div>
-          </div>
-        )}
+          ))}
 
-        {/* Typing indicator */}
-        {isTyping && !displayed && (
-          <div className="console-typing">
-            <span className="console-typing-dot" />
-            <span className="console-typing-dot" />
-            <span className="console-typing-dot" />
-          </div>
-        )}
-      </div>
+          {isProcessing && (
+            <div className="console-typing">
+              <span className="console-typing-dot" />
+              <span className="console-typing-dot" />
+              <span className="console-typing-dot" />
+            </div>
+          )}
+        </div>
+      )}
 
-      {/* Input — textarea for long-form types, input for prompt type */}
-      <form className="console-input-bar" onSubmit={handleSubmit}>
-        {usesTextarea ? (
+      {/* Custom input — only shown when user opts in */}
+      {showCustomInput && (
+        <form className="console-input-bar" onSubmit={handleSubmit}>
           <textarea
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={exercise ? exercise.placeholder || 'Type your response...' : 'Type a prompt...'}
+            placeholder={exercise?.placeholder || 'Write your response...'}
             className="console-input console-textarea"
-            disabled={isTyping}
+            disabled={isProcessing}
             autoComplete="off"
             rows={3}
           />
-        ) : (
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={exercise ? exercise.placeholder || 'Type your prompt...' : 'Type a prompt...'}
-            className="console-input"
-            disabled={isTyping}
-            autoComplete="off"
-          />
-        )}
-        <button
-          type="submit"
-          className="console-send-btn"
-          disabled={isTyping || !input.trim()}
-        >
-          ▸
-        </button>
-      </form>
+          <div className="console-input-actions">
+            <button type="submit" className="console-send-btn" disabled={isProcessing || !input.trim()}>
+              Submit ▸
+            </button>
+            <button type="button" className="console-cancel-btn" onClick={() => setShowCustomInput(false)}>
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
 
-      {/* Quality grader */}
-      {gradeResult && gradeResult.overall > 0 && (
+      {/* Skip button for non-completed exercises */}
+      {exercise && !completedExercises.has(activeExercise) && !isProcessing && activeExercise < exercises.length - 1 && (
+        <button className="console-skip-btn" onClick={handleSkip}>
+          Skip →
+        </button>
+      )}
+
+      {/* Quality grader — shown after custom input */}
+      {gradeResult && gradeResult.overall > 0 && showCustomInput && (
         <QualityGrader result={gradeResult} />
       )}
 
@@ -349,16 +336,8 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         <PromptDiffView
           badPrompt={exercise.badExample}
           goodPrompt={exercise.goodExample}
-          onTryGood={() => handleTryPrompt(exercise.goodExample)}
+          onTryGood={() => submitAnswer(exercise.goodExample)}
         />
-      )}
-
-      {/* Completion */}
-      {exercises.length > 0 && completedExercises.size === exercises.length && (
-        <div className="console-complete">
-          <span className="console-complete-icon">✦</span>
-          All exercises complete
-        </div>
       )}
 
       {/* Celebration effects */}
@@ -367,4 +346,3 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
     </div>
   );
 }
-
