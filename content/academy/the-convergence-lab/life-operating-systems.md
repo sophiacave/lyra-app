@@ -4,7 +4,6 @@ course: "the-convergence-lab"
 order: 6
 type: "lesson"
 free: false
-videoId: "7fec01bb-2fae-4021-a51f-46fc6ad50a3c"
 ---
 
 <div class="wrap">
