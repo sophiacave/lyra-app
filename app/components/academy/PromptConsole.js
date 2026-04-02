@@ -76,8 +76,6 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
   const [showDiff, setShowDiff] = useState(false);
   const [celebrationTrigger, setCelebrationTrigger] = useState(0);
   const [allDoneTrigger, setAllDoneTrigger] = useState(0);
-  const [aiProvider, setAiProvider] = useState(null);
-  const [streamingText, setStreamingText] = useState('');
 
   const { displayed, isDone } = useTypingEffect(currentResponse, showResponse);
 
@@ -111,60 +109,13 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
     }
-  }, [history, displayed, streamingText]);
+  }, [history, displayed]);
 
   const exercise = exercises[activeExercise] || null;
   const exType = exercise?.type || 'freeform';
   const meta = TYPE_META[exType] || TYPE_META.freeform;
   const usesTextarea = ['debug', 'analyze', 'rewrite', 'freeform', 'compare'].includes(exType);
   const { intro, scenario } = exercise ? parseScenario(exercise.instruction) : { intro: '', scenario: null };
-
-  // Stream response from /api/chat (Ollama -> Claude auto-routing)
-  const streamAIResponse = async (messages) => {
-    try {
-      const resp = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages }),
-      });
-
-      const provider = resp.headers.get('X-AI-Provider');
-      if (provider) setAiProvider(provider);
-
-      if (!resp.ok) {
-        const err = await resp.json().catch(() => ({ error: 'Unknown error' }));
-        return err.hint || err.error || 'AI unavailable.';
-      }
-
-      const reader = resp.body.getReader();
-      const decoder = new TextDecoder();
-      let full = '';
-      let buffer = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || '';
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const data = line.slice(6);
-          if (data === '[DONE]') break;
-          try {
-            const parsed = JSON.parse(data);
-            if (parsed.text) {
-              full += parsed.text;
-              setStreamingText(full);
-            }
-          } catch { /* skip */ }
-        }
-      }
-      return full || 'No response received.';
-    } catch (e) {
-      return `Connection error: ${e.message}`;
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -175,8 +126,6 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
     setHistory(prev => [...prev, { role: 'user', content: userMsg }]);
     setIsTyping(true);
     setShowDiff(false);
-    setStreamingText('');
-
     // Grade every prompt for quality feedback
     const grade = gradePrompt(userMsg);
     setGradeResult(grade);
@@ -226,20 +175,15 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
       }
     }
 
-    // Real AI response — stream from Ollama/Claude (auto-routed)
-    const chatMessages = [
-      ...history.filter(m => m.role === 'user' || m.role === 'assistant').slice(-10).map(m => ({
-        role: m.role, content: m.content,
-      })),
-      { role: 'user', content: exercise
-        ? `[Exercise context: ${exercise.instruction}]\n\nStudent response: ${userMsg}`
-        : userMsg },
-    ];
-
-    const aiResponse = await streamAIResponse(chatMessages);
-    setStreamingText('');
-    setHistory(prev => [...prev, { role: 'assistant', content: aiResponse }]);
+    // All exercises have criteria — if we reach here, it's freeform chat after exercises.
+    // Check if AI backend is available before streaming.
     setIsTyping(false);
+    setHistory(prev => [...prev, {
+      role: 'assistant',
+      content: exercise
+        ? 'Try rephrasing your response to match the exercise criteria. Check the hint for guidance!'
+        : 'Nice work completing the exercises! AI chat is coming soon — for now, head to claude.ai to keep practicing.',
+    }]);
   };
 
   const handleTryPrompt = (prompt) => {
@@ -336,24 +280,8 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
           </div>
         ))}
 
-        {/* Streaming AI response */}
-        {isTyping && streamingText && (
-          <div className="console-msg console-msg-assistant">
-            <div className="console-msg-avatar">◆</div>
-            <div className="console-msg-content">
-              <span className="console-msg-label">
-                Faye {aiProvider && <span style={{ opacity: 0.4, fontSize: '0.75em', marginLeft: 6 }}>via {aiProvider}</span>}
-              </span>
-              <div className="console-msg-text">
-                {streamingText}
-                <span className="console-cursor">▊</span>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Typing effect for exercise validation responses */}
-        {isTyping && !streamingText && displayed && (
+        {isTyping && displayed && (
           <div className="console-msg console-msg-assistant">
             <div className="console-msg-avatar">◆</div>
             <div className="console-msg-content">
@@ -367,7 +295,7 @@ export default function PromptConsole({ exercises = [], lessonTitle = '', onActi
         )}
 
         {/* Typing indicator */}
-        {isTyping && !displayed && !streamingText && (
+        {isTyping && !displayed && (
           <div className="console-typing">
             <span className="console-typing-dot" />
             <span className="console-typing-dot" />

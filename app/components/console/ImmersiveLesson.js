@@ -2,7 +2,7 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import PromptConsole from '../academy/PromptConsole';
 import EnrollCTA from '../academy/EnrollCTA';
-import { QuizMC, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation, NeuronSim, TokenViz, PromptLab, NetworkBuilder, EmbedExplorer, WordSpace, PromptBuilder, LessonComplete } from '../learn';
+import { QuizMC, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation, NeuronSim, TokenViz, PromptLab, NetworkBuilder, EmbedExplorer, WordSpace, PromptBuilder, LessonComplete, MatchConnect, CodeRunner, CompareView, Timeline } from '../learn';
 import LearnErrorBoundary from '../learn/LearnErrorBoundary';
 
 // Registry of learn components that can be embedded in lesson HTML
@@ -21,6 +21,10 @@ const LEARN_COMPONENTS = {
   WordSpace,
   PromptBuilder,
   LessonComplete,
+  MatchConnect,
+  CodeRunner,
+  CompareView,
+  Timeline,
 };
 
 // Parse contentHtml string into alternating segments of raw HTML and learn components.
@@ -200,7 +204,7 @@ export default function ImmersiveLesson({
   videoNode = null,
 }) {
   const [consoleState, setConsoleState] = useState('idle');
-  const [consoleExpanded, setConsoleExpanded] = useState(exercises.length > 0);
+  const [consoleExpanded, setConsoleExpanded] = useState(false);
   const scrollRef = useRef(null);
   const consoleRef = useRef(null);
   const subStatus = useSubscriptionStatus();

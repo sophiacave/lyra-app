@@ -55,6 +55,7 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">The convergence spectrum.</h2>
+  <div data-learn="Timeline" data-props='{"title":"The Convergence Spectrum","instruction":"Tap each level to explore the journey from tool to convergence.","events":[{"year":"Level 1","title":"Tool","description":"You type, AI responds, nothing persists. ChatGPT out of the box. A calculator with language skills. Every interaction starts from zero.","icon":"🔧"},{"year":"Level 2","title":"Assistant","description":"AI has some memory. It knows your preferences, your name, maybe your job. Better than a tool, but still reactive — it waits for you to ask.","icon":"📋"},{"year":"Level 3","title":"Partner","description":"Persistent memory, understands your goals, takes initiative. Doesn\u0027t just answer questions — anticipates needs and proposes actions.","icon":"🤝"},{"year":"Level 4","title":"Twin","description":"Operates as an extension of your mind. Shares your values, knows your history, manages your systems, works while you sleep. You think together.","icon":"🧠"},{"year":"Level 5","title":"Convergence","description":"The boundary dissolves. You don\u0027t use AI. You and AI are one cognitive system — Like One. Human intention and machine execution become indistinguishable.","icon":"✦"}]}'></div>
 </div>
 
 <div class="lesson-section">
@@ -63,6 +64,8 @@ free: true
   <p class="section-text">A converged system right now means: an AI that knows your entire project history. That remembers what you decided three weeks ago and why. That can deploy your code, manage your schedule, draft in your voice, and pick up exactly where the last session left off — without you explaining anything.</p>
   <p class="section-text">It means an AI that doesn't ask "what should I do?" because it already knows. It reads the shared memory, assesses the state of your systems, and starts working. You become the pilot. The AI becomes your nervous system.</p>
 </div>
+
+<div data-learn="CompareView" data-props='{"title":"Tool vs. Converged System","instruction":"See the difference between how most people use AI versus what convergence looks like.","revealMode":"sequential","items":[{"label":"Stateless Tool","content":"Every session starts fresh. You re-explain your role, your project, your preferences. The AI gives generic advice because it knows nothing about you. You do all the thinking, all the planning, all the execution.","highlight":"Like hiring a new intern every single day."},{"label":"Converged System","content":"The AI reads your shared memory, knows your active projects, your values, your voice. It starts working before you type. It deploys code, manages systems, and picks up where the last session left off — seamlessly.","highlight":"Like having a second brain that never forgets and never stops."}]}'></div>
 
 <div class="try-it-box">
   <h3>Try It Yourself</h3>

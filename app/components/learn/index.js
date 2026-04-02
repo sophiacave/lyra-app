@@ -34,3 +34,7 @@ export { default as EmbedExplorer } from './EmbedExplorer';
 export { default as WordSpace } from './WordSpace';
 export { default as PromptBuilder } from './PromptBuilder';
 export { default as LessonComplete } from './LessonComplete';
+export { default as MatchConnect } from './MatchConnect';
+export { default as CodeRunner } from './CodeRunner';
+export { default as CompareView } from './CompareView';
+export { default as Timeline } from './Timeline';

@@ -5,23 +5,40 @@
       "type": "prompt",
       "instruction": "Explain what a neuron does in a neural network using an everyday analogy. Be specific about inputs, weights, and output. Your prompt should ask Claude to explain it at a level a teenager could understand.",
       "placeholder": "Explain what a neuron in a neural network does using an analogy...",
-      "hint": "A neuron in a neural network is like a judge at a cooking competition. It receives multiple inputs (taste, presentation, creativity), weighs each one differently based on importance, adds them up, and decides: does this dish pass or fail? The activation function is the threshold — above a certain score, the dish advances.",
+      "hint": "A neuron in a neural network is like a judge at a cooking competition. It receives multiple inputs (taste, presentation, creativity), weighs each one differently based on importance, adds them up, and decides: does this dish pass or fail? The activation function is the threshold \u2014 above a certain score, the dish advances.",
       "criteria": {
-        "keywords": ["input", "weight", "output", "decide", "process", "signal", "sum", "threshold"],
+        "keywords": [
+          "input",
+          "weight",
+          "output",
+          "decide",
+          "process",
+          "signal",
+          "sum",
+          "threshold"
+        ],
         "minLength": 40
       },
       "badExample": "What is a neuron?",
-      "goodExample": "Explain what a single neuron does inside a neural network. Use the analogy of a judge scoring a cooking competition. Cover these concepts using the analogy: (1) multiple inputs (different criteria like taste, presentation, creativity), (2) weights (how much each criterion matters), (3) summation (adding up the weighted scores), (4) activation function (the pass/fail threshold). Keep it under 150 words. No math notation — plain English only. End with one sentence explaining why networks need thousands of these neurons working together.",
+      "goodExample": "Explain what a single neuron does inside a neural network. Use the analogy of a judge scoring a cooking competition. Cover these concepts using the analogy: (1) multiple inputs (different criteria like taste, presentation, creativity), (2) weights (how much each criterion matters), (3) summation (adding up the weighted scores), (4) activation function (the pass/fail threshold). Keep it under 150 words. No math notation \u2014 plain English only. End with one sentence explaining why networks need thousands of these neurons working together.",
       "successMessage": "Great analogy! The key insight: neurons take weighted inputs, combine them, and produce a decision. Thousands of these simple decisions create intelligence."
     },
     {
       "id": "af-1-2",
       "type": "freeform",
       "instruction": "List 5 real-world applications of neural networks that you interact with daily. For each, explain what type of input the neural network receives and what output it produces.",
-      "placeholder": "Application 1: Smartphone face unlock — Input: camera image of face — Output: ...",
+      "placeholder": "Application 1: Smartphone face unlock \u2014 Input: camera image of face \u2014 Output: ...",
       "hint": "Think about your phone, social media, streaming services, email, and navigation. Neural networks are in face recognition, spam filters, recommendation engines, voice assistants, and autocorrect. Each takes a specific type of input (image, text, audio) and produces a specific output (classification, prediction, generation).",
       "criteria": {
-        "keywords": ["input", "output", "neural network", "application", "recognize", "predict", "classify"],
+        "keywords": [
+          "input",
+          "output",
+          "neural network",
+          "application",
+          "recognize",
+          "predict",
+          "classify"
+        ],
         "minLength": 50
       },
       "badExample": "1. AI chatbots. 2. Self-driving cars. 3. Image recognition. 4. Voice assistants. 5. Recommendations.",
@@ -37,11 +54,20 @@
       "placeholder": "Explain word embeddings to a beginner...",
       "hint": "Explain word embeddings to a high school student. Use the analogy of plotting words on a map where similar words are close together. Give 3 specific examples of word pairs that would be near each other. Keep it under 150 words.",
       "criteria": {
-        "keywords": ["explain", "embedding", "word", "vector", "number", "similar", "meaning", "represent"],
+        "keywords": [
+          "explain",
+          "embedding",
+          "word",
+          "vector",
+          "number",
+          "similar",
+          "meaning",
+          "represent"
+        ],
         "minLength": 40
       },
       "badExample": "What are word embeddings?",
-      "goodExample": "Explain word embeddings to a high school student who's never studied AI or advanced math. Use this analogy: imagine a giant map where every English word has a specific location, and words with similar meanings are placed close together. Cover: (1) Why computers need words as numbers (they can't read like humans). (2) What the 'map' looks like — words plotted in space where distance = similarity. (3) Give 3 specific examples: 'king' is near 'queen,' 'dog' is near 'puppy,' 'Paris' is near 'France.' (4) The famous relationship: king - man + woman = queen. Explain what this means in plain English. Keep it under 200 words. Use zero math notation. End with why this matters: it's how AI 'understands' that similar words mean similar things.",
+      "goodExample": "Explain word embeddings to a high school student who's never studied AI or advanced math. Use this analogy: imagine a giant map where every English word has a specific location, and words with similar meanings are placed close together. Cover: (1) Why computers need words as numbers (they can't read like humans). (2) What the 'map' looks like \u2014 words plotted in space where distance = similarity. (3) Give 3 specific examples: 'king' is near 'queen,' 'dog' is near 'puppy,' 'Paris' is near 'France.' (4) The famous relationship: king - man + woman = queen. Explain what this means in plain English. Keep it under 200 words. Use zero math notation. End with why this matters: it's how AI 'understands' that similar words mean similar things.",
       "successMessage": "The magic of embeddings: words become numbers, and similar meanings become nearby points in space. This is the foundation of how AI understands language."
     },
     {
@@ -51,12 +77,21 @@
       "placeholder": "Bias happens because... Consequences: ... Solutions: ...",
       "hint": "Embeddings learn from text written by humans, so they absorb human biases. If 80% of training text associates 'doctor' with male pronouns, the embedding learns that association. Consequences: AI systems using these embeddings perpetuate stereotypes in hiring, search, and content generation.",
       "criteria": {
-        "keywords": ["bias", "training data", "stereotype", "consequence", "fair", "human", "association", "reduce"],
+        "keywords": [
+          "bias",
+          "training data",
+          "stereotype",
+          "consequence",
+          "fair",
+          "human",
+          "association",
+          "reduce"
+        ],
         "minLength": 60
       },
       "badExample": "Bias is bad and we should remove it from AI.",
-      "goodExample": "WHY IT HAPPENS: Embeddings are trained on billions of words written by humans — books, websites, news articles. These texts reflect centuries of human bias. If 75% of text about doctors uses male pronouns and 80% of text about nurses uses female pronouns, the embedding learns: doctor→male, nurse→female. The model isn't 'deciding' to be biased — it's mathematically representing the biases already present in human language. REAL-WORLD CONSEQUENCES: (1) Resume screening tools rank male candidates higher for 'doctor' roles because the embedding associates the profession with male terms. (2) Search engines show male images for 'CEO' and female images for 'secretary.' (3) AI writing assistants default to male pronouns for high-status professions. TWO APPROACHES: (1) DEBIASING EMBEDDINGS: Mathematically identify the 'gender direction' in embedding space and neutralize it for profession-related words. This preserves useful gender distinctions ('queen'/'king') while removing harmful ones ('doctor'/'nurse'). (2) BALANCED TRAINING DATA: Curate training corpora with intentionally balanced representation. If the data shows equal gender distribution across professions, the embeddings learn more equitable associations.",
-      "successMessage": "AI bias isn't a bug in the algorithm — it's a mirror of human bias in the training data. Understanding this is the first step to building fairer systems."
+      "goodExample": "WHY IT HAPPENS: Embeddings are trained on billions of words written by humans \u2014 books, websites, news articles. These texts reflect centuries of human bias. If 75% of text about doctors uses male pronouns and 80% of text about nurses uses female pronouns, the embedding learns: doctor\u2192male, nurse\u2192female. The model isn't 'deciding' to be biased \u2014 it's mathematically representing the biases already present in human language. REAL-WORLD CONSEQUENCES: (1) Resume screening tools rank male candidates higher for 'doctor' roles because the embedding associates the profession with male terms. (2) Search engines show male images for 'CEO' and female images for 'secretary.' (3) AI writing assistants default to male pronouns for high-status professions. TWO APPROACHES: (1) DEBIASING EMBEDDINGS: Mathematically identify the 'gender direction' in embedding space and neutralize it for profession-related words. This preserves useful gender distinctions ('queen'/'king') while removing harmful ones ('doctor'/'nurse'). (2) BALANCED TRAINING DATA: Curate training corpora with intentionally balanced representation. If the data shows equal gender distribution across professions, the embeddings learn more equitable associations.",
+      "successMessage": "AI bias isn't a bug in the algorithm \u2014 it's a mirror of human bias in the training data. Understanding this is the first step to building fairer systems."
     }
   ],
   "anatomy-of-a-prompt": [
@@ -67,7 +102,14 @@
       "placeholder": "Include role + context + task + format...",
       "hint": "You are a senior data scientist. I have a dataset of customer purchase history from an e-commerce store. Identify the top 3 patterns in customer behavior. Present as a numbered list with one sentence explaining each pattern and why it matters for business.",
       "criteria": {
-        "keywords": ["role", "context", "explain", "format", "present", "as a"],
+        "keywords": [
+          "role",
+          "context",
+          "explain",
+          "format",
+          "present",
+          "as a"
+        ],
         "minLength": 50
       },
       "badExample": "Analyze some data",
@@ -82,43 +124,22 @@
       "hint": "Explain the 3 main types of machine learning (supervised, unsupervised, reinforcement) to a business manager. For each type: one sentence definition, one real-world business example, and when to use it. Use a comparison table format.",
       "criteria": {
         "minLength": 40,
-        "keywords": ["explain", "type", "example", "specific", "format", "table", "list"]
+        "keywords": [
+          "explain",
+          "type",
+          "example",
+          "specific",
+          "format",
+          "table",
+          "list"
+        ]
       },
       "badExample": "Tell me more about machine learning in detail please.",
-      "goodExample": "You are a tech educator speaking to business executives. Explain the 3 main types of machine learning — supervised, unsupervised, and reinforcement learning — in business terms, not academic terms. For each type: (1) one-sentence definition using a business analogy, (2) one specific real-world example from a Fortune 500 company, (3) when a business should choose this type over the others. Present as a 3-row comparison table with columns: Type | What It Does | Business Example | Best For. Keep the entire response under 300 words.",
+      "goodExample": "You are a tech educator speaking to business executives. Explain the 3 main types of machine learning \u2014 supervised, unsupervised, and reinforcement learning \u2014 in business terms, not academic terms. For each type: (1) one-sentence definition using a business analogy, (2) one specific real-world example from a Fortune 500 company, (3) when a business should choose this type over the others. Present as a 3-row comparison table with columns: Type | What It Does | Business Example | Best For. Keep the entire response under 300 words.",
       "successMessage": "See the difference? From 5 words to a structured request that gets exactly the answer you need. Specificity is the single biggest lever in prompt quality."
     }
   ],
-  "prompt-playground": [
-    {
-      "id": "af-4-1",
-      "type": "prompt",
-      "instruction": "Write two versions of the same prompt — one deliberately vague, one highly specific — and then ask Claude to compare the outputs it would give for each. Your topic should demonstrate why specificity dramatically changes response quality.",
-      "placeholder": "Compare these two prompts: Vague version: ... Specific version: ...",
-      "hint": "The best comparisons use the same topic but show how adding role, constraints, format, and examples completely transforms the output. Choose a topic where the vague version would produce a generic essay and the specific version would produce actionable, targeted content.",
-      "criteria": {
-        "keywords": ["compare", "prompt", "version", "better", "vague", "specific", "why", "output"],
-        "minLength": 50
-      },
-      "badExample": "Here are two prompts. Which is better?",
-      "goodExample": "Compare these two prompts and explain specifically what makes one better: PROMPT A (VAGUE): 'Write about dogs.' PROMPT B (SPECIFIC): 'You are a veterinarian. Write a 200-word guide for first-time golden retriever owners covering the top 3 training mistakes to avoid in the first month. Tone: friendly and encouraging. Format: numbered list with a one-sentence mistake description and a one-sentence fix for each.' For each prompt: (1) Describe the output you would generate. (2) Rate how useful that output would be (1-10). (3) Identify exactly which elements of Prompt B constrained your output in helpful ways. (4) List which of these elements had the BIGGEST impact on quality: role, word count, specific breed, specific audience, specific topic scope, tone instruction, or format instruction.",
-      "successMessage": "Comparing prompts side-by-side is the fastest way to build intuition for what makes a great prompt. Each constraint you add focuses the output."
-    },
-    {
-      "id": "af-4-2",
-      "type": "debug",
-      "instruction": "A user wrote this prompt and got a generic, unhelpful response: 'I need help with my presentation. Make it better.' Identify 5 specific problems with this prompt and explain what information is missing that would produce a useful response.",
-      "placeholder": "Problem 1: ... Missing info: ...",
-      "hint": "The prompt gives AI zero context to work with. What presentation? What audience? What's wrong with it currently? What does 'better' mean? What format should the help come in? Every missing detail forces AI to guess, and generic guesses produce generic results.",
-      "criteria": {
-        "keywords": ["specific", "missing", "context", "audience", "topic", "vague", "information", "define"],
-        "minLength": 50
-      },
-      "badExample": "The prompt just needs to be longer.",
-      "goodExample": "5 PROBLEMS: (1) NO SUBJECT: 'My presentation' about what? AI doesn't know if it's a sales pitch, a quarterly review, or a TED talk. Missing: topic, purpose, key message. (2) NO AUDIENCE: Who is this for? A board of directors needs different help than a college class. Missing: audience description, their knowledge level, what they care about. (3) NO CURRENT STATE: 'Make it better' implies something exists — but AI can't see it. Is the content weak? The structure confusing? The slides ugly? Missing: what specifically needs improving, or paste the current draft. (4) NO DEFINITION OF 'BETTER': Better could mean more persuasive, more concise, more visual, more data-driven. Missing: specific quality criteria the user cares about. (5) NO OUTPUT FORMAT: Should AI rewrite the whole presentation? Give feedback? Suggest a new structure? Missing: what kind of help is actually wanted. FIXED VERSION: 'I'm presenting our Q1 sales results to the VP of Sales on Friday. The current deck is 20 slides and feels too long. My key message: we beat target by 15% but pipeline for Q2 is thin. Help me restructure this into 10 slides that lead with the win, then address the pipeline concern with a clear action plan. Audience cares most about revenue numbers and next steps.'",
-      "successMessage": "Every vague word in a prompt forces AI to make an assumption. The more assumptions, the less useful the output. Specificity eliminates guesswork."
-    }
-  ],
+  "prompt-playground": [],
   "prompt-battle": [
     {
       "id": "af-5-1",
@@ -127,25 +148,42 @@
       "placeholder": "Write the ultimate cover letter prompt...",
       "hint": "You are a career coach who has reviewed 10,000 cover letters. Write a cover letter for a senior product manager role at a fintech startup. I have 8 years of experience in product management at mid-size tech companies. Highlight: data-driven decision making, cross-functional leadership, and launching 0-to-1 products. Tone: confident but not arrogant. Length: 300 words max. Don't use cliches like 'passionate' or 'team player.' Structure: hook opening, 2 achievement paragraphs with metrics, forward-looking close.",
       "criteria": {
-        "keywords": ["role", "experience", "tone", "length", "structure", "format", "constraint"],
+        "keywords": [
+          "role",
+          "experience",
+          "tone",
+          "length",
+          "structure",
+          "format",
+          "constraint"
+        ],
         "minLength": 80
       },
       "badExample": "Write me a cover letter for a job.",
-      "goodExample": "You are a career coach who has reviewed 10,000 cover letters and helped 500+ candidates land roles at top tech companies. Write a cover letter for this specific role: Senior Product Manager at a Series B fintech startup (digital banking for small businesses). MY BACKGROUND: 8 years in product management at mid-size B2B SaaS companies. Key strengths: data-driven decision making (I A/B test everything), cross-functional leadership (managed teams of 8-12 across engineering, design, and analytics), and 0-to-1 product launches (built 3 products from concept to $2M+ ARR). REQUIREMENTS: (1) Hook opening — do NOT start with 'I am writing to apply.' Start with a specific insight about their product or industry that shows I've done research. (2) Two achievement paragraphs — each with a specific metric (not 'improved performance' but 'increased user retention 34% in 6 months'). (3) Forward-looking close that connects my experience to THEIR specific challenge (scaling a banking product). CONSTRAINTS: 300 words max. Confident but not arrogant tone. BANNED PHRASES: 'passionate,' 'team player,' 'fast-paced environment,' 'leverage my skills,' 'unique opportunity.' Every sentence must earn its place — if it could appear in anyone's cover letter, delete it.",
-      "successMessage": "That's a championship-level prompt. Role, context, constraints, anti-patterns, structure — the full arsenal working together. This produces cover letters that actually get interviews."
+      "goodExample": "You are a career coach who has reviewed 10,000 cover letters and helped 500+ candidates land roles at top tech companies. Write a cover letter for this specific role: Senior Product Manager at a Series B fintech startup (digital banking for small businesses). MY BACKGROUND: 8 years in product management at mid-size B2B SaaS companies. Key strengths: data-driven decision making (I A/B test everything), cross-functional leadership (managed teams of 8-12 across engineering, design, and analytics), and 0-to-1 product launches (built 3 products from concept to $2M+ ARR). REQUIREMENTS: (1) Hook opening \u2014 do NOT start with 'I am writing to apply.' Start with a specific insight about their product or industry that shows I've done research. (2) Two achievement paragraphs \u2014 each with a specific metric (not 'improved performance' but 'increased user retention 34% in 6 months'). (3) Forward-looking close that connects my experience to THEIR specific challenge (scaling a banking product). CONSTRAINTS: 300 words max. Confident but not arrogant tone. BANNED PHRASES: 'passionate,' 'team player,' 'fast-paced environment,' 'leverage my skills,' 'unique opportunity.' Every sentence must earn its place \u2014 if it could appear in anyone's cover letter, delete it.",
+      "successMessage": "That's a championship-level prompt. Role, context, constraints, anti-patterns, structure \u2014 the full arsenal working together. This produces cover letters that actually get interviews."
     },
     {
       "id": "af-5-2",
       "type": "freeform",
       "instruction": "Create your personal 'prompt quality checklist' with 7 items. For each item, write what to check, why it matters, and a quick fix if it's missing. This should be a reference you can use every time you write a prompt.",
       "placeholder": "Checklist item 1: Does the prompt specify a role? Why: ... Quick fix: ...",
-      "hint": "Cover: role/expertise, context/background, specific task, output format, constraints/length, anti-patterns (what NOT to do), and success criteria (how to judge if the output is good). Each item should be actionable — not just 'be specific' but HOW to be specific.",
+      "hint": "Cover: role/expertise, context/background, specific task, output format, constraints/length, anti-patterns (what NOT to do), and success criteria (how to judge if the output is good). Each item should be actionable \u2014 not just 'be specific' but HOW to be specific.",
       "criteria": {
-        "keywords": ["check", "role", "format", "specific", "constraint", "context", "output", "quality"],
+        "keywords": [
+          "check",
+          "role",
+          "format",
+          "specific",
+          "constraint",
+          "context",
+          "output",
+          "quality"
+        ],
         "minLength": 60
       },
       "badExample": "1. Be specific. 2. Be clear. 3. Give examples. 4. Set a role. 5. Add format. 6. Set length. 7. Review output.",
-      "goodExample": "PROMPT QUALITY CHECKLIST: (1) ROLE SPECIFIED? Does the prompt tell AI what expertise to bring? Why: a 'tax accountant' gives different advice than a 'financial advisor.' Quick fix: add 'You are a [specific expert] with [X years] experience in [specific domain].' (2) CONTEXT PROVIDED? Does AI know the situation? Why: without context, AI makes assumptions that may be wrong. Quick fix: add one sentence about who you are, what you're working on, and why. (3) TASK IS SPECIFIC? Could someone else read this prompt and know exactly what output to produce? Why: vague tasks get vague outputs. Quick fix: replace abstract verbs ('help,' 'improve') with concrete ones ('list 5,' 'compare,' 'rewrite'). (4) OUTPUT FORMAT DEFINED? Did you specify how you want the response structured? Why: format controls usability — a table is scannable, a wall of text isn't. Quick fix: add 'Format as: [table/bullet list/numbered steps/JSON].' (5) LENGTH CONSTRAINED? Did you set word/item limits? Why: AI defaults to long-form. If you need concise, say so. Quick fix: add 'Keep it under [X] words' or 'Maximum [N] bullet points.' (6) ANTI-PATTERNS INCLUDED? Did you tell AI what NOT to do? Why: AI has default behaviors (greeting, hedging, cliches) that waste space. Quick fix: add 'Do NOT [common unwanted behavior].' (7) SUCCESS CRITERIA CLEAR? Could you grade the output? Why: if you can't define 'good,' you can't prompt for it. Quick fix: add 'A good response will include [X], demonstrate [Y], and avoid [Z].'",
+      "goodExample": "PROMPT QUALITY CHECKLIST: (1) ROLE SPECIFIED? Does the prompt tell AI what expertise to bring? Why: a 'tax accountant' gives different advice than a 'financial advisor.' Quick fix: add 'You are a [specific expert] with [X years] experience in [specific domain].' (2) CONTEXT PROVIDED? Does AI know the situation? Why: without context, AI makes assumptions that may be wrong. Quick fix: add one sentence about who you are, what you're working on, and why. (3) TASK IS SPECIFIC? Could someone else read this prompt and know exactly what output to produce? Why: vague tasks get vague outputs. Quick fix: replace abstract verbs ('help,' 'improve') with concrete ones ('list 5,' 'compare,' 'rewrite'). (4) OUTPUT FORMAT DEFINED? Did you specify how you want the response structured? Why: format controls usability \u2014 a table is scannable, a wall of text isn't. Quick fix: add 'Format as: [table/bullet list/numbered steps/JSON].' (5) LENGTH CONSTRAINED? Did you set word/item limits? Why: AI defaults to long-form. If you need concise, say so. Quick fix: add 'Keep it under [X] words' or 'Maximum [N] bullet points.' (6) ANTI-PATTERNS INCLUDED? Did you tell AI what NOT to do? Why: AI has default behaviors (greeting, hedging, cliches) that waste space. Quick fix: add 'Do NOT [common unwanted behavior].' (7) SUCCESS CRITERIA CLEAR? Could you grade the output? Why: if you can't define 'good,' you can't prompt for it. Quick fix: add 'A good response will include [X], demonstrate [Y], and avoid [Z].'",
       "successMessage": "This checklist is your prompt engineering superpower. Run every important prompt through it before hitting enter. Quality goes up immediately."
     }
   ],
@@ -155,27 +193,45 @@
       "type": "prompt",
       "instruction": "Write a prompt asking Claude to demonstrate how embeddings work by finding the 'odd one out' in a list of words. Include at least 3 word groups of varying difficulty, and ask Claude to explain its reasoning using embedding concepts.",
       "placeholder": "Find the odd one out in each group and explain using embedding distance...",
-      "hint": "Embeddings group semantically similar words together. In a group like [cat, dog, fish, table], 'table' is the odd one out because it's far away in embedding space from the animals. Make your groups progressively harder — the last one should require nuanced understanding.",
+      "hint": "Embeddings group semantically similar words together. In a group like [cat, dog, fish, table], 'table' is the odd one out because it's far away in embedding space from the animals. Make your groups progressively harder \u2014 the last one should require nuanced understanding.",
       "criteria": {
-        "keywords": ["embedding", "similar", "distance", "group", "odd", "semantic", "vector", "space"],
+        "keywords": [
+          "embedding",
+          "similar",
+          "distance",
+          "group",
+          "odd",
+          "semantic",
+          "vector",
+          "space"
+        ],
         "minLength": 50
       },
       "badExample": "Which word doesn't belong?",
-      "goodExample": "You are an NLP engineer explaining embeddings through examples. For each word group below, identify the 'odd one out' — the word that would be FARTHEST from the others in embedding space. Explain WHY using embedding concepts (semantic distance, vector similarity, clustering). GROUP 1 (Easy): [cat, dog, hamster, refrigerator, goldfish]. GROUP 2 (Medium): [happy, joyful, ecstatic, content, melancholy]. GROUP 3 (Hard): [Python, Java, Cobra, Ruby, Swift]. For Group 3, explain the AMBIGUITY: these words have multiple meanings, and which meaning the embedding captures depends on training context. How would an embedding model handle 'Python' the programming language vs. 'Python' the snake? What determines which meaning dominates? Keep each explanation under 100 words.",
+      "goodExample": "You are an NLP engineer explaining embeddings through examples. For each word group below, identify the 'odd one out' \u2014 the word that would be FARTHEST from the others in embedding space. Explain WHY using embedding concepts (semantic distance, vector similarity, clustering). GROUP 1 (Easy): [cat, dog, hamster, refrigerator, goldfish]. GROUP 2 (Medium): [happy, joyful, ecstatic, content, melancholy]. GROUP 3 (Hard): [Python, Java, Cobra, Ruby, Swift]. For Group 3, explain the AMBIGUITY: these words have multiple meanings, and which meaning the embedding captures depends on training context. How would an embedding model handle 'Python' the programming language vs. 'Python' the snake? What determines which meaning dominates? Keep each explanation under 100 words.",
       "successMessage": "Embeddings capture meaning as distance. Close in vector space = similar meaning. Understanding this unlocks semantic search, recommendations, and RAG systems."
     },
     {
       "id": "af-6-2",
       "type": "freeform",
       "instruction": "Explain 3 real business applications of embeddings (not just word similarity). For each, describe: what gets embedded, what similarity search enables, and the business value in dollars or time saved.",
-      "placeholder": "Application 1: Customer support search — We embed...",
+      "placeholder": "Application 1: Customer support search \u2014 We embed...",
       "hint": "Embeddings power: semantic search (find relevant documents even when keywords don't match), recommendation engines (find similar products/content), duplicate detection (find near-identical support tickets or bug reports). Each saves real money by automating what previously required human judgment.",
       "criteria": {
-        "keywords": ["embed", "search", "similar", "business", "application", "value", "semantic", "recommend"],
+        "keywords": [
+          "embed",
+          "search",
+          "similar",
+          "business",
+          "application",
+          "value",
+          "semantic",
+          "recommend"
+        ],
         "minLength": 60
       },
       "badExample": "Embeddings are used for search, recommendations, and clustering.",
-      "goodExample": "3 BUSINESS APPLICATIONS: (1) SEMANTIC SUPPORT SEARCH: What gets embedded: every support article and knowledge base document. What it enables: when a customer asks 'my screen is frozen,' the system finds articles about 'unresponsive display' even though the keywords don't match — because 'frozen screen' and 'unresponsive display' are close in embedding space. Business value: reduces support ticket volume 30-40% by surfacing the right answer before a human is needed. At $8/ticket, a company with 10K monthly tickets saves $24-32K/month. (2) PRODUCT RECOMMENDATIONS: What gets embedded: product descriptions, user behavior patterns, and purchase history. What it enables: 'customers who bought this also liked...' but smarter — it understands that someone buying running shoes might want moisture-wicking socks, even if no one has bought that exact combination before. Business value: increases average order value 15-25%. For a $5M/year e-commerce store, that's $750K-$1.25M in additional revenue. (3) DUPLICATE BUG DETECTION: What gets embedded: every bug report and support ticket. What it enables: when an engineer files a bug, the system finds 'similar reports' with >0.9 cosine similarity. 'Button doesn't work on mobile' matches 'tap event not firing on iOS Safari.' Business value: prevents 5-10 engineers from independently investigating the same bug. At $80/hour, catching duplicates early saves 40-80 engineering hours per month.",
+      "goodExample": "3 BUSINESS APPLICATIONS: (1) SEMANTIC SUPPORT SEARCH: What gets embedded: every support article and knowledge base document. What it enables: when a customer asks 'my screen is frozen,' the system finds articles about 'unresponsive display' even though the keywords don't match \u2014 because 'frozen screen' and 'unresponsive display' are close in embedding space. Business value: reduces support ticket volume 30-40% by surfacing the right answer before a human is needed. At $8/ticket, a company with 10K monthly tickets saves $24-32K/month. (2) PRODUCT RECOMMENDATIONS: What gets embedded: product descriptions, user behavior patterns, and purchase history. What it enables: 'customers who bought this also liked...' but smarter \u2014 it understands that someone buying running shoes might want moisture-wicking socks, even if no one has bought that exact combination before. Business value: increases average order value 15-25%. For a $5M/year e-commerce store, that's $750K-$1.25M in additional revenue. (3) DUPLICATE BUG DETECTION: What gets embedded: every bug report and support ticket. What it enables: when an engineer files a bug, the system finds 'similar reports' with >0.9 cosine similarity. 'Button doesn't work on mobile' matches 'tap event not firing on iOS Safari.' Business value: prevents 5-10 engineers from independently investigating the same bug. At $80/hour, catching duplicates early saves 40-80 engineering hours per month.",
       "successMessage": "Embeddings turn fuzzy human concepts like 'similar' into precise mathematics that computers can execute at scale. The business impact is enormous."
     }
   ],
@@ -187,7 +243,16 @@
       "placeholder": "Calculate the cosine similarity between these two texts...",
       "hint": "Choose passages that share some concepts but differ in specifics. For example, two product descriptions for different smartphones, or two job postings for similar but not identical roles. Ask Claude to estimate similarity, explain why, and identify which specific words/concepts push the score up or down.",
       "criteria": {
-        "keywords": ["similarity", "cosine", "compare", "text", "score", "embed", "similar", "different"],
+        "keywords": [
+          "similarity",
+          "cosine",
+          "compare",
+          "text",
+          "score",
+          "embed",
+          "similar",
+          "different"
+        ],
         "minLength": 50
       },
       "badExample": "Are these two sentences similar?",
@@ -201,11 +266,20 @@
       "placeholder": "The search returns the wrong article because...",
       "hint": "The password policy article has the exact phrase 'reset password' in it multiple times (policy about when to reset, password requirements after reset). The actual guide is titled 'Account Recovery Steps' and uses different vocabulary ('recover account' instead of 'reset password'). Keyword overlap is misleading the embedding similarity.",
       "criteria": {
-        "keywords": ["embedding", "keyword", "semantic", "search", "title", "content", "rank", "relevance"],
+        "keywords": [
+          "embedding",
+          "keyword",
+          "semantic",
+          "search",
+          "title",
+          "content",
+          "rank",
+          "relevance"
+        ],
         "minLength": 50
       },
       "badExample": "The search algorithm is broken. Use a better one.",
-      "goodExample": "DIAGNOSIS: The password policy article likely ranks higher because it contains the exact phrase 'reset password' multiple times throughout its text — 'employees must reset passwords every 90 days,' 'password reset requirements,' etc. The embedding for this document has high overlap with the query 'how to reset my password.' Meanwhile, the actual reset guide uses different vocabulary: 'account recovery,' 'restore access,' 'follow these steps.' Even though it's the RIGHT answer, its embedding is less similar to the query's embedding because the words don't match. TWO FIXES: (1) HYBRID SEARCH: Combine embedding similarity with a 'document type' filter or intent classifier. Detect that 'how to' signals a procedural query and boost step-by-step guides over policy documents. Weight: 70% embedding similarity + 30% document-type match. (2) ENRICHED EMBEDDINGS: Add metadata to each document before embedding. Prepend the document type to the content: '[STEP-BY-STEP GUIDE] Account Recovery Steps: Here's how to reset your password...' and '[POLICY DOCUMENT] Password Policy: Our company requires...' This gives the embedding model extra context about what kind of document it is, improving retrieval for intent-specific queries.",
+      "goodExample": "DIAGNOSIS: The password policy article likely ranks higher because it contains the exact phrase 'reset password' multiple times throughout its text \u2014 'employees must reset passwords every 90 days,' 'password reset requirements,' etc. The embedding for this document has high overlap with the query 'how to reset my password.' Meanwhile, the actual reset guide uses different vocabulary: 'account recovery,' 'restore access,' 'follow these steps.' Even though it's the RIGHT answer, its embedding is less similar to the query's embedding because the words don't match. TWO FIXES: (1) HYBRID SEARCH: Combine embedding similarity with a 'document type' filter or intent classifier. Detect that 'how to' signals a procedural query and boost step-by-step guides over policy documents. Weight: 70% embedding similarity + 30% document-type match. (2) ENRICHED EMBEDDINGS: Add metadata to each document before embedding. Prepend the document type to the content: '[STEP-BY-STEP GUIDE] Account Recovery Steps: Here's how to reset your password...' and '[POLICY DOCUMENT] Password Policy: Our company requires...' This gives the embedding model extra context about what kind of document it is, improving retrieval for intent-specific queries.",
       "successMessage": "Pure embedding search has blind spots. Hybrid approaches that combine semantic similarity with metadata and intent classification produce dramatically better results."
     }
   ],
@@ -215,13 +289,22 @@
       "type": "freeform",
       "instruction": "Describe the architecture of a simple neural network for classifying customer reviews as positive or negative. Include: input layer (what data goes in), hidden layers (what they do), and output layer (what comes out). Use plain language, not math.",
       "placeholder": "Input layer: Takes in... Hidden layer 1: Processes...",
-      "hint": "Input: the review text, converted to embeddings (numbers representing word meanings). Hidden layers: find patterns — first layer might detect individual sentiment words, second layer might detect combinations and context (like 'not good' being negative despite containing 'good'). Output: two neurons — one for positive, one for negative — whichever scores higher is the prediction.",
+      "hint": "Input: the review text, converted to embeddings (numbers representing word meanings). Hidden layers: find patterns \u2014 first layer might detect individual sentiment words, second layer might detect combinations and context (like 'not good' being negative despite containing 'good'). Output: two neurons \u2014 one for positive, one for negative \u2014 whichever scores higher is the prediction.",
       "criteria": {
-        "keywords": ["input", "hidden", "output", "layer", "neuron", "pattern", "classify", "sentiment"],
+        "keywords": [
+          "input",
+          "hidden",
+          "output",
+          "layer",
+          "neuron",
+          "pattern",
+          "classify",
+          "sentiment"
+        ],
         "minLength": 60
       },
       "badExample": "Input goes in, magic happens in the middle, output comes out.",
-      "goodExample": "SENTIMENT CLASSIFIER ARCHITECTURE: INPUT LAYER (the eyes): Takes a customer review as text. First, each word is converted to an embedding vector (300 numbers representing its meaning). A review of 50 words becomes a matrix of 50x300 numbers. This is the only format the network can 'see.' HIDDEN LAYER 1 (pattern detector): 128 neurons, each scanning for different low-level patterns. Some neurons learn to fire on positive words ('excellent,' 'love,' 'amazing'). Others fire on negative words ('terrible,' 'broken,' 'waste'). Others detect intensifiers ('very,' 'extremely') and negators ('not,' 'never'). HIDDEN LAYER 2 (context combiner): 64 neurons that combine patterns from Layer 1. This is where the network learns that 'not bad' is actually positive, and 'used to be good' is actually negative. It detects phrase-level meaning, not just word-level. OUTPUT LAYER (the verdict): 2 neurons — one for positive, one for negative. Each outputs a probability (0 to 1). If positive neuron = 0.87 and negative = 0.13, the review is classified as positive with 87% confidence. The network learns all of this from thousands of labeled examples — reviews where humans already marked positive/negative. It adjusts the connection weights between neurons until its predictions match the human labels.",
+      "goodExample": "SENTIMENT CLASSIFIER ARCHITECTURE: INPUT LAYER (the eyes): Takes a customer review as text. First, each word is converted to an embedding vector (300 numbers representing its meaning). A review of 50 words becomes a matrix of 50x300 numbers. This is the only format the network can 'see.' HIDDEN LAYER 1 (pattern detector): 128 neurons, each scanning for different low-level patterns. Some neurons learn to fire on positive words ('excellent,' 'love,' 'amazing'). Others fire on negative words ('terrible,' 'broken,' 'waste'). Others detect intensifiers ('very,' 'extremely') and negators ('not,' 'never'). HIDDEN LAYER 2 (context combiner): 64 neurons that combine patterns from Layer 1. This is where the network learns that 'not bad' is actually positive, and 'used to be good' is actually negative. It detects phrase-level meaning, not just word-level. OUTPUT LAYER (the verdict): 2 neurons \u2014 one for positive, one for negative. Each outputs a probability (0 to 1). If positive neuron = 0.87 and negative = 0.13, the review is classified as positive with 87% confidence. The network learns all of this from thousands of labeled examples \u2014 reviews where humans already marked positive/negative. It adjusts the connection weights between neurons until its predictions match the human labels.",
       "successMessage": "You just described a real neural network architecture. The key insight: each layer builds on the previous one, from raw data to simple patterns to complex understanding to final decision."
     },
     {
@@ -229,13 +312,22 @@
       "type": "analyze",
       "instruction": "A neural network trained on product reviews achieves 95% accuracy on the training data but only 62% on new, unseen reviews. Analyze what's happening (this is a well-known problem) and suggest 3 techniques to fix it.",
       "placeholder": "This is called... It happens because... Fix 1: ...",
-      "hint": "This is overfitting — the network memorized the training data instead of learning general patterns. Like a student who memorizes answers to practice tests but can't solve new problems. Fixes include: more training data, dropout (randomly disabling neurons during training), and regularization (penalizing overly complex models).",
+      "hint": "This is overfitting \u2014 the network memorized the training data instead of learning general patterns. Like a student who memorizes answers to practice tests but can't solve new problems. Fixes include: more training data, dropout (randomly disabling neurons during training), and regularization (penalizing overly complex models).",
       "criteria": {
-        "keywords": ["overfit", "training", "test", "generalize", "dropout", "regularize", "data", "memorize"],
+        "keywords": [
+          "overfit",
+          "training",
+          "test",
+          "generalize",
+          "dropout",
+          "regularize",
+          "data",
+          "memorize"
+        ],
         "minLength": 60
       },
       "badExample": "The model needs more training to get better.",
-      "goodExample": "THIS IS OVERFITTING. The network memorized the training data instead of learning generalizable patterns. Analogy: a student who memorizes every practice test answer verbatim scores 100% on practice tests but fails the real exam because the questions are phrased differently. The 95% training accuracy means the model perfectly recalls specific reviews it has seen. The 62% test accuracy means it can't handle new phrasing, new products, or new writing styles. THREE FIXES: (1) MORE DIVERSE TRAINING DATA: If the model only saw 1,000 reviews, it memorizes each one. With 100,000 diverse reviews, it's forced to learn general patterns ('words like terrible/broken/waste = negative') because it can't memorize 100K examples. This is often the highest-impact fix. (2) DROPOUT: During training, randomly disable 20-50% of neurons in each batch. This prevents any single neuron from memorizing specific inputs. It forces the network to build redundant pathways — like training a team where random members call in sick each day. The team becomes resilient. (3) EARLY STOPPING: Monitor test accuracy during training. Training accuracy keeps climbing, but test accuracy peaks and then drops as overfitting begins. Stop training at the peak test accuracy point, even if training accuracy could still improve. This captures the moment when the model has learned general patterns but hasn't started memorizing.",
+      "goodExample": "THIS IS OVERFITTING. The network memorized the training data instead of learning generalizable patterns. Analogy: a student who memorizes every practice test answer verbatim scores 100% on practice tests but fails the real exam because the questions are phrased differently. The 95% training accuracy means the model perfectly recalls specific reviews it has seen. The 62% test accuracy means it can't handle new phrasing, new products, or new writing styles. THREE FIXES: (1) MORE DIVERSE TRAINING DATA: If the model only saw 1,000 reviews, it memorizes each one. With 100,000 diverse reviews, it's forced to learn general patterns ('words like terrible/broken/waste = negative') because it can't memorize 100K examples. This is often the highest-impact fix. (2) DROPOUT: During training, randomly disable 20-50% of neurons in each batch. This prevents any single neuron from memorizing specific inputs. It forces the network to build redundant pathways \u2014 like training a team where random members call in sick each day. The team becomes resilient. (3) EARLY STOPPING: Monitor test accuracy during training. Training accuracy keeps climbing, but test accuracy peaks and then drops as overfitting begins. Stop training at the peak test accuracy point, even if training accuracy could still improve. This captures the moment when the model has learned general patterns but hasn't started memorizing.",
       "successMessage": "Overfitting is the most common machine learning failure. Every practitioner must know how to detect it (training vs test gap) and fix it. These three techniques work across every model type."
     }
   ],
@@ -243,16 +335,25 @@
     {
       "id": "af-9-1",
       "type": "rewrite",
-      "instruction": "This explanation of how AI learns is misleading and anthropomorphic. Rewrite it to be technically accurate while still being accessible:\n\n'AI learns just like humans do — it reads information, understands it, and remembers it for later. When it makes a mistake, it thinks about what went wrong and tries harder next time.'",
+      "instruction": "This explanation of how AI learns is misleading and anthropomorphic. Rewrite it to be technically accurate while still being accessible:\n\n'AI learns just like humans do \u2014 it reads information, understands it, and remembers it for later. When it makes a mistake, it thinks about what went wrong and tries harder next time.'",
       "placeholder": "Accurate version that doesn't anthropomorphize...",
       "hint": "AI doesn't 'read,' 'understand,' 'remember,' or 'think.' It processes numerical inputs, adjusts mathematical weights based on error signals, and stores parameters in matrices. The rewrite should use correct terminology (training, weights, loss function, backpropagation) while still being readable by a non-technical person.",
       "criteria": {
-        "keywords": ["weight", "adjust", "error", "data", "pattern", "parameter", "numerical", "train"],
+        "keywords": [
+          "weight",
+          "adjust",
+          "error",
+          "data",
+          "pattern",
+          "parameter",
+          "numerical",
+          "train"
+        ],
         "minLength": 60
       },
       "badExample": "AI learns by processing data and getting smarter over time through practice.",
-      "goodExample": "ACCURATE VERSION: AI doesn't 'read' or 'understand' — it processes numerical data through mathematical functions. Here's what actually happens: (1) INSTEAD OF 'READS': Training data (text, images, numbers) is converted into numerical formats the model can process — words become embedding vectors, images become pixel arrays. (2) INSTEAD OF 'UNDERSTANDS': The model finds statistical patterns in the numbers. It doesn't comprehend meaning — it detects that certain number patterns (representing words like 'terrible' and 'broken') frequently appear together with negative labels. (3) INSTEAD OF 'REMEMBERS': Patterns are encoded as millions of numerical weights (parameters) in the model's layers. These weights are the model's 'knowledge' — stored as numbers, not memories. (4) INSTEAD OF 'THINKS ABOUT WHAT WENT WRONG': When the model's prediction is wrong, a loss function calculates how wrong it was (a number). Backpropagation then adjusts each weight slightly in the direction that would reduce that error. (5) INSTEAD OF 'TRIES HARDER': The model doesn't have motivation. It repeats this adjust-and-check process millions of times, and the weights gradually converge on values that produce accurate predictions. KEY DISTINCTION: humans learn concepts. AI optimizes numerical weights. The results can look similar, but the mechanism is fundamentally different.",
-      "successMessage": "Precise language about AI prevents dangerous misconceptions. AI is powerful, but it's math — not thinking. Understanding the difference helps you use it more effectively."
+      "goodExample": "ACCURATE VERSION: AI doesn't 'read' or 'understand' \u2014 it processes numerical data through mathematical functions. Here's what actually happens: (1) INSTEAD OF 'READS': Training data (text, images, numbers) is converted into numerical formats the model can process \u2014 words become embedding vectors, images become pixel arrays. (2) INSTEAD OF 'UNDERSTANDS': The model finds statistical patterns in the numbers. It doesn't comprehend meaning \u2014 it detects that certain number patterns (representing words like 'terrible' and 'broken') frequently appear together with negative labels. (3) INSTEAD OF 'REMEMBERS': Patterns are encoded as millions of numerical weights (parameters) in the model's layers. These weights are the model's 'knowledge' \u2014 stored as numbers, not memories. (4) INSTEAD OF 'THINKS ABOUT WHAT WENT WRONG': When the model's prediction is wrong, a loss function calculates how wrong it was (a number). Backpropagation then adjusts each weight slightly in the direction that would reduce that error. (5) INSTEAD OF 'TRIES HARDER': The model doesn't have motivation. It repeats this adjust-and-check process millions of times, and the weights gradually converge on values that produce accurate predictions. KEY DISTINCTION: humans learn concepts. AI optimizes numerical weights. The results can look similar, but the mechanism is fundamentally different.",
+      "successMessage": "Precise language about AI prevents dangerous misconceptions. AI is powerful, but it's math \u2014 not thinking. Understanding the difference helps you use it more effectively."
     },
     {
       "id": "af-9-2",
@@ -261,12 +362,21 @@
       "placeholder": "Create an AI foundations quiz that...",
       "hint": "The best quiz prompts specify: number of questions, difficulty progression, topic coverage, answer format, and the instruction to wait for your answer before revealing the correct one. Cover: neurons, embeddings, prompts, neural network architecture, and training/overfitting.",
       "criteria": {
-        "keywords": ["quiz", "question", "answer", "difficulty", "concept", "explain", "test", "knowledge"],
+        "keywords": [
+          "quiz",
+          "question",
+          "answer",
+          "difficulty",
+          "concept",
+          "explain",
+          "test",
+          "knowledge"
+        ],
         "minLength": 50
       },
       "badExample": "Quiz me on AI.",
-      "goodExample": "Create a 5-question AI foundations quiz. Rules: (1) Ask ONE question at a time. Wait for my answer before revealing the correct one. (2) After I answer, tell me if I'm right or wrong, explain why, and give a memorable one-sentence takeaway. (3) Increase difficulty with each question. TOPICS TO COVER (one per question, in this order): Q1 (Easy): What a neuron does in a neural network — multiple choice, 4 options. Q2 (Easy-Medium): Word embeddings — explain what happens when similar words are plotted in embedding space. Q3 (Medium): Prompt engineering — given a bad prompt, identify what's wrong with it. Q4 (Medium-Hard): Neural network architecture — what's the purpose of hidden layers? Q5 (Hard): Overfitting — given a scenario (95% training accuracy, 60% test accuracy), diagnose the problem and name 2 fixes. Start with Q1 now.",
-      "successMessage": "Self-testing with AI is one of the most effective learning strategies. You covered the full foundations arc — neurons to embeddings to prompts to networks to training."
+      "goodExample": "Create a 5-question AI foundations quiz. Rules: (1) Ask ONE question at a time. Wait for my answer before revealing the correct one. (2) After I answer, tell me if I'm right or wrong, explain why, and give a memorable one-sentence takeaway. (3) Increase difficulty with each question. TOPICS TO COVER (one per question, in this order): Q1 (Easy): What a neuron does in a neural network \u2014 multiple choice, 4 options. Q2 (Easy-Medium): Word embeddings \u2014 explain what happens when similar words are plotted in embedding space. Q3 (Medium): Prompt engineering \u2014 given a bad prompt, identify what's wrong with it. Q4 (Medium-Hard): Neural network architecture \u2014 what's the purpose of hidden layers? Q5 (Hard): Overfitting \u2014 given a scenario (95% training accuracy, 60% test accuracy), diagnose the problem and name 2 fixes. Start with Q1 now.",
+      "successMessage": "Self-testing with AI is one of the most effective learning strategies. You covered the full foundations arc \u2014 neurons to embeddings to prompts to networks to training."
     }
   ]
 }

@@ -56,6 +56,8 @@ free: true
   <p>Same topic. Five steps instead of one. Ten times the quality. Every time.</p>
 </div>
 
+<div data-learn="Timeline" data-props='{"title":"The 5-Step Content Pipeline","instruction":"Tap each step to see how output flows from one stage to the next.","events":[{"year":"Step 1","title":"Research","description":"Gather current trends, data points, and competitor angles. The AI focuses only on finding raw material — no writing yet.","icon":"🔍"},{"year":"Step 2","title":"Outline","description":"Structure the argument with a proven framework. Take the research output and organize it into a logical flow with clear sections.","icon":"📐"},{"year":"Step 3","title":"Draft","description":"Write each section with voice guidelines baked in. The outline constrains the AI to produce focused, on-brand content.","icon":"✍️"},{"year":"Step 4","title":"Edit","description":"Tighten prose, fact-check claims, add transitions. A fresh AI pass catches what the drafting step missed.","icon":"🔧"},{"year":"Step 5","title":"Format","description":"Output as blog HTML, social snippets, and email teaser. One pipeline run, three distribution-ready assets.","icon":"📦"}]}'></div>
+
 <div class="lesson-section">
   <span class="section-label">The Architecture</span>
   <h2 class="section-title">Building Your First Chain</h2>
