@@ -42,6 +42,59 @@ free: false
     </div>
   </div>
 
+  <div style="padding:0 1.5rem;margin:1.5rem 0">
+    <h2>Making API Calls in Python</h2>
+    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">The sandbox above simulates what happens on the server side. Here is how you make those same calls from your own code using Python's <code>httpx</code> library — the modern async-capable replacement for <code>requests</code>:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — GET request with response parsing</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> httpx
+
+<span style="color:#71717a"># GET request — fetch all users from an API</span>
+response = httpx.<span style="color:#34d399">get</span>(<span style="color:#fb923c">"https://api.example.com/users"</span>, headers={
+    <span style="color:#fb923c">"Authorization"</span>: <span style="color:#fb923c">"Bearer sk-your-api-key"</span>,
+    <span style="color:#fb923c">"Content-Type"</span>: <span style="color:#fb923c">"application/json"</span>
+})
+
+<span style="color:#71717a"># Always check the status before using the data</span>
+<span style="color:#c084fc">if</span> response.status_code == <span style="color:#fb923c">200</span>:
+    users = response.<span style="color:#34d399">json</span>()
+    <span style="color:#c084fc">for</span> user <span style="color:#c084fc">in</span> users:
+        <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"</span>{user[<span style="color:#fb923c">'name'</span>]} — {user[<span style="color:#fb923c">'email'</span>]}<span style="color:#fb923c">"</span>)
+<span style="color:#c084fc">else</span>:
+    <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Error </span>{response.status_code}<span style="color:#fb923c">: </span>{response.text}<span style="color:#fb923c">"</span>)</code></pre>
+</div>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — POST request with JSON body and error handling</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> httpx
+
+<span style="color:#71717a"># POST request — create a new order</span>
+payload = {
+    <span style="color:#fb923c">"product"</span>: <span style="color:#fb923c">"Pro Plan"</span>,
+    <span style="color:#fb923c">"amount"</span>: <span style="color:#fb923c">7900</span>,
+    <span style="color:#fb923c">"customer"</span>: <span style="color:#fb923c">"cus_42"</span>
+}
+
+<span style="color:#c084fc">try</span>:
+    response = httpx.<span style="color:#34d399">post</span>(
+        <span style="color:#fb923c">"https://api.example.com/orders"</span>,
+        json=payload,
+        headers={<span style="color:#fb923c">"Authorization"</span>: <span style="color:#fb923c">"Bearer sk-your-api-key"</span>},
+        timeout=<span style="color:#fb923c">10.0</span>
+    )
+    response.<span style="color:#34d399">raise_for_status</span>()  <span style="color:#71717a"># Raises exception for 4xx/5xx</span>
+
+    order = response.<span style="color:#34d399">json</span>()
+    <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Order created: </span>{order[<span style="color:#fb923c">'id'</span>]}<span style="color:#fb923c"> — $</span>{order[<span style="color:#fb923c">'amount'</span>] / <span style="color:#fb923c">100</span>}<span style="color:#fb923c">"</span>)
+
+<span style="color:#c084fc">except</span> httpx.HTTPStatusError <span style="color:#c084fc">as</span> e:
+    <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"API error </span>{e.response.status_code}<span style="color:#fb923c">: </span>{e.response.text}<span style="color:#fb923c">"</span>)
+<span style="color:#c084fc">except</span> httpx.RequestError <span style="color:#c084fc">as</span> e:
+    <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Network error: </span>{e}<span style="color:#fb923c">"</span>)</code></pre>
+</div>
+  </div>
+
   <div class="examples">
     <h2>Try These Examples</h2>
     <div class="example-grid">

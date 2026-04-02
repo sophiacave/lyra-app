@@ -51,6 +51,32 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Get a build-vs-buy recommendation for your situation.</h2>
+  <p class="section-text">Describe your specific AI need and let the five-factor framework guide you to the right strategy.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Build vs Buy Decision Framework</div>
+<pre style="margin:0;color:#e5e5e5"><code>I need AI to solve this business problem: [describe the problem in 1-2 sentences]
+
+Here are my constraints:
+- Budget: [monthly or annual amount]
+- Technical staff: [none / 1-2 developers / full engineering team]
+- Timeline: [how soon you need results]
+- Data sensitivity: [does it involve customer PII, financials, health data, or trade secrets?]
+- Problem uniqueness: [is this a common business problem or unique to your company?]
+
+Based on these five factors, recommend one of:
+- BUY a SaaS tool (name specific tools and pricing)
+- BUILD a custom solution (estimate cost and timeline)
+- HIRE a consultant (estimate scope and budget)
+- WAIT and revisit in 90 days (explain why)
+
+Explain your reasoning for each factor and give me a confidence level (high/medium/low) for your recommendation.</code></pre>
+</div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 3</span>
   <h2 class="section-title">Match scenario to strategy.</h2>
   <p class="section-text">Six real business scenarios. Match each one to the right strategic approach. Some are obvious, some are tricky — think through the five factors before you match.</p>

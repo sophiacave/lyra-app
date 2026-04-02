@@ -55,6 +55,53 @@ free: false
   <p class="section-text"><strong>Pro tip:</strong> When starting over, don't just re-send the same prompt. Analyze <em>why</em> the first attempt failed and fix that in your new prompt. Bad iteration is doing the same thing and expecting different results.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Copy This</span>
+  <h2 class="section-title">A 3-step refinement chain you can use right now.</h2>
+  <p class="section-text">Real iteration isn't random. Here's a structured prompt chain that takes any task from rough draft to polished output in exactly 3 turns.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt Chain — Step 1: The Rough Draft</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">You are a <span style="color:#4ade80">[role]</span>.</span>
+
+Write a first draft of <span style="color:#4ade80">[deliverable]</span> for <span style="color:#4ade80">[audience]</span>.
+Topic: <span style="color:#4ade80">[topic]</span>
+Length: <span style="color:#4ade80">[target length]</span>
+
+<span style="color:#fb923c">Focus on getting the structure and key points right.
+Do not worry about polish yet — that comes next.</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt Chain — Step 2: The Critique</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">Now switch roles.</span> <span style="color:#c084fc">You are a tough but fair editor.</span>
+
+Review what you just wrote. List:
+<span style="color:#c084fc">1. The 3 weakest sentences and why they are weak
+2. Any section that feels generic or could apply to anyone
+3. Where the logic or flow breaks down
+4. One thing that is surprisingly strong</span>
+
+<span style="color:#fb923c">Be specific. Quote the exact lines.</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt Chain — Step 3: The Polish</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">Now rewrite the draft</span> <span style="color:#c084fc">addressing every issue
+you just identified.</span>
+
+Additional refinements:
+- <span style="color:#c084fc">Make the opening hook <span style="color:#4ade80">[stronger/more specific/more provocative]</span></span>
+- <span style="color:#c084fc">Replace every generic phrase with a concrete detail</span>
+- <span style="color:#c084fc">Cut any sentence that does not earn its place</span>
+- <span style="color:#c084fc">Ensure the tone is <span style="color:#4ade80">[target tone]</span> throughout</span>
+
+<span style="color:#fb923c">This is the final version. Make it excellent.</span></code></pre>
+</div>
+
+  <p class="section-text">This 3-step chain works because each step has a different job: generate, critique, refine. The AI literally argues with itself to find weaknesses, then fixes them. Try it — the difference between step 1 and step 3 is dramatic.</p>
+</div>
+
 <!-- SECTION 4 -->
 <div class="lesson-section">
   <span class="section-label">The Power Move</span>

@@ -123,6 +123,27 @@ free: true
   <p class="section-text" style="margin-top:1rem">We'll explore each of these principles in depth throughout this course. By the end, they'll be second nature.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Run a TRUST audit on your own AI use.</h2>
+  <p class="section-text">Copy this prompt into any AI tool and fill in the brackets. It will walk you through the TRUST framework on a real task you've done recently.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — TRUST Framework Ethics Audit</div>
+<pre style="margin:0;color:#e5e5e5"><code>I used AI to help with this task: [describe the task, e.g. "draft a job posting for a marketing manager"].
+
+Walk me through the TRUST framework for this specific use case:
+
+1. TRANSPARENCY — Should I disclose that AI helped? Who needs to know?
+2. REVIEW — What specific things should I check in the output before using it?
+3. UNDERSTAND LIMITS — Where might AI have gotten this wrong or missed nuance?
+4. SAFEGUARD PRIVACY — Did I share any data I shouldn't have? What should I anonymize next time?
+5. TAKE RESPONSIBILITY — If this output causes harm, what's my exposure?
+
+Be specific to my task. Give me a checklist I can use right now.</code></pre>
+</div>
+</div>
+
 <!-- INTERACTIVE: COMPARE -->
 <div class="lesson-section">
   <span class="section-label">See the Difference</span>

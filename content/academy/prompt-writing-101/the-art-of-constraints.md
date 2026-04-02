@@ -33,6 +33,28 @@ free: false
   <p class="section-text">It feels counterintuitive: give AI fewer options and it performs better? But think about writing a song. "Write a song about anything" is paralyzing. "Write a 4-line verse about losing your keys, in the style of country music" — now you can work.</p>
   <p class="section-text">Constraints do the same thing for AI. They eliminate the infinite space of mediocre possibilities and force the model into a focused, specific output space where the quality is higher.</p>
   <p class="section-text">Every professional who uses AI well has figured this out: <strong>constraints are not limitations. They're creative fuel.</strong></p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Constraint-Heavy Template</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">You are a seasoned brand copywriter.</span>
+
+Write a product description for <span style="color:#4ade80">[product name]</span>.
+
+<span style="color:#fb923c">[LENGTH CONSTRAINT]:</span>    <span style="color:#c084fc">Exactly 3 sentences. No more, no less.</span>
+<span style="color:#fb923c">[TONE CONSTRAINT]:</span>     <span style="color:#c084fc">Confident, not arrogant. Warm, not sappy.</span>
+<span style="color:#fb923c">[AUDIENCE CONSTRAINT]:</span> <span style="color:#c084fc">Written for <span style="color:#4ade80">[target buyer persona]</span>
+                        who cares about <span style="color:#4ade80">[key value — e.g., sustainability]</span>.</span>
+<span style="color:#fb923c">[SCOPE CONSTRAINT]:</span>    <span style="color:#c084fc">Focus ONLY on <span style="color:#4ade80">[one key benefit]</span>.
+                        Do not mention features, specs, or price.</span>
+<span style="color:#fb923c">[NEGATIVE CONSTRAINT]:</span> <span style="color:#c084fc">Do not use: "revolutionary," "game-changing,"
+                        "best-in-class," or any superlatives.
+                        Do not start with a question.
+                        No exclamation marks.</span>
+<span style="color:#fb923c">[FORMAT CONSTRAINT]:</span>   <span style="color:#c084fc">First sentence = hook. Second = value.
+                        Third = one concrete proof point.</span></code></pre>
+</div>
+
+  <p class="section-text">Count the constraints in that template: six types working together. Length keeps it tight. Tone draws a precise emotional line. Audience focuses the language. Scope prevents feature-dumping. Negatives kill cliches. Format ensures structure. The AI has almost no room to produce anything generic.</p>
 </div>
 
 <!-- SECTION 2: 5 TYPES -->

@@ -129,6 +129,23 @@ free: false
   <p class="section-text" style="margin-top:1rem">These instructions won't eliminate hallucinations, but they significantly reduce them. The AI is more likely to hedge or qualify when you've explicitly given it permission to be uncertain.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Force AI to flag its own uncertainty.</h2>
+  <p class="section-text">Add this instruction to any prompt where factual accuracy matters. It gives AI explicit permission to say "I'm not sure" instead of hallucinating.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Hallucination-Resistant Research</div>
+<pre style="margin:0;color:#e5e5e5"><code>[Your research question or task here]
+
+IMPORTANT RULES:
+- If you are not confident about a specific fact, statistic, or date, say "I'm not certain about this — verify independently" instead of guessing.
+- Do NOT cite specific studies, papers, or books unless you are highly confident they exist. If unsure, say "there is research suggesting..." without fabricating a citation.
+- Distinguish clearly between (a) things you know with high confidence, (b) things you are inferring, and (c) things you are speculating about.
+- At the end, list every specific claim that should be fact-checked before publishing.</code></pre>
+</div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>

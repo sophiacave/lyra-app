@@ -71,6 +71,17 @@ free: false
   <strong>Support human artists:</strong> Use AI to supplement, not replace, your engagement with the creative community. Hire illustrators for important projects. Credit inspiration.<br>
   <strong>Stay informed:</strong> Copyright law and platform terms change. Check in periodically to make sure your practices align with current rules.<br>
   <strong>Never deceive:</strong> Do not present AI-generated images as real photographs. Do not create images of real people without consent. Do not use AI visuals to mislead or manipulate.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — ethical attribution in practice</div>
+<pre style="margin:0;color:#e5e5e5"><code>An abstract watercolor painting of interconnected hands
+in a circle, diverse skin tones, soft warm palette,
+gentle brushstrokes, minimalist white background
+--
+Post caption: "Created with AI (DALL-E). Concept and
+creative direction by [your name]. Inspired by the
+collaborative spirit of open-source communities."</code></pre>
+</div>
 </div>
 
 <div class="try-it-box" style="border: 2px solid var(--green); border-radius: 8px; padding: 1.5rem; margin: 2rem 0; background: var(--bg);">

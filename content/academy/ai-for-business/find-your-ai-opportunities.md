@@ -53,6 +53,33 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Score your business areas with AI.</h2>
+  <p class="section-text">Use this prompt to run the 3-factor scoring method on your actual business. AI will help you identify your highest-value automation opportunity.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — AI Opportunity Scoring for Your Business</div>
+<pre style="margin:0;color:#e5e5e5"><code>I run a [type of business] with [number] employees. Help me score these business areas for AI opportunity using the 3-factor method.
+
+For each area below, estimate a score of 1-5 for:
+- TIME SPENT (1 = occasional, 5 = multiple people full-time)
+- REPETITIVENESS (1 = every task is unique, 5 = same steps repeated daily)
+- PAIN LEVEL (1 = runs smoothly, 5 = causes bottlenecks and errors)
+
+My business areas:
+1. [e.g. Customer support]
+2. [e.g. Email and communication]
+3. [e.g. Sales outreach]
+4. [e.g. Content marketing]
+5. [e.g. Data entry and reporting]
+6. [e.g. Scheduling and coordination]
+
+Calculate the weighted score for each: (Time x 0.3 + Repetitiveness x 0.4 + Pain x 0.3) x 20.
+Rank them from highest to lowest. For the top 3, recommend a specific AI tool category and estimated ROI.</code></pre>
+</div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 3</span>
   <h2 class="section-title">Match areas to AI solutions.</h2>
   <p class="section-text">Knowing which business area is a high opportunity is only half the answer. The other half is knowing which type of AI tool addresses it. Match these six business areas to the right category of AI solution.</p>

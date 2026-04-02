@@ -81,6 +81,17 @@ free: false
   <p>You do not need every element every time. But having this framework in your back pocket means you always know what lever to pull when an image is not quite right.</p>
 </div>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — anatomy of a great image prompt, labeled by section</div>
+<pre style="margin:0;color:#e5e5e5"><code>[SUBJECT]       An ancient library with towering oak bookshelves
+[SETTING]       hidden underground chamber, dust particles floating in the air
+[COMPOSITION]   wide shot, low angle looking up, symmetrical framing
+[LIGHTING]      volumetric god rays streaming through a cracked ceiling
+[STYLE/MEDIUM]  dark academia aesthetic, oil painting with fine detail
+[MOOD/COLOR]    warm amber and deep shadow, mysterious and reverent
+[QUALITY]       highly detailed, 4K, cinematic depth of field</code></pre>
+</div>
+
 <div class="try-it-box" style="border: 2px solid var(--green); border-radius: 8px; padding: 1.5rem; margin: 2rem 0; background: var(--bg);">
   <h3 style="color: var(--green);">Try it now</h3>
   <p>Take this basic prompt and level it up using the framework:</p>

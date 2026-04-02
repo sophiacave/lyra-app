@@ -31,6 +31,29 @@ free: false
   <span class="section-label">The Battle</span>
   <h2 class="section-title">Answer fast, answer right.</h2>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt Example — Zero-Shot vs Few-Shot vs Chain-of-Thought</div>
+<pre style="margin:0;color:#e5e5e5"><code># ZERO-SHOT (no examples — just the task)
+Classify this review as POSITIVE, NEGATIVE, or NEUTRAL:
+"The battery lasts forever but the screen is dim."
+
+# FEW-SHOT (teach by example)
+Review: "Absolutely love it!" → POSITIVE
+Review: "Broke after one day." → NEGATIVE
+Review: "It's fine, nothing special." → NEUTRAL
+Review: "The battery lasts forever but the screen is dim." → ???
+
+# CHAIN-OF-THOUGHT (force step-by-step reasoning)
+Classify this review as POSITIVE, NEGATIVE, or NEUTRAL.
+Think step by step before answering:
+"The battery lasts forever but the screen is dim."
+
+Step 1: "battery lasts forever" = strong positive.
+Step 2: "screen is dim" = moderate negative.
+Step 3: Mixed sentiment, but positive outweighs.
+Answer: POSITIVE</code></pre>
+</div>
+
 <div data-learn="FlashDeck" data-props='{"title":"Prompt Engineering Techniques","cards":[{"front":"Zero-Shot Prompting","back":"Ask the AI to perform a task with no examples. Works well for simple tasks like classification: Is this email spam or not?"},{"front":"Few-Shot Prompting","back":"Provide 2-3 examples of input-output pairs before your actual request. Teaches the AI your desired format and style by demonstration."},{"front":"Chain-of-Thought","back":"Ask the AI to show its reasoning step by step before giving an answer. Dramatically improves accuracy on math, logic, and complex analysis."},{"front":"Temperature","back":"Controls randomness. Low (0.0-0.2) = deterministic, focused, correct. High (0.8-1.0) = creative, varied, surprising. Use low for code, high for brainstorming."},{"front":"Context Window","back":"The total amount of text (prompt + response) the model can process at once. Claude has 200K tokens. Everything must fit inside this window."}]}'></div>
 
 <div data-learn="QuizMC" data-props='{"title":"Prompt Engineering Battle — 6 Rounds","questions":[{"q":"Which prompt technique is BEST for getting accurate math solutions?","options":["Zero-shot: just ask the question","Few-shot: show 3 similar solved problems","Chain-of-thought: ask for step-by-step reasoning","Role-play: pretend to be a calculator"],"correct":2,"explanation":"Chain-of-thought prompting forces the model to show its reasoning, which dramatically reduces errors on multi-step problems. Research shows up to 2x accuracy improvement."},{"q":"What does lowering the temperature parameter do?","options":["Makes the AI respond faster","Makes outputs more deterministic and focused","Reduces the context window size","Makes the AI more creative"],"correct":1,"explanation":"Temperature controls randomness. Lower temperature (closer to 0) makes the model always pick the highest-probability token, giving consistent, focused outputs."},{"q":"A system prompt is powerful because it:","options":["Gets processed before any user messages, shaping all responses","Uses fewer tokens than regular prompts","Bypasses the model safety guidelines","Runs on a separate, faster processor"],"correct":0,"explanation":"System prompts set the behavioral framework before any user interaction. They are processed first and influence every subsequent response — like giving the AI its job description."},{"q":"When should you use few-shot prompting instead of zero-shot?","options":["Always — few-shot is strictly better","When the task requires a specific output format or style the AI might not guess","Only for creative writing tasks","When you want shorter responses"],"correct":1,"explanation":"Few-shot prompting shines when you need the AI to follow a specific pattern. Showing 2-3 examples of input-output pairs teaches the format better than describing it."},{"q":"You need AI to write code. What temperature should you use?","options":["High (0.8-1.0) for creative solutions","Medium (0.5) as a balanced default","Low (0.0-0.2) for deterministic, correct code","Temperature does not affect code quality"],"correct":2,"explanation":"Code needs to be correct, not creative. Low temperature makes the model pick the most likely (usually most correct) tokens. High temperature introduces randomness that can cause syntax errors and bugs."},{"q":"What is the context window?","options":["The browser window where you chat with AI","The total amount of text (prompt + response) the model can process at once","A debugging tool for prompt engineers","The time limit for each AI response"],"correct":1,"explanation":"The context window is the model working memory — everything it can see at once. Your prompt plus the response must fit inside. Claude has 200K tokens, GPT-4 has 128K tokens."}]}'></div>

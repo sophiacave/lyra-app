@@ -51,6 +51,28 @@ free: false
   <p class="section-text">Use this to train AI on your voice at the start of any session:</p>
   <p class="section-text"><em>"Here's my brand voice guide. Study it carefully and match this voice in everything you write for me today. [Paste voice document]. Before writing anything, confirm you understand my voice by describing it back to me in 2-3 sentences."</em></p>
   <p class="section-text">That last instruction — asking AI to describe your voice back — is crucial. It forces the model to internalize the patterns rather than just scanning past them. If the description doesn't sound right, correct it until it does. That calibration step takes 30 seconds and dramatically improves every piece of content in the session.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Brand Voice Definition</div>
+<pre style="margin:0;color:#e5e5e5"><code>You are a brand voice analyst. I'm going to give you 3-5
+samples of my best writing. Analyze them and produce a
+Brand Voice Document with these sections:
+
+1. TONE (3-5 adjectives that define my voice)
+2. SENTENCE STYLE (avg length, structure patterns, rhythm)
+3. VOCABULARY (formality level, jargon policy, signature phrases)
+4. PERSONALITY (how I use humor, empathy, authority)
+5. KILL LIST (words/phrases I never use — infer from what's absent)
+6. AUDIENCE LENS (who I'm writing for, based on how I address them)
+
+Here are my writing samples:
+[PASTE 3-5 PARAGRAPHS OF YOUR BEST CONTENT]
+
+After the analysis, describe my voice back to me in 2-3
+sentences as if you're explaining it to a new ghostwriter.
+I'll correct anything that's off before we start writing.</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

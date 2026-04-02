@@ -116,6 +116,29 @@ free: true
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Anonymize sensitive data before sending it to AI.</h2>
+  <p class="section-text">Use this prompt to get AI's help analyzing sensitive work without exposing private information. Notice how you describe the situation instead of pasting raw data.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Privacy-Safe Data Analysis</div>
+<pre style="margin:0;color:#e5e5e5"><code>I need to analyze [type of data, e.g. "customer support tickets"] but I can't share the raw data because it contains personal information.
+
+Here's what I can tell you:
+- The dataset has [number] records from [time period]
+- Common themes I'm seeing: [list 3-5 patterns in general terms]
+- The business question I need answered: [your question]
+
+Based on this description, give me:
+1. An analysis framework I can apply to the data myself
+2. The specific metrics I should track
+3. Questions I should ask the data to find actionable insights
+
+Do NOT ask me to paste the raw data. Help me analyze it without exposing it.</code></pre>
+</div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

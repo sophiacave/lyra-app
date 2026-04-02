@@ -59,6 +59,30 @@ free: true
   <p class="section-text"><strong style="color:var(--purple)">Step 1:</strong> Assign each week a primary pillar. Week 1 = Pillar A, Week 2 = Pillar B, and so on. This creates natural variety.</p>
   <p class="section-text"><strong style="color:var(--green)">Step 2:</strong> For each week, plan: 1 long-form piece (blog/newsletter), 3-5 social posts, and 1 email. Ask AI to generate specific topics and angles for each slot.</p>
   <p class="section-text"><strong style="color:var(--blue)">Step 3:</strong> Review the calendar for balance. Are you educating, entertaining, and selling in the right proportions? The classic ratio is 40% educational, 30% engaging, 20% personal/story, 10% promotional.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — 30-Day Content Calendar</div>
+<pre style="margin:0;color:#e5e5e5"><code>You are my content strategist. Build a 30-day editorial
+calendar based on these inputs:
+
+BUSINESS: [describe your business in 1-2 sentences]
+AUDIENCE: [who they are, what they struggle with]
+PILLARS: [list your 3-4 content pillars]
+PLATFORMS: [e.g., blog, Instagram, LinkedIn, email]
+
+For each week, assign a primary pillar and plan:
+- 1 long-form piece (blog or newsletter) with topic + angle
+- 4 social posts with platform, hook, and format (carousel,
+  thread, story, single image)
+- 1 email with subject line and core message
+
+Follow a 40/30/20/10 mix:
+40% educational | 30% engaging | 20% personal | 10% promo
+
+Output as a clean table: Day | Platform | Pillar | Topic |
+Format | Hook (one sentence).</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">

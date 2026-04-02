@@ -31,6 +31,28 @@ free: false
   <span class="section-label">Part 1</span>
   <h2 class="section-title">Embedding mastery.</h2>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Cosine Similarity from Scratch</div>
+<pre style="margin:0;color:#e5e5e5"><code>import math
+
+def cosine_similarity(vec_a, vec_b):
+    """Measure how similar two vectors are (0 = unrelated, 1 = identical)."""
+    dot = sum(a * b for a, b in zip(vec_a, vec_b))
+    mag_a = math.sqrt(sum(a ** 2 for a in vec_a))
+    mag_b = math.sqrt(sum(b ** 2 for b in vec_b))
+    if mag_a == 0 or mag_b == 0:
+        return 0.0
+    return dot / (mag_a * mag_b)
+
+# Toy 2-D embeddings (real ones use 768+ dimensions)
+cat   = [0.9, 0.1]   # mostly "animal", a little "object"
+dog   = [0.85, 0.15]  # very close to cat
+car   = [0.1, 0.95]   # mostly "object", a little "animal"
+
+print(f"cat · dog = {cosine_similarity(cat, dog):.4f}")  # ~0.9949
+print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
+</div>
+
 <div data-learn="FlashDeck" data-props='{"title":"Similarity & Embedding Review","cards":[{"front":"Cosine Similarity = 1.0","back":"The two vectors point in the exact same direction. The words are synonyms or near-synonyms — like car and automobile."},{"front":"Cosine Similarity = 0.0","back":"The vectors are perpendicular — completely unrelated concepts with no semantic overlap."},{"front":"768-1536 Dimensions","back":"Real word embeddings use hundreds of dimensions to capture nuance. Each dimension encodes some aspect of meaning. The 2D visualizations in this course simplify the math but the principles are identical."},{"front":"Semantic Search","back":"Convert a query to a vector and find the nearest document vectors. Matches by meaning, not keywords — so affordable places to eat finds budget-friendly restaurants."},{"front":"RAG","back":"Retrieval-Augmented Generation. Search a vector database for relevant documents, include them in the AI\\\'s prompt, then generate a grounded response from your actual data."}]}'></div>
 
 <div data-learn="QuizMC" data-props='{"title":"Similarity Challenge — 6 Questions","questions":[{"q":"Which pair of words would have the HIGHEST cosine similarity?","options":["happy and banana","dog and skyscraper","car and automobile","king and purple"],"correct":2,"explanation":"Car and automobile are synonyms — they appear in nearly identical contexts so their embedding vectors point in almost the same direction. Cosine similarity would be around 0.95."},{"q":"Why are embeddings useful for search engines?","options":["They make pages load faster","They allow matching by meaning, not just keywords","They compress images","They prevent typos"],"correct":1,"explanation":"With embeddings, searching affordable places to eat can match budget-friendly restaurants — even with zero keyword overlap. Both phrases map to nearby vectors because they mean similar things."},{"q":"Paris : France :: Tokyo : ? works because:","options":["The model memorized geography facts","The vector from Paris to France captures capital-of and applying it to Tokyo lands near Japan","All cities are near all countries","Tokyo and France have similar spelling"],"correct":1,"explanation":"The vector offset from Paris to France represents capital-of. Adding this same offset to Tokyo points toward Japan. Learned from patterns in text, not from explicit geography lessons."},{"q":"A cosine similarity of 0.0 between two word vectors means:","options":["The words are synonyms","The words are completely unrelated (perpendicular vectors)","The words are antonyms","An error occurred in the calculation"],"correct":1,"explanation":"Cosine similarity of 0 means the vectors are perpendicular — they share no directional component. The words exist in completely unrelated semantic regions."},{"q":"Real word embeddings typically use how many dimensions?","options":["2-3 dimensions","50-100 dimensions","768-1536 dimensions","1 million dimensions"],"correct":2,"explanation":"Modern embeddings typically use 768 to 1536 dimensions. More dimensions capture more nuance in meaning. The 2D visualizations in this course simplify the concept but the math is identical."},{"q":"RAG (Retrieval-Augmented Generation) uses embeddings to:","options":["Generate images from text","Find relevant documents to include in the AI context before generating a response","Compress AI models to run faster","Translate between languages"],"correct":1,"explanation":"RAG converts your question to a vector, searches a database for the most similar document vectors, retrieves those documents, and includes them in the AI prompt. This gives the AI access to specific knowledge without retraining."}]}'></div>

@@ -42,6 +42,37 @@ free: false
   <p class="section-text">Ask AI: <em>"Write a 5-email welcome sequence for [business]. Email 1: warm welcome + best free resource. Email 2: my origin story and why I do this. Email 3: the biggest mistake my audience makes. Email 4: a case study or transformation story. Email 5: soft introduction to my paid offering. Tone: warm, conversational, like texting a smart friend."</em></p>
   <p class="section-text"><strong style="color:var(--purple)">2. The Weekly Newsletter.</strong> This is your relationship-builder. One email per week that delivers genuine value — a lesson, an insight, a story, a resource. The goal isn't to sell. The goal is to be the email they actually look forward to opening.</p>
   <p class="section-text"><strong style="color:var(--green)">3. The Launch Sequence (4-6 emails).</strong> When you have something to sell, this sequence builds anticipation, handles objections, creates urgency, and drives action. It's the only time you go into full promotion mode — and it works because the other 50 weeks a year, you've been giving value.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Welcome Email Sequence</div>
+<pre style="margin:0;color:#e5e5e5"><code>Write a 5-email welcome sequence for my business.
+
+BUSINESS: [what you do and who you serve]
+VOICE: [warm/direct/witty — pick 2-3 tone words]
+GOAL: Build trust and introduce my paid offering by email 5.
+
+Structure each email with:
+- Subject line (under 50 chars, curiosity or benefit style)
+- Preview text (40 chars)
+- Body (under 300 words)
+- CTA (one clear action)
+
+EMAIL 1: Warm welcome + deliver the free resource they signed
+         up for. Set expectations for what's coming.
+EMAIL 2: My origin story — why I started this, the moment
+         that changed everything. Make it personal.
+EMAIL 3: The #1 mistake my audience makes (and the fix).
+         Pure value, zero selling.
+EMAIL 4: A transformation story — client result or my own
+         before/after. Show what's possible.
+EMAIL 5: Soft intro to my paid offer. Frame it as the
+         natural next step, not a pitch.
+
+Tone: like texting a smart friend. No corporate speak.
+Each email should feel like it came from a person, not
+a brand.</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

@@ -140,6 +140,55 @@ server.tool(
   </div>
 
   <div class="section">
+    <h2>The Same Tool, Two Approaches</h2>
+    <p>Here is a file-reading capability implemented both ways in Python. Notice how the MCP version handles protocol, validation, and discovery automatically — your code is just the business logic:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — raw tool definition (vendor-specific)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># You handle EVERYTHING: schema, parsing, execution, errors</span>
+tools = [{
+    <span style="color:#fb923c">"type"</span>: <span style="color:#fb923c">"function"</span>,
+    <span style="color:#fb923c">"function"</span>: {
+        <span style="color:#fb923c">"name"</span>: <span style="color:#fb923c">"read_file"</span>,
+        <span style="color:#fb923c">"description"</span>: <span style="color:#fb923c">"Read a file from disk"</span>,
+        <span style="color:#fb923c">"parameters"</span>: {
+            <span style="color:#fb923c">"type"</span>: <span style="color:#fb923c">"object"</span>,
+            <span style="color:#fb923c">"properties"</span>: {
+                <span style="color:#fb923c">"path"</span>: {<span style="color:#fb923c">"type"</span>: <span style="color:#fb923c">"string"</span>}
+            },
+            <span style="color:#fb923c">"required"</span>: [<span style="color:#fb923c">"path"</span>]
+        }
+    }
+}]
+
+<span style="color:#c084fc">def</span> <span style="color:#34d399">handle_tool_call</span>(name, args):
+    <span style="color:#c084fc">if</span> name == <span style="color:#fb923c">"read_file"</span>:
+        <span style="color:#c084fc">with</span> <span style="color:#34d399">open</span>(args[<span style="color:#fb923c">"path"</span>]) <span style="color:#c084fc">as</span> f:
+            <span style="color:#c084fc">return</span> f.<span style="color:#34d399">read</span>()
+    <span style="color:#71717a"># You must manually route every tool call</span></code></pre>
+</div>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — MCP server (universal standard)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> mcp.server.fastmcp <span style="color:#c084fc">import</span> FastMCP
+
+<span style="color:#71717a"># The SDK handles protocol, validation, routing, transport</span>
+mcp = <span style="color:#34d399">FastMCP</span>(<span style="color:#fb923c">"file-server"</span>)
+
+@mcp.<span style="color:#34d399">tool</span>()
+<span style="color:#c084fc">def</span> <span style="color:#34d399">read_file</span>(path: <span style="color:#34d399">str</span>) -> <span style="color:#34d399">str</span>:
+    <span style="color:#fb923c">"""Read a file from disk"""</span>
+    <span style="color:#c084fc">with</span> <span style="color:#34d399">open</span>(path) <span style="color:#c084fc">as</span> f:
+        <span style="color:#c084fc">return</span> f.<span style="color:#34d399">read</span>()
+
+<span style="color:#71717a"># Works with Claude, VS Code, Cursor — any MCP client</span>
+mcp.<span style="color:#34d399">run</span>()</code></pre>
+</div>
+
+    <p style="font-size:.85rem;color:#a1a1aa">The raw approach requires you to define JSON schemas, parse arguments, route calls manually, and handle errors — all in a format that only works with one AI provider. The MCP server version is six lines of business logic. The SDK generates the schema from the type hints, handles transport, and works with every MCP client automatically.</p>
+  </div>
+
+  <div class="section">
     <h2>When to Build a Server vs Use Direct Tool Calling</h2>
     <div style="display:flex;flex-direction:column;gap:.5rem">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">

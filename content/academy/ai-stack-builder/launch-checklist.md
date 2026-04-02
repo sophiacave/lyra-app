@@ -28,6 +28,80 @@ free: false
 </ul>
 </div>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Bash — Pre-launch verification script</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">#!/bin/bash</span>
+<span style="color:#71717a"># pre-launch.sh — Run before every deploy</span>
+<span style="color:#c084fc">set</span> -e
+
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"=== PRE-LAUNCH VERIFICATION ==="</span>
+
+<span style="color:#71717a"># 1. Check for exposed secrets in frontend code</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"[1/6] Scanning for leaked secrets..."</span>
+<span style="color:#c084fc">if</span> grep -r <span style="color:#fb923c">"NEXT_PUBLIC_.*SERVICE_ROLE\|NEXT_PUBLIC_.*SECRET"</span> ./src; <span style="color:#c084fc">then</span>
+  <span style="color:#34d399">echo</span> <span style="color:#fb923c">"FAIL: Secret key exposed with NEXT_PUBLIC_ prefix!"</span>
+  <span style="color:#c084fc">exit</span> <span style="color:#fb923c">1</span>
+<span style="color:#c084fc">fi</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"  No secrets in frontend code."</span>
+
+<span style="color:#71717a"># 2. Verify environment variables exist</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"[2/6] Checking env vars..."</span>
+<span style="color:#c084fc">for</span> var <span style="color:#c084fc">in</span> SUPABASE_URL SUPABASE_ANON_KEY STRIPE_SECRET_KEY; <span style="color:#c084fc">do</span>
+  <span style="color:#c084fc">if</span> [ -z <span style="color:#fb923c">"${!var}"</span> ]; <span style="color:#c084fc">then</span>
+    <span style="color:#34d399">echo</span> <span style="color:#fb923c">"FAIL: $var is not set"</span>; <span style="color:#c084fc">exit</span> <span style="color:#fb923c">1</span>
+  <span style="color:#c084fc">fi</span>
+<span style="color:#c084fc">done</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"  All required env vars present."</span>
+
+<span style="color:#71717a"># 3. Run build and check bundle size</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"[3/6] Building and checking bundle..."</span>
+npm run build <span style="color:#fb923c">2>&1</span> | tail -n <span style="color:#fb923c">5</span>
+
+<span style="color:#71717a"># 4. Verify Supabase RLS is enabled</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"[4/6] Checking RLS on all tables..."</span>
+supabase db lint --level warning
+
+<span style="color:#71717a"># 5. Test the health endpoint</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"[5/6] Testing health endpoint..."</span>
+STATUS=$(<span style="color:#34d399">curl</span> -s -o /dev/null -w <span style="color:#fb923c">"%{http_code}"</span> https://your-app.vercel.app/api/health)
+<span style="color:#c084fc">if</span> [ <span style="color:#fb923c">"$STATUS"</span> != <span style="color:#fb923c">"200"</span> ]; <span style="color:#c084fc">then</span>
+  <span style="color:#34d399">echo</span> <span style="color:#fb923c">"FAIL: Health endpoint returned $STATUS"</span>; <span style="color:#c084fc">exit</span> <span style="color:#fb923c">1</span>
+<span style="color:#c084fc">fi</span>
+
+<span style="color:#71717a"># 6. Verify Stripe webhook endpoint</span>
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"[6/6] Checking Stripe webhook..."</span>
+stripe listen --print-json 2>/dev/null &
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"  Webhook listener active."</span>
+
+<span style="color:#34d399">echo</span> <span style="color:#fb923c">"=== ALL CHECKS PASSED — READY TO SHIP ==="</span>
+</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Post-deploy smoke test</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// smoke-test.mjs — Run after every deploy</span>
+<span style="color:#c084fc">const</span> BASE = <span style="color:#fb923c">'https://your-app.vercel.app'</span>
+
+<span style="color:#c084fc">const</span> tests = [
+  { name: <span style="color:#fb923c">'Homepage loads'</span>,       url: <span style="color:#fb923c">'/'</span>,            expect: <span style="color:#fb923c">200</span> },
+  { name: <span style="color:#fb923c">'API health'</span>,           url: <span style="color:#fb923c">'/api/health'</span>,   expect: <span style="color:#fb923c">200</span> },
+  { name: <span style="color:#fb923c">'Auth endpoint'</span>,        url: <span style="color:#fb923c">'/api/auth'</span>,     expect: <span style="color:#fb923c">401</span> },
+  { name: <span style="color:#fb923c">'Stripe webhook'</span>,       url: <span style="color:#fb923c">'/api/webhook'</span>,  expect: <span style="color:#fb923c">405</span> },
+  { name: <span style="color:#fb923c">'CORS headers present'</span>, url: <span style="color:#fb923c">'/api/health'</span>,   header: <span style="color:#fb923c">'access-control-allow-origin'</span> },
+]
+
+<span style="color:#c084fc">for</span> (<span style="color:#c084fc">const</span> t <span style="color:#c084fc">of</span> tests) {
+  <span style="color:#c084fc">const</span> res = <span style="color:#c084fc">await</span> <span style="color:#34d399">fetch</span>(<span style="color:#fb923c">`<span style="color:#c084fc">${</span>BASE<span style="color:#c084fc">}</span><span style="color:#c084fc">${</span>t.url<span style="color:#c084fc">}</span>`</span>)
+  <span style="color:#c084fc">const</span> pass = t.header
+    ? res.headers.<span style="color:#34d399">has</span>(t.header)
+    : res.status === t.expect
+  console.<span style="color:#34d399">log</span>(<span style="color:#fb923c">`<span style="color:#c084fc">${</span>pass ? <span style="color:#fb923c">'PASS'</span> : <span style="color:#fb923c">'FAIL'</span><span style="color:#c084fc">}</span>  <span style="color:#c084fc">${</span>t.name<span style="color:#c084fc">}</span>`</span>)
+  <span style="color:#c084fc">if</span> (!pass) process.<span style="color:#34d399">exit</span>(<span style="color:#fb923c">1</span>)
+}
+console.<span style="color:#34d399">log</span>(<span style="color:#fb923c">'All smoke tests passed.'</span>)
+</code></pre>
+</div>
+
 <div class="overall-progress">
 <div class="big-num" id="bigNum">0</div>
 <div class="of-total">of 20 items checked</div>

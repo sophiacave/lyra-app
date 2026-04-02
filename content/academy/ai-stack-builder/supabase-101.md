@@ -111,6 +111,63 @@ free: true
 </div>
 </div>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Supabase client setup + basic queries</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">'@supabase/supabase-js'</span>
+
+<span style="color:#71717a">// Initialize the client (these are safe for the frontend)</span>
+<span style="color:#c084fc">const</span> supabase = <span style="color:#34d399">createClient</span>(
+  <span style="color:#fb923c">'https://your-ref.supabase.co'</span>,  <span style="color:#71717a">// Project URL</span>
+  <span style="color:#fb923c">'eyJhbGciOiJIUzI1NiIs...'</span>      <span style="color:#71717a">// Anon key (public)</span>
+)
+
+<span style="color:#71717a">// READ — Fetch all brain_context rows</span>
+<span style="color:#c084fc">const</span> { data, error } = <span style="color:#c084fc">await</span> supabase
+  .<span style="color:#34d399">from</span>(<span style="color:#fb923c">'brain_context'</span>)
+  .<span style="color:#34d399">select</span>(<span style="color:#fb923c">'key, value, updated_at'</span>)
+  .<span style="color:#34d399">order</span>(<span style="color:#fb923c">'updated_at'</span>, { ascending: <span style="color:#c084fc">false</span> })
+  .<span style="color:#34d399">limit</span>(<span style="color:#fb923c">10</span>)
+
+<span style="color:#71717a">// WRITE — Upsert a key-value pair</span>
+<span style="color:#c084fc">const</span> { error: writeErr } = <span style="color:#c084fc">await</span> supabase
+  .<span style="color:#34d399">from</span>(<span style="color:#fb923c">'brain_context'</span>)
+  .<span style="color:#34d399">upsert</span>({
+    key:   <span style="color:#fb923c">'session.active_work'</span>,
+    value: { task: <span style="color:#fb923c">'Building the AI stack'</span>, status: <span style="color:#fb923c">'in_progress'</span> }
+  }, { onConflict: <span style="color:#fb923c">'key'</span> })
+
+<span style="color:#71717a">// FILTER — Find keys matching a pattern</span>
+<span style="color:#c084fc">const</span> { data: sessions } = <span style="color:#c084fc">await</span> supabase
+  .<span style="color:#34d399">from</span>(<span style="color:#fb923c">'brain_context'</span>)
+  .<span style="color:#34d399">select</span>(<span style="color:#fb923c">'*'</span>)
+  .<span style="color:#34d399">like</span>(<span style="color:#fb923c">'key'</span>, <span style="color:#fb923c">'session.%'</span>)
+</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create a brain_context table with pgvector</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable the vector extension for AI embeddings</span>
+<span style="color:#c084fc">CREATE EXTENSION IF NOT EXISTS</span> vector;
+
+<span style="color:#c084fc">CREATE TABLE</span> brain_context (
+  id          <span style="color:#34d399">uuid</span> <span style="color:#c084fc">PRIMARY KEY DEFAULT</span> <span style="color:#34d399">gen_random_uuid</span>(),
+  key         <span style="color:#34d399">text</span> <span style="color:#c084fc">UNIQUE NOT NULL</span>,
+  value       <span style="color:#34d399">jsonb</span>,
+  embedding   <span style="color:#34d399">vector</span>(<span style="color:#fb923c">384</span>),        <span style="color:#71717a">-- BGE-small dimensions</span>
+  updated_at  <span style="color:#34d399">timestamptz</span> <span style="color:#c084fc">DEFAULT</span> <span style="color:#34d399">now</span>()
+);
+
+<span style="color:#71717a">-- Fast lookups by key</span>
+<span style="color:#c084fc">CREATE INDEX</span> idx_brain_key <span style="color:#c084fc">ON</span> brain_context(key);
+
+<span style="color:#71717a">-- Semantic search index (cosine similarity)</span>
+<span style="color:#c084fc">CREATE INDEX</span> idx_brain_embedding
+  <span style="color:#c084fc">ON</span> brain_context
+  <span style="color:#c084fc">USING</span> ivfflat (embedding vector_cosine_ops)
+  <span style="color:#c084fc">WITH</span> (lists = <span style="color:#fb923c">100</span>);
+</code></pre>
+</div>
+
 <div class="panel">
 <div class="label">Key Concept</div>
 <h3 style="margin-top:0">Why Supabase for AI Apps?</h3>

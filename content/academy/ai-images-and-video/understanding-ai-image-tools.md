@@ -53,6 +53,17 @@ free: true
   <h2 class="section-title">The open-source powerhouse you can run on your own computer.</h2>
   <p class="section-text">Stable Diffusion is different from the others because it is open source. You can download it and run it locally on your computer (if you have a decent graphics card) or use it through web services like DreamStudio, Clipdrop, or dozens of community-built interfaces. This means maximum control and zero ongoing cost if you run it yourself.</p>
   <p class="section-text"><strong>Best for:</strong> Technical users who want full control, people who need unlimited generations, anyone who wants to fine-tune models on their own images. <strong>Limitations:</strong> Steeper learning curve; local setup requires technical comfort; default output quality needs more prompt skill to match DALL-E or Midjourney.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — same prompt, different tool personalities</div>
+<pre style="margin:0;color:#e5e5e5"><code>A lighthouse on a rocky cliff at sunset, crashing waves
+below, dramatic storm clouds breaking to reveal golden
+light, cinematic photography, wide angle lens
+
+Try this exact prompt in DALL-E, Midjourney, and Stable
+Diffusion — each tool will interpret it differently.
+That difference is their personality.</code></pre>
+</div>
 </div>
 
 <div class="lesson-section">

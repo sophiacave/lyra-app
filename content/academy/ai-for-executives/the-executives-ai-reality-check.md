@@ -162,6 +162,27 @@ css: "ai-executives.css"
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Evaluate your next AI initiative in 60 seconds.</h2>
+  <p class="section-text">Use this prompt before any AI initiative gets budget or executive attention. It forces the 3-gate framework from this lesson.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Executive AI Initiative Gate Check</div>
+<pre style="margin:0;color:#e5e5e5"><code>My team is proposing an AI initiative. Before I greenlight it, pressure-test it against these 3 gates:
+
+THE PROPOSAL: [describe the AI initiative in 2-3 sentences]
+ESTIMATED COST: [budget requested]
+TEAM REQUESTING: [department or person]
+
+GATE 1 — BUSINESS PROBLEM: What specific, measurable business problem does this solve? Would we invest in solving it even if AI didn't exist?
+GATE 2 — DATA READINESS: What data does this require? Is it clean, accessible, and sufficient? What's the realistic state of our data for this use case?
+GATE 3 — GOOD ENOUGH: What accuracy level does this use case need? Can it tolerate AI's 85-95% accuracy range, or does it need perfection?
+
+For each gate, give me a PASS / FAIL / CONDITIONAL verdict with a one-sentence explanation. Then give me the 3 toughest questions I should ask the team before approving.</code></pre>
+</div>
+</div>
+
 <!-- KEY TAKEAWAY -->
 <div class="callout purple">
   <p><strong>The executive takeaway:</strong> AI is a powerful operational tool, not a magic strategy generator. The leaders who benefit most are the ones who start with a clear business problem, honest data assessment, and realistic expectations about accuracy. That discipline separates the 30% who see returns from the 70% who don't.</p>

@@ -60,6 +60,22 @@ css: "claude-beginners.css"
     </div>
   </div>
 
+  <p class="section-text">Here's the formula in action — a complete prompt you can copy and customize:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — The 3-Part Formula in action</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">[ROLE]</span> You are an experienced project manager.
+
+<span style="color:#c084fc">[CONTEXT]</span> My team of 6 just missed a deadline by 2
+weeks. The client is frustrated but not angry yet.
+I need to send an update email today.
+
+<span style="color:#4ade80">[FORMAT]</span> Write a 4-sentence email. Acknowledge the
+delay, explain briefly, give the new timeline, and
+end with one concrete action we are taking to
+prevent this from happening again.</code></pre>
+</div>
+
   <p class="section-text">Now put the formula parts in the right order:</p>
 
 <div data-learn="SortStack" data-props='{"title":"Order the Prompt Formula","instruction":"Drag these into the correct order for building a great prompt","items":["Role — Tell Claude who to be","Context — Give the situation and details","Format — Specify what you want back"]}'></div>

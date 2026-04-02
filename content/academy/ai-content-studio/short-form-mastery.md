@@ -44,6 +44,34 @@ free: false
   <p class="section-text"><strong style="color:var(--green)">The Story Hook:</strong> "Last Tuesday, a client told me something that changed how I think about marketing." — Humans are wired for narrative.</p>
   <p class="section-text"><strong style="color:var(--blue)">The Question:</strong> "What would change if you could create a week of content in 2 hours?" — Good questions create an open loop the reader needs to close.</p>
   <p class="section-text">Ask AI: <em>"Give me 10 hook variations for this idea: [your idea]. Use these formats: contrarian, specificity, story opener, and question. Make them punchy — under 15 words each."</em></p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Social Media Post Generator</div>
+<pre style="margin:0;color:#e5e5e5"><code>Generate 10 social media posts from this single idea:
+
+CORE IDEA: [your opinion, insight, or lesson]
+AUDIENCE: [who you're talking to]
+PLATFORMS: Twitter, LinkedIn, Instagram
+
+Create a mix:
+- 3 Twitter posts (under 280 chars, punchy, standalone)
+- 3 LinkedIn posts (personal story + insight, end with a
+  question, short paragraphs with line breaks)
+- 2 Instagram captions (hook line + value + CTA, include
+  hashtag suggestions)
+- 2 hot takes (contrarian angle, under 2 sentences)
+
+For EVERY post, the first line must be a scroll-stopping
+hook. Use these hook styles across the set:
+- Contrarian: "Everyone says X. They're wrong."
+- Specificity: exact numbers, dates, or results
+- Story: "Last week something happened that..."
+- Question: open loop the reader must close
+
+Keep my voice: [casual/direct/warm — pick your tone].
+No corporate speak. No "In today's fast-paced world."</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

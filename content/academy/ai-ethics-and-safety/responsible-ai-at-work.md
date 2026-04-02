@@ -120,6 +120,30 @@ free: false
   <p class="section-text">And when in doubt: <strong>be more cautious with other people's data than your own.</strong> Your career can survive being called old-fashioned. It may not survive a data breach.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Run the 5-question check before your next AI task.</h2>
+  <p class="section-text">Use this prompt template before handing any work task to AI. It forces you through the checklist so you catch problems before they happen.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Workplace AI Pre-Flight Check</div>
+<pre style="margin:0;color:#e5e5e5"><code>Before I use AI for this task, help me think through the risks.
+
+The task: [describe what you want AI to do]
+The audience: [who will see or use the output]
+The data involved: [describe what information you'd need to share]
+
+Walk me through these 5 checkpoints:
+1. CONFIDENTIALITY — Is any of this data sensitive? What should I anonymize or remove?
+2. ACCURACY — Will someone make decisions based on this? What needs to be verified?
+3. DISCLOSURE — Should I tell the audience that AI was involved? Why or why not?
+4. BIAS — Could the output unfairly affect or exclude anyone?
+5. HUMAN JUDGMENT — What parts need my personal expertise vs. what AI can handle alone?
+
+Give me a clear GO / CAUTION / STOP recommendation for each checkpoint.</code></pre>
+</div>
+</div>
+
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>

@@ -49,6 +49,25 @@ free: true
   <p class="section-text">That last point is the key. AI has infinite general knowledge but zero context about you. Every prompt you write is essentially a briefing document. The better the briefing, the better the work.</p>
   <p class="section-text">When someone says "AI gave me garbage," what they're really saying is: "I gave AI a one-sentence briefing and expected a masterpiece."</p>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Bad vs Good: The Same Task, Two Approaches</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">[BAD PROMPT]</span>
+<span style="color:#a1a1aa">Write me a marketing email.</span>
+
+<span style="color:#fb923c">[GOOD PROMPT]</span>
+<span style="color:#c084fc">You are a conversion-focused email copywriter.</span>
+
+Write a marketing email for <span style="color:#4ade80">[product name]</span> targeting
+<span style="color:#4ade80">[audience — e.g., busy parents who want to eat healthier]</span>.
+
+<span style="color:#fb923c">Goal:</span> <span style="color:#4ade80">[get them to click the "Start Free Trial" button]</span>
+<span style="color:#fb923c">Tone:</span> <span style="color:#c084fc">Friendly, urgent but not pushy</span>
+<span style="color:#fb923c">Length:</span> <span style="color:#c084fc">Under 150 words</span>
+<span style="color:#fb923c">Must include:</span> <span style="color:#c084fc">One specific customer result as social proof</span>
+<span style="color:#fb923c">Must avoid:</span> <span style="color:#c084fc">Buzzwords, "Dear valued customer," generic subject line</span></code></pre>
+</div>
+
+  <p class="section-text" style="margin-top:1rem">Notice the difference. The bad prompt forces the AI to guess everything — audience, tone, length, purpose. The good prompt answers every question the AI would ask if it could. <strong>That's the entire game.</strong></p>
 
 <div data-learn="QuizMC" data-props='{"title":"Check Your Understanding","questions":[{"q":"Why does the same AI model give different quality results to different people?","options":["Some people have a more expensive subscription","The AI randomly varies its output quality","The quality of the prompt determines the quality of the output","Some people are luckier with AI"],"correct":2,"explanation":"AI reflects the clarity of your input. A specific, well-structured prompt consistently produces better results than a vague one — regardless of who writes it."},{"q":"What is the best mental model for thinking about AI?","options":["A search engine that finds answers","A capable intern who needs a good briefing","A magic 8-ball that guesses what you want","A calculator that processes data"],"correct":1,"explanation":"AI has vast general knowledge but zero context about YOUR specific situation. Like a brilliant intern, it needs a clear briefing to deliver great work."}]}'></div>
 

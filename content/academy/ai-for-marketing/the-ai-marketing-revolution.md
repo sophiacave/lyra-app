@@ -81,6 +81,28 @@ free: true
     </div>
   </div>
   <p class="section-text" style="margin-top:1rem">AI handles the <strong>production</strong>. You handle the <strong>direction</strong>. Together, you're unstoppable.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt Template — Marketing Analysis</div>
+<pre style="margin:0;color:#e5e5e5"><code>You are a senior marketing strategist. Analyze the following
+product and audience, then produce a complete marketing brief.
+
+PRODUCT: [Your product or service]
+TARGET AUDIENCE: [Demographics, psychographics, pain points]
+BUDGET: [Monthly marketing budget]
+GOAL: [e.g., 500 new signups in 30 days]
+
+Produce:
+1. Three unique value propositions ranked by emotional impact
+2. Channel strategy — which 3 channels to prioritize and why
+3. One week of content ideas (1 post per day per channel)
+4. Subject lines for a 3-email welcome sequence
+5. One paragraph of ad copy for the highest-priority channel
+
+Keep the tone [casual / professional / bold] and back up
+every recommendation with a reason.</code></pre>
+</div>
+
 </div>
 
 <!-- SECTION 4 -->

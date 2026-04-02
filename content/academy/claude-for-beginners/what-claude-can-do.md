@@ -75,6 +75,44 @@ css: "claude-beginners.css"
   <p class="section-text" style="margin-top:1rem">That took 10 seconds. No searching. No reading 5 articles. Just a clear, actionable answer tailored to your exact situation. <strong>That is what Claude does.</strong></p>
 </div>
 
+<!-- SECTION 1.6: COPY-PASTE STARTER PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Copy &amp; Paste</span>
+  <h2 class="section-title">3 prompts to try right now.</h2>
+  <p class="section-text">Open <a href="https://claude.ai" target="_blank" style="color:var(--purple)">claude.ai</a>, paste any of these, and see what happens. Replace the brackets with your details.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Draft an email in 10 seconds</div>
+<pre style="margin:0;color:#e5e5e5"><code>Write a professional but warm email to [name] about
+[topic]. Key points:
+
+1. [First thing to mention]
+2. [Second thing to mention]
+3. [What you want them to do next]
+
+Keep it under 100 words.</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Summarize anything fast</div>
+<pre style="margin:0;color:#e5e5e5"><code>Summarize this into 5 bullet points. Focus on what
+changed, what matters, and what needs attention:
+
+[Paste your document, article, or report here]</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Get unstuck on a decision</div>
+<pre style="margin:0;color:#e5e5e5"><code>I am deciding between [Option A] and [Option B].
+
+Here is my situation: [brief context]
+
+Give me a pros/cons table for each option, then tell
+me which one you would pick and why.</code></pre>
+</div>
+
+</div>
+
 <!-- SECTION 2: 5 THINGS — FlashDeck -->
 <div class="lesson-section">
   <span class="section-label">The Good Stuff</span>

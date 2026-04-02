@@ -49,6 +49,37 @@ css: "claude-beginners.css"
 
 </div>
 
+<!-- SECTION 2.5: MORNING ROUTINE PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Ready to Paste</span>
+  <h2 class="section-title">Your morning routine — copy these prompts.</h2>
+  <p class="section-text">Here are the exact prompts for each step of your morning routine. Paste them into Claude every morning until they become second nature.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Morning Inbox Triage (90 seconds)</div>
+<pre style="margin:0;color:#e5e5e5"><code>Here are my top 3 emails this morning:
+
+Email 1: [paste or describe]
+Email 2: [paste or describe]
+Email 3: [paste or describe]
+
+Which ones need a reply today? Draft the most
+urgent one. Tone: [professional but warm].</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Daily Planner (60 seconds)</div>
+<pre style="margin:0;color:#e5e5e5"><code>Here is my calendar and to-do list for today:
+
+[Paste calendar + tasks]
+
+What should I prioritize? Where are gaps for deep
+work? Flag any conflicts or back-to-back meetings
+I should reschedule.</code></pre>
+</div>
+
+</div>
+
 <!-- SECTION 3: PROMPT LIBRARY -->
 <div class="lesson-section">
   <span class="section-label">Your Library</span>

@@ -181,6 +181,34 @@ css: "ai-executives.css"
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Prepare your stakeholder-specific AI pitch.</h2>
+  <p class="section-text">Use this prompt to tailor your AI messaging for each audience in your organization. Different stakeholders need different arguments.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Stakeholder-Specific AI Buy-In Brief</div>
+<pre style="margin:0;color:#e5e5e5"><code>I'm rolling out an AI initiative: [describe the initiative in 1-2 sentences]
+
+Write me 4 different one-paragraph pitches for these stakeholders:
+
+1. CFO — Lead with ROI math, cost reduction, and conservative payback estimates.
+   Current process cost: [estimated monthly cost]
+   Expected savings: [estimated monthly savings]
+
+2. CTO/CIO — Lead with integration architecture, security posture, and data governance.
+   Our current stack: [list key systems]
+
+3. MIDDLE MANAGERS — Lead with ownership, team benefit, and what pain point this solves.
+   The biggest team complaint about this process: [describe it]
+
+4. FRONTLINE TEAM — Lead with peer proof and specific time savings on tasks they dislike.
+   The most tedious part of this work: [describe it]
+
+For each pitch, include the single strongest opening line and the one objection I should be prepared to answer.</code></pre>
+</div>
+</div>
+
 <!-- KEY TAKEAWAY -->
 <div class="callout purple">
   <p><strong>The leadership takeaway:</strong> AI transformation is 20% technology and 80% people. Your job as an executive isn't to understand the algorithms. It's to create the conditions where your teams feel safe to experiment, supported through the transition, and clear on how AI makes their work better. Do that, and adoption takes care of itself.</p>

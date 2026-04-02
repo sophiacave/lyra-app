@@ -77,8 +77,32 @@ free: false
 
   <div class="complete-section" id="complete">
     <h2>Agent Designed!</h2>
-    <p>You just created a complete agent specification. In the next lesson, you'll turn this into a system prompt.</p>
+    <p>You just created a complete agent specification. In the next lesson, you'll turn this into a system prompt. Here's what your design looks like as code — this is the format you'll use to configure a real agent:</p>
   </div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Agent design spec as code</div>
+<pre style="margin:0;color:#e5e5e5"><code>AGENT_CONFIG = {
+    <span style="color:#fb923c">"name"</span>: <span style="color:#fb923c">"Scout"</span>,
+    <span style="color:#fb923c">"goal"</span>: <span style="color:#fb923c">"Monitor my website and fix issues before I notice them"</span>,
+    <span style="color:#fb923c">"tools"</span>: [
+        <span style="color:#fb923c">"health_check"</span>,    <span style="color:#71717a"># ping endpoints</span>
+        <span style="color:#fb923c">"restart_service"</span>,  <span style="color:#71717a"># restart if down</span>
+        <span style="color:#fb923c">"send_alert"</span>,       <span style="color:#71717a"># notify the human</span>
+    ],
+    <span style="color:#fb923c">"memory"</span>: [
+        <span style="color:#fb923c">"Past incidents and how they were resolved"</span>,
+        <span style="color:#fb923c">"Normal response times for each endpoint"</span>,
+    ],
+    <span style="color:#fb923c">"guardrails"</span>: [
+        <span style="color:#fb923c">"Never delete production data"</span>,
+        <span style="color:#fb923c">"Never restart more than 2 times without human approval"</span>,
+    ],
+}
+
+<span style="color:#71717a"># This config becomes your system prompt + tool definitions</span>
+<span style="color:#71717a"># in the next lesson. Design first, code second.</span></code></pre>
+</div>
 
 
   <div data-learn="QuizMC" data-props='{"title":"Agent Design Principles","questions":[{"q":"Why is a clear goal statement important when designing an agent?","options":["It makes the agent run faster","Vague goals produce confused agents that do not know when they are done","It reduces API costs","The goal is only used for marketing purposes"],"correct":1,"explanation":"An agent needs a clear, specific goal to know what it is working toward and when it has succeeded. Vague goals lead to aimless loops and wasted compute."},{"q":"Why should every agent have at least one guardrail?","options":["Guardrails are optional decorations","Guardrails prevent the agent from taking destructive or unsafe actions even when asked","Guardrails speed up response time","Guardrails replace the need for memory"],"correct":1,"explanation":"Guardrails are safety constraints that the agent must never violate. They protect against accidental data deletion, privacy leaks, and other irreversible mistakes — even if a user explicitly requests the unsafe action."},{"q":"What is the ideal number of tools for a starting agent?","options":["As many as possible — more tools means more power","Zero — tools add complexity","A focused set of 2-4 tools that directly serve its specific goal","Exactly 10 tools"],"correct":2,"explanation":"Start with a small, focused toolset that matches your agent goal. Too many tools increases complexity, cost, and the chance of the agent using the wrong one."}]}'></div>

@@ -51,6 +51,35 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Categorize your own business tasks.</h2>
+  <p class="section-text">Use this prompt to sort your real tasks into the three AI capability categories. It gives you a personalized action plan for what to automate first.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Business Task AI Readiness Assessment</div>
+<pre style="margin:0;color:#e5e5e5"><code>I run a [type of business] with [number] employees. Here are 10 tasks my team spends the most time on each week:
+
+1. [task]
+2. [task]
+3. [task]
+4. [task]
+5. [task]
+6. [task]
+7. [task]
+8. [task]
+9. [task]
+10. [task]
+
+For each task, categorize it as:
+- AI DOES WELL (hand it to AI with light review)
+- AI CAN HELP (AI drafts, human reviews and decides)
+- AI CANNOT DO (keep fully human)
+
+For each, explain WHY it falls in that category and what specific AI tool or approach would work best. Then rank the "AI Does Well" tasks by estimated hours saved per week.</code></pre>
+</div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 3</span>
   <h2 class="section-title">Match tasks to categories.</h2>
   <p class="section-text">Six tasks, three categories. Match each task to where it belongs. This is the same judgment call you will be making in your business every week.</p>

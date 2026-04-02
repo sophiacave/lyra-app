@@ -45,6 +45,54 @@ free: false
 
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Before & After</span>
+  <h2 class="section-title">Watch a broken prompt get fixed in real time.</h2>
+  <p class="section-text">This template shows the most common mistakes all at once — and how to fix every single one.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Before: 5 Mistakes in One Prompt</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#f87171">Hey! If you don't mind, could you maybe help me out
+with writing something for my website? I need some
+content and also a tagline and maybe some SEO stuff
+and social media posts too. Make it good! Thanks!! :)</span>
+
+<span style="color:#71717a">❌ Too vague — "something for my website"</span>
+<span style="color:#71717a">❌ Multiple asks bundled — content + tagline + SEO + social</span>
+<span style="color:#71717a">❌ No audience specified</span>
+<span style="color:#71717a">❌ Polite fluff instead of clear direction</span>
+<span style="color:#71717a">❌ No format, length, or tone constraints</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — After: Every Mistake Fixed</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">You are a conversion copywriter who specializes in
+small business websites.</span>
+
+<span style="color:#fb923c">[TASK]:</span> <span style="color:#c084fc">Write the hero section copy for the homepage of
+<span style="color:#4ade80">[business name]</span> — a <span style="color:#4ade80">[type of business, e.g., local bakery
+that ships nationwide]</span>.</span>
+
+<span style="color:#fb923c">[AUDIENCE]:</span> <span style="color:#4ade80">[Target customer — e.g., gift buyers aged 25-45
+who want premium, handmade treats]</span>
+
+<span style="color:#fb923c">[DELIVERABLE]:</span> <span style="color:#c084fc">One headline (under 8 words), one subheadline
+(1 sentence), and one call-to-action button label.</span>
+
+<span style="color:#fb923c">[TONE]:</span> <span style="color:#c084fc">Warm and inviting, not corporate. Think friendly
+shop owner, not marketing agency.</span>
+
+<span style="color:#fb923c">[AVOID]:</span> <span style="color:#c084fc">No "Welcome to," no puns, no exclamation marks.</span>
+
+<span style="color:#71717a">✅ One focused task — hero section only</span>
+<span style="color:#71717a">✅ Specific audience defined</span>
+<span style="color:#71717a">✅ Clear format and length</span>
+<span style="color:#71717a">✅ Direct — zero filler words</span>
+<span style="color:#71717a">✅ Negative constraints kill cliches</span></code></pre>
+</div>
+
+</div>
+
 <!-- DIAGNOSTIC -->
 <div class="lesson-section">
   <span class="section-label">Quick Diagnostic</span>

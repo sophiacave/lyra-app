@@ -61,6 +61,35 @@ free: true
   <p class="section-text">Open your AI tool of choice and paste this prompt:</p>
   <p class="section-text"><em>"I want you to act as my content strategist. My business is [describe it]. My audience is [describe them]. My goal is [describe it]. Give me a content plan for the next 4 weeks: 2 blog posts, 10 social posts, and 2 emails. For each piece, give me the topic, the angle, and why it matters to my audience."</em></p>
   <p class="section-text">Notice what happens. You didn't ask AI to write anything yet. You asked it to <strong>think</strong> with you. That's the studio mindset in action.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Creative Brief for Your Content Studio</div>
+<pre style="margin:0;color:#e5e5e5"><code>You are the creative director of my content studio. Before
+we create anything this month, build me a creative brief.
+
+MY BUSINESS: [what you do, who you serve]
+MY AUDIENCE: [demographics, psychographics, pain points]
+MY GOAL THIS MONTH: [grow list / launch product / build
+authority / drive traffic]
+
+Produce a one-page creative brief covering:
+
+1. AUDIENCE SNAPSHOT — who we're talking to, what keeps them
+   up at night, what outcome they dream about.
+2. CORE MESSAGE — the single idea we want to own this month.
+3. CONTENT PILLARS — 3-4 themes every piece maps to.
+4. TONE DIRECTION — how we sound (with 3 example sentences).
+5. FORMATS — which content types serve our goal best and why.
+6. SUCCESS METRICS — how we'll know it worked (specific,
+   measurable indicators).
+7. ONE BIG CREATIVE SWING — the boldest piece we could
+   publish this month. The one that could go viral or
+   start a conversation.
+
+This brief is the north star. Every piece of content we
+create should trace back to it.</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

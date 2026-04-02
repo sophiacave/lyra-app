@@ -37,6 +37,36 @@ css: "claude-beginners.css"
 
 <div data-learn="FlashDeck" data-props='{"title":"4 Summary Styles","cards":[{"front":"📋 Executive Summary\n\nFor your boss, board, or anyone who wants the big picture in 30 seconds.","back":"PROMPT: Summarize this report as a 3-paragraph executive summary. Lead with the bottom line, then key findings, then what needs attention.\n\nBest for: Leadership updates, board decks, stakeholder emails. Claude prioritizes outcomes and decisions over details."},{"front":"🔹 Bullet Points\n\nFor quick scanning. Hit the highlights, skip the filler.","back":"PROMPT: Summarize this into 5-7 bullet points. Focus on what changed, what matters, and what is at risk.\n\nBest for: Slack updates, meeting prep, personal notes. Claude compresses even the densest reports into scannable bullets."},{"front":"✅ Action Items Only\n\nFor when you need to know what to DO, not what happened.","back":"PROMPT: Extract all action items, decisions, and next steps from this document. Format as a checklist with owners and deadlines where mentioned.\n\nBest for: Post-meeting notes, project plans, policy documents. Skips all background — gives you the to-do list."},{"front":"🧒 ELI5 (Explain Like I Am 5)\n\nFor when the document is in a domain you do not know well.","back":"PROMPT: Explain what this document says in plain English, like I have never seen this topic before. Use everyday analogies. No jargon.\n\nBest for: Legal contracts, technical specs, medical reports, financial statements. Claude translates expert language into human language."}]}'></div>
 
+  <p class="section-text">Here are all four as ready-to-paste prompts — bookmark these:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Executive Summary</div>
+<pre style="margin:0;color:#e5e5e5"><code>Summarize this as a 3-paragraph executive summary.
+Lead with the bottom line, then key findings, then
+what needs attention. Audience: [CEO / board / VP].
+
+[Paste document here]</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Action Items Extractor</div>
+<pre style="margin:0;color:#e5e5e5"><code>Extract all action items, decisions, and next steps
+from this document. Format as a checklist with owners
+and deadlines where mentioned.
+
+[Paste document here]</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Data Analyst</div>
+<pre style="margin:0;color:#e5e5e5"><code>Here is my data:
+
+[Paste spreadsheet data, CSV, or numbers here]
+
+What are the key trends? What should I worry about?
+Give me your top 3 recommendations ranked by impact.</code></pre>
+</div>
+
   <p class="section-text">Now match each summary style to the right situation:</p>
 
 <div data-learn="MatchConnect" data-props='{"title":"Match the Summary Style","instruction":"Match each situation to the best summary style","pairs":[{"left":"CEO needs a 30-second overview before a board meeting","right":"Executive Summary"},{"left":"You need a quick update to post in Slack","right":"Bullet Points"},{"left":"After a 90-minute meeting, you need to know who does what","right":"Action Items Only"},{"left":"Legal contract in a domain you have never worked in","right":"ELI5 (Explain Like I Am 5)"},{"left":"Monthly report for your skip-level manager","right":"Executive Summary"},{"left":"Medical test results you want to understand clearly","right":"ELI5 (Explain Like I Am 5)"}]}'></div>

@@ -43,6 +43,36 @@ free: false
   <p class="section-text"><strong style="color:var(--purple)">Level 2 — The Breakdown:</strong> Newsletter email summarizing the key insight. LinkedIn post telling the story behind it. Twitter thread listing the main points.</p>
   <p class="section-text"><strong style="color:var(--green)">Level 3 — The Snippets:</strong> Individual quotes or stats as standalone social posts. Instagram carousel of the tips. One-liner hooks pulled from the best lines.</p>
   <p class="section-text"><strong style="color:var(--blue)">Level 4 — The Derivatives:</strong> Video script for a 60-second reel. Podcast talking points. Quora or Reddit answer using the same expertise. Community post starting a discussion on the topic.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Content Waterfall Repurposer</div>
+<pre style="margin:0;color:#e5e5e5"><code>I'm going to paste a blog post. Repurpose it into 8 pieces
+of platform-native content. Do NOT copy-paste sections —
+genuinely transform each piece for its destination.
+
+SOURCE POST:
+[PASTE YOUR FULL BLOG POST]
+
+Create these pieces, maintaining my voice throughout:
+
+1. TWITTER THREAD (6 tweets) — punchy, each tweet stands
+   alone. Hook tweet earns the click to keep reading.
+2. LINKEDIN POST — open with a personal story angle, short
+   paragraphs, end with a discussion question.
+3. INSTAGRAM CAROUSEL (7 slides) — Slide 1 = hook, Slides
+   2-6 = one idea per slide with brief text, Slide 7 = CTA.
+4. EMAIL NEWSLETTER — tease the single juiciest insight,
+   link to the full post. Under 250 words.
+5. 3 STANDALONE SOCIAL POSTS — under 100 words each, varied
+   hooks (contrarian, question, stat).
+6. 60-SECOND VIDEO SCRIPT — conversational, written for
+   speaking out loud. Include visual direction cues.
+7. COMMUNITY DISCUSSION PROMPT — one open question that
+   sparks real replies, not just likes.
+8. QUOTE GRAPHIC — pull the single best one-liner from the
+   post. Format it as a shareable quote.</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

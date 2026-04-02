@@ -50,6 +50,38 @@ css: "claude-beginners.css"
   <h2 class="section-title">The Reply Chain Technique.</h2>
   <p class="section-text">This is the single most useful email trick in this course. <strong>Copy an entire email thread, paste it into Claude, and ask it to draft your reply.</strong> Claude reads the context, understands the dynamics, and writes a response that fits naturally into the conversation.</p>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Reply Chain Technique (copy this)</div>
+<pre style="margin:0;color:#e5e5e5"><code>Here is an email thread:
+
+---
+[Paste the entire email thread here]
+---
+
+I am [your name/role]. Draft my reply.
+
+Goal: [what you want to achieve — e.g., push back
+respectfully, agree with conditions, ask for more info]
+
+Tone: [e.g., collaborative but firm, warm, direct]
+
+Keep it under 150 words.</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Meeting prep in 90 seconds</div>
+<pre style="margin:0;color:#e5e5e5"><code>I have a meeting in [X] minutes.
+
+Attendees: [list names and roles]
+Topic: [what the meeting is about]
+My role: [what you are responsible for]
+
+Give me:
+1. Three smart questions to ask
+2. Two potential objections to prepare for
+3. One thing I should propose</code></pre>
+</div>
+
 <div data-learn="FlashDeck" data-props='{"title":"Reply Chain in Action","cards":[{"front":"📧 The Scenario\n\nMarcus (VP Sales) wants to cut your $85K marketing budget by 40%. Priya (you, CMO) has strong ROI numbers. There have been 3 emails back and forth. Tension is rising.\n\nFlip to see how Claude handles it.","back":"PROMPT: I am Priya. Draft my reply to Marcus. Be collaborative, not defensive. Last quarter generated $340K pipeline from $72K spend. Propose keeping $70K (cut $15K from photography). Suggest sharing booth costs at the conference. Concise and positive.\n\nClaude drafts a reply that leads with ROI data (4.7x return), offers a specific $15K cut, proposes the booth-sharing idea, and ends with a 15-min meeting ask — all in under 150 words."},{"front":"🧠 Why This Works\n\nClaude does not just reply to the last email. It reads the entire thread and understands subtext.\n\nFlip to see what Claude picks up on.","back":"Claude reads between the lines:\n\n• Marcus is not just cutting budget — he is protecting his conference spend. Address that directly.\n• Priya has leverage (strong ROI numbers) but needs to be diplomatic, not combative.\n• The thread is escalating — Claude de-escalates with data and collaboration.\n• A meeting request moves the conversation off email where tone is harder to control.\n\nThis alone saves 20+ minutes per difficult email."}]}'></div>
 
 </div>

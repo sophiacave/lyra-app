@@ -47,6 +47,61 @@ free: false
 </div>
 <div class="decode-output" id="decodeOutput" style="display:none"></div>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Protecting an API route with JWT verification</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">'@supabase/supabase-js'</span>
+
+<span style="color:#c084fc">export default async function</span> <span style="color:#34d399">handler</span>(req) {
+  <span style="color:#71717a">// 1. Extract the Bearer token from the request</span>
+  <span style="color:#c084fc">const</span> authHeader = req.headers.<span style="color:#34d399">get</span>(<span style="color:#fb923c">'Authorization'</span>)
+  <span style="color:#c084fc">if</span> (!authHeader?.startsWith(<span style="color:#fb923c">'Bearer '</span>)) {
+    <span style="color:#c084fc">return new</span> <span style="color:#34d399">Response</span>(<span style="color:#fb923c">'Missing token'</span>, { status: <span style="color:#fb923c">401</span> })
+  }
+  <span style="color:#c084fc">const</span> token = authHeader.<span style="color:#34d399">replace</span>(<span style="color:#fb923c">'Bearer '</span>, <span style="color:#fb923c">''</span>)
+
+  <span style="color:#71717a">// 2. Create a Supabase client with the user's token</span>
+  <span style="color:#c084fc">const</span> supabase = <span style="color:#34d399">createClient</span>(
+    Deno.env.<span style="color:#34d399">get</span>(<span style="color:#fb923c">'SUPABASE_URL'</span>),
+    Deno.env.<span style="color:#34d399">get</span>(<span style="color:#fb923c">'SUPABASE_ANON_KEY'</span>),
+    { global: { headers: { Authorization: <span style="color:#fb923c">`Bearer <span style="color:#c084fc">${</span>token<span style="color:#c084fc">}</span>`</span> } } }
+  )
+
+  <span style="color:#71717a">// 3. Verify the token and get the user</span>
+  <span style="color:#c084fc">const</span> { data: { user }, error } = <span style="color:#c084fc">await</span> supabase.auth.<span style="color:#34d399">getUser</span>()
+  <span style="color:#c084fc">if</span> (error || !user) {
+    <span style="color:#c084fc">return new</span> <span style="color:#34d399">Response</span>(<span style="color:#fb923c">'Invalid token'</span>, { status: <span style="color:#fb923c">401</span> })
+  }
+
+  <span style="color:#71717a">// 4. Token is valid — RLS now scopes queries to this user</span>
+  <span style="color:#c084fc">const</span> { data } = <span style="color:#c084fc">await</span> supabase
+    .<span style="color:#34d399">from</span>(<span style="color:#fb923c">'brain_context'</span>)
+    .<span style="color:#34d399">select</span>(<span style="color:#fb923c">'key, value'</span>)  <span style="color:#71717a">// RLS ensures only this user's rows</span>
+
+  <span style="color:#c084fc">return new</span> <span style="color:#34d399">Response</span>(JSON.<span style="color:#34d399">stringify</span>({ user: user.email, data }))
+}
+</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — RLS policy that uses JWT claims for row-level access</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable RLS on a user-scoped table</span>
+<span style="color:#c084fc">ALTER TABLE</span> brain_context <span style="color:#c084fc">ENABLE ROW LEVEL SECURITY</span>;
+
+<span style="color:#71717a">-- Users can only read their own rows</span>
+<span style="color:#71717a">-- auth.uid() extracts the 'sub' claim from the JWT automatically</span>
+<span style="color:#c084fc">CREATE POLICY</span> <span style="color:#fb923c">"users read own data"</span> <span style="color:#c084fc">ON</span> brain_context
+  <span style="color:#c084fc">FOR SELECT</span>
+  <span style="color:#c084fc">TO</span> authenticated
+  <span style="color:#c084fc">USING</span> ( <span style="color:#34d399">auth.uid</span>() = user_id );
+
+<span style="color:#71717a">-- Users can insert rows only with their own user_id</span>
+<span style="color:#c084fc">CREATE POLICY</span> <span style="color:#fb923c">"users insert own data"</span> <span style="color:#c084fc">ON</span> brain_context
+  <span style="color:#c084fc">FOR INSERT</span>
+  <span style="color:#c084fc">TO</span> authenticated
+  <span style="color:#c084fc">WITH CHECK</span> ( <span style="color:#34d399">auth.uid</span>() = user_id );
+</code></pre>
+</div>
+
 <h2>Auth Flow: Step by Step</h2>
 <p>Click each step to walk through how Supabase authentication works.</p>
 

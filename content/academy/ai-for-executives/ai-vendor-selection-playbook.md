@@ -145,6 +145,33 @@ free: false
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Prepare for your next vendor meeting.</h2>
+  <p class="section-text">Send this prompt output to your team before any AI vendor evaluation. It generates a customized scorecard you can bring to the demo.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — AI Vendor Evaluation Scorecard Generator</div>
+<pre style="margin:0;color:#e5e5e5"><code>I'm evaluating an AI vendor for this use case: [describe what you need the AI to do]
+
+Our requirements:
+- Industry: [your industry]
+- Data sensitivity: [what kind of data is involved]
+- Integration needs: [systems it must connect to, e.g. Salesforce, SAP]
+- Budget range: [monthly or annual]
+- Team technical level: [non-technical / some technical / engineering team]
+
+Generate a vendor evaluation scorecard with:
+1. Ten criteria to score 1-5 during the demo (customized for my use case)
+2. Five questions to ask that expose weak vendors
+3. Three red flags specific to my industry
+4. The email I should send the vendor BEFORE the meeting requesting they demo with our real data
+5. Five non-negotiable contract terms I must include
+
+Format it as a printable one-page checklist I can bring to the meeting.</code></pre>
+</div>
+</div>
+
 <!-- SECTION 6: TAKEAWAY -->
 <div class="lesson-section">
   <span class="section-label">The Bottom Line</span>

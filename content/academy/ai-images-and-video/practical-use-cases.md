@@ -67,6 +67,16 @@ free: false
   <h2 class="section-title">Visualize products before they exist.</h2>
   <p class="section-text">Launching a t-shirt line? Creating a candle brand? Designing packaging? AI can generate realistic mockups that show your concept in context — your product on a shelf, in someone's hands, in a beautiful lifestyle setting. This is invaluable for testing ideas before investing in production.</p>
   <p class="section-text"><strong>Pro tip:</strong> Use specific, descriptive prompts. "A white ceramic candle in a minimalist glass jar with a kraft paper label, sitting on a marble bathroom shelf next to eucalyptus stems, soft natural light, product photography" gives you something you could literally put on an Etsy listing.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — product mockup for an online store listing</div>
+<pre style="margin:0;color:#e5e5e5"><code>A hand-poured soy candle in a matte black ceramic vessel
+with a minimalist white label, placed on a light oak
+nightstand next to an open book and a small succulent,
+soft diffused window light from the left, lifestyle
+product photography, warm neutral tones, shallow depth
+of field, clean modern interior background</code></pre>
+</div>
 </div>
 
 <div class="lesson-section">

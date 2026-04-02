@@ -78,6 +78,40 @@ free: true
   </div>
 
   <div class="section">
+    <h2>What Does an MCP Server Look Like?</h2>
+    <p>At its core, an MCP server is just a few lines of code. You create a server, register tools, and start listening. Here is a minimal example:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — minimal MCP server with one tool</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { McpServer } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"@modelcontextprotocol/sdk/server/mcp.js"</span>;
+<span style="color:#c084fc">import</span> { StdioServerTransport } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"@modelcontextprotocol/sdk/server/stdio.js"</span>;
+<span style="color:#c084fc">import</span> { z } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"zod"</span>;
+
+<span style="color:#71717a">// 1. Create the server</span>
+<span style="color:#c084fc">const</span> server = <span style="color:#c084fc">new</span> <span style="color:#34d399">McpServer</span>({
+  name: <span style="color:#fb923c">"my-first-server"</span>,
+  version: <span style="color:#fb923c">"1.0.0"</span>,
+});
+
+<span style="color:#71717a">// 2. Register a tool</span>
+server.<span style="color:#34d399">tool</span>(
+  <span style="color:#fb923c">"greet"</span>,
+  <span style="color:#fb923c">"Say hello to someone"</span>,
+  { name: z.<span style="color:#34d399">string</span>().<span style="color:#34d399">describe</span>(<span style="color:#fb923c">"Name to greet"</span>) },
+  <span style="color:#c084fc">async</span> ({ name }) => ({
+    content: [{ type: <span style="color:#fb923c">"text"</span>, text: <span style="color:#fb923c">`Hello, ${name}!`</span> }],
+  })
+);
+
+<span style="color:#71717a">// 3. Start listening</span>
+<span style="color:#c084fc">const</span> transport = <span style="color:#c084fc">new</span> <span style="color:#34d399">StdioServerTransport</span>();
+<span style="color:#c084fc">await</span> server.<span style="color:#34d399">connect</span>(transport);</code></pre>
+</div>
+
+    <p style="font-size:.85rem;color:#a1a1aa;margin-top:.5rem">That is a complete, working MCP server. When Claude connects to it, it automatically discovers the <code>greet</code> tool, knows what arguments it accepts, and can call it. You will build servers like this from scratch later in the course.</p>
+  </div>
+
+  <div class="section">
     <h2>What Can AI Do With MCP?</h2>
     <p>MCP transforms AI from a question-answering machine into an action-taking assistant. Here are real examples of what becomes possible:</p>
 

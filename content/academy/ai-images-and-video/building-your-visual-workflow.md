@@ -42,6 +42,22 @@ free: false
   <p class="section-text"><strong>Proven winners:</strong> Every time you write a prompt that produces an outstanding result, save it here with a note about what made it work. Over time, this becomes a goldmine of tested language.</p>
   <p class="section-text"><strong>Style keywords:</strong> A running list of style, lighting, composition, and mood terms that you have found effective. Organized by category so you can mix and match.</p>
   <p class="section-text"><strong>Templates:</strong> Pre-built prompt structures for your most common needs — social media posts, blog headers, presentations, thumbnails. Fill-in-the-blank style so you can produce consistent results fast.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — reusable brand template (fill in the brackets)</div>
+<pre style="margin:0;color:#e5e5e5"><code>[SUBJECT/SCENE],
+[YOUR BRAND] color palette — soft navy and warm coral,
+clean minimalist composition, soft studio lighting,
+modern and professional, negative space for text overlay,
+16:9 aspect ratio, high resolution
+
+Example filled in:
+A flat-lay workspace with a notebook and coffee cup,
+soft navy and warm coral accents, clean minimalist
+composition, soft studio lighting, modern and professional,
+negative space on the right for text overlay,
+16:9 aspect ratio, high resolution</code></pre>
+</div>
 </div>
 
 <div class="lesson-section">

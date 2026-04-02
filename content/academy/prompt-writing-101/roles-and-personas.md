@@ -47,6 +47,39 @@ free: true
     <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Formula</div>
     <div style="background:var(--bg);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px;font-size:.9rem;color:var(--text);line-height:1.6;font-weight:600">"You are a <span style="color:var(--orange)">[senior/expert]</span> <span style="color:var(--purple)">[title]</span> who specializes in <span style="color:var(--green)">[niche]</span>."</div>
   </div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Role-Based Expert Template</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">[ROLE]:</span> <span style="color:#c084fc">You are a senior <span style="color:#4ade80">[job title]</span> with <span style="color:#4ade80">[X years]</span>
+of experience specializing in <span style="color:#4ade80">[niche/industry]</span>.</span>
+
+<span style="color:#fb923c">[AUDIENCE]:</span> <span style="color:#c084fc">You are advising <span style="color:#4ade80">[who — e.g., a first-time founder]</span>
+who needs <span style="color:#4ade80">[what — e.g., help pricing their SaaS product]</span>.</span>
+
+<span style="color:#fb923c">[TASK]:</span> <span style="color:#4ade80">[The specific thing you need them to do]</span>
+
+<span style="color:#fb923c">[VOICE]:</span> <span style="color:#c084fc">Speak like you would to a paying client —
+direct, specific, no filler. Back up every recommendation
+with a reason.</span></code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Example: Role in Action</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">You are a senior UX researcher with 12 years of experience
+specializing in mobile e-commerce apps.</span>
+
+I am redesigning the checkout flow for my <span style="color:#4ade80">[app name]</span>.
+Current conversion rate is <span style="color:#4ade80">[X%]</span> and the main drop-off
+happens at <span style="color:#4ade80">[step — e.g., the payment info screen]</span>.
+
+<span style="color:#fb923c">Task:</span> <span style="color:#c084fc">Audit my current flow and give me 5 specific changes
+ranked by expected impact on conversion. For each change,
+explain WHY it works psychologically.</span>
+
+<span style="color:#fb923c">Format:</span> <span style="color:#c084fc">Numbered list. Each item: the change, the reason,
+and one real-world app that does this well.</span></code></pre>
+</div>
+
 </div>
 
 <!-- SECTION 3: MATCH ROLES -->

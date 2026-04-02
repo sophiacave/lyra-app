@@ -77,6 +77,48 @@ free: true
     </div>
 
     <p style="font-size:.85rem;color:#a1a1aa">Your action reads this payload and acts on it — save the customer to a database, send a receipt email, update a dashboard. The payload is the bridge between trigger and action.</p>
+
+    <p style="font-size:.85rem;color:#a1a1aa;margin-top:1rem">Here is how you set up a webhook listener in Python that receives that Stripe payload and routes it to the correct action:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Webhook trigger with payload routing</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> flask <span style="color:#c084fc">import</span> Flask, request, jsonify
+
+app = <span style="color:#34d399">Flask</span>(__name__)
+
+<span style="color:#71717a"># Define which action runs for each trigger event type</span>
+ACTIONS = {
+    <span style="color:#fb923c">"payment_intent.succeeded"</span>: <span style="color:#fb923c">"create_account"</span>,
+    <span style="color:#fb923c">"customer.subscription.deleted"</span>: <span style="color:#fb923c">"revoke_access"</span>,
+    <span style="color:#fb923c">"invoice.payment_failed"</span>: <span style="color:#fb923c">"send_retry_email"</span>,
+}
+
+<span style="color:#c084fc">@</span>app.<span style="color:#34d399">route</span>(<span style="color:#fb923c">"/webhook/stripe"</span>, methods=[<span style="color:#fb923c">"POST"</span>])
+<span style="color:#c084fc">def</span> <span style="color:#34d399">stripe_webhook</span>():
+    <span style="color:#71717a"># The payload arrives as JSON in the request body</span>
+    payload = request.<span style="color:#34d399">get_json</span>()
+    event_type = payload.<span style="color:#34d399">get</span>(<span style="color:#fb923c">"type"</span>, <span style="color:#fb923c">"unknown"</span>)
+
+    <span style="color:#71717a"># Route to the correct action based on trigger type</span>
+    action = ACTIONS.<span style="color:#34d399">get</span>(event_type)
+    <span style="color:#c084fc">if</span> action:
+        <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Trigger: </span>{event_type}<span style="color:#fb923c"> → Action: </span>{action}<span style="color:#fb923c">"</span>)
+        <span style="color:#34d399">dispatch_action</span>(action, payload[<span style="color:#fb923c">"data"</span>])
+    <span style="color:#c084fc">else</span>:
+        <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Unhandled event: </span>{event_type}<span style="color:#fb923c">"</span>)
+
+    <span style="color:#c084fc">return</span> <span style="color:#34d399">jsonify</span>({<span style="color:#fb923c">"received"</span>: <span style="color:#c084fc">True</span>}), <span style="color:#fb923c">200</span>
+
+<span style="color:#c084fc">def</span> <span style="color:#34d399">dispatch_action</span>(action: str, data: dict):
+    <span style="color:#fb923c">"""Execute the action with the trigger's payload data."""</span>
+    <span style="color:#c084fc">if</span> action == <span style="color:#fb923c">"create_account"</span>:
+        email = data[<span style="color:#fb923c">"customer_email"</span>]
+        <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Creating account for </span>{email}<span style="color:#fb923c">"</span>)
+    <span style="color:#c084fc">elif</span> action == <span style="color:#fb923c">"revoke_access"</span>:
+        <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Revoking access for </span>{data[<span style="color:#fb923c">'customer_email'</span>]}<span style="color:#fb923c">"</span>)
+    <span style="color:#c084fc">elif</span> action == <span style="color:#fb923c">"send_retry_email"</span>:
+        <span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Sending payment retry email to </span>{data[<span style="color:#fb923c">'customer_email'</span>]}<span style="color:#fb923c">"</span>)</code></pre>
+</div>
   </div>
 
   <div class="section" style="padding:0 1.5rem">

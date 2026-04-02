@@ -44,6 +44,33 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Build your AI metrics tracker.</h2>
+  <p class="section-text">Use this prompt to set up a measurement framework for any AI tool you're evaluating or already using.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — AI Success Metrics Setup</div>
+<pre style="margin:0;color:#e5e5e5"><code>I'm using [AI tool name] for [specific task] in my business.
+
+Before AI, this task:
+- Took approximately [X] hours per week
+- Cost approximately $[X] per month (labor, freelancers, or tools)
+- Produced [X] deliverables per week
+- Had a quality level I'd rate [1-10]
+
+The AI tool costs $[X] per month.
+
+Build me a 90-day measurement plan tracking all 4 metrics:
+1. TIME SAVED — what to measure weekly and how
+2. COST REDUCED — what to compare monthly
+3. OUTPUT INCREASE — what to count and how often
+4. QUALITY SCORE — define 3 quality criteria specific to my task
+
+Include a simple Google Sheets structure I can set up in 10 minutes. Tell me exactly what to track each week and what "good" looks like at 30, 60, and 90 days.</code></pre>
+</div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Match Metrics to Scenarios</span>
   <h2 class="section-title">Every business problem maps to a metric.</h2>
   <p class="section-text">When you are evaluating whether AI is working in a specific area, the first question is always "which metric matters most here?" A customer service team cares most about resolution rate and CSAT — that is Quality Score. A content team under deadline pressure cares about volume — Output Increase. A founder looking at the monthly P&L cares about the bottom line — Cost Reduced. Match the metric to the context or you will measure the wrong thing and draw the wrong conclusion.</p>

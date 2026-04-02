@@ -65,6 +65,14 @@ free: true
   <span class="section-label">The Prompt Anatomy</span>
   <h2 class="section-title">Every great prompt has four parts.</h2>
   <p class="section-text"><strong>Subject:</strong> What is in the image? (A golden retriever puppy) <br><strong>Setting:</strong> Where is it? (In a field of purple and yellow wildflowers) <br><strong>Mood/Lighting:</strong> How does it feel? (Golden hour, soft warm lighting) <br><strong>Style:</strong> What does it look like? (Photograph style, shallow depth of field)</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — complete image generation with all four elements</div>
+<pre style="margin:0;color:#e5e5e5"><code>A Japanese maple bonsai tree in full autumn color,
+sitting on a weathered stone pedestal in a misty zen garden,
+soft diffused morning light with gentle fog,
+fine art photography, shallow depth of field, 8K detail</code></pre>
+</div>
   <p class="section-text">You do not need all four every time, but including more of them gives the AI a clearer picture of what you want. Think of it as painting with words — the more specific your words, the more specific the result.</p>
 </div>
 

@@ -40,6 +40,14 @@ free: false
   <p class="section-text">Inpainting lets you select a specific area of your image and regenerate just that section. Got a portrait where the eyes look slightly off? Select the eye area, describe what you want, and the AI redraws only that part while keeping the rest of the image untouched.</p>
   <p class="section-text"><strong>Where to use it:</strong> ChatGPT lets you click on an image and highlight areas to edit. DALL-E's editor has a brush tool for selecting regions. In Stable Diffusion, inpainting is a dedicated mode with precise mask controls. Adobe Firefly's Generative Fill in Photoshop is another excellent option.</p>
   <p class="section-text"><strong>Pro tip:</strong> When inpainting, make your selection slightly larger than the area you want to change. This gives the AI more context to blend the new content seamlessly with the surrounding image.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — inpainting edit to fix a sky in a landscape image</div>
+<pre style="margin:0;color:#e5e5e5"><code>Replace the selected sky area with a dramatic sunset,
+deep orange and purple clouds, golden light spilling
+across the horizon, matching the warm tones of the
+existing landscape below, seamless blend at the edges</code></pre>
+</div>
 </div>
 
 <div class="lesson-section">

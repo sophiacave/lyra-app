@@ -194,6 +194,32 @@ css: "ai-executives.css"
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Run a 15-minute risk assessment on any AI initiative.</h2>
+  <p class="section-text">Use this prompt before any AI project moves from concept to implementation. It surfaces the risks that matter before you spend real money.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — AI Initiative Risk Assessment</div>
+<pre style="margin:0;color:#e5e5e5"><code>Run a risk assessment on this AI initiative before we proceed:
+
+INITIATIVE: [describe what the AI will do]
+DATA INVOLVED: [what data flows through the system]
+WHO IS AFFECTED: [customers, employees, partners]
+INDUSTRY: [your industry and any relevant regulations]
+
+Assess each of the 5 risk categories:
+
+1. ACCURACY & RELIABILITY — What's the error rate risk? What happens when it's wrong? Who catches mistakes?
+2. DATA PRIVACY & SECURITY — Where does data go? Is it PII or regulated? Training data implications?
+3. BIAS & FAIRNESS — Does this make decisions about people? How do we test for disparate impact?
+4. REGULATORY & LEGAL — What regulations apply? EU AI Act, GDPR, industry-specific rules?
+5. INTELLECTUAL PROPERTY — Who owns the output? Copyright implications? Training data concerns?
+
+For each category, rate the risk as LOW / MEDIUM / HIGH and recommend the governance tier: Open Use, Guided Use, or Controlled Use. Flag any showstoppers.</code></pre>
+</div>
+</div>
+
 <!-- KEY TAKEAWAY -->
 <div class="callout purple">
   <p><strong>The governance takeaway:</strong> AI governance isn't about control. It's about creating the conditions for responsible speed. A tiered framework that matches oversight to risk, a quick risk assessment for new initiatives, and proactive management of shadow AI. That's the governance posture that lets you move fast without breaking things that matter.</p>

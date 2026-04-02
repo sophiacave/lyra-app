@@ -61,6 +61,42 @@ css: "claude-beginners.css"
 
 </div>
 
+<!-- SECTION 3.5: COMPLETE EXAMPLE -->
+<div class="lesson-section">
+  <span class="section-label">Full Example</span>
+  <h2 class="section-title">A complete custom instruction — ready to paste.</h2>
+  <p class="section-text">Here's a real example you can paste into Claude's settings right now. Replace the brackets with your details.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Custom Instruction — paste into Claude Settings</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#fb923c">## About Me</span>
+I am a [your title] at [company/industry].
+I manage [team size / scope of work].
+I work primarily in [tools: Google Workspace, Slack,
+Notion, Excel, etc.].
+
+<span style="color:#c084fc">## Communication Style</span>
+- Be direct and concise — no fluff
+- Default to bullet points over paragraphs
+- Use professional but warm tone
+- When I ask for options, give your recommendation
+  first, then alternatives
+
+<span style="color:#4ade80">## Formatting Rules</span>
+- Keep responses under 300 words unless I ask for more
+- Use headers and bullets for structure
+- Bold key takeaways
+- End emails with a clear call to action
+
+<span style="color:#fbbf24">## What I Do Not Want</span>
+- No corporate jargon or buzzwords
+- No "As an AI..." disclaimers
+- No repeating my question back to me
+- No filler phrases like "Great question!"</code></pre>
+</div>
+
+</div>
+
 <!-- SECTION 4: HOW TO SET UP -->
 <div class="lesson-section">
   <span class="section-label">Step-by-Step</span>

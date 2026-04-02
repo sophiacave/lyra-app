@@ -41,6 +41,13 @@ free: true
   <p class="section-text">AI image tools are trained on billions of images paired with text descriptions. Through that training, the AI learns patterns — what "sunset" looks like, what "oil painting" means, how "a golden retriever wearing sunglasses" should appear. When you write a prompt, the AI combines those learned patterns to generate something new.</p>
   <p class="section-text">Think of it like this: if you showed someone millions of paintings and photographs with captions, eventually they would understand how visual concepts connect to words. That is essentially what these models do, except they process information at a scale no human could match.</p>
   <p class="section-text">The technical term is <strong>diffusion models</strong>. They start with visual noise — like TV static — and gradually refine it into a coherent image guided by your text prompt. Each step removes a little noise and adds a little detail until the final image emerges. It is genuinely beautiful mathematics.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — your first taste of text-to-image</div>
+<pre style="margin:0;color:#e5e5e5"><code>A cozy coffee shop on a rainy afternoon, warm interior
+light glowing through foggy windows, watercolor style,
+soft muted palette, gentle and inviting atmosphere</code></pre>
+</div>
 </div>
 
 <div class="lesson-section">

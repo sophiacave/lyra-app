@@ -64,6 +64,15 @@ free: false
   <strong>5.</strong> Watch your video. Notice how the steam moves, how the light plays. That is AI video.</p>
 </div>
 
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — text-to-video with motion and camera direction</div>
+<pre style="margin:0;color:#e5e5e5"><code>A lone astronaut walking slowly across a vast red desert,
+dust swirling around their boots with each step,
+camera tracking alongside at eye level then slowly
+craning up to reveal a massive planet on the horizon,
+golden hour light, cinematic color grade, atmospheric haze</code></pre>
+</div>
+
 <div class="demo-container" style="border-left: 3px solid var(--purple); padding: 1.2rem; margin: 2rem 0; background: var(--bg);">
   <h3 style="color: var(--purple);">Video prompt tips</h3>
   <ul>

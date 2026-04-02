@@ -49,6 +49,37 @@ free: true
   <p class="section-text">A strong outline makes writing almost effortless. A weak outline (or no outline) leads to rambling, repetition, and that dreaded feeling of being "stuck in the middle."</p>
   <p class="section-text"><em>"Create an outline for a [length] blog post about [topic]. My angle is [describe]. Structure it with: a hook that makes the reader feel [emotion], 3-4 main sections with clear takeaways, and a closing that drives [action]. For each section, include the key point and one specific example or data point I should include."</em></p>
   <p class="section-text">Review the outline before you write. Move sections around. Cut what doesn't serve the reader. Add your personal stories where they fit. The 10 minutes you spend on the outline saves an hour of rewriting later.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Blog Post Outline + Draft</div>
+<pre style="margin:0;color:#e5e5e5"><code>Create a detailed outline for a 1,500-word blog post.
+
+TOPIC: [your topic]
+ANGLE: [what makes your take different]
+AUDIENCE: [who is reading and what they already know]
+GOAL: Reader should [learn / do / feel] _________ by the end.
+
+Structure the outline as:
+1. HOOK (2-3 sentences) — open with [emotion: surprise,
+   curiosity, or recognition]. No generic intros.
+2. SECTION 1: [Core concept] — key point + one specific
+   example or data point to include.
+3. SECTION 2: [The how] — actionable steps or framework.
+   Include a concrete scenario the reader can picture.
+4. SECTION 3: [Common mistakes or myths] — what most people
+   get wrong and why it matters.
+5. CLOSER — drive one clear action. End on the emotion you
+   opened with.
+
+For each section, write:
+- The subheading (make it a mini-promise, not a label)
+- 2-3 bullet points of what to cover
+- One transition sentence to the next section
+
+After the outline, draft the hook paragraph and the closer
+so I can see the arc before I write the middle.</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

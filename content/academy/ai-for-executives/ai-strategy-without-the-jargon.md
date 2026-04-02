@@ -167,6 +167,38 @@ css: "ai-executives.css"
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Map your AI opportunities on the matrix.</h2>
+  <p class="section-text">Bring this prompt to your next leadership meeting. It turns a vague "AI strategy" conversation into a concrete prioritization exercise.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — AI Opportunity Matrix for Leadership Teams</div>
+<pre style="margin:0;color:#e5e5e5"><code>Help me prioritize AI initiatives for my organization using the AI Opportunity Matrix.
+
+My organization: [industry, size, current AI maturity]
+
+Here are our top AI ideas:
+1. [initiative description]
+2. [initiative description]
+3. [initiative description]
+4. [initiative description]
+5. [initiative description]
+
+For each initiative, score it on two axes:
+- BUSINESS IMPACT (1-10): revenue, cost reduction, risk reduction, customer experience
+- DATA READINESS (1-10): is the data clean, accessible, and sufficient today?
+
+Then place each in the correct quadrant:
+- Q1 DO NOW (high impact + data ready)
+- Q2 PREPARE (high impact + data not ready)
+- Q3 EXPERIMENT (lower impact + data ready)
+- Q4 DEFER (lower impact + data not ready)
+
+For Q1 items, recommend: build, buy, or partner? With estimated timeline and budget range.</code></pre>
+</div>
+</div>
+
 <!-- KEY TAKEAWAY -->
 <div class="callout purple">
   <p><strong>The strategic takeaway:</strong> AI strategy is business strategy with an AI component, not the other way around. Prioritize by impact and data readiness. Buy before you build unless the capability is your competitive moat. Evaluate vendors like you'd evaluate any critical supplier. And give yourself 12 months to build real, evidence-based momentum.</p>

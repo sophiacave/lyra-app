@@ -52,6 +52,36 @@ free: false
   <p class="section-text">You don't need expensive SEO tools to do meaningful keyword research. AI can get you 80% of the way there:</p>
   <p class="section-text"><em>"I write about [your niche]. Give me 20 long-tail keyword phrases my audience is likely searching for. For each keyword, tell me: estimated competition level (high/medium/low), the search intent, and a suggested article title that would rank for it. Focus on keywords where a well-written article from an independent creator could realistically compete against bigger sites."</em></p>
   <p class="section-text">The magic is in that last instruction. AI knows that a solo creator won't outrank Forbes for "best productivity apps" — but you can absolutely rank for "productivity system for freelance designers with ADHD." Long-tail, specific, underserved topics are your goldmine.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — SEO Content Optimizer</div>
+<pre style="margin:0;color:#e5e5e5"><code>Review this blog post for SEO and give me a complete
+optimization report. Do NOT change my voice — optimize
+the structure and coverage only.
+
+POST:
+[PASTE YOUR FULL BLOG POST]
+
+Analyze and return:
+1. PRIMARY KEYWORD — the single best keyword to target,
+   based on the content and realistic ranking potential.
+2. SECONDARY KEYWORDS — 5-8 related terms I should weave
+   in naturally.
+3. SEARCH INTENT — what type (informational, commercial,
+   etc.) and whether my content fully satisfies it.
+4. TITLE TAG — 3 options under 60 chars, keyword included
+   naturally, compelling enough for a human to click.
+5. META DESCRIPTION — 3 options, 150-160 chars, includes
+   keyword, reads like ad copy.
+6. HEADER AUDIT — are my H2s/H3s logical and keyword-rich?
+   Suggest improvements.
+7. CONTENT GAPS — what questions does a searcher have that
+   my post doesn't answer yet?
+8. INTERNAL LINK OPPORTUNITIES — 3 topics I should link to.
+9. EXTERNAL REFERENCES — 3 types of authoritative sources
+   I should cite to signal depth.</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

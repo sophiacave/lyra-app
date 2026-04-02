@@ -126,6 +126,28 @@ free: true
   </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Ask AI to audit its own output for bias.</h2>
+  <p class="section-text">After AI generates any content for you, paste this follow-up prompt to catch bias before it reaches anyone else.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — AI Bias Detection Audit</div>
+<pre style="margin:0;color:#e5e5e5"><code>Review the text below for the following types of bias:
+
+1. REPRESENTATION BIAS — Does it assume a default gender, race, age, or background?
+2. CONFIRMATION BIAS — Does it present one viewpoint as the obvious truth without alternatives?
+3. CULTURAL BIAS — Does the advice only work for Western/English-speaking contexts?
+4. RECENCY BIAS — Does it state anything as current fact that may be outdated?
+
+For each type, flag any specific phrases or assumptions that are problematic.
+Then rewrite the flagged sections to be more inclusive and balanced.
+
+Text to audit:
+[paste the AI-generated content here]</code></pre>
+</div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

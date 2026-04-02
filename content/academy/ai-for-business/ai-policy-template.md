@@ -44,6 +44,34 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Try It</span>
+  <h2 class="section-title">Draft your company's AI policy in 5 minutes.</h2>
+  <p class="section-text">Use this prompt to generate a first draft of your AI policy. Edit it to match your company's specific tools, data, and risk tolerance.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — AI Policy First Draft Generator</div>
+<pre style="margin:0;color:#e5e5e5"><code>Draft a 2-page AI usage policy for my company with these details:
+
+- Company type: [industry and size, e.g. "25-person marketing agency"]
+- AI tools currently in use: [list them, e.g. "ChatGPT, Midjourney, Zapier"]
+- Sensitive data we handle: [e.g. "client campaign data, brand guidelines, some financial info"]
+- Biggest risk concern: [e.g. "client data being used to train AI models"]
+
+Cover all 8 essential sections:
+1. Purpose — who this applies to and why
+2. Acceptable Use — what's encouraged
+3. Prohibited Use — hard stops
+4. Data Handling — what can and cannot go into AI tools
+5. Customer Disclosure — when to tell clients AI was involved
+6. Approval Process — how to request new AI tools
+7. Quality Standards — review requirements before output is used
+8. Training Requirements — what employees need to complete
+
+Keep the language clear and specific. No legalese. This should be readable by any employee in under 10 minutes.</code></pre>
+</div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Match Sections to Scenarios</span>
   <h2 class="section-title">Every incident has a policy section that prevents it.</h2>
   <p class="section-text">Real policy violations do not look like violations when they happen — they look like employees trying to do their jobs faster. The value of a policy is that it gives employees a clear answer before they act, not an uncomfortable conversation after. Match each scenario to the policy section that directly addresses it.</p>
