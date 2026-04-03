@@ -55,6 +55,17 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Free vs Paid</span>
+  <h2 class="section-title">What You Can Do for Free</h2>
+  <p class="section-text">You do not need to spend money to start. Here is what is available at zero cost:</p>
+  <p class="section-text"><strong>Free TTS:</strong> Edge TTS (Microsoft) offers high-quality voices with no API key. ElevenLabs gives 10,000 characters per month on their free tier. OpenAI offers $5 in free credits for new accounts. Browser-native speechSynthesis works offline for prototyping.</p>
+  <p class="section-text"><strong>Free transcription:</strong> Whisper runs locally on any modern computer. HuggingFace Spaces hosts free Whisper demos. Google's speech recognition through the Web Speech API is free in Chrome.</p>
+  <p class="section-text"><strong>Free music:</strong> Suno offers 50 free credits per day — enough for 10 short tracks. Stable Audio's free tier covers experimentation. Mubert offers free streams with attribution.</p>
+  <p class="section-text"><strong>Free editing:</strong> Audacity is free and open-source with a full editing toolkit. Adobe Podcast Enhance Speech offers free audio cleanup. ffmpeg handles format conversion, normalization, and mastering from the command line.</p>
+  <p class="section-text">The paid tiers add volume, quality, and convenience. But the free tools are genuinely capable. You can produce professional-quality audio without spending a dollar — it just requires more manual work and creative problem-solving.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Market Context</span>
   <h2 class="section-title">The Numbers Behind the Revolution</h2>
   <p class="section-text">AI audio is not a niche experiment. The global text-to-speech market is projected to exceed $12 billion by 2030. AI music generation tools like Suno surpassed 12 million users within their first year. Podcast listenership has doubled since 2019, and AI tools are a major reason new creators can enter the space without a production budget.</p>
@@ -136,6 +147,31 @@ response.stream_to_file("revolution.mp3")</code></div>
   <p class="section-text"><strong>2022:</strong> OpenAI released Whisper, making transcription near-free and near-perfect across 99 languages. ElevenLabs launched, bringing studio-quality TTS and voice cloning to anyone with a browser.</p>
   <p class="section-text"><strong>2023:</strong> Suno and Udio turned music generation from a research curiosity into a consumer product. VALL-E demonstrated voice cloning from 3 seconds of audio. The floodgates opened.</p>
   <p class="section-text"><strong>2024-2026:</strong> Real-time speech-to-speech models arrived. Voice interfaces became genuinely conversational. AI audiobooks were accepted on major platforms. Music generation reached a quality level indistinguishable from human-produced tracks for many genres. The revolution became infrastructure.</p>
+  <p class="section-text">Each step in this timeline compressed what was previously impossible into something anyone can access. That pattern is not slowing down — it is accelerating. What you learn in this course positions you to ride that wave rather than be swept under it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Careers</span>
+  <h2 class="section-title">Careers and Opportunities in AI Audio</h2>
+  <p class="section-text">AI audio skills are in demand across industries. Here are the roles and opportunities opening up:</p>
+  <p class="section-text"><strong>AI Audio Producer:</strong> Companies need people who understand both the creative and technical sides of AI audio production. This role combines sound design, TTS expertise, and production workflow design. Salaries range from $60,000-$120,000 depending on experience and industry.</p>
+  <p class="section-text"><strong>Voice UX Designer:</strong> As voice interfaces become mainstream, designers who understand conversational AI, voice quality, and user psychology are critically needed. This is one of the fastest-growing specializations in UX design.</p>
+  <p class="section-text"><strong>Content Automation Specialist:</strong> Media companies, publishers, and agencies need people who can build and manage automated audio content pipelines — generating, editing, mastering, and distributing audio at scale.</p>
+  <p class="section-text"><strong>Freelance Audio Services:</strong> Podcast production, audiobook narration, voice-over, and transcription services are all viable freelance businesses powered by AI tools. Lower production costs mean higher margins on every project.</p>
+  <p class="section-text"><strong>AI Ethics and Policy:</strong> Organizations working on voice cloning regulation, deepfake detection, and responsible AI deployment need people who understand the technology deeply enough to write meaningful policy.</p>
+  <p class="section-text">The common thread across all these roles: they require someone who understands what AI audio tools can actually do, not just what the marketing pages claim. That practical understanding is exactly what this course builds.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Course Map</span>
+  <h2 class="section-title">What This Course Covers</h2>
+  <p class="section-text">This course is structured as a progressive journey through every pillar of AI audio. Here is what each lesson delivers:</p>
+  <p class="section-text"><strong>Lessons 2-3 (Voice):</strong> TTS fundamentals, platform comparisons, SSML mastery, voice cloning, custom voice design, and the ethics of synthetic speech. You will generate professional narration and create voice clones.</p>
+  <p class="section-text"><strong>Lessons 4-5 (Long-Form):</strong> Podcast production and audiobook creation end-to-end. Scripting, multi-voice workflows, distribution, and monetization. You will produce publishable audio content.</p>
+  <p class="section-text"><strong>Lesson 6 (Music):</strong> AI music generation, sound design, genre-specific prompting, stem separation, and licensing. You will compose original music and design sound effects.</p>
+  <p class="section-text"><strong>Lesson 7 (Intelligence):</strong> Transcription, speaker diarization, sentiment analysis, and searchable audio archives. You will build audio-to-insight pipelines.</p>
+  <p class="section-text"><strong>Lessons 8-9 (Interaction + Editing):</strong> Voice interfaces, real-time speech-to-speech, AI audio editing, noise removal, and mastering. You will build voice apps and professional editing workflows.</p>
+  <p class="section-text"><strong>Lesson 10 (Studio):</strong> Connecting everything into repeatable pipelines, automation strategies, budget tiers, and monetization. You will architect your complete AI audio studio.</p>
 </div>
 
 <div class="try-it-box">

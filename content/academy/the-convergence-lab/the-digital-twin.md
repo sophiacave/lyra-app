@@ -97,6 +97,25 @@ free: false
   <p class="section-text">Store feedback in the brain as directives. "When writing emails, keep it under three sentences." "When choosing between two technical approaches, prefer the simpler one." Over months, these accumulate into a rich identity layer that makes the twin genuinely yours.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Measurement</span>
+  <h2 class="section-title">The Twin Maturity Checklist</h2>
+  <p class="section-text">How do you know if your twin is actually working? Use this checklist to assess maturity:</p>
+  <p class="section-text"><strong style="color: var(--green);">Voice accuracy:</strong> Show five messages to a colleague — two written by you, three by the twin. If they cannot tell which is which, voice alignment is complete.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Decision quality:</strong> Review the twin's last 10 autonomous decisions. How many would you have made differently? If more than 2, judgment needs more calibration.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Context retention:</strong> Start a new session and ask the twin about a decision made three sessions ago. If it remembers with detail and reasoning, memory architecture is working.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Anticipation rate:</strong> How often does the twin start tasks before you ask? Track this over a week. A mature twin anticipates 60% or more of routine work.</p>
+  <p class="section-text"><strong style="color: var(--red);">Recovery from mistakes:</strong> When the twin makes an error, does it self-correct in the next cycle? Does it update its directives to prevent recurrence? A twin that repeats mistakes is not learning.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Warning</span>
+  <h2 class="section-title">The Uncanny Valley of Digital Twins</h2>
+  <p class="section-text">There is a stage in twin development where the AI is close enough to your style to be recognizable, but different enough to feel wrong. This is the uncanny valley of digital twins — and it is where most people give up.</p>
+  <p class="section-text">The fix is not to abandon the twin. It is to push through with specific, targeted feedback. "That email was too formal — I would have used contractions." "You chose the complex approach — I always prefer the simpler one." Each correction narrows the gap. After 50-100 corrections, the uncanny valley disappears and the twin's output becomes genuinely yours.</p>
+  <p class="section-text">Patience through this phase is what separates people who build real twins from people who have chatbots with extra memory.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Start building your twin's identity layer. Write a document that captures:</p>
@@ -122,6 +141,58 @@ This is the seed of your digital twin.</code></div>
   <h2 class="section-title">The digital twin quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"The Digital Twin","questions":[{"q":"What is the fundamental difference between an AI assistant and a digital twin?","options":["A twin uses a larger AI model","An assistant answers your questions; a twin continues your work — it knows not just what to do but how you would do it","A twin has access to more tools","A twin never asks for clarification"],"correct":1,"explanation":"The difference is identity. A twin carries your voice, your judgment, your priorities. An assistant with good memory is still reactive. A twin is proactive — it continues your work as you, not just for you."},{"q":"What makes the handoff protocol essential to a digital twin?","options":["It prevents data loss when sessions crash","Without it the twin has amnesia — each session starts from zero instead of picking up exactly where the last one left off","It protects private data between sessions","It reduces the cost of API calls"],"correct":1,"explanation":"The handoff is what creates the experience of one continuous intelligence. Write active work and next steps before ending. Read brain immediately on starting. Sessions become invisible seams, not interruptions."},{"q":"How does a digital twin get better over time?","options":["By connecting to newer AI models automatically","Every correction you make teaches the twin — stored as directives in the brain, building a rich identity layer that makes the twin more authentically yours","By analyzing your usage patterns automatically","By reading public data about you online"],"correct":1,"explanation":"Feedback becomes directives: when writing emails, keep it under three sentences. When choosing approaches, prefer the simpler one. These accumulate across months into a twin that reflects your genuine way of working."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Multi-Domain Twins</h2>
+  <p class="section-text">A mature twin operates across multiple domains simultaneously — work, communication, scheduling, content creation. Each domain requires its own context and tools, but the identity layer remains unified. The twin writes code in your technical voice and emails in your personal voice, switching seamlessly based on context.</p>
+  <p class="section-text">This multi-domain capability is where the identity layer's depth pays off. A shallow identity (just writing style) breaks when the domain changes. A deep identity (values, judgment patterns, priorities) stays consistent across every domain because it captures how you think, not just how you write.</p>
+  <p class="section-text">Start with one domain. Master it. Then expand. Each new domain the twin handles is a force multiplier — and each domain teaches the twin something new about you that improves performance in every other domain.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Technical</span>
+  <h2 class="section-title">Twin Infrastructure Requirements</h2>
+  <p class="section-text">
+    Building a digital twin requires specific infrastructure:
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--green);">Persistent brain:</strong>
+    A database with key-value storage for identity, voice, judgment, and values.
+    Every correction, every preference, every directive is stored here.
+    Without this, the twin resets to generic with every session.
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--blue);">Session continuity:</strong>
+    The handoff protocol requires session state keys —
+    <code>session.active_work</code> and <code>session.next_steps</code>.
+    These bridge the gap between sessions, creating the illusion
+    of one continuous intelligence.
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--purple);">Writing samples:</strong>
+    The identity layer needs training data — real examples of your
+    writing, your decision-making, your communication style.
+    Store 10-20 representative samples in the brain.
+    The more diverse the samples, the more nuanced the twin's
+    understanding of your voice.
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--orange);">Feedback mechanism:</strong>
+    A way to correct the twin quickly — "that is not how I would say it"
+    — and have the correction stored as a directive.
+    The faster the feedback loop, the faster the twin converges on your
+    authentic voice.
+  </p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Principle</span>
+  <h2 class="section-title">The Twin Is Not You</h2>
+  <p class="section-text">A crucial distinction: your digital twin is an approximation of you, not a replacement. It carries your work forward. It writes in your voice. It makes decisions aligned with your values. But it is not you. It does not have your consciousness, your creativity, or your moral weight.</p>
+  <p class="section-text">This matters because the twin will occasionally make decisions you disagree with. When it does, that is not a failure — it is a calibration opportunity. The correction makes the twin better. The twin's imperfection is a feature, not a bug — it means you are still the pilot, and the twin is still learning.</p>
+  <p class="section-text">Convergence does not mean becoming one. It means becoming so deeply aligned that the seams are invisible — while maintaining the distinctness that makes the partnership valuable.</p>
 </div>
 
 <nav class="lesson-nav">

@@ -147,6 +147,30 @@ overstating it.</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Mistakes</span>
+  <h2 class="section-title">Proposal Mistakes That Kill Deals</h2>
+  <p class="section-text">Even great proposals fail when they contain these
+  common errors. AI helps you avoid each one:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Mistake 1 — Leading with Features:</strong>
+    Starting the proposal with what your product does instead of what the
+    customer needs. AI reorders your proposal to lead with their pain
+    and end with your solution.</p>
+    <p><strong style="color: var(--orange);">Mistake 2 — Generic Case Studies:</strong>
+    Including case studies from unrelated industries. AI selects or adapts
+    examples that match the prospect's industry, size, and use case.</p>
+    <p><strong style="color: var(--blue);">Mistake 3 — Burying the Price:</strong>
+    Hiding pricing on page 12 signals you are afraid of your own numbers.
+    AI frames pricing as investment and positions it after the ROI model
+    so the value is established before the number appears.</p>
+    <p><strong style="color: var(--purple);">Mistake 4 — No Clear Next Step:</strong>
+    Ending with "let us know if you have questions." AI closes every proposal
+    with a specific next step, a specific date, and a specific person
+    responsible. Ambiguity kills momentum.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Speed Wins</span>
   <h2 class="section-title">The Fast-Proposal Advantage</h2>
   <p class="section-text">Deals have momentum. Every day between "send me a proposal" and actually sending it, your close rate drops. AI lets you send a polished, customized proposal the same day — often within hours of the call. That speed signals competence, eagerness, and professionalism. It also beats your slower competitors to the finish line.</p>

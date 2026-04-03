@@ -148,6 +148,35 @@ notes = process_meeting(<span style="color:#fbbf24">"Sarah: Let's move the launc
 <div class="lesson-section">
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">The MVP Anti-Pattern Gallery</h2>
+  <p class="section-text">These are the most common ways AI MVPs fail. Learn to recognize them so you can avoid them.</p>
+  <p class="section-text"><strong>The Swiss Army Knife:</strong> "Our MVP summarizes documents, generates emails, creates presentations, and analyzes data." That's four products, each of which will be mediocre. An MVP does one thing well. Period.</p>
+  <p class="section-text"><strong>The Invisible AI:</strong> "We'll add AI later — let's build the platform first." If AI is the core value proposition, building the platform without it means you're building a different product. The AI is the MVP. Everything else is scaffolding around it.</p>
+  <p class="section-text"><strong>The Gold-Plated Prototype:</strong> "Let me add user profiles, team collaboration, dark mode, and a notification system before launch." None of these make the core magic trick work better. Ship the magic trick. Add everything else when users demand it.</p>
+  <p class="section-text"><strong>The Perfectionist's Trap:</strong> "The AI output needs to be perfect before we show anyone." It will never be perfect. Ship at "good enough" — typically 75-80% quality — and let user feedback tell you where to focus improvement. Perfection in isolation is a mirage.</p>
+  <p class="section-text"><strong>The Infrastructure Astronaut:</strong> "We need Kubernetes, microservices, a custom ML pipeline, and a dedicated GPU cluster for our MVP." You need a Vercel deployment, a Supabase database, and one API key. Ship on simple infrastructure and scale when traffic demands it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practical</span>
+  <h2 class="section-title">Testing Your MVP Before Launch</h2>
+  <p class="section-text">AI products need a different testing approach than traditional software. Unit tests won't catch a hallucinating model. Integration tests won't catch a prompt that works on 90% of inputs but fails spectacularly on the other 10%.</p>
+  <p class="section-text"><strong>Golden dataset testing:</strong> Build a set of 30-50 representative inputs and their expected outputs. Run every prompt change against this golden dataset. Manually review the outputs. If more than 3 degrade significantly, the change isn't ready.</p>
+  <p class="section-text"><strong>Edge case stress testing:</strong> Feed your AI the worst possible inputs. Empty strings. 50,000-word documents. Non-English text. Gibberish. Malicious prompt injections. Your MVP doesn't need to handle all of these gracefully, but it must never crash, hang, or return nonsensical output without a clear error message.</p>
+  <p class="section-text"><strong>User acceptance testing:</strong> Give your MVP to 5 people who match your target user profile. Don't explain anything. Watch them use it. Where do they get confused? Where do they pause? Where do they express surprise (good or bad)? These observations reveal problems that no automated test can find.</p>
+  <p class="section-text"><strong>Cost testing:</strong> Run 100 synthetic queries through your production pipeline and check your AI provider's billing dashboard. Multiply by your expected daily usage. Is the cost sustainable? If 100 test queries cost $5 and you expect 1,000 queries/day from real users, that's $50/day or $1,500/month in AI costs alone. Know this number before you launch.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Insight</span>
+  <h2 class="section-title">The MVP Mindset: Done Is Better Than Perfect</h2>
+  <p class="section-text">Perfectionism kills more AI products than bad ideas do. The AI output will never be perfect. The UI will never be perfect. The onboarding will never be perfect. Shipping an imperfect product that solves a real problem is infinitely more valuable than a perfect product that lives on your localhost.</p>
+  <p class="section-text">Set a ship date. Write it on your wall. Work backwards from it. Everything that doesn't directly support the core magic trick gets cut. You can add it in version 2 — but only if version 1 proves the concept is worth version 2.</p>
+  <p class="section-text">The most successful AI products launched with embarrassingly limited functionality. Midjourney launched as a Discord bot. GitHub Copilot launched supporting only one IDE. They expanded based on user demand, not pre-launch ambition. Start small. Prove the magic. Expand from strength.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Define your MVP scope using this template:</p>

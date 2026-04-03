@@ -120,6 +120,68 @@ free: false
   <p class="section-text"><strong>7. Feature overload on day one.</strong> Ten buttons, five settings, three output formats. The user doesn't know where to start. Ship with one button. Add complexity only when users ask for it.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Detail</span>
+  <h2 class="section-title">Designing AI Output Formats</h2>
+  <p class="section-text">The format of your AI output matters as much as its accuracy. A perfectly accurate summary in the wrong format is useless. Design outputs for the context where they'll be consumed.</p>
+  <p class="section-text"><strong>Scannable over readable:</strong> Most users don't read AI output word by word — they scan. Use bold headers, bullet points, and clear section breaks. A wall of AI-generated text is overwhelming even when the content is excellent.</p>
+  <p class="section-text"><strong>Actionable over informative:</strong> Whenever possible, output should include next steps. "Revenue declined 12% — consider reviewing pricing for the enterprise tier" is more useful than "Revenue declined 12%." The AI should do the thinking, not just the summarizing.</p>
+  <p class="section-text"><strong>Consistent format:</strong> Every output should follow the same structure. If your product sometimes returns bullet points and sometimes returns paragraphs, users can't build expectations. Pick a format and enforce it through your prompt and output parser.</p>
+  <p class="section-text"><strong>Copy-paste ready:</strong> If users will paste your output into emails, documents, or presentations, format it accordingly. No markdown that won't render. No code blocks around plain text. The output should look good wherever it lands.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Principle</span>
+  <h2 class="section-title">The Trust Gradient</h2>
+  <p class="section-text">Users don't trust AI outputs immediately. Trust builds gradually through consistent positive experiences. Design your product to match the user's current trust level and gently advance it over time.</p>
+  <p class="section-text"><strong>First session:</strong> Maximum guardrails. Show the user everything the AI did and why. Highlight areas of uncertainty. Make the edit and reject buttons prominent. The goal isn't efficiency — it's establishing that your product is honest about its limitations.</p>
+  <p class="section-text"><strong>Sessions 2-10:</strong> The user has calibrated their expectations. They know roughly what your AI produces well and where it struggles. Start offering shortcuts — "Accept all" buttons, batch processing, template-based workflows. Efficiency increases as trust increases.</p>
+  <p class="section-text"><strong>Sessions 10+:</strong> The user trusts the product enough for automation. Offer auto-processing, scheduled workflows, and hands-off modes. But always keep a review layer accessible — trust isn't the same as blind faith. Even power users want to spot-check occasionally.</p>
+  <p class="section-text">The mistake is designing for the power user from day one. New users don't want automation — they want transparency. Build the trust gradient into your UX and let users opt into more automation as their confidence grows.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Insight</span>
+  <h2 class="section-title">The Emotional Design of AI Products</h2>
+  <p class="section-text">AI products trigger emotional responses that traditional software doesn't. Surprise at a surprisingly good output. Frustration at a confidently wrong one. Anxiety about whether to trust it. Delight when it saves hours of work. Design for these emotions, not just the functional workflow.</p>
+  <p class="section-text"><strong>Manage the wow moment:</strong> The first time a user sees your AI produce a genuinely impressive result, lean into it. A subtle animation, a moment of pause before revealing the output, a clean presentation. First impressions with AI products are disproportionately important because they set the user's expectation for every future interaction.</p>
+  <p class="section-text"><strong>Soften the disappointment:</strong> When the AI output is poor, the user's emotional response is stronger than a regular software bug because AI felt like a collaborator, not a tool. Offer gentle language: "This might not be quite right — feel free to edit or try again." Never present a bad output as confidently as a good one.</p>
+  <p class="section-text"><strong>Build the habit loop:</strong> The best AI products create a habit loop: trigger (the task arises), action (use the product), reward (time saved, quality improved), investment (the product remembers preferences and context). Each cycle deepens engagement. Design your UX to make each phase of the loop frictionless.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Summary</span>
+  <h2 class="section-title">The AI UX Checklist</h2>
+  <p class="section-text">Before shipping any AI interaction, run through this checklist. Every "no" is a UX bug that will cost you users.</p>
+  <p class="section-text"><strong>1.</strong> Can the user complete the interaction without typing a free-form prompt? (Structured inputs beat blank text boxes.)</p>
+  <p class="section-text"><strong>2.</strong> Does the UI show progress during AI processing? (Status messages beat spinners.)</p>
+  <p class="section-text"><strong>3.</strong> Can the user edit, reject, or regenerate every AI output? (Agency beats automation.)</p>
+  <p class="section-text"><strong>4.</strong> Does the output format match how the user will actually use it? (Copy-paste ready beats beautiful-but-impractical.)</p>
+  <p class="section-text"><strong>5.</strong> Does the first-time experience include a pre-loaded demo or template? (Guided starts beat blank canvases.)</p>
+  <p class="section-text"><strong>6.</strong> Is the interface accessible to users with disabilities? (Accessibility is a requirement, not a feature.)</p>
+  <p class="section-text"><strong>7.</strong> Does the product save output history for future reference? (Persistence beats ephemeral.)</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pattern</span>
+  <h2 class="section-title">Multi-Step Workflows in AI UX</h2>
+  <p class="section-text">Many AI products require more than a single input-output interaction. A document analysis tool might need the user to upload, select sections, choose analysis type, review results, and export. Designing these multi-step flows requires careful attention to progress and control.</p>
+  <p class="section-text"><strong>Show the pipeline:</strong> Let users see where they are in the process. "Step 2 of 4: Analyzing your document." A progress indicator reduces anxiety about how long the process will take and gives users confidence that something is happening.</p>
+  <p class="section-text"><strong>Allow backtracking:</strong> Users should be able to go back to a previous step and change their input without losing everything. If someone selected the wrong analysis type, they shouldn't have to start over from upload. Preserve state across steps.</p>
+  <p class="section-text"><strong>Intermediate previews:</strong> If the AI does multiple things in sequence (extract text, then summarize, then categorize), show intermediate results. This gives users opportunities to correct course before the final output is generated. Catching an error at step 2 is cheaper than regenerating from step 1.</p>
+  <p class="section-text"><strong>Partial saves:</strong> If the process takes more than 30 seconds, auto-save progress. Users close tabs, lose connections, and get interrupted. Nobody should have to redo a 5-minute workflow because their browser refreshed.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Research</span>
+  <h2 class="section-title">User Research for AI Products</h2>
+  <p class="section-text">Traditional user research asks "what do users want?" AI product research asks a harder question: "what do users expect from an AI, and how do those expectations differ from reality?"</p>
+  <p class="section-text"><strong>Mental model mapping:</strong> Before users try your product, ask them to describe what they think the AI will do. Their mental model reveals dangerous misalignments. If they expect perfection, your product will disappoint. If they expect nothing, you have a delightful surprise opportunity.</p>
+  <p class="section-text"><strong>Error tolerance testing:</strong> Show users AI outputs with deliberate mistakes. How quickly do they notice? How frustrated are they? Some users catch errors instantly and correct them cheerfully. Others lose all trust at the first mistake. These different tolerance levels may require different product experiences.</p>
+  <p class="section-text"><strong>Vocabulary research:</strong> What words do your users use to describe the task your AI performs? Use their vocabulary, not yours. If accountants call it "reconciliation" and your product calls it "matching," you've created unnecessary cognitive friction. Mirror the user's language in every label, button, and description.</p>
+  <p class="section-text"><strong>Session recordings:</strong> Record user sessions (with permission) and watch them. Not just clicks and scrolls — watch for pauses, cursor hovering, and re-reads. These micro-behaviors reveal confusion that users won't mention in feedback surveys. Tools like FullStory and Hotjar make this effortless.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Redesign your product's main interaction without using a chat interface:</p>

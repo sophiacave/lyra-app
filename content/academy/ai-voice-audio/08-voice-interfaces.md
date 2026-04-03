@@ -139,12 +139,33 @@ while True:
   <p class="section-text"><strong>In-car interfaces:</strong> Voice-first design is mandatory when users' hands and eyes are occupied. Navigation, music, messaging, and vehicle controls all benefit from conversational AI that understands context — "Take me to that coffee shop we went to last Tuesday" instead of typing an address.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Testing</span>
+  <h2 class="section-title">Testing Voice Interfaces Effectively</h2>
+  <p class="section-text">Voice interfaces are harder to test than visual interfaces because the input space is infinite — users can say anything in any way. Here is a practical testing framework:</p>
+  <p class="section-text"><strong>Happy path testing:</strong> Test the expected use cases with clear, well-articulated speech. These should work flawlessly. If the happy path fails, nothing else matters.</p>
+  <p class="section-text"><strong>Edge case testing:</strong> Test with accented speech, background noise, interrupted sentences, and unexpected requests. "Actually, never mind" mid-sentence should be handled gracefully. A dog barking should not trigger a response.</p>
+  <p class="section-text"><strong>Stress testing:</strong> Speak very quickly, very slowly, very quietly, and very loudly. Test with multiple people speaking simultaneously. Test in a car, at a cafe, and outside on a windy day. Real-world conditions are never as clean as your development environment.</p>
+  <p class="section-text"><strong>Adversarial testing:</strong> Try to confuse the system. Ask nonsensical questions. Give contradictory instructions. Say things that sound similar to commands but are not ("play" vs "pay"). These tests reveal how gracefully the system handles confusion.</p>
+</div>
+
 <div class="demo-container">
   <h3>Voice Interface Building Blocks</h3>
   <p><strong>Web Speech API:</strong> Built into browsers. Free. Good for prototypes.</p>
   <p><strong>Deepgram SDK:</strong> Real-time streaming STT. Node.js and Python.</p>
   <p><strong>OpenAI Realtime API:</strong> Speech-to-speech. WebSocket-based. Lowest latency.</p>
   <p><strong>Vapi / Bland AI:</strong> Voice agent platforms. Build phone bots without infrastructure.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Tips</span>
+  <h2 class="section-title">Voice Interface Anti-Patterns to Avoid</h2>
+  <p class="section-text">Most voice interfaces fail for predictable reasons. Here are the anti-patterns that kill user experience:</p>
+  <p class="section-text"><strong>The lecture response:</strong> Dumping a wall of information when the user asked a simple question. "What time is it?" should get "It's 3:15 PM" — not a paragraph about time zones, daylight saving, and the history of clocks. Brevity is not just a principle, it is a survival requirement for voice UX.</p>
+  <p class="section-text"><strong>The eager interruption:</strong> Starting to respond before the user finishes speaking. Streaming STT makes this tempting — you get partial transcripts in real-time. But cutting people off is rude in conversation, and it is rude in voice interfaces too. Wait for a clear pause before responding.</p>
+  <p class="section-text"><strong>The amnesia loop:</strong> Forgetting what was just discussed. "Book a table for two." "Where would you like to eat?" "At Marcello's." "How many people?" — the system already knows it is two. Maintain conversation context across turns. This requires passing conversation history to the LLM, not treating each utterance as independent.</p>
+  <p class="section-text"><strong>The robot voice trap:</strong> Using cheap or default TTS that undermines an otherwise brilliant interaction. Users will forgive a slow response from a warm, natural voice. They will not forgive an instant response from a voice that sounds like a 2010 GPS navigator. Voice quality is not a nice-to-have — it is core to the experience.</p>
+  <p class="section-text"><strong>The no-error-recovery problem:</strong> When the system mishears the user and has no graceful way to correct course. Always offer correction mechanisms — "I heard you say 'blue shirt.' Is that right?" Never commit to irreversible actions based on a single voice input without confirmation.</p>
 </div>
 
 <div class="try-it-box">

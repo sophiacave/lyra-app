@@ -135,6 +135,18 @@ asyncio.run(generate())</code></div>
   <p class="section-text"><strong>Mistake: Numbers without context.</strong> Fix: Write "fifteen dollars" not "$15." Write "March twenty-seventh" not "3/27." Write "two point five million" not "2.5M." Control exactly how numbers are spoken.</p>
   <p class="section-text"><strong>Mistake: Missing emotional cues.</strong> Fix: Use exclamation points for energy, ellipses for thoughtful pauses, em dashes for dramatic shifts. TTS engines read punctuation as performance cues — give them more to work with.</p>
   <p class="section-text"><strong>Mistake: Ignoring the first and last sentences.</strong> Fix: The opening sentence sets the voice's tone for the entire piece. The closing sentence is what the listener remembers. Write these two sentences with extra care — they carry disproportionate weight in audio.</p>
+  <p class="section-text"><strong>Mistake: Not testing with headphones.</strong> Fix: Laptop speakers hide artifacts that headphones reveal — mouth clicks, background hum, sibilance, and unnatural pauses. Always do your quality check on headphones. What sounds fine on speakers can sound terrible in earbuds, and earbuds are how most people consume audio content.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Use Cases</span>
+  <h2 class="section-title">Real-World TTS Applications</h2>
+  <p class="section-text">TTS is not just for podcasts and audiobooks. Here are the highest-value applications across industries:</p>
+  <p class="section-text"><strong>E-learning and courses:</strong> Convert written course materials into narrated audio. Students can listen during commutes, workouts, or chores. AI narration makes it economically viable to offer audio versions of every lesson without hiring voice talent.</p>
+  <p class="section-text"><strong>Accessibility:</strong> Screen readers powered by natural-sounding TTS transform the web experience for visually impaired users. The gap between robotic screen reader voices and natural speech has always been a barrier to comfortable, extended use. Neural TTS closes that gap.</p>
+  <p class="section-text"><strong>Customer support:</strong> Interactive voice response (IVR) systems powered by neural TTS sound dramatically better than the robotic menus everyone hates. Natural-sounding voices reduce caller frustration and abandonment rates.</p>
+  <p class="section-text"><strong>Content localization:</strong> Translate your content into 30+ languages and generate native-sounding narration for each. What used to require hiring voice actors in each market now requires a single API call per language. Global reach at local production cost.</p>
+  <p class="section-text"><strong>Internal communications:</strong> Convert company newsletters, policy updates, and training materials into audio. Employees can listen during their commute instead of reading yet another email. Engagement with audio versions is typically 2-3x higher than text.</p>
 </div>
 
 <div class="demo-container">
@@ -143,6 +155,17 @@ asyncio.run(generate())</code></div>
   <p><code>&lt;emphasis level="strong"&gt;word&lt;/emphasis&gt;</code> — Add emphasis</p>
   <p><code>&lt;prosody rate="slow"&gt;text&lt;/prosody&gt;</code> — Adjust speaking speed</p>
   <p><code>&lt;say-as interpret-as="date"&gt;2026-03-27&lt;/say-as&gt;</code> — Format interpretation</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Workflow</span>
+  <h2 class="section-title">Building a TTS Production Workflow</h2>
+  <p class="section-text">Professional TTS output requires a systematic workflow, not just a single generation pass. Here is the pipeline used by studios and content teams producing at scale:</p>
+  <p class="section-text"><strong>Step 1 — Script preparation:</strong> Write or edit your text specifically for spoken delivery. Read it aloud yourself first. Every sentence that trips your tongue will trip the AI too. Mark pronunciation guides for unusual words. Add punctuation cues for pacing.</p>
+  <p class="section-text"><strong>Step 2 — Voice selection:</strong> Generate the first paragraph with 3-5 different voices. Listen back-to-back. Choose the voice that matches your content's personality — warm for memoir, clear for tutorials, energetic for marketing. This five-minute audition saves hours of rework later.</p>
+  <p class="section-text"><strong>Step 3 — Generation in segments:</strong> Generate content in chunks of 2-3 paragraphs rather than all at once. This prevents the AI voice from drifting in tone or energy over long passages. It also gives you natural edit points if you need to regenerate a section.</p>
+  <p class="section-text"><strong>Step 4 — Quality review:</strong> Listen to every generated segment with headphones. Check for mispronunciations, unnatural pauses, odd inflections, and energy drops. Regenerate any segment that does not meet your standard — it costs pennies and saves your reputation.</p>
+  <p class="section-text"><strong>Step 5 — Post-processing:</strong> Run the final audio through Auphonic or your mastering chain. Normalize loudness to your platform's standard. Add room tone, intro/outro, and any music beds. Export in the required format.</p>
 </div>
 
 <div class="try-it-box">

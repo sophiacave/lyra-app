@@ -138,7 +138,7 @@ After all three, compare your answers. If they agree, you can be confident. If t
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">CoT Anti-Patterns to Avoid</h2>
   <p class="section-text"><strong style="color: var(--red);">Over-specifying steps:</strong> If you dictate 15 micro-steps, you're doing the thinking for the AI. Give it 3-5 high-level steps and let it fill in the details. The sweet spot is structured enough to guide but flexible enough to reason.</p>
-  <p class="section-text"><strong style="color: var(--red);">Using CoT on trivial tasks:</strong> "Think step by step about what the capital of France is" adds latency and tokens without improving accuracy. Reserve CoT for tasks where reasoning genuinely matters.</p>
+  <p class="section-text"><strong style="color: var(--red);">Using CoT on trivial tasks:</strong> "Think step by step about what the capital of France is" adds latency and tokens without improving accuracy. Reserve CoT for tasks where reasoning genuinely matters. A good rule of thumb: if a human could answer the question in under 5 seconds, CoT probably won't help.</p>
   <p class="section-text"><strong style="color: var(--red);">Ignoring the reasoning:</strong> If you ask for step-by-step reasoning but only read the final answer, you're missing the point. The reasoning is where you catch errors, learn the AI's assumptions, and refine your prompt.</p>
   <p class="section-text"><strong style="color: var(--red);">Forgetting to ask for a conclusion:</strong> Some prompts trigger great reasoning but never ask for a clear final answer. Always end with "Based on this analysis, your recommendation is:" or "Therefore, the answer is:" to ensure a clear deliverable.</p>
 </div>
@@ -150,6 +150,7 @@ After all three, compare your answers. If they agree, you can be confident. If t
   <p class="section-text">Why does it work? Large language models generate one token at a time. When you ask for a direct answer, the model must "compress" all reasoning into the first few tokens of its response. When you ask it to think step by step, each reasoning token becomes context for the next one — the model can build up to the answer incrementally.</p>
   <p class="section-text">This is why CoT works better on larger models. Smaller models may not have enough capacity to produce useful intermediate reasoning. If you're using a lightweight model and CoT isn't helping, it's not your prompt — the model may simply lack the reasoning capacity to benefit from the technique.</p>
   <p class="section-text">The practical takeaway: CoT is free. It costs a few extra output tokens but requires no special tools, no fine-tuning, no API changes. It's the single highest-ROI prompting technique available today.</p>
+  <p class="section-text">An important nuance: newer models like Claude and GPT-4 have built-in "extended thinking" modes that perform internal CoT automatically. Even with these models, explicit CoT instructions help because they let you control the reasoning structure — deciding which steps the model takes rather than leaving it to default reasoning paths.</p>
 </div>
 
 <div class="lesson-section">
@@ -172,6 +173,7 @@ Analyze this decision step by step:
   </div>
 
   <p class="section-text">Step 4 — the "regret minimization" question — is what makes this template exceptional. It forces the AI to consider asymmetric risks, not just balanced pros and cons. Many real decisions hinge on which downside is more painful, and this step surfaces that insight.</p>
+  <p class="section-text">This template works for career decisions, technology choices, hiring decisions, and strategic planning. The structure stays the same — only the options and context change. Save it to your prompt library (Lesson 10) and reuse it whenever you face a complex decision.</p>
 </div>
 
 <div class="lesson-section">

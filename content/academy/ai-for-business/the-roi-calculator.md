@@ -31,7 +31,11 @@ free: true
   <h2 class="section-title">The simple math.</h2>
   <p class="section-text">Most business owners make AI decisions on gut feel — they either believe the hype or they do not. Neither is a good reason to spend money. The math is simple enough to do in your head once you know the formula.</p>
 
+  <p class="section-text">This lesson will make you dangerous in the best way: you will be able to look at any AI tool, run the ROI calculation in 60 seconds, and know immediately whether it is worth buying, worth evaluating further, or not worth your time. Every AI tool purchase you make for the rest of your career should start with this math. If the math works, buy it. If it does not, walk away. No feelings required.</p>
+
   <p class="section-text">Here is the formula: <strong>(Hours saved per week × hourly labor cost × 52 weeks) minus annual tool costs = net annual savings.</strong> That is it. No spreadsheet required.</p>
+
+  <p class="section-text">Write this formula on a sticky note and put it on your monitor. You will use it dozens of times in the next year — every time a vendor pitches you, every time a team member suggests a new tool, every time you read about a product and think "that could help us." The formula is your filter. Tools that pass the math get evaluated further. Tools that fail the math get rejected immediately, no matter how impressive the demo was.</p>
 
   <p class="section-text">Let's run a real example. You have an operations manager who spends 15 hours a week on repetitive tasks: formatting reports, sending follow-up emails, updating CRM fields. Her total compensation is $60,000 per year — about $29 per hour. You buy an AI tool suite for $150 per month ($1,800 per year) and it automates 40% of those repetitive tasks.</p>
 
@@ -157,6 +161,28 @@ Flag any hidden costs I should account for.</div>
   </div>
 
   <p class="section-text">Run this prompt for every AI tool you consider. Save the outputs in a "Tool ROI" document. In six months, compare the projections to actuals — you'll calibrate your estimates and make faster decisions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">ROI Mistakes</span>
+  <h2 class="section-title">Five ways businesses get the math wrong.</h2>
+  <p class="section-text">Even with the formula, ROI calculations go wrong in predictable ways. Knowing these mistakes in advance makes your projections more accurate and your investment decisions more confident.</p>
+
+  <p class="section-text"><strong>Mistake 1: Using the best-case automation rate.</strong> The vendor says "70% of tasks automated." Your actual experience in month one will be 25-35%. Use the conservative estimate for decision-making. If the ROI only works at 70% automation, the tool is not a safe bet — because you will not hit 70% for months, if ever.</p>
+
+  <p class="section-text"><strong>Mistake 2: Ignoring the learning curve.</strong> Every AI tool has a 2-4 week period where productivity actually drops before it improves. Your team is slower while they learn. Factor this in: assume zero savings in weeks 1-2, 50% of projected savings in weeks 3-4, and full savings from month 2 onward.</p>
+
+  <p class="section-text"><strong>Mistake 3: Counting freed hours as direct savings.</strong> If you save an employee 6 hours per week, that is only real savings if those 6 hours are redirected to productive work. If the employee fills those hours with meetings or busywork, the value evaporates. The question is: "What will this person do with the freed time?" Have an answer before you calculate.</p>
+
+  <p class="section-text"><strong>Mistake 4: Forgetting per-user pricing at scale.</strong> A tool that costs $20/month for you costs $200/month for a team of 10. And $2,000/month for a company of 100. Check the per-user price and multiply by your actual headcount before committing. Some tools offer team pricing that reduces the per-user cost — ask.</p>
+
+  <p class="section-text"><strong>Mistake 5: Comparing gross savings instead of net.</strong> Gross savings (hours x rate x 52) is the number that gets you excited. Net savings (gross minus ALL costs including hidden ones) is the number that tells the truth. Always present net savings. If the net number is still compelling, you have a real business case.</p>
+
+  <p class="section-text">These five mistakes share a common root: optimism bias. When you are excited about a tool, you overestimate savings and underestimate costs. The formula corrects for this — but only if you use conservative inputs. When in doubt, round your automation rate down and your costs up. A projection that beats expectations builds confidence. A projection that misses expectations destroys it. Under-promise, over-deliver — even to yourself.</p>
+
+  <p class="section-text"><strong>The projection-to-actual audit.</strong> After 90 days of using any AI tool, go back to your original ROI projection and compare it to actual results. Were your hours saved on target? Did hidden costs exceed your estimate? Was the automation rate higher or lower than projected? This audit teaches you to project more accurately next time. Most people find their conservative estimates were actually close to reality — which is the whole point of being conservative.</p>
+
+  <p class="section-text">Save every ROI calculation you do in a single document. Label each one with the tool name, the date, and whether the projection was confirmed, exceeded, or missed. Over time, this document becomes your personal AI investment track record — proof that your decisions are data-driven, and a reference for calibrating future projections. The best business decisions are made by people who track their past decisions honestly.</p>
 </div>
 
 <div class="lesson-section">

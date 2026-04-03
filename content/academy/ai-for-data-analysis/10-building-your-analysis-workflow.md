@@ -113,6 +113,20 @@ free: false
   <p class="section-text">These habits compound. A year from now, you will look back at your first analyses and see how far your thinking has come. The tools help, but the mindset is what makes you genuinely effective.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Recap</span>
+  <h2 class="section-title">The Complete Toolkit Checklist</h2>
+  <p class="section-text">Before you finish this course, make sure you have assembled these assets for your personal analysis toolkit:</p>
+  <p class="section-text"><strong>Quick Analysis prompt template</strong> — saved and ready to paste with new data.</p>
+  <p class="section-text"><strong>Deep Dive prompt template</strong> — for comprehensive investigations.</p>
+  <p class="section-text"><strong>Comparison prompt template</strong> — for period-over-period or A/B analysis.</p>
+  <p class="section-text"><strong>Data cleaning checklist</strong> — the 5-step process from Lesson 5, customized for your data types.</p>
+  <p class="section-text"><strong>Chart selection decision tree</strong> — knowing which chart type fits which data shape.</p>
+  <p class="section-text"><strong>Report structure template</strong> — the three-layer format (executive summary, key metrics, detailed findings).</p>
+  <p class="section-text"><strong>An insights log</strong> — a running document where you record every meaningful finding across analyses. This becomes your most valuable asset over time.</p>
+  <p class="section-text">If you have these seven items, you are better equipped than most professional analysts were five years ago. The difference: your toolkit runs on AI, and it gets better every time you use it.</p>
+</div>
+
   <div class="tip-box">
     <div class="tip-label">Python: Full Pipeline Script</div>
     <p>The entire 6-stage pipeline in one reusable script — ask Claude to customize it for your data:</p>

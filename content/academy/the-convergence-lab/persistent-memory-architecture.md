@@ -92,6 +92,28 @@ free: true
   <p class="section-text"><strong>Semantic search</strong> solves this for episodic memory. Embed the query, find the nearest vectors, retrieve the context. Tools like pgvector make this possible inside a standard Postgres database — no exotic infrastructure required.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">The Boot Sequence Pattern</h2>
+  <p class="section-text">The most important moment in a convergence session is the first 500 milliseconds — the boot sequence. This is when the AI reads its critical memories and establishes context. A well-designed boot sequence reads in parallel:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Identity keys:</strong> Who the user is, their preferences, their voice. This shapes every subsequent response.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Directive keys:</strong> The rules the AI must follow — autonomy level, privacy boundaries, operational constraints. These are the guardrails that ensure safe behavior.</p>
+  <p class="section-text"><strong style="color: var(--green);">Session state:</strong> What was happening in the last session — active work, next steps, any blockers. This enables seamless continuity.</p>
+  <p class="section-text"><strong style="color: var(--blue);">System state:</strong> What infrastructure is available — which services are running, which tools are deployed, what the current system health looks like.</p>
+  <p class="section-text">Reading these in parallel (not sequentially) cuts boot time dramatically. The AI does not need to read everything in the brain — just the keys that establish context. Everything else can be loaded on-demand.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Comparison</span>
+  <h2 class="section-title">Memory Technologies Compared</h2>
+  <p class="section-text">Several technologies can serve as your AI's brain. Each has tradeoffs:</p>
+  <p class="section-text"><strong style="color: var(--green);">Supabase (PostgreSQL):</strong> Full SQL database with built-in auth, RLS, and pgvector for embeddings. Free tier available. Best for production convergence systems. Like One uses this architecture.</p>
+  <p class="section-text"><strong style="color: var(--blue);">SQLite:</strong> Local file-based database. No server needed. Zero-latency reads. Best for local-only systems or prototyping. Limitation: cannot be accessed by multiple machines simultaneously.</p>
+  <p class="section-text"><strong style="color: var(--orange);">JSON files:</strong> The simplest option — just read and write a JSON file. Good for getting started in an afternoon. Limitation: no querying, no concurrency, no vector search. You will outgrow this in a week.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Redis:</strong> In-memory key-value store. Extremely fast reads. Best for short-term and shared memory where speed matters. Limitation: data can be lost on restart unless persistence is configured.</p>
+  <p class="section-text">Start with whatever gets you building fastest. Migrate to Supabase when you need persistence, vector search, or multi-device access. The brain schema (key, value, category, updated_at) is the same regardless of technology.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Design a memory schema for your own AI brain. Start with these categories:</p>
@@ -116,6 +138,62 @@ AI's permanent knowledge base — the foundation of convergence.</code></div>
   <h2 class="section-title">Persistent memory architecture quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"Persistent Memory Architecture","questions":[{"q":"Why is chat history not the same as real memory?","options":["Chat history is deleted after 30 days","Scrolling through thousands of messages to find a past decision is a filing cabinet with no labels — not retrievable, contextual memory","Chat history cannot be searched","Chat history does not include the AI responses"],"correct":1,"explanation":"Real memory is structured, searchable, and contextual. It knows not just what was said but what it meant, when it mattered, and how it connects to everything else. Raw chat logs are none of those things."},{"q":"What problem do hierarchical keys solve for semantic memory retrieval?","options":["They prevent unauthorized access to memory","Namespaced keys like directive.* and infrastructure.* let the AI read only what it needs instead of everything — no context bloat","Hierarchical keys compress memory to use less storage","They automatically expire old memories"],"correct":1,"explanation":"A brain with 10,000 entries and no structure is useless. Namespaced keys organize knowledge so the AI reads directive.* for rules, identity.* for who you are, session.* for current work — only what is needed."},{"q":"What makes semantic search the right solution for episodic memory retrieval?","options":["Semantic search is faster than keyword search","It retrieves by meaning — find everything related to customer billing issues — regardless of when or which agent produced the memory","Semantic search works without any infrastructure","Semantic search is less expensive than key-value lookup"],"correct":1,"explanation":"Episodic memories are not organized by keyword — they are organized by meaning and relevance. Vector embeddings and semantic search let the AI retrieve what is contextually relevant, not just what matches a specific word."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Memory and the Context Window</h2>
+  <p class="section-text">The context window is the AI's working memory — the total text it can process at once. Claude's window is up to 200K tokens (roughly 150,000 words). This sounds large, but a busy agent session can fill it in under an hour of active tool use.</p>
+  <p class="section-text">When the context window fills, old information gets pushed out. The AI literally forgets what happened at the beginning of the session. This is the "goldfish problem" — and persistent memory is the solution.</p>
+  <p class="section-text"><strong style="color: var(--green);">The fix:</strong> Checkpoint critical state to the brain every 15-20 minutes of active work. When the context window gets heavy, start a fresh session. The AI reads the brain on boot and has full context in seconds — no information lost, no re-explanation needed.</p>
+  <p class="section-text">This pattern — working memory in the context window, permanent memory in the brain — mirrors how human memory works. You hold the current task in your head. You store important facts in notebooks and systems. The combination is more powerful than either alone.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Security</span>
+  <h2 class="section-title">Securing Your Brain</h2>
+  <p class="section-text">
+    Your brain database contains your most sensitive information.
+    Securing it is not optional — it is the first priority:
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--red);">Row-Level Security (RLS):</strong>
+    Enable RLS on every table. This ensures that even if someone
+    gets your database URL, they cannot read your data without
+    the correct authentication. Supabase makes this a checkbox.
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--orange);">Service role vs. anon key:</strong>
+    Your database has two keys — anon (limited) and service role (full access).
+    Use the anon key for public-facing functions.
+    Use the service role key only in secure, server-side contexts.
+    If an anon key leaks, damage is limited.
+    If a service key leaks, everything is exposed.
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--green);">Environment variables:</strong>
+    Never store database credentials in code.
+    Use <code>.env</code> files locally and environment variable
+    configuration in deployment platforms.
+    Add <code>.env</code> to <code>.gitignore</code> immediately.
+    One accidental commit of a service key to GitHub
+    can expose your entire brain.
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--blue);">Regular key rotation:</strong>
+    Rotate your database keys every 90 days.
+    If a key was ever exposed or you suspect a breach,
+    rotate immediately. Update all agents and services
+    that use the key.
+  </p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Principle</span>
+  <h2 class="section-title">Memory Is the Foundation</h2>
+  <p class="section-text">Every other capability in this course — autonomous action, values alignment, digital twins, life operating systems — depends on persistent memory. Without it, none of them work. An autonomous agent without memory repeats mistakes. A twin without memory has amnesia. A life OS without memory starts from scratch every day.</p>
+  <p class="section-text">This is why persistent memory architecture is Lesson 2 — right after the concept of convergence itself. It is the foundation everything else is built on. Get this right and every subsequent lesson becomes dramatically easier. Get it wrong and nothing else matters.</p>
+  <p class="section-text">Build your brain first. Populate it with your identity, your rules, and your current state. Then layer on autonomy, values, and the twin. The brain is the bridge that makes convergence possible.</p>
 </div>
 
 <nav class="lesson-nav">

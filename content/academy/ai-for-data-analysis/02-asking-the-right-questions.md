@@ -153,6 +153,22 @@ free: true
     <p><em>"Given [data and context], what specific actions would you recommend to [goal]? Rank by expected impact and ease of implementation."</em></p>
     <p style="color: var(--dim);">Example: "Given our customer acquisition data, what specific actions would you recommend to reduce CAC by 20%? Rank by expected impact."</p>
   </div>
+
+  <p class="section-text">Keep these frameworks handy. Copy the one that matches your analysis type, fill in the brackets with your specific context, and paste it alongside your data. The framework ensures your question has the right structure; your domain knowledge ensures it asks the right thing.</p>
+  <p class="section-text">Over time, you will develop your own question templates — variations of these frameworks tuned to your specific data and business context. Save every question that produces a great answer. Your personal question library becomes one of your most valuable analytical assets.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Practical</span>
+  <h2 class="section-title">Building a Question Sequence</h2>
+  <p class="section-text">The best analyses follow a deliberate question sequence. Here is a template you can use for any dataset:</p>
+  <p class="section-text"><strong>Question 1 (Orientation):</strong> "Describe this dataset — shape, columns, data types, date range, and any obvious quality issues."</p>
+  <p class="section-text"><strong>Question 2 (Overview):</strong> "Summarize the key metrics. What are the totals, averages, and distributions?"</p>
+  <p class="section-text"><strong>Question 3 (Trends):</strong> "What are the most significant trends over time? Are things getting better or worse?"</p>
+  <p class="section-text"><strong>Question 4 (Segments):</strong> "Break down the key metric by [relevant dimension]. Which segments are strongest and weakest?"</p>
+  <p class="section-text"><strong>Question 5 (Anomalies):</strong> "Flag anything unusual — outliers, sudden changes, or data points that break the pattern."</p>
+  <p class="section-text"><strong>Question 6 (Action):</strong> "Based on everything you've found, what are the top 3 actions I should take and why?"</p>
+  <p class="section-text">This six-question sequence takes you from raw data to actionable insight in a structured way. Each question builds on the answers before it, creating a comprehensive analysis through conversation.</p>
 </div>
 
 <div class="try-it-box">

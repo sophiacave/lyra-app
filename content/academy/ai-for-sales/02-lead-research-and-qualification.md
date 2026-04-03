@@ -151,11 +151,44 @@ free: true
   with the strongest signals get your attention first.</p>
 </div>
 
+<div class="try-it-box">
+  <h3>Buying Signal Scanner</h3>
+  <div class="prompt-box"><code>Here are my target accounts: [LIST: Company, Industry,
+Size, Current Status in My Pipeline]. For each account, scan for buying
+signals based on what you know: recent funding, leadership changes,
+job postings in my product category, industry regulatory changes,
+or competitor moves. Score each account 1-10 for buying readiness
+and explain the signal that drove the score. Prioritize my outreach
+list starting with the highest scores.</code></div>
+</div>
+
 <div class="lesson-section">
   <span class="section-label">Power Move</span>
   <h2 class="section-title">Build Your Research Template</h2>
   <p class="section-text">Create a saved prompt template for prospect research that you use before every single call. Consistency is what separates professionals from amateurs. When every prospect gets the same thorough research treatment, your close rate climbs because you never walk in unprepared.</p>
   <p class="section-text">Save your best prompts. Refine them after every call. Your AI research system gets better every week.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Disqualification</span>
+  <h2 class="section-title">The Power of Disqualification</h2>
+  <p class="section-text">Qualification is not just about finding good leads — it is equally
+  about removing bad ones. Time spent on a lead that will never close is time stolen
+  from a lead that would. AI helps you disqualify decisively:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">No Budget, No Deal:</strong>
+    If AI research shows the company is in a hiring freeze, just laid off staff,
+    or has no public spending signals, deprioritize immediately.
+    Revisit in 6 months when circumstances may change.</p>
+    <p><strong style="color: var(--orange);">Wrong Contact Level:</strong>
+    If your product requires VP-level buy-in and you are talking to a manager
+    with no budget authority, either get introduced up or move on.
+    AI identifies the right contact level for your price point.</p>
+    <p><strong style="color: var(--blue);">No Urgency:</strong>
+    If there is no trigger event and the prospect says "maybe next year,"
+    that is not a lead — it is a future lead. File it, set a reminder,
+    and focus your energy on prospects with active pain right now.</p>
+  </div>
 </div>
 
 <!-- INTERACTIVE: MATCH -->

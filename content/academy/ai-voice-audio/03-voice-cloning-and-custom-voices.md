@@ -130,12 +130,44 @@ with open("cloned_output.mp3", "wb") as f:
   <p class="section-text"><strong>Safe harbor:</strong> Clone your own voice, or get written consent. Use platform voice marketplaces where actors have pre-authorized commercial use. When in doubt, get a signed release that specifically mentions AI voice synthesis and commercial usage rights.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Use Cases</span>
+  <h2 class="section-title">Voice Cloning in Practice: Real Applications</h2>
+  <p class="section-text">Beyond the technology itself, voice cloning enables specific applications that were previously impossible or prohibitively expensive:</p>
+  <p class="section-text"><strong>Personal legacy preservation:</strong> Families are using voice cloning to preserve the voices of elderly or terminally ill loved ones. With consent, a few hours of recorded conversation become a permanent voice that can narrate letters, messages, or stories for future generations.</p>
+  <p class="section-text"><strong>Content creator scaling:</strong> A solo YouTuber clones their own voice to narrate multiple video series simultaneously. While they record one video, their clone narrates three others. Same voice, same brand, four times the output.</p>
+  <p class="section-text"><strong>Multilingual content:</strong> Clone your voice in English, then generate content in Spanish, French, German, and Japanese — all in your voice. ElevenLabs and Resemble AI support cross-lingual voice cloning. Your audience hears you, regardless of the language.</p>
+  <p class="section-text"><strong>Accessibility for speech-impaired users:</strong> People who have lost their voice due to ALS, throat cancer, or other conditions can use voice clones created from pre-illness recordings. Their synthesized voice sounds like them, not like a generic computer. This is one of the most powerful and humane applications of the technology.</p>
+  <p class="section-text"><strong>Video game characters:</strong> Game developers use voice cloning to generate thousands of dialogue lines for NPCs without booking voice actors for extended studio sessions. The initial recording session creates the clone, and all subsequent dialogue is generated from text.</p>
+</div>
+
 <div class="demo-container">
   <h3>Recording Tips for Better Clones</h3>
   <p><strong>Environment:</strong> Quiet room, no echo. Closets with clothes work surprisingly well.</p>
   <p><strong>Mic:</strong> Even a phone works if held steady at 6 inches from your mouth.</p>
   <p><strong>Delivery:</strong> Read naturally. Don't perform. The AI needs your real voice, not a character.</p>
   <p><strong>Content:</strong> Read diverse text — questions, statements, lists, emotional passages.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Troubleshooting Voice Clone Quality</h2>
+  <p class="section-text">When a voice clone does not sound right, the problem is almost always in the source material or settings, not the AI. Here are the most common issues and how to fix them:</p>
+  <p class="section-text"><strong>Clone sounds robotic or flat:</strong> Your source recordings likely lack variety. Record additional samples that include questions, exclamations, lists, and emotional passages. The AI needs to hear your voice doing different things to reproduce its full range.</p>
+  <p class="section-text"><strong>Clone has inconsistent tone:</strong> Lower the similarity_boost setting (try 0.6-0.7). High similarity settings amplify every quirk in your source audio, including inconsistencies. A moderate setting lets the model smooth out variations while still capturing your voice's character.</p>
+  <p class="section-text"><strong>Clone sounds muffled or echoey:</strong> Your source recordings have room acoustics baked in. Re-record in a smaller, more acoustically treated space. Even recording under a blanket draped over your head and microphone produces dramatically cleaner source material.</p>
+  <p class="section-text"><strong>Clone mispronounces specific words:</strong> Use phonetic spelling in your input text for problem words. "Kubernetes" becomes "koo-ber-NET-eez" in the text. Alternatively, generate that sentence separately with adjusted settings and splice it into the main audio.</p>
+  <p class="section-text"><strong>Clone loses energy on long passages:</strong> Generate in shorter segments (2-3 paragraphs maximum). Long input text causes the model to default to a neutral, low-energy delivery. Shorter segments maintain the vocal energy from your source recordings.</p>
+  <p class="section-text"><strong>Clone sounds different each time:</strong> Increase the stability setting (try 0.7-0.8). Lower stability allows for more expressive variation between generations, which is great for creative content but problematic when you need consistency across a long-form project like an audiobook or course narration.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Comparison</span>
+  <h2 class="section-title">Instant vs Professional Voice Cloning</h2>
+  <p class="section-text">Understanding when to use each cloning approach saves time and money:</p>
+  <p class="section-text"><strong>Instant cloning (30 seconds - 5 minutes of audio):</strong> Use for prototyping, testing voice fit, one-off projects, and internal content. Quality is 70-80% of the original voice. Setup takes minutes. Good enough for most use cases where the audience is not deeply familiar with the original voice.</p>
+  <p class="section-text"><strong>Professional cloning (30+ minutes of audio):</strong> Use for public-facing content, audiobooks, brand voices, and any project where the clone will be compared directly to the original. Quality is 90-95% of the original voice. Setup takes hours to days. Worth the investment for long-term, high-volume use.</p>
+  <p class="section-text"><strong>Decision framework:</strong> If you need it today and it will be used once, use instant cloning. If it will be used across 10+ pieces of content, invest in professional cloning. The quality difference compounds over volume — a slight improvement multiplied across hundreds of generations is significant.</p>
 </div>
 
 <div class="try-it-box">

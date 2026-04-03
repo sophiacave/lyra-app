@@ -168,6 +168,15 @@ free: false
   </div>
 </div>
 
+<!-- THE COMPOUND EFFECT -->
+<div class="lesson-section">
+  <span class="section-label">Long-Term Impact</span>
+  <h2 class="section-title">Why daily prioritization compounds over weeks and months.</h2>
+  <p class="section-text">On day one, a brain dump saves you maybe 20 minutes of confusion. That doesn't feel life-changing. But after a week of daily prioritization, you've saved hours and built momentum on projects that used to stall. After a month, you've developed a clarity habit that fundamentally changes how you approach your work and personal life.</p>
+  <p class="section-text">The compound effect of daily prioritization is this: you stop carrying tasks in your head. Your brain stops running background anxiety about forgotten deadlines. You sleep better because tomorrow is already planned. You procrastinate less because tasks are already broken into doable chunks.</p>
+  <p class="section-text">This is the real productivity gain — not doing more things, but doing the right things with less mental overhead. AI doesn't give you more hours in the day. It gives you back the mental energy you were wasting on worry, indecision, and overwhelm.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

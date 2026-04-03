@@ -160,6 +160,27 @@ clean white background areas for readability</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Scheduling and Automation</span>
+  <h2 class="section-title">Generate once, schedule everything, then relax.</h2>
+  <p class="section-text">The final piece of a social media visual workflow is scheduling. Once you have batch-created your content, use scheduling tools to post automatically:</p>
+  <p class="section-text"><strong>Free schedulers:</strong> Buffer (free tier allows 3 social channels), Later (free tier for Instagram), Creator Studio (free for Facebook and Instagram). These let you upload your AI-generated images, write captions, and schedule posts days or weeks in advance.</p>
+  <p class="section-text"><strong>The complete cycle:</strong> Batch create images on Monday. Schedule the entire week's posts on Tuesday. Spend the rest of the week engaging with comments and community — not scrambling for content. This is how professional social media managers operate, and AI makes it accessible to everyone.</p>
+  <p class="section-text"><strong>Evergreen content library:</strong> Some AI-generated images work year-round — motivational quote backgrounds, educational infographics, brand value posts. Build a library of evergreen visuals you can rotate back into your schedule whenever you need a buffer week. This safety net means you never go dark on social media, even during busy periods.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cross-Platform Storytelling</span>
+  <h2 class="section-title">Use each platform's strengths to tell different parts of the same story.</h2>
+  <p class="section-text">Instead of posting the same image everywhere, create a visual story that unfolds across platforms:</p>
+  <p class="section-text"><strong>Instagram:</strong> The polished, curated hero image — your best visual with a thoughtful caption.</p>
+  <p class="section-text"><strong>Stories:</strong> Behind-the-scenes of the creation process — share your prompt, show variations, show the before and after of edits. This content feels authentic and builds connection.</p>
+  <p class="section-text"><strong>LinkedIn:</strong> The professional insight — pair the image with a lesson learned or industry observation. Position yourself as someone who understands the intersection of AI and your field.</p>
+  <p class="section-text"><strong>X (Twitter):</strong> The quick hit — the image with a punchy one-liner or question that invites engagement.</p>
+  <p class="section-text"><strong>Pinterest:</strong> The resource — add text overlay turning the image into a tip, tutorial, or inspiration pin with searchable keywords in the description.</p>
+  <p class="section-text">One AI-generated image, five platform-specific pieces of content, each feeling native to its platform. That is efficiency and strategy working together.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Terms</span>
   <h2 class="section-title">Social Media Visuals Vocabulary</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Social Media Visuals Terms","cards":[{"front":"Brand prompt","back":"A base style description that captures your visual identity — colors, aesthetic, mood — reused across all posts for consistency"},{"front":"Batch content creation","back":"Sitting down once to generate a week\\u0027s worth of social media visuals in one session, using a consistent brand prompt with different subjects"},{"front":"Aspect ratio","back":"The proportional relationship between width and height of an image — e.g. 4:5 for Instagram portrait, 16:9 for YouTube thumbnails"},{"front":"Visual consistency","back":"Using the same color palette, similar styles, and a recognizable aesthetic across all posts — what separates a brand from random content"},{"front":"Authenticity in AI content","back":"Making AI-generated visuals feel personal by using specific details, mixing AI with real photos, and adding your own voice and perspective"}]}'></div>

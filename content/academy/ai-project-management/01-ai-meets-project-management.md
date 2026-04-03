@@ -144,6 +144,41 @@ Format the output with clear headers and bullet points. Flag any assumptions you
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Data Privacy</span>
+  <h2 class="section-title">Using AI Responsibly in PM</h2>
+  <p class="section-text">Before you start pasting project data into AI tools, understand the privacy implications. This is not optional — it is professional responsibility.</p>
+  <p class="section-text"><strong>Know your organization's AI policy.</strong> Many companies have explicit guidelines about what data can be shared with AI tools. Some prohibit sharing customer data, financial information, or proprietary code. Check before you start — getting permission is easier than getting forgiveness.</p>
+  <p class="section-text"><strong>Anonymize when possible.</strong> You do not need to include client names, employee names, or specific dollar amounts for AI to be useful. "Client X has concerns about the timeline" works just as well as using the real name. Build the habit of anonymizing by default.</p>
+  <p class="section-text"><strong>Choose your tools carefully.</strong> Some AI providers use your inputs to train future models. Others offer business plans with data protection guarantees. Claude's business plans do not train on your data. Check the terms of service for whatever tool you choose.</p>
+  <p class="section-text"><strong>Never share credentials, passwords, or security-sensitive information.</strong> This should go without saying, but in the rush of pasting project data, it is easy to accidentally include an API key or a password from a config file. Always review your input before sending.</p>
+  <p class="section-text">Responsible AI use is not a barrier — it is a professional standard. The PMs who adopt AI thoughtfully and transparently will build more trust than those who either avoid it entirely or use it recklessly.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Industry Applications</span>
+  <h2 class="section-title">AI PM Across Industries</h2>
+  <p class="section-text">While this course uses software project examples for accessibility, the techniques work everywhere projects exist:</p>
+  <p class="section-text"><strong>Construction:</strong> AI generates safety checklists, tracks material delivery schedules, drafts progress reports for building inspectors, and flags weather-related schedule risks.</p>
+  <p class="section-text"><strong>Healthcare:</strong> AI processes clinical trial status updates, drafts regulatory submission summaries, tracks compliance milestones, and identifies resource conflicts across research teams.</p>
+  <p class="section-text"><strong>Marketing:</strong> AI plans campaign launches, tracks creative deliverable timelines, generates stakeholder updates for brand managers, and analyzes retrospective data from past campaigns.</p>
+  <p class="section-text"><strong>Education:</strong> AI plans curriculum rollouts, tracks faculty resource allocation, drafts progress reports for accreditation bodies, and manages cross-department dependencies.</p>
+  <p class="section-text">The prompts are the same. The context changes. That is the beauty of a prompt-based system — it adapts to any domain because PM fundamentals are universal.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Key Terminology</span>
+  <h2 class="section-title">AI PM Vocabulary You Will Use Throughout This Course</h2>
+  <p class="section-text"><strong>Prompt:</strong> The instruction you give to an AI. A well-structured prompt includes context, a clear task, and format specifications. Better prompts produce dramatically better output.</p>
+  <p class="section-text"><strong>Prompt Library:</strong> A saved collection of your best prompts, organized by PM task. This is the toolkit you build throughout this course.</p>
+  <p class="section-text"><strong>Context Window:</strong> The amount of information AI can process in a single conversation. Think of it as AI's working memory. Longer documents need to be chunked or summarized to fit.</p>
+  <p class="section-text"><strong>Iteration:</strong> Going back and forth with AI to refine output. The best results come from 3-4 rounds of refinement, not a single prompt.</p>
+  <p class="section-text"><strong>Hallucination:</strong> When AI generates information that sounds plausible but is incorrect. This is why every AI output must be reviewed by a human. AI does not know what it does not know — it fills gaps with confident-sounding guesses.</p>
+  <p class="section-text"><strong>RAG Status:</strong> Red, Amber, Green — the universal project health indicator. You will use this throughout the course for status reporting and risk assessment.</p>
+  <p class="section-text"><strong>WBS:</strong> Work Breakdown Structure — the hierarchical decomposition of a project into phases, deliverables, and tasks. AI generates these from project descriptions.</p>
+  <p class="section-text">These terms will appear throughout the course. No need to memorize them now — they will become natural as you use them in practice.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"AI in Project Management — The Big Three","cards":[{"front":"Information Processing","back":"AI digests a 90-minute meeting transcript and extracts every action item, decision, and open question in seconds. No re-watching recordings."},{"front":"Communication Generation","back":"Status reports, stakeholder updates, executive summaries — AI drafts them from your raw notes in minutes instead of 45 minutes."},{"front":"Pattern Recognition","back":"AI spots risks you might miss — slipping timelines, stacking dependencies, unbalanced team workloads — without getting tired or distracted."},{"front":"What AI will NOT do for you","back":"Navigate office politics, sense burnout from body language, know that ‘this is fine’ actually means the client hates it. Human judgment stays yours."}]}'></div>
 </div>
 

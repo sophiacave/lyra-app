@@ -167,6 +167,40 @@ free: true
 
 </div>
 
+<!-- SECTION 3B: KEY VOCABULARY SUMMARY -->
+<div class="lesson-section">
+  <span class="section-label">Vocabulary</span>
+  <h2 class="section-title">Your neural network glossary.</h2>
+  <p class="section-text">Keep this reference handy as you continue the course. These are the foundational terms that every AI concept builds on:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  NEURAL NETWORK GLOSSARY</span>
+
+  Term                 Definition
+  ──────────           ──────────────────────────────────────
+  <span style="color:#34d399">Neuron</span>               Weighted sum + bias + activation = output
+  <span style="color:#38bdf8">Weight</span>               How much influence an input has (learned)
+  <span style="color:#8b5cf6">Bias</span>                 Baseline nudge — lets neuron fire at zero input
+  <span style="color:#fb923c">Activation fn</span>        Adds non-linearity (ReLU, Sigmoid, Step)
+  <span style="color:#34d399">Input layer</span>          Receives raw data (pixels, numbers, tokens)
+  <span style="color:#38bdf8">Hidden layer</span>         Finds patterns — edges, shapes, meanings
+  <span style="color:#8b5cf6">Output layer</span>         Makes the final prediction/decision
+  <span style="color:#fb923c">Forward pass</span>         Data flowing input → hidden → output
+  <span style="color:#34d399">Loss function</span>        Measures how wrong the prediction was
+  <span style="color:#38bdf8">Backpropagation</span>      Traces error back to each weight
+  <span style="color:#8b5cf6">Gradient</span>             How much (and which direction) to adjust a weight
+  <span style="color:#fb923c">Learning rate</span>        Size of each weight adjustment step
+  <span style="color:#34d399">Epoch</span>                One full pass through all training data
+  <span style="color:#38bdf8">Overfitting</span>          Memorizing data instead of learning patterns
+  <span style="color:#8b5cf6">Softmax</span>              Converts raw scores to probabilities (sum = 1)
+  <span style="color:#fb923c">Parameters</span>           Total weights + biases (GPT-4 ≈ 1.8 trillion)</code></pre>
+</div>
+
+  <div class="narration" style="margin-top:1rem">
+    <strong>You now have the vocabulary to read any AI article and understand what they are talking about.</strong> These terms come up in every course, every tutorial, every research paper. You are no longer on the outside looking in — you speak the language.
+  </div>
+</div>
+
 <!-- NEXT LESSON -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/ai-foundations/anatomy-of-a-prompt" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Anatomy of a Prompt →</a>

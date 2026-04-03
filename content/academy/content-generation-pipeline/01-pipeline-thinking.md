@@ -154,10 +154,35 @@ BREAKEVEN: Week 2 (setup time recovered)
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Getting Started</span>
+  <h2 class="section-title">Your First Pipeline in 30 Minutes</h2>
+  <p class="section-text">You don't need fancy tools to build your first pipeline. You need a text editor, an AI assistant, and a willingness to break your process into steps. Here's the fastest path from zero to working pipeline:</p>
+  <p class="section-text"><strong>Minute 1-5:</strong> Pick a content type you produce weekly. Write down every step you currently do manually, in order. Be specific — "research the topic" is too vague. "Find three recent statistics about [topic] from industry reports" is a pipeline step.</p>
+  <p class="section-text"><strong>Minute 5-15:</strong> Turn each step into a prompt. Each prompt should take the output of the previous step as input. Write them in a single document, clearly numbered. Include the output format you expect from each step.</p>
+  <p class="section-text"><strong>Minute 15-25:</strong> Run the pipeline once with a real topic. Copy output from step 1, paste into step 2's prompt, and so on. Note where the output quality drops or where you need to add constraints.</p>
+  <p class="section-text"><strong>Minute 25-30:</strong> Fix the weakest step. Add more specific constraints — word count, tone examples, structural requirements. Run that step again. If the output improves, your pipeline is working. If not, the constraints need more specificity.</p>
+  <p class="section-text">Congratulations — you now have a working pipeline. It's rough. It's manual. But it's a system that produces consistent output, and every improvement you make from here compounds. The rest of this course teaches you how to make it excellent.</p>
+  <p class="section-text">Document what you built. Write down each step, the prompt you used, and what worked versus what needed adjusting. This documentation is the seed of your template library — the subject of Lesson 3. But it starts here, in the first thirty minutes.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Why This Matters</span>
   <h2 class="section-title">Pipelines Scale. Prompts Don't.</h2>
   <p class="section-text">Once you have a pipeline, you can run it a hundred times with different inputs and get consistently excellent results. You can hand it to a team member. You can automate it. You can improve individual steps without rebuilding everything. That's the difference between a content operation and a content gamble.</p>
   <p class="section-text">In the next nine lessons, we're going to build a complete content generation machine. This lesson was the foundation. Everything else stacks on top of pipeline thinking.</p>
+  <p class="section-text">The professionals who adopt pipeline thinking earliest gain a compounding advantage. While competitors are reinventing their process with every piece, you're running a system that improves automatically. Six months from now, the gap between pipeline operators and prompt-by-prompt creators will be enormous — and it only widens from there.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pipeline Tools</span>
+  <h2 class="section-title">Tools That Support Pipeline Workflows</h2>
+  <p class="section-text">You can build a pipeline with nothing but a text editor and copy-paste. But as your pipeline matures, dedicated tools accelerate each stage. Here's what to consider at each level of sophistication:</p>
+  <p class="section-text"><strong>Level 1 — Manual pipeline:</strong> Text files for templates, a spreadsheet for tracking, manual copy-paste between AI steps. Zero cost. Works perfectly for solo creators. This is where everyone should start.</p>
+  <p class="section-text"><strong>Level 2 — Semi-automated:</strong> Zapier or Make connects your pipeline steps. Templates live in Notion or Google Docs with shared access. Quality gates are checklists. This is where teams of 2-5 operate efficiently.</p>
+  <p class="section-text"><strong>Level 3 — Fully orchestrated:</strong> Custom scripts chain AI API calls together. Outputs route automatically to publishing platforms. Quality scores trigger routing logic (pass/fail/review). This is enterprise-level and requires development resources, but handles hundreds of pieces per month.</p>
+  <p class="section-text">Don't jump to Level 3. The biggest mistake new pipeline builders make is over-engineering from day one. Start manual. Learn what works. Then automate the steps that are stable and proven. Automating a bad process just produces bad content faster.</p>
+  <p class="section-text">Regardless of which level you operate at, the pipeline thinking remains the same: discrete steps, clear inputs and outputs, quality gates between stages, and a feedback loop that improves the system over time. The tools change. The thinking doesn't.</p>
+  <p class="section-text">One final note on tools: the best pipeline tool is the one you'll actually use consistently. A fancy automation platform that sits unused is worth less than a simple text file you run every day. Pick the tool that matches your current comfort level and upgrade when you've outgrown it — not before.</p>
 </div>
 
 <div class="lesson-section">

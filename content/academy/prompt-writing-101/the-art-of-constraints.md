@@ -187,6 +187,16 @@ everything that sounds wise but is actually useless.</span></code></pre>
 </div>
 
   <p class="section-text">Notice how the negative constraints in each scenario target the most common bad patterns for that specific format. LinkedIn posts have different AI-isms than emails. Your negative constraints should be specific to the format you're working with.</p>
+
+  <p class="section-text" style="margin-top:1rem"><strong>Your constraint starter kit:</strong> Copy these negative constraints and keep them handy. They work in almost any prompt:</p>
+  <ul class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
+    <li>"Do not start with Sure! or Great question! — just answer directly."</li>
+    <li>"No preamble. No summary at the end. Just the content."</li>
+    <li>"Do not use the words delve, leverage, utilize, or synergy."</li>
+    <li>"No hedging. Commit to a recommendation."</li>
+    <li>"Avoid generic advice anyone could give. Be specific to my situation."</li>
+  </ul>
+  <p class="section-text">Add just two or three of these to your next prompt and compare the output to what you usually get. The difference is immediate and dramatic.</p>
 </div>
 
 <!-- NEXT LESSON -->

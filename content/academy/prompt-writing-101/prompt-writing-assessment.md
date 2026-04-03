@@ -172,6 +172,25 @@ free: false
   </ul>
   <p class="section-text">The next step is practice. Every prompt you write is a chance to get better. Start with the templates, modify them for your work, and build your personal prompt library.</p>
   <p class="section-text"><strong>The gap between people who think AI is a toy and people who use it to 10x their output?</strong> It's everything you just learned.</p>
+
+  <p class="section-text" style="margin-top:1.5rem"><strong>Your action plan for the next 7 days:</strong></p>
+  <ol class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
+    <li><strong>Day 1-2:</strong> Pick your most common work task. Write a prompt using the full RCFCE framework. Iterate until the output is excellent. Save it as a template.</li>
+    <li><strong>Day 3-4:</strong> Use negative constraints in every prompt this week. Start with: "Do not use buzzwords. No preamble. Just the content." Notice how the output changes.</li>
+    <li><strong>Day 5-6:</strong> Try the 3-step refinement chain (draft, critique, polish) on something important — a proposal, a presentation, or a client deliverable.</li>
+    <li><strong>Day 7:</strong> Review your best prompts from the week. Turn them into reusable templates. You now have the start of your personal prompt library.</li>
+  </ol>
+  <p class="section-text">The skill compounds. After a month of deliberate practice, you will write prompts in seconds that would have taken you minutes a week ago. After three months, it becomes instinct.</p>
+  <p class="section-text"><strong>One last thing:</strong> teach someone else what you learned. When you explain the RCFCE framework to a colleague and watch their AI output improve in real time, you will realize just how powerful these fundamentals are. The best way to master a skill is to teach it.</p>
+
+  <p class="section-text" style="margin-top:1.5rem"><strong>Quick reference — the 5 techniques that matter most:</strong></p>
+  <ul class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
+    <li><strong>RCFCE Framework</strong> — Role, Context, Format, Constraints, Examples. Your blueprint for every prompt.</li>
+    <li><strong>Negative Constraints</strong> — "Don't use buzzwords" eliminates AI-isms faster than any positive instruction.</li>
+    <li><strong>The Briefing Document</strong> — Reusable context blocks that make every prompt instantly better.</li>
+    <li><strong>The 3-Step Chain</strong> — Draft, critique, polish. The AI argues with itself to produce a polished final version.</li>
+    <li><strong>The Best of Both</strong> — Combine the strongest elements from multiple outputs into one superior result.</li>
+  </ul>
 </div>
 
 <!-- BACK TO ACADEMY -->

@@ -162,6 +162,18 @@ Compare outputs A and B. The gap between them shows you exactly which levers Pro
   <p class="section-text"><strong style="color: var(--orange);">Ignoring instructions?</strong> Move critical rules to the top. Use "IMPORTANT:" prefix. Repeat key constraints.</p>
   <p class="section-text"><strong style="color: var(--orange);">Too long?</strong> Add explicit word/sentence limits. "Under 150 words. Maximum 3 paragraphs."</p>
   <p class="section-text"><strong style="color: var(--orange);">Too short?</strong> Ask for depth: "Explain in detail. Include examples. Cover edge cases."</p>
+  <p class="section-text"><strong style="color: var(--orange);">Off-topic?</strong> Restate the core task explicitly. Add: "Focus ONLY on [X]. Do not discuss [Y]."</p>
+  <p class="section-text"><strong style="color: var(--orange);">Repetitive?</strong> Add: "Each point must be distinct. No overlapping ideas. If you can't find enough unique points, say so."</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Prevention</span>
+  <h2 class="section-title">Writing Debug-Resistant Prompts</h2>
+  <p class="section-text">The best debugging strategy is not needing to debug. These habits prevent the most common failures before they happen.</p>
+  <p class="section-text"><strong style="color: var(--green);">Always specify format explicitly.</strong> Don't assume the AI will choose the right format. If you want bullets, say bullets. If you want paragraphs, say paragraphs. If you want a table, define the columns.</p>
+  <p class="section-text"><strong style="color: var(--green);">Always include at least one constraint.</strong> A prompt with no constraints is a prompt where anything goes. Even a simple "keep it under 300 words" dramatically improves focus.</p>
+  <p class="section-text"><strong style="color: var(--green);">Always define "done."</strong> What does the finished output look like? How will you know it's right? If you can't articulate this, the AI certainly can't either.</p>
+  <p class="section-text"><strong style="color: var(--green);">Read your prompt as if you knew nothing.</strong> Before sending, pretend you have no context about the task. Does the prompt make sense on its own? Every gap you can identify is a gap the AI will fill with assumptions.</p>
 </div>
 
 <div class="lesson-section">

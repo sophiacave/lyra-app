@@ -115,6 +115,26 @@ free: true
   <p class="section-text"><strong style="color: var(--orange);">Check 2: Did the webhook arrive?</strong> Check your endpoint's request logs. If you're using a custom server, add logging to the webhook handler. If using a platform like Make or Zapier, check their execution history. No request means a network or URL issue.</p>
   <p class="section-text"><strong style="color: var(--orange);">Check 3: Did the payload match your expectations?</strong> Even if the webhook arrives, the data might be structured differently than your workflow expects. Log the raw payload and compare it to your code's expectations. A field named <code>customer_email</code> vs. <code>email</code> will silently break everything.</p>
   <p class="section-text"><strong style="color: var(--orange);">Check 4: Did a filter block it?</strong> If you have conditions on your trigger (only fire for orders over $50), verify that the event data actually meets those conditions. Often the data is there but doesn't pass the filter.</p>
+  <p class="section-text">Pro tip: during development, always start with the simplest possible trigger — no filters, no conditions. Verify the basic connection works first. Then add complexity one condition at a time. Debugging a simple trigger is trivial. Debugging a compound trigger with three conditions and a filter is a nightmare.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Timing Considerations</span>
+  <h2 class="section-title">When Timing Matters More Than Events</h2>
+  <p class="section-text">Some workflows depend heavily on when they run, not just what triggers them. A weekly report generated at 9am Monday has a different value than one generated at 5pm Friday. Time-based triggers need careful consideration of timezone, business hours, and recipient expectations.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Always specify timezone.</strong> "Every Monday at 9am" means nothing without a timezone. Is that 9am EST? PST? UTC? If your team spans multiple timezones, decide whether the workflow fires once (in the company's primary timezone) or multiple times (once per timezone).</p>
+  <p class="section-text"><strong style="color: var(--blue);">Consider business calendars.</strong> A workflow that runs "every business day" needs to know about holidays. Most scheduling libraries support calendar exclusions — add your company's holiday schedule so workflows don't fire on Christmas morning.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Avoid the top of the hour.</strong> Everyone schedules cron jobs at :00. This creates traffic spikes on APIs and databases. Schedule your time-based triggers at odd minutes (:07, :23, :41) to avoid congestion.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Best Practices</span>
+  <h2 class="section-title">Trigger Design Checklist</h2>
+  <p class="section-text">Before deploying any trigger to production, verify these five things:</p>
+  <p class="section-text"><strong style="color: var(--green);">1. Idempotency:</strong> If the same event fires twice, does your workflow handle it gracefully? Or does it create duplicate records, send duplicate emails, or charge a customer twice? Design every workflow to be safely re-runnable.</p>
+  <p class="section-text"><strong style="color: var(--green);">2. Failure mode:</strong> If the trigger fires but the workflow fails mid-execution, what happens to the data? Is it lost, or can you retry from where it left off?</p>
+  <p class="section-text"><strong style="color: var(--green);">3. Volume expectations:</strong> How many times per day/hour/minute will this trigger fire? Does your downstream processing handle that volume?</p>
+  <p class="section-text"><strong style="color: var(--green);">4. Monitoring:</strong> How will you know if the trigger stops firing? A trigger that silently fails is worse than one that fails loudly.</p>
 </div>
 
 <div class="lesson-section">

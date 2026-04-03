@@ -148,7 +148,8 @@ free: false
     <p><strong style="color: var(--red);">The Price Pushback Call:</strong>
     They loved the demo but flinched at the price. AI preps your ROI narrative,
     competitive pricing context, and flexible packaging options before you get on the call.
-    Walk in with three pricing scenarios and the confidence to hold your value.</p>
+    Walk in with three pricing scenarios and the confidence
+    to hold your value.</p>
     <p><strong style="color: var(--orange);">The Multi-Stakeholder Call:</strong>
     Five people on the call, each with different priorities. AI generates a
     stakeholder map: who cares about what, whose objections to address first,
@@ -158,6 +159,19 @@ free: false
     changed since your last contact — new leadership, budget cycles, competitor
     moves — and gives you a fresh angle that is not "just circling back."</p>
   </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Tough Call Prep</h3>
+  <div class="prompt-box"><code>I have a difficult sales call tomorrow.
+Situation: [DESCRIBE — e.g., "The prospect loved the demo but pushed back
+hard on price" or "A deal went cold 3 weeks ago and I am trying to revive it"].
+Their company: [COMPANY]. Their role: [TITLE]. My product: [PRODUCT].
+Give me: 1) An opening that acknowledges the situation honestly,
+2) Three questions that move the conversation forward,
+3) Responses to the two most likely objections,
+4) A clear close or next-step ask that fits the situation.
+Make it conversational, not scripted.</code></div>
 </div>
 
 <div class="lesson-section">

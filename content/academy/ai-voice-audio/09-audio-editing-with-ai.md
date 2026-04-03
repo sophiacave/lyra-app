@@ -145,6 +145,26 @@ for f in glob.glob("raw_episodes/*.mp3"):
   <p><strong>Streaming Music:</strong> -14 LUFS (Spotify), -16 LUFS (Apple Music)</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Batch Processing: Editing at Scale</h2>
+  <p class="section-text">When you have dozens or hundreds of audio files to process, manual editing is not viable. Here is how to build batch processing workflows:</p>
+  <p class="section-text"><strong>Folder watching:</strong> Set up a script that monitors an input folder. When a new audio file appears, it automatically runs through your processing pipeline — noise removal, normalization, loudness targeting — and drops the finished file in an output folder. This is the backbone of production-scale audio operations.</p>
+  <p class="section-text"><strong>Template-based processing:</strong> Create processing presets for different content types. A "podcast" preset applies noise reduction, compression, and -16 LUFS normalization. A "music" preset applies lighter compression and -14 LUFS. A "voice memo" preset applies aggressive noise removal and normalization. Apply the right template to each batch.</p>
+  <p class="section-text"><strong>Quality gatekeeping:</strong> Automated processing catches 90% of issues. The remaining 10% requires human ears. Build a review step into your batch pipeline — flag files where the loudness range exceeds your threshold or where noise reduction had to work unusually hard. These flagged files get manual review while the rest pass through automatically.</p>
+  <p class="section-text"><strong>Cloud scaling:</strong> For truly large batches (hundreds of hours), use cloud processing. Upload files to a cloud storage bucket. Trigger serverless functions that process each file in parallel. Store results back in cloud storage. What takes hours locally finishes in minutes when parallelized across cloud compute.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Prevention</span>
+  <h2 class="section-title">Recording Better Audio in the First Place</h2>
+  <p class="section-text">The best audio editing is the editing you never have to do. Here are recording practices that dramatically reduce post-production work:</p>
+  <p class="section-text"><strong>Room treatment on a budget:</strong> Hang moving blankets on the walls behind and beside you. Place a thick rug under your desk. Close curtains over windows. These soft surfaces absorb reflections that cause echo. A $50 investment in blankets saves hours of de-reverb processing.</p>
+  <p class="section-text"><strong>Microphone technique:</strong> Position your mic 4-8 inches from your mouth, slightly off-axis (pointed at your chin, not directly at your lips). This reduces plosives (the "p" and "b" pops) and sibilance without needing post-processing. A $20 pop filter eliminates the rest.</p>
+  <p class="section-text"><strong>Gain staging:</strong> Set your input level so your normal speaking voice peaks around -12dB on the meter. This gives you headroom for louder moments without clipping. It is always better to record slightly too quiet (you can boost later) than slightly too loud (clipping destroys information permanently).</p>
+  <p class="section-text"><strong>Environment control:</strong> Turn off fans, AC, and any appliances with motors before recording. Close windows. Put your phone on silent. Record a 10-second room tone sample before you start — this gives noise removal tools a clean reference of your room's ambient sound.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It: Rescue Bad Audio</h3>
   <p>Record yourself talking for 30 seconds in the worst conditions you can find — near a fan, with the TV on, in a room with echo. Then run it through this rescue pipeline:</p>

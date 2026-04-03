@@ -181,6 +181,18 @@ include a specific next step with a timeline]</pre>
 
 <div data-learn="QuizMC" data-props='{"title":"Prompt Templates for Work","questions":[{"q":"What is the main advantage of using prompt templates instead of writing prompts from scratch?","options":["Templates are shorter","Templates preserve what worked — structure, tone, and quality — so you never start from zero","Templates prevent AI from making errors","Templates are required by all AI platforms"],"correct":1,"explanation":"Templates lock in proven patterns. The structure, voice, and quality standards stay consistent while only the variables change between uses."},{"q":"Which template would you use if your boss asks you to prepare talking points for tomorrow\\\'s board meeting?","options":["Email Writer","Content Creator","Meeting Prep","Brainstormer"],"correct":2,"explanation":"The Meeting Prep template generates an agenda, talking points, likely questions with responses, and a preparation question — exactly what you need before a high-stakes meeting."},{"q":"What makes the Analyst template different from the Content Creator template?","options":["The Analyst template is longer","The Analyst template focuses on finding patterns, risks, and recommendations from data — not creating new content","The Analyst template does not need an audience specification","The Analyst template only works with numbers"],"correct":1,"explanation":"The Analyst template is designed for examining existing data to surface insights, while the Content Creator template generates new material. Different goals require different prompt structures."},{"q":"You write the same type of weekly report every Friday. What should you do?","options":["Write the prompt from scratch each week for freshness","Turn your best prompt into a reusable template with variable slots","Ask AI to remember your previous prompts","Use a different AI model each week"],"correct":1,"explanation":"Any recurring task should be templatized. Take your best prompt, replace the changing parts with variable slots, and save it. Within a month you will have a personal prompt library covering 80% of your AI work."}]}'></div>
 <p class="section-text" style="margin-top:1rem">Within a month, you'll have a personal prompt library that handles 80% of your AI work in seconds.</p>
+
+  <p class="section-text" style="margin-top:1rem"><strong>How to build your first template:</strong></p>
+  <ol class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
+    <li><strong>Identify a task you do at least once a week</strong> — weekly reports, client emails, meeting prep, content creation</li>
+    <li><strong>Write the best prompt you can for it</strong> — use the full RCFCE framework, spend extra time getting it right</li>
+    <li><strong>Run it and iterate</strong> — refine until the output is exactly what you want</li>
+    <li><strong>Replace the specific details with variable slots</strong> — [client name], [this week's metrics], [meeting topic]</li>
+    <li><strong>Save it somewhere accessible</strong> — a note, a doc, a text expander, wherever you can grab it in seconds</li>
+    <li><strong>Use and improve</strong> — every time you use the template, notice what you tweak and update the template accordingly</li>
+  </ol>
+
+  <p class="section-text">The templates in this lesson are your starting library. But the ones you build yourself — tuned to YOUR voice, YOUR work, YOUR audience — will always outperform generic ones. Start with one template this week. Add one more next week. By month's end, you'll wonder how you ever worked without them.</p>
 </div>
 
 <!-- NEXT LESSON -->

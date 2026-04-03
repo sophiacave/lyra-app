@@ -85,7 +85,8 @@ free: true
   <span class="section-label">The Compound Effect</span>
   <h2 class="section-title">Why Small Workflows Create Massive Impact</h2>
   <p class="section-text">Most people think automation only matters for big, complex processes. That's backwards. The power of workflows is in the compound effect — many small automations stacking on top of each other. Each one saves a few minutes. Together, they transform how you work.</p>
-  <p class="section-text">Consider this progression: Week 1, you automate your morning email triage (saves 20 minutes/day). Week 3, you automate report generation (saves 45 minutes/week). Week 5, you automate client follow-ups (saves 30 minutes/day). By week 6, you've freed up almost two hours every single day — permanently. That's not a productivity hack. That's a structural change in how you spend your life.</p>
+  <p class="section-text">Consider this progression:</p>
+  <p class="section-text"><strong>Week 1:</strong> Automate morning email triage (saves 20 minutes/day). <strong>Week 3:</strong> Automate report generation (saves 45 minutes/week). <strong>Week 5:</strong> Automate client follow-ups (saves 30 minutes/day). By week 6, you've freed up almost two hours every single day — permanently. That's not a productivity hack. That's a structural change in how you spend your life.</p>
   <p class="section-text">The compound effect also applies to cognitive load. Each decision you automate isn't just time saved — it's mental bandwidth returned to you. By the end of month two, you're not just faster. You're clearer, calmer, and more creative because your brain isn't bogged down by repetitive decisions.</p>
 </div>
 
@@ -96,6 +97,7 @@ free: true
   <p class="section-text"><strong style="color: var(--red);">Myth: Automation is all-or-nothing.</strong> You don't have to automate an entire process. Automating just the data entry portion of a 10-step process still saves significant time. Partial automation is real automation.</p>
   <p class="section-text"><strong style="color: var(--red);">Myth: AI workflows are unpredictable.</strong> With proper guardrails — confidence thresholds, human review steps, and fallback paths — AI-powered workflows are as reliable as any traditional automation. The AI adds intelligence; the workflow structure adds predictability.</p>
   <p class="section-text"><strong style="color: var(--red);">Myth: Setup takes longer than it saves.</strong> A typical workflow takes 1-3 hours to build and test. If it saves you 15 minutes a day, it pays for itself within two weeks. Everything after that is pure return.</p>
+  <p class="section-text">Understanding these misconceptions upfront prevents the hesitation that stops most people from getting started. The barrier to entry for workflow automation has never been lower. The tools are more accessible, the AI is smarter, and the patterns are well-established. The only thing standing between you and your first workflow is the decision to begin.</p>
 </div>
 
 <div class="lesson-section">
@@ -118,6 +120,19 @@ free: true
   <p class="section-text">The best first workflow is embarrassingly simple. Don't start with a 10-step pipeline connecting five services. Start with one trigger and one action: "When I receive an email from my boss, send me a Slack notification." That's a workflow. It works. It saves you from checking email constantly. And it teaches you the fundamental pattern — trigger, action, done.</p>
   <p class="section-text">From there, add one step at a time. "When I receive an email from my boss, classify its urgency, and send me a Slack notification with a priority tag." Two steps. Then three. Each addition builds your confidence and your understanding of how pieces connect. Within a week, you'll be designing five-step workflows instinctively.</p>
   <p class="section-text">The enemy of progress is perfectionism. A running workflow that handles 80% of cases is infinitely more valuable than a perfect workflow that's still in the planning stage. Ship the simple version. Improve it based on what you learn.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Economics</span>
+  <h2 class="section-title">Calculating Your Automation ROI</h2>
+  <p class="section-text">Hard numbers make the case for workflows better than any argument. Here's how to calculate your personal automation ROI:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Time saved per year</strong> = (minutes per task) x (times per week) x 52 weeks / 60 = hours. Three 10-minute daily tasks = 130 hours/year.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Dollar value of time saved</strong> = hours saved x your hourly rate (or what you could bill). At $50/hour, 130 hours = $6,500 in recovered capacity.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Cost of automation</strong> = build time (one-time) + monthly tool costs. A typical workflow: 3 hours to build + $20/month in tools = $240 first year.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Net ROI</strong> = $6,500 - $240 = $6,260 in the first year. That's a 26x return. Even if you overestimate savings by half, it's still a 13x return. The math is overwhelming.</p>
+  <p class="section-text">The ROI calculation doesn't even account for the compounding effect. Those 130 hours you freed up can be spent building more workflows, each with their own returns. By year two, you're saving 400+ hours annually.</p>
+  <p class="section-text">By year three, you're operating at a level that would require hiring another person — except the workflows cost $20/month, not $5,000/month.</p>
+  <p class="section-text">That's the economic argument for automation in one sentence: workflows give you the output of a team at the cost of a subscription.</p>
 </div>
 
 <div class="lesson-section">

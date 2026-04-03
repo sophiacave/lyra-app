@@ -123,6 +123,74 @@ Project updates: [paste status from each project]</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">Trend Analysis Across Weeks</h2>
+  <p class="section-text">Individual status reports show a snapshot. But when you feed AI multiple weeks of reports, it reveals trends that are invisible in any single update:</p>
+  <div class="prompt-box"><code>Here are my weekly status reports for the last 6 weeks:
+
+[Paste all 6 reports]
+
+Please analyze:
+1. How has the overall project health trended — improving, stable, or declining?
+2. Which risks have been on the register for 3+ weeks without mitigation progress?
+3. Are we consistently completing what we commit to, or is there a pattern of carry-over?
+4. What was the biggest change week-over-week — when did the project's trajectory shift?
+5. Based on these trends, what is your prediction for the next 4 weeks?
+6. What should I escalate now based on the trajectory, even if it is not a crisis yet?</code></div>
+  <p class="section-text">This kind of trend analysis transforms status reporting from a compliance exercise into a strategic tool. You stop reporting what happened and start predicting what will happen — and that is the shift from reactive PM to proactive PM.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <h2 class="section-title">Status Report Anti-Patterns</h2>
+  <p class="section-text"><strong>The Novel:</strong> A status report that is 3 pages long. Nobody reads it. Executives skim the first paragraph. If your key message is buried on page two, it does not exist. Use AI to compress ruthlessly — if a report is longer than one page, ask AI to cut it in half while keeping all critical information.</p>
+  <p class="section-text"><strong>The Everything-Is-Fine Report:</strong> Every week is green. Every metric is on track. Then suddenly, the project is red and behind by a month. If your reports never show amber, you are not reporting honestly. Ask AI to challenge your status: "Based on this data, would an objective observer rate this green, amber, or red?"</p>
+  <p class="section-text"><strong>The Activity Report:</strong> Lists what the team did without connecting it to outcomes. "Completed 15 tickets" means nothing without context. AI helps you frame activity as progress: "Completed 15 of 22 sprint tickets (68%), moving Phase 2 from 40% to 65% complete."</p>
+  <p class="section-text"><strong>The Copy-Paste Report:</strong> Using the same template with slightly updated numbers each week without adapting the narrative. AI generates fresh narrative each time because it processes your new data with fresh eyes. Let it — stakeholders notice when reports feel stale.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The Status Report Information Hierarchy</h2>
+  <p class="section-text">Every status report should follow an information hierarchy — most important information first, details later. This ensures that even if someone reads only the first two lines, they get what they need:</p>
+  <p class="section-text"><strong>Level 1 — The Headline (1 line):</strong> Overall status in one sentence. "Project Phoenix is on track for March launch with one amber risk on vendor delivery." This is what 80% of your readers need.</p>
+  <p class="section-text"><strong>Level 2 — The Key Facts (3-5 lines):</strong> RAG status, milestone progress, critical blockers, decisions needed. This is what your engaged stakeholders read.</p>
+  <p class="section-text"><strong>Level 3 — The Detail (varies):</strong> Task-level progress, team updates, upcoming work, risk register changes. This is what your project team and your manager read.</p>
+  <p class="section-text"><strong>Level 4 — The Appendix (optional):</strong> Raw data, charts, detailed metrics. This is what people reference when they have specific questions, not what they read top-to-bottom.</p>
+  <p class="section-text">AI naturally structures information in this hierarchy when you tell it "most important first." But explicitly requesting this layered approach ensures that your reports respect your readers' time — the most valuable thing you can offer a busy stakeholder.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Workflow</span>
+  <h2 class="section-title">The Data Collection System</h2>
+  <p class="section-text">The hardest part of status reporting is not the writing — it is the data collection. Here is a system that makes gathering raw data nearly effortless:</p>
+  <p class="section-text"><strong>Throughout the week:</strong> Keep a running "status dump" document — a simple text file or note. Every time something happens (task completed, blocker hit, decision made, risk changed), add one bullet point. No formatting. No complete sentences needed. Just the facts.</p>
+  <p class="section-text"><strong>Ask your team leads for three bullets.</strong> Every Thursday, send a simple request: "Send me three bullets — done, doing, blocked." No template. No formatting requirements. Make it as easy as possible for them to respond. Compliance with this request goes from 50% to 95% when the bar is "three text messages worth of effort."</p>
+  <p class="section-text"><strong>Friday processing.</strong> Consolidate your running notes and the team inputs into one raw dump. Feed it to AI with your status report template. In 10-15 minutes, you have polished reports for every audience — generated from data you collected passively all week.</p>
+  <p class="section-text">This system works because it removes friction at every step. You do not ask people to write reports. You do not format anything during the week. You do not spend Friday afternoon crafting narratives. The effort is distributed across the week in tiny, painless increments — and AI handles the synthesis.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Technique</span>
+  <h2 class="section-title">Variance Analysis with AI</h2>
+  <p class="section-text">When projects deviate from the plan — and they always do — variance analysis explains why and what to do about it. AI turns raw variance data into actionable insight:</p>
+  <div class="prompt-box"><code>Here is my project's planned vs. actual status:
+
+Schedule: Planned completion [date] vs. current forecast [date]
+Budget: Planned spend to date [$X] vs. actual spend [$Y]
+Scope: Original scope [brief] vs. current scope [any changes]
+Quality: Planned defect rate [X] vs. actual [Y]
+
+Please:
+1. Calculate the variance in each dimension (schedule, budget, scope, quality)
+2. Identify the root cause for each significant variance
+3. Assess whether the variances are recoverable or require stakeholder intervention
+4. Recommend corrective actions for each variance
+5. Draft a variance analysis summary suitable for a steering committee</code></div>
+  <p class="section-text">Variance analysis shifts the conversation from "we are behind" to "here is why we are behind, here is what we are doing about it, and here is when we will be back on track." That level of analytical rigor earns stakeholder trust — even when the news is bad.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Status Reports & Updates — Key Concepts","cards":[{"front":"One Input, Multiple Outputs","back":"Create a single raw status dump with bullet-point facts each week. AI formats it for executives (3 lines + RAG), team (task detail), and clients (polished narrative)."},{"front":"RAG Status Assessment","back":"Red/Amber/Green health rating. AI assigns it objectively from data — when schedule has slipped twice and budget is 80% spent at 50% done, AI calls it Amber even when you might not."},{"front":"The Friday Reporting Rhythm","back":"30-minute block: dump raw status, run through AI, review all versions, send. Done by lunch. Stakeholders start Monday informed."},{"front":"Time Savings","back":"Average PM spends 4-6 hours per week on status reporting. AI compresses this to under 1 hour — same data, multiple audience-tailored formats."}]}'></div>
 </div>
 

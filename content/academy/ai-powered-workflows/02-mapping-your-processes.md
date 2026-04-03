@@ -67,6 +67,7 @@ free: true
   <h2 class="section-title">What People Get Wrong</h2>
   <p class="section-text">The biggest mistake is trying to automate your most complex process first. Start with the boring stuff — the processes so routine you could do them half asleep. Those are the ones where automation delivers immediate, obvious value and teaches you the fundamentals without high stakes.</p>
   <p class="section-text">The second trap: skipping the map entirely and jumping to tools. Tools change. Your understanding of your own processes is forever.</p>
+  <p class="section-text">A third common trap: over-engineering the map. You don't need a perfect flowchart with every edge case documented. You need a clear, honest list of steps that shows where the automation opportunities live. Perfection is the enemy of progress — especially in process mapping.</p>
 </div>
 
 <div class="lesson-section">
@@ -132,6 +133,15 @@ free: true
   <p class="section-text">Before automating a process, time it. Actually time it — with a stopwatch, not an estimate. People are notoriously bad at estimating how long tasks take. You think "oh, that report takes five minutes" but when you actually time it, it's 22 minutes including all the context-switching, tool-opening, and data-hunting.</p>
   <p class="section-text">Time tracking gives you two essential things: an accurate ROI calculation for your automation investment, and a baseline to measure improvement against. After building the workflow, time the new process. The difference is your concrete, measurable win — not a guess, but proof.</p>
   <p class="section-text">Track three runs of the manual process before automating. Average them. Write that number down. It's the "before" in your before-and-after story.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Hidden Processes</span>
+  <h2 class="section-title">Finding the Automations You Didn't Know You Needed</h2>
+  <p class="section-text">The most obvious automation candidates are the ones you already think of as "tasks." But some of the highest-value automations are hidden in activities you don't even recognize as processes — context switching between tools, searching for information you've looked up before, reformatting data between copy-pastes.</p>
+  <p class="section-text">Keep a "friction journal" for one week. Every time you feel annoyed, slowed down, or bored by something you're doing — write it down. At the end of the week, you'll have a list of automation candidates you never would have identified through a formal process audit.</p>
+  <p class="section-text">Common hidden processes that people overlook: searching for the same document templates every week, manually updating multiple systems with the same information, checking dashboards that could send you alerts instead, formatting data for different audiences, and tracking deadlines that could auto-remind. These invisible time sinks often add up to more than the obvious tasks.</p>
+  <p class="section-text">The friction journal technique works because it captures opportunities in the moment — when the pain is fresh and the process details are clear. Don't rely on memory alone. Write it down when it happens, and by Friday you'll have a prioritized automation backlog that practically writes itself.</p>
 </div>
 
 <div class="lesson-section">

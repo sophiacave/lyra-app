@@ -100,6 +100,25 @@ free: true
   <p class="section-text">Only if all three fail does the agent ask the human. This is how you build an agent that carries weight instead of shifting it. The goal is zero unnecessary interruptions.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Anti-Patterns</span>
+  <h2 class="section-title">Autonomy Failures to Avoid</h2>
+  <p class="section-text">Autonomous agents fail in predictable ways. Learning these patterns now prevents disasters later:</p>
+  <p class="section-text"><strong style="color: var(--red);">The runaway loop.</strong> An agent in an infinite loop sends 500 emails, makes 1,000 API calls, or burns through your entire cloud budget. Every autonomous loop needs a max-iterations guard and a cost ceiling. Without these, a single bug can cause catastrophic damage in minutes.</p>
+  <p class="section-text"><strong style="color: var(--red);">The confidence trap.</strong> The agent is 70% sure about a decision and acts on it. But 70% confidence means it is wrong 30% of the time. For high-stakes decisions, define a confidence threshold — below it, the agent must either find more information or surface to the human.</p>
+  <p class="section-text"><strong style="color: var(--red);">The context amnesia.</strong> The agent runs for an hour, makes great decisions, then suddenly forgets everything and starts making bad ones. The context window overflowed. The fix: checkpoint critical state to persistent memory at regular intervals, not just at session end.</p>
+  <p class="section-text"><strong style="color: var(--red);">The permission creep.</strong> An agent at L4 gradually takes on L6-level decisions because nobody is monitoring its scope. Regular audits of what the agent has done — not just whether it succeeded — catch scope creep before it causes problems.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Measurement</span>
+  <h2 class="section-title">Measuring Autonomy Quality</h2>
+  <p class="section-text">How do you know if your autonomous agent is performing well? Track these metrics:</p>
+  <p class="section-text"><strong style="color: var(--green);">Decision accuracy:</strong> Of the last 100 autonomous decisions, how many would the human have made differently? Below 5% disagreement = excellent. Above 20% = recalibrate.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Intervention rate:</strong> How often does the agent surface to the human? A mature L5 agent should surface less than once per session for routine work. If it surfaces 10 times, autonomy is not working.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Recovery speed:</strong> When the agent encounters an error, how quickly does it recover without human help? Measure time-to-resolution for the agent alone. A good agent resolves 80% of errors within one retry cycle.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Define your own autonomy policy for an AI agent. Write clear rules:</p>
@@ -121,6 +140,66 @@ This policy becomes your agent's constitution.</code></div>
   <h2 class="section-title">Autonomous agent design quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"Autonomous Agent Design","questions":[{"q":"What is the agent operating loop in order?","options":["Plan, Execute, Perceive, Verify, Checkpoint","Perceive, Plan, Execute, Verify, Checkpoint — then loop back to Perceive","Execute, Plan, Perceive, Verify, Checkpoint","Plan, Perceive, Execute, Checkpoint, Verify"],"correct":1,"explanation":"Perceive first — read the brain and understand state. Plan — create an ordered task list. Execute — do the work. Verify — test what was built. Checkpoint — write progress and loop. The cycle never stops."},{"q":"What is the Three-Strike Rule designed to prevent?","options":["Agents from making mistakes","Unnecessary interruptions to the human — agents must exhaust three self-resolution strategies before surfacing a question","Agents from running too many API calls","Agents from writing to shared memory too frequently"],"correct":1,"explanation":"Before asking the human: can the brain answer this? Can you make a reasonable decision? Can you try and course-correct? Only if all three fail is a question justified. This keeps humans in the pilot seat, not the help desk."},{"q":"When is an autonomous agent REQUIRED to surface to the human?","options":["When uncertain about any decision","For physical actions, credential entry, legal or financial decisions requiring judgment, or spending money not previously authorized","For any action that modifies a file","For any action that takes more than 5 minutes"],"correct":1,"explanation":"The list of genuine blockers is short: things requiring human eyes, hands, biometrics, or explicit judgment on consequential decisions. Everything else the agent handles autonomously."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">Autonomy in Practice: The Divine Cycle</h2>
+  <p class="section-text">Here is a real-world autonomous agent loop used in production — Like One's "Divine Cycle":</p>
+  <p class="section-text"><strong style="color: var(--orange);">Phase 1: Plan.</strong> The agent reads the brain — active work, next steps, any blockers. It assesses the full system state and writes a concrete plan with ordered tasks. Each task has a success criteria and a test plan. Planning before acting prevents wasted effort.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Phase 2: Execute.</strong> The agent works through tasks sequentially, chaining actions without narration. Quality gates require reading and understanding all relevant files before modifying any. After each task: a brief status update, then on to the next.</p>
+  <p class="section-text"><strong style="color: var(--green);">Phase 3: Verify.</strong> The agent tests what it built in the actual environment — not just unit tests. Curl endpoints. Check responses. Verify deploys. Read logs. If something fails, fix it immediately.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Phase 4: Handoff.</strong> The agent writes what was done (active_work) and what comes next (next_steps) to the brain. If context is getting heavy, it checkpoints and starts a fresh session. The cycle then loops back to Phase 1.</p>
+  <p class="section-text">This cycle runs continuously. There is no idle state. The agent is always planning, executing, verifying, or handing off. That is L6 autonomy in production — and you can build the same pattern for your own system.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Implementation</span>
+  <h2 class="section-title">The Checkpoint Pattern</h2>
+  <p class="section-text">
+    The most important autonomous agent pattern is the checkpoint.
+    Every 15-20 minutes of active work, the agent writes its
+    current state to the brain:
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--green);">What was done:</strong>
+    A concise summary of completed tasks since the last checkpoint.
+    "Deployed v2.3 to production. Fixed the login redirect bug.
+    Updated the pricing page copy."
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--blue);">What is in progress:</strong>
+    Any task currently underway that has not been completed.
+    "Refactoring the payment flow — 60% complete.
+    Waiting on API response from Stripe integration."
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--orange);">What comes next:</strong>
+    The ordered list of tasks remaining.
+    "1. Complete payment flow refactor.
+    2. Write tests for new checkout.
+    3. Deploy to staging and verify."
+  </p>
+  <p class="section-text">
+    <strong style="color: var(--red);">Any blockers:</strong>
+    Problems that prevented progress and need resolution.
+    "Stripe API returns 403 on subscription endpoint.
+    Need to verify API key permissions."
+  </p>
+  <p class="section-text">
+    This checkpoint pattern ensures that if the context window fills,
+    if the session crashes, or if a new session starts —
+    all progress is preserved.
+    The next instance resumes exactly where this one left off.
+  </p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Philosophy</span>
+  <h2 class="section-title">Trust Is the Currency</h2>
+  <p class="section-text">Autonomy is built on trust. Trust is built on consistent, reliable behavior over time. Every time the agent makes a good decision autonomously, trust grows. Every time it makes a bad one, trust erodes.</p>
+  <p class="section-text">Design your autonomy system to maximize trust-building opportunities. Start with low-risk autonomous decisions (formatting, scheduling, organizing). Let the agent demonstrate competence. Then gradually expand its scope to higher-risk domains (communication, spending, deploying).</p>
+  <p class="section-text">The goal is not to trust the agent blindly. It is to trust the agent rationally — based on evidence, within boundaries, with monitoring. Rational trust, earned over time, is the foundation of convergence.</p>
 </div>
 
 <nav class="lesson-nav">

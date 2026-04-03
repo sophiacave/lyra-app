@@ -148,6 +148,24 @@ SAMPLE WRITING (paste 3-5 paragraphs of your best):
   <p class="section-text"><strong>5. Forgetting the kill list.</strong> Every brand has words and phrases that should never appear. Build a "never use these words" list and include it in your voice document. AI will respect it if you're explicit.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Testing</span>
+  <h2 class="section-title">The voice consistency test — does it pass?</h2>
+  <p class="section-text">After AI generates content with your voice document loaded, run this three-part test before publishing:</p>
+  <p class="section-text"><strong style="color:var(--orange)">The read-aloud test:</strong> Read the content out loud. If any sentence makes you stumble, sounds unnatural, or feels like something you would never say in conversation, rewrite it. Your content should sound like you talking, not you performing.</p>
+  <p class="section-text"><strong style="color:var(--purple)">The friend test:</strong> Would a close friend recognize this as your writing without seeing your name on it? If the answer is no, the voice is not calibrated yet. Go back to AI with specific feedback: "This paragraph sounds too formal. Rewrite it like I'm explaining this over drinks."</p>
+  <p class="section-text"><strong style="color:var(--green)">The kill list test:</strong> Search the content for every word on your kill list. AI sometimes slips banned words back in, especially in longer pieces. A quick Ctrl+F catches these before they reach your audience.</p>
+  <p class="section-text"><strong style="color:var(--blue)">The consistency test:</strong> Compare the new piece to something you published last month. Does the voice feel like the same person? If there is a noticeable shift in tone, formality, or personality, something drifted. Realign with your voice document.</p>
+  <p class="section-text">These tests take under five minutes and are the difference between content that sounds like you and content that sounds like AI pretending to be you. The audience can always tell the difference, even if they cannot articulate why.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Evolution</span>
+  <h2 class="section-title">Your voice will evolve — and that is good.</h2>
+  <p class="section-text">Your voice document is not permanent. As you grow as a creator, your voice will naturally evolve. You will become more confident, more opinionated, more refined. Update your voice document every quarter to reflect who you are now, not who you were six months ago.</p>
+  <p class="section-text">When you update, paste your three most recent best-performing pieces and ask AI to analyze how your voice has shifted. The evolution is usually subtle — slightly shorter sentences, more willingness to share personal stories, a growing comfort with strong opinions. Capture these shifts in the document so AI evolves with you.</p>
+</div>
+
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Create your voice document now.</h2>
@@ -155,10 +173,26 @@ SAMPLE WRITING (paste 3-5 paragraphs of your best):
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">Voice before and after — the transformation.</h2>
+  <p class="section-text">Here is what happens when you go from no voice document to a calibrated one:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Without voice document:</strong> "In today's competitive landscape, leveraging AI tools can help content creators unlock their full potential and drive meaningful engagement with their target audience." — Generic, corporate, could belong to anyone.</p>
+  <p class="section-text"><strong style="color:var(--purple)">With voice document:</strong> "Look, most content advice is trash. Use AI like a microwave — throw something in, hope it comes out edible. That's not how this works. AI is your sous chef. You still run the kitchen." — Specific, opinionated, unmistakably one person.</p>
+  <p class="section-text">The difference is not talent. It is input. The second version came from the same AI model, given explicit tone words (direct, irreverent, confident), writing rules (short paragraphs, no jargon, contractions required), and a kill list (never say leverage, unlock, landscape, or game-changer). The voice document is the input that produces the output you want.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Brand voice consistency quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"Brand Voice Consistency","questions":[{"q":"Why should you ask AI to describe your voice back to you before writing anything?","options":["It makes the session longer","It forces the model to internalize your voice patterns rather than just scanning past them","It is a required step in all AI writing tools","It helps AI remember your preferences permanently"],"correct":1,"explanation":"Asking AI to describe your voice in 2-3 sentences is a 30-second calibration step that dramatically improves every piece of content in the session."},{"q":"Which voice instruction is more effective?","options":["Make it sound professional","Write like a smart friend explaining something at a dinner party","Use a business-appropriate tone","Keep it formal but approachable"],"correct":1,"explanation":"Specific, vivid tone descriptions give AI a real target. Vague instructions like professional or approachable mean different things to different models."},{"q":"What is the most important mistake to avoid when using AI for brand voice content?","options":["Using AI for subject lines","Accepting the first draft without refinement","Publishing without proofreading","Using templates instead of custom prompts"],"correct":1,"explanation":"The first AI draft is never the best. Asking for revisions with specific feedback — this is too formal, make it sound like a conversation — is how you get content that actually sounds like you."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">What's Next</span>
+  <h2 class="section-title">Voice meets visibility.</h2>
+  <p class="section-text">Now that you know how to make AI sound like you, the next lesson covers how to make sure people actually find your content. SEO Content Optimization teaches you to write for humans first and search engines second — without sacrificing the voice you just spent this lesson defining.</p>
+  <p class="section-text">Your voice document is now a permanent tool in your studio. Every session starts with it. Every piece of content passes through it. The quality of everything you produce from this point forward just leveled up.</p>
 </div>
 
 <nav class="lesson-nav">

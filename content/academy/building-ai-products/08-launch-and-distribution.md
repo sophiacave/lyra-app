@@ -114,6 +114,69 @@ free: false
   <p class="section-text"><strong>SEO for AI queries:</strong> People search for "AI [your category] tool" in growing numbers. Create landing pages optimized for these queries. "AI meeting notes tool" gets 12,000 searches/month and growing. A top-3 ranking for your category's search term is a permanent growth engine.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Measurement</span>
+  <h2 class="section-title">Launch Metrics That Matter</h2>
+  <p class="section-text">Track these metrics during your first 30 days to gauge launch health and inform your post-launch strategy.</p>
+  <p class="section-text"><strong>Traffic to signup conversion:</strong> What percentage of landing page visitors create an account? Industry average for AI tools is 3-8%. Below 3% means your messaging isn't compelling. Above 8% means your positioning is excellent.</p>
+  <p class="section-text"><strong>Signup to first-use conversion:</strong> What percentage of signups actually try the product? Target: above 60%. If people sign up but never use it, your onboarding has too much friction. Reduce steps between signup and first AI interaction to an absolute minimum.</p>
+  <p class="section-text"><strong>First-use to second-use conversion:</strong> The most critical metric. What percentage of users who try the product once come back for a second session? Target: above 40%. Below that, either the first experience disappointed them or the output wasn't valuable enough to build a habit.</p>
+  <p class="section-text"><strong>Channel attribution:</strong> Track where your users come from. Which community post drove the most signups? Which tweet converted best? Double down on what works and cut what doesn't. In the first 30 days, concentrate your distribution effort on the 2-3 channels that show the highest conversion.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mindset</span>
+  <h2 class="section-title">The Distribution Mindset for Solo Builders</h2>
+  <p class="section-text">If you're building and distributing alone, you can't do everything. The key is choosing the right 2-3 channels and being consistent, rather than spreading yourself thin across 10 channels and doing none of them well.</p>
+  <p class="section-text"><strong>Pick your primary channel:</strong> Choose the one platform where your target users are most concentrated and most active. For B2B AI products, that's usually LinkedIn or industry-specific communities. For developer tools, it's Twitter/X or Hacker News. For consumer products, it's TikTok or Instagram. Go deep on one channel before going wide.</p>
+  <p class="section-text"><strong>Create once, repurpose everywhere:</strong> Write one in-depth piece of content per week — a blog post, a thread, or a video. Then slice it into smaller pieces for other channels. The blog post becomes 5 tweets, a LinkedIn post, a Reddit comment, and a newsletter issue. One hour of creation, five hours of distribution value.</p>
+  <p class="section-text"><strong>Consistency beats virality:</strong> One post per week for a year (52 posts) builds a more reliable audience than one viral post followed by silence. The algorithm rewards consistency. Your audience rewards reliability. Show up every week with something useful, and distribution compounds.</p>
+  <p class="section-text"><strong>Batch your distribution work:</strong> Set aside one morning per week for all distribution activities. Write content, schedule posts, respond to comments, engage in communities. Don't let distribution creep into your building time every day — it fragments focus and produces worse results in both areas.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Reality</span>
+  <h2 class="section-title">Common Launch Mistakes</h2>
+  <p class="section-text"><strong>Launching too quietly:</strong> You build something incredible and tell 5 people about it. Then you wonder why nobody signs up. You need to push through the discomfort of self-promotion. Nobody will discover your product by accident.</p>
+  <p class="section-text"><strong>Launching too loudly:</strong> You spend $2,000 on ads before you have a single organic user. Paid acquisition before product-market fit is burning money. Get 100 organic users who love your product first. Then consider paid distribution to accelerate what's already working.</p>
+  <p class="section-text"><strong>Launching once:</strong> You post on Product Hunt, get 200 visitors, and declare the launch a failure. Launches aren't events — they're campaigns. Post on Product Hunt this week. Share a thread next week. Publish a case study the week after. Each piece compounds on the last.</p>
+  <p class="section-text"><strong>Ignoring early feedback:</strong> Your first 50 users are the most valuable focus group you'll ever have. They chose to try your product when it had no reviews, no track record, and no brand. Treat their feedback as gold. Reply to every message. Fix their top complaint within 48 hours. Turn early users into evangelists by making them feel heard.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Summary</span>
+  <h2 class="section-title">The Distribution Equation</h2>
+  <p class="section-text">Launch and distribution success boils down to a simple equation: the right message, to the right audience, at the right time, through the right channel. Miss any one of these and conversions suffer.</p>
+  <p class="section-text"><strong>Right message:</strong> Show the output, not the technology. Lead with the transformation. "This meeting summary was generated in 8 seconds" hits harder than "our AI-powered meeting assistant uses advanced NLP."</p>
+  <p class="section-text"><strong>Right audience:</strong> Ten people who desperately need your product are worth more than 10,000 who might be curious. Focus your distribution on the communities where your ideal user already hangs out and is actively looking for solutions.</p>
+  <p class="section-text"><strong>Right time:</strong> Post when your audience is online. Engage when conversations about your problem space are active. Launch when you have enough product quality to create a strong first impression — not before.</p>
+  <p class="section-text"><strong>Right channel:</strong> Each channel has different norms, different audiences, and different content formats that perform best. Master one channel before expanding to others. Depth beats breadth in early-stage distribution.</p>
+  <p class="section-text">Distribution is not a one-time event. It's a muscle you build over months. The launch gets your first 100 users. Your sustained distribution effort gets the next 10,000. Plan accordingly.</p>
+  <p class="section-text">The skills you build in this lesson — creating compelling demonstrations, choosing the right channels, engaging communities authentically, and measuring what works — compound over the lifetime of your product. A founder who masters distribution is worth ten who only know how to code.</p>
+  <p class="section-text">With your product launched and users flowing in, the real work begins. Lesson 9 covers how to measure what matters, iterate on quality, and use data to continuously improve your AI product's output and user experience.</p>
+  <p class="section-text">Remember: the launch is the starting gun, not the finish line. The real growth happens in the weeks and months after launch, through consistent demonstration of value, genuine community engagement, and relentless iteration on the product itself.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tactic</span>
+  <h2 class="section-title">Email Marketing for AI Products</h2>
+  <p class="section-text">Email remains the highest-converting channel for SaaS products, including AI. Build your email list from day one — even before you have a product to sell.</p>
+  <p class="section-text"><strong>The waitlist email sequence:</strong> When someone joins your waitlist, don't just confirm and go silent. Send a 3-email sequence over the next week. Email 1: Confirm signup and share your vision (day 0). Email 2: Share a behind-the-scenes look at how the AI works (day 3). Email 3: Ask them about their specific use case — this is market research disguised as engagement (day 7).</p>
+  <p class="section-text"><strong>Onboarding emails:</strong> After signup, send a 5-email sequence that drives users toward their aha moment. Email 1: Welcome + quickstart (immediate). Email 2: Tips for best results (day 1). Email 3: Advanced use case inspiration (day 3). Email 4: Invite to share feedback (day 7). Email 5: Upgrade prompt for free-tier users (day 14).</p>
+  <p class="section-text"><strong>Win-back emails:</strong> When a user hasn't logged in for 14 days, send a re-engagement email showing what they're missing. "We've improved our output quality by 30% since your last visit" or "3 new features launched this month." Include a direct link to the product — eliminate every click between the email and the experience.</p>
+  <p class="section-text"><strong>Feature announcement emails:</strong> Every significant improvement is a re-engagement opportunity. Don't just list features — show before/after outputs. "Our summarization just got 2x more accurate. Here's the same document processed with the old and new versions." Demonstration beats announcement every time.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">Strategic Partnerships for Distribution</h2>
+  <p class="section-text">Partnerships can accelerate distribution faster than any organic channel. The key is finding partners whose audience overlaps with yours but who aren't competitors.</p>
+  <p class="section-text"><strong>Tool integration partnerships:</strong> If your AI product complements an existing tool (a summarizer that integrates with a note-taking app, an analyzer that connects to a CRM), propose a partnership. The existing tool gets a feature they didn't build. You get access to their user base. Both win.</p>
+  <p class="section-text"><strong>Content creator partnerships:</strong> Find YouTubers, bloggers, or newsletter authors who cover your niche. Offer them free access in exchange for an honest review. One genuine review from a trusted voice in your niche converts better than $1,000 in ads.</p>
+  <p class="section-text"><strong>Agency partnerships:</strong> Marketing agencies, consulting firms, and freelancers who serve your target market can become your best distribution channel. If they recommend your tool to every client, one agency partnership equals 50 individual sales. Offer them a referral commission or a white-label option.</p>
+  <p class="section-text"><strong>Marketplace listings:</strong> List your product on every relevant marketplace and directory. AI tool directories (There's an AI for That, Futurepedia), platform marketplaces (Zapier, Slack App Directory), and industry-specific directories. Each listing is a permanent, free distribution channel.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Plan your three-wave launch:</p>

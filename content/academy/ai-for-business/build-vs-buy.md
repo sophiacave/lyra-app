@@ -31,13 +31,15 @@ free: false
   <h2 class="section-title">The four options.</h2>
   <p class="section-text">Every AI decision your business faces comes down to four choices. Each one has a different cost profile, timeline, risk level, and set of circumstances where it makes sense. Most businesses default to Buy because it is the easiest — but that is not always right.</p>
 
+  <p class="section-text">Flip each card to understand the cost, timeline, risk, and ideal use case for each option. Pay special attention to the "Best when" criteria — these are the conditions that must be true for each option to make sense. If the conditions do not match your situation, that option is wrong regardless of how appealing it sounds.</p>
+
   <div data-learn="FlashDeck" data-props='{"title":"The Four AI Strategy Options","cards":[{"front":"BUY a SaaS Tool","back":"Best when: the problem is common, budget is under $5K/year, you need results fast, and no sensitive data is involved. Examples: Jasper for writing, Zapier for automation, Otter.ai for transcription. Cost: $20-$500/month. Timeline: days. Risk: low."},{"front":"BUILD Custom AI","back":"Best when: your problem is genuinely unique, you have developers on staff, budget exceeds $10K, and data sensitivity requires keeping everything in-house. Examples: custom ML model, proprietary recommendation engine. Cost: $10K-$200K+. Timeline: 1-6 months. Risk: high."},{"front":"HIRE a Consultant","back":"Best when: your needs are specific enough that off-the-shelf tools do not fit, but not so unique that a custom build is warranted. Also when you have budget ($2K-$15K) but no technical staff. Examples: custom GPT setup, AI strategy session, workflow automation. Timeline: 2-6 weeks."},{"front":"WAIT (Do Nothing Yet)","back":"Best when: budget is under $500, the problem is not urgent, or the AI tools in your category are evolving so fast that buying now means replacing in 6 months. AI tool prices drop every quarter. Sometimes the best move is to revisit in 90 days."}]}'></div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Section 2</span>
   <h2 class="section-title">The five decision factors.</h2>
-  <p class="section-text">The right choice between Build, Buy, Hire, and Wait depends on five factors. None of them alone gives you the answer — it is the combination that matters. Here is each one and what it tells you:</p>
+  <p class="section-text">The right choice between Build, Buy, Hire, and Wait depends on five factors. None of them alone gives you the answer — it is the combination that matters. Understanding these factors transforms you from someone who guesses at strategy to someone who scores the decision and lets data lead. Here is each one and what it tells you:</p>
 
   <p class="section-text"><strong>1. Problem Uniqueness.</strong> Is the problem your business faces something every business deals with — or is it genuinely specific to your company, your industry, or your proprietary process? The more unique the problem, the less likely an off-the-shelf SaaS tool solves it well. Common problems have common tools. Unique problems may require custom work.</p>
 
@@ -148,6 +150,22 @@ Explain your reasoning for each factor and give me a confidence level (high/medi
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">Five build-vs-buy traps that waste money.</h2>
+  <p class="section-text">The decision framework works. But even with a framework, businesses fall into predictable traps. Knowing these in advance saves you from learning them the expensive way.</p>
+
+  <p class="section-text"><strong>Trap 1: Building because "we need it custom."</strong> Most businesses overestimate how unique their problem is. Before you commit to a custom build, search for SaaS tools in your exact industry vertical. Nine times out of ten, someone has already built what you need and is selling it for $50/month. The uniqueness test: if you cannot explain in one sentence what makes your problem different from every other company in your industry, it is not unique enough to justify building.</p>
+
+  <p class="section-text"><strong>Trap 2: Buying the most expensive tool "because it is enterprise grade."</strong> Enterprise features — SSO, audit logs, dedicated support — matter when you have 50+ users and compliance requirements. For a 5-person team, you are paying for features you will never use. Start with the tool that solves your problem at the lowest price. Upgrade when you hit real limits, not imagined ones.</p>
+
+  <p class="section-text"><strong>Trap 3: Hiring a consultant without a clear scope.</strong> "Help us figure out AI" is not a scope. A good consultant engagement has a defined deliverable, timeline, and success metric before you sign the contract. Without these, you pay for exploration instead of results. Good scope: "Set up an AI-powered FAQ chatbot that handles our top 20 questions within 3 weeks." Bad scope: "Advise us on AI strategy."</p>
+
+  <p class="section-text"><strong>Trap 4: Waiting because "AI is changing too fast."</strong> AI will always be changing. Waiting for the "right moment" means waiting forever. The cost of waiting is not zero — it is the value you are not capturing while your competitors are. If the ROI math works today, start today. You can always switch tools later.</p>
+
+  <p class="section-text"><strong>Trap 5: Buying multiple tools in the same category.</strong> Jasper AND Claude AND ChatGPT all do writing. Having all three means nobody masters any of them, and you pay three subscriptions for one capability. Pick one per category. Master it. Switch if it genuinely does not work — but give it 30 days first.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 3</span>
   <h2 class="section-title">Match scenario to strategy.</h2>
 </div>
@@ -164,6 +182,20 @@ Explain your reasoning for each factor and give me a confidence level (high/medi
   <span class="section-label">Section 5</span>
   <h2 class="section-title">Decision priority.</h2>
   <p class="section-text">When you sit down to make a build-vs-buy call, you should weigh the five factors in a specific order. Some factors eliminate options outright; others just nudge the decision. Put them in order from most to least decisive.</p>
+
+  <p class="section-text"><strong>Data Sensitivity eliminates first.</strong> If your data is regulated (HIPAA, GDPR, SOC 2 requirements), several options disappear immediately. You cannot use a free-tier SaaS tool for patient health records or financial PII. This factor is binary — either the option meets your data requirements or it does not. No amount of good scores on other factors overcomes a data sensitivity disqualification.</p>
+
+  <p class="section-text"><strong>Budget eliminates second.</strong> You cannot build a $50,000 custom solution on a $500 budget. Budget removes Build from the table for most small businesses and removes Hire for the smallest ones. Be honest about what you can spend — including hidden costs — before evaluating the remaining options.</p>
+
+  <p class="section-text"><strong>Technical Capability is the tiebreaker.</strong> When two options both pass the data and budget tests, your team's ability to maintain the solution long-term determines the winner. A bought SaaS tool that the vendor maintains beats a custom build that nobody on your team can update when something breaks.</p>
+
+  <p class="section-text"><strong>Speed and Uniqueness are nudge factors.</strong> They push you toward one option over another but rarely eliminate an option entirely. Need results fast? Nudge toward Buy. Problem is genuinely unique? Nudge toward Build or Hire. These factors matter, but they matter less than the three eliminators above.</p>
+
+  <p class="section-text">Here is the decision as a single sentence: <strong>If your data is safe and your budget fits, Buy.</strong> Only move to Hire or Build when you have a genuine reason — not a feeling, but a reason supported by the five-factor scoring matrix — that buying does not solve your specific problem. The default is Buy. Everything else is the exception.</p>
+
+  <p class="section-text">Write your five-factor scores down before you make a call. Decisions made in meetings with a vendor in the room are influenced by the vendor. Decisions made alone with your scores on paper are influenced by data. One of these leads to better outcomes. It is not the vendor meeting.</p>
+
+  <p class="section-text">The build-vs-buy decision is one you will make repeatedly as your AI adoption grows. The first time takes the longest because you are learning the framework. By the third time, you will score the five factors in 5 minutes, check the matrix, and have your answer. This efficiency is the point — a framework that you can apply quickly and consistently produces better decisions than ad hoc analysis every time a new tool or vendor appears.</p>
 </div>
 
 </div>

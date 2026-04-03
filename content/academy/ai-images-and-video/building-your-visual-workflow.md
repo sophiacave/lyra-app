@@ -154,6 +154,47 @@ negative space on the right for text overlay,
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Avoiding Burnout</span>
+  <h2 class="section-title">Sustainable creativity means managing your relationship with the tools.</h2>
+  <p class="section-text">AI image generation is addictive. The instant gratification of seeing your ideas become reality can lead to spending hours generating instead of using. Here are guardrails:</p>
+  <p class="section-text"><strong>Set generation limits:</strong> Decide before each session how many images you need and roughly how many generations to spend. "I need 5 social posts. I will generate a maximum of 25 images to find my winners." This prevents the endless "just one more" spiral.</p>
+  <p class="section-text"><strong>Ship, do not hoard:</strong> The point of creating visuals is to use them. If you have a library of beautiful images that never see the light of day, shift your focus from generation to publication. The best image is the one people actually see.</p>
+  <p class="section-text"><strong>Separate creation from curation:</strong> Generate in one session. Curate (select the winners, delete the rest, organize files) in a separate session. Trying to do both simultaneously leads to neither being done well.</p>
+  <p class="section-text"><strong>Take breaks:</strong> If you have been generating for more than an hour straight, step away. Your creative judgment degrades with fatigue. A fresh set of eyes after a break will immediately see which images are truly good and which ones you were settling for.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Your Creative Future</span>
+  <h2 class="section-title">This is just the beginning of what you can create.</h2>
+  <p class="section-text">You have completed this course with a genuine skillset. You understand the tools, the techniques, the ethics, and the workflow. But the AI visual landscape is evolving fast, and your skills will evolve with it. Here is what to look forward to:</p>
+  <p class="section-text"><strong>Emerging capabilities:</strong> AI image generation is merging with 3D modeling, video production, and interactive media. The skills you have learned here transfer directly to these new capabilities as they become accessible.</p>
+  <p class="section-text"><strong>Personal growth:</strong> The more you create, the more refined your taste and technique become. The images you create six months from now will be dramatically better than what you create today — not because the tools improved (though they will), but because your prompt craft and creative eye have deepened.</p>
+  <p class="section-text"><strong>Community and collaboration:</strong> The AI visual community is young, vibrant, and welcoming. Sharing your work, learning from others, and collaborating on projects will accelerate your growth faster than solo practice ever could.</p>
+  <p class="section-text"><strong>Professional opportunities:</strong> AI visual skills are increasingly valuable in the job market. Content creation, marketing, product design, education, entertainment — every industry needs people who can translate ideas into visuals quickly and effectively.</p>
+  <p class="section-text">You started this course wondering what AI image generation was. You are finishing it as a creator. Go make something that did not exist before you imagined it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Your Workflow Checklist</span>
+  <h2 class="section-title">Use this checklist to confirm your workflow is complete.</h2>
+  <p class="section-text">Before you consider your visual workflow "set up," make sure each of these elements is in place:</p>
+</div>
+
+<div class="demo-container" style="border-left: 3px solid var(--green); padding: 1.2rem; margin: 2rem 0; background: var(--bg);">
+  <h3 style="color: var(--green);">Workflow setup checklist</h3>
+  <ul>
+    <li><strong>Primary tool chosen:</strong> You have a go-to AI image generator you are comfortable with</li>
+    <li><strong>Secondary tool ready:</strong> You have a design/editing tool (Canva, Photopea, or similar) for post-processing</li>
+    <li><strong>Prompt library started:</strong> You have a document with at least 3-5 tested prompts saved</li>
+    <li><strong>Brand prompt defined:</strong> You have at least one base style description that captures your visual identity</li>
+    <li><strong>File system organized:</strong> You have an AI Visuals folder with project subfolders and drafts/finals separation</li>
+    <li><strong>Aspect ratios noted:</strong> You know the dimensions you need for your primary platforms</li>
+    <li><strong>Weekly practice scheduled:</strong> You have blocked 15 minutes per week for creative experimentation</li>
+    <li><strong>Learning sources identified:</strong> You follow at least one community, channel, or newsletter for staying current</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Terms</span>
   <h2 class="section-title">Visual Workflow Vocabulary</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Building Your Visual Workflow","cards":[{"front":"Prompt library","back":"A saved document of tested prompts organized by category — brand prompts, proven winners, style keywords, and templates — your most valuable creative asset"},{"front":"Multi-tool pipeline","back":"A workflow combining several AI tools, each doing what it does best — concept in ChatGPT, generate in Midjourney, refine in Photoshop, design in Canva"},{"front":"Brand prompt base","back":"Two to three saved style variations for different moods — bright and energetic, calm and sophisticated, bold and dramatic — that keep all visuals on-brand"},{"front":"Weekly creative practice","back":"Fifteen minutes of experimental play with AI tools each week — no pressure, just curiosity — where your biggest creative breakthroughs happen"},{"front":"Curated library","back":"An organized file system with project folders, drafts and finals separated, ruthlessly pruned — fewer better files are infinitely more useful than a digital junk drawer"}]}'></div>

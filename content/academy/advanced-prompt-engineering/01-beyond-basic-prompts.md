@@ -127,6 +127,8 @@ free: true
   <p class="section-text"><strong style="color: var(--red);">Skipping constraints:</strong> Most people tell AI what to do but never what to avoid. Constraints eliminate the most common failure modes. "Don't use cliches." "Don't exceed 200 words." "Don't include a greeting."</p>
   <p class="section-text"><strong style="color: var(--red);">Being polite instead of precise:</strong> "Could you maybe write something about marketing?" is not a prompt — it's a suggestion. Be direct. The AI doesn't have feelings to hurt.</p>
   <p class="section-text"><strong style="color: var(--red);">One-and-done thinking:</strong> Your first prompt is a draft. Great prompt engineers iterate. Run it, see what's off, adjust one lever, run again. Three rounds of refinement beats one hour of upfront planning.</p>
+  <p class="section-text"><strong style="color: var(--red);">Treating all tasks the same:</strong> A creative writing task needs a different prompting approach than a data extraction task. Throughout this course, you'll learn when to use system prompts, chain-of-thought, few-shot examples, and structured output — each technique has its sweet spot.</p>
+  <p class="section-text"><strong style="color: var(--red);">Ignoring what worked:</strong> When a prompt produces great output, save it. Analyze why it worked. Build a library of your best prompts (we'll cover this in Lesson 10). The most productive AI users have templates they refine over time, not one-off prompts they write from scratch each session.</p>
 </div>
 
 <div class="lesson-section">
@@ -134,6 +136,7 @@ free: true
   <h2 class="section-title">Why This Skill Pays for Itself</h2>
   <p class="section-text">Consider a professional who uses AI 10 times a day. If each poorly-crafted prompt wastes 5 minutes of back-and-forth and revision, that's 50 minutes lost daily. Over a year, that's over 200 hours — more than five full work weeks.</p>
   <p class="section-text">A well-engineered prompt works on the first or second try. It saves those 5 minutes per interaction. Multiply that across your career and you're looking at one of the highest-leverage skills you can develop.</p>
+  <p class="section-text">Beyond time savings, there's a quality dimension. A mediocre prompt produces mediocre output that you then manually fix. An engineered prompt produces output that's genuinely better than what most people write from scratch — because the AI has access to patterns from billions of documents and you've directed it precisely. The combination of human judgment and AI breadth is more powerful than either alone.</p>
   <p class="section-text">This isn't about being clever with AI. It's about being effective. The gap between someone who "uses AI" and someone who engineers prompts is the same gap between someone who types search queries and someone who builds databases. Same tool, completely different outcomes.</p>
 </div>
 
@@ -163,6 +166,17 @@ free: true
   <p class="section-text">The people who become great at prompt engineering are rarely the most technical. They're the clearest communicators. They can articulate exactly what they want, anticipate misunderstandings, and specify boundaries. If you've ever written a clear bug report, a good creative brief, or a detailed project specification — you already have the foundation.</p>
   <p class="section-text">The five levers are your communication toolkit. Role eliminates identity ambiguity. Context eliminates knowledge gaps. Task eliminates goal ambiguity. Format eliminates output ambiguity. Constraints eliminate behavioral ambiguity. Together, they close every gap between what you imagine and what the AI produces.</p>
   <p class="section-text">That's the skill we're building. Not memorizing tricks — developing a way of thinking about AI communication that works across any model, any task, any domain. Let's start.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Reference</span>
+  <h2 class="section-title">The Five Levers Cheat Sheet</h2>
+  <p class="section-text">Save this for quick reference. Before sending any prompt, scan this list and ask: did I address each lever?</p>
+  <p class="section-text"><strong style="color: var(--orange);">Role:</strong> "You are a..." — Who should the AI be? What expertise should it activate?</p>
+  <p class="section-text"><strong style="color: var(--purple);">Context:</strong> "My situation is..." — What background does the AI need? Audience, project, constraints?</p>
+  <p class="section-text"><strong style="color: var(--green);">Task:</strong> "I need you to..." — What specific deliverable should it produce?</p>
+  <p class="section-text"><strong style="color: var(--blue);">Format:</strong> "Structure it as..." — How should the output look? Length, layout, style?</p>
+  <p class="section-text"><strong style="color: var(--red);">Constraints:</strong> "Do not..." — What should it avoid? What boundaries must it respect?</p>
 </div>
 
 <div class="lesson-section">

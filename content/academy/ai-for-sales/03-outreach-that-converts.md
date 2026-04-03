@@ -125,6 +125,54 @@ free: true
   <p class="section-text">AI can generate an entire five-touch sequence from a single research brief. Draft all five touches at once, review them as a story arc, then schedule them. What used to take an afternoon now takes 15 minutes.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Testing</span>
+  <h2 class="section-title">A/B Testing Your Outreach with AI</h2>
+  <p class="section-text">AI does not just write outreach — it helps you improve it systematically.
+  Use AI to generate multiple versions of the same email, then test which performs better:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Subject Line Testing:</strong>
+    Generate 5 subject lines for the same email. Send each to a segment of your list.
+    Track open rates. The winner becomes your template for similar prospects.
+    AI can analyze the results and explain why one subject line outperformed the others.</p>
+    <p><strong style="color: var(--blue);">Hook Testing:</strong>
+    Write the same email with three different opening lines — one with a question,
+    one with a data point, one with a personal reference. Track reply rates.
+    AI can predict which hook will work best for specific buyer personas.</p>
+    <p><strong style="color: var(--purple);">CTA Testing:</strong>
+    Test different calls to action — "15-minute chat?", "Quick question for you",
+    "Worth a look?" Response rates vary dramatically based on the CTA.
+    Low-pressure asks consistently outperform hard sells in cold outreach.</p>
+  </div>
+  <p class="section-text">After 4-6 weeks of testing, you will have data-backed outreach
+  templates optimized for your specific market. AI accelerates what used to take
+  marketing teams months of testing into weeks of focused experimentation.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">Outreach Mistakes AI Helps You Avoid</h2>
+  <p class="section-text">Even with AI, outreach can fail if you fall into
+  common traps. Here are the mistakes and how AI prevents them:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Mistake 1 — The Feature Dump:</strong>
+    Listing every feature in your first email. AI keeps emails under 120 words
+    and focused on one relevant pain point. Features come after the reply,
+    not before it.</p>
+    <p><strong style="color: var(--orange);">Mistake 2 — The Fake Personal:</strong>
+    "I noticed your company is doing great things." This is worse than no
+    personalization because it signals laziness. AI generates genuinely
+    specific references that prove you did real research.</p>
+    <p><strong style="color: var(--blue);">Mistake 3 — The Hard CTA:</strong>
+    Asking for a 30-minute demo in a cold email. Micro-CTAs (a quick question,
+    a 10-minute chat) convert 3-5x better. AI defaults to low-pressure asks.</p>
+    <p><strong style="color: var(--purple);">Mistake 4 — The Follow-Up Spam:</strong>
+    Sending the same message five times. Each follow-up should add new value
+    — a new angle, a new insight, a new proof point. AI generates varied
+    follow-ups automatically.</p>
+  </div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Terms</span>

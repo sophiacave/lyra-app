@@ -134,6 +134,66 @@ Project details: [describe what is launching and when]</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">Risk Interdependency Mapping</h2>
+  <p class="section-text">Risks rarely exist in isolation. One risk triggering creates a cascade — a vendor delay causes a schedule slip which causes a budget overrun which causes a stakeholder escalation. AI can map these chains:</p>
+  <div class="prompt-box"><code>Here is my risk register:
+
+[Paste risk register]
+
+For each risk, identify:
+1. Which other risks does this one amplify if it triggers? (e.g., "vendor delay" increases probability of "schedule slip")
+2. Are there risk clusters — groups of risks that share a common root cause?
+3. Which single risk, if mitigated, would reduce the most other risks as a side effect?
+4. Map the worst-case cascade: if Risk #1 triggers, what chain of events follows?
+5. Identify any "hidden risks" that are not listed but are implied by the connections between existing risks</code></div>
+  <p class="section-text">Understanding risk interdependencies tells you where to focus mitigation effort for maximum impact. If mitigating one risk reduces the probability of four others, that is your highest-leverage investment — even if that individual risk does not have the highest standalone score.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Common Pitfalls</span>
+  <h2 class="section-title">Risk Assessment Mistakes to Avoid</h2>
+  <p class="section-text"><strong>The Set-and-Forget Register:</strong> Creating a risk register at kickoff and never updating it. A risk register that is three months old is actively misleading — it gives false confidence that risks are being managed. Use AI's weekly risk review prompt to keep it alive in under 5 minutes per week.</p>
+  <p class="section-text"><strong>The Vague Mitigation:</strong> "Mitigate by monitoring closely" is not a mitigation plan. It is wishful thinking with professional language. AI helps you write specific, actionable mitigations: who does what, by when, using what resources. If your mitigation does not have a verb and an owner, it is not a mitigation.</p>
+  <p class="section-text"><strong>The Missing Positive Risks:</strong> Not all risks are negative. "The client might approve additional budget" or "the new hire might ramp up faster than expected" are positive risks (opportunities). AI can identify positive risks alongside threats, giving you a more complete picture that includes upside scenarios.</p>
+  <p class="section-text"><strong>The Blame-Based Risk Culture:</strong> If your team is afraid to raise risks because they will be blamed for creating problems, no AI tool will help. Risk identification requires psychological safety. Frame risks as "here is something we should watch" not "here is something someone messed up." AI's neutral, data-driven language can help set this tone.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Technique</span>
+  <h2 class="section-title">The Risk Communication Template</h2>
+  <p class="section-text">Identifying risks is only half the battle. Communicating them effectively to stakeholders requires framing that is honest without being alarming. AI helps you strike this balance:</p>
+  <div class="prompt-box"><code>I need to communicate this risk to [stakeholder role]:
+
+Risk: [description]
+Probability: [low/medium/high]
+Impact: [what happens if it triggers]
+Our mitigation plan: [what we are doing about it]
+Decision needed: [if any]
+
+Draft the communication in a tone that is: transparent about the risk, confident about our preparation, and specific about what we need (if anything). Do not minimize the risk or create false reassurance — but also do not create unnecessary panic.</code></div>
+  <p class="section-text">The best risk communications follow a pattern: acknowledge the risk clearly, demonstrate that you have thought about it proactively, present the mitigation plan with specifics, and (if needed) make a clear ask. AI produces this structure consistently — and consistently is the key word. Steady, professional risk communication builds the trust that gets you support when you actually need it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Technique</span>
+  <h2 class="section-title">Turning Issues Back Into Managed Risks</h2>
+  <p class="section-text">When a risk triggers and becomes an issue, the response often becomes reactive and chaotic. AI helps you regain control by structuring the issue response:</p>
+  <div class="prompt-box"><code>A risk has triggered and is now an active issue:
+
+Issue: [what happened]
+Impact: [what is affected — timeline, budget, scope, quality]
+Current status: [what has been done so far to respond]
+
+Please create an issue management plan:
+1. Immediate actions (next 24-48 hours)
+2. Short-term recovery plan (next 1-2 weeks)
+3. Stakeholder communication needed (who, what, when)
+4. Lessons for the risk register (what new risks does this create?)
+5. Post-incident review questions (what will we analyze once the issue is resolved?)</code></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Pro Tip</span>
   <h2 class="section-title">Pre-Mortem Power</h2>
   <p class="section-text">Try a "pre-mortem" with AI: "Imagine this project failed spectacularly. What went wrong?" This reframes risk identification from defensive to creative. AI generates surprisingly insightful failure scenarios that make your real risk register much stronger.</p>

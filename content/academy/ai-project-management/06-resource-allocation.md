@@ -136,6 +136,53 @@ For each scenario, show: impact on each project's timeline, who becomes overload
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">Capacity Forecasting Across Quarters</h2>
+  <p class="section-text">Most resource planning is reactive — you scramble to staff projects as they appear. AI enables proactive capacity forecasting by modeling your team's availability across future quarters:</p>
+  <div class="prompt-box"><code>Here is my team's current and planned allocation for the next 3 months:
+
+[For each person: name, role, current project(s), end date of current work, known upcoming commitments, planned time off]
+
+Known incoming projects:
+[List projects expected to start, with approximate start dates and skill requirements]
+
+Please:
+1. Create a month-by-month capacity forecast showing who is available when
+2. Identify months where demand exceeds capacity — where will we be short?
+3. Flag skill gaps — projects needing skills nobody on the team has
+4. Recommend: should we hire, contract, or adjust project timelines?
+5. Identify the optimal sequence for starting new projects to minimize resource conflicts</code></div>
+  <p class="section-text">This forward-looking view transforms resource conversations with leadership. Instead of "we cannot staff this project" you say "we can start this project in March when the backend team finishes Project X — or we hire a contractor to start in January." Options, not objections.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <h2 class="section-title">Resource Allocation Mistakes</h2>
+  <p class="section-text"><strong>The 100% Trap:</strong> Allocating someone at 100% to a project assumes zero interruptions — no production issues, no meetings outside the project, no helping colleagues. In practice, 80% allocation means "this is your primary focus." AI can help you model realistic allocations by building in overhead buffers based on historical data.</p>
+  <p class="section-text"><strong>The Skills Spreadsheet Fallacy:</strong> Treating people as interchangeable based on job titles. "We need a developer, and Casey is a developer, so Casey can do it." AI helps you go deeper — matching specific skills, experience levels, and growth goals to specific tasks rather than slotting warm bodies into boxes.</p>
+  <p class="section-text"><strong>Ignoring the Human Factor:</strong> The best resource plan on paper fails if the people involved are burned out, disengaged, or in conflict. AI models capacity; you manage energy. The combination produces sustainable plans that actually hold up over months, not just sprints.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The RACI Matrix with AI</h2>
+  <p class="section-text">RACI (Responsible, Accountable, Consulted, Informed) is a classic PM tool for clarifying roles. AI generates RACI matrices from your project plan instantly:</p>
+  <div class="prompt-box"><code>Here is my project plan with tasks, and here is my team:
+
+Tasks: [list major tasks/deliverables]
+Team: [list each person with their role]
+
+Generate a RACI matrix. For each task, assign:
+- R (Responsible): Who does the work
+- A (Accountable): Who makes the final decision and is answerable
+- C (Consulted): Who provides input before the work is done
+- I (Informed): Who needs to know after the work is done
+
+Flag any tasks where: nobody is Accountable, multiple people are Accountable (there should be exactly one), or someone is Responsible for too many tasks.</code></div>
+  <p class="section-text">The RACI matrix eliminates the ambiguity that causes dropped balls and duplicated effort. AI drafts it in seconds; your team reviews it in one meeting. That 15-minute investment prevents weeks of "I thought you were handling that."</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Resource Allocation — Key Concepts","cards":[{"front":"Skill Mapping","back":"Describe your team\\\'s roles, skills, availability, and commitments to AI, then describe the work. AI suggests assignments based on fit, capacity, and growth opportunities."},{"front":"Capacity Planning","back":"AI models current and future team availability — flags overloaded members, identifies slack, and spots bottleneck risks before they become crises."},{"front":"Scenario Modeling","back":"AI models different allocation splits (e.g., 60/40 vs. 100% on one project) and shows tradeoffs — which project slips, by how much, and the critical path impact."},{"front":"Actuals vs. Plan Tracking","back":"Update AI weekly with actual time spent vs. planned. Over time, AI surfaces patterns like production support consistently eating 20% more than allocated."},{"front":"Growth Assignments","back":"AI might suggest pairing a junior developer with complex work as a growth opportunity — something you might miss when focused on speed over development."}]}'></div>
 </div>
 

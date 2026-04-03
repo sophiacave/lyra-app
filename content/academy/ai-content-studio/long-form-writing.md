@@ -116,6 +116,16 @@ so I can see the arc before I write the middle.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">The layered method in real time.</h2>
+  <p class="section-text">A productivity coach wants to write a blog post about morning routines. Here is how the layered method plays out in a real 45-minute session:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Minutes 1-5 — Brainstorm:</strong> She tells AI: "I want to write about why most morning routine advice is garbage. My take: the best morning routine is the one you can actually sustain, not the 5 AM ice bath CEO fantasy." AI surfaces questions her audience would have, common myths to address, and surprising data about sleep chronotypes.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Minutes 5-15 — Outline:</strong> AI produces a structured outline with hook, three main sections, and a closer. She reorders section 2 and 3, adds a note to include her own story of failing at a 5 AM routine, and approves the outline.</p>
+  <p class="section-text"><strong style="color:var(--green)">Minutes 15-30 — Rough draft:</strong> She writes the personal sections herself — her failed routine story, her actual morning that works, her strong opinions. She types fast and messy. AI expands each section with transitions, examples, and supporting details.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Minutes 30-45 — Edit pass:</strong> She pastes the full draft to AI and asks it to cut repetition, strengthen the hook, and flag anything generic. She rewrites two paragraphs that sound too polished. The final piece is 1,400 words, has her voice, and is ready to publish.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Advanced</span>
   <h2 class="section-title">The hook formula that keeps readers past the first paragraph.</h2>
   <p class="section-text">Most blog posts die in the first three sentences. The reader arrives, scans the opening, and decides in under five seconds whether to keep reading or hit the back button. Your hook has to earn those five seconds.</p>
@@ -170,6 +180,16 @@ so I can see the arc before I write the middle.</code></pre>
   <h2 class="section-title">Long-form writing quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"Long-Form Writing with AI","questions":[{"q":"Why is asking AI to write a full 1500-word blog post from a single prompt a mistake?","options":["AI cannot produce long content","The result is generic and lacks your perspective","It takes too long to generate","AI charges more for longer outputs"],"correct":1,"explanation":"Without your ideas, stories, and unique angle seeded in first, AI defaults to generic content that sounds like everyone and no one."},{"q":"What is the main purpose of Layer 1 in the layered writing method?","options":["To produce a publish-ready draft","To lock in your personal voice and lived experience before AI touches it","To check SEO keywords","To create the outline"],"correct":1,"explanation":"Layer 1 is your rough draft in your own words. This is where your authentic voice, stories, and perspective live — AI cannot replicate these."},{"q":"How should subheadings be written to serve both scanners and deep readers?","options":["Use generic labels like Section 1, Section 2","Make each one a mini-promise that reveals what the section delivers","Keep them as short as possible","Use only questions as subheadings"],"correct":1,"explanation":"A subheading like \"The one thing most creators get wrong about hooks\" rewards scanners by telling them exactly what they will learn if they read on."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">What's Next</span>
+  <h2 class="section-title">From long to short — different craft, same principles.</h2>
+  <p class="section-text">Long-form writing teaches you depth. The next lesson, Short-Form Mastery, teaches you precision. Both are essential skills in your content studio. The layered method you learned here — brainstorm, outline, rough draft, AI expansion, edit — adapts to every format. In short-form, the layers compress. The edit pass becomes ruthless cutting instead of expansion. But the principle stays the same: your voice first, AI second.</p>
+  <p class="section-text">Take the layered method for a test drive before moving on. Pick any topic you know well, set a 45-minute timer, and follow the exact process from this lesson. The first time feels like learning to drive. By the third time, it feels like muscle memory. And once it is muscle memory, you will never go back to staring at a blank page again.</p>
+  <p class="section-text">One more thing: save the blog post outline prompt and the editing checklist from this lesson in your prompt library. You will use them every single week. These are not one-time exercises — they are the production tools that make your content studio run.</p>
+  <p class="section-text">Long-form content is the anchor of your entire content operation. Everything else — social posts, emails, carousels, threads — branches from it through repurposing. Master the layered method and you master the source from which all other content flows. That is why this lesson matters more than any individual platform tactic.</p>
+  <p class="section-text">The blog posts, guides, and articles you write this month become the source material for weeks of repurposed content. Every long-form piece is an investment that pays dividends across every platform you publish on. Write one great anchor piece per week and the rest of your content operation practically runs itself.</p>
 </div>
 
 <nav class="lesson-nav">

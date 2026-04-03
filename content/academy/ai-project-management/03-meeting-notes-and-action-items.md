@@ -119,6 +119,71 @@ Notes: [paste 1:1 notes]</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">Cross-Meeting Intelligence</h2>
+  <p class="section-text">Individual meeting summaries are valuable. But the real power emerges when you feed AI notes from multiple related meetings and ask it to find connections:</p>
+  <div class="prompt-box"><code>Here are summaries from three meetings this week — a sprint planning, a client check-in, and a technical architecture review.
+
+[Paste all three summaries]
+
+Please:
+1. Identify any contradictions between what was discussed in different meetings
+2. Find action items that affect multiple workstreams
+3. Flag decisions made in one meeting that should have been communicated to another group
+4. Identify topics that came up in multiple meetings — are we going in circles?
+5. Suggest what I should address in tomorrow's standup based on cross-cutting issues</code></div>
+  <p class="section-text">This cross-meeting analysis catches the gaps that fall between groups — the client expecting a feature that engineering just deprioritized, the architecture decision that contradicts the sprint commitment, the deadline mentioned in one meeting that nobody else knows about. These are the gaps where projects silently break down, and AI surfaces them in seconds.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <h2 class="section-title">Meeting Note Mistakes to Avoid</h2>
+  <p class="section-text"><strong>Pitfall 1: Sending AI output without review.</strong> AI captures information accurately about 90% of the time. That remaining 10% can include misattributed action items, misunderstood context, or tone that does not match your team's culture. Always read the output before sharing.</p>
+  <p class="section-text"><strong>Pitfall 2: Over-detailing standups.</strong> A daily standup summary should be 5-10 lines, not a page. If your standup notes are as long as your sprint planning notes, you are over-processing. Match the template to the meeting importance.</p>
+  <p class="section-text"><strong>Pitfall 3: Ignoring confidential content.</strong> One-on-ones, performance discussions, and sensitive business conversations should not be processed through AI tools that may store your data. Check your AI provider's data policy and use confidential-appropriate tools for sensitive meetings.</p>
+  <p class="section-text"><strong>Pitfall 4: Replacing note-taking with transcripts only.</strong> Raw transcripts are noisy — full of "umm," tangents, and repetition. Your rough notes during the meeting capture your interpretation of what mattered. That human filter makes AI's job easier and the output more useful. Use transcripts as backup, not as the primary input.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The Meeting Output Matrix</h2>
+  <p class="section-text">Different meetings produce different types of valuable output. Use this matrix to decide what to ask AI for based on meeting type:</p>
+  <p class="section-text"><strong>Decision meetings</strong> (steering committees, approval gates): Primary output is a decision log. Who decided what, why, and what alternatives were rejected. AI excels at structuring this from messy discussion notes.</p>
+  <p class="section-text"><strong>Planning meetings</strong> (sprint planning, project kickoffs): Primary output is a plan or backlog. Tasks, owners, estimates, dependencies. AI generates the structured plan from the collaborative discussion.</p>
+  <p class="section-text"><strong>Status meetings</strong> (standups, check-ins): Primary output is a blocker list and progress snapshot. Keep it lean. AI compresses 30 minutes of discussion into 5-10 lines of actionable information.</p>
+  <p class="section-text"><strong>Problem-solving meetings</strong> (incident reviews, technical debates): Primary output is an analysis document. Root cause, options evaluated, recommendation, and follow-up actions. AI structures the analytical thinking that happens in real-time discussion.</p>
+  <p class="section-text"><strong>Relationship meetings</strong> (1:1s, client lunches, team socials): Primary output is private notes. Morale signals, relationship dynamics, personal commitments. AI summarizes sensitively — but these notes stay in your private records, never shared broadly.</p>
+  <p class="section-text">When you know the expected output type before the meeting starts, your note-taking becomes targeted and your AI processing becomes faster. You stop trying to capture everything and start capturing what matters for that specific meeting type.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Workflow Integration</span>
+  <h2 class="section-title">Connecting Meeting Outputs to Your PM Tools</h2>
+  <p class="section-text">AI-processed meeting notes are only valuable if they flow into the systems where your team actually works. Here is how to connect the outputs:</p>
+  <p class="section-text"><strong>Action items to your task tracker.</strong> Ask AI to format action items specifically for your tool — Jira ticket format, Asana task format, or Linear issue format. Include the assignee, description, acceptance criteria, and due date. Copy-paste directly into your tracker.</p>
+  <p class="section-text"><strong>Decisions to your decision log.</strong> Every decision captured from a meeting should go into a running decision log — a single document or spreadsheet that records what was decided, when, by whom, and why. AI formats decision records automatically from meeting notes.</p>
+  <p class="section-text"><strong>Risks to your risk register.</strong> When meetings surface new risks or change existing risk assessments, AI can draft the risk register update immediately. Do not wait until the weekly risk review — capture it while the context is fresh.</p>
+  <p class="section-text"><strong>Parking lot items to your backlog.</strong> Items deferred for later discussion often disappear entirely. AI captures them and formats them as backlog items with enough context that they still make sense when you revisit them weeks later.</p>
+  <p class="section-text">The key insight: AI does not replace your PM tools. It bridges the gap between raw human conversation and structured tool input. That bridge is where most PM overhead lives — and where AI saves the most time.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Technique</span>
+  <h2 class="section-title">Pre-Meeting Agenda Generation</h2>
+  <p class="section-text">The meeting cycle does not start when the meeting begins — it starts with the agenda. AI generates agendas that ensure meetings are productive from minute one:</p>
+  <div class="prompt-box"><code>Generate an agenda for our [meeting type] on [date]. Context:
+
+Open action items from last meeting: [paste action items]
+New topics to discuss: [list topics]
+Decisions needed: [list any decisions required]
+Time available: [X minutes]
+
+Please create an agenda with: time allocations per topic, the objective for each topic (inform / discuss / decide), any pre-read materials needed, and suggested attendees for each section. Put the most important decision-required items first.</code></div>
+  <p class="section-text">Sending an AI-generated agenda 24 hours before the meeting sets expectations, allows people to prepare, and prevents the common failure mode of meetings that wander without reaching conclusions. The agenda becomes the accountability framework — if it is on the agenda, it gets discussed. If it is not, it waits for the next meeting.</p>
+  <p class="section-text">Combined with post-meeting AI processing, this creates a complete meeting lifecycle: agenda generation, real-time note capture, AI summary and action extraction, and next-meeting agenda generation from the outputs. The full loop runs in under 10 minutes of PM effort per meeting.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Meeting Notes & Action Items — Key Concepts","cards":[{"front":"Structure In, Structure Out","back":"Tell AI exactly what sections you need — decisions, action items, parking lot, key points. Vague input like \\\'summarize this\\\' produces vague output."},{"front":"Action Item Format","back":"[Owner] — [Task] — [Deadline if mentioned]. This format drives accountability and makes follow-through trackable."},{"front":"The Follow-Up Loop","back":"Feed last week\\\'s action items into AI to auto-generate the next meeting\\\'s agenda. The system creates accountability without you chasing people."},{"front":"Meeting Input Options","back":"Transcripts from Zoom/Teams/Otter, rough notes taken during the meeting, or a bullet-point brain dump afterward — all work as AI input."},{"front":"Template Once, Use Forever","back":"Save your best meeting summary prompt as a template. Tweak for meeting types — standups get lighter format, steering committees get more detail. 3-4 templates cover everything."}]}'></div>
 </div>
 

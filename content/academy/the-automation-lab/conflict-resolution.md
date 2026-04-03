@@ -161,6 +161,42 @@ queue = [
 
   <div data-learn="QuizMC" data-props='{"title":"Conflict Resolution Strategies","questions":[{"q":"Two agents need to update a user subscription simultaneously. Operations are quick (<1 second). Best strategy?","options":["Conscience Layer","Priority Queue","Locking","Swarm pattern"],"correct":2,"explanation":"Quick operations plus two writers equals locking. Acquire lock, write, release. Simple and effective for fast operations."},{"q":"Five agents submit reports to a dashboard. Security alerts must appear before routine analytics. Best strategy?","options":["Locking","Conscience Layer","Swarm","Priority Queue"],"correct":3,"explanation":"Different importance levels call for a priority queue. Security agents get higher priority and their writes are processed first."},{"q":"An agent wants to delete user data for GDPR compliance. Another wants to retain it for fraud investigation. Both are valid. Best strategy?","options":["Locking","Priority Queue","Conscience Layer","Rollback"],"correct":2,"explanation":"Ethical conflict with competing valid interests requires the conscience layer \u2014 an arbiter must weigh values (privacy vs. safety) and make a judgment call."},{"q":"What is a race condition?","options":["An agent running faster than expected","Two agents reading and writing the same data simultaneously, causing one write to be lost","A scheduling conflict between cron jobs","A memory overflow error"],"correct":1,"explanation":"A race condition occurs when two agents both read the same value, calculate changes independently, and then both write \u2014 the second write overwrites the first."},{"q":"What is a deadlock?","options":["When an agent runs out of memory","When Agent A locks resource X and waits for Y, while Agent B locks Y and waits for X \u2014 neither can proceed","When a database transaction is too slow","When an agent loses its identity"],"correct":1,"explanation":"Deadlocks happen when two agents each hold a lock the other needs. Neither can proceed. Prevented by always acquiring locks in the same order, or using lock timeouts."}]}'></div>
 
+  <div class="section">
+    <h2>Choosing the Right Strategy</h2>
+    <p>Use this decision framework to choose the right conflict resolution approach:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.8">
+      <strong style="color:#e5e5e5">Are writes quick (&lt;1 second)?</strong><br>
+      &nbsp;&nbsp;Yes &rarr; <strong style="color:#8b5cf6">Locking</strong> — simple and effective<br>
+      &nbsp;&nbsp;No &rarr; Do writes have different importance?<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Yes &rarr; <strong style="color:#34d399">Priority Queue</strong> — important writes first<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;No &rarr; Is it a values/ethics conflict?<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes &rarr; <strong style="color:#fb923c">Conscience Layer</strong> — value-based arbitration<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No &rarr; <strong style="color:#8b5cf6">Optimistic Concurrency</strong> — version-check and retry
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Most systems use a combination: locking for hot paths, priority queues for task processing, and the conscience layer for policy conflicts.</p>
+  </div>
+
+  <div class="section">
+    <h2>Testing for Race Conditions</h2>
+    <p>Race conditions are notoriously hard to find because they depend on timing. Here are three testing strategies:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Concurrent Write Test</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Launch two agents simultaneously and have them both write to the same key. Check the final value. If either write was lost, you have a race condition. Run this test 100 times — race conditions are probabilistic and may not appear on every run.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Counter Increment Test</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Set a counter to 0. Have 10 agents each increment it 100 times. Expected result: 1000. If the final value is less than 1000, increments were lost to race conditions. This is the simplest and most reliable race condition detector.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Slow-Motion Replay</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Add deliberate delays between read and write operations to increase the window where conflicts can occur. In production, this window might be milliseconds. In testing, make it seconds. This amplifies race conditions so they appear consistently.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"Conflict Resolution Concepts","cards":[{"front":"What is a race condition?","back":"When two agents read the same value, calculate independently, and both write \u2014 the second write overwrites the first, silently losing data."},{"front":"What is a rollback?","back":"Undoing a change to restore data to its last safe state. Like Ctrl-Z for database operations. Implemented via database transactions (BEGIN/ROLLBACK)."},{"front":"Locking (Pessimistic Concurrency)","back":"Agent acquires a lock before writing. Others must wait. Simple, reliable for quick ops. Risk: deadlocks if agents lock resources in different orders."},{"front":"Priority Queue","back":"Writes are ordered by importance level. Higher-priority agents go first. Risk: low-priority tasks may starve."},{"front":"Conscience Layer","back":"An arbiter agent reviews conflicting writes and decides based on system values. Best for ethical/policy conflicts where both sides are valid."},{"front":"What is a deadlock?","back":"Agent A locks X, waits for Y. Agent B locks Y, waits for X. Neither can proceed. Fix: always acquire locks in the same global order, or use timeouts."}]}'></div>
 
 </div>

@@ -161,6 +161,41 @@ a brand.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Template</span>
+  <h2 class="section-title">The weekly newsletter template.</h2>
+  <p class="section-text">Use this structure for your weekly newsletter. Paste it into AI with your raw material and it will produce a draft in minutes:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Template — Weekly Newsletter</div>
+<pre style="margin:0;color:#e5e5e5"><code>Write my weekly newsletter using this structure:
+
+SUBJECT LINE: [curiosity or benefit style, under 50 chars]
+PREVIEW TEXT: [40 chars, complements the subject line]
+
+SECTION 1 — THE STORY (2-3 short paragraphs):
+Here's my raw material: [paste your messy notes, a story
+from your week, an observation, or an experience]
+Turn this into a personal, engaging opening.
+
+SECTION 2 — THE LESSON (3-4 paragraphs):
+Core insight: [one sentence summary of the lesson]
+Expand this into an actionable section with one specific
+framework or technique the reader can use immediately.
+
+SECTION 3 — THE ACTION (1 paragraph):
+One specific thing the reader should do this week.
+Make it concrete and completable in under 15 minutes.
+
+P.S. — [soft mention of my product/latest content/a
+question that invites replies]
+
+TONE: [paste your voice document or tone words]
+TOTAL LENGTH: Under 500 words. Every word earns its spot.</code></pre>
+</div>
+
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Email sequences quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"Email Sequences That Convert","questions":[{"q":"Why does email outperform social media for audience ownership?","options":["Emails have higher production value","Email is a direct line with no algorithm or gatekeeper between you and your audience","Email open rates are always higher than social reach","Email is free to send"],"correct":1,"explanation":"Social platforms can change their algorithm overnight and crush your reach. Email gives you direct access to your audience regardless of platform decisions."},{"q":"What is the right goal of a weekly newsletter?","options":["Drive maximum sales every week","Be the email your audience actually looks forward to opening","Repurpose your social media posts","Sell your flagship product every week"],"correct":1,"explanation":"The weekly newsletter is a relationship-builder. The goal is genuine value, not selling. The selling happens in launch sequences — made possible by the trust built week after week."},{"q":"What is the key technique that prevents AI-written emails from sounding robotic?","options":["Asking AI to write in a formal tone","Giving AI your raw personal story first and letting it shape — not create — the email","Using AI only for subject lines","Asking AI to imitate popular email newsletters"],"correct":1,"explanation":"Your raw material is what makes it human. AI shapes it into something polished. If you ask AI to create from scratch, you get generic. Feed it your messy notes first."}]}'>

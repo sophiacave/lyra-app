@@ -153,6 +153,34 @@ soft muted palette, gentle and inviting atmosphere</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Setting Up for Success</span>
+  <h2 class="section-title">What you need to get started — and what you do not.</h2>
+  <p class="section-text">Before diving into the next lesson, let's clear up what you actually need:</p>
+  <p class="section-text"><strong>You need:</strong> A device with internet access (computer, tablet, or phone), a free account on at least one AI image tool (ChatGPT, Bing Image Creator, or Leonardo AI are all free to start), and willingness to experiment. That is the complete list.</p>
+  <p class="section-text"><strong>You do not need:</strong> A powerful computer, a graphics card, paid software, design experience, artistic talent, coding skills, or any prior knowledge of AI. Everything in this course starts from zero and builds up.</p>
+  <p class="section-text"><strong>Helpful but optional:</strong> A free Canva account for adding text and layout to your images. A folder on your computer for saving your creations. A notebook or document for saving prompts that work well.</p>
+  <p class="section-text"><strong>Time investment:</strong> Each lesson in this course takes 15-30 minutes to read and work through. The hands-on exercises are where the real learning happens, so give yourself permission to play and experiment. There are no wrong answers in image generation — only iterations on the way to your vision.</p>
+  <p class="section-text"><strong>Recommended first steps:</strong> Before starting Lesson 2, sign up for a free ChatGPT account at chatgpt.com or visit bing.com/images/create (completely free, no account required for basic use). Having a tool ready means you can try every exercise as you read through the lessons. Theory without practice is just words on a screen. Practice turns those words into skills.</p>
+  <p class="section-text"><strong>No pressure:</strong> If you do not have time to set up an account right now, that is perfectly fine. Lesson 2 includes setup instructions for every major tool. But if you want a head start, getting your first tool ready now means you hit the ground running.</p>
+  <p class="section-text"><strong>A note on accounts:</strong> You may want to use the same email for all AI image tools you try. This makes it easy to manage subscriptions and track which tools you are using. A simple spreadsheet tracking tool name, account email, plan tier, and monthly cost keeps everything organized as you explore the landscape.</p>
+  <p class="section-text"><strong>Bookmark this course:</strong> You will likely come back to specific lessons as reference material — the prompt framework in Lesson 4, the platform dimensions in Lesson 6, the ethics guidelines in Lesson 9. Having quick access means you can refresh any concept in minutes when you need it in the real world.</p>
+  <p class="section-text"><strong>Go at your own pace:</strong> There is no deadline. Some people complete this course in a weekend. Others work through one lesson per week. Both approaches work.</p>
+  <p class="section-text">The exercises build on each other, so doing them in order is recommended, but you can always jump ahead to a topic that interests you and circle back to fill gaps later.</p>
+  <p class="section-text">The most important thing is to actually try the exercises — reading about prompt craft is useful, but typing your first prompt and seeing the result is transformative.</p>
+  <p class="section-text">Whenever you are ready — let's start creating.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Creative Mindset</span>
+  <h2 class="section-title">Approach AI image generation as a creative conversation, not a vending machine.</h2>
+  <p class="section-text">The most important thing to understand before you start is this: AI image generation is not a vending machine where you put in a prompt and get a perfect image out. It is a creative conversation. You describe something. The AI interprets it. You refine your description. The AI tries again. Through this back-and-forth, something emerges that neither you nor the AI could have created alone.</p>
+  <p class="section-text">The people who get the most out of these tools are not the ones with the most technical knowledge. They are the ones with the most curiosity. They try weird prompts. They combine unexpected styles. They ask "what if?" and let the AI surprise them. Then they iterate on the surprises until something remarkable appears.</p>
+  <p class="section-text">Be patient with yourself. Your first images will not be your best. Your hundredth image will make your tenth look amateur. This is a skill that rewards practice, and every generation teaches you something new about the relationship between language and visual expression.</p>
+  <p class="section-text">Give yourself permission to be bad at first. Every expert AI visual creator started with awkward, over-described, underwhelming first prompts. The difference between them and someone who gave up is simply that they kept going. They kept refining. They kept learning what worked and what did not. And through that process, they developed a creative instinct that no tutorial can fully teach.</p>
+  <p class="section-text">That instinct is waiting for you on the other side of practice. Now — let's go meet the tools.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">How AI Image Generation Works</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Visual AI Revolution Concepts","cards":[{"front":"What is a diffusion model?","back":"An AI that starts with visual noise and gradually refines it into a coherent image guided by your text prompt — removing noise and adding detail until the final image emerges"},{"front":"What made AI image generation accessible in 2026?","back":"Three things: models got dramatically better, tools got easier to use, and cost dropped to nearly zero for basic usage"},{"front":"What does text-to-image generation mean?","back":"You type a description and an AI creates that image in seconds — no drawing skills, design degree, or expensive software required"},{"front":"What is AI video generation?","back":"You describe a scene or provide a still image and the tool brings it to life with motion, camera angles, and timing"}]}'></div>

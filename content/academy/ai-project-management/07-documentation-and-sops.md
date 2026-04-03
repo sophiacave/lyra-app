@@ -129,6 +129,67 @@ Format this as a formal decision record that future team members can reference t
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">Documentation Quality Audits</h2>
+  <p class="section-text">Existing documentation often has gaps, outdated information, or inconsistencies. AI can audit your documentation library systematically:</p>
+  <div class="prompt-box"><code>Here is a [SOP / runbook / process document] my team uses:
+
+[Paste the document]
+
+Please audit it for:
+1. Steps that are vague or could be interpreted multiple ways
+2. Missing information — where would someone get stuck following these instructions?
+3. Outdated references — tool names, URLs, or procedures that seem like they might have changed
+4. Missing error handling — what happens when things go wrong at each step?
+5. Assumptions about reader knowledge — what does someone need to know before starting?
+6. Suggest specific improvements for each issue found</code></div>
+  <p class="section-text">Running this audit once per quarter keeps your documentation library trustworthy. When people trust the docs, they use the docs. When they use the docs, they stop interrupting the experts — and that is the real time savings.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <h2 class="section-title">Documentation Anti-Patterns</h2>
+  <p class="section-text"><strong>The Write-Once-Read-Never:</strong> Spending hours creating perfect documentation that goes into a wiki and is never found again. AI can help here too — generate a documentation index, tag documents with searchable keywords, and create a "quick reference" summary that links to full documents when people need depth.</p>
+  <p class="section-text"><strong>The Screenshot Graveyard:</strong> Documents filled with screenshots that break every time the UI changes. AI-generated text instructions are more resilient to change. Use screenshots for complex visual workflows only — not for showing where a button is.</p>
+  <p class="section-text"><strong>The Perfect Draft Trap:</strong> Waiting until a process is "finalized" before documenting it. Document early, update often. A rough-but-current document is infinitely more valuable than a polished-but-nonexistent one. AI makes updates so fast that "not enough time to update" stops being a valid excuse.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Technique</span>
+  <h2 class="section-title">Lessons Learned Documents</h2>
+  <p class="section-text">The most neglected document in project management is the lessons learned report. Teams finish a project, exhale, and immediately start the next one. The institutional knowledge from what went right and wrong evaporates within weeks.</p>
+  <p class="section-text">AI makes lessons learned capture painless:</p>
+  <div class="prompt-box"><code>This project just completed. Here is the context:
+
+Original plan: [brief description of original scope, timeline, budget]
+Actual outcome: [what actually happened — scope changes, timeline shifts, budget variance]
+Key challenges: [what was hard]
+Key wins: [what went well]
+Team feedback: [any retro notes or team comments]
+
+Generate a Lessons Learned document with:
+1. Project summary (planned vs. actual)
+2. What went well (practices to repeat)
+3. What did not go well (practices to change)
+4. Root causes for major variances
+5. Specific, actionable recommendations for future projects
+6. Knowledge transfer items (things the next PM on a similar project should know)</code></div>
+  <p class="section-text">A good lessons learned document takes 30 minutes with AI. Without AI, it takes half a day — which is why nobody does it. And yet these documents are the most valuable thing you can leave behind for your organization. They are how teams get smarter across projects instead of making the same mistakes over and over.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Technique</span>
+  <h2 class="section-title">FAQ Documents from Support Channels</h2>
+  <p class="section-text">Your Slack channels, support tickets, and email threads contain a goldmine of frequently asked questions. AI can extract and organize them:</p>
+  <div class="prompt-box"><code>Here are questions my team has answered repeatedly over the past month (from Slack, email, or support tickets):
+
+[Paste the questions and answers]
+
+Please create a FAQ document organized by topic. For each question: rewrite it clearly, provide a concise answer, and link to any relevant documentation (I will add the links). Identify the top 5 most-asked questions and flag any questions that suggest a process gap — something that should be documented as a full SOP rather than a FAQ entry.</code></div>
+  <p class="section-text">This transforms reactive support into proactive documentation. Instead of answering the same question for the tenth time, you point people to the FAQ. The time investment to create it: 15 minutes of pasting and 5 minutes of review. The time saved over the next year: dozens of hours of repeated explanations.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Pro Tip</span>
   <h2 class="section-title">Onboarding Documents Write Themselves</h2>
   <p class="section-text">When a new person joins, they ask dozens of questions. Capture those questions and the answers. After a month, feed the whole Q&A to AI and ask for an onboarding guide. The new hire literally wrote the onboarding doc by asking the questions nobody thought to document.</p>

@@ -148,6 +148,28 @@ plt.show()</code></pre>
   <p class="section-text">Ask AI: "Design a dashboard layout for [your use case]. Tell me which charts go where, what type each should be, and what insight each chart should highlight."</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Accessibility</span>
+  <h2 class="section-title">Making Charts Accessible</h2>
+  <p class="section-text">Good visualizations work for everyone, including people with color vision deficiency and those using screen readers:</p>
+  <p class="section-text"><strong>Never rely on color alone:</strong> Use patterns, labels, or shapes in addition to color to distinguish data series. Ask AI to use colorblind-safe palettes when generating chart code.</p>
+  <p class="section-text"><strong>Add alt text:</strong> Every chart shared digitally should have alt text describing the key insight. Ask AI: "Write alt text for this chart that describes the main finding in one sentence."</p>
+  <p class="section-text"><strong>Use sufficient contrast:</strong> Light gray text on a white background is invisible to many viewers. Ensure all text and data elements have high contrast against their background.</p>
+  <p class="section-text"><strong>Include data tables:</strong> For web-based charts, include a toggleable data table underneath so users who cannot see the chart can still access the numbers.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Quick Reference</span>
+  <h2 class="section-title">Chart Type Quick Reference</h2>
+  <p class="section-text">Bookmark this reference for your visualization work:</p>
+  <p class="section-text"><strong>Showing change over time →</strong> Line chart (continuous data), bar chart (discrete periods), area chart (cumulative)</p>
+  <p class="section-text"><strong>Comparing categories →</strong> Horizontal bar (few categories with long labels), vertical bar (many categories), grouped bar (subcategories)</p>
+  <p class="section-text"><strong>Showing composition →</strong> Pie (under 5 slices), stacked bar (more slices or over time), treemap (hierarchical)</p>
+  <p class="section-text"><strong>Showing relationships →</strong> Scatter (two variables), bubble (three variables), heatmap (two categorical dimensions)</p>
+  <p class="section-text"><strong>Showing distribution →</strong> Histogram (single variable), box plot (comparing distributions), violin plot (shape of distribution)</p>
+  <p class="section-text">When in doubt, ask AI: "Given this data and what I want to communicate, which chart type would be most effective and why?"</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Take any dataset and ask Claude to create a visualization. Be specific about what story you want the chart to tell:</p>

@@ -158,6 +158,29 @@ the existing subject lighting, seamless natural blend</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Color and Mood Adjustment</span>
+  <h2 class="section-title">Fine-tuning colors after generation can transform an image's impact.</h2>
+  <p class="section-text">Sometimes an AI image has perfect composition and subject matter but the colors are not quite right. Rather than regenerating (and losing the composition you love), adjust colors using external tools:</p>
+  <p class="section-text"><strong>Free options:</strong> Photopea (free browser-based Photoshop alternative) has full color adjustment tools — curves, levels, hue/saturation, color balance. Canva's free tier includes basic color filters and adjustments. Snapseed on mobile has excellent color controls.</p>
+  <p class="section-text"><strong>Quick fixes:</strong> Increasing contrast slightly makes most AI images look more professional. Warming the color temperature by a small amount adds a human, inviting quality. Reducing saturation slightly pulls back the sometimes over-vivid colors AI tends to produce.</p>
+  <p class="section-text"><strong>Mood shifts:</strong> The same image can feel completely different with color adjustments. Desaturate and add blue tones for a cold, melancholic mood. Warm the highlights and deepen the shadows for a cozy, intimate feeling. Add a vintage film grain filter for nostalgia. These post-processing steps are quick and dramatically expand what you can do with a single generated image.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Background Removal</span>
+  <h2 class="section-title">Isolating subjects from their backgrounds opens up endless possibilities.</h2>
+  <p class="section-text">One of the most practical editing techniques is removing the background from an AI-generated image to isolate the subject:</p>
+  <p class="section-text"><strong>Free tools:</strong> Remove.bg (instant, browser-based), Canva Background Remover (included in free tier for simple images), Photopea (manual with precision tools).</p>
+  <p class="section-text"><strong>Use cases:</strong> Place your AI-generated subject on a solid color for a clean professional look. Layer it onto a real photo for a composite. Use it on a transparent background for a logo, sticker, or overlay. Combine subjects from different generations into one scene.</p>
+  <p class="section-text"><strong>Pro technique:</strong> Generate your subject on a simple, solid-color background (add "white background" or "solid black background" to your prompt). This makes background removal much cleaner than trying to extract a subject from a complex scene. Plan your editing workflow during the generation phase, not after.</p>
+  <p class="section-text">Background removal combined with outpainting creates one of the most powerful editing pipelines: generate a subject, remove the background, place it on a new AI-generated background, then use inpainting to blend the edges seamlessly. This compositing workflow lets you create scenes that would be impossible to generate in a single prompt — complex multi-element compositions where each element was generated separately and perfectly.</p>
+  <p class="section-text">The editing skills in this lesson transform you from someone who generates images to someone who crafts them. Generation is the raw material. Editing is the craftsmanship. Together, they produce work that looks intentional, polished, and professional.</p>
+  <p class="section-text">In the next lesson, we take everything you have learned about creating and editing images and apply it to the specific demands of social media. You will learn platform-specific dimensions, batch creation workflows, and how to build a consistent visual brand across every platform — all using AI tools.</p>
+  <p class="section-text">Before moving on, practice the editing workflow at least once: generate an image, identify one thing you would change, and use inpainting to fix it. This single exercise builds the most important skill in this lesson — the confidence to refine rather than regenerate.</p>
+  <p class="section-text">Once you experience how easy it is to fix one element without losing the rest of the image, you will never go back to starting over from scratch every time something is slightly off. Editing is the professional's secret weapon — and now it is yours too.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Terms</span>
   <h2 class="section-title">Editing Vocabulary</h2>
   <div data-learn="FlashDeck" data-props='{"title":"AI Image Editing Terms","cards":[{"front":"Inpainting","back":"Selecting a specific area of an image and regenerating just that section while keeping everything else untouched — perfect for fixing one detail without losing the whole image"},{"front":"Outpainting","back":"Expanding the canvas beyond the original image borders and letting AI fill in what should logically be there — great for adapting images to different aspect ratios"},{"front":"Upscaling","back":"Using AI to increase image resolution while adding genuine detail rather than just stretching pixels — essential for print and large display use"},{"front":"Variations","back":"Generating alternative versions from one starting image to explore different directions — like trying on outfits, same person, different looks"},{"front":"Selection context tip","back":"When inpainting, make your selection slightly larger than the problem area — this gives the AI more surrounding context for seamless blending"}]}'></div>

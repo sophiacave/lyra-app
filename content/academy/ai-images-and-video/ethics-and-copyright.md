@@ -160,6 +160,27 @@ collaborative spirit of open-source communities."</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Staying Safe</span>
+  <h2 class="section-title">Avoiding legal trouble and reputational damage with AI visuals.</h2>
+  <p class="section-text">Beyond ethics, there are practical safety considerations that protect you and your work:</p>
+  <p class="section-text"><strong>Avoid generating recognizable brands:</strong> Prompts that include brand names, logos, or trademarked characters can produce images that infringe on trademarks. "A smartphone" is safe. "An iPhone" may generate trademark-infringing imagery. Keep brand references out of your prompts unless you own the brand.</p>
+  <p class="section-text"><strong>Be careful with photorealistic faces:</strong> AI can generate faces that closely resemble real people by coincidence. If a generated face looks like it could be a real individual, regenerate or significantly modify it before publishing. This protects both you and the person who might be misidentified.</p>
+  <p class="section-text"><strong>Document your process:</strong> For important commercial work, keep records of your prompts, tool settings, and editing steps. If a copyright question ever arises, having documentation of your creative process strengthens your position.</p>
+  <p class="section-text"><strong>Stay current with regulations:</strong> AI regulation is evolving rapidly. The EU AI Act, various US state laws, and platform policies are all changing. Set a quarterly reminder to check for updates relevant to your use of AI-generated content. Five minutes of research can save you significant legal headaches.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Building Ethical Habits</span>
+  <h2 class="section-title">Ethics is not a checkbox. It is a creative practice.</h2>
+  <p class="section-text">The most responsible AI creators do not think about ethics once and move on. They build ethical considerations into their daily workflow:</p>
+  <p class="section-text"><strong>Before generating:</strong> Ask yourself — could this image harm someone? Am I replicating a specific artist's livelihood? Am I creating something deceptive? Ten seconds of reflection prevents problems.</p>
+  <p class="section-text"><strong>During creation:</strong> If a generated image looks like a real person you did not intend to depict, regenerate. If it contains offensive or harmful content, delete and rephrase your prompt. If it feels like it copies a specific artist too closely, add more originality to your prompt.</p>
+  <p class="section-text"><strong>After publishing:</strong> Label AI content proactively. Respond honestly if anyone asks about your process. Engage respectfully with critics of AI art. The conversation about AI and creativity is ongoing, and being a thoughtful participant builds credibility and community trust.</p>
+  <p class="section-text">Ethics and creativity are not opposing forces. The most creative work comes from people who care about its impact. Your images carry your values — make them values you are proud of.</p>
+  <p class="section-text">This lesson may feel heavy compared to the creative excitement of previous lessons. But understanding these principles gives you confidence. When you know the rules and the ethical framework, you create without hesitation or anxiety. You post without worrying. You sell without second-guessing. That confidence is worth the fifteen minutes this lesson took to read.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Terms</span>
   <h2 class="section-title">Ethics and Copyright Vocabulary</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Ethics and Copyright Key Concepts","cards":[{"front":"Copyrightability of AI images","back":"Purely AI-generated images are generally not copyrightable in the US — but substantial human creative input like editing, arranging, and directing strengthens the claim"},{"front":"Commercial use rights","back":"Permission to use AI-generated images in business — each platform has different terms, and they can change, so always check the current terms of service"},{"front":"IP indemnity","back":"A legal protection offered by some platforms like Adobe Firefly that shields enterprise customers from intellectual property claims related to AI-generated content"},{"front":"Training data ethics","back":"Many artists feel their work was used without consent to train AI models — a legitimate concern driving changes like Adobe Firefly\\u0027s licensed-data-only approach"},{"front":"AI transparency","back":"Being honest about AI use when asked, and proactively labeling AI-generated content — builds trust and is increasingly expected by audiences and platforms"}]}'></div>

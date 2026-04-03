@@ -150,6 +150,29 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Real-World Chain</span>
+  <h2 class="section-title">Code Refactoring Pipeline</h2>
+  <p class="section-text">Prompt chains are powerful for code tasks. Here's a refactoring chain that produces thorough, safe refactors.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">Step 1: Analysis</h4>
+      <code>"Read this code and identify: code smells (duplicated logic, long functions, unclear naming), potential bugs, and performance bottlenecks. For each issue, cite the line number and explain the risk. Don't suggest fixes yet — just diagnose."</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+      <h4 style="color: var(--purple);">Step 2: Prioritized Plan</h4>
+      <code>"Given this analysis: [Step 1 output]. Rank the issues by impact (what would improve the code most). Create a refactoring plan: which changes to make, in what order, and why that order minimizes risk. Group changes that can be made together safely."</code>
+    </div>
+    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+      <h4 style="color: var(--orange);">Step 3: Execute + Test</h4>
+      <code>"Apply the top-priority refactoring group from this plan: [Step 2 output]. Show the refactored code. For each change, write a test that proves the behavior is preserved. Explain what changed and why it's safer/cleaner."</code>
+    </div>
+  </div>
+
+  <p class="section-text">Splitting analysis from planning from execution prevents the AI from jumping to premature refactors. The diagnosis step often reveals that the highest-risk issue isn't the one you initially noticed.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Build a 3-Step Chain</h2>
   <div class="try-it-box">

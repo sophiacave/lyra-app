@@ -190,6 +190,27 @@ Competitors: We don't trash-talk. Focus on our strengths.
 <div data-learn="QuizMC" data-props='{"title":"Context Mastery","questions":[{"q":"You are writing a prompt for a marketing email. Which context type is MOST likely to change the output dramatically?","options":["Your company founding year","Who the audience is and what they care about","Your office address","How many employees you have"],"correct":1,"explanation":"Audience is the single most impactful context type. An email to tech-savvy millennials vs retired professionals will be completely different in vocabulary, tone, and structure."},{"q":"What is the briefing document technique?","options":["Writing the longest possible prompt","Creating a reusable context block you paste at the start of related prompts","Sending the AI a separate document before your prompt","Asking the AI to brief you on a topic first"],"correct":1,"explanation":"A briefing document is a saved block of context (company info, voice, constraints) that you paste before your specific ask. It ensures consistency across all prompts for the same project."},{"q":"How do you decide if a piece of context is worth including?","options":["Include everything just to be safe","If removing it would change the output, include it","Only include context the AI specifically asks for","Keep context under 10 words total"],"correct":1,"explanation":"The test: would the output change if this context were different? If swapping coffee shop for law firm changes the result, that context matters. If your founding story would not change a social media caption, leave it out."}]}'></div>
 </div>
 
+<!-- SECTION 5B: CONTEXT MISTAKES -->
+<div class="lesson-section">
+  <span class="section-label">Common Traps</span>
+  <h2 class="section-title">3 context mistakes that silently ruin output.</h2>
+  <p class="section-text">Even people who understand context make these mistakes. Learn to spot them and your prompts will jump a level instantly.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:var(--bg);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#ef4444">Trap 1: Context without a goal.</strong> You give great background about your company, your product, your audience — but never say what you want the AI to DO with it. Context without a clear ask produces impressive-sounding output that doesn't serve any purpose.
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#fb923c">Trap 2: Stale context.</strong> You paste your company brief from 6 months ago, but your product has changed, your audience has shifted, and your messaging is different. The AI produces output that is technically correct but misaligned with where you are today. Update your briefs regularly.
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#8b5cf6">Trap 3: Context that contradicts itself.</strong> Your tone instruction says "casual and warm" but your negative constraints say "no contractions, no informal language." The AI tries to satisfy both and produces something awkward. Review your context for internal consistency before sending.
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- NEXT LESSON -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/prompt-writing-101/output-formats-that-work" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Output Formats That Work →</a>

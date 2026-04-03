@@ -142,6 +142,45 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Troubleshooting Prompts</span>
+  <h2 class="section-title">When your image does not match your vision, here is how to diagnose and fix.</h2>
+  <p class="section-text">Even with great prompt craft, sometimes the results miss the mark. Here is a diagnostic guide:</p>
+  <p class="section-text"><strong>Problem: Image looks generic or boring.</strong> Fix: You probably need more specific style and mood keywords. Add lighting terms, art style references, and emotional descriptors. "A house" is generic. "A weathered Victorian farmhouse at golden hour, moody pastoral atmosphere, Andrew Wyeth painting style" has character.</p>
+  <p class="section-text"><strong>Problem: Wrong composition or framing.</strong> Fix: Add explicit camera and composition terms. "Close-up," "wide shot," "bird's eye view," "rule of thirds" — these override the AI's default framing. If you want a portrait and keep getting a full-body shot, say "tight close-up headshot."</p>
+  <p class="section-text"><strong>Problem: Colors are not right.</strong> Fix: Be explicit about color. "Warm amber and deep burgundy palette" is better than hoping the AI picks the right colors. You can also use terms like "muted," "saturated," "pastel," or "monochromatic" to control the overall color approach.</p>
+  <p class="section-text"><strong>Problem: Too many elements or visual clutter.</strong> Fix: Simplify your prompt. Remove secondary subjects and focus on one main element. Add "minimalist," "clean composition," or "negative space" to encourage the AI to keep things simple.</p>
+  <p class="section-text"><strong>Problem: Style keeps shifting between generations.</strong> Fix: Anchor your prompt with specific style references. Instead of just "painting," use "oil painting in the style of the Hudson River School, warm earth tones, dramatic sky." The more specific your style anchor, the more consistent your results.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Building a Personal Style</span>
+  <h2 class="section-title">Your unique visual voice emerges from consistent creative choices.</h2>
+  <p class="section-text">The most compelling AI visual creators have a recognizable style. Here is how to develop yours:</p>
+  <p class="section-text"><strong>Identify your preferences:</strong> After generating 50-100 images, look at the ones you love most. What do they have in common? A color palette? A mood? A specific lighting style? These patterns reveal your natural aesthetic sensibility.</p>
+  <p class="section-text"><strong>Build a signature prompt base:</strong> Once you identify your preferences, create a base prompt that captures your style. This becomes your starting point for everything you create. Over time, this base prompt becomes as recognizable as a photographer's shooting style or a painter's brushwork.</p>
+  <p class="section-text"><strong>Study and borrow wisely:</strong> Look at visual creators you admire — photographers, painters, filmmakers, designers. What makes their work distinctive? Translate those qualities into prompt language. The goal is not to copy but to understand what resonates with you and why.</p>
+  <p class="section-text"><strong>Evolve intentionally:</strong> Your style should grow and change, but through deliberate exploration rather than random experimentation. Each week, try one new technique or style influence while keeping your core aesthetic. This creates evolution with continuity.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Prompt Length and Structure</span>
+  <h2 class="section-title">How long should your prompts actually be?</h2>
+  <p class="section-text">There is no single right answer, but there are guidelines:</p>
+  <p class="section-text"><strong>Short prompts (5-15 words):</strong> Work well for simple concepts where you want the AI to exercise creative judgment. "A peaceful lake at dawn, watercolor" gives the AI room to make beautiful choices about composition, colors, and details.</p>
+  <p class="section-text"><strong>Medium prompts (15-40 words):</strong> The sweet spot for most use cases. Enough detail to guide the result without overwhelming the AI. The prompt framework (subject + setting + composition + lighting + style + mood) naturally lands in this range.</p>
+  <p class="section-text"><strong>Long prompts (40-100 words):</strong> Useful when you need very specific results — product mockups, branded content, exact scene descriptions. However, very long prompts can confuse some tools. If your results get worse as your prompt gets longer, try removing the least important details.</p>
+  <p class="section-text"><strong>Word order matters:</strong> Most tools weight earlier words more heavily. Put your most important elements first. "A golden retriever, sunset, watercolor" will prioritize the dog. "A sunset over a meadow with a distant golden retriever, watercolor" will prioritize the sunset. Use word order as a composition tool.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Putting It All Together</span>
+  <h2 class="section-title">Prompt craft is the highest-leverage skill in AI image generation.</h2>
+  <p class="section-text">Everything in this lesson — composition, lighting, style control, negative prompting, formulas, troubleshooting — serves one purpose: giving you precise control over what the AI creates. The difference between a random image and a stunning one is almost always the prompt.</p>
+  <p class="section-text">As you practice, these techniques will become second nature. You will stop thinking "what keywords should I use?" and start thinking "what do I want this to feel like?" The vocabulary becomes automatic, and your creative energy goes to the vision rather than the mechanics.</p>
+  <p class="section-text">In the next lesson, we move from creation to refinement — learning how to take a good image and make it great using inpainting, outpainting, upscaling, and variations. The combination of strong prompt craft and skilled editing is what separates amateur AI art from professional-quality work.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Lighting Terms</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Lighting Keywords for Prompts","cards":[{"front":"Golden hour","back":"Warm, soft natural light just after sunrise or before sunset — creates a flattering, romantic atmosphere"},{"front":"Rembrandt lighting","back":"Studio lighting where one side of the face is lit and the other is in shadow, creating dramatic depth"},{"front":"Volumetric light","back":"Light that interacts with particles in the air — visible rays, god rays, shafts of light through fog"},{"front":"Chiaroscuro","back":"Strong contrast between light and dark, inspired by Renaissance painting — dramatic and moody"},{"front":"Blue hour","back":"The soft, cool light just before sunrise or after sunset — gives images a serene, twilight quality"}]}'></div>

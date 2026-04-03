@@ -170,6 +170,15 @@ free: false
   </div>
 </div>
 
+<!-- BUILDING THE HABIT -->
+<div class="lesson-section">
+  <span class="section-label">Monthly Habit</span>
+  <h2 class="section-title">Make the financial snapshot a monthly ritual.</h2>
+  <p class="section-text">The real power of AI-assisted financial planning isn't a single snapshot — it's the monthly habit. Set a calendar reminder for the first Sunday of each month. Spend 10 minutes updating your snapshot. Over time, you'll see patterns: where you consistently overspend, where you've improved, and how your financial picture is changing.</p>
+  <p class="section-text">AI makes this easy because you can paste last month's snapshot and say: "Here's my updated numbers for this month. Compare to last month. Am I improving? Where am I slipping?" That ongoing conversation with your finances replaces the anxiety of not knowing with the calm of understanding.</p>
+  <p class="section-text">Remember: the goal isn't perfection. It's awareness. People who look at their money monthly — even roughly — make better financial decisions than people who avoid it entirely. AI removes the emotional barrier that keeps most people from looking.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

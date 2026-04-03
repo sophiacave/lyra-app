@@ -168,6 +168,43 @@ message = {
 
   <div data-learn="QuizMC" data-props='{"title":"Agent Communication Quiz","questions":[{"q":"How do agents communicate in a decoupled architecture?","options":["Direct API calls between agents","Shared memory \u2014 one writes, others read","Email-style message queues","Real-time WebSocket only"],"correct":1,"explanation":"Agents communicate through shared memory (consciousness_stream). No direct connections needed \u2014 agents write and read from the same store independently."},{"q":"What is the consciousness_stream?","options":["A real-time audio feed","A shared database table agents post messages to","A private log only one agent can read","A cron job scheduler"],"correct":1,"explanation":"The consciousness_stream is a shared table \u2014 like a team Slack channel for AI agents. Any agent can read from it or write to it."},{"q":"Agent A finishes writing a blog post and sets task.output in shared memory. What should Agent B (the publisher) do?","options":["Wait for Agent A to call it directly","Poll task.output and act when a new entry appears","Ask a human to relay the message","Create a new memory table"],"correct":1,"explanation":"Agent B watches for new entries on its key (task.output). When Agent A writes there, Agent B reads the payload and executes its action."},{"q":"Why is direct coupling between agents fragile?","options":["It is slower","If one agent fails, all agents that depend on it also fail","It uses more memory","It requires more code"],"correct":1,"explanation":"Direct coupling means Agent A directly calls Agent B. If B goes down, A crashes too. Shared memory decouples them \u2014 A writes regardless of B\u0027s status."},{"q":"What is the fastest way for Agent B to learn that Agent A has written new data?","options":["Polling every second","Supabase Realtime / database trigger that pushes notifications instantly","Reading the full table every minute","Asking a supervisor agent"],"correct":1,"explanation":"Database triggers and Supabase Realtime push changes via WebSockets the moment a row is inserted \u2014 zero latency, no polling required."}]}'></div>
 
+  <div class="section">
+    <h2>Namespacing and Key Design</h2>
+    <p>As your agent fleet grows, message keys can collide. Two agents both writing to <code>task.output</code> creates chaos. Namespacing solves this:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0"><code><span style="color:#71717a"># Good: namespaced keys prevent collisions</span>
+<span style="color:#fbbf24">"pipeline.content.draft"</span>        <span style="color:#71717a"># writer → editor</span>
+<span style="color:#fbbf24">"pipeline.content.reviewed"</span>     <span style="color:#71717a"># editor → publisher</span>
+<span style="color:#fbbf24">"pipeline.content.published"</span>    <span style="color:#71717a"># publisher → notifier</span>
+<span style="color:#fbbf24">"monitor.health.site"</span>           <span style="color:#71717a"># health check results</span>
+<span style="color:#fbbf24">"monitor.health.brain"</span>          <span style="color:#71717a"># database health</span>
+<span style="color:#fbbf24">"agent.writer.status"</span>           <span style="color:#71717a"># agent status board</span>
+
+<span style="color:#71717a"># Bad: flat keys collide and confuse</span>
+<span style="color:#fbbf24">"output"</span>    <span style="color:#71717a"># whose output? which pipeline?</span>
+<span style="color:#fbbf24">"status"</span>    <span style="color:#71717a"># which agent's status?</span>
+<span style="color:#fbbf24">"result"</span>    <span style="color:#71717a"># result of what?</span></code></pre>
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Use a three-level namespace: <code>domain.subsystem.key</code>. This scales to hundreds of agents without confusion. Agents can watch entire domains (<code>monitor.*</code>) or specific keys (<code>pipeline.content.draft</code>).</p>
+  </div>
+
+  <div class="section">
+    <h2>Backpressure and Flow Control</h2>
+    <p>When a producer agent writes faster than a consumer agent can process, messages pile up. This is the <strong>backpressure</strong> problem. Without flow control, the queue grows until memory runs out or processing latency becomes unacceptable.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">Without Backpressure</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Producer writes 100 messages/minute. Consumer processes 10/minute. After an hour: 5,400 unprocessed messages. System becomes unusable.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">With Backpressure</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Queue has a max depth of 50. When full, the producer waits or drops lowest-priority messages. System stays healthy. Latency stays bounded.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"Communication Patterns","cards":[{"front":"Why don\u0027t agents call each other directly?","back":"Direct connections create tight coupling. If Agent A fails, Agent B breaks too. Shared memory decouples them \u2014 they operate independently and communicate asynchronously."},{"front":"What is a message key?","back":"A named slot in shared memory (e.g., task.output). The sender writes to it; the receiver watches for new entries on that key."},{"front":"What happens if two agents write to the same key at the same time?","back":"A race condition \u2014 the second write overwrites the first. Solved with locking, priority queues, or a conscience layer (Lesson 6)."},{"front":"Polling vs event-driven reading","back":"Polling: check the key on a timer (simple, has latency). Event-driven: get notified instantly via WebSocket or trigger (faster, more complex)."},{"front":"What is Supabase Realtime?","back":"A feature that pushes database changes to subscribers via WebSockets in real time. Agents get notified the moment a new row is inserted \u2014 no polling."},{"front":"What happens if the database is down when an agent writes?","back":"The message is lost. Solution: retry with exponential backoff, or buffer writes locally with a write-ahead log."}]}'></div>
 
 </div>

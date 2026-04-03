@@ -157,6 +157,44 @@ Additional refinements:
   <p class="section-text" style="margin-top:1rem">AI excels at synthesis. Tell it exactly which pieces to combine and you'll get something better than either version alone.</p>
 </div>
 
+<!-- SECTION 5: ITERATION CHEAT SHEET -->
+<div class="lesson-section">
+  <span class="section-label">Cheat Sheet</span>
+  <h2 class="section-title">Your iteration toolkit at a glance.</h2>
+  <p class="section-text">Bookmark this section. When you're mid-conversation with AI and the output isn't right, scan this list and pick the technique that matches your situation.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#38bdf8">Output too broad?</strong> &rarr; Zoom In. "Expand on point #3 with specific examples."
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#8b5cf6">Content right, voice wrong?</strong> &rarr; Tone Shift. "Same content, but conversational — like explaining to a friend."
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#fb923c">Wrong direction entirely?</strong> &rarr; Redirect. "Not what I need. Focus on [X] instead of [Y]."
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#34d399">Want options?</strong> &rarr; Remix. "Give me 3 completely different versions."
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#ef4444">Mostly perfect, one thing off?</strong> &rarr; Precision follow-up. "Keep everything except [specific part]. Rewrite only that."
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#38bdf8">Two good versions?</strong> &rarr; Best of Both. "Combine version 1 opening with version 2 structure."
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#8b5cf6">Need to validate?</strong> &rarr; Stress Test. "Read this as the recipient. Would you respond positively?"
+      </div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6">
+        <strong style="color:#fb923c">3 rounds, no progress?</strong> &rarr; Start fresh. Write down why the original failed, then fix that in a new prompt.
+      </div>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1rem">The difference between a beginner and an expert isn't the quality of their first prompt — it's how fast they can diagnose what's wrong and fix it. This toolkit makes that process nearly instant.</p>
+</div>
+
 <!-- NEXT LESSON -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
   <a href="/academy/prompt-writing-101/prompt-templates-for-work" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Prompt Templates for Work →</a>

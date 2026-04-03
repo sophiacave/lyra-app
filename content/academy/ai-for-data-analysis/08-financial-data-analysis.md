@@ -106,6 +106,39 @@ free: false
   <p class="section-text"><strong>Cash flow timing:</strong> Big expenses hitting before revenue comes in.</p>
   <p class="section-text"><strong>Single-source dependency:</strong> More than 30% of revenue from one customer.</p>
   <p class="section-text"><strong>Expense creep:</strong> Small increases that compound — $50/month here, $100/month there.</p>
+  <p class="section-text"><strong>Declining unit economics:</strong> Revenue per customer going down while acquisition costs stay the same or rise. This means growth is becoming less profitable over time.</p>
+  <p class="section-text"><strong>Irregular patterns:</strong> Revenue that comes in large lumps rather than steady streams. This creates cash flow unpredictability and makes forecasting difficult. Ask AI to assess your revenue regularity.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Personal Finance</span>
+  <h2 class="section-title">Applying These Skills to Personal Money</h2>
+  <p class="section-text">Everything in this lesson applies to personal finances too. Export your bank statement and try these prompts:</p>
+  <p class="section-text"><strong>Spending audit:</strong> "Categorize every transaction. Show me total spending by category, ranked from highest to lowest. Flag any categories where spending increased more than 15% compared to the average of the previous 3 months."</p>
+  <p class="section-text"><strong>Subscription discovery:</strong> "Find all recurring charges — anything that appears monthly or annually with a similar amount. List them with monthly cost and annual total. Which ones have I potentially forgotten about?"</p>
+  <p class="section-text"><strong>Savings opportunity:</strong> "Based on my spending patterns, identify the top 3 areas where I could realistically cut 10-20% without major lifestyle changes. Be specific about dollar amounts."</p>
+  <p class="section-text">Personal finance analysis with AI takes minutes and often reveals hundreds of dollars in potential savings. It is one of the highest-ROI uses of everything you have learned in this course.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Caution</span>
+  <h2 class="section-title">Financial Data Privacy</h2>
+  <p class="section-text">Financial data requires extra care around privacy and security:</p>
+  <p class="section-text"><strong>Anonymize before sharing:</strong> Remove names, account numbers, and identifying information before pasting financial data into any AI tool. Replace customer names with IDs, mask the last 4 digits of account numbers, and strip any personally identifiable information.</p>
+  <p class="section-text"><strong>Use aggregate data when possible:</strong> Instead of sharing individual transactions, share summaries. "Monthly revenue by category" reveals the same patterns as raw transaction data without exposing individual records.</p>
+  <p class="section-text"><strong>Understand data retention policies:</strong> Know how the AI tool handles your data. Some tools use conversations for training; others do not. For sensitive financial data, choose tools with clear privacy guarantees.</p>
+  <p class="section-text"><strong>Never share passwords or credentials:</strong> If your financial export includes authentication tokens, API keys, or login information, scrub them before pasting. These should never enter an AI conversation.</p>
+  <p class="section-text">Financial data privacy is non-negotiable. The insights are valuable, but they are only useful if you protect the underlying data. Build these habits now and they become automatic.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Benchmarking</span>
+  <h2 class="section-title">Comparing Against Benchmarks</h2>
+  <p class="section-text">Your financial data means more when you compare it against something. Ask AI to help with benchmarking:</p>
+  <p class="section-text"><strong>"Based on my industry [specify], are my gross margins healthy? What are typical benchmarks for a company at my revenue stage?"</strong></p>
+  <p class="section-text"><strong>"My customer acquisition cost is $45. Is that good, average, or concerning for a [type of business]? What range should I target?"</strong></p>
+  <p class="section-text"><strong>"My monthly burn rate is $8,000 with 6 months of runway. What actions do companies at this stage typically take to extend runway?"</strong></p>
+  <p class="section-text">AI has broad knowledge of industry benchmarks and can put your numbers in context. This turns isolated metrics into strategic intelligence about where you stand and where you need to improve.</p>
 </div>
 
   <div class="tip-box">

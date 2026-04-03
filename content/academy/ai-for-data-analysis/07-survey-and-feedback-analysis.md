@@ -112,6 +112,31 @@ free: false
   <p class="section-text"><strong>Response quality filtering:</strong> Not all responses are equally useful. "Great" and "Fine" provide almost no analytical value. Ask AI: "Filter out responses shorter than 10 words and analyze only the substantive ones. Report what percentage of responses were too short to analyze."</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Actionable</span>
+  <h2 class="section-title">From Feedback to Action Plan</h2>
+  <p class="section-text">Analysis is only valuable if it drives action. Here is how to convert feedback findings into a concrete plan:</p>
+  <p class="section-text"><strong>Prioritize by frequency and severity:</strong> Ask AI: "Rank these themes by how often they appear AND how negatively they affect sentiment. A rare but severe issue may matter more than a common but mild one."</p>
+  <p class="section-text"><strong>Identify quick wins:</strong> Ask AI: "Which of these complaints could be addressed with minimal effort? Look for issues that are mentioned frequently but have straightforward solutions."</p>
+  <p class="section-text"><strong>Map feedback to business metrics:</strong> Ask AI: "Correlate these feedback themes with customer retention data. Which complaints are most strongly associated with customers who eventually churn?"</p>
+  <p class="section-text"><strong>Generate response templates:</strong> Ask AI: "Based on the top 5 complaint themes, draft response templates that acknowledge the issue, explain what we are doing about it, and offer a concrete next step."</p>
+  <p class="section-text"><strong>Track improvement over time:</strong> After making changes, resurvey and compare. Ask AI: "Here is last quarter's feedback analysis and this quarter's. Did the themes we addressed show improvement in sentiment? Did any new issues emerge?"</p>
+  <p class="section-text">This close-the-loop approach — analyze, act, remeasure — is how customer-obsessed organizations continuously improve. AI makes the analysis fast enough to run this cycle monthly instead of annually.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Scale</span>
+  <h2 class="section-title">Building a Feedback Analysis System</h2>
+  <p class="section-text">For ongoing feedback operations (not just one-time analysis), build a system:</p>
+  <p class="section-text"><strong>Collection:</strong> Standardize how feedback is gathered across all channels — same question formats, same rating scales, same metadata captured.</p>
+  <p class="section-text"><strong>Aggregation:</strong> Combine all feedback into a single dataset monthly. Include the source channel so you can analyze by channel if needed.</p>
+  <p class="section-text"><strong>Analysis template:</strong> Use a saved prompt that runs the same analysis every month: sentiment score, top themes, new themes, improvement on previously flagged issues.</p>
+  <p class="section-text"><strong>Reporting:</strong> Deliver a monthly feedback digest — 1 page, top 3 findings, top 3 recommended actions, trend vs. last month.</p>
+  <p class="section-text"><strong>Action tracking:</strong> Log which recommendations were implemented and track whether the next month's feedback reflects improvement. This accountability loop is what separates organizations that listen from organizations that improve.</p>
+  <p class="section-text">With this system in place, feedback becomes a strategic asset — not a pile of unread responses gathering dust in a spreadsheet. AI makes the analysis fast; the system makes it consistent.</p>
+  <p class="section-text">Start small: even analyzing one batch of 50 responses with AI teaches you more about your customers than months of assumptions ever could.</p>
+</div>
+
   <div class="tip-box">
     <div class="tip-label">Python Sentiment Analysis</div>
     <p>Ask Claude to write a script that processes feedback at scale:</p>

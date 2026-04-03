@@ -141,6 +141,27 @@ free: false
   a dedicated analytics team.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Weekly Rhythm</span>
+  <h2 class="section-title">The Weekly Analytics Ritual</h2>
+  <p class="section-text">Analytics without rhythm is just occasional curiosity.
+  Build a weekly ritual that turns data into consistent improvement:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Friday Afternoon (20 minutes):</strong>
+    Export your week's data. Paste it into AI. Ask for a performance summary
+    compared to last week. Identify one thing that improved, one thing that
+    declined, and one thing to try differently next week.</p>
+    <p><strong style="color: var(--blue);">Monthly Deep Dive (1 hour):</strong>
+    Full win/loss analysis, segment review, and trend compass on the month's data.
+    AI produces a report you can share with your manager or use for
+    self-coaching. One hour of analysis prevents weeks of repeating mistakes.</p>
+    <p><strong style="color: var(--purple);">Quarterly Strategy Session (2 hours):</strong>
+    Feed AI three months of data and ask for strategic recommendations.
+    What should you change about your targeting, messaging, or process?
+    Quarterly reviews prevent gradual drift from what works.</p>
+  </div>
+</div>
+
 <div class="try-it-box">
   <h3>Segment Analysis Prompt</h3>
   <div class="prompt-box"><code>Here are my closed deals from the past 6 months:

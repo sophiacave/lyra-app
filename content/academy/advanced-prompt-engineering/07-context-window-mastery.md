@@ -165,6 +165,17 @@ TASK: Compare Documents A and B for revenue trends. Then cross-reference with Do
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Pro Tip</span>
+  <h2 class="section-title">Context Window Sizes by Model</h2>
+  <p class="section-text">Knowing your model's limits helps you plan your prompts. Here are the current context windows for major models.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Claude (Anthropic):</strong> 200K tokens. The largest standard context window available. Can process entire codebases, long documents, and extended conversations in a single context.</p>
+  <p class="section-text"><strong style="color: var(--green);">GPT-4 (OpenAI):</strong> 128K tokens. Sufficient for most professional tasks. The "lost in the middle" effect is more pronounced here than in Claude — front-loading is even more important.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Gemini (Google):</strong> Up to 1M tokens in Gemini 1.5 Pro. The largest context window available, suitable for analyzing entire books or large codebases in a single pass.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Open-source models:</strong> Typically 4K-32K tokens. Much smaller windows require aggressive compression. The techniques in this lesson become essential, not optional, with these models.</p>
+  <p class="section-text">The key takeaway: even with massive context windows, the techniques in this lesson improve output quality. A well-structured 5K token prompt outperforms a poorly-structured 50K token prompt because the AI can focus its attention on what matters.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Optimize a Long Prompt</h2>
   <div class="try-it-box">

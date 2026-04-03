@@ -163,6 +163,16 @@ free: false
   </div>
 </div>
 
+<!-- TRAVEL SAFETY -->
+<div class="lesson-section">
+  <span class="section-label">Important Note</span>
+  <h2 class="section-title">Always verify bookings and reservations yourself.</h2>
+  <p class="section-text">AI is exceptional at planning and organizing travel, but it cannot make actual bookings for you. Use AI to build the plan, compare options, and generate checklists — then confirm all reservations, hours, and availability through official websites or by calling directly.</p>
+  <p class="section-text">Prices, availability, and business hours change constantly. AI's suggestions are an excellent starting point, not confirmed reservations. This is especially important for restaurants with limited seating, tours that sell out, and accommodation during peak travel seasons.</p>
+  <p class="section-text">The ideal workflow: AI plans, you verify, you book. This combination gives you the best of both worlds — AI's comprehensive planning ability and your real-time confirmation.</p>
+  <p class="section-text">Pro tip: after your trip, tell AI what worked and what didn't. "The restaurant on Day 2 was closed" or "we needed more downtime between activities." This feedback makes your next trip plan even better.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

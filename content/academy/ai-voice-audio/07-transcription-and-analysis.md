@@ -121,12 +121,51 @@ with open("meeting_analysis.md", "w") as f:
   <p class="section-text"><strong>Practical applications:</strong> Legal firms search depositions. Journalists search interview archives. Product teams search user research recordings. Sales teams search call recordings for objection patterns. Medical researchers search patient interviews. The use cases are everywhere once the infrastructure exists.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Workflow</span>
+  <h2 class="section-title">Content Repurposing Pipeline</h2>
+  <p class="section-text">One of the highest-value applications of transcription is turning audio into multiple content formats. Here is the repurposing pipeline:</p>
+  <p class="section-text"><strong>Audio to blog post:</strong> Transcribe your recording. Feed the transcript to Claude: "Convert this transcript into a structured blog post with headers, key points, and a conclusion. Remove verbal filler and conversational tangents. Keep the author's voice." One 30-minute recording becomes a 2,000-word article.</p>
+  <p class="section-text"><strong>Audio to social posts:</strong> Ask Claude to extract the five most quotable statements from your transcript. Each becomes a social media post. Pair with the corresponding audio clip (timestamp from the transcript) for an audio-visual social post.</p>
+  <p class="section-text"><strong>Audio to newsletter:</strong> Summarize the transcript into a 3-paragraph newsletter section with a key insight, a memorable quote, and a link to the full recording. This cross-pollinates your audio audience with your email list.</p>
+  <p class="section-text"><strong>Audio to training data:</strong> Transcripts of expert interviews become training material for custom AI models. Your domain expertise, captured in conversation, can inform RAG systems and fine-tuned models that answer questions in your area of specialization.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Privacy</span>
+  <h2 class="section-title">Privacy and Security in Transcription</h2>
+  <p class="section-text">Audio recordings often contain sensitive information. Here is how to handle transcription responsibly:</p>
+  <p class="section-text"><strong>Local processing:</strong> When audio contains confidential information — legal proceedings, medical consultations, financial discussions — use Whisper locally. No data leaves your machine. No third-party server ever sees your content. This is the only option for truly sensitive material.</p>
+  <p class="section-text"><strong>PII redaction:</strong> AssemblyAI offers automatic PII (Personally Identifiable Information) redaction — names, addresses, phone numbers, and social security numbers are automatically detected and replaced with placeholders in the transcript. This is essential for compliance with HIPAA, GDPR, and similar regulations.</p>
+  <p class="section-text"><strong>Data retention policies:</strong> Check each platform's data retention policy. Deepgram deletes audio after processing by default. Some platforms retain data for model training unless you opt out. For sensitive content, always read the privacy policy before uploading.</p>
+</div>
+
 <div class="demo-container">
   <h3>Transcription Use Cases</h3>
   <p><strong>Content Repurposing:</strong> Record once → transcribe → blog post, social clips, newsletter</p>
   <p><strong>Meeting Intelligence:</strong> Auto-transcribe → extract action items → assign tasks</p>
   <p><strong>Research:</strong> Interview recordings → searchable database → pattern analysis</p>
   <p><strong>Accessibility:</strong> All audio content → captions and transcripts → inclusive by default</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Speaker Diarization: Who Said What</h2>
+  <p class="section-text">Transcription tells you what was said. Diarization tells you who said it. This is critical for meetings, interviews, depositions, and any multi-speaker recording:</p>
+  <p class="section-text"><strong>How it works:</strong> Diarization models analyze voice characteristics — pitch, timbre, speaking rhythm — to identify distinct speakers in a recording. Each segment of the transcript is then tagged with a speaker label (Speaker 1, Speaker 2, etc.).</p>
+  <p class="section-text"><strong>Best tools:</strong> Deepgram includes diarization in its standard API — add <code>"diarize": true</code> to your request. AssemblyAI offers it with automatic speaker count detection. For local processing, pyannote-audio is the leading open-source option. WhisperX combines Whisper transcription with pyannote diarization for the best free pipeline.</p>
+  <p class="section-text"><strong>Accuracy factors:</strong> Diarization works best with clear speaker separation — different voice types, minimal overlapping speech, and clean audio. Two speakers with similar voices in a noisy environment will challenge any model. Pre-processing with noise removal significantly improves diarization accuracy.</p>
+  <p class="section-text"><strong>Post-processing:</strong> Automated diarization occasionally mis-labels speakers. Build a quick review step into your pipeline — scan the first few attributions for each speaker, then search-and-replace any consistent errors. Five minutes of cleanup after diarization saves hours of manual attribution.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Tips</span>
+  <h2 class="section-title">Optimizing Transcription Accuracy</h2>
+  <p class="section-text">Even the best transcription models make mistakes. Here is how to maximize accuracy across different scenarios:</p>
+  <p class="section-text"><strong>Clean audio first:</strong> Run your recording through Adobe Podcast Enhance or a noise removal tool before transcribing. Whisper's accuracy on clean audio is 98-99%. On noisy audio, it can drop to 85-90%. That cleanup step is worth the extra minute.</p>
+  <p class="section-text"><strong>Choose the right model size:</strong> Whisper offers tiny, base, small, medium, and large models. For English content in clean conditions, base or small is usually sufficient and 5-10x faster than large. For accented speech, technical jargon, or multiple languages, use large-v3 — the accuracy difference justifies the extra processing time.</p>
+  <p class="section-text"><strong>Custom vocabulary:</strong> Deepgram and AssemblyAI support custom vocabulary — a list of domain-specific terms the model should prioritize. Add your product names, technical terms, and proper nouns. This simple step fixes the most common transcription errors in specialized content.</p>
+  <p class="section-text"><strong>Language detection:</strong> If your audio contains multiple languages, specify the primary language in your API call rather than relying on auto-detection. Auto-detection works well for monolingual content but can produce erratic results when languages are mixed within a single recording.</p>
 </div>
 
 <div class="try-it-box">

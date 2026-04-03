@@ -122,6 +122,26 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Automation Rot</span>
+  <h2 class="section-title">Workflows That Silently Decay Over Time</h2>
+  <p class="section-text">Automation rot is the gradual degradation of a workflow that nobody notices because it's still technically "running." The email templates become outdated. The routing rules no longer match the team structure. The API response format changed and half the enrichment data is now null. Everything still works — just poorly.</p>
+  <p class="section-text">Fight automation rot with scheduled audits. Every quarter, review each workflow and ask: Is this workflow still doing what we need? Are the outputs still accurate and valuable? Has anything changed in the tools, team, or processes that this workflow should reflect? Is this workflow still cost-effective given current volumes?</p>
+  <p class="section-text">The quarterly audit is the difference between a workflow portfolio that compounds in value and one that slowly becomes a liability. Put it on the calendar. Treat it like a health checkup — routine, non-negotiable, and preventive.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Documentation</span>
+  <h2 class="section-title">Maintaining an Operations Runbook</h2>
+  <p class="section-text">An operations runbook is a living document that tells anyone — including future you — how to operate and troubleshoot each workflow. It's not the same as the workflow documentation (which describes what the workflow does). The runbook describes what to do when things go wrong.</p>
+  <p class="section-text"><strong style="color: var(--green);">For each workflow, the runbook answers:</strong> Where are the logs? What are the common error messages and their fixes? How do you restart the workflow safely? Who are the escalation contacts? What's the rollback procedure? Where are the credentials stored?</p>
+  <p class="section-text"><strong style="color: var(--green);">Keep it simple and scannable.</strong> When someone reads the runbook at 3am during an outage, they need clear, numbered steps — not paragraphs of context. Use headers, bullet points, and copy-pasteable commands. Every second counts during incidents.</p>
+  <p class="section-text"><strong style="color: var(--green);">Update it after every incident.</strong> If you learned something new while debugging, add it to the runbook immediately. The best runbooks are written in the heat of production issues, not in calm planning sessions.</p>
+  <p class="section-text">A good runbook is worth more than a good monitoring dashboard. Dashboards tell you something is wrong. Runbooks tell you how to fix it. Together, they form the operational backbone of every reliable workflow system.</p>
+  <p class="section-text">The organizations that run the most reliable automation aren't the ones with the fanciest tools — they're the ones with the best runbooks. A simple Python script with a detailed runbook will outperform an enterprise platform with poor documentation every time. Invest in the boring stuff. It pays dividends at 3am.</p>
+  <p class="section-text">Remember: monitoring and maintenance aren't the glamorous parts of workflow automation. Building is exciting. Deploying feels like a win. But the unsexy discipline of checking dashboards, reviewing logs, and updating runbooks is what keeps your workflows running reliably for months and years — not just days.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Monitoring and Maintenance","cards":[{"front":"Success Rate","back":"Percentage of workflow runs completing successfully. Anything below 95% needs investigation. Track daily."},{"front":"Execution Time","back":"How long each run takes. Sudden increases often signal upstream problems — an API slowing down or retry loops."},{"front":"Alert Categorization","back":"Info = logged not notified. Warning = notified not urgent. Critical = immediate attention. Most events should be Info."},{"front":"The Monthly Health Check","back":"Review success rates, check for slow steps, verify credentials haven\\\'t expired, test error handling in sandbox. Takes one hour, prevents days of fixes."},{"front":"Silent Failures","back":"The most dangerous kind. An API changes format, a rate limit tightens, a parser breaks — without monitoring, these accumulate unseen for weeks."}]}'></div>
 </div>
 

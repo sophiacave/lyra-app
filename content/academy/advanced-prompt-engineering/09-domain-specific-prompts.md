@@ -166,6 +166,15 @@ IMPORTANT: Flag any clause you're uncertain about with [NEEDS LAWYER REVIEW]. Do
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Building Expertise</span>
+  <h2 class="section-title">Developing Your Domain Prompt Intuition</h2>
+  <p class="section-text">The fastest way to develop domain-specific prompting skills is to study how experts in that domain think. Every field has implicit quality standards, common failure modes, and specialized vocabulary. Your prompt needs to capture all three.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Technique: Interview an expert.</strong> If you're writing prompts for a domain you're not expert in, interview someone who is. Ask: "What does a beginner always get wrong? What would you check for first? What separates good work from great work in this field?" Their answers become your prompt constraints.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Technique: Study examples of great work.</strong> Find 3 examples of excellent output in your target domain. Analyze what makes them excellent. Those qualities become your quality criteria in the prompt.</p>
+  <p class="section-text"><strong style="color: var(--green);">Technique: Build incrementally.</strong> Start with a basic prompt for your domain. Use it 10 times. After each use, note what was wrong or missing. Refine. After 10 iterations, you'll have a battle-tested domain prompt that captures real-world edge cases no theoretical approach would catch.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Write a Domain-Specific Prompt</h2>
   <div class="try-it-box">

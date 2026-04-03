@@ -114,7 +114,8 @@ free: true
   <span class="section-label">Scaling Architecture</span>
   <h2 class="section-title">From Solo to Team Without Losing Structure</h2>
   <p class="section-text">When you're a solo creator, architecture lives in your head (bad) or in a single document (better). When a team forms, architecture becomes the shared language everyone speaks. New writers don't ask "what should I write about?" — they look at the matrix, find a gap, and fill it using the templates and voice docs.</p>
-  <p class="section-text">Architecture also prevents the most common team failure: content overlap. Without a map, two writers produce nearly identical pieces. With a matrix, every assignment has a unique cell. No duplication. No wasted effort. No awkward conversations about whose version to publish.</p>
+  <p class="section-text">Architecture also prevents the most common team failure: content overlap. Without a map, two writers produce nearly identical pieces. With a matrix, every assignment has a unique cell. No duplication. No wasted effort.</p>
+  <p class="section-text">No awkward conversations about whose version to publish. The architecture is the assignment system — it tells everyone what to produce before they start, not after they've both done the same work.</p>
 </div>
 
 <div class="lesson-section">
@@ -154,6 +155,34 @@ Then summarize:
 - List the top 10 atoms worth reusing immediately."
   </pre>
   <p>Run this audit quarterly. Each round reveals new gaps and surfaces atoms you forgot you had. The architecture stays alive instead of becoming a dusty planning document.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Content Lifecycle</span>
+  <h2 class="section-title">Architecture Includes a Retirement Plan</h2>
+  <p class="section-text">Content doesn't live forever. Outdated statistics, deprecated product features, old case studies — stale content damages credibility. Your architecture should include a lifecycle status for every piece: draft, published, evergreen, aging, archived.</p>
+  <p class="section-text"><strong>Evergreen</strong> content stays relevant for 12+ months with no updates needed — definitions, frameworks, foundational concepts. <strong>Aging</strong> content has a natural expiration — trend analysis, annual roundups, tool comparisons. Tag aging content with a review date so your pipeline automatically flags it for refresh or retirement.</p>
+  <p class="section-text">When content is archived, its atoms don't die. Extract the still-relevant parts — the frameworks, the timeless quotes, the proven structures — and recycle them into fresh content. The atom survives even when the piece that hosted it doesn't. That's architecture working at its deepest level.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">SEO Architecture</span>
+  <h2 class="section-title">Content Architecture Meets Search Strategy</h2>
+  <p class="section-text">Your content architecture should align with your SEO strategy. Each pillar maps to a high-volume keyword theme. Each cluster maps to a long-tail keyword group. Each atom targets a specific search intent — informational, navigational, or transactional.</p>
+  <p class="section-text">The hub-and-spoke model directly mirrors how search engines evaluate topical authority. A comprehensive pillar page (the hub) linked to detailed cluster pages (the spokes) signals expertise to search algorithms. Build internal links into your architecture from day one — every cluster page links up to its pillar, and every pillar page links down to its clusters.</p>
+  <p class="section-text">Use your content matrix to identify keyword gaps. If competitors rank for terms within your pillar that you haven't covered, those are immediate content opportunities. Feed these gaps into your pipeline as high-priority intake items. Architecture makes SEO systematic instead of reactive.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Future-Proofing</span>
+  <h2 class="section-title">Architecture That Grows With You</h2>
+  <p class="section-text">Your architecture will need to evolve. New products launch. New audiences emerge. Market conditions shift. Design your architecture to accommodate growth without requiring a full rebuild. Keep pillars broad enough to absorb new clusters. Keep clusters modular enough to split when they get too large.</p>
+  <p class="section-text">A pillar that started as "AI Tools" might eventually need to split into "AI for Marketing," "AI for Operations," and "AI for Customer Service." That's healthy growth, not architecture failure. Plan for it by documenting your splitting criteria: when a cluster has more than 15 pieces, consider promoting it to its own pillar. When a pillar has more than 8 clusters, consider splitting it. These rules keep the architecture clean as it scales.</p>
+  <p class="section-text">Review your architecture quarterly as part of your analytics cycle. Are the pillars still relevant? Have new clusters emerged organically from audience interest? Has a pillar gone stale with no new ideas flowing? The architecture should reflect your current reality, not the assumptions you made six months ago. Treat it as a living document that evolves with your business and audience.</p>
+  <p class="section-text">The best architectures feel obvious in hindsight. When every piece of content has a clear home, when gaps are visible at a glance, when new team members can navigate the system without a tutorial — that's architecture doing its job. Getting there takes iteration. Start simple, add structure as patterns emerge, and never stop refining.</p>
+  <p class="section-text">Your architecture is the foundation everything else in this course builds upon. Templates reference it for topic selection. Quality gates reference it for strategic alignment. Distribution uses it for scheduling balance. Analytics tracks performance by pillar and cluster. Without architecture, every other system floats without an anchor. With it, everything connects.</p>
+  <p class="section-text">Start your architecture today, even if it's rough. Three pillars on a napkin is better than no architecture at all. You'll refine it as you learn.</p>
+  <p class="section-text">The act of defining your pillars forces clarity about who you serve and what you stand for — and that clarity improves every piece of content you create, pipeline or not. Architecture isn't busywork. It's the strategic foundation that turns content chaos into content leverage.</p>
 </div>
 
 <div class="lesson-section">

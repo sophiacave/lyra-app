@@ -102,6 +102,35 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Metrics</span>
+  <h2 class="section-title">Measuring Your Portfolio's Total Impact</h2>
+  <p class="section-text">Individual workflow metrics tell you how one automation is performing. Portfolio metrics tell you how automation is transforming your work overall. Track these at the portfolio level:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Total hours saved per week:</strong> Sum the time savings across all active workflows. This is your headline number — the concrete value of your automation investment.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Automation coverage:</strong> What percentage of your repetitive tasks are now automated? Track this as a percentage and set a target — 50% coverage is a reasonable 6-month goal for most teams.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Mean time to automate:</strong> How long does it take you to go from identifying a process to having a running workflow? As your portfolio grows and you reuse more patterns, this number should decrease. Track it to prove the flywheel is working.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Portfolio reliability:</strong> Across all workflows, what's the aggregate success rate? A portfolio-level view reveals systemic issues that individual workflow monitoring might miss — like a shared API key that's about to expire affecting multiple workflows.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Long-Term Vision</span>
+  <h2 class="section-title">From Personal Automation to Team Infrastructure</h2>
+  <p class="section-text">The final evolution of a workflow portfolio is its transition from personal tool to team infrastructure. When your workflows are well-documented, well-tested, and well-monitored, they become assets that other people can use, extend, and build upon.</p>
+  <p class="section-text"><strong style="color: var(--green);">Shared template library:</strong> Your templates become the team's starting point. Instead of each person solving the same integration problem independently, they pull from a proven library. This accelerates the entire team's automation journey.</p>
+  <p class="section-text"><strong style="color: var(--green);">Consistent standards:</strong> When every workflow follows the same error handling, logging, and monitoring patterns, the team can debug any workflow — not just the ones they built. Consistency reduces the "bus factor" from 1 to N.</p>
+  <p class="section-text"><strong style="color: var(--green);">Compounding returns:</strong> One person automating their work saves hours. A team sharing automation patterns saves person-weeks. An organization with a mature automation culture operates at a fundamentally different level — not just faster, but structurally different in what's possible.</p>
+  <p class="section-text">This is the ultimate promise of your workflow portfolio. It starts with one automation. It ends with a transformed way of working.</p>
+  <p class="section-text">Think of your portfolio as infrastructure, not just a collection of tools. Infrastructure enables everything built on top of it. Roads enable commerce. Power grids enable industry. Your automation portfolio enables a fundamentally more productive way of working — for you, for your team, and eventually for your entire organization.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Continuous Improvement</span>
+  <h2 class="section-title">The Portfolio Is Never "Done"</h2>
+  <p class="section-text">The final lesson isn't really final. Your workflow portfolio is a living, evolving system. New tools emerge. AI capabilities expand. Your role changes. Your team grows. Each change creates new automation opportunities.</p>
+  <p class="section-text">Set a monthly "automation hour" where you review your portfolio, identify new opportunities, and improve existing workflows. One hour per month, twelve new improvements per year, each one making you more effective than the last. That's the compound effect in action. That's the portfolio mindset. That's how you build something that lasts.</p>
+  <p class="section-text">You started this course with a question: "Can I automate this?" You're ending it with a toolkit, a methodology, and the beginning of a portfolio. The first workflow is the hardest — not technically, but psychologically. Once you see that first automation running, saving you time every single day without any effort from you, there's no going back. Welcome to the automated future. It was waiting for you.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">What's Next</span>
   <h2 class="section-title">You've Got the Foundation</h2>
   <p class="section-text">Over ten lessons, you've learned to identify automation opportunities, design triggers and data flows, handle errors gracefully, integrate systems, test thoroughly, and monitor what you build. That's not theory — that's a complete toolkit for building real, production-grade AI-powered workflows.</p>

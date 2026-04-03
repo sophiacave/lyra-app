@@ -140,6 +140,30 @@ free: false
   <p class="section-text"><strong>Step 5:</strong> After each use, note improvements. Add them to the template. Over time, your template becomes a precision instrument tuned to your exact reporting needs.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Delivery</span>
+  <h2 class="section-title">Delivering Reports That Get Read</h2>
+  <p class="section-text">Creating a great report is only half the battle. Getting people to actually read it and act on it is the other half:</p>
+  <p class="section-text"><strong>Lead with the surprise:</strong> Open with the most unexpected finding. "Our highest-spending customers have the lowest satisfaction scores" grabs attention in a way that "Q3 revenue summary" never will.</p>
+  <p class="section-text"><strong>Keep it scannable:</strong> Bold the key numbers. Use bullet points. Break long paragraphs. Decision-makers scan before they read — make scanning productive.</p>
+  <p class="section-text"><strong>End with a clear ask:</strong> Every report should end with a specific recommended action and a request for a decision. "Based on this analysis, I recommend increasing the marketing budget for Channel A by 15%. Approve/modify/decline?"</p>
+  <p class="section-text"><strong>Choose the right delivery format:</strong> Some audiences want a PDF. Others want a live dashboard. Some want a 3-bullet-point Slack message. Ask AI to reformat the same analysis for different delivery channels.</p>
+  <p class="section-text"><strong>Follow up:</strong> A week after delivering, check: was the recommendation acted on? If not, why? This feedback loop improves your future reports and builds trust in your analysis.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Narrative</span>
+  <h2 class="section-title">Data Storytelling</h2>
+  <p class="section-text">The highest form of reporting is storytelling. Great data stories follow a narrative arc:</p>
+  <p class="section-text"><strong>Setting:</strong> "Last quarter, we launched three new marketing channels with a combined budget of $15,000."</p>
+  <p class="section-text"><strong>Conflict:</strong> "Overall conversions dropped 8% despite the increased spend. Something was wrong."</p>
+  <p class="section-text"><strong>Investigation:</strong> "When we segmented by channel, Channel A converted at 2x the rate of Channels B and C combined."</p>
+  <p class="section-text"><strong>Resolution:</strong> "By reallocating 70% of the budget to Channel A and cutting Channel C, we project a 25% conversion increase next quarter."</p>
+  <p class="section-text">Ask AI: "Turn this analysis into a data story. Give it a narrative arc — what was the situation, what did we discover, and what should we do about it." This format is far more memorable and persuasive than bullet points alone.</p>
+  <p class="section-text">Data storytelling is the highest-impact skill in this entire course. A perfectly analyzed dataset that nobody acts on is worth nothing. A well-told data story that drives a single important decision is worth everything.</p>
+  <p class="section-text">Practice this with every analysis you create. Over time, storytelling becomes second nature — and your reports will be the ones people actually read.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Take any analysis you've done in a previous lesson. Ask Claude to turn it into a polished report:</p>

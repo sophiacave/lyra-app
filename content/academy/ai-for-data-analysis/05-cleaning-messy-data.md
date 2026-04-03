@@ -114,6 +114,25 @@ free: false
   <p class="section-text"><strong>Free-text fields:</strong> Remove extra whitespace, fix obvious typos in common words, standardize capitalization. But be careful not to change the meaning — ask AI to flag anything it is unsure about rather than silently modifying it.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Critical</span>
+  <h2 class="section-title">When Not to Clean</h2>
+  <p class="section-text">Sometimes the "mess" is the signal. Before cleaning everything, consider:</p>
+  <p class="section-text"><strong>Outliers that are real:</strong> That $1,000,000 transaction might not be a typo — it might be your most important customer. Ask AI to investigate outliers before removing them. "Is this outlier consistent with any pattern, or does it look like a data entry error?"</p>
+  <p class="section-text"><strong>Missing data that means something:</strong> A blank "cancellation date" might mean the customer is still active, not that data is missing. Understand what blanks represent in your context before filling them.</p>
+  <p class="section-text"><strong>Preserving the original:</strong> Always keep a copy of the raw, uncleaned data. Every cleaning transformation is a judgment call, and you may need to revisit the original if a cleaning decision was wrong.</p>
+  <p class="section-text"><strong>Over-standardization:</strong> Forcing all text to lowercase eliminates the difference between "apple" (the fruit) and "Apple" (the company). Context matters. Clean enough to analyze, not so much that you lose meaning.</p>
+  <p class="section-text">The bottom line: cleaning is about making data fit for your specific analysis purpose. There is no universally "clean" dataset — only data that is clean enough for the question you are asking. Ask AI to help you find that balance.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Documentation</span>
+  <h2 class="section-title">Documenting Your Cleaning Process</h2>
+  <p class="section-text">Professional data work requires a cleaning log. Ask AI to generate one automatically:</p>
+  <p class="section-text"><strong>"After cleaning this data, provide a cleaning report that includes: number of rows before and after, number of duplicates removed, columns with missing values and how they were handled, standardization changes made, and outliers flagged. Format as a numbered list I can save with my analysis."</strong></p>
+  <p class="section-text">This log becomes essential when someone questions your findings. You can show exactly what was changed and why, demonstrating rigor and transparency in your analysis process.</p>
+</div>
+
   <div class="tip-box">
     <div class="tip-label">Python Data Cleaning</div>
     <p>Ask Claude to generate a cleaning script you can reuse on any dataset:</p>

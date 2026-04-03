@@ -149,6 +149,57 @@ Please:
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">Sprint Health Diagnostics</h2>
+  <p class="section-text">Beyond velocity, AI can diagnose the health of your sprint by analyzing patterns in how work moves through the process:</p>
+  <div class="prompt-box"><code>Here is data from our last sprint:
+
+Stories committed: [list with points]
+Stories completed: [list with points]
+Stories carried over: [list with reasons]
+Bugs found during sprint: [count and severity]
+Scope changes during sprint: [any stories added or removed]
+Team availability: [any unexpected absences]
+
+Please diagnose this sprint:
+1. Commitment accuracy — did we commit to the right amount?
+2. Completion pattern — were stories finished steadily or all at the end?
+3. Quality signal — does the bug count suggest we are moving too fast?
+4. Disruption analysis — how much did scope changes or absences impact the plan?
+5. Recommendations for next sprint's commitment level
+6. One specific process improvement to suggest based on this data</code></div>
+  <p class="section-text">Running this diagnostic after every sprint builds a history that makes each subsequent sprint more predictable. AI spots patterns across sprints that the team is too close to see — like consistently underestimating backend stories or always carrying over QA tasks.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <h2 class="section-title">Agile AI Anti-Patterns</h2>
+  <p class="section-text"><strong>Story Point Inflation:</strong> Using AI to estimate story points without team calibration. Story points are relative to YOUR team's capacity. AI can suggest estimates, but the team must validate them against their own reference stories. AI estimates are a starting point for discussion, not a final answer.</p>
+  <p class="section-text"><strong>Ceremony Bypass:</strong> Using AI output to skip team discussions. AI-drafted stories still need team refinement. AI retro analysis still needs team conversation. The ceremonies exist for alignment and shared understanding — AI makes them shorter and better-prepared, not unnecessary.</p>
+  <p class="section-text"><strong>Metric Obsession:</strong> Tracking so many AI-generated metrics that the team feels surveilled rather than supported. Pick 3-4 key health indicators — velocity trend, commitment accuracy, bug escape rate, action item completion — and focus on those. More metrics create noise, not insight.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Technique</span>
+  <h2 class="section-title">Release Planning with AI</h2>
+  <p class="section-text">Release planning operates at a higher level than sprint planning — it asks "what features will ship in the next quarter?" AI helps you answer this with data instead of wishful thinking:</p>
+  <div class="prompt-box"><code>Here is our product backlog with estimated story points, and our team's average velocity:
+
+Backlog: [paste items with point estimates and priorities]
+Velocity: [average points per sprint, with range from last 6 sprints]
+Sprint duration: [X weeks]
+Releases planned: [dates or intervals]
+
+Please:
+1. Group backlog items into releases based on priority and velocity capacity
+2. For each release, show: total points, estimated sprints needed, confidence level
+3. Identify which features are at risk of not making their target release
+4. Suggest scope cuts if any release is overcommitted
+5. Flag dependencies between features that constrain the release sequence</code></div>
+  <p class="section-text">Release planning with AI gives product owners an honest picture: "At current velocity, we can ship features A, B, and C in Q2. Feature D pushes to Q3 unless we increase capacity or reduce scope on B." That clarity prevents the cycle of over-promising and under-delivering that damages stakeholder trust.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Agile with AI — Key Concepts","cards":[{"front":"AI-Assisted Sprint Planning","back":"Feed AI your backlog, team velocity, and sprint duration. It suggests a sprint plan, flags overcommitment against historical velocity, and identifies capacity issues."},{"front":"User Story Generation","back":"Give AI a feature concept — it produces stories with acceptance criteria, edge cases, and testable conditions. Planning meetings shift from writing to reviewing and refining."},{"front":"Retrospective Analysis","back":"Feed AI 5-6 retro outputs. It identifies recurring themes, tracks which action items were actually completed, and recommends the one change with the most impact."},{"front":"Backlog Audit","back":"AI identifies duplicate tickets, flags stories untouched for 90+ days, suggests groupings by theme, and recommends prioritization by effort-vs-impact."},{"front":"Velocity Forecasting","back":"Give AI 8-10 sprints of velocity data — it produces a forecast with confidence intervals for roadmap conversations with stakeholders who want everything yesterday."}]}'></div>
 </div>
 

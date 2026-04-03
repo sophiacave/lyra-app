@@ -113,6 +113,33 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Anti-Patterns</span>
+  <h2 class="section-title">Human-in-the-Loop Mistakes to Avoid</h2>
+  <p class="section-text"><strong style="color: var(--red);">The "approve everything" trap:</strong> If the human approves 99.5% of items without reading them, the approval gate is theater — it costs time without adding value. Either remove it or make the review interface more engaging.</p>
+  <p class="section-text"><strong style="color: var(--red);">The "one approver" risk:</strong> A single point of failure. That person gets sick, goes on vacation, or changes roles — and the workflow stops. Always have backup approvers and escalation timeouts.</p>
+  <p class="section-text"><strong style="color: var(--red);">The "review everything forever" stall:</strong> Some teams never graduate from approval gates because moving to less oversight feels risky. Set explicit criteria: "After 500 approved items with less than 2% override rate, this category moves to review queue." Make the graduation automatic and data-driven.</p>
+  <p class="section-text"><strong style="color: var(--red);">The "hidden feedback" gap:</strong> Humans review and approve, but their decisions never feed back into the AI model. The AI never improves. Design feedback loops where human overrides become training data for better future predictions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Future-Proofing</span>
+  <h2 class="section-title">Planning for Changing Roles and Teams</h2>
+  <p class="section-text">Teams change. People move roles. New hires join. Your human-in-the-loop design needs to accommodate these changes without requiring a complete workflow rebuild:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Role-based routing:</strong> Don't hardcode "send to Sarah for approval." Route to a role: "send to the support-lead role." When Sarah moves to a new position, update the role assignment — not the workflow. One change, not twenty.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Training documentation:</strong> When a new person takes on an approval role, they need to know what they're approving, what criteria to use, and how to override. Document this as part of the workflow, not as a separate tribal knowledge transfer.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Gradual onboarding:</strong> New reviewers start by shadowing — they see the review queue and the AI's recommendations, but a senior reviewer makes the final call. After a ramp-up period, they graduate to independent reviewing. This mirrors the trust ladder but for humans, not AI.</p>
+  <p class="section-text">Planning for change from day one makes your workflow resilient. The alternative — hardcoding individuals into workflows — creates fragile systems that break every time someone goes on vacation. Design for roles, not people, and your human-in-the-loop architecture will outlast any individual contributor.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Legal and Compliance</span>
+  <h2 class="section-title">When Regulations Require Human Review</h2>
+  <p class="section-text">Some industries have legal requirements for human oversight. Financial services, healthcare, and legal workflows may be legally required to have a human review certain decisions — regardless of how accurate the AI is. Know your compliance requirements before designing your automation boundaries. When in doubt, keep the human checkpoint and document why it exists.</p>
+  <p class="section-text">Even outside regulated industries, consider the reputational cost of full automation in sensitive areas. Customer-facing communications, financial transactions, and anything that touches personal data all benefit from human oversight — at least initially. You can always automate more later. You can't un-send a wrong email to 10,000 customers.</p>
+  <p class="section-text">The bottom line: human-in-the-loop isn't a limitation — it's a feature. The best workflows know exactly when to act autonomously and when to pause for human wisdom. Getting that boundary right is what separates reliable automation from risky automation.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Human-in-the-Loop Design","cards":[{"front":"Approval Gate","back":"Workflow pauses and waits for thumbs-up before proceeding. AI drafts a blog post, you review, it publishes only after approval."},{"front":"Review Queue","back":"Workflow completes but flags items for after-the-fact review. AI responds to tickets automatically, daily human review catches issues."},{"front":"Escalation Path","back":"Routine cases handled automatically, humans only for exceptions. Refunds under $50 auto-processed, larger ones go to a manager."},{"front":"The Bottleneck Trap","back":"A workflow that stops dead until someone clicks approve — and that person is on vacation. Always set timeouts and backup approvers."},{"front":"The Trust Ladder","back":"Start with approval gates. As AI proves accurate, move to review queues. Eventually escalation-only. Climb based on evidence, not faith."}]}'></div>
 </div>
 

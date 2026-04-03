@@ -148,9 +148,44 @@ Then draw the dependency chain and identify: which tasks can run in parallel? Wh
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Contingency Planning</span>
+  <h2 class="section-title">Building Plan B (and Plan C)</h2>
+  <p class="section-text">No project plan survives first contact with reality unchanged. The best PMs plan for the changes before they happen. AI makes contingency planning fast enough that you can actually do it — instead of the usual approach of winging it when things go sideways.</p>
+  <div class="prompt-box"><code>Here is my project plan:
+
+[Paste plan]
+
+Please generate contingency plans for these three scenarios:
+1. The timeline is cut by 25% — what do we cut, what do we keep, and what is the minimum viable deliverable?
+2. We lose our most critical team member mid-project — how do we redistribute work and what slips?
+3. A major requirement changes after we are 50% through development — what is the impact assessment and how do we adapt?
+
+For each scenario: describe the trigger, the immediate response, the adjusted plan, and what we communicate to stakeholders.</code></div>
+  <p class="section-text">Having contingency plans ready before you need them transforms crisis moments from panic into execution. When the timeline does get cut, you pull out the pre-built plan, adjust for specifics, and respond within hours instead of scrambling for days. That is the kind of preparedness that defines senior PMs.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Common Pitfalls</span>
+  <h2 class="section-title">Planning Mistakes AI Helps You Avoid</h2>
+  <p class="section-text"><strong>The Optimism Trap:</strong> PMs consistently underestimate how long things take. AI counters this by providing three-point estimates and asking "what usually goes wrong with projects like this?" — forcing you to confront the realistic scenario instead of the best case.</p>
+  <p class="section-text"><strong>The Missing Phase:</strong> Every project has phases that PMs forget to plan for — data migration, user training, documentation, post-launch support. AI has seen thousands of project plans and will include these unglamorous-but-essential phases automatically.</p>
+  <p class="section-text"><strong>The Phantom Parallel:</strong> Assuming tasks can run in parallel when they actually share a hidden dependency — the same person, the same test environment, the same approval process. AI's dependency mapping catches these collisions before they cause real delays.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Pro Tip</span>
   <h2 class="section-title">Iterate, Don't Accept</h2>
   <p class="section-text">Never take the first output as final. Push back. Ask "what about [specific constraint]?" Challenge assumptions. The best AI-assisted plans come from 3-4 rounds of conversation, not one prompt. You're collaborating, not delegating.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Technique</span>
+  <h2 class="section-title">Stakeholder-Aligned Planning</h2>
+  <p class="section-text">A project plan serves multiple audiences. AI helps you create different views of the same plan for different stakeholders without maintaining separate documents:</p>
+  <p class="section-text"><strong>Executive view:</strong> Phases, key milestones, budget checkpoints. No task-level detail. "Phase 2 delivers the API integration by March 15 at a cost of $45K."</p>
+  <p class="section-text"><strong>Team view:</strong> Full task breakdown with assignments, dependencies, and daily/weekly granularity. This is where the real work lives.</p>
+  <p class="section-text"><strong>Client view:</strong> Deliverable milestones, review points, and decision gates. Focuses on what the client sees and when they need to act.</p>
+  <p class="section-text">Ask AI to generate all three views from a single detailed plan. Same underlying data, different levels of abstraction. This saves you from maintaining three separate plans that inevitably drift out of sync.</p>
 </div>
 
 <div class="lesson-section">

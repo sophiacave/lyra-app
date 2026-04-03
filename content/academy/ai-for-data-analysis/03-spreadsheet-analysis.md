@@ -113,6 +113,39 @@ free: true
   <p class="section-text"><strong>Shared workbooks:</strong> When a team collaborates on the same sheet, AI analysis works best as a side investigation.</p>
   <p class="section-text"><strong>Recurring reports:</strong> Once AI helps you build the formula or template, run it natively in the sheet going forward.</p>
   <p class="section-text">The sweet spot: use AI to figure out the approach, then implement it in your spreadsheet for ongoing use.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Large Datasets</span>
+  <h2 class="section-title">Working with Large Spreadsheets</h2>
+  <p class="section-text">Most AI tools have context limits. When your spreadsheet has thousands of rows, you need a strategy:</p>
+  <p class="section-text"><strong>Summary statistics first:</strong> Before sending raw data, calculate basic stats in the spreadsheet (totals, averages, counts by category) and send those. AI can identify patterns from summaries without needing every row.</p>
+  <p class="section-text"><strong>Representative sampling:</strong> Send the first 50 rows, 50 from the middle, and the last 50. Tell AI: "This is a representative sample of [total] rows. The full dataset covers [time period] with columns [list]. Analyze this sample and tell me what you'd need to see to confirm any patterns."</p>
+  <p class="section-text"><strong>Column-by-column analysis:</strong> For very wide spreadsheets, analyze a few related columns at a time rather than pasting everything. Revenue and date first, then customer segment and region, then product details.</p>
+  <p class="section-text"><strong>Ask for code instead of analysis:</strong> For truly large datasets (10,000+ rows), ask AI to write a Python or Google Apps Script that runs the analysis directly on the full dataset. This bypasses context limits entirely.</p>
+  <p class="section-text"><strong>Pre-aggregate in the spreadsheet:</strong> Use pivot tables or SUMIFS to create a summary table, then paste that into AI. A 10,000-row dataset becomes a 50-row summary that AI can analyze deeply.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Errors</span>
+  <h2 class="section-title">Spreadsheet Mistakes AI Catches</h2>
+  <p class="section-text">One of the most valuable uses of AI in spreadsheet work is error detection. Paste your spreadsheet data and ask AI to audit it:</p>
+  <p class="section-text"><strong>Formula errors:</strong> "Review these formulas for common mistakes — circular references, incorrect ranges, missing absolute references, and division by zero risks."</p>
+  <p class="section-text"><strong>Data type mismatches:</strong> Numbers stored as text, dates that Excel does not recognize, currency values with inconsistent formatting. AI spots these instantly.</p>
+  <p class="section-text"><strong>Hidden assumptions:</strong> "This spreadsheet calculates projected revenue. What assumptions are baked into these formulas? Are any of them unreasonable?"</p>
+  <p class="section-text"><strong>Logic gaps:</strong> "Walk through the logic of this spreadsheet from input to output. Are there any steps where the calculation seems wrong or where a different approach would be more accurate?"</p>
+  <p class="section-text">These audit prompts have saved professionals from embarrassing errors in board presentations, client reports, and financial filings. Five minutes of AI review can prevent a costly mistake.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Cross-Platform</span>
+  <h2 class="section-title">Working Across Spreadsheet Platforms</h2>
+  <p class="section-text">Excel, Google Sheets, and Numbers have slightly different formula syntax. AI handles the translation seamlessly:</p>
+  <p class="section-text"><strong>"Write this formula for Google Sheets"</strong> — AI uses ARRAYFORMULA, QUERY, and Google-specific functions.</p>
+  <p class="section-text"><strong>"Convert this to Excel format"</strong> — AI swaps Google-only functions for Excel equivalents and handles differences like semicolons vs. commas in European Excel.</p>
+  <p class="section-text"><strong>"Will this work in both Excel and Google Sheets?"</strong> — AI identifies compatibility issues and suggests universal alternatives.</p>
+  <p class="section-text">When in doubt, tell AI which platform you use. It will tailor the formula syntax, keyboard shortcuts, and feature references to your specific tool.</p>
+</div>
 
   <div class="tip-box">
     <div class="tip-label">Python Bonus</div>

@@ -127,6 +127,26 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Resilience</span>
+  <h2 class="section-title">Building Integrations That Survive Outages</h2>
+  <p class="section-text">External services go down. It's not a matter of if, but when. Your integration layer needs to handle this gracefully:</p>
+  <p class="section-text"><strong style="color: var(--green);">Queue-based decoupling:</strong> Instead of calling an API directly, push the request to a queue. A separate worker processes the queue. If the API is down, the queue holds the requests until it recovers. No data is lost, and the workflow doesn't block.</p>
+  <p class="section-text"><strong style="color: var(--green);">Multi-provider fallback:</strong> For critical integrations (email, notifications), have a backup provider ready. If SendGrid is down, route through Mailgun. If Twilio SMS fails, try Vonage. The switch should be automatic — no human intervention required at 3am.</p>
+  <p class="section-text"><strong style="color: var(--green);">Health check endpoints:</strong> Before making a full API call, ping the service's health endpoint (most APIs have one at <code>/health</code> or <code>/status</code>). If it's unhealthy, skip directly to the fallback provider and save the latency of a failed request.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cost Management</span>
+  <h2 class="section-title">Integration Costs Add Up Faster Than You Think</h2>
+  <p class="section-text">Every API call has a cost — direct (per-request pricing) or indirect (rate limit consumption). As your workflow portfolio grows, these costs compound:</p>
+  <p class="section-text"><strong style="color: var(--orange);">Audit your API usage monthly.</strong> Most providers have usage dashboards. Check them. You might discover a workflow that makes 10,000 API calls per month when 1,000 would suffice — because it's polling every 10 seconds instead of using webhooks.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Choose the right pricing tier.</strong> Many APIs offer free tiers that cover light usage. Start free, upgrade when you actually hit limits. Don't prepay for capacity you haven't proven you need.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Cache aggressively.</strong> If you look up the same company info 50 times in a day, that's 49 wasted API calls. Cache responses for reasonable durations. Even a 1-hour cache can cut API costs by 90%.</p>
+  <p class="section-text">Integration costs are one of the most overlooked budget items in automation projects. A workflow that costs $0.01 per run seems trivial — until it runs 100,000 times per month and your bill is $1,000. Plan for scale from the start.</p>
+  <p class="section-text">The best integration architects think about cost from day one — not as an afterthought. Choose APIs with generous free tiers for development, negotiate volume discounts for production, and always have a fallback plan if a provider raises prices. Your workflow shouldn't be held hostage by any single vendor's pricing decisions.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Integration Patterns","cards":[{"front":"Point-to-Point Integration","back":"Tool A connects directly to Tool B. Simple for two tools, but 5 tools need 10 connections and 10 tools need 45. Becomes spaghetti fast."},{"front":"Hub-and-Spoke Integration","back":"All tools connect to a central hub like Make or Zapier. Adding a new tool means one new connection, not five. Command center approach."},{"front":"APIs in Plain English","back":"A structured way for two tools to exchange data. You send a request, get a response. Usually JSON format — organized text with labels and values."},{"front":"API Authentication","back":"How APIs know you\\\'re allowed to use them. Usually API keys — treat like passwords. Never share publicly, store securely, rotate if compromised."},{"front":"No-Code vs. Custom: The 80/20 Rule","back":"No-code connectors (Zapier, Make) handle 80% of needs. Build custom only for complex transformations, missing connectors, or performance requirements."}]}'></div>
 </div>
 

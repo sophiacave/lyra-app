@@ -90,6 +90,16 @@ Analyze and return:
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">The SEO content creation workflow.</h2>
+  <p class="section-text">Creating SEO-optimized content does not mean writing for robots. Here is the workflow that produces content humans love reading and Google loves ranking:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Step 1 — Choose your keyword:</strong> Use AI to brainstorm 20 long-tail keywords. Pick one where you have genuine expertise and realistic ranking potential. Validate by Googling it — if page one is all major publications, pick a more specific keyword.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Step 2 — Study the SERPs:</strong> Google your keyword and read the top 3 results. Note what they cover and what they miss. Your article needs to cover everything they cover plus the gaps. Ask AI: <em>"Based on these topics the top results cover, what questions are they NOT answering?"</em></p>
+  <p class="section-text"><strong style="color:var(--green)">Step 3 — Write for humans first:</strong> Use the layered writing method from Lesson 3. Your unique angle, stories, and expertise come first. SEO optimization comes last. Content that reads like it was written for an algorithm will not rank because it will not earn engagement signals.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Step 4 — Optimize structure:</strong> After the draft is done, run the SEO checklist. Add headers, refine the title tag, write the meta description, and weave in secondary keywords where they fit naturally. This is a 15-minute polish, not a rewrite.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Learn</span>
   <h2 class="section-title">Key SEO concepts.</h2>
   <div data-learn="FlashDeck" data-props='{"title":"SEO Content Optimization","cards":[{"front":"Search Intent","back":"The reason behind a search query. There are four types: informational, navigational, commercial, and transactional. Matching intent matters more than hitting keywords."},{"front":"Long-Tail Keywords","back":"Specific, niche phrases with lower competition. Solo creators can realistically rank for these because big sites ignore them."},{"front":"Meta Description","back":"150-160 characters that summarize your article in search results. This is your ad copy — it must include the keyword and compel clicks."},{"front":"Content Gap Analysis","back":"Finding topics your audience searches for that you have not yet covered. AI can identify these gaps without expensive SEO tools."},{"front":"On-Page SEO Structure","back":"Title tags, header hierarchy (H2/H3), internal links, and external references. Google uses these to understand your content\\u0027s depth and relevance."}]}'></div>
@@ -159,6 +169,27 @@ Analyze and return:
   <h2 class="section-title">SEO content optimization quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"SEO Content Optimization","questions":[{"q":"What is the most important thing to understand before choosing keywords?","options":["Monthly search volume","The search intent behind the query","Your domain authority score","Competitor keyword lists"],"correct":1,"explanation":"Matching content to what someone actually wants when they search — their intent — matters more than hitting keywords. Google rewards genuine relevance."},{"q":"Why should independent creators target long-tail keywords?","options":["Long-tail keywords have higher search volume","Long-tail keywords are easier to rank for because big sites ignore specific, niche topics","Long-tail keywords cost less in paid search","Long-tail keywords improve site speed"],"correct":1,"explanation":"You cannot outrank Forbes for best productivity apps. But you can absolutely rank for productivity system for freelance designers with ADHD — specific and underserved."},{"q":"What should the meta description accomplish?","options":["Include every keyword you are targeting","Act as ad copy in search results — summarize the article and make people want to click","Match the first paragraph of the article word for word","Be as long as possible to signal content depth"],"correct":1,"explanation":"Your meta description is your ad in the search results. 150-160 characters that summarize the content and include the keyword naturally — compelling enough for a human to click."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mindset</span>
+  <h2 class="section-title">SEO is a long game — patience is the strategy.</h2>
+  <p class="section-text">SEO does not produce instant results. A perfectly optimized article might take 3-6 months to reach its ranking potential. This is normal. Google needs time to crawl, index, and evaluate your content against competitors.</p>
+  <p class="section-text">The mistake most creators make is abandoning SEO after two weeks because they do not see immediate traffic. The creators who win at search are the ones who publish consistently optimized content for six months and let the compound effect take over. Every article you publish strengthens your site's overall authority.</p>
+  <p class="section-text">Use AI to keep the momentum going without burnout. Batch your SEO optimization — audit five old posts in one session, refresh the weakest two, and track their rankings over the next 90 days. Systematic, patient, compounding. That is the SEO game.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Reference</span>
+  <h2 class="section-title">SEO terms every content creator should know.</h2>
+  <p class="section-text"><strong>SERP:</strong> Search Engine Results Page — what you see when you Google something. Your goal is to appear on page one, ideally in positions 1-3.</p>
+  <p class="section-text"><strong>Domain Authority:</strong> A score (0-100) predicting how likely your site is to rank. New sites start low. Authority builds with quality content and backlinks over time.</p>
+  <p class="section-text"><strong>Backlink:</strong> A link from another website to yours. Google treats these as votes of confidence. Quality matters more than quantity — one link from a respected site beats ten from spam sites.</p>
+  <p class="section-text"><strong>Crawling and Indexing:</strong> Google sends bots to read your pages (crawling) and store them in its database (indexing). If your page is not indexed, it cannot rank. Most pages get indexed automatically within days.</p>
+  <p class="section-text"><strong>Bounce Rate:</strong> The percentage of visitors who leave after viewing only one page. A high bounce rate on a blog post might signal that your content did not match the searcher's intent.</p>
+  <p class="section-text"><strong>Canonical URL:</strong> The preferred version of a page when duplicate content exists. If the same content lives at two URLs, the canonical tag tells Google which one to rank.</p>
+  <p class="section-text"><strong>Keyword Cannibalization:</strong> When two of your own pages compete for the same keyword, splitting your ranking potential. Fix by consolidating them into one comprehensive page or targeting different keywords on each.</p>
+  <p class="section-text">You do not need to memorize all of these terms. Bookmark this section and reference it whenever you encounter a term in your SEO tools or analytics. Understanding the language makes every AI-powered SEO audit more actionable.</p>
 </div>
 
 <nav class="lesson-nav">

@@ -114,6 +114,17 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Logging</span>
+  <h2 class="section-title">Error Logs That Actually Help You Debug</h2>
+  <p class="section-text">A log entry that says "Error occurred" is useless. A log entry that says "CRM API returned 429 (rate limit exceeded) during contact creation for customer_id=cust_7823 at step 3 of onboarding workflow, attempt 2 of 3" tells you everything. Good error logs include:</p>
+  <p class="section-text"><strong style="color: var(--green);">What failed:</strong> The specific step, function, or API call.</p>
+  <p class="section-text"><strong style="color: var(--green);">Why it failed:</strong> The error code, message, and response body.</p>
+  <p class="section-text"><strong style="color: var(--green);">What data was involved:</strong> The input that triggered the error (redact sensitive fields).</p>
+  <p class="section-text"><strong style="color: var(--green);">Where in the retry cycle:</strong> Is this attempt 1, 2, or 3? Has the fallback been triggered?</p>
+  <p class="section-text"><strong style="color: var(--green);">When it happened:</strong> Timestamp with timezone. This is critical for correlating with external service outages.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Error Handling and Fallbacks","cards":[{"front":"Errors Are Expected","back":"APIs go down, data arrives malformed, rate limits get hit. These are normal operating conditions, not signs your workflow is broken."},{"front":"Retry Strategy","back":"Wait 5s, then 15s, then 45s — increasing intervals. Most transient errors resolve themselves within 3 attempts."},{"front":"Fallback Strategy","back":"Retries exhausted? Switch to Plan B. Use backup service, apply a default category, flag for human review."},{"front":"AI Confidence Thresholds","back":"Above 80% = act automatically. Between 50-80% = act but flag for review. Below 50% = route to a human."},{"front":"Graceful Degradation","back":"If step 3 of 6 fails, can steps 4-6 still run with partial data? Design steps to be as independent as possible."}]}'></div>
 </div>
 

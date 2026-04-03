@@ -122,6 +122,18 @@ free: false
   <p class="section-text"><strong>Test across segments:</strong> Does the pattern hold when you split the data differently? If a trend only appears in one segment and disappears in all others, it might be a segment-specific phenomenon rather than a general pattern.</p>
   <p class="section-text"><strong>Look for external explanations:</strong> Before concluding that your actions caused a change, ask if something external happened. A sudden traffic spike might be a viral mention, not your SEO working. A revenue dip might be a holiday, not a product problem.</p>
   <p class="section-text"><strong>Reproduce with different methods:</strong> If AI found a pattern using one approach, ask it to verify using a different method. "You found this correlation using monthly averages. Does the same relationship hold when we look at weekly data?"</p>
+  <p class="section-text">A finding that survives multiple verification approaches is a finding you can act on with confidence. A finding that crumbles under scrutiny just saved you from a bad decision.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Communication</span>
+  <h2 class="section-title">Communicating Patterns Effectively</h2>
+  <p class="section-text">Finding a pattern is only half the job. Communicating it clearly is the other half:</p>
+  <p class="section-text"><strong>State the pattern plainly:</strong> "Customers who use Feature X within their first week have a 40% higher retention rate than those who don't." No jargon. No hedging. Clear and direct.</p>
+  <p class="section-text"><strong>Quantify the impact:</strong> "This pattern affects approximately 2,000 customers per month and represents an estimated $50,000 in recoverable revenue." Numbers make patterns real and actionable.</p>
+  <p class="section-text"><strong>Acknowledge uncertainty:</strong> "This correlation is strong but based on 4 months of data. We recommend monitoring for 2 more months before making major resource commitments." Honest about limitations, confident about the finding.</p>
+  <p class="section-text"><strong>Suggest the next step:</strong> "To confirm this pattern is causal, we recommend an A/B test where new users are prompted to try Feature X during onboarding." Always connect the pattern to an action.</p>
+  <p class="section-text">Ask AI: "Summarize this pattern for a non-technical audience. State what it is, why it matters, how confident we should be, and what we should do about it."</p>
 </div>
 
   <div class="tip-box">

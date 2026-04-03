@@ -30,8 +30,14 @@ free: false
   <span class="section-label">Overview</span>
   <h2 class="section-title">Five days. Real results. No flailing.</h2>
   <p class="section-text">Most business owners spend their first week with AI opening 15 tabs, signing up for 8 tools, getting overwhelmed, and going back to doing things the old way. This lesson gives you a different plan: one tool, one workflow, one result per day. By Friday, you'll have real time savings to point to.</p>
+  <p class="section-text">This lesson is different from every other lesson in the course. The other lessons teach frameworks and concepts. This lesson tells you exactly what to do, hour by hour, for five consecutive days. Follow the plan as written. Do not improvise. Do not skip days. The plan is battle-tested — it is the sequence that produces results most consistently across businesses of every size and industry.</p>
+
   <p class="section-text">The plan is designed deliberately. Day 1 is setup — not because setup is exciting but because running into a payment wall or login issue on Day 2 derails everything. Day 2 automates one workflow you already do, so you feel the ROI immediately. Day 3 produces real content you can actually use. Day 4 extracts insight from data you already have. Day 5 measures what you accomplished so you have a number — not a feeling — to bring to your team or report to yourself.</p>
   <p class="section-text">Resist the urge to skip ahead. The person who spends Day 1 building a custom AI chatbot instead of getting set up properly is the same person who gives up by Day 3. The person who follows this plan is the one who, in 90 days, has a fully functioning AI stack and a team trained to use it.</p>
+
+  <p class="section-text">Why five days and not one? Because AI adoption is a habit, not an event. Signing up for a tool is an event. Using it consistently for five consecutive work days is the beginning of a habit. By Friday, the tool is no longer something you "try" — it is something you use. That shift from experimentation to routine is the real goal of this lesson.</p>
+
+  <p class="section-text">If you are a manager implementing AI for a team, have everyone follow this same 5-day plan simultaneously. Shared experience creates shared vocabulary, shared prompts, and shared enthusiasm. A team that learns together adopts faster than individuals learning alone.</p>
   <p class="section-text">Each day has three tasks. Tasks take 30-60 minutes each. The whole week requires roughly 2-3 hours of focused work. That's it. The rest is the AI working while you do other things.</p>
 </div>
 
@@ -166,6 +172,30 @@ Give me:
   <h2 class="section-title">Every day has one primary outcome.</h2>
   <p class="section-text">Each day of the plan has a primary goal — the one outcome that makes the day a success even if nothing else goes perfectly. Knowing the primary goal per day helps you prioritize when time is tight and evaluate whether a day actually delivered what it was supposed to.</p>
 
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Week 1 Scorecard</span>
+  <h2 class="section-title">Grade your first week honestly.</h2>
+  <p class="section-text">At the end of Day 5, fill out this scorecard. It takes 5 minutes and gives you a clear picture of whether your first week was a success — and what to focus on in Week 2.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:.75rem;font-size:.85rem;color:#a1a1aa">
+      <div><span style="color:#e5e5e5;font-weight:600">Total hours saved this week:</span> [number] — If zero, your prompts need work. If 2+, you are on track.</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Number of prompts saved to library:</span> [number] — Target is 5+. If under 3, spend 10 minutes saving your best ones now.</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Pieces of content created with AI:</span> [number] — At least 1 should be published or sent. Zero published means the barrier is confidence, not capability.</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Workflows automated:</span> [number] — Even 1 working Zap is a win. If zero, revisit Day 2 next week.</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Dollar value of time saved:</span> $[number] — Hours saved x your hourly rate. Compare this to your $20/month tool cost. The ratio is your Week 1 ROI.</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Biggest surprise:</span> [what worked better than expected or worse than expected]</div>
+      <div><span style="color:#e5e5e5;font-weight:600">Week 2 focus:</span> [the one thing you want to improve or expand next week]</div>
+    </div>
+  </div>
+
+  <p class="section-text">Save this scorecard. Do the same exercise at the end of Week 2, Week 4, and Week 12. The trend line is more important than any single week's numbers. If hours saved per week is climbing, you are building the right habits. If it is flat, your prompts and workflows need attention. If it is declining, something broke — find it and fix it.</p>
+
+  <p class="section-text"><strong>The Week 1 success threshold:</strong> if you saved at least 2 hours, published at least 1 piece of content, and saved at least 3 prompts, your first week was a success. Everything else is a bonus. Do not let perfect be the enemy of good — the goal is to start, not to optimize. Optimization comes in weeks 2 through 12.</p>
+
+  <p class="section-text">If you did not hit the threshold, do not start over. Instead, repeat the day you struggled with most. Most people struggle with Day 2 (automation) because connecting tools feels more technical than writing. Give yourself grace. AI adoption is a skill like any other — it improves with practice, not perfection.</p>
 </div>
 
 </div>

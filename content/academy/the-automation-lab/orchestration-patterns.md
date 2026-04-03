@@ -96,6 +96,22 @@ free: false
   </div>
 
   <div class="section">
+    <h2>Implementation Considerations</h2>
+    <p>Each pattern has different requirements for error handling and state management:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8">State Management</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Pipelines need shared state between steps — the output of step N must be accessible to step N+1. Fan-out systems need independent state per worker. Supervisors need a global view of all worker states. Swarms need distributed state that any agent can read and write.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+        <strong style="color:#f472b6">Error Propagation</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">In a pipeline, errors must propagate forward — downstream steps need to know that upstream failed. In fan-out, errors are isolated — one worker failing should not affect others. In supervisor patterns, errors propagate upward to the supervisor for centralized handling.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Hybrid Patterns in Production</h2>
     <p>Real systems rarely use a single pattern. Here are three common hybrids you will encounter in production:</p>
 
@@ -144,6 +160,51 @@ free: false
   </div>
 
   <div data-learn="QuizMC" data-props='{"title":"Orchestration Patterns Quiz","questions":[{"q":"You need to process user uploads: validate, then resize, then store, then notify. What pattern?","options":["Fan-Out","Pipeline","Supervisor","Swarm"],"correct":1,"explanation":"Sequential processing where each step depends on the previous \u2014 classic Pipeline pattern. Validate must finish before resize starts."},{"q":"A new blog post needs to be shared on Twitter, LinkedIn, Email, and Slack simultaneously. What pattern?","options":["Pipeline","Supervisor","Fan-Out","Swarm"],"correct":2,"explanation":"One trigger, multiple independent actions in parallel \u2014 Fan-Out pattern. Each channel is independent."},{"q":"You have 5 unreliable scraping agents and need one to watch them all and restart failures. What pattern?","options":["Fan-Out","Swarm","Pipeline","Supervisor"],"correct":3,"explanation":"A dedicated overseer monitoring workers and intervening on failure \u2014 Supervisor pattern."},{"q":"What is the key characteristic of the Swarm pattern?","options":["One master agent controls all workers","Agents process tasks sequentially","Agents coordinate peer-to-peer with no central hierarchy","A scheduler triggers agents one by one"],"correct":2,"explanation":"Swarms have no hierarchy \u2014 agents coordinate directly through shared state. Behavior emerges from their interactions."},{"q":"A supervisor agent crashes. What happens to the workers?","options":["They all stop immediately","They keep running but nobody monitors or recovers failures","They automatically elect a new supervisor","Nothing \u2014 supervisors are optional"],"correct":1,"explanation":"The supervisor is a single point of failure. Workers continue running, but if they fail, nobody restarts them. Solution: make the supervisor stateless and restartable."}]}'></div>
+
+  <div class="section">
+    <h2>Choosing a Pattern: Decision Matrix</h2>
+    <p>Use this matrix to choose the right pattern quickly. Match your situation to the row that best describes it:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.8;overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse">
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem;color:#e5e5e5;font-weight:bold">Situation</td>
+          <td style="padding:.5rem;color:#e5e5e5;font-weight:bold">Pattern</td>
+          <td style="padding:.5rem;color:#e5e5e5;font-weight:bold">Why</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem">Steps must run in order</td>
+          <td style="padding:.5rem;color:#8b5cf6">Pipeline</td>
+          <td style="padding:.5rem">Each step depends on the previous step's output</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem">One event, many independent actions</td>
+          <td style="padding:.5rem;color:#34d399">Fan-Out</td>
+          <td style="padding:.5rem">Actions are independent and can run in parallel</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem">Unreliable workers need oversight</td>
+          <td style="padding:.5rem;color:#fb923c">Supervisor</td>
+          <td style="padding:.5rem">A manager agent handles failures and restarts</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem">Dynamic task routing, no fixed hierarchy</td>
+          <td style="padding:.5rem;color:#ef4444">Swarm</td>
+          <td style="padding:.5rem">Agents self-organize based on capabilities</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+          <td style="padding:.5rem">Sequential processing then parallel delivery</td>
+          <td style="padding:.5rem;color:#38bdf8">Pipeline + Fan-Out</td>
+          <td style="padding:.5rem">Data integrity first, then throughput</td>
+        </tr>
+        <tr>
+          <td style="padding:.5rem">Many identical workers, needs reliability</td>
+          <td style="padding:.5rem;color:#f472b6">Supervisor + Pipeline</td>
+          <td style="padding:.5rem">Supervisor manages pipeline worker fleet</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
   <div data-learn="FlashDeck" data-props='{"title":"The 4 Orchestration Patterns","cards":[{"front":"Pipeline Pattern","back":"A \u2192 B \u2192 C. Sequential. Each agent\u0027s output is the next agent\u0027s input. Use when steps have strict dependencies. Fails when one step blocks."},{"front":"Fan-Out Pattern","back":"A \u2192 B, C, D simultaneously. Parallel independent actions. Use when one event triggers multiple independent tasks. Fails when results need merging."},{"front":"Supervisor Pattern","back":"A supervisor watches workers and intervenes on failure. Use when reliability is critical. Single point of failure if supervisor crashes."},{"front":"Swarm Pattern","back":"Peer-to-peer, no hierarchy. Agents coordinate through shared state. Most resilient but hardest to debug. Used by OpenAI Swarm framework."},{"front":"When does Pipeline fail?","back":"When one step blocks \u2014 the whole pipeline stalls. Add timeouts and fallback paths."},{"front":"How to choose the right pattern?","back":"Tasks depend on each other? Pipeline. Same trigger, independent tasks? Fan-Out. Need a manager? Supervisor. Equal peers? Swarm. Most systems combine patterns."}]}'></div>
 

@@ -137,6 +137,48 @@ free: false
     <p><strong style="color: var(--accent);">Bad:</strong> "Just checking in to see how things are going!"</p>
     <p><strong style="color: var(--green);">Good:</strong> "Saw [industry news] and thought of your [specific project]. Here's how our customers are adapting..."</p>
   </div>
+  <p class="section-text">AI can generate a month of value-add check-in topics for each of your
+  key accounts. Feed it the account profile, their industry, and their use case — and it
+  produces a calendar of touchpoints, each with a specific value angle. Your customers hear
+  from you consistently with content that matters to them specifically.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Expansion</span>
+  <h2 class="section-title">The Expansion Playbook</h2>
+  <p class="section-text">Upselling and cross-selling are not about pushing more product.
+  They are about solving more problems for a customer who already trusts you.
+  AI identifies the right moment and the right angle for expansion conversations:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">The Usage Ceiling Conversation:</strong>
+    When a customer approaches the limits of their current plan, AI drafts a
+    proactive message: "I noticed your team is using 85% of your capacity.
+    Before you hit any friction, here is how upgrading would work and what
+    additional capabilities you would unlock." Proactive beats reactive.</p>
+    <p><strong style="color: var(--blue);">The New Department Conversation:</strong>
+    When a new team or department could benefit from your product, AI researches
+    the department's goals and drafts an introduction. Your existing champion
+    becomes your referral path — AI even drafts the introduction email for them.</p>
+    <p><strong style="color: var(--purple);">The Annual Review Conversation:</strong>
+    At the annual business review, AI builds a presentation showing results
+    achieved, ROI delivered, and opportunities for deeper partnership.
+    Let the numbers make the case for expansion.</p>
+    <p><strong style="color: var(--orange);">The Trigger Event Conversation:</strong>
+    Customer just raised funding, acquired a company, or entered a new market.
+    AI connects these events to additional products or services you offer
+    that are now relevant. Timing is everything in expansion selling.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Expansion Opportunity Finder</h3>
+  <div class="prompt-box"><code>Analyze these customer accounts for expansion opportunities:
+[LIST: Company, Current Product/Plan, Monthly Revenue, Usage Level, Contract
+End Date, Recent Company News]. I also offer: [LIST ADDITIONAL PRODUCTS/TIERS].
+For each account, identify: 1) The expansion opportunity type (upgrade, cross-sell,
+new department), 2) The trigger or signal that makes now the right time,
+3) The specific product or tier to recommend, 4) A conversation opener
+that leads naturally to the expansion discussion without being pushy.</code></div>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

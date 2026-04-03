@@ -147,6 +147,32 @@ free: true
   <p class="section-text">You do not need Python, R, SQL, Excel formulas, statistics knowledge, or any technical background. If you can describe what you want in a sentence, you can do data analysis with AI. This course will show you exactly how.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Expectations</span>
+  <h2 class="section-title">What AI Can and Cannot Do</h2>
+  <p class="section-text">Setting realistic expectations upfront prevents frustration later:</p>
+  <p class="section-text"><strong>AI excels at:</strong> Spotting patterns, summarizing data, writing formulas, generating visualizations, cleaning messy data, structuring reports, and performing calculations at speed. These tasks take seconds instead of hours.</p>
+  <p class="section-text"><strong>AI needs you for:</strong> Asking the right questions, providing business context, validating that results make sense in the real world, making strategic decisions, and understanding the nuances of your specific situation.</p>
+  <p class="section-text"><strong>AI cannot:</strong> Access your live databases (unless connected via API), guarantee 100% accuracy on complex calculations (always verify critical numbers), understand context it was not given, or replace domain expertise.</p>
+  <p class="section-text">The partnership model works: you bring the questions and context, AI brings the computational power and pattern recognition. Together, you are faster and more thorough than either alone.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Course Map</span>
+  <h2 class="section-title">What This Course Covers</h2>
+  <p class="section-text">Here is your roadmap for the next nine lessons:</p>
+  <p class="section-text"><strong>Lesson 2 — Asking the Right Questions:</strong> The SCOPE framework for framing questions that produce actionable answers.</p>
+  <p class="section-text"><strong>Lesson 3 — Spreadsheet Analysis:</strong> Getting spreadsheet data into AI and extracting insights without formulas.</p>
+  <p class="section-text"><strong>Lesson 4 — Visualization and Charts:</strong> Creating charts that tell a story, not just display data.</p>
+  <p class="section-text"><strong>Lesson 5 — Cleaning Messy Data:</strong> The data quality framework and AI-powered cleaning strategies.</p>
+  <p class="section-text"><strong>Lesson 6 — Pattern Recognition:</strong> Finding trends, outliers, correlations, and hidden signals.</p>
+  <p class="section-text"><strong>Lesson 7 — Survey and Feedback Analysis:</strong> Turning qualitative text into quantifiable insights.</p>
+  <p class="section-text"><strong>Lesson 8 — Financial Data Analysis:</strong> Revenue, expenses, forecasting, and financial red flags.</p>
+  <p class="section-text"><strong>Lesson 9 — Reporting and Dashboards:</strong> Packaging analysis into reports people act on.</p>
+  <p class="section-text"><strong>Lesson 10 — Building Your Workflow:</strong> Combining everything into a personal analysis system you will use for years.</p>
+  <p class="section-text">Each lesson builds on the previous ones. By the end, you will have a complete data analysis capability powered by AI and sharpened by practice.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Take any small dataset you have — a bank statement, a list of expenses, even your Spotify listening history. Paste it into Claude and try this prompt:</p>

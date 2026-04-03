@@ -148,6 +148,38 @@ CTA_STYLE: Professional, results-oriented
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Anti-Patterns</span>
+  <h2 class="section-title">Personalization Gone Wrong</h2>
+  <p class="section-text"><strong>The Uncanny Valley.</strong> Content that's too precisely personalized feels creepy, not helpful. "We noticed you spent 3 minutes and 42 seconds on our pricing page last Tuesday at 2:17 PM" — nobody wants that. Personalization should feel like relevance, not surveillance. Use behavioral data to inform content selection, not to narrate the reader's browsing history.</p>
+  <p class="section-text"><strong>The Stale Profile.</strong> Segment profiles that haven't been updated in six months produce personalization based on who your audience was, not who they are now. Pain points shift. Vocabulary evolves. Priorities change. Refresh profiles quarterly using survey data, support ticket themes, and engagement pattern changes.</p>
+  <p class="section-text"><strong>The Franken-Content.</strong> Trying to serve too many segments in one piece by jamming in variables everywhere. The result reads like a committee wrote it — disjointed, unfocused, pleasing nobody. Better to produce three focused segment versions than one awkward hybrid trying to speak to everyone.</p>
+  <p class="section-text"><strong>The Vanishing Voice.</strong> Personalizing so heavily that your brand voice disappears. Each segment version sounds like it came from a different company. The fix: personalize the variables (examples, pain points, CTAs) but lock the constants (tone, sentence patterns, vocabulary range). Your voice stays; only the content details change.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Implementation</span>
+  <h2 class="section-title">Personalization Pipeline Setup Checklist</h2>
+  <p class="section-text">Before running your first personalized pipeline, make sure these foundations are in place:</p>
+  <p class="section-text"><strong>1. Segment definitions.</strong> Three to five clearly documented segments with all profile fields filled in. No gaps, no "TBD" placeholders. If you can't describe a segment's pain points, vocabulary, and aspirations, you don't know them well enough to personalize for them yet.</p>
+  <p class="section-text"><strong>2. Variable mapping.</strong> Every template variable mapped to a value in each segment profile. A blank variable produces awkward output — "Your biggest challenge as a [BLANK]." Verify every variable has a value for every segment before running.</p>
+  <p class="section-text"><strong>3. Voice constants.</strong> The elements that stay the same across all segment versions — documented and injected into every template. Tone, banned words, sentence patterns, brand phrases. These are your consistency anchors.</p>
+  <p class="section-text"><strong>4. Test protocol.</strong> Plan to run each segment version past at least one member of that segment for a gut-check. Does it resonate? Does it feel like it was written for them? If real segment members don't feel seen, the personalization needs deeper variables.</p>
+  <p class="section-text"><strong>5. Measurement baseline.</strong> Record your current engagement and conversion metrics for generic content. You need this baseline to prove that personalization actually improves results. Without before-and-after data, you're doing extra work on faith instead of evidence.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Scale Planning</span>
+  <h2 class="section-title">When to Add More Segments</h2>
+  <p class="section-text">Start with three segments. When all three have mature profiles, proven templates, and measurable improvement over generic content, consider adding a fourth. Adding too many segments too early dilutes your personalization effort — each new segment needs its own profile, its own template variations, and its own performance tracking. Grow segments only when existing ones are producing clear ROI.</p>
+  <p class="section-text">Signs you need a new segment: engagement data shows a cluster of users that doesn't match any existing profile. Support tickets reveal a pain point your segments don't address. Sales conversations uncover a new buyer persona. Let the data tell you when to expand — don't add segments speculatively.</p>
+  <p class="section-text">When retiring a segment, don't just delete it. Archive the profile and templates — they may become relevant again as your product or market evolves. A segment that's irrelevant today might be your primary audience in eighteen months. Archive smart, delete never.</p>
+  <p class="section-text">The ultimate measure of personalization success: do segment members feel like the content was written specifically for them? If yes, your profiles are deep enough and your template variables are hitting the right notes. If not, the fix is always more specificity — more precise pain points, more relevant examples, more targeted vocabulary. Personalization at scale is an ongoing refinement process, not a one-time setup.</p>
+  <p class="section-text">Start with the segment you know best. Build a complete profile, create personalized template versions, run A/B tests against generic content, and prove the ROI before expanding to additional segments. One deeply understood segment producing measurably better results is worth more than five shallow segments producing marginal improvements.</p>
+  <p class="section-text">Personalization at scale is the most underutilized capability in content marketing today. The tools and techniques exist. The pipeline approach makes it manageable. The results are measurable and significant.</p>
+  <p class="section-text">The only barrier is the discipline to build and maintain segment profiles. Break that barrier and you unlock a competitive advantage that most of your industry hasn't even attempted. Your audience will feel the difference immediately — and they'll reward you with deeper engagement, stronger loyalty, and higher conversion rates.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Edge</span>
   <h2 class="section-title">Personalization Is a Competitive Moat</h2>
   <p class="section-text">Most businesses are still blasting the same message to everyone. When your content speaks directly to each segment's reality, you stand out. Not because of gimmicks — because of genuine relevance. That's the kind of advantage that compounds over time as your segment profiles get richer and your templates get sharper.</p>

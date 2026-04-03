@@ -122,6 +122,32 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">AI-Specific Testing</span>
+  <h2 class="section-title">Testing Non-Deterministic AI Steps</h2>
+  <p class="section-text">Traditional code gives the same output for the same input every time. AI doesn't — the same prompt can produce slightly different responses across runs. This makes testing AI steps trickier, but not impossible:</p>
+  <p class="section-text"><strong style="color: var(--purple);">Test for format, not exact content.</strong> If your AI step should return a JSON object with a "category" field, test that the response is valid JSON and contains the "category" key. Don't test for the exact string.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Test boundary behavior.</strong> Does the AI respond correctly to obviously urgent input? Obviously non-urgent input? These extremes should produce consistent categorization even across non-deterministic runs.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Use temperature=0 for tests.</strong> Most AI APIs have a temperature parameter. Setting it to 0 makes responses more deterministic. Use this in your test suite for reproducibility, even if production uses higher temperature.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Statistical testing for accuracy.</strong> Run the same classification task 100 times with the same input. If the AI returns "BILLING" 98 times out of 100, that's reliable enough. If it's 60/40 between two categories, the prompt needs improvement.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Staging Environments</span>
+  <h2 class="section-title">Creating a Safe Copy of Your Production Workflow</h2>
+  <p class="section-text">A staging environment is a complete copy of your workflow that uses test credentials, test databases, and test API endpoints. It behaves identically to production but can't affect real data. Every change gets tested here before reaching production.</p>
+  <p class="section-text"><strong style="color: var(--green);">Minimum staging setup:</strong> Separate API keys for test environments (Stripe test mode, SendGrid sandbox), a test database that mirrors your production schema, and a way to trigger the workflow manually with sample data. This takes 30 minutes to set up and saves hours of production debugging.</p>
+  <p class="section-text"><strong style="color: var(--green);">Data mirroring:</strong> Periodically copy a sanitized snapshot of production data into your staging environment. Real data structure with fake values — real customer counts, real order volumes, fake names and emails. This catches issues that only appear with production-scale data patterns.</p>
+  <p class="section-text"><strong style="color: var(--green);">Promotion process:</strong> Test in staging, verify results, then promote the exact same configuration to production. Don't rebuild in production — copy what already works. This eliminates "works on my machine" problems.</p>
+  <p class="section-text">The investment in a proper staging environment pays for itself after a single prevented production incident. One wrong email to 10,000 customers costs more — in time, reputation, and stress — than a month of staging infrastructure ever will.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Continuous Testing</span>
+  <h2 class="section-title">Testing Never Actually Ends</h2>
+  <p class="section-text">Testing isn't a phase that happens before launch — it's an ongoing practice. Schedule weekly automated test runs against your production workflows (using test data, not real customers). APIs change, dependencies update, and edge cases emerge over time. A test suite that ran perfectly last month might catch a new failure today. Continuous testing is your early warning system for the inevitable drift between what you built and what the world now expects.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Testing Workflows","cards":[{"front":"Unit Testing","back":"Test each step in isolation. Does the classifier categorize correctly? Does the template render properly? Fix issues before they compound."},{"front":"Integration Testing","back":"Test connections between steps. Does Step A\\\'s output actually work as Step B\\\'s input? This is where most bugs hide."},{"front":"End-to-End Testing","back":"Run the entire workflow from trigger to final output with test data. Your full dress rehearsal before going live."},{"front":"Think Like a Chaos Gremlin","back":"Test with: normal data, edge cases (emoji in names), missing data (blank fields), malformed data, and extreme values ($0 orders)."},{"front":"Sandbox First, Always","back":"Use test modes religiously — Stripe test mode, email preview sends, staging databases. Never test against production until sandboxes are exhausted."}]}'></div>
 </div>
 

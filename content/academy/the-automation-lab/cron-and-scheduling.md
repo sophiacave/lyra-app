@@ -194,6 +194,22 @@ free: false
 
   <div data-learn="QuizMC" data-props='{"title":"Cron & Scheduling Quiz","questions":[{"q":"What does the cron expression `0 9 * * 1-5` mean?","options":["Every 9 minutes on weekdays","At 9:00 AM, Monday through Friday","Every hour on weekdays starting at 9","At minute 0 of the 9th hour every month"],"correct":1,"explanation":"Fields are: minute(0) hour(9) day(*) month(*) weekday(1-5 = Mon-Fri). So: at 9:00 AM, every weekday."},{"q":"What is a scheduling conflict?","options":["Two cron expressions that are identical","Too many agents running at the same time, competing for shared resources","An agent running at the wrong time zone","A cron job that never fires"],"correct":1,"explanation":"When multiple heavy agents run simultaneously they compete for CPU, memory, and API rate limits. Staggering their schedules prevents this."},{"q":"Which cron expression runs every 30 minutes?","options":["30 * * * *","* 30 * * *","*/30 * * * *","0,30 * * * *"],"correct":2,"explanation":"*/30 in the minute field means every 30 minutes (0 and 30 past each hour). `30 * * * *` runs only at :30 each hour \u2014 that is once per hour, not every 30 minutes."},{"q":"An agent needs to run only on weekdays at midnight for a backup. What cron expression fits?","options":["0 0 * * *","0 0 * * 1-5","* * * * 1-5","0 * * * 1-5"],"correct":1,"explanation":"0 0 * * 1-5 \u2014 minute 0, hour 0 (midnight), any day of month, any month, Mon-Fri only."},{"q":"Why are systemd timers better than crontab for production agents?","options":["They run faster","They have built-in failure tracking, dependency management, and survive reboots with lingering","They use less CPU","They support more scheduling options"],"correct":1,"explanation":"Systemd timers log failures to journalctl, can depend on other services, and persist across reboots with loginctl enable-linger. Crontab fails silently."}]}'></div>
 
+  <div class="section">
+    <h2>Monitoring Your Schedule</h2>
+    <p>A scheduled task that fails silently is worse than one that never runs — at least missing a task is noticeable. Monitor your schedule health:</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">Last-Run Tracking</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Log the timestamp of every task execution. If the last run is older than 2x the expected interval, the task has stopped. Alert immediately.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c;font-size:.85rem">Duration Tracking</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Track how long each task takes. A task that normally takes 10 seconds but suddenly takes 5 minutes is degraded even if it still completes. Trending duration upward is an early warning.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"Cron & Scheduling Concepts","cards":[{"front":"Cron field order","back":"Minute | Hour | Day-of-month | Month | Day-of-week. Example: 30 17 * * 1-5 = 5:30 PM weekdays."},{"front":"* (asterisk) in cron","back":"Means every \u2014 every minute, every hour, every day. The wildcard."},{"front":"*/N in cron","back":"Every N units. */5 in the minute field = every 5 minutes. */2 in hour = every 2 hours."},{"front":"1-5 in cron weekday field","back":"Monday through Friday. 0 = Sunday, 6 = Saturday."},{"front":"Three scheduling modes","back":"Cron (time-triggered, periodic), Event-driven (webhook/trigger, zero latency), Always-on (continuous loop, highest resource cost)."},{"front":"Scheduling conflict","back":"Multiple resource-heavy agents firing simultaneously, competing for CPU/memory/API limits. Fix: stagger start times by 1-2 minutes."},{"front":"Crontab vs systemd timers","back":"Crontab: simple, no failure logging. Systemd: built-in failure tracking via journalctl, service dependencies, survives reboots. Use systemd for production."}]}'></div>
 
 </div>

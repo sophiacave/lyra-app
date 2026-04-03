@@ -98,6 +98,18 @@ Create these pieces, maintaining my voice throughout:
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">Real repurposing workflow — podcast to everywhere.</h2>
+  <p class="section-text">A marketing consultant records a 30-minute podcast episode about client onboarding. Here is how she repurposes that single recording into two weeks of content:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Day 1:</strong> Publishes the podcast episode. Pastes the transcript into AI and asks for a 1,200-word blog post summarizing the key points with added depth and examples.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Day 3:</strong> Takes three standout quotes from the episode and turns them into quote graphics for Instagram. Each graphic gets a 100-word caption expanding on the quote.</p>
+  <p class="section-text"><strong style="color:var(--green)">Day 5:</strong> Publishes a 6-tweet thread pulling the five-step onboarding process she described, with a link to the full episode in the final tweet.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Day 7:</strong> Sends her newsletter teasing the single most surprising insight from the episode, with a link to both the podcast and blog post.</p>
+  <p class="section-text"><strong>Day 10:</strong> Posts a LinkedIn article expanding on one section of the episode that got the most comments, going deeper than the original recording.</p>
+  <p class="section-text">One 30-minute recording. Five formats. Ten days of content. Total additional creation time with AI: about 2 hours.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Learn</span>
   <h2 class="section-title">Key repurposing concepts.</h2>
   <div data-learn="FlashDeck" data-props='{"title":"Repurposing Content","cards":[{"front":"Content Waterfall","back":"A system where you start with your richest format and let it flow downward into progressively smaller pieces across platforms."},{"front":"The Source (Level 1)","back":"Your flagship long-form piece — a blog post, podcast episode, or video. Spend the most time here because everything else flows from it."},{"front":"The Breakdown (Level 2)","back":"Mid-size repurposed pieces: newsletter summaries, LinkedIn posts, and Twitter threads drawn from the source material."},{"front":"The Snippets (Level 3)","back":"Bite-sized content: standalone quotes, Instagram carousels, one-liner hooks pulled from the best lines of the source."},{"front":"Platform-Native Transformation","back":"Genuinely adapting content for each platform\\u0027s format and tone — not just copy-pasting sections. Twitter wants punchy threads; LinkedIn wants personal stories."}]}'></div>
@@ -165,6 +177,19 @@ Create these pieces, maintaining my voice throughout:
   <h2 class="section-title">Repurposing content quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"Repurposing Content","questions":[{"q":"What is the core idea behind the content waterfall system?","options":["Publish the same post on every platform simultaneously","Start with your richest format and let it flow into progressively smaller pieces","Write short-form content first, then expand to long-form","Let AI decide which formats to create for each piece"],"correct":1,"explanation":"The waterfall flows from your flagship long-form piece downward — each level producing adapted content that serves different platforms and audiences."},{"q":"How many pieces of content can a single 1500-word blog post realistically generate?","options":["2-3 pieces maximum","10 or more pieces across different formats and platforms","Only pieces for the same platform","As many as you want but quality drops off fast"],"correct":1,"explanation":"One afternoon of writing can fuel two weeks of content across Twitter threads, LinkedIn posts, email newsletters, video scripts, carousels, quote graphics, and community discussions."},{"q":"What is the most important instruction in the repurposing mega-prompt?","options":["Maintain the original word count","Do not just copy-paste sections — genuinely transform the content for each platform","Include a call-to-action on every piece","Keep all repurposed pieces under 200 words"],"correct":1,"explanation":"Platform-native transformation means each piece is genuinely reformatted for its destination — Twitter wants punchy threads, LinkedIn wants personal story angles, email wants intimacy."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">What's Next</span>
+  <h2 class="section-title">Repurposing without losing your voice.</h2>
+  <p class="section-text">You now know how to multiply one piece of content across every platform. But there is a risk — the more formats you create, the more opportunities there are for your voice to drift. The next lesson, Brand Voice Consistency, teaches you to build a voice document that keeps everything sounding like you, whether it is a tweet, a blog post, or an email. Voice is the thread that holds all your repurposed content together.</p>
+  <p class="section-text">Before moving on, try the waterfall with your most recent blog post or newsletter. Paste it into AI with the mega-prompt from this lesson and see what comes out. The first time you watch one piece of content become ten, the studio mindset clicks into place permanently. You will never look at content creation the same way again.</p>
+  <p class="section-text">Save the content waterfall prompt, the repurposing checklist, and the tracking system template from this lesson. These three tools turn repurposing from a vague idea into a systematic practice. The prompt does the work. The checklist ensures nothing slips through. The tracker shows you which formats deliver the best return over time.</p>
+  <p class="section-text">Repurposing is the multiplier that makes the entire content studio economically viable. Without it, you need to create 10 pieces to publish 10 pieces. With it, you create 1 and publish 10. That math changes everything about what is possible for a solo creator. Master this lesson and your output per hour of effort increases dramatically.</p>
+  <p class="section-text">The next lesson teaches you how to keep your voice consistent across all those repurposed pieces — because ten pieces that sound like ten different people help nobody. Voice is the glue. Repurposing is the engine. Together, they make your studio unstoppable.</p>
+  <p class="section-text">One final thought: repurposing is not just about efficiency. It is about reach. Different people consume content in different formats. Some read blogs. Some scroll Twitter. Some watch videos. Some only open emails. By repurposing, you meet your audience where they are — not where you wish they were. That is the real power of the waterfall.</p>
+  <p class="section-text">The best content studios in the world run on this exact principle: create once, distribute everywhere. Hollywood makes a movie and then releases trailers, clips, behind-the-scenes content, interviews, and social media posts. You are doing the same thing at a solo creator scale — and AI makes it possible.</p>
+  <p class="section-text">Commit to repurposing every anchor piece you create from this point forward. Make it a non-negotiable step in your workflow — after you publish a blog post or newsletter, immediately run the waterfall prompt. Within a month, you will have more content scheduled than you have ever produced. Within three months, your audience will see you everywhere. That is the compound effect of systematic repurposing.</p>
 </div>
 
 <nav class="lesson-nav">

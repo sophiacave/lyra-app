@@ -162,5 +162,43 @@ check <span style="color:#fbbf24">"academy"</span> https://likeone.ai/academy/</
 
   <div data-learn="QuizMC" data-props='{"title":"Monitoring & Healing Quiz","questions":[{"q":"A Monitor agent detects a connection timeout on api-server-03. It has retried 2 times. What is the correct fix?","options":["Rollback to last good state","Restart the agent","Escalate immediately to a human","Ignore and wait"],"correct":1,"explanation":"A connection timeout is a runtime issue, not a code issue. Restarting clears the error state. Rollback only helps with bad code deployments."},{"q":"What is the purpose of a Max Retries setting on an auto-healer?","options":["Limit how many agents can run at once","Prevent the healer from restart-looping on a broken agent","Speed up recovery time","Reduce memory usage"],"correct":1,"explanation":"Without a retry limit, an auto-healer could restart a broken agent hundreds of times in a loop. Max retries caps this and forces escalation."},{"q":"When should an auto-healer escalate to a human?","options":["After every error","When the error involves a timeout","When automatic fixes have failed max retries, or the issue requires human judgment","Never"],"correct":2,"explanation":"Auto-healers handle known, fixable errors. When retries are exhausted or the problem is outside the agent\u0027s scope, escalation is correct."},{"q":"A heartbeat script runs successfully but the database shows the agent as offline. What is the most likely cause?","options":["The database is down","The script is using the wrong auth key \u2014 writes are silently rejected","The agent crashed after the heartbeat","The cron job is misconfigured"],"correct":1,"explanation":"The classic silent failure: the HTTP request succeeds but the database rejects the write due to auth. The script logs success, but no data arrives. Always verify the result, not just the request."},{"q":"What is the difference between a restart and a rollback?","options":["They are the same thing","Restart clears a crashed process; rollback reverts to a previous code version","Rollback is faster","Restart is for code issues; rollback for connection issues"],"correct":1,"explanation":"Restart clears a hung process (runtime fix). Rollback reverts to working code (deploy fix). Using the wrong one makes the problem worse."}]}'></div>
 
+  <div class="section">
+    <h2>Runbooks: The Missing Piece</h2>
+    <p>When escalation reaches a human, they need to know what to do. A <strong>runbook</strong> is a step-by-step guide for handling specific failures:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+      <pre style="margin:0"><code><span style="color:#71717a"># Runbook: Brain Database Unreachable</span>
+<span style="color:#fb923c">Symptoms:</span> Health check returns FAIL for brain endpoint
+<span style="color:#fb923c">Impact:</span>  All agents lose shared memory access
+<span style="color:#fb923c">Steps:</span>
+  1. Check Supabase status page (status.supabase.com)
+  2. Verify API key is valid: curl -H "apikey: $KEY" $URL
+  3. Check if RLS policy is blocking: try service role key
+  4. If Supabase is down: wait for recovery, agents queue writes
+  5. If key is wrong: update .env, restart affected agents</code></pre>
+    </div>
+    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Every alert should link to its runbook. A human paged at 3 AM with "brain endpoint FAIL" and no runbook will waste 30 minutes diagnosing what a runbook could solve in 5.</p>
+  </div>
+
+  <div class="section">
+    <h2>Building a Monitoring Dashboard</h2>
+    <p>A monitoring dashboard gives you a single view of your entire agent fleet. At minimum, it should display:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Agent Status Grid</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Each agent shown as a card with status (healthy/degraded/down), last heartbeat time, current task, and error count in the last hour. Green for healthy, yellow for degraded (responding but slow), red for down (no heartbeat).</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Recent Events Timeline</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A chronological feed of significant events: deploys, failures, auto-heals, escalations, and task completions. This gives you the narrative — not just snapshots, but the story of what happened and when.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">System-Wide Metrics</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Total tasks completed today, overall success rate, average response time, and cost. These aggregate metrics tell you whether the fleet is healthy as a whole, even if individual agents look fine.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"Monitoring & Healing Concepts","cards":[{"front":"What is an auto-healer?","back":"A supervisor agent that monitors others and auto-fixes problems \u2014 restarting crashed agents, rolling back bad deploys, or escalating to humans when retries are exhausted."},{"front":"Restart vs Rollback","back":"Restart: clears a crashed process, resumes current code. Use for runtime errors. Rollback: reverts to previous working code version. Use for bad deploys. Wrong choice = worse problem."},{"front":"What is a health check?","back":"A periodic test that verifies an agent is alive AND producing correct output. Must verify results, not just requests. A silent write failure looks like success."},{"front":"Why set max retries?","back":"Without a limit, a healer restart-loops a broken agent forever. Max retries forces escalation after N failed attempts."},{"front":"The silent failure problem","back":"The most dangerous failure is the one you don\u0027t know about. Wrong auth keys, dead cron jobs, full disks \u2014 all fail silently without proper monitoring."},{"front":"Three layers of defense","back":"Layer 1: Health checks (detect). Layer 2: Auto-healing (fix). Layer 3: Escalation (alert humans when auto-fix fails)."}]}'></div>
 </div>

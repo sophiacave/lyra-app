@@ -112,6 +112,64 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Prompt Versioning and A/B Testing</h2>
+  <p class="section-text">Your system prompt is your product's most important asset. Treat it with the same rigor as production code — versioned, tested, and never changed without measurement.</p>
+  <p class="section-text"><strong>Version control:</strong> Store every prompt version with a unique ID, timestamp, and changelog. When something breaks, you need to know exactly which prompt version is running and what changed. A simple database table with prompt_id, version, content, created_at, and is_active is sufficient.</p>
+  <p class="section-text"><strong>A/B testing prompts:</strong> Route 50% of traffic to the new prompt and 50% to the current one. Compare acceptance rate, edit depth, and cost per successful output. Run the test for at least 200 outputs on each variant before declaring a winner. Small sample sizes produce misleading results.</p>
+  <p class="section-text"><strong>Rollback capability:</strong> If a new prompt version degrades quality, you need to revert in under 60 seconds. Build a one-click rollback mechanism — change the active prompt version in your database, and every subsequent query uses the previous version. Don't deploy a code change for a prompt rollback.</p>
+  <p class="section-text"><strong>Prompt analytics:</strong> Track performance metrics per prompt version over time. Which version had the highest acceptance rate? Which one had the lowest cost per output? Which one produced the most regeneration requests? This historical data informs every future prompt improvement.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Insight</span>
+  <h2 class="section-title">The Compounding Quality Effect</h2>
+  <p class="section-text">In AI products, quality improvements compound in ways that traditional software improvements don't. A 5% improvement in output quality doesn't just mean 5% better outputs — it means higher acceptance rates, fewer regenerations (lower costs), better retention, more referrals, and higher willingness to pay. Each quality improvement cascades through every metric in your business.</p>
+  <p class="section-text"><strong>The retention multiplier:</strong> Users who receive consistently good outputs in their first 5 sessions retain at 3-5x the rate of users who encounter even one bad output early. Quality in the first experience has an outsized impact on lifetime value.</p>
+  <p class="section-text"><strong>The cost reduction effect:</strong> Better outputs mean fewer regeneration requests. If improving your prompt reduces regenerations from 30% to 15%, you've just cut your effective AI costs by 13%. Quality improvements pay for themselves.</p>
+  <p class="section-text"><strong>The referral amplifier:</strong> Users share outputs they're proud of. A consistently good output becomes a referral engine. A consistently mediocre output becomes a reason to cancel. The gap between "pretty good" and "great" is the gap between a slow-growth product and a viral one.</p>
+  <p class="section-text">This compounding effect is why measuring and iterating on quality is the single highest-leverage activity in AI product development. Every other improvement — features, marketing, pricing — produces linear returns. Quality produces exponential returns.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tactic</span>
+  <h2 class="section-title">Learning from Churned Users</h2>
+  <p class="section-text">Users who leave your product are your most valuable teachers. They experienced your product, found it insufficient, and made the active decision to stop using it. Understanding why is the fastest path to improvement.</p>
+  <p class="section-text"><strong>Churn survey:</strong> When a user cancels, ask one question: "What's the main reason you're leaving?" Provide 4-5 options plus a free text field. Keep it to one question — churning users won't fill out a lengthy survey, but they'll often share the primary reason if it's easy.</p>
+  <p class="section-text"><strong>Behavioral autopsy:</strong> Look at the churned user's interaction history. When did they stop using the product? What was their last interaction? Did usage decline gradually or stop abruptly? A gradual decline suggests diminishing value. An abrupt stop suggests a triggering event — a bad output, a billing surprise, or a competitor discovery.</p>
+  <p class="section-text"><strong>Win-back experiments:</strong> Contact churned users 30 days after they leave. "We've made improvements to [the thing they complained about]. Want to try again for free?" This does two things: it recovers some users, and it tests whether your improvements actually address the reasons people left. If win-back rates are low even after fixing the stated reason, the real reason was something else.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Summary</span>
+  <h2 class="section-title">The Iteration Mindset</h2>
+  <p class="section-text">Measuring and iterating isn't a phase that ends — it's a permanent operating mode. The best AI products are never "done." They improve continuously, driven by data, user feedback, and the ever-advancing capabilities of the underlying AI models.</p>
+  <p class="section-text">The companies that succeed in AI are the ones that build measurement into their DNA. Every feature launch includes success criteria. Every prompt change includes a test plan. Every metric has an owner who reviews it weekly. This rigor separates products that improve over time from products that slowly decay.</p>
+  <p class="section-text">Start measuring from day one — even before your first user. Your test suite, your golden dataset, and your quality metrics should exist before you launch. They're not luxuries for later — they're the foundation that makes everything else possible.</p>
+  <p class="section-text">The discipline of measuring and iterating separates AI products that thrive from those that stagnate. Every week you spend improving output quality, optimizing costs, and deepening the feedback loop is an investment that compounds. Your product at month 12 should be unrecognizably better than your product at month 1 — and the data trail should prove exactly why.</p>
+</div>
+
+<div class="lesson-section">
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">System</span>
+  <h2 class="section-title">Setting Up Your Analytics Stack</h2>
+  <p class="section-text">The right analytics stack for an AI product tracks three layers: traditional product analytics, AI-specific quality metrics, and cost economics. Here's what to use at each stage.</p>
+  <p class="section-text"><strong>Stage 1 (0-500 users):</strong> PostHog (free tier) for product analytics. A simple Postgres table for AI interaction logs. Your AI provider's usage dashboard for costs. This covers everything you need for under 500 users. Don't buy expensive tools until you have enough data to justify them.</p>
+  <p class="section-text"><strong>Stage 2 (500-5,000 users):</strong> Add a real-time dashboard (Grafana or Metabase connected to your Postgres logs). Set up automated alerts for quality drops (acceptance rate falls below threshold), cost spikes (daily spend exceeds limit), and error rate increases. Automate the weekly quality review.</p>
+  <p class="section-text"><strong>Stage 3 (5,000+ users):</strong> Dedicated analytics tools — Mixpanel or Amplitude for product analytics, custom dashboards for AI quality, and a cost monitoring service with per-user and per-feature breakdowns. At this stage, you need someone whose job is reading these dashboards.</p>
+  <p class="section-text"><strong>The one essential log:</strong> Every AI interaction should produce a log entry containing: timestamp, user ID, input text (or hash for privacy), system prompt version, model used, output text, token counts (input/output), latency, cost, and user action (accepted/edited/rejected/regenerated). This single table powers every analysis you'll ever need.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The Weekly AI Product Review</h2>
+  <p class="section-text">Set aside 60 minutes every Monday for a structured review of your AI product's health. This ritual prevents slow degradation from going unnoticed.</p>
+  <p class="section-text"><strong>First 15 minutes — Quality scan:</strong> Review the 10 worst-rated outputs from the past week. Are they failing for the same reason? Is there a pattern — certain input types, certain topics, certain user segments? If the same failure appears 3+ times, it's a systematic issue, not random noise.</p>
+  <p class="section-text"><strong>Next 15 minutes — Metrics review:</strong> Check acceptance rate trend, retention trend, and cost trend. Are they moving in the right direction? Even small weekly changes compound — a 1% weekly decline in acceptance rate means a 40% decline over a year. Catch trends early.</p>
+  <p class="section-text"><strong>Next 15 minutes — User feedback:</strong> Read every piece of explicit feedback from the past week. Support emails, in-app feedback, social media mentions. Group by theme. Which themes appear most frequently? Those themes are your improvement priorities for the coming week.</p>
+  <p class="section-text"><strong>Final 15 minutes — Plan:</strong> Based on the quality scan, metrics, and feedback, choose the single highest-impact improvement to make this week. Not three improvements — one. Do it well, measure the result, then move to the next one. Serial focus beats parallel mediocrity.</p>
 </div>
 
 <div class="try-it-box">

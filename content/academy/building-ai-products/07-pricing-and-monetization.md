@@ -111,6 +111,70 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">Pricing in Practice: Three Real Models</h2>
+  <p class="section-text"><strong>The token-based model (like OpenAI's API):</strong> Users pay exactly for what they consume. Advantage: perfect cost alignment. Disadvantage: unpredictable bills make users anxious. Best for: developer-facing API products where usage is programmatic and budgetable.</p>
+  <p class="section-text"><strong>The credit-pack model (like Midjourney):</strong> Users buy credits in bundles — 200 generations for $10. Advantage: predictable spending for users, margin protection for you. Disadvantage: users hoard credits and feel anxious about "wasting" them. Best for: creative AI products where each output is a discrete, valuable artifact.</p>
+  <p class="section-text"><strong>The flat-with-limits model (like Jasper):</strong> Monthly subscription with a generous but capped usage limit. Advantage: simple to understand, easy to compare with competitors. Disadvantage: power users can still exhaust limits; must carefully set caps to protect margin. Best for: productivity AI products where daily use is expected.</p>
+  <p class="section-text">No model is universally correct. Start with the one that best matches your product's usage pattern, and be prepared to evolve as you learn how users actually behave. The data from your first 6 months of paying customers will teach you more about pricing than any framework can.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">International Pricing Considerations</h2>
+  <p class="section-text">If your AI product serves a global audience, pricing becomes significantly more complex. A $29/month subscription that feels reasonable in San Francisco is a week's wages in many countries.</p>
+  <p class="section-text"><strong>Purchasing power parity (PPP):</strong> Adjust prices based on the user's country. Many SaaS products offer 40-60% discounts for developing countries. The marginal cost of serving an international user is the same, but the willingness to pay varies dramatically. A $12/month price in India can yield more total revenue than a $29/month price that nobody in India can afford.</p>
+  <p class="section-text"><strong>Currency and tax:</strong> Display prices in local currency. Handle VAT and sales tax correctly — EU customers need VAT-inclusive pricing. Use Stripe Tax or a similar service to automate compliance. Getting international taxation wrong creates legal exposure that isn't worth the manual accounting savings.</p>
+  <p class="section-text"><strong>Payment methods:</strong> Not everyone has a credit card. In many markets, bank transfers, mobile payment, or local payment processors are preferred. Stripe supports most of these through its payment methods API. Meeting users where they are — including how they pay — removes the last barrier to conversion.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Principle</span>
+  <h2 class="section-title">The Pricing Evolution Timeline</h2>
+  <p class="section-text">Your pricing will change as your product, costs, and market evolve. Here's a typical timeline for how pricing develops over the first two years.</p>
+  <p class="section-text"><strong>Month 1-3:</strong> Simple. One paid plan, maybe a free trial. Your goal is learning, not optimizing revenue. Watch what users do. Track who churns and who upgrades. Collect data on usage patterns.</p>
+  <p class="section-text"><strong>Month 4-6:</strong> Add a second tier based on the natural segmentation you observe. Some users use 10x more than others. Create a plan that accommodates each group. Introduce annual billing with a discount.</p>
+  <p class="section-text"><strong>Month 7-12:</strong> Optimize based on data. Adjust pricing where conversion data suggests you're leaving money on the table. Test credit packs or usage-based components if flat subscriptions don't align with your cost structure. Consider removing the free tier if it's unprofitable.</p>
+  <p class="section-text"><strong>Month 13-24:</strong> Mature pricing. Three tiers with clear value differentiation. Enterprise pricing with custom quotes. Established annual/monthly split. By this point, your pricing should be data-driven, not gut-driven. Every pricing change should be testable and reversible.</p>
+  <p class="section-text">The key insight: pricing is a living system, not a one-time decision. The pricing you launch with should be intentionally imperfect — it's a hypothesis you'll refine with real user data. Start simple, measure aggressively, and iterate quarterly.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Checklist</span>
+  <h2 class="section-title">Pricing Launch Readiness</h2>
+  <p class="section-text">Before you finalize your launch pricing, verify each of these:</p>
+  <p class="section-text"><strong>1.</strong> You know your true cost per query (including retries, embeddings, and infrastructure overhead).</p>
+  <p class="section-text"><strong>2.</strong> Your price is at least 3x your cost — giving you room for growth, support, and margin.</p>
+  <p class="section-text"><strong>3.</strong> Your pricing page communicates value in outcomes, not features or technical specs.</p>
+  <p class="section-text"><strong>4.</strong> Your free tier (if any) has strict limits that let users experience the magic trick without becoming a cost center.</p>
+  <p class="section-text"><strong>5.</strong> You have usage caps or tiered pricing that protects you from power user cost blow-up.</p>
+  <p class="section-text"><strong>6.</strong> You can track cost per user, revenue per user, and LTV:CAC ratio from day one.</p>
+  <p class="section-text"><strong>7.</strong> You've stress-tested the billing flow — signup, payment, plan change, cancellation — end to end.</p>
+  <p class="section-text">Pricing is one of the most powerful levers you have as a product builder. Get it right and your business sustains itself. Get it wrong and even a great product dies from unsustainable economics. Take the time to understand your costs, your value, and your market — then price with confidence.</p>
+  <p class="section-text">With your pricing strategy in place, you're ready to put your product in front of the world. Lesson 8 covers launch strategies, distribution channels, and how to build sustained growth — because the best-priced product in the world is worthless if nobody knows it exists.</p>
+</div>
+
+<div class="lesson-section">
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Revenue Expansion Strategies</h2>
+  <p class="section-text">The initial subscription is just the beginning. Successful AI products expand revenue per customer over time through add-ons, upgrades, and new use cases.</p>
+  <p class="section-text"><strong>Usage-based expansion:</strong> As users get more value from your product, they naturally use it more. Design your pricing so increased usage translates to increased revenue — either through per-query charges above the plan limit, or through plan upgrades triggered by usage thresholds.</p>
+  <p class="section-text"><strong>Feature-gated tiers:</strong> Reserve premium features for higher-priced plans. Bulk processing, API access, team collaboration, advanced analytics, priority support. Each feature should unlock enough additional value to justify the price increase.</p>
+  <p class="section-text"><strong>Team and enterprise plans:</strong> When one person at a company loves your product, their whole team wants it. Offer team plans with centralized billing, shared templates, and admin controls. Team plans typically yield 3-10x the revenue of individual plans per account.</p>
+  <p class="section-text"><strong>Marketplace and templates:</strong> If your product supports custom configurations, sell premium templates. An AI writing tool could offer industry-specific template packs — legal writing, medical documentation, real estate descriptions — at $9-29 each. Users get specialized value; you get additional revenue with zero marginal cost.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Data</span>
+  <h2 class="section-title">Pricing Analytics: What to Track</h2>
+  <p class="section-text">Your pricing strategy should evolve based on data, not intuition. Track these metrics from day one and adjust quarterly.</p>
+  <p class="section-text"><strong>Price sensitivity:</strong> When you raise prices, what happens to conversion rate and churn? A 20% price increase that causes only 5% fewer signups is a net win. Test price changes on new users first — never change prices for existing customers without grandfathering.</p>
+  <p class="section-text"><strong>Plan distribution:</strong> What percentage of users are on each plan? If 90% of users are on your cheapest plan, either your other plans are overpriced or you're not communicating their value. Ideal distribution: 20-30% on the lowest tier, 50-60% on the middle tier, 10-20% on the top tier.</p>
+  <p class="section-text"><strong>Upgrade triggers:</strong> What action or threshold causes users to upgrade? Is it hitting their query limit? Discovering a premium feature? Growing their team? Identify these triggers and engineer your product to surface them at the right moment.</p>
+  <p class="section-text"><strong>LTV:CAC ratio:</strong> Lifetime value divided by customer acquisition cost. For AI products, target a ratio of 3:1 or higher. If it costs you $50 to acquire a customer who pays you $29/month and stays for 8 months ($232 LTV), your ratio is 4.6:1 — healthy. Below 3:1, you're spending too much to acquire or not retaining long enough.</p>
 </div>
 
 <div class="try-it-box">

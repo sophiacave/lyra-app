@@ -133,6 +133,26 @@ final.export("episode_draft.mp3", format="mp3")</code></div>
   <p class="section-text"><strong>Transcripts for SEO:</strong> Publish full transcripts on your website alongside each episode. Google indexes text, not audio. A transcript turns every episode into a searchable, linkable webpage that drives organic traffic to your show.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Quality</span>
+  <h2 class="section-title">Quality Checklist Before Publishing</h2>
+  <p class="section-text">Every episode should pass these checks before it goes live:</p>
+  <p class="section-text"><strong>Audio quality:</strong> No background noise. No clipping. No sudden volume jumps. Loudness normalized to -16 LUFS. True peak below -1dB. These are non-negotiable standards for professional audio.</p>
+  <p class="section-text"><strong>Content flow:</strong> Listen to the full episode without multitasking. Does the opening hook grab attention within 15 seconds? Do transitions between topics feel smooth? Does the ending provide closure or a clear call to action?</p>
+  <p class="section-text"><strong>AI voice check:</strong> Listen for any mispronunciations, robotic-sounding passages, or energy drops. Regenerate any segment that does not sound natural. One awkward sentence can undermine an entire episode's credibility.</p>
+  <p class="section-text"><strong>Metadata:</strong> Episode title is compelling and under 60 characters. Description includes relevant keywords naturally. Chapter markers are accurate. Tags and categories match your content.</p>
+  <p class="section-text"><strong>Disclosure:</strong> If using AI voices, ensure your disclosure is clear and prominent. Include it in both the audio (spoken disclosure at the start) and the show notes (written disclosure in the description).</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Monetization</span>
+  <h2 class="section-title">Making Money with AI Podcasts</h2>
+  <p class="section-text">AI-produced podcasts open revenue streams that were previously gated behind production costs:</p>
+  <p class="section-text"><strong>Sponsorship:</strong> Once you hit consistent weekly episodes with growing downloads, sponsors will pay $15-50 per 1,000 downloads (CPM). AI production lets you maintain the consistency that sponsors require without the burnout that kills most podcast projects.</p>
+  <p class="section-text"><strong>Premium content:</strong> Offer extended episodes, bonus content, or ad-free feeds through Patreon or Apple Podcast Subscriptions. AI production keeps your marginal cost near zero, so premium content is almost pure profit.</p>
+  <p class="section-text"><strong>Productized services:</strong> Use your podcast production skills to offer podcast-as-a-service. Businesses want branded podcasts but lack production expertise. Charge $500-2,000 per month for ongoing podcast production. Your AI pipeline handles the heavy lifting.</p>
+</div>
+
 <div class="demo-container">
   <h3>AI Podcast Tool Stack</h3>
   <p><strong>Scripting:</strong> Claude, GPT-4, Gemini</p>
@@ -140,6 +160,17 @@ final.export("episode_draft.mp3", format="mp3")</code></div>
   <p><strong>Editing:</strong> Descript, Adobe Podcast, Audacity</p>
   <p><strong>Music:</strong> Suno, Udio, Mubert</p>
   <p><strong>Distribution:</strong> Spotify for Podcasters, Buzzsprout, RSS.com</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Podcast Formats That Work Best with AI</h2>
+  <p class="section-text">Not every podcast format translates equally well to AI production. Here is an honest assessment of which formats shine and which struggle:</p>
+  <p class="section-text"><strong>Educational explainers (excellent):</strong> AI voices excel at clear, steady delivery of factual content. Topics like technology, science, history, and business lend themselves to scripted narration where consistency matters more than spontaneity.</p>
+  <p class="section-text"><strong>News summaries (excellent):</strong> Daily or weekly news digests work perfectly with AI. Script the key stories, generate with a clean authoritative voice, add transition music. Listeners value the information, not the personality.</p>
+  <p class="section-text"><strong>Storytelling and fiction (good):</strong> AI narration handles fiction well when paired with multi-voice generation and sound design. The key is investing in the script and post-production — the voice is one layer in a rich audio experience.</p>
+  <p class="section-text"><strong>Interview-style (moderate):</strong> Simulated interviews using AI voices for both host and guest can feel uncanny if not executed carefully. The conversation needs to feel genuinely reactive, not like two scripts playing sequentially.</p>
+  <p class="section-text"><strong>Comedy and personality-driven (poor):</strong> Comedic timing, improvisation, and personality are the hardest things for AI voices to replicate. These formats still benefit most from human performance with AI handling post-production only.</p>
 </div>
 
 <div class="try-it-box">

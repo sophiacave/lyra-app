@@ -143,10 +143,43 @@ free: false
   they know exactly where to focus.</p>
 </div>
 
+<div class="try-it-box">
+  <h3>Pipeline Hygiene Check</h3>
+  <div class="prompt-box"><code>Audit this pipeline for hygiene issues:
+[LIST: Company, Deal Size, Stage, Days in Current Stage, Last Contact Date,
+Champion Identified (yes/no)]. My average stage durations are: [LIST BY STAGE].
+Flag any deals that: 1) Have had no contact in 14+ days, 2) Have been in
+their current stage longer than 1.5x average, 3) Lack an identified champion,
+4) Show any other warning signs. For each flagged deal, recommend:
+keep with specific action, or remove from pipeline with reasoning.</code></div>
+</div>
+
 <div class="lesson-section">
   <span class="section-label">System</span>
   <h2 class="section-title">Build Your Pipeline Rhythm</h2>
   <p class="section-text">The best pipeline managers don't manage deals — they manage a system. Monday: AI pipeline review. Wednesday: re-engagement outreach for stalled deals. Friday: new opportunity planning. AI makes each of these sessions fast and focused. The system runs itself once you build it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Re-Engagement</span>
+  <h2 class="section-title">Reviving Stalled Deals</h2>
+  <p class="section-text">A stalled deal is not a dead deal — it is a deal that
+  lost momentum. AI can diagnose why a deal stalled and generate the specific
+  re-engagement approach most likely to restart it:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">The New Value Angle:</strong>
+    Share a relevant case study, product update, or industry insight that
+    gives them a new reason to re-engage. AI finds the angle that connects
+    to their original pain point with fresh context.</p>
+    <p><strong style="color: var(--blue);">The Changed Circumstance Check:</strong>
+    Things change — budgets reset, priorities shift, new leaders arrive.
+    AI drafts a brief, respectful outreach that acknowledges time has passed
+    and asks if circumstances have changed.</p>
+    <p><strong style="color: var(--purple);">The Champion Reconnect:</strong>
+    If your internal champion went silent, something happened — they got
+    busy, they lost internal support, or they left the company. AI researches
+    the current state and suggests the right re-engagement path.</p>
+  </div>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

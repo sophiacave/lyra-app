@@ -99,6 +99,31 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Mistakes</span>
+  <h2 class="section-title">Common System-Building Mistakes</h2>
+  <p class="section-text">Salespeople who fail with AI systems usually make
+  one of these mistakes. Avoid them from the start:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Mistake 1 — Over-Engineering:</strong>
+    Building a complex system before mastering the basics.
+    Start with research and outreach prompts. Add complexity only
+    after the foundation is solid and producing results.</p>
+    <p><strong style="color: var(--orange);">Mistake 2 — No Refinement:</strong>
+    Using the same prompts for months without improving them.
+    Your prompts should evolve weekly based on what produces results
+    and what falls flat. Stale prompts produce stale output.</p>
+    <p><strong style="color: var(--blue);">Mistake 3 — Copy-Paste Without Review:</strong>
+    Sending AI output directly without reading and editing.
+    AI drafts. You refine. Every email, proposal, and analysis
+    should pass through your judgment before going to a prospect.</p>
+    <p><strong style="color: var(--purple);">Mistake 4 — Ignoring the Data:</strong>
+    Using AI for execution but not for analysis.
+    The biggest value of an AI system is the feedback loop —
+    data from results improving every future interaction.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Scaling</span>
   <h2 class="section-title">Scaling Tips: From Solo Seller to Sales Team</h2>
   <p class="section-text">If you manage a team or plan to grow, your AI sales system scales in specific ways:</p>
@@ -109,6 +134,45 @@ free: false
     <p><strong style="color: var(--orange);">Measure AI Impact:</strong> Track the before and after. Compare close rates, cycle length, and activity efficiency from before AI adoption to after. Quantify the ROI so you can invest more confidently in tools and training.</p>
   </div>
   <p class="section-text">The salespeople who build these systems now will dominate their markets for years. Not because AI replaces human selling — but because it frees human sellers to do what they do best: connect, understand, and solve real problems for real people.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Optimization</span>
+  <h2 class="section-title">Continuous Improvement: The Monthly System Review</h2>
+  <p class="section-text">Your AI sales system is not set-and-forget.
+  Every month, run a system review that identifies what is working,
+  what is not, and what needs to change:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Prompt Performance Review:</strong>
+    Which prompts produced the best results this month? Which emails got replies?
+    Which call preps led to the best conversations? Double down on what works.
+    Retire or rewrite prompts that underperform.</p>
+    <p><strong style="color: var(--blue);">Workflow Efficiency Review:</strong>
+    Where did you spend the most AI time? Was it the best use of that time?
+    Are there manual steps you can now automate or simplify?
+    The goal is doing more with fewer prompts, not more prompts.</p>
+    <p><strong style="color: var(--purple);">Results Review:</strong>
+    Compare your key metrics — close rate, deal size, cycle length, activity
+    efficiency — from before AI adoption to now. Quantify the impact.
+    Knowing your ROI on AI keeps you motivated and helps you invest in
+    the right tools and training.</p>
+    <p><strong style="color: var(--orange);">Skill Gap Review:</strong>
+    Where are you still struggling? Objection handling? Discovery questions?
+    Proposal writing? Ask AI to evaluate your weakest area and create
+    a targeted practice plan for next month.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Monthly System Review Prompt</h3>
+  <div class="prompt-box"><code>I have been using AI in my sales process for [X MONTHS].
+Here is my data: [PASTE: This month's metrics vs. last month's and vs.
+pre-AI baseline]. My most-used prompts: [LIST THEM]. My biggest win this
+month: [DESCRIBE]. My biggest frustration: [DESCRIBE]. Review my system
+and recommend: 1) Which prompts to keep, retire, or modify, 2) One new
+AI workflow I should add next month, 3) The single biggest improvement
+opportunity in my process, 4) A 30-day improvement plan with weekly
+milestones.</code></div>
 </div>
 
 <div class="lesson-section">

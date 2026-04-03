@@ -172,6 +172,16 @@ cinematic 24fps, shallow depth of field</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Cost-Effective Video Creation</span>
+  <h2 class="section-title">Getting the most value from your video generation credits.</h2>
+  <p class="section-text">AI video generation is more resource-intensive than image generation, and most tools charge per generation. Here is how to maximize your value:</p>
+  <p class="section-text"><strong>Perfect your starting image first:</strong> Since image-to-video produces more predictable results, invest your time in getting the perfect starting frame using image tools (which are cheaper or free). Then use your video credits on a refined, proven starting point rather than experimenting with text-to-video.</p>
+  <p class="section-text"><strong>Start with free tiers:</strong> Pika and Luma both offer free generations. Use these to learn the medium and understand how different prompts affect motion before committing money to premium tools.</p>
+  <p class="section-text"><strong>Batch your video sessions:</strong> Plan all your video concepts in advance, write all your motion prompts, prepare all your starting images — then generate all videos in one focused session. This focused approach produces better results than scattered one-off generations.</p>
+  <p class="section-text"><strong>Reuse and remix:</strong> A single well-generated video clip can be used multiple ways. Trim different sections for different posts. Slow it down or speed it up. Loop a seamless section for a background. Add different text overlays for different messages. One generation, multiple uses.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Terms</span>
   <h2 class="section-title">AI Video Vocabulary</h2>
   <div data-learn="FlashDeck" data-props='{"title":"AI Video Key Concepts","cards":[{"front":"Text-to-video","back":"Describing a scene in words and having AI generate the entire video from scratch — maximum creative freedom but less control over exact look"},{"front":"Image-to-video","back":"Uploading a still image and having AI animate it with motion and camera movement — more control because you start with an image you already like"},{"front":"Motion prompt","back":"A text description that specifies how things move in AI video — e.g. slow pan across, gentle zoom in, camera orbiting around"},{"front":"Video coherence","back":"How well an AI video maintains consistent physics, lighting, and object appearance throughout the clip — a key quality differentiator between tools"},{"front":"Atmospheric elements","back":"Details like fog, rain, dust particles in light that look especially beautiful in AI video and add cinematic depth to short clips"}]}'></div>

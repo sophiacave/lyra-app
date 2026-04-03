@@ -156,6 +156,31 @@ That difference is their personality.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Future-Proofing Your Choice</span>
+  <h2 class="section-title">The tool you pick today might not be your tool next year. And that is fine.</h2>
+  <p class="section-text">The AI image landscape is young and volatile. Tools rise and fall. New entrants appear monthly. Here is how to invest your learning wisely:</p>
+  <p class="section-text"><strong>Learn principles, not just interfaces:</strong> The skill of writing clear, descriptive prompts transfers across every tool. Composition, lighting, and style concepts work everywhere. If your favorite tool disappears tomorrow, your core skills move to any replacement in minutes.</p>
+  <p class="section-text"><strong>Stay tool-flexible:</strong> Do not build your entire workflow around one tool's proprietary features. Use standard image formats, keep your prompt library in a portable document, and remain open to switching when something better emerges.</p>
+  <p class="section-text"><strong>Watch for convergence:</strong> Tools are increasingly offering similar features — inpainting, outpainting, video, style transfer. As they converge, the unique advantages of each tool narrow. The differentiator becomes your creative skill, not your tool choice. That is why this course focuses on teachable skills rather than tool-specific tutorials.</p>
+  <p class="section-text">Pick a tool that feels right today. Learn it well. Stay curious about alternatives. Your creative vision is the constant — the tools are just instruments.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Setting Up Your First Tool</span>
+  <h2 class="section-title">A quick-start guide to getting running in under five minutes.</h2>
+  <p class="section-text">If you want to start generating images right now, here is the fastest path for each major tool:</p>
+  <p class="section-text"><strong>ChatGPT (DALL-E):</strong> Go to chatgpt.com. Sign up with email or Google account. Click "New chat." Type "Generate an image of..." and describe what you want. That is it — images appear right in the chat.</p>
+  <p class="section-text"><strong>Bing Image Creator:</strong> Go to bing.com/images/create. Sign in with a Microsoft account (free). Type your prompt. Click "Create." Four images appear. Download your favorites.</p>
+  <p class="section-text"><strong>Midjourney:</strong> Go to midjourney.com. Subscribe to a plan (starts at $10/month). You can use the web interface to type prompts and generate images. Results appear in your gallery.</p>
+  <p class="section-text"><strong>Leonardo AI:</strong> Go to leonardo.ai. Sign up for a free account. You get 150 free tokens per day. Choose a model, type your prompt, and generate. The interface includes many options — start simple and explore as you learn.</p>
+  <p class="section-text">Pick one. Sign up. Generate your first image. Come back to the next lesson ready to go deeper. The best way to learn these tools is to use them — everything else is theory until you see your own words become images.</p>
+  <p class="section-text">In the next lesson, we will use your chosen tool to create your first real AI image from scratch — step by step, with no assumptions about your experience level. You will learn the anatomy of a good prompt, the generate-evaluate-refine loop, and how to save and organize your creations. By the end of Lesson 3, you will have real images you created from nothing but words.</p>
+  <p class="section-text">If you have not yet signed up for a tool, do it before moving on. The next lesson is entirely hands-on, and you will get the most out of it if you can follow along in real-time. Pick the tool that felt most appealing from this lesson's descriptions. You can always try others later — right now, one good tool is all you need to start creating.</p>
+  <p class="section-text">Remember: the tool does not make the creator. Your creative vision, your descriptive clarity, and your willingness to iterate — those are the real skills. Any tool is just an instrument for expressing what you see in your mind. Choose the instrument that feels most natural and get ready to play.</p>
+  <p class="section-text">One final thought: do not overthink this choice. You are not signing a contract. Try one tool today, try another next week. The best tool for you is the one you actually enjoy using — because enjoyment leads to practice, practice leads to skill, and skill leads to images that genuinely amaze you.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Terms</span>
   <h2 class="section-title">AI Image Tools Vocabulary</h2>
   <div data-learn="FlashDeck" data-props='{"title":"AI Image Tool Key Concepts","cards":[{"front":"DALL-E","back":"OpenAI\\u0027s image generator built into ChatGPT — the easiest starting point, excels at following precise instructions, free tier available"},{"front":"Midjourney","back":"The artist\\u0027s favorite — produces the most visually striking, cinematic images but is less precise at following exact instructions. Starts at $10/month"},{"front":"Stable Diffusion","back":"Open-source image generator you can run on your own computer — maximum control and zero ongoing cost, but steeper learning curve"},{"front":"Adobe Firefly","back":"Trained only on licensed content, making it the safest choice for commercial work — offers IP indemnity for enterprise customers"},{"front":"Ideogram","back":"Exceptional at including readable text in images — something most AI tools struggle with — great for posters, logos, and social graphics"}]}'></div>

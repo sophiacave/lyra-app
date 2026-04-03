@@ -188,6 +188,8 @@ Be brutally honest. I can take it.</code></pre>
     <li><strong>The role would be artificial</strong> — Don't force it. "You are an email-writing expert" is just noise.</li>
   </ul>
 
+  <p class="section-text"><strong>The role litmus test:</strong> Ask yourself — "Would I hire a specialist for this task, or would I ask anyone nearby?" If you'd hire a specialist (lawyer for a contract, strategist for a business plan), add a role. If you'd ask anyone (directions, quick math, translation), skip it. Over-roling simple tasks adds noise without improving output.</p>
+
 <div data-learn="QuizMC" data-props='{"title":"Role Mastery Check","questions":[{"q":"Which of these prompts would benefit MOST from adding a role?","options":["\"Translate this paragraph to French.\"","\"What year was the Eiffel Tower built?\"","\"Write a proposal to convince my CEO to invest in AI training for our sales team.\"","\"Convert 50 miles to kilometers.\""],"correct":2,"explanation":"The proposal needs a specific perspective and expertise level. Adding a role like senior business strategist or sales enablement consultant would dramatically improve the output. The other tasks are simple enough that a role adds no value."},{"q":"What makes a role assignment effective?","options":["Making it as long and detailed as possible","Including a title, experience level, and specialization","Always using the exact phrase You are a...","Picking the most impressive-sounding job title"],"correct":1,"explanation":"The three elements — title, experience, and specialization — give the AI a precise persona to draw from. You are a senior copywriter who specializes in B2B SaaS is better than You are a writing expert."}]}'></div>
 
 </div>

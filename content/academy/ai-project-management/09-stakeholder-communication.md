@@ -135,6 +135,57 @@ Tone: Respectful but urgent. Show that I have done my due diligence. Be specific
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <h2 class="section-title">The Stakeholder Power-Interest Grid</h2>
+  <p class="section-text">Not all stakeholders need the same level of communication. The power-interest grid helps you calibrate your effort:</p>
+  <p class="section-text"><strong>High Power + High Interest (Manage Closely):</strong> Your project sponsor, key client contacts. They want regular, detailed updates and involvement in decisions. AI drafts their personalized updates weekly.</p>
+  <p class="section-text"><strong>High Power + Low Interest (Keep Satisfied):</strong> Senior leaders who can kill your project but do not want to be involved day-to-day. They want a monthly executive summary — no detail, just outcomes. AI compresses your weekly data into a monthly one-pager for them.</p>
+  <p class="section-text"><strong>Low Power + High Interest (Keep Informed):</strong> End users, adjacent teams, interested colleagues. They care about the outcome but cannot change your project direction. A newsletter-style update or shared dashboard works. AI generates these from the same raw data you already produce.</p>
+  <p class="section-text"><strong>Low Power + Low Interest (Monitor):</strong> People who need to know the project exists but nothing more. A project page on the wiki is sufficient. No active communication needed unless the project impacts them directly.</p>
+  <div class="prompt-box"><code>Here are my project stakeholders:
+[List each stakeholder: name, role, their interest in this project, their authority level]
+
+Please:
+1. Categorize each into the power-interest grid (Manage Closely / Keep Satisfied / Keep Informed / Monitor)
+2. Recommend a communication plan for each category: frequency, format, level of detail, channel
+3. Draft a template communication for each category that I can reuse weekly/monthly
+4. Identify any stakeholders who might move between categories as the project progresses</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <h2 class="section-title">Communication Mistakes That Damage Trust</h2>
+  <p class="section-text"><strong>The Information Dump:</strong> Sending the same detailed update to everyone. Your CTO does not need the client-facing narrative. Your client does not need the sprint-level task breakdown. Mismatched communication signals that you do not understand your audience — and AI makes audience adaptation so easy that there is no excuse for this.</p>
+  <p class="section-text"><strong>The Surprise:</strong> Reporting green for weeks then suddenly revealing a major issue. Stakeholders can handle bad news. They cannot handle surprises. AI helps you catch declining trends early through data analysis, giving you time to flag amber before things go red.</p>
+  <p class="section-text"><strong>The Radio Silence:</strong> Not communicating when things are going well. Stakeholders interpret silence as "something must be wrong." A brief "still on track, no issues" message takes 30 seconds with AI and prevents unnecessary anxiety and check-in meetings.</p>
+  <p class="section-text"><strong>The Jargon Wall:</strong> Using project management or technical terminology with non-technical stakeholders. AI is excellent at translating — tell it "rewrite this for someone who does not know what a sprint is" and it produces clean, accessible language that respects your audience's intelligence without assuming their domain knowledge.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Technique</span>
+  <h2 class="section-title">Presentation Preparation with AI</h2>
+  <p class="section-text">PMs frequently present to steering committees, leadership teams, and client groups. AI does not create slides for you, but it does the hardest part — structuring the story:</p>
+  <div class="prompt-box"><code>I am presenting to [audience] about [topic]. The presentation is [X minutes]. They care most about [their key concerns].
+
+Please create:
+1. A presentation outline with slide titles and key message per slide
+2. Talking points for each slide (what I should say, not what the slide shows)
+3. Anticipated questions they will ask, with suggested answers
+4. One strong opening line that captures attention
+5. One clear closing statement that reinforces the main takeaway</code></div>
+  <p class="section-text">The anticipated questions section is the hidden gem here. Walking into a presentation with pre-prepared answers for the five most likely tough questions transforms your confidence and credibility. AI generates these questions by thinking about the audience's perspective — something PMs often forget to do when they are deep in the project details.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Technique</span>
+  <h2 class="section-title">Managing Upward: Communicating with Your Own Manager</h2>
+  <p class="section-text">PMs spend so much energy communicating with stakeholders, clients, and teams that they often neglect communication with their own manager. AI helps you keep your manager informed without adding another reporting burden:</p>
+  <p class="section-text"><strong>Weekly manager update:</strong> Take the same raw status dump you use for your stakeholder reports and ask AI to create a manager-specific version that highlights: decisions you made this week and why, risks you are watching, areas where you might need their support, and your confidence level in hitting the next milestone.</p>
+  <p class="section-text"><strong>The "no surprises" rule:</strong> Your manager should never learn about a project problem from someone else. AI helps you draft proactive heads-up messages: "I want to flag something before it becomes a formal escalation. Here is what I am seeing and how I plan to handle it." This builds trust and ensures your manager can support you when you need it.</p>
+  <p class="section-text">Managing upward is a career skill, not just a project skill. PMs who keep their managers well-informed get more autonomy, more resources, and more career advancement than equally skilled PMs who only communicate when asked.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Pro Tip</span>
   <h2 class="section-title">The Stakeholder Map Prompt</h2>
   <p class="section-text">At project kickoff, describe each key stakeholder to AI — their role, what they care about, how much detail they want, how often they want updates. Save this as context. Now every time you need to communicate, remind AI which stakeholder you're writing for. It remembers their preferences and adapts automatically.</p>

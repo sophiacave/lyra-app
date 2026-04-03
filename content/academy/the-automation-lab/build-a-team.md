@@ -158,6 +158,50 @@ free: false
 
   <div data-learn="QuizMC" data-props='{"title":"Team Composition Quiz","questions":[{"q":"You are building a content pipeline. Which three agents are essential?","options":["Writer, Scheduler, Monitor","Writer, Editor, Publisher","Analyst, Notifier, Guardian","Scheduler, Monitor, Guardian"],"correct":1,"explanation":"A content pipeline needs: Writer (creates content), Editor (quality control), Publisher (deploys it). Without any one of these, the pipeline has a gap."},{"q":"You are building a self-healing server monitor. Which agent enforces safety rules before allowing restarts?","options":["Notifier","Monitor","Scheduler","Guardian"],"correct":3,"explanation":"The Guardian agent checks compliance rules before allowing potentially dangerous actions like server restarts."},{"q":"Your analytics pipeline runs on a schedule but nobody knows when it breaks. Which missing agent fixes this?","options":["Writer","Editor","Monitor","Publisher"],"correct":2,"explanation":"A Monitor agent watches the pipeline health. Without it, failures go undetected until someone notices the missing report."},{"q":"Why is a team of 3 specialized agents better than 1 agent with 30 tools?","options":["It uses less memory","Specialized agents focus better, fail independently, and check each other\u0027s work","More agents always means better results","It is easier to debug"],"correct":1,"explanation":"Focus (fewer tools = better decisions), separation of concerns (independent failure), and checks and balances (agents reviewing each other) all improve with specialization."},{"q":"An agent team has a Writer and Publisher but no Editor. What is the risk?","options":["No risk \u2014 the Writer checks its own work","Content with errors reaches production unchecked","The Publisher will refuse to deploy","The team will deadlock"],"correct":1,"explanation":"Without an Editor, there is no quality gate. The Writer checking its own work is unreliable \u2014 a separate reviewer catches errors the creator misses."}]}'></div>
 
+  <div class="section">
+    <h2>Testing Agent Teams</h2>
+    <p>Team testing is different from solo agent testing. You need to verify both individual agents and their interactions:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8">Unit Test Each Agent</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Test each agent in isolation with mock inputs. Does the Writer produce well-formatted content? Does the Editor catch errors? Does the Publisher deploy correctly? Each agent must work alone before it works in a team.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Integration Test the Handoffs</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Test the connections between agents. When the Writer writes to <code>task.draft</code>, does the Editor pick it up? When the Editor approves, does the Publisher receive the approved version? Handoff failures are the most common team bugs.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444">Chaos Test the Failures</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Deliberately crash one agent and verify the team recovers. Kill the Editor mid-review. Does the system retry? Does the Monitor detect it? Does the Notifier alert? If any of these fail, your team is not production-ready.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Team Evolution Over Time</h2>
+    <p>Agent teams are not static. They evolve as your needs change. A healthy evolution follows this pattern:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">Phase 1: Solo Agent</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Start with one agent that does everything. This is fine for learning and prototyping. You will quickly discover which tasks it handles well and which ones suffer from being bundled together.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">Phase 2: Split by Failure Mode</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The first split should happen when you realize one part of the agent is failing while the rest works fine. If the writing is great but publishing keeps breaking, split into Writer and Publisher. Separate what fails independently.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">Phase 3: Add Quality Control</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Once you have producers and deployers, add a quality gate — an Editor or Guardian agent that reviews output before it reaches production. This is the phase where output quality jumps dramatically.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444">Phase 4: Add Observability</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Finally, add a Monitor agent that watches the whole team. This is when the system becomes self-healing — failures are detected and corrected without human intervention.</p>
+      </div>
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"Agent Roles","cards":[{"front":"Content Writer agent","back":"Generates blog posts, emails, and social copy. Essential for any content pipeline. Keep its tools focused on writing \u2014 not publishing."},{"front":"Editor agent","back":"Reviews, fact-checks, and improves content. The quality gate. An agent checking its own work is unreliable \u2014 always use a separate editor."},{"front":"Publisher agent","back":"Deploys content to websites and platforms. Without it, content sits in drafts forever. Connects to CMS, social APIs, email services."},{"front":"Monitor agent","back":"Watches systems for errors and anomalies. First to know when something breaks. Essential for any production system."},{"front":"Guardian agent","back":"Enforces rules, checks compliance, validates actions. Safety net for the whole system. Guardrails with teeth."},{"front":"Why teams over solo agents?","back":"Focus (fewer tools = better decisions), separation of concerns (independent failure), checks and balances (agents reviewing each other). Three specialists beat one generalist."}]}'></div>
 
 </div>

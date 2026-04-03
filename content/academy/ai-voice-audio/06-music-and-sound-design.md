@@ -91,6 +91,79 @@ type: "lesson"
   <p><strong>Example 3:</strong> Electronic ambient, ethereal and vast, synthesizer pads, reverb-heavy</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced Prompting</span>
+  <h2 class="section-title">Genre-Specific Prompt Techniques</h2>
+  <p class="section-text">Generic prompts produce generic music. Here are proven prompt patterns for specific genres that consistently produce better output:</p>
+  <p class="section-text"><strong>Lo-fi / chill:</strong> Include texture words — vinyl crackle, tape hiss, warm, dusty. Specify the room — late night apartment, rainy window, study session. Mention specific instruments — Rhodes piano, muted trumpet, brushed drums, upright bass. Lo-fi is about imperfection, so ask for it explicitly.</p>
+  <p class="section-text"><strong>Cinematic / orchestral:</strong> Describe the emotional arc — building from quiet tension to triumphant crescendo. Name specific orchestral sections — solo cello opening, strings building, brass entering at the peak, timpani hits. Reference film composers by style, not name — "epic and sweeping" rather than "like Hans Zimmer."</p>
+  <p class="section-text"><strong>Electronic / EDM:</strong> Specify the subgenre precisely — deep house, drum and bass, ambient techno, synthwave. Include BPM if you know it (house is 120-130, DnB is 170-180). Describe the energy curve — slow build, drop at 30 seconds, breakdown, second drop harder.</p>
+  <p class="section-text"><strong>Acoustic / folk:</strong> Name the wood — nylon string guitar, cedar-top acoustic, maple ukulele. Describe the recording space — live room, campfire, small club. Mention the feel — fingerpicked, strummed gently, bluegrass flatpick. Acoustic genres respond well to spatial and textural descriptions.</p>
+  <p class="section-text"><strong>Hip-hop / R&B:</strong> Describe the beat first — booming 808, crispy hi-hats, swung rhythm. Then the vibe — dark and moody, sunny and upbeat, old school boom bap. Specify if you want vocals or instrumental only. Mention production era — 90s golden age, modern trap, neo-soul.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Workflow</span>
+  <h2 class="section-title">Stem Separation: Remixing Existing Audio</h2>
+  <p class="section-text">Not all AI music work starts from scratch. Stem separation lets you deconstruct existing audio into its individual components:</p>
+  <p class="section-text"><strong>What it is:</strong> AI models (LALAL.AI, Demucs, UVR5) analyze a mixed audio file and separate it into stems — vocals, drums, bass, guitar, piano, and other instruments. Each stem is exported as a separate file that you can edit, remix, or use independently.</p>
+  <p class="section-text"><strong>Use case — vocal isolation:</strong> Extract the vocal track from a noisy recording to clean it separately. Remove background music from an interview. Isolate a singer's performance for remixing or sampling (with permission).</p>
+  <p class="section-text"><strong>Use case — music bed extraction:</strong> Pull the instrumental track from a video to reuse under different voiceover. Separate music from dialogue in film content for re-mixing.</p>
+  <p class="section-text"><strong>Use case — remix and mashup:</strong> Separate stems from two different songs and recombine them. Layer the drums from one track with the melody from another. This is the foundation of modern remix culture.</p>
+  <p class="section-text"><strong>Best tools:</strong> LALAL.AI produces the cleanest separation for commercial use. Meta's Demucs is free and open-source — run it locally for unlimited processing. Ultimate Vocal Remover (UVR5) is a free desktop app with multiple AI models for different separation tasks.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Production Tips</span>
+  <h2 class="section-title">Working with AI Music in a DAW</h2>
+  <p class="section-text">AI generates the raw material. A DAW (Digital Audio Workstation) turns it into a finished product. Here is how to integrate AI music into a professional workflow:</p>
+  <p class="section-text"><strong>Import and arrange:</strong> Generate multiple variations of each track section (intro, verse, chorus, bridge). Import them into GarageBand, Audacity, Logic, or Ableton. Arrange the best sections into a cohesive structure. AI gives you options — your ear makes the final call.</p>
+  <p class="section-text"><strong>Edit transitions:</strong> AI-generated tracks often have abrupt endings or awkward transitions between sections. Use crossfades (200-500ms) to smooth these. Add reverb tails at section endings for natural decay. Cut precisely on beat boundaries to maintain rhythm.</p>
+  <p class="section-text"><strong>Layer and enhance:</strong> Stack AI-generated elements — a Suno melody over an AIVA orchestral bed under Stable Audio ambient textures. Each tool has different strengths. Layering combines them into something richer than any single generation.</p>
+  <p class="section-text"><strong>Master for delivery:</strong> Apply gentle EQ to balance frequencies across layered tracks. Use a limiter at -1dB true peak. Normalize to your target platform's loudness standard. Export at the highest quality your platform accepts — you can always convert down, never up.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Generating Music Programmatically</h2>
+  <p class="section-text">While most music generation happens through web interfaces, API access opens up automation and integration possibilities:</p>
+  <div class="prompt-box"><code># Using Stable Audio API for sound effects generation
+import requests
+
+url = "https://api.stability.ai/v2beta/stable-audio/generate"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+# Generate a cinematic sound effect
+payload = {
+    "prompt": "Massive stone door grinding open in an ancient temple, "
+              "dust falling, deep echo, mysterious atmosphere",
+    "duration": 8.0,          # Duration in seconds
+    "output_format": "mp3"
+}
+
+response = requests.post(url, json=payload, headers=headers)
+with open("temple_door.mp3", "wb") as f:
+    f.write(response.content)
+print("Sound effect generated successfully.")
+
+# Generate background music
+payload_music = {
+    "prompt": "Lo-fi jazz, late night cafe, piano and soft brushed drums, "
+              "vinyl crackle, warm and intimate, 90 BPM",
+    "duration": 30.0,
+    "output_format": "mp3"
+}
+
+response = requests.post(url, json=payload_music, headers=headers)
+with open("cafe_ambience.mp3", "wb") as f:
+    f.write(response.content)
+print("Background music generated successfully.")</code></div>
+  <p class="section-text">API-driven music generation lets you integrate audio creation into automated workflows — generate background music for each podcast episode automatically, create unique sound effects for game events programmatically, or build a tool that generates custom hold music for business phone systems.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It: Generate a Soundtrack</h3>
   <p>Go to <strong>Suno.com</strong> and generate three tracks for a fictional short film. Use these prompts as starting points:</p>

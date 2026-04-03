@@ -173,7 +173,32 @@ free: true
     <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Most production agent systems use the hybrid pattern. It gives you the speed of key-value lookups for routine reads and the intelligence of semantic search for complex queries.</p>
   </div>
 
+  <div class="section">
+    <h2>Memory Anti-Patterns</h2>
+    <p>Common mistakes that degrade agent memory performance:</p>
+
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
+      <strong style="color:#ef4444">Store-everything syndrome:</strong> Writing every conversation turn to long-term memory. This fills the database with low-value noise that makes retrieval slower and less accurate. Store decisions, outcomes, and learned facts — not raw conversation logs.<br><br>
+      <strong style="color:#ef4444">Key name collisions:</strong> Two agents both using <code>status</code> as a key name. Agent A overwrites Agent B's status. Use namespaced keys: <code>agent.writer.status</code> vs <code>agent.editor.status</code>.<br><br>
+      <strong style="color:#ef4444">No cleanup:</strong> Memory that grows forever eventually degrades retrieval quality. Set TTLs on temporary data. Archive completed project memories. Consolidate old session logs into summaries.
+    </div>
+  </div>
+
   <div data-learn="FlashDeck" data-props='{"title":"Memory Types","cards":[{"front":"Short-Term Memory","back":"Exists only during the current conversation (the context window). Vanishes when the session ends. Fast but ephemeral — like a mental scratchpad."},{"front":"Long-Term Memory","back":"Persisted in a database (agent_memory table). Survives across sessions. Makes agents smarter over time. Use for user preferences, past decisions, learned facts."},{"front":"Shared Memory","back":"A key-value store accessible to ALL agents (brain_context). The communication bus that lets agents coordinate without talking directly to each other."},{"front":"What is the context window problem?","back":"LLMs have a max context size. After many tool calls, older context gets pushed out. Solution: checkpoint critical state to long-term memory before overflow."},{"front":"What are vector embeddings?","back":"Numerical arrays that capture the meaning of text. Enable semantic search \u2014 find memories by meaning, not just exact key match. Powered by pgvector in Supabase."},{"front":"When to use long-term vs shared memory?","back":"Long-term: one agent remembering things across its own sessions. Shared: passing information between different agents or storing system-wide state."}]}'></div>
+
+  <div class="section">
+    <h2>When to Use Each Memory Type</h2>
+    <p>A common mistake is using the wrong memory type for the job. Here is a decision guide:</p>
+
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.8">
+      <strong style="color:#e5e5e5">Is it temporary (just this session)?</strong><br>
+      &nbsp;&nbsp;Yes &rarr; <strong style="color:#fb923c">Short-term</strong> — keep it in the conversation context<br>
+      &nbsp;&nbsp;No &rarr; Does it belong to one agent or many?<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;One agent &rarr; <strong style="color:#8b5cf6">Long-term</strong> — write to agent_memory<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Multiple agents &rarr; <strong style="color:#34d399">Shared</strong> — write to brain_context
+    </div>
+    <p style="font-size:.82rem;color:#71717a">If in doubt, default to shared memory. It is always better for another agent to have access to a memory it does not need than for it to lack a memory it does need.</p>
+  </div>
 
   <div data-learn="QuizMC" data-props='{"title":"Memory Systems Quiz","questions":[{"q":"Which type of memory disappears when a conversation ends?","options":["Long-term","Shared","Short-term","All of them"],"correct":2,"explanation":"Short-term memory only exists during the current session (context window). Long-term and shared memory persist in databases."},{"q":"An agent needs to remember a user\u0027s preferences across multiple sessions. Which memory type should it use?","options":["Short-term","Shared","Long-term","None needed"],"correct":2,"explanation":"Long-term memory (agent_memory table) persists across sessions \u2014 perfect for storing user preferences, past decisions, and learned facts."},{"q":"Two agents need to coordinate \u2014 Agent A writes a result that Agent B should act on. Which memory type enables this?","options":["Short-term (session context)","Long-term (agent_memory)","Shared (brain_context)","No memory needed"],"correct":2,"explanation":"Shared memory (brain_context) is the communication bus between agents. Agent A writes, Agent B reads \u2014 no direct connection needed."},{"q":"After 50 tool calls, an agent suddenly forgets the user\u0027s name. What happened?","options":["The agent crashed","The context window overflowed and older information was pushed out","The database was deleted","Short-term memory corrupted"],"correct":1,"explanation":"Context overflow is the most common cause of agent amnesia. The fix: checkpoint critical state to long-term memory before the context fills up."},{"q":"What advantage does vector search have over key-value lookup?","options":["It is faster","It finds memories by semantic meaning, not just exact key match","It uses less storage","It works without a database"],"correct":1,"explanation":"Vector search matches by meaning. A query about \u0027design preferences\u0027 can find a memory stored under \u0027ui settings\u0027 because the meanings are similar."}]}'></div>
 

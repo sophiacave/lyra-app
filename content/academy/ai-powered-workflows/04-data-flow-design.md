@@ -127,6 +127,24 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Debugging</span>
+  <h2 class="section-title">Tracing Data Through Your Workflow</h2>
+  <p class="section-text">When something goes wrong in a multi-step workflow, you need to trace the data from step to step to find where it went off track. The technique is simple but disciplined: log the complete context object at the entrance and exit of every step.</p>
+  <p class="section-text">Give each workflow run a unique ID (a UUID works perfectly). Include that ID in every log entry. When you need to debug a specific run, filter your logs by that run ID and you'll see the complete data journey — what entered each step, what came out, and exactly where the data diverged from expectations.</p>
+  <p class="section-text">This technique is called <strong>distributed tracing</strong> in the software engineering world. It's how companies like Netflix and Stripe debug workflows that span dozens of services. For your workflows, the principle is the same: every piece of data should be traceable from input to output.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Performance</span>
+  <h2 class="section-title">Optimizing Data Flow for Speed</h2>
+  <p class="section-text">When your workflow processes high volumes, data flow design directly impacts performance. Two key techniques:</p>
+  <p class="section-text"><strong style="color: var(--green);">Lazy loading:</strong> Don't fetch data you might not need. If Branch A only applies to 10% of items, don't run the expensive enrichment step for all items — check the branch condition first, then fetch.</p>
+  <p class="section-text"><strong style="color: var(--green);">Parallel data fetching:</strong> If step 3 needs data from two independent APIs, call both simultaneously instead of sequentially. Two 500ms API calls in parallel take 500ms total. Sequentially, they take 1000ms. At scale, this difference is massive.</p>
+  <p class="section-text"><strong style="color: var(--green);">Caching:</strong> If multiple workflow runs need the same external data (company info for the same domain, exchange rates for the same currency), cache it. A 5-minute cache for exchange rates saves hundreds of redundant API calls per hour.</p>
+  <p class="section-text">A well-optimized data flow can handle 10x the volume of a naive one — without any infrastructure changes. The optimization is pure design: fetch less, fetch smarter, and never fetch twice what you can fetch once.</p>
+</div>
+
+<div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Data Flow Design","cards":[{"front":"Pass-Through Pattern","back":"Data enters Step A and flows unchanged to Step B. Example: customer email from signup form passed directly to your email platform. Just routing."},{"front":"Accumulator Pattern","back":"Each step adds new data. Step 1 gets the name, Step 2 looks up order history, Step 3 combines both into a personalized message."},{"front":"Data Transformation","back":"Converting between formats so each tool gets data in the shape it expects — March 27 2026 vs. 2026-03-27 vs. Thursday March 27th."},{"front":"AI-Powered Transformation","back":"AI interprets messy, inconsistent data and normalizes it. A customer writes next Tuesday — AI converts to an actual date. No rigid rule can do that."},{"front":"The #1 Data Flow Killer","back":"Losing data between steps. By step 5 you need the email from step 1 but it was never explicitly passed forward. Be explicit at every stage."}]}'></div>
 </div>
 
