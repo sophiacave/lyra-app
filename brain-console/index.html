@@ -760,16 +760,31 @@
     }
 
     // Stream listeners
+    console.log('[Debug] marked available:', typeof marked !== 'undefined');
+
     window.brain.onStreamChunk((chunk) => {
+      console.log('[Stream] Chunk received:', chunk?.length, 'chars, currentStreamDiv:', !!currentStreamDiv);
       if (currentStreamDiv) {
         const bodyDiv = currentStreamDiv.querySelector('.message-body');
+        if (!bodyDiv) { console.error('[Stream] No .message-body found!'); return; }
         bodyDiv.dataset.raw = (bodyDiv.dataset.raw || '') + chunk;
-        bodyDiv.innerHTML = marked.parse(bodyDiv.dataset.raw);
+        try {
+          if (typeof marked !== 'undefined' && marked.parse) {
+            bodyDiv.innerHTML = marked.parse(bodyDiv.dataset.raw);
+          } else {
+            console.warn('[Stream] marked not available, using plain text');
+            bodyDiv.textContent = bodyDiv.dataset.raw;
+          }
+        } catch (e) {
+          console.error('[Stream] Render error:', e);
+          bodyDiv.textContent = bodyDiv.dataset.raw;
+        }
         scrollToBottom();
       }
     });
 
     window.brain.onStreamEnd((meta) => {
+      console.log('[Stream] End received:', JSON.stringify(meta));
       isStreaming = false;
       if (currentStreamDiv && meta) {
         const header = currentStreamDiv.querySelector('.message-header');
@@ -788,6 +803,8 @@
           tag.textContent = `${meta.provider || 'AI'} · T${meta.tier || '?'} ${tierLabel} · ${costLabel}`;
         }
         header.appendChild(tag);
+      } else {
+        console.warn('[Stream] End but no currentStreamDiv or meta');
       }
       currentStreamDiv = null;
       document.getElementById('typingIndicator').classList.remove('active');
@@ -798,6 +815,7 @@
     });
 
     window.brain.onStreamError((error) => {
+      console.error('[Stream] Error received:', error);
       isStreaming = false;
       currentStreamDiv = null;
       document.getElementById('typingIndicator').classList.remove('active');
@@ -830,12 +848,15 @@
 
       currentStreamDiv = createMessageElement('brain', '');
       document.getElementById('chatMessages').appendChild(currentStreamDiv);
+      console.log('[Send] Created stream div, currentStreamDiv:', !!currentStreamDiv);
 
       setTimeout(() => {
         document.getElementById('typingIndicator').classList.remove('active');
       }, 300);
 
-      await window.brain.streamMessage(message);
+      console.log('[Send] Calling streamMessage...');
+      const streamResult = await window.brain.streamMessage(message);
+      console.log('[Send] streamMessage returned:', JSON.stringify(streamResult));
     }
 
     function addMessage(role, content, isError = false) {

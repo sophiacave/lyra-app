@@ -23,6 +23,12 @@ contextBridge.exposeInMainWorld('brain', {
   kbAdd: (entry) => ipcRenderer.invoke('brain:kb-add', entry),
   kbStats: () => ipcRenderer.invoke('brain:kb-stats'),
 
+  // Vault — brain IS the vault
+  vaultList: () => ipcRenderer.invoke('brain:vault-list'),
+  vaultGet: (service) => ipcRenderer.invoke('brain:vault-get', service),
+  vaultField: (service, field) => ipcRenderer.invoke('brain:vault-field', service, field),
+  vaultDecrypt: (service) => ipcRenderer.invoke('brain:vault-decrypt', service),
+
   // Agentic
   agentRun: (taskChain) => ipcRenderer.invoke('brain:agent-run', taskChain),
   agentStatus: () => ipcRenderer.invoke('brain:agent-status'),

@@ -104,11 +104,12 @@ class LocalEngine {
     }
 
     // ── CONVERSATIONAL INTENT ENGINE ──
-    // Faye just talks. We understand.
+    // Pattern matching only. All AI responses go through brainAPI (single codepath).
+    // Research: one model, one codepath, always stream, use /api/chat.
 
     const lo = msg.toLowerCase();
 
-    // 1. Fast pattern matching (covers ~90% of daily use)
+    // 1. Fast pattern matching (covers ~90% of command routing)
     const intent = this._matchIntent(lo, msg);
     if (intent) {
       const [cmd, ...args] = intent.split(' ');
@@ -122,30 +123,11 @@ class LocalEngine {
       return await this.handleCommand(cmd, args.join(' '));
     }
 
-    // 3. If Ollama is available, use local AI to classify intent (zero cost)
-    const aiIntent = await this._classifyWithOllama(msg);
-    if (aiIntent && aiIntent.cmd) {
-      return await this.handleCommand(aiIntent.cmd, aiIntent.args || '');
-    }
-
-    // 4. Faye responds conversationally via local AI
-    const fayeResponse = await this._fayeRespond(msg);
-    if (fayeResponse) {
-      return { handled: true, response: fayeResponse };
-    }
-
-    // 5. Auto-escalate to Claude (haiku, cheapest) if local AI failed
-    try {
-      const escaped = msg.replace(/'/g, "'\\''");
-      const output = await this._shellExec(`echo '${escaped}' | claude --print --model haiku 2>&1`);
-      if (output.trim()) {
-        this._claudeUsage.count++;
-        this._claudeUsage.lastModel = 'haiku';
-        this._claudeUsage.lastTime = new Date().toISOString();
-        return { handled: true, response: `${output.trim()}` };
-      }
-    } catch {}
-
+    // 3. Everything else → brainAPI handles it
+    // brainAPI has: smart model resolver (checks ollama ps), fallback chain,
+    // circuit breakers, streaming, /api/chat, buildSystemPrompt() personality.
+    // No classifier needed — pattern matching above catches command intents.
+    // No duplicate Ollama calls — single codepath prevents model thrashing.
     return { handled: false };
   }
 
@@ -1017,12 +999,20 @@ Reply with ONLY the command (like /actions pending) or CHAT. Nothing else:`;
 
     if (!data?.length) return '## Vault\n\nEmpty.';
 
-    let md = `## Brain Vault (${data.length} secrets)\n\n`;
-    md += `| Service | Tier | Hint | Accesses |\n|---------|------|------|----------|\n`;
+    // Check which credentials are loaded in memory
+    const loadedCreds = this.brainContext.listCredentials();
+    const loadedServices = new Set(loadedCreds.map(c => c.service));
+
+    let md = `## 🔐 Brain Vault (${data.length} secrets)\n\n`;
+    md += `| Service | Tier | Status | Accesses |\n|---------|------|--------|----------|\n`;
     for (const v of data) {
-      md += `| ${v.service} | ${v.tier} | ${v.hint || '—'} | ${v.access_count} |\n`;
+      const status = loadedServices.has(v.service) ? '✅ loaded' : (v.tier === 'sacred' ? '🔒 sacred' : '⚡ available');
+      md += `| ${v.service} | ${v.tier} | ${status} | ${v.access_count} |\n`;
     }
-    md += `\n*Secrets are encrypted. Read-only listing.*`;
+
+    md += `\n**Loaded:** ${loadedCreds.length} services active in memory`;
+    md += `\n**Passphrase:** ${this.brainContext.store.get('vault_passphrase') ? '✅ stored' : '❌ missing'}`;
+    md += `\n\n*Brain IS the vault. All keys auto-loaded on boot.*`;
     return md;
   }
 

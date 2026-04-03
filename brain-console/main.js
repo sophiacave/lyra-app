@@ -59,8 +59,13 @@ app.whenReady().then(async () => {
   try {
     // ============ INIT CORE ============
     brainContext = new BrainContext();
+    // Store vault passphrase on first boot (Faye provided it)
+    if (!brainContext.store.get('vault_passphrase')) {
+      brainContext.setVaultPassphrase('Angelica and Faye Across the Universe');
+    }
     await brainContext.initialize();
     brainAPI = new BrainAPI(brainContext);
+    await brainAPI.restoreConversation();
     localEngine = new LocalEngine(brainContext, brainAPI);
     smartRouter = new SmartRouter(brainAPI);
     scheduler = new Scheduler(brainContext, brainAPI);
@@ -178,7 +183,9 @@ app.whenReady().then(async () => {
   ipcMain.handle('brain:stream-message', async (event, message) => {
     let originalProvider;
     try {
+      console.log('[IPC] stream-message received:', message);
       const local = await localEngine.tryHandle(message);
+      console.log('[IPC] tryHandle result:', local.handled);
       if (local.handled) {
         // Stream the response in chunks for natural feel
         const text = local.response || '';
@@ -220,10 +227,15 @@ app.whenReady().then(async () => {
       }
 
       let fullResponse = '';
+      let chunkCount = 0;
+      console.log('[IPC] Starting brainAPI.streamMessage...');
       await brainAPI.streamMessage(augmentedMessage, (chunk) => {
+        chunkCount++;
         fullResponse += chunk;
+        if (chunkCount <= 3) console.log(`[IPC] Chunk #${chunkCount}:`, chunk.slice(0, 50));
         mainWindow.webContents.send('brain:stream-chunk', chunk);
       });
+      console.log(`[IPC] Stream complete: ${chunkCount} chunks, ${fullResponse.length} chars`);
 
       if (brainKnowledge && fullResponse) {
         brainKnowledge.learnFromConversation(message, fullResponse, route.provider).catch(() => {});
@@ -293,6 +305,15 @@ app.whenReady().then(async () => {
   });
 
   ipcMain.handle('brain:boot-scan', async () => await brainContext.bootScan());
+
+  // Vault IPC — brain IS the vault
+  ipcMain.handle('brain:vault-list', () => brainContext.listCredentials());
+  ipcMain.handle('brain:vault-get', async (event, service) => brainContext.getCredential(service));
+  ipcMain.handle('brain:vault-field', async (event, service, field) => brainContext.getCredentialField(service, field));
+  ipcMain.handle('brain:vault-decrypt', async (event, service) => {
+    try { return { success: true, data: await brainContext.decryptFromVault(service) }; }
+    catch (error) { return { success: false, error: error.message }; }
+  });
 
   // MCP IPC
   ipcMain.handle('brain:mcp-list-tools', () => brainMCP.listTools());

@@ -82,13 +82,14 @@ class SmartRouter {
 
     // Tier 4 or Ollama unavailable — try cloud providers
     const cloudPriority = tier === 4
-      ? ['anthropic', 'openrouter', 'groq', 'ollama']
-      : ['groq', 'openrouter', 'anthropic'];
+      ? ['anthropic', 'openai', 'openrouter', 'groq', 'ollama']
+      : ['groq', 'openrouter', 'openai', 'anthropic'];
 
     for (const id of cloudPriority) {
       if (id === 'ollama' && ollama.available) return { id, available: true };
       if (id === 'groq' && config.groqKey) return { id, available: true };
       if (id === 'openrouter' && config.openrouterKey) return { id, available: true };
+      if (id === 'openai' && config.openaiKey) return { id, available: true };
       if (id === 'anthropic' && config.anthropicKey) return { id, available: true };
     }
 

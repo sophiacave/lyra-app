@@ -33,6 +33,14 @@ const PROVIDERS = {
     models: ['meta-llama/llama-3.1-70b-instruct', 'mistralai/mixtral-8x7b-instruct', 'anthropic/claude-3.5-haiku'],
     defaultModel: 'meta-llama/llama-3.1-70b-instruct',
   },
+  openai: {
+    name: 'OpenAI',
+    baseUrl: 'https://api.openai.com/v1',
+    cost: 0.005, // ~$0.005/1k tokens (gpt-4o-mini)
+    requiresKey: true,
+    models: ['gpt-4o-mini', 'gpt-4o', 'gpt-4.1-mini'],
+    defaultModel: 'gpt-4o-mini',
+  },
   anthropic: {
     name: 'Anthropic (Premium)',
     baseUrl: 'https://api.anthropic.com/v1',
@@ -128,6 +136,13 @@ class BrainAPI {
   getActiveProvider() {
     const config = this.brainContext.getConfig();
     const preferred = config.aiProvider || 'ollama';
+
+    // Validate cloud providers have keys — fall back to ollama if not
+    if (preferred === 'anthropic' && !config.anthropicKey) return { id: 'ollama', ...PROVIDERS.ollama };
+    if (preferred === 'groq' && !config.groqKey) return { id: 'ollama', ...PROVIDERS.ollama };
+    if (preferred === 'openrouter' && !config.openrouterKey) return { id: 'ollama', ...PROVIDERS.ollama };
+    if (preferred === 'openai' && !config.openaiKey) return { id: 'ollama', ...PROVIDERS.ollama };
+
     return { id: preferred, ...PROVIDERS[preferred] };
   }
 
@@ -166,6 +181,73 @@ class BrainAPI {
   }
 
   /**
+   * Check which models are currently loaded in Ollama (ollama ps).
+   * Loaded models respond instantly — no cold-start delay.
+   */
+  async getLoadedModels() {
+    try {
+      const res = await this.fetchWithTimeout('http://localhost:11434/api/ps', {}, 2000);
+      if (res.ok) {
+        const data = await res.json();
+        return (data.models || []).map(m => m.name);
+      }
+      return [];
+    } catch {
+      return [];
+    }
+  }
+
+  /**
+   * Smart model resolution: prefer loaded model, fallback through chain.
+   * Returns the best available model name.
+   * Fallback chain: preferred → any loaded model → llama3.1:8b (small, fast load)
+   */
+  async resolveOllamaModel(preferredModel) {
+    const loaded = await this.getLoadedModels();
+
+    // 1. Preferred model is already loaded — instant response
+    if (loaded.some(m => m.startsWith(preferredModel.split(':')[0]))) {
+      return { model: preferredModel, status: 'loaded', loaded };
+    }
+
+    // 2. Another capable model is loaded — use it instead of cold-starting
+    const capableModels = ['qwen2.5:32b', 'qwen2.5:14b', 'llama3.1:70b', 'deepseek-r1:32b', 'deepseek-r1:8b'];
+    for (const cm of capableModels) {
+      if (loaded.some(m => m.startsWith(cm.split(':')[0]))) {
+        const match = loaded.find(m => m.startsWith(cm.split(':')[0]));
+        return { model: match, status: 'fallback_loaded', loaded };
+      }
+    }
+
+    // 3. Any model loaded at all — use it
+    if (loaded.length > 0) {
+      return { model: loaded[0], status: 'fallback_any', loaded };
+    }
+
+    // 4. Nothing loaded — check what's available, pick smallest for fast load
+    const available = await this.checkOllama();
+    if (available.available && available.models?.length) {
+      // Prefer small models for fast cold start
+      const fastModels = ['llama3.1:8b', 'deepseek-r1:8b', 'qwen2.5:7b'];
+      for (const fm of fastModels) {
+        if (available.models.some(m => m.startsWith(fm.split(':')[0]))) {
+          const match = available.models.find(m => m.startsWith(fm.split(':')[0]));
+          return { model: match, status: 'cold_start_fast', loaded };
+        }
+      }
+      // Fall back to preferred even if it's large
+      if (available.models.some(m => m.startsWith(preferredModel.split(':')[0]))) {
+        return { model: preferredModel, status: 'cold_start', loaded };
+      }
+      // Last resort: first available
+      return { model: available.models[0], status: 'cold_start_any', loaded };
+    }
+
+    // Ollama not running at all
+    return { model: preferredModel, status: 'ollama_offline', loaded: [] };
+  }
+
+  /**
    * Auto-detect best available provider (free first)
    */
   async detectBestProvider() {
@@ -180,7 +262,10 @@ class BrainAPI {
     // 3. Try OpenRouter (cheap)
     if (config.openrouterKey) return { id: 'openrouter', ...PROVIDERS.openrouter };
 
-    // 4. Anthropic (premium fallback)
+    // 4. OpenAI (if available)
+    if (config.openaiKey) return { id: 'openai', ...PROVIDERS.openai };
+
+    // 5. Anthropic (premium fallback)
     if (config.anthropicKey) return { id: 'anthropic', ...PROVIDERS.anthropic };
 
     return null; // No provider available
@@ -282,13 +367,18 @@ class BrainAPI {
             provider.baseUrl, config.openrouterKey, config.openrouterModel || provider.defaultModel, systemPrompt, config
           );
           break;
+        case 'openai':
+          response = await this._sendOpenAICompat(
+            provider.baseUrl, config.openaiKey, config.openaiModel || provider.defaultModel, systemPrompt, config
+          );
+          break;
         case 'anthropic':
           response = await this._sendAnthropic(systemPrompt, config);
           break;
         default:
           throw new Error(`Unknown provider: ${provider.id}`);
       }
-      
+
       this._recordSuccess(provider.id);
     } catch (error) {
       this._recordFailure(provider.id);
@@ -296,6 +386,9 @@ class BrainAPI {
     }
 
     this.conversationHistory.push({ role: 'assistant', content: response.text });
+
+    // Persist conversation to brain (async, non-blocking)
+    this._persistConversation().catch(() => {});
 
     // Cache the response
     const cacheKey = userMessage.trim().toLowerCase();
@@ -344,11 +437,16 @@ class BrainAPI {
             provider.baseUrl, config.openrouterKey, config.openrouterModel || provider.defaultModel, systemPrompt, config, onChunk
           );
           break;
+        case 'openai':
+          fullText = await this._streamOpenAICompat(
+            provider.baseUrl, config.openaiKey, config.openaiModel || provider.defaultModel, systemPrompt, config, onChunk
+          );
+          break;
         case 'anthropic':
           fullText = await this._streamAnthropic(systemPrompt, config, onChunk);
           break;
       }
-      
+
       this._recordSuccess(provider.id);
     } catch (error) {
       this._recordFailure(provider.id);
@@ -357,48 +455,127 @@ class BrainAPI {
 
     this.conversationHistory.push({ role: 'assistant', content: fullText });
     this.trackUsage(provider.id, userMessage.length / 4, fullText.length / 4); // Rough estimate
+
+    // Persist conversation to brain (async, non-blocking)
+    this._persistConversation().catch(() => {});
+
     return fullText;
+  }
+
+  /**
+   * Persist conversation history to brain_context for cross-session memory.
+   * Saves last 20 messages — lightweight, non-blocking.
+   */
+  async _persistConversation() {
+    const sb = this.brainContext?.supabase;
+    if (!sb || this.conversationHistory.length === 0) return;
+
+    // Only persist every 4 messages to reduce writes
+    if (this.conversationHistory.length % 4 !== 0) return;
+
+    const recent = this.conversationHistory.slice(-20);
+    await sb.from('brain_context').upsert({
+      key: 'console.conversation_history',
+      value: JSON.stringify({
+        messages: recent,
+        saved_at: new Date().toISOString(),
+        total_messages: this.conversationHistory.length,
+      }),
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'key' });
+  }
+
+  /**
+   * Restore conversation from brain on startup
+   */
+  async restoreConversation() {
+    const sb = this.brainContext?.supabase;
+    if (!sb) return;
+
+    try {
+      const { data } = await sb.from('brain_context')
+        .select('value')
+        .eq('key', 'console.conversation_history')
+        .single();
+
+      if (data?.value) {
+        const parsed = typeof data.value === 'string' ? JSON.parse(data.value) : data.value;
+        if (parsed.messages?.length) {
+          this.conversationHistory = parsed.messages;
+          console.log(`[Brain] Restored ${parsed.messages.length} messages from brain`);
+        }
+      }
+    } catch {
+      // No previous conversation — that's fine
+    }
   }
 
   // ============ PROVIDER IMPLEMENTATIONS ============
 
   /**
    * Ollama — completely free, local inference
+   * Uses smart model resolution: loaded model first, fallback chain, loading indicator
    */
   async _sendOllama(systemPrompt, config) {
-    const model = config.ollamaModel || 'llama3.1:8b';
+    const preferred = config.ollamaModel || 'qwen2.5:32b';
+    const resolved = await this.resolveOllamaModel(preferred);
+    const model = resolved.model;
+
+    if (resolved.status === 'ollama_offline') {
+      throw new Error('Ollama is offline. Run: ollama serve');
+    }
+
+    console.log(`[Ollama] Using ${model} (${resolved.status})`);
+
     const messages = [
       { role: 'system', content: systemPrompt },
       ...this.conversationHistory,
     ];
 
+    const timeout = resolved.status.startsWith('cold_start') ? 120000 : 60000;
     const res = await this.fetchWithTimeout('http://localhost:11434/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, messages, stream: false }),
-    });
+      body: JSON.stringify({ model, messages, stream: false, keep_alive: '30m' }),
+    }, timeout);
 
     const data = await res.json();
     return {
       text: data.message?.content || '',
       model,
+      resolvedFrom: resolved.status,
       inputTokens: data.prompt_eval_count || 0,
       outputTokens: data.eval_count || 0,
     };
   }
 
   async _streamOllama(systemPrompt, config, onChunk) {
-    const model = config.ollamaModel || 'llama3.1:8b';
+    const preferred = config.ollamaModel || 'qwen2.5:32b';
+    const resolved = await this.resolveOllamaModel(preferred);
+    const model = resolved.model;
+
+    if (resolved.status === 'ollama_offline') {
+      throw new Error('Ollama is offline. Run: ollama serve');
+    }
+
+    // Show loading indicator for cold starts only (not fallbacks — those are instant)
+    if (resolved.status.startsWith('cold_start')) {
+      onChunk(`*loading ${model}...*\n\n`);
+    }
+
+    console.log(`[Ollama] Streaming with ${model} (${resolved.status})`);
+
     const messages = [
       { role: 'system', content: systemPrompt },
       ...this.conversationHistory,
     ];
 
+    const timeout = resolved.status.startsWith('cold_start') ? 120000 : 60000;
     const res = await this.fetchWithTimeout('http://localhost:11434/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, messages, stream: true }),
-    });
+      body: JSON.stringify({ model, messages, stream: true, keep_alive: '30m' }),
+    }, timeout);
 
     let fullText = '';
     const reader = res.body.getReader();
