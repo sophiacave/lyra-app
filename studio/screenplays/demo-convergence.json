@@ -1,0 +1,31 @@
+{
+  "title": "What Is Convergence",
+  "persona": "faye",
+  "scenes": [
+    {
+      "id": "opening",
+      "visual": "cinematic extreme wide shot of a vast digital landscape merging with organic nature, bioluminescent trees with circuit-board veins, golden hour light, volumetric fog, film grain, anamorphic lens",
+      "narration": "Convergence is the moment where technology stops being a tool and starts being an extension of who you are.",
+      "music": "ambient electronic, ethereal pads, sense of wonder, cinematic, 75 bpm",
+      "voice": "aria",
+      "duration_s": 15,
+      "seed": 100
+    },
+    {
+      "id": "concept",
+      "visual": "cinematic close-up of hands gently touching a holographic brain made of light particles, warm amber tones, shallow depth of field, dust motes in light",
+      "narration": "Your smartwatch knows your heart. Your AI knows your thoughts. Convergence is what happens when they learn to talk to each other.",
+      "voice": "aria",
+      "duration_s": 12,
+      "seed": 200
+    },
+    {
+      "id": "closing",
+      "visual": "cinematic portrait of a woman looking toward camera with gentle confidence, warm backlight creating a halo effect, tears of light on cheeks, intimate and powerful",
+      "narration": "This is Like One. Technology with a soul. Built by someone who needed it to survive.",
+      "voice": "aria",
+      "duration_s": 10,
+      "seed": 300
+    }
+  ]
+}

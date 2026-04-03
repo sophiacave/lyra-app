@@ -1,0 +1,142 @@
+{
+  "version": "9.0",
+  "title": "Your First Conversation",
+  "course": "claude-for-beginners",
+  "lesson": "your-first-conversation",
+  "persona": "faye",
+  "duration_target_s": 90,
+  "learning_objectives": [
+    "Understand the 3-part prompt formula: Role + Context + Format",
+    "Feel the difference between vague and specific prompts",
+    "Leave with confidence to try their first real conversation"
+  ],
+  "narrative_arc": "cold open (frustration) → hook (there's a secret) → build (the formula) → aha (see the difference) → close (you're ready)",
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "cinematic",
+      "beat": "hook",
+      "dialogue": "You type something into an AI. You get back... word soup. Generic. Useless. You think: maybe AI isn't for me.",
+      "visual": "Extreme close-up of fingers hesitating over a glowing keyboard in darkness, soft warm light from the screen illuminating fingertips, shallow depth of field, shot on ARRI Alexa 65, Cooke S4 75mm T2.0, single motivated light source from screen, deep aubergine shadows, Roger Deakins naturalism",
+      "motion": "Subtle camera drift left, fingers hover uncertainly, screen light flickers softly",
+      "animate": true,
+      "voice": "faye",
+      "duration_s": 7,
+      "seed": 100,
+      "learning": {
+        "objective": "Empathy — validate the frustration everyone feels",
+        "complexity": "low",
+        "signaling": ["intimate close-up = personal, relatable"]
+      },
+      "pacing": { "wpm_target": 145, "pause_after_s": 1.0 }
+    },
+    {
+      "id": "the-secret",
+      "type": "cinematic",
+      "beat": "hook",
+      "dialogue": "But it's not the AI. It's the conversation. And there is a formula.",
+      "visual": "Medium shot of warm light slowly blooming through darkness, like sunrise through fog, volumetric golden rays cutting through deep void, shot on ARRI Alexa 65, Panavision C-Series 40mm anamorphic, backlit volumetric atmosphere, warm amber key with cool blue-violet fill",
+      "motion": "Slow push in toward the light source, fog particles drift through beams",
+      "animate": true,
+      "voice": "faye",
+      "duration_s": 5,
+      "seed": 200,
+      "learning": {
+        "objective": "Curiosity gap — there IS a solution",
+        "complexity": "low",
+        "signaling": ["light = knowledge emerging from confusion"]
+      },
+      "pacing": { "wpm_target": 130, "pause_after_s": 1.5 }
+    },
+    {
+      "id": "the-formula",
+      "type": "cinematic",
+      "beat": "teach",
+      "dialogue": "Three things. That's all you need. First: tell it who to be. A project manager. An editor. A teacher. Give it a role.",
+      "visual": "Clean architectural interior, warm light streaming through tall geometric windows casting long amber shadows across a minimal desk surface, a single warm object in focus, shot on RED V-Raptor 8K, Zeiss Master Prime 35mm, architectural butterfly lighting, warm tungsten 3200K key, Wes Anderson compositional precision",
+      "motion": "Slow dolly right along the desk surface, light shifts through windows",
+      "animate": true,
+      "voice": "faye",
+      "duration_s": 10,
+      "seed": 300,
+      "learning": {
+        "objective": "Part 1 of formula: ROLE",
+        "complexity": "low",
+        "signaling": ["clean space = clarity, one object = focus on one concept"]
+      },
+      "pacing": { "wpm_target": 140, "pause_after_s": 0.8 }
+    },
+    {
+      "id": "context-and-format",
+      "type": "cinematic",
+      "beat": "teach",
+      "dialogue": "Second: give it context. Your situation. The background. What you've tried. And third: tell it what you want back. Five bullet points. A short email. A comparison table. Role, context, format. That's the formula.",
+      "visual": "Overhead bird's-eye shot of three warm objects arranged on a dark matte surface, each illuminated by its own soft pool of warm light, creating three distinct golden circles against deep void, shot on ARRI Alexa 65, 24mm overhead, Rembrandt lighting from above, Kodak Vision3 500T warmth, practical motivated light sources",
+      "motion": "Each light pool illuminates sequentially left to right, subtle camera drift",
+      "animate": true,
+      "voice": "faye",
+      "duration_s": 16,
+      "seed": 400,
+      "learning": {
+        "objective": "Parts 2 and 3: CONTEXT + FORMAT. Full formula landed.",
+        "complexity": "medium",
+        "signaling": ["three lights = three parts of formula, sequential reveal = building understanding"]
+      },
+      "pacing": { "wpm_target": 145, "pause_after_s": 2.0 }
+    },
+    {
+      "id": "the-difference",
+      "type": "cinematic",
+      "beat": "reveal",
+      "dialogue": "Watch. 'Write me an email' — vague, and the AI guesses everything. But 'You're a friendly team lead. Tell my team the deadline moved to Wednesday. Encouraging tone. Three sentences.' Same AI. Completely different result.",
+      "visual": "Split composition: left side dim and hazy, right side sharp and luminous, divided by a thin vertical line of warm light, shot on ARRI Alexa 65, Cooke S4 50mm, split lighting cold blue-grey left and warm golden right, shallow depth of field transitions from blurry left to tack-sharp right",
+      "motion": "Camera slowly tracks right, focus shifts from blurry left to sharp right side",
+      "animate": true,
+      "voice": "faye",
+      "duration_s": 18,
+      "seed": 500,
+      "learning": {
+        "objective": "AHA — see the formula in action, feel the difference",
+        "complexity": "medium",
+        "signaling": ["split frame = before/after, focus shift = understanding clicks"]
+      },
+      "pacing": { "wpm_target": 150, "pause_after_s": 2.5 }
+    },
+    {
+      "id": "empowerment",
+      "type": "cinematic",
+      "beat": "teach",
+      "dialogue": "You don't need to be a prompt engineer. You just need to tell it three things: who to be, what the situation is, and what format you want. That's it. The rest is practice.",
+      "visual": "Close-up of hands confidently typing on keyboard now bathed in warm golden light, screen glow reflected in the surface, atmosphere completely transformed from opening — warm, inviting, alive, shot on ARRI Alexa 65, Cooke S4 75mm T2.0, warm motivated key light, Emmanuel Lubezki golden hour naturalism",
+      "motion": "Subtle slow push in, warm particles drift through light, confident energy",
+      "animate": true,
+      "voice": "faye",
+      "duration_s": 14,
+      "seed": 600,
+      "learning": {
+        "objective": "Reinforce: it's simple. Three things. You can do this.",
+        "complexity": "low",
+        "signaling": ["callback to opening shot — same hands, now confident, warm light"]
+      },
+      "pacing": { "wpm_target": 140, "pause_after_s": 1.5 }
+    },
+    {
+      "id": "close",
+      "type": "cinematic",
+      "beat": "close",
+      "dialogue": "So go. Open Claude. And have your first real conversation.",
+      "visual": "Wide shot pulling back from the warm desk scene to reveal a vast calm space, warm light radiating outward from the screen like a small sun, deep peaceful void surrounding it, shot on ARRI Alexa 65, Panavision C-Series 40mm anamorphic, Roger Deakins motivated single source, Kodak Vision3 warmth, anamorphic lens flare",
+      "motion": "Slow pullback revealing scale, warm light expands outward, peaceful drift",
+      "animate": true,
+      "voice": "faye",
+      "duration_s": 8,
+      "seed": 700,
+      "learning": {
+        "objective": "Call to action — go try it now",
+        "complexity": "low",
+        "signaling": ["pullback = sending them off, warm expanding light = confidence growing"]
+      },
+      "pacing": { "wpm_target": 120, "pause_after_s": 3.0 }
+    }
+  ]
+}
