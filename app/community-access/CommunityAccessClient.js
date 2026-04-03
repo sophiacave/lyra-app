@@ -186,7 +186,7 @@ export default function CommunityAccessClient() {
 
           {/* Legal */}
           <p className="ca-legal">
-            Like One Academy&rsquo;s Community Access program operates on an honor system. We do not verify identity or financial status. By claiming a spot, you confirm that you are accessing this program in good faith. Like One Academy reserves the right to modify or revoke access if the program is abused. This program is funded by the generosity of paying members and is subject to availability. Like One is a sole proprietorship registered under Sophia Cave. It is not a registered nonprofit. Community Access is a discretionary program, not a legal entitlement.
+            Like One Academy&rsquo;s Community Access program operates on an honor system. We do not verify identity or financial status. By claiming a spot, you confirm that you are accessing this program in good faith. Like One Academy reserves the right to modify or revoke access if the program is abused. This program is funded by the generosity of paying members and is subject to availability. Like One LLC is a Nevada limited liability company. Like One Foundation is a Nevada nonprofit corporation pursuing 501(c)(3) status. Community Access is a discretionary program, not a legal entitlement.
           </p>
         </div>
       </section>

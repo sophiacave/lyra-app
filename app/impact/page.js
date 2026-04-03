@@ -185,10 +185,10 @@ export default function ImpactPage() {
           <div className="donate-disclosure">
             <h3 className="donate-disclosure-title">Important Disclosure</h3>
             <p className="donate-disclosure-text">
-              Like One is currently a sole proprietorship registered under Sophia Cave.
-              We are in the process of forming Like One LLC (for-profit) and Like One Foundation (501(c)(3)).
-              Until the Foundation is established, giving is fulfilled through direct donations
-              from Like One revenue. Contributions to Like One are not tax-deductible.
+              Like One LLC is a Nevada limited liability company (NV20263555995).
+              Like One Foundation is a Nevada nonprofit corporation (NV20263556003), currently
+              pursuing 501(c)(3) tax-exempt status with the IRS. Once approved, donations to the
+              Foundation will be tax-deductible. Until then, contributions are not tax-deductible.
               The giving scale is a public commitment — tracked transparently and reported here.
             </p>
           </div>

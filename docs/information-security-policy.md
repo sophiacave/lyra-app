@@ -73,7 +73,7 @@ This policy applies to all systems, data, and services operated by Like One, inc
 
 ## 10. Employee Security
 
-Like One is a sole proprietorship. The founder is the only person with access to production systems. There are no employees or contractors with database access. AI systems (Claude) operate under strict directives with credential access limited to the encrypted vault RPC interface.
+Like One LLC is a Nevada limited liability company. The founder is the only person with access to production systems. There are no employees or contractors with database access. AI systems (Claude) operate under strict directives with credential access limited to the encrypted vault RPC interface.
 
 ## 11. Data Retention
 
