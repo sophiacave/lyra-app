@@ -11,13 +11,13 @@ const PLANS = [
   {
     label: 'Most popular', name: 'Pro — Founding', price: '$4.90', period: '/mo', was: '$49',
     desc: 'Full access to everything. 90% off — locked in forever.', featured: true,
-    features: ['All 300+ interactive lessons', '30 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Founding price — forever', highlight: true }],
+    features: ['All 300+ interactive lessons', '30 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }, { text: 'Founding price — forever', highlight: true }],
     btn: { label: 'Go Pro — $4.90/mo', href: 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c', style: 'primary', external: true },
   },
   {
     label: 'Best value — save 33%', name: 'Annual — Founding', price: '$39', period: '/yr', was: '$390',
     desc: "Everything in Pro. That's $3.25/mo — save 33% vs monthly. 90% off forever.",
-    features: ['Everything in Pro', { text: 'Save 33% vs monthly ($3.25/mo)', highlight: true }, '12 months of new content', 'All future content included', { text: 'Founding price — forever', highlight: true }],
+    features: ['Everything in Pro', { text: 'Save 33% vs monthly ($3.25/mo)', highlight: true }, '12 months of new content', 'All future content included', { text: 'Cancel or pause anytime', highlight: true }, { text: 'Founding price — forever', highlight: true }],
     btn: { label: 'Go Annual — $39/yr', href: 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d', style: 'secondary', external: true },
   },
   {
@@ -31,7 +31,8 @@ const PLANS = [
 const FAQS = [
   { q: 'Can I really start for free?', a: 'Yes. Sign up with your email and access the first 3 lessons of every course. No credit card. No tricks. No time limit.' },
   { q: 'What does "founding price forever" mean?', a: "The first 1,000 members lock in 90% off for life. Your price never increases, even when we raise prices to $49/mo for new members. It's our thank-you for believing early." },
-  { q: 'Can I cancel anytime?', a: 'Yes. Cancel from your Stripe billing portal anytime. No questions, no guilt. You keep access until the end of your billing period.' },
+  { q: 'Can I cancel anytime?', a: 'Yes. Cancel or pause anytime from your Stripe billing portal — one click from your account page. No questions, no guilt. You keep access until the end of your billing period.' },
+  { q: 'Can I pause my subscription?', a: "Yes. If you need a break, you can pause your subscription from your account settings. Your progress and founding price are saved. Resume whenever you're ready." },
   { q: 'Is there a refund policy?', a: "7-day full refund on your first payment. Email hello@likeone.ai and it's done. We're human first." },
   { q: "What's Community Access?", a: "If you genuinely can't afford Pro, apply for Community Access. Full access, no cost, honor system. Sophia reviews every application personally." },
   { q: 'Do I need to be technical?', a: 'No. Courses range from absolute beginner to advanced. The beginner courses assume zero coding experience. You just need curiosity.' },

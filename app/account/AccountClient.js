@@ -142,6 +142,24 @@ export default function AccountClient() {
     }
   }
 
+  async function openBillingPortal() {
+    try {
+      const res = await fetch(`${APP_URL}/functions/v1/manage-subscription`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${APP_ANON}` },
+        body: JSON.stringify({ email: session.user.email }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.open(data.url, '_blank');
+      } else {
+        setErrorMsg("Couldn't open billing portal. Email hello@likeone.ai for help.");
+      }
+    } catch {
+      setErrorMsg("Couldn't open billing portal. Email hello@likeone.ai for help.");
+    }
+  }
+
   const status = profile?.subscription_status || 'free';
   const tier = profile?.subscription_tier || 'free';
   const isPaid = status === 'active' && tier !== 'free' && tier !== 'community';
@@ -281,6 +299,7 @@ export default function AccountClient() {
                 {isPaid ? (
                   <>
                     <Link href="/academy/" className="site-btn-primary">Continue Learning</Link>
+                    <button onClick={openBillingPortal} className="app-btn-ghost">Manage Subscription</button>
                     <button onClick={cancelSubscription} disabled={cancelling} className="app-btn-ghost app-btn-danger">
                       {cancelling ? 'Cancelling...' : 'Cancel Subscription'}
                     </button>
@@ -299,7 +318,7 @@ export default function AccountClient() {
               </div>
               {isPaid && (
                 <p className="account-cancel-note">
-                  Cancellation stops auto-renewal. You keep access until your current billing period ends. No questions asked.
+                  Manage your billing, pause, or cancel anytime through your secure Stripe portal.
                 </p>
               )}
             </div>
