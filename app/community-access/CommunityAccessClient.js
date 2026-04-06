@@ -16,7 +16,7 @@ const whoCards = [
 ];
 
 export default function CommunityAccessClient() {
-  const [spotsLeft, setSpotsLeft] = useState(null);
+  const [spotsLeft, setSpotsLeft] = useState(15);
   const [email, setEmail] = useState('');
   const [goal, setGoal] = useState('');
   const [honor, setHonor] = useState(false);

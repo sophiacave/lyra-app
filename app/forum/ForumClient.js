@@ -40,7 +40,7 @@ function setSaved(key, val) { try { localStorage.setItem('forum_' + key, val); }
 export default function ForumClient() {
   const [currentSlug, setCurrentSlug] = useState('general');
   const [allPosts, setAllPosts] = useState([]);
-  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [loadingPosts, setLoadingPosts] = useState(false);
   const [expandedPosts, setExpandedPosts] = useState(new Set());
   const [showNewPost, setShowNewPost] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
