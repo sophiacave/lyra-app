@@ -158,7 +158,6 @@ Text to audit:
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Match It</span>
-  <h2 class="section-title">Match each bias type to its description.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

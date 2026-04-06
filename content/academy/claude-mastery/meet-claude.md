@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 1
 type: "lesson"
 free: true
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+200 XP</div><div id="particles"></div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 1 · Introduction</div>
-<h1>Meet Claude</h1>
-<p>Who Claude is, how it thinks, the model lineup, pricing, and your first API call</p>
-<div class="lesson-meta-bar">⏱ <span>30 min</span> · ⚡ <span>200 XP</span> · 📚 <span>Module 1</span></div>
+<div class="lesson-hero">
+  <h1>Meet Claude</h1>
+  <p class="sub">Who Claude is, how it thinks, the model lineup, pricing, and your first API call</p>
 </div>
 
 <div class="content">

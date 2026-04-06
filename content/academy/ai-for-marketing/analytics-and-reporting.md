@@ -119,7 +119,6 @@ Lead with results, not activity.</pre>
 <!-- INTERACTIVE: MATCHCONNECT -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each analytics task to how AI helps.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

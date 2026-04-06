@@ -13,6 +13,13 @@ const nextConfig = {
       }
     ];
   },
+  // Rewrite /feed to API route (route handlers don't work with trailingSlash)
+  async rewrites() {
+    return [
+      { source: '/feed', destination: '/api/feed' },
+      { source: '/feed/', destination: '/api/feed' },
+    ];
+  },
   // Redirect old static academy HTML URLs to new dynamic routes
   async redirects() {
     return [

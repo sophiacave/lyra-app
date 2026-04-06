@@ -201,11 +201,9 @@ free: false
 
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Readiness Pillars and Key Concepts","instruction":"Match each readiness concept to its definition","pairs":[{"left":"Data Readiness","right":"Whether your data is accessible, clean, sufficient in volume, and governed"},{"left":"Infrastructure Readiness","right":"Modern cloud, API-connected systems, SSO, RBAC, and data pipelines"},{"left":"Culture Readiness","right":"Leaders model AI use, experimentation is safe, and training is invested in"},{"left":"Governance Readiness","right":"AI usage policy exists, ethics review is in place, and vendor contracts are AI-aware"},{"left":"AI-Exploring (Stage 2)","right":"First pilots running, small budget, informal champion, basic policies in place"},{"left":"AI-Native (Stage 5)","right":"AI is inseparable from operations, every process is AI-augmented by default"}]}'></div>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="SortStack" data-props='{"title":"Readiness Assessment Steps","instruction":"Arrange these steps in the correct order for assessing and improving AI readiness","items":["Score your organization 1-5 on all four pillars: data, infrastructure, culture, governance","Identify your lowest-scoring pillar — that is your biggest blocker","Map the top AI use case you want to pursue","Fix only the data and infrastructure needed for that specific use case","Get leadership visibly using and championing AI tools","Run a governed pilot with clear success metrics","Measure ROI and expand to the next use case"]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -90,7 +90,6 @@ free: true
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each PRISM element to what it does in a cold email.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

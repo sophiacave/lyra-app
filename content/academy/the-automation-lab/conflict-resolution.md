@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 6
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 6</div>
+<div class="lesson-hero">
   <h1>Conflict Resolution</h1>
-  <p class="subtitle">What happens when two agents try to modify the same data at the same time? Without a strategy, data gets silently corrupted. This lesson teaches three battle-tested solutions — locking, priority queues, and the conscience layer — and when to use each one.</p>
+  <p class="sub">What happens when two agents try to modify the same data at the same time? Without a strategy, data gets silently corrupted. This lesson teaches three battle-tested solutions — locking, priority queues, and the conscience layer — and when to use each one.</p>
+</div>
 
   <div class="section">
     <h2>The Problem: Race Conditions</h2>
@@ -20,18 +24,6 @@ free: false
     <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.6">
       <strong style="color:#ef4444">Classic example:</strong> User balance is $100. Agent A reads $100, adds $50 (deposit). Agent B reads $100, subtracts $30 (payment). Agent A writes $150. Agent B writes $70. Final balance: $70. The $50 deposit is gone. Neither agent made an error — the race condition silently ate the deposit.
     </div>
-  </div>
-
-  <h2 class="section-title">&#9888;&#65039; The Race Condition</h2>
-  <div class="race-demo">
-    <div class="race-title">Watch two agents collide</div>
-    <div class="race-scene">
-      <div class="race-agent"><div class="race-av" id="ra-a">&#129302;</div><div class="race-name">Agent A</div></div>
-      <div class="race-data" id="race-data"><div class="race-data-icon">&#128451;&#65039;</div><div class="race-data-label">user.balance</div><div class="race-data-val" id="race-val">$100</div></div>
-      <div class="race-agent"><div class="race-av" id="ra-b">&#129302;</div><div class="race-name">Agent B</div></div>
-    </div>
-    <div class="race-log" id="race-log">Click "Run Race Condition" to see what happens...</div>
-    <button class="race-btn" onclick="runRace()">&#9889; Run Race Condition</button>
   </div>
 
   <div class="section">
@@ -109,9 +101,6 @@ queue = [
     </div>
     <p style="font-size:.82rem;color:#71717a">Production databases handle this natively through transactions. <code>BEGIN ... COMMIT</code> groups operations atomically — if any step fails, the entire transaction rolls back.</p>
   </div>
-
-  <h2 class="section-title">&#127919; Choose the Right Strategy</h2>
-  <div class="scenarios" id="scenarios"></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Conflict Resolution Strategies","questions":[{"q":"Two agents need to update a user subscription simultaneously. Operations are quick (<1 second). Best strategy?","options":["Conscience Layer","Priority Queue","Locking","Swarm pattern"],"correct":2,"explanation":"Quick operations plus two writers equals locking. Acquire lock, write, release. Simple and effective for fast operations."},{"q":"Five agents submit reports to a dashboard. Security alerts must appear before routine analytics. Best strategy?","options":["Locking","Conscience Layer","Swarm","Priority Queue"],"correct":3,"explanation":"Different importance levels call for a priority queue. Security agents get higher priority and their writes are processed first."},{"q":"An agent wants to delete user data for GDPR compliance. Another wants to retain it for fraud investigation. Both are valid. Best strategy?","options":["Locking","Priority Queue","Conscience Layer","Rollback"],"correct":2,"explanation":"Ethical conflict with competing valid interests requires the conscience layer \u2014 an arbiter must weigh values (privacy vs. safety) and make a judgment call."},{"q":"What is a race condition?","options":["An agent running faster than expected","Two agents reading and writing the same data simultaneously, causing one write to be lost","A scheduling conflict between cron jobs","A memory overflow error"],"correct":1,"explanation":"A race condition occurs when two agents both read the same value, calculate changes independently, and then both write \u2014 the second write overwrites the first."},{"q":"What is a deadlock?","options":["When an agent runs out of memory","When Agent A locks resource X and waits for Y, while Agent B locks Y and waits for X \u2014 neither can proceed","When a database transaction is too slow","When an agent loses its identity"],"correct":1,"explanation":"Deadlocks happen when two agents each hold a lock the other needs. Neither can proceed. Prevented by always acquiring locks in the same order, or using lock timeouts."}]}'></div>
 

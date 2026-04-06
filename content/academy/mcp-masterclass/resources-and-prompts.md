@@ -4,35 +4,38 @@ course: "mcp-masterclass"
 order: 6
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 2 &middot; Lesson 6</div>
+<div class="lesson-hero">
   <h1>Resources &amp; Prompts</h1>
-  <p class="subtitle">MCP has three primitives: Tools, Resources, and Prompts. You already know Tools. This lesson covers the other two — data the AI can read (Resources) and interaction templates the user can select (Prompts) — with working code for both.</p>
+  <p class="sub">MCP has three primitives: Tools, Resources, and Prompts. You already know Tools. This lesson covers the other two — data the AI can read (Resources) and interaction templates the user can select (Prompts) — with working code for both.</p>
+</div>
 
   <div class="section">
     <h2>The Three MCP Primitives</h2>
     <p>Think of MCP primitives as three different directions of information flow:</p>
 
-    <div class="primitives">
-      <div class="primitive-card tools-card active" onclick="showPrimitive('tools')">
-        <div class="icon">&#x2699;&#xFE0F;</div>
-        <h3>Tools</h3>
-        <p>Actions the AI can take</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);text-align:center">
+        <div style="font-size:1.5rem">&#x2699;&#xFE0F;</div>
+        <strong style="color:#8b5cf6;font-size:.85rem">Tools</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Actions the AI can take</p>
       </div>
-      <div class="primitive-card resources-card" onclick="showPrimitive('resources')">
-        <div class="icon">&#x1F4C4;</div>
-        <h3>Resources</h3>
-        <p>Data the AI can read</p>
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);text-align:center">
+        <div style="font-size:1.5rem">&#x1F4C4;</div>
+        <strong style="color:#34d399;font-size:.85rem">Resources</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Data the AI can read</p>
       </div>
-      <div class="primitive-card prompts-card" onclick="showPrimitive('prompts')">
-        <div class="icon">&#x1F4DD;</div>
-        <h3>Prompts</h3>
-        <p>Templates the user selects</p>
+      <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);text-align:center">
+        <div style="font-size:1.5rem">&#x1F4DD;</div>
+        <strong style="color:#fb923c;font-size:.85rem">Prompts</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Templates the user selects</p>
       </div>
     </div>
   </div>
@@ -232,7 +235,4 @@ server.prompt(
   <div data-learn="FlashDeck" data-props='{"title":"MCP Primitives","cards":[{"front":"Tools","back":"Actions the AI invokes autonomously. Direction: AI to World. They cause side effects — writing files, sending emails, querying databases. Registered with server.tool()."},{"front":"Resources","back":"Read-only data the client or user requests. Direction: World to AI. No side effects — just providing context. Registered with server.resource(name, uri, handler)."},{"front":"Prompts","back":"Reusable templates the user selects from a menu. Direction: User to AI. They structure the conversation with pre-built workflows. Registered with server.prompt(name, schema, handler)."},{"front":"server.resource() return format","back":"Returns { contents: [{ uri, text, mimeType }] }. The uri matches the resource URI. mimeType helps Claude understand the content format."},{"front":"server.prompt() return format","back":"Returns { messages: [{ role: \"user\", content: { type: \"text\", text: \"...\" } }] }. These messages are injected into the conversation as if the user typed them."},{"front":"Resource URI","back":"A URI like file://project/README.md or db://schema/tables. You define the scheme. The client uses this URI to request specific resources via resources/read."},{"front":"When to use Resource vs Tool","back":"Resource = read-only context that does not depend on user input. Tool = action that modifies state or requires the AI to decide when to fetch data."}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Primitives Quiz","questions":[{"q":"Which MCP primitive would you use to give Claude read-only access to your project README without executing any code?","options":["A Tool that reads the file","A Resource that exposes the file","A Prompt with the content embedded","A Server with full filesystem access"],"correct":1,"explanation":"Resources are read-only data exposed through MCP. A resource like file://project/README.md gives the AI the content without any action or side effects — the safest choice for read-only data."},{"q":"Which primitive is triggered by the AI model deciding on its own — NOT by the user selecting it?","options":["Resources","Prompts","Tools","Discovery"],"correct":2,"explanation":"Tools are invoked autonomously by the AI model when it decides an action is needed. Resources are requested by the client or user. Prompts are selected by the user from a menu."},{"q":"What does server.prompt() return?","options":["{ content: [{ type: \"text\", text: \"...\" }] }","{ contents: [{ uri, text, mimeType }] }","{ messages: [{ role, content }] }","A plain string"],"correct":2,"explanation":"server.prompt() returns { messages: [{ role: \"user\", content: { type: \"text\", text: \"...\" } }] }. These messages are injected into the conversation, giving Claude structured instructions based on the user selections."},{"q":"A documentation server exposes an API spec that Claude should always have access to. Which primitive is best?","options":["A Tool that reads the spec on demand","A Resource that exposes the spec via URI","A Prompt that includes the spec text","A separate server just for the spec"],"correct":1,"explanation":"A Resource is perfect for static or semi-static data that provides context. The API spec does not change based on user input and does not cause side effects — it is read-only context."}]}'></div>
-
-  <div data-learn="SortStack" data-props='{"title":"Resource Data Flow — Put in Order","instruction":"Arrange the steps for how a Resource flows to the AI","items":["Client sends resources/list to discover available resources","User or app selects a resource by URI","Client sends resources/read with the URI","Server handler runs and returns { contents: [{ uri, text, mimeType }] }","Resource data is added to AI context"]}'></div>
-
 </div>

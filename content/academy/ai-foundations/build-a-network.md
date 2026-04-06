@@ -13,7 +13,7 @@ free: true
 
 <div class="lesson-hero">
   <h1>Build a <span class="accent">Network.</span></h1>
-  <p class="sub">Drag neurons onto the canvas, connect them into layers, and watch data flow through your creation.</p>
+  <p class="sub">How neurons connect into layers, and how data flows through them — with code you can run yourself.</p>
 </div>
 
 <div class="learn-card">
@@ -31,17 +31,12 @@ free: true
   <span class="section-label">The Concept</span>
   <h2 class="section-title">Layers are the architecture of intelligence.</h2>
   <p class="section-text">A single neuron can make simple decisions. But stack neurons into layers — input, hidden, output — and suddenly the network can recognize faces, translate languages, and write code. The architecture (how many layers, how they connect) determines what the network can learn.</p>
-
-<div data-learn="SortStack" data-props='{"title":"Order the Layers","instruction":"Arrange the three layer types in the order data flows through them","items":["Input Layer — receives raw data (pixels, text, numbers)","Hidden Layer — finds patterns and intermediate features","Output Layer — makes the final prediction or decision"]}'></div>
-
 </div>
 
 <!-- SECTION 1B: CODE — BUILDING A NETWORK IN PYTHON -->
 <div class="lesson-section">
   <span class="section-label">The Code</span>
   <h2 class="section-title">A neural network in 15 lines of Python.</h2>
-  <p class="section-text">The drag-and-drop builder below lets you visualize it. But here is what the same thing looks like in actual code — a complete forward pass through a 2-layer network:</p>
-
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a complete neural network forward pass</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
@@ -86,12 +81,37 @@ probs = model(X)
 <p style="font-size:.85rem;color:#71717a;margin-top:.5rem">PyTorch's <code>nn.Sequential</code> builds the exact same architecture — but handles backpropagation and training automatically. The numpy version shows you what happens inside; PyTorch is what you use in production.</p>
 </div>
 
-<!-- SECTION 2: INTERACTIVE BUILDER -->
+<!-- SECTION 2: ARCHITECTURE VISUALIZED -->
 <div class="lesson-section">
-  <span class="section-label">Build It</span>
-  <h2 class="section-title">Drag, drop, connect, train.</h2>
+  <span class="section-label">See It</span>
+  <h2 class="section-title">What a neural network looks like.</h2>
+  <p class="section-text">Every neural network follows this pattern: data enters the input layer, flows through hidden layers that find patterns, and arrives at the output layer which makes the decision.</p>
 
-  <div data-learn="NetworkBuilder" data-props='{}'></div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">         INPUT          HIDDEN          OUTPUT</span>
+<span style="color:#71717a">        (3 neurons)    (4 neurons)     (2 neurons)</span>
+
+        ┌───┐
+<span style="color:#38bdf8">  x₁</span> ──▶│ <span style="color:#34d399">h₁</span> │──┐
+        └───┘  │      ┌───┐
+        ┌───┐  ├─────▶│ <span style="color:#fb923c">y₁</span> │  <span style="color:#71717a">← P(cat) = 0.82</span>
+<span style="color:#38bdf8">  x₂</span> ──▶│ <span style="color:#34d399">h₂</span> │──┤      └───┘
+        └───┘  │
+        ┌───┐  │      ┌───┐
+<span style="color:#38bdf8">  x₃</span> ──▶│ <span style="color:#34d399">h₃</span> │──┼─────▶│ <span style="color:#fb923c">y₂</span> │  <span style="color:#71717a">← P(dog) = 0.18</span>
+        └───┘  │      └───┘
+        ┌───┐  │
+        │ <span style="color:#34d399">h₄</span> │──┘
+        └───┘
+
+<span style="color:#71717a">  ↑ Each input          ↑ Each hidden         ↑ Output neurons</span>
+<span style="color:#71717a">    connects to            neuron finds           give the final</span>
+<span style="color:#71717a">    EVERY hidden           a different            prediction as</span>
+<span style="color:#71717a">    neuron (fully          pattern in             probabilities</span>
+<span style="color:#71717a">    connected)             the data               that sum to 1</span></code></pre>
+</div>
+
+  <p class="section-text">Every arrow represents a <strong style="color:#e5e5e5">weight</strong> — a number that gets adjusted during training. In the code above, <code>W1</code> contains 12 weights (3 inputs × 4 hidden neurons) and <code>W2</code> contains 8 weights (4 hidden × 2 outputs). Training means finding the right values for all 20 weights.</p>
 </div>
 
 <!-- SECTION 3: KNOWLEDGE CHECK -->

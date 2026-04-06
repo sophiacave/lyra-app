@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 1
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 1</div>
+<div class="lesson-hero">
   <h1>What Is an Agent?</h1>
-  <p class="subtitle">Most "AI" you have used is actually just automation — a trigger, an action, done. An agent is fundamentally different: it perceives, decides, acts, and adapts in a continuous loop. This lesson teaches you to tell the difference and understand why it matters.</p>
+  <p class="sub">Most "AI" you have used is actually just automation — a trigger, an action, done. An agent is fundamentally different: it perceives, decides, acts, and adapts in a continuous loop. This lesson teaches you to tell the difference and understand why it matters.</p>
+</div>
 
   <div class="section">
     <h2>The Core Distinction</h2>
@@ -178,7 +182,4 @@ free: true
   <div data-learn="QuizMC" data-props='{"title":"Agent vs. Automation","questions":[{"q":"A cron job sends a weekly analytics report every Monday at 9am. What is this?","options":["Agent","Automation","Both","Neither"],"correct":1,"explanation":"Fixed schedule, fixed action, no decision-making or adaptation. Classic automation."},{"q":"A system monitors your inbox, categorizes emails by urgency, drafts responses, and improves based on your corrections. What is this?","options":["Automation","Agent","Script","Workflow"],"correct":1,"explanation":"It perceives (reads inbox), decides (categorizes by urgency), acts (drafts responses), and learns (improves from corrections) \u2014 the full agent loop."},{"q":"Which of these is part of the agent loop?","options":["Trigger \u2192 Action \u2192 Done","Perceive \u2192 Decide \u2192 Act \u2192 Learn","Input \u2192 Process \u2192 Output","Schedule \u2192 Run \u2192 Stop"],"correct":1,"explanation":"Agents run a continuous perceive-decide-act-learn cycle, not a fixed linear path."},{"q":"An agent keeps sending the same email over and over without stopping. What failure mode is this?","options":["Hallucinated action","Infinite loop with runaway side effects","Race condition","Memory leak"],"correct":1,"explanation":"The agent loop is running without proper exit conditions or rate limiting \u2014 the act phase triggers repeatedly with no guardrails."},{"q":"Why does the agent loop include a Learn phase?","options":["To make the code longer","So the agent can adapt its behavior based on the outcomes of its actions","To store logs for compliance","To slow down the loop"],"correct":1,"explanation":"Learning closes the loop. Without it, the agent would make the same decisions regardless of outcomes \u2014 no better than automation."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Agent Concepts","cards":[{"front":"What makes an agent different from automation?","back":"An agent perceives its environment, makes decisions, takes actions, and adapts in a loop. Automations follow a fixed path with no decision-making."},{"front":"What are the 4 stages of the agent loop?","back":"Perceive \u2192 Decide \u2192 Act \u2192 Learn. The loop repeats continuously as the agent adapts to new information."},{"front":"Give an example of automation","back":"A cron job that resizes uploaded images on a fixed schedule \u2014 no decisions, no learning, just a trigger and a fixed action."},{"front":"Give an example of an agent","back":"Claude Code: reads files (perceive), plans changes (decide), writes code and runs commands (act), checks results and self-corrects (learn)."},{"front":"What is an infinite loop failure?","back":"When an agent never reaches its goal and keeps running forever, burning resources. Always define exit conditions and max iterations."},{"front":"Name 3 agent frameworks","back":"Claude Agent SDK (Anthropic), LangGraph (LangChain), CrewAI (multi-agent roles). All implement the same core perceive-decide-act-learn loop."}]}'></div>
-
-  <div data-learn="SortStack" data-props='{"title":"Order the Agent Loop","instruction":"Arrange the four stages of the agent loop in the correct order","items":["Perceive \u2014 observe the environment","Decide \u2014 choose what to do based on observations","Act \u2014 take real action in the world","Learn \u2014 adapt based on outcomes"]}'></div>
-
 </div>

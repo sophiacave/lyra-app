@@ -119,7 +119,6 @@ print("Cleaned data saved.")</code></pre>
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Cleaning Step</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Data Problem → Cleaning Action","instruction":"Match each data problem to the correct cleaning action","pairs":[{"left":"Same customer appears 3 times with slightly different names","right":"Deduplicate — merge records and standardize the name"},{"left":"Date column mixes MM/DD/YYYY and YYYY-MM-DD","right":"Standardize format — convert all dates to one consistent format"},{"left":"Revenue column shows $1M in a row of $500 transactions","right":"Investigate outlier — determine if it is a typo or legitimate"},{"left":"50 cells are blank in the Status column","right":"Handle missing values — fill, flag, or remove based on context"},{"left":"US, United States, and U.S.A. in the Country column","right":"Standardize text — map all variants to a single canonical name"},{"left":"Column headers say Col_A, Col_B, Col_C","right":"Rename headers — use descriptive names AI can understand"}]}'></div>
 </div>
 
 <div class="lesson-section">

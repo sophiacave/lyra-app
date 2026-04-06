@@ -30,8 +30,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Live Demo</span>
   <h2 class="section-title">Type anything and watch it get tokenized.</h2>
-
-  <div data-learn="TokenViz" data-props='{"initialText":"Write a haiku about artificial intelligence learning to dream","mode":"tokenizer"}'></div>
 </div>
 
 <!-- SECTION 2: KEY CONCEPTS -->
@@ -92,9 +90,6 @@ response = client.messages.create(
 <div class="lesson-section">
   <span class="section-label">Experiment</span>
   <h2 class="section-title">See how temperature changes output.</h2>
-
-  <div data-learn="TokenViz" data-props='{"mode":"temperature"}'></div>
-
 <div data-learn="FlashDeck" data-props='{"title":"Temperature Guide — Flip for Details","cards":[{"front":"🧊 LOW TEMPERATURE (0.0 - 0.3)\n\nDeterministic and focused","back":"BEST FOR: Code, math, factual questions, data analysis\n\nThe model always picks the most likely next token. Consistent, predictable, correct — but potentially repetitive.\n\nUSE WHEN: You need one right answer, not creative options."},{"front":"⚖️ MEDIUM TEMPERATURE (0.4 - 0.7)\n\nBalanced default","back":"BEST FOR: General conversations, business writing, explanations\n\nGood mix of coherence and variety. The default for most AI chatbots.\n\nUSE WHEN: You want natural-sounding output that is still reliable."},{"front":"🔥 HIGH TEMPERATURE (0.8 - 1.0+)\n\nCreative and unpredictable","back":"BEST FOR: Brainstorming, creative writing, generating diverse options\n\nThe model sometimes picks unlikely tokens, leading to surprising and creative output — but also more errors.\n\nUSE WHEN: You want ideas, not accuracy. Be prepared to filter."}]}'></div>
 
 </div>

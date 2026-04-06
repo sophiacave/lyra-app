@@ -5,17 +5,6 @@ import LessonComplete from '../../../components/academy/LessonComplete';
 import ImmersiveLesson from '../../../components/console/ImmersiveLesson';
 import VideoPlayer from '../../../components/academy/VideoPlayer';
 import { site } from '@/lib/site-config';
-import fs from 'fs';
-import path from 'path';
-
-function getExercises(courseSlug, lessonSlug) {
-  try {
-    const filePath = path.join(process.cwd(), 'content/exercises', `${courseSlug}.json`);
-    if (!fs.existsSync(filePath)) return [];
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    return data[lessonSlug] || [];
-  } catch { return []; }
-}
 
 export async function generateStaticParams() {
   const courseSlugs = getAllCourseSlugs();
@@ -99,7 +88,16 @@ export default async function LessonPage({ params }) {
     url: `${site.url}/academy/${courseSlug}/${lessonSlug}/`,
   };
 
-  const exercises = getExercises(courseSlug, lessonSlug);
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+      { '@type': 'ListItem', position: 2, name: 'Academy', item: `${site.url}/academy/` },
+      { '@type': 'ListItem', position: 3, name: course?.title || 'Course', item: `${site.url}/academy/${courseSlug}/` },
+      { '@type': 'ListItem', position: 4, name: lesson.title, item: `${site.url}/academy/${courseSlug}/${lessonSlug}/` },
+    ],
+  };
 
   // For paid lessons, only ship a preview — full content loads client-side after auth
   // Exception: quiz/assessment lessons need full HTML (including scripts) — gate handles access
@@ -160,13 +158,16 @@ export default async function LessonPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <link rel="stylesheet" href="/academy/shared/academy.css" />
       <link rel="stylesheet" href="/academy/shared/learn-components.css" />
 
       <ImmersiveLesson
         contentHtml={fullContentHtml}
         lessonTitle={lesson.title}
-        exercises={exercises}
         isFree={lesson.free !== false}
         courseSlug={courseSlug}
         lessonSlug={lessonSlug}

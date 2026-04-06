@@ -63,7 +63,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Project Planning — Key Concepts","instruction":"Match each planning concept with its description.","pairs":[{"left":"Work Breakdown Structure","right":"Hierarchical decomposition of a project into manageable tasks and phases"},{"left":"Three-Point Estimation","right":"Optimistic, likely, and pessimistic time ranges that force honest risk thinking"},{"left":"Critical Path","right":"The sequence of dependent tasks that determines minimum project duration"},{"left":"Velocity Data","right":"Historical sprint throughput used to improve AI estimate accuracy"},{"left":"Dependency Mapping","right":"Identifying which tasks must finish before others can start"},{"left":"Iterative Refinement","right":"3-4 rounds of AI conversation to challenge assumptions and add constraints"}]}'></div>
 </div>
 
 <div class="lesson-section">

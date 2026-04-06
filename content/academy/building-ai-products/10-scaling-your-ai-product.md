@@ -65,7 +65,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Scaling Your AI Product — Key Terms","instruction":"Match each scaling concept to its description.","pairs":[{"left":"Response Caching","right":"Serve identical results for frequent query patterns — cuts API calls 30-50%"},{"left":"Tiered Model Routing","right":"Route simple queries to cheaper models, reserve expensive ones for complex tasks"},{"left":"Prompt Compression","right":"Shorten system prompts to reduce per-query token costs at scale"},{"left":"Fallback Models","right":"Automatic failover to alternate providers when your primary AI goes down"},{"left":"Graceful Degradation","right":"Show cached results or manual workflows when AI is unavailable"},{"left":"Data Flywheel","right":"Every user interaction teaches the system — compounding advantage over time"}]}'></div>
 </div>
 
 <div class="lesson-section">

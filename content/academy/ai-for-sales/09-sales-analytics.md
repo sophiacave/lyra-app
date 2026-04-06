@@ -82,7 +82,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each key metric to what it reveals about your sales performance.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

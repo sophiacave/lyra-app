@@ -30,8 +30,9 @@ free: false
 <div class="lesson-section">
   <span class="section-label">The Big Idea</span>
   <h2 class="section-title">Words have coordinates in a universe of meaning.</h2>
-  <p class="section-text">AI cannot read words. It reads numbers. So every word gets converted into a list of numbers — a <strong>vector</strong> — that captures its meaning. "Cat" might be [0.2, 0.8, -0.1, ...] across hundreds of dimensions.</p>
-  <p class="section-text">The magic: words that mean similar things end up close together. "Happy," "joyful," and "delighted" are neighbors. "Sad" is far away. The space itself encodes meaning.</p>
+  <p class="section-text">AI cannot read words the way you do. It reads numbers. So every word gets converted into a list of numbers that captures its meaning. This list of numbers is called a <strong>vector</strong> — think of it as GPS coordinates, but instead of pinpointing a place on Earth, they pinpoint a word's meaning in a universe of concepts.</p>
+  <p class="section-text">"Cat" might have coordinates like [0.2, 0.8, -0.1, ...] across hundreds of <strong>dimensions</strong>. A dimension is just one aspect of meaning — one might roughly capture "is it alive?", another "is it big?", another "is it domestic?" The more dimensions, the more nuance the AI can express.</p>
+  <p class="section-text">The magic: words that mean similar things end up close together on this map. "Happy," "joyful," and "delighted" are neighbors. "Sad" is far away. The map itself encodes meaning — and AI uses this map to understand language.</p>
 
 <div data-learn="FlashDeck" data-props='{"title":"Embedding Concepts — Flip for Details","cards":[{"front":"📊 VECTORS\n\nEach word becomes a list of numbers.\nHundreds of dimensions capturing meaning.","back":"EXAMPLE: \"cat\" = [0.2, 0.8, -0.1, 0.5, ...]\n\nEach number captures some aspect of meaning — maybe one dimension relates to \"is it alive?\", another to \"is it big?\", another to \"is it domestic?\"\n\nReal embeddings use 768+ dimensions. The more dimensions, the more nuance."},{"front":"🌌 SEMANTIC SPACE\n\nSimilar words cluster together.\nMeaning becomes geometry.","back":"In embedding space:\n- \"happy\" + \"joyful\" + \"delighted\" = neighbors\n- \"sad\" is far from \"happy\" — opposite direction\n- \"dog\" + \"cat\" + \"puppy\" = a cluster\n- \"king\" + \"queen\" + \"prince\" = another cluster\n\nSearch engines use this: your query becomes a vector and they find the nearest document vectors."},{"front":"➕ VECTOR ARITHMETIC\n\nking - man + woman = queen\n\nMath captures relationships.","back":"This is not a trick. The vector from king to queen captures royalty + female.\n\nThe vector from man to woman captures the gender direction.\n\nking - man + woman follows the royalty direction from the female side — and lands on queen.\n\nThe AI learned these relationships from patterns in billions of sentences."}]}'></div>
 
@@ -41,7 +42,7 @@ free: false
 <div class="lesson-section">
   <span class="section-label">The Code</span>
   <h2 class="section-title">Embeddings in real Python.</h2>
-  <p class="section-text">Here is how to generate embeddings and compute similarity yourself — the exact same math that powers semantic search, RAG, and recommendation systems:</p>
+  <p class="section-text">Here is how to generate embeddings and compute similarity in Python. <em>If you are not a coder, you can skip the code — the concepts above are what matter. The code is here for learners who want to see the mechanics behind the scenes.</em></p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — generate embeddings with sentence-transformers (free, runs locally)</div>
@@ -85,17 +86,39 @@ nearest = words[np.argmax(similarities)]
 
 <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"king - man + woman ≈ </span>{nearest}<span style="color:#fbbf24">"</span>)  <span style="color:#71717a"># → queen</span></code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">This is not magic — it is linear algebra. The direction from "man" to "king" encodes royalty. Apply that same direction from "woman" and you land on "queen." The model learned these relationships from patterns in billions of sentences.</p>
+<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">This is not magic — it is math on the meaning map. The direction from "man" to "king" encodes royalty. Apply that same direction starting from "woman" and you land on "queen." The AI learned these relationships by reading patterns in billions of sentences — nobody programmed them in.</p>
 
 </div>
 
-<!-- SECTION 2: INTERACTIVE VISUALIZATION -->
+<!-- SECTION 2: SEMANTIC SPACE VISUALIZATION -->
 <div class="lesson-section">
-  <span class="section-label">Explore</span>
-  <h2 class="section-title">Watch words in semantic space.</h2>
-  <p class="section-text">Use the step buttons to see how words cluster by meaning and how vector arithmetic works.</p>
+  <span class="section-label">See It</span>
+  <h2 class="section-title">How words cluster in semantic space.</h2>
+  <p class="section-text">If we squash the 384 dimensions down to 2D, here is what the word map looks like. Notice how meaning creates geography:</p>
 
-  <div data-learn="WordSpace" data-props='{}'></div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.4;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">        Semantic Space (2D projection)</span>
+
+                    <span style="color:#c084fc">queen</span> ♛
+                   ╱
+             <span style="color:#c084fc">king</span> ♚     <span style="color:#71717a">← royalty cluster</span>
+               ╲
+                <span style="color:#38bdf8">woman</span>
+                  │
+                <span style="color:#38bdf8">man</span>        <span style="color:#71717a">← people cluster</span>
+                  │
+                <span style="color:#38bdf8">boy</span>
+
+      <span style="color:#34d399">dog</span> 🐕 ─── <span style="color:#34d399">cat</span> 🐈   <span style="color:#71717a">← pet cluster</span>
+            ╲
+            <span style="color:#34d399">puppy</span>
+
+  <span style="color:#fb923c">car</span> 🚗 ─── <span style="color:#fb923c">truck</span> 🚛  <span style="color:#71717a">← vehicle cluster</span>
+
+<span style="color:#71717a">  Words with similar meanings = nearby coordinates</span>
+<span style="color:#71717a">  The DIRECTION from king→queen = the DIRECTION from man→woman</span>
+<span style="color:#71717a">  That's why king - man + woman ≈ queen</span></code></pre>
+</div>
 </div>
 
 <!-- SECTION 3: KNOWLEDGE CHECK -->

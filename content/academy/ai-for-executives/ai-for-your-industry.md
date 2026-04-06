@@ -187,7 +187,6 @@ free: false
 
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Industry AI Use Cases: Real vs. Hype","instruction":"Match each AI application to the industry where it is proven in production today","pairs":[{"left":"Clinical documentation AI scribes","right":"Healthcare — reduces physician documentation time by 50-70%"},{"left":"Real-time fraud detection","right":"Finance — catches fraud that rule-based systems miss"},{"left":"Demand forecasting","right":"Retail — reduces overstock by 20-30% and stockouts by 30-50%"},{"left":"Predictive maintenance","right":"Manufacturing — 30-50% reduction in unplanned downtime"},{"left":"Contract and discovery review","right":"Professional Services (Legal) — 60-80% faster than manual review"},{"left":"Prior authorization automation","right":"Healthcare — reduces authorization time from days to hours"}]}'></div>
 </div>
 
 <div class="lesson-section">

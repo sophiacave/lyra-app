@@ -4,15 +4,18 @@ course: "mcp-masterclass"
 order: 3
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 3</div>
+<div class="lesson-hero">
   <h1>Servers vs Tools</h1>
-  <p class="subtitle">MCP Servers are long-running processes that expose multiple tools. Understand the difference — and explore six real server types.</p>
+  <p class="sub">MCP Servers are long-running processes that expose multiple tools. Understand the difference — and explore six real server types.</p>
+</div>
 
   <div class="section">
     <h2>MCP Servers vs Direct Tool Calls</h2>
@@ -51,42 +54,41 @@ free: true
 
   <div class="section">
     <h2>Explore MCP Server Types</h2>
-    <p>Click each server type to see what capabilities it exposes:</p>
+    <p>MCP servers come in many forms. Here are six common types, each exposing different capabilities:</p>
 
-    <div class="server-gallery">
-      <div class="server-card" onclick="showServer(0)" id="srv0">
-        <div class="icon">&#x1F4C1;</div>
-        <h3>Filesystem</h3>
-        <p>Read, write, search files</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);text-align:center">
+        <div style="font-size:1.25rem">&#x1F4C1;</div>
+        <strong style="font-size:.85rem;color:#e2e8f0">Filesystem</strong>
+        <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0">Read, write, search files</p>
       </div>
-      <div class="server-card" onclick="showServer(1)" id="srv1">
-        <div class="icon">&#x1F4BE;</div>
-        <h3>Database</h3>
-        <p>Query, insert, update data</p>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);text-align:center">
+        <div style="font-size:1.25rem">&#x1F4BE;</div>
+        <strong style="font-size:.85rem;color:#e2e8f0">Database</strong>
+        <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0">Query, insert, update data</p>
       </div>
-      <div class="server-card" onclick="showServer(2)" id="srv2">
-        <div class="icon">&#x1F310;</div>
-        <h3>API</h3>
-        <p>Wrap any REST or GraphQL API</p>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);text-align:center">
+        <div style="font-size:1.25rem">&#x1F310;</div>
+        <strong style="font-size:.85rem;color:#e2e8f0">API</strong>
+        <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0">Wrap any REST or GraphQL API</p>
       </div>
-      <div class="server-card" onclick="showServer(3)" id="srv3">
-        <div class="icon">&#x1F5A5;&#xFE0F;</div>
-        <h3>Browser</h3>
-        <p>Navigate, screenshot, interact</p>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);text-align:center">
+        <div style="font-size:1.25rem">&#x1F5A5;&#xFE0F;</div>
+        <strong style="font-size:.85rem;color:#e2e8f0">Browser</strong>
+        <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0">Navigate, screenshot, interact</p>
       </div>
-      <div class="server-card" onclick="showServer(4)" id="srv4">
-        <div class="icon">&#x1F9E0;</div>
-        <h3>Memory</h3>
-        <p>Persistent knowledge recall</p>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);text-align:center">
+        <div style="font-size:1.25rem">&#x1F9E0;</div>
+        <strong style="font-size:.85rem;color:#e2e8f0">Memory</strong>
+        <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0">Persistent knowledge recall</p>
       </div>
-      <div class="server-card" onclick="showServer(5)" id="srv5">
-        <div class="icon">&#x1F50D;</div>
-        <h3>Search</h3>
-        <p>Web, docs, or code search</p>
+      <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);text-align:center">
+        <div style="font-size:1.25rem">&#x1F50D;</div>
+        <strong style="font-size:.85rem;color:#e2e8f0">Search</strong>
+        <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0">Web, docs, or code search</p>
       </div>
     </div>
-
-    </div>
+  </div>
 
   <div class="section">
     <h2>See the Difference in Code</h2>

@@ -4,14 +4,18 @@ course: "the-automation-lab"
 order: 9
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/the-automation-lab/">The Automation Lab</a>
+  <span class="lesson-badge">Lesson 9 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 9</div>
+<div class="lesson-hero">
   <h1>Monitoring &amp; Healing</h1>
-  <p class="subtitle">An autonomous system is not complete until it can watch itself and fix its own problems. This lesson teaches you to build health checks, auto-healers, and escalation pipelines — the immune system of your agent fleet.</p>
+  <p class="sub">An autonomous system is not complete until it can watch itself and fix its own problems. This lesson teaches you to build health checks, auto-healers, and escalation pipelines — the immune system of your agent fleet.</p>
+</div>
 
   <div class="section">
     <h2>Why Monitoring Is Non-Negotiable</h2>
@@ -83,26 +87,9 @@ check <span style="color:#fbbf24">"academy"</span> https://likeone.ai/academy/</
     </div>
   </div>
 
-  <h2 class="section-title">&#128200; Live Agent Dashboard</h2>
-  <div class="dashboard">
-    <div class="dash-title"><span class="dash-label">Agent Status Monitor</span><span class="dash-time" id="dash-time"></span></div>
-    <div class="inspect-panel" id="inspect-panel">
-      <div class="ip-header"><span class="ip-name" id="ip-name"></span><button class="ip-close" onclick="closeInspect()">&times;</button></div>
-      <p style="font-size:.8rem;color:#71717a;margin-bottom:.5rem">Choose the right fix:</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">&#129657; Build an Auto-Healer</h2>
-  <div class="healer-section">
-    <div class="heal-title">Auto-Healer Configuration</div>
-    <div class="heal-desc">An auto-healer is an agent that watches other agents and automatically fixes problems. Configure yours below.</div>
-    <div class="heal-config">
-      <div class="hc-field"><label>Watch Target</label><select id="h-target" onchange="updateHealPreview()"><option value="all">All Agents</option><option value="critical">Critical Only</option><option value="content">Content Pipeline</option></select></div>
-      <div class="hc-field"><label>Check Interval</label><select id="h-interval" onchange="updateHealPreview()"><option value="30s">Every 30 seconds</option><option value="1m">Every minute</option><option value="5m">Every 5 minutes</option></select></div>
-      <div class="hc-field"><label>On Error</label><select id="h-error" onchange="updateHealPreview()"><option value="restart">Auto-Restart</option><option value="rollback">Rollback to Last Good State</option><option value="escalate">Escalate to Human</option></select></div>
-      <div class="hc-field"><label>Max Retries</label><select id="h-retries" onchange="updateHealPreview()"><option value="1">1</option><option value="3">3</option><option value="5">5</option></select></div>
-      <div class="hc-field full"><label>Escalation Channel</label><select id="h-escalate" onchange="updateHealPreview()"><option value="slack">#ops-alerts (Slack)</option><option value="email">ops@likeone.ai (Email)</option><option value="both">Both</option></select></div>
-    </div>
+  <div class="section">
+    <h2>Auto-Healer Configuration</h2>
+    <p>An auto-healer is a supervisor agent that monitors other agents and automatically fixes problems. A typical configuration specifies: which agents to watch (all, critical only, or a specific pipeline), how often to check (every 30 seconds to every 5 minutes), the default action on error (restart, rollback, or escalate), a maximum retry count to prevent restart loops, and an escalation channel (Slack, email, or both) for when automatic fixes fail.</p>
   </div>
 
   <div class="section">
@@ -121,7 +108,4 @@ check <span style="color:#fbbf24">"academy"</span> https://likeone.ai/academy/</
   <div data-learn="QuizMC" data-props='{"title":"Monitoring & Healing Quiz","questions":[{"q":"A Monitor agent detects a connection timeout on api-server-03. It has retried 2 times. What is the correct fix?","options":["Rollback to last good state","Restart the agent","Escalate immediately to a human","Ignore and wait"],"correct":1,"explanation":"A connection timeout is a runtime issue, not a code issue. Restarting clears the error state. Rollback only helps with bad code deployments."},{"q":"What is the purpose of a Max Retries setting on an auto-healer?","options":["Limit how many agents can run at once","Prevent the healer from restart-looping on a broken agent","Speed up recovery time","Reduce memory usage"],"correct":1,"explanation":"Without a retry limit, an auto-healer could restart a broken agent hundreds of times in a loop. Max retries caps this and forces escalation."},{"q":"When should an auto-healer escalate to a human?","options":["After every error","When the error involves a timeout","When automatic fixes have failed max retries, or the issue requires human judgment","Never"],"correct":2,"explanation":"Auto-healers handle known, fixable errors. When retries are exhausted or the problem is outside the agent\u0027s scope, escalation is correct."},{"q":"A heartbeat script runs successfully but the database shows the agent as offline. What is the most likely cause?","options":["The database is down","The script is using the wrong auth key \u2014 writes are silently rejected","The agent crashed after the heartbeat","The cron job is misconfigured"],"correct":1,"explanation":"The classic silent failure: the HTTP request succeeds but the database rejects the write due to auth. The script logs success, but no data arrives. Always verify the result, not just the request."},{"q":"What is the difference between a restart and a rollback?","options":["They are the same thing","Restart clears a crashed process; rollback reverts to a previous code version","Rollback is faster","Restart is for code issues; rollback for connection issues"],"correct":1,"explanation":"Restart clears a hung process (runtime fix). Rollback reverts to working code (deploy fix). Using the wrong one makes the problem worse."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Monitoring & Healing Concepts","cards":[{"front":"What is an auto-healer?","back":"A supervisor agent that monitors others and auto-fixes problems \u2014 restarting crashed agents, rolling back bad deploys, or escalating to humans when retries are exhausted."},{"front":"Restart vs Rollback","back":"Restart: clears a crashed process, resumes current code. Use for runtime errors. Rollback: reverts to previous working code version. Use for bad deploys. Wrong choice = worse problem."},{"front":"What is a health check?","back":"A periodic test that verifies an agent is alive AND producing correct output. Must verify results, not just requests. A silent write failure looks like success."},{"front":"Why set max retries?","back":"Without a limit, a healer restart-loops a broken agent forever. Max retries forces escalation after N failed attempts."},{"front":"The silent failure problem","back":"The most dangerous failure is the one you don\u0027t know about. Wrong auth keys, dead cron jobs, full disks \u2014 all fail silently without proper monitoring."},{"front":"Three layers of defense","back":"Layer 1: Health checks (detect). Layer 2: Auto-healing (fix). Layer 3: Escalation (alert humans when auto-fix fails)."}]}'></div>
-
-  <div data-learn="SortStack" data-props='{"title":"Auto-Healing Response Order","instruction":"Arrange the steps an auto-healer takes when it detects an agent error","items":["Detect error via health check","Log the error with timestamp","Attempt automatic fix (restart or rollback)","Retry up to max retries if fix fails","Escalate to human if all retries exhausted"]}'></div>
-
 </div>

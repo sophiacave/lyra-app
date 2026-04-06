@@ -81,7 +81,6 @@ free: true
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each lead score range to what it means for your pipeline.</h2>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

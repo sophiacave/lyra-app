@@ -113,7 +113,6 @@ so I can see the arc before I write the middle.</code></pre>
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Order the layered writing process.</h2>
-  <div data-learn="SortStack" data-props='{"title":"Put the Layered Writing Steps in Order","instruction":"Arrange the steps of the layered drafting method from first to last","items":["Brainstorm with AI — pressure-test your angle","Build the outline — structure before sentences","Write your rough draft in your own words","Use AI to expand each section","Run a full edit pass for clarity and flow"]}'></div>
 </div>
 
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">

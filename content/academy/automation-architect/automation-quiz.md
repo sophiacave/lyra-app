@@ -4,16 +4,18 @@ course: "automation-architect"
 order: 3
 type: "quiz"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 3 of 9</span>
 </nav>
 
-<header class="lesson-header">
-  <div class="lesson-badge">Module 1 &middot; Quiz</div>
+<div class="lesson-hero">
   <h1>Automation Quiz</h1>
-  <p>Test your knowledge of triggers, actions, webhooks, and cron schedules.</p>
-</header>
+  <p class="sub">Test your knowledge of triggers, actions, webhooks, and cron schedules.</p>
+</div>
 
 <div class="content">
 
@@ -24,6 +26,3 @@ free: true
 
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 3 of 9 &middot; Automation Architect</p>
-</footer>

@@ -103,7 +103,6 @@ free: true
 <!-- INTERACTIVE: MATCHCONNECT -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each morning scenario to the right AI technique.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

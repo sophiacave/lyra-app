@@ -85,7 +85,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each expansion signal to what it indicates.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -63,7 +63,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the CoT Technique","instruction":"Match each chain-of-thought concept to its description.","pairs":[{"left":"Simple Trigger","right":"Adding \"think step by step\" to improve reasoning"},{"left":"Structured Trigger","right":"Defining the exact reasoning steps the AI must follow"},{"left":"Expert Trigger","right":"Combining a persona metaphor with step-by-step reasoning"},{"left":"Thinking Budget","right":"Asking the AI to consider multiple approaches before deciding"},{"left":"Use CoT For","right":"Math, logic, debugging, and strategic analysis"},{"left":"Skip CoT For","right":"Translation, factual lookups, and formatting tasks"}]}'></div>
 </div>
 
 <div class="lesson-section">

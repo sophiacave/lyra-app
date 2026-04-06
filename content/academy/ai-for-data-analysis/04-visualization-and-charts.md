@@ -119,7 +119,6 @@ plt.show()</code></pre>
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Chart Type Matcher</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Pick the Right Chart","instruction":"Match each data scenario to the best chart type","pairs":[{"left":"Monthly revenue over 12 months","right":"Line chart — shows trends over time"},{"left":"Sales by region comparison","right":"Bar chart — compares categories side by side"},{"left":"Market share of 4 competitors","right":"Pie chart — parts of a whole with 5 or fewer slices"},{"left":"Ad spend vs conversion rate relationship","right":"Scatter plot — shows correlation between two variables"},{"left":"Website traffic by day of week and hour","right":"Heatmap — reveals patterns across two dimensions"},{"left":"Budget allocation across 12 departments","right":"Bar chart — too many slices for a pie chart"}]}'></div>
 </div>
 
 <div class="lesson-section">

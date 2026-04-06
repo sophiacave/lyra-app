@@ -73,7 +73,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Validation & Prototyping — Key Terms","instruction":"Match each validation concept to its meaning.","pairs":[{"left":"Wizard of Oz Prototype","right":"Simulate AI manually — human processes input behind the scenes"},{"left":"48-Hour Validation Sprint","right":"Landing page, community seeding, manual delivery, behavioral measurement"},{"left":"Go Signal","right":"Users return unprompted and ask when the full version is ready"},{"left":"Stop Signal","right":"Users try it once and ghost — no follow-up, no questions"},{"left":"Pivot Decision","right":"Problem is real but solution misses the mark — adjust, don't abandon"},{"left":"Kill Decision","right":"The problem itself is not painful enough to warrant a product"}]}'></div>
 </div>
 
 <div class="try-it-box">

@@ -139,7 +139,6 @@ Skip purely educational topics that attract the wrong audience.</pre>
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each content quality to what Google loves or penalizes.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

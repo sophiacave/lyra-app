@@ -88,6 +88,18 @@ export default async function CoursePage({ params }) {
           },
         }) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+            { '@type': 'ListItem', position: 2, name: 'Academy', item: `${site.url}/academy/` },
+            { '@type': 'ListItem', position: 3, name: course.title, item: `${site.url}/academy/${courseSlug}/` },
+          ],
+        }) }}
+      />
 
       {/* Course header */}
       <div className="glass glass-animate-up academy-hero">

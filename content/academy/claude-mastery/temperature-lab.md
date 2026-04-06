@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 3
 type: "lab"
 free: true
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 3 · Lab</div>
-<h1>Temperature Lab</h1>
-<p>Master the creativity dial — understand how temperature shapes AI output, with real API examples</p>
-<div class="lesson-meta-bar">⏱ <span>60 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 1</span></div>
+<div class="lesson-hero">
+  <h1>Temperature Lab</h1>
+  <p class="sub">Master the creativity dial — understand how temperature shapes AI output, with real API examples</p>
 </div>
 
 <div class="content">
@@ -94,43 +93,26 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 </div>
 
 <div class="card">
-<h2>Temperature Playground</h2>
-<p>Adjust the temperature slider and generate outputs to see the difference in real-time.</p>
+<h2>Temperature in Practice — Same Prompt, Different Results</h2>
+<p>To understand temperature intuitively, consider the prompt "Write a product name for a sleep aid." Here is what you might get at different temperature settings:</p>
 
-<div class="temp-display">
-<div class="temp-value" id="tempVal">0.50</div>
-<div class="temp-label" id="tempLabel">Balanced</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
+<div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+<strong style="color:#38bdf8;font-size:.85rem">Temperature 0.0 (Deterministic)</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Output: "SleepWell"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "SleepWell"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "SleepWell"</p>
+<p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0">Always the same — the most probable answer every time.</p>
 </div>
-
-<div class="slider-container">
-<input type="range" id="tempSlider" min="0" max="100" value="50" oninput="updateTemp()">
-<div class="slider-labels">
-<span>0.0 — Deterministic</span>
-<span>0.5 — Balanced</span>
-<span>1.0 — Maximum Creativity</span>
-</div>
-</div>
-
-<p style="font-size:.9rem;margin-top:1rem">Choose a prompt:</p>
-<div class="prompt-selector">
-<button class="prompt-btn active" onclick="selectPrompt(0,this)">Write a product name</button>
-<button class="prompt-btn" onclick="selectPrompt(1,this)">Describe a sunset</button>
-<button class="prompt-btn" onclick="selectPrompt(2,this)">Explain gravity</button>
-<button class="prompt-btn" onclick="selectPrompt(3,this)">Write a story opener</button>
-</div>
-
-<button class="gen-btn" id="genBtn" onclick="generate()">Generate at Current Temperature</button>
-
-<div class="output-grid">
-<div class="output-box">
-<div class="output-label" style="color:#38bdf8">🧊 Low Temperature (0.0-0.3)</div>
-<div class="output-text" id="outLow">Click generate to see output...</div>
-</div>
-<div class="output-box">
-<div class="output-label" style="color:#f87171">🔥 High Temperature (0.7-1.0)</div>
-<div class="output-text" id="outHigh">Click generate to see output...</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
+<strong style="color:#f87171;font-size:.85rem">Temperature 0.8 (Creative)</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Output: "DreamDrift"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "NightHaven"</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "LunaRest"</p>
+<p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0">Different each time — less probable tokens get a real chance.</p>
 </div>
 </div>
+<p style="font-size:.85rem;color:#71717a">Try this yourself: run the same prompt at temperature 0 five times (identical results), then at temperature 0.8 five times (five different creative answers). The difference is immediately obvious.</p>
 </div>
 
 <div class="card">
@@ -231,9 +213,6 @@ response = client.messages.create(
 
 
 <div data-learn="QuizMC" data-props='{"title":"Temperature Decisions","questions":[{"q":"You are building a function that classifies customer emails as urgent or not urgent. What temperature should you use?","options":["0.0 — needs deterministic, consistent results","0.5 — balanced is best","0.8 — some creativity helps","1.0 — maximum variation"],"correct":0,"explanation":"Classification tasks require consistency and reproducibility. Temperature 0 ensures the model always picks the most probable classification — not a creative one. Running the same email through twice should give the same result."},{"q":"You want Claude to help brainstorm 20 different campaign slogans. What temperature range fits best?","options":["0.0 — precise answers only","0.1-0.2 — slightly flexible","0.7-0.8 — creative variety","Temperature does not affect brainstorming"],"correct":2,"explanation":"Temperature 0.7-0.8 introduces enough randomness to generate varied, surprising ideas — exactly what brainstorming needs. Each generation will produce different slogans, giving you a wide creative spread."},{"q":"What is Claude\u0027s default temperature if you do not set it explicitly?","options":["0.0 — deterministic by default","0.5 — balanced by default","0.7 — creative by default","1.0 — maximum randomness by default"],"correct":3,"explanation":"Claude\u0027s default temperature is 1.0 — maximum randomness. This surprises many developers who expect a conservative default. For production applications, always set temperature explicitly to get predictable behavior."},{"q":"A developer sets temperature to 0.9 for a code generation task and gets buggy output. Why?","options":["The model is too smart for the task","High temperature introduces random token choices into syntax and logic","The API key has expired","Temperature 0.9 disables code generation"],"correct":1,"explanation":"High temperature causes the model to occasionally select less probable tokens. In creative writing, this produces interesting variety. In code, it produces subtle bugs — wrong variable names, incorrect operators, broken syntax. Always use temperature 0 for code."}]}'></div>
-
-<div data-learn="SortStack" data-props='{"title":"Order Temperatures from Most Precise to Most Creative","instruction":"Arrange these temperature settings from most deterministic (top) to most creative (bottom)","items":["Temperature 0.0 — Deterministic","Temperature 0.25 — Focused","Temperature 0.5 — Balanced","Temperature 0.75 — Creative","Temperature 1.0 — Wild"]}'></div>
-
 </div>
 
 <div class="progress-footer">

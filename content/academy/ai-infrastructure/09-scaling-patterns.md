@@ -58,7 +58,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Scaling Patterns for AI","instruction":"Match each scaling pattern with its role in handling traffic.","pairs":[{"left":"Semantic Caching","right":"Catches repeated or similar questions without making any LLM call"},{"left":"Round-Robin Routing","right":"Alternates between providers to double effective rate limits"},{"left":"Smart Routing","right":"Routes simple tasks to cheap models and complex tasks to capable ones"},{"left":"Failover Routing","right":"Automatically switches to backup provider on errors or high latency"},{"left":"Priority Queues","right":"Processes paid users first and free users when capacity allows"},{"left":"Backpressure","right":"Stops accepting requests when queue is full rather than silently timing out"}]}'></div>
 </div>
 
 <div class="lesson-section">

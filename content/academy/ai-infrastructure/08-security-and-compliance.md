@@ -54,7 +54,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Security Concepts","instruction":"Match each security concept with its defense strategy.","pairs":[{"left":"Prompt Injection","right":"Input sanitization and system prompt isolation with clear delimiters"},{"left":"Data Exfiltration","right":"Output validation to check responses before returning to users"},{"left":"API Key Exposure","right":"Rotate regularly, scope narrowly, set spending caps per environment"},{"left":"Data Minimization","right":"Strip PII and use anonymous IDs before sending data to AI providers"},{"left":"Least Privilege Context","right":"Only load information the AI needs for the current request into context"},{"left":"Self-Hosted Models","right":"Keep all data on your own infrastructure when compliance requires it"}]}'></div>
 </div>
 
 <div class="lesson-section">

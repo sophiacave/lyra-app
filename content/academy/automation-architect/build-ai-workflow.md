@@ -4,64 +4,28 @@ course: "automation-architect"
 order: 8
 type: "builder"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 8 of 9</span>
 </nav>
-<header class="lesson-header">
-  <div class="lesson-badge">Module 3 &middot; Interactive</div>
+
+<div class="lesson-hero">
   <h1>Build AI Workflow</h1>
-  <p>Assemble a workflow from components: trigger, AI classify, filter, transform, and action. Then simulate data flowing through it.</p>
-</header>
+  <p class="sub">Assemble a workflow from components: trigger, AI classify, filter, transform, and action. Then simulate data flowing through it.</p>
+</div>
 
 <div class="content">
-  <div class="palette">
-    <h2>Component Palette</h2>
-    <p>Click components to add them to your workflow canvas. Build a pipeline that processes incoming data with AI.</p>
-    <div class="palette-grid" id="paletteGrid">
-      <div class="palette-item pi-trigger" onclick="addComponent('trigger')" id="pal-trigger">
-        <div class="pi-icon">&#9889;</div>
-        <div class="pi-name">Webhook Trigger</div>
-        <div class="pi-type">trigger</div>
-      </div>
-      <div class="palette-item pi-ai" onclick="addComponent('ai')" id="pal-ai">
-        <div class="pi-icon">&#129504;</div>
-        <div class="pi-name">AI Classify</div>
-        <div class="pi-type">ai (claude)</div>
-      </div>
-      <div class="palette-item pi-filter" onclick="addComponent('filter')" id="pal-filter">
-        <div class="pi-icon">&#128269;</div>
-        <div class="pi-name">Filter</div>
-        <div class="pi-type">condition</div>
-      </div>
-      <div class="palette-item pi-transform" onclick="addComponent('transform')" id="pal-transform">
-        <div class="pi-icon">&#128260;</div>
-        <div class="pi-name">Transform</div>
-        <div class="pi-type">reshape data</div>
-      </div>
-      <div class="palette-item pi-action" onclick="addComponent('action')" id="pal-action">
-        <div class="pi-icon">&#128640;</div>
-        <div class="pi-name">Send to Team</div>
-        <div class="pi-type">action</div>
-      </div>
-    </div>
+  <div style="padding:0 1.5rem;margin:1.5rem 0">
+    <h2>AI Workflow Components</h2>
+    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">An AI workflow is a pipeline of components that process data in sequence. Each component has a specific role: a <strong>trigger</strong> receives incoming data, an <strong>AI classifier</strong> analyzes intent, a <strong>filter</strong> gates by confidence, a <strong>transform</strong> reshapes the output, and an <strong>action</strong> delivers the result. The code example below shows exactly how these components connect in production.</p>
   </div>
-
-  <div class="canvas" id="canvas">
-    <div class="canvas-label" id="canvasEmpty">Click components above to build your workflow</div>
-    <div id="canvasFlow"></div>
-    </div>
-
-  <div class="sim-log" id="simLog"></div>
-
-  <div class="run-area">
-    <button class="run-btn" id="runBtn" disabled onclick="runSimulation()">Run Simulation</button>
-  </div>
-
 
   <div style="padding:0 1.5rem;margin:1.5rem 0">
     <h2>The Code Behind the Canvas</h2>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">The visual builder above maps directly to real code. Here is a complete AI workflow script that does exactly what the canvas simulates — receive data, classify it with an LLM, filter by confidence, transform the output, and route it to the right team:</p>
+    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Here is a complete AI workflow script — receive data, classify it with an LLM, filter by confidence, transform the output, and route it to the right team:</p>
 
     <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Complete AI classification workflow</div>
@@ -117,13 +81,9 @@ ticket = {<span style="color:#fb923c">"email"</span>: <span style="color:#fb923c
 <span style="color:#34d399">run_workflow</span>(ticket, api_key=<span style="color:#fb923c">"sk-ant-..."</span>)</code></pre>
 </div>
   </div>
-
-  <div data-learn="SortStack" data-props='{"title":"Order the AI Workflow Components","instruction":"Arrange these pipeline components in the correct order","items":["Webhook Trigger","AI Classify","Filter (confidence check)","Transform (reshape data)","Send to Team (action)"]}'></div>
-
-  <div data-learn="FlashDeck" data-props='{"title":"AI Workflow Components","cards":[{"front":"Webhook Trigger","back":"Receives incoming HTTP data to start the pipeline. Every workflow begins with a trigger."},{"front":"AI Classify","back":"Claude reads the incoming content and assigns an intent label with a confidence score."},{"front":"Filter","back":"A condition gate — only passes data that meets the threshold. Example: confidence > 80%."},{"front":"Transform","back":"Reshapes the data structure for the next step. Example: extract team name and priority from the AI output."},{"front":"Send to Team (action)","back":"The final step — routes the processed data to the correct destination, creates a ticket, sends a notification."}]}'></div>
+<div data-learn="FlashDeck" data-props='{"title":"AI Workflow Components","cards":[{"front":"Webhook Trigger","back":"Receives incoming HTTP data to start the pipeline. Every workflow begins with a trigger."},{"front":"AI Classify","back":"Claude reads the incoming content and assigns an intent label with a confidence score."},{"front":"Filter","back":"A condition gate — only passes data that meets the threshold. Example: confidence > 80%."},{"front":"Transform","back":"Reshapes the data structure for the next step. Example: extract team name and priority from the AI output."},{"front":"Send to Team (action)","back":"The final step — routes the processed data to the correct destination, creates a ticket, sends a notification."}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"AI Workflow Quiz","questions":[{"q":"What is the purpose of the Filter step in an AI workflow?","options":["To classify the content","To receive incoming data","To only pass data that meets a confidence threshold","To format the final output"],"correct":2,"explanation":"The Filter step acts as a condition gate — it lets through only the data that meets your criteria, such as AI confidence above 80%."},{"q":"What does the Transform step do?","options":["Sends data to the team","Classifies intent","Reshapes the data structure for the next step","Receives the webhook payload"],"correct":2,"explanation":"Transform reshapes data — it takes the AI output and formats it into exactly what the action step needs, like extracting team name and priority."},{"q":"Why add a Filter between AI Classify and the action?","options":["To make the workflow longer","To prevent low-confidence misclassifications from being acted upon automatically","To increase processing speed","To store data in a database"],"correct":1,"explanation":"Filtering by confidence prevents the workflow from acting on uncertain AI outputs. Low-confidence results can be sent to a human review queue instead."}]}'></div>
 
 </div>
 
-<footer class="progress-footer"><p>Lesson 8 of 9 &middot; Automation Architect</p></footer>

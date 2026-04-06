@@ -118,7 +118,6 @@ for segment, group in df.groupby("product"):
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Pattern Types</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Identify the Pattern Type","instruction":"Match each example to the correct pattern type","pairs":[{"left":"Revenue growing 5% every month","right":"Trend — directional pattern over time"},{"left":"One customer spent 20x the average transaction","right":"Outlier — data point that does not fit the pattern"},{"left":"Ad spend goes up and conversions go up","right":"Correlation — relationship between two variables"},{"left":"Support tickets spike every Monday morning","right":"Trend — recurring cyclical pattern"},{"left":"Ice cream sales and drowning both rise in summer","right":"Correlation with confounding variable — heat causes both"},{"left":"Two segments moving in opposite directions behind a flat average","right":"Segmented pattern — overall average hides opposing trends"}]}'></div>
 </div>
 
 <div class="lesson-section">

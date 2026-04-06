@@ -89,10 +89,7 @@ Write a marketing email for <span style="color:#4ade80">[product name]</span> ta
   <p class="section-text">Not length. Not fancy words. Not tricks or hacks. <strong>Specificity.</strong></p>
   <p class="section-text">The more specific you are about what you want, the less the AI has to guess. And every guess is a chance for the output to go sideways.</p>
   <p class="section-text">Specificity means answering the questions the AI can't ask you:</p>
-
-<div data-learn="SortStack" data-props='{"title":"Rank These by Impact","instruction":"Order these prompt elements from MOST impactful to LEAST impactful for improving AI output quality","items":["Being specific about what you want","Providing context about your situation","Specifying the output format","Adding a role or persona","Using polite language"]}'></div>
-
-  <p class="section-text" style="margin-top:1.5rem">Throughout this course, you'll learn frameworks and techniques for being specific without writing a novel. Because the best prompts aren't long — they're <em>precise</em>.</p>
+<p class="section-text" style="margin-top:1.5rem">Throughout this course, you'll learn frameworks and techniques for being specific without writing a novel. Because the best prompts aren't long — they're <em>precise</em>.</p>
 </div>
 
 <!-- SECTION 5: WHAT YOU'LL BUILD -->

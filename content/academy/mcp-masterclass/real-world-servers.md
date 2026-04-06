@@ -4,52 +4,22 @@ course: "mcp-masterclass"
 order: 8
 type: "lesson"
 free: false
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 8 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 3 &middot; Lesson 8</div>
+<div class="lesson-hero">
   <h1>Real-World Servers</h1>
-  <p class="subtitle">Six production MCP server patterns that developers use every day. For each pattern, you will see the architecture, the tools it exposes, real code, and the security considerations that matter most.</p>
+  <p class="sub">Six production MCP server patterns that developers use every day. For each pattern, you will see the architecture, the tools it exposes, real code, and the security considerations that matter most.</p>
+</div>
 
   <div class="section">
     <h2>Server Gallery</h2>
-    <p>Click each server to see its architecture, exposed tools, and real-world use cases:</p>
-
-    <div class="gallery">
-      <div class="gallery-card" style="--c:#38bdf8" onclick="showServer(0)" id="gc0">
-        <div class="icon">&#x1F4BE;</div>
-        <h3>Database</h3>
-        <p>Query any DB from Claude</p>
-      </div>
-      <div class="gallery-card" style="--c:#8b5cf6" onclick="showServer(1)" id="gc1">
-        <div class="icon">&#x1F4BB;</div>
-        <h3>GitHub</h3>
-        <p>Manage repos, PRs, issues</p>
-      </div>
-      <div class="gallery-card" style="--c:#fb923c" onclick="showServer(2)" id="gc2">
-        <div class="icon">&#x1F4AC;</div>
-        <h3>Slack</h3>
-        <p>Read and send messages</p>
-      </div>
-      <div class="gallery-card" style="--c:#f472b6" onclick="showServer(3)" id="gc3">
-        <div class="icon">&#x1F310;</div>
-        <h3>Browser</h3>
-        <p>Navigate and interact with web</p>
-      </div>
-      <div class="gallery-card" style="--c:#a78bfa" onclick="showServer(4)" id="gc4">
-        <div class="icon">&#x1F9E0;</div>
-        <h3>Memory</h3>
-        <p>Persistent knowledge recall</p>
-      </div>
-      <div class="gallery-card" style="--c:#34d399" onclick="showServer(5)" id="gc5">
-        <div class="icon">&#x2699;&#xFE0F;</div>
-        <h3>Custom API</h3>
-        <p>Wrap any API as MCP</p>
-      </div>
-    </div>
+    <p>Six production MCP server patterns that developers use every day. Each pattern is covered in detail below.</p>
   </div>
 
   <div class="section">

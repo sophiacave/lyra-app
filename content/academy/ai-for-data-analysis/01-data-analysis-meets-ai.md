@@ -79,7 +79,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Match the Concept</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"AI Data Analysis Concepts","instruction":"Match each concept to its definition","pairs":[{"left":"AI-powered analysis","right":"Asking questions in plain English to get structured insights"},{"left":"The thinker-calculator model","right":"You ask the right questions, AI crunches the numbers"},{"left":"Actionable insight","right":"A data-backed finding that tells you what to do next"},{"left":"Barrier to entry","right":"Technical skills like Excel formulas that AI removes"},{"left":"The analysis mindset","right":"Curiosity — better questions produce better insights"}]}'></div>
 </div>
 
 <div class="lesson-section">

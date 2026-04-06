@@ -98,7 +98,6 @@ Start your response with:
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Match the Structured Output Technique","instruction":"Match each structured output concept to its purpose.","pairs":[{"left":"Schema-Driven Prompting","right":"Providing exact JSON structure with field names and types"},{"left":"Output First Trick","right":"Starting the AI response to anchor the format immediately"},{"left":"Cell Constraints","right":"Limiting table cells to a word count to keep them readable"},{"left":"Helpful Preamble Fix","right":"Adding \"Return ONLY the JSON. No explanation.\""},{"left":"Inconsistent Keys Fix","right":"Providing exact key names and saying \"use these exactly\""},{"left":"Mixed Types Fix","right":"Specifying data types in your schema description"}]}'></div>
 </div>
 
 <div class="lesson-section">

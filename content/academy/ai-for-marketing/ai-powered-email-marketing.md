@@ -147,7 +147,6 @@ Email 5 (Day 10): Direct offer with urgency
 <!-- INTERACTIVE: MATCHCONNECT -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each email element to its best practice.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

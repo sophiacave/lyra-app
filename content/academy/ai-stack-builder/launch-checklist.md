@@ -4,16 +4,18 @@ course: "ai-stack-builder"
 order: 10
 type: "lesson"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 10 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 10 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Launch Checklist</h1>
+  <p class="sub">Before you ship, run through every item. 20 checks across 4 categories. Miss one, and your launch could stumble. Check them all for the full celebration.</p>
 </div>
-
-<div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
-<h1>Launch Checklist</h1>
-<p class="intro">Before you ship, run through every item. 20 checks across 4 categories. Miss one, and your launch could stumble. Check them all for the full celebration.</p>
 
 <div style="background:#111118;border:1px solid #f59e0b33;border-radius:12px;padding:1.5rem;margin:1.5rem 0">
 <p style="color:#f59e0b;font-weight:700;font-size:.9rem;margin-bottom:.75rem">Before you start</p>
@@ -123,13 +125,6 @@ console.<span style="color:#34d399">log</span>(<span style="color:#fb923c">'All 
 <div id="confetti"></div>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
-</div>
-<div class="progress-bar"><div class="progress-fill" id="lessonProgress"></div></div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 <div data-learn="QuizMC" data-props='{"title":"Launch Readiness Quiz","questions":[{"q":"Where do you configure CORS headers for a Supabase edge function?","options":["Supabase Dashboard under Settings","In the edge function code itself as a corsHeaders object","Vercel dashboard under Headers","Namecheap DNS settings"],"correct":1,"explanation":"CORS headers are set directly in your edge function code. There is no dashboard UI — you define the corsHeaders object and include it in every Response you return."},{"q":"What is the risk of leaving NEXT_PUBLIC_ prefix on a Stripe secret key?","options":["It causes a build error","The key is exposed in the browser and anyone can see and use it","It disables tree-shaking","The Stripe API rejects requests"],"correct":1,"explanation":"Variables with NEXT_PUBLIC_ prefix are bundled into the browser JavaScript. Anyone who views source can read them. Secret keys (Stripe, service role) must NEVER use this prefix — they should only exist on the server."},{"q":"What does idempotency mean in the context of Stripe webhooks?","options":["Webhooks are sent exactly once","Your endpoint processes the same event safely multiple times without side effects","Stripe encrypts all webhook payloads","Webhooks require authentication"],"correct":1,"explanation":"Stripe may send the same event multiple times due to network issues. Idempotency means your handler produces the same result whether it runs once or ten times — typically by storing the Stripe event ID and skipping if already processed."}]}'></div>
 

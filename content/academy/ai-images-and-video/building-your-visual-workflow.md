@@ -121,7 +121,6 @@ negative space on the right for text overlay,
 <div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">The Multi-Tool Pipeline</h2>
-  <div data-learn="SortStack" data-props='{"title":"Visual Creation Pipeline — In Order","instruction":"Arrange the six pipeline steps in the correct sequence","items":["Concept — use ChatGPT to brainstorm and sharpen the idea","Generate — create base image in Midjourney, DALL-E, or Stable Diffusion","Refine — inpainting, edits, and detail fixes","Enhance — upscale and color correction","Design — add text and branding in Canva or Figma","Animate — optionally turn final image into video with Runway or Pika"]}'></div>
 </div>
 
 <div class="lesson-section">

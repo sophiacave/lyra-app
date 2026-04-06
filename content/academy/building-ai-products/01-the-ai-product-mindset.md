@@ -16,7 +16,6 @@ free: true
 <div class="lesson-hero">
   <h1>The AI Product Mindset</h1>
   <p><span class="accent">Stop thinking like an engineer. Start thinking like someone who solves problems.</span></p>
-  <p>Most AI products fail not because the technology is wrong, but because the builder forgot to ask: does anyone actually need this?</p>
 </div>
 
 <div class="learn-card">
@@ -77,7 +76,6 @@ free: true
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Product Mindset — Key Terms","instruction":"Match each concept to its definition.","pairs":[{"left":"Magic Trick Test","right":"Describe your product as: you give it X, it gives you Y"},{"left":"Time Compression","right":"Turning hours of work into seconds — dramatic enough to generate word-of-mouth"},{"left":"Lowering the Skill Floor","right":"Making expert-level tasks accessible to non-experts"},{"left":"Handling the Tedious","right":"Automating drudge work like data entry and categorization"},{"left":"Problem-First Thinking","right":"Starting with a real user pain point, not a technology"},{"left":"Product vs. Demo","right":"Workflows, data persistence, and compounding value over time"}]}'></div>
 </div>
 
 <div class="lesson-section">

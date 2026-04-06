@@ -109,7 +109,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each health task to what AI can and cannot do.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -4,20 +4,22 @@ course: "first-ai-agent"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 2</div>
+<div class="lesson-hero">
   <h1>The Agent Loop</h1>
-  <p class="subtitle">Every agent runs the same fundamental cycle: Perceive, Think, Act, Observe, Learn. This is the pattern behind every autonomous AI system — from Claude Code to self-driving cars. Here is how it works, in theory and in code.</p>
+  <p class="sub">Every agent runs the same fundamental cycle: Perceive, Think, Act, Observe, Learn. This is the pattern behind every autonomous AI system — from Claude Code to self-driving cars. Here is how it works, in theory and in code.</p>
+</div>
 
   <div class="section">
     <h2>The Five Steps</h2>
-    <p>Click each node on the loop to explore what happens at every step:</p>
-    <canvas id="loop-canvas"></canvas>
+<canvas id="loop-canvas"></canvas>
     <p class="hint">Click any node on the loop to explore it</p>
 
     <div class="info-panel" id="info">
@@ -194,12 +196,6 @@ free: true
     </div>
   </div>
 </div>
-
-<footer class="progress-footer">
-  <p>Lesson 2 of 10 &middot; Build Your First AI Agent</p>
-</footer>
-
-<div data-learn="SortStack" data-props='{"title":"Put the Agent Loop in Order","instruction":"Arrange the agent loop steps in the correct sequence","items":["Perceive — take in input from the environment","Think — reason about goal, memory, and current context","Act — call a tool to take a real action","Observe — check if the action succeeded or failed","Learn — store the outcome in memory"]}'></div>
 
 <div data-learn="FlashDeck" data-props='{"title":"Agent Loop Concepts","cards":[{"front":"Perceive","back":"The agent takes in information from its environment — a user message, API response, file change, or scheduled trigger. Perception is how the agent knows something needs doing."},{"front":"Think","back":"The agent reasons about what it perceived, considering its goal, memory, and context. The LLM combines all inputs to decide the best next action. This is the intelligence step."},{"front":"Act","back":"The agent calls a tool — sending an email, querying a database, making an API call, writing a file. This is what separates agents from chatbots: they do things in the real world."},{"front":"Observe","back":"After acting, the agent checks the result. Did the API call succeed? Was the data valid? Observation closes the feedback loop and enables self-correction."},{"front":"Learn","back":"The agent updates its memory with the outcome. What worked, what failed, what new information was discovered. Each loop becomes smarter than the last."},{"front":"stop_reason: tool_use","back":"When Claude returns stop_reason=tool_use, it means the model wants to call a tool. Your code executes the tool and feeds the result back. When stop_reason is end_turn, the agent is done."},{"front":"max_turns","back":"A safety limit on how many loops an agent can run. Prevents runaway agents that loop forever without making progress. Typical values: 5-25 depending on task complexity."},{"front":"Context overflow","back":"When memory grows so large the LLM cannot process it. Fix by summarizing old memory (keep recent results full, compress older ones) or using a sliding window."}]}'></div>
 

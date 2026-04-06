@@ -208,7 +208,6 @@ free: false
 
 <!-- MATCH CONNECT: ROLES TO RESPONSIBILITIES -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"AI Roles and Responsibilities","instruction":"Match each AI team role to its primary responsibility","pairs":[{"left":"AI Champion","right":"Owns AI strategy, evaluates vendors, drives adoption across the organization"},{"left":"AI/ML Engineer","right":"Builds custom AI integrations, connects APIs, and fine-tunes models"},{"left":"Data Engineer","right":"Cleans, structures, and pipelines data to make it AI-ready"},{"left":"Prompt Engineer / AI Analyst","right":"Designs and optimizes AI prompts and workflows for business teams"},{"left":"AI Ethics / Governance Lead","right":"Ensures AI complies with regulations, company values, and risk tolerance"},{"left":"Change Management Lead","right":"Manages training, communication, and resistance during AI adoption"}]}'></div>
 </div>
 
 <!-- LEARN COMPONENTS -->
@@ -217,7 +216,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="SortStack" data-props='{"title":"AI Team Building Order","instruction":"Arrange these hires and actions in the recommended sequence","items":["Identify and appoint an AI Champion (internal or external)","Run a 90-day AI upskilling program for 3-5 high-potential staff","Launch minimum viable AI team: Champion + Prompt Engineer + fractional Data Engineer","Stand up Hub-and-Spoke structure with department AI leads","Hire full-time Data Engineer as use cases scale","Add ML Engineer when building custom AI workflows","Formalize AI Ethics and Governance role"]}'></div>
 </div>
 
 <div class="lesson-section">

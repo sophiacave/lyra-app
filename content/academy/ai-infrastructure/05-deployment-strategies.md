@@ -57,7 +57,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"CI/CD for AI Applications","instruction":"Match each deployment concept with its description.","pairs":[{"left":"Contract Testing","right":"Tests response shape and required fields instead of exact AI output"},{"left":"Eval Suites","right":"Known questions with acceptable answer ranges run on every deploy"},{"left":"Blue-Green Deployment","right":"Two identical environments with instant traffic switching and rollback"},{"left":"Canary Deployment","right":"Route 5-10% of traffic to the new version before full rollout"},{"left":"Feature Flags","right":"Ship AI features hidden behind toggles to decouple deploy from release"},{"left":"Post-Deploy Smoke Tests","right":"Automatically hit key AI endpoints after deploy to catch config issues"}]}'></div>
 </div>
 
 <div class="lesson-section">

@@ -185,7 +185,6 @@ Format it as a printable one-page checklist I can bring to the meeting.</code></
 
 <!-- MATCH CONNECT: VENDOR RED FLAGS TO MEANINGS -->
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Vendor Red Flags and What They Mean","instruction":"Match each vendor red flag to the risk it signals","pairs":[{"left":"\"Our AI is proprietary\"","right":"Hiding a commodity wrapper or obscuring the underlying model"},{"left":"No data retention policy","right":"Your data may be used for training or retained indefinitely after cancellation"},{"left":"ROI claims without methodology","right":"Cherry-picked metrics from best-case scenarios, not verifiable results"},{"left":"No pilot or proof-of-concept option","right":"The vendor is not confident the product performs on real-world data"},{"left":"Per-seat pricing that scales exponentially","right":"The vendor\u0027s economics don\u0027t work and you\u0027ll pay for their inefficiency at scale"},{"left":"No SOC 2 or equivalent compliance","right":"The vendor is not ready to handle enterprise data securely"}]}'></div>
 </div>
 
 <!-- LEARN COMPONENTS -->
@@ -194,7 +193,6 @@ Format it as a printable one-page checklist I can bring to the meeting.</code></
 </div>
 
 <div class="lesson-section">
-  <div data-learn="SortStack" data-props='{"title":"Vendor Evaluation Process","instruction":"Arrange these steps in the correct order for evaluating an AI vendor","items":["Define your use case and success metrics","Research vendors and build a shortlist","Send your real data for demo prep","Score the vendor demo using the checklist","Run a 30-90 day pilot on live workflows","Negotiate contract terms (SLAs, data ownership, exit rights)","Sign and onboard with a 90-day review milestone"]}'></div>
 </div>
 
 <div class="lesson-section">

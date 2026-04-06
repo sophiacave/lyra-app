@@ -138,7 +138,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each landing page section to its purpose.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

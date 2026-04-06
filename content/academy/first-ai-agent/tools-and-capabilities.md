@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 3
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 3 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 3</div>
+<div class="lesson-hero">
   <h1>Tools &amp; Capabilities</h1>
-  <p class="subtitle">An agent without tools is just a chatbot. Each tool you add unlocks a new dimension of capability. Here is how tools work, what categories they fall into, and how to choose the right ones for your agent.</p>
+  <p class="sub">An agent without tools is just a chatbot. Each tool you add unlocks a new dimension of capability. Here is how tools work, what categories they fall into, and how to choose the right ones for your agent.</p>
+</div>
 
   <div class="section">
     <h2>Three Categories of Tools</h2>
@@ -164,30 +167,54 @@ free: true
   </div>
 
   <div class="section">
-    <h2>Interactive: Equip Your Agent</h2>
-    <p>Drag tools onto the agent and watch its capabilities expand:</p>
-  </div>
+    <h2>Equip Your Agent with Tools</h2>
+    <p>Here is how to define tools in the Claude API. Each tool needs a name, description (tells Claude WHEN to use it), and an input schema (tells Claude WHAT to send):</p>
 
-  <div class="workspace">
-    <div class="toolbox">
-      <h3>Toolbox</h3>
-    </div>
-    <div class="agent-zone" id="agent-zone">
-      <div class="agent-avatar">&#x1F916;</div>
-      <div class="agent-label">Your Agent</div>
-      <div class="agent-status" id="agent-status">No tools equipped — just a chatbot</div>
-    </div>
-  </div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — defining tools for a Claude agent</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Tools are JSON schemas that tell Claude what it can do</span>
+tools = [
+    {
+        <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"lookup_customer"</span>,
+        <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Look up a customer by email. Use when the user mentions their account, billing, or subscription."</span>,
+        <span style="color:#fbbf24">"input_schema"</span>: {
+            <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"object"</span>,
+            <span style="color:#fbbf24">"properties"</span>: {
+                <span style="color:#fbbf24">"email"</span>: {<span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"string"</span>, <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Customer email address"</span>}
+            },
+            <span style="color:#fbbf24">"required"</span>: [<span style="color:#fbbf24">"email"</span>]
+        }
+    },
+    {
+        <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"web_search"</span>,
+        <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Search the web. Use when the user asks about current events, prices, or information not in the knowledge base."</span>,
+        <span style="color:#fbbf24">"input_schema"</span>: {
+            <span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"object"</span>,
+            <span style="color:#fbbf24">"properties"</span>: {
+                <span style="color:#fbbf24">"query"</span>: {<span style="color:#fbbf24">"type"</span>: <span style="color:#fbbf24">"string"</span>, <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Search query"</span>}
+            },
+            <span style="color:#fbbf24">"required"</span>: [<span style="color:#fbbf24">"query"</span>]
+        }
+    },
+]
 
-  <div class="insight" id="insight">
-    <h3>Key Insight</h3>
-    <p id="insight-text">Right now your agent has zero tools. It can only generate text — exactly like a chatbot. Try dragging some tools over to see what changes.</p>
-  </div>
+<span style="color:#71717a"># Pass tools to Claude — now it's an AGENT, not a chatbot</span>
+response = client.messages.create(
+    model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
+    max_tokens=<span style="color:#fb923c">1024</span>,
+    tools=tools,           <span style="color:#71717a"># ← this is what makes it an agent</span>
+    messages=[{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: <span style="color:#fbbf24">"What plan is jane@acme.co on?"</span>}]
+)
+<span style="color:#71717a"># Claude will respond with a tool_use block:</span>
+<span style="color:#71717a"># {"type": "tool_use", "name": "lookup_customer", "input": {"email": "jane@acme.co"}}</span></code></pre>
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 3 of 10 &middot; Build Your First AI Agent</p>
-</footer>
+    <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);margin:1rem 0">
+      <strong style="color:#34d399;font-size:.85rem">Zero tools = chatbot. One tool = capable. Three tools = agent.</strong>
+      <span style="font-size:.82rem;color:#a1a1aa"> Each tool you add multiplies what the agent can do. A web search + database + email sender turns a text generator into a full support agent that can research, look up accounts, and follow up — all autonomously.</span>
+    </div>
+  </div>
+</div>
 
 <div data-learn="QuizMC" data-props='{"title":"Tools and Agent Capabilities","questions":[{"q":"What capability does adding an API Caller tool unlock?","options":["The agent can do math more accurately","The agent can connect to any external service — payments, CRMs, social media, anything with an API","The agent can read local files","The agent can send emails"],"correct":1,"explanation":"API access is the ultimate force multiplier. With an API Caller, your agent can interact with virtually any external system — booking platforms, payment processors, data services."},{"q":"Why does a Calculator tool exist when LLMs can attempt math?","options":["It is faster than reasoning","LLMs produce probabilistic outputs — a calculator guarantees exact precision for every calculation","Calculators use less memory","Users prefer seeing a separate tool was used"],"correct":1,"explanation":"LLMs predict the most likely next token, which makes them unreliable at precise arithmetic. A calculator tool delegates math to a deterministic system, eliminating hallucinated numbers."},{"q":"What is the difference between a knowledge tool and an action tool?","options":["Knowledge tools are faster","Knowledge tools retrieve information, action tools change the world — send emails, write files, call APIs","Knowledge tools are free, action tools cost money","There is no difference"],"correct":1,"explanation":"Knowledge tools (search, database query, file read) bring information IN. Action tools (email, API call, file write) push changes OUT. Both are essential for a capable agent."},{"q":"An agent needs to: (1) look up a customer, (2) check their payment status, (3) send a refund notification. Which tool categories are needed?","options":["Knowledge only","Action only","Knowledge (database lookup, payment API) + Action (email sender)","Autonomy only"],"correct":2,"explanation":"Database lookup and payment API check are knowledge tools (retrieving data). Email sender is an action tool (taking action). This task needs both categories working together."},{"q":"What makes tools compound in value?","options":["Each tool gets faster when more tools are added","Tools can chain together — the output of one becomes the input for another, enabling tasks no single tool could handle","More tools make the model smarter","Tools share memory with each other"],"correct":1,"explanation":"A web search alone finds information. An email sender alone sends messages. Combined: the agent researches a topic AND emails a summary. The combination enables tasks neither tool could do alone."}]}'></div>
 

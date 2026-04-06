@@ -76,7 +76,6 @@ free: false
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
-  <h2 class="section-title">Match each proposal section to what it accomplishes.</h2>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

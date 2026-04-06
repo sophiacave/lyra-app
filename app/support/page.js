@@ -67,7 +67,7 @@ function SupportContent() {
       <div className="donate-impact-grid">
         {[
           { emoji: '\uD83D\uDCDA', title: 'Free Courses', desc: 'Keep AI education free and accessible to everyone, everywhere.' },
-          { emoji: '\uD83E\uDDEC', title: 'Research', desc: "Fund research that saves lives. That's the mission." },
+          { emoji: '\uD83E\uDDEC', title: 'HIV Research', desc: '1% of all revenue goes to HIV research. Growing as we grow.' },
           { emoji: '\uD83C\uDF0D', title: 'AI for All', desc: 'Build convergence technology that belongs to everyone.' },
         ].map(c => (
           <div key={c.title} className="donate-impact-card">
@@ -115,7 +115,7 @@ function SupportContent() {
       </div>
 
       <p className="donate-transparency">
-        <strong>Full transparency:</strong> Like One is early. As revenue grows, so does the impact. Every dollar goes toward building courses, technology, and a platform designed to prove that AI belongs to everyone.
+        <strong>Full transparency:</strong> Like One donates 1% of all revenue to HIV research — and we plan to grow that percentage as the company grows. The rest builds courses, technology, and a platform that proves AI belongs to everyone.
       </p>
 
       <div className="donate-disclosure">

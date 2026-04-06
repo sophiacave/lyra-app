@@ -122,7 +122,6 @@ print(f"\nRecurring expenses (3+ charges):\n{subscriptions}")</code></pre>
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Financial Red Flags</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Spot the Financial Red Flag","instruction":"Match each scenario to the financial warning sign","pairs":[{"left":"Revenue up 10% but expenses up 25%","right":"Margin compression — costs growing faster than income"},{"left":"Biggest client pays net-60 but rent is due net-30","right":"Cash flow timing — big expenses hit before revenue arrives"},{"left":"One client represents 45% of total revenue","right":"Single-source dependency — losing them means losing almost half"},{"left":"Three new $50/month subscriptions added this quarter","right":"Expense creep — small additions that compound over time"},{"left":"Top 3 products earn 90% of revenue","right":"Revenue concentration — high risk if any product declines"},{"left":"Profit margin dropped from 25% to 18% over 6 months","right":"Margin compression — profitability declining despite growth"}]}'></div>
 </div>
 
 <div class="lesson-section">

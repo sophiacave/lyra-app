@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 2
 type: "lab"
 free: true
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 2 · Lab</div>
-<h1>Context Window Explorer</h1>
-<p>Understand tokens, context windows, and how to manage Claude's working memory — with real code</p>
-<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 1</span></div>
+<div class="lesson-hero">
+  <h1>Context Window Explorer</h1>
+  <p class="sub">Understand tokens, context windows, and how to manage Claude's working memory — with real code</p>
 </div>
 
 <div class="content">
@@ -91,42 +90,8 @@ cost = (tokens / <span style="color:#fb923c">1_000_000</span>) * <span style="co
 </div>
 
 <div class="card">
-<h2>Live Token Counter</h2>
-<p>Type or paste text below to see tokens fill up in real-time. Try different content types to see how they tokenize differently.</p>
-
-<div class="preset-btns">
-<button class="preset-btn" onclick="loadPreset('prose')">📝 Prose</button>
-<button class="preset-btn" onclick="loadPreset('code')">💻 Code</button>
-<button class="preset-btn" onclick="loadPreset('data')">📊 JSON Data</button>
-<button class="preset-btn" onclick="loadPreset('poetry')">🎭 Poetry</button>
-<button class="preset-btn" onclick="loadPreset('legal')">⚖️ Legal Text</button>
-</div>
-
-<textarea id="tokenInput" placeholder="Start typing or paste text here to see the token counter in action..." oninput="updateTokens()"></textarea>
-
-<div class="context-bar-container">
-<div class="context-bar-bg">
-</div>
-<div class="context-labels">
-<span>0 tokens</span>
-<span>200,000 tokens</span>
-</div>
-</div>
-
-<div class="context-stats">
-<div class="stat-box">
-<div class="stat-num" id="tokenCount">0</div>
-<div class="stat-label">Est. Tokens</div>
-</div>
-<div class="stat-box">
-<div class="stat-num" id="charCount">0</div>
-<div class="stat-label">Characters</div>
-</div>
-<div class="stat-box">
-<div class="stat-num" id="ratioDisplay">0</div>
-<div class="stat-label">Chars per Token</div>
-</div>
-</div>
+<h2>Estimating Token Counts</h2>
+<p>To estimate how many tokens a piece of text will use, divide its character count by the density ratio for its content type. For English prose at ~4 characters per token, a 10,000-character document is roughly 2,500 tokens. For JSON at ~3 characters per token, the same length would be roughly 3,333 tokens. Use the <code>estimate_tokens</code> function from the code example above, or the Anthropic SDK's built-in <code>client.count_tokens()</code> for exact counts.</p>
 </div>
 
 <div class="card">

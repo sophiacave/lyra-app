@@ -57,7 +57,6 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Cost Optimization Strategies","instruction":"Match each cost optimization technique with how it saves money.","pairs":[{"left":"Semantic Caching","right":"Finds similar past queries via vector search to reuse cached answers"},{"left":"Response Caching","right":"Stores deterministic results like embeddings keyed on input hash forever"},{"left":"Prompt Caching","right":"Pay full price once for repeated system prompts then a fraction after"},{"left":"Model Tiering","right":"Route simple tasks to cheap models and reserve flagship for complex reasoning"},{"left":"RAG Before Generation","right":"Check the knowledge base first since vector search costs fractions of a cent"},{"left":"System Prompt Trimming","right":"Reduce token count of prompts sent with every request to cut per-call cost"}]}'></div>
 </div>
 
 <div class="lesson-section">

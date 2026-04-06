@@ -4,42 +4,28 @@ course: "ai-stack-builder"
 order: 8
 type: "lesson"
 free: false
----<div class="container">
-<div class="nav">
+---
+<div class="wrap">
 
-<span class="current">Lesson 8 of 10</span>
+<nav class="local-nav">
+  <a href="/academy/ai-stack-builder/">AI Stack Builder</a>
+  <span class="lesson-badge">Lesson 8 of 10</span>
+</nav>
 
+<div class="lesson-hero">
+  <h1>Vercel Deploy</h1>
+  <p class="sub">Vercel turns <code style="color:#f59e0b">git push</code> into a live URL. No servers, no Docker, no YAML. Push code, get a website. Let's simulate the full pipeline.</p>
 </div>
-
-<div class="lesson-badge">MODULE 3 &middot; 260 XP</div>
-<h1>Vercel Deploy</h1>
-<p class="intro">Vercel turns <code style="color:#f59e0b">git push</code> into a live URL. No servers, no Docker, no YAML. Push code, get a website. Let's simulate the full pipeline.</p>
 
 <h2>The Deploy Pipeline</h2>
 <p>Click "Deploy" to watch code go from your machine to a live global CDN (Content Delivery Network — servers around the world that serve your site from the closest location to each visitor).</p>
 <p style="font-size:.8rem;color:#666;font-style:italic">This is a simulation — the pipeline below shows what happens when you deploy to Vercel, but runs entirely in your browser. In production, this process is triggered automatically when you <code>git push</code> to your repo.</p>
 
-<div class="pipeline">
-<div class="pipeline-steps">
-<div class="pipe-step" id="ps0"><span class="pipe-icon">&#x1f4bb;</span><span class="pipe-name">git push</span></div>
-<span class="pipe-arrow" id="pa0">&#x2192;</span>
-<div class="pipe-step" id="ps1"><span class="pipe-icon">&#x1f50d;</span><span class="pipe-name">Detect</span></div>
-<span class="pipe-arrow" id="pa1">&#x2192;</span>
-<div class="pipe-step" id="ps2"><span class="pipe-icon">&#x1f3d7;</span><span class="pipe-name">Build</span></div>
-<span class="pipe-arrow" id="pa2">&#x2192;</span>
-<div class="pipe-step" id="ps3"><span class="pipe-icon">&#x1f310;</span><span class="pipe-name">Deploy</span></div>
-<span class="pipe-arrow" id="pa3">&#x2192;</span>
-<div class="pipe-step" id="ps4"><span class="pipe-icon">&#x2705;</span><span class="pipe-name">Live!</span></div>
+<div class="panel">
+<div class="label">The Deploy Pipeline</div>
+<p style="font-size:.9rem"><strong>git push</strong> &rarr; <strong>Detect</strong> (Vercel identifies your framework) &rarr; <strong>Build</strong> (compiles your app) &rarr; <strong>Deploy</strong> (distributes to global CDN) &rarr; <strong>Live!</strong> (your site is accessible at a unique URL)</p>
+<p style="font-size:.85rem;color:#888">The entire process typically takes 30-90 seconds. Vercel watches your GitHub repo and triggers this pipeline automatically on every push to main.</p>
 </div>
-<div class="pipe-status">
-<div class="status-text" id="statusText">Ready to deploy</div>
-<div class="status-url" id="statusUrl">https://your-app-abc123.vercel.app</div>
-</div>
-</div>
-
-<button class="deploy-btn" id="deployBtn" onclick="runDeploy()">&#x1f680; Deploy to Vercel</button>
-
-<p style="font-size:.75rem;color:#555;text-align:center;margin-top:-.5rem;display:none" id="buildLogNote">Simulated build output — real logs appear in your Vercel dashboard after deployment.</p>
 
 <h2>Environment Variables</h2>
 <p>Secrets go in Vercel's environment variables — never in your code. Configure them here.</p>
@@ -49,31 +35,17 @@ free: false
 <p style="font-size:.85rem;color:#ef4444;margin-bottom:0">Variables <strong>without</strong> that prefix are <strong>secret</strong> — they only exist on the server. API keys, service role keys, and Stripe secret keys must NEVER start with <code style="color:#ef4444">NEXT_PUBLIC_</code>. If you accidentally expose a secret key, revoke it immediately in that service's dashboard.</p>
 </div>
 
-<div class="config-editor">
-<div class="panel label" style="padding:0;background:none;border:none;margin-bottom:.75rem">Environment Variables</div>
-<div id="envRows">
-<div class="env-row">
-<input class="env-key" value="NEXT_PUBLIC_SUPABASE_URL" readonly>
-<input class="env-val" value="https://vpaynwebgmmnwttqkwmh.supabase.co">
-<span class="env-type">Public</span>
+<div class="panel">
+<div class="label">Typical Environment Variables</div>
+<div class="code-block">
+<span class="cm"># Public (safe for browser — RLS protects data)</span><br>
+<span class="kw">NEXT_PUBLIC_SUPABASE_URL</span>=https://&lt;your-ref&gt;.supabase.co<br>
+<span class="kw">NEXT_PUBLIC_SUPABASE_ANON_KEY</span>=eyJhbGciOi...<br><br>
+<span class="cm"># Secret (server-side only — NEVER prefix with NEXT_PUBLIC_)</span><br>
+<span class="kw">SUPABASE_SERVICE_ROLE_KEY</span>=eyJhbGciOi...<br>
+<span class="kw">STRIPE_SECRET_KEY</span>=sk_live_...
 </div>
-<div class="env-row">
-<input class="env-key" value="NEXT_PUBLIC_SUPABASE_ANON_KEY" readonly>
-<input class="env-val" value="eyJhbGciOi..." type="password">
-<span class="env-type">Public</span>
-</div>
-<div class="env-row">
-<input class="env-key" value="SUPABASE_SERVICE_ROLE_KEY" readonly>
-<input class="env-val" value="eyJhbGciOi..." type="password">
-<span class="env-type">Secret</span>
-</div>
-<div class="env-row">
-<input class="env-key" value="STRIPE_SECRET_KEY" readonly>
-<input class="env-val" value="sk_live_..." type="password">
-<span class="env-type">Secret</span>
-</div>
-</div>
-<button class="add-env" onclick="addEnv()">+ Add Variable</button>
+<p style="font-size:.85rem;color:#888">Set these in the Vercel dashboard under Settings &rarr; Environment Variables. You can configure different values for Production, Preview, and Development environments.</p>
 </div>
 
 <h2>Key Concepts</h2>
@@ -113,13 +85,6 @@ free: false
 </div>
 </div>
 
-<div class="progress-section">
-<div style="display:flex;justify-content:space-between;font-size:.85rem;color:#999">
-<span>Lesson Progress</span><span id="lessonPct">0%</span>
-</div>
-<div class="progress-bar"></div>
-</div>
-<div class="footer">Like One Academy &copy; 2026</div>
 
 <div data-learn="QuizMC" data-props='{"title":"Vercel Deploy Quiz","questions":[{"q":"What happens automatically when you push to the main branch on GitHub?","options":["Nothing — you must run vercel --prod manually","Vercel detects the push and triggers a production deployment","A preview deployment is created but not promoted to production","Vercel sends you an email to confirm the deploy"],"correct":1,"explanation":"When you connect your GitHub repo to Vercel, it watches for pushes to the main branch and automatically triggers a production deployment. No manual step needed — git push is the entire deploy workflow."},{"q":"What is the purpose of a preview deployment?","options":["To deploy to a staging server","Each pull request gets its own unique URL so you can test changes before merging","To reduce production costs","To test environment variables"],"correct":1,"explanation":"Vercel creates a unique preview URL for every pull request. You can share the URL with teammates, test the changes in a real browser, and confirm everything works before merging to main and deploying to production."},{"q":"Which environment variable prefix exposes values to the browser in Next.js?","options":["PUBLIC_","BROWSER_","NEXT_PUBLIC_","CLIENT_"],"correct":2,"explanation":"In Next.js, only variables prefixed with NEXT_PUBLIC_ are included in the browser bundle. All other environment variables remain server-side only. This distinction is critical — secret keys (Stripe, service role) must never use this prefix."}]}'></div>
 

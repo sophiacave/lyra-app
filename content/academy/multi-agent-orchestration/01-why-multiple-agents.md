@@ -82,7 +82,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">When to use one agent vs. many.</h2>
-  <div data-learn="CompareView" data-props='{"title":"Single Agent vs. Agent Team","instruction":"Reveal each approach to see the real difference in complex workflows.","revealMode":"sequential","items":[{"label":"Single Agent","content":"One agent handles research, analysis, writing, and formatting. Context window fills up. Attention drifts between roles. Output reads like a first draft — shallow research, generic analysis, no depth in any area.","highlight":"Like asking one person to be the surgeon, anesthesiologist, and nurse simultaneously."},{"label":"Multi-Agent Team","content":"Research Agent gathers deep data. Analysis Agent finds patterns. Writing Agent crafts polished output. Orchestrator coordinates handoffs. Each agent maintains focused context and excels at its specialized role.","highlight":"Like a surgical team — each specialist performs at their peak because they only do one thing."}]}'></div>
 </div>
 
 <div class="lesson-section">

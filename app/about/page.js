@@ -80,12 +80,12 @@ export default function AboutPage() {
         <div className="site-container-narrow">
           <span className="site-section-tag">THE MISSION</span>
           <h2 className="site-section-title-md">Technology that belongs to everyone.</h2>
-          <p className="site-story-text">Every dollar Like One earns goes toward keeping education free, funding research that saves lives, and proving that AI should be accessible — not exclusive.</p>
+          <p className="site-story-text">Like One donates 1% of all revenue to HIV research — and we plan to grow that percentage as the company grows. The rest keeps education free and proves that AI should be accessible, not exclusive.</p>
 
           <div className="about-mission-grid">
             {[
               { emoji: '\uD83D\uDCDA', title: 'Always a Free Path', desc: "Free courses, free lessons. If you can't access it, it doesn't count." },
-              { emoji: '\uD83E\uDDEC', title: 'Research That Matters', desc: 'Revenue funds research that saves lives. Non-negotiable.' },
+              { emoji: '\uD83E\uDDEC', title: '1% for HIV Research', desc: '1% of all revenue goes to HIV research. Growing as we grow.' },
               { emoji: '\uD83C\uDF0D', title: 'AI for All', desc: "Built to include people who were told tech isn't for them." },
             ].map(c => (
               <div key={c.title} className="site-card site-card-centered bg-base">

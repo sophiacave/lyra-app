@@ -115,7 +115,6 @@ free: true
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each dreaded email type to the right AI approach.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

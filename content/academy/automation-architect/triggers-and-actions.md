@@ -4,12 +4,18 @@ course: "automation-architect"
 order: 1
 type: "lesson"
 free: true
----<div class="container">
-  <div class="header">
-    <div class="tag">Automation Architect — Lesson 1</div>
-    <h1>Triggers & Actions</h1>
-    <p>Every automation has two parts: something that starts it (the trigger) and something that happens because of it (the action). Master this pattern and you can automate anything.</p>
-  </div>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 1 of 9</span>
+</nav>
+
+<div class="lesson-hero">
+  <h1>Triggers & Actions</h1>
+  <p class="sub">Every automation has two parts: something that starts it (the trigger) and something that happens because of it (the action). Master this pattern and you can automate anything.</p>
+</div>
 
   <div class="section" style="padding:0 1.5rem">
     <h2>The Trigger-Action Pattern</h2>
@@ -162,51 +168,6 @@ ACTIONS = {
         <span style="font-size:.8rem;color:#a1a1aa"> — The external service updates their API and the payload structure changes. Your action breaks because it expects fields that no longer exist. Always validate payload structure before acting on it.</span>
       </div>
     </div>
-  </div>
-
-  <div class="section" style="padding:0 1.5rem">
-    <h2>Practice: Build Automation Flows</h2>
-    <p>Drag triggers and actions onto the canvas below to build three automation flows:</p>
-  </div>
-
-  <div class="hud">
-    <div class="hud-item"><div class="hud-label">Challenge</div><div class="hud-val" id="challengeNum">1/3</div></div>
-    <div class="hud-item"><div class="hud-label">Score</div><div class="hud-val" id="scoreVal">0</div></div>
-  </div>
-
-  <div class="challenge-dots">
-    </div>
-
-  <div class="challenge-bar">
-    <div class="challenge-label">Build this automation</div>
-    </div>
-
-  <div class="builder">
-    <div class="palette" id="triggerPalette">
-      <div class="palette-title">Triggers</div>
-      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="webhook"><span class="icon">&#x1F517;</span>Webhook</div>
-      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="schedule"><span class="icon">&#x23F0;</span>Schedule</div>
-      <div class="palette-node trigger" draggable="true" data-type="trigger" data-id="event"><span class="icon">&#x26A1;</span>Event</div>
-    </div>
-
-    <div class="canvas-area" id="canvasArea">
-      <div class="canvas-label" id="canvasLabel">Drop a trigger here,<br>then add an action</div>
-      <canvas id="flowCanvas"></canvas>
-    </div>
-
-    <div class="palette" id="actionPalette">
-      <div class="palette-title">Actions</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="email"><span class="icon">&#x1F4E7;</span>Send Email</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="database"><span class="icon">&#x1F4BE;</span>Save to DB</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="api"><span class="icon">&#x1F310;</span>Call API</div>
-      <div class="palette-node action" draggable="true" data-type="action" data-id="notify"><span class="icon">&#x1F514;</span>Notification</div>
-    </div>
-  </div>
-
-  <button class="run-btn" id="runBtn" onclick="runFlow()">Run Automation</button>
-  <div class="complete-card" id="completeCard">
-    <h3>Lesson Complete!</h3>
-    <p>You've built 3 real automation flows. You now understand how triggers initiate workflows and actions execute them.</p>
   </div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Triggers vs Actions","cards":[{"front":"What is a Trigger?","back":"An event that starts an automation — the \"when\" that fires before any actions execute. Three types: webhook (real-time), schedule (time-based), event (internal system)."},{"front":"What is an Action?","back":"The task performed after a trigger fires. Can be anything: send email, save to database, call API, send notification, create record, update dashboard."},{"front":"Webhook Trigger","back":"Receives real-time HTTP POST data from an external system. Zero delay. Used for: payments, form submissions, GitHub events, Slack messages."},{"front":"Schedule Trigger","back":"Fires on a time-based schedule using cron expressions. Used for: daily reports, data sync, cleanup tasks, digest emails."},{"front":"Event Trigger","back":"Fires when something happens inside your own system — user signup, status change, threshold crossed. Internal, not from external services."},{"front":"Payload","back":"The structured data that flows from trigger to action. Contains the event details — who, what, when. The action reads the payload to know what to do."},{"front":"Idempotent Action","back":"An action that produces the same result even if run multiple times. Critical because webhooks can fire twice. Example: check if record exists before creating."},{"front":"Dead Letter Queue","back":"Where failed messages go when an action cannot process them. Preserves data for manual inspection and retry instead of losing it forever."}]}'></div>

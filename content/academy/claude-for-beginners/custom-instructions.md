@@ -4,7 +4,6 @@ course: "claude-for-beginners"
 order: 7
 type: "lesson"
 free: false
-css: "claude-beginners.css"
 ---<div class="wrap">
 
 <nav class="local-nav">
@@ -102,10 +101,7 @@ Notion, Excel, etc.].
   <span class="section-label">Step-by-Step</span>
   <h2 class="section-title">How to set up custom instructions right now.</h2>
   <p class="section-text">This takes less than 5 minutes. Follow these steps in order:</p>
-
-<div data-learn="SortStack" data-props='{"title":"Setting Up Custom Instructions","instruction":"Put these steps in the correct order","items":["Open claude.ai and click your profile icon in the bottom-left","Click Settings, then Custom Instructions","Write your role, communication style, and formatting preferences","Add any always-on rules (e.g., always use bullet points, never use jargon)","Click Save — your instructions now apply to every new conversation","Test it: start a new conversation and check if Claude follows your preferences"]}'></div>
-
-  <div class="tip-box">
+<div class="tip-box">
     <div class="tip-label">Power Combo</div>
     <p><strong>Custom instructions + Projects + Memory = Claude that truly knows you.</strong> Start with custom instructions (global). Create a Project for each area of work (specific context). Use Memory for key facts you want Claude to always remember. This is how power users get 10x value from Claude.</p>
   </div>

@@ -4,14 +4,18 @@ course: "rag-vector-search"
 order: 1
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/rag-vector-search/">RAG &amp; Vector Search</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 1</div>
+<div class="lesson-hero">
   <h1>What Are Embeddings?</h1>
-  <p class="subtitle">Every word, sentence, and document can become a list of numbers — a vector — that captures its meaning. Embeddings are the foundation of modern AI search. Without them, there is no RAG. This lesson teaches you what they are, how they work, and how to create them in code.</p>
+  <p class="sub">Every word, sentence, and document can become a list of numbers — a vector — that captures its meaning. Embeddings are the foundation of modern AI search. Without them, there is no RAG. This lesson teaches you what they are, how they work, and how to create them in code.</p>
+</div>
 
   <div class="section">
     <h2>The Core Idea</h2>
@@ -162,7 +166,4 @@ vectors = [item.embedding <span style="color:#c084fc">for</span> item <span styl
   <div data-learn="QuizMC" data-props='{"title":"Embedding Fundamentals","questions":[{"q":"What does an embedding model output for a piece of text?","options":["A summary paragraph","A fixed-length list of numbers (vector)","A set of keywords","A JSON object with labels"],"correct":1,"explanation":"Embedding models output a dense vector — a fixed-length list of floating-point numbers — where the position in that high-dimensional space captures the text\u0027s meaning."},{"q":"Why are the words \"happy\" and \"joyful\" close together in embedding space?","options":["They share the same letters","They have the same number of characters","They have similar meanings, so the model places them nearby","They were always grouped together alphabetically"],"correct":2,"explanation":"Embedding models are trained on vast text corpora and learn that words used in similar contexts carry similar meanings. Semantically related words end up geometrically close in vector space."},{"q":"Why is cosine similarity preferred over Euclidean distance for comparing embeddings?","options":["Cosine similarity is faster to compute","Cosine similarity measures direction (meaning), not magnitude (length)","Euclidean distance only works in 2D","Cosine similarity always returns values between 0 and 1"],"correct":1,"explanation":"Cosine similarity measures the angle between vectors, making it magnitude-independent. Two vectors pointing in the same direction are similar regardless of their length — which is what we want when comparing semantic meaning."},{"q":"You embed documents with OpenAI text-embedding-3-small and queries with BGE-small. Will similarity search work?","options":["Yes, embeddings are universal","No — the models produce vectors in different spaces, making similarity scores meaningless","Yes, as long as the dimensions match","It depends on the vector database"],"correct":1,"explanation":"Different embedding models learn different vector spaces. A vector from OpenAI and a vector from BGE represent meaning in incompatible coordinate systems. You MUST use the same model for both documents and queries."}]}'></div>
 
   <div data-learn="FlashDeck" data-props='{"title":"Embedding Vocabulary","cards":[{"front":"Embedding","back":"A fixed-length vector of floating-point numbers representing the semantic meaning of a text. Similar meanings → close vectors. Different meanings → distant vectors."},{"front":"Vector","back":"A list of numbers representing a point in multi-dimensional space. In RAG, each text chunk becomes a vector via an embedding model."},{"front":"Cosine Similarity","back":"Measures similarity between two vectors by the angle between them. Range: -1 (opposite) to 1 (identical). Magnitude-independent — focuses on direction, not length."},{"front":"Embedding Dimensions","back":"The number of values in each vector. More dimensions = more nuance but more storage/compute. Common: 384 (BGE-small), 1536 (OpenAI small), 3072 (OpenAI large)."},{"front":"Contrastive Learning","back":"The training technique for embedding models. Similar texts are pulled together, dissimilar texts pushed apart — creating a geometric map of meaning."},{"front":"Semantic Space","back":"The high-dimensional coordinate system where all embeddings live. The geometry encodes meaning: nearby = related, distant = unrelated."}]}'></div>
-
-  <div data-learn="SortStack" data-props='{"title":"From Text to Embedding — Order the Steps","instruction":"Arrange these steps in the correct order for creating and using embeddings","items":["Collect raw text (documents, web pages, user queries)","Send text to an embedding model (API call or local inference)","Receive a fixed-length vector of floating-point numbers","Store the vector in a vector database with metadata","Compare vectors using cosine similarity to find semantic matches"]}'></div>
-
 </div>

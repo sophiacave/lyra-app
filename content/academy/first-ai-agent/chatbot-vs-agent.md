@@ -4,15 +4,18 @@ course: "first-ai-agent"
 order: 1
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy/first-ai-agent/" class="logo">Build Your First AI Agent</a>
-  <a href="/academy/first-ai-agent/" class="nav-link">&larr; Course</a>
+---
+<div class="wrap">
+
+<nav class="local-nav">
+  <a href="/academy/first-ai-agent/">First AI Agent</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 1</div>
+<div class="lesson-hero">
   <h1>Chatbot vs Agent</h1>
-  <p class="subtitle">They both use AI. But one is a tool and the other is a worker. Understanding this distinction is the foundation of everything you will build in this course.</p>
+  <p class="sub">They both use AI. But one is a tool and the other is a worker. Understanding this distinction is the foundation of everything you will build in this course.</p>
+</div>
 
   <div class="section">
     <h2>The Core Difference</h2>
@@ -181,10 +184,6 @@ tools = [<span style="color:#71717a"># your tool definitions here</span>]
     </div>
   </div>
 </div>
-
-<footer class="progress-footer">
-  <p>Lesson 1 of 10 &middot; Build Your First AI Agent</p>
-</footer>
 
 <div data-learn="QuizMC" data-props='{"title":"Chatbot or Agent?","questions":[{"q":"I ask ChatGPT to write an email. It writes it and shows it to me. I copy-paste it into Gmail myself. What is this?","options":["Agent — it processed my request","Chatbot — it only generated text, I took the action","Agent — it used memory","Chatbot — it required voice input"],"correct":1,"explanation":"The AI just generated text — it did not send it, track it, or follow up. You had to do the action. That is a chatbot pattern."},{"q":"An AI system monitors a website every hour. If it detects downtime, it restarts the server, checks if it worked, and pages the engineer if not. What is this?","options":["Chatbot — it answers questions about the website","Agent — it perceives, decides, acts, and loops","Chatbot — it runs on a schedule","Agent — only because it sends notifications"],"correct":1,"explanation":"It perceives (monitors), thinks (is it down?), acts (restart), observes (did it work?), and escalates. Full agent loop with error handling."},{"q":"Which of the three requirements for agency does a Gmail filter lack?","options":["Tools — it cannot take actions","Memory — it cannot remember past emails","A reasoning loop — it follows fixed rules without AI decision-making","All three"],"correct":2,"explanation":"A Gmail filter has tools (apply label, forward) and basic memory (filter rules persist). But it has no reasoning loop — it follows fixed if/then rules without thinking. Add AI reasoning and it becomes an agent."},{"q":"What is the most important difference between a chatbot and an agent?","options":["Agents are more expensive to run","Agents use better models","Agents take real-world actions through tools in an autonomous loop","Agents have prettier interfaces"],"correct":2,"explanation":"The core distinction is action + autonomy. A chatbot generates text. An agent uses tools to change the world and loops until the goal is met. The model can be the same — the architecture is what differs."}]}'></div>
 

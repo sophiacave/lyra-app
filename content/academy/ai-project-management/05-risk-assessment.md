@@ -69,7 +69,6 @@ free: false
 </div>
 
 <div class="lesson-section">
-  <div data-learn="MatchConnect" data-props='{"title":"Risk Assessment — Key Concepts","instruction":"Match each risk management term with its definition.","pairs":[{"left":"Risk Register","right":"A structured document listing risks with probability, impact, owner, mitigation, and triggers"},{"left":"Trigger Indicator","right":"An early warning sign that a specific risk is becoming reality"},{"left":"Mitigation Strategy","right":"A planned action to reduce the probability or impact of a risk before it occurs"},{"left":"Pre-Mortem","right":"Imagining the project failed spectacularly and working backward to identify what went wrong"},{"left":"Living Risk Register","right":"Weekly updates comparing status data against risks to retire, adjust, or add entries"},{"left":"Probability-Impact Score","right":"Combined rating used to rank risks and prioritize where to focus mitigation effort"}]}'></div>
 </div>
 
 <div class="lesson-section">

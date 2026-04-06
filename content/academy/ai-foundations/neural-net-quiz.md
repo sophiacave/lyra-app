@@ -41,9 +41,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Part 2</span>
   <h2 class="section-title">Match the vocabulary.</h2>
-
-<div data-learn="SortStack" data-props='{"title":"Order the Training Process","instruction":"Arrange these steps in the order they happen during neural network training","items":["Forward pass — data flows through the network, producing an output","Loss calculation — measure how wrong the output is compared to the correct answer","Backpropagation — calculate how much each weight contributed to the error","Weight update — nudge every weight in the direction that reduces the error","Repeat — run thousands of examples until the error is small enough"]}'></div>
-
 <div data-learn="QuizMC" data-props='{"title":"Match the Concept","questions":[{"q":"Which component lets a neuron fire even when all inputs are zero?","options":["Weight","Activation function","Bias","Learning rate"],"correct":2,"explanation":"Bias is a constant added before the activation function. Without it, zero inputs always produce zero output. Bias shifts the activation threshold."},{"q":"What is the difference between ReLU and sigmoid?","options":["ReLU is faster but sigmoid is more accurate","ReLU outputs 0 or the input value; sigmoid squashes to 0-1","ReLU is older; sigmoid is the modern standard","There is no difference — they are the same function"],"correct":1,"explanation":"ReLU = max(0, z) — simple, fast, used in hidden layers. Sigmoid = 1/(1+e^-z) — squashes to 0-1, used for probability outputs. ReLU is the modern standard for hidden layers; sigmoid killed by vanishing gradients."}]}'></div>
 
 </div>

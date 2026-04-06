@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 10
 type: "builder"
 free: false
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 10 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 10 · Builder · Final</div>
-<h1>Building Agents</h1>
-<p>The grand finale — design, configure, and build a real AI agent with working code</p>
-<div class="lesson-meta-bar">⏱ <span>90 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 3</span></div>
+<div class="lesson-hero">
+  <h1>Building Agents</h1>
+  <p class="sub">The grand finale — design, configure, and build a real AI agent with working code</p>
 </div>
 
 <div class="content">
@@ -200,47 +199,31 @@ result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and s
 </div>
 
 <div class="card">
-<h2>Design Your Agent</h2>
-<p>Configure each component of your agent by clicking through the steps below:</p>
+<h2>Designing Your Agent — The Five Steps</h2>
+<p>When building an agent, work through these five steps in order:</p>
 
-<div class="agent-steps">
-<div class="agent-step" onclick="openStep(0)" id="astep0">
-<div class="step-num" style="background:rgba(139,92,246,.15);color:#8b5cf6">1</div>
-<div class="step-content">
-<h3>Define the Goal</h3>
-<p>What should your agent accomplish?</p>
+<div style="display:grid;gap:.75rem;margin-top:.75rem">
+<div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+<strong style="color:#8b5cf6;font-size:.88rem">Step 1: Define the Goal</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Write a clear, specific objective in the system prompt. "Research the top 5 competitors and produce a comparison table" is a goal. "Be helpful" is not.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+<strong style="color:#fb923c;font-size:.88rem">Step 2: Give Tools</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Start with 3-5 tools that cover the agent's core needs — web search, file read/write, database queries. Add more only as needed.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+<strong style="color:#38bdf8;font-size:.88rem">Step 3: Set Memory</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Choose a memory strategy: conversation memory (ephemeral), persistent database storage, or RAG with vector search for document retrieval.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+<strong style="color:#34d399;font-size:.88rem">Step 4: Add Guardrails</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Set max steps to prevent infinite loops, add budget caps, and require human approval for destructive actions like sending emails or deleting data.</p>
+</div>
+<div style="padding:1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+<strong style="color:#f472b6;font-size:.88rem">Step 5: Deploy</strong>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Launch the agent, monitor its behavior, and iterate. Start with simple tasks and gradually increase complexity as you build confidence in its reliability.</p>
 </div>
 </div>
-<div class="agent-step" onclick="openStep(1)" id="astep1">
-<div class="step-num" style="background:rgba(251,146,60,.15);color:#fb923c">2</div>
-<div class="step-content">
-<h3>Give Tools</h3>
-<p>What capabilities does it need?</p>
-</div>
-</div>
-<div class="agent-step" onclick="openStep(2)" id="astep2">
-<div class="step-num" style="background:rgba(56,189,248,.15);color:#38bdf8">3</div>
-<div class="step-content">
-<h3>Set Memory</h3>
-<p>How should it remember context?</p>
-</div>
-</div>
-<div class="agent-step" onclick="openStep(3)" id="astep3">
-<div class="step-num" style="background:rgba(52,211,153,.15);color:#34d399">4</div>
-<div class="step-content">
-<h3>Add Guardrails</h3>
-<p>What limits should it have?</p>
-</div>
-</div>
-<div class="agent-step" onclick="openStep(4)" id="astep4">
-<div class="step-num" style="background:rgba(244,114,182,.15);color:#f472b6">5</div>
-<div class="step-content">
-<h3>Deploy</h3>
-<p>Launch and watch it work</p>
-</div>
-</div>
-</div>
-
 </div>
 
 <div class="card">
@@ -267,21 +250,8 @@ result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and s
 </div>
 </div>
 
-<div class="card" id="launchCard" style="display:none">
-<div class="launch-section show">
-<h2 style="margin-bottom:1rem">Your Agent Is Ready</h2>
-<p style="color:#a1a1aa;margin-bottom:2rem">All systems configured. Hit launch to watch your agent in action.</p>
-<button class="launch-btn" id="launchBtn" onclick="launchAgent()">Launch Agent</button>
-</div>
-
-<div class="agent-summary" id="agentSummary">
-<div class="summary-title">Mission Complete</div>
-</div>
-</div>
-
-<div class="card" id="courseComplete" style="display:none">
+<div class="card">
 <div style="text-align:center;padding:2rem 0">
-<div style="font-size:4rem;margin-bottom:1rem">🎓</div>
 <h2 style="font-size:1.8rem;margin-bottom:.5rem;background:linear-gradient(135deg,#8b5cf6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Course Complete!</h2>
 <p style="color:#a1a1aa;font-size:1rem;margin-bottom:2rem">You have mastered Claude — from fundamentals to building production agents.</p>
 <div style="display:flex;justify-content:center;gap:2rem;margin-bottom:2rem">
@@ -295,9 +265,6 @@ result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and s
 
 
 <div data-learn="FlashDeck" data-props='{"title":"AI Agent Architecture","cards":[{"front":"What is an AI agent?","back":"Claude given a goal, tools, memory, and guardrails — then set free to accomplish complex tasks autonomously. The core pattern is a tool loop that keeps calling Claude until the task is complete."},{"front":"The four agent components","back":"1. Goal (system prompt), 2. Tools (actions it can take), 3. Memory (conversation, persistent, or RAG), 4. Guardrails (max steps, human approval, budget caps)."},{"front":"The tool loop pattern","back":"A while loop: call Claude with tools \u2192 if stop_reason is tool_use, execute tools and send results back \u2192 repeat until stop_reason is end_turn. This is the foundation of ALL agents."},{"front":"Claude Agent SDK","back":"Anthropic\u0027s production framework for building agents. Handles the tool loop, error handling, and multi-agent orchestration. The @tool decorator auto-generates JSON schemas from type hints."},{"front":"When to require human approval","back":"Before destructive actions: deleting data, sending emails, spending money, modifying permissions, or any irreversible operation. Gate these with explicit human confirmation."}]}'></div>
-
-<div data-learn="SortStack" data-props='{"title":"Order the Agent Configuration Steps","instruction":"Arrange these agent design steps in the correct order","items":["Define the goal — what should the agent accomplish?","Select tools — what capabilities does it need?","Configure memory — how should it retain context?","Set guardrails — what limits and safety checks apply?","Deploy and test — launch and verify behavior"]}'></div>
-
 <div data-learn="QuizMC" data-props='{"title":"Building Agents Quiz","questions":[{"q":"What is the core pattern behind every AI agent?","options":["A single large prompt","A tool loop that keeps calling Claude until the task is complete","A database of pre-written responses","A fine-tuned model"],"correct":1,"explanation":"Every agent is fundamentally a tool loop: call Claude, process tool calls, send results back, repeat until done. Everything else (memory, guardrails, planning) is built on top of this core loop."},{"q":"An agent has access to 25 tools. What is likely to happen?","options":["It will be extremely capable","It will make poor tool choices — too many options cause confusion","It will run faster","It will automatically organize the tools into categories"],"correct":1,"explanation":"More tools means more confusion for the model. With 25+ tools, Claude has to evaluate each one for every decision, leading to poor tool selection. Start with 3-5 tools and add more only when clearly needed."},{"q":"You are deploying a support agent that can send emails and close tickets. Which guardrail is most critical?","options":["Budget limit","Human approval before sending emails or closing tickets","Full logging","Scope lock to support topics only"],"correct":1,"explanation":"Sending emails and closing tickets are real-world, potentially irreversible actions. A human approval gate ensures the agent cannot take these actions without explicit confirmation. This is the most critical guardrail for agents with real-world effects."},{"q":"What does the Claude Agent SDK provide over a raw tool loop?","options":["A different AI model","Built-in tool loop, error handling, turn limits, and multi-agent orchestration","Faster API responses","Free API credits"],"correct":1,"explanation":"The Agent SDK handles the tool loop, error handling, and turn limits automatically. The @tool decorator generates JSON schemas from type hints. For production agents, this saves significant boilerplate code."}]}'></div>
 
 </div>

@@ -134,7 +134,6 @@ MY product ([describe yours]) to differentiate clearly?</pre>
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each competitive analysis prompt goal to its output.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

@@ -4,15 +4,18 @@ course: "automation-architect"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/automation-architect/">Automation Architect</a>
+  <span class="lesson-badge">Lesson 2 of 9</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 2</div>
+<div class="lesson-hero">
   <h1>Your First Automation</h1>
-  <p class="subtitle">Build a real automation from scratch — trigger, action, error handling, and testing. No toy examples. Production patterns from line one.</p>
+  <p class="sub">Build a real automation from scratch — trigger, action, error handling, and testing. No toy examples. Production patterns from line one.</p>
+</div>
 
   <div class="section">
     <h2>What You Are Building</h2>
@@ -329,93 +332,9 @@ db = <span style="color:#34d399">create_client</span>(os.environ[<span style="co
   </div>
 
   <div class="section">
-    <h2>Interactive: Build Your Automation</h2>
-    <p>Pick a trigger, choose an action, wire them together, and deploy. Click the components below:</p>
+    <h2>Putting It All Together</h2>
+    <p>Every automation you build follows the same three decisions: (1) pick a trigger — what event starts the workflow, (2) pick an action — what the automation does with the data, and (3) connect them with validation, error handling, and idempotency in between. The code above gives you the complete production pattern for the most common case: webhook trigger with database save and email notification.</p>
   </div>
-
-  <div class="step-indicator">
-    <div class="step-dot active" id="step1"><span class="step-label">Pick Trigger</span><div class="dot">1</div></div>
-    <div class="step-dot" id="step2"><span class="step-label">Pick Action</span><div class="dot">2</div></div>
-    <div class="step-dot" id="step3"><span class="step-label">Deploy</span><div class="dot">3</div></div>
-  </div>
-
-  <!-- Step 1: Pick trigger -->
-  <div class="builder-section" id="triggerSection">
-    <h3>Choose Your Trigger</h3>
-    <div class="option-grid">
-      <div class="option-card" onclick="pickTrigger('email','&#128232;','New Email','Fires when a new email arrives')">
-        <div class="opt-icon">&#128232;</div>
-        <div class="opt-name">New Email</div>
-        <div class="opt-desc">Fires when a new email arrives in your inbox</div>
-      </div>
-      <div class="option-card" onclick="pickTrigger('form','&#128203;','Form Submission','Fires when someone submits a form')">
-        <div class="opt-icon">&#128203;</div>
-        <div class="opt-name">Form Submission</div>
-        <div class="opt-desc">Fires when someone submits a form on your site</div>
-      </div>
-      <div class="option-card" onclick="pickTrigger('schedule','&#9200;','Schedule','Runs on a set schedule (e.g. daily)')">
-        <div class="opt-icon">&#9200;</div>
-        <div class="opt-name">Schedule</div>
-        <div class="opt-desc">Runs on a set schedule, like every day at 9 AM</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Step 2: Pick action -->
-  <div class="builder-section hidden" id="actionSection">
-    <h3>Choose Your Action</h3>
-    <div class="option-grid">
-      <div class="option-card" onclick="pickAction('db','&#128451;','Save to Database','Write the data to your database')">
-        <div class="opt-icon">&#128451;</div>
-        <div class="opt-name">Save to Database</div>
-        <div class="opt-desc">Store the incoming data in your database</div>
-      </div>
-      <div class="option-card" onclick="pickAction('notify','&#128276;','Send Notification','Send a Slack or email alert')">
-        <div class="opt-icon">&#128276;</div>
-        <div class="opt-name">Send Notification</div>
-        <div class="opt-desc">Alert your team via Slack or email</div>
-      </div>
-      <div class="option-card" onclick="pickAction('api','&#127760;','Call API','Hit an external API endpoint')">
-        <div class="opt-icon">&#127760;</div>
-        <div class="opt-name">Call API</div>
-        <div class="opt-desc">Send a request to an external service</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wiring diagram -->
-  <div class="wiring-diagram">
-    <h3>Your Automation</h3>
-    <div class="wire-container">
-      <div class="wire-node wire-empty" id="wireTrigger">
-        <div class="wire-icon" id="wireTriggerIcon">?</div>
-        <div class="wire-label" id="wireTriggerLabel">Trigger</div>
-        <div class="wire-sublabel">not selected</div>
-      </div>
-      <div class="wire-connector">
-        <div class="wire-arrow">&rarr;</div>
-      </div>
-      <div class="wire-node wire-empty" id="wireAction">
-        <div class="wire-icon" id="wireActionIcon">?</div>
-        <div class="wire-label" id="wireActionLabel">Action</div>
-        <div class="wire-sublabel">not selected</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="deploy-area">
-    <button class="deploy-btn" id="deployBtn" disabled onclick="deploy()">Deploy Automation</button>
-  </div>
-</div>
-
-<div class="success-overlay" id="successOverlay">
-  <div class="success-card">
-    <div class="success-icon">&#9889;</div>
-    <div class="success-title">Automation Deployed!</div>
-    <div class="success-desc" id="successDesc">Your automation is live and waiting for triggers.</div>
-    <button class="success-close" onclick="closeSuccess()">Continue</button>
-  </div>
-</div>
 
 <div class="section" style="padding:0 1.5rem">
   <h2>Production Checklist</h2>
@@ -446,12 +365,8 @@ db = <span style="color:#34d399">create_client</span>(os.environ[<span style="co
   </div>
 </div>
 
-<footer class="progress-footer">
-  <p>Lesson 2 of 9 &middot; Automation Architect</p>
-</footer>
-
-<div data-learn="SortStack" data-props='{"title":"Order the Automation Steps","instruction":"Arrange these steps in the correct order to deploy a production automation","items":["Receive webhook payload","Respond 200 immediately","Validate payload fields","Check for duplicates (idempotency)","Save to database","Send confirmation email","On failure: save to dead letter queue"]}'></div>
-
 <div data-learn="FlashDeck" data-props='{"title":"Production Automation Patterns","cards":[{"front":"Why respond to webhooks immediately?","back":"Webhook senders expect a response within 3-5 seconds. If you do not respond in time, they retry — causing duplicate processing. Always acknowledge first, process in the background."},{"front":"Idempotency","back":"An operation that produces the same result even if executed multiple times. Check for existing records (by unique key) before inserting to prevent duplicates from webhook retries."},{"front":"Dead letter queue","back":"A storage location for messages that failed processing. Preserves the original payload and error details for manual inspection and automated retry."},{"front":"Payload validation","back":"Check that all required fields exist and have correct types BEFORE processing. Reject invalid data at the gate — do not let it reach your database."},{"front":"Partial failure","back":"When step 3 of 5 succeeds but step 4 fails. Each step should be independently retriable. Save state after each step so retry knows where to resume."},{"front":"Exponential backoff","back":"A retry strategy that waits progressively longer between attempts (1s, 2s, 4s, 8s). Prevents hammering a struggling service while it recovers."},{"front":"Integration testing an automation","back":"Send a real HTTP POST to your webhook with test data. Then verify: database row created? Email sent? Dead letter queue empty? Duplicates handled?"},{"front":"The three test layers","back":"(1) Unit test: validate individual functions like payload validation. (2) Integration test: send real HTTP request, check full pipeline. (3) Failure test: send bad data, verify graceful handling."}]}'></div>
 
 <div data-learn="QuizMC" data-props='{"title":"Your First Automation Quiz","questions":[{"q":"Why should a webhook handler respond with 200 before processing the data?","options":["To make the response faster for users","Because webhook senders retry if they do not get a response within 3-5 seconds","Because 200 is the only valid status code","To save server memory"],"correct":1,"explanation":"Webhook senders like Stripe and GitHub expect a response within seconds. No response = retry = duplicate processing. Always acknowledge receipt immediately, then process asynchronously."},{"q":"What is an idempotency check?","options":["A security scan of the payload","Verifying the webhook URL is correct","Checking if this exact payload was already processed to prevent duplicates","A test that runs after deployment"],"correct":2,"explanation":"An idempotency check queries your database for an existing record with the same unique key (like email + timestamp). If found, skip processing. This prevents duplicates from webhook retries."},{"q":"A webhook automation saves to the database successfully but fails to send the email. What should happen?","options":["Delete the database record and start over","Save the failure to a dead letter queue for retry","Ignore the email failure — database is enough","Crash the entire server to alert the developer"],"correct":1,"explanation":"This is a partial failure. The dead letter queue preserves the original payload so a scheduled retry job can attempt the email again without re-saving to the database."},{"q":"Which is NOT a good practice for production automations?","options":["Validate payloads before processing","Respond to webhooks immediately","Process data synchronously inside the webhook handler and block until done","Use a dead letter queue for failures"],"correct":2,"explanation":"Processing synchronously blocks the webhook response. If processing takes more than 3-5 seconds, the sender retries. Always respond immediately and process asynchronously."},{"q":"What should you test BEFORE deploying an automation?","options":["Only that the happy path works","Validation, full pipeline, AND failure scenarios","Only the database connection","Only the email sending"],"correct":1,"explanation":"Test all three layers: unit tests for validation, integration tests for the full pipeline with real HTTP requests, and failure tests to verify graceful error handling."}]}'></div>
+
+</div>

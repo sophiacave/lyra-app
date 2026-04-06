@@ -1,35 +1,11 @@
 'use client';
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
-import PromptConsole from '../academy/PromptConsole';
-import EnrollCTA from '../academy/EnrollCTA';
-import { QuizMC, FlashDeck, SortStack, PixelQuest, Whiteboard, Citation, NeuronSim, TokenViz, PromptLab, NetworkBuilder, EmbedExplorer, WordSpace, PromptBuilder, LessonComplete, MatchConnect, CodeRunner, CompareView, Timeline } from '../learn';
+import { QuizMC, FlashDeck } from '../learn';
 import LearnErrorBoundary from '../learn/LearnErrorBoundary';
 
-// Registry of learn components that can be embedded in lesson HTML
-const LEARN_COMPONENTS = {
-  QuizMC,
-  FlashDeck,
-  SortStack,
-  PixelQuest,
-  Whiteboard,
-  Citation,
-  NeuronSim,
-  TokenViz,
-  PromptLab,
-  NetworkBuilder,
-  EmbedExplorer,
-  WordSpace,
-  PromptBuilder,
-  LessonComplete,
-  MatchConnect,
-  CodeRunner,
-  CompareView,
-  Timeline,
-};
+// Only QuizMC and FlashDeck are supported — Apple design: read + quiz + optional flash cards
+const LEARN_COMPONENTS = { QuizMC, FlashDeck };
 
-// Parse contentHtml string into alternating segments of raw HTML and learn components.
-// This replaces the old createPortal approach which can't reliably hydrate into
-// dangerouslySetInnerHTML containers.
 const LEARN_PLACEHOLDER_RE = /<div\s+data-learn="([^"]+)"(?:\s+data-props='([^']*)')?\s*>\s*<\/div>/g;
 
 function parseContentSegments(html, courseSlug, lessonSlug) {
@@ -40,7 +16,6 @@ function parseContentSegments(html, courseSlug, lessonSlug) {
 
   LEARN_PLACEHOLDER_RE.lastIndex = 0;
   while ((match = LEARN_PLACEHOLDER_RE.exec(html)) !== null) {
-    // Push HTML before this placeholder
     if (match.index > lastIndex) {
       segments.push({ type: 'html', html: html.slice(lastIndex, match.index) });
     }
@@ -57,15 +32,12 @@ function parseContentSegments(html, courseSlug, lessonSlug) {
       props._courseSlug = courseSlug;
       props._lessonSlug = lessonSlug;
       segments.push({ type: 'component', componentName, Component, props });
-    } else {
-      // Unknown component — keep the original HTML
-      segments.push({ type: 'html', html: match[0] });
     }
+    // Unknown components are silently dropped — no broken UI
 
     lastIndex = match.index + match[0].length;
   }
 
-  // Push remaining HTML after last placeholder
   if (lastIndex < html.length) {
     segments.push({ type: 'html', html: html.slice(lastIndex) });
   }
@@ -123,40 +95,6 @@ function useSubscriptionStatus() {
   return status;
 }
 
-// XP toast — floats up and fades after award
-function XPToast({ xp, show }) {
-  if (!show) return null;
-  return (
-    <div className="lo-xp-toast" key={xp}>
-      <span className="lo-xp-toast-icon">⚡</span>
-      <span className="lo-xp-toast-text">+{xp} XP</span>
-    </div>
-  );
-}
-
-// Award XP via Supabase RPC — requires user to be authenticated
-async function awardXP(courseSlug, lessonSlug, componentType, xp, metadata = {}) {
-  try {
-    if (!window.supabase) return null;
-    const sb = window.supabase.createClient(APP_URL, APP_ANON);
-    const { data: { session } } = await sb.auth.getSession();
-    if (!session) return null; // not logged in — XP not saved
-
-    const { data, error } = await sb.rpc('award_xp', {
-      p_course_slug: courseSlug,
-      p_lesson_slug: lessonSlug,
-      p_component_type: componentType,
-      p_xp: xp,
-      p_metadata: metadata,
-    });
-    if (error) console.warn('[XP] award error:', error);
-    return data;
-  } catch (e) {
-    console.warn('[XP] award failed:', e);
-    return null;
-  }
-}
-
 function LessonGate({ courseSlug }) {
   return (
     <div className="lesson-gate">
@@ -192,7 +130,6 @@ function LessonGate({ courseSlug }) {
 export default function ImmersiveLesson({
   contentHtml,
   lessonTitle,
-  exercises = [],
   isFree = true,
   courseSlug = '',
   lessonSlug = '',
@@ -203,34 +140,11 @@ export default function ImmersiveLesson({
   navNode = null,
   videoNode = null,
 }) {
-  const [consoleState, setConsoleState] = useState('idle');
-  const [consoleExpanded, setConsoleExpanded] = useState(false);
   const scrollRef = useRef(null);
-  const consoleRef = useRef(null);
   const subStatus = useSubscriptionStatus();
-
-  const handleActivity = useCallback((state) => {
-    setConsoleState(state);
-  }, []);
-
   const showGate = !isFree && subStatus !== 'pro';
-  const hasExercises = exercises.length > 0;
 
-  // XP toast state
-  const [xpToast, setXpToast] = useState({ xp: 0, show: false });
-  const handleXP = useCallback((xp, componentType) => {
-    // Show toast immediately (even for non-logged-in users)
-    setXpToast({ xp, show: true });
-    setTimeout(() => setXpToast((t) => ({ ...t, show: false })), 2500);
-    // Persist to DB if authenticated
-    awardXP(courseSlug, lessonSlug, componentType, xp, { xp });
-  }, [courseSlug, lessonSlug]);
-
-  // Execute inline scripts from lesson HTML.
-  // Server marks scripts as type="text/x-lesson" so browser skips them during SSR parse.
-  // We wait for subStatus to settle (not 'loading') because the status change triggers
-  // a re-render that resets dangerouslySetInnerHTML, wiping any script-generated DOM.
-  // Scripts run ONCE after the final render, appended to <head> to stay outside React's tree.
+  // Execute inline scripts from lesson HTML
   const contentRef = useRef(null);
   const scriptsRan = useRef(false);
   useEffect(() => {
@@ -249,42 +163,17 @@ export default function ImmersiveLesson({
     });
   }, [subStatus]);
 
-  // Parse contentHtml into segments: alternating raw HTML chunks and React learn components.
-  // This replaces the old createPortal approach which broke because React can't reliably
-  // hydrate into DOM nodes managed by dangerouslySetInnerHTML.
   const contentSegments = useMemo(
     () => parseContentSegments(contentHtml, courseSlug, lessonSlug),
     [contentHtml, courseSlug, lessonSlug]
   );
 
-  // Scroll to console when manually toggled (not on initial render)
-  const initialRender = useRef(true);
-  useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false;
-      return;
-    }
-    if (consoleExpanded && consoleRef.current) {
-      consoleRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [consoleExpanded]);
-
-  const consoleClasses = [
-    'immersive-console-section',
-    consoleExpanded ? 'immersive-console-expanded' : '',
-    consoleState !== 'idle' ? 'immersive-console-active' : '',
-    consoleState === 'typing' ? 'immersive-console-typing' : '',
-  ].filter(Boolean).join(' ');
-
   return (
     <div className="immersive-lesson" ref={scrollRef}>
-      <XPToast xp={xpToast.xp} show={xpToast.show} />
-      {/* Video player — above lesson content */}
       {videoNode && !showGate && (
         <div className="immersive-video">{videoNode}</div>
       )}
 
-      {/* Content flows full-width inside the console frame */}
       <div className={`immersive-content ${showGate ? 'lo-content-gated' : ''}`}>
         <div ref={contentRef} className="lesson-content immersive-lesson-body">
           {contentSegments.map((seg, i) =>
@@ -292,10 +181,7 @@ export default function ImmersiveLesson({
               <div key={`html-${i}`} dangerouslySetInnerHTML={{ __html: seg.html }} />
             ) : (
               <LearnErrorBoundary key={`${seg.componentName}-${i}`} name={seg.componentName}>
-                <seg.Component
-                  {...seg.props}
-                  onXP={(xp) => handleXP(xp, seg.componentName)}
-                />
+                <seg.Component {...seg.props} />
               </LearnErrorBoundary>
             )
           )}
@@ -303,39 +189,6 @@ export default function ImmersiveLesson({
         {showGate && <LessonGate courseSlug={courseSlug} />}
       </div>
 
-      {/* Exercise console — embedded inline after content */}
-      {!showGate && hasExercises && (
-        <div className={consoleClasses} ref={consoleRef}>
-          <div className="immersive-console-header">
-            <button
-              className="immersive-console-tab"
-              onClick={() => setConsoleExpanded(!consoleExpanded)}
-            >
-              <span className="immersive-console-tab-icon">▸</span>
-              <span className="immersive-console-tab-label">
-                Practice Console
-              </span>
-              <span className="immersive-console-tab-count">
-                {exercises.length} exercise{exercises.length !== 1 ? 's' : ''}
-              </span>
-              <span className={`immersive-console-chevron ${consoleExpanded ? 'expanded' : ''}`}>
-                ▾
-              </span>
-            </button>
-          </div>
-
-          {/* Console body — always visible but compact by default */}
-          <div className={`immersive-console-body ${consoleExpanded ? 'expanded' : ''}`}>
-            <PromptConsole
-              exercises={exercises}
-              lessonTitle={lessonTitle}
-              onActivity={handleActivity}
-            />
-          </div>
-        </div>
-      )}
-
-      {/* Completion + navigation — inside the flow */}
       {!showGate && (
         <div className="immersive-footer">
           {completionNode}

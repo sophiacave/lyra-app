@@ -44,8 +44,7 @@ free: true
 
 <div class="lesson-section">
   <span class="section-label">Section 2</span>
-  <h2 class="section-title">Sort the business tasks.</h2>
-  <p class="section-text">Ten common business tasks. Flip each card to find out which category it falls into — and more importantly, why. Some of these will surprise you.</p>
+<p class="section-text">Ten common business tasks. Flip each card to find out which category it falls into — and more importantly, why. Some of these will surprise you.</p>
 
   <div data-learn="FlashDeck" data-props='{"title":"Can AI Do This?","cards":[{"front":"Writing a first draft of a sales email","back":"AI DOES WELL. Give it your product, target audience, and tone. It writes a solid first draft in seconds. You review and personalize — but 80% of the work is done."},{"front":"Deciding whether to fire an employee","back":"AI CANNOT DO THIS. This requires judgment about context, legal exposure, team dynamics, and human dignity. AI can help you document the situation — but the decision is yours."},{"front":"Summarizing a 40-page vendor contract","back":"AI CAN HELP. AI reads contracts fast and pulls out key terms, renewal clauses, and liability language. But your lawyer must review before signing. AI misses nuance."},{"front":"Answering common customer support questions","back":"AI DOES WELL. If you give it your FAQ, product docs, and policies, AI handles 60-80% of support tickets accurately. Route edge cases to humans."},{"front":"Forecasting your Q3 revenue","back":"AI CAN HELP. AI builds models and spots trends in your historical data. But forecasts depend on market conditions, relationships, and judgment calls AI cannot fully account for."},{"front":"Writing and scheduling social media content","back":"AI DOES WELL for drafts and scheduling. AI writes captions and post ideas quickly. Review for brand voice and fact-check any claims before going live."},{"front":"Building a genuine relationship with a key client","back":"AI CANNOT DO THIS. Relationships are built on trust, presence, and authentic human connection. AI can help you prepare and remember follow-ups — but it cannot replace the relationship."},{"front":"Analyzing 500 customer survey responses","back":"AI DOES WELL. Feed it raw survey data and ask for themes, sentiment, and top complaints. What takes a day takes minutes. Verify the most important findings."},{"front":"Setting your company strategy for next year","back":"AI CAN HELP. AI researches competitors, summarizes trends, and challenges assumptions. But strategy requires values and accountability that sit with you — not a language model."},{"front":"Translating a product brochure into 5 languages","back":"AI DOES WELL. Modern AI translation is excellent for business content. Have a native speaker do a light review for marketing copy, but AI handles the bulk accurately."}]}'></div>
 </div>
@@ -82,8 +81,6 @@ For each, explain WHY it falls in that category and what specific AI tool or app
 <div class="lesson-section">
   <span class="section-label">Section 3</span>
   <h2 class="section-title">Match tasks to categories.</h2>
-  <p class="section-text">Six tasks, three categories. Match each task to where it belongs. This is the same judgment call you will be making in your business every week.</p>
-
 </div>
 
 <div class="lesson-section">

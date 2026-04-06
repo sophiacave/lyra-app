@@ -140,13 +140,11 @@ if growth.iloc[-1] < 0:
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Match the Pipeline Stage</h2>
-  <div data-learn="MatchConnect" data-props='{"title":"Pipeline Stage Matcher","instruction":"Match each task to the correct pipeline stage","pairs":[{"left":"Use the SCOPE method to define what you need to know","right":"Stage 1 — Frame the question"},{"left":"Upload CSV and describe columns, units, and time period","right":"Stage 2 — Ingest the data"},{"left":"Remove duplicates, fix date formats, handle missing values","right":"Stage 3 — Clean"},{"left":"Find trends, correlations, and outliers in the numbers","right":"Stage 4 — Analyze"},{"left":"Create a line chart showing revenue trend with insight-based title","right":"Stage 5 — Visualize"},{"left":"Write a three-layer report with executive summary for leadership","right":"Stage 6 — Report"}]}'></div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">The Six-Stage Pipeline</h2>
-  <div data-learn="SortStack" data-props='{"title":"The Analysis Pipeline — In Order","instruction":"Arrange the six stages in the correct sequence","items":["Frame the question using SCOPE","Ingest the data — describe columns and context","Clean — fix duplicates, formats, missing values","Analyze — patterns, sentiment, financials","Visualize — charts that tell the story","Report — three-layer structure for your audience"]}'></div>
 </div>
 
 <div class="lesson-section">

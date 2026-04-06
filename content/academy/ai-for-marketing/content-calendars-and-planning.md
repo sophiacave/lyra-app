@@ -152,7 +152,6 @@ Skip generic holidays that have nothing to do with my business.</pre>
 <!-- INTERACTIVE: MATCH -->
 <div class="lesson-section">
   <span class="section-label">Review</span>
-  <h2 class="section-title">Match each day to its content pillar in the weekly rotation.</h2>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->

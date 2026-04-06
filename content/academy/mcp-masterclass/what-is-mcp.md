@@ -4,31 +4,34 @@ course: "mcp-masterclass"
 order: 1
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 1</div>
+<div class="lesson-hero">
   <h1>What Is MCP?</h1>
-  <p class="subtitle">Model Context Protocol is the USB standard for AI. It is how AI goes from answering questions to actually doing things — reading your files, checking your calendar, sending emails, managing code.</p>
+  <p class="sub">Model Context Protocol is the USB standard for AI. It is how AI goes from answering questions to actually doing things — reading your files, checking your calendar, sending emails, managing code.</p>
+</div>
 
   <div class="section">
     <h2>The Problem: Isolated AI</h2>
     <p>Without MCP, every AI model is an island. It can only work with what is in its training data or what you paste into the chat. It cannot read your files, query your database, or call your APIs. Every integration is custom, fragile, and different.</p>
-    <p><strong>Toggle between the two views below</strong> to see the difference MCP makes:</p>
-  </div>
+    <p>Compare how AI integrations work without and with MCP:</p>
 
-  <div class="toggle-container">
-    <div class="toggle-btn">
-      <button class="active" id="btnWithout" onclick="setView('without')">Without MCP</button>
-      <button id="btnWith" onclick="setView('with')">With MCP</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+        <strong style="color:#ef4444;font-size:.85rem">Without MCP</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Every AI-tool connection is a custom integration. A GitHub tool built for ChatGPT does not work with Claude. A database connector for Cursor does not work with VS Code. N tools times M clients = N x M custom integrations.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">With MCP</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">One universal protocol. Build a GitHub MCP server once and it works with Claude, VS Code, Cursor, and any other MCP client. N tools + M clients = N + M implementations. The protocol handles compatibility.</p>
+      </div>
     </div>
-  </div>
-
-  <div class="diagram-area">
-    <canvas id="diagram"></canvas>
   </div>
 
   <div class="section">

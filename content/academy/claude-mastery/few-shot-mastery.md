@@ -4,18 +4,17 @@ course: "claude-mastery"
 order: 6
 type: "lesson"
 free: false
----<div class="xp-burst" id="xpBurst"><div class="xp-burst-text">+240 XP</div></div>
+---
+<div class="wrap">
 
-<nav class="nav">
-
-
+<nav class="local-nav">
+  <a href="/academy/claude-mastery/">Claude Mastery</a>
+  <span class="lesson-badge">Lesson 6 of 10</span>
 </nav>
 
-<div class="lesson-header">
-<div class="lesson-badge">Lesson 6 · Builder</div>
-<h1>Few-Shot Mastery</h1>
-<p>Teach Claude any pattern with examples — from classification to structured extraction, with production code</p>
-<div class="lesson-meta-bar">⏱ <span>75 min</span> · ⚡ <span>240 XP</span> · 📚 <span>Module 2</span></div>
+<div class="lesson-hero">
+  <h1>Few-Shot Mastery</h1>
+  <p class="sub">Teach Claude any pattern with examples — from classification to structured extraction, with production code</p>
 </div>
 
 <div class="content">
@@ -167,53 +166,16 @@ result = extract_event(<span style="color:#fbbf24">"Dentist appointment next Fri
 </div>
 
 <div class="card">
-<h2>Interactive Few-Shot Builder</h2>
-<p>Build your own few-shot prompt by adding example pairs. Then test with new inputs to see if Claude would learn the pattern.</p>
+<h2>Building a Few-Shot Prompt — The Pattern</h2>
+<p>When constructing a few-shot prompt, follow this template. Each example pair is an alternating user/assistant message in the API:</p>
 
-<div id="examplePairs">
-<div class="example-pair" data-idx="0">
-<div class="example-input">
-<span class="example-label label-in">Input</span>
-<input type="text" id="in-0" placeholder="Example input..." value="The movie was absolutely fantastic!">
+<div style="display:grid;gap:.5rem;margin-top:.75rem">
+<div style="padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border-left:3px solid #fb923c;font-size:.85rem;color:#a1a1aa"><strong style="color:#fb923c">Example 1:</strong> "The movie was absolutely fantastic!" → <strong>Positive</strong></div>
+<div style="padding:.75rem 1rem;background:rgba(248,113,113,.04);border-radius:8px;border-left:3px solid #f87171;font-size:.85rem;color:#a1a1aa"><strong style="color:#f87171">Example 2:</strong> "I wasted two hours of my life on this terrible film." → <strong>Negative</strong></div>
+<div style="padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border-left:3px solid #8b5cf6;font-size:.85rem;color:#a1a1aa"><strong style="color:#8b5cf6">Example 3:</strong> "It was okay, nothing special but not bad either." → <strong>Neutral</strong></div>
+<div style="padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border-left:3px solid #34d399;font-size:.85rem;color:#a1a1aa"><strong style="color:#34d399">New input:</strong> "Great acting but terrible plot" → Claude applies the pattern and outputs <strong>Negative</strong></div>
 </div>
-<div class="example-arrow">-></div>
-<div class="example-output">
-<span class="example-label label-out">Output</span>
-<input type="text" id="out-0" placeholder="Expected output..." value="Positive">
-</div>
-</div>
-<div class="example-pair" data-idx="1">
-<div class="example-input">
-<span class="example-label label-in">Input</span>
-<input type="text" id="in-1" placeholder="Example input..." value="I wasted two hours of my life on this terrible film.">
-</div>
-<div class="example-arrow">-></div>
-<div class="example-output">
-<span class="example-label label-out">Output</span>
-<input type="text" id="out-1" placeholder="Expected output..." value="Negative">
-</div>
-</div>
-<div class="example-pair" data-idx="2">
-<div class="example-input">
-<span class="example-label label-in">Input</span>
-<input type="text" id="in-2" placeholder="Example input..." value="It was okay, nothing special but not bad either.">
-</div>
-<div class="example-arrow">-></div>
-<div class="example-output">
-<span class="example-label label-out">Output</span>
-<input type="text" id="out-2" placeholder="Expected output..." value="Neutral">
-</div>
-</div>
-</div>
-<button class="add-btn" onclick="addExamplePair()">+ Add Another Example</button>
-
-<div class="test-section">
-<p><strong>Test your pattern:</strong></p>
-<div class="test-input">
-<input type="text" id="testInput" placeholder="Enter a new input to classify...">
-<button class="test-btn" onclick="testPattern()">Test</button>
-</div>
-</div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.75rem">Notice how the examples teach both the classification logic AND the output format (a single word). When building your own few-shot prompts, make sure all examples follow the exact same structure.</p>
 </div>
 
 <div class="card">
@@ -245,12 +207,13 @@ result = extract_event(<span style="color:#fbbf24">"Dentist appointment next Fri
 <div class="card">
 <div class="challenge-box">
 <h3>Challenge: Tricky Sentiment Cases</h3>
-<p style="font-size:.85rem;color:#a1a1aa">Using the few-shot builder above, test these tricky inputs. Can your examples handle ambiguity?</p>
+<p style="font-size:.85rem;color:#a1a1aa">Consider how your few-shot examples would handle these ambiguous inputs:</p>
 <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem">
-<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem;cursor:pointer" onclick="document.getElementById('testInput').value=this.textContent;testPattern();">"The acting was great but the plot made no sense"</div>
-<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem;cursor:pointer" onclick="document.getElementById('testInput').value=this.textContent;testPattern();">"I wouldn't say I hated it, but I'd never watch it again"</div>
-<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem;cursor:pointer" onclick="document.getElementById('testInput').value=this.textContent;testPattern();">"My kids loved it, I slept through it — 5 stars"</div>
+<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem">"The acting was great but the plot made no sense"</div>
+<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem">"I wouldn't say I hated it, but I'd never watch it again"</div>
+<div style="padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;font-size:.85rem">"My kids loved it, I slept through it — 5 stars"</div>
 </div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.75rem">If your examples only cover clearly positive and clearly negative cases, Claude may struggle with mixed sentiment. Adding a mixed-sentiment example (like "Good food but terrible service" → "Negative") teaches Claude how to handle the hard calls.</p>
 </div>
 </div>
 
@@ -258,9 +221,6 @@ result = extract_event(<span style="color:#fbbf24">"Dentist appointment next Fri
 <div data-learn="FlashDeck" data-props='{"title":"Few-Shot Prompting Concepts","cards":[{"front":"Few-shot prompting","back":"Providing Claude with input-output examples to demonstrate a pattern, then asking it to apply that pattern to new inputs. The examples go in the messages array as alternating user/assistant turns."},{"front":"Zero-shot vs. few-shot","back":"Zero-shot: no examples, just instructions. Few-shot: 2-5 examples showing the pattern. Few-shot produces more consistent format and handles ambiguous cases better."},{"front":"Ideal number of examples","back":"3-5 examples is the sweet spot. 1-2 may be ambiguous. 6+ wastes context tokens without meaningful accuracy gain. Add more only for genuinely complex patterns."},{"front":"Few-shot for structured extraction","back":"Examples teach both the extraction LOGIC and the exact output FORMAT. Two JSON examples teach Claude the schema more reliably than describing it in words."},{"front":"Combining few-shot + system prompt","back":"The most powerful pattern: system prompt for identity, constraints, and rules + few-shot examples for format and edge cases. Instructions explain rules; examples show execution."}]}'></div>
 
 <div data-learn="QuizMC" data-props='{"title":"Few-Shot Prompting Quiz","questions":[{"q":"What is the ideal number of few-shot examples for most tasks?","options":["1 — one clear example is enough","3-5 — the sweet spot for pattern clarity without wasting tokens","10+ — more examples always improve accuracy","It depends on temperature, not example count"],"correct":1,"explanation":"3-5 examples is the proven sweet spot. Too few leaves the pattern ambiguous; too many wastes context window tokens without meaningful accuracy gain."},{"q":"In the Claude API, where do few-shot examples go?","options":["In the system prompt as text","In a separate examples parameter","In the messages array as alternating user/assistant turns","In a JSON file uploaded separately"],"correct":2,"explanation":"Few-shot examples are placed in the messages array as alternating user and assistant messages. Claude sees them as conversation history and continues the pattern with the next user message."},{"q":"You are building a few-shot classifier for urgency levels: High, Medium, Low. What type of example is most important to include?","options":["Only High urgency examples","Only the most common class","Edge cases and boundary conditions","Examples from a different domain"],"correct":2,"explanation":"Edge cases (e.g., something that could be High or Medium) are most valuable — they teach Claude how to handle the hard calls, not just the obvious ones."},{"q":"Why is few-shot often more effective than detailed written instructions?","options":["Examples use fewer tokens","Examples are ambiguous so Claude tries harder","Examples show both the LOGIC and FORMAT simultaneously, resolving ambiguity","Examples bypass the system prompt"],"correct":2,"explanation":"Written instructions can be interpreted multiple ways. Examples resolve ambiguity by showing exactly what you want — the reasoning pattern AND the output format in one demonstration."}]}'></div>
-
-<div data-learn="SortStack" data-props='{"title":"Order the Few-Shot Example Set","instruction":"Arrange these example types in the recommended order for a few-shot prompt","items":["Most representative / clearest example","Second clear example showing variation","Third example with slight complexity","Edge case or boundary condition example","Most complex or ambiguous example last"]}'></div>
-
 </div>
 
 <div class="progress-footer">

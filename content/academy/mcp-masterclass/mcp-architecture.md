@@ -4,88 +4,66 @@ course: "mcp-masterclass"
 order: 2
 type: "lesson"
 free: true
----<nav class="nav">
-  <a href="/academy" class="logo">LIKE ONE</a>
+---
+<div class="wrap">
 
+<nav class="local-nav">
+  <a href="/academy/mcp-masterclass/">MCP Masterclass</a>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
-<div class="lesson-container">
-  <div class="lesson-badge">Module 1 &middot; Lesson 2</div>
+<div class="lesson-hero">
   <h1>MCP Architecture</h1>
-  <p class="subtitle">Three components, one protocol. Understand how Hosts, Clients, and Servers form the MCP communication layer.</p>
+  <p class="sub">Three components, one protocol. Understand how Hosts, Clients, and Servers form the MCP communication layer.</p>
+</div>
 
   <div class="section">
     <h2>The Three Components</h2>
-    <p>Click each component to explore what it does in the MCP architecture:</p>
+    <p>MCP has three components that work together:</p>
 
-    <div class="component-cards">
-      <div class="comp-card host active" onclick="showComponent('host')">
-        <div class="icon">&#x1F9E0;</div>
-        <h3>Host</h3>
-        <p>Claude, ChatGPT, or any LLM application</p>
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6">&#x1F9E0; Host Application</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The AI application the user interacts with — like Claude Desktop, Claude Code, or a custom app built with the Anthropic SDK. The Host initiates MCP connections and decides which servers to connect to. It contains one or more MCP Clients.</p>
+        <p style="font-size:.82rem;color:#71717a;margin-top:.4rem"><strong>Role:</strong> Receives user input, decides when tools are needed, orchestrates the overall interaction.</p>
       </div>
-      <div class="comp-card client" onclick="showComponent('client')">
-        <div class="icon">&#x1F310;</div>
-        <h3>MCP Client</h3>
-        <p>The bridge between Host and Server</p>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399">&#x1F310; MCP Client</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A protocol bridge inside the Host that maintains a 1:1 connection with a single MCP Server. Each Client handles negotiation, capability exchange, and message routing for its server.</p>
+        <p style="font-size:.82rem;color:#71717a;margin-top:.4rem"><strong>Role:</strong> Translates between the Host's internal format and the MCP protocol. One Client per Server connection.</p>
       </div>
-      <div class="comp-card server" onclick="showComponent('server')">
-        <div class="icon">&#x2699;&#xFE0F;</div>
-        <h3>MCP Server</h3>
-        <p>Your tool or data source</p>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <strong style="color:#fb923c">&#x2699;&#xFE0F; MCP Server</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A lightweight program that exposes tools, resources, or prompts to the AI through the MCP protocol. Servers are where the business logic lives — reading files, querying databases, calling APIs.</p>
+        <p style="font-size:.82rem;color:#71717a;margin-top:.4rem"><strong>Role:</strong> Receives tool calls from the Client, executes them, and returns results.</p>
       </div>
-    </div>
-
-    <div class="detail-panel" id="detailPanel">
-      <h3 id="detailTitle" style="color:#8b5cf6">Host Application</h3>
-      <p id="detailDesc">The Host is the AI application the user interacts with — like Claude Desktop, Claude Code, or a custom app built with the Anthropic SDK. The Host initiates MCP connections and decides which servers to connect to. It contains one or more MCP Clients.</p>
-      <p id="detailRole"><strong>Role:</strong> Receives user input, decides when tools are needed, orchestrates the overall interaction.</p>
-      <div class="examples" id="detailExamples">
-        <span class="example-tag">Claude Desktop</span>
-        <span class="example-tag">Claude Code</span>
-        <span class="example-tag">Custom SDK apps</span>
-        <span class="example-tag">IDE extensions</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Architecture Diagram</h2>
-    <p>Watch how data flows through the MCP architecture:</p>
-    <div class="arch-canvas">
-      <canvas id="archCanvas"></canvas>
     </div>
   </div>
 
   <div class="section">
     <h2>Data Flow — Step by Step</h2>
-    <p>Click play to animate the request lifecycle, or click individual steps:</p>
-    <button class="play-btn" id="playBtn" onclick="playFlow()">&#x25B6; Play Animation</button>
+    <p>Here is the complete request lifecycle when a user asks a question that requires external data:</p>
 
-    <div class="flow-steps" id="flowSteps">
-      <div class="flow-step active" onclick="setStep(0)">
-        <div class="step-num">1</div>
-        <div class="step-text"><strong>User asks a question</strong><span>"What files are in my project directory?"</span></div>
+    <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <span style="font-weight:700;color:#8b5cf6;font-size:1rem;min-width:24px">1</span>
+        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">User asks a question</strong> — "What files are in my project directory?"</span>
       </div>
-      <div class="flow-arrow" id="arrow0">&darr;</div>
-      <div class="flow-step" onclick="setStep(1)">
-        <div class="step-num">2</div>
-        <div class="step-text"><strong>Host realizes it needs external data</strong><span>The LLM sees available tools and decides to use the filesystem tool</span></div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+        <span style="font-weight:700;color:#fb923c;font-size:1rem;min-width:24px">2</span>
+        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Host realizes it needs external data</strong> — The LLM sees available tools and decides to use the filesystem tool.</span>
       </div>
-      <div class="flow-arrow" id="arrow1">&darr;</div>
-      <div class="flow-step" onclick="setStep(2)">
-        <div class="step-num">3</div>
-        <div class="step-text"><strong>Client sends request to Server</strong><span>MCP Client sends a tools/call request via JSON-RPC to the filesystem server</span></div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <span style="font-weight:700;color:#34d399;font-size:1rem;min-width:24px">3</span>
+        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Client sends request to Server</strong> — MCP Client sends a tools/call request via JSON-RPC to the filesystem server.</span>
       </div>
-      <div class="flow-arrow" id="arrow2">&darr;</div>
-      <div class="flow-step" onclick="setStep(3)">
-        <div class="step-num">4</div>
-        <div class="step-text"><strong>Server executes and returns data</strong><span>Filesystem server reads the directory and returns the file listing</span></div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <span style="font-weight:700;color:#38bdf8;font-size:1rem;min-width:24px">4</span>
+        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Server executes and returns data</strong> — Filesystem server reads the directory and returns the file listing.</span>
       </div>
-      <div class="flow-arrow" id="arrow3">&darr;</div>
-      <div class="flow-step" onclick="setStep(4)">
-        <div class="step-num">5</div>
-        <div class="step-text"><strong>Host generates an informed answer</strong><span>The LLM uses the real file data to respond accurately to the user</span></div>
+      <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+        <span style="font-weight:700;color:#f472b6;font-size:1rem;min-width:24px">5</span>
+        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Host generates an informed answer</strong> — The LLM uses the real file data to respond accurately to the user.</span>
       </div>
     </div>
   </div>
@@ -153,8 +131,4 @@ free: true
   <div data-learn="FlashDeck" data-props='{"title":"MCP Architecture Concepts","cards":[{"front":"Host","back":"The AI application the user interacts with — Claude Desktop, Claude Code, or a custom SDK app. Contains one or more MCP Clients."},{"front":"MCP Client","back":"A protocol bridge inside the Host that maintains a 1:1 connection with a single MCP Server. Handles negotiation and message routing."},{"front":"MCP Server","back":"A lightweight program that exposes tools, resources, or prompts to the AI through the MCP protocol."},{"front":"JSON-RPC","back":"The message format used for communication between MCP Client and Server. Structured as method calls with parameters and responses."},{"front":"Data Flow","back":"User asks a question, Host identifies a tool is needed, Client sends tools/call to Server, Server executes and returns data, Host generates an informed answer."}]}'></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Architecture Check","questions":[{"q":"Which MCP component is responsible for maintaining a 1:1 connection with a single MCP Server?","options":["Host","MCP Client","MCP Server","Transport Layer"],"correct":1,"explanation":"The MCP Client lives inside the Host and maintains a 1:1 connection with one MCP Server. It handles protocol negotiation, capability exchange, and message routing."},{"q":"What protocol does the MCP Client use to communicate with the MCP Server?","options":["REST","GraphQL","JSON-RPC","gRPC"],"correct":2,"explanation":"MCP uses JSON-RPC (JSON Remote Procedure Call) for communication between the MCP Client and MCP Server."}]}'></div>
-
-  <div data-learn="SortStack" data-props='{"title":"Put the Data Flow in Order","instruction":"Arrange these steps in the correct order for an MCP request","items":["User asks a question","Host identifies a tool is needed","MCP Client sends tools/call to Server","Server executes and returns data","Host generates an informed answer"]}'></div>
-
-
 </div>

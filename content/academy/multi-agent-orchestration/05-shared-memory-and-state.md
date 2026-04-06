@@ -41,6 +41,20 @@ free: false
   <p class="section-text">The simplest approach: each agent receives the accumulated context from all previous agents in its prompt. Agent A's output becomes part of Agent B's input, which becomes part of Agent C's input.</p>
   <p class="section-text"><strong style="color: var(--green);">Pros:</strong> Simple to implement. No external infrastructure. Every agent has full history.</p>
   <p class="section-text"><strong style="color: var(--red);">Cons:</strong> Context windows fill up fast. By agent 5 or 6, you're running out of room for the actual task. Doesn't scale.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Context passing: accumulate history in the prompt</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">pipeline_with_context</span>(task: str, agents: list) -> str:
+    <span style="color:#71717a"># Each agent sees ALL previous outputs (context grows with each step)</span>
+    context = <span style="color:#fbbf24">f"Original task: {task}\n"</span>
+    <span style="color:#c084fc">for</span> name, system_prompt <span style="color:#c084fc">in</span> agents:
+        result = call_agent(system_prompt, context)
+        context += <span style="color:#fbbf24">f"\n--- {name} output ---\n{result}\n"</span>  <span style="color:#71717a"># accumulate</span>
+    <span style="color:#c084fc">return</span> context
+
+<span style="color:#71717a"># Problem: by agent 5, the context might be 50,000+ tokens</span>
+<span style="color:#71717a"># That leaves little room for the agent's own reasoning</span></code></pre>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -49,6 +63,36 @@ free: false
   <p class="section-text">All agents read from and write to a central store — a database, a key-value store, or even a structured document. Each agent queries only what it needs instead of carrying everything.</p>
   <p class="section-text"><strong style="color: var(--green);">Pros:</strong> Scales to many agents. Each agent gets relevant context without bloat. Persists across sessions.</p>
   <p class="section-text"><strong style="color: var(--red);">Cons:</strong> Requires infrastructure. Agents need to know what to query. Stale data is a risk if updates lag.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Shared memory store with Supabase</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> supabase <span style="color:#c084fc">import</span> create_client
+
+db = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+<span style="color:#c084fc">class</span> <span style="color:#38bdf8">SharedMemory</span>:
+    <span style="color:#c084fc">def</span> <span style="color:#38bdf8">__init__</span>(self, task_id: str):
+        self.task_id = task_id
+
+    <span style="color:#c084fc">def</span> <span style="color:#38bdf8">write</span>(self, agent: str, key: str, value: <span style="color:#c084fc">any</span>):
+        <span style="color:#71717a"># Each agent writes to its own namespace</span>
+        db.table(<span style="color:#fbbf24">"agent_memory"</span>).upsert({
+            <span style="color:#fbbf24">"task_id"</span>: self.task_id,
+            <span style="color:#fbbf24">"agent"</span>: agent, <span style="color:#fbbf24">"key"</span>: key, <span style="color:#fbbf24">"value"</span>: value
+        }).execute()
+
+    <span style="color:#c084fc">def</span> <span style="color:#38bdf8">read</span>(self, key: str) -> <span style="color:#c084fc">any</span>:
+        <span style="color:#71717a"># Any agent can read any key</span>
+        row = db.table(<span style="color:#fbbf24">"agent_memory"</span>).select(<span style="color:#fbbf24">"value"</span>).eq(
+            <span style="color:#fbbf24">"task_id"</span>, self.task_id
+        ).eq(<span style="color:#fbbf24">"key"</span>, key).single().execute()
+        <span style="color:#c084fc">return</span> row.data[<span style="color:#fbbf24">"value"</span>]
+
+<span style="color:#71717a"># Usage: agents share state without carrying it in their context</span>
+mem = SharedMemory(<span style="color:#fbbf24">"content-042"</span>)
+mem.write(<span style="color:#fbbf24">"researcher"</span>, <span style="color:#fbbf24">"findings"</span>, research_output)   <span style="color:#71717a"># researcher writes</span>
+findings = mem.read(<span style="color:#fbbf24">"findings"</span>)                        <span style="color:#71717a"># writer reads</span></code></pre>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -57,6 +101,35 @@ free: false
   <p class="section-text">Store agent outputs as embeddings in a vector database. When an agent needs context, it performs a semantic search — "find everything related to customer billing issues" — and gets the most relevant pieces, regardless of when or which agent produced them.</p>
   <p class="section-text"><strong style="color: var(--green);">Pros:</strong> Handles massive amounts of context. Agents retrieve only what's relevant. Gets smarter as more data accumulates.</p>
   <p class="section-text"><strong style="color: var(--red);">Cons:</strong> More complex to set up. Embedding quality matters. Results can be unpredictable.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Vector store: semantic search for agent memory (pgvector)</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> sentence_transformers <span style="color:#c084fc">import</span> SentenceTransformer
+
+model = SentenceTransformer(<span style="color:#fbbf24">"all-MiniLM-L6-v2"</span>)  <span style="color:#71717a"># free, runs locally</span>
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">store_memory</span>(text: str, agent: str, task_id: str):
+    <span style="color:#71717a"># Convert text to a vector and store in Supabase with pgvector</span>
+    embedding = model.encode(text).tolist()
+    db.table(<span style="color:#fbbf24">"agent_vectors"</span>).insert({
+        <span style="color:#fbbf24">"task_id"</span>: task_id, <span style="color:#fbbf24">"agent"</span>: agent,
+        <span style="color:#fbbf24">"content"</span>: text, <span style="color:#fbbf24">"embedding"</span>: embedding
+    }).execute()
+
+<span style="color:#c084fc">def</span> <span style="color:#38bdf8">recall</span>(query: str, task_id: str, limit: int = <span style="color:#fb923c">3</span>) -> list:
+    <span style="color:#71717a"># Semantic search: find the most relevant agent memories</span>
+    query_vec = model.encode(query).tolist()
+    result = db.rpc(<span style="color:#fbbf24">"match_agent_memory"</span>, {
+        <span style="color:#fbbf24">"query_embedding"</span>: query_vec,
+        <span style="color:#fbbf24">"filter_task"</span>: task_id,
+        <span style="color:#fbbf24">"match_count"</span>: limit
+    }).execute()
+    <span style="color:#c084fc">return</span> [r[<span style="color:#fbbf24">"content"</span>] <span style="color:#c084fc">for</span> r <span style="color:#c084fc">in</span> result.data]
+
+<span style="color:#71717a"># Editor agent needs billing context — semantic search finds it</span>
+relevant = recall(<span style="color:#fbbf24">"customer billing history"</span>, <span style="color:#fbbf24">"support-099"</span>)
+<span style="color:#71717a"># → Returns the 3 most relevant memories from ANY agent</span></code></pre>
+</div>
 </div>
 
 <div class="lesson-section">

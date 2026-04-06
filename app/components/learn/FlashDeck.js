@@ -21,6 +21,7 @@ export default function FlashDeck({
   onXP,
   title = 'Flash Cards',
 }) {
+  const [collapsed, setCollapsed] = useState(true);
   const [deck, setDeck] = useState([]); // { ...card, box: 0 } — box 0=unseen, 1=learning, 2=mastered
   const [currentIdx, setCurrentIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -100,6 +101,43 @@ export default function FlashDeck({
 
   if (!deck.length) return null;
 
+  // Collapsible wrapper
+  return (
+    <div className="lo-flash-wrapper">
+      <button
+        className="lo-flash-toggle"
+        onClick={() => setCollapsed(c => !c)}
+        aria-expanded={!collapsed}
+      >
+        <span className="lo-flash-toggle-icon">{collapsed ? '▸' : '▾'}</span>
+        <span className="lo-flash-toggle-title">{title}</span>
+        <span className="lo-flash-toggle-count">{total} cards</span>
+        {masteredCount > 0 && masteredCount < total && (
+          <span className="lo-flash-toggle-progress">{masteredCount}/{total} mastered</span>
+        )}
+        {masteredCount >= total && (
+          <span className="lo-flash-toggle-done">Complete</span>
+        )}
+      </button>
+      {!collapsed && <FlashDeckInner
+        cards={cards} deck={deck} setDeck={setDeck} current={current}
+        activeDeck={activeDeck} currentIdx={currentIdx} setCurrentIdx={setCurrentIdx}
+        flipped={flipped} setFlipped={setFlipped} swipeClass={swipeClass}
+        setSwipeClass={setSwipeClass} mastered={mastered} setMastered={setMastered}
+        masteredCount={masteredCount} total={total} progressPct={progressPct}
+        circumference={circumference} advance={advance} setRound={setRound}
+        onComplete={onComplete} onXP={onXP}
+      />}
+    </div>
+  );
+}
+
+function FlashDeckInner({
+  cards, deck, setDeck, current, activeDeck, currentIdx, setCurrentIdx,
+  flipped, setFlipped, swipeClass, setSwipeClass, mastered, setMastered,
+  masteredCount, total, progressPct, circumference, advance, setRound,
+  onComplete, onXP,
+}) {
   // All mastered
   if (masteredCount >= total) {
     return (
@@ -107,7 +145,7 @@ export default function FlashDeck({
         <div className="lo-quiz-results" style={{ padding: '2rem 0' }}>
           <div className="lo-quiz-results-emoji">🧠</div>
           <div className="lo-quiz-results-score">{total} / {total}</div>
-          <p className="lo-quiz-results-msg">All cards mastered! Your brain just leveled up.</p>
+          <p className="lo-quiz-results-msg">All cards mastered!</p>
           <button
             className="lo-quiz-btn-retry"
             onClick={() => {
