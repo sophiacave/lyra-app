@@ -302,7 +302,7 @@ export default function ForumClient() {
               </p>
               <div className="site-cta-row" style={{ justifyContent: 'center' }}>
                 <Link href="/academy/" className="site-btn-primary">Browse Courses</Link>
-                <Link href="/subscribe" className="site-btn-secondary">Join the Mailing List</Link>
+                <Link href="/#subscribe" className="site-btn-secondary">Join the Mailing List</Link>
               </div>
             </div>
           ) : null
@@ -315,7 +315,7 @@ export default function ForumClient() {
             </p>
             <div className="site-cta-row" style={{ justifyContent: 'center' }}>
               <Link href="/academy/" className="site-btn-primary">Browse Courses</Link>
-              <Link href="/subscribe" className="site-btn-secondary">Join the Mailing List</Link>
+              <Link href="/#subscribe" className="site-btn-secondary">Join the Mailing List</Link>
             </div>
           </div>
         ) : (
