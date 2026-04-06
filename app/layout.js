@@ -57,7 +57,9 @@ const jsonLd = {
     telephone: site.phoneRaw,
     contactType: 'customer support',
   },
-  sameAs: [],
+  sameAs: [
+    'https://github.com/sophiacave/lyra-app',
+  ],
 };
 
 const courseJsonLd = {

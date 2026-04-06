@@ -34,6 +34,7 @@ export default function CommunityAccessClient() {
         headers: { apikey: ANON_KEY, Authorization: `Bearer ${ANON_KEY}`, 'Content-Type': 'application/json' },
         body: '{}',
       });
+      if (!res.ok) { setSpotsLeft(15); return; }
       const remaining = await res.json();
       setSpotsLeft(typeof remaining === 'number' ? remaining : 15);
     } catch {
@@ -100,11 +101,17 @@ export default function CommunityAccessClient() {
 
           {/* Counter */}
           <div className={`ca-counter ${soldOut ? 'sold-out' : 'available'}`}>
-            <div className={`ca-counter-number ${soldOut ? 'sold-out' : 'available'}`}>
-              {spotsLeft === null ? '...' : spotsLeft}
-            </div>
+            {spotsLeft !== null && (
+              <div className={`ca-counter-number ${soldOut ? 'sold-out' : 'available'}`}>
+                {spotsLeft}
+              </div>
+            )}
             <div className="ca-counter-label">
-              {soldOut ? 'spots claimed this week — check back Monday' : 'community spots available this week'}
+              {soldOut
+                ? 'All spots claimed this week — check back Monday'
+                : spotsLeft !== null
+                  ? 'community spots available this week'
+                  : 'Community spots available — refreshing...'}
             </div>
           </div>
 
