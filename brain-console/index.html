@@ -782,6 +782,176 @@
       font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
       color: var(--process); margin-bottom: 10px; letter-spacing: 0.5px;
     }
+
+    /* ============ ORCHESTRATION PANEL ============ */
+    .orch-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-bottom: 24px;
+    }
+    .orch-card {
+      padding: 20px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .orch-card-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      font-weight: 600; color: var(--text-primary); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .orch-stat {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-secondary); margin-bottom: 6px;
+      display: flex; justify-content: space-between;
+    }
+    .orch-stat-value { color: var(--text-primary); font-weight: 500; }
+    .orch-agent-list { display: flex; flex-direction: column; gap: 8px; }
+    .orch-agent {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px; background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .orch-agent-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .orch-agent-dot.active { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+    .orch-agent-dot.idle { background: var(--text-dim); }
+    .orch-agent-dot.blocked { background: var(--accent-red); }
+    .orch-agent-name {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      font-weight: 600; color: var(--text-primary); min-width: 80px;
+    }
+    .orch-agent-task {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-secondary); flex: 1; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+    }
+    .orch-agent-machine {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--text-dim); padding: 2px 8px; background: rgba(255,255,255,0.04);
+      border-radius: 4px;
+    }
+    .orch-section-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin: 20px 0 12px;
+    }
+    .orch-task-queue { display: flex; flex-direction: column; gap: 6px; }
+    .orch-task {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    }
+    .orch-task-status {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .orch-task-status.pending { background: var(--gold); }
+    .orch-task-status.claimed { background: var(--process); }
+    .orch-task-status.completed { background: var(--result); }
+    .orch-task-status.failed { background: var(--alert); }
+    .orch-task-title { flex: 1; color: var(--text-secondary); }
+    .orch-task-meta { color: var(--text-dim); font-size: 10px; }
+    .orch-dispatch-form {
+      display: flex; gap: 8px; margin-top: 16px;
+    }
+    .orch-dispatch-input {
+      flex: 1; padding: 8px 14px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    }
+    .orch-dispatch-input:focus { border-color: var(--accent-purple); outline: none; }
+    .orch-pattern-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;
+    }
+    .orch-pattern {
+      padding: 12px; background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border); border-radius: 8px; text-align: center;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .orch-pattern:hover { border-color: var(--accent-purple); background: rgba(184,152,200,0.05); }
+    .orch-pattern-icon { font-size: 20px; margin-bottom: 4px; }
+    .orch-pattern-name {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .orch-pattern-desc {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--text-dim); margin-top: 2px;
+    }
+
+    /* ============ INTEGRATIONS PANEL ============ */
+    .integ-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-bottom: 24px;
+    }
+    .integ-card {
+      padding: 20px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .integ-card-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .integ-card-icon { font-size: 20px; }
+    .integ-card-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 14px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .integ-card-status {
+      margin-left: auto; width: 10px; height: 10px; border-radius: 50%;
+    }
+    .integ-card-status.online { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+    .integ-card-status.offline { background: var(--accent-red); }
+    .integ-card-status.unknown { background: var(--text-dim); }
+    .integ-stat {
+      display: flex; justify-content: space-between;
+      padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    }
+    .integ-stat:last-child { border-bottom: none; }
+    .integ-stat-label { color: var(--text-dim); }
+    .integ-stat-value { color: var(--text-primary); font-weight: 500; }
+    .integ-stat-value.good { color: var(--accent-green); }
+    .integ-stat-value.warn { color: var(--accent-yellow); }
+    .integ-stat-value.bad { color: var(--accent-red); }
+
+    /* ============ VAULT PANEL ============ */
+    .vault-list { display: flex; flex-direction: column; gap: 8px; }
+    .vault-entry {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .vault-entry:hover { border-color: rgba(184,152,200,0.3); }
+    .vault-icon { font-size: 18px; flex-shrink: 0; }
+    .vault-info { flex: 1; min-width: 0; }
+    .vault-service {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .vault-desc {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-dim); margin-top: 2px;
+    }
+    .vault-value {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      color: var(--text-secondary); background: rgba(255,255,255,0.03);
+      padding: 4px 10px; border-radius: 4px; max-width: 200px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .vault-reveal-btn {
+      padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
+      background: none; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+    }
+    .vault-reveal-btn:hover { border-color: var(--accent-purple); color: var(--accent-purple); }
+    .vault-revealed {
+      color: var(--accent-green); background: rgba(140,184,158,0.08);
+    }
+    .vault-warning {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-dim); padding: 12px 16px; background: rgba(196,97,106,0.05);
+      border: 1px solid rgba(196,97,106,0.15); border-radius: 8px; margin-bottom: 16px;
+    }
   </style>
 </head>
 <body>
@@ -809,6 +979,15 @@
         </button>
         <button class="nav-tab" data-panel="monitor" onclick="switchPanel('monitor')">
           <span class="nav-icon">⚡</span><span class="nav-label">System</span>
+        </button>
+        <button class="nav-tab" data-panel="orchestration" onclick="switchPanel('orchestration')">
+          <span class="nav-icon">🕸️</span><span class="nav-label">Orchestration</span>
+        </button>
+        <button class="nav-tab" data-panel="integrations" onclick="switchPanel('integrations')">
+          <span class="nav-icon">🔗</span><span class="nav-label">Integrations</span>
+        </button>
+        <button class="nav-tab" data-panel="vault" onclick="switchPanel('vault')">
+          <span class="nav-icon">🔐</span><span class="nav-label">Vault</span>
         </button>
       </div>
       <div class="sidebar-header">
@@ -964,6 +1143,33 @@
         <button class="panel-btn btn-primary" onclick="loadMonitorPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
       </div>
       <div class="panel-body" id="monitor-content"></div>
+    </div>
+
+    <!-- Orchestration Panel -->
+    <div class="panel-view" id="panel-orchestration" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Agent Orchestration</span>
+        <button class="panel-btn btn-primary" onclick="loadOrchestrationPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="orchestration-content"></div>
+    </div>
+
+    <!-- Integrations Panel -->
+    <div class="panel-view" id="panel-integrations" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Integrations</span>
+        <button class="panel-btn btn-primary" onclick="loadIntegrationsPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="integrations-content"></div>
+    </div>
+
+    <!-- Vault Panel -->
+    <div class="panel-view" id="panel-vault" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Credential Vault</span>
+        <button class="panel-btn btn-primary" onclick="loadVaultPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="vault-content"></div>
     </div>
   </div>
 

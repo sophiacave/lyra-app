@@ -451,7 +451,10 @@ app.whenReady().then(async () => {
 
   ipcMain.handle('brain:ollama-unload', async (event, model) => {
     try {
-      execSync(`curl -s -X POST http://localhost:11434/api/generate -d '{"model":"${model}","keep_alive":0}'`, { timeout: 5000 });
+      if (!/^[a-zA-Z0-9._:/-]+$/.test(model)) return { success: false, error: 'Invalid model name' };
+      const payload = JSON.stringify({ model, keep_alive: 0 });
+      const { execSync: exec } = require('child_process');
+      exec(`curl -s -X POST http://localhost:11434/api/generate -d ${JSON.stringify(payload)}`, { timeout: 5000 });
       return { success: true };
     } catch (e) { return { success: false, error: e.message }; }
   });
@@ -462,6 +465,176 @@ app.whenReady().then(async () => {
     const { data } = await brainContext.supabase
       .from('brain_skills').select('*').eq('active', true).order('use_count', { ascending: false });
     return data || [];
+  });
+
+  // ============ ORCHESTRATION IPC ============
+  ipcMain.handle('brain:get-orchestration', async () => {
+    const result = { agents: [], tasks: [], stats: {} };
+    const sb = brainContext.supabase;
+    if (!sb) return result;
+
+    try {
+      // Get agent registry from brain
+      const { data: registryData } = await sb.from('brain_context')
+        .select('value').eq('key', 'system.agent_registry').single();
+      if (registryData?.value) {
+        const registry = typeof registryData.value === 'string' ? JSON.parse(registryData.value) : registryData.value;
+        result.agents = registry.agents || [];
+      }
+
+      // Get active tasks from fleet dispatch
+      const { data: taskData } = await sb.from('brain_context')
+        .select('key, value, updated_at')
+        .like('key', 'fleet.task_%')
+        .order('updated_at', { ascending: false })
+        .limit(20);
+
+      if (taskData?.length) {
+        result.tasks = taskData.map(t => {
+          const val = typeof t.value === 'string' ? JSON.parse(t.value) : t.value;
+          return { ...val, key: t.key, updated_at: t.updated_at };
+        });
+      }
+
+      // Get orchestration stats
+      const { data: statsData } = await sb.from('brain_context')
+        .select('value').eq('key', 'system.orchestration_stats').single();
+      if (statsData?.value) {
+        result.stats = typeof statsData.value === 'string' ? JSON.parse(statsData.value) : statsData.value;
+      }
+    } catch (e) { console.error('[Orchestration] Error:', e.message); }
+
+    return result;
+  });
+
+  ipcMain.handle('brain:dispatch-task', async (event, title, target) => {
+    const sb = brainContext.supabase;
+    if (!sb) return { success: false, error: 'Brain not connected' };
+
+    const taskId = `task_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+    const task = {
+      id: taskId,
+      title,
+      target: target === 'auto' ? null : target,
+      status: 'pending',
+      created_at: new Date().toISOString(),
+      created_by: 'm3_forge',
+      category: 'general',
+    };
+
+    try {
+      await sb.from('brain_context').upsert({
+        key: `fleet.task_${taskId}`,
+        value: JSON.stringify(task),
+        category: 'fleet',
+        description: `Task: ${title.slice(0, 80)}`,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'key' });
+      return { success: true, taskId };
+    } catch (e) { return { success: false, error: e.message }; }
+  });
+
+  ipcMain.handle('brain:dispatch-pattern', async (event, pattern) => {
+    const sb = brainContext.supabase;
+    if (!sb) return { success: false, error: 'Brain not connected' };
+
+    try {
+      await sb.from('brain_context').upsert({
+        key: 'system.orchestration_stats',
+        value: JSON.stringify({
+          activePattern: pattern,
+          activatedAt: new Date().toISOString(),
+          activatedBy: 'm3_forge',
+        }),
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'key' });
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
+  });
+
+  // ============ INTEGRATIONS IPC ============
+  ipcMain.handle('brain:get-integrations', async () => {
+    const result = { stripe: {}, vercel: {}, supabase: {}, fleet: {} };
+    const sb = brainContext.supabase;
+    const run = (cmd) => { try { return execSync(cmd, { timeout: 8000, encoding: 'utf8' }); } catch { return ''; } };
+
+    // Stripe — read from brain revenue alerts
+    if (sb) {
+      try {
+        const { data } = await sb.from('brain_context')
+          .select('value')
+          .like('key', 'revenue.daily_alert%')
+          .order('updated_at', { ascending: false })
+          .limit(1);
+        if (data?.[0]?.value) {
+          const rev = typeof data[0].value === 'string' ? JSON.parse(data[0].value) : data[0].value;
+          result.stripe = {
+            connected: true,
+            mrr: rev.mrr || 0,
+            customers: rev.total_customers || rev.customers || 0,
+            lastPayment: rev.last_payment || rev.date || 'Unknown',
+            balance: rev.balance || 0,
+          };
+        }
+      } catch {}
+    }
+
+    // Also try live Stripe CLI
+    try {
+      const stripeOut = run('~/bin/stripe-dashboard revenue 2>/dev/null');
+      if (stripeOut) {
+        const mrrMatch = stripeOut.match(/MRR[:\s]*\$?([\d.]+)/i);
+        const custMatch = stripeOut.match(/(\d+)\s*customer/i);
+        if (mrrMatch) result.stripe.mrr = parseFloat(mrrMatch[1]);
+        if (custMatch) result.stripe.customers = parseInt(custMatch[1]);
+        result.stripe.connected = true;
+      }
+    } catch {}
+
+    // Vercel — git status
+    try {
+      const branch = run('cd ~/lyra-app && git branch --show-current').trim();
+      const uncommitted = parseInt(run('cd ~/lyra-app && git status --porcelain | wc -l').trim()) || 0;
+      const lastCommit = run('cd ~/lyra-app && git log -1 --format="%cr"').trim();
+      result.vercel = { connected: true, branch, uncommitted, lastDeploy: lastCommit, status: 'Auto-deploy on push' };
+    } catch {}
+
+    // Supabase — connection health
+    if (sb) {
+      try {
+        const { data, error } = await sb.from('brain_context').select('key, updated_at').order('updated_at', { ascending: false }).limit(1);
+        result.supabase = {
+          connected: !error,
+          brainEntries: Object.keys(brainContext.contextCache || {}).length,
+          lastUpdate: data?.[0]?.updated_at ? new Date(data[0].updated_at).toLocaleString() : 'Unknown',
+          plan: 'Teams',
+          brainCount: 4,
+        };
+      } catch { result.supabase = { connected: false }; }
+    }
+
+    // Fleet — read heartbeats
+    if (sb) {
+      try {
+        const { data } = await sb.from('brain_context')
+          .select('key, value, updated_at')
+          .in('key', ['computers.m3_forge_heartbeat', 'computers.m4_mirror_heartbeat', 'computers.gcp_watcher_heartbeat']);
+        const heartbeats = {};
+        (data || []).forEach(h => {
+          const age = (Date.now() - new Date(h.updated_at).getTime()) / 60000;
+          heartbeats[h.key] = age < 10 ? 'Online' : age < 60 ? `${Math.floor(age)}m ago` : 'Offline';
+        });
+        result.fleet = {
+          healthy: true,
+          m3: heartbeats['computers.m3_forge_heartbeat'] || 'Online',
+          m4: heartbeats['computers.m4_mirror_heartbeat'] || 'Unknown',
+          gcp: heartbeats['computers.gcp_watcher_heartbeat'] || 'Unknown',
+          activeTasks: 0,
+        };
+      } catch {}
+    }
+
+    return result;
   });
 
   app.on('activate', () => {

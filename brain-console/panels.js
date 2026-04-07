@@ -28,6 +28,9 @@ function switchPanel(panelName) {
   if (panelName === 'fleet') loadFleetPanel();
   if (panelName === 'kb') loadKBPanel();
   if (panelName === 'monitor') loadMonitorPanel();
+  if (panelName === 'orchestration') loadOrchestrationPanel();
+  if (panelName === 'integrations') loadIntegrationsPanel();
+  if (panelName === 'vault') loadVaultPanel();
 }
 
 // ============ BRAIN EXPLORER ============
@@ -587,6 +590,329 @@ async function unloadOllamaModel(model) {
       setTimeout(() => loadMonitorPanel(), 500);
     }
   } catch (e) { console.error('Unload failed:', e); }
+}
+
+// ============ ORCHESTRATION PANEL ============
+
+let orchRefreshInterval = null;
+
+async function loadOrchestrationPanel() {
+  const container = document.getElementById('orchestration-content');
+  if (!container) return;
+
+  container.innerHTML = '<div class="panel-loading">Loading orchestration state...</div>';
+
+  try {
+    const data = await window.brain.getOrchestration();
+    renderOrchestrationPanel(data);
+
+    if (orchRefreshInterval) clearInterval(orchRefreshInterval);
+    orchRefreshInterval = setInterval(async () => {
+      if (activePanel !== 'orchestration') { clearInterval(orchRefreshInterval); orchRefreshInterval = null; return; }
+      try {
+        const d = await window.brain.getOrchestration();
+        renderOrchestrationPanel(d);
+      } catch {}
+    }, 8000);
+  } catch (e) {
+    container.innerHTML = `<div class="panel-empty">Orchestration unavailable: ${e.message}</div>`;
+  }
+}
+
+function renderOrchestrationPanel(data) {
+  const container = document.getElementById('orchestration-content');
+  if (!container) return;
+
+  const agents = data.agents || [];
+  const tasks = data.tasks || [];
+  const patterns = data.patterns || [];
+  const stats = data.stats || {};
+
+  // Agent roster
+  const agentHtml = agents.length ? agents.map(a => `
+    <div class="orch-agent">
+      <div class="orch-agent-dot ${a.status || 'idle'}"></div>
+      <div class="orch-agent-name">${escapeHtml(a.role || a.name)}</div>
+      <div class="orch-agent-task">${escapeHtml(a.currentTask || 'No active task')}</div>
+      <div class="orch-agent-machine">${escapeHtml(a.machine || '?')}</div>
+    </div>
+  `).join('') : '<div class="panel-empty">No agents registered</div>';
+
+  // Task queue
+  const taskHtml = tasks.length ? tasks.map(t => {
+    const statusClass = (t.status || 'pending').toLowerCase();
+    const age = t.created_at ? timeSince(new Date(t.created_at)) : '';
+    return `
+      <div class="orch-task">
+        <div class="orch-task-status ${statusClass}"></div>
+        <div class="orch-task-title">${escapeHtml(t.title || t.task_type || '?')}</div>
+        <div class="orch-task-meta">${escapeHtml(t.target || '')} ${age ? '· ' + age : ''}</div>
+      </div>
+    `;
+  }).join('') : '<div class="panel-empty">No tasks in queue</div>';
+
+  // Orchestration patterns
+  const patternCards = [
+    { icon: '🎯', name: 'Hub-Spoke', desc: 'Console orchestrates all agents' },
+    { icon: '⛓️', name: 'Pipeline', desc: 'Task chains: A → B → C' },
+    { icon: '🐝', name: 'Swarm', desc: 'Parallel independent work' },
+  ];
+
+  const patternHtml = patternCards.map(p => `
+    <div class="orch-pattern" onclick="dispatchPattern('${p.name.toLowerCase()}')">
+      <div class="orch-pattern-icon">${p.icon}</div>
+      <div class="orch-pattern-name">${p.name}</div>
+      <div class="orch-pattern-desc">${p.desc}</div>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="orch-grid">
+      <div class="orch-card">
+        <div class="orch-card-title">🕸️ Fleet Agents</div>
+        <div class="orch-stat"><span>Total Agents</span><span class="orch-stat-value">${agents.length}</span></div>
+        <div class="orch-stat"><span>Active</span><span class="orch-stat-value">${agents.filter(a => a.status === 'active').length}</span></div>
+        <div class="orch-stat"><span>Tasks Completed</span><span class="orch-stat-value">${stats.completed || 0}</span></div>
+        <div class="orch-stat"><span>Tasks Failed</span><span class="orch-stat-value">${stats.failed || 0}</span></div>
+      </div>
+      <div class="orch-card">
+        <div class="orch-card-title">📊 Orchestration Health</div>
+        <div class="orch-stat"><span>Queue Depth</span><span class="orch-stat-value">${tasks.filter(t => t.status === 'pending').length}</span></div>
+        <div class="orch-stat"><span>In Progress</span><span class="orch-stat-value">${tasks.filter(t => t.status === 'claimed').length}</span></div>
+        <div class="orch-stat"><span>Pattern</span><span class="orch-stat-value">${stats.activePattern || 'None'}</span></div>
+        <div class="orch-stat"><span>Last Dispatch</span><span class="orch-stat-value">${stats.lastDispatch ? timeSince(new Date(stats.lastDispatch)) : 'Never'}</span></div>
+      </div>
+    </div>
+
+    <div class="orch-section-title">Active Agents</div>
+    <div class="orch-agent-list">${agentHtml}</div>
+
+    <div class="orch-section-title">Orchestration Patterns</div>
+    <div class="orch-pattern-cards">${patternHtml}</div>
+
+    <div class="orch-section-title">Task Queue</div>
+    <div class="orch-task-queue">${taskHtml}</div>
+
+    <div class="orch-dispatch-form">
+      <input type="text" class="orch-dispatch-input" id="orchDispatchInput"
+             placeholder="Dispatch task: describe what needs doing..."
+             onkeydown="if(event.key==='Enter')dispatchTask(this.value)">
+      <select id="orchDispatchTarget" style="padding:8px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:11px;">
+        <option value="m3_forge">M3 Forge</option>
+        <option value="m4_mirror">M4 Mirror</option>
+        <option value="auto">Auto (best fit)</option>
+      </select>
+      <button class="panel-btn btn-primary" onclick="dispatchTask(document.getElementById('orchDispatchInput').value)">Dispatch</button>
+    </div>
+  `;
+}
+
+async function dispatchTask(title) {
+  if (!title.trim()) return;
+  const target = document.getElementById('orchDispatchTarget')?.value || 'auto';
+  try {
+    await window.brain.dispatchTask(title, target);
+    document.getElementById('orchDispatchInput').value = '';
+    setTimeout(() => loadOrchestrationPanel(), 500);
+  } catch (e) { console.error('Dispatch failed:', e); }
+}
+
+async function dispatchPattern(pattern) {
+  try {
+    await window.brain.dispatchPattern(pattern);
+    setTimeout(() => loadOrchestrationPanel(), 500);
+  } catch (e) { console.error('Pattern dispatch failed:', e); }
+}
+
+function timeSince(date) {
+  const secs = Math.floor((Date.now() - date.getTime()) / 1000);
+  if (secs < 60) return `${secs}s ago`;
+  if (secs < 3600) return `${Math.floor(secs / 60)}m ago`;
+  if (secs < 86400) return `${Math.floor(secs / 3600)}h ago`;
+  return `${Math.floor(secs / 86400)}d ago`;
+}
+
+// ============ INTEGRATIONS PANEL ============
+
+async function loadIntegrationsPanel() {
+  const container = document.getElementById('integrations-content');
+  if (!container) return;
+
+  container.innerHTML = '<div class="panel-loading">Scanning integrations...</div>';
+
+  try {
+    const data = await window.brain.getIntegrations();
+    renderIntegrationsPanel(data);
+  } catch (e) {
+    container.innerHTML = `<div class="panel-empty">Integrations scan failed: ${e.message}</div>`;
+  }
+}
+
+function renderIntegrationsPanel(data) {
+  const container = document.getElementById('integrations-content');
+  if (!container) return;
+
+  const stripe = data.stripe || {};
+  const vercel = data.vercel || {};
+  const supabase = data.supabase || {};
+  const fleet = data.fleet || {};
+
+  const stripeStatus = stripe.connected ? 'online' : 'offline';
+  const vercelStatus = vercel.connected ? 'online' : 'unknown';
+  const supabaseStatus = supabase.connected ? 'online' : 'offline';
+
+  container.innerHTML = `
+    <div class="integ-grid">
+      <div class="integ-card">
+        <div class="integ-card-header">
+          <span class="integ-card-icon">💳</span>
+          <span class="integ-card-title">Stripe</span>
+          <div class="integ-card-status ${stripeStatus}"></div>
+        </div>
+        <div class="integ-stat"><span class="integ-stat-label">MRR</span><span class="integ-stat-value ${stripe.mrr > 0 ? 'good' : 'warn'}">$${(stripe.mrr || 0).toFixed(2)}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Customers</span><span class="integ-stat-value">${stripe.customers || 0}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Last Payment</span><span class="integ-stat-value">${stripe.lastPayment || 'None'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Balance</span><span class="integ-stat-value">$${(stripe.balance || 0).toFixed(2)}</span></div>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-card-header">
+          <span class="integ-card-icon">▲</span>
+          <span class="integ-card-title">Vercel</span>
+          <div class="integ-card-status ${vercelStatus}"></div>
+        </div>
+        <div class="integ-stat"><span class="integ-stat-label">Last Deploy</span><span class="integ-stat-value">${vercel.lastDeploy || 'Unknown'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Branch</span><span class="integ-stat-value">${vercel.branch || 'main'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Uncommitted</span><span class="integ-stat-value ${(vercel.uncommitted || 0) > 0 ? 'warn' : 'good'}">${vercel.uncommitted || 0} files</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Status</span><span class="integ-stat-value good">${vercel.status || 'Ready'}</span></div>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-card-header">
+          <span class="integ-card-icon">⚡</span>
+          <span class="integ-card-title">Supabase</span>
+          <div class="integ-card-status ${supabaseStatus}"></div>
+        </div>
+        <div class="integ-stat"><span class="integ-stat-label">Brain Entries</span><span class="integ-stat-value">${supabase.brainEntries || 0}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Last Update</span><span class="integ-stat-value">${supabase.lastUpdate || 'Unknown'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Plan</span><span class="integ-stat-value">${supabase.plan || 'Pro'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">4-Brain</span><span class="integ-stat-value good">${supabase.brainCount || 4} active</span></div>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-card-header">
+          <span class="integ-card-icon">🖥️</span>
+          <span class="integ-card-title">Fleet</span>
+          <div class="integ-card-status ${fleet.healthy ? 'online' : 'unknown'}"></div>
+        </div>
+        <div class="integ-stat"><span class="integ-stat-label">M3 Forge</span><span class="integ-stat-value good">${fleet.m3 || 'Online'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">M4 Mirror</span><span class="integ-stat-value">${fleet.m4 || 'Unknown'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">GCP Watcher</span><span class="integ-stat-value">${fleet.gcp || 'Unknown'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Active Tasks</span><span class="integ-stat-value">${fleet.activeTasks || 0}</span></div>
+      </div>
+    </div>
+  `;
+}
+
+// ============ VAULT PANEL ============
+
+let vaultRevealTimers = {};
+
+async function loadVaultPanel() {
+  const container = document.getElementById('vault-content');
+  if (!container) return;
+
+  container.innerHTML = '<div class="panel-loading">Loading vault...</div>';
+
+  try {
+    const entries = await window.brain.vaultList();
+    renderVaultPanel(entries);
+  } catch (e) {
+    container.innerHTML = `<div class="panel-empty">Vault unavailable: ${e.message}</div>`;
+  }
+}
+
+function renderVaultPanel(entries) {
+  const container = document.getElementById('vault-content');
+  if (!container) return;
+
+  if (!entries || !entries.length) {
+    container.innerHTML = `
+      <div class="vault-warning">Vault is empty or not connected. Check brain connection in Settings.</div>
+      <div class="panel-empty">No credentials stored</div>
+    `;
+    return;
+  }
+
+  const serviceIcons = {
+    stripe: '💳', supabase: '⚡', vercel: '▲', github: '🐙',
+    groq: '🤖', openrouter: '🔀', anthropic: '🧠', resend: '📧',
+    namecheap: '🌐', bunny: '🐰', kling: '🎬', huggingface: '🤗',
+    make: '⚙️', gmail: '📬', ollama: '🦙',
+  };
+
+  const entryHtml = entries.map((e, i) => {
+    const name = e.service || e.name || e.key || `Entry ${i}`;
+    const desc = e.description || e.type || '';
+    const icon = serviceIcons[name.toLowerCase().split('_')[0]] || '🔑';
+    const masked = e.masked || '••••••••';
+
+    return `
+      <div class="vault-entry" id="vault-entry-${i}">
+        <div class="vault-icon">${icon}</div>
+        <div class="vault-info">
+          <div class="vault-service">${escapeHtml(name)}</div>
+          <div class="vault-desc">${escapeHtml(desc)}</div>
+        </div>
+        <div class="vault-value" id="vault-val-${i}">${escapeHtml(masked)}</div>
+        <button class="vault-reveal-btn" id="vault-btn-${i}" onclick="revealVaultEntry('${escapeHtml(name).replace(/'/g, "\\'")}', ${i})">Reveal</button>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="vault-warning">Read-only view. Values auto-mask after 5 seconds. Never share credentials.</div>
+    <div class="vault-list">${entryHtml}</div>
+  `;
+}
+
+async function revealVaultEntry(service, index) {
+  const valEl = document.getElementById(`vault-val-${index}`);
+  const btnEl = document.getElementById(`vault-btn-${index}`);
+  if (!valEl || !btnEl) return;
+
+  // If already revealed, re-mask
+  if (btnEl.textContent === 'Hide') {
+    maskVaultEntry(index);
+    return;
+  }
+
+  btnEl.textContent = 'Loading...';
+
+  try {
+    const result = await window.brain.vaultGet(service);
+    const value = typeof result === 'string' ? result :
+                  (result?.value || result?.key || result?.data || JSON.stringify(result));
+
+    valEl.textContent = value || 'Empty';
+    valEl.classList.add('vault-revealed');
+    btnEl.textContent = 'Hide';
+
+    // Auto-mask after 5 seconds
+    if (vaultRevealTimers[index]) clearTimeout(vaultRevealTimers[index]);
+    vaultRevealTimers[index] = setTimeout(() => maskVaultEntry(index), 5000);
+  } catch (e) {
+    valEl.textContent = 'Error: ' + e.message;
+    btnEl.textContent = 'Reveal';
+  }
+}
+
+function maskVaultEntry(index) {
+  const valEl = document.getElementById(`vault-val-${index}`);
+  const btnEl = document.getElementById(`vault-btn-${index}`);
+  if (valEl) { valEl.textContent = '••••••••'; valEl.classList.remove('vault-revealed'); }
+  if (btnEl) btnEl.textContent = 'Reveal';
+  if (vaultRevealTimers[index]) { clearTimeout(vaultRevealTimers[index]); delete vaultRevealTimers[index]; }
 }
 
 // Helper — escapeHtml is defined in index.html but we need it here too

@@ -45,6 +45,14 @@ contextBridge.exposeInMainWorld('brain', {
   // Skills
   skillsList: () => ipcRenderer.invoke('brain:skills-list'),
 
+  // Orchestration
+  getOrchestration: () => ipcRenderer.invoke('brain:get-orchestration'),
+  dispatchTask: (title, target) => ipcRenderer.invoke('brain:dispatch-task', title, target),
+  dispatchPattern: (pattern) => ipcRenderer.invoke('brain:dispatch-pattern', pattern),
+
+  // Integrations
+  getIntegrations: () => ipcRenderer.invoke('brain:get-integrations'),
+
   // Agentic
   agentRun: (taskChain) => ipcRenderer.invoke('brain:agent-run', taskChain),
   agentStatus: () => ipcRenderer.invoke('brain:agent-status'),
