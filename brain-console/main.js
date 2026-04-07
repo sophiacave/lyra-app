@@ -125,11 +125,16 @@ app.whenReady().then(async () => {
 
     // ============ INIT CLAUDE CODE AGENT ============
     claudeCodeAgent = new ClaudeCodeAgent();
+    // Set pending so divine cycle can lazy-init if async check is slow
+    localEngine._pendingSDKAgent = claudeCodeAgent;
     claudeCodeAgent.isAvailable().then(ok => {
-      console.log('[ClaudeCodeAgent]', ok ? '✅ SDK ready' : '⚠️ SDK not available, falling back to brainAPI');
-      // Give divine cycle access to SDK for task execution
+      console.log('[ClaudeCodeAgent]', ok ? '✅ SDK ready' : '⚠️ SDK not available');
       if (ok) localEngine.sdkAgent = claudeCodeAgent;
     }).catch(() => {});
+    // Load brain context into flash cache (makes Ollama brain-aware)
+    claudeCodeAgent.refreshBrainCache(brainContext).catch(() => {});
+    // Refresh every 5 min
+    setInterval(() => claudeCodeAgent.refreshBrainCache(brainContext).catch(() => {}), 300000);
 
     // ============ INIT PLUGINS ============
     pluginLoader = new PluginLoader();
@@ -155,6 +160,9 @@ app.whenReady().then(async () => {
     });
 
     createWindow();
+
+    // Wire mainWindow to localEngine for divine cycle UI progress events
+    localEngine.setMainWindow(mainWindow);
 
     mainWindow.webContents.on('did-finish-load', async () => {
       // ============ BOOT SCAN — check ALL systems on startup ============
@@ -277,11 +285,28 @@ app.whenReady().then(async () => {
         }
       }
 
-      // 2. Claude Code SDK agent (full agent with tools + brain MCP)
+      // 2. Dual Engine — Flash (Ollama instant) + Deep (Claude SDK verify)
       if (sdkReady) {
-        console.log('[IPC] Routing to Claude Code SDK agent...');
-        const result = await claudeCodeAgent.streamQuery(message, mainWindow);
-        return result;
+        let ollamaUp = false;
+        try {
+          ollamaUp = await new Promise((resolve) => {
+            const req = require('http').get('http://localhost:11434/api/tags', { timeout: 1500 }, (res) => {
+              resolve(res.statusCode === 200);
+            });
+            req.on('error', () => resolve(false));
+            req.on('timeout', () => { req.destroy(); resolve(false); });
+          });
+        } catch {}
+
+        if (ollamaUp) {
+          console.log('[IPC] DUAL ENGINE: Flash (Ollama) + Deep (Claude SDK)');
+          const result = await claudeCodeAgent.dualEngine(message, mainWindow);
+          return result;
+        } else {
+          console.log('[IPC] SDK only (Ollama offline)');
+          const result = await claudeCodeAgent.streamQuery(message, mainWindow);
+          return result;
+        }
       }
 
       // 3. Fallback: legacy brainAPI path

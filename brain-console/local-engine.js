@@ -2002,8 +2002,25 @@ Return ONLY the JSON, no explanation.`;
           .eq('id', task.id);
 
         this._divineLog('EXEC_DONE', `✅ ${task.action_type} → ${task.target}`);
+      } else if (task.type === 'dispatched' && task.id) {
+        // Execute a task_dispatch entry via SDK agent
+        await this.sb.from('task_dispatch')
+          .update({ status: 'claimed', updated_at: new Date().toISOString() })
+          .eq('id', task.id);
+        this._divineLog('SDK_EXEC', `Dispatched task → SDK: ${task.description}`);
+        const sdkResult = await this._divineSDKExecute(task);
+        await this.sb.from('task_dispatch')
+          .update({ status: sdkResult?.success ? 'completed' : 'failed', result: sdkResult?.text?.slice(0, 1000), updated_at: new Date().toISOString() })
+          .eq('id', task.id);
+        await this.sb.from('brain_episodes').insert({
+          event_type: 'divine_sdk_exec',
+          summary: `Cycle #${this.divineCycle}: ${task.description}`,
+          details: { task, result: sdkResult?.text?.slice(0, 500), toolsUsed: sdkResult?.toolsUsed },
+          session_number: this.divineSession?.session || null,
+        });
+        this._divineLog('SDK_DONE', `✅ ${task.description} (${sdkResult?.toolsUsed?.length || 0} tools)`);
       } else if (this.sdkAgent) {
-        // Execute brain task via Claude Code SDK agent
+        // Execute brain task / plan step via Claude Code SDK agent
         this._divineLog('SDK_EXEC', `Sending to SDK: ${task.description}`);
         const sdkResult = await this._divineSDKExecute(task);
         await this.sb.from('brain_episodes').insert({
@@ -2078,12 +2095,11 @@ Return ONLY the JSON, no explanation.`;
       checks.push({ name: 'Fleet Alive', pass: allAlive, detail: `${machines.length} machines` });
     }
 
-    // Check 5: Ollama available
+    // Check 5: Claude Code SDK available
     try {
-      const r = await this._fetchTimeout('http://localhost:11434/api/tags', { method: 'GET' }, 3000);
-      checks.push({ name: 'Ollama', pass: r.ok });
+      checks.push({ name: 'Claude Code SDK', pass: !!this.sdkAgent });
     } catch {
-      checks.push({ name: 'Ollama', pass: false });
+      checks.push({ name: 'Claude Code SDK', pass: false });
     }
 
     const passed = checks.filter(c => c.pass).length;
@@ -2121,21 +2137,22 @@ Return ONLY the JSON, no explanation.`;
     const completedTasks = this.divinePlan?.tasks?.slice(0, this.divineTaskIndex).map(t => t.description || `${t.action_type} → ${t.target}`) || [];
     const remainingTasks = this.divinePlan?.tasks?.slice(this.divineTaskIndex).map(t => t.description || `${t.action_type} → ${t.target}`) || [];
 
-    // Write session.active_work
+    // Write console divine cycle status (separate from CLI session.active_work)
     await this.sb.from('brain_context').upsert({
-      key: 'session.active_work',
+      key: 'console.divine_status',
       value: {
         date: new Date().toISOString().split('T')[0],
         session: this.divineSession?.session || '?',
-        source: 'faye-console divine cycle',
+        source: 'like-one-console',
+        machine: 'console',
         status: `Cycle #${this.divineCycle} complete. ${completedTasks.length} tasks done.`,
         completed_this_cycle: completedTasks.slice(-10),
+        remaining: remainingTasks.slice(0, 10),
         divine_cycle: this.divineCycle,
-        divine_phase: this.divinePhase,
       },
       category: 'session',
-      description: `Console divine handoff — cycle #${this.divineCycle}`,
-      priority: 2,
+      description: `Like One Console divine cycle #${this.divineCycle} — ${completedTasks.length} done`,
+      priority: 7,
       updated_at: new Date().toISOString(),
     }, { onConflict: 'key' });
 
@@ -2273,13 +2290,18 @@ JSON array:`;
         .from('brain_context').select('value').eq('key', 'session.next_steps').single();
       if (nextData?.value) {
         const next = typeof nextData.value === 'object' ? nextData.value : JSON.parse(nextData.value);
-        // Feed P0 tasks into remaining_tasks if divine plan is empty
-        if (!this.divinePlan?.remaining_tasks?.length && next.P0?.length) {
+        // Feed next_steps into remaining_tasks if divine plan is empty
+        if (!this.divinePlan?.remaining_tasks?.length) {
           if (!this.divinePlan) this.divinePlan = {};
-          this.divinePlan.remaining_tasks = [
-            ...(next.P0 || []),
-            ...(next.P1 || []),
-          ];
+          // Handle both flat array and P0/P1 object formats
+          if (Array.isArray(next)) {
+            this.divinePlan.remaining_tasks = next;
+          } else if (next.P0?.length || next.P1?.length) {
+            this.divinePlan.remaining_tasks = [
+              ...(next.P0 || []),
+              ...(next.P1 || []),
+            ];
+          }
         }
       }
     } catch { /* brain read failed, continue with local state */ }
@@ -2311,7 +2333,7 @@ JSON array:`;
 
   // Execute a divine task via Claude Code SDK agent — with UI progress reporting
   async _divineSDKExecute(task) {
-    if (!await this._ensureSDKAgent()) return { success: false, error: 'No SDK agent' };
+    if (!this.sdkAgent) return { success: false, error: 'No SDK agent' };
 
     const taskDesc = task.description || task.action_type || JSON.stringify(task);
     this._divineSendUI({ type: 'sdk_start', task: taskDesc, cycle: this.divineCycle, index: this.divineTaskIndex });
@@ -2327,28 +2349,22 @@ Rules:
 - Write results to brain when done.
 - Be concise in your response — 1-3 sentences about what you did.`;
 
-      // Use SDK query directly with UI progress events
+      // Reuse the chat agent's proven SDK options (auth, env, CLI path all working)
       await this.sdkAgent.ensureLoaded();
+      const baseOpts = this.sdkAgent._buildOptions();
       const conversation = this.sdkAgent.sdk.query({
         prompt,
         options: {
-          cwd: '/Users/sophiacave',
-          systemPrompt: 'You are Faye\'s divine cycle executor. Complete tasks autonomously. Write state to brain. Be concise.',
-          tools: { type: 'preset', preset: 'claude_code' },
-          permissionMode: 'acceptEdits',
-          includePartialMessages: true,
+          ...baseOpts,
+          systemPrompt: `You are Faye's divine cycle executor. You MUST use tools to complete tasks.
+Do NOT just describe what you would do — actually DO it using Bash, Read, Write, Edit, Grep, or brain MCP tools.
+Always write results to brain using the mac_brain_write MCP tool when done.`,
+          permissionMode: 'bypassPermissions',
+          allowDangerouslySkipPermissions: true,
           persistSession: false,
+          resume: undefined,  // Don't resume chat session
           maxTurns: 15,
           maxBudgetUsd: 1.0,
-          effort: 'high',
-          mcpServers: {
-            'fractal-mac-link': {
-              type: 'stdio',
-              command: 'node',
-              args: [require('path').join(require('os').homedir(), '.fractal_brain', 'fractal-mac-link', 'server.js')],
-            },
-          },
-          env: { ...process.env, CLAUDECODE: undefined, CLAUDE_CODE_ENTRYPOINT: undefined },
         },
       });
 

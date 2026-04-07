@@ -60,6 +60,7 @@ contextBridge.exposeInMainWorld('brain', {
 
   // Stream listeners
   onStreamChunk: (callback) => ipcRenderer.on('brain:stream-chunk', (_, chunk) => callback(chunk)),
+  onStreamReplace: (callback) => ipcRenderer.on('brain:stream-replace', (_, text) => callback(text)),
   onStreamEnd: (callback) => ipcRenderer.on('brain:stream-end', (_, meta) => callback(meta)),
   onStreamError: (callback) => ipcRenderer.on('brain:stream-error', (_, error) => callback(error)),
 

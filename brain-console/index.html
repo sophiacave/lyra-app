@@ -223,6 +223,7 @@
     }
     .message-provider.local-tag { color: var(--accent-green); background: rgba(0, 184, 148, 0.1); }
     .message-provider.sdk-tag { color: var(--accent-purple); background: rgba(184, 152, 200, 0.12); font-weight: 500; }
+    .message-provider.dual-tag { color: var(--accent-cyan); background: rgba(139, 175, 196, 0.12); font-weight: 500; }
     .message-body {
       padding-left: 32px; font-size: 14px; line-height: 1.7; color: var(--text-primary);
     }
@@ -1521,6 +1522,18 @@
       }
     });
 
+    // Stream replace — deep SDK response replaces flash Ollama response
+    window.brain.onStreamReplace && window.brain.onStreamReplace((newText) => {
+      if (currentStreamDiv) {
+        const bodyDiv = currentStreamDiv.querySelector('.message-body');
+        if (bodyDiv) {
+          bodyDiv.dataset.raw = newText;
+          bodyDiv.innerHTML = typeof safeParse === 'function' ? safeParse(newText) : (typeof marked !== 'undefined' ? marked.parse(newText) : newText);
+          scrollToBottom();
+        }
+      }
+    });
+
     window.brain.onStreamEnd((meta) => {
       console.log('[Stream] End received:', JSON.stringify(meta));
       isStreaming = false;
@@ -1534,6 +1547,10 @@
           const avatar = currentStreamDiv.querySelector('.message-avatar');
           avatar.className = 'message-avatar local';
           avatar.textContent = 'L';
+        } else if (meta.dualEngine) {
+          tag.className = 'message-provider dual-tag';
+          const toolsLabel = meta.toolsUsed ? ` · ${meta.toolsUsed} tools` : '';
+          tag.textContent = `⚡ Flash + 🧠 Deep${toolsLabel}`;
         } else if (meta.fromClaudeCode) {
           tag.className = 'message-provider sdk-tag';
           const toolsLabel = meta.toolsUsed ? ` · ${meta.toolsUsed} tools` : '';
