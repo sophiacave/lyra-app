@@ -158,6 +158,16 @@ app.whenReady().then(async () => {
     });
   }
 
+  // ============ AUTO-ROUTING ============
+
+  function autoRouteTarget(category) {
+    // M4 handles parallel ops: social, deploys, testing, lighter renders
+    const m4Categories = ['social', 'deploy', 'revenue'];
+    if (m4Categories.includes(category)) return 'm4_mirror';
+    // M3 handles heavy AI, code, studio, brain
+    return 'm3_forge';
+  }
+
   // ============ IPC HANDLERS ============
 
   ipcMain.handle('brain:send-message', async (event, message) => {
@@ -512,15 +522,43 @@ app.whenReady().then(async () => {
     if (!sb) return { success: false, error: 'Brain not connected' };
 
     const taskId = `task_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+
+    // Auto-detect category from title keywords
+    const titleLower = title.toLowerCase();
+    const category = titleLower.match(/video|render|studio/) ? 'studio'
+      : titleLower.match(/deploy|vercel|ship/) ? 'deploy'
+      : titleLower.match(/social|post|tweet/) ? 'social'
+      : titleLower.match(/test|smoke|verify/) ? 'deploy'
+      : titleLower.match(/stripe|revenue|payment/) ? 'revenue'
+      : titleLower.match(/brain|embed|context/) ? 'brain'
+      : 'general';
+
+    const resolvedTarget = target === 'auto' ? autoRouteTarget(category) : target;
+
     const task = {
       id: taskId,
       title,
-      target: target === 'auto' ? null : target,
-      status: 'pending',
+      target: resolvedTarget,
+      status: resolvedTarget ? 'assigned' : 'pending',
       created_at: new Date().toISOString(),
       created_by: 'm3_forge',
-      category: 'general',
+      category,
+      priority: 5,
     };
+
+    // Context boost: attach relevant brain context so the receiving agent has full context
+    try {
+      const contextKeys = ['session.active_work', 'session.next_steps', 'session.divine_plan'];
+      const { data: contextData } = await sb.from('brain_context')
+        .select('key, value')
+        .in('key', contextKeys);
+      if (contextData?.length) {
+        task.context_boost = {};
+        contextData.forEach(c => {
+          task.context_boost[c.key] = typeof c.value === 'string' ? c.value.slice(0, 500) : JSON.stringify(c.value).slice(0, 500);
+        });
+      }
+    } catch {} // Context boost is best-effort
 
     try {
       await sb.from('brain_context').upsert({
@@ -528,9 +566,10 @@ app.whenReady().then(async () => {
         value: JSON.stringify(task),
         category: 'fleet',
         description: `Task: ${title.slice(0, 80)}`,
+        priority: 5,
         updated_at: new Date().toISOString(),
       }, { onConflict: 'key' });
-      return { success: true, taskId };
+      return { success: true, taskId, target: resolvedTarget, category };
     } catch (e) { return { success: false, error: e.message }; }
   });
 

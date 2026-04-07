@@ -704,17 +704,28 @@ function renderOrchestrationPanel(data) {
       </select>
       <button class="panel-btn btn-primary" onclick="dispatchTask(document.getElementById('orchDispatchInput').value)">Dispatch</button>
     </div>
+    <div id="orchDispatchStatus" style="font-size:11px;margin-top:6px;font-family:'JetBrains Mono',monospace;"></div>
   `;
 }
 
 async function dispatchTask(title) {
   if (!title.trim()) return;
   const target = document.getElementById('orchDispatchTarget')?.value || 'auto';
+  const statusEl = document.getElementById('orchDispatchStatus');
+
   try {
-    await window.brain.dispatchTask(title, target);
+    if (statusEl) statusEl.innerHTML = '<span style="color:var(--gold);">Dispatching...</span>';
+    const result = await window.brain.dispatchTask(title, target);
     document.getElementById('orchDispatchInput').value = '';
-    setTimeout(() => loadOrchestrationPanel(), 500);
-  } catch (e) { console.error('Dispatch failed:', e); }
+    if (statusEl) {
+      statusEl.innerHTML = `<span style="color:var(--result);">✅ Dispatched → ${escapeHtml(result.target || 'auto')} [${escapeHtml(result.category || 'general')}]</span>`;
+      setTimeout(() => { if (statusEl) statusEl.innerHTML = ''; }, 4000);
+    }
+    setTimeout(() => loadOrchestrationPanel(), 800);
+  } catch (e) {
+    console.error('Dispatch failed:', e);
+    if (statusEl) statusEl.innerHTML = `<span style="color:var(--alert);">❌ ${escapeHtml(e.message)}</span>`;
+  }
 }
 
 async function dispatchPattern(pattern) {
