@@ -252,6 +252,63 @@ RULES:
     this.bootStatus = { phase: 'booted', systems: results, timestamp: new Date().toISOString() };
     return results;
   }
+
+  // ═══ L6 VAULT — decrypt secrets for autonomous operation ═══
+
+  /**
+   * Set vault passphrase (stored in electron-store, never in brain)
+   */
+  setVaultPassphrase(passphrase) {
+    this.store.set('vault_passphrase', passphrase);
+  }
+
+  /**
+   * Decrypt a vault entry by service name
+   * Uses GPG symmetric decryption with stored passphrase
+   * Returns parsed JSON or string
+   */
+  async decryptFromVault(service) {
+    if (!this.supabase) throw new Error('Not connected to brain');
+
+    const passphrase = this.store.get('vault_passphrase');
+    if (!passphrase) throw new Error('Vault passphrase not set');
+
+    const { data, error } = await this.supabase
+      .from('brain_vault')
+      .select('secret_encrypted, tier')
+      .eq('service', service)
+      .single();
+
+    if (error || !data?.secret_encrypted) {
+      throw new Error(`Vault entry not found: ${service}`);
+    }
+
+    // GPG symmetric decrypt
+    const { execSync } = require('child_process');
+    try {
+      const encrypted = data.secret_encrypted;
+      const decrypted = execSync(
+        `echo "${encrypted}" | base64 -d | gpg --batch --passphrase ${JSON.stringify(passphrase)} --decrypt 2>/dev/null`,
+        { encoding: 'utf8', timeout: 5000 }
+      );
+
+      try { return JSON.parse(decrypted); } catch { return decrypted.trim(); }
+    } catch (e) {
+      throw new Error(`Vault decrypt failed for ${service}: ${e.message}`);
+    }
+  }
+
+  /**
+   * List all vault services (names only, no secrets)
+   */
+  async listVaultServices() {
+    if (!this.supabase) return [];
+    const { data } = await this.supabase
+      .from('brain_vault')
+      .select('service, description, tier')
+      .order('service');
+    return data || [];
+  }
 }
 
 module.exports = { BrainContext };

@@ -581,6 +581,54 @@ class BrainMCP {
         },
       },
 
+      // ---- VAULT (L6 AUTONOMOUS ACCESS) ----
+      'brain_vault_list': {
+        description: 'List all vault services (names and descriptions, no secrets).',
+        inputSchema: { type: 'object', properties: {} },
+        annotations: { readOnlyHint: true },
+        handler: async () => {
+          return await this.brainContext.listVaultServices();
+        },
+      },
+
+      'brain_vault_decrypt': {
+        description: 'Decrypt a vault secret by service name. Returns the decrypted credential. Use for autonomous API access.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            service: { type: 'string', description: 'Service name (e.g., "stripe", "github", "resend", "supabase.old_brain")' },
+          },
+          required: ['service'],
+        },
+        annotations: { readOnlyHint: true },
+        handler: async ({ service }) => {
+          return await this.brainContext.decryptFromVault(service);
+        },
+      },
+
+      // ---- AGENT MEMORY ----
+      'brain_memory_search': {
+        description: 'Search agent memory (13K+ learnings, conversations, self-improvements). Full-text search with ranking.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            query: { type: 'string', description: 'Search query' },
+            limit: { type: 'number', description: 'Max results (default 10)' },
+          },
+          required: ['query'],
+        },
+        annotations: { readOnlyHint: true },
+        handler: async ({ query, limit }) => {
+          if (!this.brainContext.supabase) throw new Error('Not connected');
+          const { data, error } = await this.brainContext.supabase.rpc('memory_search', {
+            search_query: query,
+            max_results: limit || 10,
+          });
+          if (error) throw error;
+          return { query, matches: data?.length || 0, results: data || [] };
+        },
+      },
+
       // ---- EXECUTE SLASH COMMAND ----
       'brain_execute_command': {
         description: 'Execute any Faye slash command (e.g., "/status", "/crm", "/report"). Returns the formatted result.',
