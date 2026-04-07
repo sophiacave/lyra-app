@@ -41,6 +41,7 @@ const { BrainMCP } = require('./brain-mcp');
 const { BrainKnowledge } = require('./brain-knowledge');
 const { BrainAgent } = require('./brain-agent');
 const { ClaudeCodeAgent } = require('./claude-code-agent');
+const { FayeAgent } = require('./faye-agent');
 const { ElectronMCPBridge } = require('./electron-mcp-bridge');
 const { PluginLoader } = require('./plugin-loader');
 const { HookSystem } = require('./hook-system');
@@ -56,6 +57,7 @@ let brainMCP;
 let brainKnowledge;
 let brainAgent;
 let claudeCodeAgent;
+let fayeAgent;
 let pluginLoader;
 let hookSystem;
 
@@ -119,6 +121,15 @@ app.whenReady().then(async () => {
 
     // ============ INIT MCP SERVER ============
     brainMCP = new BrainMCP(brainContext, brainAPI, localEngine, scheduler);
+
+    // ============ INIT SOVEREIGN AGENT ============
+    fayeAgent = new FayeAgent(brainMCP, brainContext);
+    fayeAgent.refreshBrainCache().catch(() => {});
+    // Connect fractal-mac-link MCP tools (async, non-blocking)
+    fayeAgent.connectFractal().then(ok => {
+      console.log('[FayeAgent]', ok ? `✅ Sovereign agent: ${fayeAgent.tools.length} tools (fractal connected)` : `⚠️ Sovereign agent: ${fayeAgent.tools.length} tools (fractal offline)`);
+    }).catch(() => {});
+    console.log('[FayeAgent] ✅ Sovereign agent initialized with', fayeAgent.tools.length, 'base tools');
 
     // ============ INIT AGENT ============
     brainAgent = new BrainAgent(brainContext, brainAPI, localEngine, brainMCP, brainKnowledge);
@@ -309,8 +320,18 @@ app.whenReady().then(async () => {
         }
       }
 
-      // 3. Fallback: legacy brainAPI path
-      console.log('[IPC] Claude Code SDK unavailable, falling back to brainAPI...');
+      // 3. Sovereign Agent — Ollama with tool calling (zero Anthropic dependency)
+      if (fayeAgent) {
+        const ollamaStatus = await fayeAgent.isAvailable();
+        if (ollamaStatus.available) {
+          console.log('[IPC] SOVEREIGN AGENT: Ollama tool loop with', fayeAgent.tools.length, 'tools');
+          const result = await fayeAgent.run(message, mainWindow);
+          return result;
+        }
+      }
+
+      // 4. Fallback: legacy brainAPI path
+      console.log('[IPC] No agent available, falling back to brainAPI...');
       const route = await smartRouter.route(message);
 
       if (!route.providerAvailable) {
@@ -388,6 +409,7 @@ app.whenReady().then(async () => {
         success: true, status, budget,
         provider: provider?.name || 'None',
         sdkReady,
+        sovereign: fayeAgent?.getStatus() || {},
         knowledge: brainKnowledge?.getStats() || {},
         agent: brainAgent?.getStatus() || {},
         version: APP_VERSION,
@@ -398,12 +420,14 @@ app.whenReady().then(async () => {
   ipcMain.handle('brain:clear-conversation', () => {
     brainAPI.clearConversation();
     if (claudeCodeAgent) claudeCodeAgent.clearSession();
+    if (fayeAgent) fayeAgent.clearHistory();
     return { success: true };
   });
 
   // Cancel active Claude Code SDK query
   ipcMain.handle('brain:cancel-query', () => {
     if (claudeCodeAgent) claudeCodeAgent.cancel();
+    if (fayeAgent) fayeAgent.cancel();
     return { success: true };
   });
   ipcMain.handle('brain:get-config', () => brainContext.getConfig());
