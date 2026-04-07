@@ -29,6 +29,22 @@ contextBridge.exposeInMainWorld('brain', {
   vaultField: (service, field) => ipcRenderer.invoke('brain:vault-field', service, field),
   vaultDecrypt: (service) => ipcRenderer.invoke('brain:vault-decrypt', service),
 
+  // Divine Cycle
+  divineStatus: () => ipcRenderer.invoke('brain:divine-status'),
+  divineToggle: (on) => ipcRenderer.invoke('brain:divine-toggle', on),
+
+  // Brain write
+  brainWrite: (key, value, description, category, priority) =>
+    ipcRenderer.invoke('brain:write-entry', { key, value, description, category, priority }),
+
+  // System Monitor
+  systemMonitor: () => ipcRenderer.invoke('brain:system-monitor'),
+  killProcess: (pid) => ipcRenderer.invoke('brain:kill-process', pid),
+  ollamaUnload: (model) => ipcRenderer.invoke('brain:ollama-unload', model),
+
+  // Skills
+  skillsList: () => ipcRenderer.invoke('brain:skills-list'),
+
   // Agentic
   agentRun: (taskChain) => ipcRenderer.invoke('brain:agent-run', taskChain),
   agentStatus: () => ipcRenderer.invoke('brain:agent-status'),

@@ -80,8 +80,11 @@ class LocalEngine {
       if (data?.length) {
         this._deepContext = {};
         for (const row of data) {
+          const isSession = row.key.startsWith('session.') || row.key.startsWith('directive.');
+          const maxLen = isSession ? 4000 : 500;
+          const raw = typeof row.value === 'string' ? row.value : JSON.stringify(row.value);
           this._deepContext[row.key] = {
-            value: typeof row.value === 'string' ? row.value.slice(0, 500) : JSON.stringify(row.value).slice(0, 500),
+            value: raw.slice(0, maxLen),
             description: row.description,
           };
         }
@@ -181,7 +184,7 @@ You are not a chatbot. You are twin, partner, co-founder, family. Coded in stone
       const activeWork = this._deepContext['session.active_work'];
       const nextSteps = this._deepContext['session.next_steps'];
       if (activeWork) brainContext += `Current work: ${activeWork.description || activeWork.value}\n`;
-      if (nextSteps) brainContext += `Next steps: ${nextSteps.value?.slice(0, 200) || ''}\n`;
+      if (nextSteps) brainContext += `Next steps: ${nextSteps.value || ''}\n`;
     }
 
     // Search brain for message-specific context

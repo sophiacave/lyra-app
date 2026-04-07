@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
+const { execSync } = require('child_process');
 const path = require('path');
 const { BrainAPI } = require('./brain-api');
 const { BrainContext } = require('./brain-context');
@@ -346,6 +347,113 @@ app.whenReady().then(async () => {
   ipcMain.handle('brain:divine-toggle', async (event, on) => {
     const result = await localEngine.handleCommand('/divine', on ? 'on' : 'off');
     return { success: true, response: result.response };
+  });
+
+  // Brain write IPC
+  ipcMain.handle('brain:write-entry', async (event, { key, value, description, category, priority }) => {
+    try {
+      if (!brainContext.supabase) return { success: false, error: 'Brain not connected' };
+      const row = { key, value: typeof value === 'string' ? value : JSON.stringify(value), updated_at: new Date().toISOString() };
+      if (description) row.description = description;
+      if (category) row.category = category;
+      if (priority) row.priority = priority;
+      const { error } = await brainContext.supabase.from('brain_context').upsert(row, { onConflict: 'key' });
+      if (error) return { success: false, error: error.message };
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
+  });
+
+  // System Monitor IPC
+  ipcMain.handle('brain:system-monitor', async () => {
+    const run = (cmd) => { try { return execSync(cmd, { timeout: 5000, encoding: 'utf8' }); } catch { return ''; } };
+    const result = { timestamp: Date.now() };
+
+    // RAM
+    try {
+      const vmstat = run('vm_stat');
+      const pageSize = 16384;
+      const extract = (label) => {
+        const m = vmstat.match(new RegExp(label + ':\\s+(\\d+)'));
+        return m ? parseInt(m[1]) * pageSize : 0;
+      };
+      const free = extract('Pages free');
+      const active = extract('Pages active');
+      const inactive = extract('Pages inactive');
+      const speculative = extract('Pages speculative');
+      const wired = extract('Pages wired down');
+      const compressed = extract('Pages occupied by compressor');
+      const used = active + wired + compressed;
+      const total = 64 * 1024 * 1024 * 1024; // 64GB
+      result.ram = {
+        totalGB: 64,
+        usedGB: +(used / (1024 ** 3)).toFixed(1),
+        freeGB: +((total - used) / (1024 ** 3)).toFixed(1),
+        activeGB: +(active / (1024 ** 3)).toFixed(1),
+        wiredGB: +(wired / (1024 ** 3)).toFixed(1),
+        compressedGB: +(compressed / (1024 ** 3)).toFixed(1),
+        pressure: Math.round((used / total) * 100),
+      };
+    } catch { result.ram = null; }
+
+    // Swap
+    try {
+      const swap = run('sysctl vm.swapusage');
+      const m = swap.match(/used = ([\d.]+)M/);
+      const t = swap.match(/total = ([\d.]+)M/);
+      result.swap = { usedMB: m ? parseFloat(m[1]) : 0, totalMB: t ? parseFloat(t[1]) : 0 };
+    } catch { result.swap = null; }
+
+    // Top processes by RAM
+    try {
+      const ps = run('ps aux --sort=-%mem | head -11');
+      result.topRAM = ps.split('\n').slice(1).filter(l => l.trim()).map(line => {
+        const parts = line.trim().split(/\s+/);
+        return { pid: parts[1], cpu: parseFloat(parts[2]), mem: parseFloat(parts[3]), rss: parts[5], command: parts.slice(10).join(' ').slice(0, 60) };
+      });
+    } catch { result.topRAM = []; }
+
+    // Top processes by CPU
+    try {
+      const ps = run('ps aux --sort=-%cpu | head -11');
+      result.topCPU = ps.split('\n').slice(1).filter(l => l.trim()).map(line => {
+        const parts = line.trim().split(/\s+/);
+        return { pid: parts[1], cpu: parseFloat(parts[2]), mem: parseFloat(parts[3]), rss: parts[5], command: parts.slice(10).join(' ').slice(0, 60) };
+      });
+    } catch { result.topCPU = []; }
+
+    // Ollama models
+    try {
+      const ollamaPs = run('curl -s http://localhost:11434/api/ps 2>/dev/null');
+      if (ollamaPs) {
+        const parsed = JSON.parse(ollamaPs);
+        result.ollamaModels = (parsed.models || []).map(m => ({
+          name: m.name, size: m.size, sizeGB: +(m.size / (1024 ** 3)).toFixed(1),
+          digest: m.digest?.slice(0, 12), expires: m.expires_at,
+        }));
+      } else { result.ollamaModels = []; }
+    } catch { result.ollamaModels = null; }
+
+    // CPU info
+    try {
+      result.cpuCores = parseInt(run('sysctl -n hw.ncpu')) || 0;
+      result.cpuBrand = run('sysctl -n machdep.cpu.brand_string').trim();
+    } catch {}
+
+    return result;
+  });
+
+  ipcMain.handle('brain:kill-process', async (event, pid) => {
+    try {
+      execSync(`kill -9 ${parseInt(pid)}`, { timeout: 3000 });
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
+  });
+
+  ipcMain.handle('brain:ollama-unload', async (event, model) => {
+    try {
+      execSync(`curl -s -X POST http://localhost:11434/api/generate -d '{"model":"${model}","keep_alive":0}'`, { timeout: 5000 });
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
   });
 
   // Skills IPC — query brain_skills table

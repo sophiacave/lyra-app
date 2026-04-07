@@ -8,20 +8,42 @@
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #12121a;
-      --bg-tertiary: #1a1a2e;
-      --border: #2a2a3e;
-      --text-primary: #e4e4ef;
-      --text-secondary: #8888aa;
-      --text-dim: #555570;
-      --accent-purple: #6c5ce7;
-      --accent-pink: #e84393;
-      --accent-cyan: #00cec9;
-      --accent-green: #00b894;
-      --accent-yellow: #fdcb6e;
-      --accent-red: #ff6b6b;
-      --gradient-brand: linear-gradient(135deg, #e84393, #6c5ce7);
+      /* McQueen × Rothko × Apple — Visual Bible V2 */
+      /* Foundations */
+      --void: #0B0A10;
+      --chalk: #F0EBE3;
+      --smoke: #8A8490;
+      --ash: #2D2A33;
+      --obsidian: #1A1720;
+      /* Semantic */
+      --signal: #D4956B;
+      --process: #8BAFC4;
+      --result: #8CB89E;
+      --alert: #C4616A;
+      --insight: #B898C8;
+      /* Accents */
+      --bone: #E8DDD0;
+      --blush: #D4A0A0;
+      --gold: #C4A86C;
+      /* Glass */
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-blur: 40px;
+      /* Mapped aliases for existing code */
+      --bg-primary: var(--void);
+      --bg-secondary: var(--obsidian);
+      --bg-tertiary: var(--ash);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: var(--chalk);
+      --text-secondary: var(--smoke);
+      --text-dim: #555565;
+      --accent-purple: var(--insight);
+      --accent-pink: var(--blush);
+      --accent-cyan: var(--process);
+      --accent-green: var(--result);
+      --accent-yellow: var(--gold);
+      --accent-red: var(--alert);
+      --gradient-brand: linear-gradient(135deg, var(--insight), var(--process));
     }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
@@ -394,6 +416,372 @@
     .insight-dismiss:hover { color: var(--text-primary); }
     .insight-priority-high { border-color: var(--accent-red); }
     .insight-priority-medium { border-color: var(--accent-yellow); }
+
+    /* ============ NAVIGATION TABS ============ */
+    .nav-tabs {
+      display: flex; flex-direction: column; gap: 2px;
+      padding: 8px 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .nav-tab {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 10px; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      color: var(--text-dim); cursor: pointer;
+      transition: all 0.2s; border: none; background: none;
+      text-align: left; width: 100%;
+    }
+    .nav-tab:hover { color: var(--text-secondary); background: rgba(255,255,255,0.03); }
+    .nav-tab.active {
+      color: var(--text-primary);
+      background: rgba(184, 152, 200, 0.1);
+      border-left: 2px solid var(--accent-purple);
+    }
+    .nav-tab .nav-icon { font-size: 14px; width: 20px; text-align: center; }
+    .nav-tab .nav-label { flex: 1; }
+
+    /* ============ PANEL VIEWS ============ */
+    .panel-view {
+      flex: 1; display: flex; flex-direction: column;
+      overflow: hidden; background: var(--bg-primary);
+    }
+    .panel-header {
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .panel-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px; font-weight: 600;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .panel-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+    .panel-body::-webkit-scrollbar { width: 6px; }
+    .panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .panel-loading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--text-dim); padding: 24px; text-align: center;
+    }
+    .panel-empty {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--text-dim); padding: 24px; text-align: center;
+    }
+    .panel-btn {
+      padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--gradient-brand); border: none; color: white; }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-danger { background: rgba(196, 97, 106, 0.2); border-color: var(--accent-red); color: var(--accent-red); }
+    .btn-danger:hover { background: rgba(196, 97, 106, 0.3); }
+
+    /* ============ BRAIN EXPLORER ============ */
+    .brain-search-bar {
+      display: flex; gap: 8px; margin-bottom: 16px;
+    }
+    .brain-search-input {
+      flex: 1; padding: 8px 14px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-primary); font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; outline: none;
+    }
+    .brain-search-input:focus { border-color: var(--accent-purple); }
+    .brain-stats-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+      align-items: center;
+    }
+    .brain-total {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      font-weight: 600; color: var(--text-primary); margin-right: 8px;
+    }
+    .brain-cat-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 8px; border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      background: rgba(255,255,255,0.04); color: var(--text-secondary);
+    }
+    .cat-count { color: var(--accent-purple); font-weight: 600; }
+    .brain-entry {
+      padding: 12px 16px; margin-bottom: 8px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer; transition: all 0.2s;
+    }
+    .brain-entry:hover { border-color: rgba(184, 152, 200, 0.3); }
+    .brain-entry.expanded { border-color: var(--accent-purple); }
+    .brain-entry-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;
+    }
+    .brain-key {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      font-weight: 600; color: var(--accent-cyan);
+    }
+    .brain-cat {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      padding: 2px 8px; border-radius: 4px;
+    }
+    .priority-high { background: rgba(212, 149, 107, 0.15); color: var(--signal); }
+    .priority-mid { background: rgba(139, 175, 196, 0.15); color: var(--process); }
+    .priority-low { background: rgba(140, 184, 158, 0.15); color: var(--result); }
+    .brain-desc {
+      font-size: 12px; color: var(--text-secondary); margin-bottom: 6px;
+    }
+    .brain-value, .brain-value-full {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-dim); white-space: pre-wrap; word-break: break-all;
+      line-height: 1.5; max-height: 400px; overflow-y: auto;
+    }
+
+    /* ============ DIVINE CYCLE PANEL ============ */
+    .divine-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .divine-status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+    }
+    .divine-status-badge.active { background: rgba(140, 184, 158, 0.15); color: var(--accent-green); }
+    .divine-status-badge.inactive { background: rgba(138, 132, 144, 0.15); color: var(--text-dim); }
+    .divine-status-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: currentColor;
+    }
+    .divine-status-badge.active .dot { animation: pulse 2s ease-in-out infinite; }
+    .divine-cycle-count, .divine-task-progress {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-secondary);
+    }
+    .divine-phases {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-bottom: 24px; padding: 20px;
+      background: var(--bg-secondary); border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .phase-dot {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 12px 20px; border-radius: 8px; transition: all 0.3s;
+    }
+    .phase-dot.phase-active {
+      background: rgba(184, 152, 200, 0.15); box-shadow: 0 0 20px rgba(184, 152, 200, 0.2);
+    }
+    .phase-dot.phase-done { opacity: 0.5; }
+    .phase-dot.phase-pending { opacity: 0.3; }
+    .phase-icon { font-size: 24px; }
+    .phase-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 600; letter-spacing: 1px; color: var(--text-secondary);
+    }
+    .phase-dot.phase-active .phase-label { color: var(--accent-purple); }
+    .phase-connector {
+      width: 24px; height: 2px; background: var(--border); flex-shrink: 0;
+    }
+    .divine-log-header {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 8px;
+    }
+    .divine-log { display: flex; flex-direction: column; gap: 4px; }
+    .divine-log-entry {
+      display: flex; gap: 12px; padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    }
+    .log-time { color: var(--text-dim); flex-shrink: 0; width: 50px; }
+    .log-msg { color: var(--text-secondary); }
+
+    /* ============ FLEET PANEL ============ */
+    .fleet-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px; margin-bottom: 20px;
+    }
+    .fleet-card {
+      padding: 16px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 10px;
+    }
+    .fleet-card-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+    }
+    .fleet-name {
+      font-family: 'JetBrains Mono', monospace; font-size: 14px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .fleet-status-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .fleet-status-dot.online { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+    .fleet-status-dot.unknown { background: var(--text-dim); }
+    .fleet-status-dot.offline { background: var(--accent-red); }
+    .fleet-detail {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-secondary); margin-bottom: 4px;
+    }
+    .fleet-label { color: var(--text-dim); }
+    .fleet-agent-status {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      padding: 8px 14px; border-radius: 6px; margin-bottom: 16px;
+    }
+    .fleet-agent-status.running { background: rgba(139, 175, 196, 0.1); color: var(--accent-cyan); }
+    .fleet-agent-status.idle { background: rgba(138, 132, 144, 0.1); color: var(--text-dim); }
+    .fleet-section-header {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 10px;
+    }
+    .fleet-health { display: flex; flex-direction: column; gap: 6px; }
+    .health-item {
+      display: flex; justify-content: space-between;
+      padding: 8px 12px; background: var(--bg-secondary);
+      border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    }
+    .health-label { color: var(--text-dim); }
+    .health-value { color: var(--text-secondary); }
+    .health-value.ok { color: var(--accent-green); }
+    .health-value.fail { color: var(--accent-red); }
+
+    /* ============ KNOWLEDGE BASE PANEL ============ */
+    .kb-stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-bottom: 20px;
+    }
+    .kb-stat-card {
+      padding: 20px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 10px;
+      text-align: center;
+    }
+    .kb-stat-value {
+      font-family: 'JetBrains Mono', monospace; font-size: 28px;
+      font-weight: 700; color: var(--text-primary);
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .kb-stat-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin-top: 6px;
+    }
+    .kb-search-box {
+      display: flex; gap: 8px; margin-bottom: 16px;
+    }
+    .kb-search-input {
+      flex: 1; padding: 10px 14px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-primary); font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; outline: none;
+    }
+    .kb-search-input:focus { border-color: var(--accent-purple); }
+    .kb-results { display: flex; flex-direction: column; gap: 8px; }
+    .kb-result {
+      padding: 12px 16px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .kb-result-header {
+      display: flex; justify-content: space-between; margin-bottom: 6px;
+    }
+    .kb-result-topic {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      font-weight: 600; color: var(--accent-cyan);
+    }
+    .kb-result-score {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--accent-green);
+    }
+    .kb-result-content {
+      font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+    }
+
+    /* ============ BRAIN EDIT BUTTON ============ */
+    .brain-edit-btn {
+      background: transparent; border: 1px solid var(--process); color: var(--process);
+      font-size: 10px; padding: 2px 8px; border-radius: 4px; cursor: pointer;
+      font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
+      margin-left: auto; opacity: 0;
+    }
+    .brain-entry:hover .brain-edit-btn { opacity: 1; }
+    .brain-edit-btn:hover { background: var(--process); color: var(--void); }
+
+    /* ============ SYSTEM MONITOR ============ */
+    .monitor-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
+    }
+    .monitor-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 12px; padding: 16px;
+    }
+    .monitor-card-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .ram-bar-outer {
+      background: var(--ash); border-radius: 6px; height: 24px; position: relative;
+      overflow: hidden; margin-bottom: 8px;
+    }
+    .ram-bar-fill {
+      height: 100%; border-radius: 6px; transition: width 0.4s ease;
+      background: var(--accent-green);
+    }
+    .ram-bar-fill.warning { background: var(--gold); }
+    .ram-bar-fill.critical { background: var(--alert); }
+    .ram-bar-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      color: var(--chalk); text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .ram-breakdown {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .ram-stat {
+      font-size: 11px; color: var(--text-secondary);
+    }
+    .ram-stat-value { color: var(--chalk); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .swap-info {
+      font-size: 11px; color: var(--text-secondary); margin-top: 8px;
+    }
+    .swap-info .swap-value { color: var(--gold); font-weight: 600; }
+    .process-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .process-table th {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;
+      text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--border);
+    }
+    .process-table td {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 8px;
+      color: var(--chalk); border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .process-table tr:hover { background: rgba(255,255,255,0.03); }
+    .process-table .cmd { color: var(--text-secondary); max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .process-table .high { color: var(--alert); font-weight: 600; }
+    .kill-btn {
+      background: transparent; border: 1px solid var(--alert); color: var(--alert);
+      font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer;
+      font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
+    }
+    .kill-btn:hover { background: var(--alert); color: var(--void); }
+    .ollama-model {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;
+      margin-bottom: 6px;
+    }
+    .ollama-model-name { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--chalk); }
+    .ollama-model-size { font-size: 11px; color: var(--text-secondary); }
+    .unload-btn {
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      font-size: 10px; padding: 2px 8px; border-radius: 4px; cursor: pointer;
+      font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
+    }
+    .unload-btn:hover { background: var(--gold); color: var(--void); }
+    .monitor-cpu-info {
+      font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;
+    }
+    .monitor-cpu-info strong { color: var(--chalk); }
+    .monitor-empty { color: var(--text-secondary); font-size: 12px; font-style: italic; }
+    .monitor-section { margin-bottom: 20px; }
+    .monitor-section-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+      color: var(--process); margin-bottom: 10px; letter-spacing: 0.5px;
+    }
   </style>
 </head>
 <body>
@@ -403,6 +791,26 @@
 
   <div class="main-layout">
     <div class="sidebar">
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-panel="chat" onclick="switchPanel('chat')">
+          <span class="nav-icon">💬</span><span class="nav-label">Chat</span>
+        </button>
+        <button class="nav-tab" data-panel="brain" onclick="switchPanel('brain')">
+          <span class="nav-icon">🧠</span><span class="nav-label">Brain</span>
+        </button>
+        <button class="nav-tab" data-panel="divine" onclick="switchPanel('divine')">
+          <span class="nav-icon">♾️</span><span class="nav-label">Divine Cycle</span>
+        </button>
+        <button class="nav-tab" data-panel="fleet" onclick="switchPanel('fleet')">
+          <span class="nav-icon">🖥️</span><span class="nav-label">Fleet</span>
+        </button>
+        <button class="nav-tab" data-panel="kb" onclick="switchPanel('kb')">
+          <span class="nav-icon">📚</span><span class="nav-label">Knowledge</span>
+        </button>
+        <button class="nav-tab" data-panel="monitor" onclick="switchPanel('monitor')">
+          <span class="nav-icon">⚡</span><span class="nav-label">System</span>
+        </button>
+      </div>
       <div class="sidebar-header">
         <h2>System Status</h2>
       </div>
@@ -441,7 +849,7 @@
       </div>
     </div>
 
-    <div class="chat-area">
+    <div class="chat-area panel-view" id="panel-chat" style="display:flex;">
       <div class="chat-messages" id="chatMessages">
         <div class="welcome-screen" id="welcomeScreen">
           <div class="welcome-logo">💜</div>
@@ -508,6 +916,54 @@
           <span id="tokenCount"></span>
         </div>
       </div>
+    </div>
+
+    <!-- Brain Explorer Panel -->
+    <div class="panel-view" id="panel-brain" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Brain Explorer</span>
+      </div>
+      <div class="panel-body">
+        <div class="brain-search-bar">
+          <input type="text" class="brain-search-input" placeholder="Filter brain entries..."
+                 oninput="filterBrain(this.value)">
+        </div>
+        <div class="brain-stats-bar" id="brain-stats"></div>
+        <div id="brain-entries"></div>
+      </div>
+    </div>
+
+    <!-- Divine Cycle Panel -->
+    <div class="panel-view" id="panel-divine" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Divine Cycle</span>
+      </div>
+      <div class="panel-body" id="divine-content"></div>
+    </div>
+
+    <!-- Fleet Panel -->
+    <div class="panel-view" id="panel-fleet" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Fleet Status</span>
+      </div>
+      <div class="panel-body" id="fleet-content"></div>
+    </div>
+
+    <!-- Knowledge Base Panel -->
+    <div class="panel-view" id="panel-kb" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Knowledge Base</span>
+      </div>
+      <div class="panel-body" id="kb-content"></div>
+    </div>
+
+    <!-- System Monitor Panel -->
+    <div class="panel-view" id="panel-monitor" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">System Monitor</span>
+        <button class="panel-btn btn-primary" onclick="loadMonitorPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="monitor-content"></div>
     </div>
   </div>
 
@@ -618,7 +1074,16 @@
     </div>
   </div>
 
-  <script>const marked = require('marked');</script>
+  <script src="dist/marked.min.js"></script>
+  <script src="panels.js"></script>
+  <script>
+    // marked v15 exports as window.marked with .parse method
+    if (typeof marked === 'undefined') {
+      console.error('[Faye] marked.js failed to load from dist/marked.min.js');
+    } else {
+      console.log('[Faye] marked.js loaded:', marked.parse ? 'v15 (parse ready)' : 'checking...');
+    }
+  </script>
   <script>
     let messageCount = 0;
     let isStreaming = false;
