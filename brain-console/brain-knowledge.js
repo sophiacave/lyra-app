@@ -45,7 +45,7 @@ class BrainKnowledge {
 
       if (error) {
         // Table might not exist — use local storage fallback
-        console.log('[Knowledge] brain_knowledge table not found, using local storage');
+        // KB now uses brain_context/episodes/graph directly — this table is optional
         this.documents = this.store.get('knowledge_entries', []);
       } else {
         this.documents = data || [];

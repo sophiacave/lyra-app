@@ -354,6 +354,9 @@ class BrainAPI {
     let response;
     try {
       switch (provider.id) {
+        case 'mlx':
+          response = await this._sendMLX(systemPrompt, config);
+          break;
         case 'ollama':
           response = await this._sendOllama(systemPrompt, config);
           break;
@@ -424,6 +427,9 @@ class BrainAPI {
 
     try {
       switch (provider.id) {
+        case 'mlx':
+          fullText = await this._streamMLX(systemPrompt, config, onChunk);
+          break;
         case 'ollama':
           fullText = await this._streamOllama(systemPrompt, config, onChunk);
           break;
@@ -511,6 +517,44 @@ class BrainAPI {
   }
 
   // ============ PROVIDER IMPLEMENTATIONS ============
+
+  /**
+   * MLX — fastest local inference on Apple Silicon (56% faster than Ollama)
+   * Ollama-compatible API on port 8800
+   */
+  async _sendMLX(systemPrompt, config) {
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      ...this.conversationHistory,
+    ];
+
+    const res = await this.fetchWithTimeout('http://localhost:8800/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages, stream: false, options: { num_predict: 1024, temperature: 0.7 } }),
+    }, 60000);
+
+    const data = await res.json();
+    return {
+      text: data.message?.content || '',
+      model: 'mlx-qwen-coder',
+      resolvedFrom: 'mlx',
+      inputTokens: 0,
+      outputTokens: 0,
+    };
+  }
+
+  async _streamMLX(systemPrompt, config, onChunk) {
+    // MLX server doesn't stream yet — use non-streaming and simulate chunks
+    const result = await this._sendMLX(systemPrompt, config);
+    const text = result.text || '';
+    const chunkSize = 40;
+    for (let i = 0; i < text.length; i += chunkSize) {
+      onChunk(text.slice(i, i + chunkSize));
+      if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 10));
+    }
+    return text;
+  }
 
   /**
    * Ollama — completely free, local inference

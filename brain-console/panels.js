@@ -31,6 +31,8 @@ function switchPanel(panelName) {
   if (panelName === 'orchestration') loadOrchestrationPanel();
   if (panelName === 'integrations') loadIntegrationsPanel();
   if (panelName === 'vault') loadVaultPanel();
+  if (panelName === 'editor') loadEditorPanel();
+  if (panelName === 'terminal') loadTerminalPanel();
 }
 
 // ============ BRAIN EXPLORER ============
@@ -52,7 +54,19 @@ async function loadBrainPanel() {
       return;
     }
 
-    brainEntries = result.context;
+    // Context may be object {key: value} or array — normalize to array
+    const ctx = result.context;
+    if (Array.isArray(ctx)) {
+      brainEntries = ctx;
+    } else {
+      brainEntries = Object.entries(ctx).map(([key, value]) => ({
+        key,
+        value,
+        category: key.split('.')[0],
+        description: typeof value === 'object' ? (value.law || value.status || '') : '',
+        priority: 5,
+      }));
+    }
     renderBrainEntries();
 
     // Stats
@@ -234,7 +248,12 @@ async function loadFleetPanel() {
     // Try to find fleet context in brain
     let fleetContext = null;
     if (ctx.success && ctx.context) {
-      fleetContext = ctx.context.find(e => e.key === 'computers.registry');
+      // Context may be object or array
+      if (Array.isArray(ctx.context)) {
+        fleetContext = ctx.context.find(e => e.key === 'computers.registry');
+      } else if (ctx.context['computers.registry']) {
+        fleetContext = { key: 'computers.registry', value: ctx.context['computers.registry'] };
+      }
     }
 
     const machineCards = machines.map(m => `
@@ -289,35 +308,37 @@ async function loadKBPanel() {
   const container = document.getElementById('kb-content');
   if (!container) return;
 
-  container.innerHTML = '<div class="panel-loading">Loading knowledge base...</div>';
+  container.innerHTML = '<div class="panel-loading">Loading knowledge stores...</div>';
 
   try {
     const stats = await window.brain.kbStats();
+    const categories = stats.categories || [];
+    const total = stats.totalEntries || 0;
+
+    const catCards = categories.map(c => `
+      <div class="kb-stat-card" onclick="searchKB('${c.name.toLowerCase()}')">
+        <div class="kb-stat-value">${c.icon || '📊'} ${c.count.toLocaleString()}</div>
+        <div class="kb-stat-label">${c.name}</div>
+      </div>
+    `).join('');
 
     container.innerHTML = `
       <div class="kb-stats-grid">
-        <div class="kb-stat-card">
-          <div class="kb-stat-value">${stats.totalEntries || stats.localEntries || 0}</div>
-          <div class="kb-stat-label">Total Entries</div>
+        <div class="kb-stat-card" style="background: var(--gradient-brand); color: white;">
+          <div class="kb-stat-value" style="font-size: 28px;">${total.toLocaleString()}</div>
+          <div class="kb-stat-label">Total Knowledge Entries</div>
         </div>
-        <div class="kb-stat-card">
-          <div class="kb-stat-value">${stats.categories?.length || 0}</div>
-          <div class="kb-stat-label">Categories</div>
-        </div>
-        <div class="kb-stat-card">
-          <div class="kb-stat-value">${stats.recentlyAdded || 0}</div>
-          <div class="kb-stat-label">Added Today</div>
-        </div>
+        ${catCards}
       </div>
       <div class="kb-search-box">
-        <input type="text" class="kb-search-input" placeholder="Search knowledge base..."
+        <input type="text" class="kb-search-input" placeholder="Search across ALL knowledge stores (context, episodes, graph, chunks, archive)..."
                onkeydown="if(event.key==='Enter')searchKB(this.value)">
         <button class="panel-btn btn-primary" onclick="searchKB(this.previousElementSibling.value)">Search</button>
       </div>
       <div id="kb-results" class="kb-results"></div>
     `;
   } catch (e) {
-    container.innerHTML = `<div class="panel-empty">Knowledge base unavailable: ${e.message}</div>`;
+    container.innerHTML = `<div class="panel-empty">Knowledge stores unavailable: ${e.message}</div>`;
   }
 }
 
@@ -336,15 +357,23 @@ async function searchKB(query) {
       return;
     }
 
-    resultsEl.innerHTML = results.map(r => `
+    const sourceIcons = { brain_context: '🧠', episodes: '📜', graph: '🕸️', chunks: '🔍', archive: '📦' };
+    const sourceColors = { brain_context: 'var(--accent-purple)', episodes: 'var(--accent-cyan)', graph: 'var(--accent-green)', chunks: 'var(--accent-yellow)', archive: 'var(--smoke)' };
+
+    resultsEl.innerHTML = `<div style="font-size:11px;color:var(--smoke);margin-bottom:12px;">${results.length} results across ${[...new Set(results.map(r=>r.source))].length} knowledge stores</div>` +
+    results.map(r => {
+      const icon = sourceIcons[r.source] || '📊';
+      const color = sourceColors[r.source] || 'var(--smoke)';
+      return `
       <div class="kb-result">
         <div class="kb-result-header">
           <span class="kb-result-topic">${escapeHtml(r.topic || r.key || '?')}</span>
-          <span class="kb-result-score">${r.score ? (r.score * 100).toFixed(0) + '%' : ''}</span>
+          <span style="font-size:10px;padding:2px 6px;border-radius:4px;background:${color}20;color:${color};font-family:'JetBrains Mono',monospace;">${icon} ${r.source || '?'}</span>
         </div>
         <div class="kb-result-content">${escapeHtml((r.content || r.value || '').slice(0, 300))}</div>
+        ${r.updated_at ? `<div style="font-size:10px;color:var(--smoke);margin-top:4px;">${new Date(r.updated_at).toLocaleString()}</div>` : ''}
       </div>
-    `).join('');
+    `}).join('');
   } catch (e) {
     resultsEl.innerHTML = `<div class="panel-empty">Search failed: ${e.message}</div>`;
   }

@@ -4,7 +4,8 @@ const Store = require('electron-store');
 const DEFAULT_CONFIG = {
   // Brain V2 — primary brain (ACTIVE)
   supabaseUrl: 'https://tnsujchfrixxsdpodygu.supabase.co',
-  supabaseKey: process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U',
+  // Prefer service role key (full access) over anon key (RLS restricted)
+  supabaseKey: process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U',
   // AI Provider — Ollama first, always (token resilience)
   aiProvider: 'ollama', // ollama | groq | openrouter | anthropic
   // Provider keys (only fill what you use)
@@ -53,8 +54,12 @@ class BrainContext {
 
   async initialize() {
     const config = this.getConfig();
-    if (config.supabaseUrl && config.supabaseKey) {
-      this.supabase = createClient(config.supabaseUrl, config.supabaseKey);
+    // Always prefer service role key from env over stored anon key
+    const serviceKey = process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const key = serviceKey || config.supabaseKey;
+    const url = process.env.SUPABASE_URL || config.supabaseUrl;
+    if (url && key) {
+      this.supabase = createClient(url, key);
       await this.loadContext();
       this.bootStatus.phase = 'connected';
     }

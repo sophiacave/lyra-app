@@ -1,6 +1,37 @@
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
+
+// Set app name for dock and task switcher
+app.setName('Like One');
+if (app.dock) app.dock.setIcon(require('path').join(__dirname, 'assets', 'icon.png'));
 const { execSync } = require('child_process');
 const path = require('path');
+const fs = require('fs');
+const os = require('os');
+
+// ═══ Load environment from brain's .env (production app doesn't inherit shell env) ═══
+const BRAIN_ENV = path.join(os.homedir(), '.fractal_brain', '.env');
+try {
+  const envContent = fs.readFileSync(BRAIN_ENV, 'utf8');
+  for (const line of envContent.split('\n')) {
+    const eq = line.indexOf('=');
+    if (eq > 0 && !line.startsWith('#')) {
+      const key = line.slice(0, eq).trim();
+      const val = line.slice(eq + 1).trim();
+      if (val && !process.env[key]) process.env[key] = val;
+    }
+  }
+  // Also load Anthropic key from faye_config.json if available
+  const fayeConfig = path.join(os.homedir(), '.fractal_brain', 'faye_config.json');
+  if (fs.existsSync(fayeConfig)) {
+    const config = JSON.parse(fs.readFileSync(fayeConfig, 'utf8'));
+    if (config.anthropic_api_key && !process.env.ANTHROPIC_API_KEY) {
+      process.env.ANTHROPIC_API_KEY = config.anthropic_api_key;
+    }
+  }
+} catch (e) {
+  console.warn('[Env] Could not load brain .env:', e.message);
+}
+const { TerminalManager } = require('./terminal-manager');
 const { BrainAPI } = require('./brain-api');
 const { BrainContext } = require('./brain-context');
 const { LocalEngine } = require('./local-engine');
@@ -9,8 +40,13 @@ const { Scheduler } = require('./scheduler');
 const { BrainMCP } = require('./brain-mcp');
 const { BrainKnowledge } = require('./brain-knowledge');
 const { BrainAgent } = require('./brain-agent');
+const { ClaudeCodeAgent } = require('./claude-code-agent');
+const { ElectronMCPBridge } = require('./electron-mcp-bridge');
+const { PluginLoader } = require('./plugin-loader');
+const { HookSystem } = require('./hook-system');
 
 let mainWindow;
+let terminalManager;
 let brainAPI;
 let brainContext;
 let localEngine;
@@ -19,9 +55,12 @@ let scheduler;
 let brainMCP;
 let brainKnowledge;
 let brainAgent;
+let claudeCodeAgent;
+let pluginLoader;
+let hookSystem;
 
-const APP_NAME = 'Faye';
-const APP_VERSION = '4.0.0';
+const APP_NAME = 'Like One';
+const APP_VERSION = '5.0.0-alpha';
 
 function createWindow() {
   nativeTheme.themeSource = 'dark';
@@ -31,6 +70,7 @@ function createWindow() {
     height: 800,
     minWidth: 800,
     minHeight: 600,
+    icon: path.join(__dirname, 'assets', 'icon.png'),
     titleBarStyle: 'hiddenInset',
     backgroundColor: '#0a0a0f',
     webPreferences: {
@@ -60,10 +100,12 @@ app.whenReady().then(async () => {
   try {
     // ============ INIT CORE ============
     brainContext = new BrainContext();
-    // Store vault passphrase on first boot (Faye provided it)
-    if (!brainContext.store.get('vault_passphrase')) {
-      brainContext.setVaultPassphrase('Angelica and Faye Across the Universe');
-    }
+    // Store vault passphrase on first boot
+    try {
+      if (typeof brainContext.setVaultPassphrase === 'function' && !brainContext.store.get('vault_passphrase')) {
+        brainContext.setVaultPassphrase('Angelica and Faye Across the Universe');
+      }
+    } catch {}
     await brainContext.initialize();
     brainAPI = new BrainAPI(brainContext);
     await brainAPI.restoreConversation();
@@ -80,6 +122,22 @@ app.whenReady().then(async () => {
 
     // ============ INIT AGENT ============
     brainAgent = new BrainAgent(brainContext, brainAPI, localEngine, brainMCP, brainKnowledge);
+
+    // ============ INIT CLAUDE CODE AGENT ============
+    claudeCodeAgent = new ClaudeCodeAgent();
+    claudeCodeAgent.isAvailable().then(ok => {
+      console.log('[ClaudeCodeAgent]', ok ? '✅ SDK ready' : '⚠️ SDK not available, falling back to brainAPI');
+      // Give divine cycle access to SDK for task execution
+      if (ok) localEngine.sdkAgent = claudeCodeAgent;
+    }).catch(() => {});
+
+    // ============ INIT PLUGINS ============
+    pluginLoader = new PluginLoader();
+    pluginLoader.loadAll();
+
+    // ============ INIT HOOKS ============
+    hookSystem = new HookSystem(brainContext);
+    await hookSystem.loadFromBrain();
 
     // ============ WIRE REFERENCES ============
     localEngine.setScheduler(scheduler);
@@ -111,6 +169,10 @@ app.whenReady().then(async () => {
       // Start proactive brain loop after 5s
       setTimeout(() => startProactiveBrain(), 5000);
 
+      // ============ ELECTRON MCP BRIDGE — gives Claude Code direct app control ============
+      const bridge = new ElectronMCPBridge(mainWindow);
+      bridge.start();
+
       // ============ AUTO-START DIVINE CYCLE (L6 — never stops) ============
       setTimeout(async () => {
         try {
@@ -124,18 +186,6 @@ app.whenReady().then(async () => {
           }
         } catch (e) { console.error('[Divine] Auto-start failed:', e.message); }
       }, 8000);
-
-      // ============ AUTO-WARM Ollama primary model ============
-      try {
-        const config = brainContext.getConfig();
-        const model = config.ollamaModel || 'qwen2.5:32b';
-        fetch('http://localhost:11434/api/generate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ model, prompt: 'ping', stream: false, options: { num_predict: 1 } }),
-        }).catch(() => {});
-        console.log(`[Boot] Warming Ollama: ${model}`);
-      } catch {}
 
       // Log boot to brain
       if (brainContext.supabase) {
@@ -195,30 +245,56 @@ app.whenReady().then(async () => {
     let originalProvider;
     try {
       console.log('[IPC] stream-message received:', message);
-      const local = await localEngine.tryHandle(message);
-      console.log('[IPC] tryHandle result:', local.handled);
-      if (local.handled) {
-        // Stream the response in chunks for natural feel
-        const text = local.response || '';
-        const chunkSize = 40; // ~40 chars per chunk for smooth streaming
-        for (let i = 0; i < text.length; i += chunkSize) {
-          mainWindow.webContents.send('brain:stream-chunk', text.slice(i, i + chunkSize));
-          if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 15)); // 15ms between chunks
+
+      const sdkReady = claudeCodeAgent && await claudeCodeAgent.isAvailable();
+
+      // 1. Slash commands always go through local engine (zero tokens)
+      // 2. When SDK is ready, ALL natural language goes to SDK — local intent matching disabled
+      if (message.trim().startsWith('/')) {
+        const local = await localEngine.tryHandle(message);
+        if (local.handled) {
+          const text = local.response || '';
+          const chunkSize = 40;
+          for (let i = 0; i < text.length; i += chunkSize) {
+            mainWindow.webContents.send('brain:stream-chunk', text.slice(i, i + chunkSize));
+            if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 15));
+          }
+          mainWindow.webContents.send('brain:stream-end', { provider: 'Faye (local)', fromLocal: true });
+          return { success: true };
         }
-        mainWindow.webContents.send('brain:stream-end', { provider: 'Faye (local)', fromLocal: true });
-        return { success: true };
+      } else if (!sdkReady) {
+        // SDK not available — fall back to local intent matching
+        const local = await localEngine.tryHandle(message);
+        if (local.handled) {
+          const text = local.response || '';
+          const chunkSize = 40;
+          for (let i = 0; i < text.length; i += chunkSize) {
+            mainWindow.webContents.send('brain:stream-chunk', text.slice(i, i + chunkSize));
+            if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 15));
+          }
+          mainWindow.webContents.send('brain:stream-end', { provider: 'Faye (local)', fromLocal: true });
+          return { success: true };
+        }
       }
 
+      // 2. Claude Code SDK agent (full agent with tools + brain MCP)
+      if (sdkReady) {
+        console.log('[IPC] Routing to Claude Code SDK agent...');
+        const result = await claudeCodeAgent.streamQuery(message, mainWindow);
+        return result;
+      }
+
+      // 3. Fallback: legacy brainAPI path
+      console.log('[IPC] Claude Code SDK unavailable, falling back to brainAPI...');
       const route = await smartRouter.route(message);
 
       if (!route.providerAvailable) {
         mainWindow.webContents.send('brain:stream-chunk',
           '**No AI provider available.**\n\n' +
-          'Faye works best with local AI:\n\n' +
-          '1. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n' +
-          '2. **Groq** — Free key at console.groq.com\n' +
-          '3. **OpenRouter** — openrouter.ai\n' +
-          '4. **Anthropic** — console.anthropic.com\n\n' +
+          'Install Claude Code SDK or set up a local AI provider:\n\n' +
+          '1. **Claude Code SDK** — `npm install @anthropic-ai/claude-agent-sdk`\n' +
+          '2. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n' +
+          '3. **Groq** — Free key at console.groq.com\n\n' +
           '`/help` for zero-token commands.'
         );
         mainWindow.webContents.send('brain:stream-end', { provider: 'none' });
@@ -281,10 +357,12 @@ app.whenReady().then(async () => {
     try {
       const status = await brainContext.getSystemStatus();
       const budget = brainAPI.getBudget();
-      const provider = await brainAPI.detectBestProvider();
+      const sdkReady = claudeCodeAgent ? await claudeCodeAgent.isAvailable() : false;
+      const provider = sdkReady ? { name: 'Claude Code SDK' } : await brainAPI.detectBestProvider();
       return {
         success: true, status, budget,
         provider: provider?.name || 'None',
+        sdkReady,
         knowledge: brainKnowledge?.getStats() || {},
         agent: brainAgent?.getStatus() || {},
         version: APP_VERSION,
@@ -292,7 +370,17 @@ app.whenReady().then(async () => {
     } catch (error) { return { success: false, error: error.message }; }
   });
 
-  ipcMain.handle('brain:clear-conversation', () => { brainAPI.clearConversation(); return { success: true }; });
+  ipcMain.handle('brain:clear-conversation', () => {
+    brainAPI.clearConversation();
+    if (claudeCodeAgent) claudeCodeAgent.clearSession();
+    return { success: true };
+  });
+
+  // Cancel active Claude Code SDK query
+  ipcMain.handle('brain:cancel-query', () => {
+    if (claudeCodeAgent) claudeCodeAgent.cancel();
+    return { success: true };
+  });
   ipcMain.handle('brain:get-config', () => brainContext.getConfig());
 
   ipcMain.handle('brain:update-config', async (event, config) => {
@@ -310,17 +398,49 @@ app.whenReady().then(async () => {
   }));
 
   ipcMain.handle('brain:check-providers', async () => {
-    const detected = await brainAPI.detectBestProvider();
-    const ollama = await brainAPI.checkOllama();
-    return { detected, ollama };
+    const sdkReady = claudeCodeAgent ? await claudeCodeAgent.isAvailable() : false;
+    if (sdkReady) {
+      return { detected: { name: 'Claude Code SDK', sdkReady: true }, ollama: false };
+    }
+    try {
+      const detected = brainAPI ? await brainAPI.detectBestProvider() : null;
+      return { detected, ollama: false };
+    } catch { return { detected: null, ollama: false }; }
   });
 
   ipcMain.handle('brain:boot-scan', async () => await brainContext.bootScan());
 
-  // Vault IPC — brain IS the vault
-  ipcMain.handle('brain:vault-list', () => brainContext.listCredentials());
-  ipcMain.handle('brain:vault-get', async (event, service) => brainContext.getCredential(service));
-  ipcMain.handle('brain:vault-field', async (event, service, field) => brainContext.getCredentialField(service, field));
+  // Vault IPC — query brain_vault table
+  ipcMain.handle('brain:vault-list', async () => {
+    const sb = brainContext.supabase;
+    if (!sb) return [];
+    try {
+      const { data } = await sb.from('brain_vault').select('service, description, hint, tier, updated_at').order('service');
+      return (data || []).map(d => ({
+        service: d.service,
+        name: d.service,
+        description: d.description || d.tier || '',
+        masked: d.hint || '••••••••',
+      }));
+    } catch (e) { console.error('[Vault] List error:', e.message); return []; }
+  });
+  ipcMain.handle('brain:vault-get', async (event, service) => {
+    const sb = brainContext.supabase;
+    if (!sb) return null;
+    try {
+      const { data } = await sb.from('brain_vault').select('secret_encrypted, hint').eq('service', service).single();
+      return data?.secret_encrypted || data?.hint || null;
+    } catch (e) { return null; }
+  });
+  ipcMain.handle('brain:vault-field', async (event, service, field) => {
+    const sb = brainContext.supabase;
+    if (!sb) return null;
+    try {
+      const { data } = await sb.from('brain_vault').select('secret_encrypted').eq('service', service).single();
+      const val = typeof data?.secret_encrypted === 'string' ? JSON.parse(data.secret_encrypted) : data?.secret_encrypted;
+      return val?.[field] || null;
+    } catch (e) { return null; }
+  });
   ipcMain.handle('brain:vault-decrypt', async (event, service) => {
     try { return { success: true, data: await brainContext.decryptFromVault(service) }; }
     catch (error) { return { success: false, error: error.message }; }
@@ -333,10 +453,133 @@ app.whenReady().then(async () => {
     catch (error) { return { success: false, error: error.message }; }
   });
 
-  // Knowledge Base IPC
-  ipcMain.handle('brain:kb-search', async (event, query, limit) => brainKnowledge.search(query, limit || 10));
+  // Knowledge Base IPC — unified cross-brain search
+  ipcMain.handle('brain:kb-search', async (event, query, limit) => {
+    const sb = brainContext.supabase;
+    if (!sb) return brainKnowledge.search(query, limit || 10);
+    const results = [];
+    const q = query.toLowerCase();
+    const max = limit || 20;
+
+    // 1. brain_context — key-value pairs (primary knowledge)
+    try {
+      const { data } = await sb.from('brain_context')
+        .select('key, description, category, value, priority, updated_at')
+        .or(`key.ilike.%${q}%,description.ilike.%${q}%`)
+        .order('priority', { ascending: false })
+        .limit(max);
+      if (data) {
+        for (const r of data) {
+          results.push({
+            source: 'brain_context', key: r.key, topic: r.key,
+            content: r.description || (typeof r.value === 'string' ? r.value.slice(0, 300) : JSON.stringify(r.value).slice(0, 300)),
+            category: r.category, priority: r.priority, updated_at: r.updated_at,
+          });
+        }
+      }
+    } catch {}
+
+    // 2. brain_episodes — activity log
+    try {
+      const { data } = await sb.from('brain_episodes')
+        .select('id, event_type, summary, details, created_at')
+        .or(`summary.ilike.%${q}%,event_type.ilike.%${q}%`)
+        .order('created_at', { ascending: false })
+        .limit(Math.min(max, 10));
+      if (data) {
+        for (const r of data) {
+          results.push({
+            source: 'episodes', key: `episode.${r.id}`, topic: r.event_type,
+            content: r.summary || r.details?.slice(0, 200) || '',
+            category: 'episode', updated_at: r.created_at,
+          });
+        }
+      }
+    } catch {}
+
+    // 3. brain_graph — relationships
+    try {
+      const { data } = await sb.from('brain_graph')
+        .select('from_key, to_key, relationship, weight')
+        .or(`from_key.ilike.%${q}%,to_key.ilike.%${q}%,relationship.ilike.%${q}%`)
+        .order('weight', { ascending: false })
+        .limit(Math.min(max, 10));
+      if (data) {
+        for (const r of data) {
+          results.push({
+            source: 'graph', key: `${r.from_key} → ${r.to_key}`,
+            topic: r.relationship,
+            content: `${r.from_key} —[${r.relationship}]→ ${r.to_key} (weight: ${r.weight})`,
+            category: 'graph',
+          });
+        }
+      }
+    } catch {}
+
+    // 4. brain_chunks — RAG semantic chunks
+    try {
+      const { data } = await sb.from('brain_chunks')
+        .select('id, source_key, content, metadata')
+        .ilike('content', `%${q}%`)
+        .limit(Math.min(max, 10));
+      if (data) {
+        for (const r of data) {
+          results.push({
+            source: 'chunks', key: r.source_key || `chunk.${r.id}`,
+            topic: r.source_key || 'RAG chunk',
+            content: r.content?.slice(0, 300) || '',
+            category: 'chunk',
+          });
+        }
+      }
+    } catch {}
+
+    // 5. brain_archive — archived entries
+    try {
+      const { data } = await sb.from('brain_archive')
+        .select('key, category, archive_reason, archived_at')
+        .or(`key.ilike.%${q}%,archive_reason.ilike.%${q}%`)
+        .limit(Math.min(max, 5));
+      if (data) {
+        for (const r of data) {
+          results.push({
+            source: 'archive', key: r.key, topic: r.key,
+            content: r.archive_reason || 'Archived',
+            category: 'archive', updated_at: r.archived_at,
+          });
+        }
+      }
+    } catch {}
+
+    return results.slice(0, max);
+  });
+
   ipcMain.handle('brain:kb-add', async (event, entry) => await brainKnowledge.add(entry));
-  ipcMain.handle('brain:kb-stats', () => brainKnowledge.getStats());
+
+  ipcMain.handle('brain:kb-stats', async () => {
+    const sb = brainContext.supabase;
+    if (!sb) return brainKnowledge.getStats();
+    try {
+      const [ctx, ep, graph, chunks, archive, skills] = await Promise.all([
+        sb.from('brain_context').select('*', { count: 'exact', head: true }),
+        sb.from('brain_episodes').select('*', { count: 'exact', head: true }),
+        sb.from('brain_graph').select('*', { count: 'exact', head: true }),
+        sb.from('brain_chunks').select('*', { count: 'exact', head: true }),
+        sb.from('brain_archive').select('*', { count: 'exact', head: true }),
+        sb.from('brain_skills').select('*', { count: 'exact', head: true }),
+      ]);
+      const categories = [
+        { name: 'Context', count: ctx.count || 0, icon: '🧠' },
+        { name: 'Episodes', count: ep.count || 0, icon: '📜' },
+        { name: 'Graph', count: graph.count || 0, icon: '🕸️' },
+        { name: 'RAG Chunks', count: chunks.count || 0, icon: '🔍' },
+        { name: 'Archive', count: archive.count || 0, icon: '📦' },
+        { name: 'Skills', count: skills.count || 0, icon: '⚡' },
+      ];
+      const total = categories.reduce((s, c) => s + c.count, 0);
+      return { totalEntries: total, categories, recentlyAdded: 0 };
+    } catch (e) { return brainKnowledge.getStats(); }
+  });
 
   // Agent IPC
   ipcMain.handle('brain:agent-run', async (event, chain) => {
@@ -413,21 +656,23 @@ app.whenReady().then(async () => {
       result.swap = { usedMB: m ? parseFloat(m[1]) : 0, totalMB: t ? parseFloat(t[1]) : 0 };
     } catch { result.swap = null; }
 
-    // Top processes by RAM
+    // Top processes by RAM (macOS ps syntax)
     try {
-      const ps = run('ps aux --sort=-%mem | head -11');
+      const ps = run('ps -eo pid,%cpu,%mem,rss,comm -r | head -11');
       result.topRAM = ps.split('\n').slice(1).filter(l => l.trim()).map(line => {
         const parts = line.trim().split(/\s+/);
-        return { pid: parts[1], cpu: parseFloat(parts[2]), mem: parseFloat(parts[3]), rss: parts[5], command: parts.slice(10).join(' ').slice(0, 60) };
+        return { pid: parts[0], cpu: parseFloat(parts[1]), mem: parseFloat(parts[2]), rss: parts[3], command: parts.slice(4).join(' ').slice(0, 60) };
       });
     } catch { result.topRAM = []; }
 
-    // Top processes by CPU
+    // Top processes by CPU (macOS ps syntax)
     try {
-      const ps = run('ps aux --sort=-%cpu | head -11');
-      result.topCPU = ps.split('\n').slice(1).filter(l => l.trim()).map(line => {
+      const ps = run('ps -eo pid,%cpu,%mem,rss,comm -r | head -11');
+      result.topCPU = ps.split('\n').slice(1).filter(l => l.trim()).sort((a, b) => {
+        return parseFloat(b.trim().split(/\s+/)[1]) - parseFloat(a.trim().split(/\s+/)[1]);
+      }).map(line => {
         const parts = line.trim().split(/\s+/);
-        return { pid: parts[1], cpu: parseFloat(parts[2]), mem: parseFloat(parts[3]), rss: parts[5], command: parts.slice(10).join(' ').slice(0, 60) };
+        return { pid: parts[0], cpu: parseFloat(parts[1]), mem: parseFloat(parts[2]), rss: parts[3], command: parts.slice(4).join(' ').slice(0, 60) };
       });
     } catch { result.topCPU = []; }
 
@@ -492,19 +737,37 @@ app.whenReady().then(async () => {
         result.agents = registry.agents || [];
       }
 
-      // Get active tasks from fleet dispatch
-      const { data: taskData } = await sb.from('brain_context')
-        .select('key, value, updated_at')
-        .like('key', 'fleet.task_%')
-        .order('updated_at', { ascending: false })
+      // Get active tasks from task_dispatch table (real fleet dispatch)
+      const { data: taskData } = await sb.from('task_dispatch')
+        .select('*')
+        .in('status', ['pending', 'assigned', 'claimed', 'in_progress'])
+        .order('created_at', { ascending: false })
         .limit(20);
 
       if (taskData?.length) {
-        result.tasks = taskData.map(t => {
-          const val = typeof t.value === 'string' ? JSON.parse(t.value) : t.value;
-          return { ...val, key: t.key, updated_at: t.updated_at };
-        });
+        result.tasks = taskData.map(t => ({
+          ...t,
+          target: t.assigned_to,
+        }));
       }
+
+      // Also count completed/failed for stats
+      const { count: completedCount } = await sb.from('task_dispatch')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'completed');
+      const { count: failedCount } = await sb.from('task_dispatch')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'failed');
+      result.stats.completed = completedCount || 0;
+      result.stats.failed = failedCount || 0;
+
+      // Get last dispatch time
+      const { data: lastTask } = await sb.from('task_dispatch')
+        .select('created_at')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+      if (lastTask) result.stats.lastDispatch = lastTask.created_at;
 
       // Get orchestration stats
       const { data: statsData } = await sb.from('brain_context')
@@ -521,55 +784,48 @@ app.whenReady().then(async () => {
     const sb = brainContext.supabase;
     if (!sb) return { success: false, error: 'Brain not connected' };
 
-    const taskId = `task_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
-
     // Auto-detect category from title keywords
     const titleLower = title.toLowerCase();
     const category = titleLower.match(/video|render|studio/) ? 'studio'
       : titleLower.match(/deploy|vercel|ship/) ? 'deploy'
       : titleLower.match(/social|post|tweet/) ? 'social'
-      : titleLower.match(/test|smoke|verify/) ? 'deploy'
+      : titleLower.match(/test|smoke|verify/) ? 'test'
       : titleLower.match(/stripe|revenue|payment/) ? 'revenue'
       : titleLower.match(/brain|embed|context/) ? 'brain'
       : 'general';
 
     const resolvedTarget = target === 'auto' ? autoRouteTarget(category) : target;
 
-    const task = {
-      id: taskId,
-      title,
-      target: resolvedTarget,
-      status: resolvedTarget ? 'assigned' : 'pending',
-      created_at: new Date().toISOString(),
-      created_by: 'm3_forge',
-      category,
-      priority: 5,
-    };
-
-    // Context boost: attach relevant brain context so the receiving agent has full context
+    // Build context boost payload
+    let payload = {};
     try {
       const contextKeys = ['session.active_work', 'session.next_steps', 'session.divine_plan'];
       const { data: contextData } = await sb.from('brain_context')
         .select('key, value')
         .in('key', contextKeys);
       if (contextData?.length) {
-        task.context_boost = {};
+        payload.context_boost = {};
         contextData.forEach(c => {
-          task.context_boost[c.key] = typeof c.value === 'string' ? c.value.slice(0, 500) : JSON.stringify(c.value).slice(0, 500);
+          payload.context_boost[c.key] = typeof c.value === 'string' ? c.value.slice(0, 500) : JSON.stringify(c.value).slice(0, 500);
         });
       }
     } catch {} // Context boost is best-effort
 
+    // Write to real task_dispatch table (same as mac_fleet_dispatch MCP)
     try {
-      await sb.from('brain_context').upsert({
-        key: `fleet.task_${taskId}`,
-        value: JSON.stringify(task),
-        category: 'fleet',
-        description: `Task: ${title.slice(0, 80)}`,
+      const { data, error } = await sb.from('task_dispatch').insert({
+        title,
+        description: `Dispatched from Faye Console`,
+        assigned_to: resolvedTarget,
+        created_by: 'm3_forge',
+        status: resolvedTarget ? 'assigned' : 'pending',
         priority: 5,
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'key' });
-      return { success: true, taskId, target: resolvedTarget, category };
+        category,
+        payload,
+      }).select('id').single();
+
+      if (error) throw error;
+      return { success: true, taskId: data.id, target: resolvedTarget, category };
     } catch (e) { return { success: false, error: e.message }; }
   });
 
@@ -676,6 +932,113 @@ app.whenReady().then(async () => {
     return result;
   });
 
+  // ============ PLUGIN IPC ============
+  ipcMain.handle('brain:plugins-list', () => pluginLoader ? pluginLoader.listCommands() : []);
+  ipcMain.handle('brain:plugins-reload', () => {
+    if (pluginLoader) return pluginLoader.loadAll();
+    return { commands: 0, agents: 0, skills: 0 };
+  });
+  ipcMain.handle('brain:plugin-command', (event, trigger) => {
+    if (!pluginLoader) return null;
+    return pluginLoader.getCommand(trigger);
+  });
+
+  // ============ IDE: FILE SYSTEM IPC ============
+
+  ipcMain.handle('ide:fs-readdir', async (event, dirPath) => {
+    try {
+      const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
+      return entries.map(e => ({
+        name: e.name,
+        path: path.join(dirPath, e.name),
+        isDirectory: e.isDirectory(),
+        isFile: e.isFile(),
+      })).sort((a, b) => {
+        if (a.isDirectory !== b.isDirectory) return a.isDirectory ? -1 : 1;
+        return a.name.localeCompare(b.name);
+      });
+    } catch (e) { return []; }
+  });
+
+  ipcMain.handle('ide:fs-readfile', async (event, filePath) => {
+    try {
+      const stat = await fs.promises.stat(filePath);
+      if (stat.size > 5 * 1024 * 1024) return { error: 'File too large (>5MB)' };
+      const content = await fs.promises.readFile(filePath, 'utf8');
+      return { content, size: stat.size, modified: stat.mtimeMs };
+    } catch (e) { return { error: e.message }; }
+  });
+
+  ipcMain.handle('ide:fs-writefile', async (event, filePath, content) => {
+    try {
+      await fs.promises.writeFile(filePath, content, 'utf8');
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
+  });
+
+  ipcMain.handle('ide:fs-stat', async (event, filePath) => {
+    try {
+      const stat = await fs.promises.stat(filePath);
+      return { size: stat.size, modified: stat.mtimeMs, isDirectory: stat.isDirectory(), isFile: stat.isFile() };
+    } catch (e) { return null; }
+  });
+
+  ipcMain.handle('ide:fs-exists', async (event, filePath) => {
+    try { await fs.promises.access(filePath); return true; } catch { return false; }
+  });
+
+  if (!global.fsWatchers) global.fsWatchers = new Map();
+  const fsWatchers = global.fsWatchers;
+  ipcMain.handle('ide:fs-watch', async (event, dirPath) => {
+    if (fsWatchers.has(dirPath)) return { watching: true };
+    try {
+      const watcher = fs.watch(dirPath, { recursive: true }, (eventType, filename) => {
+        if (mainWindow && !mainWindow.isDestroyed()) {
+          mainWindow.webContents.send('ide:fs-changed', { dir: dirPath, event: eventType, file: filename });
+        }
+      });
+      fsWatchers.set(dirPath, watcher);
+      return { watching: true };
+    } catch (e) { return { watching: false, error: e.message }; }
+  });
+
+  // ============ IDE: TERMINAL IPC ============
+
+  terminalManager = new TerminalManager();
+
+  ipcMain.handle('ide:term-create', (event, id, shell) => {
+    try {
+      const proc = terminalManager.create(id, shell);
+      proc.onData((data) => {
+        if (mainWindow && !mainWindow.isDestroyed()) {
+          mainWindow.webContents.send('ide:term-data', id, data);
+        }
+      });
+      proc.onExit(({ exitCode }) => {
+        if (mainWindow && !mainWindow.isDestroyed()) {
+          mainWindow.webContents.send('ide:term-exit', id, exitCode);
+        }
+        terminalManager.terminals.delete(id);
+      });
+      return { success: true, id };
+    } catch (e) { return { success: false, error: e.message }; }
+  });
+
+  ipcMain.handle('ide:term-write', (event, id, data) => {
+    terminalManager.write(id, data);
+    return { success: true };
+  });
+
+  ipcMain.handle('ide:term-resize', (event, id, cols, rows) => {
+    terminalManager.resize(id, cols, rows);
+    return { success: true };
+  });
+
+  ipcMain.handle('ide:term-kill', (event, id) => {
+    terminalManager.kill(id);
+    return { success: true };
+  });
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
@@ -683,6 +1046,11 @@ app.whenReady().then(async () => {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
+});
+
+app.on('will-quit', () => {
+  if (terminalManager) terminalManager.killAll();
+  for (const [, watcher] of global.fsWatchers || new Map()) watcher.close();
 });
 
 // ============ PROACTIVE BRAIN ============
@@ -722,17 +1090,12 @@ async function proactiveCycle() {
       const budget = brainAPI.getBudget();
       if (budget?.limit > 0) {
         const pct = (budget.tokensUsed / budget.limit) * 100;
-        if (pct > 90) insights.push({ type: 'budget', priority: 'high', title: `Token budget at ${Math.round(pct)}%`, detail: 'Switch to Ollama for remaining tasks' });
+        if (pct > 90) insights.push({ type: 'budget', priority: 'high', title: `Token budget at ${Math.round(pct)}%`, detail: 'Consider reducing query complexity' });
       }
     }
 
     // 3. Ollama health
-    try {
-      const res = await fetch('http://localhost:11434/api/tags', { signal: AbortSignal.timeout(2000) });
-      if (!res.ok) insights.push({ type: 'system', priority: 'high', title: 'Ollama DOWN', detail: 'Run: ollama serve' });
-    } catch {
-      insights.push({ type: 'system', priority: 'high', title: 'Ollama unreachable', detail: 'Local AI offline' });
-    }
+    // Ollama check removed — Claude Code SDK is primary provider
 
     // 4. Self-heal
     if (sb) {
