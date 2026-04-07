@@ -51,6 +51,106 @@ type: "lesson"
   <p class="section-text">The key is subtlety. You don't need wildly different voices for every character. Slight variations in tone, pace, and pitch are enough to distinguish speakers without pulling the listener out of the story.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Automated Audiobook Generation Script</h2>
+  <p class="section-text">Here is a Python script that processes a manuscript chapter by chapter, generating consistent narration with quality controls built in:</p>
+  <div class="prompt-box"><code>import requests
+import json
+from pathlib import Path
+
+API_KEY = "your_elevenlabs_api_key"
+VOICE_ID = "your_selected_voice_id"
+BASE_URL = "https://api.elevenlabs.io/v1"
+
+# Voice settings for consistent audiobook narration
+VOICE_SETTINGS = {
+    "stability": 0.65,          # Higher for consistency across chapters
+    "similarity_boost": 0.80,   # Strong voice match
+    "style": 0.15,              # Subtle expressiveness
+    "use_speaker_boost": True   # Cleaner output
+}
+
+def generate_chapter(chapter_text, chapter_num, output_dir="audiobook"):
+    """Generate audio for a single chapter with consistent settings."""
+    Path(output_dir).mkdir(exist_ok=True)
+
+    url = f"{BASE_URL}/text-to-speech/{VOICE_ID}"
+    headers = {
+        "xi-api-key": API_KEY,
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "text": chapter_text,
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": VOICE_SETTINGS
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+
+    if response.status_code == 200:
+        output_path = f"{output_dir}/chapter_{chapter_num:02d}.mp3"
+        with open(output_path, "wb") as f:
+            f.write(response.content)
+        print(f"Chapter {chapter_num} generated: {output_path}")
+        return output_path
+    else:
+        print(f"Error on chapter {chapter_num}: {response.status_code}")
+        return None
+
+# Process manuscript
+manuscript = Path("manuscript.txt").read_text()
+chapters = manuscript.split("CHAPTER ")  # Split by chapter markers
+
+for i, chapter in enumerate(chapters[1:], 1):  # Skip empty first split
+    generate_chapter(chapter.strip(), i)</code></div>
+  <p class="section-text">The key insight is the voice settings. For audiobooks, you want higher stability (0.6-0.7) than for conversational content because listeners need the voice to sound consistent across 8+ hours. Lower style values (0.1-0.2) keep the narration steady without making it flat.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Text Preparation: The Make-or-Break Step</h2>
+  <p class="section-text">80% of audiobook quality problems come from poor text preparation. Here is a systematic approach to preparing any manuscript for AI narration:</p>
+  <p class="section-text"><strong>Pronunciation guides:</strong> Create a list of every unusual name, place, and technical term in your book. Write the phonetic pronunciation next to each one. "Siobhan" becomes "shih-VAWN." "Euler" becomes "OY-ler." Feed these to Claude and ask it to rewrite the manuscript with phonetic hints inline.</p>
+  <p class="section-text"><strong>Dialogue formatting:</strong> Strip out "he said" and "she said" attribution tags that sound awkward when read aloud. Instead, add a brief pause before dialogue switches. Use SSML break tags or simply add ellipses in the text to create natural speaker transitions.</p>
+  <p class="section-text"><strong>Visual element handling:</strong> Tables, charts, graphs, and images do not translate to audio. Rewrite each visual element as a verbal description. "Figure 3 shows quarterly revenue growing from $2 million to $8 million" becomes a spoken sentence rather than a reference to something the listener cannot see.</p>
+  <p class="section-text"><strong>Chapter length calibration:</strong> Most TTS APIs have character or token limits per request. Split chapters into segments of 2,000-4,000 characters for optimal generation quality. Longer segments can cause the voice to drift or lose energy near the end.</p>
+  <p class="section-text"><strong>Front and back matter:</strong> Write a spoken introduction, copyright notice, and dedication specifically for the audio format. These sound awkward if read directly from the print version. "Copyright 2026, all rights reserved" should become "This audiobook is copyright twenty twenty-six. All rights reserved."</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mastering</span>
+  <h2 class="section-title">Audiobook Technical Requirements</h2>
+  <p class="section-text">Distribution platforms have strict technical requirements. Submitting audio that does not meet these specs will get your audiobook rejected. Here are the standards you must hit:</p>
+  <p class="section-text"><strong>ACX/Audible requirements:</strong> MP3 format, 192kbps constant bit rate, 44.1kHz sample rate, mono or stereo. Each chapter as a separate file. Peak values must not exceed -3dB. RMS (average volume) between -23dB and -18dB. Noise floor below -60dB. Room tone at the start and end of each file (0.5-1 second of silence).</p>
+  <p class="section-text"><strong>Apple Books requirements:</strong> AAC or MP3 format. Chapter markers embedded in the file. Cover art at 2400x2400 pixels minimum. AI-generated narration must be disclosed in the metadata.</p>
+  <p class="section-text"><strong>Mastering workflow:</strong> Use Auphonic with the "Audiobook" preset — it handles loudness normalization, noise reduction, and leveling automatically. For manual mastering, apply a gentle compressor (ratio 2:1, threshold -20dB) followed by a limiter at -3dB peak. Then normalize loudness to -20 LUFS for consistent listening experience.</p>
+  <p class="section-text"><strong>Quality assurance checklist:</strong> Listen to the first and last 30 seconds of every chapter. Check for pronunciation errors on character names. Verify that chapter transitions do not have abrupt volume changes. Spot-check three random segments per chapter for tonal consistency. This QA pass catches 95% of issues before submission.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Genre Guide</span>
+  <h2 class="section-title">Voice Selection by Genre</h2>
+  <p class="section-text">The right voice makes or breaks an audiobook. Here are voice characteristics that work best for each major genre:</p>
+  <p class="section-text"><strong>Fiction / Literary:</strong> Warm, expressive voice with good dynamic range. The narrator needs to convey emotion through subtle inflection changes. Mid-range pitch works best for extended listening. Avoid voices that are too dramatic — subtlety wins over theatricality for long-form narration.</p>
+  <p class="section-text"><strong>Non-fiction / Business:</strong> Clear, authoritative, steady pacing. The voice should inspire confidence without sounding stiff. Slightly faster than conversational pace — non-fiction listeners often want information efficiently. A voice with natural warmth prevents the "textbook lecture" feel.</p>
+  <p class="section-text"><strong>Memoir / Biography:</strong> Intimate, conversational, as if the author is speaking directly to you over coffee. Warmth is paramount. The voice should feel personal, not performative. If the author has recorded any public speaking, try to match that energy level.</p>
+  <p class="section-text"><strong>Self-help / Motivational:</strong> Energetic but not aggressive. The voice should sound encouraging and supportive. A voice that sounds like a trusted mentor — warm, clear, with conviction behind the words. Test with passages that make bold claims — the voice needs to sell them without sounding salesy.</p>
+  <p class="section-text"><strong>Children's books:</strong> Bright, engaging, with clear enunciation. Slightly slower pace than adult content. The voice should sound friendly and approachable. For character voices in children's fiction, use more pronounced variations than you would in adult fiction — young listeners benefit from clearer character differentiation.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Workflow</span>
+  <h2 class="section-title">End-to-End Audiobook Production Timeline</h2>
+  <p class="section-text">Here is a realistic timeline for producing a complete audiobook from a finished manuscript:</p>
+  <p class="section-text"><strong>Day 1 — Text preparation (2-4 hours):</strong> Clean the manuscript, add pronunciation guides, format dialogue, handle visual elements, split into chapter files. This step determines your final quality — do not rush it.</p>
+  <p class="section-text"><strong>Day 2 — Voice selection and testing (1-2 hours):</strong> Generate test passages with 3-5 candidate voices. Listen carefully. Select your voice and lock in your generation settings (stability, similarity, style). Document everything.</p>
+  <p class="section-text"><strong>Day 3-4 — Chapter generation (4-8 hours):</strong> Generate each chapter sequentially. Listen to each one as it finishes. Regenerate any segments with pronunciation errors or tonal drift. This is the bulk of the work.</p>
+  <p class="section-text"><strong>Day 5 — Quality review and mastering (2-4 hours):</strong> Full listen-through with headphones. Note any issues. Fix them. Run the final files through Auphonic for mastering. Add chapter markers. Export to platform specifications.</p>
+  <p class="section-text"><strong>Day 6 — Submission (1 hour):</strong> Upload to your distribution platform. Fill in metadata. Submit cover art. Write the description. Hit publish.</p>
+  <p class="section-text">Total: 10-19 hours across 6 days for a full-length audiobook. Compare this to 40-80 hours for traditional production. AI does not eliminate the work — it compresses it by 75%.</p>
+</div>
+
 <div class="demo-container">
   <h3>Audiobook Distribution Platforms</h3>
   <p><strong>ACX / Audible:</strong> Largest market. Virtual Voice program accepts AI narration.</p>
@@ -58,6 +158,16 @@ type: "lesson"
   <p><strong>Apple Books:</strong> Accepts AI-narrated audiobooks with proper disclosure.</p>
   <p><strong>Findaway Voices:</strong> Wide distribution to 40+ platforms from one upload.</p>
   <p><strong>Direct Sales:</strong> Gumroad, Payhip, your own site. Keep 95%+ of revenue.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">Pricing and Revenue for AI Audiobooks</h2>
+  <p class="section-text">AI audiobooks are a genuine revenue opportunity for independent authors and producers. Here is the business model:</p>
+  <p class="section-text"><strong>Production cost:</strong> A 60,000-word novel produces approximately 8-10 hours of audio. AI narration costs $50-150 in TTS API fees depending on the platform and voice quality. Add $20-50 for mastering with Auphonic. Total production cost: $70-200, compared to $1,600-4,000 for human narration.</p>
+  <p class="section-text"><strong>Revenue per unit:</strong> Audiobooks typically sell for $14.99-24.99 on Audible, with authors receiving 25-40% royalties depending on exclusivity. At $19.99 with 40% royalty, each sale generates $8.00. You break even at 10-25 sales.</p>
+  <p class="section-text"><strong>Scaling strategy:</strong> The real value is volume. An author with 5 backlist titles can produce all 5 audiobooks for under $1,000 total. Each title is a permanent revenue stream. The AI production pipeline makes it economically viable to audiobook-ify your entire catalog rather than cherry-picking your best-seller.</p>
+  <p class="section-text"><strong>Direct sales advantage:</strong> Selling audiobooks directly through Gumroad, Payhip, or your own website lets you keep 90-95% of the sale price. A $14.99 audiobook sold directly generates $13.50-14.25 versus $3.75-6.00 through Audible. Build an email list and sell direct whenever possible.</p>
 </div>
 
 <div class="try-it-box">

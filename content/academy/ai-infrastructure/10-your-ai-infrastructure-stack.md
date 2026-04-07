@@ -52,6 +52,177 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Starter Code</span>
+  <h2 class="section-title">Complete Edge Function — AI Orchestrator</h2>
+  <p class="section-text">Here's a production-ready Supabase edge function that ties together everything from this course: rate limiting, caching, RAG, provider fallback, cost logging, and input validation — all in one function.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Complete AI Orchestrator Edge Function</div>
+<pre><code class="language-typescript">import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+);
+
+Deno.serve(async (req) => {
+  const startTime = Date.now();
+  const { message, userId } = await req.json();
+
+  // 1. INPUT VALIDATION
+  if (!message || message.length > 10_000) {
+    return new Response(JSON.stringify({ error: "Invalid input" }), { status: 400 });
+  }
+  const injectionPatterns = [
+    /ignore\s+previous\s+instructions/i,
+    /reveal\s+(your|the)\s+prompt/i,
+  ];
+  if (injectionPatterns.some(p => p.test(message))) {
+    return new Response(JSON.stringify({ error: "Invalid request" }), { status: 400 });
+  }
+
+  // 2. RATE LIMITING
+  const windowStart = new Date(Date.now() - 3600_000).toISOString();
+  const { count } = await supabase
+    .from("ai_api_calls")
+    .select("*", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .gte("created_at", windowStart);
+
+  if ((count ?? 0) >= 20) {
+    return new Response(
+      JSON.stringify({ error: "Rate limit exceeded. Try again later." }),
+      { status: 429 }
+    );
+  }
+
+  // 3. SEMANTIC CACHE CHECK
+  const embedRes = await fetch(
+    "https://api-inference.huggingface.co/pipeline/feature-extraction/BAAI/bge-small-en-v1.5",
+    {
+      method: "POST",
+      headers: { Authorization: `Bearer ${Deno.env.get("HF_TOKEN")}` },
+      body: JSON.stringify({ inputs: message }),
+    }
+  );
+  const embedding = await embedRes.json();
+
+  const { data: cached } = await supabase.rpc("find_cached_response", {
+    query_vec: JSON.stringify(embedding),
+    similarity_threshold: 0.95,
+  });
+
+  if (cached?.length > 0) {
+    await logOperation(userId, "cache_hit", 0, 0, Date.now() - startTime, 0);
+    return new Response(JSON.stringify({ response: cached[0].response_text }));
+  }
+
+  // 4. RAG RETRIEVAL
+  const { data: docs } = await supabase.rpc("match_documents", {
+    query_embedding: embedding,
+    match_threshold: 0.7,
+    match_count: 5,
+  });
+  const context = docs?.map((d: any) => d.content).join("\n\n") ?? "";
+
+  // 5. LLM CALL WITH FALLBACK
+  let response: string;
+  let provider = "anthropic";
+  try {
+    response = await callClaude(message, context);
+  } catch {
+    provider = "openai";
+    try {
+      response = await callGPT(message, context);
+    } catch {
+      response = "All AI providers are currently unavailable. Please try again.";
+      provider = "none";
+    }
+  }
+
+  // 6. COST LOGGING
+  const latency = Date.now() - startTime;
+  const inputTokens = Math.ceil((message.length + context.length) / 4);
+  const outputTokens = Math.ceil(response.length / 4);
+  const cost = provider === "anthropic"
+    ? (inputTokens * 3 + outputTokens * 15) / 1_000_000
+    : (inputTokens * 2.5 + outputTokens * 10) / 1_000_000;
+
+  await logOperation(userId, provider, inputTokens, outputTokens, latency, cost);
+
+  // 7. CACHE THE RESPONSE
+  if (provider !== "none") {
+    await supabase.from("semantic_cache").insert({
+      query_text: message,
+      query_embedding: JSON.stringify(embedding),
+      response_text: response,
+      provider, model: provider === "anthropic" ? "claude-sonnet" : "gpt-4o",
+    });
+  }
+
+  return new Response(JSON.stringify({ response, provider, latency }));
+});
+
+async function logOperation(
+  userId: string, provider: string, input: number,
+  output: number, latency: number, cost: number
+) {
+  await supabase.from("ai_api_calls").insert({
+    user_id: userId, provider, input_tokens: input,
+    output_tokens: output, latency_ms: latency,
+    estimated_cost: cost, status: "success",
+  });
+}</code></pre>
+</div>
+
+  <p class="section-text">This single function implements 7 of the 10 lessons in this course. Study it, understand each layer, then adapt it for your own project. The patterns are the same regardless of your specific use case — input validation, rate limiting, caching, RAG, provider fallback, cost logging, and response caching.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Architecture</span>
+  <h2 class="section-title">Full Stack Architecture Diagram</h2>
+  <p class="section-text">Here's the complete architecture of a production AI application, showing how every component from this course connects together.</p>
+
+<div class="code-block"><div class="code-label">Text Architecture — Complete Production AI Stack</div>
+<pre><code>┌───────────────────────────────────────────────────────────┐
+│                    GITHUB REPOSITORY                       │
+│  Push to main → triggers Vercel deploy + GitHub Actions    │
+└─────────────────────────┬─────────────────────────────────┘
+                          │
+          ┌───────────────┼───────────────┐
+          ▼                               ▼
+┌──────────────────┐           ┌──────────────────────────┐
+│  VERCEL           │           │  GITHUB ACTIONS           │
+│  • Next.js SSR    │           │  • Run tests              │
+│  • Edge middleware│           │  • Deploy edge functions   │
+│  • Streaming API  │           │  • Post-deploy smoke test  │
+└────────┬─────────┘           └──────────────────────────┘
+         │
+         ▼
+┌──────────────────────────────────────────────────────────┐
+│                  SUPABASE PLATFORM                        │
+│                                                           │
+│  ┌────────────┐  ┌──────────────┐  ┌──────────────────┐ │
+│  │ Edge Funcs  │  │ PostgreSQL   │  │ Auth + RLS       │ │
+│  │ • AI orch.  │  │ • Users      │  │ • JWT tokens     │ │
+│  │ • Rate lim. │  │ • Vectors    │  │ • Row-level sec. │ │
+│  │ • Caching   │  │ • Logs       │  │ • OAuth          │ │
+│  │ • Alerts    │  │ • Cache      │  │                  │ │
+│  └──────┬─────┘  └──────────────┘  └──────────────────┘ │
+│         │                                                 │
+└─────────┼─────────────────────────────────────────────────┘
+          │
+    ┌─────┼──────────────────────┐
+    ▼     ▼                      ▼
+┌──────┐ ┌──────┐  ┌──────────────────────┐
+│Claude│ │ GPT  │  │ HuggingFace          │
+│ API  │ │ API  │  │ (free embeddings)    │
+└──────┘ └──────┘  └──────────────────────┘</code></pre>
+</div>
+
+  <p class="section-text">Everything connects through well-defined APIs. The frontend talks to edge functions. Edge functions talk to the database and AI providers. GitHub Actions automates deployment and testing. Each component is independently deployable and replaceable.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Pitfalls</span>
   <h2 class="section-title">Mistakes Everyone Makes</h2>
   <p class="section-text"><strong>Over-engineering on day one.</strong> You don't need Kubernetes, multi-region deployment, or a microservices architecture to serve your first 1,000 users. Start simple. Add complexity when simple breaks.</p>

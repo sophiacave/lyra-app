@@ -69,6 +69,113 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <h2 class="section-title">The AI-PM Maturity Model</h2>
+  <p class="section-text">Not every PM adopts AI the same way. Think of it as a four-level maturity model that you can climb at your own pace:</p>
+  <p class="section-text"><strong>Level 1 — Ad Hoc.</strong> You occasionally paste something into ChatGPT or Claude when you think of it. No system, no templates, no consistency. Most PMs are here today. The value is real but sporadic.</p>
+  <p class="section-text"><strong>Level 2 — Templated.</strong> You have saved prompts for your most common tasks — meeting notes, status reports, risk checks. You use them weekly. The time savings become measurable and predictable.</p>
+  <p class="section-text"><strong>Level 3 — Systematic.</strong> AI is woven into your weekly rhythm. Monday planning, daily meeting processing, Wednesday risk checks, Friday reporting. Your entire PM workflow runs through AI-assisted processes with consistent quality.</p>
+  <p class="section-text"><strong>Level 4 — Strategic.</strong> You use AI not just for execution but for strategic thinking — scenario modeling, portfolio analysis, organizational learning. AI helps you see patterns across projects that no single PM could track manually.</p>
+  <p class="section-text">This course takes you from wherever you are now to at least Level 3. By the final lesson, you will have a complete system — not just individual tricks.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Prompt Template</span>
+  <h2 class="section-title">Your First AI-PM Prompt</h2>
+  <p class="section-text">Here is a general-purpose prompt template that works for almost any PM task. Save it — you will use variations of this structure throughout the course:</p>
+  <div class="prompt-box"><code>You are an experienced project manager. I need help with [specific PM task].
+
+Context:
+- Project: [name and brief description]
+- Team: [size, roles, key skills]
+- Timeline: [deadline or phase]
+- Constraints: [budget, dependencies, blockers]
+
+Please provide:
+1. [First deliverable — e.g., a task breakdown]
+2. [Second deliverable — e.g., risk identification]
+3. [Third deliverable — e.g., recommended next steps]
+
+Format the output with clear headers and bullet points. Flag any assumptions you are making so I can correct them.</code></div>
+  <p class="section-text">Notice the structure: role, task, context, deliverables, format instructions, assumption flagging. This pattern produces dramatically better output than "help me plan my project." The more specific your context, the more useful the response.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <h2 class="section-title">A Day in the Life of an AI-Powered PM</h2>
+  <p class="section-text">Meet Priya. She manages a 12-person product team shipping a fintech dashboard. Here is what her Tuesday looks like with AI:</p>
+  <p class="section-text"><strong>8:30 AM.</strong> She opens Claude and pastes her rough standup notes. In 30 seconds she has clean action items with owners, a blocker summary, and a suggested follow-up message for the blocked developer's manager.</p>
+  <p class="section-text"><strong>10:00 AM.</strong> Sprint planning. Instead of spending 20 minutes writing user stories from scratch, the team reviews AI-drafted stories with acceptance criteria already attached. They refine and estimate — the meeting finishes 30 minutes early.</p>
+  <p class="section-text"><strong>1:00 PM.</strong> A stakeholder asks for a project update during lunch. Priya feeds her raw status notes into her saved reporting prompt. Three minutes later she has a polished executive summary and sends it before finishing her sandwich.</p>
+  <p class="section-text"><strong>3:00 PM.</strong> She runs her weekly risk check. AI compares this week's status against the risk register and flags that a vendor dependency has moved from "low" to "medium" probability. She updates the mitigation plan before the risk becomes a problem.</p>
+  <p class="section-text"><strong>4:30 PM.</strong> She spends the last hour of her day on actual leadership — coaching a junior developer, having a one-on-one with a team lead who seems stressed, reviewing the product roadmap. The work AI cannot do. The work that matters most.</p>
+  <p class="section-text">Total AI time: about 40 minutes. Time saved compared to doing it all manually: roughly 3 hours. That is the promise of this course — not replacing Priya, but giving her those 3 hours back for the human work.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Misconceptions</span>
+  <h2 class="section-title">What People Get Wrong About AI in PM</h2>
+  <p class="section-text"><strong>Misconception 1: "AI will replace project managers."</strong> No. AI replaces the administrative overhead of project management. The strategic, interpersonal, and leadership aspects of PM become more important, not less. PMs who use AI spend more time leading and less time formatting — that makes them more valuable, not redundant.</p>
+  <p class="section-text"><strong>Misconception 2: "You need technical skills to use AI."</strong> If you can write an email, you can write a prompt. The prompts in this course are written in plain English. No coding. No API knowledge. No data science background. Just clear communication — which is already a PM's core skill.</p>
+  <p class="section-text"><strong>Misconception 3: "AI output is ready to send as-is."</strong> Never. AI gives you an 80% draft in 5% of the time. Your job is the final 20% — applying context, judgment, and your knowledge of the people and politics involved. Every AI output gets your review before it goes anywhere.</p>
+  <p class="section-text"><strong>Misconception 4: "This is just for tech companies."</strong> AI-assisted PM works in construction, healthcare, marketing, education, government, nonprofit — anywhere projects exist. The examples in this course lean toward software because it is familiar, but every prompt and technique adapts to any industry.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Getting Started</span>
+  <h2 class="section-title">Your AI Setup Checklist</h2>
+  <p class="section-text">Before diving into the rest of this course, make sure you have your environment ready. You do not need expensive tools — a free or basic AI account is enough to start.</p>
+  <p class="section-text"><strong>Step 1: Choose your AI tool.</strong> Claude, ChatGPT, or Gemini all work for PM tasks. Claude tends to produce more structured, nuanced output for professional communication. ChatGPT is widely available with a generous free tier. Pick one and stick with it for at least this course — switching tools mid-learning slows you down.</p>
+  <p class="section-text"><strong>Step 2: Create a "PM Prompts" document.</strong> This will be your prompt library. Start a Google Doc, Notion page, or plain text file where you save every prompt template that works well. By the end of this course, you will have 20+ templates ready to use.</p>
+  <p class="section-text"><strong>Step 3: Gather your raw materials.</strong> Pull together recent meeting notes, status reports you have written, project plans, and stakeholder emails. These become your practice material — you will feed them into AI throughout the course to see the difference immediately.</p>
+  <p class="section-text"><strong>Step 4: Set a learning rhythm.</strong> One lesson per day is ideal. Each lesson takes 15-20 minutes to read and 10-15 minutes for the hands-on exercise. In two weeks, you will have a complete AI PM toolkit built from your own real projects.</p>
+  <p class="section-text"><strong>Step 5: Tell your team.</strong> Transparency about AI use builds trust. Let your colleagues know you are experimenting with AI-assisted PM. You will likely find that half of them are already using AI privately and are relieved someone is talking about it openly.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">The Science</span>
+  <h2 class="section-title">Why AI Works So Well for PM Tasks</h2>
+  <p class="section-text">Project management tasks fall into categories that align almost perfectly with what large language models do best:</p>
+  <p class="section-text"><strong>Text transformation.</strong> Taking information in one format (raw notes, transcripts, data dumps) and converting it into another format (structured reports, action items, executive summaries). This is the bread and butter of language models — and the bread and butter of PM overhead.</p>
+  <p class="section-text"><strong>Checklist generation.</strong> Given a context (project type, phase, team size), generating a comprehensive list of things to consider. AI draws on patterns from millions of project descriptions to produce lists that are more thorough than what any individual PM would create from memory alone.</p>
+  <p class="section-text"><strong>Tone adaptation.</strong> Taking the same information and rewriting it for different audiences — technical detail for engineers, business outcomes for executives, reassuring narrative for anxious clients. PMs do this manually dozens of times per week. AI does it in seconds.</p>
+  <p class="section-text"><strong>Pattern identification.</strong> Across multiple data points (sprint velocities, retro themes, risk trends), spotting patterns that are invisible when you are inside the data day-to-day. AI sees the forest when you are managing individual trees.</p>
+  <p class="section-text">The tasks AI struggles with — emotional intelligence, political navigation, creative problem-solving under ambiguity, building trust — are the tasks that make PMs valuable humans. The combination of AI efficiency and human judgment is what makes this approach powerful.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Data Privacy</span>
+  <h2 class="section-title">Using AI Responsibly in PM</h2>
+  <p class="section-text">Before you start pasting project data into AI tools, understand the privacy implications. This is not optional — it is professional responsibility.</p>
+  <p class="section-text"><strong>Know your organization's AI policy.</strong> Many companies have explicit guidelines about what data can be shared with AI tools. Some prohibit sharing customer data, financial information, or proprietary code. Check before you start — getting permission is easier than getting forgiveness.</p>
+  <p class="section-text"><strong>Anonymize when possible.</strong> You do not need to include client names, employee names, or specific dollar amounts for AI to be useful. "Client X has concerns about the timeline" works just as well as using the real name. Build the habit of anonymizing by default.</p>
+  <p class="section-text"><strong>Choose your tools carefully.</strong> Some AI providers use your inputs to train future models. Others offer business plans with data protection guarantees. Claude's business plans do not train on your data. Check the terms of service for whatever tool you choose.</p>
+  <p class="section-text"><strong>Never share credentials, passwords, or security-sensitive information.</strong> This should go without saying, but in the rush of pasting project data, it is easy to accidentally include an API key or a password from a config file. Always review your input before sending.</p>
+  <p class="section-text">Responsible AI use is not a barrier — it is a professional standard. The PMs who adopt AI thoughtfully and transparently will build more trust than those who either avoid it entirely or use it recklessly.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Industry Applications</span>
+  <h2 class="section-title">AI PM Across Industries</h2>
+  <p class="section-text">While this course uses software project examples for accessibility, the techniques work everywhere projects exist:</p>
+  <p class="section-text"><strong>Construction:</strong> AI generates safety checklists, tracks material delivery schedules, drafts progress reports for building inspectors, and flags weather-related schedule risks.</p>
+  <p class="section-text"><strong>Healthcare:</strong> AI processes clinical trial status updates, drafts regulatory submission summaries, tracks compliance milestones, and identifies resource conflicts across research teams.</p>
+  <p class="section-text"><strong>Marketing:</strong> AI plans campaign launches, tracks creative deliverable timelines, generates stakeholder updates for brand managers, and analyzes retrospective data from past campaigns.</p>
+  <p class="section-text"><strong>Education:</strong> AI plans curriculum rollouts, tracks faculty resource allocation, drafts progress reports for accreditation bodies, and manages cross-department dependencies.</p>
+  <p class="section-text">The prompts are the same. The context changes. That is the beauty of a prompt-based system — it adapts to any domain because PM fundamentals are universal.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Key Terminology</span>
+  <h2 class="section-title">AI PM Vocabulary You Will Use Throughout This Course</h2>
+  <p class="section-text"><strong>Prompt:</strong> The instruction you give to an AI. A well-structured prompt includes context, a clear task, and format specifications. Better prompts produce dramatically better output.</p>
+  <p class="section-text"><strong>Prompt Library:</strong> A saved collection of your best prompts, organized by PM task. This is the toolkit you build throughout this course.</p>
+  <p class="section-text"><strong>Context Window:</strong> The amount of information AI can process in a single conversation. Think of it as AI's working memory. Longer documents need to be chunked or summarized to fit.</p>
+  <p class="section-text"><strong>Iteration:</strong> Going back and forth with AI to refine output. The best results come from 3-4 rounds of refinement, not a single prompt.</p>
+  <p class="section-text"><strong>Hallucination:</strong> When AI generates information that sounds plausible but is incorrect. This is why every AI output must be reviewed by a human. AI does not know what it does not know — it fills gaps with confident-sounding guesses.</p>
+  <p class="section-text"><strong>RAG Status:</strong> Red, Amber, Green — the universal project health indicator. You will use this throughout the course for status reporting and risk assessment.</p>
+  <p class="section-text"><strong>WBS:</strong> Work Breakdown Structure — the hierarchical decomposition of a project into phases, deliverables, and tasks. AI generates these from project descriptions.</p>
+  <p class="section-text">These terms will appear throughout the course. No need to memorize them now — they will become natural as you use them in practice.</p>
 </div>
 
 <div class="lesson-section">

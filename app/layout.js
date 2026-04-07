@@ -5,8 +5,8 @@ import { site, colors } from '../lib/site-config';
 
 
 
-const fullTitle = `Like One — Free AI Courses | Learn Claude, Automation & Prompt Engineering`;
-const shortDesc = '30 free AI courses, 300+ interactive lessons. Learn Claude, prompt engineering, AI automation, and more. Beginner to advanced. Start free today.';
+const fullTitle = `Like One — 30 Free AI Courses & 300+ Lessons`;
+const shortDesc = 'Build an AI system that thinks like you. 30 courses, 300+ hands-on lessons covering Claude, prompt engineering, agents, RAG, MCP & more. Free.';
 
 export const viewport = {
   width: 'device-width',
@@ -57,7 +57,9 @@ const jsonLd = {
     telephone: site.phoneRaw,
     contactType: 'customer support',
   },
-  sameAs: [],
+  sameAs: [
+    'https://github.com/sophiacave/lyra-app',
+  ],
 };
 
 const courseJsonLd = {

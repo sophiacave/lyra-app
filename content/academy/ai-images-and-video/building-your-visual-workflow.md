@@ -114,6 +114,36 @@ negative space on the right for text overlay,
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Workflow Optimization</span>
+  <h2 class="section-title">Work faster without sacrificing quality.</h2>
+  <p class="section-text">Once your basic workflow is in place, these optimization techniques will save you hours every week:</p>
+  <p class="section-text"><strong>Prompt snippets:</strong> Create a collection of reusable prompt fragments you can mix and match. Keep a file with your favorite lighting descriptions ("soft golden hour backlight with lens flare"), your best style modifiers ("editorial photography, shallow depth of field, 85mm lens"), and your proven mood setters ("warm, nostalgic, intimate"). When building a new prompt, assemble from tested parts.</p>
+  <p class="section-text"><strong>Tool-specific shortcuts:</strong> Each tool has features that save time. In Midjourney, the --repeat flag generates multiple variations at once. In ChatGPT, you can say "generate 4 variations of this concept" in one message. In Stable Diffusion, batch processing lets you queue up dozens of generations. Learn your tool's shortcuts and your speed doubles.</p>
+  <p class="section-text"><strong>The two-tool workflow:</strong> Most experienced creators settle on two tools: a primary generator (Midjourney, DALL-E, or Stable Diffusion) and a primary editor (Photoshop, Canva, or Photopea). Mastering two tools deeply is more efficient than knowing five tools superficially. Pick your pair and go deep.</p>
+  <p class="section-text"><strong>Color consistency system:</strong> Save your brand hex codes and color descriptions. Reference them in every prompt. "My brand palette: deep navy (#1a1a3e), warm coral (#ff6b6b), cream white (#fef9ef)" — paste this into every brand-related prompt for instant consistency.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Batch Processing Strategies</span>
+  <h2 class="section-title">Create a month of content in a single focused session.</h2>
+  <p class="section-text">Batch processing is the difference between feeling like content creation is a daily grind and feeling like it is a creative flow state you enter occasionally:</p>
+  <p class="section-text"><strong>The content sprint:</strong> Block 2 hours once a month. Open your content calendar. Write all prompts first (do not generate yet). Review and refine the prompts. Then generate all images in one focused session. This separation of planning and execution produces better results because you are in "writing mode" when crafting prompts and "visual mode" when evaluating results.</p>
+  <p class="section-text"><strong>Seasonal batching:</strong> Generate seasonal content 3-4 weeks early. Spring visuals in late February. Summer visuals in late May. Holiday visuals in early November. This gives you a library of ready-to-use assets when the season arrives, and you never scramble for timely content.</p>
+  <p class="section-text"><strong>Platform multiplication:</strong> When you generate one image, immediately create versions for every platform you use. Square crop for Instagram. Wide crop for Twitter. Vertical crop for Stories. Add text overlay for Pinterest. One generation session, five platform-ready assets. Keep a checklist of your platforms and their dimensions so you never miss one.</p>
+  <p class="section-text"><strong>Asset library maintenance:</strong> Spend 15 minutes each month reviewing your AI Visuals folder. Delete unused drafts. Move finals to the right project folders. Note which prompts produced your best work. This small maintenance habit keeps your system clean and your prompt library growing.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Staying Current</span>
+  <h2 class="section-title">The AI visual landscape evolves fast. Here is how to keep up without drowning.</h2>
+  <p class="section-text">New tools, model updates, and techniques emerge constantly. You do not need to track everything — that is a recipe for overwhelm. Instead, use this low-effort system to stay informed:</p>
+  <p class="section-text"><strong>Follow three sources:</strong> Pick one YouTube channel that covers AI art news, one subreddit or community forum, and one newsletter. Three sources give you enough signal without drowning in noise. Check them once a week during your creative practice time.</p>
+  <p class="section-text"><strong>Test one new thing per month:</strong> When you hear about a new tool, model update, or technique, try it in a dedicated 30-minute experiment session. If it improves your workflow, adopt it. If not, move on. This prevents both stagnation and shiny-object syndrome.</p>
+  <p class="section-text"><strong>Update your prompt library:</strong> When you discover a new keyword, style modifier, or technique that works, add it to your prompt library immediately. Your library should be a living document that grows with your skills.</p>
+  <p class="section-text"><strong>Share and learn from others:</strong> The AI visual community is remarkably generous. People share prompts, techniques, and workflows freely. Participate in communities, share your own discoveries, and learn from what others create. The fastest way to improve is to see how other people solve the same creative challenges you face.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">Prompt Library Categories</h2>
 </div>
@@ -121,6 +151,47 @@ negative space on the right for text overlay,
 <div class="lesson-section">
   <span class="section-label">Course Review</span>
   <h2 class="section-title">The Multi-Tool Pipeline</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Avoiding Burnout</span>
+  <h2 class="section-title">Sustainable creativity means managing your relationship with the tools.</h2>
+  <p class="section-text">AI image generation is addictive. The instant gratification of seeing your ideas become reality can lead to spending hours generating instead of using. Here are guardrails:</p>
+  <p class="section-text"><strong>Set generation limits:</strong> Decide before each session how many images you need and roughly how many generations to spend. "I need 5 social posts. I will generate a maximum of 25 images to find my winners." This prevents the endless "just one more" spiral.</p>
+  <p class="section-text"><strong>Ship, do not hoard:</strong> The point of creating visuals is to use them. If you have a library of beautiful images that never see the light of day, shift your focus from generation to publication. The best image is the one people actually see.</p>
+  <p class="section-text"><strong>Separate creation from curation:</strong> Generate in one session. Curate (select the winners, delete the rest, organize files) in a separate session. Trying to do both simultaneously leads to neither being done well.</p>
+  <p class="section-text"><strong>Take breaks:</strong> If you have been generating for more than an hour straight, step away. Your creative judgment degrades with fatigue. A fresh set of eyes after a break will immediately see which images are truly good and which ones you were settling for.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Your Creative Future</span>
+  <h2 class="section-title">This is just the beginning of what you can create.</h2>
+  <p class="section-text">You have completed this course with a genuine skillset. You understand the tools, the techniques, the ethics, and the workflow. But the AI visual landscape is evolving fast, and your skills will evolve with it. Here is what to look forward to:</p>
+  <p class="section-text"><strong>Emerging capabilities:</strong> AI image generation is merging with 3D modeling, video production, and interactive media. The skills you have learned here transfer directly to these new capabilities as they become accessible.</p>
+  <p class="section-text"><strong>Personal growth:</strong> The more you create, the more refined your taste and technique become. The images you create six months from now will be dramatically better than what you create today — not because the tools improved (though they will), but because your prompt craft and creative eye have deepened.</p>
+  <p class="section-text"><strong>Community and collaboration:</strong> The AI visual community is young, vibrant, and welcoming. Sharing your work, learning from others, and collaborating on projects will accelerate your growth faster than solo practice ever could.</p>
+  <p class="section-text"><strong>Professional opportunities:</strong> AI visual skills are increasingly valuable in the job market. Content creation, marketing, product design, education, entertainment — every industry needs people who can translate ideas into visuals quickly and effectively.</p>
+  <p class="section-text">You started this course wondering what AI image generation was. You are finishing it as a creator. Go make something that did not exist before you imagined it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Your Workflow Checklist</span>
+  <h2 class="section-title">Use this checklist to confirm your workflow is complete.</h2>
+  <p class="section-text">Before you consider your visual workflow "set up," make sure each of these elements is in place:</p>
+</div>
+
+<div class="demo-container" style="border-left: 3px solid var(--green); padding: 1.2rem; margin: 2rem 0; background: var(--bg);">
+  <h3 style="color: var(--green);">Workflow setup checklist</h3>
+  <ul>
+    <li><strong>Primary tool chosen:</strong> You have a go-to AI image generator you are comfortable with</li>
+    <li><strong>Secondary tool ready:</strong> You have a design/editing tool (Canva, Photopea, or similar) for post-processing</li>
+    <li><strong>Prompt library started:</strong> You have a document with at least 3-5 tested prompts saved</li>
+    <li><strong>Brand prompt defined:</strong> You have at least one base style description that captures your visual identity</li>
+    <li><strong>File system organized:</strong> You have an AI Visuals folder with project subfolders and drafts/finals separation</li>
+    <li><strong>Aspect ratios noted:</strong> You know the dimensions you need for your primary platforms</li>
+    <li><strong>Weekly practice scheduled:</strong> You have blocked 15 minutes per week for creative experimentation</li>
+    <li><strong>Learning sources identified:</strong> You follow at least one community, channel, or newsletter for staying current</li>
+  </ul>
 </div>
 
 <div class="lesson-section">

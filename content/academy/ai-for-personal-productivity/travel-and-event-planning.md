@@ -78,6 +78,75 @@ free: false
   <p class="section-text">These lists take AI about 10 seconds to generate and would take you 30 minutes to think through on your own. That's the trade you're making every time you use AI for planning: your mental energy for its processing speed.</p>
 </div>
 
+<!-- PLANNING CHECKLISTS -->
+<div class="lesson-section">
+  <span class="section-label">Planning Checklists</span>
+  <h2 class="section-title">Pre-trip and pre-event checklists you can generate instantly.</h2>
+  <p class="section-text">One of the most underrated uses of AI for planning: generating the checklists you didn't know you needed. These prompts create comprehensive checklists customized to your specific trip or event.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">Pre-trip countdown checklist</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I'm leaving for a 5-day trip to [DESTINATION] in 2 weeks. Give me a countdown checklist: what to do 2 weeks before, 1 week before, 3 days before, the day before, and morning of departure. Include things like mail, pets, plants, house security, and documents."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">Weather-smart packing list</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I'm going to Portland, Oregon in November for 4 days. I'll be doing a mix of city walking and one day hike. Generate a packing list that accounts for rain, layering, and casual dining. I want to pack carry-on only."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">Event day-of checklist</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I'm hosting a backyard BBQ for 20 people this Saturday starting at 4pm. Give me a day-of timeline starting at 10am: when to start marinating, when to set up chairs, when to start the grill, when to put out drinks. Include a backup plan if it rains."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRAVEL RESEARCH PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Travel Research</span>
+  <h2 class="section-title">Prompt templates for researching any destination.</h2>
+  <p class="section-text">Before you build an itinerary, sometimes you need to research the destination itself. These prompts help you learn about a place quickly and make informed decisions about where to go and what to do.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">Destination comparison</p>
+      <p style="font-size:0.9rem">"I have a week off in March and a $2,000 budget for 2 people. I'm considering Savannah, Asheville, or San Antonio. Compare all three: average March weather, estimated costs (hotel + food + activities), best for food lovers, and walkability. Help me decide."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">Neighborhood guide</p>
+      <p style="font-size:0.9rem">"I'm visiting Chicago for 3 days. Explain the main neighborhoods tourists should know about: which ones are walkable, which have the best food, which are best for nightlife, and which I should book my hotel in if I want to walk to everything."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">Local tips request</p>
+      <p style="font-size:0.9rem">"What do locals in Austin, Texas wish tourists knew? Give me 10 tips about getting around, where to eat that isn't on every tourist list, cultural norms, tipping expectations, and common mistakes visitors make."</p>
+    </div>
+    <div>
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">Accessibility planning</p>
+      <p style="font-size:0.9rem">"I use a wheelchair and I'm planning a trip to San Francisco. What should I know about accessibility — public transit, hilly terrain, restaurant seating, hotel considerations? What neighborhoods are most wheelchair-friendly?"</p>
+    </div>
+  </div>
+</div>
+
+<!-- GROUP TRAVEL -->
+<div class="lesson-section">
+  <span class="section-label">Group Planning</span>
+  <h2 class="section-title">Managing group trips and events without losing your mind.</h2>
+  <p class="section-text">Planning for a group multiplies every decision. AI helps you manage different preferences, dietary needs, budget levels, and energy levels across the entire group.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">The group trip prompt</p>
+      <p style="font-size:0.9rem">"I'm planning a bachelorette weekend for 8 women in Nashville. Budget ranges from $200-400 per person. Ages 25-40. Half the group are big drinkers, half prefer daytime activities. Two are vegetarian. Plan a 2-day itinerary that keeps everyone happy without splitting the group too much."</p>
+    </div>
+    <div>
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">The potluck organizer</p>
+      <p style="font-size:0.9rem">"I'm organizing a potluck for 15 people. 3 are vegetarian, 1 is gluten-free, 2 have nut allergies. Help me create a sign-up list with categories (mains, sides, desserts, drinks) and suggest specific dishes for each category that accommodate everyone's needs."</p>
+    </div>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>
@@ -92,6 +161,16 @@ free: false
     </div>
     <p style="margin-top:1rem;color:var(--dim)">After you get the plan, try: "Generate a packing list for this trip" or "What am I forgetting?" AI is surprisingly good at catching things you'd miss.</p>
   </div>
+</div>
+
+<!-- TRAVEL SAFETY -->
+<div class="lesson-section">
+  <span class="section-label">Important Note</span>
+  <h2 class="section-title">Always verify bookings and reservations yourself.</h2>
+  <p class="section-text">AI is exceptional at planning and organizing travel, but it cannot make actual bookings for you. Use AI to build the plan, compare options, and generate checklists — then confirm all reservations, hours, and availability through official websites or by calling directly.</p>
+  <p class="section-text">Prices, availability, and business hours change constantly. AI's suggestions are an excellent starting point, not confirmed reservations. This is especially important for restaurants with limited seating, tours that sell out, and accommodation during peak travel seasons.</p>
+  <p class="section-text">The ideal workflow: AI plans, you verify, you book. This combination gives you the best of both worlds — AI's comprehensive planning ability and your real-time confirmation.</p>
+  <p class="section-text">Pro tip: after your trip, tell AI what worked and what didn't. "The restaurant on Day 2 was closed" or "we needed more downtime between activities." This feedback makes your next trip plan even better.</p>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

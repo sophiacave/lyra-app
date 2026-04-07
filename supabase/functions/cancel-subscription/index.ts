@@ -1,5 +1,30 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
+const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+
+let _stripeKey: string | null = null;
+async function getStripeKey(): Promise<string> {
+  const envKey = Deno.env.get("STRIPE_SECRET_KEY");
+  if (envKey) return envKey;
+  if (_stripeKey) return _stripeKey;
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/brain_context?key=eq.credentials.stripe_live&select=value`,
+      { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
+    );
+    const rows = await res.json();
+    if (rows[0]?.value) {
+      const val = typeof rows[0].value === "string" ? JSON.parse(rows[0].value) : rows[0].value;
+      _stripeKey = val.sk_live || val.secret_key || val.key || "";
+      return _stripeKey!;
+    }
+  } catch (e) {
+    console.error("Failed to fetch Stripe key from brain:", e);
+  }
+  return "";
+}
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -54,10 +79,58 @@ Deno.serve(async (req) => {
       );
     }
 
-    // TODO: When Stripe API key is available, call Stripe to cancel at period end:
-    // await stripe.subscriptions.update(profile.subscription_id, { cancel_at_period_end: true });
+    // Cancel via Stripe API
+    const stripeKey = await getStripeKey();
+    let stripeCancelled = false;
+    let stripeSubId = "";
 
-    // For now: update profile to cancelled and log the request
+    if (stripeKey) {
+      try {
+        // Determine subscription ID: use profile.subscription_id if available, otherwise look up by customer
+        if (profile.subscription_id) {
+          stripeSubId = profile.subscription_id;
+        } else if (profile.stripe_customer_id) {
+          const listRes = await fetch(
+            `https://api.stripe.com/v1/subscriptions?customer=${encodeURIComponent(profile.stripe_customer_id)}&status=active&limit=1`,
+            {
+              headers: { Authorization: `Bearer ${stripeKey}` },
+            }
+          );
+          const listData = await listRes.json();
+          if (listData.data?.length > 0) {
+            stripeSubId = listData.data[0].id;
+          }
+        }
+
+        if (stripeSubId) {
+          const cancelRes = await fetch(
+            `https://api.stripe.com/v1/subscriptions/${encodeURIComponent(stripeSubId)}`,
+            {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${stripeKey}`,
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: "cancel_at_period_end=true",
+            }
+          );
+          const cancelData = await cancelRes.json();
+          if (cancelData.error) {
+            console.error("Stripe cancel error:", cancelData.error);
+          } else {
+            stripeCancelled = true;
+          }
+        } else {
+          console.warn(`No Stripe subscription found for ${email} — proceeding with local-only cancellation`);
+        }
+      } catch (stripeErr) {
+        console.error("Stripe API call failed:", stripeErr);
+      }
+    } else {
+      console.warn("Stripe key not available — proceeding with local-only cancellation");
+    }
+
+    // Update profile to cancelling status
     const { error: updateErr } = await supabase
       .from("profiles")
       .update({
@@ -75,12 +148,16 @@ Deno.serve(async (req) => {
     }
 
     // Log the cancellation in issue_reports as a record
+    const logDescription = stripeCancelled
+      ? `Subscription cancellation requested by ${email}. Stripe cancellation confirmed (${stripeSubId}). Status set to cancelling — access continues until period end.`
+      : `Subscription cancellation requested by ${email}. Status set to cancelling. WARNING: Stripe cancellation could not be confirmed${stripeKey ? " (no subscription found)" : " (Stripe key unavailable)"} — manual review needed.`;
+
     await supabase.from("issue_reports").insert({
       reporter_name: "System",
       reporter_email: email.trim().toLowerCase(),
       category: "other",
-      description: `Subscription cancellation requested by ${email}. Status set to cancelling. Stripe cancellation pending API key setup.`,
-      status: "open",
+      description: logDescription,
+      status: stripeCancelled ? "resolved" : "open",
     });
 
     return new Response(

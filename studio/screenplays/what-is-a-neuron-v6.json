@@ -1,0 +1,139 @@
+{
+  "version": "6.0",
+  "title": "What Is a Neuron?",
+  "course": "ai-foundations",
+  "persona": "faye",
+  "duration_target_s": 90,
+  "learning_objectives": [
+    "Understand what an artificial neuron computes (weighted sum + activation)",
+    "Grasp how stacking simple neurons in layers creates intelligence",
+    "Feel awe at the elegance of simplicity becoming complexity"
+  ],
+  "scenes": [
+    {
+      "id": "cold-open",
+      "type": "cinematic",
+      "beat": "hook",
+      "dialogue": "You have eighty-six billion neurons.",
+      "visual": "Extreme wide shot of vast bioluminescent neural network stretching to infinity, shot on ARRI Alexa 65, Cooke S4 40mm anamorphic, volumetric cyan backlight, warm amber key light, from below, deep space atmosphere",
+      "motion": "Slow dolly forward into the network, volumetric fog drifts gently",
+      "animate": true,
+      "voice": "aria",
+      "duration_s": 5,
+      "seed": 100,
+      "learning": {
+        "objective": "Create curiosity gap",
+        "complexity": "low",
+        "signaling": ["scale of the network creates awe"]
+      },
+      "pacing": { "wpm_target": 130, "pause_after_s": 0.5 }
+    },
+    {
+      "id": "the-secret",
+      "type": "cinematic",
+      "beat": "hook",
+      "dialogue": "Each one does something embarrassingly simple.",
+      "visual": "Extreme close-up macro of a single luminous neuron node pulsing with soft warm light, shot on ARRI Alexa 65, 100mm macro lens f/2.8, shallow depth of field, warm practical light from the neuron, cool ambient fill, film grain",
+      "motion": "Subtle breathing depth-of-field shift, neuron pulses gently",
+      "animate": true,
+      "voice": "aria",
+      "duration_s": 4,
+      "seed": 200,
+      "learning": {
+        "objective": "Set up the simplicity paradox",
+        "complexity": "low"
+      },
+      "pacing": { "wpm_target": 140, "pause_after_s": 1.0 }
+    },
+    {
+      "id": "awe-reveal",
+      "type": "cinematic",
+      "beat": "teach",
+      "dialogue": "But together, they create everything you have ever experienced.",
+      "visual": "Medium shot pulling back from single neuron to reveal thousands firing in cascading waves of light, bioluminescent rim light, deep volumetric fog creating god rays, shot on ARRI Alexa 65, Panavision C-Series anamorphic 40mm, Kodak Vision3 500T warmth",
+      "motion": "Camera pulls back revealing scale, neurons fire in cascading sequence",
+      "animate": true,
+      "voice": "aria",
+      "duration_s": 6,
+      "seed": 300,
+      "learning": {
+        "objective": "Emergence — simple parts create complex wholes",
+        "complexity": "low",
+        "signaling": ["scale shift creates emotional impact"]
+      },
+      "pacing": { "wpm_target": 150, "pause_after_s": 0.5 }
+    },
+    {
+      "id": "the-copy",
+      "type": "cinematic",
+      "beat": "teach",
+      "dialogue": "We figured out how to copy this trick. Not perfectly. But mathematically. And it changed everything.",
+      "visual": "Wide overhead shot looking down into crystalline geometric structure, an artificial neural network rendered as architectural glass and light, shot on RED V-Raptor 8K, Zeiss Master Prime 35mm, cool blue-white key light reflecting through geometric facets with warm amber accents, clean mathematical beauty",
+      "motion": "Slow orbital arc circling the structure, light refracts through glass facets",
+      "animate": true,
+      "voice": "aria",
+      "duration_s": 8,
+      "seed": 400,
+      "learning": {
+        "objective": "Bridge from biology to mathematics",
+        "complexity": "low"
+      },
+      "pacing": { "wpm_target": 145, "pause_after_s": 1.5 }
+    },
+    {
+      "id": "simplicity",
+      "type": "cinematic",
+      "beat": "reveal",
+      "dialogue": "An artificial neuron takes in numbers. Multiplies each one by how important it is. Adds them up. And a tiny function decides: fire, or stay quiet. That is the entire secret.",
+      "visual": "Close-up of a single water droplet falling in extreme slow motion onto a still dark surface, creating perfect concentric ripples, warm golden backlight catching the droplet edge with rim light, shot on ARRI Alexa 65, Cooke S4 75mm T2.0, Emmanuel Lubezki natural light",
+      "motion": "Slow motion droplet falls, ripples expand outward in perfect circles",
+      "animate": true,
+      "voice": "aria",
+      "duration_s": 12,
+      "seed": 500,
+      "learning": {
+        "objective": "Core mechanism: weighted sum + activation",
+        "complexity": "medium",
+        "signaling": ["water metaphor = simplicity, ripples = emergence"]
+      },
+      "pacing": { "wpm_target": 135, "pause_after_s": 2.0 }
+    },
+    {
+      "id": "emergence",
+      "type": "cinematic",
+      "beat": "reveal",
+      "dialogue": "One neuron draws a line. Stack thousands in layers, and the first layer learns edges. The second combines edges into shapes. The third recognizes faces. Complexity emerges from simplicity.",
+      "visual": "Abstract edge patterns sharpening into geometric shapes, shapes assembling into recognizable human features emerging from pure mathematics, dramatic split lighting cool analytical teal from left and warm human amber from right, shot on RED V-Raptor 8K, Greig Fraser desaturated warmth, face resolves from wireframe to photorealistic",
+      "motion": "Patterns sharpen and assemble, light shifts from cool to warm as recognition emerges",
+      "animate": true,
+      "voice": "aria",
+      "duration_s": 15,
+      "seed": 600,
+      "music": "warm ambient, building tension, piano fragments resolve into full chord, 80 bpm",
+      "learning": {
+        "objective": "Layer abstraction: edges to shapes to meaning",
+        "complexity": "medium",
+        "signaling": ["progressive reveal mirrors neural layer learning"]
+      },
+      "pacing": { "wpm_target": 140, "pause_after_s": 2.5 }
+    },
+    {
+      "id": "landing",
+      "type": "cinematic",
+      "beat": "close",
+      "dialogue": "Each one does its tiny job. And somehow, understanding emerges. Simplicity, stacked deep enough, becomes intelligence.",
+      "visual": "Medium close-up of single neuron node glowing warmly, camera slowly pulls back to show it nested within a vast gentle constellation of others, warm golden key light dominant, soft cool fill, peaceful not overwhelming, shot on ARRI Alexa 65, Cooke S4 75mm, Roger Deakins motivated naturalism",
+      "motion": "Gentle pullback revealing the constellation, warm particles drift slowly",
+      "animate": true,
+      "voice": "aria",
+      "duration_s": 12,
+      "seed": 700,
+      "learning": {
+        "objective": "Landing: simplicity becomes intelligence",
+        "complexity": "low",
+        "signaling": ["callback to opening single-neuron shot"]
+      },
+      "pacing": { "wpm_target": 125, "pause_after_s": 3.0 }
+    }
+  ]
+}

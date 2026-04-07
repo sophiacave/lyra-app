@@ -115,13 +115,13 @@ function SupportContent() {
       </div>
 
       <p className="donate-transparency">
-        <strong>Full transparency:</strong> Like One donates 1% of all revenue to HIV research — and we plan to grow that percentage as the company grows. The rest builds courses, technology, and a platform that proves AI belongs to everyone.
+        <strong>Full transparency:</strong> Like One donates 1% of all revenue to HIV cure research through Like One Foundation — growing to 50% as revenue scales. The rest builds courses, technology, and a platform that proves AI belongs to everyone.
       </p>
 
       <div className="donate-disclosure">
         <h3 className="donate-disclosure-title">Important Disclosure</h3>
         <p className="donate-disclosure-text">
-          Like One is a sole proprietorship registered under Sophia Cave. It is not a nonprofit. Contributions are personal gifts — not tax-deductible. No equity, returns, or ownership are offered. Funds are used to build Like One and pursue the mission above. All contributions are final. If you contributed in error, email <a href={`mailto:${site.email}`} className="donate-note-link">{site.email}</a> within 7 days.
+          Like One LLC is a Nevada limited liability company. Like One Foundation is a Nevada nonprofit corporation, currently pursuing 501(c)(3) tax-exempt status. Once approved, donations to the Foundation will be tax-deductible. Until then, contributions are personal gifts — not tax-deductible. No equity, returns, or ownership are offered. Funds are used to build Like One and pursue the mission above. All contributions are final. If you contributed in error, email <a href={`mailto:${site.email}`} className="donate-note-link">{site.email}</a> within 7 days.
         </p>
       </div>
     </SiteLayout>

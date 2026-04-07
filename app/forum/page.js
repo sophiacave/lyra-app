@@ -2,7 +2,7 @@ import { site } from '../../lib/site-config';
 import ForumClient from './ForumClient';
 
 export const metadata = {
-  title: 'Community Forum — Like One Academy',
+  title: 'AI Community Forum — Ask, Share & Learn | Like One',
   description: 'Join the Like One community. Ask questions, share wins, and connect with fellow learners on the convergence path.',
   alternates: { canonical: `${site.url}/forum/` },
   openGraph: {

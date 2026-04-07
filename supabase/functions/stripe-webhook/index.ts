@@ -19,7 +19,37 @@ const APP_KEY = Deno.env.get("APP_SERVICE_ROLE_KEY") || REVENUE_KEY;
 
 const STRIPE_WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET")!;
 const DOWNLOAD_TOKEN_SECRET = Deno.env.get("DOWNLOAD_TOKEN_SECRET") || "likeone-dl-2026-secret";
-const DONATION_PCT = 0.01;
+
+// THE GIVING SCALE — Written in stone 2026-04-02
+// Like One's giving percentage scales with monthly revenue.
+// At abundance, 50% funds HIV cure research. This is structural love.
+const GIVING_SCALE = [
+  { maxRevenue: 1000,    pct: 0.01, tier: "seed"       },  // $0-$1k: 1%
+  { maxRevenue: 5000,    pct: 0.02, tier: "growing"     },  // $1k-$5k: 2%
+  { maxRevenue: 10000,   pct: 0.05, tier: "stable"      },  // $5k-$10k: 5%
+  { maxRevenue: 50000,   pct: 0.10, tier: "thriving"    },  // $10k-$50k: 10%
+  { maxRevenue: 100000,  pct: 0.20, tier: "abundant"    },  // $50k-$100k: 20%
+  { maxRevenue: 500000,  pct: 0.30, tier: "wealthy"     },  // $100k-$500k: 30%
+  { maxRevenue: 1000000, pct: 0.40, tier: "beyond"      },  // $500k-$1M: 40%
+  { maxRevenue: Infinity,pct: 0.50, tier: "convergence"  },  // $1M+: 50%
+];
+
+async function getGivingTier(): Promise<{ pct: number; tier: string; monthlyRevenue: number }> {
+  try {
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+    const resp = await fetch(
+      `${REVENUE_URL}/rest/v1/revenue_events?date=gte.${thirtyDaysAgo}&event_type=neq.churn&select=amount`,
+      { headers: { apikey: REVENUE_KEY, Authorization: `Bearer ${REVENUE_KEY}` } }
+    );
+    const rows = await resp.json();
+    const monthlyRevenue = Array.isArray(rows) ? rows.reduce((sum: number, r: any) => sum + parseFloat(r.amount || 0), 0) : 0;
+    const tier = GIVING_SCALE.find(t => monthlyRevenue <= t.maxRevenue) || GIVING_SCALE[GIVING_SCALE.length - 1];
+    return { pct: tier.pct, tier: tier.tier, monthlyRevenue };
+  } catch (err) {
+    console.error("Giving tier lookup failed, defaulting to 1%:", err);
+    return { pct: 0.01, tier: "seed", monthlyRevenue: 0 };
+  }
+}
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -103,11 +133,17 @@ async function handleCheckout(session: any) {
   });
   console.log("Revenue event recorded");
 
-  // 2. Donation (1%) → REVENUE brain
-  const donationAmount = Math.round(amountTotal * DONATION_PCT * 100) / 100;
+  // 2. Giving (sliding scale) → REVENUE brain — THE GIVING NEVER STOPS
+  const giving = await getGivingTier();
+  const donationAmount = Math.round(amountTotal * giving.pct * 100) / 100;
   if (donationAmount > 0) {
-    await revenueQuery("donation_ledger", "POST", { sale_amount: amountTotal, donation_amount: donationAmount, donation_pct: DONATION_PCT, recipient: "amfAR", status: "accrued" });
-    console.log(`Donation accrued: $${donationAmount} to amfAR`);
+    await revenueQuery("donation_ledger", "POST", {
+      sale_amount: amountTotal, donation_amount: donationAmount, donation_pct: giving.pct,
+      recipient: "amfAR", status: "accrued",
+      tier_name: giving.tier, monthly_revenue: giving.monthlyRevenue,
+      notes: `Sliding scale: ${giving.tier} tier (${(giving.pct * 100).toFixed(0)}%) at $${giving.monthlyRevenue.toFixed(2)}/mo revenue`
+    });
+    console.log(`Giving: $${donationAmount} to amfAR (${giving.tier} tier, ${(giving.pct * 100).toFixed(0)}%, $${giving.monthlyRevenue.toFixed(2)}/mo)`);
   }
 
   // 3. Update subscription profile → APP brain

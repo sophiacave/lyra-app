@@ -11,10 +11,10 @@ const corsHeaders = {
 };
 
 const PRODUCTS: Record<string, { name: string; price: number; mode: "payment" | "subscription"; interval?: "month" | "year" }> = {
-  "pro-monthly": { name: "Like One Academy Pro — Monthly", price: 4900, mode: "subscription", interval: "month" },
-  "pro-annual": { name: "Like One Academy Pro — Annual", price: 39000, mode: "subscription", interval: "year" },
-  "builder": { name: "Like One Academy Pro — Monthly", price: 4900, mode: "subscription", interval: "month" },
-  "convergence": { name: "Like One Academy Pro — Annual", price: 39000, mode: "subscription", interval: "year" },
+  "pro-monthly": { name: "Like One Academy Pro — Founding Monthly", price: 490, mode: "subscription", interval: "month" },
+  "pro-annual": { name: "Like One Academy Pro — Founding Annual", price: 3900, mode: "subscription", interval: "year" },
+  "builder": { name: "Like One Academy Pro — Founding Monthly", price: 490, mode: "subscription", interval: "month" },
+  "convergence": { name: "Like One Academy Pro — Founding Annual", price: 3900, mode: "subscription", interval: "year" },
   "blueprint": { name: "The Convergence Blueprint", price: 2700, mode: "payment" },
   "identity-kit": { name: "Identity Document Kit", price: 1700, mode: "payment" },
   "agent-pack": { name: "Agent Starter Pack", price: 3700, mode: "payment" },

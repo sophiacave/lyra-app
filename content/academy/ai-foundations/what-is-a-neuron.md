@@ -34,6 +34,44 @@ free: true
   <p class="section-text">That's it. That's the entire computation a neuron does. And AI is made of millions of these.</p>
 </div>
 
+<!-- SECTION 1B: BIOLOGICAL VS ARTIFICIAL -->
+<div class="lesson-section">
+  <span class="section-label">Nature vs Machine</span>
+  <h2 class="section-title">Biological neurons vs artificial neurons.</h2>
+  <p class="section-text">Artificial neurons were inspired by biological ones, but they are not copies. Understanding the differences helps you see what AI can and cannot do:</p>
+
+  <div style="display:grid;gap:.75rem;margin-top:.75rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.88rem">Biological neuron — the original</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Your brain has about 86 billion neurons. Each one receives electrical signals through branch-like <strong style="color:#e5e5e5">dendrites</strong>, processes them in the <strong style="color:#e5e5e5">cell body</strong>, and if the combined signal is strong enough, sends an electrical pulse down the <strong style="color:#e5e5e5">axon</strong> to the next neuron. The connection point between neurons is called a <strong style="color:#e5e5e5">synapse</strong>. The strength of each synapse is what your brain adjusts when you learn — this is the biological equivalent of a weight.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+      <strong style="color:#8b5cf6;font-size:.88rem">Artificial neuron — the simplified model</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">An artificial neuron takes numerical inputs, multiplies each by a weight, sums them up, adds a bias, and passes the result through an activation function. It is a drastically simplified version of the biological neuron. No electrical pulses, no timing, no neurochemistry — just pure math. But this simplification is a feature: it can run on a GPU at billions of operations per second.</p>
+    </div>
+  </div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  BIOLOGICAL vs ARTIFICIAL NEURON</span>
+
+  Feature          <span style="color:#34d399">Biological</span>              <span style="color:#8b5cf6">Artificial</span>
+  ───────          ──────────              ──────────
+  Inputs           Dendrites               Numbers (x1, x2, x3...)
+  Connection       Synapse strength        Weight (w1, w2, w3...)
+  Processing       Cell body               Weighted sum + bias
+  Decision         Fire / don't fire       Activation function
+  Output           Electrical pulse        A number
+  Speed            ~200 operations/sec     ~1 billion operations/sec
+  Count            ~86 billion (brain)     ~175 billion (GPT-4)
+  Learning         Synapse adjustment      Weight adjustment
+  Energy           ~20 watts (brain)       ~500,000 watts (GPU cluster)</code></pre>
+</div>
+
+  <div class="narration" style="margin-top:1rem">
+    <strong>The trade-off is clear:</strong> biological neurons are energy-efficient and massively parallel. Artificial neurons are individually faster and mathematically precise. Your brain runs on a sandwich's worth of calories. GPT-4 runs on a small power plant. But both learn by adjusting connection strengths — weights in AI, synapses in biology.
+  </div>
+</div>
+
 <!-- SECTION 2: INTERACTIVE NEURON SIMULATOR -->
 <div class="lesson-section">
   <span class="section-label">Play With It</span>
@@ -80,6 +118,28 @@ output = max(<span style="color:#fb923c">0</span>, z)
       <strong style="color:#fb923c;font-size:.88rem">Activation Function — the decision gate</strong>
       <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Without an activation function, a neural network can only learn simple straight-line relationships (like "more input = more output"). The activation function lets the neuron learn complex, curved patterns — like recognizing a face, understanding a sentence, or predicting whether an email is spam. This ability to go beyond straight lines is called <strong>non-linearity</strong>, and it is what makes AI powerful.</p>
     </div>
+  </div>
+</div>
+
+<!-- SECTION 3B: WHY NON-LINEARITY MATTERS -->
+<div class="lesson-section">
+  <span class="section-label">Key Insight</span>
+  <h2 class="section-title">Why activation functions are the secret ingredient.</h2>
+  <p class="section-text">This is the single most important concept in neural networks. Without activation functions, a network with 1000 layers is mathematically identical to a network with 1 layer. Here is why:</p>
+
+  <div style="display:grid;gap:.75rem;margin-top:.75rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+      <strong style="color:#ef4444;font-size:.88rem">Without activation: a straight line</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">A neuron without an activation function just computes: output = (w1 * x1) + (w2 * x2) + bias. That is a linear equation — it can only draw a straight line to separate data. Stack 100 layers of linear equations and the math simplifies to... one linear equation. No matter how deep you go, you can only learn straight-line patterns.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.88rem">With activation: curves and complexity</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Add a ReLU activation (which just zeros out negatives) and suddenly each layer can bend the decision boundary. Two layers can make curves. Three layers can make S-shapes. Deep networks can draw arbitrarily complex boundaries. This is how a network separates cat photos from dog photos — the boundary between "cat" and "dog" in pixel-space is incredibly complex and curved.</p>
+    </div>
+  </div>
+
+  <div class="narration" style="margin-top:1rem">
+    <strong>Think of it this way:</strong> linear means you can only draw with a ruler. Activation functions give you a pen that can curve, loop, and make any shape. The shape of the activation function determines what kind of curves are possible — and ReLU's simplicity (just clip negatives to zero) turns out to be surprisingly powerful.
   </div>
 </div>
 

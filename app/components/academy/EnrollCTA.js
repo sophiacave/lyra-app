@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-const MONTHLY_LINK = 'https://buy.stripe.com/3cI28k2j67lBaD16xA3sI0l';
-const ANNUAL_LINK = 'https://buy.stripe.com/fZubIU1f2eO326vaNQ3sI0m';
+const MONTHLY_LINK = 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c';
+const ANNUAL_LINK = 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d';
 
 export default function EnrollCTA({ context = 'inline' }) {
   const [showModal, setShowModal] = useState(false);

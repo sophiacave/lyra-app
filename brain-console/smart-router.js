@@ -67,28 +67,42 @@ class SmartRouter {
   }
 
   /**
-   * V3: Ollama handles ALL tiers by default. Claude only for tier 4.
+   * V4: MLX → Ollama → Cloud. Sovereignty first.
+   * MLX runs 56% faster than Ollama on Apple Silicon.
    */
+  async checkMLX() {
+    try {
+      const res = await fetch('http://localhost:8800/health', { signal: AbortSignal.timeout(1000) });
+      return res.ok;
+    } catch { return false; }
+  }
+
   async getProviderForTier(tier) {
     const config = this.brainAPI.brainContext.getConfig();
 
-    // TOKEN RESILIENCE: Ollama first for EVERY tier
+    // SOVEREIGNTY: MLX first (fastest on Apple Silicon)
+    const mlxAvailable = await this.checkMLX();
+    if (tier <= 3 && mlxAvailable) {
+      return { id: 'mlx', available: true, model: 'mlx-qwen-coder' };
+    }
+
+    // Fallback: Ollama
     const ollama = await this.brainAPI.checkOllama();
 
     if (tier <= 3 && ollama.available) {
-      // Use fast model for tier 1, primary for 2-3
       return { id: 'ollama', available: true, model: tier === 1 ? 'llama3.1:8b' : (config.ollamaModel || 'qwen2.5:32b') };
     }
 
     // Tier 4 or Ollama unavailable — try cloud providers
     const cloudPriority = tier === 4
-      ? ['anthropic', 'openrouter', 'groq', 'ollama']
-      : ['groq', 'openrouter', 'anthropic'];
+      ? ['anthropic', 'openai', 'openrouter', 'groq', 'ollama']
+      : ['groq', 'openrouter', 'openai', 'anthropic'];
 
     for (const id of cloudPriority) {
       if (id === 'ollama' && ollama.available) return { id, available: true };
       if (id === 'groq' && config.groqKey) return { id, available: true };
       if (id === 'openrouter' && config.openrouterKey) return { id, available: true };
+      if (id === 'openai' && config.openaiKey) return { id, available: true };
       if (id === 'anthropic' && config.anthropicKey) return { id, available: true };
     }
 

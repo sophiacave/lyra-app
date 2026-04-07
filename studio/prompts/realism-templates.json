@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "date": "2026-03-30",
+  "philosophy": "Every prompt must describe a REAL photograph, not a render. Specify the camera, lens, and light as if briefing a DP.",
+
+  "camera_packages": {
+    "documentary": "shot on ARRI Alexa Mini, Cooke S7i 50mm T2.0, natural available light, handheld",
+    "cinematic": "shot on RED V-Raptor, Atlas Mercury anamorphic 40mm T2.2, golden hour, shallow depth of field",
+    "intimate": "shot on Sony FX3, Sigma 35mm f/1.4 Art, soft window light, close focus distance",
+    "epic": "shot on ARRI Alexa 65, Hasselblad 30mm, aerial perspective, magic hour",
+    "macro": "shot on Canon R5, Laowa 100mm f/2.8 2:1 macro, diffused natural light, razor thin depth of field",
+    "vintage": "shot on 16mm Bolex, Switar 25mm f/1.4, slight halation, warm color cast, organic film grain"
+  },
+
+  "realism_boosters": [
+    "photorealistic",
+    "organic textures",
+    "visible micro-detail",
+    "dust particles catching light",
+    "natural imperfections",
+    "atmospheric haze",
+    "subtle lens flare",
+    "slightly shallow depth of field"
+  ],
+
+  "negative_prompt": "cgi, 3d render, digital art, illustration, anime, cartoon, plastic, airbrushed, smooth skin, oversaturated, hdr, stock photo watermark, artificial lighting, perfect symmetry, uncanny valley",
+
+  "scene_templates": {
+    "landscape_wide": {
+      "structure": "[environment description], [time of day], [weather/atmosphere], [camera_package]",
+      "example": "Rolling hills with scattered wildflowers stretching to a distant tree line, late afternoon, thin clouds diffusing warm sunlight, atmospheric haze in the valleys, shot on ARRI Alexa 65, Hasselblad 30mm, golden hour",
+      "motion_prompt": "slow dolly forward, gentle parallax between foreground flowers and distant hills, 180-degree shutter natural motion blur",
+      "avoid": "faces, text, obvious AI patterns"
+    },
+    "object_closeup": {
+      "structure": "[object with texture detail], [surface/material description], [lighting], [camera_package]",
+      "example": "A weathered leather notebook open on a wooden desk, visible grain in the wood, dust motes floating in a shaft of warm window light, shallow depth of field, shot on Sony FX3, Sigma 35mm f/1.4 Art, soft window light",
+      "motion_prompt": "slow push in on the notebook, rack focus from desk surface to page text, subtle handheld micro-movement",
+      "avoid": "human hands, perfect geometry"
+    },
+    "abstract_concept": {
+      "structure": "[visual metaphor], [organic texture/material], [light behavior], [camera_package]",
+      "example": "Light refracting through a glass prism casting rainbow caustics on a concrete wall, dust particles visible in the light beams, slightly out of focus foreground element, shot on ARRI Alexa Mini, Cooke S7i 50mm T2.0",
+      "motion_prompt": "slow pan following the light, gentle focus drift, tripod with subtle vibration",
+      "avoid": "faces, text overlays, cgi elements"
+    },
+    "tech_visualization": {
+      "structure": "[real-world tech object], [environment context], [practical lighting], [camera_package]",
+      "example": "Server rack in a dimly lit data center, blue LED indicators casting subtle glow on cable bundles, cool ambient light from overhead fluorescents, visible dust in the air, shot on Sony FX3, Sigma 35mm f/1.4 Art",
+      "motion_prompt": "slow tracking shot along the server row, shallow depth of field rack focus between near and far servers",
+      "avoid": "holographic overlays, floating UI elements, sci-fi aesthetics"
+    },
+    "human_wide": {
+      "structure": "[person from behind/silhouette/wide], [environment], [natural posture], [camera_package]",
+      "example": "Silhouette of a person standing at a floor-to-ceiling window overlooking a city at dusk, warm interior light behind them, their reflection subtle in the glass, shot on ARRI Alexa Mini, Cooke S7i 50mm T2.0, natural available light",
+      "motion_prompt": "slow dolly in toward the figure, gentle rack focus from reflection to cityscape, tripod smooth",
+      "avoid": "close-up face, visible hands doing tasks, front-facing portrait"
+    },
+    "nature_macro": {
+      "structure": "[natural subject with micro-detail], [organic texture], [natural light], [camera_package]",
+      "example": "Morning dew on a spider web between two blades of grass, each droplet refracting the soft dawn light, bokeh circles from distant foliage, shot on Canon R5, Laowa 100mm f/2.8 2:1 macro, diffused early morning light",
+      "motion_prompt": "extremely slow push in, gentle breeze causing micro-movement in the web, rack focus through droplets",
+      "avoid": "insects with visible faces, perfect symmetry"
+    },
+    "architecture": {
+      "structure": "[building/structure with texture], [time of day], [human scale element], [camera_package]",
+      "example": "Brutalist concrete building facade with visible form marks and weather staining, late afternoon side-light creating deep shadows, a single person walking at the base for scale, shot on RED V-Raptor, Atlas Mercury anamorphic 40mm T2.2",
+      "motion_prompt": "slow tilt up from street level to roofline, anamorphic lens flare from sun at edge of frame",
+      "avoid": "impossible architecture, floating elements"
+    }
+  },
+
+  "kling_motion_rules": {
+    "always": [
+      "Specify camera type: dolly, crane, tracking, tripod, handheld",
+      "Specify speed: slow, gentle, subtle (fast = artifacts)",
+      "Specify shutter: '180-degree shutter, natural motion blur'",
+      "Keep it simple: ONE camera movement per clip",
+      "5-second clips ONLY (more coherent than 10s)"
+    ],
+    "never": [
+      "Whip pans or fast rotations (artifact magnets)",
+      "Multiple simultaneous movements (zoom + pan + tilt)",
+      "Close-up face tracking (uncanny trigger)",
+      "Text that needs to be readable (will distort)"
+    ],
+    "cfg_scale": "0.5 default. 0.3 for creative freedom. 0.7 for strict adherence. Never above 0.8."
+  }
+}

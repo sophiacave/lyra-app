@@ -119,6 +119,86 @@ We are NOT: Corporate, preachy, or hype-driven.</pre>
   <p class="section-text" style="margin-top:1rem">Save this once. Use it forever. Consistent voice across hundreds of posts — effortlessly.</p>
 </div>
 
+<!-- SECTION 5: ENGAGEMENT STRATEGIES -->
+<div class="lesson-section">
+  <span class="section-label">Engagement</span>
+  <h2 class="section-title">The engagement patterns that actually work.</h2>
+  <p class="section-text">Posting is half the game. Engagement is the other half. Use AI to generate content specifically designed to start conversations:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Ask polarizing questions</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"Is cold email dead or just done badly?" forces people to pick a side. Opinions drive comments. Ask AI to generate 10 polarizing questions for your industry.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Share unpopular opinions</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"Most marketing advice is recycled nonsense. Here's what actually moves the needle." Contrarian takes get attention because they break patterns.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">End with "What's yours?"</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Share your answer to a question, then ask the audience for theirs. "My #1 marketing tool this year is [X]. What's yours?" Simple, effective, repeatable.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Use "This or That" frameworks</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"SEO or paid ads for a new business?" Binary choices are easy to respond to. Low friction means more engagement.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">5</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Share failures, not just wins</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"I spent $2,000 on ads last month and got 3 customers. Here's what I learned." Vulnerability builds trust and drives comments from people who relate.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: CONTENT CALENDAR TEMPLATE -->
+<div class="lesson-section">
+  <span class="section-label">Weekly Template</span>
+  <h2 class="section-title">A plug-and-play social media week.</h2>
+  <p class="section-text">Use this template as a starting point. Ask AI to fill in each slot with platform-specific content based on your brand voice card:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+        <span style="font-size:.75rem;color:#fb923c;font-weight:700;min-width:100px">Monday</span>
+        <span style="font-size:.85rem;color:#a1a1aa">Educational — Teach a tip, share a framework, explain a concept</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+        <span style="font-size:.75rem;color:#8b5cf6;font-weight:700;min-width:100px">Tuesday</span>
+        <span style="font-size:.85rem;color:#a1a1aa">Behind-the-scenes — Show your process, workspace, or a day in the life</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+        <span style="font-size:.75rem;color:#34d399;font-weight:700;min-width:100px">Wednesday</span>
+        <span style="font-size:.85rem;color:#a1a1aa">Engagement — Ask a question, run a poll, start a conversation</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+        <span style="font-size:.75rem;color:#38bdf8;font-weight:700;min-width:100px">Thursday</span>
+        <span style="font-size:.85rem;color:#a1a1aa">Social proof — Customer story, testimonial, case study, or result</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding:10px 0">
+        <span style="font-size:.75rem;color:#ef4444;font-weight:700;min-width:100px">Friday</span>
+        <span style="font-size:.85rem;color:#a1a1aa">Personal or promotional — Share a win, a lesson, or a direct offer</span>
+      </div>
+    </div>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>The prompt:</strong> "Using this weekly content schedule and my brand voice card, generate 5 platform-specific posts for [LinkedIn/Instagram/X] for next week. Each post should follow the day's theme and feel native to the platform."</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>

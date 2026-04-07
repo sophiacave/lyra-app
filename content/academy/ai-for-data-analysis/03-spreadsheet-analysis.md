@@ -48,6 +48,52 @@ free: true
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Formula Generation</span>
+  <h2 class="section-title">AI-Powered Formula Prompts</h2>
+  <p class="section-text">Here are battle-tested prompt patterns for the most common spreadsheet formulas. Save these — you will use them constantly:</p>
+
+  <div class="demo-container" style="border-left: 3px solid var(--green); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Conditional Aggregation:</strong></p>
+    <p><em>"I have columns: Date (A), Category (B), Amount (C), Region (D). Write a SUMIFS formula that totals Amount where Category is 'Marketing' AND Region is 'West' AND Date is in the current month."</em></p>
+    <p style="color: var(--dim);">Works for SUMIFS, COUNTIFS, AVERAGEIFS — any conditional aggregate.</p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--purple); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Lookup and Match:</strong></p>
+    <p><em>"Sheet1 has employee IDs in column A and names in column B. Sheet2 has employee IDs in column A and I need their names in column B. Write a formula using XLOOKUP (or VLOOKUP if XLOOKUP isn't available) that pulls names from Sheet1 into Sheet2, and returns 'Not Found' for any missing IDs."</em></p>
+    <p style="color: var(--dim);">Always specify what should happen when the lookup fails — AI will handle the error gracefully.</p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--blue); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Dynamic Date Ranges:</strong></p>
+    <p><em>"I need a formula that calculates total revenue for the last 30 days, the last 90 days, and year-to-date — all updating automatically based on today's date. Revenue is in column C, dates in column A."</em></p>
+    <p style="color: var(--dim);">AI handles the date math so you never have to remember whether EOMONTH needs a 0 or a -1.</p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--orange); padding: 1rem; background: var(--bg);">
+    <p><strong>Percentage Calculations:</strong></p>
+    <p><em>"For each row, calculate: what percentage of total revenue this row represents, the month-over-month percentage change, and whether the change is above or below the average growth rate. Revenue in column C, months in column A."</em></p>
+    <p style="color: var(--dim);">AI writes the formulas AND explains the logic, so you learn as you go.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Strategy</span>
+  <h2 class="section-title">Pivot Table Strategies with AI</h2>
+  <p class="section-text">Pivot tables are one of the most powerful spreadsheet features — and one of the most confusing. AI eliminates the confusion by telling you exactly how to build them:</p>
+  <p class="section-text"><strong>When to use a pivot table:</strong> Any time you need to summarize, group, or cross-tabulate data. If you are writing multiple SUMIF formulas for different categories, a pivot table is probably the better approach.</p>
+  <p class="section-text"><strong>The AI shortcut:</strong> Describe your data and what you want to see. AI tells you exactly which fields go in rows, columns, values, and filters.</p>
+
+  <div class="demo-container" style="border-left: 3px solid var(--red); padding: 1rem; background: var(--bg);">
+    <p><strong>Example prompt:</strong></p>
+    <p><em>"I have sales data with columns: Date, Product, Region, Salesperson, Revenue, Units. I want to see total revenue by Product and Region, with months as columns, so I can spot which products are growing in which regions. Tell me exactly how to set up this pivot table in Google Sheets."</em></p>
+    <p style="color: var(--dim);">AI gives you step-by-step instructions: Rows = Product, Columns = Date (grouped by month), Values = SUM of Revenue, Filter = Region. It also suggests adding a calculated field for growth rate.</p>
+  </div>
+
+  <p class="section-text"><strong>Pro tip:</strong> After building the pivot table, paste it back into AI and ask for insights. The combination of structured pivot output plus AI interpretation is extremely powerful.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--green);">Game Changer</span>
   <h2 class="section-title">AI-Generated Formulas</h2>
   <p class="section-text">One of the most practical uses of AI in spreadsheet work: getting it to write formulas for you. You don't need to memorize VLOOKUP syntax ever again.</p>
@@ -67,6 +113,39 @@ free: true
   <p class="section-text"><strong>Shared workbooks:</strong> When a team collaborates on the same sheet, AI analysis works best as a side investigation.</p>
   <p class="section-text"><strong>Recurring reports:</strong> Once AI helps you build the formula or template, run it natively in the sheet going forward.</p>
   <p class="section-text">The sweet spot: use AI to figure out the approach, then implement it in your spreadsheet for ongoing use.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Large Datasets</span>
+  <h2 class="section-title">Working with Large Spreadsheets</h2>
+  <p class="section-text">Most AI tools have context limits. When your spreadsheet has thousands of rows, you need a strategy:</p>
+  <p class="section-text"><strong>Summary statistics first:</strong> Before sending raw data, calculate basic stats in the spreadsheet (totals, averages, counts by category) and send those. AI can identify patterns from summaries without needing every row.</p>
+  <p class="section-text"><strong>Representative sampling:</strong> Send the first 50 rows, 50 from the middle, and the last 50. Tell AI: "This is a representative sample of [total] rows. The full dataset covers [time period] with columns [list]. Analyze this sample and tell me what you'd need to see to confirm any patterns."</p>
+  <p class="section-text"><strong>Column-by-column analysis:</strong> For very wide spreadsheets, analyze a few related columns at a time rather than pasting everything. Revenue and date first, then customer segment and region, then product details.</p>
+  <p class="section-text"><strong>Ask for code instead of analysis:</strong> For truly large datasets (10,000+ rows), ask AI to write a Python or Google Apps Script that runs the analysis directly on the full dataset. This bypasses context limits entirely.</p>
+  <p class="section-text"><strong>Pre-aggregate in the spreadsheet:</strong> Use pivot tables or SUMIFS to create a summary table, then paste that into AI. A 10,000-row dataset becomes a 50-row summary that AI can analyze deeply.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--red);">Common Errors</span>
+  <h2 class="section-title">Spreadsheet Mistakes AI Catches</h2>
+  <p class="section-text">One of the most valuable uses of AI in spreadsheet work is error detection. Paste your spreadsheet data and ask AI to audit it:</p>
+  <p class="section-text"><strong>Formula errors:</strong> "Review these formulas for common mistakes — circular references, incorrect ranges, missing absolute references, and division by zero risks."</p>
+  <p class="section-text"><strong>Data type mismatches:</strong> Numbers stored as text, dates that Excel does not recognize, currency values with inconsistent formatting. AI spots these instantly.</p>
+  <p class="section-text"><strong>Hidden assumptions:</strong> "This spreadsheet calculates projected revenue. What assumptions are baked into these formulas? Are any of them unreasonable?"</p>
+  <p class="section-text"><strong>Logic gaps:</strong> "Walk through the logic of this spreadsheet from input to output. Are there any steps where the calculation seems wrong or where a different approach would be more accurate?"</p>
+  <p class="section-text">These audit prompts have saved professionals from embarrassing errors in board presentations, client reports, and financial filings. Five minutes of AI review can prevent a costly mistake.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Cross-Platform</span>
+  <h2 class="section-title">Working Across Spreadsheet Platforms</h2>
+  <p class="section-text">Excel, Google Sheets, and Numbers have slightly different formula syntax. AI handles the translation seamlessly:</p>
+  <p class="section-text"><strong>"Write this formula for Google Sheets"</strong> — AI uses ARRAYFORMULA, QUERY, and Google-specific functions.</p>
+  <p class="section-text"><strong>"Convert this to Excel format"</strong> — AI swaps Google-only functions for Excel equivalents and handles differences like semicolons vs. commas in European Excel.</p>
+  <p class="section-text"><strong>"Will this work in both Excel and Google Sheets?"</strong> — AI identifies compatibility issues and suggests universal alternatives.</p>
+  <p class="section-text">When in doubt, tell AI which platform you use. It will tailor the formula syntax, keyboard shortcuts, and feature references to your specific tool.</p>
+</div>
 
   <div class="tip-box">
     <div class="tip-label">Python Bonus</div>

@@ -88,6 +88,84 @@ free: false
   <p class="section-text" style="margin-top:1rem">Most professional AI use falls into "AI-assisted." Using AI to help you write an email is no different from using a calculator to check math — the thinking is yours, the tool made it faster.</p>
 </div>
 
+<!-- SECTION: DISCLOSURE FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Frameworks</span>
+  <h2 class="section-title">Structured approaches to AI disclosure.</h2>
+  <p class="section-text">Different organizations and industries are developing formal frameworks for AI disclosure. Understanding these helps you make informed decisions about your own disclosure practices.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">The Provenance Model</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Disclose the origin of each component: who conceived the idea, who (or what) drafted it, who edited it, who approved it. This gives the audience a full chain of authorship.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">The Percentage Model</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Estimate what percentage of the work was AI vs. human. "Approximately 30% AI-drafted, 70% human-written and edited." Simple, intuitive, though imprecise.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">The Role Model</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Describe AI's role using familiar metaphors: "AI served as a research assistant," "AI was used as an editor," "AI functioned as a brainstorming partner." This contextualizes AI involvement without percentages.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: LABELING STANDARDS -->
+<div class="lesson-section">
+  <span class="section-label">Standards</span>
+  <h2 class="section-title">Emerging labeling standards across industries.</h2>
+  <p class="section-text">Different sectors are developing their own standards for labeling AI involvement. Staying aware of your industry's norms keeps you ahead of compliance requirements and builds trust with your audience.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Journalism</span> — Major outlets (AP, NYT, BBC) now require disclosure when AI assists in reporting. Some require editors to flag AI-assisted drafts before publication.</div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#38bdf8;font-weight:700">Academia</span> — Universities are establishing AI use policies ranging from full bans to mandatory disclosure. Most are converging toward: disclose the tool, describe how you used it, demonstrate your own learning.</div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#fb923c;font-weight:700">Marketing</span> — The FTC is increasingly interested in AI-generated content in advertising. Deepfake endorsements and AI-generated testimonials are already under scrutiny.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Legal</span> — Courts have begun requiring attorneys to certify that AI-generated legal briefs have been verified for accuracy, after high-profile cases where lawyers submitted briefs with fabricated citations.</div>
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#ef4444;font-weight:700">Social Media</span> — Platforms like Meta, YouTube, and TikTok are implementing AI content labels. The EU AI Act requires clear labeling of AI-generated content that could be mistaken for human-made.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: TRANSPARENCY LEVELS -->
+<div class="lesson-section">
+  <span class="section-label">Levels</span>
+  <h2 class="section-title">Four levels of transparency for AI use.</h2>
+  <p class="section-text">Not every situation demands the same level of transparency. Think of disclosure as a dial, not a switch. The stakes of the content determine how far you turn it up.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Level 1: Implicit</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">No specific mention needed. Applies to internal notes, brainstorming, spell-checking, and tasks where AI use is as unremarkable as using a search engine. You used a tool; that's all.</p>
+      </div>
+      <div style="padding:14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Level 2: General</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">A brief note that AI tools were used. "Written with AI assistance." This suits blog posts, reports, and professional content where the audience benefits from knowing AI was involved without needing details.</p>
+      </div>
+      <div style="padding:14px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Level 3: Detailed</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Specific description of how AI was used. "Claude was used to analyze the dataset and draft initial findings. All conclusions were verified by the research team." Required for research, journalism, and high-stakes professional work.</p>
+      </div>
+      <div style="padding:14px;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Level 4: Full Provenance</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Complete documentation of the AI's role, the human's role, which specific tool was used, and what verification was performed. Required for legal filings, academic research, regulatory submissions, and any context where the chain of authorship has legal implications.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 3 -->
 <div class="lesson-section">
   <span class="section-label">How to Disclose</span>

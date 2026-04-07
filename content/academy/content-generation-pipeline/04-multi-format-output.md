@@ -83,9 +83,106 @@ Voice guidelines: [DESCRIBE YOUR TONE IN 2-3 SENTENCES]."</code></div>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Format Specifications</span>
+  <h2 class="section-title">Platform-Specific Output Specs</h2>
+  <p class="section-text">Each platform has non-negotiable technical requirements. Knowing these upfront prevents rework. Build them into your transformation templates so every output is publish-ready — no manual adjustments needed.</p>
+  <p class="section-text"><strong>Twitter/X:</strong> 280 characters per tweet. Threads: 4-12 tweets. First tweet is the hook — it appears in feeds alone, so it must compel the click to expand. No hashtag spam. One or two maximum. Line breaks improve readability. Use them generously.</p>
+  <p class="section-text"><strong>LinkedIn:</strong> 3,000 character limit. First two lines visible before "see more" — these are your ad copy. Short paragraphs with line breaks between. No links in the post body (kills reach). Link in first comment instead. End with a question or poll for engagement.</p>
+  <p class="section-text"><strong>Email:</strong> Subject line under 50 characters. Preview text is the second hook — 90 characters visible in most clients. Body: 200-400 words for newsletters, under 150 for promotional. Single CTA above the fold. Mobile-first formatting — one column, large buttons.</p>
+  <p class="section-text"><strong>YouTube:</strong> Title under 60 characters. Description: front-load keywords in first 150 characters. Script pacing: 150 words per minute for speaking. Hook in first 8 seconds. Retention checkpoint at 30 seconds (state what they'll learn). Chapters with timestamps.</p>
+  <p class="section-text"><strong>Instagram Carousel:</strong> Up to 10 slides. 1080x1350px (4:5 ratio) for maximum feed real estate. Slide 1: pattern-interrupt hook. Slides 2-9: one idea per slide, large text. Slide 10: CTA + "save this post." Alt text on every image for accessibility.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Format Transformation Chain</h3>
+  <pre>
+SOURCE: 1,500-word blog post
+
+STEP 1 — Extract core message (1 sentence)
+STEP 2 — Extract 5 key points (1 sentence each)
+STEP 3 — Extract best quote/stat/story
+
+THEN IN PARALLEL:
+├── Twitter template  → hook + 5 point tweets + CTA tweet
+├── LinkedIn template → personal angle + 3 key points + question
+├── Email template    → subject + preview + teaser + CTA link
+├── YouTube template  → 2-column script with visual cues
+└── Carousel template → 8-slide breakdown with design notes
+
+QUALITY GATE: Each output checked against platform specs
+  </pre>
+  <p>Steps 1-3 run once. The five format steps run in parallel from the same extracted data. Total pipeline: 8 steps, 5 formats, one source.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Voice Consistency</span>
+  <h2 class="section-title">The Voice Document Deep Dive</h2>
+  <p class="section-text">Your voice document is the anchor that keeps multi-format output from sounding schizophrenic. It needs to be specific enough that an AI can distinguish your voice from a competitor's. "Professional and friendly" isn't specific enough — every brand says that. Here's what to include:</p>
+  <p class="section-text"><strong>Sentence patterns:</strong> Short sentences followed by a longer explanation. Questions used as transitions. Fragments for emphasis. <strong>Word preferences:</strong> "Powerful" over "effective." "Build" over "create." "Because" over "due to the fact that." <strong>Forbidden patterns:</strong> No corporate jargon. No sentences starting with "In today's world." No passive constructions when active works. <strong>Examples:</strong> Three paragraphs that perfectly represent your voice, annotated with what makes them sound like you.</p>
+  <p class="section-text">The more specific your voice document, the more consistent your cross-format output. Test it by generating the same content with and without the voice document injected. If you can't tell the difference, your voice document needs more teeth.</p>
+  <p class="section-text">Update your voice document quarterly. As your brand evolves, so does your voice. New phrases enter your vocabulary. Old ones feel stale. The voice document should capture how you sound now, not how you sounded when you wrote it. Treat it like a living style guide — not a historical artifact.</p>
+  <p class="section-text">Consider creating format-specific voice variations within the same document. Your Twitter voice might be punchier and more provocative than your email voice, even though both are unmistakably yours. Document these variations so your format templates can reference the right section of the voice guide for each platform.</p>
+  <p class="section-text">The voice document is the invisible thread that ties all your multi-format output together. Without it, five formats sound like five different brands. With it, five formats sound like one brand speaking five languages. That consistency is what builds recognition, trust, and audience loyalty across channels.</p>
+  <p class="section-text">Multi-format output is the single highest-leverage pipeline technique in this course. Every other technique improves one dimension — quality, speed, targeting, distribution. Multi-format output multiplies every piece of content across every channel simultaneously.</p>
+  <p class="section-text">Master this lesson and your content reach expands by 3-5x with minimal additional effort per piece. The creators who adopt multi-format pipelines stop thinking about "creating content" and start thinking about "deploying ideas across channels." That mental shift — from creator to operator — is what separates hobbyists from professionals.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Angle Variation</span>
+  <h2 class="section-title">Different Entry Points, Same Idea</h2>
+  <p class="section-text">The most common mistake in multi-format output is producing the same text in different shapes. A Twitter thread that reads like a chopped-up blog post. A LinkedIn post that's just the introduction copy-pasted. This defeats the purpose — audiences on different platforms need different entry points into your idea.</p>
+  <p class="section-text"><strong>The contrarian angle</strong> works on Twitter — lead with what everyone gets wrong. <strong>The personal story angle</strong> works on LinkedIn — lead with what happened to you. <strong>The curiosity angle</strong> works in email — tease the insight without revealing it. <strong>The visual metaphor angle</strong> works on Instagram — show the concept as an image. Same core idea, genuinely different approaches.</p>
+  <p class="section-text">Build angle variation into your format templates. Instead of "rewrite this for Twitter," your template says "find the most contrarian take from this content and build a thread that challenges conventional wisdom." The format template isn't just about length and structure — it's about perspective.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quality Across Formats</span>
+  <h2 class="section-title">Format-Specific Quality Checks</h2>
+  <p class="section-text">Quality gates for multi-format output need format-specific criteria. A blog post quality check looks different from a Twitter thread quality check. Build separate review checklists for each format your pipeline produces.</p>
+  <p class="section-text"><strong>Blog post gate:</strong> Readability score, paragraph length, internal links, meta description, image alt text, CTA placement. <strong>Twitter thread gate:</strong> Character count per tweet, hook strength in tweet 1, standalone value per tweet, thread coherence, CTA in final tweet. <strong>Email gate:</strong> Subject line length, preview text, single CTA above fold, mobile rendering, unsubscribe link present.</p>
+  <p class="section-text"><strong>LinkedIn gate:</strong> First two lines as hook (visible before "see more"), no links in body, question or poll at end, no hashtag spam (3 max), professional tone maintained. <strong>Video script gate:</strong> Hook within 8 seconds, retention checkpoint at 30 seconds, visual cues for every 30 seconds of audio, clear CTA with timestamp.</p>
+  <p class="section-text">Each format gate runs independently after transformation. A piece can pass the blog gate but fail the email gate. When that happens, only the email version loops back for revision — the blog version proceeds to distribution.</p>
+  <p class="section-text">This parallel quality checking is what makes multi-format pipelines efficient at scale. One failed format doesn't block the others — they publish on schedule while the failed version gets fixed.</p>
+  <p class="section-text">Independent gates mean independent timelines. And independent timelines mean your distribution calendar stays on track even when one format needs extra revision cycles.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Scale</span>
   <h2 class="section-title">The Content Multiplication Engine</h2>
   <p class="section-text">When you combine content architecture (Lesson 2) with templates (Lesson 3) and multi-format output, you get exponential leverage. One core idea, structured as atoms, run through format-specific templates, produces a week's worth of content across all your channels. That's not a theory. That's a pipeline.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Measurement</span>
+  <h2 class="section-title">Tracking Cross-Format Performance</h2>
+  <p class="section-text">When one source produces five formats, you can finally answer: which format performs best for which type of content? Maybe your "how-to" content crushes on YouTube but underperforms as email. Maybe your contrarian takes dominate Twitter but fall flat on LinkedIn. This cross-format data is gold for optimizing your pipeline.</p>
+  <p class="section-text">Build a simple tracking table: Source piece | Format | Platform | Impressions | Engagement rate | Conversion rate. After a month of data, patterns emerge that tell you exactly where to invest production effort. Stop producing formats that consistently underperform. Double down on the combinations that win.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Repurposing Strategy</span>
+  <h2 class="section-title">The Content Repurposing Flywheel</h2>
+  <p class="section-text">Multi-format output works in both directions. You can go from long to short: blog post becomes social snippets. But you can also go from short to long: five related social posts that performed well become a comprehensive blog post. A series of email tips becomes a downloadable guide. Podcast Q&A clips become a FAQ page.</p>
+  <p class="section-text">Build "reverse transformation" templates alongside your standard ones. These take your highest-performing short-form content and expand it into long-form assets. The advantage: you already know the topic resonates because the short-form version proved it with engagement data. You're investing production effort in proven winners, not guesses.</p>
+  <p class="section-text">The flywheel: long-form creates short-form. Short-form performance data identifies winners. Winners get expanded back into new long-form. Each cycle compounds the intelligence — your content gets more relevant with every revolution because it's built on proven resonance, not assumptions.</p>
+</div>
+
+<div class="demo-container">
+  <h3>Repurposing Direction Matrix</h3>
+  <pre>
+FORWARD (long → short):
+  Blog post      → Twitter thread, LinkedIn post, email teaser
+  Webinar        → Video clips, quote graphics, blog recap
+  Whitepaper     → Blog series, infographic, slide deck
+  Podcast        → Audiograms, quote cards, show notes blog
+
+REVERSE (short → long):
+  Top tweets     → Blog post exploring the resonant topic
+  Email replies  → FAQ page or objection-handling guide
+  Social polls   → Data-driven blog post with poll results
+  Comment threads→ Community-driven content roundup
+  </pre>
+  <p>Forward transformation is standard. Reverse transformation is where most pipelines leave money on the table. Build both directions into your system.</p>
 </div>
 
 <div class="lesson-section">

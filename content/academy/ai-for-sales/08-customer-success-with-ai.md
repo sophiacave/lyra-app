@@ -66,6 +66,70 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Retention Strategies</span>
+  <h2 class="section-title">Five Retention Strategies Powered by AI</h2>
+  <p class="section-text">Churn prevention is not one tactic — it is a system of strategies layered together. Here are five AI-powered retention strategies that work in combination:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">1. Proactive Outreach Calendar:</strong> AI builds a touchpoint schedule for every account — quarterly business reviews, monthly check-ins, and milestone celebrations. No account goes dark because the system reminds you before it happens.</p>
+    <p><strong style="color: var(--blue);">2. Value Realization Reports:</strong> AI generates monthly or quarterly reports showing the customer what they have achieved with your product. Concrete metrics beat vague satisfaction. When customers see their own ROI numbers, renewal becomes automatic.</p>
+    <p><strong style="color: var(--purple);">3. Early Warning Alerts:</strong> Define your churn triggers — usage drops below a threshold, support tickets spike, key contact goes silent. AI monitors these signals and alerts you before the customer mentally checks out.</p>
+    <p><strong style="color: var(--orange);">4. Rescue Playbooks:</strong> For at-risk accounts, AI drafts personalized rescue sequences: a re-engagement email acknowledging the gap, a value reminder, an executive sponsor introduction, or a product training session offer. Each playbook is tailored to the specific churn risk factor.</p>
+    <p><strong style="color: var(--red);">5. Referral and Advocacy Programs:</strong> Happy customers are your best salespeople. AI identifies your most engaged accounts and drafts referral requests, testimonial asks, and case study interview invitations. Turn retention into revenue expansion.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Health Scoring</span>
+  <h2 class="section-title">Building a Customer Health Score</h2>
+  <p class="section-text">A customer health score combines multiple signals into a single number that tells you how safe or at-risk each account is. AI can calculate and update these scores weekly using data you already have:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">Product Usage (30% weight):</strong> Active users, feature adoption, login frequency. High usage means the product is embedded in their workflow. Declining usage is the earliest churn signal.</p>
+    <p><strong style="color: var(--blue);">Engagement (25% weight):</strong> Email response rate, meeting attendance, support interaction quality. Engaged customers ask questions and give feedback. Silent customers are dangerous.</p>
+    <p><strong style="color: var(--purple);">Support Health (20% weight):</strong> Ticket volume trend, resolution satisfaction, escalation frequency. Rising tickets with low satisfaction scores signal frustration building toward a breaking point.</p>
+    <p><strong style="color: var(--orange);">Relationship Depth (15% weight):</strong> Number of contacts you know, executive sponsor access, multi-department usage. The deeper your relationships, the harder it is for a competitor to displace you.</p>
+    <p><strong style="color: var(--red);">Business Fit (10% weight):</strong> Are they still in your ICP? Have they pivoted, downsized, or shifted strategy? Sometimes churn is not about your product — it is about their business changing.</p>
+  </div>
+  <p class="section-text">Feed these signals to AI and ask for a 0-100 health score for each account. Scores above 80 are healthy. Scores between 50-80 need attention. Below 50 needs immediate intervention. Review weekly and act on every score change of more than 10 points.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Churn Prediction</span>
+  <h2 class="section-title">Predicting Churn Before It Happens</h2>
+  <p class="section-text">Churn prediction is not about reacting to cancellation requests.
+  It is about identifying risk 60-90 days before the customer even considers leaving.
+  AI spots patterns that humans miss:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Pattern 1 — The Slow Fade:</strong>
+    Usage drops 20% month over month for two consecutive months. The customer
+    is not complaining — they are simply using your product less. By the time
+    they cancel, they have already mentally left. AI catches the fade early.</p>
+    <p><strong style="color: var(--orange);">Pattern 2 — The Champion Exit:</strong>
+    Your primary contact leaves the company or changes roles. Their replacement
+    has no relationship with you and may have their own preferred vendor.
+    AI monitors LinkedIn changes and job postings to alert you when key
+    contacts are moving.</p>
+    <p><strong style="color: var(--blue);">Pattern 3 — The Support Spike:</strong>
+    Support tickets increase by 50% or more in a single quarter.
+    The customer is frustrated and considering alternatives. AI connects
+    ticket volume trends to churn risk and triggers a proactive outreach
+    from your team — not support, but a strategic check-in from their account manager.</p>
+    <p><strong style="color: var(--purple);">Pattern 4 — The Renewal Silence:</strong>
+    Contract renewal is 90 days away and the customer has not responded to
+    renewal discussions. Silence at renewal time is a red flag. AI generates
+    a multi-touch renewal sequence starting 120 days out so you are never
+    caught off guard.</p>
+  </div>
+  <p class="section-text">The cost of preventing one churn is almost always less than
+  the cost of acquiring a replacement customer. AI makes prevention systematic
+  instead of reactive — and that is where the real revenue protection happens.</p>
+</div>
+
+<div class="try-it-box">
+  <h3>Build Your Health Score</h3>
+  <div class="prompt-box"><code>Here are my customer accounts with these data points: [LIST: Company, Monthly Usage Trend (up/flat/down), Last Contact Date, Support Tickets This Quarter, NPS Score, Number of Active Users, Executive Sponsor (yes/no)]. Calculate a health score from 0-100 for each account using this weighting: Usage 30%, Engagement 25%, Support 20%, Relationship 15%, Fit 10%. Color-code each as GREEN (80+), YELLOW (50-79), or RED (below 50). For every YELLOW and RED account, give me a specific 3-step rescue plan.</code></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Relationships</span>
   <h2 class="section-title">Check-Ins That Actually Matter</h2>
   <p class="section-text">Nobody wants a "just checking in" email. AI helps you craft check-ins that deliver value: industry insights relevant to their business, tips for getting more from your product, introductions to other customers in their space, or early access to new features. Every touchpoint should make them glad they're your customer.</p>
@@ -73,6 +137,48 @@ free: false
     <p><strong style="color: var(--accent);">Bad:</strong> "Just checking in to see how things are going!"</p>
     <p><strong style="color: var(--green);">Good:</strong> "Saw [industry news] and thought of your [specific project]. Here's how our customers are adapting..."</p>
   </div>
+  <p class="section-text">AI can generate a month of value-add check-in topics for each of your
+  key accounts. Feed it the account profile, their industry, and their use case — and it
+  produces a calendar of touchpoints, each with a specific value angle. Your customers hear
+  from you consistently with content that matters to them specifically.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Expansion</span>
+  <h2 class="section-title">The Expansion Playbook</h2>
+  <p class="section-text">Upselling and cross-selling are not about pushing more product.
+  They are about solving more problems for a customer who already trusts you.
+  AI identifies the right moment and the right angle for expansion conversations:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">The Usage Ceiling Conversation:</strong>
+    When a customer approaches the limits of their current plan, AI drafts a
+    proactive message: "I noticed your team is using 85% of your capacity.
+    Before you hit any friction, here is how upgrading would work and what
+    additional capabilities you would unlock." Proactive beats reactive.</p>
+    <p><strong style="color: var(--blue);">The New Department Conversation:</strong>
+    When a new team or department could benefit from your product, AI researches
+    the department's goals and drafts an introduction. Your existing champion
+    becomes your referral path — AI even drafts the introduction email for them.</p>
+    <p><strong style="color: var(--purple);">The Annual Review Conversation:</strong>
+    At the annual business review, AI builds a presentation showing results
+    achieved, ROI delivered, and opportunities for deeper partnership.
+    Let the numbers make the case for expansion.</p>
+    <p><strong style="color: var(--orange);">The Trigger Event Conversation:</strong>
+    Customer just raised funding, acquired a company, or entered a new market.
+    AI connects these events to additional products or services you offer
+    that are now relevant. Timing is everything in expansion selling.</p>
+  </div>
+</div>
+
+<div class="try-it-box">
+  <h3>Expansion Opportunity Finder</h3>
+  <div class="prompt-box"><code>Analyze these customer accounts for expansion opportunities:
+[LIST: Company, Current Product/Plan, Monthly Revenue, Usage Level, Contract
+End Date, Recent Company News]. I also offer: [LIST ADDITIONAL PRODUCTS/TIERS].
+For each account, identify: 1) The expansion opportunity type (upgrade, cross-sell,
+new department), 2) The trigger or signal that makes now the right time,
+3) The specific product or tier to recommend, 4) A conversation opener
+that leads naturally to the expansion discussion without being pushy.</code></div>
 </div>
 
 <!-- INTERACTIVE: FLASHDECK -->

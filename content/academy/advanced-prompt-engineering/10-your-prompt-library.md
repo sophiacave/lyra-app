@@ -141,6 +141,61 @@ Length: {LENGTH} words. Include a practical takeaway at the end.
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Maintenance</span>
+  <h2 class="section-title">Keeping Your Library Alive</h2>
+  <p class="section-text">A prompt library that isn't maintained becomes a graveyard. Models change, your needs evolve, and what worked six months ago might underperform today. Here's a maintenance routine that takes minutes per week.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Weekly (2 minutes):</strong> After each week, note which prompts you used most. Star them. Prompts you haven't used in 3 months? Archive or delete. A lean library is a used library.</p>
+  <p class="section-text"><strong style="color: var(--purple);">After every major use:</strong> If you modified a prompt during use — even slightly — update the template. The best improvements come from real-world adjustments, not theoretical rewrites.</p>
+  <p class="section-text"><strong style="color: var(--green);">After model updates:</strong> When the AI model you use gets updated (new version, new features), test your top 5 prompts. Model updates can improve or degrade prompt performance. A 5-minute test prevents weeks of degraded output.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Quarterly review:</strong> Once a quarter, read through your library with fresh eyes. You'll spot patterns: "I have 12 prompts that all start with the same system prompt — I should make that a reusable component." Refactoring your library is as valuable as refactoring code.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Sharing</span>
+  <h2 class="section-title">Prompt Libraries as Team Assets</h2>
+  <p class="section-text">A personal prompt library is powerful. A team prompt library is transformative. When your best prompts are shared, the entire team levels up.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">Team Library Template</h4>
+      <code># [Prompt Name] — v[N]
+## Owner: [who maintains this]
+## Category: [coding / writing / analysis / operations]
+## Last tested: [date] on [model name]
+
+## When to Use
+[1-2 sentences describing the scenario]
+
+## Template
+[The prompt with {VARIABLES}]
+
+## Example Input → Output
+[One real example showing what this produces]
+
+## Known Limitations
+[When this prompt fails or needs manual adjustment]
+
+## Changelog
+- v2 (2024-03): Added format constraints. Off-format rate: 40% → 5%
+- v1 (2024-01): Initial version</code>
+    </div>
+  </div>
+
+  <p class="section-text">The "Known Limitations" section is what separates a professional library from a hobby collection. It saves teammates from debugging failures you've already solved.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Composable Prompt Components</h2>
+  <p class="section-text">As your library grows, you'll notice that many prompts share the same building blocks. Extract these into reusable components.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Tone blocks:</strong> Standard tone descriptions you reuse across prompts. "Tone: conversational, like a smart friend explaining over coffee. No jargon. No filler sentences." Save this once, paste into any writing prompt.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Output format blocks:</strong> Standard output structures. Your JSON schema template, your table format specification, your "return only X, no preamble" constraint. These are mechanical and benefit from consistency.</p>
+  <p class="section-text"><strong style="color: var(--green);">Validation blocks:</strong> Standard quality checks. "Before returning, verify: all fields are present, no null values, dates match YYYY-MM-DD format." The same validation applies to many different prompts.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Domain preambles:</strong> Standard context blocks for each domain you work in. Your company context, your tech stack, your audience profile. Instead of rewriting this for every prompt, paste the relevant preamble.</p>
+  <p class="section-text">This is prompt engineering meeting software engineering. Components, reuse, DRY principles — the same patterns that make code maintainable make prompt libraries maintainable.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Course Complete</span>
   <h2 class="section-title">What You've Built</h2>
   <p class="section-text">You now have a complete advanced prompting skillset: system prompts, chain of thought, few-shot examples, structured output, prompt chaining, context management, debugging, domain-specific patterns, and a reusable library to store it all.</p>

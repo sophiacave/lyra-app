@@ -170,6 +170,37 @@ free: false
   </div>
 </div>
 
+<!-- SECTION 5: PROMPT LIBRARY STARTER -->
+<div class="lesson-section">
+  <span class="section-label">Starter Kit</span>
+  <h2 class="section-title">Prompt library starter: 4 templates you can use today.</h2>
+  <p class="section-text">Don't start your prompt library from scratch. These four battle-tested templates cover the most common creative tasks. Copy them, customize the <span style="color:#fb923c">[BRACKETS]</span>, and save the versions that work best for you. Each one is designed to produce output that's actually useful -- not generic filler.</p>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#34d399">Template 1: The Brainstorm Engine</div>
+    <p style="font-size:.85rem;color:var(--dim);line-height:1.8;font-style:italic;background:rgba(255,255,255,.03);padding:1rem;border-radius:8px;border-left:3px solid #34d399">"I'm a [YOUR CREATIVE ROLE] working on [PROJECT TYPE] for [AUDIENCE]. My style is [2-3 ADJECTIVES FROM YOUR STYLE ANCHOR]. Give me 10 original angles on [TOPIC] that I haven't seen done before. For each angle, include: the core insight (one sentence), why it matters to my audience, and one unexpected twist that makes it memorable. Avoid anything that feels like a listicle or generic advice."</p>
+    <p style="margin-top:.75rem;font-size:.85rem"><strong>When to use:</strong> Beginning of any new project. When you need to break out of obvious ideas and find the angle that only you would take. Works for blog posts, videos, podcast episodes, design concepts, and campaign themes.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#8b5cf6">Template 2: The Style Transfer Bridge</div>
+    <p style="font-size:.85rem;color:var(--dim);line-height:1.8;font-style:italic;background:rgba(255,255,255,.03);padding:1rem;border-radius:8px;border-left:3px solid #8b5cf6">"Here is a piece I wrote that represents my voice at its best: [PASTE YOUR BEST WORK SAMPLE]. Now take this raw content: [PASTE DRAFT OR NOTES]. Rewrite it in my voice. Match my sentence length patterns, my tone, my punctuation habits, and the way I open and close sections. If something in the raw content contradicts my style, transform it -- don't just copy it. The result should sound like I wrote it on a good day."</p>
+    <p style="margin-top:.75rem;font-size:.85rem"><strong>When to use:</strong> When you have rough notes, interview transcripts, or AI-generated drafts that need to sound like you. This is the bridge between raw material and finished voice. Essential for maintaining consistency across a high-volume content schedule.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#fb923c">Template 3: The Constructive Critique</div>
+    <p style="font-size:.85rem;color:var(--dim);line-height:1.8;font-style:italic;background:rgba(255,255,255,.03);padding:1rem;border-radius:8px;border-left:3px solid #fb923c">"You are a [RESPECTED ROLE IN YOUR FIELD -- e.g., senior editor, creative director, gallery curator] with 20 years of experience. Review this piece: [PASTE YOUR WORK]. Give me: (1) The strongest element -- what's working and why. (2) The weakest element -- what's dragging it down and why. (3) Three specific, actionable edits that would elevate this from good to excellent. (4) One thing I'm probably too close to see. Be direct. I want honest craft feedback, not encouragement."</p>
+    <p style="margin-top:.75rem;font-size:.85rem"><strong>When to use:</strong> Before publishing anything important. When you've been staring at a piece too long and need fresh eyes. The persona makes AI more specific and honest than a generic "give me feedback" prompt. Adjust the role to match your discipline.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#38bdf8">Template 4: The Format Converter</div>
+    <p style="font-size:.85rem;color:var(--dim);line-height:1.8;font-style:italic;background:rgba(255,255,255,.03);padding:1rem;border-radius:8px;border-left:3px solid #38bdf8">"Take this [ORIGINAL FORMAT -- e.g., blog post, podcast transcript, research notes] and transform it into a [TARGET FORMAT -- e.g., Twitter thread, Instagram carousel script, email newsletter, LinkedIn article]. Preserve the core ideas and my voice but adapt the structure, length, and tone for the [TARGET PLATFORM]. The audience on [PLATFORM] expects [KEY PLATFORM NORMS -- e.g., punchy sentences, professional tone, visual hooks]. Do not water down the insight to fit the format -- find a way to deliver the same depth in the new shape."</p>
+    <p style="margin-top:.75rem;font-size:.85rem"><strong>When to use:</strong> Repurposing. One strong piece of content should become 3-5 pieces across platforms. This template ensures each version feels native to its platform instead of like a lazy copy-paste. Update the platform norms section as algorithms and audience expectations shift.</p>
+  </div>
+</div>
+
 <div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Advanced Creative Prompting Techniques","cards":[{"front":"Style Transfer","back":"Feed AI 3-5 samples of your work. Ask it to analyze your style, tone, structure, and patterns. Use that analysis as a reusable style anchor at the top of every future prompt. Now AI has a blueprint, not a guess."},{"front":"Mood Anchoring","back":"Describe the emotional texture of what you want, not just the content. \"Write this like it feels like the last hour of summer.\" Sensory and emotional language maps to rich clusters in AI training data and produces more evocative output."},{"front":"Constraint-Based Creativity","back":"Give AI deliberate creative constraints: exactly 50 words, only one-syllable words, every sentence a question. Constraints force AI out of its default median patterns -- the same way they push human creatives toward originality."},{"front":"Iterative Refinement","back":"Round 1: generate wide (5 approaches). Round 2: pick and push (keep the structure, change the tone). Round 3: refine details (tighten the third paragraph). Round 4: finish by hand. The first output is never the final output."},{"front":"Cross-Medium Translation","back":"Take creative work from one medium and translate it to another. \"Turn this painting description into a poem.\" \"Turn this song lyric into a visual art brief.\" Cross-medium prompting breaks AI out of format defaults and produces genuinely surprising output."}]}'></div>
 </div>

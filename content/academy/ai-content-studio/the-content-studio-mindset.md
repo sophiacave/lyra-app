@@ -93,6 +93,17 @@ create should trace back to it.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Reference</span>
+  <h2 class="section-title">Studio vs. writer — a side-by-side comparison.</h2>
+  <p class="section-text">Here is the concrete difference between operating as a writer and operating as a studio. Use this as a diagnostic — if you see yourself on the left side, this course will move you to the right:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Writer:</strong> Stares at a blank page. <strong style="color:var(--green)">Studio:</strong> Opens the content calendar and knows exactly what to create.</p>
+  <p class="section-text"><strong style="color:var(--orange)">Writer:</strong> Creates one piece, publishes it, starts over. <strong style="color:var(--green)">Studio:</strong> Creates one anchor piece and repurposes it into 10 formats.</p>
+  <p class="section-text"><strong style="color:var(--orange)">Writer:</strong> Hopes for engagement. <strong style="color:var(--green)">Studio:</strong> Tracks metrics and adjusts strategy based on data.</p>
+  <p class="section-text"><strong style="color:var(--orange)">Writer:</strong> Sounds different every week. <strong style="color:var(--green)">Studio:</strong> Has a voice document that ensures consistency across everything.</p>
+  <p class="section-text"><strong style="color:var(--orange)">Writer:</strong> Burns out after 3 months. <strong style="color:var(--green)">Studio:</strong> Batches and schedules, sustaining output for years.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Learn</span>
   <h2 class="section-title">Key studio mindset concepts.</h2>
   <div data-learn="FlashDeck" data-props='{"title":"The Content Studio Mindset","cards":[{"front":"Studio Mindset","back":"Treating content creation as a systematic operation with strategy, creation, repurposing, and optimization — not just sitting down to write."},{"front":"The Strategist Role","back":"AI helps you decide what to create by analyzing trends, reviewing past performance, identifying content gaps, and mapping editorial calendars."},{"front":"The Editor Role","back":"AI sharpens your rough ideas and messy drafts. Your voice stays — the quality goes up. Feed it raw material, not blank prompts."},{"front":"The Producer Role","back":"AI turns one piece of content into social snippets, email content, video scripts, and podcast talking points. One hour of work becomes a week of content."},{"front":"Creative Director","back":"Your role in the studio. Your perspective, stories, and lived experience make content yours. AI is the production team — you are the vision."}]}'></div>
@@ -104,6 +115,35 @@ create should trace back to it.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Common Traps</span>
+  <h2 class="section-title">Five mistakes that keep creators stuck in writer mode.</h2>
+  <p class="section-text"><strong style="color:var(--orange)">Trap 1: Treating AI as a vending machine.</strong> You put in a prompt, get out a finished piece, and publish. This skips strategy, editing, and your own perspective entirely. The output reads like it came from nowhere — because it did. Use AI at every stage, not just the drafting stage.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Trap 2: No content pillars.</strong> Without 3-5 core themes to anchor every piece, your content drifts. One week you write about productivity, the next about cooking, the next about travel. Your audience never knows what to expect. Studios have verticals. You need them too.</p>
+  <p class="section-text"><strong style="color:var(--green)">Trap 3: Perfectionism before publishing.</strong> Studios ship. They edit, they review, they quality-check — but they ship. If your blog post has been in drafts for three weeks because "it's not ready," you are operating as a writer, not a studio. Set a quality bar, meet it, and publish.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Trap 4: No repurposing pipeline.</strong> Every piece of content you create should live in at least three formats. A blog post becomes a Twitter thread, an email, and a carousel. If you're creating and discarding, you're wasting 70% of your effort.</p>
+  <p class="section-text"><strong>Trap 5: Ignoring data.</strong> A studio reviews what worked. It checks which posts got engagement, which emails got opens, which topics drove traffic. Without a feedback loop, you are guessing. AI can analyze your past performance and tell you exactly what to create more of.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Studio Stack</span>
+  <h2 class="section-title">Tools and systems that make the studio work.</h2>
+  <p class="section-text">A content studio runs on systems, not willpower. Here is the minimum viable stack you need to operate like a studio from day one:</p>
+  <p class="section-text"><strong style="color:var(--orange)">AI assistant:</strong> Claude, ChatGPT, or any model that handles long conversations. This is your strategist, editor, and producer rolled into one. The specific tool matters less than how you use it — which is what this entire course teaches.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Content calendar:</strong> Notion, Google Sheets, Trello, or even a plain text file. The format does not matter. What matters is that you have a single place where every planned piece of content lives with its topic, platform, pillar, and publish date.</p>
+  <p class="section-text"><strong style="color:var(--green)">Prompt library:</strong> A document where you save every prompt that produces great results. Over time, this becomes your most valuable creative asset. Every session starts faster because you are not reinventing the wheel.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Scheduling tool:</strong> Buffer, Later, or native platform schedulers. The studio mindset means content is batched and queued — not posted in real-time while you scramble. Scheduling is what transforms reactive posting into proactive publishing.</p>
+  <p class="section-text"><strong>Voice document:</strong> A reference sheet that tells AI exactly how you communicate. Your tone words, writing rules, sample paragraphs, and a kill list of words you never use. We will build this in Lesson 7, but start thinking about it now.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Case Study</span>
+  <h2 class="section-title">From overwhelmed freelancer to content studio in one week.</h2>
+  <p class="section-text">Consider a freelance web designer who posts sporadically on Instagram, has an email list of 200 subscribers, and publishes a blog post every six weeks when inspiration strikes. She spends about 5 hours per week on content but has almost nothing to show for it.</p>
+  <p class="section-text"><strong>Week 1 transformation:</strong> She defines three content pillars (web design trends, client communication tips, freelance business strategy). She uses AI to brainstorm 30 topic ideas mapped to those pillars. She batches 10 social posts, 2 blog outlines, and 1 email in a single 3-hour session. She schedules everything for the next two weeks.</p>
+  <p class="section-text"><strong>The result:</strong> Same 5 hours, but now she has two weeks of consistent, strategically aligned content instead of one rushed post. Her audience sees a recognizable brand forming. Engagement increases because the content connects to clear themes. This is what happens when you stop thinking like a writer and start thinking like a studio.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">The Rule</span>
   <h2 class="section-title">Your voice is non-negotiable.</h2>
   <p class="section-text">The studio mindset doesn't mean handing everything to AI and walking away. Your perspective, your stories, your weird analogies, your lived experience — that's what makes your content yours. AI is the production team. You're the creative director.</p>
@@ -111,10 +151,45 @@ create should trace back to it.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The daily studio operating rhythm.</h2>
+  <p class="section-text">A studio does not work on inspiration. It works on rhythm. Here is a daily operating pattern that takes 60-90 minutes and keeps your content machine running:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Morning (15 min) — Check and engage:</strong> Review comments and messages from yesterday's posts. Respond to anything meaningful. Note what sparked conversations — these are future content ideas. Engagement is not optional; it is how you build community.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Midday (45-60 min) — Create or repurpose:</strong> This is your production block. Either draft new content using your calendar and prompts, or repurpose an existing piece into a new format. AI handles the heavy lifting — you add perspective and polish.</p>
+  <p class="section-text"><strong style="color:var(--green)">Evening (10 min) — Schedule and prep:</strong> Queue tomorrow's content in your scheduling tool. Glance at your calendar for what is coming. This ensures you never wake up scrambling.</p>
+  <p class="section-text">This rhythm compounds. After a month, you will have published more content than most creators publish in a quarter — and it will all be strategically aligned because every piece traces back to your pillars and calendar.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Mindset Shift</span>
+  <h2 class="section-title">Perfectionism is the enemy of the studio.</h2>
+  <p class="section-text">Writers agonize. Studios ship. The difference matters because content that lives in your drafts folder helps nobody — not you, not your audience, not your business.</p>
+  <p class="section-text">This does not mean publishing garbage. It means setting a quality bar — "Is this helpful? Does it sound like me? Would I share this with a friend?" — and publishing when the bar is met. A good piece published today beats a perfect piece published never.</p>
+  <p class="section-text">AI helps with this because it compresses the distance between rough idea and publishable piece. What used to take three hours of agonizing now takes 45 minutes of focused co-creation. The speed is a feature, not a shortcut. Use it to publish more, not to stress less while publishing the same amount.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Content studio mindset quiz.</h2>
   <div data-learn="QuizMC" data-props='{"title":"Content Studio Mindset","questions":[{"q":"What is the biggest advantage of thinking like a studio instead of a solo writer?","options":["You write faster with fewer edits","You have systems for every part of the content lifecycle","You no longer need a content strategy","AI writes everything for you"],"correct":1,"explanation":"The studio mindset means using AI across strategy, creation, repurposing, and optimization — not just as a writing shortcut."},{"q":"Which AI role is responsible for turning one blog post into five social snippets?","options":["The Strategist","The Editor","The Producer","The Scheduler"],"correct":2,"explanation":"The Producer takes one piece and multiplies it across formats — that is the role that saves the most time in a content studio."},{"q":"Why should you ask AI to THINK with you before asking it to WRITE?","options":["It makes AI responses longer","Thinking prompts produce better content strategy than writing prompts","AI cannot write without planning first","Thinking mode is faster than writing mode"],"correct":1,"explanation":"Asking AI to plan and strategize before writing shifts it from a typing assistant into a genuine creative thinking partner."}]}'>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">What's Next</span>
+  <h2 class="section-title">From mindset to action.</h2>
+  <p class="section-text">The studio mindset is the foundation everything else builds on. In the next lesson, you will take this mindset and turn it into a concrete content strategy — complete with pillars, a 30-day calendar, and the AI prompts that make planning fast. If this lesson was about thinking like a studio, the next one is about building one.</p>
+  <p class="section-text">Before you move on, take one action: open your AI tool and run the creative brief prompt from earlier in this lesson. Filling in the blanks with your real business and audience takes five minutes. That brief becomes the north star for everything you build in this course.</p>
+  <p class="section-text">Remember: the studio mindset is not something you learn once and forget. It is a lens you apply to every content decision from this point forward. When you sit down to create, ask yourself: "Am I thinking like a writer or like a studio?" If the answer is writer, pause. Check your calendar. Load your voice document. Open your prompt library. Then begin. The system is what makes the difference. The system is what you are building here.</p>
+  <p class="section-text">The nine lessons ahead will give you every tool, framework, and prompt you need to run a full content studio. By the end, you will have a strategy system, production workflows for long and short form, email sequences, repurposing pipelines, a brand voice document, SEO knowledge, batching rhythms, and a complete engine blueprint. Everything connects. Everything builds. And it all starts with this one shift in thinking.</p>
+  <p class="section-text">The most important thing you can do right now is commit to the shift. You are not a writer who uses AI sometimes. You are a studio operator who uses AI systematically. That distinction shapes every decision you make from here forward — what to create, how to create it, and how to get maximum value from every piece. The studio mindset is not a chapter you read. It is a mode you operate in. Start now.</p>
+  <p class="section-text">Throughout this course, every lesson builds on this foundation. Strategy gives you the plan. Long-form and short-form give you the production skills. Email gives you the relationship channel. Repurposing gives you the multiplier. Voice gives you consistency. SEO gives you discoverability. Batching gives you efficiency. And the final lesson wires it all into an engine. But none of it works without the mindset shift you made today. You are a studio now. Act like one.</p>
+  <p class="section-text">The creative brief you generated at the start of this lesson is your first studio artifact. Keep it. Reference it. Update it monthly. It is the north star that ensures everything you create connects to a purpose bigger than "I should post something today." Purpose-driven content outperforms random content every single time. And a studio always creates with purpose.</p>
+  <p class="section-text">Let's move. Lesson 2 takes this mindset and turns it into a concrete content strategy with pillars, calendars, and AI-powered planning. The studio is open. Time to fill it with work.</p>
+  <p class="section-text">One last thing before you go: bookmark the creative brief prompt and the studio stack checklist from this lesson. You will reference them throughout the course and beyond. They are not homework — they are the tools you will use every single month to run your studio. The best time to start building your studio was a year ago. The second best time is right now, in the next lesson.</p>
+  <p class="section-text">You have already taken the most important step — you showed up. You are learning the system that separates consistent creators from struggling ones. Every lesson from here forward builds on the foundation you laid today. The studio mindset is not a technique you try once. It is the operating system for everything you create from this moment on. Let it shape every content decision you make.</p>
+  <p class="section-text">When you are ready, click through to Lesson 2. Your content strategy — complete with pillars, calendars, and AI-powered planning — is waiting to be built.</p>
+  <p class="section-text">The studio is open. The tools are ready. The only thing missing is the work. And that starts now.</p>
 </div>
 
 <nav class="lesson-nav">

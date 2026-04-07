@@ -95,6 +95,86 @@ free: true
   </div>
 </div>
 
+<!-- SECTION: MORE BIAS TYPES -->
+<div class="lesson-section">
+  <span class="section-label">Beyond the 4</span>
+  <h2 class="section-title">Additional bias types you should recognize.</h2>
+  <p class="section-text">The four core types above are the most common, but bias shows up in other patterns too. Recognizing these helps you catch subtler problems in AI output.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(248,113,113,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">5</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Automation Bias</div>
+          <div style="color:#a1a1aa;font-size:.85rem">The tendency to trust AI output simply because it came from a computer. Humans often defer to automated decisions even when their own judgment is better. If AI says "approve this loan application" and a loan officer overrides their gut feeling because "the algorithm decided," that's automation bias.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(248,113,113,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">6</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Selection Bias</div>
+          <div style="color:#a1a1aa;font-size:.85rem">When training data doesn't represent the full population. A sentiment analysis model trained only on product reviews from English-speaking countries will perform poorly on reviews from other cultures where positive and negative feedback are expressed differently.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(248,113,113,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">7</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Survivorship Bias</div>
+          <div style="color:#a1a1aa;font-size:.85rem">AI trained on successful outcomes overvalues the strategies of winners and ignores the losers who did the same things. Ask AI for "traits of successful startups" and you'll get patterns that also appear in failed startups — because the training data doesn't represent failures equally.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(248,113,113,.12);color:#ef4444;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">8</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:2px">Anchoring Bias</div>
+          <div style="color:#a1a1aa;font-size:.85rem">When you give AI a starting point, it anchors to it. "This product is probably worth around $500. What do you think?" will get a response clustered around $500 regardless of the product's actual value. AI anchors to the numbers and assumptions you provide.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: TESTING METHODS -->
+<div class="lesson-section">
+  <span class="section-label">Testing</span>
+  <h2 class="section-title">Practical methods to test for bias in AI output.</h2>
+  <p class="section-text">Knowing about bias types is step one. Actively testing for it is step two. Here are methods you can apply right now, without any technical background.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">The Name Swap Test</span> — Replace names in your prompt with names from different ethnic backgrounds and genders. Run the same task. Compare outputs. If changing "Sarah" to "Mohammed" changes the tone, recommendations, or framing, the output is biased.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">The Reversal Test</span> — Flip the subject. If AI says "women tend to be more empathetic in leadership," ask "do men tend to be more empathetic in leadership?" If AI agrees with both contradictory claims, neither is grounded — it's pattern-matching, not reasoning.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">The Default Test</span> — Give a prompt with no demographic details and check what AI assumes. "Write a story about a CEO" — what gender appears? "Describe a nurse" — what gender? "Imagine a family" — what structure? Defaults reveal embedded biases.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">The Geography Test</span> — Ask for advice on the same topic but set in different countries. "How should a company handle employee complaints?" — does the advice change appropriately for different legal and cultural contexts, or does it default to U.S. norms?</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: MITIGATION STRATEGIES -->
+<div class="lesson-section">
+  <span class="section-label">Mitigation</span>
+  <h2 class="section-title">Systematic strategies for mitigating AI bias.</h2>
+  <p class="section-text">Beyond individual prompt techniques, here are organizational and systematic approaches to reducing bias in AI-assisted work. These are especially important if you're using AI for decisions that affect other people.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Diverse Review Teams</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The most effective bias catch is having diverse humans review AI output. A homogeneous team will miss biases that feel "normal" to them. Include people from different backgrounds, ages, abilities, and experiences in your review process.</p>
+      </div>
+      <div style="padding:14px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Structured Evaluation Criteria</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Don't rely on gut feelings to catch bias. Create explicit checklists: Does this output assume a default gender? Does it work for people with disabilities? Does it reflect non-Western perspectives where appropriate? Checklists catch what intuition misses.</p>
+      </div>
+      <div style="padding:14px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#8b5cf6;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Feedback Loops</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Create channels for people affected by AI output to report bias. If your AI-generated job descriptions are discouraging certain candidates, you need to hear from those candidates. If your AI customer service is misunderstanding certain accents, affected customers need a way to flag it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 4: REDUCING -->
 <div class="lesson-section">
   <span class="section-label">The Fix</span>

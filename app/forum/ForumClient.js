@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -39,7 +40,7 @@ function setSaved(key, val) { try { localStorage.setItem('forum_' + key, val); }
 export default function ForumClient() {
   const [currentSlug, setCurrentSlug] = useState('general');
   const [allPosts, setAllPosts] = useState([]);
-  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [loadingPosts, setLoadingPosts] = useState(false);
   const [expandedPosts, setExpandedPosts] = useState(new Set());
   const [showNewPost, setShowNewPost] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
@@ -222,46 +223,51 @@ export default function ForumClient() {
       </section>
 
       <main className="forum-main">
-        {/* Tabs */}
-        <div className="forum-tabs">
-          {TABS.map(t => (
-            <button
-              key={t.slug}
-              onClick={() => setCurrentSlug(t.slug)}
-              className={`forum-tab${currentSlug === t.slug ? ' active' : ''}`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
+        {/* Only show forum UI (tabs, post form, etc.) when there are actual posts */}
+        {!loadingPosts && allPosts.length > 0 && (
+          <>
+            {/* Tabs */}
+            <div className="forum-tabs">
+              {TABS.map(t => (
+                <button
+                  key={t.slug}
+                  onClick={() => setCurrentSlug(t.slug)}
+                  className={`forum-tab${currentSlug === t.slug ? ' active' : ''}`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
 
-        {/* Auth badge */}
-        {authUser && (
-          <div className="forum-auth-badge">
-            Posting as <strong>{authUser.name}</strong> &bull; <a href="/account">Edit profile</a>
-          </div>
+            {/* Auth badge */}
+            {authUser && (
+              <div className="forum-auth-badge">
+                Posting as <strong>{authUser.name}</strong> &bull; <a href="/account">Edit profile</a>
+              </div>
+            )}
+
+            {/* New post toggle */}
+            {!showNewPost && (
+              <button
+                onClick={() => setShowNewPost(true)}
+                className="forum-new-post-toggle"
+              >
+                + {authUser ? `Start a new conversation as ${authUser.name}...` : 'Start a new conversation...'}
+              </button>
+            )}
+          </>
         )}
 
-        {/* New post toggle */}
-        {!showNewPost && (
-          <button
-            onClick={() => setShowNewPost(true)}
-            className="forum-new-post-toggle"
-          >
-            + {authUser ? `Start a new conversation as ${authUser.name}...` : 'Start a new conversation...'}
-          </button>
-        )}
-
-        {/* Messages */}
-        {successMsg && (
+        {/* Messages and forms — only when forum is active */}
+        {!loadingPosts && allPosts.length > 0 && successMsg && (
           <div className="app-msg-success">{successMsg}</div>
         )}
-        {errorMsg && (
+        {!loadingPosts && allPosts.length > 0 && errorMsg && (
           <div className="app-msg-error">{errorMsg}</div>
         )}
 
         {/* New post form */}
-        {showNewPost && (
+        {!loadingPosts && allPosts.length > 0 && showNewPost && (
           <div className="app-card">
             <div className="app-form-row">
               <input type="text" placeholder="Your name" maxLength={100} value={postName} onChange={e => setPostName(e.target.value)} className="app-input flex-1" />
@@ -287,12 +293,30 @@ export default function ForumClient() {
 
         {/* Posts list */}
         {loadingPosts ? (
-          <div className="app-loading">Loading posts...</div>
+          filteredPosts.length === 0 ? (
+            <div className="site-section-sm text-center" style={{ padding: '4rem 1.5rem' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🗣️</div>
+              <h2 className="site-section-title-md">Community forum launching soon</h2>
+              <p className="site-hero-desc-sm" style={{ maxWidth: '32rem', margin: '0 auto 2rem' }}>
+                We&rsquo;re building a space for learners to ask questions, share wins, and help each other on the convergence path. It&rsquo;s almost ready.
+              </p>
+              <div className="site-cta-row" style={{ justifyContent: 'center' }}>
+                <Link href="/academy/" className="site-btn-primary">Browse Courses</Link>
+                <Link href="/#subscribe" className="site-btn-secondary">Join the Mailing List</Link>
+              </div>
+            </div>
+          ) : null
         ) : filteredPosts.length === 0 ? (
-          <div className="app-empty">
-            <div className="app-empty-icon">💬</div>
-            <div className="app-empty-title">No posts yet</div>
-            <div className="app-empty-desc">Be the first to start a conversation. We&rsquo;d love to hear from you.</div>
+          <div className="site-section-sm text-center" style={{ padding: '4rem 1.5rem' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🗣️</div>
+            <h2 className="site-section-title-md">Community forum launching soon</h2>
+            <p className="site-hero-desc-sm" style={{ maxWidth: '32rem', margin: '0 auto 2rem' }}>
+              We&rsquo;re building a space for learners to ask questions, share wins, and help each other on the convergence path. It&rsquo;s almost ready.
+            </p>
+            <div className="site-cta-row" style={{ justifyContent: 'center' }}>
+              <Link href="/academy/" className="site-btn-primary">Browse Courses</Link>
+              <Link href="/#subscribe" className="site-btn-secondary">Join the Mailing List</Link>
+            </div>
           </div>
         ) : (
           <div className="forum-posts">
@@ -363,8 +387,8 @@ export default function ForumClient() {
           </div>
         )}
 
-        {/* Report section */}
-        <section className="forum-report-section">
+        {/* Report section — only when forum is active */}
+        {!loadingPosts && allPosts.length > 0 && <section className="forum-report-section">
           <div className="forum-report-divider">
             <h2 className="forum-report-title">Report an Issue</h2>
             <p className="forum-report-desc">
@@ -400,7 +424,7 @@ export default function ForumClient() {
               </div>
             </div>
           </div>
-        </section>
+        </section>}
       </main>
 
       <Footer variant="site" />

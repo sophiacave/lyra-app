@@ -60,11 +60,147 @@ type: "lesson"
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">CI/CD Config</span>
+  <h2 class="section-title">GitHub Actions for AI Deployments</h2>
+  <p class="section-text">Here's a production-ready GitHub Actions workflow for deploying an AI application. It covers both the Vercel frontend and Supabase edge functions, with post-deploy smoke tests.</p>
+
+<div class="code-block"><div class="code-label">YAML — .github/workflows/deploy.yml</div>
+<pre><code class="language-yaml">name: Deploy AI Application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test -- --coverage
+
+      # Contract tests with mocked AI responses
+      - name: Run AI contract tests
+        run: npm run test:ai-contracts
+        env:
+          AI_MOCK_MODE: "true"
+
+  deploy-functions:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Deploy edge functions
+        run: |
+          supabase functions deploy ai-chat \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_REF }}
+          supabase functions deploy ai-embed \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_REF }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+  smoke-test:
+    needs: [deploy-functions]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify AI endpoints
+        run: |
+          # Test edge function health
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "${{ secrets.SUPABASE_URL }}/functions/v1/ai-chat" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"message": "health check"}')
+
+          if [ "$STATUS" != "200" ]; then
+            echo "Smoke test FAILED with status $STATUS"
+            exit 1
+          fi
+          echo "Smoke test PASSED"
+
+      - name: Check response time
+        run: |
+          TIME=$(curl -s -o /dev/null -w "%{time_total}" \
+            "${{ secrets.SUPABASE_URL }}/functions/v1/ai-chat" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"message": "latency check"}')
+
+          echo "Response time: ${TIME}s"
+          if (( $(echo "$TIME > 10.0" | bc -l) )); then
+            echo "WARNING: Response time exceeds 10s threshold"
+          fi</code></pre>
+</div>
+
+  <p class="section-text">The workflow runs in three stages: test (unit + contract tests with mocked AI), deploy (push edge functions to Supabase), and smoke test (verify live endpoints respond correctly and within latency bounds). Vercel handles frontend deployment automatically on push to main.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Rollback</span>
+  <h2 class="section-title">Instant Rollback Strategies</h2>
+  <p class="section-text">When an AI deployment goes wrong — bad prompt template, broken model configuration, or degraded response quality — you need to roll back fast. Here are three rollback patterns, ordered by speed.</p>
+  <p class="section-text"><strong>1. Vercel instant rollback (seconds):</strong> Every Vercel deployment is immutable. Click "Promote to Production" on any previous deployment in the dashboard, or use the CLI: <code>vercel rollback &lt;deployment-url&gt;</code>. Traffic switches instantly with zero downtime.</p>
+  <p class="section-text"><strong>2. Feature flag toggle (seconds):</strong> If your AI feature is behind a feature flag, disable the flag to instantly revert users to the previous behavior. No code deployment needed. This is the safest approach for rolling out new AI capabilities.</p>
+  <p class="section-text"><strong>3. Git revert + redeploy (minutes):</strong> Revert the bad commit with <code>git revert HEAD && git push</code>. Vercel auto-deploys the reverted code. Takes 1-3 minutes but creates a clean audit trail.</p>
+  <p class="section-text">The best practice: combine all three. Feature flags for gradual rollout, Vercel instant rollback for emergency response, and git revert for permanent fixes. Defense in depth applies to deployments too.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Secrets</span>
   <h2 class="section-title">Environment Variables Across Environments</h2>
   <p class="section-text">AI apps often have more secrets than traditional apps: LLM API keys, embedding service keys, vector database credentials, webhook secrets. Managing these across development, staging, and production environments requires discipline.</p>
   <p class="section-text">Use your platform's built-in secrets management. Vercel has environment variables scoped to preview, development, and production. Supabase has vault for sensitive values. Never store secrets in your repository — not even in .env.example with placeholder values that might get replaced carelessly.</p>
   <p class="section-text">Use different API keys for each environment. Your staging environment should have its own OpenAI key with a lower spending cap. This prevents staging tests from eating your production budget.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Testing</span>
+  <h2 class="section-title">AI Contract Test Example</h2>
+  <p class="section-text">Contract tests verify the shape and structure of AI responses without checking exact content. Here's a practical implementation you can add to your test suite today.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — AI Contract Tests</div>
+<pre><code class="language-typescript">import { describe, it, expect } from "vitest";
+
+describe("AI Response Contracts", () => {
+  it("chat endpoint returns expected shape", async () => {
+    const response = await fetch("/api/ai-chat", {
+      method: "POST",
+      body: JSON.stringify({ message: "What is machine learning?" }),
+    });
+    const data = await response.json();
+
+    // Contract: response has required fields
+    expect(data).toHaveProperty("response");
+    expect(data).toHaveProperty("provider");
+    expect(typeof data.response).toBe("string");
+
+    // Contract: response is within acceptable length
+    expect(data.response.length).toBeGreaterThan(50);
+    expect(data.response.length).toBeLessThan(5000);
+
+    // Contract: response is relevant (contains key terms)
+    const lowerResponse = data.response.toLowerCase();
+    const relevantTerms = ["learn", "data", "model", "algorithm", "pattern"];
+    const hasRelevantTerm = relevantTerms.some(t => lowerResponse.includes(t));
+    expect(hasRelevantTerm).toBe(true);
+  });
+});</code></pre>
+</div>
+
+  <p class="section-text">These tests run in CI with mocked responses (fast and free) and in staging with real API calls (slow but catches real integration issues). The contract stays the same — only the data source changes.</p>
 </div>
 
 <div class="demo-container">

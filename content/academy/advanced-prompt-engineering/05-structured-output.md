@@ -109,6 +109,85 @@ Start your response with:
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Technique 4</span>
+  <h2 class="section-title">CSV and Spreadsheet-Ready Output</h2>
+  <p class="section-text">Sometimes you need data that goes straight into a spreadsheet. CSV output is cleaner than tables for this purpose.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--green);">
+      <h4 style="color: var(--green);">CSV Prompt</h4>
+      <code>"Extract all mentions of companies from this article. Return as CSV with these exact columns:
+
+company_name,industry,mention_context,sentiment
+(string),(string),(brief quote from text),(positive/negative/neutral)
+
+Return ONLY the CSV data with the header row. No explanations. No markdown code fences. Use double quotes around fields that contain commas."</code>
+    </div>
+  </div>
+
+  <p class="section-text">The double-quote instruction is crucial — without it, commas inside fields break the CSV structure. These small details are what separate usable output from output that needs manual cleanup.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Technique 5</span>
+  <h2 class="section-title">Nested JSON for Complex Data</h2>
+  <p class="section-text">Real-world data is rarely flat. When you need nested structures, your schema must show the nesting explicitly.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+      <h4 style="color: var(--purple);">Nested Schema Prompt</h4>
+      <code>"Analyze this meeting transcript and extract structured data:
+
+{
+  "meeting_date": "string — YYYY-MM-DD format",
+  "attendees": ["string — full names only"],
+  "agenda_items": [
+    {
+      "topic": "string — the agenda item discussed",
+      "decisions": ["string — each decision made"],
+      "action_items": [
+        {
+          "task": "string — what needs to be done",
+          "owner": "string — who is responsible",
+          "deadline": "string — YYYY-MM-DD or 'not specified'"
+        }
+      ],
+      "open_questions": ["string — unresolved items"]
+    }
+  ],
+  "next_meeting": "string — YYYY-MM-DD or 'not scheduled'"
+}
+
+If a field has no data in the transcript, use an empty array [] or 'not mentioned'. Never omit a field."</code>
+    </div>
+  </div>
+
+  <p class="section-text">The last instruction — "never omit a field" — is essential. Without it, the AI drops empty fields, which breaks any code expecting a consistent schema. Always specify default behavior for missing data.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Validation</span>
+  <h2 class="section-title">Building Validation Into Your Prompts</h2>
+  <p class="section-text">You can ask the AI to validate its own structured output before returning it. This catches common errors at the source.</p>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+      <h4 style="color: var(--blue);">Self-Validating Prompt</h4>
+      <code>"After generating the JSON, validate it against these rules before returning:
+1. All date fields match YYYY-MM-DD format
+2. No field values are null — use empty string, empty array, or 'not specified'
+3. The 'rating' field is a number between 1 and 5 (not a string)
+4. All arrays have at least one element, or are empty []
+5. The JSON is valid — no trailing commas, no missing brackets
+
+If any rule is violated, fix it before returning. Return only the corrected JSON."</code>
+    </div>
+  </div>
+
+  <p class="section-text">This technique reduces post-processing errors dramatically. The AI catches its own mistakes before you ever see them — saving you debugging time downstream.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Extract Structured Data</h2>
   <div class="try-it-box">

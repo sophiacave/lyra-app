@@ -112,6 +112,78 @@ free: false
   </div>
 </div>
 
+<!-- SECTION: WORKPLACE POLICIES -->
+<div class="lesson-section">
+  <span class="section-label">Policies</span>
+  <h2 class="section-title">What a good workplace AI policy actually looks like.</h2>
+  <p class="section-text">If you're in a position to create or influence your company's AI policy, here's what the best ones include. If you're following a policy, this helps you understand why each element matters.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Approved Tools List</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Name the specific AI tools employees can use and at what tier (free, pro, enterprise). Specify which tools have data protection agreements with the company and which don't. Update quarterly as the landscape changes.</p>
+      </div>
+      <div style="padding:14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Data Classification Rules</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Categorize data into tiers: public (can share freely with AI), internal (can share with approved enterprise tools), confidential (must anonymize first), restricted (never share with any AI tool). Give concrete examples for each tier.</p>
+      </div>
+      <div style="padding:14px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#fb923c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Output Review Requirements</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Define what needs human review before publishing or sending. At minimum: anything client-facing, anything with factual claims, anything involving hiring or performance evaluation, and anything published under the company name.</p>
+      </div>
+      <div style="padding:14px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#8b5cf6;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Disclosure Standards</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">Specify when employees must disclose AI use, how to disclose it, and approved disclosure language. Different departments may need different standards — marketing, legal, and engineering face different contexts.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: TRAINING PROGRAMS -->
+<div class="lesson-section">
+  <span class="section-label">Training</span>
+  <h2 class="section-title">Training programs that actually work.</h2>
+  <p class="section-text">A policy without training is just a document nobody reads. Effective AI training programs share these characteristics:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Hands-on, not theoretical.</strong> Don't just tell people the rules — show them what good AI use looks like in their specific role. A marketer needs different training than an engineer or an HR professional.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Scenario-based.</strong> Present real situations employees will face: "A client asks you to summarize their competitor's strategy using AI. What do you do?" Walk through the decision tree together.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Updated regularly.</strong> AI capabilities and risks change fast. Annual training isn't enough. Quarterly micro-updates (15 minutes) on new tools, new risks, and new company guidelines keep people current.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Non-punitive culture.</strong> Encourage people to ask questions and report mistakes without fear of punishment. The worst outcome is employees hiding their AI use because they're afraid of getting in trouble.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: GOVERNANCE -->
+<div class="lesson-section">
+  <span class="section-label">Governance</span>
+  <h2 class="section-title">AI governance structures for organizations.</h2>
+  <p class="section-text">For larger organizations, individual guidelines aren't enough. You need governance structures — the people, processes, and systems that ensure responsible AI use at scale.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">AI Ethics Committee</span> — A cross-functional team (legal, engineering, product, HR, and affected communities) that reviews high-stakes AI deployments before they go live. Meets regularly, has authority to pause or modify projects.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">AI Risk Register</span> — A living document that tracks identified risks, their severity, mitigation measures, and who owns each risk. Reviewed quarterly or whenever a new AI system is introduced.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Incident Response Plan</span> — What happens when AI causes harm? Who gets notified? How quickly? What's the escalation path? Having a plan before you need it is the difference between a managed incident and a PR disaster.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Continuous Monitoring</span> — AI systems can degrade or develop new biases over time as the world changes. Regular audits of AI outputs, user complaints, and performance metrics catch problems before they escalate.</div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 4 -->
 <div class="lesson-section">
   <span class="section-label">No Policy Yet?</span>

@@ -73,6 +73,71 @@ Write a marketing email for <span style="color:#4ade80">[product name]</span> ta
 
 </div>
 
+<!-- SECTION 2B: REAL-WORLD IMPACT -->
+<div class="lesson-section">
+  <span class="section-label">Real Impact</span>
+  <h2 class="section-title">What prompt quality actually costs you.</h2>
+  <p class="section-text">This isn't abstract theory. The quality gap between a lazy prompt and a good one has real consequences in real workplaces, every single day.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Scenario 1: The Marketing Manager</div>
+        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6"><strong style="color:#e5e5e5">Bad prompt:</strong> "Write social media posts for our product launch."<br><strong style="color:#a1a1aa">Result:</strong> Generic posts that could be about any product. Engagement rate: 0.3%. Team rewrites everything manually — 4 hours wasted.<br><br><strong style="color:#34d399">Good prompt:</strong> "Write 5 LinkedIn posts announcing our new project management tool for remote teams. Audience: engineering managers at companies with 50-200 employees. Each post should highlight a different pain point (meeting overload, timezone chaos, lost context, tool sprawl, onboarding). Tone: empathetic, not salesy. Include a specific stat or question hook in each. Under 200 words each."<br><strong style="color:#34d399">Result:</strong> Posts that speak directly to the audience. Engagement rate: 2.1%. Team uses 4 of 5 with minor edits — 30 minutes total.</div>
+      </div>
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Scenario 2: The Freelancer</div>
+        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6"><strong style="color:#e5e5e5">Bad prompt:</strong> "Write a proposal for a client."<br><strong style="color:#a1a1aa">Result:</strong> A template so generic the client can tell it was AI-generated. Looks unprofessional. Client ghosts.<br><br><strong style="color:#34d399">Good prompt:</strong> "You are a freelance web designer writing a proposal. Client: a local bakery expanding to online ordering. Budget: $5K-8K. They mentioned wanting something 'warm and modern.' Write a 1-page proposal with: project understanding (show you listened), 3-phase approach, timeline (6 weeks), investment range, and a next step. Tone: confident and personal — like you already care about their business."<br><strong style="color:#34d399">Result:</strong> A proposal that sounds like you spent an hour on it. Client responds same day.</div>
+      </div>
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Scenario 3: The Student</div>
+        <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:12px;font-size:.85rem;color:#a1a1aa;line-height:1.6"><strong style="color:#e5e5e5">Bad prompt:</strong> "Explain machine learning."<br><strong style="color:#a1a1aa">Result:</strong> A textbook answer that's either too simple or too technical. Doesn't help with the assignment.<br><br><strong style="color:#34d399">Good prompt:</strong> "I'm a business student writing a 500-word paper on how machine learning is used in retail. Explain 3 specific applications (recommendation engines, demand forecasting, dynamic pricing) using examples from companies like Amazon or Zara. Keep it at a level where someone with no coding background can follow. End with one sentence on why business students should care."<br><strong style="color:#34d399">Result:</strong> An explanation tailored to the exact assignment, at the right level, with relevant examples.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1rem">In every case, the time difference between writing a bad prompt and a good one was about <strong>60 seconds</strong>. But the output quality difference was enormous. That 60 seconds is the highest-leverage minute in your workday.</p>
+</div>
+
+<!-- SECTION 2C: GOOD VS BAD COMPARISONS -->
+<div class="lesson-section">
+  <span class="section-label">Side by Side</span>
+  <h2 class="section-title">5 prompts transformed in 30 seconds.</h2>
+  <p class="section-text">For each of these, look at what changed. It's almost never about writing more — it's about being more specific.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Quick Transformations</div>
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#ef4444">BAD:</span>  "Write a cover letter."
+<span style="color:#34d399">GOOD:</span> "Write a cover letter for a junior data analyst role
+       at Spotify. Highlight my Python skills and my capstone
+       project on music listening patterns. Under 250 words."
+
+<span style="color:#ef4444">BAD:</span>  "Give me workout ideas."
+<span style="color:#34d399">GOOD:</span> "Design a 30-minute home workout for a beginner with
+       no equipment, focusing on upper body. Include warm-up,
+       3 exercises with sets/reps, and cool-down."
+
+<span style="color:#ef4444">BAD:</span>  "Help me with my website."
+<span style="color:#34d399">GOOD:</span> "Review my homepage headline: 'We Build Great Software.'
+       Give me 5 alternatives that are more specific to our
+       audience (startup founders needing MVPs in 8 weeks)."
+
+<span style="color:#ef4444">BAD:</span>  "Write a meeting agenda."
+<span style="color:#34d399">GOOD:</span> "Write a 30-minute meeting agenda for a weekly design
+       review with 5 people. Include: last week's action items
+       (5 min), current sprint review (15 min), blockers (10 min).
+       Format as a table with Time, Topic, Owner columns."
+
+<span style="color:#ef4444">BAD:</span>  "Summarize this article."
+<span style="color:#34d399">GOOD:</span> "Summarize this article in 3 bullet points for my
+       team's Slack channel. Focus on what it means for our
+       Q4 product roadmap. Skip the background — they already
+       know the industry context."</code></pre>
+</div>
+
+  <p class="section-text">Notice the pattern: every good prompt answers <strong>who</strong> (audience), <strong>what</strong> (specific deliverable), and <strong>how</strong> (format, length, tone). Those three details take 15 seconds to add and transform the output completely.</p>
+</div>
+
 <!-- SECTION 3: THE DIFFERENCE -->
 <div class="lesson-section">
   <span class="section-label">See The Difference</span>
@@ -89,6 +154,32 @@ Write a marketing email for <span style="color:#4ade80">[product name]</span> ta
   <p class="section-text">Not length. Not fancy words. Not tricks or hacks. <strong>Specificity.</strong></p>
   <p class="section-text">The more specific you are about what you want, the less the AI has to guess. And every guess is a chance for the output to go sideways.</p>
   <p class="section-text">Specificity means answering the questions the AI can't ask you:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Vague (AI guesses)</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:#a1a1aa">
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Write something good"</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Help me with marketing"</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Make it professional"</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Give me some ideas"</li>
+          <li style="padding:6px 0">"Fix my resume"</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Specific (AI delivers)</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:#a1a1aa">
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Write a 5-sentence product description"</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Write 3 Instagram captions for our shoe launch"</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Rewrite in a confident, warm tone — no jargon"</li>
+          <li style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)">"Give me 7 blog topics for first-time homebuyers"</li>
+          <li style="padding:6px 0">"Rewrite my summary for a PM role at a fintech startup"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 <p class="section-text" style="margin-top:1.5rem">Throughout this course, you'll learn frameworks and techniques for being specific without writing a novel. Because the best prompts aren't long — they're <em>precise</em>.</p>
 </div>
 

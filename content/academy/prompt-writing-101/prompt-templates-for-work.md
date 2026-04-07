@@ -94,10 +94,83 @@ free: false
 
 </div>
 
+<!-- TEMPLATE 7: REPORT -->
+<div class="lesson-section">
+  <span class="section-label">Template 7</span>
+  <h2 class="section-title">The Report Writer.</h2>
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Write a <span style="color:var(--orange)">[type: weekly/monthly/quarterly/project]</span> report.
+
+<span style="color:var(--purple)">Period:</span> [timeframe covered]
+<span style="color:var(--purple)">Audience:</span> [who reads this — manager/leadership/client]
+<span style="color:var(--purple)">Key data:</span> [paste metrics, milestones, or raw notes]
+<span style="color:var(--purple)">Wins:</span> [what went well]
+<span style="color:var(--purple)">Challenges:</span> [what was difficult and why]
+<span style="color:var(--purple)">Next steps:</span> [what is planned for the next period]
+
+<span style="color:var(--blue)">Format:</span>
+- Executive summary (3 sentences, bottom line first)
+- Key metrics table
+- Wins (bullet points)
+- Challenges + how we're addressing them
+- Next period priorities
+
+<span style="color:var(--red)">Don't:</span> [pad with filler/use vague language like "good progress"/
+exceed [X] words]</pre>
+  </div>
+</div>
+
+<!-- TEMPLATE 8: DECISION MEMO -->
+<div class="lesson-section">
+  <span class="section-label">Template 8</span>
+  <h2 class="section-title">The Decision Memo.</h2>
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Help me structure a decision between <span style="color:var(--orange)">[Option A]</span> and <span style="color:var(--orange)">[Option B]</span>.
+
+<span style="color:var(--purple)">Context:</span> [why this decision matters and what it affects]
+<span style="color:var(--purple)">Criteria:</span> [what factors matter most — cost, speed, quality, risk]
+<span style="color:var(--purple)">Constraints:</span> [budget, timeline, team size, existing commitments]
+<span style="color:var(--purple)">What I'm leaning toward:</span> [your gut feeling and why]
+
+<span style="color:var(--blue)">Format:</span>
+- 1-sentence recommendation (lead with it)
+- Comparison table: [criteria as columns, options as rows]
+- Top 3 reasons for the recommendation
+- Biggest risk of this choice + mitigation
+- What would change your recommendation
+
+<span style="color:var(--red)">Don't:</span> [hedge with "it depends" — commit to a clear recommendation
+with reasoning]</pre>
+  </div>
+</div>
+
+<!-- TEMPLATE 9: CUSTOMER RESPONSE -->
+<div class="lesson-section">
+  <span class="section-label">Template 9</span>
+  <h2 class="section-title">The Customer Response.</h2>
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Write a response to this customer <span style="color:var(--orange)">[complaint/question/request]</span>:
+
+<span style="color:var(--purple)">Customer message:</span> [paste their message]
+<span style="color:var(--purple)">Context:</span> [their account status, history, previous interactions]
+<span style="color:var(--purple)">Resolution:</span> [what we can actually offer — refund, fix, workaround]
+<span style="color:var(--purple)">Tone:</span> [empathetic/apologetic/firm-but-fair/enthusiastic]
+<span style="color:var(--purple)">Brand voice:</span> [describe or paste a sample response]
+
+<span style="color:var(--red)">Don't:</span> [be defensive/blame the customer/make promises we can't keep/
+use corporate phrases like "we value your business"]
+<span style="color:var(--green)">Must:</span> [acknowledge their frustration before offering solutions/
+include a specific next step with a timeline]</pre>
+  </div>
+</div>
+
 <!-- SECTION: MATCH TEMPLATE TO TASK -->
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">Which template fits the job?</h2>
+
+<div data-learn="QuizMC" data-props='{"title":"Match the Template","questions":[{"q":"Your quarterly numbers are in and your manager needs a summary by end of day. Which template?","options":["Email Writer","Content Creator","Report Writer","Brainstormer"],"correct":2,"explanation":"The Report Writer template gives you executive summary, metrics table, wins, challenges, and next steps — exactly what a quarterly summary needs."},{"q":"A frustrated customer emailed about a billing error on their account. Which template?","options":["Email Writer","Customer Response","Editor / Reviewer","Decision Memo"],"correct":1,"explanation":"The Customer Response template is built for exactly this: it includes fields for the customer message, resolution, tone, and the critical instruction to acknowledge frustration before offering solutions."},{"q":"You need to decide between two vendors for your company CRM. Which template?","options":["Analyst","Decision Memo","Meeting Prep","Brainstormer"],"correct":1,"explanation":"The Decision Memo template structures a clear recommendation with a comparison table, criteria weighting, and risk assessment — exactly what you need to present a vendor decision."}]}'></div>
+
 </div>
 
 <!-- BUILD YOUR OWN -->
@@ -108,6 +181,18 @@ free: false
 
 <div data-learn="QuizMC" data-props='{"title":"Prompt Templates for Work","questions":[{"q":"What is the main advantage of using prompt templates instead of writing prompts from scratch?","options":["Templates are shorter","Templates preserve what worked — structure, tone, and quality — so you never start from zero","Templates prevent AI from making errors","Templates are required by all AI platforms"],"correct":1,"explanation":"Templates lock in proven patterns. The structure, voice, and quality standards stay consistent while only the variables change between uses."},{"q":"Which template would you use if your boss asks you to prepare talking points for tomorrow\\\'s board meeting?","options":["Email Writer","Content Creator","Meeting Prep","Brainstormer"],"correct":2,"explanation":"The Meeting Prep template generates an agenda, talking points, likely questions with responses, and a preparation question — exactly what you need before a high-stakes meeting."},{"q":"What makes the Analyst template different from the Content Creator template?","options":["The Analyst template is longer","The Analyst template focuses on finding patterns, risks, and recommendations from data — not creating new content","The Analyst template does not need an audience specification","The Analyst template only works with numbers"],"correct":1,"explanation":"The Analyst template is designed for examining existing data to surface insights, while the Content Creator template generates new material. Different goals require different prompt structures."},{"q":"You write the same type of weekly report every Friday. What should you do?","options":["Write the prompt from scratch each week for freshness","Turn your best prompt into a reusable template with variable slots","Ask AI to remember your previous prompts","Use a different AI model each week"],"correct":1,"explanation":"Any recurring task should be templatized. Take your best prompt, replace the changing parts with variable slots, and save it. Within a month you will have a personal prompt library covering 80% of your AI work."}]}'></div>
 <p class="section-text" style="margin-top:1rem">Within a month, you'll have a personal prompt library that handles 80% of your AI work in seconds.</p>
+
+  <p class="section-text" style="margin-top:1rem"><strong>How to build your first template:</strong></p>
+  <ol class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
+    <li><strong>Identify a task you do at least once a week</strong> — weekly reports, client emails, meeting prep, content creation</li>
+    <li><strong>Write the best prompt you can for it</strong> — use the full RCFCE framework, spend extra time getting it right</li>
+    <li><strong>Run it and iterate</strong> — refine until the output is exactly what you want</li>
+    <li><strong>Replace the specific details with variable slots</strong> — [client name], [this week's metrics], [meeting topic]</li>
+    <li><strong>Save it somewhere accessible</strong> — a note, a doc, a text expander, wherever you can grab it in seconds</li>
+    <li><strong>Use and improve</strong> — every time you use the template, notice what you tweak and update the template accordingly</li>
+  </ol>
+
+  <p class="section-text">The templates in this lesson are your starting library. But the ones you build yourself — tuned to YOUR voice, YOUR work, YOUR audience — will always outperform generic ones. Start with one template this week. Add one more next week. By month's end, you'll wonder how you ever worked without them.</p>
 </div>
 
 <!-- NEXT LESSON -->

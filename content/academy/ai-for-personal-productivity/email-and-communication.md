@@ -84,6 +84,99 @@ free: true
   </div>
 </div>
 
+<!-- EMAIL TEMPLATES -->
+<div class="lesson-section">
+  <span class="section-label">Templates</span>
+  <h2 class="section-title">Copy-paste email templates for everyday situations.</h2>
+  <p class="section-text">Beyond the five dreaded emails, here are ready-to-use prompts for the messages people deal with every week. Copy any of these, fill in your details, and have a draft in seconds.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The scheduling email</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"Draft an email to [PERSON] to schedule a [MEETING TYPE]. I'm available [LIST TIMES]. Tone: [professional/casual]. Keep it to 3-4 sentences. Suggest 2-3 specific time slots rather than saying 'let me know when you're free.'"</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">The thank-you note</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"Write a thank-you note to [PERSON] for [WHAT THEY DID]. I want it to feel genuine and specific — not generic. Mention [SPECIFIC DETAIL] to show I was paying attention. Tone: warm but not over-the-top. Under 100 words."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">The status update</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"Draft a status update email to [PERSON/TEAM]. Here's what I accomplished: [LIST]. Here's what's in progress: [LIST]. Here's where I'm blocked: [LIST]. Tone: professional, concise. Use bullet points. Under 200 words."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.5rem">The boundary-setting message</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"Help me write a message to [PERSON] setting a boundary about [SITUATION]. I want to be clear and kind but firm. I don't want to over-explain or apologize too much. The boundary is: [WHAT YOU NEED]. Our relationship is: [CONTEXT]."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMUNICATION STRATEGIES -->
+<div class="lesson-section">
+  <span class="section-label">Beyond Email</span>
+  <h2 class="section-title">AI for every type of communication — not just email.</h2>
+  <p class="section-text">The Tone + Context + Goal framework works for any communication, not just emails. Here's how to apply it to other situations where finding the right words matters.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">Text messages</p>
+      <p style="font-size:0.9rem">"I need to text my landlord about a leak in the bathroom. I want to be polite but make it clear this needs attention today. Draft a text — keep it under 3 sentences. I've already left a voicemail that wasn't returned."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">Difficult conversations</p>
+      <p style="font-size:0.9rem">"I need to have a conversation with my roommate about cleaning up after themselves. Help me plan what to say. I don't want to sound passive-aggressive or accusatory. Give me an opening line, 2-3 key points to make, and a way to end the conversation positively."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">Social media posts</p>
+      <p style="font-size:0.9rem">"I want to post about [EVENT/ACHIEVEMENT/THOUGHT] on [PLATFORM]. My audience is [DESCRIPTION]. I want the tone to be [TONE]. Give me 3 versions to choose from — one casual, one heartfelt, one funny."</p>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">Reviews and feedback</p>
+      <p style="font-size:0.9rem">"I want to leave a review for [BUSINESS/PRODUCT]. The experience was [DESCRIPTION]. Help me write a constructive review that's specific about what was good and what could improve. Under 150 words."</p>
+    </div>
+  </div>
+</div>
+
+<!-- TONE LIBRARY -->
+<div class="lesson-section">
+  <span class="section-label">Tone Library</span>
+  <h2 class="section-title">A cheat sheet of tones you can request from AI.</h2>
+  <p class="section-text">Knowing what tone to ask for is half the battle. Here's a reference guide of tones and when each one works best. Bookmark this for whenever you're writing any message.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+      <div style="background:var(--bg);padding:0.75rem;border-radius:8px">
+        <p style="font-weight:600;font-size:0.9rem;color:var(--orange)">Professional</p>
+        <p style="font-size:0.85rem;color:var(--dim)">Work emails, formal requests, client communication</p>
+      </div>
+      <div style="background:var(--bg);padding:0.75rem;border-radius:8px">
+        <p style="font-weight:600;font-size:0.9rem;color:var(--purple)">Warm</p>
+        <p style="font-size:0.85rem;color:var(--dim)">Thank-you notes, congratulations, reconnecting with friends</p>
+      </div>
+      <div style="background:var(--bg);padding:0.75rem;border-radius:8px">
+        <p style="font-weight:600;font-size:0.9rem;color:var(--green)">Firm</p>
+        <p style="font-size:0.85rem;color:var(--dim)">Complaints, boundary-setting, negotiation</p>
+      </div>
+      <div style="background:var(--bg);padding:0.75rem;border-radius:8px">
+        <p style="font-weight:600;font-size:0.9rem;color:var(--blue)">Casual</p>
+        <p style="font-size:0.85rem;color:var(--dim)">Friends, close colleagues, social media</p>
+      </div>
+      <div style="background:var(--bg);padding:0.75rem;border-radius:8px">
+        <p style="font-weight:600;font-size:0.9rem;color:var(--red)">Apologetic</p>
+        <p style="font-size:0.85rem;color:var(--dim)">Sincere but not groveling — mistakes, missed deadlines</p>
+      </div>
+      <div style="background:var(--bg);padding:0.75rem;border-radius:8px">
+        <p style="font-weight:600;font-size:0.9rem">Enthusiastic</p>
+        <p style="font-size:0.85rem;color:var(--dim)">Accepting invitations, sharing good news, pitching ideas</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 4 -->
 <div class="lesson-section">
   <span class="section-label">Pro Tip</span>

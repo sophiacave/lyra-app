@@ -26,6 +26,57 @@ free: false
   </ul>
 </div>
 
+<!-- SECTION 0: PROMPT ENGINEERING FUNDAMENTALS -->
+<div class="lesson-section">
+  <span class="section-label">Fundamentals</span>
+  <h2 class="section-title">Why prompt engineering matters.</h2>
+  <p class="section-text">The same AI model can give you a brilliant answer or a useless one — the difference is how you ask. Prompt engineering is the skill of structuring your instructions to get the best possible output. It is the most accessible AI skill because it requires zero coding, zero math — just clear thinking and good communication.</p>
+
+  <div style="display:grid;gap:.75rem;margin-top:.75rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.88rem">Be specific, not vague</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Vague: "Tell me about dogs." Specific: "List the top 5 dog breeds for apartment living, with pros and cons for each." The more specific your instruction, the more useful the output. Think of the AI as an eager intern — incredibly capable, but needs clear direction.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+      <strong style="color:#8b5cf6;font-size:.88rem">Structure your prompt</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Break your prompt into clear sections. Use labels like "Context:", "Task:", "Format:", "Constraints:". Just like a well-organized email is easier to act on than a rambling paragraph, a structured prompt produces more focused output. The AI can distinguish what is background from what is the actual request.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+      <strong style="color:#fb923c;font-size:.88rem">Iterate and refine</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Your first prompt is rarely your best. Start with a simple version, see what comes back, then refine. Add constraints to fix problems: if the output is too long, add "Keep it under 100 words." If it is too formal, add "Use a casual, friendly tone." Each iteration teaches you what the AI needs to hear.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+      <strong style="color:#38bdf8;font-size:.88rem">Know when to use which technique</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The four techniques below are your core toolkit. Each is best for a different type of task. Learning when to use each one — and when to combine them — is what separates a casual user from a prompt engineer. The good news: the decision tree is simple, and practice makes it second nature.</p>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1.25rem">Here are the common anti-patterns — mistakes that make AI outputs worse:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  PROMPT ANTI-PATTERNS (avoid these)</span>
+
+  <span style="color:#ef4444">BAD</span>: "Write something about marketing"
+  <span style="color:#34d399">GOOD</span>: "Write a 200-word LinkedIn post about email marketing
+         for small business owners. Include 3 actionable tips."
+
+  <span style="color:#ef4444">BAD</span>: "Fix this code" (with no context)
+  <span style="color:#34d399">GOOD</span>: "This Python function should return the sum of even
+         numbers but returns 0. Find and fix the bug: [code]"
+
+  <span style="color:#ef4444">BAD</span>: "Be creative"
+  <span style="color:#34d399">GOOD</span>: "Generate 5 unique product name ideas for a sustainable
+         water bottle brand. Names should be 1-2 words, memorable,
+         and suggest environmental consciousness."
+
+  <span style="color:#71717a">The pattern: specific task + clear context + output format</span></code></pre>
+</div>
+
+  <div class="narration" style="margin-top:1rem">
+    <strong>Prompt engineering is the highest-leverage AI skill you can learn.</strong> It costs nothing, requires no technical background, and immediately improves every AI interaction you have. The four techniques below are your toolkit — master them, and you will get better results from any AI model.
+  </div>
+</div>
+
 <!-- SECTION 1: TECHNIQUE OVERVIEW -->
 <div class="lesson-section">
   <span class="section-label">The Four Techniques</span>
@@ -125,6 +176,28 @@ app.get("/user", (req, res) => {
 <div class="lesson-section">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Edit prompts and see the difference.</h2>
+</div>
+
+<!-- SECTION 2B: REAL-WORLD PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">Production Patterns</span>
+  <h2 class="section-title">Prompt patterns used in real products.</h2>
+  <p class="section-text">The techniques above are the building blocks. Here are three production patterns that combine them for specific use cases:</p>
+
+  <div style="display:grid;gap:.75rem;margin-top:.75rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.88rem">The Guardrail Pattern — safe AI products</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">System prompt sets strict boundaries: "You are a customer service agent for AcmeCorp. Only answer questions about our products. Never discuss competitors. Never share pricing not listed on our website. If asked about something outside your scope, politely redirect." This pattern prevents the AI from going off-script in customer-facing applications.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+      <strong style="color:#8b5cf6;font-size:.88rem">The Extraction Pattern — structured data from chaos</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Combine few-shot with format constraints: show 2-3 examples of messy input transformed into clean JSON, then provide the new messy input. This pattern powers data extraction pipelines that process thousands of unstructured documents (emails, PDFs, forms) into clean database records automatically.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+      <strong style="color:#fb923c;font-size:.88rem">The Evaluation Pattern — AI grading AI</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Use one AI call to generate content, then a second AI call (with chain-of-thought) to evaluate the quality. "Rate this summary from 1-10 on accuracy, completeness, and clarity. Think step by step about each dimension before giving scores." This self-evaluation loop is how teams build reliable AI systems without manual review of every output.</p>
+    </div>
+  </div>
 </div>
 
 <!-- SECTION 3: QUIZ -->

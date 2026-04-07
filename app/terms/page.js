@@ -12,7 +12,7 @@ export default function TermsPage() {
   return (
     <SiteLayout>
       <h1 className="legal-h1">Terms of Service</h1>
-      <p className="legal-updated">Last updated: March 24, 2026</p>
+      <p className="legal-updated">Last updated: April 5, 2026</p>
 
       <h2 className="legal-h2">The Basics</h2>
       <p className="legal-p">Like One Academy (&ldquo;we&rdquo;, &ldquo;us&rdquo;) is an online AI education platform operated by Sophia Cave. By using our site, you agree to these terms.</p>
@@ -42,6 +42,15 @@ export default function TermsPage() {
 
       <h2 className="legal-h2">Limitation of Liability</h2>
       <p className="legal-p">Like One Academy provides educational content. We don&rsquo;t guarantee specific outcomes, employment, or revenue from applying what you learn. Use the knowledge at your own discretion.</p>
+
+      <h2 className="legal-h2">Termination &amp; Account Suspension</h2>
+      <p className="legal-p">You may close your account at any time by canceling your subscription and emailing <a href="mailto:hello@likeone.ai" className="legal-link">hello@likeone.ai</a>. We may suspend or terminate your account if you violate these terms, engage in fraudulent activity, or abuse the platform. If we terminate your account for cause, no refund will be issued for the current billing period. If we terminate without cause, we&rsquo;ll refund any prepaid amounts on a prorated basis.</p>
+
+      <h2 className="legal-h2">Dispute Resolution</h2>
+      <p className="legal-p">If a dispute arises, we encourage you to contact us first at <a href="mailto:hello@likeone.ai" className="legal-link">hello@likeone.ai</a> so we can try to resolve it informally. If we can&rsquo;t reach a resolution within 30 days, either party may pursue binding arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules. Arbitration will take place in Clark County, Nevada. Both parties waive the right to participate in a class action lawsuit or class-wide arbitration. Small claims court actions in Clark County, Nevada are exempt from this arbitration requirement.</p>
+
+      <h2 className="legal-h2">Governing Law &amp; Jurisdiction</h2>
+      <p className="legal-p">These terms are governed by the laws of the State of Nevada, without regard to conflict of law principles. Like One LLC is registered in the State of Nevada. Any legal proceedings not subject to the arbitration clause above shall be brought exclusively in the state or federal courts located in Clark County, Nevada, and you consent to the personal jurisdiction of those courts.</p>
 
       <h2 className="legal-h2">Changes</h2>
       <p className="legal-p">We may update these terms. Continued use after changes means you accept the new terms.</p>

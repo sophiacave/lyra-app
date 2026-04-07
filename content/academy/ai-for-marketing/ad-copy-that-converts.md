@@ -127,6 +127,64 @@ Don't use all caps. Don't use excessive punctuation.</pre>
   <p class="section-text" style="margin-top:1rem">Add these to your prompts: "Use social proof and specificity. Include a real number. Frame the benefit as avoiding a loss."</p>
 </div>
 
+<!-- SECTION 4: COPYWRITING FORMULAS -->
+<div class="lesson-section">
+  <span class="section-label">Formulas</span>
+  <h2 class="section-title">4 proven copywriting formulas to feed AI.</h2>
+  <p class="section-text">Don't just ask AI to "write an ad." Give it a structure. These formulas have been converting customers for decades — and they work even better when AI applies them consistently:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">PAS</div>
+          <div style="font-weight:700;font-size:.95rem">Problem — Agitate — Solve</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Name the problem. Twist the knife (make it feel urgent). Present your product as the solution. Best for: audiences that know they have a problem but haven't found a fix yet.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">AIDA</div>
+          <div style="font-weight:700;font-size:.95rem">Attention — Interest — Desire — Action</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Grab attention with a hook. Build interest with a compelling benefit. Create desire with social proof or a vivid outcome. Drive action with a clear CTA. Best for: cold audiences who don't know you yet.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">BAB</div>
+          <div style="font-weight:700;font-size:.95rem">Before — After — Bridge</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Show the before state (the pain). Paint the after state (the dream). Bridge the gap with your product. Best for: transformation-based products and services.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">4Us</div>
+          <div style="font-weight:700;font-size:.95rem">Useful — Urgent — Unique — Ultra-Specific</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Is it useful to the reader? Is there urgency to act now? Is the angle unique? Is the claim ultra-specific? Score your ad against all four. Best for: headlines and subject lines.</p>
+      </div>
+    </div>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>The prompt:</strong> "Write 3 Facebook ads for [product] using PAS, AIDA, and BAB frameworks. For each, include primary text, headline, description, and CTA. Make each feel completely different in approach."</p>
+</div>
+
+<!-- SECTION 5: A/B TESTING ADS -->
+<div class="lesson-section">
+  <span class="section-label">Testing</span>
+  <h2 class="section-title">The A/B testing framework for AI-generated ads.</h2>
+  <p class="section-text">AI makes it trivially easy to generate ad variants. But testing without a framework is just generating noise. Here's how to test methodically:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#fb923c;font-weight:700">Rule 1:</span> Test one variable at a time. Don't change the headline AND the image AND the CTA. Change one thing, measure the difference.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">Rule 2:</span> Test big differences first. Don't test "Get Started" vs "Get Started Now." Test "Get Started" vs "See How It Works." Small tweaks come after you find the winning direction.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Rule 3:</span> Let tests run to statistical significance. 50 clicks is not enough data. Most ads need 300-500 conversions per variant to produce reliable results.</div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#38bdf8;font-weight:700">Rule 4:</span> Document everything. Create a simple log: what you tested, what won, by how much. After 10 tests, you'll have a playbook of what works for YOUR audience — not some blog's generic advice.</div>
+      <div style="background:var(--bg);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#ef4444;font-weight:700">Rule 5:</span> Kill losers fast, scale winners slowly. If one variant is clearly losing after sufficient data, stop it. If one is winning, increase budget gradually — don't 10x overnight.</div>
+    </div>
+  </div>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

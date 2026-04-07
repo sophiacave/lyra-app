@@ -16,7 +16,7 @@ const whoCards = [
 ];
 
 export default function CommunityAccessClient() {
-  const [spotsLeft, setSpotsLeft] = useState(null);
+  const [spotsLeft, setSpotsLeft] = useState(15);
   const [email, setEmail] = useState('');
   const [goal, setGoal] = useState('');
   const [honor, setHonor] = useState(false);
@@ -34,6 +34,7 @@ export default function CommunityAccessClient() {
         headers: { apikey: ANON_KEY, Authorization: `Bearer ${ANON_KEY}`, 'Content-Type': 'application/json' },
         body: '{}',
       });
+      if (!res.ok) { setSpotsLeft(15); return; }
       const remaining = await res.json();
       setSpotsLeft(typeof remaining === 'number' ? remaining : 15);
     } catch {
@@ -100,11 +101,17 @@ export default function CommunityAccessClient() {
 
           {/* Counter */}
           <div className={`ca-counter ${soldOut ? 'sold-out' : 'available'}`}>
-            <div className={`ca-counter-number ${soldOut ? 'sold-out' : 'available'}`}>
-              {spotsLeft === null ? '...' : spotsLeft}
-            </div>
+            {spotsLeft !== null && (
+              <div className={`ca-counter-number ${soldOut ? 'sold-out' : 'available'}`}>
+                {spotsLeft}
+              </div>
+            )}
             <div className="ca-counter-label">
-              {soldOut ? 'spots claimed this week — check back Monday' : 'community spots available this week'}
+              {soldOut
+                ? 'All spots claimed this week — check back Monday'
+                : spotsLeft !== null
+                  ? 'community spots available this week'
+                  : 'Community spots available — refreshing...'}
             </div>
           </div>
 
@@ -186,7 +193,7 @@ export default function CommunityAccessClient() {
 
           {/* Legal */}
           <p className="ca-legal">
-            Like One Academy&rsquo;s Community Access program operates on an honor system. We do not verify identity or financial status. By claiming a spot, you confirm that you are accessing this program in good faith. Like One Academy reserves the right to modify or revoke access if the program is abused. This program is funded by the generosity of paying members and is subject to availability. Like One is a sole proprietorship registered under Sophia Cave. It is not a registered nonprofit. Community Access is a discretionary program, not a legal entitlement.
+            Like One Academy&rsquo;s Community Access program operates on an honor system. We do not verify identity or financial status. By claiming a spot, you confirm that you are accessing this program in good faith. Like One Academy reserves the right to modify or revoke access if the program is abused. This program is funded by the generosity of paying members and is subject to availability. Like One LLC is a Nevada limited liability company. Like One Foundation is a Nevada nonprofit corporation pursuing 501(c)(3) status. Community Access is a discretionary program, not a legal entitlement.
           </p>
         </div>
       </section>

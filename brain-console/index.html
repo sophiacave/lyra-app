@@ -3,25 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faye</title>
+  <title>Like One</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #12121a;
-      --bg-tertiary: #1a1a2e;
-      --border: #2a2a3e;
-      --text-primary: #e4e4ef;
-      --text-secondary: #8888aa;
-      --text-dim: #555570;
-      --accent-purple: #6c5ce7;
-      --accent-pink: #e84393;
-      --accent-cyan: #00cec9;
-      --accent-green: #00b894;
-      --accent-yellow: #fdcb6e;
-      --accent-red: #ff6b6b;
-      --gradient-brand: linear-gradient(135deg, #e84393, #6c5ce7);
+      /* McQueen × Rothko × Apple — Visual Bible V2 */
+      /* Foundations */
+      --void: #0B0A10;
+      --chalk: #F0EBE3;
+      --smoke: #8A8490;
+      --ash: #2D2A33;
+      --obsidian: #1A1720;
+      /* Semantic */
+      --signal: #D4956B;
+      --process: #8BAFC4;
+      --result: #8CB89E;
+      --alert: #C4616A;
+      --insight: #B898C8;
+      /* Accents */
+      --bone: #E8DDD0;
+      --blush: #D4A0A0;
+      --gold: #C4A86C;
+      /* Glass */
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-blur: 40px;
+      /* Mapped aliases for existing code */
+      --bg-primary: var(--void);
+      --bg-secondary: var(--obsidian);
+      --bg-tertiary: var(--ash);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: var(--chalk);
+      --text-secondary: var(--smoke);
+      --text-dim: #555565;
+      --accent-purple: var(--insight);
+      --accent-pink: var(--blush);
+      --accent-cyan: var(--process);
+      --accent-green: var(--result);
+      --accent-yellow: var(--gold);
+      --accent-red: var(--alert);
+      --gradient-brand: linear-gradient(135deg, var(--insight), var(--process));
     }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
@@ -200,6 +222,7 @@
       padding: 2px 6px; border-radius: 3px;
     }
     .message-provider.local-tag { color: var(--accent-green); background: rgba(0, 184, 148, 0.1); }
+    .message-provider.sdk-tag { color: var(--accent-purple); background: rgba(184, 152, 200, 0.12); font-weight: 500; }
     .message-body {
       padding-left: 32px; font-size: 14px; line-height: 1.7; color: var(--text-primary);
     }
@@ -224,6 +247,10 @@
     .message-body h1 { font-size: 18px; } .message-body h2 { font-size: 16px; } .message-body h3 { font-size: 14px; }
     .typing-indicator { display: none; padding-left: 32px; margin-bottom: 24px; }
     .typing-indicator.active { display: block; }
+    .agent-status { display: none; padding-left: 32px; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-purple); opacity: 0.8; }
+    .agent-status.active { display: flex; align-items: center; gap: 8px; }
+    .agent-status .agent-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-purple); animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
     .typing-dots { display: inline-flex; gap: 4px; }
     .typing-dots span {
       width: 6px; height: 6px; border-radius: 50%;
@@ -394,15 +421,620 @@
     .insight-dismiss:hover { color: var(--text-primary); }
     .insight-priority-high { border-color: var(--accent-red); }
     .insight-priority-medium { border-color: var(--accent-yellow); }
+
+    /* ============ NAVIGATION TABS ============ */
+    .nav-tabs {
+      display: flex; flex-direction: column; gap: 2px;
+      padding: 8px 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .nav-tab {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 10px; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      color: var(--text-dim); cursor: pointer;
+      transition: all 0.2s; border: none; background: none;
+      text-align: left; width: 100%;
+    }
+    .nav-tab:hover { color: var(--text-secondary); background: rgba(255,255,255,0.03); }
+    .nav-tab.active {
+      color: var(--text-primary);
+      background: rgba(184, 152, 200, 0.1);
+      border-left: 2px solid var(--accent-purple);
+    }
+    .nav-tab .nav-icon { font-size: 14px; width: 20px; text-align: center; }
+    .nav-tab .nav-label { flex: 1; }
+
+    /* ============ PANEL VIEWS ============ */
+    .panel-view {
+      flex: 1; display: flex; flex-direction: column;
+      overflow: hidden; background: var(--bg-primary);
+    }
+    .panel-header {
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .panel-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px; font-weight: 600;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .panel-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+    .panel-body::-webkit-scrollbar { width: 6px; }
+
+    /* ============ IDE: EDITOR ============ */
+    #editor-file-tree { font-family: 'JetBrains Mono', monospace; padding: 8px 0; }
+    .tree-item { padding: 3px 8px 3px 0; cursor: pointer; display: flex; align-items: center; gap: 4px; color: var(--text-secondary); white-space: nowrap; }
+    .tree-item:hover { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+    .tree-item.active { background: rgba(108, 92, 231, 0.15); color: var(--accent-purple); }
+    .tree-dir-icon { font-size: 10px; width: 14px; text-align: center; transition: transform 0.15s; }
+    .tree-dir-icon.open { transform: rotate(90deg); }
+    .editor-tab { padding: 4px 10px; font-size: 11px; font-family: 'JetBrains Mono', monospace; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 4px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .editor-tab.active { background: rgba(108, 92, 231, 0.2); color: var(--accent-purple); border-color: var(--accent-purple); }
+    .editor-tab .tab-close { opacity: 0.4; font-size: 10px; cursor: pointer; }
+    .editor-tab .tab-close:hover { opacity: 1; color: var(--accent-red); }
+    .editor-tab .tab-modified { color: var(--accent-cyan); margin-left: 2px; }
+
+    /* ============ IDE: TERMINAL ============ */
+    #terminal-container { position: relative; }
+    .term-tab { padding: 4px 10px; font-size: 11px; font-family: 'JetBrains Mono', monospace; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 4px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    .term-tab.active { background: rgba(0, 206, 201, 0.15); color: var(--accent-cyan); border-color: var(--accent-cyan); }
+    .term-tab .tab-close { opacity: 0.4; font-size: 10px; cursor: pointer; }
+    .term-tab .tab-close:hover { opacity: 1; color: var(--accent-red); }
+
+    /* ============ IDE: FLEET LIVE ============ */
+    .fleet-stats-row { display:flex; gap:16px; margin:8px 0; }
+    .fleet-stat { font-size:12px; color:var(--text-secondary); font-family:'JetBrains Mono',monospace; }
+    .fleet-stat-num { color:var(--accent-cyan); font-weight:600; margin-right:4px; }
+    .timeline-list { display:flex; flex-direction:column; gap:4px; margin:8px 0; }
+    .timeline-item { display:flex; align-items:center; gap:8px; font-size:11px; font-family:'JetBrains Mono',monospace; padding:4px 8px; background:var(--bg-secondary); border-radius:6px; }
+    .timeline-icon { font-size:12px; }
+    .timeline-title { flex:1; color:var(--text-primary); }
+    .timeline-meta { color:var(--text-muted); font-size:10px; }
+    .dispatch-rule { padding:6px 10px; border-radius:6px; font-family:'JetBrains Mono',monospace; }
+    .dispatch-rule.m3 { background:rgba(108,92,231,0.1); color:var(--accent-purple); border:1px solid rgba(108,92,231,0.2); }
+    .dispatch-rule.m4 { background:rgba(0,206,201,0.1); color:var(--accent-cyan); border:1px solid rgba(0,206,201,0.2); }
+    .panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .panel-loading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--text-dim); padding: 24px; text-align: center;
+    }
+    .panel-empty {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--text-dim); padding: 24px; text-align: center;
+    }
+    .panel-btn {
+      padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--gradient-brand); border: none; color: white; }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-danger { background: rgba(196, 97, 106, 0.2); border-color: var(--accent-red); color: var(--accent-red); }
+    .btn-danger:hover { background: rgba(196, 97, 106, 0.3); }
+
+    /* ============ BRAIN EXPLORER ============ */
+    .brain-search-bar {
+      display: flex; gap: 8px; margin-bottom: 16px;
+    }
+    .brain-search-input {
+      flex: 1; padding: 8px 14px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-primary); font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; outline: none;
+    }
+    .brain-search-input:focus { border-color: var(--accent-purple); }
+    .brain-stats-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+      align-items: center;
+    }
+    .brain-total {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      font-weight: 600; color: var(--text-primary); margin-right: 8px;
+    }
+    .brain-cat-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 8px; border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      background: rgba(255,255,255,0.04); color: var(--text-secondary);
+    }
+    .cat-count { color: var(--accent-purple); font-weight: 600; }
+    .brain-entry {
+      padding: 12px 16px; margin-bottom: 8px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer; transition: all 0.2s;
+    }
+    .brain-entry:hover { border-color: rgba(184, 152, 200, 0.3); }
+    .brain-entry.expanded { border-color: var(--accent-purple); }
+    .brain-entry-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;
+    }
+    .brain-key {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      font-weight: 600; color: var(--accent-cyan);
+    }
+    .brain-cat {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      padding: 2px 8px; border-radius: 4px;
+    }
+    .priority-high { background: rgba(212, 149, 107, 0.15); color: var(--signal); }
+    .priority-mid { background: rgba(139, 175, 196, 0.15); color: var(--process); }
+    .priority-low { background: rgba(140, 184, 158, 0.15); color: var(--result); }
+    .brain-desc {
+      font-size: 12px; color: var(--text-secondary); margin-bottom: 6px;
+    }
+    .brain-value, .brain-value-full {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-dim); white-space: pre-wrap; word-break: break-all;
+      line-height: 1.5; max-height: 400px; overflow-y: auto;
+    }
+
+    /* ============ DIVINE CYCLE PANEL ============ */
+    .divine-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .divine-status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+    }
+    .divine-status-badge.active { background: rgba(140, 184, 158, 0.15); color: var(--accent-green); }
+    .divine-status-badge.inactive { background: rgba(138, 132, 144, 0.15); color: var(--text-dim); }
+    .divine-status-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: currentColor;
+    }
+    .divine-status-badge.active .dot { animation: pulse 2s ease-in-out infinite; }
+    .divine-cycle-count, .divine-task-progress {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-secondary);
+    }
+    .divine-phases {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-bottom: 24px; padding: 20px;
+      background: var(--bg-secondary); border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .phase-dot {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 12px 20px; border-radius: 8px; transition: all 0.3s;
+    }
+    .phase-dot.phase-active {
+      background: rgba(184, 152, 200, 0.15); box-shadow: 0 0 20px rgba(184, 152, 200, 0.2);
+    }
+    .phase-dot.phase-done { opacity: 0.5; }
+    .phase-dot.phase-pending { opacity: 0.3; }
+    .phase-icon { font-size: 24px; }
+    .phase-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 600; letter-spacing: 1px; color: var(--text-secondary);
+    }
+    .phase-dot.phase-active .phase-label { color: var(--accent-purple); }
+    .phase-connector {
+      width: 24px; height: 2px; background: var(--border); flex-shrink: 0;
+    }
+    .divine-log-header {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 8px;
+    }
+    .divine-log { display: flex; flex-direction: column; gap: 4px; }
+    .divine-log-entry {
+      display: flex; gap: 12px; padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    }
+    .log-time { color: var(--text-dim); flex-shrink: 0; width: 50px; }
+    .log-msg { color: var(--text-secondary); }
+
+    /* ============ FLEET PANEL ============ */
+    .fleet-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px; margin-bottom: 20px;
+    }
+    .fleet-card {
+      padding: 16px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 10px;
+    }
+    .fleet-card-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+    }
+    .fleet-name {
+      font-family: 'JetBrains Mono', monospace; font-size: 14px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .fleet-status-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .fleet-status-dot.online { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+    .fleet-status-dot.unknown { background: var(--text-dim); }
+    .fleet-status-dot.offline { background: var(--accent-red); }
+    .fleet-detail {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-secondary); margin-bottom: 4px;
+    }
+    .fleet-label { color: var(--text-dim); }
+    .fleet-agent-status {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      padding: 8px 14px; border-radius: 6px; margin-bottom: 16px;
+    }
+    .fleet-agent-status.running { background: rgba(139, 175, 196, 0.1); color: var(--accent-cyan); }
+    .fleet-agent-status.idle { background: rgba(138, 132, 144, 0.1); color: var(--text-dim); }
+    .fleet-section-header {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 10px;
+    }
+    .fleet-health { display: flex; flex-direction: column; gap: 6px; }
+    .health-item {
+      display: flex; justify-content: space-between;
+      padding: 8px 12px; background: var(--bg-secondary);
+      border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    }
+    .health-label { color: var(--text-dim); }
+    .health-value { color: var(--text-secondary); }
+    .health-value.ok { color: var(--accent-green); }
+    .health-value.fail { color: var(--accent-red); }
+
+    /* ============ KNOWLEDGE BASE PANEL ============ */
+    .kb-stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-bottom: 20px;
+    }
+    .kb-stat-card {
+      padding: 20px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 10px;
+      text-align: center;
+    }
+    .kb-stat-value {
+      font-family: 'JetBrains Mono', monospace; font-size: 28px;
+      font-weight: 700; color: var(--text-primary);
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .kb-stat-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin-top: 6px;
+    }
+    .kb-search-box {
+      display: flex; gap: 8px; margin-bottom: 16px;
+    }
+    .kb-search-input {
+      flex: 1; padding: 10px 14px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-primary); font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; outline: none;
+    }
+    .kb-search-input:focus { border-color: var(--accent-purple); }
+    .kb-results { display: flex; flex-direction: column; gap: 8px; }
+    .kb-result {
+      padding: 12px 16px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .kb-result-header {
+      display: flex; justify-content: space-between; margin-bottom: 6px;
+    }
+    .kb-result-topic {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      font-weight: 600; color: var(--accent-cyan);
+    }
+    .kb-result-score {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--accent-green);
+    }
+    .kb-result-content {
+      font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+    }
+
+    /* ============ BRAIN EDIT BUTTON ============ */
+    .brain-edit-btn {
+      background: transparent; border: 1px solid var(--process); color: var(--process);
+      font-size: 10px; padding: 2px 8px; border-radius: 4px; cursor: pointer;
+      font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
+      margin-left: auto; opacity: 0;
+    }
+    .brain-entry:hover .brain-edit-btn { opacity: 1; }
+    .brain-edit-btn:hover { background: var(--process); color: var(--void); }
+
+    /* ============ SYSTEM MONITOR ============ */
+    .monitor-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
+    }
+    .monitor-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 12px; padding: 16px;
+    }
+    .monitor-card-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .ram-bar-outer {
+      background: var(--ash); border-radius: 6px; height: 24px; position: relative;
+      overflow: hidden; margin-bottom: 8px;
+    }
+    .ram-bar-fill {
+      height: 100%; border-radius: 6px; transition: width 0.4s ease;
+      background: var(--accent-green);
+    }
+    .ram-bar-fill.warning { background: var(--gold); }
+    .ram-bar-fill.critical { background: var(--alert); }
+    .ram-bar-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      color: var(--chalk); text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .ram-breakdown {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .ram-stat {
+      font-size: 11px; color: var(--text-secondary);
+    }
+    .ram-stat-value { color: var(--chalk); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .swap-info {
+      font-size: 11px; color: var(--text-secondary); margin-top: 8px;
+    }
+    .swap-info .swap-value { color: var(--gold); font-weight: 600; }
+    .process-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .process-table th {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;
+      text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--border);
+    }
+    .process-table td {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 8px;
+      color: var(--chalk); border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .process-table tr:hover { background: rgba(255,255,255,0.03); }
+    .process-table .cmd { color: var(--text-secondary); max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .process-table .high { color: var(--alert); font-weight: 600; }
+    .kill-btn {
+      background: transparent; border: 1px solid var(--alert); color: var(--alert);
+      font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer;
+      font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
+    }
+    .kill-btn:hover { background: var(--alert); color: var(--void); }
+    .ollama-model {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;
+      margin-bottom: 6px;
+    }
+    .ollama-model-name { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--chalk); }
+    .ollama-model-size { font-size: 11px; color: var(--text-secondary); }
+    .unload-btn {
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      font-size: 10px; padding: 2px 8px; border-radius: 4px; cursor: pointer;
+      font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
+    }
+    .unload-btn:hover { background: var(--gold); color: var(--void); }
+    .monitor-cpu-info {
+      font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;
+    }
+    .monitor-cpu-info strong { color: var(--chalk); }
+    .monitor-empty { color: var(--text-secondary); font-size: 12px; font-style: italic; }
+    .monitor-section { margin-bottom: 20px; }
+    .monitor-section-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+      color: var(--process); margin-bottom: 10px; letter-spacing: 0.5px;
+    }
+
+    /* ============ ORCHESTRATION PANEL ============ */
+    .orch-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-bottom: 24px;
+    }
+    .orch-card {
+      padding: 20px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .orch-card-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      font-weight: 600; color: var(--text-primary); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .orch-stat {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-secondary); margin-bottom: 6px;
+      display: flex; justify-content: space-between;
+    }
+    .orch-stat-value { color: var(--text-primary); font-weight: 500; }
+    .orch-agent-list { display: flex; flex-direction: column; gap: 8px; }
+    .orch-agent {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px; background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .orch-agent-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .orch-agent-dot.active { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+    .orch-agent-dot.idle { background: var(--text-dim); }
+    .orch-agent-dot.blocked { background: var(--accent-red); }
+    .orch-agent-name {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      font-weight: 600; color: var(--text-primary); min-width: 80px;
+    }
+    .orch-agent-task {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-secondary); flex: 1; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+    }
+    .orch-agent-machine {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--text-dim); padding: 2px 8px; background: rgba(255,255,255,0.04);
+      border-radius: 4px;
+    }
+    .orch-section-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 1px; margin: 20px 0 12px;
+    }
+    .orch-task-queue { display: flex; flex-direction: column; gap: 6px; }
+    .orch-task {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    }
+    .orch-task-status {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .orch-task-status.pending { background: var(--gold); }
+    .orch-task-status.claimed { background: var(--process); }
+    .orch-task-status.completed { background: var(--result); }
+    .orch-task-status.failed { background: var(--alert); }
+    .orch-task-title { flex: 1; color: var(--text-secondary); }
+    .orch-task-meta { color: var(--text-dim); font-size: 10px; }
+    .orch-dispatch-form {
+      display: flex; gap: 8px; margin-top: 16px;
+    }
+    .orch-dispatch-input {
+      flex: 1; padding: 8px 14px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    }
+    .orch-dispatch-input:focus { border-color: var(--accent-purple); outline: none; }
+    .orch-pattern-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;
+    }
+    .orch-pattern {
+      padding: 12px; background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border); border-radius: 8px; text-align: center;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .orch-pattern:hover { border-color: var(--accent-purple); background: rgba(184,152,200,0.05); }
+    .orch-pattern-icon { font-size: 20px; margin-bottom: 4px; }
+    .orch-pattern-name {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .orch-pattern-desc {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--text-dim); margin-top: 2px;
+    }
+
+    /* ============ INTEGRATIONS PANEL ============ */
+    .integ-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-bottom: 24px;
+    }
+    .integ-card {
+      padding: 20px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .integ-card-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .integ-card-icon { font-size: 20px; }
+    .integ-card-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 14px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .integ-card-status {
+      margin-left: auto; width: 10px; height: 10px; border-radius: 50%;
+    }
+    .integ-card-status.online { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+    .integ-card-status.offline { background: var(--accent-red); }
+    .integ-card-status.unknown { background: var(--text-dim); }
+    .integ-stat {
+      display: flex; justify-content: space-between;
+      padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    }
+    .integ-stat:last-child { border-bottom: none; }
+    .integ-stat-label { color: var(--text-dim); }
+    .integ-stat-value { color: var(--text-primary); font-weight: 500; }
+    .integ-stat-value.good { color: var(--accent-green); }
+    .integ-stat-value.warn { color: var(--accent-yellow); }
+    .integ-stat-value.bad { color: var(--accent-red); }
+
+    /* ============ VAULT PANEL ============ */
+    .vault-list { display: flex; flex-direction: column; gap: 8px; }
+    .vault-entry {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .vault-entry:hover { border-color: rgba(184,152,200,0.3); }
+    .vault-icon { font-size: 18px; flex-shrink: 0; }
+    .vault-info { flex: 1; min-width: 0; }
+    .vault-service {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .vault-desc {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-dim); margin-top: 2px;
+    }
+    .vault-value {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      color: var(--text-secondary); background: rgba(255,255,255,0.03);
+      padding: 4px 10px; border-radius: 4px; max-width: 200px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .vault-reveal-btn {
+      padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
+      background: none; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+    }
+    .vault-reveal-btn:hover { border-color: var(--accent-purple); color: var(--accent-purple); }
+    .vault-revealed {
+      color: var(--accent-green); background: rgba(140,184,158,0.08);
+    }
+    .vault-warning {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--text-dim); padding: 12px 16px; background: rgba(196,97,106,0.05);
+      border: 1px solid rgba(196,97,106,0.15); border-radius: 8px; margin-bottom: 16px;
+    }
   </style>
 </head>
 <body>
   <div class="title-bar">
-    <span class="title-bar-text"><span class="accent">BRAIN CONSOLE</span> — Local-First Agent Console</span>
+    <span class="title-bar-text"><span class="accent">LIKE ONE BRAIN</span> — Claude Code SDK × Faye</span>
   </div>
 
   <div class="main-layout">
     <div class="sidebar">
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-panel="chat" onclick="switchPanel('chat')">
+          <span class="nav-icon">💬</span><span class="nav-label">Chat</span>
+        </button>
+        <button class="nav-tab" data-panel="brain" onclick="switchPanel('brain')">
+          <span class="nav-icon">🧠</span><span class="nav-label">Brain</span>
+        </button>
+        <button class="nav-tab" data-panel="divine" onclick="switchPanel('divine')">
+          <span class="nav-icon">♾️</span><span class="nav-label">Divine Cycle</span>
+        </button>
+        <button class="nav-tab" data-panel="fleet" onclick="switchPanel('fleet')">
+          <span class="nav-icon">🖥️</span><span class="nav-label">Fleet</span>
+        </button>
+        <button class="nav-tab" data-panel="kb" onclick="switchPanel('kb')">
+          <span class="nav-icon">📚</span><span class="nav-label">Knowledge</span>
+        </button>
+        <button class="nav-tab" data-panel="monitor" onclick="switchPanel('monitor')">
+          <span class="nav-icon">⚡</span><span class="nav-label">System</span>
+        </button>
+        <button class="nav-tab" data-panel="orchestration" onclick="switchPanel('orchestration')">
+          <span class="nav-icon">🕸️</span><span class="nav-label">Orchestration</span>
+        </button>
+        <button class="nav-tab" data-panel="integrations" onclick="switchPanel('integrations')">
+          <span class="nav-icon">🔗</span><span class="nav-label">Integrations</span>
+        </button>
+        <button class="nav-tab" data-panel="vault" onclick="switchPanel('vault')">
+          <span class="nav-icon">🔐</span><span class="nav-label">Vault</span>
+        </button>
+        <div style="height:1px; background:var(--border); margin:8px 12px;"></div>
+        <button class="nav-tab" data-panel="editor" onclick="switchPanel('editor')">
+          <span class="nav-icon">&#9998;</span><span class="nav-label">Editor</span>
+        </button>
+        <button class="nav-tab" data-panel="terminal" onclick="switchPanel('terminal')">
+          <span class="nav-icon">&#9638;</span><span class="nav-label">Terminal</span>
+        </button>
+      </div>
       <div class="sidebar-header">
         <h2>System Status</h2>
       </div>
@@ -419,9 +1051,8 @@
           <div class="status-value" id="providerName">Detecting...</div>
         </div>
         <div class="status-item">
-          <div class="status-label">Token Budget</div>
-          <div class="status-value" id="budgetText">—</div>
-          <div class="budget-bar"><div class="budget-fill" id="budgetFill" style="width:0%; background: var(--accent-green);"></div></div>
+          <div class="status-label">Session</div>
+          <div class="status-value" id="budgetText">Ready</div>
         </div>
         <div class="status-item">
           <div class="status-label">Pending Tasks</div>
@@ -441,10 +1072,10 @@
       </div>
     </div>
 
-    <div class="chat-area">
+    <div class="chat-area panel-view" id="panel-chat" style="display:flex;">
       <div class="chat-messages" id="chatMessages">
         <div class="welcome-screen" id="welcomeScreen">
-          <div class="welcome-logo">💜</div>
+          <img src="assets/icon.png" alt="Like One" style="width:64px;height:64px;border-radius:16px;margin-bottom:8px;">
           <div class="welcome-title">Faye</div>
           <div class="welcome-subtitle" id="bootMessage">waking up...</div>
           <div class="boot-status" id="bootStatus">
@@ -484,6 +1115,10 @@
         </div>
       </div>
 
+      <div class="agent-status" id="agentStatus">
+        <span class="agent-dot"></span>
+        <span id="agentStatusText">thinking...</span>
+      </div>
       <div class="typing-indicator" id="typingIndicator">
         <div class="message-header">
           <div class="message-avatar brain">F</div>
@@ -509,6 +1144,105 @@
         </div>
       </div>
     </div>
+
+    <!-- Brain Explorer Panel -->
+    <div class="panel-view" id="panel-brain" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Brain Explorer</span>
+      </div>
+      <div class="panel-body">
+        <div class="brain-search-bar">
+          <input type="text" class="brain-search-input" placeholder="Filter brain entries..."
+                 oninput="filterBrain(this.value)">
+        </div>
+        <div class="brain-stats-bar" id="brain-stats"></div>
+        <div id="brain-entries"></div>
+      </div>
+    </div>
+
+    <!-- Divine Cycle Panel -->
+    <div class="panel-view" id="panel-divine" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Divine Cycle</span>
+      </div>
+      <div class="panel-body" id="divine-content"></div>
+    </div>
+
+    <!-- Fleet Panel -->
+    <div class="panel-view" id="panel-fleet" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Fleet Status</span>
+      </div>
+      <div class="panel-body" id="fleet-content"></div>
+    </div>
+
+    <!-- Knowledge Base Panel -->
+    <div class="panel-view" id="panel-kb" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Knowledge Base</span>
+      </div>
+      <div class="panel-body" id="kb-content"></div>
+    </div>
+
+    <!-- System Monitor Panel -->
+    <div class="panel-view" id="panel-monitor" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">System Monitor</span>
+        <button class="panel-btn btn-primary" onclick="loadMonitorPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="monitor-content"></div>
+    </div>
+
+    <!-- Orchestration Panel -->
+    <div class="panel-view" id="panel-orchestration" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Agent Orchestration</span>
+        <button class="panel-btn btn-primary" onclick="loadOrchestrationPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="orchestration-content"></div>
+    </div>
+
+    <!-- Integrations Panel -->
+    <div class="panel-view" id="panel-integrations" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Integrations</span>
+        <button class="panel-btn btn-primary" onclick="loadIntegrationsPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="integrations-content"></div>
+    </div>
+
+    <!-- Vault Panel -->
+    <div class="panel-view" id="panel-vault" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Credential Vault</span>
+        <button class="panel-btn btn-primary" onclick="loadVaultPanel()" style="margin-left:auto;font-size:12px;padding:4px 12px;">Refresh</button>
+      </div>
+      <div class="panel-body" id="vault-content"></div>
+    </div>
+
+    <!-- ═══ IDE: Code Editor Panel ═══ -->
+    <div class="panel-view" id="panel-editor" style="display:none;">
+      <div class="panel-header" style="gap:8px;">
+        <span class="panel-title">Code Editor</span>
+        <div id="editor-tabs" style="display:flex; gap:2px; flex:1; overflow-x:auto; margin:0 8px;"></div>
+        <button class="panel-btn" onclick="editorOpenFile()" style="font-size:11px; padding:3px 10px;">Open File</button>
+        <button class="panel-btn btn-primary" onclick="editorSave()" style="font-size:11px; padding:3px 10px;">Save</button>
+      </div>
+      <div style="display:flex; flex:1; overflow:hidden;">
+        <div id="editor-file-tree" style="width:220px; border-right:1px solid var(--border); overflow-y:auto; font-size:12px;"></div>
+        <div id="monaco-container" style="flex:1; height:100%;"></div>
+      </div>
+    </div>
+
+    <!-- ═══ IDE: Terminal Panel ═══ -->
+    <div class="panel-view" id="panel-terminal" style="display:none;">
+      <div class="panel-header" style="gap:8px;">
+        <span class="panel-title">Terminal</span>
+        <div id="terminal-tabs" style="display:flex; gap:2px; flex:1; overflow-x:auto; margin:0 8px;"></div>
+        <button class="panel-btn btn-primary" onclick="terminalNew()" style="font-size:11px; padding:3px 10px;">+ New</button>
+      </div>
+      <div id="terminal-container" style="flex:1; background:#0a0a0f; padding:4px;"></div>
+    </div>
   </div>
 
   <!-- Proactive Insight Bar -->
@@ -533,39 +1267,17 @@
         <input type="password" id="settingsSupabaseKey" placeholder="eyJ...">
       </div>
 
-      <h3>AI PROVIDER (Pick one — free options first)</h3>
+      <h3>AI PROVIDER</h3>
       <div class="form-group">
         <label>Active Provider</label>
-        <select id="settingsProvider">
-          <option value="ollama">Ollama (Free — Local)</option>
-          <option value="groq">Groq (Free Tier — Cloud)</option>
-          <option value="openrouter">OpenRouter (Cheap — Cloud)</option>
-          <option value="anthropic">Anthropic (Premium — Cloud)</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Ollama Model</label>
-        <input type="text" id="settingsOllamaModel" placeholder="llama3.1:8b">
-        <div class="hint">Free. Install: brew install ollama && ollama pull llama3.1:8b</div>
-      </div>
-
-      <div class="form-group">
-        <label>Groq API Key</label>
-        <input type="password" id="settingsGroqKey" placeholder="gsk_...">
-        <div class="hint">Free tier: 30 req/min. Get key at console.groq.com</div>
-      </div>
-
-      <div class="form-group">
-        <label>OpenRouter API Key</label>
-        <input type="password" id="settingsOpenrouterKey" placeholder="sk-or-...">
-        <div class="hint">~$0.001/1k tokens. Get key at openrouter.ai</div>
+        <div class="hint" style="color: var(--accent-purple); font-weight: 500;">⚡ Claude Code SDK (auto-detected)</div>
+        <div class="hint">Powered by Claude Code open source. Brain MCP connected.</div>
       </div>
 
       <div class="form-group">
         <label>Anthropic API Key</label>
         <input type="password" id="settingsAnthropicKey" placeholder="sk-ant-...">
-        <div class="hint">Premium. ~$0.015/1k tokens. Only if you need Claude specifically.</div>
+        <div class="hint">Required for Claude Code SDK. Set in environment or ~/.anthropic/config.</div>
       </div>
 
       <h3>INTEGRATIONS (Optional — enables slash commands)</h3>
@@ -602,13 +1314,9 @@
 
       <h3>LIMITS</h3>
       <div class="form-group">
-        <label>Max Tokens per Response</label>
-        <input type="number" id="settingsMaxTokens" value="4096">
-      </div>
-      <div class="form-group">
-        <label>Monthly Token Budget</label>
-        <input type="number" id="settingsMonthlyLimit" value="100000">
-        <div class="hint">Auto-warns at 80%. Set to 0 for unlimited.</div>
+        <label>Max Budget per Query (USD)</label>
+        <input type="number" id="settingsMaxBudget" value="2.00" step="0.10">
+        <div class="hint">Claude Code SDK budget cap per chat message. Default: $2.00</div>
       </div>
 
       <div class="modal-actions">
@@ -618,11 +1326,38 @@
     </div>
   </div>
 
-  <script>const marked = require('marked');</script>
+  <link rel="stylesheet" href="node_modules/@xterm/xterm/css/xterm.css">
+  <script src="dist/purify.min.js"></script>
+  <script src="dist/marked.min.js"></script>
+  <script src="panels.js"></script>
+  <script src="ide-editor.js"></script>
+  <script src="ide-terminal.js"></script>
+  <script src="ide-completions.js"></script>
+  <script src="ide-bridge.js"></script>
+  <script src="ide-brain-fs.js"></script>
+  <script src="ide-fleet-live.js"></script>
+  <script src="ide-command-palette.js"></script>
+  <script>
+    // marked v15 exports as window.marked with .parse method
+    if (typeof marked === 'undefined') {
+      console.error('[Faye] marked.js failed to load from dist/marked.min.js');
+    } else {
+      console.log('[Faye] marked.js loaded:', marked.parse ? 'v15 (parse ready)' : 'checking...');
+    }
+    // Safe markdown renderer — marked + DOMPurify
+    function safeParse(md) {
+      if (typeof marked !== 'undefined' && marked.parse) {
+        const html = marked.parse(md);
+        return typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(html) : html;
+      }
+      return md;
+    }
+  </script>
   <script>
     let messageCount = 0;
     let isStreaming = false;
     let currentStreamDiv = null;
+    const messageQueue = [];
 
     function getTimeGreeting() {
       const h = new Date().getHours();
@@ -640,6 +1375,15 @@
       dot.className = 'boot-dot ' + status;
       if (label) line.innerHTML = `<span class="boot-dot ${status}"></span> ${label}`;
     }
+
+    // Capture console errors for MCP bridge
+    window.__electronMcpErrors = [];
+    const _origError = console.error;
+    console.error = (...args) => {
+      window.__electronMcpErrors.push({ time: Date.now(), msg: args.map(String).join(' ').slice(0, 200) });
+      if (window.__electronMcpErrors.length > 50) window.__electronMcpErrors.shift();
+      _origError.apply(console, args);
+    };
 
     document.addEventListener('DOMContentLoaded', async () => {
       // Start boot sequence
@@ -662,11 +1406,10 @@
           try {
             const providers = await window.brain.checkProviders();
             if (providers.detected) {
-              setBootDot('bootProvider', 'ok', 'AI provider — ' + providers.detected.name);
-            } else if (providers.ollama) {
-              setBootDot('bootProvider', 'ok', 'AI provider — Ollama (local, free)');
+              const icon = providers.detected.sdkReady ? '⚡ ' : '';
+              setBootDot('bootProvider', 'ok', 'AI provider — ' + icon + providers.detected.name);
             } else {
-              setBootDot('bootProvider', 'warn', 'AI provider — none (43 commands still free)');
+              setBootDot('bootProvider', 'warn', 'AI provider — none');
             }
           } catch { setBootDot('bootProvider', 'warn', 'AI provider — detection skipped'); }
 
@@ -760,16 +1503,26 @@
     }
 
     // Stream listeners
+    console.log('[Debug] marked available:', typeof marked !== 'undefined');
+
     window.brain.onStreamChunk((chunk) => {
+      console.log('[Stream] Chunk received:', chunk?.length, 'chars, currentStreamDiv:', !!currentStreamDiv);
       if (currentStreamDiv) {
         const bodyDiv = currentStreamDiv.querySelector('.message-body');
+        if (!bodyDiv) { console.error('[Stream] No .message-body found!'); return; }
         bodyDiv.dataset.raw = (bodyDiv.dataset.raw || '') + chunk;
-        bodyDiv.innerHTML = marked.parse(bodyDiv.dataset.raw);
+        try {
+          bodyDiv.innerHTML = safeParse(bodyDiv.dataset.raw);
+        } catch (e) {
+          console.error('[Stream] Render error:', e);
+          bodyDiv.textContent = bodyDiv.dataset.raw;
+        }
         scrollToBottom();
       }
     });
 
     window.brain.onStreamEnd((meta) => {
+      console.log('[Stream] End received:', JSON.stringify(meta));
       isStreaming = false;
       if (currentStreamDiv && meta) {
         const header = currentStreamDiv.querySelector('.message-header');
@@ -781,6 +1534,10 @@
           const avatar = currentStreamDiv.querySelector('.message-avatar');
           avatar.className = 'message-avatar local';
           avatar.textContent = 'L';
+        } else if (meta.fromClaudeCode) {
+          tag.className = 'message-provider sdk-tag';
+          const toolsLabel = meta.toolsUsed ? ` · ${meta.toolsUsed} tools` : '';
+          tag.textContent = `⚡ Claude Code SDK${toolsLabel}`;
         } else {
           const tierLabel = { 1: 'SIMPLE', 2: 'STANDARD', 3: 'COMPLEX' }[meta.tier] || '';
           const costLabel = meta.cost === 0 ? 'FREE' : `$${meta.cost}/1k`;
@@ -788,9 +1545,12 @@
           tag.textContent = `${meta.provider || 'AI'} · T${meta.tier || '?'} ${tierLabel} · ${costLabel}`;
         }
         header.appendChild(tag);
+      } else {
+        console.warn('[Stream] End but no currentStreamDiv or meta');
       }
       currentStreamDiv = null;
       document.getElementById('typingIndicator').classList.remove('active');
+      document.getElementById('agentStatus').classList.remove('active');
       document.getElementById('sendBtn').disabled = false;
       messageCount++;
       updateMessageCount();
@@ -798,26 +1558,66 @@
     });
 
     window.brain.onStreamError((error) => {
+      console.error('[Stream] Error received:', error);
       isStreaming = false;
       currentStreamDiv = null;
       document.getElementById('typingIndicator').classList.remove('active');
+      document.getElementById('agentStatus').classList.remove('active');
       document.getElementById('sendBtn').disabled = false;
       addMessage('brain', `Error: ${error}`, true);
     });
 
-    async function sendMessage() {
+    // Agent progress — shows tool use and thinking in real-time
+    window.brain.onAgentProgress((step) => {
+      const statusEl = document.getElementById('agentStatus');
+      const textEl = document.getElementById('agentStatusText');
+      if (!statusEl || !textEl) return;
+
+      statusEl.classList.add('active');
+
+      if (step.type === 'tool_use') {
+        const shortName = (step.tool || '').replace('mcp__fractal-mac-link__', '🧠 ');
+        textEl.textContent = `⚡ ${shortName}`;
+      } else if (step.type === 'thinking') {
+        textEl.textContent = `💭 ${step.preview || 'thinking...'}`;
+      }
+
+      scrollToBottom();
+    });
+
+    async function sendMessage(queuedMessage) {
       const input = document.getElementById('messageInput');
-      const message = input.value.trim();
-      if (!message || isStreaming) return;
+      const message = queuedMessage || input.value.trim();
+      if (!message) return;
+
+      // If streaming, queue the message and show it immediately
+      if (isStreaming && !queuedMessage) {
+        messageQueue.push(message);
+        addMessage('user', message);
+        input.value = '';
+        autoResize(input);
+        messageCount++;
+        updateMessageCount();
+        updateQueueBadge();
+        return;
+      }
+
+      // Check IDE commands first (/edit, /run, /term, /completions)
+      if (typeof handleIDECommands === 'function' && handleIDECommands(message)) {
+        if (!queuedMessage) { input.value = ''; autoResize(input); }
+        return;
+      }
 
       const welcome = document.getElementById('welcomeScreen');
       if (welcome) welcome.style.display = 'none';
 
-      addMessage('user', message);
-      input.value = '';
-      autoResize(input);
-      messageCount++;
-      updateMessageCount();
+      if (!queuedMessage) {
+        addMessage('user', message);
+        input.value = '';
+        autoResize(input);
+        messageCount++;
+        updateMessageCount();
+      }
 
       isStreaming = true;
       document.getElementById('sendBtn').disabled = true;
@@ -830,12 +1630,34 @@
 
       currentStreamDiv = createMessageElement('brain', '');
       document.getElementById('chatMessages').appendChild(currentStreamDiv);
+      console.log('[Send] Created stream div, currentStreamDiv:', !!currentStreamDiv);
 
       setTimeout(() => {
         document.getElementById('typingIndicator').classList.remove('active');
       }, 300);
 
-      await window.brain.streamMessage(message);
+      console.log('[Send] Calling streamMessage...');
+      const streamResult = await window.brain.streamMessage(message);
+      console.log('[Send] streamMessage returned:', JSON.stringify(streamResult));
+    }
+
+    function processQueue() {
+      if (messageQueue.length > 0) {
+        const next = messageQueue.shift();
+        updateQueueBadge();
+        sendMessage(next);
+      }
+    }
+
+    function updateQueueBadge() {
+      const hint = document.getElementById('inputHint');
+      if (messageQueue.length > 0) {
+        hint.textContent = `📬 ${messageQueue.length} message${messageQueue.length > 1 ? 's' : ''} queued`;
+        hint.style.color = 'var(--accent-purple)';
+      } else {
+        hint.textContent = '/ = free local commands · plain text = AI (uses tokens)';
+        hint.style.color = '';
+      }
     }
 
     function addMessage(role, content, isError = false) {
@@ -859,7 +1681,7 @@
         </div>
         <div class="message-body" data-raw="${escapeHtml(content)}">${
           isError ? `<span style="color:var(--accent-red)">${content}</span>` :
-          (content ? marked.parse(content) : '')
+          (content ? safeParse(content) : '')
         }</div>
       `;
       return div;
@@ -925,45 +1747,23 @@
         // Provider
         document.getElementById('providerName').textContent = result.provider || '—';
 
-        // Budget
-        if (result.budget) {
-          const b = result.budget;
-          const pct = b.limit > 0 ? Math.min((b.tokensUsed / b.limit) * 100, 100) : 0;
-          document.getElementById('budgetText').textContent =
-            `${(b.tokensUsed / 1000).toFixed(1)}k / ${(b.limit / 1000).toFixed(0)}k`;
-          const fill = document.getElementById('budgetFill');
-          fill.style.width = pct + '%';
-          fill.style.background = pct > 80 ? 'var(--accent-red)' : pct > 50 ? 'var(--accent-yellow)' : 'var(--accent-green)';
-        }
+        // Session status
+        document.getElementById('budgetText').textContent = result.sdkReady ? '⚡ SDK Active' : 'Fallback';
       } catch (e) {
         document.getElementById('brainStatusText').textContent = 'Error';
       }
     }
 
     async function refreshBudget() {
-      const result = await window.brain.getStatus();
-      if (result.budget) {
-        const b = result.budget;
-        const pct = b.limit > 0 ? Math.min((b.tokensUsed / b.limit) * 100, 100) : 0;
-        document.getElementById('budgetText').textContent =
-          `${(b.tokensUsed / 1000).toFixed(1)}k / ${(b.limit / 1000).toFixed(0)}k`;
-        const fill = document.getElementById('budgetFill');
-        fill.style.width = pct + '%';
-        fill.style.background = pct > 80 ? 'var(--accent-red)' : pct > 50 ? 'var(--accent-yellow)' : 'var(--accent-green)';
-      }
+      // SDK manages its own budget — nothing to refresh
     }
 
     async function openSettings() {
       const config = await window.brain.getConfig();
       document.getElementById('settingsSupabaseUrl').value = config.supabaseUrl || '';
       document.getElementById('settingsSupabaseKey').value = config.supabaseKey || '';
-      document.getElementById('settingsProvider').value = config.aiProvider || 'ollama';
-      document.getElementById('settingsOllamaModel').value = config.ollamaModel || 'llama3.1:8b';
-      document.getElementById('settingsGroqKey').value = config.groqKey || '';
-      document.getElementById('settingsOpenrouterKey').value = config.openrouterKey || '';
       document.getElementById('settingsAnthropicKey').value = config.anthropicKey || '';
-      document.getElementById('settingsMaxTokens').value = config.maxTokens || 4096;
-      document.getElementById('settingsMonthlyLimit').value = config.monthlyTokenLimit || 100000;
+      document.getElementById('settingsMaxBudget').value = config.maxBudgetUsd || 2.00;
       document.getElementById('settingsSlackToken').value = config.slackToken || '';
       document.getElementById('settingsNotionToken').value = config.notionToken || '';
       document.getElementById('settingsGithubToken').value = config.githubToken || '';
@@ -979,13 +1779,8 @@
       await window.brain.updateConfig({
         supabaseUrl: document.getElementById('settingsSupabaseUrl').value,
         supabaseKey: document.getElementById('settingsSupabaseKey').value,
-        aiProvider: document.getElementById('settingsProvider').value,
-        ollamaModel: document.getElementById('settingsOllamaModel').value,
-        groqKey: document.getElementById('settingsGroqKey').value,
-        openrouterKey: document.getElementById('settingsOpenrouterKey').value,
         anthropicKey: document.getElementById('settingsAnthropicKey').value,
-        maxTokens: parseInt(document.getElementById('settingsMaxTokens').value),
-        monthlyTokenLimit: parseInt(document.getElementById('settingsMonthlyLimit').value),
+        maxBudgetUsd: parseFloat(document.getElementById('settingsMaxBudget').value),
         slackToken: document.getElementById('settingsSlackToken').value,
         notionToken: document.getElementById('settingsNotionToken').value,
         githubToken: document.getElementById('settingsGithubToken').value,

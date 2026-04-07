@@ -54,12 +54,120 @@ free: true
   <p class="section-text"><strong>Disclose when audio is AI-generated.</strong> Your audience deserves to know. Transparency builds trust. Deception destroys it. Label your AI-generated content clearly.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Deep Dive</span>
+  <h2 class="section-title">Voice Cloning Platform Comparison</h2>
+  <p class="section-text">Each platform has different strengths depending on your use case, budget, and technical requirements:</p>
+  <p class="section-text"><strong style="color: var(--orange);">ElevenLabs</strong> — Instant clone: 30 seconds of audio. Professional clone: 30+ minutes for near-indistinguishable results. Cost: free tier for instant cloning, $5+/month for professional. Best for: content creators, individual projects, quick turnaround.</p>
+  <p class="section-text"><strong style="color: var(--purple);">Resemble AI</strong> — Minimum: 3+ minutes of clean audio for best results. Cost: starts at $0.006/second of generated audio. Best for: enterprise products, real-time voice conversion, customer-facing applications. Unique feature: emotion control sliders let you dial specific feelings into the output.</p>
+  <p class="section-text"><strong style="color: var(--green);">PlayHT</strong> — Clone quality: solid mid-tier with good consistency across long-form content. Cost: starts at $29/month. Best for: audiobooks, ongoing content series. Unique feature: voice marketplace where real actors license their cloned voices — you get quality and ethics in one package.</p>
+  <p class="section-text"><strong style="color: var(--blue);">OpenVoice (open-source)</strong> — Clone from a single short reference clip. Cost: free, runs locally. Best for: experimentation, data-sensitive projects, custom fine-tuning. Trade-off: requires Python environment setup and GPU for best performance.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Code Example</span>
+  <h2 class="section-title">Voice Cloning API Integration</h2>
+  <p class="section-text">Here is how to create and use a voice clone programmatically with the ElevenLabs API:</p>
+  <div class="prompt-box"><code># Step 1: Create a voice clone from audio samples
+import requests
+
+url = "https://api.elevenlabs.io/v1/voices/add"
+headers = {"xi-api-key": "YOUR_API_KEY"}
+
+data = {
+    "name": "My Custom Voice",
+    "description": "Warm, conversational tone for podcast narration",
+    "labels": '{"accent": "American", "age": "young", "gender": "female"}'
+}
+
+files = [
+    ("files", ("sample1.mp3", open("sample1.mp3", "rb"), "audio/mpeg")),
+    ("files", ("sample2.mp3", open("sample2.mp3", "rb"), "audio/mpeg")),
+]
+
+response = requests.post(url, headers=headers, data=data, files=files)
+voice_id = response.json()["voice_id"]
+print(f"Voice created with ID: {voice_id}")
+
+# Step 2: Generate speech with the cloned voice
+tts_url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+headers["Content-Type"] = "application/json"
+
+tts_data = {
+    "text": "This is my cloned voice speaking words I never recorded.",
+    "model_id": "eleven_multilingual_v2",
+    "voice_settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.8,
+        "style": 0.3
+    }
+}
+
+response = requests.post(tts_url, json=tts_data, headers=headers)
+with open("cloned_output.mp3", "wb") as f:
+    f.write(response.content)</code></div>
+  <p class="section-text">The <code>stability</code> parameter controls how consistent the voice sounds across generations — higher values produce more predictable output, lower values add natural variation. The <code>similarity_boost</code> controls how closely the output matches the original voice sample. The <code>style</code> parameter adds expressiveness — useful for narrative content, less useful for corporate voiceover.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Workflow</span>
+  <h2 class="section-title">Building a Custom Brand Voice</h2>
+  <p class="section-text">Voice cloning is not just about replicating an existing voice. You can design entirely new voices for brands, characters, and products. Here is a systematic workflow:</p>
+  <p class="section-text"><strong>Step 1 — Define the voice persona.</strong> Before touching any tool, write down the characteristics: age, warmth level, energy, accent, pacing. "A calm, mid-30s voice with slight warmth, moderate pace, and no discernible regional accent" gives you a clear target.</p>
+  <p class="section-text"><strong>Step 2 — Source reference samples.</strong> Find voice actors on Fiverr or Voices.com who match your persona. Commission 5-10 minutes of diverse recordings — questions, statements, lists, emotional passages. This is your cloning source material.</p>
+  <p class="section-text"><strong>Step 3 — Create the professional clone.</strong> Upload your reference recordings to ElevenLabs Professional Voice Cloning or Resemble AI. Professional cloning takes longer but produces voices that hold up across hours of content without drift.</p>
+  <p class="section-text"><strong>Step 4 — Test across content types.</strong> Generate samples of every content type your brand produces — product descriptions, tutorials, announcements, customer support responses. The voice should feel consistent and natural across all of them.</p>
+  <p class="section-text"><strong>Step 5 — Document voice settings.</strong> Record the exact platform, model, voice ID, stability, similarity, and style settings that produce your best output. This is your voice specification — it ensures consistency even if team members change.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Legal Framework</span>
+  <h2 class="section-title">Voice Rights and the Law</h2>
+  <p class="section-text">Voice cloning law is evolving fast. Here is what you need to know as of 2026:</p>
+  <p class="section-text"><strong>Right of publicity:</strong> In most US states, a person's voice is legally protected as part of their identity. Using someone's voice without permission — even an AI clone — can result in significant legal liability. The estate of a deceased person can also enforce this right.</p>
+  <p class="section-text"><strong>The NO FAKES Act:</strong> Federal legislation that creates a property right in voice and visual likeness, specifically addressing AI-generated replicas. Penalties include damages of up to $5,000 per violation or actual damages, whichever is greater.</p>
+  <p class="section-text"><strong>Platform terms:</strong> Every cloning platform has terms of service that prohibit unauthorized cloning. ElevenLabs requires voice verification. Resemble AI requires consent documentation. Violating these terms gets your account permanently banned.</p>
+  <p class="section-text"><strong>Safe harbor:</strong> Clone your own voice, or get written consent. Use platform voice marketplaces where actors have pre-authorized commercial use. When in doubt, get a signed release that specifically mentions AI voice synthesis and commercial usage rights.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Use Cases</span>
+  <h2 class="section-title">Voice Cloning in Practice: Real Applications</h2>
+  <p class="section-text">Beyond the technology itself, voice cloning enables specific applications that were previously impossible or prohibitively expensive:</p>
+  <p class="section-text"><strong>Personal legacy preservation:</strong> Families are using voice cloning to preserve the voices of elderly or terminally ill loved ones. With consent, a few hours of recorded conversation become a permanent voice that can narrate letters, messages, or stories for future generations.</p>
+  <p class="section-text"><strong>Content creator scaling:</strong> A solo YouTuber clones their own voice to narrate multiple video series simultaneously. While they record one video, their clone narrates three others. Same voice, same brand, four times the output.</p>
+  <p class="section-text"><strong>Multilingual content:</strong> Clone your voice in English, then generate content in Spanish, French, German, and Japanese — all in your voice. ElevenLabs and Resemble AI support cross-lingual voice cloning. Your audience hears you, regardless of the language.</p>
+  <p class="section-text"><strong>Accessibility for speech-impaired users:</strong> People who have lost their voice due to ALS, throat cancer, or other conditions can use voice clones created from pre-illness recordings. Their synthesized voice sounds like them, not like a generic computer. This is one of the most powerful and humane applications of the technology.</p>
+  <p class="section-text"><strong>Video game characters:</strong> Game developers use voice cloning to generate thousands of dialogue lines for NPCs without booking voice actors for extended studio sessions. The initial recording session creates the clone, and all subsequent dialogue is generated from text.</p>
+</div>
+
 <div class="demo-container">
   <h3>Recording Tips for Better Clones</h3>
   <p><strong>Environment:</strong> Quiet room, no echo. Closets with clothes work surprisingly well.</p>
   <p><strong>Mic:</strong> Even a phone works if held steady at 6 inches from your mouth.</p>
   <p><strong>Delivery:</strong> Read naturally. Don't perform. The AI needs your real voice, not a character.</p>
   <p><strong>Content:</strong> Read diverse text — questions, statements, lists, emotional passages.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Troubleshooting Voice Clone Quality</h2>
+  <p class="section-text">When a voice clone does not sound right, the problem is almost always in the source material or settings, not the AI. Here are the most common issues and how to fix them:</p>
+  <p class="section-text"><strong>Clone sounds robotic or flat:</strong> Your source recordings likely lack variety. Record additional samples that include questions, exclamations, lists, and emotional passages. The AI needs to hear your voice doing different things to reproduce its full range.</p>
+  <p class="section-text"><strong>Clone has inconsistent tone:</strong> Lower the similarity_boost setting (try 0.6-0.7). High similarity settings amplify every quirk in your source audio, including inconsistencies. A moderate setting lets the model smooth out variations while still capturing your voice's character.</p>
+  <p class="section-text"><strong>Clone sounds muffled or echoey:</strong> Your source recordings have room acoustics baked in. Re-record in a smaller, more acoustically treated space. Even recording under a blanket draped over your head and microphone produces dramatically cleaner source material.</p>
+  <p class="section-text"><strong>Clone mispronounces specific words:</strong> Use phonetic spelling in your input text for problem words. "Kubernetes" becomes "koo-ber-NET-eez" in the text. Alternatively, generate that sentence separately with adjusted settings and splice it into the main audio.</p>
+  <p class="section-text"><strong>Clone loses energy on long passages:</strong> Generate in shorter segments (2-3 paragraphs maximum). Long input text causes the model to default to a neutral, low-energy delivery. Shorter segments maintain the vocal energy from your source recordings.</p>
+  <p class="section-text"><strong>Clone sounds different each time:</strong> Increase the stability setting (try 0.7-0.8). Lower stability allows for more expressive variation between generations, which is great for creative content but problematic when you need consistency across a long-form project like an audiobook or course narration.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Comparison</span>
+  <h2 class="section-title">Instant vs Professional Voice Cloning</h2>
+  <p class="section-text">Understanding when to use each cloning approach saves time and money:</p>
+  <p class="section-text"><strong>Instant cloning (30 seconds - 5 minutes of audio):</strong> Use for prototyping, testing voice fit, one-off projects, and internal content. Quality is 70-80% of the original voice. Setup takes minutes. Good enough for most use cases where the audience is not deeply familiar with the original voice.</p>
+  <p class="section-text"><strong>Professional cloning (30+ minutes of audio):</strong> Use for public-facing content, audiobooks, brand voices, and any project where the clone will be compared directly to the original. Quality is 90-95% of the original voice. Setup takes hours to days. Worth the investment for long-term, high-volume use.</p>
+  <p class="section-text"><strong>Decision framework:</strong> If you need it today and it will be used once, use instant cloning. If it will be used across 10+ pieces of content, invest in professional cloning. The quality difference compounds over volume — a slight improvement multiplied across hundreds of generations is significant.</p>
 </div>
 
 <div class="try-it-box">

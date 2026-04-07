@@ -179,6 +179,33 @@ free: false
   </div>
 </div>
 
+<!-- SECTION 5: TOOLKIT MAINTENANCE -->
+<div class="lesson-section">
+  <span class="section-label">Maintenance</span>
+  <h2 class="section-title">Keep your toolkit sharp -- not bloated.</h2>
+  <p class="section-text">Building a great toolkit is step one. <strong>Maintaining it</strong> is what separates professionals from tool hoarders. AI tools evolve fast -- what was essential six months ago might be redundant today. Here's how to keep your stack lean and effective.</p>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#34d399">Quarterly Tool Audit</div>
+    <p>Every three months, open your subscriptions list and ask one question per tool: <strong>"Did I use this at least 4 times in the last 30 days?"</strong> If not, cancel it or downgrade to free. AI tools count on you forgetting about them. A $10/month tool you don't use is $120/year of creative budget wasted. Set a calendar reminder. Treat it like cleaning your studio -- non-negotiable.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#8b5cf6">Drop Unused Subscriptions Ruthlessly</div>
+    <p>Sunk cost fallacy kills creative budgets. "But I already paid for three months" is not a reason to keep paying for a fourth. If a tool doesn't pass the 3-Question Filter anymore -- if it no longer solves a real bottleneck, if you don't use it weekly, if it takes too long to context-switch into -- <strong>cut it</strong>. You can always re-subscribe if you genuinely need it later. Most people never do.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#fb923c">Test New Tools Against Your Filter</div>
+    <p>When a shiny new AI tool launches (and one will, every week), run it through the same 3-Question Filter before you even create an account. <strong>(1)</strong> Does this solve a bottleneck my current stack doesn't? <strong>(2)</strong> Can I learn it in under an hour? <strong>(3)</strong> Will I realistically use it weekly? If it doesn't pass all three, bookmark it and move on. Your attention is more valuable than any free trial.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#38bdf8">Track Your Actual ROI</div>
+    <p>For every paid tool, know the answer to: <strong>"How many hours does this save me per month?"</strong> Multiply that by your hourly rate. If the tool costs $20/month and saves you 3 hours at $50/hour, that's a $130/month net gain. If you can't quantify the savings, the tool probably isn't pulling its weight. The best toolkit is the one where every tool earns its seat at the table.</p>
+  </div>
+</div>
+
 <div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Creative AI Tool Categories","cards":[{"front":"Writing AI","back":"Top picks: Claude Pro ($20/mo), ChatGPT Plus ($20/mo). Use for: ideation, drafts, editing, research, repurposing. Free options exist but hit limits fast on real projects."},{"front":"Image AI","back":"Top picks: Midjourney ($10-$30/mo), Adobe Firefly (included in CC). Use for: concept art, mood boards, asset generation, background removal. Firefly is safest for commercial work."},{"front":"Video AI","back":"Top picks: Descript ($12/mo), Opus Clip ($9/mo), RunwayML ($15/mo). Use for: auto-editing, clip generation, transcript-based editing, shorts creation."},{"front":"Audio AI","back":"Top picks: LANDR ($11/mo), Moises ($4/mo), Udio/Suno (free tiers available). Use for: mastering, stem separation, melody sketching, sample creation."},{"front":"Automation AI","back":"Top picks: Zapier AI, Make.com, Notion AI. Use for: connecting tools together, auto-scheduling, repurposing workflows, routing outputs between apps."},{"front":"All-in-One AI","back":"Top picks: Canva AI (included in Pro), Notion AI ($10/mo add-on). Use when: you want one interface for multiple tasks. Trade-off: less powerful per task than dedicated tools."}]}'></div>
 </div>

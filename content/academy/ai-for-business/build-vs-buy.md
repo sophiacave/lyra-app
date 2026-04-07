@@ -31,13 +31,15 @@ free: false
   <h2 class="section-title">The four options.</h2>
   <p class="section-text">Every AI decision your business faces comes down to four choices. Each one has a different cost profile, timeline, risk level, and set of circumstances where it makes sense. Most businesses default to Buy because it is the easiest — but that is not always right.</p>
 
+  <p class="section-text">Flip each card to understand the cost, timeline, risk, and ideal use case for each option. Pay special attention to the "Best when" criteria — these are the conditions that must be true for each option to make sense. If the conditions do not match your situation, that option is wrong regardless of how appealing it sounds.</p>
+
   <div data-learn="FlashDeck" data-props='{"title":"The Four AI Strategy Options","cards":[{"front":"BUY a SaaS Tool","back":"Best when: the problem is common, budget is under $5K/year, you need results fast, and no sensitive data is involved. Examples: Jasper for writing, Zapier for automation, Otter.ai for transcription. Cost: $20-$500/month. Timeline: days. Risk: low."},{"front":"BUILD Custom AI","back":"Best when: your problem is genuinely unique, you have developers on staff, budget exceeds $10K, and data sensitivity requires keeping everything in-house. Examples: custom ML model, proprietary recommendation engine. Cost: $10K-$200K+. Timeline: 1-6 months. Risk: high."},{"front":"HIRE a Consultant","back":"Best when: your needs are specific enough that off-the-shelf tools do not fit, but not so unique that a custom build is warranted. Also when you have budget ($2K-$15K) but no technical staff. Examples: custom GPT setup, AI strategy session, workflow automation. Timeline: 2-6 weeks."},{"front":"WAIT (Do Nothing Yet)","back":"Best when: budget is under $500, the problem is not urgent, or the AI tools in your category are evolving so fast that buying now means replacing in 6 months. AI tool prices drop every quarter. Sometimes the best move is to revisit in 90 days."}]}'></div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Section 2</span>
   <h2 class="section-title">The five decision factors.</h2>
-  <p class="section-text">The right choice between Build, Buy, Hire, and Wait depends on five factors. None of them alone gives you the answer — it is the combination that matters. Here is each one and what it tells you:</p>
+  <p class="section-text">The right choice between Build, Buy, Hire, and Wait depends on five factors. None of them alone gives you the answer — it is the combination that matters. Understanding these factors transforms you from someone who guesses at strategy to someone who scores the decision and lets data lead. Here is each one and what it tells you:</p>
 
   <p class="section-text"><strong>1. Problem Uniqueness.</strong> Is the problem your business faces something every business deals with — or is it genuinely specific to your company, your industry, or your proprietary process? The more unique the problem, the less likely an off-the-shelf SaaS tool solves it well. Common problems have common tools. Unique problems may require custom work.</p>
 
@@ -48,6 +50,77 @@ free: false
   <p class="section-text"><strong>4. Speed Needed.</strong> How quickly do you need results? If the problem is urgent — you are losing customers, or a manual process is creating daily errors — the right answer is usually Buy. The fastest path to working AI is almost always a SaaS tool. Custom builds take months. Consultants take weeks. SaaS tools take days.</p>
 
   <p class="section-text"><strong>5. Data Sensitivity.</strong> Does the AI need access to customer PII, financial records, health data, or proprietary intellectual property? If yes, sending that data to a third-party SaaS tool may violate contracts, regulations (GDPR, HIPAA, SOC 2), or customer trust. Sensitive data often pushes the decision toward Build or a Hire who can set up a private deployment.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Decision Matrix</span>
+  <h2 class="section-title">The 5-factor scoring grid.</h2>
+  <p class="section-text">Use this matrix to score your specific situation. For each factor, rate your situation on the scale described. Then follow the scoring guide at the bottom to get a recommendation. This takes the guesswork out of the decision.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.5rem;font-size:.78rem;color:#a1a1aa;margin-bottom:.5rem">
+      <div style="color:#71717a;font-weight:600">Factor</div>
+      <div style="color:#71717a;font-weight:600">Score 1 (Low)</div>
+      <div style="color:#71717a;font-weight:600">Score 3 (Medium)</div>
+      <div style="color:#71717a;font-weight:600">Score 5 (High)</div>
+      <div style="color:#e5e5e5">Problem Uniqueness</div><div>Very common</div><div>Industry-specific</div><div>Entirely proprietary</div>
+      <div style="color:#e5e5e5">Budget</div><div>Under $500/yr</div><div>$500-$10K/yr</div><div>$10K+/yr</div>
+      <div style="color:#e5e5e5">Technical Capability</div><div>No tech staff</div><div>1-2 developers</div><div>Full engineering team</div>
+      <div style="color:#e5e5e5">Speed Needed</div><div>This week</div><div>This quarter</div><div>This year</div>
+      <div style="color:#e5e5e5">Data Sensitivity</div><div>Public data only</div><div>Internal data</div><div>Regulated PII/PHI</div>
+    </div>
+    <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.06)">
+      <div style="color:#34d399;font-size:.82rem;margin-bottom:.35rem"><strong>Total 5-9:</strong> BUY a SaaS tool. Your problem is common, budget is limited, and speed matters.</div>
+      <div style="color:#8b5cf6;font-size:.82rem;margin-bottom:.35rem"><strong>Total 10-15:</strong> HIRE a consultant. You need customization but not a full build.</div>
+      <div style="color:#fb923c;font-size:.82rem;margin-bottom:.35rem"><strong>Total 16-21:</strong> BUILD custom. Unique problem, resources available, data requires control.</div>
+      <div style="color:#38bdf8;font-size:.82rem"><strong>Total under 5:</strong> WAIT. Budget and capability do not support any option yet.</div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cost Comparison</span>
+  <h2 class="section-title">The real cost of each option over 12 months.</h2>
+  <p class="section-text">The sticker price of a SaaS tool or a consultant quote tells you almost nothing about the real cost. Here is what each option actually costs when you include setup time, maintenance, training, and opportunity cost. These numbers are based on typical small-to-medium business scenarios.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.75rem;font-size:.82rem;margin-bottom:.5rem">
+      <div style="color:#71717a;font-weight:600">Cost Category</div>
+      <div style="color:#34d399;font-weight:600">BUY (SaaS)</div>
+      <div style="color:#8b5cf6;font-weight:600">HIRE (Consultant)</div>
+      <div style="color:#fb923c;font-weight:600">BUILD (Custom)</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.75rem;font-size:.78rem;color:#a1a1aa">
+      <div>Subscription/Fee</div><div>$240-$6,000/yr</div><div>$2,000-$15,000</div><div>$0</div>
+      <div>Setup Time</div><div>2-8 hours</div><div>10-40 hours</div><div>200-2,000 hours</div>
+      <div>Training</div><div>2-4 hours</div><div>4-8 hours</div><div>20-40 hours</div>
+      <div>Ongoing Maintenance</div><div>$0 (vendor handles)</div><div>$500-$2,000/yr</div><div>$5,000-$50,000/yr</div>
+      <div>Switching Cost</div><div>Low (export data)</div><div>Medium</div><div>High (sunk cost)</div>
+      <div style="color:#e5e5e5;font-weight:600">Typical Year 1 Total</div><div style="color:#34d399;font-weight:600">$500-$8,000</div><div style="color:#8b5cf6;font-weight:600">$3,000-$20,000</div><div style="color:#fb923c;font-weight:600">$20,000-$200,000+</div>
+    </div>
+  </div>
+
+  <p class="section-text">The numbers make the default clear: Buy first. Only move to Hire or Build when the Buy option genuinely cannot solve your problem. Most businesses overestimate their uniqueness and underestimate what off-the-shelf tools can do.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Vendor Evaluation</span>
+  <h2 class="section-title">Seven questions to ask any AI vendor.</h2>
+  <p class="section-text">If you decide to Buy, you still need to evaluate which vendor to buy from. These seven questions separate serious tools from marketing fluff. Ask them in every demo, every sales call, every evaluation.</p>
+
+  <p class="section-text"><strong>1. "Where does my data go?"</strong> Acceptable answers: "Your data is stored in [specific region], encrypted at rest and in transit, and not used for model training." Red flag: vague answers about "cloud infrastructure" or inability to specify data residency.</p>
+
+  <p class="section-text"><strong>2. "Can I export my data if I leave?"</strong> Acceptable answer: "Yes, you can export all data in standard formats (CSV, JSON, API)." Red flag: no export option, proprietary formats only, or a fee to export your own data.</p>
+
+  <p class="section-text"><strong>3. "What happens when the AI is wrong?"</strong> Acceptable answer: "We have a feedback loop, human review options, and accuracy metrics we share with customers." Red flag: claims of 99% accuracy without methodology, or dismissal of the question.</p>
+
+  <p class="section-text"><strong>4. "What does your pricing look like at 3x my current usage?"</strong> Acceptable answer: clear pricing tiers with predictable scaling. Red flag: usage-based pricing with no caps, or inability to estimate costs at higher volume.</p>
+
+  <p class="section-text"><strong>5. "Do you have SOC 2, GDPR compliance, or equivalent certifications?"</strong> Acceptable answer: yes, with documentation available. Red flag: "we are working on it" or "our cloud provider has it" (that is not the same thing).</p>
+
+  <p class="section-text"><strong>6. "What is your uptime over the last 12 months?"</strong> Acceptable answer: 99.5% or higher with a public status page. Red flag: no status page, no uptime data, or refusal to share incident history.</p>
+
+  <p class="section-text"><strong>7. "Can I talk to three current customers in my industry?"</strong> Acceptable answer: yes, here are references. Red flag: "we cannot share customer names" (every serious vendor has reference customers willing to talk).</p>
 </div>
 
 <div class="lesson-section">
@@ -77,6 +150,22 @@ Explain your reasoning for each factor and give me a confidence level (high/medi
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Common Mistakes</span>
+  <h2 class="section-title">Five build-vs-buy traps that waste money.</h2>
+  <p class="section-text">The decision framework works. But even with a framework, businesses fall into predictable traps. Knowing these in advance saves you from learning them the expensive way.</p>
+
+  <p class="section-text"><strong>Trap 1: Building because "we need it custom."</strong> Most businesses overestimate how unique their problem is. Before you commit to a custom build, search for SaaS tools in your exact industry vertical. Nine times out of ten, someone has already built what you need and is selling it for $50/month. The uniqueness test: if you cannot explain in one sentence what makes your problem different from every other company in your industry, it is not unique enough to justify building.</p>
+
+  <p class="section-text"><strong>Trap 2: Buying the most expensive tool "because it is enterprise grade."</strong> Enterprise features — SSO, audit logs, dedicated support — matter when you have 50+ users and compliance requirements. For a 5-person team, you are paying for features you will never use. Start with the tool that solves your problem at the lowest price. Upgrade when you hit real limits, not imagined ones.</p>
+
+  <p class="section-text"><strong>Trap 3: Hiring a consultant without a clear scope.</strong> "Help us figure out AI" is not a scope. A good consultant engagement has a defined deliverable, timeline, and success metric before you sign the contract. Without these, you pay for exploration instead of results. Good scope: "Set up an AI-powered FAQ chatbot that handles our top 20 questions within 3 weeks." Bad scope: "Advise us on AI strategy."</p>
+
+  <p class="section-text"><strong>Trap 4: Waiting because "AI is changing too fast."</strong> AI will always be changing. Waiting for the "right moment" means waiting forever. The cost of waiting is not zero — it is the value you are not capturing while your competitors are. If the ROI math works today, start today. You can always switch tools later.</p>
+
+  <p class="section-text"><strong>Trap 5: Buying multiple tools in the same category.</strong> Jasper AND Claude AND ChatGPT all do writing. Having all three means nobody masters any of them, and you pay three subscriptions for one capability. Pick one per category. Master it. Switch if it genuinely does not work — but give it 30 days first.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Section 3</span>
   <h2 class="section-title">Match scenario to strategy.</h2>
 </div>
@@ -93,6 +182,20 @@ Explain your reasoning for each factor and give me a confidence level (high/medi
   <span class="section-label">Section 5</span>
   <h2 class="section-title">Decision priority.</h2>
   <p class="section-text">When you sit down to make a build-vs-buy call, you should weigh the five factors in a specific order. Some factors eliminate options outright; others just nudge the decision. Put them in order from most to least decisive.</p>
+
+  <p class="section-text"><strong>Data Sensitivity eliminates first.</strong> If your data is regulated (HIPAA, GDPR, SOC 2 requirements), several options disappear immediately. You cannot use a free-tier SaaS tool for patient health records or financial PII. This factor is binary — either the option meets your data requirements or it does not. No amount of good scores on other factors overcomes a data sensitivity disqualification.</p>
+
+  <p class="section-text"><strong>Budget eliminates second.</strong> You cannot build a $50,000 custom solution on a $500 budget. Budget removes Build from the table for most small businesses and removes Hire for the smallest ones. Be honest about what you can spend — including hidden costs — before evaluating the remaining options.</p>
+
+  <p class="section-text"><strong>Technical Capability is the tiebreaker.</strong> When two options both pass the data and budget tests, your team's ability to maintain the solution long-term determines the winner. A bought SaaS tool that the vendor maintains beats a custom build that nobody on your team can update when something breaks.</p>
+
+  <p class="section-text"><strong>Speed and Uniqueness are nudge factors.</strong> They push you toward one option over another but rarely eliminate an option entirely. Need results fast? Nudge toward Buy. Problem is genuinely unique? Nudge toward Build or Hire. These factors matter, but they matter less than the three eliminators above.</p>
+
+  <p class="section-text">Here is the decision as a single sentence: <strong>If your data is safe and your budget fits, Buy.</strong> Only move to Hire or Build when you have a genuine reason — not a feeling, but a reason supported by the five-factor scoring matrix — that buying does not solve your specific problem. The default is Buy. Everything else is the exception.</p>
+
+  <p class="section-text">Write your five-factor scores down before you make a call. Decisions made in meetings with a vendor in the room are influenced by the vendor. Decisions made alone with your scores on paper are influenced by data. One of these leads to better outcomes. It is not the vendor meeting.</p>
+
+  <p class="section-text">The build-vs-buy decision is one you will make repeatedly as your AI adoption grows. The first time takes the longest because you are learning the framework. By the third time, you will score the five factors in 5 minutes, check the matrix, and have your answer. This efficiency is the point — a framework that you can apply quickly and consistently produces better decisions than ad hoc analysis every time a new tool or vendor appears.</p>
 </div>
 
 </div>

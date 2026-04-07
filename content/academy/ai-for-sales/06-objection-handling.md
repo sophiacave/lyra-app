@@ -68,6 +68,111 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Categories</span>
+  <h2 class="section-title">The Six Objection Categories</h2>
+  <p class="section-text">Every objection falls into one of six categories. Knowing the category tells you the real concern behind the words, so you can address the root issue instead of the surface statement:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--red);">Price Objections:</strong> "It's too expensive." "We don't have the budget." "Your competitor is cheaper." These are about perceived value, not actual price. The cure is ROI framing — show the cost of NOT buying.</p>
+    <p><strong style="color: var(--orange);">Timing Objections:</strong> "Not right now." "Maybe next quarter." "We're in the middle of something." These are about priority, not time. The cure is urgency — show what waiting costs them.</p>
+    <p><strong style="color: var(--blue);">Authority Objections:</strong> "I need to check with my boss." "This has to go through procurement." "The team needs to weigh in." These are about process. The cure is enabling your champion to sell internally.</p>
+    <p><strong style="color: var(--green);">Need Objections:</strong> "We're fine with what we have." "I don't see how this applies to us." These are about awareness. The cure is asking better questions to surface pain they have not articulated yet.</p>
+    <p><strong style="color: var(--purple);">Trust Objections:</strong> "How do I know this works?" "We tried something similar before." "Your company is too small/new." These are about risk. The cure is proof — case studies, pilots, guarantees.</p>
+    <p><strong style="color: var(--accent);">Competitor Objections:</strong> "We're already talking to [COMPETITOR]." "Why should we switch?" These are about differentiation. The cure is positioning on your unique value, not attacking the competitor.</p>
+  </div>
+  <p class="section-text">When you hear an objection, mentally categorize it first. Then apply the HEARD method with category-specific framing. AI can generate responses tailored to each category for your specific product.</p>
+</div>
+
+<div class="try-it-box">
+  <h3>Category-Specific Responses</h3>
+  <div class="prompt-box"><code>I sell [YOUR PRODUCT/SERVICE] at [PRICE POINT] to [TARGET BUYER]. For each of these six objection categories — Price, Timing, Authority, Need, Trust, and Competitor — give me: 1) The most common objection in that category for my industry, 2) The real concern behind it, 3) A HEARD-method response that addresses the root issue, 4) A follow-up question that advances the conversation. Make each response sound natural and empathetic, not scripted.</code></div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+  <h2 class="section-title">Objection Handling Practice Scenarios</h2>
+  <p class="section-text">Reading about objection handling and doing it are different skills. Here are three practice scenarios to work through with AI. For each one, use the HEARD method and notice how identifying the objection category shapes your response:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Scenario 1 — The Budget Squeeze:</strong> You are presenting to a mid-size company. The meeting has gone well. At the end, the VP says: "This looks great, but honestly, we just went through budget cuts and there is no way I can get this approved this quarter." What do you do?</p>
+    <p><strong style="color: var(--green);">Scenario 2 — The Happy Customer:</strong> You are pitching a SaaS product. The director says: "We are already using [COMPETITOR] and everyone on the team likes it. I do not see a reason to switch." They seem genuinely satisfied. How do you respond?</p>
+    <p><strong style="color: var(--purple);">Scenario 3 — The Committee:</strong> After a strong demo, the decision-maker says: "I love this, but I cannot make this call alone. I need to present it to our leadership team next month, and they are going to have tough questions about ROI and implementation." How do you turn this into an opportunity?</p>
+  </div>
+  <p class="section-text">For each scenario, type your response into AI and ask it to evaluate you. Did you hear the concern? Did you empathize? Did you ask the right follow-up question? AI gives you instant coaching on every practice round.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Advanced Objection Response Frameworks</h2>
+  <p class="section-text">HEARD is your foundation. These advanced techniques build on it
+  for specific high-stakes situations:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--green);">The Reframe:</strong>
+    Change the frame of the objection entirely. "It's too expensive" becomes
+    "What is the cost of not solving this problem for another year?"
+    Reframing shifts the conversation from your price to their pain.
+    AI can generate reframes for any objection in seconds.</p>
+    <p><strong style="color: var(--blue);">The Feel-Felt-Found:</strong>
+    "I understand how you feel. Other [SIMILAR ROLE] felt the same way.
+    What they found was [POSITIVE OUTCOME]." This classic technique works
+    because it normalizes the concern and introduces social proof simultaneously.
+    AI can generate feel-felt-found responses with real examples from your customer base.</p>
+    <p><strong style="color: var(--purple);">The Isolation:</strong>
+    "If we could solve [THIS SPECIFIC CONCERN], would you be ready to move forward?"
+    This isolates the real blocker from a stack of surface objections.
+    Often the stated objection is not the real one — isolation reveals the truth.</p>
+    <p><strong style="color: var(--orange);">The Boomerang:</strong>
+    Turn the objection into a reason to buy. "You mentioned your team is too busy
+    to implement a new tool — that is exactly why you need this. It reduces your
+    team's workload by 40%." The objection becomes the selling point.
+    AI is excellent at spotting boomerang opportunities.</p>
+  </div>
+  <p class="section-text">Ask AI to take your top five objections and generate responses
+  using all four frameworks — HEARD, Reframe, Feel-Felt-Found, and Boomerang.
+  Having multiple response options for every objection means you can choose the right
+  tool for the moment. No single technique works every time, but having four in
+  your toolkit means you are never stuck.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Playbook</span>
+  <h2 class="section-title">Building Your Living Objection Playbook</h2>
+  <p class="section-text">The best objection handlers do not rely on memory.
+  They maintain a living document — their personal objection playbook —
+  that they update after every sales conversation:</p>
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Column 1 — The Objection:</strong>
+    The exact words the prospect used. Not your paraphrase — their words.
+    Accuracy matters because the same objection phrased differently may
+    require a different response.</p>
+    <p><strong style="color: var(--green);">Column 2 — The Category:</strong>
+    Price, Timing, Authority, Need, Trust, or Competitor.
+    Categorization reveals patterns — if 60% of your objections are price,
+    your value messaging needs work.</p>
+    <p><strong style="color: var(--purple);">Column 3 — What Worked:</strong>
+    The response that landed. What did you say that moved the conversation forward?
+    Capture it verbatim so you can repeat it.</p>
+    <p><strong style="color: var(--orange);">Column 4 — What Did Not Work:</strong>
+    The response that fell flat. What did you try that made things worse
+    or failed to advance the conversation? Learn from misses as much as hits.</p>
+  </div>
+  <p class="section-text">Feed your playbook to AI monthly and ask for analysis:
+  which categories appear most, which responses have the highest success rate,
+  and where you have gaps. AI turns your playbook from a reference document
+  into a coaching tool that improves with every entry.</p>
+</div>
+
+<div class="try-it-box">
+  <h3>Playbook Builder</h3>
+  <div class="prompt-box"><code>I sell [YOUR PRODUCT/SERVICE] to [TARGET BUYER].
+Here are the last 10 objections I received on calls: [LIST THEM WITH CONTEXT].
+Organize these into a playbook with columns: 1) Exact Objection, 2) Category
+(Price/Timing/Authority/Need/Trust/Competitor), 3) Best Response Using HEARD
+Method, 4) Alternative Response Using Reframe or Feel-Felt-Found.
+Then analyze the pattern — which category appears most? What does that tell
+me about my positioning or messaging? Give me one recommendation to reduce
+the most common objection category.</code></div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Level Up</span>
   <h2 class="section-title">Role-Play with AI</h2>
   <p class="section-text">One of AI's most underrated sales applications: objection role-playing. Ask AI to play the role of a skeptical buyer and practice your responses in real-time. It's like having a sparring partner available 24/7.</p>

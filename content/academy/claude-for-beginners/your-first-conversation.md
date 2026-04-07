@@ -102,7 +102,118 @@ prevent this from happening again.</code></pre>
 
 </div>
 
+</div>
 
+<!-- SECTION 5: CONVERSATION STARTERS -->
+<div class="lesson-section">
+  <span class="section-label">Get Unstuck</span>
+  <h2 class="section-title">Not sure what to say? Start here.</h2>
+  <p class="section-text">The hardest part of using Claude for the first time is knowing what to ask. Here are conversation starters organized by what you are trying to accomplish. Pick one that matches your situation and paste it into Claude right now.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">WRITE</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">When you need to write something</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"I need to write a [type of thing] for [audience]. The tone should be [describe]. Here is the key information: [details]. Keep it under [length]."</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">THINK</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">When you need to think through something</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"I am trying to decide between [option A] and [option B]. Here is my situation: [context]. Walk me through the pros and cons of each."</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">LEARN</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">When you need to understand something</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"Explain [topic] to me like I have never encountered it before. Use a real-world analogy. Keep it to 3-4 sentences."</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">FIX</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">When something is not working</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"Here is what is happening: [describe the problem]. Here is what I expected: [describe what should happen]. Here is what I have tried: [list attempts]. What should I try next?"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: COMMON BEGINNER MISTAKES -->
+<div class="lesson-section">
+  <span class="section-label">Avoid These</span>
+  <h2 class="section-title">5 mistakes every beginner makes (and how to fix them).</h2>
+  <p class="section-text">You are going to make some of these mistakes — everyone does. But now you will recognize them and fix them fast.</p>
+
+  <div class="tip-box">
+    <div class="tip-label">Mistake #1: One-word prompts</div>
+    <p><strong>"Marketing" or "Email" or "Help."</strong> These give Claude nothing to work with. Fix: add who the audience is, what the situation is, and what format you want back. Even two extra sentences make a huge difference.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Mistake #2: Not following up</div>
+    <p><strong>Taking the first response and leaving.</strong> Claude's first answer is a starting point. If it is 80% right, tell Claude what to change: "Make it shorter," "Use a warmer tone," "Focus more on the budget numbers." Follow-up turns good responses into great ones.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Mistake #3: Asking yes/no questions</div>
+    <p><strong>"Is this a good idea?"</strong> gives you a one-word answer. Instead ask: "What are the strengths and weaknesses of this idea? What would make it stronger?" Open-ended questions get richer, more useful responses.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Mistake #4: Forgetting to specify format</div>
+    <p><strong>Getting a 500-word essay when you wanted bullet points.</strong> Always tell Claude the format: "bullet points," "numbered list," "table," "under 100 words," "3 paragraphs." Format instructions save you the most editing time.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Mistake #5: Thinking you need to be perfect</div>
+    <p><strong>Spending 5 minutes crafting the "perfect" prompt.</strong> Just type something and iterate. A decent prompt followed by one follow-up is faster than trying to write the perfect prompt on the first try. Claude is patient — it does not judge your prompts.</p>
+  </div>
+</div>
+
+<!-- SECTION 7: POWER TIPS -->
+<div class="lesson-section">
+  <span class="section-label">Level Up</span>
+  <h2 class="section-title">Quick tips that make you instantly better.</h2>
+  <p class="section-text">These are small adjustments that have an outsized impact on your results. Start using them today.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">TIP</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Say "be direct" or "be concise"</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Claude tends to be thorough by default. If you want shorter answers, just say so. "Be concise" or "keep it brief" works great. You can always ask for more detail later.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">TIP</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Give examples of what you want</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"Write it like this: [paste an example]" is one of the most powerful prompting techniques. Claude matches the style, length, and structure of your example.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">TIP</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Tell Claude what NOT to do</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"Do not use corporate jargon." "Do not start with 'Great question!'" "Do not repeat my question back to me." Negative instructions are surprisingly effective at improving output quality.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:2px">TIP</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Name the audience</div>
+          <div style="color:#a1a1aa;font-size:.85rem">"This is for my CEO" produces very different output than "this is for my intern." Claude adjusts complexity, detail level, and tone based on who will read the output.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- KEY TAKEAWAY -->

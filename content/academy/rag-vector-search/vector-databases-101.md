@@ -179,6 +179,29 @@ results = collection.query(query_embeddings=[query_vec], n_results=<span style="
     </div>
   </div>
 
+  <div class="section">
+    <h2>Choosing Your Vector Database</h2>
+    <p>The right choice depends on your existing stack, scale, and operational appetite. Here are the three most common production paths:</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+        <strong style="color:#34d399;font-size:.85rem">pgvector (PostgreSQL)</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong style="color:#e5e5e5">Best for:</strong> Teams already on Postgres/Supabase. Zero new infrastructure. Combine vector search with SQL joins, transactions, and row-level security in one database.</p>
+        <p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0"><strong>Tradeoff:</strong> Slower than purpose-built solutions above ~10M vectors. HNSW index tuning requires Postgres expertise.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+        <strong style="color:#8b5cf6;font-size:.85rem">Pinecone</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong style="color:#e5e5e5">Best for:</strong> Teams that want zero ops. Fully managed, serverless, auto-scaling. Push vectors in, query out. Native sparse-dense hybrid search support.</p>
+        <p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0"><strong>Tradeoff:</strong> Vendor lock-in. No self-hosting option. Costs scale with usage — can get expensive at high query volumes.</p>
+      </div>
+      <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8;font-size:.85rem">Qdrant</strong>
+        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong style="color:#e5e5e5">Best for:</strong> High-performance production workloads. Rust-based, excellent filtering, payload indexing. Self-host or use their cloud. Open-source with a strong community.</p>
+        <p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0"><strong>Tradeoff:</strong> Requires running a separate service. More operational overhead than Pinecone or pgvector-in-Supabase.</p>
+      </div>
+    </div>
+  </div>
+
   <div class="divider"><span>Test Your Understanding</span></div>
 
   <div data-learn="QuizMC" data-props='{"title":"Vector Database Concepts","questions":[{"q":"What does a vector database return when you search with a query?","options":["Rows where a column exactly matches the query","The top-K documents whose vectors are most similar in meaning","All documents sorted alphabetically","A count of how many documents mention the query word"],"correct":1,"explanation":"Vector databases perform similarity search — they compare the query vector against all stored vectors and return the K nearest neighbors, ranked by cosine or dot-product similarity."},{"q":"What index structure do most vector databases use to search billions of vectors quickly?","options":["B-tree index","Hash index","HNSW (Hierarchical Navigable Small World)","Full-text inverted index"],"correct":2,"explanation":"HNSW is a graph-based index that allows approximate nearest-neighbor search in sub-linear time. Instead of scanning every vector, it navigates a layered graph to zoom in on likely neighbors quickly."},{"q":"You are starting a RAG project and already use Supabase for your backend. Which vector database should you try first?","options":["Pinecone — it is the most popular","Chroma — it is the simplest","pgvector — it is already available in your Supabase database","Milvus — it handles the most scale"],"correct":2,"explanation":"pgvector is a PostgreSQL extension that adds vector storage and similarity search to your existing database. Since Supabase is built on Postgres, pgvector is already available — no new infrastructure needed."},{"q":"Why is metadata filtering important in production RAG systems?","options":["It makes searches faster","It allows you to scope searches to relevant subsets of your data","It is required by all vector databases","It improves embedding quality"],"correct":1,"explanation":"Without metadata filtering, every search returns results from the entire corpus. In production, you need to scope searches — by date, category, user, product tier — to return relevant results rather than everything that is semantically similar."}]}'></div>

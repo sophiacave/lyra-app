@@ -55,6 +55,121 @@ free: true
   <p class="section-text">The smartest approach: use modern platforms for your app layer and only reach for hyperscalers when you hit a specific capability gap. Don't start complex.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Architecture Map</span>
+  <h2 class="section-title">Multi-Platform Stack Topology</h2>
+  <p class="section-text">Most production AI apps don't live on a single platform. They combine best-of-breed services. Here's what a real multi-platform architecture looks like.</p>
+
+<div class="code-block"><div class="code-label">Text Architecture — Multi-Platform AI Stack</div>
+<pre><code>┌─────────────────────────────────────────────────┐
+│              VERCEL (Frontend + Edge)            │
+│  • Next.js app (SSR + static)                   │
+│  • Edge middleware (auth, rate limiting)         │
+│  • Streaming API routes for AI responses        │
+│  • Preview deployments on every PR               │
+└──────────────────────┬──────────────────────────┘
+                       │ API calls
+                       ▼
+┌─────────────────────────────────────────────────┐
+│           SUPABASE (Backend + Data)              │
+│  • PostgreSQL + pgvector (data + embeddings)    │
+│  • Edge Functions (AI orchestration)            │
+│  • Row Level Security (multi-tenant)            │
+│  • Realtime subscriptions (live updates)        │
+│  • Auth (JWT, OAuth, magic link)                │
+│  • Vault (secrets management)                   │
+└───────┬──────────────┬──────────────────────────┘
+        │              │
+        ▼              ▼
+┌──────────────┐ ┌────────────────────────────────┐
+│  AI PROVIDERS│ │  SPECIALIZED SERVICES           │
+│  • Anthropic │ │  • HuggingFace (free embeds)   │
+│  • OpenAI    │ │  • Replicate (GPU on demand)   │
+│  • Google    │ │  • Stripe (payments)           │
+│              │ │  • Resend (email)              │
+└──────────────┘ └────────────────────────────────┘</code></pre>
+</div>
+
+  <p class="section-text">The key principle: each platform handles what it does best. Vercel owns the frontend and edge. Supabase owns data, auth, and serverless compute. AI providers handle inference. You glue them together with API calls and environment variables.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Hands-On</span>
+  <h2 class="section-title">Setting Up the Vercel + Supabase Stack</h2>
+  <p class="section-text">Here's the exact setup sequence for a production AI app on the modern stack. This takes about 30 minutes and gives you everything you need.</p>
+
+<div class="code-block"><div class="code-label">Shell — Project Setup</div>
+<pre><code class="language-bash"># Create Next.js project
+npx create-next-app@latest my-ai-app --typescript --tailwind --app
+cd my-ai-app
+
+# Install Supabase client
+npm install @supabase/supabase-js
+
+# Install AI provider SDKs
+npm install @anthropic-ai/sdk openai
+
+# Set up environment variables
+cat > .env.local << 'EOF'
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+ANTHROPIC_API_KEY=your-anthropic-key
+OPENAI_API_KEY=your-openai-key
+EOF
+
+# Add .env.local to .gitignore (should be there by default)
+echo ".env.local" >> .gitignore
+
+# Deploy to Vercel
+npx vercel --prod</code></pre>
+</div>
+
+<div class="code-block"><div class="code-label">TypeScript — Supabase Client Setup (lib/supabase.ts)</div>
+<pre><code class="language-typescript">import { createClient } from "@supabase/supabase-js";
+
+// Browser client — uses anon key, respects RLS
+export const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+// Server client — uses service role key, bypasses RLS
+// ONLY use in API routes and server-side code
+export function createServiceClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}</code></pre>
+</div>
+
+  <p class="section-text">Notice the two clients: one for the browser (respects row-level security) and one for the server (bypasses RLS for admin operations). This pattern is fundamental — never use the service role key in client-side code.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Real Numbers</span>
+  <h2 class="section-title">Detailed Cost Breakdown by Platform</h2>
+  <p class="section-text">Understanding the real costs at different scales helps you plan your budget and choose platforms wisely. Here's a breakdown for three common stages.</p>
+
+<div class="code-block"><div class="code-label">Cost Comparison — Three Growth Stages</div>
+<pre><code>                    │  MVP (0-100     │  Growth (100-   │  Scale (10K+
+Service             │  users)         │  10K users)     │  users)
+────────────────────┼─────────────────┼─────────────────┼──────────────
+Vercel              │  $0 (hobby)     │  $20/mo (pro)   │  $20+/mo
+Supabase            │  $0 (free)      │  $25/mo (pro)   │  $50+/mo
+Anthropic API       │  $5-20/mo       │  $50-500/mo     │  $500-5K/mo
+OpenAI API          │  $5-10/mo       │  $20-200/mo     │  $200-2K/mo
+HuggingFace         │  $0 (free)      │  $0-9/mo        │  $9-99/mo
+Domain + DNS        │  $12/yr         │  $12/yr         │  $12/yr
+────────────────────┼─────────────────┼─────────────────┼──────────────
+TOTAL               │  $10-30/mo      │  $115-755/mo    │  $780-7K+/mo</code></pre>
+</div>
+
+  <p class="section-text">The critical insight: at the MVP stage, the modern stack (Vercel + Supabase) is nearly free. At growth stage, AI API costs dominate — not infrastructure. This is why caching and model tiering matter so much more than choosing a cheaper hosting provider.</p>
+  <p class="section-text">Compare this to a hyperscaler setup: a single GPU instance on AWS (g5.xlarge) costs $1,006/month before you even write a line of code. The modern stack lets you defer that cost until you genuinely need self-hosted model inference.</p>
+</div>
+
 <div class="demo-container">
   <h3>Platform Comparison at a Glance</h3>
   <p class="section-text"><strong>Vercel:</strong> Frontend, edge functions, streaming — $20/mo pro</p>

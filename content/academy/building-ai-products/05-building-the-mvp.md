@@ -112,6 +112,69 @@ notes = process_meeting(<span style="color:#fbbf24">"Sarah: Let's move the launc
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Framework</span>
+  <h2 class="section-title">The Two-Week MVP Sprint</h2>
+  <p class="section-text">A structured two-week sprint that takes you from validated idea to shippable product. Follow this timeline to avoid both under-building and over-engineering.</p>
+  <p class="section-text"><strong>Days 1-2: Core pipeline.</strong> Build the AI pipeline end-to-end with hardcoded inputs. Your system prompt, model call, and output parser should work perfectly on your test cases before you touch any UI. If the pipeline doesn't produce good results, nothing else matters.</p>
+  <p class="section-text"><strong>Days 3-4: Input and output UI.</strong> Build the minimum interface for users to provide input and receive output. One page. One form. One result view. No settings, no history, no profiles. Just the magic trick.</p>
+  <p class="section-text"><strong>Days 5-6: Error handling and edge cases.</strong> What happens when the input is too long? Too short? In the wrong format? What happens when the API times out? What happens when the model hallucinates? Handle every failure mode with a clear, helpful message.</p>
+  <p class="section-text"><strong>Days 7-8: Auth and billing.</strong> User signup, login, and a payment wall. Use Supabase Auth or Clerk for authentication. Use Stripe for billing. Don't build these from scratch — that's a months-long detour. Integrate existing services.</p>
+  <p class="section-text"><strong>Days 9-10: Polish and testing.</strong> Test with 5 real users. Watch them use it. Note where they get confused, stuck, or frustrated. Fix the top 3 issues. Don't fix everything — fix the biggest friction points.</p>
+  <p class="section-text"><strong>Days 11-12: Deploy and monitor.</strong> Ship to production. Set up error tracking (Sentry), analytics (PostHog or Mixpanel), and cost monitoring. You need to know what's happening from day one.</p>
+  <p class="section-text"><strong>Days 13-14: Launch prep.</strong> Write your launch post. Create 3 demo outputs to share. Prepare your Wave 1 invite list. You're ready.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Pattern</span>
+  <h2 class="section-title">Prompt Engineering as Product Development</h2>
+  <p class="section-text">Your system prompt is your product's brain. Treat prompt development with the same rigor you'd apply to code — versioned, tested, and iteratively improved.</p>
+  <p class="section-text"><strong>Start with examples.</strong> Include 2-3 examples of ideal input-output pairs in your system prompt. Few-shot examples improve output quality more reliably than verbose instructions. Show the model what "good" looks like instead of describing it abstractly.</p>
+  <p class="section-text"><strong>Constrain the output format.</strong> If you need JSON, say "Respond with valid JSON matching this schema:" and provide the schema. If you need bullet points, specify the format explicitly. Ambiguous format instructions produce inconsistent results that break your parser.</p>
+  <p class="section-text"><strong>Version your prompts.</strong> Store prompts in a config file or database, not hardcoded in your application. Tag each version. When you change a prompt, compare 20 outputs from the old version vs. the new version before deploying. A prompt that improves 15 outputs but ruins 5 is a net negative.</p>
+  <p class="section-text"><strong>Test on your worst inputs.</strong> Find the inputs that produce the worst outputs. These are your regression tests. Every prompt change must not make these worse. Build a test suite of 20-30 challenging inputs and run them before every prompt update.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Critical</span>
+  <h2 class="section-title">MVP Infrastructure Checklist</h2>
+  <p class="section-text">Beyond the product itself, your MVP needs operational infrastructure. Ship without these and you're flying blind.</p>
+  <p class="section-text"><strong>Error tracking:</strong> Sentry, LogRocket, or Bugsnag. You need to know when things break before your users tell you. AI failures are often silent — the model returns something, it's just wrong. Track model errors separately from application errors.</p>
+  <p class="section-text"><strong>Cost monitoring:</strong> Track API costs in real time. Set up alerts when daily spend exceeds your threshold. A single bug that sends requests in a loop can burn through your monthly budget in hours. Anthropic and OpenAI both provide usage dashboards — check them daily in week one.</p>
+  <p class="section-text"><strong>Usage analytics:</strong> Track every AI interaction — input length, output length, latency, model used, whether the user accepted or rejected the output. This data drives every optimization decision you'll make in the next six months.</p>
+  <p class="section-text"><strong>Rate limiting:</strong> Protect yourself from abuse and runaway costs. Limit free-tier users to 10 queries/day. Limit paid users to a reasonable number based on their plan. Always rate limit, even in beta.</p>
+  <p class="section-text"><strong>Backup and recovery:</strong> Your user data, prompt templates, and configuration must be backed up. Your AI provider's API key should be rotatable without downtime. If your database dies, recovery should take minutes, not days.</p>
+</div>
+
+<div class="lesson-section">
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Strategy</span>
+  <h2 class="section-title">The MVP Anti-Pattern Gallery</h2>
+  <p class="section-text">These are the most common ways AI MVPs fail. Learn to recognize them so you can avoid them.</p>
+  <p class="section-text"><strong>The Swiss Army Knife:</strong> "Our MVP summarizes documents, generates emails, creates presentations, and analyzes data." That's four products, each of which will be mediocre. An MVP does one thing well. Period.</p>
+  <p class="section-text"><strong>The Invisible AI:</strong> "We'll add AI later — let's build the platform first." If AI is the core value proposition, building the platform without it means you're building a different product. The AI is the MVP. Everything else is scaffolding around it.</p>
+  <p class="section-text"><strong>The Gold-Plated Prototype:</strong> "Let me add user profiles, team collaboration, dark mode, and a notification system before launch." None of these make the core magic trick work better. Ship the magic trick. Add everything else when users demand it.</p>
+  <p class="section-text"><strong>The Perfectionist's Trap:</strong> "The AI output needs to be perfect before we show anyone." It will never be perfect. Ship at "good enough" — typically 75-80% quality — and let user feedback tell you where to focus improvement. Perfection in isolation is a mirage.</p>
+  <p class="section-text"><strong>The Infrastructure Astronaut:</strong> "We need Kubernetes, microservices, a custom ML pipeline, and a dedicated GPU cluster for our MVP." You need a Vercel deployment, a Supabase database, and one API key. Ship on simple infrastructure and scale when traffic demands it.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Practical</span>
+  <h2 class="section-title">Testing Your MVP Before Launch</h2>
+  <p class="section-text">AI products need a different testing approach than traditional software. Unit tests won't catch a hallucinating model. Integration tests won't catch a prompt that works on 90% of inputs but fails spectacularly on the other 10%.</p>
+  <p class="section-text"><strong>Golden dataset testing:</strong> Build a set of 30-50 representative inputs and their expected outputs. Run every prompt change against this golden dataset. Manually review the outputs. If more than 3 degrade significantly, the change isn't ready.</p>
+  <p class="section-text"><strong>Edge case stress testing:</strong> Feed your AI the worst possible inputs. Empty strings. 50,000-word documents. Non-English text. Gibberish. Malicious prompt injections. Your MVP doesn't need to handle all of these gracefully, but it must never crash, hang, or return nonsensical output without a clear error message.</p>
+  <p class="section-text"><strong>User acceptance testing:</strong> Give your MVP to 5 people who match your target user profile. Don't explain anything. Watch them use it. Where do they get confused? Where do they pause? Where do they express surprise (good or bad)? These observations reveal problems that no automated test can find.</p>
+  <p class="section-text"><strong>Cost testing:</strong> Run 100 synthetic queries through your production pipeline and check your AI provider's billing dashboard. Multiply by your expected daily usage. Is the cost sustainable? If 100 test queries cost $5 and you expect 1,000 queries/day from real users, that's $50/day or $1,500/month in AI costs alone. Know this number before you launch.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Insight</span>
+  <h2 class="section-title">The MVP Mindset: Done Is Better Than Perfect</h2>
+  <p class="section-text">Perfectionism kills more AI products than bad ideas do. The AI output will never be perfect. The UI will never be perfect. The onboarding will never be perfect. Shipping an imperfect product that solves a real problem is infinitely more valuable than a perfect product that lives on your localhost.</p>
+  <p class="section-text">Set a ship date. Write it on your wall. Work backwards from it. Everything that doesn't directly support the core magic trick gets cut. You can add it in version 2 — but only if version 1 proves the concept is worth version 2.</p>
+  <p class="section-text">The most successful AI products launched with embarrassingly limited functionality. Midjourney launched as a Discord bot. GitHub Copilot launched supporting only one IDE. They expanded based on user demand, not pre-launch ambition. Start small. Prove the magic. Expand from strength.</p>
 </div>
 
 <div class="try-it-box">

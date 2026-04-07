@@ -1,6 +1,23 @@
+import { site } from '../../lib/site-config';
+
 export const metadata = {
-  title: 'Welcome to Like One Academy Pro!',
+  title: 'Welcome to Like One Academy Pro — You Are In!',
   description: 'Your purchase is confirmed. Sign in to unlock your courses.',
+  alternates: { canonical: `${site.url}/thank-you/` },
+  openGraph: {
+    title: 'Welcome to Like One Academy Pro — You Are In!',
+    description: 'Your purchase is confirmed. Sign in to unlock all your Pro courses.',
+    url: `${site.url}/thank-you/`,
+    siteName: site.name,
+    type: 'website',
+    images: [{ url: site.ogImage, ...site.ogImageSize }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Welcome to Like One Academy Pro — You Are In!',
+    description: 'Your purchase is confirmed. Sign in to unlock all your Pro courses.',
+    images: [site.ogImage],
+  },
 };
 
 export default function ThankYouPage() {

@@ -91,6 +91,97 @@ free: false
   </div>
 </div>
 
+<!-- COURSE RECAP -->
+<div class="lesson-section">
+  <span class="section-label">Course Recap</span>
+  <h2 class="section-title">The frameworks that got you here.</h2>
+  <p class="section-text">Before you build your final plan, let's review the core frameworks from each lesson. These are the tools in your belt now:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L1</div>
+          <div style="font-weight:700;font-size:.95rem">The AI Marketing Revolution</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">AI handles production, you handle direction. The Big 3: content at scale, personalization without a data team, and analysis and insights. Your marketing instincts are the competitive advantage — AI is the engine.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L2</div>
+          <div style="font-weight:700;font-size:.95rem">AI-Powered Email Marketing</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Subject lines are 80% of the battle. Write emails to ONE person, not a list. The 5-email welcome sequence arc: welcome, story, value, social proof, offer. A/B test everything — the marketer who tests 10 variants per month wins.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L3</div>
+          <div style="font-weight:700;font-size:.95rem">Social Media Content with AI</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Every platform has a language — specify it in every prompt. The repurposing workflow: 1 idea becomes 7 posts. Brand voice cards keep AI on-brand across hundreds of posts.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L4</div>
+          <div style="font-weight:700;font-size:.95rem">Blog Content and SEO</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Topic clusters (pillar + supporting posts) dominate search. Keyword in the first 100 words. Google doesn't penalize AI content — it penalizes unhelpful content. Formula: AI draft + your expertise + your examples + your editing.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(244,114,182,.12);color:#f472b6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L5</div>
+          <div style="font-weight:700;font-size:.95rem">Ad Copy That Converts</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Google Ads: 30-character headlines, keyword-first. Meta Ads: stop the scroll in the first 3 lines. 5 psychological triggers: social proof, scarcity, specificity, loss aversion, and identity.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L6</div>
+          <div style="font-weight:700;font-size:.95rem">Competitive Analysis with AI</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Paste competitor pages into AI for instant messaging deconstruction. Build competitive matrices in minutes. The biggest value: finding what competitors are NOT doing — the gaps in the market.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L7</div>
+          <div style="font-weight:700;font-size:.95rem">Content Calendars and Planning</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Content pillars eliminate "what should I post today?" Batch creation saves 10+ hours per week. The 60-post trick: 12 ideas per pillar across 5 pillars equals 3 months of content from one session.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L8</div>
+          <div style="font-weight:700;font-size:.95rem">Analytics and Reporting</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">Paste data into AI for instant analysis. Executive reports in 10 minutes. Extract gold from customer feedback. Lead with results, not activity. Anonymize data before pasting into AI tools.</p>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="background:rgba(56,189,248,.12);color:#38bdf8;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px">L9</div>
+          <div style="font-weight:700;font-size:.95rem">Landing Pages and Conversion</div>
+        </div>
+        <p style="color:#a1a1aa;font-size:.85rem;margin:0">The 6-part structure: hero, problem, solution, social proof, objection handling, final CTA. Headlines under 10 words. 8th-grade reading level. CTA buttons with action verbs, never "Submit" or "Learn More."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY MARKETING FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Key Frameworks</span>
+  <h2 class="section-title">The mental models that separate great AI marketers from average ones.</h2>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">The Multiplier Model:</span> You are not replaced by AI. You are multiplied. One marketer with AI does the work of five without AI. Your strategy and customer knowledge remain the competitive edge.</div>
+      <div style="background:var(--bg);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#8b5cf6;font-weight:700">The Full-Funnel System:</span> Top (awareness) to middle (trust) to bottom (conversion) to retention (advocacy). AI can produce content for every stage, but you decide the strategy for each.</div>
+      <div style="background:var(--bg);border:1px solid rgba(251,146,60,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#fb923c;font-weight:700">The Testing Flywheel:</span> Generate variants with AI, test constantly, feed results back into prompts. The marketer who tests more, learns faster. AI makes testing nearly free.</div>
+      <div style="background:var(--bg);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#38bdf8;font-weight:700">The Voice Lock:</span> Create a brand voice card once, paste it into every prompt. Consistency across hundreds of pieces of content without extra effort.</div>
+      <div style="background:var(--bg);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#ef4444;font-weight:700">The Quality Gate:</span> AI draft is never the final draft. AI draft + your expertise + your examples + your editing = content that works. Skip any step and you are adding noise.</div>
+    </div>
+  </div>
+</div>
+
 <!-- COMPLETION -->
 <div class="lesson-section">
   <span class="section-label">Course Complete</span>

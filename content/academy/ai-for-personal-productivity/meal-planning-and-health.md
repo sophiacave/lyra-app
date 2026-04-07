@@ -83,6 +83,82 @@ free: false
   </div>
 </div>
 
+<!-- MEAL PLANNING TEMPLATES -->
+<div class="lesson-section">
+  <span class="section-label">Meal Templates</span>
+  <h2 class="section-title">Ready-to-use meal planning prompts for every situation.</h2>
+  <p class="section-text">Different households need different approaches. Here are specific prompts you can copy and customize for your situation.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.5rem">The busy family plan</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"Make a 5-day dinner plan for a family of 4 (2 adults, 2 kids ages 5 and 8). Budget: $75. Max 20 minutes of active cooking — I can do slow cooker meals. The kids won't eat anything too spicy. Include a grocery list and mark which meals can be prepped ahead on Sunday."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.5rem">The single person plan</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I cook for one person and I hate food waste. Make me a 4-day dinner plan where the ingredients overlap — like cooking a big batch of rice Monday and using it in different dishes. Budget: $30. I have basic pantry staples (oil, salt, soy sauce, garlic). Keep it simple."</code>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.5rem">The dietary restriction plan</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I need a 5-day dinner plan. I'm gluten-free and my partner is vegetarian — so all meals need to work for both of us. Budget: $60. We both like Mexican, Italian, and Asian flavors. Include a grocery list sorted by store section."</code>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.5rem">The meal prep Sunday plan</p>
+      <div style="background:var(--bg);padding:1rem;border-radius:8px">
+        <code style="font-size:0.9rem;line-height:1.6">"I want to meal prep all my lunches for the work week on Sunday. I have 2 hours. Budget: $35 for 5 lunches. I need something that reheats well in a microwave. No seafood. Give me a prep schedule with exact timing so I can do multiple things at once."</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEALTH TRACKING PROMPTS -->
+<div class="lesson-section">
+  <span class="section-label">Health Tracking</span>
+  <h2 class="section-title">AI prompts for building healthier habits — one step at a time.</h2>
+  <p class="section-text">Health isn't just about food. AI can help you build sustainable habits around movement, sleep, hydration, and stress management. The key word is sustainable — not extreme, not punishing, just better than yesterday.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--orange);font-weight:600;margin-bottom:0.25rem">The walking plan</p>
+      <p style="font-size:0.9rem">"I currently walk about 3,000 steps a day and I want to build up to 8,000 over the next 6 weeks. I have bad knees so I need a gentle progression. Give me a week-by-week plan with specific daily targets and tips for fitting more walking into a desk job day."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--purple);font-weight:600;margin-bottom:0.25rem">The sleep improvement plan</p>
+      <p style="font-size:0.9rem">"I've been sleeping poorly — I go to bed at midnight but lie awake until 1am, then wake up at 6:30 feeling terrible. I look at my phone in bed. I drink coffee until 4pm. Help me build a 2-week sleep hygiene plan with specific changes to make each week. Nothing extreme."</p>
+    </div>
+    <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--dim)">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">The hydration tracker</p>
+      <p style="font-size:0.9rem">"I know I should drink more water but I always forget. I have a 24oz water bottle. How many times should I fill it per day? Give me specific reminder triggers — like 'drink a full bottle before each meal' — that are easy to remember without an app."</p>
+    </div>
+    <div>
+      <p style="color:var(--blue);font-weight:600;margin-bottom:0.25rem">The stress management toolkit</p>
+      <p style="font-size:0.9rem">"I get really stressed at work around 2-3pm. I can't leave my desk but I need something to help me decompress. Give me 5 quick stress-reduction techniques I can do at my desk in under 3 minutes. No meditation — that doesn't work for me."</p>
+    </div>
+  </div>
+</div>
+
+<!-- NUTRITION WITHOUT OBSESSION -->
+<div class="lesson-section">
+  <span class="section-label">Balanced Approach</span>
+  <h2 class="section-title">AI for nutrition information — without the obsession.</h2>
+  <p class="section-text">AI can help you understand nutrition without turning every meal into a math equation. The goal is awareness, not anxiety. Here are healthy ways to use AI for nutrition questions.</p>
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="margin-bottom:1rem">
+      <p style="color:var(--green);font-weight:600;margin-bottom:0.25rem">Good prompts for nutrition</p>
+      <p style="font-size:0.9rem">"I feel sluggish in the afternoon. What kinds of lunches tend to give more sustained energy vs. a crash? Give me general principles, not a strict diet plan."</p>
+      <p style="font-size:0.9rem;margin-top:0.5rem">"I'm trying to eat more protein without eating meat at every meal. Give me 10 easy, high-protein snack ideas that don't require cooking."</p>
+    </div>
+    <div style="background:var(--bg);padding:1rem;border-radius:8px;border-left:3px solid var(--red)">
+      <p style="color:var(--red);font-weight:600;margin-bottom:0.25rem">Reminder</p>
+      <p style="font-size:0.9rem">If you have a complicated relationship with food or a history of disordered eating, use AI for practical planning (what to cook) rather than tracking calories or macros. AI is great for reducing meal decision fatigue. For clinical nutrition guidance, work with a registered dietitian.</p>
+    </div>
+  </div>
+</div>
+
 <!-- TRY IT -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>

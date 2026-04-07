@@ -36,9 +36,40 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Selection Criteria</span>
+  <h2 class="section-title">Six questions before you add any tool.</h2>
+  <p class="section-text">Every AI tool you add to your stack comes with a cost beyond the subscription — setup time, learning curve, maintenance, and the cognitive load of one more login. Before you add anything, run it through these six criteria. If it fails any of the first three, stop. The tool is not ready for your business.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:.75rem">
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:190px;font-size:.85rem">1. Does it solve a real problem?</span><span style="color:#a1a1aa;font-size:.85rem">Can you name the specific task it replaces and the hours it saves? If not, you are buying a solution without a problem.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:190px;font-size:.85rem">2. Is your data safe?</span><span style="color:#a1a1aa;font-size:.85rem">Does the tool have a clear privacy policy? Does it train on your inputs? Can you opt out? If unclear, do not use it for business data.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:190px;font-size:.85rem">3. Can you cancel easily?</span><span style="color:#a1a1aa;font-size:.85rem">Monthly billing, no annual lock-in, data export available. If you cannot leave in 30 days with your data, reconsider.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:190px;font-size:.85rem">4. Does it duplicate a tool you have?</span><span style="color:#a1a1aa;font-size:.85rem">Check your existing stack. If you already have a tool in this category that works, adding another creates confusion and waste.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:190px;font-size:.85rem">5. Is the ROI clear within 30 days?</span><span style="color:#a1a1aa;font-size:.85rem">Use the ROI formula from Lesson 3. If the tool does not pay for itself within a month, it needs a stronger justification.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:190px;font-size:.85rem">6. Can your team actually use it?</span><span style="color:#a1a1aa;font-size:.85rem">A powerful tool nobody uses is worse than no tool. Consider the learning curve and your team's technical comfort level.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Free vs Paid</span>
+  <h2 class="section-title">When free tools are enough and when they are not.</h2>
+  <p class="section-text">Every major AI category has free options. The question is whether free is good enough for your business use case — or whether the limitations will cost you more in lost time than a paid subscription would.</p>
+
+  <p class="section-text"><strong>Free is enough when:</strong> you are a solo operator or very small team, your usage is under 20-30 prompts per day, you do not need priority access during peak times, your tasks are straightforward (drafting, brainstorming, summarizing short documents), and you are still evaluating whether AI fits your workflow at all. Free tiers are perfect for the first 2-4 weeks of experimentation.</p>
+
+  <p class="section-text"><strong>Paid is worth it when:</strong> you hit usage limits that interrupt your workflow, you need longer context windows (processing documents over 10 pages), you need faster response times for time-sensitive work, you want access to advanced features (file uploads, image generation, API access), or you are using AI for client-facing work where reliability matters. The jump from free to $20/month is the single highest-ROI upgrade in AI tooling.</p>
+
+  <p class="section-text"><strong>Enterprise is worth it when:</strong> you have 10+ people using the tool, you need admin controls (who can use what features), you need audit logs for compliance, you need SSO integration with your company identity provider, or you handle regulated data that requires contractual privacy guarantees. Enterprise pricing typically starts at $25-60 per user per month.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Tool Categories</span>
   <h2 class="section-title">Eight categories, three tools each.</h2>
   <p class="section-text">Flip each card to see the top tools in that category, what they cost, and what they're actually best for. Don't try to memorize every tool — get familiar with the landscape so you can find what you need when you need it.</p>
+
+  <p class="section-text">A note on pricing: all prices listed are as of early 2026. AI tool pricing changes frequently — usually downward. Before purchasing, always check the vendor's current pricing page. The category structure and tool recommendations remain valid even as specific prices shift.</p>
 
   <div data-learn="FlashDeck" data-props='{"title":"AI Tool Categories","cards":[{"front":"✍️ Writing & Content","back":"Claude ($20/mo) — best for nuanced long-form, research, complex reasoning. ChatGPT ($20/mo) — best all-around, huge plugin ecosystem. Jasper ($49/mo) — templates built for marketing teams. Use when: you produce blog posts, emails, proposals, social content."},{"front":"🎨 Image Generation","back":"Midjourney ($10-$30/mo) — highest quality, community-driven, steep learning curve. DALL-E 3 (included in ChatGPT Plus) — easiest to use, good for quick concepts. Adobe Firefly ($5/mo) — commercial-safe, integrates with Creative Cloud. Use when: you need marketing visuals, product mockups, custom illustrations."},{"front":"🎬 Video & Audio","back":"Runway ($15/mo) — best text-to-video and video editing AI. ElevenLabs ($5-$22/mo) — realistic voice cloning and text-to-speech. Descript ($24/mo) — edit video by editing the transcript, incredible for podcasts. Use when: you produce video content, podcasts, or training materials."},{"front":"🎙️ Transcription","back":"Otter.ai ($10/mo) — live meeting transcription with AI summaries. Whisper (free, OpenAI) — best raw accuracy, requires some technical setup. Rev ($0.25/min) — human-reviewed transcription when accuracy is critical. Use when: you run client calls, team meetings, or interviews you need searchable records of."},{"front":"⚙️ Automation","back":"Zapier ($20-$69/mo) — connects 6,000+ apps, no code required. Make ($9-$16/mo) — more powerful than Zapier, better for complex workflows. n8n (free self-hosted) — fully open-source, ideal if you want control. Use when: you have repetitive data-moving tasks between tools (CRM → email → Slack, etc.)."},{"front":"📊 Analytics","back":"Julius ($20/mo) — chat with your spreadsheets and CSV files in plain English. Tableau Pulse ($15/mo add-on) — AI-generated insights layered onto Tableau dashboards. Polymer ($25/mo) — turns messy spreadsheets into interactive dashboards fast. Use when: you have data you make decisions from but spend too long analyzing."},{"front":"🏗️ No-Code Builders","back":"Bubble ($29/mo) — full web apps with no code, large community. Webflow (free-$39/mo) — best AI-assisted website builder for design-quality results. Glide ($25/mo) — turns spreadsheets into mobile apps in minutes. Use when: you want to ship an internal tool, client portal, or product without hiring a developer."},{"front":"💬 Customer Service","back":"Intercom Fin ($39/mo per seat) — AI agent that resolves support tickets automatically. Tidio ($29/mo) — affordable AI chat for small e-commerce and service businesses. Zendesk AI (add-on) — best for teams already using Zendesk, adds AI triage and drafts. Use when: you handle repetitive customer questions and want to scale without adding headcount."}]}'></div>
 </div>
@@ -120,6 +151,50 @@ Answer these 6 questions:
     </div>
   </div>
   <p class="section-text"><strong>What you skip for now:</strong> Analytics (use Claude to analyze CSV uploads for free), No-Code (only needed when you're building tools), Customer Service AI (only needed at 50+ tickets per week), Video (nice-to-have, not essential). Add layers as your needs grow — not before.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Tool Comparison</span>
+  <h2 class="section-title">Claude vs ChatGPT vs Gemini — the honest breakdown.</h2>
+  <p class="section-text">The most common question business owners ask is "which AI writing tool should I use?" The answer depends on what you do most. Here is the honest comparison — no affiliations, no sponsorships, just what each tool is actually best at based on real-world business use.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.5rem;font-size:.78rem;color:#a1a1aa;margin-bottom:.5rem">
+      <div style="color:#71717a;font-weight:600">Capability</div>
+      <div style="color:#34d399;font-weight:600">Claude</div>
+      <div style="color:#8b5cf6;font-weight:600">ChatGPT</div>
+      <div style="color:#38bdf8;font-weight:600">Gemini</div>
+      <div>Long documents</div><div>Excellent</div><div>Good</div><div>Excellent</div>
+      <div>Creative writing</div><div>Excellent</div><div>Good</div><div>Average</div>
+      <div>Code generation</div><div>Excellent</div><div>Excellent</div><div>Good</div>
+      <div>Image generation</div><div>No</div><div>Yes (DALL-E)</div><div>Yes (Imagen)</div>
+      <div>Web browsing</div><div>No</div><div>Yes</div><div>Yes</div>
+      <div>Plugin ecosystem</div><div>Limited</div><div>Large</div><div>Google integration</div>
+      <div>Data analysis</div><div>Good</div><div>Excellent (Code Interpreter)</div><div>Good</div>
+      <div>Nuanced reasoning</div><div>Excellent</div><div>Good</div><div>Good</div>
+      <div style="color:#e5e5e5;font-weight:600">Best for</div><div style="color:#34d399">Writing, analysis, complex reasoning</div><div style="color:#8b5cf6">All-around, plugins, images + data</div><div style="color:#38bdf8">Google Workspace users, search integration</div>
+    </div>
+  </div>
+
+  <p class="section-text"><strong>The practical recommendation:</strong> If you use Google Workspace heavily, start with Gemini — the integration is seamless. If you need image generation and data analysis in one tool, start with ChatGPT Plus. If you write long-form content, proposals, or complex analysis, start with Claude Pro. All three cost $20/month. You cannot go wrong with any of them for general business use.</p>
+
+  <p class="section-text"><strong>Can you use more than one?</strong> Yes, but not in your first month. Start with one, learn it deeply, and build your prompt library around it. After 30 days, if you find a specific task where a second tool clearly outperforms your primary one, add it. Most power users settle on one primary tool and one specialty tool. Paying for three writing tools is usually waste.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Stack Scaling</span>
+  <h2 class="section-title">How your stack grows with your business.</h2>
+  <p class="section-text">The $100/month starter stack is right for solo operators and small teams. As your business grows, your AI stack grows with it. Here is what the stack looks like at three different stages — so you know what is coming and can budget accordingly.</p>
+
+  <p class="section-text"><strong>Solo or 1-3 people ($60-100/month):</strong> One writing tool (Claude or ChatGPT), one automation tool (Zapier free or starter), one transcription tool if you do calls (Otter.ai). Total: 3 tools. Focus: personal productivity. Time saved: 5-10 hours/week.</p>
+
+  <p class="section-text"><strong>Small team 4-15 people ($200-500/month):</strong> Writing tool with team plan, automation with more zaps, transcription, image generation, and either analytics or customer service AI depending on your biggest pain point. Total: 5-6 tools. Focus: team productivity and client-facing quality. Time saved: 20-40 hours/week across team.</p>
+
+  <p class="section-text"><strong>Growing company 15-50 people ($500-2,000/month):</strong> All of the above plus enterprise versions with admin controls, no-code internal tools, dedicated customer service AI, video/audio for marketing, and possibly a custom build for your unique workflow. Total: 7-10 tools. Focus: operational efficiency and competitive advantage. Time saved: 80-200 hours/week across organization.</p>
+
+  <p class="section-text">The key insight: do not buy for the stage you want to be at. Buy for the stage you are at now. Upgrade when you hit the limits, not before. Every premature upgrade wastes money on features nobody uses yet.</p>
+
+  <p class="section-text"><strong>The 6-month review.</strong> Every 6 months, audit your entire AI stack. For each tool, ask: (1) Did we use this tool at least 3 times per week? If not, cancel it. (2) Can we calculate the ROI? If not, it is not worth keeping. (3) Is there a better or cheaper alternative that launched since we subscribed? The AI tools market moves fast — a tool that was best-in-class when you bought it may be outclassed by a free alternative six months later. Stay current. Stay lean.</p>
 </div>
 
 </div>

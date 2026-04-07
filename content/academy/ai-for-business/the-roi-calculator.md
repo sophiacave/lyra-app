@@ -31,7 +31,11 @@ free: true
   <h2 class="section-title">The simple math.</h2>
   <p class="section-text">Most business owners make AI decisions on gut feel — they either believe the hype or they do not. Neither is a good reason to spend money. The math is simple enough to do in your head once you know the formula.</p>
 
+  <p class="section-text">This lesson will make you dangerous in the best way: you will be able to look at any AI tool, run the ROI calculation in 60 seconds, and know immediately whether it is worth buying, worth evaluating further, or not worth your time. Every AI tool purchase you make for the rest of your career should start with this math. If the math works, buy it. If it does not, walk away. No feelings required.</p>
+
   <p class="section-text">Here is the formula: <strong>(Hours saved per week × hourly labor cost × 52 weeks) minus annual tool costs = net annual savings.</strong> That is it. No spreadsheet required.</p>
+
+  <p class="section-text">Write this formula on a sticky note and put it on your monitor. You will use it dozens of times in the next year — every time a vendor pitches you, every time a team member suggests a new tool, every time you read about a product and think "that could help us." The formula is your filter. Tools that pass the math get evaluated further. Tools that fail the math get rejected immediately, no matter how impressive the demo was.</p>
 
   <p class="section-text">Let's run a real example. You have an operations manager who spends 15 hours a week on repetitive tasks: formatting reports, sending follow-up emails, updating CRM fields. Her total compensation is $60,000 per year — about $29 per hour. You buy an AI tool suite for $150 per month ($1,800 per year) and it automates 40% of those repetitive tasks.</p>
 
@@ -40,6 +44,73 @@ free: true
   <p class="section-text">That is a conservative estimate. Now here is where most people go wrong: they use the best-case automation rate (70%) instead of a realistic one (30-40%), they forget setup time, training time, and the learning curve cost. A good ROI calculation uses the middle estimate — not the dream.</p>
 
   <p class="section-text">Three numbers to keep conservative: (1) automation rate — start at 30%, not 60%; (2) time to full productivity — assume 4-6 weeks before the tool pays for itself; (3) hidden costs — include any integration work, subscription fees, and the time spent managing the tool itself.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cost Categories</span>
+  <h2 class="section-title">Every cost you need to include.</h2>
+  <p class="section-text">Most ROI calculations fail because they only count the subscription fee. The real cost of an AI tool includes at least seven line items. Miss any of them and your ROI projection will be wrong — usually in the optimistic direction, which leads to disappointment when the numbers come in.</p>
+
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem;margin:1rem 0">
+    <div style="display:grid;gap:.75rem">
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#34d399;font-weight:600;min-width:180px;font-size:.85rem">1. Subscription Fee</span><span style="color:#a1a1aa;font-size:.85rem">The sticker price. Monthly or annual. Check whether pricing is per user or per organization.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#8b5cf6;font-weight:600;min-width:180px;font-size:.85rem">2. Setup Time</span><span style="color:#a1a1aa;font-size:.85rem">Hours spent configuring, integrating, and testing the tool before it is productive. Typically 4-20 hours.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#fb923c;font-weight:600;min-width:180px;font-size:.85rem">3. Training Time</span><span style="color:#a1a1aa;font-size:.85rem">Hours spent teaching your team to use the tool effectively. Include practice time, not just the tutorial.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#38bdf8;font-weight:600;min-width:180px;font-size:.85rem">4. Learning Curve Dip</span><span style="color:#a1a1aa;font-size:.85rem">Productivity drops 10-30% in the first 2-4 weeks as people learn. Factor this temporary loss into your timeline.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#ef4444;font-weight:600;min-width:180px;font-size:.85rem">5. Integration Cost</span><span style="color:#a1a1aa;font-size:.85rem">If the tool needs to connect to your CRM, email, or other systems, include developer time or Zapier fees.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#34d399;font-weight:600;min-width:180px;font-size:.85rem">6. Prompt Maintenance</span><span style="color:#a1a1aa;font-size:.85rem">Time spent refining prompts, updating templates, and adjusting workflows as your needs evolve. Typically 1-2 hours/week ongoing.</span></div>
+      <div style="display:flex;gap:.75rem;align-items:baseline"><span style="color:#8b5cf6;font-weight:600;min-width:180px;font-size:.85rem">7. Quality Review</span><span style="color:#a1a1aa;font-size:.85rem">Time spent reviewing and editing AI output before it is used. This is often the largest hidden cost. Track it.</span></div>
+    </div>
+  </div>
+
+  <p class="section-text">Rule of thumb: add 25-35% to the sticker price to get the true first-year cost. In year two, setup, training, and learning curve costs disappear, and the ROI improves significantly. This is why AI investments look marginal at 90 days but compelling at 12 months.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Worked Examples</span>
+  <h2 class="section-title">Three ROI calculations for real business scenarios.</h2>
+  <p class="section-text">Theory becomes useful when you see it applied. Here are three complete ROI calculations for different business types, including all seven cost categories. Use whichever is closest to your situation as a template.</p>
+
+  <p class="section-text"><strong>Example 1: Solo consultant using Claude Pro for proposal writing.</strong></p>
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.7">
+    <div>Tool cost: $20/month ($240/year)</div>
+    <div>Task: Writing proposals — currently 8 hours/week</div>
+    <div>Billable rate: $150/hour</div>
+    <div>Automation rate (conservative): 35%</div>
+    <div>Hours saved: 8 x 0.35 = 2.8 hours/week</div>
+    <div>Annual value: 2.8 x $150 x 52 = <span style="color:#34d399;font-weight:600">$21,840</span></div>
+    <div>Hidden costs: 10 hours setup ($1,500) + 1 hr/week prompt maintenance ($7,800) = $9,300</div>
+    <div>Net year 1 savings: $21,840 - $240 - $9,300 = <span style="color:#34d399;font-weight:600">$12,300</span></div>
+    <div>ROI: 5,125% on tool cost alone. 99% including all hidden costs.</div>
+    <div>Payback: Under 2 weeks.</div>
+  </div>
+
+  <p class="section-text"><strong>Example 2: 10-person marketing agency using AI writing + automation.</strong></p>
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.7">
+    <div>Tool costs: Claude Team $30/user x 10 = $300/mo + Zapier $69/mo = $369/mo ($4,428/year)</div>
+    <div>Tasks: Content drafting (40 hrs/week team total) + workflow automation (15 hrs/week)</div>
+    <div>Average employee cost: $35/hour</div>
+    <div>Automation rate: 40% content, 60% workflow</div>
+    <div>Hours saved: (40 x 0.4) + (15 x 0.6) = 16 + 9 = 25 hours/week</div>
+    <div>Annual value: 25 x $35 x 52 = <span style="color:#34d399;font-weight:600">$45,500</span></div>
+    <div>Hidden costs: 80 hours setup ($2,800) + training 10 people ($3,500) + review time ($9,100) = $15,400</div>
+    <div>Net year 1 savings: $45,500 - $4,428 - $15,400 = <span style="color:#34d399;font-weight:600">$25,672</span></div>
+    <div>ROI: 580% on tool cost. 129% including all costs.</div>
+    <div>Payback: About 3 months.</div>
+  </div>
+
+  <p class="section-text"><strong>Example 3: E-commerce company using AI for customer support.</strong></p>
+  <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.7">
+    <div>Tool cost: Intercom Fin $39/seat x 3 agents = $117/mo ($1,404/year)</div>
+    <div>Current support: 3 agents handling 500 tickets/week, 35 hrs/week each = 105 hrs/week total</div>
+    <div>Agent cost: $22/hour</div>
+    <div>AI deflection rate: 50% (250 tickets handled automatically)</div>
+    <div>Hours saved: 52.5 hours/week (equivalent to 1.5 full-time agents)</div>
+    <div>Annual value: 52.5 x $22 x 52 = <span style="color:#34d399;font-weight:600">$60,060</span></div>
+    <div>Hidden costs: 40 hours KB setup ($880) + training ($660) + monitoring ($5,720) = $7,260</div>
+    <div>Net year 1 savings: $60,060 - $1,404 - $7,260 = <span style="color:#34d399;font-weight:600">$51,396</span></div>
+    <div>ROI: 3,661% on tool cost. 593% including all costs. Payback: Under 2 weeks.</div>
+  </div>
 </div>
 
 <div class="lesson-section">
@@ -90,6 +161,28 @@ Flag any hidden costs I should account for.</div>
   </div>
 
   <p class="section-text">Run this prompt for every AI tool you consider. Save the outputs in a "Tool ROI" document. In six months, compare the projections to actuals — you'll calibrate your estimates and make faster decisions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">ROI Mistakes</span>
+  <h2 class="section-title">Five ways businesses get the math wrong.</h2>
+  <p class="section-text">Even with the formula, ROI calculations go wrong in predictable ways. Knowing these mistakes in advance makes your projections more accurate and your investment decisions more confident.</p>
+
+  <p class="section-text"><strong>Mistake 1: Using the best-case automation rate.</strong> The vendor says "70% of tasks automated." Your actual experience in month one will be 25-35%. Use the conservative estimate for decision-making. If the ROI only works at 70% automation, the tool is not a safe bet — because you will not hit 70% for months, if ever.</p>
+
+  <p class="section-text"><strong>Mistake 2: Ignoring the learning curve.</strong> Every AI tool has a 2-4 week period where productivity actually drops before it improves. Your team is slower while they learn. Factor this in: assume zero savings in weeks 1-2, 50% of projected savings in weeks 3-4, and full savings from month 2 onward.</p>
+
+  <p class="section-text"><strong>Mistake 3: Counting freed hours as direct savings.</strong> If you save an employee 6 hours per week, that is only real savings if those 6 hours are redirected to productive work. If the employee fills those hours with meetings or busywork, the value evaporates. The question is: "What will this person do with the freed time?" Have an answer before you calculate.</p>
+
+  <p class="section-text"><strong>Mistake 4: Forgetting per-user pricing at scale.</strong> A tool that costs $20/month for you costs $200/month for a team of 10. And $2,000/month for a company of 100. Check the per-user price and multiply by your actual headcount before committing. Some tools offer team pricing that reduces the per-user cost — ask.</p>
+
+  <p class="section-text"><strong>Mistake 5: Comparing gross savings instead of net.</strong> Gross savings (hours x rate x 52) is the number that gets you excited. Net savings (gross minus ALL costs including hidden ones) is the number that tells the truth. Always present net savings. If the net number is still compelling, you have a real business case.</p>
+
+  <p class="section-text">These five mistakes share a common root: optimism bias. When you are excited about a tool, you overestimate savings and underestimate costs. The formula corrects for this — but only if you use conservative inputs. When in doubt, round your automation rate down and your costs up. A projection that beats expectations builds confidence. A projection that misses expectations destroys it. Under-promise, over-deliver — even to yourself.</p>
+
+  <p class="section-text"><strong>The projection-to-actual audit.</strong> After 90 days of using any AI tool, go back to your original ROI projection and compare it to actual results. Were your hours saved on target? Did hidden costs exceed your estimate? Was the automation rate higher or lower than projected? This audit teaches you to project more accurately next time. Most people find their conservative estimates were actually close to reality — which is the whole point of being conservative.</p>
+
+  <p class="section-text">Save every ROI calculation you do in a single document. Label each one with the tool name, the date, and whether the projection was confirmed, exceeded, or missed. Over time, this document becomes your personal AI investment track record — proof that your decisions are data-driven, and a reference for calibrating future projections. The best business decisions are made by people who track their past decisions honestly.</p>
 </div>
 
 <div class="lesson-section">

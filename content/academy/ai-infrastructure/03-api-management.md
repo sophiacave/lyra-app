@@ -136,6 +136,118 @@ def call_ai_with_retry(prompt: str, max_retries: int = 3) -> str:
 </div>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Multi-Provider API Router</h2>
+  <p class="section-text">Production AI systems rarely depend on a single provider. A well-designed API router handles provider selection, key rotation, cost tracking, and circuit breaking — all in one layer.</p>
+
+<div class="code-block"><div class="code-label">TypeScript — Production API Router</div>
+<pre><code class="language-typescript">interface AIProvider {
+  name: string;
+  call: (prompt: string, maxTokens: number) => Promise&lt;string&gt;;
+  costPerInputToken: number;
+  costPerOutputToken: number;
+  healthy: boolean;
+  errorCount: number;
+}
+
+class AIRouter {
+  private providers: AIProvider[];
+  private circuitBreakerThreshold = 3;
+  private resetIntervalMs = 60_000;
+
+  constructor(providers: AIProvider[]) {
+    this.providers = providers;
+    // Reset circuit breakers every minute
+    setInterval(() => {
+      this.providers.forEach(p => {
+        p.errorCount = 0;
+        p.healthy = true;
+      });
+    }, this.resetIntervalMs);
+  }
+
+  async route(prompt: string, maxTokens = 1024): Promise&lt;{
+    response: string;
+    provider: string;
+    estimatedCost: number;
+  }&gt; {
+    const healthy = this.providers.filter(p => p.healthy);
+    if (healthy.length === 0) {
+      throw new Error("All AI providers are down");
+    }
+
+    for (const provider of healthy) {
+      try {
+        const response = await provider.call(prompt, maxTokens);
+        const inputTokens = Math.ceil(prompt.length / 4);
+        const outputTokens = Math.ceil(response.length / 4);
+        const cost = (inputTokens * provider.costPerInputToken)
+                   + (outputTokens * provider.costPerOutputToken);
+
+        return { response, provider: provider.name, estimatedCost: cost };
+      } catch (error) {
+        provider.errorCount++;
+        if (provider.errorCount >= this.circuitBreakerThreshold) {
+          provider.healthy = false;
+          console.warn(`Circuit breaker tripped for ${provider.name}`);
+        }
+      }
+    }
+    throw new Error("All healthy providers failed");
+  }
+}</code></pre>
+</div>
+
+  <p class="section-text">The circuit breaker pattern is critical. After 3 consecutive errors, a provider is marked unhealthy and removed from the rotation. This prevents hammering a broken service and wasting time on timeouts. The breaker resets after 60 seconds to check if the provider has recovered.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Cost Tracking</span>
+  <h2 class="section-title">Real-Time Cost Dashboard Schema</h2>
+  <p class="section-text">Tracking costs per request requires the right database schema. Here's a production-ready table design that supports cost analysis by user, feature, provider, and time period.</p>
+
+<div class="code-block"><div class="code-label">SQL — Cost Tracking Schema</div>
+<pre><code class="language-sql">CREATE TABLE ai_api_calls (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  user_id UUID REFERENCES auth.users(id),
+  feature TEXT NOT NULL,          -- 'chat', 'search', 'analysis'
+  provider TEXT NOT NULL,         -- 'anthropic', 'openai'
+  model TEXT NOT NULL,            -- 'claude-sonnet-4-6', 'gpt-4o'
+  input_tokens INTEGER NOT NULL,
+  output_tokens INTEGER NOT NULL,
+  latency_ms INTEGER NOT NULL,
+  estimated_cost NUMERIC(10, 6) NOT NULL,
+  cached BOOLEAN DEFAULT false,
+  status TEXT DEFAULT 'success'   -- 'success', 'error', 'timeout'
+);
+
+-- Index for cost analysis queries
+CREATE INDEX idx_ai_calls_daily ON ai_api_calls (created_at, provider);
+CREATE INDEX idx_ai_calls_user ON ai_api_calls (user_id, created_at);
+
+-- Daily cost summary view
+CREATE VIEW daily_cost_summary AS
+SELECT
+  date_trunc('day', created_at) AS day,
+  provider,
+  model,
+  COUNT(*) AS total_calls,
+  SUM(input_tokens) AS total_input_tokens,
+  SUM(output_tokens) AS total_output_tokens,
+  SUM(estimated_cost) AS total_cost,
+  AVG(latency_ms)::INTEGER AS avg_latency_ms,
+  COUNT(*) FILTER (WHERE cached) AS cache_hits,
+  COUNT(*) FILTER (WHERE status = 'error') AS errors
+FROM ai_api_calls
+GROUP BY 1, 2, 3
+ORDER BY 1 DESC;</code></pre>
+</div>
+
+  <p class="section-text">The <code>daily_cost_summary</code> view gives you instant visibility into spending trends. Query it weekly to catch cost anomalies early — before the monthly bill surprises you.</p>
+</div>
+
 <div class="demo-container">
   <h3>API Call Checklist</h3>
   <p class="section-text">Before every AI API integration, verify: key stored in env var, server-side only, rate limited per user, cost logged, retry logic implemented, spending cap set, fallback defined.</p>

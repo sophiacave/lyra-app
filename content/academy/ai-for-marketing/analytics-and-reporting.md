@@ -109,6 +109,114 @@ Lead with results, not activity.</pre>
   <p class="section-text">The marketers who win aren't the ones with the most data — they're the ones who <strong>act on insights fastest.</strong> AI makes you that marketer.</p>
 </div>
 
+<!-- SECTION 5: DASHBOARD KPIS -->
+<div class="lesson-section">
+  <span class="section-label">KPI Dashboard</span>
+  <h2 class="section-title">The 10 marketing KPIs that actually matter.</h2>
+  <p class="section-text">Most marketers track too many metrics and act on none. Here are the 10 that drive decisions:</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Customer Acquisition Cost (CAC)</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Total marketing spend divided by new customers acquired. The number that tells you if your marketing is sustainable.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Conversion Rate</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Percentage of visitors who take the desired action. Track by channel, by campaign, by landing page.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Email Open Rate</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Industry average is 20-25%. Below that? Your subject lines need work. Way above? Your list might be too small to be meaningful.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Email Click-Through Rate (CTR)</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Industry average is 2-3%. This tells you if your email body copy and CTA are compelling enough to drive action.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(52,211,153,.12);color:#34d399;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">5</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Return on Ad Spend (ROAS)</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Revenue generated per dollar spent on ads. A ROAS of 4:1 means every $1 in ads produces $4 in revenue.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">6</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Organic Traffic Growth</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Month-over-month growth in search traffic. The compound interest of content marketing — slow to start, powerful over time.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">7</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Social Engagement Rate</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Interactions divided by impressions. A post with 1,000 impressions and 50 interactions has a 5% engagement rate — excellent.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">8</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Lead-to-Customer Rate</div>
+          <div style="color:#a1a1aa;font-size:.85rem">What percentage of leads actually become paying customers? This tells you if your nurture sequence is working.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">9</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Customer Lifetime Value (LTV)</div>
+          <div style="color:#a1a1aa;font-size:.85rem">How much revenue a customer generates over their entire relationship with you. LTV must exceed CAC or the business model breaks.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(139,92,246,.12);color:#8b5cf6;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">10</div>
+        <div>
+          <div style="font-weight:700;font-size:.85rem;color:var(--text)">Net Promoter Score (NPS)</div>
+          <div style="color:#a1a1aa;font-size:.85rem">Would your customers recommend you? Promoters (9-10) minus Detractors (0-6). Above 50 is excellent. Above 70 is world-class.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: REPORTING TEMPLATE -->
+<div class="lesson-section">
+  <span class="section-label">Report Template</span>
+  <h2 class="section-title">The weekly marketing report prompt.</h2>
+  <p class="section-text">Use this prompt every Friday to create a quick weekly snapshot. Paste it alongside your week's data:</p>
+
+  <div class="demo-container" style="padding:1.5rem;background:var(--surface);border:1px solid var(--border2)">
+    <pre style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text);line-height:1.8;white-space:pre-wrap;margin:0">Create a weekly marketing snapshot report.
+
+<span style="color:#fb923c">This week's data:</span> [Paste numbers from all channels]
+<span style="color:#fb923c">Last week's numbers:</span> [For comparison]
+<span style="color:#fb923c">Monthly goals:</span> [What you are tracking toward]
+
+<span style="color:#8b5cf6">Format:</span>
+1. Traffic light summary (green/yellow/red for each channel)
+2. Week-over-week changes (what went up, what went down)
+3. Top-performing piece of content this week (and why)
+4. Worst-performing piece of content this week (and why)
+5. One action item for next week based on this data
+
+<span style="color:#ef4444">Keep it under 300 words.</span> This is a snapshot, not a novel.
+If something is declining for 3+ weeks, flag it as a trend.</pre>
+  </div>
+  <p class="section-text" style="margin-top:1rem"><strong>Pro tip:</strong> Save your weekly reports in a running document. After 4 weeks, ask AI to analyze all four weekly reports together and produce a monthly trends analysis. Patterns invisible in a single week become obvious across a month.</p>
+</div>
+
 <!-- INTERACTIVE: FLASHDECK -->
 <div class="lesson-section">
   <span class="section-label">Review</span>

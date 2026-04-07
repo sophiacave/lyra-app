@@ -164,6 +164,38 @@ free: true
     <p style="font-size:.82rem;color:#71717a">This course teaches the concepts behind all of these. Once you understand the agent loop, memory, communication, and orchestration — you can use any framework.</p>
   </div>
 
+  <div class="section">
+    <h2>The Agent Lifecycle</h2>
+    <p>Agents are not permanent. They are born, they run, and they eventually terminate. Understanding the lifecycle helps you design agents that start cleanly, operate reliably, and shut down gracefully:</p>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+        <strong style="color:#38bdf8">Initialization</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The agent loads its configuration — identity, tools, goals, guardrails, and memory. It reads any persisted state from previous runs. If this phase is incomplete, the agent starts without context and makes poor decisions. Always boot from the brain.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
+        <strong style="color:#c084fc">Active Loop</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The perceive-decide-act-learn cycle runs continuously. The agent processes inputs, takes actions, and updates its understanding. This is the productive phase — where goals are pursued and work gets done.</p>
+      </div>
+      <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
+        <strong style="color:#f472b6">Graceful Shutdown</strong>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Before terminating, the agent writes its current state to persistent memory — what it was doing, what it learned, and what comes next. This checkpoint enables the next instance to resume seamlessly. An agent that crashes without checkpointing loses all session progress.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Agents vs. Pipelines vs. Workflows</h2>
+    <p>These three terms are often confused. Here is the precise distinction:</p>
+
+    <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
+      <strong style="color:#8b5cf6">Pipeline:</strong> A fixed sequence of steps — A then B then C. No branching, no decisions. Each step transforms the input for the next. Used for data processing, ETL, and build systems.<br><br>
+      <strong style="color:#34d399">Workflow:</strong> A sequence with conditional branching — if X then do A, else do B. More flexible than a pipeline but still pre-defined. Used in CI/CD, approval flows, and business process automation.<br><br>
+      <strong style="color:#fb923c">Agent:</strong> A continuous loop that decides its own actions based on observations. Not pre-defined — the agent chooses what to do at each step. Can incorporate pipelines and workflows as tools, but the decision-making is dynamic.
+    </div>
+    <p style="font-size:.82rem;color:#71717a">The key test: if you can draw the entire execution path before the system runs, it is a pipeline or workflow. If the execution path depends on what the system discovers at runtime, it is an agent.</p>
+  </div>
+
   <div class="divider"><span>Test Your Understanding</span></div>
 
   <div class="quiz-section">

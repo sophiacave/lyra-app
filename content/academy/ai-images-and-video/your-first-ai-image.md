@@ -100,8 +100,84 @@ fine art photography, shallow depth of field, 8K detail</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Prompt Construction Tips</span>
+  <h2 class="section-title">Small prompt changes create big visual differences.</h2>
+  <p class="section-text">As you practice, you will notice that certain words have outsized impact on results. Here are practical tips that immediately improve your images:</p>
+  <p class="section-text"><strong>Front-load the important stuff:</strong> AI tools pay more attention to words at the beginning of your prompt. Put your most important element first. "A golden retriever in a field" prioritizes the dog. "A vast wildflower field with a small golden retriever" prioritizes the landscape.</p>
+  <p class="section-text"><strong>Use quality modifiers:</strong> Adding "high resolution," "detailed," "8K," or "professional photography" nudges the AI toward higher quality output. These modifiers act as quality floor-raisers — they do not guarantee perfection, but they reduce the chance of getting something blurry or low-effort.</p>
+  <p class="section-text"><strong>Specify what you do not want:</strong> If you keep getting something in your images that you do not want — text overlays, borders, watermarks — add "no text, no watermark, no border" to your prompt. In ChatGPT, you can also just say "please do not include any text in the image."</p>
+  <p class="section-text"><strong>Be specific about quantity:</strong> "Some flowers" is vague. "A field of hundreds of purple wildflowers" is specific. "Three birds in the sky" is specific. The more precise your numbers and quantities, the more control you have.</p>
+  <p class="section-text"><strong>Describe relationships:</strong> "A cat and a ball" might put them anywhere. "A cat batting a red ball with its paw on a hardwood floor" tells the AI exactly how the elements relate to each other spatially.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Common First-Timer Mistakes</span>
+  <h2 class="section-title">Avoid these and you will be ahead of 90% of beginners.</h2>
+  <p class="section-text"><strong>Mistake 1 — Being too vague:</strong> "A nice picture" gives the AI almost nothing to work with. "A cozy reading nook with warm lamp light, a stack of books, and rain on the window" gives it a clear vision. The more specific you are, the better your results.</p>
+  <p class="section-text"><strong>Mistake 2 — Cramming too many subjects:</strong> "A dog, a cat, three birds, a mountain, a river, a castle, and a dragon" overwhelms the AI. Start with one main subject and build outward. Complex scenes work better when you add detail gradually through iteration rather than trying to get everything in one prompt.</p>
+  <p class="section-text"><strong>Mistake 3 — Giving up after one try:</strong> Your first generation is a starting point, not the final result. Professional AI artists rarely use their first attempt. The iteration process — generate, evaluate, refine — is where the real magic happens. Give yourself permission to experiment.</p>
+  <p class="section-text"><strong>Mistake 4 — Ignoring aspect ratio:</strong> If you need a vertical image for Instagram, say so in the prompt. If you need a wide landscape for a presentation, specify 16:9. Getting the right dimensions from the start saves you from awkward cropping later.</p>
+  <p class="section-text"><strong>Mistake 5 — Forgetting about lighting:</strong> Lighting is the single most impactful thing you can add to a prompt. "A portrait" and "a portrait with soft golden hour lighting" produce dramatically different results. Always think about light.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Step-by-Step Walkthrough</span>
+  <h2 class="section-title">Let's build a complete image together, step by step.</h2>
+  <p class="section-text">Here is a real walkthrough showing how iteration works in practice. Follow along with any AI image tool:</p>
+  <p class="section-text"><strong>Attempt 1:</strong> Start minimal. Type "A coffee shop." Look at what you get. The AI will give you something — probably a generic coffee shop interior. Notice the style, the colors, the perspective.</p>
+  <p class="section-text"><strong>Attempt 2:</strong> Add setting and mood. "A cozy independent coffee shop on a rainy afternoon, warm interior lighting." Now the AI has more to work with. Compare this to attempt 1 — see how the added context changed the mood and atmosphere.</p>
+  <p class="section-text"><strong>Attempt 3:</strong> Add style and composition. "A cozy independent coffee shop on a rainy afternoon, warm interior lighting glowing through foggy windows, watercolor painting style, soft muted palette." Now you are directing both what it looks like and how it feels.</p>
+  <p class="section-text"><strong>Attempt 4:</strong> Fine-tune with specific details. "A cozy independent coffee shop on a rainy afternoon, warm interior lighting glowing through foggy windows, a single empty chair by the window with a steaming cup, watercolor painting style, soft muted palette of amber, cream, and dusty blue." Each iteration gets you closer to the image in your mind.</p>
+  <p class="section-text">This is the process. Four attempts, each building on the last. By attempt 4, you have something you could frame on your wall — and you built the skill of intentional prompt construction along the way.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">The Four Prompt Elements</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Working with Different Tools</span>
+  <h2 class="section-title">The same prompt behaves differently in each tool. Here is what to expect.</h2>
+  <p class="section-text">If you try the same prompt in different tools, the results will vary. Understanding these differences helps you choose the right tool for each project:</p>
+  <p class="section-text"><strong>ChatGPT (DALL-E):</strong> Tends to be literal. "A golden retriever in a field" gives you exactly that — a golden retriever in a field. It follows instructions precisely. Conversational iteration is its superpower — say "make the sky more dramatic" and it adjusts just that element.</p>
+  <p class="section-text"><strong>Midjourney:</strong> Tends to be artistic. The same prompt might give you a more painterly, cinematic, or stylized result. Midjourney adds its own aesthetic interpretation on top of your description. This is beautiful when you want art, but less ideal when you need exact precision.</p>
+  <p class="section-text"><strong>Stable Diffusion:</strong> Depends heavily on which model and settings you use. The base model is more neutral, but community fine-tuned models can be specialized for anything — anime, photorealism, landscapes, portraits. The learning curve is steeper but the control is unmatched.</p>
+  <p class="section-text">The best approach: pick one tool to learn first, get comfortable with it, and then explore others. You will carry your prompt skills across all tools — the fundamentals of clear description and intentional detail are universal.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Building Your First Library</span>
+  <h2 class="section-title">Start organized from day one and thank yourself later.</h2>
+  <p class="section-text">Even on your very first day of creating AI images, start building good habits:</p>
+  <p class="section-text"><strong>Save your prompts:</strong> Every time you write a prompt that produces a result you like, copy it into a document. This becomes your personal prompt library. In a month, you will have a collection of tested, proven prompts you can remix and reuse.</p>
+  <p class="section-text"><strong>Name your files meaningfully:</strong> Instead of "image_001.png," save files with descriptive names: "golden-retriever-sunset-watercolor.png." When you have hundreds of images, these names become searchable.</p>
+  <p class="section-text"><strong>Create project folders:</strong> Even if you only have one project now, create a folder structure: AI Visuals > [Project Name] > Drafts / Finals. This 30-second setup prevents the chaos of a single folder with thousands of unnamed images.</p>
+  <p class="section-text"><strong>Note what works and what does not:</strong> Keep a running list of discoveries. "Adding 'shallow depth of field' makes portraits look professional." "The word 'cinematic' adds dramatic contrast." These notes compound over time into genuine expertise.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">From Image to Use</span>
+  <h2 class="section-title">Your image is only valuable when you actually use it.</h2>
+  <p class="section-text">Generating a beautiful image is satisfying. Using it in your actual life is where the real value lives. Here are immediate uses for the images you create today:</p>
+  <p class="section-text"><strong>Social media:</strong> Post your best generation on your social platform of choice. Share the prompt in the caption. The AI art community loves seeing both the image and the prompt that created it — it is a form of creative sharing that is unique to this medium.</p>
+  <p class="section-text"><strong>Phone and desktop wallpaper:</strong> Your own custom wallpaper, created from your own imagination. This is one of the simplest and most satisfying uses of AI images. Change it whenever the mood strikes.</p>
+  <p class="section-text"><strong>Messages and communication:</strong> Send a generated image to a friend that captures an inside joke, a shared memory, or just a mood. AI images make casual communication more expressive and fun.</p>
+  <p class="section-text"><strong>Work presentations:</strong> Even a single well-chosen AI-generated slide background elevates an otherwise plain presentation. Use one of your new images in your next meeting deck.</p>
+  <p class="section-text">The habit of using your creations, not just creating them, is what transforms AI image generation from a novelty into a genuine life skill.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Celebrating Your Progress</span>
+  <h2 class="section-title">You just created something from nothing. That is worth recognizing.</h2>
+  <p class="section-text">If you have followed along with the exercises in this lesson, you have already generated your first AI images. You have written prompts, evaluated results, iterated, and started building your visual vocabulary. That is real creative skill, developed in a single lesson.</p>
+  <p class="section-text">In the next lesson, we go deeper into prompt craft — the art and science of writing prompts that produce exactly what you see in your mind. The basic four-part anatomy you learned here (subject, setting, mood, style) expands into a full framework with composition, lighting, color, and quality controls. Your images are about to get dramatically better.</p>
+  <p class="section-text">Take your best image from today's exercises and save it somewhere you will see it. In a month, compare it to what you are creating then. The growth will surprise you.</p>
+  <p class="section-text">Remember: you are not learning a tool. You are learning a new form of creative expression. The tool is just the instrument. The creative vision — what you see in your mind and how you describe it — that is the real skill. And you just took the first real step in developing it.</p>
+  <p class="section-text">Before moving on, make sure you have at least three images saved in a folder on your computer. These are the foundation of your personal AI visual library — a collection that will grow with every lesson and every experiment. Label the folder "AI Visuals" and you are already building the organizational habit that Lesson 10 will formalize into a complete workflow system.</p>
+  <p class="section-text">Also save the prompts that created your favorite images. Copy them into a note or document labeled "My Prompts." This tiny habit — saving what works — is the seed of the prompt library that will become your most valuable creative asset. Future you will be grateful you started on day one.</p>
+  <p class="section-text">One more thing: show someone what you made. Share an image with a friend, post it on social media, or just show it to someone nearby.</p>
+  <p class="section-text">The reaction you get — the surprise that you created something this beautiful from a text description — is one of the best parts of this whole journey. It never gets old. And sharing your work is not just about getting validation. It is about joining a community of creators who are all exploring this new medium together. Your first AI image is your entry ticket.</p>
 </div>
 
 <div class="lesson-section">

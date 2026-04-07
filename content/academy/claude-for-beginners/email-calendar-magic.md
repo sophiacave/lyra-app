@@ -85,10 +85,100 @@ Give me:
 
 </div>
 
+<!-- SECTION 2.5: MORE EMAIL TEMPLATES -->
+<div class="lesson-section">
+  <span class="section-label">More Templates</span>
+  <h2 class="section-title">Email templates for every situation.</h2>
+  <p class="section-text">Beyond the basics, here are prompts for the email situations that trip people up the most. These are the emails where you usually stare at the screen for 10 minutes — Claude handles them in seconds.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Delivering Bad News</div>
+<pre style="margin:0;color:#e5e5e5"><code>Write an email to [recipient] delivering bad news:
+[describe the bad news].
+
+Context: [relationship, history, stakes]
+
+Be honest and direct but empathetic. Include:
+- The news clearly stated up front
+- A brief explanation of why
+- What I am doing about it / next steps
+- An offer to discuss further
+
+Tone: [compassionate but professional]
+Keep it under 150 words.</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Asking for Something</div>
+<pre style="margin:0;color:#e5e5e5"><code>Write an email to [recipient] asking for [what you
+need].
+
+Context: [why you need it, your relationship,
+any deadline]
+
+Make it easy to say yes. Be specific about what
+I need and by when. Offer to make it convenient
+for them. Do not be pushy — be respectful but clear.
+
+Tone: [warm, professional]
+Keep it under 120 words.</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Thank You / Appreciation</div>
+<pre style="margin:0;color:#e5e5e5"><code>Write a thank you email to [recipient] for
+[what they did].
+
+Make it genuine, not generic. Reference the
+specific thing they did and how it impacted me
+or the team. End with something forward-looking.
+
+Tone: [warm, sincere, not over the top]
+Keep it under 80 words.</code></pre>
+</div>
+
+  <div class="tip-box">
+    <div class="tip-label">When to Use Templates vs Reply Chain</div>
+    <p><strong>Templates</strong> are best when you are starting a new email from scratch. <strong>Reply Chain</strong> is best when you are responding to an existing thread. If you have a thread to paste, always use the Reply Chain Technique — it gives Claude the full context to match the conversation's tone and direction.</p>
+  </div>
+</div>
+
 <!-- SECTION 3: CALENDAR & MEETING PREP -->
 <div class="lesson-section">
   <span class="section-label">Level Up</span>
   <h2 class="section-title">Calendar & meeting prep, handled.</h2>
+  <p class="section-text">Claude is surprisingly good at helping you manage your time. Here are the specific prompts that make it work.</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Weekly Calendar Review (Sunday or Monday)</div>
+<pre style="margin:0;color:#e5e5e5"><code>Here is my calendar for this week:
+
+[Paste your calendar — meetings, deadlines, events]
+
+Help me:
+1. Identify back-to-back meetings I should try
+   to reschedule
+2. Find 2-3 blocks of 90+ minutes for deep work
+3. Flag any conflicts or overcommitments
+4. Suggest which meetings could be emails instead</code></pre>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — Post-Meeting Summary Email</div>
+<pre style="margin:0;color:#e5e5e5"><code>I just finished a meeting. Here are my rough notes:
+
+[Paste messy notes, fragments, bullet points]
+
+Write a professional follow-up email to all
+attendees with:
+- 3-5 key discussion points
+- All decisions made
+- Action items with owners and deadlines
+- Next meeting date/agenda if applicable
+
+Tone: professional, organized, energetic.</code></pre>
+</div>
+
 <div class="tip-box">
     <div class="tip-label">Pro Tip</div>
     <p><strong>Paste your actual calendar.</strong> Copy your week from Google Calendar, paste into Claude, and say "Help me find 2 hours for deep work and identify back-to-back meetings I should reschedule." Instant scheduling assistant.</p>

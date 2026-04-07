@@ -26,6 +26,63 @@ free: false
   </ul>
 </div>
 
+<!-- SECTION 0: SIMILARITY CONCEPTS -->
+<div class="lesson-section">
+  <span class="section-label">Key Concepts</span>
+  <h2 class="section-title">How machines measure "similar."</h2>
+  <p class="section-text">Humans intuitively know that "dog" and "puppy" are related while "dog" and "algebra" are not. But how does a machine know? The answer is <strong style="color:#e5e5e5">similarity metrics</strong> — mathematical formulas that compare vectors and output a number representing how close two concepts are.</p>
+
+  <div style="display:grid;gap:.75rem;margin-top:.75rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.88rem">Cosine Similarity — measuring the angle</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The most common similarity metric in AI. It measures the <strong style="color:#e5e5e5">angle</strong> between two vectors, ignoring their length. Imagine two arrows starting from the same point. If they point in the same direction, cosine similarity = 1.0 (identical meaning). If they are perpendicular, cosine = 0.0 (completely unrelated). If they point in opposite directions, cosine = -1.0 (antonyms). The formula: dot product divided by the product of magnitudes.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+      <strong style="color:#8b5cf6;font-size:.88rem">Euclidean Distance — measuring the gap</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The straight-line distance between two points in space. If cosine similarity is about direction, Euclidean distance is about position. Two words can point in the same direction (high cosine) but be far apart in absolute position (high Euclidean distance). In practice, cosine similarity is preferred for text because document length affects position but not direction.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
+      <strong style="color:#fb923c;font-size:.88rem">Dot Product — the raw score</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Multiply each pair of matching dimensions together and sum the results. The dot product captures both direction AND magnitude. Cosine similarity is just the dot product normalized by the lengths. When vectors are already normalized (length = 1), the dot product and cosine similarity are identical — which is why many systems normalize their embeddings before storing them.</p>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1.25rem">Here is how these three metrics compare in practice:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  SIMILARITY METRICS COMPARED</span>
+
+  Word Pair           Cosine    Euclidean    Dot Product
+  ──────────          ──────    ─────────    ───────────
+  <span style="color:#34d399">cat ↔ dog</span>           0.95      0.31         0.92
+  <span style="color:#38bdf8">cat ↔ kitten</span>        0.89      0.47         0.85
+  <span style="color:#fb923c">cat ↔ car</span>           0.27      1.22         0.24
+  <span style="color:#ef4444">cat ↔ algebra</span>       0.05      1.38         0.04
+
+  <span style="color:#71717a">Higher cosine = more similar (max 1.0)</span>
+  <span style="color:#71717a">Lower Euclidean = more similar (min 0.0)</span>
+  <span style="color:#71717a">Higher dot product = more similar</span>
+
+  <span style="color:#71717a">In practice: cosine similarity is the standard for NLP</span>
+  <span style="color:#71717a">because it ignores vector length (document size)</span></code></pre>
+</div>
+
+  <div style="display:grid;gap:.75rem;margin-top:1rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+      <strong style="color:#38bdf8;font-size:.88rem">Vector Analogies — relationships as directions</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The famous equation <strong style="color:#e5e5e5">king - man + woman = queen</strong> works because relationships are encoded as consistent directions in embedding space. The direction from "man" to "king" captures the concept of male royalty. The direction from "man" to "woman" captures gender. Subtracting one direction and adding another navigates the meaning-space — like following a map. This works for geography (Paris - France + Japan = Tokyo), tenses (walking - walk + swim = swimming), and many other relationships.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
+      <strong style="color:#ef4444;font-size:.88rem">Real-world applications</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong style="color:#e5e5e5">Semantic search</strong> finds documents by meaning, not keywords. <strong style="color:#e5e5e5">Recommendation engines</strong> find similar products by comparing embedding vectors. <strong style="color:#e5e5e5">RAG</strong> retrieves relevant context before the AI generates a response. <strong style="color:#e5e5e5">Duplicate detection</strong> identifies near-identical content by checking cosine similarity thresholds. <strong style="color:#e5e5e5">Clustering</strong> groups similar items together for analysis. All of these rely on the same core operation: comparing vectors.</p>
+    </div>
+  </div>
+
+  <div class="narration" style="margin-top:1rem">
+    <strong>The bottom line:</strong> similarity is the bridge between human meaning and machine math. When you understand how cosine similarity works, you understand the engine behind modern search, recommendations, and AI-powered retrieval. Now prove it.
+  </div>
+</div>
+
 <!-- SECTION 1: EMBEDDING QUIZ -->
 <div class="lesson-section">
   <span class="section-label">Part 1</span>
@@ -57,6 +114,48 @@ print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
 
 <div data-learn="QuizMC" data-props='{"title":"Similarity Challenge — 6 Questions","questions":[{"q":"Which pair of words would have the HIGHEST cosine similarity?","options":["happy and banana","dog and skyscraper","car and automobile","king and purple"],"correct":2,"explanation":"Car and automobile are synonyms — they appear in nearly identical contexts so their embedding vectors point in almost the same direction. Cosine similarity would be around 0.95."},{"q":"Why are embeddings useful for search engines?","options":["They make pages load faster","They allow matching by meaning, not just keywords","They compress images","They prevent typos"],"correct":1,"explanation":"With embeddings, searching affordable places to eat can match budget-friendly restaurants — even with zero keyword overlap. Both phrases map to nearby vectors because they mean similar things."},{"q":"Paris : France :: Tokyo : ? works because:","options":["The model memorized geography facts","The vector from Paris to France captures capital-of and applying it to Tokyo lands near Japan","All cities are near all countries","Tokyo and France have similar spelling"],"correct":1,"explanation":"The vector offset from Paris to France represents capital-of. Adding this same offset to Tokyo points toward Japan. Learned from patterns in text, not from explicit geography lessons."},{"q":"A cosine similarity of 0.0 between two word vectors means:","options":["The words are synonyms","The words are completely unrelated (perpendicular vectors)","The words are antonyms","An error occurred in the calculation"],"correct":1,"explanation":"Cosine similarity of 0 means the vectors are perpendicular — they share no directional component. The words exist in completely unrelated semantic regions."},{"q":"Real word embeddings typically use how many dimensions?","options":["2-3 dimensions","50-100 dimensions","768-1536 dimensions","1 million dimensions"],"correct":2,"explanation":"Modern embeddings typically use 768 to 1536 dimensions. More dimensions capture more nuance in meaning. The 2D visualizations in this course simplify the concept but the math is identical."},{"q":"RAG (Retrieval-Augmented Generation) uses embeddings to:","options":["Generate images from text","Find relevant documents to include in the AI context before generating a response","Compress AI models to run faster","Translate between languages"],"correct":1,"explanation":"RAG converts your question to a vector, searches a database for the most similar document vectors, retrieves those documents, and includes them in the AI prompt. This gives the AI access to specific knowledge without retraining."}]}'></div>
 
+</div>
+
+<!-- SECTION 1B: VECTOR MATH DEEP DIVE -->
+<div class="lesson-section">
+  <span class="section-label">Math Corner</span>
+  <h2 class="section-title">The math behind cosine similarity.</h2>
+  <p class="section-text">You do not need to memorize the formula, but understanding it makes the concept click. Cosine similarity has three steps:</p>
+
+  <div style="display:grid;gap:.75rem;margin-top:.75rem">
+    <div style="padding:1rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
+      <strong style="color:#c084fc;font-size:.88rem">Step 1: Dot Product — multiply and sum</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Multiply each pair of matching dimensions, then add them all up. For vectors [3, 4] and [4, 3]: (3 x 4) + (4 x 3) = 12 + 12 = 24. The dot product is large when vectors point in similar directions and small (or negative) when they point in different directions.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
+      <strong style="color:#38bdf8;font-size:.88rem">Step 2: Magnitudes — measure the lengths</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Calculate the length of each vector using the Pythagorean theorem. For [3, 4]: sqrt(3^2 + 4^2) = sqrt(9 + 16) = sqrt(25) = 5. For [4, 3]: same thing, also 5. The magnitude tells you how "strong" the vector is, independent of its direction.</p>
+    </div>
+    <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
+      <strong style="color:#34d399;font-size:.88rem">Step 3: Divide — normalize the result</strong>
+      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Divide the dot product by the product of both magnitudes: 24 / (5 x 5) = 24/25 = 0.96. This normalization is what makes cosine similarity ignore vector length and focus purely on direction. Whether a document is 100 words or 10,000 words, its direction in embedding space is what matters for similarity.</p>
+    </div>
+  </div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
+<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  COSINE SIMILARITY WORKED EXAMPLE</span>
+
+  Vector A = [3, 4]     (e.g., the word "cat")
+  Vector B = [4, 3]     (e.g., the word "dog")
+
+  <span style="color:#c084fc">Dot Product</span>:  (3 × 4) + (4 × 3) = 12 + 12 = <span style="color:#c084fc">24</span>
+  <span style="color:#38bdf8">Magnitude A</span>:  sqrt(3² + 4²) = sqrt(25) = <span style="color:#38bdf8">5</span>
+  <span style="color:#38bdf8">Magnitude B</span>:  sqrt(4² + 3²) = sqrt(25) = <span style="color:#38bdf8">5</span>
+
+  <span style="color:#34d399">Cosine Sim</span> :  24 / (5 × 5) = 24/25 = <span style="color:#34d399">0.96</span>
+
+  <span style="color:#71717a">Result: very similar! These vectors point nearly the same way.</span>
+  <span style="color:#71717a">For comparison: perpendicular vectors = 0.00, opposite = -1.00</span></code></pre>
+</div>
+
+  <div class="narration" style="margin-top:1rem">
+    <strong>That is the entire formula.</strong> Dot product divided by magnitudes. Three operations, one number that captures how similar two concepts are. Every semantic search engine, every recommendation system, every RAG pipeline runs this exact calculation millions of times per second.
+  </div>
 </div>
 
 <!-- SECTION 2: FULL COURSE REVIEW -->

@@ -97,6 +97,34 @@ a brand.</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Template</span>
+  <h2 class="section-title">The newsletter formula that people actually read.</h2>
+  <p class="section-text">Most newsletters are boring recaps or thinly disguised sales pitches. The ones people love follow a consistent formula that delivers value in a predictable, enjoyable structure:</p>
+  <p class="section-text"><strong style="color:var(--orange)">The Story (30%):</strong> Open with a personal story, observation, or experience from your week. This is what makes your newsletter human. It is the reason people open emails from you instead of brands. Keep it to 2-3 short paragraphs. The story should connect to the lesson — but the connection can be loose.</p>
+  <p class="section-text"><strong style="color:var(--purple)">The Lesson (40%):</strong> One core insight, tip, or framework. Not three. Not seven. One. Go deep enough that the reader walks away knowing something actionable. This is the value that justifies their subscription.</p>
+  <p class="section-text"><strong style="color:var(--green)">The Action (20%):</strong> Give the reader one specific thing to do with what they just learned. Not "think about it" — do it. "Open your last three Instagram posts. For each one, rewrite the hook using the contrarian formula. Publish the best one tomorrow."</p>
+  <p class="section-text"><strong style="color:var(--blue)">The P.S. (10%):</strong> The P.S. line is the second-most-read part of any email after the subject line. Use it for a soft mention of your product, a link to your latest content, or a question that invites replies. Never waste the P.S.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">Segmentation and personalization with AI.</h2>
+  <p class="section-text">Not every subscriber wants the same thing. The more you can tailor your emails to different segments of your audience, the higher your open rates, click rates, and conversion rates will be.</p>
+  <p class="section-text"><strong>Basic segmentation:</strong> Split your list by how people joined. Did they download a free guide about productivity? They care about productivity. Did they come from a webinar about pricing? They care about pricing. Send them content that matches why they showed up in the first place.</p>
+  <p class="section-text"><strong>Behavior-based segmentation:</strong> Most email platforms let you tag subscribers based on which links they click. Over time, these clicks paint a picture of what each subscriber cares about. Use this data to create targeted sequences that feel personal because they are personal.</p>
+  <p class="section-text"><strong>AI personalization at scale:</strong> Once you have segments defined, use AI to generate variations of the same email tailored to each group. The core message stays the same, but the examples, stories, and CTAs shift to match what each segment cares about. Ask AI: <em>"Here's my newsletter draft. Create three variations: one for freelancers, one for agency owners, one for in-house marketers. Same core lesson, different examples and CTAs for each."</em></p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Metrics</span>
+  <h2 class="section-title">Email metrics that actually matter.</h2>
+  <p class="section-text"><strong style="color:var(--orange)">Open rate:</strong> The percentage of recipients who opened your email. Industry average is 20-25%. If yours is below 15%, your subject lines need work. If it is above 30%, you are doing something right — study what those high-performing subject lines have in common.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Click rate:</strong> The percentage who clicked a link in your email. This tells you whether your content and CTAs are compelling. Industry average is 2-5%. Every email should have one clear link you want people to click.</p>
+  <p class="section-text"><strong style="color:var(--green)">Reply rate:</strong> Replies are gold. They signal deep engagement and they improve deliverability because email providers see replies as proof that your emails are wanted. Ask questions that invite genuine responses.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Unsubscribe rate:</strong> Some unsubscribes are healthy — they clean your list of people who were never going to buy. But if your unsubscribe rate spikes after a particular email, study what went wrong. Usually it means you sold too hard or sent something irrelevant.</p>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Voice</span>
   <h2 class="section-title">The AI email trap (and how to avoid it).</h2>
   <p class="section-text">AI-generated emails have a telltale sound: overly polished, slightly generic, suspiciously perfect. People can smell it. The fix is simple — give AI your raw material and let it structure, not create from scratch.</p>
@@ -105,10 +133,66 @@ a brand.</code></pre>
   <p class="section-text">The raw material is yours. AI just shapes it into something polished and readable.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Advanced</span>
+  <h2 class="section-title">The launch sequence blueprint.</h2>
+  <p class="section-text">When you have something to sell, a well-crafted launch sequence turns subscribers into buyers. Here is the 5-email structure that works consistently:</p>
+  <p class="section-text"><strong style="color:var(--orange)">Email 1 — The Story:</strong> Tell the story of why this product exists. What problem did you see? What frustrated you enough to build a solution? Make it personal. This email sells the mission, not the product.</p>
+  <p class="section-text"><strong style="color:var(--purple)">Email 2 — The Problem:</strong> Go deep on the pain point your product solves. Use specific examples your audience recognizes. They should read this email and think "that is exactly what I'm dealing with." No pitch yet — just empathy and understanding.</p>
+  <p class="section-text"><strong style="color:var(--green)">Email 3 — The Solution:</strong> Introduce the product. Show what it does, how it works, and what results people can expect. Include a testimonial or case study if you have one. This is the first email with a buy link.</p>
+  <p class="section-text"><strong style="color:var(--blue)">Email 4 — The Objections:</strong> Address every reason someone might hesitate. Too expensive? Show the ROI. Not sure it will work for them? Share a story from someone similar. Already tried something else? Explain what makes this different. Link to purchase.</p>
+  <p class="section-text"><strong>Email 5 — The Deadline:</strong> Create genuine urgency. A real deadline, a real price increase, or a real bonus that expires. Urgency works only if it is honest — fake scarcity destroys trust permanently. This email is short, direct, and focused on one action: buy before the deadline.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Deliverability</span>
+  <h2 class="section-title">Getting past the spam filter.</h2>
+  <p class="section-text">The best email in the world means nothing if it lands in spam. Here are the deliverability basics every creator needs to know:</p>
+  <p class="section-text"><strong>Avoid spam trigger words:</strong> "FREE!!!", "Act now!", "Limited time offer!", excessive caps, and multiple exclamation marks all trigger spam filters. Write like a human, not an infomercial.</p>
+  <p class="section-text"><strong>Warm up new lists:</strong> If you are sending to a new list or switching email providers, start with your most engaged subscribers first. High open rates in the first few sends signal to email providers that your messages are wanted.</p>
+  <p class="section-text"><strong>Clean your list regularly:</strong> Remove subscribers who have not opened in 90 days. A smaller, engaged list outperforms a larger, disengaged one. Dead subscribers hurt your deliverability score.</p>
+  <p class="section-text"><strong>Ask for replies:</strong> When subscribers reply to your emails, it signals to their email provider that your messages are legitimate. "Reply and tell me [question]" in your welcome email improves deliverability for every future email.</p>
+</div>
+
 <div class="lesson-section" style="background:var(--bg); border-left:3px solid var(--accent); padding:1.5rem; border-radius:8px;">
   <span class="section-label">Try It</span>
   <h2 class="section-title">Write your welcome sequence.</h2>
   <p class="section-text">Using the 5-email framework above, generate your complete welcome sequence with AI. For each email, write one paragraph of raw notes in your own voice first — a story, a belief, a lesson — then let AI shape it into a complete email. Review each one: does it sound like you? Would you open it? Would you read to the end? If not, feed it back with specific notes until it does.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Template</span>
+  <h2 class="section-title">The weekly newsletter template.</h2>
+  <p class="section-text">Use this structure for your weekly newsletter. Paste it into AI with your raw material and it will produce a draft in minutes:</p>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Template — Weekly Newsletter</div>
+<pre style="margin:0;color:#e5e5e5"><code>Write my weekly newsletter using this structure:
+
+SUBJECT LINE: [curiosity or benefit style, under 50 chars]
+PREVIEW TEXT: [40 chars, complements the subject line]
+
+SECTION 1 — THE STORY (2-3 short paragraphs):
+Here's my raw material: [paste your messy notes, a story
+from your week, an observation, or an experience]
+Turn this into a personal, engaging opening.
+
+SECTION 2 — THE LESSON (3-4 paragraphs):
+Core insight: [one sentence summary of the lesson]
+Expand this into an actionable section with one specific
+framework or technique the reader can use immediately.
+
+SECTION 3 — THE ACTION (1 paragraph):
+One specific thing the reader should do this week.
+Make it concrete and completable in under 15 minutes.
+
+P.S. — [soft mention of my product/latest content/a
+question that invites replies]
+
+TONE: [paste your voice document or tone words]
+TOTAL LENGTH: Under 500 words. Every word earns its spot.</code></pre>
+</div>
+
 </div>
 
 <div class="lesson-section">

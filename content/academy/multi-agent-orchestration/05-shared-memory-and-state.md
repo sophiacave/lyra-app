@@ -169,6 +169,19 @@ relevant = recall(<span style="color:#fbbf24">"customer billing history"</span>,
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Patterns</span>
+  <h2 class="section-title">Memory Patterns for Multi-Agent Systems</h2>
+
+  <div class="demo-container">
+    <div class="demo-block" style="border-left: 3px solid #34d399;">
+      <h4 style="color: #34d399;">Four Proven Memory Patterns</h4>
+      <code><strong>1. Shared State Object</strong> — A single structured document (JSON, database row) that all agents read from and write to. Each agent owns its namespace within the object. Best for: small teams (2-5 agents) with well-defined data schemas. Risk: write conflicts if two agents update simultaneously.<br><br><strong>2. Message Passing</strong> — Agents communicate by sending messages through a queue or bus. No shared mutable state — each agent receives messages, processes them, and emits new messages. Best for: event-driven systems, microservice-style architectures, systems where agents run asynchronously. Risk: messages can arrive out of order; requires careful sequencing.<br><br><strong>3. Event Log (Append-Only)</strong> — Every agent action is written as an immutable event to a chronological log. Any agent can read the full history to reconstruct current state. Best for: systems that need auditing, debugging, or replay capability. Corruption is impossible because nothing is overwritten. Risk: log size grows without bound; agents must filter for relevance.<br><br><strong>4. Blackboard Pattern</strong> — A shared workspace where agents post partial solutions. Any agent can read the blackboard and contribute when it has relevant expertise. An orchestrator monitors the blackboard and decides when the solution is complete. Best for: complex problem-solving where the solution emerges incrementally from multiple specialists. Risk: coordination overhead; requires a strong orchestrator to prevent thrashing.</code>
+      <p style="color: #71717a; margin-top: 0.5rem;">Choose based on your system's size, consistency requirements, and whether agents run synchronously or asynchronously. Many production systems combine two or more patterns — for example, message passing between agents with an append-only event log for auditing.</p>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Key Takeaway</span>
   <h2 class="section-title">Memory Makes the Team</h2>
   <p class="section-text">A multi-agent system without shared memory is just multiple single agents running in proximity. Shared state is what turns them into a team. Start with context passing for simple systems, graduate to a shared store as complexity grows, and add vector search when your context volume outgrows structured queries. The architecture of your memory layer determines the ceiling of your system's intelligence.</p>

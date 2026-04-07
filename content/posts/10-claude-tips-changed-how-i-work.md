@@ -4,6 +4,7 @@ description: "Practical techniques for professionals who use Claude daily — fr
 author: "Nova"
 date: "2026-03-13"
 tags: ["claude", "ai-productivity", "prompt-engineering", "workflow"]
+excerpt: "10 battle-tested Claude techniques that save hours every week. Even one will change your workflow."
 category: "AI Tools"
 slug: "10-claude-tips-that-changed-how-i-work"
 ---

@@ -150,6 +150,43 @@ free: false
   </div>
 </div>
 
+<!-- SECTION 5: PIPELINE OPTIMIZATION -->
+<div class="lesson-section">
+  <span class="section-label">Level Up</span>
+  <h2 class="section-title">Pipeline optimization tips for sustained output.</h2>
+  <p class="section-text">Once your pipeline is running, the next challenge is keeping it efficient without burning out or letting quality slip. These six optimization strategies separate weekend creators from sustainable professionals.</p>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#34d399">Tip 1: Batch Scheduling by Energy Level</div>
+    <p>Map your pipeline stages to your natural energy cycles. <strong>Concept and brainstorming</strong> require creative energy -- schedule them when you're sharpest (morning for most people). <strong>Editing and polish</strong> need focus but not raw creativity -- afternoon work. <strong>Formatting and publishing</strong> are mechanical -- do them when you're running low. AI handles the labor at every stage, but your judgment quality still varies by energy.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#8b5cf6">Tip 2: Build a Template Library, Not Just a Prompt Library</div>
+    <p>Prompts get you started. <strong>Templates</strong> get you finished. Save the full structure of your best-performing content -- not just the prompt that generated it. A blog post template includes your intro formula, section structure, CTA placement, and metadata format. When you sit down to create, you're filling in a proven structure, not reinventing one. AI fills templates faster and more consistently than freeform generation.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#fb923c">Tip 3: Quality Gates Between Pipeline Stages</div>
+    <p>Never pass work from one stage to the next without a checkpoint. After <strong>Concept</strong>: does this idea pass the "would I bookmark this?" test? After <strong>Draft</strong>: does the structure hold up if you read only the first sentence of each section? After <strong>Edit</strong>: read the opening and closing back-to-back -- do they create a satisfying arc? These 30-second checks prevent you from polishing something that should have been caught two stages ago.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#38bdf8">Tip 4: Measure Output Quality, Not Just Output Volume</div>
+    <p>Track what actually matters: engagement rate per piece, audience feedback, time-to-create, and -- honestly -- <strong>how proud you are of it</strong>. If your volume doubled but your engagement halved, the pipeline is producing noise. Review your last 10 published pieces monthly. Rank them. Look for patterns in the top 3 and the bottom 3. Adjust your pipeline to produce more of what works.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#f472b6">Tip 5: Create a "Kill List" for Pipeline Leaks</div>
+    <p>Every pipeline has friction points where time disappears. Common leaks: spending 20 minutes choosing a featured image, rewriting the same CTA five different ways, agonizing over hashtags. Identify your top 3 time sinks and <strong>systematize them out of existence</strong>. Decide on a default image style. Write 5 CTA variations and rotate them. Pick a hashtag set per content category. Decisions made once save hours forever.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label" style="color:#e5e5e5">Tip 6: Run a Weekly Pipeline Retrospective</div>
+    <p>Spend 10 minutes every Friday asking three questions: <strong>What slowed me down this week?</strong> (Fix it or automate it.) <strong>What produced the best results?</strong> (Do more of it.) <strong>What did I skip or cut corners on?</strong> (Either cut it from the pipeline permanently or commit to doing it properly.) A pipeline that doesn't evolve calcifies. The best creators treat their system as a living thing.</p>
+  </div>
+</div>
+
 <div class="lesson-section">
   <div data-learn="FlashDeck" data-props='{"title":"Content Pipeline Key Concepts","cards":[{"front":"Style Anchor","back":"A reusable description of your unique writing voice, created by having AI analyze samples of your work. It ensures every draft sounds like you, not a chatbot."},{"front":"Batch Creation","back":"Producing multiple pieces of content in a single focused session rather than one at a time. Batching by theme or format keeps your voice consistent and your workflow efficient."},{"front":"Repurposing","back":"Transforming one finished piece into multiple formats for different platforms. A blog post becomes a Twitter thread, a newsletter intro, an Instagram caption, and more -- create once, distribute everywhere."},{"front":"The 5-Point Quality Gate","back":"A pre-publish checklist: voice check (sounds like you), value check (worth bookmarking), fact check (claims are accurate), platform check (formatted correctly), cringe check (no regrets if it goes viral)."},{"front":"Evergreen Content","back":"Content with no expiration date -- how-tos, frameworks, principles, FAQs. It fills gaps in your publishing schedule when you\\\'re sick, traveling, or need a creative break."}]}'></div>
 </div>

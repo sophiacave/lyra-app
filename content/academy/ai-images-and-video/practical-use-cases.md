@@ -103,8 +103,87 @@ of field, clean modern interior background</code></pre>
 </div>
 
 <div class="lesson-section">
+  <span class="section-label">Website and Landing Page Visuals</span>
+  <h2 class="section-title">Build a professional web presence with zero stock photo budget.</h2>
+  <p class="section-text">Stock photos are expensive, generic, and your competitors use the same ones. AI-generated visuals let you create unique imagery that matches your exact brand aesthetic. Here are specific approaches:</p>
+  <p class="section-text"><strong>Hero images:</strong> The large banner image at the top of a landing page. Generate wide-format (16:9 or wider) images with your brand colors, leaving negative space for headline text. Use soft focus or abstract elements so text remains readable on top.</p>
+  <p class="section-text"><strong>Section dividers:</strong> Subtle gradient backgrounds, abstract patterns, or atmospheric scenes that separate content sections. These should enhance readability, not compete with your text. Prompt tip: add "subtle, understated, background element" to keep them from being too attention-grabbing.</p>
+  <p class="section-text"><strong>About page imagery:</strong> Create lifestyle scenes that represent your brand values and culture. A coaching business might generate warm, inviting conversation spaces. A tech startup might generate clean, modern workspaces with innovative details.</p>
+  <p class="section-text"><strong>Feature illustrations:</strong> Instead of generic icons, generate custom illustrations for each product feature or service offering. "A minimal line illustration of a shield representing security, clean white background, single accent color" creates something unique and on-brand.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Education and Training Materials</span>
+  <h2 class="section-title">AI visuals make learning materials more engaging and more accessible.</h2>
+  <p class="section-text">Whether you are a teacher, trainer, course creator, or content producer, AI images solve the persistent problem of finding the right visual to explain a concept:</p>
+  <p class="section-text"><strong>Concept visualization:</strong> Abstract concepts become concrete. "A visual metaphor for compound interest: a small snowball at the top of a hill growing into a massive snowball at the bottom, simple and clear" creates an illustration that no stock photo library has.</p>
+  <p class="section-text"><strong>Diagram backgrounds:</strong> Generate atmospheric or abstract backgrounds for diagrams, flowcharts, and infographics. Overlay your actual diagram in a design tool. The background elevates the visual from a flat chart to something that feels polished and intentional.</p>
+  <p class="section-text"><strong>Scenario illustrations:</strong> Training materials often need illustrations of workplace scenarios, customer interactions, or hypothetical situations. AI generates these instantly. "A diverse group of colleagues having a positive brainstorming session in a modern office, natural light, illustration style" is faster and more customizable than any stock photo search.</p>
+  <p class="section-text"><strong>Historical and cultural illustrations:</strong> Need an image of a medieval marketplace for a history lesson? An ancient Roman forum? A 1920s jazz club? AI generates these in seconds, giving you custom illustrations for any historical period or cultural context.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Personal and Creative Projects</span>
+  <h2 class="section-title">The most fun use cases are the ones you do purely for yourself.</h2>
+  <p class="section-text">Beyond business and professional use, AI visuals open up creative possibilities that are just plain enjoyable:</p>
+  <p class="section-text"><strong>Custom wallpapers and backgrounds:</strong> Generate phone wallpapers, desktop backgrounds, and lock screens that match your exact aesthetic. Change them with the seasons or your mood. Try: "A serene Japanese garden in autumn, koi pond with golden maple leaves floating on water, soft morning mist, peaceful and contemplative, phone wallpaper format 9:16."</p>
+  <p class="section-text"><strong>Gift and card design:</strong> Create personalized greeting cards, invitations, and gift prints. "A birthday card illustration of a whimsical cake made of flowers and butterflies, watercolor style, joyful pastel palette" gives you something no store-bought card can match.</p>
+  <p class="section-text"><strong>Story and world-building:</strong> Writers, game masters, and creative hobbyists can visualize characters, locations, items, and scenes from their imaginative worlds. See your characters' faces. Walk through your fictional settings. This is not just fun — it deepens your creative process.</p>
+  <p class="section-text"><strong>Photo manipulation and art:</strong> Upload a real photo and transform it into different artistic styles. Turn a family photo into an oil painting. Transform a vacation snapshot into a watercolor. Create art from your own life that feels both personal and extraordinary.</p>
+</div>
+
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt — website hero image with brand colors and text space</div>
+<pre style="margin:0;color:#e5e5e5"><code>Wide panoramic hero image for a wellness brand website,
+soft gradient from warm terracotta to cream, abstract
+organic shapes suggesting growth and calm, generous negative
+space on the left side for headline text, subtle texture,
+sophisticated and modern, 1920x600 pixels, clean and airy</code></pre>
+</div>
+
+<div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Use Cases and Workflows</h2>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Print and Physical Products</span>
+  <h2 class="section-title">Taking AI visuals from screen to physical reality.</h2>
+  <p class="section-text">AI-generated images are not limited to screens. With the right preparation, they work beautifully in physical formats:</p>
+  <p class="section-text"><strong>Art prints and posters:</strong> Generate your image at the highest quality your tool allows, then upscale to print resolution (300 DPI minimum). A 1024x1024 image needs to be upscaled 3-4x for a decent print size. Use Topaz Gigapixel or Upscayl for best results. Services like Printful, Society6, or local print shops can produce gallery-quality prints.</p>
+  <p class="section-text"><strong>Merchandise:</strong> T-shirts, mugs, phone cases, tote bags — all viable with AI-generated designs. For merchandise, bold, simple designs with clean edges work best. Detailed, photorealistic images can look muddy when printed on fabric or curved surfaces.</p>
+  <p class="section-text"><strong>Event materials:</strong> Invitations, menus, programs, signage — any printed material for events can feature custom AI-generated visuals. Generate themed imagery that matches your event aesthetic, then lay out the text in a design tool.</p>
+  <p class="section-text"><strong>Packaging design:</strong> Product packaging concepts can be visualized with AI before committing to manufacturing. Generate mockups showing your product in its packaging, on shelves, in customers' hands. This helps you and your team evaluate designs before spending on physical prototypes.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Freelance and Client Work</span>
+  <h2 class="section-title">Using AI visuals professionally and ethically in client projects.</h2>
+  <p class="section-text">AI image generation is becoming a standard tool in creative freelance work. Here is how to use it professionally:</p>
+  <p class="section-text"><strong>Concept presentations:</strong> Before investing hours in final production, generate AI concepts to show clients the visual direction you are proposing. "Here are three mood directions for your campaign" — with AI-generated concept images — helps clients choose a direction before detailed work begins.</p>
+  <p class="section-text"><strong>Transparency with clients:</strong> Always disclose when AI tools are part of your process. Most clients appreciate the efficiency. Some may have specific policies about AI-generated content. Having the conversation upfront avoids problems later.</p>
+  <p class="section-text"><strong>Value-add positioning:</strong> Frame AI as a tool that enhances your creative process, not a shortcut. "I use AI for rapid concept exploration, then refine and customize through my professional design process" positions your work correctly. The value is in your creative direction, taste, and refinement — not in the raw AI output.</p>
+  <p class="section-text"><strong>Licensing clarity:</strong> Understand which tools grant commercial use rights and at which tier. Ensure your tool's license covers client work. Keep records of which tool and plan generated each deliverable in case questions arise.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Quick Project Templates</span>
+  <h2 class="section-title">Copy these prompt templates and start creating immediately.</h2>
+  <p class="section-text">Here are ready-to-use prompt templates for the most common practical projects. Copy them, fill in the brackets, and generate:</p>
+  <p class="section-text"><strong>Business card background:</strong> "Abstract minimalist background for a business card, soft gradient from [color 1] to [color 2], subtle [geometric/organic] patterns, clean and professional, no text, high resolution"</p>
+  <p class="section-text"><strong>Presentation slide:</strong> "Wide landscape background for a presentation slide, [subject/theme], soft bokeh, [color palette], 16:9 aspect ratio, negative space for text, professional and modern"</p>
+  <p class="section-text"><strong>YouTube thumbnail:</strong> "Dramatic YouTube thumbnail background, [theme/subject], bold contrast, [color scheme], space on [left/right] for text overlay, cinematic and energetic, 16:9"</p>
+  <p class="section-text"><strong>Blog header:</strong> "Blog header image about [topic], [style] aesthetic, [color palette], wide format, visually interesting but not too busy, modern, high quality"</p>
+  <p class="section-text"><strong>Product mockup:</strong> "A [product description] on a [surface], in a [setting], [lighting type], product photography, [color mood], clean background, lifestyle feel"</p>
+  <p class="section-text">Save these templates in your prompt library. Customize the bracketed sections for each project. Having these ready means you can go from idea to finished visual in under five minutes.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Putting It Into Practice</span>
+  <h2 class="section-title">The best use case is the one you actually need right now.</h2>
+  <p class="section-text">This lesson covered a wide range of practical applications. The most valuable one for you is whichever solves a problem you currently face. Do not try to do everything at once. Pick the one use case that would make the biggest immediate difference in your work or life and master it this week.</p>
+  <p class="section-text">Once you have one use case running smoothly — say, weekly social media graphics — expand to the next. Build your practical skills incrementally, and within a month you will be using AI visuals across multiple areas of your life without it feeling like extra work.</p>
+  <p class="section-text">In the next lesson, we tackle ethics and copyright — the important framework for using AI visuals responsibly and legally. Understanding these guidelines ensures that everything you create in this lesson and beyond is on solid ground.</p>
 </div>
 
 <div class="lesson-section">

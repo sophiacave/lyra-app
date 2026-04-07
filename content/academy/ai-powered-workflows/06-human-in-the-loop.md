@@ -60,12 +60,83 @@ free: false
   <p class="section-text">This isn't set-and-forget. It's a relationship. You're building trust with your system the same way you'd build trust with a new team member.</p>
 </div>
 
+<div class="lesson-section">
+  <span class="section-label">Real-World Patterns</span>
+  <h2 class="section-title">Human-in-the-Loop by Industry</h2>
+  <p class="section-text">Different industries have different risk tolerances, and that directly shapes where you put human checkpoints:</p>
+
+  <div class="demo-container">
+    <p><strong style="color: var(--blue);">Content Marketing:</strong> AI drafts social media posts → queued for batch review every morning → approved posts scheduled automatically. The human reviews tone and brand alignment — the AI handles volume and consistency.</p>
+    <p><strong style="color: var(--green);">Financial Services:</strong> AI processes expense reports under $100 automatically → reports $100-$1000 go to manager review queue → reports over $1000 require director approval gate. Dollar thresholds map directly to authority levels.</p>
+    <p><strong style="color: var(--purple);">Healthcare:</strong> AI triages patient messages → routine scheduling requests handled automatically → symptom-related messages always escalate to clinical staff. Patient safety demands conservative automation boundaries.</p>
+    <p><strong style="color: var(--orange);">Legal:</strong> AI drafts contract summaries for internal review → all client-facing communications require lawyer approval → AI auto-generates document indexes and cross-references without human review. High stakes for external, low stakes for internal.</p>
+  </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Design Principles</span>
+  <h2 class="section-title">Making Human Reviews Efficient</h2>
+  <p class="section-text">The worst human-review experience: a wall of unformatted text with a yes/no button. The best: a pre-analyzed summary with AI recommendations, relevant context pulled from other systems, and clear action buttons. Design your review interface to minimize human effort:</p>
+  <p class="section-text"><strong style="color: var(--green);">Present the AI's recommendation front and center.</strong> Don't make the human re-analyze everything from scratch. Show: "AI recommends: APPROVE (92% confidence). Reason: Customer has 3-year history, amount is within normal range." The human confirms or overrides — they don't start from zero.</p>
+  <p class="section-text"><strong style="color: var(--green);">Batch similar decisions.</strong> Ten refund approvals are faster to review as a batch than as ten separate interruptions. Group by type, present in a table, let the human approve/reject in bulk with the ability to drill into individual cases.</p>
+  <p class="section-text"><strong style="color: var(--green);">Track override patterns.</strong> If the human overrides the AI's recommendation 30% of the time for a specific category, that's a signal. Either the AI needs retraining for that category, or the rules need updating. Override tracking turns every human interaction into a learning opportunity.</p>
+  <p class="section-text"><strong style="color: var(--green);">Set SLAs for review times.</strong> A review queue that grows indefinitely defeats the purpose. If items aren't reviewed within 4 hours, auto-escalate. If still not reviewed in 8 hours, auto-approve low-risk items and notify management about the backlog.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">The Spectrum</span>
+  <h2 class="section-title">Five Levels of Human Involvement</h2>
+  <p class="section-text">The trust ladder from earlier has finer gradations than just "approval gate" and "fully automatic." Here's the complete spectrum from most human involvement to least:</p>
+  <p class="section-text"><strong style="color: var(--red);">Level 1 — Human does it, AI assists:</strong> The human performs the task with AI suggestions visible. Like autocomplete — helpful but human-driven. Good for: initial deployment of any new AI capability.</p>
+  <p class="section-text"><strong style="color: var(--orange);">Level 2 — AI does it, human approves each one:</strong> The approval gate pattern. AI produces the output, human reviews every single item. Good for: high-stakes decisions, early trust-building.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Level 3 — AI does it, human spot-checks:</strong> The review queue pattern. AI handles everything, human reviews a sample — maybe 10% of outputs, or a daily batch. Good for: proven-reliable systems with moderate stakes.</p>
+  <p class="section-text"><strong style="color: var(--green);">Level 4 — AI does it, alerts on exceptions:</strong> The escalation pattern. AI runs fully autonomous, only involving a human when it encounters something outside its confidence range. Good for: mature, well-tested systems.</p>
+  <p class="section-text"><strong style="color: var(--green);">Level 5 — Full autonomy:</strong> The AI handles everything end-to-end with no human touchpoint. Good for: low-stakes, high-volume processes where the cost of occasional errors is negligible.</p>
+</div>
+
 <div class="try-it-box">
   <h3>Try It Now</h3>
   <p>Identify the human checkpoints in your workflow.</p>
   <div class="prompt-box">
     <code>Look at your workflow steps. Which ones need human oversight right now? For each, choose: Approval Gate, Review Queue, or Escalation Path. Then ask: could this checkpoint be removed in 3 months if the system proves reliable?</code>
   </div>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Metrics</span>
+  <h2 class="section-title">Measuring Human-in-the-Loop Effectiveness</h2>
+  <p class="section-text">How do you know if your human checkpoints are working? Track these metrics:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Review throughput:</strong> How many items does a human review per hour? If this number is dropping, the review interface needs improvement or the volume needs batching.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Override rate:</strong> How often does the human disagree with the AI's recommendation? A high override rate (>20%) means the AI needs retraining. A very low rate (<2%) means you might be able to remove the human checkpoint entirely.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Time-to-review:</strong> How long does an item sit in the review queue before being acted on? Long wait times create bottlenecks. Track the 95th percentile, not just the average — outliers reveal queue backlogs.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Escalation frequency:</strong> How often do items escalate from review queue to approval gate? Frequent escalation might mean the initial AI confidence thresholds need adjustment.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Anti-Patterns</span>
+  <h2 class="section-title">Human-in-the-Loop Mistakes to Avoid</h2>
+  <p class="section-text"><strong style="color: var(--red);">The "approve everything" trap:</strong> If the human approves 99.5% of items without reading them, the approval gate is theater — it costs time without adding value. Either remove it or make the review interface more engaging.</p>
+  <p class="section-text"><strong style="color: var(--red);">The "one approver" risk:</strong> A single point of failure. That person gets sick, goes on vacation, or changes roles — and the workflow stops. Always have backup approvers and escalation timeouts.</p>
+  <p class="section-text"><strong style="color: var(--red);">The "review everything forever" stall:</strong> Some teams never graduate from approval gates because moving to less oversight feels risky. Set explicit criteria: "After 500 approved items with less than 2% override rate, this category moves to review queue." Make the graduation automatic and data-driven.</p>
+  <p class="section-text"><strong style="color: var(--red);">The "hidden feedback" gap:</strong> Humans review and approve, but their decisions never feed back into the AI model. The AI never improves. Design feedback loops where human overrides become training data for better future predictions.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Future-Proofing</span>
+  <h2 class="section-title">Planning for Changing Roles and Teams</h2>
+  <p class="section-text">Teams change. People move roles. New hires join. Your human-in-the-loop design needs to accommodate these changes without requiring a complete workflow rebuild:</p>
+  <p class="section-text"><strong style="color: var(--blue);">Role-based routing:</strong> Don't hardcode "send to Sarah for approval." Route to a role: "send to the support-lead role." When Sarah moves to a new position, update the role assignment — not the workflow. One change, not twenty.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Training documentation:</strong> When a new person takes on an approval role, they need to know what they're approving, what criteria to use, and how to override. Document this as part of the workflow, not as a separate tribal knowledge transfer.</p>
+  <p class="section-text"><strong style="color: var(--blue);">Gradual onboarding:</strong> New reviewers start by shadowing — they see the review queue and the AI's recommendations, but a senior reviewer makes the final call. After a ramp-up period, they graduate to independent reviewing. This mirrors the trust ladder but for humans, not AI.</p>
+  <p class="section-text">Planning for change from day one makes your workflow resilient. The alternative — hardcoding individuals into workflows — creates fragile systems that break every time someone goes on vacation. Design for roles, not people, and your human-in-the-loop architecture will outlast any individual contributor.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label">Legal and Compliance</span>
+  <h2 class="section-title">When Regulations Require Human Review</h2>
+  <p class="section-text">Some industries have legal requirements for human oversight. Financial services, healthcare, and legal workflows may be legally required to have a human review certain decisions — regardless of how accurate the AI is. Know your compliance requirements before designing your automation boundaries. When in doubt, keep the human checkpoint and document why it exists.</p>
+  <p class="section-text">Even outside regulated industries, consider the reputational cost of full automation in sensitive areas. Customer-facing communications, financial transactions, and anything that touches personal data all benefit from human oversight — at least initially. You can always automate more later. You can't un-send a wrong email to 10,000 customers.</p>
+  <p class="section-text">The bottom line: human-in-the-loop isn't a limitation — it's a feature. The best workflows know exactly when to act autonomously and when to pause for human wisdom. Getting that boundary right is what separates reliable automation from risky automation.</p>
 </div>
 
 <div class="lesson-section">

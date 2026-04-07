@@ -46,6 +46,40 @@ free: false
 </div>
 
 <div class="lesson-section">
+  <span class="section-label" style="color: var(--blue);">Metrics</span>
+  <h2 class="section-title">Essential Financial Metrics</h2>
+  <p class="section-text">Understanding these metrics turns raw financial data into business intelligence. Ask AI to calculate them from your data:</p>
+  <p class="section-text"><strong>Gross margin:</strong> (Revenue - Cost of Goods Sold) / Revenue. Tells you how much you keep from each sale before overhead. A declining gross margin means your costs are rising faster than your prices.</p>
+  <p class="section-text"><strong>Burn rate:</strong> How fast you are spending cash reserves. Monthly expenses minus monthly revenue equals net burn. At your current burn rate, how many months of runway do you have?</p>
+  <p class="section-text"><strong>Customer Acquisition Cost (CAC):</strong> Total marketing and sales spend divided by new customers acquired. If your CAC exceeds your average customer's lifetime value, you are losing money on every new customer.</p>
+  <p class="section-text"><strong>Customer Lifetime Value (LTV):</strong> Average revenue per customer multiplied by average customer lifespan. The LTV-to-CAC ratio should be at least 3:1 — meaning each customer brings in three times what it costs to acquire them.</p>
+  <p class="section-text"><strong>Revenue per employee:</strong> Total revenue divided by headcount. A quick efficiency benchmark you can compare against industry averages.</p>
+  <p class="section-text"><strong>Working capital ratio:</strong> Current assets divided by current liabilities. Below 1.0 means you may not be able to pay short-term obligations. Above 2.0 is generally healthy.</p>
+  <p class="section-text">You do not need to know these formulas by heart. Ask AI: "Calculate these financial metrics from my data and flag any that are outside healthy ranges for a [your industry] business."</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Templates</span>
+  <h2 class="section-title">Financial Analysis Templates</h2>
+  <p class="section-text">Save these prompt templates for recurring financial analysis tasks:</p>
+
+  <div class="demo-container" style="border-left: 3px solid var(--purple); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Monthly P&L Review:</strong></p>
+    <p><em>"Here's this month's financial data. Create a profit and loss summary: total revenue by source, total expenses by category, net profit, and margin percentage. Compare to last month and highlight anything that changed by more than 10%."</em></p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--green); padding: 1rem; background: var(--bg); margin-bottom: 1rem;">
+    <p><strong>Cash Flow Forecast:</strong></p>
+    <p><em>"Based on the last 6 months of revenue and expense data, project my cash position for the next 3 months. Account for known upcoming expenses [list them]. Show me when cash gets tight and how much buffer I need."</em></p>
+  </div>
+
+  <div class="demo-container" style="border-left: 3px solid var(--orange); padding: 1rem; background: var(--bg);">
+    <p><strong>Subscription Revenue Analysis:</strong></p>
+    <p><em>"Here's my subscription data (signup date, plan, monthly amount, cancellation date if any). Calculate: Monthly Recurring Revenue, churn rate, expansion revenue from upgrades, and net revenue retention. Show the trend for each over the last 6 months."</em></p>
+  </div>
+</div>
+
+<div class="lesson-section">
   <span class="section-label" style="color: var(--green);">Expense Analysis</span>
   <h2 class="section-title">Where Money Disappears</h2>
 
@@ -72,6 +106,39 @@ free: false
   <p class="section-text"><strong>Cash flow timing:</strong> Big expenses hitting before revenue comes in.</p>
   <p class="section-text"><strong>Single-source dependency:</strong> More than 30% of revenue from one customer.</p>
   <p class="section-text"><strong>Expense creep:</strong> Small increases that compound — $50/month here, $100/month there.</p>
+  <p class="section-text"><strong>Declining unit economics:</strong> Revenue per customer going down while acquisition costs stay the same or rise. This means growth is becoming less profitable over time.</p>
+  <p class="section-text"><strong>Irregular patterns:</strong> Revenue that comes in large lumps rather than steady streams. This creates cash flow unpredictability and makes forecasting difficult. Ask AI to assess your revenue regularity.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--green);">Personal Finance</span>
+  <h2 class="section-title">Applying These Skills to Personal Money</h2>
+  <p class="section-text">Everything in this lesson applies to personal finances too. Export your bank statement and try these prompts:</p>
+  <p class="section-text"><strong>Spending audit:</strong> "Categorize every transaction. Show me total spending by category, ranked from highest to lowest. Flag any categories where spending increased more than 15% compared to the average of the previous 3 months."</p>
+  <p class="section-text"><strong>Subscription discovery:</strong> "Find all recurring charges — anything that appears monthly or annually with a similar amount. List them with monthly cost and annual total. Which ones have I potentially forgotten about?"</p>
+  <p class="section-text"><strong>Savings opportunity:</strong> "Based on my spending patterns, identify the top 3 areas where I could realistically cut 10-20% without major lifestyle changes. Be specific about dollar amounts."</p>
+  <p class="section-text">Personal finance analysis with AI takes minutes and often reveals hundreds of dollars in potential savings. It is one of the highest-ROI uses of everything you have learned in this course.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--purple);">Caution</span>
+  <h2 class="section-title">Financial Data Privacy</h2>
+  <p class="section-text">Financial data requires extra care around privacy and security:</p>
+  <p class="section-text"><strong>Anonymize before sharing:</strong> Remove names, account numbers, and identifying information before pasting financial data into any AI tool. Replace customer names with IDs, mask the last 4 digits of account numbers, and strip any personally identifiable information.</p>
+  <p class="section-text"><strong>Use aggregate data when possible:</strong> Instead of sharing individual transactions, share summaries. "Monthly revenue by category" reveals the same patterns as raw transaction data without exposing individual records.</p>
+  <p class="section-text"><strong>Understand data retention policies:</strong> Know how the AI tool handles your data. Some tools use conversations for training; others do not. For sensitive financial data, choose tools with clear privacy guarantees.</p>
+  <p class="section-text"><strong>Never share passwords or credentials:</strong> If your financial export includes authentication tokens, API keys, or login information, scrub them before pasting. These should never enter an AI conversation.</p>
+  <p class="section-text">Financial data privacy is non-negotiable. The insights are valuable, but they are only useful if you protect the underlying data. Build these habits now and they become automatic.</p>
+</div>
+
+<div class="lesson-section">
+  <span class="section-label" style="color: var(--orange);">Benchmarking</span>
+  <h2 class="section-title">Comparing Against Benchmarks</h2>
+  <p class="section-text">Your financial data means more when you compare it against something. Ask AI to help with benchmarking:</p>
+  <p class="section-text"><strong>"Based on my industry [specify], are my gross margins healthy? What are typical benchmarks for a company at my revenue stage?"</strong></p>
+  <p class="section-text"><strong>"My customer acquisition cost is $45. Is that good, average, or concerning for a [type of business]? What range should I target?"</strong></p>
+  <p class="section-text"><strong>"My monthly burn rate is $8,000 with 6 months of runway. What actions do companies at this stage typically take to extend runway?"</strong></p>
+  <p class="section-text">AI has broad knowledge of industry benchmarks and can put your numbers in context. This turns isolated metrics into strategic intelligence about where you stand and where you need to improve.</p>
 </div>
 
   <div class="tip-box">
