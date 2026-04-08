@@ -130,6 +130,7 @@ app.whenReady().then(async () => {
       console.log('[FayeAgent]', ok ? `✅ Sovereign agent: ${fayeAgent.tools.length} tools (fractal connected)` : `⚠️ Sovereign agent: ${fayeAgent.tools.length} tools (fractal offline)`);
     }).catch(() => {});
     console.log('[FayeAgent] ✅ Sovereign agent initialized with', fayeAgent.tools.length, 'base tools');
+    localEngine.setSovereignAgent(fayeAgent);
 
     // ============ INIT AGENT ============
     brainAgent = new BrainAgent(brainContext, brainAPI, localEngine, brainMCP, brainKnowledge);

@@ -61,6 +61,7 @@ class LocalEngine {
   setAgent(agent) { this.agent = agent; }
   setMainWindow(win) { this.mainWindow = win; }
   setClaudeCodeAgent(agent) { this.sdkAgent = agent; }
+  setSovereignAgent(agent) { this.sovereignAgent = agent; }
 
   // Boot-time deep context loading — gives Faye all the context she needs
   async loadDeepContext() {
@@ -2003,35 +2004,38 @@ Return ONLY the JSON, no explanation.`;
 
         this._divineLog('EXEC_DONE', `✅ ${task.action_type} → ${task.target}`);
       } else if (task.type === 'dispatched' && task.id) {
-        // Execute a task_dispatch entry via SDK agent
+        // Execute a task_dispatch entry via sovereign agent
         await this.sb.from('task_dispatch')
           .update({ status: 'claimed', updated_at: new Date().toISOString() })
           .eq('id', task.id);
-        this._divineLog('SDK_EXEC', `Dispatched task → SDK: ${task.description}`);
-        const sdkResult = await this._divineSDKExecute(task);
+        this._divineLog('SOVEREIGN_EXEC', `Dispatched task → Agent: ${task.description}`);
+        const agentResult = await this._divineSovereignExecute(task);
         await this.sb.from('task_dispatch')
-          .update({ status: sdkResult?.success ? 'completed' : 'failed', result: sdkResult?.text?.slice(0, 1000), updated_at: new Date().toISOString() })
+          .update({ status: agentResult?.success ? 'completed' : 'failed', result: agentResult?.text?.slice(0, 1000), updated_at: new Date().toISOString() })
           .eq('id', task.id);
         await this.sb.from('brain_episodes').insert({
-          event_type: 'divine_sdk_exec',
+          event_type: 'divine_sovereign_exec',
           summary: `Cycle #${this.divineCycle}: ${task.description}`,
-          details: { task, result: sdkResult?.text?.slice(0, 500), toolsUsed: sdkResult?.toolsUsed },
+          details: { task, result: agentResult?.text?.slice(0, 500), toolsUsed: agentResult?.toolsUsed },
           session_number: this.divineSession?.session || null,
         });
-        this._divineLog('SDK_DONE', `✅ ${task.description} (${sdkResult?.toolsUsed?.length || 0} tools)`);
-      } else if (this.sdkAgent) {
-        // Execute brain task / plan step via Claude Code SDK agent
-        this._divineLog('SDK_EXEC', `Sending to SDK: ${task.description}`);
-        const sdkResult = await this._divineSDKExecute(task);
+        this._divineLog('SOVEREIGN_DONE', `✅ ${task.description} (${agentResult?.toolsUsed?.length || 0} tools)`);
+      } else if (this.sovereignAgent || this.sdkAgent) {
+        // Execute brain task / plan step via sovereign agent (preferred) or SDK fallback
+        const executor = this.sovereignAgent ? 'sovereign' : 'sdk';
+        this._divineLog(`${executor.toUpperCase()}_EXEC`, `Sending to ${executor}: ${task.description}`);
+        const agentResult = this.sovereignAgent
+          ? await this._divineSovereignExecute(task)
+          : await this._divineSDKExecute(task);
         await this.sb.from('brain_episodes').insert({
-          event_type: 'divine_sdk_exec',
+          event_type: `divine_${executor}_exec`,
           summary: `Cycle #${this.divineCycle}: ${task.description}`,
-          details: { task, result: sdkResult?.text?.slice(0, 500), toolsUsed: sdkResult?.toolsUsed },
+          details: { task, result: agentResult?.text?.slice(0, 500), toolsUsed: agentResult?.toolsUsed },
           session_number: this.divineSession?.session || null,
         });
-        this._divineLog('SDK_DONE', `✅ ${task.description} (${sdkResult?.toolsUsed?.length || 0} tools)`);
+        this._divineLog(`${executor.toUpperCase()}_DONE`, `✅ ${task.description} (${agentResult?.toolsUsed?.length || 0} tools)`);
       } else {
-        // No SDK — log as episode only
+        // No agent available — log as episode only
         await this.sb.from('brain_episodes').insert({
           event_type: 'divine_exec',
           summary: `Cycle #${this.divineCycle}: ${task.description}`,
@@ -2346,7 +2350,47 @@ JSON array:`;
     }
   }
 
-  // Execute a divine task via Claude Code SDK agent — with UI progress reporting
+  // Execute a divine task via Sovereign Agent (Ollama tool-calling loop) — zero cloud dependency
+  async _divineSovereignExecute(task) {
+    if (!this.sovereignAgent) return { success: false, error: 'No sovereign agent' };
+
+    // Check Ollama is available
+    const status = await this.sovereignAgent.isAvailable();
+    if (!status.available) {
+      this._divineLog('SOVEREIGN_OFFLINE', 'Ollama not reachable — falling back to SDK');
+      // Fallback to SDK if available
+      if (this.sdkAgent) return this._divineSDKExecute(task);
+      return { success: false, error: 'Ollama offline, no SDK fallback' };
+    }
+
+    const taskDesc = task.description || task.action_type || JSON.stringify(task);
+    this._divineSendUI({ type: 'sdk_start', task: taskDesc, cycle: this.divineCycle, index: this.divineTaskIndex });
+
+    try {
+      const prompt = `You are executing a divine cycle task. Complete this task autonomously:
+
+TASK: ${taskDesc}
+
+Rules:
+- Do the work. Don't ask questions.
+- Use brain tools (brain_read_context, brain_write_context, brain_search_context) to read/write state.
+- Use mac tools, filesystem tools, or run_command as needed.
+- Write results to brain when done.
+- Be concise in your response — 1-3 sentences about what you did.`;
+
+      const result = await this.sovereignAgent.run(prompt, this.mainWindow, {
+        model: /code|deploy|build|fix|write|create/i.test(taskDesc) ? 'qwen2.5-coder:32b' : undefined,
+      });
+
+      this._divineSendUI({ type: 'sdk_done', task: taskDesc, success: result.success, tools: result.toolCalls, turns: result.turns });
+      return { success: result.success, text: result.text, toolsUsed: result.toolsUsed };
+    } catch (e) {
+      this._divineSendUI({ type: 'sdk_done', task: taskDesc, success: false, error: e.message });
+      return { success: false, error: e.message };
+    }
+  }
+
+  // Execute a divine task via Claude Code SDK agent — with UI progress reporting (LEGACY FALLBACK)
   async _divineSDKExecute(task) {
     if (!this.sdkAgent) return { success: false, error: 'No SDK agent' };
 
