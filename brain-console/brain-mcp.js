@@ -70,42 +70,102 @@ class BrainMCP {
       },
 
       'brain_write_context': {
-        description: 'Write a key-value pair to brain_context in Supabase.',
+        description: 'Write a key-value pair to brain_context. Uses brain_safe_upsert for versioning + episode logging.',
         inputSchema: {
           type: 'object',
           properties: {
-            key: { type: 'string', description: 'Context key (e.g., "sprint.status", "user.notes")' },
+            key: { type: 'string', description: 'Context key (e.g., "session.active_work", "project.xyz")' },
             value: { type: 'string', description: 'Value to store (string or JSON string)' },
+            category: { type: 'string', description: 'Category: session, directive, infrastructure, identity, system, content' },
+            description: { type: 'string', description: 'Human-readable description (max 120 chars)' },
+            priority: { type: 'number', description: 'Priority 1-10 (default 5)' },
           },
           required: ['key', 'value'],
         },
         annotations: { readOnlyHint: false, destructiveHint: false },
-        handler: async ({ key, value }) => {
+        handler: async ({ key, value, category, description, priority }) => {
           if (!this.brainContext.supabase) throw new Error('Not connected to Supabase');
-          let parsed = value;
-          try { parsed = JSON.parse(value); } catch {}
-          await this.brainContext.supabase
+          let valStr = value;
+          try { const parsed = JSON.parse(value); valStr = JSON.stringify(parsed); } catch {}
+
+          // Try brain_safe_upsert RPC first (versioning + episode logging)
+          const { data: rpcResult, error: rpcError } = await this.brainContext.supabase
+            .rpc('brain_safe_upsert', {
+              p_key: key,
+              p_value: valStr,
+              p_category: category || 'session',
+              p_description: (description || `Written by sovereign agent`).slice(0, 120),
+              p_priority: priority || 5,
+            });
+
+          if (!rpcError && rpcResult?.action) {
+            return { success: true, key, action: rpcResult.action, version: rpcResult.version || null };
+          }
+
+          // Fallback: raw upsert (no versioning but writes succeed)
+          const { error } = await this.brainContext.supabase
             .from('brain_context')
             .upsert({
               key,
-              value: typeof parsed === 'string' ? parsed : JSON.stringify(parsed),
+              value: valStr,
+              category: category || 'session',
+              description: (description || 'Written by sovereign agent').slice(0, 120),
+              priority: priority || 5,
               updated_at: new Date().toISOString(),
             }, { onConflict: 'key' });
-          return { success: true, key, written_at: new Date().toISOString() };
+          if (error) throw error;
+          return { success: true, key, action: 'upserted_fallback' };
         },
       },
 
       'brain_search_context': {
-        description: 'Search brain_context keys and values for a query string.',
+        description: 'Search brain_context using Postgres hybrid search (keyword + semantic + chunks). Much more powerful than in-memory search.',
         inputSchema: {
           type: 'object',
           properties: {
             query: { type: 'string', description: 'Search term' },
+            limit: { type: 'number', description: 'Max results (default 10)' },
+            category: { type: 'string', description: 'Filter by category (optional)' },
           },
           required: ['query'],
         },
         annotations: { readOnlyHint: true },
-        handler: async ({ query }) => {
+        handler: async ({ query, limit, category }) => {
+          if (!this.brainContext.supabase) throw new Error('Not connected to Supabase');
+
+          // Primary: brain_hybrid_search RPC (keyword + semantic + chunks + dedup)
+          const { data: hybridResults, error: hybridError } = await this.brainContext.supabase
+            .rpc('brain_hybrid_search', {
+              query_text: query,
+              query_embedding: null,
+              match_count: limit || 10,
+              category_filter: category || null,
+              min_similarity: 0.3,
+            });
+
+          if (!hybridError && Array.isArray(hybridResults) && hybridResults.length > 0) {
+            const results = {};
+            hybridResults.forEach(r => {
+              results[r.key] = { value: r.value, category: r.category, description: r.description, score: r.score, method: r.match_method };
+            });
+            return { query, matches_found: hybridResults.length, method: 'hybrid', results };
+          }
+
+          // Fallback: brain_keyword_search RPC
+          const { data: kwResults, error: kwError } = await this.brainContext.supabase
+            .rpc('brain_keyword_search', {
+              query_text: query,
+              match_count: limit || 10,
+              category_filter: category || null,
+            });
+
+          if (!kwError && Array.isArray(kwResults) && kwResults.length > 0) {
+            const results = {};
+            kwResults.forEach(r => { results[r.key] = { value: r.value, category: r.category, description: r.description, rank: r.rank }; });
+            return { query, matches_found: kwResults.length, method: 'keyword', results };
+          }
+
+          // Last resort: in-memory (catches keys loaded in boot but not yet in search index)
           const ctx = await this.brainContext.getFullContext();
           const q = query.toLowerCase();
           const matches = {};
@@ -115,7 +175,7 @@ class BrainMCP {
               matches[k] = v;
             }
           }
-          return { query, matches_found: Object.keys(matches).length, results: matches };
+          return { query, matches_found: Object.keys(matches).length, method: 'in_memory_fallback', results: matches };
         },
       },
 
@@ -478,61 +538,48 @@ class BrainMCP {
 
       // ---- SEARCH ----
       'brain_search': {
-        description: 'Search across all brain tables: context, actions, subscribers, episodes.',
+        description: 'Search across all brain tables using Postgres hybrid search (keyword + semantic + graph).',
         inputSchema: {
           type: 'object',
           properties: {
             query: { type: 'string', description: 'Search query' },
+            limit: { type: 'number', description: 'Max results per table (default 10)' },
           },
           required: ['query'],
         },
         annotations: { readOnlyHint: true },
-        handler: async ({ query }) => {
+        handler: async ({ query, limit }) => {
           if (!this.brainContext.supabase) throw new Error('Not connected');
-          const q = query.toLowerCase();
+          const maxResults = limit || 10;
 
-          const [ctxRes, actionsRes, crmRes, episodesRes] = await Promise.all([
-            this.brainContext.getFullContext(),
-            this.brainContext.supabase.from('brain_actions').select('*').limit(50),
-            this.brainContext.supabase.from('subscribers').select('*').limit(50),
-            this.brainContext.supabase.from('brain_episodes').select('*').limit(50),
+          // Primary: Postgres hybrid search for brain_context
+          const [hybridRes, actionsRes, episodesRes] = await Promise.all([
+            this.brainContext.supabase.rpc('brain_hybrid_search', {
+              query_text: query, query_embedding: null,
+              match_count: maxResults, category_filter: null, min_similarity: 0.3,
+            }),
+            this.brainContext.supabase.from('brain_actions')
+              .select('id, action_type, target, status, priority, created_at')
+              .or(`action_type.ilike.%${query}%,target.ilike.%${query}%`)
+              .limit(maxResults),
+            this.brainContext.supabase.from('brain_episodes')
+              .select('id, event_type, summary, created_at')
+              .ilike('summary', `%${query}%`)
+              .order('created_at', { ascending: false })
+              .limit(maxResults),
           ]);
 
-          const results = { context: {}, tasks: [], crm: [], emails: [] };
+          const results = {
+            context: Array.isArray(hybridRes.data) ? hybridRes.data.map(r => ({
+              key: r.key, category: r.category, description: r.description,
+              score: r.score, method: r.match_method,
+            })) : [],
+            actions: Array.isArray(actionsRes.data) ? actionsRes.data : [],
+            episodes: Array.isArray(episodesRes.data) ? episodesRes.data : [],
+          };
 
-          // Search context
-          for (const [k, v] of Object.entries(ctxRes)) {
-            const valStr = typeof v === 'string' ? v : JSON.stringify(v);
-            if (k.toLowerCase().includes(q) || valStr.toLowerCase().includes(q)) {
-              results.context[k] = v;
-            }
-          }
-
-          // Search actions
-          if (actionsRes.data) {
-            results.tasks = actionsRes.data.filter(t =>
-              JSON.stringify(t).toLowerCase().includes(q)
-            );
-          }
-
-          // Search subscribers
-          if (crmRes.data) {
-            results.crm = crmRes.data.filter(l =>
-              JSON.stringify(l).toLowerCase().includes(q)
-            );
-          }
-
-          // Search episodes
-          if (episodesRes.data) {
-            results.emails = episodesRes.data.filter(e =>
-              JSON.stringify(e).toLowerCase().includes(q)
-            );
-          }
-
-          const totalMatches = Object.keys(results.context).length +
-            results.tasks.length + results.crm.length + results.emails.length;
-
-          return { query, total_matches: totalMatches, results };
+          const totalMatches = results.context.length + results.actions.length + results.episodes.length;
+          return { query, total_matches: totalMatches, method: 'hybrid_postgres', results };
         },
       },
 
