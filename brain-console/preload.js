@@ -41,7 +41,6 @@ contextBridge.exposeInMainWorld('brain', {
   // System Monitor
   systemMonitor: () => ipcRenderer.invoke('brain:system-monitor'),
   killProcess: (pid) => ipcRenderer.invoke('brain:kill-process', pid),
-  ollamaUnload: (model) => ipcRenderer.invoke('brain:ollama-unload', model),
 
   // Skills
   skillsList: () => ipcRenderer.invoke('brain:skills-list'),

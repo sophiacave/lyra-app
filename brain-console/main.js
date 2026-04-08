@@ -35,7 +35,7 @@ const { TerminalManager } = require('./terminal-manager');
 const { BrainAPI } = require('./brain-api');
 const { BrainContext } = require('./brain-context');
 const { LocalEngine } = require('./local-engine');
-const { SmartRouter } = require('./smart-router');
+// SmartRouter removed — divine plan v4 (SDK/sovereign agent handles routing)
 const { Scheduler } = require('./scheduler');
 const { BrainMCP } = require('./brain-mcp');
 const { BrainKnowledge } = require('./brain-knowledge');
@@ -51,7 +51,6 @@ let terminalManager;
 let brainAPI;
 let brainContext;
 let localEngine;
-let smartRouter;
 let scheduler;
 let brainMCP;
 let brainKnowledge;
@@ -112,7 +111,6 @@ app.whenReady().then(async () => {
     brainAPI = new BrainAPI(brainContext);
     await brainAPI.restoreConversation();
     localEngine = new LocalEngine(brainContext, brainAPI);
-    smartRouter = new SmartRouter(brainAPI);
     scheduler = new Scheduler(brainContext, brainAPI);
 
     // ============ INIT KNOWLEDGE BASE ============
@@ -262,7 +260,6 @@ app.whenReady().then(async () => {
   });
 
   ipcMain.handle('brain:stream-message', async (event, message) => {
-    let originalProvider;
     try {
       console.log('[IPC] stream-message received:', message);
 
@@ -331,67 +328,19 @@ app.whenReady().then(async () => {
         }
       }
 
-      // 4. Fallback: legacy brainAPI path
-      console.log('[IPC] No agent available, falling back to brainAPI...');
-      const route = await smartRouter.route(message);
-
-      if (!route.providerAvailable) {
-        mainWindow.webContents.send('brain:stream-chunk',
-          '**No AI provider available.**\n\n' +
-          'Install Claude Code SDK or set up a local AI provider:\n\n' +
-          '1. **Claude Code SDK** — `npm install @anthropic-ai/claude-agent-sdk`\n' +
-          '2. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n' +
-          '3. **Groq** — Free key at console.groq.com\n\n' +
-          '`/help` for zero-token commands.'
-        );
-        mainWindow.webContents.send('brain:stream-end', { provider: 'none' });
-        return { success: true };
-      }
-
-      originalProvider = brainContext.getConfig().aiProvider;
-      if (route.provider && route.provider !== originalProvider) {
-        brainContext.updateConfig({ aiProvider: route.provider });
-      }
-
-      const providerInfo = brainAPI.getProviders()[route.provider] || {};
-      let augmentedMessage = message;
-      if (brainKnowledge) {
-        const ragContext = brainKnowledge.generateRAGContext(message, 600);
-        if (ragContext) augmentedMessage = ragContext + '\n' + message;
-      }
-
-      let fullResponse = '';
-      let chunkCount = 0;
-      console.log('[IPC] Starting brainAPI.streamMessage...');
-      await brainAPI.streamMessage(augmentedMessage, (chunk) => {
-        chunkCount++;
-        fullResponse += chunk;
-        if (chunkCount <= 3) console.log(`[IPC] Chunk #${chunkCount}:`, chunk.slice(0, 50));
-        mainWindow.webContents.send('brain:stream-chunk', chunk);
-      });
-      console.log(`[IPC] Stream complete: ${chunkCount} chunks, ${fullResponse.length} chars`);
-
-      if (brainKnowledge && fullResponse) {
-        brainKnowledge.learnFromConversation(message, fullResponse, route.provider).catch(() => {});
-      }
-
-      mainWindow.webContents.send('brain:stream-end', {
-        provider: providerInfo.name || route.provider,
-        tier: route.tier,
-        reason: route.reason,
-        cost: providerInfo.cost || 0,
-      });
+      // 4. No agent available
+      console.log('[IPC] No agent available');
+      mainWindow.webContents.send('brain:stream-chunk',
+        '**No AI provider available.**\n\n' +
+        '1. **Claude Code SDK** — primary\n' +
+        '2. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n\n' +
+        '`/help` for zero-token commands.'
+      );
+      mainWindow.webContents.send('brain:stream-end', { provider: 'none' });
       return { success: true };
     } catch (error) {
       mainWindow.webContents.send('brain:stream-error', error.message);
       return { success: false, error: error.message };
-    } finally {
-      if (originalProvider !== undefined) {
-        const currentProvider = brainContext.getConfig().aiProvider;
-        if (currentProvider !== originalProvider) {
-          brainContext.updateConfig({ aiProvider: originalProvider });
-        }
-      }
     }
   });
 
@@ -403,12 +352,10 @@ app.whenReady().then(async () => {
   ipcMain.handle('brain:get-status', async () => {
     try {
       const status = await brainContext.getSystemStatus();
-      const budget = brainAPI.getBudget();
       const sdkReady = claudeCodeAgent ? await claudeCodeAgent.isAvailable() : false;
-      const provider = sdkReady ? { name: 'Claude Code SDK' } : await brainAPI.detectBestProvider();
       return {
-        success: true, status, budget,
-        provider: provider?.name || 'None',
+        success: true, status,
+        provider: sdkReady ? 'Claude Code SDK' : (fayeAgent ? 'Sovereign (Ollama)' : 'None'),
         sdkReady,
         sovereign: fayeAgent?.getStatus() || {},
         knowledge: brainKnowledge?.getStats() || {},
@@ -449,13 +396,11 @@ app.whenReady().then(async () => {
 
   ipcMain.handle('brain:check-providers', async () => {
     const sdkReady = claudeCodeAgent ? await claudeCodeAgent.isAvailable() : false;
-    if (sdkReady) {
-      return { detected: { name: 'Claude Code SDK', sdkReady: true }, ollama: false };
-    }
-    try {
-      const detected = brainAPI ? await brainAPI.detectBestProvider() : null;
-      return { detected, ollama: false };
-    } catch { return { detected: null, ollama: false }; }
+    const sovereignUp = fayeAgent ? (await fayeAgent.isAvailable()).available : false;
+    return {
+      detected: sdkReady ? { name: 'Claude Code SDK', sdkReady: true } : sovereignUp ? { name: 'Sovereign (Ollama)', sdkReady: false } : null,
+      ollama: sovereignUp,
+    };
   });
 
   ipcMain.handle('brain:boot-scan', async () => await brainContext.bootScan());
@@ -1135,19 +1080,7 @@ async function proactiveCycle() {
       } catch {}
     }
 
-    // 2. Budget check
-    if (brainAPI) {
-      const budget = brainAPI.getBudget();
-      if (budget?.limit > 0) {
-        const pct = (budget.tokensUsed / budget.limit) * 100;
-        if (pct > 90) insights.push({ type: 'budget', priority: 'high', title: `Token budget at ${Math.round(pct)}%`, detail: 'Consider reducing query complexity' });
-      }
-    }
-
-    // 3. Ollama health
-    // Ollama check removed — Claude Code SDK is primary provider
-
-    // 4. Self-heal
+    // 2. Self-heal
     if (sb) {
       try { await sb.from('brain_context').select('key').limit(1); }
       catch { actions.push('supabase_reconnect'); try { await brainContext.initialize(); actions.push('supabase_reconnected'); } catch {} }

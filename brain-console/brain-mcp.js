@@ -422,13 +422,10 @@ class BrainMCP {
         annotations: { readOnlyHint: true },
         handler: async () => {
           const status = await this.brainContext.getSystemStatus();
-          const budget = this.brainAPI?.getBudget();
-          const provider = await this.brainAPI?.detectBestProvider();
           return {
             connected: status.connected,
             pending_tasks: status.pendingTasks || 0,
-            active_provider: provider?.name || 'None',
-            budget: budget || {},
+            active_provider: 'Sovereign (Ollama) + Claude SDK',
             scheduler_running: this.scheduler?.running || false,
             recent_executions: this.scheduler?.getRecentExecutions()?.length || 0,
           };
@@ -545,16 +542,14 @@ class BrainMCP {
         inputSchema: { type: 'object', properties: {} },
         annotations: { readOnlyHint: true },
         handler: async () => {
-          const config = this.brainContext.getConfig();
           const status = await this.brainContext.getSystemStatus();
-          const provider = await this.brainAPI?.detectBestProvider();
           const ctx = await this.brainContext.getFullContext();
 
           return {
             context_keys: Object.keys(ctx),
             context_count: Object.keys(ctx).length,
             connected: status.connected,
-            active_provider: provider?.name || 'None',
+            active_provider: 'Sovereign (Ollama) + Claude SDK',
             capabilities_without_ai: [
               'Read/write brain_context',
               'Manage tasks (CRUD)',
