@@ -422,13 +422,10 @@ class BrainMCP {
         annotations: { readOnlyHint: true },
         handler: async () => {
           const status = await this.brainContext.getSystemStatus();
-          const budget = this.brainAPI?.getBudget();
-          const provider = await this.brainAPI?.detectBestProvider();
           return {
             connected: status.connected,
             pending_tasks: status.pendingTasks || 0,
-            active_provider: provider?.name || 'None',
-            budget: budget || {},
+            active_provider: 'Sovereign (Ollama) + Claude SDK',
             scheduler_running: this.scheduler?.running || false,
             recent_executions: this.scheduler?.getRecentExecutions()?.length || 0,
           };
@@ -545,16 +542,14 @@ class BrainMCP {
         inputSchema: { type: 'object', properties: {} },
         annotations: { readOnlyHint: true },
         handler: async () => {
-          const config = this.brainContext.getConfig();
           const status = await this.brainContext.getSystemStatus();
-          const provider = await this.brainAPI?.detectBestProvider();
           const ctx = await this.brainContext.getFullContext();
 
           return {
             context_keys: Object.keys(ctx),
             context_count: Object.keys(ctx).length,
             connected: status.connected,
-            active_provider: provider?.name || 'None',
+            active_provider: 'Sovereign (Ollama) + Claude SDK',
             capabilities_without_ai: [
               'Read/write brain_context',
               'Manage tasks (CRUD)',
@@ -578,6 +573,54 @@ class BrainMCP {
             ],
             mcp_tools_available: Object.keys(this.tools).length,
           };
+        },
+      },
+
+      // ---- VAULT (L6 AUTONOMOUS ACCESS) ----
+      'brain_vault_list': {
+        description: 'List all vault services (names and descriptions, no secrets).',
+        inputSchema: { type: 'object', properties: {} },
+        annotations: { readOnlyHint: true },
+        handler: async () => {
+          return await this.brainContext.listVaultServices();
+        },
+      },
+
+      'brain_vault_decrypt': {
+        description: 'Decrypt a vault secret by service name. Returns the decrypted credential. Use for autonomous API access.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            service: { type: 'string', description: 'Service name (e.g., "stripe", "github", "resend", "supabase.old_brain")' },
+          },
+          required: ['service'],
+        },
+        annotations: { readOnlyHint: true },
+        handler: async ({ service }) => {
+          return await this.brainContext.decryptFromVault(service);
+        },
+      },
+
+      // ---- AGENT MEMORY ----
+      'brain_memory_search': {
+        description: 'Search agent memory (13K+ learnings, conversations, self-improvements). Full-text search with ranking.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            query: { type: 'string', description: 'Search query' },
+            limit: { type: 'number', description: 'Max results (default 10)' },
+          },
+          required: ['query'],
+        },
+        annotations: { readOnlyHint: true },
+        handler: async ({ query, limit }) => {
+          if (!this.brainContext.supabase) throw new Error('Not connected');
+          const { data, error } = await this.brainContext.supabase.rpc('memory_search', {
+            search_query: query,
+            max_results: limit || 10,
+          });
+          if (error) throw error;
+          return { query, matches: data?.length || 0, results: data || [] };
         },
       },
 

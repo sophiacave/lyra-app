@@ -41,7 +41,6 @@ contextBridge.exposeInMainWorld('brain', {
   // System Monitor
   systemMonitor: () => ipcRenderer.invoke('brain:system-monitor'),
   killProcess: (pid) => ipcRenderer.invoke('brain:kill-process', pid),
-  ollamaUnload: (model) => ipcRenderer.invoke('brain:ollama-unload', model),
 
   // Skills
   skillsList: () => ipcRenderer.invoke('brain:skills-list'),
@@ -60,6 +59,7 @@ contextBridge.exposeInMainWorld('brain', {
 
   // Stream listeners
   onStreamChunk: (callback) => ipcRenderer.on('brain:stream-chunk', (_, chunk) => callback(chunk)),
+  onStreamReplace: (callback) => ipcRenderer.on('brain:stream-replace', (_, text) => callback(text)),
   onStreamEnd: (callback) => ipcRenderer.on('brain:stream-end', (_, meta) => callback(meta)),
   onStreamError: (callback) => ipcRenderer.on('brain:stream-error', (_, error) => callback(error)),
 

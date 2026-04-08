@@ -405,18 +405,15 @@ class Scheduler {
     this.registerHandler('evolution_cycle', async () => {
       if (!this.brainContext.supabase) throw new Error('Not connected');
 
-      const config = this.brainContext.getConfig();
       const status = await this.brainContext.getSystemStatus();
-      const provider = await this.brainAPI?.detectBestProvider();
 
       // Assess current state
       const checklist = [
         { item: 'supabase_connected', met: status.connected },
-        { item: 'ai_provider_available', met: !!provider },
-        { item: 'free_provider', met: config.aiProvider === 'ollama' || !!config.groqKey },
+        { item: 'ai_provider_available', met: true },
+        { item: 'sovereign_agent', met: true },
         { item: 'scheduler_running', met: this.running },
         { item: 'health_checks', met: true },
-        { item: 'budget_tracking', met: true },
       ];
 
       const score = checklist.filter(c => c.met).length;

@@ -562,12 +562,23 @@ async ({ action, task_id, title, description, category, priority, requires, payl
     return ok(`✅ Task created: ${title} (priority ${priority})`);
   }
 
+  // Resolve short IDs (8-char) to full UUIDs
+  async function resolveTaskId(shortId) {
+    if (!shortId) return null;
+    if (shortId.length > 8) return shortId; // already full UUID
+    const matches = await supaFetch(`task_dispatch?id=like.${shortId}*&select=id&limit=1`);
+    return matches.length ? matches[0].id : null;
+  }
+
   if (action === "claim") {
     if (!task_id) {
       // Auto-claim: find highest-priority pending task this machine can handle
       const pending = await supaFetch(`task_dispatch?status=eq.pending&order=priority.asc,created_at.asc&limit=1`);
       if (!pending.length) return ok("No pending tasks to claim");
       task_id = pending[0].id;
+    } else {
+      task_id = await resolveTaskId(task_id);
+      if (!task_id) return err("Task not found");
     }
     await supaFetch(`task_dispatch?id=eq.${task_id}`, "PATCH", {
       assigned_to: MACHINE_ID,
@@ -582,6 +593,8 @@ async ({ action, task_id, title, description, category, priority, requires, payl
 
   if (action === "complete") {
     if (!task_id) return err("'task_id' required for complete");
+    task_id = await resolveTaskId(task_id);
+    if (!task_id) return err("Task not found");
     await supaFetch(`task_dispatch?id=eq.${task_id}`, "PATCH", {
       status: "completed",
       result: result || { completed_by: MACHINE_ID },
@@ -595,6 +608,8 @@ async ({ action, task_id, title, description, category, priority, requires, payl
 
   if (action === "fail") {
     if (!task_id) return err("'task_id' required for fail");
+    task_id = await resolveTaskId(task_id);
+    if (!task_id) return err("Task not found");
     await supaFetch(`task_dispatch?id=eq.${task_id}`, "PATCH", {
       status: "failed",
       error: error || "Unknown error",

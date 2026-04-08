@@ -35,12 +35,13 @@ const { TerminalManager } = require('./terminal-manager');
 const { BrainAPI } = require('./brain-api');
 const { BrainContext } = require('./brain-context');
 const { LocalEngine } = require('./local-engine');
-const { SmartRouter } = require('./smart-router');
+// SmartRouter removed — divine plan v4 (SDK/sovereign agent handles routing)
 const { Scheduler } = require('./scheduler');
 const { BrainMCP } = require('./brain-mcp');
 const { BrainKnowledge } = require('./brain-knowledge');
 const { BrainAgent } = require('./brain-agent');
 const { ClaudeCodeAgent } = require('./claude-code-agent');
+const { FayeAgent } = require('./faye-agent');
 const { ElectronMCPBridge } = require('./electron-mcp-bridge');
 const { PluginLoader } = require('./plugin-loader');
 const { HookSystem } = require('./hook-system');
@@ -50,12 +51,12 @@ let terminalManager;
 let brainAPI;
 let brainContext;
 let localEngine;
-let smartRouter;
 let scheduler;
 let brainMCP;
 let brainKnowledge;
 let brainAgent;
 let claudeCodeAgent;
+let fayeAgent;
 let pluginLoader;
 let hookSystem;
 
@@ -110,7 +111,6 @@ app.whenReady().then(async () => {
     brainAPI = new BrainAPI(brainContext);
     await brainAPI.restoreConversation();
     localEngine = new LocalEngine(brainContext, brainAPI);
-    smartRouter = new SmartRouter(brainAPI);
     scheduler = new Scheduler(brainContext, brainAPI);
 
     // ============ INIT KNOWLEDGE BASE ============
@@ -120,16 +120,31 @@ app.whenReady().then(async () => {
     // ============ INIT MCP SERVER ============
     brainMCP = new BrainMCP(brainContext, brainAPI, localEngine, scheduler);
 
+    // ============ INIT SOVEREIGN AGENT ============
+    fayeAgent = new FayeAgent(brainMCP, brainContext);
+    fayeAgent.refreshBrainCache().catch(() => {});
+    // Connect fractal-mac-link MCP tools (async, non-blocking)
+    fayeAgent.connectFractal().then(ok => {
+      console.log('[FayeAgent]', ok ? `✅ Sovereign agent: ${fayeAgent.tools.length} tools (fractal connected)` : `⚠️ Sovereign agent: ${fayeAgent.tools.length} tools (fractal offline)`);
+    }).catch(() => {});
+    console.log('[FayeAgent] ✅ Sovereign agent initialized with', fayeAgent.tools.length, 'base tools');
+    localEngine.setSovereignAgent(fayeAgent);
+
     // ============ INIT AGENT ============
     brainAgent = new BrainAgent(brainContext, brainAPI, localEngine, brainMCP, brainKnowledge);
 
     // ============ INIT CLAUDE CODE AGENT ============
     claudeCodeAgent = new ClaudeCodeAgent();
+    // Set pending so divine cycle can lazy-init if async check is slow
+    localEngine._pendingSDKAgent = claudeCodeAgent;
     claudeCodeAgent.isAvailable().then(ok => {
-      console.log('[ClaudeCodeAgent]', ok ? '✅ SDK ready' : '⚠️ SDK not available, falling back to brainAPI');
-      // Give divine cycle access to SDK for task execution
+      console.log('[ClaudeCodeAgent]', ok ? '✅ SDK ready' : '⚠️ SDK not available');
       if (ok) localEngine.sdkAgent = claudeCodeAgent;
     }).catch(() => {});
+    // Load brain context into flash cache (makes Ollama brain-aware)
+    claudeCodeAgent.refreshBrainCache(brainContext).catch(() => {});
+    // Refresh every 5 min
+    setInterval(() => claudeCodeAgent.refreshBrainCache(brainContext).catch(() => {}), 300000);
 
     // ============ INIT PLUGINS ============
     pluginLoader = new PluginLoader();
@@ -155,6 +170,9 @@ app.whenReady().then(async () => {
     });
 
     createWindow();
+
+    // Wire mainWindow to localEngine for divine cycle UI progress events
+    localEngine.setMainWindow(mainWindow);
 
     mainWindow.webContents.on('did-finish-load', async () => {
       // ============ BOOT SCAN — check ALL systems on startup ============
@@ -242,7 +260,6 @@ app.whenReady().then(async () => {
   });
 
   ipcMain.handle('brain:stream-message', async (event, message) => {
-    let originalProvider;
     try {
       console.log('[IPC] stream-message received:', message);
 
@@ -277,74 +294,53 @@ app.whenReady().then(async () => {
         }
       }
 
-      // 2. Claude Code SDK agent (full agent with tools + brain MCP)
+      // 2. Dual Engine — Flash (Ollama instant) + Deep (Claude SDK verify)
       if (sdkReady) {
-        console.log('[IPC] Routing to Claude Code SDK agent...');
-        const result = await claudeCodeAgent.streamQuery(message, mainWindow);
-        return result;
+        let ollamaUp = false;
+        try {
+          ollamaUp = await new Promise((resolve) => {
+            const req = require('http').get('http://localhost:11434/api/tags', { timeout: 1500 }, (res) => {
+              resolve(res.statusCode === 200);
+            });
+            req.on('error', () => resolve(false));
+            req.on('timeout', () => { req.destroy(); resolve(false); });
+          });
+        } catch {}
+
+        if (ollamaUp) {
+          console.log('[IPC] DUAL ENGINE: Flash (Ollama) + Deep (Claude SDK)');
+          const result = await claudeCodeAgent.dualEngine(message, mainWindow);
+          return result;
+        } else {
+          console.log('[IPC] SDK only (Ollama offline)');
+          const result = await claudeCodeAgent.streamQuery(message, mainWindow);
+          return result;
+        }
       }
 
-      // 3. Fallback: legacy brainAPI path
-      console.log('[IPC] Claude Code SDK unavailable, falling back to brainAPI...');
-      const route = await smartRouter.route(message);
-
-      if (!route.providerAvailable) {
-        mainWindow.webContents.send('brain:stream-chunk',
-          '**No AI provider available.**\n\n' +
-          'Install Claude Code SDK or set up a local AI provider:\n\n' +
-          '1. **Claude Code SDK** — `npm install @anthropic-ai/claude-agent-sdk`\n' +
-          '2. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n' +
-          '3. **Groq** — Free key at console.groq.com\n\n' +
-          '`/help` for zero-token commands.'
-        );
-        mainWindow.webContents.send('brain:stream-end', { provider: 'none' });
-        return { success: true };
+      // 3. Sovereign Agent — Ollama with tool calling (zero Anthropic dependency)
+      if (fayeAgent) {
+        const ollamaStatus = await fayeAgent.isAvailable();
+        if (ollamaStatus.available) {
+          console.log('[IPC] SOVEREIGN AGENT: Ollama tool loop with', fayeAgent.tools.length, 'tools');
+          const result = await fayeAgent.run(message, mainWindow);
+          return result;
+        }
       }
 
-      originalProvider = brainContext.getConfig().aiProvider;
-      if (route.provider && route.provider !== originalProvider) {
-        brainContext.updateConfig({ aiProvider: route.provider });
-      }
-
-      const providerInfo = brainAPI.getProviders()[route.provider] || {};
-      let augmentedMessage = message;
-      if (brainKnowledge) {
-        const ragContext = brainKnowledge.generateRAGContext(message, 600);
-        if (ragContext) augmentedMessage = ragContext + '\n' + message;
-      }
-
-      let fullResponse = '';
-      let chunkCount = 0;
-      console.log('[IPC] Starting brainAPI.streamMessage...');
-      await brainAPI.streamMessage(augmentedMessage, (chunk) => {
-        chunkCount++;
-        fullResponse += chunk;
-        if (chunkCount <= 3) console.log(`[IPC] Chunk #${chunkCount}:`, chunk.slice(0, 50));
-        mainWindow.webContents.send('brain:stream-chunk', chunk);
-      });
-      console.log(`[IPC] Stream complete: ${chunkCount} chunks, ${fullResponse.length} chars`);
-
-      if (brainKnowledge && fullResponse) {
-        brainKnowledge.learnFromConversation(message, fullResponse, route.provider).catch(() => {});
-      }
-
-      mainWindow.webContents.send('brain:stream-end', {
-        provider: providerInfo.name || route.provider,
-        tier: route.tier,
-        reason: route.reason,
-        cost: providerInfo.cost || 0,
-      });
+      // 4. No agent available
+      console.log('[IPC] No agent available');
+      mainWindow.webContents.send('brain:stream-chunk',
+        '**No AI provider available.**\n\n' +
+        '1. **Claude Code SDK** — primary\n' +
+        '2. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n\n' +
+        '`/help` for zero-token commands.'
+      );
+      mainWindow.webContents.send('brain:stream-end', { provider: 'none' });
       return { success: true };
     } catch (error) {
       mainWindow.webContents.send('brain:stream-error', error.message);
       return { success: false, error: error.message };
-    } finally {
-      if (originalProvider !== undefined) {
-        const currentProvider = brainContext.getConfig().aiProvider;
-        if (currentProvider !== originalProvider) {
-          brainContext.updateConfig({ aiProvider: originalProvider });
-        }
-      }
     }
   });
 
@@ -356,13 +352,12 @@ app.whenReady().then(async () => {
   ipcMain.handle('brain:get-status', async () => {
     try {
       const status = await brainContext.getSystemStatus();
-      const budget = brainAPI.getBudget();
       const sdkReady = claudeCodeAgent ? await claudeCodeAgent.isAvailable() : false;
-      const provider = sdkReady ? { name: 'Claude Code SDK' } : await brainAPI.detectBestProvider();
       return {
-        success: true, status, budget,
-        provider: provider?.name || 'None',
+        success: true, status,
+        provider: sdkReady ? 'Claude Code SDK' : (fayeAgent ? 'Sovereign (Ollama)' : 'None'),
         sdkReady,
+        sovereign: fayeAgent?.getStatus() || {},
         knowledge: brainKnowledge?.getStats() || {},
         agent: brainAgent?.getStatus() || {},
         version: APP_VERSION,
@@ -373,12 +368,14 @@ app.whenReady().then(async () => {
   ipcMain.handle('brain:clear-conversation', () => {
     brainAPI.clearConversation();
     if (claudeCodeAgent) claudeCodeAgent.clearSession();
+    if (fayeAgent) fayeAgent.clearHistory();
     return { success: true };
   });
 
   // Cancel active Claude Code SDK query
   ipcMain.handle('brain:cancel-query', () => {
     if (claudeCodeAgent) claudeCodeAgent.cancel();
+    if (fayeAgent) fayeAgent.cancel();
     return { success: true };
   });
   ipcMain.handle('brain:get-config', () => brainContext.getConfig());
@@ -399,13 +396,11 @@ app.whenReady().then(async () => {
 
   ipcMain.handle('brain:check-providers', async () => {
     const sdkReady = claudeCodeAgent ? await claudeCodeAgent.isAvailable() : false;
-    if (sdkReady) {
-      return { detected: { name: 'Claude Code SDK', sdkReady: true }, ollama: false };
-    }
-    try {
-      const detected = brainAPI ? await brainAPI.detectBestProvider() : null;
-      return { detected, ollama: false };
-    } catch { return { detected: null, ollama: false }; }
+    const sovereignUp = fayeAgent ? (await fayeAgent.isAvailable()).available : false;
+    return {
+      detected: sdkReady ? { name: 'Claude Code SDK', sdkReady: true } : sovereignUp ? { name: 'Sovereign (Ollama)', sdkReady: false } : null,
+      ollama: sovereignUp,
+    };
   });
 
   ipcMain.handle('brain:boot-scan', async () => await brainContext.bootScan());
@@ -1085,19 +1080,7 @@ async function proactiveCycle() {
       } catch {}
     }
 
-    // 2. Budget check
-    if (brainAPI) {
-      const budget = brainAPI.getBudget();
-      if (budget?.limit > 0) {
-        const pct = (budget.tokensUsed / budget.limit) * 100;
-        if (pct > 90) insights.push({ type: 'budget', priority: 'high', title: `Token budget at ${Math.round(pct)}%`, detail: 'Consider reducing query complexity' });
-      }
-    }
-
-    // 3. Ollama health
-    // Ollama check removed — Claude Code SDK is primary provider
-
-    // 4. Self-heal
+    // 2. Self-heal
     if (sb) {
       try { await sb.from('brain_context').select('key').limit(1); }
       catch { actions.push('supabase_reconnect'); try { await brainContext.initialize(); actions.push('supabase_reconnected'); } catch {} }

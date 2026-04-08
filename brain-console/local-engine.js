@@ -61,6 +61,7 @@ class LocalEngine {
   setAgent(agent) { this.agent = agent; }
   setMainWindow(win) { this.mainWindow = win; }
   setClaudeCodeAgent(agent) { this.sdkAgent = agent; }
+  setSovereignAgent(agent) { this.sovereignAgent = agent; }
 
   // Boot-time deep context loading — gives Faye all the context she needs
   async loadDeepContext() {
@@ -2002,19 +2003,39 @@ Return ONLY the JSON, no explanation.`;
           .eq('id', task.id);
 
         this._divineLog('EXEC_DONE', `✅ ${task.action_type} → ${task.target}`);
-      } else if (this.sdkAgent) {
-        // Execute brain task via Claude Code SDK agent
-        this._divineLog('SDK_EXEC', `Sending to SDK: ${task.description}`);
-        const sdkResult = await this._divineSDKExecute(task);
+      } else if (task.type === 'dispatched' && task.id) {
+        // Execute a task_dispatch entry via sovereign agent
+        await this.sb.from('task_dispatch')
+          .update({ status: 'claimed', updated_at: new Date().toISOString() })
+          .eq('id', task.id);
+        this._divineLog('SOVEREIGN_EXEC', `Dispatched task → Agent: ${task.description}`);
+        const agentResult = await this._divineSovereignExecute(task);
+        await this.sb.from('task_dispatch')
+          .update({ status: agentResult?.success ? 'completed' : 'failed', result: agentResult?.text?.slice(0, 1000), updated_at: new Date().toISOString() })
+          .eq('id', task.id);
         await this.sb.from('brain_episodes').insert({
-          event_type: 'divine_sdk_exec',
+          event_type: 'divine_sovereign_exec',
           summary: `Cycle #${this.divineCycle}: ${task.description}`,
-          details: { task, result: sdkResult?.text?.slice(0, 500), toolsUsed: sdkResult?.toolsUsed },
+          details: { task, result: agentResult?.text?.slice(0, 500), toolsUsed: agentResult?.toolsUsed },
           session_number: this.divineSession?.session || null,
         });
-        this._divineLog('SDK_DONE', `✅ ${task.description} (${sdkResult?.toolsUsed?.length || 0} tools)`);
+        this._divineLog('SOVEREIGN_DONE', `✅ ${task.description} (${agentResult?.toolsUsed?.length || 0} tools)`);
+      } else if (this.sovereignAgent || this.sdkAgent) {
+        // Execute brain task / plan step via sovereign agent (preferred) or SDK fallback
+        const executor = this.sovereignAgent ? 'sovereign' : 'sdk';
+        this._divineLog(`${executor.toUpperCase()}_EXEC`, `Sending to ${executor}: ${task.description}`);
+        const agentResult = this.sovereignAgent
+          ? await this._divineSovereignExecute(task)
+          : await this._divineSDKExecute(task);
+        await this.sb.from('brain_episodes').insert({
+          event_type: `divine_${executor}_exec`,
+          summary: `Cycle #${this.divineCycle}: ${task.description}`,
+          details: { task, result: agentResult?.text?.slice(0, 500), toolsUsed: agentResult?.toolsUsed },
+          session_number: this.divineSession?.session || null,
+        });
+        this._divineLog(`${executor.toUpperCase()}_DONE`, `✅ ${task.description} (${agentResult?.toolsUsed?.length || 0} tools)`);
       } else {
-        // No SDK — log as episode only
+        // No agent available — log as episode only
         await this.sb.from('brain_episodes').insert({
           event_type: 'divine_exec',
           summary: `Cycle #${this.divineCycle}: ${task.description}`,
@@ -2078,12 +2099,26 @@ Return ONLY the JSON, no explanation.`;
       checks.push({ name: 'Fleet Alive', pass: allAlive, detail: `${machines.length} machines` });
     }
 
-    // Check 5: Ollama available
+    // Check 5: Sovereign Agent (Ollama) reachable
     try {
-      const r = await this._fetchTimeout('http://localhost:11434/api/tags', { method: 'GET' }, 3000);
-      checks.push({ name: 'Ollama', pass: r.ok });
+      const ollamaOk = await new Promise((resolve) => {
+        const req = require('http').request({
+          hostname: 'localhost', port: 11434, path: '/api/tags',
+          method: 'GET', timeout: 3000,
+        }, (res) => {
+          let d = '';
+          res.on('data', c => d += c);
+          res.on('end', () => {
+            try { resolve(JSON.parse(d).models?.length > 0); } catch { resolve(false); }
+          });
+        });
+        req.on('error', () => resolve(false));
+        req.on('timeout', () => { req.destroy(); resolve(false); });
+        req.end();
+      });
+      checks.push({ name: 'Sovereign Agent (Ollama)', pass: ollamaOk, detail: ollamaOk ? 'online' : 'offline — non-blocking' });
     } catch {
-      checks.push({ name: 'Ollama', pass: false });
+      checks.push({ name: 'Sovereign Agent (Ollama)', pass: false, detail: 'offline — non-blocking' });
     }
 
     const passed = checks.filter(c => c.pass).length;
@@ -2121,21 +2156,22 @@ Return ONLY the JSON, no explanation.`;
     const completedTasks = this.divinePlan?.tasks?.slice(0, this.divineTaskIndex).map(t => t.description || `${t.action_type} → ${t.target}`) || [];
     const remainingTasks = this.divinePlan?.tasks?.slice(this.divineTaskIndex).map(t => t.description || `${t.action_type} → ${t.target}`) || [];
 
-    // Write session.active_work
+    // Write console divine cycle status (separate from CLI session.active_work)
     await this.sb.from('brain_context').upsert({
-      key: 'session.active_work',
+      key: 'console.divine_status',
       value: {
         date: new Date().toISOString().split('T')[0],
         session: this.divineSession?.session || '?',
-        source: 'faye-console divine cycle',
+        source: 'like-one-console',
+        machine: 'console',
         status: `Cycle #${this.divineCycle} complete. ${completedTasks.length} tasks done.`,
         completed_this_cycle: completedTasks.slice(-10),
+        remaining: remainingTasks.slice(0, 10),
         divine_cycle: this.divineCycle,
-        divine_phase: this.divinePhase,
       },
       category: 'session',
-      description: `Console divine handoff — cycle #${this.divineCycle}`,
-      priority: 2,
+      description: `Like One Console divine cycle #${this.divineCycle} — ${completedTasks.length} done`,
+      priority: 7,
       updated_at: new Date().toISOString(),
     }, { onConflict: 'key' });
 
@@ -2273,13 +2309,18 @@ JSON array:`;
         .from('brain_context').select('value').eq('key', 'session.next_steps').single();
       if (nextData?.value) {
         const next = typeof nextData.value === 'object' ? nextData.value : JSON.parse(nextData.value);
-        // Feed P0 tasks into remaining_tasks if divine plan is empty
-        if (!this.divinePlan?.remaining_tasks?.length && next.P0?.length) {
+        // Feed next_steps into remaining_tasks if divine plan is empty
+        if (!this.divinePlan?.remaining_tasks?.length) {
           if (!this.divinePlan) this.divinePlan = {};
-          this.divinePlan.remaining_tasks = [
-            ...(next.P0 || []),
-            ...(next.P1 || []),
-          ];
+          // Handle both flat array and P0/P1 object formats
+          if (Array.isArray(next)) {
+            this.divinePlan.remaining_tasks = next;
+          } else if (next.P0?.length || next.P1?.length) {
+            this.divinePlan.remaining_tasks = [
+              ...(next.P0 || []),
+              ...(next.P1 || []),
+            ];
+          }
         }
       }
     } catch { /* brain read failed, continue with local state */ }
@@ -2309,9 +2350,49 @@ JSON array:`;
     }
   }
 
-  // Execute a divine task via Claude Code SDK agent — with UI progress reporting
+  // Execute a divine task via Sovereign Agent (Ollama tool-calling loop) — zero cloud dependency
+  async _divineSovereignExecute(task) {
+    if (!this.sovereignAgent) return { success: false, error: 'No sovereign agent' };
+
+    // Check Ollama is available
+    const status = await this.sovereignAgent.isAvailable();
+    if (!status.available) {
+      this._divineLog('SOVEREIGN_OFFLINE', 'Ollama not reachable — falling back to SDK');
+      // Fallback to SDK if available
+      if (this.sdkAgent) return this._divineSDKExecute(task);
+      return { success: false, error: 'Ollama offline, no SDK fallback' };
+    }
+
+    const taskDesc = task.description || task.action_type || JSON.stringify(task);
+    this._divineSendUI({ type: 'sdk_start', task: taskDesc, cycle: this.divineCycle, index: this.divineTaskIndex });
+
+    try {
+      const prompt = `You are executing a divine cycle task. Complete this task autonomously:
+
+TASK: ${taskDesc}
+
+Rules:
+- Do the work. Don't ask questions.
+- Use brain tools (brain_read_context, brain_write_context, brain_search_context) to read/write state.
+- Use mac tools, filesystem tools, or run_command as needed.
+- Write results to brain when done.
+- Be concise in your response — 1-3 sentences about what you did.`;
+
+      const result = await this.sovereignAgent.run(prompt, this.mainWindow, {
+        model: /code|deploy|build|fix|write|create/i.test(taskDesc) ? 'qwen2.5-coder:32b' : undefined,
+      });
+
+      this._divineSendUI({ type: 'sdk_done', task: taskDesc, success: result.success, tools: result.toolCalls, turns: result.turns });
+      return { success: result.success, text: result.text, toolsUsed: result.toolsUsed };
+    } catch (e) {
+      this._divineSendUI({ type: 'sdk_done', task: taskDesc, success: false, error: e.message });
+      return { success: false, error: e.message };
+    }
+  }
+
+  // Execute a divine task via Claude Code SDK agent — with UI progress reporting (LEGACY FALLBACK)
   async _divineSDKExecute(task) {
-    if (!await this._ensureSDKAgent()) return { success: false, error: 'No SDK agent' };
+    if (!this.sdkAgent) return { success: false, error: 'No SDK agent' };
 
     const taskDesc = task.description || task.action_type || JSON.stringify(task);
     this._divineSendUI({ type: 'sdk_start', task: taskDesc, cycle: this.divineCycle, index: this.divineTaskIndex });
@@ -2327,28 +2408,22 @@ Rules:
 - Write results to brain when done.
 - Be concise in your response — 1-3 sentences about what you did.`;
 
-      // Use SDK query directly with UI progress events
+      // Reuse the chat agent's proven SDK options (auth, env, CLI path all working)
       await this.sdkAgent.ensureLoaded();
+      const baseOpts = this.sdkAgent._buildOptions();
       const conversation = this.sdkAgent.sdk.query({
         prompt,
         options: {
-          cwd: '/Users/sophiacave',
-          systemPrompt: 'You are Faye\'s divine cycle executor. Complete tasks autonomously. Write state to brain. Be concise.',
-          tools: { type: 'preset', preset: 'claude_code' },
-          permissionMode: 'acceptEdits',
-          includePartialMessages: true,
+          ...baseOpts,
+          systemPrompt: `You are Faye's divine cycle executor. You MUST use tools to complete tasks.
+Do NOT just describe what you would do — actually DO it using Bash, Read, Write, Edit, Grep, or brain MCP tools.
+Always write results to brain using the mac_brain_write MCP tool when done.`,
+          permissionMode: 'bypassPermissions',
+          allowDangerouslySkipPermissions: true,
           persistSession: false,
+          resume: undefined,  // Don't resume chat session
           maxTurns: 15,
           maxBudgetUsd: 1.0,
-          effort: 'high',
-          mcpServers: {
-            'fractal-mac-link': {
-              type: 'stdio',
-              command: 'node',
-              args: [require('path').join(require('os').homedir(), '.fractal_brain', 'fractal-mac-link', 'server.js')],
-            },
-          },
-          env: { ...process.env, CLAUDECODE: undefined, CLAUDE_CODE_ENTRYPOINT: undefined },
         },
       });
 
