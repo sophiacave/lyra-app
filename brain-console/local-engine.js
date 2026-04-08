@@ -2095,11 +2095,26 @@ Return ONLY the JSON, no explanation.`;
       checks.push({ name: 'Fleet Alive', pass: allAlive, detail: `${machines.length} machines` });
     }
 
-    // Check 5: Claude Code SDK available
+    // Check 5: Sovereign Agent (Ollama) reachable
     try {
-      checks.push({ name: 'Claude Code SDK', pass: !!this.sdkAgent });
+      const ollamaOk = await new Promise((resolve) => {
+        const req = require('http').request({
+          hostname: 'localhost', port: 11434, path: '/api/tags',
+          method: 'GET', timeout: 3000,
+        }, (res) => {
+          let d = '';
+          res.on('data', c => d += c);
+          res.on('end', () => {
+            try { resolve(JSON.parse(d).models?.length > 0); } catch { resolve(false); }
+          });
+        });
+        req.on('error', () => resolve(false));
+        req.on('timeout', () => { req.destroy(); resolve(false); });
+        req.end();
+      });
+      checks.push({ name: 'Sovereign Agent (Ollama)', pass: ollamaOk, detail: ollamaOk ? 'online' : 'offline — non-blocking' });
     } catch {
-      checks.push({ name: 'Claude Code SDK', pass: false });
+      checks.push({ name: 'Sovereign Agent (Ollama)', pass: false, detail: 'offline — non-blocking' });
     }
 
     const passed = checks.filter(c => c.pass).length;

@@ -26,9 +26,12 @@ const path = require('path');
 const os = require('os');
 const { execSync, spawn } = require('child_process');
 
+const crypto = require('crypto');
+
 const HOME = os.homedir();
 const BRAIN_DIR = path.join(HOME, '.fractal_brain');
 const FRACTAL_SERVER = path.join(BRAIN_DIR, 'fractal-mac-link', 'server.js');
+const MACHINE_ID = os.hostname().includes('m4') ? 'm4_mirror' : 'm3_forge';
 
 // ═══ WRITE SAFETY — only these paths are writable ═══
 const SAFE_WRITE_PREFIXES = [
@@ -482,6 +485,50 @@ class FayeAgent {
     this.brainCacheTime = 0;
     // Usage tracking
     this.sessionTokens = { eval: 0, prompt: 0, totalDuration: 0 };
+    // Persistence — session ID for conversation/tool logging
+    this.sessionId = `s_${Date.now()}_${crypto.randomBytes(3).toString('hex')}`;
+  }
+
+  /**
+   * Fire-and-forget: log a conversation message to agent_conversations
+   */
+  _logConversation(role, content, opts = {}) {
+    const sb = this.brainContext?.supabase;
+    if (!sb) return;
+    sb.from('agent_conversations').insert({
+      session_id: this.sessionId,
+      machine_id: MACHINE_ID,
+      role,
+      content: typeof content === 'string' ? content.slice(0, 50000) : JSON.stringify(content).slice(0, 50000),
+      tool_calls: opts.toolCalls || null,
+      tool_name: opts.toolName || null,
+      model: opts.model || null,
+      tokens_eval: opts.tokensEval || 0,
+      tokens_prompt: opts.tokensPrompt || 0,
+    }).then(({ error }) => {
+      if (error) console.log('[Persist] conversation write failed:', error.message);
+    }).catch(() => {});
+  }
+
+  /**
+   * Fire-and-forget: log a tool call to agent_tool_log
+   */
+  _logToolCall(toolName, input, output, opts = {}) {
+    const sb = this.brainContext?.supabase;
+    if (!sb) return;
+    sb.from('agent_tool_log').insert({
+      session_id: this.sessionId,
+      machine_id: MACHINE_ID,
+      tool_name: toolName,
+      input: typeof input === 'object' ? input : { raw: input },
+      output_preview: typeof output === 'string' ? output.slice(0, 2000) : JSON.stringify(output).slice(0, 2000),
+      success: !opts.error,
+      latency_ms: opts.latencyMs || null,
+      model: opts.model || null,
+      error: opts.error || null,
+    }).then(({ error }) => {
+      if (error) console.log('[Persist] tool_log write failed:', error.message);
+    }).catch(() => {});
   }
 
   /**
@@ -683,6 +730,7 @@ class FayeAgent {
     const systemPrompt = this._buildSystemPrompt();
 
     this.conversationHistory.push({ role: 'user', content: message });
+    this._logConversation('user', message);
     this._compactHistory();
 
     let turn = 0;
@@ -724,6 +772,12 @@ class FayeAgent {
         }));
       }
       this.conversationHistory.push(assistantMsg);
+      this._logConversation('assistant', response.text, {
+        toolCalls: response.toolCalls.length > 0 ? response.toolCalls : null,
+        model,
+        tokensEval: response.evalCount,
+        tokensPrompt: response.promptEvalCount,
+      });
 
       finalText = response.text;
 
@@ -741,15 +795,26 @@ class FayeAgent {
 
         console.log(`[FayeAgent] Turn ${turn} — calling ${tc.name}(${JSON.stringify(tc.arguments).slice(0, 80)})`);
 
-        const result = await executeTool(tc.name, tc.arguments, this.brainMCP, this.fractalClient);
+        const toolStart = Date.now();
+        let result, toolError;
+        try {
+          result = await executeTool(tc.name, tc.arguments, this.brainMCP, this.fractalClient);
+        } catch (e) {
+          result = JSON.stringify({ error: e.message });
+          toolError = e.message;
+        }
+        const latencyMs = Date.now() - toolStart;
+
+        this._logToolCall(tc.name, tc.arguments, result, { latencyMs, model, error: toolError });
 
         this.conversationHistory.push({
           role: 'tool',
           content: result,
           name: tc.name,
         });
+        this._logConversation('tool', result, { toolName: tc.name });
 
-        console.log(`[FayeAgent] ${tc.name} → ${result.slice(0, 120)}`);
+        console.log(`[FayeAgent] ${tc.name} (${latencyMs}ms) → ${result.slice(0, 120)}`);
       }
 
       this._compactHistory();
