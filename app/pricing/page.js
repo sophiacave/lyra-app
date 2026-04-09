@@ -1,6 +1,20 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { site } from '../../lib/site-config';
+
+export const metadata = {
+  title: `Pricing — 90% Off Founding Member Rate | ${site.name}`,
+  description: '30 AI courses, 300+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
+  alternates: { canonical: `${site.url}/pricing/` },
+  openGraph: {
+    title: `Pricing — 90% Off Founding Member Rate | ${site.name}`,
+    description: '30 AI courses, 300+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
+    url: `${site.url}/pricing/`,
+    siteName: site.name,
+    type: 'website',
+  },
+};
 
 const PLANS = [
   {
