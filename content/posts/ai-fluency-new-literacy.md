@@ -113,3 +113,4 @@ It's a week-by-week action plan with prompt libraries, tool recommendations by i
 - [From AI Curious to AI Native: A Roadmap](/blog/from-ai-curious-to-ai-native/)
 - [What Every CEO Needs to Know About AI in 2026](/blog/what-every-ceo-needs-to-know-about-ai-2026/)
 - [The Prompt Engineering Framework Nobody Talks About](/blog/prompt-engineering-framework/)
+- [Your Legal Rights as a Student Loan Borrower in the DOGE Era](/blog/student-loan-borrower-rights-doge-era-2026/)

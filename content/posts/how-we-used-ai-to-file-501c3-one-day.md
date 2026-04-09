@@ -180,7 +180,7 @@ A person with a mission, an internet connection, and $275 can now create a legit
 
 This matters because the people who most need to formalize their impact work — grassroots organizers, community advocates, independent researchers — are the same people least likely to have $5,000 for a nonprofit lawyer.
 
-AI does not replace the mission. It does not replace the work. It removes the friction between "I want to help" and "I am legally structured to help."
+AI does not replace the mission. It does not replace the work. It removes the friction between "I want to help" and "I am legally structured to help." The same principle applies to [understanding your rights as a student loan borrower](/blog/student-loan-borrower-rights-doge-era-2026/) — the legal protections exist, but the complexity keeps most people from using them.
 
 ## Your Action Plan
 

@@ -61,7 +61,7 @@ Two weeks later I had a live website, a fleet of AI agents, automated workflows,
 Accessibility of tools doesn't automatically mean equity of outcomes. Let's be honest:
 
 - **Digital access** is still unequal. Not everyone has reliable internet or a modern laptop.
-- **AI literacy** is a new form of literacy, and like all literacy, it follows existing privilege lines unless we actively work against that.
+- **AI literacy** is a new form of literacy, and like all literacy, it follows existing privilege lines unless we actively work against that. The same goes for [knowing your legal rights](/blog/student-loan-borrower-rights-doge-era-2026/) — 40 million student loan borrowers had their data accessed and most don't even know what protections exist.
 - **Time** is a resource. The person working three jobs to survive has less bandwidth to learn prompt engineering than someone with savings.
 
 This is exactly why we built Like One the way we did. Every guide has a free path. Every course starts from zero. The $9 AI Fluency Kickstart exists because *nine dollars* should be enough to change how you work forever.

@@ -96,7 +96,7 @@ The roadmap above is mechanical. Do this, then this. But the people who actually
 
 **The complexity trap.** You try to automate your entire business in week one. You set up a Make.com scenario with 47 modules and it breaks immediately. Start with one task. Build up. Complexity is earned, not installed.
 
-**The privacy trap.** You worry so much about what data touches AI that you never start. Valid concern, wrong response. Learn what is safe to share (most business writing, public data, your own ideas) and what is not (customer PII, passwords, proprietary code). Then start with the safe stuff.
+**The privacy trap.** You worry so much about what data touches AI that you never start. Valid concern, wrong response. Learn what is safe to share (most business writing, public data, your own ideas) and what is not (customer PII, passwords, proprietary code). Then start with the safe stuff. And remember — data privacy goes both ways. While you are careful about what you share with AI, [40 million student loan borrowers just learned the government may not be as careful with theirs](/blog/student-loan-borrower-rights-doge-era-2026/).
 
 ## Your 30-Day Action Plan
 
