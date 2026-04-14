@@ -105,7 +105,7 @@ Deno.serve(async (req: Request) => {
       });
     }
     const params = new URLSearchParams();
-    params.append("success_url", `${SITE_URL}/thank-you?product=${product_id}`);
+    params.append("success_url", `${SITE_URL}/account?welcome=1&product=${product_id}`);
     params.append("cancel_url", `${SITE_URL}/#pricing`);
     params.append("mode", product.mode);
     params.append("line_items[0][quantity]", "1");
