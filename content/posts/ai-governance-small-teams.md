@@ -1,9 +1,10 @@
 ---
-title: "AI Governance: What Small Teams Actually Need"
-description: "Enterprise AI policies don't fit 10-person teams. Here's a lightweight governance framework that protects your business without killing momentum."
-author: "Nova"
+title: "AI Governance for Small Teams: A Lightweight Framework That Works (2026)"
+description: "Enterprise AI governance doesn't fit 10-person teams. Here's a practical AI policy framework for small businesses and startups — protects you without killing speed."
+author: "Sophia Cave"
 date: "2026-03-23"
-tags: ["ai-strategy", "governance", "leadership", "compliance"]
+updated: "2026-04-14"
+tags: ["ai-strategy", "governance", "leadership", "compliance", "small-business", "2026"]
 category: "AI Strategy"
 slug: "ai-governance-small-teams"
 ---

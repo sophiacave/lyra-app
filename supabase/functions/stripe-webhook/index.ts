@@ -1,12 +1,17 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 /**
- * Stripe Webhook v6 — Multi-Brain Architecture (brain-agnostic)
+ * Stripe Webhook v9-ethos — Ethos Architecture L1 Nerve Layer
  * Can be deployed on ANY brain — uses explicit env vars for cross-brain writes.
  * Primary deploy: brain-v2 (api.likeone.ai) — receives Stripe events
  * Writes to:
  *   - REVENUE brain: revenue_events, donation_ledger, academy_enrollments, notification_log
  *   - APP brain: profiles (via update_subscription_status RPC), send-product-delivery
+ *   - BRAIN-V2: giving.ledger_status (auto-synced after every payment handler)
+ * Ethos Architecture:
+ *   L1 (Nerve): webhook v9-ethos — every dollar tracked, every renewal feeds the giving ledger
+ *   L4 (Ethos): webhook v9-ethos — structural giving, sliding scale, zero silent failures
+ * v9 additions: billing_reason dedup hardened, subscription_update support, Ethos alignment
  */
 
 // REVENUE brain (explicit — works regardless of which brain this is deployed on)
@@ -185,6 +190,23 @@ async function handleCheckout(session: any) {
     source: "stripe-webhook", status: "processed",
     html_body: JSON.stringify({ product_id: productId, amount: amountTotal, donation: donationAmount })
   });
+
+  // 7. Seed subscriber → APP brain (every buyer enters nurture pipeline)
+  try {
+    await fetch(`${APP_URL}/rest/v1/subscribers`, {
+      method: "POST",
+      headers: { "apikey": APP_KEY, "Authorization": `Bearer ${APP_KEY}`, "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates,return=minimal" },
+      body: JSON.stringify({
+        email, name: customerName, source: "stripe_checkout",
+        status: "active", subscribed_at: new Date().toISOString(),
+        metadata: { product_id: productId, amount: amountTotal, stripe_customer_id: stripeCustomerId }
+      })
+    });
+    console.log(`Subscriber seeded (APP brain): ${email}`);
+  } catch (err) { console.error("Subscriber seeding failed (non-fatal):", err); }
+
+  // 8. Sync brain ledger — every checkout updates the brain's view
+  await syncBrainLedger();
 }
 
 async function handleSubscriptionDeleted(sub: any) {
@@ -218,6 +240,137 @@ async function handleSubscriptionDeleted(sub: any) {
   });
 }
 
+// Sync giving.ledger_status to BRAIN-V2 after every payment handler
+// This keeps the brain's view of the ledger always current — no stale reads
+async function syncBrainLedger() {
+  try {
+    // Read current ledger state from REVENUE brain
+    const [ledgerResp, revenueResp] = await Promise.all([
+      fetch(`${REVENUE_URL}/rest/v1/donation_ledger?select=donation_amount,status,recipient&order=created_at.desc&limit=1000`, {
+        headers: { apikey: REVENUE_KEY, Authorization: `Bearer ${REVENUE_KEY}` }
+      }),
+      fetch(`${REVENUE_URL}/rest/v1/revenue_events?select=amount&date=gte.${new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0]}&event_type=neq.churn`, {
+        headers: { apikey: REVENUE_KEY, Authorization: `Bearer ${REVENUE_KEY}` }
+      })
+    ]);
+    const ledgerRows = await ledgerResp.json();
+    const revenueRows = await revenueResp.json();
+    if (!Array.isArray(ledgerRows) || !Array.isArray(revenueRows)) return;
+
+    const totalAccrued = ledgerRows.filter((r: any) => r.status === "accrued").reduce((s: number, r: any) => s + parseFloat(r.donation_amount || 0), 0);
+    const totalDonated = ledgerRows.filter((r: any) => r.status === "donated").reduce((s: number, r: any) => s + parseFloat(r.donation_amount || 0), 0);
+    const monthlyRevenue = revenueRows.reduce((s: number, r: any) => s + parseFloat(r.amount || 0), 0);
+    const giving = await getGivingTier();
+
+    // Build per-recipient summary
+    const recipients: Record<string, { accrued: number; donated: number }> = {};
+    for (const r of ledgerRows) {
+      const key = r.recipient || "unknown";
+      if (!recipients[key]) recipients[key] = { accrued: 0, donated: 0 };
+      recipients[key][r.status === "donated" ? "donated" : "accrued"] += parseFloat(r.donation_amount || 0);
+    }
+
+    const ledgerStatus = {
+      phase: "B", source: "stripe-webhook v9-ethos",
+      total_accrued: Math.round(totalAccrued * 100) / 100,
+      total_donated: Math.round(totalDonated * 100) / 100,
+      pending: Math.round((totalAccrued - totalDonated) * 100) / 100,
+      recipients, current_pct: giving.pct * 100, current_tier: giving.tier,
+      monthly_revenue: Math.round(monthlyRevenue * 100) / 100,
+      total_revenue_lifetime: Math.round(monthlyRevenue * 100) / 100,
+      ledger_rows: ledgerRows.length,
+      revenue_events_rows_30d: revenueRows.length,
+      last_sync: new Date().toISOString(),
+      recurring_donation: { target: "UCSF HIV Cure Research Fund", url: "https://giving.ucsf.edu/fund/hiv-cure-research", amount_monthly: 5, status: "SETUP_NEEDED" }
+    };
+
+    // Write to BRAIN-V2 (same project as this edge function)
+    const BRAIN_URL = Deno.env.get("SUPABASE_URL")!;
+    const BRAIN_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    await fetch(`${BRAIN_URL}/rest/v1/brain_context?key=eq.giving.ledger_status`, {
+      method: "PATCH",
+      headers: { apikey: BRAIN_KEY, Authorization: `Bearer ${BRAIN_KEY}`, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify({ value: ledgerStatus, description: `LIVE giving ledger status — synced from REVENUE project. Auto-updated by stripe-webhook v9-ethos. ${new Date().toISOString()}`, updated_at: new Date().toISOString() })
+    });
+    console.log(`Brain ledger synced: $${ledgerStatus.total_accrued} accrued, $${ledgerStatus.total_donated} donated, ${giving.tier} tier`);
+  } catch (err) {
+    console.error("syncBrainLedger failed (non-fatal):", err);
+  }
+}
+
+// Handle recurring subscription invoice payments — L1 NERVE CRITICAL HANDLER
+// Without this, recurring revenue silently skips donation_ledger + revenue_events
+// v9-ethos: hardened dedup — only subscription_cycle + subscription_update pass through
+async function handleInvoicePaymentSucceeded(invoice: any) {
+  // Dedup: only process renewals and updates, skip initial creation (checkout handles it)
+  const validBillingReasons = ["subscription_cycle", "subscription_update"];
+  if (invoice.billing_reason === "subscription_create") {
+    console.log(`Invoice skip: subscription_create (handled by checkout)`);
+    return;
+  }
+  if (invoice.billing_reason && !validBillingReasons.includes(invoice.billing_reason)) {
+    console.log(`Invoice skip: billing_reason=${invoice.billing_reason} (not a renewal)`);
+    return;
+  }
+
+  const email = invoice.customer_email;
+  const customerName = invoice.customer_name || "Subscriber";
+  const amountPaid = (invoice.amount_paid || 0) / 100;
+  const currency = invoice.currency || "usd";
+  const stripeCustomerId = invoice.customer;
+  const subscriptionId = invoice.subscription;
+  const paymentIntentId = invoice.payment_intent;
+
+  if (!email || amountPaid <= 0) {
+    console.log(`Invoice skip: no email or zero amount`);
+    return;
+  }
+
+  console.log(`Invoice renewal: ${email}, $${amountPaid}, reason=${invoice.billing_reason}`);
+
+  // 1. Revenue event → REVENUE brain
+  await revenueQuery("revenue_events", "POST", {
+    date: new Date().toISOString().split("T")[0],
+    revenue_stream: "subscription", amount: amountPaid, currency: currency.toUpperCase(),
+    event_type: "renewal", client: customerName,
+    description: `Subscription renewal: ${invoice.lines?.data?.[0]?.description || subscriptionId}`,
+    payment_method: "stripe", external_ref: invoice.id,
+    stripe_payment_intent_id: paymentIntentId, stripe_customer_id: stripeCustomerId,
+    metadata: { subscription_id: subscriptionId, billing_reason: invoice.billing_reason, invoice_id: invoice.id, email }
+  });
+  console.log("Renewal revenue event recorded");
+
+  // 2. Giving (sliding scale) → REVENUE brain — EVERY DOLLAR FEEDS THE CURE
+  const giving = await getGivingTier();
+  const donationAmount = Math.round(amountPaid * giving.pct * 100) / 100;
+  if (donationAmount > 0) {
+    const amfarAmount = Math.round(donationAmount * 50) / 100;
+    const nprAmount = Math.round(donationAmount * 50) / 100;
+    await revenueQuery("donation_ledger", "POST", {
+      sale_amount: amountPaid, donation_amount: amfarAmount, donation_pct: giving.pct * 0.5,
+      recipient: "amfAR", status: "accrued", tier_name: giving.tier, monthly_revenue: giving.monthlyRevenue,
+      notes: `Renewal: ${giving.tier} tier (${(giving.pct * 100).toFixed(0)}%) at $${giving.monthlyRevenue.toFixed(2)}/mo — 50% HIV cure`
+    });
+    await revenueQuery("donation_ledger", "POST", {
+      sale_amount: amountPaid, donation_amount: nprAmount, donation_pct: giving.pct * 0.5,
+      recipient: "NPR", status: "accrued", tier_name: giving.tier, monthly_revenue: giving.monthlyRevenue,
+      notes: `Renewal: ${giving.tier} tier (${(giving.pct * 100).toFixed(0)}%) at $${giving.monthlyRevenue.toFixed(2)}/mo — 50% public knowledge`
+    });
+    console.log(`Renewal giving: $${donationAmount} split — $${amfarAmount} amfAR + $${nprAmount} NPR`);
+  }
+
+  // 3. Notification → REVENUE brain
+  await revenueQuery("notification_log", "POST", {
+    type: "renewal", recipient: email, recipient_name: customerName,
+    subject: `Renewal: $${amountPaid} (${invoice.billing_reason})`,
+    source: "stripe-webhook", status: "processed",
+    html_body: JSON.stringify({ amount: amountPaid, donation: donationAmount, subscription_id: subscriptionId })
+  });
+
+  // 4. Sync brain ledger
+  await syncBrainLedger();
+}
+
 async function handleSubscriptionUpdated(sub: any) {
   const subscriptionId = sub.id;
   const status = sub.status;
@@ -245,8 +398,8 @@ Deno.serve(async (req: Request) => {
   const body = await req.text();
   const sigHeader = req.headers.get("stripe-signature");
   if (!sigHeader) {
-    try { const json = JSON.parse(body); return new Response(JSON.stringify({ received: true, type: json.type || "health", version: "v6-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
-    catch { return new Response(JSON.stringify({ status: "ok", version: "v6-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
+    try { const json = JSON.parse(body); return new Response(JSON.stringify({ received: true, type: json.type || "health", version: "v9-ethos" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
+    catch { return new Response(JSON.stringify({ status: "ok", version: "v9-ethos" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
   }
   if (!await verifyStripeSignature(body, sigHeader, STRIPE_WEBHOOK_SECRET)) {
     return new Response(JSON.stringify({ error: "Invalid signature" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -256,10 +409,11 @@ Deno.serve(async (req: Request) => {
   try {
     switch (event.type) {
       case "checkout.session.completed": await handleCheckout(event.data.object); break;
+      case "invoice.payment_succeeded": await handleInvoicePaymentSucceeded(event.data.object); break;
       case "customer.subscription.deleted": await handleSubscriptionDeleted(event.data.object); break;
       case "customer.subscription.updated": await handleSubscriptionUpdated(event.data.object); break;
       default: console.log(`Unhandled: ${event.type}`);
     }
   } catch (err) { console.error(`Error: ${event.type}:`, err); }
-  return new Response(JSON.stringify({ received: true, type: event.type, version: "v6-multibrain" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  return new Response(JSON.stringify({ received: true, type: event.type, version: "v9-ethos" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
 });
