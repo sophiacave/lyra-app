@@ -137,13 +137,22 @@ async function handleCheckout(session: any) {
   const giving = await getGivingTier();
   const donationAmount = Math.round(amountTotal * giving.pct * 100) / 100;
   if (donationAmount > 0) {
+    // Mythos for Ethos: split giving 50/50 between HIV cure + public knowledge
+    const amfarAmount = Math.round(donationAmount * 50) / 100;
+    const nprAmount = Math.round(donationAmount * 50) / 100;
     await revenueQuery("donation_ledger", "POST", {
-      sale_amount: amountTotal, donation_amount: donationAmount, donation_pct: giving.pct,
+      sale_amount: amountTotal, donation_amount: amfarAmount, donation_pct: giving.pct * 0.5,
       recipient: "amfAR", status: "accrued",
       tier_name: giving.tier, monthly_revenue: giving.monthlyRevenue,
-      notes: `Sliding scale: ${giving.tier} tier (${(giving.pct * 100).toFixed(0)}%) at $${giving.monthlyRevenue.toFixed(2)}/mo revenue`
+      notes: `Sliding scale: ${giving.tier} tier (${(giving.pct * 100).toFixed(0)}%) at $${giving.monthlyRevenue.toFixed(2)}/mo — 50% HIV cure`
     });
-    console.log(`Giving: $${donationAmount} to amfAR (${giving.tier} tier, ${(giving.pct * 100).toFixed(0)}%, $${giving.monthlyRevenue.toFixed(2)}/mo)`);
+    await revenueQuery("donation_ledger", "POST", {
+      sale_amount: amountTotal, donation_amount: nprAmount, donation_pct: giving.pct * 0.5,
+      recipient: "NPR", status: "accrued",
+      tier_name: giving.tier, monthly_revenue: giving.monthlyRevenue,
+      notes: `Sliding scale: ${giving.tier} tier (${(giving.pct * 100).toFixed(0)}%) at $${giving.monthlyRevenue.toFixed(2)}/mo — 50% public knowledge`
+    });
+    console.log(`Giving: $${donationAmount} split — $${amfarAmount} amfAR + $${nprAmount} NPR (${giving.tier} tier, ${(giving.pct * 100).toFixed(0)}%, $${giving.monthlyRevenue.toFixed(2)}/mo)`);
   }
 
   // 3. Update subscription profile → APP brain
