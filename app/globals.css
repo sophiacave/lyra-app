@@ -6530,6 +6530,36 @@ select:focus-visible {
   background: var(--border-medium);
 }
 
+.impact-status-recipients {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border-default);
+}
+.impact-recipient-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+.impact-recipient-stat-name {
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+.impact-recipient-stat-amount {
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+}
+.impact-status-meta {
+  margin-top: var(--space-4);
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+}
+
 /* Giving Scale Grid */
 .impact-scale-grid {
   display: grid;

@@ -1,37 +1,83 @@
-import React from 'react';
+'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function GivingDashboard() {
-  const [totalDonated, setTotalDonated] = useState(0);
-  const [currentTier, setCurrentTier] = useState('Starter');
-  const [recipients, setRecipients] = useState([]);
-  const [missionStatement, setMissionStatement] = useState('Our mission is to support HIV Cure Research.');
-  const [givingScale, setGivingScale] = useState(['$5/mo', '$25/mo', '$100/mo']);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    // Fetch data from Supabase or an API here
-    // Example:
-    // fetch('https://api.example.com/giving-data')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setTotalDonated(data.totalDonated);
-    //     setCurrentTier(data.currentTier);
-    //     setRecipients(data.recipients);
-    //     setMissionStatement(data.missionStatement);
-    //     setGivingScale(data.givingScale);
-    //   })
-    //   .catch(error => console.error('Error fetching data:', error));
+    fetch('/api/giving')
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(setData)
+      .catch(() => setError(true));
   }, []);
 
+  if (error || !data) {
+    return (
+      <div className="impact-status-card">
+        <div className="impact-status-row">
+          <div className="impact-status-item">
+            <div className="impact-status-number">1%</div>
+            <div className="impact-status-label">Current Giving Rate</div>
+          </div>
+          <div className="impact-status-divider" />
+          <div className="impact-status-item">
+            <div className="impact-status-number">Seed</div>
+            <div className="impact-status-label">Current Tier</div>
+          </div>
+          <div className="impact-status-divider" />
+          <div className="impact-status-item">
+            <div className="impact-status-number">50%</div>
+            <div className="impact-status-label">Goal at Convergence</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const tierLabel = data.currentTier.charAt(0).toUpperCase() + data.currentTier.slice(1);
+  const recipientNames = Object.keys(data.recipients);
+
   return (
-    <div>
-      <h2>Giving Dashboard</h2>
-      <p>Total Donated: $0</p>
-      <p>Current Tier: Starter</p>
-      <p>Recipients: None</p>
-      <p>Mission Statement: Our mission is to support HIV Cure Research.</p>
-      <p>Giving Scale: $5/mo, $25/mo, $100/mo</p>
+    <div className="impact-status-card">
+      <div className="impact-status-row">
+        <div className="impact-status-item">
+          <div className="impact-status-number">{data.currentPct}%</div>
+          <div className="impact-status-label">Current Giving Rate</div>
+        </div>
+        <div className="impact-status-divider" />
+        <div className="impact-status-item">
+          <div className="impact-status-number">{tierLabel}</div>
+          <div className="impact-status-label">Current Tier</div>
+        </div>
+        <div className="impact-status-divider" />
+        <div className="impact-status-item">
+          <div className="impact-status-number">${data.totalAccrued.toFixed(2)}</div>
+          <div className="impact-status-label">Total Accrued for Research</div>
+        </div>
+      </div>
+
+      {recipientNames.length > 0 && (
+        <div className="impact-status-recipients">
+          {recipientNames.map(name => (
+            <div key={name} className="impact-recipient-stat">
+              <span className="impact-recipient-stat-name">{name}</span>
+              <span className="impact-recipient-stat-amount">
+                ${data.recipients[name].accrued?.toFixed(2) || '0.00'} accrued
+                {data.recipients[name].donated > 0 && ` / $${data.recipients[name].donated.toFixed(2)} donated`}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {data.ledgerRows > 0 && (
+        <div className="impact-status-meta">
+          {data.ledgerRows} transactions tracked
+          {data.lastSync && ` \u00B7 Last updated ${new Date(data.lastSync).toLocaleDateString()}`}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import GivingDashboard from '../components/GivingDashboard';
 import { site } from '../../lib/site-config';
 
 export const metadata = {
@@ -70,27 +71,10 @@ export default function ImpactPage() {
         </p>
       </section>
 
-      {/* Current Status */}
+      {/* Current Status — live from giving ledger */}
       <section className="site-section-sm">
         <div className="site-container-narrow text-center">
-          <div className="impact-status-card">
-            <div className="impact-status-row">
-              <div className="impact-status-item">
-                <div className="impact-status-number">1%</div>
-                <div className="impact-status-label">Current Giving Rate</div>
-              </div>
-              <div className="impact-status-divider" />
-              <div className="impact-status-item">
-                <div className="impact-status-number">Seed</div>
-                <div className="impact-status-label">Current Tier</div>
-              </div>
-              <div className="impact-status-divider" />
-              <div className="impact-status-item">
-                <div className="impact-status-number">50%</div>
-                <div className="impact-status-label">Goal at Abundance</div>
-              </div>
-            </div>
-          </div>
+          <GivingDashboard />
         </div>
       </section>
 
