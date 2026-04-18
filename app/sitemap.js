@@ -18,6 +18,8 @@ export default function sitemap() {
     { url: `${baseUrl}/forum/`, changeFrequency: 'daily', priority: 0.7 },
     { url: `${baseUrl}/community-access/`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/checklist/`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/resources/student-loan-rights-checklist/`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/calculator/`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/impact/`, changeFrequency: 'monthly', priority: 0.8 },
   ];
 

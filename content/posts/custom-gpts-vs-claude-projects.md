@@ -1,9 +1,10 @@
 ---
-title: "Custom GPTs vs Claude Projects: Which One Wins in 2026?"
+title: "Does Claude Have Custom GPTs? Yes — Here's How Projects Compare (2026)"
 date: 2026-03-28
+updated: 2026-04-14
 author: Sophia Cave
-description: "I built dozens of both. Custom GPTs are great for sharing — but Claude Projects crush them for real work. Here's the feature-by-feature breakdown most comparisons miss."
-excerpt: "I built dozens of both. Custom GPTs are great for sharing — but Claude Projects crush them for real work. Here's the feature-by-feature breakdown most comparisons miss."
+description: "Claude's answer to Custom GPTs is called Projects — and after building 40+ of each, Projects win for business. Context window, privacy, tools, and pricing compared side by side."
+excerpt: "Claude's answer to Custom GPTs is called Projects — and after building 40+ of each, Projects win for business. Context window, privacy, tools, and pricing compared side by side."
 tags: [claude, chatgpt, comparison, ai-tools, projects]
 faq:
   - q: "What is the difference between Custom GPTs and Claude Projects?"
@@ -14,7 +15,7 @@ faq:
     a: "No. Claude Projects are private to you or your team (on the Teams plan). There is no public marketplace like the GPT Store. For public distribution, Custom GPTs have the advantage."
 ---
 
-# Custom GPTs vs Claude Projects: Which Should You Build?
+# Does Claude Have Custom GPTs? Yes — They're Called Projects
 
 OpenAI has Custom GPTs. Anthropic has Claude Projects. Both promise the same thing: build a specialized AI tool tailored to your specific work without writing code.
 

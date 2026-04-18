@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
   const course = getCourse(courseSlug);
   const courseTitle = course?.title || 'Like One Academy';
   const title = `${lesson.title} — ${courseTitle} — Like One`;
-  const description = `Learn ${lesson.title.toLowerCase()} in the ${courseTitle} course. Free AI education from Like One Academy.`;
+  const description = lesson.description || `Learn ${lesson.title.toLowerCase()} in the ${courseTitle} course. Free AI education from Like One Academy.`;
   const url = `${site.url}/academy/${courseSlug}/${lessonSlug}/`;
 
   return {

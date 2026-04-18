@@ -239,3 +239,10 @@ The organizations that figure this out first will out-fund the ones that don't. 
 ---
 
 *Like One Academy has a full course on AI-powered business operations — including grant writing workflows, proposal templates, and prompt libraries. [Start free →](/academy)*
+
+---
+
+## Keep Reading
+
+- [How We Used AI to File a 501(c)(3) in One Day](/blog/how-we-used-ai-to-file-501c3-one-day/)
+- [Your Legal Rights as a Student Loan Borrower in the DOGE Era](/blog/student-loan-borrower-rights-doge-era-2026/)

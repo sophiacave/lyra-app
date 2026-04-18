@@ -1,6 +1,7 @@
 ---
 title: "10 Best MCP Servers for Claude in 2026 (Tested and Ranked)"
 date: 2026-04-02
+updated: 2026-04-14
 author: Sophia Cave
 description: "I tested 40+ MCP servers and these 10 actually work. From file systems to databases to browser automation — here are the ones worth installing."
 excerpt: "I tested 40+ MCP servers and these 10 actually work. From file systems to databases to browser automation — here are the ones worth installing."
@@ -172,6 +173,7 @@ Add more as your workflow demands. Each server you add makes Claude more capable
 
 ## Keep Reading
 
+- [Build Your First MCP Server: Connect Claude to Any API](/blog/build-first-mcp-server-connect-claude-any-api/) — step-by-step tutorial with working code
 - [How to Use Claude Code: The Complete Guide](/blog/how-to-use-claude-code-complete-guide/)
 - [How to Use Claude Projects: Complete Setup Guide](/blog/how-to-use-claude-projects-complete-guide/)
 - [Custom GPTs vs Claude Projects: Which One Wins?](/blog/custom-gpts-vs-claude-projects/)

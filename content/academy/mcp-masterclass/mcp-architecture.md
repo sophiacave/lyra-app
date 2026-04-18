@@ -1,9 +1,10 @@
 ---
-title: "MCP Architecture"
+title: "MCP Architecture: How Hosts, Clients, and Servers Work Together"
 course: "mcp-masterclass"
 order: 2
 type: "lesson"
 free: true
+description: "Understand MCP architecture in 5 minutes. How Hosts, Clients, and Servers form the Model Context Protocol communication layer — with diagrams and real examples."
 ---
 <div class="wrap">
 

@@ -1,9 +1,10 @@
 ---
-title: "Custom Instructions & Memory"
+title: "Claude Custom Instructions & Memory: Make Claude Remember You"
 course: "claude-for-beginners"
 order: 7
 type: "lesson"
 free: false
+description: "Set up Claude custom instructions so it remembers your voice, preferences, and work style. Step-by-step guide with templates you can copy today."
 ---<div class="wrap">
 
 <nav class="local-nav">
