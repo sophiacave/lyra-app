@@ -118,8 +118,10 @@ class ClaudeCodeAgent {
       maxBudgetUsd: 2.0,
       maxTurns: 30,
 
-      // Point to system-installed Claude Code CLI (not bundled in asar)
-      pathToClaudeCodeExecutable: '/opt/homebrew/bin/claude',
+      // Point to Claude Code CLI — check multiple install locations
+      pathToClaudeCodeExecutable: require('fs').existsSync('/opt/homebrew/bin/claude')
+        ? '/opt/homebrew/bin/claude'
+        : require('path').join(os.homedir(), '.local/bin/claude'),
 
       // SOVEREIGN: Point SDK at local Ollama (Anthropic API compatible)
       // Falls back to Anthropic cloud if ANTHROPIC_API_KEY is set
@@ -127,8 +129,7 @@ class ClaudeCodeAgent {
       env: {
         ...process.env,
         HOME: os.homedir(),
-        PATH: '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:' + (process.env.PATH || ''),
-        // Route to Ollama if no Anthropic key
+        PATH: [os.homedir() + '/.local/bin', '/opt/homebrew/bin', '/usr/local/bin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', process.env.PATH || ''].join(':'),
         ...(process.env.ANTHROPIC_API_KEY ? {} : {
           ANTHROPIC_BASE_URL: 'http://localhost:11434',
           ANTHROPIC_API_KEY: 'ollama-local',

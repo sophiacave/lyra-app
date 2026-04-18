@@ -192,6 +192,16 @@ app.whenReady().then(async () => {
       bridge.start();
 
       // ============ AUTO-START DIVINE CYCLE (L6 — never stops) ============
+
+function executeTask(task) {
+  console.log('[Divine] Executing task:', task);
+  // Simulate task execution
+  if (task && task.id) {
+    console.log(`[SDK Agent] Task ${task.id} executed: ${task.description}`);
+    // Add actual SDK agent logic here
+  }
+}
+
       setTimeout(async () => {
         try {
           console.log('[Divine] Auto-starting L6 divine cycle...');
@@ -202,6 +212,12 @@ app.whenReady().then(async () => {
               active: true, phase: localEngine.divinePhase, cycle: localEngine.divineCycle,
             });
           }
+
+          // Execute a sample task periodically
+          setInterval(() => {
+            const sampleTask = { id: 1, description: 'Sample Task' };
+            executeTask(sampleTask);
+          }, 30000); // Execute every 30 seconds
         } catch (e) { console.error('[Divine] Auto-start failed:', e.message); }
       }, 8000);
 
