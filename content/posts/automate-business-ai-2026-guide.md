@@ -70,7 +70,7 @@ Now your AI knows WHO you are, not just what you asked.
 
 ## Step 6: Deploy Agents (Month 2)
 
-Agents are automations with memory and judgment. Start with:
+Agents are automations with memory and judgment — built on [agentic loops](/blog/what-are-agentic-loops-explained/) that let AI plan, execute, and self-correct. Start with:
 - **Content agent** — writes blog posts from your knowledge base
 - **Health monitor** — watches your systems and alerts on failure
 - **Revenue tracker** — forecasts based on trends
@@ -96,3 +96,4 @@ The gap between you and the automated version of you is one weekend of focused b
 - [Build Your First AI Workflow in 30 Minutes](/blog/build-first-ai-workflow-30-minutes/)
 - [How I Run a One-Person AI Business (And You Can Too)](/blog/one-person-ai-business/)
 - [The Real ROI of AI Automation in 2026](/blog/real-roi-ai-automation-2026/)
+- [AI Automation Tools Compared (2026)](/blog/ai-automation-tools-compared-2026/)

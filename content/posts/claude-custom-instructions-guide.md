@@ -147,7 +147,7 @@ For a deeper comparison, see [Claude Projects vs Custom GPTs](/blog/custom-gpts-
 
 ### Template Stacking
 
-Create a base template with your universal rules (tone, formatting, identity) and then create specialized Projects that extend it. Copy your base into each Project, then add context-specific rules on top.
+Create a base template with your universal rules (tone, formatting, identity) and then create specialized Projects that extend it. Copy your base into each Project, then add context-specific rules on top. This template stacking approach becomes especially powerful when you're building [agentic loops](/blog/what-are-agentic-loops-explained/) that need consistent instructions across autonomous workflows.
 
 ### Versioning Your Instructions
 

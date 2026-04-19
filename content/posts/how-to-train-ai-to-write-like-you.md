@@ -103,7 +103,7 @@ Three rounds of this and your profile is production-ready.
 
 ## Step 5: Use It Every Session
 
-Your voice profile goes at the top of every conversation. In Claude, create a Project with your profile as the system prompt — then every conversation in that Project automatically writes in your voice. In ChatGPT, paste it as the first message or save it in Custom Instructions (though ChatGPT follows these less reliably).
+Your voice profile goes at the top of every conversation. In Claude, create a Project with your profile as the system prompt — using [Claude's custom instructions system](/blog/claude-custom-instructions-guide/) — then every conversation in that Project automatically writes in your voice. In ChatGPT, paste it as the first message or save it in Custom Instructions (though ChatGPT follows these less reliably).
 
 The workflow:
 1. Open a new conversation with your voice profile loaded

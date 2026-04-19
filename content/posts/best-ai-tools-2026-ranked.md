@@ -133,7 +133,7 @@ This category has exploded. AI coding tools have gone from autocomplete noveltie
 
 **Verdict**: The first AI coding tool that feels like a colleague, not a fancy autocomplete.
 
-Claude Code is not an IDE plugin. It is an agentic coding partner that lives in your terminal. It reads your entire codebase, understands the architecture, runs tests, creates commits, and reasons through multi-file refactors that would take a human developer hours. The difference between Claude Code and autocomplete-style tools is the difference between pair programming with a senior engineer and having a fast typist fill in boilerplate.
+Claude Code is not an IDE plugin. It is an [agentic](/blog/what-are-agentic-loops-explained/) coding partner that lives in your terminal. It reads your entire codebase, understands the architecture, runs tests, creates commits, and reasons through multi-file refactors that would take a human developer hours. The difference between Claude Code and autocomplete-style tools is the difference between pair programming with a senior engineer and having a fast typist fill in boilerplate.
 
 - **Best for**: Complex refactors, multi-file changes, understanding unfamiliar codebases, debugging, full-stack development
 - **Who should use it**: Professional developers, solo founders writing their own code, anyone working on codebases larger than a single file
@@ -244,7 +244,7 @@ The unglamorous category that quietly delivers the highest ROI. Automating repet
 
 **Verdict**: The most powerful visual automation tool. Better than Zapier in almost every way.
 
-Make's visual workflow builder is a genuine joy to use. You can see data flowing between nodes, debug individual steps, and build complex branching logic without writing code. The pricing model (based on operations, not tasks) is dramatically more cost-effective than Zapier for high-volume workflows. The AI module integrates Claude, GPT, and other models directly into automation flows.
+Make's visual workflow builder is a genuine joy to use. You can see data flowing between nodes, debug individual steps, and build complex branching logic without writing code. The pricing model (based on operations, not tasks) is dramatically more cost-effective than Zapier for high-volume workflows. For a detailed breakdown of how these tools stack up, see our [AI automation tools comparison](/blog/ai-automation-tools-compared-2026/). The AI module integrates Claude, GPT, and other models directly into automation flows.
 
 - **Best for**: Complex multi-step automations, workflows requiring branching logic, high-volume operations, teams that want visual debugging
 - **Who should use it**: Small businesses, operations teams, solopreneurs, anyone automating more than basic two-step workflows

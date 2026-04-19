@@ -100,7 +100,7 @@ For a full breakdown of when to use which tool, see our [ChatGPT vs Claude vs Ge
 
 **Pasting data without cleaning it first.** Garbage in, insights out that look convincing but are wrong. Always run Step 2.
 
-**Using vague prompts.** "Analyze this survey" gives you vague results. Specify what you want: categories, sentiment, cross-references, output format. The more specific your instructions, the more useful the output.
+**Using vague prompts.** "Analyze this survey" gives you vague results. Specify what you want: categories, sentiment, cross-references, output format. The more specific your [custom instructions](/blog/claude-custom-instructions-guide/), the more useful the output.
 
 **Trusting the output without spot-checking.** AI categorization is good but not infallible. Pull 20 random responses and verify the assigned categories match what a human would choose. If accuracy is below 85%, refine your category definitions and re-run.
 
@@ -118,6 +118,6 @@ Insights without action are trivia. Here's how to make survey analysis drive act
 
 **Close the loop with respondents.** Email participants with a summary of what you learned and what's changing. This single step increases response rates on your next survey by 30-40%.
 
-**Build a feedback system, not a feedback event.** The five-step AI workflow above takes under an hour once you've done it twice. Run it monthly or quarterly. Automate the export. Template the prompts. Make it a habit, not a project.
+**Build a feedback system, not a feedback event.** The five-step AI workflow above takes under an hour once you've done it twice. Run it monthly or quarterly. Automate the export. Template the prompts. Make it a habit, not a project. For a deeper dive into building automated feedback pipelines, see our [AI feedback analysis guide](/blog/ai-feedback-analysis-guide/).
 
 If you want to go deeper — practice datasets, advanced prompts, and techniques for longitudinal analysis — our [survey and feedback analysis lesson](/academy/ai-for-data-analysis/07-survey-and-feedback-analysis/) covers it all, free.
