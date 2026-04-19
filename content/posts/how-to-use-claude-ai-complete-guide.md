@@ -91,7 +91,7 @@ Any task you do the same way every time, Claude can help systematize it.
 
 ### Use "Projects" for Recurring Work
 
-Claude Projects let you save instructions and files that persist across conversations. Set up a project for each type of work you do regularly:
+Claude Projects let you save instructions and files that persist across conversations — and if you are switching from ChatGPT, you will want to understand [how Claude Projects compare to Custom GPTs](/blog/custom-gpts-vs-claude-projects/). Set up a project for each type of work you do regularly:
 
 - A "Weekly Report" project with your report template
 - A "Client Emails" project with your brand voice guidelines

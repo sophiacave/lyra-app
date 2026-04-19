@@ -77,7 +77,7 @@ If you have Claude Pro ($20/month), Projects are the feature that justifies the 
 3. Upload key documents: your style guide, your best-performing content, your product descriptions, your customer personas
 4. Start a conversation inside the Project and ask it to write something
 
-**The difference:** Without a Project, you re-explain who you are and what you need every single conversation. With a Project, Claude already knows. The output quality jumps immediately because the context is already loaded.
+**The difference:** Without a Project, you re-explain who you are and what you need every single conversation. With a Project, Claude already knows. The output quality jumps immediately because the context is already loaded. If you are coming from ChatGPT, see [how Claude Projects compare to Custom GPTs](/blog/custom-gpts-vs-claude-projects/) — the differences are significant.
 
 **Power move:** Create separate Projects for different work streams. One for blog content. One for client communications. One for product strategy. Each with its own instructions and knowledge base.
 
