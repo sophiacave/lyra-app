@@ -26,7 +26,7 @@ ChatGPT Plus and Claude Pro both cost $20 per month. Both give you access to the
 
 But after paying for both for over a year, I can tell you: they are not interchangeable. The right choice depends entirely on what you actually do with AI every day.
 
-Here is the honest comparison nobody else is writing.
+Here is the honest comparison nobody else is writing. (Curious how Google's Gemini fits into this? See our [ChatGPT vs Claude vs Gemini guide](/blog/chatgpt-vs-claude-vs-gemini/).)
 
 ## What You Get for $20
 

@@ -22,7 +22,7 @@ Both cost $20/month. Both promise to be your AI everything. One of them is lying
 
 I run both every day for real work: client content, code, financial analysis, automation builds. Not benchmarks. Not toy prompts. Business.
 
-Here is what actually happens when you put them to work.
+Here is what actually happens when you put them to work. (Want the full three-way picture including Gemini? Read our [ChatGPT vs Claude vs Gemini comparison](/blog/chatgpt-vs-claude-vs-gemini/).)
 
 ## Writing: Claude Wins, and It's Not Close
 

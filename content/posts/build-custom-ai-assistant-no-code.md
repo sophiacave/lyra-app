@@ -43,6 +43,8 @@ If you want the full deep dive, read our [complete comparison of Custom GPTs vs 
 **Choose Custom GPTs when:**
 - You need web browsing, DALL-E, or code execution built in
 - You want to share your assistant publicly via the GPT Store
+
+Not sure which AI platform is right for you? Our [ChatGPT vs Claude vs Gemini comparison](/blog/chatgpt-vs-claude-vs-gemini/) covers all three across writing, coding, research, and automation.
 - Your team is already embedded in the OpenAI ecosystem
 - You need API actions that connect to external services
 

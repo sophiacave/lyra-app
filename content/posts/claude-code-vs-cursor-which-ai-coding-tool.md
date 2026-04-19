@@ -22,7 +22,7 @@ faq:
 
 Two AI coding tools dominate the developer conversation right now: **Claude Code** and **Cursor**. Both promise to transform how you write software. Both deliver. But they work in fundamentally different ways.
 
-I use both daily. Here's the honest breakdown.
+I use both daily. Here's the honest breakdown. (For a broader look at how Claude compares to ChatGPT and Gemini across all tasks — not just coding — see our [ChatGPT vs Claude vs Gemini comparison](/blog/chatgpt-vs-claude-vs-gemini/).)
 
 ## The Core Difference
 

@@ -48,7 +48,7 @@ Zapier's strength is simplicity. You pick a trigger app, pick an action app, and
 - Teams where nobody wants to learn a new tool
 
 **Where it falls short:**
-- AI integration feels bolted on. Zapier's built-in AI actions are limited compared to calling Claude or GPT directly.
+- AI integration feels bolted on. Zapier's built-in AI actions are limited compared to calling [Claude, ChatGPT, or Gemini](/blog/chatgpt-vs-claude-vs-gemini/) directly.
 - Pricing gets expensive fast. The free tier gives you 100 tasks per month. Real usage starts at $29.99/month for 750 tasks.
 - Complex workflows with branching, loops, or error handling are painful to build and harder to debug.
 - Data transformation is awkward. If you need to reshape JSON or work with arrays, you will fight the interface.
