@@ -74,7 +74,7 @@ For production software development: **Claude Code**, and it's not close. For qu
 
 This is where the comparison gets interesting, because each model genuinely excels at something different.
 
-**Claude** is the best at structured analysis. Hand it a messy dataset, a stack of documents, or a strategic question, and it produces clear, organized breakdowns with reasoning you can follow. The 200K token context window (1M on Opus) means you can load entire reports without chunking. It also pushes back when your question has flawed assumptions — which is valuable, not annoying.
+**Claude** is the best at structured analysis. Hand it a messy dataset, a stack of documents, or a strategic question, and it produces clear, organized breakdowns with reasoning you can follow. For a real example, see how we use Claude for [AI-powered feedback analysis](/blog/ai-feedback-analysis-guide/). The 200K token context window (1M on Opus) means you can load entire reports without chunking. It also pushes back when your question has flawed assumptions — which is valuable, not annoying.
 
 **ChatGPT** with browsing is the best for real-time research. It pulls current information, cross-references sources, and summarizes findings with citations. If your work depends on what happened yesterday, ChatGPT is the tool.
 
@@ -86,7 +86,7 @@ This is where the comparison gets interesting, because each model genuinely exce
 
 Claude's agent capabilities through Claude Code, the API, and MCP (Model Context Protocol) are the most production-ready in 2026. MCP lets Claude connect to databases, file systems, APIs, and external services through a standardized protocol. I run autonomous workflows that handle everything from email management to software deployment to content pipelines. It's not theoretical — it's my daily operating system.
 
-ChatGPT's Custom GPTs and the GPT Store provide the largest ecosystem of pre-built tools. The barrier to entry is lower. You can create a functioning agent in minutes without writing code. For teams that need quick, visual, no-code automation, this is the path of least resistance.
+ChatGPT's Custom GPTs and the GPT Store provide the largest ecosystem of pre-built tools. The barrier to entry is lower. You can create a functioning agent in minutes without writing code. For teams that need quick, visual, no-code automation, this is the path of least resistance. For a deep dive on how Custom GPTs stack up against Claude's equivalent, see our [Custom GPTs vs Claude Projects comparison](/blog/custom-gpts-vs-claude-projects/).
 
 Gemini integrates natively into Google Workspace — Gmail, Docs, Sheets, Calendar, Meet. If your business runs on Google, this integration is seamless in ways the others can't match without third-party connectors. Gemini in Google Sheets alone can replace hours of manual data work.
 
@@ -193,10 +193,10 @@ Stop thinking about which AI is "best." That question has no answer. Think about
 
 **You want AI to run parts of your business →** Learn all three. Build workflows. Start with our [AI-powered workflows course](https://likeone.ai/academy/ai-powered-workflows/).
 
-**You want to build AI agents →** Claude Code + MCP is the production-ready path. Our [AI agent course](https://likeone.ai/academy/first-ai-agent/) starts from zero.
+**You want to build AI agents →** Claude Code + MCP is the production-ready path. Our [AI agent course](https://likeone.ai/academy/first-ai-agent/) starts from zero. Or skip the code entirely: [How to Build an AI Agent With No Code](/blog/how-to-build-ai-agent-no-code-2026/).
 
 The person who uses the right tool for each job will outperform the person arguing about which tool is best. Tools are not religions. Learn them all, deploy them where they're strongest, and build systems — not opinions.
 
 ---
 
-*I teach practical AI skills — not theory — at [Like One Academy](https://likeone.ai/academy/). Thirty courses covering Claude, ChatGPT, automation, agents, and the real workflows behind an AI-native business. Free to start.*
+*I teach practical AI skills — not theory — at [Like One Academy](https://likeone.ai/academy/). Thirty courses covering Claude, ChatGPT, automation, agents, and the real workflows behind an AI-native business. Free to start.* Planning an AI-native company? Read the [AI company business plan framework](/blog/ai-company-business-plan-2026/) for unit economics, moat strategy, and what investors actually fund in 2026.

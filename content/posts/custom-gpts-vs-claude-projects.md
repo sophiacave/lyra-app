@@ -1,5 +1,5 @@
 ---
-title: "Does Claude Have Custom GPTs? Yes — Here's How Projects Compare (2026)"
+title: "Custom GPTs vs Claude Projects — Full Comparison (2026)"
 date: 2026-03-28
 updated: 2026-04-19
 author: Sophia Cave

@@ -67,7 +67,7 @@ Enterprise governance involves evaluating dozens of AI tools across security, co
 
 **Pick two AI tools. Standardize on them. Block everything else.**
 
-One general-purpose model (Claude or ChatGPT) and one specialized tool for your core work (a code assistant, a design tool, a writing platform). That's it.
+One general-purpose model (Claude or ChatGPT) and one specialized tool for your core work (a code assistant, a design tool, a writing platform). That's it. If you're deciding between the two, our [Custom GPTs vs Claude Projects comparison](/blog/custom-gpts-vs-claude-projects/) breaks down privacy, context windows, and pricing.
 
 Why? Because every additional tool is another attack surface, another terms-of-service agreement to read, another data handling policy to verify. Two tools you understand deeply beats ten tools nobody's vetted.
 
