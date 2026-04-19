@@ -1,0 +1,217 @@
+# Template Engines
+
+**Course:** Advanced Content Generation Pipeline
+**Order:** 3
+**Type:** lesson
+**Access:** Free
+
+---
+[← Content Generation Pipeline](/academy/content-generation-pipeline/)
+  Lesson 3 of 10
+
+
+  # Template Engines
+
+  Building reusable content templates.
+
+
+  ### What You'll Learn
+
+
+    - Why templates beat blank pages every time
+
+    - Building prompt templates with variable slots
+
+    - Template inheritance and composition
+
+    - Creating a template library that grows with you
+
+
+
+
+  The Problem
+  ## Stop Reinventing the Wheel
+
+  Every time you write a prompt from scratch, you're wasting the lessons you already learned. What worked last time? What tone landed? What structure got the best engagement? Without templates, that knowledge evaporates between sessions.
+  A template engine is your collection of proven prompt patterns with slots for variable content. Think of it like a fill-in-the-blanks system where the blanks are the only things that change — the structure, voice, and quality standards stay locked in.
+
+
+  The Build
+  ## Anatomy of a Content Template
+
+  A strong template has four layers. **Role**: who the AI is acting as. **Context**: the background and constraints that don't change. **Variables**: the slots you fill in each time — topic, audience, angle. **Output spec**: exactly what you want back, in what format, at what length.
+  The key is making your variables explicit. Wrap them in brackets. Document what goes in each one. When someone else (or future you) picks up the template, there's zero ambiguity about how to use it.
+
+
+  ### Template Example: LinkedIn Thought Leadership Post
+
+
+ROLE: Senior content strategist writing for a {{INDUSTRY}} leader
+CONTEXT: Posts should feel authentic, not corporate.
+Lead with a contrarian take. Back it with experience.
+VARIABLES:
+  {{TOPIC}} - The core subject
+  {{HOT_TAKE}} - The contrarian angle
+  {{PROOF_POINT}} - A specific result or data point
+  {{INDUSTRY}} - The reader's industry
+OUTPUT:
+  - Hook line (under 15 words, pattern-interrupt)
+  - 3-paragraph body (short paragraphs, 2-3 sentences each)
+  - Closing question to drive comments
+  - Total: 150-200 words
+
+
+
+  Advanced Pattern
+  ## Template Composition
+
+  The real power comes when templates call other templates. Your blog post template might include a "hook generator" sub-template, a "section writer" sub-template used four times with different inputs, and a "CTA builder" sub-template at the end. Each sub-template is independently testable and improvable.
+  This is template composition — the same principle that makes modern software work. Small, focused, reusable components that combine into complex outputs. Change the hook generator and every blog post gets better hooks. Fix the CTA builder once and every piece of content benefits.
+
+
+  ### Try It Yourself
+
+  Build a template for content you create at least weekly. Include all four layers and at least three variables.
+  `"Help me create a reusable content template for [CONTENT TYPE]. I publish this [FREQUENCY] for [AUDIENCE]. The tone should be [TONE]. Create a template with: clearly labeled variables in {{BRACKETS}}, a role definition, context that stays constant, and an output specification including format and length. Then generate one example using the template with sample variable values so I can see it in action."`
+
+
+  Practice
+  ## Template anatomy components.
+
+
+### Template Engine Concepts
+
+**Card 1:**
+Front: Template Engine
+Back: A collection of proven prompt patterns with slots for variable content. Fill in the blanks — the structure, voice, and quality standards stay locked in.
+
+**Card 2:**
+Front: Role layer
+Back: Who the AI is acting as in this template. Sets expertise and perspective for all outputs.
+
+**Card 3:**
+Front: Variables
+Back: The slots you fill in each time — topic, audience, angle. Wrapped in brackets for clarity. The only things that change between runs.
+
+**Card 4:**
+Front: Template Composition
+Back: Templates that call other templates. A blog template might include a hook sub-template, section sub-template, and CTA sub-template — each independently improvable.
+
+**Card 5:**
+Front: Versioning Templates
+Back: Tracking changes as v1, v2, v3 with a changelog. Your template library is a living system that improves with every iteration.
+
+
+  Template Patterns
+  ## Five Template Patterns Every Pipeline Needs
+
+  **1. The Generator Template.** Takes a topic and produces a full first draft. This is your workhorse — the template you run most often. It needs the strongest constraints: exact word counts, structural requirements, voice examples, and quality minimums.
+  **2. The Transformer Template.** Takes existing content and reshapes it for a different format or audience. Blog-to-email, article-to-thread, technical-to-beginner. The input isn't a topic — it's finished content that needs adaptation.
+  **3. The Reviewer Template.** Takes a draft and evaluates it against criteria. Returns a score, specific issues, and fix instructions. This powers your quality gates. The reviewer never writes — it only judges and recommends.
+  **4. The Combiner Template.** Takes multiple content atoms and assembles them into a larger piece. Useful for building roundup posts, comparison articles, or weekly digests from individual pieces. The skill is in the transitions and narrative arc, not the individual parts.
+  **5. The Splitter Template.** Takes a large piece and breaks it into smaller standalone units. A long-form guide becomes five social posts. A webinar transcript becomes a blog series. The inverse of the combiner — equally valuable.
+
+
+  ### Template Versioning in Practice
+
+
+blog-post-template-v1.md    ← Initial version, generic
+blog-post-template-v2.md    ← Added voice constraints after flat outputs
+blog-post-template-v3.md    ← Added hook patterns from top performers
+blog-post-template-v4.md    ← Fixed CTA structure (v3 CTAs were weak)
+blog-post-template-v4.1.md  ← Minor: adjusted word count targets
+
+CHANGELOG:
+v1 → v2: Added 3 voice examples and banned-word list
+v2 → v3: Added 5 proven hook patterns from analytics data
+v3 → v4: Rewrote CTA section with conversion-focused structure
+v4 → v4.1: Changed body target from 1500 to 1200 words (reader data)
+
+  Each version improves on a specific weakness discovered through testing. Never overwrite — version so you can roll back if a change makes things worse.
+
+
+  Advanced Technique
+  ## Conditional Logic in Templates
+
+  Advanced templates include conditional sections that activate based on input variables. If the audience is beginners, include a definitions section. If the format is email, keep paragraphs under two sentences. If the topic is technical, add a "plain English summary" at the end.
+  Structure these as IF/THEN blocks in your template: "IF {{AUDIENCE_LEVEL}} is beginner, include a 'Key Terms' sidebar defining all technical concepts. IF {{AUDIENCE_LEVEL}} is advanced, skip definitions and include implementation code examples instead." This makes one template serve multiple contexts without separate versions for each.
+  The result is fewer templates that handle more situations. Instead of maintaining twenty specialized templates, you maintain five flexible ones with conditional logic. Less maintenance, more consistency, easier onboarding for team members.
+
+
+  Template Testing
+  ## How to Know Your Template Actually Works
+
+  A template isn't done when you write it. It's done when you've run it five times with different inputs and the output consistently meets your quality standard. Here's the testing protocol:
+  **Test 1: Happy path.** Run with your ideal input — a well-defined topic, clear audience, strong angle. Does it produce good output? If not, the template's core structure needs work.
+  **Test 2: Edge case.** Run with a vague or unusual input. Does the output degrade gracefully, or does it collapse? Good templates handle imperfect inputs by asking for what's missing or making reasonable assumptions.
+  **Test 3: Consistency.** Run the same input three times. Are the outputs structurally similar with natural variation in content? If outputs are wildly different each time, your constraints aren't tight enough. If they're identical, your template is too rigid.
+
+
+  Template Library
+  ## Building Your Arsenal
+
+  Start with templates for your three most common content types. Test each one at least five times. Refine what doesn't work. Version them — v1, v2, v3. Keep a changelog so you know what you tried and why you changed it. Your template library is a living system, not a static document.
+  Within a month, you'll have templates that produce first drafts so good they need minimal editing. That's when the pipeline starts feeling less like a process and more like a superpower.
+
+
+  Team Templates
+  ## Sharing Templates Across a Team
+
+  When multiple people use the same templates, you need governance. Who can edit the master template? How are changes communicated? What happens when someone wants a variation for their specific use case?
+  The solution: a template owner and a branching system. The template owner approves changes to the master version. Team members can create personal branches for testing — but only proven improvements get merged into the master. This mirrors how software teams manage code, and it works equally well for content templates.
+  Store templates in a shared location — Google Drive, Notion, GitHub, or whatever your team uses. Each template file includes: the template itself, the changelog, usage instructions, and example outputs. A new team member should be able to pick up any template and produce quality content on their first run without asking questions.
+
+
+  ### Template Library Organization
+
+
+/templates
+├── generators/
+│   ├── blog-post-v4.1.md
+│   ├── email-newsletter-v3.md
+│   ├── social-linkedin-v2.md
+│   └── social-twitter-v2.md
+├── transformers/
+│   ├── blog-to-email.md
+│   ├── blog-to-thread.md
+│   └── long-to-short.md
+├── reviewers/
+│   ├── quality-gate-technical.md
+│   ├── quality-gate-brand.md
+│   └── quality-gate-strategic.md
+├── voice/
+│   ├── brand-voice-guide.md
+│   └── banned-words.md
+└── CHANGELOG.md
+
+  Organized by function, versioned, with a central changelog. Any team member can navigate this library and find what they need in seconds. That's template infrastructure, not just template collection.
+
+
+  Template Metrics
+  ## Measuring Template Performance
+
+  Not all templates are equal. Track which templates produce the best content by connecting each published piece back to the template that generated it. After a month, you'll know: Template A produces 80% A-tier content. Template B produces mostly B-tier with occasional C-tier. Template C is a coin flip.
+  Invest improvement effort where the data points. A template that's close to excellent needs minor tuning — maybe a better hook structure or tighter voice examples. A template that's consistently mediocre might need a full rebuild from scratch. A template that's wildly inconsistent has variables that are too loose — tighten the constraints.
+  The ultimate template metric: first-pass acceptance rate. What percentage of content produced by this template passes all quality gates on the first run, without revision loops? A mature template should hit 70%+ first-pass acceptance. Below 50%, the template needs significant work. Above 85%, you've built something exceptional.
+
+
+  Common Mistakes
+  ## Template Anti-Patterns to Avoid
+
+  **The Kitchen Sink Template.** Trying to handle every possible scenario in one template. It becomes so complex that nobody can follow it and the AI gets confused by competing instructions. Keep templates focused — one content type, one audience, one purpose.
+  **The Frozen Template.** Writing a template once and never updating it. Templates should evolve with every round of performance data and quality feedback. If your template hasn't changed in three months, you're leaving quality on the table.
+  **The Undocumented Template.** A template with no usage instructions, no example output, and no changelog. Fine when you're the only user — catastrophic when someone else needs to run the pipeline. Every template needs a header explaining what it does, how to fill in variables, and what good output looks like.
+  **The Copy-Paste Template.** Copying someone else's template verbatim and expecting it to work for your brand. Other people's templates encode their voice, their audience, their constraints. Use them as inspiration, then rebuild with your specifics. A template that doesn't sound like you produces content that doesn't sound like you.
+  Avoiding these anti-patterns saves more time than any template optimization. A clean, simple template that avoids these mistakes will outperform a sophisticated template that commits them. Focus on getting the fundamentals right before adding complexity.
+  Remember: templates are investments. Every hour you spend perfecting a template pays dividends across every piece of content it produces. A template used 50 times over the next year means every minute of improvement time is multiplied 50x. Think of template work as infrastructure, not overhead.
+
+
+  Check Your Understanding
+  ## Template engines quiz.
+
+
+
+
+
+  [← Previous: Content Architecture](/academy/content-generation-pipeline/02-content-architecture/)
+  [Next: Multi-Format Output →](/academy/content-generation-pipeline/04-multi-format-output/)
