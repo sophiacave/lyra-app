@@ -79,7 +79,7 @@ This is where the gap is widest.
 
 **ChatGPT Plus** with GPT-4o is fast and capable for most reasoning tasks. For straightforward questions and well-defined problems, the quality gap is minimal. The difference shows up on tasks with ambiguity, nuance, or competing priorities.
 
-**Winner:** Claude Pro for complex, ambiguous work. Tie for straightforward tasks.
+**Winner:** Claude Pro for complex, ambiguous work. Tie for straightforward tasks. (For a detailed coding comparison across all three major AI tools, see [ChatGPT vs Claude vs Gemini for coding](/blog/chatgpt-vs-claude-vs-gemini-for-coding/).)
 
 ### 4. Integrations and Ecosystem
 

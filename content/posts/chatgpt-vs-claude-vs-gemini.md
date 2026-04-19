@@ -56,7 +56,7 @@ Gemini produces serviceable internal documentation and research summaries. For c
 
 ## ChatGPT vs Claude vs Gemini for Coding
 
-If you searched "chatgpt vs claude vs gemini for coding" — this is the section you want.
+If you searched "chatgpt vs claude vs gemini for coding" — this is the section you want. *(We wrote a full dedicated guide: [ChatGPT vs Claude vs Gemini for Coding](/blog/chatgpt-vs-claude-vs-gemini-for-coding/).)*
 
 **Claude Code** changed the game in 2026. It runs in your terminal, navigates real codebases across multiple files, writes tests, and ships features autonomously. Opus 4.6 reasons through architecture decisions that trip up the other models. I've built entire production applications — backend, frontend, deployment — without leaving the terminal. For a deeper dive, see our [Claude Code vs Cursor comparison](/blog/claude-code-vs-cursor-which-ai-coding-tool/).
 
