@@ -136,7 +136,7 @@ Sometimes the right answer is Python or Node.js with a cron job. No visual build
 
 ## My Recommendations
 
-**If you are just starting:** Use Make.com. The free tier gives you 1,000 operations to learn on, and the visual builder teaches you automation thinking. Start with our [beginner automation guide](/blog/build-first-ai-workflow-30-minutes/).
+**If you are just starting:** Use Make.com. The free tier gives you 1,000 operations to learn on, and the visual builder teaches you automation thinking. Start with our [beginner automation guide](/blog/build-first-ai-workflow-30-minutes/). Not sure if your business is ready for automation at all? Our [AI readiness assessment guide](/blog/ai-readiness-assessment-guide) walks you through a framework to evaluate where you stand.
 
 **If you are non-technical and need it working today:** Use Zapier. Pay the premium for simplicity. You can always migrate later.
 

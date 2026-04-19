@@ -81,7 +81,7 @@ Ignoring this fear doesn't make it go away. It makes it go underground, where it
 
 If you're a leader trying to shift your team to AI-first, here's the sequence that works:
 
-**Month 1: Pick one pain point.** Build one AI workflow that saves significant time. Make it impossible to ignore the results. Don't try to change everything — just prove the concept with something real.
+**Month 1: Pick one pain point.** Build one AI workflow that saves significant time. Make it impossible to ignore the results. Don't try to change everything — just prove the concept with something real. Before you pick that pain point, run your team through an [AI readiness assessment](/blog/ai-readiness-assessment-guide) to identify where the highest-impact opportunities actually are.
 
 **Month 2: Scale to three workflows.** Take the template from month one and apply it to two more processes. Start building your team prompt library. Identify your early adopters and give them time to experiment.
 

@@ -86,7 +86,7 @@ The median cost of a well-implemented AI automation system for a mid-market comp
 
 ## What to Do Next
 
-Stop treating AI as a future initiative. Put it on the P&L. Assign ownership. Set a 90-day target for your first production deployment.
+Stop treating AI as a future initiative. Put it on the P&L. Assign ownership. Set a 90-day target for your first production deployment. Start by running an [AI readiness assessment](/blog/ai-readiness-assessment-guide) to baseline where your organization stands today, then use our [AI company business plan framework](/blog/ai-company-business-plan-2026) to build the financial case for the board.
 
 If you want a structured framework for making these decisions — one built specifically for CEOs, not engineers — the [**CEO Guide to AI 2026**](/products/ceo-guide-ai-2026) covers vendor evaluation templates, ROI calculation models, implementation timelines, and the exact questions to ask your team before you spend a dollar.
 

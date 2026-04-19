@@ -159,7 +159,7 @@ AI writes the document. You make the decisions.
 - **AI can't replace your relationships.** Investor intros, partnerships, and customer trust come from you.
 - **AI can't feel your conviction.** A plan is a communication tool. When you present it, your belief in it matters more than the formatting.
 
-Use AI for the 80% that's structure, prose, and analysis. Bring yourself for the 20% that's judgment, relationships, and hustle.
+Use AI for the 80% that's structure, prose, and analysis. Bring yourself for the 20% that's judgment, relationships, and hustle. If you are building specifically in the AI space, our [AI company business plan framework](/blog/ai-company-business-plan-2026) covers the unique elements investors expect -- data strategy, model economics, and competitive moats.
 
 ## The Format That Works
 
