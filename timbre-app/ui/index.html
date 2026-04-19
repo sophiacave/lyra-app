@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timbre</title>
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --bg: #08080a;
+      --surface: #0e0e12;
+      --surface-raised: #14141a;
+      --surface-hover: #1a1a22;
+      --border: #1e1e28;
+      --text: #e8e8ec;
+      --text-dim: #a0a0b0;
+      --text-muted: #55556a;
+      --accent-warm: #fb923c;
+      --accent-pink: #f472b6;
+      --accent-purple: #c084fc;
+      --gradient-warm: linear-gradient(135deg, #fb923c, #f472b6);
+      --gradient-brand: linear-gradient(135deg, #c084fc, #38bdf8);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --font: 'Inter', -apple-system, system-ui, sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+      height: 100vh;
+      -webkit-app-region: drag;
+    }
+    button, input, a { -webkit-app-region: no-drag; }
+
+    /* ── Layout ── */
+    .app {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      grid-template-rows: 48px 1fr 72px;
+      height: 100vh;
+    }
+
+    /* ── Title Bar ── */
+    .titlebar {
+      grid-column: 1 / -1;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px 0 80px;
+      gap: 16px;
+    }
+    .titlebar-brand {
+      font-size: 14px;
+      font-weight: 800;
+      background: var(--gradient-warm);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .titlebar-credits {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 16px 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sidebar-section {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 12px 8px 4px;
+    }
+    .sidebar-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: none;
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s var(--ease);
+      text-align: left;
+      width: 100%;
+    }
+    .sidebar-btn:hover { background: var(--surface-hover); color: var(--text); }
+    .sidebar-btn.active { background: rgba(251, 146, 60, 0.1); color: var(--accent-warm); }
+    .sidebar-btn .icon { font-size: 18px; width: 24px; text-align: center; }
+
+    /* ── Main Content ── */
+    .main {
+      overflow-y: auto;
+      padding: 32px;
+    }
+
+    /* ── Drop Zone ── */
+    .drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      margin-bottom: 32px;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--accent-warm);
+      background: rgba(251, 146, 60, 0.03);
+    }
+    .drop-zone-icon { font-size: 48px; margin-bottom: 16px; }
+    .drop-zone-text { font-size: 15px; color: var(--text-dim); margin-bottom: 8px; }
+    .drop-zone-hint { font-size: 12px; color: var(--text-muted); }
+
+    /* ── Vibe Picker (Genre Cards) ── */
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .vibe-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+    }
+    .vibe-card:hover { border-color: var(--accent-warm); transform: translateY(-2px); }
+    .vibe-card.selected { border-color: var(--accent-warm); background: rgba(251, 146, 60, 0.06); }
+    .vibe-card .emoji { font-size: 28px; margin-bottom: 8px; }
+    .vibe-card .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .vibe-card .desc { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+
+    /* ── Action Bar ── */
+    .action-bar {
+      grid-column: 1 / -1;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 16px;
+    }
+    .btn-create {
+      padding: 10px 32px;
+      border: none;
+      border-radius: 100px;
+      background: var(--gradient-warm);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s var(--ease), opacity 0.15s;
+    }
+    .btn-create:hover { transform: scale(1.03); }
+    .btn-create:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .status-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      flex: 1;
+    }
+    .now-playing {
+      font-size: 12px;
+      color: var(--accent-warm);
+    }
+
+    /* ── Track List ── */
+    .track-list { margin-top: 24px; }
+    .track-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .track-item:hover { border-color: var(--accent-warm); }
+    .track-play { font-size: 18px; width: 32px; text-align: center; }
+    .track-name { font-size: 13px; font-weight: 600; flex: 1; }
+    .track-size { font-size: 11px; color: var(--text-muted); }
+
+    /* ── Page views ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .page-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .page-desc {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <!-- Title Bar -->
+    <div class="titlebar">
+      <div class="titlebar-brand">Timbre</div>
+      <div class="titlebar-credits" id="credits">Loading...</div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-section">Create</div>
+      <button class="sidebar-btn active" data-page="remix" onclick="showPage('remix')">
+        <span class="icon">🎵</span> New Remix
+      </button>
+      <button class="sidebar-btn" data-page="studio" onclick="showPage('studio')">
+        <span class="icon">🎹</span> Suno Studio
+      </button>
+      <button class="sidebar-btn" data-page="separate" onclick="showPage('separate')">
+        <span class="icon">🎧</span> Separate Stems
+      </button>
+
+      <div class="sidebar-section">Library</div>
+      <button class="sidebar-btn" data-page="remixes" onclick="showPage('remixes')">
+        <span class="icon">💿</span> Remixes
+      </button>
+      <button class="sidebar-btn" data-page="stems" onclick="showPage('stems')">
+        <span class="icon">📂</span> Stems
+      </button>
+      <button class="sidebar-btn" data-page="raw" onclick="showPage('raw')">
+        <span class="icon">🎤</span> Raw Audio
+      </button>
+
+      <div class="sidebar-section">Distribute</div>
+      <button class="sidebar-btn" data-page="release" onclick="showPage('release')">
+        <span class="icon">🚀</span> Release
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main" id="main">
+      <!-- New Remix Page -->
+      <div class="page active" id="page-remix">
+        <h1 class="page-title">New Remix</h1>
+        <p class="page-desc">Drop a song. Pick a vibe. Hit create. That's it.</p>
+
+        <div class="drop-zone" id="dropZone" onclick="openFile()">
+          <div class="drop-zone-icon">🎤</div>
+          <div class="drop-zone-text" id="dropText">Drop a song or click to browse</div>
+          <div class="drop-zone-hint">WAV, MP3, FLAC, AAC</div>
+        </div>
+
+        <h2 style="font-size:14px; font-weight:700; margin-bottom:12px; color:var(--text-muted); letter-spacing:0.05em;">PICK A VIBE</h2>
+        <div class="vibe-grid" id="vibeGrid"></div>
+      </div>
+
+      <!-- Suno Studio Page -->
+      <div class="page" id="page-studio">
+        <h1 class="page-title">Suno Studio</h1>
+        <p class="page-desc">Full Suno Premium interface. Your session, your credits.</p>
+        <button class="btn-create" onclick="toggleStudio()">Open Studio</button>
+      </div>
+
+      <!-- Separate Page -->
+      <div class="page" id="page-separate">
+        <h1 class="page-title">Separate Stems</h1>
+        <p class="page-desc">Split any track into vocals, drums, bass, and instruments using Demucs AI.</p>
+        <div class="drop-zone" onclick="separateFile()">
+          <div class="drop-zone-icon">🎧</div>
+          <div class="drop-zone-text">Drop a track to separate</div>
+          <div class="drop-zone-hint">Powered by Demucs v4 on Apple Silicon</div>
+        </div>
+      </div>
+
+      <!-- Remixes Library -->
+      <div class="page" id="page-remixes">
+        <h1 class="page-title">Remixes</h1>
+        <p class="page-desc">All your FAYE Timbre REMIXes.</p>
+        <div class="track-list" id="remixList"></div>
+      </div>
+
+      <!-- Stems Library -->
+      <div class="page" id="page-stems">
+        <h1 class="page-title">Stems</h1>
+        <p class="page-desc">Separated vocal, drum, bass, and instrument stems.</p>
+        <div class="track-list" id="stemList"></div>
+      </div>
+
+      <!-- Raw Audio -->
+      <div class="page" id="page-raw">
+        <h1 class="page-title">Raw Audio</h1>
+        <p class="page-desc">Source audio files.</p>
+        <div class="track-list" id="rawList"></div>
+      </div>
+
+      <!-- Release -->
+      <div class="page" id="page-release">
+        <h1 class="page-title">Release</h1>
+        <p class="page-desc">Distribute to Spotify, Apple Music, and 150+ platforms.</p>
+        <p style="color:var(--text-muted); font-size:13px; margin-top:24px;">Coming soon — LabelGrid API integration.</p>
+      </div>
+    </div>
+
+    <!-- Action Bar -->
+    <div class="action-bar">
+      <button class="btn-create" id="btnCreate" disabled onclick="createRemix()">Create Remix</button>
+      <div class="status-text" id="statusText">Ready</div>
+      <div class="now-playing" id="nowPlaying"></div>
+    </div>
+  </div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    // ── State ──
+    let selectedFile = null;
+    let selectedVibe = null;
+    let studioOpen = false;
+    const audio = new Audio();
+
+    // ── Vibes ──
+    const vibes = [
+      { id: 'genuflect', name: 'Genuflect', emoji: '⛪', desc: 'Dark club meets cathedral' },
+      { id: 'sacred-plastic', name: 'Sacred Plastic', emoji: '💎', desc: 'Deconstructed sacred pop' },
+      { id: 'desperate-devotion', name: 'Desperate Devotion', emoji: '🕯️', desc: 'Intimate spectral prayer' },
+      { id: 'edm', name: 'EDM', emoji: '⚡', desc: 'Festival euphoria' },
+      { id: 'kpop', name: 'K-Pop', emoji: '🇰🇷', desc: 'Synth-heavy drama' },
+      { id: 'jpop', name: 'J-Pop', emoji: '🇯🇵', desc: 'Jazz-bright anime energy' },
+      { id: 'traditional', name: 'Vietnamese', emoji: '🇻🇳', desc: 'Dan bau + pentatonic soul' },
+      { id: 'classical', name: 'Classical', emoji: '🎻', desc: 'Orchestral cinematic' },
+      { id: 'hiphop', name: 'Hip-Hop', emoji: '🎤', desc: 'Cunty 808 bass' },
+      { id: 'lofi', name: 'Lo-Fi', emoji: '🌙', desc: 'Debussy meets vinyl warmth' },
+      { id: 'ballroom', name: 'Ballroom', emoji: '💃', desc: 'Ha crash + vogue femme' },
+      { id: 'pop', name: 'BRAT Pop', emoji: '✨', desc: 'Charli XCX deconstructed' },
+    ];
+
+    // ── Init ──
+    function init() {
+      renderVibes();
+      loadCredits();
+      loadLibrary('remixes');
+    }
+
+    function renderVibes() {
+      const grid = document.getElementById('vibeGrid');
+      grid.innerHTML = vibes.map(v => `
+        <div class="vibe-card" data-vibe="${v.id}" onclick="selectVibe('${v.id}')">
+          <div class="emoji">${v.emoji}</div>
+          <div class="name">${v.name}</div>
+          <div class="desc">${v.desc}</div>
+        </div>
+      `).join('');
+    }
+
+    async function loadCredits() {
+      const r = await ipcRenderer.invoke('suno:billing');
+      if (r.ok && r.data.monthly_usage !== undefined) {
+        document.getElementById('credits').textContent =
+          `Suno: ${r.data.monthly_usage}/${r.data.monthly_limit} credits`;
+      }
+    }
+
+    // ── Navigation ──
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`[data-page="${id}"]`).classList.add('active');
+
+      if (id === 'remixes') loadLibrary('remixes');
+      if (id === 'stems') loadLibrary('stems');
+      if (id === 'raw') loadLibrary('raw');
+      if (id === 'studio' && !studioOpen) toggleStudio();
+    }
+
+    // ── File Selection ──
+    async function openFile() {
+      const f = await ipcRenderer.invoke('dialog:openFile');
+      if (f) {
+        selectedFile = f;
+        document.getElementById('dropText').textContent = f.split('/').pop();
+        document.getElementById('dropZone').style.borderColor = 'var(--accent-warm)';
+        updateCreateButton();
+      }
+    }
+
+    function selectVibe(id) {
+      selectedVibe = id;
+      document.querySelectorAll('.vibe-card').forEach(c => c.classList.remove('selected'));
+      document.querySelector(`[data-vibe="${id}"]`).classList.add('selected');
+      updateCreateButton();
+    }
+
+    function updateCreateButton() {
+      document.getElementById('btnCreate').disabled = !(selectedFile && selectedVibe);
+    }
+
+    // ── Create Remix ──
+    async function createRemix() {
+      const status = document.getElementById('statusText');
+      const btn = document.getElementById('btnCreate');
+      btn.disabled = true;
+
+      status.textContent = 'Separating stems...';
+      const stems = await ipcRenderer.invoke('demucs:separate', selectedFile);
+      if (!stems.ok) {
+        status.textContent = 'Stem separation failed: ' + stems.error;
+        btn.disabled = false;
+        return;
+      }
+      status.textContent = `Stems ready (${stems.stems.join(', ')}). Uploading vocals...`;
+
+      // TODO: upload vocals to Suno, generate remix
+      const vibe = vibes.find(v => v.id === selectedVibe);
+      status.textContent = `Generating ${vibe.name} remix via Suno...`;
+
+      // For now, show the concept
+      status.textContent = `Ready to generate: ${vibe.name} remix of ${selectedFile.split('/').pop()}`;
+      btn.disabled = false;
+    }
+
+    // ── Suno Studio ──
+    async function toggleStudio() {
+      studioOpen = !studioOpen;
+      if (studioOpen) {
+        await ipcRenderer.invoke('suno:showStudio');
+      } else {
+        await ipcRenderer.invoke('suno:hideStudio');
+      }
+    }
+
+    // ── Library ──
+    async function loadLibrary(type) {
+      const dirs = {
+        remixes: require('path').join(require('os').homedir(), 'timbre/remixes'),
+        stems: require('path').join(require('os').homedir(), 'timbre/stems'),
+        raw: require('path').join(require('os').homedir(), 'timbre/raw'),
+      };
+      const files = await ipcRenderer.invoke('files:list', dirs[type]);
+      const listId = type === 'remixes' ? 'remixList' : type === 'stems' ? 'stemList' : 'rawList';
+      const list = document.getElementById(listId);
+      if (!list) return;
+
+      list.innerHTML = files.filter(f => !f.isDir).map(f => `
+        <div class="track-item" onclick="playTrack('${f.path.replace(/'/g, "\\'")}')">
+          <div class="track-play">▶</div>
+          <div class="track-name">${f.name}</div>
+          <div class="track-size">${(f.size / 1024 / 1024).toFixed(1)}MB</div>
+        </div>
+      `).join('') || '<p style="color:var(--text-muted);font-size:13px;">No files yet.</p>';
+    }
+
+    function playTrack(filepath) {
+      audio.src = 'file://' + filepath;
+      audio.play();
+      document.getElementById('nowPlaying').textContent = '♪ ' + filepath.split('/').pop();
+    }
+
+    // ── Drag & Drop ──
+    const dropZone = document.getElementById('dropZone');
+    document.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); });
+    document.addEventListener('drop', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.dataTransfer.files.length > 0) {
+        selectedFile = e.dataTransfer.files[0].path;
+        document.getElementById('dropText').textContent = e.dataTransfer.files[0].name;
+        dropZone.style.borderColor = 'var(--accent-warm)';
+        updateCreateButton();
+      }
+    });
+
+    // ── Boot ──
+    init();
+  </script>
+</body>
+</html>
