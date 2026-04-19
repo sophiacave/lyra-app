@@ -148,7 +148,8 @@ Your team is already using AI. The question is whether you're governing it or ju
 
 ## What to Read Next
 
-- [AI Readiness Assessment](/academy/courses/ai-governance-risk-management/lessons/ai-readiness-assessment/) — evaluate your organization's AI maturity
+- [AI Readiness Assessment Guide](/blog/ai-readiness-assessment-guide/) — the only assessment framework that actually works
+- [AI Company Business Plan 2026](/blog/ai-company-business-plan-2026/) — build an AI-first business plan that gets funded
 - [AI Policy Examples](/academy/courses/ai-governance-risk-management/) — full governance course with templates
 - [Best AI Tools 2026](/blog/best-ai-tools-2026-ranked/) — which tools have enterprise-grade data protection
 - [Free AI Courses](/academy/) — governance, automation, and implementation training

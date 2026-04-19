@@ -123,6 +123,7 @@ Start with the adversarial audit on your next big decision. You will never skip 
 
 ## Keep Reading
 
+- [AI Company Business Plan 2026](/blog/ai-company-business-plan-2026/) — the framework that actually gets funded
 - [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
 - [Claude vs ChatGPT for Business Automation: Which AI Should You Use in 2026?](/blog/claude-vs-chatgpt-business-automation-2026/)
 - [Prompt Chains: How to Build Multi-Step AI Workflows](/blog/prompt-chains-multi-step-ai-workflows/)

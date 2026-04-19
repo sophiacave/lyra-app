@@ -188,4 +188,10 @@ Your business plan is one day away.
 
 ---
 
+## What to Read Next
+
+- [AI Company Business Plan 2026](/blog/ai-company-business-plan-2026/) — the AI-specific framework investors actually want to see
+- [AI Readiness Assessment](/blog/ai-readiness-assessment-guide/) — evaluate whether your organization is ready for AI before you build
+- [Advanced Claude Techniques for Business Analysis](/blog/advanced-claude-techniques-business-analysis/) — turn business data into decisions, not summaries
+
 *Want to master AI for business? The [Like One Academy](https://likeone.ai/academy) has free courses on everything from prompt engineering to building AI-powered workflows. Start with [AI for Business](https://likeone.ai/academy/ai-for-business) — it's built for people who want results, not theory.*
