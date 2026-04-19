@@ -169,7 +169,7 @@ If you're already using [custom instructions with Claude](/blog/claude-custom-in
 
 The shift from prompt-response to agentic loops is like the shift from static web pages to web apps. Same underlying technology, fundamentally different capability. A static page shows you information. A web app lets you *do* things. A prompt gives you an answer. An agent loop gives you an employee.
 
-If you're building with AI, learn this pattern. If you're buying AI tools, look for this pattern. The products that iterate, verify, and self-correct will outperform the ones that give you a single shot and hope for the best.
+If you're building with AI, learn this pattern. If you're buying AI tools, look for this pattern. The products that iterate, verify, and self-correct will outperform the ones that give you a single shot and hope for the best. And you don't need to be a developer — you can [build your own AI agent without code](/blog/how-to-build-ai-agent-no-code-2026/) using today's tools.
 
 ## What to Read Next
 

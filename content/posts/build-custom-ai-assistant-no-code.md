@@ -185,6 +185,7 @@ Not sure where to start? These three cover the highest-impact use cases:
 A custom AI assistant is step one. Once you have one working, the next moves are:
 
 - **Connect it to your tools.** Claude with MCP or GPTs with API actions can read your calendar, check your CRM, or pull data from spreadsheets. The assistant goes from answering questions to taking actions.
+- **Turn it into an agent.** Once your assistant works, the next step is giving it autonomy. Learn [how to build an AI agent (no code required)](/blog/how-to-build-ai-agent-no-code-2026/) and let it handle multi-step workflows on its own.
 - **Build a library.** One assistant becomes three becomes ten. Each one handles a different function. Together, they form an AI workforce.
 - **Train your team.** The best assistant is useless if nobody uses it. Show your team how to prompt it effectively and when to trust (or override) its output.
 

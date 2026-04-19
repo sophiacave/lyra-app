@@ -115,7 +115,7 @@ Avoid these until you've nailed the basics:
 
 These five workflows aren't the endgame. They're the foundation.
 
-Once you've automated the routine stuff, something magical happens: you have *time*. Time to think about your business instead of just running it. Time to be strategic instead of reactive. Time to do the work that actually requires a human brain — the creative, relational, strategic work that no AI can replace.
+Once you've automated the routine stuff, something magical happens: you have *time*. And when you're ready to go further, you can [build your own AI agent without code](/blog/how-to-build-ai-agent-no-code-2026/) to handle entire workflows autonomously. Time to think about your business instead of just running it. Time to be strategic instead of reactive. Time to do the work that actually requires a human brain — the creative, relational, strategic work that no AI can replace.
 
 That's the real ROI of automation. Not just hours saved, but hours *reclaimed* for the work that matters.
 
