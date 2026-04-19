@@ -122,6 +122,7 @@ If you're a founder or executive trying to get your team AI-ready, the [CEO Guid
 
 ## Keep Reading
 
+- [AI Governance for Small Teams: Practical Framework](/blog/ai-governance-small-teams-practical-guide/) — the hands-on implementation guide
 - [How to Build an AI-First Company Culture](/blog/build-ai-first-company-culture/)
 - [What Every CEO Needs to Know About AI in 2026](/blog/what-every-ceo-needs-to-know-about-ai-2026/)
 - [How to Replace 3 Employees with AI (Ethically)](/blog/replace-3-employees-with-ai-ethically/)

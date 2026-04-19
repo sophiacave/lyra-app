@@ -244,6 +244,8 @@ Write with the one that sounds like you. Use the other one for everything else.
 
 ## Keep Reading
 
+- [How to Train AI to Write Like You](/blog/how-to-train-ai-to-write-like-you/) — Build a voice profile that makes Claude sound like you wrote it.
+- [Claude Custom Instructions Guide](/blog/claude-custom-instructions-guide/) — Set up Projects so Claude remembers your rules every session.
 - [How to Use Claude AI: Complete Guide](/blog/how-to-use-claude-ai-complete-guide/) — Master Claude from first prompt to advanced Projects and system instructions.
 - [ChatGPT vs Claude vs Gemini](/blog/chatgpt-vs-claude-vs-gemini/) — The full three-way comparison covering every use case, not just writing.
 - [Claude vs ChatGPT for Business](/blog/claude-vs-chatgpt-business-automation-2026/) — How these tools compare for operations, automation, and business workflows beyond content.

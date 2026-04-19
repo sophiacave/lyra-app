@@ -172,6 +172,8 @@ The freelancers who build these systems in 2026 will pull away from those still 
 
 ## Keep Reading
 
+- [How to Train AI to Write Like You](/blog/how-to-train-ai-to-write-like-you/) — build a voice profile so AI output sounds like you
+- [Claude Custom Instructions Guide](/blog/claude-custom-instructions-guide/) — set up Projects for your freelance workflows
 - [The One-Person Agency Playbook](/blog/one-person-agency-playbook/) — scaling past freelance without hiring
 - [The AI Solopreneur Tech Stack Under $100/Month](/blog/ai-solopreneur-tech-stack-under-100/) — the full tool breakdown
 - [5 AI Workflows to Automate First in Your Small Business](/blog/5-workflows-automate-first-small-business/) — where to start

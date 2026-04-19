@@ -128,7 +128,8 @@ The best specialized AI tool is the one you actually build and use. Stop reading
 ## Keep Reading
 
 - [How to Use Claude Projects: Complete Setup Guide (2026)](/blog/how-to-use-claude-projects-complete-guide/)
-- [How to Train AI on Your Writing Style — 15-Minute Method](/blog/train-ai-on-your-writing-style/)
+- [How to Train AI to Write Like You](/blog/how-to-train-ai-to-write-like-you/)
+- [Claude Custom Instructions Guide](/blog/claude-custom-instructions-guide/)
 - [10 Best MCP Servers for Claude in 2026](/blog/best-mcp-servers-claude-2026/)
 - [ChatGPT vs Claude vs Gemini: Which AI Should Run Your Business?](/blog/chatgpt-vs-claude-vs-gemini/)
 - [10 Claude Tips That Changed How I Work](/blog/10-claude-tips-changed-how-i-work/)
