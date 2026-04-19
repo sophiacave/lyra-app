@@ -14,6 +14,12 @@ export const metadata = {
     url: `${site.url}/artists/`,
     images: [{ url: site.ogImage, ...site.ogImageSize }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artists \u2014 Timbre by Like One Studio',
+    description: 'Meet the artists of Timbre. One voice, infinite genres. AI-powered music production that takes artists global.',
+    images: [site.ogImage],
+  },
 };
 
 export default function ArtistsPage() {
