@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 
-const CHAT_URL = 'https://tnsujchfrixxsdpodygu.supabase.co/functions/v1/faye-chat';
+const CHAT_URL = process.env.NEXT_PUBLIC_FAYE_CHAT_URL || 'https://tnsujchfrixxsdpodygu.supabase.co/functions/v1/faye-chat';
 
 export default function FayeChat() {
   const [open, setOpen] = useState(false);

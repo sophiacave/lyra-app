@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const BRAIN_V2_URL = 'https://tnsujchfrixxsdpodygu.supabase.co';
+const BRAIN_V2_URL = process.env.BRAIN_URL || 'https://tnsujchfrixxsdpodygu.supabase.co';
 
 export async function GET() {
   const serviceKey = process.env.BRAIN_V2_SERVICE_KEY;
