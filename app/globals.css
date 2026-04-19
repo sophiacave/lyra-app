@@ -6725,3 +6725,523 @@ select:focus-visible {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ============================================================
+   TIMBRE — AI Music Production
+   ============================================================ */
+
+.timbre-badge {
+  display: inline-block;
+  font-size: var(--font-2xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent-warm);
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.2);
+  border-radius: 100px;
+  padding: var(--space-1) var(--space-4);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+}
+
+.timbre-hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #fb923c, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Genre Grid */
+.timbre-genre-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.timbre-genre-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: border-color var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out);
+}
+
+.timbre-genre-card:hover {
+  border-color: var(--accent-warm);
+  transform: translateY(-2px);
+}
+
+.timbre-genre-icon {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-3);
+}
+
+.timbre-genre-name {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.timbre-genre-desc {
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+  line-height: var(--line-normal);
+}
+
+/* Pipeline */
+.timbre-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-8);
+}
+
+.timbre-pipeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background: var(--surface-base);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.timbre-pipeline-step:hover {
+  border-color: var(--border-subtle);
+}
+
+.timbre-step-number {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--accent-warm);
+  opacity: 0.4;
+  min-width: 48px;
+  line-height: 1;
+}
+
+.timbre-step-content {
+  flex: 1;
+}
+
+.timbre-step-icon {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-2);
+}
+
+.timbre-step-title {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.timbre-step-desc {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-normal);
+}
+
+/* Genre Tags */
+.timbre-genre-tag {
+  display: inline-block;
+  font-size: var(--font-2xs);
+  font-weight: 600;
+  color: var(--accent-warm);
+  background: rgba(251, 146, 60, 0.08);
+  border: 1px solid rgba(251, 146, 60, 0.15);
+  border-radius: 100px;
+  padding: 2px var(--space-3);
+  letter-spacing: 0.02em;
+}
+
+/* Tech Grid */
+.timbre-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.timbre-tech-item {
+  padding: var(--space-4);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.timbre-tech-label {
+  font-size: var(--font-2xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-quaternary);
+  margin-bottom: var(--space-1);
+}
+
+.timbre-tech-value {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Artist Cards (Timbre section & Artists page) */
+.timbre-artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.timbre-artist-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--surface-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out);
+}
+
+.timbre-artist-card:hover {
+  border-color: var(--accent-warm);
+  transform: translateY(-2px);
+}
+
+.timbre-artist-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #fb923c, #f472b6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timbre-artist-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timbre-artist-initial {
+  font-size: var(--font-xl);
+  font-weight: 800;
+  color: white;
+}
+
+.timbre-artist-name {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.timbre-artist-tagline {
+  font-size: var(--font-xs);
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-2);
+}
+
+.timbre-artist-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* ============================================================
+   ARTISTS PAGE
+   ============================================================ */
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-6);
+}
+
+.artist-card-large {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: border-color var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out);
+}
+
+.artist-card-large:hover {
+  border-color: var(--accent-warm);
+  transform: translateY(-3px);
+}
+
+.artist-card-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fb923c, #f472b6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+}
+
+.artist-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-card-initial {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+}
+
+.artist-card-name {
+  font-size: var(--font-xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.artist-card-tagline {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.artist-card-origin {
+  font-size: var(--font-xs);
+  color: var(--text-quaternary);
+  margin-bottom: var(--space-3);
+}
+
+.artist-card-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+/* ============================================================
+   ARTIST PROFILE PAGE
+   ============================================================ */
+
+.artist-hero {
+  text-align: center;
+  padding: calc(var(--header-height) + var(--space-12)) var(--space-6) var(--space-10);
+}
+
+.artist-hero-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fb923c, #f472b6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-6);
+  box-shadow: 0 0 60px rgba(251, 146, 60, 0.15);
+}
+
+.artist-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-hero-initial {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+}
+
+.artist-hero-name {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-3);
+}
+
+.artist-hero-tagline {
+  font-size: var(--font-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.artist-hero-origin {
+  font-size: var(--font-sm);
+  color: var(--text-quaternary);
+  margin-bottom: var(--space-4);
+}
+
+.artist-hero-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.artist-socials {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+.artist-social-link {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--accent-warm);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(251, 146, 60, 0.2);
+  border-radius: 100px;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.artist-social-link:hover {
+  background: rgba(251, 146, 60, 0.1);
+}
+
+/* Bio */
+.artist-bio {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.artist-bio p {
+  font-size: var(--font-md);
+  color: var(--text-secondary);
+  line-height: var(--line-relaxed);
+  margin-bottom: var(--space-5);
+}
+
+.artist-bio p:first-child {
+  font-size: var(--font-lg);
+  color: var(--text-primary);
+}
+
+/* Tracks */
+.artist-tracks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.artist-track-card {
+  background: var(--surface-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.artist-track-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+
+.artist-track-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.artist-track-info {
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.artist-track-title {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.artist-track-type {
+  font-size: var(--font-2xs);
+  font-weight: 600;
+  color: var(--accent-warm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.artist-track-year {
+  font-size: var(--font-2xs);
+  color: var(--text-quaternary);
+}
+
+/* Coming Soon Tags */
+.timbre-coming-soon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+.timbre-coming-tag {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--text-tertiary);
+  background: var(--surface-raised);
+  border: 1px dashed var(--border-subtle);
+  border-radius: 100px;
+  padding: var(--space-2) var(--space-5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timbre-genre-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .timbre-tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .artist-tracks {
+    grid-template-columns: 1fr;
+  }
+  .artists-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .timbre-genre-grid {
+    grid-template-columns: 1fr;
+  }
+  .timbre-tech-grid {
+    grid-template-columns: 1fr;
+  }
+}

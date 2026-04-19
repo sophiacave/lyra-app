@@ -1,5 +1,6 @@
 import { getAllPosts } from '../lib/posts';
 import { getAllCourses } from '../lib/courses';
+import { getAllArtists } from '../lib/artists';
 
 export const revalidate = 86400;
 
@@ -21,6 +22,8 @@ export default function sitemap() {
     { url: `${baseUrl}/resources/student-loan-rights-checklist/`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/calculator/`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/impact/`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/timbre/`, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/artists/`, changeFrequency: 'weekly', priority: 0.8 },
   ];
 
   // Blog posts
@@ -51,5 +54,13 @@ export default function sitemap() {
     }))
   );
 
-  return [...staticPages, ...blogPages, ...coursePages, ...lessonPages];
+  // Artist pages
+  const artists = getAllArtists();
+  const artistPages = artists.map(a => ({
+    url: `${baseUrl}/artists/${a.slug}/`,
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPages, ...coursePages, ...lessonPages, ...artistPages];
 }
