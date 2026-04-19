@@ -79,7 +79,7 @@ Total cost: **under $30/month** for a fully functional agent.
 
 ### Why This Stack Works
 
-**Claude** is the brain. It reads context, makes decisions, and generates output. Claude Projects let you give it permanent instructions and knowledge — so your agent doesn't forget its job between runs.
+**Claude** is the brain. It reads context, makes decisions, and generates output. [Claude Projects](/blog/custom-gpts-vs-claude-projects/) let you give it permanent instructions and knowledge — so your agent doesn't forget its job between runs.
 
 **Make.com** is the nervous system. It connects everything. When an email arrives, Make triggers a scenario. That scenario sends the email to Claude, gets a decision back, and executes the action — reply, forward, archive, whatever Claude decides.
 
@@ -212,4 +212,4 @@ The first one takes the longest. After that, you'll start seeing agent opportuni
 
 ---
 
-*Want to go deeper? The [Like One Academy](/academy) has a complete course on building multi-agent systems — from single agents to orchestrated fleets. [Start free](/academy).*
+*Want to go deeper? The [Like One Academy](/academy) has a complete course on building multi-agent systems — from single agents to orchestrated fleets. [Start free](/academy).* If you're planning to build an AI-powered business around your agents, see our [AI company business plan framework](/blog/ai-company-business-plan-2026/) for the economics that actually get funded.

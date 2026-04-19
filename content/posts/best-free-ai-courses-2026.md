@@ -154,3 +154,5 @@ AI should not be a luxury. The divide between people who understand AI and peopl
 - [What Is MCP? Model Context Protocol Explained Simply](/blog/what-is-mcp-model-context-protocol-explained/)
 - [The Complete Guide to AI Agents in 2026](/blog/complete-guide-ai-agents-2026/)
 - [How to Use Claude AI: Complete Guide](/blog/how-to-use-claude-ai-complete-guide/)
+- [How to Use AI for Feedback Analysis](/blog/ai-feedback-analysis-guide/)
+- [How to Build an AI Agent (No Code)](/blog/how-to-build-ai-agent-no-code-2026/)

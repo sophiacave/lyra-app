@@ -116,3 +116,4 @@ Happy prompting.
 - [Advanced Claude Techniques for Business Analysis](/blog/advanced-claude-techniques-business-analysis/)
 - [Custom GPTs vs Claude Projects: Which Should You Build?](/blog/custom-gpts-vs-claude-projects/)
 - [Claude vs ChatGPT for Business Automation: Which AI Should You Use in 2026?](/blog/claude-vs-chatgpt-business-automation-2026/)
+- [How to Build an AI Agent in 2026 (No Code Required)](/blog/how-to-build-ai-agent-no-code-2026/)
