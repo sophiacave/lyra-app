@@ -4,10 +4,10 @@ Splits long brain_context entries into semantic chunks,
 embeds each chunk via local Qwen3-Embedding, stores in brain_chunks table.
 """
 
-import json, time, re, subprocess, requests
+import os, json, time, re, subprocess, requests
 
 BRAIN_REF = "tnsujchfrixxsdpodygu"
-BRAIN_URL = f"https://{BRAIN_REF}.supabase.co/rest/v1"
+BRAIN_URL = os.environ.get("BRAIN_URL", "https://brain.likeone.ai") + "/rest/v1"
 EMBED_URL = "http://localhost:8000/embed_batch"
 MIN_ENTRY_LEN = 2000  # Only chunk entries longer than this
 CHUNK_TARGET = 800    # Target chunk size (chars)

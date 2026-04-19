@@ -2,11 +2,16 @@
 # Usage: from lib.vault import get_secret
 #        key = get_secret('kling_access_key')
 
+import os
 import urllib.request
 import json
 
-BRAIN_URL = 'https://tnsujchfrixxsdpodygu.supabase.co'
-BRAIN_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U'
+BRAIN_URL = os.environ.get('BRAIN_URL', 'https://brain.likeone.ai')
+BRAIN_ANON_KEY = (
+    os.environ.get('BRAIN_API_KEY')
+    or os.environ.get('BRAIN_V2_SERVICE_KEY')
+    or 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U'
+)
 
 _cache = {}
 

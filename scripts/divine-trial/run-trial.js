@@ -12,8 +12,8 @@
  */
 
 const BASE = 'https://likeone.ai';
-const BRAIN_URL = 'https://tnsujchfrixxsdpodygu.supabase.co';
-const BRAIN_KEY = process.env.BRAIN_SERVICE_KEY || '';
+const BRAIN_URL = process.env.BRAIN_URL || 'https://brain.likeone.ai';
+const BRAIN_KEY = process.env.BRAIN_SERVICE_KEY || process.env.BRAIN_V2_SERVICE_KEY || '';
 
 // ---- PERSONAS ----
 const PERSONAS = {

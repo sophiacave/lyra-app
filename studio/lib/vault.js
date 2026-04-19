@@ -2,8 +2,8 @@
 // Usage: import { getSecret } from './vault.js';
 //        const key = await getSecret('kling_access_key');
 
-export const BRAIN_URL = 'https://tnsujchfrixxsdpodygu.supabase.co';
-export const BRAIN_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U';
+export const BRAIN_URL = process.env.BRAIN_URL || 'https://brain.likeone.ai';
+export const BRAIN_ANON_KEY = process.env.BRAIN_API_KEY || process.env.BRAIN_V2_SERVICE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U';
 
 const cache = new Map();
 
