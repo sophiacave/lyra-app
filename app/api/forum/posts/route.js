@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import crypto from 'node:crypto';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -88,6 +89,7 @@ export async function POST(req) {
     const clean = (s) => (s || '').replace(/<[^>]*>/g, '').trim();
 
     const insertData = {
+      id: crypto.randomUUID(),
       author_name: clean(author_name).slice(0, 100),
       author_email: author_email.trim().toLowerCase().slice(0, 255),
       body: clean(body).slice(0, 5000),

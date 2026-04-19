@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import crypto from 'node:crypto';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -107,6 +108,7 @@ export async function POST(req) {
 
     if (isNew) {
       await brainFetch('subscribers', 'POST', {
+        id: crypto.randomUUID(),
         email: cleanEmail,
         source: source?.trim() || 'website',
         goal: goal?.trim()?.slice(0, 500) || null,
@@ -150,6 +152,7 @@ export async function POST(req) {
       );
       if (!Array.isArray(mine) || mine.length === 0) {
         await brainFetch('community_access', 'POST', {
+          id: crypto.randomUUID(),
           email: cleanEmail,
           goal: goal?.trim()?.slice(0, 500) || null,
           week_start: weekStart,
@@ -166,6 +169,7 @@ export async function POST(req) {
           });
         } else {
           await brainFetch('profiles', 'POST', {
+            id: crypto.randomUUID(),
             email: cleanEmail,
             subscription_status: 'active',
             subscription_tier: 'community',

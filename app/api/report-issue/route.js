@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import crypto from 'node:crypto';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -66,6 +67,7 @@ export async function POST(req) {
       method: 'POST',
       headers: { ...brainHeaders(), Prefer: 'return=minimal' },
       body: JSON.stringify({
+        id: crypto.randomUUID(),
         reporter_name: clean(reporter_name).slice(0, 100),
         reporter_email: reporter_email.trim().toLowerCase().slice(0, 255),
         category: cat,

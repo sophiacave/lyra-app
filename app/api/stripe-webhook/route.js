@@ -41,7 +41,8 @@ async function brainSelect(path) {
 }
 
 async function brainInsert(table, body) {
-  return brainFetch(table, { method: 'POST', body: JSON.stringify(body) });
+  const withId = body.id ? body : { id: crypto.randomUUID(), ...body };
+  return brainFetch(table, { method: 'POST', body: JSON.stringify(withId) });
 }
 
 async function brainPatch(path, body) {
