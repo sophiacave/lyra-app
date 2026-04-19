@@ -141,4 +141,4 @@ Master these three patterns and you will extract more value from a $20/month sub
 
 ---
 
-*Ready to go deeper? Our [free AI academy](/academy) covers 30 courses — from prompt engineering fundamentals to building full AI workflows. No signup wall. No upsell. Just practical skills you can use immediately.*
+*Ready to go deeper? Our [free AI academy](/academy) covers 30 courses — from prompt engineering fundamentals to building full AI workflows. No signup wall. No upsell. Just practical skills you can use immediately. See our picks for the [best free AI courses in 2026](/blog/best-free-ai-courses-2026/).*

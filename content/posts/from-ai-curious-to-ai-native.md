@@ -112,7 +112,7 @@ By day 30, you will not be AI curious anymore. You will be AI native. And you wi
 
 ---
 
-*Ready to accelerate? The [Like One Academy](https://likeone.ai/academy/) walks you through the full system — from first prompt to autonomous workflows. Start free.*
+*Ready to accelerate? The [Like One Academy](https://likeone.ai/academy/) walks you through the full system — from first prompt to autonomous workflows. Start free. Or browse our list of the [best free AI courses in 2026](/blog/best-free-ai-courses-2026/) to compare your options.*
 
 ---
 

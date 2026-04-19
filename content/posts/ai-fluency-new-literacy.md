@@ -92,7 +92,7 @@ Here's what I want you to sit with: AI fluency is not a nice-to-have line item o
 
 The good news? Unlike learning to code or getting a new degree, AI fluency is accessible. It doesn't require technical background. It requires curiosity, consistency, and about 30 minutes a day.
 
-The bad news? Every month you wait, the gap gets wider and the catch-up gets steeper.
+The bad news? Every month you wait, the gap gets wider and the catch-up gets steeper. If cost is a concern, there are excellent [free AI courses](/blog/best-free-ai-courses-2026/) available right now.
 
 ## Start Now, Not Someday
 
