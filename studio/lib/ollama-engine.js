@@ -21,15 +21,15 @@ const OLLAMA_BASE = process.env.OLLAMA_HOST || 'http://localhost:11434';
 
 // Model routing — pick the right model for the job
 const MODEL_ROUTES = {
-  screenplay:    'qwen2.5:32b',
-  content:       'qwen2.5:32b',
-  reasoning:     'qwen2.5:32b',
-  coding:        'qwen2.5:32b',
+  screenplay:    'qwen3:14b',
+  content:       'qwen3:14b',
+  reasoning:     'deepseek-r1:32b',
+  coding:        'qwen3:14b',
   classification:'llama3.1:8b',
   routing:       'llama3.1:8b',
   summary:       'llama3.1:8b',
   fast:          'llama3.1:8b',
-  general:       'qwen2.5:32b',
+  general:       'qwen3:14b',
 };
 
 /**
@@ -77,6 +77,7 @@ export async function ollamaGenerate(opts) {
     model,
     prompt,
     stream: false,
+    keep_alive: '5m',
     options: { temperature },
   };
   if (system) body.system = system;
@@ -134,6 +135,7 @@ export async function ollamaChat(opts) {
     model,
     messages,
     stream: false,
+    keep_alive: '5m',
     options: { temperature },
   };
   if (format === 'json') body.format = 'json';

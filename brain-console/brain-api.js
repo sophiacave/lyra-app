@@ -14,8 +14,8 @@ const PROVIDERS = {
     baseUrl: 'http://localhost:11434',
     cost: 0, // Free — M3 Max 64GB
     requiresKey: false,
-    models: ['qwen2.5:32b', 'llama3.1:8b', 'gpt-oss:20b', 'llama3.1:70b', 'deepseek-r1:8b'],
-    defaultModel: 'qwen2.5:32b',
+    models: ['qwen3:14b', 'llama3.1:8b', 'deepseek-r1:32b', 'gpt-oss:20b'],
+    defaultModel: 'qwen3:14b',
   },
   groq: {
     name: 'Groq (Free Tier)',
@@ -211,7 +211,7 @@ class BrainAPI {
     }
 
     // 2. Another capable model is loaded — use it instead of cold-starting
-    const capableModels = ['qwen2.5:32b', 'qwen2.5:14b', 'llama3.1:70b', 'deepseek-r1:32b', 'deepseek-r1:8b'];
+    const capableModels = ['qwen3:14b', 'qwen2.5:32b', 'qwen2.5:14b', 'llama3.1:70b', 'deepseek-r1:32b', 'deepseek-r1:8b'];
     for (const cm of capableModels) {
       if (loaded.some(m => m.startsWith(cm.split(':')[0]))) {
         const match = loaded.find(m => m.startsWith(cm.split(':')[0]));
@@ -228,7 +228,7 @@ class BrainAPI {
     const available = await this.checkOllama();
     if (available.available && available.models?.length) {
       // Prefer small models for fast cold start
-      const fastModels = ['llama3.1:8b', 'deepseek-r1:8b', 'qwen2.5:7b'];
+      const fastModels = ['qwen3:14b', 'llama3.1:8b', 'deepseek-r1:8b', 'qwen2.5:7b'];
       for (const fm of fastModels) {
         if (available.models.some(m => m.startsWith(fm.split(':')[0]))) {
           const match = available.models.find(m => m.startsWith(fm.split(':')[0]));
@@ -561,7 +561,7 @@ class BrainAPI {
    * Uses smart model resolution: loaded model first, fallback chain, loading indicator
    */
   async _sendOllama(systemPrompt, config) {
-    const preferred = config.ollamaModel || 'qwen2.5:32b';
+    const preferred = config.ollamaModel || 'qwen3:14b';
     const resolved = await this.resolveOllamaModel(preferred);
     const model = resolved.model;
 
@@ -580,7 +580,7 @@ class BrainAPI {
     const res = await this.fetchWithTimeout('http://localhost:11434/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, messages, stream: false, keep_alive: '30m' }),
+      body: JSON.stringify({ model, messages, stream: false, keep_alive: '5m' }),
     }, timeout);
 
     const data = await res.json();
@@ -594,7 +594,7 @@ class BrainAPI {
   }
 
   async _streamOllama(systemPrompt, config, onChunk) {
-    const preferred = config.ollamaModel || 'qwen2.5:32b';
+    const preferred = config.ollamaModel || 'qwen3:14b';
     const resolved = await this.resolveOllamaModel(preferred);
     const model = resolved.model;
 
@@ -618,7 +618,7 @@ class BrainAPI {
     const res = await this.fetchWithTimeout('http://localhost:11434/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, messages, stream: true, keep_alive: '30m' }),
+      body: JSON.stringify({ model, messages, stream: true, keep_alive: '5m' }),
     }, timeout);
 
     let fullText = '';
