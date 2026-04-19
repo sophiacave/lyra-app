@@ -4662,31 +4662,86 @@ select:focus-visible {
 
 .footer-site {
   border-top: 1px solid var(--border-subtle);
-  padding: var(--space-8) var(--space-6);
-  text-align: center;
+  padding: var(--space-12) var(--space-6) var(--space-8);
+}
+.footer-site-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+}
+.footer-site-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-10);
+}
+.footer-site-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 .footer-site-brand {
-  font-size: var(--font-base);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--font-lg);
+  font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: var(--space-2);
 }
 .footer-site-brand .accent {
   color: var(--accent-purple);
 }
-.footer-site-text {
+.footer-site-tagline {
   font-size: var(--font-sm);
   color: var(--text-tertiary);
-  margin-bottom: var(--space-2);
+}
+.footer-site-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.footer-site-col-title {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-quaternary);
+  margin-bottom: var(--space-1);
 }
 .footer-site-link {
   font-size: var(--font-sm);
   color: var(--text-tertiary);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 .footer-site-link:hover {
   color: var(--accent-purple);
+}
+.footer-app-icon {
+  font-size: var(--font-xs);
+  margin-right: 2px;
+}
+.footer-site-bottom {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-site-text {
+  font-size: var(--font-xs);
+  color: var(--text-quaternary);
+}
+.footer-site-legal {
+  font-size: var(--font-xs);
+  color: var(--text-quaternary);
+}
+@media (max-width: 640px) {
+  .footer-site-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+  .footer-site-bottom {
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: center;
+  }
 }
 
 /* ── SubscribeForm ── */

@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { site, footer as footerConfig } from '../../lib/site-config';
+import { site, nav, footer as footerConfig } from '../../lib/site-config';
 
 export default function Footer({ variant = 'main' }) {
+  const footerNav = nav.footer || [];
+
   if (variant === 'blog') {
     return (
       <footer className="blog-site-footer">
@@ -28,21 +30,50 @@ export default function Footer({ variant = 'main' }) {
     return (
       <footer className="footer-site">
         <div className="footer-site-inner">
-          <div className="footer-site-brand">like<span className="accent">one</span></div>
-          <p className="footer-site-text">Built by {site.founder}. Powered by convergence.</p>
-          <p className="footer-site-text">
-            &copy; {site.copyright}. All rights reserved. &bull;{' '}
-            <a href={`mailto:${site.email}`} className="footer-site-link">{site.email}</a> &bull;{' '}
-            <a href={`tel:${site.phoneRaw}`} className="footer-site-link">{site.phone}</a>
-          </p>
-          <p className="footer-site-text">
-            {footerConfig.links.map((link, i) => (
-              <span key={link.href}>
-                {i > 0 && ' \u2022 '}
-                <Link href={link.href} className="footer-site-link">{link.label}</Link>
-              </span>
-            ))}
-          </p>
+          <div className="footer-site-top">
+            <div className="footer-site-brand-col">
+              <div className="footer-site-brand">like<span className="accent">one</span></div>
+              <p className="footer-site-tagline">Human-AI collaboration platform.</p>
+            </div>
+
+            <div className="footer-site-col">
+              <div className="footer-site-col-title">Products</div>
+              {nav.apps.map(app => (
+                <Link key={app.href} href={app.href} className="footer-site-link">
+                  <span className="footer-app-icon">{app.icon}</span> {app.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="footer-site-col">
+              <div className="footer-site-col-title">Company</div>
+              <Link href="/about/" className="footer-site-link">About</Link>
+              <Link href="/blog/" className="footer-site-link">Blog</Link>
+              <Link href="/pricing/" className="footer-site-link">Pricing</Link>
+            </div>
+
+            <div className="footer-site-col">
+              <div className="footer-site-col-title">Resources</div>
+              {footerNav.map(link => (
+                <Link key={link.href} href={link.href} className="footer-site-link">{link.label}</Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="footer-site-bottom">
+            <p className="footer-site-text">
+              &copy; {site.copyright}. All rights reserved. &bull;{' '}
+              <a href={`mailto:${site.email}`} className="footer-site-link">{site.email}</a>
+            </p>
+            <p className="footer-site-legal">
+              {footerConfig.links.map((link, i) => (
+                <span key={link.href}>
+                  {i > 0 && ' \u2022 '}
+                  <Link href={link.href} className="footer-site-link">{link.label}</Link>
+                </span>
+              ))}
+            </p>
+          </div>
         </div>
       </footer>
     );
