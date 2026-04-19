@@ -88,6 +88,8 @@ Gemini has quietly become competitive. The 1M token context window is the larges
 - **Pricing**: Free tier. Google One AI Premium: $20/month (includes 2TB storage). Enterprise: through Workspace pricing.
 - **Weakness**: Output quality is noticeably behind Claude and ChatGPT on writing and reasoning. Feels like it is playing catch-up on the things that matter most.
 
+*Want the full breakdown of how these three compare across every task? Read our [ChatGPT vs Claude vs Gemini honest comparison](/blog/chatgpt-vs-claude-vs-gemini/).*
+
 ## 2. AI for Writing
 
 This is where I spend the most time with AI, and where the quality gap between tools is most obvious.

@@ -56,7 +56,7 @@ The difference comes down to how the models were trained and tuned. Claude was e
 
 ChatGPT was optimized for broad appeal and safety across an enormous user base. That optimization produces writing that is agreeable, accessible, and deliberately noncommittal — which is fine for answering questions but disastrous for content that needs a voice.
 
-There is a phrase I use with students: ChatGPT writes to not be wrong. Claude writes to be read. That distinction explains almost everything about the quality gap.
+There is a phrase I use with students: ChatGPT writes to not be wrong. Claude writes to be read. That distinction explains almost everything about the quality gap. (For a full three-way comparison including Gemini, see our [ChatGPT vs Claude vs Gemini guide](/blog/chatgpt-vs-claude-vs-gemini/).)
 
 ## Long-Form Content: Claude's Biggest Advantage
 

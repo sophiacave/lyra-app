@@ -121,7 +121,7 @@ The best specialized AI tool is the one you actually build and use. Stop reading
 
 ---
 
-*Want to master Claude Projects from scratch? Read our [complete Claude Projects setup guide](/blog/how-to-use-claude-projects-complete-guide/) or explore the full [Claude Mastery course](/academy/claude-mastery/) — free, 300+ lessons.*
+*Want to master Claude Projects from scratch? Read our [complete Claude Projects setup guide](/blog/how-to-use-claude-projects-complete-guide/) or explore the full [Claude Mastery course](/academy/claude-mastery/) — free, 300+ lessons. For a broader look at how Claude, ChatGPT, and Gemini compare across all tasks, see our [ChatGPT vs Claude vs Gemini comparison](/blog/chatgpt-vs-claude-vs-gemini/).*
 
 ---
 

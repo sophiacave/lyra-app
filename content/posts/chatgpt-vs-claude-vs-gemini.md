@@ -54,13 +54,19 @@ Gemini produces serviceable internal documentation and research summaries. For c
 
 **What this means for learners:** If you're building AI writing skills, start with Claude. You'll develop better prompting habits because Claude actually responds to nuance. The skills you build — detailed briefs, voice guidelines, structural instructions — transfer to every other AI tool. Our [prompt engineering course](https://likeone.ai/academy/prompt-writing-101/) teaches this approach.
 
-## For Coding: Claude Dominates Production Work
+## ChatGPT vs Claude vs Gemini for Coding
 
-Claude Code changed the game in 2026. It runs in your terminal, navigates real codebases across multiple files, writes tests, and ships features. Opus 4.6 reasons through architecture decisions that trip up the other models. I've built entire production applications — backend, frontend, deployment — without leaving the terminal.
+If you searched "chatgpt vs claude vs gemini for coding" — this is the section you want.
 
-ChatGPT handles isolated coding tasks well. Script generation, regex, API integrations, quick utilities — solid. It breaks down on multi-file refactors, large codebase navigation, and anything requiring sustained architectural reasoning.
+**Claude Code** changed the game in 2026. It runs in your terminal, navigates real codebases across multiple files, writes tests, and ships features autonomously. Opus 4.6 reasons through architecture decisions that trip up the other models. I've built entire production applications — backend, frontend, deployment — without leaving the terminal. For a deeper dive, see our [Claude Code vs Cursor comparison](/blog/claude-code-vs-cursor-which-ai-coding-tool/).
 
-Gemini 2.5 Pro is strong for Python data pipelines and Google Cloud work. The 1M token context window is genuinely useful for feeding in entire repositories. For full-stack web development, it's a tier below the other two.
+**ChatGPT** handles isolated coding tasks well. Script generation, regex, API integrations, quick utilities — solid. Code Interpreter lets you run Python in a sandbox, which is genuinely useful for data work. It breaks down on multi-file refactors, large codebase navigation, and anything requiring sustained architectural reasoning.
+
+**Gemini 2.5 Pro** is strong for Python data pipelines and Google Cloud work. The 1M token context window is genuinely useful for feeding in entire repositories. For full-stack web development, it's a tier below the other two.
+
+### Which AI Is Best for Coding in 2026?
+
+For production software development: **Claude Code**, and it's not close. For quick scripts and data analysis: **ChatGPT** with Code Interpreter. For Google Cloud and large-repo exploration: **Gemini**. Most professional developers use Claude Code as their primary tool and ChatGPT for quick prototyping.
 
 **What this means for learners:** If you're learning to code with AI, use ChatGPT for your first scripts (lower friction) and graduate to Claude Code when you're building real projects. That progression mirrors how professional developers actually work. Our [AI agent building course](https://likeone.ai/academy/first-ai-agent/) uses this exact path.
 
