@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_FORUM_URL || 'https://blknphuwwgagtueqtoji.supabase.co';
-const ANON_KEY = process.env.NEXT_PUBLIC_FORUM_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
+// Forum reads + writes go through Next.js API routes (Vercel → brain-shim → rqlite).
+// No Supabase keys in the browser.
 
 const TABS = [
   { slug: 'general', label: 'All Posts' },
@@ -92,10 +92,7 @@ export default function ForumClient() {
 
   async function loadPosts() {
     try {
-      const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/forum_posts?select=*&order=is_pinned.desc,created_at.desc`,
-        { headers: { apikey: ANON_KEY, Authorization: `Bearer ${ANON_KEY}` } }
-      );
+      const res = await fetch('/api/forum/posts');
       if (!res.ok) throw new Error();
       setAllPosts(await res.json());
     } catch {
@@ -122,9 +119,9 @@ export default function ForumClient() {
     setPostSubmitting(true);
     setErrorMsg('');
     try {
-      const res = await fetch(`${SUPABASE_URL}/functions/v1/forum-post`, {
+      const res = await fetch('/api/forum/posts', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ANON_KEY}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           author_name: postName,
           author_email: postEmail,
@@ -160,9 +157,9 @@ export default function ForumClient() {
     }
     setErrorMsg('');
     try {
-      const res = await fetch(`${SUPABASE_URL}/functions/v1/forum-post`, {
+      const res = await fetch('/api/forum/posts', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ANON_KEY}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ author_name: name, author_email: email, body, parent_id: postId, course_slug: 'general' }),
       });
       const data = await res.json();
@@ -185,9 +182,9 @@ export default function ForumClient() {
     setReportSubmitting(true);
     setReportError('');
     try {
-      const res = await fetch(`${SUPABASE_URL}/functions/v1/report-issue`, {
+      const res = await fetch('/api/report-issue', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ANON_KEY}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ reporter_name: reportName, reporter_email: reportEmail, category: reportCategory, page_url: reportUrl || null, description: reportDesc }),
       });
       const data = await res.json();
@@ -294,10 +291,10 @@ export default function ForumClient() {
         {/* Posts list */}
         {loadingPosts ? (
           filteredPosts.length === 0 ? (
-            <div className="site-section-sm text-center" style={{ padding: '4rem 1.5rem' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🗣️</div>
+            <div className="site-section-sm text-center" style={{ padding: 'var(--space-16) var(--space-6)' }}>
+              <div style={{ fontSize: 'var(--font-4xl)', marginBottom: 'var(--space-4)' }}>🗣️</div>
               <h2 className="site-section-title-md">Community forum launching soon</h2>
-              <p className="site-hero-desc-sm" style={{ maxWidth: '32rem', margin: '0 auto 2rem' }}>
+              <p className="site-hero-desc-sm" style={{ maxWidth: '32rem', margin: '0 auto var(--space-8)' }}>
                 We&rsquo;re building a space for learners to ask questions, share wins, and help each other on the convergence path. It&rsquo;s almost ready.
               </p>
               <div className="site-cta-row" style={{ justifyContent: 'center' }}>
@@ -307,10 +304,10 @@ export default function ForumClient() {
             </div>
           ) : null
         ) : filteredPosts.length === 0 ? (
-          <div className="site-section-sm text-center" style={{ padding: '4rem 1.5rem' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🗣️</div>
+          <div className="site-section-sm text-center" style={{ padding: 'var(--space-16) var(--space-6)' }}>
+            <div style={{ fontSize: 'var(--font-4xl)', marginBottom: 'var(--space-4)' }}>🗣️</div>
             <h2 className="site-section-title-md">Community forum launching soon</h2>
-            <p className="site-hero-desc-sm" style={{ maxWidth: '32rem', margin: '0 auto 2rem' }}>
+            <p className="site-hero-desc-sm" style={{ maxWidth: '32rem', margin: '0 auto var(--space-8)' }}>
               We&rsquo;re building a space for learners to ask questions, share wins, and help each other on the convergence path. It&rsquo;s almost ready.
             </p>
             <div className="site-cta-row" style={{ justifyContent: 'center' }}>

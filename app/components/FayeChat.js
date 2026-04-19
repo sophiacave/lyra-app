@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 
-const CHAT_URL = process.env.NEXT_PUBLIC_FAYE_CHAT_URL || 'https://tnsujchfrixxsdpodygu.supabase.co/functions/v1/faye-chat';
+const CHAT_URL = '/api/faye-chat';
 
 export default function FayeChat() {
   const [open, setOpen] = useState(false);
@@ -75,7 +75,7 @@ export default function FayeChat() {
           animation: 'fayeChatSlide 0.2s ease',
         }}>
           <div style={{
-            padding: '12px 16px', borderBottom: '1px solid #1e1e28',
+            padding: 'var(--space-3) var(--space-4)', borderBottom: '1px solid #1e1e28',
             display: 'flex', alignItems: 'center', gap: 8,
           }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: '#e8e8ec' }}>Ask Faye</span>
@@ -86,13 +86,13 @@ export default function FayeChat() {
           </div>
 
           <div ref={chatRef} style={{
-            flex: 1, overflowY: 'auto', padding: '12px 16px',
+            flex: 1, overflowY: 'auto', padding: 'var(--space-3) var(--space-4)',
             display: 'flex', flexDirection: 'column', gap: 8,
           }}>
             {messages.map((m, i) => (
               <div key={i} style={{
                 alignSelf: m.role === 'user' ? 'flex-end' : 'flex-start',
-                maxWidth: '85%', padding: '8px 12px',
+                maxWidth: '85%', padding: 'var(--space-2) var(--space-3)',
                 borderRadius: m.role === 'user' ? '12px 12px 2px 12px' : '12px 12px 12px 2px',
                 background: m.role === 'user' ? '#8b5cf6' : '#1a1a22',
                 color: m.role === 'user' ? '#fff' : '#bbb',
@@ -109,7 +109,7 @@ export default function FayeChat() {
           </div>
 
           <div style={{
-            padding: '8px 12px', borderTop: '1px solid #1e1e28',
+            padding: 'var(--space-2) var(--space-3)', borderTop: '1px solid #1e1e28',
             display: 'flex', gap: 8,
           }}>
             <input
@@ -121,7 +121,7 @@ export default function FayeChat() {
               disabled={loading}
               style={{
                 flex: 1, background: '#111114', border: '1px solid #1e1e28',
-                borderRadius: 8, padding: '8px 12px', color: '#e8e8ec',
+                borderRadius: 8, padding: 'var(--space-2) var(--space-3)', color: '#e8e8ec',
                 fontSize: 13, outline: 'none',
               }}
             />
@@ -130,7 +130,7 @@ export default function FayeChat() {
               disabled={loading || !input.trim()}
               style={{
                 background: '#8b5cf6', border: 'none', borderRadius: 8,
-                padding: '8px 16px', color: '#fff', fontWeight: 700,
+                padding: 'var(--space-2) var(--space-4)', color: '#fff', fontWeight: 700,
                 fontSize: 13, cursor: 'pointer',
                 opacity: loading || !input.trim() ? 0.4 : 1,
               }}

@@ -10,8 +10,7 @@ export default function SubscribeForm({ source = 'website', buttonText = 'Subscr
     setLoading(true);
     const email = e.target.email.value;
     try {
-      const subscribeUrl = process.env.NEXT_PUBLIC_SUBSCRIBE_URL || 'https://tnsujchfrixxsdpodygu.supabase.co/functions/v1/subscribe';
-      await fetch(subscribeUrl, {
+      await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, source })
