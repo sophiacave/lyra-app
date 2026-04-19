@@ -1,7 +1,7 @@
 ---
 title: "Does Claude Have Custom GPTs? Yes — Here's How Projects Compare (2026)"
 date: 2026-03-28
-updated: 2026-04-14
+updated: 2026-04-19
 author: Sophia Cave
 description: "Claude's answer to Custom GPTs is called Projects — and after building 40+ of each, Projects win for business. Context window, privacy, tools, and pricing compared side by side."
 excerpt: "Claude's answer to Custom GPTs is called Projects — and after building 40+ of each, Projects win for business. Context window, privacy, tools, and pricing compared side by side."
@@ -13,9 +13,19 @@ faq:
     a: "Claude Projects are better for internal business tools, sensitive data, and knowledge-heavy work like SOPs and documentation. Custom GPTs are better for customer-facing tools and workflows that need code execution or web browsing."
   - q: "Can you share Claude Projects publicly?"
     a: "No. Claude Projects are private to you or your team (on the Teams plan). There is no public marketplace like the GPT Store. For public distribution, Custom GPTs have the advantage."
+  - q: "Does Claude have custom GPTs?"
+    a: "Yes — Claude's equivalent to Custom GPTs is called Projects. Projects let you upload knowledge files, set custom instructions, and build specialized AI tools. The main differences are that Projects use Claude's full 200K context window instead of retrieval, and they stay private rather than being published to a store."
+  - q: "Can you create custom GPTs in Claude?"
+    a: "You cannot create Custom GPTs in Claude — that is an OpenAI feature. But Claude has Projects, which serve the same purpose. You set custom instructions, upload knowledge files, and build a specialized AI workspace. Projects use a 200K token context window instead of retrieval-based search."
+  - q: "Does Claude have an equivalent to custom GPTs?"
+    a: "Yes. Claude Projects are Anthropic's equivalent to OpenAI's Custom GPTs. Both let you create specialized AI tools without code. Projects offer a larger context window and stronger privacy, while Custom GPTs offer public sharing via the GPT Store and built-in code execution."
+  - q: "What is Claude's version of custom GPTs?"
+    a: "Claude's version of Custom GPTs is called Projects. Like Custom GPTs, Projects let you upload files and write custom instructions to create a specialized AI assistant. The key advantage is Claude's 200K token context window — it reads your entire document set instead of searching for relevant chunks."
 ---
 
 # Does Claude Have Custom GPTs? Yes — They're Called Projects
+
+*Updated April 19, 2026 — now includes Claude's MCP integrations, Claude Code, and the latest Claude 4 model improvements.*
 
 OpenAI has Custom GPTs. Anthropic has Claude Projects. Both promise the same thing: build a specialized AI tool tailored to your specific work without writing code.
 
@@ -114,6 +124,16 @@ My content workflow runs on Claude Projects. The knowledge base, the voice docum
 For data analysis and quick prototyping, I use Custom GPTs with Code Interpreter. Being able to upload a CSV and get a chart in 30 seconds is genuinely useful.
 
 For client work, it depends on the client's existing stack. I meet them where they are.
+
+## April 2026 Update: What Changed
+
+Since this post was first published, Anthropic shipped two features that close the gap:
+
+**MCP (Model Context Protocol)** lets Claude Projects connect to external tools — APIs, databases, file systems, and more. Custom GPTs still have more built-in tools, but MCP gives Claude Projects a path to equivalent (and in some cases superior) integrations without relying on OpenAI's Actions framework.
+
+**Claude Code** gives Claude terminal access for coding tasks. Combined with Projects, you can now build internal development tools that rival Custom GPTs with Code Interpreter — while keeping your codebase private.
+
+The tools gap that once clearly favored Custom GPTs is narrowing. For teams that value privacy and document comprehension, Claude Projects with MCP is now a serious contender even for tool-heavy workflows.
 
 ## The Real Answer
 
