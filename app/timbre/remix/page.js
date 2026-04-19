@@ -1,23 +1,23 @@
 import Link from 'next/link';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { site } from '../../lib/site-config';
-import { getAllArtists } from '../../lib/artists';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import { site } from '../../../lib/site-config';
+import { getAllArtists } from '../../../lib/artists';
 
 export const metadata = {
-  title: 'Timbre \u2014 AI Music Production | Like One Studio',
-  description: 'One voice, infinite genres. Timbre is an AI-powered music production engine that takes an artist\u2019s vocal performance and reimagines it across EDM, K-pop, J-pop, classical, traditional Vietnamese, and more.',
-  alternates: { canonical: `${site.url}/timbre/` },
+  title: 'Timbre Remix \u2014 One Voice, Infinite Genres | Like One Studio',
+  description: 'Timbre Remix is an AI-powered music production engine that takes an artist\u2019s vocal performance and reimagines it across EDM, K-pop, J-pop, classical, traditional Vietnamese, and more.',
+  alternates: { canonical: `${site.url}/timbre/remix/` },
   openGraph: {
-    title: 'Timbre \u2014 AI Music Production | Like One Studio',
-    description: 'One voice, infinite genres. AI-powered remix engine by Like One Studio.',
-    url: `${site.url}/timbre/`,
+    title: 'Timbre Remix \u2014 One Voice, Infinite Genres',
+    description: 'AI-powered vocal remix engine by Like One Studio. Original vocals, new genres.',
+    url: `${site.url}/timbre/remix/`,
     images: [{ url: site.ogImage, ...site.ogImageSize }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Timbre \u2014 AI Music Production | Like One Studio',
-    description: 'One voice, infinite genres. AI-powered remix engine by Like One Studio.',
+    title: 'Timbre Remix \u2014 One Voice, Infinite Genres',
+    description: 'AI-powered vocal remix engine by Like One Studio.',
     images: [site.ogImage],
   },
 };
