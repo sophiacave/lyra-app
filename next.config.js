@@ -28,6 +28,11 @@ const nextConfig = {
         destination: '/academy/:courseSlug/:lessonSlug/',
         permanent: true,
       },
+      {
+        source: '/blog/claude-vs-chatgpt-vs-gemini-2026/',
+        destination: '/blog/chatgpt-vs-claude-vs-gemini/',
+        permanent: true,
+      },
     ];
   },
 };
