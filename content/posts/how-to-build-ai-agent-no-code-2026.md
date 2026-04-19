@@ -2,7 +2,7 @@
 title: "How to Build an AI Agent in 2026 (No Code Required)"
 slug: how-to-build-ai-agent-no-code-2026
 date: 2026-04-08
-updated: 2026-04-14
+updated: 2026-04-19
 author: Sophia Cave
 description: "You don't need to be a developer to build AI agents that actually work. Here's the exact no-code method I use to build agents that handle real business tasks — scheduling, research, email, and more."
 excerpt: "You don't need to be a developer to build AI agents that actually work. Here's the exact no-code method I use to build agents that handle real business tasks — scheduling, research, email, and more."
@@ -24,6 +24,8 @@ faq:
 ---
 
 # How to Build an AI Agent in 2026 (No Code Required)
+
+*Updated April 19, 2026 — verified all tools and pricing for Q2 2026.*
 
 Everyone is talking about AI agents. Most people still aren't building them.
 
