@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import AudioPlayer from '../../components/AudioPlayer';
 import { site } from '../../../lib/site-config';
 import { getArtistBySlug, getAllArtistSlugs } from '../../../lib/artists';
 
@@ -14,11 +15,11 @@ export async function generateMetadata({ params }) {
   const artist = await getArtistBySlug(slug);
   if (!artist) return {};
   return {
-    title: `${artist.name} \u2014 Timbre by Like One Studio`,
+    title: `${artist.name} — Timbre by Like One Studio`,
     description: artist.tagline || `${artist.name} on Timbre. AI-powered music production by Like One Studio.`,
     alternates: { canonical: `${site.url}/artists/${slug}/` },
     openGraph: {
-      title: `${artist.name} \u2014 Timbre`,
+      title: `${artist.name} — Timbre`,
       description: artist.tagline,
       url: `${site.url}/artists/${slug}/`,
       images: artist.image ? [{ url: artist.image }] : [{ url: site.ogImage, ...site.ogImageSize }],
@@ -32,6 +33,14 @@ export default async function ArtistPage({ params }) {
   if (!artist) notFound();
 
   const socialLinks = Object.entries(artist.socials || {}).filter(([, v]) => v);
+
+  // Group remixes by track
+  const remixesByTrack = {};
+  (artist.remixes || []).forEach(r => {
+    if (!remixesByTrack[r.track]) remixesByTrack[r.track] = [];
+    remixesByTrack[r.track].push(r);
+  });
+  const trackNames = Object.keys(remixesByTrack);
 
   return (
     <div className="site-page">
@@ -72,11 +81,11 @@ export default async function ArtistPage({ params }) {
         </div>
       </section>
 
-      {/* Tracks */}
+      {/* Original Tracks */}
       {artist.tracks && artist.tracks.length > 0 && (
         <section className="site-section-sm bg-raised">
           <div className="site-container-narrow">
-            <span className="site-section-tag">MUSIC</span>
+            <span className="site-section-tag">ORIGINALS</span>
             <h2 className="site-section-title-md">Listen</h2>
 
             <div className="artist-tracks">
@@ -103,21 +112,35 @@ export default async function ArtistPage({ params }) {
         </section>
       )}
 
-      {/* Timbre Remixes Coming Soon */}
-      <section className="site-section-sm">
-        <div className="site-container-narrow text-center">
-          <span className="site-section-tag">COMING SOON</span>
-          <h2 className="site-section-title-md">Timbre Remixes</h2>
-          <p className="site-story-text">
-            {artist.name}&rsquo;s music reimagined across genres. EDM, K-pop, J-pop, traditional Vietnamese, classical, hip-hop, lo-fi, and pop versions &mdash; all built around the original vocal performance.
-          </p>
-          <div className="timbre-coming-soon-grid">
-            {['EDM', 'K-Pop', 'J-Pop', 'Vietnamese Traditional', 'Classical', 'Hip-Hop', 'Lo-Fi', 'Pop'].map(g => (
-              <div key={g} className="timbre-coming-tag">{g}</div>
+      {/* Timbre Remixes */}
+      {trackNames.length > 0 && (
+        <section className="site-section-sm">
+          <div className="site-container-narrow">
+            <span className="site-section-tag">TIMBRE REMIXES</span>
+            <h2 className="site-section-title-md">Every song, every genre</h2>
+            <p className="site-story-text">
+              {artist.name}&rsquo;s vocals reimagined across genres by Timbre AI. Same voice, new worlds.
+            </p>
+
+            {trackNames.map(trackName => (
+              <div key={trackName} className="remix-track-group">
+                <h3 className="remix-track-heading">{trackName}</h3>
+                <div className="remix-grid">
+                  {remixesByTrack[trackName].map(remix => (
+                    <AudioPlayer
+                      key={`${remix.track}-${remix.genre}`}
+                      src={remix.audio}
+                      title={`${remix.track} (${remix.genre})`}
+                      genre={remix.genre}
+                      producer={remix.producer}
+                    />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA */}
       <div className="site-section-sm text-center bg-raised">
