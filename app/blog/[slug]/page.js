@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Script from 'next/script';
 import { getPostBySlug, getAllSlugs } from '@/lib/posts';
 import { getAllCourses } from '@/lib/courses';
 import SubscribeForm from '@/app/components/SubscribeForm';
@@ -316,6 +317,32 @@ export default async function PostPage({ params }) {
       </div>
 
       <RelatedCourses tags={post.tags} />
+
+      <div style={{
+        margin: '3rem auto',
+        padding: '2rem',
+        maxWidth: '680px',
+        background: '#1a1a2e',
+        borderRadius: '16px',
+        textAlign: 'center',
+      }}>
+        <p style={{
+          color: '#f5a0c0',
+          fontSize: '1.1rem',
+          marginBottom: '1rem',
+          fontWeight: 600,
+        }}>
+          Support Sophia&rsquo;s Mental Health Defense
+        </p>
+        <div
+          className="gfm-embed"
+          data-url="https://www.gofundme.com/f/trans-woman-needs-mental-health-care-not-jail/widget/large?sharesheet=undefined&attribution_id=sl:2c857452-5e4b-47d1-abe1-ebb7b8a4d3dc"
+        />
+        <Script
+          src="https://www.gofundme.com/static/js/embed.js"
+          strategy="lazyOnload"
+        />
+      </div>
 
       <footer className="post-footer">
         <Link href="/blog/" className="post-footer-back">
