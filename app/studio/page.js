@@ -98,7 +98,7 @@ export default function StudioPage() {
         <p className="about-cta-desc">Studio is in pre-alpha. No rendering at scale until every gap is closed. Perfect machine first.</p>
         <div className="site-cta-row">
           <Link href="/academy/" className="site-btn-primary">Explore Academy</Link>
-          <Link href="/timbre/" className="site-btn-secondary">See Timbre</Link>
+          <Link href="/blog/" className="site-btn-secondary">Read the Blog</Link>
         </div>
       </div>
 
