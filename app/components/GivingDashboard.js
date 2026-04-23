@@ -39,6 +39,12 @@ export default function GivingDashboard() {
   const tierLabel = data.currentTier.charAt(0).toUpperCase() + data.currentTier.slice(1);
   const recipientNames = Object.keys(data.recipients);
 
+  // Only surface recipient donation amounts when real money has been moved.
+  // Accrued-but-not-yet-donated numbers are suppressed (too low + inaccurate during Seed tier).
+  const recipientsWithDonations = recipientNames.filter(
+    n => (data.recipients[n]?.donated || 0) > 0
+  );
+
   return (
     <div className="impact-status-card">
       <div className="impact-status-row">
@@ -53,29 +59,21 @@ export default function GivingDashboard() {
         </div>
         <div className="impact-status-divider" />
         <div className="impact-status-item">
-          <div className="impact-status-number">${data.totalAccrued.toFixed(2)}</div>
-          <div className="impact-status-label">Total Accrued for Research</div>
+          <div className="impact-status-number">50%</div>
+          <div className="impact-status-label">Goal at Convergence</div>
         </div>
       </div>
 
-      {recipientNames.length > 0 && (
+      {recipientsWithDonations.length > 0 && (
         <div className="impact-status-recipients">
-          {recipientNames.map(name => (
+          {recipientsWithDonations.map(name => (
             <div key={name} className="impact-recipient-stat">
               <span className="impact-recipient-stat-name">{name}</span>
               <span className="impact-recipient-stat-amount">
-                ${data.recipients[name].accrued?.toFixed(2) || '0.00'} accrued
-                {data.recipients[name].donated > 0 && ` / $${data.recipients[name].donated.toFixed(2)} donated`}
+                ${data.recipients[name].donated.toFixed(2)} donated
               </span>
             </div>
           ))}
-        </div>
-      )}
-
-      {data.ledgerRows > 0 && (
-        <div className="impact-status-meta">
-          {data.ledgerRows} transactions tracked
-          {data.lastSync && ` \u00B7 Last updated ${new Date(data.lastSync).toLocaleDateString()}`}
         </div>
       )}
     </div>
