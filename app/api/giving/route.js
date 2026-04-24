@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
 
-const BRAIN_V2_URL = process.env.BRAIN_URL || 'https://tnsujchfrixxsdpodygu.supabase.co';
-
 export async function GET() {
+  const BRAIN_V2_URL = process.env.BRAIN_URL;
   const serviceKey = process.env.BRAIN_V2_SERVICE_KEY;
-  if (!serviceKey) {
+  if (!BRAIN_V2_URL || !serviceKey) {
     return NextResponse.json(
       { error: 'Giving data temporarily unavailable' },
       { status: 503 }

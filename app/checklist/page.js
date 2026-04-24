@@ -154,14 +154,11 @@ export default function ChecklistPage() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(
-        'https://tnsujchfrixxsdpodygu.supabase.co/functions/v1/subscribe',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, source: 'checklist_lead_magnet' }),
-        }
-      );
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'checklist_lead_magnet' }),
+      });
       if (!res.ok) throw new Error('Subscribe failed');
       setUnlocked(true);
       // Scroll to checklist after unlock

@@ -5,9 +5,6 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const SUPABASE_URL = 'https://blknphuwwgagtueqtoji.supabase.co';
-const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
-
 const whoCards = [
   { emoji: '🏳️‍⚧️', label: 'LGBTQ+ community' },
   { emoji: '🌍', label: 'Global South' },
@@ -29,14 +26,10 @@ export default function CommunityAccessClient() {
 
   async function loadSpots() {
     try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/community_spots_remaining`, {
-        method: 'POST',
-        headers: { apikey: ANON_KEY, Authorization: `Bearer ${ANON_KEY}`, 'Content-Type': 'application/json' },
-        body: '{}',
-      });
+      const res = await fetch('/api/community-spots');
       if (!res.ok) { setSpotsLeft(15); return; }
-      const remaining = await res.json();
-      setSpotsLeft(typeof remaining === 'number' ? remaining : 15);
+      const data = await res.json();
+      setSpotsLeft(typeof data?.remaining === 'number' ? data.remaining : 15);
     } catch {
       setSpotsLeft(15);
     }
@@ -46,9 +39,9 @@ export default function CommunityAccessClient() {
     if (!email || !honor) return;
     setSubmitting(true);
     try {
-      await fetch(`${SUPABASE_URL}/functions/v1/subscribe`, {
+      await fetch('/api/subscribe', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ANON_KEY}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, source: 'community_access', goal }),
       });
       setSuccess(true);

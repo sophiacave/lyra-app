@@ -120,14 +120,11 @@ export default function StudentLoanRightsChecklistPage() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(
-        'https://tnsujchfrixxsdpodygu.supabase.co/functions/v1/subscribe',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, source: 'student_loan_rights_checklist' }),
-        }
-      );
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'student_loan_rights_checklist' }),
+      });
       if (!res.ok) throw new Error('Subscribe failed');
       setUnlocked(true);
       setTimeout(() => {
@@ -185,15 +182,15 @@ export default function StudentLoanRightsChecklistPage() {
 
         {/* Deadline callout */}
         <div className="checklist-deadlines" style={{
-          marginTop: '2rem',
-          padding: '1.25rem 1.5rem',
+          marginTop: 'var(--space-8)',
+          padding: 'var(--space-5) var(--space-6)',
           borderRadius: '12px',
           background: 'rgba(255, 59, 48, 0.08)',
           border: '1px solid rgba(255, 59, 48, 0.2)',
         }}>
           <strong style={{ color: '#ff3b30' }}>Key Deadlines</strong>
           {KEY_DEADLINES.map((d) => (
-            <div key={d.date} style={{ marginTop: '0.5rem' }}>
+            <div key={d.date} style={{ marginTop: 'var(--space-2)' }}>
               <strong>{d.date}</strong> — {d.label}
             </div>
           ))}
@@ -393,7 +390,7 @@ export default function StudentLoanRightsChecklistPage() {
                       rel="noopener noreferrer"
                       style={{
                         display: 'inline-block',
-                        marginTop: '0.5rem',
+                        marginTop: 'var(--space-2)',
                         color: 'var(--accent, #6c5ce7)',
                         fontWeight: 600,
                         textDecoration: 'underline',

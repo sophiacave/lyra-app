@@ -1,9 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 
-const SUPABASE_URL = 'https://tnsujchfrixxsdpodygu.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U';
-
 // Generate a session ID for grouping reports
 function getSessionId() {
   if (typeof window === 'undefined') return 'ssr';
@@ -74,14 +71,9 @@ export default function BetaReporter() {
           severity: 'medium',
         };
 
-        const res = await fetch(`${SUPABASE_URL}/rest/v1/beta_reports`, {
+        const res = await fetch('/api/beta-report', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_ANON,
-            'Authorization': `Bearer ${SUPABASE_ANON}`,
-            'Prefer': 'return=minimal',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(report),
         });
 
@@ -172,7 +164,7 @@ export default function BetaReporter() {
         }}>
           {/* Header */}
           <div style={{
-            padding: '12px 16px',
+            padding: 'var(--space-3) var(--space-4)',
             borderBottom: '1px solid #1e1e28',
             display: 'flex',
             alignItems: 'center',
@@ -197,7 +189,7 @@ export default function BetaReporter() {
           <div ref={chatRef} style={{
             flex: 1,
             overflowY: 'auto',
-            padding: '12px 16px',
+            padding: 'var(--space-3) var(--space-4)',
             display: 'flex',
             flexDirection: 'column',
             gap: 8,
@@ -206,7 +198,7 @@ export default function BetaReporter() {
               <div key={i} style={{
                 alignSelf: m.from === 'user' ? 'flex-end' : 'flex-start',
                 maxWidth: '85%',
-                padding: '8px 12px',
+                padding: 'var(--space-2) var(--space-3)',
                 borderRadius: m.from === 'user' ? '12px 12px 2px 12px' : '12px 12px 12px 2px',
                 background: m.from === 'user' ? '#c084fc' : '#1a1a22',
                 color: m.from === 'user' ? '#000' : '#aaa',
@@ -232,7 +224,7 @@ export default function BetaReporter() {
           {/* Input */}
           {!submitted && (
             <div style={{
-              padding: '8px 12px',
+              padding: 'var(--space-2) var(--space-3)',
               borderTop: '1px solid #1e1e28',
               display: 'flex',
               gap: 8,
@@ -249,7 +241,7 @@ export default function BetaReporter() {
                   background: '#111114',
                   border: '1px solid #1e1e28',
                   borderRadius: 8,
-                  padding: '8px 12px',
+                  padding: 'var(--space-2) var(--space-3)',
                   color: '#e8e8ec',
                   fontSize: 13,
                   outline: 'none',
@@ -262,7 +254,7 @@ export default function BetaReporter() {
                   background: '#c084fc',
                   border: 'none',
                   borderRadius: 8,
-                  padding: '8px 16px',
+                  padding: 'var(--space-2) var(--space-4)',
                   color: '#000',
                   fontWeight: 700,
                   fontSize: 13,
@@ -278,7 +270,7 @@ export default function BetaReporter() {
           {/* Report again */}
           {submitted && (
             <div style={{
-              padding: '8px 12px',
+              padding: 'var(--space-2) var(--space-3)',
               borderTop: '1px solid #1e1e28',
               textAlign: 'center',
             }}>
@@ -286,7 +278,7 @@ export default function BetaReporter() {
                 background: 'none',
                 border: '1px solid #1e1e28',
                 borderRadius: 8,
-                padding: '8px 16px',
+                padding: 'var(--space-2) var(--space-4)',
                 color: '#888',
                 fontSize: 12,
                 cursor: 'pointer',
