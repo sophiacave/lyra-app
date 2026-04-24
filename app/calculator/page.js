@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-const SUPABASE_URL = 'https://vpaynwebgmmnwttqkwmh.supabase.co';
 
 // ─── Animated Counter ───
 function AnimatedNumber({ value, prefix = '', suffix = '', duration = 1200 }) {
@@ -110,14 +109,14 @@ export default function CalculatorPage() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(`${SUPABASE_URL}/functions/v1/calculator-auth`, {
+      const res = await fetch('/api/calculator-auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'send', email }),
       });
       const data = await res.json();
       if (data.success) setStep('code');
-      else setError('Failed to send code. Please try again.');
+      else setError(data.error || 'Failed to send code. Please try again.');
     } catch {
       setError('Something went wrong. Please try again.');
     }
@@ -129,14 +128,14 @@ export default function CalculatorPage() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(`${SUPABASE_URL}/functions/v1/calculator-auth`, {
+      const res = await fetch('/api/calculator-auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'verify', email, code }),
       });
       const data = await res.json();
       if (data.success) setStep('calculator');
-      else setError('Invalid or expired code. Please check and try again.');
+      else setError(data.error || 'Invalid or expired code. Please check and try again.');
     } catch {
       setError('Verification failed. Please try again.');
     }
