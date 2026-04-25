@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const APP_URL = 'https://app.likeone.ai';
-const APP_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.likeone.ai';
+const APP_ANON = process.env.NEXT_PUBLIC_APP_ANON || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
 
 function formatCurrency(amount, currency = 'USD') {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(amount);
@@ -184,7 +184,7 @@ export default function FinancesClient() {
           <p style={{ color: '#737373', marginBottom: 24 }}>Sign in to view your financial dashboard.</p>
           <Link href="/account/" style={{
             display: 'inline-block',
-            padding: '12px 32px',
+            padding: 'var(--space-3) var(--space-8)',
             background: 'linear-gradient(135deg, #c084fc, #d93280)',
             color: '#fff',
             borderRadius: 8,
@@ -208,7 +208,7 @@ export default function FinancesClient() {
               onClick={fetchFinances}
               disabled={fetching}
               style={{
-                padding: '8px 16px',
+                padding: 'var(--space-2) var(--space-4)',
                 background: '#1e1e28',
                 border: '1px solid #2a2a2a',
                 borderRadius: 8,

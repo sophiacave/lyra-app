@@ -95,6 +95,26 @@ export async function POST(req) {
     }
 
     if (action === 'send') {
+      // Rate limit: max 3 sends per email per hour
+      const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+      const recent = await brainFetch(
+        `calculator_auth_codes?email=eq.${encodeURIComponent(email)}&created=gte.${encodeURIComponent(oneHourAgo)}&select=code`,
+        'GET'
+      ).catch(() => []);
+      if (Array.isArray(recent) && recent.length >= 3) {
+        return NextResponse.json(
+          { success: false, error: 'Too many code requests. Please wait an hour.' },
+          { status: 429, headers: corsHeaders }
+        );
+      }
+
+      // Cleanup: drop expired+used rows older than 24h (best-effort)
+      const cleanupCutoff = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+      await brainFetch(
+        `calculator_auth_codes?or=(used.eq.1,expires.lt.${encodeURIComponent(new Date().toISOString())})&created.lt.${encodeURIComponent(cleanupCutoff)}`,
+        'DELETE'
+      ).catch(() => null);
+
       const code = generateCode();
       const now = new Date();
       const expires = new Date(now.getTime() + CODE_TTL_MINUTES * 60 * 1000);
