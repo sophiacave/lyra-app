@@ -18,6 +18,7 @@ const nextConfig = {
     return [
       { source: '/feed', destination: '/api/feed' },
       { source: '/feed/', destination: '/api/feed' },
+      { source: '/api/stripe-webhook', destination: '/api/stripe-webhook/' },
     ];
   },
   // Redirect old static academy HTML URLs to new dynamic routes
