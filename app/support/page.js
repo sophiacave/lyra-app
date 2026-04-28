@@ -118,10 +118,10 @@ function SupportContent() {
         <strong>Full transparency:</strong> Like One donates 1% of all revenue to HIV cure research through Like One Foundation — growing to 50% as revenue scales. The rest builds courses, technology, and a platform that proves AI belongs to everyone.
       </p>
 
-      <div className="donate-disclosure">
-        <h3 className="donate-disclosure-title">Important Disclosure</h3>
+      <div className="donate-disclosure" style={{ borderColor: 'var(--accent-purple, #b898c8)', background: 'rgba(184, 152, 200, 0.06)' }}>
+        <h3 className="donate-disclosure-title">501(c)(3) Tax-Exempt Organization</h3>
         <p className="donate-disclosure-text">
-          Like One LLC is a Nevada limited liability company. Like One Foundation is a Nevada nonprofit corporation, currently pursuing 501(c)(3) tax-exempt status. Once approved, donations to the Foundation will be tax-deductible. Until then, contributions are personal gifts — not tax-deductible. No equity, returns, or ownership are offered. Funds are used to build Like One and pursue the mission above. All contributions are final. If you contributed in error, email <a href={`mailto:${site.email}`} className="donate-note-link">{site.email}</a> within 7 days.
+          Like One Foundation is an IRS-recognized 501(c)(3) tax-exempt nonprofit. <strong>All donations are tax-deductible</strong> to the extent permitted by law. Like One LLC is the operating company. No equity, returns, or ownership are offered. Funds are used to build Like One and pursue the mission above. All contributions are final. If you contributed in error, email <a href={`mailto:${site.email}`} className="donate-note-link">{site.email}</a> within 7 days.
         </p>
       </div>
     </SiteLayout>

@@ -6,7 +6,7 @@ import { site } from '../../lib/site-config';
 
 export const metadata = {
   title: 'Our Impact — Like One | AI Education Funding HIV Research',
-  description: 'Like One donates a growing percentage of all revenue to HIV cure research. See our giving scale, recipients, and mission — from 1% at seed to 50% at abundance.',
+  description: 'Like One Foundation is a 501(c)(3) tax-exempt nonprofit. We donate a growing percentage of all revenue to HIV cure research — from 1% at seed to 50% at abundance.',
   alternates: { canonical: `${site.url}/impact/` },
   openGraph: {
     title: 'Our Impact — Like One',
@@ -163,17 +163,16 @@ export default function ImpactPage() {
         </div>
       </section>
 
-      {/* Disclosure */}
+      {/* Tax-Exempt Status */}
       <section className="site-section-sm">
         <div className="site-container-narrow">
-          <div className="donate-disclosure">
-            <h3 className="donate-disclosure-title">Important Disclosure</h3>
+          <div className="donate-disclosure" style={{ borderColor: 'var(--accent-purple, #b898c8)', background: 'rgba(184, 152, 200, 0.06)' }}>
+            <h3 className="donate-disclosure-title">501(c)(3) Tax-Exempt Organization</h3>
             <p className="donate-disclosure-text">
-              Like One LLC is a Nevada limited liability company (NV20263555995).
-              Like One Foundation is a Nevada nonprofit corporation (NV20263556003), currently
-              pursuing 501(c)(3) tax-exempt status with the IRS. Once approved, donations to the
-              Foundation will be tax-deductible. Until then, contributions are not tax-deductible.
-              The giving scale is a public commitment — tracked transparently and reported here.
+              Like One Foundation is an IRS-recognized 501(c)(3) tax-exempt nonprofit corporation
+              (NV20263556003). <strong>All donations are tax-deductible</strong> to the extent
+              permitted by law. Like One LLC (NV20263555995) is the operating company that funds
+              the Foundation through its giving scale — tracked transparently and reported here.
             </p>
           </div>
         </div>
