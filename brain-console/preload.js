@@ -78,6 +78,9 @@ contextBridge.exposeInMainWorld('brain', {
   pluginsReload: () => ipcRenderer.invoke('brain:plugins-reload'),
   pluginCommand: (trigger) => ipcRenderer.invoke('brain:plugin-command', trigger),
 
+  // ═══ Consulting ═══
+  consultingGenerateTOS: (clientName, deviceType) => ipcRenderer.invoke('consulting:generate-tos', clientName, deviceType),
+
   // ═══ IDE: File System ═══
   fsReadDir: (dirPath) => ipcRenderer.invoke('ide:fs-readdir', dirPath),
   fsReadFile: (filePath) => ipcRenderer.invoke('ide:fs-readfile', filePath),

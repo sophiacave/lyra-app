@@ -1,0 +1,13 @@
+{
+  "name": "pro-mcp",
+  "version": "1.0.0",
+  "description": "Pro MCP — make any web app programmable via CLI",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "js-yaml": "^4.1.0",
+    "zod": "^3.24.2"
+  }
+}

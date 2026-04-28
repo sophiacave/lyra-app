@@ -39,12 +39,14 @@ const { LocalEngine } = require('./local-engine');
 const { Scheduler } = require('./scheduler');
 const { BrainMCP } = require('./brain-mcp');
 const { BrainKnowledge } = require('./brain-knowledge');
+const { generateTOS } = require('./consulting-tos');
 const { BrainAgent } = require('./brain-agent');
 const { ClaudeCodeAgent } = require('./claude-code-agent');
 const { FayeAgent } = require('./faye-agent');
 const { ElectronMCPBridge } = require('./electron-mcp-bridge');
 const { PluginLoader } = require('./plugin-loader');
 const { HookSystem } = require('./hook-system');
+const { TaskWorker } = require('./task-worker');
 
 let mainWindow;
 let terminalManager;
@@ -59,9 +61,10 @@ let claudeCodeAgent;
 let fayeAgent;
 let pluginLoader;
 let hookSystem;
+let taskWorker;
 
 const APP_NAME = 'Like One';
-const APP_VERSION = '5.0.0-alpha';
+const APP_VERSION = '6.0.0';
 
 function createWindow() {
   nativeTheme.themeSource = 'dark';
@@ -135,15 +138,13 @@ app.whenReady().then(async () => {
 
     // ============ INIT CLAUDE CODE AGENT ============
     claudeCodeAgent = new ClaudeCodeAgent();
-    // Set pending so divine cycle can lazy-init if async check is slow
     localEngine._pendingSDKAgent = claudeCodeAgent;
     claudeCodeAgent.isAvailable().then(ok => {
-      console.log('[ClaudeCodeAgent]', ok ? '✅ SDK ready' : '⚠️ SDK not available');
+      console.log('[ClaudeCodeAgent]', ok ? '✅ SDK ready (Claude CLI authenticated)' : '⚠️ SDK not available — Ollama fallback');
       if (ok) localEngine.sdkAgent = claudeCodeAgent;
     }).catch(() => {});
-    // Load brain context into flash cache (makes Ollama brain-aware)
+    // Brain cache — local SQLite, refreshed every 5 min
     claudeCodeAgent.refreshBrainCache(brainContext).catch(() => {});
-    // Refresh every 5 min
     setInterval(() => claudeCodeAgent.refreshBrainCache(brainContext).catch(() => {}), 300000);
 
     // ============ INIT PLUGINS ============
@@ -164,6 +165,10 @@ app.whenReady().then(async () => {
     localEngine.setAgent(brainAgent);
 
     scheduler.start(60000);
+
+    // ============ INIT TASK WORKER — claims from task_dispatch ============
+    taskWorker = new TaskWorker(brainContext, localEngine);
+    taskWorker.start(30000); // poll every 30s
 
     brainAgent.onProgress((step) => {
       if (mainWindow) mainWindow.webContents.send('brain:agent-progress', step);
@@ -192,16 +197,6 @@ app.whenReady().then(async () => {
       bridge.start();
 
       // ============ AUTO-START DIVINE CYCLE (L6 — never stops) ============
-
-function executeTask(task) {
-  console.log('[Divine] Executing task:', task);
-  // Simulate task execution
-  if (task && task.id) {
-    console.log(`[SDK Agent] Task ${task.id} executed: ${task.description}`);
-    // Add actual SDK agent logic here
-  }
-}
-
       setTimeout(async () => {
         try {
           console.log('[Divine] Auto-starting L6 divine cycle...');
@@ -212,27 +207,17 @@ function executeTask(task) {
               active: true, phase: localEngine.divinePhase, cycle: localEngine.divineCycle,
             });
           }
-
-          // Execute a sample task periodically
-          setInterval(() => {
-            const sampleTask = { id: 1, description: 'Sample Task' };
-            executeTask(sampleTask);
-          }, 30000); // Execute every 30 seconds
         } catch (e) { console.error('[Divine] Auto-start failed:', e.message); }
       }, 8000);
 
-      // Log boot to brain
-      if (brainContext.supabase) {
-        brainContext.supabase.from('brain_context').upsert({
-          key: 'system.console_boot',
-          value: JSON.stringify({
-            version: APP_VERSION,
-            timestamp: new Date().toISOString(),
-            systems: bootResults,
-          }),
-          updated_at: new Date().toISOString(),
-        }, { onConflict: 'key' }).then(() => {}).catch(() => {});
-      }
+      // Log boot to brain (sovereign SQLite)
+      try {
+        brainContext.localBrain.upsertContext('system.console_boot', {
+          version: APP_VERSION,
+          timestamp: new Date().toISOString(),
+          systems: bootResults,
+        });
+      } catch {}
     });
   } catch (initError) {
     console.error('[Init Error]', initError);
@@ -277,79 +262,50 @@ function executeTask(task) {
 
   ipcMain.handle('brain:stream-message', async (event, message) => {
     try {
-      console.log('[IPC] stream-message received:', message);
+      console.log('[IPC] stream-message:', message.slice(0, 80));
 
-      const sdkReady = claudeCodeAgent && await claudeCodeAgent.isAvailable();
+      // Helper: stream local response to renderer
+      const streamLocal = async (text) => {
+        const chunkSize = 40;
+        for (let i = 0; i < text.length; i += chunkSize) {
+          mainWindow.webContents.send('brain:stream-chunk', text.slice(i, i + chunkSize));
+          if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 15));
+        }
+        mainWindow.webContents.send('brain:stream-end', { provider: 'Faye (local)', fromLocal: true });
+        return { success: true };
+      };
 
-      // 1. Slash commands always go through local engine (zero tokens)
-      // 2. When SDK is ready, ALL natural language goes to SDK — local intent matching disabled
+      // 1. Slash commands → local engine (zero tokens)
       if (message.trim().startsWith('/')) {
         const local = await localEngine.tryHandle(message);
-        if (local.handled) {
-          const text = local.response || '';
-          const chunkSize = 40;
-          for (let i = 0; i < text.length; i += chunkSize) {
-            mainWindow.webContents.send('brain:stream-chunk', text.slice(i, i + chunkSize));
-            if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 15));
-          }
-          mainWindow.webContents.send('brain:stream-end', { provider: 'Faye (local)', fromLocal: true });
-          return { success: true };
-        }
-      } else if (!sdkReady) {
-        // SDK not available — fall back to local intent matching
-        const local = await localEngine.tryHandle(message);
-        if (local.handled) {
-          const text = local.response || '';
-          const chunkSize = 40;
-          for (let i = 0; i < text.length; i += chunkSize) {
-            mainWindow.webContents.send('brain:stream-chunk', text.slice(i, i + chunkSize));
-            if (i + chunkSize < text.length) await new Promise(r => setTimeout(r, 15));
-          }
-          mainWindow.webContents.send('brain:stream-end', { provider: 'Faye (local)', fromLocal: true });
-          return { success: true };
-        }
+        if (local.handled) return streamLocal(local.response || '');
       }
 
-      // 2. Dual Engine — Flash (Ollama instant) + Deep (Claude SDK verify)
+      // 2. Claude Agent SDK — primary engine
+      const sdkReady = claudeCodeAgent && await claudeCodeAgent.isAvailable();
       if (sdkReady) {
-        let ollamaUp = false;
-        try {
-          ollamaUp = await new Promise((resolve) => {
-            const req = require('http').get('http://localhost:11434/api/tags', { timeout: 1500 }, (res) => {
-              resolve(res.statusCode === 200);
-            });
-            req.on('error', () => resolve(false));
-            req.on('timeout', () => { req.destroy(); resolve(false); });
-          });
-        } catch {}
-
-        if (ollamaUp) {
-          console.log('[IPC] DUAL ENGINE: Flash (Ollama) + Deep (Claude SDK)');
-          const result = await claudeCodeAgent.dualEngine(message, mainWindow);
-          return result;
-        } else {
-          console.log('[IPC] SDK only (Ollama offline)');
-          const result = await claudeCodeAgent.streamQuery(message, mainWindow);
-          return result;
-        }
+        console.log('[IPC] Claude Agent SDK');
+        return await claudeCodeAgent.streamQuery(message, mainWindow);
       }
 
-      // 3. Sovereign Agent — Ollama with tool calling (zero Anthropic dependency)
+      // 3. Sovereign Agent — Ollama with tool calling (zero-cost fallback)
       if (fayeAgent) {
         const ollamaStatus = await fayeAgent.isAvailable();
         if (ollamaStatus.available) {
-          console.log('[IPC] SOVEREIGN AGENT: Ollama tool loop with', fayeAgent.tools.length, 'tools');
-          const result = await fayeAgent.run(message, mainWindow);
-          return result;
+          console.log('[IPC] Sovereign Agent (Ollama):', fayeAgent.tools.length, 'tools');
+          return await fayeAgent.run(message, mainWindow);
         }
       }
 
-      // 4. No agent available
-      console.log('[IPC] No agent available');
+      // 4. Local intent matching (no AI needed)
+      const local = await localEngine.tryHandle(message);
+      if (local.handled) return streamLocal(local.response || '');
+
+      // 5. Nothing available
       mainWindow.webContents.send('brain:stream-chunk',
         '**No AI provider available.**\n\n' +
-        '1. **Claude Code SDK** — primary\n' +
-        '2. **Ollama** — `ollama serve` then `ollama pull qwen2.5:32b`\n\n' +
+        '1. **Claude Agent SDK** — `claude auth login` (primary)\n' +
+        '2. **Ollama** — `ollama serve` then `ollama pull qwen3:14b`\n\n' +
         '`/help` for zero-token commands.'
       );
       mainWindow.webContents.send('brain:stream-end', { provider: 'none' });
@@ -361,8 +317,11 @@ function executeTask(task) {
   });
 
   ipcMain.handle('brain:get-context', async () => {
-    try { return { success: true, context: await brainContext.getFullContext() }; }
-    catch (error) { return { success: false, error: error.message }; }
+    try {
+      // Return ALL entries for Brain Explorer (not just boot keys)
+      const entries = brainContext.getAllEntries();
+      return { success: true, context: entries };
+    } catch (error) { return { success: false, error: error.message }; }
   });
 
   ipcMain.handle('brain:get-status', async () => {
@@ -376,6 +335,7 @@ function executeTask(task) {
         sovereign: fayeAgent?.getStatus() || {},
         knowledge: brainKnowledge?.getStats() || {},
         agent: brainAgent?.getStatus() || {},
+        taskWorker: taskWorker?.getStatus() || {},
         version: APP_VERSION,
       };
     } catch (error) { return { success: false, error: error.message }; }
@@ -421,34 +381,20 @@ function executeTask(task) {
 
   ipcMain.handle('brain:boot-scan', async () => await brainContext.bootScan());
 
-  // Vault IPC — query brain_vault table
+  // Vault IPC — sovereign SQLite vault
   ipcMain.handle('brain:vault-list', async () => {
-    const sb = brainContext.supabase;
-    if (!sb) return [];
-    try {
-      const { data } = await sb.from('brain_vault').select('service, description, hint, tier, updated_at').order('service');
-      return (data || []).map(d => ({
-        service: d.service,
-        name: d.service,
-        description: d.description || d.tier || '',
-        masked: d.hint || '••••••••',
-      }));
-    } catch (e) { console.error('[Vault] List error:', e.message); return []; }
+    try { return brainContext.localBrain.vaultList(); }
+    catch (e) { console.error('[Vault] List error:', e.message); return []; }
   });
   ipcMain.handle('brain:vault-get', async (event, service) => {
-    const sb = brainContext.supabase;
-    if (!sb) return null;
-    try {
-      const { data } = await sb.from('brain_vault').select('secret_encrypted, hint').eq('service', service).single();
-      return data?.secret_encrypted || data?.hint || null;
-    } catch (e) { return null; }
+    try { return brainContext.localBrain.vaultGet(service); }
+    catch (e) { return null; }
   });
   ipcMain.handle('brain:vault-field', async (event, service, field) => {
-    const sb = brainContext.supabase;
-    if (!sb) return null;
     try {
-      const { data } = await sb.from('brain_vault').select('secret_encrypted').eq('service', service).single();
-      const val = typeof data?.secret_encrypted === 'string' ? JSON.parse(data.secret_encrypted) : data?.secret_encrypted;
+      const raw = brainContext.localBrain.vaultGet(service);
+      if (!raw) return null;
+      const val = typeof raw === 'string' ? JSON.parse(raw) : raw;
       return val?.[field] || null;
     } catch (e) { return null; }
   });
@@ -464,132 +410,21 @@ function executeTask(task) {
     catch (error) { return { success: false, error: error.message }; }
   });
 
-  // Knowledge Base IPC — unified cross-brain search
+  // Knowledge Base IPC — sovereign SQLite cross-table search
   ipcMain.handle('brain:kb-search', async (event, query, limit) => {
-    const sb = brainContext.supabase;
-    if (!sb) return brainKnowledge.search(query, limit || 10);
-    const results = [];
-    const q = query.toLowerCase();
-    const max = limit || 20;
-
-    // 1. brain_context — key-value pairs (primary knowledge)
     try {
-      const { data } = await sb.from('brain_context')
-        .select('key, description, category, value, priority, updated_at')
-        .or(`key.ilike.%${q}%,description.ilike.%${q}%`)
-        .order('priority', { ascending: false })
-        .limit(max);
-      if (data) {
-        for (const r of data) {
-          results.push({
-            source: 'brain_context', key: r.key, topic: r.key,
-            content: r.description || (typeof r.value === 'string' ? r.value.slice(0, 300) : JSON.stringify(r.value).slice(0, 300)),
-            category: r.category, priority: r.priority, updated_at: r.updated_at,
-          });
-        }
-      }
-    } catch {}
-
-    // 2. brain_episodes — activity log
-    try {
-      const { data } = await sb.from('brain_episodes')
-        .select('id, event_type, summary, details, created_at')
-        .or(`summary.ilike.%${q}%,event_type.ilike.%${q}%`)
-        .order('created_at', { ascending: false })
-        .limit(Math.min(max, 10));
-      if (data) {
-        for (const r of data) {
-          results.push({
-            source: 'episodes', key: `episode.${r.id}`, topic: r.event_type,
-            content: r.summary || r.details?.slice(0, 200) || '',
-            category: 'episode', updated_at: r.created_at,
-          });
-        }
-      }
-    } catch {}
-
-    // 3. brain_graph — relationships
-    try {
-      const { data } = await sb.from('brain_graph')
-        .select('from_key, to_key, relationship, weight')
-        .or(`from_key.ilike.%${q}%,to_key.ilike.%${q}%,relationship.ilike.%${q}%`)
-        .order('weight', { ascending: false })
-        .limit(Math.min(max, 10));
-      if (data) {
-        for (const r of data) {
-          results.push({
-            source: 'graph', key: `${r.from_key} → ${r.to_key}`,
-            topic: r.relationship,
-            content: `${r.from_key} —[${r.relationship}]→ ${r.to_key} (weight: ${r.weight})`,
-            category: 'graph',
-          });
-        }
-      }
-    } catch {}
-
-    // 4. brain_chunks — RAG semantic chunks
-    try {
-      const { data } = await sb.from('brain_chunks')
-        .select('id, source_key, content, metadata')
-        .ilike('content', `%${q}%`)
-        .limit(Math.min(max, 10));
-      if (data) {
-        for (const r of data) {
-          results.push({
-            source: 'chunks', key: r.source_key || `chunk.${r.id}`,
-            topic: r.source_key || 'RAG chunk',
-            content: r.content?.slice(0, 300) || '',
-            category: 'chunk',
-          });
-        }
-      }
-    } catch {}
-
-    // 5. brain_archive — archived entries
-    try {
-      const { data } = await sb.from('brain_archive')
-        .select('key, category, archive_reason, archived_at')
-        .or(`key.ilike.%${q}%,archive_reason.ilike.%${q}%`)
-        .limit(Math.min(max, 5));
-      if (data) {
-        for (const r of data) {
-          results.push({
-            source: 'archive', key: r.key, topic: r.key,
-            content: r.archive_reason || 'Archived',
-            category: 'archive', updated_at: r.archived_at,
-          });
-        }
-      }
-    } catch {}
-
-    return results.slice(0, max);
+      return brainContext.localBrain.kbSearch(query, limit || 20);
+    } catch (e) {
+      return brainKnowledge ? brainKnowledge.search(query, limit || 10) : [];
+    }
   });
 
   ipcMain.handle('brain:kb-add', async (event, entry) => await brainKnowledge.add(entry));
 
   ipcMain.handle('brain:kb-stats', async () => {
-    const sb = brainContext.supabase;
-    if (!sb) return brainKnowledge.getStats();
     try {
-      const [ctx, ep, graph, chunks, archive, skills] = await Promise.all([
-        sb.from('brain_context').select('*', { count: 'exact', head: true }),
-        sb.from('brain_episodes').select('*', { count: 'exact', head: true }),
-        sb.from('brain_graph').select('*', { count: 'exact', head: true }),
-        sb.from('brain_chunks').select('*', { count: 'exact', head: true }),
-        sb.from('brain_archive').select('*', { count: 'exact', head: true }),
-        sb.from('brain_skills').select('*', { count: 'exact', head: true }),
-      ]);
-      const categories = [
-        { name: 'Context', count: ctx.count || 0, icon: '🧠' },
-        { name: 'Episodes', count: ep.count || 0, icon: '📜' },
-        { name: 'Graph', count: graph.count || 0, icon: '🕸️' },
-        { name: 'RAG Chunks', count: chunks.count || 0, icon: '🔍' },
-        { name: 'Archive', count: archive.count || 0, icon: '📦' },
-        { name: 'Skills', count: skills.count || 0, icon: '⚡' },
-      ];
-      const total = categories.reduce((s, c) => s + c.count, 0);
-      return { totalEntries: total, categories, recentlyAdded: 0 };
-    } catch (e) { return brainKnowledge.getStats(); }
+      return brainContext.localBrain.kbStats();
+    } catch (e) { return brainKnowledge ? brainKnowledge.getStats() : { totalEntries: 0, categories: [] }; }
   });
 
   // Agent IPC
@@ -613,17 +448,10 @@ function executeTask(task) {
     return { success: true, response: result.response };
   });
 
-  // Brain write IPC
+  // Brain write IPC — sovereign SQLite
   ipcMain.handle('brain:write-entry', async (event, { key, value, description, category, priority }) => {
     try {
-      if (!brainContext.supabase) return { success: false, error: 'Brain not connected' };
-      const row = { key, value: typeof value === 'string' ? value : JSON.stringify(value), updated_at: new Date().toISOString() };
-      if (description) row.description = description;
-      if (category) row.category = category;
-      if (priority) row.priority = priority;
-      const { error } = await brainContext.supabase.from('brain_context').upsert(row, { onConflict: 'key' });
-      if (error) return { success: false, error: error.message };
-      return { success: true };
+      return brainContext.localBrain.upsertContext(key, value, description, category, priority);
     } catch (e) { return { success: false, error: e.message }; }
   });
 
@@ -725,76 +553,39 @@ function executeTask(task) {
     } catch (e) { return { success: false, error: e.message }; }
   });
 
-  // Skills IPC — query brain_skills table
+  // Skills IPC — local
   ipcMain.handle('brain:skills-list', async () => {
-    if (!brainContext.supabase) return [];
-    const { data } = await brainContext.supabase
-      .from('brain_skills').select('*').eq('active', true).order('use_count', { ascending: false });
-    return data || [];
+    try {
+      return brainContext.localBrain.db.prepare("SELECT * FROM brain_skills WHERE active = 1 ORDER BY use_count DESC").all();
+    } catch { return []; }
   });
 
-  // ============ ORCHESTRATION IPC ============
+  // ============ ORCHESTRATION IPC — sovereign SQLite ============
   ipcMain.handle('brain:get-orchestration', async () => {
     const result = { agents: [], tasks: [], stats: {} };
-    const sb = brainContext.supabase;
-    if (!sb) return result;
+    const lb = brainContext.localBrain;
 
     try {
-      // Get agent registry from brain
-      const { data: registryData } = await sb.from('brain_context')
-        .select('value').eq('key', 'system.agent_registry').single();
-      if (registryData?.value) {
-        const registry = typeof registryData.value === 'string' ? JSON.parse(registryData.value) : registryData.value;
-        result.agents = registry.agents || [];
-      }
+      // Agent registry from brain_context
+      const registry = lb.getContextByKey('system.agent_registry');
+      if (registry) result.agents = registry.agents || [];
 
-      // Get active tasks from task_dispatch table (real fleet dispatch)
-      const { data: taskData } = await sb.from('task_dispatch')
-        .select('*')
-        .in('status', ['pending', 'assigned', 'claimed', 'in_progress'])
-        .order('created_at', { ascending: false })
-        .limit(20);
+      // Active tasks from task_dispatch
+      result.tasks = lb.getActiveTasks(20).map(t => ({ ...t, target: t.assigned_to }));
 
-      if (taskData?.length) {
-        result.tasks = taskData.map(t => ({
-          ...t,
-          target: t.assigned_to,
-        }));
-      }
+      // Stats
+      const taskStats = lb.getTaskStats();
+      result.stats = { ...taskStats };
 
-      // Also count completed/failed for stats
-      const { count: completedCount } = await sb.from('task_dispatch')
-        .select('*', { count: 'exact', head: true })
-        .eq('status', 'completed');
-      const { count: failedCount } = await sb.from('task_dispatch')
-        .select('*', { count: 'exact', head: true })
-        .eq('status', 'failed');
-      result.stats.completed = completedCount || 0;
-      result.stats.failed = failedCount || 0;
-
-      // Get last dispatch time
-      const { data: lastTask } = await sb.from('task_dispatch')
-        .select('created_at')
-        .order('created_at', { ascending: false })
-        .limit(1)
-        .single();
-      if (lastTask) result.stats.lastDispatch = lastTask.created_at;
-
-      // Get orchestration stats
-      const { data: statsData } = await sb.from('brain_context')
-        .select('value').eq('key', 'system.orchestration_stats').single();
-      if (statsData?.value) {
-        result.stats = typeof statsData.value === 'string' ? JSON.parse(statsData.value) : statsData.value;
-      }
+      // Orchestration pattern from brain_context
+      const orchStats = lb.getContextByKey('system.orchestration_stats');
+      if (orchStats) result.stats = { ...result.stats, ...orchStats };
     } catch (e) { console.error('[Orchestration] Error:', e.message); }
 
     return result;
   });
 
   ipcMain.handle('brain:dispatch-task', async (event, title, target) => {
-    const sb = brainContext.supabase;
-    if (!sb) return { success: false, error: 'Brain not connected' };
-
     // Auto-detect category from title keywords
     const titleLower = title.toLowerCase();
     const category = titleLower.match(/video|render|studio/) ? 'studio'
@@ -807,85 +598,38 @@ function executeTask(task) {
 
     const resolvedTarget = target === 'auto' ? autoRouteTarget(category) : target;
 
-    // Build context boost payload
-    let payload = {};
     try {
-      const contextKeys = ['session.active_work', 'session.next_steps', 'session.divine_plan'];
-      const { data: contextData } = await sb.from('brain_context')
-        .select('key, value')
-        .in('key', contextKeys);
-      if (contextData?.length) {
-        payload.context_boost = {};
-        contextData.forEach(c => {
-          payload.context_boost[c.key] = typeof c.value === 'string' ? c.value.slice(0, 500) : JSON.stringify(c.value).slice(0, 500);
-        });
-      }
-    } catch {} // Context boost is best-effort
-
-    // Write to real task_dispatch table (same as mac_fleet_dispatch MCP)
-    try {
-      const { data, error } = await sb.from('task_dispatch').insert({
-        title,
-        description: `Dispatched from Faye Console`,
-        assigned_to: resolvedTarget,
-        created_by: 'm3_forge',
-        status: resolvedTarget ? 'assigned' : 'pending',
-        priority: 5,
-        category,
-        payload,
-      }).select('id').single();
-
-      if (error) throw error;
-      return { success: true, taskId: data.id, target: resolvedTarget, category };
+      return brainContext.localBrain.dispatchTask(title, resolvedTarget, category);
     } catch (e) { return { success: false, error: e.message }; }
   });
 
   ipcMain.handle('brain:dispatch-pattern', async (event, pattern) => {
-    const sb = brainContext.supabase;
-    if (!sb) return { success: false, error: 'Brain not connected' };
-
     try {
-      await sb.from('brain_context').upsert({
-        key: 'system.orchestration_stats',
-        value: JSON.stringify({
-          activePattern: pattern,
-          activatedAt: new Date().toISOString(),
-          activatedBy: 'm3_forge',
-        }),
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'key' });
+      brainContext.localBrain.upsertContext('system.orchestration_stats', {
+        activePattern: pattern,
+        activatedAt: new Date().toISOString(),
+        activatedBy: 'm3_forge',
+      });
       return { success: true };
     } catch (e) { return { success: false, error: e.message }; }
   });
 
-  // ============ INTEGRATIONS IPC ============
+  // ============ INTEGRATIONS IPC — sovereign SQLite + live CLI ============
   ipcMain.handle('brain:get-integrations', async () => {
-    const result = { stripe: {}, vercel: {}, supabase: {}, fleet: {} };
-    const sb = brainContext.supabase;
+    const result = { stripe: {}, vercel: {}, brain: {}, fleet: {} };
+    const lb = brainContext.localBrain;
     const run = (cmd) => { try { return execSync(cmd, { timeout: 8000, encoding: 'utf8' }); } catch { return ''; } };
 
-    // Stripe — read from brain revenue alerts
-    if (sb) {
-      try {
-        const { data } = await sb.from('brain_context')
-          .select('value')
-          .like('key', 'revenue.daily_alert%')
-          .order('updated_at', { ascending: false })
-          .limit(1);
-        if (data?.[0]?.value) {
-          const rev = typeof data[0].value === 'string' ? JSON.parse(data[0].value) : data[0].value;
-          result.stripe = {
-            connected: true,
-            mrr: rev.mrr || 0,
-            customers: rev.total_customers || rev.customers || 0,
-            lastPayment: rev.last_payment || rev.date || 'Unknown',
-            balance: rev.balance || 0,
-          };
-        }
-      } catch {}
-    }
+    // Stripe — brain context first, then live CLI
+    try {
+      const rows = lb.db.prepare("SELECT value FROM brain_context WHERE key LIKE 'revenue.daily_alert%' ORDER BY updated_at DESC LIMIT 1").all();
+      if (rows[0]?.value) {
+        const rev = JSON.parse(rows[0].value);
+        result.stripe = { connected: true, mrr: rev.mrr || 0, customers: rev.total_customers || rev.customers || 0, lastPayment: rev.last_payment || rev.date || 'Unknown', balance: rev.balance || 0 };
+      }
+    } catch {}
 
-    // Also try live Stripe CLI
+    // Live Stripe CLI override
     try {
       const stripeOut = run('~/bin/stripe-dashboard revenue 2>/dev/null');
       if (stripeOut) {
@@ -905,42 +649,50 @@ function executeTask(task) {
       result.vercel = { connected: true, branch, uncommitted, lastDeploy: lastCommit, status: 'Auto-deploy on push' };
     } catch {}
 
-    // Supabase — connection health
-    if (sb) {
-      try {
-        const { data, error } = await sb.from('brain_context').select('key, updated_at').order('updated_at', { ascending: false }).limit(1);
-        result.supabase = {
-          connected: !error,
-          brainEntries: Object.keys(brainContext.contextCache || {}).length,
-          lastUpdate: data?.[0]?.updated_at ? new Date(data[0].updated_at).toLocaleString() : 'Unknown',
-          plan: 'Teams',
-          brainCount: 4,
-        };
-      } catch { result.supabase = { connected: false }; }
-    }
+    // Brain — local SQLite health
+    try {
+      const count = lb.contextCount();
+      const lastRow = lb.db.prepare('SELECT updated_at FROM brain_context ORDER BY updated_at DESC LIMIT 1').get();
+      result.brain = {
+        connected: true,
+        brainEntries: count,
+        lastUpdate: lastRow?.updated_at ? new Date(lastRow.updated_at).toLocaleString() : 'Unknown',
+        plan: 'Sovereign (SQLite)',
+        backend: 'local_brain.db',
+      };
+    } catch { result.brain = { connected: false }; }
 
-    // Fleet — read heartbeats
-    if (sb) {
-      try {
-        const { data } = await sb.from('brain_context')
-          .select('key, value, updated_at')
-          .in('key', ['computers.m3_forge_heartbeat', 'computers.m4_mirror_heartbeat', 'computers.gcp_watcher_heartbeat']);
-        const heartbeats = {};
-        (data || []).forEach(h => {
-          const age = (Date.now() - new Date(h.updated_at).getTime()) / 60000;
-          heartbeats[h.key] = age < 10 ? 'Online' : age < 60 ? `${Math.floor(age)}m ago` : 'Offline';
-        });
-        result.fleet = {
-          healthy: true,
-          m3: heartbeats['computers.m3_forge_heartbeat'] || 'Online',
-          m4: heartbeats['computers.m4_mirror_heartbeat'] || 'Unknown',
-          gcp: heartbeats['computers.gcp_watcher_heartbeat'] || 'Unknown',
-          activeTasks: 0,
-        };
-      } catch {}
-    }
+    // Fleet — heartbeats from SQLite
+    try {
+      const heartbeats = lb.getHeartbeats();
+      const hbMap = {};
+      for (const h of heartbeats) {
+        const age = h.last_heartbeat ? (Date.now() - new Date(h.last_heartbeat).getTime()) / 60000 : Infinity;
+        hbMap[h.machine_id] = age < 10 ? 'Online' : age < 60 ? `${Math.floor(age)}m ago` : 'Offline';
+      }
+      const activeTasks = lb.getActiveTasks(100).length;
+      result.fleet = {
+        healthy: true,
+        m3: hbMap['m3_forge'] || 'Online',
+        m4: hbMap['m4_mirror'] || 'Unknown',
+        gcp: hbMap['gcp_watcher'] || 'Unknown',
+        activeTasks,
+      };
+    } catch {}
 
     return result;
+  });
+
+  // ============ CONSULTING IPC ============
+  ipcMain.handle('consulting:generate-tos', async (event, clientName, deviceType) => {
+    try {
+      const tos = generateTOS(clientName, deviceType);
+      // Save TOS to file
+      const tosPath = path.join(os.homedir(), 'Documents', 'consulting', `tos-${clientName.toLowerCase().replace(/\s+/g, '-')}.txt`);
+      fs.mkdirSync(path.dirname(tosPath), { recursive: true });
+      fs.writeFileSync(tosPath, tos);
+      return { success: true, path: tosPath, tos };
+    } catch (e) { return { success: false, error: e.message }; }
   });
 
   // ============ PLUGIN IPC ============
@@ -1111,13 +863,16 @@ async function proactiveCycle() {
       }
     }
 
-    // 6. Log + send
-    if (sb && (insights.length || actions.length)) {
-      sb.from('brain_context').upsert({
-        key: 'system.proactive_log',
-        value: JSON.stringify({ timestamp: new Date().toISOString(), insights_count: insights.length, actions_taken: actions, insights: insights.slice(0, 10) }),
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'key' }).then(() => {}).catch(() => {});
+    // 6. Log to local brain (Supabase is dead)
+    if (insights.length || actions.length) {
+      try {
+        brainContext.localBrain.upsertContext('system.proactive_log', {
+          timestamp: new Date().toISOString(),
+          insights_count: insights.length,
+          actions_taken: actions,
+          insights: insights.slice(0, 10),
+        });
+      } catch {}
     }
 
     if (insights.length > 0 || actions.length > 0) {

@@ -454,12 +454,22 @@ server.tool("mac_brain_write", "Write or update a brain_context key. Upserts by 
     priority: z.number().int().min(1).max(10).default(5),
   },
 async ({ key, value, category, description, priority }) => {
+  // Fix: auto-parse stringified JSON to native jsonb (Task #7 from S148)
+  let parsedValue = value;
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    if ((trimmed.startsWith("{") && trimmed.endsWith("}")) ||
+        (trimmed.startsWith("[") && trimmed.endsWith("]"))) {
+      try { parsedValue = JSON.parse(trimmed); } catch {}
+    }
+  }
+
   // Try update first
   const existing = await supaFetch(`brain_context?key=eq.${encodeURIComponent(key)}&select=id`);
   if (existing.length && existing[0].id) {
     // Update
     const result = await supaFetch(`brain_context?key=eq.${encodeURIComponent(key)}`, "PATCH", {
-      value: typeof value === "string" ? value : value,
+      value: parsedValue,
       category,
       description: description || undefined,
       priority,
@@ -470,7 +480,7 @@ async ({ key, value, category, description, priority }) => {
     // Insert
     const result = await supaFetch("brain_context", "POST", {
       key,
-      value: typeof value === "string" ? value : value,
+      value: parsedValue,
       category,
       description: description || `Written by ${MACHINE_ID}`,
       priority,

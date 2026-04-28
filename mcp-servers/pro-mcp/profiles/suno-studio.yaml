@@ -1,0 +1,230 @@
+# Suno Studio — Pro MCP Profile
+# Enables programmatic access to Suno's DAW for artist remixes
+# Used by Timbre pipeline: vocals → genre covers → mastered tracks
+
+name: suno-studio
+url: https://suno.com/studio
+auth: browser-session
+description: Suno Studio DAW — multitrack editor for AI music generation with vocal uploads
+
+actions:
+  # Navigate to Studio and verify ready state
+  open:
+    description: Open Suno Studio and ensure it's loaded
+    steps:
+      - navigate: https://suno.com/studio
+      - wait: { text: "SUNO Studio", timeout: 15000 }
+      - read:
+          expression: "({ url: location.href, title: document.title, ready: document.body.innerText.includes('Create') })"
+          store: page_state
+
+  # Set the style/genre tags for generation
+  set_style:
+    description: Set genre style tags for the next generation
+    navigate: false
+    steps:
+      - click: { text: "Styles" }
+      - sleep: 500
+      - js:
+          code: |
+            const ta = document.querySelector('textarea:focus') || document.querySelector('textarea[placeholder]');
+            if (ta) {
+              const setter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+              setter.call(ta, '');
+              ta.dispatchEvent(new Event('input', { bubbles: true }));
+              setter.call(ta, '{{style}}');
+              ta.dispatchEvent(new Event('input', { bubbles: true }));
+              ta.dispatchEvent(new Event('change', { bubbles: true }));
+              return 'style set: {{style}}';
+            }
+            return 'no textarea found';
+      - sleep: 300
+      - click: { text: "Done" }
+
+  # Trigger generation with current settings
+  create:
+    description: Click Create to start generation (uses 10 credits, produces 2 versions)
+    navigate: false
+    steps:
+      - click: { text: "Create" }
+      - sleep: 5000
+      - read:
+          expression: "document.body.innerText.includes('Credits') ? 'generation started' : 'unknown state'"
+          store: gen_status
+
+  # Set style and create in one action
+  generate:
+    description: Set style and generate in one step
+    navigate: false
+    steps:
+      - js:
+          code: |
+            // The Styles panel: find the visible Styles textarea in the creation panel
+            // First check if creation panel is open (has Simple/Advanced/Sounds tabs)
+            var panel = Array.from(document.querySelectorAll('button')).find(b => b.innerText?.trim() === 'Simple' || b.innerText?.trim() === 'Advanced');
+            if (!panel) {
+              // Panel not open yet — find and click the Styles label in floating bar
+              var songBtn = Array.from(document.querySelectorAll('button')).find(b => b.innerText?.trim()?.startsWith('Song'));
+              if (songBtn) {
+                var r = songBtn.getBoundingClientRect();
+                var target = document.elementFromPoint(r.x + r.width + 100, r.y + r.height/2);
+                if (target) target.click();
+              }
+              return 'opening panel';
+            }
+            return 'panel already open';
+      - sleep: 1000
+      - js:
+          code: |
+            // Find the Styles textarea in the visible creation panel
+            // It's labeled "Styles" and contains genre tags
+            var labels = document.querySelectorAll('div, span, label');
+            var stylesLabel = Array.from(labels).find(l => l.innerText?.trim() === 'Styles' && l.getBoundingClientRect().width > 10);
+            // The textarea is nearby — look for visible textareas in the left panel (x < 300)
+            var textareas = Array.from(document.querySelectorAll('textarea')).filter(t => {
+              var r = t.getBoundingClientRect();
+              return r.x < 300 && r.y > 400 && r.width > 50 && r.height > 20;
+            });
+            if (textareas.length > 0) {
+              // Last textarea in panel is usually Styles
+              var ta = textareas[textareas.length - 1];
+              ta.focus();
+              ta.select();
+              document.execCommand('selectAll');
+              document.execCommand('insertText', false, '{{style}}');
+              return 'style set in panel textarea: ' + ta.value?.substring(0, 30);
+            }
+            // Fallback: any textarea with style-like content
+            var allTa = Array.from(document.querySelectorAll('textarea'));
+            for (var t of allTa) {
+              if (t.value && (t.value.includes('BPM') || t.value.includes('pop') || t.value.includes('beat'))) {
+                t.focus(); t.select();
+                document.execCommand('selectAll');
+                document.execCommand('insertText', false, '{{style}}');
+                return 'style set by content match: ' + t.value?.substring(0, 30);
+              }
+            }
+            return 'no styles textarea found';
+      - sleep: 500
+      - js:
+          code: |
+            const done = Array.from(document.querySelectorAll('button')).find(b => b.innerText?.trim() === 'Done' && b.offsetParent);
+            if (done) { done.click(); return 'done'; }
+            return 'skip';
+          _optional: true
+      - sleep: 500
+      - js:
+          code: |
+            const btn = Array.from(document.querySelectorAll('button')).find(b => b.innerText?.trim() === 'Create' && b.offsetParent);
+            if (btn) { btn.click(); return 'creating'; }
+            return 'no create btn';
+      - sleep: 3000
+      - read:
+          expression: "({ generating: true, style: '{{style}}' })"
+          store: gen_result
+
+  # Wait for generation to complete (poll for waveform changes)
+  wait_complete:
+    description: Wait for generation to finish rendering
+    navigate: false
+    steps:
+      - js:
+          async: true
+          timeout: 180000
+          code: |
+            // Poll until the track stops showing loading state
+            for (let i = 0; i < 60; i++) {
+              await new Promise(r => setTimeout(r, 3000));
+              // Check if any loading/progress indicators are gone
+              const loading = document.querySelector('[class*="loading"], [class*="progress"], [class*="generating"]');
+              if (!loading && i > 5) return 'generation complete after ' + (i * 3) + 's';
+            }
+            return 'timeout after 180s';
+          store: completion
+
+  # Export/download the generated track
+  export:
+    description: Export the current project or selected clip
+    navigate: false
+    steps:
+      - click: { text: "Export" }
+      - sleep: 1000
+      - js:
+          code: |
+            // Find export options
+            const opts = Array.from(document.querySelectorAll('button, [role="menuitem"], a')).filter(el => {
+              const t = el.innerText?.toLowerCase() || '';
+              return t.includes('download') || t.includes('mp3') || t.includes('wav') || t.includes('export');
+            }).map(el => el.innerText.trim());
+            return JSON.stringify(opts);
+          store: export_options
+
+  # Get project status — tracks, credits, versions
+  status:
+    description: Get current Studio project state
+    navigate: false
+    steps:
+      - read:
+          expression: |
+            ({
+              url: location.href,
+              title: document.title,
+              tracks: Array.from(document.querySelectorAll('[class*="track"]')).length,
+              hasCreate: !!Array.from(document.querySelectorAll('button')).find(b => b.innerText?.trim() === 'Create'),
+              pageText: document.body.innerText.substring(0, 300)
+            })
+          store: studio_state
+
+  # Get credits remaining
+  credits:
+    description: Check remaining Suno credits
+    navigate: false
+    steps:
+      - js:
+          async: true
+          code: |
+            const sessionCookie = document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith('__session='));
+            const token = sessionCookie ? sessionCookie.split('=').slice(1).join('=') : null;
+            if (!token) return JSON.stringify({ error: 'no session token' });
+            const resp = await fetch('https://studio-api-prod.suno.com/api/billing/info/', {
+              headers: { 'Authorization': 'Bearer ' + token }
+            });
+            const data = await resp.json();
+            return JSON.stringify({
+              credits: data.total_credits_left,
+              plan: data.plan?.name,
+              monthly_usage: data.monthly_usage,
+              monthly_limit: data.monthly_limit
+            });
+          store: billing
+
+  # Upload audio file to a track
+  upload:
+    description: Upload an audio file to the Studio project
+    navigate: false
+    steps:
+      - click: { text: "Upload" }
+      - sleep: 1000
+      - read:
+          expression: "({ uploadReady: true, note: 'File picker opened — file must be selected via system dialog' })"
+          store: upload_state
+
+# Genre presets for Timbre pipeline
+genre_presets:
+  edm: "EDM, festival energy, euphoric drops, 128BPM, big room synths, sidechained bass"
+  kpop: "K-pop, polished production, catchy hooks, dance-pop, 120BPM, bright synths"
+  jpop: "J-pop, anime opening energy, upbeat, bright melodies, 140BPM"
+  lofi: "Lofi hip-hop, chill beats, vinyl crackle, jazzy piano, 85BPM, mellow"
+  classical: "Orchestral, cinematic strings, dramatic piano, classical crossover, 90BPM"
+  hiphop: "Hip-hop, trap beats, 808 bass, hard-hitting drums, 140BPM"
+  pop: "Pop, modern production, catchy chorus, radio-ready, 120BPM, polished vocals"
+  rnb: "R&B, smooth soul, neo-soul, warm synths, groovy bass, 90BPM"
+  rock: "Rock, electric guitars, driving drums, raw energy, 130BPM"
+  reggaeton: "Reggaeton, dembow rhythm, Latin urban, 95BPM, perreo bass"
+  jazz: "Jazz, smooth saxophone, walking bass, swing feel, 120BPM, warm"
+  ambient: "Ambient, atmospheric pads, ethereal textures, reverb-heavy, 70BPM"
+  latin: "Latin, acoustic guitar, bossa nova, tropical, 110BPM"
+  trap: "Trap, dark 808s, hi-hat rolls, atmospheric, 150BPM"
+  bollywood: "Bollywood, dramatic strings, tabla, cinematic, 130BPM"
+  afrobeats: "Afrobeats, rhythmic guitar, log drum, danceable, 110BPM"
+  traditional_vietnamese: "Traditional Vietnamese, dan tranh, bamboo flute, folk melody, 100BPM"

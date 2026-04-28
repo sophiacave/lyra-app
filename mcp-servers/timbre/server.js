@@ -54,10 +54,197 @@ const SUNO_UPLOAD_FORMAT = "mp3"; // Suno expects MP3 for uploads
   if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
 });
 
-// ── Suno Studio auth ─────────────────────────────────────────────────
-function getSunoToken() {
-  // Priority: env var > config file
+// ── Suno Studio auth (Clerk token exchange) ─────────────────────────
+const CLERK_BASE_URL = "https://auth.suno.com";
+const CLERK_API_VERSION = "2025-11-10";
+const CLERK_JS_VERSION = "5.117.0";
+const SUNO_ENV_PATH = path.join(HOME, "suno-api", ".env");
+const TOKEN_TTL_MS = 55 * 60 * 1000; // 55 min (refresh before 60 min expiry)
+
+// Cached Clerk JWT state
+let _clerkJwt = null;
+let _clerkJwtExpiresAt = 0;
+let _clerkSessionId = null;
+let _clientToken = null; // The __client cookie value
+
+// Device-Id for Suno API (read from Chrome cookie or generate once)
+let _deviceId = null;
+function getDeviceId() {
+  if (_deviceId) return _deviceId;
+  // Try to read from faye_config.json
+  try {
+    const config = JSON.parse(fs.readFileSync(CONFIG_PATH, "utf8"));
+    if (config.suno_device_id) { _deviceId = config.suno_device_id; return _deviceId; }
+  } catch {}
+  // Try to extract from Chrome cookie via AppleScript
+  try {
+    const { execSync } = require("child_process");
+    const cookie = execSync(`osascript -e 'tell application "Google Chrome" to tell front window to tell active tab to execute javascript "document.cookie.split(\\";\\").find(c => c.trim().startsWith(\\"suno_device_id=\\")).trim().replace(\\"suno_device_id=\\",\\"\\")"'`, { shell: "/bin/zsh", timeout: 10000 }).toString().trim();
+    if (cookie && cookie.length > 10) { _deviceId = cookie; return _deviceId; }
+  } catch {}
+  // Fallback: generate a UUID
+  const { randomUUID } = require("crypto");
+  _deviceId = randomUUID();
+  return _deviceId;
+}
+
+// Browser-Token: base64-encoded timestamp JSON
+function getBrowserToken() {
+  const payload = JSON.stringify({ timestamp: Date.now() });
+  const token = Buffer.from(payload).toString("base64");
+  return JSON.stringify({ token });
+}
+
+/**
+ * Read the __client cookie from suno-api/.env or faye_config.json.
+ * This is the Clerk session token used to mint JWTs — NOT a Bearer token itself.
+ */
+function getClientToken() {
+  if (_clientToken) return _clientToken;
+
+  // Priority 1: SUNO_COOKIE env var (same format as suno-api)
+  if (process.env.SUNO_COOKIE) {
+    const parsed = parseCookieString(process.env.SUNO_COOKIE);
+    if (parsed.__client) { _clientToken = parsed.__client; return _clientToken; }
+  }
+
+  // Priority 2: suno-api/.env file
+  try {
+    const envContent = fs.readFileSync(SUNO_ENV_PATH, "utf8");
+    const match = envContent.match(/^SUNO_COOKIE=(.+)$/m);
+    if (match) {
+      const parsed = parseCookieString(match[1].trim());
+      if (parsed.__client) { _clientToken = parsed.__client; return _clientToken; }
+    }
+  } catch {}
+
+  // Priority 3: faye_config.json (suno_client_token field)
+  try {
+    const config = JSON.parse(fs.readFileSync(CONFIG_PATH, "utf8"));
+    if (config.suno_client_token) { _clientToken = config.suno_client_token; return _clientToken; }
+  } catch {}
+
+  return null;
+}
+
+/** Parse a cookie string like "__client=abc; __cf_bm=xyz" into {__client: "abc", ...} */
+function parseCookieString(str) {
+  const result = {};
+  for (const part of str.split(";")) {
+    const eq = part.indexOf("=");
+    if (eq === -1) continue;
+    const key = part.slice(0, eq).trim();
+    const val = part.slice(eq + 1).trim();
+    result[key] = val;
+  }
+  return result;
+}
+
+/**
+ * Get Clerk session ID from the __client token.
+ * Calls: GET https://auth.suno.com/v1/client?... with Authorization: <__client>
+ */
+async function getClerkSessionId() {
+  const clientToken = getClientToken();
+  if (!clientToken) throw new Error("No __client token found. Check ~/suno-api/.env or faye_config.json");
+
+  const url = `${CLERK_BASE_URL}/v1/client?__clerk_api_version=${CLERK_API_VERSION}&_clerk_js_version=${CLERK_JS_VERSION}`;
+  const res = await fetch(url, {
+    headers: { Authorization: clientToken },
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Clerk session fetch failed (HTTP ${res.status}): ${text.slice(0, 200)}`);
+  }
+
+  const data = await res.json();
+  const sid = data?.response?.last_active_session_id;
+  if (!sid) throw new Error("No last_active_session_id in Clerk response. Cookie may be expired.");
+
+  return sid;
+}
+
+/**
+ * Mint a fresh JWT from Clerk using the session ID.
+ * Calls: POST https://auth.suno.com/v1/client/sessions/{sid}/tokens?...
+ */
+async function mintClerkJwt(sessionId) {
+  const clientToken = getClientToken();
+  if (!clientToken) throw new Error("No __client token");
+
+  const url = `${CLERK_BASE_URL}/v1/client/sessions/${sessionId}/tokens?__clerk_api_version=${CLERK_API_VERSION}&_clerk_js_version=${CLERK_JS_VERSION}`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { Authorization: clientToken },
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Clerk token mint failed (HTTP ${res.status}): ${text.slice(0, 200)}`);
+  }
+
+  const data = await res.json();
+  const jwt = data?.jwt;
+  if (!jwt) throw new Error("No jwt in Clerk token response");
+
+  return jwt;
+}
+
+/**
+ * Get a valid Suno Bearer token via Clerk token exchange.
+ * Caches the JWT and auto-refreshes when TTL expires.
+ * Falls back to legacy direct token if Clerk fails.
+ */
+async function getSunoToken() {
+  // Check if cached JWT is still fresh
+  if (_clerkJwt && Date.now() < _clerkJwtExpiresAt) {
+    return _clerkJwt;
+  }
+
+  // Try Clerk token exchange
+  try {
+    // Get session ID (cache it — only changes when cookie changes)
+    if (!_clerkSessionId) {
+      _clerkSessionId = await getClerkSessionId();
+    }
+
+    // Mint fresh JWT
+    _clerkJwt = await mintClerkJwt(_clerkSessionId);
+    _clerkJwtExpiresAt = Date.now() + TOKEN_TTL_MS;
+    return _clerkJwt;
+  } catch (clerkErr) {
+    // Session ID might be stale — retry once with fresh session
+    try {
+      _clerkSessionId = await getClerkSessionId();
+      _clerkJwt = await mintClerkJwt(_clerkSessionId);
+      _clerkJwtExpiresAt = Date.now() + TOKEN_TTL_MS;
+      return _clerkJwt;
+    } catch (retryErr) {
+      // Clerk completely failed — fall back to legacy direct token
+      const legacyToken = getLegacyToken();
+      if (legacyToken) {
+        return legacyToken;
+      }
+      throw new Error(`Clerk auth failed: ${clerkErr.message}. No legacy fallback available.`);
+    }
+  }
+}
+
+/** Legacy token source: Chrome __session cookie (preferred), env var, or faye_config.json */
+function getLegacyToken() {
+  // Priority 1: Extract fresh __session from Chrome (most reliable)
+  try {
+    const { execSync } = require("child_process");
+    const token = execSync(
+      `osascript -e 'tell application "Google Chrome" to tell front window to tell active tab to execute javascript "document.cookie.split(\\";\\").find(c => c.trim().startsWith(\\"__session=\\")).trim().replace(\\"__session=\\",\\"\\")"'`,
+      { shell: "/bin/zsh", timeout: 10000 }
+    ).toString().trim();
+    if (token && token.length > 100) return token;
+  } catch {}
+  // Priority 2: env var
   if (process.env.SUNO_SESSION) return process.env.SUNO_SESSION;
+  // Priority 3: faye_config.json
   try {
     const config = JSON.parse(fs.readFileSync(CONFIG_PATH, "utf8"));
     if (config.suno_session_token) return config.suno_session_token;
@@ -65,15 +252,56 @@ function getSunoToken() {
   return null;
 }
 
+/** Force-invalidate the cached JWT (call after 401s to trigger re-mint) */
+function invalidateClerkJwt() {
+  _clerkJwt = null;
+  _clerkJwtExpiresAt = 0;
+}
+
+/**
+ * Check if Suno requires CAPTCHA verification.
+ * Returns { needs_captcha: bool, detail: string }
+ */
+async function checkCaptchaStatus() {
+  try {
+    const token = await getSunoToken();
+    if (!token) return { needs_captcha: false, detail: "no token — cannot check" };
+
+    const res = await fetch(`${SUNO_STUDIO_API}/api/generate/captcha-check/v1/`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!res.ok) return { needs_captcha: false, detail: `captcha check HTTP ${res.status}` };
+    const data = await res.json();
+    return {
+      needs_captcha: data?.needs_captcha === true || data?.captcha_required === true,
+      detail: JSON.stringify(data),
+    };
+  } catch (e) {
+    return { needs_captcha: false, detail: `captcha check error: ${e.message}` };
+  }
+}
+
 async function sunoStudioFetch(endpoint, method = "GET", body = null, binary = null) {
-  const token = getSunoToken();
+  let token;
+  try {
+    token = await getSunoToken();
+  } catch (e) {
+    return { ok: false, error: e.message };
+  }
   if (!token) {
-    return { ok: false, error: "No Suno session token. Set SUNO_SESSION env var or add suno_session_token to faye_config.json" };
+    return { ok: false, error: "No Suno auth token. Add SUNO_COOKIE to ~/suno-api/.env or suno_client_token to faye_config.json" };
   }
 
   try {
     const url = `${SUNO_STUDIO_API}${endpoint}`;
-    const headers = { "Authorization": `Bearer ${token}` };
+    const headers = {
+      "Authorization": `Bearer ${token}`,
+      "Device-Id": getDeviceId(),
+      "Browser-Token": getBrowserToken(),
+      "Origin": "https://suno.com",
+      "Referer": "https://suno.com/create",
+    };
 
     if (binary) {
       // Binary upload (PUT to presigned URL — no auth header needed)
@@ -93,6 +321,30 @@ async function sunoStudioFetch(endpoint, method = "GET", body = null, binary = n
     if (body && method !== "GET") opts.body = JSON.stringify(body);
 
     const res = await fetch(url, opts);
+
+    // On 401/403, invalidate JWT and retry once with fresh token
+    if (res.status === 401 || res.status === 403) {
+      invalidateClerkJwt();
+      try {
+        const freshToken = await getSunoToken();
+        if (freshToken && freshToken !== token) {
+          const retryHeaders = {
+            "Authorization": `Bearer ${freshToken}`,
+            "Device-Id": getDeviceId(),
+            "Browser-Token": getBrowserToken(),
+            "Origin": "https://suno.com",
+            "Referer": "https://suno.com/create",
+          };
+          if (body && method !== "GET") retryHeaders["Content-Type"] = "application/json";
+          const retryOpts = { method, headers: retryHeaders };
+          if (body && method !== "GET") retryOpts.body = JSON.stringify(body);
+          const retryRes = await fetch(url, retryOpts);
+          const retryData = await retryRes.json();
+          return { ok: retryRes.ok, data: retryData, status: retryRes.status };
+        }
+      } catch {}
+    }
+
     const data = await res.json();
     return { ok: res.ok, data, status: res.status };
   } catch (e) {
@@ -328,12 +580,19 @@ server.tool(
     const demucs = shellSync("source ~/timbre-env/bin/activate && python3 -m demucs --help 2>&1 | head -1");
     const aceStep = fs.existsSync(path.join(ACE_STEP_DIR, "pyproject.toml"));
     const ffmpeg = shellSync("ffmpeg -version 2>&1 | head -1");
-    const sunoToken = getSunoToken();
+    let sunoToken;
+    try { sunoToken = await getSunoToken(); } catch (e) { sunoToken = null; }
 
     let sunoStatus = "no token";
+    let captchaStatus = "unchecked";
+    let authMethod = "none";
     if (sunoToken) {
+      authMethod = _clerkJwt ? "clerk_jwt" : "legacy_direct";
       const r = await sunoStudioFetch("/api/billing/info/");
       sunoStatus = r.ok ? `connected (credits: ${JSON.stringify(r.data?.total_credits_left || r.data)})` : `auth failed: ${r.error || r.status}`;
+      // Check CAPTCHA status
+      const captcha = await checkCaptchaStatus();
+      captchaStatus = captcha.needs_captcha ? `⚠️ CAPTCHA REQUIRED: ${captcha.detail}` : `clear: ${captcha.detail}`;
     }
 
     const status = {
@@ -343,6 +602,8 @@ server.tool(
       ace_step: aceStep ? "installed" : "not found",
       ffmpeg: ffmpeg.ok ? "installed" : "not found",
       suno_studio: sunoStatus,
+      suno_auth_method: authMethod,
+      suno_captcha: captchaStatus,
       directories: {
         raw: `${listDir(RAW_DIR).filter(f => !f.name.startsWith(".")).length} files`,
         stems: `${listDir(STEMS_DIR).filter(f => f.isDir).length} models`,
@@ -534,7 +795,7 @@ server.tool(
         upload_id: upload_id,
       };
 
-      const r = await sunoStudioFetch("/api/generate/v2/", "POST", body);
+      const r = await sunoStudioFetch("/api/generate/v2-web/", "POST", body);
       if (!r.ok) {
         return { content: [{ type: "text", text: `❌ Cover generation failed: ${JSON.stringify(r)}` }] };
       }
@@ -616,7 +877,7 @@ server.tool(
 
     // ── Text-to-music generation (no vocal upload) ──
     if (action === "generate") {
-      const r = await sunoStudioFetch("/api/generate/v2/", "POST", {
+      const r = await sunoStudioFetch("/api/generate/v2-web/", "POST", {
         prompt: prompt || "upbeat pop song",
         title: title || "Timbre Track",
       });
@@ -625,7 +886,7 @@ server.tool(
 
     // ── Custom generation with lyrics + style tags ──
     if (action === "custom_generate") {
-      const r = await sunoStudioFetch("/api/generate/v2/", "POST", {
+      const r = await sunoStudioFetch("/api/generate/v2-web/", "POST", {
         prompt: style || "pop",
         title: title || "Timbre Track",
         lyrics: lyrics || prompt || "",
@@ -636,7 +897,7 @@ server.tool(
     // ── Extend existing clip ──
     if (action === "extend") {
       if (!audio_id) return { content: [{ type: "text", text: "❌ audio_id required for extend" }] };
-      const r = await sunoStudioFetch("/api/generate/v2/", "POST", {
+      const r = await sunoStudioFetch("/api/generate/v2-web/", "POST", {
         prompt: prompt || "",
         continue_clip_id: audio_id,
         continue_at: continue_at || 0,
@@ -846,7 +1107,7 @@ server.tool(
       const coverTitle = `${sanitizeFilename(artist)} - ${sanitizeFilename(track_name)} (${genre})`;
 
       // Try direct Suno Studio API
-      let genReq = await sunoStudioFetch("/api/generate/v2/", "POST", {
+      let genReq = await sunoStudioFetch("/api/generate/v2-web/", "POST", {
         prompt: stylePrompt,
         title: coverTitle,
         upload_id: uploadedId,

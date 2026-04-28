@@ -468,12 +468,12 @@ async function executeTool(toolName, args, brainMCP, fractalClient) {
 
 function selectModel(message) {
   if (/code|function|class|import|export|def |async |const |let |var |module|refactor|debug|fix.*bug/i.test(message)) {
-    return 'qwen2.5-coder:32b';
+    return 'qwen3:14b'; // Fast code model (installed)
   }
   if (/reason|think|analyze|why|explain|plan|strategy|compare|architecture/i.test(message)) {
     return 'deepseek-r1:32b';
   }
-  return 'qwen2.5:32b';
+  return 'qwen3:14b'; // Default: fast, installed, 24.7 tok/s
 }
 
 // ═══ THE SOVEREIGN AGENT ═══
@@ -637,6 +637,8 @@ class FayeAgent {
           temperature: 0.7,
           num_ctx: 32768,
         },
+        // Disable thinking mode for qwen3 — it puts content in thinking field otherwise
+        think: false,
       });
 
       let responseText = '';

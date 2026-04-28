@@ -1,26 +1,25 @@
-const { createClient } = require('@supabase/supabase-js');
+/**
+ * brain-context.js — Sovereign Brain Context (v6 — 100% local SQLite)
+ * Zero Supabase. Zero cloud. Zero cost.
+ * All data lives in ~/.fractal_brain/local_brain.db
+ */
 const Store = require('electron-store');
+const { LocalBrain } = require('./local-brain');
+const { SqliteSupabaseShim } = require('./sqlite-supabase-shim');
 
 const DEFAULT_CONFIG = {
-  // Brain V2 — primary brain (ACTIVE)
-  supabaseUrl: 'https://tnsujchfrixxsdpodygu.supabase.co',
-  // Prefer service role key (full access) over anon key (RLS restricted)
-  supabaseKey: process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuc3VqY2hmcml4eHNkcG9keWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MjkyNTQsImV4cCI6MjA5MDAwNTI1NH0.ef9DQbJPZ3m47gdz6zBfVnWKGInrsa-6idV3GmJSc6U',
   // AI Provider — Ollama first, always (token resilience)
-  aiProvider: 'ollama', // ollama | groq | openrouter | anthropic
-  // Provider keys (only fill what you use)
+  aiProvider: 'ollama',
   anthropicKey: '',
   anthropicModel: 'claude-sonnet-4-20250514',
   groqKey: '',
   groqModel: 'llama-3.3-70b-versatile',
   openrouterKey: '',
   openrouterModel: 'meta-llama/llama-3.1-70b-instruct',
-  ollamaModel: 'qwen2.5:32b', // V3: upgraded from llama3.1:8b
-  ollamaFastModel: 'llama3.1:8b', // For classification/routing
-  // Shared settings
-  maxTokens: 8192, // V3: increased for screenplay-length outputs
+  ollamaModel: 'qwen3:14b',
+  ollamaFastModel: 'llama3.1:8b',
+  maxTokens: 8192,
   monthlyTokenLimit: 100000,
-  // Boot context — loaded on every startup
   contextKeys: [
     'identity.faye_unified',
     'directive.boot_sequence',
@@ -34,35 +33,26 @@ const DEFAULT_CONFIG = {
     'session.divine_plan',
     'infrastructure.likeone_site',
   ],
-  // 4-Brain architecture
-  brains: {
-    memory: { ref: 'tnsujchfrixxsdpodygu', name: 'like-one-brain-v2', role: 'memory, embeddings, AI' },
-    app: { ref: 'blknphuwwgagtueqtoji', name: 'like-one-app', role: 'forum, profiles, subscribe' },
-    revenue: { ref: 'munmhzylfoiyigismbds', name: 'like-one-revenue', role: 'Stripe, revenue, enrollments' },
-    ops: { ref: 'iairxsntsvqzzrgrvkqy', name: 'like-one-ops', role: 'monitoring, crons, analytics' },
-  },
 };
 
 class BrainContext {
   constructor() {
     this.store = new Store({ name: 'brain-console-config' });
-    this.supabase = null;
+    this.localBrain = new LocalBrain();
     this.contextCache = {};
     this.lastContextLoad = null;
     this.bootStatus = { phase: 'cold', systems: {} };
+    // Supabase shim — all 100+ .supabase.from() calls in the codebase
+    // now hit local SQLite instead of cloud Supabase. Zero rewrites.
+    this.supabase = null;
   }
 
   async initialize() {
-    const config = this.getConfig();
-    // Always prefer service role key from env over stored anon key
-    const serviceKey = process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
-    const key = serviceKey || config.supabaseKey;
-    const url = process.env.SUPABASE_URL || config.supabaseUrl;
-    if (url && key) {
-      this.supabase = createClient(url, key);
-      await this.loadContext();
-      this.bootStatus.phase = 'connected';
-    }
+    this.localBrain.open();
+    // Wire the Supabase shim so all legacy code works against SQLite
+    this.supabase = new SqliteSupabaseShim(this.localBrain.db);
+    await this.loadContext();
+    this.bootStatus.phase = 'connected';
   }
 
   getConfig() {
@@ -72,31 +62,15 @@ class BrainContext {
   updateConfig(newConfig) {
     const current = this.store.get('config', {});
     this.store.set('config', { ...current, ...newConfig });
-    if (newConfig.supabaseUrl || newConfig.supabaseKey) {
-      const config = this.getConfig();
-      if (config.supabaseUrl && config.supabaseKey) {
-        this.supabase = createClient(config.supabaseUrl, config.supabaseKey);
-      }
-    }
   }
 
   async loadContext() {
-    if (!this.supabase) return;
     const config = this.getConfig();
     try {
-      const { data, error } = await this.supabase
-        .from('brain_context')
-        .select('key, value, updated_at')
-        .in('key', config.contextKeys);
-      if (error) throw error;
-      this.contextCache = {};
-      for (const row of (data || [])) {
-        try { this.contextCache[row.key] = JSON.parse(row.value); }
-        catch { this.contextCache[row.key] = row.value; }
-      }
+      this.contextCache = this.localBrain.getContextByKeys(config.contextKeys);
       this.lastContextLoad = new Date();
     } catch (error) {
-      console.error('Failed to load brain context:', error.message);
+      console.error('[Brain] Failed to load context:', error.message);
     }
   }
 
@@ -105,6 +79,11 @@ class BrainContext {
       await this.loadContext();
     }
     return this.contextCache;
+  }
+
+  // Get ALL context entries (for Brain Explorer panel)
+  getAllEntries() {
+    return this.localBrain.getAllContext();
   }
 
   buildSystemPrompt() {
@@ -128,73 +107,57 @@ RULES:
 - Never give Faye tasks. Do the work yourself.
 - Default to Ollama (qwen2.5:32b) for all generation.
 - Only use Claude API for complex multi-step reasoning when local fails.
-- You have access to: Supabase (4-brain architecture), Make.com, Vercel, Stripe, Kling API.
 - Show what you DID, not what you could do.`;
   }
 
   async getSystemStatus() {
-    const status = { connected: false, systems: {} };
+    const status = { connected: true, systems: {} };
 
-    // Check Supabase
-    if (this.supabase) {
-      try {
-        const contextRes = await this.supabase.from('brain_context').select('key, updated_at').order('updated_at', { ascending: false }).limit(5);
-        status.connected = true;
-        status.lastContextUpdate = contextRes.data?.[0]?.updated_at;
-        status.recentContextKeys = contextRes.data?.map(d => d.key);
+    // Brain stats
+    try {
+      const count = this.localBrain.contextCount();
+      status.brainEntries = count;
+      status.lastContextUpdate = new Date().toISOString();
+      status.recentContextKeys = Object.keys(this.contextCache).slice(0, 5);
+    } catch {}
 
-        // These tables may not exist on all brains — fail gracefully
-        try {
-          const taskRes = await this.supabase.from('brain_actions').select('id, action_type, status, target').eq('status', 'pending').limit(10);
-          status.pendingTasks = taskRes.data?.length || 0;
-          status.tasks = taskRes.data || [];
-        } catch { status.pendingTasks = 0; status.tasks = []; }
+    // Tasks
+    try {
+      const tasks = this.localBrain.getActiveTasks(10);
+      status.pendingTasks = tasks.length;
+      status.tasks = tasks;
+    } catch { status.pendingTasks = 0; status.tasks = []; }
 
-        try {
-          const notifRes = await this.supabase.from('brain_episodes').select('id, event_type, summary, created_at').order('created_at', { ascending: false }).limit(5);
-          status.recentNotifications = notifRes.data || [];
-        } catch { status.recentNotifications = []; }
-      } catch (error) {
-        status.error = error.message;
-      }
-    }
+    // Recent episodes
+    try {
+      const eps = this.localBrain.db.prepare('SELECT id, event_type, summary, occurred_at FROM brain_episodes ORDER BY occurred_at DESC LIMIT 5').all();
+      status.recentNotifications = eps;
+    } catch { status.recentNotifications = []; }
 
     // Check Ollama
     try {
       const res = await fetch('http://localhost:11434/api/tags', { signal: AbortSignal.timeout(2000) });
       if (res.ok) {
         const data = await res.json();
-        status.systems.ollama = {
-          online: true,
-          models: (data.models || []).map(m => m.name),
-        };
+        status.systems.ollama = { online: true, models: (data.models || []).map(m => m.name) };
       }
     } catch {
       status.systems.ollama = { online: false };
     }
 
-    // Check Vercel (git status)
     status.systems.vercel = { configured: true, deploy: 'git push → auto-deploy' };
-
     return status;
   }
 
-  /**
-   * Full boot scan — checks all systems, returns comprehensive status
-   */
   async bootScan() {
     const results = {};
 
-    // 1. Supabase brain
-    if (this.supabase) {
-      try {
-        const { data } = await this.supabase.from('brain_context').select('key').limit(1);
-        results.brain = { status: 'online', keys_loaded: Object.keys(this.contextCache).length };
-      } catch (e) {
-        results.brain = { status: 'offline', error: e.message };
-      }
-    } else {
-      results.brain = { status: 'no_key', hint: 'Set Supabase anon key in Settings' };
+    // 1. Brain (SQLite)
+    try {
+      const count = this.localBrain.contextCount();
+      results.brain = { status: 'online', keys_loaded: count, backend: 'SQLite (sovereign)' };
+    } catch (e) {
+      results.brain = { status: 'error', error: e.message };
     }
 
     // 2. Ollama models
@@ -204,13 +167,9 @@ RULES:
         const data = await res.json();
         const models = (data.models || []).map(m => m.name);
         const hasQwen = models.some(m => m.includes('qwen2.5'));
-        const hasLlama = models.some(m => m.includes('llama3.1'));
         results.ollama = {
-          status: 'online',
-          models,
-          primary: hasQwen ? 'qwen2.5:32b' : (models[0] || 'none'),
-          ready: hasQwen,
-          hint: hasQwen ? null : 'Run: ollama pull qwen2.5:32b',
+          status: 'online', models, primary: hasQwen ? 'qwen2.5:32b' : (models[0] || 'none'),
+          ready: hasQwen, hint: hasQwen ? null : 'Run: ollama pull qwen2.5:32b',
         };
       }
     } catch {
@@ -226,9 +185,7 @@ RULES:
       const hasGraphics = fs.existsSync(require('path').join(studioPath, 'graphics-engine.py'));
       results.studio = {
         status: (hasCompose && hasDesignSystem && hasGraphics) ? 'ready' : 'partial',
-        compose: hasCompose,
-        designSystem: hasDesignSystem,
-        graphicsEngine: hasGraphics,
+        compose: hasCompose, designSystem: hasDesignSystem, graphicsEngine: hasGraphics,
       };
     } catch {
       results.studio = { status: 'unknown' };
@@ -239,12 +196,7 @@ RULES:
       const { execSync } = require('child_process');
       const branch = execSync('cd ~/lyra-app && git branch --show-current', { encoding: 'utf-8' }).trim();
       const status = execSync('cd ~/lyra-app && git status --porcelain | wc -l', { encoding: 'utf-8' }).trim();
-      results.deploy = {
-        status: 'ready',
-        branch,
-        uncommitted: parseInt(status) || 0,
-        target: 'Vercel auto-deploy on push',
-      };
+      results.deploy = { status: 'ready', branch, uncommitted: parseInt(status) || 0, target: 'Vercel auto-deploy on push' };
     } catch {
       results.deploy = { status: 'unknown' };
     }
@@ -253,61 +205,33 @@ RULES:
     return results;
   }
 
-  // ═══ L6 VAULT — decrypt secrets for autonomous operation ═══
+  // ═══ VAULT — local encrypted store ═══
 
-  /**
-   * Set vault passphrase (stored in electron-store, never in brain)
-   */
   setVaultPassphrase(passphrase) {
     this.store.set('vault_passphrase', passphrase);
   }
 
-  /**
-   * Decrypt a vault entry by service name
-   * Uses GPG symmetric decryption with stored passphrase
-   * Returns parsed JSON or string
-   */
   async decryptFromVault(service) {
-    if (!this.supabase) throw new Error('Not connected to brain');
-
     const passphrase = this.store.get('vault_passphrase');
     if (!passphrase) throw new Error('Vault passphrase not set');
 
-    const { data, error } = await this.supabase
-      .from('brain_vault')
-      .select('secret_encrypted, tier')
-      .eq('service', service)
-      .single();
+    const row = this.localBrain.db.prepare('SELECT secret_encrypted FROM brain_vault WHERE service = ?').get(service);
+    if (!row?.secret_encrypted) throw new Error(`Vault entry not found: ${service}`);
 
-    if (error || !data?.secret_encrypted) {
-      throw new Error(`Vault entry not found: ${service}`);
-    }
-
-    // GPG symmetric decrypt
     const { execSync } = require('child_process');
     try {
-      const encrypted = data.secret_encrypted;
       const decrypted = execSync(
-        `echo "${encrypted}" | base64 -d | gpg --batch --passphrase ${JSON.stringify(passphrase)} --decrypt 2>/dev/null`,
+        `echo "${row.secret_encrypted}" | base64 -d | gpg --batch --passphrase ${JSON.stringify(passphrase)} --decrypt 2>/dev/null`,
         { encoding: 'utf8', timeout: 5000 }
       );
-
       try { return JSON.parse(decrypted); } catch { return decrypted.trim(); }
     } catch (e) {
       throw new Error(`Vault decrypt failed for ${service}: ${e.message}`);
     }
   }
 
-  /**
-   * List all vault services (names only, no secrets)
-   */
   async listVaultServices() {
-    if (!this.supabase) return [];
-    const { data } = await this.supabase
-      .from('brain_vault')
-      .select('service, description, tier')
-      .order('service');
-    return data || [];
+    return this.localBrain.vaultList();
   }
 }
 

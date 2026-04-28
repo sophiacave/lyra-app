@@ -995,7 +995,8 @@
 </head>
 <body>
   <div class="title-bar">
-    <span class="title-bar-text"><span class="accent">LIKE ONE BRAIN</span> — Claude Code SDK × Faye</span>
+    <span class="title-bar-text"><span class="accent">LIKE ONE</span> — Sovereign Brain v6</span>
+    <span class="title-bar-text" id="titleBarProvider" style="font-size: 10px; opacity: 0.5; margin-left: 8px;"></span>
   </div>
 
   <div class="main-layout">
@@ -1027,6 +1028,10 @@
         </button>
         <button class="nav-tab" data-panel="vault" onclick="switchPanel('vault')">
           <span class="nav-icon">🔐</span><span class="nav-label">Vault</span>
+        </button>
+        <div style="height:1px; background:var(--border); margin:8px 12px;"></div>
+        <button class="nav-tab" data-panel="consulting" onclick="switchPanel('consulting')">
+          <span class="nav-icon">🤝</span><span class="nav-label">Consulting</span>
         </button>
         <div style="height:1px; background:var(--border); margin:8px 12px;"></div>
         <button class="nav-tab" data-panel="editor" onclick="switchPanel('editor')">
@@ -1235,6 +1240,17 @@
       </div>
     </div>
 
+    <!-- ═══ Consulting Panel ═══ -->
+    <div class="panel-view" id="panel-consulting" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-title">Like One Consulting</span>
+        <button class="panel-btn btn-primary" onclick="consultingNewClient()" style="font-size:11px; padding:3px 10px;">+ New Client</button>
+      </div>
+      <div id="consulting-content" style="flex:1; overflow-y:auto; padding:16px;">
+        <div class="panel-loading">Loading consulting dashboard...</div>
+      </div>
+    </div>
+
     <!-- ═══ IDE: Terminal Panel ═══ -->
     <div class="panel-view" id="panel-terminal" style="display:none;">
       <div class="panel-header" style="gap:8px;">
@@ -1403,12 +1419,18 @@
             setBootDot('bootBrain', 'warn', 'Brain core — no Supabase key (set in Settings)');
           }
 
-          // Step 2: Detect AI provider
+          // Step 2: Detect AI provider (retry once if SDK still loading)
           try {
-            const providers = await window.brain.checkProviders();
+            let providers = await window.brain.checkProviders();
+            if (!providers.detected?.sdkReady) {
+              await new Promise(r => setTimeout(r, 2000));
+              providers = await window.brain.checkProviders();
+            }
             if (providers.detected) {
               const icon = providers.detected.sdkReady ? '⚡ ' : '';
               setBootDot('bootProvider', 'ok', 'AI provider — ' + icon + providers.detected.name);
+              const titleProv = document.getElementById('titleBarProvider');
+              if (titleProv) titleProv.textContent = providers.detected.sdkReady ? '⚡ Claude Agent SDK' : 'Ollama';
             } else {
               setBootDot('bootProvider', 'warn', 'AI provider — none');
             }

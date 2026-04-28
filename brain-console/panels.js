@@ -31,6 +31,7 @@ function switchPanel(panelName) {
   if (panelName === 'orchestration') loadOrchestrationPanel();
   if (panelName === 'integrations') loadIntegrationsPanel();
   if (panelName === 'vault') loadVaultPanel();
+  if (panelName === 'consulting') loadConsultingPanel();
   if (panelName === 'editor') loadEditorPanel();
   if (panelName === 'terminal') loadTerminalPanel();
 }
@@ -794,12 +795,12 @@ function renderIntegrationsPanel(data) {
 
   const stripe = data.stripe || {};
   const vercel = data.vercel || {};
-  const supabase = data.supabase || {};
+  const brain = data.brain || {};
   const fleet = data.fleet || {};
 
   const stripeStatus = stripe.connected ? 'online' : 'offline';
   const vercelStatus = vercel.connected ? 'online' : 'unknown';
-  const supabaseStatus = supabase.connected ? 'online' : 'offline';
+  const brainStatus = brain.connected ? 'online' : 'offline';
 
   container.innerHTML = `
     <div class="integ-grid">
@@ -829,14 +830,14 @@ function renderIntegrationsPanel(data) {
 
       <div class="integ-card">
         <div class="integ-card-header">
-          <span class="integ-card-icon">⚡</span>
-          <span class="integ-card-title">Supabase</span>
-          <div class="integ-card-status ${supabaseStatus}"></div>
+          <span class="integ-card-icon">🧠</span>
+          <span class="integ-card-title">Brain</span>
+          <div class="integ-card-status ${brainStatus}"></div>
         </div>
-        <div class="integ-stat"><span class="integ-stat-label">Brain Entries</span><span class="integ-stat-value">${supabase.brainEntries || 0}</span></div>
-        <div class="integ-stat"><span class="integ-stat-label">Last Update</span><span class="integ-stat-value">${supabase.lastUpdate || 'Unknown'}</span></div>
-        <div class="integ-stat"><span class="integ-stat-label">Plan</span><span class="integ-stat-value">${supabase.plan || 'Pro'}</span></div>
-        <div class="integ-stat"><span class="integ-stat-label">4-Brain</span><span class="integ-stat-value good">${supabase.brainCount || 4} active</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Entries</span><span class="integ-stat-value">${brain.brainEntries || 0}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Last Update</span><span class="integ-stat-value">${brain.lastUpdate || 'Unknown'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Backend</span><span class="integ-stat-value good">${brain.plan || 'Sovereign'}</span></div>
+        <div class="integ-stat"><span class="integ-stat-label">Storage</span><span class="integ-stat-value good">${brain.backend || 'SQLite'}</span></div>
       </div>
 
       <div class="integ-card">
@@ -953,6 +954,265 @@ function maskVaultEntry(index) {
   if (valEl) { valEl.textContent = '••••••••'; valEl.classList.remove('vault-revealed'); }
   if (btnEl) btnEl.textContent = 'Reveal';
   if (vaultRevealTimers[index]) { clearTimeout(vaultRevealTimers[index]); delete vaultRevealTimers[index]; }
+}
+
+// ============ CONSULTING PANEL ============
+
+async function loadConsultingPanel() {
+  const container = document.getElementById('consulting-content');
+  if (!container) return;
+
+  try {
+    // Load clients from brain
+    const result = await window.brain.getContext();
+    let clients = [];
+    if (result.success && result.context) {
+      const entries = Array.isArray(result.context) ? result.context : Object.entries(result.context).map(([k, v]) => ({ key: k, value: v }));
+      clients = entries.filter(e => e.key && e.key.startsWith('consulting.client.'));
+    }
+
+    const clientCards = clients.length ? clients.map(c => {
+      const data = typeof c.value === 'object' ? c.value : {};
+      const name = data.name || c.key.split('.').pop();
+      const status = data.status || 'setup';
+      const statusClass = status === 'active' ? 'online' : status === 'setup' ? 'warning' : 'offline';
+      const device = data.device || 'Unknown';
+      const tosAccepted = data.tos_accepted ? 'Yes' : 'No';
+      const earnings = data.earnings || '$0';
+
+      return `
+        <div class="integ-card" style="cursor:pointer;" onclick="consultingOpenClient('${escapeHtml(c.key)}')">
+          <div class="integ-card-header">
+            <span class="integ-card-icon">👤</span>
+            <span class="integ-card-title">${escapeHtml(name)}</span>
+            <div class="integ-card-status ${statusClass}"></div>
+          </div>
+          <div class="integ-stat"><span class="integ-stat-label">Status</span><span class="integ-stat-value">${escapeHtml(status)}</span></div>
+          <div class="integ-stat"><span class="integ-stat-label">Device</span><span class="integ-stat-value">${escapeHtml(device)}</span></div>
+          <div class="integ-stat"><span class="integ-stat-label">TOS</span><span class="integ-stat-value ${tosAccepted === 'Yes' ? 'good' : 'warn'}">${tosAccepted}</span></div>
+          <div class="integ-stat"><span class="integ-stat-label">Earnings</span><span class="integ-stat-value">${escapeHtml(earnings)}</span></div>
+        </div>
+      `;
+    }).join('') : '';
+
+    container.innerHTML = `
+      <div style="margin-bottom:24px;">
+        <div style="font-size:18px; font-weight:600; margin-bottom:8px;">Like One Consulting</div>
+        <div style="font-size:13px; color:var(--smoke); line-height:1.6;">
+          One-click AI helper deployment for clients. Accept TOS, install remote access,
+          deploy a personalized AI assistant, and build a money-making path.
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap:12px; margin-bottom:24px;">
+        <div class="kb-stat-card" style="text-align:center;">
+          <div class="kb-stat-value" style="font-size:28px;">${clients.length}</div>
+          <div class="kb-stat-label">Total Clients</div>
+        </div>
+        <div class="kb-stat-card" style="text-align:center;">
+          <div class="kb-stat-value" style="font-size:28px;">${clients.filter(c => c.value?.status === 'active').length}</div>
+          <div class="kb-stat-label">Active</div>
+        </div>
+        <div class="kb-stat-card" style="text-align:center;">
+          <div class="kb-stat-value" style="font-size:28px;">$0</div>
+          <div class="kb-stat-label">Total Earnings</div>
+        </div>
+      </div>
+
+      ${clients.length ? `
+        <div style="font-size:14px; font-weight:600; margin-bottom:12px;">Clients</div>
+        <div class="integ-grid">${clientCards}</div>
+      ` : `
+        <div class="panel-empty" style="padding:40px; text-align:center;">
+          <div style="font-size:40px; margin-bottom:12px;">🤝</div>
+          <div style="font-size:14px; margin-bottom:8px;">No clients yet</div>
+          <div style="font-size:12px; color:var(--smoke); margin-bottom:16px;">Click "+ New Client" to onboard your first client</div>
+          <button class="panel-btn btn-primary" onclick="consultingNewClient()" style="padding:8px 24px;">+ New Client</button>
+        </div>
+      `}
+    `;
+  } catch (e) {
+    container.innerHTML = `<div class="panel-empty">Error: ${e.message}</div>`;
+  }
+}
+
+function consultingNewClient() {
+  let modal = document.getElementById('consulting-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'consulting-modal';
+    modal.className = 'modal-overlay';
+    document.body.appendChild(modal);
+  }
+  modal.style.display = 'flex';
+  modal.innerHTML = `
+    <div class="modal" style="width:600px; max-height:80vh; overflow-y:auto;">
+      <h2 style="font-size:16px; margin-bottom:16px;">New Client Onboarding</h2>
+      <div style="margin-bottom:12px;">
+        <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:4px;">Client Name *</label>
+        <input id="consulting-name" type="text" placeholder="e.g. Nahid"
+          style="width:100%; background:var(--ash); border:1px solid var(--border); color:var(--chalk); padding:10px 12px; border-radius:8px; font-size:14px;">
+      </div>
+      <div style="display:flex; gap:12px; margin-bottom:12px;">
+        <div style="flex:1;">
+          <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:4px;">Device Type</label>
+          <select id="consulting-device" style="width:100%; background:var(--ash); border:1px solid var(--border); color:var(--chalk); padding:10px; border-radius:8px; font-size:13px;">
+            <option value="Mac">Mac</option>
+            <option value="Windows">Windows PC</option>
+            <option value="Chromebook">Chromebook</option>
+          </select>
+        </div>
+        <div style="flex:1;">
+          <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:4px;">Language</label>
+          <select id="consulting-lang" style="width:100%; background:var(--ash); border:1px solid var(--border); color:var(--chalk); padding:10px; border-radius:8px; font-size:13px;">
+            <option value="English">English</option>
+            <option value="Farsi">Farsi / Persian</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Arabic">Arabic</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label style="font-size:11px; color:var(--text-secondary); display:block; margin-bottom:4px;">Needs / Goals</label>
+        <textarea id="consulting-needs" placeholder="e.g. Needs a job, wants to learn AI, needs help managing computer..."
+          style="width:100%; min-height:80px; background:var(--ash); border:1px solid var(--border); color:var(--chalk); padding:10px 12px; border-radius:8px; font-size:13px; resize:vertical;"></textarea>
+      </div>
+      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:16px;">
+        <button class="panel-btn" onclick="document.getElementById('consulting-modal').style.display='none'" style="padding:8px 16px;">Cancel</button>
+        <button class="panel-btn btn-primary" onclick="consultingSaveClient()" style="padding:8px 16px;">Create Client & Generate TOS</button>
+      </div>
+      <div id="consulting-status" style="margin-top:8px; font-size:11px;"></div>
+    </div>
+  `;
+}
+
+async function consultingSaveClient() {
+  const name = document.getElementById('consulting-name').value.trim();
+  const device = document.getElementById('consulting-device').value;
+  const lang = document.getElementById('consulting-lang').value;
+  const needs = document.getElementById('consulting-needs').value.trim();
+  const statusEl = document.getElementById('consulting-status');
+
+  if (!name) { statusEl.innerHTML = '<span style="color:var(--alert);">Name required</span>'; return; }
+
+  statusEl.innerHTML = '<span style="color:var(--gold);">Creating client...</span>';
+
+  const clientKey = `consulting.client.${name.toLowerCase().replace(/\s+/g, '_')}`;
+  const clientData = {
+    name,
+    device,
+    language: lang,
+    needs,
+    status: 'setup',
+    tos_accepted: false,
+    tos_generated: new Date().toISOString(),
+    earnings: '$0',
+    created_at: new Date().toISOString(),
+    onboarding_steps: {
+      tos: 'pending',
+      remote_access: 'pending',
+      ai_setup: 'pending',
+      accounts: 'pending',
+      money_path: 'pending',
+    },
+  };
+
+  try {
+    const result = await window.brain.brainWrite(clientKey, clientData, `Consulting client: ${name}`, 'consulting', 8);
+    if (result.success) {
+      statusEl.innerHTML = '<span style="color:var(--result);">Client created! Generating TOS...</span>';
+      setTimeout(() => {
+        document.getElementById('consulting-modal').style.display = 'none';
+        loadConsultingPanel();
+        consultingOpenClient(clientKey);
+      }, 800);
+    } else {
+      statusEl.innerHTML = `<span style="color:var(--alert);">Error: ${result.error}</span>`;
+    }
+  } catch (e) {
+    statusEl.innerHTML = `<span style="color:var(--alert);">Error: ${e.message}</span>`;
+  }
+}
+
+async function consultingOpenClient(clientKey) {
+  const container = document.getElementById('consulting-content');
+  if (!container) return;
+
+  try {
+    const result = await window.brain.getContext();
+    let clientData = {};
+    if (result.success && result.context) {
+      const entries = Array.isArray(result.context) ? result.context : Object.entries(result.context).map(([k, v]) => ({ key: k, value: v }));
+      const entry = entries.find(e => e.key === clientKey);
+      if (entry) clientData = typeof entry.value === 'object' ? entry.value : {};
+    }
+
+    const name = clientData.name || clientKey.split('.').pop();
+    const steps = clientData.onboarding_steps || {};
+
+    const stepIcon = (s) => s === 'done' ? '✅' : s === 'in_progress' ? '⏳' : '⬜';
+
+    container.innerHTML = `
+      <div style="margin-bottom:16px;">
+        <button class="panel-btn" onclick="loadConsultingPanel()" style="font-size:11px; padding:3px 10px; margin-bottom:12px;">&larr; Back</button>
+        <div style="font-size:20px; font-weight:600;">${escapeHtml(name)}</div>
+        <div style="font-size:12px; color:var(--smoke);">Client since ${clientData.created_at ? new Date(clientData.created_at).toLocaleDateString() : 'today'} | ${escapeHtml(clientData.device || '?')} | ${escapeHtml(clientData.language || 'English')}</div>
+      </div>
+
+      <div style="font-size:14px; font-weight:600; margin-bottom:12px;">Onboarding Checklist</div>
+      <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:24px;">
+        <div class="orch-task" onclick="consultingStep('${clientKey}', 'tos')" style="cursor:pointer; padding:12px;">
+          <span style="margin-right:8px;">${stepIcon(steps.tos)}</span>
+          <strong>1. Terms of Service</strong> — Generate & get client signature
+        </div>
+        <div class="orch-task" onclick="consultingStep('${clientKey}', 'remote_access')" style="cursor:pointer; padding:12px;">
+          <span style="margin-right:8px;">${stepIcon(steps.remote_access)}</span>
+          <strong>2. Remote Access</strong> — Install Chrome Remote Desktop or RustDesk
+        </div>
+        <div class="orch-task" onclick="consultingStep('${clientKey}', 'ai_setup')" style="cursor:pointer; padding:12px;">
+          <span style="margin-right:8px;">${stepIcon(steps.ai_setup)}</span>
+          <strong>3. AI Helper</strong> — Deploy LO ${escapeHtml(name)} AI Helper app
+        </div>
+        <div class="orch-task" onclick="consultingStep('${clientKey}', 'accounts')" style="cursor:pointer; padding:12px;">
+          <span style="margin-right:8px;">${stepIcon(steps.accounts)}</span>
+          <strong>4. Accounts</strong> — Set up Google, email, freelance platforms
+        </div>
+        <div class="orch-task" onclick="consultingStep('${clientKey}', 'money_path')" style="cursor:pointer; padding:12px;">
+          <span style="margin-right:8px;">${stepIcon(steps.money_path)}</span>
+          <strong>5. Money Path</strong> — Fiverr, TranscribeMe, or other income source
+        </div>
+      </div>
+
+      ${clientData.needs ? `
+        <div style="font-size:14px; font-weight:600; margin-bottom:8px;">Client Needs</div>
+        <div style="font-size:13px; color:var(--smoke); background:var(--ash); padding:12px; border-radius:8px; margin-bottom:16px;">${escapeHtml(clientData.needs)}</div>
+      ` : ''}
+    `;
+  } catch (e) {
+    container.innerHTML = `<div class="panel-empty">Error: ${e.message}</div>`;
+  }
+}
+
+async function consultingStep(clientKey, step) {
+  // For now, toggle step status
+  try {
+    const result = await window.brain.getContext();
+    let clientData = {};
+    if (result.success && result.context) {
+      const entries = Array.isArray(result.context) ? result.context : Object.entries(result.context).map(([k, v]) => ({ key: k, value: v }));
+      const entry = entries.find(e => e.key === clientKey);
+      if (entry) clientData = typeof entry.value === 'object' ? entry.value : {};
+    }
+
+    if (!clientData.onboarding_steps) clientData.onboarding_steps = {};
+    const current = clientData.onboarding_steps[step] || 'pending';
+    clientData.onboarding_steps[step] = current === 'pending' ? 'in_progress' : current === 'in_progress' ? 'done' : 'pending';
+
+    await window.brain.brainWrite(clientKey, clientData, clientData.description, 'consulting', 8);
+    consultingOpenClient(clientKey);
+  } catch (e) {
+    console.error('Step toggle failed:', e);
+  }
 }
 
 // Helper — escapeHtml is defined in index.html but we need it here too
