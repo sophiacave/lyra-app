@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { CTARow } from '../components/primitives';
 import { site } from '../../lib/site-config';
 
 export const metadata = {
@@ -35,10 +36,10 @@ const PLANS = [
     btn: { label: 'Go Annual — $39/yr', href: 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d', style: 'secondary', external: true },
   },
   {
-    label: '1-on-1', name: 'Consulting', price: '$150', period: '/hr',
-    desc: 'Work with Sophia directly on strategy, builds, or architecture.',
-    features: ['1-on-1 sessions (voice or async)', 'Brain-prepped session notes', 'Done-for-you setup from $1,500', 'Monthly retainer available'],
-    btn: { label: 'Email Sophia', href: 'mailto:hello@likeone.ai?subject=Consulting', style: 'secondary' },
+    label: 'Done-with-you', name: 'Consulting', price: 'from $500', period: '/mo',
+    desc: 'Faye-powered builds for disabled & marginalized founders. Tier-0 anchor of LO ECO.',
+    features: ['$500/mo async (Starter)', '$5k/mo retainer — 14-day TTFD', '$15k+ done-for-you builds', 'Brain + agents + voice + deploy', 'Cancel anytime'],
+    btn: { label: 'See Consulting Tiers', href: '/consulting/', style: 'secondary' },
   },
 ];
 
@@ -198,10 +199,10 @@ export default function PricingPage() {
       <section className="site-section-sm text-center">
         <h2 className="dm-serif pricing-cta-title">Ready to start?</h2>
         <p className="pricing-cta-desc">Preview any course free. Upgrade when you&rsquo;re ready. No pressure. No countdown timers. Just warmth and knowledge.</p>
-        <div className="site-cta-row">
-          <Link href="/academy/" className="site-btn-primary">Browse Courses</Link>
-          <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank" rel="noopener" className="site-btn-secondary">Go Pro — $4.90/mo</a>
-        </div>
+        <CTARow
+          primary="Browse Courses" primaryHref="/academy/"
+          secondary="Go Pro — $4.90/mo" secondaryHref="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" secondaryTarget="_blank"
+        />
       </section>
 
       <Footer variant="site" />
