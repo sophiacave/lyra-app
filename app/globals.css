@@ -5409,11 +5409,11 @@ select:focus-visible {
   align-items: center;
 }
 .footer-site-text {
-  font-size: var(--font-xs);
+  font-size: var(--font-sm);
   color: var(--text-quaternary);
 }
 .footer-site-legal {
-  font-size: var(--font-xs);
+  font-size: var(--font-sm);
   color: var(--text-quaternary);
 }
 @media (max-width: 640px) {

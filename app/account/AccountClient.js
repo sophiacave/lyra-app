@@ -188,9 +188,10 @@ export default function AccountClient() {
 
   return (
     <div className="site-page">
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Header variant="site" />
 
-      <div className="account-main">
+      <main id="main-content" className="account-main">
         {!session ? (
           /* SIGNED OUT — Liquid Glass Auth Gate */
           <div className="account-signin">
@@ -203,7 +204,7 @@ export default function AccountClient() {
                     <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                 </div>
-                <h2 className="account-signin-title">Welcome to Like One</h2>
+                <h1 className="account-signin-title">Welcome to Like One</h1>
                 <p className="account-signin-desc">
                   Sign in to access your courses, manage your subscription, and join the community.
                 </p>
@@ -369,7 +370,7 @@ export default function AccountClient() {
             </div>
           </>
         )}
-      </div>
+      </main>
 
       <Footer variant="site" />
     </div>

@@ -70,11 +70,13 @@ export default function PricingPage() {
 
   return (
     <div className="site-page">
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet" />
 
       <Header variant="site" />
 
       {/* Hero */}
+      <main id="main-content">
       <section className="site-section-sm text-center">
         <span className="site-section-tag pricing-hero-tag">Founding Member Pricing</span>
         <h1 className="dm-serif pricing-hero-title">
@@ -132,7 +134,7 @@ export default function PricingPage() {
 
           {/* Why Go Pro — Outcome-driven */}
           <div className="pricing-outcomes">
-            <h3 className="pricing-outcomes-title">What Pro members build:</h3>
+            <h2 className="pricing-outcomes-title">What Pro members build:</h2>
             <div className="pricing-outcomes-grid">
               {[
                 { icon: '🤖', text: 'AI agents that run your workflows autonomously' },
@@ -204,6 +206,7 @@ export default function PricingPage() {
           secondary="Go Pro — $4.90/mo" secondaryHref="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" secondaryTarget="_blank"
         />
       </section>
+      </main>
 
       <Footer variant="site" />
     </div>

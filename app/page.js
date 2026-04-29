@@ -22,9 +22,11 @@ export default function HomePage() {
 
   return (
     <div className="site-page">
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Header variant="site" />
 
       {/* Hero */}
+      <main id="main-content">
       <section className="site-hero">
         <div className="hero-anim site-hero-inner">
           <h1 className="site-hero-title">
@@ -198,6 +200,7 @@ export default function HomePage() {
           <SubscribeForm source="homepage" buttonText="Start Free" />
         </div>
       </section>
+      </main>
 
       <Footer variant="site" />
     </div>
