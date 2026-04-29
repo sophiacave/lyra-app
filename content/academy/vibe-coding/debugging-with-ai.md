@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Debugging <span class="accent">With AI.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Debugging <span class="accent">With AI.</span></h1>
   <p class="sub">When things break (they will). How to describe bugs, read errors, and let AI fix them for you.</p>
 </div>
 

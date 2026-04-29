@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Building Your <span class="accent">AI Toolkit.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Building Your <span class="accent">AI Toolkit.</span></h1>
   <p class="sub">Choosing tools that work for YOUR disability. Customizing workflows. The sovereign approach — tools you control.</p>
 </div>
 

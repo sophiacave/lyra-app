@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Forms, Documents & <span class="accent">Paperwork.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Forms, Documents & <span class="accent">Paperwork.</span></h1>
   <p class="sub">The bureaucracy barrier. Using AI to fill forms, read documents, summarize legal text, and handle the paper world.</p>
 </div>
 

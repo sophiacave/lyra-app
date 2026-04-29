@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Scheduling & <span class="accent">Planning.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Scheduling & <span class="accent">Planning.</span></h1>
   <p class="sub">Calendar management, appointment booking, routine building. AI as your executive function when yours is overloaded.</p>
 </div>
 

@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Your AI Coding <span class="accent">Partner.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Your AI Coding <span class="accent">Partner.</span></h1>
   <p class="sub">Meet the tools that turn your words into working software. Claude Code, Cursor, and Replit — pick your weapon.</p>
 </div>
 

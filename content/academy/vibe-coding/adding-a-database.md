@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Adding a <span class="accent">Database.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Adding a <span class="accent">Database.</span></h1>
   <p class="sub">Persistent data: Supabase, SQLite, or JSON. Describing your data model in plain English so AI builds it right.</p>
 </div>
 

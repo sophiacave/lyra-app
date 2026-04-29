@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Your First App in <span class="accent">10 Minutes.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Your First App in <span class="accent">10 Minutes.</span></h1>
   <p class="sub">Walk through building a real app by describing what you want. No code knowledge needed. Just words.</p>
 </div>
 

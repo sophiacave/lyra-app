@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Making It <span class="accent">Beautiful.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Making It <span class="accent">Beautiful.</span></h1>
   <p class="sub">Styling, design systems, and telling AI what you want it to look like. CSS without writing CSS.</p>
 </div>
 

@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Social Media & <span class="accent">Self-Advocacy.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Social Media & <span class="accent">Self-Advocacy.</span></h1>
   <p class="sub">Building your voice online. AI-assisted content creation for disability advocacy without the spoon cost.</p>
 </div>
 

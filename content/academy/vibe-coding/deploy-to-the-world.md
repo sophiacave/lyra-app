@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Deploy to <span class="accent">the World.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Deploy to <span class="accent">the World.</span></h1>
   <p class="sub">From localhost to a real URL in minutes. Vercel, Netlify, Replit hosting — put your app on the internet.</p>
 </div>
 

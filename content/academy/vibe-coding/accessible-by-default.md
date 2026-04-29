@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Accessible <span class="accent">by Default.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Accessible <span class="accent">by Default.</span></h1>
   <p class="sub">Building for everyone: screen readers, keyboard navigation, color contrast. AI makes accessibility easier, not harder.</p>
 </div>
 

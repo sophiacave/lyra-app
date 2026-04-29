@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Voice Control: <span class="accent">Your AI Listens.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Voice Control: <span class="accent">Your AI Listens.</span></h1>
   <p class="sub">Dictation, voice commands, hands-free computing. Setting up voice-first AI workflows when typing is pain.</p>
 </div>
 

@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Email & <span class="accent">Communication.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Email & <span class="accent">Communication.</span></h1>
   <p class="sub">AI-drafted emails, message triage, communication templates. Maintaining professional presence when energy is limited.</p>
 </div>
 

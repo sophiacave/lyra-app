@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>From Prototype <span class="accent">to Product.</span><span class="pro-badge">PRO</span></h1>
+  <h1>From Prototype <span class="accent">to Product.</span></h1>
   <p class="sub">Iteration, user feedback, and the path from vibe-coded prototype to a real product people pay for.</p>
 </div>
 

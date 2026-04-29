@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Thinking in <span class="accent">Features.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Thinking in <span class="accent">Features.</span></h1>
   <p class="sub">How to describe what you want: user stories, feature descriptions, and screen-by-screen thinking.</p>
 </div>
 

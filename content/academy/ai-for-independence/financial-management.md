@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Financial <span class="accent">Management.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Financial <span class="accent">Management.</span></h1>
   <p class="sub">Bill tracking, budget monitoring, expense categorization. AI handles the numbers you cannot face.</p>
 </div>
 

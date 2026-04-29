@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Medical <span class="accent">Advocacy.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Medical <span class="accent">Advocacy.</span></h1>
   <p class="sub">Summarizing medical records, preparing for appointments, understanding insurance. AI as your advocate in healthcare systems.</p>
 </div>
 

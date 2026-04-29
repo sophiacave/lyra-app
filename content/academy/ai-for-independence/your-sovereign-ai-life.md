@@ -13,7 +13,7 @@ free: false
 
 <!-- HERO -->
 <div class="lesson-hero">
-  <h1>Your Sovereign <span class="accent">AI Life.</span><span class="pro-badge">PRO</span></h1>
+  <h1>Your Sovereign <span class="accent">AI Life.</span></h1>
   <p class="sub">Putting it all together. The vision: AI as infrastructure for independence, not dependence on others.</p>
 </div>
 
