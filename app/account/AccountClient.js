@@ -1,12 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://blknphuwwgagtueqtoji.supabase.co';
-const APP_ANON = process.env.NEXT_PUBLIC_APP_ANON || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
 
 function StatusBadge({ status }) {
   return (
@@ -17,10 +14,9 @@ function StatusBadge({ status }) {
 }
 
 export default function AccountClient() {
-  const [sb, setSb] = useState(null);
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState(null);
+  const [subscription, setSubscription] = useState(null);
   const [displayName, setDisplayName] = useState('');
   const [savingName, setSavingName] = useState(false);
   const [nameMsg, setNameMsg] = useState('');
@@ -31,123 +27,136 @@ export default function AccountClient() {
   const [errorMsg, setErrorMsg] = useState('');
   const [cancelling, setCancelling] = useState(false);
 
+  // Check for auth callback params (from magic link redirect)
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
-    script.onload = () => {
-      const client = window.supabase.createClient(APP_URL, APP_ANON);
-      setSb(client);
-    };
-    document.head.appendChild(script);
+    const params = new URLSearchParams(window.location.search);
+    const authToken = params.get('lo_auth');
+    const authEmail = params.get('lo_email');
+    const error = params.get('error');
+
+    if (error) {
+      setErrorMsg(error === 'invalid_or_expired' ? 'Sign-in link expired. Please try again.' : 'Sign-in failed. Please try again.');
+    }
+
+    if (authToken && authEmail) {
+      // Store session from magic link callback
+      localStorage.setItem('lo_session', authToken);
+      localStorage.setItem('lo_email', authEmail);
+      // Clean URL
+      window.history.replaceState({}, '', '/account');
+    }
+
+    checkSession();
   }, []);
 
-  useEffect(() => {
-    if (!sb) return;
-    sb.auth.getSession().then(({ data: { session: s } }) => {
-      if (s) {
-        setSession(s);
-        loadProfile(s);
-      }
-      setLoading(false);
-    });
-    const { data: { subscription } } = sb.auth.onAuthStateChange((event, s) => {
-      if (event === 'SIGNED_IN' && s) {
-        setSession(s);
-        loadProfile(s);
-      }
-    });
-    return () => subscription?.unsubscribe();
-  }, [sb]);
-
-  async function loadProfile(s) {
-    const email = s.user.email;
+  async function checkSession() {
     try {
-      const res = await fetch(
-        `${APP_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&select=*`,
-        { headers: { apikey: APP_ANON, Authorization: `Bearer ${APP_ANON}` } }
-      );
-      const profiles = await res.json();
-      const p = profiles[0] || null;
-      setProfile(p);
-      setDisplayName(p?.full_name || localStorage.getItem('lo_display_name') || email.split('@')[0]);
-    } catch {
-      setDisplayName(localStorage.getItem('lo_display_name') || email.split('@')[0]);
-    }
-  }
+      // Try server-side session (cookie)
+      const res = await fetch('/api/auth/session', { credentials: 'include' });
+      const data = await res.json();
 
-  async function signInWithGoogle() {
-    if (!sb) return;
-    setSigninLoading(true);
-    const { error } = await sb.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo: window.location.origin + '/account' },
-    });
-    if (error) setSigninLoading(false);
+      if (data.authenticated) {
+        setSession({ email: data.email });
+        setSubscription(data.subscription);
+        setDisplayName(localStorage.getItem('lo_display_name') || data.email.split('@')[0]);
+        setLoading(false);
+        return;
+      }
+
+      // Try localStorage token as fallback
+      const token = localStorage.getItem('lo_session');
+      if (token) {
+        const res2 = await fetch('/api/auth/session', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data2 = await res2.json();
+        if (data2.authenticated) {
+          setSession({ email: data2.email });
+          setSubscription(data2.subscription);
+          setDisplayName(localStorage.getItem('lo_display_name') || data2.email.split('@')[0]);
+          setLoading(false);
+          return;
+        }
+      }
+    } catch {
+      // Session check failed, show sign-in
+    }
+    setLoading(false);
   }
 
   async function handleSignin(e) {
     e.preventDefault();
-    if (!sb || !signinEmail) return;
+    if (!signinEmail) return;
     setSigninLoading(true);
-    const { error } = await sb.auth.signInWithOtp({
-      email: signinEmail,
-      options: { emailRedirectTo: window.location.origin + '/account' },
-    });
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/auth/send-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: signinEmail, returnTo: '/account' }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSigninSent(true);
+      } else {
+        setErrorMsg(data.error || 'Failed to send link.');
+      }
+    } catch {
+      setErrorMsg('Something went wrong. Please try again.');
+    }
     setSigninLoading(false);
-    if (!error) setSigninSent(true);
   }
 
   async function signOut() {
-    if (!sb) return;
-    await sb.auth.signOut();
+    try {
+      await fetch('/api/auth/session', { method: 'DELETE', credentials: 'include' });
+    } catch { /* ok */ }
+    localStorage.removeItem('lo_session');
+    localStorage.removeItem('lo_email');
     setSession(null);
-    setProfile(null);
+    setSubscription(null);
   }
 
-  async function saveDisplayName() {
+  function saveDisplayName() {
     if (!displayName.trim()) return;
     setSavingName(true);
-    try {
-      localStorage.setItem('lo_display_name', displayName);
-      localStorage.setItem('forum_name', displayName);
-      localStorage.setItem('forum_email', session.user.email);
-      await fetch(`${APP_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(session.user.email)}`, {
-        method: 'PATCH',
-        headers: { apikey: APP_ANON, Authorization: `Bearer ${APP_ANON}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-        body: JSON.stringify({ full_name: displayName, updated_at: new Date().toISOString() }),
-      });
-      setNameMsg('Saved!');
-      setTimeout(() => setNameMsg(''), 2000);
-    } catch { /* silent */ }
+    localStorage.setItem('lo_display_name', displayName);
+    localStorage.setItem('forum_name', displayName);
+    if (session?.email) localStorage.setItem('forum_email', session.email);
+    setNameMsg('Saved!');
+    setTimeout(() => setNameMsg(''), 2000);
     setSavingName(false);
   }
 
-  async function cancelSubscription() {
+  async function cancelSubscriptionHandler() {
     setCancelling(true);
     try {
-      const res = await fetch(`${APP_URL}/functions/v1/cancel-subscription`, {
+      const token = localStorage.getItem('lo_session');
+      const res = await fetch('/api/auth/cancel-subscription', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${APP_ANON}` },
-        body: JSON.stringify({ email: session.user.email }),
+        credentials: 'include',
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
         setSuccessMsg('Subscription cancelled. You keep access until your current period ends. Thank you for being a founding member.');
-        setProfile(p => ({ ...p, subscription_status: 'cancelled' }));
+        setSubscription(s => ({ ...s, status: 'cancelled', tier: 'free' }));
       } else {
-        throw new Error();
+        throw new Error(data.error);
       }
     } catch {
       setErrorMsg("Something went wrong. Email hello@likeone.ai and we'll cancel immediately. No questions.");
-      setCancelling(false);
     }
+    setCancelling(false);
   }
 
   async function openBillingPortal() {
     try {
-      const res = await fetch(`${APP_URL}/functions/v1/manage-subscription`, {
+      const token = localStorage.getItem('lo_session');
+      const res = await fetch('/api/auth/billing-portal', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${APP_ANON}` },
-        body: JSON.stringify({ email: session.user.email }),
+        credentials: 'include',
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       const data = await res.json();
       if (data.url) {
@@ -160,12 +169,11 @@ export default function AccountClient() {
     }
   }
 
-  const status = profile?.subscription_status || 'free';
-  const tier = profile?.subscription_tier || 'free';
-  const isPaid = status === 'active' && tier !== 'free' && tier !== 'community';
+  const status = subscription?.status || 'free';
+  const tier = subscription?.tier || 'free';
+  const isPaid = status === 'active' && tier === 'pro';
   const isCommunity = tier === 'community';
-  const email = session?.user?.email;
-  const avatarUrl = session?.user?.user_metadata?.avatar_url;
+  const email = session?.email;
   const initial = (displayName || 'U').charAt(0).toUpperCase();
 
   if (loading) {
@@ -191,18 +199,13 @@ export default function AccountClient() {
               Sign in to access your courses, manage your subscription, and join the community.
             </p>
 
-            <button
-              onClick={signInWithGoogle}
-              disabled={signinLoading}
-              className="account-google-btn"
-            >
-              <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-              Continue with Google
-            </button>
+            {errorMsg && (
+              <div className="app-msg-error">{errorMsg}</div>
+            )}
 
             <div className="account-divider">
               <div className="account-divider-line" />
-              <span className="account-divider-text">or sign in with email</span>
+              <span className="account-divider-text">sign in with email</span>
               <div className="account-divider-line" />
             </div>
 
@@ -228,7 +231,7 @@ export default function AccountClient() {
                   disabled={signinLoading}
                   className="app-btn-submit"
                 >
-                  {signinLoading ? 'Sending...' : 'Send Link'}
+                  {signinLoading ? 'Sending...' : 'Send Magic Link'}
                 </button>
               </form>
             )}
@@ -253,7 +256,7 @@ export default function AccountClient() {
               <div className="app-card-label">Profile</div>
               <div className="account-profile-row">
                 <div className="account-avatar">
-                  {avatarUrl ? <img src={avatarUrl} referrerPolicy="no-referrer" alt="" /> : initial}
+                  {initial}
                 </div>
                 <div>
                   <div className="account-profile-name">{displayName}</div>
@@ -290,17 +293,17 @@ export default function AccountClient() {
               </div>
               <p className="account-sub-desc">
                 {isPaid
-                  ? 'Full access to all 300+ lessons across 30 courses. Your founding price is locked in forever.'
+                  ? 'Full access to all 355+ lessons across 36 courses. Your founding price is locked in forever.'
                   : isCommunity
                   ? "Full access through our Community Access program. When you're ready, upgrading keeps this program running for others."
-                  : "You're on the free tier. Upgrade to unlock all 300+ lessons across 30 courses."}
+                  : "You're on the free tier. Upgrade to unlock all 355+ lessons across 36 courses."}
               </p>
               <div className="account-sub-actions">
                 {isPaid ? (
                   <>
                     <Link href="/academy/" className="site-btn-primary">Continue Learning</Link>
                     <button onClick={openBillingPortal} className="app-btn-ghost">Manage Subscription</button>
-                    <button onClick={cancelSubscription} disabled={cancelling} className="app-btn-ghost app-btn-danger">
+                    <button onClick={cancelSubscriptionHandler} disabled={cancelling} className="app-btn-ghost app-btn-danger">
                       {cancelling ? 'Cancelling...' : 'Cancel Subscription'}
                     </button>
                   </>

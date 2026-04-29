@@ -28,7 +28,7 @@ You already know the answer. You clicked this article because you have used both
 
 Claude is the better writer. I am going to spend the next three thousand words explaining exactly why, where ChatGPT still has legitimate advantages, and how to stop treating this like a team sport and start using both intelligently.
 
-Quick context: I run [Like One Academy](https://likeone.ai/academy/), where I teach 30 courses on practical AI. I use Claude and ChatGPT daily to produce real content — blog posts, course materials, email sequences, landing pages, social media. This is not a comparison based on running five test prompts. This is based on thousands of hours of production use across both platforms.
+Quick context: I run [Like One Academy](https://likeone.ai/academy/), where I teach 36 courses on practical AI. I use Claude and ChatGPT daily to produce real content — blog posts, course materials, email sequences, landing pages, social media. This is not a comparison based on running five test prompts. This is based on thousands of hours of production use across both platforms.
 
 ## Prose Quality: Where Claude Pulls Away
 
@@ -215,7 +215,7 @@ The point is not that ChatGPT is bad at writing. It is good at writing. Claude i
 
 The professional content creator's toolkit in 2026 is not one AI. It is a system where each tool handles what it does best, and no tool is asked to do everything.
 
-Here is the actual workflow I use to produce content for Like One Academy — 30 courses, hundreds of lessons, plus all the blog and marketing content that supports them:
+Here is the actual workflow I use to produce content for Like One Academy — 36 courses, hundreds of lessons, plus all the blog and marketing content that supports them:
 
 1. **Research and ideation** — ChatGPT with web browsing for current topics. Gemini Deep Research when I need a comprehensive literature review. I want breadth at this stage, not polish.
 2. **Outlining and structure** — Either tool works. I tend toward ChatGPT because it is slightly faster for structural work and I do not need prose quality yet.
@@ -240,7 +240,7 @@ Write with the one that sounds like you. Use the other one for everything else.
 
 ---
 
-*I teach practical AI skills at [Like One Academy](https://likeone.ai/academy/) — 30 courses covering Claude, ChatGPT, automation, agents, and the real workflows behind running a business with AI. Free to start.*
+*I teach practical AI skills at [Like One Academy](https://likeone.ai/academy/) — 36 courses covering Claude, ChatGPT, automation, agents, and the real workflows behind running a business with AI. Free to start.*
 
 ## Keep Reading
 

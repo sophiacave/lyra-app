@@ -209,4 +209,4 @@ We used our own AI tools to build the foundation in a day. That is not irony. Th
 
 ---
 
-*The Like One Foundation is a pending 501(c)(3) organization. Like One Academy offers 30 free AI courses at [likeone.ai/academy](https://likeone.ai/academy).*
+*The Like One Foundation is an IRS-recognized 501(c)(3) tax-exempt nonprofit. Like One Academy offers 30 free AI courses at [likeone.ai/academy](https://likeone.ai/academy).*

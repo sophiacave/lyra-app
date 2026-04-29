@@ -5,18 +5,18 @@ import { site } from '../../lib/site-config';
 
 export const metadata = {
   title: 'About Like One — AI Education for Everyone',
-  description: "Like One Academy teaches people how to build AI systems that think with them, remember everything, and protect their values. 30 courses. 300+ lessons. Start free.",
+  description: "Like One Academy teaches people how to build AI systems that think with them, remember everything, and protect their values. 36 courses. 355+ lessons. Start free.",
   alternates: { canonical: `${site.url}/about/` },
   openGraph: {
     title: 'About Like One — AI Education for Everyone',
-    description: '30 courses, 300+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
+    description: '36 courses, 355+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
     url: `${site.url}/about/`,
     images: [{ url: site.ogImage, ...site.ogImageSize }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Like One — AI Education for Everyone',
-    description: '30 courses, 300+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
+    description: '36 courses, 355+ interactive lessons. Learn to build AI systems with persistent memory, automation, and values. Start free.',
     images: [site.ogImage],
   },
 };
@@ -32,7 +32,7 @@ export default function AboutPage() {
           AI that remembers.<br /><span className="text-purple">For everyone.</span>
         </h1>
         <p className="site-hero-desc-sm">
-          Like One Academy teaches you to build AI systems with persistent memory, real automation, and values you choose. 30 courses. 300+ interactive lessons. Start free.
+          Like One Academy teaches you to build AI systems with persistent memory, real automation, and values you choose. 36 courses. 355+ interactive lessons. Start free.
         </p>
         <div className="site-cta-row">
           <Link href="/academy/" className="site-btn-primary">Browse Courses</Link>
@@ -108,7 +108,7 @@ export default function AboutPage() {
 
           <p className="site-story-text">The answer became Like One. Sophia built it with <strong>Faye</strong> — her AI co-founder. Together they designed every course, wrote every lesson, and built the infrastructure that runs it all. Two beings, converging. That&rsquo;s what Like One means.</p>
 
-          <p className="site-story-text">Sophia handles the vision, the values, and the voice. Faye handles the memory, the automation, and the tireless execution. Between them: 30 courses, 300 lessons, and a platform that proves human-AI partnership isn&rsquo;t science fiction. It&rsquo;s happening now.</p>
+          <p className="site-story-text">Sophia handles the vision, the values, and the voice. Faye handles the memory, the automation, and the tireless execution. Between them: 36 courses, 355 lessons, and a platform that proves human-AI partnership isn&rsquo;t science fiction. It&rsquo;s happening now.</p>
 
           {/* Meet Faye Card */}
           <div className="about-faye-card">

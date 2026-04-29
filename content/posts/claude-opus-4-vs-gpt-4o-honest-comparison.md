@@ -113,4 +113,4 @@ The smart move? Use both. Run Claude for deep work and production output. Use Ch
 
 At Like One, we run Claude as our primary AI for content, code, and business analysis. GPT-4o handles research and image work. This split has worked for six months and we have no plans to change it.
 
-Want to learn how to get the most out of either model? Start with our free [Claude for Beginners](/academy/claude-for-beginners/) course or explore the full [AI Academy](/academy/) — 30 courses, completely free.
+Want to learn how to get the most out of either model? Start with our free [Claude for Beginners](/academy/claude-for-beginners/) course or explore the full [AI Academy](/academy/) — 36 courses, completely free.

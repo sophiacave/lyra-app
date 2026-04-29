@@ -169,4 +169,4 @@ Stop benchmarking. Start building.
 
 ---
 
-*I teach developers how to build with AI tools — not toy demos, real production software. [Like One Academy](https://likeone.ai/academy/) has 30 courses covering Claude Code, AI agents, automation, and the actual workflows behind an AI-native business. Free to start.*
+*I teach developers how to build with AI tools — not toy demos, real production software. [Like One Academy](https://likeone.ai/academy/) has 36 courses covering Claude Code, AI agents, automation, and the actual workflows behind an AI-native business. Free to start.*

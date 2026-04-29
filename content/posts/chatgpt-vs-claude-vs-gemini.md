@@ -2,8 +2,8 @@
 title: "ChatGPT vs Claude vs Gemini: The Honest Guide for People Learning AI (2026)"
 date: 2026-04-19
 author: Sophia Cave
-description: "Stop reading comparison tables. I use all three AI tools daily to run a business and teach 30 courses. Here's which to use for what — and how to combine them into a system that actually makes you better at AI."
-excerpt: "Stop reading comparison tables. I use all three AI tools daily to run a business and teach 30 courses. Here's which to use for what — and how to combine them into a system that actually makes you better at AI."
+description: "Stop reading comparison tables. I use all three AI tools daily to run a business and teach 36 courses. Here's which to use for what — and how to combine them into a system that actually makes you better at AI."
+excerpt: "Stop reading comparison tables. I use all three AI tools daily to run a business and teach 36 courses. Here's which to use for what — and how to combine them into a system that actually makes you better at AI."
 tags: [claude, chatgpt, gemini, comparison, ai-tools, ai-education, beginner, 2026]
 faq:
   - q: "Is Claude better than ChatGPT in 2026?"
@@ -181,7 +181,7 @@ Here's an actual workflow I use daily that you can copy:
 4. **Visualize** (ChatGPT) — Generate any images, diagrams, or visual assets needed
 5. **Distribute** (Gemini) — Push to Google Workspace, format for different channels
 
-This isn't theoretical. It's how I produce content for [Like One Academy](https://likeone.ai/academy/) — 30 courses, 300+ lessons, built by one person with three AI tools.
+This isn't theoretical. It's how I produce content for [Like One Academy](https://likeone.ai/academy/) — 36 courses, 355+ lessons, built by one person with three AI tools.
 
 ## Which AI Should YOU Use?
 

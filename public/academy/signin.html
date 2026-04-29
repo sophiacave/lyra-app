@@ -38,21 +38,10 @@ h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
 
 <div class="card">
   <div><span class="logo">like<span>one</span></span><span class="badge">ACADEMY</span></div>
-  
+
   <div id="signin-form">
     <h1>Start learning — free</h1>
     <p class="sub">Sign in with your email to access free courses, track your progress, and join the Like One community. No credit card needed.</p>
-
-    <button class="btn" id="google-btn" onclick="signInWithGoogle()" style="background:#fff;color:#333;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1rem">
-      <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.462.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
-      Continue with Google
-    </button>
-
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem">
-      <div style="flex:1;height:1px;background:#1e1e28"></div>
-      <span style="color:#555;font-size:.75rem">or use email</span>
-      <div style="flex:1;height:1px;background:#1e1e28"></div>
-    </div>
 
     <div class="error" id="error"></div>
     <input class="input" id="email" type="email" placeholder="your@email.com" />
@@ -68,65 +57,67 @@ h1{font-size:1.5rem;font-weight:800;margin:1.5rem 0 .5rem}
     <div class="user-email" id="user-email"></div>
     <div class="user-status" id="user-status"></div>
     <hr class="divider">
-    <a href="/academy/" style="color:#fb923c;font-weight:600;font-size:.9rem">Go to Academy →</a>
+    <a href="/academy/" style="color:#fb923c;font-weight:600;font-size:.9rem">Go to Academy &rarr;</a>
     <br><br>
     <button onclick="signOut()" style="background:none;border:1px solid #2a2a38;color:#737373;padding:.5rem 1rem;border-radius:8px;cursor:pointer;font-family:Inter,sans-serif;font-size:.8rem">Sign out</button>
   </div>
 
   <hr class="divider">
-  
+
   <div class="links">
-    <a href="/academy/">Academy</a> · <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank">Go Pro — $4.90/mo (Founding)</a> · <a href="/">Home</a>
+    <a href="/academy/">Academy</a> &middot; <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank">Go Pro — $4.90/mo (Founding)</a> &middot; <a href="/">Home</a>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-const SUPABASE_URL = 'https://app.likeone.ai';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
-
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-
-async function checkSession() {
-  const { data: { session } } = await sb.auth.getSession();
-  if (session) {
-    document.getElementById('signin-form').style.display = 'none';
-    document.getElementById('user-card').style.display = 'block';
-    document.getElementById('user-email').textContent = session.user.email;
-    
-    // Check subscription status
-    const { data: profile } = await sb
-      .from('profiles')
-      .select('subscription_status, subscription_tier')
-      .eq('email', session.user.email)
-      .single();
-    
-    if (profile?.subscription_status === 'active') {
-      document.getElementById('user-status').innerHTML = '<span class="status-active">✓ Pro Member — All courses unlocked</span>';
-    } else {
-      document.getElementById('user-status').innerHTML = '<span class="status-free">Free tier — <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank" style="color:#fb923c">Upgrade to Pro ($4.90/mo — Founding Member)</a></span>';
-    }
-  }
-}
-
 // Store the page user came from so we can redirect back
 const returnTo = new URLSearchParams(location.search).get('return') || '/academy/';
 
-async function signInWithGoogle() {
-  const btn = document.getElementById('google-btn');
-  btn.textContent = 'Connecting...';
-  btn.disabled = true;
+// Check for auth callback params (from magic link redirect)
+(function() {
+  const params = new URLSearchParams(location.search);
+  const authToken = params.get('lo_auth');
+  const authEmail = params.get('lo_email');
 
-  const { error } = await sb.auth.signInWithOAuth({
-    provider: 'google',
-    options: { redirectTo: window.location.origin + '/academy/signin.html?return=' + encodeURIComponent(returnTo) }
-  });
+  if (authToken && authEmail) {
+    localStorage.setItem('lo_session', authToken);
+    localStorage.setItem('lo_email', authEmail);
+    // Redirect to original page
+    if (returnTo && returnTo !== '/academy/signin.html') {
+      window.location.href = returnTo;
+      return;
+    }
+  }
 
-  if (error) {
-    document.getElementById('error').textContent = error.message;
-    document.getElementById('error').style.display = 'block';
-    btn.innerHTML = 'Continue with Google';
-    btn.disabled = false;
+  checkSession();
+})();
+
+async function checkSession() {
+  // Check localStorage session
+  const token = localStorage.getItem('lo_session');
+  const email = localStorage.getItem('lo_email');
+
+  if (!token || !email) return;
+
+  try {
+    const res = await fetch('/api/auth/session', {
+      headers: { Authorization: 'Bearer ' + token },
+    });
+    const data = await res.json();
+
+    if (data.authenticated) {
+      document.getElementById('signin-form').style.display = 'none';
+      document.getElementById('user-card').style.display = 'block';
+      document.getElementById('user-email').textContent = data.email;
+
+      if (data.subscription?.status === 'active' && data.subscription?.tier === 'pro') {
+        document.getElementById('user-status').innerHTML = '<span class="status-active">&check; Pro Member — All courses unlocked</span>';
+      } else {
+        document.getElementById('user-status').innerHTML = '<span class="status-free">Free tier — <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank" style="color:#fb923c">Upgrade to Pro ($4.90/mo — Founding Member)</a></span>';
+      }
+    }
+  } catch {
+    // Session check failed — show signin form
   }
 }
 
@@ -143,26 +134,39 @@ async function signIn() {
   btn.disabled = true;
   document.getElementById('error').style.display = 'none';
 
-  const { error } = await sb.auth.signInWithOtp({
-    email,
-    options: { emailRedirectTo: window.location.origin + '/academy/signin.html?return=' + encodeURIComponent(returnTo) }
-  });
+  try {
+    const res = await fetch('/api/auth/send-link', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        returnTo: '/academy/signin.html?return=' + encodeURIComponent(returnTo),
+      }),
+    });
+    const data = await res.json();
 
-  if (error) {
-    document.getElementById('error').textContent = error.message;
+    if (data.success) {
+      document.getElementById('sent-email').textContent = email;
+      document.getElementById('success').style.display = 'block';
+      btn.textContent = 'Link Sent \u2713';
+    } else {
+      document.getElementById('error').textContent = data.error || 'Failed to send link.';
+      document.getElementById('error').style.display = 'block';
+      btn.textContent = 'Send Magic Link';
+      btn.disabled = false;
+    }
+  } catch {
+    document.getElementById('error').textContent = 'Something went wrong. Try again.';
     document.getElementById('error').style.display = 'block';
     btn.textContent = 'Send Magic Link';
     btn.disabled = false;
-    return;
   }
-
-  document.getElementById('sent-email').textContent = email;
-  document.getElementById('success').style.display = 'block';
-  btn.textContent = 'Link Sent ✓';
 }
 
-async function signOut() {
-  await sb.auth.signOut();
+function signOut() {
+  localStorage.removeItem('lo_session');
+  localStorage.removeItem('lo_email');
+  fetch('/api/auth/session', { method: 'DELETE', credentials: 'include' }).catch(function(){});
   document.getElementById('signin-form').style.display = 'block';
   document.getElementById('user-card').style.display = 'none';
   document.getElementById('email').value = '';
@@ -170,21 +174,6 @@ async function signOut() {
   document.getElementById('submit-btn').disabled = false;
   document.getElementById('success').style.display = 'none';
 }
-
-// Check if returning from magic link
-checkSession();
-
-// Listen for auth state changes (magic link or OAuth redirect)
-sb.auth.onAuthStateChange((event, session) => {
-  if (event === 'SIGNED_IN' && session) {
-    // Redirect back to the page they were trying to access
-    if (returnTo && returnTo !== '/academy/signin.html') {
-      window.location.href = returnTo;
-    } else {
-      checkSession();
-    }
-  }
-});
 </script>
 
 </body>

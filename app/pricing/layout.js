@@ -2,11 +2,11 @@ import { site } from '../../lib/site-config';
 
 export const metadata = {
   title: 'AI Course Pricing — 90% Off Founding Deal | Like One',
-  description: 'Free tier available — no credit card needed. Pro from $4.90/mo (normally $49). 30 AI courses, 300+ lessons. First 1,000 founding members lock in 90% off forever.',
+  description: 'Free tier available — no credit card needed. Pro from $4.90/mo (normally $49). 30 AI courses, 355+ lessons. First 1,000 founding members lock in 90% off forever.',
   alternates: { canonical: `${site.url}/pricing/` },
   openGraph: {
     title: 'AI Course Pricing — 90% Off Founding Deal | Like One',
-    description: 'Free tier or Pro from $4.90/mo. 30 AI courses, 300+ lessons. Founding members lock in 90% off forever.',
+    description: 'Free tier or Pro from $4.90/mo. 30 AI courses, 355+ lessons. Founding members lock in 90% off forever.',
     url: `${site.url}/pricing/`,
     siteName: site.name,
     type: 'website',
@@ -15,7 +15,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AI Course Pricing — 90% Off Founding Deal | Like One',
-    description: 'Free tier or Pro from $4.90/mo. 30 courses, 300+ lessons. Lock in 90% off forever.',
+    description: 'Free tier or Pro from $4.90/mo. 36 courses, 355+ lessons. Lock in 90% off forever.',
     images: [site.ogImage],
   },
 };

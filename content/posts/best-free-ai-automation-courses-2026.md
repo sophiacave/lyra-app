@@ -7,7 +7,7 @@ excerpt: "Looking for free AI automation courses in 2026? I tested every major o
 tags: [ai-automation, courses, free, 2026, education, automation]
 faq:
   - q: "Are there good free AI automation courses?"
-    a: "Yes. Like One Academy offers 30 free courses including hands-on automation training. Make.com Academy and n8n's documentation also provide solid free automation education."
+    a: "Yes. Like One Academy offers 36 free courses including hands-on automation training. Make.com Academy and n8n's documentation also provide solid free automation education."
   - q: "What should I learn first for AI automation?"
     a: "Start with one workflow you do manually every week. Learn to automate that specific task using a tool like Make.com or n8n. Then expand from there. Don't try to learn 'AI automation' in the abstract."
   - q: "Do I need to know how to code for AI automation?"
@@ -30,7 +30,7 @@ The automation track covers Make.com workflows, webhook architecture, API integr
 
 **Best for:** People who want to automate real business tasks, not just understand concepts.
 
-**Access:** Free lesson previews on all 30 courses. Full access $4.90/mo for founding members.
+**Access:** Free lesson previews on all 36 courses. Full access $4.90/mo for founding members.
 
 [Explore the Academy →](https://likeone.ai/academy/)
 
@@ -101,7 +101,7 @@ You do not need expensive tools. Here is what I use to run a fully automated bus
 - **Resend** (free tier) — transactional email
 - **Stripe** (% per transaction) — payments
 
-Total fixed cost: under $50/month. That runs a business with 30 courses, automated email sequences, payment processing, and a persistent AI brain.
+Total fixed cost: under $50/month. That runs a business with 36 courses, automated email sequences, payment processing, and a persistent AI brain.
 
 The courses above will teach you the pieces. Connecting them into a system that runs autonomously — that is what [Like One Academy](https://likeone.ai/academy/) focuses on.
 

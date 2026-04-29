@@ -5,8 +5,8 @@ import { site, colors } from '../lib/site-config';
 
 
 
-const fullTitle = `Like One — Learn AI Free | 30 Courses, 300+ Hands-On Lessons`;
-const shortDesc = 'Master Claude, prompt engineering, AI agents, RAG & MCP with 30 free courses and 300+ hands-on lessons. Built by practitioners. Start now — no credit card.';
+const fullTitle = `Like One — Learn AI Free | 36 Courses, 355+ Hands-On Lessons`;
+const shortDesc = 'Master Claude, prompt engineering, AI agents, RAG & MCP with 36 free courses and 355+ hands-on lessons. Built by practitioners. Start now — no credit card.';
 
 export const viewport = {
   width: 'device-width',

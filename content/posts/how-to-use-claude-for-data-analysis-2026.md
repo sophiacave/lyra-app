@@ -181,4 +181,4 @@ That first insight is usually worth more than the entire analysis you've been pu
 
 ---
 
-*Want to master Claude for your entire business — not just data? The [Like One Academy](https://likeone.ai/academy) has 30 free courses covering everything from prompt engineering to full business automation.*
+*Want to master Claude for your entire business — not just data? The [Like One Academy](https://likeone.ai/academy) has 36 free courses covering everything from prompt engineering to full business automation.*

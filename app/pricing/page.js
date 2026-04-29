@@ -6,11 +6,11 @@ import { site } from '../../lib/site-config';
 
 export const metadata = {
   title: `Pricing — 90% Off Founding Member Rate | ${site.name}`,
-  description: '30 AI courses, 300+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
+  description: '30 AI courses, 355+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
   alternates: { canonical: `${site.url}/pricing/` },
   openGraph: {
     title: `Pricing — 90% Off Founding Member Rate | ${site.name}`,
-    description: '30 AI courses, 300+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
+    description: '30 AI courses, 355+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
     url: `${site.url}/pricing/`,
     siteName: site.name,
     type: 'website',
@@ -26,7 +26,7 @@ const PLANS = [
   {
     label: 'Most popular', name: 'Pro — Founding', price: '$4.90', period: '/mo', was: '$49',
     desc: 'Full access to everything. 90% off — locked in forever.', featured: true,
-    features: ['All 300+ interactive lessons', '30 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }, { text: 'Founding price — forever', highlight: true }],
+    features: ['All 355+ interactive lessons', '36 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }, { text: 'Founding price — forever', highlight: true }],
     btn: { label: 'Go Pro — $4.90/mo', href: 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c', style: 'primary', external: true },
   },
   {
@@ -55,8 +55,8 @@ const FAQS = [
 
 const COMPARE = [
   ['First 3 lessons of every course', true, true],
-  ['All 300+ interactive lessons', false, true],
-  ['30 courses (MCP, RAG, Agents & more)', false, true],
+  ['All 355+ interactive lessons', false, true],
+  ['36 courses (MCP, RAG, Agents & more)', false, true],
   ['Download products (playbooks, templates)', false, true],
   ['Completion certificates', false, true],
   ['New content as it ships', false, true],

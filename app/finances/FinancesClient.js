@@ -5,9 +5,6 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://blknphuwwgagtueqtoji.supabase.co';
-const APP_ANON = process.env.NEXT_PUBLIC_APP_ANON || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
-
 function formatCurrency(amount, currency = 'USD') {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(amount);
 }
@@ -34,37 +31,31 @@ function categoryColor(cat) {
 }
 
 export default function FinancesClient() {
-  const [sb, setSb] = useState(null);
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [fetching, setFetching] = useState(false);
 
-  // Load Supabase client
+  // Check sovereign auth session
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
-    script.onload = () => {
-      const client = window.supabase.createClient(APP_URL, APP_ANON);
-      setSb(client);
-    };
-    document.head.appendChild(script);
-  }, []);
+    async function checkAuth() {
+      const token = localStorage.getItem('lo_session');
+      if (!token) { setLoading(false); return; }
 
-  // Check auth
-  useEffect(() => {
-    if (!sb) return;
-    sb.auth.getSession().then(({ data: { session: s } }) => {
-      setSession(s);
+      try {
+        const res = await fetch('/api/auth/session', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await res.json();
+        if (data.authenticated) {
+          setSession({ email: data.email, token });
+        }
+      } catch { /* auth failed */ }
       setLoading(false);
-    });
-    const { data: { subscription } } = sb.auth.onAuthStateChange((_, s) => {
-      setSession(s);
-      if (!s) setLoading(false);
-    });
-    return () => subscription?.unsubscribe();
-  }, [sb]);
+    }
+    checkAuth();
+  }, []);
 
   // Fetch finances when session ready
   useEffect(() => {
@@ -77,7 +68,8 @@ export default function FinancesClient() {
     setError(null);
     try {
       const res = await fetch('/api/finances/', {
-        headers: { Authorization: `Bearer ${session.access_token}` },
+        headers: { Authorization: `Bearer ${session.token}` },
+        credentials: 'include',
       });
       if (!res.ok) {
         const err = await res.json();
@@ -281,7 +273,7 @@ export default function FinancesClient() {
                         {formatCurrency(a.balance, a.currency)}
                       </td>
                       <td style={{ ...tdStyle, textAlign: 'right', fontVariantNumeric: 'tabular-nums', color: '#a0a0a0' }}>
-                        {a.available != null ? formatCurrency(a.available, a.currency) : '—'}
+                        {a.available != null ? formatCurrency(a.available, a.currency) : '\u2014'}
                       </td>
                     </tr>
                   ))}
@@ -340,7 +332,7 @@ export default function FinancesClient() {
 
             {/* Footer info */}
             <p style={{ color: '#525252', fontSize: 12, textAlign: 'center' }}>
-              Last updated: {new Date(data.summary.as_of).toLocaleString()} · {data.summary.environment} environment
+              Last updated: {new Date(data.summary.as_of).toLocaleString()} &middot; {data.summary.environment} environment
             </p>
           </>
         )}

@@ -12,6 +12,9 @@ const corsHeaders = {
 const FROM_EMAIL = 'Sophia at Like One <hello@likeone.ai>';
 const CODE_TTL_MINUTES = 15;
 
+// In-memory code store (resets on deploy — acceptable for calculator auth)
+const codeStore = new Map();
+
 function codeEmailHtml(code) {
   return `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -23,7 +26,7 @@ function codeEmailHtml(code) {
   <div style="font-size:34px;font-weight:800;letter-spacing:12px;color:#c084fc;text-align:center;padding:24px;background:#111118;border-radius:12px;margin:0 0 24px">${code}</div>
   <p style="color:#8888a0;font-size:13px;line-height:1.7">This code expires in ${CODE_TTL_MINUTES} minutes. If you didn't request it, you can ignore this email.</p>
   <div style="border-top:1px solid #1e1e28;margin-top:40px;padding-top:20px;text-align:center">
-    <p style="color:#555;font-size:12px;margin:0">Like One · <a href="https://likeone.ai" style="color:#c084fc;text-decoration:none">likeone.ai</a></p>
+    <p style="color:#555;font-size:12px;margin:0">Like One &middot; <a href="https://likeone.ai" style="color:#c084fc;text-decoration:none">likeone.ai</a></p>
   </div>
 </div></body></html>`;
 }
@@ -51,25 +54,6 @@ async function sendCodeEmail(email, code) {
   return true;
 }
 
-async function brainFetch(path, method, body) {
-  const url = process.env.BRAIN_URL;
-  const key = process.env.BRAIN_V2_SERVICE_KEY;
-  if (!url || !key) throw new Error('BRAIN_URL/BRAIN_V2_SERVICE_KEY missing');
-  const res = await fetch(`${url}/rest/v1/${path}`, {
-    method,
-    headers: {
-      apikey: key,
-      Authorization: `Bearer ${key}`,
-      'Content-Type': 'application/json',
-      Prefer: 'return=representation',
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const text = await res.text();
-  if (!res.ok) throw new Error(`brain ${method} ${path}: ${res.status} ${text}`);
-  try { return text ? JSON.parse(text) : null; } catch { return null; }
-}
-
 function cleanEmail(raw) {
   const e = (raw || '').trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) return null;
@@ -77,8 +61,15 @@ function cleanEmail(raw) {
 }
 
 function generateCode() {
-  // 6-digit code, padded
   return String(Math.floor(Math.random() * 1_000_000)).padStart(6, '0');
+}
+
+// Cleanup expired codes periodically
+function cleanupCodes() {
+  const now = Date.now();
+  for (const [key, entry] of codeStore) {
+    if (now > entry.expires) codeStore.delete(key);
+  }
 }
 
 export async function OPTIONS() {
@@ -94,43 +85,30 @@ export async function POST(req) {
       return NextResponse.json({ success: false, error: 'Invalid email' }, { status: 400, headers: corsHeaders });
     }
 
+    cleanupCodes();
+
     if (action === 'send') {
       // Rate limit: max 3 sends per email per hour
-      const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-      const recent = await brainFetch(
-        `calculator_auth_codes?email=eq.${encodeURIComponent(email)}&created=gte.${encodeURIComponent(oneHourAgo)}&select=code`,
-        'GET'
-      ).catch(() => []);
-      if (Array.isArray(recent) && recent.length >= 3) {
+      const recentCount = Array.from(codeStore.values())
+        .filter(e => e.email === email && Date.now() - e.created < 3600000).length;
+      if (recentCount >= 3) {
         return NextResponse.json(
           { success: false, error: 'Too many code requests. Please wait an hour.' },
           { status: 429, headers: corsHeaders }
         );
       }
 
-      // Cleanup: drop expired+used rows older than 24h (best-effort)
-      const cleanupCutoff = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-      await brainFetch(
-        `calculator_auth_codes?or=(used.eq.1,expires.lt.${encodeURIComponent(new Date().toISOString())})&created.lt.${encodeURIComponent(cleanupCutoff)}`,
-        'DELETE'
-      ).catch(() => null);
-
       const code = generateCode();
-      const now = new Date();
-      const expires = new Date(now.getTime() + CODE_TTL_MINUTES * 60 * 1000);
-      // Invalidate prior unused codes for this email
-      await brainFetch(
-        `calculator_auth_codes?email=eq.${encodeURIComponent(email)}&used=eq.0`,
-        'PATCH',
-        { used: 1 }
-      ).catch((e) => console.warn('prior-invalidate:', e.message));
-      await brainFetch('calculator_auth_codes', 'POST', {
+      const now = Date.now();
+      const key = `${email}:${code}`;
+      codeStore.set(key, {
         email,
         code,
-        created: now.toISOString(),
-        expires: expires.toISOString(),
-        used: 0,
+        created: now,
+        expires: now + CODE_TTL_MINUTES * 60 * 1000,
+        used: false,
       });
+
       const sent = await sendCodeEmail(email, code);
       return NextResponse.json(
         { success: sent, message: sent ? 'Code sent' : 'Email send failed' },
@@ -143,22 +121,14 @@ export async function POST(req) {
       if (!/^\d{6}$/.test(code)) {
         return NextResponse.json({ success: false, error: 'Code must be 6 digits' }, { status: 400, headers: corsHeaders });
       }
-      const rows = await brainFetch(
-        `calculator_auth_codes?email=eq.${encodeURIComponent(email)}&code=eq.${code}&used=eq.0&select=expires`,
-        'GET'
-      );
-      if (!Array.isArray(rows) || rows.length === 0) {
+
+      const key = `${email}:${code}`;
+      const entry = codeStore.get(key);
+      if (!entry || entry.used || Date.now() > entry.expires) {
         return NextResponse.json({ success: false, error: 'Invalid or expired code' }, { status: 400, headers: corsHeaders });
       }
-      const row = rows[0];
-      if (new Date(row.expires) < new Date()) {
-        return NextResponse.json({ success: false, error: 'Code expired' }, { status: 400, headers: corsHeaders });
-      }
-      await brainFetch(
-        `calculator_auth_codes?email=eq.${encodeURIComponent(email)}&code=eq.${code}`,
-        'PATCH',
-        { used: 1 }
-      );
+
+      entry.used = true;
       return NextResponse.json({ success: true }, { headers: corsHeaders });
     }
 

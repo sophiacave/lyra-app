@@ -158,7 +158,7 @@ export default function HomePage() {
         <div className="site-container text-center">
           <span className="site-section-tag">WHAT&rsquo;S INSIDE</span>
           <h2 className="site-section-title">From zero to convergence. For real.</h2>
-          <p className="site-section-desc centered">30 courses, 300+ interactive lessons, hands-on projects. Start with a free course — go Pro when you&rsquo;re ready.</p>
+          <p className="site-section-desc centered">36 courses, 355+ interactive lessons, hands-on projects. Start with a free course — go Pro when you&rsquo;re ready.</p>
           <div className="site-cta-row">
             <Link href="/academy/" className="site-btn-primary">Start Free Course</Link>
             <Link href="/pricing" className="site-btn-secondary">See Pricing</Link>

@@ -1,12 +1,12 @@
 /**
- * LIKE ONE ACADEMY — Auth Gate v2.0
- * Uses real Supabase JS client for session management.
- * Magic link auth — no passwords, maximum trust.
+ * LIKE ONE ACADEMY — Auth Gate v3.0
+ * Zero Supabase. Uses sovereign auth (HMAC magic links + Stripe).
+ * Session in localStorage, verified server-side.
+ *
+ * 2026-04-28 — Supabase independence
  */
 
 (function() {
-  const SUPABASE_URL = 'https://app.likeone.ai';
-  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
   const MONTHLY_LINK = 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c';
   const ANNUAL_LINK = 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d';
   const SIGNIN_BASE = '/academy/signin.html';
@@ -15,150 +15,137 @@
   const FREE_COURSES = [];
   const FREE_LESSON_COUNT = 3;
 
-  // Load Supabase client
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
-  script.onload = () => initAuth();
-  document.head.appendChild(script);
+  initAuth();
 
   async function initAuth() {
-    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    var path = location.pathname;
+    var parts = path.split('/').filter(Boolean);
+    var courseSlug = parts[1] || '';
+    var lessonFile = parts[2] || '';
 
-    const path = location.pathname;
-    const parts = path.split('/').filter(Boolean);
-    const courseSlug = parts[1] || '';
-    const lessonFile = parts[2] || '';
-
-    // Index pages, community, and signin are always public (browsable without auth)
+    // Index pages, community, and signin are always public
     if (!lessonFile || lessonFile === 'index.html' || lessonFile === 'community.html' || lessonFile === 'signin.html') return;
 
-    // --- EMAIL GATE: All lesson content requires signin ---
-    // Check auth session first (app project)
-    const { data: { session } } = await sb.auth.getSession();
+    // Check session
+    var token = localStorage.getItem('lo_session');
+    var email = localStorage.getItem('lo_email');
+    var hasSession = false;
+    var isPro = false;
 
-    // Also check localStorage for sessions from old/alternative projects
-    let hasSession = !!session;
-    let userEmail = session?.user?.email;
-    let isPro = false;
+    if (token && email) {
+      try {
+        var res = await fetch('/api/auth/session', {
+          headers: { Authorization: 'Bearer ' + token },
+        });
+        var data = await res.json();
+        if (data.authenticated) {
+          hasSession = true;
+          email = data.email;
+          isPro = data.subscription && data.subscription.status === 'active' && data.subscription.tier === 'pro';
 
-    if (!hasSession) {
-      const oldSession = localStorage.getItem('sb-vpaynwebgmmnwttqkwmh-auth-token');
-      const appSession = localStorage.getItem('sb-blknphuwwgagtueqtoji-auth-token');
-      const raw = appSession || oldSession;
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (parsed?.user?.email && parsed?.access_token) {
-            hasSession = true;
-            userEmail = parsed.user.email;
+          // Also count community access as pro
+          if (data.subscription && data.subscription.tier === 'community' && data.subscription.status === 'active') {
+            isPro = true;
           }
-        } catch(e) {}
+        }
+      } catch(e) {
+        // Session check failed — treat as signed out
       }
     }
 
-    // NOT SIGNED IN → redirect to signin (email gate)
+    // NOT SIGNED IN -> redirect to signin (email gate)
     if (!hasSession) {
       window.location.href = SIGNIN_URL;
       return;
     }
 
-    // SIGNED IN — check subscription status
-    if (userEmail) {
-      const { data: profile } = await sb
-        .from('profiles')
-        .select('subscription_status')
-        .eq('email', userEmail)
-        .single();
-      if (profile?.subscription_status === 'active') isPro = true;
-    }
-
-    // Pro members get full access
+    // Pro/community members get full access
     if (isPro) return;
 
     // Free courses are accessible to any signed-in user
     if (FREE_COURSES.includes(courseSlug)) return;
 
-    // Free preview lessons (first N) are accessible to any signed-in user
-    const isFree = await checkFreePreview(courseSlug, lessonFile);
+    // Free preview lessons (first N) are accessible
+    var isFree = await checkFreePreview(courseSlug, lessonFile);
     if (isFree) return;
 
-    // Signed in but not Pro, and not free content — show upgrade gate
+    // Signed in but not Pro, and not free content -- show upgrade gate
     showGate(true);
   }
 
   async function checkFreePreview(courseSlug, lessonFile) {
     try {
-      const resp = await fetch(`/academy/${courseSlug}/index.html`);
-      const html = await resp.text();
-      const linkRegex = /href="([^"]+\.html)"/g;
-      const lessons = [];
-      let match;
+      var resp = await fetch('/academy/' + courseSlug + '/index.html');
+      var html = await resp.text();
+      var linkRegex = /href="([^"]+\.html)"/g;
+      var lessons = [];
+      var match;
       while ((match = linkRegex.exec(html)) !== null) {
-        const href = match[1];
+        var href = match[1];
         if (href !== 'index.html' && !href.startsWith('http') && !href.startsWith('/')) {
           lessons.push(href);
         }
       }
-      const idx = lessons.indexOf(lessonFile);
+      var idx = lessons.indexOf(lessonFile);
       return idx >= 0 && idx < FREE_LESSON_COUNT;
     } catch { return false; }
   }
 
   function showGate(isSignedIn) {
-    const content = document.querySelector('.container, .post-body, main') || document.body;
-    const gate = document.createElement('div');
+    var content = document.querySelector('.container, .post-body, main') || document.body;
+    var gate = document.createElement('div');
     gate.id = 'lo-paywall';
-    
-    const signinText = isSignedIn 
+
+    var signinText = isSignedIn
       ? 'You\'re signed in but on the free tier. Upgrade to unlock everything.'
       : 'Sign in if you\'re already a Pro member.';
-    
-    const signinLink = isSignedIn
+
+    var signinLink = isSignedIn
       ? ''
-      : `<a href="${SIGNIN_URL}" style="color:#c084fc;font-size:13px;text-decoration:none">Already a member? Sign in →</a>`;
+      : '<a href="' + SIGNIN_URL + '" style="color:#c084fc;font-size:13px;text-decoration:none">Already a member? Sign in &rarr;</a>';
 
-    gate.innerHTML = `
-      <style>
-        #lo-paywall{position:relative;margin-top:-200px;padding-top:200px;background:linear-gradient(to bottom,transparent,#08080a 180px);text-align:center;padding-bottom:60px}
-        #lo-paywall .gate-card{max-width:480px;margin:0 auto;background:#111114;border:1px solid #2a2a38;border-radius:20px;padding:2.5rem 2rem}
-        #lo-paywall h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        #lo-paywall p{color:#737373;font-size:.9rem;line-height:1.6;margin-bottom:1rem}
-        #lo-paywall .gate-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
-        #lo-paywall .gate-btn{display:inline-block;padding:.75rem 1.5rem;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;font-family:Inter,sans-serif}
-        #lo-paywall .gate-primary{background:#fb923c;color:#000}
-        #lo-paywall .gate-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(251,146,60,.3)}
-        #lo-paywall .gate-secondary{background:transparent;color:#e5e5e5;border:1px solid #2a2a38}
-        #lo-paywall .gate-secondary:hover{border-color:#c084fc}
-        #lo-paywall .perks{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:1rem 0;font-size:.75rem;color:#555}
-      </style>
-      <div class="gate-card">
-        <h2>Unlock this lesson</h2>
-        <p>You've previewed the free lessons. Go Pro to access all 97 interactive lessons across 10 courses. <strong>Founding Member Sale — 90% off, locked in forever.</strong></p>
-        <div class="gate-btns">
-          <a href="${MONTHLY_LINK}" target="_blank" class="gate-btn gate-primary">Go Pro — $4.90/mo</a>
-          <a href="${ANNUAL_LINK}" target="_blank" class="gate-btn gate-secondary">Annual — $39/yr (90% off forever)</a>
-        </div>
-        <div class="perks">
-          <span>✓ 97 lessons</span>
-          <span>✓ 10 courses</span>
-          <span>✓ New content regularly</span>
-          <span>✓ Cancel anytime</span>
-        </div>
-        <p style="font-size:.8rem;color:#555">${signinText}</p>
-        ${signinLink}
-      </div>
-    `;
+    gate.innerHTML = '\
+      <style>\
+        #lo-paywall{position:relative;margin-top:-200px;padding-top:200px;background:linear-gradient(to bottom,transparent,#08080a 180px);text-align:center;padding-bottom:60px}\
+        #lo-paywall .gate-card{max-width:480px;margin:0 auto;background:#111114;border:1px solid #2a2a38;border-radius:20px;padding:2.5rem 2rem}\
+        #lo-paywall h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#c084fc,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}\
+        #lo-paywall p{color:#737373;font-size:.9rem;line-height:1.6;margin-bottom:1rem}\
+        #lo-paywall .gate-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}\
+        #lo-paywall .gate-btn{display:inline-block;padding:.75rem 1.5rem;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;font-family:Inter,sans-serif}\
+        #lo-paywall .gate-primary{background:#fb923c;color:#000}\
+        #lo-paywall .gate-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(251,146,60,.3)}\
+        #lo-paywall .gate-secondary{background:transparent;color:#e5e5e5;border:1px solid #2a2a38}\
+        #lo-paywall .gate-secondary:hover{border-color:#c084fc}\
+        #lo-paywall .perks{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:1rem 0;font-size:.75rem;color:#555}\
+      </style>\
+      <div class="gate-card">\
+        <h2>Unlock this lesson</h2>\
+        <p>You\'ve previewed the free lessons. Go Pro to access all 97 interactive lessons across 10 courses. <strong>Founding Member Sale — 90% off, locked in forever.</strong></p>\
+        <div class="gate-btns">\
+          <a href="' + MONTHLY_LINK + '" target="_blank" class="gate-btn gate-primary">Go Pro — $4.90/mo</a>\
+          <a href="' + ANNUAL_LINK + '" target="_blank" class="gate-btn gate-secondary">Annual — $39/yr (90% off forever)</a>\
+        </div>\
+        <div class="perks">\
+          <span>\u2713 97 lessons</span>\
+          <span>\u2713 10 courses</span>\
+          <span>\u2713 New content regularly</span>\
+          <span>\u2713 Cancel anytime</span>\
+        </div>\
+        <p style="font-size:.8rem;color:#555">' + signinText + '</p>\
+        ' + signinLink + '\
+      </div>\
+    ';
 
-    const children = Array.from(content.children);
-    let height = 0;
-    let insertAfter = null;
-    for (const child of children) {
-      height += child.offsetHeight || 0;
-      if (height > 350) { insertAfter = child; break; }
+    var children = Array.from(content.children);
+    var height = 0;
+    var insertAfter = null;
+    for (var i = 0; i < children.length; i++) {
+      height += children[i].offsetHeight || 0;
+      if (height > 350) { insertAfter = children[i]; break; }
     }
 
     if (insertAfter) {
-      let sib = insertAfter.nextElementSibling;
+      var sib = insertAfter.nextElementSibling;
       while (sib) { sib.style.display = 'none'; sib = sib.nextElementSibling; }
       insertAfter.after(gate);
     } else {

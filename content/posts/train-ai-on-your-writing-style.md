@@ -229,7 +229,7 @@ Your voice is your competitive advantage. In a world where everyone has access t
 
 ---
 
-*Want to go deeper on AI writing workflows? [Explore our free academy](/academy) — 30 courses, 300+ lessons, all free. Start with [AI Content Studio](/academy/ai-content-studio/) for hands-on writing workflows.*
+*Want to go deeper on AI writing workflows? [Explore our free academy](/academy) — 36 courses, 355+ lessons, all free. Start with [AI Content Studio](/academy/ai-content-studio/) for hands-on writing workflows.*
 
 ---
 

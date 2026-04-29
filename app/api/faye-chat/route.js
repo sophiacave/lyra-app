@@ -12,7 +12,7 @@ Like One teaches people to build AI systems that think like them, remember every
 
 PRICING (Founding Member — 90% off, locked forever):
 - FREE: First 3 lessons of every course, all blog posts, weekly email tips, community forum
-- PRO: $4.90/mo (normally $49) — all 300+ lessons, 30 courses, downloads, certificates
+- PRO: $4.90/mo (normally $49) — all 355+ lessons, 36 courses, downloads, certificates
 - ANNUAL: $39/yr ($3.33/mo) — everything in Pro, best value
 - CONSULTING: $150/hr with Sophia directly
 
@@ -102,27 +102,8 @@ export async function POST(req) {
     }
     reply = reply || 'Something glitched. Email hello@likeone.ai!';
 
-    const brainUrl = process.env.BRAIN_URL;
-    const brainKey = process.env.BRAIN_V2_SERVICE_KEY;
-    if (brainUrl && brainKey) {
-      fetch(`${brainUrl}/rest/v1/notification_log`, {
-        method: 'POST',
-        headers: {
-          apikey: brainKey,
-          Authorization: `Bearer ${brainKey}`,
-          'Content-Type': 'application/json',
-          Prefer: 'return=minimal',
-        },
-        body: JSON.stringify({
-          type: 'web_chat',
-          recipient: 'faye',
-          subject: message.slice(0, 200),
-          source: 'faye-chat',
-          status: 'replied',
-          html_body: JSON.stringify({ reply: reply.slice(0, 500) }),
-        }),
-      }).catch(() => {});
-    }
+    // Log chat interaction (Vercel logs capture this)
+    console.log(`[FayeChat] Q: ${message.slice(0, 100)} | A: ${reply.slice(0, 100)}`);
 
     return NextResponse.json({ reply }, { headers: corsHeaders });
   } catch {

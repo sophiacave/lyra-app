@@ -45,9 +45,6 @@ function parseContentSegments(html, courseSlug, lessonSlug) {
   return segments.length > 0 ? segments : [{ type: 'html', html }];
 }
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://blknphuwwgagtueqtoji.supabase.co';
-const APP_ANON = process.env.NEXT_PUBLIC_APP_ANON || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
-
 function useSubscriptionStatus() {
   const [status, setStatus] = useState('loading');
 
@@ -59,31 +56,27 @@ function useSubscriptionStatus() {
       return;
     }
 
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
-    script.onload = async () => {
+    // Use sovereign auth — check session via API
+    async function check() {
+      const token = localStorage.getItem('lo_session');
+      if (!token) { cache('free'); return; }
       try {
-        const sb = window.supabase.createClient(APP_URL, APP_ANON);
-        const { data: { session } } = await sb.auth.getSession();
-        if (!session) { cache('free'); return; }
-        const email = session.user.email;
-        const res = await fetch(
-          `${APP_URL}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&select=subscription_status,subscription_tier`,
-          { headers: { apikey: APP_ANON, Authorization: `Bearer ${APP_ANON}` } }
-        );
-        const profiles = await res.json();
-        const p = profiles[0];
-        if (p && p.subscription_status === 'active' && p.subscription_tier !== 'free') {
+        const res = await fetch('/api/auth/session', {
+          headers: { Authorization: 'Bearer ' + token },
+        });
+        const data = await res.json();
+        if (!data.authenticated) { cache('free'); return; }
+        const sub = data.subscription;
+        if (sub && sub.status === 'active' && sub.tier !== 'free') {
           cache('pro');
-        } else if (p && p.subscription_tier === 'community') {
+        } else if (sub && sub.tier === 'community') {
           cache('pro');
         } else {
           cache('free');
         }
       } catch { cache('free'); }
-    };
-    script.onerror = () => cache('free');
-    document.head.appendChild(script);
+    }
+    check();
 
     function cache(val) {
       setStatus(val);
@@ -103,7 +96,7 @@ function LessonGate({ courseSlug }) {
         <div className="lesson-gate-icon">🔒</div>
         <h3 className="lesson-gate-title">This lesson is for Pro members</h3>
         <p className="lesson-gate-desc">
-          Unlock all 300+ lessons across 30 courses with Academy Pro.
+          Unlock all 355+ lessons across 36 courses with Academy Pro.
           Founding members get 90% off — forever.
         </p>
         <div className="lesson-gate-actions">
