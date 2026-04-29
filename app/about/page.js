@@ -65,7 +65,7 @@ export default function AboutPage() {
           </div>
 
           <div className="site-stats-grid about-stats-compact">
-            {[{ num: '30', label: 'Courses' }, { num: '300+', label: 'Lessons' }, { num: '$0', label: 'To Start' }].map(s => (
+            {[{ num: '36', label: 'Courses' }, { num: '355+', label: 'Lessons' }, { num: '$0', label: 'To Start' }].map(s => (
               <div key={s.label} className="text-center">
                 <div className="site-stat-number">{s.num}</div>
                 <div className="site-stat-label">{s.label}</div>

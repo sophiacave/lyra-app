@@ -54,7 +54,7 @@ export default function HomePage() {
       {/* Stats */}
       <div className="site-stats-bar">
         <div className="site-stats-grid">
-          {[{ n: '30', l: 'Courses' }, { n: '300+', l: 'Lessons' }, { n: '$0', l: 'To Start' }, { n: '7', l: 'Levels' }].map(s => (
+          {[{ n: '36', l: 'Courses' }, { n: '355+', l: 'Lessons' }, { n: '$0', l: 'To Start' }, { n: '7', l: 'Levels' }].map(s => (
             <div key={s.l}>
               <div className="site-stat-number">{s.n}</div>
               <div className="site-stat-label">{s.l}</div>
