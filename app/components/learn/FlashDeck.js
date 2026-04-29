@@ -52,10 +52,10 @@ export default function FlashDeck({
         const updated = [...prev];
         const idx = updated.findIndex(c => c.id === current.id);
         if (direction === 'right') {
-          // Got it — advance box
-          updated[idx] = { ...updated[idx], box: Math.min(updated[idx].box + 1, 2) };
+          // Got it — mastered immediately (single-session, no multi-day SRS)
+          updated[idx] = { ...updated[idx], box: 2 };
         } else {
-          // Review again — reset to box 0
+          // Review again — send to back of deck
           updated[idx] = { ...updated[idx], box: 0 };
         }
         return updated;
@@ -64,20 +64,13 @@ export default function FlashDeck({
       setFlipped(false);
       setSwipeClass('');
 
-      // Move to next card
-      const remaining = deck.filter(c => c.id !== current.id && c.box < 2);
-      if (direction === 'right' && current.box + 1 >= 2) {
+      if (direction === 'right') {
         const newMastered = masteredCount + 1;
         setMastered(newMastered);
         if (newMastered >= total) {
           if (onComplete) onComplete(total, total);
           if (onXP) onXP(10);
         }
-      }
-
-      if (remaining.length === 0 && direction === 'right' && current.box + 1 >= 2) {
-        // All mastered
-        return;
       }
 
       setCurrentIdx(0);
