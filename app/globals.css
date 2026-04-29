@@ -2713,9 +2713,10 @@ select:focus-visible {
   outline: none;
   transition: border-color var(--transition-base);
 }
-/* Ensure search icon padding survives liquid-input merge */
+/* Ensure search icon padding + glass bg survives liquid-input merge */
 .academy-v2-search__input.liquid-input {
   padding-left: 36px;
+  background: rgba(24,24,30,0.45);
 }
 .academy-v2-search__input:focus {
   border-color: var(--border-accent);
