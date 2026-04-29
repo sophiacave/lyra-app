@@ -95,6 +95,24 @@
           "tier": "beginner",
           "audience": ["creatives"],
           "status": "live"
+        },
+        {
+          "slug": "vibe-coding",
+          "title": "Vibe Coding: Build Apps by Talking to AI",
+          "emoji": "🎤",
+          "description": "Build real apps by describing what you want. No coding experience needed. Claude Code, Cursor, and Replit — from idea to deployed product.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-for-independence",
+          "title": "AI for Independence",
+          "emoji": "♿",
+          "description": "AI as assistive technology for disabled people. Voice control, forms, email, medical advocacy, and building your sovereign AI life.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "live"
         }
       ]
     },
@@ -193,6 +211,24 @@
           "tier": "intermediate",
           "audience": ["business"],
           "status": "live"
+        },
+        {
+          "slug": "claude-agent-sdk",
+          "title": "Claude Agent SDK: From Zero to Production",
+          "emoji": "⚡",
+          "description": "Build autonomous AI agents with the Claude Agent SDK. Streaming, tools, MCP, sub-agents, and production deployment.",
+          "tier": "intermediate",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-red-team",
+          "title": "AI Red Team: Security for Builders",
+          "emoji": "🔴",
+          "description": "Practical AI security. Prompt injection, jailbreaks, data exfiltration, guardrails, and red-team methodology for real products.",
+          "tier": "intermediate",
+          "audience": ["developers"],
+          "status": "live"
         }
       ]
     },
@@ -290,6 +326,24 @@
           "description": "The capstone. Build your own AI twin — persistent memory, autonomous agents, and human-AI convergence. This is where it all comes together.",
           "tier": "advanced",
           "audience": ["everyone"],
+          "status": "live"
+        },
+        {
+          "slug": "computer-use-agents",
+          "title": "Computer Use & Browser Agents",
+          "emoji": "🖥️",
+          "description": "Build AI agents that see and interact with screens. Computer use API, browser automation, visual workflows, and production patterns.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "the-sovereign-stack",
+          "title": "The Sovereign Stack",
+          "emoji": "👑",
+          "description": "Run your entire business on AI agents. Local models, persistent brain, email automation, fleet orchestration, and zero-cloud sovereignty.",
+          "tier": "advanced",
+          "audience": ["entrepreneurs", "developers"],
           "status": "live"
         }
       ]
