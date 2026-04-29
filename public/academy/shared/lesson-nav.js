@@ -54,75 +54,11 @@
     syncProgressToServer(courseSlug, lessonSlug);
   }
 
-  /* ── Server sync ────────────────────────────────────────── */
-  var SB_URL = 'https://app.likeone.ai';
-  var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsa25waHV3d2dhZ3R1ZXF0b2ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDcxNTgsImV4cCI6MjA4OTk4MzE1OH0.Wm7-plwu9N7sG2SzD_C9mHUwB4Ceh91F7fimraVBG_s';
-  var _sb = null;
-  function getSB() {
-    if (_sb) return _sb;
-    if (!window.supabase) return null;
-    _sb = window.supabase.createClient(SB_URL, SB_ANON);
-    return _sb;
+  /* ── Progress sync — localStorage only (sovereign, zero Supabase) ── */
+  function syncProgressToServer() {
+    // Progress lives in localStorage. No external DB needed.
+    // Future: sync to sovereign API when persistent storage is added.
   }
-
-  function syncProgressToServer(courseSlug, lessonSlug) {
-    try {
-      var sb = getSB();
-      if (!sb) return;
-      sb.auth.getSession().then(function(res) {
-        var session = res.data.session;
-        if (!session) return;
-        sb.from('lesson_progress').upsert({
-          user_id: session.user.id,
-          course_slug: courseSlug,
-          lesson_slug: lessonSlug,
-          completed: true,
-          completed_at: new Date().toISOString()
-        }, { onConflict: 'user_id,course_slug,lesson_slug' }).then(function() {});
-      });
-    } catch(e) {}
-  }
-
-  // Load server progress into localStorage on page load (merge, never lose local data)
-  function loadProgressFromServer() {
-    try {
-      var sb = getSB();
-      if (!sb) return;
-      sb.auth.getSession().then(function(res) {
-        var session = res.data.session;
-        if (!session) return;
-        sb.from('lesson_progress')
-          .select('course_slug, lesson_slug')
-          .eq('user_id', session.user.id)
-          .eq('completed', true)
-          .then(function(result) {
-            if (!result.data || !result.data.length) return;
-            // Group by course
-            var byCourse = {};
-            for (var i = 0; i < result.data.length; i++) {
-              var r = result.data[i];
-              if (!byCourse[r.course_slug]) byCourse[r.course_slug] = [];
-              byCourse[r.course_slug].push(r.lesson_slug);
-            }
-            // Merge into localStorage (union — never lose local progress)
-            for (var course in byCourse) {
-              var local = getCompleted(course);
-              var server = byCourse[course];
-              var merged = local.slice();
-              for (var j = 0; j < server.length; j++) {
-                if (merged.indexOf(server[j]) === -1) merged.push(server[j]);
-              }
-              if (merged.length > local.length) {
-                try { localStorage.setItem(storageKey(course), JSON.stringify(merged)); } catch(e) {}
-              }
-            }
-          });
-      });
-    } catch(e) {}
-  }
-
-  // Run on every page load
-  loadProgressFromServer();
 
   /* ── Global API ─────────────────────────────────────────── */
   window.LO_NAV = {
