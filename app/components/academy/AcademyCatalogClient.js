@@ -107,7 +107,8 @@ export default function AcademyCatalogClient({ tiers, allCourses, totalLessons }
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search courses..."
-            className="academy-v2-search__input"
+            className="academy-v2-search__input liquid-input"
+            aria-label="Search courses"
           />
         </div>
         <TierTabs activeTier={activeTier} onTierChange={setActiveTier} />
@@ -122,6 +123,7 @@ export default function AcademyCatalogClient({ tiers, allCourses, totalLessons }
       )}
 
       {/* COURSE GRID */}
+      <div id="course-grid" role="tabpanel" aria-labelledby={`tab-${activeTier}`}>
       {!search.trim() && activeTier === 'all' ? (
         tiers.map(tier => (
           <div key={tier.slug} className="academy-v2-tier">
@@ -153,9 +155,10 @@ export default function AcademyCatalogClient({ tiers, allCourses, totalLessons }
         </div>
       )}
 
+
       {courses.length === 0 && (
-        <div className="academy-v2-empty">
-          <div className="academy-v2-empty__icon">
+        <div className="academy-v2-empty" role="status" aria-live="polite">
+          <div className="academy-v2-empty__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" width="48" height="48">
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5" />
               <path d="M16 16L21 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -166,6 +169,7 @@ export default function AcademyCatalogClient({ tiers, allCourses, totalLessons }
           </p>
         </div>
       )}
+      </div>
     </div>
   );
 }

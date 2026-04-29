@@ -192,49 +192,68 @@ export default function AccountClient() {
 
       <div className="account-main">
         {!session ? (
-          /* SIGNED OUT */
+          /* SIGNED OUT — Liquid Glass Auth Gate */
           <div className="account-signin">
-            <h2 className="account-signin-title">Welcome to Like One</h2>
-            <p className="account-signin-desc">
-              Sign in to access your courses, manage your subscription, and join the community.
-            </p>
-
-            {errorMsg && (
-              <div className="app-msg-error">{errorMsg}</div>
-            )}
-
-            <div className="account-divider">
-              <div className="account-divider-line" />
-              <span className="account-divider-text">sign in with email</span>
-              <div className="account-divider-line" />
-            </div>
-
-            {signinSent ? (
-              <div className="account-magic-sent">
-                <p>Check your email for the magic link.</p>
-                <p className="hint">
-                  Didn&rsquo;t get it? Check spam, or <a href="mailto:hello@likeone.ai">email us</a>.
+            <div className="account-signin-glass liquid-panel liquid-hero liquid-animate-scale">
+              <span className="liquid-edge" aria-hidden="true" />
+              <div className="account-signin-glass-inner">
+                <div className="account-signin-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" width="32" height="32">
+                    <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <h2 className="account-signin-title">Welcome to Like One</h2>
+                <p className="account-signin-desc">
+                  Sign in to access your courses, manage your subscription, and join the community.
                 </p>
+
+                {errorMsg && (
+                  <div className="app-msg-error" role="alert">{errorMsg}</div>
+                )}
+
+                <div className="account-divider">
+                  <div className="account-divider-line" />
+                  <span className="account-divider-text">sign in with email</span>
+                  <div className="account-divider-line" />
+                </div>
+
+                {signinSent ? (
+                  <div className="account-magic-sent" role="status" aria-live="polite">
+                    <div className="account-magic-sent-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                        <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M2 7l8.8 5.5a2 2 0 002.4 0L22 7" stroke="currentColor" strokeWidth="1.5" />
+                      </svg>
+                    </div>
+                    <p>Check your email for the magic link.</p>
+                    <p className="hint">
+                      Didn&rsquo;t get it? Check spam, or <a href="mailto:hello@likeone.ai">email us</a>.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSignin} className="account-signin-form">
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      value={signinEmail}
+                      onChange={e => setSigninEmail(e.target.value)}
+                      required
+                      className="liquid-input"
+                      aria-label="Email address"
+                      autoComplete="email"
+                    />
+                    <button
+                      type="submit"
+                      disabled={signinLoading}
+                      className="liquid-btn liquid-btn-accent"
+                    >
+                      {signinLoading ? 'Sending...' : 'Send Magic Link'}
+                    </button>
+                  </form>
+                )}
               </div>
-            ) : (
-              <form onSubmit={handleSignin} className="account-signin-form">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={signinEmail}
-                  onChange={e => setSigninEmail(e.target.value)}
-                  required
-                  className="app-input flex-1"
-                />
-                <button
-                  type="submit"
-                  disabled={signinLoading}
-                  className="app-btn-submit"
-                >
-                  {signinLoading ? 'Sending...' : 'Send Magic Link'}
-                </button>
-              </form>
-            )}
+            </div>
           </div>
         ) : (
           /* SIGNED IN */
@@ -252,7 +271,8 @@ export default function AccountClient() {
             )}
 
             {/* Profile */}
-            <div className="app-card">
+            <div className="app-card liquid-panel liquid-animate-up">
+              <span className="liquid-edge" aria-hidden="true" />
               <div className="app-card-label">Profile</div>
               <div className="account-profile-row">
                 <div className="account-avatar">
@@ -283,7 +303,8 @@ export default function AccountClient() {
             </div>
 
             {/* Subscription */}
-            <div className="app-card">
+            <div className="app-card liquid-panel liquid-animate-up" style={{ animationDelay: '0.1s' }}>
+              <span className="liquid-edge" aria-hidden="true" />
               <div className="app-card-label">Subscription</div>
               <div className="account-sub-header">
                 <h3 className="account-sub-title">
@@ -327,7 +348,8 @@ export default function AccountClient() {
             </div>
 
             {/* Quick Links */}
-            <div className="app-card">
+            <div className="app-card liquid-panel liquid-animate-up" style={{ animationDelay: '0.2s' }}>
+              <span className="liquid-edge" aria-hidden="true" />
               <div className="app-card-label">Quick Links</div>
               <div className="account-links">
                 <Link href="/academy/" className="app-btn-ghost">Browse Courses</Link>
@@ -337,7 +359,8 @@ export default function AccountClient() {
             </div>
 
             {/* Account */}
-            <div className="app-card">
+            <div className="app-card liquid-panel liquid-animate-up" style={{ animationDelay: '0.3s' }}>
+              <span className="liquid-edge" aria-hidden="true" />
               <div className="app-card-label">Account</div>
               <p className="account-signout-info">Signed in as <strong>{email}</strong></p>
               <div className="account-sub-actions">

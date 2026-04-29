@@ -2,6 +2,7 @@ import './globals.css';
 import './console.css';
 import Script from 'next/script';
 import { site, colors } from '../lib/site-config';
+import { LiquidFilters } from './components/ui/LiquidGlass';
 
 
 
@@ -94,6 +95,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <LiquidFilters />
         {children}
         <Script src="/auth-state.js" strategy="afterInteractive" />
       </body>

@@ -9,12 +9,17 @@ const TIERS = [
 
 export default function TierTabs({ activeTier, onTierChange }) {
   return (
-    <div className="glass-tabs">
+    <div className="liquid-tabs" role="tablist" aria-label="Filter courses by tier">
       {TIERS.map(tier => (
         <button
           key={tier.slug}
+          id={`tab-${tier.slug}`}
           onClick={() => onTierChange(tier.slug)}
-          className={`glass-btn ${activeTier === tier.slug ? 'active' : ''}`}
+          className={`liquid-btn ${activeTier === tier.slug ? 'active' : ''}`}
+          role="tab"
+          aria-selected={activeTier === tier.slug}
+          aria-controls="course-grid"
+          tabIndex={activeTier === tier.slug ? 0 : -1}
         >
           {tier.emoji} {tier.label}
         </button>

@@ -40,12 +40,24 @@
   height: 38px;
   min-height: 38px;
   padding: 0 var(--space-4);
-  background: var(--glass-bg-solid);
-  border-bottom: 1px solid var(--border-subtle);
+  background: var(--liquid-bg);
+  backdrop-filter: blur(var(--liquid-blur));
+  -webkit-backdrop-filter: blur(var(--liquid-blur));
+  border-bottom: 1px solid var(--liquid-border);
   position: relative;
   z-index: var(--z-sticky);
   user-select: none;
   -webkit-app-region: drag;
+}
+/* Top bar liquid edge */
+.lo-topbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--liquid-edge-luminance) 30%, var(--liquid-edge-luminance) 70%, transparent 100%);
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .lo-topbar-left,
@@ -175,10 +187,10 @@
   width: var(--sidebar-width);
   min-width: var(--sidebar-width);
   height: 100%;
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border-right: 1px solid var(--border-subtle);
+  background: var(--liquid-bg);
+  backdrop-filter: blur(var(--liquid-blur-edge));
+  -webkit-backdrop-filter: blur(var(--liquid-blur-edge));
+  border-right: 1px solid var(--liquid-border);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -187,7 +199,7 @@
   transition: width var(--transition-slow), min-width var(--transition-slow);
 }
 
-/* Inner glow on dock edge */
+/* Liquid edge glow on dock right border */
 .lo-dock::after {
   content: '';
   position: absolute;
@@ -198,11 +210,13 @@
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(192,132,252,0.06) 30%,
-    rgba(192,132,252,0.06) 70%,
+    var(--liquid-edge-luminance) 20%,
+    var(--liquid-edge-luminance-hover) 50%,
+    var(--liquid-edge-luminance) 80%,
     transparent 100%
   );
   pointer-events: none;
+  animation: liquidEdgeGlow 4s ease-in-out infinite;
 }
 
 .lo-dock-scroll {
@@ -452,11 +466,23 @@
   height: 24px;
   min-height: 24px;
   padding: 0 var(--space-4);
-  background: var(--glass-bg-solid);
-  border-top: 1px solid var(--border-subtle);
+  background: var(--liquid-bg);
+  backdrop-filter: blur(var(--liquid-blur));
+  -webkit-backdrop-filter: blur(var(--liquid-blur));
+  border-top: 1px solid var(--liquid-border);
   position: relative;
   z-index: var(--z-sticky);
   user-select: none;
+}
+/* Status bar liquid edge */
+.lo-statusbar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--liquid-edge-luminance), transparent);
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .lo-statusbar-left,

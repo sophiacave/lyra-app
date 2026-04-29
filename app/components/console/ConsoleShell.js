@@ -14,6 +14,7 @@ export default function ConsoleShell({
 }) {
   return (
     <div className="lo-shell">
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <ConsoleTopBar appName={appName} appEmoji={appEmoji} />
       <div className="lo-shell-body">
         <ConsoleDock
@@ -21,7 +22,7 @@ export default function ConsoleShell({
           currentCourseSlug={currentCourseSlug}
           currentLessonSlug={currentLessonSlug}
         />
-        <main className="lo-appframe">
+        <main className="lo-appframe" id="main-content">
           {children}
         </main>
       </div>

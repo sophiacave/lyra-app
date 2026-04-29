@@ -40,7 +40,7 @@ export default function ConsoleStatusBar({ appName = 'Academy', activity = 'idle
   const lessonCount = profile ? Object.keys(profile.lessons).length : 0;
 
   return (
-    <div className="lo-statusbar">
+    <div className="lo-statusbar" role="status" aria-live="polite">
       <div className="lo-statusbar-left">
         <span className="lo-statusbar-app">
           <span className={`lo-statusbar-pulse ${pulseClass}`} />

@@ -1,4 +1,5 @@
 'use client';
+import { useRef, useCallback, useState } from 'react';
 import Link from 'next/link';
 
 const BUNNY_CDN = 'https://vz-6aead46a-d20.b-cdn.net';
@@ -6,6 +7,8 @@ const BUNNY_CDN = 'https://vz-6aead46a-d20.b-cdn.net';
 export default function CourseCard({ course, index = 0, progress = {} }) {
   const isPlanned = course.status === 'planned';
   const hasVideo = !!course.introVideoId;
+  const ref = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
 
   const courseProgress = course.lessons
     ? course.lessons.filter(l => progress[`${course.slug}/${l.slug}`]).length
@@ -14,13 +17,36 @@ export default function CourseCard({ course, index = 0, progress = {} }) {
   const progressPercent = totalLessons > 0 ? Math.round((courseProgress / totalLessons) * 100) : 0;
   const hasProgress = courseProgress > 0;
 
+  const handleMouseMove = useCallback((e) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePos({ x, y });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setMousePos({ x: 50, y: 50 });
+  }, []);
+
   return (
     <Link
+      ref={ref}
       href={isPlanned ? '#' : `/academy/${course.slug}/`}
-      className={`course-card-v2 glass-animate-up ${isPlanned ? 'course-card-v2--planned' : ''} ${hasVideo ? 'course-card-v2--video' : ''}`}
-      style={{ animationDelay: `${index * 0.05}s` }}
+      className={`course-card-v2 liquid-card liquid-animate-up ${isPlanned ? 'course-card-v2--planned' : ''} ${hasVideo ? 'course-card-v2--video' : ''}`}
+      style={{
+        animationDelay: `${index * 0.06}s`,
+        '--liquid-mouse-x': `${mousePos.x}%`,
+        '--liquid-mouse-y': `${mousePos.y}%`,
+      }}
       onClick={isPlanned ? (e) => e.preventDefault() : undefined}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
+      {/* Liquid specular highlight */}
+      <span className="liquid-specular" aria-hidden="true" />
+      <span className="liquid-edge" aria-hidden="true" />
+
       {/* Video Thumbnail or Emoji Hero */}
       {hasVideo ? (
         <div className="course-card-v2__thumb">
@@ -63,9 +89,9 @@ export default function CourseCard({ course, index = 0, progress = {} }) {
         {/* Status row */}
         <div className="course-card-v2__status">
           {isPlanned ? (
-            <span className="glass-badge badge-dim">COMING SOON</span>
+            <span className="liquid-badge liquid-badge-dim">COMING SOON</span>
           ) : hasProgress ? (
-            <span className="glass-badge badge-green">
+            <span className="liquid-badge liquid-badge-green">
               {progressPercent === 100 ? 'COMPLETE' : `${courseProgress}/${totalLessons}`}
             </span>
           ) : course.status === 'live' ? (
@@ -80,9 +106,9 @@ export default function CourseCard({ course, index = 0, progress = {} }) {
 
         {/* Progress bar */}
         {hasProgress && (
-          <div className="course-card-v2__progress">
+          <div className="liquid-progress">
             <div
-              className={`course-card-v2__progress-fill ${progressPercent === 100 ? 'complete' : ''}`}
+              className={`liquid-progress-fill ${progressPercent === 100 ? 'complete' : ''}`}
               style={{ width: `${progressPercent}%` }}
             />
           </div>

@@ -62,14 +62,16 @@ export default function ConsoleDock({ courses = [], currentCourseSlug, currentLe
                 <button
                   onClick={() => toggleCourse(course.slug)}
                   className={`lo-dock-course-btn ${isCurrent ? 'current' : ''}`}
+                  aria-expanded={isExpanded}
+                  aria-controls={`lessons-${course.slug}`}
                 >
-                  <span className={`lo-dock-chevron ${isExpanded ? 'expanded' : ''}`}>▶</span>
+                  <span className={`lo-dock-chevron ${isExpanded ? 'expanded' : ''}`} aria-hidden="true">▶</span>
                   <span className="lo-dock-course-emoji">{course.emoji}</span>
                   <span className="lo-dock-course-title">{course.title}</span>
                 </button>
 
                 {isExpanded && (
-                  <div className="lo-dock-lessons">
+                  <div className="lo-dock-lessons" id={`lessons-${course.slug}`} role="list">
                     {course.lessons.map(lesson => {
                       const isActive = currentLessonSlug === lesson.slug;
                       return (
@@ -111,7 +113,7 @@ export default function ConsoleDock({ courses = [], currentCourseSlug, currentLe
       )}
 
       {/* Dock */}
-      <aside className={`lo-dock ${isOpen ? 'lo-dock-open' : ''}`}>
+      <aside className={`lo-dock ${isOpen ? 'lo-dock-open' : ''}`} aria-label="Course navigation">
         {dockContent}
       </aside>
     </>
