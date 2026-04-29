@@ -124,32 +124,32 @@
   --glass-luminance: rgba(255,255,255,0.06);  /* top edge highlight */
   --glass-luminance-hover: rgba(255,255,255,0.1);
 
-  /* ── Liquid Glass Tokens (Apple Liquid Glass aesthetic) ── */
-  --liquid-blur: 24px;
-  --liquid-blur-edge: 40px;
-  --liquid-bg: rgba(17,17,24,0.45);
-  --liquid-bg-hover: rgba(20,20,28,0.55);
-  --liquid-bg-active: rgba(24,24,36,0.65);
-  --liquid-border: rgba(255,255,255,0.08);
-  --liquid-border-hover: rgba(255,255,255,0.14);
-  --liquid-border-focus: rgba(192,132,252,0.3);
-  --liquid-specular: rgba(255,255,255,0.12);
-  --liquid-specular-hover: rgba(255,255,255,0.2);
-  --liquid-specular-size: 60%;
-  --liquid-edge-luminance: rgba(255,255,255,0.1);
-  --liquid-edge-luminance-hover: rgba(255,255,255,0.18);
+  /* ── Liquid Glass Tokens (Apple HIG — content-first, controls recede) ── */
+  --liquid-blur: 28px;
+  --liquid-blur-edge: 44px;
+  --liquid-bg: rgba(28,28,34,0.42);
+  --liquid-bg-hover: rgba(34,34,42,0.52);
+  --liquid-bg-active: rgba(38,38,46,0.6);
+  --liquid-border: rgba(255,255,255,0.06);
+  --liquid-border-hover: rgba(255,255,255,0.1);
+  --liquid-border-focus: rgba(160,160,200,0.25);
+  --liquid-specular: rgba(255,255,255,0.08);
+  --liquid-specular-hover: rgba(255,255,255,0.14);
+  --liquid-specular-size: 70%;
+  --liquid-edge-luminance: rgba(255,255,255,0.08);
+  --liquid-edge-luminance-hover: rgba(255,255,255,0.14);
   --liquid-refraction: 0.5px;
-  --liquid-caustic: rgba(192,132,252,0.06);
-  --liquid-caustic-hover: rgba(192,132,252,0.12);
-  --liquid-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
-  --liquid-shadow-hover: 0 16px 48px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2), 0 0 32px rgba(192,132,252,0.06);
-  --liquid-shadow-active: 0 4px 16px rgba(0,0,0,0.3);
-  --liquid-radius: 20px;
+  --liquid-caustic: rgba(200,200,255,0.03);
+  --liquid-caustic-hover: rgba(200,200,255,0.06);
+  --liquid-shadow: 0 4px 24px rgba(0,0,0,0.2), 0 1px 4px rgba(0,0,0,0.12);
+  --liquid-shadow-hover: 0 12px 40px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.16);
+  --liquid-shadow-active: 0 2px 12px rgba(0,0,0,0.25);
+  --liquid-radius: 18px;
   --liquid-radius-sm: 14px;
-  --liquid-radius-btn: 12px;
-  --liquid-transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --liquid-transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  --liquid-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --liquid-radius-btn: 10px;
+  --liquid-transition: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  --liquid-transition-fast: 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  --liquid-spring: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* ── Animation Tokens ── */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);         /* decelerate — enter */
@@ -1396,12 +1396,13 @@ select:focus-visible {
   background: var(--liquid-bg-hover);
   border-color: var(--liquid-border-hover);
   box-shadow: var(--liquid-shadow-hover);
-  transform: translateY(-4px);
+  transform: translateY(-2px) scale(1.005);
 }
 .liquid-card:active {
-  transform: translateY(-1px) scale(0.985);
+  transform: translateY(0) scale(0.995);
   box-shadow: var(--liquid-shadow-active);
   background: var(--liquid-bg-active);
+  transition-duration: 0.1s;
 }
 
 /* Specular highlight — tracks mouse position */
@@ -1763,6 +1764,44 @@ select:focus-visible {
   gap: var(--space-2);
   flex-wrap: wrap;
   position: relative;
+}
+
+/* ── Liquid Segmented Control — Apple HIG pattern ── */
+.liquid-segmented {
+  display: inline-flex;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--liquid-border);
+  border-radius: var(--liquid-radius-btn);
+  padding: 3px;
+  gap: 2px;
+}
+.liquid-segmented-item {
+  position: relative;
+  padding: 7px var(--space-5);
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+  color: var(--text-tertiary);
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--liquid-radius-btn) - 3px);
+  cursor: pointer;
+  transition: all var(--liquid-transition-fast);
+  white-space: nowrap;
+  z-index: 1;
+}
+.liquid-segmented-item:hover {
+  color: var(--text-secondary);
+}
+.liquid-segmented-item.active {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  background: var(--liquid-bg-hover);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+.liquid-segmented-item:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 1px;
 }
 
 
@@ -2479,10 +2518,10 @@ select:focus-visible {
    Cinema-grade course cards with video thumbnails
    ═══════════════════════════════════════════════════════════════════════ */
 
-/* ── Hero (Liquid Glass) ── */
+/* ── Hero (Apple HIG Liquid Glass — content primary, glass recedes) ── */
 .academy-v2-hero {
   position: relative;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
   overflow: hidden;
   border-radius: var(--liquid-radius);
   background: var(--liquid-bg);
@@ -2497,30 +2536,29 @@ select:focus-visible {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--liquid-edge-luminance-hover), transparent);
-  opacity: 0.8;
+  background: linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.1) 70%, transparent 95%);
+  opacity: 1;
   pointer-events: none;
   z-index: 3;
 }
 .academy-v2-hero::after {
   content: '';
   position: absolute;
-  bottom: -30%;
-  left: 15%;
-  right: 15%;
-  height: 50%;
-  background: radial-gradient(ellipse at 50% 100%, rgba(192,132,252,0.08) 0%, transparent 70%);
+  bottom: -20%;
+  left: 20%;
+  right: 20%;
+  height: 40%;
+  background: radial-gradient(ellipse at 50% 100%, rgba(180,180,220,0.04) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
-  animation: liquidPulse 6s ease-in-out infinite;
 }
 .academy-v2-hero__bg {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 30% 50%, rgba(192,132,252,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 30%, rgba(56,189,248,0.04) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(11,10,16,0.9) 0%, rgba(20,18,28,0.85) 50%, rgba(11,10,16,0.9) 100%);
+    radial-gradient(ellipse at 25% 40%, rgba(160,160,200,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 30%, rgba(140,180,220,0.03) 0%, transparent 60%),
+    linear-gradient(160deg, rgba(18,18,24,0.88) 0%, rgba(24,24,32,0.82) 50%, rgba(18,18,24,0.88) 100%);
   z-index: 0;
 }
 .academy-v2-hero__content {
@@ -2528,18 +2566,18 @@ select:focus-visible {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: var(--space-8);
+  gap: var(--space-10);
   align-items: center;
-  padding: var(--space-10) var(--space-8);
+  padding: var(--space-12) var(--space-10);
 }
 .academy-v2-hero__overline {
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--accent-purple);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
   text-transform: uppercase;
   display: block;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 .academy-v2-hero__title {
   font-size: var(--font-3xl);
@@ -2570,21 +2608,22 @@ select:focus-visible {
   text-align: center;
 }
 .academy-v2-stat__value {
-  font-size: var(--font-xl);
-  font-weight: 700;
-  color: #F0EBE3;
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--text-primary);
   line-height: 1.2;
 }
 .academy-v2-stat__label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #8A8490;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 .academy-v2-stat--accent .academy-v2-stat__value {
   color: var(--accent-purple);
+  font-weight: 700;
 }
 .academy-v2-hero__video {
   position: relative;
@@ -2621,21 +2660,24 @@ select:focus-visible {
   gap: var(--space-4);
   padding: var(--space-3) var(--space-5);
   font-size: var(--font-sm);
-  color: #8A8490;
-  border: 1px solid rgba(212,149,107,0.15);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-6);
-  background: rgba(212,149,107,0.03);
+  color: var(--text-tertiary);
+  border: 1px solid var(--liquid-border);
+  border-radius: var(--liquid-radius-btn);
+  margin-bottom: var(--space-8);
+  background: var(--liquid-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   flex-wrap: wrap;
 }
-.academy-v2-pricing strong { color: #F0EBE3; }
+.academy-v2-pricing strong { color: var(--text-primary); }
 .academy-v2-pricing__link {
-  color: #D4956B;
+  color: var(--text-secondary);
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
+  transition: color var(--liquid-transition-fast);
 }
-.academy-v2-pricing__link:hover { text-decoration: underline; }
+.academy-v2-pricing__link:hover { color: var(--text-primary); }
 
 /* ── Controls ── */
 .academy-v2-controls {
@@ -2713,9 +2755,9 @@ select:focus-visible {
   position: relative;
 }
 .academy-v2-tier__line {
-  width: 48px;
+  width: 32px;
   height: 2px;
-  background: var(--accent-purple);
+  background: rgba(255,255,255,0.12);
   margin-bottom: var(--space-3);
   border-radius: 1px;
 }
@@ -2756,11 +2798,13 @@ select:focus-visible {
   flex-direction: column;
   text-decoration: none;
 }
-/* When using liquid-card, it already handles hover/transform/shadow */
+/* Apple HIG: cards are translucent surfaces, not opaque blocks */
 .course-card-v2.liquid-card {
-  --liquid-radius: 18px;
-  --liquid-bg: rgba(14,14,18,0.5);
-  --liquid-bg-hover: rgba(18,18,24,0.6);
+  --liquid-radius: 16px;
+  --liquid-bg: rgba(30,30,38,0.4);
+  --liquid-bg-hover: rgba(36,36,44,0.5);
+  --liquid-border: rgba(255,255,255,0.05);
+  --liquid-border-hover: rgba(255,255,255,0.09);
 }
 .course-card-v2--planned {
   opacity: 0.4;
@@ -2882,51 +2926,53 @@ select:focus-visible {
 /* Emoji hero (non-video cards) */
 .course-card-v2__emoji-hero {
   position: relative;
-  padding: var(--space-8) var(--space-6) var(--space-4);
+  padding: var(--space-10) var(--space-6) var(--space-6);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--surface-sunken), var(--surface-raised));
+  background: linear-gradient(160deg, rgba(20,20,28,0.6), rgba(28,28,36,0.4));
 }
 .course-card-v2__emoji-glow {
   position: absolute;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(192,132,252,0.06), transparent 70%);
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(180,180,220,0.04), transparent 70%);
   pointer-events: none;
 }
 .course-card-v2__emoji-large {
-  font-size: 48px;
+  font-size: 52px;
   position: relative;
   z-index: 1;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
 }
 
 /* Card body */
 .course-card-v2__body {
-  padding: var(--space-5) var(--space-5) var(--space-6);
+  padding: var(--space-5) var(--space-6) var(--space-6);
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 .course-card-v2__status {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
   min-height: 22px;
 }
 .course-card-v2__tier-badge {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: #8A8490;
-  letter-spacing: 0.05em;
+  font-size: var(--font-2xs);
+  font-weight: 500;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
 }
 .course-card-v2__title {
-  color: #F0EBE3;
-  font-size: 1.05rem;
+  color: var(--text-primary);
+  font-size: 1.0625rem;
   font-weight: 600;
   margin-bottom: var(--space-2);
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 .course-card-v2__desc {
-  color: #8A8490;
+  color: var(--text-tertiary);
   font-size: var(--font-sm);
   line-height: 1.6;
   margin-bottom: var(--space-4);

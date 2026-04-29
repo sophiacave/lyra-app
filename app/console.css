@@ -296,12 +296,12 @@
 }
 
 .lo-dock-tier-label {
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-2);
   font-size: var(--font-2xs);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   color: var(--text-quaternary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 /* Course buttons */
