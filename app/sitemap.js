@@ -1,5 +1,6 @@
 import { getAllPosts } from '../lib/posts';
 import { getAllCourses } from '../lib/courses';
+import { getAllTopicSlugs } from '../lib/seo-topics';
 
 export const revalidate = 86400;
 
@@ -13,6 +14,7 @@ export default function sitemap() {
     { url: `${baseUrl}/pricing/`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/blog/`, changeFrequency: 'daily', priority: 0.9 },
     { url: `${baseUrl}/academy/`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/learn/`, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/meet-claude/`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/support/`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/forum/`, changeFrequency: 'daily', priority: 0.7 },
@@ -51,5 +53,14 @@ export default function sitemap() {
     }))
   );
 
-  return [...staticPages, ...blogPages, ...coursePages, ...lessonPages];
+  // Learn topic pages (programmatic SEO)
+  const topicSlugs = getAllTopicSlugs();
+  const topicPages = topicSlugs.map(slug => ({
+    url: `${baseUrl}/learn/${slug}/`,
+    lastModified: today,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  }));
+
+  return [...staticPages, ...blogPages, ...coursePages, ...lessonPages, ...topicPages];
 }

@@ -238,6 +238,7 @@ export default async function PostPage({ params }) {
           '@type': 'Article',
           headline: post.title,
           description: post.excerpt,
+          image: site.ogImage,
           datePublished: post.date,
           author: {
             '@type': 'Person',

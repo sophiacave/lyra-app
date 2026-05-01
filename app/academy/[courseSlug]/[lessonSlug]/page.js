@@ -6,6 +6,8 @@ import ImmersiveLesson from '../../../components/console/ImmersiveLesson';
 import VideoPlayer from '../../../components/academy/VideoPlayer';
 import { site } from '@/lib/site-config';
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const courseSlugs = getAllCourseSlugs();
   const params = [];

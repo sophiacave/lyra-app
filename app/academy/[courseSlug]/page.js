@@ -9,6 +9,8 @@ export async function generateStaticParams() {
   return slugs.map(slug => ({ courseSlug: slug }));
 }
 
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }) {
   const { courseSlug } = await params;
   const course = getCourse(courseSlug);
