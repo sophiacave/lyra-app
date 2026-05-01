@@ -63,11 +63,12 @@ export default function AccountClient() {
         return;
       }
 
-      // Try localStorage token as fallback
+      // Try localStorage token as fallback (with cookie too)
       const token = localStorage.getItem('lo_session');
       if (token) {
         const res2 = await fetch('/api/auth/session', {
           headers: { Authorization: `Bearer ${token}` },
+          credentials: 'include',
         });
         const data2 = await res2.json();
         if (data2.authenticated) {

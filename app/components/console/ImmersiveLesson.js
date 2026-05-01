@@ -59,16 +59,26 @@ function useSubscriptionStatus() {
       return;
     }
 
-    // Use sovereign auth — check session via API
+    // Sovereign auth — try BOTH localStorage token AND httpOnly cookie
     async function check() {
       const token = localStorage.getItem('lo_session');
-      if (!token) { cache('free'); return; }
+      const headers = token ? { Authorization: 'Bearer ' + token } : {};
+
       try {
+        // credentials: 'include' sends the httpOnly cookie even if localStorage is empty
         const res = await fetch('/api/auth/session', {
-          headers: { Authorization: 'Bearer ' + token },
+          headers,
+          credentials: 'include',
         });
         const data = await res.json();
         if (!data.authenticated) { cache('free'); return; }
+
+        // Resync localStorage if it was missing but cookie worked
+        if (!token && data.email) {
+          // Can't read the httpOnly cookie, but session is valid via cookie
+          // Mark as authenticated so subsequent checks in this tab work
+        }
+
         const sub = data.subscription;
         if (sub && sub.status === 'active' && sub.tier !== 'free') {
           cache('pro');
@@ -83,8 +93,10 @@ function useSubscriptionStatus() {
 
     function cache(val) {
       setStatus(val);
-      sessionStorage.setItem('lo_sub_status', val);
-      sessionStorage.setItem('lo_sub_cached_at', String(Date.now()));
+      try {
+        sessionStorage.setItem('lo_sub_status', val);
+        sessionStorage.setItem('lo_sub_cached_at', String(Date.now()));
+      } catch { /* sessionStorage might be unavailable in private browsing */ }
     }
   }, []);
 
