@@ -78,6 +78,6 @@ free: true
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"AI & Your Kids Essentials","cards":[{"front":"What is AI in simple terms?","back":"Software that learns from patterns in data and uses those patterns to make predictions or generate content."},{"front":"How did generative AI change the game for kids?","back":"It moved AI from invisible background processes (like recommendations) to tools kids actively use to create text, images, and more."},{"front":"What is the best parenting approach to AI?","back":"Partner, don't police. Be curious, learn alongside your kids, and build critical thinking rather than restricting access."}]}'></div>
+  <div data-learn="FlashDeck" data-props='{"title":"AI & Your Kids Essentials","cards":[{"front":"What is AI in simple terms?","back":"Software that learns from patterns in data and uses those patterns to make predictions or generate content."},{"front":"How did generative AI change the game for kids?","back":"It moved AI from invisible background processes (like recommendations) to tools kids actively use to create text, images, and more."},{"front":"What is the best parenting approach to AI?","back":"Partner, don&#39;t police. Be curious, learn alongside your kids, and build critical thinking rather than restricting access."}]}'></div>
 </div>
 </div>

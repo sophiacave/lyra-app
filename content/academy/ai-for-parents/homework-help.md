@@ -86,6 +86,6 @@ free: false
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Homework Help Essentials","cards":[{"front":"What is the 3-step homework flow?","back":"1. Attempt first (mark stuck spots). 2. AI assist (explain, don't solve). 3. Redo (complete stuck problems using what you learned)."},{"front":"What is the best Socratic prompting pattern for AI?","back":"Don't give me the answer. Ask me questions to help me figure it out."},{"front":"How do you test if your child actually learned vs. copied AI?","back":"The explain-back test: ask them to explain their homework without looking at it. If they can, they learned. If not, the AI did the work."}]}'></div>
+  <div data-learn="FlashDeck" data-props='{"title":"Homework Help Essentials","cards":[{"front":"What is the 3-step homework flow?","back":"1. Attempt first (mark stuck spots). 2. AI assist (explain, don&#39;t solve). 3. Redo (complete stuck problems using what you learned)."},{"front":"What is the best Socratic prompting pattern for AI?","back":"Don&#39;t give me the answer. Ask me questions to help me figure it out."},{"front":"How do you test if your child actually learned vs. copied AI?","back":"The explain-back test: ask them to explain their homework without looking at it. If they can, they learned. If not, the AI did the work."}]}'></div>
 </div>
 </div>
