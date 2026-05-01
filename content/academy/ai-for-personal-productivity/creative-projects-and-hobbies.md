@@ -10,7 +10,7 @@ free: false
 
 <nav class="local-nav">
   <a href="/academy/ai-for-personal-productivity/">&larr; Course Home</a>
-  <span class="lesson-badge">Lesson 9 of 10</span>
+  <span class="lesson-badge">Lesson 9 of 11</span>
 </nav>
 
 <div class="lesson-hero">

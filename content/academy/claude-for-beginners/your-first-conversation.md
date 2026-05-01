@@ -102,8 +102,6 @@ prevent this from happening again.</code></pre>
 
 </div>
 
-</div>
-
 <!-- SECTION 5: CONVERSATION STARTERS -->
 <div class="lesson-section">
   <span class="section-label">Get Unstuck</span>

@@ -249,3 +249,4 @@ console.<span style="color:#34d399">log</span>(<span style="color:#fb923c">'All 
 <span class="progress-label">Module 1</span>
 </div>
 </div>
+</div>

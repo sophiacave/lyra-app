@@ -8,7 +8,7 @@ free: true
 
 <nav class="local-nav">
   <a href="/academy/ai-for-executives/">&larr; Course Home</a>
-  <span class="lesson-badge">Lesson 2 of 5</span>
+  <span class="lesson-badge">Lesson 2 of 10</span>
 </nav>
 
 <!-- HERO -->
@@ -212,6 +212,4 @@ For Q1 items, recommend: build, buy, or partner? With estimated timeline and bud
 <!-- SORT STACK: STRATEGY DEVELOPMENT STEPS -->
 <!-- QUIZ: AI STRATEGY QUESTIONS -->
 <div data-learn="QuizMC" data-props='{"title":"AI Strategy Knowledge Check","questions":[{"q":"An initiative has high business impact but your data is scattered across 15 systems and largely ungoverned. Which quadrant does it belong in?","options":["Quadrant 1: Do Now","Quadrant 2: Prepare","Quadrant 3: Experiment","Quadrant 4: Defer"],"correct":1,"explanation":"High impact plus data not ready belongs in Quadrant 2: Prepare. The right move is to invest in data infrastructure now so you can deploy AI in 6-12 months — not to rush the deployment before your data is ready."},{"q":"Your competitor analysis tool is something dozens of companies in your industry use. You need it running within two weeks. What is the right build-buy-partner decision?","options":["Build custom for full control","Partner and customize for industry fit","Buy off-the-shelf — the problem is common and speed matters","Wait until a better tool emerges"],"correct":2,"explanation":"If the problem is common across industries and you need speed, buying off-the-shelf is the right call. Building custom when a proven tool exists is how organizations waste $500K and months of time."},{"q":"A vendor pitches their AI as 99% accurate and says implementation is plug and play. What is the appropriate response?","options":["Accept their claims — they have enterprise clients","Ask to see a failure case and a realistic implementation plan with milestones","Request a price discount before proceeding","Ask about their company valuation and funding"],"correct":1,"explanation":"99% accuracy and plug-and-play implementation are classic hype signals. Ask for specific failure modes and a detailed implementation plan. How a vendor responds to these questions reveals more than any polished demo."},{"q":"What is the primary purpose of reviewing your AI roadmap quarterly?","options":["To justify AI spend to the board","To give the AI team performance reviews","To adapt the plan as data readiness improves, the market changes, and team capability grows","To reset the roadmap completely each quarter"],"correct":2,"explanation":"A 12-month AI roadmap is a living document. Quarterly reviews allow you to adapt as conditions change — not to rebuild from scratch, but to course-correct so the roadmap stays grounded in evidence rather than original assumptions."}]}'>
-</div>
-
 </div>

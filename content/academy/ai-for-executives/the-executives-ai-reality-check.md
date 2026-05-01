@@ -8,7 +8,7 @@ free: true
 
 <nav class="local-nav">
   <a href="/academy/ai-for-executives/">&larr; Course Home</a>
-  <span class="lesson-badge">Lesson 1 of 5</span>
+  <span class="lesson-badge">Lesson 1 of 10</span>
 </nav>
 
 <!-- HERO -->

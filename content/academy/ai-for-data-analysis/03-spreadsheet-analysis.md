@@ -175,8 +175,6 @@ print(f"\nTop 5 products:\n{top_products}")
 monthly["growth_pct"] = monthly["total_revenue"].pct_change() * 100
 print(f"\nMonth-over-month growth:\n{monthly['growth_pct']}")</code></pre>
 
-</div>
-
 <div class="try-it-box">
   <h3>Try It Yourself</h3>
   <p>Export any spreadsheet as CSV. Paste the first 50 rows into Claude along with this prompt:</p>
