@@ -101,15 +101,23 @@ export default async function LessonPage({ params }) {
     ],
   };
 
-  // For paid lessons, only ship a preview — full content loads client-side after auth
-  // Exception: quiz/assessment lessons need full HTML (including scripts) — gate handles access
+  // For paid lessons, ship a preview for SEO but preserve interactive components
+  // (quizzes, flash cards) — the client-side gate handles access control
   const isPaid = lesson.free === false;
   const isInteractive = lesson.type === 'quiz' || lesson.type === 'assessment';
   let fullContentHtml;
   if (isPaid && !isInteractive) {
-    // Smart truncation: cut at complete section boundaries, never mid-tag
     const html = lesson.contentHtml;
-    // Find all h2/h3 heading positions in the raw HTML
+
+    // Extract data-learn components (quizzes, flash cards) before truncation
+    const learnComponentRe = /<div\s+data-learn="[^"]*"(?:\s+data-props='[^']*')?\s*>\s*<\/div>/g;
+    const learnComponents = [];
+    let learnMatch;
+    while ((learnMatch = learnComponentRe.exec(html)) !== null) {
+      learnComponents.push(learnMatch[0]);
+    }
+
+    // Smart truncation: cut at complete section boundaries, never mid-tag
     const headingRegex = /<h[23][^>]*>/g;
     const headingPositions = [];
     let match;
@@ -119,15 +127,12 @@ export default async function LessonPage({ params }) {
 
     let preview;
     if (headingPositions.length <= 1) {
-      // No section structure — take content up to first <script> or 40% of chars
       const scriptIdx = html.indexOf('<script');
       const cutPoint = scriptIdx > 0 ? scriptIdx : Math.floor(html.length * 0.4);
       preview = html.slice(0, cutPoint);
     } else {
-      // Take first ~40% of sections (at least 2 headings worth)
       const targetIdx = Math.max(2, Math.ceil(headingPositions.length * 0.4));
       let cutAt = headingPositions[Math.min(targetIdx, headingPositions.length - 1)];
-      // Back up to the nearest opening <div before the heading to avoid orphaned labels
       const searchRegion = html.slice(Math.max(0, cutAt - 200), cutAt);
       const lastDivOpen = searchRegion.lastIndexOf('<div');
       if (lastDivOpen >= 0) {
@@ -136,16 +141,21 @@ export default async function LessonPage({ params }) {
       preview = html.slice(0, cutAt);
     }
 
-    // Strip any trailing incomplete tags (e.g. "<div class=")
+    // Strip any trailing incomplete tags
     preview = preview.replace(/<[^>]*$/, '');
-    // Never include partial <script> blocks
     const lastScriptOpen = preview.lastIndexOf('<script');
     const lastScriptClose = preview.lastIndexOf('</script>');
     if (lastScriptOpen > lastScriptClose) {
       preview = preview.slice(0, lastScriptOpen);
     }
 
-    fullContentHtml = breadcrumbHtml + preview;
+    // Remove any learn components already in the preview (avoid duplicates)
+    learnComponents.forEach(lc => {
+      preview = preview.replace(lc, '');
+    });
+
+    // Re-append all learn components after the preview
+    fullContentHtml = breadcrumbHtml + preview + '\n' + learnComponents.join('\n');
   } else {
     fullContentHtml = breadcrumbHtml + lesson.contentHtml;
   }
