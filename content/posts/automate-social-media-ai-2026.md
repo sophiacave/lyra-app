@@ -283,4 +283,4 @@ The AI handles the volume. You handle the voice. Together, it works.
 
 ---
 
-*Want to learn AI automation from scratch? [Start with our free Academy](/academy) — 36 courses, zero cost, MIT-quality instruction for everyone.*
+*Want to learn AI automation from scratch? [Start with our free Academy](/academy) — 52 courses, zero cost, MIT-quality instruction for everyone.*

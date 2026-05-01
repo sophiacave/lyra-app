@@ -30,7 +30,7 @@ The automation track covers Make.com workflows, webhook architecture, API integr
 
 **Best for:** People who want to automate real business tasks, not just understand concepts.
 
-**Access:** Free lesson previews on all 36 courses. Full access $4.90/mo for founding members.
+**Access:** Free lesson previews on all 52 courses. Full access $4.90/mo for founding members.
 
 [Explore the Academy →](https://likeone.ai/academy/)
 
@@ -101,7 +101,7 @@ You do not need expensive tools. Here is what I use to run a fully automated bus
 - **Resend** (free tier) — transactional email
 - **Stripe** (% per transaction) — payments
 
-Total fixed cost: under $50/month. That runs a business with 36 courses, automated email sequences, payment processing, and a persistent AI brain.
+Total fixed cost: under $50/month. That runs a business with 52 courses, automated email sequences, payment processing, and a persistent AI brain.
 
 The courses above will teach you the pieces. Connecting them into a system that runs autonomously — that is what [Like One Academy](https://likeone.ai/academy/) focuses on.
 

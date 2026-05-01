@@ -51,7 +51,7 @@ Master-level AI. Build what doesn't exist yet.
 
 ---
 
-**30 courses | 298 lessons** converted to pure text.
+**52 courses | 520+ lessons** converted to pure text.
 
 ## How This Wiki Works
 

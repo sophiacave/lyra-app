@@ -135,4 +135,4 @@ The companies that win with AI aren't the ones spending the most. They're the on
 
 ---
 
-*Our [Academy](/academy) teaches you how to get maximum value from a single AI tool — no subscription bloat required. 36 courses. All free.*
+*Our [Academy](/academy) teaches you how to get maximum value from a single AI tool — no subscription bloat required. 52 courses. All free.*

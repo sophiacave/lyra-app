@@ -8,7 +8,7 @@ excerpt: "The 30 best free AI courses in 2026 — from prompt engineering to mul
 tags: [ai-courses, free-courses, ai-education, claude, beginner, agents, automation]
 faq:
   - q: "Are these AI courses really free?"
-    a: "Yes. The first 3 lessons of every course are completely free with no credit card required. That gives you 108 free lessons across 36 courses. Pro access ($4.90/mo for founding members) unlocks all 355+ lessons."
+    a: "Yes. The first 3 lessons of every course are completely free with no credit card required. That gives you 108 free lessons across 52 courses. Pro access ($4.90/mo for founding members) unlocks all 520+ lessons."
   - q: "Do I need to know how to code to take these courses?"
     a: "No. Beginner courses assume zero technical background. Intermediate and advanced courses include code examples but explain every line. You can start with Claude for Beginners and progress at your own pace."
   - q: "What AI tools do these courses cover?"
@@ -23,7 +23,7 @@ AI literacy is not optional anymore. Whether you are a developer, business owner
 
 The problem is most AI courses are either too expensive, too theoretical, or too outdated. By the time you finish a 40-hour Coursera course, the tools have changed.
 
-We built something different: **30 interactive courses, 355 lessons, and the first 3 lessons of every course are free.** No signup wall. No credit card. Start learning in 60 seconds.
+We built something different: **52 interactive courses, 520+ lessons, and the first 3 lessons of every course are free.** No signup wall. No credit card. Start learning in 60 seconds.
 
 Here are the best starting points depending on your goals.
 
@@ -138,13 +138,13 @@ The courses are designed to be completed in any order, though we recommend start
 
 Most AI education either costs hundreds of dollars or gives you surface-level content you could have found in a blog post. We wanted something in between — **MIT-quality content at a price anyone can afford.**
 
-The founding member price is $4.90/month (90% off, locked in forever) for full access to all 355+ lessons. But the free tier is not a teaser — it is 90 real lessons that teach real skills.
+The founding member price is $4.90/month (90% off, locked in forever) for full access to all 520+ lessons. But the free tier is not a teaser — it is 90 real lessons that teach real skills.
 
 AI should not be a luxury. The divide between people who understand AI and people who do not is growing every day. We are trying to close it.
 
 ---
 
-*Start with whatever interests you most. Every course begins free. [Browse all 36 courses →](/academy/)*
+*Start with whatever interests you most. Every course begins free. [Browse all 52 courses →](/academy/)*
 
 ---
 

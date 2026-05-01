@@ -143,7 +143,7 @@ Ready to go beyond chatbots? Learn [how to build an AI agent without writing cod
 
 ---
 
-*Want to master Claude Projects from scratch? Read our [complete Claude Projects setup guide](/blog/how-to-use-claude-projects-complete-guide/) or explore the full [Claude Mastery course](/academy/claude-mastery/) — free, 355+ lessons. For a broader look at how Claude, ChatGPT, and Gemini compare across all tasks, see our [ChatGPT vs Claude vs Gemini comparison](/blog/chatgpt-vs-claude-vs-gemini/).*
+*Want to master Claude Projects from scratch? Read our [complete Claude Projects setup guide](/blog/how-to-use-claude-projects-complete-guide/) or explore the full [Claude Mastery course](/academy/claude-mastery/) — free, 520+ lessons. For a broader look at how Claude, ChatGPT, and Gemini compare across all tasks, see our [ChatGPT vs Claude vs Gemini comparison](/blog/chatgpt-vs-claude-vs-gemini/).*
 
 ---
 

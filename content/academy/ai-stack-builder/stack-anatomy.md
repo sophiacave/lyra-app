@@ -23,13 +23,13 @@ free: true
 <h2>Why Your Stack Choice Matters</h2>
 <p>Building an AI-powered web app is not about picking the trendiest tools. It is about choosing layers that work together seamlessly, scale without surprises, and do not drain your budget before you have your first customer. The wrong stack creates integration hell — spending weeks wiring services together instead of building features.</p>
 
-<p>The right stack gives you <strong style="color:#e5e5e5">fewer services, less glue code, and more time building the product that matters</strong>. This lesson reveals the exact architecture that powers Like One Academy in production — 30 courses, 300+ lessons, AI memory, Stripe payments, global CDN, all for about $29/month.</p>
+<p>The right stack gives you <strong style="color:#e5e5e5">fewer services, less glue code, and more time building the product that matters</strong>. This lesson reveals the exact architecture that powers Like One Academy in production — 52 courses, 520+ lessons, AI memory, Stripe payments, global CDN, all for about $29/month.</p>
 </div>
 
 <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin:1rem 0">
 <h4 style="color:#c084fc;margin:0 0 .5rem">The Like One Stack (Battle-Tested)</h4>
 <p style="font-size:.88rem;color:#e5e5e5;margin:0"><strong>Supabase + Edge Functions + Claude + Next.js + Vercel</strong></p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0">~$29/mo total. This is what Like One Academy runs on in production — 30 courses, 300+ lessons, AI memory, Stripe payments, and global CDN. Every layer below is explained with the real config we use.</p>
+<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0">~$29/mo total. This is what Like One Academy runs on in production — 52 courses, 520+ lessons, AI memory, Stripe payments, and global CDN. Every layer below is explained with the real config we use.</p>
 </div>
 
 <div class="card">

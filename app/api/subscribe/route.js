@@ -25,7 +25,7 @@ function welcomeHtml() {
     <p>Here's what you have access to right now:</p>
     <ul style="color:#8888a0;padding-left:20px;line-height:2.2">
       <li><strong style="color:#e0e0e0">36 free courses</strong> in the <a href="https://likeone.ai/academy/" style="color:#c084fc">Like One Academy</a> — from AI basics to building agents</li>
-      <li><strong style="color:#e0e0e0">355+ interactive lessons</strong> with hands-on exercises</li>
+      <li><strong style="color:#e0e0e0">520+ interactive lessons</strong> with hands-on exercises</li>
       <li><strong style="color:#e0e0e0">The blog</strong> — real strategies, no fluff: <a href="https://likeone.ai/blog/" style="color:#c084fc">likeone.ai/blog</a></li>
     </ul>
     <p>Over the next two weeks, I'll send you a few emails with my best insights on working with AI — real techniques I use every day to run Like One.</p>

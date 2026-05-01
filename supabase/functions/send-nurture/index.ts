@@ -105,13 +105,13 @@ const SEQUENCE: NurtureEmail[] = [
   {
     day: 10,
     subject: "Ready to go Pro?",
-    preheader: "Full access to 36 courses, 355+ lessons. $49/mo or $390/yr.",
+    preheader: "Full access to 52 courses, 520+ lessons. $49/mo or $390/yr.",
     html: buildEmail(
       "Ready to go Pro?",
       `<p>I'm keeping this simple.</p>
       <p>Like One Academy Pro gives you full access to everything we build:</p>
       <ul style="color:#8888a0;padding-left:20px;line-height:2">
-        <li><strong style="color:#e0e0e0">355+ interactive lessons</strong> across 36 courses</li>
+        <li><strong style="color:#e0e0e0">520+ interactive lessons</strong> across 52 courses</li>
         <li><strong style="color:#e0e0e0">MCP, RAG, Agents, Automation</strong> — the skills that matter</li>
         <li><strong style="color:#e0e0e0">New content regularly</strong> — the library keeps growing</li>
         <li><strong style="color:#e0e0e0">All download products</strong> included</li>

@@ -81,7 +81,7 @@ analysis_result = run_agent(
 
 print(analysis_result)
 # "Based on the competitor analysis, I recommend a freemium model...
-#  Tier 1: Free (30 courses). Tier 2: $29/mo (premium features)..."
+#  Tier 1: Free (52 courses). Tier 2: $29/mo (premium features)..."
 ```
 
 

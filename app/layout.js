@@ -6,8 +6,8 @@ import { LiquidFilters } from './components/ui/LiquidGlass';
 
 
 
-const fullTitle = `Like One — Learn AI Free | 36 Courses, 355+ Hands-On Lessons`;
-const shortDesc = 'Master Claude, prompt engineering, AI agents, RAG & MCP with 36 free courses and 355+ hands-on lessons. Built by practitioners. Start now — no credit card.';
+const fullTitle = `Like One — Learn AI Free | 52 Courses, 520+ Hands-On Lessons`;
+const shortDesc = 'Master Claude, prompt engineering, AI agents, RAG & MCP with 52 free courses and 520+ hands-on lessons. Built by practitioners. Start now — no credit card.';
 
 export const viewport = {
   width: 'device-width',

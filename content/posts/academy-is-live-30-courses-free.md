@@ -1,7 +1,7 @@
 ---
-title: "Like One Academy Is Live — 30 Courses, 300+ Lessons, Start Free"
+title: "Like One Academy Is Live — 52 Courses, 520+ Lessons, Start Free"
 slug: academy-is-live-30-courses-free
-description: "Like One Academy just launched with 30 AI courses, 355+ interactive lessons, and 571 hands-on exercises. Beginner to advanced. Start free today."
+description: "Like One Academy just launched with 52 AI courses, 520+ interactive lessons, and 571 hands-on exercises. Beginner to advanced. Start free today."
 author: Sophia Cave
 date: 2026-03-27
 categories: [Announcements, AI Education]
@@ -10,9 +10,9 @@ image: /blog/images/academy-launch.jpg
 cta: Start Learning Free
 ---
 
-# Like One Academy Is Live — 30 Courses, 300+ Lessons, Start Free
+# Like One Academy Is Live — 52 Courses, 520+ Lessons, Start Free
 
-Today I'm opening the doors to something I've been building for months: **Like One Academy** — a full AI education platform with 36 courses, 355+ lessons, and 571 interactive exercises.
+Today I'm opening the doors to something I've been building for months: **Like One Academy** — a full AI education platform with 52 courses, 520+ lessons, and 571 interactive exercises.
 
 No waitlist. No gatekeeping. You can start right now.
 
@@ -40,7 +40,7 @@ Every lesson is designed to be practical, immediately applicable, and built arou
 
 **Lesson 1 of every course is free.** Always. No credit card, no signup required. Open the page and start learning.
 
-If you want full access to all 355+ lessons, the exercises, and everything we add going forward, **Academy Pro is $4.90/month** during the founding period. That's 90% off what it'll be later. Once you lock in, that price is yours forever.
+If you want full access to all 520+ lessons, the exercises, and everything we add going forward, **Academy Pro is $4.90/month** during the founding period. That's 90% off what it'll be later. Once you lock in, that price is yours forever.
 
 I don't believe in making AI education expensive. The people who need it most can't afford $200/month subscriptions. $4.90 is less than a coffee. And it funds everything — the platform, the content, the mission. For a full roundup of what's available, see our guide to the [best free AI courses in 2026](/blog/best-free-ai-courses-2026/).
 

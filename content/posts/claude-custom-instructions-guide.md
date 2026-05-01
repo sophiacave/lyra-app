@@ -26,7 +26,7 @@ If you're using Claude without custom instructions, you're starting every conver
 
 Claude's Project system fixes this. Once you set it up, every conversation inherits your rules automatically. No re-explaining. No drift. No "as an AI language model" when you've already told it to skip the disclaimers.
 
-I run [36 courses](/academy/) and an entire business through Claude Projects. Here's how to set them up properly.
+I run [52 courses](/academy/) and an entire business through Claude Projects. Here's how to set them up properly.
 
 ## How Claude Custom Instructions Work
 

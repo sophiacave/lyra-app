@@ -89,7 +89,7 @@ function EnrollModal({ onClose }) {
         {/* Features */}
         <div className="academy-features">
           {[
-            '36 courses, 355+ lessons',
+            '52 courses, 520+ lessons',
             'New course every week',
             'Quizzes, labs & builder projects',
             'Downloadable resources',

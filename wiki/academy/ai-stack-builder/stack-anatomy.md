@@ -19,12 +19,12 @@
 
 Building an AI-powered web app is not about picking the trendiest tools. It is about choosing layers that work together seamlessly, scale without surprises, and do not drain your budget before you have your first customer. The wrong stack creates integration hell — spending weeks wiring services together instead of building features.
 
-The right stack gives you **fewer services, less glue code, and more time building the product that matters**. This lesson reveals the exact architecture that powers Like One Academy in production — 30 courses, 300+ lessons, AI memory, Stripe payments, global CDN, all for about $29/month.
+The right stack gives you **fewer services, less glue code, and more time building the product that matters**. This lesson reveals the exact architecture that powers Like One Academy in production — 52 courses, 520+ lessons, AI memory, Stripe payments, global CDN, all for about $29/month.
 
 
 The Like One Stack (Battle-Tested)
 **Supabase + Edge Functions + Claude + Next.js + Vercel**
-~$29/mo total. This is what Like One Academy runs on in production — 30 courses, 300+ lessons, AI memory, Stripe payments, and global CDN. Every layer below is explained with the real config we use.
+~$29/mo total. This is what Like One Academy runs on in production — 52 courses, 520+ lessons, AI memory, Stripe payments, and global CDN. Every layer below is explained with the real config we use.
 
 
 ## The Five Layers of an AI-Powered App

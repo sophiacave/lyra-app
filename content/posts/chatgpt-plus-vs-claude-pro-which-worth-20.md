@@ -140,4 +140,4 @@ The real question is not which one costs less. It is which one saves you more.
 
 ---
 
-*Want to get more from whichever AI you choose? Our [free AI academy](/academy) has 36 courses covering everything from prompt engineering to building AI workflows — no fluff, just practical skills you can use today.*
+*Want to get more from whichever AI you choose? Our [free AI academy](/academy) has 52 courses covering everything from prompt engineering to building AI workflows — no fluff, just practical skills you can use today.*

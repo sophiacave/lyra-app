@@ -120,7 +120,7 @@
       </style>\
       <div class="gate-card">\
         <h2>Unlock this lesson</h2>\
-        <p>You\'ve previewed the free lessons. Go Pro to access all 355+ interactive lessons across 36 courses.</p>\
+        <p>You\'ve previewed the free lessons. Go Pro to access all 520+ interactive lessons across 52 courses.</p>\
         <div class="gate-btns">\
           <a href="' + MONTHLY_LINK + '" target="_blank" class="gate-btn gate-primary">Go Pro — $49/mo</a>\
           <a href="' + ANNUAL_LINK + '" target="_blank" class="gate-btn gate-secondary">Annual — $390/yr (save 33%)</a>\

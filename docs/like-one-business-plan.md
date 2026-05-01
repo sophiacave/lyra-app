@@ -30,7 +30,7 @@ AI is reshaping every industry, but access to quality AI education is unevenly d
 
 Like One Academy teaches real AI skills — not theory, not hype — through structured, hands-on courses designed for every audience:
 
-**30 Courses Across 3 Tiers:**
+**52 Courses Across 3 Tiers:**
 
 | Tier | Courses | Audience |
 |------|---------|----------|
@@ -83,10 +83,10 @@ Like One Academy teaches real AI skills — not theory, not hype — through str
 
 ## Competitive Advantage
 
-1. **Breadth + Depth:** 30 courses covering beginner to advanced, business to technical. Most platforms focus on one audience.
+1. **Breadth + Depth:** 52 courses covering beginner to advanced, business to technical. Most platforms focus on one audience.
 2. **Accessible Pricing:** $4.90/mo founding price vs. $30-100/mo competitors. Honor-system free tier ensures no one is excluded.
 3. **Mission-Driven:** 1% of all revenue automatically funds HIV research through Like One Foundation. Giving scales with growth (up to 50% at $1M+/mo).
-4. **Built, Not Planned:** 300+ lessons are live today. This isn't a pitch deck — it's a working product.
+4. **Built, Not Planned:** 520+ lessons are live today. This isn't a pitch deck — it's a working product.
 5. **AI-Native Operations:** Like One uses AI to build AI education, keeping operational costs 10x lower than traditional edtech.
 6. **Founder Authenticity:** Founded by a trans woman with a disability, UC Berkeley graduate, building technology that serves everyone.
 
@@ -132,7 +132,7 @@ This is automated via Stripe webhooks — every payment calculates its giving ti
 **Qualifications:**
 - UC Berkeley education
 - Deep expertise in AI systems, automation, and product development
-- Built the entire Like One platform (30 courses, 300+ lessons, full-stack infrastructure)
+- Built the entire Like One platform (52 courses, 520+ lessons, full-stack infrastructure)
 - Published 49 articles on practical AI applications
 
 ---
@@ -154,7 +154,7 @@ This is automated via Stripe webhooks — every payment calculates its giving ti
 
 | Date | Milestone | Status |
 |------|-----------|--------|
-| March 2026 | Platform live with 30 courses, 300+ lessons | COMPLETE |
+| March 2026 | Platform live with 52 courses, 520+ lessons | COMPLETE |
 | March 2026 | Stripe payments integrated | COMPLETE |
 | April 2026 | Like One LLC filed (Nevada) | COMPLETE |
 | April 2026 | LLC EIN confirmed (41-5298434) | COMPLETE |
@@ -170,7 +170,7 @@ This is automated via Stripe webhooks — every payment calculates its giving ti
 
 ## Ask
 
-**$50,000 SBA Microloan** to fund Like One's first 12 months of marketing, hiring, and growth. The product is built (30 courses, 300+ lessons), the infrastructure is live, and the dual-entity legal structure is in place. This capital bridges the gap between a working product and a sustainable business.
+**$50,000 SBA Microloan** to fund Like One's first 12 months of marketing, hiring, and growth. The product is built (52 courses, 520+ lessons), the infrastructure is live, and the dual-entity legal structure is in place. This capital bridges the gap between a working product and a sustainable business.
 
 **Repayment:** Like One's low operational costs (AI-native, ~$110/mo overhead) mean that even conservative revenue projections ($3,270/mo by month 12) comfortably support loan repayment. At regular pricing ($49/mo), just 100 subscribers generates $4,900/mo — well above repayment thresholds.
 

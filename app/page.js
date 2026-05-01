@@ -47,7 +47,7 @@ export default function HomePage() {
         <div className="site-founding-inner">
           <span className="site-founding-badge">🚀 Academy</span>
           <span className="site-founding-text">
-            36 courses, 355+ lessons — learn AI by building real systems. Start free.
+            52 courses, 520+ lessons — learn AI by building real systems. Start free.
           </span>
           <Link href="/pricing" className="site-founding-cta">See Pricing →</Link>
         </div>
@@ -56,7 +56,7 @@ export default function HomePage() {
       {/* Stats */}
       <div className="site-stats-bar">
         <div className="site-stats-grid">
-          {[{ n: '36', l: 'Courses' }, { n: '355+', l: 'Lessons' }, { n: '$0', l: 'To Start' }, { n: '7', l: 'Levels' }].map(s => (
+          {[{ n: '52', l: 'Courses' }, { n: '520+', l: 'Lessons' }, { n: '$0', l: 'To Start' }, { n: '7', l: 'Levels' }].map(s => (
             <div key={s.l}>
               <div className="site-stat-number">{s.n}</div>
               <div className="site-stat-label">{s.l}</div>
@@ -160,7 +160,7 @@ export default function HomePage() {
         <div className="site-container text-center">
           <span className="site-section-tag">WHAT&rsquo;S INSIDE</span>
           <h2 className="site-section-title">From zero to convergence. For real.</h2>
-          <p className="site-section-desc centered">36 courses, 355+ interactive lessons, hands-on projects. Start with a free course — go Pro when you&rsquo;re ready.</p>
+          <p className="site-section-desc centered">52 courses, 520+ interactive lessons, hands-on projects. Start with a free course — go Pro when you&rsquo;re ready.</p>
           <div className="site-cta-row">
             <Link href="/academy/" className="site-btn-primary">Start Free Course</Link>
             <Link href="/pricing" className="site-btn-secondary">See Pricing</Link>

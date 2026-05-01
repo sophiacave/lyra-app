@@ -315,10 +315,10 @@ export default function AccountClient() {
               </div>
               <p className="account-sub-desc">
                 {isPaid
-                  ? 'Full access to all 355+ lessons across 36 courses.'
+                  ? 'Full access to all 520+ lessons across 52 courses.'
                   : isCommunity
                   ? "Full access through our Community Access program. When you're ready, upgrading keeps this program running for others."
-                  : "You're on the free tier. Upgrade to unlock all 355+ lessons across 36 courses."}
+                  : "You're on the free tier. Upgrade to unlock all 520+ lessons across 52 courses."}
               </p>
               <div className="account-sub-actions">
                 {isPaid ? (

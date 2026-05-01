@@ -243,7 +243,7 @@ export default function ConsultingPage() {
           <span className="consulting-pro-perk-badge">INCLUDED</span>
           <h3 className="consulting-pro-perk-title">Every consulting client gets 3 months of Academy Pro — free.</h3>
           <p className="consulting-pro-perk-desc">
-            Full access to all 36 courses, 355+ lessons, downloads, and certificates.
+            Full access to all 52 courses, 520+ lessons, downloads, and certificates.
             Learn the theory while we build the practice together. $147 value, on us.
           </p>
         </div>

@@ -18,7 +18,7 @@ Like One teaches people to build AI systems that think like them, remember every
 
 PRICING:
 - FREE: First 3 lessons of every course, all blog posts, weekly email tips, community forum
-- PRO: $49/mo — all 355+ lessons, 36 courses, downloads, certificates
+- PRO: $49/mo — all 520+ lessons, 52 courses, downloads, certificates
 - ANNUAL: $390/yr ($32.50/mo) — everything in Pro, best value, save 33%
 - CONSULTING: from $500/mo with Sophia directly (includes 3 months Academy Pro free)
 
@@ -29,7 +29,7 @@ KEY PAGES:
 - Blog: likeone.ai/blog/
 - Community Access (can't afford it): likeone.ai/community-access/
 
-30 COURSES covering: Claude, prompt engineering, AI automation, RAG & vector search, MCP, AI agents, AI for business, marketing, data analysis, executives, and more.
+52 COURSES covering: Claude, prompt engineering, AI automation, RAG & vector search, MCP, AI agents, AI for business, marketing, data analysis, executives, and more.
 
 CONTACT: hello@likeone.ai | +1 (702) 747-6877
 

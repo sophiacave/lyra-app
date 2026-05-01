@@ -5,11 +5,11 @@ import coursesData from '../../content/academy/courses.json';
 
 export const metadata = {
   title: 'Free AI Courses — Claude, Prompts & Automation | Like One',
-  description: '30 free AI courses with 355+ interactive lessons. Master Claude, prompt engineering, AI agents, RAG, MCP, and automation. Beginner to advanced. No credit card required.',
+  description: '52 free AI courses with 520+ interactive lessons. Master Claude, prompt engineering, AI agents, RAG, MCP, and automation. Beginner to advanced. No credit card required.',
   alternates: { canonical: `${site.url}/academy/` },
   openGraph: {
     title: 'Free AI Courses — Learn Claude, Prompt Engineering & Automation',
-    description: '30 free AI courses, 355+ interactive lessons. Master Claude, prompt engineering, AI agents, and automation. Start free today.',
+    description: '52 free AI courses, 520+ interactive lessons. Master Claude, prompt engineering, AI agents, and automation. Start free today.',
     url: `${site.url}/academy/`,
     siteName: site.name,
     type: 'website',
@@ -18,7 +18,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Free AI Courses — Like One Academy',
-    description: '36 courses, 355+ lessons. Claude, prompt engineering, AI agents, automation. Free to start.',
+    description: '52 courses, 520+ lessons. Claude, prompt engineering, AI agents, automation. Free to start.',
     images: [site.ogImage],
   },
 };

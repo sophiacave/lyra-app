@@ -79,7 +79,7 @@ analysis_result = run_agent(
 
 <span style="color:#34d399">print</span>(analysis_result)
 <span style="color:#71717a"># "Based on the competitor analysis, I recommend a freemium model...</span>
-<span style="color:#71717a">#  Tier 1: Free (30 courses). Tier 2: $29/mo (premium features)..."</span></code></pre>
+<span style="color:#71717a">#  Tier 1: Free (52 courses). Tier 2: $29/mo (premium features)..."</span></code></pre>
 </div>
 
 <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);margin:1rem 0">

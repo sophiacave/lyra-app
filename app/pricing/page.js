@@ -6,11 +6,11 @@ import { site } from '../../lib/site-config';
 
 export const metadata = {
   title: `Pricing — Like One Academy | ${site.name}`,
-  description: '36 AI courses, 355+ lessons from $49/mo. Free tier available. Cancel anytime.',
+  description: '52 AI courses, 520+ lessons from $49/mo. Free tier available. Cancel anytime.',
   alternates: { canonical: `${site.url}/pricing/` },
   openGraph: {
     title: `Pricing — Like One Academy | ${site.name}`,
-    description: '36 AI courses, 355+ lessons from $49/mo. Free tier available. Cancel anytime.',
+    description: '52 AI courses, 520+ lessons from $49/mo. Free tier available. Cancel anytime.',
     url: `${site.url}/pricing/`,
     siteName: site.name,
     type: 'website',
@@ -26,7 +26,7 @@ const PLANS = [
   {
     label: 'Most popular', name: 'Pro', price: '$49', period: '/mo',
     desc: 'Full access to everything. Learn AI by building real systems.', featured: true,
-    features: ['All 355+ interactive lessons', '36 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }],
+    features: ['All 520+ interactive lessons', '52 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }],
     btn: { label: 'Go Pro — $49/mo', href: 'https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p', style: 'primary', external: true },
   },
   {
@@ -55,8 +55,8 @@ const FAQS = [
 
 const COMPARE = [
   ['First 3 lessons of every course', true, true],
-  ['All 355+ interactive lessons', false, true],
-  ['36 courses (MCP, RAG, Agents & more)', false, true],
+  ['All 520+ interactive lessons', false, true],
+  ['52 courses (MCP, RAG, Agents & more)', false, true],
   ['Download products (playbooks, templates)', false, true],
   ['Completion certificates', false, true],
   ['New content as it ships', false, true],
@@ -91,7 +91,7 @@ export default function PricingPage() {
       <div className="site-container">
         <div className="pricing-banner">
           <div className="pricing-banner-bar" />
-          <div className="pricing-banner-badge">36 COURSES — 355+ LESSONS</div>
+          <div className="pricing-banner-badge">52 COURSES — 520+ LESSONS</div>
           <div className="dm-serif pricing-banner-title">Learn AI by <span className="accent">building</span> real systems.</div>
           <div className="pricing-banner-desc">RAG, agents, MCP, Claude mastery, automation — hands-on courses that teach you to build, not just watch. Start free, go Pro when you&rsquo;re ready.</div>
         </div>
