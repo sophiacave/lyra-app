@@ -42,14 +42,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Founding Member Banner */}
+      {/* Academy Banner */}
       <div className="site-founding-banner">
         <div className="site-founding-inner">
-          <span className="site-founding-badge">🔥 Founding Member</span>
+          <span className="site-founding-badge">🚀 Academy</span>
           <span className="site-founding-text">
-            Lock in <strong>90% off forever</strong> — $4.90/mo instead of $49. Limited spots.
+            36 courses, 355+ lessons — learn AI by building real systems. Start free.
           </span>
-          <Link href="/pricing" className="site-founding-cta">Claim Your Spot →</Link>
+          <Link href="/pricing" className="site-founding-cta">See Pricing →</Link>
         </div>
       </div>
 

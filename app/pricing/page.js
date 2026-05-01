@@ -5,12 +5,12 @@ import { CTARow } from '../components/primitives';
 import { site } from '../../lib/site-config';
 
 export const metadata = {
-  title: `Pricing — 90% Off Founding Member Rate | ${site.name}`,
-  description: '30 AI courses, 355+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
+  title: `Pricing — Like One Academy | ${site.name}`,
+  description: '36 AI courses, 355+ lessons from $49/mo. Free tier available. Cancel anytime.',
   alternates: { canonical: `${site.url}/pricing/` },
   openGraph: {
-    title: `Pricing — 90% Off Founding Member Rate | ${site.name}`,
-    description: '30 AI courses, 355+ lessons from $4.90/mo. Free tier available. Founding members lock in 90% off forever. Cancel anytime.',
+    title: `Pricing — Like One Academy | ${site.name}`,
+    description: '36 AI courses, 355+ lessons from $49/mo. Free tier available. Cancel anytime.',
     url: `${site.url}/pricing/`,
     siteName: site.name,
     type: 'website',
@@ -24,16 +24,16 @@ const PLANS = [
     btn: { label: 'Start Free', href: '/academy/', style: 'secondary' },
   },
   {
-    label: 'Most popular', name: 'Pro — Founding', price: '$4.90', period: '/mo', was: '$49',
-    desc: 'Full access to everything. 90% off — locked in forever.', featured: true,
-    features: ['All 355+ interactive lessons', '36 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }, { text: 'Founding price — forever', highlight: true }],
-    btn: { label: 'Go Pro — $4.90/mo', href: 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c', style: 'primary', external: true },
+    label: 'Most popular', name: 'Pro', price: '$49', period: '/mo',
+    desc: 'Full access to everything. Learn AI by building real systems.', featured: true,
+    features: ['All 355+ interactive lessons', '36 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }],
+    btn: { label: 'Go Pro — $49/mo', href: 'https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p', style: 'primary', external: true },
   },
   {
-    label: 'Best value — save 33%', name: 'Annual — Founding', price: '$39', period: '/yr', was: '$390',
-    desc: "Everything in Pro. That's $3.25/mo — save 33% vs monthly. 90% off forever.",
-    features: ['Everything in Pro', { text: 'Save 33% vs monthly ($3.25/mo)', highlight: true }, '12 months of new content', 'All future content included', { text: 'Cancel or pause anytime', highlight: true }, { text: 'Founding price — forever', highlight: true }],
-    btn: { label: 'Go Annual — $39/yr', href: 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d', style: 'secondary', external: true },
+    label: 'Best value — save 33%', name: 'Annual', price: '$390', period: '/yr',
+    desc: "Everything in Pro. That's $32.50/mo — save 33% vs monthly.",
+    features: ['Everything in Pro', { text: 'Save 33% vs monthly ($32.50/mo)', highlight: true }, '12 months of new content', 'All future content included', { text: 'Cancel or pause anytime', highlight: true }],
+    btn: { label: 'Go Annual — $390/yr', href: 'https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q', style: 'secondary', external: true },
   },
   {
     label: 'Done-with-you', name: 'Consulting', price: 'from $500', period: '/mo',
@@ -45,9 +45,9 @@ const PLANS = [
 
 const FAQS = [
   { q: 'Can I really start for free?', a: 'Yes. Sign up with your email and access the first 3 lessons of every course. No credit card. No tricks. No time limit.' },
-  { q: 'What does "founding price forever" mean?', a: "The first 1,000 members lock in 90% off for life. Your price never increases, even when we raise prices to $49/mo for new members. It's our thank-you for believing early." },
+  { q: 'Is there a free option?', a: "Yes. You get the first 3 lessons of every course, all blog posts, and weekly email tips — completely free, forever. No credit card required." },
   { q: 'Can I cancel anytime?', a: 'Yes. Cancel or pause anytime from your Stripe billing portal — one click from your account page. No questions, no guilt. You keep access until the end of your billing period.' },
-  { q: 'Can I pause my subscription?', a: "Yes. If you need a break, you can pause your subscription from your account settings. Your progress and founding price are saved. Resume whenever you're ready." },
+  { q: 'Can I pause my subscription?', a: "Yes. If you need a break, you can pause your subscription from your account settings. Your progress is saved. Resume whenever you're ready." },
   { q: 'Is there a refund policy?', a: "7-day full refund on your first payment. Email hello@likeone.ai and it's done. We're human first." },
   { q: "What's Community Access?", a: "If you genuinely can't afford Pro, apply for Community Access. Full access, no cost, honor system. Sophia reviews every application personally." },
   { q: 'Do I need to be technical?', a: 'No. Courses range from absolute beginner to advanced. The beginner courses assume zero coding experience. You just need curiosity.' },
@@ -78,7 +78,7 @@ export default function PricingPage() {
       {/* Hero */}
       <main id="main-content">
       <section className="site-section-sm text-center">
-        <span className="site-section-tag pricing-hero-tag">Founding Member Pricing</span>
+        <span className="site-section-tag pricing-hero-tag">Academy Pricing</span>
         <h1 className="dm-serif pricing-hero-title">
           Convergence is not<br />a <em className="text-accent-warm">luxury.</em>
         </h1>
@@ -87,14 +87,13 @@ export default function PricingPage() {
         </p>
       </section>
 
-      {/* Founding Banner */}
+      {/* Value Banner */}
       <div className="site-container">
         <div className="pricing-banner">
           <div className="pricing-banner-bar" />
-          <div className="pricing-banner-badge">LIMITED — FIRST 1,000 MEMBERS</div>
-          <div className="dm-serif pricing-banner-title">Lock in <span className="accent">90% off</span> — forever.</div>
-          <div className="pricing-banner-desc">Founding members pay $4.90/mo or $39/yr for life. This price never increases. When founding spots close, it&rsquo;s full price ($49/mo).</div>
-          {/* Founding spots counter hidden — revisit when membership grows */}
+          <div className="pricing-banner-badge">36 COURSES — 355+ LESSONS</div>
+          <div className="dm-serif pricing-banner-title">Learn AI by <span className="accent">building</span> real systems.</div>
+          <div className="pricing-banner-desc">RAG, agents, MCP, Claude mastery, automation — hands-on courses that teach you to build, not just watch. Start free, go Pro when you&rsquo;re ready.</div>
         </div>
       </div>
 
@@ -203,7 +202,7 @@ export default function PricingPage() {
         <p className="pricing-cta-desc">Preview any course free. Upgrade when you&rsquo;re ready. No pressure. No countdown timers. Just warmth and knowledge.</p>
         <CTARow
           primary="Browse Courses" primaryHref="/academy/"
-          secondary="Go Pro — $4.90/mo" secondaryHref="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" secondaryTarget="_blank"
+          secondary="Go Pro — $49/mo" secondaryHref="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p" secondaryTarget="_blank"
         />
       </section>
       </main>

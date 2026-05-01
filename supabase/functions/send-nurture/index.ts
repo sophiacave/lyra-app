@@ -98,21 +98,20 @@ const SEQUENCE: NurtureEmail[] = [
       <p>Like One Academy has 30 courses with 300+ interactive lessons — from Claude basics to building production agents, RAG systems, and automation pipelines.</p>
       <p>Every course is hands-on. Not a lecture. Not a sales pitch. Just real skills taught through real projects.</p>
       <p>If you haven't started: <a href="https://likeone.ai/academy/" style="color:#c084fc;font-weight:600">Browse the Academy →</a></p>
-      <p>Founding members get all 30 courses for $4.90/mo — 90% off the future price. <a href="https://likeone.ai/pricing" style="color:#c084fc">See pricing →</a></p>
+      <p>Go Pro for $49/mo — or save 33% with annual at $390/yr. <a href="https://likeone.ai/pricing" style="color:#c084fc">See pricing →</a></p>
       <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
     ),
   },
   {
     day: 10,
-    subject: "90% off — but only for founding members",
-    preheader: "First 1,000 members lock in $4.90/mo forever. This price never increases.",
+    subject: "Ready to go Pro?",
+    preheader: "Full access to 36 courses, 355+ lessons. $49/mo or $390/yr.",
     html: buildEmail(
-      "The founding member offer",
+      "Ready to go Pro?",
       `<p>I'm keeping this simple.</p>
-      <p>Like One Academy Pro is normally $49/mo. But the first 1,000 members — the people who believe early — get it for <strong style="color:#fb923c;font-size:18px">$4.90/mo</strong>. Forever. The price never increases.</p>
-      <p>What you get:</p>
+      <p>Like One Academy Pro gives you full access to everything we build:</p>
       <ul style="color:#8888a0;padding-left:20px;line-height:2">
-        <li><strong style="color:#e0e0e0">300+ interactive lessons</strong> across 30 courses</li>
+        <li><strong style="color:#e0e0e0">355+ interactive lessons</strong> across 36 courses</li>
         <li><strong style="color:#e0e0e0">MCP, RAG, Agents, Automation</strong> — the skills that matter</li>
         <li><strong style="color:#e0e0e0">New content regularly</strong> — the library keeps growing</li>
         <li><strong style="color:#e0e0e0">All download products</strong> included</li>
@@ -120,9 +119,9 @@ const SEQUENCE: NurtureEmail[] = [
       </ul>
       <p>Every dollar goes toward building convergence tech, funding research that matters, and keeping AI accessible to everyone. That's the mission.</p>
       <div style="text-align:center;margin:24px 0">
-        <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" style="display:inline-block;background:#fb923c;color:#000;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;font-size:16px">Go Pro — $4.90/mo</a>
+        <a href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p" style="display:inline-block;background:#fb923c;color:#000;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;font-size:16px">Go Pro — $49/mo</a>
       </div>
-      <p style="text-align:center;font-size:13px;color:#555">Or <a href="https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d" style="color:#c084fc">go annual for $39/yr</a> ($3.33/mo)</p>
+      <p style="text-align:center;font-size:13px;color:#555">Or <a href="https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q" style="color:#c084fc">go annual for $390/yr</a> ($32.50/mo — save 33%)</p>
       <p style="color:#8888a0;font-size:14px;margin-top:24px;">— Sophia</p>`
     ),
   },
@@ -136,7 +135,7 @@ const SEQUENCE: NurtureEmail[] = [
       <p>Here's what's true:</p>
       <ul style="color:#8888a0;padding-left:20px;line-height:2">
         <li>The <strong style="color:#e0e0e0">free lesson previews</strong> are always free</li>
-        <li>The <strong style="color:#e0e0e0">founding member price</strong> ($4.90/mo) lasts until we hit 1,000 members</li>
+        <li><strong style="color:#e0e0e0">Pro access</strong> — $49/mo or $390/yr (save 33%)</li>
         <li>The <strong style="color:#e0e0e0">community access program</strong> exists for anyone who genuinely can't afford it</li>
         <li>I'll keep sending weekly tips either way</li>
       </ul>

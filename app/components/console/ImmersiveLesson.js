@@ -97,16 +97,15 @@ function LessonGate({ courseSlug }) {
         <h3 className="lesson-gate-title">This lesson is for Pro members</h3>
         <p className="lesson-gate-desc">
           Unlock all 355+ lessons across 36 courses with Academy Pro.
-          Founding members get 90% off — forever.
         </p>
         <div className="lesson-gate-actions">
           <a
-            href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c"
+            href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p"
             target="_blank"
             rel="noopener noreferrer"
             className="site-btn-primary"
           >
-            Go Pro — $4.90/mo
+            Go Pro — $49/mo
           </a>
           <a href={`/academy/${courseSlug}/`} className="site-btn-ghost">
             ← Back to course

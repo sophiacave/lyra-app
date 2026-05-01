@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-const MONTHLY_LINK = 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c';
-const ANNUAL_LINK = 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d';
+const MONTHLY_LINK = 'https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p';
+const ANNUAL_LINK = 'https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q';
 
 export default function EnrollCTA({ context = 'inline' }) {
   const [showModal, setShowModal] = useState(false);
@@ -61,7 +61,7 @@ function EnrollModal({ onClose }) {
             </div>
             <div>
               <span className="academy-pricing-amount">
-                $4.90<span className="academy-pricing-period">/mo</span>
+                $49<span className="academy-pricing-period">/mo</span>
               </span>
             </div>
           </a>
@@ -76,11 +76,11 @@ function EnrollModal({ onClose }) {
             <span className="academy-pricing-save">SAVE 33%</span>
             <div>
               <div className="academy-pricing-name">Annual</div>
-              <div className="academy-pricing-sub">Best value — $3.25/mo</div>
+              <div className="academy-pricing-sub">Best value — $32.50/mo</div>
             </div>
             <div>
               <span className="academy-pricing-amount gradient">
-                $39<span className="academy-pricing-period">/yr</span>
+                $390<span className="academy-pricing-period">/yr</span>
               </span>
             </div>
           </a>

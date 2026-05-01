@@ -91,7 +91,7 @@ export default function AcademyCatalogClient({ tiers, allCourses, totalLessons }
 
       {/* PRICING HINT */}
       <div className="academy-v2-pricing">
-        <span>First 3 lessons of every course — free. Full access from <strong>$4.90/mo</strong>.</span>
+        <span>First 3 lessons of every course — free. Full access from <strong>$49/mo</strong>.</span>
         <a href="/pricing/" className="academy-v2-pricing__link">See plans</a>
       </div>
 

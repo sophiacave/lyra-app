@@ -7,8 +7,8 @@
  */
 
 (function() {
-  const MONTHLY_LINK = 'https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c';
-  const ANNUAL_LINK = 'https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d';
+  const MONTHLY_LINK = 'https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p';
+  const ANNUAL_LINK = 'https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q';
   const SIGNIN_BASE = '/academy/signin.html';
   const SIGNIN_URL = SIGNIN_BASE + '?return=' + encodeURIComponent(location.pathname);
 
@@ -120,10 +120,10 @@
       </style>\
       <div class="gate-card">\
         <h2>Unlock this lesson</h2>\
-        <p>You\'ve previewed the free lessons. Go Pro to access all 97 interactive lessons across 10 courses. <strong>Founding Member Sale — 90% off, locked in forever.</strong></p>\
+        <p>You\'ve previewed the free lessons. Go Pro to access all 355+ interactive lessons across 36 courses.</p>\
         <div class="gate-btns">\
-          <a href="' + MONTHLY_LINK + '" target="_blank" class="gate-btn gate-primary">Go Pro — $4.90/mo</a>\
-          <a href="' + ANNUAL_LINK + '" target="_blank" class="gate-btn gate-secondary">Annual — $39/yr (90% off forever)</a>\
+          <a href="' + MONTHLY_LINK + '" target="_blank" class="gate-btn gate-primary">Go Pro — $49/mo</a>\
+          <a href="' + ANNUAL_LINK + '" target="_blank" class="gate-btn gate-secondary">Annual — $390/yr (save 33%)</a>\
         </div>\
         <div class="perks">\
           <span>\u2713 97 lessons</span>\

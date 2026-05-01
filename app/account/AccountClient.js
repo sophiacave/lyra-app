@@ -139,7 +139,7 @@ export default function AccountClient() {
       });
       const data = await res.json();
       if (data.success) {
-        setSuccessMsg('Subscription cancelled. You keep access until your current period ends. Thank you for being a founding member.');
+        setSuccessMsg('Subscription cancelled. You keep access until your current period ends. Thank you for being a member.');
         setSubscription(s => ({ ...s, status: 'cancelled', tier: 'free' }));
       } else {
         throw new Error(data.error);
@@ -309,13 +309,13 @@ export default function AccountClient() {
               <div className="app-card-label">Subscription</div>
               <div className="account-sub-header">
                 <h3 className="account-sub-title">
-                  {isPaid ? (tier === 'pro' ? 'Pro — Founding Member' : 'Pro') : isCommunity ? 'Community Access' : 'Free'}
+                  {isPaid ? 'Pro' : isCommunity ? 'Community Access' : 'Free'}
                 </h3>
                 <StatusBadge status={isPaid ? 'active' : isCommunity ? 'community' : status === 'cancelled' ? 'cancelled' : 'free'} />
               </div>
               <p className="account-sub-desc">
                 {isPaid
-                  ? 'Full access to all 355+ lessons across 36 courses. Your founding price is locked in forever.'
+                  ? 'Full access to all 355+ lessons across 36 courses.'
                   : isCommunity
                   ? "Full access through our Community Access program. When you're ready, upgrading keeps this program running for others."
                   : "You're on the free tier. Upgrade to unlock all 355+ lessons across 36 courses."}
@@ -332,12 +332,12 @@ export default function AccountClient() {
                 ) : isCommunity ? (
                   <>
                     <Link href="/academy/" className="site-btn-primary">Continue Learning</Link>
-                    <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Upgrade to Pro</a>
+                    <a href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p" target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Upgrade to Pro</a>
                   </>
                 ) : (
                   <>
-                    <a href="https://buy.stripe.com/fZufZae1OeO35iH5tw3sI0c" target="_blank" rel="noopener noreferrer" className="site-btn-primary">Go Pro — $4.90/mo</a>
-                    <a href="https://buy.stripe.com/8x2bIUg9WgWb4eD7BE3sI0d" target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Annual — $39/yr</a>
+                    <a href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p" target="_blank" rel="noopener noreferrer" className="site-btn-primary">Go Pro — $49/mo</a>
+                    <a href="https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q" target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Annual — $390/yr</a>
                   </>
                 )}
               </div>

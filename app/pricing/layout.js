@@ -1,12 +1,12 @@
 import { site } from '../../lib/site-config';
 
 export const metadata = {
-  title: 'AI Course Pricing — 90% Off Founding Deal | Like One',
-  description: 'Free tier available — no credit card needed. Pro from $4.90/mo (normally $49). 30 AI courses, 355+ lessons. First 1,000 founding members lock in 90% off forever.',
+  title: 'AI Course Pricing | Like One',
+  description: 'Free tier available — no credit card needed. Pro from $49/mo. 36 AI courses, 355+ lessons. Cancel anytime.',
   alternates: { canonical: `${site.url}/pricing/` },
   openGraph: {
-    title: 'AI Course Pricing — 90% Off Founding Deal | Like One',
-    description: 'Free tier or Pro from $4.90/mo. 30 AI courses, 355+ lessons. Founding members lock in 90% off forever.',
+    title: 'AI Course Pricing | Like One',
+    description: 'Free tier or Pro from $49/mo. 36 AI courses, 355+ lessons. Cancel anytime.',
     url: `${site.url}/pricing/`,
     siteName: site.name,
     type: 'website',
@@ -14,15 +14,15 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Course Pricing — 90% Off Founding Deal | Like One',
-    description: 'Free tier or Pro from $4.90/mo. 36 courses, 355+ lessons. Lock in 90% off forever.',
+    title: 'AI Course Pricing | Like One',
+    description: 'Free tier or Pro from $49/mo. 36 courses, 355+ lessons. Cancel anytime.',
     images: [site.ogImage],
   },
 };
 
 const PRICING_FAQ = [
   { q: 'Can I really start for free?', a: 'Yes. Sign up with your email and access the first 3 lessons of every course. No credit card. No tricks. No time limit.' },
-  { q: 'What does "founding price forever" mean?', a: 'The first 1,000 members lock in 90% off for life. Your price never increases, even when we raise prices to $49/mo for new members.' },
+  { q: 'Is there a free option?', a: 'Yes. You get the first 3 lessons of every course, all blog posts, and weekly email tips — completely free, forever. No credit card required.' },
   { q: 'Can I cancel anytime?', a: 'Yes. Cancel from your Stripe billing portal anytime. No questions, no guilt. You keep access until the end of your billing period.' },
   { q: 'Is there a refund policy?', a: '7-day full refund on your first payment. Email hello@likeone.ai and it\'s done.' },
   { q: 'Do I need to be technical?', a: 'No. Courses range from absolute beginner to advanced. The beginner courses assume zero coding experience. You just need curiosity.' },
