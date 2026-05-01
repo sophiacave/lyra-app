@@ -47,13 +47,13 @@
   --space-20: 5rem;       /* 80px */
   --space-24: 6rem;       /* 96px */
 
-  /* ── Surfaces (background layers, darkest to lightest) ── */
-  --surface-base: #08080a;         /* app background */
-  --surface-sunken: #060608;       /* recessed areas */
-  --surface-raised: #0e0e12;       /* cards, panels */
-  --surface-overlay: #111116;      /* modals, popovers */
-  --surface-elevated: #16161c;     /* hover states, active items */
-  --surface-input: #18181e;        /* form inputs */
+  /* ── Surfaces (Apple HIG dark mode — #1C1C1E base, not void-black) ── */
+  --surface-base: #1a1a1e;         /* app background — Apple dark mode range */
+  --surface-sunken: #141416;       /* recessed areas */
+  --surface-raised: #242428;       /* cards, panels */
+  --surface-overlay: #2a2a30;      /* modals, popovers */
+  --surface-elevated: #32323a;     /* hover states, active items */
+  --surface-input: #28282e;        /* form inputs */
 
   /* ── Text Colors (high to low contrast) ── */
   --text-primary: #e8e8ec;         /* headings, primary content */
@@ -61,7 +61,7 @@
   --text-tertiary: #8888a0;        /* labels, captions */
   --text-quaternary: #55556a;      /* placeholders, disabled */
   --text-ghost: rgba(255,255,255,0.2);  /* decorative, very dim */
-  --text-inverse: #08080a;        /* text on bright backgrounds */
+  --text-inverse: #1a1a1e;        /* text on bright backgrounds */
 
   /* ── Accent Colors ── */
   --accent-purple: #c084fc;
@@ -115,11 +115,11 @@
   --glass-blur: 20px;
   --glass-blur-heavy: 40px;
 
-  --glass-bg-subtle: rgba(14,14,18,0.4);
-  --glass-bg: rgba(17,17,24,0.55);
-  --glass-bg-medium: rgba(20,20,28,0.65);
-  --glass-bg-strong: rgba(24,24,36,0.8);
-  --glass-bg-solid: rgba(17,17,24,0.9);
+  --glass-bg-subtle: rgba(30,30,38,0.35);
+  --glass-bg: rgba(36,36,46,0.45);
+  --glass-bg-medium: rgba(40,40,50,0.55);
+  --glass-bg-strong: rgba(44,44,56,0.7);
+  --glass-bg-solid: rgba(34,34,42,0.85);
 
   --glass-luminance: rgba(255,255,255,0.06);  /* top edge highlight */
   --glass-luminance-hover: rgba(255,255,255,0.1);
@@ -127,9 +127,9 @@
   /* ── Liquid Glass Tokens (Apple HIG — content-first, controls recede) ── */
   --liquid-blur: 28px;
   --liquid-blur-edge: 44px;
-  --liquid-bg: rgba(40,40,52,0.35);
-  --liquid-bg-hover: rgba(52,52,68,0.45);
-  --liquid-bg-active: rgba(46,46,58,0.52);
+  --liquid-bg: rgba(50,50,64,0.32);
+  --liquid-bg-hover: rgba(60,60,78,0.42);
+  --liquid-bg-active: rgba(54,54,68,0.5);
   --liquid-border: rgba(255,255,255,0.09);
   --liquid-border-hover: rgba(255,255,255,0.15);
   --liquid-border-focus: rgba(160,160,200,0.3);
