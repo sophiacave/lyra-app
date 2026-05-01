@@ -89,21 +89,27 @@ async function sendProductDelivery(email, name, productId, amount, downloadToken
   }
 }
 
-async function sendWelcomeEmail(email) {
+async function sendWelcomeEmail(email, name) {
   const resendKey = process.env.RESEND_API_KEY;
   if (!resendKey) return;
+  const firstName = name?.split(' ')[0] || 'there';
   try {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: 'Sophia at Like One <hello@likeone.ai>',
+        from: 'Sophia Cave <hello@likeone.ai>',
         to: [email],
-        subject: 'Welcome to Like One — your path starts here',
-        html: `<div style="max-width:560px;margin:0 auto;padding:40px 24px;background:#08080a;color:#e0e0e0;font-family:-apple-system,sans-serif"><h1 style="color:#fff;font-size:22px">Welcome to Like One</h1><p style="color:#aaa;font-size:15px;line-height:1.7">You're in. Visit <a href="https://likeone.ai/academy/" style="color:#c084fc">likeone.ai/academy</a> to start learning.</p></div>`,
+        bcc: ['sophiacave.me@gmail.com'],
+        reply_to: 'hello@likeone.ai',
+        subject: 'Welcome to Like One Academy Pro',
+        html: `<div style="max-width:560px;margin:0 auto;padding:40px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a"><h1 style="font-size:24px;font-weight:600;margin-bottom:24px">Welcome to Like One Academy Pro</h1><p>Hey ${firstName},</p><p>You now have full access to all 52 courses and 520+ lessons. Here's how to get started:</p><ol style="line-height:2"><li><strong>Browse courses</strong> &mdash; <a href="https://likeone.ai/academy/" style="color:#0066cc">likeone.ai/academy</a></li><li><strong>Start with AI fundamentals</strong> or jump into RAG, Agents, or MCP</li><li><strong>Build real systems</strong> &mdash; every course is hands-on</li></ol><p>Questions? Reply to this email. I read everything.</p><p style="margin-top:32px"><a href="https://likeone.ai/academy/" style="background:#1a1a1a;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block">Start Learning</a></p><p style="margin-top:32px;color:#666;font-size:14px">&mdash; Sophia Cave, Like One<br><a href="https://likeone.ai" style="color:#666">likeone.ai</a></p></div>`,
       }),
     });
-  } catch { /* non-fatal */ }
+    console.log(`[Welcome] Sent to ${email}`);
+  } catch (err) {
+    console.error('[Welcome] Failed:', err.message);
+  }
 }
 
 // Consulting product IDs — any checkout for these triggers 3-month Pro access
@@ -190,8 +196,8 @@ function handleCheckout(session) {
   const downloadToken = generateDownloadToken(email);
   sendProductDelivery(email, customerName, productId, amountTotal, downloadToken);
 
-  // Auto-subscribe to email list
-  sendWelcomeEmail(email);
+  // Welcome email with onboarding
+  sendWelcomeEmail(email, customerName);
 
   // Grant 3-month Pro for consulting customers
   // Detect by product ID or amount ($500+)
