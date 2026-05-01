@@ -8339,7 +8339,7 @@ select:focus-visible {
 
 .learn-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); }
 .learn-stat-card { padding: var(--space-lg); text-align: center; }
-.learn-stat-value { font-size: var(--font-2xl); font-weight: var(--font-weight-bold); background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--space-xs); }
+.learn-stat-value { font-size: var(--font-2xl); font-weight: var(--font-weight-bold); background-image: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--space-xs); }
 .learn-stat-label { font-size: var(--font-sm); color: var(--text-body); margin-bottom: var(--space-xs); }
 .learn-stat-source { font-size: var(--font-2xs); color: var(--text-muted); font-style: italic; }
 
