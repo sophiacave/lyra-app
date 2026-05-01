@@ -127,20 +127,20 @@
   /* ── Liquid Glass Tokens (Apple HIG — content-first, controls recede) ── */
   --liquid-blur: 28px;
   --liquid-blur-edge: 44px;
-  --liquid-bg: rgba(28,28,34,0.42);
-  --liquid-bg-hover: rgba(34,34,42,0.52);
-  --liquid-bg-active: rgba(38,38,46,0.6);
-  --liquid-border: rgba(255,255,255,0.06);
-  --liquid-border-hover: rgba(255,255,255,0.1);
-  --liquid-border-focus: rgba(160,160,200,0.25);
-  --liquid-specular: rgba(255,255,255,0.08);
-  --liquid-specular-hover: rgba(255,255,255,0.14);
-  --liquid-specular-size: 70%;
-  --liquid-edge-luminance: rgba(255,255,255,0.08);
-  --liquid-edge-luminance-hover: rgba(255,255,255,0.14);
+  --liquid-bg: rgba(40,40,52,0.35);
+  --liquid-bg-hover: rgba(52,52,68,0.45);
+  --liquid-bg-active: rgba(46,46,58,0.52);
+  --liquid-border: rgba(255,255,255,0.09);
+  --liquid-border-hover: rgba(255,255,255,0.15);
+  --liquid-border-focus: rgba(160,160,200,0.3);
+  --liquid-specular: rgba(255,255,255,0.18);
+  --liquid-specular-hover: rgba(255,255,255,0.3);
+  --liquid-specular-size: 65%;
+  --liquid-edge-luminance: rgba(255,255,255,0.14);
+  --liquid-edge-luminance-hover: rgba(255,255,255,0.24);
   --liquid-refraction: 0.5px;
-  --liquid-caustic: rgba(200,200,255,0.03);
-  --liquid-caustic-hover: rgba(200,200,255,0.06);
+  --liquid-caustic: rgba(180,160,240,0.05);
+  --liquid-caustic-hover: rgba(180,160,240,0.1);
   --liquid-shadow: 0 4px 24px rgba(0,0,0,0.2), 0 1px 4px rgba(0,0,0,0.12);
   --liquid-shadow-hover: 0 12px 40px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.16);
   --liquid-shadow-active: 0 2px 12px rgba(0,0,0,0.25);
@@ -2556,9 +2556,10 @@ select:focus-visible {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 25% 40%, rgba(160,160,200,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse at 75% 30%, rgba(140,180,220,0.03) 0%, transparent 60%),
-    linear-gradient(160deg, rgba(18,18,24,0.88) 0%, rgba(24,24,32,0.82) 50%, rgba(18,18,24,0.88) 100%);
+    radial-gradient(ellipse at 20% 35%, rgba(130,110,190,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 25%, rgba(80,150,210,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 75%, rgba(160,120,200,0.05) 0%, transparent 55%),
+    linear-gradient(160deg, rgba(22,22,30,0.7) 0%, rgba(30,28,40,0.6) 50%, rgba(22,22,30,0.7) 100%);
   z-index: 0;
 }
 .academy-v2-hero__content {
@@ -2799,13 +2800,13 @@ select:focus-visible {
   flex-direction: column;
   text-decoration: none;
 }
-/* Apple HIG: cards are translucent surfaces, not opaque blocks */
+/* Apple HIG: glass surface MUST be distinguishable from the void behind it */
 .course-card-v2.liquid-card {
   --liquid-radius: 16px;
-  --liquid-bg: rgba(30,30,38,0.4);
-  --liquid-bg-hover: rgba(36,36,44,0.5);
-  --liquid-border: rgba(255,255,255,0.05);
-  --liquid-border-hover: rgba(255,255,255,0.09);
+  --liquid-bg: rgba(44,44,56,0.35);
+  --liquid-bg-hover: rgba(56,56,72,0.45);
+  --liquid-border: rgba(255,255,255,0.08);
+  --liquid-border-hover: rgba(255,255,255,0.14);
 }
 .course-card-v2--planned {
   opacity: 0.4;
@@ -2931,13 +2932,13 @@ select:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, rgba(20,20,28,0.6), rgba(28,28,36,0.4));
+  background: rgba(20,20,30,0.25);
 }
 .course-card-v2__emoji-glow {
   position: absolute;
-  width: 140px;
-  height: 140px;
-  background: radial-gradient(circle, rgba(180,180,220,0.04), transparent 70%);
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(140,130,200,0.08), transparent 70%);
   pointer-events: none;
 }
 .course-card-v2__emoji-large {

@@ -15,16 +15,17 @@
   position: relative;
 }
 
-/* Ambient glow behind everything */
+/* Ambient light field — gives glass something to refract */
 .lo-shell::before {
   content: '';
   position: fixed;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
+  top: -30%; left: -30%;
+  width: 160%; height: 160%;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(192,132,252,0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.02) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(232,121,249,0.015) 0%, transparent 50%);
+    radial-gradient(ellipse at 15% 35%, rgba(120,100,180,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(60,140,200,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(160,100,200,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 40%, rgba(80,80,120,0.06) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
