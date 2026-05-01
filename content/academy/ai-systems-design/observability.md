@@ -191,26 +191,8 @@ You don't have to build everything from scratch. The AI observability ecosystem 
 Choose based on your needs: if cost is the primary concern, Helicone. If quality evaluation is the priority, Braintrust. If you need full control, OpenTelemetry. Most mature teams use a combination.
 </div>
 
-<QuizMC
-  question="What makes AI observability fundamentally different from traditional web observability?"
-  options={["AI systems are slower", "A successful HTTP response can still contain incorrect or harmful content", "AI systems use more servers", "AI APIs don't return error codes"]}
-  correct={1}
-  explanation="A model call can return 200 OK with fast latency and valid JSON but still produce hallucinated, off-topic, or unsafe content. Correctness is not binary in AI systems, which is why you need quality evaluation beyond standard operational metrics."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What makes AI observability fundamentally different from traditional web observability?", "options": ["AI systems are slower", "A successful HTTP response can still contain incorrect or harmful content", "AI systems use more servers", "AI APIs don&#39;t return error codes"], "correct": 1, "explanation": "A model call can return 200 OK with fast latency and valid JSON but still produce hallucinated, off-topic, or unsafe content. Correctness is not binary in AI systems, which is why you need quality evaluation beyond standard operational metrics."}, {"q": "What should you do before shipping any prompt change or model upgrade?", "options": ["Test it manually once", "Run it against your evaluation pipeline and check for score regressions", "Just deploy and monitor", "Ask the model if the change is good"], "correct": 1, "explanation": "Run evals before every prompt change, model upgrade, or system modification. If the eval score drops, the change does not ship. This is eval-driven development -- define what good looks like first, then verify the system passes."}]}'></div>
 
-<QuizMC
-  question="What should you do before shipping any prompt change or model upgrade?"
-  options={["Test it manually once", "Run it against your evaluation pipeline and check for score regressions", "Just deploy and monitor", "Ask the model if the change is good"]}
-  correct={1}
-  explanation="Run evals before every prompt change, model upgrade, or system modification. If the eval score drops, the change does not ship. This is eval-driven development -- define what good looks like first, then verify the system passes."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the three layers of AI observability?", back: "1) Operational metrics (uptime, errors, latency), 2) Business metrics (satisfaction, task completion, revenue), 3) Model metrics (quality scores, hallucination rates, token efficiency)." },
-  { front: "Why should you track latency percentiles instead of averages?", back: "Averages hide tail latency. p50 shows typical experience, p95 shows worst case for most users, p99 reveals your tail latency problem. A 1s average can mask 30s p99 spikes." },
-  { front: "What is eval-driven development?", back: "Write evaluation test cases before writing prompts -- like TDD for AI. Define what good looks like first with a golden dataset of 50-100 cases, then engineer the system to pass those evals." },
-  { front: "What privacy guardrail should traces follow?", back: "Never log raw user inputs without PII scrubbing. Log prompt templates and metadata, not actual user content. If content must be logged, use a separate access-controlled, auto-expiring store." },
-  { front: "Name three AI observability tools and their strengths.", back: "Helicone: proxy-based cost tracking. Braintrust: evaluation and quality scoring. LangSmith: tracing and dataset management for LangChain apps." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three layers of AI observability?", "back": "1) Operational metrics (uptime, errors, latency), 2) Business metrics (satisfaction, task completion, revenue), 3) Model metrics (quality scores, hallucination rates, token efficiency)."}, {"front": "Why should you track latency percentiles instead of averages?", "back": "Averages hide tail latency. p50 shows typical experience, p95 shows worst case for most users, p99 reveals your tail latency problem. A 1s average can mask 30s p99 spikes."}, {"front": "What is eval-driven development?", "back": "Write evaluation test cases before writing prompts -- like TDD for AI. Define what good looks like first with a golden dataset of 50-100 cases, then engineer the system to pass those evals."}, {"front": "What privacy guardrail should traces follow?", "back": "Never log raw user inputs without PII scrubbing. Log prompt templates and metadata, not actual user content. If content must be logged, use a separate access-controlled, auto-expiring store."}, {"front": "Name three AI observability tools and their strengths.", "back": "Helicone: proxy-based cost tracking. Braintrust: evaluation and quality scoring. LangSmith: tracing and dataset management for LangChain apps."}]}'></div>
 
 </div>

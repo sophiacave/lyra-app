@@ -318,26 +318,8 @@ Take the model from Lesson 3 or 4. Run it on your held-out test set. Calculate: 
 </div>
 </div>
 
-<QuizMC>
-<Question text="What is the most reliable automated evaluation method for open-ended text generation?">
-<Option text="BLEU score comparison with reference outputs" />
-<Option text="Perplexity measurement on the test set" />
-<Option correct text="LLM-as-judge: using a stronger model to rate outputs on specified criteria" />
-<Option text="Word count comparison with expected output length" />
-</Question>
-<Question text="What indicates catastrophic forgetting is occurring?">
-<Option text="The model's training loss stops decreasing" />
-<Option text="Validation loss is lower than training loss" />
-<Option correct text="The model loses general capabilities it had before fine-tuning while improving on the specific task" />
-<Option text="The model generates longer outputs than expected" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the most reliable automated evaluation method for open-ended text generation?", "options": ["BLEU score comparison with reference outputs", "Perplexity measurement on the test set", "LLM-as-judge: using a stronger model to rate outputs on specified criteria", "Word count comparison with expected output length"], "correct": 2, "explanation": "The correct answer is: LLM-as-judge: using a stronger model to rate outputs on specified criteria"}, {"q": "What indicates catastrophic forgetting is occurring?", "options": ["The model&#39;s training loss stops decreasing", "Validation loss is lower than training loss", "The model loses general capabilities it had before fine-tuning while improving on the specific task", "The model generates longer outputs than expected"], "correct": 2, "explanation": "The correct answer is: The model loses general capabilities it had before fine-tuning while improving on the specific task"}]}'></div>
 
-<FlashDeck>
-<Card front="What three metrics should every fine-tuned model be evaluated on?" back="1. Automated task-specific metric (accuracy, F1, exact match), 2. General quality metric (perplexity or LLM-as-judge), 3. Overfitting detector (train vs validation loss gap)" />
-<Card front="How do you prevent catastrophic forgetting?" back="Use LoRA (freezes base model), keep learning rate low (1e-4 to 2e-4), mix in 5-10% general-purpose data, and train for fewer epochs (1-2 for large datasets)." />
-<Card front="What is position bias in LLM-as-judge evaluation?" back="LLM judges tend to prefer the first response shown. Fix by randomizing response order and averaging across both orderings." />
-<Card front="What are the quality gate thresholds for a production model?" back="Task accuracy >90%, judge score >3.5/5, forgetting gap <5%, format compliance >95%, win rate vs base >60%." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What three metrics should every fine-tuned model be evaluated on?", "back": "1. Automated task-specific metric (accuracy, F1, exact match), 2. General quality metric (perplexity or LLM-as-judge), 3. Overfitting detector (train vs validation loss gap)"}, {"front": "How do you prevent catastrophic forgetting?", "back": "Use LoRA (freezes base model), keep learning rate low (1e-4 to 2e-4), mix in 5-10% general-purpose data, and train for fewer epochs (1-2 for large datasets)."}, {"front": "What is position bias in LLM-as-judge evaluation?", "back": "LLM judges tend to prefer the first response shown. Fix by randomizing response order and averaging across both orderings."}, {"front": "What are the quality gate thresholds for a production model?", "back": "Task accuracy >90%, judge score >3.5/5, forgetting gap <5%, format compliance >95%, win rate vs base >60%."}]}'></div>
 
 </div>

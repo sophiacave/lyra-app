@@ -318,27 +318,8 @@ Lesson 10: Production patterns (router, cascade, distillation)
 The field moves fast. Base models improve quarterly. New fine-tuning techniques emerge monthly. But the fundamentals -- data quality, rigorous evaluation, systematic deployment -- remain constant. Master these and you can adapt to any new tool or technique that emerges.
 </div>
 
-<QuizMC>
-<Question text="What is the primary cost benefit of the cascade pattern?">
-<Option text="It eliminates the need for a large model entirely" />
-<Option correct text="It routes 70% of 'easy' queries to a cheap model, reducing average cost by 60%+ while maintaining quality" />
-<Option text="It combines multiple small models to match large model quality" />
-<Option text="It caches responses to avoid repeated inference" />
-</Question>
-<Question text="Why does fine-tuned RAG outperform either fine-tuning or RAG alone?">
-<Option text="RAG provides faster inference speed to fine-tuned models" />
-<Option text="Fine-tuning eliminates the need for document retrieval" />
-<Option correct text="Fine-tuning teaches the model how to effectively synthesize retrieved context in your desired format and style" />
-<Option text="The two techniques cancel out each other's weaknesses mathematically" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary cost benefit of the cascade pattern?", "options": ["It eliminates the need for a large model entirely", "It routes 70% of &#39;easy&#39; queries to a cheap model, reducing average cost by 60%+ while maintaining quality", "It combines multiple small models to match large model quality", "It caches responses to avoid repeated inference"], "correct": 1, "explanation": "The correct answer is: It routes 70% of &#39;easy&#39; queries to a cheap model, reducing average cost by 60%+ while maintaining quality"}, {"q": "Why does fine-tuned RAG outperform either fine-tuning or RAG alone?", "options": ["RAG provides faster inference speed to fine-tuned models", "Fine-tuning eliminates the need for document retrieval", "Fine-tuning teaches the model how to effectively synthesize retrieved context in your desired format and style", "The two techniques cancel out each other&#39;s weaknesses mathematically"], "correct": 2, "explanation": "The correct answer is: Fine-tuning teaches the model how to effectively synthesize retrieved context in your desired format and style"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the five production fine-tuning patterns?" back="1. Router (classify and route to specialist adapters), 2. Cascade (cheap model first, escalate if uncertain), 3. Distillation (small model mimics large model), 4. Fine-tuned RAG (fine-tune + retrieval combined), 5. Multi-LoRA (swap adapters at runtime)" />
-<Card front="What cost savings does the cascade pattern typically achieve?" back="63% cost reduction: 70% of queries handled by a cheap model ($0.001) and 30% escalated to an expensive model ($0.010), yielding $0.0037 average vs $0.010 without cascade." />
-<Card front="What are the four sections of the production checklist?" back="1. Data (representative, deduplicated, PII-stripped, licensed), 2. Model (evaluation gates, no forgetting, win rate >60%), 3. Deployment (health checks, monitoring, rollback, rate limits), 4. Operations (flywheel, retraining schedule, version tracking)" />
-<Card front="What is the typical quality retention when distilling from a large to small model?" back="The student model achieves 85-95% of the teacher model's quality on in-distribution queries, while running at roughly 1/10th the cost." />
-<Card front="What three fundamentals remain constant despite rapidly changing tools?" back="1. Data quality (always the most important factor), 2. Rigorous evaluation (metrics, benchmarks, quality gates), 3. Systematic deployment (monitoring, versioning, flywheels)" />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the five production fine-tuning patterns?", "back": "1. Router (classify and route to specialist adapters), 2. Cascade (cheap model first, escalate if uncertain), 3. Distillation (small model mimics large model), 4. Fine-tuned RAG (fine-tune + retrieval combined), 5. Multi-LoRA (swap adapters at runtime)"}, {"front": "What cost savings does the cascade pattern typically achieve?", "back": "63% cost reduction: 70% of queries handled by a cheap model ($0.001) and 30% escalated to an expensive model ($0.010), yielding $0.0037 average vs $0.010 without cascade."}, {"front": "What are the four sections of the production checklist?", "back": "1. Data (representative, deduplicated, PII-stripped, licensed), 2. Model (evaluation gates, no forgetting, win rate >60%), 3. Deployment (health checks, monitoring, rollback, rate limits), 4. Operations (flywheel, retraining schedule, version tracking)"}, {"front": "What is the typical quality retention when distilling from a large to small model?", "back": "The student model achieves 85-95% of the teacher model&#39;s quality on in-distribution queries, while running at roughly 1/10th the cost."}, {"front": "What three fundamentals remain constant despite rapidly changing tools?", "back": "1. Data quality (always the most important factor), 2. Rigorous evaluation (metrics, benchmarks, quality gates), 3. Systematic deployment (monitoring, versioning, flywheels)"}]}'></div>
 
 </div>

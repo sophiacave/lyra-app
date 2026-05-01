@@ -250,26 +250,8 @@ Journals increasingly require reproducibility artifacts. Nature, Science, and mo
 </div>
 </div>
 
-<QuizMC
-  question="What is the 'one-command test' for reproducibility?"
-  options={["Running your code once to check for errors", "Cloning your repo on a clean machine and producing all results with a single command (like 'make all') without manual intervention", "Testing with one dataset", "Running one statistical test"]}
-  correct={1}
-  explanation="Clone your repo on a clean machine, run 'make all' (or equivalent). If it produces every result, figure, and table without manual intervention, your pipeline is reproducible. Any 'just tweak this one thing' step means it's not truly reproducible."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the &#39;one-command test&#39; for reproducibility?", "options": ["Running your code once to check for errors", "Cloning your repo on a clean machine and producing all results with a single command (like &#39;make all&#39;) without manual intervention", "Testing with one dataset", "Running one statistical test"], "correct": 1, "explanation": "Clone your repo on a clean machine, run &#39;make all&#39; (or equivalent). If it produces every result, figure, and table without manual intervention, your pipeline is reproducible. Any &#39;just tweak this one thing&#39; step means it&#39;s not truly reproducible."}, {"q": "Why do Docker containers provide better reproducibility than pinned Python requirements alone?", "options": ["Docker is faster", "Containers capture system-level dependencies (OS, C libraries, CUDA) that pip requirements don&#39;t", "Docker is required by journals", "Containers produce smaller files"], "correct": 1, "explanation": "Pinned Python requirements help but don&#39;t capture OS version, system libraries (libhdf5, BLAS), or GPU framework versions (CUDA). Docker containers capture the entire environment, ensuring identical execution regardless of the host system."}]}'></div>
 
-<QuizMC
-  question="Why do Docker containers provide better reproducibility than pinned Python requirements alone?"
-  options={["Docker is faster", "Containers capture system-level dependencies (OS, C libraries, CUDA) that pip requirements don't", "Docker is required by journals", "Containers produce smaller files"]}
-  correct={1}
-  explanation="Pinned Python requirements help but don't capture OS version, system libraries (libhdf5, BLAS), or GPU framework versions (CUDA). Docker containers capture the entire environment, ensuring identical execution regardless of the host system."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the three levels of reproducibility?", back: "1) Computational: same data + same code = same results. 2) Replicability: same methods + new data = similar results. 3) Robustness: different methods + same question = converging results. AI automation primarily enables level 1." },
-  { front: "What should a Makefile for reproducible research include?", back: "Targets for: setup (install dependencies), data download, preprocessing, analysis, figure generation, regression tests, and clean. Each step has explicit inputs, outputs, and fixed random seeds." },
-  { front: "How does automated literature monitoring work?", back: "Weekly Semantic Scholar API scans for new papers matching your queries. Score each for relevance. AI summarizes relevant papers into a digest. You review in 15 minutes instead of hours. Add citation alerts for papers citing your work." },
-  { front: "What is the citation impact of reproducible papers?", back: "Papers with available code and data receive 25-40% more citations than comparable papers without. Reproducibility investment pays returns in both scientific integrity and career advancement." },
-  { front: "What are the nine items on the reproducibility checklist?", back: "Code availability (public repo), data availability (DOI), environment spec (requirements/Docker), one-command execution, random seeds, regression tests, documentation (README), figure source code, and persistent identifiers (DOIs)." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three levels of reproducibility?", "back": "1) Computational: same data + same code = same results. 2) Replicability: same methods + new data = similar results. 3) Robustness: different methods + same question = converging results. AI automation primarily enables level 1."}, {"front": "What should a Makefile for reproducible research include?", "back": "Targets for: setup (install dependencies), data download, preprocessing, analysis, figure generation, regression tests, and clean. Each step has explicit inputs, outputs, and fixed random seeds."}, {"front": "How does automated literature monitoring work?", "back": "Weekly Semantic Scholar API scans for new papers matching your queries. Score each for relevance. AI summarizes relevant papers into a digest. You review in 15 minutes instead of hours. Add citation alerts for papers citing your work."}, {"front": "What is the citation impact of reproducible papers?", "back": "Papers with available code and data receive 25-40% more citations than comparable papers without. Reproducibility investment pays returns in both scientific integrity and career advancement."}, {"front": "What are the nine items on the reproducibility checklist?", "back": "Code availability (public repo), data availability (DOI), environment spec (requirements/Docker), one-command execution, random seeds, regression tests, documentation (README), figure source code, and persistent identifiers (DOIs)."}]}'></div>
 
 </div>

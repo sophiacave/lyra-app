@@ -188,26 +188,8 @@ Before you scale, optimize:
 The order matters. Teams that scale before optimizing spend 3-5x more than teams that optimize first.
 </div>
 
-<QuizMC
-  question="Why doesn't traditional CPU-based auto-scaling work for AI workloads?"
-  options={["AI uses GPUs, not CPUs", "The bottleneck is typically the API provider's rate limit, not your server capacity", "AI requests are too fast for auto-scaling to react", "CPU metrics are inaccurate for AI"]}
-  correct={1}
-  explanation="When you're calling third-party AI APIs, the bottleneck is the provider's rate limit (e.g., 500 RPM), not your server's CPU. Adding more servers just creates more idle workers. Scale consumers to match provider capacity, not demand."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why doesn&#39;t traditional CPU-based auto-scaling work for AI workloads?", "options": ["AI uses GPUs, not CPUs", "The bottleneck is typically the API provider&#39;s rate limit, not your server capacity", "AI requests are too fast for auto-scaling to react", "CPU metrics are inaccurate for AI"], "correct": 1, "explanation": "When you&#39;re calling third-party AI APIs, the bottleneck is the provider&#39;s rate limit (e.g., 500 RPM), not your server&#39;s CPU. Adding more servers just creates more idle workers. Scale consumers to match provider capacity, not demand."}, {"q": "What should you do before implementing horizontal scaling?", "options": ["Add more servers first, optimize later", "Cache, route to cheaper models, and batch -- then scale", "Switch to a faster programming language", "Move to a bigger cloud instance"], "correct": 1, "explanation": "Optimize before scaling: caching (40% hit rate = 40% fewer calls), model routing (cheap models for simple tasks), and batching. Teams that scale before optimizing spend 3-5x more than teams that optimize first."}]}'></div>
 
-<QuizMC
-  question="What should you do before implementing horizontal scaling?"
-  options={["Add more servers first, optimize later", "Cache, route to cheaper models, and batch -- then scale", "Switch to a faster programming language", "Move to a bigger cloud instance"]}
-  correct={1}
-  explanation="Optimize before scaling: caching (40% hit rate = 40% fewer calls), model routing (cheap models for simple tasks), and batching. Teams that scale before optimizing spend 3-5x more than teams that optimize first."
-/>
-
-<FlashDeck cards={[
-  { front: "Why do AI workloads scale differently than web services?", back: "AI requests are slow (5-30s), expensive (real token costs), bursty (unpredictable spikes), and rate-limited (provider API caps). Standard auto-scaling assumptions don't apply." },
-  { front: "What is provider pooling?", back: "Distributing AI API calls across multiple providers (Anthropic, OpenAI, local models) to increase aggregate throughput, gain fault tolerance, and avoid vendor lock-in." },
-  { front: "What are four benefits of queue-based architecture for AI?", back: "1) Backpressure management. 2) Priority handling (paid before free). 3) Automatic retries without user waiting. 4) Rate limit smoothing (burst fills queue, consumers drain at provider's pace)." },
-  { front: "What custom signals should AI auto-scaling use?", back: "Queue depth, average wait time, provider RPM headroom, active connections, and error rate. The key insight: don't scale past provider capacity -- it just creates idle workers." },
-  { front: "What is the correct order for handling scale?", back: "1) Cache first (reduce call volume). 2) Route to cheaper models (free capacity). 3) Batch where possible (throughput gains). 4) Then scale horizontally. Optimize before scaling." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "Why do AI workloads scale differently than web services?", "back": "AI requests are slow (5-30s), expensive (real token costs), bursty (unpredictable spikes), and rate-limited (provider API caps). Standard auto-scaling assumptions don&#39;t apply."}, {"front": "What is provider pooling?", "back": "Distributing AI API calls across multiple providers (Anthropic, OpenAI, local models) to increase aggregate throughput, gain fault tolerance, and avoid vendor lock-in."}, {"front": "What are four benefits of queue-based architecture for AI?", "back": "1) Backpressure management. 2) Priority handling (paid before free). 3) Automatic retries without user waiting. 4) Rate limit smoothing (burst fills queue, consumers drain at provider&#39;s pace)."}, {"front": "What custom signals should AI auto-scaling use?", "back": "Queue depth, average wait time, provider RPM headroom, active connections, and error rate. The key insight: don&#39;t scale past provider capacity -- it just creates idle workers."}, {"front": "What is the correct order for handling scale?", "back": "1) Cache first (reduce call volume). 2) Route to cheaper models (free capacity). 3) Batch where possible (throughput gains). 4) Then scale horizontally. Optimize before scaling."}]}'></div>
 
 </div>

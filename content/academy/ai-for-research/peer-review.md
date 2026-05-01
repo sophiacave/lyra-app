@@ -196,26 +196,8 @@ Integrate AI into your review response workflow:
 This systematic approach prevents the common failure mode of rushing the revision, missing reviewer points, and triggering a hostile second review round.
 </div>
 
-<QuizMC
-  question="What is the highest-ROI use of AI in the peer review process?"
-  options={["Writing the paper faster", "Pre-submission review to catch weaknesses before real reviewers do", "Generating additional analyses", "Arguing with reviewer critiques"]}
-  correct={1}
-  explanation="Pre-submission AI review typically reduces revision rounds from 2-3 to 1, saving 2-4 months per round. The hour spent on pre-review is among the highest-return investments in the publication process."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the highest-ROI use of AI in the peer review process?", "options": ["Writing the paper faster", "Pre-submission review to catch weaknesses before real reviewers do", "Generating additional analyses", "Arguing with reviewer critiques"], "correct": 1, "explanation": "Pre-submission AI review typically reduces revision rounds from 2-3 to 1, saving 2-4 months per round. The hour spent on pre-review is among the highest-return investments in the publication process."}, {"q": "If two of three reviewers raise the same concern, what should you do?", "options": ["Use AI to construct a strong counterargument", "Ignore it if you believe you&#39;re correct", "Revise the paper to address the concern, regardless of whether your counterargument is technically valid", "Ask the editor to overrule the reviewers"], "correct": 2, "explanation": "When multiple reviewers independently raise the same concern, it&#39;s valid regardless of your counterargument. The paper is not communicating effectively on that point. Revise rather than argue."}]}'></div>
 
-<QuizMC
-  question="If two of three reviewers raise the same concern, what should you do?"
-  options={["Use AI to construct a strong counterargument", "Ignore it if you believe you're correct", "Revise the paper to address the concern, regardless of whether your counterargument is technically valid", "Ask the editor to overrule the reviewers"]}
-  correct={2}
-  explanation="When multiple reviewers independently raise the same concern, it's valid regardless of your counterargument. The paper is not communicating effectively on that point. Revise rather than argue."
-/>
-
-<FlashDeck cards={[
-  { front: "How should you run AI pre-submission review for best results?", back: "Run the review prompt three times at different temperatures (0.3, 0.7, 1.0). Low temperature finds obvious issues. High temperature surfaces creative objections. Simulate three reviewer roles: methodology, theory, and presentation." },
-  { front: "What is the preemptive defense strategy?", back: "If you know a weakness exists but cannot fix it, address it explicitly in your limitations/discussion. Reviewers who find acknowledged limitations are far more lenient than those who discover unaddressed flaws." },
-  { front: "What is the golden rule of reviewer responses?", back: "Agree whenever possible, partially agree when reasonable, disagree only with strong evidence. Never be defensive or condescending. Keep responses concise and substantive. Address every single point." },
-  { front: "What should you NOT use AI for in peer review?", back: "Generating fake analyses (misconduct). Padding response letters with verbose filler. Arguing with reviewers when you should be revising. If multiple reviewers raise the same concern, revise." },
-  { front: "What is the four-week revision response timeline?", back: "Day 1: Read reviews, process emotions. Day 2-3: AI categorization. Week 1-2: Easy fixes and additional analyses. Week 2-3: Substantive revisions. Week 3-4: Response letter with AI completeness check." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "How should you run AI pre-submission review for best results?", "back": "Run the review prompt three times at different temperatures (0.3, 0.7, 1.0). Low temperature finds obvious issues. High temperature surfaces creative objections. Simulate three reviewer roles: methodology, theory, and presentation."}, {"front": "What is the preemptive defense strategy?", "back": "If you know a weakness exists but cannot fix it, address it explicitly in your limitations/discussion. Reviewers who find acknowledged limitations are far more lenient than those who discover unaddressed flaws."}, {"front": "What is the golden rule of reviewer responses?", "back": "Agree whenever possible, partially agree when reasonable, disagree only with strong evidence. Never be defensive or condescending. Keep responses concise and substantive. Address every single point."}, {"front": "What should you NOT use AI for in peer review?", "back": "Generating fake analyses (misconduct). Padding response letters with verbose filler. Arguing with reviewers when you should be revising. If multiple reviewers raise the same concern, revise."}, {"front": "What is the four-week revision response timeline?", "back": "Day 1: Read reviews, process emotions. Day 2-3: AI categorization. Week 1-2: Easy fixes and additional analyses. Week 2-3: Substantive revisions. Week 3-4: Response letter with AI completeness check."}]}'></div>
 
 </div>

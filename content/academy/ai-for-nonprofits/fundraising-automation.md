@@ -94,25 +94,8 @@ free: false
 </div>
 </div>
 
-<QuizMC
-  question="What is the average donor retention rate for nonprofits?"
-  options='["73%", "63%", "43%", "23%"]'
-  answer="2"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the average donor retention rate for nonprofits?", "options": ["73%", "63%", "43%", "23%"], "correct": 2, "explanation": "The correct answer is: 43%"}, {"q": "What is &#39;impact anchoring&#39; on a donation page?", "options": ["Linking the nonprofit&#39;s founding story to the current campaign", "Tying each gift amount to a specific tangible outcome", "Showing the organization&#39;s total annual budget", "Displaying the number of staff members"], "correct": 1, "explanation": "The correct answer is: Tying each gift amount to a specific tangible outcome"}]}'></div>
 
-<QuizMC
-  question="What is 'impact anchoring' on a donation page?"
-  options='["Linking the nonprofit's founding story to the current campaign", "Tying each gift amount to a specific tangible outcome", "Showing the organization's total annual budget", "Displaying the number of staff members"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the 5 AI-identified donor segments?", "back": "Rising Stars (increasing gifts), Faithful Givers (consistent), Event-Driven (give at galas), At-Risk (declining engagement), Digital-First (high online engagement, small gifts)"},
-  {"front": "How many touches are in the stewardship sequence?", "back": "7 touches over 12 months: thank-you, impact update, behind-the-scenes, volunteer invite, mid-year report, beneficiary story, year-end appeal"},
-  {"front": "What signals predict donor lapse?", "back": "Decreased email engagement, skipped event attendance, smaller gifts, and longer gaps between gifts"},
-  {"front": "Which donors are best candidates for monthly giving?", "back": "Small frequent donors and those who give at every appeal -- they already demonstrate consistent giving behavior"},
-  {"front": "What privacy rule applies to donor data and AI?", "back": "Never feed donor PII (emails, phones, financial details) into cloud AI. Use anonymized IDs for analysis, merge personalization back in your secure CRM."},
-  {"front": "What tool chain automates personalized donor thank-yous?", "back": "CRM triggers Make.com workflow, which calls Claude API to draft personalized thank-you, routes to staff for 30-second review, then sends."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the 5 AI-identified donor segments?", "back": "Rising Stars (increasing gifts), Faithful Givers (consistent), Event-Driven (give at galas), At-Risk (declining engagement), Digital-First (high online engagement, small gifts)"}, {"front": "How many touches are in the stewardship sequence?", "back": "7 touches over 12 months: thank-you, impact update, behind-the-scenes, volunteer invite, mid-year report, beneficiary story, year-end appeal"}, {"front": "What signals predict donor lapse?", "back": "Decreased email engagement, skipped event attendance, smaller gifts, and longer gaps between gifts"}, {"front": "Which donors are best candidates for monthly giving?", "back": "Small frequent donors and those who give at every appeal -- they already demonstrate consistent giving behavior"}, {"front": "What privacy rule applies to donor data and AI?", "back": "Never feed donor PII (emails, phones, financial details) into cloud AI. Use anonymized IDs for analysis, merge personalization back in your secure CRM."}, {"front": "What tool chain automates personalized donor thank-yous?", "back": "CRM triggers Make.com workflow, which calls Claude API to draft personalized thank-you, routes to staff for 30-second review, then sends."}]}'></div>
 
 </div>

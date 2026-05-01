@@ -185,26 +185,8 @@ Take the first scene from your script package (Lesson 2 exercise). Generate: 1 c
 </div>
 </div>
 
-<QuizMC>
-<Question text="Why is storyboarding with image AI more cost-effective than iterating directly with video generation?">
-<Option text="Image generation produces higher quality results" />
-<Option correct text="Image generation costs 1/10th as much, allowing more iterations before committing to video" />
-<Option text="Video generators require storyboards as mandatory input" />
-<Option text="Storyboards are needed for copyright protection" />
-</Question>
-<Question text="Which camera technique is generally RELIABLE in current AI video generators?">
-<Option text="Steadicam orbit around a subject" />
-<Option text="Fast whip pan" />
-<Option correct text="Slow dolly forward" />
-<Option text="Complex multi-character blocking" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why is storyboarding with image AI more cost-effective than iterating directly with video generation?", "options": ["Image generation produces higher quality results", "Image generation costs 1/10th as much, allowing more iterations before committing to video", "Video generators require storyboards as mandatory input", "Storyboards are needed for copyright protection"], "correct": 1, "explanation": "The correct answer is: Image generation costs 1/10th as much, allowing more iterations before committing to video"}, {"q": "Which camera technique is generally RELIABLE in current AI video generators?", "options": ["Steadicam orbit around a subject", "Fast whip pan", "Slow dolly forward", "Complex multi-character blocking"], "correct": 2, "explanation": "The correct answer is: Slow dolly forward"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the four steps in the storyboard generation workflow?" back="1. Mood frame (atmosphere/lighting/color), 2. Composition frame (character placement, camera angle), 3. Action frames (2-3 progression keyframes), 4. Annotate (camera movement, duration, audio, transitions)" />
-<Card front="Why must character reference sheets be generated BEFORE storyboards?" back="The character reference serves as a style anchor for all subsequent storyboard frames, creating visual consistency from the first frame to the last." />
-<Card front="What six components make up the production bible?" back="1. Master shot list, 2. Character reference sheets, 3. Annotated storyboard frames, 4. Color palette document, 5. Camera movement notes, 6. Audio direction" />
-<Card front="What three purposes do character reference sheets serve in AI cinema?" back="1. Image-to-video input for generation, 2. Style reference for storyboard frames, 3. Consistency check for every generated shot" />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the four steps in the storyboard generation workflow?", "back": "1. Mood frame (atmosphere/lighting/color), 2. Composition frame (character placement, camera angle), 3. Action frames (2-3 progression keyframes), 4. Annotate (camera movement, duration, audio, transitions)"}, {"front": "Why must character reference sheets be generated BEFORE storyboards?", "back": "The character reference serves as a style anchor for all subsequent storyboard frames, creating visual consistency from the first frame to the last."}, {"front": "What six components make up the production bible?", "back": "1. Master shot list, 2. Character reference sheets, 3. Annotated storyboard frames, 4. Color palette document, 5. Camera movement notes, 6. Audio direction"}, {"front": "What three purposes do character reference sheets serve in AI cinema?", "back": "1. Image-to-video input for generation, 2. Style reference for storyboard frames, 3. Consistency check for every generated shot"}]}'></div>
 
 </div>

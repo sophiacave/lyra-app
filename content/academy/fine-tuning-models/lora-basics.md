@@ -263,26 +263,8 @@ Using the dataset from Lesson 2, fine-tune a small model (Llama 3.1 8B or Mistra
 </div>
 </div>
 
-<QuizMC>
-<Question text="What is the key mathematical insight behind LoRA?">
-<Option text="Small models can be made as powerful as large models through fine-tuning" />
-<Option correct text="Weight updates during fine-tuning have low intrinsic dimensionality and can be decomposed into smaller matrices" />
-<Option text="Transformer attention layers are redundant and can be removed" />
-<Option text="Gradient descent converges faster on smaller matrices" />
-</Question>
-<Question text="What does 'r=16 on all modules' vs 'r=32 on attention-only' typically produce?">
-<Option correct text="Low rank on many modules often outperforms high rank on few modules" />
-<Option text="High rank on few modules always produces better results" />
-<Option text="They produce identical results since total parameter count is similar" />
-<Option text="Neither approach works well -- full fine-tuning is always needed" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key mathematical insight behind LoRA?", "options": ["Small models can be made as powerful as large models through fine-tuning", "Weight updates during fine-tuning have low intrinsic dimensionality and can be decomposed into smaller matrices", "Transformer attention layers are redundant and can be removed", "Gradient descent converges faster on smaller matrices"], "correct": 1, "explanation": "The correct answer is: Weight updates during fine-tuning have low intrinsic dimensionality and can be decomposed into smaller matrices"}, {"q": "What does &#39;r=16 on all modules&#39; vs &#39;r=32 on attention-only&#39; typically produce?", "options": ["Low rank on many modules often outperforms high rank on few modules", "High rank on few modules always produces better results", "They produce identical results since total parameter count is similar", "Neither approach works well -- full fine-tuning is always needed"], "correct": 0, "explanation": "The correct answer is: Low rank on many modules often outperforms high rank on few modules"}]}'></div>
 
-<FlashDeck>
-<Card front="How much parameter reduction does LoRA achieve with rank 16 on a 4096x4096 weight matrix?" back="Full update: 16.7M parameters. LoRA r=16: 131K parameters. That is a 99.2% reduction in trainable parameters." />
-<Card front="What are the three key LoRA hyperparameters?" back="1. Rank (r): dimensionality of low-rank matrices (typical: 8-32). 2. Alpha: scaling factor (common: 2x rank). 3. Target modules: which layers get adapters (start with q_proj + v_proj)." />
-<Card front="How much VRAM does LoRA fine-tuning of Llama 3.1 8B require vs full fine-tuning?" back="LoRA: ~20GB VRAM. Full fine-tuning: ~72GB VRAM. LoRA requires roughly 1/4 the memory." />
-<Card front="What is the advantage of saving a LoRA adapter separately vs merging?" back="Separate adapters are tiny (10-100MB), can be swapped at runtime, and keep the base model untouched. Merged models are simpler to deploy but lose adapter modularity." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "How much parameter reduction does LoRA achieve with rank 16 on a 4096x4096 weight matrix?", "back": "Full update: 16.7M parameters. LoRA r=16: 131K parameters. That is a 99.2% reduction in trainable parameters."}, {"front": "What are the three key LoRA hyperparameters?", "back": "1. Rank (r): dimensionality of low-rank matrices (typical: 8-32). 2. Alpha: scaling factor (common: 2x rank). 3. Target modules: which layers get adapters (start with q_proj + v_proj)."}, {"front": "How much VRAM does LoRA fine-tuning of Llama 3.1 8B require vs full fine-tuning?", "back": "LoRA: ~20GB VRAM. Full fine-tuning: ~72GB VRAM. LoRA requires roughly 1/4 the memory."}, {"front": "What is the advantage of saving a LoRA adapter separately vs merging?", "back": "Separate adapters are tiny (10-100MB), can be swapped at runtime, and keep the base model untouched. Merged models are simpler to deploy but lose adapter modularity."}]}'></div>
 
 </div>

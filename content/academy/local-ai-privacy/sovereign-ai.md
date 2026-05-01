@@ -135,25 +135,8 @@ cp -r ~/.ollama/Modelfiles ~/backups/</code></pre>
 <p>You now have every piece: local models, private embeddings, vector search, RAG systems, GPU optimization, autonomous agents, privacy architecture, hybrid routing, and a complete sovereign stack. The tools are free. The knowledge is yours. Build something that matters.</p>
 </div>
 
-<QuizMC
-  question="What is the minimum viable model set for a sovereign AI stack?"
-  options='["Just one large model", "General purpose + coding + reasoning + embedding models", "Only embedding models", "You need at least 10 different models"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the minimum viable model set for a sovereign AI stack?", "options": ["Just one large model", "General purpose + coding + reasoning + embedding models", "Only embedding models", "You need at least 10 different models"], "correct": 1, "explanation": "The correct answer is: General purpose + coding + reasoning + embedding models"}, {"q": "What is the 3-year cost comparison between cloud-only and sovereign AI for an individual?", "options": ["Cloud is cheaper at $500 vs $2,000", "They cost about the same", "Sovereign is cheaper at ~$2,000 vs ~$2,520, plus you own the hardware", "Sovereign costs 3x more"], "correct": 2, "explanation": "The correct answer is: Sovereign is cheaper at ~$2,000 vs ~$2,520, plus you own the hardware"}]}'></div>
 
-<QuizMC
-  question="What is the 3-year cost comparison between cloud-only and sovereign AI for an individual?"
-  options='["Cloud is cheaper at $500 vs $2,000", "They cost about the same", "Sovereign is cheaper at ~$2,000 vs ~$2,520, plus you own the hardware", "Sovereign costs 3x more"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the 7 layers of the sovereign AI stack?", "back": "1) Hardware, 2) Runtime (Ollama), 3) Models (open-source), 4) Knowledge (vector DB), 5) RAG pipeline, 6) Agent framework, 7) Interface (CLI/web UI/API)"},
-  {"front": "What self-hosted tool replaces GitHub Copilot?", "back": "Continue.dev connected to Ollama -- free, private, local code completion and chat in VS Code"},
-  {"front": "What needs to be backed up in a sovereign stack?", "back": "ChromaDB directory (knowledge base) and custom Modelfiles. Models themselves can be re-downloaded from Ollama."},
-  {"front": "Why is the sovereign stack portable?", "back": "It depends only on Ollama and Python, not on a specific machine. Copy ChromaDB, Modelfiles, and agent scripts to new hardware, pull models, and everything works."},
-  {"front": "What is the philosophical argument for AI sovereignty?", "back": "AI is becoming infrastructure. Who controls infrastructure controls users. Sovereign AI means owning your cognitive infrastructure -- private, governed by your values, available on your terms."},
-  {"front": "What is the recommended maintenance cadence?", "back": "Monthly: check for new models, test before switching, run ollama list and remove unused models, monitor tokens-per-second. Weekly: back up ChromaDB."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the 7 layers of the sovereign AI stack?", "back": "1) Hardware, 2) Runtime (Ollama), 3) Models (open-source), 4) Knowledge (vector DB), 5) RAG pipeline, 6) Agent framework, 7) Interface (CLI/web UI/API)"}, {"front": "What self-hosted tool replaces GitHub Copilot?", "back": "Continue.dev connected to Ollama -- free, private, local code completion and chat in VS Code"}, {"front": "What needs to be backed up in a sovereign stack?", "back": "ChromaDB directory (knowledge base) and custom Modelfiles. Models themselves can be re-downloaded from Ollama."}, {"front": "Why is the sovereign stack portable?", "back": "It depends only on Ollama and Python, not on a specific machine. Copy ChromaDB, Modelfiles, and agent scripts to new hardware, pull models, and everything works."}, {"front": "What is the philosophical argument for AI sovereignty?", "back": "AI is becoming infrastructure. Who controls infrastructure controls users. Sovereign AI means owning your cognitive infrastructure -- private, governed by your values, available on your terms."}, {"front": "What is the recommended maintenance cadence?", "back": "Monthly: check for new models, test before switching, run ollama list and remove unused models, monitor tokens-per-second. Weekly: back up ChromaDB."}]}'></div>
 
 </div>

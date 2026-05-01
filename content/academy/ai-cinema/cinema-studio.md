@@ -279,27 +279,8 @@ Document your complete AI cinema studio setup: hardware, software subscriptions,
 </div>
 </div>
 
-<QuizMC>
-<Question text="When does API-based pricing become cheaper than subscriptions for video generation?">
-<Option text="It is always cheaper to use APIs" />
-<Option text="When you produce fewer than 10 clips per month" />
-<Option correct text="When you exceed approximately 30 clips per month in production volume" />
-<Option text="APIs and subscriptions cost the same at any volume" />
-</Question>
-<Question text="What is the recommended first investment for an AI cinema studio?">
-<Option text="A powerful GPU for local AI inference" />
-<Option text="Professional video cameras for hybrid production" />
-<Option correct text="A color-accurate display and studio headphones for quality evaluation" />
-<Option text="Studio space for client meetings" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "When does API-based pricing become cheaper than subscriptions for video generation?", "options": ["It is always cheaper to use APIs", "When you produce fewer than 10 clips per month", "When you exceed approximately 30 clips per month in production volume", "APIs and subscriptions cost the same at any volume"], "correct": 2, "explanation": "The correct answer is: When you exceed approximately 30 clips per month in production volume"}, {"q": "What is the recommended first investment for an AI cinema studio?", "options": ["A powerful GPU for local AI inference", "Professional video cameras for hybrid production", "A color-accurate display and studio headphones for quality evaluation", "Studio space for client meetings"], "correct": 2, "explanation": "The correct answer is: A color-accurate display and studio headphones for quality evaluation"}]}'></div>
 
-<FlashDeck>
-<Card front="What is the total monthly cost for a full professional AI cinema software stack?" back="$70-170/month covering: video generation (Kling, Runway), image generation (Midjourney), voice (ElevenLabs), music (Suno), and LLM (Claude/ChatGPT). DaVinci Resolve is free." />
-<Card front="What is the timeline for a short film using the project template?" back="Week 1: Script + storyboard. Week 2: Video generation. Week 3: Edit + color + VFX + audio. Week 4: Polish + export + distribution." />
-<Card front="What is the scaling path from solo filmmaker to studio?" back="Months 1-3: Build portfolio (3+ films). Months 4-6: First commissions. Months 7-12: Raise rates, add contractors (scriptwriter, sound designer, social manager). Target $3K-8K/month by month 12." />
-<Card front="Why should AI cinema studios specialize rather than generalize?" back="Generalists compete on price. Specialists compete on quality. Specializing in a genre or client type (brand films, music videos, education) commands higher rates and builds a recognizable brand." />
-<Card front="What does the batch video generation automation save?" back="2-3 hours to set up initially. Saves 30-60 minutes per project. Pays for itself by the third production. Saves a full workday by the tenth." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the total monthly cost for a full professional AI cinema software stack?", "back": "$70-170/month covering: video generation (Kling, Runway), image generation (Midjourney), voice (ElevenLabs), music (Suno), and LLM (Claude/ChatGPT). DaVinci Resolve is free."}, {"front": "What is the timeline for a short film using the project template?", "back": "Week 1: Script + storyboard. Week 2: Video generation. Week 3: Edit + color + VFX + audio. Week 4: Polish + export + distribution."}, {"front": "What is the scaling path from solo filmmaker to studio?", "back": "Months 1-3: Build portfolio (3+ films). Months 4-6: First commissions. Months 7-12: Raise rates, add contractors (scriptwriter, sound designer, social manager). Target $3K-8K/month by month 12."}, {"front": "Why should AI cinema studios specialize rather than generalize?", "back": "Generalists compete on price. Specialists compete on quality. Specializing in a genre or client type (brand films, music videos, education) commands higher rates and builds a recognizable brand."}, {"front": "What does the batch video generation automation save?", "back": "2-3 hours to set up initially. Saves 30-60 minutes per project. Pays for itself by the third production. Saves a full workday by the tenth."}]}'></div>
 
 </div>

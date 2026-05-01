@@ -79,25 +79,8 @@ free: false
 <p>Always protect beneficiary privacy. Use composites, change identifying details, and get consent when using real stories. AI can help anonymize: "Rewrite this beneficiary story changing all identifying details while preserving the emotional arc and program impact."</p>
 </div>
 
-<QuizMC
-  question="What is the '1-to-5 rule' in nonprofit content marketing?"
-  options='["Post 1 time for every 5 followers", "Every piece of content can be repurposed into 5 formats for different channels", "Spend 1 hour creating for every 5 hours planning", "Post 1 promotional post for every 5 educational posts"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the &#39;1-to-5 rule&#39; in nonprofit content marketing?", "options": ["Post 1 time for every 5 followers", "Every piece of content can be repurposed into 5 formats for different channels", "Spend 1 hour creating for every 5 hours planning", "Post 1 promotional post for every 5 educational posts"], "correct": 1, "explanation": "The correct answer is: Every piece of content can be repurposed into 5 formats for different channels"}, {"q": "How much does Google Ad Grants provide to eligible nonprofits monthly?", "options": ["$1,000", "$5,000", "$10,000", "$25,000"], "correct": 2, "explanation": "The correct answer is: $10,000"}]}'></div>
 
-<QuizMC
-  question="How much does Google Ad Grants provide to eligible nonprofits monthly?"
-  options='["$1,000", "$5,000", "$10,000", "$25,000"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the 5 content pillars for nonprofit social media?", "back": "Impact stories, educational content, behind-the-scenes, calls to action, and community engagement (questions/polls/celebrations)"},
-  {"front": "What is the average nonprofit email open rate, and what can AI optimization achieve?", "back": "Average is 25%. With AI-optimized subject lines and content, you can push to 35%+."},
-  {"front": "What is the nonprofit storytelling framework?", "back": "Character (who) + Conflict (challenge) + Journey (what happened) + Transformation (what changed) + Call to Action (how audience helps)"},
-  {"front": "Why is the P.S. line important in nonprofit emails?", "back": "Research shows it's the second-most-read part after the subject line. Always include a direct ask or secondary CTA."},
-  {"front": "What free email tools are available for nonprofits?", "back": "Mailchimp (free under 500 contacts), Brevo (free 300 emails/day), Google Workspace for nonprofits (free via TechSoup)"},
-  {"front": "What three keyword intent groups matter for nonprofit SEO?", "back": "People seeking help, people wanting to donate or volunteer, and people researching the issue"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the 5 content pillars for nonprofit social media?", "back": "Impact stories, educational content, behind-the-scenes, calls to action, and community engagement (questions/polls/celebrations)"}, {"front": "What is the average nonprofit email open rate, and what can AI optimization achieve?", "back": "Average is 25%. With AI-optimized subject lines and content, you can push to 35%+."}, {"front": "What is the nonprofit storytelling framework?", "back": "Character (who) + Conflict (challenge) + Journey (what happened) + Transformation (what changed) + Call to Action (how audience helps)"}, {"front": "Why is the P.S. line important in nonprofit emails?", "back": "Research shows it&#39;s the second-most-read part after the subject line. Always include a direct ask or secondary CTA."}, {"front": "What free email tools are available for nonprofits?", "back": "Mailchimp (free under 500 contacts), Brevo (free 300 emails/day), Google Workspace for nonprofits (free via TechSoup)"}, {"front": "What three keyword intent groups matter for nonprofit SEO?", "back": "People seeking help, people wanting to donate or volunteer, and people researching the issue"}]}'></div>
 
 </div>

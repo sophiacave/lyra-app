@@ -130,24 +130,8 @@ text = "".join([page.get_text() for page in doc])</code></pre>
 </ul>
 </div>
 
-<QuizMC
-  question="What is the primary advantage of RAG over fine-tuning for private data?"
-  options='["RAG is faster at inference", "RAG is easier to update, keeps data transparent, and doesn't alter the model", "Fine-tuning always produces worse results", "RAG requires less disk space"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary advantage of RAG over fine-tuning for private data?", "options": ["RAG is faster at inference", "RAG is easier to update, keeps data transparent, and doesn&#39;t alter the model", "Fine-tuning always produces worse results", "RAG requires less disk space"], "correct": 1, "explanation": "The correct answer is: RAG is easier to update, keeps data transparent, and doesn&#39;t alter the model"}, {"q": "How many context chunks should you typically pass to a local LLM in a RAG system?", "options": ["1-2 chunks", "3-5 chunks", "10-15 chunks", "As many as possible"], "correct": 1, "explanation": "The correct answer is: 3-5 chunks"}]}'></div>
 
-<QuizMC
-  question="How many context chunks should you typically pass to a local LLM in a RAG system?"
-  options='["1-2 chunks", "3-5 chunks", "10-15 chunks", "As many as possible"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the 5 components of a RAG pipeline?", "back": "1) Document ingestion, 2) Embedding, 3) Vector storage, 4) Retrieval (find relevant chunks), 5) Generation (LLM answers using retrieved context)"},
-  {"front": "What is the most important RAG prompt instruction?", "back": "\"Answer based ONLY on the provided context. If the context doesn't contain the answer, say so.\" This prevents hallucination."},
-  {"front": "How do you evaluate RAG quality?", "back": "Build a 20-question test set with known answers. Measure: Retrieval accuracy (right doc in top 3), Answer accuracy (correct answers), Hallucination rate (fabricated info)"},
-  {"front": "Why does preprocessing quality matter for RAG?", "back": "Clean chunks produce better embeddings which produce better retrievals which produce better answers. Every step compounds quality (or lack of it)."},
-  {"front": "How do you handle spreadsheets in a RAG system?", "back": "Convert each row to a natural language text description before embedding. Example: CSV row becomes 'Q1 Revenue was $500,000, representing a 15% increase.'"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the 5 components of a RAG pipeline?", "back": "1) Document ingestion, 2) Embedding, 3) Vector storage, 4) Retrieval (find relevant chunks), 5) Generation (LLM answers using retrieved context)"}, {"front": "What is the most important RAG prompt instruction?", "back": "\"Answer based ONLY on the provided context. If the context doesn&#39;t contain the answer, say so.\" This prevents hallucination."}, {"front": "How do you evaluate RAG quality?", "back": "Build a 20-question test set with known answers. Measure: Retrieval accuracy (right doc in top 3), Answer accuracy (correct answers), Hallucination rate (fabricated info)"}, {"front": "Why does preprocessing quality matter for RAG?", "back": "Clean chunks produce better embeddings which produce better retrievals which produce better answers. Every step compounds quality (or lack of it)."}, {"front": "How do you handle spreadsheets in a RAG system?", "back": "Convert each row to a natural language text description before embedding. Example: CSV row becomes &#39;Q1 Revenue was $500,000, representing a 15% increase.&#39;"}]}'></div>
 
 </div>

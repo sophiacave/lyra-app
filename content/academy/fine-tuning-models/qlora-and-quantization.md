@@ -244,26 +244,8 @@ Fine-tune Llama 3.1 8B using QLoRA on a machine with 8-12GB VRAM (RTX 3070/3080 
 </div>
 </div>
 
-<QuizMC>
-<Question text="What makes NormalFloat4 (NF4) quantization superior to uniform INT4 for model weights?">
-<Option text="NF4 uses fewer bits per weight than INT4" />
-<Option text="NF4 only quantizes attention layers while keeping MLP in full precision" />
-<Option correct text="NF4 creates non-uniform bins matching the normal distribution of weights, preserving more precision near zero where most values cluster" />
-<Option text="NF4 is faster to compute than INT4 during inference" />
-</Question>
-<Question text="What is the primary tradeoff of using QLoRA instead of standard LoRA?">
-<Option text="QLoRA produces significantly lower quality models" />
-<Option text="QLoRA requires more training data" />
-<Option correct text="QLoRA is 20-30% slower due to quantization/dequantization overhead, trading speed for memory savings" />
-<Option text="QLoRA adapters cannot be merged with the base model" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What makes NormalFloat4 (NF4) quantization superior to uniform INT4 for model weights?", "options": ["NF4 uses fewer bits per weight than INT4", "NF4 only quantizes attention layers while keeping MLP in full precision", "NF4 creates non-uniform bins matching the normal distribution of weights, preserving more precision near zero where most values cluster", "NF4 is faster to compute than INT4 during inference"], "correct": 2, "explanation": "The correct answer is: NF4 creates non-uniform bins matching the normal distribution of weights, preserving more precision near zero where most values cluster"}, {"q": "What is the primary tradeoff of using QLoRA instead of standard LoRA?", "options": ["QLoRA produces significantly lower quality models", "QLoRA requires more training data", "QLoRA is 20-30% slower due to quantization/dequantization overhead, trading speed for memory savings", "QLoRA adapters cannot be merged with the base model"], "correct": 2, "explanation": "The correct answer is: QLoRA is 20-30% slower due to quantization/dequantization overhead, trading speed for memory savings"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the three innovations in QLoRA?" back="1. 4-bit NormalFloat (NF4) quantized base model with 16-bit LoRA adapters. 2. Double quantization (quantize the quantization constants). 3. Paged optimizers (auto-offload to CPU on memory spikes)." />
-<Card front="How much VRAM does QLoRA require for Llama 3.1 70B vs standard LoRA?" back="QLoRA: ~36 GB. Standard LoRA: ~150 GB. QLoRA reduces memory by roughly 4x." />
-<Card front="What is the typical quality loss from QLoRA compared to full fine-tuning?" back="QLoRA retains 97-98% of full fine-tuning quality. Standard LoRA retains 98-99%. The gap is smaller than the impact of training data quality." />
-<Card front="When should you prefer standard LoRA over QLoRA?" back="When you have sufficient VRAM, need maximum training speed, want the highest quality, or are training on high-end GPUs (A100/H100) where memory is not the constraint." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three innovations in QLoRA?", "back": "1. 4-bit NormalFloat (NF4) quantized base model with 16-bit LoRA adapters. 2. Double quantization (quantize the quantization constants). 3. Paged optimizers (auto-offload to CPU on memory spikes)."}, {"front": "How much VRAM does QLoRA require for Llama 3.1 70B vs standard LoRA?", "back": "QLoRA: ~36 GB. Standard LoRA: ~150 GB. QLoRA reduces memory by roughly 4x."}, {"front": "What is the typical quality loss from QLoRA compared to full fine-tuning?", "back": "QLoRA retains 97-98% of full fine-tuning quality. Standard LoRA retains 98-99%. The gap is smaller than the impact of training data quality."}, {"front": "When should you prefer standard LoRA over QLoRA?", "back": "When you have sufficient VRAM, need maximum training speed, want the highest quality, or are training on high-end GPUs (A100/H100) where memory is not the constraint."}]}'></div>
 
 </div>

@@ -239,26 +239,8 @@ Using your dataset from Lesson 2, calculate: total training tokens, estimated th
 </div>
 </div>
 
-<QuizMC>
-<Question text="What is the recommended approach for your FIRST fine-tuning run?">
-<Option text="Rent the most powerful GPU available (H100) to ensure success" />
-<Option text="Always train locally to avoid cloud costs" />
-<Option correct text="Use a managed fine-tuning API (OpenAI or Together AI) for zero infrastructure setup" />
-<Option text="Start with multi-GPU DeepSpeed training for maximum speed" />
-</Question>
-<Question text="Why should you budget 3-5x your estimated compute cost?">
-<Option text="Cloud GPU prices fluctuate unpredictably" />
-<Option correct text="First attempts often fail due to hyperparameter issues, data format bugs, or quality problems, requiring multiple training runs" />
-<Option text="You need to train multiple model sizes to compare" />
-<Option text="Evaluation and testing require the same compute as training" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the recommended approach for your FIRST fine-tuning run?", "options": ["Rent the most powerful GPU available (H100) to ensure success", "Always train locally to avoid cloud costs", "Use a managed fine-tuning API (OpenAI or Together AI) for zero infrastructure setup", "Start with multi-GPU DeepSpeed training for maximum speed"], "correct": 2, "explanation": "The correct answer is: Use a managed fine-tuning API (OpenAI or Together AI) for zero infrastructure setup"}, {"q": "Why should you budget 3-5x your estimated compute cost?", "options": ["Cloud GPU prices fluctuate unpredictably", "First attempts often fail due to hyperparameter issues, data format bugs, or quality problems, requiring multiple training runs", "You need to train multiple model sizes to compare", "Evaluation and testing require the same compute as training"], "correct": 1, "explanation": "The correct answer is: First attempts often fail due to hyperparameter issues, data format bugs, or quality problems, requiring multiple training runs"}]}'></div>
 
-<FlashDeck>
-<Card front="What is the training cost formula?" back="Total cost = (training_tokens / tokens_per_second) * ($/hour / 3600). Training tokens = num_examples * avg_tokens_per_example * num_epochs." />
-<Card front="What are the three DeepSpeed ZeRO stages?" back="Stage 1: Partition optimizer states. Stage 2: Partition optimizer + gradients (default choice). Stage 3: Partition optimizer + gradients + model params (for very large models, higher communication overhead)." />
-<Card front="What models can a consumer RTX 4090 (24GB) fine-tune?" back="QLoRA: up to 13B models. Standard LoRA: up to 7B models. Full fine-tuning: not practical for any modern LLM." />
-<Card front="When should you choose FSDP over DeepSpeed?" back="Choose FSDP for native PyTorch integration and simpler configuration. Choose DeepSpeed for maximum flexibility, CPU offloading, and more granular memory optimization." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the training cost formula?", "back": "Total cost = (training_tokens / tokens_per_second) * ($/hour / 3600). Training tokens = num_examples * avg_tokens_per_example * num_epochs."}, {"front": "What are the three DeepSpeed ZeRO stages?", "back": "Stage 1: Partition optimizer states. Stage 2: Partition optimizer + gradients (default choice). Stage 3: Partition optimizer + gradients + model params (for very large models, higher communication overhead)."}, {"front": "What models can a consumer RTX 4090 (24GB) fine-tune?", "back": "QLoRA: up to 13B models. Standard LoRA: up to 7B models. Full fine-tuning: not practical for any modern LLM."}, {"front": "When should you choose FSDP over DeepSpeed?", "back": "Choose FSDP for native PyTorch integration and simpler configuration. Choose DeepSpeed for maximum flexibility, CPU offloading, and more granular memory optimization."}]}'></div>
 
 </div>

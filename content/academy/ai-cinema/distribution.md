@@ -221,26 +221,8 @@ Consistency in distribution builds audience. Establish:
 The AI cinema space is early enough that consistent, high-quality output will establish you as a recognizable name within 6-12 months.
 </div>
 
-<QuizMC>
-<Question text="Why should AI filmmakers create 'making of' companion videos?">
-<Option text="Film festivals require behind-the-scenes documentation" />
-<Option text="It doubles your content output for the algorithm" />
-<Option correct text="Behind-the-scenes process videos often get more views because the AI filmmaking community seeks workflow knowledge" />
-<Option text="YouTube requires supplementary content for monetization" />
-</Question>
-<Question text="How should you position yourself when submitting to film festivals?">
-<Option text="As a technology company showcasing AI capabilities" />
-<Option text="As an animator using digital tools" />
-<Option correct text="As a filmmaker who uses AI tools, centering artistic vision over technology" />
-<Option text="As an AI researcher exploring creative applications" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why should AI filmmakers create &#39;making of&#39; companion videos?", "options": ["Film festivals require behind-the-scenes documentation", "It doubles your content output for the algorithm", "Behind-the-scenes process videos often get more views because the AI filmmaking community seeks workflow knowledge", "YouTube requires supplementary content for monetization"], "correct": 2, "explanation": "The correct answer is: Behind-the-scenes process videos often get more views because the AI filmmaking community seeks workflow knowledge"}, {"q": "How should you position yourself when submitting to film festivals?", "options": ["As a technology company showcasing AI capabilities", "As an animator using digital tools", "As a filmmaker who uses AI tools, centering artistic vision over technology", "As an AI researcher exploring creative applications"], "correct": 2, "explanation": "The correct answer is: As a filmmaker who uses AI tools, centering artistic vision over technology"}]}'></div>
 
-<FlashDeck>
-<Card front="What is the YouTube title formula for AI short films?" back="[Hook] | [Subject] -- AI Short Film. Example: 'She Discovered Her Memories Were Fake | Rain Memory -- AI Short Film'" />
-<Card front="What commission pricing range can AI filmmakers charge?" back="30s social ad: $300-800. 1-min explainer: $500-1,500. 3-min brand film: $1,500-5,000. Music video: $1,000-3,000. Margins are 95%+ on production costs." />
-<Card front="How many social media content pieces can be repurposed from one short film?" back="15-20 pieces: individual shots, before/after comparisons, process clips, storyboard reveals, tool tutorials, and behind-the-scenes commentary." />
-<Card front="What is the recommended release cadence for AI filmmakers?" back="One short film per month (sustainable with AI tools) plus weekly behind-the-scenes content to maintain audience engagement between releases." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the YouTube title formula for AI short films?", "back": "[Hook] | [Subject] -- AI Short Film. Example: &#39;She Discovered Her Memories Were Fake | Rain Memory -- AI Short Film&#39;"}, {"front": "What commission pricing range can AI filmmakers charge?", "back": "30s social ad: $300-800. 1-min explainer: $500-1,500. 3-min brand film: $1,500-5,000. Music video: $1,000-3,000. Margins are 95%+ on production costs."}, {"front": "How many social media content pieces can be repurposed from one short film?", "back": "15-20 pieces: individual shots, before/after comparisons, process clips, storyboard reveals, tool tutorials, and behind-the-scenes commentary."}, {"front": "What is the recommended release cadence for AI filmmakers?", "back": "One short film per month (sustainable with AI tools) plus weekly behind-the-scenes content to maintain audience engagement between releases."}]}'></div>
 
 </div>

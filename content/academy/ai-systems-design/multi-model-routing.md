@@ -249,26 +249,8 @@ MODEL_REGISTRY = {
 The registry is the single source of truth for capabilities, costs, and constraints. When you add a new model, update the registry. The router and fallback chain adapt automatically.
 </div>
 
-<QuizMC
-  question="What is the main trade-off of cascading model routing?"
-  options={["It costs more than other routing strategies", "It adds latency for hard requests that fail quality checks at cheaper tiers", "It requires more models", "It reduces output quality"]}
-  correct={1}
-  explanation="Cascading starts with the cheapest model and escalates if quality is insufficient. For hard requests that fail multiple tiers, latency can be 2-3x higher. Use cascading for async tasks where latency is acceptable, and classifier-based routing for real-time interactions."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the main trade-off of cascading model routing?", "options": ["It costs more than other routing strategies", "It adds latency for hard requests that fail quality checks at cheaper tiers", "It requires more models", "It reduces output quality"], "correct": 1, "explanation": "Cascading starts with the cheapest model and escalates if quality is insufficient. For hard requests that fail multiple tiers, latency can be 2-3x higher. Use cascading for async tasks where latency is acceptable, and classifier-based routing for real-time interactions."}, {"q": "Why should fallback chains include cross-provider models?", "options": ["Different providers are cheaper", "Same-provider fallbacks don&#39;t help during provider-wide outages", "Cross-provider produces better quality", "It&#39;s required by SLA agreements"], "correct": 1, "explanation": "If Anthropic has an outage, falling back to another Anthropic model doesn&#39;t help. Cross-provider fallbacks (Anthropic -> OpenAI) ensure your system stays up even when an entire provider goes down."}]}'></div>
 
-<QuizMC
-  question="Why should fallback chains include cross-provider models?"
-  options={["Different providers are cheaper", "Same-provider fallbacks don't help during provider-wide outages", "Cross-provider produces better quality", "It's required by SLA agreements"]}
-  correct={1}
-  explanation="If Anthropic has an outage, falling back to another Anthropic model doesn't help. Cross-provider fallbacks (Anthropic -> OpenAI) ensure your system stays up even when an entire provider goes down."
-/>
-
-<FlashDeck cards={[
-  { front: "What is a model abstraction layer?", back: "A unified interface that normalizes different provider APIs (Anthropic, OpenAI, local) into a common format. Switching models becomes a config change, not a code change. Each adapter declares its capabilities." },
-  { front: "What are the three routing strategies?", back: "1) Rule-based: map task types to models statically. 2) Classifier-based: ML model scores complexity and selects tier. 3) Cascading: start cheap, escalate if quality fails. Each has different latency/cost trade-offs." },
-  { front: "What are the four design principles for fallback chains?", back: "1) Cross-provider fallbacks for outage resilience. 2) Local model as ultimate backstop. 3) Semantic cache as final fallback. 4) Track fallback usage to detect capacity issues." },
-  { front: "How should you A/B test model changes?", back: "Start with 5-10% traffic to the new model. Compare quality scores, latency, and cost over 1,000+ requests. Only promote when statistically better or equivalent on quality at lower cost." },
-  { front: "What does a model registry contain?", back: "Capabilities, cost per MTok, average latency, rate limits, and context window for each model. It's the single source of truth that the router, fallback chain, and experiment system all reference." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is a model abstraction layer?", "back": "A unified interface that normalizes different provider APIs (Anthropic, OpenAI, local) into a common format. Switching models becomes a config change, not a code change. Each adapter declares its capabilities."}, {"front": "What are the three routing strategies?", "back": "1) Rule-based: map task types to models statically. 2) Classifier-based: ML model scores complexity and selects tier. 3) Cascading: start cheap, escalate if quality fails. Each has different latency/cost trade-offs."}, {"front": "What are the four design principles for fallback chains?", "back": "1) Cross-provider fallbacks for outage resilience. 2) Local model as ultimate backstop. 3) Semantic cache as final fallback. 4) Track fallback usage to detect capacity issues."}, {"front": "How should you A/B test model changes?", "back": "Start with 5-10% traffic to the new model. Compare quality scores, latency, and cost over 1,000+ requests. Only promote when statistically better or equivalent on quality at lower cost."}, {"front": "What does a model registry contain?", "back": "Capabilities, cost per MTok, average latency, rate limits, and context window for each model. It&#39;s the single source of truth that the router, fallback chain, and experiment system all reference."}]}'></div>
 
 </div>

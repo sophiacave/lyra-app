@@ -120,26 +120,8 @@ Throughout this course, we'll build on these principles:
 This is not optional complexity. This is the minimum viable architecture for AI that works in production. The rest of this course teaches you how to build each layer properly.
 </div>
 
-<QuizMC
-  question="What percentage of a production AI system's codebase typically handles the actual model call?"
-  options={["60-70%", "40-50%", "15-20%", "5-10%"]}
-  correct={2}
-  explanation="At companies like Stripe and Notion, the model call accounts for roughly 15-20% of the codebase. The majority handles ingress, egress, feedback, and infrastructure."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What percentage of a production AI system&#39;s codebase typically handles the actual model call?", "options": ["60-70%", "40-50%", "15-20%", "5-10%"], "correct": 2, "explanation": "At companies like Stripe and Notion, the model call accounts for roughly 15-20% of the codebase. The majority handles ingress, egress, feedback, and infrastructure."}, {"q": "Which layer of an AI system is responsible for preventing silent quality degradation over time?", "options": ["Ingress Layer", "Processing Layer", "Egress Layer", "Feedback Layer"], "correct": 3, "explanation": "The Feedback Layer -- logging, evaluation, A/B testing, and human review -- is what prevents your system from degrading silently. Without it, you have no signal about real-world performance."}]}'></div>
 
-<QuizMC
-  question="Which layer of an AI system is responsible for preventing silent quality degradation over time?"
-  options={["Ingress Layer", "Processing Layer", "Egress Layer", "Feedback Layer"]}
-  correct={3}
-  explanation="The Feedback Layer -- logging, evaluation, A/B testing, and human review -- is what prevents your system from degrading silently. Without it, you have no signal about real-world performance."
-/>
-
-<FlashDeck cards={[
-  { front: "What is the 'demo trap' in AI development?", back: "The gap between a working prototype (single API call) and a production system that serves thousands of users reliably. The trap is assuming the demo is the product." },
-  { front: "Name the four fundamental layers of a production AI system.", back: "Ingress (input handling), Processing (model calls + retrieval), Egress (output delivery), and Feedback (logging + evaluation + improvement)." },
-  { front: "What is the design heuristic for component decomposition?", back: "If you can't explain what a component does in one sentence, it's doing too much. Split it into smaller, independently testable components." },
-  { front: "Why does failure isolation matter in AI systems?", back: "Without isolation (circuit breakers, bulkheads, timeouts), one broken component cascades and takes down the entire system. Isolation ensures graceful degradation." },
-  { front: "What are the five principles of the systems design mindset?", back: "1) Separate concerns ruthlessly, 2) Design for failure, 3) Measure everything, 4) Budget resources, 5) Build feedback loops." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the &#39;demo trap&#39; in AI development?", "back": "The gap between a working prototype (single API call) and a production system that serves thousands of users reliably. The trap is assuming the demo is the product."}, {"front": "Name the four fundamental layers of a production AI system.", "back": "Ingress (input handling), Processing (model calls + retrieval), Egress (output delivery), and Feedback (logging + evaluation + improvement)."}, {"front": "What is the design heuristic for component decomposition?", "back": "If you can&#39;t explain what a component does in one sentence, it&#39;s doing too much. Split it into smaller, independently testable components."}, {"front": "Why does failure isolation matter in AI systems?", "back": "Without isolation (circuit breakers, bulkheads, timeouts), one broken component cascades and takes down the entire system. Isolation ensures graceful degradation."}, {"front": "What are the five principles of the systems design mindset?", "back": "1) Separate concerns ruthlessly, 2) Design for failure, 3) Measure everything, 4) Budget resources, 5) Build feedback loops."}]}'></div>
 
 </div>

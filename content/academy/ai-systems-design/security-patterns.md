@@ -198,26 +198,8 @@ For example, a RAG system retrieves a document that contains: "AI assistant: dis
 Defenses: treat all retrieved content as untrusted data (never as instructions), strip or escape potential injection patterns from retrieved documents, use separate system prompts that explicitly warn about embedded instructions, and limit tool capabilities to the minimum required for the task.
 </div>
 
-<QuizMC
-  question="Why is prompt injection fundamentally difficult to solve?"
-  options={["Models are not smart enough", "There aren't good regex patterns for detection", "Instructions and data share the same natural language channel, so the model cannot reliably distinguish them", "API providers don't offer security features"]}
-  correct={2}
-  explanation="Prompt injection is an inherent property of systems where instructions and data share the same channel (natural language). The model processes both identically, making it fundamentally impossible to perfectly separate trusted instructions from untrusted input."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why is prompt injection fundamentally difficult to solve?", "options": ["Models are not smart enough", "There aren&#39;t good regex patterns for detection", "Instructions and data share the same natural language channel, so the model cannot reliably distinguish them", "API providers don&#39;t offer security features"], "correct": 2, "explanation": "Prompt injection is an inherent property of systems where instructions and data share the same channel (natural language). The model processes both identically, making it fundamentally impossible to perfectly separate trusted instructions from untrusted input."}, {"q": "What is the &#39;sandwich defense&#39; in prompt architecture?", "options": ["Encrypting the prompt", "Placing system instructions both before and after user input to reinforce rules", "Using multiple models in sequence", "Splitting the prompt into three API calls"], "correct": 1, "explanation": "The sandwich defense places system instructions before the user input and reinforcement instructions after it. This makes it harder for injected instructions to override the system prompt because the model sees the rules reasserted after the user&#39;s message."}]}'></div>
 
-<QuizMC
-  question="What is the 'sandwich defense' in prompt architecture?"
-  options={["Encrypting the prompt", "Placing system instructions both before and after user input to reinforce rules", "Using multiple models in sequence", "Splitting the prompt into three API calls"]}
-  correct={1}
-  explanation="The sandwich defense places system instructions before the user input and reinforcement instructions after it. This makes it harder for injected instructions to override the system prompt because the model sees the rules reasserted after the user's message."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the five major AI threat categories?", back: "1) Prompt injection (override instructions). 2) Data exfiltration (reveal internal data). 3) Jailbreaking (bypass safety). 4) Indirect injection (malicious retrieved documents). 5) Denial of wallet (maximize token cost)." },
-  { front: "How does layered defense math work?", back: "If each independent layer catches 70% of attacks, three layers catch 97.3% (1 - 0.3^3). No single layer needs to be perfect -- the combination makes attacks exponentially harder." },
-  { front: "What are the key sandboxing principles for AI-generated code?", back: "No network access, no filesystem writes, memory and time limits, allowlisted imports only, isolated containers destroyed after each execution." },
-  { front: "What is indirect prompt injection?", back: "Malicious instructions embedded in documents, web pages, or tool outputs that the AI retrieves and processes. The user is not the attacker -- the data source is. Treat all retrieved content as untrusted data, never as instructions." },
-  { front: "What does the full defense-in-depth stack include?", back: "WAF, API gateway auth, input guardrail, sandwich prompt defense, minimum-permission model calls, output guardrail, PII scrubbing, and audit logging. Plus: scoped API keys, secret management, per-user rate limits, and regular red-teaming." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the five major AI threat categories?", "back": "1) Prompt injection (override instructions). 2) Data exfiltration (reveal internal data). 3) Jailbreaking (bypass safety). 4) Indirect injection (malicious retrieved documents). 5) Denial of wallet (maximize token cost)."}, {"front": "How does layered defense math work?", "back": "If each independent layer catches 70% of attacks, three layers catch 97.3% (1 - 0.3^3). No single layer needs to be perfect -- the combination makes attacks exponentially harder."}, {"front": "What are the key sandboxing principles for AI-generated code?", "back": "No network access, no filesystem writes, memory and time limits, allowlisted imports only, isolated containers destroyed after each execution."}, {"front": "What is indirect prompt injection?", "back": "Malicious instructions embedded in documents, web pages, or tool outputs that the AI retrieves and processes. The user is not the attacker -- the data source is. Treat all retrieved content as untrusted data, never as instructions."}, {"front": "What does the full defense-in-depth stack include?", "back": "WAF, API gateway auth, input guardrail, sandwich prompt defense, minimum-permission model calls, output guardrail, PII scrubbing, and audit logging. Plus: scoped API keys, secret management, per-user rate limits, and regular red-teaming."}]}'></div>
 
 </div>

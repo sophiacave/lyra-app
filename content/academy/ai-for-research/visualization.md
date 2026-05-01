@@ -227,26 +227,8 @@ COLORS = {
 Every figure script imports this module, ensuring visual consistency across your entire paper. When a journal requests style changes, you update one file.
 </div>
 
-<QuizMC
-  question="Why should modern research figures show individual data points, not just bars and error bars?"
-  options={["It looks more visually appealing", "Individual data points reveal the full distribution, outliers, and sample size, providing transparency that bars alone hide", "Journals require it", "It makes the figure larger and easier to read"]}
-  correct={1}
-  explanation="Bars and error bars can hide bimodal distributions, outliers, and small sample sizes. Showing individual data points (strip plots, swarm plots) lets reviewers and readers assess the actual data distribution, which is why modern journals increasingly expect it."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why should modern research figures show individual data points, not just bars and error bars?", "options": ["It looks more visually appealing", "Individual data points reveal the full distribution, outliers, and sample size, providing transparency that bars alone hide", "Journals require it", "It makes the figure larger and easier to read"], "correct": 1, "explanation": "Bars and error bars can hide bimodal distributions, outliers, and small sample sizes. Showing individual data points (strip plots, swarm plots) lets reviewers and readers assess the actual data distribution, which is why modern journals increasingly expect it."}, {"q": "What should you never use to compare groups in a research figure?", "options": ["Bar charts", "Violin plots", "Pie charts", "Box plots"], "correct": 2, "explanation": "Pie charts are ineffective for comparison because humans are poor at comparing angles and areas. Bar charts, dot plots, violin plots, and box plots all allow direct comparison of values on a common axis, which humans process much more accurately."}]}'></div>
 
-<QuizMC
-  question="What should you never use to compare groups in a research figure?"
-  options={["Bar charts", "Violin plots", "Pie charts", "Box plots"]}
-  correct={2}
-  explanation="Pie charts are ineffective for comparison because humans are poor at comparing angles and areas. Bar charts, dot plots, violin plots, and box plots all allow direct comparison of values on a common axis, which humans process much more accurately."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the standard journal figure requirements?", back: "Width: 3.5in (single column) or 7in (double column). DPI: 300 minimum, 600 for line art. Font: Arial/Helvetica, 8pt minimum. Colors: colorblind-safe palette. Format: PDF and TIFF." },
-  { front: "What is the 'figure-first analysis' approach?", back: "Visualize your data before running statistics. Distributions and scatter plots reveal patterns, outliers, and assumption violations that summary statistics hide. Anscombe's quartet proves identical stats can mask completely different data patterns." },
-  { front: "How do you ensure color accessibility in figures?", back: "Use colorblind-safe palettes (seaborn 'colorblind', matplotlib viridis). Never rely on red/green distinction alone. Add markers, patterns, or direct labels as redundant encodings. 8% of men have color vision deficiency." },
-  { front: "What is the benefit of a reusable figure style module?", back: "Every figure shares consistent fonts, sizes, colors, and spine styling. When a journal requests changes, update one file. Import it at the start of every figure script for visual consistency across your paper." },
-  { front: "How do you choose between scatter plot, violin plot, and bar chart?", back: "Scatter plot: two continuous variables showing relationship. Violin plot: comparing distributions across groups. Bar chart: comparing group means (best with individual data point overlay). Match the chart to what you want to communicate." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the standard journal figure requirements?", "back": "Width: 3.5in (single column) or 7in (double column). DPI: 300 minimum, 600 for line art. Font: Arial/Helvetica, 8pt minimum. Colors: colorblind-safe palette. Format: PDF and TIFF."}, {"front": "What is the &#39;figure-first analysis&#39; approach?", "back": "Visualize your data before running statistics. Distributions and scatter plots reveal patterns, outliers, and assumption violations that summary statistics hide. Anscombe&#39;s quartet proves identical stats can mask completely different data patterns."}, {"front": "How do you ensure color accessibility in figures?", "back": "Use colorblind-safe palettes (seaborn &#39;colorblind&#39;, matplotlib viridis). Never rely on red/green distinction alone. Add markers, patterns, or direct labels as redundant encodings. 8% of men have color vision deficiency."}, {"front": "What is the benefit of a reusable figure style module?", "back": "Every figure shares consistent fonts, sizes, colors, and spine styling. When a journal requests changes, update one file. Import it at the start of every figure script for visual consistency across your paper."}, {"front": "How do you choose between scatter plot, violin plot, and bar chart?", "back": "Scatter plot: two continuous variables showing relationship. Violin plot: comparing distributions across groups. Bar chart: comparing group means (best with individual data point overlay). Match the chart to what you want to communicate."}]}'></div>
 
 </div>

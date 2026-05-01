@@ -281,27 +281,8 @@ Choose a specific task (classification, format conversion, or style matching). C
 </div>
 </div>
 
-<QuizMC>
-<Question text="What is the most important data quality principle for fine-tuning?">
-<Option text="Collect as much data as possible regardless of quality" />
-<Option text="Use only real data, never synthetic data" />
-<Option correct text="100 perfect examples beat 1,000 mediocre examples -- always prioritize quality over quantity" />
-<Option text="All examples should be the exact same length" />
-</Question>
-<Question text="What is the teacher-student pattern in synthetic data generation?">
-<Option text="A student model teaches a teacher model new patterns" />
-<Option correct text="A stronger model (teacher) generates training examples for a smaller model (student) to learn from" />
-<Option text="Two models of equal size trade training data" />
-<Option text="A model is fine-tuned on its own previous outputs" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the most important data quality principle for fine-tuning?", "options": ["Collect as much data as possible regardless of quality", "Use only real data, never synthetic data", "100 perfect examples beat 1,000 mediocre examples -- always prioritize quality over quantity", "All examples should be the exact same length"], "correct": 2, "explanation": "The correct answer is: 100 perfect examples beat 1,000 mediocre examples -- always prioritize quality over quantity"}, {"q": "What is the teacher-student pattern in synthetic data generation?", "options": ["A student model teaches a teacher model new patterns", "A stronger model (teacher) generates training examples for a smaller model (student) to learn from", "Two models of equal size trade training data", "A model is fine-tuned on its own previous outputs"], "correct": 1, "explanation": "The correct answer is: A stronger model (teacher) generates training examples for a smaller model (student) to learn from"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the two primary training data formats for fine-tuning?" back="1. Chat format (messages array with system/user/assistant roles) for instruction tuning, 2. Completion format (prompt/completion pairs) for text generation" />
-<Card front="What are the three levels of quality filtering?" back="Level 1: Format validation (structure, required fields, length). Level 2: Content quality scoring (repetition, errors, refusals). Level 3: Deduplication (MinHash LSH to remove near-duplicates)." />
-<Card front="How many training examples do you need for a simple classification task?" back="Minimum 50-100, recommended 200-500. Diminishing returns begin around 1,000 examples for most classification tasks." />
-<Card front="What is the recommended dataset split ratio?" back="Training: 80-90%. Validation: 10-15% (monitor overfitting). Test: 5-10% (held completely out for final evaluation). Never contaminate test data." />
-<Card front="Why must training format match inference format exactly?" back="Format mismatch is a top-3 cause of poor fine-tuning results. If you use system prompts in production, include them in training. If you do not use multi-turn, do not train on multi-turn data." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the two primary training data formats for fine-tuning?", "back": "1. Chat format (messages array with system/user/assistant roles) for instruction tuning, 2. Completion format (prompt/completion pairs) for text generation"}, {"front": "What are the three levels of quality filtering?", "back": "Level 1: Format validation (structure, required fields, length). Level 2: Content quality scoring (repetition, errors, refusals). Level 3: Deduplication (MinHash LSH to remove near-duplicates)."}, {"front": "How many training examples do you need for a simple classification task?", "back": "Minimum 50-100, recommended 200-500. Diminishing returns begin around 1,000 examples for most classification tasks."}, {"front": "What is the recommended dataset split ratio?", "back": "Training: 80-90%. Validation: 10-15% (monitor overfitting). Test: 5-10% (held completely out for final evaluation). Never contaminate test data."}, {"front": "Why must training format match inference format exactly?", "back": "Format mismatch is a top-3 cause of poor fine-tuning results. If you use system prompts in production, include them in training. If you do not use multi-turn, do not train on multi-turn data."}]}'></div>
 
 </div>

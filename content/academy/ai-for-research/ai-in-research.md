@@ -134,26 +134,8 @@ Throughout this course, we will build a complete AI-augmented research workflow:
 Each lesson teaches the tools, the workflow, and the guardrails. By the end, you will have a research methodology that is faster, more thorough, and fully defensible.
 </div>
 
-<QuizMC
-  question="What is the most dangerous AI risk for scientific research?"
-  options={["AI writing poor quality prose", "Hallucinated citations -- fabricated references that sound real but don't exist", "AI being too slow for real-time analysis", "Journal editors rejecting AI-assisted papers"]}
-  correct={1}
-  explanation="LLMs fabricate plausible-sounding citations with real journal names and realistic titles -- but the papers don't exist. Every AI-generated citation must be manually verified in Google Scholar or Semantic Scholar. No exceptions."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the most dangerous AI risk for scientific research?", "options": ["AI writing poor quality prose", "Hallucinated citations -- fabricated references that sound real but don&#39;t exist", "AI being too slow for real-time analysis", "Journal editors rejecting AI-assisted papers"], "correct": 1, "explanation": "LLMs fabricate plausible-sounding citations with real journal names and realistic titles -- but the papers don&#39;t exist. Every AI-generated citation must be manually verified in Google Scholar or Semantic Scholar. No exceptions."}, {"q": "What do major publishers (Nature, Science, IEEE) have in common regarding AI use?", "options": ["They ban all AI use", "They require transparency, disclosure, and author accountability for AI-assisted content", "They require AI to be listed as a co-author", "They have no AI policies yet"], "correct": 1, "explanation": "The common thread across major publishers: you can use AI, you must disclose how you used it, and you are fully responsible for everything it produces. AI cannot be listed as an author."}]}'></div>
 
-<QuizMC
-  question="What do major publishers (Nature, Science, IEEE) have in common regarding AI use?"
-  options={["They ban all AI use", "They require transparency, disclosure, and author accountability for AI-assisted content", "They require AI to be listed as a co-author", "They have no AI policies yet"]}
-  correct={1}
-  explanation="The common thread across major publishers: you can use AI, you must disclose how you used it, and you are fully responsible for everything it produces. AI cannot be listed as an author."
-/>
-
-<FlashDeck cards={[
-  { front: "What percentage of researcher time is spent on tasks AI can automate?", back: "Roughly 50% -- literature search, data cleaning, statistical analysis, figure generation, and writing boilerplate sections. AI reclaims this time for actual scientific thinking." },
-  { front: "Name three specialized AI tools for research and what they do.", back: "Semantic Scholar: academic search with citation graphs. Elicit: extracts findings/methods from papers, answers questions across a corpus. Consensus: synthesizes evidence from 200M+ papers with source citations." },
-  { front: "What is the iron rule for AI in research?", back: "AI is a tool for speed, not a source of truth. Every factual claim, citation, and statistical result from AI must be independently verified against primary sources." },
-  { front: "What should an AI disclosure statement include?", back: "Which AI tools were used, for which specific tasks, what was NOT done by AI (e.g., data analysis, hypothesis generation), and confirmation that all AI content was reviewed and verified by authors." },
-  { front: "What are the three specific risks AI introduces to scientific rigor?", back: "1) Hallucinated citations (fabricated references). 2) Statistical confabulation (fake p-values/results). 3) Reasoning shortcuts (correlation mistaken for causation)." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What percentage of researcher time is spent on tasks AI can automate?", "back": "Roughly 50% -- literature search, data cleaning, statistical analysis, figure generation, and writing boilerplate sections. AI reclaims this time for actual scientific thinking."}, {"front": "Name three specialized AI tools for research and what they do.", "back": "Semantic Scholar: academic search with citation graphs. Elicit: extracts findings/methods from papers, answers questions across a corpus. Consensus: synthesizes evidence from 200M+ papers with source citations."}, {"front": "What is the iron rule for AI in research?", "back": "AI is a tool for speed, not a source of truth. Every factual claim, citation, and statistical result from AI must be independently verified against primary sources."}, {"front": "What should an AI disclosure statement include?", "back": "Which AI tools were used, for which specific tasks, what was NOT done by AI (e.g., data analysis, hypothesis generation), and confirmation that all AI content was reviewed and verified by authors."}, {"front": "What are the three specific risks AI introduces to scientific rigor?", "back": "1) Hallucinated citations (fabricated references). 2) Statistical confabulation (fake p-values/results). 3) Reasoning shortcuts (correlation mistaken for causation)."}]}'></div>
 
 </div>

@@ -146,25 +146,8 @@ curl http://localhost:11434/api/embed -d '{
 </div>
 </div>
 
-<QuizMC
-  question="What port does the Ollama API run on by default?"
-  options='["8080", "3000", "11434", "5000"]'
-  answer="2"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What port does the Ollama API run on by default?", "options": ["8080", "3000", "11434", "5000"], "correct": 2, "explanation": "The correct answer is: 11434"}, {"q": "What is the recommended model for a machine with 16GB RAM?", "options": ["llama3.1:70b", "qwen2.5:14b or mistral:7b", "gemma2:2b", "qwen2.5:72b"], "correct": 1, "explanation": "The correct answer is: qwen2.5:14b or mistral:7b"}]}'></div>
 
-<QuizMC
-  question="What is the recommended model for a machine with 16GB RAM?"
-  options='["llama3.1:70b", "qwen2.5:14b or mistral:7b", "gemma2:2b", "qwen2.5:72b"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What command installs Ollama on macOS or Linux?", "back": "curl -fsSL https://ollama.com/install.sh | sh"},
-  {"front": "How do you pull and run a model in Ollama?", "back": "ollama pull llama3.1:8b (downloads model) then ollama run llama3.1:8b (starts interactive chat)"},
-  {"front": "How do you list all downloaded models?", "back": "ollama list"},
-  {"front": "What makes Ollama's API compatible with existing tools?", "back": "It's OpenAI-compatible -- tools built for OpenAI's API work by changing the base URL to http://localhost:11434/v1"},
-  {"front": "What is the security consideration when exposing Ollama to the network?", "back": "Ollama has no built-in authentication. Setting OLLAMA_HOST=0.0.0.0 exposes it to the network -- only do this on trusted networks."},
-  {"front": "How do you generate embeddings with Ollama?", "back": "Use the /api/embed endpoint with an embedding model like nomic-embed-text"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What command installs Ollama on macOS or Linux?", "back": "curl -fsSL https://ollama.com/install.sh | sh"}, {"front": "How do you pull and run a model in Ollama?", "back": "ollama pull llama3.1:8b (downloads model) then ollama run llama3.1:8b (starts interactive chat)"}, {"front": "How do you list all downloaded models?", "back": "ollama list"}, {"front": "What makes Ollama&#39;s API compatible with existing tools?", "back": "It&#39;s OpenAI-compatible -- tools built for OpenAI&#39;s API work by changing the base URL to http://localhost:11434/v1"}, {"front": "What is the security consideration when exposing Ollama to the network?", "back": "Ollama has no built-in authentication. Setting OLLAMA_HOST=0.0.0.0 exposes it to the network -- only do this on trusted networks."}, {"front": "How do you generate embeddings with Ollama?", "back": "Use the /api/embed endpoint with an embedding model like nomic-embed-text"}]}'></div>
 
 </div>

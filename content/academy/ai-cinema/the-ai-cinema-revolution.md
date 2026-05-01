@@ -135,27 +135,8 @@ Over the next nine lessons, you will build a complete AI cinema practice:
 By the end, you will have produced a complete short film and understand every link in the chain from concept to distribution.
 </div>
 
-<QuizMC>
-<Question text="What is the approximate cost reduction factor when comparing traditional short film production to AI cinema production?">
-<Option text="10x cheaper" />
-<Option correct text="10,000x cheaper (4 orders of magnitude)" />
-<Option text="100x cheaper" />
-<Option text="About the same with different allocation" />
-</Question>
-<Question text="What has the primary bottleneck in filmmaking shifted to in the AI cinema era?">
-<Option text="Computing power and GPU access" />
-<Option text="Software licensing costs" />
-<Option correct text="Creativity, taste, and specificity of vision" />
-<Option text="Internet bandwidth for rendering" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the approximate cost reduction factor when comparing traditional short film production to AI cinema production?", "options": ["10x cheaper", "10,000x cheaper (4 orders of magnitude)", "100x cheaper", "About the same with different allocation"], "correct": 1, "explanation": "The correct answer is: 10,000x cheaper (4 orders of magnitude)"}, {"q": "What has the primary bottleneck in filmmaking shifted to in the AI cinema era?", "options": ["Computing power and GPU access", "Software licensing costs", "Creativity, taste, and specificity of vision", "Internet bandwidth for rendering"], "correct": 2, "explanation": "The correct answer is: Creativity, taste, and specificity of vision"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the five stages of the AI cinema pipeline?" back="1. Script & Story (LLMs), 2. Visual Pre-production (image gen), 3. Video Generation (Kling/Runway/Pika/Veo), 4. Audio Production (Suno/ElevenLabs), 5. Post-Production (DaVinci Resolve)" />
-<Card front="What are the five quality benchmarks for evaluating AI video?" back="1. Temporal consistency, 2. Physics plausibility, 3. Character consistency, 4. Motion naturalism, 5. Cinematic language (camera control)" />
-<Card front="Why is specificity of vision the core skill in AI cinema?" back="AI cinema is additive (constructed from language), not subtractive (framed from reality). Vague prompts produce vague results. Every detail in your prompt constrains the output toward your vision." />
-<Card front="What is the typical cost range for a 3-minute AI-produced short film?" back="$2-5 total, covering script (LLM tokens), storyboards (image gen), video generation credits, audio generation, and free editing tools." />
-<Card front="Why is the AI cinema pipeline described as modular?" back="Each stage uses independent tools that can be swapped. You are never vendor-locked and can adopt best-in-class tools as the field evolves." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the five stages of the AI cinema pipeline?", "back": "1. Script & Story (LLMs), 2. Visual Pre-production (image gen), 3. Video Generation (Kling/Runway/Pika/Veo), 4. Audio Production (Suno/ElevenLabs), 5. Post-Production (DaVinci Resolve)"}, {"front": "What are the five quality benchmarks for evaluating AI video?", "back": "1. Temporal consistency, 2. Physics plausibility, 3. Character consistency, 4. Motion naturalism, 5. Cinematic language (camera control)"}, {"front": "Why is specificity of vision the core skill in AI cinema?", "back": "AI cinema is additive (constructed from language), not subtractive (framed from reality). Vague prompts produce vague results. Every detail in your prompt constrains the output toward your vision."}, {"front": "What is the typical cost range for a 3-minute AI-produced short film?", "back": "$2-5 total, covering script (LLM tokens), storyboards (image gen), video generation credits, audio generation, and free editing tools."}, {"front": "Why is the AI cinema pipeline described as modular?", "back": "Each stage uses independent tools that can be swapped. You are never vendor-locked and can adopt best-in-class tools as the field evolves."}]}'></div>
 
 </div>

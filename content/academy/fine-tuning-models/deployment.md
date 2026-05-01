@@ -287,26 +287,8 @@ Take your fine-tuned model from previous lessons. Merge the LoRA adapter into th
 </div>
 </div>
 
-<QuizMC>
-<Question text="At what traffic level does self-hosted GPU deployment become more cost-effective than serverless?">
-<Option text="Any traffic level -- self-hosted is always cheaper" />
-<Option text="Only at millions of requests per day" />
-<Option correct text="Approximately 50,000-100,000 tokens per hour sustained" />
-<Option text="Serverless is always cheaper due to scale-to-zero" />
-</Question>
-<Question text="What is the recommended quantization format for production GPU serving?">
-<Option text="GGUF Q4_K_M for maximum compatibility" />
-<Option text="FP16 for maximum quality" />
-<Option correct text="AWQ 4-bit for the best speed-quality tradeoff on modern NVIDIA GPUs" />
-<Option text="INT8 for balanced performance" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "At what traffic level does self-hosted GPU deployment become more cost-effective than serverless?", "options": ["Any traffic level -- self-hosted is always cheaper", "Only at millions of requests per day", "Approximately 50,000-100,000 tokens per hour sustained", "Serverless is always cheaper due to scale-to-zero"], "correct": 2, "explanation": "The correct answer is: Approximately 50,000-100,000 tokens per hour sustained"}, {"q": "What is the recommended quantization format for production GPU serving?", "options": ["GGUF Q4_K_M for maximum compatibility", "FP16 for maximum quality", "AWQ 4-bit for the best speed-quality tradeoff on modern NVIDIA GPUs", "INT8 for balanced performance"], "correct": 2, "explanation": "The correct answer is: AWQ 4-bit for the best speed-quality tradeoff on modern NVIDIA GPUs"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the three deployment architecture options?" back="1. Self-hosted GPU (lowest latency, fixed cost, maximum control). 2. Serverless inference (auto-scaling, pay-per-token, cold starts). 3. Managed fine-tuning + hosting (simplest, least control)." />
-<Card front="What is the quantization format quality ranking?" back="AWQ >= GPTQ > GGUF Q6_K > GGUF Q4_K_M > GGUF Q3_K_S. AWQ for GPU production, GGUF Q4_K_M for local/edge deployment." />
-<Card front="What key metrics must be monitored for production model serving?" back="Request latency (p50/p95/p99), tokens per second, GPU utilization + VRAM, queue depth, error rate, and token count per request for cost tracking." />
-<Card front="What makes vLLM the standard for LLM serving?" back="PagedAttention for efficient VRAM management, continuous batching for maximum GPU utilization, and an OpenAI-compatible API. Throughput: up to 8,000 tok/s batched on A100 for 8B models." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three deployment architecture options?", "back": "1. Self-hosted GPU (lowest latency, fixed cost, maximum control). 2. Serverless inference (auto-scaling, pay-per-token, cold starts). 3. Managed fine-tuning + hosting (simplest, least control)."}, {"front": "What is the quantization format quality ranking?", "back": "AWQ >= GPTQ > GGUF Q6_K > GGUF Q4_K_M > GGUF Q3_K_S. AWQ for GPU production, GGUF Q4_K_M for local/edge deployment."}, {"front": "What key metrics must be monitored for production model serving?", "back": "Request latency (p50/p95/p99), tokens per second, GPU utilization + VRAM, queue depth, error rate, and token count per request for cost tracking."}, {"front": "What makes vLLM the standard for LLM serving?", "back": "PagedAttention for efficient VRAM management, continuous batching for maximum GPU utilization, and an OpenAI-compatible API. Throughput: up to 8,000 tok/s batched on A100 for 8B models."}]}'></div>
 
 </div>

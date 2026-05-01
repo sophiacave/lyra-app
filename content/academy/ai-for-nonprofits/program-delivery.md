@@ -78,24 +78,8 @@ free: false
 <p>A complete SOP library transforms your organization from person-dependent to system-dependent. When your best case manager leaves, the knowledge doesn't walk out the door.</p>
 </div>
 
-<QuizMC
-  question="What percentage of time do case managers typically spend writing case notes?"
-  options='["10-15%", "20-25%", "30-40%", "50-60%"]'
-  answer="2"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What percentage of time do case managers typically spend writing case notes?", "options": ["10-15%", "20-25%", "30-40%", "50-60%"], "correct": 2, "explanation": "The correct answer is: 30-40%"}, {"q": "What is the primary benefit of building a complete SOP library?", "options": ["It satisfies funder requirements", "It transforms the organization from person-dependent to system-dependent", "It reduces the need for training", "It eliminates the need for case managers"], "correct": 1, "explanation": "The correct answer is: It transforms the organization from person-dependent to system-dependent"}]}'></div>
 
-<QuizMC
-  question="What is the primary benefit of building a complete SOP library?"
-  options='["It satisfies funder requirements", "It transforms the organization from person-dependent to system-dependent", "It reduces the need for training", "It eliminates the need for case managers"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What is the guiding principle for identifying AI-solvable operations problems?", "back": "If a staff member is typing instead of serving, that's an operations problem AI can solve"},
-  {"front": "What is the voice-to-notes workflow for case managers?", "back": "Record 2-min voice memo after meeting, Whisper transcribes it, AI structures into formatted case note with date, client ID, service, status, goals, action items, and follow-up"},
-  {"front": "What three types of resource allocation can AI optimize?", "back": "Demand forecasting (seasonal patterns, staffing), geographic analysis (underserved areas), and supply chain management (inventory optimization)"},
-  {"front": "What sections should a nonprofit SOP include?", "back": "Purpose, Scope, Responsibilities, Step-by-step procedures with decision points, Required forms/tools, Quality checks, and Emergency procedures"},
-  {"front": "Why must human expertise override AI resource allocation recommendations?", "back": "AI doesn't know community context (e.g., food demand spikes before school breaks). Staff expertise and community knowledge must inform final decisions."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the guiding principle for identifying AI-solvable operations problems?", "back": "If a staff member is typing instead of serving, that&#39;s an operations problem AI can solve"}, {"front": "What is the voice-to-notes workflow for case managers?", "back": "Record 2-min voice memo after meeting, Whisper transcribes it, AI structures into formatted case note with date, client ID, service, status, goals, action items, and follow-up"}, {"front": "What three types of resource allocation can AI optimize?", "back": "Demand forecasting (seasonal patterns, staffing), geographic analysis (underserved areas), and supply chain management (inventory optimization)"}, {"front": "What sections should a nonprofit SOP include?", "back": "Purpose, Scope, Responsibilities, Step-by-step procedures with decision points, Required forms/tools, Quality checks, and Emergency procedures"}, {"front": "Why must human expertise override AI resource allocation recommendations?", "back": "AI doesn&#39;t know community context (e.g., food demand spikes before school breaks). Staff expertise and community knowledge must inform final decisions."}]}'></div>
 
 </div>

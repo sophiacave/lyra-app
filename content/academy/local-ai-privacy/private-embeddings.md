@@ -166,25 +166,8 @@ for doc, meta in zip(results["documents"][0],
 </div>
 </div>
 
-<QuizMC
-  question="What is the key advantage of semantic search over traditional keyword search?"
-  options='["It runs faster", "It finds conceptually related content even without exact keyword matches", "It uses less disk space", "It only works with PDF files"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key advantage of semantic search over traditional keyword search?", "options": ["It runs faster", "It finds conceptually related content even without exact keyword matches", "It uses less disk space", "It only works with PDF files"], "correct": 1, "explanation": "The correct answer is: It finds conceptually related content even without exact keyword matches"}, {"q": "Why should you overlap chunks when splitting documents for embedding?", "options": ["To increase storage costs", "To preserve context at chunk boundaries so no information is lost", "To make the database larger", "Overlapping is not recommended"], "correct": 1, "explanation": "The correct answer is: To preserve context at chunk boundaries so no information is lost"}]}'></div>
 
-<QuizMC
-  question="Why should you overlap chunks when splitting documents for embedding?"
-  options='["To increase storage costs", "To preserve context at chunk boundaries so no information is lost", "To make the database larger", "Overlapping is not recommended"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What is an embedding?", "back": "A list of numbers (vector) representing the meaning of text. Similar meanings produce similar vectors, enabling search by concept instead of exact keywords."},
-  {"front": "What embedding model does Ollama provide?", "back": "nomic-embed-text (768 dimensions, 137M parameters) and mxbai-embed-large (1024 dimensions, 335M parameters)"},
-  {"front": "What are the 4 steps of the document search pipeline?", "back": "1) Ingest (read and split docs into chunks), 2) Embed (generate vectors locally), 3) Store (save to ChromaDB), 4) Query (embed query, find similar chunks)"},
-  {"front": "What is the recommended chunk size for document embedding?", "back": "200-500 words per chunk with ~50 words of overlap between chunks"},
-  {"front": "What is hybrid search?", "back": "Combining semantic search (meaning-based via embeddings) with keyword search (exact term matching) for queries that need both conceptual and literal matching"},
-  {"front": "What is the privacy guarantee of local embeddings?", "back": "Data flows from documents to local embedding model to local database. At no point does content leave your machine."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is an embedding?", "back": "A list of numbers (vector) representing the meaning of text. Similar meanings produce similar vectors, enabling search by concept instead of exact keywords."}, {"front": "What embedding model does Ollama provide?", "back": "nomic-embed-text (768 dimensions, 137M parameters) and mxbai-embed-large (1024 dimensions, 335M parameters)"}, {"front": "What are the 4 steps of the document search pipeline?", "back": "1) Ingest (read and split docs into chunks), 2) Embed (generate vectors locally), 3) Store (save to ChromaDB), 4) Query (embed query, find similar chunks)"}, {"front": "What is the recommended chunk size for document embedding?", "back": "200-500 words per chunk with ~50 words of overlap between chunks"}, {"front": "What is hybrid search?", "back": "Combining semantic search (meaning-based via embeddings) with keyword search (exact term matching) for queries that need both conceptual and literal matching"}, {"front": "What is the privacy guarantee of local embeddings?", "back": "Data flows from documents to local embedding model to local database. At no point does content leave your machine."}]}'></div>
 
 </div>

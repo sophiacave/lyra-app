@@ -132,24 +132,8 @@ answer = route_request(messages, tier="cloud")</code></pre>
 <p><strong>Graceful degradation:</strong> When both systems are available, use the best one for each task. When only one is available, use it for everything. When neither is available (rare), queue requests and process when service returns.</p>
 </div>
 
-<QuizMC
-  question="What is the core principle of hybrid AI routing?"
-  options='["Always use cloud for important tasks", "Default local, escalate to cloud only when needed", "Split tasks 50/50 between local and cloud", "Use cloud for speed and local for accuracy"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the core principle of hybrid AI routing?", "options": ["Always use cloud for important tasks", "Default local, escalate to cloud only when needed", "Split tasks 50/50 between local and cloud", "Use cloud for speed and local for accuracy"], "correct": 1, "explanation": "The correct answer is: Default local, escalate to cloud only when needed"}, {"q": "In the 90/10 pattern, what percentage of AI tasks typically run well on local models?", "options": ["50%", "70%", "80%", "90%"], "correct": 3, "explanation": "The correct answer is: 90%"}]}'></div>
 
-<QuizMC
-  question="In the 90/10 pattern, what percentage of AI tasks typically run well on local models?"
-  options='["50%", "70%", "80%", "90%"]'
-  answer="3"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the four intelligent routing criteria?", "back": "Data sensitivity (Tier 3+ forces local), Task complexity (simple local, complex cloud), Token count (exceeds local context), Cost thresholds (budget exhausted = force local)"},
-  {"front": "What is the 90/10 pattern for cost optimization?", "back": "90% of tasks are routine and run locally ($0). 10% require frontier capability and use cloud API. Result: 90% cost reduction vs all-cloud."},
-  {"front": "What is local preprocessing?", "back": "Use local models to extract/summarize large documents before sending only the condensed output to cloud. Pay for 500 tokens instead of 50,000."},
-  {"front": "What are the three failover patterns?", "back": "Cloud-to-local (API error, retry locally), Local-to-cloud (Ollama crash, escalate), Health checks (periodic pinging, route to healthy endpoint)"},
-  {"front": "Why does Ollama's OpenAI-compatible API matter for hybrid systems?", "back": "Tools built for OpenAI work with Ollama by changing the base URL to localhost:11434/v1. This makes the gateway simple -- same request format, different endpoints."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the four intelligent routing criteria?", "back": "Data sensitivity (Tier 3+ forces local), Task complexity (simple local, complex cloud), Token count (exceeds local context), Cost thresholds (budget exhausted = force local)"}, {"front": "What is the 90/10 pattern for cost optimization?", "back": "90% of tasks are routine and run locally ($0). 10% require frontier capability and use cloud API. Result: 90% cost reduction vs all-cloud."}, {"front": "What is local preprocessing?", "back": "Use local models to extract/summarize large documents before sending only the condensed output to cloud. Pay for 500 tokens instead of 50,000."}, {"front": "What are the three failover patterns?", "back": "Cloud-to-local (API error, retry locally), Local-to-cloud (Ollama crash, escalate), Health checks (periodic pinging, route to healthy endpoint)"}, {"front": "Why does Ollama&#39;s OpenAI-compatible API matter for hybrid systems?", "back": "Tools built for OpenAI work with Ollama by changing the base URL to localhost:11434/v1. This makes the gateway simple -- same request format, different endpoints."}]}'></div>
 
 </div>

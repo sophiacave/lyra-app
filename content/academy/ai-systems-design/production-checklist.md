@@ -165,26 +165,8 @@ Launch is not the finish line. The first 30 days are your validation period.
 After 30 days, you should have a system that runs predictably, costs what you expected, and has clear paths for improvement. If you don't, something on this checklist was missed. Go back and find it.
 </div>
 
-<QuizMC
-  question="What is the most critical operational safeguard for a production AI system?"
-  options={["Comprehensive logging", "A kill switch via feature flag for instant AI feature disable", "Multiple model providers", "Automated scaling"]}
-  correct={1}
-  explanation="A kill switch (feature flag) lets you disable AI features instantly without a deployment cycle. When a model is hallucinating harmful content at scale, you cannot wait 15 minutes for a deploy. Feature flags give you instant rollback."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the most critical operational safeguard for a production AI system?", "options": ["Comprehensive logging", "A kill switch via feature flag for instant AI feature disable", "Multiple model providers", "Automated scaling"], "correct": 1, "explanation": "A kill switch (feature flag) lets you disable AI features instantly without a deployment cycle. When a model is hallucinating harmful content at scale, you cannot wait 15 minutes for a deploy. Feature flags give you instant rollback."}, {"q": "When should the evaluation pipeline run?", "options": ["Only before the initial launch", "Weekly on a schedule", "Before every prompt change, model update, or significant system modification", "Only when users report issues"], "correct": 2, "explanation": "The eval pipeline is your quality gate. It should run before every prompt change, model update, or system modification. Changes that reduce eval scores do not ship. This prevents silent quality regressions."}]}'></div>
 
-<QuizMC
-  question="When should the evaluation pipeline run?"
-  options={["Only before the initial launch", "Weekly on a schedule", "Before every prompt change, model update, or significant system modification", "Only when users report issues"]}
-  correct={2}
-  explanation="The eval pipeline is your quality gate. It should run before every prompt change, model update, or system modification. Changes that reduce eval scores do not ship. This prevents silent quality regressions."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the nine domains of the production AI checklist?", back: "1) Architecture, 2) Reliability, 3) Security, 4) Observability, 5) Cost Management, 6) Scaling, 7) Quality Assurance, 8) Data & Privacy, 9) Incident Response." },
-  { front: "What is the difference between P0 and P1 items?", back: "P0 items are launch blockers -- the system should not go live without them. P1 items should be resolved within two weeks of launch. Unchecked P0 items require documented risk acceptance." },
-  { front: "What are three common launch failures?", back: "1) Prompt regression: new prompt without eval, quality drops 30%. 2) Cost explosion: retry storm doubles monthly bill in 48 hours. 3) Silent data leak: context contamination returns wrong user's data." },
-  { front: "What should happen during the first 30 days post-launch?", back: "Week 1: Monitor everything daily. Week 2: Analyze failure patterns and cost concentration. Week 3: Optimize caching, routing, and prompts. Week 4: Stabilize and document operational patterns." },
-  { front: "What makes a production readiness review effective?", back: "Walk through all nine domains with the team. Every unchecked P0 needs blast radius analysis. P1 items get owners and deadlines. Launch decision is GO, CONDITIONAL GO, or NO GO based on P0 completion." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the nine domains of the production AI checklist?", "back": "1) Architecture, 2) Reliability, 3) Security, 4) Observability, 5) Cost Management, 6) Scaling, 7) Quality Assurance, 8) Data & Privacy, 9) Incident Response."}, {"front": "What is the difference between P0 and P1 items?", "back": "P0 items are launch blockers -- the system should not go live without them. P1 items should be resolved within two weeks of launch. Unchecked P0 items require documented risk acceptance."}, {"front": "What are three common launch failures?", "back": "1) Prompt regression: new prompt without eval, quality drops 30%. 2) Cost explosion: retry storm doubles monthly bill in 48 hours. 3) Silent data leak: context contamination returns wrong user&#39;s data."}, {"front": "What should happen during the first 30 days post-launch?", "back": "Week 1: Monitor everything daily. Week 2: Analyze failure patterns and cost concentration. Week 3: Optimize caching, routing, and prompts. Week 4: Stabilize and document operational patterns."}, {"front": "What makes a production readiness review effective?", "back": "Walk through all nine domains with the team. Every unchecked P0 needs blast radius analysis. P1 items get owners and deadlines. Launch decision is GO, CONDITIONAL GO, or NO GO based on P0 completion."}]}'></div>
 
 </div>

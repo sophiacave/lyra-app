@@ -169,27 +169,8 @@ Target level B for every shot. Celebrate level A when it happens. Never ship lev
 As models improve, the floor rises. Techniques that achieve level C today will achieve level B with the next model generation. Build your workflow now so you benefit automatically from model improvements.
 </div>
 
-<QuizMC>
-<Question text="What are the four anchors in the multi-anchor consistency workflow?">
-<Option text="Seed lock, negative prompt, style reference, and high resolution" />
-<Option correct text="Character reference sheet, previous shot reference, frozen text description, and negative prompts" />
-<Option text="Face lock, body lock, wardrobe lock, and color lock" />
-<Option text="Platform presets, user uploads, text prompts, and post-processing" />
-</Question>
-<Question text="Why should you avoid cutting directly between two close-up shots of the same AI-generated character?">
-<Option text="Close-ups use too many generation credits" />
-<Option text="The resolution drops in close-up shots" />
-<Option correct text="Direct cuts between close-ups make facial inconsistencies highly visible to viewers" />
-<Option text="AI models cannot generate close-up shots reliably" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What are the four anchors in the multi-anchor consistency workflow?", "options": ["Seed lock, negative prompt, style reference, and high resolution", "Character reference sheet, previous shot reference, frozen text description, and negative prompts", "Face lock, body lock, wardrobe lock, and color lock", "Platform presets, user uploads, text prompts, and post-processing"], "correct": 1, "explanation": "The correct answer is: Character reference sheet, previous shot reference, frozen text description, and negative prompts"}, {"q": "Why should you avoid cutting directly between two close-up shots of the same AI-generated character?", "options": ["Close-ups use too many generation credits", "The resolution drops in close-up shots", "Direct cuts between close-ups make facial inconsistencies highly visible to viewers", "AI models cannot generate close-up shots reliably"], "correct": 2, "explanation": "The correct answer is: Direct cuts between close-ups make facial inconsistencies highly visible to viewers"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the four types of character consistency drift?" back="1. Facial drift (bone structure changes), 2. Color drift (skin/hair tone shifts), 3. Wardrobe drift (clothing details change), 4. Proportion drift (body proportions shift)" />
-<Card front="What is a 'frozen character block' and why is it important?" back="A copy-pasted character description used verbatim in every prompt. Never paraphrasing ensures the text anchor remains constant, reducing drift between generations." />
-<Card front="What is the target consistency level for AI cinema?" back="Level B: same person with minor lighting/angle variations. Level A (no visible differences) is ideal but rare. Level C can be promoted to perceived B through editing tricks." />
-<Card front="How does voice-over help with character consistency?" back="A consistent voice (same ElevenLabs voice clone across all shots) anchors character identity aurally, even when visual features drift slightly. The audience trusts their ears." />
-<Card front="What is the cutaway technique for hiding inconsistencies?" back="Insert a non-face shot (rain, hands, objects) between two close-ups of the same character. The cutaway resets the viewer's facial memory, making subsequent variations less noticeable." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the four types of character consistency drift?", "back": "1. Facial drift (bone structure changes), 2. Color drift (skin/hair tone shifts), 3. Wardrobe drift (clothing details change), 4. Proportion drift (body proportions shift)"}, {"front": "What is a &#39;frozen character block&#39; and why is it important?", "back": "A copy-pasted character description used verbatim in every prompt. Never paraphrasing ensures the text anchor remains constant, reducing drift between generations."}, {"front": "What is the target consistency level for AI cinema?", "back": "Level B: same person with minor lighting/angle variations. Level A (no visible differences) is ideal but rare. Level C can be promoted to perceived B through editing tricks."}, {"front": "How does voice-over help with character consistency?", "back": "A consistent voice (same ElevenLabs voice clone across all shots) anchors character identity aurally, even when visual features drift slightly. The audience trusts their ears."}, {"front": "What is the cutaway technique for hiding inconsistencies?", "back": "Insert a non-face shot (rain, hands, objects) between two close-ups of the same character. The cutaway resets the viewer&#39;s facial memory, making subsequent variations less noticeable."}]}'></div>
 
 </div>

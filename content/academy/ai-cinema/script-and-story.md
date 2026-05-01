@@ -199,26 +199,8 @@ Using the patterns above, create a complete script package for a 3-minute short 
 </div>
 </div>
 
-<QuizMC>
-<Question text="What is the recommended role of LLMs in the AI cinema screenwriting process?">
-<Option text="LLMs should write the entire screenplay autonomously" />
-<Option correct text="LLMs serve as a writers' room -- they brainstorm and refine while you make creative decisions" />
-<Option text="LLMs should only be used for spell-checking and formatting" />
-<Option text="LLMs replace the need for any narrative structure" />
-</Question>
-<Question text="Why should scene descriptions encode camera, lighting, and color details directly in the script?">
-<Option text="It makes the script look more professional for film festivals" />
-<Option text="Traditional screenplay format requires it" />
-<Option correct text="The scene descriptions double as video generation prompts, reducing translation work" />
-<Option text="AI video generators cannot work without color palette information" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the recommended role of LLMs in the AI cinema screenwriting process?", "options": ["LLMs should write the entire screenplay autonomously", "LLMs serve as a writers&#39; room -- they brainstorm and refine while you make creative decisions", "LLMs should only be used for spell-checking and formatting", "LLMs replace the need for any narrative structure"], "correct": 1, "explanation": "The correct answer is: LLMs serve as a writers&#39; room -- they brainstorm and refine while you make creative decisions"}, {"q": "Why should scene descriptions encode camera, lighting, and color details directly in the script?", "options": ["It makes the script look more professional for film festivals", "Traditional screenplay format requires it", "The scene descriptions double as video generation prompts, reducing translation work", "AI video generators cannot work without color palette information"], "correct": 2, "explanation": "The correct answer is: The scene descriptions double as video generation prompts, reducing translation work"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the five elements every prompt-ready scene description must encode?" back="1. Subject (who/what with physical details), 2. Action (motion), 3. Setting (location + atmosphere), 4. Camera (shot type, movement, lens), 5. Mood (lighting, color, emotion)" />
-<Card front="What is the three-act time split for a 3-minute short film?" back="Act 1: 36 seconds (20%) - establish world. Act 2: 108 seconds (60%) - conflict and escalation. Act 3: 36 seconds (20%) - resolution/revelation." />
-<Card front="What seven components make up a complete AI cinema script package?" back="1. Logline, 2. Treatment, 3. Scene breakdown with timestamps, 4. Prompt-ready scene descriptions, 5. Character reference sheet, 6. Voice-over script, 7. Visual reference list" />
-<Card front="What is the Iteration Pattern for LLM screenwriting?" back="Rewrite a scene three ways: 1. More visually specific (camera/lighting/color), 2. More emotionally resonant (deeper subtext), 3. More producible (simplified for AI video generation)" />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the five elements every prompt-ready scene description must encode?", "back": "1. Subject (who/what with physical details), 2. Action (motion), 3. Setting (location + atmosphere), 4. Camera (shot type, movement, lens), 5. Mood (lighting, color, emotion)"}, {"front": "What is the three-act time split for a 3-minute short film?", "back": "Act 1: 36 seconds (20%) - establish world. Act 2: 108 seconds (60%) - conflict and escalation. Act 3: 36 seconds (20%) - resolution/revelation."}, {"front": "What seven components make up a complete AI cinema script package?", "back": "1. Logline, 2. Treatment, 3. Scene breakdown with timestamps, 4. Prompt-ready scene descriptions, 5. Character reference sheet, 6. Voice-over script, 7. Visual reference list"}, {"front": "What is the Iteration Pattern for LLM screenwriting?", "back": "Rewrite a scene three ways: 1. More visually specific (camera/lighting/color), 2. More emotionally resonant (deeper subtext), 3. More producible (simplified for AI video generation)"}]}'></div>
 
 </div>

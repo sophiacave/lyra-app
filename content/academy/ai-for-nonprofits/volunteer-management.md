@@ -81,24 +81,8 @@ free: false
 <p>Share these insights with your board. Volunteer programs are often treated as "free labor" rather than strategic assets. Data-backed reporting changes that perception and can unlock dedicated funding for volunteer coordination.</p>
 </div>
 
-<QuizMC
-  question="What is the #1 reason volunteers quit a nonprofit?"
-  options='["Not enough free food", "Poor role matching -- being assigned tasks that don't fit their skills", "Too many emails from the organization", "The organization is too small"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the #1 reason volunteers quit a nonprofit?", "options": ["Not enough free food", "Poor role matching -- being assigned tasks that don&#39;t fit their skills", "Too many emails from the organization", "The organization is too small"], "correct": 1, "explanation": "The correct answer is: Poor role matching -- being assigned tasks that don&#39;t fit their skills"}, {"q": "At what interval should you trigger a re-engagement message for inactive volunteers?", "options": ["7 days", "14 days", "30 days", "90 days"], "correct": 2, "explanation": "The correct answer is: 30 days"}]}'></div>
 
-<QuizMC
-  question="At what interval should you trigger a re-engagement message for inactive volunteers?"
-  options='["7 days", "14 days", "30 days", "90 days"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the 4 steps of an automated volunteer onboarding pipeline?", "back": "1) AI-personalized welcome email, 2) Role-specific onboarding documents, 3) Auto-scheduled orientation via Calendly, 4) Skills assessment with role recommendation"},
-  {"front": "What is the ideal time split for a volunteer coordinator?", "back": "80% on relationships, 20% on logistics (AI handles the administrative overhead)"},
-  {"front": "What volunteer milestones should trigger recognition?", "back": "25, 50, 100, and 250 hours -- with personalized recognition (certificate, social shoutout, or handwritten note based on preferences)"},
-  {"front": "What 5 metrics measure volunteer program health?", "back": "Recruitment rate, retention rate (% returning after 3 months), average hours per volunteer, role fill rate, and satisfaction scores"},
-  {"front": "What should a post-shift thank-you include?", "back": "A specific reference to the work done that day and its tangible impact -- sent within 24 hours automatically"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the 4 steps of an automated volunteer onboarding pipeline?", "back": "1) AI-personalized welcome email, 2) Role-specific onboarding documents, 3) Auto-scheduled orientation via Calendly, 4) Skills assessment with role recommendation"}, {"front": "What is the ideal time split for a volunteer coordinator?", "back": "80% on relationships, 20% on logistics (AI handles the administrative overhead)"}, {"front": "What volunteer milestones should trigger recognition?", "back": "25, 50, 100, and 250 hours -- with personalized recognition (certificate, social shoutout, or handwritten note based on preferences)"}, {"front": "What 5 metrics measure volunteer program health?", "back": "Recruitment rate, retention rate (% returning after 3 months), average hours per volunteer, role fill rate, and satisfaction scores"}, {"front": "What should a post-shift thank-you include?", "back": "A specific reference to the work done that day and its tangible impact -- sent within 24 hours automatically"}]}'></div>
 
 </div>

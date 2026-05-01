@@ -103,25 +103,8 @@ free: true
 <p>This course will take you from zero to a fully operational local AI stack. By the end, you'll have local models running, private document search working, AI agents operating without API keys, and a hybrid architecture that gives you the best of both worlds.</p>
 </div>
 
-<QuizMC
-  question="What is the primary privacy advantage of local AI over cloud AI?"
-  options='["Local AI uses stronger encryption", "Your data physically cannot leave your machine -- no trust required, only physics", "Cloud AI companies sell your data to advertisers", "Local AI models are more accurate"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary privacy advantage of local AI over cloud AI?", "options": ["Local AI uses stronger encryption", "Your data physically cannot leave your machine -- no trust required, only physics", "Cloud AI companies sell your data to advertisers", "Local AI models are more accurate"], "correct": 1, "explanation": "The correct answer is: Your data physically cannot leave your machine -- no trust required, only physics"}, {"q": "What is the minimum RAM needed to run small (7-8B parameter) AI models locally?", "options": ["4GB", "8GB", "16GB", "32GB"], "correct": 1, "explanation": "The correct answer is: 8GB"}]}'></div>
 
-<QuizMC
-  question="What is the minimum RAM needed to run small (7-8B parameter) AI models locally?"
-  options='["4GB", "8GB", "16GB", "32GB"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the three core arguments for local AI?", "back": "Privacy (data never leaves your machine), Cost ($0/month after hardware), Sovereignty (you control versions, updates, availability, and data retention)"},
-  {"front": "What hardware does the recommended local AI setup require?", "back": "16-32GB RAM with Apple Silicon Mac or desktop with NVIDIA GPU (8GB+ VRAM). Runs 14-32B parameter models comparable to GPT-3.5."},
-  {"front": "Why is Apple Silicon particularly good for local AI?", "back": "Unified memory architecture means RAM is shared between CPU and GPU, so a 32GB MacBook Pro can run models that would require a dedicated GPU on other platforms"},
-  {"front": "When should you use cloud AI instead of local?", "back": "Frontier reasoning tasks, multimodal tasks (vision/audio), one-off complex tasks not worth setup time, and real-time features at scale"},
-  {"front": "What is the break-even timeline for local vs cloud AI?", "back": "Most individuals break even in 2-4 months. Teams break even in month 1. After that, local runs at $0/month."},
-  {"front": "What is the recommended hybrid approach?", "back": "Local for privacy-sensitive and high-volume work. Cloud for the 10% of tasks requiring frontier model intelligence."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three core arguments for local AI?", "back": "Privacy (data never leaves your machine), Cost ($0/month after hardware), Sovereignty (you control versions, updates, availability, and data retention)"}, {"front": "What hardware does the recommended local AI setup require?", "back": "16-32GB RAM with Apple Silicon Mac or desktop with NVIDIA GPU (8GB+ VRAM). Runs 14-32B parameter models comparable to GPT-3.5."}, {"front": "Why is Apple Silicon particularly good for local AI?", "back": "Unified memory architecture means RAM is shared between CPU and GPU, so a 32GB MacBook Pro can run models that would require a dedicated GPU on other platforms"}, {"front": "When should you use cloud AI instead of local?", "back": "Frontier reasoning tasks, multimodal tasks (vision/audio), one-off complex tasks not worth setup time, and real-time features at scale"}, {"front": "What is the break-even timeline for local vs cloud AI?", "back": "Most individuals break even in 2-4 months. Teams break even in month 1. After that, local runs at $0/month."}, {"front": "What is the recommended hybrid approach?", "back": "Local for privacy-sensitive and high-volume work. Cloud for the 10% of tasks requiring frontier model intelligence."}]}'></div>
 
 </div>

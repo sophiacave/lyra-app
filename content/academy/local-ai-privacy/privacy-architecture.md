@@ -102,24 +102,8 @@ echo "block out proto tcp from any to any port {80,443} \
 </ul>
 </div>
 
-<QuizMC
-  question="What is the core difference between privacy by policy and privacy by architecture?"
-  options='["Policy is cheaper to implement", "Architecture makes data leakage physically impossible rather than relying on people to follow rules", "Policy provides stronger protection", "Architecture only works for small organizations"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the core difference between privacy by policy and privacy by architecture?", "options": ["Policy is cheaper to implement", "Architecture makes data leakage physically impossible rather than relying on people to follow rules", "Policy provides stronger protection", "Architecture only works for small organizations"], "correct": 1, "explanation": "The correct answer is: Architecture makes data leakage physically impossible rather than relying on people to follow rules"}, {"q": "What data tier requires air-gapped AI processing?", "options": ["Tier 1 - Public", "Tier 2 - Internal", "Tier 3 - Confidential", "Tier 4 - Restricted (PII, medical, legal privilege)"], "correct": 3, "explanation": "The correct answer is: Tier 4 - Restricted (PII, medical, legal privilege)"}]}'></div>
 
-<QuizMC
-  question="What data tier requires air-gapped AI processing?"
-  options='["Tier 1 - Public", "Tier 2 - Internal", "Tier 3 - Confidential", "Tier 4 - Restricted (PII, medical, legal privilege)"]'
-  answer="3"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the 5 principles of privacy-first AI architecture?", "back": "1) Data stays at rest (models travel to data), 2) Network boundaries are physical, 3) Classification drives routing, 4) Audit everything, 5) Minimize retention"},
-  {"front": "What are the four data classification tiers?", "back": "Tier 1: Public (any AI), Tier 2: Internal (cloud with DPA, local preferred), Tier 3: Confidential (local only), Tier 4: Restricted (air-gapped local only)"},
-  {"front": "What are the three levels of network isolation?", "back": "Level 1: Localhost only (Ollama default), Level 2: Firewall isolation (block outbound), Level 3: Air gap (no network, USB transfers)"},
-  {"front": "How does local AI simplify HIPAA compliance?", "back": "PHI never leaves the local machine, satisfying 'no disclosure' requirements. Still need access controls, audit logs, encryption at rest, and BAAs for any cloud components."},
-  {"front": "What is the metadata problem in privacy architecture?", "back": "Even anonymized data can be re-identified through metadata (timestamps, file paths, access patterns). Privacy architecture must address metadata leakage, not just content."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the 5 principles of privacy-first AI architecture?", "back": "1) Data stays at rest (models travel to data), 2) Network boundaries are physical, 3) Classification drives routing, 4) Audit everything, 5) Minimize retention"}, {"front": "What are the four data classification tiers?", "back": "Tier 1: Public (any AI), Tier 2: Internal (cloud with DPA, local preferred), Tier 3: Confidential (local only), Tier 4: Restricted (air-gapped local only)"}, {"front": "What are the three levels of network isolation?", "back": "Level 1: Localhost only (Ollama default), Level 2: Firewall isolation (block outbound), Level 3: Air gap (no network, USB transfers)"}, {"front": "How does local AI simplify HIPAA compliance?", "back": "PHI never leaves the local machine, satisfying &#39;no disclosure&#39; requirements. Still need access controls, audit logs, encryption at rest, and BAAs for any cloud components."}, {"front": "What is the metadata problem in privacy architecture?", "back": "Even anonymized data can be re-identified through metadata (timestamps, file paths, access patterns). Privacy architecture must address metadata leakage, not just content."}]}'></div>
 
 </div>

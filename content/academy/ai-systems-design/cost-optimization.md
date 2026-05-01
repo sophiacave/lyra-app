@@ -187,26 +187,8 @@ Build a dashboard that answers these questions daily:
 Set budget alerts at 80% and 100% of your monthly target. Set anomaly alerts for any single hour that exceeds 3x the hourly average. These alerts have saved teams from five-figure surprise bills caused by prompt template bugs or retry storms.
 </div>
 
-<QuizMC
-  question="What is the highest-leverage AI cost optimization?"
-  options={["Negotiating volume discounts with providers", "Using the right model for each task's complexity level", "Reducing the number of API calls", "Switching to open-source models exclusively"]}
-  correct={1}
-  explanation="Model routing -- using cheap models for simple tasks and expensive models only for complex ones -- typically reduces costs 40-60%. The price difference between model tiers (60x between Opus and Haiku) makes this the highest-impact lever."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the highest-leverage AI cost optimization?", "options": ["Negotiating volume discounts with providers", "Using the right model for each task&#39;s complexity level", "Reducing the number of API calls", "Switching to open-source models exclusively"], "correct": 1, "explanation": "Model routing -- using cheap models for simple tasks and expensive models only for complex ones -- typically reduces costs 40-60%. The price difference between model tiers (60x between Opus and Haiku) makes this the highest-impact lever."}, {"q": "How does setting a lower max_tokens improve responses beyond cost savings?", "options": ["It makes the model think harder", "It forces the model to prioritize essential information, often producing more concise and focused output", "It reduces latency but not quality", "It has no effect on quality"], "correct": 1, "explanation": "A lower max_tokens constraint forces the model to be concise and prioritize essential information. For many tasks, 500 tokens produces a better, more focused response than an unconstrained 4,000-token output."}]}'></div>
 
-<QuizMC
-  question="How does setting a lower max_tokens improve responses beyond cost savings?"
-  options={["It makes the model think harder", "It forces the model to prioritize essential information, often producing more concise and focused output", "It reduces latency but not quality", "It has no effect on quality"]}
-  correct={1}
-  explanation="A lower max_tokens constraint forces the model to be concise and prioritize essential information. For many tasks, 500 tokens produces a better, more focused response than an unconstrained 4,000-token output."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the three levels of token budget enforcement?", back: "1) Request-level: cap tokens per API call. 2) Session-level: cap total tokens for an agent run or session. 3) User-level: daily/monthly caps per user or API key for abuse prevention and tiered pricing." },
-  { front: "How much more expensive is Claude Opus vs. Haiku on input tokens?", back: "Approximately 60x. Opus is $15/MTok input vs. Haiku at $0.25/MTok. A 2,000-token system prompt costs $0.03/call on Opus vs. $0.0005/call on Haiku." },
-  { front: "Name four prompt engineering techniques that reduce cost.", back: "1) System prompt compression (concise rules). 2) Few-shot pruning (1-2 examples, not 5-6). 3) Context window management (retrieve relevant chunks only). 4) Structured output (JSON instead of prose, 40-60% shorter)." },
-  { front: "What should a cost dashboard answer daily?", back: "Cost per successful request, cost per user segment, worst cost-to-value features, cache hit rate, and retry spending. Set budget alerts at 80%/100% and anomaly alerts for 3x hourly average." },
-  { front: "What quality guard is essential when implementing model routing?", back: "Measure quality per-tier to ensure the cheap path satisfies users. Route 80% of traffic to cheaper models, but verify with eval scores that quality degradation stays under 5% on user-facing metrics." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three levels of token budget enforcement?", "back": "1) Request-level: cap tokens per API call. 2) Session-level: cap total tokens for an agent run or session. 3) User-level: daily/monthly caps per user or API key for abuse prevention and tiered pricing."}, {"front": "How much more expensive is Claude Opus vs. Haiku on input tokens?", "back": "Approximately 60x. Opus is $15/MTok input vs. Haiku at $0.25/MTok. A 2,000-token system prompt costs $0.03/call on Opus vs. $0.0005/call on Haiku."}, {"front": "Name four prompt engineering techniques that reduce cost.", "back": "1) System prompt compression (concise rules). 2) Few-shot pruning (1-2 examples, not 5-6). 3) Context window management (retrieve relevant chunks only). 4) Structured output (JSON instead of prose, 40-60% shorter)."}, {"front": "What should a cost dashboard answer daily?", "back": "Cost per successful request, cost per user segment, worst cost-to-value features, cache hit rate, and retry spending. Set budget alerts at 80%/100% and anomaly alerts for 3x hourly average."}, {"front": "What quality guard is essential when implementing model routing?", "back": "Measure quality per-tier to ensure the cheap path satisfies users. Route 80% of traffic to cheaper models, but verify with eval scores that quality degradation stays under 5% on user-facing metrics."}]}'></div>
 
 </div>

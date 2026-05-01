@@ -198,27 +198,8 @@ This course takes you from decision through deployment:
 By the end, you will have fine-tuned a model on your own data, evaluated it rigorously, deployed it to production, and set up a continuous improvement pipeline.
 </div>
 
-<QuizMC>
-<Question text="What does fine-tuning primarily change about a model?">
-<Option text="Its core world knowledge and factual accuracy" />
-<Option text="Its context window size and processing speed" />
-<Option correct text="Its output behavior: style, format, task-specific reasoning, and tone" />
-<Option text="Its fundamental architecture and parameter count" />
-</Question>
-<Question text="According to the decision tree, what should you try FIRST when a model does not produce desired output?">
-<Option text="Fine-tune on 500 examples" />
-<Option correct text="Better prompting: few-shot examples, system prompts, chain-of-thought" />
-<Option text="Train a model from scratch on your data" />
-<Option text="Switch to a completely different model provider" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What does fine-tuning primarily change about a model?", "options": ["Its core world knowledge and factual accuracy", "Its context window size and processing speed", "Its output behavior: style, format, task-specific reasoning, and tone", "Its fundamental architecture and parameter count"], "correct": 2, "explanation": "The correct answer is: Its output behavior: style, format, task-specific reasoning, and tone"}, {"q": "According to the decision tree, what should you try FIRST when a model does not produce desired output?", "options": ["Fine-tune on 500 examples", "Better prompting: few-shot examples, system prompts, chain-of-thought", "Train a model from scratch on your data", "Switch to a completely different model provider"], "correct": 1, "explanation": "The correct answer is: Better prompting: few-shot examples, system prompts, chain-of-thought"}]}'></div>
 
-<FlashDeck>
-<Card front="What is the most common fine-tuning mistake?" back="Trying to teach a model new factual knowledge. Fine-tuning adjusts behavior (style, format, tone), not knowledge. Use RAG for knowledge injection." />
-<Card front="What are the five signals that fine-tuning is the right approach?" back="1. Consistent output format required, 2. High volume of similar queries, 3. Quality training data available (100-5,000 examples), 4. Latency matters, 5. Prompting has plateaued" />
-<Card front="What percentage of use cases are solved by better prompting and RAG alone?" back="Approximately 80%. Fine-tuning is for the remaining 20% where specific output behavior at scale, reduced latency, or lower per-query cost is needed." />
-<Card front="Why did fine-tuning fail for the medical QA use case?" back="The 7B base model was too small for the task complexity. Fine-tuning cannot improve a model's reasoning ceiling. The fix was using a larger base model (70B) with RAG." />
-<Card front="How does fine-tuning reduce per-query cost?" back="By baking instructions into the weights, fine-tuning eliminates long system prompts and few-shot examples, reducing token count per request and thus API cost." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the most common fine-tuning mistake?", "back": "Trying to teach a model new factual knowledge. Fine-tuning adjusts behavior (style, format, tone), not knowledge. Use RAG for knowledge injection."}, {"front": "What are the five signals that fine-tuning is the right approach?", "back": "1. Consistent output format required, 2. High volume of similar queries, 3. Quality training data available (100-5,000 examples), 4. Latency matters, 5. Prompting has plateaued"}, {"front": "What percentage of use cases are solved by better prompting and RAG alone?", "back": "Approximately 80%. Fine-tuning is for the remaining 20% where specific output behavior at scale, reduced latency, or lower per-query cost is needed."}, {"front": "Why did fine-tuning fail for the medical QA use case?", "back": "The 7B base model was too small for the task complexity. Fine-tuning cannot improve a model&#39;s reasoning ceiling. The fix was using a larger base model (70B) with RAG."}, {"front": "How does fine-tuning reduce per-query cost?", "back": "By baking instructions into the weights, fine-tuning eliminates long system prompts and few-shot examples, reducing token count per request and thus API cost."}]}'></div>
 
 </div>

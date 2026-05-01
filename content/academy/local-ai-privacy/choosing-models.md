@@ -127,25 +127,8 @@ ollama rm model-name
 <p>Models can always be re-downloaded. Don't hoard them. Keep your disk clean and pull what you need when you need it. A lean setup with 3-4 models is better than a cluttered one with 20 that you never touch.</p>
 </div>
 
-<QuizMC
-  question="What quantization level do most default Ollama models use?"
-  options='["Q8 (8-bit)", "Q5 (5-bit)", "Q4 (4-bit)", "Q2 (2-bit)"]'
-  answer="2"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What quantization level do most default Ollama models use?", "options": ["Q8 (8-bit)", "Q5 (5-bit)", "Q4 (4-bit)", "Q2 (2-bit)"], "correct": 2, "explanation": "The correct answer is: Q4 (4-bit)"}, {"q": "When choosing between a larger model with more quantization or a smaller model with less quantization, which typically performs better?", "options": ["The smaller model at higher precision always wins", "The larger model with more compression typically outperforms the smaller one", "They perform identically", "It depends entirely on the GPU brand"], "correct": 1, "explanation": "The correct answer is: The larger model with more compression typically outperforms the smaller one"}]}'></div>
 
-<QuizMC
-  question="When choosing between a larger model with more quantization or a smaller model with less quantization, which typically performs better?"
-  options='["The smaller model at higher precision always wins", "The larger model with more compression typically outperforms the smaller one", "They perform identically", "It depends entirely on the GPU brand"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What is the RAM rule of thumb for quantized models?", "back": "Roughly 1GB of RAM per 1B parameters at Q4 quantization. 8B model needs ~5GB, 32B needs ~20GB, 70B needs ~40GB."},
-  {"front": "What are the four model size tiers and their strengths?", "back": "1-3B (smart autocomplete), 7-8B (daily workhorse, GPT-3.5 level), 14-32B (serious work, competes with cloud), 70B+ (near-frontier reasoning)"},
-  {"front": "What is the recommended coding model for local AI?", "back": "Qwen 2.5 Coder (available in 7B, 14B, 32B sizes) -- purpose-built for code generation, strong at Python/JS/TS"},
-  {"front": "What tokens/second speed is needed for comfortable interactive use?", "back": "10+ tokens/second for comfortable use. Below 5 tokens/second feels sluggish."},
-  {"front": "What is quantization?", "back": "Compressing model weights from 16 bits to fewer bits (8, 5, 4, or 3). Dramatically reduces size and RAM usage with minimal quality loss. Q4 is the standard default."},
-  {"front": "What embedding models does Ollama support?", "back": "nomic-embed-text (137M params, fast) and mxbai-embed-large (335M params, more accurate) for document search and RAG"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the RAM rule of thumb for quantized models?", "back": "Roughly 1GB of RAM per 1B parameters at Q4 quantization. 8B model needs ~5GB, 32B needs ~20GB, 70B needs ~40GB."}, {"front": "What are the four model size tiers and their strengths?", "back": "1-3B (smart autocomplete), 7-8B (daily workhorse, GPT-3.5 level), 14-32B (serious work, competes with cloud), 70B+ (near-frontier reasoning)"}, {"front": "What is the recommended coding model for local AI?", "back": "Qwen 2.5 Coder (available in 7B, 14B, 32B sizes) -- purpose-built for code generation, strong at Python/JS/TS"}, {"front": "What tokens/second speed is needed for comfortable interactive use?", "back": "10+ tokens/second for comfortable use. Below 5 tokens/second feels sluggish."}, {"front": "What is quantization?", "back": "Compressing model weights from 16 bits to fewer bits (8, 5, 4, or 3). Dramatically reduces size and RAM usage with minimal quality loss. Q4 is the standard default."}, {"front": "What embedding models does Ollama support?", "back": "nomic-embed-text (137M params, fast) and mxbai-embed-large (335M params, more accurate) for document search and RAG"}]}'></div>
 
 </div>

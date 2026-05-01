@@ -197,26 +197,8 @@ class CacheInvalidator:
 ```
 </div>
 
-<QuizMC
-  question="What similarity threshold should you start with for a semantic cache?"
-  options={["0.70 -- catch as many similar queries as possible", "0.85 -- balance between hits and accuracy", "0.92 -- conservative starting point, tune from there", "0.99 -- only near-exact matches"]}
-  correct={2}
-  explanation="Start at 0.92 and tune based on your domain. Too low and you serve wrong answers for different questions. Too high and the cache rarely hits. Narrow domains can go lower; broad domains need higher thresholds."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What similarity threshold should you start with for a semantic cache?", "options": ["0.70 -- catch as many similar queries as possible", "0.85 -- balance between hits and accuracy", "0.92 -- conservative starting point, tune from there", "0.99 -- only near-exact matches"], "correct": 2, "explanation": "Start at 0.92 and tune based on your domain. Too low and you serve wrong answers for different questions. Too high and the cache rarely hits. Narrow domains can go lower; broad domains need higher thresholds."}, {"q": "How should you structure prompts to maximize KV cache / prompt cache hits?", "options": ["Randomize example order for diversity", "Put dynamic user content first, static instructions last", "Put static instructions first (prefix), dynamic content last (suffix)", "Keep prompts as short as possible"], "correct": 2, "explanation": "Prompt caching works on shared prefixes. Static parts (system instructions, few-shot examples) should come first so they form a consistent cacheable prefix. User-specific dynamic content goes last as the variable suffix."}]}'></div>
 
-<QuizMC
-  question="How should you structure prompts to maximize KV cache / prompt cache hits?"
-  options={["Randomize example order for diversity", "Put dynamic user content first, static instructions last", "Put static instructions first (prefix), dynamic content last (suffix)", "Keep prompts as short as possible"]}
-  correct={2}
-  explanation="Prompt caching works on shared prefixes. Static parts (system instructions, few-shot examples) should come first so they form a consistent cacheable prefix. User-specific dynamic content goes last as the variable suffix."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the three caching layers for AI systems?", back: "1) Exact-match cache (hash prompt, return for identical inputs). 2) Semantic cache (embed query, find similar cached queries above threshold). 3) KV/Prompt cache (reuse model's internal computations for shared prompt prefixes)." },
-  { front: "What hit rates can a well-tuned semantic cache achieve?", back: "30-50% for general customer support. Over 70% for FAQ-heavy applications. This reduces average latency from ~3 seconds to ~50ms on cache hits." },
-  { front: "What discount does Anthropic's prompt caching offer?", back: "90% discount on cached input tokens. The static prefix (system prompt, examples) is computed once and reused for subsequent requests with the same prefix." },
-  { front: "What are the four cache invalidation triggers for AI?", back: "1) Source data changes (invalidate entries referencing updated docs). 2) Model/prompt changes (bump cache version). 3) Time-based expiry (TTLs per domain). 4) Quality feedback (user reports incorrect cached response)." },
-  { front: "When does edge caching work well for AI, and when doesn't it?", back: "Works well: read-heavy, low-personalization (FAQs, docs, product descriptions). Poor fit: personalized or conversational AI where each response is unique." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three caching layers for AI systems?", "back": "1) Exact-match cache (hash prompt, return for identical inputs). 2) Semantic cache (embed query, find similar cached queries above threshold). 3) KV/Prompt cache (reuse model&#39;s internal computations for shared prompt prefixes)."}, {"front": "What hit rates can a well-tuned semantic cache achieve?", "back": "30-50% for general customer support. Over 70% for FAQ-heavy applications. This reduces average latency from ~3 seconds to ~50ms on cache hits."}, {"front": "What discount does Anthropic&#39;s prompt caching offer?", "back": "90% discount on cached input tokens. The static prefix (system prompt, examples) is computed once and reused for subsequent requests with the same prefix."}, {"front": "What are the four cache invalidation triggers for AI?", "back": "1) Source data changes (invalidate entries referencing updated docs). 2) Model/prompt changes (bump cache version). 3) Time-based expiry (TTLs per domain). 4) Quality feedback (user reports incorrect cached response)."}, {"front": "When does edge caching work well for AI, and when doesn&#39;t it?", "back": "Works well: read-heavy, low-personalization (FAQs, docs, product descriptions). Poor fit: personalized or conversational AI where each response is unique."}]}'></div>
 
 </div>

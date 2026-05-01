@@ -337,26 +337,8 @@ Set up the ProductionLogger for your deployed model. Run 50 test interactions si
 </div>
 </div>
 
-<QuizMC>
-<Question text="What is the key principle that makes a data flywheel work?">
-<Option text="Hiring more human annotators over time" />
-<Option correct text="Automatic data collection from production use, with zero-human-intervention conversion to training examples" />
-<Option text="Using larger base models for each retraining cycle" />
-<Option text="Increasing the training compute budget each iteration" />
-</Question>
-<Question text="What is the recommended retraining strategy for production systems?">
-<Option text="Retrain daily with whatever data is available" />
-<Option text="Only retrain when users explicitly complain" />
-<Option correct text="Incremental retrain weekly for fast iteration, full retrain every 4-6 weeks for consistency" />
-<Option text="Never retrain -- deploy once and maintain" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key principle that makes a data flywheel work?", "options": ["Hiring more human annotators over time", "Automatic data collection from production use, with zero-human-intervention conversion to training examples", "Using larger base models for each retraining cycle", "Increasing the training compute budget each iteration"], "correct": 1, "explanation": "The correct answer is: Automatic data collection from production use, with zero-human-intervention conversion to training examples"}, {"q": "What is the recommended retraining strategy for production systems?", "options": ["Retrain daily with whatever data is available", "Only retrain when users explicitly complain", "Incremental retrain weekly for fast iteration, full retrain every 4-6 weeks for consistency", "Never retrain -- deploy once and maintain"], "correct": 2, "explanation": "The correct answer is: Incremental retrain weekly for fast iteration, full retrain every 4-6 weeks for consistency"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the four retraining triggers?" back="1. Scheduled (weekly/bi-weekly), 2. Data-driven (every N new examples), 3. Performance-driven (metrics drop below threshold), 4. Distribution shift (incoming queries differ from training data)" />
-<Card front="How do you convert negative user feedback into training data?" back="The thumbs-down response becomes the 'rejected' example for DPO. Generate an improved response with the latest model as the 'chosen' example. This creates preference pairs from production feedback." />
-<Card front="What is the golden rule of retraining?" back="Never deploy a retrained model without running the full evaluation pipeline. Every model version must pass the quality gate before reaching production. Automated retraining without automated evaluation is a deployment risk." />
-<Card front="What privacy measures are required for production data logging?" back="Strip PII (names, emails, phones), hash user IDs, comply with privacy policy, encrypt logs at rest, and separate PII-stripped training data from raw production logs." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the four retraining triggers?", "back": "1. Scheduled (weekly/bi-weekly), 2. Data-driven (every N new examples), 3. Performance-driven (metrics drop below threshold), 4. Distribution shift (incoming queries differ from training data)"}, {"front": "How do you convert negative user feedback into training data?", "back": "The thumbs-down response becomes the &#39;rejected&#39; example for DPO. Generate an improved response with the latest model as the &#39;chosen&#39; example. This creates preference pairs from production feedback."}, {"front": "What is the golden rule of retraining?", "back": "Never deploy a retrained model without running the full evaluation pipeline. Every model version must pass the quality gate before reaching production. Automated retraining without automated evaluation is a deployment risk."}, {"front": "What privacy measures are required for production data logging?", "back": "Strip PII (names, emails, phones), hash user IDs, comply with privacy policy, encrypt logs at rest, and separate PII-stripped training data from raw production logs."}]}'></div>
 
 </div>

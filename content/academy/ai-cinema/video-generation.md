@@ -215,27 +215,8 @@ If a shot fails on any criterion, diagnose which parameter to adjust before rege
 Never regenerate without changing something. Each attempt should test a specific hypothesis about what will improve the output.
 </div>
 
-<QuizMC>
-<Question text="When using image-to-video generation, what should the text prompt describe?">
-<Option text="Everything visible in the frame including composition and lighting" />
-<Option correct text="Only what should CHANGE -- movement, expression shifts, and camera motion" />
-<Option text="The emotional tone and narrative context of the scene" />
-<Option text="Technical specifications like resolution and frame rate" />
-</Question>
-<Question text="Which platform is recommended for long establishing shots?">
-<Option text="Pika 2.0 (cheapest per clip)" />
-<Option text="Runway Gen-4 (best cinematic quality)" />
-<Option text="Kling 2.0 (best motion consistency)" />
-<Option correct text="Google Veo 3 (longest clip duration up to 16 seconds)" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "When using image-to-video generation, what should the text prompt describe?", "options": ["Everything visible in the frame including composition and lighting", "Only what should CHANGE -- movement, expression shifts, and camera motion", "The emotional tone and narrative context of the scene", "Technical specifications like resolution and frame rate"], "correct": 1, "explanation": "The correct answer is: Only what should CHANGE -- movement, expression shifts, and camera motion"}, {"q": "Which platform is recommended for long establishing shots?", "options": ["Pika 2.0 (cheapest per clip)", "Runway Gen-4 (best cinematic quality)", "Kling 2.0 (best motion consistency)", "Google Veo 3 (longest clip duration up to 16 seconds)"], "correct": 3, "explanation": "The correct answer is: Google Veo 3 (longest clip duration up to 16 seconds)"}]}'></div>
 
-<FlashDeck>
-<Card front="What is the expected success rate for first-attempt video generation?" back="30-40%. Professional AI filmmakers budget for 2-4 attempts per shot. Never regenerate without changing a specific parameter." />
-<Card front="Why should you use multiple video platforms in the same project?" back="Each platform excels at different shot types: Veo for long establishing shots, Runway for character close-ups, Kling for action sequences, Pika for cheap transition shots." />
-<Card front="What is the key difference between text-to-video and image-to-video workflows?" back="Image-to-video separates composition (handled by the input image) from motion (handled by the prompt), giving independent control over both and much more predictable results." />
-<Card front="How do Kling and Runway prompt styles differ?" back="Kling responds to descriptive, narrative prompts. Runway responds better to concise, technical camera direction. Each platform has its own prompt dialect." />
-<Card front="What should you do before regenerating a failed shot?" back="Diagnose which specific parameter to adjust. Common fixes: reduce motion strength, use stronger reference image, switch camera presets, adjust color terms, or switch platforms." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the expected success rate for first-attempt video generation?", "back": "30-40%. Professional AI filmmakers budget for 2-4 attempts per shot. Never regenerate without changing a specific parameter."}, {"front": "Why should you use multiple video platforms in the same project?", "back": "Each platform excels at different shot types: Veo for long establishing shots, Runway for character close-ups, Kling for action sequences, Pika for cheap transition shots."}, {"front": "What is the key difference between text-to-video and image-to-video workflows?", "back": "Image-to-video separates composition (handled by the input image) from motion (handled by the prompt), giving independent control over both and much more predictable results."}, {"front": "How do Kling and Runway prompt styles differ?", "back": "Kling responds to descriptive, narrative prompts. Runway responds better to concise, technical camera direction. Each platform has its own prompt dialect."}, {"front": "What should you do before regenerating a failed shot?", "back": "Diagnose which specific parameter to adjust. Common fixes: reduce motion strength, use stronger reference image, switch camera presets, adjust color terms, or switch platforms."}]}'></div>
 
 </div>

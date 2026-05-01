@@ -90,24 +90,8 @@ free: true
 <p><strong>Day 5:</strong> Write your one-page AI policy. Share it with your team. You're now ahead of 90% of nonprofits.</p>
 </div>
 
-<QuizMC
-  question="What is the primary structural advantage nonprofits have for AI adoption?"
-  options='["They have larger technology budgets than corporations", "Their work is predominantly text and language-based, which is AI's strongest domain", "They have more staff available to manage AI tools", "AI companies offer free tools exclusively to nonprofits"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary structural advantage nonprofits have for AI adoption?", "options": ["They have larger technology budgets than corporations", "Their work is predominantly text and language-based, which is AI&#39;s strongest domain", "They have more staff available to manage AI tools", "AI companies offer free tools exclusively to nonprofits"], "correct": 1, "explanation": "The correct answer is: Their work is predominantly text and language-based, which is AI&#39;s strongest domain"}, {"q": "When using AI to analyze program outcome data, what is the most important ethical practice?", "options": ["Using the most expensive AI model available", "Never anonymizing data so AI gets accurate results", "Never feeding beneficiary PII into cloud AI services", "Letting AI generate the final report without human review"], "correct": 2, "explanation": "The correct answer is: Never feeding beneficiary PII into cloud AI services"}]}'></div>
 
-<QuizMC
-  question="When using AI to analyze program outcome data, what is the most important ethical practice?"
-  options='["Using the most expensive AI model available", "Never anonymizing data so AI gets accurate results", "Never feeding beneficiary PII into cloud AI services", "Letting AI generate the final report without human review"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the three categories of AI tools that matter for nonprofits?", "back": "Writing Assistants (drafting/editing text), Data Analysis (patterns in spreadsheets), and Workflow Automation (chaining AI into existing tools)"},
-  {"front": "What is the 80/20 rule for nonprofit AI?", "back": "80% of value comes from three capabilities: drafting text, summarizing documents, and analyzing spreadsheet data"},
-  {"front": "What four steps make up the AI Readiness Audit?", "back": "1) List every recurring task, 2) Tag as text-heavy/data-heavy/relationship-heavy, 3) Rank by pain, 4) Check for existing data"},
-  {"front": "Should you disclose AI use in grant proposals?", "back": "Yes, always. Transparency builds trust. Include a simple line noting AI assistance and human review."},
-  {"front": "What is the non-negotiable rule for AI-generated content at nonprofits?", "back": "Human review every time. AI generates the first draft; a human with program knowledge reviews, edits, and approves."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three categories of AI tools that matter for nonprofits?", "back": "Writing Assistants (drafting/editing text), Data Analysis (patterns in spreadsheets), and Workflow Automation (chaining AI into existing tools)"}, {"front": "What is the 80/20 rule for nonprofit AI?", "back": "80% of value comes from three capabilities: drafting text, summarizing documents, and analyzing spreadsheet data"}, {"front": "What four steps make up the AI Readiness Audit?", "back": "1) List every recurring task, 2) Tag as text-heavy/data-heavy/relationship-heavy, 3) Rank by pain, 4) Check for existing data"}, {"front": "Should you disclose AI use in grant proposals?", "back": "Yes, always. Transparency builds trust. Include a simple line noting AI assistance and human review."}, {"front": "What is the non-negotiable rule for AI-generated content at nonprofits?", "back": "Human review every time. AI generates the first draft; a human with program knowledge reviews, edits, and approves."}]}'></div>
 
 </div>

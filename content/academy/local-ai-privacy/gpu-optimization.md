@@ -139,24 +139,8 @@ SYSTEM "You are a creative writer. Produce vivid, engaging prose."</code></pre>
 <p>Save different Modelfiles for different tasks and switch between them with <code>ollama run model-name</code>. This is faster than adjusting parameters per-request in the API.</p>
 </div>
 
-<QuizMC
-  question="Why is Apple Silicon particularly efficient for local AI compared to NVIDIA setups?"
-  options='["Apple chips are faster than NVIDIA GPUs", "Unified memory means no separate VRAM limit -- the GPU can access all system RAM", "Apple provides better AI software", "Apple Silicon supports CUDA natively"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why is Apple Silicon particularly efficient for local AI compared to NVIDIA setups?", "options": ["Apple chips are faster than NVIDIA GPUs", "Unified memory means no separate VRAM limit -- the GPU can access all system RAM", "Apple provides better AI software", "Apple Silicon supports CUDA natively"], "correct": 1, "explanation": "The correct answer is: Unified memory means no separate VRAM limit -- the GPU can access all system RAM"}, {"q": "What is the most common cause of sudden inference speed drops during extended use?", "options": ["Model corruption", "Thermal throttling as the hardware gets hot", "Internet connection issues", "Ollama software bugs"], "correct": 1, "explanation": "The correct answer is: Thermal throttling as the hardware gets hot"}]}'></div>
 
-<QuizMC
-  question="What is the most common cause of sudden inference speed drops during extended use?"
-  options='["Model corruption", "Thermal throttling as the hardware gets hot", "Internet connection issues", "Ollama software bugs"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the three GPU acceleration frameworks?", "back": "NVIDIA CUDA (gold standard, Linux/Windows), Apple Metal (built into M1-M4, automatic in Ollama), AMD ROCm (growing Linux support)"},
-  {"front": "What are the three strategies when a model is too large for GPU memory?", "back": "1) Quantize more aggressively (Q4 to Q3), 2) Partial GPU offloading (split layers), 3) Use a smaller model that fits entirely on GPU"},
-  {"front": "How do you create a custom model configuration in Ollama?", "back": "Write a Modelfile with FROM, PARAMETER, and SYSTEM directives. Build with 'ollama create model-name -f Modelfile'. Run with 'ollama run model-name'."},
-  {"front": "What num_ctx setting should you use for RAG?", "back": "2048-4096 is usually sufficient for RAG (3-5 chunks of context). Smaller context windows use less memory and run faster."},
-  {"front": "How do you check Ollama's GPU memory usage?", "back": "ollama ps shows loaded models and memory allocation. nvidia-smi shows NVIDIA GPU memory. macOS memory_pressure shows system memory state."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three GPU acceleration frameworks?", "back": "NVIDIA CUDA (gold standard, Linux/Windows), Apple Metal (built into M1-M4, automatic in Ollama), AMD ROCm (growing Linux support)"}, {"front": "What are the three strategies when a model is too large for GPU memory?", "back": "1) Quantize more aggressively (Q4 to Q3), 2) Partial GPU offloading (split layers), 3) Use a smaller model that fits entirely on GPU"}, {"front": "How do you create a custom model configuration in Ollama?", "back": "Write a Modelfile with FROM, PARAMETER, and SYSTEM directives. Build with &#39;ollama create model-name -f Modelfile&#39;. Run with &#39;ollama run model-name&#39;."}, {"front": "What num_ctx setting should you use for RAG?", "back": "2048-4096 is usually sufficient for RAG (3-5 chunks of context). Smaller context windows use less memory and run faster."}, {"front": "How do you check Ollama&#39;s GPU memory usage?", "back": "ollama ps shows loaded models and memory allocation. nvidia-smi shows NVIDIA GPU memory. macOS memory_pressure shows system memory state."}]}'></div>
 
 </div>

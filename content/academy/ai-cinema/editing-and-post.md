@@ -225,26 +225,8 @@ Take 4-6 of your generated clips from previous exercises. Import them into DaVin
 </div>
 </div>
 
-<QuizMC>
-<Question text="What is the '3-Second Rule' in AI cinema editing?">
-<Option text="No shot should be shorter than 3 seconds" />
-<Option correct text="Default to 2-4 second shots because AI clips start strong and artifacts accumulate after 2-3 seconds" />
-<Option text="Wait 3 seconds between each cut for dramatic effect" />
-<Option text="Generate clips in 3-second increments for consistency" />
-</Question>
-<Question text="What is the most impactful single technique for unifying AI-generated shots in color grading?">
-<Option text="Adjusting white balance on each shot individually" />
-<Option text="Using the most expensive LUT available" />
-<Option correct text="Applying the same LUT and film grain to every shot to simulate a single camera" />
-<Option text="Converting all footage to black and white" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the &#39;3-Second Rule&#39; in AI cinema editing?", "options": ["No shot should be shorter than 3 seconds", "Default to 2-4 second shots because AI clips start strong and artifacts accumulate after 2-3 seconds", "Wait 3 seconds between each cut for dramatic effect", "Generate clips in 3-second increments for consistency"], "correct": 1, "explanation": "The correct answer is: Default to 2-4 second shots because AI clips start strong and artifacts accumulate after 2-3 seconds"}, {"q": "What is the most impactful single technique for unifying AI-generated shots in color grading?", "options": ["Adjusting white balance on each shot individually", "Using the most expensive LUT available", "Applying the same LUT and film grain to every shot to simulate a single camera", "Converting all footage to black and white"], "correct": 2, "explanation": "The correct answer is: Applying the same LUT and film grain to every shot to simulate a single camera"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the four recommended video timeline tracks in DaVinci Resolve?" back="V1: Primary narrative footage, V2: B-roll/cutaways/inserts, V3: VFX and compositing layers, V4: Titles and text overlays" />
-<Card front="What is an L-cut and how does it help in AI cinema?" back="An L-cut lets audio from the current scene continue into the next visual. It smooths transitions between shots and distracts from visual inconsistencies at cut points." />
-<Card front="What are the three steps of color grading for AI cinema?" back="1. Primary correction (normalize exposure, white balance, contrast per shot), 2. Secondary correction (fix skin tones, match backgrounds), 3. Creative grade (unified LUT, vignette, film grain across entire film)" />
-<Card front="Why upload 4K to YouTube even from 1080p source material?" back="YouTube allocates higher bitrate to 4K uploads during re-encoding, resulting in better visual quality even for viewers watching at 1080p." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the four recommended video timeline tracks in DaVinci Resolve?", "back": "V1: Primary narrative footage, V2: B-roll/cutaways/inserts, V3: VFX and compositing layers, V4: Titles and text overlays"}, {"front": "What is an L-cut and how does it help in AI cinema?", "back": "An L-cut lets audio from the current scene continue into the next visual. It smooths transitions between shots and distracts from visual inconsistencies at cut points."}, {"front": "What are the three steps of color grading for AI cinema?", "back": "1. Primary correction (normalize exposure, white balance, contrast per shot), 2. Secondary correction (fix skin tones, match backgrounds), 3. Creative grade (unified LUT, vignette, film grain across entire film)"}, {"front": "Why upload 4K to YouTube even from 1080p source material?", "back": "YouTube allocates higher bitrate to 4K uploads during re-encoding, resulting in better visual quality even for viewers watching at 1080p."}]}'></div>
 
 </div>

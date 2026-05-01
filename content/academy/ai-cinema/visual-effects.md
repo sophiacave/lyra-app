@@ -224,26 +224,8 @@ Optimization tips:
 For a 3-minute short with moderate VFX, expect 15-30 minutes of render time on a modern machine. This is negligible compared to the hours spent in generation and editing.
 </div>
 
-<QuizMC>
-<Question text="What is the primary purpose of VFX in AI cinema compared to traditional filmmaking?">
-<Option text="Creating photorealistic creatures and environments" />
-<Option correct text="Enhancing atmosphere, masking artifacts, and unifying disparate AI-generated shots" />
-<Option text="Replacing backgrounds that were not generated correctly" />
-<Option text="Adding spectacle to compensate for low video quality" />
-</Question>
-<Question text="Why are atmospheric overlays (rain, fog, light leaks) considered high-value VFX for AI cinema?">
-<Option text="They are the most technically impressive effects available" />
-<Option text="AI cannot generate these elements natively" />
-<Option correct text="They are easy to implement, hard to get wrong, and add organic texture that AI footage lacks" />
-<Option text="Film festivals require at least one VFX element per submission" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary purpose of VFX in AI cinema compared to traditional filmmaking?", "options": ["Creating photorealistic creatures and environments", "Enhancing atmosphere, masking artifacts, and unifying disparate AI-generated shots", "Replacing backgrounds that were not generated correctly", "Adding spectacle to compensate for low video quality"], "correct": 1, "explanation": "The correct answer is: Enhancing atmosphere, masking artifacts, and unifying disparate AI-generated shots"}, {"q": "Why are atmospheric overlays (rain, fog, light leaks) considered high-value VFX for AI cinema?", "options": ["They are the most technically impressive effects available", "AI cannot generate these elements natively", "They are easy to implement, hard to get wrong, and add organic texture that AI footage lacks", "Film festivals require at least one VFX element per submission"], "correct": 2, "explanation": "The correct answer is: They are easy to implement, hard to get wrong, and add organic texture that AI footage lacks"}]}'></div>
 
-<FlashDeck>
-<Card front="What three purposes does VFX serve in AI cinema?" back="1. Enhances what AI generation does well (atmosphere, lighting), 2. Masks what it does poorly (seams, artifacts), 3. Connects disparate shots into a unified visual world" />
-<Card front="What are the essential Fusion nodes for AI cinema VFX?" back="Film grain overlay (Multiply blend), light leak overlay (Screen blend), FastNoise for fog/mist, pEmitter for rain particles, Transform for subtle camera shake" />
-<Card front="What is the title design formula for AI cinema opening titles?" back="8-12 seconds over atmospheric shot. Sans-serif or thin serif font. Letter-spaced. Simple fade-in (1.5s), hold (4s), fade-out (1.5s). White or off-white with subtle shadow." />
-<Card front="Why should VFX be invisible in AI cinema?" back="AI cinema already asks the viewer to accept synthetic imagery. Adding obvious VFX compounds the uncanny valley effect. If the audience notices an effect, it needs more polish or removal." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What three purposes does VFX serve in AI cinema?", "back": "1. Enhances what AI generation does well (atmosphere, lighting), 2. Masks what it does poorly (seams, artifacts), 3. Connects disparate shots into a unified visual world"}, {"front": "What are the essential Fusion nodes for AI cinema VFX?", "back": "Film grain overlay (Multiply blend), light leak overlay (Screen blend), FastNoise for fog/mist, pEmitter for rain particles, Transform for subtle camera shake"}, {"front": "What is the title design formula for AI cinema opening titles?", "back": "8-12 seconds over atmospheric shot. Sans-serif or thin serif font. Letter-spaced. Simple fade-in (1.5s), hold (4s), fade-out (1.5s). White or off-white with subtle shadow."}, {"front": "Why should VFX be invisible in AI cinema?", "back": "AI cinema already asks the viewer to accept synthetic imagery. Adding obvious VFX compounds the uncanny valley effect. If the audience notices an effect, it needs more polish or removal."}]}'></div>
 
 </div>

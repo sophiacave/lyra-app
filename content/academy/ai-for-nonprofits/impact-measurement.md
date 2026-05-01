@@ -89,24 +89,8 @@ Format as a table with arrows showing the causal chain. Flag any logical gaps wh
 <p><strong>Automate collection.</strong> Every manual data entry step is a point of failure. Use Google Forms for surveys, automatic attendance tracking, and CRM integrations to reduce the burden on frontline staff.</p>
 </div>
 
-<QuizMC
-  question="What is the key difference between an output and an outcome?"
-  options='["Outputs are more expensive to measure", "Outputs count what you did; outcomes measure what changed because of it", "Outcomes are only relevant for large nonprofits", "Outputs are qualitative; outcomes are quantitative"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key difference between an output and an outcome?", "options": ["Outputs are more expensive to measure", "Outputs count what you did; outcomes measure what changed because of it", "Outcomes are only relevant for large nonprofits", "Outputs are qualitative; outcomes are quantitative"], "correct": 1, "explanation": "The correct answer is: Outputs count what you did; outcomes measure what changed because of it"}, {"q": "Why is the &#39;flag logical gaps&#39; instruction important when building a logic model with AI?", "options": ["It makes the document longer for funders", "It helps AI generate more creative program ideas", "It spots where activities don&#39;t logically connect to claimed outcomes before a funder does", "It ensures compliance with federal regulations"], "correct": 2, "explanation": "The correct answer is: It spots where activities don&#39;t logically connect to claimed outcomes before a funder does"}]}'></div>
 
-<QuizMC
-  question="Why is the 'flag logical gaps' instruction important when building a logic model with AI?"
-  options='["It makes the document longer for funders", "It helps AI generate more creative program ideas", "It spots where activities don't logically connect to claimed outcomes before a funder does", "It ensures compliance with federal regulations"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the three levels of measurement?", "back": "Outputs (what you did), Outcomes (what changed), Impact (long-term systemic change)"},
-  {"front": "What are the five components of a logic model?", "back": "Inputs (resources), Activities (what you do), Outputs (deliverables), Short-term outcomes (1 year), Long-term outcomes (3-5 years)"},
-  {"front": "What four types of data analysis can AI perform on program data?", "back": "Trend identification, comparison to benchmarks, open-ended survey theme analysis, and statistical significance testing"},
-  {"front": "What is the four-step process for generating an impact report?", "back": "1) Data summary, 2) Narrative generation, 3) Visualization suggestions, 4) Board-ready condensed version"},
-  {"front": "What three practices build a measurement culture?", "back": "Make data visible (dashboards), celebrate learning not just success, and automate data collection to reduce burden on staff"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three levels of measurement?", "back": "Outputs (what you did), Outcomes (what changed), Impact (long-term systemic change)"}, {"front": "What are the five components of a logic model?", "back": "Inputs (resources), Activities (what you do), Outputs (deliverables), Short-term outcomes (1 year), Long-term outcomes (3-5 years)"}, {"front": "What four types of data analysis can AI perform on program data?", "back": "Trend identification, comparison to benchmarks, open-ended survey theme analysis, and statistical significance testing"}, {"front": "What is the four-step process for generating an impact report?", "back": "1) Data summary, 2) Narrative generation, 3) Visualization suggestions, 4) Board-ready condensed version"}, {"front": "What three practices build a measurement culture?", "back": "Make data visible (dashboards), celebrate learning not just success, and automate data collection to reduce burden on staff"}]}'></div>
 
 </div>

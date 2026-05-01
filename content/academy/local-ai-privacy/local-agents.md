@@ -161,24 +161,8 @@ answer = run_agent("Find all documents about Q3 revenue and
 <p>Each of these operates entirely locally. Your meeting notes, source code, financial data, and policy documents never leave your machine -- even as the AI reasons about them and takes actions.</p>
 </div>
 
-<QuizMC
-  question="What is the key difference between a chatbot and an AI agent?"
-  options='["Agents use larger models", "Agents take a goal and figure out steps to achieve it using tools, while chatbots just respond to prompts", "Chatbots are always cloud-based", "Agents can only work online"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key difference between a chatbot and an AI agent?", "options": ["Agents use larger models", "Agents take a goal and figure out steps to achieve it using tools, while chatbots just respond to prompts", "Chatbots are always cloud-based", "Agents can only work online"], "correct": 1, "explanation": "The correct answer is: Agents take a goal and figure out steps to achieve it using tools, while chatbots just respond to prompts"}, {"q": "What is the minimum recommended model size for reliable agent behavior?", "options": ["3B parameters", "7B parameters", "14B+ parameters", "70B+ parameters"], "correct": 2, "explanation": "The correct answer is: 14B+ parameters"}]}'></div>
 
-<QuizMC
-  question="What is the minimum recommended model size for reliable agent behavior?"
-  options='["3B parameters", "7B parameters", "14B+ parameters", "70B+ parameters"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the four steps of an agent loop?", "back": "1) Observe (read current state), 2) Think (decide next action), 3) Act (call a tool), 4) Repeat until goal achieved"},
-  {"front": "What is the ReAct pattern?", "back": "Reasoning + Acting. The model alternates between THOUGHT (reasoning), ACTION (tool call), and OBSERVATION (tool output) until it reaches an ANSWER."},
-  {"front": "What are the 5 safety guardrails for local agents?", "back": "1) Filesystem sandboxing, 2) Code execution isolation (no eval), 3) Action limits (max steps), 4) Confirmation gates for destructive actions, 5) Audit logging of all tool calls"},
-  {"front": "Why do smaller models struggle with agent behavior?", "back": "Agents need strong instruction-following and reasoning to correctly parse the ReAct format, choose appropriate tools, and generate well-formed actions. 7-8B models often call wrong tools or produce malformed output."},
-  {"front": "What is the recommended autonomy progression for agents?", "back": "Start fully supervised (approve every action), move to semi-autonomous (approve only destructive actions), then fully autonomous only after extensive testing with logged, auditable behavior."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the four steps of an agent loop?", "back": "1) Observe (read current state), 2) Think (decide next action), 3) Act (call a tool), 4) Repeat until goal achieved"}, {"front": "What is the ReAct pattern?", "back": "Reasoning + Acting. The model alternates between THOUGHT (reasoning), ACTION (tool call), and OBSERVATION (tool output) until it reaches an ANSWER."}, {"front": "What are the 5 safety guardrails for local agents?", "back": "1) Filesystem sandboxing, 2) Code execution isolation (no eval), 3) Action limits (max steps), 4) Confirmation gates for destructive actions, 5) Audit logging of all tool calls"}, {"front": "Why do smaller models struggle with agent behavior?", "back": "Agents need strong instruction-following and reasoning to correctly parse the ReAct format, choose appropriate tools, and generate well-formed actions. 7-8B models often call wrong tools or produce malformed output."}, {"front": "What is the recommended autonomy progression for agents?", "back": "Start fully supervised (approve every action), move to semi-autonomous (approve only destructive actions), then fully autonomous only after extensive testing with logged, auditable behavior."}]}'></div>
 
 </div>

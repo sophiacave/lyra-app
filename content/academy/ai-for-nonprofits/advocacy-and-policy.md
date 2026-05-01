@@ -86,25 +86,8 @@ free: false
 <p>AI helps track and report: "Using our advocacy activity log [paste data], generate a quarterly advocacy impact report. Show: total supporter actions taken, media coverage summary, legislative meetings and outcomes, and progress toward policy goals. Highlight the top 3 wins and the top challenge."</p>
 </div>
 
-<QuizMC
-  question="Under IRS rules, what can a 501(c)(3) do without limit?"
-  options='["Direct lobbying of legislators", "Grassroots lobbying campaigns", "Issue education and public awareness that does not reference specific legislation", "Campaign contributions to political candidates"]'
-  answer="2"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Under IRS rules, what can a 501(c)(3) do without limit?", "options": ["Direct lobbying of legislators", "Grassroots lobbying campaigns", "Issue education and public awareness that does not reference specific legislation", "Campaign contributions to political candidates"], "correct": 2, "explanation": "The correct answer is: Issue education and public awareness that does not reference specific legislation"}, {"q": "Why should you always verify AI-generated policy information through official sources?", "options": ["AI deliberately provides false information", "AI&#39;s training data has a cutoff date and may not reflect current legislative status", "Official sources have better writing style", "It&#39;s a legal requirement"], "correct": 1, "explanation": "The correct answer is: AI&#39;s training data has a cutoff date and may not reflect current legislative status"}]}'></div>
 
-<QuizMC
-  question="Why should you always verify AI-generated policy information through official sources?"
-  options='["AI deliberately provides false information", "AI's training data has a cutoff date and may not reflect current legislative status", "Official sources have better writing style", "It's a legal requirement"]'
-  answer="1"
-/>
-
-<FlashDeck cards='[
-  {"front": "What is the IRS distinction between lobbying and advocacy for 501(c)(3)s?", "back": "Lobbying = asking legislators to vote a specific way on specific legislation (limited). Advocacy/education = educating about issues without referencing specific legislation (unlimited)."},
-  {"front": "What is the 501(h) election lobbying limit?", "back": "Up to 20% of the first $500K of exempt purpose expenditures for direct lobbying. Grassroots lobbying limited to 25% of that lobbying amount."},
-  {"front": "What should a one-page legislative fact sheet include?", "back": "Headline statistic, 3 key facts with sources, community impact, proposed solution, and a call to action -- designed for 60-second reading"},
-  {"front": "What are the three levels of advocacy impact metrics?", "back": "Process metrics (actions taken), Influence metrics (positions changed), Outcome metrics (policy changes achieved)"},
-  {"front": "How should an action alert email be structured?", "back": "What's happening and when, why it matters, exactly what action to take, sample script for calling -- all under 200 words with urgent subject line"},
-  {"front": "What structure works for advocacy op-eds?", "back": "News hook, problem with local data, frontline perspective, advocated solution, closing call to action -- 700 words, passionate but evidence-based"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the IRS distinction between lobbying and advocacy for 501(c)(3)s?", "back": "Lobbying = asking legislators to vote a specific way on specific legislation (limited). Advocacy/education = educating about issues without referencing specific legislation (unlimited)."}, {"front": "What is the 501(h) election lobbying limit?", "back": "Up to 20% of the first $500K of exempt purpose expenditures for direct lobbying. Grassroots lobbying limited to 25% of that lobbying amount."}, {"front": "What should a one-page legislative fact sheet include?", "back": "Headline statistic, 3 key facts with sources, community impact, proposed solution, and a call to action -- designed for 60-second reading"}, {"front": "What are the three levels of advocacy impact metrics?", "back": "Process metrics (actions taken), Influence metrics (positions changed), Outcome metrics (policy changes achieved)"}, {"front": "How should an action alert email be structured?", "back": "What&#39;s happening and when, why it matters, exactly what action to take, sample script for calling -- all under 200 words with urgent subject line"}, {"front": "What structure works for advocacy op-eds?", "back": "News hook, problem with local data, frontline perspective, advocated solution, closing call to action -- 700 words, passionate but evidence-based"}]}'></div>
 
 </div>

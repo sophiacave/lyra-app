@@ -85,25 +85,8 @@ free: false
 <p>A funded proposal reads like a human wrote it with deep program knowledge -- because one did. AI just handled the scaffolding.</p>
 </div>
 
-<QuizMC
-  question="What should you build before writing any AI-assisted grant prompts?"
-  options='["A list of all available AI tools", "A grant context document with org basics, impact data, voice samples, and boilerplate", "A database of all funders in your state", "An AI-generated mission statement"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What should you build before writing any AI-assisted grant prompts?", "options": ["A list of all available AI tools", "A grant context document with org basics, impact data, voice samples, and boilerplate", "A database of all funders in your state", "An AI-generated mission statement"], "correct": 1, "explanation": "The correct answer is: A grant context document with org basics, impact data, voice samples, and boilerplate"}, {"q": "What is the most dangerous pitfall when using AI for grant writing?", "options": ["Writing too quickly", "Using bullet points instead of paragraphs", "Letting AI fabricate statistics that sound plausible", "Submitting proposals to too many funders"], "correct": 2, "explanation": "The correct answer is: Letting AI fabricate statistics that sound plausible"}]}'></div>
 
-<QuizMC
-  question="What is the most dangerous pitfall when using AI for grant writing?"
-  options='["Writing too quickly", "Using bullet points instead of paragraphs", "Letting AI fabricate statistics that sound plausible", "Submitting proposals to too many funders"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "How much time does AI typically save on a 10-page grant proposal?", "back": "Reduces from 20-30 hours to 8-12 hours -- roughly 50-60% time savings"},
-  {"front": "What are the 5 components of a grant context document?", "back": "Organization basics, impact data, voice samples from funded grants, and boilerplate sections (history, bios, sustainability)"},
-  {"front": "What is the recommended LOI structure for AI prompts?", "back": "1) Opening hook, 2) Problem statement with local data, 3) Solution and track record, 4) Budget summary and ask, 5) Closing on partnership value"},
-  {"front": "What is the rewrite pattern for maintaining voice?", "back": "Write a rough draft yourself (even bullet points), then ask AI to rewrite into polished grant narrative while keeping your specific examples and voice"},
-  {"front": "When should you write the Executive Summary?", "back": "Last. After all other sections are complete, ask AI to summarize them into a compelling 1-page summary that leads with impact."},
-  {"front": "What language should you avoid in Statements of Need?", "back": "Deficit-based language about the community you serve. Focus on systemic issues and community strengths, not portraying people as helpless."}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "How much time does AI typically save on a 10-page grant proposal?", "back": "Reduces from 20-30 hours to 8-12 hours -- roughly 50-60% time savings"}, {"front": "What are the 5 components of a grant context document?", "back": "Organization basics, impact data, voice samples from funded grants, and boilerplate sections (history, bios, sustainability)"}, {"front": "What is the recommended LOI structure for AI prompts?", "back": "1) Opening hook, 2) Problem statement with local data, 3) Solution and track record, 4) Budget summary and ask, 5) Closing on partnership value"}, {"front": "What is the rewrite pattern for maintaining voice?", "back": "Write a rough draft yourself (even bullet points), then ask AI to rewrite into polished grant narrative while keeping your specific examples and voice"}, {"front": "When should you write the Executive Summary?", "back": "Last. After all other sections are complete, ask AI to summarize them into a compelling 1-page summary that leads with impact."}, {"front": "What language should you avoid in Statements of Need?", "back": "Deficit-based language about the community you serve. Focus on systemic issues and community strengths, not portraying people as helpless."}]}'></div>
 
 </div>

@@ -277,26 +277,8 @@ Use full RLHF when:
 ```
 </div>
 
-<QuizMC>
-<Question text="What is the key advantage of DPO over RLHF?">
-<Option text="DPO produces higher quality models than RLHF" />
-<Option text="DPO requires no preference data" />
-<Option correct text="DPO eliminates the need for a separate reward model and reinforcement learning, collapsing both into supervised learning" />
-<Option text="DPO works without any base model fine-tuning" />
-</Question>
-<Question text="In what order should the training pipeline be executed?">
-<Option text="Alignment -> SFT -> Pre-training" />
-<Option text="Pre-training -> Alignment -> SFT" />
-<Option correct text="Pre-training -> SFT -> Alignment (DPO/RLHF)" />
-<Option text="SFT -> Pre-training -> Alignment" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key advantage of DPO over RLHF?", "options": ["DPO produces higher quality models than RLHF", "DPO requires no preference data", "DPO eliminates the need for a separate reward model and reinforcement learning, collapsing both into supervised learning", "DPO works without any base model fine-tuning"], "correct": 2, "explanation": "The correct answer is: DPO eliminates the need for a separate reward model and reinforcement learning, collapsing both into supervised learning"}, {"q": "In what order should the training pipeline be executed?", "options": ["Alignment -> SFT -> Pre-training", "Pre-training -> Alignment -> SFT", "Pre-training -> SFT -> Alignment (DPO/RLHF)", "SFT -> Pre-training -> Alignment"], "correct": 2, "explanation": "The correct answer is: Pre-training -> SFT -> Alignment (DPO/RLHF)"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the three stages of RLHF?" back="Stage 1: Supervised Fine-Tuning (SFT). Stage 2: Reward Model Training (predict human preferences). Stage 3: RL Optimization with PPO (maximize reward score with KL penalty)." />
-<Card front="What is the DPO beta parameter?" back="Beta controls KL penalty strength. 0.1 = standard default. 0.05 = stronger preference learning. 0.5 = model stays close to SFT behavior. Higher beta = more conservative alignment." />
-<Card front="What are the three methods for collecting preference data?" back="1. Human annotation ($0.10-0.50 per comparison). 2. Synthetic AI feedback (stronger model ranks responses). 3. Implicit production data (user thumbs up/down, conversation continuation)." />
-<Card front="When should you use SFT only vs adding DPO?" back="SFT only: objectively correct answers, format matters most, <200 examples. Add DPO: subjective quality tasks, tone/style control needed, SFT outputs correct but not preferred, 500+ preference pairs available." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three stages of RLHF?", "back": "Stage 1: Supervised Fine-Tuning (SFT). Stage 2: Reward Model Training (predict human preferences). Stage 3: RL Optimization with PPO (maximize reward score with KL penalty)."}, {"front": "What is the DPO beta parameter?", "back": "Beta controls KL penalty strength. 0.1 = standard default. 0.05 = stronger preference learning. 0.5 = model stays close to SFT behavior. Higher beta = more conservative alignment."}, {"front": "What are the three methods for collecting preference data?", "back": "1. Human annotation ($0.10-0.50 per comparison). 2. Synthetic AI feedback (stronger model ranks responses). 3. Implicit production data (user thumbs up/down, conversation continuation)."}, {"front": "When should you use SFT only vs adding DPO?", "back": "SFT only: objectively correct answers, format matters most, <200 examples. Add DPO: subjective quality tasks, tone/style control needed, SFT outputs correct but not preferred, 500+ preference pairs available."}]}'></div>
 
 </div>

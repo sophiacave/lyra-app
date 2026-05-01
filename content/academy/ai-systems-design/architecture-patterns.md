@@ -180,26 +180,8 @@ Pipelines are ideal for RAG, document processing, and any workflow where the ste
 Start with Gateway + Pipeline. Add Router when costs matter. Add Orchestrator only when tasks require dynamic decision-making. Over-engineering early is the second most common failure mode after under-engineering.
 </div>
 
-<QuizMC
-  question="What is the primary difference between a Pipeline and an Orchestrator?"
-  options={["Pipelines are faster", "Orchestrators use more expensive models", "Pipelines follow fixed stages while Orchestrators dynamically replan based on results", "There is no meaningful difference"]}
-  correct={2}
-  explanation="The key difference is dynamic replanning. Pipelines always execute the same fixed sequence of stages. Orchestrators evaluate intermediate results and can change their plan, add steps, or retry with different approaches."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary difference between a Pipeline and an Orchestrator?", "options": ["Pipelines are faster", "Orchestrators use more expensive models", "Pipelines follow fixed stages while Orchestrators dynamically replan based on results", "There is no meaningful difference"], "correct": 2, "explanation": "The key difference is dynamic replanning. Pipelines always execute the same fixed sequence of stages. Orchestrators evaluate intermediate results and can change their plan, add steps, or retry with different approaches."}, {"q": "Why should token counts be validated at the Gateway rather than at the model call?", "options": ["Gateways are faster", "To fail fast before consuming compute on preprocessing", "Models can&#39;t count tokens accurately", "It&#39;s a security requirement"], "correct": 1, "explanation": "By the time you hit a token limit at the model API, you&#39;ve already spent compute on preprocessing, embedding, retrieval, and prompt construction. Validating at the gateway lets you reject oversized requests immediately -- fail fast, fail cheap."}]}'></div>
 
-<QuizMC
-  question="Why should token counts be validated at the Gateway rather than at the model call?"
-  options={["Gateways are faster", "To fail fast before consuming compute on preprocessing", "Models can't count tokens accurately", "It's a security requirement"]}
-  correct={1}
-  explanation="By the time you hit a token limit at the model API, you've already spent compute on preprocessing, embedding, retrieval, and prompt construction. Validating at the gateway lets you reject oversized requests immediately -- fail fast, fail cheap."
-/>
-
-<FlashDeck cards={[
-  { front: "What does the Gateway pattern handle?", back: "Authentication, rate limiting, input validation, token count enforcement, and request normalization. It protects the system and enforces contracts without making AI decisions." },
-  { front: "How much can proper model routing reduce API costs?", back: "Typically 40-60%. By routing simple queries to cheaper models (e.g., GPT-4o-mini instead of Opus), you avoid overpaying for tasks that don't need frontier intelligence." },
-  { front: "What safeguard is essential for Orchestrator patterns?", back: "A maximum iteration count. Without it, a confused planner can loop indefinitely, burning tokens and time. Production systems typically cap at 5-10 iterations." },
-  { front: "When should you use a Pipeline vs. an Orchestrator?", back: "Use Pipelines when steps are known in advance (RAG, document processing). Use Orchestrators when the task requires dynamic decision-making based on intermediate results (agents, complex reasoning)." },
-  { front: "How do the four patterns compose in production?", back: "Gateway fronts the system (mandatory). Router dispatches to different Pipelines. Complex requests get an Orchestrator. The patterns are composable layers, not competing alternatives." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What does the Gateway pattern handle?", "back": "Authentication, rate limiting, input validation, token count enforcement, and request normalization. It protects the system and enforces contracts without making AI decisions."}, {"front": "How much can proper model routing reduce API costs?", "back": "Typically 40-60%. By routing simple queries to cheaper models (e.g., GPT-4o-mini instead of Opus), you avoid overpaying for tasks that don&#39;t need frontier intelligence."}, {"front": "What safeguard is essential for Orchestrator patterns?", "back": "A maximum iteration count. Without it, a confused planner can loop indefinitely, burning tokens and time. Production systems typically cap at 5-10 iterations."}, {"front": "When should you use a Pipeline vs. an Orchestrator?", "back": "Use Pipelines when steps are known in advance (RAG, document processing). Use Orchestrators when the task requires dynamic decision-making based on intermediate results (agents, complex reasoning)."}, {"front": "How do the four patterns compose in production?", "back": "Gateway fronts the system (mandatory). Router dispatches to different Pipelines. Complex requests get an Orchestrator. The patterns are composable layers, not competing alternatives."}]}'></div>
 
 </div>

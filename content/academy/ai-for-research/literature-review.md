@@ -178,26 +178,8 @@ A literature review should not be a one-time effort. Set up alerts and automatio
 Store everything in a structured format (Notion database, Zotero with tags, or a simple SQLite database) so that when you write, you can query your literature rather than remembering it.
 </div>
 
-<QuizMC
-  question="What is the primary efficiency gain of AI-assisted literature review?"
-  options={["Reading each paper 10x faster", "Eliminating 80% of papers you would have read manually through AI triage", "Generating the literature review section automatically", "Replacing peer review"]}
-  correct={1}
-  explanation="The efficiency gain is not faster reading -- it is smarter triage. AI helps identify which papers are actually relevant, so you spend deep reading time on the 50-100 papers that matter instead of skimming 500."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary efficiency gain of AI-assisted literature review?", "options": ["Reading each paper 10x faster", "Eliminating 80% of papers you would have read manually through AI triage", "Generating the literature review section automatically", "Replacing peer review"], "correct": 1, "explanation": "The efficiency gain is not faster reading -- it is smarter triage. AI helps identify which papers are actually relevant, so you spend deep reading time on the 50-100 papers that matter instead of skimming 500."}, {"q": "Why should you cross-validate across multiple search tools?", "options": ["Each tool has different pricing", "Different tools have different coverage and ranking algorithms, so cross-validation ensures comprehensive coverage", "It&#39;s a journal requirement", "One tool is always wrong"], "correct": 1, "explanation": "Semantic Scholar, Elicit, and Google Scholar each have different coverage and ranking algorithms. Running queries through all three ensures you find papers that any single tool might miss. Papers found by all three are likely central to your field."}]}'></div>
 
-<QuizMC
-  question="Why should you cross-validate across multiple search tools?"
-  options={["Each tool has different pricing", "Different tools have different coverage and ranking algorithms, so cross-validation ensures comprehensive coverage", "It's a journal requirement", "One tool is always wrong"]}
-  correct={1}
-  explanation="Semantic Scholar, Elicit, and Google Scholar each have different coverage and ranking algorithms. Running queries through all three ensures you find papers that any single tool might miss. Papers found by all three are likely central to your field."
-/>
-
-<FlashDeck cards={[
-  { front: "How long does a traditional systematic literature review take?", back: "100-375 hours (6-8 weeks full-time) to read 200-500 papers at 30-45 minutes each. AI-augmented reviews can achieve the same coverage in approximately 2 weeks." },
-  { front: "What is the AI-augmented literature review workflow?", back: "Search broadly -> AI triage for relevance (Elicit) -> AI extract key data (LLM) -> Read deeply the papers that matter -> AI-assisted synthesis. Human effort concentrates where judgment is needed." },
-  { front: "How accurate is AI extraction from paper abstracts?", back: "80-90% accurate. For papers central to your argument, read the full paper and verify. For peripheral papers, the abstract-level extraction is usually sufficient." },
-  { front: "What does AI handle vs. what does the researcher handle in lit review?", back: "AI handles the 80% that is mechanical: search, triage, extraction, organization. The researcher handles the 20% that is intellectual: evaluation, interpretation, gap identification, narrative construction." },
-  { front: "How do you maintain a living literature database?", back: "Semantic Scholar alerts, Google Scholar alerts, journal RSS feeds processed through extraction pipeline, citation tracking on core references. Store in a queryable format (Notion, Zotero, SQLite)." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "How long does a traditional systematic literature review take?", "back": "100-375 hours (6-8 weeks full-time) to read 200-500 papers at 30-45 minutes each. AI-augmented reviews can achieve the same coverage in approximately 2 weeks."}, {"front": "What is the AI-augmented literature review workflow?", "back": "Search broadly -> AI triage for relevance (Elicit) -> AI extract key data (LLM) -> Read deeply the papers that matter -> AI-assisted synthesis. Human effort concentrates where judgment is needed."}, {"front": "How accurate is AI extraction from paper abstracts?", "back": "80-90% accurate. For papers central to your argument, read the full paper and verify. For peripheral papers, the abstract-level extraction is usually sufficient."}, {"front": "What does AI handle vs. what does the researcher handle in lit review?", "back": "AI handles the 80% that is mechanical: search, triage, extraction, organization. The researcher handles the 20% that is intellectual: evaluation, interpretation, gap identification, narrative construction."}, {"front": "How do you maintain a living literature database?", "back": "Semantic Scholar alerts, Google Scholar alerts, journal RSS feeds processed through extraction pipeline, citation tracking on core references. Store in a queryable format (Notion, Zotero, SQLite)."}]}'></div>
 
 </div>

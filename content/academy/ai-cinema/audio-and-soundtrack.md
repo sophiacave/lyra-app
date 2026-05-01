@@ -197,26 +197,8 @@ Export your final mix as:
 - 5.1 only if targeting film festival theatrical screenings
 </div>
 
-<QuizMC>
-<Question text="Why should you generate voice-over 'dry' (without reverb or effects)?">
-<Option text="AI voice synthesis cannot add reverb" />
-<Option correct text="Dry recording gives full control over spatial positioning and room tone in the mix stage" />
-<Option text="Reverb increases file size unnecessarily" />
-<Option text="Film festivals require dry audio submissions" />
-</Question>
-<Question text="What are the three layers of a film soundscape?">
-<Option text="Dialogue, music, and silence" />
-<Option text="Foreground, midground, and background" />
-<Option correct text="Room tone/ambience (continuous), foley/SFX (synchronous), and design elements (emotional)" />
-<Option text="Bass, midrange, and treble frequencies" />
-</Question>
-</QuizMC>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why should you generate voice-over &#39;dry&#39; (without reverb or effects)?", "options": ["AI voice synthesis cannot add reverb", "Dry recording gives full control over spatial positioning and room tone in the mix stage", "Reverb increases file size unnecessarily", "Film festivals require dry audio submissions"], "correct": 1, "explanation": "The correct answer is: Dry recording gives full control over spatial positioning and room tone in the mix stage"}, {"q": "What are the three layers of a film soundscape?", "options": ["Dialogue, music, and silence", "Foreground, midground, and background", "Room tone/ambience (continuous), foley/SFX (synchronous), and design elements (emotional)", "Bass, midrange, and treble frequencies"], "correct": 2, "explanation": "The correct answer is: Room tone/ambience (continuous), foley/SFX (synchronous), and design elements (emotional)"}]}'></div>
 
-<FlashDeck>
-<Card front="What are the standard mixing levels for dialogue vs music in cinema?" back="Dialogue: -12 to -6 dB (loudest). Music: -18 to -12 dB (supporting). Ambience: -24 to -18 dB. Master output: -3 to -1 dB for platform headroom." />
-<Card front="Why use stem separation on AI-generated music?" back="Separating into stems (drums, bass, synth, strings) lets you duck individual elements under dialogue and bring them up during visual-only moments, giving precise mix control." />
-<Card front="What ElevenLabs settings produce the most emotional voice performance?" back="Lower stability (55-65%) allows more emotional variation. Clarity at 75-85%. Style at 30-50%. Generate multiple takes and pick the best per line." />
-<Card front="What is the total audio budget for a 3-minute AI short film?" back="$0.15-0.50 total across voice ($0.05-0.20), music ($0.02-0.10), sound design ($0.00-0.05), and mixing ($0.00-0.10)." />
-</FlashDeck>
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the standard mixing levels for dialogue vs music in cinema?", "back": "Dialogue: -12 to -6 dB (loudest). Music: -18 to -12 dB (supporting). Ambience: -24 to -18 dB. Master output: -3 to -1 dB for platform headroom."}, {"front": "Why use stem separation on AI-generated music?", "back": "Separating into stems (drums, bass, synth, strings) lets you duck individual elements under dialogue and bring them up during visual-only moments, giving precise mix control."}, {"front": "What ElevenLabs settings produce the most emotional voice performance?", "back": "Lower stability (55-65%) allows more emotional variation. Clarity at 75-85%. Style at 30-50%. Generate multiple takes and pick the best per line."}, {"front": "What is the total audio budget for a 3-minute AI short film?", "back": "$0.15-0.50 total across voice ($0.05-0.20), music ($0.02-0.10), sound design ($0.00-0.05), and mixing ($0.00-0.10)."}]}'></div>
 
 </div>

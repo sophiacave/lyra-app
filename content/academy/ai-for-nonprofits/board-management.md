@@ -77,24 +77,8 @@ free: false
 <p><strong>Board orientation packet:</strong> "Create a board orientation guide including: organization history and mission, current strategic plan summary, financial overview, program descriptions, board roles and responsibilities, committee structure, meeting schedule, key contacts, and a glossary of organization-specific terms."</p>
 </div>
 
-<QuizMC
-  question="How should AI help restructure board meetings?"
-  options='["By eliminating board meetings entirely", "By automating information-sharing so meetings become decision-making sessions", "By replacing board members with AI agents", "By making meetings longer with more data presentations"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "How should AI help restructure board meetings?", "options": ["By eliminating board meetings entirely", "By automating information-sharing so meetings become decision-making sessions", "By replacing board members with AI agents", "By making meetings longer with more data presentations"], "correct": 1, "explanation": "The correct answer is: By automating information-sharing so meetings become decision-making sessions"}, {"q": "When designing a board agenda, where should the most important decision be placed?", "options": ["Last, as the culminating item", "In the middle, surrounded by lighter items", "First, while energy is high", "On the consent agenda"], "correct": 2, "explanation": "The correct answer is: First, while energy is high"}]}'></div>
 
-<QuizMC
-  question="When designing a board agenda, where should the most important decision be placed?"
-  options='["Last, as the culminating item", "In the middle, surrounded by lighter items", "First, while energy is high", "On the consent agenda"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "How long does the typical ED spend preparing for each board meeting?", "back": "5-10 hours, with the board packet alone often taking an entire day to compile"},
-  {"front": "What structure should an ED board report follow?", "back": "Organizational highlights (top 3), Financial snapshot, Program updates, Challenges and risks, Recommendations for board action"},
-  {"front": "What is the 24-hour rule for board minutes?", "back": "Send draft minutes within 24 hours while memory is fresh. AI makes this achievable by reducing writing time from 3-4 hours to 30 minutes of review."},
-  {"front": "What three types of strategic planning analysis can AI support?", "back": "SWOT analysis (with evidence from data), Scenario planning (impact and mitigation), and Competitive landscape (framed as collaboration mapping)"},
-  {"front": "What gaps should a board matrix analysis identify?", "back": "Financial expertise, legal expertise, fundraising connections, diversity dimensions, program area knowledge, and community representation"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "How long does the typical ED spend preparing for each board meeting?", "back": "5-10 hours, with the board packet alone often taking an entire day to compile"}, {"front": "What structure should an ED board report follow?", "back": "Organizational highlights (top 3), Financial snapshot, Program updates, Challenges and risks, Recommendations for board action"}, {"front": "What is the 24-hour rule for board minutes?", "back": "Send draft minutes within 24 hours while memory is fresh. AI makes this achievable by reducing writing time from 3-4 hours to 30 minutes of review."}, {"front": "What three types of strategic planning analysis can AI support?", "back": "SWOT analysis (with evidence from data), Scenario planning (impact and mitigation), and Competitive landscape (framed as collaboration mapping)"}, {"front": "What gaps should a board matrix analysis identify?", "back": "Financial expertise, legal expertise, fundraising connections, diversity dimensions, program area knowledge, and community representation"}]}'></div>
 
 </div>

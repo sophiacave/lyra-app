@@ -184,26 +184,8 @@ Clear attribution prevents disputes and satisfies journal requirements:
 - **Disclose proportionally.** If AI wrote the first draft of Methods, say so. If AI checked grammar, a brief acknowledgment suffices. Match the disclosure to the extent of AI involvement.
 </div>
 
-<QuizMC
-  question="When should a research team establish their AI protocol?"
-  options={["When the paper is nearly finished", "After the first draft is written", "At the project kickoff, before any writing begins", "When the journal asks about AI usage"]}
-  correct={2}
-  explanation="Establishing AI protocols at project kickoff is straightforward. Retrofitting them onto a half-written manuscript is painful and leads to inconsistencies. Start with shared norms for tools, documentation, attribution, and review."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "When should a research team establish their AI protocol?", "options": ["When the paper is nearly finished", "After the first draft is written", "At the project kickoff, before any writing begins", "When the journal asks about AI usage"], "correct": 2, "explanation": "Establishing AI protocols at project kickoff is straightforward. Retrofitting them onto a half-written manuscript is painful and leads to inconsistencies. Start with shared norms for tools, documentation, attribution, and review."}, {"q": "How does AI serve cross-disciplinary research collaborations?", "options": ["By replacing the need for collaborators from other fields", "As a translator between disciplinary vocabularies, methods, and assumptions", "By automating the entire collaboration process", "By writing each collaborator&#39;s section"], "correct": 1, "explanation": "AI acts as a Rosetta Stone between disciplines -- translating methodology descriptions, decoding jargon, and identifying analogous concepts across fields. This reduces the 30% communication friction overhead in cross-disciplinary collaborations."}]}'></div>
 
-<QuizMC
-  question="How does AI serve cross-disciplinary research collaborations?"
-  options={["By replacing the need for collaborators from other fields", "As a translator between disciplinary vocabularies, methods, and assumptions", "By automating the entire collaboration process", "By writing each collaborator's section"]}
-  correct={1}
-  explanation="AI acts as a Rosetta Stone between disciplines -- translating methodology descriptions, decoding jargon, and identifying analogous concepts across fields. This reduces the 30% communication friction overhead in cross-disciplinary collaborations."
-/>
-
-<FlashDeck cards={[
-  { front: "What should a team AI protocol include?", back: "Approved tools, prohibited uses, documentation location, attribution standards, review requirements (co-author review of AI content), versioning conventions, and named responsibility for each section's accuracy." },
-  { front: "What is the correct integration order for multi-author papers?", back: "Write Introduction first (sets narrative and voice). Write Methods and Results independently (factual). Write Discussion last (synthesizes). Use AI to harmonize voice after all sections exist." },
-  { front: "What should a lab-level AI toolkit contain?", back: "Shared prompt library (tested prompts for common tasks), templates (disclosure statements, protocols), guidelines (approved tools, data privacy, citation verification). New members inherit proven workflows." },
-  { front: "What are the four attribution norms for AI in collaborative research?", back: "1) AI is not an author. 2) All co-authors must be aware of AI usage. 3) Document everything (save conversations, prompts, contribution locations). 4) Disclose proportionally to the extent of AI involvement." },
-  { front: "How do cross-disciplinary collaborations benefit from AI translation?", back: "These collaborations produce 15-20% higher citation impact but take 30% longer due to communication friction. AI translates methods, vocabulary, and assumptions between fields, reducing that friction significantly." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What should a team AI protocol include?", "back": "Approved tools, prohibited uses, documentation location, attribution standards, review requirements (co-author review of AI content), versioning conventions, and named responsibility for each section&#39;s accuracy."}, {"front": "What is the correct integration order for multi-author papers?", "back": "Write Introduction first (sets narrative and voice). Write Methods and Results independently (factual). Write Discussion last (synthesizes). Use AI to harmonize voice after all sections exist."}, {"front": "What should a lab-level AI toolkit contain?", "back": "Shared prompt library (tested prompts for common tasks), templates (disclosure statements, protocols), guidelines (approved tools, data privacy, citation verification). New members inherit proven workflows."}, {"front": "What are the four attribution norms for AI in collaborative research?", "back": "1) AI is not an author. 2) All co-authors must be aware of AI usage. 3) Document everything (save conversations, prompts, contribution locations). 4) Disclose proportionally to the extent of AI involvement."}, {"front": "How do cross-disciplinary collaborations benefit from AI translation?", "back": "These collaborations produce 15-20% higher citation impact but take 30% longer due to communication friction. AI translates methods, vocabulary, and assumptions between fields, reducing that friction significantly."}]}'></div>
 
 </div>

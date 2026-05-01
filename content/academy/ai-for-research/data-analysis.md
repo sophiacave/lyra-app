@@ -219,26 +219,8 @@ Do not use AI for: deciding whether an effect is real, making causal claims from
 The interpretation of results is the core intellectual contribution of your paper. AI can help you articulate it clearly, but the judgment is yours.
 </div>
 
-<QuizMC
-  question="What is the critical principle for using AI in data analysis?"
-  options={["Let AI run the analysis and report results", "AI writes code, your computer runs code, you interpret results", "AI interprets results, you write the code", "Use AI only for visualization, not statistics"]}
-  correct={1}
-  explanation="AI generates analysis code, but results must come from that code executed on your actual data. Never accept AI-generated numbers as results -- the model will fabricate plausible statistics including p-values and effect sizes if you don't provide data."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the critical principle for using AI in data analysis?", "options": ["Let AI run the analysis and report results", "AI writes code, your computer runs code, you interpret results", "AI interprets results, you write the code", "Use AI only for visualization, not statistics"], "correct": 1, "explanation": "AI generates analysis code, but results must come from that code executed on your actual data. Never accept AI-generated numbers as results -- the model will fabricate plausible statistics including p-values and effect sizes if you don&#39;t provide data."}, {"q": "What is the &#39;multiple comparisons trap&#39; in AI-assisted analysis?", "options": ["AI runs too slowly with many variables", "AI generates many statistical tests without correction, producing spurious significant results", "AI cannot handle more than 10 variables", "Multiple AI models give different results"], "correct": 1, "explanation": "AI will happily generate 50 tests without correction, producing false positives by chance. Always specify primary hypotheses upfront and apply corrections (Bonferroni, Holm, FDR). Unplanned analyses are exploratory and should be reported as such."}]}'></div>
 
-<QuizMC
-  question="What is the 'multiple comparisons trap' in AI-assisted analysis?"
-  options={["AI runs too slowly with many variables", "AI generates many statistical tests without correction, producing spurious significant results", "AI cannot handle more than 10 variables", "Multiple AI models give different results"]}
-  correct={1}
-  explanation="AI will happily generate 50 tests without correction, producing false positives by chance. Always specify primary hypotheses upfront and apply corrections (Bonferroni, Holm, FDR). Unplanned analyses are exploratory and should be reported as such."
-/>
-
-<FlashDeck cards={[
-  { front: "What are the five steps of AI-assisted data analysis?", back: "1) Describe your data and question. 2) AI generates analysis code. 3) You run the code on your actual data. 4) AI helps interpret the output. 5) You validate interpretation against domain knowledge." },
-  { front: "What should you check when validating AI's statistical test selection?", back: "Does it match your study design (between/within)? Are assumptions actually met (not just assumed)? Is it powerful enough for your sample size? Does it handle covariates appropriately?" },
-  { front: "What data privacy precautions should researchers take?", back: "Check IRB protocol and data use agreements before sharing with AI. Anonymize PII/PHI. Describe data structure without sharing actual values if needed. Most API providers don't train on API data, but IRB may require more." },
-  { front: "What is the reproducibility checklist for AI-assisted analysis?", back: "Version lock dependencies, set random seeds, log all decisions (including AI conversations), save intermediate outputs, and document AI usage in your methods section." },
-  { front: "Where does AI help vs. hurt in result interpretation?", back: "Helps: explaining statistical output, suggesting additional analyses, identifying confounds, writing results sections. Hurts: deciding if effects are real, making causal claims, determining hypothesis support -- these require domain judgment." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the five steps of AI-assisted data analysis?", "back": "1) Describe your data and question. 2) AI generates analysis code. 3) You run the code on your actual data. 4) AI helps interpret the output. 5) You validate interpretation against domain knowledge."}, {"front": "What should you check when validating AI&#39;s statistical test selection?", "back": "Does it match your study design (between/within)? Are assumptions actually met (not just assumed)? Is it powerful enough for your sample size? Does it handle covariates appropriately?"}, {"front": "What data privacy precautions should researchers take?", "back": "Check IRB protocol and data use agreements before sharing with AI. Anonymize PII/PHI. Describe data structure without sharing actual values if needed. Most API providers don&#39;t train on API data, but IRB may require more."}, {"front": "What is the reproducibility checklist for AI-assisted analysis?", "back": "Version lock dependencies, set random seeds, log all decisions (including AI conversations), save intermediate outputs, and document AI usage in your methods section."}, {"front": "Where does AI help vs. hurt in result interpretation?", "back": "Helps: explaining statistical output, suggesting additional analyses, identifying confounds, writing results sections. Hurts: deciding if effects are real, making causal claims, determining hypothesis support -- these require domain judgment."}]}'></div>
 
 </div>

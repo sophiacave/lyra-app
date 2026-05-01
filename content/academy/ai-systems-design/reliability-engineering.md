@@ -198,26 +198,8 @@ validated = await validate(result, timeout=budget.allocate(1.0))         # remai
 Without timeout budgets, one slow stage consumes the entire allowance, and every downstream stage either races or fails. Budget allocation turns unpredictable timeouts into managed trade-offs.
 </div>
 
-<QuizMC
-  question="Why is 'full jitter' important in retry logic?"
-  options={["It makes retries faster", "It prevents thundering herd -- all clients retrying simultaneously", "It reduces the number of retries needed", "It's required by most API providers"]}
-  correct={1}
-  explanation="Without jitter, all clients that failed at the same time will retry at the same time, creating a thundering herd that re-crashes the already struggling service. Full jitter randomizes retry timing to spread load."
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why is &#39;full jitter&#39; important in retry logic?", "options": ["It makes retries faster", "It prevents thundering herd -- all clients retrying simultaneously", "It reduces the number of retries needed", "It&#39;s required by most API providers"], "correct": 1, "explanation": "Without jitter, all clients that failed at the same time will retry at the same time, creating a thundering herd that re-crashes the already struggling service. Full jitter randomizes retry timing to spread load."}, {"q": "What are the three states of a circuit breaker?", "options": ["Active, Inactive, Recovery", "Open, Closed, Half-Open", "Green, Yellow, Red", "Normal, Alert, Critical"], "correct": 1, "explanation": "Closed (normal operation, requests pass through), Open (failures exceeded threshold, all calls short-circuit to fallback), and Half-Open (allow one test request to check if the service has recovered)."}]}'></div>
 
-<QuizMC
-  question="What are the three states of a circuit breaker?"
-  options={["Active, Inactive, Recovery", "Open, Closed, Half-Open", "Green, Yellow, Red", "Normal, Alert, Critical"]}
-  correct={1}
-  explanation="Closed (normal operation, requests pass through), Open (failures exceeded threshold, all calls short-circuit to fallback), and Half-Open (allow one test request to check if the service has recovered)."
-/>
-
-<FlashDeck cards={[
-  { front: "What does 99.5% uptime actually mean in practice?", back: "About 43 minutes of downtime per week. At 1,000 requests/hour, that's 700+ failed requests weekly. High uptime percentages can mask significant real-world impact." },
-  { front: "What are the three rules for AI retries?", back: "1) Only retry transient errors (429, 503), not client errors (400). 2) Use full jitter to prevent thundering herd. 3) Cap your retry budget (3 retries is usually sufficient)." },
-  { front: "Why is a degraded response better than an error message?", back: "Users tolerate 'slightly worse' much better than 'completely broken.' Design fallbacks on a spectrum from best to acceptable, never from best to nothing." },
-  { front: "What is a timeout budget?", back: "A mechanism that allocates a total time budget across processing stages. Each stage gets a fraction of remaining time, preventing one slow stage from consuming the entire allowance." },
-  { front: "What is the model degradation fallback pattern?", back: "A chain of progressively cheaper/faster models: e.g., Claude Sonnet -> GPT-4o -> Claude Haiku -> local Llama. When the primary fails, fall through to the next available model." }
-]} />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What does 99.5% uptime actually mean in practice?", "back": "About 43 minutes of downtime per week. At 1,000 requests/hour, that&#39;s 700+ failed requests weekly. High uptime percentages can mask significant real-world impact."}, {"front": "What are the three rules for AI retries?", "back": "1) Only retry transient errors (429, 503), not client errors (400). 2) Use full jitter to prevent thundering herd. 3) Cap your retry budget (3 retries is usually sufficient)."}, {"front": "Why is a degraded response better than an error message?", "back": "Users tolerate &#39;slightly worse&#39; much better than &#39;completely broken.&#39; Design fallbacks on a spectrum from best to acceptable, never from best to nothing."}, {"front": "What is a timeout budget?", "back": "A mechanism that allocates a total time budget across processing stages. Each stage gets a fraction of remaining time, preventing one slow stage from consuming the entire allowance."}, {"front": "What is the model degradation fallback pattern?", "back": "A chain of progressively cheaper/faster models: e.g., Claude Sonnet -> GPT-4o -> Claude Haiku -> local Llama. When the primary fails, fall through to the next available model."}]}'></div>
 
 </div>

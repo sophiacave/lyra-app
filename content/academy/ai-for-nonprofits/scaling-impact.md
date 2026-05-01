@@ -82,25 +82,8 @@ free: false
 </div>
 </div>
 
-<QuizMC
-  question="What is the key principle of AI-enabled nonprofit scaling?"
-  options='["Hire more staff to manage AI systems", "Scale through systems and AI, not headcount", "Replace all manual processes immediately", "Focus on the most expensive AI tools available"]'
-  answer="1"
-/>
+<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key principle of AI-enabled nonprofit scaling?", "options": ["Hire more staff to manage AI systems", "Scale through systems and AI, not headcount", "Replace all manual processes immediately", "Focus on the most expensive AI tools available"], "correct": 1, "explanation": "The correct answer is: Scale through systems and AI, not headcount"}, {"q": "What is the &#39;stage gate rule&#39; for AI maturity?", "options": ["Skip stages if you have technical staff", "Implement all stages simultaneously for maximum impact", "Don&#39;t advance to the next stage until the current one runs smoothly for at least one month", "Only large nonprofits should progress past Stage 2"], "correct": 2, "explanation": "The correct answer is: Don&#39;t advance to the next stage until the current one runs smoothly for at least one month"}]}'></div>
 
-<QuizMC
-  question="What is the 'stage gate rule' for AI maturity?"
-  options='["Skip stages if you have technical staff", "Implement all stages simultaneously for maximum impact", "Don't advance to the next stage until the current one runs smoothly for at least one month", "Only large nonprofits should progress past Stage 2"]'
-  answer="2"
-/>
-
-<FlashDeck cards='[
-  {"front": "What are the 4 stages of the AI Maturity Roadmap?", "back": "Stage 1: Augmentation (months 1-3), Stage 2: Automation (months 4-8), Stage 3: Intelligence (months 9-14), Stage 4: Scale (month 15+)"},
-  {"front": "What is the hub-and-spoke replication model?", "back": "Hub organization develops program model and AI systems. Spoke partners implement locally using the toolkit. AI handles quality assurance across all sites."},
-  {"front": "What three resilience practices protect AI-dependent organizations?", "back": "Document everything (no single-person dependencies), multi-tool strategy (no vendor lock-in), and human fallback (manual alternatives for every AI process)"},
-  {"front": "How does AI enable collective impact across multiple organizations?", "back": "Organizations share anonymized program data for AI analysis, identifying which implementation variations produce best outcomes and generating cross-site best practices"},
-  {"front": "What should an ethical scaling review ask?", "back": "Is AI use aligned with values? Are we maintaining human connection with communities? Are we creating new inequities in access?"},
-  {"front": "What is the core scaling principle: scale without growth?", "back": "Use AI systems to remove the administrative ceiling on capacity, enabling the same team to serve dramatically more people without proportional budget increases"}
-]' />
+<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the 4 stages of the AI Maturity Roadmap?", "back": "Stage 1: Augmentation (months 1-3), Stage 2: Automation (months 4-8), Stage 3: Intelligence (months 9-14), Stage 4: Scale (month 15+)"}, {"front": "What is the hub-and-spoke replication model?", "back": "Hub organization develops program model and AI systems. Spoke partners implement locally using the toolkit. AI handles quality assurance across all sites."}, {"front": "What three resilience practices protect AI-dependent organizations?", "back": "Document everything (no single-person dependencies), multi-tool strategy (no vendor lock-in), and human fallback (manual alternatives for every AI process)"}, {"front": "How does AI enable collective impact across multiple organizations?", "back": "Organizations share anonymized program data for AI analysis, identifying which implementation variations produce best outcomes and generating cross-site best practices"}, {"front": "What should an ethical scaling review ask?", "back": "Is AI use aligned with values? Are we maintaining human connection with communities? Are we creating new inequities in access?"}, {"front": "What is the core scaling principle: scale without growth?", "back": "Use AI systems to remove the administrative ceiling on capacity, enabling the same team to serve dramatically more people without proportional budget increases"}]}'></div>
 
 </div>
