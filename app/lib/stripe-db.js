@@ -49,6 +49,17 @@ export async function getSubscriptionStatus(email) {
       };
     }
 
+    // Check consulting Pro access (3-month comp via customer metadata)
+    const consultingProExpires = customer.metadata?.consulting_pro_expires;
+    if (consultingProExpires && new Date(consultingProExpires) > new Date()) {
+      return {
+        status: 'active',
+        tier: 'pro',
+        customerId: customer.id,
+        subscriptionId: null,
+      };
+    }
+
     // Check for cancelled but not yet expired
     const allSubs = await stripeGet(
       `/subscriptions?customer=${customer.id}&limit=1`

@@ -106,6 +106,62 @@ async function sendWelcomeEmail(email) {
   } catch { /* non-fatal */ }
 }
 
+// Consulting product IDs — any checkout for these triggers 3-month Pro access
+const CONSULTING_PRODUCTS = new Set([
+  'prod_UPs2eSjYsWsxLi', // LO Consulting — Starter ($500/mo)
+  'prod_UPs2rJms8sE7Og', // LO Consulting — Retainer ($5,000/mo)
+]);
+
+async function grantConsultingProAccess(email, customerName) {
+  const stripeKey = process.env.STRIPE_SECRET_KEY || process.env.STRIPE_API_KEY;
+  if (!stripeKey) return;
+
+  try {
+    // Find the customer
+    const custRes = await fetch(
+      `https://api.stripe.com/v1/customers?email=${encodeURIComponent(email.toLowerCase().trim())}&limit=1`,
+      { headers: { Authorization: `Bearer ${stripeKey}` } }
+    );
+    const customers = await custRes.json();
+    if (!customers.data?.length) {
+      console.error(`[ConsultingPro] No Stripe customer found for ${email}`);
+      return;
+    }
+
+    // Set consulting_pro_expires metadata — 90 days from now
+    const expiresAt = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString();
+    await fetch(`https://api.stripe.com/v1/customers/${customers.data[0].id}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${stripeKey}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        'metadata[consulting_pro_expires]': expiresAt,
+      }),
+    });
+
+    console.log(`[ConsultingPro] Granted 3-month Academy Pro to ${email} (expires ${expiresAt})`);
+
+    // Send Pro access email
+    const resendKey = process.env.RESEND_API_KEY;
+    if (resendKey) {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: 'Sophia at Like One <hello@likeone.ai>',
+          to: [email],
+          subject: 'Your 3 months of Academy Pro are live',
+          html: `<div style="max-width:560px;margin:0 auto;padding:40px 24px;background:#08080a;color:#e0e0e0;font-family:-apple-system,sans-serif"><h1 style="color:#fff;font-size:22px">Welcome to consulting, ${customerName || 'friend'}</h1><p style="color:#aaa;font-size:15px;line-height:1.7">As part of your consulting engagement, you now have <strong style="color:#c084fc">3 months of full Academy Pro access</strong> — all 36 courses, 355+ lessons, downloads, and certificates.</p><p style="color:#aaa;font-size:15px;line-height:1.7">Learn the theory while we build the practice together.</p><p><a href="https://likeone.ai/academy/" style="display:inline-block;background:#c084fc;color:#000;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700">Start learning &rarr;</a></p><p style="color:#555;font-size:13px;margin-top:32px">Your Pro access expires ${new Date(expiresAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.</p><p style="color:#888;font-size:13px">— Sophia at Like One</p></div>`,
+        }),
+      });
+    }
+  } catch (err) {
+    console.error('[ConsultingPro] Error:', err);
+  }
+}
+
 function handleCheckout(session) {
   const email = session.customer_details?.email || session.customer_email;
   const customerName = session.customer_details?.name || 'Customer';
@@ -123,8 +179,7 @@ function handleCheckout(session) {
   console.log(`[Revenue] ${mode} $${amountTotal} from ${email} product=${productId || productName}`);
 
   // Calculate giving
-  // Use a conservative estimate for monthly revenue since we can't query DB
-  const giving = getGivingTier(100); // seed tier by default
+  const giving = getGivingTier(100);
   const donationAmount = Math.round(amountTotal * giving.pct * 100) / 100;
   if (donationAmount > 0) {
     const half = Math.round(donationAmount * 50) / 100;
@@ -138,7 +193,14 @@ function handleCheckout(session) {
   // Auto-subscribe to email list
   sendWelcomeEmail(email);
 
-  console.log(`[Checkout] Complete: ${email} ${mode} $${amountTotal} ${productName || productId}`);
+  // Grant 3-month Pro for consulting customers
+  // Detect by product ID or amount ($500+)
+  const isConsulting = CONSULTING_PRODUCTS.has(productId) || amountTotal >= 500;
+  if (isConsulting) {
+    grantConsultingProAccess(email, customerName);
+  }
+
+  console.log(`[Checkout] Complete: ${email} ${mode} $${amountTotal} ${productName || productId}${isConsulting ? ' [CONSULTING → 3mo Pro]' : ''}`);
 }
 
 function handleInvoicePaymentSucceeded(invoice) {
