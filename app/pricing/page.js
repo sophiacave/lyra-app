@@ -38,7 +38,7 @@ const PLANS = [
   {
     label: 'Done-with-you', name: 'Consulting', price: 'from $500', period: '/mo',
     desc: 'Faye-powered builds for disabled & marginalized founders. Tier-0 anchor of LO ECO.',
-    features: ['$500/mo async (Starter)', '$5k/mo retainer — 14-day TTFD', '$15k+ done-for-you builds', 'Brain + agents + voice + deploy', 'Cancel anytime'],
+    features: ['$500/mo async (Starter)', '$5k/mo retainer — 14-day TTFD', '$15k+ done-for-you builds', 'Brain + agents + voice + deploy', '3 months Academy Pro included', 'Cancel anytime'],
     btn: { label: 'See Consulting Tiers', href: '/consulting/', style: 'secondary' },
   },
 ];

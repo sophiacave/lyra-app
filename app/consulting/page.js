@@ -52,6 +52,7 @@ const TIERS = [
       '24-hr turnaround on prompts, audits, architecture questions',
       'Monthly 60-min strategy call',
       'Read access to the LO brain advisor patterns',
+      '3 months Academy Pro included ($147 value)',
       'Cancel anytime',
     ],
     btn: { label: 'Subscribe — $500/mo', href: STRIPE_STARTER, external: true },
@@ -71,6 +72,7 @@ const TIERS = [
       'Custom brain + agent setup deployed in your environment',
       '14-day time-to-first-deploy guarantee',
       'Slack-shared with our M3/M4 fleet for parallel builds',
+      '3 months Academy Pro included ($147 value)',
       'Pause or cancel anytime — no annual lock-in',
     ],
     btn: { label: 'Book a 30-min intake', href: intakeMailto('Retainer') },
@@ -87,6 +89,7 @@ const TIERS = [
       'Fixed-price delivery (no hourly drift)',
       'Full source + brain + infra handed over',
       '30-day post-launch support included',
+      '3 months Academy Pro included ($147 value)',
       'Optional retainer continues from there',
     ],
     btn: { label: 'Scope a Build — from $15k', href: intakeMailto('Build') },
@@ -233,6 +236,18 @@ export default function ConsultingPage() {
           </div>
         </div>
       </section>
+
+      {/* Pro Perk Banner */}
+      <div className="site-container">
+        <div className="consulting-pro-perk">
+          <span className="consulting-pro-perk-badge">INCLUDED</span>
+          <h3 className="consulting-pro-perk-title">Every consulting client gets 3 months of Academy Pro — free.</h3>
+          <p className="consulting-pro-perk-desc">
+            Full access to all 36 courses, 355+ lessons, downloads, and certificates.
+            Learn the theory while we build the practice together. $147 value, on us.
+          </p>
+        </div>
+      </div>
 
       {/* Why Faye */}
       <section className="site-section-sm">

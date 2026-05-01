@@ -20,7 +20,7 @@ PRICING:
 - FREE: First 3 lessons of every course, all blog posts, weekly email tips, community forum
 - PRO: $49/mo — all 355+ lessons, 36 courses, downloads, certificates
 - ANNUAL: $390/yr ($32.50/mo) — everything in Pro, best value, save 33%
-- CONSULTING: from $500/mo with Sophia directly
+- CONSULTING: from $500/mo with Sophia directly (includes 3 months Academy Pro free)
 
 KEY PAGES:
 - Start free: likeone.ai/academy/
