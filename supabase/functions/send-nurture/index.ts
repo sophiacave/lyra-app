@@ -91,11 +91,11 @@ const SEQUENCE: NurtureEmail[] = [
   {
     day: 7,
     subject: "Have you explored the academy yet?",
-    preheader: "30 courses. 300+ lessons. Built for how you actually learn.",
+    preheader: "52 courses. 520+ lessons. Built for how you actually learn.",
     html: buildEmail(
       "Have you explored the academy?",
       `<p>Hey — just checking in.</p>
-      <p>Like One Academy has 30 courses with 300+ interactive lessons — from Claude basics to building production agents, RAG systems, and automation pipelines.</p>
+      <p>Like One Academy has 52 courses with 520+ interactive lessons — from Claude basics to building production agents, RAG systems, and automation pipelines.</p>
       <p>Every course is hands-on. Not a lecture. Not a sales pitch. Just real skills taught through real projects.</p>
       <p>If you haven't started: <a href="https://likeone.ai/academy/" style="color:#c084fc;font-weight:600">Browse the Academy →</a></p>
       <p>Go Pro for $49/mo — or save 33% with annual at $390/yr. <a href="https://likeone.ai/pricing" style="color:#c084fc">See pricing →</a></p>

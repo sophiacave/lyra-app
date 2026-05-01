@@ -113,6 +113,60 @@
           "tier": "beginner",
           "audience": ["general"],
           "status": "live"
+        },
+        {
+          "slug": "ai-side-hustles",
+          "title": "AI Side Hustles: Your First $1K",
+          "emoji": "💸",
+          "description": "Make your first $1,000 with AI. Freelancing, content creation, micro-SaaS, print-on-demand — the hustle playbook for the AI age.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-music-producer",
+          "title": "AI Music Producer",
+          "emoji": "🎵",
+          "description": "Make beats, write songs, produce tracks with AI. Suno, Udio, Timbre. From bedroom to Spotify.",
+          "tier": "beginner",
+          "audience": ["creatives"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-for-students",
+          "title": "AI for Students",
+          "emoji": "📝",
+          "description": "Use AI to study smarter, research faster, write better papers — without cheating. The honest student's AI toolkit.",
+          "tier": "beginner",
+          "audience": ["students"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-social-media",
+          "title": "AI for Social Media Creators",
+          "emoji": "📱",
+          "description": "TikTok, Instagram, YouTube, LinkedIn. AI-powered content creation, scheduling, analytics, and growth.",
+          "tier": "beginner",
+          "audience": ["creatives"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-for-parents",
+          "title": "AI for Parents & Educators",
+          "emoji": "🏫",
+          "description": "Help kids learn with AI safely. Age-appropriate tools, homework help, screen time, and critical thinking.",
+          "tier": "beginner",
+          "audience": ["parents", "educators"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-mental-wellness",
+          "title": "AI for Mental Wellness",
+          "emoji": "🧘",
+          "description": "Journaling, habit tracking, mindfulness, emotional regulation. AI as your wellness companion — not your therapist.",
+          "tier": "beginner",
+          "audience": ["general"],
+          "status": "live"
         }
       ]
     },
@@ -229,6 +283,51 @@
           "tier": "intermediate",
           "audience": ["developers"],
           "status": "live"
+        },
+        {
+          "slug": "ai-freelancer",
+          "title": "AI Freelancer's Toolkit",
+          "emoji": "🛠️",
+          "description": "Win clients, deliver faster, charge more. AI-powered proposals, project management, invoicing, and delivery.",
+          "tier": "intermediate",
+          "audience": ["freelancers"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-finance",
+          "title": "AI for Finance & Budgeting",
+          "emoji": "💳",
+          "description": "Personal finance automation. Budgets, investments, tax prep, financial literacy — powered by AI.",
+          "tier": "intermediate",
+          "audience": ["general"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-game-dev",
+          "title": "AI Game Dev: No Code",
+          "emoji": "🎮",
+          "description": "Build playable games by talking to AI. From Pong to platformers to multiplayer. No coding required.",
+          "tier": "intermediate",
+          "audience": ["general", "creatives"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-personal-brand",
+          "title": "AI Personal Brand Builder",
+          "emoji": "✨",
+          "description": "Build your online presence with AI. Portfolio, content strategy, networking, and monetization.",
+          "tier": "intermediate",
+          "audience": ["general"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-for-nonprofits",
+          "title": "AI for Nonprofit Impact",
+          "emoji": "🌍",
+          "description": "Fundraising, grant writing, impact measurement, volunteer management. AI for organizations that change the world.",
+          "tier": "intermediate",
+          "audience": ["nonprofits"],
+          "status": "live"
         }
       ]
     },
@@ -344,6 +443,51 @@
           "description": "Run your entire business on AI agents. Local models, persistent brain, email automation, fleet orchestration, and zero-cloud sovereignty.",
           "tier": "advanced",
           "audience": ["entrepreneurs", "developers"],
+          "status": "live"
+        },
+        {
+          "slug": "local-ai-privacy",
+          "title": "Local AI & Privacy-First Computing",
+          "emoji": "🔒",
+          "description": "Run models on your own hardware. Ollama, llama.cpp, private embeddings. Zero cloud dependency.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-cinema",
+          "title": "AI Cinema & Filmmaking",
+          "emoji": "🎬",
+          "description": "Storyboard, direct, edit films with AI. Kling, Runway, Suno. From script to screen for $2-5 per video.",
+          "tier": "advanced",
+          "audience": ["creatives"],
+          "status": "live"
+        },
+        {
+          "slug": "fine-tuning-models",
+          "title": "Fine-Tuning & Custom Models",
+          "emoji": "🧬",
+          "description": "Train models on your data. LoRA, QLoRA, RLHF, DPO. From foundation models to specialized tools.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-systems-design",
+          "title": "AI Systems Design",
+          "emoji": "🏛️",
+          "description": "Architecture patterns for production AI. Reliability, observability, cost optimization, and scaling.",
+          "tier": "advanced",
+          "audience": ["developers"],
+          "status": "live"
+        },
+        {
+          "slug": "ai-for-research",
+          "title": "AI for Scientific Research",
+          "emoji": "🔬",
+          "description": "Hypothesis generation, literature review, data analysis, paper writing. AI as your research partner.",
+          "tier": "advanced",
+          "audience": ["researchers"],
           "status": "live"
         }
       ]

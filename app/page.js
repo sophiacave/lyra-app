@@ -76,7 +76,7 @@ export default function HomePage() {
               { emoji: '\uD83E\uDDE0', title: 'Persistent AI Memory', desc: 'Your AI remembers everything. Across conversations. Forever.' },
               { emoji: '\u26A1', title: 'Always Running', desc: 'Automations that work while you sleep. Always current.' },
               { emoji: '\uD83D\uDD12', title: 'Your Values Protected', desc: 'AI that knows your boundaries and respects them.' },
-              { emoji: '\uD83D\uDCDA', title: '30 Courses, 300+ Lessons', desc: 'Interactive. Hands-on. Start free today.' },
+              { emoji: '\uD83D\uDCDA', title: '52 Courses, 520+ Lessons', desc: 'Interactive. Hands-on. Start free today.' },
             ].map(c => (
               <div key={c.title} className="site-card site-card-centered">
                 <div className="site-card-emoji">{c.emoji}</div>
