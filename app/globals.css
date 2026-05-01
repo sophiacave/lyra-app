@@ -2556,10 +2556,10 @@ select:focus-visible {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 35%, rgba(130,110,190,0.1) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 25%, rgba(80,150,210,0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 75%, rgba(160,120,200,0.05) 0%, transparent 55%),
-    linear-gradient(160deg, rgba(22,22,30,0.7) 0%, rgba(30,28,40,0.6) 50%, rgba(22,22,30,0.7) 100%);
+    radial-gradient(ellipse at 20% 35%, rgba(130,110,190,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 25%, rgba(80,150,210,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 75%, rgba(160,120,200,0.06) 0%, transparent 55%),
+    linear-gradient(160deg, rgba(30,30,38,0.6) 0%, rgba(38,36,48,0.5) 50%, rgba(30,30,38,0.6) 100%);
   z-index: 0;
 }
 .academy-v2-hero__content {
@@ -2800,13 +2800,13 @@ select:focus-visible {
   flex-direction: column;
   text-decoration: none;
 }
-/* Apple HIG: glass surface MUST be distinguishable from the void behind it */
+/* Apple HIG: glass reads as glass on the lighter base */
 .course-card-v2.liquid-card {
   --liquid-radius: 16px;
-  --liquid-bg: rgba(44,44,56,0.35);
-  --liquid-bg-hover: rgba(56,56,72,0.45);
-  --liquid-border: rgba(255,255,255,0.08);
-  --liquid-border-hover: rgba(255,255,255,0.14);
+  --liquid-bg: rgba(55,55,70,0.3);
+  --liquid-bg-hover: rgba(68,68,86,0.4);
+  --liquid-border: rgba(255,255,255,0.1);
+  --liquid-border-hover: rgba(255,255,255,0.16);
 }
 .course-card-v2--planned {
   opacity: 0.4;
@@ -2822,7 +2822,7 @@ select:focus-visible {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
-  background: #0B0A10;
+  background: var(--surface-sunken);
   overflow: hidden;
 }
 .course-card-v2__thumb-img {
@@ -2839,7 +2839,7 @@ select:focus-visible {
 .course-card-v2__thumb-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(11,10,16,0.5) 100%);
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(26,26,30,0.5) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -2859,7 +2859,7 @@ select:focus-visible {
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(to top, rgba(11,10,16,0.7), transparent);
+  background: linear-gradient(to top, rgba(26,26,30,0.7), transparent);
   pointer-events: none;
   z-index: 3;
 }
@@ -2877,7 +2877,7 @@ select:focus-visible {
   height: 44px;
   padding: 12px;
   border-radius: 50%;
-  background: rgba(11,10,16,0.5);
+  background: rgba(26,26,30,0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1.5px solid rgba(240,235,227,0.2);
@@ -2902,7 +2902,7 @@ select:focus-visible {
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #F0EBE3;
-  background: rgba(11,10,16,0.6);
+  background: rgba(26,26,30,0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 3px 8px;
@@ -8339,7 +8339,7 @@ select:focus-visible {
 
 .learn-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); }
 .learn-stat-card { padding: var(--space-lg); text-align: center; }
-.learn-stat-value { font-size: var(--font-2xl); font-weight: var(--font-weight-bold); background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--space-xs); }
+.learn-stat-value { font-size: var(--font-2xl); font-weight: var(--font-weight-bold); background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--space-xs); }
 .learn-stat-label { font-size: var(--font-sm); color: var(--text-body); margin-bottom: var(--space-xs); }
 .learn-stat-source { font-size: var(--font-2xs); color: var(--text-muted); font-style: italic; }
 
