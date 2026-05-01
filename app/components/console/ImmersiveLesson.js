@@ -25,7 +25,10 @@ function parseContentSegments(html, courseSlug, lessonSlug) {
     if (Component) {
       let props = {};
       try {
-        if (match[2]) props = JSON.parse(match[2]);
+        if (match[2]) {
+          const decoded = match[2].replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+          props = JSON.parse(decoded);
+        }
       } catch (e) {
         console.warn(`[LearnComponent] Invalid props for ${componentName}:`, e);
       }
