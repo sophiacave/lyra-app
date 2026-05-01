@@ -129,7 +129,7 @@ export default async function TopicPage({ params }) {
 
         {/* Key Statistics — GEO optimized */}
         {topic.stats && topic.stats.length > 0 && (
-          <section className="site-section-xs">
+          <section className="site-section-sm">
             <div className="site-container">
               <div className="learn-stats-grid">
                 {topic.stats.map((stat, i) => (
