@@ -18,14 +18,14 @@ const codeStore = new Map();
 function codeEmailHtml(code) {
   return `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#08080a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+<body style="margin:0;padding:0;background:#1a1a1e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
 <div style="max-width:480px;margin:0 auto;padding:40px 24px;">
   <div style="margin-bottom:32px"><span style="color:#c084fc;font-weight:800;font-size:15px;letter-spacing:-0.5px">like</span><span style="color:#e0e0e0;font-weight:800;font-size:15px;letter-spacing:-0.5px">one</span></div>
   <h1 style="font-size:22px;font-weight:700;color:#fff;margin:0 0 20px;line-height:1.3">Your ROI Calculator code</h1>
   <p style="color:#aaa;font-size:15px;line-height:1.8;margin:0 0 24px">Enter this code to unlock the calculator:</p>
   <div style="font-size:34px;font-weight:800;letter-spacing:12px;color:#c084fc;text-align:center;padding:24px;background:#111118;border-radius:12px;margin:0 0 24px">${code}</div>
   <p style="color:#8888a0;font-size:13px;line-height:1.7">This code expires in ${CODE_TTL_MINUTES} minutes. If you didn't request it, you can ignore this email.</p>
-  <div style="border-top:1px solid #1e1e28;margin-top:40px;padding-top:20px;text-align:center">
+  <div style="border-top:1px solid #2a2a30;margin-top:40px;padding-top:20px;text-align:center">
     <p style="color:#555;font-size:12px;margin:0">Like One &middot; <a href="https://likeone.ai" style="color:#c084fc;text-decoration:none">likeone.ai</a></p>
   </div>
 </div></body></html>`;

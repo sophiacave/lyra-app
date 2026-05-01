@@ -358,7 +358,7 @@ export default function VideoLesson({ videoSrc, segments, posterSrc }) {
 
 // CSS variable references for the style jsx
 const SURFACE_RAISED = '#0e0e12';
-const BORDER = '#1e1e28';
+const BORDER = 'rgba(255,255,255,0.09)';
 const TEXT_PRIMARY = '#e8e8ec';
 const TEXT_SECONDARY = '#a0a0b0';
 const TEXT_TERTIARY = '#8888a0';

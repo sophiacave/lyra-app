@@ -12,7 +12,7 @@ export async function GET() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          backgroundColor: '#08080a',
+          backgroundColor: '#1a1a1e',
           padding: '60px 80px',
           fontFamily: 'Inter, system-ui, sans-serif',
           position: 'relative',

@@ -3,9 +3,9 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#08080a;
-  --surface:#111114;
-  --surface2:#18181c;
+  --bg:#1a1a1e;
+  --surface:#242428;
+  --surface2:#2a2a30;
   --text:#e8e8ec;
   --dim:#8888a0;
   --muted:#8a8aaa;
@@ -14,8 +14,8 @@
   --green:#4ade80;
   --red:#f87171;
   --purple:#c084fc;
-  --border:#1e1e28;
-  --border2:#2a2a38;
+  --border:rgba(255,255,255,0.09);
+  --border2:rgba(255,255,255,0.13);
   --glow-orange: rgba(251,146,60,.08);
   --glow-purple: rgba(192,132,252,.06);
 }

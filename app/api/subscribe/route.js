@@ -14,8 +14,8 @@ const FROM_EMAIL = 'Sophia at Like One <hello@likeone.ai>';
 function welcomeHtml() {
   return `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#08080a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
-<div style="display:none;font-size:1px;color:#08080a;line-height:1px;max-height:0;overflow:hidden">You just took the first step toward human-AI convergence.</div>
+<body style="margin:0;padding:0;background:#1a1a1e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+<div style="display:none;font-size:1px;color:#1a1a1e;line-height:1px;max-height:0;overflow:hidden">You just took the first step toward human-AI convergence.</div>
 <div style="max-width:560px;margin:0 auto;padding:40px 24px;">
   <div style="margin-bottom:32px"><span style="color:#c084fc;font-weight:800;font-size:15px;letter-spacing:-0.5px">like</span><span style="color:#e0e0e0;font-weight:800;font-size:15px;letter-spacing:-0.5px">one</span></div>
   <h1 style="font-size:22px;font-weight:700;color:#fff;margin:0 0 20px;line-height:1.3">Welcome to the path</h1>
@@ -34,7 +34,7 @@ function welcomeHtml() {
     <p>Welcome aboard. The path is real, and you're on it.</p>
     <p style="color:#8888a0;font-size:14px;margin-top:24px;">With warmth,<br><strong style="color:#e0e0e0">Sophia Cave</strong><br>Founder, Like One</p>
   </div>
-  <div style="border-top:1px solid #1e1e28;margin-top:40px;padding-top:20px;text-align:center">
+  <div style="border-top:1px solid #2a2a30;margin-top:40px;padding-top:20px;text-align:center">
     <p style="color:#555;font-size:12px;margin:0">Like One Academy &middot; Built by Sophia Cave</p>
     <p style="color:#555;font-size:12px;margin:4px 0"><a href="https://likeone.ai" style="color:#c084fc;text-decoration:none">likeone.ai</a></p>
     <p style="color:#444;font-size:11px;margin:8px 0 0"><a href="mailto:hello@likeone.ai?subject=Unsubscribe" style="color:#444;text-decoration:underline">Unsubscribe</a></p>

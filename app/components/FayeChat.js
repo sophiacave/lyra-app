@@ -69,13 +69,13 @@ export default function FayeChat() {
         <div style={{
           position: 'fixed', bottom: 80, left: 20, zIndex: 9998,
           width: 360, maxWidth: 'calc(100vw - 40px)', height: 440, maxHeight: 'calc(100vh - 120px)',
-          background: '#0c0c0e', border: '1px solid #1e1e28', borderRadius: 16,
+          background: '#1a1a1e', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 16,
           display: 'flex', flexDirection: 'column',
           boxShadow: '0 8px 40px rgba(0,0,0,0.5)', overflow: 'hidden',
           animation: 'fayeChatSlide 0.2s ease',
         }}>
           <div style={{
-            padding: 'var(--space-3) var(--space-4)', borderBottom: '1px solid #1e1e28',
+            padding: 'var(--space-3) var(--space-4)', borderBottom: '1px solid rgba(255,255,255,0.09)',
             display: 'flex', alignItems: 'center', gap: 8,
           }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: '#e8e8ec' }}>Ask Faye</span>
@@ -109,7 +109,7 @@ export default function FayeChat() {
           </div>
 
           <div style={{
-            padding: 'var(--space-2) var(--space-3)', borderTop: '1px solid #1e1e28',
+            padding: 'var(--space-2) var(--space-3)', borderTop: '1px solid rgba(255,255,255,0.09)',
             display: 'flex', gap: 8,
           }}>
             <input
@@ -120,7 +120,7 @@ export default function FayeChat() {
               placeholder="Ask about courses, pricing, AI..."
               disabled={loading}
               style={{
-                flex: 1, background: '#111114', border: '1px solid #1e1e28',
+                flex: 1, background: '#242428', border: '1px solid rgba(255,255,255,0.09)',
                 borderRadius: 8, padding: 'var(--space-2) var(--space-3)', color: '#e8e8ec',
                 fontSize: 13, outline: 'none',
               }}

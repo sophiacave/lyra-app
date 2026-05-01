@@ -1433,6 +1433,144 @@
 
 .immersive-lesson-body {
   animation: lo-lesson-enter 0.5s var(--ease-out) both;
+  font-size: 1.0625rem;
+  line-height: var(--line-relaxed);
+  color: var(--text-secondary);
+}
+
+/* ── Lesson Prose Typography (rendered markdown) ── */
+.immersive-lesson-body h1,
+.lesson-content h1 {
+  font-size: var(--font-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--text-primary);
+  margin: var(--space-10) 0 var(--space-4);
+  letter-spacing: -0.3px;
+  line-height: var(--line-tight);
+}
+.immersive-lesson-body h2,
+.lesson-content h2 {
+  font-size: var(--font-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: var(--space-10) 0 var(--space-4);
+  letter-spacing: -0.3px;
+  line-height: var(--line-snug);
+}
+.immersive-lesson-body h3,
+.lesson-content h3 {
+  font-size: var(--font-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: var(--space-8) 0 var(--space-3);
+}
+.immersive-lesson-body h4,
+.lesson-content h4 {
+  font-size: var(--font-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: var(--space-6) 0 var(--space-2);
+}
+.immersive-lesson-body p,
+.lesson-content p {
+  margin-bottom: var(--space-5);
+}
+.immersive-lesson-body strong,
+.lesson-content strong {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+.immersive-lesson-body a,
+.lesson-content a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.immersive-lesson-body a:hover,
+.lesson-content a:hover {
+  color: var(--accent-purple);
+}
+.immersive-lesson-body ul,
+.immersive-lesson-body ol,
+.lesson-content ul,
+.lesson-content ol {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-6);
+}
+.immersive-lesson-body li,
+.lesson-content li {
+  margin-bottom: var(--space-2);
+  line-height: var(--line-normal);
+}
+.immersive-lesson-body code,
+.lesson-content code {
+  background: var(--surface-overlay);
+  padding: 2px var(--space-2);
+  border-radius: 4px;
+  font-size: var(--font-base);
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+}
+.immersive-lesson-body pre,
+.lesson-content pre {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  overflow-x: auto;
+  margin: var(--space-6) 0;
+}
+.immersive-lesson-body pre code,
+.lesson-content pre code {
+  background: none;
+  padding: 0;
+  font-size: var(--font-sm);
+  line-height: var(--line-normal);
+  color: var(--text-secondary);
+}
+.immersive-lesson-body blockquote,
+.lesson-content blockquote {
+  border-left: 3px solid var(--accent-purple);
+  padding-left: var(--space-5);
+  margin: var(--space-6) 0;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+.immersive-lesson-body img,
+.lesson-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: var(--space-4) 0;
+}
+.immersive-lesson-body hr,
+.lesson-content hr {
+  border: none;
+  height: 1px;
+  background: var(--border-default);
+  margin: var(--space-8) 0;
+}
+.immersive-lesson-body table,
+.lesson-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-size: var(--font-sm);
+}
+.immersive-lesson-body th,
+.lesson-content th {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--border-default);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+.immersive-lesson-body td,
+.lesson-content td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
 }
 
 .immersive-lesson-body > * {

@@ -85,9 +85,9 @@
   --border-accent: rgba(192,132,252,0.2);    /* accent highlight */
   --border-accent-strong: rgba(192,132,252,0.35); /* active accent */
 
-  /* Legacy border aliases (for existing non-glass components) */
-  --border: #1e1e28;
-  --border-light: #2a2a38;
+  /* Legacy border aliases (mapped to new surface system) */
+  --border: rgba(255,255,255,0.09);
+  --border-light: rgba(255,255,255,0.13);
 
   /* ── Radius Scale ── */
   --radius-sm: 6px;
@@ -173,6 +173,17 @@
   --content-max: 800px;
   --content-wide: 1000px;
   --header-height: 64px;
+
+  /* ── Semantic Spacing Aliases (used by /learn and site pages) ── */
+  --space-xs: var(--space-2);    /* 8px */
+  --space-sm: var(--space-3);    /* 12px */
+  --space-md: var(--space-6);    /* 24px */
+  --space-lg: var(--space-8);    /* 32px */
+  --space-xl: var(--space-12);   /* 48px */
+
+  /* ── Semantic Text Aliases (used by /learn and site pages) ── */
+  --text-body: var(--text-secondary);
+  --text-muted: var(--text-quaternary);
 
   /* ── Z-Index Scale ── */
   --z-base: 1;

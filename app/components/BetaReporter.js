@@ -153,8 +153,8 @@ export default function BetaReporter() {
           width: 340,
           maxWidth: 'calc(100vw - 40px)',
           maxHeight: 420,
-          background: '#0c0c0e',
-          border: '1px solid #1e1e28',
+          background: '#1a1a1e',
+          border: '1px solid rgba(255,255,255,0.09)',
           borderRadius: 16,
           display: 'flex',
           flexDirection: 'column',
@@ -165,7 +165,7 @@ export default function BetaReporter() {
           {/* Header */}
           <div style={{
             padding: 'var(--space-3) var(--space-4)',
-            borderBottom: '1px solid #1e1e28',
+            borderBottom: '1px solid rgba(255,255,255,0.09)',
             display: 'flex',
             alignItems: 'center',
             gap: 8,
@@ -225,7 +225,7 @@ export default function BetaReporter() {
           {!submitted && (
             <div style={{
               padding: 'var(--space-2) var(--space-3)',
-              borderTop: '1px solid #1e1e28',
+              borderTop: '1px solid rgba(255,255,255,0.09)',
               display: 'flex',
               gap: 8,
             }}>
@@ -238,8 +238,8 @@ export default function BetaReporter() {
                 disabled={sending}
                 style={{
                   flex: 1,
-                  background: '#111114',
-                  border: '1px solid #1e1e28',
+                  background: '#242428',
+                  border: '1px solid rgba(255,255,255,0.09)',
                   borderRadius: 8,
                   padding: 'var(--space-2) var(--space-3)',
                   color: '#e8e8ec',
@@ -271,12 +271,12 @@ export default function BetaReporter() {
           {submitted && (
             <div style={{
               padding: 'var(--space-2) var(--space-3)',
-              borderTop: '1px solid #1e1e28',
+              borderTop: '1px solid rgba(255,255,255,0.09)',
               textAlign: 'center',
             }}>
               <button onClick={reset} style={{
                 background: 'none',
-                border: '1px solid #1e1e28',
+                border: '1px solid rgba(255,255,255,0.09)',
                 borderRadius: 8,
                 padding: 'var(--space-2) var(--space-4)',
                 color: '#888',

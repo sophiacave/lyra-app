@@ -86,7 +86,7 @@ export default function FinancesClient() {
   // Styles
   const pageStyle = {
     minHeight: '100vh',
-    background: '#08080a',
+    background: '#1a1a1e',
     color: '#e5e5e5',
     fontFamily: "'Inter', -apple-system, system-ui, sans-serif",
   };
@@ -96,8 +96,8 @@ export default function FinancesClient() {
     padding: '40px 20px 80px',
   };
   const cardStyle = {
-    background: '#111114',
-    border: '1px solid #1e1e28',
+    background: '#242428',
+    border: '1px solid rgba(255,255,255,0.09)',
     borderRadius: 12,
     padding: 24,
     marginBottom: 24,
@@ -145,7 +145,7 @@ export default function FinancesClient() {
   const thStyle = {
     textAlign: 'left',
     padding: '10px 12px',
-    borderBottom: '1px solid #1e1e28',
+    borderBottom: '1px solid rgba(255,255,255,0.09)',
     color: '#737373',
     fontSize: 11,
     textTransform: 'uppercase',
@@ -201,7 +201,7 @@ export default function FinancesClient() {
               disabled={fetching}
               style={{
                 padding: 'var(--space-2) var(--space-4)',
-                background: '#1e1e28',
+                background: 'rgba(255,255,255,0.09)',
                 border: '1px solid #2a2a2a',
                 borderRadius: 8,
                 color: '#a0a0a0',

@@ -37,7 +37,7 @@
   nav.id = 'lo-nav';
   nav.innerHTML = `
     <style>
-      #lo-nav { position: sticky; top: 0; z-index: 999; background: rgba(10,10,15,.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e28; padding: 0 1.5rem; font-family: Inter, sans-serif; }
+      #lo-nav { position: sticky; top: 0; z-index: 999; background: rgba(26,26,30,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.09); padding: 0 1.5rem; font-family: Inter, sans-serif; }
       #lo-nav .lo-nav-inner { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 48px; }
       #lo-nav a { color: #737373; text-decoration: none; font-size: .8rem; font-weight: 500; transition: color .2s; }
       #lo-nav a:hover { color: #e5e5e5; }
