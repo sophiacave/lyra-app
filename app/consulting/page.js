@@ -160,8 +160,8 @@ const FAQS = [
     a: 'Sometimes — only on Build engagements where it makes sense for both sides, and never instead of cash. Default is straight retainer + project pricing.',
   },
   {
-    q: 'I can’t afford this. What now?',
-    a: ‘The 36-course Academy is $49/mo and the first 3 lessons of every course are free. Community Access is honor-system and reviewed personally. Consulting is for when you\’re ready to ship something real and budget exists.’,
+    q: "I can’t afford this. What now?",
+    a: "The 36-course Academy is $49/mo and the first 3 lessons of every course are free. Community Access is honor-system and reviewed personally. Consulting is for when you’re ready to ship something real and budget exists.",
   },
 ];
 
