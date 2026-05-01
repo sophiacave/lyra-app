@@ -5647,10 +5647,127 @@ select:focus-visible {
   background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
 }
 
-.post-body {
-  max-width: var(--content-max);
+/* Post Layout — two-column with sticky sidebar on desktop */
+.post-layout {
+  display: flex;
+  gap: var(--space-8);
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 var(--space-6) var(--space-20);
+  padding: 0 var(--space-6);
+}
+.post-layout-main {
+  flex: 1;
+  min-width: 0;
+  max-width: var(--content-max);
+}
+
+/* ── Post Sidebar ── */
+.post-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+.post-sidebar-sticky {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.post-sidebar-card {
+  display: block;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.post-sidebar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.post-sidebar-gfm {
+  background: linear-gradient(145deg, rgba(192,132,252,0.08), rgba(245,160,192,0.1));
+  border-color: rgba(192,132,252,0.2);
+}
+.post-sidebar-gfm:hover {
+  border-color: rgba(192,132,252,0.4);
+}
+.post-sidebar-support {
+  background: linear-gradient(145deg, rgba(56,189,248,0.08), rgba(52,211,153,0.08));
+  border-color: rgba(56,189,248,0.2);
+}
+.post-sidebar-support:hover {
+  border-color: rgba(56,189,248,0.4);
+}
+.post-sidebar-card-icon {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-3);
+}
+.post-sidebar-card-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-quaternary);
+  margin-bottom: var(--space-2);
+}
+.post-sidebar-card-title {
+  font-size: var(--font-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: var(--line-tight);
+  margin-bottom: var(--space-2);
+}
+.post-sidebar-card-desc {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+.post-sidebar-card-btn {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  transition: opacity 0.2s;
+}
+.post-sidebar-btn-gfm {
+  background: linear-gradient(135deg, #c084fc, #f5a0c0);
+  color: #0a0a0f;
+}
+.post-sidebar-btn-support {
+  background: linear-gradient(135deg, #38bdf8, #34d399);
+  color: #0a0a0f;
+}
+
+/* Mobile: sidebar becomes inline below content */
+@media (max-width: 960px) {
+  .post-layout {
+    flex-direction: column;
+    max-width: var(--content-max);
+  }
+  .post-sidebar {
+    width: 100%;
+  }
+  .post-sidebar-sticky {
+    position: static;
+    flex-direction: row;
+    gap: var(--space-4);
+  }
+  .post-sidebar-card {
+    flex: 1;
+  }
+}
+@media (max-width: 560px) {
+  .post-sidebar-sticky {
+    flex-direction: column;
+  }
+}
+
+.post-body {
+  margin: 0;
+  padding: 0 0 var(--space-20);
 }
 .post-content {
   font-size: 1.0625rem;
@@ -5741,9 +5858,7 @@ select:focus-visible {
 }
 
 .post-related-course {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 var(--space-6) var(--space-10);
+  padding: 0 0 var(--space-10);
 }
 .post-related-course-inner {
   background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(192,132,252,0.06));
@@ -5780,9 +5895,7 @@ select:focus-visible {
 }
 
 .post-related-courses {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 var(--space-6) var(--space-10);
+  padding: 0 0 var(--space-10);
 }
 .post-related-heading {
   font-size: var(--font-lg);

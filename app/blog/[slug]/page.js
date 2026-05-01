@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Script from 'next/script';
 import { getPostBySlug, getAllSlugs } from '@/lib/posts';
 import { getAllCourses } from '@/lib/courses';
 import SubscribeForm from '@/app/components/SubscribeForm';
@@ -301,47 +300,61 @@ export default async function PostPage({ params }) {
 
       <div className="post-divider"><hr /></div>
 
-      <main className="post-body">
-        <div
-          className="post-content"
-          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-        />
-      </main>
+      <div className="post-layout">
+        <div className="post-layout-main">
+          <main className="post-body">
+            <div
+              className="post-content"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+          </main>
 
-      <div className="blog-subscribe-section">
-        <div className="blog-subscribe-box">
-          <p className="blog-subscribe-title">Build your own AI brain.</p>
-          <p className="blog-subscribe-desc">Free weekly tips from Sophia on AI automation, agent building, and the convergence path. No spam. Unsubscribe anytime.</p>
-          <SubscribeForm source="blog_cta" buttonText="Start Free" />
+          <div className="blog-subscribe-section">
+            <div className="blog-subscribe-box">
+              <p className="blog-subscribe-title">Build your own AI brain.</p>
+              <p className="blog-subscribe-desc">Free weekly tips from Sophia on AI automation, agent building, and the convergence path. No spam. Unsubscribe anytime.</p>
+              <SubscribeForm source="blog_cta" buttonText="Start Free" />
+            </div>
+          </div>
+
+          <RelatedCourses tags={post.tags} />
         </div>
-      </div>
 
-      <RelatedCourses tags={post.tags} />
+        {/* Persistent Sidebar — desktop sticky, mobile inline */}
+        <aside className="post-sidebar">
+          <div className="post-sidebar-sticky">
+            {/* GoFundMe Card */}
+            <a
+              href="https://www.gofundme.com/f/trans-woman-needs-mental-health-care-not-jail"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="post-sidebar-card post-sidebar-gfm"
+            >
+              <div className="post-sidebar-card-icon">💜</div>
+              <div className="post-sidebar-card-label">GoFundMe</div>
+              <h3 className="post-sidebar-card-title">Help Sophia get mental health care</h3>
+              <p className="post-sidebar-card-desc">
+                Trans woman facing criminal charges for a mental health crisis. Funds go to legal defense &amp; treatment.
+              </p>
+              <span className="post-sidebar-card-btn post-sidebar-btn-gfm">
+                Donate on GoFundMe &rarr;
+              </span>
+            </a>
 
-      <div style={{
-        margin: '3rem auto',
-        padding: '2rem',
-        maxWidth: '680px',
-        background: '#1a1a2e',
-        borderRadius: '16px',
-        textAlign: 'center',
-      }}>
-        <p style={{
-          color: '#f5a0c0',
-          fontSize: '1.1rem',
-          marginBottom: '1rem',
-          fontWeight: 600,
-        }}>
-          Support Sophia&rsquo;s Mental Health Defense
-        </p>
-        <div
-          className="gfm-embed"
-          data-url="https://www.gofundme.com/f/trans-woman-needs-mental-health-care-not-jail/widget/large?sharesheet=undefined&attribution_id=sl:2c857452-5e4b-47d1-abe1-ebb7b8a4d3dc"
-        />
-        <Script
-          src="https://www.gofundme.com/static/js/embed.js"
-          strategy="lazyOnload"
-        />
+            {/* Support Like One Card */}
+            <Link href="/support/" className="post-sidebar-card post-sidebar-support">
+              <div className="post-sidebar-card-icon">🤝</div>
+              <div className="post-sidebar-card-label">Like One</div>
+              <h3 className="post-sidebar-card-title">Support the mission</h3>
+              <p className="post-sidebar-card-desc">
+                1% of all revenue funds HIV research. Your donation keeps AI education accessible to everyone.
+              </p>
+              <span className="post-sidebar-card-btn post-sidebar-btn-support">
+                Support Like One &rarr;
+              </span>
+            </Link>
+          </div>
+        </aside>
       </div>
 
       <footer className="post-footer">
