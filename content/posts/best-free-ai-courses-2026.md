@@ -8,7 +8,7 @@ excerpt: "The 30 best free AI courses in 2026 — from prompt engineering to mul
 tags: [ai-courses, free-courses, ai-education, claude, beginner, agents, automation]
 faq:
   - q: "Are these AI courses really free?"
-    a: "Yes. The first 3 lessons of every course are completely free with no credit card required. That gives you 108 free lessons across 52 courses. Pro access ($4.90/mo for founding members) unlocks all 520+ lessons."
+    a: "Yes. The first 3 lessons of every course are completely free with no credit card required. That gives you 156 free lessons across 52 courses. Pro access ($4.90/mo for founding members) unlocks all 520+ lessons."
   - q: "Do I need to know how to code to take these courses?"
     a: "No. Beginner courses assume zero technical background. Intermediate and advanced courses include code examples but explain every line. You can start with Claude for Beginners and progress at your own pace."
   - q: "What AI tools do these courses cover?"
