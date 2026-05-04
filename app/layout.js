@@ -6,8 +6,8 @@ import { LiquidFilters } from './components/ui/LiquidGlass';
 
 
 
-const fullTitle = `Like One — Learn AI Free | 52 Courses, 520+ Hands-On Lessons`;
-const shortDesc = 'Master Claude, prompt engineering, AI agents, RAG & MCP with 52 free courses and 520+ hands-on lessons. Built by practitioners. Start now — no credit card.';
+const fullTitle = `Like One — Build AI Systems That Think, Remember & Run Autonomously`;
+const shortDesc = 'Like One is the human-AI collaboration platform. 52 free courses, 520+ hands-on lessons — learn to build persistent AI memory, autonomous agents & real systems. Built by Sophia Cave.';
 
 export const viewport = {
   width: 'device-width',

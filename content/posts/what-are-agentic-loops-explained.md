@@ -1,9 +1,10 @@
 ---
-title: "What Are Agentic Loops? How AI Agents Think, Act, and Iterate"
+title: "What Are Agentic Loops? The Architecture Behind AI Agents (2026)"
 date: 2026-04-19
+updated: 2026-05-02
 author: Sophia Cave
-description: "Agentic loops are how AI agents think step-by-step, take actions, observe results, and iterate. Here's how they work, why they matter, and how to build your own."
-excerpt: "Agentic loops are how AI agents think step-by-step, take actions, observe results, and iterate. Here's how they work, why they matter, and how to build your own."
+description: "Agentic loops are the observe-reason-act-repeat cycle that turns chatbots into autonomous AI agents. Learn how they work, see real examples, and build your own agent loop."
+excerpt: "Agentic loops are the observe-reason-act-repeat cycle that turns chatbots into autonomous AI agents. Learn how they work, see real examples, and build your own agent loop."
 tags: [ai-agents, agentic-loops, agent-loop, claude, automation, ai-architecture, 2026]
 faq:
   - q: "What is an agentic loop in AI?"

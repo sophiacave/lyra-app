@@ -135,6 +135,8 @@ Since this post was first published, Anthropic shipped two features that close t
 
 The tools gap that once clearly favored Custom GPTs is narrowing. For teams that value privacy and document comprehension, Claude Projects with MCP is now a serious contender even for tool-heavy workflows.
 
+If you are trying to understand the difference between Claude's native capabilities and these newer integrations, read our [complete breakdown of Claude built-in tools vs custom tools](/blog/claude-built-in-tools-vs-custom-tools-explained/) — it covers artifacts, web search, MCP servers, API tool use, and when to use each.
+
 ## The Real Answer
 
 The best specialized AI tool is the one you actually build and use. Stop reading comparison posts (including this one) and go create something. Pick whichever platform you can start on today. You will learn more in 30 minutes of building than in 30 hours of evaluating.
@@ -149,6 +151,7 @@ Ready to go beyond chatbots? Learn [how to build an AI agent without writing cod
 
 ## Keep Reading
 
+- [Claude Built-in Tools vs Custom Tools: Complete Comparison](/blog/claude-built-in-tools-vs-custom-tools-explained/)
 - [How to Build an AI Agent in 2026 (No Code Required)](/blog/how-to-build-ai-agent-no-code-2026/)
 - [How to Use Claude Projects: Complete Setup Guide (2026)](/blog/how-to-use-claude-projects-complete-guide/)
 - [How to Train AI to Write Like You](/blog/how-to-train-ai-to-write-like-you/)

@@ -1,9 +1,10 @@
 ---
-title: "Claude's Built-in Tools vs Custom Tools: What's the Difference?"
+title: "Claude Built-in Tools vs Custom Tools: Complete Comparison (2026)"
 date: 2026-04-19
+updated: 2026-05-02
 author: Sophia Cave
-description: "Claude has built-in tools like analysis, code execution, and web search — plus custom tools like MCP servers and API integrations. Here's exactly what each category includes, how they differ, and when to use which."
-excerpt: "Claude has built-in tools like analysis, code execution, and web search — plus custom tools like MCP servers and API integrations. Here's exactly what each category includes, how they differ, and when to use which."
+description: "What's the difference between Claude's built-in tools and custom tools? Artifacts, web search, and analysis vs MCP servers, API tool use, and Projects — with real examples and a decision framework."
+excerpt: "What's the difference between Claude's built-in tools and custom tools? Artifacts, web search, and analysis vs MCP servers, API tool use, and Projects — with real examples and a decision framework."
 tags: [claude, ai-tools, mcp, custom-tools, built-in-tools, comparison, tutorial]
 faq:
   - q: "What are Claude's built-in tools?"
@@ -18,7 +19,7 @@ faq:
     a: "Yes, and that is where the real power is. For example, you can use an MCP server to pull data from your database, then use Claude's built-in analysis tool to run Python on that data and generate visualizations — all in one conversation. The tools compose naturally."
 ---
 
-# Claude's Built-in Tools vs Custom Tools: What's the Difference?
+# Differences Between Claude's Built-in Tools and Custom Tools
 
 I talk to people every week who know Claude is powerful but cannot figure out where the built-in capabilities end and the custom extensions begin. The confusion is understandable. Anthropic has shipped a lot of functionality fast, and the line between what comes out of the box and what you configure yourself is not always obvious.
 
