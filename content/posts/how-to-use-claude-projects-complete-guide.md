@@ -3,8 +3,8 @@ title: "How to Use Claude Projects: Complete Guide with Examples (2026)"
 date: 2026-04-02
 updated: 2026-05-02
 author: Sophia Cave
-description: "Claude Projects turn Claude into a specialist that knows your business. Step-by-step setup with screenshots, 5 project templates, and real examples for teams, freelancers, and developers."
-excerpt: "Claude Projects turn Claude into a specialist that knows your business. Step-by-step setup with screenshots, 5 project templates, and real examples for teams, freelancers, and developers."
+description: "Turn Claude into a specialist that knows your business. 5 ready-to-use project templates, step-by-step setup, and the one setting most people miss that changes everything."
+excerpt: "Turn Claude into a specialist that knows your business. 5 ready-to-use project templates, step-by-step setup, and the one setting most people miss that changes everything."
 tags: [claude, projects, tutorial, ai-tools, productivity, 2026]
 faq:
   - q: "What are Claude Projects?"
