@@ -61,7 +61,7 @@ The difference is in specificity. Claude tends to follow nuanced instructions mo
 
 **Custom GPTs** can browse the web, run Python code, generate images (via DALL-E), and connect to external APIs via Actions. This is a real advantage. If your use case needs live data, code execution, or image generation, Custom GPTs have more built-in capabilities.
 
-**Claude Projects** do not browse the web, run code, or generate images natively. Claude can write code and analyze data, but it cannot execute code in a sandbox the way ChatGPT can. For data analysis workflows, this matters.
+**Claude Projects** do not browse the web, run code, or generate images natively. Claude can write code and analyze data, but it cannot execute code in a sandbox the way ChatGPT can. For data analysis workflows, this matters. However, Claude's [built-in tools and custom tools (MCP servers, API tool use)](/blog/claude-built-in-tools-vs-custom-tools-explained/) give developers deep extensibility that Custom GPTs cannot match.
 
 **Winner:** Custom GPTs, clearly, for tool-dependent workflows.
 
