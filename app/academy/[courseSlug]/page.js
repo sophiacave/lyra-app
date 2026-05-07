@@ -3,6 +3,7 @@ import { getCourse, getAllCourseSlugs } from '../../../lib/courses';
 import { notFound } from 'next/navigation';
 import CourseProgress from '../../components/academy/CourseProgress';
 import { site } from '@/lib/site-config';
+import { pricing } from '@/lib/pricing';
 
 export async function generateStaticParams() {
   const slugs = getAllCourseSlugs();
@@ -195,12 +196,12 @@ export default async function CoursePage({ params }) {
             </p>
             <div className="course-pro-cta-actions">
               <a
-                href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p"
+                href={pricing.pro.monthly.checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="site-btn-primary"
               >
-                Go Pro — $49/mo
+                Go Pro — {pricing.pro.monthly.display}
               </a>
               <Link href="/pricing/" className="site-btn-ghost">
                 Compare plans

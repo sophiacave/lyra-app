@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
+import { pricing } from '@/lib/pricing';
 import Footer from '../components/Footer';
 
 function StatusBadge({ status }) {
@@ -333,12 +334,12 @@ export default function AccountClient() {
                 ) : isCommunity ? (
                   <>
                     <Link href="/academy/" className="site-btn-primary">Continue Learning</Link>
-                    <a href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p" target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Upgrade to Pro</a>
+                    <a href={pricing.pro.monthly.checkoutUrl} target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Upgrade to Pro</a>
                   </>
                 ) : (
                   <>
-                    <a href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p" target="_blank" rel="noopener noreferrer" className="site-btn-primary">Go Pro — $49/mo</a>
-                    <a href="https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q" target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Annual — $390/yr</a>
+                    <a href={pricing.pro.monthly.checkoutUrl} target="_blank" rel="noopener noreferrer" className="site-btn-primary">Go Pro — {pricing.pro.monthly.display}</a>
+                    <a href={pricing.pro.annual.checkoutUrl} target="_blank" rel="noopener noreferrer" className="app-btn-ghost">Annual — {pricing.pro.annual.display}</a>
                   </>
                 )}
               </div>

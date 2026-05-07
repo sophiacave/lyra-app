@@ -2,6 +2,7 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { QuizMC, FlashDeck } from '../learn';
 import LearnErrorBoundary from '../learn/LearnErrorBoundary';
+import { pricing } from '@/lib/pricing';
 
 // Only QuizMC and FlashDeck are supported — Apple design: read + quiz + optional flash cards
 const LEARN_COMPONENTS = { QuizMC, FlashDeck };
@@ -115,12 +116,12 @@ function LessonGate({ courseSlug }) {
         </p>
         <div className="lesson-gate-actions">
           <a
-            href="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p"
+            href={pricing.pro.monthly.checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="site-btn-primary"
           >
-            Go Pro — $49/mo
+            Go Pro — {pricing.pro.monthly.display}
           </a>
           <a href={`/academy/${courseSlug}/`} className="site-btn-ghost">
             ← Back to course

@@ -1,8 +1,6 @@
 'use client';
 import { useState } from 'react';
-
-const MONTHLY_LINK = 'https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p';
-const ANNUAL_LINK = 'https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q';
+import { pricing } from '@/lib/pricing';
 
 export default function EnrollCTA({ context = 'inline' }) {
   const [showModal, setShowModal] = useState(false);
@@ -27,16 +25,16 @@ export default function EnrollCTA({ context = 'inline' }) {
 }
 
 function EnrollModal({ onClose }) {
+  const { monthly, annual } = pricing.pro;
+
   return (
     <div onClick={onClose} className="glass-modal-backdrop">
       <div
         onClick={(e) => e.stopPropagation()}
         className="glass-modal glass-animate-up enroll-modal"
       >
-        {/* Close button */}
         <button onClick={onClose} className="academy-modal-close">✕</button>
 
-        {/* Header */}
         <div className="academy-modal-header">
           <div className="academy-modal-emoji">✨</div>
           <h2 className="academy-modal-title">Academy Pro</h2>
@@ -46,11 +44,9 @@ function EnrollModal({ onClose }) {
           </p>
         </div>
 
-        {/* Pricing cards */}
         <div className="academy-pricing-stack">
-          {/* Monthly */}
           <a
-            href={MONTHLY_LINK}
+            href={monthly.checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="academy-pricing-card"
@@ -61,32 +57,30 @@ function EnrollModal({ onClose }) {
             </div>
             <div>
               <span className="academy-pricing-amount">
-                $49<span className="academy-pricing-period">/mo</span>
+                ${monthly.amount}<span className="academy-pricing-period">/mo</span>
               </span>
             </div>
           </a>
 
-          {/* Annual — recommended */}
           <a
-            href={ANNUAL_LINK}
+            href={annual.checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="academy-pricing-card recommended"
           >
-            <span className="academy-pricing-save">SAVE 33%</span>
+            <span className="academy-pricing-save">SAVE {annual.savePct}%</span>
             <div>
               <div className="academy-pricing-name">Annual</div>
-              <div className="academy-pricing-sub">Best value — $32.50/mo</div>
+              <div className="academy-pricing-sub">Best value — {annual.monthlyEquiv}</div>
             </div>
             <div>
               <span className="academy-pricing-amount gradient">
-                $390<span className="academy-pricing-period">/yr</span>
+                ${annual.amount}<span className="academy-pricing-period">/yr</span>
               </span>
             </div>
           </a>
         </div>
 
-        {/* Features */}
         <div className="academy-features">
           {[
             '52 courses, 520+ lessons',
@@ -102,7 +96,6 @@ function EnrollModal({ onClose }) {
           ))}
         </div>
 
-        {/* Footer */}
         <p className="academy-modal-footer">
           Secure payment via Stripe. Cancel anytime.
         </p>

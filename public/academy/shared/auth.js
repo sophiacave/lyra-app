@@ -7,6 +7,7 @@
  */
 
 (function() {
+  // Source of truth: lib/pricing.js — update there first, then sync here
   var MONTHLY_LINK = 'https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p';
   var ANNUAL_LINK = 'https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q';
   var SIGNIN_BASE = '/academy/signin.html';

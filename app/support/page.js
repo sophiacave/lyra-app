@@ -5,14 +5,9 @@ import { Suspense } from 'react';
 import SiteLayout from '../components/SiteLayout';
 import { site } from '../../lib/site-config';
 
+import { pricing } from '../../lib/pricing';
 const AMOUNTS = [
-  { label: '$10', href: 'https://buy.stripe.com/fZu9AM1f28pF5iH4ps3sI0e' },
-  { label: '$25', href: 'https://buy.stripe.com/eVq5kw4reeO3dPd2hk3sI0f' },
-  { label: '$50', href: 'https://buy.stripe.com/8x26oAf5S35l3az9JM3sI0g', featured: true },
-  { label: '$100', href: 'https://buy.stripe.com/dRmbIU5vibBR7qPbRU3sI0h' },
-  { label: '$250', href: 'https://buy.stripe.com/eVq4gscXKcFV4eD4ps3sI0i' },
-  { label: '$500', href: 'https://buy.stripe.com/dRm14gg9W9tJ26vcVY3sI0j' },
-  { label: '$1,000', href: 'https://buy.stripe.com/14A14ge1O49p9yX09c3sI0k' },
+  ...pricing.donations.map((d, i) => ({ label: d.display, href: d.checkoutUrl, featured: d.amount === 50 })),
   { label: 'Custom', href: `mailto:${site.email}?subject=Donation%20—%20Like%20One` },
 ];
 

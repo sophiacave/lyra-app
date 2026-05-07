@@ -37,8 +37,9 @@ const intakeMailto = (tier) => {
   return `mailto:${site.email}?subject=${subject}&body=${body}`;
 };
 
-const STRIPE_STARTER = 'https://buy.stripe.com/cNicMY3na49p8uT1dg3sI0n';
-const STRIPE_RETAINER = 'https://buy.stripe.com/4gMdR22j6fS7cL95tw3sI0o';
+import { pricing } from '../../lib/pricing';
+const STRIPE_STARTER = pricing.consulting.starter.checkoutUrl;
+const STRIPE_RETAINER = pricing.consulting.retainer.checkoutUrl;
 
 const TIERS = [
   {

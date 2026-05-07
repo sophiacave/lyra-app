@@ -3,14 +3,15 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { CTARow } from '../components/primitives';
 import { site } from '../../lib/site-config';
+import { pricing } from '../../lib/pricing';
 
 export const metadata = {
   title: `Pricing — Like One Academy | ${site.name}`,
-  description: '52 AI courses, 520+ lessons from $49/mo. Free tier available. Cancel anytime.',
+  description: `52 AI courses, 520+ lessons from ${pricing.pro.monthly.display}. Free tier available. Cancel anytime.`,
   alternates: { canonical: `${site.url}/pricing/` },
   openGraph: {
     title: `Pricing — Like One Academy | ${site.name}`,
-    description: '52 AI courses, 520+ lessons from $49/mo. Free tier available. Cancel anytime.',
+    description: `52 AI courses, 520+ lessons from ${pricing.pro.monthly.display}. Free tier available. Cancel anytime.`,
     url: `${site.url}/pricing/`,
     siteName: site.name,
     type: 'website',
@@ -24,21 +25,21 @@ const PLANS = [
     btn: { label: 'Start Free', href: '/academy/', style: 'secondary' },
   },
   {
-    label: 'Most popular', name: 'Pro', price: '$49', period: '/mo',
+    label: 'Most popular', name: 'Pro', price: `$${pricing.pro.monthly.amount}`, period: '/mo',
     desc: 'Full access to everything. Learn AI by building real systems.', featured: true,
     features: ['All 520+ interactive lessons', '52 courses (RAG, Agents, MCP & more)', 'All download products included', 'Completion certificates', 'New content added regularly', 'Priority email support', { text: 'Cancel or pause anytime', highlight: true }],
-    btn: { label: 'Go Pro — $49/mo', href: 'https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p', style: 'primary', external: true },
+    btn: { label: `Go Pro — ${pricing.pro.monthly.display}`, href: pricing.pro.monthly.checkoutUrl, style: 'primary', external: true },
   },
   {
-    label: 'Best value — save 33%', name: 'Annual', price: '$390', period: '/yr',
-    desc: "Everything in Pro. That's $32.50/mo — save 33% vs monthly.",
-    features: ['Everything in Pro', { text: 'Save 33% vs monthly ($32.50/mo)', highlight: true }, '12 months of new content', 'All future content included', { text: 'Cancel or pause anytime', highlight: true }],
-    btn: { label: 'Go Annual — $390/yr', href: 'https://buy.stripe.com/28E9AM8HudJZh1p7BE3sI0q', style: 'secondary', external: true },
+    label: `Best value — save ${pricing.pro.annual.savePct}%`, name: 'Annual', price: `$${pricing.pro.annual.amount}`, period: '/yr',
+    desc: `Everything in Pro. That's ${pricing.pro.annual.monthlyEquiv} — save ${pricing.pro.annual.savePct}% vs monthly.`,
+    features: ['Everything in Pro', { text: `Save ${pricing.pro.annual.savePct}% vs monthly (${pricing.pro.annual.monthlyEquiv})`, highlight: true }, '12 months of new content', 'All future content included', { text: 'Cancel or pause anytime', highlight: true }],
+    btn: { label: `Go Annual — ${pricing.pro.annual.display}`, href: pricing.pro.annual.checkoutUrl, style: 'secondary', external: true },
   },
   {
-    label: 'Done-with-you', name: 'Consulting', price: 'from $500', period: '/mo',
+    label: 'Done-with-you', name: 'Consulting', price: `from ${pricing.consulting.starter.display}`, period: '',
     desc: 'Faye-powered builds for disabled & marginalized founders. Tier-0 anchor of LO ECO.',
-    features: ['$500/mo async (Starter)', '$5k/mo retainer — 14-day TTFD', '$15k+ done-for-you builds', 'Brain + agents + voice + deploy', '3 months Academy Pro included', 'Cancel anytime'],
+    features: [`${pricing.consulting.starter.display} async (Starter)`, `${pricing.consulting.retainer.display} retainer — 14-day TTFD`, '$15k+ done-for-you builds', 'Brain + agents + voice + deploy', '3 months Academy Pro included', 'Cancel anytime'],
     btn: { label: 'See Consulting Tiers', href: '/consulting/', style: 'secondary' },
   },
 ];
@@ -216,7 +217,7 @@ export default function PricingPage() {
         <p className="pricing-cta-desc">Preview any course free. Upgrade when you&rsquo;re ready. No pressure. No countdown timers. Just warmth and knowledge.</p>
         <CTARow
           primary="Browse Courses" primaryHref="/academy/"
-          secondary="Go Pro — $49/mo" secondaryHref="https://buy.stripe.com/bJe28k9LygWb7qP09c3sI0p" secondaryTarget="_blank"
+          secondary={`Go Pro — ${pricing.pro.monthly.display}`} secondaryHref={pricing.pro.monthly.checkoutUrl} secondaryTarget="_blank"
         />
       </section>
       </main>
