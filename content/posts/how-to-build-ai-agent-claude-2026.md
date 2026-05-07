@@ -311,4 +311,4 @@ The gap between "I use Claude" and "I build with Claude" is smaller than you thi
 
 ---
 
-*Like One Academy has a full course on [building AI agents](/academy/building-ai-agents/) — from first principles to production deployment. [Start free](/academy/) or [go Pro for $29](/pricing/).*
+*Like One Academy has a full course on [building AI agents](/academy/building-ai-agents/) — from first principles to production deployment. [Start free](/academy/) or [go Pro for $49/mo](/pricing/).*
