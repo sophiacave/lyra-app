@@ -40,9 +40,9 @@ Every lesson is designed to be practical, immediately applicable, and built arou
 
 **Lesson 1 of every course is free.** Always. No credit card, no signup required. Open the page and start learning.
 
-If you want full access to all 520+ lessons, the exercises, and everything we add going forward, **Academy Pro is $4.90/month** during the founding period. That's 90% off what it'll be later. Once you lock in, that price is yours forever.
+If you want full access to all 520+ lessons, the exercises, and everything we add going forward, **Academy Pro is $49/month** during the founding period. That's 90% off what it'll be later. Once you lock in, that price is yours forever.
 
-I don't believe in making AI education expensive. The people who need it most can't afford $200/month subscriptions. $4.90 is less than a coffee. And it funds everything — the platform, the content, the mission. For a full roundup of what's available, see our guide to the [best free AI courses in 2026](/blog/best-free-ai-courses-2026/).
+I don't believe in making AI education expensive. The people who need it most can't afford $200/month subscriptions. $49/month funds everything — the platform, the content, the mission. For a full roundup of what's available, see our guide to the [best free AI courses in 2026](/blog/best-free-ai-courses-2026/).
 
 ## What's Next
 

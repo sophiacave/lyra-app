@@ -148,9 +148,9 @@ A portfolio of working AI projects beats any certification. Full stop.
 
 Most AI courses teach you to use ChatGPT. That's a 30-minute skill, not a 30-hour course.
 
-[Like One Academy](/) has 52 courses covering every skill on this list — prompt engineering, agents, automation, RAG, MCP, business strategy. The first 3 lessons of every course are free. Pro access is $4.90/month during the founding member period.
+[Like One Academy](/) has 52 courses covering every skill on this list — prompt engineering, agents, automation, RAG, MCP, business strategy. The first 3 lessons of every course are free. Pro access is $49/month.
 
-That's not a pitch. It's math. $4.90/month for the skills that command $150K/year. The ROI is self-evident.
+That's not a pitch. It's math. $49/month for the skills that command $150K/year. The ROI is self-evident.
 
 **Start here:**
 - [Claude for Beginners](/academy/claude-for-beginners) — if you're new to AI

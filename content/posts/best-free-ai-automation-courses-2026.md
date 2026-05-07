@@ -30,7 +30,7 @@ The automation track covers Make.com workflows, webhook architecture, API integr
 
 **Best for:** People who want to automate real business tasks, not just understand concepts.
 
-**Access:** Free lesson previews on all 52 courses. Full access $4.90/mo for founding members.
+**Access:** Free lesson previews on all 52 courses. Full access $49/mo.
 
 [Explore the Academy →](https://likeone.ai/academy/)
 
