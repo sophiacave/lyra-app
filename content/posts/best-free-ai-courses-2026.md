@@ -138,7 +138,7 @@ The courses are designed to be completed in any order, though we recommend start
 
 Most AI education either costs hundreds of dollars or gives you surface-level content you could have found in a blog post. We wanted something in between — **MIT-quality content at a price anyone can afford.**
 
-The founding member price is $49/month ($390/year annual) for full access to all 520+ lessons. But the free tier is not a teaser — it is 90 real lessons that teach real skills.
+Pro is {{price:pro}} ({{price:annual}} annual) for full access to all 520+ lessons. But the free tier is not a teaser — it is 90 real lessons that teach real skills.
 
 AI should not be a luxury. The divide between people who understand AI and people who do not is growing every day. We are trying to close it.
 
