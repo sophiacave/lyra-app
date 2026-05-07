@@ -1,38 +1,37 @@
 ---
-title: "Why We Charge $29 for 52 AI Courses (and What You Actually Get)"
-slug: why-52-ai-courses-for-29-dollars
-description: "52 AI courses, 520+ lessons, $29/month. Here's exactly what Like One Academy Pro includes, why it's priced this way, and how it compares to alternatives that cost 10-50x more."
-excerpt: "52 AI courses, 520+ lessons, $29/month. Here's exactly what Like One Academy Pro includes, why it's priced this way, and how it compares to alternatives that cost 10-50x more."
+title: "Why We Charge $49 for 52 AI Courses (and What You Actually Get)"
+slug: why-52-ai-courses-for-49-dollars
+description: "52 AI courses, 520+ lessons, $49/month. Here's exactly what Like One Academy Pro includes, why it's priced this way, and how it compares to alternatives that cost 10-50x more."
+excerpt: "52 AI courses, 520+ lessons, $49/month. Here's exactly what Like One Academy Pro includes, why it's priced this way, and how it compares to alternatives that cost 10-50x more."
 author: Sophia Cave
 date: 2026-05-02
 categories: [AI Education, Academy]
 tags: [ai courses, ai education, online learning, affordable ai training, like one academy, ai skills, pricing]
-image: /blog/images/academy-launch.jpg
 cta: Start Learning Free
 faq:
   - q: "How much does Like One Academy cost?"
-    a: "Like One Academy is free to start with full access to course previews and select lessons. Pro membership is $29/month (use code LAUNCH29 for the founding rate) and unlocks all 52 courses, 520+ lessons, quizzes, flashcards, and future courses at no extra cost."
+    a: "Like One Academy is free to start with full access to course previews and select lessons. Pro membership is $49/month and unlocks all 52 courses, 520+ lessons, quizzes, flashcards, and future courses at no extra cost. Annual plan is $390/year (save 33%)."
   - q: "What AI courses are included in Like One Academy?"
     a: "52 courses spanning beginner to advanced: prompt engineering, Claude mastery, AI automation, MCP development, AI for business, content creation, music production, game development, nonprofit strategy, data analysis, coding, ethics, and more. Every course includes hands-on exercises."
   - q: "Is Like One Academy worth it compared to Coursera or Udemy?"
-    a: "A single Coursera professional certificate costs $39-79/month and covers one topic. A Udemy AI bundle runs $50-200. Like One Academy gives you 52 courses for $29/month with content updated weekly, not annually. The depth matches MIT OpenCourseWare; the format matches how people actually learn in 2026."
+    a: "A single Coursera professional certificate costs $39-79/month and covers one topic. A Udemy AI bundle runs $50-200. Like One Academy gives you 52 courses for $49/month with content updated weekly, not annually. The depth matches MIT OpenCourseWare; the format matches how people actually learn in 2026."
   - q: "Can I try Like One Academy before paying?"
     a: "Yes. Every course has free preview lessons. You can explore the full catalog, read lesson content, and decide if the depth matches what you need before upgrading to Pro."
   - q: "What makes Like One Academy different from other AI courses?"
     a: "Three things: breadth (52 courses, not one), currency (updated weekly, not annually), and philosophy (built by a disabled trans founder using AI as an equalizer, not a corporate training department). Every lesson is designed to be done, not just watched."
 ---
 
-# Why We Charge $29 for 52 AI Courses
+# Why We Charge $49 for 52 AI Courses
 
 Most AI education falls into two categories: free YouTube tutorials that skip the hard parts, or $2,000 bootcamps that charge enterprise rates for content you could learn faster on your own.
 
 We built a third option.
 
-[Like One Academy](/academy/) is 52 courses. 520+ lessons. Quizzes and flashcards in every module. $29 a month. No upsells. No certificates you have to pay extra for. No "contact sales for pricing."
+[Like One Academy](/academy/) is 52 courses. 520+ lessons. Quizzes and flashcards in every module. $49 a month — or $390/year if you commit. No upsells. No certificates you have to pay extra for. No "contact sales for pricing."
 
 Here is why, and exactly what you get.
 
-## What $29 Gets You
+## What $49/Month Gets You
 
 **52 courses across every AI skill level:**
 
@@ -61,13 +60,13 @@ Like One is an AI-native company. Our founder uses Claude as a full operational 
 
 Traditional course creators spend 40-100 hours per course on filming, editing, and production. We spend that time on curriculum architecture and depth. The AI handles the production. The human handles the soul.
 
-That efficiency means we can price at $29 instead of $290. Not because the content is worse. Because the production model is fundamentally different.
+That efficiency means we can price at $49 instead of $490. Not because the content is worse. Because the production model is fundamentally different.
 
 ## How It Compares
 
 | | Like One Academy | Coursera | Udemy | AI Bootcamp |
 |---|---|---|---|---|
-| **Price** | $29/mo | $39-79/mo | $13-200/course | $2,000-15,000 |
+| **Price** | $49/mo ($33/mo annual) | $39-79/mo | $13-200/course | $2,000-15,000 |
 | **Courses included** | 52 | 1 certificate track | 1 per purchase | 1 program |
 | **Content freshness** | Updated weekly | Updated annually | Varies wildly | Fixed curriculum |
 | **Hands-on exercises** | Every lesson | Some courses | Rare | Yes |
@@ -93,12 +92,6 @@ We do not sell completion certificates. The market is flooded with credentials t
 We do not lock content behind tiers. Pro is Pro. You get everything. No "premium" or "enterprise" tier with the actually useful courses.
 
 We do not pretend AI education needs to be expensive. The knowledge is abundant. The curation and structure are what cost — and AI makes that radically cheaper to produce well.
-
-## The Founding Rate
-
-$29/month is the founding rate. Use code **LAUNCH29** at checkout. This locks in pricing for as long as you stay subscribed — even as we add courses, which we do regularly.
-
-The catalog was 30 courses in March. It is 52 today. It will be more next month. Your price stays the same.
 
 ## Start Free, Go Pro When Ready
 
