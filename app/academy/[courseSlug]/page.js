@@ -188,7 +188,7 @@ export default async function CoursePage({ params }) {
 
       {/* Go Pro CTA — shown when course has paid lessons */}
       {freeLessons < course.lessons.length && (
-        <div className="course-pro-cta glass glass-animate-up">
+        <div className="course-pro-cta lo-hide-pro glass glass-animate-up">
           <div className="course-pro-cta-content">
             <h3 className="course-pro-cta-title">Unlock the full course</h3>
             <p className="course-pro-cta-desc">

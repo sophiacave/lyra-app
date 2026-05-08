@@ -10,7 +10,7 @@ export default function EnrollCTA({ context = 'inline' }) {
       <>
         <button
           onClick={() => setShowModal(true)}
-          className="academy-enroll-trigger"
+          className="academy-enroll-trigger lo-hide-pro"
         >
           <span className="academy-enroll-emoji">✨</span>
           <span>Unlock All Lessons — Academy Pro</span>
