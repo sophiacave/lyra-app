@@ -97,7 +97,4 @@ export default function ProfilePage() {
   );
 }
 
-export const metadata = {
-  title: 'Your Progress — LO Academy',
-  description: 'Track your AI learning progress, XP, streak, and achievements.',
-};
+// metadata must go in layout.js for client components
