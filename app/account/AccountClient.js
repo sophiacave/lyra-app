@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
+import GoogleSignIn from '../components/GoogleSignIn';
 import { pricing } from '@/lib/pricing';
 import Footer from '../components/Footer';
 
@@ -215,9 +216,11 @@ export default function AccountClient() {
                   <div className="app-msg-error" role="alert">{errorMsg}</div>
                 )}
 
+                <GoogleSignIn onSuccess={() => window.location.reload()} />
+
                 <div className="account-divider">
                   <div className="account-divider-line" />
-                  <span className="account-divider-text">sign in with email</span>
+                  <span className="account-divider-text">or sign in with email</span>
                   <div className="account-divider-line" />
                 </div>
 
