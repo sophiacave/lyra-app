@@ -27,11 +27,11 @@ Most AI education falls into two categories: free YouTube tutorials that skip th
 
 We built a third option.
 
-[Like One Academy](/academy/) is 52 courses. 520+ lessons. Quizzes and flashcards in every module. $49 a month — or $390/year if you commit. No upsells. No certificates you have to pay extra for. No "contact sales for pricing."
+[Like One Academy](/academy/) is 52 courses. 520+ lessons. Quizzes and flashcards in every module. {{price:pro}} — or {{price:annual}} if you commit. No upsells. No certificates you have to pay extra for. No "contact sales for pricing."
 
 Here is why, and exactly what you get.
 
-## What $49/Month Gets You
+## What {{price:pro}} Gets You
 
 **52 courses across every AI skill level:**
 
@@ -60,13 +60,13 @@ Like One is an AI-native company. Our founder uses Claude as a full operational 
 
 Traditional course creators spend 40-100 hours per course on filming, editing, and production. We spend that time on curriculum architecture and depth. The AI handles the production. The human handles the soul.
 
-That efficiency means we can price at $49 instead of $490. Not because the content is worse. Because the production model is fundamentally different.
+That efficiency means we can price at {{price:pro}} instead of $490. Not because the content is worse. Because the production model is fundamentally different.
 
 ## How It Compares
 
 | | Like One Academy | Coursera | Udemy | AI Bootcamp |
 |---|---|---|---|---|
-| **Price** | $49/mo ($33/mo annual) | $39-79/mo | $13-200/course | $2,000-15,000 |
+| **Price** | {{price:pro}} ({{price:annual_monthly}} annual) | $39-79/mo | $13-200/course | $2,000-15,000 |
 | **Courses included** | 52 | 1 certificate track | 1 per purchase | 1 program |
 | **Content freshness** | Updated weekly | Updated annually | Varies wildly | Fixed curriculum |
 | **Hands-on exercises** | Every lesson | Some courses | Rare | Yes |

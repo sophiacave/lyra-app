@@ -90,7 +90,7 @@ Stop treating AI as a future initiative. Put it on the P&L. Assign ownership. Se
 
 If you want a structured framework for making these decisions — one built specifically for CEOs, not engineers — the [**CEO Guide to AI 2026**](/products/ceo-guide-ai-2026) covers vendor evaluation templates, ROI calculation models, implementation timelines, and the exact questions to ask your team before you spend a dollar.
 
-It's $49. That's less than the lunch where your last AI conversation went nowhere.
+It's {{price:pro}}. That's less than the lunch where your last AI conversation went nowhere.
 
 ---
 

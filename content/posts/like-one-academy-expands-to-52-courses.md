@@ -46,7 +46,7 @@ The expansion fills gaps we've been hearing about. Here's what we added:
 
 First 3 lessons of every course are still free. That's now 156 free lessons across 52 courses — no credit card, no signup wall.
 
-Pro unlocks everything: all 520+ lessons, exercises, downloads, and certificates. Still $49/month. Still cancel anytime.
+Pro unlocks everything: all 520+ lessons, exercises, downloads, and certificates. Still {{price:pro}}. Still cancel anytime.
 
 ## Why This Matters
 
