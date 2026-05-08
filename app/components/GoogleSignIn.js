@@ -87,3 +87,4 @@ export default function GoogleSignIn({ onSuccess, onError, context = 'signin' })
     </div>
   );
 }
+// google oauth configured
