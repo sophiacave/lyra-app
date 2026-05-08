@@ -112,7 +112,7 @@ function LessonGate({ courseSlug }) {
         <div className="lesson-gate-icon">🔒</div>
         <h3 className="lesson-gate-title">This lesson is for Pro members</h3>
         <p className="lesson-gate-desc">
-          Unlock all 518+ lessons across 52 courses with Academy Pro.
+          Unlock all 520+ lessons across 52 courses with Academy Pro.
         </p>
         <div className="lesson-gate-actions">
           <a

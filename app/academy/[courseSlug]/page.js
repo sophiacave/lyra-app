@@ -174,9 +174,14 @@ export default async function CoursePage({ params }) {
                     FREE
                   </span>
                 ) : (
-                  <span className="glass-badge badge-dim academy-badge-sm">
-                    🔒 Pro
-                  </span>
+                  <>
+                    <span className="glass-badge badge-dim academy-badge-sm lo-hide-pro">
+                      🔒 Pro
+                    </span>
+                    <span className="glass-badge badge-green academy-badge-sm lo-show-pro">
+                      ✅
+                    </span>
+                  </>
                 )}
               </div>
             </div>
