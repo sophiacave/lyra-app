@@ -14,6 +14,14 @@
     "audit:json": "node scripts/audit-academy.js --json"
   },
   "dependencies": {
+    "@capacitor/cli": "^8.3.3",
+    "@capacitor/core": "^8.3.3",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.3.3",
+    "@capacitor/push-notifications": "^8.0.4",
+    "@capacitor/share": "^8.0.1",
+    "@capacitor/splash-screen": "^8.0.1",
+    "@capacitor/status-bar": "^8.0.2",
     "@notionhq/client": "^5.20.0",
     "@react-three/fiber": "^8.18.0",
     "@remotion/bundler": "^4.0.438",
@@ -25,6 +33,7 @@
     "gray-matter": "^4.0.3",
     "mflux": "^0.1.1",
     "next": "^16.2.1",
+    "next-auth": "latest",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "remark": "^15.0.1",
