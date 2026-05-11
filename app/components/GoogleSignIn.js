@@ -88,3 +88,4 @@ export default function GoogleSignIn({ onSuccess, onError, context = 'signin' })
   );
 }
 // google oauth configured
+// Google OAuth fix — env vars updated 2026-05-11
