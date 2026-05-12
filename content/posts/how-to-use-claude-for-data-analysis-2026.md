@@ -1,5 +1,5 @@
 ---
-title: "How to Use Claude AI for Data Analysis (No Code Required)"
+title: "Claude AI for Data Analysis: No-Code Guide (2026)"
 slug: how-to-use-claude-for-data-analysis-2026
 date: 2026-04-17
 author: Sophia Cave

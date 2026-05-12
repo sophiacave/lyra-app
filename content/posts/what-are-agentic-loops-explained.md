@@ -1,5 +1,5 @@
 ---
-title: "What Are Agentic Loops? How AI Agents Actually Work (2026)"
+title: "What Are Agentic Loops? AI Agents Explained (2026)"
 date: 2026-04-19
 updated: 2026-05-11
 author: Sophia Cave

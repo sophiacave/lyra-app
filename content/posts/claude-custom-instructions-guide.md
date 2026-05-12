@@ -1,5 +1,5 @@
 ---
-title: "Claude Custom Instructions Guide (2026): Projects, Prompts & Memory"
+title: "How to Set Up Claude Custom Instructions (2026)"
 date: 2026-04-19
 updated: 2026-05-11
 author: Sophia Cave
