@@ -1,9 +1,10 @@
 ---
-title: "Claude Custom Instructions: How to Set Up Projects, System Prompts, and Persistent Context"
+title: "Claude Custom Instructions Guide (2026): Projects, Prompts & Memory"
 date: 2026-04-19
+updated: 2026-05-11
 author: Sophia Cave
-description: "Master Claude custom instructions using Projects, system prompts, and style guides. Learn how to make Claude remember your preferences, follow your rules, and write in your voice every session."
-excerpt: "Master Claude custom instructions using Projects, system prompts, and style guides. Learn how to make Claude remember your preferences, follow your rules, and write in your voice every session."
+description: "Set up Claude custom instructions in 5 minutes. Use Projects, system prompts, and style guides to make Claude remember your preferences and write in your voice — every session."
+excerpt: "Set up Claude custom instructions in 5 minutes. Use Projects, system prompts, and style guides to make Claude remember your preferences and write in your voice — every session."
 tags: [claude, custom-instructions, claude-projects, system-prompts, prompt-engineering, ai-tools, 2026]
 faq:
   - q: "Does Claude have custom instructions like ChatGPT?"
