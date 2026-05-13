@@ -19,6 +19,7 @@ const nextConfig = {
       { source: '/feed', destination: '/api/feed' },
       { source: '/feed/', destination: '/api/feed' },
       { source: '/api/stripe-webhook', destination: '/api/stripe-webhook/' },
+      { source: '/api/dig', destination: '/api/dig/' },
       { source: '/api/v1/:path*', destination: '/api/v1/:path*' },
     ];
   },

@@ -20,15 +20,14 @@ export default function DigClient({ site }) {
             Drone Archaeology + AI
           </h1>
           <p style={{ fontSize: '20px', color: '#a0a0a0', maxWidth: '640px', margin: '0 auto 16px' }}>
-            AI-powered archaeological feature detection from free LiDAR and satellite data.
-            Built for Sophie Watanabe — 10 years as CA state archaeologist.
+            AI-powered archaeological feature detection using free public LiDAR and satellite data. No commercial competitor exists in the US market.
           </p>
-          <p style={{ fontSize: '14px', color: '#555' }}>This page is unlisted and private. For your eyes only.</p>
+          <p style={{ fontSize: '14px', color: '#555' }}>Private collaboration page — unlisted, not indexed</p>
         </section>
 
         {/* What's Working */}
         <Section title="What's Working Right Now">
-          <p style={pStyle}>All of this was built in one session. Every pipeline is functional. Every output is real.</p>
+          <p style={pStyle}>Every pipeline below is functional and producing real output. All data is free. All tools are open source.</p>
           <div style={{ display: 'grid', gap: '16px', marginTop: '24px' }}>
             <StatusCard title="LiDAR Processing Pipeline" status="live" detail="USGS 3DEP → ground extraction → DTM → 6 RVT archaeological visualizations. All georeferenced GeoTIFFs in EPSG:26910." />
             <StatusCard title="AI Anomaly Detection" status="live" detail="HRNet W48 (ImageNet pretrained) feature extraction. Identifies anomalous terrain patterns — ridgelines, terraces, depressions." />
@@ -40,7 +39,7 @@ export default function DigClient({ site }) {
 
         {/* Visualizations */}
         <Section title="Real Outputs — Sonoma County">
-          <p style={pStyle}>6.3 million LiDAR points from USGS 3DEP (free). Processed into archaeological visualizations, then run through AI detection and satellite cross-validation.</p>
+          <p style={pStyle}>Test area: Sonoma County. 6.3M LiDAR points from USGS 3DEP, processed through RVT visualization pipeline, then AI anomaly detection and Sentinel-2 cross-validation. All outputs georeferenced and QGIS-ready.</p>
           <ImageCard src="/lo-dig/visualization_preview.png" title="LiDAR Archaeological Visualizations" caption="Top: Hillshade, Sky-View Factor, Slope. Bottom: SLRM, Positive Openness, Multi-Hillshade." />
           <ImageCard src="/lo-dig/anomaly_detection.png" title="AI Terrain Anomaly Detection" caption="Left: SLRM. Center: HRNet anomaly scores. Right: Top 10% targets." />
           <ImageCard src="/lo-dig/satellite_analysis.png" title="Sentinel-2 Satellite Prospection" caption="NDVI, NAI (red edge), NDWI (moisture), Combined Anomaly." />
