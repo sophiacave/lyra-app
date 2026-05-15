@@ -6,8 +6,8 @@ import { LiquidFilters } from './components/ui/LiquidGlass';
 
 
 
-const fullTitle = `Like One — Build AI Systems That Think, Remember & Run Autonomously`;
-const shortDesc = 'Like One is the human-AI collaboration platform. 52 free courses, 520+ hands-on lessons — learn to build persistent AI memory, autonomous agents & real systems. Built by Sophia Cave.';
+const fullTitle = `Like One — Free AI Academy | 52 Courses, 520+ Lessons`;
+const shortDesc = 'Learn to build autonomous AI agents with 52 free courses and 520+ hands-on lessons. From fundamentals to production systems. Built by Sophia Cave. Start free today.';
 
 export const viewport = {
   width: 'device-width',
