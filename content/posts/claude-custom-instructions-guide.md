@@ -1,10 +1,10 @@
 ---
-title: "How to Set Up Claude Custom Instructions (2026)"
+title: "Claude Custom Instructions: 5-Minute Setup With Projects & System Prompts (2026)"
 date: 2026-04-19
-updated: 2026-05-11
+updated: 2026-05-15
 author: Sophia Cave
-description: "Set up Claude custom instructions in 5 minutes. Use Projects, system prompts, and style guides to make Claude remember your preferences and write in your voice — every session."
-excerpt: "Set up Claude custom instructions in 5 minutes. Use Projects, system prompts, and style guides to make Claude remember your preferences and write in your voice — every session."
+description: "Step-by-step guide to Claude custom instructions using Projects, system prompts, and style guides. Stop re-explaining yourself — make Claude remember your preferences every session. Includes FAQ."
+excerpt: "Step-by-step guide to Claude custom instructions using Projects, system prompts, and style guides. Stop re-explaining yourself — make Claude remember your preferences every session. Includes FAQ."
 tags: [claude, custom-instructions, claude-projects, system-prompts, prompt-engineering, ai-tools, 2026]
 faq:
   - q: "Does Claude have custom instructions like ChatGPT?"
