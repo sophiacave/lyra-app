@@ -3599,11 +3599,12 @@ select:focus-visible {
 
 .site-card {
   background: var(--liquid-bg);
-  border: 1px solid var(--liquid-border);
+  border: 1.5px solid var(--liquid-border);
   border-radius: var(--liquid-radius);
-  padding: var(--space-5);
+  padding: var(--space-6);
   transition: all var(--liquid-transition);
   backdrop-filter: blur(var(--glass-blur-subtle)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur-subtle)) saturate(1.3);
   box-shadow: var(--liquid-shadow);
   position: relative;
 }
@@ -3929,18 +3930,27 @@ select:focus-visible {
   gap: var(--space-4);
 }
 .pricing-card {
-  background: var(--surface-raised);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8) var(--space-6);
+  background: var(--liquid-bg);
+  backdrop-filter: blur(var(--liquid-blur));
+  -webkit-backdrop-filter: blur(var(--liquid-blur));
+  border: 1.5px solid var(--liquid-border);
+  border-radius: var(--liquid-radius);
+  padding: var(--space-10) var(--space-6);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: visible;
+  box-shadow: var(--liquid-shadow);
+  transition: transform var(--liquid-transition), box-shadow var(--liquid-transition), border-color var(--liquid-transition);
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--liquid-shadow-hover);
 }
 .pricing-card.featured {
-  background: linear-gradient(180deg, rgba(251,146,60,0.04) 0%, var(--surface-raised) 40%);
+  background: linear-gradient(180deg, rgba(251,146,60,0.06) 0%, var(--liquid-bg) 40%);
   border: 2px solid var(--accent-warm);
+  box-shadow: 0 8px 32px rgba(251,146,60,0.12), var(--liquid-shadow);
 }
 .pricing-card.featured::before {
   content: '';
