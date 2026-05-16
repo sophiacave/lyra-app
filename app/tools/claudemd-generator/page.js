@@ -436,7 +436,7 @@ export default function ClaudeMdGenerator() {
                 {limitReached ? (
                   <div className="tool-limit-msg">
                     <p>You've used your 5 free generations today.</p>
-                    <Link href="/pricing/" className="tool-generate-btn" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>
+                    <Link href="/pricing/" className="tool-generate-btn tool-generate-btn--link">
                       Unlock Unlimited — 65% Off Annual
                     </Link>
                   </div>

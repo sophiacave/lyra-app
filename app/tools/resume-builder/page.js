@@ -250,7 +250,7 @@ export default function ResumeBuilder() {
                 {limitReached ? (
                   <div className="tool-limit-msg">
                     <p>You've used your 3 free resumes today.</p>
-                    <Link href="/pricing/" className="tool-generate-btn" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>
+                    <Link href="/pricing/" className="tool-generate-btn tool-generate-btn--link">
                       Unlock Unlimited — 65% Off Annual
                     </Link>
                   </div>

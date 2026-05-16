@@ -404,7 +404,7 @@ export default function AgentBuilder() {
         <Header variant="site" />
         <main id="main-content" className="tool-main">
           <section className="site-section-sm text-center">
-            <span className="site-section-tag" style={{ background: 'linear-gradient(135deg, var(--accent-purple), var(--accent-warm))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Pro Tool</span>
+            <span className="site-section-tag site-section-tag--pro">Pro Tool</span>
             <h1 className="tool-title">AI Agent Blueprint Builder</h1>
             <p className="tool-desc">
               Design AI agents visually. Select capabilities, choose your model, and export production-ready code with CLAUDE.md, MCP config, and deployment docs.
@@ -420,10 +420,10 @@ export default function AgentBuilder() {
                   <li>5 models: Claude, GPT-4o, Ollama</li>
                   <li>Export: agent.py, CLAUDE.md, requirements.txt, MCP config, README</li>
                 </ul>
-                <div className="tool-cta-btns" style={{ marginTop: '1.5rem' }}>
+                <div className="tool-cta-btns tool-pro-gate-btns">
                   <a href={pricing.pro.annual.checkoutUrl} className="site-btn-primary" target="_blank" rel="noopener">
                     Go Pro — {pricing.activeCoupon ? pricing.activeCoupon.salePriceDisplay : pricing.pro.annual.display}
-                    {pricing.activeCoupon && <span style={{ marginLeft: '8px', textDecoration: 'line-through', opacity: 0.6, fontSize: '0.85em' }}>{pricing.pro.annual.display}</span>}
+                    {pricing.activeCoupon && <span className="price-strikethrough">{pricing.pro.annual.display}</span>}
                   </a>
                   <Link href="/pricing/" className="tool-cta-secondary">See all plans</Link>
                 </div>
@@ -441,7 +441,7 @@ export default function AgentBuilder() {
       <Header variant="site" />
       <main id="main-content" className="tool-main">
         <section className="site-section-sm text-center">
-          <span className="site-section-tag" style={{ background: 'linear-gradient(135deg, var(--accent-purple), var(--accent-warm))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Pro Tool</span>
+          <span className="site-section-tag site-section-tag--pro">Pro Tool</span>
           <h1 className="tool-title">AI Agent Blueprint Builder</h1>
           <p className="tool-desc">Design your agent. Export production-ready code.</p>
         </section>
