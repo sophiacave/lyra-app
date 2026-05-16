@@ -71,6 +71,20 @@
   --accent-gradient: linear-gradient(135deg, #c084fc 0%, #38bdf8 100%);
   --accent-gradient-wide: linear-gradient(135deg, #c084fc 0%, #38bdf8 50%, #e879f9 100%);
 
+  /* ── Pink → Purple Gradient Theme (Faye signature) ── */
+  --gradient-pink: #FF6EB4;        /* hot pink — start stop */
+  --gradient-purple: #9B59B6;      /* royal purple — end stop */
+  --gradient-pink-rgb: 255, 110, 180;
+  --gradient-purple-rgb: 155, 89, 182;
+  --gradient-pink-purple: linear-gradient(135deg, #FF6EB4 0%, #9B59B6 100%);
+  --gradient-pink-purple-soft: linear-gradient(135deg, rgba(255,110,180,0.15) 0%, rgba(155,89,182,0.15) 100%);
+  --gradient-pink-purple-radial: radial-gradient(circle at 30% 30%, #FF6EB4 0%, #9B59B6 70%);
+  --gradient-pink-purple-conic: conic-gradient(from 180deg at 50% 50%, #FF6EB4, #9B59B6, #FF6EB4);
+  --gradient-pink-purple-90: linear-gradient(90deg, #FF6EB4 0%, #9B59B6 100%);
+  --gradient-pink-purple-180: linear-gradient(180deg, #FF6EB4 0%, #9B59B6 100%);
+  --pulse-duration: 2.4s;
+  --pulse-easing: cubic-bezier(0.4, 0, 0.6, 1);
+
   /* ── Status Colors ── */
   --status-success: #4ade80;
   --status-warning: #eab308;
@@ -518,6 +532,61 @@ select:focus-visible {
 @keyframes pulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
+}
+
+/* Pink → purple gradient pulse — for CTAs, live indicators, Faye-signature glows */
+@keyframes gradientPulse {
+  0%, 100% {
+    background-image: linear-gradient(135deg, #FF6EB4 0%, #9B59B6 100%);
+    box-shadow:
+      0 0 0 0 rgba(255, 110, 180, 0.55),
+      0 0 18px 2px rgba(155, 89, 182, 0.35);
+    transform: scale(1);
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    background-image: linear-gradient(135deg, #9B59B6 0%, #FF6EB4 100%);
+    box-shadow:
+      0 0 0 14px rgba(255, 110, 180, 0),
+      0 0 32px 8px rgba(155, 89, 182, 0.55);
+    transform: scale(1.035);
+    filter: brightness(1.12) saturate(1.15);
+  }
+}
+
+/* Subtle variant — opacity-only pulse on the gradient (use on glows/auras) */
+@keyframes gradientPulseSoft {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.04); }
+}
+
+/* Hue-shift variant — gradient angle rotates while pulsing */
+@keyframes gradientPulseShift {
+  0%   { background-image: linear-gradient(135deg, #FF6EB4 0%, #9B59B6 100%); }
+  50%  { background-image: linear-gradient(315deg, #FF6EB4 0%, #9B59B6 100%); }
+  100% { background-image: linear-gradient(135deg, #FF6EB4 0%, #9B59B6 100%); }
+}
+
+/* Utility classes — drop on any element */
+.pulse-pink-purple {
+  background-image: var(--gradient-pink-purple);
+  animation: gradientPulse var(--pulse-duration) var(--pulse-easing) infinite;
+}
+.pulse-pink-purple-soft {
+  background-image: var(--gradient-pink-purple);
+  animation: gradientPulseSoft var(--pulse-duration) var(--pulse-easing) infinite;
+}
+.pulse-pink-purple-shift {
+  background-image: var(--gradient-pink-purple);
+  animation: gradientPulseShift calc(var(--pulse-duration) * 1.5) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-pink-purple,
+  .pulse-pink-purple-soft,
+  .pulse-pink-purple-shift {
+    animation: none;
+  }
 }
 
 /* Section headers */
@@ -6681,7 +6750,7 @@ select:focus-visible {
   min-height: 50vh;
 }
 .account-signin-glass {
-  max-width: 420px;
+  max-width: 440px;
   width: 100%;
   padding: 0;
 }
@@ -6690,20 +6759,49 @@ select:focus-visible {
   position: relative;
   z-index: 1;
 }
-.account-signin-icon {
-  color: var(--accent-purple);
-  margin-bottom: var(--space-4);
-  display: flex;
-  justify-content: center;
-}
 .account-signin-title {
-  font-size: var(--font-xl);
+  font-size: var(--font-2xl);
   font-weight: var(--font-weight-black);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.02em;
 }
 .account-signin-desc {
   color: var(--text-tertiary);
+  margin-bottom: var(--space-8);
+  font-size: var(--font-base);
+  line-height: 1.5;
+}
+.account-google-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: var(--space-6);
+}
+.account-google-primary .google-signin-container {
+  margin-bottom: var(--space-3);
+}
+.account-google-hint {
+  font-size: var(--font-xs);
+  color: var(--text-quaternary);
+  margin: 0;
+}
+.account-email-toggle {
+  background: none;
+  border: none;
+  color: var(--text-quaternary);
+  font-size: var(--font-sm);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-family);
+  transition: color 0.15s;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.account-email-toggle:hover {
+  color: var(--text-secondary);
+}
+.account-email-section {
+  margin-top: var(--space-2);
 }
 .account-magic-sent-icon {
   color: var(--status-success);
@@ -6793,6 +6891,13 @@ select:focus-visible {
   font-size: var(--font-lg);
   color: var(--surface-base);
   overflow: hidden;
+}
+.account-avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 .account-avatar img {
   width: 100%;

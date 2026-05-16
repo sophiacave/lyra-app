@@ -23,6 +23,7 @@ export default function GoogleSignIn({ onSuccess, onError, context = 'signin' })
         localStorage.setItem('lo_session', 'google-auth');
         localStorage.setItem('lo_email', data.email);
         localStorage.setItem('lo_display_name', data.name || '');
+        if (data.picture) localStorage.setItem('lo_picture', data.picture);
 
         if (onSuccess) onSuccess(data);
         else window.location.reload();
@@ -52,15 +53,16 @@ export default function GoogleSignIn({ onSuccess, onError, context = 'signin' })
         cancel_on_tap_outside: true,
       });
 
-      // Render the button
+      // Render the button — large, clean, primary action
       if (buttonRef.current) {
         window.google.accounts.id.renderButton(buttonRef.current, {
           type: 'standard',
-          theme: 'filled_black',
+          theme: 'outline',
           size: 'large',
-          shape: 'pill',
-          text: context === 'signup' ? 'signup_with' : 'signin_with',
-          width: 300,
+          shape: 'rectangular',
+          text: 'continue_with',
+          logo_alignment: 'left',
+          width: 380,
         });
       }
 

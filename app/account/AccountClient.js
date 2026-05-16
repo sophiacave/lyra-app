@@ -25,6 +25,7 @@ export default function AccountClient() {
   const [signinEmail, setSigninEmail] = useState('');
   const [signinSent, setSigninSent] = useState(false);
   const [signinLoading, setSigninLoading] = useState(false);
+  const [showEmailForm, setShowEmailForm] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [cancelling, setCancelling] = useState(false);
@@ -58,7 +59,7 @@ export default function AccountClient() {
       const data = await res.json();
 
       if (data.authenticated) {
-        setSession({ email: data.email });
+        setSession({ email: data.email, picture: data.picture || localStorage.getItem('lo_picture') });
         setSubscription(data.subscription);
         setDisplayName(localStorage.getItem('lo_display_name') || data.email.split('@')[0]);
         setLoading(false);
@@ -201,62 +202,75 @@ export default function AccountClient() {
             <div className="account-signin-glass liquid-panel liquid-hero liquid-animate-scale">
               <span className="liquid-edge" aria-hidden="true" />
               <div className="account-signin-glass-inner">
-                <div className="account-signin-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" width="32" height="32">
-                    <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <h1 className="account-signin-title">Welcome to Like One</h1>
+                <h1 className="account-signin-title">Sign in to Like One</h1>
                 <p className="account-signin-desc">
-                  Sign in to access your courses, manage your subscription, and join the community.
+                  Access your courses, track your progress, and join the community.
                 </p>
 
                 {errorMsg && (
                   <div className="app-msg-error" role="alert">{errorMsg}</div>
                 )}
 
-                <GoogleSignIn onSuccess={() => window.location.reload()} />
-
-                <div className="account-divider">
-                  <div className="account-divider-line" />
-                  <span className="account-divider-text">or sign in with email</span>
-                  <div className="account-divider-line" />
+                {/* Google Sign-In — PRIMARY */}
+                <div className="account-google-primary">
+                  <GoogleSignIn onSuccess={() => window.location.reload()} />
+                  <p className="account-google-hint">Recommended &mdash; one click, instant access</p>
                 </div>
 
-                {signinSent ? (
-                  <div className="account-magic-sent" role="status" aria-live="polite">
-                    <div className="account-magic-sent-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
-                        <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M2 7l8.8 5.5a2 2 0 002.4 0L22 7" stroke="currentColor" strokeWidth="1.5" />
-                      </svg>
+                {/* Email — collapsed secondary */}
+                {!showEmailForm && !signinSent && (
+                  <button
+                    className="account-email-toggle"
+                    onClick={() => setShowEmailForm(true)}
+                    type="button"
+                  >
+                    Use email instead
+                  </button>
+                )}
+
+                {(showEmailForm || signinSent) && (
+                  <div className="account-email-section">
+                    <div className="account-divider">
+                      <div className="account-divider-line" />
+                      <span className="account-divider-text">email</span>
+                      <div className="account-divider-line" />
                     </div>
-                    <p>Check your email for the magic link.</p>
-                    <p className="hint">
-                      Didn&rsquo;t get it? Check spam, or <a href="mailto:hello@likeone.ai">email us</a>.
-                    </p>
+
+                    {signinSent ? (
+                      <div className="account-magic-sent" role="status" aria-live="polite">
+                        <div className="account-magic-sent-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                            <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
+                            <path d="M2 7l8.8 5.5a2 2 0 002.4 0L22 7" stroke="currentColor" strokeWidth="1.5" />
+                          </svg>
+                        </div>
+                        <p>Check your email for the sign-in link.</p>
+                        <p className="hint">
+                          Didn&rsquo;t get it? Check spam, or <a href="mailto:hello@likeone.ai">email us</a>.
+                        </p>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleSignin} className="account-signin-form">
+                        <input
+                          type="email"
+                          placeholder="your@email.com"
+                          value={signinEmail}
+                          onChange={e => setSigninEmail(e.target.value)}
+                          required
+                          className="liquid-input"
+                          aria-label="Email address"
+                          autoComplete="email"
+                        />
+                        <button
+                          type="submit"
+                          disabled={signinLoading}
+                          className="liquid-btn liquid-btn-accent"
+                        >
+                          {signinLoading ? 'Sending...' : 'Send Link'}
+                        </button>
+                      </form>
+                    )}
                   </div>
-                ) : (
-                  <form onSubmit={handleSignin} className="account-signin-form">
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      value={signinEmail}
-                      onChange={e => setSigninEmail(e.target.value)}
-                      required
-                      className="liquid-input"
-                      aria-label="Email address"
-                      autoComplete="email"
-                    />
-                    <button
-                      type="submit"
-                      disabled={signinLoading}
-                      className="liquid-btn liquid-btn-accent"
-                    >
-                      {signinLoading ? 'Sending...' : 'Send Magic Link'}
-                    </button>
-                  </form>
                 )}
               </div>
             </div>
@@ -281,9 +295,11 @@ export default function AccountClient() {
               <span className="liquid-edge" aria-hidden="true" />
               <div className="app-card-label">Profile</div>
               <div className="account-profile-row">
-                <div className="account-avatar">
-                  {initial}
-                </div>
+                {session?.picture ? (
+                  <img src={session.picture} alt="" className="account-avatar-img" referrerPolicy="no-referrer" />
+                ) : (
+                  <div className="account-avatar">{initial}</div>
+                )}
                 <div>
                   <div className="account-profile-name">{displayName}</div>
                   <div className="account-profile-email">{email}</div>
