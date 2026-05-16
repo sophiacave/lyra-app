@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
-import SubscribeForm from '@/app/components/SubscribeForm';
-import Header from '@/app/components/Header';
-import Footer from '@/app/components/Footer';
+import SubscribeForm from '../components/SubscribeForm';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { site, academy } from '@/lib/site-config';
 
 // Revalidate daily so date-gated posts appear on their publish date

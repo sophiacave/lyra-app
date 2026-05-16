@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { getPostBySlug, getAllSlugs } from '@/lib/posts';
 import { getAllCourses } from '@/lib/courses';
-import SubscribeForm from '@/app/components/SubscribeForm';
-import Header from '@/app/components/Header';
-import Footer from '@/app/components/Footer';
+import SubscribeForm from '../../components/SubscribeForm';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import { site, academy } from '@/lib/site-config';
 import { notFound } from 'next/navigation';
 
