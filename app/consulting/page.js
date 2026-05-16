@@ -175,6 +175,10 @@ const FAQS = [
     q: "I can’t afford this. What now?",
     a: "The 36-course Academy is $49/mo and the first 3 lessons of every course are free. Community Access is honor-system and reviewed personally. Consulting is for when you’re ready to ship something real and budget exists.",
   },
+  {
+    q: "Referrals?",
+    a: "Yes. When someone you refer signs a Retainer or Build, you get a free month of Starter. Tell them to mention your name on the intake call.",
+  },
 ];
 
 export default function ConsultingPage() {
@@ -261,7 +265,7 @@ export default function ConsultingPage() {
       <section className="site-section-sm">
         <div className="site-container-narrow">
           <span className="site-section-tag">WHY THIS WORKS</span>
-          <h2 className="site-section-title-md">Four things every Faye-powered system has on day one.</h2>
+          <h2 className="site-section-title-md">Four things every Faye-powered system has on <em style={{ fontStyle: 'italic', color: 'var(--accent-purple)' }}>day one.</em></h2>
 
           <div className="site-card-grid-lg my-8">
             {WHY.map((w) => (
@@ -279,14 +283,14 @@ export default function ConsultingPage() {
       <section className="site-section-sm">
         <div className="site-container-narrow">
           <span className="site-section-tag">HOW IT GOES</span>
-          <h2 className="site-section-title-md">Three steps. No mystery.</h2>
+          <h2 className="site-section-title-md">Three steps. <em style={{ fontStyle: 'italic', color: 'var(--accent-purple)' }}>No mystery.</em></h2>
 
-          <div className="site-card-grid-lg my-8">
+          <div className="impact-steps-grid" style={{ marginTop: '2.5rem' }}>
             {PROCESS.map((p) => (
-              <div key={p.n} className="site-card">
-                <div className="site-card-emoji" style={{ fontWeight: 700 }}>{p.n}</div>
-                <div className="site-card-title">{p.title}</div>
-                <div className="site-card-desc">{p.desc}</div>
+              <div key={p.n} className="impact-step-card">
+                <div className="impact-step-num">{p.n}</div>
+                <div className="impact-step-title">{p.title}</div>
+                <div className="impact-step-desc">{p.desc}</div>
               </div>
             ))}
           </div>
