@@ -211,6 +211,27 @@ export default function ClaudeMdGenerator() {
   const [packageJsonMode, setPackageJsonMode] = useState(false);
   const [packageJsonText, setPackageJsonText] = useState('');
   const [generated, setGenerated] = useState(false);
+  const [limitReached, setLimitReached] = useState(false);
+
+  function checkRateLimit() {
+    const key = 'lo_claudemd_uses';
+    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
+    const today = new Date().toISOString().split('T')[0];
+    if (stored.date !== today) return { allowed: true, remaining: 5 };
+    return { allowed: stored.count < 5, remaining: Math.max(0, 5 - stored.count) };
+  }
+
+  function recordUse() {
+    const key = 'lo_claudemd_uses';
+    const today = new Date().toISOString().split('T')[0];
+    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
+    if (stored.date !== today) {
+      localStorage.setItem(key, JSON.stringify({ count: 1, date: today }));
+    } else {
+      localStorage.setItem(key, JSON.stringify({ count: stored.count + 1, date: today }));
+    }
+    if (stored.count + 1 >= 5) setLimitReached(true);
+  }
 
   function handleTemplateChange(key) {
     setTemplate(key);
@@ -251,6 +272,9 @@ export default function ClaudeMdGenerator() {
   }, []);
 
   function generate() {
+    const limit = checkRateLimit();
+    if (!limit.allowed) { setLimitReached(true); return; }
+    recordUse();
     const result = generateOutput(config, format);
     setOutput(result);
     setGenerated(true);
@@ -406,9 +430,18 @@ export default function ClaudeMdGenerator() {
                     value={config.context} onChange={e => handleChange('context', e.target.value)} />
                 </div>
 
-                <button onClick={generate} className="tool-generate-btn" type="button">
-                  Generate {activeFormat?.label || 'CLAUDE.md'}
-                </button>
+                {limitReached ? (
+                  <div className="tool-limit-msg">
+                    <p>You've used your 5 free generations today.</p>
+                    <Link href="/pricing/" className="tool-generate-btn" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>
+                      Unlock Unlimited — 65% Off Annual
+                    </Link>
+                  </div>
+                ) : (
+                  <button onClick={generate} className="tool-generate-btn" type="button">
+                    Generate {activeFormat?.label || 'CLAUDE.md'}
+                  </button>
+                )}
               </div>
 
               {/* RIGHT: Live Output */}

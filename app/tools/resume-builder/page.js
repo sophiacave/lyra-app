@@ -57,7 +57,29 @@ function renderResume(data) {
 export default function ResumeBuilder() {
   const [data, setData] = useState(EMPTY_RESUME);
   const [generated, setGenerated] = useState(false);
+  const [limitReached, setLimitReached] = useState(false);
   const previewRef = useRef(null);
+
+  // Rate limit: 3 resumes per day per browser
+  function checkRateLimit() {
+    const key = 'lo_resume_uses';
+    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
+    const today = new Date().toISOString().split('T')[0];
+    if (stored.date !== today) return { allowed: true, remaining: 3 };
+    return { allowed: stored.count < 3, remaining: Math.max(0, 3 - stored.count) };
+  }
+
+  function recordUse() {
+    const key = 'lo_resume_uses';
+    const today = new Date().toISOString().split('T')[0];
+    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
+    if (stored.date !== today) {
+      localStorage.setItem(key, JSON.stringify({ count: 1, date: today }));
+    } else {
+      localStorage.setItem(key, JSON.stringify({ count: stored.count + 1, date: today }));
+    }
+    if (stored.count + 1 >= 3) setLimitReached(true);
+  }
 
   function update(field, value) {
     setData(prev => ({ ...prev, [field]: value }));
@@ -94,6 +116,12 @@ export default function ResumeBuilder() {
   }
 
   function generate() {
+    const limit = checkRateLimit();
+    if (!limit.allowed) {
+      setLimitReached(true);
+      return;
+    }
+    recordUse();
     setGenerated(true);
   }
 
@@ -216,9 +244,18 @@ export default function ResumeBuilder() {
                   <input type="text" className="tool-input" placeholder="AWS Solutions Architect, PMP..." value={data.certifications} onChange={e => update('certifications', e.target.value)} />
                 </div>
 
-                <button onClick={generate} className="tool-generate-btn" type="button">
-                  Generate Resume
-                </button>
+                {limitReached ? (
+                  <div className="tool-limit-msg">
+                    <p>You've used your 3 free resumes today.</p>
+                    <Link href="/pricing/" className="tool-generate-btn" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>
+                      Unlock Unlimited — 65% Off Annual
+                    </Link>
+                  </div>
+                ) : (
+                  <button onClick={generate} className="tool-generate-btn" type="button">
+                    Generate Resume {(() => { const l = checkRateLimit(); return l.remaining < 3 ? `(${l.remaining} left today)` : ''; })()}
+                  </button>
+                )}
               </div>
 
               {/* RIGHT: Preview */}

@@ -8825,3 +8825,7 @@ select:focus-visible {
 .tool-group { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-3); margin-bottom: var(--space-3); }
 .tool-group .tool-field { margin-bottom: var(--space-2); }
 .tool-group .tool-row-3 { margin-bottom: var(--space-2); }
+
+/* Tool Rate Limit */
+.tool-limit-msg { text-align: center; padding: var(--space-4); background: rgba(192,132,252,0.08); border: 1px solid rgba(192,132,252,0.2); border-radius: var(--radius-md); }
+.tool-limit-msg p { color: var(--text-secondary); margin-bottom: var(--space-3); font-size: var(--font-sm); }
