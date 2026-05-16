@@ -23,6 +23,8 @@ export default function sitemap() {
     { url: `${baseUrl}/resources/student-loan-rights-checklist/`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/calculator/`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/impact/`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/research/`, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/tools/claudemd-generator/`, changeFrequency: 'weekly', priority: 0.9 },
   ];
 
   // Blog posts
