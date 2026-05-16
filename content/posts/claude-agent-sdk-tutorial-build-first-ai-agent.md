@@ -253,4 +253,6 @@ The real power isn't in any single feature. It's that you can build an AI cowork
 
 ---
 
-*Want to go deeper? [Like One Academy](/academy) covers AI agent architecture, MCP integration, and building production AI systems — all free.*
+**Skip the boilerplate:** Use our **[AI Agent Blueprint Builder](/tools/agent-builder/)** to generate a complete agent codebase — select your capabilities, model, and framework, then export production-ready code. Pro members only.
+
+*Want to go deeper? [Like One Academy](/academy) covers AI agent architecture, MCP integration, and building production AI systems — start free.*

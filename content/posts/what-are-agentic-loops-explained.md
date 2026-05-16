@@ -172,8 +172,15 @@ The shift from prompt-response to agentic loops is like the shift from static we
 
 If you're building with AI, learn this pattern. If you're buying AI tools, look for this pattern. The products that iterate, verify, and self-correct will outperform the ones that give you a single shot and hope for the best. And you don't need to be a developer — you can [build your own AI agent without code](/blog/how-to-build-ai-agent-no-code-2026/) using today's tools.
 
+## Build Your Own Agent
+
+Ready to go from theory to code? Use our **[AI Agent Blueprint Builder](/tools/agent-builder/)** — select capabilities, pick your model, and export a complete agent codebase. Pro members get full access.
+
+Or start with the basics: generate your **[CLAUDE.md file](/tools/claudemd-generator/)** to configure how Claude behaves in your projects.
+
 ## What to Read Next
 
+- [Build Your First AI Agent with Claude](/blog/claude-agent-sdk-tutorial-build-first-ai-agent/) — hands-on tutorial
 - [Claude vs ChatGPT vs Gemini](/blog/chatgpt-vs-claude-vs-gemini-compared-2026) — which models work best as the brain of an agentic loop
 - [AI Automation Tools](/blog/ai-automation-tools-compared-2026) — the best agent-powered tools for real work
 - [Claude Custom Instructions](/blog/claude-custom-instructions-guide) — how to configure Claude's behavior for agentic workflows
