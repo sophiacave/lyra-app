@@ -4374,7 +4374,7 @@ select:focus-visible {
 .price-card:nth-child(4) { animation-delay: 0.45s; }
 
 .dm-serif {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-dm-serif, 'DM Serif Display'), serif;
   font-weight: 400;
 }
 

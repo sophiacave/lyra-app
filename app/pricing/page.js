@@ -1,9 +1,17 @@
 import Link from 'next/link';
+import { DM_Serif_Display } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { CTARow } from '../components/primitives';
 import { site } from '../../lib/site-config';
 import { pricing } from '../../lib/pricing';
+
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-dm-serif',
+});
 
 export const metadata = {
   title: `Pricing — Like One Academy | ${site.name}`,
@@ -95,13 +103,12 @@ const faqJsonLd = {
 export default function PricingPage() {
 
   return (
-    <div className="site-page">
+    <div className={`site-page ${dmSerif.variable}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet" />
 
       <Header variant="site" />
 
