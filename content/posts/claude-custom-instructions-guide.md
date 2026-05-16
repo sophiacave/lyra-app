@@ -168,8 +168,13 @@ After setting up a Project, ask Claude to write something you've already written
 
 The investment is 30 minutes per Project. The return is every conversation after that starting exactly where you want it — no re-explaining, no drift, no wasted prompts.
 
+## Generate Your CLAUDE.md in Seconds
+
+Don't want to write one from scratch? Use our **[free CLAUDE.md Generator](/tools/claudemd-generator/)** — pick your framework, customize the rules, and download a production-ready file. Works with Claude Code, Cursor, and GitHub Copilot.
+
 ## What to Read Next
 
+- [CLAUDE.md Generator](/tools/claudemd-generator/) — generate your project instructions file instantly
 - [How to Train AI to Write Like You](/blog/how-to-train-ai-to-write-like-you/) — build your voice profile for Claude Projects
 - [Claude vs ChatGPT for Writing](/blog/claude-vs-chatgpt-for-writing-2026/) — which AI follows instructions better
 - [Claude's Built-in vs Custom Tools](/blog/claude-built-in-tools-vs-custom-tools-explained/) — extending Claude beyond chat
