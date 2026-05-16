@@ -1580,11 +1580,12 @@ select:focus-visible {
   background: var(--liquid-bg);
   backdrop-filter: blur(var(--glass-blur-subtle));
   -webkit-backdrop-filter: blur(var(--glass-blur-subtle));
-  border: 1px solid var(--liquid-border);
-  border-radius: var(--liquid-radius-btn);
-  padding: var(--space-3) var(--space-5);
+  border: 1.5px solid var(--liquid-border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem var(--space-5);
+  min-height: 48px;
   color: var(--text-secondary);
-  font-size: var(--font-sm);
+  font-size: var(--font-base);
   font-weight: var(--font-weight-medium);
   font-family: var(--font-family);
   cursor: pointer;
@@ -1719,17 +1720,18 @@ select:focus-visible {
 }
 
 
-/* ── Liquid Input — Focus-reactive glass input ── */
+/* ── Liquid Input — Focus-reactive glass input (Apple HIG v2) ── */
 .liquid-input {
   position: relative;
-  background: rgba(14,14,18,0.5);
+  background: var(--surface-input);
   backdrop-filter: blur(var(--glass-blur-subtle));
   -webkit-backdrop-filter: blur(var(--glass-blur-subtle));
-  border: 1px solid var(--liquid-border);
+  border: 1.5px solid var(--liquid-border);
   border-radius: var(--liquid-radius-btn);
-  padding: var(--space-3) var(--space-4);
+  padding: 0.75rem var(--space-4);
+  min-height: 48px;
   color: var(--text-primary);
-  font-size: var(--font-sm);
+  font-size: var(--font-base);
   font-family: var(--font-family);
   outline: none;
   width: 100%;
@@ -1737,13 +1739,12 @@ select:focus-visible {
 }
 .liquid-input:hover {
   border-color: var(--liquid-border-hover);
+  background: var(--surface-elevated);
 }
 .liquid-input:focus {
-  border-color: var(--liquid-border-focus);
-  box-shadow:
-    0 0 0 3px rgba(192,132,252,0.1),
-    0 0 20px rgba(192,132,252,0.06);
-  background: rgba(17,17,24,0.6);
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.15), 0 1px 3px rgba(0,0,0,0.1);
+  background: var(--surface-elevated);
 }
 .liquid-input::placeholder {
   color: var(--text-quaternary);
@@ -6845,14 +6846,18 @@ select:focus-visible {
 .account-signin-title {
   font-size: var(--font-2xl);
   font-weight: var(--font-weight-black);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
   letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text-primary) 60%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .account-signin-desc {
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   margin-bottom: var(--space-8);
   font-size: var(--font-base);
-  line-height: 1.5;
+  line-height: var(--line-normal);
 }
 .account-google-primary {
   display: flex;
