@@ -255,3 +255,23 @@ textarea.lo-input { resize: vertical; min-height: 72px; }
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+
+/* ═══ ERROR PAGE ═══════════════════════════════════════════════════════ */
+.lo-error-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-20) var(--space-6);
+  text-align: center;
+}
+.lo-error-title {
+  font-size: var(--font-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-3);
+  color: var(--text-primary);
+}
+.lo-error-desc {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-normal);
+}

@@ -3,12 +3,10 @@
 export default function ToolsError({ error, reset }) {
   return (
     <div className="site-page">
-      <div className="lo-skeleton-page" style={{ textAlign: 'center' }}>
+      <div className="lo-error-page">
         <div className="lo-card lo-card--glass lo-card--pad-lg">
-          <h2 style={{ fontSize: 'var(--font-xl)', marginBottom: 'var(--space-3)' }}>
-            Something went wrong
-          </h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
+          <h2 className="lo-error-title">Something went wrong</h2>
+          <p className="lo-error-desc">
             {error?.message || 'An unexpected error occurred.'}
           </p>
           <button onClick={reset} className="lo-btn lo-btn--accent lo-btn--md">
