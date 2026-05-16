@@ -26,6 +26,7 @@ export default function sitemap() {
     { url: `${baseUrl}/research/`, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/tools/claudemd-generator/`, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/tools/resume-builder/`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/tools/agent-builder/`, changeFrequency: 'weekly', priority: 0.9 },
   ];
 
   // Blog posts
