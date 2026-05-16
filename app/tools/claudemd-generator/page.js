@@ -215,6 +215,7 @@ export default function ClaudeMdGenerator() {
   const [limitReached, setLimitReached] = useState(false);
 
   function checkRateLimit() {
+    if (typeof window === 'undefined') return { allowed: true, remaining: 5 };
     const key = 'lo_claudemd_uses';
     const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
     const today = new Date().toISOString().split('T')[0];
@@ -223,6 +224,7 @@ export default function ClaudeMdGenerator() {
   }
 
   function recordUse() {
+    if (typeof window === 'undefined') return;
     const key = 'lo_claudemd_uses';
     const today = new Date().toISOString().split('T')[0];
     const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');

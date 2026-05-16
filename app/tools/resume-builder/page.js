@@ -61,8 +61,9 @@ export default function ResumeBuilder() {
   const [limitReached, setLimitReached] = useState(false);
   const previewRef = useRef(null);
 
-  // Rate limit: 3 resumes per day per browser
+  // Rate limit: 3 resumes per day per browser (SSR-safe)
   function checkRateLimit() {
+    if (typeof window === 'undefined') return { allowed: true, remaining: 3 };
     const key = 'lo_resume_uses';
     const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
     const today = new Date().toISOString().split('T')[0];
@@ -71,6 +72,7 @@ export default function ResumeBuilder() {
   }
 
   function recordUse() {
+    if (typeof window === 'undefined') return;
     const key = 'lo_resume_uses';
     const today = new Date().toISOString().split('T')[0];
     const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
