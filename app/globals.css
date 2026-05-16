@@ -8801,3 +8801,27 @@ select:focus-visible {
   text-align: left;
 }
 .tool-detect-toggle:hover { opacity: 0.8; }
+
+/* Resume Builder Preview */
+.rv-preview-container { padding: 1.5rem; background: #fff; color: #1a1a1a; min-height: 400px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10.5pt; line-height: 1.5; }
+.rv-header { text-align: center; margin-bottom: 12px; border-bottom: 2px solid #1a1a1a; padding-bottom: 10px; }
+.rv-name { font-size: 20pt; font-weight: 700; }
+.rv-title { font-size: 10pt; color: #555; margin-top: 2px; }
+.rv-contact { font-size: 8.5pt; color: #666; margin-top: 5px; }
+.rv-section { margin-bottom: 12px; }
+.rv-section-title { font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #ccc; padding-bottom: 2px; margin-bottom: 6px; color: #333; }
+.rv-section p { font-size: 10pt; color: #333; }
+.rv-exp-item { margin-bottom: 8px; }
+.rv-exp-header { font-size: 10pt; }
+.rv-exp-dates { font-size: 8.5pt; color: #666; margin-bottom: 3px; }
+.rv-bullets { padding-left: 16px; font-size: 9.5pt; color: #333; }
+.rv-bullets li { margin-bottom: 1px; }
+.rv-edu-item { margin-bottom: 5px; }
+.rv-edu-header { font-size: 10pt; }
+.rv-edu-dates { font-size: 8.5pt; color: #666; }
+.rv-placeholder { color: var(--text-quaternary); text-align: center; padding: var(--space-10); font-style: italic; font-family: var(--font-family); font-size: var(--font-sm); }
+
+/* Tool Group (experience/education entries) */
+.tool-group { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-3); margin-bottom: var(--space-3); }
+.tool-group .tool-field { margin-bottom: var(--space-2); }
+.tool-group .tool-row-3 { margin-bottom: var(--space-2); }
