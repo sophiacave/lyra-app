@@ -29,7 +29,7 @@
   --line-normal: 1.6;     /* body text, paragraphs */
   --line-relaxed: 1.8;    /* lesson content */
 
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family: var(--font-inter, 'Inter'), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
 
   /* ── Spacing Scale (4px base, geometric) ── */
