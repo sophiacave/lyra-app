@@ -1,8 +1,16 @@
 import Link from 'next/link';
+import { DM_Serif_Display } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { CTARow } from '../components/primitives';
 import { site } from '../../lib/site-config';
+
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-dm-serif',
+});
 
 export const metadata = {
   title: `LO Consulting — Faye-powered AI builds | ${site.name}`,
@@ -171,8 +179,7 @@ const FAQS = [
 
 export default function ConsultingPage() {
   return (
-    <div className="site-page">
-      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <div className={`site-page ${dmSerif.variable}`}>
 
       <Header variant="site" />
 
