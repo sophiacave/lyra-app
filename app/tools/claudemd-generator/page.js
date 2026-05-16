@@ -5,6 +5,7 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { useRateLimit } from '../../hooks/useRateLimit';
 
 // ═══════════════════════════════════════════
 // V5 — CLAUDE.md Generator
@@ -212,29 +213,7 @@ export default function ClaudeMdGenerator() {
   const [packageJsonMode, setPackageJsonMode] = useState(false);
   const [packageJsonText, setPackageJsonText] = useState('');
   const [generated, setGenerated] = useState(false);
-  const [limitReached, setLimitReached] = useState(false);
-
-  function checkRateLimit() {
-    if (typeof window === 'undefined') return { allowed: true, remaining: 5 };
-    const key = 'lo_claudemd_uses';
-    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
-    const today = new Date().toISOString().split('T')[0];
-    if (stored.date !== today) return { allowed: true, remaining: 5 };
-    return { allowed: stored.count < 5, remaining: Math.max(0, 5 - stored.count) };
-  }
-
-  function recordUse() {
-    if (typeof window === 'undefined') return;
-    const key = 'lo_claudemd_uses';
-    const today = new Date().toISOString().split('T')[0];
-    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
-    if (stored.date !== today) {
-      localStorage.setItem(key, JSON.stringify({ count: 1, date: today }));
-    } else {
-      localStorage.setItem(key, JSON.stringify({ count: stored.count + 1, date: today }));
-    }
-    if (stored.count + 1 >= 5) setLimitReached(true);
-  }
+  const { remaining, limitReached, recordUse, checkLimit } = useRateLimit('claudemd', 5);
 
   function handleTemplateChange(key) {
     setTemplate(key);
@@ -275,8 +254,8 @@ export default function ClaudeMdGenerator() {
   }, []);
 
   function generate() {
-    const limit = checkRateLimit();
-    if (!limit.allowed) { setLimitReached(true); return; }
+    const limit = checkLimit();
+    if (!limit.allowed) return;
     recordUse();
     const result = generateOutput(config, format);
     setOutput(result);

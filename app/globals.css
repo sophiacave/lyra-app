@@ -8818,6 +8818,72 @@ select:focus-visible {
 /* Pro gate button spacing */
 .tool-pro-gate-btns { margin-top: var(--space-6); }
 
+/* ═══════════════════════════════════════
+   Tools Index — Discovery grid
+   ═══════════════════════════════════════ */
+.tools-index-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 720px;
+  margin: 0 auto;
+}
+.tools-index-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-6);
+  background: var(--liquid-bg);
+  backdrop-filter: blur(var(--liquid-blur));
+  -webkit-backdrop-filter: blur(var(--liquid-blur));
+  border: 1.5px solid var(--liquid-border);
+  border-radius: var(--liquid-radius);
+  text-decoration: none;
+  transition: all var(--liquid-transition);
+  box-shadow: var(--liquid-shadow);
+}
+.tools-index-card:hover {
+  border-color: var(--liquid-border-hover);
+  box-shadow: var(--liquid-shadow-hover);
+  transform: translateY(-3px);
+}
+.tools-index-card:active { transform: translateY(-1px) scale(0.99); }
+.tools-index-card-icon { font-size: 2rem; flex-shrink: 0; }
+.tools-index-card-content { flex: 1; min-width: 0; }
+.tools-index-card-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2); }
+.tools-index-card-title { font-size: var(--font-lg); font-weight: var(--font-weight-bold); color: var(--text-primary); }
+.tools-index-card-tag {
+  font-size: var(--font-2xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--status-success);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  background: rgba(74, 222, 128, 0.06);
+}
+.tools-index-card-tag--pro {
+  color: var(--accent-purple);
+  border-color: rgba(192, 132, 252, 0.3);
+  background: rgba(192, 132, 252, 0.06);
+}
+.tools-index-card-desc { color: var(--text-secondary); font-size: var(--font-sm); line-height: var(--line-normal); }
+.tools-index-card-arrow {
+  font-size: var(--font-xl);
+  color: var(--text-quaternary);
+  transition: transform var(--liquid-transition-fast), color var(--liquid-transition-fast);
+  flex-shrink: 0;
+}
+.tools-index-card:hover .tools-index-card-arrow {
+  transform: translateX(4px);
+  color: var(--accent-purple);
+}
+@media (max-width: 600px) {
+  .tools-index-card { padding: var(--space-4); gap: var(--space-3); }
+  .tools-index-card-icon { font-size: 1.5rem; }
+}
+
 /* Output Panel — Liquid Glass, elevated, elegant */
 .tool-output-panel {
   background: var(--liquid-bg);

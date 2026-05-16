@@ -5,6 +5,7 @@ import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { useRateLimit } from '../../hooks/useRateLimit';
 
 const EMPTY_RESUME = {
   name: '', title: '', email: '', phone: '', location: '', linkedin: '', website: '',
@@ -58,31 +59,8 @@ function renderResume(data) {
 export default function ResumeBuilder() {
   const [data, setData] = useState(EMPTY_RESUME);
   const [generated, setGenerated] = useState(false);
-  const [limitReached, setLimitReached] = useState(false);
   const previewRef = useRef(null);
-
-  // Rate limit: 3 resumes per day per browser (SSR-safe)
-  function checkRateLimit() {
-    if (typeof window === 'undefined') return { allowed: true, remaining: 3 };
-    const key = 'lo_resume_uses';
-    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
-    const today = new Date().toISOString().split('T')[0];
-    if (stored.date !== today) return { allowed: true, remaining: 3 };
-    return { allowed: stored.count < 3, remaining: Math.max(0, 3 - stored.count) };
-  }
-
-  function recordUse() {
-    if (typeof window === 'undefined') return;
-    const key = 'lo_resume_uses';
-    const today = new Date().toISOString().split('T')[0];
-    const stored = JSON.parse(localStorage.getItem(key) || '{"count":0,"date":""}');
-    if (stored.date !== today) {
-      localStorage.setItem(key, JSON.stringify({ count: 1, date: today }));
-    } else {
-      localStorage.setItem(key, JSON.stringify({ count: stored.count + 1, date: today }));
-    }
-    if (stored.count + 1 >= 3) setLimitReached(true);
-  }
+  const { remaining, limitReached, recordUse, checkLimit } = useRateLimit('resume', 3);
 
   function update(field, value) {
     setData(prev => ({ ...prev, [field]: value }));
@@ -119,11 +97,8 @@ export default function ResumeBuilder() {
   }
 
   function generate() {
-    const limit = checkRateLimit();
-    if (!limit.allowed) {
-      setLimitReached(true);
-      return;
-    }
+    const limit = checkLimit();
+    if (!limit.allowed) return;
     recordUse();
     setGenerated(true);
   }
@@ -256,7 +231,7 @@ export default function ResumeBuilder() {
                   </div>
                 ) : (
                   <button onClick={generate} className="tool-generate-btn" type="button">
-                    Generate Resume {(() => { const l = checkRateLimit(); return l.remaining < 3 ? `(${l.remaining} left today)` : ''; })()}
+                    Generate Resume {remaining < 3 ? `(${remaining} left today)` : ''}
                   </button>
                 )}
               </div>
