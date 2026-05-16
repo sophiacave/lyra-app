@@ -8843,26 +8843,13 @@ select:focus-visible {
   max-width: 720px;
   margin: 0 auto;
 }
+/* Tools index cards use Card primitive (.lo-card) + layout overrides */
 .tools-index-card {
   display: flex;
   align-items: center;
   gap: var(--space-5);
-  padding: var(--space-6) var(--space-6);
-  background: var(--liquid-bg);
-  backdrop-filter: blur(var(--liquid-blur));
-  -webkit-backdrop-filter: blur(var(--liquid-blur));
-  border: 1.5px solid var(--liquid-border);
-  border-radius: var(--liquid-radius);
-  text-decoration: none;
-  transition: all var(--liquid-transition);
-  box-shadow: var(--liquid-shadow);
+  padding: var(--space-6);
 }
-.tools-index-card:hover {
-  border-color: var(--liquid-border-hover);
-  box-shadow: var(--liquid-shadow-hover);
-  transform: translateY(-3px);
-}
-.tools-index-card:active { transform: translateY(-1px) scale(0.99); }
 .tools-index-card-icon { font-size: 2rem; flex-shrink: 0; }
 .tools-index-card-content { flex: 1; min-width: 0; }
 .tools-index-card-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2); }

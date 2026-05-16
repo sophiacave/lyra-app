@@ -1,4 +1,5 @@
 import './globals.css';
+import './components/ui/primitives.css';
 import './console.css';
 import Script from 'next/script';
 import { site, colors } from '../lib/site-config';
