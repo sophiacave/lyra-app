@@ -301,61 +301,23 @@ export default async function PostPage({ params }) {
 
       <div className="post-divider"><hr /></div>
 
-      <div className="post-layout">
-        <div className="post-layout-main">
-          <main className="post-body">
-            <div
-              className="post-content"
-              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-            />
-          </main>
+      <article className="post-reader">
+        <div
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
+      </article>
 
-          <div className="blog-subscribe-section">
-            <div className="blog-subscribe-box">
-              <p className="blog-subscribe-title">Build your own AI brain.</p>
-              <p className="blog-subscribe-desc">Free weekly tips from Sophia on AI automation, agent building, and the convergence path. No spam. Unsubscribe anytime.</p>
-              <SubscribeForm source="blog_cta" buttonText="Start Free" />
-            </div>
+      <div className="post-after">
+        <RelatedCourses tags={post.tags} />
+
+        <div className="blog-subscribe-section">
+          <div className="blog-subscribe-box">
+            <p className="blog-subscribe-title">Build your own AI brain.</p>
+            <p className="blog-subscribe-desc">Free weekly tips on AI automation, agent building, and the convergence path. No spam. Unsubscribe anytime.</p>
+            <SubscribeForm source="blog_cta" buttonText="Start Free" />
           </div>
-
-          <RelatedCourses tags={post.tags} />
         </div>
-
-        {/* Persistent Sidebar — desktop sticky, mobile inline */}
-        <aside className="post-sidebar">
-          <div className="post-sidebar-sticky">
-            {/* GoFundMe Card */}
-            <a
-              href="https://www.gofundme.com/f/trans-woman-needs-mental-health-care-not-jail"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="post-sidebar-card post-sidebar-gfm"
-            >
-              <div className="post-sidebar-card-icon">💜</div>
-              <div className="post-sidebar-card-label">GoFundMe</div>
-              <h3 className="post-sidebar-card-title">Help Sophia get mental health care</h3>
-              <p className="post-sidebar-card-desc">
-                Trans woman facing criminal charges for a mental health crisis. Funds go to legal defense &amp; treatment.
-              </p>
-              <span className="post-sidebar-card-btn post-sidebar-btn-gfm">
-                Donate on GoFundMe &rarr;
-              </span>
-            </a>
-
-            {/* Support Like One Card */}
-            <Link href="/support/" className="post-sidebar-card post-sidebar-support">
-              <div className="post-sidebar-card-icon">🤝</div>
-              <div className="post-sidebar-card-label">Like One</div>
-              <h3 className="post-sidebar-card-title">Support the mission</h3>
-              <p className="post-sidebar-card-desc">
-                1% of all revenue funds HIV research. Your donation keeps AI education accessible to everyone.
-              </p>
-              <span className="post-sidebar-card-btn post-sidebar-btn-support">
-                Support Like One &rarr;
-              </span>
-            </Link>
-          </div>
-        </aside>
       </div>
 
       <footer className="post-footer">

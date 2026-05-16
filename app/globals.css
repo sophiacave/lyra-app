@@ -5813,17 +5813,29 @@ select:focus-visible {
 }
 
 /* Post Layout — two-column with sticky sidebar on desktop */
+/* ── Apple HIG Reader Layout (replaced sidebar layout) ── */
+.post-reader {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+.post-after {
+  max-width: 720px;
+  margin: var(--space-12) auto 0;
+  padding: 0 var(--space-6);
+}
+/* Legacy layout kept for backwards compat */
 .post-layout {
   display: flex;
   gap: var(--space-8);
-  max-width: 1140px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 var(--space-6);
 }
 .post-layout-main {
   flex: 1;
   min-width: 0;
-  max-width: var(--content-max);
+  max-width: 720px;
 }
 
 /* ── Post Sidebar ── */
@@ -5935,9 +5947,10 @@ select:focus-visible {
   padding: 0 0 var(--space-20);
 }
 .post-content {
-  font-size: 1.0625rem;
-  line-height: var(--line-relaxed);
+  font-size: 1.125rem;
+  line-height: 1.75;
   color: var(--text-secondary);
+  letter-spacing: -0.01em;
 }
 .post-content > h1:first-child {
   display: none;
@@ -5959,11 +5972,11 @@ select:focus-visible {
   margin-bottom: var(--space-5);
 }
 .post-content strong {
-  color: var(--accent-blue);
+  color: var(--text-primary);
   font-weight: var(--font-weight-semibold);
 }
 .post-content em {
-  color: var(--accent-purple);
+  font-style: italic;
 }
 .post-content a {
   color: var(--accent-blue);
