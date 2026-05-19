@@ -1,0 +1,1 @@
+/Users/sophiacave/lyra-app/scan.sh

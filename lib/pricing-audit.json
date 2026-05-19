@@ -1,0 +1,108 @@
+{
+  "_schema": {
+    "description": "Pricing audit fixture. Each record defines a billable SKU. Used as fixture in tests and schema reference for pricing validators.",
+    "requiredFields": ["sku", "price", "currency", "label"],
+    "optionalFields": ["billingInterval", "stripeProductId", "stripePriceId", "active", "notes"]
+  },
+  "records": [
+    {
+      "sku": "pro_monthly",
+      "price": 49,
+      "currency": "USD",
+      "label": "Like One Pro — Monthly",
+      "billingInterval": "month",
+      "stripePriceId": "price_1TEOqs2L9FGg4gn2uOIrrmRW",
+      "active": true,
+      "notes": "Core subscription. Token: {{price:pro}}"
+    },
+    {
+      "sku": "pro_annual",
+      "price": 390,
+      "currency": "USD",
+      "label": "Like One Pro — Annual",
+      "billingInterval": "year",
+      "stripePriceId": "price_1TEOr92L9FGg4gn2nh0q9tfl",
+      "active": true,
+      "notes": "33% savings vs monthly. Token: {{price:annual}}"
+    },
+    {
+      "sku": "consulting_starter",
+      "price": 500,
+      "currency": "USD",
+      "label": "Consulting — Starter",
+      "billingInterval": "month",
+      "active": true,
+      "notes": "Entry-level consulting retainer"
+    },
+    {
+      "sku": "consulting_retainer",
+      "price": 5000,
+      "currency": "USD",
+      "label": "Consulting — Full Retainer",
+      "billingInterval": "month",
+      "active": true,
+      "notes": "High-touch monthly retainer"
+    },
+    {
+      "sku": "donation_10",
+      "price": 10,
+      "currency": "USD",
+      "label": "Donation — $10",
+      "billingInterval": "one_time",
+      "active": true
+    },
+    {
+      "sku": "donation_25",
+      "price": 25,
+      "currency": "USD",
+      "label": "Donation — $25",
+      "billingInterval": "one_time",
+      "active": true
+    },
+    {
+      "sku": "donation_50",
+      "price": 50,
+      "currency": "USD",
+      "label": "Donation — $50",
+      "billingInterval": "one_time",
+      "active": true
+    },
+    {
+      "sku": "donation_100",
+      "price": 100,
+      "currency": "USD",
+      "label": "Donation — $100",
+      "billingInterval": "one_time",
+      "active": true
+    },
+    {
+      "sku": "donation_250",
+      "price": 250,
+      "currency": "USD",
+      "label": "Donation — $250",
+      "billingInterval": "one_time",
+      "active": true
+    },
+    {
+      "sku": "donation_500",
+      "price": 500,
+      "currency": "USD",
+      "label": "Donation — $500",
+      "billingInterval": "one_time",
+      "active": true
+    },
+    {
+      "sku": "donation_1000",
+      "price": 1000,
+      "currency": "USD",
+      "label": "Donation — $1,000",
+      "billingInterval": "one_time",
+      "active": true
+    }
+  ],
+  "auditMeta": {
+    "generatedAt": "2026-05-07T00:00:00.000Z",
+    "sourceOfTruth": "lib/pricing.js",
+    "purpose": "fixture + schema reference for pricing validators and tests"
+  }
+}

@@ -1,0 +1,174 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`cors() — allowedHeaders > joins an allowedHeaders array with ", " 1`] = `
+{
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With, X-Trace-Id",
+  "Access-Control-Allow-Origin": "*",
+}
+`;
+
+exports[`cors() — allowedHeaders > passes through an allowedHeaders string verbatim 1`] = `
+{
+  "Access-Control-Allow-Headers": "Content-Type,Authorization",
+  "Access-Control-Allow-Origin": "*",
+}
+`;
+
+exports[`cors() — array origin > handles a single-element array origin 1`] = `
+{
+  "Access-Control-Allow-Origin": "https://only.example.com",
+}
+`;
+
+exports[`cors() — array origin > joins an array origin with ", " on a preflight OPTIONS 1`] = `
+{
+  "Access-Control-Allow-Origin": "https://app.example.com, https://admin.example.com",
+}
+`;
+
+exports[`cors() — array origin > joins an array origin with ", " on a simple GET 1`] = `
+{
+  "Access-Control-Allow-Origin": "https://app.example.com, https://admin.example.com, https://staging.example.com",
+}
+`;
+
+exports[`cors() — boolean false origin > emits NO Access-Control-Allow-Origin when origin is false (preflight) 1`] = `{}`;
+
+exports[`cors() — boolean false origin > emits NO Access-Control-Allow-Origin when origin is false (simple GET) 1`] = `{}`;
+
+exports[`cors() — boolean false origin > still emits other CORS headers when origin is false but methods are set 1`] = `
+{
+  "Access-Control-Allow-Methods": "GET, POST",
+}
+`;
+
+exports[`cors() — credentials > emits Access-Control-Allow-Credentials: true when credentials is true 1`] = `
+{
+  "Access-Control-Allow-Credentials": "true",
+  "Access-Control-Allow-Origin": "https://app.example.com",
+}
+`;
+
+exports[`cors() — credentials > emits NO Access-Control-Allow-Credentials when credentials is false 1`] = `
+{
+  "Access-Control-Allow-Origin": "https://app.example.com",
+}
+`;
+
+exports[`cors() — credentials > emits NO Access-Control-Allow-Credentials when credentials is omitted 1`] = `
+{
+  "Access-Control-Allow-Origin": "https://app.example.com",
+}
+`;
+
+exports[`cors() — empty options > emits NO headers on a preflight when options are empty 1`] = `{}`;
+
+exports[`cors() — empty options > emits NO headers when origin is undefined and nothing else is set 1`] = `{}`;
+
+exports[`cors() — exposedHeaders > joins an exposedHeaders array with ", " 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Expose-Headers": "X-Total-Count, X-Page, X-Trace-Id",
+}
+`;
+
+exports[`cors() — exposedHeaders > passes through an exposedHeaders string verbatim 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Expose-Headers": "X-Total-Count,X-Page",
+}
+`;
+
+exports[`cors() — full combo > emits every header when every option is provided (preflight OPTIONS) 1`] = `
+{
+  "Access-Control-Allow-Credentials": "true",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Trace-Id",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+  "Access-Control-Allow-Origin": "https://app.example.com, https://admin.example.com",
+  "Access-Control-Expose-Headers": "X-Total-Count, X-Page",
+  "Access-Control-Max-Age": "3600",
+}
+`;
+
+exports[`cors() — full combo > emits every header when every option is provided (simple GET) 1`] = `
+{
+  "Access-Control-Allow-Credentials": "true",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Trace-Id",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+  "Access-Control-Allow-Origin": "https://app.example.com, https://admin.example.com",
+  "Access-Control-Expose-Headers": "X-Total-Count, X-Page",
+  "Access-Control-Max-Age": "3600",
+}
+`;
+
+exports[`cors() — maxAge > emits Access-Control-Max-Age as a stringified number 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Max-Age": "600",
+}
+`;
+
+exports[`cors() — maxAge > emits Access-Control-Max-Age: 0 when maxAge is 0 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Max-Age": "0",
+}
+`;
+
+exports[`cors() — maxAge > emits a large maxAge value verbatim 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Max-Age": "86400",
+}
+`;
+
+exports[`cors() — methods > handles a single-element methods array 1`] = `
+{
+  "Access-Control-Allow-Methods": "GET",
+  "Access-Control-Allow-Origin": "*",
+}
+`;
+
+exports[`cors() — methods > joins a methods array with ", " 1`] = `
+{
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+  "Access-Control-Allow-Origin": "*",
+}
+`;
+
+exports[`cors() — methods > passes through a methods string verbatim 1`] = `
+{
+  "Access-Control-Allow-Methods": "GET,POST,PUT",
+  "Access-Control-Allow-Origin": "*",
+}
+`;
+
+exports[`cors() — string origin > echoes a single string origin on a preflight OPTIONS 1`] = `
+{
+  "Access-Control-Allow-Origin": "https://app.example.com",
+}
+`;
+
+exports[`cors() — string origin > echoes a single string origin on a simple GET 1`] = `
+{
+  "Access-Control-Allow-Origin": "https://app.example.com",
+}
+`;
+
+exports[`cors() — wildcard origin > emits Access-Control-Allow-Origin: * for origin "*" on a preflight OPTIONS 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+}
+`;
+
+exports[`cors() — wildcard origin > emits Access-Control-Allow-Origin: * for origin "*" on a simple GET 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+}
+`;
+
+exports[`cors() — wildcard origin > emits Access-Control-Allow-Origin: * for origin: true on a simple GET 1`] = `
+{
+  "Access-Control-Allow-Origin": "*",
+}
+`;
