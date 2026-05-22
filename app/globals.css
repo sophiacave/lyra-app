@@ -870,6 +870,7 @@ select:focus-visible {
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
+  min-height: 44px;
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur-subtle));
   -webkit-backdrop-filter: blur(var(--glass-blur-subtle));
