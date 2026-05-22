@@ -1,5 +1,5 @@
 ---
-title: "Claude Built-in Tools vs Custom Tools: Complete Comparison (2026)"
+title: "Differences Between Claude's Built-in Tools and Custom Tools (2026)"
 date: 2026-04-19
 updated: 2026-05-02
 author: Sophia Cave

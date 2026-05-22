@@ -15,8 +15,8 @@ const inter = Inter({
 
 
 
-const fullTitle = `Like One — Free AI Academy | 52 Courses, 520+ Lessons`;
-const shortDesc = 'Learn to build autonomous AI agents with 52 free courses and 520+ hands-on lessons. From fundamentals to production systems. Built by Sophia Cave. Start free today.';
+const fullTitle = `Like One | Free AI Academy — 52 Courses, 520+ Lessons`;
+const shortDesc = 'Like One is the free AI academy for builders. 52 courses, 520+ hands-on lessons on autonomous agents, automation, and AI memory. Built by Sophia Cave. Start free today.';
 
 export const viewport = {
   width: 'device-width',
