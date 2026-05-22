@@ -7,14 +7,14 @@ excerpt: "Claude can analyze datasets, write SQL, build dashboards, and find pat
 tags: ["Claude", "Data Analytics", "AI Tools", "Prompt Engineering", "Business Intelligence"]
 published: true
 faq:
-  - question: "Can Claude AI analyze CSV files and spreadsheets?"
-    answer: "Yes. Claude can read CSV data pasted directly into the chat, analyze it in Projects with uploaded files, or process data through the API. It handles cleaning, transformation, statistical analysis, and visualization code generation."
-  - question: "Is Claude better than ChatGPT for data analytics?"
-    answer: "Claude excels at structured reasoning, long-context analysis (up to 1M tokens), and generating clean, well-documented code. For large datasets, complex SQL, and nuanced statistical interpretation, Claude consistently produces more reliable results."
-  - question: "What size datasets can Claude handle?"
-    answer: "Claude's 200K standard context window handles roughly 150,000 rows of simple CSV data. With the 1M token extended context on Opus, you can analyze significantly larger datasets. For truly massive data, use Claude to write the analysis scripts that run on your infrastructure."
-  - question: "Can Claude write SQL queries?"
-    answer: "Yes — Claude writes production-quality SQL across PostgreSQL, MySQL, SQLite, BigQuery, and Snowflake. It can optimize queries, explain execution plans, design schemas, and debug performance issues."
+  - q: "Can Claude AI analyze CSV files and spreadsheets?"
+    a: "Yes. Claude can read CSV data pasted directly into the chat, analyze it in Projects with uploaded files, or process data through the API. It handles cleaning, transformation, statistical analysis, and visualization code generation."
+  - q: "Is Claude better than ChatGPT for data analytics?"
+    a: "Claude excels at structured reasoning, long-context analysis (up to 1M tokens), and generating clean, well-documented code. For large datasets, complex SQL, and nuanced statistical interpretation, Claude consistently produces more reliable results."
+  - q: "What size datasets can Claude handle?"
+    a: "Claude's 200K standard context window handles roughly 150,000 rows of simple CSV data. With the 1M token extended context on Opus, you can analyze significantly larger datasets. For truly massive data, use Claude to write the analysis scripts that run on your infrastructure."
+  - q: "Can Claude write SQL queries?"
+    a: "Yes — Claude writes production-quality SQL across PostgreSQL, MySQL, SQLite, BigQuery, and Snowflake. It can optimize queries, explain execution plans, design schemas, and debug performance issues."
 ---
 
 # How to Use Claude AI for Data Analytics
