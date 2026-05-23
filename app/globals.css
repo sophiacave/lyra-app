@@ -3984,7 +3984,7 @@ select:focus-visible {
   color: var(--text-primary);
 }
 .pricing-card-price.accent {
-  color: var(--accent-warm);
+  color: var(--accent-purple);
 }
 .pricing-card-price .was {
   text-decoration: line-through;
@@ -4145,6 +4145,11 @@ select:focus-visible {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-6);
+  transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.site-faq-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
 }
 .site-faq-question {
   font-size: var(--font-base);
@@ -5670,42 +5675,6 @@ select:focus-visible {
 }
 
 
-/* ── 10. Blog Top Nav (.blog-topnav) — Token-based ── */
-
-.blog-topnav {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-sticky);
-  background: var(--surface-base);
-  border-bottom: 1px solid var(--border-subtle);
-  backdrop-filter: blur(var(--glass-blur));
-}
-.blog-topnav-inner {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: var(--space-4) var(--space-6);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.blog-topnav-brand {
-  font-size: var(--font-lg);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
-  text-decoration: none;
-}
-.blog-topnav-links a {
-  font-size: var(--font-sm);
-  color: var(--text-secondary);
-  text-decoration: none;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  transition: color var(--transition-fast), background var(--transition-fast);
-}
-.blog-topnav-links a:hover {
-  color: var(--text-primary);
-  background: var(--surface-elevated);
-}
 
 
 /* ── Phase 4b Responsive — Page-specific breakpoints ── */
@@ -7550,8 +7519,8 @@ select:focus-visible {
 .site-founding-badge {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #fb923c;
-  background: rgba(251,146,60,0.12);
+  color: var(--accent-purple);
+  background: rgba(192,132,252,0.12);
   padding: 3px 10px;
   border-radius: 20px;
   white-space: nowrap;
@@ -7569,7 +7538,7 @@ select:focus-visible {
 .site-founding-cta {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #fb923c;
+  color: var(--accent-purple);
   text-decoration: none;
   white-space: nowrap;
   transition: opacity 0.15s;

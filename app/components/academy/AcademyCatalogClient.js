@@ -68,8 +68,8 @@ export default function AcademyCatalogClient({ tiers, allCourses, totalLessons }
 
               {completedLessons > 0 && (
                 <div className="academy-v2-stat academy-v2-stat--accent">
-                  <div className="academy-v2-stat__value">{progressPercent}%</div>
-                  <div className="academy-v2-stat__label">{completedLessons} done</div>
+                  <div className="academy-v2-stat__value">{completedLessons}</div>
+                  <div className="academy-v2-stat__label">Completed</div>
                 </div>
               )}
 
