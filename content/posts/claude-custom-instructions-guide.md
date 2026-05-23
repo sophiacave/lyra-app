@@ -1,12 +1,14 @@
 ---
-title: "Claude Custom Instructions: 5-Minute Setup With Projects & System Prompts (2026)"
+title: "Best Custom Instructions for Claude AI: Complete Setup Guide (2026)"
 date: 2026-04-19
-updated: 2026-05-15
-author: Sophia Cave
-description: "Step-by-step guide to Claude custom instructions using Projects, system prompts, and style guides. Stop re-explaining yourself — make Claude remember your preferences every session. Includes FAQ."
-excerpt: "Step-by-step guide to Claude custom instructions using Projects, system prompts, and style guides. Stop re-explaining yourself — make Claude remember your preferences every session. Includes FAQ."
-tags: [claude, custom-instructions, claude-projects, system-prompts, prompt-engineering, ai-tools, 2026]
+updated: 2026-05-22
+author: Sophie Cave
+description: "The best custom instructions for Claude AI — ready-to-use templates for writing, coding, research, and business. Set up Claude Projects and system prompts in 5 minutes. Copy-paste examples included."
+excerpt: "The best custom instructions for Claude AI — ready-to-use templates for writing, coding, research, and business. Set up Claude Projects and system prompts in 5 minutes. Copy-paste examples included."
+tags: [claude, custom-instructions, claude-projects, system-prompts, prompt-engineering, ai-tools, best-practices, 2026]
 faq:
+  - q: "What are the best custom instructions for Claude AI?"
+    a: "The best custom instructions for Claude AI are specific, structured, and task-focused. Include your role, audience, response format, banned words, and concrete examples of your preferred output. Create separate Claude Projects for different workflows — coding, writing, research, email — each with tailored instructions. The most effective instructions are 200-500 words long and include anti-patterns (what NOT to do) alongside positive rules."
   - q: "Does Claude have custom instructions like ChatGPT?"
     a: "Yes, but Claude implements them differently. Instead of a single Custom Instructions box, Claude uses Projects — workspaces where you set a system prompt, upload reference files, and every conversation in that Project inherits your instructions. This is more powerful than ChatGPT's approach because you can have different instruction sets for different workflows."
   - q: "How do I set custom instructions in Claude?"
@@ -21,7 +23,7 @@ faq:
     a: "Claude Pro and Team plans let you create multiple Projects with no practical limit for normal use. Each Project can have its own system prompt and uploaded files. Power users typically create 5-10 Projects covering their main workflows — writing, coding, research, email, analysis — each with tailored instructions."
 ---
 
-# Claude Custom Instructions: How to Set Up Projects, System Prompts, and Persistent Context
+# Best Custom Instructions for Claude AI: Projects, System Prompts, and Persistent Context
 
 If you're using Claude without custom instructions, you're starting every conversation from zero. You're re-explaining your role, your preferences, your formatting rules, your tone. Every single time.
 
