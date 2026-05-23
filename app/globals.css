@@ -3946,13 +3946,13 @@ select:focus-visible {
   transition: transform var(--liquid-transition), box-shadow var(--liquid-transition), border-color var(--liquid-transition);
 }
 .pricing-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--liquid-shadow-hover);
 }
 .pricing-card.featured {
-  background: linear-gradient(180deg, rgba(251,146,60,0.06) 0%, var(--liquid-bg) 40%);
-  border: 2px solid var(--accent-warm);
-  box-shadow: 0 8px 32px rgba(251,146,60,0.12), var(--liquid-shadow);
+  background: linear-gradient(180deg, rgba(192,132,252,0.06) 0%, var(--liquid-bg) 40%);
+  border: 2px solid rgba(192,132,252,0.4);
+  box-shadow: 0 8px 32px rgba(192,132,252,0.08), var(--liquid-shadow);
 }
 .pricing-card.featured::before {
   content: '';
@@ -3961,7 +3961,7 @@ select:focus-visible {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-warm), var(--accent-pink));
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
   border-radius: var(--liquid-radius) var(--liquid-radius) 0 0;
 }
 .pricing-card-label {
@@ -4056,12 +4056,13 @@ select:focus-visible {
   cursor: pointer;
 }
 .pricing-card-btn.primary {
-  background: var(--accent-warm);
-  color: var(--surface-base);
+  background: var(--accent-purple);
+  color: #000;
   border: none;
 }
 .pricing-card-btn.primary:hover {
-  box-shadow: 0 8px 24px rgba(251,146,60,0.25);
+  background: #d4a5ff;
+  box-shadow: 0 8px 24px rgba(192,132,252,0.25);
 }
 .pricing-card-btn.secondary {
   background: transparent;
