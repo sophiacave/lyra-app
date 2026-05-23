@@ -22,8 +22,8 @@ export default function TermsPage() {
 
       <h2 className="legal-h2">Subscriptions &amp; Payments</h2>
       <ul className="legal-ul">
-        <li className="legal-li"><strong>Pro Monthly:</strong> $49/month, billed monthly via Stripe</li>
-        <li className="legal-li"><strong>Pro Annual:</strong> $390/year, billed annually via Stripe</li>
+        <li className="legal-li"><strong>Pro Monthly:</strong> $19/month, billed monthly via Stripe</li>
+        <li className="legal-li"><strong>Pro Annual:</strong> $149/year, billed annually via Stripe</li>
         <li className="legal-li">Subscriptions auto-renew unless you cancel</li>
         <li className="legal-li">You can cancel anytime from your Stripe billing portal</li>
       </ul>

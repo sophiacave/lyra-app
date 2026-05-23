@@ -339,7 +339,7 @@ export default function CalculatorPage() {
           </p>
           <div className="site-cta-row">
             <Link href="/products/replace-40-hours-busywork" className="site-btn-primary">
-              Replace 40 Hours of Busywork — $49
+              Replace 40 Hours of Busywork — $19
             </Link>
             <Link href="/products/ai-automation-toolkit" className="site-btn-secondary">
               AI Automation Toolkit — $149

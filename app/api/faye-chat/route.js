@@ -12,8 +12,8 @@ Like One teaches people to build AI systems that think like them, remember every
 
 PRICING:
 - FREE: First 3 lessons of every course, all blog posts, weekly email tips, community forum
-- PRO: $49/mo — all 520+ lessons, 52 courses, downloads, certificates
-- ANNUAL: $390/yr ($32.50/mo) — everything in Pro, best value, save 33%
+- PRO: $19/mo — all 520+ lessons, 52 courses, downloads, certificates
+- ANNUAL: $149/yr ($12.42/mo) — everything in Pro, best value, 4 months free
 - CONSULTING: from $500/mo with Sophia directly (includes 3 months Academy Pro free)
 
 KEY PAGES:

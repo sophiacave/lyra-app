@@ -173,7 +173,7 @@ const FAQS = [
   },
   {
     q: "I can’t afford this. What now?",
-    a: "The 52-course Academy is $49/mo and the first 3 lessons of every course are free. Community Access is honor-system and reviewed personally. Consulting is for when you’re ready to ship something real and budget exists.",
+    a: "The 52-course Academy is $19/mo and the first 3 lessons of every course are free. Community Access is honor-system and reviewed personally. Consulting is for when you’re ready to ship something real and budget exists.",
   },
   {
     q: "Referrals?",
@@ -326,7 +326,7 @@ export default function ConsultingPage() {
           secondaryTarget="_blank"
         />
         <p style={{ marginTop: '1.5rem', fontSize: '0.85rem', opacity: 0.7 }}>
-          Or grab the <Link href="/academy/" style={{ textDecoration: 'underline' }}>$49/mo Academy</Link> if you&rsquo;d rather build it yourself.
+          Or grab the <Link href="/academy/" style={{ textDecoration: 'underline' }}>$19/mo Academy</Link> if you&rsquo;d rather build it yourself.
         </p>
       </section>
 
