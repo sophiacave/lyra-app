@@ -2,7 +2,7 @@
 title: "Stop Coding AI Agents From Scratch. Start With a Blueprint."
 slug: "build-ai-agent-blueprint-not-code-2026"
 date: "2026-05-16"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "The Agent Builder generates a complete architecture blueprint for your AI agent — model selection, capabilities, framework choice, and boilerplate code. Free."
 tags: ["AI Agents", "Developer Tools", "Claude Code", "AI Architecture"]
 image: "/blog/agent-builder.webp"

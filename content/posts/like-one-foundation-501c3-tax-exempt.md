@@ -1,7 +1,7 @@
 ---
 title: "Like One Foundation Is Now a 501(c)(3) Tax-Exempt Nonprofit"
 date: 2026-04-28
-author: "Sophia Cave"
+author: "Sophie Cave"
 description: "Like One Foundation has received IRS 501(c)(3) tax-exempt status. All donations are now tax-deductible. Here's what that means and why it matters."
 excerpt: "Like One Foundation has received IRS 501(c)(3) tax-exempt status. All donations are now tax-deductible. Here's what that means and why it matters."
 tags:

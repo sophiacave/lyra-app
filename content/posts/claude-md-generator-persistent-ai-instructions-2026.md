@@ -2,7 +2,7 @@
 title: "Your AI Doesn't Know You. Fix That in 60 Seconds."
 slug: "claude-md-generator-persistent-ai-instructions-2026"
 date: "2026-05-16"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "The CLAUDE.md Generator creates a custom instruction file that makes Claude Code actually useful. Free. No signup required."
 tags: ["AI Tools", "Developer Tools", "AI Productivity", "Claude Code"]
 image: "/blog/claudemd-generator.webp"

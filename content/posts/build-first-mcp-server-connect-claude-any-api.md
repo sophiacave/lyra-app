@@ -1,7 +1,7 @@
 ---
 title: "Build Your First MCP Server: Connect Claude to Any API (Step-by-Step)"
 date: "2026-04-13"
-author: "Sophia Cave"
+author: "Sophie Cave"
 description: "MCP (Model Context Protocol) lets Claude talk directly to your APIs. Build your first MCP server from scratch in 45 minutes — with working TypeScript code you can copy."
 excerpt: "MCP (Model Context Protocol) lets Claude talk directly to your APIs. Build your first MCP server from scratch in 45 minutes — with working TypeScript code you can copy."
 slug: "build-first-mcp-server-connect-claude-any-api"

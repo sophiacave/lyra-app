@@ -2,7 +2,7 @@
 title: "Claude vs ChatGPT for Business Automation: Which AI Should You Use in 2026?"
 date: "2026-03-24"
 excerpt: "An honest comparison of Claude and ChatGPT for real business automation. Which one actually builds systems? A builder perspective."
-author: "Sophia Cave"
+author: "Sophie Cave"
 tags: ["Claude", "ChatGPT", "AI comparison", "business automation", "2026"]
 ---
 # Claude vs ChatGPT for Business Automation: Which AI Should You Use in 2026?

@@ -2,7 +2,7 @@
 title: "The $9 Guide That Replaces Your First Month of AI Confusion"
 date: "2026-03-24"
 excerpt: "Stop watching YouTube tutorials. Stop reading Twitter threads. Here is the exact 5-tool, 3-automation stack that actually works — for less than lunch."
-author: "Sophia Cave"
+author: "Sophie Cave"
 tags: ["AI", "quick start", "beginner", "automation", "tools"]
 ---
 # The $9 Guide That Replaces Your First Month of AI Confusion

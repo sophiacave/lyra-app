@@ -2,7 +2,7 @@
 title: "How to Build a Personal AI Assistant That Actually Remembers You"
 slug: "build-personal-ai-assistant-with-memory-2026"
 date: "2026-05-08"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "Most AI assistants forget you the moment a conversation ends. Here's how to build one with persistent memory that knows your preferences, your projects, and your patterns — no PhD required."
 tags: ["AI Agents", "AI Tools", "Productivity", "Tutorial"]
 image: "/blog/ai-assistant-memory.webp"

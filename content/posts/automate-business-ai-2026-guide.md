@@ -2,7 +2,7 @@
 title: "How to Automate Your Business with AI in 2026 (Step-by-Step Guide)"
 date: "2026-03-24"
 excerpt: "A practical step-by-step guide to automating your business with AI in 2026. From email to revenue tracking — real systems, not theory."
-author: "Sophia Cave"
+author: "Sophie Cave"
 tags: ["AI automation", "business", "guide", "2026", "Make.com", "Supabase"]
 ---
 # How to Automate Your Business with AI in 2026 (Step-by-Step Guide)

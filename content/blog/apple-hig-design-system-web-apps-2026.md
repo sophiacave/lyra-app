@@ -2,7 +2,7 @@
 title: "Stealing Apple's Design Language for Your Web App (Without the Dogma)"
 slug: "apple-hig-design-system-web-apps-2026"
 date: "2026-05-19"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "Apple's Human Interface Guidelines are the best design system ever written. Most web developers ignore them. Here's how we extracted the principles that matter — glass effects, spatial hierarchy, motion — and built a production component library in plain CSS."
 tags: ["Design Systems", "Apple HIG", "CSS", "Frontend", "Web Performance", "UI Components"]
 image: "/blog/apple-hig-web.webp"

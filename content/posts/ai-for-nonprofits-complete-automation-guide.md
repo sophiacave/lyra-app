@@ -2,7 +2,7 @@
 title: "AI for Nonprofits: The Complete Automation Guide (Save 20+ Hours/Week)"
 description: "How nonprofits can use AI to automate grant writing, donor management, reporting, and operations. Real workflows from a 501(c)(3) that was built by AI in one day."
 date: "2026-05-14"
-author: "Sophia Cave"
+author: "Sophie Cave"
 category: "AI Strategy"
 tags: ["nonprofits", "ai-automation", "grant-writing", "donor-management", "501c3", "operations", "ai-strategy"]
 image: "/images/blog/ai-nonprofits.jpg"

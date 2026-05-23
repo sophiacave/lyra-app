@@ -1,7 +1,7 @@
 ---
 title: "Your Legal Rights as a Student Loan Borrower in the DOGE Era: A Complete Guide"
 description: "40M+ student loan borrowers had their data accessed by DOGE. Know your rights, active lawsuits to watch, and how to file complaints. Complete 2026 guide."
-author: "Sophia Cave"
+author: "Sophie Cave"
 date: "2026-04-08"
 tags: ["student-loans", "borrower-rights", "DOGE", "FERPA", "legal-guide", "privacy", "class-action", "education-policy"]
 category: "Legal & Policy"

@@ -2,7 +2,7 @@
 title: "How to Build Apple's Liquid Glass UI with Pure CSS (No Framework Required)"
 description: "Step-by-step tutorial for building Apple-inspired frosted glass, refraction, and luminance effects using CSS custom properties and SVG filters. Real code from our production redesign."
 date: "2026-05-12"
-author: "Sophia Cave"
+author: "Sophie Cave"
 category: "Technical"
 tags: ["css", "ui-design", "liquid-glass", "apple-design", "frontend", "tutorial", "web-development"]
 image: "/images/blog/liquid-glass-ui.jpg"

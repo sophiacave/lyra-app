@@ -2,7 +2,7 @@
 title: "AI Is Finding Lost Cities — And the $1.7B Industry That Hasn't Noticed"
 slug: "ai-archaeology-drone-lidar-future-2026"
 date: "2026-05-12"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "While tech Twitter argues about chatbots, AI is quietly revolutionizing archaeology. Drone LiDAR + neural networks are finding sites humans missed for decades — and a $1.72 billion industry is about to get disrupted."
 tags: ["AI", "Drone Technology", "LiDAR", "Archaeology", "Deep Tech", "Remote Sensing"]
 image: "/blog/ai-archaeology-lidar.webp"

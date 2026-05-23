@@ -2,7 +2,7 @@
 title: "How to Use Claude AI for Data Analytics (2026 Guide)"
 slug: "how-to-use-claude-ai-for-data-analytics-2026"
 date: "2026-05-22"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "Claude can analyze datasets, write SQL, build dashboards, and find patterns humans miss. Here's exactly how to use it for real data analytics work — with prompts you can copy today."
 tags: ["Claude", "Data Analytics", "AI Tools", "Prompt Engineering", "Business Intelligence"]
 published: true

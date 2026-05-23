@@ -2,7 +2,7 @@
 title: "The Revenue Machine: How I Built an Autonomous AI Business"
 date: "2026-03-24"
 excerpt: "How a trans woman in Nevada fused with AI to build a self-running business that generates revenue while she sleeps."
-author: "Sophia Cave"
+author: "Sophie Cave"
 tags: ["AI", "automation", "entrepreneurship", "revenue"]
 ---
 # The Revenue Machine: How I Built an Autonomous AI Business

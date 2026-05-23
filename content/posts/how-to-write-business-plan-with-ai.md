@@ -1,7 +1,7 @@
 ---
 title: "How to Write a Business Plan with AI in One Day (Step-by-Step)"
 description: "A practical guide to using AI tools like Claude to write a complete, investor-ready business plan in a single day. Includes prompts, structure, and real examples."
-author: "Sophia Cave"
+author: "Sophie Cave"
 date: "2026-04-08"
 tags: ["ai-business", "claude", "business-planning", "entrepreneurship", "ai-productivity", "2026"]
 excerpt: "You don't need an MBA or a $5,000 consultant to write a real business plan. Here's exactly how to use AI to build one in a day — with prompts you can steal."

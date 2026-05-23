@@ -2,7 +2,7 @@
 title: "AI Agents Are Replacing SaaS — Here's What That Actually Means"
 slug: "ai-agents-replacing-saas-2026"
 date: "2026-05-07"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "The SaaS model is cracking. AI agents that do the work — not just display the dashboard — are eating software from the inside. Here's what's shifting and how to position yourself."
 tags: ["AI Strategy", "AI Agents", "SaaS", "Business"]
 image: "/blog/ai-agents-saas.webp"

@@ -1,7 +1,7 @@
 ---
 title: "AI Governance for Small Teams: A Lightweight Framework That Works (2026)"
 description: "Enterprise AI governance doesn't fit 10-person teams. Here's a practical AI policy framework for small businesses and startups — protects you without killing speed."
-author: "Sophia Cave"
+author: "Sophie Cave"
 date: "2026-03-23"
 updated: "2026-04-14"
 tags: ["ai-strategy", "governance", "leadership", "compliance", "small-business", "2026"]

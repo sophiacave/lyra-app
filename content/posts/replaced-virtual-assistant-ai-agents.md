@@ -2,7 +2,7 @@
 title: "I Replaced My $4,000/Month Virtual Assistant with AI Agents (Here Is How)"
 date: "2026-03-24"
 excerpt: "How I replaced a $4,000/month VA with autonomous AI agents that work 24/7, never call in sick, and cost $29/month total."
-author: "Sophia Cave"
+author: "Sophie Cave"
 tags: ["AI agents", "virtual assistant", "automation", "cost savings", "solopreneur"]
 ---
 # I Replaced My $4,000/Month Virtual Assistant with AI Agents (Here Is How)

@@ -2,7 +2,7 @@
 title: "The AI Stack That Runs Our Entire Company (2026 Breakdown)"
 slug: "the-ai-stack-that-runs-our-company-2026"
 date: "2026-05-17"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "We replaced SaaS subscriptions, manual workflows, and an entire operations team with autonomous AI agents. Here's the exact stack — every tool, every layer, every decision."
 tags: ["AI Stack", "Build in Public", "AI Agents", "Automation", "Claude", "Infrastructure"]
 image: "/blog/ai-stack-company.webp"

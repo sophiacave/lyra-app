@@ -2,7 +2,7 @@
 title: "AI Resumes Are Mostly Garbage. Here's Why Ours Isn't."
 slug: "ai-resume-builder-quality-over-spam-2026"
 date: "2026-05-16"
-author: "Sophia Cave"
+author: "Sophie Cave"
 excerpt: "Most AI resume builders optimize for volume. Like One's scores against the job, tailors your language, and rate-limits to 3/day. Quality over spam."
 tags: ["AI Tools", "Career", "Resume Builder", "Job Search"]
 image: "/blog/resume-builder.webp"
