@@ -278,7 +278,7 @@ export default async function PostPage({ params }) {
         />
       )}
 
-      <Header variant="blog" activeLink="/blog" />
+      <Header variant="site" activeLink="/blog/" />
 
       <header className="post-header">
         <div className="post-header-meta">
@@ -326,7 +326,7 @@ export default async function PostPage({ params }) {
         </Link>
       </footer>
 
-      <Footer variant="blog" />
+      <Footer variant="site" />
     </div>
   );
 }

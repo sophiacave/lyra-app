@@ -62,7 +62,7 @@ export default function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
       />
-      <Header variant="blog" activeLink="/blog" />
+      <Header variant="site" activeLink="/blog/" />
 
       <header className="blog-header">
         <h1 className="blog-title">Blog</h1>
@@ -108,7 +108,7 @@ export default function BlogPage() {
         </div>
       </div>
 
-      <Footer variant="blog" />
+      <Footer variant="site" />
     </div>
   );
 }
