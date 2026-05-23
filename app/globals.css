@@ -5028,11 +5028,11 @@ select:focus-visible {
 }
 .post-tag {
   font-size: var(--font-2xs);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--accent-purple);
-  background: rgba(192,132,252,0.1);
+  color: rgba(192, 132, 252, 0.6);
+  background: rgba(192, 132, 252, 0.08);
   border-radius: var(--radius-full);
   padding: var(--space-1) var(--space-2);
 }
@@ -5803,11 +5803,11 @@ select:focus-visible {
   font-size: 0.6875rem;
   padding: 2px var(--space-3);
   border-radius: var(--radius-full);
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--accent-blue);
+  background: rgba(192, 132, 252, 0.08);
+  color: rgba(192, 132, 252, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
 }
 .post-header h1 {
   font-size: clamp(1.75rem, 5vw, 2.5rem);
