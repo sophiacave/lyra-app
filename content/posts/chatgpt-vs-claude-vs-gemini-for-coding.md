@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT vs Claude vs Gemini for Coding: Which AI Writes Better Code? (2026)"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "I build production software with all three AI coding tools. Here's which one writes better code, handles real codebases, and actually ships — not benchmarks, real projects."
 excerpt: "I build production software with all three AI coding tools. Here's which one writes better code, handles real codebases, and actually ships — not benchmarks, real projects."
 tags: [claude, chatgpt, gemini, comparison, coding, ai-tools, developer, claude-code, 2026]

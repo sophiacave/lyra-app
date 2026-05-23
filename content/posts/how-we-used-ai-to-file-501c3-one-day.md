@@ -1,7 +1,7 @@
 ---
 title: "How We Used AI to File a 501(c)(3) in One Day"
 date: 2026-04-04
-author: Sophia Cave
+author: Sophie Cave
 description: "We filed our nonprofit foundation paperwork in a single day using AI. Here's exactly how we did it — and how you can use the same approach for any complex legal filing."
 excerpt: "We filed our nonprofit foundation paperwork in a single day using AI. Here's exactly how we did it — and how you can use the same approach for any complex legal filing."
 tags: [nonprofit, 501c3, ai-tools, automation, foundation, social-impact, tutorial]

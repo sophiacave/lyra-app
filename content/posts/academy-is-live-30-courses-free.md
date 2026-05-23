@@ -2,7 +2,7 @@
 title: "Like One Academy Is Live — 52 Courses, 520+ Lessons, Start Free"
 slug: academy-is-live-30-courses-free
 description: "Like One Academy just launched with 52 AI courses, 520+ interactive lessons, and 571 hands-on exercises. Beginner to advanced. Start free today."
-author: Sophia Cave
+author: Sophie Cave
 date: 2026-03-27
 categories: [Announcements, AI Education]
 tags: [academy launch, ai courses, ai education, claude, prompt engineering, free courses]

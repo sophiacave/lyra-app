@@ -1,7 +1,7 @@
 ---
 title: "AI Company Business Plan: The 2026 Framework That Actually Gets Funded"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "Learn how to write an AI company business plan that reflects real costs, data strategy, and model economics. Practical framework for AI startups in 2026."
 excerpt: "Learn how to write an AI company business plan that reflects real costs, data strategy, and model economics. Practical framework for AI startups in 2026."
 tags: [ai company business plan, ai startup business plan, business plan for ai company, ai business plan template, ai strategy, startup planning]

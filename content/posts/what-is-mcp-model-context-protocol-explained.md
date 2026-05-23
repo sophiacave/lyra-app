@@ -1,7 +1,7 @@
 ---
 title: "What Is MCP? Model Context Protocol Explained Simply (2026)"
 date: 2026-04-02
-author: Sophia Cave
+author: Sophie Cave
 description: "MCP is how AI goes from answering questions to taking action. Here's what Model Context Protocol actually is, why Anthropic built it, and how to start using it — no jargon."
 excerpt: "MCP is how AI goes from answering questions to taking action. Here's what Model Context Protocol actually is, why Anthropic built it, and how to start using it — no jargon."
 tags: [mcp, claude, ai-tools, tutorial, agents]

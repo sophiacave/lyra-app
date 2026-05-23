@@ -1,7 +1,7 @@
 ---
 title: "How to Train AI to Write Like You: A Step-by-Step Voice Cloning Guide"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "Learn how to train Claude, ChatGPT, or any AI to match your exact writing style. Real techniques for voice cloning, style guides, and prompt engineering that actually work."
 excerpt: "Learn how to train Claude, ChatGPT, or any AI to match your exact writing style. Real techniques for voice cloning, style guides, and prompt engineering that actually work."
 tags: [ai-writing, claude, chatgpt, writing-style, prompt-engineering, voice-cloning, 2026]

@@ -1,7 +1,7 @@
 ---
 title: "AI for Project Management: The Complete 2026 Guide"
 date: 2026-04-23
-author: Sophia Cave
+author: Sophie Cave
 description: "AI won't replace project managers. But project managers who use AI will replace those who don't. Here's the complete guide to AI-powered project management in 2026."
 excerpt: "AI won't replace project managers. But project managers who use AI will replace those who don't. Here's the complete guide to AI-powered project management in 2026."
 tags: [ai-automation, project-management, productivity, ai-tools, business]

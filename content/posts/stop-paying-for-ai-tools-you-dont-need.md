@@ -1,7 +1,7 @@
 ---
 title: "Stop Paying for AI Tools You Don't Need"
 date: 2026-05-01
-author: Sophia Cave
+author: Sophie Cave
 description: "The average business pays for 3-4 AI subscriptions and uses one. Here's how to audit your AI stack, cut the waste, and build a lean setup that actually delivers ROI."
 excerpt: "The average business pays for 3-4 AI subscriptions and uses one. Here's how to audit your AI stack, cut the waste, and build a lean setup that actually delivers ROI."
 tags: [ai-tools, productivity, small-business, cost-optimization, guide]

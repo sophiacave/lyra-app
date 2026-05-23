@@ -1,7 +1,7 @@
 ---
 title: "Claude Agent SDK Tutorial: Build Your First AI Agent in 2026"
 date: 2026-05-05
-author: Sophia Cave
+author: Sophie Cave
 description: "A practical, no-fluff guide to building AI agents with Anthropic's Claude Agent SDK. Real code, real patterns, and the gotchas nobody warns you about."
 excerpt: "A practical, no-fluff guide to building AI agents with Anthropic's Claude Agent SDK. Real code, real patterns, and the gotchas nobody warns you about."
 tags: [claude, ai-agents, tutorial, developer, agent-sdk, mcp]

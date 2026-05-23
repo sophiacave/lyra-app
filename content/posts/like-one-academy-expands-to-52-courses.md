@@ -2,7 +2,7 @@
 title: "Like One Academy Just Expanded to 52 Courses"
 slug: like-one-academy-expands-to-52-courses
 description: "Like One Academy grew from 36 to 52 courses overnight. 16 new courses covering AI side hustles, music production, game dev, nonprofit impact, cinema, fine-tuning, and more. All free to start."
-author: Sophia Cave
+author: Sophie Cave
 date: 2026-05-01
 categories: [Announcements, AI Education]
 tags: [academy expansion, ai courses, ai education, new courses, free courses]

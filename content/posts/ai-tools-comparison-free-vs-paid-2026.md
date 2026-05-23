@@ -1,7 +1,7 @@
 ---
 title: "AI Tools Comparison: Free vs Paid in 2026"
 date: 2026-04-21
-author: Sophia Cave
+author: Sophie Cave
 description: "Free AI tools are better than ever. Paid tiers are more expensive than ever. Here's what's actually worth paying for — and what you can skip."
 excerpt: "Free AI tools are better than ever. Paid tiers are more expensive than ever. Here's what's actually worth paying for — and what you can skip."
 tags: [ai-tools, comparison, budget, productivity, small-business]

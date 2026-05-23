@@ -1,7 +1,7 @@
 ---
 title: "How to Give Your AI Persistent Memory (4 Methods That Actually Work)"
 date: 2026-05-22
-author: Sophia Cave
+author: Sophie Cave
 description: "Your AI forgets everything when you close the tab. Here are 4 proven methods to give it persistent memory — from simple CLAUDE.md files to full database-backed architectures. Real code included."
 excerpt: "Your AI forgets everything when you close the tab. Here are 4 proven methods to give it persistent memory — from simple CLAUDE.md files to full database-backed architectures. Real code included."
 tags: [ai-memory, persistent-ai, claude, tutorial, agents, ai-tools, 2026]

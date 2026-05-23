@@ -2,7 +2,7 @@
 title: "Why Your AI Has Amnesia (And How to Fix It)"
 slug: why-your-ai-has-amnesia-how-to-fix-it
 date: 2026-04-06
-author: Sophia Cave
+author: Sophie Cave
 description: "Every AI conversation starts from zero. Your AI forgets everything the moment you close the tab. Here's why that happens and the exact strategies to give your AI persistent memory."
 excerpt: "Every AI conversation starts from zero. Your AI forgets everything the moment you close the tab. Here's why that happens and the exact strategies to give your AI persistent memory."
 tags: [ai, memory, context, persistent-ai, productivity, claude, chatgpt, tutorial, 2026]

@@ -1,7 +1,7 @@
 ---
 title: "AI + Drone LiDAR Is About to Revolutionize Archaeology (And Nobody's Talking About It)"
 date: 2026-05-12
-author: Sophia Cave
+author: Sophie Cave
 description: "The $1.72B cultural resource management industry runs on pedestrian surveys and Microsoft Access. AI-powered drone LiDAR changes everything — here's how the tech works and why the US market is wide open."
 excerpt: "The $1.72B cultural resource management industry runs on pedestrian surveys and Microsoft Access. AI-powered drone LiDAR changes everything — here's how the tech works and why the US market is wide open."
 tags: [ai, archaeology, lidar, drones, remote-sensing, machine-learning, computer-vision, startup, 2026]

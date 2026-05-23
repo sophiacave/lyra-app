@@ -1,7 +1,7 @@
 ---
 title: "Why Your AI Outputs Suck (And How to Fix Them)"
 date: 2026-05-13
-author: Sophia Cave
+author: Sophie Cave
 description: "Most people blame the AI when they get garbage results. The problem is almost always the prompt. Here's a practical framework for getting consistently great outputs from Claude, ChatGPT, or any LLM."
 excerpt: "Most people blame the AI when they get garbage results. The problem is almost always the prompt. Here's a practical framework for getting consistently great outputs from Claude, ChatGPT, or any LLM."
 tags: [ai, prompt-engineering, claude, chatgpt, llm, productivity, tutorial, 2026]

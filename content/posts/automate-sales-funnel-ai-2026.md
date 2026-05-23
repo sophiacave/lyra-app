@@ -1,7 +1,7 @@
 ---
 title: "How to Automate Your Entire Sales Funnel with AI in 2026"
 date: 2026-04-21
-author: Sophia Cave
+author: Sophie Cave
 description: "Most sales funnels leak money at every stage. Here's how to use AI to plug every hole — from lead capture to close — without hiring a sales team."
 excerpt: "Most sales funnels leak money at every stage. Here's how to use AI to plug every hole — from lead capture to close — without hiring a sales team."
 tags: [ai-automation, sales-funnel, solopreneur, ai-business, revenue]

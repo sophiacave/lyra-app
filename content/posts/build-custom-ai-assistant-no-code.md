@@ -1,7 +1,7 @@
 ---
 title: "How to Build a Custom AI Assistant (No Code Required)"
 date: 2026-04-16
-author: Sophia Cave
+author: Sophie Cave
 description: "Custom GPTs and Claude Projects let anyone build specialized AI assistants without writing a single line of code. Here's exactly how to do it — and which platform to choose."
 excerpt: "Custom GPTs and Claude Projects let anyone build specialized AI assistants without writing a single line of code. Here's exactly how to do it — and which platform to choose."
 tags: [claude-projects, custom-gpts, ai-assistant, no-code, tutorial]

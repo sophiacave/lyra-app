@@ -1,7 +1,7 @@
 ---
 title: "Claude Opus 4.6 vs GPT-4o: Which AI Is Actually Worth $20/Month?"
 date: 2026-04-11
-author: Sophia Cave
+author: Sophie Cave
 description: "Claude Opus 4.6 and GPT-4o both cost $20/month. After running both on real business tasks — writing, coding, analysis, and automation — here's which one earns its keep."
 excerpt: "Claude Opus 4.6 and GPT-4o both cost $20/month. After running both on real business tasks — writing, coding, analysis, and automation — here's which one earns its keep."
 tags: [claude, chatgpt, comparison, ai-tools, ai-business, 2026]

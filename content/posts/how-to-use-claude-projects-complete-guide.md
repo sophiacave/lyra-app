@@ -2,7 +2,7 @@
 title: "How to Use Claude Projects: Templates, Setup & the Setting Everyone Misses (2026)"
 date: 2026-04-02
 updated: 2026-05-15
-author: Sophia Cave
+author: Sophie Cave
 description: "Turn Claude into a specialist that knows your business. 5 ready-to-use project templates, step-by-step setup, and the one setting most people miss that changes everything."
 excerpt: "Turn Claude into a specialist that knows your business. 5 ready-to-use project templates, step-by-step setup, and the one setting most people miss that changes everything."
 tags: [claude, projects, tutorial, ai-tools, productivity, 2026]

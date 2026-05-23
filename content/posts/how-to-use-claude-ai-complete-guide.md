@@ -1,7 +1,7 @@
 ---
 title: "How to Use Claude AI: The Complete Beginner's Guide (2026)"
 date: 2026-03-27
-author: Sophia Cave
+author: Sophie Cave
 description: "Everything you need to start using Claude AI effectively — from your first conversation to building workflows that save hours every week. No experience required."
 excerpt: "Everything you need to start using Claude AI effectively — from your first conversation to building workflows that save hours every week. No experience required."
 tags: [claude, beginner, tutorial, ai-tools, productivity, 2026]

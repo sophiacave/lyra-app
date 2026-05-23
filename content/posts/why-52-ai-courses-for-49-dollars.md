@@ -3,7 +3,7 @@ title: "Why We Charge $49 for 52 AI Courses (and What You Actually Get)"
 slug: why-52-ai-courses-for-49-dollars
 description: "52 AI courses, 520+ lessons, $49/month. Here's exactly what Like One Academy Pro includes, why it's priced this way, and how it compares to alternatives that cost 10-50x more."
 excerpt: "52 AI courses, 520+ lessons, $49/month. Here's exactly what Like One Academy Pro includes, why it's priced this way, and how it compares to alternatives that cost 10-50x more."
-author: Sophia Cave
+author: Sophie Cave
 date: 2026-05-02
 categories: [AI Education, Academy]
 tags: [ai courses, ai education, online learning, affordable ai training, like one academy, ai skills, pricing]

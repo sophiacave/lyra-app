@@ -1,7 +1,7 @@
 ---
 title: "AI Customer Support Automation: The Small Business Guide for 2026"
 date: 2026-05-08
-author: Sophia Cave
+author: Sophie Cave
 description: "How to automate 80% of customer support with AI without losing the human touch. Practical setups for small teams using tools you already have."
 excerpt: "How to automate 80% of customer support with AI without losing the human touch. Practical setups for small teams using tools you already have."
 tags: [ai-automation, customer-support, small-business, guide, productivity]

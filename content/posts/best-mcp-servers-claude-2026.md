@@ -2,7 +2,7 @@
 title: "10 Best MCP Servers for Claude in 2026 (Tested and Ranked)"
 date: 2026-04-02
 updated: 2026-04-14
-author: Sophia Cave
+author: Sophie Cave
 description: "I tested 40+ MCP servers and these 10 actually work. From file systems to databases to browser automation — here are the ones worth installing."
 excerpt: "I tested 40+ MCP servers and these 10 actually work. From file systems to databases to browser automation — here are the ones worth installing."
 tags: [mcp, claude, claude-code, ai-tools, developer-tools, 2026]

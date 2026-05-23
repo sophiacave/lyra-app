@@ -1,7 +1,7 @@
 ---
 title: "How Variational Optimization Powers Autonomous AI Agents"
 date: 2026-05-12
-author: Sophia Cave
+author: Sophie Cave
 description: "From Bregman Lagrangians to browser automation — how ideas from optimization theory shape the scoring and decision-making systems inside production AI agents."
 excerpt: "From Bregman Lagrangians to browser automation — how ideas from optimization theory shape the scoring and decision-making systems inside production AI agents."
 tags: [ai-agents, optimization, machine-learning, variational-methods, langevin-dynamics, scoring-algorithms, 2026]

@@ -1,7 +1,7 @@
 ---
 title: "AI Side Hustles That Actually Pay in 2026 (Not the YouTube Hype)"
 date: 2026-05-01
-author: Sophia Cave
+author: Sophie Cave
 description: "Skip the get-rich-quick AI hype. Here are the AI side hustles real people are using to make $500-$10K/month in 2026 — with a free course to get started."
 excerpt: "Skip the get-rich-quick AI hype. Here are the AI side hustles real people are using to make $500-$10K/month in 2026 — with a free course to get started."
 tags: [ai-side-hustles, make-money-with-ai, ai-freelancing, ai-tools, guide]

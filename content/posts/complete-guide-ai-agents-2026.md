@@ -1,7 +1,7 @@
 ---
 title: "The Complete Guide to AI Agents in 2026"
 date: 2026-04-23
-author: Sophia Cave
+author: Sophie Cave
 description: "AI agents are the most overhyped and underexplained technology of 2026. Here's what they actually are, what they can really do today, and how to start using them without the buzzword fog."
 excerpt: "AI agents are the most overhyped and underexplained technology of 2026. Here's what they actually are, what they can really do today, and how to start using them without the buzzword fog."
 tags: [ai-agents, automation, claude, strategy, future-of-work]

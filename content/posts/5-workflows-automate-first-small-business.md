@@ -1,7 +1,7 @@
 ---
 title: "5 Workflows Every Small Business Should Automate with AI First"
 date: 2026-03-28
-author: Sophia Cave
+author: Sophie Cave
 description: "Not sure where to start with AI automation? These 5 workflows give every small business the biggest bang for the least effort — with real examples and tools you can set up today."
 excerpt: "Not sure where to start with AI automation? These 5 workflows give every small business the biggest bang for the least effort — with real examples and tools you can set up today."
 tags: [automation, small-business, workflows, ai-tools, productivity, 2026]

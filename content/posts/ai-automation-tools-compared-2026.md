@@ -1,7 +1,7 @@
 ---
 title: "AI Automation Tools Compared: Make vs Zapier vs n8n vs Custom Code (2026)"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "Honest comparison of the top AI automation tools in 2026. Make.com, Zapier, n8n, and custom Python/Node — with real costs, use cases, and recommendations for each skill level."
 excerpt: "Honest comparison of the top AI automation tools in 2026. Make.com, Zapier, n8n, and custom Python/Node — with real costs, use cases, and recommendations for each skill level."
 tags: [automation, ai-tools, comparison, make-com, no-code, ai-workflow, 2026, business]

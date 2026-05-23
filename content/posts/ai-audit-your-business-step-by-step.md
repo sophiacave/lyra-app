@@ -1,7 +1,7 @@
 ---
 title: "How to Audit Your Business for AI Opportunities (Step-by-Step)"
 date: 2026-04-28
-author: Sophia Cave
+author: Sophie Cave
 description: "Most businesses adopt AI backwards — buying tools first, then looking for problems. Here's how to audit your operations and find the AI opportunities that actually move the needle."
 excerpt: "Most businesses adopt AI backwards — buying tools first, then looking for problems. Here's how to audit your operations and find the AI opportunities that actually move the needle."
 tags: [ai-strategy, small-business, automation, productivity, guide]

@@ -1,7 +1,7 @@
 ---
 title: "How to Train AI to Write Like You (Exact Method, 15 Minutes)"
 date: 2026-03-28
-author: Sophia Cave
+author: Sophie Cave
 description: "Stop sounding like every other AI user. This copy-paste method teaches Claude or ChatGPT your voice in 15 minutes — with templates I use daily for clients."
 excerpt: "Stop sounding like every other AI user. This copy-paste method teaches Claude or ChatGPT your voice in 15 minutes — with templates I use daily for clients."
 tags: [claude, writing, personal-brand, prompting, ai-tools, 2026]

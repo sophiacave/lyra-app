@@ -2,7 +2,7 @@
 title: "AI Music Production: How to Create Professional Tracks Without a Studio (2026)"
 slug: ai-music-production-guide-2026
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "AI music production is no longer a gimmick — it's a legitimate creative pipeline. Here's exactly how to generate, remix, and master professional-quality tracks using AI tools in 2026, with real costs and workflows."
 excerpt: "AI music production is no longer a gimmick — it's a legitimate creative pipeline. Here's exactly how to generate, remix, and master professional-quality tracks using AI tools in 2026, with real costs and workflows."
 tags: [ai-music, music-production, ai-tools, creative-ai, suno, 2026]

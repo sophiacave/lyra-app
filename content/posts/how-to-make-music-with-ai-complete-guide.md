@@ -1,7 +1,7 @@
 ---
 title: "How to Make Music with AI: From First Beat to Spotify (Complete 2026 Guide)"
 date: 2026-05-01
-author: Sophia Cave
+author: Sophie Cave
 description: "Make real music with AI tools like Suno, Udio, and Timbre. A complete beginner's guide to AI music production — from your first beat to getting on Spotify."
 excerpt: "Make real music with AI tools like Suno, Udio, and Timbre. A complete beginner's guide to AI music production — from your first beat to getting on Spotify."
 tags: [ai-music, suno, udio, music-production, guide]

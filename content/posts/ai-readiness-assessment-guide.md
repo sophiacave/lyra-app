@@ -1,7 +1,7 @@
 ---
 title: "AI Readiness Assessment: The Only Framework That Actually Works"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "A practical AI readiness assessment framework that measures what matters. Skip the consultant fluff and evaluate your organization's real AI maturity today."
 excerpt: "A practical AI readiness assessment framework that measures what matters. Skip the consultant fluff and evaluate your organization's real AI maturity today."
 tags: [ai readiness assessment, ai readiness checklist, ai maturity assessment, organizational ai readiness, ai strategy, enterprise ai, ai transformation]

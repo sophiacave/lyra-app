@@ -1,7 +1,7 @@
 ---
 title: "Vibe Coding: How to Build Real Apps Without Writing a Single Line of Code"
 date: 2026-04-29
-author: Sophia Cave
+author: Sophie Cave
 description: "Vibe coding is the most accessible form of software development ever created. Learn what it is, why it matters in 2026, and how to build real apps by describing what you want in plain English."
 excerpt: "Vibe coding is the most accessible form of software development ever created. Learn what it is, why it matters in 2026, and how to build real apps by describing what you want in plain English."
 tags: [vibe-coding, ai-tools, accessibility, no-code, guide]

@@ -2,7 +2,7 @@
 title: "7 AI Workflows That Actually Make Money in 2026"
 slug: ai-workflows-that-make-money-2026
 date: 2026-04-13
-author: Sophia Cave
+author: Sophie Cave
 description: "Most AI workflows waste time. These 7 generate real revenue — with setup guides, tool stacks, and the math behind each one. No theory. Just money."
 excerpt: "Most AI workflows waste time. These 7 generate real revenue — with setup guides, tool stacks, and the math behind each one. No theory. Just money."
 tags: [ai-automation, ai-business, make-money-ai, workflows, 2026]

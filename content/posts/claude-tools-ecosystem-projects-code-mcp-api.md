@@ -1,7 +1,7 @@
 ---
 title: "Every Claude Tool Explained: Projects vs Code vs MCP vs API (2026)"
 date: 2026-04-21
-author: Sophia Cave
+author: Sophie Cave
 description: "Claude has four distinct tool layers — Projects, Code, MCP servers, and the API. Here's what each one does, when to use it, and how they work together. No overlap. No confusion."
 excerpt: "Claude has four distinct tool layers — Projects, Code, MCP servers, and the API. Here's what each one does, when to use it, and how they work together. No overlap. No confusion."
 tags: [claude, ai-tools, mcp, claude-code, projects, api, comparison, "2026"]

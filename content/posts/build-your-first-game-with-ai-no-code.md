@@ -1,7 +1,7 @@
 ---
 title: "Build Your First Game with AI — No Code Required (2026 Guide)"
 date: 2026-05-01
-author: Sophia Cave
+author: Sophie Cave
 description: "Build a real, playable game by talking to AI. No coding experience needed. From idea to published game using Claude, Cursor, and browser tech."
 excerpt: "Build a real, playable game by talking to AI. No coding experience needed. From idea to published game using Claude, Cursor, and browser tech."
 tags: [ai-game-dev, no-code, vibe-coding, game-development, guide]

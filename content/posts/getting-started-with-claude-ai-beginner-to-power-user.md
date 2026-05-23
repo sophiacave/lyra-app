@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with Claude AI: From Beginner to Power User in One Week"
 date: 2026-04-07
-author: Sophia Cave
+author: Sophie Cave
 description: "Claude AI has a learning curve most people never climb. This is the exact progression that takes you from basic prompts to building AI systems that run your business — in 7 days."
 excerpt: "Claude AI has a learning curve most people never climb. This is the exact progression that takes you from basic prompts to building AI systems that run your business — in 7 days."
 tags: [claude, getting-started, beginner, tutorial, ai-tools, productivity]

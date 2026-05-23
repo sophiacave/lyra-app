@@ -1,7 +1,7 @@
 ---
 title: "The Prompt Library Every Team Needs"
 date: 2026-04-09
-author: Sophia Cave
+author: Sophie Cave
 description: "Stop rewriting the same AI prompts from scratch. Here's how to build a shared prompt library that makes your whole team faster — with 20 ready-to-use templates."
 excerpt: "Stop rewriting the same AI prompts from scratch. Here's how to build a shared prompt library that makes your whole team faster — with 20 ready-to-use templates."
 tags: [prompts, team-productivity, ai-adoption, templates]

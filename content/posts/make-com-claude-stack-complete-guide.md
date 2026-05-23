@@ -1,7 +1,7 @@
 ---
 title: "The Make.com + Claude Stack: A Complete Guide"
 date: 2026-04-07
-author: Sophia Cave
+author: Sophie Cave
 description: "Make.com and Claude together are the most powerful no-code AI automation stack available. Here's exactly how to set it up, with real scenarios you can build today."
 excerpt: "Make.com and Claude together are the most powerful no-code AI automation stack available. Here's exactly how to set it up, with real scenarios you can build today."
 tags: [make-com, claude, automation, tutorial, no-code]

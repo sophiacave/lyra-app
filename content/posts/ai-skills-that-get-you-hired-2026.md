@@ -1,7 +1,7 @@
 ---
 title: "The AI Skills That Actually Get You Hired in 2026 (Not the Ones on LinkedIn)"
 date: 2026-05-02
-author: Sophia Cave
+author: Sophie Cave
 description: "Forget 'AI literacy.' These are the specific AI skills hiring managers pay $150K+ for in 2026 — prompt engineering, agent building, workflow automation, and the ones nobody talks about."
 excerpt: "Forget 'AI literacy.' These are the specific AI skills hiring managers pay $150K+ for in 2026 — prompt engineering, agent building, workflow automation, and the ones nobody talks about."
 tags: [ai-skills, career, ai-education, ai-courses, hiring, 2026, agents, automation, prompt-engineering]

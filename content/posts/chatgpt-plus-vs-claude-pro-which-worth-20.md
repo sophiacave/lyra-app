@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT Plus vs Claude Pro: Which AI Subscription Is Actually Worth $20?"
 date: 2026-04-07
-author: Sophia Cave
+author: Sophie Cave
 description: "Both cost $20/month. Both promise premium AI. But they deliver very different things. Here's the honest breakdown of ChatGPT Plus vs Claude Pro — from someone who pays for both."
 excerpt: "Both cost $20/month. Both promise premium AI. But they deliver very different things. Here's the honest breakdown of ChatGPT Plus vs Claude Pro — from someone who pays for both."
 tags: [claude, chatgpt, comparison, ai-tools, pricing, subscription, claude-pro, chatgpt-plus]

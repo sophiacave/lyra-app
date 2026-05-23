@@ -1,7 +1,7 @@
 ---
 title: "AI Meeting Notes: How to Never Take Notes Again"
 date: 2026-04-15
-author: Sophia Cave
+author: Sophie Cave
 description: "Meeting notes are a time sink that AI has completely solved. Here's how to automate meeting capture, summaries, and follow-ups so you can actually be present in conversations."
 excerpt: "Meeting notes are a time sink that AI has completely solved. Here's how to automate meeting capture, summaries, and follow-ups so you can actually be present in conversations."
 tags: [meetings, productivity, automation, ai-tools, workflow]

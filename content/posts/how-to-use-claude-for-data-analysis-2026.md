@@ -2,7 +2,7 @@
 title: "How to Use Claude.ai for Data Analytics: No-Code Guide (2026)"
 slug: how-to-use-claude-for-data-analysis-2026
 date: 2026-04-17
-author: Sophia Cave
+author: Sophie Cave
 description: "How to use Claude.ai for data analytics — analyze spreadsheets, find patterns, and build reports without code. Step-by-step guide with real examples (2026)."
 excerpt: "How to use Claude.ai for data analytics — analyze spreadsheets, find patterns, and build reports without code. Step-by-step guide with real examples (2026)."
 tags: [claude-ai, data-analysis, no-code, ai-tools, business-intelligence, 2026]

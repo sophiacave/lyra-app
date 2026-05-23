@@ -1,7 +1,7 @@
 ---
 title: "Claude Opus 4.6 vs Sonnet 4.6: Which Model Should You Actually Use?"
 date: 2026-05-03
-author: Sophia Cave
+author: Sophie Cave
 description: "Claude Opus 4.6 and Sonnet 4.6 are both powerful — but they are built for different jobs. Real-world comparison of speed, quality, cost, and when each model wins."
 excerpt: "Claude Opus 4.6 and Sonnet 4.6 are both powerful — but they are built for different jobs. Real-world comparison of speed, quality, cost, and when each model wins."
 tags: [claude, ai-tools, comparison, opus, sonnet]

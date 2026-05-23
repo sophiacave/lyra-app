@@ -1,7 +1,7 @@
 ---
 title: "Claude Code vs Cursor: Which AI Coding Tool Should You Use? (2026)"
 date: 2026-04-02
-author: Sophia Cave
+author: Sophie Cave
 description: "Claude Code and Cursor are the two AI coding tools developers actually use. Here's an honest comparison — architecture, workflows, pricing, and when to use each one."
 excerpt: "Claude Code and Cursor are the two AI coding tools developers actually use. Here's an honest comparison — architecture, workflows, pricing, and when to use each one."
 tags: [claude, claude-code, comparison, ai-tools, productivity, "2026"]

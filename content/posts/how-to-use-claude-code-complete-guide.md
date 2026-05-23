@@ -2,7 +2,7 @@
 title: "How to Use Claude Code: The Complete Guide (2026)"
 date: 2026-04-02
 updated: 2026-04-14
-author: Sophia Cave
+author: Sophie Cave
 description: "Claude Code turns your terminal into an AI-powered development environment. This guide covers everything from installation to advanced workflows — with real examples from someone who builds with it every day."
 excerpt: "Claude Code turns your terminal into an AI-powered development environment. This guide covers everything from installation to advanced workflows — with real examples from someone who builds with it every day."
 tags: [claude, tutorial, ai-tools, productivity, agent, automation, "2026"]

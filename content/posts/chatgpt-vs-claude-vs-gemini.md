@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT vs Claude vs Gemini: The Honest Guide for People Learning AI (2026)"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "Stop reading comparison tables. I use all three AI tools daily to run a business and teach 52 courses. Here's which to use for what — and how to combine them into a system that actually makes you better at AI."
 excerpt: "Stop reading comparison tables. I use all three AI tools daily to run a business and teach 52 courses. Here's which to use for what — and how to combine them into a system that actually makes you better at AI."
 tags: [claude, chatgpt, gemini, comparison, ai-tools, ai-education, beginner, 2026]

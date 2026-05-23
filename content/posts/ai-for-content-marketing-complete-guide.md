@@ -1,7 +1,7 @@
 ---
 title: "How to Use AI for Content Marketing (Without Sounding Like a Robot)"
 date: 2026-04-14
-author: Sophia Cave
+author: Sophie Cave
 description: "AI can 10x your content output — but only if you use it right. Here's the complete guide to AI-powered content marketing that actually builds trust and drives traffic."
 excerpt: "AI can 10x your content output — but only if you use it right. Here's the complete guide to AI-powered content marketing that actually builds trust and drives traffic."
 tags: [content-marketing, ai-writing, seo, strategy, claude]

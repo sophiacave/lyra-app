@@ -2,7 +2,7 @@
 title: "How to Build Your First AI Agent with Claude (Step-by-Step 2026)"
 slug: how-to-build-ai-agent-claude-2026
 date: 2026-05-02
-author: Sophia Cave
+author: Sophie Cave
 description: "Build a working AI agent with Claude in under an hour. This step-by-step guide covers agentic loops, tool use, the Claude Agent SDK, and real patterns used in production systems."
 excerpt: "Build a working AI agent with Claude in under an hour. This step-by-step guide covers agentic loops, tool use, the Claude Agent SDK, and real patterns used in production systems."
 tags: [ai-agents, claude, agent-sdk, agentic-loops, tool-use, tutorial, python, 2026]

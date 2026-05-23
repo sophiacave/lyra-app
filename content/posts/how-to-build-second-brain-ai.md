@@ -1,7 +1,7 @@
 ---
 title: "How to Build a Second Brain with AI (Step-by-Step Guide)"
 date: 2026-03-26
-author: Sophia Cave
+author: Sophie Cave
 description: "Learn how to build a persistent AI second brain that remembers everything, thinks like you, and works while you sleep. A practical guide from zero to running system."
 excerpt: "Learn how to build a persistent AI second brain that remembers everything, thinks like you, and works while you sleep."
 tags: [second-brain, ai-memory, persistent-ai, tutorial, productivity]

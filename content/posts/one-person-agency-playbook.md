@@ -1,7 +1,7 @@
 ---
 title: "The One-Person Agency Playbook"
 date: 2026-04-14
-author: Sophia Cave
+author: Sophie Cave
 description: "You don't need employees to run an agency. You need systems. Here's the exact playbook for building a one-person agency that bills like a team of ten."
 excerpt: "You don't need employees to run an agency. You need systems. Here's the exact playbook for building a one-person agency that bills like a team of ten."
 tags: [solopreneur, agency, automation, ai-business, freelancing]

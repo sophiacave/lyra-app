@@ -2,7 +2,7 @@
 title: "AI for Grant Writing: How to Write Winning Proposals in Half the Time"
 slug: ai-grant-writing-guide-2026
 date: 2026-04-04
-author: Sophia Cave
+author: Sophie Cave
 description: "Grant writing is brutal. AI makes it faster, sharper, and more fundable. Here's the exact workflow we use to write grant proposals that actually win."
 excerpt: "Grant writing is brutal. AI makes it faster, sharper, and more fundable. Here's the exact workflow we use to write grant proposals that actually win."
 tags: [ai, grant-writing, nonprofits, small-business, funding, 2026, claude, automation]

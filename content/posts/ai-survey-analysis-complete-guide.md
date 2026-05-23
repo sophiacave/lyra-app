@@ -1,7 +1,7 @@
 ---
 title: "How to Analyze Survey Data with AI: The Complete Guide (2026)"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "Survey analysis used to take weeks. With the right AI workflow, you can go from raw responses to actionable insights in under an hour. Here's the exact 5-step process I use to analyze survey data with AI."
 excerpt: "Survey analysis used to take weeks. With the right AI workflow, you can go from raw responses to actionable insights in under an hour. Here's the exact 5-step process I use to analyze survey data with AI."
 tags: [ai-survey-analysis, data-analysis, claude, feedback-analysis, survey-tools, ai-education]

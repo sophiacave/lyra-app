@@ -2,7 +2,7 @@
 title: "How We Built an AI Record Label in a Weekend"
 slug: how-we-built-ai-record-label-weekend
 date: 2026-04-21
-author: Sophia Cave
+author: Sophie Cave
 description: "We took one independent artist, three original tracks, and an AI production pipeline — and shipped 22 professional remixes across 8 genres in a single weekend. Here's the full build log."
 excerpt: "We took one independent artist, three original tracks, and an AI production pipeline — and shipped 22 professional remixes across 8 genres in a single weekend. Here's the full build log."
 tags: [ai-music, case-study, timbre, artist-management, creative-ai, 2026]

@@ -1,7 +1,7 @@
 ---
 title: "7 Best Free AI Automation Courses in 2026 (I Reviewed Them All)"
 date: 2026-04-14
-author: Sophia Cave
+author: Sophie Cave
 description: "Looking for free AI automation courses in 2026? I tested every major option. Here are the 7 that actually teach you to build real automations — not just theory."
 excerpt: "Looking for free AI automation courses in 2026? I tested every major option. Here are the 7 that actually teach you to build real automations — not just theory."
 tags: [ai-automation, courses, free, 2026, education, automation]

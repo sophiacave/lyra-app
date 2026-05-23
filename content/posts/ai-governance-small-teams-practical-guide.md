@@ -1,7 +1,7 @@
 ---
 title: "AI Governance for Small Teams: A Practical Framework That Won't Slow You Down"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "A practical AI governance framework built for small teams and startups. Covers policies, risk assessment, data handling, and compliance without enterprise bloat."
 excerpt: "A practical AI governance framework built for small teams and startups. Covers policies, risk assessment, data handling, and compliance without enterprise bloat."
 tags: [ai-governance, small-teams, ai-policy, compliance, framework, startups, 2026]

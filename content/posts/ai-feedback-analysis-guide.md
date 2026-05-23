@@ -1,7 +1,7 @@
 ---
 title: "How to Use AI for Feedback Analysis: Turn Raw Responses Into Action"
 date: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "Use AI to analyze customer feedback, survey responses, and reviews at scale. Real techniques using Claude and ChatGPT to find patterns, sentiment, and actionable insights."
 excerpt: "Use AI to analyze customer feedback, survey responses, and reviews at scale. Real techniques using Claude and ChatGPT to find patterns, sentiment, and actionable insights."
 tags: [ai-feedback-analysis, sentiment-analysis, customer-feedback, claude, data-analysis, 2026, business]

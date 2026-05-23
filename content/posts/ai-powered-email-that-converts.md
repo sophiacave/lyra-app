@@ -1,7 +1,7 @@
 ---
 title: "AI-Powered Email That Actually Converts"
 date: 2026-04-08
-author: Sophia Cave
+author: Sophie Cave
 description: "Most AI-written emails sound like robots wrote them. Here's how to use Claude to write emails that convert — sales, newsletters, and cold outreach that actually gets replies."
 excerpt: "Most AI-written emails sound like robots wrote them. Here's how to use Claude to write emails that convert — sales, newsletters, and cold outreach that actually gets replies."
 tags: [email, ai-writing, conversion, marketing, claude]

@@ -1,7 +1,7 @@
 ---
 title: "How to Run AI Models Locally with Ollama (Complete 2026 Guide)"
 date: 2026-05-03
-author: Sophia Cave
+author: Sophie Cave
 description: "Run powerful AI models on your own machine — no API keys, no cloud costs, no data leaving your laptop. Step-by-step Ollama setup for Mac, Linux, and Windows."
 excerpt: "Run powerful AI models on your own machine — no API keys, no cloud costs, no data leaving your laptop. Step-by-step Ollama setup for Mac, Linux, and Windows."
 tags: [ai-tools, local-ai, ollama, privacy, tutorial]

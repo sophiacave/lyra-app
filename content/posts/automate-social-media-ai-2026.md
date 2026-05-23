@@ -2,7 +2,7 @@
 title: "How to Automate Your Social Media with AI (Without Losing Your Voice)"
 slug: automate-social-media-ai-2026
 date: 2026-04-10
-author: Sophia Cave
+author: Sophie Cave
 description: "AI can handle 80% of your social media workload. Here's exactly how to automate content creation, scheduling, and repurposing — while keeping your posts authentic."
 excerpt: "AI can handle 80% of your social media workload. Here's exactly how to automate content creation, scheduling, and repurposing — while keeping your posts authentic."
 tags: [social-media, ai-automation, content-marketing, claude, small-business, 2026]

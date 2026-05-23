@@ -1,7 +1,7 @@
 ---
 title: "Trans Day of Visibility: Building in the Open"
 date: 2026-03-31
-author: Sophia Cave
+author: Sophie Cave
 description: "On Trans Day of Visibility, Like One's founder reflects on what it means to build a company as a trans woman — and why visibility without action isn't enough."
 excerpt: "On Trans Day of Visibility, Like One's founder reflects on what it means to build a company as a trans woman — and why visibility without action isn't enough."
 tags: [tdov, trans-visibility, personal, founder-story, inclusion]

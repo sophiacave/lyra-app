@@ -1,7 +1,7 @@
 ---
 title: "AI for Freelancers: How to Double Your Output Without Doubling Your Hours"
 date: 2026-04-21
-author: Sophia Cave
+author: Sophie Cave
 description: "Most freelancers waste 60% of their week on work that never hits an invoice. AI doesn't give you more hours — it kills the ones that were never making you money. Here are five systems that reclaim 10+ hours per week."
 excerpt: "Most freelancers waste 60% of their week on work that never hits an invoice. AI doesn't give you more hours — it kills the ones that were never making you money."
 tags: [freelancing, productivity, ai-tools, solopreneur, automation, claude-ai, 2026]

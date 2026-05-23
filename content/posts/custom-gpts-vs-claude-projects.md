@@ -2,7 +2,7 @@
 title: "Claude Projects vs Custom GPTs: The Real Differences (2026)"
 date: 2026-03-28
 updated: 2026-04-19
-author: Sophia Cave
+author: Sophie Cave
 description: "Claude Projects vs Custom GPTs — which one actually works for business? After building 40+ of each, here's the honest comparison with real examples and clear winner."
 excerpt: "After building 40+ Custom GPTs and Claude Projects, here's the honest verdict. Projects win for business — but GPTs still own one category. Full comparison with examples."
 tags: [claude, chatgpt, comparison, ai-tools, projects]

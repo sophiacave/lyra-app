@@ -1,7 +1,7 @@
 ---
 title: "From AI Curious to AI Native: A Roadmap"
 date: 2026-04-01
-author: Sophia Cave
+author: Sophie Cave
 description: "Most people are stuck in the AI-curious phase — reading articles, watching demos, never building. Here's the exact roadmap to go from curious to native in 30 days."
 excerpt: "Most people are stuck in the AI-curious phase — reading articles, watching demos, never building. Here's the exact roadmap to go from curious to native in 30 days."
 tags: [ai-adoption, roadmap, beginners, productivity]

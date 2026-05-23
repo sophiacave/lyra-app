@@ -2,7 +2,7 @@
 title: "Differences Between Claude's Built-in Tools and Custom Tools (2026)"
 date: 2026-04-19
 updated: 2026-05-02
-author: Sophia Cave
+author: Sophie Cave
 description: "What's the difference between Claude's built-in tools and custom tools? Artifacts, web search, and analysis vs MCP servers, API tool use, and Projects — with real examples and a decision framework."
 excerpt: "What's the difference between Claude's built-in tools and custom tools? Artifacts, web search, and analysis vs MCP servers, API tool use, and Projects — with real examples and a decision framework."
 tags: [claude, ai-tools, mcp, custom-tools, built-in-tools, comparison, tutorial]
