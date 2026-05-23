@@ -3497,8 +3497,8 @@ select:focus-visible {
   flex-wrap: wrap;
 }
 .site-btn-primary {
-  background: var(--accent-warm);
-  color: var(--surface-base);
+  background: var(--accent-purple);
+  color: #000;
   padding: 0.875rem var(--space-8);
   min-height: 48px;
   display: inline-flex;
@@ -3508,15 +3508,15 @@ select:focus-visible {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-base);
   text-decoration: none;
-  display: inline-block;
-  transition: all var(--transition-base);
+  transition: all 0.3s ease-out;
   border: none;
   cursor: pointer;
   font-family: var(--font-family);
 }
 .site-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(251,146,60,0.3);
+  transform: translateY(-1px);
+  background: #d4a5ff;
+  box-shadow: 0 8px 28px rgba(192,132,252,0.25);
 }
 .site-btn-primary:active {
   transform: translateY(0) scale(0.98);
