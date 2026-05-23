@@ -1,7 +1,7 @@
 ---
 title: "Best Custom Instructions for Claude AI: Complete Setup Guide (2026)"
 date: 2026-04-19
-updated: 2026-05-22
+updated: 2026-05-23
 author: Sophie Cave
 description: "The best custom instructions for Claude AI — ready-to-use templates for writing, coding, research, and business. Set up Claude Projects and system prompts in 5 minutes. Copy-paste examples included."
 excerpt: "The best custom instructions for Claude AI — ready-to-use templates for writing, coding, research, and business. Set up Claude Projects and system prompts in 5 minutes. Copy-paste examples included."
@@ -21,6 +21,10 @@ faq:
     a: "Start with your role and what you use Claude for, your preferred response format (length, structure, tone), any domain knowledge Claude should assume you have, and explicit rules about what to do and not do. The best instructions are specific: 'always use code examples in Python, never explain basic syntax, respond in under 200 words unless I ask for detail' beats 'be helpful and concise.'"
   - q: "How many Claude Projects can I create?"
     a: "Claude Pro and Team plans let you create multiple Projects with no practical limit for normal use. Each Project can have its own system prompt and uploaded files. Power users typically create 5-10 Projects covering their main workflows — writing, coding, research, email, analysis — each with tailored instructions."
+  - q: "What is CLAUDE.md and how does it work?"
+    a: "CLAUDE.md is a custom instructions file used by Claude Code, Anthropic's CLI for developers. You place it in your repository root and Claude Code reads it on every session. It works like a Project system prompt but is version-controlled with your code, so your whole team shares the same AI instructions. You can also create a global ~/.claude/CLAUDE.md for instructions that apply to all projects."
+  - q: "What are the best custom instructions for Claude Code?"
+    a: "The best CLAUDE.md instructions include your tech stack (languages, frameworks, databases), coding rules (never use 'any' type, always include error handling), file structure overview, testing requirements, and critical constraints (never modify migration files, never log PII). Keep it under 500 words and focus on rules that save you from repeating corrections."
 ---
 
 # Best Custom Instructions for Claude AI: Projects, System Prompts, and Persistent Context
@@ -159,6 +163,134 @@ When you update your instructions, note the date and what changed. "v3 — 2026-
 ### Testing Your Instructions
 
 After setting up a Project, ask Claude to write something you've already written. Compare. Where it misses, your instructions are incomplete. Three rounds of this and your instructions are dialed in. See [how to train AI to write like you](/blog/how-to-train-ai-to-write-like-you/) for the full process.
+
+## Claude Code Custom Instructions (CLAUDE.md)
+
+If you use [Claude Code](/blog/claude-agent-sdk-tutorial-build-first-ai-agent/) — Anthropic's CLI for developers — custom instructions work differently. Instead of Projects, you create a `CLAUDE.md` file in your repository root. Claude Code reads it on every session.
+
+This is the most powerful custom instructions pattern because it's **version-controlled with your code**. Your team shares the same instructions. Your CI/CD respects the same rules.
+
+### Minimal CLAUDE.md Example
+
+```markdown
+# Project: My SaaS App
+
+## Stack
+- Next.js 16 + TypeScript 5.x
+- Tailwind CSS v4
+- PostgreSQL via Drizzle ORM
+
+## Rules
+- Never use `any` type. Use `unknown` and narrow.
+- All API routes return `{ data, error }` shape.
+- Tests required for every new function.
+- Commit messages: conventional commits format.
+
+## File Structure
+- `app/` — Next.js app router pages
+- `lib/` — shared utilities and database
+- `components/` — React components
+```
+
+### Advanced CLAUDE.md for Teams
+
+```markdown
+# CLAUDE.md — Acme Corp
+
+## Identity
+You are a senior engineer working on Acme's billing system.
+This is a production system processing real payments.
+
+## Critical Rules
+- NEVER modify migration files after they've been applied
+- NEVER log PII (email, name, card numbers)
+- All Stripe API calls go through lib/stripe-client.ts
+- Database changes require a migration, never raw ALTER TABLE
+
+## Testing
+- Run `npm test` before suggesting any PR
+- Integration tests for all payment flows
+- Mock Stripe in tests, never hit live API
+
+## Style
+- Prefer composition over inheritance
+- No barrel exports (index.ts re-exports)
+- Error messages include the operation that failed
+```
+
+Claude Code also supports `~/.claude/CLAUDE.md` for global instructions that apply to all projects, and `.claude/settings.json` for permission configuration.
+
+## 5 Ready-to-Copy Custom Instructions
+
+### 1. The Solopreneur (Copy This Exactly)
+
+```
+I run a one-person business. I do everything — marketing, product, support, finance.
+
+Rules:
+- Give me the fastest path, not the most thorough
+- Default to free/cheap tools. I'll ask about premium if I need it
+- When I ask "should I," give a yes or no first, then explain
+- Format: bullet points. Never paragraphs unless I ask
+- Don't suggest hiring someone. I can't.
+- Time estimates in hours, not days
+```
+
+### 2. The Technical Writer
+
+```
+I write developer documentation. My readers are mid-level engineers.
+
+Rules:
+- Code examples in every section. Working code, not pseudocode
+- Show the import statement. Always
+- Error handling in examples. Real errors, not "handle error here"
+- No "simply" or "just." If it were simple, they wouldn't be reading docs
+- Structure: what it does → when to use it → code → gotchas
+- Max 3 paragraphs of prose between code blocks
+```
+
+### 3. The Founder Building in Public
+
+```
+I'm a startup founder building [product] for [audience].
+
+Rules:
+- Every answer should consider: does this make money or save money?
+- Default stack: whatever ships fastest
+- When I'm overthinking, say "ship it" and explain why
+- Marketing copy: conversational, specific, no buzzwords
+- Competitor analysis: be honest about where they're better
+- Never say "it depends" without picking a side
+```
+
+### 4. The Data Analyst
+
+```
+I analyze business data. Tools: Python, pandas, SQL, Plotly.
+
+Rules:
+- Always show the SQL or pandas code, not just the answer
+- Use CTEs in SQL, not subqueries
+- Visualizations: clean labels, no chart junk, colorblind-safe palettes
+- Statistical claims need p-values or confidence intervals
+- When data is ambiguous, show both interpretations
+- Format numbers: $1.2M not $1,234,567
+```
+
+### 5. The Creative Director
+
+```
+I direct brand and creative for a DTC brand. My taste: minimal, editorial, Dieter Rams.
+
+Rules:
+- Visual suggestions: reference real brands, not adjectives
+- Copy: under 8 words for headlines. No exclamation marks
+- Color: suggest specific hex codes, not "a warm blue"
+- When I share a design: critique first, suggest second
+- "On brand" means: clean, confident, quiet luxury
+- Never suggest stock photography. Ever
+```
 
 ## Start Here
 
