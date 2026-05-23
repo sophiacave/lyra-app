@@ -39,25 +39,20 @@ const PLANS = [
     btn: { label: `Go Pro — ${pricing.pro.monthly.display}`, href: pricing.pro.monthly.checkoutUrl, style: 'primary', external: true },
   },
   {
-    label: pricing.activeCoupon ? `${pricing.activeCoupon.percentOff}% OFF` : `Best value — save ${pricing.pro.annual.savePct}%`,
+    label: 'Best value — 4 months free',
     name: 'Annual',
-    price: pricing.activeCoupon ? pricing.activeCoupon.salePriceDisplay : `$${pricing.pro.annual.amount}`,
-    was: pricing.activeCoupon ? `$${pricing.pro.annual.amount}/yr` : null,
-    period: pricing.activeCoupon ? '' : '/yr',
-    desc: pricing.activeCoupon
-      ? `Everything in Pro at ${pricing.activeCoupon.saleMonthlyEquiv}. That's ${pricing.activeCoupon.percentOff}% off the annual plan.`
-      : `Everything in Pro. That's ${pricing.pro.annual.monthlyEquiv} — save ${pricing.pro.annual.savePct}% vs monthly.`,
+    price: `$${pricing.pro.annual.amount}`,
+    period: '/yr',
+    desc: `Everything in Pro at just ${pricing.pro.annual.monthlyEquiv}. That's 4 months free vs monthly.`,
     featured: true,
     features: [
       'Everything in Pro',
-      pricing.activeCoupon
-        ? { text: `${pricing.activeCoupon.percentOff}% off — ${pricing.activeCoupon.saleMonthlyEquiv} (was ${pricing.pro.annual.monthlyEquiv})`, highlight: true }
-        : { text: `Save ${pricing.pro.annual.savePct}% vs monthly (${pricing.pro.annual.monthlyEquiv})`, highlight: true },
+      { text: `Just ${pricing.pro.annual.monthlyEquiv} — 4 months free`, highlight: true },
       '12 months of new content',
       'All future content included',
-      { text: 'Cancel or pause anytime', highlight: true },
+      { text: '7-day full refund guarantee', highlight: true },
     ],
-    btn: { label: pricing.activeCoupon ? `Go Annual — ${pricing.activeCoupon.salePriceDisplay}` : `Go Annual — ${pricing.pro.annual.display}`, href: pricing.pro.annual.checkoutUrl, style: 'primary', external: true },
+    btn: { label: `Go Annual — ${pricing.pro.annual.display}`, href: pricing.pro.annual.checkoutUrl, style: 'primary', external: true },
   },
   {
     label: 'Done-with-you', name: 'Consulting', price: `from ${pricing.consulting.starter.display}`, period: '',

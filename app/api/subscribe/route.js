@@ -10,6 +10,7 @@ const corsHeaders = {
 };
 
 const FROM_EMAIL = 'Sophia at Like One <hello@likeone.ai>';
+const AUDIENCE_ID = 'fe062d8b-5da6-4784-a48c-14d6ea7fce2e';
 
 function welcomeHtml() {
   return `<!DOCTYPE html>
@@ -42,27 +43,57 @@ function welcomeHtml() {
 </div></body></html>`;
 }
 
-async function sendWelcomeEmail(email) {
+async function resendFetch(path, options = {}) {
   const key = process.env.RESEND_API_KEY;
-  if (!key) {
-    console.log(`[DRY RUN] Would send welcome email to ${email}`);
-    return;
+  if (!key) return null;
+  const res = await fetch(`https://api.resend.com${path}`, {
+    ...options,
+    headers: {
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  });
+  if (!res.ok) {
+    console.error(`Resend ${path} error: ${res.status} ${await res.text()}`);
+    return null;
   }
-  try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: FROM_EMAIL,
-        to: [email],
-        subject: 'Welcome to Like One — your path starts here',
-        html: welcomeHtml(),
-      }),
-    });
-    if (!res.ok) console.error(`Welcome email error for ${email}: ${await res.text()}`);
-  } catch (err) {
-    console.error(`Welcome email failed for ${email}:`, err);
-  }
+  return res.json();
+}
+
+async function addToAudience(email, source) {
+  return resendFetch(`/audiences/${AUDIENCE_ID}/contacts`, {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      unsubscribed: false,
+      ...(source && { first_name: source }),
+    }),
+  });
+}
+
+async function sendWelcomeEmail(email) {
+  return resendFetch('/emails', {
+    method: 'POST',
+    body: JSON.stringify({
+      from: FROM_EMAIL,
+      to: [email],
+      subject: 'Welcome to Like One — your path starts here',
+      html: welcomeHtml(),
+    }),
+  });
+}
+
+async function sendNotification(email, source) {
+  return resendFetch('/emails', {
+    method: 'POST',
+    body: JSON.stringify({
+      from: FROM_EMAIL,
+      to: ['hello@likeone.ai'],
+      subject: `New subscriber: ${email}`,
+      html: `<p><strong>${email}</strong> just subscribed.</p><p>Source: ${source || 'website'}<br>Time: ${new Date().toISOString()}</p>`,
+    }),
+  });
 }
 
 export async function OPTIONS() {
@@ -80,11 +111,17 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400, headers: corsHeaders });
     }
 
-    // Log subscriber (Vercel logs capture this for now)
-    console.log(`[Subscribe] ${cleanEmail} source=${source || 'website'} goal=${goal?.slice(0, 100) || 'none'}`);
+    const src = source || 'website';
+    console.log(`[Subscribe] ${cleanEmail} source=${src} goal=${goal?.slice(0, 100) || 'none'}`);
 
-    // Send welcome email (non-blocking)
+    // Store in Resend audience (persistent list management)
+    addToAudience(cleanEmail, src);
+
+    // Send welcome email to subscriber
     sendWelcomeEmail(cleanEmail);
+
+    // Notify ourselves (permanent Gmail record)
+    sendNotification(cleanEmail, src);
 
     return NextResponse.json(
       { success: true, message: 'Welcome to the path, friend.' },
