@@ -1,0 +1,22 @@
+# lo-deploy vercelignore — only ship the web app
+# Total project: 175K files. Web app: ~1,400. This file keeps it clean.
+# Built S204. Code with love.
+
+# Heavy local tools (not web)
+studio/
+brain-console/
+timbre-app/
+mcp-servers/
+reference/
+
+# Python environments
+.venv/
+
+# MCP artifacts in public/
+public/brain-mcp/
+public/social-mcp/
+public/namecheap-mcp/
+
+# Build artifacts (Vercel rebuilds)
+.next/
+.git/
