@@ -11,7 +11,9 @@ const ALLOWED_HEADERS = 'Content-Type, Authorization';
 
 // --- Auth config ---
 const AUTH_SECRET = process.env.AUTH_SECRET || process.env.STRIPE_WEBHOOK_SECRET || 'likeone-auth-2026-sovereign';
-const AUTH_GATED_PREFIXES = ['/profile', '/account'];
+// /account handles its own auth state (shows sign-in form when not authed)
+// /profile is purely user data — must be gated
+const AUTH_GATED_PREFIXES = ['/profile'];
 
 function buildCorsHeaders(origin) {
   const headers = new Headers();
@@ -105,7 +107,6 @@ function redirectToLogin(request, returnTo) {
 export const config = {
   matcher: [
     '/profile/:path*',
-    '/account/:path*',
     '/api/v1/:path*',
     '/brain-tools/:path*',
     '/brain-mcp/:path*',
