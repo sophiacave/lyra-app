@@ -27,3 +27,4 @@ get-pip.py
 *.screenplay
 timbre-app/node_modules/
 mcp-servers/*/node_modules/
+reference/collection-claude-code-source-code/
