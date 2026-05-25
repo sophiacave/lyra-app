@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { verifyMagicToken, createSessionToken, sessionCookieHeader } from '../../../lib/auth.js';
+import { upsertProfile } from '../../../lib/supabase.js';
 
 export const runtime = 'nodejs';
 
@@ -17,8 +18,9 @@ export async function GET(req) {
     return NextResponse.redirect(new URL('/account?error=invalid_or_expired', req.url));
   }
 
-  // Create long-lived session
+  // Create long-lived session + upsert profile
   const sessionToken = createSessionToken(result.email);
+  upsertProfile({ email: result.email }).catch(() => {});
   const origin = new URL(req.url).origin;
   const redirectUrl = new URL(returnTo, origin);
 

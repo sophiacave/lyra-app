@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSessionFromRequest, clearSessionCookieHeader } from '../../../lib/auth.js';
 import { getSubscriptionStatus } from '../../../lib/stripe-db.js';
+import { getProfile, getProgress } from '../../../lib/supabase.js';
 
 export const runtime = 'nodejs';
 
@@ -10,12 +11,24 @@ export async function GET(req) {
     return NextResponse.json({ authenticated: false });
   }
 
-  const sub = await getSubscriptionStatus(session.email);
+  // Parallel fetch: Stripe sub status + Supabase profile + progress
+  const [sub, profile, progress] = await Promise.all([
+    getSubscriptionStatus(session.email),
+    getProfile(session.email),
+    getProgress(session.email),
+  ]);
 
   return NextResponse.json({
     authenticated: true,
     email: session.email,
+    name: profile?.full_name || null,
     subscription: sub || { status: 'free', tier: 'free' },
+    progress: {
+      xp: progress.totalXp,
+      level: progress.level,
+      streak: progress.streak,
+      lessonsCompleted: progress.completedLessons.length,
+    },
   });
 }
 

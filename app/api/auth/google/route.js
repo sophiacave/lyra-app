@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createSessionToken, sessionCookieHeader } from '../../../lib/auth.js';
+import { upsertProfile } from '../../../lib/supabase.js';
 
 export const runtime = 'nodejs';
 
@@ -26,6 +27,9 @@ export async function POST(req) {
     // Create our own session (same as magic link auth)
     const sessionToken = createSessionToken(email);
     const cookie = sessionCookieHeader(sessionToken);
+
+    // Upsert user profile in Supabase (fire-and-forget, don't block login)
+    upsertProfile({ email, name, picture }).catch(() => {});
 
     const response = NextResponse.json({
       success: true,
