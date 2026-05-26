@@ -2,6 +2,17 @@
 import { useState, useEffect } from 'react';
 import { getProfile, completeLesson, uncompleteLesson } from '../../../lib/progress-engine';
 
+function syncToServer(courseSlug, lessonSlug, xp) {
+  if (typeof window === 'undefined') return;
+  if (!localStorage.getItem('lo_session')) return;
+  fetch('/api/v1/progress', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({ courseSlug, lessonSlug, xp }),
+  }).catch(() => {});
+}
+
 export default function LessonComplete({ courseSlug, lessonSlug }) {
   const key = `${courseSlug}/${lessonSlug}`;
   const [completed, setCompleted] = useState(false);
@@ -20,6 +31,7 @@ export default function LessonComplete({ courseSlug, lessonSlug }) {
     } else {
       const result = completeLesson(courseSlug, lessonSlug);
       setCompleted(true);
+      syncToServer(courseSlug, lessonSlug, result.xpGained);
 
       const parts = [`+${result.xpGained} XP`];
       if (result.leveledUp && result.newLevel) {

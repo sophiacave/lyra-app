@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SubscribeForm from './components/SubscribeForm';
+import GoogleSignIn from './components/GoogleSignIn';
 
 const LEVELS = [
   { id: 0, name: 'Awareness', emoji: '\uD83D\uDC41\uFE0F', short: "You know AI exists. You're curious but overwhelmed.", detail: "Start with ONE thing. One task you do every day. Don't learn 'AI' — solve YOUR problem.", free: true },
@@ -16,6 +18,41 @@ const LEVELS = [
   { id: 6, name: 'Transcendence', emoji: '\u2728', short: "The system protects your values even when you're moving too fast to notice.", detail: 'Build the conscience layer. Make ethics structural. The system refuses to violate who you are.', free: false },
 ];
 
+function LoginModal() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const showLogin = searchParams.get('login') === '1';
+  const returnTo = searchParams.get('returnTo') || '/account';
+
+  if (!showLogin) return null;
+
+  return (
+    <div className="liquid-modal-backdrop" onClick={() => router.replace('/', { scroll: false })}>
+      <div className="liquid-modal" onClick={e => e.stopPropagation()} style={{ padding: 'var(--space-10)' }}>
+        <div className="liquid-edge" />
+        <button
+          className="academy-modal-close"
+          onClick={() => router.replace('/', { scroll: false })}
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <div className="academy-modal-header">
+          <div className="academy-modal-emoji">&#x1F512;</div>
+          <div className="academy-modal-title">Sign in to continue</div>
+          <div className="academy-modal-desc">
+            Sign in with Google to access your profile, track progress, and unlock Pro content.
+          </div>
+        </div>
+        <GoogleSignIn
+          onSuccess={() => { window.location.href = returnTo; }}
+          context="signin"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [activeLevel, setActiveLevel] = useState(0);
   const L = LEVELS[activeLevel];
@@ -24,6 +61,7 @@ export default function HomePage() {
     <div className="site-page">
       <a href="#main-content" className="skip-link">Skip to content</a>
       <Header variant="site" />
+      <Suspense><LoginModal /></Suspense>
 
       {/* Hero */}
       <main id="main-content">
