@@ -120,8 +120,11 @@ export default async function CoursePage({ params }) {
           <span className="glass-badge">
             {course.tierEmoji} {course.tierName}
           </span>
-          <span className="glass-badge badge-dim">
-            {course.lessonCount} lessons
+          <span className="glass-badge badge-dim lo-hide-pro">
+            {freeLessons}/{course.lessonCount} unlocked
+          </span>
+          <span className="glass-badge badge-green lo-show-pro">
+            {course.lessonCount}/{course.lessonCount} unlocked
           </span>
           <span className="glass-badge badge-dim">
             ⏱ {timeLabel}
@@ -136,11 +139,6 @@ export default async function CoursePage({ params }) {
             ))}
             <span className="academy-difficulty-label">{diff.label}</span>
           </span>
-          {freeLessons > 0 && (
-            <span className="glass-badge badge-green">
-              {freeLessons} free lesson{freeLessons > 1 ? 's' : ''}
-            </span>
-          )}
         </div>
       </div>
 

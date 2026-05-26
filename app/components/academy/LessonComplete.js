@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { getProfile, completeLesson, uncompleteLesson } from '../../../lib/progress-engine';
+import { getProfile, completeLesson } from '../../../lib/progress-engine';
 
 function syncToServer(courseSlug, lessonSlug, xp) {
   if (typeof window === 'undefined') return;
@@ -24,27 +24,28 @@ export default function LessonComplete({ courseSlug, lessonSlug }) {
   }, [key]);
 
   const toggle = () => {
-    if (completed) {
-      uncompleteLesson(courseSlug, lessonSlug);
-      setCompleted(false);
-      setFeedback(null);
-    } else {
-      const result = completeLesson(courseSlug, lessonSlug);
-      setCompleted(true);
-      syncToServer(courseSlug, lessonSlug, result.xpGained);
+    if (completed) return; // Once complete, stays complete — prevents XP exploit
 
-      const parts = [`+${result.xpGained} XP`];
-      if (result.leveledUp && result.newLevel) {
-        parts.push(`Level ${result.newLevel.level}: ${result.newLevel.emoji} ${result.newLevel.name}!`);
-      }
-      if (result.newAchievements.length > 0) {
-        for (const a of result.newAchievements) {
-          parts.push(`${a.emoji} ${a.name}`);
-        }
-      }
-      setFeedback(parts.join(' · '));
-      setTimeout(() => setFeedback(null), 4000);
+    const result = completeLesson(courseSlug, lessonSlug);
+    if (result.xpGained === 0) {
+      // Already completed in profile (e.g. from another tab)
+      setCompleted(true);
+      return;
     }
+    setCompleted(true);
+    syncToServer(courseSlug, lessonSlug, result.xpGained);
+
+    const parts = [`+${result.xpGained} XP`];
+    if (result.leveledUp && result.newLevel) {
+      parts.push(`Level ${result.newLevel.level}: ${result.newLevel.emoji} ${result.newLevel.name}!`);
+    }
+    if (result.newAchievements.length > 0) {
+      for (const a of result.newAchievements) {
+        parts.push(`${a.emoji} ${a.name}`);
+      }
+    }
+    setFeedback(parts.join(' · '));
+    setTimeout(() => setFeedback(null), 4000);
   };
 
   return (

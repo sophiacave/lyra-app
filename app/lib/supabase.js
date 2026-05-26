@@ -86,6 +86,19 @@ export async function completeLesson({ email, courseSlug, lessonSlug, xp = 10 })
   const sb = getSupabase();
   if (!sb) return null;
 
+  const normalEmail = email.toLowerCase().trim();
+
+  // Check if already completed — prevent duplicate XP
+  const { data: existing } = await sb
+    .from('lesson_progress')
+    .select('id')
+    .eq('user_email', normalEmail)
+    .eq('course_slug', courseSlug)
+    .eq('lesson_slug', lessonSlug)
+    .maybeSingle();
+
+  if (existing) return existing; // Already completed, no XP granted
+
   // Fetch current streak for momentum multiplier
   const progress = await getProgress(email);
   const momentum = momentumMultiplier(progress.streak);
@@ -93,26 +106,25 @@ export async function completeLesson({ email, courseSlug, lessonSlug, xp = 10 })
 
   const { data, error } = await sb
     .from('lesson_progress')
-    .upsert(
-      {
-        user_email: email.toLowerCase().trim(),
-        course_slug: courseSlug,
-        lesson_slug: lessonSlug,
-        xp_earned: acceleratedXp,
-        completed_at: new Date().toISOString(),
-      },
-      { onConflict: 'user_email,course_slug,lesson_slug' }
-    )
+    .insert({
+      user_email: normalEmail,
+      course_slug: courseSlug,
+      lesson_slug: lessonSlug,
+      xp_earned: acceleratedXp,
+      completed_at: new Date().toISOString(),
+    })
     .select()
     .single();
 
   if (error) {
+    // Unique constraint race condition — lesson was completed between check and insert
+    if (error.code === '23505') return { id: 'duplicate' };
     console.error('Lesson progress save failed:', error.message);
     return null;
   }
 
-  // Atomic XP increment with accelerated amount
-  await sb.rpc('increment_xp', { user_email: email.toLowerCase().trim(), xp_amount: acceleratedXp }).catch(() => {});
+  // Atomic XP increment — only on first completion
+  await sb.rpc('increment_xp', { user_email: normalEmail, xp_amount: acceleratedXp }).catch(() => {});
 
   return data;
 }
