@@ -48,21 +48,49 @@ function getEarnedBadges(profile) {
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState(null);
+  const [serverData, setServerData] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     setProfile(loadProfile());
+
+    // Load user info from localStorage (set by GoogleSignIn)
+    const email = localStorage.getItem('lo_email');
+    const name = localStorage.getItem('lo_display_name');
+    const picture = localStorage.getItem('lo_picture');
+    if (email) setUser({ email, name, picture });
+
+    // Fetch server-persisted progress
+    fetch('/api/v1/progress', { credentials: 'include' })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data && !data.error) setServerData(data); })
+      .catch(() => {});
   }, []);
 
-  const xp = profile?.xp || 0;
-  const streak = profile?.streak?.current || 0;
-  const bestStreak = profile?.streak?.best || 0;
-  const lessonsCompleted = Object.keys(profile?.lessons || {}).length;
+  // Merge: use server data where available (source of truth), fall back to local
+  const serverXp = serverData?.xp || 0;
+  const localXp = profile?.xp || 0;
+  const xp = Math.max(serverXp, localXp);
+  const serverLessons = serverData?.completedLessons || [];
+  const localLessons = Object.keys(profile?.lessons || {});
+  const lessonsCompleted = Math.max(serverLessons.length, localLessons.length);
+  const streak = serverData?.streak || profile?.streak?.current || 0;
+  const bestStreak = profile?.streak?.best || streak;
   const coursesCompleted = profile?.coursesCompleted || 0;
   const earned = getEarnedBadges(profile);
 
   return (
     <main className="profile-page">
       <div className="profile-hero liquid-panel liquid-hero">
+        {user && (
+          <div className="profile-user-info">
+            {user.picture && <img src={user.picture} alt="" className="profile-avatar" referrerPolicy="no-referrer" />}
+            <div>
+              {user.name && <div className="profile-user-name">{user.name}</div>}
+              <div className="profile-user-email">{user.email}</div>
+            </div>
+          </div>
+        )}
         <h1>Your Progress</h1>
         <div className="profile-stats">
           <div className="stat">
