@@ -1,9 +1,10 @@
 ---
-title: "7 Best Free AI Automation Courses in 2026 (I Reviewed Them All)"
+title: "7 Best Free AI Automation Courses in 2026 (Reviewed & Ranked)"
 date: 2026-04-14
+updated: 2026-05-25
 author: Sophie Cave
-description: "Looking for free AI automation courses in 2026? I tested every major option. Here are the 7 that actually teach you to build real automations — not just theory."
-excerpt: "Looking for free AI automation courses in 2026? I tested every major option. Here are the 7 that actually teach you to build real automations — not just theory."
+description: "The 7 best free AI automation courses in 2026, tested and ranked. Learn to build real automations with Make.com, n8n, Claude & more — no code required."
+excerpt: "The 7 best free AI automation courses in 2026, tested and ranked. Learn to build real automations with Make.com, n8n, Claude & more — no code required."
 tags: [ai-automation, courses, free, 2026, education, automation]
 faq:
   - q: "Are there good free AI automation courses?"
