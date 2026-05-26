@@ -1,9 +1,10 @@
 ---
-title: "How to Use AI for Feedback Analysis: Turn Raw Responses Into Action"
+title: "AI Feedback Analysis & Categorization: Turn Raw Responses Into Action (2026)"
 date: 2026-04-19
+updated: 2026-05-25
 author: Sophie Cave
-description: "Use AI to analyze customer feedback, survey responses, and reviews at scale. Real techniques using Claude and ChatGPT to find patterns, sentiment, and actionable insights."
-excerpt: "Use AI to analyze customer feedback, survey responses, and reviews at scale. Real techniques using Claude and ChatGPT to find patterns, sentiment, and actionable insights."
+description: "Use AI to categorize and analyze customer feedback at scale. Sentiment analysis, auto-tagging, and pattern detection with Claude and ChatGPT — real techniques with examples."
+excerpt: "Use AI to categorize and analyze customer feedback at scale. Sentiment analysis, auto-tagging, and pattern detection with Claude and ChatGPT — real techniques with examples."
 tags: [ai-feedback-analysis, sentiment-analysis, customer-feedback, claude, data-analysis, 2026, business]
 faq:
   - q: "Can AI analyze customer feedback accurately?"
