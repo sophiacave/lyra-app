@@ -86,6 +86,11 @@ export async function completeLesson({ email, courseSlug, lessonSlug, xp = 10 })
   const sb = getSupabase();
   if (!sb) return null;
 
+  // Fetch current streak for momentum multiplier
+  const progress = await getProgress(email);
+  const momentum = momentumMultiplier(progress.streak);
+  const acceleratedXp = Math.round(xp * momentum);
+
   const { data, error } = await sb
     .from('lesson_progress')
     .upsert(
@@ -93,7 +98,7 @@ export async function completeLesson({ email, courseSlug, lessonSlug, xp = 10 })
         user_email: email.toLowerCase().trim(),
         course_slug: courseSlug,
         lesson_slug: lessonSlug,
-        xp_earned: xp,
+        xp_earned: acceleratedXp,
         completed_at: new Date().toISOString(),
       },
       { onConflict: 'user_email,course_slug,lesson_slug' }
@@ -106,8 +111,8 @@ export async function completeLesson({ email, courseSlug, lessonSlug, xp = 10 })
     return null;
   }
 
-  // Update total XP on profile
-  await sb.rpc('increment_xp', { user_email: email.toLowerCase().trim(), xp_amount: xp }).catch(() => {});
+  // Atomic XP increment with accelerated amount
+  await sb.rpc('increment_xp', { user_email: email.toLowerCase().trim(), xp_amount: acceleratedXp }).catch(() => {});
 
   return data;
 }
@@ -145,8 +150,28 @@ export async function getProgress(email) {
     })),
     totalXp,
     streak,
-    level: Math.floor(totalXp / 100) + 1,
+    momentum: momentumMultiplier(streak),
+    level: calculateLevel(totalXp),
   };
+}
+
+/**
+ * Momentum multiplier — Wibisono/Nesterov insight applied to learning:
+ * Consistent learners accelerate. Streak carries trajectory forward.
+ * Caps at 2× (20-day streak). Same curve, faster traversal.
+ */
+function momentumMultiplier(streak) {
+  return 1 + 0.05 * Math.min(streak, 20);
+}
+
+/**
+ * Level curve — mirrors Nesterov convergence profile:
+ * Early levels fast (low-hanging fruit), mastery levels slow (diminishing returns).
+ * Uses sqrt scaling: level N requires N² * 50 total XP.
+ * Level 1: 0 XP, Level 5: 1250 XP, Level 10: 5000 XP, Level 20: 20000 XP
+ */
+function calculateLevel(totalXp) {
+  return Math.floor(Math.sqrt(totalXp / 50)) + 1;
 }
 
 function calculateStreak(lessons) {
