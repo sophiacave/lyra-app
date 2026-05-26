@@ -1,10 +1,10 @@
 ---
-title: "30 Best Free AI Courses in 2026: Claude, Agents, Automation & More"
+title: "30 Best Free AI Courses in 2026 — Start Learning in 60 Seconds"
 date: 2026-04-02
 updated: 2026-05-25
 author: Sophie Cave
-description: "The 30 best free AI courses in 2026 — from prompt engineering to multi-agent systems. No signup, no credit card. Start your first lesson in 60 seconds."
-excerpt: "The 30 best free AI courses in 2026 — from prompt engineering to multi-agent systems. No signup, no credit card. Start your first lesson in 60 seconds."
+description: "The 30 best free AI courses in 2026: prompt engineering, AI agents, automation, Claude & more. No signup, no credit card. Start your first lesson now."
+excerpt: "The 30 best free AI courses in 2026: prompt engineering, AI agents, automation, Claude & more. No signup, no credit card. Start your first lesson now."
 tags: [ai-courses, free-courses, ai-education, claude, beginner, agents, automation]
 faq:
   - q: "Are these AI courses really free?"
