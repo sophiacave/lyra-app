@@ -1,6 +1,6 @@
 ---
 title: "The AI Education Scam Nobody Talks About"
-date: 2026-05-29
+date: 2026-05-28
 author: Sophie Cave
 description: "AI courses cost $500 and teach what YouTube covers for free. AI companies fund education that funnels users to their API. Here's what real AI education looks like."
 excerpt: "AI courses cost $500 and teach what YouTube covers for free. AI companies fund education that funnels users to their API. Here's what real AI education looks like."

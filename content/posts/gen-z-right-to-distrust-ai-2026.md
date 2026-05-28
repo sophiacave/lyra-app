@@ -1,6 +1,6 @@
 ---
 title: "Gen Z Is Right to Distrust AI"
-date: 2026-05-29
+date: 2026-05-28
 author: Sophie Cave
 description: "Gen Z excitement about AI dropped 14 points. Their anger rose to 31%. They're not irrational. They're correct. Here's why, and what AI built differently looks like."
 excerpt: "Gen Z excitement about AI dropped 14 points. Their anger rose to 31%. They're not irrational. They're correct. Here's why, and what AI built differently looks like."
