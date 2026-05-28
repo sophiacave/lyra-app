@@ -1,5 +1,5 @@
 ---
-title: "What Are Agentic Loops? The Architecture Behind Every AI Agent (2026)"
+title: "Agentic Loops Explained: How Every AI Agent Works"
 date: 2026-04-19
 updated: 2026-05-25
 author: Sophie Cave

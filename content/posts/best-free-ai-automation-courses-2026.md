@@ -1,5 +1,5 @@
 ---
-title: "7 Best Free AI Automation Courses in 2026 (Reviewed & Ranked)"
+title: "7 Best Free AI Automation Courses (2026 Ranked)"
 date: 2026-04-14
 updated: 2026-05-25
 author: Sophie Cave
@@ -105,6 +105,10 @@ You do not need expensive tools. Here is what I use to run a fully automated bus
 Total fixed cost: under $50/month. That runs a business with 52 courses, automated email sequences, payment processing, and a persistent AI brain.
 
 The courses above will teach you the pieces. Connecting them into a system that runs autonomously — that is what [Like One Academy](https://likeone.ai/academy/) focuses on.
+
+**Keep reading:**
+- [30 Best Free AI Courses in 2026](/blog/best-free-ai-courses-2026/) — the full list across all AI topics
+- [What Are Agentic Loops?](/blog/what-are-agentic-loops-explained/) — the architecture behind AI automation
 
 ---
 

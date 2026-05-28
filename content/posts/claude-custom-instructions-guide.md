@@ -1,5 +1,5 @@
 ---
-title: "11 Best Custom Instructions for Claude AI — Copy-Paste Templates (2026)"
+title: "11 Claude Custom Instructions (Copy-Paste Ready)"
 date: 2026-04-19
 updated: 2026-05-25
 author: Sophie Cave

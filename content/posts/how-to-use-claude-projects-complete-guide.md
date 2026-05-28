@@ -1,5 +1,5 @@
 ---
-title: "How to Use Claude Projects: Templates, Setup & the Setting Everyone Misses (2026)"
+title: "Claude Projects Guide: The Setting Everyone Misses"
 date: 2026-04-02
 updated: 2026-05-15
 author: Sophie Cave
