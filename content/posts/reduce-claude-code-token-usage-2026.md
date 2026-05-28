@@ -102,6 +102,38 @@ When you finish one task and start another, use /clear. Starting a new conversat
 
 I /clear between tasks and rely on CLAUDE.md plus @file references to provide the context Claude needs for the new task. This prevents the gradual context bloat that makes late-session messages expensive.
 
+## The Nuclear Option: Local RAG for Claude Code
+
+Everything above is table stakes. This is the technique that changes the game entirely.
+
+Instead of cramming context into CLAUDE.md (which costs tokens every turn) or pasting background into conversations (which compounds), pair Claude Code with a local RAG pipeline that injects only the context your current task needs.
+
+The architecture:
+
+**Layer 1: Lean CLAUDE.md (rules only).** Under 400 words. Your tech stack, testing commands, hard constraints. Nothing that changes between sessions. This costs maybe 800 tokens per turn instead of 5,000.
+
+**Layer 2: @file references for dynamic context.** Before each session, a script queries your local vector database for context relevant to your current task. It writes this to a file like `.claude/session-context.md`. Your CLAUDE.md says "read @.claude/session-context.md for current project context." Claude Code loads this once, on demand, instead of carrying it on every turn.
+
+**Layer 3: Local embeddings.** Use Ollama with an embedding model like `mxbai-embed-large` to embed your past session summaries, debugging solutions, architecture decisions, and error patterns into a local vector store like ChromaDB. No API costs. No data leaving your machine. Runs on a cron job.
+
+**Layer 4: Smart retrieval.** When a new session starts, the boot script reads your task list, embeds the query, searches the vector store, and pulls back only the 5-10 most relevant pieces of context. A debugging session gets past debugging solutions. A deploy session gets deploy procedures. A blog writing session gets content guidelines.
+
+**What this replaces:**
+
+Without RAG: you keep a massive CLAUDE.md with everything Claude might need. 5,000+ tokens loaded on every single message. Most of it irrelevant to the current task.
+
+With RAG: a lean CLAUDE.md with rules (800 tokens per turn) plus a task-specific context file loaded once (1,000-2,000 tokens, once). Total context cost drops by 70-80% while relevance goes up.
+
+**The setup:**
+
+1. Install Ollama and pull an embedding model: `ollama pull mxbai-embed-large`
+2. Install ChromaDB: `pip install chromadb`
+3. Write a script that embeds your session notes, CLAUDE.md sections, and debugging solutions
+4. Write a pre-session script that queries the vector store and generates a context file
+5. Reference the context file from your CLAUDE.md with an @file reference
+
+This is what we run at Like One. Every Claude Code session starts with a boot script that queries our vector store, pulls relevant context from 1,300+ embedded memories, and generates a session-specific context file. The CLAUDE.md stays lean. The context stays relevant. The tokens stay low.
+
 ## What 80% Reduction Looks Like
 
 Before optimizing: sessions averaged 500K-800K tokens for a few hours of work.
@@ -113,6 +145,8 @@ The compound effect matters. Over 200+ sessions, this is the difference between 
 ## The One Rule
 
 Every token Claude Code processes should earn its place. If it does not help Claude give you a better answer, it is waste. Optimize your inputs, and everything downstream improves.
+
+The best token is the one that was never sent. Local RAG makes sure only the right tokens make the trip.
 
 ---
 
