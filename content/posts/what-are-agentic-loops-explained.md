@@ -1,10 +1,10 @@
 ---
-title: "Agentic Loops Explained: How Every AI Agent Works"
+title: "Agentic Loops Explained: Build a Working AI Agent in 20 Minutes"
 date: 2026-04-19
-updated: 2026-05-25
+updated: 2026-05-28
 author: Sophie Cave
-description: "Agentic loops explained: the observe-reason-act cycle powering Claude Code, Devin & ChatGPT. With Python code you can copy. Build a working AI agent loop in 20 minutes."
-excerpt: "Agentic loops explained: the observe-reason-act cycle powering Claude Code, Devin & ChatGPT. With Python code you can copy. Build a working AI agent loop in 20 minutes."
+description: "Learn how agentic loops work — the observe-reason-act cycle behind Claude Code, Devin & ChatGPT agents. Includes copy-paste Python code to build your own AI agent loop."
+excerpt: "Learn how agentic loops work — the observe-reason-act cycle behind Claude Code, Devin & ChatGPT agents. Includes copy-paste Python code to build your own AI agent loop."
 tags: [ai-agents, agentic-loops, agent-loop, claude, automation, ai-architecture, 2026]
 faq:
   - q: "What is an agentic loop in AI?"

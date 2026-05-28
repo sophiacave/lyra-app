@@ -1,10 +1,10 @@
 ---
-title: "11 Claude Custom Instructions (Copy-Paste Ready)"
+title: "11 Claude Custom Instructions That Actually Work (2026)"
 date: 2026-04-19
-updated: 2026-05-25
+updated: 2026-05-28
 author: Sophie Cave
-description: "11 ready-to-use Claude AI custom instructions for coding, writing, research & business. Copy-paste templates for Claude Projects + CLAUDE.md. Updated May 2026."
-excerpt: "11 ready-to-use Claude AI custom instructions for coding, writing, research & business. Copy-paste templates for Claude Projects + CLAUDE.md."
+description: "Copy-paste these 11 Claude custom instructions for coding, writing, research & data analysis. Ready-to-use templates for Claude Projects, system prompts & CLAUDE.md."
+excerpt: "Copy-paste these 11 Claude custom instructions for coding, writing, research & data analysis. Ready-to-use templates for Claude Projects, system prompts & CLAUDE.md."
 tags: [claude, custom-instructions, claude-projects, system-prompts, prompt-engineering, ai-tools, best-practices, 2026]
 faq:
   - q: "What are the best custom instructions for Claude AI?"
