@@ -177,3 +177,8 @@ We published our Brain-as-Bus architecture as an academic paper. If you are buil
 ---
 
 *Building AI that remembers is one of the 52 courses in the [Like One Academy](/academy). Start with [AI Foundations](/academy/ai-foundations) if you are new, or jump straight to [RAG and Vector Search](/academy/rag-vector-search) if you are ready to build.*
+
+**Keep reading:**
+- [11 Best Custom Instructions for Claude AI](/blog/claude-custom-instructions-guide/) — set up persistent instructions with CLAUDE.md and Projects
+- [What Are Agentic Loops?](/blog/what-are-agentic-loops-explained/) — memory is just one piece of the agent architecture
+- [Sovereign AI: Why We Moved Our Brain Off the Cloud](/blog/sovereign-ai-local-first-why-we-ditched-the-cloud-2026/) — local-first AI infrastructure

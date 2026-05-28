@@ -256,3 +256,7 @@ The real power isn't in any single feature. It's that you can build an AI cowork
 **Skip the boilerplate:** Use our **[AI Agent Blueprint Builder](/tools/agent-builder/)** to generate a complete agent codebase — select your capabilities, model, and framework, then export production-ready code. Pro members only.
 
 *Want to go deeper? [Like One Academy](/academy) covers AI agent architecture, MCP integration, and building production AI systems — start free.*
+
+**Keep reading:**
+- [What Are Agentic Loops?](/blog/what-are-agentic-loops-explained/) — the observe-reason-act pattern behind every AI agent
+- [11 Best Custom Instructions for Claude AI](/blog/claude-custom-instructions-guide/) — copy-paste templates for Claude Projects + CLAUDE.md

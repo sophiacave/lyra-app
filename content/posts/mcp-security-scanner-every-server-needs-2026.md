@@ -9,7 +9,7 @@ faq:
   - q: "What security risks do MCP servers have?"
     a: "MCP servers are vulnerable to the same attacks as any web service, plus unique risks from AI agent access. The most common vulnerabilities are SSRF (Server-Side Request Forgery) at 36.7%, path traversal at 82% of servers using file operations, and code injection via eval/exec. Because MCP servers give AI agents access to files, databases, and APIs, a single vulnerability can give an attacker access to everything the agent can reach."
   - q: "How do I scan my MCP server for vulnerabilities?"
-    a: "Use MCP Shield, our open-source security scanner. Clone the repo from GitHub, point it at your MCP server source code, and it will check for 11 categories of vulnerabilities including SSRF, path traversal, SQL injection, command injection, hardcoded secrets, and missing authentication. It gives you a grade from A to F and specific fix suggestions for every finding."
+    a: "Use MCP Shield, our open-source security scanner. Clone the repo from GitHub, point it at your MCP server source code, and it will check for 20 security rules across 6 categories including SSRF, path traversal, injection, authentication, security configuration, and logging. It gives you a grade from A to F and specific fix suggestions for every finding."
   - q: "What is SSRF in MCP servers?"
     a: "SSRF (Server-Side Request Forgery) occurs when an MCP server makes HTTP requests to URLs provided by the AI agent without validating them. An attacker can craft prompts that cause the agent to request internal network resources (like cloud metadata endpoints at 169.254.169.254), effectively using your MCP server as a proxy to attack your internal infrastructure."
   - q: "Are MCP servers safe to use in production?"
@@ -28,17 +28,14 @@ We built MCP Shield because nobody else had.
 
 ## What MCP Shield Does
 
-MCP Shield is an open-source security scanner that checks your MCP server code for 11 categories of vulnerabilities:
+MCP Shield is an open-source security scanner that checks your MCP server code for 20 security rules across 6 categories:
 
-- **SSRF**: Unvalidated URLs in HTTP requests that could be exploited to access internal networks
-- **Path Traversal**: File operations that don't sanitize paths, allowing access to files outside intended directories
-- **Code Injection**: eval() and exec() on user-controllable input
-- **SQL Injection**: String interpolation in database queries
-- **Command Injection**: subprocess with shell=True
-- **Missing Authentication**: Tool handlers with no auth checks
-- **Hardcoded Secrets**: API keys, tokens, and passwords in source code
-- **Disabled SSL**: verify=False in HTTP requests
-- **Permissive CORS**: Wildcard Access-Control-Allow-Origin
+- **SSRF** (3 rules): Unvalidated URLs in HTTP requests, insufficient URL validation, and DNS rebinding attacks
+- **Path Traversal** (3 rules): Unsanitized file paths, missing `..` directory checks, and symlink following without resolution
+- **Injection** (5 rules): Code injection via eval/exec, SQL injection, command injection via shell=True, template injection via .format(), and unsafe deserialization (pickle/yaml)
+- **Authentication** (3 rules): Missing auth on tool handlers, hardcoded secrets in source code, and no rate limiting on endpoints
+- **Security Configuration** (4 rules): Disabled SSL verification, permissive CORS, stack trace exposure to clients, and missing input length validation
+- **Logging** (1 rule): No audit trail on tool invocations
 
 Every finding includes the exact file and line number, a severity rating, a fix suggestion, and a CWE reference.
 

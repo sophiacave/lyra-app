@@ -163,3 +163,7 @@ Pick one task you do repeatedly — a weekly report, a client email, a code revi
 That single prompt, optimized, will save you more time than any AI course. But if you want to go deeper, our [Claude Mastery course](/academy) walks through advanced techniques like prompt chaining, system prompts, and building reusable prompt libraries — all with hands-on exercises.
 
 The AI isn't broken. Your prompts are. Now you know how to fix them.
+
+**Keep reading:**
+- [11 Best Custom Instructions for Claude AI](/blog/claude-custom-instructions-guide/) — copy-paste templates that transform your Claude output
+- [30 Best Free AI Courses in 2026](/blog/best-free-ai-courses-2026/) — start learning for free, no credit card
