@@ -53,6 +53,13 @@ export default function Footer({ variant = 'main' }) {
             </div>
 
             <div className="footer-site-col">
+              <div className="footer-site-col-title">Open Source</div>
+              <a href="https://smithery.ai/servers/sophiacave-me/mcp-shield" className="footer-site-link" target="_blank" rel="noopener noreferrer">MCP Shield</a>
+              <a href="https://smithery.ai/servers/sophiacave-me/orchard-hig" className="footer-site-link" target="_blank" rel="noopener noreferrer">Orchard HIG</a>
+              <a href="https://smithery.ai/servers/sophiacave-me/orchard-sign" className="footer-site-link" target="_blank" rel="noopener noreferrer">Orchard Sign</a>
+            </div>
+
+            <div className="footer-site-col">
               <div className="footer-site-col-title">Resources</div>
               {footerNav.map(link => (
                 <Link key={link.href} href={link.href} className="footer-site-link">{link.label}</Link>
