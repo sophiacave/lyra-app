@@ -2,8 +2,8 @@ import { getAllCourses } from '../../lib/courses';
 import ConsoleShell from '../components/console/ConsoleShell';
 
 export const metadata = {
-  title: 'Like One Academy — 52 Free AI Courses | Claude, Agents & More',
-  description: 'Learn AI hands-on with 520+ interactive lessons. From Claude basics to building autonomous agents. Start free — no credit card, no time limit. Beginner to advanced.',
+  title: 'Like One Academy — 52 Free AI Automation Courses | Claude, Agents & More',
+  description: 'Best free AI automation courses. 520+ hands-on lessons covering Claude, AI agents, prompt engineering, RAG, and MCP. Start free — no credit card, no time limit.',
   alternates: { canonical: 'https://likeone.ai/academy/' },
 };
 
